@@ -32662,6 +32662,8 @@ renderGrid();
 .fc-plusitem:hover .fc-pi-ico .pc-naya-jewel,.fc-plusitem:focus-visible .fc-pi-ico .pc-naya-jewel{color:var(--mc,#a06bff);filter:drop-shadow(0 0 6px var(--mc,#a06bff))}
 /* Drawer rows: board black inside, white rim at rest, own-color rim + halo + lift on hover. No inset light anywhere. */
 .os-drawer a{background:linear-gradient(180deg,#07070b,#020203);border-color:rgba(255,255,255,.85);box-shadow:0 6px 16px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+/* FIX 2026-11-16 (checker CONDITIONAL FAIL #2): base .os-drawer a.pc-hub-home (0,2,1) kept an inset white top-light at rest; this equal-specificity, later rule kills it. Placed BEFORE the :hover rule below so hover (same 0,2,1, later) still wins its glow on hover. */
+.os-drawer a.pc-hub-home{box-shadow:0 6px 16px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4)}
 .os-drawer a:hover,.os-drawer a:focus-visible{transform:translateY(-2px);border-color:var(--rc,#a06bff);box-shadow:0 0 22px -4px var(--rc,#a06bff),0 10px 22px rgba(0,0,0,.55)}
 .os-drawer-sec{color:#fff}
 .os-drawer-head{color:#fff}
@@ -32672,6 +32674,8 @@ renderGrid();
 .os-drawer a:hover .pc-hub-orb svg,.os-drawer a:focus-visible .pc-hub-orb svg{color:#a06bff;filter:drop-shadow(0 0 6px #a06bff)}
 /* Bottom-bar tiles + the composer's + tile (same .notif-tile): board black inside, white glyph object, own-color rim; the white sheen ::before is gone; hover/focus/open ignite in the tile's own color. */
 .notif-tile{background:linear-gradient(180deg,#07070b,#020203);border:1.5px solid color-mix(in srgb,var(--nc) 62%,rgba(255,255,255,.12));box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:#fff;transition:box-shadow .3s,border-color .3s,transform .2s ease,color .2s ease}
+/* FIX 2026-11-16 (checker CONDITIONAL FAIL #1): base #pcComposerPlus .notif-tile (1,1,0) set a white radial tile + purple + + inset sheen, which the (0,1,0) .notif-tile rule above could not override. This (1,1,0) rule, later in the document, overturns it — board black, white +, outside glow only. This deliberately overturns the earlier H1 "pearl white center" design, per brief §5 item 3 + Black Diamond. The :hover rule below is (1,2,0) and sets border/glow/color (not background), so the board-black background holds on hover too. */
+#pcComposerPlus .notif-tile{background:linear-gradient(180deg,#07070b,#020203);color:#fff;box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 17px rgba(160,107,255,.42)}
 .notif-tile::before{display:none}
 .notif-tile svg{color:#fff;filter:drop-shadow(0 2px 2px rgba(0,0,0,.7))}
 .notif-seg:hover .notif-tile,.notif-seg:focus-visible .notif-tile,#pcComposerPlus:hover .notif-tile,#pcComposerPlus:focus-visible .notif-tile{transform:translateY(-2px);border-color:var(--nc,#a06bff);box-shadow:0 10px 20px rgba(0,0,0,.65),0 0 26px color-mix(in srgb,var(--nc,#a06bff) 68%,transparent);color:var(--nc,#a06bff)}
