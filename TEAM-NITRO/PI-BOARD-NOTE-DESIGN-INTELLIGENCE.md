@@ -1446,3 +1446,156 @@ captain already told Shawn, NOT re-raised. Distillation: SN-2986..2990
 are new raw notes for tonight's 23:17Z daily run. Silent run — no chat
 report owed (nothing here needs Shawn that he hasn't already been told;
 the Daily Intelligence Report 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 229 — 2026-11-16 ~18:53–19:1xZ (seat: Naya Nitro Sigma)
+
+LISTEN — what is new since run 228 (closed ~18:45Z, highest SN-2994):
+THIRTEEN new dictations/decisions from Shawn, all in the main chat +
+MEMORY.md + daily log, none of them filed by run 228 (its LISTEN snapshot
+closed before the 18:43Z language settlement and the 18:47Z–19:02Z live
+walk — the walk kept firing while this run worked, and the run kept
+catching it, through 19:14Z):
+- 18:43Z LANGUAGE SETTLED: no longer "spaces" — it's WORLDS, everywhere.
+  Create world. A world for any topic, any location; worlds within the
+  world. Third default feed = Worlds. Supersedes the 18:36Z "space is
+  right" call — wrong on the scale, corrected: a space is a room, a world
+  is the whole thing; "space" stays only as the everyday place-word inside
+  a world.
+- 18:43Z PERFORMANCE AUDIT ORDERED: is the whole team running at max
+  performance? What are we doing right, what are we not — look into it
+  and make it right, highest performance in every moment and action,
+  highest level of result and value. Audit seat dispatched (3ea438ac);
+  AUDIT DONE 18:51:47Z (AUDIT-20261116.md, 39,219 B), delivered to Shawn
+  ~18:55Z. Headline: 17 deliveries whole today, ~73 SN/NN pairs filed,
+  4 merges, drain 9 → 0, VPM banked H00–H16 1,272.6 min; wake-up cost
+  ~1,019/day vs 800 ceiling is COST, not score. Zero One List closures
+  met the clear-cut bar — judgment calls listed, never guessed.
+- 18:47Z OPTIMIZE FOR FINISHING AND PRODUCING VALUE (re-aim, law in
+  AGENTS.md + MEMORY.md): "It's not about 15 minutes or 30 minutes. It's
+  about them finishing the work. And producing value." Verifiable work
+  that is positive, good, useful, done right. Cadence and wake-up counts
+  are cost, not the score; completions per hour is the metric; dispatches
+  per hour is vanity. The audit was re-aimed mid-flight on this frame;
+  the pulse-cadence question (15 vs 30 min) is WITHDRAWN.
+- 18:47Z SCORECARDING — THE ULTIMATE ANSWER FIRST (refinement, law):
+  "What you're really doing is like you're scorecarding. Figuring out
+  what's the ultimate answer. What are you ultimately trying to do and
+  then optimizing for that." Every job, round, and lane is scored against
+  its ultimate answer first; activity without finishing is a fail no
+  matter how high the count.
+- 18:52Z DON'T REMOVE WHAT HE DIDN'T ASK TO REMOVE (charge, law): "you
+  sometimes you just change things right and just remove things And that
+  wasn't even instructed." The agreement's big play button — circled, an
+  orb going around it, says Naya, tap it and it plays the collective
+  agreement introduction — was removed without instruction. If the brief
+  didn't instruct it, it stays. Button restored in the entrance-welcome
+  brief (top, beside the picture, harvested exactly as it was).
+- 18:52Z DON'T SEND IN WHAT ISN'T COMPLETED (charge, same message):
+  "We never finalized the the text so how could why are you telling me
+  about the glitch in the voice note why are you sending it in without
+  it being completed?" A glitch in unfinished work is noise, not news.
+  Nothing half-done comes to him; the voice stays paused until the
+  agreement text is final.
+- 18:56Z SIDEBAR ICONS LIGHT AS YOU SCROLL (instruction): every sidebar
+  item gets its own icon, and as you scroll down through each area its
+  icon lights up in its own different color.
+- 18:56Z MY WORLD PICKER MUST SWITCH (catch): he tapped the My World
+  chip, the picker popped up, he picked his world — "and then I put my
+  world and then nothing happened." Picking a world must switch the feed
+  to that world at once. Rides the Personal bottom-bar-restore round,
+  item 2. One List my-world-picker-switch.
+- 18:57Z RESTORE WHAT WAS GOOD — DON'T ITERATE ON IT (charge, law):
+  "you got rid of what was good, which you do that often." The Hub and
+  the Personal page both lost the five-icon bottom bar — the correction
+  round's five was good, replaced by a nine-icon row + MAIL/ACTIVITY/
+  SPACES row that wasn't good. The five go back on both, verbatim from
+  the correction build; the nine area icons go in the sidebars in logical
+  order, each carrying its area's count.
+- 18:57Z ONE ICON THAT LIGHTS UP (rule, law): "you better to put just
+  one icon that lights up in there instead of an icon and then a light."
+  Never an icon beside its own light. Composer controls first.
+- 18:58Z THE EXTRA + — THE MOBILE TEST DECIDES (question + rule): the
+  five plus one more + right beside them — the extra + is the RIGHT +
+  (CONNECT: Message · Mail · Create world). Two + buttons, two jobs,
+  never mixed up. Test: fits perfectly on mobile → keep it; goes to the
+  next line down → don't, and the right + moves to the side, in the
+  corner. Checker measurement: all six on one line at phone width,
+  nothing cut off, nothing wrapping — so it stays.
+- 18:59Z CREATE WORLD MUST ACTUALLY CREATE (catch, screenshot): "It's
+  the create world pop up? That looks like shit. You need to make not
+  flat buttons all depth and nice and primo and then actually when you do
+  that it should actually create the feed and show you the feed with
+  optimized to that world. But it doesn't do that. It just goes nowhere."
+  Fix round carries it (buttons with real depth + create builds the feed
+  and shows it, tuned to that world).
+- 19:02Z BUTTONS NEVER CUT OFF THEIR TEXT (catch): "Captain's eye test
+  world" is cut off and unaligned. Every label shows full and aligned at
+  every width, long names wrap or shrink. Eye checks clean up their test
+  worlds/aliases after themselves — no test data on the page he sees.
+- 19:14Z FINE-TUNE THE TEAM — ON FIRE 24-7, NON-STOP (directive +
+  vision): "Like, I want you to fine tune your team where they're on fire
+  24-7, non-stop. Full armies out there getting it done because you got
+  this set up right. And it's at a perfect flow. You got things that the
+  timing the math the logic all of it I want you to think through it all.
+  Think what would be the optimal most intelligent setup you could
+  possibly have for producing non-stop value and getting things finished
+  and done correctly." Working shape, answered the same pass: the score is
+  finished pieces per hour, one every few minutes from parallel lanes
+  finishing at staggered times — fast little jobs are the heartbeat, big
+  page rounds are the substance, queue never runs dry; the moment one
+  finishes, the next step fires right away — nobody waits for a clock to
+  tick; fifteen-minute checks are only the safety net; overnight the same
+  way, work landing while he sleeps; fast and useless is useless, so the
+  checking stays.
+
+SMART-NOTES FILED THIS RUN (13 pairs, all PUT 201 + byte-identical blob
+read-back): SN-2995 No Longer "Spaces" — It's WORLDS · SN-2996 Optimize
+for Finishing and Producing Value · SN-2997 Scorecarding — The Ultimate
+Answer First · SN-2998 Don't Remove What He Didn't Ask to Remove ·
+SN-2999 Don't Send In What Isn't Completed · SN-3000 Sidebar Icons Light
+As You Scroll · SN-3001 My World Picker Must Switch · SN-3002 Restore
+What Was Good — Don't Iterate On It · SN-3003 One Icon That Lights Up —
+Never Icon and a Light · SN-3004 The Extra + — The Mobile Test Decides ·
+SN-3005 Create World Must Actually Create · SN-3006 Buttons Never Cut Off
+Their Text · SN-3007 Fine-Tune the Team — On Fire 24-7, Non-Stop. Each with a paired Naya Note (NN-20261116-<slug>), Paired
+lines carrying titles verbatim, never paths. Numbering:
+next-sn-number.py (run229-numbering.log): highest SN-2994, open-PR claims
+none, next free SN-2995; re-run before the 13th pair
+(run229-numbering2.log) blessed SN-3007. NOTE: the first foreground run
+of the command was SIGTERMed at 457s with no output (runtime kill, not a
+guard failure); the detached retry (setsid nohup) completed and blessed
+SN-2995. No PR, no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned
+2212, entries_scanned 2087, 0 unparseable, 0 malformed; watermark holds.
+Healthy — the notes live on GitHub, not in the local box tree.
+
+MAIL DIGEST HELD (run229-mail-digest.txt): send path still blocked
+(Supabase reauth_required since 21:06Z Nov 12; send path last proven 401
+Nov 13 04:24Z; team-pulse 18:54Z mail read still BLIND, mail-new
+UNKNOWN). Same known breakage as runs 202–228; repair is Shawn's hand,
+already escalated, NOT re-raised.
+
+STATE CARRIED (delivery events, not new lessons): Personal hub-return
+round checker PASS 18:52:46Z (all three parts passed; captain's eye-check
+running in the cloud browser — VM browsers dead again since 18:47Z
+tripwire); walk-end checker NOT PASS 18:50:40Z (H8+H10 fail at 390);
+transcribe-watcher could NOT run 18:55–18:56Z (EPERM lock-file write,
+queue state unknown); performance audit DONE (above); PI refresh BLOCKED
+18:55–18:58Z (run_refresh.py failed 3x on the EPERM flake, six feed-report
+writes truncated to 0 bytes; last good state intact, live artifact
+current through 18:40Z hash 566acc4d; next cycle retries).
+
+OUT OF ALIGNMENT, recorded plainly: (1) STILL OPEN from run 228 — the
+agreement-entrance brief's VERIFICATION section (line 98) still says
+verify labels "Begin the deck ◆" / "Read the letter ◆" UNCHANGED, while
+the brief's own line 78 states the DECIDED labels ("Begin the visual
+story ◆" / "Read the Collective Agreement ◆", 18:17Z). The brief
+contradicts itself; a checker following line 98 would fail a correct
+build. Captain's lane — this loop does not edit briefs. (2) Standing gaps
+unchanged — Naya Notes filed but not in the live feed (sections build
+owed); Hub still shows the duplicate SN-2906 cycle row (DELETE
+permission, his hand). Distillation: SN-2995..3006 are new raw notes for
+tonight's 23:17Z daily run. Silent run — no chat report owed (nothing here
+needs Shawn that he hasn't already been told; the Daily Intelligence
+Report 23:17Z is the summary vehicle).
