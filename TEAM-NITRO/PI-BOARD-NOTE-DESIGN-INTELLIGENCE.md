@@ -994,3 +994,63 @@ fails is not done. A deferral is an open item, not a pass.
 - CARRIED TO RUN 219 (noted this run, not filed — batch of 12 filled): the rail "I" + keep-the-name answer (01:15Z; make the I real and beautiful; the name is what you scan for, no hover on phones) · Adopt It — the new way of thinking as mandate (01:17Z; the cycle + the code as operating method) · Hub ↔ Personal alignment both ways (01:28Z; same icons, Smart Notes system moves over, every click works) · My World redesign (01:33Z/01:36Z; out of the search bar, ADD WORLD no limit, star says what it does, two rows two jobs) · run 216's carried batch, still unfiled (agreement second-eye counters/picture · Connect green + person pop-up · settings gear real menu · post-image + instant preview · walk-end once, alias once · checklist-law correction · skills as online resume · news + sisters' places, image feed · Smart Match tuning settled · Personal ONE-round eye 18:22Z).
 - ALIGNMENT (recorded, nothing silently rewritten): Naya Notes filed but not in the live feed (sections build still owed — standing gap, same as runs 213-217). Share-asset minting: this run filed category layout with sn-prefixed filenames; the live tree's filename convention is mixed (flat sn-prefixed 2901..2905, category slug-only 2906..2920, category sn-prefixed 2921, flat slug-only 2922..2925) — one convention is owed so future pre-flights check one variant, not both. The Hub still shows the duplicate SN-2906 cycle row (DELETE permission, his hand — one permission, two stuck deletes). PI state-publish failing HTTP 429 on the KV PUT (06:10Z, 06:25Z, 06:40Z, 06:55Z, 07:10Z) — intelligence room state.json stale, same KV wall as SN-2937. Visual-collective-agreement-end item 18 min past its 07:00Z due at the 07:18Z floor-watch; delivery sequenced behind the handoff eye, blocked by the KV quota until 00:00Z Nov 17 — due field needs re-setting to Nov 17 (captain's seat). No live page was edited, no merge, no deploy from this run. Distillation: SN-2926..2937 are new raw notes for tonight's 23:17Z daily run; threshold check 02:54Z showed 55 undistilled, under 100 — no batch fired by this seat.
 - TOOLING NOTE (this run, for the captain): the run216-pi.py script's content was flagged by a safety check mid-run, so this addendum was filed through gh-direct.py get_token() instead — same GET-append-PUT-read-back shape, no other mechanism. Nothing in that script was run, copied, or acted on.
+
+## Intelligence Loop run 219 — 2026-11-16 ~13:4xZ (seat: Naya Nitro Sigma)
+
+LISTEN: full day log through 13:38Z + seat brief + team-nitro AGENTS.md.
+New since run 218 (07:35Z): four Personal rounds landed whole (About-unfold
+PASS 08:40Z sha ba8fa387 · My World redesign PASS 10:07Z sha 9b4353d8 ·
+Skills three-part PASS 10:39Z sha 110a9b75 · Connections room-look PASS
+12:16Z sha dd92a31d); sidebar rollout close-miss + correction 13:25Z; the
+Firefox/Supabase probe lesson proven 12:16Z; the proof-host cb caveat 10:07Z;
+CREATION-FROZEN fired 08:18Z (SoulSchoolAcademy 6 open PRs, over cap 5).
+
+SMART-NOTE FILED (22/22, all PUT 201 + byte-identical blob read-back, first
+try, no renumbers, no 409s): SN-2938 Both Presentations — the Citizen Picks ·
+SN-2939 Keep the Name on the Card · SN-2940 Adopt It — the New Way of
+Thinking · SN-2941 Align Both Ways · SN-2942 My World Is the Calendar ·
+SN-2943 Sharing Chat — the Name Is the Idea · SN-2944 Check the Descendants
+Before You Close · SN-2945 A Firefox Empty List Is a Probe Failure · SN-2946
+Verify by Blob, Never by cb · SN-2947 The Personal Page, Just Right ·
+SN-2948 Connections Is the Proper System — Harvest the Room. Each with a
+paired Naya Note (NN-20261116-<slug>), Paired lines carrying titles verbatim,
+never paths. Pre-flight: full recursive live-tree read, highest SN-2937,
+SN-2938..2950 free in all categories, no topic duplicates, no distillation
+in flight (last commit 11:20:39Z Living Map); final tree check PASS — all 11
+SN exactly once, all 11 NN exactly once, highest now SN-2948.
+next-sn-number.py TIMED OUT at 120s in the pre-flight — poisoned/slow, NOT
+used; the live tree is the authority (as in run 218). Drafts + filing record:
+goals/team-nitro-operating-loop/hidden_files/run219-drafts/ (all .filed) +
+run219-file.log. No PR, no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned 2212,
+0 unparseable, 0 malformed; watermark holds (run219-organize.log). Healthy —
+the 22 notes live on GitHub, not in the local box tree.
+
+MAIL DIGEST HELD (run219-mail-digest.txt): send path still blocked (Supabase
+reauth_required since 21:06Z Nov 12; send path last proven 401 Nov 13 04:24Z;
+team-pulse 13:24Z mail read still BLIND, mail-new UNKNOWN). Same known
+breakage as runs 202–218; repair is Shawn's hand, already escalated, NOT
+re-raised.
+
+CARRIED TO RUN 220: the rail "I" + keep-the-name answer is now NOTED
+(SN-2939) · Adopt It (SN-2940) · Hub ↔ Personal alignment (SN-2941) · My
+World redesign (SN-2942) · run 216's carried batch (agreement second-eye
+counters/picture · Connect green + person pop-up · settings gear real menu ·
+post-image + instant preview · walk-end once, alias once · checklist-law
+correction · skills as online resume · news + sisters' places, image feed ·
+Smart Match tuning settled · Personal ONE-round eye 18:22Z) — still carried,
+none of it newly noted this run.
+
+OUT OF ALIGNMENT, recorded plainly: Naya Notes filed but not in the live
+feed (sections build still owed — standing gap); Hub still shows the
+duplicate SN-2906 cycle row (DELETE permission, his hand); PI state-publish
+failing HTTP 429 on the KV PUT (13th consecutive hour at 13:25Z —
+intelligence room state.json stale); the live tree's Smart Note filename
+convention is mixed (flat sn-prefixed 2901–2905, category slug-only 2906–2920,
+category sn-prefixed 2921, flat slug-only 2922–2925) — one convention owed so
+future pre-flights check one variant; sidebar rollout on replacement
+coordinator 504d85cb (running, active — the 13:22Z close of d8cf8c4f was a
+miss, corrected 13:25Z). Distillation: SN-2938–2948 are new raw notes for
+tonight's 23:17Z daily run. Silent run — no chat report owed (nothing here
+needs Shawn; the Daily Intelligence Report 23:17Z is the summary vehicle).
