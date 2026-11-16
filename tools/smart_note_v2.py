@@ -664,6 +664,20 @@ def _field_words(text):
     """Tokenize text into a set of stemmed lowercase words."""
     return set(_stem(w) for w in re.findall(r"[a-z0-9]+", text.lower()))
 
+# Nutshell-section heading (retrieval 10/10 track, 2026-11-16, Naya 5): the
+# lesson section the retriever reads for scoring AND for the winner's
+# explanation. Two spellings live in the corpus — the original three-word
+# heading ("## In a Nutshell", incl. the "## ✦ IN A NUTSHELL" variant) and the
+# bare heading ("## Nutshell") the six-note page format writes (Intelligence
+# Loop runs 220+; 689 pages at tip e9540a07). Both spellings MUST match here:
+# a title-winning new-format note (SN-3019, score 102.3) failed closed with
+# WINNER_EXPLANATION_EMPTY because this pattern required "IN A ". One shared
+# constant — the two call sites (_nutshell_text, retrieve) must never drift
+# apart again. A page with no nutshell section at all still fails closed
+# (B-49); this only widens the heading, never the fallback.
+NUTSHELL_SECTION_RE = re.compile(
+    r"##(?:\s+[^\n]*)?(?:IN A )?NUTSHELL\n\n(.+?)(?:\n\n##|$)", re.S | re.I)
+
 def _nutshell_text(projection_path):
     """Return a note's IN A NUTSHELL lesson text for retrieval matching.
 
@@ -675,7 +689,7 @@ def _nutshell_text(projection_path):
         note = (ROOT / str(projection_path)).read_text(encoding="utf-8")
     except (OSError, TypeError):
         return ""
-    m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
+    m = NUTSHELL_SECTION_RE.search(note)
     return m.group(1).strip() if m else ""
 
 # Retrieval field weights (retrieval 10/10 track, 2026-10-06): a query term in
@@ -1049,7 +1063,7 @@ def retrieve(query, areas=None, task_contexts=None, retriever=None,
         # tree does not contain is corpus drift, not an answer. Fail closed
         # with an explicit miss code — never an unhandled crash.
         raise SystemExit("WINNER_PROJECTION_UNREADABLE")
-    m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
+    m = NUTSHELL_SECTION_RE.search(note)
     explanation = m.group(1).strip() if m else ""
     if not explanation:
         # B-49 (2026-10-13): a winner with no extractable lesson content is a
