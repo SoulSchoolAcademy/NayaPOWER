@@ -1311,3 +1311,38 @@ Not at All + paired NN-20261116-legal-pages-done-professionally (PUT 201 +
 byte-identical blob read-back, run226-file2.log). Run 226 total is SIX
 pairs: SN-2978..2983, highest SN-2983. Mail digest updated to match
 (run226-mail-digest.txt). No PR, no merge, no deploy, no live edit.
+
+## Intelligence Loop run 226 — supplement 2 (same run, ~17:5xZ)
+
+CORRECTION TO THE RUN-226 ADDENDUM + SUPPLEMENT ABOVE, filed here not
+silently: they say "5 pairs" then "SIX pairs" (SN-2978..2983). TWO more
+charges landed in the main chat + MEMORY.md / AGENTS.md after the first
+supplement was filed — 17:45Z DO IT RIGHT THE FIRST TIME, NO SUMMARIES, NO
+PROTOTYPES, and 17:46Z EVERY LAYER GREAT, ONE ULTIMATE PROJECT (both filed
+as law in AGENTS.md the same pass): we are professionals — no summaries, no
+prototypes; go all in, do things right, ready to go, completed and done, so
+he never has to put the right stuff in again and again (eight or nine
+summaries mean eight or nine redos by his hand — a summary is not a step
+toward done, it is a redo he has to do himself); and some jobs have layers,
+one layer good while the others aren't never works — one ultimate project,
+the WHOLE thing good, not only good but GREAT, the most elite, ten-star,
+professional, pro, premium, top-of-the-line, all-star presentation and
+outputs and design and intelligence in every layer, or the project isn't
+done.
+
+Filed this supplement pass: SN-2984 Do It Right the First Time — No
+Summaries, No Prototypes + SN-2985 Every Layer Great — One Ultimate
+Project, each with its paired NN (PUT 201 + byte-identical blob read-back,
+run226-file3.log). Run 226 total is EIGHT pairs: SN-2978..2985, highest
+SN-2985. Mail digest updated to match (run226-mail-digest.txt).
+
+STATUS NOTE (captain's lanes, recorded not adjudicated): legal-writer run 1
+DONE 17:44Z — all eight pages drafted (74 sections, ~6,600 words) in
+`walk-v23-assembly-20261114/legal-drafts-20261116/`; writer run 2 dispatched
+17:46Z for the four footer-only pages (Acceptable Use · Community Guidelines
+· Copyright/DMCA · Membership & Billing) — the footer has TEN links, the
+job is whole at ten. Personal correction round DONE — re-check PASS 10/10
+(coordinator 61dccaf0, 17:42:44Z; branch personal/correction-20261116,
+staged sha fd84bb81...), ready for his eye. Run 226 closes here: anything
+landing after ~17:47Z belongs to run 227. No PR, no merge, no deploy, no
+live edit.
