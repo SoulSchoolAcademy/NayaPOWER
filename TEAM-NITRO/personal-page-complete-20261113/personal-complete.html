@@ -26376,7 +26376,7 @@ function pcCard(p, live){
      there too (the pop-up's actions). */
   var mark = '';;
   return '<article class="pc-card" data-pc-alias="'+esc(p.alias)+'" style="--pc:'+pcColorFor(p.alias)+'">'
-    + '<div class="pc-card-top"><span class="fc-pick-av" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</span>'
+    + '<div class="pc-card-top"><button type="button" class="fc-pick-av" data-pc-orb="'+esc(p.alias)+'" aria-label="Message '+esc(p.alias)+'" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</button>'
     + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b></span>'+mark+'</div></div>'
     + '</article>';
 }
@@ -27998,6 +27998,16 @@ function pcPersonPopHTML(p){
   return h;
 }
 document.addEventListener('click', function(e){
+  var orb=e.target&&e.target.closest?e.target.closest('[data-pc-orb]'):null;
+  if(orb){
+    var op=pcRailPerson(orb.getAttribute('data-pc-orb'));
+    if(op){
+      pcShowRailPop(pcPersonPopHTML(op));
+      var opop=document.getElementById('pcRailPop');
+      if(opop) pcWatchPopConnect(opop);
+    }
+    return;
+  }
   var info=e.target&&e.target.closest?e.target.closest('[data-pc-info]'):null;
   if(info){
     var p=pcRailPerson(info.getAttribute('data-pc-info'));
@@ -30459,4 +30469,173 @@ if(document.readyState==='loading'){
    rest state is untouched — this rule matches .requested only. */
 .pc-card .pc-connect-btn.requested{font-size:10px!important;padding:8px 6px!important;letter-spacing:0!important;}
 </style>
+
+<!-- PEOPLE-RAIL ROUND 2 (2026-11-16) — H1 orb click, H2 scroll light, H3 All tab clear at 1440x900, H4 no dead stretch, H5 label a connection. -->
+<style id="fix-personal-people-rail-20261116-css">
+/* H1 — the orb is a button now (pcCard renders <button class="fc-pick-av" data-pc-orb>).
+   The reset keeps the orb's own box exactly: padding/margin/font come from the UA
+   button, not from .fc-pick-av, so they are zeroed/inherited here; border, background
+   and display stay the class's own (never re-declared). Focus ring in the person's
+   own colour; hover brightens, press depresses — a real object answering touch. */
+.pc-card-top button.fc-pick-av{appearance:none;-webkit-appearance:none;padding:0;margin:0;font-family:inherit;line-height:inherit;cursor:pointer;}
+.pc-card-top button.fc-pick-av:focus-visible{outline:2px solid var(--pc,#a06bff);outline-offset:2px;}
+.pc-card-top button.fc-pick-av:hover{filter:brightness(1.18);}
+.pc-card-top button.fc-pick-av:active{transform:scale(.96);}
+/* H2 — SCROLL LIGHTS THE BOARDS. A card lights in its own gematria colour (--pc, the
+   same law as its orb) as it comes into view while the rail scrolls, then settles
+   back to calm: .pc-lit is added by the observer below and removed ~2s later (or the
+   moment the card leaves view). At rest no card carries .pc-lit, so the rail is calm.
+   The glow is the card's own hover glow, without the lift — the light, not a move.
+   The .6s ease is the light travelling, slow and elegant; it also softens the hover
+   glow's arrival, which is the same light. */
+.pc-card{transition:border-color .6s ease,box-shadow .6s ease;}
+.pc-card.pc-lit{border-color:var(--pc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 0 24px -4px var(--pc,#a06bff),0 10px 26px rgba(0,0,0,.55);}
+/* H3 — "ALL" SMART TAB CLEAR OF THE BOTTOM BAR AT 1440x900 ONLY. Measured on the base:
+   at 1440x900 the tab sits at document y 851-903 while the fixed bar tops at 822 — the
+   tab is under the bar; at 1920x1080 the tab ends exactly at the bar's top (1002) and is
+   fully clear. The stack above the ribbon is cover + header + actions + composer + lens
+   tabs; the cover is the only member with shrinkable height (55vh = 495px here, 594px at
+   1920). This tight window matches 1440x900 only — not 1920x1080, not 390x844 — and caps
+   the cover at 400px, lifting the whole stack (ribbon included) 95px: the tab lands at
+   756-808, 14px clear of the bar. */
+@media (min-width:1400px) and (max-width:1500px) and (min-height:850px) and (max-height:950px){
+  .ph-cover{max-height:400px!important;}
+}
+/* H4 — NO LONG EMPTY BLACK STRETCH AFTER THE LAST RAIL CARD. Measured on the base:
+   below the rail foot the page carries .ph-main padding-bottom 120px (220px at <=480px)
+   PLUS body padding-bottom 92px — 198px of black at 1920/1440, 290px at 390, after the
+   last content. The body 92px alone clears the 78px fixed bar (70px at 390); the .ph-main
+   padding is dead space on top of it. Cut to 16px: at max scroll the foot still clears
+   the bar by 16px at all three widths (measured in the probe). No content moves — only
+   the document gets shorter. Appended last with !important, so it beats the 120px rule
+   and the <=480px 220px rule alike. */
+.ph-main{padding-bottom:16px!important;}
+/* H5 — LABEL A CONNECTION (BUILT: no categorize/label control exists in the base — the
+   "File into a list" picker only opens for notes, never for a person; the Connections
+   view shows name + fact only; the rail pop-up has no label row). The pop-up gains one
+   plain row: an obsidian input with real depth + an elite Save, in the person's own
+   colour on focus. White text, never gray. */
+#pcRailPop .pc-pop-label{margin-top:14px;}
+#pcRailPop .pc-pop-label-cap{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;margin-bottom:8px;}
+#pcRailPop .pc-pop-label-row{display:flex;gap:8px;}
+#pcRailPop .pc-pop-label-input{flex:1;min-width:0;height:46px;background:linear-gradient(180deg,#17171f,#0a0a10);border:1.5px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;font:inherit;font-size:13px;font-weight:700;padding:0 14px;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.4);}
+#pcRailPop .pc-pop-label-input::placeholder{color:#fff;}
+#pcRailPop .pc-pop-label-input:focus{outline:none;border-color:var(--pc,#a06bff);box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 0 16px -4px var(--pc,#a06bff),0 4px 12px rgba(0,0,0,.4);}
+#pcRailPop .pc-pop-label-save{flex:none;}
+#pcRailPop .pc-pop-label-status{margin:8px 0 0;font-size:12px;line-height:1.5;color:#fff;min-height:18px;}
+#pcRailPop .pc-pop-label-status:empty{display:none;}
+</style>
+
+<script id="fix-personal-people-rail-20261116-js">
+/* PEOPLE-RAIL ROUND 2 (2026-11-16) — H2 scroll light + H5 label a connection.
+   H1's two edits live in the rail script itself (the orb is a button; the orb branch
+   opens the same pop-up as the info button). */
+(function(){
+"use strict";
+/* --- H2: scroll lights the boards. One observer, root = the viewport, so it covers
+   the list's own scroll at desktop (cards are clipped by the list) and the page scroll
+   at phone. A card lights only when it comes into view AFTER a scroll: the first scroll
+   arms it, and every re-render suppresses until the next scroll — so cards never light
+   at rest, on load, or on a tab switch. The light leaves ~2s later, or the moment the
+   card leaves view. The colour is the card's own --pc: never the wrong colour. --- */
+var LIT_MS=2000, litTimers={};
+var litArmed=false, litSuppress=false;
+function pcLight(card){
+  if(!card) return;
+  card.classList.add('pc-lit');
+  var a=card.getAttribute('data-pc-alias')||'';
+  if(litTimers[a]) clearTimeout(litTimers[a]);
+  litTimers[a]=setTimeout(function(){ card.classList.remove('pc-lit'); delete litTimers[a]; }, LIT_MS);
+}
+function pcUnlight(card){
+  if(!card) return;
+  var a=card.getAttribute('data-pc-alias')||'';
+  if(litTimers[a]){ clearTimeout(litTimers[a]); delete litTimers[a]; }
+  card.classList.remove('pc-lit');
+}
+var pcIO=null;
+function pcObserveRail(){
+  var list=document.getElementById('pcRailList'); if(!list) return;
+  if(!pcIO && window.IntersectionObserver){
+    pcIO=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!litArmed||litSuppress) return;
+        if(en.isIntersecting && en.intersectionRatio>=0.5) pcLight(en.target); else pcUnlight(en.target);
+      });
+    },{threshold:[0.5]});
+  }
+  if(!pcIO) return;
+  pcIO.disconnect();
+  var cards=list.querySelectorAll('.pc-card');
+  for(var i=0;i<cards.length;i++) pcIO.observe(cards[i]);
+  litSuppress=true;
+}
+function pcOnScroll(){ litArmed=true; litSuppress=false; }
+var pcList0=document.getElementById('pcRailList');
+if(pcList0) pcList0.addEventListener('scroll', pcOnScroll, {passive:true});
+window.addEventListener('scroll', pcOnScroll, {passive:true});
+if(typeof window.pcRenderRailForTab==='function' && !window.pcRenderRailForTab.__pcRail2LitWrapped){
+  var _pcRR=window.pcRenderRailForTab;
+  window.pcRenderRailForTab=function(tab){ var r=_pcRR.apply(this,arguments); pcObserveRail(); return r; };
+  window.pcRenderRailForTab.__pcRail2LitWrapped=true;
+}
+pcObserveRail();
+/* --- H5: label a connection. The label lives in localStorage (pc-label-<alias>, the
+   same persistence the requested state uses) and shows again every time the pop-up
+   opens. It is NOT written to smart_list_items: the only person row there is the
+   Connect request, and writing a label row for a not-yet-connected person would fake
+   a connect. The row is inserted by wrapping pcShowRailPop (the one place the person
+   pop-up opens), so the pop-up builder itself is untouched. --- */
+function pcLabelGet(alias){ try{ return localStorage.getItem('pc-label-'+alias)||''; }catch(e){ return ''; } }
+function pcLabelSet(alias, v){
+  try{ if(v) localStorage.setItem('pc-label-'+alias, v); else localStorage.removeItem('pc-label-'+alias); return true; }
+  catch(e){ return false; }
+}
+function pcEscHtml(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+function pcInsertLabelRow(){
+  var pop=document.getElementById('pcRailPop'); if(!pop||pop.hidden) return;
+  var acts=pop.querySelector('.pc-pop-actions'); if(!acts) return;
+  if(pop.querySelector('[data-pc-labelrow]')) return;
+  var alias=acts.getAttribute('data-pc-alias')||'';
+  var orb=pop.querySelector('.fc-pick-av');
+  var col=orb?(orb.style.getPropertyValue('--cc')||'').trim():'#a06bff';
+  var saved=pcLabelGet(alias);
+  var row=document.createElement('div');
+  row.className='pc-pop-label'; row.setAttribute('data-pc-labelrow','');
+  row.style.setProperty('--pc', col);
+  row.innerHTML='<label class="pc-pop-label-cap" for="pcLabelInput">LABEL THIS CONNECTION</label>'
+    +'<div class="pc-pop-label-row"><input class="pc-pop-label-input" id="pcLabelInput" data-pc-label-input type="text" maxlength="40" placeholder="Family, work, close friend\u2026" value="'+pcEscHtml(saved)+'">'
+    +'<button type="button" class="ph-connect pc-pop-label-save" data-pc-label-save>Save</button></div>'
+    +'<p class="pc-pop-label-status" data-pc-label-status></p>';
+  var note=pop.querySelector('[data-pc-pop-note]');
+  if(note) pop.insertBefore(row, note); else pop.appendChild(row);
+}
+if(typeof window.pcShowRailPop==='function' && !window.pcShowRailPop.__pcRail2LabelWrapped){
+  var _pcShow=window.pcShowRailPop;
+  window.pcShowRailPop=function(html){ var r=_pcShow.apply(this,arguments); try{ pcInsertLabelRow(); }catch(e){} return r; };
+  window.pcShowRailPop.__pcRail2LabelWrapped=true;
+}
+document.addEventListener('click', function(e){
+  var b=e.target&&e.target.closest?e.target.closest('[data-pc-label-save]'):null;
+  if(!b) return;
+  var pop=document.getElementById('pcRailPop'); if(!pop) return;
+  var acts=pop.querySelector('.pc-pop-actions'); if(!acts) return;
+  var alias=acts.getAttribute('data-pc-alias')||'';
+  var inp=pop.querySelector('[data-pc-label-input]');
+  var v=inp?inp.value.trim():'';
+  pcLabelSet(alias, v);
+  var st=pop.querySelector('[data-pc-label-status]');
+  if(st) st.textContent=v?('Label saved \u2713 \u2014 \u201c'+v+'\u201d'):('Label removed.');
+});
+document.addEventListener('keydown', function(e){
+  if(e.key!=='Enter') return;
+  var inp=e.target&&e.target.closest?e.target.closest('[data-pc-label-input]'):null;
+  if(!inp) return;
+  e.preventDefault();
+  var pop=document.getElementById('pcRailPop');
+  var b=pop?pop.querySelector('[data-pc-label-save]'):null;
+  if(b) b.click();
+});
+})();
+</script>
 </body></html>
