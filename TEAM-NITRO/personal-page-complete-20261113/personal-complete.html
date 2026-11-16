@@ -7085,7 +7085,7 @@ button.os-ld-node .os-ld-n{
 <div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Smart Skills</div>
 <p class="os-note">The skills so far — the list keeps growing. Every skill is a capability you call on by name: a Smart Note (the knowledge) + a Factory template (the ability to do it), stored in your Smart Vault. Tap a skill to see why it matters.</p>
 
-<div class="ph-card" style="--ac:#e84fff;" id="os-skill-add-card">
+<div class="os-skills-choice" role="group" aria-label="How to show Skills"> <span class="ib-kind" style="--tone:#e84fff">How do you want to tell it?</span> <div class="os-skills-choice-btns"><button type="button" class="ph-connect" data-os-skills-view="unfold" aria-pressed="true">Unfold</button><button type="button" class="ph-msg" data-os-skills-view="deck" aria-pressed="false">Presentation</button><button type="button" class="ph-msg" data-os-skills-view="both" aria-pressed="false">Both</button></div> </div> <div id="osSkillsDeck" class="os-skills-deck" hidden> <div class="os-skills-deck-head"><span class="ib-kind" style="--tone:#e84fff">Skills, as a presentation</span><span class="os-skills-deck-count" id="osSkillsCount">1 of 14</span></div> <div class="os-skills-slides" id="osSkillsSlides"></div> <div class="os-skills-dots" id="osSkillsDots" aria-label="Choose a skill"></div> <div class="os-skills-nav"><button type="button" class="ph-msg" id="osSkillsPrev" hidden>&#8249; Back</button><button type="button" class="ph-connect" id="osSkillsNext">Next &#9670;</button></div> </div> <div class="ph-card" style="--ac:#e84fff;" id="os-skill-add-card">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">✦</span> Add a skill</h3>
 <p class="os-note" style="margin-top:8px;">One skill, three answers — what it is, why it matters, and what’s in it for them.</p>
 <div class="os-fieldwrap"><input class="os-input" id="os-skill-new-what" type="text" placeholder="What it is — the skill, in a few words" maxlength="80" autocomplete="off"></div>
@@ -30010,6 +30010,49 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 
 </style>
 
+<style id="skills-three-part-20261116">
+/* ═══ SKILLS THREE-PART S5 2026-11-16 — Both presentations (Shawn 03:45Z) ═══
+   Harvested from the About choice row + deck in this same file (os-about-choice,
+   os-about-deck, 08:40Z): same structure, same board language, re-scoped to the
+   Skills view. The choice row stays, so the citizen can always switch back —
+   neither locks the other out. Unfold active on landing; no persistence, so
+   every fresh load lands on the unfold. In deck mode the unfold list hides;
+   the add-skill card stays, so a skill can be entered in any mode. Slides are
+   built from the skill cards at runtime and their words are read live on show,
+   so the deck can never drift from the board's own words — and a skill added
+   through the form joins the deck the moment it joins the list. */
+[data-os-view="skills"] .os-skills-choice{display:flex;flex-direction:column;gap:10px;margin:4px 0 16px;}
+[data-os-view="skills"] .os-skills-choice-btns{display:flex;gap:10px;flex-wrap:wrap;}
+/* Deck mode hides the unfold stack (the list); the choice row stays. */
+[data-os-view="skills"].os-skills-mode-deck #os-skills-list{display:none!important;}
+[data-os-view="skills"] .os-skills-deck{margin:0 0 20px;}
+[data-os-view="skills"] .os-skills-deck[hidden]{display:none;}
+[data-os-view="skills"] .os-skills-deck-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:2px 0 12px;}
+[data-os-view="skills"] .os-skills-deck-count{font-size:13px;font-weight:800;letter-spacing:.08em;color:#fff;opacity:.75;}
+/* Slides: the About deck's board language — same border, radius, background, shadow. */
+[data-os-view="skills"] .os-skills-slide{position:relative;border:2px solid color-mix(in srgb, var(--tone,#e84fff) 42%, #fff 8%);border-radius:18px;background:linear-gradient(145deg,#0d0d13,#050508);box-shadow:inset 0 1px rgba(255,255,255,.11),0 14px 30px rgba(0,0,0,.56),0 0 20px color-mix(in srgb, var(--tone,#e84fff) 10%, transparent);padding:20px 24px;margin-bottom:12px;}
+[data-os-view="skills"] .os-skills-slide[hidden]{display:none;}
+[data-os-view="skills"] .os-skills-slide-top{display:flex;align-items:flex-start;gap:14px;}
+[data-os-view="skills"] .os-skills-slide-id{min-width:0;flex:1;}
+[data-os-view="skills"] .os-skills-slide-title{margin:6px 0 0;font-size:22px;line-height:1.25;color:#fff;letter-spacing:.01em;}
+/* What it is: the About slide-text treatment — tone edge, dark inset board. */
+[data-os-view="skills"] .os-skills-slide-what{margin:16px 0 0;font-size:18px;line-height:1.6;color:#fff;border-left:3px solid var(--tone,#e84fff);background:#050607;border-radius:12px;padding:14px 16px;}
+/* Why it matters / What's in it for you: the skill board's own foryou treatment. */
+[data-os-view="skills"] .os-skills-slide-part{margin:12px 0 0;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.38);border:1px solid color-mix(in srgb, var(--tone,#e84fff) 55%, transparent);}
+[data-os-view="skills"] .os-skills-slide-part-label{display:block;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:4px;}
+[data-os-view="skills"] .os-skills-slide-part p{margin:0;font-size:15px;line-height:1.6;color:#fff;}
+/* The deck's face-right alternation, desktop only — stacked on phones. */
+[data-os-view="skills"] .os-skills-slide:nth-child(even) .os-skills-slide-top{flex-direction:row-reverse;}
+[data-os-view="skills"] .os-skills-slide:nth-child(even) .os-skills-slide-id{text-align:right;}
+@media(max-width:640px){[data-os-view="skills"] .os-skills-slide:nth-child(even) .os-skills-slide-top{flex-direction:row;}[data-os-view="skills"] .os-skills-slide:nth-child(even) .os-skills-slide-id{text-align:left;}}
+/* Dots: reached beats lit, in each skill's own tone. */
+[data-os-view="skills"] .os-skills-dots{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0 12px;}
+[data-os-view="skills"] .os-skills-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--tone,#e84fff);background:transparent;padding:0;cursor:pointer;appearance:none;}
+[data-os-view="skills"] .os-skills-dot.on{background:var(--tone,#e84fff);box-shadow:0 0 10px var(--tone,#e84fff);}
+[data-os-view="skills"] .os-skills-nav{display:flex;gap:10px;justify-content:space-between;}
+[data-os-view="skills"] .os-skills-nav .ph-connect{flex:1;}
+</style>
+
 <script>
 /* ═══ ONE ROUND 2026-11-15 — About unfold + Skills custom + person view ═══ */
 (function(){
@@ -30224,6 +30267,109 @@ if(tl&&typeof MutationObserver!=='undefined'){
   pxMo.observe(tl,{childList:true,subtree:true});
 }
 pxEnhancePerson();
+})();
+</script>
+
+<script>
+/* ═══ SKILLS THREE-PART S5 2026-11-16 — the visual presentation ═══
+   Harvested from the About deck IIFE in this file: one board at a time, dots for
+   progress, a next button that says the next thing. Slides are BUILT from the
+   skill cards at runtime — title, tone and words are read from the card itself
+   every time a slide shows, so the deck can never drift from the citizen's own
+   words. The presentation shows the same three parts per skill, in slide form:
+   what it is (big, tone-edged), why it matters (in full — no collapsed button
+   here), what's in it for them (in full). One slide per skill, in list order,
+   so a skill added through the form joins the deck too. Unfold is the default.
+   No persistence: every fresh load lands on the unfold, so the landing is
+   deterministic. */
+(function(){
+'use strict';
+var view=document.querySelector('[data-os-view="skills"]'); if(!view) return;
+var deck=document.getElementById('osSkillsDeck'); if(!deck) return;
+function skillCards(){ return Array.prototype.slice.call(document.querySelectorAll('#os-skills-list .sa-skill')); }
+function titleOf(c){ var t=c.querySelector('h3'); var s=t?(t.textContent||'').replace(/^\u2726\s*/,'').trim():''; return s||'Skill'; }
+function toneOf(c){ var v=c.style.getPropertyValue('--ac'); return v?v.trim():'#e84fff'; }
+function textOf(c,sel){ var el=c.querySelector(sel); return el?(el.textContent||'').trim():''; }
+function foryouOf(c){ var p=c.querySelector('.sa-skill-foryou'); if(!p) return ''; var cl=p.cloneNode(true); var b=cl.querySelector('b'); if(b) b.remove(); return (cl.textContent||'').trim(); }
+var slidesHost=document.getElementById('osSkillsSlides');
+var dotsHost=document.getElementById('osSkillsDots');
+var prevBtn=document.getElementById('osSkillsPrev');
+var nextBtn=document.getElementById('osSkillsNext');
+var countEl=document.getElementById('osSkillsCount');
+var cur=0, mode='unfold', cards=[];
+function buildSlides(){
+  cards=skillCards();
+  slidesHost.innerHTML=''; dotsHost.innerHTML='';
+  cards.forEach(function(c,i){
+    var title=titleOf(c), tone=toneOf(c);
+    var art=document.createElement('article');
+    art.className='os-skills-slide'; art.setAttribute('data-os-skills-slide',title);
+    art.style.setProperty('--tone',tone); art.hidden=true;
+    art.innerHTML='<div class="os-skills-slide-top"><span class="os-jewel os-jewel-lg" style="--jc:'+tone+'">\u2726</span>'
+      +'<div class="os-skills-slide-id"><span class="ib-kind" style="--tone:'+tone+'">Smart Skills</span>'
+      +'<h3 class="os-skills-slide-title"></h3></div></div>'
+      +'<p class="os-skills-slide-what"></p>'
+      +'<div class="os-skills-slide-part"><span class="os-skills-slide-part-label">Why it matters</span><p class="os-skills-slide-why"></p></div>'
+      +'<div class="os-skills-slide-part"><span class="os-skills-slide-part-label">What\u2019s in it for you</span><p class="os-skills-slide-foryou"></p></div>';
+    art.querySelector('.os-skills-slide-title').textContent=title;
+    slidesHost.appendChild(art);
+    var d=document.createElement('button');
+    d.type='button'; d.className='os-skills-dot'; d.style.setProperty('--tone',tone);
+    d.setAttribute('aria-label','Show '+title);
+    d.addEventListener('click',function(){ showSlide(i); });
+    dotsHost.appendChild(d);
+  });
+  if(cur>=cards.length) cur=Math.max(0,cards.length-1);
+}
+function showSlide(i){
+  var slides=Array.prototype.slice.call(slidesHost.children);
+  var dots=Array.prototype.slice.call(dotsHost.children);
+  if(!slides.length) return;
+  cur=((i%slides.length)+slides.length)%slides.length;
+  slides.forEach(function(sl,j){
+    sl.hidden=(j!==cur);
+    if(j===cur){
+      var c=cards[j];
+      var w=sl.querySelector('.os-skills-slide-what'); if(w) w.textContent=textOf(c,'.sa-skill-nutshell');
+      var y=sl.querySelector('.os-skills-slide-why'); if(y) y.textContent=textOf(c,'.sa-skill-why');
+      var f=sl.querySelector('.os-skills-slide-foryou'); if(f) f.textContent=foryouOf(c);
+    }
+  });
+  dots.forEach(function(d,j){ d.classList.toggle('on', j<=cur); });
+  var nxt=slides[(cur+1)%slides.length].getAttribute('data-os-skills-slide');
+  if(nextBtn) nextBtn.textContent=nxt+' \u25C6';
+  if(prevBtn) prevBtn.hidden=(cur===0);
+  if(countEl) countEl.textContent=(cur+1)+' of '+slides.length;
+}
+function setMode(m){
+  mode=m;
+  view.classList.toggle('os-skills-mode-deck', m==='deck');
+  deck.hidden=(m==='unfold');
+  Array.prototype.forEach.call(view.querySelectorAll('[data-os-skills-view]'),function(b){
+    var on=b.getAttribute('data-os-skills-view')===m;
+    b.setAttribute('aria-pressed', on?'true':'false');
+    b.classList.toggle('ph-connect', on);
+    b.classList.toggle('ph-msg', !on);
+  });
+  if(m!=='unfold'){ buildSlides(); showSlide(cur); }
+}
+if(prevBtn) prevBtn.addEventListener('click',function(){ showSlide(cur-1); });
+if(nextBtn) nextBtn.addEventListener('click',function(){ showSlide(cur+1); });
+var choice=view.querySelector('.os-skills-choice');
+if(choice) choice.addEventListener('click',function(e){
+  var b=e.target&&e.target.closest?e.target.closest('[data-os-skills-view]'):null;
+  if(b) setMode(b.getAttribute('data-os-skills-view'));
+});
+/* A skill added through the form joins the deck the moment it joins the list. */
+var addBtn=document.getElementById('os-skill-new-add');
+if(addBtn) addBtn.addEventListener('click',function(){
+  setTimeout(function(){ if(mode!=='unfold'){ buildSlides(); showSlide(cur); } },80);
+});
+window.__osSkillsRebuild=function(){ buildSlides(); showSlide(cur); };
+window.__osSkillsSetMode=setMode;
+buildSlides();
+showSlide(0);
+setMode('unfold');
 })();
 </script>
 
