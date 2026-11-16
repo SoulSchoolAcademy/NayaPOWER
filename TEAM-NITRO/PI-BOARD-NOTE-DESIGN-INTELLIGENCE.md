@@ -1282,3 +1282,32 @@ Hub still shows the duplicate SN-2906 cycle row (DELETE permission, his
 hand). Distillation: SN-2978..2982 are new raw notes for tonight's 23:17Z
 daily run. Silent run — no chat report owed (nothing here needs Shawn; the
 Daily Intelligence Report 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 226 — supplement (same run, ~17:4xZ)
+
+CORRECTION TO THE RUN-226 ADDENDUM ABOVE, filed here not silently: it says
+"5 pairs" (SN-2978..2982). A SIXTH dictation landed in the main chat +
+MEMORY.md after that addendum was filed — 17:40Z LEGAL PAGES, DONE
+PROFESSIONALLY OR NOT AT ALL (his screenshot of the agreement opening
+view): the legal pages as they stand are a piss-poor job — one sentence
+summing up what we're saying; if somebody came to check our legality they'd
+read as unprofessional, not airtight, not legit — "the answer is not a
+chance." Real legal agreements: full numbered sections, definitions,
+everything covered, airtight, formatted like real legal agreements. AND the
+presentation: text off to the side on the left — not professionally done; to
+a stranger it reads as a scam, "some bullshit, some not legit company" —
+the opposite of what we want. The whole thing (content AND presentation)
+gets done professionally: centered, aligned, royal/elevated blocks, never
+plain text, never one-sentence summaries. Why they were like that: round 1
+built summaries (58 boards); the professional drafting was never done — the
+writer step was offered 16:30Z and untapped, and the airtight parts
+(governing law / jurisdiction / dispute resolution / data controller) are HIS
+call, never invented. Writer DISPATCHED 17:41Z (One List
+`legal-writer-drafts`, due 2026-11-17) with the writer's prompt — drafts ->
+he gives the text -> builder creates the pages extraordinary.
+
+Filed this supplement pass: SN-2983 Legal Pages — Done Professionally or
+Not at All + paired NN-20261116-legal-pages-done-professionally (PUT 201 +
+byte-identical blob read-back, run226-file2.log). Run 226 total is SIX
+pairs: SN-2978..2983, highest SN-2983. Mail digest updated to match
+(run226-mail-digest.txt). No PR, no merge, no deploy, no live edit.
