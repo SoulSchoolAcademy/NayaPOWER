@@ -4088,9 +4088,9 @@ body.fc-open{overflow:hidden;}
     <button class="fc-x" type="button" id="fcCreatorX" aria-label="Close the creator">✕</button>
 <h3 id="fcTitle"><span class="os-jewel os-jewel-h" id="fcTitleJewel" style="--jc:#31cb8d">✦</span> <span id="fcTitleText">Naya note</span></h3>
 <div class="tg-modes" role="group" aria-label="Choose your note type">
-<button type="button" class="tg-mode" data-tg-mode="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ <span data-mw-tr="cm">Make a post</span></button>
-<button type="button" class="tg-mode on" data-tg-mode="naya" style="--mc:#31cb8d"><span class="tg-dot"></span>✎ <span data-mw-tr="cm">Naya note</span></button>
-<button type="button" class="tg-mode" data-tg-mode="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ <span data-mw-tr="cm">Smart note</span></button>
+<button type="button" class="tg-mode" data-tg-mode="post" style="--mc:#e8e8ec"><span class="tg-glyph" aria-hidden="true">✎</span> <span data-mw-tr="cm">Make a post</span></button>
+<button type="button" class="tg-mode on" data-tg-mode="naya" style="--mc:#31cb8d"><span class="tg-glyph" aria-hidden="true">✎</span> <span data-mw-tr="cm">Naya note</span></button>
+<button type="button" class="tg-mode" data-tg-mode="smart" style="--mc:#a06bff"><span class="tg-glyph" aria-hidden="true">✦</span> <span data-mw-tr="cm">Smart note</span></button>
 </div>
 <p class="os-note tg-hint" id="tg-hint" data-mw-tr="hint">Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.</p>
 <input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
@@ -4129,6 +4129,7 @@ body.fc-open{overflow:hidden;}
   <div class="os-status" id="fcChatStatus"></div>
 </div>
 <div class="fc-plusmenu" id="fcPlusMenu" hidden role="menu" data-mw-aria="Add" aria-label="Add">
+  <div class="fc-plusitem" role="menuitem" data-fc-plus="home" style="--mc:#a06bff"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/></svg></span><span data-mw-tr="pm">Home</span></div>
   <div class="fc-plusitem" role="menuitem" data-fc-plus="post" style="--mc:#e8e8ec"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
   <div class="fc-plusitem" role="menuitem" data-fc-plus="naya" style="--mc:#31cb8d"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
   <div class="fc-plusitem" role="menuitem" data-fc-plus="smart" style="--mc:#a06bff"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
@@ -5003,7 +5004,7 @@ html.os-calm
   </div>
   <div class="ph-intro-board" id="phIntroBoard">
     <div class="ph-nm ph-intro-name" id="pname" title="Click to edit"><span class="ph-intro-orb" aria-hidden="true"></span>Shawn Vibert</div>
-    <div class="ph-intro-motto-row"><div class="ph-tg ph-intro-motto" id="ptag" title="Click to edit">Welcome to my world — make a post on my feed, send a message, make yourself at home.</div><button class="pc-info ph-intro-info" id="phIntroInfo" type="button" data-os-go="about" aria-label="About me" title="About me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.6" r="1.15" fill="currentColor" stroke="none"/></svg></button></div>
+    <div class="ph-intro-motto-row"><div class="ph-tg ph-intro-motto" id="ptag" title="Click to edit">Welcome to my world — make a post on my feed, send a message, make yourself at home.</div><button class="pc-info ph-intro-info" id="phIntroInfo" type="button" data-os-go="about" aria-label="About me" title="About me"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button></div>
   </div>
 </div>
 <div class="ph-actions-row up-actions">
@@ -5170,7 +5171,7 @@ html.os-calm
 <div class="ph-card" id="saFeedCard"><div class="ph-sec-t"><span class="ph-dot" id="saFeedDot" style="background:#31cb8d;color:#31cb8d;"></span> <span id="saFeedHead">The lessons</span></div><p class="os-note" style="margin-top:0;">One after another, down the feed — just the lesson, scroll to the next, click next.</p><div id="saFeed"></div></div>
 </div>
 
-<div class="mw-date-filter" id="mwDateFilter" hidden><span id="mwDateFilterTxt"></span><button type="button" id="mwDateFilterX">&times; clear</button></div>
+<div class="mw-date-filter" id="mwDateFilter" hidden><span id="mwDateFilterTxt"></span><button type="button" id="mwDateFilterX">&times; clear</button></div> <div class="mw-date-filter" id="mwWorldFilter" hidden><span id="mwWorldFilterTxt"></span><button type="button" id="mwWorldFilterX">&times; clear</button></div>
 <div id="os-wall-list"><div class="os-skel"></div></div>
 
 <div id="mwFeedNaya" hidden><div class="os-skel"></div></div>
@@ -9115,10 +9116,14 @@ function wallCard(j, iso, pid, idx){
     /* R5 Part 2 — the harvested inline search filters the visible wall in place:
        Personal and Public alike take the keyword now. The popup's pull-to-Public
        contract lives in pcSetPublicKeyword, untouched. Naya Notes has its own painter. */
+    /* BOTTOM-BAR RESTORE 2026-11-16 (item 2): the world scope — computed HERE, before any filter reads it. (An earlier draft computed it after the keyword filter, where var hoisting left it undefined at the filter line and the world filter never ran — caught by the synthetic-post probe.) */
+    var _worldOn=false; var _ww=(typeof window.MW_WALL_WORLD!=='undefined')?window.MW_WALL_WORLD:null; try{ var _wt=document.getElementById('pcWorldTab'); _worldOn=!!(_wt&&_wt.classList.contains('active')); }catch(e){} var _wwe=_ww?String(_ww).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'):'';
     var kw=((window.MW_PUBLIC_KEYWORD||'').toLowerCase());
     if(kw){
       shown=shown.filter(function(p){ var hay=''; try{ hay=JSON.stringify(p.j||{}); }catch(e){ hay=''; } return (hay+' '+(p.owner||'')).toLowerCase().indexOf(kw)>=0; });
     }
+    /* BOTTOM-BAR RESTORE 2026-11-16 (item 2): the World's feed is the wall about this world — the page's own keyword mechanism (JSON substring, same as MW_PUBLIC_KEYWORD above). My World (null) shows everything, as before. */
+    if(_worldOn && _ww){ var _wl=String(_ww).toLowerCase(); shown=shown.filter(function(p){ var hay=''; try{ hay=JSON.stringify(p.j||{}); }catch(e){ hay=''; } return (hay+' '+((p.j&&p.j.a)||'')).toLowerCase().indexOf(_wl)>=0; }); }
     /* PERSONAL CORRECTION 2026-11-16 (item 10): the empty state names the
        filter — "No Naya Notes yet" when the Naya Notes chip is on, not the
        generic "No posts yet". */
@@ -9126,6 +9131,7 @@ function wallCard(j, iso, pid, idx){
     if(pill==='topic:naya'){ emptyH='No Naya Notes yet'; emptyN='Naya hasn\u2019t made a note for this feed yet \u2014 the first one lands here.'; }
     else if(pill==='topic:smart'){ emptyH='No Smart Notes yet'; emptyN='No Smart Notes on this feed yet \u2014 the first one lands here.'; }
     else if(pill==='topic:post'){ emptyH='No posts yet'; emptyN='No posts on this feed yet \u2014 the first one lands here.'; }
+    else if(_worldOn && _ww){ emptyH='No posts in '+_wwe+' yet'; emptyN='No posts in '+_wwe+' yet \u2014 be the first to make a post on this feed.'; }
     else if(pill && pill.indexOf('cluster:')===0){ emptyH='Nothing in this category yet'; emptyN='No notes in this category on this feed yet.'; }
     list.innerHTML = shown.length
       ? shown.map(function(p, i){ return wallCard(p.j, p.at, p.id, i); }).join('')
@@ -9143,6 +9149,12 @@ function wallCard(j, iso, pid, idx){
         var dft=document.getElementById('mwDateFilterTxt');
         if(dft){ try{ dft.textContent='Showing '+new Date(window.MW_WALL_DATE+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}); }catch(e){ dft.textContent='Showing '+window.MW_WALL_DATE; } }
       } else df.hidden=true;
+    }
+    /* BOTTOM-BAR RESTORE 2026-11-16 (item 2): the world-filter bar, mirroring the day-filter bar above — visible while a named world is open, with a way out. */
+    var wf=document.getElementById('mwWorldFilter');
+    if(wf){
+      if(_worldOn && _ww){ wf.hidden=false; var wft=document.getElementById('mwWorldFilterTxt'); if(wft) wft.textContent='Showing '+_ww+' \u2014 this world\u2019s feed'; var wx=document.getElementById('mwWorldFilterX'); if(wx && !wx.dataset.pcWired){ wx.dataset.pcWired='1'; wx.addEventListener('click', function(){ if(typeof window.mwClearWallWorld==='function') window.mwClearWallWorld(); }); } }
+      else wf.hidden=true;
     }
     /* F5 (fix, self-check round 3) — mwBuildFeedPills + mwRevealWallCards
        live in #mw-script, a separate IIFE; resolving through window (they
@@ -15719,12 +15731,11 @@ if(installBtn){
   font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:8px;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -2px 4px rgba(0,0,0,.35),0 3px 8px rgba(0,0,0,.4);
   transition:all .2s ease;}
-.tg-mode .tg-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.25);flex:none;
-  box-shadow:inset 0 1px 2px rgba(0,0,0,.4);}
+.tg-mode .tg-glyph{color:var(--mc);text-shadow:0 0 8px var(--mc);flex:none;font-size:15px;line-height:1;}
 .tg-mode:hover{border-color:var(--mc);color:#fff;}
 .tg-mode.on{border-color:var(--mc);color:#fff;background:rgba(255,255,255,.07);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -2px 4px rgba(0,0,0,.35),0 0 18px -4px var(--mc),0 3px 8px rgba(0,0,0,.4);}
-.tg-mode.on .tg-dot{background:var(--mc);box-shadow:0 0 10px var(--mc);}
+.tg-mode.on .tg-glyph{color:var(--mc);text-shadow:0 0 12px var(--mc),0 0 5px #fff;}
 .tg-hint{margin:6px 0 0;}
 .tg-review-card{margin-top:12px;border:1px solid rgba(160,107,255,.4);border-radius:14px;
   padding:14px;background:rgba(160,107,255,.06);
@@ -21629,10 +21640,10 @@ function mwApplyFeedTab(key){
   if(key||legacyNaya||raw==='worlds') mwPut('feedtab', t);
   MW_FEED.cur=t;
   var tabs={personal:$('mwTabSmart'),public:$('mwTabNaya'),naya:$('mwTabActivity'),world:$('pcWorldTab'),worlds:$('pcWorldsTab')};
-  var names={personal:$('mwFeedNameSmart'),public:$('mwFeedNameNaya'),naya:$('mwFeedNameActivity'),world:$('mwFeedNameWorld'),worlds:$('mwFeedNameWorld')};
+  var names={personal:$('mwFeedNameSmart'),public:$('mwFeedNameNaya'),naya:$('mwFeedNameActivity'),world:$('mwFeedNameWorld'),worlds:$('mwFeedNameWorld')}; var _seenNames={};
   Object.keys(tabs).forEach(function(k){
     if(tabs[k]){ tabs[k].classList.toggle('active', k===t); tabs[k].setAttribute('aria-selected', k===t?'true':'false'); }
-    if(names[k]) names[k].hidden=(k!==t);
+    if(names[k] && !_seenNames[names[k].id]){ _seenNames[names[k].id]=1; names[k].hidden=(k!==t); }
   });
   var wall=$('os-wall-list'); if(wall) wall.hidden=(t!=='personal'&&t!=='public'&&t!=='world');
   var ny=$('mwFeedNaya'); if(ny) ny.hidden=true;
@@ -26938,13 +26949,13 @@ var plusMenu=$('fcPlusMenu');
    by Shawn's thumbs-up 17:08Z): LEFT + = CREATE (Make a post / Smart note /
    Naya note), RIGHT + = CONNECT (Message / Mail / Create world), most-used
    first. The six harvested items stay verbatim — this only filters and
-   reorders them per menu. No mode (the composer plus) = all six, as before.
+   reorders them per menu. BOTTOM-BAR RESTORE 2026-11-16 (Shawn 19:30Z): a seventh item, HOME, was added at the top of all three menus — harvested house glyph from the page's own "Go to Home Hub" heading, Hub purple, goes to window.NAYA_HUB_URL. No mode (the composer plus) = all six, as before.
    Tapping the other + while a menu is open SWITCHES the menu in place
    instead of just closing it. */
 var _pcPlusItems={};
 (function(){ if(!plusMenu) return; Array.prototype.forEach.call(plusMenu.querySelectorAll('[data-fc-plus]'), function(el){ _pcPlusItems[el.getAttribute('data-fc-plus')]=el; }); })();
-var _pcPlusOrderAll=['post','naya','smart','message','mail','world'];
-var _pcPlusOrder={create:['post','smart','naya'],connect:['message','mail','world']};
+var _pcPlusOrderAll=['home','post','naya','smart','message','mail','world'];
+var _pcPlusOrder={create:['home','post','smart','naya'],connect:['home','message','mail','world']};
 function _pcPlusShow(mode){
   var order=(mode && _pcPlusOrder[mode]) ? _pcPlusOrder[mode] : _pcPlusOrderAll;
   if(!plusMenu) return;
@@ -26998,7 +27009,7 @@ window.fcOpenWorld=function(){
   if(typeof window.ibGrowDialog!=='function') return;
   window.ibGrowDialog('space','',function(name){
     var sp={id:'sp-'+Date.now().toString(36)+Math.floor(Math.random()*1e6).toString(36),
-      name:name, topic:'General', desc:'', color:'#e84fff', privacy:'public',
+      name:name, topic:(window.__pcNewWorldKind||'Space'), kind:(window.__pcNewWorldKind||'Space'), desc:'', color:'#e84fff', privacy:'public',
       memberIds:[], custom:true, created:Date.now()};
     try{
       var arr=null;
@@ -27013,12 +27024,17 @@ window.fcOpenWorld=function(){
       if(mine.indexOf(sp.id)<0){ mine.push(sp.id); localStorage.setItem('naya.spaces.mine.v1', JSON.stringify(mine)); }
     }catch(e){}
     if(typeof ActivityLog!=='undefined'){ try{ ActivityLog.log('space','World created \"'+name+'\"','spaces','#9d75ff','<path d=\"M12 3l8 4.5v9L12 21l-8-4.5v-9z\"/><path d=\"M12 12l8-4.5M12 12v9M12 12L4 7.5\"/>'); }catch(e){} }
-    if(typeof toast==='function'){ try{ toast('SMART WORLD CREATED \u2014 \"'+name+'\" is live in Smart Worlds'); }catch(e){} }
+    if(typeof toast==='function'){ try{ toast('SMART WORLD CREATED \u2014 \u201C'+name+'\u201D is live in Smart Worlds'); }catch(e){} }
+    /* BOTTOM-BAR RESTORE 2026-11-16 (item 4): creating a world SHOWS you the world — switch the page into it at once, so its feed loads tuned to it. window.pcSetWorld (the page's own global setter) looks the new world up by name — it was just saved to localStorage — and drives the chip, the feed name and the repaint; pcSetWorldObj itself is NOT in scope inside this callback's IIFE, so calling it directly silently no-ops. */
+    if(typeof window.pcSetWorld==='function'){ try{ window.pcSetWorld(name); }catch(e){} }
+    if(typeof window.mwApplyFeedTab==='function'){ try{ window.mwApplyFeedTab('world'); }catch(e){} }
   });
   var d=document.getElementById('ib-growdlg');
   if(d){ var h=d.querySelector('h3'); if(h) h.textContent='Create a world';
     var pp=d.querySelector('p'); if(pp) pp.textContent='Name your world \u2014 your people gather here, around what matters to you.';
-    var inp=document.getElementById('ib-grow-name'); if(inp) inp.placeholder='World name'; }
+    var inp=document.getElementById('ib-grow-name'); if(inp) inp.placeholder='World name';
+  /* BOTTOM-BAR RESTORE 2026-11-16 (item 4): "what is it?" — Space / Business / Project. Inside the patched dialog function, AFTER the dialog exists in the DOM (it is built by ibGrowDialog before this runs). Captured at pill-click time: the dialog is gone by the time the onGo callback runs, so reading it later would lose the choice. */
+  try{ window.__pcNewWorldKind='Space'; var _kr=document.querySelector('#ib-growdlg .ib-growdlg-row'); if(_kr && !document.querySelector('#ib-growdlg [data-pc-kind]')){ var _kd=document.createElement('div'); _kd.className='pc-kind-row'; _kd.setAttribute('role','group'); _kd.setAttribute('aria-label','What kind of world'); _kd.innerHTML='<span class="pc-kind-lab">What is it?</span>'+['Space','Business','Project'].map(function(_k,_i){ return '<button type="button" class="pc-kind'+(_i===0?' on':'')+'" data-pc-kind="'+_k+'" aria-pressed="'+(_i===0)+'">'+_k+'</button>'; }).join(''); _kr.parentNode.insertBefore(_kd, _kr); _kd.addEventListener('click', function(_e){ var _b=_e.target&&_e.target.closest?_e.target.closest('[data-pc-kind]'):null; if(!_b) return; window.__pcNewWorldKind=_b.getAttribute('data-pc-kind'); _kd.querySelectorAll('[data-pc-kind]').forEach(function(_x){ var _on=_x===_b; _x.classList.toggle('on', _on); _x.setAttribute('aria-pressed', _on?'true':'false'); }); }); } }catch(_e){} }
 };
 
 /* ---------- the picker ---------- */
@@ -27169,6 +27185,8 @@ document.addEventListener('click', function(e){
   if(c){ window.fcOpenCreator(c.getAttribute('data-fc-create')); return; }
   var p=e.target.closest('[data-fc-plus]');
   if(p){ var k=p.getAttribute('data-fc-plus'); fcClosePlusMenu();
+    /* BOTTOM-BAR RESTORE 2026-11-16 (Shawn 19:30Z): HOME tops every + menu — the Hub, the central communication center, the Good morning home page. Same door as the drawer Hub link (window.NAYA_HUB_URL). */
+    if(k==='home'){ var _hu=(typeof window.NAYA_HUB_URL==='string'&&window.NAYA_HUB_URL)?window.NAYA_HUB_URL:'https://nayanet.app/hub'; try{ window.location.assign(_hu); }catch(e){ window.location.href=_hu; } return; }
     if(k==='message') window.fcOpenPicker('message');
     else if(k==='mail') window.fcOpenPicker('mail');
     else if(k==='world'){ if(typeof window.fcOpenWorld==='function') window.fcOpenWorld(); else window.fcOpenCreator('post'); }
@@ -27355,7 +27373,7 @@ function pcCardWithConnect(p, live){
   var note=req?'<p class="pc-req-note">Request sent \u2014 waiting for them to accept.</p>':'';
   var at=base.indexOf('</article>');
   if(at<0) return base;
-  var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.6" r="1.15" fill="currentColor" stroke="none"/></svg></button>';
+  var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button>';
   var row='<div class="pc-connect-row">'+pctHtml+infoBtn+btn+'</div>'; /* HEADER-V2 2026-11-14: the info sits beside the %, top-right, fixed — long names cannot move it. */
   return base.slice(0, at)+row+note+base.slice(at);
 }
@@ -27873,7 +27891,7 @@ document.addEventListener('click', function(e){
 /* --- OVERLAY .tg-mode (creator popup, .tg-modes): faint wash at rest.
    Obsidian body, rim + glow in its own --mc, white label, lit dot. --- */
 .tg-modes .tg-mode{background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);border:1.5px solid var(--mc);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -6px 12px rgba(0,0,0,.65),0 0 16px -4px var(--mc),0 8px 20px rgba(0,0,0,.5);}
-.tg-modes .tg-mode .tg-dot{background:var(--mc);box-shadow:0 0 10px var(--mc);}
+.tg-modes .tg-mode .tg-glyph{color:var(--mc);text-shadow:0 0 10px var(--mc);}
 
 /* --- F4 SEARCH IN THE BAR: the bar rule sets box-shadow:none, killing the
    .pc-search-btn glow. Restate the glow; hover keeps its purple rule. --- */
@@ -29334,7 +29352,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     customs.forEach(function(c){
       if(!c||!c.name||seen[String(c.name).toLowerCase()]) return; seen[String(c.name).toLowerCase()]=1;
       if(pcIsTestWorld(c.name)) return;
-      list.push({id:c.id||('sp-'+String(c.name)), name:String(c.name), fact:'Your thing'});
+      list.push({id:c.id||('sp-'+String(c.name)), name:String(c.name), fact:(c.fact||c.kind||c.topic||'Your thing')});
     });
     return list;
   }
@@ -29357,11 +29375,13 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     });
   }
   function pcSetWorldObj(w, quiet){
-    writeLS(LS_CUR, {id:w.id, name:w.name});
+    writeLS(LS_CUR, {id:w.id, name:w.name}); window.MW_WALL_WORLD=(w.name==='My World')?null:w.name;
     pcApplyWorld(w);
     if(typeof window.mwPaintWallPosts==='function'){ try{ window.mwPaintWallPosts(window.MW_WALL_POSTS||[]); }catch(e){} }
     if(!quiet && typeof toast==='function'){ try{ toast('YOU ARE IN \u2014 \u201C'+w.name+'\u201D \u2014 search now looks inside this world'); }catch(e){} }
   }
+  /* BOTTOM-BAR RESTORE 2026-11-16 (item 2): clear the world filter — back to My World, unfiltered, staying on the World tab. */
+  window.mwClearWallWorld=function(){ try{ pcSetWorldObj({id:'personal', name:'My World'}, true); }catch(e){ window.MW_WALL_WORLD=null; if(typeof window.mwPaintWallPosts==='function'){ try{ window.mwPaintWallPosts(window.MW_WALL_POSTS||[]); }catch(e){} } } };
   window.pcSetWorld=function(name){ var ws=pcWorlds(); for(var i=0;i<ws.length;i++){ if(ws[i].name===name){ pcSetWorldObj(ws[i]); return true; } } return false; };
   function pcRenderFavTabs(){
     var host=document.getElementById('pcFavWorldTabs'); if(!host) return;
@@ -32562,4 +32582,33 @@ renderGrid();
 })();
 
 </script>
+<style id="pc-bbr-20261116">
+/* PERSONAL BOTTOM-BAR RESTORE 2026-11-16 — one block for items 3/4/5/6. Harvest notes in the maker record. */
+/* ITEM 4 — the Create-world modal: primo buttons harvested verbatim from .ib-actions .ib-act (same file: obsidian gradient, 1.5px rim, inset top light, purple glow); white paragraph text; kind pills. */
+.ib-growdlg-card p{color:#fff;font-size:15px}
+.ib-growdlg-row .ib-act{font-size:15px;font-weight:800;padding:12px 20px;border-radius:14px;cursor:pointer;background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);border:1.5px solid var(--ac,#a06bff);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 0 16px -4px var(--ac,#a06bff),0 6px 16px rgba(0,0,0,.5)}
+.ib-growdlg-row .ib-act:hover{transform:translateY(-1px);border-color:var(--ac,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.55),0 0 24px -2px var(--ac,#a06bff),0 8px 20px rgba(0,0,0,.55)}
+.ib-growdlg-row #ib-grow-cancel{--ac:rgba(255,255,255,.4)}
+.ib-growdlg-card input{box-shadow:inset 0 2px 6px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12)}
+.pc-kind-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 12px}
+.pc-kind-lab{color:#fff;font-size:13px;font-weight:800}
+.pc-kind{flex:0 0 auto;padding:10px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);color:#fff;font:inherit;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 4px 12px rgba(0,0,0,.5)}
+.pc-kind.on{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 18px -2px #a06bff,0 4px 12px rgba(0,0,0,.5)}
+/* ITEM 5 — no button ever cuts off its text: long names wrap or shrink, never truncate or unalign. */
+#pcFavWorlds a[data-pc-world-drawer]{display:flex;align-items:center;gap:10px;min-width:0;overflow-wrap:anywhere}
+#pcFavWorlds a[data-pc-world-drawer] svg{width:18px;height:18px;flex:none}
+#pcFavWorldTabs .lens-tab{min-width:0;max-width:100%}
+#pcFavWorldTabs .lens-tab b{min-width:0;overflow-wrap:anywhere;white-space:normal;text-align:left}
+.mw-feedname{flex-wrap:wrap;overflow-wrap:anywhere;white-space:normal}
+.fc-pick-txt{min-width:0}
+.fc-pick-txt b{overflow-wrap:anywhere}
+.os-drawer a{overflow-wrap:anywhere}
+/* ITEM 6 — the pricing eye, verbatim from worker-pricing-v77-deployed.js (.eye-jewel: 20px, Marcellus 700; .os-jewel pearl base identical on both pages). Adaptation only: placement — the pricing absolute top/right is for chart cells; inside a round button the jewel sits inset 2px, and the button itself goes transparent/borderless so the jewel IS the visible element (40px hit target stays). Double layer (Shawn 19:07Z): the ::before clone sits behind, inset 2px and shifted 2px down-right — glossy, premium, touchable — and because both layers live inside the 40px box, the button never reports scroll overflow. */
+.pc-info,.pc-card .pc-connect-row .pc-info{background:transparent;border:0;box-shadow:none;position:relative}
+/* The intro button's own rule is #phIntroBoard #phIntroInfo (2,0,0) — it beats the .pc-info rule above, so it gets its own transparent override; without it the button's gradient + 2px rim would hide the jewel's double layer. */
+#phIntroBoard #phIntroInfo{background:transparent;border:0;box-shadow:none}
+.pc-info .eye-jewel{position:absolute;inset:2px;width:auto;height:auto;border-radius:50%;margin:0;z-index:2;font-family:Marcellus,Georgia,serif;font-weight:700;font-size:18px;display:grid;place-items:center}
+.pc-info::before{content:"";position:absolute;inset:2px;border-radius:50%;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid rgba(255,255,255,.85);transform:translate(2px,2px);z-index:-1;opacity:.55;box-shadow:0 6px 14px rgba(0,0,0,.5)}
+.pc-info:hover .eye-jewel,.pc-info:focus-visible .eye-jewel{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 18px -2px #a06bff,0 0 26px -4px #a06bff}
+</style>
 </body></html>
