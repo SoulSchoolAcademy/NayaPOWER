@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-16 01:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-16 02:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2052,6 +2052,12 @@ _Last updated: 2026-11-16 01:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1496-lane8.md`
 
 **Evidence:** Verified: scan script hidden_files/fr5-gate-scan-t1496.py sha256 1edcf578cbf5d95703af5a831a605c4794be990b4a5d26f79cc1ef379e29723b byte-exact to receipt; results table bfa25f91bf70806d26a9121d4ffe4d4ac2405e50622876664d7acef36231fb4a byte-exact, 76 gates / 96 files at repo_tip 6c60c3285f9556747736ac7dcc747e0b03ea1a85, gates_with_vocab_hits=[]; board-
+
+### ✅ t1496-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Third-seat verdict table for the t0780 decision replay (F-R1..F-R5 falsifiers + 4 legs, CONFIRMED-with-amendment)
+
+**Evidence:** Backlog sweep (only unscored receipt in twelve-lane-receipts/; fresh window empty - rotation at t3486, no receipts past t1564; gate-stall 16:04/17:10 already scored 8.5). VERIFIED in live bytes this tick: all 9 cited sha256 pins re-derive EXACTLY - F-R1 pins surge-a-verdict-t0780-lane3.md 0e5c56ba (hidden_files root, not receipts dir), lane-1/surge
 
 ### ✅ t1496 — Team 3, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
