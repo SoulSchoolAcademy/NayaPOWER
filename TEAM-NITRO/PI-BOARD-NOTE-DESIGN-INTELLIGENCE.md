@@ -1897,3 +1897,97 @@ independent contents-GETs, sizes matching the drafts exactly.)
   coordinators); board re-rendered, OWED agrees with the One List.
   Hub re-bake FAILED 19:57Z (HTTP 500) — SN-3013/3014/3015 in the feed
   table but NOT live on the Hub; re-run PENDING Shawn's word.
+
+## Intelligence Loop run 233 — addendum (completes run 232 batch 2 + the resilience law)
+
+Run 232 timed out at 1800s during batch-2 filing; this run completes it.
+Four pairs filed + verified, all PUT 201 + byte-identical blob read-back:
+SN-3020 blob 1c4b13ef, 7,122 B; NN blob 4050d419, 3,243 B; SN-3021 blob
+66d20637, 10,726 B; NN blob 167e8994, 5,360 B; SN-3022 blob e207f8d1,
+7,825 B; NN blob 4ef4f4e0, 3,656 B; SN-3023 blob 8e22572e, 8,590 B; NN
+blob acbc2f1b, 3,436 B. Numbering: next-sn-number.py fresh run
+(run233-numbering.log): highest SN-3019, next free SN-3020, no
+open-PR claims. (The filing script's own python log write failed on
+the EPERM flake; the log was saved by shell redirect and the stdout
+record is the receipt — every PUT was blob-verified in-band.)
+- 20:23Z NAME ENTRY AS THE DEED SIGNING (SN-3020): the name boxes
+  "are just not impressive... make those where you enter the name feel
+  like something special — like that's where they're entering the name
+  of their land, their domain, their real estate." The name box
+  becomes the deed itself — elevated obsidian plaque, purple underglow,
+  the typed name as the signature on the deed, the seal stamps on
+  entry; ONE treatment in all three places (front page, identity page,
+  agreement end). Harvest: identity seal-stamp, Vault Dial v2 inputs,
+  name-as-royal-object look (obsidian middle, purple glow edges,
+  chrome-thin white/silver trim, clone trick; gold OUT on the name),
+  the official sentence. Brief written
+  (name-entry-deed-20261116/BRIEF-NAME-ENTRY-DEED-20261116.md); fires
+  AFTER the agreement-entrance-welcome round lands whole (same files,
+  clobber law + deploy lock). One List add `name-entry-deed-signing`
+  attempted x4, all failed on the EPERM flake — NOT landed; retry
+  when the flake clears.
+- 20:26Z SIDEBAR ROUND 3 CONFIRMED — THE OFFICIAL LIST v4 (SN-3021):
+  Shawn confirmed the round-3 playback ("I think that's right now")
+  and added the DISPLAY instruction in the same message. v4 is
+  OFFICIAL, sent to the Hub sidebars-plus coordinator (09cd3722) as
+  submission 31ca493e, superseding the 19:44Z lists and the v3
+  playback. LEFT 12 (Hub IS the Smart Feed · Dashboard · Personal ·
+  Business · Your World · Smart Worlds · Intel Today · Your Reports ·
+  Smart Factory · Smart Growth = Invite · Intelligent Library · Your
+  Connections); RIGHT 10 (My Worlds top · Favorite Worlds · Leader-
+  boards main + featured · Naya Academy · AI Masterclass · Fast Action
+  Club · Maxis "AI Score" · About Us · White Paper · Pricing bottom);
+  HUB-ONLY Ask Naya + Life with Naya, two black obsidian buttons in
+  the Hub top bar. THE DISPLAY: the circle icons go INTO the sidebars
+  as BUTTONS — the sidebar IS those icon-buttons; the plain list does
+  not stay alongside; bottom-bar icons live in the side tabs; the Hub
+  gets the Personal bottom bar (six tiles); REMOVE the Smart Bars
+  flowing top and bottom. Captain's three watch items, blessed by his
+  thumbs-up: one trio name must win everywhere (Space / Thing / Your
+  World); Your Reports' contents never named; Intel Today must be the
+  SAME Intel Today behind its two doors. MEMORY.md v4 replacement
+  scripted but its write failed on the flake — MEMORY.md still carries
+  the 19:44Z text; retry when the flake clears.
+- ~20:35Z VOICE NOTE — NOT OFFICIAL, NOT A PRIORITY, SHOW ME THE
+  WORDS FIRST (SN-3022): "can I see what you actually are saying
+  before you go and try to run it again? ... It's not even a priority
+  right now you haven't nailed in the language and it might be too
+  long." Standing instruction reinforced: NO voice run until he has
+  SEEN the exact words and the language is nailed/official. Verified
+  live, not from memory: there IS no voice note of the agreement — no
+  words written, no recording made, no audio on the staged front page.
+  The letter is 86 beats, ~15 minutes aloud — way too long, never
+  recorded; when voice happens it is the short introduction, never
+  the letter. The 18:52Z pause stands, reinforced.
+- 20:51Z BUILD SYSTEMS AROUND IT — THE RESILIENCE LAW (SN-3023):
+  "when stuff like this happens, build systems around it so no matter
+  what happens you always have a solution — a backup plan, a way to
+  continue — and preserve things so nothing gets wrecked. Build in
+  the cloud, in the system, as much as possible." The night that
+  earned it: EPERM flake 20:24–20:55Z blocked One List adds, the
+  MEMORY.md v4 replacement, six PI refresh attempts, the transcribe
+  watcher's lock, the Hub re-bake he had just approved ("Yes, run it
+  now"), and the browsers died again 20:32Z. Nothing was lost — every
+  file verified intact — but nothing could move. At 20:55Z he asked
+  for the top-ten intelligent guesses on the failures + the solution
+  for each; the captain's answer: most likely the runtime security
+  filter re-applied / cell throttling under our load; the real fix is
+  the runtime's, and ours is this law — cloud browser eye, tripwire,
+  atomic writes + size guards, kill dead wake-ups, record in the
+  cloud. MEMORY.md + AGENTS.md law entry QUEUED behind the flake;
+  retry when it clears.
+- STATE (not lessons): walk-end fix round dispatched 20:39Z (seal +
+  red orb + stale note; coordinator aab5e371, PENDING at flush).
+  Captain's eye re-probe 20:30–20:33Z confirmed 2/3 FAIL on the walk
+  round (seal never visible on tap; agreement orb is blue-diamond,
+  not red with gold N; stale taken-alias note lingers) — walk round
+  NOT delivered. Five notes stuck off the Hub (SN-3013–3017); Shawn
+  approved the manual re-bake 20:46Z; the re-bake seat could NOT run
+  (EPERM flake, no verified backup possible) — retry owed the moment
+  a scratch write verifies clean. PI refresh 20:25Z FAILED on the
+  flake (6 attempts, feed reports 0 bytes); 20:40Z cycle failed too.
+  Leaderboards brief DONE (BRIEF-LEADERBOARDS-20261116.md, checker
+  7/7; build not started). VM browsers DEAD again 20:32Z (same
+  writable-shared-memory signature); Shawn asked why + whether there
+  is a solution — captain's answer given (runtime filter, cloud
+  browser is the route-around); he reacted with approval.
