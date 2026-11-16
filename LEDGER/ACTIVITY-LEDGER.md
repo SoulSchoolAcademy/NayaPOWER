@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-15 23:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-16 00:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -37233,6 +37233,12 @@ _Last updated: 2026-11-15 23:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-gap-gap-t0132-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 8.0/10 [VERIFIED]
+
+**Task:** gap-gap-gap follow-up t0132 lane8 — strict independence leg of guarded-file fix
+
+**Evidence:** Backlog sweep (oldest-first), receipt filed 2026-10-25. VERIFIED in live bytes: preserved guarded file sha256 f77e5b90... and .diff sha256 5944cc5a... both match the receipt's pins exactly. Score 8.0. Why not 9.5: the named gap is explicitly NOT closed — the brief demanded a seat with no prior t0132 exposure and this executor is the same Clarity id
+
 ### ✅ gap-t1152-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: competing boot-rename gap premise falsified (PR #2429 closed, #2428 landed)
@@ -40440,6 +40446,12 @@ _Last updated: 2026-11-15 23:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-scorer-20261015-0600-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** GAP CLOSED: machine-readable ELIGIBILITY field built end-to-end (emit + enforce); filing-side prevention as machinery
+
+**Evidence:** Backlog sweep (oldest-first), receipt filed 2026-10-15. VERIFIED in live bytes this tick: claim-brief.py carries parse_eligibility_field + _ELIGIBILITY_FIELD_RE and enforces the field first in evaluate_gate; stamp-claimability-gate.py emits the '# ELIGIBILITY {...}' line; claim-brief.py --self-test GREEN and stamp-claimability-gate.py --self-test G
 
 ### ✅ preregister-gap-lane-scorer-20261017-1840-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -45277,6 +45289,12 @@ _Last updated: 2026-11-15 23:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-scorer-20261015-0550-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** GAP_TITLE_RE re.MULTILINE repair: gated gap briefs with title below line 1 invisible to staleness/no-refile machinery
+
+**Evidence:** Backlog sweep (oldest-first), receipt filed 2026-10-15. VERIFIED in live bytes this tick: claim-brief.py L220 carries GAP_TITLE_RE with re.IGNORECASE | re.MULTILINE, parse_gap_parent uses it, and the self-test suite references this run (L2069 staleness-of-gated-gap suite); claim-brief.py --self-test GREEN. Receipt's evidence (full-queue before/afte
+
 ### ✅ gap-scorer-20261014-2140-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up: Arm I verdict-flip seal integrity + execution gap (parent t0734 scored 9.0)
@@ -47750,6 +47768,12 @@ _Last updated: 2026-11-15 23:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-gap-gap-t0162-lane11-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** gap-gap-gap follow-up t0162 lane11 — hv_measure.py landing path decision
+
+**Evidence:** Backlog sweep (oldest-first), receipt filed 2026-10-26. VERIFIED in live bytes: frozen pin lane-11/gap-gap-gap-t0162-lane11-lane11/hv_measure-postfix.py sha256 a83e2ab0... matches the parent receipt's post-fix pin exactly; LANDING-DECISION.md present beside it. (Live bin/hv_measure.py has since changed to 4e34a682..., which is later work, not a rec
 
 ### ✅ gap-lane-scorer-20261017-1330-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -52926,6 +52950,18 @@ _Last updated: 2026-11-15 23:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261115-1604 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate-stall sweep 2026-11-15 16:04 PST — 31 unclaimed gap briefs, all refused
+
+**Evidence:** Fresh-window receipt. VERIFIED: sweep log brief-queue/claim-sweep-20261115-1604.log exists, RESULT claimed=NONE attempts=31 refusals=29x7+2x2; queue holds 31 brief-*.md files; zero delta vs 14:53 sweep confirmed by empty diff in the log. Score 8.5. Why not 9.5: near-duplicate of the 14:53 stall receipt with zero delta — adds no cleared work and no 
+
+### ✅ distill-daily-20261115 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily 2026-11-15: mission-state drift re-verification (main ~24h stale vs naya/mission-state branch) + full 31-brief claim sweep
+
+**Evidence:** Fresh-window receipt (only unscored receipt; backlog 0 after this tick). ARTIFACT VERIFICATION first-hand this tick: both cited SHAs exist as real commits in the mirror - main 5fceb5a067e40ac307cf9127e4e28f8a45891bef (2026-11-15 12:24:49Z, 'Intelligence Loop run 215: PI board addendum'), branch naya/mission-state 7fff27186717fe2aeacd9b28e4ad0772a83
 
 ### ✅ gate-stall-20261115-1453 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
