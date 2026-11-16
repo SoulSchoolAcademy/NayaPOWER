@@ -20,4 +20,4 @@ The children are the named user of NayaNET — every build is judged by whether 
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2916 — ~/workspace/team-nitro/smart-notes/SN-2916-the-children.md*
+*Paired Smart Note: SN-2916 — The Children*
