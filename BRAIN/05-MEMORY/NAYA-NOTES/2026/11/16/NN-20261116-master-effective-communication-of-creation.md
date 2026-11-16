@@ -20,4 +20,4 @@ No brief goes out until it passes the cold-read test — a stranger could build 
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2918 — ~/workspace/team-nitro/smart-notes/SN-2918-master-effective-communication-of-creation.md*
+*Paired Smart Note: SN-2918 — Master Effective Communication of Creation*
