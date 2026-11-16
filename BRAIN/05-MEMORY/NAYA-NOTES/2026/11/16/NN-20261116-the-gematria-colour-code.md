@@ -20,4 +20,4 @@ Every initial orb, digit tile, and letter-colour follows the septenary + chakra 
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2914 — ~/workspace/team-nitro/smart-notes/SN-2914-the-gematria-colour-code.md*
+*Paired Smart Note: SN-2914 — The Gematria Colour Code*
