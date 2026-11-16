@@ -4114,10 +4114,11 @@ body.fc-open{overflow:hidden;}
   <div class="fc-panel fc-picker-panel ph-card" style="--ac:#3fb8ff;">
     <button class="fc-x" type="button" id="fcPickerX" aria-label="Close">✕</button>
     <h3 id="fcPickerTitle"><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span> <span data-mw-tr="pick">Message someone</span></h3>
-    <p class="os-note" data-mw-tr="pickhint">Search your people and worlds — pick one and the message pops up.</p>
-    <div class="os-fieldwrap"><input class="os-input" id="fcPickerSearch" type="search" data-mw-ph="Search people and worlds…" placeholder="Search people and worlds&hellip;" autocomplete="off" aria-label="Search people and spaces"></div>
+    <p class="os-note" data-mw-tr="pickhint">Search your people and things — pick one and the message pops up.</p>
+    <p class="os-note pc-world-rec" id="pcWorldRec" hidden>Three to five keeps it tidy. You want to clutter your life, you can. We don&rsquo;t recommend it.</p>
+    <div class="os-fieldwrap"><input class="os-input" id="fcPickerSearch" type="search" data-mw-ph="Search people and things…" placeholder="Search people and things&hellip;" autocomplete="off" aria-label="Search people and spaces"></div>
     <div id="fcPickerList" role="listbox" aria-label="People and worlds"></div>
-    <p class="os-note" data-mw-tr="picknote">Match is figured on this device from shared posts, messages and invites — highest first. Worlds show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.</p>
+    <p class="os-note" data-mw-tr="picknote">These are your things. Tap one to open it. Tap &ldquo;Feature in my feed&rdquo; and it stays at the top of your feed, ready whenever you come back.</p>
   </div>
 </div>
 <div class="fc-chat" id="fcChat" hidden role="dialog" aria-label="Instant message">
@@ -5084,7 +5085,8 @@ html.os-calm
 <!-- F5 (Shawn 16:06Z) — the feed bar is the Hub's lens bar, harvested verbatim
      (see the CSS). The .mw-feedname buttons below stay (they activate their tab
      + scroll the feed into view in place — working doors). -->
-<section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><button type="button" id="pcSearchScope" class="pc-search-scope" aria-label="World: My World — choose a world" title="Choose a world">My World</button><input type="search" id="pcHubSearchInput" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"></div></section><button type="button" id="pcComposerPlus" class="pc-composer-plus" aria-label="Add" title="Add"><span class="notif-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></button>
+<section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><button type="button" id="pcSearchScope" class="pc-search-scope" aria-label="World: My World — choose a thing" title="Choose a thing">My World</button><input type="search" id="pcHubSearchInput" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"></div></section><button type="button" id="pcComposerPlus" class="pc-composer-plus" aria-label="Add" title="Add"><span class="notif-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></button>
+<p class="pc-tabs-cap pc-tabs-cap-yours"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span>Your tabs — you choose what feed you want</p>
 <div class="lens-tabs" id="mwFeedTabs" role="tablist" aria-label="Feed categories" data-mw-aria="Feed categories">
 <button type="button" class="lens-tab lens-smart primo theme-purple elev-2 active" id="mwTabSmart" data-mw-tab="personal" role="tab" aria-selected="true" style="--glow:#3fb8ff"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> <b data-mw-tr="tab">Personal</b></button>
 <button type="button" class="lens-tab lens-naya primo theme-purple elev-2" id="mwTabNaya" data-mw-tab="public" role="tab" aria-selected="false" style="--glow:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b data-mw-tr="tab">Public feed</b></button>
@@ -5092,6 +5094,7 @@ html.os-calm
 <button type="button" class="lens-tab lens-world primo theme-purple elev-2" id="pcWorldsTab" role="tab" aria-selected="false" style="--glow:#e84fff"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b>Worlds</b></button><span id="pcFavWorldTabs" role="presentation"></span>
 </div>
 <!-- FIX PASS 4 (P6) — the topic Smart Tabs sit directly under the four tabs. -->
+<p class="pc-tabs-cap pc-tabs-cap-auto"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span>Organized for you — the feed sorts itself by topic</p>
 <div class="smart-tabs" id="mwFeedPills" aria-label="Feed filters" data-mw-aria="Feed filters"></div>
 <button type="button" class="mw-feedname" id="mwFeedNameSmart" data-mw-tr="feedname" style="--fc:#3fb8ff">Shawn&rsquo;s Personal feed ↓</button>
 <button type="button" class="mw-feedname" id="mwFeedNameNaya" data-mw-tr="feedname" style="--fc:#ffbf3d" hidden>Shawn&rsquo;s Public feed ↓</button>
@@ -7457,6 +7460,7 @@ button.os-ld-node .os-ld-n{
 <div class="mw-checkrow"><input type="checkbox" id="mw-set-mw-contacts" checked><label for="mw-set-mw-contacts"><span data-mw-tr="mwshow">Contacts</span></label></div>
 <div class="mw-checkrow"><input type="checkbox" id="mw-set-mw-about" checked><label for="mw-set-mw-about"><span data-mw-tr="mwshow">About</span></label></div>
 </div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-pc-add-world>+ Add a world</button></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">⇄</span><span class="os-setrow-main"><b data-mw-tr="revcol">Reverse cover colours</b><span class="os-setrow-sub" data-mw-tr="revcol-sub">The cover button colours run top to bottom — flip this and the sequence runs in reverse.</span></span><span class="os-switch-wrap" style="--jc:#ffbf3d"><button class="os-switch" id="mw-set-revcolours" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#31cb8d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="os-setrow-main"><b data-mw-tr="pub">This page: public or private</b><span class="os-setrow-sub" data-mw-tr="pub-sub">The Public profile switch above is this page&rsquo;s public/private choice — flip it here too.</span></span><span class="os-switch-wrap" style="--jc:#31cb8d"><button class="os-switch on" id="mw-set-public" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 <div class="ph-actions"><button class="ph-msg" type="button" id="mw-set-reset" data-mw-tr="set">Bring everything back</button></div>
@@ -27056,7 +27060,11 @@ function fcPickerRows(){
     var n=(a.getAttribute('data-mw-open-mship')||'').trim(); if(!n) return;
     var dup=rows.some(function(r){ return r.name.toLowerCase()===n.toLowerCase(); });
     if(dup) return;
-    rows.push({kind:'space', name:n, fact:'World', match:null, alias:slug(n)});
+    /* MY WORLD REDESIGN 2026-11-16 (test world) — a verification post is
+       never a world here either: same predicate as the world picker. */
+    try{ if(typeof window.upIsVerificationPost==='function' && window.upIsVerificationPost({t:n})) return; }catch(e){}
+    if(n.indexOf('Proof post from the flagship verification run')>=0 || n.indexOf('Verification wall post')>=0 || /CHI-[A-Z]+-WALL-/.test(n)) return;
+    rows.push({kind:'space', name:n, fact:'Thing', match:null, alias:slug(n)});
   });
   return rows;
 }
@@ -27071,7 +27079,7 @@ function fcRenderPicker(q){
   list.innerHTML=rows.map(function(r){
     var m=(r.kind==='person'&&typeof r.match==='number')
       ? '<span class="fc-pick-match"><b class="r4-tiles">'+fcTiles(r.match)+'</b><i>match</i></span>'
-      : '<span class="fc-pick-match"><b>—</b><i>world</i></span>';
+      : '<span class="fc-pick-match"><b>—</b><i>thing</i></span>';
     return '<button type="button" class="fc-pick" data-fc-pick="'+r.kind+'" data-fc-name="'+esc(r.name)+'" data-fc-alias="'+esc(r.alias)+'">'
       +'<span class="fc-pick-av" style="--cc:'+fcColorFor(r.name)+'">'+esc((r.name||'G')[0].toUpperCase())+'</span>'
       +'<span class="fc-pick-txt"><b>'+esc(r.name)+(r.stub?'<span class="cx-test">TEST DATA</span>':'')+'</b><i>'+esc(r.fact||'')+'</i></span>'+m+'</button>';
@@ -27556,6 +27564,11 @@ document.addEventListener('click', function(e){
   (row?row.parentNode:search.parentNode).insertBefore(bar, row||search);
   if(row) bar.appendChild(row);
   bar.appendChild(search);
+  /* MY WORLD REDESIGN 2026-11-16 (H1) — the scope chip leaves the search
+     row: My World stands on its own as the bar's first child, a beautiful
+     icon beside the search, never inside it. Listeners travel with the node. */
+  var sc0=document.getElementById('pcSearchScope');
+  if(sc0) bar.insertBefore(sc0, search);
   /* PLUS OUTSIDE 2026-11-14 19:59Z — his word: searching a space and creating
      a space are different. The plus sits beside the search, not inside it:
      it lives in the markup after the search section, and the bar takes it in
@@ -29144,12 +29157,87 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 
 </style>
 
+<style id="pc-myworld-redesign-20261116">
+/* ═══ MY WORLD REDESIGN 2026-11-16 (One List personal-my-world-redesign) ═══
+   Staging only. H1-H8 + the calendar amendment (My World IS the calendar;
+   this round redesigns the picker; it does NOT build the calendar and does
+   NOT entrench the endless-links shape; news feeds are NOT worlds here;
+   the word is THING). Harvest only: the bar, the lens tabs, the picker
+   rows, the notif-tile — nothing new invented. */
+
+/* H1 — the bar is three objects on one row: My World | search | plus.
+   The bar was a 2-column grid (search 1fr, plus auto); re-cut to three
+   columns so My World stands on its own beside the search. */
+#pcComposerBar{grid-template-columns:auto minmax(0,1fr) auto;}
+/* H1 — My World, outside the search row: the chip keeps its own globe +
+   name, now as the bar's first child, 64px tall like the search row and
+   the plus tile, so all three tops sit on one line and nothing floats.
+   REPAIR (eye check 2026-11-16): the chip's globe never drew, in the base
+   build or in this round's first cut — two stacked faults in the original
+   rule. (1) The `.pc-search-scope{` block is never closed before its
+   `::before` rule, so the browser reads it as CSS NESTING:
+   `& .pc-search-scope::before` — a ::before on a descendant chip that does
+   not exist — and the chip's own ::before gets content:none, no box at
+   all. The override below sets content:'' so the box exists. (2) The
+   original background URL also carries a doubled data: prefix
+   (data:image/svg+xml,data:image/svg+xml,…) so the browser got no SVG;
+   the URL below is the page's own globe SVG with the prefix written once.
+   The original rule is left untouched; this override outranks it. */
+#pcComposerBar #pcSearchScope{align-self:stretch;height:auto;max-width:170px;padding:0 16px;font-size:13px;}
+#pcComposerBar #pcSearchScope::before{content:'';width:20px;height:20px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%23ffffff%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22%2F%3E%3Cpath%20d%3D%22M3%2012h18%22%2F%3E%3Cpath%20d%3D%22M12%203c2.6%202.6%204%205.7%204%209s-1.4%206.4-4%209c-2.6-2.6-4-5.7-4-9s1.4-6.4%204-9z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;}
+@media(max-width:480px){ /* narrow: the chip is its globe alone, so the search keeps room */
+  #pcComposerBar #pcSearchScope{font-size:0;max-width:64px;min-width:64px;padding:0;justify-content:center;}
+  #pcComposerBar #pcSearchScope::before{width:24px;height:24px;}
+}
+/* H1 — the plus seats flush with the search row (64px, tops on one line),
+   so no line can float over it; its glow pools below it now, like a real
+   object's shadow, instead of bleeding up over the button. White center:
+   pearl white in the middle, with depth; the purple rim and outer glow
+   stay exactly as they were. */
+#pcComposerPlus{align-self:stretch;}
+#pcComposerPlus .notif-tile{width:64px;height:64px;border-radius:18px;
+  background:radial-gradient(130% 140% at 30% 18%, #ffffff 0%, #f2f1f6 45%, color-mix(in srgb, var(--nc) 38%, #e8e6ee) 78%, color-mix(in srgb, var(--nc) 45%, #12121a) 100%);
+  color:#a06bff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -9px 15px rgba(0,0,0,.35),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 6px 18px color-mix(in srgb, var(--nc) 42%, transparent);}
+#pcComposerPlus .notif-tile svg{width:30px;height:30px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35)) drop-shadow(0 0 6px rgba(160,107,255,.5));}
+
+/* H8 — two rows, two jobs, said out loud: the citizen's row and the
+   system's row each carry their job on their face. */
+.pc-tabs-cap{margin:18px 0 0;padding:0 4px;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.02em;color:#fff;}
+.pc-tabs-cap .ph-dot{flex:none;width:10px;height:10px;border-radius:50%;box-shadow:0 0 12px currentColor;}
+.pc-tabs-cap + #mwFeedTabs{margin-top:8px;}
+.pc-tabs-cap + #mwFeedPills{margin-top:8px;}
+
+/* H2 — ADD WORLD: a dashed tab in the world's magenta, harvested from the
+   Smart Tabs Add language; it sits at the END of the citizen's row, after
+   the last featured world, because that is where the new tab lands. */
+.lens-tab.pc-add-world{border:2px dashed var(--glow,#e84fff);}
+
+/* H3 — the star says what it does: star above, plain words below, visible
+   before anyone clicks. Featured reads gold, filled, "In my feed". */
+.pc-world-fav{flex:none;width:84px;min-width:84px;border-radius:14px;border:1.5px solid rgba(255,215,90,.7);
+  background:linear-gradient(180deg,#1b1b24,#050507);color:#ffd75a;cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 4px 12px rgba(0,0,0,.5);
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:10px 6px;}
+.pc-world-fav svg{width:22px;height:22px;flex:none;}
+.pc-world-fav .pc-fav-lab{font-size:11px;font-weight:800;line-height:1.25;text-align:center;color:#fff;}
+.pc-world-fav[aria-pressed="false"]{color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.3);}
+.pc-world-fav[aria-pressed="false"] .pc-fav-lab{color:rgba(255,255,255,.85);}
+.pc-world-fav[aria-pressed="true"]{border-color:#ffd75a;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -2px rgba(255,215,90,.55),0 4px 12px rgba(0,0,0,.5);}
+
+/* H2 — the three-to-five recommendation, in his plain words. Shown only in
+   world mode; the message picker never sees it. */
+.pc-world-rec{margin:0 0 10px;font-size:13px;color:#fff;}
+#fcPicker .pc-world-rec[hidden]{display:none;}
+</style>
+
+
 
 <script>
 /* ═══ PERSONAL PRESENTATION 2026-11-14 — worlds: picker, favorites as smart
    tabs, sidebar favorites, search scoped to the world you are on. ═══
    Harvest: the picker is the page's own #fcPicker overlay (its search already
-   says "Search people and worlds…"); the tabs are the harvested .lens-tab;
+   says "Search people and things…"); the tabs are the harvested .lens-tab;
    the sidebar section is the drawer's own .os-drawer-sec; worlds come from
    the page's own [data-mw-open-mship] names + the citizen's stored worlds
    (naya.spaces.custom.v1 / nayanet.spaces), the same stores Create world
@@ -29159,18 +29247,39 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
   function readLS(k){ try{ var v=JSON.parse(localStorage.getItem(k)||'null'); return v; }catch(e){ return null; } }
   function writeLS(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
   function pcEsc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  /* MY WORLD REDESIGN 2026-11-16 (test world) — a verification post is
+     never a world: the flagship verification run's proof post ("Proof post
+     from the flagship verification run — written thro…", the first 60 chars
+     of the post's nutshell) was saved as a custom space in the citizen's own
+     store (naya.spaces.custom.v1) by the board-action "create-space", and
+     the picker read that store with no filter — while the wall and the
+     dashboard already filtered the same post through upIsVerificationPost
+     (render-only, never deleted). The picker now uses the same predicate:
+     the shared one when it is there, the same markers when it is not. */
+  function pcIsTestWorld(n){
+    try{ if(typeof window.upIsVerificationPost==='function' && window.upIsVerificationPost({t:n})) return true; }catch(e){}
+    var s=String(n||'');
+    return s.indexOf('Proof post from the flagship verification run')>=0
+      || s.indexOf('Verification wall post')>=0
+      || /CHI-[A-Z]+-WALL-/.test(s)
+      || s.indexOf('STORY-ROUND-TEST')>=0 || s.indexOf('PostgREST proof post')>=0
+      || s.indexOf('naya_notes insert')>=0
+      || s.indexOf('The Smart Score ladder: Emerging 0, Stirring 1000')>=0;
+  }
   function pcWorlds(){
-    var list=[{id:'personal', name:'My World', fact:'Your world'}];
+    var list=[{id:'personal', name:'My World', fact:'Your thing'}];
     var seen={'my world':1};
     document.querySelectorAll('[data-mw-open-mship]').forEach(function(a){
       var n=(a.getAttribute('data-mw-open-mship')||'').trim();
       if(!n||seen[n.toLowerCase()]) return; seen[n.toLowerCase()]=1;
-      list.push({id:'mw-'+n.toLowerCase().replace(/[^a-z0-9]+/g,'-'), name:n, fact:'World'});
+      if(pcIsTestWorld(n)) return;
+      list.push({id:'mw-'+n.toLowerCase().replace(/[^a-z0-9]+/g,'-'), name:n, fact:'Thing'});
     });
     var customs=readLS('naya.spaces.custom.v1')||readLS('nayanet.spaces')||[];
     customs.forEach(function(c){
       if(!c||!c.name||seen[String(c.name).toLowerCase()]) return; seen[String(c.name).toLowerCase()]=1;
-      list.push({id:c.id||('sp-'+String(c.name)), name:String(c.name), fact:'Your world'});
+      if(pcIsTestWorld(c.name)) return;
+      list.push({id:c.id||('sp-'+String(c.name)), name:String(c.name), fact:'Your thing'});
     });
     return list;
   }
@@ -29184,7 +29293,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     var tn=document.getElementById('tnSearchPersonalInput');
     if(tn){ tn.setAttribute('placeholder','Search '+w.name+'\u2026'); tn.setAttribute('aria-label','Search '+w.name); }
     var chip=document.getElementById('pcSearchScope');
-    if(chip){ chip.textContent=w.name; chip.setAttribute('aria-label','World: '+w.name+' \u2014 choose a world'); }
+    if(chip){ chip.textContent=w.name; chip.setAttribute('aria-label','World: '+w.name+' \u2014 choose a thing'); }
     var wfn=document.getElementById('mwFeedNameWorld');
     if(wfn){ wfn.textContent='Shawn\u2019s '+w.name+' feed \u2193'; }
     document.querySelectorAll('#pcFavWorldTabs [data-pc-world-tab]').forEach(function(b){
@@ -29202,13 +29311,18 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
   function pcRenderFavTabs(){
     var host=document.getElementById('pcFavWorldTabs'); if(!host) return;
     var cur=pcCurrent().name;
-    host.innerHTML=pcFavs().map(function(n){
-      return '<button type="button" class="lens-tab lens-world-fav primo theme-purple elev-2'+(n===cur?' active':'')+'" data-pc-world-tab="'+pcEsc(n)+'" role="tab" aria-selected="'+(n===cur)+'" style="--glow:#e84fff"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b>'+pcEsc(n)+'</b></button>';
-    }).join('');
+    host.innerHTML=pcFavs().filter(function(n){ return !pcIsTestWorld(n); }).map(function(n){
+      var col=pcColorFor(n);
+      return '<button type="button" class="lens-tab lens-world-fav primo theme-purple elev-2'+(n===cur?' active':'')+'" data-pc-world-tab="'+pcEsc(n)+'" role="tab" aria-selected="'+(n===cur)+'" style="--glow:'+col+'"><span class="os-jewel os-jewel-sm" style="--jc:'+col+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b>'+pcEsc(n)+'</b></button>';
+    }).join('')
+    /* H2 — ADD WORLD, at the END of the citizen's row: adding a world adds
+       a tab here, to the top worlds, so the + sits where the new tab lands.
+       No limit: starring a sixth world renders a sixth tab. */
+    +'<button type="button" class="lens-tab lens-world-add pc-add-world primo theme-purple elev-2" data-pc-add-world role="tab" aria-selected="false" style="--glow:#e84fff"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff">+</span> <b>Add world</b></button>';
   }
   function pcRenderFavDrawer(){
     var host=document.getElementById('pcFavWorlds'); if(!host) return;
-    var favs=pcFavs();
+    var favs=pcFavs().filter(function(n){ return !pcIsTestWorld(n); });
     if(!favs.length){ host.innerHTML='<p class="os-note" style="padding:2px 16px 10px;margin:0;">No favorite worlds yet \u2014 open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg> Worlds and tap <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg> on one.</p>'; return; }
     host.innerHTML=favs.map(function(n){
       return '<a href="#" data-pc-world-drawer="'+pcEsc(n)+'" style="--rc:#e84fff"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg> '+pcEsc(n)+'</a>';
@@ -29227,16 +29341,16 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     q=(q||'').toLowerCase().trim();
     var favs=pcFavs(); var cur=pcCurrent().name;
     var rows=pcWorlds().filter(function(w){ return !q || w.name.toLowerCase().indexOf(q)>=0 || (w.fact||'').toLowerCase().indexOf(q)>=0; });
-    if(!rows.length){ list.innerHTML='<p class="os-note pc-world-none">No world matches that \u2014 try another word.</p>'; return; }
+    if(!rows.length){ list.innerHTML='<p class="os-note pc-world-none">No thing matches that \u2014 try another word.</p>'; return; }
     list.innerHTML=rows.map(function(w){
       var fav=favs.indexOf(w.name)>=0;
       var col=pcColorFor(w.name);
       return '<div class="pc-world-row">'
         +'<button type="button" class="fc-pick pc-world-pick" data-pc-world-pick="'+pcEsc(w.name)+'">'
         +'<span class="fc-pick-av" style="--cc:'+col+'">'+pcEsc((w.name||'W')[0].toUpperCase())+'</span>'
-        +'<span class="fc-pick-txt"><b>'+pcEsc(w.name)+(w.name===cur?' \u2014 you are here':'')+'</b><i>'+pcEsc(w.fact||'World')+'</i></span>'
-        +'<span class="fc-pick-match"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></b><i>world</i></span></button>'
-        +'<button type="button" class="pc-world-fav" data-pc-world-fav="'+pcEsc(w.name)+'" aria-pressed="'+fav+'" aria-label="'+(fav?'Remove from favorites':'Make favorite')+'">'+(fav?'<svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>')+'</button>'
+        +'<span class="fc-pick-txt"><b>'+pcEsc(w.name)+(w.name===cur?' \u2014 you are here':'')+'</b><i>'+pcEsc(w.fact||'Thing')+'</i></span>'
+        +'<span class="fc-pick-match"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></b><i>thing</i></span></button>'
+        +'<button type="button" class="pc-world-fav" data-pc-world-fav="'+pcEsc(w.name)+'" aria-pressed="'+fav+'" aria-label="'+(fav?'In my feed \u2014 tap to remove':'Feature in my feed')+'">'+(fav?'<svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>')+'<span class="pc-fav-lab">'+(fav?'In my feed':'Feature in my feed')+'</span></button>'
         +'</div>';
     }).join('');
   }
@@ -29244,12 +29358,20 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
   window.fcOpenWorldPicker=function(){
     if(typeof window.fcClosePlusMenu==='function') window.fcClosePlusMenu();
     var t=document.getElementById('fcPickerTitle');
-    if(t) t.innerHTML='<span class="os-jewel os-jewel-h" style="--jc:#e84fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> Choose a world';
+    if(t) t.innerHTML='<span class="os-jewel os-jewel-h" style="--jc:#e84fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> Choose a thing';
     var s=document.getElementById('fcPickerSearch');
-    if(s){ s.value=''; s.setAttribute('placeholder','Search worlds\u2026'); s.setAttribute('aria-label','Search worlds'); }
+    if(s){ s.value=''; s.setAttribute('placeholder','Search things\u2026'); s.setAttribute('aria-label','Search things'); }
+    /* H4/H2 — the picker says what it is in plain words, and how many to
+       feature. The hint and the recommendation belong to world mode only;
+       the message-mode wrapper below puts its own words back. */
+    var h=document.querySelector('#fcPicker [data-mw-tr="pickhint"]');
+    if(h) h.textContent='Pick a thing to open it \u2014 or feature it, and it stays at the top of your feed.';
+    var rec=document.getElementById('pcWorldRec'); if(rec) rec.hidden=false;
+    var panel=document.querySelector('#fcPicker .fc-panel'); if(panel) panel.style.setProperty('--ac','#e84fff');
+    var p=document.getElementById('fcPicker'); if(p) p.setAttribute('aria-label','Choose a thing');
     window.pcPickerMode='world';
     fcRenderWorldPicker('');
-    var p=document.getElementById('fcPicker'); if(p) p.hidden=false;
+    if(p) p.hidden=false;
     if(s){ try{ s.focus(); }catch(e){} }
   };
   /* Branch the shared picker so world mode never leaks into message/mail.
@@ -29261,10 +29383,21 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
      loader's interval, which re-renders through its own scope: it only
      fires when the list holds neither world rows nor the no-match note,
      so a genuine empty filter can never loop it. */
-  /* ROUND 4 H3 — GEMATRIA COLOUR CODE (~/workspace/team-nitro/GEMATRIA-COLOUR-CODE.md; Marty Leeds Septenary Cipher, https://septenarygematria.com/; colours by the chakra system SN-2322): the orb colour comes from the LETTER's first letter, never from the person — same letter, same colour, always. A-G 1-7, H-M 6-1, N-T 1-7, U-Z 6-1; 1 red, 2 orange, 3 gold, 4 emerald (the toned H5 green), 5 cyan #29b6f6 (verified from the fix-9 digit-5 tile — NOT gold, NOT blue), 6 indigo, 7 royal purple. The old whole-name hash is gone. */
+  /* MY WORLD REDESIGN 2026-11-16 (H5) — GEMATRIA COLOUR CODE, the name's
+     number: a world's colour comes from its whole NAME, not its first letter
+     alone — the cipher values of every letter, added, taken on the wave in
+     sevens (sum mod 7, 0 counts as 7). Same name, same colour, always; the
+     letter → number → colour steps are the code, unchanged (1 red, 2 orange,
+     3 gold, 4 emerald, 5 cyan #29b6f6, 6 indigo, 7 royal purple). Why the
+     name, not the first letter: My World, Naya Academy and AI Masterclass
+     all start on 1 (red) — three red orbs in a row, and no one can tell them
+     apart. The name's number gives them their own colours (My World 6
+     indigo, Naya Academy 1 red, AI Masterclass 7 purple, Fast Action Club 3
+     gold). The PEOPLE rail keeps the first-letter rule (its own pcColorFor,
+     untouched): a person IS their initial; a thing is its whole name. */
   var PCW_GEM_NUM={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
   var PCW_GEM_COL={1:'#ff5e6c',2:'#ff9a5a',3:'#ffbf3d',4:'#31cb8d',5:'#29b6f6',6:'#6675ff',7:'#a06bff'};
-  function pcColorFor(name){ var L=String((name||'?').charAt(0)).toUpperCase(); return PCW_GEM_COL[PCW_GEM_NUM[L]||1]; }
+  function pcColorFor(name){ var s=String(name||''), t=0; for(var i=0;i<s.length;i++){ var v=PCW_GEM_NUM[s.charAt(i).toUpperCase()]; if(v) t+=v; } var n=t%7; if(n===0) n=7; return PCW_GEM_COL[n]; }
   var _pcSearch=document.getElementById('fcPickerSearch');
   if(_pcSearch) _pcSearch.addEventListener('input', function(){
     if(window.pcPickerMode==='world'){ fcRenderWorldPicker(_pcSearch.value||''); }
@@ -29279,11 +29412,21 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
   }
   if(typeof window.fcOpenPicker==='function'){
     var _origOpen=window.fcOpenPicker;
-    window.fcOpenPicker=function(mode){ window.pcPickerMode=null; return _origOpen(mode); };
+    window.fcOpenPicker=function(mode){ window.pcPickerMode=null;
+      /* World mode's words belong to world mode only: put the message
+         picker's own hint, placeholder, accent and label back. */
+      var h=document.querySelector('#fcPicker [data-mw-tr="pickhint"]');
+      if(h) h.textContent='Search your people and things \u2014 pick one and the message pops up.';
+      var rec=document.getElementById('pcWorldRec'); if(rec) rec.hidden=true;
+      var s2=document.getElementById('fcPickerSearch');
+      if(s2){ s2.setAttribute('placeholder','Search people and things\u2026'); s2.setAttribute('aria-label','Search people and things'); }
+      var panel=document.querySelector('#fcPicker .fc-panel'); if(panel) panel.style.setProperty('--ac','#3fb8ff');
+      var p=document.getElementById('fcPicker'); if(p) p.setAttribute('aria-label','Pick someone to message');
+      return _origOpen(mode); };
   }
   if(typeof window.fcClosePicker==='function'){
     var _origClose=window.fcClosePicker;
-    window.fcClosePicker=function(){ window.pcPickerMode=null; return _origClose(); };
+    window.fcClosePicker=function(){ window.pcPickerMode=null; var rec=document.getElementById('pcWorldRec'); if(rec) rec.hidden=true; return _origClose(); };
   }
   /* The search records the world it ran in — the search always matches the
      world you are on (item 8). */
@@ -29299,6 +29442,8 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
       for(var i=0;i<ws.length;i++){ if(ws[i].name===nm){ if(typeof window.fcClosePicker==='function') window.fcClosePicker(); pcSetWorldObj(ws[i]); window.mwApplyFeedTab('worlds'); break; } } return; }
     var fav=e.target.closest('[data-pc-world-fav]');
     if(fav){ e.stopPropagation(); pcToggleFav(fav.getAttribute('data-pc-world-fav')); return; }
+    var add=e.target.closest('[data-pc-add-world]');
+    if(add){ e.stopPropagation(); window.fcOpenWorldPicker(); return; }
     var dr=e.target.closest('[data-pc-world-drawer]');
     if(dr){ e.preventDefault(); var dn=dr.getAttribute('data-pc-world-drawer');
       var rd=document.getElementById('os-drawer-right'); if(rd) rd.classList.remove('open');
@@ -29315,7 +29460,12 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
   var chip=document.getElementById('pcSearchScope');
   if(chip) chip.addEventListener('click', function(ev){ ev.stopPropagation(); window.fcOpenWorldPicker(); });
   /* Init: favorites + the current world's scope (quiet — no toast on load). */
-  pcRenderFavTabs(); pcRenderFavDrawer(); pcApplyWorld(pcCurrent());
+  pcRenderFavTabs(); pcRenderFavDrawer();
+  /* MY WORLD REDESIGN (test world) — a stored current world that is a
+     verification post falls back to My World: it can never be the world
+     you are in. */
+  var _pcCur=pcCurrent(); if(pcIsTestWorld(_pcCur.name)) _pcCur={id:'personal', name:'My World'};
+  pcApplyWorld(_pcCur);
 })();
 </script>
 
