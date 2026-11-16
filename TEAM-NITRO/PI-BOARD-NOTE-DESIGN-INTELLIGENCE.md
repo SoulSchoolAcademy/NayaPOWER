@@ -2057,3 +2057,37 @@ None — no new dictation or decision from Shawn since 21:29Z (his coordination 
 - Personal icons-plus round queued behind bottom-bar v2 proof.
 - Loop seat-brief step 4 / Correction Compound step 4: captain's edit owed (mail step retired).
 - Filed with this addendum (run235-pi-new.md, corrected at filing).
+
+
+# Intelligence Loop run 236 — PI addendum (filed 2026-11-16; SN refs corrected at filing — run 234's pair is SN-3038/SN-3039)
+
+Run 236, scheduled 22:23:18Z Mon 2026-11-16, ran ~22:24–22:30Z.
+
+Filing note (2026-11-16, at filing): filed after the SN-3033/SN-3034 renumber landed (22:50Z). Every reference below that means run 234's notes now reads SN-3038/SN-3039. Status lines record what the run saw at its close; later state changes are recorded in later runs.
+
+## New intelligence this run
+
+None — no new dictation or decision from Shawn since 21:29Z (his coordination ruling, SN-3039). The run's work is verification of the carry-over plus the state changes since run 235 closed (~22:12Z).
+
+## Verified live this run (gh-direct.py, read-only)
+
+- **SN-3033/SN-3034 collision — as verified by this run (~22:24–22:30Z) it was STILL OPEN:** LESSON/SN-3033 then held both files — b82ba088 ("Do It Right, Every Layer Great", 10,576 B) + e3232702 ("The Icon Laws", 9,076 B). LESSON/SN-3034 then held both — 61653be1 ("Coordination — Direct, Not Mail", 5,775 B) + 5530e8c7 ("Earn It, Don't Declare It", 11,964 B). SN-3038/SN-3039 did not exist anywhere in the 2026/11/16 tree (all 11 category dirs scanned). Renumber seat 99f7e1df was still running. **RESOLVED after this run closed (22:50Z): the loop's pair moved to SN-3038 (blob 3e8fc8f9) / SN-3039 (blob 21e09827); SN-3033/SN-3034 now each hold one note (verified from the live tree at filing).**
+- **PI board — as verified by this run:** sha 47a393fc, 567,094 B, 2,019 lines — same as run 235 saw. Run 235's addendum was NOT on the board yet (no "run 235" header found); it remained staged, pending the filing route. (Run 234's addendum is on the board; its body still says "(DRAFTED, pending filing)" — stale wording, captain's call. Its SN refs have since been updated to SN-3038/SN-3039 by the renumber seat.) **Filing note: run 235's addendum was filed immediately before this one (same filing pass); the board has since moved to blob f29b3ff3 (renumber seat's edit).**
+
+## State changes since run 235
+
+- Threshold batch DELIVERED to Shawn 22:19Z: 137 raw notes → 14 notes SN-3024–3037, filed + read-back verified; 11 hand-distilled (machine title-picker defect). Collision tidy-up told to him (SN-3038/3039).
+- Captain's ruling on the collision + renumber seat dispatched (first-filed keeps the number; run 234's pair moves; seat also fixes next-sn-number.py and updates the PI board note's run-234 addendum refs only).
+- Hub icons-fix EYE FAIL 22:20Z (re-check PASS 22:09Z, captain's eye FAIL — 'All' tab clipped, drawer round-trip leaves zero sidebars, polish items). Fix coordinator 50db97a6 dispatched; Shawn told plainly.
+- Hub feed FRESH 22:22Z (captain-verified live): hourly sync 22:05Z synced sn3037 + redeployed; sn3024/sn3035/sn3036/sn3037 once each; sn3033/sn3034 twice each; stale sn2906 cycle row still present (count 1).
+- PI refresh 22:10 UTC: new render published to the Living List artifact, no state transitions, 10 corroborations.
+- Organize hook: clean, 0 new, watermark holds. Mail: digest as record only (step retired by Shawn's word 21:29Z).
+
+## Still open
+
+- SN-3033/SN-3034 collision — RESOLVED 22:50Z (see the collision note above); the guard fix landed with the renumber seat.
+- Hub re-bake seat c07db9b6 still running (55+ min); stale sn2906 cycle row on the live feed.
+- Personal bottom-bar v2 live proof (cloud browser ea9eec21 / task 4b5541f2) quiet 31+ min — floor-watch flagged 22:14Z.
+- Personal icons-plus round queued behind bottom-bar v2 proof.
+- Loop seat-brief step 4 / Correction Compound step 4: captain's edit owed (mail step retired).
+- Filed: run 235's addendum (immediately before this one) + this addendum (run236-pi-new.md, corrected at filing).
