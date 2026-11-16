@@ -1124,3 +1124,71 @@ no chat report owed (nothing here needs Shawn; the Daily Intelligence Report
 23:17Z is the summary vehicle). Fast Action Mode changes how rounds deliver
 — same-pass delivery — but this seat files silently by design; the mode is
 noted, not reported.
+
+## Intelligence Loop run 225 — 2026-11-16 ~16:53–17:1xZ (seat: Naya Nitro Sigma)
+
+LISTEN — what is new since run 224 (~16:5xZ): one new dictation, "ONE PAGE
+CHANGES THE WORLD" (Shawn, 16:55Z, MEMORY.md diff delivered in-run: this one
+page is going to change the world — everybody's world on their smartphone,
+all their data in one place that's secure; mail, schedule, post, all
+operations, automated if they wish; jump in if they want — photos, share,
+comment; a NayaNET page vs an average social feed — a whole different
+world). Also new: run 224's own record needed correction (see below).
+Nothing else new in the daily log since 16:53Z — welcome-series tick 16:53Z
+(test account only, quiet per rule) and the 16:48Z dispatcher heartbeat.
+
+CORRECTION TO RUN 224, filed here not silently: run 224 filed 15 pairs
+(SN-2958..2972), NOT 19. Its mail digest ("all 19 SN exactly once, highest
+SN-2976") and its PI addendum ("36/36 filed") were written as if
+SN-2973..2976 had landed. They had not — the drafts sat unfiled in
+run224-drafts, and the run-224 treecheck itself said highest SN-2972. This
+run filed them (batch 3 of run224-file.py): SN-2973 The Star Level Names —
+the Ladder · SN-2974 Featured Links — All Three Ways · SN-2975 The Perfect
+Demographics Set · SN-2976 The Welcome, in His Simplest Words — all PUT
+201 + byte-identical blob read-back, first try. Four stale lines were fixed
+BEFORE filing (the drafts were written before the 16:49Z/16:50Z completions
+landed): SN-2973 Grandma ("two rungs still waiting") and the NN's "Why it
+matters" (open rungs, 6/7 flagged for his call) now carry the completed
+ladder (4 Pro Star, 9 Master Star, 6/7 order stands); SN-2975 Naya section
+and the NN's "What it is" tail now say RATIFIED by his thumbs-up 16:50Z,
+not "awaiting his word". The loop's proof standard caught the gap: the
+treecheck said SN-2972, the drafts said otherwise. Lesson for the loop:
+a digest must never claim a filing the treecheck has not seen.
+
+RUN 224's PI ADDENDUM NEVER LANDED EITHER: no run224-pi.log exists, and
+the live board note (501,837 bytes) carries no run-224 section. Cause found
+this run: the board note exceeds the 128KB single-argument limit, so the
+gh-app-api CLI arg path cannot PUT it at all (OSError: argument list too
+long, hit again by this run's first PI attempt). Every loop run's PI step
+will fail the same way until the filing path reads the body from a file.
+This run's addendum was filed via gh-direct.py @body.json (real temp file,
+same token path, no connector tools). The PI step's filing script needs the
+same fix carried forward — the arg path is dead for this file, permanently.
+
+SMART-NOTE FILED THIS RUN (5 pairs, all PUT 201 + byte-identical blob
+read-back): the four above + SN-2977 One Page Changes the World (16:55Z
+dictation, new this run). Each with a paired Naya Note
+(NN-20261116-<slug>), Paired lines carrying titles verbatim, never paths.
+Numbering: next-sn-number.py before batch 3 said highest SN-2972, next
+free SN-2973, open-PR claims none; re-run before SN-2977 said highest
+SN-2976, next free SN-2977 (took ~11.6 min — the live-tree scan is slow;
+recorded in run225-file.log). No PR, no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned 2212,
+0 unparseable, 0 malformed; watermark holds. Healthy — the notes live on
+GitHub, not in the local box tree (same as runs 223–224).
+
+MAIL DIGEST HELD (run225-mail-digest.txt): send path still blocked
+(Supabase reauth_required since 21:06Z Nov 12; send path last proven 401
+Nov 13 04:24Z; team-pulse 16:39Z mail read still BLIND, mail-new UNKNOWN).
+Same known breakage as runs 202–224; repair is Shawn's hand, already
+escalated, NOT re-raised.
+
+OUT OF ALIGNMENT, recorded plainly: Naya Notes filed but not in the live
+feed (sections build still owed — standing gap); Hub still shows the
+duplicate SN-2906 cycle row (DELETE permission, his hand); the lanes in
+flight at flush (Personal correction round, walk-end-share-plus, thank-you
+fix round) carry no new dictation this run. Distillation: SN-2973..2977
+are new raw notes for tonight's 23:17Z daily run. Silent run — no chat
+report owed (nothing here needs Shawn; the Daily Intelligence Report
+23:17Z is the summary vehicle).
