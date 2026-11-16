@@ -1731,3 +1731,50 @@ cycle row (DELETE permission, his hand). Distillation: SN-3007..3012
 are new raw notes for tonight's 23:17Z daily run. Silent run — no chat
 report owed (nothing here needs Shawn that he hasn't already been
 told; the Daily Intelligence Report 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 230 — addendum #2 (late catch, 19:35Z/19:37Z)
+
+Three more dictations landed DURING run 230, after its first PI addendum
+was filed. Filed as SN-3013–3015 + paired Naya Notes, all PUT 201 +
+byte-identical blob read-back. Numbering: next-sn-number.py re-run
+(run230-numbering2.log): highest SN-3012, next free SN-3013.
+- 19:35Z SIDEBARS ALIGNED ACROSS THE WHOLE SYSTEM — ONE OFFICIAL LIST,
+  HOME AT THE TOP OF BOTH (SN-3013): every page's sidebars must be the
+  SAME sidebars — same menus, same contents — across the whole of
+  NayaNET, so navigation is one aligned system. Features split
+  deliberately, one kind per side, for the whole system — not invented
+  per page. HOME at the top of BOTH plus menus, to the Hub — the central
+  communication center / home page, where citizens land ("good
+  morning") and see what's going on in the intelligence network and the
+  collective. Critique: the Personal round built different plus buttons
+  opening different sidebars than the Hub's — whatever the way is, it
+  must be the same way on both pages, same sidebars, same menu. The
+  official list (left, right, order) is owed to him, approved by him —
+  never recorded as settled before that.
+- 19:35Z THE HUB IS THE MAIN CENTRAL STAGE — GOOD MORNING + WISDOM OF
+  THE DAY (SN-3014): hero = "Good morning, Shawn" + Wisdom of the Day
+  quote + time and date. "Intel Today — the daily digest of NayaNET's
+  smart notes" is WRONG and comes out (this page is public — the public
+  blog, not an internal digest); the "Intelligence as of November 15 ·
+  226 Smart Notes · 1 day old" line comes out too. The banner "Our
+  public smart feed — connect with people of like minds" stays. Both
+  bottom bars go away as bars — their apps move into the sidebar with
+  their icons, some into the + menu — and the Hub takes the Personal
+  page's actual bottom bar, so both are aligned. Messenger/organizer
+  hookup on the Hub is a follow-on, not this round. Wisdom harvested
+  from the Daily Wisdom source, never invented. Rides the Hub
+  sidebars-plus round as an amendment.
+- 19:37Z THE OFFICIAL LIST IS MADE BY THINKING, NOT TRANSCRIBED
+  (SN-3015): "Yeah, that's not the official list. It's just because
+  I'm giving you a screenshot. I'm telling you that's not the official
+  list. None of these are official. You need to get them aligned."
+  Error named: transcribing instead of thinking. The reasoned logic:
+  LEFT = where you go (home first, your worlds next, shared areas,
+  administrative last); RIGHT = what's yours + what NayaNET offers
+  (your stuff first, offerings, informational last); HOME lives ONCE
+  (top of the left as Hub, top of both + menus, never on the right);
+  Search and Apps are openers, not pages. The transcribed list is
+  VOIDED (coordinator told not to build to it); the reasoned proposal
+  (LEFT 17, RIGHT 15) stands as a proposal only, presented 19:37Z,
+  awaiting his word. Do not record any sidebar list as settled until
+  he rules.
