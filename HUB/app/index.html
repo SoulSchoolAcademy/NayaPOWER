@@ -398,23 +398,23 @@ a { color: inherit; }
 .notif-tile {
   position: relative; width: 54px; height: 54px; border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%);
-  border: 1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12));
+  background: radial-gradient(130% 140% at 32% 24%, #2a2a32, #0a0a0e 72%);
+  border: 1.5px solid rgba(255,255,255,.35);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.38),
     inset 0 -9px 15px rgba(0,0,0,.6),
     inset 1px 0 0 rgba(255,255,255,.07),
     0 7px 16px rgba(0,0,0,.6),
-    0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);
-  color: color-mix(in srgb, var(--nc) 72%, #ffffff);
-  transition: box-shadow .3s, border-color .3s;
+    0 0 14px color-mix(in srgb, var(--nc) 45%, transparent);
+  color: #ffffff;
+  transition: box-shadow .3s, border-color .3s, transform .22s cubic-bezier(.16,.84,.22,1);
 }
 .notif-tile::before {
   content: ""; position: absolute; inset: 0; border-radius: 16px; pointer-events: none;
   background: linear-gradient(155deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 42%),
-              linear-gradient(25deg, rgba(255,255,255,0) 62%, color-mix(in srgb, var(--nc) 22%, transparent) 100%);
+              linear-gradient(25deg, rgba(255,255,255,0) 62%, rgba(255,255,255,.06) 100%);
 }
-.notif-tile svg { width: 25px; height: 25px; filter: drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent)); position: relative; }
+.notif-tile svg { width: 25px; height: 25px; filter: drop-shadow(0 0 4px rgba(255,255,255,.45)); position: relative; }
 .notif-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; color: #C9CEDA; }
 .notif-count { position: absolute; top: -8px; right: -10px; min-width: 24px; height: 24px; padding: 0 6px;
   display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
@@ -447,8 +447,10 @@ a { color: inherit; }
 .fc-plusmenu{position:fixed;z-index:1700;transform:translateX(-50%);background:radial-gradient(130% 140% at 30% 0%, #1d1d29, #07070b 78%);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:8px;min-width:220px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -8px 16px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.65),0 0 24px -6px rgba(160,107,255,.45);}
 .fc-plusmenu[hidden]{display:none;}
 .fc-plusitem{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;background:linear-gradient(180deg,#17171f,#0a0a10);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 3px 8px rgba(0,0,0,.4);transition:all .18s ease;}
-.fc-plusitem:hover{background:linear-gradient(180deg,#1e1b29,#0b0a12);border-color:var(--mc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -4px var(--mc,#a06bff),0 6px 16px rgba(0,0,0,.5);transform:translateY(-1px);}
-.fc-plusitem .fc-pi-ico{color:var(--mc,#a06bff);font-size:15px;flex:none;text-shadow:0 0 10px var(--mc,#a06bff);}
+.fc-plusitem:hover{background:linear-gradient(180deg,#1e1b29,#0b0a12);border-color:var(--mc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -4px var(--mc,#a06bff),0 6px 16px rgba(0,0,0,.5);transform:translateY(-2px);}
+.fc-plusitem:hover .fc-pi-ico{border-color:var(--mc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--mc,#a06bff) 70%,transparent);}
+.fc-plusitem .fc-pi-ico{color:#fff;flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid color-mix(in srgb,var(--mc,#a06bff) 65%,rgba(255,255,255,.25));box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -3px 6px rgba(0,0,0,.6),0 0 12px -2px color-mix(in srgb,var(--mc,#a06bff) 55%,transparent);}
+.fc-plusitem .fc-pi-ico svg{width:19px;height:19px;filter:drop-shadow(0 0 3px rgba(255,255,255,.5));}
 /* The eco dock rides above the notifications bar — but ONLY when the bar is
    actually in the DOM (body.has-notif is set by NayaNotif.init). Without the
    bar, the dock sits at bottom: 0 (its base rule) and can never float over a
@@ -488,7 +490,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   filter: drop-shadow(0 0 5px rgba(255,255,255,.5));
 }
 .rail-toggle:hover {
-  transform: scale(1.1) rotate(90deg);
+  transform: translateY(-2px) scale(1.06);
   border-color: rgba(157,117,255,.7);
   box-shadow:
     inset 0 1px rgba(255,255,255,.2),
@@ -496,8 +498,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
     0 4px 16px rgba(0,0,0,.5);
 }
 .rail-toggle:hover svg {
-  transform: rotate(-90deg);
-  filter: drop-shadow(0 0 6px rgba(157,117,255,.8));
+  filter: drop-shadow(0 0 6px rgba(255,255,255,.8));
 }
 
 /* ——— Left rail ——— */
@@ -688,17 +689,17 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 /* Hover: white light + spectrum color ignite */
 .nav-btn:hover, .nav-btn:focus-visible {
   background: rgba(255,255,255,.06);
-  border-color: rgba(255,255,255,.2);
-  box-shadow: 0 0 16px rgba(255,255,255,.12);
+  border-color: var(--nav, var(--purple));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--nav, var(--purple)) 38%, transparent), 0 8px 18px rgba(0,0,0,.5);
   color: #fff;
-  transform: translateX(3px);
+  transform: translateX(3px) translateY(-1px);
 }
 .nav-btn:hover .ico {
   color: #fff;
-  background: color-mix(in srgb, var(--nav, var(--purple)) 35%, transparent);
+  background: radial-gradient(circle at 32% 26%, rgba(255,255,255,.30), rgba(255,255,255,0) 48%), linear-gradient(180deg,#262633,#0b0b12 80%);
   border-color: var(--nav, var(--purple));
-  box-shadow: 0 0 20px color-mix(in srgb, var(--nav, var(--purple)) 70%, transparent);
-  transform: scale(1.1);
+  box-shadow: inset 0 1.5px 0 rgba(255,255,255,.55), inset 0 -3px 6px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 20px color-mix(in srgb, var(--nav, var(--purple)) 70%, transparent);
+  transform: translateY(-2px) scale(1.08);
 }
 /* Active: subtle indicator only — NO permanent glow (Shawn 2026-10-03) */
 .nav-btn.active {
@@ -708,7 +709,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 }
 .nav-btn.active .ico {
   color: var(--nav, var(--purple));
-  background: color-mix(in srgb, var(--nav, var(--purple)) 15%, transparent);
+  background: radial-gradient(circle at 32% 26%, rgba(255,255,255,.30), rgba(255,255,255,0) 48%), linear-gradient(180deg,#262633,#0b0b12 80%);
   border-color: color-mix(in srgb, var(--nav, var(--purple)) 40%, transparent);
 }
 .nav-btn.active::before {
@@ -729,7 +730,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 .nav-btn .nav-count{position:absolute;top:2px;right:4px;min-width:20px;height:20px;padding:0 5px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:11px;font-weight:900;color:#06060a;background:var(--nav);border:2px solid #05050a;box-shadow:0 0 12px var(--nav),0 3px 8px rgba(0,0,0,.5);}
 .nav-btn.has-news .nav-count{display:flex;}
 .nav-btn.lit{color:#fff;}
-.nav-btn.lit .ico{color:#fff;background:color-mix(in srgb, var(--nav, var(--purple)) 35%, transparent);border-color:var(--nav, var(--purple));box-shadow:0 0 20px color-mix(in srgb, var(--nav, var(--purple)) 70%, transparent);transform:scale(1.1);}
+.nav-btn.lit .ico{color:var(--nav, var(--purple));background:radial-gradient(circle at 32% 26%, rgba(255,255,255,.30), rgba(255,255,255,0) 48%), linear-gradient(180deg,#262633,#0b0b12 80%);border-color:var(--nav, var(--purple));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), inset 0 -3px 6px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 20px color-mix(in srgb, var(--nav, var(--purple)) 70%, transparent);transform:translateY(-2px) scale(1.08);}
 .nav-btn.nav-area{text-decoration:none;}
 .nav-btn.nav-right{text-decoration:none;}
 /* ——— HUB FIX 2026-11-16: the RIGHT rail (corrected 19:44Z list, 13) ———
@@ -746,8 +747,8 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 .rail-right-head b{font-size:12px;letter-spacing:.18em;font-weight:800;color:#fff;}
 .rail-right-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);color:#fff;font-size:20px;line-height:1;cursor:pointer;}
 /* Sub-rows: Dashboard's Leaderboards link, Personal's three, My Worlds' doors. */
-.nav-sub{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:8px 12px 8px 14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);color:var(--ink-dim);font-size:13px;font-family:var(--font);cursor:pointer;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 4px 10px rgba(0,0,0,.35);}
-.nav-sub:hover{color:#fff;border-color:var(--nav,var(--purple));box-shadow:0 0 16px color-mix(in srgb,var(--nav,var(--purple)) 45%,transparent);}
+.nav-sub{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:8px 12px 8px 14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);color:var(--ink-dim);font-size:13px;font-family:var(--font);cursor:pointer;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 4px 10px rgba(0,0,0,.35);transition:transform .18s var(--ease),border-color .18s,box-shadow .18s,color .18s;}
+.nav-sub:hover{color:#fff;border-color:var(--nav,var(--purple));box-shadow:0 0 16px color-mix(in srgb,var(--nav,var(--purple)) 45%,transparent),0 8px 16px rgba(0,0,0,.5);transform:translateY(-2px);}
 .nav-sub .ico{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:9px;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--nav,var(--purple));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5);}
 .nav-sub .ico svg{width:18px;height:18px;}
 .nav-sub .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:550;}
@@ -763,8 +764,8 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 /* Hero Wisdom of the Day. */
 .hero-wisdom{margin:6px 0 12px;max-width:760px;}
 .hero-wisdom .wisdom-kicker{font-size:11px;letter-spacing:.24em;font-weight:800;color:#ffbf3d;text-transform:uppercase;}
-.hero-wisdom blockquote{margin:6px 0 4px;font-size:21px;line-height:1.5;font-weight:600;color:#F2F2F6;}
-.hero-wisdom .wisdom-src{font-size:13px;color:var(--ink-dim);}
+.hero-wisdom blockquote{margin:6px 0 4px;font-size:28px;line-height:1.45;font-weight:800;color:#ffffff;text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 26px rgba(255,255,255,.16);}
+.hero-wisdom .wisdom-src{font-size:13px;color:#ffffff;}
 
 /* ——— Living-depth jewel icons ———
    Naya 4's elite orb: halo + core + rim + highlight, rendered by Icons.icon().
@@ -1061,8 +1062,7 @@ svg.jewel { display: block; }
   .shell.drawer-open .rail.left { transform: none; opacity: 1; pointer-events: auto; }
   .shell.drawer-open .drawer-backdrop { display: block; }
   body.drawer-open { overflow: hidden; }
-  .rooms-plus { display: grid; }
-  .rail-toggle { display: none; }
+  .rail-toggle { display: grid; }
   .top { padding: 11px 14px; gap: 10px; }
   .top-title b { font-size: 11.5px; }
   .top-status { font-size: 10px; }
@@ -1147,8 +1147,8 @@ svg.jewel { display: block; }
   overflow-x: auto; scrollbar-width: none;
   margin: 20px -6px 0; padding: 12px 6px 18px;
   border-bottom: 1px solid var(--line);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, #000, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(90deg, #000, #000 calc(100% - 28px), transparent);
 }
 .smart-tabs::-webkit-scrollbar { display: none; }
 .smart-tabs { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
@@ -2141,9 +2141,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
   min-height: 42px; padding: 0 22px;
   border-radius: var(--radius-pill);
   border: 1px solid color-mix(in srgb, var(--btn-accent) 45%, transparent);
-  background: linear-gradient(145deg,
-    color-mix(in srgb, var(--btn-accent) 26%, #1a1424),
-    color-mix(in srgb, var(--btn-accent) 10%, #0b0a10));
+  background: linear-gradient(145deg, #1e1e26 0%, #0a0a0f 50%, #1e1e26 100%);
   color: var(--ink);
   font-size: 12.5px; font-weight: 800; letter-spacing: .06em;
   box-shadow: var(--depth-hi), 0 10px 26px #000a,
@@ -4086,11 +4084,11 @@ const Icons = (() => {
     menu:    '<path d="M4 7h16M4 12h16M4 17h16"/>',
   };
   /* ——— Living-depth jewel renderer ———
-     Naya 4's elite orb, adopted as the Hub standard: a two-layer jewel —
-     halo (blurred, 60%) + core orb with radial depth (white → identity color
-     → deep night), crisp white rim, rotated specular highlight. The Hub keeps
-     its semantic glyph floating in white on the jewel for recognizability.
-     currentColor is the orb's identity color, inherited from the container. */
+     HUB ICONS FIX 2026-11-16 (§1): the ONE language — black obsidian in the
+     middle, white glyph in the middle, the color as light on the OUTSIDE
+     only (blurred halo + thin outer ring in currentColor, never a colored
+     core). The middle never glows. currentColor is the identity color,
+     inherited from the container. */
   let __jewelSeq = 0;
   function icon(name, cls = '') {
     const id = 'jewel' + (++__jewelSeq);
@@ -4098,14 +4096,15 @@ const Icons = (() => {
     return `<svg class="jewel ${cls}" viewBox="0 0 24 24" aria-hidden="true">` +
       `<defs>` +
       `<radialGradient id="${id}" cx="35%" cy="30%" r="78%">` +
-      `<stop offset="0%" stop-color="#ffffff"/>` +
-      `<stop offset="38%" stop-color="currentColor"/>` +
-      `<stop offset="100%" stop-color="#0a0612"/>` +
+      `<stop offset="0%" stop-color="#2b2b33"/>` +
+      `<stop offset="55%" stop-color="#14141b"/>` +
+      `<stop offset="100%" stop-color="#07070b"/>` +
       `</radialGradient>` +
       `<filter id="${id}-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter>` +
       `</defs>` +
-      `<circle cx="12" cy="12" r="8.6" fill="url(#${id})" filter="url(#${id}-g)" opacity="0.6"/>` +
+      `<circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#${id}-g)" opacity="0.55"/>` +
       `<circle cx="12" cy="12" r="6.8" fill="url(#${id})"/>` +
+      `<circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"/>` +
       `<circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/>` +
       `<ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/>` +
       `<g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">${glyph}</g>` +
@@ -5062,12 +5061,12 @@ function HubView(params) {
      Personal Mail → mail; no other count feed exists on the Hub.
      Scroll lighting lives in the spy IIFE below. */
   var HUB_AREAS = [
-    { id: 'hub',       label: 'Hub',           glyph: '\u25c8', color: '#a06bff', href: 'https://nayanet.app/hub',       countKey: 'activity' },
-    { id: 'dashboard', label: 'Dashboard',     glyph: '\u25c9', color: '#2fe89e', href: 'https://nayanet.app/dashboard', countKey: null },
-    { id: 'personal',  label: 'Personal',      glyph: '\u25cf', color: '#3fb8ff', href: 'https://nayanet.app/personal',  countKey: null, subtab: true },
-    { id: 'business',  label: 'Business',      glyph: '\u25a0', color: '#ffbf3d', href: 'https://nayanet.app/business',  countKey: null },
-    { id: 'space',     label: 'Your World',    glyph: '\u25b2', color: '#ff9a5a', href: 'https://nayanet.app/space',     countKey: 'spaces' },
-    { id: 'smartworlds', label: 'Smart Worlds', glyph: '\u2726', color: '#e84fff', href: 'https://nayanet.app/#/hub/spaces', countKey: null }
+    { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#a06bff', href: 'https://nayanet.app/hub',       countKey: 'activity' },
+    { id: 'dashboard', label: 'Dashboard',     icon: 'gauge', color: '#2fe89e', href: 'https://nayanet.app/dashboard', countKey: null },
+    { id: 'personal',  label: 'Personal',      icon: 'heart', color: '#3fb8ff', href: 'https://nayanet.app/personal',  countKey: null, subtab: true },
+    { id: 'business',  label: 'Business',      icon: 'brief', color: '#ffbf3d', href: 'https://nayanet.app/business',  countKey: null },
+    { id: 'space',     label: 'Your World',    icon: 'spaces', color: '#ff9a5a', href: 'https://nayanet.app/space',     countKey: 'spaces' },
+    { id: 'smartworlds', label: 'Smart Worlds', icon: 'doors', color: '#e84fff', href: 'https://nayanet.app/#/hub/spaces', countKey: null }
   ];
   /* Personal is a SUB-TAB (v4): it expands into Personal Mail · Personal Instant
      Messages · Personal Page · Personal Connections — it never navigates on the first tap. */
@@ -5078,7 +5077,7 @@ function HubView(params) {
     btn.style.setProperty('--nav', a.color);
     btn.setAttribute('aria-label', 'Personal — your personal mail, messages and page');
     btn.setAttribute('aria-expanded', 'false');
-    btn.innerHTML = '<span class="ico"><span class="area-glyph">' + a.glyph + '</span></span><span class="lbl">Personal</span><span class="chev">\u25be</span>';
+    btn.innerHTML = '<span class="ico">' + Icons.icon(a.icon) + '</span><span class="lbl">Personal</span><span class="chev">\u25be</span>';
     var wrap = document.createElement('div'); wrap.className = 'nav-subwrap'; wrap.hidden = true;
     var subs = [
       { label: 'Personal Mail', icon: 'mail', color: '#3fb8ff', href: 'https://nayanet.app/rooms/mail', countKey: 'mail' },
@@ -5113,7 +5112,7 @@ function HubView(params) {
     if (a.countKey) link.setAttribute('data-count-key', a.countKey);
     link.style.setProperty('--nav', a.color);
     link.setAttribute('aria-label', a.label);
-    link.innerHTML = '<span class="ico"><span class="area-glyph">' + a.glyph + '</span></span><span class="lbl">' + a.label + '</span><span class="nav-count"></span>';
+    link.innerHTML = '<span class="ico">' + Icons.icon(a.icon) + '</span><span class="lbl">' + a.label + '</span><span class="nav-count"></span>';
     link.addEventListener('click', function (e) {
       var n = 0;
       try { if (a.countKey === 'activity') n = window.NayaNotif ? window.NayaNotif.counts().activity : 0; else if (a.countKey === 'spaces') n = window.NayaNotif ? window.NayaNotif.get('spaces') : 0; } catch (err) {}
@@ -5134,27 +5133,11 @@ function HubView(params) {
       if (a.id === 'search') { e.preventDefault(); if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; return; }
     });
     nav.appendChild(link);
-    if (a.id === 'dashboard') {
-      var lb = document.createElement('a'); lb.className = 'nav-sub'; lb.href = 'https://nayanet.app/dashboard';
-      lb.style.setProperty('--nav', '#ffbf3d');
-      lb.setAttribute('aria-label', 'Leaderboards — the Dashboard carries the link');
-      lb.innerHTML = '<span class="ico">' + Icons.icon('trophy') + '</span><span class="lbl">Leaderboards</span>';
-      lb.addEventListener('click', function () { closeDrawer(); });
-      nav.appendChild(lb);
-    }
-    if (a.id === 'business') {
-      /* v4: Business carries a Connections sub-tab, like Dashboard carries
-         Leaderboards — always visible beneath the row, so one tap to
-         Business still works. No Business connections view exists yet, so
-         it lands in the connections room (the main directory), the same
-         interim as Leaderboards → Dashboard. */
-      var bc = document.createElement('a'); bc.className = 'nav-sub'; bc.href = 'https://nayanet.app/rooms/connections';
-      bc.style.setProperty('--nav', '#ffbf3d');
-      bc.setAttribute('aria-label', 'Business Connections — your business connections');
-      bc.innerHTML = '<span class="ico">' + Icons.icon('nodes') + '</span><span class="lbl">Business Connections</span>';
-      bc.addEventListener('click', function () { closeDrawer(); });
-      nav.appendChild(bc);
-    }
+    /* HUB ICONS FIX 2026-11-16 (item 7): Leaderboards is OUT of the left —
+       it lives on the RIGHT rail, third row. Nothing added here. */
+    /* HUB ICONS FIX 2026-11-16 (item 7): Business Connections is OUT of the
+       left — connections live under Your Connections (row 12). Nothing
+       added here. */
   });
   window.NayaHubAreas = {
     list: HUB_AREAS,
@@ -5282,78 +5265,70 @@ function HubView(params) {
   const main = el('main', 'main');
   main.setAttribute('aria-label', room.name);
 
-  /* Topbar: rooms-plus (mobile) · title · Ask Naya + Life with Naya (the two
-     Hub-only black obsidian buttons, center) · ecosystem plus menu (top-right).
-     The SOURCE·VISIBLE pill is gone — the top-right corner belongs to the menu. */
+  /* Topbar (HUB ICONS FIX 2026-11-16, items 6 + 8): menu control · Ask Naya
+     (LEFT corner) · title · Life with Naya (RIGHT corner). The + buttons are
+     OFF both top corners — the + lives ONLY in the bottom bar. */
   const top = el('header', 'top');
-  const roomsPlus = el('button', 'rooms-plus', Icons.icon('plus'));
-  roomsPlus.setAttribute('aria-label', 'Open room navigation');
-  roomsPlus.setAttribute('aria-expanded', 'false');
-  roomsPlus.addEventListener('click', () => (shell.classList.contains('drawer-open') ? closeDrawer() : openDrawer()));
-  const railToggle = el('button', 'rail-toggle', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>');
-  railToggle.setAttribute('aria-label', 'Open rooms — your internal spaces');
-  railToggle.setAttribute('title', 'Your rooms');
-  railToggle.addEventListener('click', () => {
-    shell.classList.toggle('rail-collapsed');
-    const collapsed = shell.classList.contains('rail-collapsed');
-    railToggle.setAttribute('aria-label', collapsed ? 'Show sidebar' : 'Hide sidebar');
-    try { localStorage.setItem('naya.rail-collapsed', collapsed ? '1' : '0'); } catch(e) {}
+  /* The small menu control: three white lines on the layered obsidian circle
+     harvested from the top-left + reference. Below desktop it opens the
+     drawers; at desktop it collapses the left rail. Never a + button. */
+  const menuBtn = el('button', 'rail-toggle', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>');
+  menuBtn.setAttribute('aria-label', 'Open navigation menu');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  menuBtn.setAttribute('title', 'Menu — your navigation');
+  menuBtn.addEventListener('click', () => {
+    if (window.innerWidth < 1440) {
+      if (shell.classList.contains('drawer-open')) closeDrawer(); else openDrawer();
+    } else {
+      shell.classList.toggle('rail-collapsed');
+      const collapsed = shell.classList.contains('rail-collapsed');
+      menuBtn.setAttribute('aria-label', collapsed ? 'Show sidebar' : 'Hide sidebar');
+      try { localStorage.setItem('naya.rail-collapsed', collapsed ? '1' : '0'); } catch(e) {}
+    }
   });
-  /* Default: full-screen feed, sidebars hidden (Shawn 2026-10-03).
-     User opens them via the obvious toggle buttons. */
+  /* Default (item 8): sidebars VISIBLE on load at desktop (1440+) — they are
+     the navigation, not a hidden drawer. Below desktop they start hidden and
+     open from the menu control above. A saved '1' still hides the left rail
+     everywhere; a saved '0' still shows it everywhere. */
   try {
     const pref = localStorage.getItem('naya.rail-collapsed');
-    if (pref !== '0') shell.classList.add('rail-collapsed');
+    if (pref === '1') shell.classList.add('rail-collapsed');
+    else if (pref !== '0' && window.innerWidth < 1440) shell.classList.add('rail-collapsed');
   } catch(e) {
-    shell.classList.add('rail-collapsed');
+    if (window.innerWidth < 1440) shell.classList.add('rail-collapsed');
   }
   const title = el('div', 'top-title', '<b>INTELLIGENT HUB</b>');
-  /* HUB-ONLY (v4, Shawn 20:26Z): two beautiful black obsidian buttons in the
-     CENTER of the Hub's top bar — Ask Naya + Life with Naya. Never in a sidebar.
-     Ask Naya opens the Ask Naya room in-app (the harvested /hub/ask destination,
-     same as the old left row); Life with Naya opens the presentation. */
-  const hubCta = el('div', 'hub-cta');
-  const askBtn = el('button', 'hub-obsidian-btn', 'Ask Naya');
+  /* Ask Naya in the LEFT corner, Life with Naya in the RIGHT corner —
+     rebuilt to the §1 language: obsidian inside, double-layered, glossy,
+     pearl blue under Ask Naya, pearl green under Life with Naya, white-lit
+     icons inside, alive at rest, bright on hover. */
+  const askBtn = el('button', 'hub-obsidian-btn', '<span class="hb-ico">' + Icons.icon('mic') + '</span>Ask Naya');
   askBtn.setAttribute('type', 'button');
   askBtn.setAttribute('aria-label', 'Ask Naya');
   askBtn.setAttribute('title', 'Ask Naya — ask her anything');
-  askBtn.style.setProperty('--glow', '#a06bff');
+  askBtn.style.setProperty('--glow', '#55b9ee');
   askBtn.addEventListener('click', () => { if (window.NayaRouter) window.NayaRouter.navigate('/hub/ask'); else location.hash = '#/hub/ask'; });
-  const lwnBtn = el('button', 'hub-obsidian-btn', 'Life with Naya');
+  const lwnBtn = el('button', 'hub-obsidian-btn', '<span class="hb-ico">' + Icons.icon('heart') + '</span>Life with Naya');
   lwnBtn.setAttribute('type', 'button');
   lwnBtn.setAttribute('aria-label', 'Watch the Life with Naya presentation');
   lwnBtn.setAttribute('title', 'Life with Naya — the full presentation');
   lwnBtn.style.setProperty('--glow', '#35e39b');
   lwnBtn.addEventListener('click', () => { location.href = 'https://lifewithnaya.nayapower.workers.dev/'; });
-  hubCta.append(askBtn, lwnBtn);
-  const spacer = el('div', 'top-spacer');
-  spacer.setAttribute('aria-hidden', 'true');
   // The marketing "ecosystem destinations" menu is gone — this is the logged-in
-  // app, not the marketing site. The top-right corner stays clean.
-  top.append(roomsPlus, railToggle, title, hubCta, spacer);
+  // app, not the marketing site.
+  top.append(menuBtn, askBtn, title);
 
-  /* Ecosystem plus — top-right. Opens the RIGHT sidebar (corrected 19:44Z:
-     Apps opens the right sidebar). The old eco-menu dropdown is gone:
-     its destinations now live in the right sidebar, in the corrected
-     order — with "5" Day Challenge and Intro Report removed. */
+  /* HUB ICONS FIX 2026-11-16 (item 6): the top-right + is gone — the right
+     corner belongs to Life with Naya now. The right sidebar below desktop
+     still opens from the bottom-bar ECOSYSTEM tile. Powercasts stays. */
   const ecoWrap = el('div', '');
   ecoWrap.style.cssText = 'position:relative;display:flex;';
-  const ecoPlus = el('button', 'eco-plus', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>');
-  ecoPlus.setAttribute('aria-label', 'Open the right sidebar — your worlds and NayaNET');
-  ecoPlus.setAttribute('aria-haspopup', 'true');
-  ecoPlus.setAttribute('aria-expanded', 'false');
-  ecoPlus.setAttribute('title', 'Your worlds and NayaNET');
-  ecoPlus.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (shell.classList.contains('rail-right-open')) closeRightRail();
-    else openRightRail();
-  });
   const pcBtn = el('a', 'powercast-topbtn', '&#127911; Powercasts');
   pcBtn.setAttribute('href', 'https://powercasts.nayapower.workers.dev/');
   pcBtn.setAttribute('aria-label', 'Open NayaNET Powercast');
   pcBtn.setAttribute('title', 'NayaNET Powercast — learn all about Naya Power');
-  ecoWrap.append(pcBtn, ecoPlus);
-  top.append(ecoWrap);
+  ecoWrap.append(pcBtn);
+  top.append(ecoWrap, lwnBtn);
 
   /* Ask Naya — chassis-level retrieval. One clean search box, no subtext. */
   const searchWrap = el('section', 'searchWrap');
@@ -6082,7 +6057,7 @@ window.NayaNotif = window.NayaNotif || {
     { id: 'maxis', label: 'Maxis "AI Score"', icon: 'gauge', color: '#ed42c4', href: 'https://app.nayanet.technology/' },
     { id: 'about', label: 'About Us', icon: 'users', color: '#3ca8ff', href: 'https://nayanet.groovepages.com/aboutus' },
     { id: 'whitepaper', label: 'White Paper', icon: 'doc', color: '#ffea00', href: 'https://nayanet.groovepages.com/whitepaper' },
-    { id: 'pricing', label: 'Pricing', icon: null, glyph: '\u25c6', color: '#e8b64c', href: 'https://naya-model-pricing.nayapower.workers.dev/' }
+    { id: 'pricing', label: 'Pricing', icon: 'tag', color: '#e8b64c', href: 'https://naya-model-pricing.nayapower.workers.dev/' }
   ];
   var aliasR = '';
   try { aliasR = (localStorage.getItem('nayanet_smart_alias') || '').trim(); } catch (e) {}
@@ -6094,28 +6069,12 @@ window.NayaNotif = window.NayaNotif || {
     a.setAttribute('aria-label', it.label);
     if (it.id === 'myworlds' && aliasR) a.href = '/world/' + encodeURIComponent(aliasR);
     if (it.href.indexOf('https://nayanet.app') !== 0 && it.href.indexOf('/') !== 0) { a.target = '_blank'; a.rel = 'noopener'; }
-    a.innerHTML = '<span class="ico">' + (it.icon ? Icons.icon(it.icon) : '<span class="area-glyph">' + it.glyph + '</span>') + '</span><span class="lbl">' + esc(it.label) + '</span>';
+    a.innerHTML = '<span class="ico">' + Icons.icon(it.icon) + '</span><span class="lbl">' + esc(it.label) + '</span>';
     a.addEventListener('click', function () { closeRightRail(); });
     navR.appendChild(a);
-    if (it.id === 'myworlds' && aliasR) {
-      var enc = encodeURIComponent(aliasR);
-      var wrap = document.createElement('div'); wrap.className = 'nav-subwrap';
-      var doors = [
-        ['Dashboard', 'gauge', '#a06bff', '/world/' + enc + '#dashboard'],
-        ['Personal', 'home', '#3fb8ff', '/world/' + enc],
-        ['Business', 'brief', '#2fe89e', '/world/' + enc + '/business'],
-        ['Your World', 'spaces', '#ffbf3d', '/world/' + enc + '/space']
-      ];
-      doors.forEach(function (d) {
-        var s = document.createElement('a'); s.className = 'nav-sub'; s.href = d[3];
-        s.style.setProperty('--nav', d[2]);
-        s.setAttribute('aria-label', d[0] + ' — your world');
-        s.innerHTML = '<span class="ico">' + Icons.icon(d[1]) + '</span><span class="lbl">' + esc(d[0]) + '</span>';
-        s.addEventListener('click', function () { closeRightRail(); });
-        wrap.appendChild(s);
-      });
-      navR.appendChild(wrap);
-    }
+    /* HUB ICONS FIX 2026-11-16 (item 7): Dashboard, Personal, Business and
+       Your World are OUT of the right — they already live on the LEFT
+       (rows 2–5). Nothing added here. */
   });
   railR.append(railRHead, navR);
   shell.append(rail, main, railR, backdrop);
@@ -6145,27 +6104,30 @@ window.NayaNotif = window.NayaNotif || {
        restores the collapsed default unless the citizen chose it visible. */
     shell.classList.remove('rail-collapsed');
     document.body.classList.add('drawer-open');
-    roomsPlus.setAttribute('aria-expanded', 'true');
+    menuBtn.setAttribute('aria-expanded', 'true');
     const f = nav.querySelector('.nav-btn');
     if (f) f.focus();
   }
   function closeDrawer() {
     shell.classList.remove('drawer-open');
     document.body.classList.remove('drawer-open');
-    roomsPlus.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-expanded', 'false');
     try { if (localStorage.getItem('naya.rail-collapsed') !== '0') shell.classList.add('rail-collapsed'); } catch (e) { shell.classList.add('rail-collapsed'); }
   }
   function openRightRail() {
     shell.classList.add('rail-right-open');
+    shell.classList.remove('rail-right-collapsed');
     document.body.classList.add('rail-right-open');
-    if (typeof ecoPlus !== 'undefined' && ecoPlus) ecoPlus.setAttribute('aria-expanded', 'true');
     const f = navR.querySelector('.nav-btn');
     if (f) f.focus();
   }
   function closeRightRail() {
     shell.classList.remove('rail-right-open');
+    /* HUB ICONS FIX 2026-11-16 (item 8): at desktop the right rail is docked
+       visible — closing it collapses it (reopen from the bottom-bar
+       ECOSYSTEM tile). Below desktop this class is inert. */
+    shell.classList.add('rail-right-collapsed');
     document.body.classList.remove('rail-right-open');
-    if (typeof ecoPlus !== 'undefined' && ecoPlus) ecoPlus.setAttribute('aria-expanded', 'false');
   }
   function ensureGlobalKeys() {
     if (window.__nayaChassisKeys) return;
@@ -6175,8 +6137,7 @@ window.NayaNotif = window.NayaNotif || {
       const open = document.querySelector('.shell.drawer-open');
       if (open) {
         closeDrawer();
-        const t = open.querySelector('.rooms-plus');
-        if (t) { t.setAttribute('aria-expanded', 'false'); t.focus(); }
+        menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.focus();
       }
       closeRightRail();
     });
@@ -6355,7 +6316,7 @@ window.NayaJewels = (() => {
     hero.innerHTML =
       '<div class="eyebrow feed-motto">&ldquo;NayaNET &mdash; create, learn and grow together&rdquo;</div>' +
       '<h1>' + greet + (who ? ', ' + esc(who) : '') + '.</h1>' +
-      (function () { var w = pickWisdomOfTheDay((window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || []); return w ? '<div class="hero-wisdom"><div class="wisdom-kicker">Wisdom of the Day</div><blockquote>' + esc(w.text) + '</blockquote><div class="wisdom-src">' + esc(w.src) + '</div></div>' : ''; })() +
+      (function () { var w = pickWisdomOfTheDay((window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || []); return w ? '<div class="hero-wisdom"><div class="wisdom-kicker">Wisdom of the Day</div><blockquote>&ldquo;' + esc(w.text) + '&rdquo;</blockquote><div class="wisdom-src">' + esc(w.src) + '</div></div>' : ''; })() +
       '<p class="hero-sub"><a class="primo theme-purple elev-2 intel-feed-link" href="/feed">Our public smart feed &mdash; connect with people of like minds &rarr;</a></p>' +
       '<p class="hero-sub hero-date"><span class="live-dot" aria-hidden="true"></span><span class="hero-date-str">' + dateStr + '</span> <span class="hero-time">' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' }) + '</span></p>';
     /* The clock is alive (Shawn 2026-10-20): ticking seconds + breathing dot —
@@ -10404,6 +10365,76 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
    the Custom URLs Add button) is reachable, not covered by bar 1 / bar 3. */
 .shell.drawer-open .rail.left, .shell.rail-right-open .rail.right { z-index: 1000; }
 </style>
+
+<style>
+/* ——— HUB ICONS FIX 2026-11-16 ———
+   The one language (§1): obsidian inside, white in the middle, pearl color
+   as light on the OUTSIDE only. Desktop (1440+): both sidebars docked and
+   visible on load. Below desktop: drawers, opened by the top-bar menu
+   control — never by a + button. */
+@media (min-width: 1440px) {
+  .shell { grid-template-columns: 264px minmax(0, 1fr) 300px; }
+  .shell.rail-collapsed { grid-template-columns: 0 minmax(0, 1fr) 300px; }
+  .shell.rail-right-collapsed { grid-template-columns: 264px minmax(0, 1fr); }
+  .shell.rail-collapsed.rail-right-collapsed { grid-template-columns: 0 minmax(0, 1fr); }
+  .rail.right {
+    position: sticky; top: 0; height: 100vh; height: 100dvh;
+    transform: none; z-index: 40;
+    border-left: 1px solid var(--line-soft);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.15), -12px 0 32px rgba(0,0,0,.35);
+  }
+  .shell.rail-right-collapsed .rail.right { display: none; }
+}
+/* Below desktop the left rail is a true drawer at every width (901–1439
+   mirrors the ≤900 drawer rules, so the menu control opens it anywhere). */
+@media (max-width: 1439px) and (min-width: 901px) {
+  .shell { display: block; }
+  .rail.left {
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: min(300px, 84vw); height: 100dvh;
+    transform: translateX(-106%);
+    transition: transform var(--dur-med) var(--ease);
+    z-index: 60;
+    box-shadow: var(--depth-deep);
+  }
+  .shell.drawer-open .rail.left { transform: none; opacity: 1; pointer-events: auto; }
+  .shell.drawer-open .drawer-backdrop { display: block; }
+  body.drawer-open { overflow: hidden; }
+}
+/* Top bar: the title takes the middle and stays centered between the corners. */
+.top .top-title { flex: 1; min-width: 0; text-align: center; }
+@media (max-width: 640px) { .top .top-title { display: none; } }
+/* Ask Naya / Life with Naya — double-layered: a clone behind, moved just a
+   tad; pearl light underneath and on the outside edge, alive at rest. */
+.hub-obsidian-btn { position: relative; z-index: 0; box-shadow: inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5), 0 0 16px color-mix(in srgb, var(--glow) 38%, transparent); }
+.hub-obsidian-btn::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  border-radius: 999px;
+  border: 1.5px solid color-mix(in srgb, var(--glow) 55%, transparent);
+  background: linear-gradient(135deg, #14141c 0%, #050508 50%, #14141c 100%);
+  transform: translate(2px, 3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.5);
+}
+.hub-obsidian-btn .hb-ico { display: inline-flex; color: var(--glow); }
+.hub-obsidian-btn .hb-ico svg { width: 18px; height: 18px; }
+/* Bottom bar: hover lights up outside in its own color AND lifts. */
+.notif-seg:hover .notif-tile {
+  transform: translateY(-3px);
+  border-color: var(--nc);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.38),
+    inset 0 -9px 15px rgba(0,0,0,.6),
+    0 0 24px color-mix(in srgb, var(--nc) 60%, transparent),
+    0 10px 22px rgba(0,0,0,.6);
+}
+.notif-seg:hover .notif-tile svg { filter: drop-shadow(0 0 6px var(--nc)); }
+/* Sidebar sub-rows: hover lifts the icon chip too. */
+.nav-sub:hover .ico {
+  border-color: var(--nav, var(--purple));
+  box-shadow: inset 0 1.5px 0 rgba(255,255,255,.55), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 14px color-mix(in srgb, var(--nav, var(--purple)) 55%, transparent), 0 4px 10px rgba(0,0,0,.5);
+  transform: scale(1.06);
+}
+</style>
 <script>
 /* ================= SMART BAR SYSTEM v1.0 ================= */
 (function(){
@@ -11156,7 +11187,7 @@ window.NayaSmartBar = {
 <div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#a06bff"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal" style="--mc:#e8e8ec"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-href="https://nayanet.app/personal" style="--mc:#a06bff"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal" style="--mc:#31cb8d"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal" style="--mc:#31cb8d"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
 </div>
 <div id="hubPlusConnect" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Connect">
 <div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#a06bff"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
