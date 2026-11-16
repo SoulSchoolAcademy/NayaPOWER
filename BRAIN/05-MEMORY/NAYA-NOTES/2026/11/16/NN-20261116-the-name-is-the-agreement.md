@@ -20,4 +20,4 @@ The agreement lives on the front page below the login — visual, then words, th
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2912 — ~/workspace/team-nitro/smart-notes/SN-2912-the-name-is-the-agreement.md*
+*Paired Smart Note: SN-2912 — The Name Is the Agreement*
