@@ -4908,7 +4908,14 @@ html.os-calm
          the spec. INTERIM: no Smart Meet route exists anywhere (the app is
          missing, per the standing record) — it points at Connections, where
          a meet starts with contacts added. The real route is owed. -->
-    <a href="https://nayanet.app/#/hub" style="--rc:#a06bff">Home/Hub</a>
+    <!-- HUB-RETURN 2026-11-16 (item 1, Shawn 17:06Z + 17:10Z) — the Hub is
+         the top button of the left sidebar: the main home, the main Hub.
+         The black circle is the Hub's own icon (the Hub keeps its black
+         circle icon bar); the button is lit at rest like a home button
+         (.pc-hub-home below). Label is Hub — Home vs Hub is HIS call.
+         The href is the one door constant (window.NAYA_HUB_URL, set in
+         the hub-return script below); the live step confirms that line. -->
+    <a class="pc-hub-home" id="pc-hub-home" href="https://nayanet.app/hub" style="--rc:#a06bff"><span class="pc-hub-orb" aria-hidden="true"></span> Hub</a>
     <a href="https://nayanet.app/personal" style="--rc:#3fb8ff"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">✦</span> Personal</a>
     <a href="https://nayanet.app/business" style="--rc:#31cb8d"><span class="os-jewel os-jewel-sm" style="--jc:#31cb8d">✦</span> Business</a>
     <a href="https://nayanet.app/space" style="--rc:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">✦</span> World</a>
@@ -15127,9 +15134,15 @@ window.NayaNotif = window.NayaNotif || {
         activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
         spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>',
         eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
-        plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
+        plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+        /* HUB-RETURN 2026-11-16 (item 2): the right + is the same + object. */
+        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
       };
-      var SEGS = [['plus', 'ADD', '#a06bff'], ['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'WORLDS', '#ffbf3d'], ['eco', 'ECOSYSTEM', '#a06bff']];
+      /* HUB-RETURN 2026-11-16 (item 2): the + at the RIGHT end. The five
+         stay exactly as harvested (plus/mail/activity/spaces/eco, same
+         order, same colours); the sixth seg is the second +, purple like
+         the left one — purple on both ends. It opens CONNECT, never CREATE. */
+      var SEGS = [['plus', 'ADD', '#a06bff'], ['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'WORLDS', '#ffbf3d'], ['eco', 'ECOSYSTEM', '#a06bff'], ['plus-connect', 'CONNECT', '#a06bff']];
       bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
       bar.setAttribute('aria-label', 'Notifications');
       var row = document.createElement('div'); row.className = 'notif-row';
@@ -15139,7 +15152,7 @@ window.NayaNotif = window.NayaNotif || {
         b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
         b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
         b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>';
-        b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(); return; } self.tap(s[0]); });
+        b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'create', b); return; } if (s[0] === 'plus-connect') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'connect', b); return; } self.tap(s[0]); });
         row.appendChild(b);
       });
       bar.appendChild(row); document.body.appendChild(bar);
@@ -15151,6 +15164,61 @@ window.NayaNotif = window.NayaNotif || {
     }
   };
   window.NayaNotif.init();
+</script>
+<script>
+/* ——— PERSONAL HUB-RETURN 2026-11-16 — the way home + Join knows who you are ———
+   (1) THE door constant: window.NAYA_HUB_URL. The drawer Hub button and the
+   owner Join path both read this one line; the live step sets/confirms it to
+   the live Hub (https://nayanet.app/hub). STAGING NOTE, named plainly: no
+   current staged Hub build exists to point at — the H1 brief names only a
+   local Hub working file + the live Hub, and the newest staged Hub file is
+   the 2026-11-12 nav-round experiment, which is NOT the Hub — so staging
+   points at the live Hub and the live step confirms this same line. Never
+   hard-code a second Hub URL anywhere.
+   (3) Join NayaNET knows who you are. Owner check = the page's own owner
+   signals, harvested from the membership kit's owner-visibility in this
+   same file (token key + claim flag + ?owner=), with one tightening:
+   ?owner= must MATCH this page's alias — the kit accepts any value, the
+   Join button needs the match, because a bare ?owner= proves nothing. A
+   Supabase session alone is NOT an owner signal: it proves someone is
+   signed in, not that they own THIS page — a different signed-in citizen
+   is a visitor by the brief. Visitor path is untouched: the href stays
+   nayanet.app/joinus, the owner's ambassador Smart Link. */
+(function(){
+  'use strict';
+  var HUB_URL='https://nayanet.app/hub';
+  window.NAYA_HUB_URL=HUB_URL;
+  var PAGE_ALIAS=(typeof window!=='undefined' && window.PAGE_ALIAS) ? window.PAGE_ALIAS : 'flagship-personal';
+  function lsGet(k){ try{ return window.localStorage.getItem(k); }catch(e){ return null; } }
+  function pcIsPageOwner(){
+    try{
+      if(lsGet('nayanet_owner_session')) return true;
+      if(lsGet('nayanet_owner_claim')==='1') return true;
+      var q=(typeof location!=='undefined') ? location.search : '';
+      var m=q.match(/(?:^|[?&])owner=([^&]+)/);
+      if(m && decodeURIComponent(m[1])===PAGE_ALIAS) return true;
+    }catch(e){}
+    return false;
+  }
+  window.pcIsPageOwner=pcIsPageOwner;
+  window.pcJoinTarget=function(){ return pcIsPageOwner() ? 'hub' : 'join'; };
+  try{ var hb=document.getElementById('pc-hub-home'); if(hb) hb.setAttribute('href', HUB_URL); }catch(e){}
+  function routeJoin(e){
+    if(!pcIsPageOwner()) return;
+    if(e && e.preventDefault) e.preventDefault();
+    if(e && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)){ try{ window.open(HUB_URL, '_blank'); }catch(err){ window.location.assign(HUB_URL); } return; }
+    window.location.assign(HUB_URL);
+  }
+  /* Every Join NayaNET control on the page behaves the same way: the doors
+     row (#joinbtn), the cover slot ([data-mw-cover]), and the two Smart
+     Access course mirrors (#saHeroJoin, #saSectionJoin) — one check, one
+     destination. No other click handler on #joinbtn exists in this file. */
+  document.addEventListener('click', function(e){
+    if(!e.target || !e.target.closest) return;
+    var j=e.target.closest('#joinbtn,[data-mw-cover="Join NayaNET"],#saHeroJoin,#saSectionJoin');
+    if(j) routeJoin(e);
+  });
+})();
 </script>
 <script>
 /* SMART BAR v1.0 host wiring (host page, not the system) */
@@ -26866,10 +26934,29 @@ function fcPaintStubs(){
 
 /* ---------- the + menu (in the bottom bar) ---------- */
 var plusMenu=$('fcPlusMenu');
-function fcClosePlusMenu(){ if(plusMenu) plusMenu.hidden=true; }
-window.fcTogglePlusMenu=function(anchor){
+/* HUB-RETURN 2026-11-16 (item 2) — the two + menus are DIFFERENT (ratified
+   by Shawn's thumbs-up 17:08Z): LEFT + = CREATE (Make a post / Smart note /
+   Naya note), RIGHT + = CONNECT (Message / Mail / Create world), most-used
+   first. The six harvested items stay verbatim — this only filters and
+   reorders them per menu. No mode (the composer plus) = all six, as before.
+   Tapping the other + while a menu is open SWITCHES the menu in place
+   instead of just closing it. */
+var _pcPlusItems={};
+(function(){ if(!plusMenu) return; Array.prototype.forEach.call(plusMenu.querySelectorAll('[data-fc-plus]'), function(el){ _pcPlusItems[el.getAttribute('data-fc-plus')]=el; }); })();
+var _pcPlusOrderAll=['post','naya','smart','message','mail','world'];
+var _pcPlusOrder={create:['post','smart','naya'],connect:['message','mail','world']};
+function _pcPlusShow(mode){
+  var order=(mode && _pcPlusOrder[mode]) ? _pcPlusOrder[mode] : _pcPlusOrderAll;
   if(!plusMenu) return;
-  if(!plusMenu.hidden){ fcClosePlusMenu(); return; }
+  plusMenu.setAttribute('data-pc-menu', mode || 'all');
+  order.forEach(function(k){ var el=_pcPlusItems[k]; if(el){ el.hidden=false; plusMenu.appendChild(el); } });
+  _pcPlusOrderAll.forEach(function(k){ var el=_pcPlusItems[k]; if(el && order.indexOf(k)<0) el.hidden=true; });
+}
+function fcClosePlusMenu(){ if(plusMenu){ plusMenu.hidden=true; plusMenu.setAttribute('data-pc-menu',''); } }
+window.fcTogglePlusMenu=function(anchor, mode, segEl){
+  if(!plusMenu) return;
+  if(!plusMenu.hidden){ if(mode && plusMenu.getAttribute('data-pc-menu')!==mode){ _pcPlusShow(mode); return; } fcClosePlusMenu(); return; }
+  _pcPlusShow(mode);
   /* COMPOSER SIMPLIFY 2026-11-14: an anchor opens the menu BELOW it (the
      composer plus sits near the top); no anchor keeps the old behaviour —
      ABOVE the bottom-bar plus. top/bottom are cleared on each branch so a
@@ -26891,7 +26978,7 @@ window.fcTogglePlusMenu=function(anchor){
          the flip in a short viewport, so five of six items ran off the
          bottom. Clamp the flipped top to 8px so all six stay in view. */
       plusMenu.style.top=Math.max(8, ar.top-10-mh)+'px'; plusMenu.style.bottom=''; }
-  } else { var plus=document.querySelector('.notif-seg[data-notif="plus"]');
+  } else { var plus=segEl || document.querySelector('.notif-seg[data-notif="plus"]');
     if(plus){ var r=plus.getBoundingClientRect();
       plusMenu.style.left=Math.max(110, Math.min(window.innerWidth-110, r.left+r.width/2))+'px';
       plusMenu.style.top=''; plusMenu.style.bottom=(window.innerHeight-r.top+10)+'px';
@@ -27092,7 +27179,7 @@ document.addEventListener('click', function(e){
     window.fcClosePicker();
     window.fcOpenChat({name:name, alias:alias, kind:kind, mode:pickerMode});
     return; }
-  if(plusMenu && !plusMenu.hidden && !e.target.closest('#fcPlusMenu') && !e.target.closest('[data-notif="plus"]')) fcClosePlusMenu();
+  if(plusMenu && !plusMenu.hidden && !e.target.closest('#fcPlusMenu') && !e.target.closest('[data-notif="plus"],[data-notif="plus-connect"]')) fcClosePlusMenu();
 });
 document.addEventListener('keydown', function(e){
   if(e.key==='Escape'){
@@ -27178,6 +27265,27 @@ body.pc-drawer-open #naya-notif-bar{z-index:955!important;}
   .pc-feedwrap{grid-template-columns:minmax(0,1fr);} /* BUTTON FIX 2026-11-14 W1: 1fr sized the track to the card's min-content (514px @390px) */
   .pc-rail-list{max-height:none;overflow:visible;}
 }
+
+/* ═══ PERSONAL HUB-RETURN 2026-11-16 — the way home + the two + menus ═══
+   (1) The Hub home button: lit at rest — the drawer's own hover glow
+   (.os-drawer a:hover, harvested verbatim with --rc #a06bff resolved),
+   so it reads as home before any touch. (2) The black circle orb: the
+   Hub's black circle icon, a real object — obsidian ball, white rim,
+   top-left light, purple glow. (3) Hidden plus-menu items stay hidden:
+   author display:flex on .fc-plusitem beats the UA [hidden] rule, so the
+   hide needs this line. (4) Six segs in the bottom bar: the <=400px row
+   gap drops 12px -> 6px so all six fit at 360 (6x50 + 5x6 + 28 = 358). */
+.os-drawer a.pc-hub-home{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -3px 6px rgba(0,0,0,.5),0 0 22px #a06bff,0 8px 20px rgba(0,0,0,.55);}
+.pc-hub-orb{flex:none;width:23px;height:23px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#3a3a48 0%,#0a0a0f 70%);border:1.5px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -3px 6px rgba(0,0,0,.6),0 0 12px -2px #a06bff;}
+.fc-plusitem[hidden]{display:none!important;}
+/* (4b) Six segs in the bottom bar, the 401-640px band: the 54px tiles +
+   34px gaps measure 566px wide, so at 480 both + tiles clip (measured:
+   first seg x=-43, last right=523). The compact 46px tiles (the same size
+   the <=400px rule already uses) + 12px gap fit six at 401px (388px) and
+   also rescue the five, which already overflowed 401-493px in the base
+   (494px in a 480px viewport). Desktop keeps the 54px tiles. */
+@media(max-width:640px){.notif-row{gap:12px;}.notif-tile{width:46px;height:46px;}.notif-seg{padding:2px 2px 0;}}
+@media(max-width:400px){.notif-row{gap:6px;}}
 </style>
 <script>
 /* ═══ PERSONAL-COMPLETE — the side rail (Shawn 2026-11-13) ═══
