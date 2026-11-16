@@ -7230,7 +7230,7 @@ button.os-ld-node .os-ld-n{
 <div class="os-roomline">
 <a class="ph-connect" href="https://nayanet.app/rooms/connections">Open the Connections room →</a>
 </div>
-<div class="cx-stage" style="padding:0"><div class="cx-ambient" aria-hidden="true"><div class="cx-orb o1"></div><div class="cx-orb o2"></div><div class="cx-orb o3"></div></div>
+<div class="cx-stage"><div class="cx-ambient" aria-hidden="true"><div class="cx-orb o1"></div><div class="cx-orb o2"></div><div class="cx-orb o3"></div></div>
 <div id="os-faces"><div class="os-skel"></div></div>
 <div id="os-members"></div>
 <div id="os-born"></div>
@@ -11154,6 +11154,7 @@ function wallCard(j, iso, pid, idx){
     var pres=presenceOf(at);
     return '<div class="os-face os-draw-in cx-card" data-face-tile="'+esc(name)+'" style="--avc:'+c+';--cc:'+c+';animation-delay:'+Math.min(ix*0.06, 0.5)+'s">'+avatarHTML(name, at, c)+'<span class="os-face-main"><span class="os-face-name">'+esc(name)+(you?'<span class="os-you" style="display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;border:1px solid '+c+';color:'+c+';font-size:9px;font-weight:900;letter-spacing:.12em;vertical-align:2px">You</span>':'')+(String(name)==='Trigger Test Two'?'<span class="cx-test">TEST DATA</span>':'')+'</span><span class="os-face-fact">'+esc(fact)+'</span><span class="os-pres'+(pres.on?'':' dim')+'"><i></i>'+esc(pres.txt)+'</span></span><button class="ph-msg os-face-msg" type="button" data-face-msg="'+esc(name)+'">Message</button></div>';
   }
+  window.faceTileHTML = faceTileHTML; /* ROOM-LOOK 2026-11-16 (C1/C2/C6): the match-groups block (a separate <script> outside this IIFE) calls window.faceTileHTML and silently fell back to a bare "Name — Fact" div — no avatar, no match, no pill, no click to open. Exposed on window here so there is one tile, no copy (same pattern as window.upIsProofName / window.mwPaintWallPosts in this file). */
   document.addEventListener('click', function(e){
     var b=e.target.closest?e.target.closest('[data-face-msg]'):null;
     if (!b) return;
@@ -29812,9 +29813,10 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 /* ═══ ONE ROUND 2026-11-15 — Personal: About unfold + My World rectangles + Skills three-part + Connections room-look ═══ */
 /* Room CSS below: harvested VERBATIM from the live Connections room
    (https://nayanet.app/rooms/connections, fetched 2026-11-15, /tmp/conn-room.html).
-   The wrapper carries class="cx-stage" with inline padding:0 so the room's
-   stage padding does not move the Personal layout; every rule below is the
-   room's own text, unedited. */
+   The wrapper carries class="cx-stage" (the inline padding:0 is GONE since the
+   room-look round 2026-11-16, so the room's own stage padding applies and the
+   orbs breathe); every rule below is the room's own text, unedited. The
+   2026-11-16 additions (z-index lift, mobile query) are verbatim too. */
 .cx-stage{
   --cx-purple:#9d75ff; --cx-purple-lt:#c4a8ff;
   position:relative;
@@ -29933,6 +29935,18 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 @media(prefers-reduced-motion:reduce){
   .cx-stage .cx-card, .cx-stage .cx-orb, .cx-stage .cx-ava::after, .cx-stage .cx-orb-icon::before, .cx-stage .cx-orb-icon::after, .cx-stage .cx-kicker-text{ animation:none; }
   .cx-stage *{ transition:none !important; }
+}
+
+/* --- ROOM-LOOK 2026-11-16 — the two room rules the Nov 15 harvest missed,
+   VERBATIM from the live room (re-fetched 2026-11-16, 255,351 B, same bytes):
+   the z-index lift (without it the positioned orbs paint OVER the cards) and
+   the room's own mobile query. --- */
+.cx-stage > *:not(.cx-ambient){ position:relative; z-index:1; }
+@media(max-width:760px){
+  .cx-stage{ padding:28px 16px 70px; }
+  .cx-stage .cx-card{ padding:16px 18px; gap:14px; }
+  .cx-stage .cx-ava{ width:48px; height:48px; font-size:16px; }
+  .cx-stage .cx-modal{ padding:26px 22px; }
 }
 
 /* --- mappings: the room's classes onto this page's own tile markup --- */
@@ -30195,7 +30209,7 @@ function pxEnhancePerson(){
   if(msgCount) sub.push(msgCount+(msgCount===1?' message':' messages')+' with them here');
   var ini=(name||'?').charAt(0).toUpperCase();
   var col=(face&&face.color)||'#31cb8d';
-  var test=name==='Trigger Test Two';
+  var test=(name==='Trigger Test Two')||/^check friend/i.test(name)||/\btest\b/i.test(name); /* ROOM-LOOK 2026-11-16 (C6): was hardcoded to the one name — "Check Friend" opened pill-less. Mirrors the file's own isTestName predicate; the tile gets its pill from stampFaces, the person view has no stamping pass. */
   var x=document.createElement('div');
   x.className='os-person-x';
   x.innerHTML='<div class="os-person-x-top"><span class="cx-ava big" style="--cc:'+col+'">'+pxEsc(ini)+'</span>'
@@ -30207,18 +30221,26 @@ function pxEnhancePerson(){
     +'<button type="button" class="ph-msg" data-px-act="audio">Audio call</button>'
     +'<button type="button" class="ph-msg" data-px-act="video">Video call</button>'
     +'<button type="button" class="ph-msg" data-px-act="save">Save contact</button>'
+    +'<button type="button" class="ph-msg pc-eye-connect" data-pc-connect="'+pxSlug(name)+'">Connect</button>'
     +'</div><p class="os-note os-person-x-status" data-px-status hidden></p>'
     +'<div class="os-person-x-field"><label>How you know them</label><input class="os-input" data-px-know type="text" placeholder="How you know them \u2014 in a few words" autocomplete="off"></div>'
+    +'<div class="os-person-x-field"><label>What they do</label><input class="os-input" data-px-do type="text" placeholder="What they do \u2014 work, craft, thing they make" autocomplete="off"></div>'
+    +'<div class="os-person-x-field"><label>How to reach them</label><input class="os-input" data-px-reach type="text" placeholder="How to reach them \u2014 phone, email, handle" autocomplete="off"></div>'
     +'<div class="os-person-x-field"><label>Notes on them</label><textarea class="os-textarea" data-px-note rows="2" placeholder="Add a note about them\u2026"></textarea><div class="ph-actions"><button type="button" class="ph-connect" data-px-note-add>Add note</button></div><div class="os-person-x-notes" data-px-notes></div></div>';
   h3.parentNode.insertBefore(x,h3.nextSibling);
   try{ if(typeof window.osContactSaved==='function' && window.osContactSaved(name)){ var _sb=x.querySelector('[data-px-act="save"]'); if(_sb) _sb.outerHTML='<span class="os-saved-badge">\u2713 In Contacts</span>'; } }catch(e){}
-  var know=x.querySelector('[data-px-know]');
-  if(know){
-    know.value=rec.know||'';
-    know.addEventListener('change',function(){
-      var r=pxGet(key,{know:'',notes:[]}); r.know=know.value; pxPut(key,r);
+  try{ var _cb=x.querySelector('[data-pc-connect]'); if(_cb){ var _ck=false; try{ _ck=localStorage.getItem('pc-connect-'+pxSlug(name))==='requested'; }catch(e){} if(_ck){ _cb.classList.add('requested'); _cb.textContent='Requested \u2713'; _cb.disabled=true; } } }catch(e){}
+  function pxBindField(sel, prop){
+    var el=x.querySelector(sel); if(!el) return;
+    el.value=rec[prop]||'';
+    el.addEventListener('change',function(){
+      var r=pxGet(key,{know:'',notes:[]}); r[prop]=el.value; pxPut(key,r);
+      var st2=x.querySelector('[data-px-status]'); if(st2){ st2.hidden=false; st2.textContent='Saved.'; }
     });
   }
+  pxBindField('[data-px-know]','know');
+  pxBindField('[data-px-do]','do');
+  pxBindField('[data-px-reach]','reach');
   pxRenderNotes(x,rec.notes||[]);
   var rows=card.querySelector('.os-tl-rows');
   if(rows&&!card.querySelector('.os-person-x-related')){
@@ -30684,18 +30706,27 @@ setMode('unfold');
 .ib-stamp{white-space:nowrap!important;flex-wrap:nowrap!important}
 .ib-stamp>*{white-space:nowrap!important}
 .ib-id{display:none!important}
-/* F3 — Connections tab: person TILES, not rows. Scoped to #people only —
-   the dashboard/report faces keep their row look. The tile is a column:
-   orb on top, name centred under it, fact, presence, then CONNECT. */
-#people .os-faces{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
-#people .mw-face-row{display:flex;flex-direction:column;align-items:center;position:relative;min-width:0}
-#people .mw-face-row>span{flex:1;min-width:0;width:100%;display:flex;flex-direction:column;align-items:center}
-#people .mw-face-row .mw-pick-cb{position:absolute;top:8px;right:8px;z-index:2;margin:0}
-#people .os-face{flex-direction:column!important;align-items:center!important;text-align:center!important;padding:18px 12px 16px!important;width:100%}
-#people .os-face .os-face-main{align-items:center!important;text-align:center!important;width:100%}
-#people .os-face .os-face-name{display:block;text-align:center!important;margin:0 0 2px}
-#people .os-face .os-face-fact{text-align:center}
-#people .os-face .os-face-msg{margin-top:8px}
+/* ROOM-LOOK 2026-11-16 (C1) — Connections tab: the room's nice LIST, not tiles.
+   SUPERSEDES F3's tiles (eye-fix 2026-11-15): F3's grid + column !important rules
+   re-broke the TILE FIX row (one-round-addenda) back into centred tiles, so the
+   tab never looked like the live room. Shawn's words 15:46Z Nov 15: "just this
+   nice um list". The room's own .cx-card row rules (one-round block, harvested
+   verbatim) now drive the tile; these rules only undo F3 and left-align the
+   text the .os-face base centres. Scoped to #people only — the dashboard and
+   report faces keep their own look. The .pc-eye-connect rules below are F3's,
+   kept: CONNECT is the row's quick action (Message/Save already live in the
+   person view — TILE FIX). The match badge hides here: the tile's own fact
+   line already reads "49% match · Invited". */
+#people .os-faces{display:flex;flex-direction:column;gap:14px}
+#people .mw-face-row{display:flex;align-items:center;gap:12px;min-width:0}
+#people .mw-face-row>span{flex:1;min-width:0;display:block}
+#people .mw-face-row .mw-pick-cb{position:static;flex:none;margin:0}
+#people .mw-face-row .mw-match-badge{display:none}
+#people .os-face{text-align:left}
+#people .os-face .os-face-main{align-items:flex-start;text-align:left}
+# people .os-face .pc-eye-connect{flex:none;margin-top:0}
+@media(max-width:760px){#people .os-face .pc-eye-connect{display:none}}
+#people .os-person-x-actions .pc-eye-connect{margin-top:0}
 .pc-eye-connect{margin-top:10px;padding:10px 22px;border:2px solid #31cb8d;border-radius:999px;background:linear-gradient(180deg,#1b1b24,#050507);color:#fff;font-weight:900;font-size:13px;letter-spacing:.04em;cursor:pointer;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #31cb8d,0 6px 14px rgba(0,0,0,.5)}
 .pc-eye-connect:hover,.pc-eye-connect:focus-visible{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 22px -2px #a06bff,0 8px 18px rgba(0,0,0,.55);outline:none}
 .pc-eye-connect.requested{border-color:#ffbf3d;color:#ffbf3d}
