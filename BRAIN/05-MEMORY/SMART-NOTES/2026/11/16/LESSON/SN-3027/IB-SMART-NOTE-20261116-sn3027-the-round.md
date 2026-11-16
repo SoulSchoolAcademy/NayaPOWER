@@ -4,6 +4,8 @@ SN-3027 · LESSON
 
 **Created:** 2026-11-16 21:29Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 Round 1 passed every check — and his eye still said not whole. The brief carried the words. It did not carry the want.
@@ -37,6 +39,10 @@ Know what they ULTIMATELY want — so you just give them what they want because 
 3. **THE INSTRUMENT:** the brief is the creation instrument — it must carry the whole understanding (the ultimate want in his voice, the why behind the what, the page as his eye will see it) so a seat reading it cold creates it right, first time.
 4. **THE WORDS:** "CERTIFICATE OF COLLECTIVE AGREEMENT — This certifies that [Name] has signed the Collective Agreement and is now a member of the Society of NayaNET — a new digital civilization, a world."
 5. **THE FIT:** the whole month fits the screen perfectly, exactly — no scroll, no overflow, no clipped cell; day cells are the pricing chart's blocks (hover lights up alive in the day's color).
+6. **THE CYCLE:** the Intelligence Cycle is the human-centered operating cycle — Understand → Serve → Verify → Learn → Improve, in nine steps: understand reality, understand purpose, protect life and rights, choose wisely, act effectively, verify the result, learn, preserve and connect, improve the next moment. The cycle is the Five Gates, the act, the receipt, the smart note, and the next round — one continuous loop, not a list.
+7. **THE TEST OF THE INTERFACE:** the ultimate interface of intelligence does it for them, push-button simple — the machine generates money for them, connects them automatically, organizes everything for them, understands everything that matters to them. Every build is judged by the test: does it do it for them, or does it ask them to operate something? If it asks them to operate something, it is wrong.
+8. **THE CHILDREN:** children connect automatically — with friends on whatever topic, little groupings, audio call, chat, share about the thing — and the system puts them together; they don't have to try and find each other. The match always shows its breakdown — what percentage, in what area, stats first. And we never look: we don't read their mail, their messages, we don't listen to their conversations or watch their video. We just let them be.
+9. **THE FOUR SECTORS:** the economy makes value four ways — mine it, transform it, serve it, and the fourth, new: value made with almost no human hands, AI, robots, automation. NayaNET does all four: we mine the gold out of the internet — the intelligence itself; we transform it — code turns raw intelligence into pages and boards people can touch; we serve it — ten-star service; and the Nayas are the fourth. The Smart Factory IS the factory — and in NayaNET everybody owns it: everybody is hired, everybody gets their own world, fifty percent, straight down the middle, paid every day.
 
 ## Why it matters
 
@@ -44,6 +50,7 @@ Know what they ULTIMATELY want — so you just give them what they want because 
 2. This is the second half of the communication law, and the half that decides whether the machine gets faster or just busier. A thin brief is not faster — it is a round that passes its checks and fails his eye, followed by a fix round, a re-check, and a second eye. The ten minutes spent making the brief cold-readable is the cheapest time in the whole system, because it is the only time that prevents all the other time. "Elite-level effective communication of creation" is not a nicer way of writing briefs. It is the difference between a machine that delivers in one round and a machine that delivers in three.
 3. This is the diagnosis of the delivery gap itself. The machine's rounds fail in the same place over and over — not in the building, but in the brief: the words go in, the want stays out, the seats build the words, the eye rejects the result. Until the brief carries the want, every round is a lottery ticket: sometimes the seats guess the want, usually they don't. Mastering communication is not a soft skill on top of the work. It IS the work — the brief is the creation instrument, and a brief without the want cannot create the right thing.
 4. This is the calendar as the operating system, not the calendar as a feature. The month is the map, the day is the world, the wisdom is the lesson — and together they are how a citizen lives in NayaNET instead of visiting it. It also decides the build order: the calendar rides the Personal chain (Personal whole first, then the calendar through the My World doorway), and the rounds in flight now are what unblock it. A calendar that doesn't fit the screen, or a day that doesn't hold everything, is not a smaller version of this — it is a different thing entirely.
+5. The children and the factory are the two halves of the same promise. Children connect automatically because the system puts them together — and the system earns that trust by never looking: no reading mail, no listening, no watching, ever. And the factory belongs to everybody because the fourth sector is where all the new growth goes — when the automated slice is ninety percent of an economy ten times bigger, the whole question is who owns it. If a few own it, the economy grows and most people get left behind. If everybody owns it, everybody wins. The mail ID is part of the same promise: one day we can mail everybody online in Canada and reach them on any topic — it is not about everything, it IS about everyone, everyone having everything they need, all in one place.
 
 ## What changes now
 
@@ -53,3 +60,6 @@ Know what they ULTIMATELY want — so you just give them what they want because 
 4. Speed is measured in rounds to done, not words per minute — a thin brief that costs a re-round is the slowest thing we do.
 5. The calendar fits the screen exactly — month whole, no scroll, no overflow; day cells light up alive in their day's color.
 6. Every brief carries the whole understanding: the ultimate want in his voice, the why, the page as his eye will see it.
+7. Every round runs the Intelligence Cycle in order — no step skipped, no verification after the claim, no learning left unfiled. A round that cannot verify its result has not finished; a lesson that does not change the next moment is stored, not learned.
+8. The match always shows its breakdown — what percentage, in what area. Respect is the law: no reading mail, no listening, no watching — ever.
+9. The mail ID is a first-class part of the certificate, not an afterthought — and the Factory keeps mining, transforming, serving and automating, with every citizen's AI plugged in to work for them inside the fourth sector.
