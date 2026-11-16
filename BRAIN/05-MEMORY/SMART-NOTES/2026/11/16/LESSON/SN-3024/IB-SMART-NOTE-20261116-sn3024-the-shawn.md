@@ -4,6 +4,8 @@ SN-3024 · LESSON / SYSTEM
 
 **Created:** 2026-11-16 21:18Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 Having the most intelligent AI is nothing. What it can do, right now, the thing that matters — that is everything.
