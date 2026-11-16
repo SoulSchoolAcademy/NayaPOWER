@@ -29366,6 +29366,8 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
        the message-mode wrapper below puts its own words back. */
     var h=document.querySelector('#fcPicker [data-mw-tr="pickhint"]');
     if(h) h.textContent='Pick a thing to open it \u2014 or feature it, and it stays at the top of your feed.';
+    var n=document.querySelector('#fcPicker [data-mw-tr="picknote"]');
+    if(n) n.textContent='These are your things. Tap one to open it. Tap \u201cFeature in my feed\u201d and it stays at the top of your feed, ready whenever you come back.';
     var rec=document.getElementById('pcWorldRec'); if(rec) rec.hidden=false;
     var panel=document.querySelector('#fcPicker .fc-panel'); if(panel) panel.style.setProperty('--ac','#e84fff');
     var p=document.getElementById('fcPicker'); if(p) p.setAttribute('aria-label','Choose a thing');
@@ -29417,6 +29419,8 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
          picker's own hint, placeholder, accent and label back. */
       var h=document.querySelector('#fcPicker [data-mw-tr="pickhint"]');
       if(h) h.textContent='Search your people and things \u2014 pick one and the message pops up.';
+      var n=document.querySelector('#fcPicker [data-mw-tr="picknote"]');
+      if(n) n.textContent='These are your people and things. Tap one and a message opens \u2014 write it, send it, and it lands in their Smart Mail inbox.';
       var rec=document.getElementById('pcWorldRec'); if(rec) rec.hidden=true;
       var s2=document.getElementById('fcPickerSearch');
       if(s2){ s2.setAttribute('placeholder','Search people and things\u2026'); s2.setAttribute('aria-label','Search people and things'); }
