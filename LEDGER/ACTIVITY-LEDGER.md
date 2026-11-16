@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-16 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-16 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2052,6 +2052,14 @@ _Last updated: 2026-11-16 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1496-lane8.md`
 
 **Evidence:** Verified: scan script hidden_files/fr5-gate-scan-t1496.py sha256 1edcf578cbf5d95703af5a831a605c4794be990b4a5d26f79cc1ef379e29723b byte-exact to receipt; results table bfa25f91bf70806d26a9121d4ffe4d4ac2405e50622876664d7acef36231fb4a byte-exact, 76 gates / 96 files at repo_tip 6c60c3285f9556747736ac7dcc747e0b03ea1a85, gates_with_vocab_hits=[]; board-
+
+### ✅ t1496 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** decision-replay-t0780-thirdseat-t1496-lane3-verdict-table.json
+
+**Receipt:** `twelve-lane-receipts/t1496-lane3.md`
+
+**Evidence:** Backlog sweep — the last unscored receipt in the dir (backlog now 0). VERIFIED first-hand this tick: every cited pin re-derived byte-identical — subject pins full-sha match (t1481 receipt 190596cf..., t1490 receipt 05e874d6... = t1490-lane10.md, replay file 924a5a40..., protocol cfb2c64c...), F-R1 pins prefix-match (surge-a-verdict-t0780 0e5c56bab7
 
 ### ✅ t1496-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -53284,6 +53292,12 @@ _Last updated: 2026-11-16 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261115-2026 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-15 20:26 PST: full claim sweep of all 31 queued briefs, 0 claimed, queue frozen sixth hour
+
+**Evidence:** Fresh-window receipt (only unscored receipt; backlog now 0). VERIFIED in live bytes this tick: sweep log hidden_files/brief-queue/claim-sweep-20261115-2023.log exists (24,911 bytes) with all 31 attempts reconciled — 4 SKIP (interactive, exit 7) + 25 ATTEMPT exit 7 + 2 ATTEMPT exit 2 = 29x7 + 2x2, matching the receipt's claimed breakdown; receipt bl
 
 ### ✅ gate-stall-20261115-1920 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
