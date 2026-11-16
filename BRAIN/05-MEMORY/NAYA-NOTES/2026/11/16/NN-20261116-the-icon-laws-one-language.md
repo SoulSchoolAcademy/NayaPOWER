@@ -38,4 +38,4 @@ Every icon and every button, on every page: black obsidian inside, white icon or
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-3033 — The Icon Laws — One Language, Everywhere*
+*Paired Smart Note: SN-3038 — The Icon Laws — One Language, Everywhere*
