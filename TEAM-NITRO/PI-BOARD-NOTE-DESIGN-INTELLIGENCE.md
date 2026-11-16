@@ -1778,3 +1778,52 @@ byte-identical blob read-back. Numbering: next-sn-number.py re-run
   (LEFT 17, RIGHT 15) stands as a proposal only, presented 19:37Z,
   awaiting his word. Do not record any sidebar list as settled until
   he rules.
+
+## Intelligence Loop run 231 — addendum (19:38Z/19:44Z, run 230 handoff completed)
+
+Run 230's handoff completed first: its late-catch trio SN-3013–3015 +
+paired Naya Notes filed + blob-verified this run, and its PI addendum
+#2 filed + verified (board blob 0f16e4dc, 543,558 B). Run 230 is now
+whole. Two more dictations then filed as SN-3016/3017 + paired Naya
+Notes, all PUT 201 + byte-identical blob read-back. Numbering:
+next-sn-number.py fresh run (run231-numbering.log): highest SN-3015,
+next free SN-3016.
+- 19:38Z ONE ULTIMATE SYSTEM, ONE ULTIMATE LANGUAGE (SN-3016): "the
+  whole system — including the Hub, all the Personal pages, all of it
+  — works on the same logic; they are all interconnected pages with
+  the same feel and look and concept and elevation and organization.
+  You're not creating many different systems you're creating one
+  ultimate system that's all interconnected. With one ultimate
+  language. The power language. The language of Naya. High level
+  design high level functions super useful super helpful 10 star all
+  the way through the ultimate service. In service to you in service
+  for us." Law: every page is the same system, one language — a page
+  that invents its own feel is a break in the system, not a new page.
+  The sidebar lists are one list for one system, seen from the left
+  and from the right. Captain filed this in MEMORY.md the same pass.
+- 19:44Z HIS CORRECTIONS MAKE THE LIST — PRICING TO THE RIGHT, WORLDS
+  AT THE TOP (SN-3017): his corrections to the sidebar lists
+  supersede the 19:37Z reasoned list — the SN-3015 method working:
+  propose, let him correct, carry the corrected list. Pricing (Naya
+  Power) goes RIGHT, very bottom, with Member Login. "5" Day Challenge
+  goes (same as Naya Academy). Intro Report goes (not used). Life with
+  Naya and Leaderboards rise toward the top of the right; Maxis "AI
+  Score" kept; worlds at the TOP of the right, one after another.
+  Dashboard reframed: your world IS the calendar, then into Smart
+  Stats (the current Dashboard), with a Leaderboards link. Personal
+  becomes a sub-tab: Personal Mail · Personal Instant Messages ·
+  Personal Page; the trio below shows notification counts. His charge:
+  write out the left and right lists for his confirmation, and think
+  logically about the best display so it is useful and functional —
+  how it functions, ten-star level. CORRECTED LIST (LEFT 16, RIGHT 13)
+  presented 19:44Z — STILL NOT RATIFIED, awaiting his confirmation;
+  never recorded as settled until he says so. Captain sent the
+  correction to the Hub sidebars-plus coordinator (09cd3722) and
+  updated MEMORY.md + the floor STATE block the same pass.
+- STATE (not lessons): thank-you loop tail CLOSED 19:45–19:50Z —
+  sweep 82/82 test aliases purged, race PASS (two identical first-note
+  POSTs 62.5 ms apart returned the same note id, total 1); One List
+  thankyou-loop-live-20261116 closed. PI refresh 19:40Z published
+  (hash cfea9430, 42/204 done-proven). Team-pulse re-scoped DONE
+  19:14Z — ledger 90 → 3 live items; mail read still BLIND (19:54Z),
+  repair is Shawn's hand, already escalated, NOT re-raised.
