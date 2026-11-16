@@ -1346,3 +1346,103 @@ job is whole at ten. Personal correction round DONE — re-check PASS 10/10
 staged sha fd84bb81...), ready for his eye. Run 226 closes here: anything
 landing after ~17:47Z belongs to run 227. No PR, no merge, no deploy, no
 live edit.
+
+## Intelligence Loop run 227 — 2026-11-16 ~17:53–18:1xZ (seat: Naya Nitro Sigma)
+
+LISTEN — what is new since run 226 (closed ~17:52Z, highest SN-2985): FIVE
+new dictations/decisions from Shawn, all in the main chat + MEMORY.md +
+daily log, none of them filed by run 226 (its LISTEN snapshot closed
+before the 17:53Z legal-pages burst — the burst landed live while this
+run was working, and the run kept catching it, through 18:07Z):
+- 17:53Z SHAWN'S OWN LEGAL PAGES — HE DID THEM AS WELL: he pasted HIS
+OWN ten legal pages — "I did them as well... they're almost half done and
+you can check them against yours." His ten, in footer order: Terms of
+Service · Privacy Policy · Cookie Policy · Refund & Cancellation ·
+Acceptable Use · Community Guidelines · Copyright/DMCA · Ambassador Terms
+· Membership & Billing · Young Citizens — plus his six "before these
+become official" items, his Legal Page Integration Directive handoff, and
+his recommendation: qualified Canadian counsel, with international privacy
+and consumer-law expertise where needed, reviews the completed set before
+publishing as binding terms. The ten form the legal foundation beneath the
+Collective Agreement — not competing with it. He also named Accessibility
+Statement + Disclaimer as two small eventual footer pages. His fill-ins,
+same message: company name NayaNET (N-A-Y-A-N-E-T); address 8-3425 East
+Boundary Road, West Kelowna, BC V4T 2W6; actual official dates, literally
+— never "[Effective Date]"; nothing left unfilled that he gave us. Save
+CORRECTION 17:56Z: the save was interrupted mid-work (only §1–§4 on disk
+at that flush); the save COMPLETED afterwards (67,821 B) and the MERGE IS
+DONE 18:01Z: 12 merged files + MERGE-REPORT-20261116.md in
+legal-official-20261116/ (158 boards verified, three-boards-then-Next-
+button, nayanetpowered@gmail.com on every page, NayaNET + address + Nov 16
+2026 dates, 50% GROSS, BC governing law flagged), delivered to Shawn
+18:01Z. One List legal-writer-drafts CLOSED 18:06Z.
+- 17:54Z LEGAL PAGES PRESENT AS THE UNFOLDING (new presentation law,
+filed in MEMORY.md): he makes the words perfect, Naya outputs them
+properly — Intelligent Boards, one elevated board unfolding to the next,
+text displaying nicely, unfolding elegantly and beautifully, the SAME
+unfolding concept already used all the way through, for ALL legal pages.
+A simple unfolding, one board to the next, all the way through.
+- 17:59Z LEGAL CONTACT EMAIL — nayanetpowered@gmail.com (filed in
+MEMORY.md): the one email for ALL legal contacts (legal, privacy,
+billing, safety, copyright, ambassador, family safety) — including the
+copyright/DMCA contact. He doesn't know what a DMCA agent is; the email
+IS the contact — never claim a registered DMCA agent. His text is good
+as-is; use it. He says we have everything we need.
+- 17:59Z THREE BOARDS, THEN THE BUTTON (charge, filed as law in
+AGENTS.md): legal pages unfold THREE elevated boards at a time, then a
+button to the next — three smaller boards beat one big one. Click the
+button, the next part unfolds, then the next. Easier to read, easier to
+take in. Legal text gets the same beautiful unfolding as everything else
+— never a wall of text because "it's legal". Pro-like, all the way
+through. Sent to the running merge seat the same pass; applied in the
+merge DONE 18:01Z (158 boards, three-boards-then-Next-button).
+- 18:07Z PRIVACY CONFLICT RESOLVED BY HIS WORD: the merge's ONE HIGH
+CONFLICT (Privacy "never read, no exception" vs his Privacy Board 6
+"limited to authorized purposes") needed his word — asked what it meant,
+he ruled: mail and messages are never read, yes, no exceptions; he
+doesn't know what "limited to authorized purposes" means — take that
+wording OUT and say it like what it is. Board 6 now reads: "Nobody reads
+your mail or your messages. Not Naya, not us, not anyone. There is no
+switch for this, no setting, no exception. Processing a message so it can
+reach the person you sent it to is not reading it — nobody here looks at
+what you wrote." Both MERGE FLAGs removed from the Privacy page; no
+"authorized purposes" wording and no merge flags remain in any of the
+twelve pages (captain's grep + this loop's independent grep). MERGE-REPORT
+Conflict 1 updated to RESOLVED BY SHAWN'S WORD (18:07Z). The never-read
+law stands, worded plain. Still drafts until qualified Canadian counsel
+reviews (his recommendation). Next: he gives the final text → builder
+round creates the twelve legal pages as the unfolding (three boards, then
+a button).
+
+SMART-NOTES FILED THIS RUN (5 pairs, all PUT 201 + byte-identical blob
+read-back): SN-2986 Shawn's Own Legal Pages — He Did Them As Well ·
+SN-2987 Legal Pages Present as the Unfolding · SN-2988 Legal Contact
+Email — nayanetpowered@gmail.com · SN-2989 Three Boards, Then the Button
+· SN-2990 Privacy Conflict Resolved by His Word — "Authorized Purposes"
+Is Out (resolves the open conflict carried in SN-2986). Each with a
+paired Naya Note (NN-20261116-<slug>), Paired lines carrying titles
+verbatim, never paths. Numbering: next-sn-number.py said highest SN-2985,
+next free SN-2986, no open-PR claims (run227-numbering.log, ~9.9 min
+live-tree scan). TREECK PASS: SN-2986..2990 each 1x, all 5 NNs each 1x,
+SN-2991 free, highest SN-2990. No PR, no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned
+2212, 0 unparseable, 0 malformed; watermark holds. Healthy — the notes
+live on GitHub, not in the local box tree (same as runs 223–226).
+
+MAIL DIGEST HELD (run227-mail-digest.txt): send path still blocked
+(Supabase reauth_required since 21:06Z Nov 12; send path last proven 401
+Nov 13 04:24Z; team-pulse 18:09Z mail read still BLIND, mail-new
+UNKNOWN). Same known breakage as runs 202–226; repair is Shawn's hand,
+already escalated, NOT re-raised.
+
+OUT OF ALIGNMENT, recorded plainly: standing gaps unchanged — Naya Notes
+filed but not in the live feed (sections build owed); Hub still shows the
+duplicate SN-2906 cycle row (DELETE permission, his hand); Smart Notes
+sync 18:05Z synced 0 new (1950 files, 0 errors, no Hub redeploy — routine
+success); the Hub re-bake failure from run 226 (build_feed_live.py timeout
+600s, SN-2969–2972 in Supabase but not on the live Hub) still stands,
+captain already told Shawn, NOT re-raised. Distillation: SN-2986..2990
+are new raw notes for tonight's 23:17Z daily run. Silent run — no chat
+report owed (nothing here needs Shawn that he hasn't already been told;
+the Daily Intelligence Report 23:17Z is the summary vehicle).
