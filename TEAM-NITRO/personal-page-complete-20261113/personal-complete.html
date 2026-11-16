@@ -30437,4 +30437,26 @@ if(document.readyState==='loading'){
 .pc-card .r4-tiles .os-mini-tile.pct{width:21px!important;}
 .pc-card-top{padding-right:204px!important;}
 </style>
+
+<!-- PERSONAL ROUND 4 FIX 2 (2026-11-16) — rail names read WHOLE in the REQUESTED state too. H1 only. -->
+<style id="fix-personal-round4-fix2-20261116-css">
+/* H1 — THE RAIL NAMES READ WHOLE IN THE REQUESTED STATE TOO. MEASURED
+   (checker 2026-11-15, reproduced here): at rest the connect cluster is
+   199.4px and fits the 204px reserve, but once a citizen clicks CONNECT
+   the button becomes "Requested \u2713" — 103.5px vs CONNECT 82.4px — so
+   the cluster grows to 220.5px, 16.5px past the reserve, and six names
+   run under the row (astraea -14.8px at 390, reading "astra"; sophia,
+   emesa, aurelia, wrena, shawn likewise). The name's right edge is fixed
+   by the name itself, so the cluster itself must shrink. This one rule
+   makes the requested button a compact gold status pill — font 11px to
+   10px, padding 10px 10px to 8px 6px, letter-spacing .06em to 0 — while
+   its text, gold border, gold glow, gold colour and disabled state stay
+   exactly as they were. Measured: requested button 103.5 -> 81.6px,
+   cluster 220.5 -> 198.6px (below the rest cluster 199.4px), so the
+   requested clearance now beats the rest clearance: astraea 7.1px at 390,
+   9.1px at 1920 (rest: 6.3px / 8.4px). Scoped to .pc-card only, so the
+   pop-up "Requested \u2713" (room to spare there) is untouched, and the
+   rest state is untouched — this rule matches .requested only. */
+.pc-card .pc-connect-btn.requested{font-size:10px!important;padding:8px 6px!important;letter-spacing:0!important;}
+</style>
 </body></html>
