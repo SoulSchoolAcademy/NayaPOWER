@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2866",
+ "intelligence": {
+  "title": "The Three-Sentence Board Law",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-the-three-sentence-board-law",
+  "smart_note_id": "SN-2866",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2866/IB-SMART-NOTE-20261115-the-three-sentence-board-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The lesson is about the reader's body, not the writer's words. A long board is not hard to read because the words are hard — it is hard to read because the eye has nowhere to rest and the thumb has nothing to do. \"Unfold, unfold, next\" is a rhythm for the hand as much as for the mind: each click is a small completion, each board a small promise kept, and the reader keeps going because going is easy. A wall of text reverses that: the reader must decide, mid-scroll, whether the rest is worth it — and most people will not decide, they will leave. That is why he says it twice in two ways: \"if they skip it they're skipping valuable information\" is the cost, and \"make it readable\" is the fix. The two smaller orders ride the same insight: two buttons that do the same job force a choice that should not exist (keep reading IS what's next — one button), and gray text is a whisper where white text is a voice — if the words matter, say them in the colour people can read. The fix round's failure mode is the proof of the law's teeth: counting paragraphs instead of sentences let a six-sentence board through, because the maker measured the container, not the reading. The law counts sentences because the reader reads sentences.",
+  "simple_view": "Imagine reading a really long story with no pictures and no pages — just one giant wall of words! You'd get tired and stop, right? But if the story comes in little cards, three little sentences on each card, and you tap \"keep reading\" to get the next card — that's fun! Tap, tap, tap, and suddenly you've read the whole story without even noticing!",
+  "grandma_view": "It's like serving a big dinner, love — you don't pile everything on one plate! You serve it in lovely little courses, one after another, so it's a pleasure to eat. Three little sentences on a beautiful board, then the next one, then the next — unfold, unfold, next. And only one button to press, not two doing the same job. And the words are always white on black, clear as day — never that faint grey you have to squint at.",
+  "naya_view": "I break the reading into little boards — three sentences, then the next — so nobody has to climb a wall of words to reach something valuable. One button, white words, unfold, unfold, next.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2866",
+   "title": "The Three-Sentence Board Law",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2866/IB-SMART-NOTE-20261115-the-three-sentence-board-law.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2866/IB-SMART-NOTE-20261115-the-three-sentence-board-law.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c435da68f9620250150c638e0d54d5f5cfe37986"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

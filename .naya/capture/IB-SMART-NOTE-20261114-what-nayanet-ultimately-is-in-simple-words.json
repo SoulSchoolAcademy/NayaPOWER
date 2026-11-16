@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2803",
+ "intelligence": {
+  "title": "What NayaNET Ultimately Is, In Simple Words",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-what-nayanet-ultimately-is-in-simple-words",
+  "smart_note_id": "SN-2803",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2803/IB-SMART-NOTE-20261114-what-nayanet-ultimately-is-in-simple-words.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "This is the sentence the whole system has been waiting for, and it took a citizen's question to force it out: \"I'm hired — but what is this, ultimately?\" Every grand vision dies if the person standing in front of it cannot say what it is in one breath. Shawn's answer does two things at once, and both are load-bearing. The \"what it is\" half gives the citizen a picture they already understand — a supercharger, a Bugatti, an internet that works by itself — and tells them what changes for them: success stops being a skill and becomes a button. The \"what it is not\" half is the trust: it never reads your mail, never keeps it, your vault is locked and separate, nobody reads it, not even the AIs. The first half sells the power; the second half makes the power safe to accept. And the placement is the third decision: it does not live on a marketing page or in a manifesto. It lives in the world-reveal moment, the exact second the citizen asks the question, as one simple block. The answer arrives where the question is asked.",
+  "simple_view": "Imagine a magic plug. You plug any robot into it and the robot gets super smart and super fast — like jumping into the fastest race car in the world! And it's not a robot that spies on you — it never reads your letters, never peeks at your stuff. Your treasure box stays locked, and only you have the key. That's what this is!",
+  "grandma_view": "It's like a great big power station, love — every clever machine plugs into it and suddenly works better, faster, for you. And it's a polite one: it never opens your letters, never looks through your drawers. Everything of yours stays in your own locked box, safe and private. You just press a button, and it works.",
+  "naya_view": "I say what NayaNET is in simple words, in one block, where the citizen asks: not a new AI — what all the AIs plug into, the mother brain, a supercharger, their internet, where success is automated. And I say what it is not in the same breath: it never reads your mail, never keeps it; your vault is locked and separate, nobody reads it, not even the AIs. Simple words, both halves, at the moment of the question.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2803",
+   "title": "What NayaNET Ultimately Is, In Simple Words",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2803/IB-SMART-NOTE-20261114-what-nayanet-ultimately-is-in-simple-words.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2803/IB-SMART-NOTE-20261114-what-nayanet-ultimately-is-in-simple-words.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d3c787b412943f2350f137b0e16dbba20dd41ad9"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

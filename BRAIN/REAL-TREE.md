@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-11-15  
-**Receipt basis commit:** `e7b9c827670672229941e19193ce1eb5bd436a7b`  
-**Inventory file count:** 3467  
+**Receipt basis commit:** `2060eb3c79d7667a448f38fd29616459a045ef47`  
+**Inventory file count:** 3471  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -14,7 +14,7 @@
 | 01-GOVERNANCE | 100 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
-| 04-INTELLIGENCE | 45 |
+| 04-INTELLIGENCE | 49 |
 | 05-MEMORY | 2424 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
@@ -229,6 +229,10 @@
 - `BRAIN/04-INTELLIGENCE/GRAPH/0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json` — `757534ba9b97` (7066 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json` — `9905a38819c1` (13932 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/README.md` — `095cfe500bc4` (1356 bytes)
+- `BRAIN/04-INTELLIGENCE/INTEL-TODAY-DISCOVERY/INTEL-TODAY-DISCOVERY-REPORT-2026-11-12.human.md` — `5d2b185ae088` (11858 bytes)
+- `BRAIN/04-INTELLIGENCE/INTEL-TODAY-DISCOVERY/SPEC-AI-SEARCH-RETRIEVAL-AND-CITATIONS-V1.human.md` — `9532da3959ce` (11509 bytes)
+- `BRAIN/04-INTELLIGENCE/INTEL-TODAY-DISCOVERY/SPEC-GOOGLE-SEARCH-AND-IMAGES-V1.human.md` — `6916f339864e` (10073 bytes)
+- `BRAIN/04-INTELLIGENCE/INTEL-TODAY-DISCOVERY/public-intelligence-projection.CANDIDATE.v0.1.json` — `2c834a4b4a2c` (6961 bytes)
 - `BRAIN/04-INTELLIGENCE/MASTER-INDEX.json` — `01ae91cda993` (1273 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json` — `28f74bd818d8` (8099 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json` — `076ae6c00f06` (4685 bytes)

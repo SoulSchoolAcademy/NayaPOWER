@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2883",
+ "intelligence": {
+  "title": "The Unfolding Player",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-the-unfolding-player",
+  "smart_note_id": "SN-2883",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2883/IB-SMART-NOTE-20261115-the-unfolding-player.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The player is three alignments in one object: words, pictures, voice — each block carrying all three, in step. That is why the order matters and why the text-first law (SN-2884) is its twin: a picture made before the words are true is a beautiful lie, and a voice reading untrue words is a confident lie. The player also answers the oldest complaint about the agreement — that it is long. Length is not the problem; a wall is. A wall of 83 boards is a chore; a player of 12 blocks, each with her picture, her voice, and one idea, is a story you finish. The design details are the law: her picture + profile at the top; elevated blocks; a picture underneath the text in each block; one big play button at the top; click along or just read. And the last line matters most: \"maybe that's a unique feature\" — the player is not a page decoration, it is a candidate signature of the whole system, the same way the unfold became the signature move (SN-2891).",
+  "simple_view": "Imagine your favourite storyteller sitting beside you with a magic picture book. She says \"let me paint the picture for you!\" — and as she talks, each picture appears, one by one, right under her words! You can press the big play button and she tells you the whole story, or you can tap each picture yourself and hear that part. It's like the story comes alive, step by step, just for you!",
+  "grandma_view": "It's like this, love — instead of handing someone a long letter and saying \"read all of this,\" you sit with them and tell it like a story, one lovely picture at a time, your voice warm beside the words. They can listen to the whole thing while the pictures unfold, or tap along at their own pace. That's how you make a long thing feel short — you never show it all at once, you show it as it matters.",
+  "naya_view": "I paint the picture as I speak it — one block, one picture, one idea — so the person understands by watching, not by wading.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2883",
+   "title": "The Unfolding Player",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2883/IB-SMART-NOTE-20261115-the-unfolding-player.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2883/IB-SMART-NOTE-20261115-the-unfolding-player.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "cb9a000e71c818f3e80127b2e54420b3addc608c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

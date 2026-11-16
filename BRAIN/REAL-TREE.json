@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-11-15",
-  "receipt_basis_commit": "e7b9c827670672229941e19193ce1eb5bd436a7b",
-  "inventory_file_count": 3467,
+  "receipt_basis_commit": "2060eb3c79d7667a448f38fd29616459a045ef47",
+  "inventory_file_count": 3471,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -10,7 +10,7 @@
     "01-GOVERNANCE": 100,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
-    "04-INTELLIGENCE": 45,
+    "04-INTELLIGENCE": 49,
     "05-MEMORY": 2424,
     "06-PROOF": 13,
     "07-LEARNING": 9,
@@ -955,6 +955,26 @@
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/README.md",
       "blob_sha": "095cfe500bc41c1228719ce877be7835be3a0860",
       "size": 1356
+    },
+    {
+      "path": "BRAIN/04-INTELLIGENCE/INTEL-TODAY-DISCOVERY/INTEL-TODAY-DISCOVERY-REPORT-2026-11-12.human.md",
+      "blob_sha": "5d2b185ae0887f90a896254988d94b9f5acfe504",
+      "size": 11858
+    },
+    {
+      "path": "BRAIN/04-INTELLIGENCE/INTEL-TODAY-DISCOVERY/SPEC-AI-SEARCH-RETRIEVAL-AND-CITATIONS-V1.human.md",
+      "blob_sha": "9532da3959ce6cf82a9403d0416d42f7ab6c2e48",
+      "size": 11509
+    },
+    {
+      "path": "BRAIN/04-INTELLIGENCE/INTEL-TODAY-DISCOVERY/SPEC-GOOGLE-SEARCH-AND-IMAGES-V1.human.md",
+      "blob_sha": "6916f339864e1ecd84af97bea35639572c4c3315",
+      "size": 10073
+    },
+    {
+      "path": "BRAIN/04-INTELLIGENCE/INTEL-TODAY-DISCOVERY/public-intelligence-projection.CANDIDATE.v0.1.json",
+      "blob_sha": "2c834a4b4a2cbe2d33f10db0887578a9e32657f0",
+      "size": 6961
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/MASTER-INDEX.json",
