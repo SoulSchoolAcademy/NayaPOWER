@@ -20,4 +20,4 @@ Every brief is scorecarded against the ultimate want before it goes out — the 
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2917 — ~/workspace/team-nitro/smart-notes/SN-2917-master-effective-communication.md*
+*Paired Smart Note: SN-2917 — Master Effective Communication*
