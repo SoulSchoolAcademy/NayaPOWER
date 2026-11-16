@@ -5278,12 +5278,25 @@ function HubView(params) {
   menuBtn.setAttribute('title', 'Menu — your navigation');
   menuBtn.addEventListener('click', () => {
     if (window.innerWidth < 1440) {
-      if (shell.classList.contains('drawer-open')) closeDrawer(); else openDrawer();
+      /* ITEM 8 FIX 2026-11-16: below desktop the menu control opens BOTH
+         drawers — left via openDrawer(), right via openRightRail() — one
+         toggle, the same shape as the left alone had. The right drawer
+         had no top-bar opener; its only opener was the bottom-bar
+         ECOSYSTEM tile. Right opens first so focus lands on the left,
+         the primary drawer. */
+      const leftOpen = shell.classList.contains('drawer-open');
+      const rightOpen = shell.classList.contains('rail-right-open');
+      if (leftOpen || rightOpen) { closeDrawer(); closeRightRail(); }
+      else { openRightRail(); openDrawer(); }
     } else {
       shell.classList.toggle('rail-collapsed');
       const collapsed = shell.classList.contains('rail-collapsed');
       menuBtn.setAttribute('aria-label', collapsed ? 'Show sidebar' : 'Hide sidebar');
       try { localStorage.setItem('naya.rail-collapsed', collapsed ? '1' : '0'); } catch(e) {}
+      /* ITEM 8 FIX 2026-11-16: at desktop the docked right rail, once
+         closed, had no top-bar reopen — only the bottom-bar ECOSYSTEM
+         tile. The menu control reopens it here (openRightRail()). */
+      if (shell.classList.contains('rail-right-collapsed')) openRightRail();
     }
   });
   /* Default (item 8): sidebars VISIBLE on load at desktop (1440+) — they are
@@ -5319,8 +5332,9 @@ function HubView(params) {
   top.append(menuBtn, askBtn, title);
 
   /* HUB ICONS FIX 2026-11-16 (item 6): the top-right + is gone — the right
-     corner belongs to Life with Naya now. The right sidebar below desktop
-     still opens from the bottom-bar ECOSYSTEM tile. Powercasts stays. */
+     corner belongs to Life with Naya now. The right sidebar opens from
+     the top-bar menu control (item 8 fix) and the bottom-bar ECOSYSTEM
+     tile. Powercasts stays. */
   const ecoWrap = el('div', '');
   ecoWrap.style.cssText = 'position:relative;display:flex;';
   const pcBtn = el('a', 'powercast-topbtn', '&#127911; Powercasts');
