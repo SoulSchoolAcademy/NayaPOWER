@@ -4,6 +4,8 @@ SN-3029 · LESSON
 
 **Created:** 2026-11-16 21:33Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 The proof host ignores `cb` — curling an old build's URL with a new or old `cb` returns the current build. Verify staged builds from the branch's own blob, never by a cb URL.
