@@ -1993,7 +1993,7 @@ record is the receipt — every PUT was blob-verified in-band.)
   browser is the route-around); he reacted with approval.
 
 
-# Intelligence Loop run 234 — PI addendum (STAGED, not filed this run)
+# Intelligence Loop run 234 — PI addendum (FILED this run — SN-3033/SN-3034 + paired NNs)
 
 Run 234, scheduled 21:23:18Z Mon 2026-11-16, ran ~21:26–21:45Z.
 
