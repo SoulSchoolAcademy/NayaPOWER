@@ -83,8 +83,8 @@ window.addEventListener('appinstalled', function () {
   --edge:      #252B39;  /* Precision edge — 1px edges on raised surfaces. */
   --ink:       #F5F7FB;  /* Primary text. Always. */
   --ink-dim:   #F5F7FB;  /* (primary text, dimmed contexts — use --muted below it) */
-  --muted:     #AAB2BF;  /* Secondary text. Never for primary content. */
-  --muted-2:   #AAB2BF;
+  --muted:     #FFFFFF;  /* BLACK DIAMOND 2026-11-16: no gray text — secondary text is white too. */
+  --muted-2:   #FFFFFF;
   --faint:     #c9c3ce;
   --line:      #ffffff18;
   --line-soft: #ffffff0d;
@@ -307,16 +307,18 @@ a { color: inherit; }
   width: 46px; height: 46px; flex: 0 0 46px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,.3);
-  background: radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%);
+  background: #050607;
   display: grid; place-items: center;
   transition: all .22s cubic-bezier(.16,.84,.22,1);
   box-shadow:
-    inset 0 1px rgba(255,255,255,.15),
     0 0 14px rgba(255,255,255,.1),
-    0 4px 10px rgba(0,0,0,.4);
-  position: relative;
+    0 4px 10px rgba(0,0,0,.4),
+    0 8px 18px rgba(0,0,0,.55);
+  position: relative; z-index: 0;
 }
 .eco-bb-ico svg {
+/* BLACK DIAMOND: clone layer behind the eco dock icon. */
+.eco-bb-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
   width: 20px; height: 20px;
   transition: transform .22s;
   filter: drop-shadow(0 0 3px rgba(255,255,255,.4));
@@ -325,9 +327,9 @@ a { color: inherit; }
   transform: translateY(-3px) scale(1.08);
   border-color: var(--eco);
   box-shadow:
-    inset 0 1px rgba(255,255,255,.2),
     0 0 24px color-mix(in srgb, var(--eco) 55%, transparent),
-    0 6px 16px rgba(0,0,0,.5);
+    0 6px 16px rgba(0,0,0,.5),
+    0 10px 22px rgba(0,0,0,.55);
 }
 .eco-bb-btn:hover .eco-bb-ico svg {
   color: var(--eco);
@@ -396,26 +398,26 @@ a { color: inherit; }
 }
 .notif-seg:active { transform: scale(.94); }
 .notif-tile {
-  position: relative; width: 54px; height: 54px; border-radius: 16px;
+  position: relative; z-index: 0; width: 54px; height: 54px; border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(130% 140% at 32% 24%, #2a2a32, #0a0a0e 72%);
-  border: 1.5px solid rgba(255,255,255,.35);
+  background: #050607; /* BLACK DIAMOND: board black, flat */
+  border: 1.5px solid color-mix(in srgb, var(--nc) 60%, transparent); /* own-color rim (23:19Z) */
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.38),
     inset 0 -9px 15px rgba(0,0,0,.6),
-    inset 1px 0 0 rgba(255,255,255,.07),
     0 7px 16px rgba(0,0,0,.6),
+    0 10px 22px rgba(0,0,0,.6),
     0 0 14px color-mix(in srgb, var(--nc) 45%, transparent);
+  /* BLACK DIAMOND: inset whites out; deeper drop = more elevation. */
   color: #ffffff;
   transition: box-shadow .3s, border-color .3s, transform .22s cubic-bezier(.16,.84,.22,1);
 }
 .notif-tile::before {
-  content: ""; position: absolute; inset: 0; border-radius: 16px; pointer-events: none;
-  background: linear-gradient(155deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 42%),
-              linear-gradient(25deg, rgba(255,255,255,0) 62%, rgba(255,255,255,.06) 100%);
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 16px; pointer-events: none; border: 1.5px solid color-mix(in srgb, var(--nc) 45%, transparent); transform: translate(2px, 3px); box-shadow: 0 6px 14px rgba(0,0,0,.5);
+  background: #050607; /* BLACK DIAMOND: the wash is out — ::before is now the clone layer */
+
 }
-.notif-tile svg { width: 25px; height: 25px; filter: drop-shadow(0 0 4px rgba(255,255,255,.45)); position: relative; }
-.notif-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; color: #C9CEDA; }
+.notif-tile svg { width: 25px; height: 25px; filter: drop-shadow(0 2px 2px rgba(0,0,0,.9)) drop-shadow(0 0 5px rgba(255,255,255,.5)); position: relative; }
+.notif-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; color: #fff; }
 .notif-count { position: absolute; top: -8px; right: -10px; min-width: 24px; height: 24px; padding: 0 6px;
   display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
   font-size: 12px; font-weight: 900; color: #06060a; background: var(--nc);
@@ -425,10 +427,10 @@ a { color: inherit; }
 .notif-seg.has-news .notif-tile {
   border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.45),
     inset 0 -9px 15px rgba(0,0,0,.6),
     0 7px 16px rgba(0,0,0,.6),
     0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);
+  /* BLACK DIAMOND: inset white out. */
 }
 /* HUB SIDEBARS+PLUS 2026-11-16 — the sixth tile (RIGHT + / CONNECT, Shawn
    18:58Z): the five's 54px tiles + 34px gaps measure 594px at desktop (fits
@@ -444,13 +446,15 @@ a { color: inherit; }
 /* ——— HUB SIDEBARS+PLUS 2026-11-16 (item 4): the two + menus ———
    Chrome harvested VERBATIM from the Personal correction's .fc-plusmenu
    (blob 3328238b): fixed, centered on its anchor, own-color hover. */
-.fc-plusmenu{position:fixed;z-index:1700;transform:translateX(-50%);background:radial-gradient(130% 140% at 30% 0%, #1d1d29, #07070b 78%);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:8px;min-width:220px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -8px 16px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.65),0 0 24px -6px rgba(160,107,255,.45);}
+.fc-plusmenu{position:fixed;z-index:1700;transform:translateX(-50%);background:#050607;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:8px;min-width:220px;box-shadow:inset 0 -8px 16px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.65),0 0 24px -6px rgba(160,107,255,.45);}
 .fc-plusmenu[hidden]{display:none;}
-.fc-plusitem{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;background:linear-gradient(180deg,#17171f,#0a0a10);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 3px 8px rgba(0,0,0,.4);transition:all .18s ease;}
-.fc-plusitem:hover{background:linear-gradient(180deg,#1e1b29,#0b0a12);border-color:var(--mc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -4px var(--mc,#a06bff),0 6px 16px rgba(0,0,0,.5);transform:translateY(-2px);}
-.fc-plusitem:hover .fc-pi-ico{border-color:var(--mc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--mc,#a06bff) 70%,transparent);}
-.fc-plusitem .fc-pi-ico{color:#fff;flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid color-mix(in srgb,var(--mc,#a06bff) 65%,rgba(255,255,255,.25));box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -3px 6px rgba(0,0,0,.6),0 0 12px -2px color-mix(in srgb,var(--mc,#a06bff) 55%,transparent);}
+.fc-plusitem{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;background:#050607;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 3px 8px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:all .18s ease;}
+.fc-plusitem:hover{background:#050607;border-color:var(--mc,#a06bff);box-shadow:0 0 18px -4px var(--mc,#a06bff),0 6px 16px rgba(0,0,0,.5),0 10px 22px rgba(0,0,0,.55);transform:translateY(-2px);}
+.fc-plusitem:hover .fc-pi-ico{border-color:var(--mc,#a06bff);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--mc,#a06bff) 70%,transparent),0 6px 14px rgba(0,0,0,.5);}
+.fc-plusitem .fc-pi-ico{color:#fff;flex:none;width:34px;height:34px;display:grid;place-items:center;position:relative;z-index:0;border-radius:10px;background:#050607;border:1.5px solid color-mix(in srgb,var(--mc,#a06bff) 65%,rgba(255,255,255,.25));box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 12px -2px color-mix(in srgb,var(--mc,#a06bff) 55%,transparent),0 6px 14px rgba(0,0,0,.5);}
 .fc-plusitem .fc-pi-ico svg{width:19px;height:19px;filter:drop-shadow(0 0 3px rgba(255,255,255,.5));}
+/* BLACK DIAMOND: clone layer behind every + menu icon chip. */
+.fc-plusitem .fc-pi-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--mc, #a06bff) 45%, transparent);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
 /* The eco dock rides above the notifications bar — but ONLY when the bar is
    actually in the DOM (body.has-notif is set by NayaNotif.init). Without the
    bar, the dock sits at bottom: 0 (its base rule) and can never float over a
@@ -471,20 +475,24 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 
 /* ——— Sidebar toggles: black + elegant plus · white light idle · purple hover · alive ——— */
 .rail-toggle {
-  width: 48px; height: 48px; flex: 0 0 48px;
+  width: 48px; height: 48px; flex: 0 0 48px; position: relative; z-index: 0;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,.3);
-  background: radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%);
+  background: #050607;
   color: #fff;
   cursor: pointer;
   display: grid; place-items: center;
   transition: all .25s cubic-bezier(.16,.84,.22,1);
   box-shadow:
-    inset 0 1px rgba(255,255,255,.15),
     0 0 18px rgba(255,255,255,.12),
-    0 4px 12px rgba(0,0,0,.5);
+    0 4px 12px rgba(0,0,0,.5),
+    0 8px 20px rgba(0,0,0,.55);
 }
 .rail-toggle svg {
+/* BLACK DIAMOND (§3): clone layer behind the hamburger circle — the
+   three-line hamburger is NOT replaced, only made premium: board black,
+   stacked layers, real shadow. Flagged for Shawn's eye. */
+.rail-toggle::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
   width: 26px; height: 26px;
   transition: transform .25s cubic-bezier(.16,.84,.22,1);
   filter: drop-shadow(0 0 5px rgba(255,255,255,.5));
@@ -493,9 +501,9 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   transform: translateY(-2px) scale(1.06);
   border-color: rgba(157,117,255,.7);
   box-shadow:
-    inset 0 1px rgba(255,255,255,.2),
     0 0 28px rgba(157,117,255,.55),
-    0 4px 16px rgba(0,0,0,.5);
+    0 4px 16px rgba(0,0,0,.5),
+    0 8px 20px rgba(0,0,0,.55);
 }
 .rail-toggle:hover svg {
   filter: drop-shadow(0 0 6px rgba(255,255,255,.8));
@@ -523,23 +531,23 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   --jewel: #ffea00;
   width: 48px; height: 48px; flex: 0 0 48px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.35);
-  background:
-    radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%),
-    radial-gradient(circle at 50% 55%, var(--jewel), color-mix(in srgb, var(--jewel) 45%, #000) 78%);
+  border: 1.5px solid rgba(157,117,255,.8); /* §3 reference +: thin bright purple edge */
+  background: #050607;
+  /* BLACK DIAMOND: white wash + jewel core out — flat board black. */
+
   color: #fff; cursor: pointer;
   display: grid; place-items: center;
   text-shadow: 0 2px 8px rgba(0,0,0,.6);
   box-shadow:
-    inset 0 1px rgba(255,255,255,.5),
     inset 0 -3px 8px rgba(0,0,0,.4),
     0 0 22px color-mix(in srgb, var(--jewel) 55%, transparent),
-    0 8px 20px rgba(0,0,0,.5);
+    0 8px 20px rgba(0,0,0,.5),
+    0 12px 28px rgba(0,0,0,.55);
   transition: transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s;
 }
 .eco-plus svg { width: 20px; height: 20px; }
-.eco-plus:hover { transform: translateY(-2px) scale(1.04); box-shadow: inset 0 1px rgba(255,255,255,.5), inset 0 -3px 8px rgba(0,0,0,.4), 0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent), 0 12px 28px rgba(0,0,0,.6); }
-/* ——— Powercast top-bar button: white luminous at rest, purple ignition ———
+.eco-plus:hover { transform: translateY(-2px) scale(1.04); box-shadow: inset 0 -3px 8px rgba(0,0,0,.4), 0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent), 0 12px 28px rgba(0,0,0,.6); }
+/* ——— Powercast top-bar button: BLACK DIAMOND 2026-11-16 (item D1) ———
    FIX 2026-11-16 (item D1): Powercasts read dimmer/flatter than Ask Naya /
    Life with Naya — white rim, no color glow. Same §1 language now:
    obsidian inside, double-layered (clone behind, nudged), pearl purple
@@ -550,12 +558,12 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   display:inline-flex;align-items:center;gap:8px;
   min-height:48px;padding:0 22px;margin-right:10px;
   border-radius:999px;cursor:pointer;
-  border:1.5px solid rgba(255,255,255,.55);
-  background:linear-gradient(180deg,#1c1c26,#0c0c12);
+  border:1.5px solid rgba(167,139,250,.8); /* pearl purple rim — reads lit at 1919px */
+  background:#050607; /* BLACK DIAMOND: flat board black */
   color:#fff;font-weight:800;font-size:13px;letter-spacing:.08em;
   font-family:inherit;text-decoration:none;white-space:nowrap;
-  box-shadow:inset 0 1px rgba(255,255,255,.15),inset 0 -2px 4px rgba(0,0,0,.5),
-    0 8px 24px rgba(0,0,0,.5),0 0 16px rgba(139,92,246,.38);
+  box-shadow:inset 0 -2px 4px rgba(0,0,0,.5),
+    0 8px 24px rgba(0,0,0,.5),0 0 28px rgba(139,92,246,.65),0 0 48px rgba(139,92,246,.30);
   transition:all .22s cubic-bezier(.16,.84,.22,1);
   -webkit-tap-highlight-color:transparent;
 }
@@ -563,20 +571,23 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   content:'';position:absolute;inset:0;z-index:-1;
   border-radius:999px;
   border:1.5px solid rgba(139,92,246,.55);
-  background:linear-gradient(135deg,#14141c 0%,#050508 50%,#14141c 100%);
+  background:#050607;
   transform:translate(2px,3px);
   box-shadow:0 10px 22px rgba(0,0,0,.5);
 }
 .powercast-topbtn:hover,.powercast-topbtn:focus-visible{
+/* BLACK DIAMOND (D1): second clone — Powercasts sits as high as Ask/Life. */
+.powercast-topbtn::after{content:'';position:absolute;inset:0;z-index:-2;border-radius:999px;background:#050607;border:1.5px solid rgba(139,92,246,.35);transform:translate(4px,6px);box-shadow:0 14px 30px rgba(0,0,0,.55);}
+.powercast-topbtn svg{width:18px;height:18px;flex:none;}
   border-color:var(--pc-purple);color:#fff;transform:translateY(-2px);
-  box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),
-    0 0 32px rgba(139,92,246,.75),0 8px 24px rgba(0,0,0,.5);
+  box-shadow:inset 0 -2px 6px rgba(0,0,0,.4),
+    0 0 40px rgba(139,92,246,.85),0 0 64px rgba(139,92,246,.35),0 8px 24px rgba(0,0,0,.5);
 }
 .powercast-topbtn:active{transform:translateY(0) scale(.97);}
 @media (max-width:560px){ .powercast-topbtn{padding:0 14px;font-size:12px;min-height:44px;margin-right:8px;} }
 .eco-plus:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
 .eco-plus[aria-expanded="true"] {
-  background: color-mix(in srgb, var(--purple) 28%, transparent);
+  background: #050607;
   box-shadow: 0 0 18px color-mix(in srgb, var(--purple) 40%, transparent);
 }
 .eco-menu {
@@ -649,8 +660,8 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   .top .hub-obsidian-btn { padding: 10px 14px; font-size: 13px; }
   .top .rooms-plus {
     border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.3);
-    background: radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%);
+    border: 1.5px solid rgba(157,117,255,.8);
+    background: #050607;
   }
   /* Left + mirrors the right + exactly (Shawn 2026-10-20): hide the SVG icon,
      show the same real + glyph */
@@ -677,24 +688,26 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   width: 100%; text-align: left;
   position: relative;
   padding: 10px 14px; border-radius: 12px;
-  background: linear-gradient(180deg,#17171f,#0a0a0f);
+  background: #050607; /* BLACK DIAMOND: flat board black */
   border: 1px solid rgba(255,255,255,.16);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 6px rgba(0,0,0,.5), 0 6px 14px rgba(0,0,0,.45);
+  box-shadow: inset 0 -3px 6px rgba(0,0,0,.5), 0 6px 14px rgba(0,0,0,.45), 0 10px 22px rgba(0,0,0,.55);
   color: var(--ink-dim); font-size: 14px; font-family: var(--font);
   cursor: pointer; transition: background .18s, border-color .18s, color .18s, box-shadow .18s, transform .18s;
 }
 .nav-btn .ico {
   width: 40px; height: 40px; flex: 0 0 40px;
-  display: grid; place-items: center;
+  display: grid; place-items: center; position: relative; z-index: 0;
   border-radius: 12px;
   color: #fff;
-  background: radial-gradient(circle at 32% 26%, rgba(255,255,255,.30), rgba(255,255,255,0) 48%), linear-gradient(180deg,#262633,#0b0b12 80%);
+  background: #050607; /* BLACK DIAMOND: flat board black */
   border: 1.5px solid var(--nav, var(--purple));
-  box-shadow: inset 0 1.5px 0 rgba(255,255,255,.55), inset 0 -3px 6px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 14px -3px var(--nav, var(--purple));
+  box-shadow: inset 0 -3px 6px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 8px 18px rgba(0,0,0,.55), 0 0 14px -3px var(--nav, var(--purple));
   text-shadow: 0 0 9px var(--nav, var(--purple)), 0 1px 2px rgba(0,0,0,.65);
   transition: all .2s cubic-bezier(.16,.84,.22,1);
 }
 .nav-btn .ico svg {
+/* BLACK DIAMOND: clone layer behind every sidebar icon chip — own-color rim, stacked layers. */
+.nav-btn .ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--nav, var(--purple)) 45%, transparent);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
   width: 24px; height: 24px;
   stroke-width: 1.8;
 }
@@ -709,7 +722,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 .nav-btn .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 550; }
 /* Hover: white light + spectrum color ignite */
 .nav-btn:hover, .nav-btn:focus-visible {
-  background: rgba(255,255,255,.06);
+  background: #050607;
   border-color: var(--nav, var(--purple));
   box-shadow: 0 0 16px color-mix(in srgb, var(--nav, var(--purple)) 38%, transparent), 0 8px 18px rgba(0,0,0,.5);
   color: #fff;
@@ -717,20 +730,20 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 }
 .nav-btn:hover .ico {
   color: #fff;
-  background: radial-gradient(circle at 32% 26%, rgba(255,255,255,.30), rgba(255,255,255,0) 48%), linear-gradient(180deg,#262633,#0b0b12 80%);
+  background: #050607;
   border-color: var(--nav, var(--purple));
-  box-shadow: inset 0 1.5px 0 rgba(255,255,255,.55), inset 0 -3px 6px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 20px color-mix(in srgb, var(--nav, var(--purple)) 70%, transparent);
+  box-shadow: inset 0 -3px 6px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 8px 18px rgba(0,0,0,.55), 0 0 20px color-mix(in srgb, var(--nav, var(--purple)) 70%, transparent);
   transform: translateY(-2px) scale(1.08);
 }
 /* Active: subtle indicator only — NO permanent glow (Shawn 2026-10-03) */
 .nav-btn.active {
-  background: rgba(255,255,255,.04);
+  background: #050607;
   border-color: rgba(255,255,255,.15);
   color: #fff;
 }
 .nav-btn.active .ico {
   color: var(--nav, var(--purple));
-  background: radial-gradient(circle at 32% 26%, rgba(255,255,255,.30), rgba(255,255,255,0) 48%), linear-gradient(180deg,#262633,#0b0b12 80%);
+  background: #050607;
   border-color: color-mix(in srgb, var(--nav, var(--purple)) 40%, transparent);
 }
 .nav-btn.active::before {
@@ -757,9 +770,9 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
    The lit row now stands out as a row: brighter background, its own color
    on the border with an outer glow, white label, and the same left edge
    bar .active wears — the icon keeps its own-color ignition, held. */
-.nav-btn.lit{background:rgba(255,255,255,.07);border-color:color-mix(in srgb, var(--nav, var(--purple)) 65%, transparent);box-shadow:0 0 16px color-mix(in srgb, var(--nav, var(--purple)) 38%, transparent), 0 8px 18px rgba(0,0,0,.5);}
+.nav-btn.lit{background:#050607;border-color:color-mix(in srgb, var(--nav, var(--purple)) 65%, transparent);box-shadow:0 0 16px color-mix(in srgb, var(--nav, var(--purple)) 38%, transparent), 0 8px 18px rgba(0,0,0,.5);}
 .nav-btn.lit::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:3px;border-radius:3px;background:var(--nav, var(--purple));box-shadow:0 0 10px var(--nav, var(--purple));}
-.nav-btn.lit .ico{color:var(--nav, var(--purple));background:radial-gradient(circle at 32% 26%, rgba(255,255,255,.30), rgba(255,255,255,0) 48%), linear-gradient(180deg,#262633,#0b0b12 80%);border-color:var(--nav, var(--purple));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), inset 0 -3px 6px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 20px color-mix(in srgb, var(--nav, var(--purple)) 70%, transparent);transform:translateY(-2px) scale(1.08);}
+.nav-btn.lit .ico{color:var(--nav, var(--purple));background:#050607;border-color:var(--nav, var(--purple));box-shadow:inset 0 -3px 6px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 8px 18px rgba(0,0,0,.55), 0 0 20px color-mix(in srgb, var(--nav, var(--purple)) 70%, transparent);transform:translateY(-2px) scale(1.08);}
 .nav-btn.nav-area{text-decoration:none;}
 .nav-btn.nav-right{text-decoration:none;}
 /* ——— HUB FIX 2026-11-16: the RIGHT rail (corrected 19:44Z list, 13) ———
@@ -774,12 +787,14 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 .rail.right .nav{margin-top:18px;display:flex;flex-direction:column;gap:8px;}
 .rail-right-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 6px 0;}
 .rail-right-head b{font-size:12px;letter-spacing:.18em;font-weight:800;color:#fff;}
-.rail-right-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);color:#fff;font-size:20px;line-height:1;cursor:pointer;}
+.rail-right-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#050607;color:#fff;font-size:20px;line-height:1;cursor:pointer;}
 /* Sub-rows: Dashboard's Leaderboards link, Personal's three, My Worlds' doors. */
-.nav-sub{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:8px 12px 8px 14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);color:var(--ink-dim);font-size:13px;font-family:var(--font);cursor:pointer;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 4px 10px rgba(0,0,0,.35);transition:transform .18s var(--ease),border-color .18s,box-shadow .18s,color .18s;}
+.nav-sub{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:8px 12px 8px 14px;border-radius:10px;background:#050607;border:1px solid rgba(255,255,255,.1);color:var(--ink-dim);font-size:13px;font-family:var(--font);cursor:pointer;text-decoration:none;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.35),0 8px 18px rgba(0,0,0,.55);transition:transform .18s var(--ease),border-color .18s,box-shadow .18s,color .18s;}
 .nav-sub:hover{color:#fff;border-color:var(--nav,var(--purple));box-shadow:0 0 16px color-mix(in srgb,var(--nav,var(--purple)) 45%,transparent),0 8px 16px rgba(0,0,0,.5);transform:translateY(-2px);}
-.nav-sub .ico{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:9px;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--nav,var(--purple));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5);}
+.nav-sub .ico{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;position:relative;z-index:0;border-radius:9px;color:#fff;background:#050607;border:1.5px solid var(--nav,var(--purple));box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);}
 .nav-sub .ico svg{width:18px;height:18px;}
+/* BLACK DIAMOND: clone layer behind every sub-row icon chip. */
+.nav-sub .ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--nav, var(--purple)) 45%, transparent);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
 .nav-sub .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:550;}
 .nav-sub .nav-count{position:absolute;top:2px;right:4px;min-width:20px;height:20px;padding:0 5px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:11px;font-weight:900;color:#06060a;background:var(--nav);border:2px solid #05050a;box-shadow:0 0 12px var(--nav),0 3px 8px rgba(0,0,0,.5);}
 .nav-sub.has-news .nav-count{display:flex;}
@@ -788,8 +803,10 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 .nav-btn .chev{margin-left:auto;font-size:12px;color:var(--ink-dim);transition:transform .2s;}
 .nav-btn[aria-expanded="true"] .chev{transform:rotate(180deg);}
 /* Lens-tab jewels — Personal's feed tabs carry a jewel in the tab's own color. */
-.lens-tab .tab-jewel{display:inline-grid;place-items:center;flex:none;width:27px;height:27px;font-size:14px;line-height:1;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc,#a06bff);border-radius:8px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 16px -2px var(--jc,#a06bff);text-shadow:0 0 9px var(--jc,#a06bff),0 1px 2px rgba(0,0,0,.65);}
+.lens-tab .tab-jewel{display:inline-grid;place-items:center;position:relative;z-index:0;flex:none;width:27px;height:27px;font-size:14px;line-height:1;color:#fff;background:#050607;border:1.5px solid var(--jc,#a06bff);border-radius:8px;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.55),0 0 16px -2px var(--jc,#a06bff);text-shadow:0 0 9px var(--jc,#a06bff),0 1px 2px rgba(0,0,0,.65);}
 .lens-legend{font-size:13px;color:var(--ink-dim);margin:10px 2px 0;line-height:1.5;}
+/* BLACK DIAMOND: clone layer behind every lens-tab jewel. */
+.lens-tab .tab-jewel::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--jc, #a06bff) 45%, transparent);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
 /* Hero Wisdom of the Day. */
 .hero-wisdom{margin:6px 0 12px;max-width:760px;}
 .hero-wisdom .wisdom-kicker{font-size:11px;letter-spacing:.24em;font-weight:800;color:#ffbf3d;text-transform:uppercase;}
@@ -822,16 +839,14 @@ svg.jewel { display: block; }
 .top-title b { font-size: 13px; letter-spacing: .2em; font-weight: 700; }
 /* ——— NAYA-BTN-005 "Primo Purple" — harvested verbatim from factory.css (STANDARD .primo) ——— */
 .primo { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #F8F7FB; padding: 16px 32px; border-radius: 999px; border: 1.5px solid rgba(248,247,251,.9);
-  background: linear-gradient(180deg, #1a1a22 0%, #0a0a0f 45%, #050507 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 2px 6px rgba(255,255,255,.15), inset 0 -8px 16px rgba(0,0,0,.8), 0 0 24px rgba(248,247,251,.45), 0 0 48px rgba(248,247,251,.15), 0 12px 32px rgba(0,0,0,.65);
+  background: #050607; /* BLACK DIAMOND: flat board black */
+  box-shadow: inset 0 -8px 16px rgba(0,0,0,.8), 0 0 24px rgba(248,247,251,.45), 0 0 48px rgba(248,247,251,.15), 0 12px 32px rgba(0,0,0,.65), 0 18px 44px rgba(0,0,0,.65);
   transition: transform .22s var(--ease), box-shadow .22s var(--ease); --glow: var(--soul, #a06bff); position: relative; overflow: hidden; }
-.primo::before { content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,.18) 50%, transparent 60%); transform:translateX(-100%); animation:primo-sheen 3.5s ease-in-out infinite; pointer-events:none; }
-@keyframes primo-sheen { 0%,60%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
-.primo:hover { transform: translateY(-2px); border-color: var(--glow); box-shadow: inset 0 0 0 1.5px var(--glow), inset 0 2px 5px rgba(255,255,255,.28), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 36px var(--glow), 0 14px 36px rgba(0,0,0,.65); }
+.primo:hover { transform: translateY(-2px); border-color: var(--glow); box-shadow: inset 0 0 0 1.5px var(--glow), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 36px var(--glow), 0 14px 36px rgba(0,0,0,.65); }
 .primo:active { transform: translateY(1px) scale(.985); }
 .primo.theme-purple { --glow: var(--purple); }
 .primo:disabled { opacity: .6; cursor: default; transform: none; }
-.elev-2{box-shadow:0 8px 22px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.09),inset 0 1px 0 rgba(255,255,255,.18)}
+.elev-2{box-shadow:0 8px 22px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.09)}
 /* The Life with Naya top-bar button (NAYA-BTN-005) shows on mobile only — desktop keeps the INTELLIGENT HUB title. */
 .primo.lwn-btn { display: none; }
 /* ——— HUB-ONLY top-bar buttons (v4, Shawn 20:26Z): two beautiful black obsidian
@@ -840,8 +855,8 @@ svg.jewel { display: block; }
    shadow); each ignites in its own color on hover. Harvested from the file's
    own obsidian language (.primo base, .nav-btn jewel ignition). ——— */
 .hub-cta { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; }
-.hub-obsidian-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 14px; letter-spacing: .06em; color: #fff; padding: 11px 20px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.9); background: linear-gradient(135deg, #1e1e26 0%, #0a0a0f 50%, #1e1e26 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5); transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease); --glow: #a06bff; white-space: nowrap; }
-.hub-obsidian-btn:hover { transform: translateY(-2px); border-color: var(--glow); box-shadow: inset 0 0 0 1.5px var(--glow), inset 0 2px 5px rgba(255,255,255,.28), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 28px var(--glow), 0 12px 32px rgba(0,0,0,.65); }
+.hub-obsidian-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 14px; letter-spacing: .06em; color: #fff; padding: 11px 20px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.9); background: #050607; box-shadow: inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5); transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease); --glow: #a06bff; white-space: nowrap; }
+.hub-obsidian-btn:hover { transform: translateY(-2px); border-color: var(--glow); box-shadow: inset 0 -6px 14px rgba(0,0,0,.65), 0 0 40px var(--glow), 0 0 64px color-mix(in srgb, var(--glow) 40%, transparent), 0 12px 32px rgba(0,0,0,.65); }
 .hub-obsidian-btn:active { transform: translateY(1px) scale(.985); }
 .top-status {
   margin-left: auto;
@@ -859,41 +874,45 @@ svg.jewel { display: block; }
 .rooms-plus {
   --jewel: #8a5cff;
   display: none;
-  width: 48px; height: 48px; flex: 0 0 48px;
+  width: 48px; height: 48px; flex: 0 0 48px; position: relative; z-index: 0;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.35);
-  background:
-    radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%),
-    radial-gradient(circle at 50% 55%, var(--jewel), color-mix(in srgb, var(--jewel) 45%, #000) 78%);
+  border: 1.5px solid rgba(157,117,255,.8); /* §3 reference +: thin bright purple edge */
+  background: #050607;
+  /* BLACK DIAMOND: white wash + jewel core out — flat board black. */
+
   color: #fff; cursor: pointer;
   place-items: center;
   text-shadow: 0 2px 8px rgba(0,0,0,.6);
   box-shadow:
-    inset 0 1px rgba(255,255,255,.5),
     inset 0 -3px 8px rgba(0,0,0,.4),
     0 0 22px color-mix(in srgb, var(--jewel) 55%, transparent),
-    0 8px 20px rgba(0,0,0,.5);
+    0 8px 20px rgba(0,0,0,.5),
+    0 12px 28px rgba(0,0,0,.55);
   transition: transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s;
 }
 .rooms-plus svg { width: 20px; height: 20px; }
+/* BLACK DIAMOND (§3): clone layer behind the rooms + button. */
+.rooms-plus::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
 .rooms-plus:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
 
 /* Ecosystem toggle — black + elegant plus · white light idle · purple hover · alive */
 .eco-plus {
   width: 48px; height: 48px; flex: 0 0 48px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.3);
-  background: radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%);
+  border: 1.5px solid rgba(157,117,255,.8); /* §3 reference +: thin bright purple edge */
+  background: #050607;
   color: #fff; cursor: pointer;
   display: grid; place-items: center;
-  position: relative;
+  position: relative; z-index: 0;
   box-shadow:
-    inset 0 1px rgba(255,255,255,.15),
     0 0 18px rgba(255,255,255,.12),
-    0 4px 12px rgba(0,0,0,.5);
+    0 4px 12px rgba(0,0,0,.5),
+    0 8px 20px rgba(0,0,0,.55);
   transition: all .25s cubic-bezier(.16,.84,.22,1);
 }
 .eco-plus svg {
+/* BLACK DIAMOND (§3): clone layer behind the + button — the reference button. */
+.eco-plus::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
   width: 26px; height: 26px;
   transition: transform .25s cubic-bezier(.16,.84,.22,1);
   filter: drop-shadow(0 0 5px rgba(255,255,255,.5));
@@ -902,9 +921,9 @@ svg.jewel { display: block; }
   transform: scale(1.1) rotate(90deg);
   border-color: rgba(157,117,255,.7);
   box-shadow:
-    inset 0 1px rgba(255,255,255,.2),
     0 0 28px rgba(157,117,255,.55),
-    0 4px 16px rgba(0,0,0,.5);
+    0 4px 16px rgba(0,0,0,.5),
+    0 8px 20px rgba(0,0,0,.55);
 }
 .eco-plus:hover svg {
   transform: rotate(-90deg);
@@ -912,7 +931,7 @@ svg.jewel { display: block; }
 }
 .eco-plus:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
 .eco-plus[aria-expanded="true"] {
-  background: color-mix(in srgb, var(--purple) 28%, transparent);
+  background: #050607;
   box-shadow: 0 0 18px color-mix(in srgb, var(--purple) 40%, transparent);
 }
 .eco-menu {
@@ -1434,11 +1453,10 @@ svg.jewel { display: block; }
   width: 24px; height: 24px; margin-top: 2px; border-radius: 50%;
   background:
     radial-gradient(circle at 50% 50%, #0a0a0e 0%, #0a0a0e 35%, transparent 36%),
-    radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), transparent 40%),
     radial-gradient(circle at 50% 50%, var(--lc, #8a5cff), color-mix(in srgb, var(--lc, #8a5cff) 30%, #000) 100%);
   border: 2px solid var(--lc, #8a5cff);
   box-shadow:
-    inset 0 1px 2px rgba(255,255,255,.6),
+
     inset 0 -2px 6px rgba(0,0,0,.5),
     0 0 16px var(--lc, #8a5cff),
     0 0 4px var(--lc, #8a5cff),
@@ -2016,7 +2034,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
 .activity-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
 .activity-card-jewel {
   width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
-  background: radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%);
+  background: #050607;
   border: 1px solid color-mix(in srgb, var(--ac, #9d75ff) 50%, transparent);
   box-shadow: 0 0 14px color-mix(in srgb, var(--ac, #9d75ff) 30%, transparent);
   color: var(--ac, #9d75ff); flex-shrink: 0;
@@ -2175,7 +2193,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
   min-height: 42px; padding: 0 22px;
   border-radius: var(--radius-pill);
   border: 1px solid color-mix(in srgb, var(--btn-accent) 45%, transparent);
-  background: linear-gradient(145deg, #1e1e26 0%, #0a0a0f 50%, #1e1e26 100%);
+  background: #050607; /* BLACK DIAMOND: flat board black */
   color: var(--ink);
   font-size: 12.5px; font-weight: 800; letter-spacing: .06em;
   box-shadow: var(--depth-hi), 0 10px 26px #000a,
@@ -4121,8 +4139,8 @@ const Icons = (() => {
      HUB ICONS FIX 2026-11-16 (§1): the ONE language — black obsidian in the
      middle, white glyph in the middle, the color as light on the OUTSIDE
      only (blurred halo + thin outer ring in currentColor, never a colored
-     core). The middle never glows. currentColor is the identity color,
-     inherited from the container. */
+     core). BLACK DIAMOND 2026-11-16: the core is FLAT Smart Note board
+     black #050607 — no top-light gradient, no white highlight ellipse. */
   let __jewelSeq = 0;
   function icon(name, cls = '') {
     const id = 'jewel' + (++__jewelSeq);
@@ -4130,9 +4148,9 @@ const Icons = (() => {
     return `<svg class="jewel ${cls}" viewBox="0 0 24 24" aria-hidden="true">` +
       `<defs>` +
       `<radialGradient id="${id}" cx="35%" cy="30%" r="78%">` +
-      `<stop offset="0%" stop-color="#2b2b33"/>` +
-      `<stop offset="55%" stop-color="#14141b"/>` +
-      `<stop offset="100%" stop-color="#07070b"/>` +
+      `<stop offset="0%" stop-color="#050607"/>` +
+      `<stop offset="55%" stop-color="#050607"/>` +
+      `<stop offset="100%" stop-color="#050607"/>` +
       `</radialGradient>` +
       `<filter id="${id}-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter>` +
       `</defs>` +
@@ -4140,7 +4158,6 @@ const Icons = (() => {
       `<circle cx="12" cy="12" r="6.8" fill="url(#${id})"/>` +
       `<circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"/>` +
       `<circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/>` +
-      `<ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/>` +
       `<g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">${glyph}</g>` +
       `</svg>`;
   }
@@ -4238,7 +4255,7 @@ function layerJewel(name, color) {
   /* Black core, color glow ring, bold white glyph — depth, not flat */
   return '<span class="layer-jewel-wrap" style="--lc:' + color + '">' +
     '<svg class="layer-jewel-svg" viewBox="0 0 32 32" aria-hidden="true">' +
-      '<circle cx="16" cy="16" r="14" fill="#0a0a0e" stroke="' + color + '" stroke-width="2.5"/>' +
+      '<circle cx="16" cy="16" r="14" fill="#050607" stroke="' + color + '" stroke-width="2.5"/>' +
       '<circle cx="16" cy="16" r="14" fill="none" stroke="' + color + '" stroke-width="1" opacity=".4"/>' +
       '<g transform="translate(8,8) scale(.67)" fill="#ffffff" stroke="#ffffff" stroke-width=".5">' + paths + '</g>' +
     '</svg></span>';
@@ -5363,13 +5380,13 @@ function HubView(params) {
   const title = el('div', 'top-title', '<b>INTELLIGENT HUB</b>');
   /* Ask Naya in the LEFT corner, Life with Naya in the RIGHT corner —
      rebuilt to the §1 language: obsidian inside, double-layered, glossy,
-     pearl blue under Ask Naya, pearl green under Life with Naya, white-lit
-     icons inside, alive at rest, bright on hover. */
+     pearl PURPLE under Ask Naya, pearl green under Life with Naya, white
+     icons inside, matched sizes, alive at rest, bright on hover. */
   const askBtn = el('button', 'hub-obsidian-btn', '<span class="hb-ico">' + Icons.icon('mic') + '</span>Ask Naya');
   askBtn.setAttribute('type', 'button');
   askBtn.setAttribute('aria-label', 'Ask Naya');
   askBtn.setAttribute('title', 'Ask Naya — ask her anything');
-  askBtn.style.setProperty('--glow', '#55b9ee');
+  askBtn.style.setProperty('--glow', '#a06bff'); /* 23:18Z: Ask = purple, Life = green */
   askBtn.addEventListener('click', () => { if (window.NayaRouter) window.NayaRouter.navigate('/hub/ask'); else location.hash = '#/hub/ask'; });
   const lwnBtn = el('button', 'hub-obsidian-btn', '<span class="hb-ico">' + Icons.icon('heart') + '</span>Life with Naya');
   lwnBtn.setAttribute('type', 'button');
@@ -5387,7 +5404,7 @@ function HubView(params) {
      tile. Powercasts stays. */
   const ecoWrap = el('div', '');
   ecoWrap.style.cssText = 'position:relative;display:flex;';
-  const pcBtn = el('a', 'powercast-topbtn', '&#127911; Powercasts');
+  const pcBtn = el('a', 'powercast-topbtn', '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg> Powercasts'); /* D1: white headphone glyph, no gray emoji */
   pcBtn.setAttribute('href', 'https://powercasts.nayapower.workers.dev/');
   pcBtn.setAttribute('aria-label', 'Open NayaNET Powercast');
   pcBtn.setAttribute('title', 'NayaNET Powercast — learn all about Naya Power');
@@ -6098,7 +6115,10 @@ window.NayaNotif = window.NayaNotif || {
   railRHead.innerHTML = '<b>YOUR WORLDS &amp; NAYANET</b>';
   const railRX = el('button', 'rail-right-x', '\u00d7');
   railRX.setAttribute('aria-label', 'Close right sidebar');
-  railRX.addEventListener('click', () => closeRightRail());
+  /* ITEM B (drawer X-path): below 1440px the right drawer opens TOGETHER with
+     the left drawer, so its X must close BOTH (plus the backdrop); at desktop
+     the drawers are docked sidebars and the X only undocks the right one. */
+  railRX.addEventListener('click', () => { if (window.innerWidth < 1440) { closeDrawer(); closeRightRail(); } else { closeRightRail(); } });
   railRHead.appendChild(railRX);
   const navR = el('nav', 'nav');
   navR.setAttribute('aria-label', 'Your worlds and NayaNET');
@@ -8190,17 +8210,17 @@ function ConnectRoom() {
 .sh-hero-quote { font-size: clamp(19px, 2.6vw, 26px); color: #F8F7FB; font-weight: 600; line-height: 1.45; margin: 0 auto 30px; max-width: 640px; font-family: Newsreader, Georgia, serif; }
 .sh-benefits { display: grid; margin-bottom: 16px; grid-template-columns: repeat(auto-fit, minmax(min(320px,100%), 1fr)); gap: 18px; text-align: left; margin: 0 0 24px; }
 .board-h{display:flex;align-items:center;gap:20px;width:100%;background:linear-gradient(180deg,#0d0d14,#07070b);border:1.5px solid var(--bc);border-radius:20px;padding:22px 26px;box-shadow:inset 0 1px rgba(255,255,255,.25),inset 0 -4px 12px rgba(0,0,0,.4),0 0 30px -12px var(--bc),0 18px 40px rgba(0,0,0,.5);text-align:left}
-.board-h .bh-icon{flex:none;width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25),transparent 60%),var(--bc);box-shadow:0 0 20px var(--bc),inset 0 1px rgba(255,255,255,.4);font-size:26px;color:#fff}
+.board-h .bh-icon{flex:none;width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:var(--bc); /* BLACK DIAMOND: white wash out — color core kept flat */box-shadow:0 0 20px var(--bc),0 8px 18px rgba(0,0,0,.5);font-size:26px;color:#fff}
 .board-h .bh-text{flex:1;min-width:0}
 .board-h .bh-text h3{margin:0;font-size:20px;color:#F8F7FB;font-weight:800}
 .board-h .bh-text p{margin:6px 0 0;font-size:14px;color:rgba(248,247,251,.75)}
 .sh-board { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; cursor: default; }
 .sh-board:hover { transform: translateY(-3px); border-color: var(--bc); box-shadow: inset 0 1px rgba(255,255,255,.35), inset 0 -4px 12px rgba(0,0,0,.4), 0 0 42px -8px var(--bc), 0 0 64px -14px var(--bc), 0 22px 44px rgba(0,0,0,.55); }
-.sh-board:hover .bh-icon { box-shadow: 0 0 34px var(--bc), inset 0 1px rgba(255,255,255,.5); }
+.sh-board:hover .bh-icon { box-shadow: 0 0 34px var(--bc), 0 8px 18px rgba(0,0,0,.5); }
 .sh-board:hover .bh-text h3 { text-shadow: 0 0 18px var(--bc); }
 .sh-lifeln { display: inline-block; color: #a06bff; font-size: 16px; font-weight: 600; text-decoration: none; margin-bottom: 20px; }
 .sh-lifeln:hover { text-decoration: underline; }
-.board-h .bh-btn{flex:none;padding:14px 28px;background:linear-gradient(180deg,#141419,#050507);border:1.5px solid #F8F7FB;border-radius:999px;color:#F8F7FB;font-weight:800;font-size:14px;letter-spacing:.08em;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.3),0 0 18px rgba(248,247,251,.35);animation:btn-flash 2.2s ease-in-out infinite}
+.board-h .bh-btn{flex:none;padding:14px 28px;background:#050607;border:1.5px solid #F8F7FB;border-radius:999px;color:#F8F7FB;font-weight:800;font-size:14px;letter-spacing:.08em;cursor:pointer;box-shadow:0 0 18px rgba(248,247,251,.35),0 8px 18px rgba(0,0,0,.5);animation:btn-flash 2.2s ease-in-out infinite}
 
 .sh-ticker span { text-shadow: 0 0 12px rgba(255,255,255,.4); animation: ticker-pulse 3s ease-in-out infinite; }
 @keyframes ticker-pulse { 0%,100% { opacity: .85; } 50% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,.6); } }
@@ -8208,7 +8228,7 @@ function ConnectRoom() {
 .sh-bridge { text-align: center; padding: 20px; max-width: 600px; margin: 0 auto; }
 .sh-bridge-text { font-size: 24px; color: #fff; font-weight: 700; margin: 0 0 8px; }
 .sh-bridge-sub { font-size: 16px; color: rgba(255,255,255,.6); margin: 0; }
-@keyframes btn-flash{0%,100%{box-shadow:inset 0 1px rgba(255,255,255,.3),0 0 18px rgba(248,247,251,.35)}50%{box-shadow:inset 0 1px rgba(255,255,255,.3),0 0 32px var(--bc),0 0 48px var(--bc)}}`;
+@keyframes btn-flash{0%,100%{box-shadow:0 0 18px rgba(248,247,251,.35)}50%{box-shadow:0 0 32px var(--bc),0 0 48px var(--bc)}}`;
     document.head.appendChild(st);
   })();
   function stepCard(n, color, label, title, nutshell, detailHtml) {
@@ -8470,7 +8490,7 @@ function ConnectRoom() {
       '.sh-jewel{width:11px;height:11px;transform:rotate(45deg);flex-shrink:0;background:linear-gradient(135deg,#fff,var(--c) 60%,color-mix(in srgb,var(--c) 55%,#000));box-shadow:0 0 12px var(--c)}',
       '.sh-step h2{font-size:24px;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin:0 0 12px;position:relative;color:var(--ink)}',
       '.sh-nutshell{font-size:18px;line-height:1.6;color:var(--ink);margin:0 0 16px;position:relative}',
-      '.sh-detail{font-size:14px;color:#D0D6E0;line-height:1.7;margin:0 0 8px;position:relative}',
+      '.sh-detail{font-size:14px;color:#fff; /* BLACK DIAMOND: no gray text */line-height:1.7;margin:0 0 8px;position:relative}',
       '.sh-detail strong{color:var(--ink);font-weight:600}',
       '.sh-hl{color:var(--c);font-weight:600}',
       '.sh-act{margin-top:22px;position:relative;display:flex;flex-wrap:wrap;gap:12px;align-items:center}',
@@ -9961,13 +9981,10 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   box-shadow:0 0 16px var(--room-accent,#a06bff);}
 .naya-guide-play{width:42px;height:42px;flex:0 0 auto;border-radius:50%;cursor:pointer;position:relative;overflow:hidden;
   border:1px solid rgba(232,232,236,.4);color:#fff;padding:0;
-  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.20), rgba(20,10,36,.85) 72%);
+  background:#050607; /* BLACK DIAMOND: flat board black */
   display:flex;align-items:center;justify-content:center;
   transition:all .3s cubic-bezier(.22,.61,.36,1);
-  box-shadow:inset 0 0 10px rgba(255,255,255,.10),0 0 10px rgba(0,0,0,.4);}
-.naya-guide-play::before{content:"";position:absolute;inset:-50%;pointer-events:none;
-  background:conic-gradient(from 0deg, transparent 0%, rgba(255,255,255,.14) 12%, transparent 24%, transparent 50%, rgba(255,255,255,.08) 62%, transparent 74%);
-  animation:nayaGuideSpin 6s linear infinite;}
+  box-shadow:0 0 10px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.5);}
 .naya-guide-play span{position:relative;z-index:1;margin-left:.12em;font-size:15px;text-shadow:0 0 6px rgba(255,255,255,.7);}
 .naya-guide-play:hover{transform:scale(1.10);border-color:var(--room-accent,#a06bff);
   box-shadow:0 0 16px var(--room-accent,#a06bff), inset 0 0 10px rgba(255,255,255,.14);}
@@ -10188,8 +10205,8 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 .nsb-tab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;
   padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;-webkit-user-select:none;
   border:1px solid rgba(255,255,255,.3);
-  background:
-    linear-gradient(180deg, #17171e, #0a0a0f 70%, #050507);
+  background: #050607;
+  /* BLACK DIAMOND: flat board black */
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;
   white-space:nowrap;min-height:44px;
@@ -10227,13 +10244,13 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 .nsb-tab.is-locked .nsb-lock{font-size:11px;opacity:.8;}
 .nsb-tab.is-dead{opacity:.55;cursor:not-allowed;}
 .nsb-tab .nsb-more{border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;
-  background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
+  background:#050607;
   padding:3px 9px;cursor:pointer;font-size:13px;line-height:1.5;font-family:inherit;
   transition:all .2s;min-height:0;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 3px 8px rgba(0,0,0,.4);}
-.nsb-tab .nsb-more:hover{background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.1));
+  box-shadow:0 3px 8px rgba(0,0,0,.4), 0 6px 14px rgba(0,0,0,.5);}
+.nsb-tab .nsb-more:hover{background:#050607;
   box-shadow:inset 0 -1px 0 rgba(0,0,0,.5), 0 0 12px -2px var(--tc), 0 4px 10px rgba(0,0,0,.45);}
-.nsb-tab.add{border-style:dashed;color:rgba(255,255,255,.75);}
+.nsb-tab.add{border-style:dashed;color:#fff;}
 /* jewel icon per tab — the signature chip: colored glass, per-tab glow */
 .nsb-jewel{width:29px;height:29px;border-radius:9px;flex:0 0 auto;
   display:inline-flex;align-items:center;justify-content:center;font-size:14px;color:#fff;
@@ -10258,14 +10275,14 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 .nsb-bottom-inner{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:10px 16px 12px;}
 /* network anchor: the persistent connection, one touch away */
 .nsb-net{display:flex;align-items:center;gap:7px;flex:0 0 auto;padding-right:4px;
-  color:#fff;font-size:12px;font-weight:800;white-space:nowrap;opacity:.85;}
+  color:#fff;font-size:12px;font-weight:800;white-space:nowrap;opacity:1;}
 .nsb-net .nsb-net-glyph{width:24px;height:24px;border-radius:8px;flex:0 0 auto;
   display:inline-flex;align-items:center;justify-content:center;font-size:13px;
-  background:linear-gradient(180deg,#17171e,#050507);
+  background:#050607;
   border:1px solid rgba(255,255,255,.2);
   box-shadow:inset 0 -1px 0 rgba(0,0,0,.5),
     0 2px 5px rgba(0,0,0,.6), 0 0 14px -4px var(--blue);}
-.nsb-net small{font-weight:600;opacity:.7;}
+.nsb-net small{font-weight:600;opacity:1;}
 /* settings gear */
 .nsb-gear{flex:0 0 auto;border:1px solid rgba(255,255,255,.3);color:#fff;
   background:linear-gradient(180deg, #17171e, #0a0a0f 70%, #050507);
@@ -10339,7 +10356,7 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
 .nsb-menu .mi{padding:11px 14px;border-radius:10px;cursor:pointer;color:#fff;
   font-weight:800;font-size:13px;font-family:inherit;border:1px solid transparent;background:none;
   width:100%;text-align:left;display:block;transition:all .15s;}
-.nsb-menu .mi:hover{background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.04));
+.nsb-menu .mi:hover{background:#050607;
   border-color:rgba(255,255,255,.14);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4);
   transform:translateY(-1px);}
@@ -10358,8 +10375,8 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
 .nsb-menu .mi-remove:hover{border-color:var(--red);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--red);}
 /* suggestion highlight (keyboard) + suggestion URL line — new elements, v1.4 values untouched */
-.nsb-menu .mi.sel{background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.04));border-color:rgba(255,255,255,.14);}
-.nsb-sug-url{display:block;font-size:11px;opacity:.6;font-weight:400;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.nsb-menu .mi.sel{background:#050607;border-color:rgba(255,255,255,.14);}
+.nsb-sug-url{display:block;font-size:11px;opacity:1;font-weight:400;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 /* ============ EDITOR ============ */
 .nsb-ed{display:none;margin:0 16px 12px;border:1px solid rgba(255,255,255,.22);
   border-radius:14px;padding:16px;background:linear-gradient(180deg,#141a2e,#0b0e18 65%,#070a12);
@@ -10372,7 +10389,7 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -8px 22px rgba(0,0,0,.35),
     0 18px 44px rgba(0,0,0,.6), 0 0 26px -4px rgba(160,107,255,.5);}
 .nsb-ed p{margin:0 0 4px;font-size:16px;font-weight:700;color:#fff;}
-.nsb-ed label{display:block;font-size:13px;color:#fff;margin:10px 0 4px;opacity:.85;}
+.nsb-ed label{display:block;font-size:13px;color:#fff;margin:10px 0 4px;opacity:1;}
 .nsb-ed input,.nsb-ed select{width:100%;box-sizing:border-box;color:#fff;
   background:linear-gradient(180deg,#060609,#0f0f16);
   border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:11px 12px;
@@ -10383,33 +10400,33 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
   box-shadow:inset 0 3px 10px rgba(0,0,0,.68), 0 0 18px -4px var(--purple);}
 .nsb-ed-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
 .nsb-btn{color:#fff;border:1.5px solid rgba(255,255,255,.4);
-  background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.03) 45%, rgba(0,0,0,.3)), #141419;
+  background:#050607;
   border-radius:10px;padding:10px 16px;font-size:14px;font-weight:700;min-height:44px;
   cursor:pointer;font-family:inherit;transition:all .2s;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -3px 8px rgba(0,0,0,.4),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),
     0 5px 0 rgba(0,0,0,.3), 0 10px 22px rgba(0,0,0,.5);}
 /* v1.6 COLOR LANGUAGE: rest = beautiful black for ALL; hover ignites each in its OWN color. Never all the same. */
 .nsb-btn.save:hover,.nsb-btn.primary:hover{border-color:var(--blue);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--blue);}
 .nsb-btn.move-left:hover{border-color:var(--green);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--green);}
 .nsb-btn.move-right:hover{border-color:var(--purple);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--purple);}
 .nsb-btn.close:hover{border-color:rgba(255,255,255,.9);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px rgba(255,255,255,.5);}
 .nsb-btn:active{transform:translateY(2px);
   box-shadow:inset 0 3px 10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.5);}
 .nsb-btn.primary{border-color:rgba(255,255,255,.4);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -3px 8px rgba(0,0,0,.4),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),
     0 5px 0 rgba(0,0,0,.3), 0 10px 22px rgba(0,0,0,.5);}
 .nsb-btn.danger:hover{border-color:var(--red);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--red);}
-.nsb-status{font-size:13px;color:#fff;opacity:.7;margin:8px 16px 10px;min-height:18px;}
+.nsb-status{font-size:13px;color:#fff;opacity:1;margin:8px 16px 10px;min-height:18px;}
 /* FIX 2026-11-16 (F2): the status line leaves the flow at ALL heights, not
    only max-height:500px — the slice's own short-height law as written in the Personal file: a say()
    message persists until the next say(), so an in-flow status re-grows the
@@ -10494,32 +10511,41 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 @media (max-width: 640px) { .top .top-title { display: none; } }
 /* Ask Naya / Life with Naya — double-layered: a clone behind, moved just a
    tad; pearl light underneath and on the outside edge, alive at rest. */
-.hub-obsidian-btn { position: relative; z-index: 0; box-shadow: inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5), 0 0 16px color-mix(in srgb, var(--glow) 38%, transparent); }
+.hub-obsidian-btn { position: relative; z-index: 0; box-shadow: inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5), 0 0 28px color-mix(in srgb, var(--glow) 65%, transparent), 0 0 48px color-mix(in srgb, var(--glow) 30%, transparent); /* 23:18Z: halos must READ at 1919px */ }
 .hub-obsidian-btn::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
   border-radius: 999px;
   border: 1.5px solid color-mix(in srgb, var(--glow) 55%, transparent);
-  background: linear-gradient(135deg, #14141c 0%, #050508 50%, #14141c 100%);
+  background: #050607;
   transform: translate(2px, 3px);
   box-shadow: 0 10px 22px rgba(0,0,0,.5);
 }
 .hub-obsidian-btn .hb-ico { display: inline-flex; color: var(--glow); }
 .hub-obsidian-btn .hb-ico svg { width: 18px; height: 18px; }
 /* Bottom bar: hover lights up outside in its own color AND lifts. */
+/* BLACK DIAMOND (§4): second clone — the pair sits higher than any single button. */
+.hub-obsidian-btn::after{content:'';position:absolute;inset:0;z-index:-2;border-radius:999px;background:#050607;border:1.5px solid color-mix(in srgb, var(--glow) 35%, transparent);transform:translate(4px,6px);box-shadow:0 14px 30px rgba(0,0,0,.55);}
+/* 23:18Z (3): rest = white icon on board black; lit = the pair's own color. */
+.hub-obsidian-btn .hb-ico{color:#fff;}
+.hub-obsidian-btn:hover .hb-ico,.hub-obsidian-btn:focus-visible .hb-ico{color:var(--glow);}
+/* 23:18Z (4): the glyph reads at 390 and desktop — same 0.5 scale as D2. */
+.hub-obsidian-btn .hb-ico svg.jewel g{transform:translate(6px,6px) scale(.5);}
+/* 23:18Z (1): the pair is a matched set — same width on desktop. Corners stand (5). */
+@media (min-width:1024px){.hub-obsidian-btn{min-width:184px;}}
 .notif-seg:hover .notif-tile {
   transform: translateY(-3px);
   border-color: var(--nc);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.38),
     inset 0 -9px 15px rgba(0,0,0,.6),
     0 0 24px color-mix(in srgb, var(--nc) 60%, transparent),
     0 10px 22px rgba(0,0,0,.6);
+  /* BLACK DIAMOND: inset white out. */
 }
 .notif-seg:hover .notif-tile svg { filter: drop-shadow(0 0 6px var(--nc)); }
 /* Sidebar sub-rows: hover lifts the icon chip too. */
 .nav-sub:hover .ico {
   border-color: var(--nav, var(--purple));
-  box-shadow: inset 0 1.5px 0 rgba(255,255,255,.55), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 14px color-mix(in srgb, var(--nav, var(--purple)) 55%, transparent), 0 4px 10px rgba(0,0,0,.5);
+  box-shadow: inset 0 -3px 6px rgba(0,0,0,.6), 0 0 14px color-mix(in srgb, var(--nav, var(--purple)) 55%, transparent), 0 4px 10px rgba(0,0,0,.5), 0 8px 18px rgba(0,0,0,.55);
   transform: scale(1.06);
 }
 </style>
