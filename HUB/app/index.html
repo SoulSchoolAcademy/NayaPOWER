@@ -10030,13 +10030,17 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--red);}
 .nsb-status{font-size:13px;color:#fff;opacity:.7;margin:8px 16px 10px;min-height:18px;}
 /* FIX 2026-11-16 (F2): the status line leaves the flow at ALL heights, not
-   only max-height:500px — the slice's own short-height law above: a say()
+   only max-height:500px — the slice's own short-height law as written in the Personal file: a say()
    message persists until the next say(), so an in-flow status re-grows the
    bar 36px on any tab action and --smartbar-h / pad() book the inflated
    height (Personal gear ON read 142px instead of 106px). As a toast the bar
    height is constant in every state and the message is still shown.
    Declarations verbatim the slice's own short-height toast. */
 .nsb-bottom .nsb-status{position:absolute;left:16px;right:16px;bottom:calc(100% + 6px);margin:0;padding:6px 10px;min-height:0;background:rgba(3,3,5,.94);border:1px solid rgba(255,255,255,.14);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.6);}
+/* FIX 2026-11-16 (FIX PASS 2): empty status stays hidden — the Personal global rule, verbatim
+   (work-fix.html L13732, "Empty means hidden, at every height"). Without it the empty
+   .nsb-status renders as a full-width pill floating above the Smart Bar at rest. */
+.nsb-bottom .nsb-status:empty{display:none;}
 /* ============ MOTION ============ */
 @media (prefers-reduced-motion: reduce){
   .nsb-tab,.nsb-search-btn{transition:none;}
