@@ -20,4 +20,4 @@ The calendar fits the screen exactly — month whole, no scroll, no overflow; da
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2920 — ~/workspace/team-nitro/smart-notes/SN-2920-the-day-holds-everything.md*
+*Paired Smart Note: SN-2920 — The Day Holds Everything*
