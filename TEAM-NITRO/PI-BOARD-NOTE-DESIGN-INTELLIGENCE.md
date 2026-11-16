@@ -2016,3 +2016,44 @@ Run 234, scheduled 21:23:18Z Mon 2026-11-16, ran ~21:26–21:45Z.
 - Hub icons-fix coordinator 49c297e6 status unknown at 21:23Z; Personal eye walk still pending.
 - Numbering guard false claim: SN-9999 (test fixture in PR #3382) makes next-sn-number.py report next free SN-10000; guard fix owed. This run used SN-3038/3039 (renumbered by the captain from the run's draft numbers; tree highest SN-3032 at filing — that check missed the simultaneous SN-3033/3034 filings; renumbered again to SN-3038/3039 by the collision seat).
 - Filing owed next run: SN-3038/3039 + NNs + this addendum (blocked this run by a safety flag on the filing-path read — recorded in run234-log.md, not worked around).
+
+
+# Intelligence Loop run 235 — PI addendum (filed 2026-11-16; SN refs corrected at filing — run 234's pair is SN-3038/SN-3039)
+
+Run 235, scheduled 21:53:18Z Mon 2026-11-16, ran ~21:54–22:12Z.
+
+Filing note (2026-11-16, at filing): filed after the SN-3033/SN-3034 renumber landed (22:50Z). Every reference below that means run 234's notes now reads SN-3038/SN-3039. Status lines record what the run saw at its close; later state changes are recorded in later runs.
+
+## New intelligence this run
+
+None — no new dictation or decision from Shawn since 21:29Z (his coordination ruling, SN-3039). The run's work is verification of run 234's carry-over plus one material finding.
+
+## Verified filed (re-filing seat — all byte-identical to the run-234 drafts)
+
+- SN-3038 "The Icon Laws — One Language, Everywhere" — filed as SN-3033, blob e3232702, 9,076 B; renumbered to SN-3038 (blob 3e8fc8f9) by the collision seat after this run closed.
+- SN-3039 "Coordination — Direct, Not Mail" — filed as SN-3034, blob 61653be1, 5,775 B; renumbered to SN-3039 (blob 21e09827) by the collision seat after this run closed.
+- NN-20261116-the-icon-laws-one-language — blob d3a1c53a, 5,518 B.
+- NN-20261116-coordination-direct-not-mail — blob b77e4f77, 2,910 B.
+- Run 234 PI addendum appended to TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md at line 1996. (Its SN refs were updated to SN-3038/SN-3039 by the renumber seat; its body still says "(DRAFTED, pending filing)" — stale wording inside filed text; board-text correction is the captain's call.)
+
+## ⚠️ OUT OF ALIGNMENT — SN-3033 and SN-3034 each hold TWO different notes
+
+- SN-3033: "Do It Right, Every Layer Great" (b82ba088, 10,576 B — created 21:44Z, consolidation of Shawn's 16:55–17:53Z professional-standard notes) + the loop's "The Icon Laws" (e3232702 — now SN-3038, blob 3e8fc8f9).
+- SN-3034: "Earn It, Don't Declare It" (5530e8c7, 11,964 B — created 21:50Z, legal-pages notes 17:54–18:47Z) + the loop's "Coordination — Direct, Not Mail" (61653be1 — now SN-3039, blob 21e09827).
+- Both collisions are near-simultaneous filings by two seats; the loop's bytes landed intact, nothing overwritten. One note of each pair must be renumbered — the loop does not move or re-file notes; the decision is the captain's. RESOLVED after this run closed (22:50Z): first-filed keeps the number; the loop's pair moved to SN-3038/SN-3039 (collision seat 99f7e1df, verified from the live tree at filing).
+- The numbering guard did NOT flag this: `next-sn-number.py` (run 22:04–22:10Z, exit 0, highest SN-3037) matches filenames against case-sensitive `SN-(\d+)`, but every file here is named `...-sn3033-...` (lowercase, no hyphen), so its same-directory duplicate check collapses to one directory-level claim per number. Guard fix owed (captain's lane): match filenames case-insensitively / match `snNNNN` too — alongside the standing SN-9999 test-fixture false claim (guard still reports next free SN-10000; tree highest is SN-3037).
+
+## State changes
+
+- Walk-end fix DELIVERED WHOLE 21:52Z (checker PASS + captain's eye PASS, 0 errors); One List walk-end-share-plus CLOSED; entrance-welcome brief fixed (line-98 labels) + coordinator dispatched — the agreement-entrance self-contradiction is resolved.
+- Hub icons-fix Item 8 fix FILED (blob 6add8aec, commit ae52088a, staged sha 5f00eb52) + independent re-checker dispatched.
+- Organize hook: clean, 0 new, watermark holds.
+- Mail: digest as record only (step retired by Shawn's word 21:29Z).
+
+## Still open
+
+- Hub re-bake seat c07db9b6 still running at last view; SN-3013–3023 still NOT confirmed live on the Hub.
+- Personal bottom-bar v2 live proof (cloud browser ea9eec21) still pending; 390px owed.
+- Personal icons-plus round queued behind bottom-bar v2 proof.
+- Loop seat-brief step 4 / Correction Compound step 4: captain's edit owed (mail step retired).
+- Filed with this addendum (run235-pi-new.md, corrected at filing).
