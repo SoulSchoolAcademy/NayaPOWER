@@ -29448,6 +29448,13 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     var p=document.getElementById('fcPicker'); if(p) p.setAttribute('aria-label','Choose a thing');
     window.pcPickerMode='world';
     fcRenderWorldPicker('');
+    /* FIX-MAKER 2026-11-16 (item 2 — checker FAIL, 1851 row-miss): the rows render synchronously above, but one run found no row 500ms after the open — no probe isolated the wipe (the message-mode faces interval is the known writer that can land after a world open). So the open now re-asserts its own rows: every 150ms for up to 600ms, while the picker is still open in world mode and the list holds neither world rows nor the no-match note (the MutationObserver backstop's own condition below), render again. It stops the moment rows are present, the picker closes, or the mode changes — it never fights a search (a genuine no-match keeps its note) and never runs when nothing is wrong. */
+    (function(){ var _n=0; var _iv=setInterval(function(){ try{ _n++;
+      var _p=document.getElementById('fcPicker'); var _l=document.getElementById('fcPickerList');
+      if(!_p||_p.hidden||window.pcPickerMode!=='world'||!_l||_n>4){ clearInterval(_iv); return; }
+      if(_l.querySelector('.pc-world-row')||_l.querySelector('.pc-world-none')){ clearInterval(_iv); return; }
+      var _s=document.getElementById('fcPickerSearch'); fcRenderWorldPicker(_s?_s.value:'');
+    }catch(e){ try{ clearInterval(_iv); }catch(_e){} } },150); })();
     if(p) p.hidden=false;
     if(s){ try{ s.focus(); }catch(e){} }
   };
@@ -29513,12 +29520,30 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     var _origKw=window.pcHubSearchKeyword;
     window.pcHubSearchKeyword=function(q){ window.MW_SEARCH_WORLD=pcCurrent().name; return _origKw(q); };
   }
+  /* FIX-MAKER 2026-11-16 v2 (item 2 — the flip): a real switch away from the World tab ALWAYS comes from a click on a tab or feed-name control. Record those clicks (capture, so this lands before any handler acts) so the pick's re-assert below can tell a citizen's switch from the page flipping the tab back on its own ~200ms after a pick. The picker rows, the chip and the favorite tabs are deliberately NOT in this selector — they are world picks, consistent with the World tab. */
+  document.addEventListener('click', function(e){
+    try{ var _t=e.target&&e.target.closest?e.target.closest('[data-mw-tab],#mwFeedNameSmart,#mwFeedNameNaya,#mwFeedNameActivity,#mwFeedNameWorld'):null; if(_t) window.__pcUserTabAt=Date.now(); }catch(_e){}
+  }, true);
   /* Clicks: world rows + stars (picker), drawer favorites, favorite tabs. */
   document.addEventListener('click', function(e){
     if(!e.target||!e.target.closest) return;
     var pick=e.target.closest('[data-pc-world-pick]');
     if(pick){ var nm=pick.getAttribute('data-pc-world-pick'); var ws=pcWorlds();
-      for(var i=0;i<ws.length;i++){ if(ws[i].name===nm){ if(typeof window.fcClosePicker==='function') window.fcClosePicker(); pcSetWorldObj(ws[i]); window.mwApplyFeedTab('world'); break; } } return; }
+      for(var i=0;i<ws.length;i++){ if(ws[i].name===nm){ if(typeof window.fcClosePicker==='function') window.fcClosePicker(); window.__pcPickAt=Date.now();
+      /* FIX-MAKER 2026-11-16 (item 2 — checker FAIL, intermittent 12 pass / 4 fail): the pick used to set the scope and PAINT FIRST, and only then activate the World tab — so the unfiltered paint could stand as the last one whenever a late repaint landed after the tab call, and the stuck state (scope set, tab never active, wall unfiltered, feed name + world bar hidden) sat there with no further paint to heal it. Now the tab activates FIRST, the scope paints into the already-active tab (one filtered paint), and the tab is asserted once more after it — so the last paint is always the filtered one. */
+      if(typeof window.mwApplyFeedTab==='function'){ try{ window.mwApplyFeedTab('world'); }catch(e){} }
+      pcSetWorldObj(ws[i]);
+      if(typeof window.mwApplyFeedTab==='function'){ try{ window.mwApplyFeedTab('world'); }catch(e){} }
+      /* FIX-MAKER 2026-11-16 v2 (item 2 — the re-assert): the stored tab can read 'personal' even when the citizen never switched — the page itself flips it back ~200ms after a pick, with no click on any tab control (caught live in probe-diag1920.py: pick lands correct, then stored flips to 'personal' and Personal reactivates). So the re-assert heals on PROVENANCE, not on the stored value alone: for 4s after the pick it heals whenever the tab disagrees and no real tab click landed after the pick; after that the stored tab rules again. A citizen tapping Personal after a pick still wins instantly (their click stamps __pcUserTabAt after __pcPickAt, and their tap mwPuts 'personal') — this can never fight a real switch, and it never runs when nothing is wrong. */
+      (function(_nm){ var _n=0; var _iv=setInterval(function(){ try{ _n++;
+        var _ft=null; try{ _ft=JSON.parse(localStorage.getItem('mw.set.feedtab')||'null'); }catch(e){ _ft=null; }
+        var _wt=document.getElementById('pcWorldTab'); var _fw=document.getElementById('mwFeedNameWorld');
+        var _holds=_wt&&_wt.classList.contains('active')&&(!_fw||!_fw.hidden);
+        var _mine=false; try{ var _pa=window.__pcPickAt||0, _ua=window.__pcUserTabAt||0; _mine=(Date.now()-_pa<4500)&&(_ua<_pa); }catch(e){}
+        if((_ft!=='world'&&!_mine)||_holds||_n>=16){ clearInterval(_iv); return; }
+        if(typeof window.mwApplyFeedTab==='function'){ try{ window.mwApplyFeedTab('world'); }catch(e){} }
+      }catch(e){ try{ clearInterval(_iv); }catch(_e){} } },250); })(nm);
+      break; } } return; }
     var fav=e.target.closest('[data-pc-world-fav]');
     if(fav){ e.stopPropagation(); pcToggleFav(fav.getAttribute('data-pc-world-fav')); return; }
     var add=e.target.closest('[data-pc-add-world]');
