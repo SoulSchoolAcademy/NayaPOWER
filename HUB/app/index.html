@@ -6420,7 +6420,7 @@ window.NayaNotif = window.NayaNotif || {
       overlay.setAttribute('aria-label', 'Write a Smart Note');
       overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.72);padding:20px;overflow-y:auto;';
       var box = document.createElement('div');
-      box.style.cssText = 'width:min(560px,94vw);max-height:88vh;overflow-y:auto;background:#0b0d12;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px;color:#fff;box-shadow:0 28px 64px rgba(0,0,0,.6);';
+      box.style.cssText = 'width:min(560px,94vw);max-height:88vh;overflow-y:auto;background:#050607;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px;color:#fff;box-shadow:0 28px 64px rgba(0,0,0,.6);';
       formBox = document.createElement('div');
       var head = document.createElement('div');
       head.textContent = 'Write a Smart Note';
@@ -7775,10 +7775,13 @@ window.NayaJewels = (() => {
        card — IN A NUTSHELL -> Child -> Grandma -> What It Means. A section
        missing from the data is derived from the note's OWN words, never
        invented: Child = first sentence of the nutshell-source; Grandma =
-       first unused sentence of the means-source, else first unused of the
-       nutshell-source; What It Means = the means-source body, else an
-       honest stub. A sentence already used by another derived layer is
-       never repeated — that layer then says plainly it was not written.
+       first unused sentence of the nutshell-source — What It Means'
+       first sentence counts as already used (Means prints it), and no
+       other sentence of the means-source is taken either, or Grandma
+       would print again inside What It Means below; What It Means =
+       the means-source body, else an honest stub. A sentence already
+       used by another derived layer is never repeated — that layer
+       then says plainly it was not written.
        Real layers always win; derived layers sort by the same rank. ——— */
     var fmtFirstSentence = function (t) {
       var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
@@ -7798,11 +7801,33 @@ window.NayaJewels = (() => {
     var fmtWhy = fmtFindLayer(/WHY IT MATTERS/);
     var fmtMeansText = fmtMeansReal ? String(fmtMeansReal.body || '')
       : (fmtWhy ? String(fmtWhy.body || '') : '');
+    var fmtSentences = function (t) {
+      /* Sentences of a text, in order. The first entry is exactly
+         fmtFirstSentence(t): the same cleaning, the same 140-char
+         fallback for a fragment with no terminator. */
+      var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
+      if (!c) return [];
+      var fmtOut = [];
+      var fmtRest = c;
+      var fmtMm;
+      while ((fmtMm = fmtRest.match(/^[^.!?]+[.!?]/))) {
+        fmtOut.push(fmtMm[0].trim());
+        fmtRest = fmtRest.slice(fmtMm[0].length).trim();
+        if (!fmtRest) break;
+      }
+      if (fmtRest) fmtOut.push(fmtRest.slice(0, 140).trim());
+      return fmtOut.filter(Boolean);
+    };
     var fmtUsed = {};
     var fmtTake = function (texts) {
+      /* First UNUSED sentence across the texts, in order — scanning
+         every sentence of each text, not just its first. A sentence
+         already used by another layer (derived or printed) is skipped. */
       for (var ti = 0; ti < texts.length; ti++) {
-        var s = fmtFirstSentence(texts[ti]);
-        if (s && !fmtUsed[s]) { fmtUsed[s] = 1; return s; }
+        var fmtSs = fmtSentences(texts[ti]);
+        for (var fmtSi = 0; fmtSi < fmtSs.length; fmtSi++) {
+          if (fmtSs[fmtSi] && !fmtUsed[fmtSs[fmtSi]]) { fmtUsed[fmtSs[fmtSi]] = 1; return fmtSs[fmtSi]; }
+        }
       }
       return '';
     };
@@ -7813,7 +7838,19 @@ window.NayaJewels = (() => {
       orderedLayers.push(fmtChildLayer);
     }
     if (!fmtFindLayer(/GRANDMA/)) {
-      var fmtGrandmaBody = fmtTake([fmtMeansText, fmtNutText]);
+      /* GRANDMA-REPEAT FIX (2026-11-17): What It Means prints its own
+         first sentence, so that sentence counts as already used before
+         Grandma is derived — Grandma never takes it, and never takes
+         any other sentence of the means-source either: a sentence taken
+         from it would print again inside What It Means directly below,
+         the same doubling-up one section down. Grandma falls through
+         to the nutshell's next unused sentence — its second sentence
+         when Child took the first — or the honest stub when the
+         nutshell has no unused sentence left. Nothing is invented:
+         every Grandma line is still the note's own words. */
+      var fmtMeansFirst = fmtFirstSentence(fmtMeansText);
+      if (fmtMeansFirst) fmtUsed[fmtMeansFirst] = 1;
+      var fmtGrandmaBody = fmtTake([fmtNutText]);
       var fmtGrandmaLayer = { name: 'Grandma Note', key: 'GRANDMA NOTE', tier: 'primary', body: fmtGrandmaBody || 'No Grandma layer was written for this note.' };
       fmtGrandmaLayer.color = 'gold';
       orderedLayers.push(fmtGrandmaLayer);
