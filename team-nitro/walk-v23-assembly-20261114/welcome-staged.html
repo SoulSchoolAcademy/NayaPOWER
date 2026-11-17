@@ -2885,7 +2885,8 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     if (!parent) return null;
     return parent.querySelector('.deal-beat-photo.fp-speak-face[data-fp-face="' + key + '"]');
   }
-  function placeFaces(){
+  var _pfSettle = null;
+  function placeFacesInner(){
     var faces = [];
     var wPortrait = document.querySelector('.fp-naya-portrait');
     var wBoard = document.querySelector('#fpWelcomeG1 .fp-welcome-board');
@@ -2925,14 +2926,13 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
           parent.style.position = 'relative';
         }
       } catch (e) {}
-      var line = board.querySelector('.ib-nutshell p');
-      var anchor = line || board.querySelector('.ib-title') || board;
-      var lr = anchor.getBoundingClientRect();
-      var pr = parent.getBoundingClientRect();
+      /* FIX ROUND 2 (2026-11-17) — the board's side margin FIRST: the
+         margin narrows the board, the text reflows, and the speaking
+         line moves — measuring before the margin positions the face
+         from the pre-margin line (deck 9 sat 48px off). */
       var faceH = img.offsetHeight || (wide ? 104 : 64);
       var faceW = img.offsetWidth || (wide ? 104 : 64);
       var gap = wide ? 12 : 8;
-      img.style.top = (lr.top + lr.height / 2 - faceH / 2 - pr.top + parent.scrollTop) + 'px';
       if (f.side === 'right') {
         img.style.left = 'auto';
         img.style.right = '0px';
@@ -2944,7 +2944,24 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
         board.style.marginLeft = (faceW + gap) + 'px';
         board.style.marginRight = '';
       }
+      var line = board.querySelector('.ib-nutshell p');
+      var anchor = line || board.querySelector('.ib-title') || board;
+      var lr = anchor.getBoundingClientRect();
+      var pr = parent.getBoundingClientRect();
+      img.style.top = (lr.top + lr.height / 2 - faceH / 2 - pr.top + parent.scrollTop) + 'px';
     });
+  }
+  /* FIX ROUND 2 (2026-11-17) — settle pass: the face is positioned from
+     the layout at call time, but the beat is still settling then (the
+     dial-in runs 550ms, a smooth scroll ~500ms, a late font swap) — the
+     speaking line moves under it (deck 1 +11, deck 9 -48, letter 0 +23).
+     One guarded re-run 650ms later re-measures from the settled layout;
+     a manual re-run lands exactly on the line and stays there. The
+     settle pass calls the inner function directly, so it never
+     reschedules itself. */
+  function placeFaces(){
+    placeFacesInner();
+    if (!_pfSettle) _pfSettle = setTimeout(function(){ _pfSettle = null; placeFacesInner(); }, 650);
   }
   function fitBarPadding(){
     var bar = document.getElementById('fpStageBarB');
