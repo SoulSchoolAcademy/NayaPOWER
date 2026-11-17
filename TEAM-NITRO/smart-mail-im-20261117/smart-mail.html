@@ -101,9 +101,9 @@ a{color:#fff}
 button{font-family:inherit}
 img{max-width:100%}
 /* --- COVER: .ph-cover harvested verbatim in shape (Personal page) --- */
-.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(32vh,360px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(142,36,170,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(162,28,175,.32),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(15,82,186,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
+.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(25vh,290px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(142,36,170,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(162,28,175,.32),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(15,82,186,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
 .ph-cover::before{content:'';position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(180deg,rgba(2,2,6,0) 0%,rgba(2,2,6,.38) 52%,rgba(2,2,6,.78) 100%);pointer-events:none;z-index:1}
-@media(max-width:760px){.ph-cover{height:420px !important;aspect-ratio:auto !important;max-height:none !important;}}
+@media(max-width:900px){.ph-cover{height:140px !important;aspect-ratio:auto !important;max-height:none !important;}}
 /* COVER CHOICE (addendum 1 §2): the citizen chooses — Cover / No cover / Full screen.
    No cover = content up to the bars at the top. Full screen = cover + menu away. */
 body.no-cover .ph-cover{display:none}
@@ -126,8 +126,8 @@ body.fullscreen .ph-main{padding-top:12px}
 .menu-bar .steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
 /* --- PAGE --- */
 .ph-main{padding:8px 24px 160px}
-.page-head{text-align:center;margin:4px 0 18px}
-.page-head h2{margin:0;font-size:28px;font-weight:800;position:sticky;top:62px;z-index:40;background:#050507;scroll-margin-top:78px}
+.page-head{text-align:center;margin:0 0 18px}
+.page-title{margin:4px 0 0;text-align:center;font-size:28px;font-weight:800;position:sticky;top:62px;z-index:40;background:#050507;scroll-margin-top:78px}
 .page-head p{margin:8px 0 0;font-size:15px;color:#fff}
 .cover-modes{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
 .cover-modes .btn{padding:9px 16px;font-size:12px;min-height:36px}
@@ -330,8 +330,17 @@ body.fullscreen .ph-main{padding-top:12px}
 .ph-plus::before{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 50% 0%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCW 60s linear infinite}
 @media (max-width:900px){
   .messenger{grid-template-columns:1fr}
-  .ph-cover{height:260px}
   .ph-cover-inner h1{font-size:32px}
+  /* FIX-3 2026-11-17: narrow stack trims so the first row clears the fixed dock:
+     h2 22px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
+  .page-title{font-size:22px}
+  .cover-modes{margin-top:10px}
+  .org-tabs{padding:6px 2px 10px}
+  .search-row{padding:10px 16px}
+  .world-row{margin:2px 0 10px}
+  .panel h3{padding-top:8px}
+  .panel .panel-sub{padding-bottom:6px}
+  .rows{padding-top:4px}
   .thread{min-height:480px}
   .composer input.subject{flex:1 1 100%}
   .composer-inner{flex-wrap:wrap}
@@ -368,6 +377,7 @@ body.fullscreen .ph-main{padding-top:12px}
    gain elevation + whole-item hover light in their own deep color — .format-note,
    .smart-note, .panel, .msg family, .install-later, .btn.ghost. Deep palette only. --- */
 /* --- FIX-2 2026-11-17 (captain's eye 02:07Z): orbit satellites asymmetric 90deg apart + larger (no half-turn swap); saved-list orbs keep .cx-ava centring; cover 32vh + panel/row trims so the first rows clear the fixed dock; cover + orbs +12px inside; h2 sticky below the nav; stub note at panel top; explicit empty-thread state. Deep palette only. --- */
+/* --- FIX-3 2026-11-17 (checker FAIL items 3+5 on fix-2): desktop cover 25vh so the first row clears the fixed dock at 1920x999/1080; narrow cover 140px at <=900px + h2 22px + spacing trims so the first row clears the dock at 635x800/900/1000; heading moved out of .page-head so its sticky box is .ph-main -- it docks below the nav and never releases, no straddle window at any scroll position. Stub note, orbit, letters, orbs, toggle, seeds untouched. Deep palette only. --- */
 </style>
 </head>
 <body>
@@ -394,8 +404,8 @@ body.fullscreen .ph-main{padding-top:12px}
 </nav>
 
 <main class="ph-main">
+  <h2 class="page-title">Message anybody — by topic, not just by contact</h2>
   <div class="page-head">
-    <h2>Message anybody — by topic, not just by contact</h2>
     <p>Flip the format, pick a topic, tap a person. One tap and you are talking.</p>
     <div class="cover-modes" role="group" aria-label="Cover view">
       <button class="btn" type="button" id="modeCover" aria-pressed="true">Cover</button>
