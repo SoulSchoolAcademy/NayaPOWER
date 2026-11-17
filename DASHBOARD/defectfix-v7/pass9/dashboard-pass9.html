@@ -3843,7 +3843,7 @@ button:hover{
 .os-week-counts span.zero{color:#E8E8EC;opacity:1;font-weight:600}
 .os-week-days span{font-size:11px;color:#E8E8EC;letter-spacing:.03em}
 .os-week-days span.today{color:#fff;font-weight:800}
-.os-note{font-size:13.5px;color:#E8E8EC;line-height:1.5;margin-top:8px}
+.os-note{font-size:13.5px;color:#fff;font-weight:500;line-height:1.5;margin-top:8px} /* FIX-5 2026-11-17: NO GRAY TEXT — was #E8E8EC; white at the source + weight 500 so the strokes read white, not gray. */
 /* — BATCH 2 (ten-star items 3–10): faces, the invite journey, conversation
      inbox, and ONE LIFE PASS over every block. All life is the page's own
      harvested machinery: fadeUp entrances, pulseGlow breathing (fed by
@@ -14251,7 +14251,7 @@ NF.register(UNIT, {
         if (tc>0){
           var _rate=Math.round(tj/tc*100);
           var _color=_rate>=10?'#2fe89e':(_rate>0?'#ffbf3d':'#ff5e6c');
-          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span> <span>of clicks became joins</span>' + (_rate===0 ? ' <span class="os-sl-leak">— the leak is here</span>' : '');
+          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span>&nbsp;<span>of clicks became joins</span>' + (_rate===0 ? '&nbsp;<span class="os-sl-leak">— the leak is here</span>' : '');
         } else {
           _conv.textContent='Share your link to start the funnel';
         }
@@ -19891,6 +19891,32 @@ window.ldLayoutNodes = ldLayoutNodes;
       else if (!_om && view.kind === 'world') _hm6 = true;
     }
     window._osHeroMoney = _hm6;
+    /* FIX-5 2026-11-17 (item 3): in % mode the Total Score IS the sum of the
+       displayed orb %s — see the block comment above this edit in the build
+       script for the full mechanism. The center and the dial both take the
+       orb-% sum (x5 back to dial points), so tiles, needle and orbs read
+       one number, from the same live data, on every load. */
+    if(_mode6==='pct' && view.kind==='world' && _spLive && _dk==='all' && !_om){
+      var _osSum=0, _osOk=true;
+      try{
+        var _tops=(wt && wt.top) || [];
+        if(!_tops.length) _osOk=false;
+        for(var _oi=0;_oi<_tops.length;_oi++){
+          var _ot=_tops[_oi];
+          var _oc=!!view.countOnly[_ot.key];
+          var _ov=_ot.pts;
+          if(_oc && _ot.key==='sales'){ _ov=(typeof _worldBoardClicksWin==='function') ? _worldBoardClicksWin() : wt.totalClicks; }
+          var _od=(typeof window._osOrbDisplay==='function') ? window._osOrbDisplay(_ot.key, _ov, _oc) : null;
+          if(!_od || typeof _od.pct!=='number'){ _osOk=false; break; }
+          _osSum+=_od.pct;
+        }
+      }catch(_ose){ _osOk=false; }
+      if(_osOk){
+        view.center=_osSum*5;
+        view.dial={score:_osSum*5, deltas:(typeof _dd!=='undefined' && _dd) ? _dd : {}};
+        if(view.stats && view.stats.length){ view.stats[0]={n:_fmt(view.center), k:view.stats[0].k||'score', l:view.centerLabel, why:view.stats[0].why||''}; }
+      }
+    }
     window._featuredDial = view.dial;
     return view;
   };
@@ -29742,13 +29768,13 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 .os-dd-wisdom{margin:4px 0 0;}
 .os-dd-wk{font-size:11px;letter-spacing:.24em;font-weight:800;color:#d4a017;text-transform:uppercase;}
 .os-dd-quote{margin:6px 0 4px;font-size:28px;line-height:1.4;font-weight:600;color:#fff;}
-.os-dd-src{font-size:13px;color:#fff;}
+.os-dd-src{font-size:13px;color:#fff;font-weight:600;opacity:1;} /* FIX-5 2026-11-17: 13px/400 read gray — weight 600 + opacity 1. */
 .os-dd-date{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 0;font-size:16px;color:#fff;}
 .os-dd-dot{width:10px;height:10px;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),rgba(255,255,255,0) 60%),#07925f;box-shadow:0 2px 4px rgba(0,0,0,.5),0 0 12px rgba(7,146,95,.8);animation:os-dd-breathe 4s ease-in-out infinite alternate;}
 @keyframes os-dd-breathe{from{opacity:.6;}to{opacity:1;}}
 .os-dd-time{color:#d4a017;font-variant-numeric:tabular-nums;text-shadow:0 0 18px rgba(212,160,23,.45);}
 .os-dd-date-str{color:#07925f;}
-.os-dd-ledger{margin:8px 0 0;font-size:13px;color:#fff;}
+.os-dd-ledger{margin:8px 0 0;font-size:13px;color:#fff;font-weight:600;opacity:1;} /* FIX-5 2026-11-17: 13px/400 read gray — weight 600 + opacity 1. */
 @media (max-width:900px){
   .os-dd-hero{margin:12px 12px 16px;padding:16px;gap:16px;}
   .os-dd-orb{width:48px;height:48px;}
@@ -29797,6 +29823,23 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
   function ddClean(v){
     return String(v||'').replace(/\*+/g,'').replace(/__+/g,'').replace(/`+/g,'').replace(/\s+/g,' ').trim();
   }
+  /* FIX-5 2026-11-17: the last sentence end (. ! ?) at or before LIM, past
+     MIN — a real sentence boundary (next char a space), never inside an
+     abbreviation (e.g. i.e. Mr. Dr. vs. etc.). -1 when there is none, so the
+     caller shows the FULL text instead of cutting mid-sentence. */
+  function ddSentenceEnd(t, lim, min){
+    var abbr=['e.g.','i.e.','Mr.','Ms.','Mrs.','Dr.','vs.','etc.'];
+    var end=-1;
+    for(var k=0;k<t.length && k<=lim;k++){
+      var ch=t[k];
+      if((ch==='.'||ch==='!'||ch==='?') && k>min && (k+1>=t.length || t[k+1]===' ')){
+        var isAb=false;
+        for(var a=0;a<abbr.length;a++){ var ab=abbr[a]; if(k+1>=ab.length && t.slice(k+1-ab.length,k+1)===ab){ isAb=true; break; } }
+        if(!isAb) end=k;
+      }
+    }
+    return end;
+  }
   function ddPickWisdom(notes){
     try{
       var list=[], i, n;
@@ -29815,11 +29858,20 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
       var title=ddClean(nn.title);
       var sub=ddClean(nn.subtitle);
       var layer0=(nn.layers && nn.layers[0] && nn.layers[0].body) ? ddClean(nn.layers[0].body) : '';
+      /* FIX-5 2026-11-17: a subtitle that repeats the title (live notes quote
+         it mid-text) makes the visible quote repeat itself. Strip any repeat
+         of the title from the subtitle/layer before joining. */
+      if(title){
+        var _li=sub.toLowerCase().indexOf(title.toLowerCase());
+        if(_li!==-1){ sub=(sub.slice(0,_li)+sub.slice(_li+title.length)).replace(/\s+/g,' ').trim(); }
+        var _lj=layer0.toLowerCase().indexOf(title.toLowerCase());
+        if(_lj!==-1){ layer0=(layer0.slice(0,_lj)+layer0.slice(_lj+title.length)).replace(/\s+/g,' ').trim(); }
+      }
       var text=title;
       if(sub && sub!==title) text=title+' \u2014 '+sub;
       else if(layer0 && layer0!==title) text=title+' \u2014 '+layer0;
       var full=text; /* FIX-4 2026-11-17: the full cleaned text, kept for title/data-full below. */
-      if(text.length>220){ var cut=text.slice(0,217); var sp=cut.lastIndexOf(' '); if(sp>160) cut=cut.slice(0,sp); text=cut.replace(/\s+$/,'')+'\u2026'; } /* FIX-4: truncate at a word boundary, never mid-word. */
+      if(text.length>220){ var _se=ddSentenceEnd(text,220,100); if(_se>100){ text=text.slice(0,_se+1); } /* FIX-5 2026-11-17: cut ONLY at a sentence end — the visible quote is a whole sentence, never a mid-list cut, and no ellipsis (it ends with its own period). No sentence end in range: show the FULL text, never cut mid-sentence. The char-limit cut is gone. */ }
       var when=new Date(pick.t).toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
       var carried=todays.length ? 'Smart Note of the Day' : 'Daily Wisdom, carried forward \u2014 the Smart Note of the Day from '+when;
       return {text:text, full:full, src:carried};
@@ -29949,5 +30001,26 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 #os-rooms-plus{top:170px !important;}
 .os-reports-cta{display:inline-block;background:linear-gradient(180deg,#1b1b24,#050607);border:2px solid #3fb8ff;color:#fff;padding:12px 28px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;letter-spacing:.5px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 24px rgba(63,184,255,.35),0 10px 22px rgba(0,0,0,.55);margin:12px 0 0;}
 .os-reports-cta:hover{background:rgba(63,184,255,.2);box-shadow:0 0 12px rgba(63,184,255,.35);transform:translateY(-2px) scale(1.03);}
+</style>
+<style id="os-fix5">
+/* ═══ FIX-5 2026-11-17 — the cloud eye (desktop 1920x999, 04:57-05:02Z) ═══
+   (2) NO GRAY TEXT: every field placeholder white + full opacity (the bare
+   feedback input matched no rule at all; the UA default dims the rest);
+   the named hero/note lines re-asserted white here as well as at source.
+   (5) the left + (#os-rooms-plus) moves to 250px — clear of the N orb's
+   halo ring + glow at desktop and at 390 (see the build script for the
+   geometry); Fix-4's 170px still stands underneath and is overridden here.
+   (6) the five-tile bottom bar STAYS VISIBLE inside drill dialogs: the
+   viewport-focus hide is overridden and the bar is raised above the drill
+   (z-index 10002 over the drill's 10001); the Smart Links drill gets
+   bottom padding so its last row clears the bar. */
+input::placeholder,textarea::placeholder{color:#fff !important;opacity:1 !important;}
+input::-moz-placeholder,textarea::-moz-placeholder{color:#fff !important;opacity:1 !important;}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#fff !important;opacity:1 !important;}
+#os-dd-src,#os-dd-ledger{color:#fff !important;opacity:1 !important;}
+.os-note{color:#fff !important;opacity:1 !important;}
+#os-rooms-plus{top:250px !important;}
+body.viewport-focus #os-bottom3{display:flex !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;transform:none !important;z-index:10002 !important;}
+.os-smartlink-view{padding-bottom:110px !important;}
 </style>
 </body></html>
