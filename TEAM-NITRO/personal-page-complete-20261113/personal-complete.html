@@ -17091,7 +17091,13 @@ window.BoardActions = (() => {
     cmtBtn.insertBefore(_icC, cmtBtn.firstChild);
     const cmtBadge = el('span', 'action-count', String((read()[boardId + ':comments'] || []).length));
     cmtBtn.appendChild(cmtBadge);
-    if ((read()[boardId + ':commented'])) { cmtBtn.classList.add('on'); cmtBtn.setAttribute('aria-pressed', 'true'); }
+    /* FIX-4c (2026-11-17) — a wall re-paint rebuilds this button through
+       bottomActions while the dialog is open; light it if its dialog is
+       open now, not only if the citizen posted before (the store).
+       fsCommentBoardId/fsCurrent are the same IIFE's lets, initialised
+       before any bottomActions call runs (same pattern as the facelift's
+       fsCommentBtn closure). */
+    if ((read()[boardId + ':commented']) || (fsCommentBoardId === boardId && fsCurrent)) { cmtBtn.classList.add('on'); cmtBtn.setAttribute('aria-pressed', 'true'); }
     cmtBtn.addEventListener('click', e => { e.stopPropagation(); cmtBtn.classList.add('on'); cmtBtn.setAttribute('aria-pressed', 'true'); fsCommentBtn = cmtBtn; fsCommentPosted = false; showCommentDialog(boardId, title, cmtBtn.closest('.intel-board')); });
     left.appendChild(cmtBtn);
 
@@ -17315,22 +17321,50 @@ window.BoardActions = (() => {
      grow/save dialogs); focus returns to the button that opened it. */
   let fsCurrent = null;
   let fsCommentBtn = null; let fsCommentPosted = false;
+  /* FIX-4c (2026-11-17) — ABSOLUTE scroll lock. overflow:hidden blocks
+     wheel/touch/keyboard scrolling but window.scrollTo() still moves the
+     viewport (specified behaviour, not a leak). Save the open position and
+     snap any scroll back while a dialog is open; the listener is removed
+     on close, so the page scrolls freely again. */
+  function fsGuardScroll() { if (fsCurrent) { try { window.scrollTo(0, fsSavedScrollY); } catch (e) {} } }
   let fsCommentBoardId = null; let fsCommentCard = null;
+  let fsCommentIid = null; let fsSavedScrollY = 0;
+  /* FIX-4c (2026-11-17) — resolve the LIVE comment button. The wall
+     re-paints (loadWall retry loop -> mwPaintWallPosts -> intelBoard ->
+     bottomActions) while a dialog is open, replacing the card node — the
+     captured button/card go stale and any light/un-light applied to them
+     paints on a detached node. Find the CURRENT card by its
+     data-intelligence-id (exact match, no transform), then the button
+     inside it; fall back to the captured card, then the captured button. */
+  function fsLiveCommentBtn() {
+    if (fsCommentIid) {
+      var arts = document.querySelectorAll('article.intel-board');
+      for (var i = 0; i < arts.length; i++) {
+        if (arts[i].getAttribute && arts[i].getAttribute('data-intelligence-id') === fsCommentIid) {
+          var b0 = arts[i].querySelector('[data-kind="comment"]');
+          if (b0) return b0;
+        }
+      }
+    }
+    if (fsCommentCard && fsCommentCard.querySelector) { var b1 = fsCommentCard.querySelector('[data-kind="comment"]'); if (b1) return b1; }
+    return fsCommentBtn;
+  }
   function fsCloseCurrent() {
     if (!fsCurrent) return;
     const cur = fsCurrent; fsCurrent = null;
     if (cur.overlay && cur.overlay.parentNode) cur.overlay.parentNode.removeChild(cur.overlay);
     document.documentElement.classList.remove('naya-fs-lock');
     if (document.body) document.body.classList.remove('naya-fs-lock');
+    window.removeEventListener('scroll', fsGuardScroll, true);
     /* FIX-4 (2026-11-17) — un-light ONLY if the citizen has never posted
        on this item: the store (boardId + ':commented') is the truth, not
        just this dialog's flag — the dialog can open from the wall
        delegate, which never set the flag, and a citizen who posted
        before must stay lit. Resolve the LIVE button from the card. */
     (function(){ var posted = fsCommentPosted || (fsCommentBoardId && (function(){ try { return !!read()[fsCommentBoardId + ':commented']; } catch (e) { return false; } })());
-      if (!posted) { var b = (fsCommentCard && fsCommentCard.querySelector) ? fsCommentCard.querySelector('[data-kind="comment"]') : fsCommentBtn;
+      if (!posted) { var b = fsLiveCommentBtn();
         if (b) { b.classList.remove('on'); b.setAttribute('aria-pressed', 'false'); } } })();
-    fsCommentBtn = null; fsCommentBoardId = null; fsCommentCard = null;
+    fsCommentBtn = null; fsCommentBoardId = null; fsCommentCard = null; fsCommentIid = null;
     if (cur.returnFocus && cur.returnFocus.focus) { try { cur.returnFocus.focus(); } catch (e) {} }
   }
   if (!window.__nayaFsKeyWired) {
@@ -17360,6 +17394,8 @@ window.BoardActions = (() => {
        the board stays the one scroll surface. Removed on close. */
     document.documentElement.classList.add('naya-fs-lock');
     if (document.body) document.body.classList.add('naya-fs-lock');
+    fsSavedScrollY = window.scrollY || 0;
+    window.addEventListener('scroll', fsGuardScroll, true);
     return { overlay, board };
   }
 
@@ -17383,7 +17419,8 @@ window.BoardActions = (() => {
        button from the card and light it here. Reset the posted flag:
        it is stale-true from an earlier post until the next open. */
     fsCommentBoardId = boardId; fsCommentCard = cardEl || null; fsCommentPosted = false;
-    (function(){ var b = (cardEl && cardEl.querySelector) ? cardEl.querySelector('[data-kind="comment"]') : null;
+    fsCommentIid = (cardEl && cardEl.getAttribute) ? cardEl.getAttribute('data-intelligence-id') : null;
+    (function(){ var b = fsLiveCommentBtn();
       if (b) { fsCommentBtn = b; b.classList.add('on'); b.setAttribute('aria-pressed', 'true'); } })();
     const h = el('h2', 'naya-fs-title', '');
     h.textContent = (window.mwTr ? window.mwTr('Comment') : 'Comment');
@@ -17432,7 +17469,7 @@ window.BoardActions = (() => {
          posts: the close above must not leave the live button unlit on any
          path (the wall delegate never captured it), so re-assert .on on
          the live button now that the dialog has closed. */
-      (function(){ var b = (cardEl && cardEl.querySelector) ? cardEl.querySelector('[data-kind="comment"]') : null;
+      (function(){ var b = fsLiveCommentBtn();
         if (b) { b.classList.add('on'); b.setAttribute('aria-pressed', 'true'); } })();
     });
     ta.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) post.click(); });
