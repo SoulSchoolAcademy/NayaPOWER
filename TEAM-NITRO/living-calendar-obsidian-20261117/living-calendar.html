@@ -2,6 +2,9 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NayaNET — Living Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
 <!--
   LIVING CALENDAR — OBSIDIAN REBUILD (2026-11-17)
   The old calendar build is thrown out. This file is built from scratch
@@ -37,8 +40,10 @@
   the day number sits TOP LEFT; on hover the whole cell does NOT light up —
   only the OUTSIDE rim lights, with a light glow of the day's color even at
   rest, brighter on hover, NO glow in the middle; every day is lit at rest;
-  the BOTTOM RIGHT corner holds the info-eye [P] .plan-eye, the door to the
-  day's info; the numbers are literally the Dashboard digit tiles; the cells
+  the BOTTOM RIGHT corner holds the info-eye, the door to the day's info —
+  in v4 the harvested [P] .eye-jewel circle, pearl/diamond, with a little
+  'i' inside it (amendment #4(2)); the numbers are literally the Dashboard
+  digit tiles, shrunk ~25% in the day cell per amendment #4(3); the cells
   are BIG; pearl gems, not neon; no trailing next-month days in the grid.
   AMENDMENT #2 (Shawn's eye, 03:01Z — the DAY VIEW): the day header carries
   a beautiful jewel icon for the day (Monday = 417 Hz, orange in it) — the
@@ -56,6 +61,24 @@
   is pearl and elegant, never orange-neon. Amendments #1 and #2 otherwise
   stand. NO GRAY TEXT (Shawn, 03:04Z): any gray text is white now — the
   least text possible, spoken in icons.
+  AMENDMENT #4 (Shawn's eye, 03:19Z — the front entrance is the elegance
+  standard): (1) the weekday header carries the FULL day names (Sunday,
+  Monday...), almost in royalty, in Marcellus — not S/M/T/W/T/F/S; the
+  Marcellus font is now really loaded, from the [P] pricing font link
+  (verbatim, lines 9-11), not left to a Georgia fallback. (2) The info eye
+  becomes a CIRCLE, a real element coming off the page, pearl/diamond,
+  with a little 'i' inside it — the harvested [P] .eye-jewel (pricing v77
+  line 140 + line 2711: white .os-jewel, 'i' inside, Marcellus 700).
+  (3) The day numbers shrink ~25% (54px med tiles → 40px in the day cell)
+  so the page breathes; the cells can't get bigger, so the numbers shrink —
+  with fit breakpoints so two-digit days fit whole at every width, 635 and
+  390 included (this also fixes the checker's clipping finding). (4) Less
+  busy, less colorful, more elegant — the light stays on the SIDE (rim),
+  never the middle; the rim halos are softened (lower alphas). The TILE
+  VALUES are NOT swapped: amendment #3(4) (newest word on the tiles)
+  stands, and #4(4) orders no values swap — the calming is done through
+  the rim discipline, the smaller numbers, and the reduced glow. That
+  tension is named in the maker report for the captain's eye to decide.
 -->
 <style>
 /* ============ ROOT + BASE ============ */
@@ -161,22 +184,30 @@ button{font-family:inherit}
    no such rule exists in [D] or [P]. Removed per amendment #3(4). The
    base 34px .inf tile stands, verbatim from [P].) */
 
-/* [P] THE INFO-EYE — .plan-eye verbatim, pricing v77 ============ */
-/* The "see what is included" eye (pricing v77, harvested before for the
-   Factory flow). A human eye: almond outline, white iris, dark pupil,
-   highlight dot. Amendment #3(1): NO color in it — the eye is NORMAL and
-   WHITE. The rim and the glow are white only (--pc is white, fixed, not
-   the day's color). The SVG markup is pricing v77 verbatim. Placement only
+/* [P] THE INFO EYE — the harvested .eye-jewel circle, pricing v77 ===== */
+/* Amendment #4(2) (Shawn's eye, 03:19Z): the info eye becomes a CIRCLE, a
+   real element coming off the page, pearl/diamond, with a little 'i' info
+   thing inside it so people know to click it for the day's info. The
+   object already exists in [P] — pricing v77 line 140 `.eye-jewel`
+   (20px circle, Marcellus 700, border-radius:50%) used at line 2711 as
+   `<span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff">i</span>`
+   — a white jewel, 'i' inside. This button IS that object, at the
+   harvested .os-jewel-md size (36px, 17px — [P] line 42): the .os-jewel
+   base below (verbatim from [P], already in this file) with --jc:#ffffff,
+   border-radius:50% from .eye-jewel, Marcellus 700 from .eye-jewel.
+   Pearl/diamond = the jewel in white: white rim, white glow, and the 'i'
+   itself white (the .os-jewel's own color:#fff — pricing's 'i' is white
+   on the dark jewel, lit by its white glow). No color in it — amendment
+   #3(1) still stands. Placement only
    is adapted: pricing sits it top-right of a plan card; here it sits
-   bottom-right of the day cell, the door to the day's info. */
-.plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;display:grid;place-items:center;border-radius:12px;cursor:pointer;color:#fff;background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.28),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid #fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 4px 10px rgba(0,0,0,.55),0 0 12px rgba(255,255,255,.25)}
-.plan-eye svg{width:21px;height:21px;display:block;filter:drop-shadow(0 0 5px rgba(255,255,255,.45))}
-.plan-eye:hover,.plan-eye:focus-visible{box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 4px 10px rgba(0,0,0,.55),0 0 18px rgba(255,255,255,.45);outline:2px solid #fff;outline-offset:2px}
+   bottom-right of the day cell, the door to the day's info. The old
+   almond eye SVG is gone — the 'i' is the info mark now. */
+.plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;--jc:#ffffff;font-family:Marcellus,Georgia,serif;font-weight:700;font-size:17px;line-height:1;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
+.plan-eye:hover,.plan-eye:focus-visible{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.65),inset 0 -3px 6px rgba(0,0,0,.6),0 8px 18px rgba(0,0,0,.6),0 0 22px -2px var(--jc);outline:2px solid #fff;outline-offset:2px}
 /* Calendar placement: bottom-right of the day cell, the door to the day. */
 .cal-day .plan-eye{top:auto;bottom:10px;right:10px}
 @media(max-width:640px){
-  .plan-eye{width:30px;height:30px;top:6px;right:6px;border-radius:10px}
-  .plan-eye svg{width:17px;height:17px}
+  .plan-eye{width:30px;height:30px;top:6px;right:6px;font-size:14px}
   .cal-day .plan-eye{top:auto;bottom:8px;right:8px}
 }
 
@@ -202,9 +233,13 @@ button{font-family:inherit}
 .cal-nav{display:flex;gap:8px;align-items:center;flex:none}
 .cal-nav .primo{padding:12px 18px;font-size:14px}
 .cal-nav .primo.today{padding:12px 20px}
-/* Weekday names in their day's color — [C] render() colored them so. */
+/* Weekday names in their day's color — [C] render() colored them so.
+   Amendment #4(1) (Shawn's eye, 03:19Z): the FULL day names (Sunday,
+   Monday...), almost in royalty, in Marcellus — not S/M/T/W/T/F/S. The
+   Marcellus is real now (the [P] font link in <head>); the size scales
+   with the viewport so the longest name still fits its cell. */
 .cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;flex:none}
-.cal-week div{text-align:center;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.cal-week div{text-align:center;font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(11px,2.2vw,20px);letter-spacing:.04em;white-space:nowrap}
 /* The grid fills the screen. No scrolling. Rows = the weeks the month
    actually needs (4–6) — the grid ends at the month's last day; no trailing
    next-month days, no trailing blank row at the bottom. Rows stretch to
@@ -218,19 +253,19 @@ button{font-family:inherit}
    lit at rest (you can see each day's color line), just not as bright as
    the hovered day. Pearl gems, not neon — Deep Palette hexes only. */
 .cal-day{margin:0;padding:14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:6px;cursor:pointer;border:2px solid var(--dc);border-radius:20px;background:linear-gradient(180deg,#07070b,#050607);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.5),0 0 10px rgba(var(--dc-rgb),.22);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.5),0 0 10px rgba(var(--dc-rgb),.14);
   transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);position:relative;overflow:hidden}
 /* Hover: rim only. The middle stays obsidian — no wash, no inner glow.
    The rim brightens and the outside halo strengthens; the number lifts.
    Pearl, never neon — one soft halo, amendment #3(2)(5). */
 .cal-day:hover,.cal-day:focus-visible{transform:translateY(-4px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 20px 44px rgba(0,0,0,.6),0 0 24px rgba(var(--dc-rgb),.45)}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 20px 44px rgba(0,0,0,.6),0 0 24px rgba(var(--dc-rgb),.30)}
 .cal-day:hover .os-mini-tile,.cal-day:focus-visible .os-mini-tile{transform:translateY(-2px)}
 .cal-day:active{transform:translateY(1px) scale(.985)}
 .cal-day .os-mini-tile{transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 /* Today glows brighter than the rest at rest — rim + halo only, never the middle. Pearl. */
-.cal-day.today{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.6),0 0 22px rgba(var(--dc-rgb),.5),0 0 44px rgba(var(--dc-rgb),.22)}
-.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff,0 0 14px rgba(var(--dc-rgb),.5)}
+.cal-day.today{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.6),0 0 22px rgba(var(--dc-rgb),.38),0 0 44px rgba(var(--dc-rgb),.14)}
+.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff,0 0 12px rgba(var(--dc-rgb),.3)}
 /* A day with a record carries one small dot, bottom-left, in its day's
    color — the presence signal, [C] .dots, reduced to a single dot. */
 .cal-day .has{position:absolute;left:12px;bottom:12px;width:7px;height:7px;border-radius:50%;background:var(--dc);box-shadow:0 0 8px var(--dc);flex:none}
@@ -276,7 +311,7 @@ button{font-family:inherit}
 .instrument .os-sl-stat-l{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-top:8px}
 /* Timeline — [C] .daytimeline board, .ph-card construction, rim in the day color. */
 .daytimeline{border:2px solid var(--dc);border-radius:20px;padding:20px 22px;margin:18px 0 0;background:linear-gradient(180deg,#07070b,#050607);color:#fff;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 24px rgba(var(--dc-rgb),.25)}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 24px rgba(var(--dc-rgb),.16)}
 .daytimeline>strong{display:block;font-size:13px;letter-spacing:.14em}
 .daytimeline .tl-sub{font-size:13px;color:#fff;margin-top:4px}
 .tl-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
@@ -289,7 +324,7 @@ button{font-family:inherit}
 /* Wisdom + Intel boards — .ph-card boards, rim in the day color. */
 .dayboards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:18px 0}
 .dayboards .ph-card{margin:0;border-color:var(--dc)}
-.dayboards .ph-card:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.3)}
+.dayboards .ph-card:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
 .dayboards .ph-card strong{display:block;font-size:13px;letter-spacing:.14em;margin-bottom:8px}
 .dayboards .ph-card span{font-size:14px;line-height:1.65}
 /* Empty state — an object, not a paragraph: board + glyph + day tiles + two words. */
@@ -334,16 +369,19 @@ select.field option{background:#0a0a0f;color:#fff}
   background:linear-gradient(180deg,#1a1a22,#050607);border:2px solid #8e24aa;box-shadow:0 0 24px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35)}
 .meetbox .timer{font-size:44px;font-weight:900;color:#fff;letter-spacing:.04em;line-height:1;margin:8px 0}
 .meetbox video{width:100%;max-width:520px;border-radius:16px;background:#050607;border:1.5px solid rgba(255,255,255,.85);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 24px rgba(142,36,170,.35);display:none}
-/* Phone — [D] 480px med-tile overrides, verbatim (lines 4592-4600). */
+/* Phone — [D] 480px med-tile overrides, values verbatim (lines 4592-4600).
+   The .os-sl-gauge-num selector prefix is dropped on every line — this
+   file has no gauge, and the one retained prefix (a dead selector) is
+   removed in v4 per the checker correction. */
 @media (max-width:480px){
   #monthView{padding:10px 8px 8px;gap:8px}
   .cal-grid{gap:4px}
   .cal-week{gap:5px}
-  .cal-week div{font-size:10px;letter-spacing:.1em}
+  .cal-week div{font-size:9px;letter-spacing:.02em}
   .cal-day{border-radius:14px;padding:8px 2px;gap:4px}
   .cal-nav .primo{padding:10px 12px;font-size:12px}
   .cal-nav .primo.today{padding:10px 14px}
-  .os-sl-gauge-num .os-mini-num.med{gap:3px}
+  .os-mini-num.med{gap:3px}
   .os-mini-num.med .os-mini-tile{width:28px;border-radius:5px;border-width:1.5px}
   .os-mini-num.med .os-mini-tile .cap{height:5px}
   .os-mini-num.med .os-mini-tile .rd{height:28px;line-height:28px;font-size:25px}
@@ -364,6 +402,71 @@ select.field option{background:#0a0a0f;color:#fff}
   .doors{grid-template-columns:1fr}
   .day-head{flex-direction:column;align-items:flex-start;gap:12px}
   .day-back{margin-left:0}
+}
+
+/* ============ AMENDMENT #4(3) — DAY NUMBERS ~25% SMALLER, FIT AT EVERY WIDTH ============ */
+/* Shawn's eye, 03:19Z: the numbers shrink ~25% so the page breathes and
+   looks bigger and more elegant; the cells can't get bigger, so the
+   numbers shrink. This ALSO fixes the checker's clipping finding: the
+   harvested med tiles are 54px, so a two-digit day is 112px wide, and
+   .cal-day has overflow:hidden — two-digit days were cut at every width
+   from 481px to ~1088px, including 635px (a cell there holds only ~47px
+   of a 112px number). The harvested [D] tile block above is NOT touched
+   (it stays verbatim); this is a calendar-only override on .cal-day, the
+   same kind of sizing adaptation the 480px day rules already make.
+   Sizing: 54px → 40px tiles is the ~25% shrink (two-digit = 83px).
+   Fit math — cell = (viewport − monthView padding − 6×grid gap) / 7,
+   content = cell − 2×cell padding − 4px border; two-digit width must be
+   ≤ content. Worked at each breakpoint's narrow end:
+   · base (>1088): 40px tile, 83px two-digit; at 1089 the cell holds 112px.
+   · ≤1088: 34px tile, 71px two-digit, padding 10px; at 769 the cell holds 74px.
+   · ≤768: 28px tile, 58px two-digit, padding 6px; at 641 the cell holds 64px.
+   · ≤640: 22px tile, 46px two-digit, padding 3px; at 481 the cell holds 47px.
+   · ≤480: 19px tile, 40px two-digit (the harvested 22px day rule above is
+     overridden here — at 390 the cell holds only 42px, so 22px tiles at
+     46px still clipped ~4px); at 390 the cell holds 42px.
+   · ≤360: 15px tile, 31px two-digit, padding 1px; at 320 the cell holds 34px.
+   The day-view header number and the instrument counts keep the full
+   54px med tiles — they have room, and only the month-view day numbers
+   were ordered smaller. */
+.cal-day .os-mini-num.med{gap:3px}
+.cal-day .os-mini-num.med .os-mini-tile{width:40px;border-radius:8px;border-width:2px}
+.cal-day .os-mini-num.med .os-mini-tile .cap{height:7px}
+.cal-day .os-mini-num.med .os-mini-tile .rd{height:40px;line-height:40px;font-size:36px}
+@media (max-width:1088px){
+  .cal-day{padding:12px 10px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:34px;border-radius:7px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:6px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:34px;line-height:34px;font-size:30px}
+}
+@media (max-width:768px){
+  .cal-day{padding:10px 6px}
+  .cal-day .os-mini-num.med{gap:2px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:28px;border-radius:6px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:5px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:28px;line-height:28px;font-size:25px}
+}
+@media (max-width:640px){
+  .cal-day{padding:8px 3px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:22px;border-radius:5px;border-width:1.5px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:4px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:22px;line-height:22px;font-size:20px}
+}
+@media (max-width:480px){
+  .plan-eye{width:26px;height:26px;font-size:13px}
+  .cal-day .plan-eye{bottom:6px;right:6px}
+  /* Overrides the harvested 22px day rule in the 480px block above —
+     22px tiles (46px two-digit) still clip ~4px in a 42px cell at 390. */
+  .cal-day .os-mini-num.med .os-mini-tile{width:19px;border-radius:4px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:19px;line-height:19px;font-size:17px}
+}
+@media (max-width:360px){
+  .cal-day{padding:6px 1px}
+  .cal-day .os-mini-num.med{gap:1px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:15px;border-radius:3px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:3px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:15px;line-height:15px;font-size:13px}
+  .cal-week div{font-size:8px;letter-spacing:0}
 }
 @media (prefers-reduced-motion:reduce){
   .primo::before{animation:none}
@@ -489,10 +592,16 @@ function doorGlimpse(name,ds){
   return '';
 }
 
-/* ============ DIGIT TILES — [D] miniTileHTML + _osMiniNumHTML verbatim ============ */
+/* ============ DIGIT TILES — [D] miniTileHTML + _osMiniNumHTML, ADAPTED ============ */
 /* dashboard-pass9.html lines 26593-26620: one number, one style. A landed
    tile shows cap + digit + rim + digit colour. Money gets the $ tile,
-   decimals a dot tile, percentages a % tile. A comma becomes a gap. */
+   decimals a dot tile, percentages a % tile. A comma becomes a gap.
+   ADAPTED, not verbatim (checker correction, v4): the tile branches are
+   exact, but this file renames the function (window._osMiniNumHTML →
+   plain miniNumHTML), adds an ∞ branch and a space/comma gap branch,
+   extends the regex with `str !== '∞'`, returns esc(...) instead of
+   String(value), and drops the 'orb' size branch. Functionally equivalent
+   for digits — the only inputs day numbers and counts use. */
 function miniTileHTML(ch){
   if (ch === ' ' || ch === ',') return '<span class="os-mini-gap"></span>';
   if (ch === '$') return '<span class="os-mini-tile dollar"><span class="cap"></span><span class="rd">$</span></span>';
@@ -516,7 +625,8 @@ function miniNumHTML(value, size){
 
 /* ============ STORES — [C] verbatim ============ */
 /* Booking logic harvested from the old calendar build (branch
-   personal/calendar-booking-meet-20261116, blob 15e0a2fc): store
+   calendar/fullscreen-20261117, tip 9a7087ca,
+   blob d3a9f64b9405637c3e838190eae1e0d05d70659b): store
    'mw.cal.bookings.v1', 9 hourly slots 09:00-17:00, taken slots disabled,
    double-booking refused, survives reload. Meet room: getUserMedia on join. */
 const BOOK_KEY='mw.cal.bookings.v1';
@@ -619,10 +729,12 @@ function timelineHTML(ds){
 }
 
 /* ============ MONTH — the numbers fill the screen ============ */
-$('weeknames').innerHTML=WEEKDAY.map(w=>`<div style="color:${w.color}">${w.short}</div>`).join('');
+$('weeknames').innerHTML=WEEKDAY.map(w=>`<div style="color:${w.color}">${w.name}</div>`).join('');
 function dayHasRecord(ds){ return dayBookings(ds).length>0 || dayNotes(ds).length>0; }
-/* The eye SVG — [P] .plan-eye markup verbatim, pricing v77. */
-const EYE_SVG='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.6 12C5.1 6.9 8.7 4.6 12 4.6S18.9 6.9 21.4 12c-2.5 5.1-6.1 7.4-9.4 7.4S5.1 17.1 2.6 12Z" fill="rgba(255,255,255,.20)" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.9" fill="#fff"/><circle cx="12" cy="12" r="2" fill="#1a1030"/><circle cx="13.3" cy="10.5" r="1" fill="#fff"/></svg>';
+/* The eye mark — [P] .eye-jewel, pricing v77 line 2711: a white jewel
+   circle with a little 'i' inside it (Marcellus 700). The button carries
+   the 'i' as its text; the circle, pearl rim and glow are the .plan-eye
+   rule above. Amendment #4(2). */
 function render(){
   const first=new Date(year,month,1).getDay();
   const n=new Date(year,month+1,0).getDate();
@@ -644,7 +756,7 @@ function render(){
     return `<div class="cal-day dow-${new Date(year,month,d).getDay()}${today?' today':''}" data-day="${d}" role="button" tabindex="0" aria-label="Open ${dlabel(year,month,d)}. ${esc(summary)}">
       ${miniNumHTML(d,'med')}
       <span class="has${rec?'':' none'}" aria-hidden="true"></span>
-      <button class="plan-eye" type="button" data-eye="${d}" aria-label="See inside ${dlabel(year,month,d)}">${EYE_SVG}</button></div>`;
+      <button class="plan-eye" type="button" data-eye="${d}" aria-label="See inside ${dlabel(year,month,d)}">i</button></div>`;
   }).join('');
   document.querySelectorAll('[data-day]').forEach(b=>{ b.onclick=()=>openDay(+b.dataset.day);
     b.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openDay(+b.dataset.day); } }; });
