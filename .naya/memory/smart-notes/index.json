@@ -52649,6 +52649,39 @@
         "Design",
         "Experience"
       ]
+    },
+    {
+      "smart_note_id": "SN-3081",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3081-the-living-number",
+      "slug": "the-living-number",
+      "title": "The Living Number",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3081/IB-SMART-NOTE-20261117-sn3081-the-living-number.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3081/IB-SMART-NOTE-20261117-sn3081-the-living-number.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3081/IB-SMART-NOTE-20261117-sn3081-the-living-number.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261117-sn3081-the-living-number.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-17T22:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-17",
+      "page_hash": "4e7b3be35be75bea62358af67d795fbe9e1f53b531af7bab40c346d0ea27c8c1",
+      "content_hash": "bb2d2a9f829f9c36cd40d708da9cbcca7bd5bce69a1b75035bfd0dbb1cc799bf",
+      "one_line": "A number in NayaNET is not text. It is a living instrument — the speedometer of a supercharged machine — and it must be seen moving, growing, and meaning something before a single word is read. The Smart Score is built digit by digit from tiles in the Dashboard button's own anatomy: obsidian face, glossy cap, coloured rim and halo, the digit itself always white. Colour is language, not decoration: the nine chakra colours in spectrum order mean the same thing in the number, the orbs, the icons, and every page, so a citizen learns where they are by colour alone. The count rolls slowly enough to watch, each passing digit flashing its own colour, each reel landing on its own time. The number has no ceiling — it grows with the score and shrinks to fit the page — and the gauge beneath it never breaks: past its scale, the needle simply laps the dial and keeps telling the truth.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Design",
+        "Score"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52659,5 +52692,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "13f2fd4cb24f7065d644bb6d1941f38583497ce33bf7e64d1d705c0cbc9e0f87"
+  "corpus_manifest_hash": "6a74375f4b5fa6c2cb3a3b2d165b6ef3a5e93fe95446e5b4604d3cf5071165f0"
 }
