@@ -16,6 +16,22 @@ verbatim into the output dir — the Recipe's outputs, harvested from the
 official-formats round, verified by size + sha256 before they are written.
 See FORMATS below and formats/FORMATS.md.
 
+Epic step (Epic fold-in, 2026-11-17): every build also emits the Intelligent
+Block Epic engine (formats/epic-auto-format.html) verbatim into the output
+dir — the paste-anything auto-format step, harvested from the Epic filing
+(branch intelligent-block/epic-20261117, blob 4319256d), verified by size +
+sha256 before it is written. See EPIC below and formats/EPIC.md. The
+standalone Epic page is retired as a destination; its only surviving surface
+is this engine, inside the Factory (and wherever pasting happens).
+
+Survey step (Epic fold-in, 2026-11-17): the `epic-survey` wiring takes the
+walk's ten questions, answered, and produces the citizen's page THROUGH the
+Epic engine — the engine's own distiller (run in Node at build time by
+epic-distill-harness.js, on the stored engine bytes) turns the answers into
+About + Skills + Space boards, and the built page IS the engine page with
+those boards added as deck beats, so the paste-anything studio stays live
+in the page. See build_epic_survey_page() below.
+
 Usage:
     python3 factory.py specs/formats-test.json --out out/formats-test.html
     python3 factory.py specs/formats-test.json --out out/formats-test.html --no-gate
@@ -233,6 +249,87 @@ def emit_formats(out_dir, receipt):
         }
         receipt.setdefault("formats", {})[name] = emitted[name]
     return emitted
+
+
+# ----------------------------------------------------------------------------
+# EPIC — the Intelligent Block Epic engine, the Factory's auto-format step.
+# The standalone Epic page is retired as a destination; its only surviving
+# surface is this engine, stored verbatim in formats/ and emitted verbatim
+# on every build, exactly like the two official formats above. NEVER
+# re-typed, never edited here: a new engine version arrives as a new filed
+# file + new hashes below, from its own round — never by editing the stored
+# bytes. Source: the Epic round, branch intelligent-block/epic-20261117,
+# commit 3920de9f, PR #3390 (open, unmerged — its bytes are the harvest
+# source; whether it merges or closes is Shawn's hand). Its eye PASSED
+# 03:34Z 2026-11-17 (paste text/note/image all beautiful, numbers alive,
+# self-check 10/10) — the engine works; this round moves its HOME, it does
+# not rebuild it. The engine's known loose ends ride along, named in
+# formats/EPIC.md, never silently fixed here: "15/15" buttons is 14 rendered
+# + 1 template string; _osMiniNumHTML trimmed, not byte-verbatim;
+# miniTileHTML re-indented; a wrapped continuation starting with a capital
+# or digit splits (the stop-word guard is a follow-on, not this round).
+# FIX ROUND 2026-11-17 (fold-in fix, PR #3395): the Factory's copy of the
+# engine repairs titleFrom — the nutshell now ends at a phrase boundary,
+# never mid-phrase (the eye failed 4 of 10 deck headlines on it). The
+# stored engine is therefore NO LONGER byte-identical to the Epic source
+# blob 4319256d; the hashes below are the FIXED engine. The Epic branch
+# (PR #3390) was not touched — the engine's home is the Factory now, and
+# the repair lives here, in the Factory's copy, nowhere else.
+# ----------------------------------------------------------------------------
+EPIC = {
+    "file": "epic-auto-format.html",
+    "blob": "3a4b0bf8b2e2f29fe5b956d5d6ca04e6f8c2baef",
+    "bytes": 81357,
+    "sha256": "158d5e58504e915655f7955ac6c506ce1a514c1d572bc693d0d8fc40f9dbd045",
+    "label": "epic-auto-format — the Intelligent Block Epic engine, the Factory's auto-format step",
+    "vault": "TEAM-NITRO/interface-factory/formats/epic-auto-format.html — the Factory's vault shelf, filed on the factory branch",
+    "source_branch": "intelligent-block/epic-20261117",
+    "source_commit": "3920de9f41dbd8bebb6b3faf442b99c92c39572c",
+    "source_pr": 3390,
+}
+HARNESS_PATH = os.path.join(HERE, "epic-distill-harness.js")
+
+
+def load_epic_bytes():
+    """Read the stored Epic engine bytes, verifying size + sha256.
+
+    A mismatch is a hard stop: the stored engine is not the filed engine,
+    and the build must fail here — before the gate, before anything ships."""
+    path = os.path.join(FORMATS_DIR, EPIC["file"])
+    with open(path, "rb") as f:
+        data = f.read()
+    if len(data) != EPIC["bytes"]:
+        raise RuntimeError(
+            f"epic engine: stored {len(data)} bytes, filed is {EPIC['bytes']}")
+    digest = hashlib.sha256(data).hexdigest()
+    if digest != EPIC["sha256"]:
+        raise RuntimeError(
+            f"epic engine: sha256 {digest}, filed is {EPIC['sha256']}")
+    return data
+
+
+def emit_epic(out_dir, receipt):
+    """The builder's auto-format step: emit the Epic engine verbatim into
+    the build output dir, next to the two canonical formats. Returns
+    {path, bytes, sha256, blob, label, vault} — the same Vault Sharpening
+    as the formats: a labeled, inventoried vault asset, in every receipt."""
+    data = load_epic_bytes()
+    dest = os.path.join(out_dir, EPIC["file"])
+    with open(dest, "wb") as f:
+        f.write(data)
+    meta = {
+        "path": dest,
+        "bytes": len(data),
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "blob": EPIC["blob"],
+        "label": EPIC["label"],
+        "vault": EPIC["vault"],
+        "source_branch": EPIC["source_branch"],
+        "source_commit": EPIC["source_commit"],
+        "source_pr": EPIC["source_pr"],
+    }
+    receipt["epic"] = meta
+    return meta
 
 
 def sha(b: bytes) -> str:
@@ -474,6 +571,363 @@ try{ render(); wirePills(); }catch(err){ /* honest: never break the page */ }
 WIRINGS = {"smart-links": wiring_smart_links}
 
 
+# ----------------------------------------------------------------------------
+# EPIC SURVEY — the walk's ten questions, answered, produce the page
+# THROUGH the Epic engine. The builder does not distill, does not format,
+# does not write boards: the engine's own distill() + boardHTML() do, run
+# in Node at build time by epic-distill-harness.js on the stored engine
+# bytes (verified by load_epic_bytes() above). The built page IS the engine
+# page — canonical style + epic style + the three engine beats + the
+# canonical + epic scripts, byte-identical — with ONLY Factory insertions,
+# in the engine page, with ONLY Factory insertions, each wrapped in a
+# <!-- FACTORY EPIC FOLD-IN BEGIN x --> ... <!-- FACTORY EPIC FOLD-IN END x -->
+# span (so the checker can strip every span and recover the engine bytes
+# exactly), plus three exact reversals (hero text, dots, the results-empty
+# note) that the verifier reverses by fixed strings:
+#   1. a survey audit block (<script type="application/json">) in <head>;
+#   2. the hero retitled to the citizen (steplabel / deal-title / deck-sub
+#      / <title> — the page's content, not the engine);
+#   3. the dots extended to the full deck (one per beat, spectrum flow);
+#   4. a deck-next button on the studio beat (beat 3) so the unfold flows
+#      on into the citizen's beats;
+#   5. the citizen's beats — About (Q1/Q2/Q5/Q6), the vision+mission thread
+#      (Q3/Q4), Skills (Q7/Q8/Q9 — the skill is what they do + what they
+#      offer; the walk has no separate skill question), the Space (Q10) —
+#      distilled by the engine, inserted after the studio beat;
+#   6. the three paste proofs baked into #epicResultsBody (plain text ->
+#      boards, smart note -> boards with seams stripped, image -> the board
+#      itself), so the page SHOWS pastes coming out beautiful — the live
+#      studio above them stays live for the citizen's own paste;
+#   7. a Factory provenance board before </main>;
+#   8. a FACTORY WIRING script before </body> that binds the baked
+#      result boards' Keep-reading buttons (the engine's showResults wires
+#      only boards it builds at runtime).
+# The deck tones run the spectrum flow in order, never twice in a row:
+# beats 1-3 keep the engine's purple/sapphire/green; the citizen's beats
+# continue gold/orange/red/magenta/purple/sapphire/green. Verify (anyone,
+# cold): strip every BEGIN/END span from the built page, reverse the three
+# exact replacements (hero text, dots, results-empty note) by fixed
+# strings, and the bytes must equal the stored engine file exactly —
+# verify_foldin.py does this. A build whose insertions do not strip clean
+# is a failed build.
+# ----------------------------------------------------------------------------
+SURVEY_GROUPS = [
+    # (key, kind, mapping keys, tones in deck order)
+    ("about", "ABOUT, FROM YOUR ANSWERS", ["q1", "q2", "q5", "q6"],
+     ["#d4a017", "#c2410c", "#c62828"]),
+    ("thread", "VISION & MISSION \u2014 THE THREAD", ["q3", "q4"],
+     ["#a21caf"]),
+    ("skills", "SKILLS, FROM YOUR ANSWERS", ["q7", "q8", "q9"],
+     ["#8e24aa", "#0f52ba", "#07925f"]),
+    ("space", "YOUR SPACE \u2014 AND ITS PEOPLE", ["q10"], ["#07925f"]),
+]
+DECK_TONES = ["#8e24aa", "#0f52ba", "#07925f", "#d4a017", "#c2410c",
+              "#c62828", "#a21caf", "#8e24aa", "#0f52ba", "#07925f"]
+
+
+def _hex_rgb(hexcode):
+    n = int(hexcode.lstrip("#"), 16)
+    return "%d,%d,%d" % ((n >> 16) & 255, (n >> 8) & 255, n & 255)
+
+
+def _replace_once(text, anchor, replacement, what):
+    if text.count(anchor) != 1:
+        raise RuntimeError(
+            f"epic-survey: anchor for {what} found {text.count(anchor)} "
+            f"times in the engine (want exactly 1) — the engine changed")
+    return text.replace(anchor, replacement)
+
+
+def run_epic_harness(job):
+    """Run the Epic engine's own distiller in Node on the stored engine
+    bytes. Returns the harness JSON (groups + pastes + tiles). Any failure
+    is a hard stop — the build never formats by itself."""
+    if not os.path.exists(HARNESS_PATH):
+        raise RuntimeError(f"epic-survey: harness missing: {HARNESS_PATH}")
+    engine_path = os.path.join(FORMATS_DIR, EPIC["file"])
+    proc = subprocess.run(
+        ["node", HARNESS_PATH, engine_path],
+        input=json.dumps(job), capture_output=True, text=True, timeout=120)
+    if proc.returncode != 0:
+        raise RuntimeError(
+            "epic-survey: harness failed:\n" + proc.stderr[-2000:])
+    try:
+        return json.loads(proc.stdout)
+    except ValueError:
+        raise RuntimeError(
+            "epic-survey: harness printed no JSON:\n" + proc.stdout[-2000:])
+
+
+def _deck_beat_html(board_html, beat_no, tone, is_last):
+    """Turn one engine boardHTML board into a deck beat: hidden until the
+    unfold reaches it, marked as Factory-built, carrying a deck-next button
+    unless it is the last beat of the deck."""
+    import re
+    m = re.match(
+        r'<article class="intel-board letter-beat epic-result" '
+        r'style="--tone:([^"]+)"( hidden)?>', board_html)
+    if not m:
+        raise RuntimeError(
+            "epic-survey: boardHTML output is not the expected article")
+    head = ('<article class="intel-board letter-beat epic-result" '
+            f'data-factory="epic-survey" data-beat="{beat_no}" '
+            f'style="--tone:{m.group(1)}" hidden>')
+    rest = board_html[m.end():]
+    # The engine's button (epic-result-next) becomes the deck's own
+    # Keep-reading button; a board without one still needs one unless it
+    # is the last beat — the unfold must flow on.
+    btn_pat = re.compile(
+        r'<button class="p3-enter letter-next deck-next orbit-btn '
+        r'epic-result-next" type="button" style="--oc:([^;]+);'
+        r'--oc-rgb:([^"]+)"><span class="orbit-label">Keep reading '
+        r'\u25c6</span></button>')
+    bm = btn_pat.search(rest)
+    if bm:
+        rest = btn_pat.sub(
+            '<button class="p3-enter letter-next deck-next orbit-btn" '
+            f'type="button" data-beat="{beat_no}" '
+            f'style="--oc:{bm.group(1)};--oc-rgb:{bm.group(2)}">'
+            '<span class="orbit-label">Keep reading \u25c6</span></button>',
+            rest, count=1)
+    elif not is_last:
+        btn = ('<button class="p3-enter letter-next deck-next orbit-btn" '
+               f'type="button" data-beat="{beat_no}" '
+               f'style="--oc:{tone};--oc-rgb:{_hex_rgb(tone)}">'
+               '<span class="orbit-label">Keep reading \u25c6</span></button>')
+        if not rest.endswith("</article>"):
+            raise RuntimeError("epic-survey: board HTML has no </article>")
+        rest = rest[:-len("</article>")] + btn + "</article>"
+    return head + rest
+
+
+def build_epic_survey_page(spec, receipt):
+    """Build the citizen's page from the survey spec, through the engine.
+    Returns the page HTML (str). Records everything in the receipt."""
+    survey = spec["survey"]
+    answers = survey["answers"]
+    mapping = survey["mapping"]
+    citizen = survey.get("citizen", spec.get("title", "you"))
+
+    job = {"groups": []}
+    for key, kind, keys, tones in SURVEY_GROUPS:
+        job["groups"].append({
+            "key": key, "kind": kind,
+            "text": " ".join(answers[q] for q in keys),
+            "tones": tones,
+        })
+    result = run_epic_harness(job)
+
+    engine = load_epic_bytes().decode("utf-8")
+    page = engine
+
+    # 1. Survey audit block in <head>.
+    audit = {
+        "citizen": citizen, "alias": survey.get("alias", citizen),
+        "questions": survey["questions"], "answers": answers,
+        "mapping": mapping, "source": survey.get("source", ""),
+        "engine": {"file": EPIC["file"], "blob": EPIC["blob"],
+                   "bytes": EPIC["bytes"], "sha256": EPIC["sha256"],
+                   "source_branch": EPIC["source_branch"],
+                   "source_commit": EPIC["source_commit"],
+                   "source_pr": EPIC["source_pr"]},
+        "groups": {k: {"title": v["title"], "sentences": v["total"],
+                       "boards": len(v["beats"])}
+                   for k, v in result["groups"].items()},
+        "pastes": {
+            "text": {"sentences": result["pastes"]["text"]["total"],
+                     "boards": len(result["pastes"]["text"]["beats"])},
+            "note": {"sentences": result["pastes"]["note"]["total"],
+                     "boards": len(result["pastes"]["note"]["beats"]),
+                     "seams_stripped":
+                         result["pastes"]["note"]["seamsStripped"]},
+            "image": {"board": "epic-img-board, full-bleed cover"}},
+        "tiles": result["tiles"]["counts"],
+    }
+    audit_json = json.dumps(audit, ensure_ascii=False, indent=1)
+    if "</script>" in audit_json:
+        raise RuntimeError("epic-survey: audit JSON contains </script>")
+    audit_block = (
+        "<!-- FACTORY EPIC FOLD-IN BEGIN survey-audit -->\n"
+        '<script id="factory-survey" type="application/json">\n'
+        + audit_json + "\n</script>\n"
+        "<!-- FACTORY EPIC FOLD-IN END survey-audit -->\n")
+    page = _replace_once(page, "</head>", audit_block + "</head>",
+                         "audit block")
+
+    # 2. Hero retitled to the citizen (the page's content, not the engine).
+    page = _replace_once(
+        page, "<title>The Intelligent Block \u2014 Epic | NayaNET</title>",
+        f"<title>{htmlmod.escape(citizen)} \u2014 Your page, built by the "
+        "survey | NayaNET</title>", "page title")
+    page = _replace_once(
+        page, "<p class=\"letter-steplabel\">NayaNET &middot; The "
+        "Intelligent Block &middot; Epic</p>",
+        "<p class=\"letter-steplabel\">NayaNET &middot; The Smart Factory "
+        "&middot; Your page, built by the survey</p>", "steplabel")
+    page = _replace_once(
+        page, "<h2 class=\"deal-title\">The Intelligent Block, Epic</h2>",
+        f"<h2 class=\"deal-title\">{htmlmod.escape(citizen)}</h2>",
+        "deal title")
+    page = _replace_once(
+        page, "<p class=\"deck-sub\">The numbers are alive. The buttons "
+        "are the best. Anything you paste comes out beautiful.</p>",
+        "<p class=\"deck-sub\">"
+        + htmlmod.escape(answers["q1"]) + "</p>", "deck subtitle")
+
+    # 3. Dots extended to the full deck (spectrum flow, one per beat).
+    baked_total = sum(len(v["beats"])
+                      for v in result["groups"].values())
+    deck_total = 3 + baked_total
+    if len(DECK_TONES) != deck_total:
+        raise RuntimeError(
+            f"epic-survey: deck tones {len(DECK_TONES)} != deck beats "
+            f"{deck_total} — the tones list must match the deck")
+    dots_old = ('<div class="letter-dots" id="studioDots" '
+                'aria-hidden="true"><span class="ldot on" '
+                'style="--dc:#8e24aa"></span><span class="ldot" '
+                'style="--dc:#0f52ba"></span><span class="ldot" '
+                'style="--dc:#07925f"></span></div>')
+    dots_new = ('<div class="letter-dots" id="studioDots" '
+                'aria-hidden="true">'
+                + "".join(
+                    '<span class="ldot%s" style="--dc:%s"></span>'
+                    % (" on" if i == 0 else "", tone)
+                    for i, tone in enumerate(DECK_TONES))
+                + "</div>")
+    page = _replace_once(page, dots_old, dots_new, "dots")
+
+    # 4 + 5. Studio beat gets a deck-next button; the citizen's beats
+    # follow it in the deck (About, thread, Skills, Space — deck order).
+    baked = []
+    beat_no = 4
+    for key, _kind, _keys, _tones in SURVEY_GROUPS:
+        group = result["groups"][key]
+        for i, beat in enumerate(group["beats"]):
+            is_last = (key == SURVEY_GROUPS[-1][0]
+                       and i == len(group["beats"]) - 1)
+            baked.append(_deck_beat_html(beat["html"], beat_no,
+                                         beat["tone"], is_last))
+            beat_no += 1
+    studio_btn = (
+        "<!-- FACTORY EPIC FOLD-IN BEGIN studio-next -->\n"
+        '<div class="epic-actions">'
+        '<button class="p3-enter letter-next deck-next orbit-btn" '
+        'type="button" data-beat="3" '
+        'style="--oc:#07925f;--oc-rgb:7,146,95">'
+        '<span class="orbit-label">Keep reading \u25c6</span></button>'
+        "</div>\n"
+        "<!-- FACTORY EPIC FOLD-IN END studio-next -->\n")
+    anchor = ('</div>\n</article>\n</div>\n<div class="slides-nav" '
+              'id="slidesNav" hidden>')
+    replacement = (
+        "</div>\n" + studio_btn + "</article>\n"
+        "<!-- FACTORY EPIC FOLD-IN BEGIN citizen-beats -->\n"
+        + "\n".join(baked)
+        + "\n<!-- FACTORY EPIC FOLD-IN END citizen-beats -->\n"
+        + "</div>\n"
+        + '<div class="slides-nav" id="slidesNav" hidden>')
+    page = _replace_once(page, anchor, replacement, "citizen beats")
+
+    # 6. The three paste proofs baked into #epicResultsBody.
+    results_html = (
+        "<!-- FACTORY EPIC FOLD-IN BEGIN paste-proofs -->\n"
+        "<!-- Pasted in the Factory, made beautiful by the Epic engine "
+        "(plain text, a smart note, an image). The live studio above stays "
+        "live for your own paste — pressing \u201cMake it beautiful\u201d "
+        "replaces these with yours. -->\n"
+        + "\n".join(b["html"] for b in result["pastes"]["text"]["beats"])
+        + "\n"
+        + "\n".join(b["html"] for b in result["pastes"]["note"]["beats"])
+        + "\n" + result["pastes"]["image"]["boardHtml"]
+        + "\n<!-- FACTORY EPIC FOLD-IN END paste-proofs -->\n")
+    page = _replace_once(
+        page, '<div id="epicResultsBody"></div>',
+        '<div id="epicResultsBody">' + results_html + "</div>",
+        "paste proofs")
+    page = _replace_once(
+        page, '<div class="epic-results-empty" id="epicResultsEmpty">',
+        '<div class="epic-results-empty" id="epicResultsEmpty" hidden>',
+        "results empty note")
+
+    # 7. Factory provenance board before </main>.
+    footer = (
+        "<!-- FACTORY EPIC FOLD-IN BEGIN provenance -->\n"
+        '<section class="intel-board" data-factory="epic-survey" '
+        'style="--tone:#d4a017;margin-top:32px">'
+        '<div class="ib-blocktop"><div class="face-mono" '
+        'style="--tone:#d4a017">N</div><div class="ib-identity">'
+        '<span class="ib-jewel" aria-hidden="true">\u25c6</span><div>'
+        '<span class="ib-kind">BUILT BY THE SMART FACTORY</span>'
+        '<h2 class="ib-title">The Epic engine formatted this page.</h2>'
+        '<p class="ib-subtitle">Your ten answers became About, Skills and '
+        'your Space — distilled by the Epic engine, inside the Factory.</p>'
+        '</div></div></div><div class="ib-nutshell">'
+        f'<p>{deck_total} boards in the deck — 3 from the engine, '
+        f'{baked_total} from your answers. <span '
+        'id="factory-provenance-pastes">3 pastes proved in the studio '
+        'above: plain text, a smart note, an image — each came out '
+        'beautiful.</span></p><p>Paste anything of your own in the studio above '
+        'and press \u201cMake it beautiful\u201d — the same engine formats '
+        'it, the same way.</p></div></section>\n'
+        "<!-- FACTORY EPIC FOLD-IN END provenance -->\n")
+    page = _replace_once(page, "</section>\n</main>",
+                         "</section>\n" + footer + "</main>",
+                         "provenance board")
+
+    # 8. FACTORY WIRING: bind the baked result boards' Keep-reading
+    # buttons (the engine's showResults wires only boards it builds).
+    wiring = (
+        "<!-- FACTORY EPIC FOLD-IN BEGIN factory-wiring -->\n"
+        "<script>\n/* FACTORY WIRING — generated for this survey build, not "
+        "a part and not engine code. Binds the Keep-reading buttons on the "
+        "paste-proof boards the builder baked into #epicResultsBody, the "
+        "way the engine's showResults binds the ones it builds at runtime. "
+        "*/\n(function(){\n'use strict';\n"
+        "var body=document.getElementById('epicResultsBody');\n"
+        "if(!body) return;\n"
+        "body.querySelectorAll('.epic-result-next').forEach(function(btn){\n"
+        "  btn.addEventListener('click',function(){\n"
+        "    var cur=btn.closest('.epic-result');\n"
+        "    var next=cur&&cur.nextElementSibling;\n"
+        "    if(next&&next.classList.contains('epic-result')){\n"
+        "      next.hidden=false; next.classList.add('reveal');\n"
+        "      btn.hidden=true;\n"
+        "      next.scrollIntoView({behavior:'smooth',block:'nearest'});\n"
+        "    }\n  });\n});\n"
+        "/* FIX 2026-11-17 — the provenance board says what the studio\n"
+        "   SHOWS, so when a visitor's own paste replaces the baked proofs\n"
+        "   the line follows it: it counts the boards actually in the\n"
+        "   results, and it never says \"below\" (the studio sits above the\n"
+        "   board, not below it). The baked line stands until the first real\n"
+        "   paste; every paste after that re-counts. */\n"
+        "var prov=document.getElementById('factory-provenance-pastes');\n"
+        "if(prov&&('MutationObserver' in window)){\n"
+        "  new MutationObserver(function(){\n"
+        "    var n=body.querySelectorAll('.epic-result, .epic-img-board').length;\n"
+        "    prov.textContent='Your paste proved in the studio above — '+n+' board'\n"
+        "      +(n===1?'':'s')+', the same engine, the same way.';\n"
+        "  }).observe(body,{childList:true});\n"
+        "}\n})();\n</script>\n"
+        "<!-- FACTORY EPIC FOLD-IN END factory-wiring -->\n")
+    page = _replace_once(page, "</script>\n</body>",
+                         "</script>\n" + wiring + "</body>",
+                         "factory wiring script")
+
+    receipt["epic_survey"] = {
+        "citizen": citizen,
+        "deck_beats": deck_total,
+        "engine_beats": 3,
+        "citizen_beats": baked_total,
+        "groups": {k: {"title": v["title"], "sentences": v["total"],
+                       "boards": len(v["beats"])}
+                   for k, v in result["groups"].items()},
+        "pastes": audit["pastes"],
+        "tiles": result["tiles"]["counts"],
+        "dots": len(DECK_TONES),
+    }
+    return page
+
+
 def build_page(spec, css_body, body_parts, reg_parts, wiring_js):
     css = "\n".join(css_body)
     body = "\n".join(body_parts + reg_parts)
@@ -539,26 +993,33 @@ def main():
     receipt = {"spec": spec_path, "parts": [], "css": [],
                "spec_sha": sha(json.dumps(spec, sort_keys=True).encode())}
 
-    css_body, body_parts, reg_parts = assemble(spec, receipt)
-
     wiring_name = spec.get("wiring")
-    if wiring_name not in WIRINGS:
-        print(f"unknown wiring: {wiring_name!r}", file=sys.stderr)
-        return 2
-    wiring_js = WIRINGS[wiring_name](spec)
+    if wiring_name == "epic-survey":
+        # The survey build does not assemble from parts: the page IS the
+        # engine page, with the citizen's distilled beats added (see
+        # build_epic_survey_page). The engine + formats still emit below.
+        page = build_epic_survey_page(spec, receipt)
+    else:
+        css_body, body_parts, reg_parts = assemble(spec, receipt)
 
-    # wiring must be syntactically valid JS before it ships
-    with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tf:
-        tf.write(wiring_js)
-        tf_path = tf.name
-    nc = subprocess.run(["node", "--check", tf_path],
-                        capture_output=True, text=True)
-    os.unlink(tf_path)
-    if nc.returncode != 0:
-        print("WIRING SYNTAX FAIL:\n" + nc.stderr, file=sys.stderr)
-        return 1
+        if wiring_name not in WIRINGS:
+            print(f"unknown wiring: {wiring_name!r}", file=sys.stderr)
+            return 2
+        wiring_js = WIRINGS[wiring_name](spec)
 
-    page = build_page(spec, css_body, body_parts, reg_parts, wiring_js)
+        # wiring must be syntactically valid JS before it ships
+        with tempfile.NamedTemporaryFile("w", suffix=".js",
+                                        delete=False) as tf:
+            tf.write(wiring_js)
+            tf_path = tf.name
+        nc = subprocess.run(["node", "--check", tf_path],
+                            capture_output=True, text=True)
+        os.unlink(tf_path)
+        if nc.returncode != 0:
+            print("WIRING SYNTAX FAIL:\n" + nc.stderr, file=sys.stderr)
+            return 1
+
+        page = build_page(spec, css_body, body_parts, reg_parts, wiring_js)
     with open(out, "w", encoding="utf-8") as f:
         f.write(page)
     receipt["out"] = out
@@ -571,6 +1032,13 @@ def main():
     for _name, _meta in receipt["formats"].items():
         print(f"format: {_name} -> {_meta['path']} "
               f"({_meta['bytes']} bytes, sha256 {_meta['sha256'][:16]}...)")
+
+    # EPIC STEP (Epic fold-in): the auto-format engine, emitted verbatim
+    # into the same output dir on EVERY build. A bad stored engine fails
+    # the build here, before the gate, before anything ships.
+    epic_meta = emit_epic(os.path.dirname(out), receipt)
+    print(f"epic: -> {epic_meta['path']} "
+          f"({epic_meta['bytes']} bytes, sha256 {epic_meta['sha256'][:16]}...)")
 
     if not no_gate:
         code, tail = run_gate(out)
