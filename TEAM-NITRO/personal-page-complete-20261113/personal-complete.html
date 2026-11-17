@@ -3237,6 +3237,7 @@ button:hover{
 
 
 .action[data-kind="share-intel"] { --action-color: #C7CEDC; }
+.action[data-kind="comment"] { --action-color: #ffbf3d; }
 
 .action[data-kind="naya-voice"] { --action-color: #a06bff; }
 
@@ -9315,6 +9316,19 @@ function wallCard(j, iso, pid, idx){
        attribute survives the serialisation; that is the hook. */
     var si=e.target.closest?e.target.closest('[data-kind="share-intel"]'):null;
     if(si){
+      /* FEED COMMENT+SHARE (2026-11-16): a SHARE INTEL tap on a wall post
+         opens the post's share menu (walk-end destinations + count). The
+         hero Share button is NOT inside a wall article, so it keeps the
+         old native-sheet-or-copy path below. */
+      var siArt=si.closest?si.closest('#os-wall-list article.intel-board'):null;
+      if(siArt && window.BoardActions && window.BoardActions.showShareMenu){
+        var siIid=siArt.getAttribute('data-intelligence-id')||'';
+        var siBid='note-'+siIid.replace(/^smart-note-/,'').toLowerCase().replace(/[^a-z0-9]+/g,'-');
+        var siNut=siArt.querySelector('.ib-nutshell p')||siArt.querySelector('.ib-nutshell');
+        var siTitle=(siNut&&siNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'').slice(0,60))||'Smart World';
+        window.BoardActions.showShareMenu(siBid, siTitle, window.BoardActions.shareUrlFor(siBid), siArt);
+        return;
+      }
       var surl=location.origin+location.pathname, stitle=document.title;
       if (navigator.share){ try{ navigator.share({title:stitle, url:surl}).catch(function(){}); }catch(x){ if(window.osCopyText) window.osCopyText(surl, 'Link copied — share it anywhere.'); } }
       else if(window.osCopyText){ window.osCopyText(surl, 'Link copied — share it anywhere.'); }
@@ -9405,6 +9419,14 @@ function wallCard(j, iso, pid, idx){
           if(baBadge) baBadge.textContent=String(baS3[baCnt3]);
           if(baArt&&baNext3){ baArt.classList.remove('flash'); void baArt.offsetWidth; baArt.classList.add('flash'); }
           toast((baKind==='love'?'LOVED':'LIKED')+' — '+(baNext3?'now ACTIVE on this device.':'removed.'));
+          return;
+        }
+        if(baKind==='comment'){
+          /* FEED COMMENT+SHARE (2026-11-16): the wall paint serialises the
+             card, so the live COMMENT listener is gone — open the
+             full-screen composer from here, delegated, against the same
+             store the live path uses. */
+          if(window.BoardActions && window.BoardActions.showCommentDialog){ window.BoardActions.showCommentDialog(baBid, baTitle, baArt); }
           return;
         }
         if(baKind==='add-intel'){
@@ -16653,6 +16675,7 @@ function el(tag, cls, html) {
           if (btop) btop.appendChild(window.BoardActions.topActions(bid, note.title, note));
           b.appendChild(window.BoardActions.bottomActions(bid, note.title, stream));
           b.appendChild(window.BoardActions.addIntel(bid));
+          b.appendChild(window.BoardActions.commentThread(bid));
         } else {
           /* Fallback: inline minimal actions if BoardActions missing */
           const fb = document.createElement('div');
@@ -17028,6 +17051,20 @@ window.BoardActions = (() => {
     }
     } /* end if(!isPersonal) for love/like */
 
+    /* FEED COMMENT+SHARE (2026-11-16): COMMENT is on every post, every
+       lens — a comment is a conversation, never a private-only action.
+       Gold is the comments color (Playbook spectrum). The speech-bubble
+       icon is harvested from the V7 card's comment toggle. The count badge
+       is the same .action-count the LOVE/LIKE buttons carry, read from the
+       same store — the count is the stored comments, never hard-coded. */
+    const cmtBtn = btn('COMMENT', 'comment', 'Comment on this intelligence');
+    const _icC = document.createElement('span'); _icC.className = 'ba-ico'; _icC.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg>';
+    cmtBtn.insertBefore(_icC, cmtBtn.firstChild);
+    const cmtBadge = el('span', 'action-count', String((read()[boardId + ':comments'] || []).length));
+    cmtBtn.appendChild(cmtBadge);
+    cmtBtn.addEventListener('click', e => { e.stopPropagation(); showCommentDialog(boardId, title, cmtBtn.closest('.intel-board')); });
+    left.appendChild(cmtBtn);
+
     /* Rating: collective only (not personal — it's private) */
     if (!isPersonal) {
     const stars = el('div', 'star-rating');
@@ -17071,27 +17108,20 @@ window.BoardActions = (() => {
     const showShare = !lens || lens === 'collective';
     const share = showShare ? btn('SHARE INTEL', 'share-intel', 'Share this intelligence') : null;
     if (share) { const _icS = document.createElement('span'); _icS.className = 'ba-ico'; _icS.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'; share.insertBefore(_icS, share.firstChild); }
-    if (share) share.addEventListener('click', async e => {
+    /* FEED COMMENT+SHARE (2026-11-16): the share count badge — same
+       .action-count as LOVE/LIKE, read from the same store. */
+    if (share) {
+      const shBadge = el('span', 'action-count', String(read()[boardId + ':share:count'] || 0));
+      share.appendChild(shBadge);
+    }
+    /* FEED COMMENT+SHARE (2026-11-16): SHARE INTEL opens the share menu —
+       the walk-end destinations (mobile, Facebook, email) plus Copy link —
+       instead of the bare native-sheet-or-clipboard path. The menu counts
+       each completed share; the count lives in the same store. The
+       note-specific share URL logic now lives in shareUrlFor(). */
+    if (share) share.addEventListener('click', e => {
       e.stopPropagation();
-      // Use note-specific share URL for beautiful OG preview (not generic Hub URL)
-      let shareUrl = location.href;
-      const snMatch = String(boardId || '').match(/sn(\d+)/i);
-      if (snMatch) {
-        shareUrl = 'https://nayanet.app/s/sn' + snMatch[1];
-      } else {
-        // Try IB- format (e.g., IB-000038 -> ib000038)
-        const ibMatch = String(boardId || '').match(/IB-?(\d+)/i);
-        if (ibMatch) {
-          shareUrl = 'https://nayanet.app/s/ib' + ibMatch[1];
-        }
-      }
-      const payload = { title: title || 'NayaNET Intelligence', text: (title || 'NayaNET Intelligence') + ' — NayaNET Intelligent Hub', url: shareUrl };
-      try {
-        if (navigator.share) { await navigator.share(payload); toast('INTELLIGENCE SHARED', 'The browser sharing pathway was opened.', '#d86cff'); }
-        else { await navigator.clipboard.writeText(shareUrl); toast('SHARE PATHWAY', 'The intelligence link was copied to the clipboard.', '#d86cff'); }
-      } catch (err) {
-        if (err && err.name !== 'AbortError') toast('SHARE NOT COMPLETED', 'The sharing pathway could not complete. No false success was recorded.', '#ff5e6c');
-      }
+      showShareMenu(boardId, title, shareUrlFor(boardId), share.closest('.intel-board'));
     });
     if (share) {
       right.appendChild(share);
@@ -17166,6 +17196,251 @@ window.BoardActions = (() => {
     return wrap;
   }
 
+
+  /* FEED COMMENT + SHARE (2026-11-16) — one canonical control, used by every
+     feed post (Smart Note, Naya Note, post): the same COMMENT + SHARE INTEL
+     buttons in bottomActions, the same full-screen composer and share menu
+     here. Comments and share counts live in the same device-local store the
+     LOVE/LIKE counts use ('nayanet-board-actions-v1'), so they survive
+     reload on this device. Nothing here needs Supabase: the wall's Supabase
+     comment path toasts 'Connection unavailable' when the connection is
+     down, so the local store is the honest home for these counts. */
+  function shareUrlFor(boardId) {
+    /* Harvested verbatim from the SHARE INTEL live handler below: the
+       note-specific share URL for beautiful OG preview. */
+    let shareUrl = location.href;
+    const snMatch = String(boardId || '').match(/sn(\d+)/i);
+    if (snMatch) {
+      shareUrl = 'https://nayanet.app/s/sn' + snMatch[1];
+    } else {
+      const ibMatch = String(boardId || '').match(/IB-?(\d+)/i);
+      if (ibMatch) {
+        shareUrl = 'https://nayanet.app/s/ib' + ibMatch[1];
+      }
+    }
+    return shareUrl;
+  }
+
+  function fsUserName() {
+    try { return localStorage.getItem('nayanet_smart_name') || 'Shawn'; } catch (e) { return 'Shawn'; }
+  }
+
+  function fsRelTime(iso) {
+    /* Same relative-time words as addIntel's renderList. */
+    const diff = Date.now() - new Date(iso).getTime();
+    const m = Math.floor(diff / 60000);
+    if (m < 1) return (window.mwTr ? window.mwTr('just now') : 'just now');
+    if (m < 60) return (window.mwTr ? window.mwTr('{n}m ago') : '{n}m ago').replace('{n}', m);
+    const h = Math.floor(m / 60);
+    if (h < 24) return (window.mwTr ? window.mwTr('{n}h ago') : '{n}h ago').replace('{n}', h);
+    const d = Math.floor(h / 24);
+    if (d < 7) return (window.mwTr ? window.mwTr('{n}d ago') : '{n}d ago').replace('{n}', d);
+    return new Date(iso).toLocaleDateString((window.mwLocale ? window.mwLocale() : 'en-US'));
+  }
+
+  function fsCommentItem(c) {
+    /* The comment card is the Intel comment card (.intel-item), harvested
+       from addIntel's renderList — same avatar, same body, same time. */
+    const richHues = ['#a06bff','#3fb8ff','#31cb8d','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff','#6675ff','#40d3bb'];
+    const hueFor = (name) => { let h = 0; for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return richHues[h % richHues.length]; };
+    const item = el('div', 'intel-item');
+    const av = el('div', 'intel-avatar');
+    av.textContent = (c.name || 'S')[0].toUpperCase();
+    av.style.setProperty('--av-hue', hueFor(c.name || 'Shawn'));
+    const body = el('div', 'intel-body');
+    const txt = el('span', 'intel-text'); txt.textContent = c.text || '';
+    const when = el('span', 'intel-when'); when.textContent = fsRelTime(c.at);
+    body.append(txt, when);
+    item.append(av, body);
+    return item;
+  }
+
+  function fsRenderComments(listEl, comments) {
+    listEl.innerHTML = '';
+    if (!comments.length) {
+      const empty = el('div', 'intel-empty');
+      empty.textContent = (window.mwTr ? window.mwTr('Be the first to comment…') : 'Be the first to comment…');
+      listEl.appendChild(empty);
+      return;
+    }
+    comments.forEach(c => listEl.appendChild(fsCommentItem(c)));
+  }
+
+  function fsUpdateCommentUI(boardId, cardEl) {
+    const comments = read()[boardId + ':comments'] || [];
+    const root = cardEl || document;
+    const badge = root.querySelector ? root.querySelector('[data-kind="comment"] .action-count') : null;
+    if (badge) badge.textContent = String(comments.length);
+    const thread = root.querySelector ? root.querySelector('.ib-cmt-thread') : null;
+    if (thread) {
+      const head = thread.querySelector('.naya-fs-h');
+      if (head) head.textContent = 'COMMENTS · ' + comments.length;
+      const list = thread.querySelector('.intel-list');
+      if (list) fsRenderComments(list, comments);
+    }
+  }
+
+  /* One open dialog at a time; Escape closes it (same P9 pattern as the
+     grow/save dialogs); focus returns to the button that opened it. */
+  let fsCurrent = null;
+  function fsCloseCurrent() {
+    if (!fsCurrent) return;
+    const cur = fsCurrent; fsCurrent = null;
+    if (cur.overlay && cur.overlay.parentNode) cur.overlay.parentNode.removeChild(cur.overlay);
+    if (cur.returnFocus && cur.returnFocus.focus) { try { cur.returnFocus.focus(); } catch (e) {} }
+  }
+  if (!window.__nayaFsKeyWired) {
+    window.__nayaFsKeyWired = true;
+    document.addEventListener('keydown', function (e) {
+      if ((e.key === 'Escape' || e.keyCode === 27) && fsCurrent) { e.stopPropagation(); fsCloseCurrent(); }
+    }, true);
+  }
+
+  function fsOpenOverlay(accent) {
+    fsCurrent = null;
+    const old = document.getElementById('naya-fs-dialog');
+    if (old) old.remove();
+    const overlay = el('div', 'naya-fs-overlay');
+    overlay.id = 'naya-fs-dialog';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    const board = el('div', 'naya-fs-board');
+    if (accent) board.setAttribute('data-fs-ac', accent);
+    overlay.appendChild(board);
+    document.body.appendChild(overlay);
+    return { overlay, board };
+  }
+
+  function fsCloseButton() {
+    const x = document.createElement('button');
+    x.type = 'button'; x.className = 'naya-fs-x'; x.textContent = '×';
+    x.setAttribute('aria-label', 'Close');
+    x.addEventListener('click', fsCloseCurrent);
+    return x;
+  }
+
+  function showCommentDialog(boardId, title, cardEl) {
+    const returnFocus = document.activeElement;
+    const { overlay, board } = fsOpenOverlay('gold');
+    fsCurrent = { overlay, returnFocus };
+    const h = el('h2', 'naya-fs-title', '');
+    h.textContent = (window.mwTr ? window.mwTr('Comment') : 'Comment');
+    const sub = el('p', 'naya-fs-sub', '');
+    sub.textContent = title || 'NayaNET Intelligence';
+    const listHead = el('div', 'naya-fs-h', '');
+    const list = el('div', 'intel-list');
+    const render = () => {
+      const comments = read()[boardId + ':comments'] || [];
+      listHead.textContent = 'COMMENTS · ' + comments.length;
+      fsRenderComments(list, comments);
+    };
+    render();
+    const ta = document.createElement('textarea');
+    ta.className = 'naya-fs-ta';
+    ta.setAttribute('aria-label', (window.mwTr ? window.mwTr('Write a comment') : 'Write a comment'));
+    ta.placeholder = (window.mwTr ? window.mwTr('Add a comment…') : 'Add a comment…');
+    ta.maxLength = 500;
+    const row = el('div', 'naya-fs-row');
+    const post = document.createElement('button');
+    post.type = 'button'; post.className = 'naya-fs-post';
+    post.textContent = (window.mwTr ? window.mwTr('Post comment') : 'Post comment');
+    post.addEventListener('click', () => {
+      const v = ta.value.trim();
+      if (!v) { ta.focus(); return; }
+      const s = read();
+      const list2 = s[boardId + ':comments'] || [];
+      list2.push({ text: v, at: new Date().toISOString(), name: fsUserName() });
+      s[boardId + ':comments'] = list2; write(s);
+      ta.value = '';
+      render();
+      fsUpdateCommentUI(boardId, cardEl);
+      toast('COMMENT POSTED — your comment is on this post.');
+    });
+    ta.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) post.click(); });
+    row.appendChild(post);
+    board.append(fsCloseButton(), h, sub, listHead, list, ta, row);
+    overlay.addEventListener('click', e => { if (e.target === overlay) fsCloseCurrent(); });
+    setTimeout(() => { try { ta.focus(); } catch (e) {} }, 60);
+  }
+
+  function showShareMenu(boardId, title, shareUrl, cardEl) {
+    /* The share menu's pattern is the walk-end plus button (walk-welcome:
+       Share on mobile / Share on Facebook / Share by email, plus the
+       link itself) — same destinations, same shape, carrying THIS post's
+       link. Every completed share bumps the post's share count. */
+    const returnFocus = document.activeElement;
+    const { overlay, board } = fsOpenOverlay('blue');
+    fsCurrent = { overlay, returnFocus };
+    const h = el('h2', 'naya-fs-title', '');
+    h.textContent = (window.mwTr ? window.mwTr('Share') : 'Share');
+    const sub = el('p', 'naya-fs-sub', '');
+    sub.textContent = title || 'NayaNET Intelligence';
+    const field = document.createElement('input');
+    field.type = 'text'; field.readOnly = true; field.className = 'naya-fs-link';
+    field.value = shareUrl;
+    field.setAttribute('aria-label', 'Share link');
+    field.addEventListener('click', () => { try { field.select(); } catch (e) {} });
+    const opts = el('div', 'naya-fs-opts');
+    const note = el('p', 'naya-fs-note', '');
+    note.hidden = true;
+    const bumpShare = () => {
+      const s = read();
+      s[boardId + ':share:count'] = (s[boardId + ':share:count'] || 0) + 1;
+      write(s);
+      const root = cardEl || document;
+      const badge = root.querySelector ? root.querySelector('[data-kind="share-intel"] .action-count') : null;
+      if (badge) badge.textContent = String(s[boardId + ':share:count']);
+    };
+    const mkOpt = (label, so, onClick) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'naya-fs-opt';
+      b.style.setProperty('--so', so);
+      b.textContent = label;
+      b.addEventListener('click', onClick);
+      return b;
+    };
+    const mobile = mkOpt('Share on mobile', '#2fe89e', () => {
+      if (navigator.share) {
+        navigator.share({ title: title || 'NayaNET Intelligence', text: (title || 'NayaNET Intelligence') + ' — NayaNET', url: shareUrl }).then(() => { bumpShare(); fsCloseCurrent(); }).catch(err => { if (!err || err.name !== 'AbortError') toast('SHARE NOT COMPLETED — the link above still works.'); });
+      } else {
+        note.textContent = 'Native sharing isn’t available in this browser — share with Facebook or Email below.';
+        note.hidden = false;
+      }
+    });
+    const fb = mkOpt('Share on Facebook', '#3fb8ff', () => {
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), '_blank', 'noopener');
+      bumpShare();
+    });
+    const email = mkOpt('Share by email', '#ffbf3d', () => {
+      window.location.href = 'mailto:?subject=' + encodeURIComponent(title || 'NayaNET Intelligence') + '&body=' + encodeURIComponent((title || 'NayaNET Intelligence') + ' — ' + shareUrl);
+      bumpShare();
+    });
+    const copy = mkOpt('Copy link', '#C7CEDC', async () => {
+      let ok = false;
+      try { if (navigator.clipboard && navigator.clipboard.writeText) { await navigator.clipboard.writeText(shareUrl); ok = true; } } catch (e) { ok = false; }
+      if (!ok) { try { field.select(); ok = document.execCommand('copy'); } catch (e) { ok = false; } }
+      if (ok) { bumpShare(); toast('LINK COPIED — share it anywhere.'); fsCloseCurrent(); }
+      else { toast('COPY BLOCKED — select the link above and copy it by hand.'); try { field.select(); field.focus(); } catch (e) {} }
+    });
+    opts.append(mobile, fb, email, copy);
+    board.append(fsCloseButton(), h, sub, field, opts, note);
+    overlay.addEventListener('click', e => { if (e.target === overlay) fsCloseCurrent(); });
+  }
+
+  function commentThread(boardId) {
+    /* The inline thread under the card — the comment appears ON the post,
+       not only in the composer. Same .intel-list / .intel-item rendering
+       as the composer, same store, re-rendered on every post. */
+    const wrap = el('div', 'ib-cmt-thread');
+    const head = el('div', 'naya-fs-h', '');
+    const list = el('div', 'intel-list');
+    wrap.append(head, list);
+    const comments = read()[boardId + ':comments'] || [];
+    head.textContent = 'COMMENTS · ' + comments.length;
+    fsRenderComments(list, comments);
+    return wrap;
+  }
+
   function enhance(board, boardId, title) {
     if (!board || board.dataset.actionsEnhanced) return;
     board.dataset.actionsEnhanced = '1';
@@ -17178,9 +17453,10 @@ window.BoardActions = (() => {
     }
     board.appendChild(bottomActions(id, title));
     board.appendChild(addIntel(id));
+    board.appendChild(commentThread(id));
   }
 
-  return { enhance, topActions, bottomActions, addIntel };
+  return { enhance, topActions, bottomActions, addIntel, showCommentDialog, showShareMenu, commentThread, shareUrlFor };
 })();
 
 window.ibRender = intelBoard;
@@ -17238,6 +17514,42 @@ window.ibWallHTML = function(r, idx){
 })();
 </script>
 
+<style id="feed-comment-share">
+/* FEED COMMENT + SHARE (2026-11-16) — one canonical comment + share control.
+   Gold is the comments color (Playbook spectrum); the share menu reuses the
+   walk-end share options (mobile green, Facebook blue, email gold). Board
+   black inside, no glow inside ever; white as a real object; outside light
+   in the object's own color; alive on hover. DEEP PALETTE NOTE: this round
+   harvests the walk-end pattern verbatim in the brief's bright spectrum
+   (gold #ffbf3d, blue #3fb8ff, green #2fe89e) so the new buttons speak the
+   same language as the LOVE/LIKE row they sit in; the deep-palette values
+   (deep gold #d4a017, sapphire #0f52ba, emerald #07925f) ride the page-wide
+   palette migration as a named follow-on, not a one-button re-palette. */
+.naya-fs-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.82); padding: 16px; box-sizing: border-box; }
+.naya-fs-board { position: relative; width: min(680px, 94vw); max-height: 88vh; overflow-y: auto; box-sizing: border-box; background: #0b0d12; border: 1.5px solid var(--fs-ac, #ffbf3d); border-radius: 18px; padding: 22px; color: #fff; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(255,191,61,.25); }
+.naya-fs-board[data-fs-ac="blue"] { border-color: #3fb8ff; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(63,184,255,.25); }
+.naya-fs-x { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.4); background: #14141c; color: #fff; font-size: 20px; line-height: 1; cursor: pointer; font-family: inherit; }
+.naya-fs-x:hover { border-color: #fff; }
+.naya-fs-title { margin: 0 44px 4px 0; font-size: 20px; font-weight: 800; color: #fff; }
+.naya-fs-sub { margin: 0 44px 14px 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.85); }
+.naya-fs-h { margin: 16px 0 8px; font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #fff; }
+.naya-fs-ta { width: 100%; box-sizing: border-box; min-height: 120px; background: #050607; border: 1px solid rgba(255,255,255,.22); border-radius: 12px; color: #fff; font-size: 15px; line-height: 1.5; padding: 12px 14px; font-family: inherit; resize: vertical; box-shadow: inset 0 2px 8px rgba(0,0,0,.6); }
+.naya-fs-ta:focus { outline: none; border-color: #ffbf3d; }
+.naya-fs-row { display: flex; justify-content: flex-end; margin-top: 12px; }
+.naya-fs-post { border: 2px solid #ffbf3d; border-radius: 999px; padding: 12px 26px; font-size: 14px; font-weight: 800; color: #fff; cursor: pointer; font-family: inherit; background: linear-gradient(180deg, #1b1b24, #050507); box-shadow: 0 8px 18px rgba(0,0,0,.55); }
+.naya-fs-post:hover { transform: translateY(-2px); box-shadow: 0 0 22px rgba(255,191,61,.45), 0 10px 22px rgba(0,0,0,.6); }
+.naya-fs-post:active { transform: scale(.97); }
+.naya-fs-link { width: 100%; box-sizing: border-box; background: #050607; border: 1px solid rgba(255,255,255,.22); border-radius: 10px; color: #fff; font-size: 13px; padding: 10px 12px; margin-bottom: 14px; font-family: inherit; }
+.naya-fs-opts { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.naya-fs-opt { display: block; width: 100%; box-sizing: border-box; padding: 14px 20px; border-radius: 999px; font-family: inherit; font-size: 15px; font-weight: 800; color: #fff; cursor: pointer; background: linear-gradient(180deg, #1b1b24, #050507); border: 2px solid var(--so, #fff); box-shadow: 0 8px 18px rgba(0,0,0,.55); }
+.naya-fs-opt:hover { transform: translateY(-2px); box-shadow: 0 0 22px rgba(255,255,255,.28), 0 10px 22px rgba(0,0,0,.6); }
+.naya-fs-opt:active { transform: scale(.97); }
+.naya-fs-note { margin: 12px 0 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.85); }
+.naya-fs-note[hidden] { display: none; }
+.ib-cmt-thread { margin-top: 14px; }
+.ib-cmt-thread .naya-fs-h { margin-top: 0; }
+@media (max-width: 700px) { .naya-fs-board { padding: 18px 16px; } }
+</style>
 <script id="tb-wire">
 /* TRUE BLOCK action wiring — delegated clicks for tb- pills/buttons */
 (function(){
