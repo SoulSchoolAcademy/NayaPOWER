@@ -32661,10 +32661,10 @@ renderGrid();
 .os-drawer a:hover .pc-ico-tile svg,.fc-plusitem:hover .fc-pi-ico svg,.os-drawer a:focus-visible .pc-ico-tile svg,.fc-plusitem:focus-visible .fc-pi-ico svg{color:var(--nc,#a06bff);filter:drop-shadow(0 0 6px var(--nc,#a06bff))}
 .fc-plusitem:hover .fc-pi-ico .pc-naya-jewel,.fc-plusitem:focus-visible .fc-pi-ico .pc-naya-jewel{color:var(--mc,#a06bff);filter:drop-shadow(0 0 6px var(--mc,#a06bff))}
 /* Drawer rows: board black inside, white rim at rest, own-color rim + halo + lift on hover. No inset light anywhere. */
-.os-drawer a{background:linear-gradient(180deg,#07070b,#020203);border-color:rgba(255,255,255,.85);box-shadow:0 6px 16px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.os-drawer a{background:linear-gradient(180deg,#07070b,#020203);border-color:rgba(255,255,255,.85);box-shadow:0 6px 16px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease,background .18s ease}
 /* FIX 2026-11-16 (checker CONDITIONAL FAIL #2): base .os-drawer a.pc-hub-home (0,2,1) kept an inset white top-light at rest; this equal-specificity, later rule kills it. Placed BEFORE the :hover rule below so hover (same 0,2,1, later) still wins its glow on hover. */
 .os-drawer a.pc-hub-home{box-shadow:0 6px 16px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4)}
-.os-drawer a:hover,.os-drawer a:focus-visible{transform:translateY(-2px);border-color:var(--rc,#a06bff);box-shadow:0 0 22px -4px var(--rc,#a06bff),0 10px 22px rgba(0,0,0,.55)}
+.os-drawer a:hover,.os-drawer a:focus-visible{background:linear-gradient(180deg,color-mix(in srgb,var(--rc,#a06bff) 18%,#14141d),color-mix(in srgb,var(--rc,#a06bff) 10%,#050508));transform:translateY(-2px);border-color:var(--rc,#a06bff);box-shadow:0 0 22px -4px var(--rc,#a06bff),0 10px 22px rgba(0,0,0,.55)}
 .os-drawer-sec{color:#fff}
 .os-drawer-head{color:#fff}
 /* Hub orb: the Hub's own black circle, kept round, now board black with the white house object inside it. */
@@ -32673,12 +32673,12 @@ renderGrid();
 .os-drawer a:hover .pc-hub-orb,.os-drawer a:focus-visible .pc-hub-orb{transform:translateY(-1px);border-color:#a06bff;box-shadow:0 8px 16px rgba(0,0,0,.6),0 0 20px -2px #a06bff}
 .os-drawer a:hover .pc-hub-orb svg,.os-drawer a:focus-visible .pc-hub-orb svg{color:#a06bff;filter:drop-shadow(0 0 6px #a06bff)}
 /* Bottom-bar tiles + the composer's + tile (same .notif-tile): board black inside, white glyph object, own-color rim; the white sheen ::before is gone; hover/focus/open ignite in the tile's own color. */
-.notif-tile{background:linear-gradient(180deg,#07070b,#020203);border:1.5px solid color-mix(in srgb,var(--nc) 62%,rgba(255,255,255,.12));box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:#fff;transition:box-shadow .3s,border-color .3s,transform .2s ease,color .2s ease}
-/* FIX 2026-11-16 (checker CONDITIONAL FAIL #1): base #pcComposerPlus .notif-tile (1,1,0) set a white radial tile + purple + + inset sheen, which the (0,1,0) .notif-tile rule above could not override. This (1,1,0) rule, later in the document, overturns it — board black, white +, outside glow only. This deliberately overturns the earlier H1 "pearl white center" design, per brief §5 item 3 + Black Diamond. The :hover rule below is (1,2,0) and sets border/glow/color (not background), so the board-black background holds on hover too. */
+.notif-tile{background:linear-gradient(180deg,#07070b,#020203);border:1.5px solid color-mix(in srgb,var(--nc) 62%,rgba(255,255,255,.12));box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:#fff;transition:box-shadow .3s,border-color .3s,transform .2s ease,color .2s ease,background .2s ease}
+/* FIX 2026-11-16 (checker CONDITIONAL FAIL #1): base #pcComposerPlus .notif-tile (1,1,0) set a white radial tile + purple + + inset sheen, which the (0,1,0) .notif-tile rule above could not override. This (1,1,0) rule, later in the document, overturns it — board black, white +, outside glow only. This deliberately overturns the earlier H1 "pearl white center" design, per brief §5 item 3 + Black Diamond. The :hover rule below is (1,2,0) and sets the hover fill (background) + border/glow/color, so the fill wins on hover and the board-black background holds at rest. */
 #pcComposerPlus .notif-tile{background:linear-gradient(180deg,#07070b,#020203);color:#fff;box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 17px rgba(160,107,255,.42)}
 .notif-tile::before{display:none}
 .notif-tile svg{color:#fff;filter:drop-shadow(0 2px 2px rgba(0,0,0,.7))}
-.notif-seg:hover .notif-tile,.notif-seg:focus-visible .notif-tile,#pcComposerPlus:hover .notif-tile,#pcComposerPlus:focus-visible .notif-tile{transform:translateY(-2px);border-color:var(--nc,#a06bff);box-shadow:0 10px 20px rgba(0,0,0,.65),0 0 26px color-mix(in srgb,var(--nc,#a06bff) 68%,transparent);color:var(--nc,#a06bff)}
+.notif-seg:hover .notif-tile,.notif-seg:focus-visible .notif-tile,#pcComposerPlus:hover .notif-tile,#pcComposerPlus:focus-visible .notif-tile{background:linear-gradient(180deg,color-mix(in srgb,var(--nc,#a06bff) 18%,#14141d),color-mix(in srgb,var(--nc,#a06bff) 10%,#050508));transform:translateY(-2px);border-color:var(--nc,#a06bff);box-shadow:0 10px 20px rgba(0,0,0,.65),0 0 26px color-mix(in srgb,var(--nc,#a06bff) 68%,transparent);color:var(--nc,#a06bff)}
 .notif-seg:hover .notif-tile svg,.notif-seg:focus-visible .notif-tile svg,#pcComposerPlus:hover .notif-tile svg,#pcComposerPlus:focus-visible .notif-tile svg{color:var(--nc,#a06bff);filter:drop-shadow(0 0 6px var(--nc,#a06bff))}
 .notif-seg.pc-open .notif-tile{border-color:var(--nc);box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 26px var(--nc);color:var(--nc)}
 .notif-seg.pc-open .notif-tile svg{color:var(--nc);filter:drop-shadow(0 0 6px var(--nc))}
@@ -32686,10 +32686,10 @@ renderGrid();
 /* + menus (LEFT create / RIGHT connect / composer all — one #fcPlusMenu): board-black panel and rows, tile icons, lift + own-color light on hover. */
 .fc-plusmenu{background:linear-gradient(180deg,#07070b,#020203);box-shadow:0 16px 40px rgba(0,0,0,.65),0 0 24px -6px rgba(160,107,255,.45)}
 .fc-plusitem{background:linear-gradient(180deg,#07070b,#020203);border:1px solid rgba(255,255,255,.12);box-shadow:0 3px 8px rgba(0,0,0,.4)}
-.fc-plusitem:hover,.fc-plusitem:focus-visible{background:linear-gradient(180deg,#07070b,#020203);border-color:var(--mc,#a06bff);box-shadow:0 0 18px -4px var(--mc,#a06bff),0 6px 16px rgba(0,0,0,.5);transform:translateY(-2px)}
+.fc-plusitem:hover,.fc-plusitem:focus-visible{background:linear-gradient(180deg,color-mix(in srgb,var(--mc,#a06bff) 18%,#14141d),color-mix(in srgb,var(--mc,#a06bff) 10%,#050508));border-color:var(--mc,#a06bff);box-shadow:0 0 18px -4px var(--mc,#a06bff),0 6px 16px rgba(0,0,0,.5);transform:translateY(-2px)}
 /* Doors (My World rectangles + stats icons + the same .mw-pagebtn language): board black, no inset light, own-color rim + halo + lift on hover; snapshot captions white. */
 .mw-rect-main,.mw-pagebtn{background:linear-gradient(180deg,#07070b,#020203);box-shadow:0 8px 20px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4)}
-.mw-rect-main:hover,.mw-rect-main:focus-visible,.mw-pagebtn:hover{transform:translateY(-2px);border-color:var(--pc,#a06bff);box-shadow:0 0 28px var(--pc,#a06bff),0 12px 26px rgba(0,0,0,.55);outline:none}
+.mw-rect-main:hover,.mw-rect-main:focus-visible,.mw-pagebtn:hover{background:linear-gradient(180deg,color-mix(in srgb,var(--pc,#a06bff) 18%,#14141d),color-mix(in srgb,var(--pc,#a06bff) 10%,#050508));transform:translateY(-2px);border-color:var(--pc,#a06bff);box-shadow:0 0 28px var(--pc,#a06bff),0 12px 26px rgba(0,0,0,.55);outline:none}
 .mw-rect-main.main{border-color:#a06bff;box-shadow:0 0 26px rgba(160,107,255,.55),0 12px 26px rgba(0,0,0,.55)}
 .mw-rect-ico{background:linear-gradient(180deg,#07070b,#020203);box-shadow:0 0 16px -2px var(--pc,#a06bff),0 4px 10px rgba(0,0,0,.5)}
 .mw-rect-ico svg{filter:drop-shadow(0 2px 2px rgba(0,0,0,.7))}
@@ -32713,5 +32713,30 @@ renderGrid();
 #pcComposerBar #pcSearchBtn:hover{transform:translateY(-2px);box-shadow:0 0 22px -6px #a06bff,0 8px 20px rgba(0,0,0,.5)}
 /* The hamburger (three lines) — premium under the same language, NOT replaced: board black, white lines, own-color blue rim, outside halo. FLAGGED in the round record. */
 .pc-ham-jewel{background:linear-gradient(180deg,#07070b,#020203);color:#fff;border:1.5px solid #3fb8ff;box-shadow:0 5px 12px rgba(0,0,0,.55),0 0 14px -2px #3fb8ff;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+/* ═══ THE ORBIT 2026-11-16 — THE-NAYA-CODE.md §8 (Shawn 23:52Z) ═══
+   Every circle this round touches carries flow: a ring circling it, slow
+   and alive (ambient 60–180s, alternating direction, never frantic, never
+   faster than 12s). HARVESTED, not invented. The ring shape is the doc's
+   own orbit construction — conic-gradient arc + mask ring, copied from
+   .ph-avwrap::before / .naya-avatar::before / .orb::before — and the
+   keyframes are the doc's own pure rotates, reused at SLOW durations only:
+   orb-spin (CW) 120s on the Hub orb, orb-spin-rev (CCW) 90s on the Ask mic,
+   ring-spin (CW) 150s on the Ask go, orb-spin-rev (CCW) 60s on the
+   bottom-bar + tiles, osArcSpin (CW) 180s on the composer + tile. The
+   base's fast uses of these keyframes (orb-spin 2.5s/4s, orbit-spin 4s)
+   are NOT touched. The Ask mic's 1.1s listening-state pulse dot
+   (tnMicPulse) is conditional, not ambient flow — the ring is the ambient
+   flow owed. NOT given flow here, per the re-checker's §9 fix list: the
+   .pc-info eye-jewel (its own follow-on round) and the rounded-square
+   tiles (.pc-ico-tile, .fc-pi-ico, .pc-ham-jewel — not circles). The rings
+   sit OUTSIDE the element (offset -6px on all four sides,
+   pointer-events:none); no glow inside, nothing in the middle moves. */
+.os-drawer a .pc-hub-orb{position:relative}
+.os-drawer a .pc-hub-orb::after{content:'';position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,#a06bff 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orb-spin 120s linear infinite;opacity:.9;pointer-events:none;z-index:2}
+.tn-search-mic,.tn-search-go{position:relative}
+.tn-search-mic::after{content:'';position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,#3fb8ff 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orb-spin-rev 90s linear infinite;opacity:.9;pointer-events:none;z-index:2}
+.tn-search-go::after{content:'';position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,#a06bff 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:ring-spin 150s linear infinite;opacity:.9;pointer-events:none;z-index:2}
+.notif-tile::after{content:'';position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc,#a06bff) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orb-spin-rev 60s linear infinite;opacity:.9;pointer-events:none;z-index:2}
+#pcComposerPlus .notif-tile::after{animation:osArcSpin 180s linear infinite}
 </style>
 </body></html>
