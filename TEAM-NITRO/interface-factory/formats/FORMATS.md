@@ -47,11 +47,22 @@ could add an image or text and it would look extraordinary BECAUSE OF THE
 FORMATTING. See `~/workspace/team-nitro/THE-NAYA-CODE.md` §9 and
 `~/MEMORY.md` "THE FORMAT ASSIGNMENT" (2026-11-17 01:49Z).
 
+## The Vault — these formats are vault assets (Phase 2 amendment, 2026-11-17 — The Master Vault Law)
+
+The two canonical formats are digital gold: labeled, inventoried, organized, active. The builder's `formats/` store is the Factory's vault shelf — the assets live here, filed on the factory branch, findable. Every build's receipt inventories both assets (`receipt["formats"]`), so any reader can find the asset and its receipt entry without hunting.
+
+| Asset | Label | Vault (where it lives) | Receipt entry |
+|---|---|---|---|
+| `official-unfold.html` | official-unfold — the canonical unfold, About's presentation | `TEAM-NITRO/interface-factory/formats/official-unfold.html` — the Factory's vault shelf, filed on the factory branch | `receipt["formats"]["unfold"]` — `label` + `vault` + `path` + `bytes` + `sha256` + `blob` |
+| `official-slideshow.html` | official-slideshow — the canonical slideshow, Skills' presentation | `TEAM-NITRO/interface-factory/formats/official-slideshow.html` — the Factory's vault shelf, filed on the factory branch | `receipt["formats"]["slideshow"]` — `label` + `vault` + `path` + `bytes` + `sha256` + `blob` |
+
+The Vault Rule + the Live-on-Made Rule apply: an asset goes into the vault the moment it's made, and once proven (his eye has seen it) it goes live in the same pass — finished work never sits staged. The Vault, Sharpened, is why the receipt carries `label` + `vault` on every format entry: labeled, inventoried, organized, active — never lost in not-being-finished, the feed, or a computer.
+
 ## Verify (anyone, cold)
 
 ```sh
 cd ~/workspace/team-nitro/interface-factory
-python3 factory.py specs/smart-links-stats.json --out out/formats-test.html --no-gate
+python3 factory.py specs/formats-test.json --out out/formats-test.html
 diff formats/official-unfold.html out/official-unfold.html
 diff formats/official-slideshow.html out/official-slideshow.html
 sha256sum formats/*.html out/official-*.html
@@ -59,7 +70,31 @@ sha256sum formats/*.html out/official-*.html
 
 Both diffs must be EMPTY (byte-identical). The receipt
 (`out/formats-test.html.receipt.json`) carries the `formats` entries with
-bytes + sha256 per format.
+bytes + sha256 per format, plus `label` + `vault` per format (the Vault
+Sharpening — see "The Vault" above).
+
+If the design gate blocks the build, isolate the format step with the
+`--no-gate` variant — the format diffs are the proof, the gate is a
+separate step:
+
+```sh
+python3 factory.py specs/formats-test.json --out out/formats-test.html --no-gate
+diff formats/official-unfold.html out/official-unfold.html
+diff formats/official-slideshow.html out/official-slideshow.html
+```
+
+The test spec is `specs/formats-test.json` (dashboard-door only — the
+format step is what is proven). It is on the branch; the old verify command
+named `specs/smart-links-stats.json`, which is NOT on the branch (it exists
+only locally) — do not use it.
+
+The test build is self-contained from branch files alone: `assemble()`
+loads `parts-registry-v1.json` unconditionally, and that file is filed on
+the branch at `TEAM-NITRO/interface-factory/parts-registry-v1.json`
+(687,429 B, sha256
+`065d967290aeff3cd33907ef4b972980632623bf3194af40f6e8a04375688440`).
+Verify it before running the test if the registry is ever in doubt:
+`sha256sum parts-registry-v1.json` must print that digest.
 
 ## When a new canonical version lands
 
