@@ -23883,13 +23883,24 @@ function expectedFor(key, s, el){
          showed the joinus link, the meter expected the whole-world score).
          Expect the featured dial when one is set — the same source
          readSpine() uses. The meter still flags any real mismatch. */
+      /* FIX-2 2026-11-17 (item 3): in a period tacho mode the dial shows the
+         period gain, not the all-time total. When neither the featured dial nor
+         the spine carries a delta for that mode there is no honest expectation —
+         return null (no expectation, never a guess) instead of falling back to
+         the all-time score, which paints a false "shows X, featured says Y". */
       var _fd=(typeof window!=="undefined"&&window._featuredDial)||null;
       var _m=(typeof window!=="undefined"&&window._tnTachoMode)||"all";
       if(_fd){
-        if(_m!=="all" && _fd.deltas && typeof _fd.deltas[_m]==="number") return _fd.deltas[_m];
+        if(_m!=="all"){
+          if(_fd.deltas && typeof _fd.deltas[_m]==="number") return _fd.deltas[_m];
+          return null;
+        }
         return _fd.score;
       }
-      if(_m!=="all" && s.deltas && typeof s.deltas[_m]==="number") return s.deltas[_m];
+      if(_m!=="all"){
+        if(s.deltas && typeof s.deltas[_m]==="number") return s.deltas[_m];
+        return null;
+      }
       return s.score;
     case "mix-total": return s.mixTotal;
     case "funnel-recorded": return s.funnel.recorded;
@@ -23981,11 +23992,24 @@ function checkAll(){
 }
 /* persist across two ticks before surfacing — count-up animations settle */
 var _lastSig=null;
+var _lastScoreSig=null, _scoreStreak=0;
 function stableIssues(){
   var iss=checkAll();
   var sig=iss.map(function(i){return i.key+":"+i.detail;}).join("|");
   var out=(sig && sig===_lastSig)?iss:[];
   _lastSig=sig;
+  /* FIX-2 2026-11-17 (item 3): the score numeral is re-rendered by renderBoards
+     and swept by the dial's 10-15s first reveal, so a first-load score
+     disagreement can hold one signature across two event-driven ticks while the
+     page is still settling — the eye's "Score shows 30, featured says 150"
+     banner, gone on settle. A score issue must now hold its signature across
+     THREE consecutive ticks before it surfaces; a real disagreement persists
+     indefinitely, so it still surfaces. Other keys keep the two-tick rule. */
+  var _sc=iss.filter(function(i){return i.key==="score";});
+  var _scSig=_sc.map(function(i){return i.detail;}).join("|");
+  if(_sc.length && _scSig===_lastScoreSig){ _scoreStreak++; }else{ _scoreStreak=_sc.length?1:0; }
+  _lastScoreSig=_scSig;
+  if(_sc.length && _scoreStreak<3){ out=out.filter(function(i){return i.key!=="score";}); }
   return out;
 }
 /* wrap the host's osVerifySpine when present — merge, never replace */
@@ -28816,7 +28840,6 @@ body.viewport-focus #viewport-back{
   }
 }
 </style>
-<div class="os-v6-stamp">Dashboard v9 · PASS13 · 2026-11-11</div>
 <!-- FIX 5 FIX 7: the three buttons at the bottom — the phone's three buttons.
      Blue envelope = Smart Mail. Green pulse + live badge = Activity (the
      activity in your Dashboard — the badge is the live feed count, never a
@@ -29702,6 +29725,15 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
   .os-dd-r1{inset:-7px;}
   .os-dd-r2{inset:-13px;}
 }
+
+/* FIX-2 2026-11-17 (item 5) — "See every link" clickable at every scroll position.
+   The fixed bottom bar (.ph-bottom, fixed bottom, z-index 200) can cover the
+   control when the card sits at the viewport's bottom edge, and the sticky top
+   nav (.ph-navwrap) can cover it at the top — a scroll-into-view click then
+   lands on the chrome, not the control. scroll-margin reserves the clearance
+   in the control's own snap area, so every scroll-into-view lands it clear of
+   both bars. No color, no paint change. */
+[data-sl-summary-open]{scroll-margin-top:96px;scroll-margin-bottom:120px;}
 </style>
 <script>
 /* ================= DASHBOARD DONE-DONE 2026-11-17 — THE HERO =================
@@ -29766,7 +29798,14 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
         try{ localStorage.setItem('nayanet_smart_name', qn); }catch(e){}
         try{ history.replaceState(null,'',location.pathname+location.hash); }catch(e){}
       }else{
-        who=(localStorage.getItem('nayanet_smart_name') || '').trim().split(/\s+/)[0];
+        try{
+          var _pn=document.getElementById('pname');
+          if(_pn && _pn.textContent){ var _pw=_pn.textContent.trim().split(/\s+/)[0]; if(_pw && _pw.toLowerCase()!=='you') who=_pw; }
+        }catch(e){}
+        if(who){ try{ localStorage.setItem('nayanet_smart_name', who); }catch(e){} }
+        if(!who){
+          who=(localStorage.getItem('nayanet_smart_name') || '').trim().split(/\s+/)[0];
+        }
         if(qa){ try{ history.replaceState(null,'',location.pathname+location.hash); }catch(e){} }
       }
       if(!who){
@@ -29811,7 +29850,9 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
     if(!sp || sp.loading || typeof sp.score!=='number'){ el.textContent='Ledger syncing\u2026'; return; }
     var txt='Ledger \u00B7 '+ddFmt(sp.score)+' pts';
     if(f && typeof f.found==='number' && typeof f.boardClicks==='number' && typeof f.joined==='number'){
-      txt+=' \u00B7 Found '+ddFmt(f.found)+' \u00B7 Board '+ddFmt(f.boardClicks)+' \u00B7 Joined '+ddFmt(f.joined);
+      txt+=' \u00B7 Found '+ddFmt(f.found)+' \u00B7 Board '+ddFmt(f.boardClicks);
+      if(typeof f.plan9Clicks==='number'){ txt+=' \u00B7 Plan '+ddFmt(f.plan9Clicks); }
+      txt+=' \u00B7 Joined '+ddFmt(f.joined);
     }else{ txt+=' \u00B7 synced'; }
     var at=sp.updatedAt || window._osHeroUpdatedAt || 0;
     if(at){
