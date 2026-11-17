@@ -459,7 +459,7 @@ img{max-width:100%}
 .org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
 .nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid var(--tc);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--tc) 55%,transparent),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
 .nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
-.nf-smtab.active{border-color:var(--tc);background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));box-shadow:0 0 20px color-mix(in srgb,var(--tc) 65%,transparent),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
+.nf-smtab.active{border-color:var(--tc);background:color-mix(in srgb,var(--tc) 45%,rgba(0,0,0,.55));box-shadow:0 0 28px color-mix(in srgb,var(--tc) 85%,transparent),0 0 0 2px var(--tc) inset,0 0 0 4px rgba(255,255,255,.85) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc),0 0 4px rgba(255,255,255,.9)}
 /* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
 
 
@@ -649,7 +649,8 @@ img{max-width:100%}
 .mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:17px;font-weight:900;letter-spacing:.08em;color:#fff;text-transform:uppercase}
 .mail-board h4{margin:10px 0 4px;font-size:25px;font-weight:800;color:#fff}
 .mail-nut{margin:0 0 10px;font-size:19px;line-height:1.55;color:#fff;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.6)}
-.mail-board h5{margin:16px 0 8px;font-size:17px;color:var(--wc);font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+/* ALLTOPICS-FIX: KEY POINTS is white like PERSONAL MAIL (.mail-board-top) — it was the world hue, which reads bright blue in Personal. The diamond bullets keep the world hue — they are jewels, not text. */
+.mail-board h5{margin:16px 0 8px;font-size:17px;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
 .mail-points{margin:0;padding:0;list-style:none}
 .mail-points li{position:relative;font-size:17px;line-height:1.55;color:#fff;padding-left:22px;margin-bottom:6px}
 .mail-points li::before{content:'◆';position:absolute;left:0;top:0;color:var(--wc);text-shadow:0 0 8px var(--wc)}
@@ -1209,8 +1210,8 @@ var SMART_LISTS = {
 function nowTime(){ var d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
 
 function renderTabs(){
-  /* TEXT-TOPIC-PILLS: the pills are Smart Links on Smart Tabs — one bold white label at one size, each topic's own deep-color rim + glow (the "N online" count is gone: the same number stood on every pill). "All topics" is lit while the mail view is open; a topic is lit while its chat is open. The title says what the tap does. */
-  var html = '<button class="nf-smtab' + (!state.group ? ' active' : '') + '" type="button" data-topic="All" style="--tc:#8e24aa" title="Back to mail" aria-label="All topics — back to mail">All topics</button>';
+  /* TEXT-TOPIC-PILLS: the pills are Smart Links on Smart Tabs — one bold white label at one size, each topic's own deep-color rim + glow (the "N online" count is gone: the same number stood on every pill). "All topics" is lit while the mail view is open; a topic is lit while its chat is open. The title says what the tap does. ALLTOPICS-FIX: "All topics" takes deep cyan (#0e7490) — its own color no topic pill uses — so it no longer shares Design's purple and the seven pill colors read further apart at a glance. */
+  var html = '<button class="nf-smtab' + (!state.group ? ' active' : '') + '" type="button" data-topic="All" style="--tc:#0e7490" title="Back to mail" aria-label="All topics — back to mail">All topics</button>';
   TAB_ORDER.forEach(function(t){
     html += '<button class="nf-smtab' + (state.group===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#8e24aa') + '" title="Open the ' + t + ' topic chat" aria-label="' + t + ' — open the topic chat">' + t + '</button>';
   });
@@ -1328,8 +1329,17 @@ function openTopicChat(topic){
 }
 function pickTopic(t){
   if (t === 'All') {
-    /* TEXT-TOPIC-PILLS: "All topics" restores the mail view — the group chat closes and the world's mail opens. */
+    /* ALLTOPICS-FIX: "All topics" restores the mail view — the group chat
+       closes and the world's mail opens. The old code only cleared
+       state.group, so the thread kept the topic-chat person and the
+       header, composer and thread stayed Music under the open letter.
+       Re-open the open letter through openMail — the same restore
+       re-clicking the letter in the inbox already performs — so header,
+       composer and thread come back with it, and renderTabs lights only
+       "All topics" (state.group is null). */
     state.group = null;
+    if (!state.mailId) state.mailId = (MAIL[state.world][0] || {}).id || null;
+    if (state.mailId) openMail(state.mailId);
     renderTabs(); renderTopicPeople();
     setFormat('mail');
     return;
