@@ -32,6 +32,13 @@
   3 deep gold #d4a017 · 4 emerald #07925f · 5 deep cyan #0e7490 ·
   6 indigo #3f51b5 · 7 royal purple #8e24aa · 8 deep violet #6d28d9 ·
   9 deep magenta #a21caf.
+  AMENDMENT (Shawn's eye, 02:58Z — OVERRIDES the brief's hover rule):
+  the day number sits TOP LEFT; on hover the whole cell does NOT light up —
+  only the OUTSIDE rim lights, with a light glow of the day's color even at
+  rest, brighter on hover, NO glow in the middle; every day is lit at rest;
+  the BOTTOM RIGHT corner holds the info-eye [P] .plan-eye, the door to the
+  day's info; the numbers are literally the Dashboard digit tiles; the cells
+  are BIG; pearl gems, not neon; no trailing next-month days in the grid.
 -->
 <style>
 /* ============ ROOT + BASE ============ */
@@ -134,6 +141,24 @@ button{font-family:inherit}
 .os-mini-tile.inf .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0)}
 .os-mini-num.med .os-mini-tile.inf{width:60px;}
 
+/* [P] THE INFO-EYE — .plan-eye verbatim, pricing v77 ============ */
+/* The "see what is included" eye (pricing v77, harvested before for the
+   Factory flow). A human eye, like a jewel: almond outline, white iris,
+   dark pupil, highlight dot. --pc is the eye's own color — here the day's
+   color, set per cell as --pc:var(--dc). Placement only is adapted:
+   pricing sits it top-right of a plan card; here it sits bottom-right of
+   the day cell, the door to the day's info. */
+.plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;display:grid;place-items:center;border-radius:12px;cursor:pointer;color:#fff;background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.28),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--pc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 4px 10px rgba(0,0,0,.55),0 0 14px -2px var(--pc)}
+.plan-eye svg{width:21px;height:21px;display:block;filter:drop-shadow(0 0 5px rgba(255,255,255,.45))}
+.plan-eye:hover,.plan-eye:focus-visible{box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 4px 10px rgba(0,0,0,.55),0 0 22px var(--pc);outline:2px solid var(--pc);outline-offset:2px}
+/* Calendar placement: bottom-right of the day cell, the door to the day. */
+.cal-day .plan-eye{top:auto;bottom:10px;right:10px}
+@media(max-width:640px){
+  .plan-eye{width:30px;height:30px;top:6px;right:6px;border-radius:10px}
+  .plan-eye svg{width:17px;height:17px}
+  .cal-day .plan-eye{top:auto;bottom:8px;right:8px}
+}
+
 /* ============ DAY COLORS — [L] + [C] WEEKDAY ============ */
 /* The day's color is its rim at rest; on hover the whole block is the color.
    Per-weekday classes carry the deep hex + its rgba wash (same construction
@@ -158,26 +183,34 @@ button{font-family:inherit}
 /* Weekday names in their day's color — [C] render() colored them so. */
 .cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;flex:none}
 .cal-week div{text-align:center;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
-/* The grid fills the screen. No scrolling. 6 rows always, so the grid is
-   stable and the numbers fill the screen every month. */
-.cal-grid{flex:1;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(6,1fr);gap:8px;min-height:0}
-/* THE DAY BLOCK — the .ph-card board [D], rim in the day's color. */
-.cal-day{margin:0;padding:10px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;border:2px solid var(--dc);border-radius:20px;background:linear-gradient(180deg,#07070b,#050607);
+/* The grid fills the screen. No scrolling. Rows = the weeks the month
+   actually needs (4–6) — the grid ends at the month's last day; no trailing
+   next-month days, no trailing blank row at the bottom. Rows stretch to
+   fill, so the cells are BIG. */
+.cal-grid{flex:1;display:grid;grid-template-columns:repeat(7,1fr);gap:8px;min-height:0}
+/* THE DAY BLOCK — the .ph-card board [D], rim in the day's color.
+   AMENDMENT (Shawn 02:58Z): the number sits TOP LEFT; the eye sits BOTTOM
+   RIGHT and is the door to the day's info; on hover the whole cell does NOT
+   light up — only the OUTSIDE rim lights, brighter on hover, with a light
+   glow of the day's color even at rest; NO glow in the middle. Every day is
+   lit at rest (you can see each day's color line), just not as bright as
+   the hovered day. Pearl gems, not neon — Deep Palette hexes only. */
+.cal-day{margin:0;padding:14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:6px;cursor:pointer;border:2px solid var(--dc);border-radius:20px;background:linear-gradient(180deg,#07070b,#050607);--pc:var(--dc);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.5),0 0 14px rgba(var(--dc-rgb),.28);
-  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease);position:relative;overflow:hidden}
-/* Hover/tap: the block lights up WHOLE in its day's deep color — the brief's
-   order, the .ph-card:hover construction, with --dc instead of gold. */
-.cal-day:hover,.cal-day:focus-visible{transform:translateY(-4px);background:linear-gradient(135deg,rgba(var(--dc-rgb),.92) 0%,rgba(var(--dc-rgb),.78) 55%,rgba(var(--dc-rgb),.88) 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 20px 44px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.55)}
-.cal-day:hover .os-mini-tile,.cal-day:focus-visible .os-mini-tile{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.8),0 0 22px rgba(255,255,255,.35),inset 0 1px 0 rgba(255,255,255,.4)}
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);position:relative;overflow:hidden}
+/* Hover: rim only. The middle stays obsidian — no wash, no inner glow.
+   The rim brightens and the outside halo strengthens; the number lifts. */
+.cal-day:hover,.cal-day:focus-visible{transform:translateY(-4px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 20px 44px rgba(0,0,0,.6),0 0 36px rgba(var(--dc-rgb),.6),0 0 80px rgba(var(--dc-rgb),.25)}
+.cal-day:hover .os-mini-tile,.cal-day:focus-visible .os-mini-tile{transform:translateY(-2px)}
 .cal-day:active{transform:translateY(1px) scale(.985)}
 .cal-day .os-mini-tile{transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
-/* Today glows brighter than the rest at rest — [C] + the brief. */
+/* Today glows brighter than the rest at rest — rim + halo only, never the middle. */
 .cal-day.today{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.6),0 0 30px rgba(var(--dc-rgb),.65),0 0 60px rgba(var(--dc-rgb),.3)}
 .cal-day.today::after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff,0 0 20px rgba(var(--dc-rgb),.9)}
-/* A day with a record carries one small dot in its day's color — the
-   presence signal, [C] .dots, reduced to a single dot. No text, no chips. */
-.cal-day .has{width:7px;height:7px;border-radius:50%;background:var(--dc);box-shadow:0 0 8px var(--dc);flex:none}
+/* A day with a record carries one small dot, bottom-left, in its day's
+   color — the presence signal, [C] .dots, reduced to a single dot. */
+.cal-day .has{position:absolute;left:12px;bottom:12px;width:7px;height:7px;border-radius:50%;background:var(--dc);box-shadow:0 0 8px var(--dc);flex:none}
 .cal-day .has.none{visibility:hidden}
 .cal-day.blank{background:transparent;border:2px solid transparent;box-shadow:none;cursor:default}
 .cal-day.blank:hover{transform:none;background:transparent;box-shadow:none}
@@ -268,10 +301,10 @@ select.field option{background:#0a0a0f;color:#fff}
 /* Phone — [D] 480px med-tile overrides, verbatim (lines 4592-4600). */
 @media (max-width:480px){
   #monthView{padding:10px 8px 8px;gap:8px}
-  .cal-grid{gap:5px}
+  .cal-grid{gap:4px}
   .cal-week{gap:5px}
   .cal-week div{font-size:10px;letter-spacing:.1em}
-  .cal-day{border-radius:14px;padding:6px 2px;gap:4px}
+  .cal-day{border-radius:14px;padding:8px 2px;gap:4px}
   .cal-nav .primo{padding:10px 12px;font-size:12px}
   .cal-nav .primo.today{padding:10px 14px}
   .os-sl-gauge-num .os-mini-num.med{gap:3px}
@@ -498,10 +531,17 @@ function timelineHTML(ds){
 /* ============ MONTH — the numbers fill the screen ============ */
 $('weeknames').innerHTML=WEEKDAY.map(w=>`<div style="color:${w.color}">${w.short}</div>`).join('');
 function dayHasRecord(ds){ return dayBookings(ds).length>0 || dayNotes(ds).length>0; }
+/* The eye SVG — [P] .plan-eye markup verbatim, pricing v77. */
+const EYE_SVG='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.6 12C5.1 6.9 8.7 4.6 12 4.6S18.9 6.9 21.4 12c-2.5 5.1-6.1 7.4-9.4 7.4S5.1 17.1 2.6 12Z" fill="rgba(255,255,255,.20)" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.9" fill="#fff"/><circle cx="12" cy="12" r="2" fill="#1a1030"/><circle cx="13.3" cy="10.5" r="1" fill="#fff"/></svg>';
 function render(){
   const first=new Date(year,month,1).getDay();
   const n=new Date(year,month+1,0).getDate();
-  const total=42; /* 6 rows always — the grid fills the screen every month. */
+  /* AMENDMENT (Shawn 02:58Z): the grid ends at the month's last day — no
+     trailing next-month days, no trailing blank row. Rows = the weeks the
+     month actually needs; they stretch to fill, so the cells are BIG. */
+  const rows=Math.ceil((first+n)/7);
+  const total=first+n;
+  $('days').style.gridTemplateRows='repeat('+rows+',1fr)';
   $('monthname').innerHTML=new Date(year,month,1).toLocaleDateString('en-CA',{month:'long'})+' <em>'+year+'</em>';
   $('days').innerHTML=Array.from({length:total},(_,i)=>{
     const d=i-first+1;
@@ -513,10 +553,12 @@ function render(){
     const summary=rec?((dayBookings(ds).length?dayBookings(ds).length+' appointment'+(dayBookings(ds).length===1?'':'s'):'')+(dayBookings(ds).length&&dayNotes(ds).length?', ':'')+(dayNotes(ds).length?dayNotes(ds).length+' note'+(dayNotes(ds).length===1?'':'s'):'')+'.'):'No records for this day.';
     return `<div class="cal-day dow-${new Date(year,month,d).getDay()}${today?' today':''}" data-day="${d}" role="button" tabindex="0" aria-label="Open ${dlabel(year,month,d)}. ${esc(summary)}">
       ${miniNumHTML(d,'med')}
-      <span class="has${rec?'':' none'}" aria-hidden="true"></span></div>`;
+      <span class="has${rec?'':' none'}" aria-hidden="true"></span>
+      <button class="plan-eye" type="button" data-eye="${d}" aria-label="See inside ${dlabel(year,month,d)}">${EYE_SVG}</button></div>`;
   }).join('');
   document.querySelectorAll('[data-day]').forEach(b=>{ b.onclick=()=>openDay(+b.dataset.day);
     b.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openDay(+b.dataset.day); } }; });
+  document.querySelectorAll('[data-eye]').forEach(b=>{ b.onclick=e=>{ e.stopPropagation(); openDay(+b.dataset.eye); }; });
 }
 function openDay(d){ day=d; screen='day'; section='Dashboard'; slot=''; pushRoute(); showDay(); }
 
