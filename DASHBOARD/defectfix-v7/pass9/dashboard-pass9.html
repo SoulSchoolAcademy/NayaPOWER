@@ -29661,12 +29661,23 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
    No gray text anywhere — white, or the deep hues (deep gold kicker,
    deep emerald date, deep gold time). The quote is 28px — double the 14px body font —
    in quotation marks. Greeting, kicker, date/time colors are the Deep Palette deep
-   values (the Hub hero's bright values are superseded by his word, 2026-11-17 01:30Z); the quote size is the brief's "double font". */
-.os-dd-hero{position:relative;display:flex;gap:24px;align-items:flex-start;margin:16px 16px 24px;padding:24px;border-radius:20px;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:1.5px solid #8e24aa;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 4px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.5);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
-.os-dd-hero:hover{transform:translateY(-2px);border-color:#8e24aa;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -2px 4px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.6),0 0 32px rgba(142,36,170,.55);}
+   values (the Hub hero's bright values are superseded by his word, 2026-11-17 01:30Z); the quote size is the brief's "double font".
+   PEDESTAL (2026-11-17 01:41Z, Design Language §2/§5/§6 + Real Object Law):
+   every object in this band is a real object, never flat — board and orb
+   measured against the Smart Note board (§3 #2) and the top-left + (§3 #1);
+   inside is board black with black depth only, NO white inset top-light
+   (§6: out inside icons and buttons — the base's 315 occurrences predate
+   the law, this band follows the law); the white lives in the middle as a
+   real object with a tight edge light, never a wash; light lives outside
+   only (rim, halo, shadow down-right, one top-left source at 135deg); the
+   live dot is a bead, lit top-left, halo in deep emerald. No inputs and no
+   nested buttons exist in this band — checked, not applicable. The orbit
+   rings are flow (Naya Code §8), not objects. */
+.os-dd-hero{position:relative;display:flex;gap:24px;align-items:flex-start;margin:16px 16px 24px;padding:24px;border-radius:20px;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:1.5px solid #8e24aa;box-shadow:inset 0 -2px 4px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.5);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
+.os-dd-hero:hover{transform:translateY(-2px);border-color:#8e24aa;box-shadow:inset 0 -2px 4px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.6),0 0 32px rgba(142,36,170,.55);}
 .os-dd-hero:active{transform:scale(.97);}
-.os-dd-orb{position:relative;flex:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:1.5px solid #8e24aa;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -3px 6px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.55),0 0 20px -2px rgba(142,36,170,.6);display:grid;place-items:center;}
-.os-dd-core{font-size:28px;font-weight:900;color:#fff;text-shadow:0 0 12px rgba(255,255,255,.65),0 1px 2px rgba(0,0,0,.8);}
+.os-dd-orb{position:relative;flex:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:1.5px solid #8e24aa;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.55),0 0 20px -2px rgba(142,36,170,.6);display:grid;place-items:center;}
+.os-dd-core{font-size:28px;font-weight:900;color:#fff;text-shadow:0 0 2px rgba(255,255,255,.9),0 1px 2px rgba(0,0,0,.8);}
 .os-dd-ring{position:absolute;border-radius:50%;border:1.5px solid transparent;pointer-events:none;}
 .os-dd-r1{inset:-10px;border-top-color:#8e24aa;border-right-color:rgba(142,36,170,.35);animation:os-dd-spin 120s linear infinite;}
 .os-dd-r2{inset:-20px;border-top-color:rgba(142,36,170,.6);border-left-color:rgba(142,36,170,.25);animation:os-dd-spin-rev 180s linear infinite;}
@@ -29679,7 +29690,7 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 .os-dd-quote{margin:6px 0 4px;font-size:28px;line-height:1.4;font-weight:600;color:#fff;}
 .os-dd-src{font-size:13px;color:#fff;}
 .os-dd-date{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 0;font-size:16px;color:#fff;}
-.os-dd-dot{width:10px;height:10px;flex:none;border-radius:50%;background:#07925f;box-shadow:0 0 12px rgba(7,146,95,.8);animation:os-dd-breathe 4s ease-in-out infinite alternate;}
+.os-dd-dot{width:10px;height:10px;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),rgba(255,255,255,0) 60%),#07925f;box-shadow:0 2px 4px rgba(0,0,0,.5),0 0 12px rgba(7,146,95,.8);animation:os-dd-breathe 4s ease-in-out infinite alternate;}
 @keyframes os-dd-breathe{from{opacity:.6;}to{opacity:1;}}
 .os-dd-time{color:#d4a017;font-variant-numeric:tabular-nums;text-shadow:0 0 18px rgba(212,160,23,.45);}
 .os-dd-date-str{color:#07925f;}
