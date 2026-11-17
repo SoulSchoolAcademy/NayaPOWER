@@ -118,6 +118,40 @@
   SEEDED sample mail, labelled as such. No real mail is read, and the
   real-messages formatting proof is honestly OWED, never faked.
 -->
+<!--
+  FIX-4 (2026-11-17, brief BRIEF-SMART-MAIL-FIX4-UNIFY-20261117 — all 5
+  items; nothing in "What stands" touched):
+  1. Sticky h2: the Unification "bottom fade" did NOT fix the slicing — its
+     transparent bottom let text show through cut mid-glyph. Band is now
+     SOLID opaque #050507; top 60px tucks it under the sticky menu-bar.
+  2. First board at load: cover min(55vh,600px) -> min(25vh,360px) desktop,
+     420px -> 260px under 900px. RECORD CORRECTION: the FIX-3 comment in
+     this file claims "desktop cover 25vh / narrow cover 140px" — the filed
+     bytes never carried those values (55vh / 420px), which is why the board
+     still sat below the fold. Fix-4 lands the desktop 25vh for real.
+  3. Dock: the bar is no longer fixed — the document is a 100dvh flex
+     column, .page-scroll is the only scroller, the Five sit in normal flow
+     beneath it, so content can never slide under the dock at any scroll
+     position (the 200px end-padding only held at End). Visible white
+     labels under the tiles (ADD / MAIL / ACTIVITY / WORLDS / ECOSYSTEM).
+     .ph-main bottom padding 200px -> 32px.
+  4. Gray secondary text: no opacity rule and no desktop-only rule dims
+     these lines — every text colour computes to #fff (the 390 eye's 0 gray
+     hits agree). The desktop eye's gray was the two veils: text dimmed
+     under the heading's fade band (item 1, now solid) and under the fixed
+     dock's blur bar mid-scroll (item 3, now structural). Both veils are
+     gone; the small secondary lines also go to weight 600. Shared-note
+     card cut from five sections to two (Nutshell + What it means).
+  5. One-set precision: dock icon strokes (.notif-tile color) and avatar
+     rings (.cx-ava border) were color-mix blends with WHITE (72%/62%/
+     88%/80%) — the lighter variants the 390 eye measured. Now the bare
+     palette hexes (var(--nc) / var(--cc)); glows (alpha mixes) untouched.
+  BLOCKER (honest): the maker could NOT verify live in this VM — Chromium
+  exits SIGTRAP and Firefox SIGSEGV on any navigation (binaries print
+  --version, renderers die silent; recorded 2026-11-12, still broken).
+  The checker must do the live pass (desktop scrolled + 635 + 390) and
+  scroll .page-scroll, not the window.
+-->
 <style>
 /* --- SMART MAIL FIX round (2026-11-17, brief BRIEF-SMART-MAIL-FIX-20261117)
    + THE DEEP PALETTE amendment (01:30Z). White small text (DNA §9);
@@ -138,13 +172,22 @@
 html,body{margin:0;padding:0}
 html{scroll-padding-bottom:120px}
 body{background:#050507;color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+/* --- FIX-4 2026-11-17 (brief BRIEF-SMART-MAIL-FIX4-UNIFY-20261117): the
+   scroll region ends ABOVE the dock. The document is a 100dvh flex column:
+   .page-scroll (cover + menu + main) is the only scroller; the Five sits
+   in normal flow under it, always visible, and content can NEVER slide
+   under it mid-scroll — the old fixed dock + 200px end-padding only held
+   at End. Window scrolling is gone by construction (body overflow hidden);
+   wheel / keyboard / scrollIntoView all drive .page-scroll. --- */
+body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+.page-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
 a{color:#fff}
 button{font-family:inherit}
 img{max-width:100%}
 /* --- COVER: .ph-cover harvested verbatim in shape (Personal page) --- */
-.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(55vh,600px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(142,36,170,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(212,160,23,.30),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(15,82,186,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
+.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(25vh,360px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(142,36,170,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(212,160,23,.30),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(15,82,186,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
 .ph-cover::before{content:'';position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(180deg,rgba(2,2,6,0) 0%,rgba(2,2,6,.38) 52%,rgba(2,2,6,.78) 100%);pointer-events:none;z-index:1}
-@media(max-width:900px){.ph-cover{height:420px !important;aspect-ratio:auto !important;max-height:none !important;}}
+@media(max-width:900px){.ph-cover{height:260px !important;aspect-ratio:auto !important;max-height:none !important;}}
 /* COVER TOGGLE (Unification 2026-11-17): one plain button in the page-head —
    "Hide the banner" / "Show the banner". The old Cover / No cover /
    Full screen trio is gone: "Full screen" never went fullscreen (zero
@@ -168,14 +211,20 @@ body.no-cover .ph-main{padding-top:12px}
 .menu-bar .steppill.on{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc),0 0 22px -4px var(--sc)}
 .menu-bar .steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
 /* --- PAGE --- */
-/* DOCK CLEARANCE (Unification, eye finding (a)): 200px of empty space
-   reserved above the fixed dock at EVERY width, so any element can be
-   scrolled fully clear of it and nothing is cut at max scroll. */
-.ph-main{padding:8px 24px 200px}
+/* DOCK CLEARANCE (FIX-4, supersedes the Unification 200px end-padding):
+   the 200px only held at End — mid-scroll content still slid under the
+   fixed dock. Clearance is now structural: .page-scroll ends above the
+   dock (see body rule), so it holds at EVERY scroll position. The 32px
+   bottom padding is just breathing room for the last content. */
+.ph-main{padding:8px 24px 32px}
 .page-head{text-align:center;margin:0 0 10px}
-/* EYE (c): the solid band sliced the top line scrolling under it — the
-   band now fades out over its bottom edge instead of cutting. */
-.page-title{margin:4px 0 0;text-align:center;font-size:28px;font-weight:800;position:sticky;top:62px;z-index:40;background:linear-gradient(180deg,#050507 72%,rgba(5,5,7,0));padding-bottom:14px;scroll-margin-top:78px}
+/* FIX-4 (brief item 1): the fade did NOT land as a fix — its transparent
+   bottom let scrolling text show through, cut mid-glyph with a hard edge.
+   The band is now SOLID opaque #050507 (the menu-bar above it is the
+   working example): nothing ever shows through it sliced. top:60px tucks
+   the band 0–2px under the ~60px sticky menu-bar so no hairline gap ever
+   shows scrolling text between the two bands. */
+.page-title{margin:4px 0 0;text-align:center;font-size:28px;font-weight:800;position:sticky;top:60px;z-index:40;background:#050507;padding-bottom:14px;scroll-margin-top:78px}
 .page-head p{margin:4px 0 0;font-size:15px;color:#fff}
 .cover-toggle{margin-top:10px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
@@ -212,7 +261,7 @@ body.no-cover .ph-main{padding-top:12px}
    textContent = initials(name)); per-person --cc; the spin is the conic
    sheen ::after rotating (cxsheen 7s linear infinite) — the orb flows
    with the initials. 58px, 48px under 760px, .big 78px for the thread head. --- */
-.cx-ava{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;font-size:22px;font-weight:900;color:#fff;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 42%),radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--cc) 55%,#101014) 0%,color-mix(in srgb,var(--cc) 28%,#060607) 78%);border:2px solid color-mix(in srgb,var(--cc) 80%,white);box-shadow:0 0 24px -4px var(--cc),inset 0 2px 3px rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.55);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.cx-ava{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;font-size:22px;font-weight:900;color:#fff;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 42%),radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--cc) 55%,#101014) 0%,color-mix(in srgb,var(--cc) 28%,#060607) 78%);border:2px solid var(--cc);box-shadow:0 0 24px -4px var(--cc),inset 0 2px 3px rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.55);text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .cx-ava.big{width:78px;height:78px;font-size:30px}
 .cx-ava::after{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.35) 40deg,transparent 90deg);animation:cxsheen 7s linear infinite;pointer-events:none}
 .cx-ava{position:relative;overflow:hidden}
@@ -308,17 +357,17 @@ body.no-cover .ph-main{padding-top:12px}
    .notif-tile construction unchanged; the segments are now the Five, icons
    only, no visible labels — the dock is shorter, so less of the page hides
    behind it. Five segments, equal 84px, gap 22px. --- */
-.notif-bar{position:fixed;left:0;right:0;bottom:var(--smartbar-h,0px);z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) both;transition:opacity .45s ease}
+.notif-bar{position:static;flex:none;z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) both;transition:opacity .45s ease}
 @keyframes notifUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
 .notif-row{display:flex;gap:22px;width:100%;max-width:720px;padding:8px 14px 6px;justify-content:center}
 .notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#fff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;min-width:84px}
 .notif-seg:active{transform:scale(.94)}
-.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 36%,#12121a),#07070b 78%);border:1.5px solid color-mix(in srgb,var(--nc) 62%,rgba(255,255,255,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:color-mix(in srgb,var(--nc) 72%,#ffffff);transition:box-shadow .3s,border-color .3s}
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 36%,#12121a),#07070b 78%);border:1.5px solid var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:var(--nc);transition:box-shadow .3s,border-color .3s}
 .notif-tile::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(155deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 42%),linear-gradient(25deg,rgba(255,255,255,0) 62%,color-mix(in srgb,var(--nc) 22%,transparent) 100%)}
 .notif-tile svg{width:25px;height:25px;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--nc) 75%,transparent));position:relative}
 .notif-count{position:absolute;top:-8px;right:-10px;min-width:24px;height:24px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:12px;font-weight:900;color:#06060a;background:var(--nc);border:2px solid #05050a;box-shadow:0 0 14px var(--nc),0 3px 8px rgba(0,0,0,.5);animation:notifPulse 2.4s ease-in-out infinite}
 @keyframes notifPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
-.notif-seg.has-news .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
+.notif-seg.has-news .notif-tile{border-color:var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
 /* --- WORLD FEED PANEL + NOTIFICATION CHOICE SHEET (trio's door, spec §) --- */
 .feed-panel{position:fixed;left:50%;transform:translateX(-50%) translateY(12px);bottom:104px;z-index:46;width:min(560px,calc(100vw - 24px));max-height:min(62vh,560px);overflow-y:auto;border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1.5px solid rgba(142,36,170,.55);box-shadow:0 0 40px rgba(142,36,170,.4),0 30px 60px rgba(0,0,0,.8);padding:18px 18px 14px;display:none;opacity:0;transition:opacity .25s,transform .25s}
 .feed-panel.show{display:block;opacity:1;transform:translateX(-50%) translateY(0)}
@@ -384,7 +433,7 @@ body.no-cover .ph-main{padding-top:12px}
   .ph-cover-inner{padding:10px}   .ph-cover-inner h1{font-size:24px}   .ph-cover-inner p{font-size:13px;margin-top:6px;max-width:420px}
   /* FIX-3 round 2, 2026-11-17: narrow stack trims so the first row clears the fixed dock:
      h2 22px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
-  .page-title{font-size:22px}
+  .page-title{font-size:22px;top:50px}
   .cover-toggle{margin-top:8px}
   .org-tabs{padding:6px 2px 8px}
   .search-row{padding:10px 16px;margin-bottom:10px}
@@ -397,7 +446,7 @@ body.no-cover .ph-main{padding-top:12px}
   .composer-inner{flex-wrap:wrap}
 }
 @media (max-width:420px){
-  .ph-main{padding:18px 12px 190px}
+  .ph-main{padding:18px 12px 32px}
   .toggle button{padding:10px 11px;font-size:12px}
   .thread-head{flex-wrap:wrap}
   .msg{max-width:88%}
@@ -416,6 +465,32 @@ body.no-cover .ph-main{padding-top:12px}
   .thread-head .toggle{flex:1 1 100%}
   .thread-head .toggle button{flex:1;padding:8px 10px}
 }
+/* --- FIX-4 2026-11-17 (brief items 3 + 4 + 5) ---
+   (item 3) DOCK LABELS: the Five carry visible white labels under the
+   tiles (ADD / MAIL / ACTIVITY / WORLDS / ECOSYSTEM) — the eye read the
+   labels as falling below the viewport; the unification's icons-only dock
+   carried the names in aria-label + title only. Labels are white, 11px,
+   10px under 480px so all five fit 390px. Dock height is now ~88px
+   desktop / ~81px phone; the feed-panel (bottom:104px) still clears it.
+   (item 4) SECONDARY TEXT: every text colour in this file already computes
+   to #fff — no opacity rule and no desktop-only rule dims these lines
+   (the 390 eye's 0 gray hits agree). What the desktop eye read as gray
+   was the two veils: scrolling text dimmed under the sticky heading's
+   fade-to-transparent band (fixed solid by item 1) and under the fixed
+   dock's blur bar mid-scroll (fixed structurally by item 3). Both veils
+   are gone; as belt-and-braces the small secondary lines below go to
+   weight 600 so no eye can call them dim at any width. Disabled buttons
+   keep opacity:.45 — a correct disabled affordance, out of scope.
+   (item 5) ONE-SET PRECISION: dock icon strokes (svg currentColor via
+   .notif-tile color) and avatar rings (.cx-ava border) were color-mix
+   blends with WHITE — 72% / 62% / 88% / 80% — which is exactly the
+   lighter variants the 390 eye measured (#ae61c2 etc.). They are now the
+   bare palette hexes (var(--nc) / var(--cc)). Glows keep their
+   color-mix-with-transparent (alpha, hue preserved — the glows already
+   used the exact hexes). Dark washes (mixes with #12121a / #101014) are
+   shading, not lighter variants, and stand. --- */
+.notif-label{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-align:center;line-height:1.2}
+.page-head p,.panel-sub,.stub-note,.row-last,.row-nut,.msg .meta,.thread-head .who span,.mail-meta,.letter-to,.typing,.world-note,.feed-sub,.choice-row small,.toast p{font-weight:600}
 /* --- FIX-3 round 2 (eye 02:59Z): dock cycle 60s/75s, dots 6px/5px -- strictly faster than the 60s/90s the eye read as ~6 min/rev; no 360s duration existed in the filed bytes. */
    /* --- FIX 2026-11-17 (Smart Mail fix round): trio orbit + whole-item light.
    The bottom activity orbs carry two satellites each, slow, alternating
@@ -423,9 +498,9 @@ body.no-cover .ph-main{padding-top:12px}
    so the flow is visible. Hover lights the WHOLE tile in its own colour. --- */
 .notif-tile::after{content:'';position:absolute;inset:-8px;border-radius:22px;pointer-events:none;background:radial-gradient(circle 6px at 50% 0%,var(--nc) 98%,transparent 100%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--nc) 30%,transparent);filter:drop-shadow(0 0 6px var(--nc));animation:orbitCW 60s linear infinite}
 .notif-seg::before{content:'';position:absolute;top:-6px;left:50%;width:70px;height:70px;margin-left:-35px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 0% 50%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCCW 75s linear infinite}
-.notif-seg:hover .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 55%,#12121a),#07070b 78%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 30px color-mix(in srgb,var(--nc) 70%,transparent)}
+.notif-seg:hover .notif-tile{border-color:var(--nc);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 55%,#12121a),#07070b 78%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 30px color-mix(in srgb,var(--nc) 70%,transparent)}
 /* FIVE at phone widths: five tiles must fit 390px — tighter gap, 48px tiles. */
-@media(max-width:480px){.notif-row{gap:10px;padding:8px 8px 6px}.notif-seg{min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}}
+@media(max-width:480px){.notif-row{gap:10px;padding:8px 8px 6px}.notif-seg{min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}.notif-label{font-size:10px;letter-spacing:.08em}}
 .row:hover .cx-ava{filter:brightness(1.18)}
 /* --- ELEVATION FIX 2026-11-17 (checker item 8): the six flat/dead elements
    gain elevation + whole-item hover light in their own deep color — .format-note,
@@ -435,6 +510,9 @@ body.no-cover .ph-main{padding-top:12px}
 </style>
 </head>
 <body>
+<!-- FIX-4: .page-scroll is the page's only scroller (see body rule) — cover,
+     menu-bar and main scroll inside it; the Five sit below it in flow. -->
+<div class="page-scroll">
 
 <!-- COVER -->
 <header class="ph-cover" id="cover">
@@ -545,6 +623,7 @@ body.no-cover .ph-main{padding-top:12px}
   </div>
   <p class="stub-note" id="listFilterNote" hidden style="padding:12px 6px 0"></p>
 </main>
+</div><!-- / .page-scroll — the dock below is in normal flow, never overlapped -->
 
 <!-- NOTIFICATION TOAST -->
 <div class="toast" id="toast" role="button" tabindex="0" aria-label="New message notification">
@@ -575,25 +654,33 @@ body.no-cover .ph-main{padding-top:12px}
      burnt orange — NayaNotif SEGS + ICONS from the Personal page
      (personal-whole-page-20261117/work/personal-fixed.html, harvested from
      probe-icons-plus-fix-r3/work-r5-fixpass3.html, captain-verified
-     2026-11-13). Icons only — names live in aria-label + title, as on
-     Personal. CONNECT is NOT here: adding or removing it is Shawn's call.
-     The trio (Personal/Business/Thing gems) is gone from this page. -->
+     2026-11-13). FIX-4: visible labels under the tiles (ADD / MAIL /
+     ACTIVITY / WORLDS / ECOSYSTEM) — the eye read the labels as falling
+     below the viewport; names also stay in aria-label + title. The bar is
+     in normal flow under .page-scroll (not fixed), so it can never cover
+     content mid-scroll. CONNECT is NOT here: adding or removing it is
+     Shawn's call. The trio (Personal/Business/Thing gems) is gone. -->
 <footer class="notif-bar" id="notifBar">
   <div class="notif-row">
     <button class="notif-seg" type="button" id="segAdd" data-notif="plus" style="--nc:#8e24aa" aria-label="ADD — open" title="ADD">
       <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+      <span class="notif-label">ADD</span>
     </button>
     <button class="notif-seg has-news" type="button" id="segMail" data-notif="mail" style="--nc:#0f52ba" aria-label="MAIL — open" title="MAIL">
       <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count" id="mailCount">6</span></span>
+      <span class="notif-label">MAIL</span>
     </button>
     <button class="notif-seg has-news" type="button" id="segActivity" data-notif="activity" style="--nc:#07925f" aria-label="ACTIVITY — open" title="ACTIVITY">
       <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count" id="activityCount">4</span></span>
+      <span class="notif-label">ACTIVITY</span>
     </button>
     <button class="notif-seg" type="button" id="segWorlds" data-notif="spaces" style="--nc:#d4a017" aria-label="WORLDS — open" title="WORLDS">
       <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span>
+      <span class="notif-label">WORLDS</span>
     </button>
     <button class="notif-seg" type="button" id="segEco" data-notif="eco" style="--nc:#c2410c" aria-label="ECOSYSTEM — open" title="ECOSYSTEM">
       <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
+      <span class="notif-label">ECOSYSTEM</span>
     </button>
   </div>
 </footer>
@@ -869,12 +956,10 @@ function renderThread(){
       ? 'Instant Message — live, in the moment, with ' + esc(p.name)
       : 'Smart Mail — the letter format, same conversation, same person')) + '</div>';
   if (p.id === 'maya' && state.format === 'mail') {
+    /* FIX-4: cut toward the nutshell — five sections became two. */
     html += '<div class="smart-note"><h4>Shared note — Design, in the smart-note format</h4>' +
       '<h5>Nutshell</h5><p>A messenger is one conversation in two formats, not two inboxes.</p>' +
-      '<h5>Why it matters</h5><p>People lose the thread when the format changes the conversation.</p>' +
-      '<h5>What it means</h5><p>The toggle switches the format and nothing else — the person stays.</p>' +
-      '<h5>How to apply it</h5><p>Flip the toggle, read the same thread, send in the format that fits the moment.</p>' +
-      '<h5>What is in it for you</h5><p>One conversation to keep, in the format you need right now.</p></div>';
+      '<h5>What it means</h5><p>The toggle switches the format and nothing else — the person stays.</p></div>';
   }
   /* MAIL MESSAGE VIEW (pro-level): the opened letter as an elevated board —
      title, nutshell, key points with jewel bullets — then the letters
