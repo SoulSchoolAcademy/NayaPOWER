@@ -4903,24 +4903,24 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
     <div class="os-drawer-head" data-mw-tr="drawer">NAYANET AREAS</div>
     <!-- F4 (Shawn 16:06Z) — the LEFT sidebar, the official list verbatim
          (THE-OFFICIAL-NAVIGATION.md §2). Smart Meet opens another tab, per
-         the spec. INTERIM: no Smart Meet route exists anywhere (the app is
-         missing, per the standing record) — it points at Connections, where
-         a meet starts with contacts added. The real route is owed. -->
+         the spec. Smart Meet books a time at nayanet.app/book — the booking entry point
+         (the calendar round wires the in-app meet route; until it lands,
+         the book page is the door). -->
     <!-- HUB-RETURN 2026-11-16 (item 1, Shawn 17:06Z + 17:10Z) — the Hub is
          the top button of the left sidebar: the main home, the main Hub.
          The black circle is the Hub's own icon (the Hub keeps its black
          circle icon bar); the button is lit at rest like a home button
-         (.pc-hub-home below). Label is Hub — Home vs Hub is HIS call.
+         (.pc-hub-home below). Label is Home now (whole-page round 2026-11-17, item 12 — his call).
          The href is the one door constant (window.NAYA_HUB_URL, set in
          the hub-return script below); the live step confirms that line. -->
-    <a class="pc-hub-home" id="pc-hub-home" href="https://nayanet.app/hub" style="--rc:#a06bff"><span class="pc-hub-orb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/></svg></span> Hub</a>
-    <a href="https://nayanet.app/personal" style="--rc:#3fb8ff"><span class="pc-ico-tile" style="--nc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.4 3.6-5.3 7-5.3s6.2 1.9 7 5.3"/></svg></span> Personal</a>
-    <a href="https://nayanet.app/business" style="--rc:#31cb8d"><span class="pc-ico-tile" style="--nc:#31cb8d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span> Business</a>
-    <a href="https://nayanet.app/space" style="--rc:#ffbf3d"><span class="pc-ico-tile" style="--nc:#ffbf3d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span> World</a>
-    <a href="https://nayanet.app/#/hub/reports" style="--rc:#ff9a5a" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#ff9a5a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span> Your Reports</a>
-    <a href="https://nayanet.app/#/hub/today" style="--rc:#ff5e6c" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#ff5e6c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21.5h4"/><path d="M12 2.5a7 7 0 0 0-4 12.6c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2.5z"/></svg></span> Intel Today</a>
-    <a href="https://nayanet.app/#/hub/connections" style="--rc:#e84fff" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#e84fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M2.8 19.5c.8-3.1 3.3-4.8 6.2-4.8s5.4 1.7 6.2 4.8"/><circle cx="17" cy="9" r="2.5"/><path d="M16.2 14.9c2.4.4 4.3 1.9 5 4.6"/></svg></span> Your Connections</a>
-    <a href="https://nayanet.app/#/hub/connections" target="_blank" rel="noopener" style="--rc:#a06bff" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1.5"/><circle cx="15" cy="12" r="1.1" fill="currentColor" stroke="none"/></svg></span> Smart Meet</a>
+    <a class="pc-hub-home" id="pc-hub-home" href="https://nayanet.app/hub" style="--rc:#8e24aa"><span class="pc-hub-orb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/></svg></span> Home</a>
+    <a href="https://nayanet.app/personal" style="--rc:#0f52ba"><span class="pc-ico-tile" style="--nc:#0f52ba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.4 3.6-5.3 7-5.3s6.2 1.9 7 5.3"/></svg></span> Personal</a>
+    <a href="https://nayanet.app/business" style="--rc:#07925f"><span class="pc-ico-tile" style="--nc:#07925f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span> Business</a>
+    <a href="https://nayanet.app/space" style="--rc:#d4a017"><span class="pc-ico-tile" style="--nc:#d4a017"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span> World</a>
+    <a href="https://nayanet.app/#/hub/reports" style="--rc:#c2410c" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#c2410c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span> Your Reports</a>
+    <a href="https://nayanet.app/#/hub/today" style="--rc:#c62828" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#c62828"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21.5h4"/><path d="M12 2.5a7 7 0 0 0-4 12.6c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2.5z"/></svg></span> Intel Today</a>
+    <a href="https://nayanet.app/#/hub/connections" style="--rc:#a21caf" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#a21caf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M2.8 19.5c.8-3.1 3.3-4.8 6.2-4.8s5.4 1.7 6.2 4.8"/><circle cx="17" cy="9" r="2.5"/><path d="M16.2 14.9c2.4.4 4.3 1.9 5 4.6"/></svg></span> Your Connections</a>
+    <a href="https://nayanet.app/book" target="_blank" rel="noopener" style="--rc:#8e24aa" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#8e24aa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1.5"/><circle cx="15" cy="12" r="1.1" fill="currentColor" stroke="none"/></svg></span> Smart Meet</a>
   </aside>
   <aside class="os-drawer os-drawer-right" id="os-drawer-right" aria-label="Smart Factory and memberships">
     <div class="os-drawer-head" data-mw-tr="drawer">NAYANET ECOSYSTEM</div>
@@ -4932,20 +4932,23 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
          straight in for free). INTERIM: no Leaderboards view exists anywhere
          — it points at the Dashboard (the stats home) until the dedicated
          view is built. About Us + White Paper sit at the BOTTOM, per the spec. -->
-    <a href="https://nayanet.app/smartfactory" style="--rc:#a06bff" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span> Smart Factory</a>
+    <a href="https://nayanet.app/hub" style="--rc:#8e24aa"><span class="pc-ico-tile" style="--nc:#8e24aa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/></svg></span> Home</a>
+    <a href="https://nayanet.app/smartfactory" style="--rc:#8e24aa" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#8e24aa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span> Smart Factory</a>
     <div class="os-drawer-sec" data-mw-tr="drawer">MEMBERSHIPS</div>
-    <a href="https://nayanet.groovepages.com/academy" data-mw-open-mship="Naya Academy" style="--rc:#a06bff"><span class="pc-ico-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span> Naya Academy</a>
-    <a href="https://aimasterclass.help/" data-mw-open-mship="AI Masterclass" style="--rc:#3fb8ff"><span class="pc-ico-tile" style="--nc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="8" width="12" height="10" rx="2"/><path d="M12 8V4"/><path d="M9.5 12.5h.01M14.5 12.5h.01"/><path d="M9 15.5h6"/></svg></span> AI Masterclass</a>
-    <a href="#memberships" data-mw-open-mship="Fast Action Club" style="--rc:#31cb8d"><span class="pc-ico-tile" style="--nc:#31cb8d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span> Fast Action Club</a>
+    <a href="https://nayanet.groovepages.com/academy" data-mw-open-mship="Naya Academy" style="--rc:#8e24aa"><span class="pc-ico-tile" style="--nc:#8e24aa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span> Naya Academy</a>
+    <a href="https://aimasterclass.help/" data-mw-open-mship="AI Masterclass" style="--rc:#0f52ba"><span class="pc-ico-tile" style="--nc:#0f52ba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="8" width="12" height="10" rx="2"/><path d="M12 8V4"/><path d="M9.5 12.5h.01M14.5 12.5h.01"/><path d="M9 15.5h6"/></svg></span> AI Masterclass</a>
+    <a href="#memberships" data-mw-open-mship="Fast Action Club" style="--rc:#07925f"><span class="pc-ico-tile" style="--nc:#07925f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span> Fast Action Club</a>
     <div class="os-drawer-sec" data-mw-tr="drawer">YOUR WORLD</div>
-    <a href="https://nayanet.app/dashboard" style="--rc:#ffbf3d" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#ffbf3d"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg></span> Leaderboards</a>
-    <a href="https://nayanet.app/#/hub/spaces" style="--rc:#ff9a5a" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#ff9a5a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> My Worlds</a>
+    <a href="https://nayanet.app/dashboard" style="--rc:#d4a017" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#d4a017"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg></span> Leaderboards</a>
+    <a href="https://nayanet.app/#/hub/spaces" style="--rc:#c2410c" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#c2410c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> My Worlds</a>
     <div class="os-drawer-sec" data-mw-tr="drawer">FAVORITE WORLDS</div>
     <div id="pcFavWorlds"></div>
-    <a href="https://nayanet.app/#/hub/growth" style="--rc:#ff5e6c" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#ff5e6c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span> Add a custom link</a>
+    <!-- WHOLE-PAGE 2026-11-17 item 11 — this row opens the add-a-link dialog; saved links render into #pcCustomLinks below. -->
+    <a href="#" id="pc-add-link-row" data-pc-add-link aria-haspopup="dialog" style="--rc:#c62828" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#c62828"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span> Add a custom link</a>
+    <div id="pcCustomLinks"></div>
     <div class="os-drawer-sec" data-mw-tr="drawer">ABOUT NAYANET</div>
-    <a href="https://nayanet.groovepages.com/aboutus" target="_blank" rel="noopener" style="--rc:#e84fff" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#e84fff"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M10 7.5H6.8A3.3 3.3 0 0 0 3.5 10.8V17h6.6v-6.6H6.9a1.6 1.6 0 0 1 1.5-1.7v-1.2zm10.4 0h-3.2a3.3 3.3 0 0 0-3.3 3.3V17h6.6v-6.6h-3.2a1.6 1.6 0 0 1 1.5-1.7V7.5z"/></svg></span> About Us</a>
-    <a href="https://nayanet.groovepages.com/whitepaper" target="_blank" rel="noopener" style="--rc:#a06bff" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span> White Paper</a>
+    <a href="https://nayanet.groovepages.com/aboutus" target="_blank" rel="noopener" style="--rc:#a21caf" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#a21caf"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M10 7.5H6.8A3.3 3.3 0 0 0 3.5 10.8V17h6.6v-6.6H6.9a1.6 1.6 0 0 1 1.5-1.7v-1.2zm10.4 0h-3.2a3.3 3.3 0 0 0-3.3 3.3V17h6.6v-6.6h-3.2a1.6 1.6 0 0 1 1.5-1.7V7.5z"/></svg></span> About Us</a>
+    <a href="https://nayanet.groovepages.com/whitepaper" target="_blank" rel="noopener" style="--rc:#8e24aa" data-mw-tr="drawer"><span class="pc-ico-tile" style="--nc:#8e24aa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span> White Paper</a>
   </aside>
 </div>
 
@@ -5090,7 +5093,7 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 <!-- F5 (Shawn 16:06Z) — the feed bar is the Hub's lens bar, harvested verbatim
      (see the CSS). The .mw-feedname buttons below stay (they activate their tab
      + scroll the feed into view in place — working doors). -->
-<section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><button type="button" id="pcSearchScope" class="pc-search-scope" aria-label="World: My World — choose a thing" title="Choose a thing">My World</button><input type="search" id="pcHubSearchInput" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"></div></section><button type="button" id="pcComposerPlus" class="pc-composer-plus" aria-label="Add" title="Add"><span class="notif-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></button>
+<section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><button type="button" id="pcSearchScope" class="pc-search-scope" aria-label="World: My World — choose a thing" title="Choose a thing">My World</button><input type="search" id="pcHubSearchInput" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"></div></section><button type="button" id="pcComposerPlus" class="pc-composer-plus" aria-label="Add" title="Add"><span class="notif-tile" style="--nc:#8e24aa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></button>
 <p class="pc-tabs-cap pc-tabs-cap-yours"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span>Your tabs — you choose what feed you want</p>
 <style id="pc-correction-20261116">
 /* PERSONAL CORRECTION 2026-11-16 — the round's own rules, one block. */
@@ -6867,7 +6870,7 @@ button.os-ld-node .os-ld-n{
 </style>
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> About Me</div>
-<div class="of-bridge" id="ofAboutBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#a06bff"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofAboutFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofAboutFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#a06bff"><span class="ib-kind" style="--tone:#a06bff">About me &middot; In a nutshell</span><h3 class="ib-title">Shawn Vibert builds NayaNET</h3><div class="ib-nutshell"><p>Shawn Vibert builds NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live.</p></div></div></div><p class="of-bridge-q">Which presentation do you want?</p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-unfold" style="--tone:#ffbf3d">Unfold down &#9670;</button><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-slides" style="--tone:#3fb8ff">Slideshow &#9670;</button></div><button type="button" class="of-lib-door" data-of-open="about-library"><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">&#10022;</span> Enter the Intelligent Library <span class="of-lib-count" id="ofLibCount"></span></button><p class="of-bridge-note">About unfolds one board at a time &mdash; or slides, one screen at a time. The Library holds the best of what is saved here.</p></div>
+<div class="of-bridge" id="ofAboutBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#a06bff"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofAboutFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofAboutFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#a06bff"><span class="ib-kind" style="--tone:#a06bff">About me &middot; In a nutshell</span><h3 class="ib-title">Shawn Vibert builds NayaNET</h3><div class="ib-nutshell"><p>Shawn Vibert builds NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live.</p></div></div></div><p class="of-bridge-q">About unfolds one board at a time &mdash; tap to begin.</p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-unfold" style="--tone:#d4a017">Unfold down &#9670;</button></div><button type="button" class="of-lib-door" data-of-open="about-library"><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">&#10022;</span> Enter the Intelligent Library <span class="of-lib-count" id="ofLibCount"></span></button><p class="of-bridge-note">About unfolds one board at a time. The Library holds the best of what is saved here. <span class="of-lib-count" id="ofLibCountBridge"></span></p></div>
 <div class="of-pres-head" id="ofAboutPresHead" hidden><button type="button" class="ph-msg of-back" data-of-back="about">&#8249; Back to the bridge</button><span class="ib-kind of-pres-label" id="ofAboutPresLabel" style="--tone:#a06bff"></span></div>
 <div class="of-controls" id="ofAboutControls" hidden><div class="of-dots" id="ofAboutDots" aria-hidden="true"></div><button class="of-all" id="ofAboutAll" type="button">or read the whole thing at once</button></div>
 
@@ -6951,8 +6954,8 @@ button.os-ld-node .os-ld-n{
 </div>
 
 
-<div class="of-slides-nav" id="ofAboutSlidesNav" hidden><button type="button" class="p3-enter of-slide-prev" id="ofAboutPrev">&#8249; Back</button><span class="of-slide-count" id="ofAboutCount">Slide 1 of 7</span><button type="button" class="p3-enter of-slide-next" id="ofAboutNext">Next &#8250;</button></div>
-<div class="of-library" id="ofAboutLibrary" hidden><div class="of-pres-head"><button type="button" class="ph-msg of-back" data-of-back="about">&#8249; Back to the bridge</button><span class="ib-kind" style="--tone:#2fe89e">The Intelligent Library</span></div><p class="of-lib-sub">The best of what is saved here &mdash; smart notes and answers, organized. Tap any one to learn about the page, the person, the topic, the business.</p><div class="of-lib-cats" id="ofLibCats" role="group" aria-label="Categories"></div><input class="os-input of-lib-search" id="ofLibSearch" type="text" placeholder="Search the library &mdash; type to filter its answers&hellip;"><div id="ofLibList"><p class="os-note">Reading the library&hellip;</p></div><div class="ph-actions"><button class="ph-connect" id="ofLibAdd" type="button">Add to the library</button></div><p class="os-status" id="ofLibStatus">Entries save onto this app, for every visitor.</p></div>
+
+<div class="of-library" id="ofAboutLibrary" hidden><div class="of-pres-head"><button type="button" class="ph-msg of-back" data-of-back="about">&#8249; Back to the bridge</button><span class="ib-kind" style="--tone:#2fe89e">The Intelligent Library <span class="of-lib-count" id="ofLibCountHead"></span></span></div><p class="of-lib-sub">The best of what is saved here &mdash; smart notes and answers, organized. Tap any one to learn about the page, the person, the topic, the business.</p><div class="of-lib-cats" id="ofLibCats" role="group" aria-label="Categories"></div><input class="os-input of-lib-search" id="ofLibSearch" type="text" placeholder="Search the library &mdash; type to filter its answers&hellip;"><div id="ofLibList"><p class="os-note">Reading the library&hellip;</p></div><div class="ph-actions"><button class="ph-connect" id="ofLibAdd" type="button">Add to the library</button></div><p class="os-status" id="ofLibStatus">Entries save onto this app, for every visitor.</p></div>
 
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span> My facts</h3>
@@ -7157,7 +7160,7 @@ button.os-ld-node .os-ld-n{
 <div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Smart Skills</div>
 
 
-<div class="of-bridge" id="ofSkillsBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#e84fff"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofSkillsFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofSkillsFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#e84fff"><span class="ib-kind" style="--tone:#e84fff">Smart Skills &middot; In a nutshell</span><h3 class="ib-title">Smart Skills</h3><div class="ib-nutshell"><p>The skills so far &mdash; the list keeps growing. Every skill is a capability you call on by name: a Smart Note (the knowledge) + a Factory template (the ability to do it), stored in your Smart Vault. Tap a skill to see why it matters.</p></div></div></div><p class="of-bridge-q">Which presentation do you want?</p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="skills-unfold" style="--tone:#ff5e6c">Unfold down &#9670;</button><button type="button" class="p3-enter of-bridge-btn" data-of-open="skills-slides" style="--tone:#e84fff">Slideshow &#9670;</button></div><p class="of-bridge-note">Skills unfold one board at a time &mdash; or slide, one screen at a time.</p></div>
+<div class="of-bridge" id="ofSkillsBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#e84fff"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofSkillsFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofSkillsFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#e84fff"><span class="ib-kind" style="--tone:#e84fff">Smart Skills &middot; In a nutshell</span><h3 class="ib-title">Smart Skills</h3><div class="ib-nutshell"><p>The skills so far &mdash; the list keeps growing. Every skill is a capability you call on by name: a Smart Note (the knowledge) + a Factory template (the ability to do it), stored in your Smart Vault. Tap a skill to see why it matters.</p></div></div></div><p class="of-bridge-q">Skills slide one screen at a time &mdash; tap to begin the presentation.</p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="skills-slides" style="--tone:#a21caf">Slideshow &#9670;</button></div><p class="of-bridge-note">Skills slide one screen at a time &mdash; a presentation you can send to get work.</p><div class="of-skill-chips" id="ofSkillsChips" role="group" aria-label="Tap a skill to see its board"></div></div>
 <div class="of-pres-head" id="ofSkillsPresHead" hidden><button type="button" class="ph-msg of-back" data-of-back="skills">&#8249; Back to the bridge</button><span class="ib-kind of-pres-label" id="ofSkillsPresLabel" style="--tone:#e84fff"></span></div>
 <div class="of-controls" id="ofSkillsControls" hidden><div class="of-dots" id="ofSkillsDots" aria-hidden="true"></div><button class="of-all" id="ofSkillsAll" type="button">or read the whole thing at once</button></div> <div class="of-slides-nav" id="ofSkillsSlidesNav" hidden><button type="button" class="p3-enter of-slide-prev" id="ofSkillsPrev">&#8249; Back</button><span class="of-slide-count" id="ofSkillsCount">Slide 1 of 14</span><button type="button" class="p3-enter of-slide-next" id="ofSkillsNext">Next &#8250;</button></div>
  <div class="ph-card" style="--ac:#e84fff;" id="os-skill-add-card">
@@ -11730,7 +11733,14 @@ function wallCard(j, iso, pid, idx){
     sb.from('smart_notes').select('id,content,created_at,naya_note_filing(category_name,match_score)').eq('owner_alias', PAGE_ALIAS).order('created_at',{ascending:false}).limit(300).then(function(res){
       if (res && !res.error){
         var rows=(res.data||[]).map(function(r){ return {r:r, c:parseRow(r)}; }).filter(function(x){ return x.c.k==='qa'; });
-        osLibCache=rows.map(function(x){ return {q:x.c.q||'', a:x.c.a||'', at:x.r.created_at}; });
+        /* WHOLE-PAGE 2026-11-17 item 17 — MERGE, never clobber: the mirror can
+           hold entries the server does not know yet (saved while the server
+           leg was down). The old code overwrote the mirror with the server
+           rows and a mirror-only entry vanished on the next load. */
+        var seen={}, merged=[];
+        rows.forEach(function(x){ var k=(x.c.q||'')+'\n'+(x.c.a||''); if (!seen[k]){ seen[k]=1; merged.push({q:x.c.q||'', a:x.c.a||'', at:x.r.created_at}); } });
+        (osLibCache||[]).forEach(function(e){ var k=(e.q||'')+'\n'+(e.a||''); if (!seen[k]){ seen[k]=1; merged.push(e); } });
+        osLibCache=merged;
         lsSet(lsKey('library'), osLibCache);
         renderLibrary();
       }
@@ -11749,13 +11759,25 @@ function wallCard(j, iso, pid, idx){
     var qEl=$('os-lib-nq'), aEl=$('os-lib-na'), st=$('os-lib-status');
     var q=(qEl.value||'').trim(), a=(aEl.value||'').trim();
     if (!q || !a){ if (st) st.textContent='A question and its answer — the library needs both.'; return; }
-    if (!sb){ if (st) st.textContent='This app is offline right now — the entry was not saved.'; return; }
-    sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify({k:'qa', q:q, a:a})}).then(function(res){
-      if (res.error){ if (st) st.textContent='That entry could not be saved — try once more.'; return; }
-      qEl.value=''; aEl.value='';
-      if (st) st.textContent='Added — it is in the library above, in this app, for every visitor.';
-      osLibCache=null; loadLibrary();
-    });
+    /* WHOLE-PAGE 2026-11-17 item 17 — mirror first, server second: the entry
+       is in the library the moment it is added (local mirror + visible list +
+       live count), and the server copy follows through the one-route POST.
+       The old direct anon insert is gone — the policy rejects it, which is
+       the save failure the eye hit twice. */
+    var entry={q:q, a:a, at:new Date().toISOString()};
+    if (osLibCache===null) osLibCache=lsGet(lsKey('library'), []);
+    osLibCache.unshift(entry);
+    lsSet(lsKey('library'), osLibCache);
+    renderLibrary();
+    if (window.__osLibRefreshCount) window.__osLibRefreshCount();
+    qEl.value=''; aEl.value='';
+    if (st) st.textContent='Added — it is in the library above.';
+    if (window.PERSONAL_SAVE_URL){
+      fetch(window.PERSONAL_SAVE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({alias:PAGE_ALIAS, model:{library_qa:{q:q, a:a}}})}).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); }).then(function(out){
+        if (out.ok && out.d && out.d.ok){ if (st) st.textContent='Added — it is in the library above, in this app, for every visitor.'; return; }
+        if (st) st.textContent='Added on this device — the app\u2019s copy could not be written just now.';
+      }, function(){ if (st) st.textContent='Added on this device — the app\u2019s copy could not be written just now.'; });
+    }
   }
 
   /* — About gains structure (wave #26) + its story lives in the page's own
@@ -24543,7 +24565,14 @@ function mwApplyLang(){
     var key=el.getAttribute('data-mw-tr');
     var en=el.dataset.mwEn||el.textContent;
     if(!el.dataset.mwEn) el.dataset.mwEn=en;
+    /* WHOLE-PAGE 2026-11-17 item 5 — the icon survives the switch: textContent
+       used to wipe the row's icon span (that is why 10 of 17 drawer icons went
+       missing on every language pass, even the English one). Keep the element
+       children, set the text, put the children back at the front. */
+    var kids=[];
+    for (var _ki=0; _ki<el.childNodes.length; _ki++){ if (el.childNodes[_ki].nodeType===1) kids.push(el.childNodes[_ki]); }
     el.textContent=(code==='en')?en:(dict[en]||en);
+    for (var _kj=kids.length-1; _kj>=0; _kj--){ el.insertBefore(kids[_kj], el.firstChild); }
   });
   /* AUTO-TRANSLATE: placeholders translate the same way (the mechanism never
      reached them — a placeholder is not textContent). */
@@ -25961,7 +25990,7 @@ var SA_MEMBERSHIPS = {
   'naya academy': {slug:'academy', access:'members', name:'Naya Academy', color:'#a06bff', url:'https://nayanet.groovepages.com/academy',
     desc:'Naya Academy — learn NayaNET, step by step, in your own words.',
     cover:'Five days. Five wins. Five Daily Intelligence Briefings. $0 cost. $0 risk. Don\u2019t just learn about NayaPOWER \u2014 experience it.'},
-  'ai masterclass': {slug:'masterclass', access:'paid', name:'AI Masterclass', color:'#3fb8ff', url:'https://aimasterclass.help/',
+  'ai masterclass': {slug:'masterclass', access:'members', name:'AI Masterclass', color:'#3fb8ff', url:'https://aimasterclass.help/', /* WHOLE-PAGE 2026-11-17 item 10 — members: the "Step in" gate, like Naya Academy (was 'paid': Pricing in a new tab only). */
     desc:'The AI Masterclass \u2014 how to work with AI at full power, the Naya way.',
     cover:'The AI Masterclass \u2014 how to work with AI at full power, the Naya way.'},
   'fast action club': {slug:'fac', access:'free', name:'Fast Action Club', color:'#31cb8d', url:'#memberships',
@@ -32146,7 +32175,7 @@ renderGrid();
    only. NO gray text anywhere this round touches. This block sits LAST in
    the document, so at equal specificity it wins every cascade it enters;
    the original rules stay in place underneath, untouched. */
-.pc-ico-tile,.fc-plusitem .fc-pi-ico{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(180deg,#07070b,#020203);border:1.5px solid color-mix(in srgb,var(--nc,#a06bff) 62%,rgba(255,255,255,.12));box-shadow:0 5px 12px rgba(0,0,0,.55),0 0 12px -2px color-mix(in srgb,var(--nc,#a06bff) 42%,transparent);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,color .18s ease}
+.pc-ico-tile,.fc-plusitem .fc-pi-ico{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(180deg,#07070b,#020203);border:1.5px solid color-mix(in srgb,var(--nc,#a06bff) 62%,rgba(255,255,255,.12));box-shadow:0 5px 12px rgba(0,0,0,.55),0 0 12px -2px color-mix(in srgb,var(--nc,#a06bff) 42%,transparent);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,color .18s ease}
 .fc-plusitem .fc-pi-ico{--nc:var(--mc,#a06bff);font-size:15px;text-shadow:none}
 .pc-ico-tile svg,.fc-plusitem .fc-pi-ico svg{width:18px;height:18px;display:block;color:#fff;filter:drop-shadow(0 2px 2px rgba(0,0,0,.7))}
 .fc-plusitem .fc-pi-ico .pc-naya-jewel{font-size:17px;line-height:1;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.65)}
@@ -32255,11 +32284,11 @@ renderGrid();
 @keyframes of-letter-in{from{opacity:0;transform:translateY(10px)}}
 #about .of-beat[hidden], [data-os-view="skills"] .of-beat[hidden]{display:none}
 #about .of-slides-nav, [data-os-view="skills"] .of-slides-nav{display:none;align-items:center;justify-content:center;gap:16px;margin:22px 0 4px}
-#about .of-slides-mode .of-slides-nav, [data-os-view="skills"] .of-slides-mode .of-slides-nav{display:flex}
+#about.of-slides-mode .of-slides-nav, [data-os-view="skills"].of-slides-mode .of-slides-nav{display:flex}
 #about .of-slides-nav .of-slide-count, [data-os-view="skills"] .of-slides-nav .of-slide-count{font-size:15px;font-weight:800;color:#fff;min-width:96px;text-align:center}
 #about .of-slide-prev, [data-os-view="skills"] .of-slide-prev, #about .of-slide-next, [data-os-view="skills"] .of-slide-next{padding:12px 22px;font-size:14px}
-#about .of-slides-mode .of-beat, [data-os-view="skills"] .of-slides-mode .of-beat{display:none}
-#about .of-slides-mode .of-beat.of-current, [data-os-view="skills"] .of-slides-mode .of-beat.of-current{display:block;animation:of-slide-in .45s var(--ease)}
+#about.of-slides-mode .of-beat, [data-os-view="skills"].of-slides-mode .of-beat{display:none}
+#about.of-slides-mode .of-beat.of-current, [data-os-view="skills"].of-slides-mode .of-beat.of-current{display:block;animation:of-slide-in .45s var(--ease)}
 @keyframes of-slide-in{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
 #about .of-beat.of-lit, [data-os-view="skills"] .of-beat.of-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}
 .of-bridge .intel-board:hover,.of-bridge .intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important}
@@ -32364,9 +32393,17 @@ function ofWireUnfold(cfg){
   }
   function ensureBeatVisible(b){
     if (!b) return;
+    /* WHOLE-PAGE 2026-11-17 item 20 — the fixed bottom bar covers the last
+       lines of a revealed board: measure the bar and keep the board clear of
+       it (About unfold; the only unfold left on Personal). */
+    var bar = document.querySelector('.notif-bar');
+    var barH = bar ? bar.getBoundingClientRect().height : 0;
+    var clear = window.innerHeight - barH - 8;
     var r = b.getBoundingClientRect();
-    if (r.bottom > window.innerHeight || r.top < 0) {
-      b.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest', inline: 'nearest' });
+    if (r.bottom > clear || r.top < 0) {
+      var y = window.scrollY + r.top - 12;
+      if (r.bottom > clear) y = window.scrollY + r.bottom - clear;
+      window.scrollTo({ top: y, behavior: scrollBehavior() });
     }
   }
   function finish(){ if (all) all.hidden = true; }
@@ -32597,13 +32634,37 @@ window.__osAboutRefreshNext = function(){
 };
 window.__osSkillsRebuild = function(){
   refreshSkillsBeats();
+  renderSkillChips();
   var S = SECTIONS.skills;
   if (S.mode === 'slides') ofShowSlide(S.slide, S.slide.slide);
   else if (S.mode === 'unfold' && UNFOLD.skills) UNFOLD.skills.reset();
 };
+/* --- the tappable skill chips (WHOLE-PAGE 2026-11-17 item 19): one chip per
+   skill, built from the boards themselves — so a citizen-added skill gets a
+   chip on its own. Each chip wears its skill's colour in deep form. */
+var SKILL_DEEP = {'#a06bff':'#8e24aa','#3fb8ff':'#0f52ba','#6675ff':'#3f51b5','#7fd4ff':'#0e7490','#31cb8d':'#07925f','#ff9a5a':'#c2410c','#e84fff':'#a21caf','#ff5e6c':'#c62828','#2dd4bf':'#0e7490','#ffbf3d':'#d4a017','#7c3aed':'#6d28d9','#22d3ee':'#0e7490','#a5d154':'#07925f','#c8ccd6':'#ffffff'};
+function renderSkillChips(){
+  var host = $('ofSkillsChips'); if (!host) return;
+  var beats = qa('[data-os-view="skills"] .of-beat');
+  host.innerHTML = '';
+  beats.forEach(function(b, i){
+    var h = b.querySelector('h3');
+    var name = h ? (h.textContent || '').trim() : ('Skill ' + (i + 1));
+    name = name.replace(/^\s*✦\s*/, '').replace(/^The\s+/i, '').replace(/\s+Skill$/i, '').trim();
+    var tone = (b.style.getPropertyValue('--tone') || '#a06bff').trim().toLowerCase();
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'of-skill-chip';
+    btn.style.setProperty('--tone', SKILL_DEEP[tone] || '#8e24aa');
+    btn.textContent = name || ('Skill ' + (i + 1));
+    btn.setAttribute('data-of-skill', String(i));
+    host.appendChild(btn);
+  });
+}
 window.__osSkillsSetMode = function(m){
-  if (m === 'deck') setMode('skills', 'slides');
-  else setMode('skills', 'unfold');
+  /* WHOLE-PAGE 2026-11-17 — one format per bridge: Skills IS the slideshow.
+     The Unfold button is gone; any caller asking for the deck or the unfold
+     gets the slideshow. */
+  setMode('skills', 'slides');
 };
 /* --- the Intelligent Library (item 6, GLUE) --- */
 var libState = { entries: [], shown: [], cats: ['All'], cat: 'All', q: '' };
@@ -32628,7 +32689,7 @@ function libFromDom(){
     return { q: h ? (h.textContent || '').trim() : '',
       a: p ? (p.textContent || '').trim() : '', at: '', cat: 'Unfiled' };
   }).filter(function(e){ return e.q || e.a; });
-  renderLibCats(); renderLibList();
+  renderLibCats(); renderLibList(); refreshLibCount();
 }
 function renderLibCats(){
   var host = $('ofLibCats'); if (!host) return;
@@ -32685,6 +32746,22 @@ function renderLibList(){
   if (meta) meta.textContent = libState.shown.length + ' shown, of '
     + libState.entries.length + ' in this app\u2019s library.';
 }
+/* --- the Library live count (WHOLE-PAGE 2026-11-17 item 16): the door never
+   showed a count on first paint — it was set only inside openLibrary's
+   Supabase path. The count now reads the mirror (the page's own store) plus
+   whatever the bridge view holds, and refreshes on load, on open and on save. */
+function refreshLibCount(){
+  var n = 0;
+  try {
+    var m = JSON.parse(localStorage.getItem('os.library.flagship-personal') || 'null');
+    if (Array.isArray(m)) n = m.length;
+  } catch(e){}
+  if (libState && libState.entries && libState.entries.length > n) n = libState.entries.length;
+  var d = $('ofLibCount'); if (d) d.textContent = n ? ('\u00b7 ' + n + ' saved') : '';
+  var b = $('ofLibCountBridge'); if (b) b.textContent = n ? ('\u00b7 ' + n + ' in the library') : '';
+  var h = $('ofLibCountHead'); if (h) h.textContent = n ? ('\u00b7 ' + n + ' saved') : '';
+}
+window.__osLibRefreshCount = refreshLibCount;
 function openLibrary(){
   renderLibCats(); renderLibList();
   var cnt = $('ofLibCount');
@@ -32701,7 +32778,7 @@ function openLibrary(){
         }).filter(Boolean);
         libState.entries = rows;
         renderLibCats(); renderLibList();
-        if (cnt) cnt.textContent = rows.length ? ('\u00b7 ' + rows.length + ' saved') : '';
+        refreshLibCount();
       } else { libFromDom(); }
     }, function(){ libFromDom(); });
 }
@@ -32744,6 +32821,8 @@ document.addEventListener('click', function(e){
     else if (v === 'skills-slides') setMode('skills', 'slides');
     return;
   }
+  var sk = e.target && e.target.closest ? e.target.closest('[data-of-skill]') : null;
+  if (sk){ var _si = parseInt(sk.getAttribute('data-of-skill'), 10); setMode('skills', 'slides'); ofShowSlide(SECTIONS.skills.slide, isNaN(_si) ? 0 : _si); return; }
   var b = e.target && e.target.closest ? e.target.closest('[data-of-back]') : null;
   if (b){ setMode(b.getAttribute('data-of-back'), 'bridge'); return; }
   var cat = e.target && e.target.closest ? e.target.closest('[data-of-lib-cat]') : null;
@@ -32787,6 +32866,147 @@ if (_skList && window.MutationObserver){
 }
 setMode('about', 'bridge', false);
 setMode('skills', 'bridge', false);
+refreshLibCount();
+renderSkillChips();
+})();
+</script>
+<style id="pc-whole-page-20261117">
+/* ═══ PERSONAL WHOLE-PAGE ROUND 2026-11-17 — the pedestal + the eye failures ═══
+   One block, last in the file, so it wins equal-specificity ties. Every rim,
+   halo and glow here is a DEEP-palette hex (one hex per hue — never neon).
+   The bottom bar is NOT in this block: the only tile rule here is the
+   composer's own + tile, scoped by #pcComposerPlus. */
+/* ITEM 2 — the profile picture stands on a pedestal: a deep-purple rim outside
+   its dark edge, a real drop shadow (the face sits ON the page), a deep halo;
+   the rings slow to the orbit law (120s / 90s, alternating) and the orb ball
+   rides at 150s — the 6s/11s frantic spin is gone. */
+.ph-av{box-shadow:0 0 0 2px #8e24aa,0 18px 40px rgba(0,0,0,.65),0 0 48px rgba(142,36,170,.55),inset 0 2px 10px rgba(255,255,255,.25)}
+.ph-av:hover{box-shadow:0 0 0 2px #8e24aa,0 18px 40px rgba(0,0,0,.65),0 0 70px rgba(142,36,170,.8),inset 0 2px 10px rgba(255,255,255,.25)}
+.ph-avwrap::before{animation:orb-spin 120s linear infinite;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,#8e24aa 295deg,#0f52ba 315deg,#07925f 330deg,#d4a017 345deg,rgba(255,255,255,.95) 355deg,transparent 360deg)}
+.ph-avwrap::after{animation:orb-spin-rev 90s linear infinite;background:conic-gradient(from 180deg,transparent 0deg,transparent 300deg,rgba(162,28,175,.7) 335deg,transparent 360deg)}
+.ph-av-orb{animation:orb-spin 150s linear infinite}
+/* ITEM 13 — the composer + arc moves at 60s (visible, inside the 60–180s
+   orbit law, alternating with the bottom bar's 60s counter-spin). The 180s
+   arc moved 2°/s and read as static. The tile's halo deepens with its --nc. */
+#pcComposerPlus .notif-tile::after{animation:osArcSpin 60s linear infinite}
+#pcComposerPlus .notif-tile{box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 17px rgba(142,36,170,.42)}
+/* ITEM 8 — the people-rail names read WHOLE. Root cause, measured: the
+   connect cluster is 199.4px at rest (220.5px once CONNECT becomes
+   "Requested ✓") against a 190px reserve — the absolute row overlays the
+   name's right end and the name ellipsizes ("sop…", "astr…"). The row goes
+   back in flow, under the name (the fix-pass-4 shape), and the 190px reserve
+   goes away. The two !important flags are the only way past the H5 rule
+   (31361), which set the same properties !important. */
+.pc-card .pc-connect-row{position:static!important;margin:10px 0 0!important;justify-content:flex-end!important}
+.pc-card-top{padding-right:0!important}
+/* ITEM 6 — the FAVORITE WORLDS empty state: its globe + star SVGs carry no
+   size, so they render ~300px and clip. Sixteen pixels, on the baseline,
+   like the world picker's own globe. */
+#pcFavWorlds svg{width:16px;height:16px;vertical-align:-3px;flex:none}
+/* ITEM 7 — small gray text reads WHITE. Placeholders white everywhere
+   (the three higher-specificity rules are named, so they win too); the
+   rail foot, the rail notes, the card body and the status lines go white. */
+input::placeholder,textarea::placeholder{color:#fff;opacity:1}
+.naya-login-mount .input::placeholder{color:#fff;opacity:1}
+.naya-login-mount .input[data-hook="code"]::placeholder{color:#fff;opacity:1}
+.mw-cover-slot input[type=text]::placeholder{color:#fff;opacity:1}
+.pc-rail-foot,.pc-rail-sub,.pc-rail-note,.pc-req-note,.os-note,.os-status{color:#fff}
+.ph-card p{color:#fff}
+/* ITEM 3 — nothing flat. Inputs get real depth (the page's own input
+   grammar: dark gradient, white rim, inset depth, own-colour halo on focus). */
+.os-input,.os-textarea{background:linear-gradient(180deg,#17171f,#0a0a10);border:1.5px solid rgba(255,255,255,.35);border-radius:14px;color:#fff;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.4)}
+.os-input:focus,.os-textarea:focus{outline:none;border-color:#8e24aa;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 0 18px -4px #8e24aa,0 4px 12px rgba(0,0,0,.4)}
+/* ITEM 14 — the empty feed is a BOARD, not a void: deep-purple rim, halo,
+   depth, lit hover. The Naya Notes board keeps its own green, in deep form. */
+.ph-invite-board{background:linear-gradient(180deg,#101018,#050507 60%);border:2px solid #8e24aa;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 0 32px -4px #8e24aa,0 14px 36px rgba(0,0,0,.5)}
+.ph-invite-board[style*="--ac:#31cb8d"]{border-color:#07925f;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 0 32px -4px #07925f,0 14px 36px rgba(0,0,0,.5)}
+.ph-invite-board h3{color:#fff}
+.ph-invite-board:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.35),0 0 44px -4px #8e24aa,0 18px 44px rgba(0,0,0,.55)}
+/* ITEM 15/19 — the Skills slideshow chrome: big tappable Back/Next in the
+   Skills deep magenta, a count that reads like a title, skill chips in each
+   skill's own deep colour. In slideshow mode the unfold's "Keep reading"
+   button rests — Back/Next, the arrow keys, the dots and the chips are the
+   way through. */
+#about.of-slides-mode .of-next,[data-os-view="skills"].of-slides-mode .of-next{display:none}
+#about .of-slides-nav .of-slide-prev,[data-os-view="skills"] .of-slides-nav .of-slide-prev,#about .of-slides-nav .of-slide-next,[data-os-view="skills"] .of-slides-nav .of-slide-next{min-height:52px;padding:14px 26px;font-size:15px;border:2px solid #a21caf;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 22px -4px #a21caf,0 8px 18px rgba(0,0,0,.55)}
+#about .of-slides-nav .of-slide-prev:hover,[data-os-view="skills"] .of-slides-nav .of-slide-prev:hover,#about .of-slides-nav .of-slide-next:hover,[data-os-view="skills"] .of-slides-nav .of-slide-next:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 32px -2px #a21caf,0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
+#about .of-slides-nav .of-slide-count,[data-os-view="skills"] .of-slides-nav .of-slide-count{font-size:16px;font-weight:900;letter-spacing:.02em;color:#fff;min-width:110px}
+.of-slides-mode .sa-skill{padding:32px 28px}
+.of-slides-mode .sa-skill h3{font-size:22px}
+.of-slides-mode .sa-skill-nutshell{font-size:16px;line-height:1.6}
+.of-skill-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px auto 0;max-width:640px}
+.of-skill-chip{padding:10px 18px;border-radius:999px;font-family:inherit;font-size:13.5px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(180deg,#07070b,#020203);border:1.5px solid var(--tone,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 6px 14px rgba(0,0,0,.5),0 0 14px -4px var(--tone,#8e24aa);transition:transform .18s ease,box-shadow .18s ease}
+.of-skill-chip:hover,.of-skill-chip:active{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 24px -2px var(--tone,#8e24aa),0 10px 22px rgba(0,0,0,.55)}
+/* ITEM 11 — the add-a-link dialog: a real board, centred, deep-purple rim. */
+#pcAddLinkDialog{position:fixed;inset:0;z-index:1200;display:grid;place-items:center;background:rgba(0,0,0,.6);padding:16px}
+#pcAddLinkDialog[hidden]{display:none}
+.pc-addlink-card{width:min(440px,100%);background:linear-gradient(180deg,#101018,#050507 60%);border:2px solid #8e24aa;border-radius:20px;padding:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 0 32px -4px #8e24aa,0 14px 36px rgba(0,0,0,.5)}
+.pc-addlink-card h3{color:#fff;margin:0 0 8px;font-size:18px}
+.pc-addlink-label{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;margin:14px 0 6px}
+.pc-addlink-card .os-input{width:100%;box-sizing:border-box}
+.pc-addlink-card .ph-actions{display:flex;gap:10px;margin-top:16px}
+.pc-addlink-card .ph-actions .pc-addlink-cancel{background:linear-gradient(180deg,#17171f,#0a0a10);border:1.5px solid rgba(255,255,255,.35);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 4px 12px rgba(0,0,0,.4)}
+.pc-custom-link-row{display:flex;align-items:center;gap:8px}
+.pc-custom-link-row a{flex:1;min-width:0}
+.pc-custom-link-x{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:linear-gradient(180deg,#17171f,#0a0a10);color:#fff;font-size:14px;line-height:1;cursor:pointer}
+.pc-custom-link-x:hover{border-color:#c62828;color:#fff;box-shadow:0 0 12px -2px #c62828}
+</style>
+<div id="pcAddLinkDialog" hidden role="dialog" aria-modal="true" aria-labelledby="pcAddLinkH">
+  <div class="pc-addlink-card">
+    <h3 id="pcAddLinkH">Add a custom link</h3>
+    <p class="os-note">A link of your own, in the drawer — it opens in a new tab.</p>
+    <label class="pc-addlink-label" for="pcAddLinkTitle">Title</label>
+    <input class="os-input" id="pcAddLinkTitle" type="text" placeholder="What is it called?">
+    <label class="pc-addlink-label" for="pcAddLinkUrl">Link</label>
+    <input class="os-input" id="pcAddLinkUrl" type="url" placeholder="https://…">
+    <div class="ph-actions">
+      <button class="ph-connect" id="pcAddLinkSave" type="button">Save the link</button>
+      <button class="ph-connect pc-addlink-cancel" id="pcAddLinkCancel" type="button">Cancel</button>
+    </div>
+    <p class="os-status" id="pcAddLinkStatus"></p>
+  </div>
+</div>
+<script id="pc-whole-page-20261117-js">
+/* ═══ PERSONAL WHOLE-PAGE ROUND 2026-11-17 — item 11: the add-a-link form ═══
+   The drawer row opens this dialog; a saved link joins the ECOSYSTEM drawer
+   as its own row (own icon, opens its URL in a new tab) and persists in
+   localStorage, rendered on every load. The × on a row removes it. */
+(function(){
+  'use strict';
+  var KEY='naya.drawer.links.v1';
+  function $(id){ return document.getElementById(id); }
+  function load(){ try { var v=JSON.parse(localStorage.getItem(KEY)||'null'); return Array.isArray(v)?v:[]; } catch(e){ return []; } }
+  function save(list){ try { localStorage.setItem(KEY, JSON.stringify(list)); } catch(e){} }
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function render(){
+    var host=$('pcCustomLinks'); if(!host) return;
+    var list=load();
+    host.innerHTML=list.map(function(l,i){
+      return '<div class="pc-custom-link-row"><a href="'+esc(l.url)+'" target="_blank" rel="noopener" style="--rc:#8e24aa"><span class="pc-ico-tile" style="--nc:#8e24aa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span> '+esc(l.title)+'</a><button type="button" class="pc-custom-link-x" data-pc-custom-link-x="'+i+'" aria-label="Remove '+esc(l.title)+'">\u00d7</button></div>';
+    }).join('');
+  }
+  function openDlg(){ var d=$('pcAddLinkDialog'); if(!d) return; d.hidden=false; var t=$('pcAddLinkTitle'); if(t) t.focus(); }
+  function closeDlg(){ var d=$('pcAddLinkDialog'); if(d) d.hidden=true; var st=$('pcAddLinkStatus'); if(st) st.textContent=''; }
+  document.addEventListener('click', function(e){
+    var open=e.target && e.target.closest ? e.target.closest('[data-pc-add-link]') : null;
+    if(open){ e.preventDefault(); openDlg(); return; }
+    var x=e.target && e.target.closest ? e.target.closest('[data-pc-custom-link-x]') : null;
+    if(x){ var list=load(); list.splice(parseInt(x.getAttribute('data-pc-custom-link-x'),10),1); save(list); render(); return; }
+  });
+  var sv=$('pcAddLinkSave'); if(sv) sv.addEventListener('click', function(){
+    var t=($('pcAddLinkTitle').value||'').trim(), u=($('pcAddLinkUrl').value||'').trim();
+    var st=$('pcAddLinkStatus');
+    if(!t || !u){ if(st) st.textContent='A title and a link — the drawer needs both.'; return; }
+    if(!/^[a-z][a-z0-9+.-]*:/i.test(u)) u='https://'+u;
+    try { var url=new URL(u); u=url.href; } catch(e){ if(st) st.textContent='That link does not look like a web address — try https://…'; return; }
+    var list=load(); list.push({title:t, url:u}); save(list); render();
+    $('pcAddLinkTitle').value=''; $('pcAddLinkUrl').value='';
+    closeDlg();
+  });
+  var cx=$('pcAddLinkCancel'); if(cx) cx.addEventListener('click', closeDlg);
+  var dg=$('pcAddLinkDialog'); if(dg) dg.addEventListener('click', function(e){ if(e.target===dg) closeDlg(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDlg(); });
+  render();
 })();
 </script>
 </body></html>
