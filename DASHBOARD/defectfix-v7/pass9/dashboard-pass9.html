@@ -19914,7 +19914,6 @@ window.ldLayoutNodes = ldLayoutNodes;
       if(_osOk){
         view.center=_osSum*5;
         view.dial={score:_osSum*5, deltas:(typeof _dd!=='undefined' && _dd) ? _dd : {}};
-        if(view.stats && view.stats.length){ view.stats[0]={n:_fmt(view.center), k:view.stats[0].k||'score', l:view.centerLabel, why:view.stats[0].why||''}; }
       }
     }
     window._featuredDial = view.dial;
@@ -30002,7 +30001,7 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 .os-reports-cta{display:inline-block;background:linear-gradient(180deg,#1b1b24,#050607);border:2px solid #3fb8ff;color:#fff;padding:12px 28px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;letter-spacing:.5px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 24px rgba(63,184,255,.35),0 10px 22px rgba(0,0,0,.55);margin:12px 0 0;}
 .os-reports-cta:hover{background:rgba(63,184,255,.2);box-shadow:0 0 12px rgba(63,184,255,.35);transform:translateY(-2px) scale(1.03);}
 </style>
-<style id="os-fix5">
+<style id="os-fix5-20261117">
 /* ═══ FIX-5 2026-11-17 — the cloud eye (desktop 1920x999, 04:57-05:02Z) ═══
    (2) NO GRAY TEXT: every field placeholder white + full opacity (the bare
    feedback input matched no rule at all; the UA default dims the rest);
@@ -30022,5 +30021,17 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#fff 
 #os-rooms-plus{top:250px !important;}
 body.viewport-focus #os-bottom3{display:flex !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;transform:none !important;z-index:10002 !important;}
 .os-smartlink-view{padding-bottom:110px !important;}
+/* FIX-5a 2026-11-17 (condition 2): the bar override is global, so the
+   other nine drills get the same 110px bottom clearance as Smart Links
+   — their bottom ~30px no longer slides under the ~78px bar. */
+.os-sales-view{padding-bottom:110px !important;}
+.os-invites-view{padding-bottom:110px !important;}
+.os-shares-view{padding-bottom:110px !important;}
+.os-joins-view{padding-bottom:110px !important;}
+.os-notes-view{padding-bottom:110px !important;}
+.os-comments-view{padding-bottom:110px !important;}
+.os-likes-view{padding-bottom:110px !important;}
+.os-creations-view{padding-bottom:110px !important;}
+.os-saves-view{padding-bottom:110px !important;}
 </style>
 </body></html>
