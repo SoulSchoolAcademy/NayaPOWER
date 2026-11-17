@@ -2987,6 +2987,14 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
       }
       img.style.top = faceTop + 'px';
     });
+    /* FIX ROUND 2 AMENDMENT (2026-11-17, item 10) — re-seat the
+       Keep-reading row under the board on every placement (the settle
+       re-run calls this inner function directly, so a board that moved
+       during its 550ms dial-in gets its row re-seated 650ms later too).
+       fitBarPadding re-measures the board after the padding change and
+       re-seats the row again, so one pass converges. */
+    positionLetterNext();
+    fitBarPadding();
   }
   /* FIX ROUND 2 (2026-11-17) — settle pass: the face is positioned from
      the layout at call time, but the beat is still settling then (the
@@ -3006,10 +3014,62 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     if (_pfSettle) clearTimeout(_pfSettle);
     _pfSettle = setTimeout(function(){ _pfSettle = null; placeFacesInner(); }, 650);
   }
+  /* FIX ROUND 2 AMENDMENT (2026-11-17, item 10 — Keep-reading gap) —
+     root cause, measured on the staged Fix-2 build: the letter board is
+     vertically centred (its centre cy is 388.8 on EVERY board at 390),
+     so its bottom moves with its height (218px on short board 19a,
+     520px on long board 11), while the Keep-reading pill sits in the
+     fixed bottom bar — so the gap was 30px on long boards and 182px on
+     short board 19a. A fixed shift cannot hold on all 34 boards, and
+     bottom-anchoring the board would leave a void above every short
+     board. So the row FOLLOWS the board: on every placement its top is
+     set from the board's own rect (board bottom + 14px), and the layer
+     reserves the row's height below the board, so the row can never
+     collide with the small links pinned at the very bottom. Only the
+     letterPage unfold view (the one the citizen walks) is affected;
+     every other view leaves the row in the bar exactly as before. */
+  function letterPageBoard(){
+    var b = document.querySelector('#letterBody .letter-beat.fp-now');
+    if (!b || b.hidden) return null;
+    var r = b.getBoundingClientRect();
+    if (r.width <= 0 || r.height <= 0) return null;
+    return b;
+  }
+  function inLetterPageView(){
+    var a = document.querySelector('#fpAgreement');
+    return !!(a && a.classList.contains('fp-view-letterpage') && letterPageBoard());
+  }
+  function positionLetterNext(){
+    var row = document.getElementById('fpNextRow');
+    if (!row) return;
+    var board = inLetterPageView() ? letterPageBoard() : null;
+    if (!board) {
+      row.style.position = ''; row.style.top = '';
+      row.style.left = ''; row.style.right = ''; row.style.zIndex = '';
+      return;
+    }
+    var bb = board.getBoundingClientRect();
+    row.style.position = 'fixed';
+    row.style.left = '16px';
+    row.style.right = '16px';
+    row.style.top = (bb.bottom + 14) + 'px';
+    row.style.zIndex = '70';
+  }
   function fitBarPadding(){
     var bar = document.getElementById('fpStageBarB');
     if (!bar) return;
     var h = bar.offsetHeight || 0;
+    /* FIX ROUND 2 AMENDMENT (2026-11-17, item 10) — in the letterPage
+       view the Keep-reading row is fixed just below the board, so it is
+       out of the bar's flow and the bar is links-only tall: reserve the
+       row's height plus the 14px gap and 12px clearance below it, so
+       the board can never grow down into the row and the row can never
+       fall onto the links. Outside the letterPage view the old rule
+       stands untouched. */
+    var row = document.getElementById('fpNextRow');
+    if (inLetterPageView() && row && row.style.position === 'fixed') {
+      h = h + (row.offsetHeight || 0) + 26;
+    }
     Array.prototype.slice.call(document.querySelectorAll(
       '#fpAgreement.fp-layer-on, #fpLegal.fp-layer-on')).forEach(function(layer){
       layer.style.paddingBottom = h > 0 ? (h + 12) + 'px' : '';
@@ -3018,6 +3078,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
       '#fpAgreement:not(.fp-layer-on), #fpLegal:not(.fp-layer-on)')).forEach(function(layer){
       layer.style.paddingBottom = '';
     });
+    positionLetterNext();
   }
   window.__fpPlaceFaces = placeFaces;
   window.__fpFitBar = fitBarPadding;
