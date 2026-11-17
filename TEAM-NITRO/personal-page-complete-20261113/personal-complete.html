@@ -9078,6 +9078,23 @@ function wallCard(j, iso, pid, idx){
        at every cross-closure site. Without this the ribbon builder saw an
        empty list (no author pills) and the painter could never filter. */
     window.MW_WALL_POSTS=MW_WALL_POSTS;
+    /* FEED FIX-2 (2026-11-17) — the Naya Note seed. No live wall row
+       carries noteType 'naya' (the live naya_notes insert is RLS-blocked,
+       42501, and the composer falls back to the stub), so the wall's
+       topic:naya filter reads "No Naya Notes yet" and a Naya Note cannot
+       be commented on. The seed is ONE Naya Note, added only while no live
+       Naya row exists on the wall — the moment a real one lands, this
+       block stops adding it. Same id as the Naya-tab seed, so comment /
+       share keys match on both surfaces. Author is the page owner, exactly
+       as a composer-created Naya Note carries it (the Personal tab
+       filters by owner name). */
+    var _nayaSeedId='naya-seed-20261117';
+    var _hasLiveNaya=MW_WALL_POSTS.some(function(p){ return (p.j&&p.j.noteType)==='naya'; });
+    if(!_hasLiveNaya && !MW_WALL_POSTS.some(function(p){ return p.id===_nayaSeedId; })){
+      var _seedOwner=((typeof ownerName==='function'?ownerName():'')||'Shawn Vibert');
+      MW_WALL_POSTS.push({j:{k:'wall',noteType:'naya',a:_seedOwner,b:'Naya Notes live here — short notes from Naya, in her own words, about this world. This is the first one. Tap COMMENT and tell me what you think — your words land right on the note.',t:'A note from Naya'},at:'2026-11-17T02:30:00.000Z',id:_nayaSeedId});
+      window.MW_WALL_POSTS=MW_WALL_POSTS;
+    }
     var pill=(typeof window.MW_FEED_PILL!=='undefined')?window.MW_FEED_PILL:'all';
     var shown=publicOn?(window.MW_PUBLIC_POSTS||[]):MW_WALL_POSTS;
     /* PERSONAL CORRECTION 2026-11-16 (item 6): the calendar's day filter —
@@ -16650,11 +16667,15 @@ function el(tag, cls, html) {
     });
     b.appendChild(layers);
 
-    /* — Provenance foot — */
+    /* — Provenance foot — the foot names the item's OWN type, the same
+       derivation the wall filter uses (noteType, missing = post): a post
+       under the Posts filter must read "Post", never "Smart Note". FIX-2.
+       Notes from callers that carry no noteType keep the legacy label. */
     const foot = el('div', 'ib-foot');
+    var _footType = note.noteType === 'smart' ? 'Smart Note' : note.noteType === 'naya' ? 'Naya Note' : note.noteType === 'post' ? 'Post' : 'Smart Note';
     foot.innerHTML = note.kind === 'official'
       ? '<span><span data-mw-tr="set" data-mw-en="Official NayaNET Guide">' + (window.mwTr?window.mwTr('Official NayaNET Guide'):'Official NayaNET Guide') + '</span> \u00B7 <span data-mw-tr="set" data-mw-en="from the Intelligent Library">' + (window.mwTr?window.mwTr('from the Intelligent Library'):'from the Intelligent Library') + '</span></span>'
-      : '<span><span data-mw-tr="set" data-mw-en="Smart Note">' + (window.mwTr?window.mwTr('Smart Note'):'Smart Note') + '</span> ' + ' \u00B7 <span data-mw-tr="set" data-mw-en="from your Smart Feed">' + (window.mwTr?window.mwTr('from your Smart Feed'):'from your Smart Feed') + '</span></span>';
+      : '<span><span data-mw-tr="set" data-mw-en="'+_footType+'">' + (window.mwTr?window.mwTr(_footType):_footType) + '</span> ' + ' \u00B7 <span data-mw-tr="set" data-mw-en="from your Smart Feed">' + (window.mwTr?window.mwTr('from your Smart Feed'):'from your Smart Feed') + '</span></span>';
     b.appendChild(foot);
 
     /* — Social actions: top-right + bottom bar + add intel (direct, no queue) — */
@@ -17355,6 +17376,13 @@ window.BoardActions = (() => {
       render();
       fsUpdateCommentUI(boardId, cardEl);
       toast('COMMENT POSTED — your comment is on this post.');
+      /* FIX-2 (2026-11-17) — INTENT, stated: the composer AUTO-CLOSES
+         after posting. The comment is already on the post —
+         fsUpdateCommentUI just re-rendered the inline thread under the
+         card — so the dialog's job is done and the citizen lands back
+         on the post to see it there. Same pattern as the copy handler
+         below (toast, then close). */
+      fsCloseCurrent();
     });
     ta.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) post.click(); });
     row.appendChild(post);
@@ -17399,6 +17427,18 @@ window.BoardActions = (() => {
       b.addEventListener('click', onClick);
       return b;
     };
+    /* FIX-2 (2026-11-17) — the email share is a real <a href="mailto:…">,
+       not a button that sets location.href: the destination is verifiable
+       in the DOM and the mail client opens by the link itself. */
+    const mkLink = (label, so, href, onClick) => {
+      const a = document.createElement('a');
+      a.className = 'naya-fs-opt';
+      a.style.setProperty('--so', so);
+      a.href = href;
+      a.textContent = label;
+      a.addEventListener('click', onClick);
+      return a;
+    };
     const mobile = mkOpt('Share on mobile', '#07925f', () => {
       if (navigator.share) {
         navigator.share({ title: title || 'NayaNET Intelligence', text: (title || 'NayaNET Intelligence') + ' — NayaNET', url: shareUrl }).then(() => { bumpShare(); fsCloseCurrent(); }).catch(err => { if (!err || err.name !== 'AbortError') toast('SHARE NOT COMPLETED — the link above still works.'); });
@@ -17411,8 +17451,7 @@ window.BoardActions = (() => {
       window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), '_blank', 'noopener');
       bumpShare();
     });
-    const email = mkOpt('Share by email', '#d4a017', () => {
-      window.location.href = 'mailto:?subject=' + encodeURIComponent(title || 'NayaNET Intelligence') + '&body=' + encodeURIComponent((title || 'NayaNET Intelligence') + ' — ' + shareUrl);
+    const email = mkLink('Share by email', '#d4a017', 'mailto:?subject=' + encodeURIComponent(title || 'NayaNET Intelligence') + '&body=' + encodeURIComponent((title || 'NayaNET Intelligence') + ' — ' + shareUrl), () => {
       bumpShare();
     });
     const copy = mkOpt('Copy link', '#C7CEDC', async () => {
@@ -17489,6 +17528,7 @@ function ibWallNote(r){
   }
   return {
     id: r.id, title: (j.t||j.title||''), subtitle: '', tone: ibToneFor(r), kind: 'personal',
+    noteType: (j.noteType || 'post'), /* FIX-2 — the foot names the item's own type (missing = post, the same default the wall filter uses) */
     created_at: r.at, layers: layers,
     photo: (j.photo || j.image || null) /* R2 — a post's photo rides through to the card */
   };
@@ -17523,11 +17563,14 @@ window.ibWallHTML = function(r, idx){
    the walk-end pattern is harvested, its values deepened — comment gold
    deep gold #d4a017, Facebook blue sapphire #0f52ba, mobile green emerald
    #07925f. The pre-existing bright LOVE/LIKE row migrates with the
-   page-wide palette migration, not this fix. */
-.naya-fs-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.82); padding: 16px; box-sizing: border-box; }
-.naya-fs-board { position: relative; width: min(680px, 94vw); max-height: 88vh; overflow-y: auto; box-sizing: border-box; background: #0b0d12; border: 1.5px solid var(--fs-ac, #d4a017); border-radius: 18px; padding: 22px; color: #fff; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(212,160,23,.25); }
+   page-wide palette migration, not this fix.
+   FIX-2 (2026-11-17): full-screen law — board edge-to-edge, header and
+   Post/share buttons pinned, only the thread scrolls, X fixed; email is a
+   real mailto link; the composer auto-closes after posting. */
+.naya-fs-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.82); padding: 0; box-sizing: border-box; }
+.naya-fs-board { position: relative; width: 100%; height: 100%; max-height: none; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; background: #0b0d12; border: 1.5px solid var(--fs-ac, #d4a017); border-radius: 0; padding: 22px; color: #fff; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(212,160,23,.25); }
 .naya-fs-board[data-fs-ac="blue"] { border-color: #0f52ba; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(15,82,186,.25); }
-.naya-fs-x { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.4); background: #14141c; color: #fff; font-size: 20px; line-height: 1; cursor: pointer; font-family: inherit; }
+.naya-fs-x { position: fixed; top: 12px; right: 12px; z-index: 5; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.4); background: #14141c; color: #fff; font-size: 20px; line-height: 1; cursor: pointer; font-family: inherit; }
 .naya-fs-x:hover { border-color: #fff; }
 .naya-fs-title { margin: 0 44px 4px 0; font-size: 20px; font-weight: 800; color: #fff; }
 .naya-fs-sub { margin: 0 44px 14px 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.85); }
@@ -17540,7 +17583,7 @@ window.ibWallHTML = function(r, idx){
 .naya-fs-post:active { transform: scale(.97); }
 .naya-fs-link { width: 100%; box-sizing: border-box; background: #050607; border: 1px solid rgba(255,255,255,.22); border-radius: 10px; color: #fff; font-size: 13px; padding: 10px 12px; margin-bottom: 14px; font-family: inherit; }
 .naya-fs-opts { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-.naya-fs-opt { display: block; width: 100%; box-sizing: border-box; padding: 14px 20px; border-radius: 999px; font-family: inherit; font-size: 15px; font-weight: 800; color: #fff; cursor: pointer; background: linear-gradient(180deg, #1b1b24, #050507); border: 2px solid var(--so, #fff); box-shadow: 0 8px 18px rgba(0,0,0,.55); }
+.naya-fs-opt { display: block; width: 100%; box-sizing: border-box; padding: 14px 20px; border-radius: 999px; font-family: inherit; font-size: 15px; font-weight: 800; color: #fff; cursor: pointer; text-decoration: none; text-align: center; background: linear-gradient(180deg, #1b1b24, #050507); border: 2px solid var(--so, #fff); box-shadow: 0 8px 18px rgba(0,0,0,.55); }
 .naya-fs-opt:hover { transform: translateY(-2px); box-shadow: 0 0 22px rgba(255,255,255,.28), 0 10px 22px rgba(0,0,0,.6); }
 .naya-fs-opt:active { transform: scale(.97); }
 .naya-fs-note { margin: 12px 0 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.85); }
@@ -17548,6 +17591,18 @@ window.ibWallHTML = function(r, idx){
 .ib-cmt-thread { margin-top: 14px; }
 .ib-cmt-thread .naya-fs-h { margin-top: 0; }
 @media (max-width: 700px) { .naya-fs-board { padding: 18px 16px; } }
+/* FIX-2 (2026-11-17) — FULL-SCREEN LAW: the board is the viewport, so
+   the header, the textarea and the Post/share buttons are PINNED (they
+   never shrink, never scroll away); ONLY the comment thread scrolls,
+   and the share options carry their own safety scroll. The X is fixed.
+   Short-viewport compaction (635x349): every button stays reachable
+   without scrolling — the share dialog totals ~316px at 349 high, the
+   comment dialog keeps ~98px for the thread with Post always visible. */
+.naya-fs-board .naya-fs-title, .naya-fs-board .naya-fs-sub, .naya-fs-board .naya-fs-h, .naya-fs-board .naya-fs-ta, .naya-fs-board .naya-fs-row, .naya-fs-board .naya-fs-link, .naya-fs-board .naya-fs-note { flex: none; }
+.naya-fs-board .naya-fs-ta { max-height: 40vh; }
+.naya-fs-board > .intel-list { flex: 1 1 auto; overflow-y: auto; min-height: 0; }
+.naya-fs-board .naya-fs-opts { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+@media (max-height: 420px) { .naya-fs-board { padding: 12px 16px; } .naya-fs-title { font-size: 18px; } .naya-fs-sub { margin-bottom: 8px; } .naya-fs-h { margin: 10px 0 6px; } .naya-fs-ta { min-height: 64px; } .naya-fs-row { margin-top: 8px; } .naya-fs-link { padding: 8px 12px; margin-bottom: 8px; } .naya-fs-opts { gap: 8px; margin-top: 8px; } .naya-fs-opt { padding: 10px 20px; } }
 </style>
 <script id="tb-wire">
 /* TRUE BLOCK action wiring — delegated clicks for tb- pills/buttons */
@@ -22017,7 +22072,16 @@ var mwNayaWatch=null; /* FIXPASS 4.1 (F2) — the Naya-read watchdog timer; one 
 function mwPaintNayaFeed(){
   var box=$('mwFeedNaya'); if(!box) return;
   var rows=MW_NAYA_ROWS||[];
-  if(!rows.length){ box.innerHTML='<div class="ph-card ph-invite-board" style="--ac:#31cb8d;"><h3>'+(window.mwTr?window.mwTr('Make your first Naya Note'):'Make your first Naya Note')+'</h3><p class="os-note">'+(window.mwTr?window.mwTr('No Naya Notes yet — the first one lands here.'):'No Naya Notes yet — the first one lands here.')+'</p><div class="ph-actions"><button type="button" class="ph-connect" data-pc-invite-naya>'+(window.mwTr?window.mwTr('Make a Naya Note'):'Make a Naya Note')+'</button></div></div>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
+  if(!rows.length){
+    /* FEED FIX-2 (2026-11-17) — the Naya Note seed, same note as the wall
+       seed (same id, so comment/share keys match on both surfaces). The
+       live read settles empty here — the table is empty or the staged
+       read failed — and the eye needs a Naya Note to comment on. The seed
+       paints above the usual invite board, which stays; the moment live
+       rows arrive this branch stops running and the seed is gone. */
+    var _nayaSeedHtml='';
+    try{ if(typeof window.ibWallHTML==='function'){ _nayaSeedHtml=window.ibWallHTML({j:{k:'wall',noteType:'naya',a:'Naya',b:'Naya Notes live here — short notes from Naya, in her own words, about this world. This is the first one. Tap COMMENT and tell me what you think — your words land right on the note.',t:'A note from Naya'},at:'2026-11-17T02:30:00.000Z',id:'naya-seed-20261117'},0); } }catch(e){ _nayaSeedHtml=''; }
+    box.innerHTML=_nayaSeedHtml+'<div class="ph-card ph-invite-board" style="--ac:#31cb8d;"><h3>'+(window.mwTr?window.mwTr('Make your first Naya Note'):'Make your first Naya Note')+'</h3><p class="os-note">'+(window.mwTr?window.mwTr('No Naya Notes yet — the first one lands here.'):'No Naya Notes yet — the first one lands here.')+'</p><div class="ph-actions"><button type="button" class="ph-connect" data-pc-invite-naya>'+(window.mwTr?window.mwTr('Make a Naya Note'):'Make a Naya Note')+'</button></div></div>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
   var pill=(typeof MW_FEED_PILL!=='undefined')?MW_FEED_PILL:'all';
   var shown=rows;
   if(pill && pill!=='all'){
