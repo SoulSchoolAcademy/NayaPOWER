@@ -586,7 +586,7 @@ body.no-cover .ph-main{padding-top:12px}
    verbatim from the Personal page (NayaNotif SEGS + ICONS). Hub .notif-bar /
    .notif-tile construction unchanged; the segments are now the Five, icons
    only, no visible labels — the dock is shorter, so less of the page hides
-   behind it. Five segments, equal 84px, gap 22px. --- */
+   behind it. Six segments, equal 84px, gap 22px. --- */
 .notif-bar{position:static;flex:none;z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) both;transition:opacity .45s ease}
 @keyframes notifUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
 .notif-row{display:flex;gap:22px;width:100%;max-width:720px;padding:8px 14px 6px;justify-content:center}
@@ -740,7 +740,6 @@ body.no-cover .ph-main{padding-top:12px}
    color-mix-with-transparent (alpha, hue preserved — the glows already
    used the exact hexes). Dark washes (mixes with #12121a / #101014) are
    shading, not lighter variants, and stand. --- */
-.notif-label{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-align:center;line-height:1.2}
 .panel-sub,.stub-note,.row-last,.row-nut,.msg .meta,.thread-head .who span,.mail-meta,.letter-to,.typing,.feed-sub,.choice-row small,.toast p{font-weight:600}
 /* --- FIX-3 round 2 (eye 02:59Z): dock cycle 60s/75s, dots 6px/5px -- strictly faster than the 60s/90s the eye read as ~6 min/rev; no 360s duration existed in the filed bytes. */
    /* --- FIX 2026-11-17 (Smart Mail fix round): trio orbit + whole-item light.
@@ -750,8 +749,8 @@ body.no-cover .ph-main{padding-top:12px}
 .notif-tile::after{content:'';position:absolute;inset:-8px;border-radius:22px;pointer-events:none;background:radial-gradient(circle 6px at 50% 0%,var(--nc) 98%,transparent 100%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--nc) 30%,transparent);filter:drop-shadow(0 0 6px var(--nc));animation:orbitCW 60s linear infinite}
 .notif-seg::before{content:'';position:absolute;top:-6px;left:50%;width:70px;height:70px;margin-left:-35px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 0% 50%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCCW 75s linear infinite}
 .notif-seg:hover .notif-tile{border-color:var(--nc);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 55%,#12121a),#07070b 78%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 30px color-mix(in srgb,var(--nc) 70%,transparent)}
-/* FIVE at phone widths: five tiles must fit 390px — tighter gap, 48px tiles. */
-@media(max-width:480px){.notif-row{gap:10px;padding:8px 8px 6px}.notif-seg{min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}.notif-label{font-size:10px;letter-spacing:.08em}}
+/* SIX at phone widths: six tiles must fit 390px — tighter gap, 48px tiles. */
+@media(max-width:480px){.notif-row{gap:10px;padding:8px 8px 6px}.notif-seg{min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}}
 .row:hover .cx-ava{filter:brightness(1.18)}
 /* --- ELEVATION FIX 2026-11-17 (checker item 8): the six flat/dead elements
    gain elevation + whole-item hover light in their own deep color — .format-note,
@@ -891,41 +890,20 @@ body.no-cover .ph-main{padding-top:12px}
   </div>
 </div>
 
-<!-- THE FIVE — the official bottom bar (Personal page, harvested verbatim):
-     + ADD purple · MAIL blue · ACTIVITY green · WORLDS gold · ECOSYSTEM
-     burnt orange — NayaNotif SEGS + ICONS from the Personal page
-     (personal-whole-page-20261117/work/personal-fixed.html, harvested from
-     probe-icons-plus-fix-r3/work-r5-fixpass3.html, captain-verified
-     2026-11-13). FIX-4: visible labels under the tiles (ADD / MAIL /
-     ACTIVITY / WORLDS / ECOSYSTEM) — the eye read the labels as falling
-     below the viewport; names also stay in aria-label + title. The bar is
-     in normal flow under .page-scroll (not fixed), so it can never cover
-     content mid-scroll. CONNECT is NOT here: adding or removing it is
-     Shawn's call. The trio (Personal/Business/Thing gems) is gone. -->
-<footer class="notif-bar" id="notifBar">
-  <div class="notif-row">
-    <button class="notif-seg" type="button" id="segAdd" data-notif="plus" style="--nc:#8e24aa" aria-label="ADD — open" title="ADD">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-      <span class="notif-label">ADD</span>
-    </button>
-    <button class="notif-seg has-news" type="button" id="segMail" data-notif="mail" style="--nc:#0f52ba" aria-label="MAIL — open" title="MAIL">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count" id="mailCount">6</span></span>
-      <span class="notif-label">MAIL</span>
-    </button>
-    <button class="notif-seg has-news" type="button" id="segActivity" data-notif="activity" style="--nc:#07925f" aria-label="ACTIVITY — open" title="ACTIVITY">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count" id="activityCount">4</span></span>
-      <span class="notif-label">ACTIVITY</span>
-    </button>
-    <button class="notif-seg" type="button" id="segWorlds" data-notif="spaces" style="--nc:#d4a017" aria-label="WORLDS — open" title="WORLDS">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span>
-      <span class="notif-label">WORLDS</span>
-    </button>
-    <button class="notif-seg" type="button" id="segEco" data-notif="eco" style="--nc:#c2410c" aria-label="ECOSYSTEM — open" title="ECOSYSTEM">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
-      <span class="notif-label">ECOSYSTEM</span>
-    </button>
-  </div>
-</footer>
+<!-- BAR-FIX (2026-11-17, brief BRIEF-SMART-MAIL-REVAMP-BAR-FIX-20261117):
+     the revamp round returned NOT PASS on the bar only — five tiles, static
+     footer with visible labels, against a brief ordering Personal's six,
+     JS-built. This round harvests Personal's bar VERBATIM: window.NayaNotif
+     (SEGS + ICONS + init) from Personal blob
+     9a006c47500598fcb7e6e4f4dd3c22cd0f09ca4a, built by JS into
+     nav#naya-notif-bar at boot — ADD #8e24aa · MAIL #0f52ba · ACTIVITY
+     #07925f · WORLDS #d4a017 · ECOSYSTEM #c2410c · CONNECT #c62828, icons
+     only, names in aria-label + title. The static five-seg footer is gone,
+     with its visible labels. CONNECT opens CONNECT, never CREATE (Personal's
+     guarded handler; this page has no plus menu yet, so the tap is a
+     guarded no-op until that menu lands). Nothing else in the revamp
+     changes — the cover, the control row, the topics, the messenger, the
+     lists, the letters, the toggle, the initials are exactly as filed. -->
 
 <!-- WORLD FEED PANEL: tap ACTIVITY in the Five, see that world's feed, each item sourced -->
 <div class="feed-panel" id="feedPanel" role="dialog" aria-label="World activity feed">
@@ -1072,21 +1050,121 @@ var CHOICE_DEFS = [
   ['shares','Shares','Someone shared your thing'], ['stats','Stats','Your numbers, moving'],
   ['updates','Updates','Changes to your pages'], ['leaderboards','Leaderboards','Leaderboard moves, when live']
 ];
-/* THE FIVE counts: MAIL carries the unread letters across all worlds;
+/* BAR-FIX: Personal's bottom bar, harvested verbatim (see the record
+   comment where the static footer stood). NayaNotif builds nav#naya-
+   notif-bar at boot — six tiles, icons only. The mail page's own counts
+   and tile handlers below read the built DOM by data-notif. */
+window.NayaNotif = window.NayaNotif || {
+    get(k) { try { return parseInt(localStorage.getItem('nayanet.notif.' + k) || '0', 10) || 0; } catch (e) { return 0; } },
+    set(k, n) { var prev = this.get(k); try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} if ((k === 'mail' || k === 'activity' || k === 'spaces') && n > prev) { this.playSound(); if (k === 'mail' && n > 0) { if (window.NayaUI && window.NayaUI.toast) { window.NayaUI.toast('New mail — ' + n + ' waiting.', '#0f52ba'); } else if (window.toast) { window.toast('New mail — ' + n + ' waiting.'); } } }  this.refresh(); },
+    bump(k) { this.set(k, this.get(k) + 1); this.refresh(); },
+    soundOn() { try { return localStorage.getItem('nayanet.notif.sound') === '1'; } catch (e) { return false; } },
+    playSound() {
+      if (!this.soundOn()) return false;
+      try {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return false;
+        var ctx = this._audioCtx || (this._audioCtx = new AC());
+        try { if (ctx.state === 'suspended') { ctx.resume(); } } catch (e) {}
+        var t = ctx.currentTime || 0;
+        [[880, 0, 0.5], [659.25, 0.18, 0.7]].forEach(function (n) {
+          var o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'sine'; o.frequency.value = n[0];
+          g.gain.setValueAtTime(0.0001, t + n[1]);
+          g.gain.exponentialRampToValueAtTime(0.12, t + n[1] + 0.03);
+          g.gain.exponentialRampToValueAtTime(0.0001, t + n[1] + n[2]);
+          o.connect(g); g.connect(ctx.destination);
+          o.start(t + n[1]); o.stop(t + n[1] + n[2] + 0.05);
+        });
+        return true;
+      } catch (e) { return false; }
+    },
+    counts() {
+      var unread = 0;
+      try { var seen = this.get('seen.activity'); unread = Math.max(0, ActivityLog.read().length - seen); } catch (e) {}
+      return { mail: this.get('mail'), activity: unread, spaces: this.get('spaces') };
+    },
+    refresh() {
+      var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+      var c = this.counts();
+      bar.querySelectorAll('[data-notif]').forEach(function (seg) {
+        var k = seg.getAttribute('data-notif'), n = c[k] || 0;
+        var bub = seg.querySelector('.notif-count');
+        seg.classList.toggle('has-news', n > 0);
+        if (bub) { bub.textContent = n > 9 ? '9+' : String(n); bub.style.display = n > 0 ? 'flex' : 'none'; }
+      });
+    },
+    tap(k) {
+      /* FOLLOW-UP pass 2: the bar stays tappable above the scrim while a drawer is open — tapping anything but a drawer seg closes the drawer first, so no view opens underneath it. */
+      if (k !== 'spaces' && k !== 'eco' && window.pcCloseDrawers) { try { window.pcCloseDrawers(); } catch (e) {} }
+      if (k === 'mail') { this.set('mail', 0); window.osShowView && window.osShowView('inbox'); }
+      else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} window.osShowView && window.osShowView('dashboard'); }
+      else if (k === 'spaces') { this.set('spaces', 0); if (window.pcToggleDrawer) window.pcToggleDrawer('left'); }
+      else if (k === 'eco') { if (window.pcToggleDrawer) window.pcToggleDrawer('right'); }
+      this.refresh();
+    },
+    syncStack() {
+      var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+      var row = bar.querySelector('.notif-row');
+      var h = (row ? row.offsetHeight : bar.offsetHeight) + 1;
+      document.documentElement.style.setProperty('--notif-h', h + 'px');
+    },
+    init() {
+      var bar = document.getElementById('naya-notif-bar');
+      if (bar) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
+      var self = this;
+      var ICONS = {
+        mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+        activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
+        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>',
+        eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
+        plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+        /* HUB-RETURN 2026-11-16 (item 2): the right + is the same + object. */
+        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
+      };
+      /* HUB-RETURN 2026-11-16 (item 2): the + at the RIGHT end. The six
+         stay exactly as harvested (plus/mail/activity/spaces/eco/connect, same
+         order, same form); PART D 2026-11-17 deepened only the colours to the
+         Deep Palette: left + royal purple, mail sapphire, activity emerald,
+         worlds deep gold, ecosystem burnt orange, right + ruby. It opens CONNECT, never CREATE. */
+      var SEGS = [['plus', 'ADD', '#8e24aa'], ['mail', 'MAIL', '#0f52ba'], ['activity', 'ACTIVITY', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plus-connect', 'CONNECT', '#c62828']];
+      bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
+      bar.setAttribute('aria-label', 'Notifications');
+      var row = document.createElement('div'); row.className = 'notif-row';
+      SEGS.forEach(function (s) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
+        b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
+        b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
+        b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
+        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>';
+        b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'create', b); return; } if (s[0] === 'plus-connect') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'connect', b); return; } self.tap(s[0]); });
+        row.appendChild(b);
+      });
+      bar.appendChild(row); document.body.appendChild(bar);
+      document.body.classList.add('has-notif');
+      window.addEventListener('storage', function () { self.refresh(); });
+      this.refresh();
+      this.syncStack();
+      if (!window.__nayaNotifStackBound) { window.__nayaNotifStackBound = true; window.addEventListener('resize', function () { self.syncStack(); }); }
+    }
+  };
+  window.NayaNotif.init();
+
+/* THE BAR counts: MAIL carries the unread letters across all worlds;
    ACTIVITY carries the activity total across all worlds. The old trio
    segments are gone with the trio. */
 function refreshFiveCounts(){
   var unread = 0;
   Object.keys(MAIL).forEach(function(w){ MAIL[w].forEach(function(m){ if (m.unread) unread++; }); });
-  var mc = $('mailCount');
+  var mc = document.querySelector('[data-notif="mail"] .notif-count');
   mc.textContent = unread > 9 ? '9+' : String(unread);
   mc.style.display = unread === 0 ? 'none' : 'flex';
-  $('segMail').classList.toggle('has-news', unread > 0);
+  document.querySelector('[data-notif="mail"]').classList.toggle('has-news', unread > 0);
   var act = WORLD_COUNTS.personal + WORLD_COUNTS.business + WORLD_COUNTS.thing;
-  var ac = $('activityCount');
+  var ac = document.querySelector('[data-notif="activity"] .notif-count');
   ac.textContent = act > 9 ? '9+' : String(act);
   ac.style.display = act === 0 ? 'none' : 'flex';
-  $('segActivity').classList.toggle('has-news', act > 0);
+  document.querySelector('[data-notif="activity"]').classList.toggle('has-news', act > 0);
 }
 function setWorldCount(world, n){
   WORLD_COUNTS[world] = n;
@@ -1547,11 +1625,12 @@ function stubEvent(world, kind, text){
   return raiseCount(world, kind, 1);
 }
 window.__stubEvent = stubEvent;
-$('segAdd').addEventListener('click', function(){ $('composerInput').focus(); });
-$('segMail').addEventListener('click', function(){ setFormat('mail'); $('mailInbox').scrollIntoView({block:'nearest'}); });
-$('segActivity').addEventListener('click', function(){ openFeed(state.world === 'space' ? 'thing' : state.world); });
-$('segWorlds').addEventListener('click', function(){ $('orgTabs').scrollIntoView({block:'nearest'}); }); // REVAMP: world pills gone (§4) — WORLDS opens the topics.
-$('segEco').addEventListener('click', function(){ $('smartLists').scrollIntoView({block:'center'}); });
+document.querySelector('[data-notif="plus"]').addEventListener('click', function(){ $('composerInput').focus(); });
+document.querySelector('[data-notif="mail"]').addEventListener('click', function(){ setFormat('mail'); $('mailInbox').scrollIntoView({block:'nearest'}); });
+document.querySelector('[data-notif="activity"]').addEventListener('click', function(){ openFeed(state.world === 'space' ? 'thing' : state.world); refreshFiveCounts(); }); // BAR-FIX: re-assert the mail counts (Personal's tap() refreshes from its own store).
+document.querySelector('[data-notif="spaces"]').addEventListener('click', function(){ $('orgTabs').scrollIntoView({block:'nearest'}); refreshFiveCounts(); }); // REVAMP: world pills gone (§4) — WORLDS opens the topics. BAR-FIX: counts re-asserted (see ACTIVITY).
+document.querySelector('[data-notif="eco"]').addEventListener('click', function(){ $('smartLists').scrollIntoView({block:'center'}); refreshFiveCounts(); }); // BAR-FIX: counts re-asserted (see ACTIVITY).
+/* BAR-FIX: CONNECT (data-notif="plus-connect") keeps only Personal's NayaNotif handler — it opens the CONNECT plus menu where that menu exists; this page has no plus menu yet, so the tap is a guarded no-op. Present and tappable, never CREATE. */
 $('feedCloseBtn').addEventListener('click', closeFeed);
 $('feedChoiceBtn').addEventListener('click', openChoice);
 $('choiceCloseBtn').addEventListener('click', function(){ $('choicePanel').classList.remove('show'); });
