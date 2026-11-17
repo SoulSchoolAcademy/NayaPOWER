@@ -12,14 +12,14 @@ were already created beautiful. The standalone Epic page is retired as a
 destination; its only surviving surface is the paste-anything engine inside
 the Factory (and wherever pasting happens — the feed, the pages).
 
-## The engine (stored here, verbatim)
+## The engine (stored here)
 
 | | |
 |---|---|
 | File | `epic-auto-format.html` (this directory) |
-| GitHub blob (full sha) | `4319256de01d3a6454d427b701a50662ecfdeefc` |
-| Bytes | 77,758 |
-| sha256 | `ff5697091610e9d171cb04ded8761024ad7938939f242a6f61f498baab165f61` |
+| GitHub blob (full sha) | `3a4b0bf8b2e2f29fe5b956d5d6ca04e6f8c2baef` |
+| Bytes | 81,357 |
+| sha256 | `158d5e58504e915655f7955ac6c506ce1a514c1d572bc693d0d8fc40f9dbd045` |
 | Source branch | `intelligent-block/epic-20261117` |
 | Source commit | `3920de9f41dbd8bebb6b3faf442b99c92c39572c` |
 | Source PR | #3390 (open, unmerged — its bytes are the harvest source; whether it merges or closes is Shawn's hand) |
@@ -30,6 +30,19 @@ work copy (`~/workspace/team-nitro/intelligent-block-epic-20261117/
 intelligent-block-epic.html`) is the same bytes. Nothing in the engine was
 re-created, re-typed, or remade from a picture — the file IS the filed
 bytes, copied into the Factory's vault shelf.
+
+**FIX ROUND 2026-11-17 (fold-in fix, PR #3395): the stored engine is no
+longer byte-identical to the Epic source.** The captain's eye failed the
+survey proof page: the distiller's nutshell took the first 7 words and cut
+4 of 10 headlines off mid-phrase ("in the", "and", "the new internet,",
+"who"). The Factory's copy repairs `titleFrom` — the nutshell now ends at
+a phrase boundary (a comma, semicolon, colon or dash, or just before a word
+that opens a new clause), never mid-phrase, never with trailing
+punctuation. That repair is the ONLY change to the engine bytes in this
+round; the Epic branch (PR #3390) was not touched — the engine's home is
+the Factory now, and the repair lives here, in the Factory's copy. The
+table above is the FIXED engine (blob `3a4b0bf8…`, 81,357 B); the Epic
+source stays blob `4319256d…`, 77,758 B.
 
 What the engine is (from its own maker report + the code, read, not
 assumed): the canonical slideshow (style block byte-identical to blob
@@ -89,8 +102,8 @@ Q8 what you offer · Q9 what you're building and its goal · Q10 what kind
 of space you want and who you want to meet there). The mapping is the
 walk's own ("How these answers fill your pages" in
 `NAYAS-EXAMPLE-ANSWERS-20261112.md`): About = Q1/Q2/Q5/Q6, the vision +
-mission thread (Q3/Q4) runs through all three, Skills = Q7/Q8/Q9, the
-Space = Q2/Q10. The skill is Q7 + Q8 — what they do and what they offer;
+mission thread (Q3/Q4) runs through all three, Skills = Q7/Q8/Q9, and
+the Space = Q10 alone. The skill is Q7 + Q8 — what they do and what they offer;
 the walk has no separate skill question, and none was invented.
 
 **The citizen in the proof is Naya herself.** The spec's answers are her
@@ -129,21 +142,32 @@ through the engine's own `makeBeautiful`.
 ```sh
 cd ~/workspace/team-nitro/interface-factory
 python3 factory.py specs/epic-survey.json --out out/epic-survey-proof.html --no-gate
-python3 ../factory-epic-fold-in-20261117/verify_foldin.py
+python3 ../factory-epic-fold-in-20261117/verify_fix.py
 ```
 
-`verify_foldin.py` runs 31 checks, including the strip test: the built
-page minus every Factory span, with the three replacements reversed,
-equals the stored engine bytes EXACTLY (77,495 chars). A build whose
-insertions do not strip clean is a failed build.
+`verify_fix.py` runs the fold-in checks plus the fix-round checks (all 10
+deck headlines end at a phrase boundary; the lighthouse paste distills to
+a complete headline; the provenance line stays true after a paste),
+including the strip test: the built page minus every Factory span, with
+the three replacements reversed, equals the stored engine bytes EXACTLY
+(81,060 chars). A build whose insertions do not strip clean is a failed build. (The
+fold-in round's `verify_foldin.py` checks the same shape against the OLD
+engine values and no longer applies — the engine changed in the fix
+round.)
 
 ## The design gate (honest status, not hidden)
 
 The design gate (`design-gate.py`) is the factory-shell instrument. It
-fails the PURE Epic engine itself — 13 failures, same families (one-button
-DNA, board formula, press yield, light-text contrast, Dashboard button
-absent, Honesty/sample) — and the engine still passed its eye 03:34Z. The
-survey page fails 21. The delta is two checks, both named here:
+fails the PURE Epic engine itself — 13 failures on the maker's run, same
+families (one-button DNA, board formula, press yield, light-text contrast,
+Dashboard button absent, Honesty/sample) — and the engine still passed its
+eye 03:34Z. The survey page fails 21. The delta is FOUR survey-only
+families, not two — the maker's first accounting named two and missed two,
+and the checker's re-run caught them. Counts are run-dependent, not stable
+facts: the maker's logs read engine 13 / survey 21; the checker's full
+re-runs (same gate binary, same files, same widths 1440/390) read engine
+15 / survey 20 — the hover/press/scroll probes flip between runs. The
+families, named:
 
 1. **Board formula (§3e/§4.2)** — PASS on the engine, FAIL on the survey.
    The failing elements are the boards the builder baked and made visible
@@ -162,6 +186,24 @@ survey page fails 21. The delta is two checks, both named here:
    gate's scroll probe finds more unlit boards. Same format, more beats —
    the gate's scroll assumption and the unfold's click reveal are in
    tension, and the tension is the format's, not this round's invention.
+   (The checker's re-run also failed scroll-light on the pure engine at
+   1440px, so the clean PASS-on-engine / FAIL-on-survey contrast does not
+   hold every run — the probe is flaky.)
+3. **Family** — FAIL on the survey at BOTH widths. The gate counts any
+   `<section>` in `<main>` with ≥2 numbers or a stat-ish class as a stats
+   surface, and a stats surface must match the factory's blessed parts.
+   The Factory's OWN provenance board is `<section
+   class="intel-board">` whose text ("10 boards in the deck — 3 from the
+   engine, 7 from your answers. 3 pastes proved…") carries ≥2 numbers, so
+   it counts — and it carries no blessed class (`tn-li`, `orbital`,
+   `os-orb`…) → Family FAIL. Unlike board-formula and scroll-light
+   (inherited engine properties), this one is caused by THIS round's own
+   addition.
+4. **Provenance** — FAIL on the survey at BOTH widths. Same board, same
+   mechanism: a stats surface must state its truth in one line, and the
+   provenance board's text carries no "ledger synced / sources live /
+   data as of / truth:" line → Provenance FAIL. Also caused by this
+   round's own provenance board.
 
 The survey build therefore runs with `--no-gate`, per the precedent in
 `FORMATS.md` ("if the design gate blocks the build, isolate the format
