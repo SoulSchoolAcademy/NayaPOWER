@@ -16473,21 +16473,18 @@ function el(tag, cls, html) {
       || /^(intelligent block|smart note)\s*[:#—–-]?\s*((IB|SN)-?[\w-]*)?$/i.test(rawTitle);
     const titleIsId = genericTitle && !/^FEAT-/i.test(idStr);
     const sentencesOf = (txt) => (String(txt || '').replace(/\s+/g, ' ').match(/[^.!?]+[.!?]+["']?|[^.!?]+$/g) || []).map(s => s.trim()).filter(Boolean);
-    /* v5.1 HOOK (Shawn 01:23Z): the sub-headline under the title is a
-       SHORT hook, never the full nutshell text. Same derivation on
-       every board: cap at 60 chars (ellipsis included), cut at a
-       clean word boundary, strip markdown markers the esc() render
-       would print literally (the nutshell keeps md() + full text).
-       60 is the probe-measured cap: 110 chars is 1 line desk
-       but 7 lines phone (phone subtitle column is 228px); 60 is the
-       largest cap that holds <=4 lines phone on SN-2088/2083/2068. */
+    /* FIX-5 (2026-11-17) — the sub-headline under the title is the hook
+       sentence, SHOWN IN FULL. The v5.1 60-char cap cut the sentence
+       mid-way with an ellipsis ("in her own\u2026") — the eye proved
+       the cut is the defect, on the card and in both dialogs. A
+       subtitle is one sentence; it reflows (it wraps — .ib-subtitle
+       has no clamp), it is never cut mid-sentence. The old
+       probe-measured cap (60 chars for <=4 lines on phone) is
+       superseded by the brief's reflow allowance: the sentence wraps
+       to as many lines as it needs. Markdown markers are still
+       stripped, as before. */
     const shortHook = (txt) => {
-      const s = String(txt || '').replace(/\s+/g, ' ').replace(/[*`]/g, '').trim();
-      if (s.length <= 60) return s;
-      const cut = s.slice(0, 59);
-      const sp = cut.lastIndexOf(' ');
-      const head = (sp > 30 ? cut.slice(0, sp) : cut).replace(/[,;:\u2014\u2013-]+$/, '').trim();
-      return head + '\u2026';
+      return String(txt || '').replace(/\s+/g, ' ').replace(/[*`]/g, '').trim();
     };
     /* R5 (item 3) — the summary is real prose, never the heading repeated:
        a nutshell that only repeats the title, a test/insert marker line, or a
@@ -17407,6 +17404,20 @@ window.BoardActions = (() => {
     return x;
   }
 
+  /* FIX-5 (2026-11-17) — the dialog subtitle is the post's own words IN
+     FULL, read from the live card's nutshell (never the data store —
+     the delegate sites read the same way). The 60-char cut (cutWord60)
+     stays for the short title the toasts / space names / saved entries
+     use; the subtitle is not that title. Falls back to the passed
+     title when the card carries no nutshell (non-wall paths). */
+  function fsFullNut(cardEl) {
+    try {
+      var n = cardEl ? (cardEl.querySelector('.ib-nutshell p') || cardEl.querySelector('.ib-nutshell')) : null;
+      if (!n) return '';
+      return (n.textContent || '').replace(/\s+/g, ' ').trim().replace(/^IN A NUTSHELL\s*/, '');
+    } catch (e) { return ''; }
+  }
+
   function showCommentDialog(boardId, title, cardEl) {
     const returnFocus = document.activeElement;
     const { overlay, board } = fsOpenOverlay('gold');
@@ -17425,7 +17436,7 @@ window.BoardActions = (() => {
     const h = el('h2', 'naya-fs-title', '');
     h.textContent = (window.mwTr ? window.mwTr('Comment') : 'Comment');
     const sub = el('p', 'naya-fs-sub', '');
-    sub.textContent = title || 'NayaNET Intelligence';
+    sub.textContent = fsFullNut(cardEl) || title || 'NayaNET Intelligence';
     const listHead = el('div', 'naya-fs-h', '');
     const list = el('div', 'intel-list');
     const render = () => {
@@ -17490,7 +17501,21 @@ window.BoardActions = (() => {
     const h = el('h2', 'naya-fs-title', '');
     h.textContent = (window.mwTr ? window.mwTr('Share') : 'Share');
     const sub = el('p', 'naya-fs-sub', '');
-    sub.textContent = title || 'NayaNET Intelligence';
+    sub.textContent = fsFullNut(cardEl) || title || 'NayaNET Intelligence';
+    /* FIX-5 (2026-11-17) — the share dialog fills its space: a preview
+       board carries the post itself (title + full text from the live
+       card), so the dialog is the post being shared, not a speck in
+       a void. */
+    const prev = el('div', 'naya-fs-preview');
+    const prevK = el('div', 'naya-fs-label', '');
+    prevK.textContent = 'SHARING THIS POST';
+    const prevT = el('h3', 'naya-fs-prev-t', '');
+    prevT.textContent = (cardEl && cardEl.querySelector('.ib-title') ? cardEl.querySelector('.ib-title').textContent.trim() : '') || title || 'NayaNET Intelligence';
+    const prevB = el('p', 'naya-fs-prev-b', '');
+    prevB.textContent = fsFullNut(cardEl) || title || '';
+    prev.append(prevK, prevT, prevB);
+    const linkK = el('div', 'naya-fs-label', '');
+    linkK.textContent = 'YOUR LINK';
     const field = document.createElement('input');
     field.type = 'text'; field.readOnly = true; field.className = 'naya-fs-link';
     field.value = shareUrl;
@@ -17507,27 +17532,42 @@ window.BoardActions = (() => {
       const badge = root.querySelector ? root.querySelector('[data-kind="share-intel"] .action-count') : null;
       if (badge) badge.textContent = String(s[boardId + ':share:count']);
     };
-    const mkOpt = (label, so, onClick) => {
+    /* FIX-5 (2026-11-17) — share targets are objects: each option is a
+       board row with a raised icon disc in its own color, a label and a
+       hint. Feather-style drawn glyphs, same stroke language as the
+       page's other icons (1.9, round caps/joins). Label/hint are set
+       as text, never innerHTML. */
+    const FS_OPT_ICONS = {
+      mobile: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>',
+      facebook: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+      email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>',
+      copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
+    };
+    const mkOpt = (label, hint, so, icon, onClick) => {
       const b = document.createElement('button');
       b.type = 'button'; b.className = 'naya-fs-opt';
       b.style.setProperty('--so', so);
-      b.textContent = label;
+      b.innerHTML = '<span class="naya-fs-opt-ico">' + icon + '</span><span class="naya-fs-opt-tx"><span class="naya-fs-opt-lb"></span><span class="naya-fs-opt-hint"></span></span>';
+      b.querySelector('.naya-fs-opt-lb').textContent = label;
+      b.querySelector('.naya-fs-opt-hint').textContent = hint;
       b.addEventListener('click', onClick);
       return b;
     };
     /* FIX-2 (2026-11-17) — the email share is a real <a href="mailto:…">,
        not a button that sets location.href: the destination is verifiable
        in the DOM and the mail client opens by the link itself. */
-    const mkLink = (label, so, href, onClick) => {
+    const mkLink = (label, hint, so, icon, href, onClick) => {
       const a = document.createElement('a');
       a.className = 'naya-fs-opt';
       a.style.setProperty('--so', so);
       a.href = href;
-      a.textContent = label;
+      a.innerHTML = '<span class="naya-fs-opt-ico">' + icon + '</span><span class="naya-fs-opt-tx"><span class="naya-fs-opt-lb"></span><span class="naya-fs-opt-hint"></span></span>';
+      a.querySelector('.naya-fs-opt-lb').textContent = label;
+      a.querySelector('.naya-fs-opt-hint').textContent = hint;
       a.addEventListener('click', onClick);
       return a;
     };
-    const mobile = mkOpt('Share on mobile', '#07925f', () => {
+    const mobile = mkOpt('Share on mobile', 'Open your phone\u2019s share sheet', '#07925f', FS_OPT_ICONS.mobile, () => {
       if (navigator.share) {
         navigator.share({ title: title || 'NayaNET Intelligence', text: (title || 'NayaNET Intelligence') + ' — NayaNET', url: shareUrl }).then(() => { bumpShare(); fsCloseCurrent(); }).catch(err => { if (!err || err.name !== 'AbortError') toast('SHARE NOT COMPLETED — the link above still works.'); });
       } else {
@@ -17535,22 +17575,34 @@ window.BoardActions = (() => {
         note.hidden = false;
       }
     });
-    const fb = mkOpt('Share on Facebook', '#0f52ba', () => {
+    const fb = mkOpt('Share on Facebook', 'Post it to your Facebook timeline', '#0f52ba', FS_OPT_ICONS.facebook, () => {
       window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), '_blank', 'noopener');
       bumpShare();
     });
-    const email = mkLink('Share by email', '#d4a017', 'mailto:?subject=' + encodeURIComponent(title || 'NayaNET Intelligence') + '&body=' + encodeURIComponent((title || 'NayaNET Intelligence') + ' — ' + shareUrl), () => {
+    const email = mkLink('Share by email', 'Send it by email', '#d4a017', FS_OPT_ICONS.email, 'mailto:?subject=' + encodeURIComponent(title || 'NayaNET Intelligence') + '&body=' + encodeURIComponent((title || 'NayaNET Intelligence') + ' — ' + shareUrl), () => {
       bumpShare();
     });
-    const copy = mkOpt('Copy link', '#C7CEDC', async () => {
+    const copy = mkOpt('Copy link', 'Copy the link to paste anywhere', '#C7CEDC', FS_OPT_ICONS.copy, async () => {
       let ok = false;
       try { if (navigator.clipboard && navigator.clipboard.writeText) { await navigator.clipboard.writeText(shareUrl); ok = true; } } catch (e) { ok = false; }
       if (!ok) { try { field.select(); ok = document.execCommand('copy'); } catch (e) { ok = false; } }
       if (ok) { bumpShare(); toast('LINK COPIED — share it anywhere.'); fsCloseCurrent(); }
       else { toast('COPY BLOCKED — select the link above and copy it by hand.'); try { field.select(); field.focus(); } catch (e) {} }
     });
+    const shareK = el('div', 'naya-fs-label', '');
+    shareK.textContent = 'SHARE WITH';
     opts.append(mobile, fb, email, copy);
-    board.append(fsCloseButton(), h, sub, field, opts, note);
+    /* FIX-5 (2026-11-17) — the dialog closes with the post's own share
+       count as a stat board, so the bottom of the dialog is a real
+       object, not empty black. Count is the store's at open, same key
+       as the card badge. */
+    const stat = el('div', 'naya-fs-shares');
+    const statK = el('div', 'naya-fs-label', '');
+    statK.textContent = 'SHARES ON THIS POST';
+    const statN = el('div', 'naya-fs-shares-n', '');
+    statN.textContent = String(read()[boardId + ':share:count'] || 0);
+    stat.append(statK, statN);
+    board.append(fsCloseButton(), h, sub, prev, linkK, field, shareK, opts, stat, note);
     overlay.addEventListener('click', e => { if (e.target === overlay) fsCloseCurrent(); });
   }
 
@@ -17663,7 +17715,15 @@ window.ibWallHTML = function(r, idx){
    COMMENT lights gold live on open + on post, on every path in (the
    wall delegate bypassed the card button's own handler). Stars are
    cut jewels now: 10 facets, cut lines, top-left light. Dialog
-   subtitle cuts at a word boundary (shortHook), never mid-word. */
+   subtitle cuts at a word boundary (shortHook), never mid-word.
+   FIX-5 (2026-11-17): COMMENT rests neutral (white rim, no gold)
+   and gold fills/glows ONLY lit (.on) — the lit state reads at
+   normal size. Subtitles show in FULL (card hook + both dialog
+   subtitles, no cut). The share dialog fills its space: post
+   preview board, share targets as boards with icon discs,
+   share-count stat board. No delete path exists for post comments
+   (device-local store, no delete UI) — noted, not built. Scroll
+   lock, faceted stars, posting flow untouched. */
 .naya-fs-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.82); padding: 0; box-sizing: border-box; }
 .naya-fs-board { position: relative; width: 100%; height: 100%; max-height: none; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; display: flex; flex-direction: column; box-sizing: border-box; background: #0b0d12; border: 1.5px solid var(--fs-ac, #d4a017); border-radius: 0; padding: 22px; color: #fff; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(212,160,23,.25); }
 .naya-fs-board::-webkit-scrollbar { display: none; }
@@ -17691,13 +17751,50 @@ html.naya-fs-lock, body.naya-fs-lock { overflow: hidden !important; }
 .naya-fs-post:active { transform: scale(.97); }
 .naya-fs-link { width: 100%; box-sizing: border-box; background: #050607; border: 1px solid rgba(255,255,255,.22); border-radius: 10px; color: #fff; font-size: 13px; padding: 10px 12px; margin-bottom: 14px; font-family: inherit; }
 .naya-fs-opts { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-.naya-fs-opt { display: block; width: 100%; box-sizing: border-box; padding: 14px 20px; border-radius: 999px; font-family: inherit; font-size: 15px; font-weight: 800; color: #fff; cursor: pointer; text-decoration: none; text-align: center; background: linear-gradient(180deg, #1b1b24, #050507); border: 2px solid var(--so, #fff); box-shadow: 0 8px 18px rgba(0,0,0,.55); }
-.naya-fs-opt:hover { transform: translateY(-2px); box-shadow: 0 0 22px rgba(255,255,255,.28), 0 10px 22px rgba(0,0,0,.6); }
+/* FIX-5 (2026-11-17) — the share options are BOARDS now, not pills in a
+   void: each target is a full board row — raised icon disc in its own
+   color, label, hint — harvested from the R5 raised disc (.action
+   .ba-ico) and the board grammar (obsidian, own-color rim, elevation).
+   The old pill form is gone; .naya-fs-opt is only ever the share menu. */
+.naya-fs-opt { display: flex; align-items: center; gap: 14px; width: 100%; box-sizing: border-box; padding: 14px 16px; border-radius: 18px; font-family: inherit; text-align: left; cursor: pointer; text-decoration: none; color: #fff; background: linear-gradient(135deg, #1e1e26, #0a0a0f 60%, #1e1e26); border: 2px solid var(--so, #fff); box-shadow: inset 0 1px 0 rgba(255,255,255,.25), inset 0 -4px 10px rgba(0,0,0,.5), 0 0 16px -6px var(--so, #fff), 0 8px 18px rgba(0,0,0,.55); }
+.naya-fs-opt:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -4px 10px rgba(0,0,0,.5), 0 0 24px -4px var(--so, #fff), 0 10px 22px rgba(0,0,0,.6); }
 .naya-fs-opt:active { transform: scale(.97); }
+.naya-fs-opt-ico { display: inline-grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.35), rgba(255,255,255,.05) 55%), linear-gradient(180deg, #23232e, #0a0a10); border: 1.5px solid var(--so, #fff); box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -2px 4px rgba(0,0,0,.55), 0 0 14px -4px var(--so, #fff), 0 2px 6px rgba(0,0,0,.55); }
+.naya-fs-opt-ico svg { width: 22px; height: 22px; display: block; color: var(--so, #fff); }
+.naya-fs-opt-tx { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.naya-fs-opt-lb { font-size: 15px; font-weight: 800; color: #fff; }
+.naya-fs-opt-hint { font-size: 12px; line-height: 1.45; color: rgba(255,255,255,.85); }
+/* FIX-5 (2026-11-17) — the share dialog fills its space: the post preview
+   board (title + full text, sapphire rim — the share accent) and the
+   share-count stat board (digit-tile count, same grammar as the
+   Dashboard tiles) bookend the targets, so no stretch of empty black
+   is left in the dialog. */
+.naya-fs-label { margin: 16px 0 8px; font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #fff; }
+.naya-fs-preview { background: #050607; border: 1.5px solid #0f52ba; border-radius: 18px; padding: 16px 18px; box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 16px 35px rgba(0,0,0,.55), 0 0 24px -6px rgba(15,82,186,.55); }
+.naya-fs-preview .naya-fs-label { margin: 0 0 8px; }
+.naya-fs-prev-t { margin: 0 0 6px; font-size: 17px; font-weight: 800; color: #fff; }
+.naya-fs-prev-b { margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.92); }
+.naya-fs-shares { margin-top: 16px; background: #050607; border: 1.5px solid #0f52ba; border-radius: 18px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 16px 35px rgba(0,0,0,.55); }
+.naya-fs-shares .naya-fs-label { margin: 0; }
+.naya-fs-shares-n { font-size: 28px; font-weight: 800; color: #fff; min-width: 52px; text-align: center; border: 2px solid rgba(15,82,186,.65); border-radius: 9px; padding: 2px 10px; background: linear-gradient(135deg, #1a1a22, #050507); box-shadow: 0 0 14px -4px rgba(15,82,186,.55), 0 4px 10px rgba(0,0,0,.5); }
 .naya-fs-note { margin: 12px 0 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.85); }
 .naya-fs-note[hidden] { display: none; }
 .ib-cmt-thread { margin-top: 14px; }
 .ib-cmt-thread .naya-fs-h { margin-top: 0; }
+/* FIX-5 (2026-11-17) — COMMENT's lit state must read at NORMAL size.
+   The eye proved the Fix-4 mechanism (DOM .on) is not a visible pass:
+   the base pill already wore a gold rim + soft gold glow, so opening
+   the composer or posting changed nothing the eye could see. Now the
+   default COMMENT is UNLIT — a neutral outline pill (white rim, no
+   gold glow, no gold anywhere) — and gold fills/glows ONLY when lit
+   (.on): gold rim + gold-tinted pill (harvested from LOVE's lit tint
+   and the lit star tile) + strong gold glow, on top of the facelift's
+   gold-filled icon disc and gold count badge. LOVE/LIKE keep their
+   own-color rest (their family pattern); only COMMENT changes,
+   because only COMMENT's lit state is the brief. */
+.board-actions .action[data-kind="comment"]:not(.on) { border-color: rgba(255,255,255,.45); --glow: rgba(255,255,255,.45); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -6px 12px rgba(0,0,0,.65), 0 8px 20px rgba(0,0,0,.5); }
+.board-actions .action[data-kind="comment"]:not(.on):hover { border-color: rgba(255,255,255,.75); box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -6px 12px rgba(0,0,0,.6), 0 0 18px -2px rgba(255,255,255,.35), 0 12px 26px rgba(0,0,0,.55); }
+.board-actions .action[data-kind="comment"].on { border-color: #d4a017; background: linear-gradient(135deg, #3a2f10, #1a1405); box-shadow: inset 0 0 0 1.5px #d4a017, inset 0 2px 5px rgba(255,255,255,.28), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 28px -2px rgba(212,160,23,.85), 0 10px 24px rgba(0,0,0,.6); }
 @media (max-width: 700px) { .naya-fs-board { padding: 18px 16px; } }
 /* FIX-2 (2026-11-17) — FULL-SCREEN LAW: the board is the viewport, so
    the header, the textarea and the Post/share buttons never shrink and
@@ -17713,7 +17810,7 @@ html.naya-fs-lock, body.naya-fs-lock { overflow: hidden !important; }
    hidden (scrollbar-width: none + ::-webkit-scrollbar display: none),
    so no thumb ever shows at the dialog's right edge. Every comment is
    fully visible by scrolling the dialog; the X stays fixed. */
-.naya-fs-board .naya-fs-title, .naya-fs-board .naya-fs-sub, .naya-fs-board .naya-fs-h, .naya-fs-board .naya-fs-ta, .naya-fs-board .naya-fs-row, .naya-fs-board .naya-fs-link, .naya-fs-board .naya-fs-note { flex: none; }
+.naya-fs-board .naya-fs-title, .naya-fs-board .naya-fs-sub, .naya-fs-board .naya-fs-h, .naya-fs-board .naya-fs-ta, .naya-fs-board .naya-fs-row, .naya-fs-board .naya-fs-link, .naya-fs-board .naya-fs-note, .naya-fs-board .naya-fs-preview, .naya-fs-board .naya-fs-label, .naya-fs-board .naya-fs-shares { flex: none; }
 .naya-fs-board .naya-fs-ta { max-height: 40vh; }
 .naya-fs-board > .intel-list { flex: none; overflow: visible; }
 .naya-fs-board .naya-fs-opts { flex: none; overflow: visible; }
