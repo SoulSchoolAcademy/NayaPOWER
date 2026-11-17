@@ -4,6 +4,8 @@ SN-3087 · LAW
 
 **Created:** 2026-11-17 23:20Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 Tap a date — the 16th, the 2nd, any day — and BOOM, a full menu for that day: thirteen beautiful buttons, each opening that day's view, and a back button on every page so you fly through them like a high-tech computer system.
