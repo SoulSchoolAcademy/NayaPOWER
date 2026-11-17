@@ -1686,16 +1686,7 @@ svg.jewel { display: block; }
 .intel-board.tone-blue { border-color: color-mix(in srgb, #0f52ba 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #0f52ba33; }
 .intel-board.tone-green { border-color: color-mix(in srgb, #07925f 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #07925f33; }
 
-/* ——— Microcopy trust signals (from deployed original) ——— */
-.ib-microcopy {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-top: 16px; padding-top: 12px;
-  border-top: 1px solid rgba(255,255,255,.08);
-  font-size: 10px; letter-spacing: .14em; color: var(--muted);
-  font-weight: 700;
-}
-.ib-microcopy .left { text-align: left; }
-.ib-microcopy .right { text-align: right; }
+/* NUTSHELL-CLIP FIX (2026-11-17): the footer-lines block is removed — its CSS goes with it. */
 
 /* ——— Premium jewel elements (reports-grade DOM jewels) ——— */
 .pj-jewel {
@@ -1951,6 +1942,58 @@ svg.jewel { display: block; }
 }
 /* ——— END SMART NOTE FORMAT FIX2 ——— */
 
+/* ——— SMART NOTE NUTSHELL-CLIP FIX (2026-11-17) ———
+   THE BETTER PRESENTATION, under the 3D LAW (Shawn 22:39Z) and the glow
+   law (22:37Z: glow AROUND/BEHIND, never OVER the top).
+   Stars as full 3D gold orbs — round obsidian balls with a gold rim,
+   sphere shading (light top-left), inset top-light, deep shadow
+   down-right: a ton of elevation, coming out of the page, not a flat
+   square and not a hula hoop. Hover lifts the orb; press goes IN
+   (scale .92) and release comes OUT — alive, something happening. The
+   lit star keeps the harvested radial-gold face (below). The slow flow
+   ring AROUND the row (FIX2 ::before) stays — glow behind, never the
+   effect itself. The glyph stays crisp and separate from its rim at any
+   zoom: 17px star inside a 40px orb, real space around it.
+   The LOVE heart is a faceted ruby jewel (see the JS): 20px, drop
+   shadows for depth, inside the primo pill that already presses.
+   The foot is a 17px white provenance signature with a gold label. */
+.star-rating button {
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #2b2513 0%, #16130a 62%, #050607 100%);
+  border: 2px solid #d4a01788;
+  box-shadow: inset 0 1px rgba(255,255,255,.30), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55);
+  color: #d4a017;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35), 0 2px 6px rgba(0,0,0,.75);
+}
+.star-rating button:hover {
+  transform: translateY(-2px);
+  border-color: #d4a017;
+  box-shadow: inset 0 1px rgba(255,255,255,.35), inset 0 -3px 7px rgba(0,0,0,.6), 0 9px 18px rgba(0,0,0,.6), 0 0 18px rgba(212,160,23,.28);
+}
+.star-rating button:active {
+  transform: translateY(1px) scale(.92);
+  box-shadow: inset 0 1px rgba(255,255,255,.25), inset 0 -2px 5px rgba(0,0,0,.65), 0 2px 6px rgba(0,0,0,.6);
+}
+.star-rating button.on {
+  /* The harvested radial-gold face stays; the orb shape, the ball shadow
+     and the layered glyph come from this round. */
+  box-shadow: inset 0 1px rgba(255,255,255,.45), inset 0 -4px 9px rgba(0,0,0,.45), 0 6px 14px rgba(0,0,0,.6), 0 0 20px rgba(212,160,23,.30);
+  text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(212,160,23,.85);
+}
+@media (min-width: 701px) {
+  /* Desktop: true circles, one size, no stretch. Phones keep the FIX2
+     flex rule (<=700px) so ten orbs still fit 390px. */
+  .star-rating button { width: 40px; height: 40px; flex: 0 0 auto; }
+}
+.love-heart { display: inline-flex; width: 20px; height: 20px; vertical-align: -4px; margin-right: 2px; }
+.love-heart svg {
+  width: 20px; height: 20px; display: block;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(198,40,40,.45));
+}
+.ib-foot .ib-foot-label { color: #d4a017; font-weight: 800; letter-spacing: .04em; }
+.ib-foot .ib-foot-dot { color: #d4a017; padding: 0 8px; }
+/* ——— END SMART NOTE NUTSHELL-CLIP FIX ——— */
+
 .ib-layer-head {
   width: 100%; appearance: none; background: none; border: 0; cursor: pointer;
   display: flex; align-items: center; gap: 12px; text-align: left;
@@ -1981,9 +2024,10 @@ svg.jewel { display: block; }
 .ib-layer.is-deeper .ib-layer-head b { font-size: 16px; color: var(--ink); }
 
 .ib-foot {
-  margin-top: 18px; padding-top: 14px; border-top: 2px solid #ffffff16;
-  color: #fff; font-size: 12.5px; line-height: 1.5; word-break: break-all;
-}
+  margin-top: 20px; padding-top: 16px; border-top: 2px solid #ffffff16;
+  color: #fff; font-size: 17px; line-height: 1.6; text-align: center;
+  word-break: normal;
+} /* NUTSHELL-CLIP FIX (2026-11-17): 17px white provenance signature — never 12.5px, never break-all. */
 
 /* ——— Activity stream ——— */
 .activity-stream { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
@@ -5208,6 +5252,17 @@ window.BoardActions = (() => {
        ARE the scale (no separate Like), per the ten-star block bottom. */
     for (const [label, kind, aria] of [['\u2764\uFE0F LOVE', 'love', 'Love this intelligence']]) {
       const b = btn(label, kind, aria);
+      /* NUTSHELL-CLIP FIX (2026-11-17) — THE BETTER PRESENTATION (3D LAW):
+         the heart is a real ruby jewel, not the flat platform emoji: an
+         inline SVG heart with a radial ruby gradient (white top-light at
+         35%/30%, ruby #c62828, deep ruby #7a0e18) — a faceted jewel you
+         can press, inside the same primo pill (which already lifts on
+         hover and presses in on tap). The heart path is harvested
+         verbatim from this file's own activity-log heart. The gradient id
+         is per-card (boardId), so ten cards never share one id. The count
+         badge (digit tile) is appended after, untouched. */
+      var loveGradId = 'loveHeart-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-');
+      b.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="' + loveGradId + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#e5484d"/><stop offset="75%" stop-color="#c62828"/><stop offset="100%" stop-color="#7a0e18"/></radialGradient></defs><path fill="url(#' + loveGradId + ')" d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span><span> LOVE</span>';
       const key = boardId + ':' + kind;
       const countKey = boardId + ':' + kind + ':count';
       /* Count badge — dynamic, device-local */
@@ -7705,11 +7760,11 @@ window.NayaJewels = (() => {
     }
     if (nutshellLayer) {
       const ns = el('div', 'ib-nutshell');
-      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(nutshellLayer.body.slice(0, 600));
+      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(nutshellLayer.body); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — the 600-char slice cut every long nutshell mid-sentence with no ellipsis and no way to expand it. */
       b.appendChild(ns);
     } else if (nutSourceLayer) {
       const ns = el('div', 'ib-nutshell');
-      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(String(nutSourceLayer.body || '').slice(0, 600));
+      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(String(nutSourceLayer.body || '')); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — same cut, same fix. */
       b.appendChild(ns);
     }
 
@@ -7900,10 +7955,37 @@ window.NayaJewels = (() => {
     if (ibRest.length) b.appendChild(imageGridEl(ibRest, note));
 
     /* — Provenance foot — */
+    /* — Provenance foot — NUTSHELL-CLIP FIX (2026-11-17): the old line
+       printed the raw machine ID in 12.5px with word-break:break-all — a
+       machine-looking string under a beautiful card. The new line is
+       a signature, not a serial number: gold "Smart Note" label, the
+       note's own date in human words, "from your Smart Feed". The date is
+       dynamic per note (created/created_at, else the YYYYMMDD inside the
+       id, else omitted) — never a machine string. */
+    var footDateStr = '';
+    (function () {
+      var footD = note.created_at || note.created || '';
+      var footParsed = footD ? new Date(footD) : null;
+      if (footParsed && !isNaN(footParsed.getTime())) {
+        footDateStr = footParsed.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+      } else {
+        var footDm = String(note.id || '').match(/(20\d\d)(\d\d)(\d\d)/);
+        if (footDm) {
+          var footD2 = new Date(+footDm[1], +footDm[2] - 1, +footDm[3]);
+          if (!isNaN(footD2.getTime())) footDateStr = footD2.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+      }
+    })();
+    var footParts = [];
+    footParts.push(note.kind === 'official'
+      ? '<span class="ib-foot-label">Official NayaNET Guide</span>'
+      : '<span class="ib-foot-label">Smart Note</span>');
+    if (footDateStr) footParts.push('<span>' + esc(footDateStr) + '</span>');
+    footParts.push(note.kind === 'official'
+      ? '<span>from the Intelligent Library</span>'
+      : '<span>from your Smart Feed</span>');
     const foot = el('div', 'ib-foot');
-    foot.innerHTML = note.kind === 'official'
-      ? '<span>Official NayaNET Guide \u00B7 from the Intelligent Library</span>'
-      : '<span>Smart Note ' + esc(note.id || '') + ' \u00B7 from your Smart Feed</span>';
+    foot.innerHTML = footParts.join('<span class="ib-foot-dot">\u00B7</span>');
     b.appendChild(foot);
 
     /* — Social actions: top-right + bottom bar + add intel (direct, no queue) — */
@@ -7921,18 +8003,16 @@ window.NayaJewels = (() => {
           /* Fallback: inline minimal actions if BoardActions missing */
           const fb = document.createElement('div');
           fb.className = 'board-bottom-actions';
-          fb.innerHTML = '<span style="color:#888;font-size:12px">Actions loading…</span>';
+          fb.innerHTML = '<span style="color:#fff;font-size:17px">Actions loading…</span>'; /* NUTSHELL-CLIP FIX: white, 17px, always. */
           b.appendChild(fb);
         }
       } catch (e) {
         console.error('Board action error:', e.message);
       }
     }
-    /* Microcopy trust signals (from deployed original) */
-    const micro = el('div', 'ib-microcopy');
-    micro.innerHTML = '<span class="left">ONE INTELLIGENCE &middot; MANY VIEWS &middot; ONE IDENTITY</span>' +
-      '<span class="right">TRUST: SOURCE / INTERPRETATION SEPARATED</span>';
-    b.appendChild(micro);
+    /* NUTSHELL-CLIP FIX (2026-11-17): the two footer lines are removed —
+       they were random text that did not need to be there. The block is
+       gone entirely (element and CSS), not hidden. */
 
     return b;
   }
