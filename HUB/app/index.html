@@ -787,9 +787,12 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 .rail.right .nav{margin-top:18px;display:flex;flex-direction:column;gap:8px;}
 .rail-right-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 6px 0;}
 .rail-right-head b{font-size:12px;letter-spacing:.18em;font-weight:800;color:#fff;}
-.rail-right-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#050607;color:#fff;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .18s var(--ease),border-color .18s,box-shadow .18s;}
-.rail-right-x:hover{border-color:#8e24aa;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px rgba(142,36,170,.55),0 8px 16px rgba(0,0,0,.5);transform:translateY(-1px);}
-.rail-right-x:focus-visible{outline:2px solid #8e24aa;outline-offset:2px;border-color:#8e24aa;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px rgba(142,36,170,.55),0 8px 16px rgba(0,0,0,.5);}
+.rail-right-x,.rail-left-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#050607;color:#fff;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .18s var(--ease),border-color .18s,box-shadow .18s;}
+.rail-right-x:hover,.rail-left-x:hover{border-color:#8e24aa;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px rgba(142,36,170,.55),0 8px 16px rgba(0,0,0,.5);transform:translateY(-1px);}
+.rail-right-x:focus-visible,.rail-left-x:focus-visible{outline:2px solid #8e24aa;outline-offset:2px;border-color:#8e24aa;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px rgba(142,36,170,.55),0 8px 16px rgba(0,0,0,.5);}
+/* FIX-5 2026-11-17 (item 1): the left-drawer X is hidden everywhere except
+   an open drawer below desktop — never on the docked desktop rail. */
+.rail-left-x{display:none;position:absolute;top:12px;right:12px;z-index:5;}
 /* Sub-rows: Dashboard's Leaderboards link, Personal's three, My Worlds' doors. */
 .nav-sub{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:8px 12px 8px 14px;border-radius:10px;background:#050607;border:1px solid rgba(255,255,255,.1);color:var(--ink-dim);font-size:13px;font-family:var(--font);cursor:pointer;text-decoration:none;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.35),0 8px 18px rgba(0,0,0,.55);transition:transform .18s var(--ease),border-color .18s,box-shadow .18s,color .18s;}
 .nav-sub:hover{color:#fff;border-color:var(--nav,var(--purple));box-shadow:0 0 16px color-mix(in srgb,var(--nav,var(--purple)) 45%,transparent),0 8px 16px rgba(0,0,0,.5);transform:translateY(-2px);}
@@ -1109,6 +1112,7 @@ svg.jewel { display: block; }
     box-shadow: var(--depth-deep);
   }
   .shell.drawer-open .rail.left { transform: none; opacity: 1; pointer-events: auto; }
+  .shell.drawer-open .rail-left-x { display: grid; }
   .shell.drawer-open .drawer-backdrop { display: block; }
   body.drawer-open { overflow: hidden; }
   .rail-toggle { display: grid; }
@@ -2716,11 +2720,11 @@ button, .btn, .tab, .eco-btn, .activity-card {
   border:1.5px solid rgba(255,255,255,.25);
 }
 .naya-install-title{ font-size:26px; font-weight:800; letter-spacing:.01em; margin-top:20px; }
-.naya-install-sub{ font-size:15px; line-height:1.65; color:#c9cbd8; margin:12px auto 22px; max-width:340px; }
+.naya-install-sub{ font-size:15px; line-height:1.65; color:#fff; margin:12px auto 22px; max-width:340px; }
 .naya-install-go{ width:100%; justify-content:center; font-size:16px; padding:16px 22px; }
 .naya-install-later{
   margin-top:16px; background:none; border:none; cursor:pointer;
-  color:#9d9db5; font-size:14px; font-weight:600; padding:8px 14px;
+  color:#fff; font-size:14px; font-weight:600; padding:8px 14px;
 }
 .naya-install-later:hover{ color:#fff; }
 .naya-install-steps{ margin-top:20px; text-align:left; }
@@ -2734,7 +2738,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
   background:#8e24aa; color:#0b0616; font-size:10.5px; font-weight:900;
   letter-spacing:.08em; padding:2px 8px; border-radius:999px; text-transform:uppercase;
 }
-.naya-install-row ol{ margin:0; padding-left:20px; color:#d8dbe8; font-size:14px; line-height:1.6; }
+.naya-install-row ol{ margin:0; padding-left:20px; color:#fff; font-size:14px; line-height:1.6; }
 
 /* ——— NAYA-ORB-002 "Orb · Purple" — harvested verbatim from factory.css
        (Shawn 2026-10-20: the card's heartbeat — replaces the static jewel).
@@ -5279,6 +5283,16 @@ function HubView(params) {
      My Worlds, top of the right, where the citizen reaches their world
      first. The four world pages are already LEFT rows 2–5. */
   const priv = el('div', 'private', 'PRIVATE BY DEFAULT<br>SHARED BY CHOICE<br>COLLECTIVE BY CONSENT');
+  /* FIX-5 2026-11-17 (item 1): the left drawer gets its own X. Below 1440px
+     the open drawer covers the top-bar hamburger, so the hamburger cannot
+     close it — the only in-drawer closes were backdrop and Escape. The X
+     mirrors the right rail's .rail-right-x (same object, same rules) and
+     closes the left drawer; it shows only while the drawer is open below
+     desktop, never on the docked desktop rail. */
+  const railX = el('button', 'rail-left-x', '\u00d7');
+  railX.setAttribute('aria-label', 'Close navigation menu');
+  railX.addEventListener('click', () => { closeDrawer(); });
+  rail.prepend(railX);
   rail.append(brand, nav, priv);
   /* ——— HUB SIDEBARS+PLUS 2026-11-16 (item 3): the scroll spy ———
      As you scroll through each area, ITS icon lights up in its own
@@ -5339,16 +5353,17 @@ function HubView(params) {
   menuBtn.setAttribute('title', 'Menu — your navigation');
   menuBtn.addEventListener('click', () => {
     if (window.innerWidth < 1440) {
-      /* ITEM 8 FIX 2026-11-16: below desktop the menu control opens BOTH
-         drawers — left via openDrawer(), right via openRightRail() — one
-         toggle, the same shape as the left alone had. The right drawer
-         had no top-bar opener; its only opener was the bottom-bar
-         ECOSYSTEM tile. Right opens first so focus lands on the left,
-         the primary drawer. */
+      /* FIX-5 2026-11-17 (item 1): below desktop the menu control opens ONE
+         drawer — the LEFT, the primary navigation. Opening both stacked the
+         right rail (x90 w300) over the left (x0 w300) at 390, so only a
+         90px sliver of the left showed with its labels sliced mid-word.
+         The right rail keeps its own openers (bottom-bar ECOSYSTEM tile);
+         closing still closes whichever drawer is open, so one tap always
+         returns to a clean page. */
       const leftOpen = shell.classList.contains('drawer-open');
       const rightOpen = shell.classList.contains('rail-right-open');
       if (leftOpen || rightOpen) { closeDrawer(); closeRightRail(); }
-      else { openRightRail(); openDrawer(); }
+      else { openDrawer(); }
     } else if (shell.classList.contains('rail-right-collapsed')) {
       /* FIX 2026-11-16 (item B): the right rail was closed with its X.
          Reopen it as the overlay drawer WITHOUT toggling the left rail —
@@ -5993,7 +6008,7 @@ window.NayaNotif = window.NayaNotif || {
       o.setAttribute('role', 'dialog'); o.setAttribute('aria-label', 'Install NayaNET as an app');
       o.innerHTML =
         '<div class="naya-install-card">' +
-        '<img class="naya-install-icon" src="/icons/naya-icon-192.png" alt="NayaNET" width="96" height="96">' +
+        '<img class="naya-install-icon" src="/icon-192.png" alt="NayaNET" width="96" height="96">' +
         '<div class="naya-install-title">Install NayaNET</div>' +
         '<div class="naya-install-sub">Your intelligent hub, on your home screen — one tap away, no login, ever. Any page can become an app: install it from here, from the sidebar, or from Settings.</div>' +
         '<button type="button" class="primo theme-purple elev-2 naya-install-go" id="naya-install-go">Install the app</button>' +
@@ -6122,9 +6137,12 @@ window.NayaNotif = window.NayaNotif || {
   railRHead.innerHTML = '<b>YOUR WORLDS &amp; NAYANET</b>';
   const railRX = el('button', 'rail-right-x', '\u00d7');
   railRX.setAttribute('aria-label', 'Close right sidebar');
-  /* ITEM B (drawer X-path): below 1440px the right drawer opens TOGETHER with
-     the left drawer, so its X must close BOTH (plus the backdrop); at desktop
-     the drawers are docked sidebars and the X only undocks the right one.
+  /* ITEM B (drawer X-path): below 1440px the right drawer CAN open over the
+     left drawer (ECOSYSTEM tile), so its X closes BOTH (plus the backdrop);
+     at desktop the drawers are docked sidebars and the X only undocks the
+     right one. FIX-5 (2026-11-17): the menu control no longer opens both
+     together — the left opens alone — but the X still closes both, so a
+     right drawer opened from ECOSYSTEM never strands the left behind it.
      FIX-4 (2026-11-17, verified at 1920px): at desktop there is no left
      drawer to close — the drawer-open rules live only below 1440px, the left
      rail is a docked grid column — and closeRightRail() restores both
@@ -10511,6 +10529,7 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
     box-shadow: var(--depth-deep);
   }
   .shell.drawer-open .rail.left { transform: none; opacity: 1; pointer-events: auto; }
+  .shell.drawer-open .rail-left-x { display: grid; }
   .shell.drawer-open .drawer-backdrop { display: block; }
   body.drawer-open { overflow: hidden; }
 }
@@ -10654,6 +10673,41 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 .show-feed > article:nth-child(even) .ib-card-orb::before,.intel-board:nth-of-type(even) .ib-card-orb::before{animation-name:naya-orbit-dot-ccw;animation-duration:150s;}
 .naya-guide-face{width:46px;height:46px;flex:0 0 auto;border-radius:50%;position:relative;border:2px solid var(--room-accent,#8e24aa);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .3s,box-shadow .3s,border-color .3s;}
 .naya-guide-face::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:50%;pointer-events:none;border:1px solid color-mix(in srgb, var(--room-accent,#8e24aa) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--room-accent,#8e24aa) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 132s linear infinite;}
+
+/* ——— HUB ICONS FIX-5 2026-11-17 (item 2): REAL board ignition ———
+   The 390 eye measured no visible hover change. Hover rules existed, but
+   the lit rest state (.rv-lit) already wears the hover shadow, so hovering
+   a lit board changed only a -6px lift and a faint tint — and the injected
+   rv-face-style rules (later in the cascade, same specificity, !important
+   on the nutshell) beat any plain static hover shadow. These rules win:
+   higher specificity (.rv-lit:hover) + !important where the injector used
+   it. On hover/tap the board lifts, its rim brightens in its own color,
+   and the halo grows well past the lit-rest glow — visibly. Deep Palette
+   only: each board's own --tone / --lc / --room-accent, fallback purple. */
+.intel-board:hover,.intel-board:active,.intel-board.rv-lit:hover,.intel-board.rv-lit:active{
+  transform:translateY(-6px);
+  border-color:color-mix(in srgb, var(--tone,#8e24aa) 85%, #fff) !important;
+  background-image:linear-gradient(180deg,color-mix(in srgb, var(--tone,#8e24aa) 30%, transparent),color-mix(in srgb, var(--tone,#8e24aa) 12%, transparent)) !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.35),0 34px 72px rgba(0,0,0,.75),0 0 64px color-mix(in srgb, var(--tone,#8e24aa) 38%, transparent),0 0 0 1px rgba(255,255,255,.28),0 0 48px -4px var(--tone,#8e24aa) !important;
+}
+.intel-board:hover .ib-nutshell,.intel-board:active .ib-nutshell{
+  border-color:color-mix(in srgb, #ffffff 70%, transparent) !important;
+  background-image:linear-gradient(180deg,color-mix(in srgb, var(--tone,#8e24aa) 18%, transparent),transparent 80%) !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.3),0 14px 30px rgba(0,0,0,.56),0 0 32px color-mix(in srgb, var(--tone,#8e24aa) 35%, transparent),0 0 44px -6px var(--tone,#8e24aa) !important;
+}
+.ib-nutshell:hover,.ib-nutshell:active{
+  border-color:color-mix(in srgb, #ffffff 70%, transparent) !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.3),0 14px 30px rgba(0,0,0,.56),0 0 32px rgba(255,255,255,.22),0 0 44px -6px rgba(255,255,255,.5) !important;
+}
+.intel-board:hover .ib-layer,.intel-board:active .ib-layer{
+  border-color:color-mix(in srgb, var(--lc,#8e24aa) 85%, #fff);
+  box-shadow:inset 0 1px rgba(255,255,255,.28),0 18px 36px rgba(0,0,0,.55),0 0 36px color-mix(in srgb, var(--lc,#8e24aa) 45%, transparent);
+}
+.hero:hover,.hero:active{
+  transform:translateY(-3px);
+  border-color:color-mix(in srgb, var(--room-accent,#8e24aa) 92%, #fff);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -22px 38px rgba(0,0,0,.5),0 0 68px -2px color-mix(in srgb, var(--room-accent,#8e24aa) 85%, transparent),0 30px 60px rgba(0,0,0,.65) !important;
+}
 </style>
 <script>
 /* ================= SMART BAR SYSTEM v1.0 ================= */
