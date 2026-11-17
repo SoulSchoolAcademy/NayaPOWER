@@ -17,8 +17,8 @@ official-formats round, verified by size + sha256 before they are written.
 See FORMATS below and formats/FORMATS.md.
 
 Usage:
-    python3 factory.py specs/smart-links-stats.json
-    python3 factory.py specs/smart-links-stats.json --out out/custom.html --no-gate
+    python3 factory.py specs/formats-test.json --out out/formats-test.html
+    python3 factory.py specs/formats-test.json --out out/formats-test.html --no-gate
 
 Spec shape:
     {"name","title","subtitle","purpose","parts":[...],"data":{...},"wiring":"..."}
@@ -164,6 +164,13 @@ SHELF = {
 # them — emitting them verbatim preserves the auto-format.
 # Format assignment: unfold -> About, slideshow -> Skills, one format per
 # bridge (the entrance bridge still uses both for the agreement/legal pages).
+# THE VAULT, SHARPENED (Phase 2 amendment, 2026-11-17): the emitted formats
+# are vault assets — LABELED, INVENTORIED, ORGANIZED, ACTIVE. Each FORMATS
+# entry carries a `label` (name + role) and a `vault` (where the asset lives:
+# the builder's formats/ store = the Factory's vault shelf, filed on the
+# factory branch = findable). emit_formats() copies both into the receipt,
+# so every build's receipt inventories both assets. See formats/FORMATS.md
+# ("The Vault") for the reader-facing inventory.
 # ----------------------------------------------------------------------------
 FORMATS_DIR = os.path.join(HERE, "formats")
 FORMATS = {
@@ -172,12 +179,16 @@ FORMATS = {
         "blob": "34c756fff6286c46a2ff61fa6224bc49e35d5abf",
         "bytes": 32079,
         "sha256": "70abc8e96712393d0b3f087b8410379fc39970a5905d06de1884afdf2d7b346c",
+        "label": "official-unfold — the canonical unfold, About's presentation",
+        "vault": "TEAM-NITRO/interface-factory/formats/official-unfold.html — the Factory's vault shelf, filed on the factory branch",
     },
     "slideshow": {
         "file": "official-slideshow.html",
         "blob": "21d08a88e0f2e63d3c30d8f5112a2479ecf52d59",
         "bytes": 34896,
         "sha256": "fcfa0c4c9794b8a92a3dea5ba2e4a1802376b2c75b2ba291fa8791b1da30693f",
+        "label": "official-slideshow — the canonical slideshow, Skills' presentation",
+        "vault": "TEAM-NITRO/interface-factory/formats/official-slideshow.html — the Factory's vault shelf, filed on the factory branch",
     },
 }
 
@@ -203,7 +214,9 @@ def load_format_bytes(name):
 
 def emit_formats(out_dir, receipt):
     """The builder's format step: emit both canonical formats verbatim
-    into the build output dir. Returns {name: {path, bytes, sha256, blob}}."""
+    into the build output dir. Returns {name: {path, bytes, sha256, blob,
+    label, vault}} — label + vault are the Vault Sharpening: every emitted
+    format is a labeled, inventoried vault asset (see FORMATS above)."""
     emitted = {}
     for name in ("unfold", "slideshow"):
         data = load_format_bytes(name)
@@ -215,6 +228,8 @@ def emit_formats(out_dir, receipt):
             "bytes": len(data),
             "sha256": hashlib.sha256(data).hexdigest(),
             "blob": FORMATS[name]["blob"],
+            "label": FORMATS[name]["label"],
+            "vault": FORMATS[name]["vault"],
         }
         receipt.setdefault("formats", {})[name] = emitted[name]
     return emitted
