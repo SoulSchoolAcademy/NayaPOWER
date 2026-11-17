@@ -266,6 +266,20 @@ button{font-family:inherit}
 .os-mini-num.med .os-mini-tile{width:54px;border-radius:10px;border-width:2px;box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 18px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35);}
 .os-mini-num.med .os-mini-tile .cap{height:9px;}
 .os-mini-num.med .os-mini-tile .rd{height:54px;line-height:54px;font-size:48px;}
+/* FIX-7 (item 1): a two-digit DATE is one object. Fix-6's seam (gap:0 +
+   -2px overlap) only closed the flex gap: each tile kept its own rounded
+   corners, rim, cap and halo, so "17" still read live as two tiles — in
+   the month grid (never patched) and in the day header. The join is
+   structural now: miniNumHTML emits ONE .duo tile holding both digits
+   (white, as in every tile) when the number is a two-digit day, rim/cap/
+   glow in the DAY's color — per-date, not per-digit. One border, one cap,
+   one shadow: one date. Counts never take this path (no label, no color)
+   and keep their per-digit tiles. The cell rule (0,5,0) beats every
+   per-breakpoint tile width below (0,4,0), so the duo tile always sizes
+   to its two digits instead of being squeezed into one digit's width. */
+.os-mini-num .os-mini-tile.duo{width:auto;min-width:0;padding:0 6px;border-color:var(--dc);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(var(--dc-rgb),.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-num.med .os-mini-tile.duo{width:auto;padding:0 8px;box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 18px rgba(var(--dc-rgb),.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.cal-day .os-mini-num.med .os-mini-tile.duo{width:auto;padding:0 2px}
 /* the $ tile (money only), the dot tile (decimals), the % tile — [D] 4831-4844 */
 .os-mini-tile.dollar{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
 .os-mini-tile.dollar .cap{background:linear-gradient(180deg,#ecd497,#d4a017 55%,#75580d);}
@@ -359,9 +373,13 @@ button{font-family:inherit}
   .plan-eye{width:26px;height:26px;top:6px;right:6px;font-size:12px}
   .cal-day .plan-eye{top:auto;bottom:8px;right:8px}
   /* FIX-6 (item 7): on phones the cell is too narrow for the glimpse
-     words — the record signal is the plain dot, fully inside the cell. */
+     words — the record signal is the plain dot, fully inside the cell.
+     FIX-7 (item 4): the .has{display:block} that stood here NEVER fired —
+     the base .has{display:none} below comes LATER in source order, and at
+     equal specificity (0,2,0) the later rule wins, so the phone dot was
+     display:none at every width and Nov 20 showed no signal at 635. The
+     override now lives in the later ≤640 block, after the base rule. */
   .cal-day .day-glimpse{display:none}
-  .cal-day .has{display:block}
 }
 
 /* ============ DAY COLORS — [L] + [C] WEEKDAY ============ */
@@ -393,19 +411,29 @@ button{font-family:inherit}
 /* Amendment 2 — THE BUTTON LESSON ([D] .os-pts-btn, harvested): each button
    wears its own color as an outer glow at rest; the lit one burns brighter.
    TODAY wears today's weekday color (--glow / --glow-rgb set by render()).
-   The back/forward arrows wear white — their label color, already glowing
-   at rest through the .primo base shadow; white IS their own color, and no
-   invented mapping is assigned to them. */
+   FIX-7 (item 2): the arrows wear their own colors too — back sapphire,
+   forward emerald — in the BORDER and in the outer glow, not only in a
+   --glow variable. Fix-6 set --glow/--glow-rgb and added a colored glow
+   at the END of the shadow stack, but never set border-color (the .primo
+   base border is white) and the two big WHITE outer glows sat ahead of
+   the colored one in the stack — box-shadow paints first-listed on top —
+   so the color was buried and the arrows read black/white live. The rule
+   below drops the white outer glows and leads with the own-color glow. */
 .cal-nav .primo.today{border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),0 12px 32px rgba(0,0,0,.65),0 0 18px rgba(var(--glow-rgb),.5)}
 .cal-nav .primo.today:hover{box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.7),0 14px 36px rgba(0,0,0,.65)}
 /* FIX-6 (item 8): the month arrows are the button standard now — PTS / %
    MONEY quality, each its own color, premium, readable at a glance. Back
    wears sapphire blue, forward wears deep emerald. No harvested per-arrow
    mapping exists — the brief orders each its own color, and cool-back /
-   go-forward is the pick, both Deep Palette. The glyph grows to 22px. */
+   go-forward is the pick, both Deep Palette. The glyph grows to 22px.
+   FIX-7 (item 2): the Fix-6 colors never painted (see the note above) —
+   the border now takes --glow and the outer glow leads with the own color,
+   so sapphire/emerald are the first thing the eye reads, at rest and on
+   hover. The white stays only in the inner highlights and the chevron. */
 #prev{--glow:#0f52ba;--glow-rgb:15,82,186}
 #next{--glow:#07925f;--glow-rgb:7,146,95}
-.cal-nav #prev,.cal-nav #next{font-size:22px;line-height:1;padding:12px 22px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),0 12px 32px rgba(0,0,0,.65),0 0 18px rgba(var(--glow-rgb),.5)}
+.cal-nav #prev,.cal-nav #next{font-size:22px;line-height:1;padding:12px 22px;border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(var(--glow-rgb),.6),0 0 48px rgba(var(--glow-rgb),.25),0 12px 32px rgba(0,0,0,.65)}
+.cal-nav #prev:hover,.cal-nav #next:hover{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.75),0 14px 36px rgba(0,0,0,.65)}
 /* Weekday names in their day's color — [C] render() colored them so.
    Amendment #4(1) (Shawn's eye, 03:19Z): the FULL day names (Sunday,
    Monday...), almost in royalty, in Marcellus — not S/M/T/W/T/F/S. The
@@ -473,8 +501,13 @@ button{font-family:inherit}
    the file; the cell otherwise reads exactly like its siblings. */
 /* FIX-6 (item 2): the quiet mark — a small dot in the day's color, top
    right of today's cell only. Never a fill, never a glow, never a pill.
-   Today reads from the plaque + the header TODAY button + this mark. */
-.cal-day.today::after{content:'';position:absolute;top:10px;right:10px;width:7px;height:7px;border-radius:50%;background:var(--dc);flex:none}
+   Today reads from the plaque + the header TODAY button + this mark.
+   FIX-7 (item 3): the 7px dot was found only by zooming on desktop and
+   not at all at 635 — too small to find at a glance. The mark is 12px
+   now, ringed white so it cannot blend into the day's rim, and z-indexed
+   above the tiles so nothing can paint over it. Still a dot, still no
+   fill, no glow, no pill — the NO-HUGE-TODAY law stands. */
+.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;z-index:2;width:12px;height:12px;border-radius:50%;background:var(--dc);border:2px solid #fff;flex:none}
 /* FIX-6 (item 7): a day with records carries a proper visible signal,
    explained — a glimpse line at the bottom of the cell ("2 appointments
    · 1 note"), white, the day's own words, never invented (it counts the
@@ -526,14 +559,13 @@ button{font-family:inherit}
    Report board below. Same black-middle object as the month cells. */
 .day-head .plan-eye{position:static;flex:none;margin-left:auto}
 .day-head .day-back{margin-left:12px}
-/* FIX-6 (item 4): a two-digit date reads as ONE date. The digits keep
-   their own chakra colors (the digit-color law stands), but in the day
-   header — and in the section views' day number — the pair joins: no gap,
-   the second tile overlapping the first tile's border into one shared
-   seam, one baseline, so "17" reads as seventeen, not one-and-seven.
-   Month cells are untouched (their small tiles stand). */
-.daynum-wrap .os-mini-num.med,.empty .os-mini-num.med{gap:0}
-.daynum-wrap .os-mini-num.med .os-mini-tile+.os-mini-tile,.empty .os-mini-num.med .os-mini-tile+.os-mini-tile{margin-left:-2px}
+/* FIX-7 (item 1): the Fix-6 seam rules (gap:0 + margin-left:-2px) are
+   REMOVED — they only closed the flex gap while each tile kept its own
+   object cues, so "17" still read as two tiles live. The join is the
+   .duo tile above (one tile, one rim, one cap, one glow, in the day's
+   color); with it there are never two adjacent digit tiles in a day
+   number, at any width, in the month grid, the day header or the section
+   views. Counts keep their per-digit tiles (they never take the duo path). */
 .view-wrap{max-width:1600px;width:100%;margin:0 auto}
 /* The 13 doors — INSTRUMENTS, not buttons (scorecard (8), 03:47Z). The
    doors were a row of .primo pills; a pill is a button, and thirteen
@@ -769,6 +801,19 @@ select.field option{background:#0a0a0f;color:#fff}
   .cal-day .os-mini-num.med .os-mini-tile{width:13px;border-radius:3px;border-width:1.5px}
   .cal-day .os-mini-num.med .os-mini-tile .cap{height:3px}
   .cal-day .os-mini-num.med .os-mini-tile .rd{height:13px;line-height:13px;font-size:12px}
+  /* FIX-7 (item 4): the record dot, at last. This block sits AFTER the
+     base .has{display:none}, so at equal specificity (0,2,0) this
+     display:block wins at ≤640 — the glimpse hides here, so the dot IS
+     the signal. 10px, ringed white, bottom-left, clear of the eye. */
+  .cal-day .has{display:block;width:10px;height:10px;border:1.5px solid rgba(255,255,255,.9)}
+  /* FIX-7 (item 5a): the ≤480 day-head grid now runs at ≤640 too. At 635
+     the flex header wrapped the eye onto the Back line for long weekday
+     names ("Tuesday, November 17, 2026"); as a grid the title and the eye
+     share the date line at every width, and Back goes full-width below. */
+  .day-head{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
+  .day-head .os-jewel-hz{justify-self:start}
+  .day-head .plan-eye{margin-left:0}
+  .day-back{grid-column:1/-1;margin-left:0}
 }
 @media (max-width:480px){
   .plan-eye{width:22px;height:22px;font-size:11px}
@@ -865,9 +910,14 @@ const DOORS=[
    yet, so their glimpse says so honestly (the honest-absence rule of the
    brief). The glimpse is rendered under the door's name, white, one line. */
 function escT(t){ const s=String(t||''); return s.length>56? s.slice(0,55)+'…' : s; }
-function doorGlimpse(name,ds){
-  const books=dayBookings(ds), notes=dayNotes(ds);
-  const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t)).length;
+/* FIX-7 (item 5b): doorGlimpse takes an optional (books, notes) snapshot —
+   when the day view passes its one freshly-read snapshot, every door on
+   the page counts from the same truth; when omitted it reads the store
+   itself, exactly as before. The open-times count uses the snapshot books
+   (same test bookTimeTaken runs). */
+function doorGlimpse(name,ds,books,notes){
+  books=books||dayBookings(ds); notes=notes||dayNotes(ds);
+  const open=BOOK_SLOTS.filter(t=>!books.some(b=>b.time===t)).length;
   switch(name){
     case 'Appointments': {
       if(!books.length) return open? open+' open times — book one' : 'Fully booked';
@@ -929,7 +979,26 @@ function miniTileHTML(ch){
   if (!isFinite(d)) return '';
   return '<span class="os-mini-tile d' + d + '"><span class="cap"></span><span class="rd">' + d + '</span></span>';
 }
-function miniNumHTML(value, size, label){
+/* FIX-7 (item 1): mix a hex color toward another by amt (0–1). The file's
+   own lighten/darken rule for tile caps — light = hex mixed 55% toward
+   white, dark = hex mixed 45% toward black — verified against [D]'s own
+   d7 cap: mixHex('#8e24aa', white, .55) = '#cc9cd9', toward black .45 =
+   '#4e145e', exactly the values the tile comment documents. */
+function mixHex(hex, toward, amt){
+  const a=hex.match(/\w\w/g).map(x=>parseInt(x,16));
+  const b=toward.match(/\w\w/g).map(x=>parseInt(x,16));
+  return '#'+a.map((v,i)=>Math.round(v+(b[i]-v)*amt).toString(16).padStart(2,'0')).join('');
+}
+/* FIX-7 (item 1): ONE tile for a two-digit day — the duo tile. Both digits
+   ride inside a single tile (white, as in every tile) with one rim, one
+   cap and one glow in the DAY's color (--dc/--dc-rgb set inline). The cap
+   gradient follows the file's own lighten/darken rule above. */
+function duoTileHTML(str, color){
+  const rgb=color.match(/\w\w/g).map(x=>parseInt(x,16)).join(',');
+  const light=mixHex(color,'#ffffff',0.55), dark=mixHex(color,'#000000',0.45);
+  return '<span class="os-mini-tile duo" style="--dc:'+color+';--dc-rgb:'+rgb+'"><span class="cap" style="background:linear-gradient(180deg,'+light+','+color+' 55%,'+dark+')"></span><span class="rd">'+str+'</span></span>';
+}
+function miniNumHTML(value, size, label, color){
   if (value == null) return '—';
   var str = String(value).trim().replace(/,/g, ' ').replace(/ +/g, ' ');
   if (str === '' || str === '—' || str === '-') return '—';
@@ -940,6 +1009,11 @@ function miniNumHTML(value, size, label){
      not a digit at a time — whatever reads the name. Counts pass no label
      and are unchanged. */
   var html = '<span class="' + cls + '"' + (label ? ' role="img" aria-label="' + esc(label) + '"' : '') + '>';
+  /* FIX-7 (item 1): a two-digit DAY is one duo tile (see above) — the day's
+     color is passed by the three day-number call sites. Single digits and
+     all counts (no label, no color) fall through to the per-digit tiles,
+     byte-identical to before. */
+  if (label && color && /^[0-9]{2}$/.test(str)) return html + duoTileHTML(str, color) + '</span>';
   for (var i = 0; i < str.length; i++) html += miniTileHTML(str[i]);
   return html + '</span>';
 }
@@ -990,8 +1064,9 @@ function wisdomFor(ds){
   const idx=Math.floor(new Date(parts[0],parts[1]-1,parts[2]).getTime()/86400000);
   return {text:WISDOM_STORE[((idx%WISDOM_STORE.length)+WISDOM_STORE.length)%WISDOM_STORE.length], source:'NayaNET wisdom store — from what we have learned'};
 }
-function dirFor(ds){
-  const notes=dayNotes(ds), books=dayBookings(ds);
+/* FIX-7 (item 5b): dirFor takes the same optional snapshot. */
+function dirFor(ds,notes,books){
+  notes=notes||dayNotes(ds); books=books||dayBookings(ds);
   if(!notes.length && !books.length) return null;
   const smart=notes.filter(n=>n.type==='smart'), naya=notes.filter(n=>n.type==='naya'), posts=notes.filter(n=>n.type==='post');
   const top=notes.filter(n=>n.rank).sort((a,b)=>b.rank-a.rank)[0];
@@ -999,8 +1074,9 @@ function dirFor(ds){
     books:books.length,
     learned: top ? top.text : 'Nothing was recorded as learned on this day yet.'};
 }
-function intelLine(ds){
-  const books=dayBookings(ds), notes=dayNotes(ds);
+/* FIX-7 (item 5b): intelLine takes the same optional snapshot. */
+function intelLine(ds,books,notes){
+  books=books||dayBookings(ds); notes=notes||dayNotes(ds);
   const bits=[];
   if(books.length) bits.push(books.length+(books.length===1?' appointment':' appointments')+' booked');
   if(notes.length) bits.push(notes.length+(notes.length===1?' note':' notes')+' saved');
@@ -1008,9 +1084,10 @@ function intelLine(ds){
   bits.push('News archive not wired — no headlines shown for this date');
   return bits.join(' · ')+'.';
 }
-function dirLine(ds){
+/* FIX-7 (item 5b): dirLine takes the same optional snapshot. */
+function dirLine(ds,books,notes){
   if(isFutureDs(ds)) return 'This day has not happened yet — no report until the day has a record.';
-  const r=dirFor(ds);
+  const r=dirFor(ds,notes,books);
   return r? (r.notes+' notes · '+r.books+' appointments · what was learned: '+r.learned) : 'No report — no records for this day.';
 }
 
@@ -1021,17 +1098,19 @@ function dirLine(ds){
    real record; future days show what is booked and what is open; today
    shows both. News: the archive is not wired, so the timeline says so
    honestly instead of inventing headlines. */
-function timelineHTML(ds){
+/* FIX-7 (item 5b): timelineHTML takes the same optional snapshot. */
+function timelineHTML(ds,books,notes){
   const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
   const past=ds<todayKey, future=isFutureDs(ds);
+  books=books||dayBookings(ds); notes=notes||dayNotes(ds);
   const TF_MIN={Morning:540,Afternoon:840,Evening:1140};
   const entry=(min,time,color,kind,text)=>`<li style="--tc:${color}"><span class="tl-time">${esc(time)}</span><span class="tl-kind">${esc(kind)}</span><div class="tl-text">${esc(text)}</div></li>`;
   const entries=[];
-  dayBookings(ds).forEach(b=>{
+  books.forEach(b=>{
     const h=+String(b.time).slice(0,2), m=+String(b.time).slice(3);
     entries.push({min:h*60+m, html:entry(h*60+m,fmtTime(b.time),'#07925f','Appointment'+(b.meet?' · Smart Meet':''),(b.who||'Appointment')+(b.what?' — '+b.what:''))});
   });
-  dayNotes(ds).forEach(n=>{
+  notes.forEach(n=>{
     const kind=n.type==='smart'?'Smart Note ✧':n.type==='post'?'Post':'Note';
     const color=n.type==='smart'?'#6d28d9':n.type==='post'?'#07925f':'#c62828';
     entries.push({min:TF_MIN[n.timeframe]||540, html:entry(TF_MIN[n.timeframe]||540,n.timeframe||'Morning',color,kind+' · '+n.world,n.text)});
@@ -1042,7 +1121,7 @@ function timelineHTML(ds){
   if(entries.length) body=`<ol class="tl-list">${entries.map(e=>e.html).join('')}</ol>`;
   else body=`<p class="tl-empty">${past?'No records for this day — nothing was recorded. Unknown is not zero, and no record is invented.':'Nothing booked or written for this day yet.'}</p>`;
   if(!past){
-    const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t));
+    const open=BOOK_SLOTS.filter(t=>!books.some(b=>b.time===t));
     /* Scorecard (5), 03:47Z: the timeline is a day lived in, not a list of
        times — the open times are objects (chips), not a comma list. */
     body+=open.length?`<div class="tl-chips" aria-label="Open times on this day">${open.map(t=>`<span class="tl-chip">${esc(fmtTime(t))}</span>`).join('')}</div><p class="tl-note">These times are open — bookable.</p>`:`<p class="tl-note">Every time on this day is booked.</p>`;
@@ -1068,10 +1147,11 @@ function timelineHTML(ds){
 function boardHead(ico,label,count,door){
   return `<div class="db-head"><span class="db-ico" aria-hidden="true">${ico}</span><strong>${label}</strong>${count==null?'':'<span class="db-count">'+miniNumHTML(count)+'</span>'}${door?'<span class="db-go" aria-hidden="true">›</span>':''}</div>`;
 }
-function apptTiles(ds){
-  const books=dayBookings(ds);
+/* FIX-7 (item 5b): apptTiles takes the same optional snapshot. */
+function apptTiles(ds,books){
+  books=books||dayBookings(ds);
   if(!books.length){
-    const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t));
+    const open=BOOK_SLOTS.filter(t=>!books.some(b=>b.time===t));
     return `<p class="db-empty">No appointments yet</p>`+(open.length?`<p class="db-note">Open today: ${open.map(t=>esc(fmtTime(t))).join(' · ')}</p>`:`<p class="db-note">Every time is booked.</p>`);
   }
   return `<ul class="db-list">${books.map(b=>`<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'Appointment')}${b.what?' — '+esc(b.what):''}${b.meet?' ✧ Meet':''}</li>`).join('')}</ul>`;
@@ -1085,13 +1165,13 @@ function dashHTML(ds){
   const smart=notes.filter(n=>n.type==='smart'), naya=notes.filter(n=>n.type==='naya'), posts=notes.filter(n=>n.type==='post');
   const door=(view,inner,id)=>`<article class="ph-card dash-board" role="button" tabindex="0" data-view="${esc(view)}"${id?` id="${id}"`:''}>${inner}</article>`;
   return `<div class="dash">
-    ${door('Appointments', boardHead('◷','APPOINTMENTS',books.length,true)+apptTiles(ds))}
-    ${door('Your World', boardHead('✦','DAILY REPORT',null,true)+`<p class="db-text">${esc(dirLine(ds))}</p>`, 'dayReport')}
-    ${door('Your World', boardHead('◎','INTEL TODAY',null,true)+`<p class="db-text">${esc(intelLine(ds))}</p>`)}
+    ${door('Appointments', boardHead('◷','APPOINTMENTS',books.length,true)+apptTiles(ds,books))}
+    ${door('Your World', boardHead('✦','DAILY REPORT',null,true)+`<p class="db-text">${esc(dirLine(ds,books,notes))}</p>`, 'dayReport')}
+    ${door('Your World', boardHead('◎','INTEL TODAY',null,true)+`<p class="db-text">${esc(intelLine(ds,books,notes))}</p>`)}
     ${door('Smart Notes for that day', boardHead('✧','SMART NOTES',smart.length,true)+noteLines(smart,'No Smart Notes yet'))}
     ${door('Notes for that day', boardHead('☰','NOTES',naya.length,true)+noteLines(naya,'No notes yet'))}
     ${door('Posts for that day', boardHead('✎','POSTS',posts.length,true)+noteLines(posts,'No posts yet'))}
-    <div class="span2">${timelineHTML(ds)}</div>
+    <div class="span2">${timelineHTML(ds,books,notes)}</div>
     ${door('Local news', boardHead('◎','NEWS',null,true)+`<ul class="db-list"><li><b>Local</b> — Archive not wired yet</li><li><b>Provincial</b> — Archive not wired yet</li><li><b>Global</b> — Archive not wired yet</li></ul>`)}
     ${door('Weather', boardHead('☀','WEATHER',null,true)+`<p class="db-empty">No provider wired</p><p class="db-note">Nothing is shown in its place.</p>`)}
     ${door('Horoscope', boardHead('☾','HOROSCOPE',null,true)+`<p class="db-empty">No source wired</p><p class="db-note">Nothing is shown in its place.</p>`)}
@@ -1149,7 +1229,7 @@ function render(){
        day's own words — counts from the local record only, never invented. */
     const glimpse=rec?((bN?bN+' appointment'+(bN===1?'':'s'):'')+(bN&&nN?' · ':'')+(nN?nN+' note'+(nN===1?'':'s'):'')) : '';
     return `<div class="cal-day dow-${new Date(year,month,d).getDay()}${today?' today':''}" data-day="${d}" role="button" tabindex="0" aria-label="Open ${dlabel(year,month,d)}. ${esc(summary)}">
-      ${miniNumHTML(d,'med',String(d))}
+      ${miniNumHTML(d,'med',String(d),wd.color)}
       ${rec?`<span class="day-glimpse">${esc(glimpse)}</span><span class="has" aria-hidden="true"></span>`:''}
       <button class="plan-eye" type="button" data-eye="${d}" style="--jc:${wd.color}" aria-label="See inside ${dlabel(year,month,d)}">i</button></div>`;
   }).join('');
@@ -1172,7 +1252,7 @@ function showDay(){
   $('dayView').style.setProperty('--dc-rgb',wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(','));
   $('dayHead').innerHTML=`
     <span class="os-jewel os-jewel-hz" style="--jc:${wd.color}" role="img" aria-label="${wd.name}, ${wd.hz} Hz">${wd.hz} Hz</span>
-    <div class="daynum-wrap">${miniNumHTML(day,'med',String(day))}</div>
+    <div class="daynum-wrap">${miniNumHTML(day,'med',String(day),wd.color)}</div>
     <div><h2 class="day-title">${esc(dlabel(year,month,day))}</h2></div>
     <button class="plan-eye" data-op="report" type="button" style="--jc:${wd.color}" aria-label="See the daily report for this day">i</button>
     <button class="primo day-back" data-op="close" type="button">← Back to month</button>`;
@@ -1184,7 +1264,7 @@ function showDay(){
   const wisdom=`<div class="ph-card wisdom-banner"><span class="wq-glyph" aria-hidden="true">✧</span><p class="wq">“${esc(w.text)}”</p><span class="ws">${esc(w.source)}</span></div>`;
   $('dayBody').innerHTML=`
     ${wisdom}
-    <div class="doors">${DOORS.map(([x,i,c])=>`<button class="door-inst" style="--glow:${c}" data-view="${esc(x)}" type="button"><span class="ico" aria-hidden="true">${i}</span><span class="lbl">${esc(x)}<span class="sub">${esc(doorGlimpse(x,ds))}</span></span></button>`).join('')}</div>
+    <div class="doors">${DOORS.map(([x,i,c])=>`<button class="door-inst" style="--glow:${c}" data-view="${esc(x)}" type="button"><span class="ico" aria-hidden="true">${i}</span><span class="lbl">${esc(x)}<span class="sub">${esc(doorGlimpse(x,ds,books,notes))}</span></span></button>`).join('')}</div>
     ${dashHTML(ds)}
     <div class="actions">
       <button class="primo" data-op="Create" type="button"><span class="ico" aria-hidden="true">+</span>Create a note for this day</button>
@@ -1225,7 +1305,7 @@ function viewHeadHTML(title, ds){
 }
 function emptyState(glyph, words, hint){
   const wd=WEEKDAY[new Date(year,month,day).getDay()];
-  return `<div class="viewcard ph-card empty" style="--dc:${wd.color};--dc-rgb:${wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(',')}"><span class="glyph" aria-hidden="true">${glyph}</span>${miniNumHTML(day,'med',String(day))}<span class="words">${esc(words)}</span><span class="hintline">${esc(hint)}</span></div>`;
+  return `<div class="viewcard ph-card empty" style="--dc:${wd.color};--dc-rgb:${wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(',')}"><span class="glyph" aria-hidden="true">${glyph}</span>${miniNumHTML(day,'med',String(day),wd.color)}<span class="words">${esc(words)}</span><span class="hintline">${esc(hint)}</span></div>`;
 }
 function notesListHTML(list, emptyWords, emptyHint){
   if(!list.length) return emptyState('✧', emptyWords, emptyHint);
@@ -1450,6 +1530,16 @@ function saveNote(){
   all.push({id:uid(),date:selKey(),world, type:createKind, rank:rankEl?parseInt(rankEl.value||'0',10)||null:null, timeframe:tf, text, createdAt:new Date().toISOString()});
   if(!saveNotes(all)){ if(err) err.textContent='The note could not be saved on this device.'; return; }
   render(); section=createKind==='smart'?'Smart Notes for that day':createKind==='post'?'Posts for that day':'Notes for that day'; screen='view'; pushRoute(); showView();
+  /* FIX-7 (item 5b): say where the note landed, at the moment of saving —
+     the same .status line confirmBooking prepends for a booking. A Smart
+     Note counts in SMART NOTES, a Post in POSTS, a plain Note in NOTES;
+     all three count in their world's feed and in INTEL TODAY. Naming the
+     bucket here is what stops "NOTES says 0" reading as a stale count: the
+     NOTES board counts plain Notes only, by design, and the line says so. */
+  const card=document.querySelector('#viewBody .viewcard');
+  if(card){ const p=document.createElement('p'); p.className='status';
+    p.textContent='Saved — '+(createKind==='smart'?'Smart Note':createKind==='post'?'Post':'Note')+' on '+dlabel(year,month,day)+'. It counts in '+(createKind==='smart'?'SMART NOTES':createKind==='post'?'POSTS':'NOTES')+' and '+world+' feed, and in INTEL TODAY.';
+    card.prepend(p); }
 }
 
 /* ============ ROUTING — [C] pushRoute/applyState, Month → Day → View → Day → Month ============ */
