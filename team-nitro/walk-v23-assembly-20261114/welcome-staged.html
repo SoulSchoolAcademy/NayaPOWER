@@ -2506,6 +2506,10 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
       var willShow = panel.hidden;
       panel.hidden = !willShow;
       if (willShow) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      /* FIX ROUND 2b (2026-11-17) — DEFECT C: every entry starts at group 0
+         (see resetLegalPage below). A stale group index left a re-opened
+         page stuck at beat 0 with a dead "Keep reading". */
+      if (panel.__fpLegalReset) panel.__fpLegalReset();
       /* FIX ROUND (2026-11-17) — re-place faces when a legal page opens
          outside the stage render, so its intro face shows. */
       if (window.__fpPlaceFaces) window.__fpPlaceFaces();
@@ -2528,6 +2532,26 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
       groups[g].push(b);
     });
     var gidx = 1;
+    /* FIX ROUND 2b (2026-11-17) — DEFECT C: a re-opened page was stuck at
+       beat 0 with a dead "Keep reading". The panel's group index (gidx)
+       was never reset, and render() re-hides every beat of a non-current
+       panel, so a second open set S.legal=0 while the internal Next was
+       already exhausted — a no-op forever. Restoring the panel to its
+       entry state (group 0 shown, gidx=1, Next/All back, dots reset)
+       makes every entry behave exactly like the first. */
+    function resetLegalPage(){
+      gidx = 1;
+      beats.forEach(function(b){
+        var g = parseInt(b.getAttribute('data-legal-group') || '0', 10);
+        b.hidden = (g !== 0);
+        if (g !== 0) b.classList.remove('reveal');
+      });
+      var g0 = (groups[0] || []).length;
+      dots.forEach(function(d, i){ d.classList.toggle('on', i < g0); });
+      if (next) next.hidden = false;
+      if (all) all.hidden = false;
+    }
+    panel.__fpLegalReset = resetLegalPage;
     function showGroup(g){
       (groups[g] || []).forEach(function(b){
         b.hidden = false; b.classList.add('reveal');
@@ -2551,6 +2575,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     });
     if (close) close.addEventListener('click', function(){
       panel.hidden = true;
+      resetLegalPage();
       document.getElementById('fpLegal').scrollIntoView({ behavior: 'smooth', block: 'start' });
       /* FIX ROUND (2026-11-17) — re-place faces on close, so the intro
          face hides with its page. */
