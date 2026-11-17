@@ -5693,14 +5693,18 @@ function HubView(params) {
   const railBtn = el('button', 'rail-toggle rail-toggle-right', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>');
   railBtn.type = 'button'; /* EYE-NOTES fix: typeless buttons are a latent submit risk (the Personal builder sets it explicitly) */
   railBtn.setAttribute('aria-label', 'Open right sidebar');
-  railBtn.setAttribute('aria-expanded', 'false');
+  railBtn.setAttribute('aria-expanded', window.innerWidth >= 1440 ? 'true' : 'false'); /* EYE-NOTES fix: docked visible at desktop, hidden below */
   railBtn.setAttribute('title', 'Right sidebar — your worlds and NayaNET');
   railBtn.addEventListener('click', () => {
     const open = shell.classList.contains('rail-right-open');
     const collapsed = shell.classList.contains('rail-right-collapsed');
     if (open) { closeRightRail(); }
     else if (collapsed) { openRightRail(); }
-    else { closeRightRail(); }
+    /* EYE-NOTES fix (verify-probe catch): no state class means docked
+       VISIBLE at desktop, but HIDDEN off-canvas below desktop — so the
+       first tap closes at desktop and OPENS on phone. */
+    else if (window.innerWidth >= 1440) { closeRightRail(); }
+    else { openRightRail(); }
     const nowOpen = shell.classList.contains('rail-right-open') || (!shell.classList.contains('rail-right-collapsed') && window.innerWidth >= 1440);
     railBtn.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
     railBtn.setAttribute('aria-label', nowOpen ? 'Close right sidebar' : 'Open right sidebar');
