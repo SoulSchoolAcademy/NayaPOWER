@@ -1830,6 +1830,22 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-side .fp-welcome{max-width
    132px/104px. The parents are the positioning contexts. */
 #fpAgreement .deal-beat-photo.fp-speak-face,#fpLegal .deal-beat-photo.fp-speak-face{position:absolute;width:104px;height:104px;z-index:5}
 @media(max-width:899px){#fpAgreement .deal-beat-photo.fp-speak-face,#fpLegal .deal-beat-photo.fp-speak-face{width:64px;height:64px}}
+/* FIX ROUND 2 (2026-11-17, Defect B) — the intro board keeps its natural
+   height: it is a flex item of the scrolling legal body, and with no
+   flex rule it absorbed all of the body's shrink (overflow:hidden makes
+   its automatic minimum size 0), crushing to ~60px, its header lines
+   clipped away, while the beats beside it kept full height. The face
+   then anchored on a crushed board and landed on board 1. */
+body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body>.fp-legal-intro{flex:0 0 auto}
+/* FIX ROUND 2 (2026-11-17, Defect B) — the legal face is capped to the
+   same size as every other speaking face: it stays under the .fp-now
+   panel, so the base 104px !important (<=480px) and clamp(120px,20vh,
+   208px) !important rules beat the 64px/104px speak-face rules and it
+   came out 104px at 390 (deck/letter faces: 64px) and oversized at
+   desktop. This override is later in the sheet and one class more
+   specific, so it wins over both base !important rules. */
+body.fp-stage-on #fpLegal .fp-now .deal-beat-photo.fp-speak-face{width:104px!important;height:104px!important}
+@media(max-width:899px){body.fp-stage-on #fpLegal .fp-now .deal-beat-photo.fp-speak-face{width:64px!important;height:64px!important}}
 #fpAgreement .fp-naya-portrait.fp-speak-face{position:absolute;z-index:5}
 #deckBody,#letterBody,#fpWelcomeG1{position:relative}
 /* Amendment — the letter page: the board is centred in the free area. */
@@ -2948,7 +2964,28 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
       var anchor = line || board.querySelector('.ib-title') || board;
       var lr = anchor.getBoundingClientRect();
       var pr = parent.getBoundingClientRect();
-      img.style.top = (lr.top + lr.height / 2 - faceH / 2 - pr.top + parent.scrollTop) + 'px';
+      var faceTop = (lr.top + lr.height / 2 - faceH / 2 - pr.top + parent.scrollTop);
+      /* FIX ROUND 2 (2026-11-17, Defect B) — the legal face must sit in
+         its own intro board's band, never below it on board 1: the face
+         was landing 162px below the intro's speaking line, covering
+         board 1's opening words on every legal page, while board 1
+         carries no side margin. The intro keeps its natural height now
+         (CSS, above) so the anchor is a real line again; this clamp is
+         the backstop — if the anchor ever resolves outside the intro
+         board again, the face is pulled back into the board's own band
+         (centred on it when the face is taller than the board), so it
+         can never sit on board 1. Deck/letter faces are untouched. */
+      if (f.key && f.key.indexOf('legal:') === 0) {
+        var bbr = board.getBoundingClientRect();
+        var bTop = bbr.top - pr.top + parent.scrollTop;
+        var bBot = bTop + bbr.height;
+        if (faceH + 8 <= bbr.height) {
+          faceTop = Math.max(bTop + 4, Math.min(faceTop, bBot - faceH - 4));
+        } else {
+          faceTop = bTop + bbr.height / 2 - faceH / 2;
+        }
+      }
+      img.style.top = faceTop + 'px';
     });
   }
   /* FIX ROUND 2 (2026-11-17) — settle pass: the face is positioned from
@@ -3370,7 +3407,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     else if(action==='legalClose'){var p2=q('#legal-'+S.legalId);var c=p2?q('[data-legal-close]',p2):null;if(c)c.click();}
     else if(action==='unall'){S.all=null;render();}
   });
-  exitBtn.addEventListener('click',function(){exitStage();});
+  exitBtn.addEventListener('click',function(){cancelAgreeExit();exitStage();});
   if(enterBtn)enterBtn.addEventListener('click',function(){enterStage();});
   /* quiet links: the stage mirrors click the real ones. */
   if(linkLetterAll)linkLetterAll.addEventListener('click',function(){if(letterAll)letterAll.click();});
@@ -3378,10 +3415,10 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
   if(linkLegalAll)linkLegalAll.addEventListener('click',function(){
     var p=q('#legal-'+S.legalId);var a=p?q('[data-legal-all]',p):null;if(a)a.click();
   });
-  if(linkToFooter)linkToFooter.addEventListener('click',function(){S.view='footer';S.all=null;render();});
-  if(linkToAgree)linkToAgree.addEventListener('click',function(){S.view='agree';S.all=null;render();});
-  if(linkLetterBack)linkLetterBack.addEventListener('click',function(){S.view='intro';S.all=null;render();});
-  if(linkDeckBack)linkDeckBack.addEventListener('click',function(){S.view='deck';S.deck=deckBeats.length-1;S.all=null;render();});
+  if(linkToFooter)linkToFooter.addEventListener('click',function(){cancelAgreeExit();S.view='footer';S.all=null;render();});
+  if(linkToAgree)linkToAgree.addEventListener('click',function(){cancelAgreeExit();S.view='agree';S.all=null;render();});
+  if(linkLetterBack)linkLetterBack.addEventListener('click',function(){cancelAgreeExit();S.view='intro';S.all=null;render();});
+  if(linkDeckBack)linkDeckBack.addEventListener('click',function(){cancelAgreeExit();S.view='deck';S.deck=deckBeats.length-1;S.all=null;render();});
   /* FIX ROUND (2026-11-17) — the legal row sits at the very bottom of
      the opening view; a tap opens that page IN THE LEGAL VIEW (the
      footer landing left the panel display:none, so all 12 links
@@ -3397,9 +3434,17 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
   /* I agree: the seal stamps where the citizen can see it (the stage is
      still on), then the stage exits just before the original handler's
      2000ms scroll + focus, so the bump lands on the visible login. */
+  /* FIX ROUND 2 (2026-11-17, Defect A) — the 1950ms exit is a stored
+     timer now, not fire-and-forget: the citizen may tap "The whole
+     deal" (or any other agree-view control) instead of waiting, and
+     the stage must NOT exit under them. cancelAgreeExit() is called
+     by the mirror-link and exit handlers below. */
+  var agreeExitTimer=null;
+  function cancelAgreeExit(){if(agreeExitTimer){clearTimeout(agreeExitTimer);agreeExitTimer=null;}}
   agreeBtn.addEventListener('click',function(){
     if(!body.classList.contains('fp-stage-on'))return;
-    setTimeout(function(){exitStage();},1950);
+    cancelAgreeExit();
+    agreeExitTimer=setTimeout(function(){agreeExitTimer=null;exitStage();},1950);
   });
   /* slide zoom (A3): tap the picture, read it big, the beat waits. */
   function openZoom(img){
