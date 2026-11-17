@@ -9268,6 +9268,13 @@ function wallCard(j, iso, pid, idx){
   }
   function upIsConnected(){ try{ return localStorage.getItem('os.connected')==='1'; }catch(e){ return false; } }
   document.addEventListener('click', function(e){
+    /* FIX-4b (2026-11-17) — word-boundary title cutter, LOCAL to this
+       handler: Fix-4 called the file's shortHook, which is NOT a global
+       (it lives inside the mw-translate IIFE) — every wall-button click
+       threw ReferenceError and no dialog opened. Same 60-cap logic as
+       shortHook's body, harvested verbatim: cut at 59, back off to the
+       last space, strip trailing punctuation, + ellipsis. */
+    var cutWord60 = function(t){ var s = String(t || '').replace(/\s+/g, ' ').replace(/[*`]/g, '').trim(); if (s.length <= 60) return s; var cut = s.slice(0, 59), sp = cut.lastIndexOf(' '); var head = (sp > 30 ? cut.slice(0, sp) : cut).replace(/[,;:\u2014\u2013-]+$/, '').trim(); return head + '\u2026'; };
     /* like */
     var lb=e.target.closest?e.target.closest('[data-like-pid]'):null;
     if(lb){
@@ -9342,7 +9349,7 @@ function wallCard(j, iso, pid, idx){
         var siIid=siArt.getAttribute('data-intelligence-id')||'';
         var siBid='note-'+siIid.replace(/^smart-note-/,'').toLowerCase().replace(/[^a-z0-9]+/g,'-');
         var siNut=siArt.querySelector('.ib-nutshell p')||siArt.querySelector('.ib-nutshell');
-        var siTitle=(siNut&&shortHook(siNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'')))||'Smart World';
+        var siTitle=(siNut&&cutWord60(siNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'')))||'Smart World';
         window.BoardActions.showShareMenu(siBid, siTitle, window.BoardActions.shareUrlFor(siBid), siArt);
         return;
       }
@@ -9380,7 +9387,7 @@ function wallCard(j, iso, pid, idx){
         var baRaw=baIid.replace(/^smart-note-/,'');
         var baBid='note-'+baRaw.toLowerCase().replace(/[^a-z0-9]+/g,'-'); /* R4 — same full-id key as the live board: one note, one key. */
         var baNut=baArt?baArt.querySelector('.ib-nutshell p')||baArt.querySelector('.ib-nutshell'):null;
-        var baTitle=(baNut&&shortHook(baNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'')))||'Smart World';
+        var baTitle=(baNut&&cutWord60(baNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'')))||'Smart World';
         var baRead=function(){ try{ return JSON.parse(localStorage.getItem('nayanet-board-actions-v1')||'{}'); }catch(x){ return {}; } };
         var baWrite=function(s){ try{ localStorage.setItem('nayanet-board-actions-v1', JSON.stringify(s)); }catch(x){} };
         if(baKind==='create-space'){
