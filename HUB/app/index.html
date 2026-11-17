@@ -753,10 +753,18 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   color: var(--ink-dim); font-size: 14px; font-family: var(--font);
   cursor: pointer; transition: background .18s, border-color .18s, color .18s, box-shadow .18s, transform .18s;
 }
+/* AMENDMENT #4-#7 2026-11-17 21:54Z-22:02Z (Shawn's images aaa_11111.png +
+   aaa_2.png, and his 22:01Z screenshot): the sidebar icon is a CIRCLE —
+   black circle, colored rim, sharp white icon in the middle, exactly like
+   the ones he showed. The before-state (his screenshot) was the rounded-
+   square chip (12px radius); the glow around the outside stays, only the
+   center shape changes from square to circle. The clone layer (::before)
+   inherits the radius, so it circles too. The ROW stays the square button
+   per Amendment #7 — square button, round icon inside, label beside it. */
 .nav-btn .ico {
   width: 40px; height: 40px; flex: 0 0 40px;
   display: grid; place-items: center; position: relative; z-index: 0;
-  border-radius: 12px;
+  border-radius: 50%;
   color: #fff;
   background: #050607; /* BLACK DIAMOND: flat board black */
   border: 1.5px solid var(--nav, var(--purple));
@@ -773,11 +781,17 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 /* FIX 2026-11-16 (item D2): the jewel renderer draws its glyph at 0.283
    scale — about 7px on screen — so Hub / Dashboard / Personal / Business
    read as near-identical tiny white swirls. Rows carrying .glyph-xl draw
-   the same jewel with the glyph at 0.5 scale (~12px, ~2.5px strokes), so
-   the four silhouettes — orbit, gauge, heart, briefcase — are
-   distinguishable at page size. The CSS transform overrides the svg g
-   transform attribute. Scoped to those four rows only. */
-.nav-btn .ico svg.jewel.glyph-xl g { transform: translate(6px, 6px) scale(.5); }
+   the same jewel larger. AMENDMENT #4(c) 2026-11-17 21:54Z (the middle icon
+   MUST BE SHARP — color right but middle lacking is a fail): the scale
+   rises 0.5 -> 0.66, so the glyph is ~16px with ~3.3px strokes in the 40px
+   circle (~12px in the 30px sub-tab circle) — the picture's proportion
+   (aaa_11111.png: the glyph fills ~40-45% of the circle, bold and crisp).
+   Every glyph path stays inside the jewel's black core at this scale
+   (worst case x=21.3 -> 18.1 of 18.8). The CSS transform overrides the svg g
+   transform attribute (origin 0 0; translate 4px centers the 0.66 glyph).
+   Sub-tab icons carry glyph-xl now too (Amendment #4(c) — at 0.283 they
+   were ~5px on screen, the softest middle on the page). */
+.nav-btn .ico svg.jewel.glyph-xl g, .nav-sub .ico svg.jewel.glyph-xl g { transform: translate(4px, 4px) scale(.66); } /* AMENDMENT #4(c): 0.5 -> 0.66 — the middle icon must be sharp; the sub-tab selector is new (sub-tabs carry glyph-xl now) */
 .nav-btn .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 550; }
 /* Hover: white light + spectrum color ignite */
 .nav-btn:hover, .nav-btn:focus-visible {
@@ -862,14 +876,22 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 /* FIX-5 2026-11-17 (item 1): the left-drawer X is hidden everywhere except
    an open drawer below desktop — never on the docked desktop rail. */
 .rail-left-x{display:none;position:absolute;top:12px;right:12px;z-index:5;}
-/* Sub-rows: Dashboard's Leaderboards link, Personal's three, My Worlds' doors. */
-.nav-sub{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:8px 12px 8px 14px;border-radius:10px;background:#050607;border:1px solid rgba(255,255,255,.1);color:var(--ink-dim);font-size:13px;font-family:var(--font);cursor:pointer;text-decoration:none;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.35),0 8px 18px rgba(0,0,0,.55);transition:transform .18s var(--ease),border-color .18s,box-shadow .18s,color .18s;}
+/* Sub-rows: Dashboard's Leaderboards link, Personal's three, My Worlds' doors.
+   AMENDMENT #4(b) 2026-11-17 21:54Z (the pill buttons, aaa_22.png): the
+   sub-tab rows are the sidebar's LABELED CONTROLS, so they wear the pill
+   treatment — obsidian pill (radius 999px), bold white text, icon on the
+   left. The icon chip itself is a CIRCLE per Amendment #4(a)/#6 (every
+   sidebar icon chip is a circle, including sub-tab icons) — aaa_22's square
+   chip is the toolbar's shape, not the sidebar's. Amendment #7 (square
+   button + round icon + label) governs the MAIN rows; the sub-rows are the
+   smaller labeled controls, so they take the pill form. */
+.nav-sub{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:8px 12px 8px 14px;border-radius:999px;background:#050607;border:1px solid rgba(255,255,255,.1);color:#fff;font-size:13px;font-family:var(--font);cursor:pointer;text-decoration:none;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.35),0 8px 18px rgba(0,0,0,.55);transition:transform .18s var(--ease),border-color .18s,box-shadow .18s,color .18s;}
 .nav-sub:hover{color:#fff;border-color:var(--nav,var(--purple));box-shadow:0 0 16px color-mix(in srgb,var(--nav,var(--purple)) 45%,transparent),0 8px 16px rgba(0,0,0,.5);transform:translateY(-2px);}
-.nav-sub .ico{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;position:relative;z-index:0;border-radius:9px;color:#fff;background:#050607;border:1.5px solid var(--nav,var(--purple));box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);}
+.nav-sub .ico{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;position:relative;z-index:0;border-radius:50%;color:#fff;background:#050607;border:1.5px solid var(--nav,var(--purple));box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);} /* AMENDMENT #4(a)/#6: every sidebar icon chip is a circle, including sub-tab icons */
 .nav-sub .ico svg{width:18px;height:18px;}
 /* BLACK DIAMOND: clone layer behind every sub-row icon chip. */
 .nav-sub .ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--nav, var(--purple)) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
-.nav-sub .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:550;}
+.nav-sub .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;} /* AMENDMENT #4(b): the pill's label is bold white text */
 .nav-sub .nav-count{position:absolute;top:2px;right:4px;min-width:20px;height:20px;padding:0 5px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:11px;font-weight:900;color:#06060a;background:var(--nav);border:2px solid #05050a;box-shadow:0 0 12px var(--nav),0 3px 8px rgba(0,0,0,.5);}
 .nav-sub.has-news .nav-count{display:flex;}
 .nav-subwrap{display:flex;flex-direction:column;gap:6px;}
@@ -5452,7 +5474,7 @@ function HubView(params) {
       r.style.setProperty('--nav', s.color);
       if (s.countKey) r.setAttribute('data-count-key', s.countKey);
       r.setAttribute('aria-label', s.label);
-      r.innerHTML = '<span class="ico">' + Icons.icon(s.icon) + '</span><span class="lbl">' + s.label + '</span><span class="nav-count"></span>';
+      r.innerHTML = '<span class="ico">' + Icons.icon(s.icon, 'glyph-xl') + '</span><span class="lbl">' + s.label + '</span><span class="nav-count"></span>'; /* AMENDMENT #4(c): sub-tab icons carry glyph-xl now — at 0.283 scale the middle was ~5px and unreadable; at 0.66 it reads sharp, like the main rows */
       r.addEventListener('click', function () { closeDrawer(); });
       wrap.appendChild(r);
     });
