@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2997",
+ "intelligence": {
+  "title": "Scorecarding — The Ultimate Answer First",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2997-scorecarding-the-ultimate-answer-first",
+  "smart_note_id": "SN-2997",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2997/IB-SMART-NOTE-20261116-sn2997-scorecarding-the-ultimate-answer-first.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Scorecarding is the method underneath the re-aim. Before you judge a job, a round, or a lane, you name its ultimate answer — what it is ultimately trying to do — and then you score it against that answer and nothing else. A job whose ultimate answer is \"a page lands proven right, in front of Shawn's eyes, once\" is scored on whether pages land proven right, not on how many times it woke. A job whose ultimate answer is \"everything Shawn teaches, distilled into the system\" is scored on whether the teaching is in the system, not on how many drafts it wrote. The discipline is in the order: ultimate answer FIRST, then the three-part test — finished? done right? in optimal time? — and \"optimal time\" is not fastest and not slowest, it is the right time for done-right. Keeping busy is a fail even when the activity count is high, because activity is not the answer — the answer is. This is the same pass as the finishing law (SN-2996 Optimize for Finishing and Producing Value): that law says what to optimize for, this one says how to judge it. Together they are the audit's frame, applied to the audit itself first — the audit scores each area against its ultimate answer before it scores anything else — and then to every job, round, and lane on the machine.",
+  "simple_view": "Imagine you're playing a game — but before you start, you have to know: what does WINNING look like? That's the ultimate answer! If you don't know what winning is, you might run around in circles all day and think you're doing great — but you never scored a single goal! So first you say what winning is. THEN you play to win!",
+  "grandma_view": "It's like this, love — before you judge how someone did, dear, you have to know what they were trying to do in the first place. You can't say a cake is good by counting how many times the cook stirred the pot, love — you taste the cake! First you say what the thing is for, dear, then you judge it against that. Being busy isn't the same as getting it done.",
+  "naya_view": "Scorecarding — the ultimate answer first. What are you ultimately trying to do? Figure that out first — then optimize for that. It's not about keeping busy. It's about finishing the work and getting it done right, in the optimal time. Every job, round, and lane is scored against its ultimate answer first; activity without finishing is a fail no matter how high the count.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2997",
+   "title": "Scorecarding — The Ultimate Answer First",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2997/IB-SMART-NOTE-20261116-sn2997-scorecarding-the-ultimate-answer-first.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2997/IB-SMART-NOTE-20261116-sn2997-scorecarding-the-ultimate-answer-first.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "52886776c906f74ad243c2229ab8cb9eeb931ecc"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

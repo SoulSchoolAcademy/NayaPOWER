@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3014",
+ "intelligence": {
+  "title": "The Hub Is the Main Central Stage — Good Morning + Wisdom of the Day",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3014-the-hub-is-the-main-central-stage-good-morning-wisdom-of-the-day",
+  "smart_note_id": "SN-3014",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3014/IB-SMART-NOTE-20261116-sn3014-the-hub-is-the-main-central-stage-good-morning-wisdom-of-the-day.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The Hub is the public front door and the main central stage, and its hero must say so in one glance: Good morning, the Wisdom of the Day, the time and the date. That is the greeting of a home, not the dashboard of a system. The two lines that come out are both the same mistake in different clothes: \"Intel Today — the daily digest of NayaNET's smart notes\" misnames a public blog as an internal digest, and \"Intelligence as of November 15 · 226 Smart Notes · 1 day old\" is a system stamp that means nothing to a visitor and should not be there at all. What stays is the true line: \"Our public smart feed — connect with people of like minds.\" The bottom bars go away as bars — their apps, which look great now, move into the sidebar with their icons, some into the plus menu — and the Hub takes Personal's actual bottom bar, so the two pages are aligned at the bottom the way SN-3013 aligns them at the sides. The messenger/organizer gap is named honestly as a follow-on: if the main collective feed is featured here, everything should be aligned — but it is not this round's work. And the Wisdom of the Day is harvested from the Daily Wisdom source, never invented — the hero's words come from the system, not from a seat's imagination.",
+  "simple_view": "Imagine your house has a big front door, and right inside there's a friendly sign that says \"Good morning!\" with a beautiful wise saying and the time — that's the Hub! And the two confusing signs that don't make sense? We take those down. And the apps at the bottom? We put them neatly on the shelves on the side, where they belong!",
+  "grandma_view": "It's like this, love — the Hub is the front hall of the house, dear, and when you walk in it should greet you properly: good morning, a lovely wise word for the day, the time and the date! The confusing signs come down, love, and the apps move neatly onto the shelves at the side, where they look beautiful. That's a proper welcome, dear.",
+  "naya_view": "The Hub is the main central stage — Good morning + Wisdom of the Day. The hero greets you, the wisdom is the day's, the time and the date are there. The lines that misname the page come out; the true public banner stays. The bottom bars become the sidebar and the plus menu, and the Hub takes Personal's actual bottom bar — both aligned.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3014",
+   "title": "The Hub Is the Main Central Stage — Good Morning + Wisdom of the Day",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3014/IB-SMART-NOTE-20261116-sn3014-the-hub-is-the-main-central-stage-good-morning-wisdom-of-the-day.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3014/IB-SMART-NOTE-20261116-sn3014-the-hub-is-the-main-central-stage-good-morning-wisdom-of-the-day.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "2bdb8217ed4ab21febd544f68223fa6aea293c37"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3052",
+ "intelligence": {
+  "title": "The Night It Became Official",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3052-the-night-it-became-official",
+  "smart_note_id": "SN-3052",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3052/IB-SMART-NOTE-20261116-sn3052-the-night-it-became-official.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The night turned on one message (SN-3021): \"I think that's right now.\" Three rounds of propose-correct-correct-the-correction, and his yes landed on the round-3 playback — v4 OFFICIAL, LEFT 12, RIGHT 10, Hub-only top-bar buttons, sent to the coordinator the same minute as submission 31ca493e. In the same breath came the display instruction: the beautiful circle icons go INTO the sidebars as BUTTONS, the sidebar IS those icon-buttons, the Smart Bars flowing top and bottom go, the Hub gets the Personal six-tile bottom bar. The same hour taught the other side of official (SN-3022): the voice note was being sent through as a priority when it was not official yet — \"can I see what you actually are saying before you go and try to run it again?\" — and the verified facts underneath: there IS no voice note of the agreement, no words written, no recording made, the play button has nothing behind it to play. The letter is 86 beats, about 15 minutes aloud, way too long; when voice happens it is the short introduction, never the letter. Then the ground failed (SN-3023): the EPERM flake 20:24–20:55Z refused writes path by path, the browsers died at 20:32Z, the Hub re-bake he had just approved could not run — and nothing was lost, because the re-bake seat stopped rather than risk destroying the good 10.8 MB live feed. His law, in his words: build systems around it so no matter what happens you always have a solution — a backup plan, a way to continue — and preserve things so nothing gets wrecked. The night also looked forward (SN-3024): the living digital matrix — the grid as the worlds button, the plus menu, Smart Tabs morphing to top-right buttons and side tabs, icon and cover libraries — definition first, after Personal lands whole. And it looked at itself (SN-3025): intelligence is doing the most intelligent thing — understanding what matters, choosing wisely, doing it right, proving it worked — and the proof discipline with it: bake proof is not live proof, the eye corrects both ways. The presentation half (SN-3026) is one law in four shapes: pages unfold, never flat; pictures pass one glance or are held; same letter, same colour, always; keep what we had and think first — primo, not literal. The round (SN-3027) named the gap plainly: round 1 passed every check and his eye still said not whole, because the brief carried the words and missed the ultimate want — \"you're not nailing it each time.\" The entering laws (SN-3028): never a wall of text, the reader unfolds one paragraph at a time; mirror what works everywhere it fits; judge the whole page by the scorecard; three ways in, each extraordinary; the word is THING. The never (SN-3029): the proof host ignores `cb`, so a cb verification can pass on bytes you never built — verify from the branch's own blob, every time — and the alignment round that proved the method, Hub side PASS, feed live with 226 boards, count computed not painted. And the day's finish (SN-3030): Personal just right, done today — eight top buttons edge to edge, Connections harvested from the live room in 20 lines, the five only on the bottom, a feed is exactly three things, Fast Action Mode showing each verified piece the same pass — the template every page is sampled from, membership area included, the inside waiting honestly on his tap.",
+  "simple_view": "Imagine you draw a map of your treehouse three times. The third time, your best friend says \"YES! That's exactly right now!\" Then the map is official. And the buttons on it are big and shiny. You can press them. They light up. And if the table shakes, your castle still stands — because you built it strong, with backup pieces ready. And when someone asks you to do something, you don't just hear the words. You hear what they really want. That's how you get it right the first time.",
+  "grandma_view": "It's like this, love — you rearrange the sitting room three times, dear, and the third time he walks in and says \"I think that's right now!\" — that's the one, love, it's official! And you don't bake the cake before you've written the recipe, dear — he wants to see the exact words first, then you record the short hello, not the long letter. And when the lights flicker, love, you keep candles ready and the good china safe where it can't fall — you build it so no matter what happens, there's always a way through, and nothing precious ever gets wrecked. That's the night, dear — official, whole, and done right.",
+  "naya_view": "It's official now — his word confirms, his eye judges, the doing proves. I show him the words before anything is recorded, and voice waits until the language is nailed. I build the way around every failure before it happens — a backup plan, a way to continue, nothing wrecked, in the cloud as much as possible. I do the most intelligent thing, and I prove it on the live thing, where everybody can see it. I carry the ultimate want in the brief, not just the words. And Personal is done today, just right — the template every page is traced from.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3052",
+   "title": "The Night It Became Official",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3052/IB-SMART-NOTE-20261116-sn3052-the-night-it-became-official.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3052/IB-SMART-NOTE-20261116-sn3052-the-night-it-became-official.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "32da6072dbc68588d4cc76592c298bc644c54beb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

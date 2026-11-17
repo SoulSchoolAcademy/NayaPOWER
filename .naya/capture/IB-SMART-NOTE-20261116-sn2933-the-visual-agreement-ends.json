@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2933",
+ "intelligence": {
+  "title": "The Visual Agreement Ends at the Last Image",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2933-the-visual-agreement-ends",
+  "smart_note_id": "SN-2933",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2933/IB-SMART-NOTE-20261116-sn2933-the-visual-agreement-ends.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The failure was not the slideshow and not the scroll-down page — both are good. The failure was forcing one into the other: continuing the visual deck sideways into the 86-board letter, a scroll-down agreement made to go sideways, which didn't work out. The fix is not a better sideways motion; it is no sideways motion at all. Two presentations, separate destinations, linked by buttons: the visual ends at the last image with a button (to the scroll-down page, or straight into NayaNET); the scroll-down lives below the login on the main page, read it or don't; the opening page offers both with two buttons — \"Begin the deck ◆\" and \"Read the letter ◆\" — under his line, \"Pick your view — one, or both, as you wish.\" Neither locks the other out; view one, or both, as they wish, enjoy. And both end the same way: right back to the login page to put in their name, because they haven't entered yet — the agreement comes first, the name goes in after. The captain walked it whole (02:51Z) and confirmed in the page source what he meant: alongside the deck the build carried the letter as a second sideways step-through — that is the part that goes. His 03:13Z walk proved the point live: he went through the deck and it still carried him into the letter 1/86. The round that removes it was dispatched three minutes before his message — what he saw was the current build, not the fix failing. That is the discipline: name the failure, never retry it, build the two doors instead.",
+  "simple_view": "Imagine you have a beautiful picture book — and when you finish the last picture, instead of closing the book, someone tries to make you read a great big letter sideways! That's silly! The picture book should just END at the last picture — and then you get to choose: read the big letter if you want, or just go right in and play! Two buttons, you pick — one, or both, as you wish!",
+  "grandma_view": "It's like this, love — you show someone a lovely slideshow of pictures, and when the last picture comes, you stop. You don't drag them sideways into a long letter they didn't ask for. You give them a button: read the letter if you like, or go right in. And on the front page, the letter is there below for anyone who wants to read it. Two ways, both lovely, and you pick — one, or both, as you wish.",
+  "naya_view": "The slideshow ends at the last image. Two presentations, separate destinations, linked by buttons — never one flow forced sideways. Pick your view — one, or both, as you wish. Both end back at the login page.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2933",
+   "title": "The Visual Agreement Ends at the Last Image",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2933/IB-SMART-NOTE-20261116-sn2933-the-visual-agreement-ends.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2933/IB-SMART-NOTE-20261116-sn2933-the-visual-agreement-ends.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "fee462e179859f2f50eaa868ea82187020dd1785"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

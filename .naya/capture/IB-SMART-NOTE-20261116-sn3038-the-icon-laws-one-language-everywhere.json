@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3038",
+ "intelligence": {
+  "title": "The Icon Laws — One Language, Everywhere",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3038-the-icon-laws-one-language-everywhere",
+  "smart_note_id": "SN-3038",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3038/IB-SMART-NOTE-20261116-sn3038-the-icon-laws-one-language-everywhere.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "He looked at the screenshot and saw it in one glance: one icon with real depth and everything else flat. The sidebar rows were dots with circles, the + menus had no icons at all, the middle buttons were flat, the bottom tiles had color but no depth — stickers, not objects. And he said the thing he has been saying over and over: there is ONE specific language. Obsidian black in the middle. Buttons and icons glow on the outside. Font and icon in the middle usually white. Elevated, living depth. Real objects, everything, all the way. Each board themed to its color, color flow as you go down, the same language even into the calendar. A dot with a circle is not artistic — each icon should feel like a trillion-dollar jewel piece, like something special, and so should the button itself. The hover law is part of it: when they click and pull at the sidebar ones or the plus buttons, it should look extraordinary — they ALL should light up as you go over them. The buttons that come up were terrible: no icons, no light-up, not impressive. And the wisdom of the day rides the same law: no gray text, ever — white, active, double font, quotations around it, impressive, because we are a wisdom network and profound wisdom every day should be known right away. The reference was already on the page — the top-left + — so the fix is harvest, not invention: clone it once, put it behind, nudge it just a tad, one level does it. If a button doesn't look as layered as the top-left +, it isn't done.",
+  "simple_view": "Imagine every button is a little treasure chest! The middle is dark shiny black like a jewel box, the picture on it is bright white, and when you touch it, only the EDGES sparkle with pretty pearl colors — purple, blue, green, gold — like a super fancy race car! And every picture has to look like the REAL thing it is — not just a dot! If one treasure chest sparkles the best, we make ALL of them sparkle just like that one!",
+  "grandma_view": "It's like this, love — every button should be a proper little jewel, dear! Dark and shiny in the middle, bright white picture on top, and when you hover over it, love, just the edges light up — like pearl, dear, purple and blue and green and gold, like the fanciest car paint you ever saw! Not a plain dot, love — a real picture that looks like what it is! And the best one on the page, dear, is the little plus at the top — we make them ALL shine like that one!",
+  "naya_view": "One language, everywhere: black obsidian in the middle, white icon or font in the middle, light on the OUTSIDE only, double-layered by cloning once behind and nudging just a tad, pearl-rich color not glow fog. Every icon a real icon — a trillion-dollar jewel piece, no dots. The icon on the LEFT of the words. Hover lights every button up. No gray text ever. Boards themed to their color, color flow down the page, the same language into the calendar. The top-left + is the reference — harvest its construction for every button on the page. Test: if it doesn't look as layered as the top-left +, it isn't done.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3038",
+   "title": "The Icon Laws — One Language, Everywhere",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3038/IB-SMART-NOTE-20261116-sn3038-the-icon-laws-one-language-everywhere.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3038/IB-SMART-NOTE-20261116-sn3038-the-icon-laws-one-language-everywhere.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "21893b79fd094211e2ba88dfd384b0e8e157c85e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

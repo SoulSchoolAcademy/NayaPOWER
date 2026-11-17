@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2965",
+ "intelligence": {
+  "title": "Points, Stars and Levels",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2965-points-stars-and-levels",
+  "smart_note_id": "SN-2965",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2965/IB-SMART-NOTE-20261116-sn2965-points-stars-and-levels.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Points are authority — more points, more post weight — but a number alone tells the citizen nothing about where they stand. The level is the story of the number: what you are called, how far up the bar you are, what the next level gets you. The name changing with the level makes the progress visible in the one place the citizen always looks: under their own name. And the rewards, stated plainly, are what make the next level worth reaching for. Five stars, you're a five star member; ten stars, a ten star member — the name IS the level.",
+  "simple_view": "Imagine you collect shiny stars, and every time you get enough points you earn a new star — up to ten stars! And your special name changes as you grow: when you have five stars you're a five star member, and when you have ten stars you're a ten star member! And there's a bar that shows how far up you've climbed, and if you tap it, you can see all the star names and what you get at each one!",
+  "grandma_view": "It's like this, love — under your name there's a spot that says what level you're at, like a little badge that grows with you. When you reach five stars, you're a five star member, dear, and when you reach ten stars, you're a ten star member — your name changes all by itself! And there's a bar that goes all the way up to ten stars, and if you tap it, you can see all the levels, how the points work, and what you get at each one. Lovely, isn't it?",
+  "naya_view": "Under the profile, your level. The name changes with the level — five stars, five star member; ten stars, ten star member. A bar to ten stars; click to see every level, how points work, and what each level gets.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2965",
+   "title": "Points, Stars and Levels",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2965/IB-SMART-NOTE-20261116-sn2965-points-stars-and-levels.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2965/IB-SMART-NOTE-20261116-sn2965-points-stars-and-levels.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "da41046740a9315ca786bbc49397e4acc913feac"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

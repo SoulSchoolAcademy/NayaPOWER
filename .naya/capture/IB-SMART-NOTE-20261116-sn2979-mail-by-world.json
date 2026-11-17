@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2979",
+ "intelligence": {
+  "title": "Mail by World",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2979-mail-by-world",
+  "smart_note_id": "SN-2979",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2979/IB-SMART-NOTE-20261116-sn2979-mail-by-world.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Mail is one system with three front doors. The citizen's mail is separated by world — Personal mail, Business mail, Space mail — so they always see where the mail came from, and a letter never arrives pretending to be from a world it isn't. Mail is reachable from the sidebars, from any of those places: open mail from Personal and you see Personal mail first; the same for Business, the same for Space — the front door of the mail for that world always shows up first. And from the Hub, where they check their mail, they can always just select any of the other worlds and see its mail — one universal mail, with a world selector. The same for instant messaging, exactly the same way: separated by world at the front door, universal from the Hub. The separation is what makes the universality safe — one mail, but it always knows where it came from, and the citizen always knows too.",
+  "simple_view": "Imagine your mail has three magic doors — one for your Personal world, one for your Business world, one for your Space world! Open the Personal door and you see Personal mail first! Open the Business door and you see Business mail first! And from the Hub — the big front door — you can pick ANY door you like and peek inside! One mail, but it always remembers which world it came from. And messages work exactly the same way!",
+  "grandma_view": "It's like this, love — your mail is all in one place, dear, but it's kept tidy by which world it belongs to: your Personal mail, your Business mail, your Space mail — all separate, so you can always see where a letter came from. Open your mail from your Personal page and your Personal mail is right there first, love. Same for Business, same for Space — the front door for that world always shows its own mail first. And from the Hub you can pick any world you like and see its mail — one mail for everything, with a little selector to choose the world. And your instant messages work exactly the same way, dear — same doors, same rule.",
+  "naya_view": "Mail separated by world: Personal mail, Business mail, Space mail — so the citizen sees where the mail came from. Reachable from the sidebars, from any page. Opening mail from a page shows THAT world's mail first (the front door of the mail for that world). From the Hub's mail, the citizen can select ANY world and see its mail — one universal mail, with a world selector. Same for Instant Messenger, exactly the same way.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2979",
+   "title": "Mail by World",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2979/IB-SMART-NOTE-20261116-sn2979-mail-by-world.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2979/IB-SMART-NOTE-20261116-sn2979-mail-by-world.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "94d16b9e7dbd447f0d46e0c55e04699987a396ef"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
