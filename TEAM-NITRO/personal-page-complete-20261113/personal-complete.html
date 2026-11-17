@@ -12963,7 +12963,11 @@ function wallCard(j, iso, pid, idx){
     var chip = card.querySelector('.os-src-chip');
     var note = card.querySelector('.os-src-note');
     var feeds = card.querySelector('.os-src-feeds');
-    function unread(){ if (note) note.textContent = (window.mwTr?window.mwTr('The booking state could not be read just now.'):'The booking state could not be read just now.'); }
+    /* FIX 2026-11-17 (fix round 2, item 3): on an unreadable booking state the
+       doors used to keep their dead bare /book hrefs. The success path already
+       falls back to Connections when pages: 0 — the error path does the same
+       rewrite now, so no door ever points at the dead end. */
+    function unread(){ if (note) note.textContent = (window.mwTr?window.mwTr('The booking state could not be read just now.'):'The booking state could not be read just now.'); osApplyBookingDoors(null); }
     if (!sb) { unread(); return; }
     function late(){ return seq !== plugBookingSeq; }
     try {
@@ -32792,6 +32796,17 @@ window.__osSkillsSetMode = function(m){
      gets the slideshow. */
   setMode('skills', 'slides');
 };
+/* FIX 2026-11-17 (fix round 2, item 4 ROOT CAUSE): lsKey/lsGet/lsSet are defined
+   once, in the os-script IIFE — never visible inside this IIFE, so every mirror
+   read below threw ReferenceError, silently caught (try/catch -> mir = []), and
+   the Library door always rendered empty. Defined here, same bodies, same key
+   'os.library.<alias>' (window.PAGE_ALIAS, as the count already reads it) — the
+   door, the merge and the door delete all read the mirror now. No other scope
+   is touched: the os-script's own helpers and the single-arg lsGet helpers
+   elsewhere keep their own definitions. */
+function lsKey(kind){ return 'os.'+kind+'.'+(window.PAGE_ALIAS || 'flagship-personal'); }
+function lsGet(key, fb){ try { var v=localStorage.getItem(key); return v===null?fb:JSON.parse(v); } catch(e){ return fb; } }
+function lsSet(key, val){ try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){} }
 /* --- the Intelligent Library (item 6, GLUE) --- */
 var libState = { entries: [], shown: [], cats: ['All'], cat: 'All', q: '' };
 var LIB_TONES = ['#8e24aa', '#0f52ba', '#07925f', '#d4a017', '#c2410c', '#c62828', '#a21caf'];
@@ -33155,7 +33170,12 @@ input::placeholder,textarea::placeholder{color:#fff!important;opacity:1!importan
    at 120s/90s, the orb at 150s. The photo's top (where its baked caption
    sits) stays inside the circle: object-position biases the crop upward. */
 .ph-avwrap{background:radial-gradient(circle at 50% 30%,#1b1b26 0%,#0b0b11 58%,#050507 100%);border-radius:50%;padding:10px;box-shadow:0 24px 48px rgba(0,0,0,.72),0 0 0 1px rgba(255,255,255,.16),inset 0 2px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.65)}
-.ph-av img{object-position:50% 20%}
+/* FIX 2026-11-17 (fix round 2, item 7): the live photo is LANDSCAPE, so with
+   object-fit:cover its full height already shows — object-position could never
+   move the baked caption down, and its first line kept clipping on the circle's
+   curved top edge. The photo now sits at 90% inside the circle: the caption's
+   first line clears the edge at desktop and at 390. Pedestal and orbit untouched. */
+.ph-av img{object-position:50% 20%;transform:scale(.9)}
 /* ITEM 8 — drawer rows are real elevated objects: a top light, a deep foot,
    a drop shadow that puts them ON the page; hover lifts the whole row and
    lights it whole, rim + glow in its own colour. */
