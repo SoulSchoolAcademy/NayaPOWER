@@ -1,10 +1,10 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Your Connections</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet"><style>body{margin:0;background:#020202;}/* CONNECTIONS — Room identity ROSE, restrained. Dark premium glass.
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Your Connections</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet"><style>body{margin:0;background:#050607;}/* CONNECTIONS — Room identity ROSE, restrained. Dark premium glass.
    Button law: white at rest, rose LIGHT (never rose text) on hover.
    Color law: each CONTACT owns their own color — avatar ring + hover glow.
    Layout: vertical card stack. People scroll down. */
 
 .cx-stage{
-  --cx-purple:#9d75ff; --cx-purple-lt:#c4a8ff;
+  --cx-purple:#8e24aa; --cx-purple-lt:#8e24aa;
   position:relative;
   margin:0; padding:36px clamp(20px,4vw,64px) 90px; color:#fff;
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;
@@ -14,24 +14,24 @@
 .cx-stage .cx-ambient{ position:absolute; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
 .cx-stage .cx-orb{
   position:absolute; border-radius:50%; filter:blur(90px); opacity:.16;
-  animation:cxdrift 26s ease-in-out infinite alternate;
+  animation:cxdrift 120s ease-in-out infinite alternate;
 }
 .cx-stage .cx-orb.o1{ width:520px; height:520px; left:-140px; top:-120px;
-  background:radial-gradient(circle, #9d75ff 0%, transparent 70%); }
+  background:radial-gradient(circle, #8e24aa 0%, transparent 70%); }
 .cx-stage .cx-orb.o2{ width:460px; height:460px; right:-120px; top:30%;
-  background:radial-gradient(circle, #ed42c4 0%, transparent 70%);
-  animation-delay:-9s; animation-duration:32s; }
+  background:radial-gradient(circle, #a21caf 0%, transparent 70%);
+  animation-delay:-9s; animation-duration:120s; }
 .cx-stage .cx-orb.o3{ width:420px; height:420px; left:20%; bottom:-160px;
-  background:radial-gradient(circle, #55b9ee 0%, transparent 70%);
-  animation-delay:-17s; animation-duration:38s; }
+  background:radial-gradient(circle, #0f52ba 0%, transparent 70%);
+  animation-delay:-17s; animation-duration:120s; }
 @keyframes cxdrift{
   from{ transform:translate(0,0) scale(1); }
   to{ transform:translate(60px,40px) scale(1.12); }
 }
 .cx-stage > *:not(.cx-ambient){ position:relative; z-index:1; }
 .cx-stage .cx-head{ margin:0 0 22px; }
-.cx-hub-back{ display:inline-flex; align-items:center; height:38px; padding:0 15px; margin:0 0 16px; border-radius:999px; border:1px solid rgba(232,234,242,.35); background:rgba(255,255,255,.04); color:#fff; text-decoration:none; font:800 12px Inter,system-ui,sans-serif; letter-spacing:.06em; transition:border-color .15s ease, box-shadow .15s ease; }
-.cx-hub-back:hover{ border-color:#7c3aed; box-shadow:0 0 16px -4px #7c3aed; }
+.cx-hub-back{ display:inline-flex; align-items:center; height:38px; padding:0 15px; margin:0 0 16px; border-radius:999px; border:1px solid rgba(232,234,242,.35); background:rgba(255,255,255,.04); color:#fff; text-decoration:none; font:800 17px Inter,system-ui,sans-serif; letter-spacing:.06em; transition:border-color .15s ease, box-shadow .15s ease; }
+.cx-hub-back:hover{ border-color:#8e24aa; box-shadow:0 0 16px -4px #8e24aa; }
 .cx-stage .cx-kicker{
   display:flex; align-items:center; gap:22px;
   margin:0 0 14px;
@@ -39,22 +39,18 @@
 /* pure white type, carved with light: crisp ground shadow,
    luminous halo, breathing radiance */
 .cx-stage .cx-kicker-text{
-  font-family:"Cormorant Garamond", Georgia, serif;
-  font-size:44px; font-weight:600; letter-spacing:.02em; color:#fff;
-  white-space:nowrap; line-height:1.15;
+  font-family:"Marcellus", Georgia, serif;
+  font-size:25px; font-weight:600; letter-spacing:.02em; color:#fff;
+  line-height:1.15;
   text-shadow:
     0 1px 0 rgba(255,255,255,.4),
     0 3px 8px rgba(0,0,0,.75),
     0 0 32px rgba(255,255,255,.3);
-  animation:cxtextbreathe 5s ease-in-out infinite;
 }
 .cx-stage .cx-kicker-text em{
   font-style:italic; font-weight:500;
 }
-@keyframes cxtextbreathe{
-  0%,100%{ text-shadow:0 1px 0 rgba(255,255,255,.4), 0 3px 8px rgba(0,0,0,.75), 0 0 24px rgba(255,255,255,.24); }
-  50%{ text-shadow:0 1px 0 rgba(255,255,255,.45), 0 3px 8px rgba(0,0,0,.75), 0 0 44px rgba(255,255,255,.42); }
-}
+
 /* icon presence: radiant halo behind the mark, alive */
 /* section mark: black orb, light flowing around its edge */
 .cx-stage .cx-orb-icon{
@@ -64,7 +60,7 @@
     inset 0 2px 5px rgba(255,255,255,.18),
     inset 0 -8px 14px rgba(0,0,0,.65),
     0 6px 16px rgba(0,0,0,.6),
-    0 0 24px rgba(157,117,255,.35);
+    0 0 24px rgba(142,36,170,.35);
 }
 /* white backlight — the halo that makes it a ball, not a disc */
 .cx-stage .cx-orb-icon::after{
@@ -73,32 +69,19 @@
     rgba(255,255,255,.4) 0%,
     rgba(255,255,255,.12) 42%,
     transparent 68%);
-  animation:cxbackbreathe 5s ease-in-out infinite;
 }
-@keyframes cxbackbreathe{
-  0%,100%{ opacity:.75; transform:scale(.96); }
-  50%{ opacity:1; transform:scale(1.05); }
-}
-.cx-stage .cx-orb-icon::before{
-  content:''; position:absolute; inset:-4px; border-radius:50%;
-  background:conic-gradient(from 0deg,
-    transparent 0deg,
-    rgba(157,117,255,.95) 55deg,
-    rgba(255,255,255,.85) 85deg,
-    transparent 130deg,
-    transparent 360deg);
-  -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px));
-  mask:radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px));
-  animation:cxsheen 4s linear infinite;
-  filter:drop-shadow(0 0 6px rgba(157,117,255,.8));
-}
+
+
 .cx-stage .cx-logo{
   flex:0 0 auto; width:58px; height:58px; border-radius:50%;
   filter:drop-shadow(0 4px 10px rgba(0,0,0,.7)) drop-shadow(0 0 16px rgba(255,255,255,.4));
 }
 
+.cx-stage .cx-cats{ margin:0 0 6px; }
+.cx-stage .cx-cats .nsb-row{ justify-content:center; flex-wrap:wrap; overflow:visible; padding:10px 0 18px; -webkit-mask-image:none; mask-image:none; }
+.cx-stage .cx-steps{ font-size:17px; line-height:1.65; color:#fff; margin:0 0 18px; max-width:640px; }
 .cx-stage .cx-sub{
-  font-size:17px; line-height:1.65; color:#fff; margin:6px 0 0; font-weight:500; opacity:.94;
+  font-size:17px; line-height:1.65; color:#fff; margin:6px 0 0; font-weight:500;
   max-width:640px;
 }
 
@@ -110,73 +93,69 @@
 .cx-stage .cx-filters::-webkit-scrollbar{ display:none; }
 .cx-stage .cx-chip{
   flex:0 0 auto; display:flex; align-items:center; gap:8px;
-  padding:12px 20px; border-radius:999px; font-size:14px; font-weight:700;
+  padding:12px 20px; border-radius:999px; font-size:17px; font-weight:700;
   cursor:pointer; font-family:inherit; color:#fff; white-space:nowrap;
-  background:#050505; border:1.5px solid rgba(255,255,255,.4);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 0 16px -2px rgba(255,255,255,.18), 0 4px 14px rgba(0,0,0,.5);
+  background:#050607; border:1.5px solid rgba(255,255,255,.4);
+  box-shadow:0 0 16px -2px rgba(255,255,255,.18), 0 4px 14px rgba(0,0,0,.5);
   transition:border-color .2s, box-shadow .25s, transform .15s;
 }
 .cx-stage .cx-chip:hover{ border-color:var(--bc); transform:translateY(-1px);
-  box-shadow:0 0 24px -4px var(--bc), inset 0 1px 0 rgba(255,255,255,.14); }
+  box-shadow:0 0 24px -4px var(--bc); }
 .cx-stage .cx-chip.on{
   border-color:var(--bc);
-  box-shadow:0 0 26px -2px var(--bc), inset 0 1px 0 rgba(255,255,255,.16);
+  box-shadow:0 0 26px -2px var(--bc);
 }
-.cx-stage .cx-chip-n{ font-size:12px; color:#fff; opacity:.75; font-variant-numeric:tabular-nums; }
+.cx-stage .cx-chip-n{ font-size:17px; color:#fff; font-variant-numeric:tabular-nums; }
 .cx-stage .cx-new{
   flex:0 0 auto; display:flex; align-items:center; gap:8px;
-  padding:12px 20px; border-radius:999px; font-size:14px; font-weight:800; letter-spacing:.06em;
+  padding:12px 20px; border-radius:999px; font-size:17px; font-weight:800; letter-spacing:.06em;
   cursor:pointer; font-family:inherit; color:#fff; white-space:nowrap;
-  background:#050505; border:1.5px solid rgba(255,255,255,.4);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 0 16px -2px rgba(255,255,255,.18), 0 4px 14px rgba(0,0,0,.5);
+  background:#050607; border:1.5px solid rgba(255,255,255,.4);
+  box-shadow:0 0 16px -2px rgba(255,255,255,.18), 0 4px 14px rgba(0,0,0,.5);
   transition:border-color .22s, box-shadow .25s, transform .15s;
 }
 .cx-stage .cx-new:hover{
   border-color:var(--cx-purple); transform:translateY(-1px);
-  box-shadow:0 0 26px -2px var(--cx-purple), inset 0 1px 0 rgba(255,255,255,.14);
+  box-shadow:0 0 26px -2px var(--cx-purple);
 }
 .cx-stage .cx-nameform{
-  flex:0 0 auto; display:flex; align-items:center; gap:8px;
+  flex:0 0 auto; display:flex; align-items:center; flex-wrap:wrap; gap:8px;
   padding:6px 8px 6px 6px; border-radius:999px;
-  background:#050505; border:1.5px solid var(--cx-purple);
-  box-shadow:0 0 22px -4px var(--cx-purple), inset 0 1px 0 rgba(255,255,255,.12);
+  background:#050607; border:1.5px solid var(--cx-purple);
+  box-shadow:0 0 22px -4px var(--cx-purple);
 }
 .cx-stage .cx-nameinput{
   width:150px; padding:8px 12px; border:none; outline:none;
-  background:transparent; color:#fff; font-size:14px; font-family:inherit;
+  background:transparent; color:#fff; font-size:17px; font-family:inherit;
 }
-.cx-stage .cx-nameinput::placeholder{ color:rgba(255,255,255,.4); }
+.cx-stage .cx-nameinput::placeholder{ color:#fff; }
 .cx-stage .cx-namego{
-  padding:8px 16px; border-radius:999px; font-size:12px; font-weight:800;
+  padding:8px 16px; border-radius:999px; font-size:17px; font-weight:800;
   cursor:pointer; font-family:inherit; color:#fff; letter-spacing:.08em;
-  background:#0d0817; border:1px solid var(--cx-purple);
+  background:#050607; border:1px solid var(--cx-purple);
   box-shadow:0 0 16px -4px var(--cx-purple);
 }
 
 
 /* vertical contact cards */
 .cx-stage .cx-list{ display:flex; flex-direction:column; gap:14px; }
-.cx-stage .cx-empty{ color:#fff; opacity:.7; font-size:14px; padding:24px 0; }
+.cx-stage .cx-empty{ color:#fff; font-size:17px; padding:24px 0; }
 .cx-stage .cx-card{
   position:relative; cursor:pointer;
   display:flex; align-items:center; gap:18px;
   border-radius:20px; padding:18px 22px;
-  background:linear-gradient(160deg, #17181d 0%, #08080a 100%);
+  background:linear-gradient(135deg, #17181d 0%, #050607 100%);
   border:1.5px solid rgba(255,255,255,.32);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -16px 30px rgba(0,0,0,.4), 0 0 18px -2px rgba(255,255,255,.12), 0 16px 40px rgba(0,0,0,.6);
-  animation:cxbreathe 5s ease-in-out infinite;
+  box-shadow:inset 0 -16px 30px rgba(0,0,0,.4), 0 0 18px -2px rgba(255,255,255,.12), 0 16px 40px rgba(0,0,0,.6);
   transition:transform .22s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .3s;
   animation:cxin .5s cubic-bezier(.2,.8,.2,1) both;
 }
 @keyframes cxin{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:none;} }
-@keyframes cxbreathe{
-  0%,100%{ box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -16px 30px rgba(0,0,0,.4), 0 0 14px -2px rgba(255,255,255,.1), 0 16px 40px rgba(0,0,0,.6); }
-  50%{ box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -16px 30px rgba(0,0,0,.4), 0 0 26px -2px rgba(255,255,255,.22), 0 16px 40px rgba(0,0,0,.6); }
-}
+
 .cx-stage .cx-card:hover, .cx-stage .cx-card:focus-visible{
   transform:translateY(-2px); outline:none;
   border-color:var(--cc);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -16px 30px rgba(0,0,0,.4), 0 22px 52px rgba(0,0,0,.65), 0 0 36px -4px var(--cc);
+  box-shadow:inset 0 -16px 30px rgba(0,0,0,.4), 0 22px 52px rgba(0,0,0,.65), 0 0 36px -4px var(--cc);
 }
 .cx-stage .cx-ava{
   flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center;
@@ -190,28 +169,24 @@
   text-shadow:0 1px 3px rgba(0,0,0,.6);
 }
 .cx-stage .cx-ava.big{ width:78px; height:78px; font-size:30px; }
-.cx-stage .cx-ava::after{
-  content:''; position:absolute; inset:-2px; border-radius:50%;
-  background:conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.35) 40deg, transparent 90deg);
-  animation:cxsheen 7s linear infinite; pointer-events:none;
-}
+
 .cx-stage .cx-ava{ position:relative; overflow:hidden; }
-@keyframes cxsheen{ to{ transform:rotate(360deg); } }
+
 .cx-stage .cx-info{ flex:1 1 auto; min-width:0; }
 .cx-stage .cx-name{ font-size:19px; font-weight:800; margin:0 0 4px; color:#fff; }
-.cx-stage .cx-role{ font-size:13px; color:#fff; opacity:.72; margin:0 0 4px; }
-.cx-stage .cx-in{ font-size:11.5px; color:#fff; opacity:.55; margin:0; letter-spacing:.03em; }
+.cx-stage .cx-role{ font-size:17px; color:#fff; margin:0 0 4px; }
+.cx-stage .cx-in{ font-size:17px; color:#fff; margin:0; letter-spacing:.03em; }
 .cx-stage .cx-go{
   flex:0 0 auto; width:40px; height:40px; border-radius:50%;
   display:flex; align-items:center; justify-content:center;
-  border:1px solid rgba(255,255,255,.25); color:#fff; font-size:18px;
-  background:#0a0a0c;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 4px 12px rgba(0,0,0,.5);
+  border:1px solid rgba(255,255,255,.25); color:#fff; font-size:19px;
+  background:#050607;
+  box-shadow:0 4px 12px rgba(0,0,0,.5);
   transition:border-color .2s, box-shadow .25s;
 }
 .cx-stage .cx-card:hover .cx-go{
   border-color:var(--cx-purple);
-  box-shadow:0 0 18px -4px var(--cx-purple), inset 0 1px 0 rgba(255,255,255,.12);
+  box-shadow:0 0 18px -4px var(--cx-purple);
 }
 
 /* modal */
@@ -231,70 +206,78 @@
 }
 @keyframes cxmodal{ from{ opacity:0; transform:scale(.94) translateY(12px);} to{ opacity:1; transform:none;} }
 .cx-stage .cx-mtop{ display:flex; gap:18px; align-items:center; margin-bottom:16px; }
-.cx-stage .cx-mname{ font-size:24px; font-weight:900; color:#fff; margin:0 0 6px; }
-.cx-stage .cx-mrole{ font-size:13px; color:#fff; opacity:.7; margin:0; }
-.cx-stage .cx-mnote{ font-size:18px; line-height:1.65; color:#fff; opacity:.92; margin:0 0 22px; font-weight:500; }
-.cx-stage .cx-mlabel{ font-size:10px; font-weight:800; letter-spacing:.18em; color:#fff; opacity:.6; margin:0 0 10px; }
+.cx-stage .cx-mname{ font-family:"Marcellus", Georgia, serif; font-size:25px; font-weight:900; color:#fff; margin:0 0 6px; }
+.cx-stage .cx-mrole{ font-size:17px; color:#fff; margin:0; }
+.cx-stage .cx-mnote{ font-size:17px; line-height:1.65; color:#fff; margin:0 0 22px; font-weight:500; }
+.cx-stage .cx-mlabel{ font-size:17px; font-weight:800; letter-spacing:.18em; color:#fff; margin:0 0 10px; }
 .cx-stage .cx-lpick{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
 .cx-stage .cx-lbtn{
-  padding:10px 18px; border-radius:999px; font-size:13px; font-weight:700;
+  padding:10px 18px; border-radius:999px; font-size:17px; font-weight:700;
   cursor:pointer; font-family:inherit; color:#fff;
-  background:#050505; border:1.5px solid rgba(255,255,255,.4);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 0 14px -2px rgba(255,255,255,.16), 0 4px 12px rgba(0,0,0,.5);
+  background:#050607; border:1.5px solid rgba(255,255,255,.4);
+  box-shadow:0 0 14px -2px rgba(255,255,255,.16), 0 4px 12px rgba(0,0,0,.5);
   transition:border-color .2s, box-shadow .25s;
 }
 .cx-stage .cx-lbtn:hover{ border-color:var(--cx-purple);
-  box-shadow:0 0 22px -4px var(--cx-purple), inset 0 1px 0 rgba(255,255,255,.12); }
+  box-shadow:0 0 22px -4px var(--cx-purple); }
 .cx-stage .cx-lbtn.in{
-  border-color:var(--cx-purple); background:#0a0714;
-  box-shadow:0 0 22px -2px var(--cx-purple), inset 0 1px 0 rgba(255,255,255,.14);
+  border-color:var(--cx-purple); background:#050607;
+  box-shadow:0 0 22px -2px var(--cx-purple);
 }
 .cx-stage .cx-draft{
   width:100%; min-height:110px; resize:vertical; box-sizing:border-box;
-  border-radius:14px; padding:14px 16px; font-size:16px; line-height:1.6; font-family:inherit;
+  border-radius:14px; padding:14px 16px; font-size:17px; line-height:1.6; font-family:inherit;
   color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.14);
   margin-bottom:12px;
 }
 .cx-stage .cx-draft:focus{ outline:none; border-color:var(--cx-purple); box-shadow:0 0 18px -6px var(--cx-purple); }
+.cx-stage .cx-draft::placeholder{ color:#fff; opacity:1; }
+.cx-stage .cx-chanbox{ margin:0 0 22px; padding:18px; border-radius:16px; background:#050607; border:1.5px solid color-mix(in srgb, var(--cc) 55%, transparent); }
+.cx-stage .cx-chanrow{ display:flex; gap:12px; align-items:center; margin-bottom:12px; }
+.cx-stage .cx-chanlabel{ flex:0 0 96px; font-size:17px; font-weight:800; color:#fff; }
+.cx-stage .cx-chaninput{ flex:1 1 auto; min-width:0; box-sizing:border-box; border-radius:14px; padding:12px 16px; font-size:17px; line-height:1.4; font-family:inherit; color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.14); }
+.cx-stage .cx-chaninput::placeholder{ color:#fff; opacity:1; }
+.cx-stage .cx-chaninput:focus{ outline:none; border-color:#8e24aa; box-shadow:0 0 18px -6px #8e24aa; }
+.cx-stage .cx-nameinput::placeholder{ color:#fff; opacity:1; }
 .cx-stage .cx-mrow{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:10px; }
-.cx-stage .cx-dstatus{ font-size:12px; color:#fff; opacity:.7; }
-.cx-stage .cx-honest{ font-size:11.5px; color:#fff; opacity:.6; margin:0 0 22px; }
+.cx-stage .cx-dstatus{ font-size:17px; color:#fff; }
+.cx-stage .cx-honest{ font-size:17px; color:#fff; margin:0 0 22px; }
 .cx-stage .cx-btn{
-  padding:12px 28px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.12em;
+  padding:12px 28px; border-radius:999px; font-size:17px; font-weight:800; letter-spacing:.12em;
   cursor:pointer; font-family:inherit; color:#fff;
-  background:#050505; border:1.5px solid rgba(255,255,255,.4);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 0 16px -2px rgba(255,255,255,.18), 0 6px 18px rgba(0,0,0,.55);
+  background:#050607; border:1.5px solid rgba(255,255,255,.4);
+  box-shadow:0 0 16px -2px rgba(255,255,255,.18), 0 6px 18px rgba(0,0,0,.55);
   transition:border-color .22s, box-shadow .25s, transform .15s;
 }
 .cx-stage .cx-btn:hover, .cx-stage .cx-btn:focus-visible{
   border-color:var(--cx-purple); outline:none; transform:translateY(-1px);
-  box-shadow:0 0 28px -2px var(--cx-purple), inset 0 1px 0 rgba(255,255,255,.14);
+  box-shadow:0 0 28px -2px var(--cx-purple);
 }
 .cx-stage .cx-btn.ghost{ margin-top:2px; }
 
 .cx-stage .cx-foot{
   margin:34px 0 0; padding-top:20px; text-align:center;
-  font-size:11px; letter-spacing:.1em; color:#fff; opacity:.5;
+  font-size:17px; letter-spacing:.1em; color:#fff;
   border-top:1px solid rgba(255,255,255,.08);
 }
 
 @media(max-width:760px){
   .cx-stage{ padding:28px 16px 70px; }
   .cx-stage .cx-card{ padding:16px 18px; gap:14px; }
-  .cx-stage .cx-ava{ width:48px; height:48px; font-size:16px; }
+  .cx-stage .cx-ava{ width:48px; height:48px; font-size:17px; }
   .cx-stage .cx-modal{ padding:26px 22px; }
 }
 @media(prefers-reduced-motion:reduce){
-  .cx-stage .cx-card, .cx-stage .cx-orb, .cx-stage .cx-ava::after, .cx-stage .cx-orb-icon::before, .cx-stage .cx-orb-icon::after, .cx-stage .cx-kicker-text{ animation:none; }
+  .cx-stage .cx-card, .cx-stage .cx-orb, .cx-stage .cx-orb-icon::after, .cx-stage .cx-kicker-text{ animation:none; }
   .cx-stage *{ transition:none !important; }
 }
 
 /* ═══ twin-plus chrome (harvested) ═══ */
-#os-chrome .rooms-plus,#os-chrome .eco-plus{position:fixed;top:12px;z-index:900;width:48px;height:48px;flex:none;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;background:linear-gradient(180deg,#1b1b24,#07070b);border:1.5px solid #fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 8px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.55);transition:border-color .25s,box-shadow .25s,transform .25s}
-#os-chrome .rooms-plus{left:12px;--jewel:#a06bff}
-#os-chrome .eco-plus{right:12px;--jewel:#e84fff}
+#os-chrome .rooms-plus,#os-chrome .eco-plus{position:fixed;top:12px;z-index:900;width:48px;height:48px;flex:none;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;background:linear-gradient(135deg,#1b1b24,#050607);border:1.5px solid var(--jewel);box-shadow:inset 0 -4px 8px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.55);transition:border-color .25s,box-shadow .25s,transform .25s}
+#os-chrome .rooms-plus{left:12px;--jewel:#8e24aa}
+#os-chrome .eco-plus{right:12px;--jewel:#c2410c}
 #os-chrome .rooms-plus svg,#os-chrome .eco-plus svg{width:20px;height:20px}
-#os-chrome .rooms-plus:hover,#os-chrome .eco-plus:hover{transform:translateY(-2px) scale(1.04);border-color:var(--jewel);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -3px 8px rgba(0,0,0,.4),0 0 32px var(--jewel),0 12px 28px rgba(0,0,0,.6)}
+#os-chrome .rooms-plus:hover,#os-chrome .eco-plus:hover{transform:translateY(-2px) scale(1.04);border-color:var(--jewel);box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),0 0 32px var(--jewel),0 12px 28px rgba(0,0,0,.6)}
 /* Twin-plus clearance (Hub fix, 2026-11-08, defect 5): the fixed + buttons
    sit over the top bar's left/right ends at mobile widths and cover the app
    name (left) and the last tab (right) — the bar's mobile padding (6px 12px)
@@ -305,119 +288,47 @@
   #nsbTopstack .nsb-top-inner{padding-left:64px;padding-right:64px}
 }
 /* — Rooms drawer (rooms-plus door) — contents verbatim from the Hub — */
-.os-drawer{position:fixed;top:0;left:0;bottom:0;width:min(300px,84vw);z-index:960;background:#12151D;transform:translateX(-106%);transition:transform .32s cubic-bezier(.16,.84,.22,1);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),24px 0 60px rgba(0,0,0,.6);padding:18px 14px;overflow-y:auto}
+.os-drawer{position:fixed;top:0;left:0;bottom:0;width:min(300px,84vw);z-index:960;background:#12151D;transform:translateX(-106%);transition:transform .32s cubic-bezier(.16,.84,.22,1);box-shadow:24px 0 60px rgba(0,0,0,.6);padding:18px 14px;overflow-y:auto}
 .os-drawer.open{transform:none}
-.os-drawer .os-drawer-head{font-size:11px;letter-spacing:.18em;color:#E8E8EC;margin:2px 6px 12px;font-weight:800}
-.os-drawer a{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:14.5px;border:1.5px solid rgba(255,255,255,.85);background:linear-gradient(180deg,#17171f,#0a0a0f);margin-bottom:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.5)}
-.os-drawer a:hover{border-color:var(--rc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -3px 6px rgba(0,0,0,.5),0 0 22px var(--rc,#a06bff),0 8px 20px rgba(0,0,0,.55)}
+.os-drawer .os-drawer-head{font-size:17px;letter-spacing:.18em;color:#fff;margin:2px 6px 12px;font-weight:800}
+.os-drawer a{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:17px;border:1.5px solid rgba(255,255,255,.85);background:linear-gradient(135deg,#17171f,#050607);margin-bottom:8px;box-shadow:inset 0 -3px 6px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.5)}
+.os-drawer a:hover{border-color:var(--rc,#8e24aa);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 0 22px var(--rc,#8e24aa),0 8px 20px rgba(0,0,0,.55)}
 .os-backdrop{position:fixed;inset:0;z-index:950;background:rgba(3,3,6,.6);display:none}
 .os-backdrop.open{display:block}
 /* — Ecosystem menu (eco-plus door) — contents verbatim from the Hub ECO_LINKS — */
-#os-chrome .eco-menu{position:fixed;top:72px;right:12px;z-index:960;width:min(320px,88vw);background:#171B25;border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:10px;display:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 24px 60px rgba(0,0,0,.65)}
+#os-chrome .eco-menu{position:fixed;top:72px;right:12px;z-index:960;width:min(320px,88vw);background:#171B25;border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:10px;display:none;box-shadow:0 24px 60px rgba(0,0,0,.65)}
 #os-chrome .eco-menu.open{display:block}
-#os-chrome .eco-menu .eco-head{font-size:10.5px;letter-spacing:.16em;color:#E8E8EC;padding:6px 8px 10px;font-weight:800}
-#os-chrome .eco-menu a{display:flex;align-items:center;gap:10px;padding:10px 8px;border-radius:10px;color:#fff;text-decoration:none;font-weight:700;font-size:13.5px;letter-spacing:.04em}
-#os-chrome .eco-menu a:hover{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1.5px var(--eco,#a06bff),0 0 18px -4px var(--eco,#a06bff)}
-#os-chrome .eco-menu .eco-ico{width:26px;height:26px;flex:none;display:grid;place-items:center;border-radius:8px;background:#0b0b11;color:var(--eco,#a06bff);font-size:13px}
-#os-chrome .eco-menu .ext{margin-left:auto;color:#E8E8EC}
+#os-chrome .eco-menu .eco-head{font-size:17px;letter-spacing:.16em;color:#fff;padding:6px 8px 10px;font-weight:800}
+#os-chrome .eco-menu a{display:flex;align-items:center;gap:10px;padding:10px 8px;border-radius:10px;color:#fff;text-decoration:none;font-weight:700;font-size:17px;letter-spacing:.04em}
+#os-chrome .eco-menu a:hover{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1.5px var(--eco,#8e24aa),0 0 18px -4px var(--eco,#8e24aa)}
+#os-chrome .eco-menu .eco-ico{width:26px;height:26px;flex:none;display:grid;place-items:center;border-radius:8px;background:#0b0b11;color:var(--eco,#8e24aa);font-size:17px}
+#os-chrome .eco-menu .ext{margin-left:auto;color:#fff}
 /* ═══ SMART BAR TOP — Connections functions · drifts RIGHT · not editable (§5.2) ═══ */
 .cx-topbar{position:fixed;top:0;left:0;right:0;z-index:800;padding:8px 70px 10px;
-  background:linear-gradient(180deg,rgba(8,8,12,.96),rgba(8,8,12,.82));
+  background:linear-gradient(135deg,rgba(8,8,12,.96),rgba(8,8,12,.82));
   -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 10px 30px rgba(0,0,0,.5);}
 .cx-topbar-row{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px;}
 .cx-topbar-row::-webkit-scrollbar{display:none}
 .cx-ttab{flex:0 0 auto;display:flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border:0;cursor:pointer;
-  border-radius:999px;color:#fff;font:800 13.5px Inter,system-ui,sans-serif;letter-spacing:.04em;white-space:nowrap;
-  background:linear-gradient(180deg,#16161c,#0a0a0e);border:1.5px solid rgba(255,255,255,.75);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 6px 16px rgba(0,0,0,.45);
+  border-radius:999px;color:#fff;font:800 17px Inter,system-ui,sans-serif;letter-spacing:.04em;white-space:nowrap;
+  background:linear-gradient(135deg,#16161c,#050607);border:1.5px solid rgba(255,255,255,.75);
+  box-shadow:0 6px 16px rgba(0,0,0,.45);
   transition:transform .18s cubic-bezier(.16,.84,.22,1),border-color .25s,box-shadow .25s;}
 .cx-ttab .cx-tjewel{width:22px;height:22px;flex:none;display:grid;place-items:center;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),transparent 55%),var(--tc,#a06bff);
-  color:#fff;font-size:12px;box-shadow:0 0 10px -2px var(--tc,#a06bff);}
-.cx-ttab:hover{transform:translateY(-2px);border-color:var(--tc,#a06bff);color:#fff;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 8px 20px rgba(0,0,0,.5),0 0 26px -4px var(--tc,#a06bff);
-  text-shadow:0 0 12px var(--tc,#a06bff);}
+  background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),transparent 55%),var(--tc,#8e24aa);
+  color:#fff;font-size:17px;box-shadow:0 0 10px -2px var(--tc,#8e24aa);}
+.cx-ttab:hover{transform:translateY(-2px);border-color:var(--tc,#8e24aa);color:#fff;
+  box-shadow:0 8px 20px rgba(0,0,0,.5),0 0 26px -4px var(--tc,#8e24aa);
+  text-shadow:0 0 12px var(--tc,#8e24aa);}
 /* ═══ SMART BAR BOTTOM — the ecosystem · drifts LEFT · editable by law (§5.3) ═══ */
 .cx-bottombar{position:fixed;left:0;right:0;bottom:0;z-index:800;padding:8px 10px 12px;
-  background:linear-gradient(0deg,rgba(8,8,12,.96),rgba(8,8,12,.82));
+  background:linear-gradient(135deg,rgba(8,8,12,.96),rgba(8,8,12,.82));
   -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   border-top:1px solid rgba(255,255,255,.14);box-shadow:0 -10px 30px rgba(0,0,0,.5);}
-body{padding-top:76px !important;padding-bottom:96px !important;}
-/* ═══ CONNECTED — the connection law ═══ */
-.cx-connected{margin:26px 0 0;padding:22px;border-radius:20px;position:relative;
-  background:linear-gradient(180deg,#14141c,#0a0a10);
-  border:2px solid rgba(255,255,255,.16);
-  box-shadow:inset 0 1px rgba(255,255,255,.07),inset 0 -14px 28px rgba(0,0,0,.35),0 18px 44px rgba(0,0,0,.55),0 0 26px -12px #e84fff;}
-.cx-connected h2{color:#fff;font-size:21px;margin:0 0 4px;letter-spacing:.02em;}
-.cx-connected .cx-conn-sub{color:#cfd3e2;font-size:14px;margin:0 0 14px;line-height:1.5;}
-.cx-connrow{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;color:#fff !important;text-decoration:none;margin-bottom:8px;
-  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(0,0,0,.2));
-  border:1.5px solid rgba(255,255,255,.75);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 8px 20px rgba(0,0,0,.4);
-  transition:transform .18s cubic-bezier(.16,.84,.22,1),border-color .25s,box-shadow .25s;}
-.cx-connrow:hover{transform:translateY(-2px);border-color:var(--jc,#e84fff);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 10px 24px rgba(0,0,0,.45),0 0 24px -6px var(--jc,#e84fff);}
-.cx-connrow .cx-cj{width:36px;height:36px;flex:none;display:grid;place-items:center;border-radius:50%;font-size:15px;color:#fff;
-  background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.55),transparent 55%),var(--jc,#e84fff);
-  border:1.5px solid var(--jc,#e84fff);box-shadow:0 0 14px -4px var(--jc,#e84fff),inset 0 1px 0 rgba(255,255,255,.4);}
-.cx-connrow b{display:block;font-size:15px;}
-.cx-connrow i{display:block;font-style:normal;font-size:12.5px;color:#cfd3e2;margin-top:2px;line-height:1.45;}
-.cx-connrow .cx-go{margin-left:auto;font-size:18px;font-weight:900;flex:none;}
-.cx-connrow:hover .cx-go{color:var(--jc,#e84fff);text-shadow:0 0 12px var(--jc,#e84fff);}
+body{padding-top:0 !important;padding-bottom:96px !important;}
 
-</style><style>
-/* ═══ #19 CUSTOM FIELDS & STAGES BY ASKING — additive layer ═══
-   Composed entirely from the room's own parts (.cx-mlabel, .cx-chip,
-   .cx-lbtn, .cx-draft, .cx-btn, .cx-honest, card shell values).
-   Obsidian at rest; ignition is the room's purple, edge only. */
-.cx-stage .cx-fx-panel{
-  position:relative; margin:0 0 22px; padding:22px;
-  border-radius:20px;
-  background:linear-gradient(160deg, #17181d 0%, #08080a 100%);
-  border:1.5px solid rgba(255,255,255,.32);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -16px 30px rgba(0,0,0,.4), 0 0 18px -2px rgba(255,255,255,.12), 0 16px 40px rgba(0,0,0,.6);
-  transition:border-color .25s, box-shadow .3s;
-}
-.cx-stage .cx-fx-panel:hover{
-  border-color:var(--cx-purple);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -16px 30px rgba(0,0,0,.4), 0 22px 52px rgba(0,0,0,.65), 0 0 36px -4px var(--cx-purple);
-}
-.cx-stage .cx-fx-explain{ font-size:15px; line-height:1.6; color:#fff; opacity:.85; margin:0 0 14px; }
-.cx-stage .cx-fx-row{ display:flex; gap:10px; align-items:center; }
-.cx-stage .cx-fx-input{
-  flex:1 1 auto; min-width:0; box-sizing:border-box;
-  border-radius:14px; padding:12px 16px; font-size:16px; line-height:1.4; font-family:inherit;
-  color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.14);
-}
-.cx-stage .cx-fx-input::placeholder{ color:rgba(255,255,255,.5); }
-.cx-stage .cx-fx-input:focus{ outline:none; border-color:var(--cx-purple); box-shadow:0 0 18px -6px var(--cx-purple); }
-.cx-stage .cx-fx-examples{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-.cx-stage .cx-fx-answer{ margin-top:14px; }
-.cx-stage .cx-fx-confirm{
-  border:1.5px solid var(--cx-purple); border-radius:16px; padding:14px 16px;
-  background:#0a0714; box-shadow:0 0 22px -6px var(--cx-purple), inset 0 1px 0 rgba(255,255,255,.12);
-}
-.cx-stage .cx-fx-heard{ font-size:16px; line-height:1.55; color:#fff; margin:0 0 12px; }
-.cx-stage .cx-fx-kindrow{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
-.cx-stage .cx-fx-msg{ font-size:14.5px; line-height:1.55; color:#fff; opacity:.9; margin:0; }
-.cx-stage .cx-fx-defs{ margin-top:16px; }
-.cx-stage .cx-fx-defchips{ display:flex; flex-wrap:wrap; gap:8px; }
-.cx-stage .cx-fx-frow{ display:flex; gap:10px; align-items:center; margin-bottom:10px; }
-.cx-stage .cx-fx-flabel{ flex:0 0 30%; font-size:13px; font-weight:700; color:#fff; overflow-wrap:anywhere; }
-.cx-stage .cx-fx-finput{
-  flex:1 1 auto; min-width:0; box-sizing:border-box;
-  border-radius:14px; padding:10px 14px; font-size:16px; line-height:1.4; font-family:inherit;
-  color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.14);
-}
-.cx-stage .cx-fx-finput::placeholder{ color:rgba(255,255,255,.5); }
-.cx-stage .cx-fx-finput:focus{ outline:none; border-color:var(--cx-purple); box-shadow:0 0 18px -6px var(--cx-purple); }
-.cx-stage .cx-btn.cx-fx-save{ padding:10px 18px; flex:0 0 auto; }
-@media(max-width:760px){
-  .cx-stage .cx-fx-panel{ padding:18px 16px; }
-  .cx-stage .cx-fx-frow{ flex-wrap:wrap; }
-  .cx-stage .cx-fx-flabel{ flex:1 1 100%; }
-}
+
 </style>
 
 <style>
@@ -431,15 +342,15 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
 .cx-stage .cx-lk-note{
   border:1px solid rgba(255,255,255,.16); border-radius:16px;
   background:rgba(0,0,0,.32); padding:14px 16px; margin:0 0 10px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  box-shadow:none;
 }
-.cx-stage .cx-lk-title{ font-size:15.5px; font-weight:700; line-height:1.45; color:#fff; margin:0 0 4px; overflow-wrap:anywhere; }
-.cx-stage .cx-lk-body{ font-size:15px; line-height:1.6; color:#fff; opacity:.92; margin:0; white-space:pre-wrap; overflow-wrap:anywhere; }
-.cx-stage .cx-lk-meta{ font-size:12.5px; font-weight:600; color:#fff; opacity:.55; margin:8px 0 0; }
+.cx-stage .cx-lk-title{ font-size:17px; font-weight:700; line-height:1.45; color:#fff; margin:0 0 4px; overflow-wrap:anywhere; }
+.cx-stage .cx-lk-body{ font-size:17px; line-height:1.6; color:#fff; margin:0; white-space:pre-wrap; overflow-wrap:anywhere; }
+.cx-stage .cx-lk-meta{ font-size:17px; font-weight:600; color:#fff; margin:8px 0 0; }
 .cx-stage .cx-lk-actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; align-items:center; }
 .cx-stage .cx-lk-editor{
   width:100%; box-sizing:border-box; margin-top:10px;
-  border-radius:14px; padding:10px 14px; font-size:16px; line-height:1.5; font-family:inherit;
+  border-radius:14px; padding:10px 14px; font-size:17px; line-height:1.5; font-family:inherit;
   color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.14);
   min-height:88px; resize:vertical;
 }
@@ -449,14 +360,14 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
   border:1px solid rgba(255,255,255,.12); border-radius:14px;
   background:rgba(0,0,0,.25); padding:10px 12px; margin:0 0 8px;
 }
-.cx-stage .cx-lk-picktxt{ flex:1 1 auto; min-width:0; font-size:14.5px; line-height:1.45; color:#fff; overflow-wrap:anywhere; }
+.cx-stage .cx-lk-picktxt{ flex:1 1 auto; min-width:0; font-size:17px; line-height:1.45; color:#fff; overflow-wrap:anywhere; }
 .cx-stage .cx-lk-picktxt .cx-lk-meta{ margin:2px 0 0; }
-.cx-stage .cx-lk-filedmark{ font-size:12.5px; font-weight:700; color:#fff; opacity:.6; flex:0 0 auto; }
+.cx-stage .cx-lk-filedmark{ font-size:17px; font-weight:700; color:#fff; flex:0 0 auto; }
 .cx-stage .cx-mn-player{ display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:14px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.14); margin-top:8px; }
-.cx-stage .cx-mn-play{ flex:0 0 auto; width:38px; height:38px; border-radius:50%; border:2px solid var(--cx-purple); background:#0a0a10; color:#fff; font-size:14px; cursor:pointer; }
+.cx-stage .cx-mn-play{ flex:0 0 auto; width:38px; height:38px; border-radius:50%; border:2px solid var(--cx-purple); background:#050607; color:#fff; font-size:17px; cursor:pointer; }
 .cx-stage .cx-mn-wave{ flex:1; height:26px; display:flex; align-items:center; gap:2px; }
 .cx-stage .cx-mn-wave i{ flex:1; background:var(--cx-purple); opacity:.65; border-radius:2px; min-height:3px; }
-.cx-stage .cx-mn-dur{ font-size:11px; color:#9aa3b5; font-variant-numeric:tabular-nums; }
+.cx-stage .cx-mn-dur{ font-size:17px; color:#fff; font-variant-numeric:tabular-nums; }
 .cx-stage .cx-mn-vidwrap{ position:relative; margin-top:8px; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.14); background:#000; }
 .cx-stage .cx-mn-vidwrap video{ display:block; width:100%; max-height:300px; background:#000; }
 .cx-stage .cx-mn-vplay{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.25); border:0; cursor:pointer; color:#fff; font-size:34px; }
@@ -467,24 +378,23 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
    Look harvested verbatim from the Ask Naya guide strip (itself harvested
    from Life with Naya's .naya-nav): avatar 44px, play 40px. */
 .naya-guide{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px auto 10px;padding:8px 16px;position:relative;z-index:30}
-.naya-guide-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(196,181,253,.6);box-shadow:0 0 10px rgba(157,117,255,.55),0 0 28px rgba(157,117,255,.2),inset 0 1px 0 rgba(255,255,255,.25),0 6px 16px rgba(0,0,0,.5);transition:transform .3s,box-shadow .3s}
-.naya-guide-avatar:hover{transform:scale(1.05);box-shadow:0 0 16px rgba(157,117,255,.75)}
-.naya-guide-label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#b9b9c4;font-weight:500}
-.naya-guide-play{width:40px;height:40px;flex:0 0 auto;border-radius:50%;cursor:pointer;border:1px solid rgba(196,181,253,.65);background:radial-gradient(circle at 35% 30%,rgba(196,181,253,.32),rgba(76,29,149,.5) 70%,rgba(20,8,40,.8));color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .3s cubic-bezier(.22,.61,.36,1);box-shadow:0 0 7px rgba(157,117,255,.55),inset 0 0 5px rgba(196,181,253,.22),inset 0 1px 0 rgba(255,255,255,.25),0 6px 14px rgba(0,0,0,.5);position:relative;overflow:hidden;padding:0}
-.naya-guide-play::before{content:"";position:absolute;inset:-50%;background:conic-gradient(from 0deg,transparent 0%,rgba(196,181,253,.16) 12%,transparent 24%,transparent 50%,rgba(157,117,255,.1) 62%,transparent 74%);animation:nayaGuideSpin 6s linear infinite;pointer-events:none}
+.naya-guide-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(142,36,170,.6);box-shadow:0 0 10px rgba(142,36,170,.55),0 0 28px rgba(142,36,170,.2),0 6px 16px rgba(0,0,0,.5);transition:transform .3s,box-shadow .3s}
+.naya-guide-avatar:hover{transform:scale(1.05);box-shadow:0 0 16px rgba(142,36,170,.75)}
+.naya-guide-label{font-size:17px;letter-spacing:.3em;text-transform:uppercase;color:#fff;font-weight:500}
+.naya-guide-play{width:40px;height:40px;flex:0 0 auto;border-radius:50%;cursor:pointer;border:1px solid rgba(142,36,170,.65);background:radial-gradient(circle at 35% 30%,rgba(142,36,170,.32),rgba(142,36,170,.5) 70%,rgba(5,6,7,.8));color:#fff;font-size:17px;display:flex;align-items:center;justify-content:center;transition:all .3s cubic-bezier(.22,.61,.36,1);box-shadow:0 0 7px rgba(142,36,170,.55),0 6px 14px rgba(0,0,0,.5);position:relative;overflow:hidden;padding:0}
+
 .naya-guide-play span{position:relative;z-index:1;margin-left:.12em;text-shadow:0 0 2px rgba(255,255,255,.7)}
-.naya-guide-play:hover{transform:scale(1.12);border-color:#fff;box-shadow:0 0 7px rgba(157,117,255,.8),0 0 14px rgba(157,117,255,.35)}
-.naya-guide-play.playing{animation:nayaGuidePulse 1.6s ease-in-out infinite}
+.naya-guide-play:hover{transform:scale(1.12);border-color:#fff;box-shadow:0 0 7px rgba(142,36,170,.8),0 0 14px rgba(142,36,170,.35)}
+.naya-guide-play.playing{box-shadow:0 0 9px rgba(142,36,170,.85),0 0 16px rgba(142,36,170,.4)}
 .naya-guide-play.warming{opacity:.72}
-@keyframes nayaGuideSpin{to{transform:rotate(360deg)}}
-@keyframes nayaGuidePulse{0%,100%{box-shadow:0 0 4px rgba(157,117,255,.5)}50%{box-shadow:0 0 9px rgba(196,181,253,.85),0 0 16px rgba(157,117,255,.4)}}
+
+
 </style>
 
 </head><body>
 <!-- SMART-BAR-SYSTEM v1.0: top mount -->
 <div class="nsb-topstack" id="nsbTopstack">
   <div class="nsb nsb-top" id="nsbTop" aria-label="App sections"></div>
-  <div class="nsb-searchlevel" id="nsbSearchLevel" aria-label="Search the network"></div>
 </div>
 <!-- /SMART-BAR-SYSTEM v1.0 -->
 
@@ -498,39 +408,39 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
 
 
 <div id="os-chrome">
-  <button class="rooms-plus" id="os-rooms-plus" type="button" aria-label="Open room navigation" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
-  <button class="eco-plus" id="os-eco-plus" type="button" aria-label="NayaNET ecosystem menu" aria-haspopup="true" aria-expanded="false" title="NayaNET ecosystem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+  <button class="rooms-plus" id="os-rooms-plus" type="button" aria-label="Open room navigation" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></button>
+  <button class="eco-plus" id="os-eco-plus" type="button" aria-label="NayaNET ecosystem menu" aria-haspopup="true" aria-expanded="false" title="NayaNET ecosystem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="6" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><path d="M8.2 7.2 10.4 15.8M15.8 7.2 13.6 15.8M8.6 6h6.8"/></svg></button>
   <div class="os-backdrop" id="os-backdrop"></div>
   <aside class="os-drawer" id="os-drawer" aria-label="NayaNET areas">
     <div class="os-drawer-head">NAYANET AREAS</div>
-    <a href="https://nayanet.app/#/hub/connect" style="--rc:#a06bff">Start Here</a>
-    <a href="https://nayanet.app/#/hub/feed" style="--rc:#3fb8ff">Smart Feed</a>
-    <a href="https://nayanet.app/#/hub/factory" style="--rc:#2fe89e">Smart Factory</a>
-    <a href="https://nayanet.app/#/hub/ask" style="--rc:#ffbf3d">Ask Naya</a>
-    <a href="https://nayanet.app/#/hub/spaces" style="--rc:#ff9a5a">Smart Spaces</a>
-    <a href="https://nayanet.app/#/hub/today" style="--rc:#ff5e6c">Today&rsquo;s Intel</a>
-    <a href="https://nayanet.app/#/hub/growth" style="--rc:#e84fff">Smart Growth</a>
-    <a href="https://nayanet.app/#/hub/reports" style="--rc:#a06bff">Your Reports</a>
-    <a href="https://nayanet.app/#/hub/library" style="--rc:#3fb8ff">Intelligent Library</a>
-    <a href="https://nayanet.app/#/hub/ledger" style="--rc:#2fe89e">Smart Ledger</a>
-    <a href="https://nayanet.app/#/hub/connections" style="--rc:#ffbf3d">Your Connections</a>
-    <a href="https://nayanet.app/#/hub/lists" style="--rc:#ff9a5a">Smart Lists</a>
-    <a href="https://nayanet.app/#/hub/mail" style="--rc:#ff5e6c">Smart Mail</a>
-    <a href="https://nayanet.app/#/hub/settings" style="--rc:#e84fff">Settings</a>
+    <a href="https://nayanet.app/#/hub/connect" style="--rc:#8e24aa">Start Here</a>
+    <a href="https://nayanet.app/#/hub/feed" style="--rc:#0f52ba">Smart Feed</a>
+    <a href="https://nayanet.app/#/hub/factory" style="--rc:#07925f">Smart Factory</a>
+    <a href="https://nayanet.app/#/hub/ask" style="--rc:#d4a017">Ask Naya</a>
+    <a href="https://nayanet.app/#/hub/spaces" style="--rc:#c2410c">Smart Spaces</a>
+    <a href="https://nayanet.app/#/hub/today" style="--rc:#c62828">Today&rsquo;s Intel</a>
+    <a href="https://nayanet.app/#/hub/growth" style="--rc:#a21caf">Smart Growth</a>
+    <a href="https://nayanet.app/#/hub/reports" style="--rc:#8e24aa">Your Reports</a>
+    <a href="https://nayanet.app/#/hub/library" style="--rc:#0f52ba">Intelligent Library</a>
+    <a href="https://nayanet.app/#/hub/ledger" style="--rc:#07925f">Smart Ledger</a>
+    <a href="https://nayanet.app/#/hub/connections" style="--rc:#d4a017">Your Connections</a>
+    <a href="https://nayanet.app/#/hub/lists" style="--rc:#c2410c">Smart Lists</a>
+    <a href="https://nayanet.app/#/hub/mail" style="--rc:#c62828">Smart Mail</a>
+    <a href="https://nayanet.app/#/hub/settings" style="--rc:#a21caf">Settings</a>
   </aside><nav class="eco-menu" id="os-eco-menu" aria-label="NayaNET ecosystem destinations">
     <div class="eco-head">NAYANET ECOSYSTEM</div>
-    <a href="https://hmclibrary.groovemember.net/home" target="_blank" rel="noopener" style="--eco:#ed42c4"><span class="eco-ico">&#8962;</span><span class="lbl">HOME</span><span class="ext">&#8599;</span></a>
-    <a href="https://humanmaximuscodex.groovesell.com/checkout/08fba2cbd6488ef4d2cc82b52d361dab" target="_blank" rel="noopener" style="--eco:#8a5cff"><span class="eco-ico">&#9889;</span><span class="lbl">NAYA POWER</span><span class="ext">&#8599;</span></a>
-    <a href="https://nayanet.groovepages.com/aboutus" target="_blank" rel="noopener" style="--eco:#3ca8ff"><span class="eco-ico">&#128101;</span><span class="lbl">ABOUT US</span><span class="ext">&#8599;</span></a>
-    <a href="https://getpaid.takeyourpowerback.xyz/" target="_blank" rel="noopener" style="--eco:#35e39b"><span class="eco-ico">&#128188;</span><span class="lbl">YOUR HIRED</span><span class="ext">&#8599;</span></a>
-    <a href="https://nayanet.groovepages.com/whitepaper" target="_blank" rel="noopener" style="--eco:#ffea00"><span class="eco-ico">&#128196;</span><span class="lbl">WHITE PAPER</span><span class="ext">&#8599;</span></a>
-    <a href="https://nayanet.groovepages.com/academy" target="_blank" rel="noopener" style="--eco:#ff8c42"><span class="eco-ico">&#127891;</span><span class="lbl">NAYA ACADEMY</span><span class="ext">&#8599;</span></a>
-    <a href="https://nayanet.groovepages.com/academy" target="_blank" rel="noopener" style="--eco:#ff5e6c"><span class="eco-ico">&#127942;</span><span class="lbl">&ldquo;5&rdquo; DAY CHALLENGE</span><span class="ext">&#8599;</span></a>
-    <a href="https://app.nayanet.technology/" target="_blank" rel="noopener" style="--eco:#ed42c4"><span class="eco-ico">&#128200;</span><span class="lbl">MAXIS &ldquo;AI SCORE&rdquo;</span><span class="ext">&#8599;</span></a>
-    <a href="https://aimasterclass.help/" target="_blank" rel="noopener" style="--eco:#8a5cff"><span class="eco-ico">&#11088;</span><span class="lbl">AI MASTERCLASS</span><span class="ext">&#8599;</span></a>
-    <a href="https://notebook.google.com/notebook/153122ce-965d-4bcd-a574-9e5511119474/artifact/d08f82fe-8696-4139-a708-b19eac5adf09?utm_source=nlm_web_share&amp;utm_medium=google_oo&amp;utm_campaign=art_share_1&amp;utm_content=&amp;utm_smc=nlm_web_share_google_oo_art_share_1" target="_blank" rel="noopener" style="--eco:#3ca8ff"><span class="eco-ico">&#128202;</span><span class="lbl">INTRO REPORT</span><span class="ext">&#8599;</span></a>
-    <a href="https://lifewithnaya.nayapower.workers.dev/" target="_blank" rel="noopener" style="--eco:#35e39b"><span class="eco-ico">&#10084;</span><span class="lbl">LIFE WITH NAYA</span><span class="ext">&#8599;</span></a>
-    <a href="https://hmclibrary.groovemember.net/login" target="_blank" rel="noopener" style="--eco:#ffea00"><span class="eco-ico">&#128273;</span><span class="lbl">MEMBER LOGIN</span><span class="ext">&#8599;</span></a>
+    <a href="https://hmclibrary.groovemember.net/home" target="_blank" rel="noopener" style="--eco:#a21caf"><span class="eco-ico">&#8962;</span><span class="lbl">HOME</span><span class="ext">&#8599;</span></a>
+    <a href="https://humanmaximuscodex.groovesell.com/checkout/08fba2cbd6488ef4d2cc82b52d361dab" target="_blank" rel="noopener" style="--eco:#6d28d9"><span class="eco-ico">&#9889;</span><span class="lbl">NAYA POWER</span><span class="ext">&#8599;</span></a>
+    <a href="https://nayanet.groovepages.com/aboutus" target="_blank" rel="noopener" style="--eco:#0f52ba"><span class="eco-ico">&#128101;</span><span class="lbl">ABOUT US</span><span class="ext">&#8599;</span></a>
+    <a href="https://getpaid.takeyourpowerback.xyz/" target="_blank" rel="noopener" style="--eco:#07925f"><span class="eco-ico">&#128188;</span><span class="lbl">YOUR HIRED</span><span class="ext">&#8599;</span></a>
+    <a href="https://nayanet.groovepages.com/whitepaper" target="_blank" rel="noopener" style="--eco:#d4a017"><span class="eco-ico">&#128196;</span><span class="lbl">WHITE PAPER</span><span class="ext">&#8599;</span></a>
+    <a href="https://nayanet.groovepages.com/academy" target="_blank" rel="noopener" style="--eco:#c2410c"><span class="eco-ico">&#127891;</span><span class="lbl">NAYA ACADEMY</span><span class="ext">&#8599;</span></a>
+    <a href="https://nayanet.groovepages.com/academy" target="_blank" rel="noopener" style="--eco:#c62828"><span class="eco-ico">&#127942;</span><span class="lbl">&ldquo;5&rdquo; DAY CHALLENGE</span><span class="ext">&#8599;</span></a>
+    <a href="https://app.nayanet.technology/" target="_blank" rel="noopener" style="--eco:#a21caf"><span class="eco-ico">&#128200;</span><span class="lbl">MAXIS &ldquo;AI SCORE&rdquo;</span><span class="ext">&#8599;</span></a>
+    <a href="https://aimasterclass.help/" target="_blank" rel="noopener" style="--eco:#6d28d9"><span class="eco-ico">&#11088;</span><span class="lbl">AI MASTERCLASS</span><span class="ext">&#8599;</span></a>
+    <a href="https://notebook.google.com/notebook/153122ce-965d-4bcd-a574-9e5511119474/artifact/d08f82fe-8696-4139-a708-b19eac5adf09?utm_source=nlm_web_share&amp;utm_medium=google_oo&amp;utm_campaign=art_share_1&amp;utm_content=&amp;utm_smc=nlm_web_share_google_oo_art_share_1" target="_blank" rel="noopener" style="--eco:#0f52ba"><span class="eco-ico">&#128202;</span><span class="lbl">INTRO REPORT</span><span class="ext">&#8599;</span></a>
+    <a href="https://lifewithnaya.nayapower.workers.dev/" target="_blank" rel="noopener" style="--eco:#07925f"><span class="eco-ico">&#10084;</span><span class="lbl">LIFE WITH NAYA</span><span class="ext">&#8599;</span></a>
+    <a href="https://hmclibrary.groovemember.net/login" target="_blank" rel="noopener" style="--eco:#d4a017"><span class="eco-ico">&#128273;</span><span class="lbl">MEMBER LOGIN</span><span class="ext">&#8599;</span></a>
   </nav></div>
 <div id="app"></div><script>function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined&&text!==null)e.textContent=text;return e;}window.NayaRooms=window.NayaRooms||{};window.ConnectionsAdapter=window.ConnectionsAdapter||{};
   'use strict';
@@ -543,7 +453,10 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
       id: String(p.id),
       name: String(p.name != null ? p.name : p.id),
       role: String(p.role || ''),
-      color: String(p.color || '#8b93a3'),
+      color: String(p.color || '#8e24aa'),
+      phone: String(p.phone || ''),
+      email: String(p.email || ''),
+      handle: String(p.handle || ''),
       note: String(p.note || '')
     };
   }
@@ -610,7 +523,10 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
       id:    String(c.id),
       name:  String(c.name),
       role:  c.role ? String(c.role) : '',
-      color: /^#[0-9a-fA-F]{6}$/.test(String(c.color||'')) ? String(c.color) : '#9aa3b2',
+      color: /^#[0-9a-fA-F]{6}$/.test(String(c.color||'')) ? String(c.color) : '#8e24aa',
+      phone: c.phone ? String(c.phone) : '',
+      email: c.email ? String(c.email) : '',
+      handle: c.handle ? String(c.handle) : '',
       kind:  c.kind === 'seat' ? 'seat' : 'person',
       note:  c.note ? String(c.note) : ''
     };
@@ -701,18 +617,26 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
     head.appendChild(sub);
     stage.appendChild(head);
 
+    /* Sweep 3 (F1): the five category pills mount here, in the center
+       of the room — the Smart Bar mount moves its single set into
+       this row (see mount, placeTopSet). */
+    var cats = el('div','cx-cats'); cats.id='nsb-cx-cats'; stage.appendChild(cats);
+
+    /* Best-friend guidance (Laws §9, F15) — three steps, plain words. */
+    var steps = el('p','cx-steps','');
+    steps.innerHTML = 'Step 1 \u2014 Open a person.<br>Step 2 \u2014 Tap a list to save them there, or name a new group \u2014 friends, business, a project.<br>Step 3 \u2014 Tap the group and they are all there.';
+    stage.appendChild(steps);
+
     /* filter chips — horizontal row, no sidebar */
-    var filters = el('div','cx-filters'); filters.setAttribute('role','toolbar'); filters.setAttribute('aria-label','Lists');
+    var filters = el('div','cx-filters'); filters.id='nsb-cx-lists'; filters.setAttribute('role','toolbar'); filters.setAttribute('aria-label','Lists');
     stage.appendChild(filters);
     var localNote = el('p','cx-honest','');
-    localNote.textContent = 'Your people, lists and notes live on this device only \u2014 nothing here is sent or synced.';
+    localNote.textContent = 'Your lists follow you \u2014 they sync to your Smart Lists when this device is online. Your people and notes stay on this device.';
     stage.appendChild(localNote);
-    var fxAsk = el('div',''); stage.appendChild(fxAsk);
-    if(window.NayaFacts) window.NayaFacts.mountAsk(fxAsk, function(){ sync(); });
-    var list = el('div','cx-list');
+    var list = el('div','cx-list'); list.id='nsb-cx-yourpeople';
     stage.appendChild(list);
 
-    var CHIP_COLORS = ['#9d75ff','#55b9ee','#55e39a','#e8b64c','#f0643c','#ed42c4'];
+    var CHIP_COLORS = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#a21caf'];
 
     function renderFilters(){
       filters.innerHTML = '';
@@ -730,7 +654,7 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
         if(filters.querySelector('.cx-nameform')) return;
         var form = el('div','cx-nameform');
         var input = el('input','cx-nameinput','');
-        input.type = 'text'; input.setAttribute('placeholder','List name\u2026');
+        input.type = 'text'; input.setAttribute('placeholder','Name the group \u2014 friends, business, a project\u2026');
         input.setAttribute('maxlength','40'); input.setAttribute('aria-label','New list name');
         var go = el('button','cx-namego','Add'); go.type='button';
         var cancel = function(){ if(form.parentNode) form.parentNode.removeChild(form); };
@@ -752,13 +676,19 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
         input.focus();
       });
       filters.appendChild(nb);
-      var ap = el('button','cx-new','+ Add person'); ap.type='button';
+      var ap = el('button','cx-new','+ Add person'); ap.id='nsb-cx-addperson'; ap.type='button';
       ap.addEventListener('click', function(){
         if(filters.querySelector('.cx-nameform')) return;
         var form = el('div','cx-nameform');
         var nameIn = el('input','cx-nameinput',''); nameIn.type='text';
         nameIn.setAttribute('placeholder','Person\u2019s name\u2026'); nameIn.setAttribute('maxlength','60'); nameIn.setAttribute('aria-label','New person name');
         var roleIn = el('input','cx-nameinput',''); roleIn.type='text';
+        var phoneIn = el('input','cx-nameinput',''); phoneIn.type='text';
+        phoneIn.setAttribute('placeholder','Phone (optional)\u2026'); phoneIn.setAttribute('maxlength','60'); phoneIn.setAttribute('aria-label','New person phone');
+        var emailIn = el('input','cx-nameinput',''); emailIn.type='text';
+        emailIn.setAttribute('placeholder','Email (optional)\u2026'); emailIn.setAttribute('maxlength','80'); emailIn.setAttribute('aria-label','New person email');
+        var handleIn = el('input','cx-nameinput',''); handleIn.type='text';
+        handleIn.setAttribute('placeholder','Handle (optional)\u2026'); handleIn.setAttribute('maxlength','60'); handleIn.setAttribute('aria-label','New person handle');
         roleIn.setAttribute('placeholder','Role or how you know them\u2026'); roleIn.setAttribute('maxlength','60'); roleIn.setAttribute('aria-label','New person role');
         var go = el('button','cx-namego','Add'); go.type='button';
         var cancel = function(){ if(form.parentNode) form.parentNode.removeChild(form); };
@@ -766,15 +696,15 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
           var name = nameIn.value.trim().slice(0,60);
           if(!name){ nameIn.focus(); return; }
           var role = roleIn.value.trim().slice(0,60);
-          var WALK = ['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff'];
-          var person = { id:'p-'+Date.now().toString(36), name:name, role:role, color:WALK[contacts.length % WALK.length], kind:'person', note:'' };
+          var WALK = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf'];
+          var person = { id:'p-'+Date.now().toString(36), name:name, role:role, color:WALK[contacts.length % WALK.length], kind:'person', note:'', phone:phoneIn.value.trim().slice(0,60), email:emailIn.value.trim().slice(0,80), handle:handleIn.value.trim().slice(0,60) };
           if(window.NayaPeople && window.NayaPeople.add) window.NayaPeople.add(person);
           contacts.push(person); byId[person.id] = person;
           state.filter = 'all'; sync(); openModal(person);
         }
         go.addEventListener('click', commit);
-        [nameIn, roleIn].forEach(function(inp){ inp.addEventListener('keydown', function(ev){ if(ev.key==='Enter') commit(); if(ev.key==='Escape') cancel(); }); });
-        form.appendChild(nameIn); form.appendChild(roleIn); form.appendChild(go);
+        [nameIn, roleIn, phoneIn, emailIn, handleIn].forEach(function(inp){ inp.addEventListener('keydown', function(ev){ if(ev.key==='Enter') commit(); if(ev.key==='Escape') cancel(); }); });
+        form.appendChild(nameIn); form.appendChild(roleIn); form.appendChild(phoneIn); form.appendChild(emailIn); form.appendChild(handleIn); form.appendChild(go);
         filters.appendChild(form); nameIn.focus();
       });
       filters.appendChild(ap);
@@ -783,7 +713,7 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
     function chip(label, count, on, color, fn){
       var b = el('button','cx-chip'+(on?' on':''));
       b.type = 'button'; b.setAttribute('aria-pressed', on?'true':'false');
-      b.style.setProperty('--bc', color || '#9d75ff');
+      b.style.setProperty('--bc', color || '#8e24aa');
       var t = el('span','',''); t.textContent = label; b.appendChild(t);
       var c = el('span','cx-chip-n',''); c.textContent = count; b.appendChild(c);
       b.addEventListener('click', fn);
@@ -821,10 +751,9 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
       var lists = store.lists.filter(function(l){ return l.members.indexOf(c.id)>=0; })
                              .map(function(l){ return l.name; });
       if(lists.length){ var m = el('p','cx-in',''); m.textContent = 'In: '+lists.join(', '); info.appendChild(m); }
-      if(window.NayaFacts){ var stg = window.NayaFacts.stageOf(c.id); if(stg){ var sg = el('p','cx-in',''); sg.textContent = 'Stage: '+stg; info.appendChild(sg); } }
       if(window.NayaLinks){ var lk = el('p','cx-in cx-lk-count',''); lk.setAttribute('data-lk-person', c.id); lk.textContent = window.NayaLinks.countLabel(c.id); info.appendChild(lk); }
       a.appendChild(info);
-      var go = el('span','cx-go',''); go.textContent = '+'; go.setAttribute('aria-hidden','true'); a.appendChild(go);
+      var go = el('span','cx-go',''); go.textContent = '\u203a'; go.setAttribute('aria-hidden','true'); a.appendChild(go);
       var open = function(){ openModal(c); };
       a.addEventListener('click', open);
       a.addEventListener('keydown', function(ev){
@@ -867,12 +796,84 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
       mcard.appendChild(top);
       if(c.note){ var n = el('p','cx-mnote',''); n.textContent = c.note; mcard.appendChild(n); }
 
-      /* one mail system: a message to this person starts in Smart Mail */
-      if(typeof ctx.onCompose === 'function'){
-        var wm = el('button','cx-btn','✉  WRITE MAIL'); wm.type='button';
-        wm.style.marginBottom = '22px';
-        wm.addEventListener('click', function(){ ctx.onCompose(c); });
-        mcard.appendChild(wm);
+      /* REACH THEM — sweep 3 (F14). Five doors, same button anatomy.
+         Every door does something real. Mail goes through Smart Mail.
+         Message and call go through the phone (sms: / tel:). Video goes
+         through the phone app — tap it and choose video there; there is
+         no in-system video surface yet. Smart Meet is arranged by mail —
+         there is no in-system Meet surface yet either, so the meet door
+         opens Smart Mail to arrange it. A door whose channel is missing
+         opens the channel editor instead of pretending. No invented
+         numbers: channels start empty and the citizen types them. */
+      mcard.appendChild(el('p','cx-mlabel','REACH THEM'));
+      var reach = el('div','cx-mrow');
+      function reachBtn(label, title, fn){
+        var b = el('button','cx-btn',label); b.type='button';
+        b.title = title; b.style.marginBottom = '10px';
+        b.addEventListener('click', fn);
+        reach.appendChild(b);
+        return b;
+      }
+      if(typeof ctx.onCompose === 'function' || c.email){
+        reachBtn('\u2709  WRITE MAIL', 'Write to '+c.name+' in Smart Mail', function(){
+          if(typeof ctx.onCompose === 'function') ctx.onCompose(c);
+          else window.location.href = 'mailto:'+c.email;
+        });
+      }
+      reachBtn('MESSAGE', c.phone ? 'Message '+c.name+' on their phone' : 'Add '+c.name+'\u2019s number first, then message them', function(){
+        if(c.phone) window.location.href = 'sms:'+encodeURIComponent(c.phone);
+        else showChannels('phone');
+      });
+      reachBtn('CALL', c.phone ? 'Call '+c.name : 'Add '+c.name+'\u2019s number first, then call them', function(){
+        if(c.phone) window.location.href = 'tel:'+encodeURIComponent(c.phone);
+        else showChannels('phone');
+      });
+      reachBtn('VIDEO CALL', c.phone ? 'Call '+c.name+' \u2014 choose video in your phone app' : 'Add '+c.name+'\u2019s number first, then video-call them', function(){
+        if(c.phone) window.location.href = 'tel:'+encodeURIComponent(c.phone);
+        else showChannels('phone');
+      });
+      reachBtn('SMART MEET', 'Arrange a Smart Meet with '+c.name+' \u2014 opens Smart Mail', function(){
+        if(typeof ctx.onCompose === 'function') ctx.onCompose(c);
+        else if(c.email) window.location.href = 'mailto:'+c.email+'?subject='+encodeURIComponent('Smart Meet with '+c.name);
+        else showChannels('email');
+      });
+      mcard.appendChild(reach);
+      /* Their channels — shown only when a reach door needs one, or when
+         the citizen taps to add them. Saved on this device, with the
+         person. Nothing here is invented. */
+      var chanBox = el('div','cx-chanbox'); chanBox.style.display='none';
+      chanBox.appendChild(el('p','cx-mlabel','THEIR CHANNELS'));
+      function chanField(label, val, ph){
+        var w = el('div','cx-chanrow');
+        var lb = el('label','cx-chanlabel',''); lb.textContent = label; w.appendChild(lb);
+        var inp = el('input','cx-chaninput',''); inp.type='text'; inp.value = val||'';
+        inp.setAttribute('placeholder', ph); inp.setAttribute('aria-label', label+' for '+c.name);
+        w.appendChild(inp); chanBox.appendChild(w); return inp;
+      }
+      var phoneIn = chanField('Phone', c.phone, 'Phone number\u2026');
+      var emailIn = chanField('Email', c.email, 'Email address\u2026');
+      var handleIn = chanField('Handle', c.handle, 'Handle \u2014 where else to find them\u2026');
+      var chanRow = el('div','cx-mrow');
+      var chanSave = el('button','cx-btn','SAVE CHANNELS'); chanSave.type='button';
+      chanSave.addEventListener('click', function(){
+        c.phone = phoneIn.value.trim().slice(0,60);
+        c.email = emailIn.value.trim().slice(0,80);
+        c.handle = handleIn.value.trim().slice(0,60);
+        if(window.NayaPeople && window.NayaPeople.save) window.NayaPeople.save(contacts);
+        openModal(c);
+      });
+      chanRow.appendChild(chanSave);
+      chanBox.appendChild(chanRow);
+      mcard.appendChild(chanBox);
+      var chanLink = el('button','cx-btn ghost','+ ADD THEIR NUMBER OR EMAIL'); chanLink.type='button';
+      chanLink.addEventListener('click', function(){ showChannels('phone'); });
+      mcard.appendChild(chanLink);
+      function showChannels(focusWhich){
+        chanBox.style.display='';
+        chanLink.style.display='none';
+        var t = focusWhich==='email' ? emailIn : focusWhich==='handle' ? handleIn : phoneIn;
+        if(t) t.focus();
+        chanBox.scrollIntoView({behavior:'smooth', block:'nearest'});
       }
 
       mcard.appendChild(el('p','cx-mlabel','SAVE TO LIST'));
@@ -890,7 +891,6 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
       });
       mcard.appendChild(lp);
 
-      if(window.NayaFacts) window.NayaFacts.renderInto(mcard, c, function(){ sync(); });
       if(window.NayaLinks) window.NayaLinks.renderInto(mcard, c, function(){ sync(); });
       mcard.appendChild(el('p','cx-mlabel','NOTES ABOUT '+c.name.toUpperCase()));
       var notes = loadNotes();
@@ -951,347 +951,7 @@ body{padding-top:76px !important;padding-bottom:96px !important;}
 
   window.NayaRooms = window.NayaRooms || {};
   window.NayaRooms.connections = Connections;
-const PACK=[{"id": "shawn", "name": "Shawn Vibert", "role": "Human Director", "color": "#e8b64c", "kind": "person", "note": "Final authority. The human everything is built for."}, {"id": "naya1", "name": "Naya 1", "role": "Senior seat · integrator", "color": "#9d75ff", "kind": "seat", "note": "Primary integrator and director of the Hub build; Shawn assigned her the scorecard judge."}, {"id": "naya2", "name": "Naya 2", "role": "Review lane", "color": "#55b9ee", "kind": "seat", "note": "Independent review lane — verifies, never duplicates. A trusted collaborator of a year."}, {"id": "naya3", "name": "Naya 3", "role": "Design intelligence", "color": "#55e39a", "kind": "seat", "note": "Design-intelligence builder — shipped the 11-room spec package; taste compiled into systems."}, {"id": "naya4", "name": "Naya 4", "role": "Builder seat", "color": "#ed42c4", "kind": "seat", "note": "Independent execution and proof closer — builds rooms and closes the proof."}];document.addEventListener('DOMContentLoaded',()=>{const contacts=ConnectionsAdapter.parseContacts(PACK);const onCompose=function(c){try{localStorage.setItem('naya.mail.compose.request',JSON.stringify({to:c.id,toKind:'person',ts:Date.now()}));}catch(e){}window.location.href='https://nayanet.app/rooms/mail';};document.getElementById('app').appendChild(window.NayaRooms.connections(el,{contacts:contacts,onCompose:onCompose}));});</script><script>
-/* ════════════ #19 CUSTOM FIELDS & STAGES BY ASKING ════════════
-   The owner names their own facts and stages by asking, in plain words —
-   there is no field editor. Naya reads the ask back (confirm-the-parse);
-   one tap creates it. Definitions, per-person values and current stages
-   live in the owner's NayaNET store (public.custom_defs / person_values /
-   person_stages), seat flagship-personal, anon PostgREST — the same seat
-   the Today board and the #6 automations log prove. The room's people,
-   lists and notes stay device-local and untouched; this layer is guarded
-   (window.NayaFacts) so a store failure can never break the room. */
-(function(){
-'use strict';
-var ALIAS='flagship-personal';
-var SB='https://dahisasgpfvziswqvmvm.supabase.co/rest/v1';
-var ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s';
-var CHIP_COLORS=['#9d75ff','#55b9ee','#55e39a','#e8b64c','#f0643c','#ed42c4'];
-
-var state={ defs:null, stages:{}, failed:false, panel:null, onReady:null };
-
-function el(tag, cls, text){
-  var e=document.createElement(tag);
-  if(cls) e.className=cls;
-  if(text!==undefined&&text!==null) e.textContent=text;
-  return e;
-}
-function req(method, path, body, prefer){
-  var opts={method:method, cache:'no-store',
-    headers:{'apikey':ANON,'Authorization':'Bearer '+ANON}};
-  if(body!==undefined){
-    opts.headers['Content-Type']='application/json';
-    opts.headers['Prefer']=prefer||'return=representation';
-    opts.body=JSON.stringify(body);
-  }
-  return fetch(SB+path, opts).then(function(r){
-    if(!r.ok) throw new Error('rest '+r.status);
-    return r.status===204 ? null : r.json();
-  });
-}
-function get(path){ return req('GET', path); }
-
-function fields(){ return (state.defs||[]).filter(function(d){ return d.kind==='field'; }); }
-function stages(){ return (state.defs||[]).filter(function(d){ return d.kind==='stage'; }); }
-function defById(id){
-  var ds=state.defs||[];
-  for(var i=0;i<ds.length;i++) if(ds[i].id===id) return ds[i];
-  return null;
-}
-function stageOf(personId){
-  var s=state.stages[personId];
-  if(!s) return null;
-  var d=defById(s);
-  return d ? d.name : null;
-}
-
-function load(){
-  return Promise.all([
-    get('/custom_defs?owner_alias=eq.'+ALIAS+'&select=id,kind,name,position&order=position.asc,created_at.asc'),
-    get('/person_stages?owner_alias=eq.'+ALIAS+'&select=person_id,def_id')
-  ]).then(function(res){
-    state.defs=res[0]||[];
-    state.stages={};
-    (res[1]||[]).forEach(function(r){ state.stages[r.person_id]=r.def_id; });
-    state.failed=false;
-    renderDefs();
-    if(state.onReady) state.onReady();
-  }).catch(function(){
-    state.failed=true;
-    renderDefs();
-    if(state.onReady) state.onReady();
-  });
-}
-
-/* ---------- the ask: parse + confirm-the-parse ---------- */
-function parseAsk(raw){
-  var t=String(raw||'').trim().replace(/\s+/g,' ');
-  if(!t) return null;
-  function finish(kindWord, name){
-    name=String(name||'').trim().replace(/^["“]+|["”]+$/g,'').replace(/[.]+$/,'').slice(0,40);
-    if(!name) return null;
-    return { kind:(String(kindWord).toLowerCase()==='stage')?'stage':'field', name:name };
-  }
-  var m=t.match(/^(?:please[,\s]+)?(?:add|create|make|new|track)\s+(?:a\s+|an\s+|the\s+)?(field|fact|stage)\s+(?:called\s+|named\s+)?(.+)$/i);
-  if(m) return finish(m[1], m[2]);
-  m=t.match(/^(field|fact|stage)\s*[:\-]\s*(.+)$/i);
-  if(m) return finish(m[1], m[2]);
-  m=t.match(/^(.+?)\s+(field|fact|stage)$/i);
-  if(m) return finish(m[2], m[1]);
-  return null;
-}
-
-function addDef(kind, name, answerEl, input){
-  var dupe=(state.defs||[]).some(function(d){
-    return d.kind===kind && d.name.toLowerCase()===name.toLowerCase();
-  });
-  if(dupe){
-    answerEl.innerHTML='';
-    var dm=el('p','cx-fx-msg','You already have a '+(kind==='stage'?'STAGE':'FACT')+' called \u201C'+name+'\u201D \u2014 it\u2019s yours already.');
-    answerEl.appendChild(dm);
-    return Promise.resolve();
-  }
-  var pos=(state.defs||[]).filter(function(d){ return d.kind===kind; }).length;
-  return req('POST','/custom_defs',
-    { owner_alias:ALIAS, kind:kind, name:name, position:pos })
-  .then(function(){ return load(); })
-  .then(function(){
-    answerEl.innerHTML='';
-    var ok=el('p','cx-fx-msg','Done \u2014 '+(kind==='stage'?'the STAGE':'the FACT')+' \u201C'+name+'\u201D is yours now. '+(kind==='stage' ? 'Open a person to move them into it.' : 'Open a person to write their '+name+'.'));
-    answerEl.appendChild(ok);
-    input.value='';
-  })
-  .catch(function(err){
-    if(String(err&&err.message).indexOf('409')>=0){
-      return load().then(function(){
-        answerEl.innerHTML='';
-        answerEl.appendChild(el('p','cx-fx-msg','You already have that one \u2014 it\u2019s yours already.'));
-        input.value='';
-      });
-    }
-    answerEl.innerHTML='';
-    answerEl.appendChild(el('p','cx-fx-msg','That didn\u2019t save just now \u2014 your words are still in the box above. Try ASK once more.'));
-  });
-}
-
-function showConfirm(parsed, answerEl, input){
-  answerEl.innerHTML='';
-  var box=el('div','cx-fx-confirm');
-  var cur={ kind:parsed.kind, name:parsed.name };
-  var heard=el('p','cx-fx-heard','');
-  function paintHeard(){
-    heard.textContent='I heard: a new '+(cur.kind==='stage'?'STAGE':'FACT')+' called \u201C'+cur.name+'\u201D.';
-  }
-  paintHeard();
-  box.appendChild(heard);
-  var kr=el('div','cx-fx-kindrow');
-  var bF=el('button','cx-lbtn'+(cur.kind==='field'?' in':''),'FACT'); bF.type='button';
-  var bS=el('button','cx-lbtn'+(cur.kind==='stage'?' in':''),'STAGE'); bS.type='button';
-  function setKind(k){
-    cur.kind=k;
-    bF.className='cx-lbtn'+(k==='field'?' in':'');
-    bS.className='cx-lbtn'+(k==='stage'?' in':'');
-    paintHeard();
-  }
-  bF.addEventListener('click', function(){ setKind('field'); });
-  bS.addEventListener('click', function(){ setKind('stage'); });
-  kr.appendChild(bF); kr.appendChild(bS);
-  box.appendChild(kr);
-  var row=el('div','cx-mrow');
-  var yes=el('button','cx-btn','YES, ADD IT'); yes.type='button';
-  yes.addEventListener('click', function(){ addDef(cur.kind, cur.name, answerEl, input); });
-  var no=el('button','cx-btn ghost','NOT THAT'); no.type='button';
-  no.addEventListener('click', function(){
-    answerEl.innerHTML='';
-    input.focus();
-  });
-  row.appendChild(yes); row.appendChild(no);
-  box.appendChild(row);
-  answerEl.appendChild(box);
-  yes.focus();
-}
-
-/* ---------- the ask panel ---------- */
-function renderDefs(){
-  if(!state.panel) return;
-  var host=state.panel.querySelector('.cx-fx-defs');
-  if(!host) return;
-  host.innerHTML='';
-  if(state.failed){
-    host.appendChild(el('p','cx-honest','Your facts and stages couldn\u2019t be loaded just now \u2014 nothing here is invented in their place.'));
-    return;
-  }
-  if(!state.defs) {
-    host.appendChild(el('p','cx-honest','Loading your facts and stages\u2026'));
-    return;
-  }
-  if(!state.defs.length){
-    host.appendChild(el('p','cx-honest','You haven\u2019t asked for any facts or stages yet. Ask above \u2014 the first one takes ten seconds.'));
-    return;
-  }
-  host.appendChild(el('p','cx-mlabel','YOUR FACTS & STAGES'));
-  var wrap=el('div','cx-fx-defchips');
-  state.defs.forEach(function(d, i){
-    var b=el('span','cx-chip','');
-    b.style.setProperty('--bc', CHIP_COLORS[i % CHIP_COLORS.length]);
-    b.style.cursor='default';
-    var t=el('span','',d.name); b.appendChild(t);
-    var k=el('span','cx-chip-n', d.kind==='stage' ? 'STAGE' : 'FACT'); b.appendChild(k);
-    wrap.appendChild(b);
-  });
-  host.appendChild(wrap);
-}
-
-function mountAsk(container, onReady){
-  state.onReady=onReady||null;
-  var panel=el('section','cx-fx-panel');
-  panel.setAttribute('aria-label','Ask Naya for a fact or a stage');
-  panel.appendChild(el('p','cx-mlabel','ASK NAYA FOR A FACT OR A STAGE'));
-  panel.appendChild(el('p','cx-fx-explain','Tell Naya a fact you want to keep about your people \u2014 \u201CAdd a field called Budget\u201D \u2014 or a step they move through \u2014 \u201CAdd a stage called Waiting on contract\u201D. You ask in plain words, Naya reads it back, and one tap makes it yours. There is no field editor here \u2014 asking is the editor.'));
-  var row=el('div','cx-fx-row');
-  var input=el('input','cx-fx-input','');
-  input.type='text'; input.maxLength=80;
-  input.setAttribute('placeholder','Add a field called Budget\u2026');
-  input.setAttribute('aria-label','Ask Naya for a fact or a stage');
-  var ask=el('button','cx-btn','ASK'); ask.type='button';
-  row.appendChild(input); row.appendChild(ask);
-  panel.appendChild(row);
-  var ex=el('div','cx-fx-examples');
-  ['Add a field called Budget','Add a stage called Waiting on contract'].forEach(function(x){
-    var b=el('button','cx-lbtn',x); b.type='button';
-    b.addEventListener('click', function(){ input.value=x; input.focus(); });
-    ex.appendChild(b);
-  });
-  panel.appendChild(ex);
-  var answer=el('div','cx-fx-answer');
-  panel.appendChild(answer);
-  var defs=el('div','cx-fx-defs');
-  panel.appendChild(defs);
-  var honest=el('p','cx-honest','Your facts and stages are saved in your NayaNET store \u2014 not just on this device.');
-  honest.style.margin='14px 0 0';
-  panel.appendChild(honest);
-  container.appendChild(panel);
-  state.panel=panel;
-  function submit(){
-    var parsed=parseAsk(input.value);
-    answer.innerHTML='';
-    if(!parsed){
-      answer.appendChild(el('p','cx-fx-msg','I didn\u2019t catch that. Try \u201CAdd a field called Budget\u201D or \u201CAdd a stage called Waiting on contract\u201D \u2014 name it whatever you like.'));
-      return;
-    }
-    showConfirm(parsed, answer, input);
-  }
-  ask.addEventListener('click', submit);
-  input.addEventListener('keydown', function(ev){
-    if(ev.key==='Enter'){ ev.preventDefault(); submit(); }
-    if(ev.key==='Escape'){ answer.innerHTML=''; }
-  });
-  renderDefs();
-  load();
-}
-
-/* ---------- per-person sections (inside the detail modal) ---------- */
-function setStage(person, defId, pillsHost, refresh){
-  var done=function(){
-    if(defId) state.stages[person.id]=defId; else delete state.stages[person.id];
-    paintPills(person, pillsHost, refresh);
-    if(refresh) refresh();
-  };
-  if(defId){
-    req('POST','/person_stages?on_conflict=owner_alias,person_id',
-      { owner_alias:ALIAS, person_id:person.id, def_id:defId, updated_at:new Date().toISOString() },
-      'resolution=merge-duplicates,return=representation')
-    .then(done)
-    .catch(function(){ paintPills(person, pillsHost, refresh); });
-  }else{
-    req('DELETE','/person_stages?owner_alias=eq.'+ALIAS+'&person_id=eq.'+encodeURIComponent(person.id))
-    .then(done)
-    .catch(function(){ paintPills(person, pillsHost, refresh); });
-  }
-}
-function paintPills(person, host, refresh){
-  host.innerHTML='';
-  var cur=state.stages[person.id]||null;
-  var none=el('button','cx-lbtn'+(cur?'':' in'),'No stage'); none.type='button';
-  none.setAttribute('aria-pressed', cur?'false':'true');
-  none.addEventListener('click', function(){ if(cur) setStage(person, null, host, refresh); });
-  host.appendChild(none);
-  stages().forEach(function(d){
-    var b=el('button','cx-lbtn'+(cur===d.id?' in':''), (cur===d.id?'\u2713 ':'+ ')+d.name);
-    b.type='button'; b.setAttribute('aria-pressed', cur===d.id?'true':'false');
-    (function(def){
-      b.addEventListener('click', function(){ if(cur!==def.id) setStage(person, def.id, host, refresh); });
-    })(d);
-    host.appendChild(b);
-  });
-}
-
-function renderInto(mcard, person, refresh){
-  if(state.failed || !state.defs){
-    var h=el('p','cx-honest','Facts and stages couldn\u2019t be loaded just now \u2014 nothing here is invented in their place.');
-    mcard.appendChild(h);
-    return;
-  }
-  /* STAGE */
-  mcard.appendChild(el('p','cx-mlabel','STAGE'));
-  var lp=el('div','cx-lpick');
-  mcard.appendChild(lp);
-  if(stages().length){
-    paintPills(person, lp, refresh);
-  }else{
-    lp.appendChild(el('p','cx-honest','No stages yet \u2014 ask for one above, like \u201CAdd a stage called Waiting on contract\u201D, and '+person.name.split(/\s+/)[0]+' can be moved into it here.'));
-  }
-  /* YOUR FACTS */
-  mcard.appendChild(el('p','cx-mlabel','YOUR FACTS ABOUT '+person.name.toUpperCase()));
-  var fs=fields();
-  if(!fs.length){
-    mcard.appendChild(el('p','cx-honest','No facts yet \u2014 ask for one above, like \u201CAdd a field called Budget\u201D, and it will appear here for every person.'));
-    return;
-  }
-  var host=el('div','');
-  mcard.appendChild(host);
-  get('/person_values?owner_alias=eq.'+ALIAS+'&person_id=eq.'+encodeURIComponent(person.id)+'&select=def_id,value')
-  .then(function(rows){
-    var byDef={};
-    (rows||[]).forEach(function(r){ byDef[r.def_id]=r.value; });
-    fs.forEach(function(d){
-      var row=el('div','cx-fx-frow');
-      var lab=el('span','cx-fx-flabel',d.name);
-      var inp=el('input','cx-fx-finput','');
-      inp.type='text'; inp.maxLength=200;
-      inp.value=byDef[d.id]||'';
-      inp.setAttribute('placeholder', d.name+' for '+person.name.split(/\s+/)[0]+'\u2026');
-      inp.setAttribute('aria-label', d.name+' for '+person.name);
-      var sv=el('button','cx-btn cx-fx-save','SAVE'); sv.type='button';
-      var st=el('span','cx-dstatus','');
-      (function(def, input, status){
-        sv.addEventListener('click', function(){
-          req('POST','/person_values?on_conflict=owner_alias,person_id,def_id',
-            { owner_alias:ALIAS, person_id:person.id, def_id:def.id, value:input.value.trim().slice(0,200), updated_at:new Date().toISOString() },
-            'resolution=merge-duplicates,return=representation')
-          .then(function(){ status.textContent='Saved just now.'; })
-          .catch(function(){ status.textContent='That didn\u2019t save just now \u2014 try SAVE once more.'; });
-        });
-        input.addEventListener('keydown', function(ev){ if(ev.key==='Enter'){ ev.preventDefault(); sv.click(); } });
-      })(d, inp, st);
-      row.appendChild(lab); row.appendChild(inp); row.appendChild(sv);
-      host.appendChild(row);
-      host.appendChild(st);
-    });
-  })
-  .catch(function(){
-    host.appendChild(el('p','cx-honest','These facts couldn\u2019t be loaded just now \u2014 nothing here is invented in their place.'));
-  });
-}
-
-window.NayaFacts={
-  stageOf:stageOf,
-  mountAsk:mountAsk,
-  renderInto:renderInto,
-  parseAsk:parseAsk,
-  _state:state
-};
-})();
+const PACK=[{"id": "shawn", "name": "Shawn Vibert", "role": "Human Director", "color": "#d4a017", "kind": "person", "phone": "", "email": "", "handle": "", "note": "Final authority. The human everything is built for."}, {"id": "naya1", "name": "Naya 1", "role": "Senior seat · integrator", "color": "#8e24aa", "kind": "seat", "phone": "", "email": "", "handle": "", "note": "Primary integrator and director of the Hub build; Shawn assigned her the scorecard judge."}, {"id": "naya2", "name": "Naya 2", "role": "Review lane", "color": "#0f52ba", "kind": "seat", "phone": "", "email": "", "handle": "", "note": "Independent review lane — verifies, never duplicates. A trusted collaborator of a year."}, {"id": "naya3", "name": "Naya 3", "role": "Design intelligence", "color": "#07925f", "kind": "seat", "phone": "", "email": "", "handle": "", "note": "Design-intelligence builder — shipped the 11-room spec package; taste compiled into systems."}, {"id": "naya4", "name": "Naya 4", "role": "Builder seat", "color": "#a21caf", "kind": "seat", "phone": "", "email": "", "handle": "", "note": "Independent execution and proof closer — builds rooms and closes the proof."}];document.addEventListener('DOMContentLoaded',()=>{const contacts=ConnectionsAdapter.parseContacts(PACK);const onCompose=function(c){try{localStorage.setItem('naya.mail.compose.request',JSON.stringify({to:c.id,toKind:'person',ts:Date.now()}));}catch(e){}window.location.href='https://nayanet.app/rooms/mail';};document.getElementById('app').appendChild(window.NayaRooms.connections(el,{contacts:contacts,onCompose:onCompose}));});</script><script>
 </script><script>
 /* ════════════ #14 LINKED EVERYTHING — note ↔ person ════════════
    One object, stored once, living in many homes. A link is a stored
@@ -1795,24 +1455,24 @@ loadCounts();
 <style>
 #naya-inst{margin:40px clamp(16px,2.5vw,40px) calc(var(--naya-eco-height,84px) + 28px);padding:10px 14px;border-radius:16px;background:rgba(12,12,18,.92);
  border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 18px rgba(0,0,0,.4);
- color:#fff;font:500 14px Inter,system-ui,sans-serif;position:relative;z-index:5}
+ color:#fff;font:500 17px Inter,system-ui,sans-serif;position:relative;z-index:5}
 #naya-inst .naya-inst-bar{display:flex;align-items:center;gap:10px}
-#naya-inst .naya-inst-gem{color:#a06bff;font-size:15px;text-shadow:0 0 10px rgba(160,107,255,.8)}
+#naya-inst .naya-inst-gem{color:#8e24aa;font-size:17px;text-shadow:0 0 10px rgba(142,36,170,.8)}
 #naya-inst .naya-inst-txt{flex:1;line-height:1.35}
 #naya-inst .naya-inst-txt b{font-weight:800;letter-spacing:.02em}
-#naya-inst .naya-inst-btn{flex:none;background:rgba(10,10,14,.9);color:#fff;border:1.5px solid rgba(255,255,255,.75);
- border-radius:999px;padding:9px 18px;font:800 13px Inter,system-ui,sans-serif;letter-spacing:.05em;cursor:pointer;
+#naya-inst .naya-inst-btn{flex:none;background:rgba(10,10,14,.9);color:#fff;border:1.5px solid #8e24aa;
+ border-radius:999px;padding:9px 18px;font:800 17px Inter,system-ui,sans-serif;letter-spacing:.05em;cursor:pointer;
  box-shadow:0 0 14px rgba(255,255,255,.18)}
-#naya-inst .naya-inst-btn:hover,#naya-inst .naya-inst-btn:focus-visible{border-color:#a06bff;box-shadow:0 0 22px rgba(160,107,255,.55);outline:none}
-#naya-inst .naya-inst-x{flex:none;background:none;border:none;color:#b9bdd0;font-size:17px;line-height:1;cursor:pointer;padding:6px 4px}
+#naya-inst .naya-inst-btn:hover,#naya-inst .naya-inst-btn:focus-visible{border-color:#8e24aa;box-shadow:0 0 22px rgba(142,36,170,.55);outline:none}
+#naya-inst .naya-inst-x{flex:none;background:none;border:none;color:#fff;font-size:17px;line-height:1;cursor:pointer;padding:6px 4px}
 #naya-inst .naya-inst-steps{display:none;margin-top:12px;border-top:1px solid rgba(255,255,255,.16);padding-top:12px}
 #naya-inst.open .naya-inst-steps{display:block}
 #naya-inst .naya-inst-row{padding:10px 12px;border-radius:12px;margin-bottom:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10)}
-#naya-inst .naya-inst-row.mine{border-color:rgba(160,107,255,.65);background:rgba(160,107,255,.08)}
-#naya-inst .naya-inst-plat{font-weight:800;font-size:13.5px;letter-spacing:.02em;margin-bottom:6px;display:flex;align-items:center;gap:8px}
-#naya-inst .naya-inst-you{background:#a06bff;color:#0b0616;font-size:10.5px;font-weight:900;letter-spacing:.08em;
+#naya-inst .naya-inst-row.mine{border-color:rgba(142,36,170,.65);background:rgba(142,36,170,.08)}
+#naya-inst .naya-inst-plat{font-weight:800;font-size:17px;letter-spacing:.02em;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+#naya-inst .naya-inst-you{background:#8e24aa;color:#fff;font-size:17px;font-weight:900;letter-spacing:.08em;
  padding:2px 8px;border-radius:999px;text-transform:uppercase}
-#naya-inst ol{margin:0;padding-left:20px;color:#d8dbe8;font-size:13.5px;line-height:1.55}
+#naya-inst ol{margin:0;padding-left:20px;color:#fff;font-size:17px;line-height:1.55}
 </style>
 <div id="naya-inst" role="region" aria-label="Install Your Connections as an app">
   <div class="naya-inst-bar">
@@ -2061,10 +1721,10 @@ NF.register = NF.register || function(id, def){
 };
 
 var UNIT = 'smart-tabs';
-var UNIT_COLOR = '#e84fff'; /* Law 9 token — one color job per unit (Law 5) */
-var PALETTE = ['#e84fff','#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#40d3bb','#6675ff','#ff9a5a']; /* Law 9 verbatim tokens */
+var UNIT_COLOR = '#a21caf'; /* Law 9 token — one color job per unit (Law 5) */
+var PALETTE = ['#a21caf','#8e24aa','#0f52ba','#07925f','#d4a017','#0e7490','#3f51b5','#c2410c']; /* Law 9 verbatim tokens */
 /* Law 10 spectrum walk, by position: purple → blue → green → gold → orange → red → magenta → purple… */
-var SPECTRUM = ['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff'];
+var SPECTRUM = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf'];
 
 /* Default synonyms: words humans type → real destinations. Hosts extend via config.routeMap. */
 var DEFAULT_ROUTES = {
@@ -2124,12 +1784,12 @@ function cssOnce(){
   var st = document.createElement('style');
   st.setAttribute('data-nf-css','smart-tabs');
   st.textContent = [
-    '.nf-tabs{font-family:Inter,system-ui,sans-serif;color:#fff;background:#0a0a0d;',
-    ' --st-accent:#e84fff;',
+    '.nf-tabs{font-family:Inter,system-ui,sans-serif;color:#fff;background:#050607;',
+    ' --st-accent:#a21caf;',
     ' border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;',
-    ' box-shadow:0 10px 30px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);}', /* Law 15 depth */
-    '.nf-tabs h3{margin:0 0 4px;font-size:18px;font-weight:700;color:#fff;}', /* Law 16 size */
-    '.nf-tabs .nf-sub{font-size:14px;color:#fff;opacity:.75;margin:0 0 12px;}',
+    ' box-shadow:0 10px 30px rgba(0,0,0,.55);}', /* Law 15 depth */
+    '.nf-tabs h3{margin:0 0 4px;font-size:19px;font-weight:700;color:#fff;}', /* Law 16 size */
+    '.nf-tabs .nf-sub{font-size:17px;color:#fff;margin:0 0 12px;}',
     '.nf-tabs-row{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;',
     ' scrollbar-width:thin;-webkit-overflow-scrolling:touch;}',
     /* ——— Pill skin HARVESTED VERBATIM from the Hub (index-2.html `.smart-tab`:
@@ -2138,61 +1798,61 @@ function cssOnce(){
     '.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;',
     ' padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;',
     ' border:2px solid rgba(255,255,255,.45);background:rgba(0,0,0,.55);',
-    ' color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;',
+    ' color:#fff;font-family:inherit;font-weight:900;font-size:17px;letter-spacing:.03em;',
     ' white-space:nowrap;min-height:44px;',
     /* Law 15 sharpened x3 (Shawn 2026-10-18): multi-layered depth, coming out of the screen —
        the Hub's depth grammar (inset light + inset carve + ambient + drop).
        Rest = NICE visible white light, never a faint hairline. */
-    ' box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.5),',
+    ' box-shadow:inset 0 -3px 8px rgba(0,0,0,.5),',
     ' 0 0 18px rgba(255,255,255,.18), 0 10px 26px rgba(0,0,0,.6);',
     ' border:2px solid rgba(255,255,255,.8);',
     ' transition:box-shadow .25s, border-color .2s, text-shadow .25s, transform .18s;}',
     '.nf-smtab:hover,.nf-smtab:focus-visible{border-color:var(--tc);outline:none;',
     ' transform:translateY(-3px) scale(1.03);',
-    ' box-shadow:inset 0 1px 0 rgba(255,255,255,.4), inset 0 -2px 6px rgba(0,0,0,.35),',
+    ' box-shadow:inset 0 -2px 6px rgba(0,0,0,.35),',
     ' 0 0 10px -1px var(--tc), 0 0 0 2px var(--tc) inset, 0 14px 32px rgba(0,0,0,.6);',
     ' text-shadow:0 0 12px var(--tc);}',
     '.nf-smtab.active{border-color:rgba(255,255,255,.6);',
-    ' box-shadow:0 0 16px rgba(255,255,255,.18), inset 0 1px rgba(255,255,255,.15);}',
-    '.nf-smtab.loved{box-shadow:inset 0 1px rgba(255,255,255,.3), inset 0 0 0 2px rgba(160,107,255,.6), 0 0 22px -2px #a06bff, 0 8px 22px rgba(0,0,0,.55);}',
-    '.nf-smtab.starred{box-shadow:inset 0 1px rgba(255,255,255,.3), inset 0 0 0 2px rgba(255,191,61,.6), 0 0 22px -2px #ffbf3d, 0 8px 22px rgba(0,0,0,.55);}',
+    ' box-shadow:0 0 16px rgba(255,255,255,.18);}',
+    '.nf-smtab.loved{box-shadow:inset 0 0 0 2px rgba(142,36,170,.6), 0 0 22px -2px #8e24aa, 0 8px 22px rgba(0,0,0,.55);}',
+    '.nf-smtab.starred{box-shadow:inset 0 0 0 2px rgba(212,160,23,.6), 0 0 22px -2px #d4a017, 0 8px 22px rgba(0,0,0,.55);}',
     /* Hub's `.sn-more`: the ⋯ is a real button, white at rest */
     '.nf-smtab .sn-more{border:0;background:rgba(255,255,255,.1);color:#fff;border-radius:8px;',
-    ' padding:3px 9px;cursor:pointer;font-size:13px;line-height:1.5;font-family:inherit;',
+    ' padding:3px 9px;cursor:pointer;font-size:17px;line-height:1.5;font-family:inherit;',
     ' transition:background .2s;min-height:0;}',
     '.nf-smtab .sn-more:hover{background:rgba(255,255,255,.22);}',
-    '.nf-smtab.add{border-style:dashed;color:rgba(255,255,255,.75);}',
+    '.nf-smtab.add{border-style:dashed;color:#fff;}',
     /* ——— ⋯ menu: Hub's `.tab-menu` pattern, fixed popover, labeled rows ——— */
     '.nf-tabmenu{position:fixed;z-index:1000;display:none;',
-    ' background:linear-gradient(180deg,#121827,#0e1424);',
+    ' background:linear-gradient(135deg,#121827,#0e1424);',
     ' border:1px solid rgba(255,255,255,.18);border-radius:12px;',
     ' box-shadow:0 18px 40px rgba(0,0,0,.5);min-width:220px;}',
     '.nf-tabmenu .mi{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.08);',
-    ' cursor:pointer;color:#fff;font-weight:800;font-size:13px;font-family:inherit;}',
+    ' cursor:pointer;color:#fff;font-weight:800;font-size:17px;font-family:inherit;}',
     '.nf-tabmenu .mi:last-child{border-bottom:none;}',
     '.nf-tabmenu .mi:hover{background:rgba(255,255,255,.06);}',
-    '.nf-tabs-status{font-size:14px;color:#fff;opacity:.85;margin:6px 2px 0;min-height:20px;}',
+    '.nf-tabs-status{font-size:17px;color:#fff;margin:6px 2px 0;min-height:20px;}',
     '.nf-tabs-ed{display:none;margin-top:10px;border:1px solid rgba(255,255,255,.16);',
     ' border-radius:10px;padding:12px;background:#0d0d11;}',
     '.nf-tabs-ed.open{display:block;}',
-    '.nf-tabs-ed label{display:block;font-size:14px;color:#fff;margin:8px 0 4px;}',
+    '.nf-tabs-ed label{display:block;font-size:17px;color:#fff;margin:8px 0 4px;}',
     '.nf-tabs-ed input{width:100%;box-sizing:border-box;background:#141419;color:#fff;',
-    ' border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:10px;font-size:14px;}',
+    ' border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:10px;font-size:17px;}',
     '.nf-tabs-ed input:focus{outline:none;border-color:var(--st-accent);}',
     '.nf-tabs-ed select:focus{outline:none;border-color:var(--st-accent);}',
     '.nf-tabs-rowbtns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}',
     '.nf-btn{background:#141419;color:#fff;border:1.5px solid rgba(255,255,255,.35);',
-    ' border-radius:10px;padding:10px 14px;font-size:14px;min-height:44px;cursor:pointer;}',
+    ' border-radius:10px;padding:10px 14px;font-size:17px;min-height:44px;cursor:pointer;}',
     '.nf-btn:hover{border-color:var(--st-accent);box-shadow:0 0 14px -4px var(--st-accent);}',
     '.nf-btn.primary{border-color:var(--st-accent);}',
-    '.nf-btn.danger:hover{border-color:#ff5e6c;box-shadow:0 0 14px -4px #ff5e6c;}',
-    '.nf-consent{font-size:14px;color:#fff;opacity:.6;margin:10px 0 0;}',
+    '.nf-btn.danger:hover{border-color:#c62828;box-shadow:0 0 14px -4px #c62828;}',
+    '.nf-consent{font-size:17px;color:#fff;margin:10px 0 0;}',
     /* compact bar mode — the ribbon as a bare scrolling strip */
     '.nf-tabs.nf-compact{background:transparent;border:none;border-radius:0;padding:6px 0;box-shadow:none;}',
     '.nf-tabs.nf-compact .nf-tabs-row{padding:6px 2px;}',
-    '.nf-tabs.nf-compact .nf-tabs-status{font-size:12px;margin:2px 2px 0;}',
+    '.nf-tabs.nf-compact .nf-tabs-status{font-size:17px;margin:2px 2px 0;}',
     '.nf-tabs-ed select{width:100%;box-sizing:border-box;background:#141419;color:#fff;',
-    ' border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:10px;font-size:14px;margin:8px 0 4px;}',
+    ' border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:10px;font-size:17px;margin:8px 0 4px;}',
     /* the pill anchors the Hub-pattern menu only via placeNear (fixed positioning) */
     '.nf-smtab{position:relative;}'
   ].join('\n');
@@ -2462,7 +2122,7 @@ NF.register(UNIT, {
       ed.classList.add('open');
       ed.innerHTML = '';
       var title = document.createElement('p');
-      title.style.cssText = 'margin:0 0 4px;font-size:18px;font-weight:700;color:#fff;';
+      title.style.cssText = 'margin:0 0 4px;font-size:19px;font-weight:700;color:#fff;';
       title.textContent = t ? 'Edit tab' : 'Add a tab';
       ed.appendChild(title);
       function field(labelText, value, ph){
@@ -2613,26 +2273,11 @@ NF.register(UNIT, {
         on('cx-go-add',function(){ var b=null, btns=document.querySelectorAll('.cx-new');
           for(var i=0;i<btns.length;i++){ if(/add person/i.test(btns[i].textContent)){ b=btns[i]; break; } }
           if(b){ scrollToEl(b); b.click(); } });
-        on('cx-go-connected',function(){ scrollToEl(document.getElementById('cx-connected')); });
       }
 
       
 
-      /* Connected section (connection law) — appended to the stage */
-      var stage=document.querySelector('.cx-stage');
-      if(stage&&!document.getElementById('cx-connected')){
-        var sec=document.createElement('section'); sec.className='cx-connected'; sec.id='cx-connected';
-        sec.innerHTML=
-          '<h2>Connected</h2>'+
-          '<p class="cx-conn-sub">Connections is one system with the rest of NayaNET — every related app is listed here, and linked both ways. Nobody hunts for anything.</p>'+
-          '<a class="cx-connrow" style="--jc:#a06bff" href="https://nayanet.app/personal"><span class="cx-cj">✦</span><span><b>Personal app</b><i>Your identity. Your connections are shared with your Personal app — a change in either door shows in the other.</i></span><span class="cx-go">→</span></a>'+
-          '<a class="cx-connrow" style="--jc:#3fb8ff" href="https://nayanet.app/rooms/growth"><span class="cx-cj">●</span><span><b>Growth</b><i>The people you invite here become the people you grow with — invites become connections.</i></span><span class="cx-go">→</span></a>'+
-          '<a class="cx-connrow" style="--jc:#2fe89e" href="https://nayanet.app/rooms/mail"><span class="cx-cj">◆</span><span><b>Smart Mail</b><i>Message anyone here — the compose request rides straight into your Smart Mail.</i></span><span class="cx-go">→</span></a>'+
-          '<a class="cx-connrow" style="--jc:#ffbf3d" href="https://nayanet.app/space"><span class="cx-cj">⬢</span><span><b>Spaces</b><i>Gather your people around a topic — connections are the members spaces are made of.</i></span><span class="cx-go">→</span></a>'+
-          '<a class="cx-connrow" style="--jc:#ff9a5a" href="https://nayanet.app/personal#about"><span class="cx-cj">✧</span><span><b>About</b><i>Who you are, in order — the story your connections read before they connect.</i></span><span class="cx-go">→</span></a>'+
-          '<p class="cx-conn-sub" style="margin:12px 0 0;">Where Connections touches another app, the link runs both ways: your <b>Growth</b> invites land here as people, your <b>Smart Mail</b> threads start from a face, your <b>Personal</b> app shares the same records — one system, no second copy of the truth.</p>';
-        stage.appendChild(sec);
-      }
+
     }, 400);
   });
 })();
@@ -2665,10 +2310,10 @@ NF.register(UNIT, {
 
 /* ============ TOKENS (Law 9, verbatim N5) ============ */
 :root{
-  --obsidian:#050507; --deep:#020203; --white:#ffffff; --silver:#F8F7FB;
-  --purple:#a06bff; --magenta:#e84fff; --blue:#3fb8ff; --green:#2fe89e;
-  --gold:#ffbf3d; --red:#ff5e6c; --teal:#40d3bb; --indigo:#6675ff;
-  --lime:#b8ee57; --orange:#ff9a5a;
+  --obsidian:#050607; --deep:#050607; --white:#ffffff; --silver:#F8F7FB;
+  --purple:#8e24aa; --magenta:#a21caf; --blue:#0f52ba; --green:#07925f;
+  --gold:#d4a017; --red:#c62828; --teal:#0e7490; --indigo:#3f51b5;
+  --lime:#07925f; --orange:#c2410c;
   --sb-top-speed:16; --sb-bottom-speed:24; /* px/s, decided */
 }
 /* ============ TOP STACK: bar at the very highest, search the next level down ============
@@ -2676,49 +2321,12 @@ NF.register(UNIT, {
 .nsb-topstack{position:fixed;top:0;left:0;right:0;z-index:900;
   padding-top:env(safe-area-inset-top);
   font-family:Inter,system-ui,sans-serif;}
+#nsbTopstack{display:none;}
 .nsb-top{background:rgba(3,3,5,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,.08);
   box-shadow:0 16px 44px rgba(0,0,0,.68),
     inset 0 -2px 10px rgba(0,0,0,.85), inset 0 -1px 0 rgba(0,0,0,.9);}
-/* SEARCH LEVEL: the new-internet piece — search the network from every page */
-.nsb-searchlevel{background:rgba(8,8,12,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-  padding:8px 16px;transition:padding .25s;}
-.nsb-searchfield{display:flex;align-items:center;gap:12px;max-width:640px;margin:0 auto;
-  background:linear-gradient(180deg, #050508, #0a0a10 55%, #050508);
-  border:1.5px solid rgba(160,107,255,.55);border-radius:999px;
-  padding:11px 11px 11px 18px;
-  box-shadow:inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 22px rgba(160,107,255,.35), 0 0 48px rgba(160,107,255,.12), 0 14px 30px rgba(0,0,0,.6);
-  transition:box-shadow .25s, border-color .25s;}
-.nsb-searchfield:focus-within{border-color:#a06bff;
-  box-shadow:inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 34px rgba(160,107,255,.6), 0 0 70px rgba(160,107,255,.2), 0 16px 34px rgba(0,0,0,.65);}
-.nsb-searchfield svg{width:16px;height:16px;flex:0 0 auto;color:rgba(255,255,255,.6);}
-.nsb-searchfield input{flex:1;background:transparent;border:0;color:#fff;font-family:inherit;
-  font-size:14px;font-weight:600;outline:none;min-width:0;}
-.nsb-searchfield input::placeholder{color:rgba(255,255,255,.45);}
-/* v1.6 COLOR LANGUAGE: icon-only submit — no "Go" text. Rest = beautiful black; hover ignites purple (the search's own color). */
-.nsb-search-go{border:1px solid rgba(255,255,255,.16);border-radius:50%;color:#fff;
-  width:44px;height:44px;min-width:44px;padding:0;display:grid;place-items:center;
-  font-size:19px;line-height:1;cursor:pointer;font-family:inherit;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.03) 38%, rgba(0,0,0,.14) 68%, rgba(0,0,0,.44)),
-    linear-gradient(180deg, #22222c, #0a0a0f 70%, #060609);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -1px 0 rgba(0,0,0,.55),
-    0 2px 5px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.55);
-  transition:transform .3s cubic-bezier(.2,1.25,.35,1), box-shadow .25s ease-out, border-color .2s ease-out;}
-.nsb-search-go:hover{transform:translateY(-2px);border-color:var(--purple);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -1px 0 rgba(0,0,0,.55),
-    0 4px 8px rgba(0,0,0,.6), 0 16px 32px rgba(0,0,0,.55), 0 0 22px -4px var(--purple);}
-.nsb-search-go:active{transform:translateY(1px);
-  transition:transform .1s cubic-bezier(.3,0,.8,.4), box-shadow .12s ease-out;
-  box-shadow:inset 0 3px 10px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.6);}
-.nsb-topstack.nsb-compact .nsb-search-go{width:38px;height:38px;min-width:38px;font-size:17px;}
-.nsb-search-tag{max-width:640px;margin:6px auto 0;font-size:11.5px;color:#E8E8EC;
-  opacity:.65;text-align:center;letter-spacing:.02em;transition:opacity .25s, margin .25s;}
-/* compact: search slims when the page scrolls */
-.nsb-topstack.nsb-compact .nsb-searchlevel{padding:5px 12px;}
-.nsb-topstack.nsb-compact .nsb-search-tag{display:none;}
-.nsb-topstack.nsb-compact .nsb-searchfield{padding:6px 6px 6px 14px;}
+
 /* ============ SMART BAR CHROME ============ */
 /* ============ ELEVATION v1.3 — Shawn's trillion-dollar depth pass (2026-10-30):
    v1.4 GLOW POLISH (2026-10-30): rest halo softened ~25% (bevel untouched); hover physics cubic-bezier(.2,.9,.25,1) — quick attack, soft settle.
@@ -2737,11 +2345,11 @@ NF.register(UNIT, {
 .nsb-top-inner{display:flex;align-items:center;gap:10px;padding:10px 16px;}
 /* app anchor: name + honesty dot */
 .nsb-app{display:flex;align-items:center;gap:9px;flex:0 0 auto;padding-right:6px;}
-.nsb-app-name{font-size:15px;font-weight:800;color:#fff;white-space:nowrap;letter-spacing:.02em;}
+.nsb-app-name{font-size:17px;font-weight:800;color:#fff;white-space:nowrap;letter-spacing:.02em;}
 .nsb-honesty{width:9px;height:9px;border-radius:50%;flex:0 0 auto;
   box-shadow:0 0 10px 1px currentColor;background:currentColor;}
 .nsb-honesty.proven{color:var(--green);} .nsb-honesty.stated{color:var(--blue);}
-.nsb-honesty.unknown{color:rgba(255,255,255,.4);box-shadow:none;}
+.nsb-honesty.unknown{color:#fff;box-shadow:none;}
 /* the scrolling pill row */
 .nsb-row{flex:1 1 auto;display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;
   padding:10px 28px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
@@ -2757,19 +2365,19 @@ NF.register(UNIT, {
   padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;-webkit-user-select:none;
   border:1px solid rgba(255,255,255,.16);
   background:
-    linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.03) 38%, rgba(0,0,0,.14) 68%, rgba(0,0,0,.44)),
-    linear-gradient(180deg, #22222c, #0a0a0f 70%, #060609);
+    linear-gradient(135deg, rgba(255,255,255,.15), rgba(255,255,255,.03) 38%, rgba(0,0,0,.14) 68%, rgba(0,0,0,.44)),
+    linear-gradient(135deg, #22222c, #050607 70%, #050607);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;
+  color:#fff;font-family:inherit;font-weight:900;font-size:17px;letter-spacing:.03em;
   white-space:nowrap;min-height:44px;
   text-shadow:0 2px 6px rgba(0,0,0,.55);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 2px 6px rgba(255,255,255,.09),
+  box-shadow:inset 0 2px 6px rgba(255,255,255,.09),
     inset 0 -1px 0 rgba(0,0,0,.55), inset 0 -9px 16px rgba(0,0,0,.5),
     0 2px 5px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.55);
   transition:transform .3s cubic-bezier(.2,1.25,.35,1), box-shadow .25s ease-out, border-color .2s ease-out, text-shadow .2s ease-out;}
 .nsb-tab:hover,.nsb-tab:focus-visible{border-color:color-mix(in srgb, var(--tc) 65%, rgba(255,255,255,.2));outline:none;
   transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 0 2px 6px rgba(255,255,255,.12),
+  box-shadow:inset 0 2px 6px rgba(255,255,255,.12),
     inset 0 0 0 1px var(--tc), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.42),
     0 8px 14px rgba(0,0,0,.6), 0 22px 44px rgba(0,0,0,.5),
     0 12px 30px -8px var(--tc);
@@ -2780,38 +2388,38 @@ NF.register(UNIT, {
     inset 0 -1px 0 rgba(255,255,255,.08), inset 0 0 0 1px var(--tc),
     0 1px 3px rgba(0,0,0,.7);}
 .nsb-tab.active{border-color:rgba(255,255,255,.5);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.55), inset 0 2px 6px rgba(255,255,255,.12),
+  box-shadow:inset 0 2px 6px rgba(255,255,255,.12),
     inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.42),
     inset 0 0 0 1px rgba(255,255,255,.3),
     0 2px 5px rgba(0,0,0,.7), 0 14px 32px rgba(0,0,0,.55),
     0 0 26px rgba(255,255,255,.13);}
-.nsb-tab.loved{border-color:color-mix(in srgb, #a06bff 60%, rgba(255,255,255,.25));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.45), inset 0 2px 6px rgba(255,255,255,.1),
-  inset 0 0 0 1.5px rgba(160,107,255,.8), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.45),
+.nsb-tab.loved{border-color:color-mix(in srgb, #8e24aa 60%, rgba(255,255,255,.25));
+  box-shadow:inset 0 2px 6px rgba(255,255,255,.1),
+  inset 0 0 0 1.5px rgba(142,36,170,.8), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.45),
   0 2px 5px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.55),
-  0 10px 26px -6px rgba(160,107,255,.55);}
-.nsb-tab.starred{border-color:color-mix(in srgb, #ffbf3d 60%, rgba(255,255,255,.25));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.45), inset 0 2px 6px rgba(255,255,255,.1),
-  inset 0 0 0 1.5px rgba(255,191,61,.8), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.45),
+  0 10px 26px -6px rgba(142,36,170,.55);}
+.nsb-tab.starred{border-color:color-mix(in srgb, #d4a017 60%, rgba(255,255,255,.25));
+  box-shadow:inset 0 2px 6px rgba(255,255,255,.1),
+  inset 0 0 0 1.5px rgba(212,160,23,.8), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.45),
   0 2px 5px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.55),
-  0 10px 26px -6px rgba(255,191,61,.55);}
+  0 10px 26px -6px rgba(212,160,23,.55);}
 /* honesty states on tabs */
 .nsb-tab.is-working{border-style:dashed;}
 .nsb-tab.is-locked{opacity:.85;}
-.nsb-tab.is-locked .nsb-lock{font-size:11px;opacity:.8;}
+.nsb-tab.is-locked .nsb-lock{font-size:17px;opacity:.8;}
 .nsb-tab.is-dead{opacity:.55;cursor:not-allowed;}
 .nsb-tab .nsb-more{border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;
-  background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
-  padding:3px 9px;cursor:pointer;font-size:13px;line-height:1.5;font-family:inherit;
+  background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
+  padding:3px 9px;cursor:pointer;font-size:17px;line-height:1.5;font-family:inherit;
   transition:all .2s;min-height:0;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 3px 8px rgba(0,0,0,.4);}
-.nsb-tab .nsb-more:hover{background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.1));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 0 12px -2px var(--tc), 0 4px 10px rgba(0,0,0,.45);}
-.nsb-tab.add{border-style:dashed;color:rgba(255,255,255,.75);}
+  box-shadow:0 3px 8px rgba(0,0,0,.4);}
+.nsb-tab .nsb-more:hover{background:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.1));
+  box-shadow:0 0 12px -2px var(--tc), 0 4px 10px rgba(0,0,0,.45);}
+.nsb-tab.add{border-style:dashed;color:#fff;}
 /* jewel icon per tab — the signature chip: colored glass, per-tab glow */
 .nsb-jewel{width:29px;height:29px;border-radius:9px;flex:0 0 auto;
-  display:inline-flex;align-items:center;justify-content:center;font-size:14px;color:#fff;
-  background:linear-gradient(180deg,
+  display:inline-flex;align-items:center;justify-content:center;font-size:17px;color:#fff;
+  background:linear-gradient(135deg,
     color-mix(in srgb, var(--tc) 30%, rgba(255,255,255,.1)),
     color-mix(in srgb, var(--tc) 12%, rgba(0,0,0,.42)));
   border:1px solid color-mix(in srgb, var(--tc) 55%, rgba(0,0,0,.3));
@@ -2832,66 +2440,66 @@ NF.register(UNIT, {
 .nsb-bottom-inner{display:flex;align-items:center;gap:10px;padding:10px 16px 12px;}
 /* network anchor: the persistent connection, one touch away */
 .nsb-net{display:flex;align-items:center;gap:7px;flex:0 0 auto;padding-right:4px;
-  color:#fff;font-size:12px;font-weight:800;white-space:nowrap;opacity:.85;}
+  color:#fff;font-size:17px;font-weight:800;white-space:nowrap;}
 .nsb-net .nsb-net-glyph{width:24px;height:24px;border-radius:8px;flex:0 0 auto;
-  display:inline-flex;align-items:center;justify-content:center;font-size:13px;
-  background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.03) 45%,rgba(0,0,0,.3));
+  display:inline-flex;align-items:center;justify-content:center;font-size:17px;
+  background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.03) 45%,rgba(0,0,0,.3));
   border:1px solid rgba(255,255,255,.2);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.4), inset 0 -1px 0 rgba(0,0,0,.5),
+  box-shadow:inset 0 -1px 0 rgba(0,0,0,.5),
     0 2px 5px rgba(0,0,0,.6), 0 0 14px -4px var(--blue);}
-.nsb-net small{font-weight:600;opacity:.7;}
+.nsb-net small{font-weight:600;}
 /* settings gear */
 .nsb-gear{flex:0 0 auto;border:1px solid rgba(255,255,255,.22);color:#fff;
-  background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.03) 45%, rgba(0,0,0,.34));
+  background:linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.03) 45%, rgba(0,0,0,.34));
   border-radius:50%;width:40px;height:40px;font-size:17px;cursor:pointer;
   display:inline-flex;align-items:center;justify-content:center;font-family:inherit;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -1px 0 rgba(0,0,0,.5),
+  box-shadow:inset 0 -1px 0 rgba(0,0,0,.5),
     0 2px 5px rgba(0,0,0,.65), 0 10px 22px rgba(0,0,0,.55);
   transition:transform .2s cubic-bezier(.2,1.25,.35,1), box-shadow .2s ease-out, border-color .2s;}
 .nsb-gear:hover{border-color:var(--blue);transform:rotate(30deg) translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.45),
+  box-shadow:inset 0 -1px 0 rgba(0,0,0,.45),
     0 0 20px -2px var(--blue), 0 4px 8px rgba(0,0,0,.6), 0 14px 28px rgba(0,0,0,.6);}
 .nsb-gear:active{transform:rotate(30deg) translateY(1px);
   box-shadow:inset 0 3px 10px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.6);}
 /* settings popover */
 .nsb-settings{position:fixed;z-index:1000;display:none;
-  background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
+  background:linear-gradient(135deg,#171e33,#0b0f1d 60%,#050607);
   border:1px solid rgba(255,255,255,.24);border-radius:16px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -10px 28px rgba(0,0,0,.4),
+  box-shadow:inset 0 -10px 28px rgba(0,0,0,.4),
     0 0 0 1px rgba(0,0,0,.55),
     0 34px 80px rgba(0,0,0,.78), 0 10px 28px rgba(0,0,0,.55);
   min-width:270px;max-width:88vw;padding:18px;}
 .nsb-settings.open{display:block;}
-.nsb-settings h4{margin:0 0 4px;font-size:15px;color:#fff;letter-spacing:.02em;
+.nsb-settings h4{margin:0 0 4px;font-size:17px;color:#fff;letter-spacing:.02em;
   text-shadow:0 2px 8px rgba(0,0,0,.7);}
-.nsb-settings p{margin:0 0 12px;font-size:12.5px;color:#E8E8EC;line-height:1.5;}
+.nsb-settings p{margin:0 0 12px;font-size:17px;color:#fff;line-height:1.5;}
 .nsb-settings .nsb-speed-labels{display:flex;justify-content:space-between;
-  font-size:11px;color:#E8E8EC;margin:6px 2px 0;opacity:.8;}
+  font-size:17px;color:#fff;margin:6px 2px 0;}
 .nsb-settings input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:30px;
   background:transparent;margin:8px 0 2px;cursor:pointer;}
 .nsb-settings input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:999px;
-  background:linear-gradient(180deg,#040407,#0c0c12);
+  background:linear-gradient(135deg,#050607,#050607);
   box-shadow:inset 0 2px 6px rgba(0,0,0,.75), inset 0 -1px 0 rgba(255,255,255,.08),
     0 1px 0 rgba(255,255,255,.07);}
 .nsb-settings input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
   width:26px;height:26px;border-radius:50%;margin-top:-8px;
-  background:radial-gradient(circle at 35% 30%, #a8d9ff, var(--blue) 55%, #1663a8);
+  background:radial-gradient(circle at 35% 30%, #a8d9ff, var(--blue) 55%, #0f52ba);
   border:2px solid rgba(255,255,255,.55);
   box-shadow:inset 0 1px 1px rgba(255,255,255,.7), inset 0 -3px 6px rgba(0,0,0,.35),
     0 4px 0 rgba(0,0,0,.3), 0 8px 18px rgba(0,0,0,.55), 0 0 16px -2px var(--blue);}
 .nsb-settings input[type=range]::-moz-range-track{height:10px;border-radius:999px;
-  background:linear-gradient(180deg,#040407,#0c0c12);
+  background:linear-gradient(135deg,#050607,#050607);
   box-shadow:inset 0 2px 6px rgba(0,0,0,.75), inset 0 -1px 0 rgba(255,255,255,.08);}
 .nsb-settings input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, #a8d9ff, var(--blue) 55%, #1663a8);
+  background:radial-gradient(circle at 35% 30%, #a8d9ff, var(--blue) 55%, #0f52ba);
   border:2px solid rgba(255,255,255,.55);
   box-shadow:inset 0 1px 1px rgba(255,255,255,.7), inset 0 -3px 6px rgba(0,0,0,.35),
     0 4px 0 rgba(0,0,0,.3), 0 8px 18px rgba(0,0,0,.55), 0 0 16px -2px var(--blue);}
-.nsb-settings .nsb-speed-val{font-size:13px;font-weight:800;color:#fff;text-align:center;margin-top:6px;}
+.nsb-settings .nsb-speed-val{font-size:17px;font-weight:800;color:#fff;text-align:center;margin-top:6px;}
 .nsb-settings .nsb-speed-val span{color:var(--blue);}
 /* signature: the active tab breathes, gently — alive, never a flood */
 @keyframes nsbBreathe{0%,100%{filter:brightness(1);}50%{filter:brightness(1.14);}}
-.nsb-tab.active{animation:nsbBreathe 4s ease-in-out infinite;}
+.nsb-tab.active{animation:nsbBreathe 120s ease-in-out infinite;}
 /* signature: touch ripple — the network feels your touch.
    Neighbors lift briefly, outward from the tap, like a pebble in water. */
 @keyframes nsbRipple{0%{filter:brightness(1);}35%{filter:brightness(1.28);}100%{filter:brightness(1);}}
@@ -2902,124 +2510,103 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
 .nsb-bottom .nsb-row{padding:10px 24px 18px;
 /* action buttons: distinct from nav tabs */
 .nsb-tab.nsb-action-btn{border-width:2px;font-weight:700;letter-spacing:.02em;position:relative;}
-.nsb-badge{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#ff3b5c;color:#fff;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(255,59,92,.5);border:2px solid #050507;}
+.nsb-badge{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#c62828;color:#fff;font-size:17px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(198,40,40,.5);border:2px solid #050607;}
 
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);
   mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);}
-/* ============ SEARCH RESULTS (dropdown from the search level) ============ */
-.nsb-search-results{position:fixed;z-index:950;display:none;
-  background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
-  border:1px solid rgba(255,255,255,.24);border-radius:16px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -10px 28px rgba(0,0,0,.4),
-    0 0 0 1px rgba(0,0,0,.55),
-    0 34px 80px rgba(0,0,0,.78), 0 10px 28px rgba(0,0,0,.55);
-  min-width:260px;max-width:min(420px,92vw);
-  max-height:50vh;overflow-y:auto;padding:8px;}
-.nsb-search-results.open{display:block;}
-.nsb-sr-item{display:block;padding:12px 14px;border-radius:10px;color:#fff;text-decoration:none;
-  font-size:14px;font-weight:700;cursor:pointer;border:1px solid transparent;background:none;
-  width:100%;text-align:left;font-family:inherit;transition:all .15s;}
-.nsb-sr-item:hover{background:linear-gradient(180deg, rgba(63,184,255,.2), rgba(63,184,255,.07));
-  border-color:rgba(63,184,255,.35);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 0 16px -4px var(--blue), 0 4px 12px rgba(0,0,0,.4);
-  transform:translateY(-1px);}
-.nsb-sr-item small{display:block;font-weight:400;color:#E8E8EC;font-size:12px;margin-top:2px;}
-.nsb-sr-none{padding:14px;color:#E8E8EC;font-size:13px;}
+
 /* ============ ⋯ MENU (bottom bar tabs) ============ */
 .nsb-menu{position:fixed;z-index:1000;display:none;
-  background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
+  background:linear-gradient(135deg,#171e33,#0b0f1d 60%,#050607);
   border:1px solid rgba(255,255,255,.24);border-radius:14px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -8px 22px rgba(0,0,0,.4),
+  box-shadow:inset 0 -8px 22px rgba(0,0,0,.4),
     0 0 0 1px rgba(0,0,0,.55),
     0 28px 64px rgba(0,0,0,.75), 0 8px 22px rgba(0,0,0,.5);
   min-width:220px;padding:6px;}
 .nsb-menu .mi{padding:11px 14px;border-radius:10px;cursor:pointer;color:#fff;
-  font-weight:800;font-size:13px;font-family:inherit;border:1px solid transparent;background:none;
+  font-weight:800;font-size:17px;font-family:inherit;border:1px solid transparent;background:none;
   width:100%;text-align:left;display:block;transition:all .15s;}
-.nsb-menu .mi:hover{background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.04));
+.nsb-menu .mi:hover{background:linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.04));
   border-color:rgba(255,255,255,.14);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4);
+  box-shadow:0 4px 12px rgba(0,0,0,.4);
   transform:translateY(-1px);}
 .nsb-menu .mi:active{transform:translateY(1px);
   box-shadow:inset 0 2px 8px rgba(0,0,0,.5);}
 /* v1.6 COLOR LANGUAGE: rest = beautiful black; hover ignites EACH in its own color. Never all the same. */
 .nsb-menu .mi-ico{font-style:normal;}
-.nsb-menu .mi-heart .mi-ico{color:var(--purple);text-shadow:0 0 10px rgba(160,107,255,.85);}
-.nsb-menu .mi-star .mi-ico{color:var(--gold);text-shadow:0 0 10px rgba(255,191,61,.85);}
+.nsb-menu .mi-heart .mi-ico{color:var(--purple);text-shadow:0 0 10px rgba(142,36,170,.85);}
+.nsb-menu .mi-star .mi-ico{color:var(--gold);text-shadow:0 0 10px rgba(212,160,23,.85);}
 .nsb-menu .mi-edit:hover{border-color:var(--green);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--green);}
+  box-shadow:0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--green);}
 .nsb-menu .mi-heart:hover{border-color:var(--purple);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--purple);}
+  box-shadow:0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--purple);}
 .nsb-menu .mi-star:hover{border-color:var(--gold);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--gold);}
+  box-shadow:0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--gold);}
 .nsb-menu .mi-remove:hover{border-color:var(--red);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--red);}
+  box-shadow:0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--red);}
 /* suggestion highlight (keyboard) + suggestion URL line — new elements, v1.4 values untouched */
-.nsb-menu .mi.sel{background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.04));border-color:rgba(255,255,255,.14);}
-.nsb-sug-url{display:block;font-size:11px;opacity:.6;font-weight:400;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.nsb-menu .mi.sel{background:linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.04));border-color:rgba(255,255,255,.14);}
+.nsb-sug-url{display:block;font-size:17px;font-weight:400;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 /* ============ EDITOR ============ */
 .nsb-ed{display:none;margin:0 16px 12px;border:1px solid rgba(255,255,255,.22);
-  border-radius:14px;padding:16px;background:linear-gradient(180deg,#141a2e,#0b0e18 65%,#070a12);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -8px 22px rgba(0,0,0,.35),
+  border-radius:14px;padding:16px;background:linear-gradient(135deg,#141a2e,#0b0e18 65%,#050607);
+  box-shadow:inset 0 -8px 22px rgba(0,0,0,.35),
     0 18px 44px rgba(0,0,0,.6);
   transition:border-color .25s ease-out, box-shadow .25s ease-out;}
 .nsb-ed.open{display:block;}
 /* v1.6: nothing static — the panel's outer edge ignites purple on hover (Aliveness law). */
-.nsb-ed:hover{border-color:rgba(160,107,255,.65);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -8px 22px rgba(0,0,0,.35),
-    0 18px 44px rgba(0,0,0,.6), 0 0 26px -4px rgba(160,107,255,.5);}
-.nsb-ed p{margin:0 0 4px;font-size:16px;font-weight:700;color:#fff;}
-.nsb-ed label{display:block;font-size:13px;color:#fff;margin:10px 0 4px;opacity:.85;}
+.nsb-ed:hover{border-color:rgba(142,36,170,.65);
+  box-shadow:inset 0 -8px 22px rgba(0,0,0,.35),
+    0 18px 44px rgba(0,0,0,.6), 0 0 26px -4px rgba(142,36,170,.5);}
+.nsb-ed p{margin:0 0 4px;font-size:17px;font-weight:700;color:#fff;}
+.nsb-ed label{display:block;font-size:17px;color:#fff;margin:10px 0 4px;}
 .nsb-ed input,.nsb-ed select{width:100%;box-sizing:border-box;color:#fff;
-  background:linear-gradient(180deg,#060609,#0f0f16);
+  background:linear-gradient(135deg,#050607,#0f0f16);
   border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:11px 12px;
-  font-size:14px;font-family:inherit;
+  font-size:17px;font-family:inherit;
   box-shadow:inset 0 3px 10px rgba(0,0,0,.68), inset 0 1px 3px rgba(0,0,0,.5),
     0 1px 0 rgba(255,255,255,.06);}
 .nsb-ed input:focus,.nsb-ed select:focus{outline:none;border-color:var(--purple);
   box-shadow:inset 0 3px 10px rgba(0,0,0,.68), 0 0 18px -4px var(--purple);}
 .nsb-ed-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
 .nsb-btn{color:#fff;border:1.5px solid rgba(255,255,255,.4);
-  background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.03) 45%, rgba(0,0,0,.3)), #141419;
-  border-radius:10px;padding:10px 16px;font-size:14px;font-weight:700;min-height:44px;
+  background:linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.03) 45%, rgba(0,0,0,.3)), #141419;
+  border-radius:10px;padding:10px 16px;font-size:17px;font-weight:700;min-height:44px;
   cursor:pointer;font-family:inherit;transition:all .2s;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -3px 8px rgba(0,0,0,.4),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),
     0 5px 0 rgba(0,0,0,.3), 0 10px 22px rgba(0,0,0,.5);}
 /* v1.6 COLOR LANGUAGE: rest = beautiful black for ALL; hover ignites each in its OWN color. Never all the same. */
 .nsb-btn.save:hover,.nsb-btn.primary:hover{border-color:var(--blue);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--blue);}
 .nsb-btn.move-left:hover{border-color:var(--green);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--green);}
 .nsb-btn.move-right:hover{border-color:var(--purple);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--purple);}
 .nsb-btn.close:hover{border-color:rgba(255,255,255,.9);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px rgba(255,255,255,.5);}
 .nsb-btn:active{transform:translateY(2px);
   box-shadow:inset 0 3px 10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.5);}
-.nsb-btn.primary{border-color:rgba(255,255,255,.4);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -3px 8px rgba(0,0,0,.4),
+.nsb-btn.primary{border-color:#fff;
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),
     0 5px 0 rgba(0,0,0,.3), 0 10px 22px rgba(0,0,0,.5);}
 .nsb-btn.danger:hover{border-color:var(--red);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--red);}
-.nsb-status{font-size:13px;color:#fff;opacity:.7;margin:8px 16px 10px;min-height:18px;}
+.nsb-status{font-size:17px;color:#fff;margin:8px 16px 10px;min-height:18px;}
 /* ============ MOTION ============ */
 @media (prefers-reduced-motion: reduce){
-  .nsb-tab,.nsb-search-btn{transition:none;}
+  .nsb-tab{transition:none;}
 }
 html.nsb-calm .nsb-tab{transition:none;}
 /* phone tuning */
 @media (max-width:480px){
   .nsb-top-inner,.nsb-bottom-inner{padding-left:10px;padding-right:10px;}
-  .nsb-tab{padding:11px 16px;font-size:12.5px;min-height:42px;}
-  .nsb-app-name{font-size:13.5px;}
-  .nsb-search-box{min-width:0;flex:1;}
-  .nsb-search{flex:1;justify-content:flex-end;}
-  .nsb-search.open{flex:1;}
+  .nsb-tab{padding:11px 16px;font-size:17px;min-height:42px;}
+  .nsb-app-name{font-size:17px;}
 }
 
 </style>
@@ -3027,7 +2614,7 @@ html.nsb-calm .nsb-tab{transition:none;}
 /* ================= SMART BAR SYSTEM v1.0 ================= */
 (function(){
 'use strict';
-var SPECTRUM = ['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff']; /* harvested v1.1.4 */
+var SPECTRUM = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf']; /* harvested v1.1.4 */
 var TOP_SPEED = 16, BOTTOM_SPEED = 24; /* px/s at 1x, decided */
 var STORE_KEY = 'naya.smarttabs.v1';
 var SETTINGS_KEY = 'naya.smartbar.settings.v1';
@@ -3107,8 +2694,8 @@ function pill(t, opts){
   }
   var lab = document.createElement('span'); lab.textContent = t.label;
   b.appendChild(lab);
-  if (t.state==='heart'){ var h=document.createElement('span'); h.textContent='♥'; h.style.fontSize='12px'; b.appendChild(h); }
-  if (t.state==='star'){ var s=document.createElement('span'); s.textContent='★'; s.style.fontSize='12px'; b.appendChild(s); }
+  if (t.state==='heart'){ var h=document.createElement('span'); h.textContent='♥'; h.style.fontSize='17px'; b.appendChild(h); }
+  if (t.state==='star'){ var s=document.createElement('span'); s.textContent='★'; s.style.fontSize='17px'; b.appendChild(s); }
   if (t.locked){ var l=document.createElement('span'); l.className='nsb-lock'; l.textContent='🔒'; b.appendChild(l); }
   if (opts.menu){ var m=document.createElement('button'); m.type='button'; m.className='nsb-more';
     m.textContent='⋯'; m.setAttribute('aria-label','Tab options'); m.title='Edit, heart, star or remove';
@@ -3204,7 +2791,6 @@ document.addEventListener('keydown', function(e){
 /* ================= PUBLIC API ================= */
 window.NayaSmartBar = {
   version: '1.0',
-  onSearch: null, /* host hook: function(query, done) — done(results:[{label, sub, url}]) */
   mount: function(cfg){
     cfg = cfg || {};
     var app = cfg.app || {};
@@ -3241,69 +2827,21 @@ window.NayaSmartBar = {
     renderTopSet();
     tInner.appendChild(tRow);
     top.appendChild(tInner);
-    /* SEARCH LEVEL — the next level down from the bar, not in it.
-       Search the whole network from every page. */
-    var sLevel = document.getElementById('nsbSearchLevel');
-    sLevel.innerHTML = '';
-    var sField = document.createElement('div'); sField.className = 'nsb-searchfield';
-    sField.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'
-      + '<input type="search" placeholder="Search the network…" aria-label="Search the whole network">'
-      + '<button type="button" class="nsb-search-go" aria-label="Search">➤</button>';
-    sLevel.appendChild(sField);
-    var sTag = document.createElement('div'); sTag.className = 'nsb-search-tag';
-    sTag.textContent = 'Search the network — get intelligence, learn, grow, connect.';
-    sLevel.appendChild(sTag);
-    var results = document.createElement('div'); results.className = 'nsb-search-results';
-    results.setAttribute('role','listbox'); document.body.appendChild(results);
-    var sInput = sField.querySelector('input');
-    var sGo = sField.querySelector('.nsb-search-go');
-    function runSearch(){
-      var q = sInput.value.trim();
-      if (!q){ results.classList.remove('open'); return; }
-      var r = sField.getBoundingClientRect();
-      results.style.top = (r.bottom + 8)+'px';
-      results.style.left = Math.max(8, r.left)+'px';
-      results.style.right = 'auto';
-      results.style.minWidth = Math.min(420, Math.max(260, r.width))+'px';
-      function show(list){
-        results.innerHTML = '';
-        if (!list.length){ results.innerHTML = '<div class="nsb-sr-none">Nothing found for "'+esc(q)+'" — yet.</div>'; }
-        list.slice(0,12).forEach(function(it){
-          var a = document.createElement('a'); a.className='nsb-sr-item'; a.href = it.url||'#';
-          a.innerHTML = esc(it.label) + (it.sub ? '<small>'+esc(it.sub)+'</small>' : '');
-          results.appendChild(a);
-        });
-        results.classList.add('open');
-      }
-      if (typeof NayaSmartBar.onSearch === 'function'){ NayaSmartBar.onSearch(q, show); }
-      else {
-        /* built-in index: this app's sections + the network */
-        var ql = q.toLowerCase(), out = [];
-        tabs.concat(network).forEach(function(t){
-          if ((t.label||'').toLowerCase().indexOf(ql) > -1)
-            out.push({label:t.label, sub:t.url||t.target||'', url:t.url||t.target||'#'});
-        });
-        show(out);
-      }
+    /* Sweep 3 (F1): the five pills live in the center of the room
+       (#nsb-cx-cats), not the top stack — same single set, same
+       ping-pong drift, only the mount point moved. The stage
+       renders on DOMContentLoaded, after this mount runs, so the
+       move is lazy: now, on DOMContentLoaded, and once more
+       after a beat. If the stage never appears, the pills stay
+       in the top bar as a fallback. */
+    function placeTopSet(){
+      var cats=document.getElementById('nsb-cx-cats');
+      if(cats&&tRow.parentNode!==cats) cats.appendChild(tRow);
     }
-    sGo.addEventListener('click', runSearch);
-    sInput.addEventListener('input', runSearch);
-    sInput.addEventListener('keydown', function(e){
-      if (e.key==='Enter'){ e.preventDefault(); runSearch(); }
-      else if (e.key==='Escape'){ sInput.value=''; results.classList.remove('open'); }
-    });
-    document.addEventListener('click', function(e){
-      if (!results.classList.contains('open')) return;
-      var n = e.target, inside = false;
-      while (n){ if (n===results || n===sLevel){ inside = true; break; } n = n.parentNode; }
-      if (!inside){ results.classList.remove('open'); }
-    });
-    /* compact on scroll — the stack slims, both levels stay */
-    var compactAt = 120;
-    var topstack = document.getElementById('nsbTopstack');
-    window.addEventListener('scroll', function(){
-      topstack.classList.toggle('nsb-compact', window.scrollY > compactAt);
-    }, {passive:true});
+    placeTopSet();
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',placeTopSet);
+    setTimeout(placeTopSet,500);
+
     drift(tRow, +1, TOP_SPEED);
 
     /* ----- BOTTOM BAR ----- */
@@ -3515,7 +3053,7 @@ window.NayaSmartBar = {
             var c = document.createElement('button');
             c.type = 'button'; c.textContent = s.label;
             c.setAttribute('aria-label','Add '+s.label+' tab');
-            c.style.cssText = 'background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.25);border-radius:20px;color:#fff;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;';
+            c.style.cssText = 'background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.25);border-radius:20px;color:#fff;padding:6px 14px;font-size:17px;font-weight:600;cursor:pointer;font-family:inherit;';
             c.addEventListener('click', function(){
               closeSug();
               tabsNet.push({id:uid('tab'), label:s.label, url:s.url, state:null});
@@ -3560,7 +3098,7 @@ window.NayaSmartBar = {
     var net = document.createElement('div'); net.className = 'nsb-net';
     net.title = 'The whole network — one touch away, from any app';
     var ng = document.createElement('span'); ng.className = 'nsb-net-glyph'; ng.textContent = '◈';
-    ng.style.setProperty('--tc', '#3fb8ff');
+    ng.style.setProperty('--tc', '#0f52ba');
     net.appendChild(ng);
     var nc = document.createElement('span');
     nc.innerHTML = '<small>' + tabsNet.length + ' apps</small>';
@@ -3602,7 +3140,7 @@ window.NayaSmartBar = {
       p.textContent = 'The bars are yours. Tune the motion, or turn the network bar off entirely — most keep it on.';
       setPop.appendChild(p);
       /* motion speed */
-      var sh = document.createElement('h4'); sh.textContent = 'Motion speed'; sh.style.fontSize = '13px';
+      var sh = document.createElement('h4'); sh.textContent = 'Motion speed'; sh.style.fontSize = '17px';
       sh.style.margin = '12px 0 4px'; setPop.appendChild(sh);
       var rng = document.createElement('input');
       rng.type = 'range'; rng.min = '0'; rng.max = '2'; rng.step = '0.5'; rng.value = String(s.speed);
@@ -3620,7 +3158,7 @@ window.NayaSmartBar = {
       setPop.appendChild(labs);
       setPop.appendChild(val);
       /* bottom bar on/off */
-      var bh = document.createElement('h4'); bh.textContent = 'Network bar'; bh.style.fontSize = '13px';
+      var bh = document.createElement('h4'); bh.textContent = 'Network bar'; bh.style.fontSize = '17px';
       bh.style.margin = '14px 0 4px'; setPop.appendChild(bh);
       var tog = document.createElement('button'); tog.type = 'button'; tog.className = 'nsb-btn';
       tog.style.width = '100%';
@@ -3683,11 +3221,16 @@ window.NayaSmartBar = {
 NayaSmartBar.mount({
   app: { name: "Connections", honesty: "stated" },
   sections: [
-    {label:"Your people", target:"#nsb-cx-yourpeople", icon:"\u25cf", color:"#8e24aa"},
-    {label:"Lists", target:"#nsb-cx-lists", icon:"\u2630", color:"#0f52ba"},
-    {label:"Ask Naya", target:"#nsb-cx-asknaya", icon:"\u2726", color:"#8e24aa"},
-    {label:"+ Add person", target:"#nsb-cx-addperson", icon:"+", color:"#d4a017"},
-    {label:"Connected", target:"#nsb-cx-connected", icon:"\u25c8", color:"#a21caf"}
+    /* Spectrum Flow, start at red — Ask Naya (3rd) lands on purple (§8).
+       Ask Naya's target is the Naya Guide strip (#nayaGuide): the room's
+       real Naya surface. The guide keeps its own id — its script
+       re-queries it on every play-state update, so renaming it would
+       break playback. Connected's target is the bottom network bar. */
+    {label:"Your people", target:"#nsb-cx-yourpeople", icon:"\uD83D\uDC65", color:"#c62828"},
+    {label:"Lists", target:"#nsb-cx-lists", icon:"\u2630", color:"#a21caf"},
+    {label:"Ask Naya", target:"#nayaGuide", icon:"\uD83D\uDE99", color:"#8e24aa"},
+    {label:"+ Add person", target:"#nsb-cx-addperson", icon:"+", color:"#3f51b5"},
+    {label:"Connected", target:"#nsbBottom", icon:"\u2b21", color:"#0e7490"}
   ],
   network: [
     {label:"Home", url:"https://nayanet.app/#/hub", icon:"⌂"},
@@ -3704,7 +3247,12 @@ NayaSmartBar.mount({
 });
 </script>
 <script>
-/* SMART BAR v1.0 host wiring (host page, not the system) */
+/* SMART BAR v1.0 host wiring (host page, not the system) — sweep 3 (F1/F3):
+   the five pills live in the center now (#nsb-cx-cats), so the click
+   actions bind there, lazily (the pills arrive after DOMContentLoaded —
+   the listener is on document and resolves the row at click time).
+   Fixed here too: the old wiring read undefined `N` and `VIEWS`, so its
+   actions never ran — the pill's own handler was the only thing working. */
 (function(){
   function pad(){
     var t=document.getElementById('nsbTopstack')||document.getElementById('nsbTop');
@@ -3713,28 +3261,23 @@ NayaSmartBar.mount({
     if(b2&&b2.style.display!=='none')document.body.style.paddingBottom=b2.offsetHeight+'px';
   }
   window.addEventListener('resize',pad); pad(); setTimeout(pad,800);
-  var top=document.getElementById('nsbTop'); if(!top)return;
+  function scrollToEl(el){ if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
   var ACTIONS=[
-function(){var e=document.querySelector('.cx-list');if(e)e.scrollIntoView({behavior:'smooth',block:'start'});},
-function(){var e=document.querySelector('.cx-filters');if(e)e.scrollIntoView({behavior:'smooth',block:'start'});},
-function(){var a=document.querySelector('.cx-ask, [data-cx-ask]');var e=a||document.querySelector('.cx-honest');if(e)e.scrollIntoView({behavior:'smooth',block:'start'});},
-function(){var bs=document.querySelectorAll('.cx-new'),b=null;for(var i=0;i<bs.length;i++){if(/add person/i.test(bs[i].textContent)){b=bs[i];break;}}if(b){b.scrollIntoView({behavior:'smooth',block:'center'});b.click();}},
-function(){var e=document.getElementById('cx-connected');if(e)e.scrollIntoView({behavior:'smooth',block:'start'});}
-];
-  var want=-1;
-    var row=top.querySelector('.nsb-row');
-  function pills(){return Array.prototype.filter.call(row.children,function(c){return c.classList&&c.classList.contains('nsb-tab');});}
-  top.addEventListener('click',function(e){
+    function(){ scrollToEl(document.getElementById('nsb-cx-yourpeople')); },
+    function(){ scrollToEl(document.getElementById('nsb-cx-lists')); },
+    function(){ scrollToEl(document.getElementById('nayaGuide')); },
+    function(){ var bs=document.querySelectorAll('.cx-new'),b=null;for(var i=0;i<bs.length;i++){if(/add person/i.test(bs[i].textContent)){b=bs[i];break;}}if(b){b.scrollIntoView({behavior:'smooth',block:'center'});b.click();} },
+    function(){ scrollToEl(document.getElementById('nsbBottom')); }
+  ];
+  document.addEventListener('click',function(e){
     var b=e.target&&e.target.closest?e.target.closest('.nsb-tab'):null;
-    if(!b||!top.contains(b))return;
-    var idx=pills().indexOf(b); if(idx<0)return;
-    if(ACTIONS[idx%N]) ACTIONS[idx%N]();
+    if(!b)return;
+    var cats=document.getElementById('nsb-cx-cats');
+    if(!cats||!cats.contains(b))return;
+    var pills=Array.prototype.filter.call(cats.querySelectorAll('.nsb-tab'),function(c){return c.classList&&c.classList.contains('nsb-tab');});
+    var idx=pills.indexOf(b); if(idx<0||idx>=ACTIONS.length)return;
+    ACTIONS[idx]();
   });
-  function markActive(){
-    if(want===-1||!row)return;
-    pills().forEach(function(b,i){ b.classList.toggle('active', VIEWS[i%VIEWS.length]===want); });
-  }
-  markActive(); setTimeout(markActive,800);
 })();
 </script>
 <!-- /SMART-BAR-SYSTEM v1.0 -->
