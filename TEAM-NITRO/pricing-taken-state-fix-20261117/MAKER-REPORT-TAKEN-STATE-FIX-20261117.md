@@ -207,12 +207,19 @@ scrollable and is untouched by this diff).
 
 ## Filing
 
-- Branch: `pricing-f4-free-entry-20261116` — ONE new commit on top of
-  `c74f6dae`, no merge, nothing live. Files filed (small files only; the
-  3.2 MB walk / 3.6 MB worker sources are NOT filed — the staged workers are
-  the byte-exact record, as in prior rounds): this report,
-  `build-taken-fix.py`, `probe-after.py`, `probe-after2.py`, `sw-poll2.py`,
-  `shots-clean.py`.
+- Branch: `pricing-f4-free-entry-20261116` — round commit `31f4ddc5` on top of
+  `c74f6dae`, plus filing-completion commit `SEE BELOW` adding the two
+  evidence scripts the first filing's file list missed (see note), no merge,
+  nothing live. Files on the branch (small files only; the 3.2 MB walk /
+  3.6 MB worker sources are NOT filed — the staged workers are the byte-exact
+  record, as in prior rounds): this report, `build-taken-fix.py`,
+  `probe-after.py`, `probe-after2.py`, `sw-poll2.py`, `shots-clean.py`.
+- **Filing note (honest record):** the first filing run's file list carried
+  only 4 of the 6 files (a sed left the two extra entries out of the list),
+  so commit `31f4ddc5` holds the report + build + two probes. This report
+  was corrected to say so and re-filed with `sw-poll2.py` +
+  `shots-clean.py` in the follow-up commit below — the branch now holds
+  everything this report claims.
 - Build script: `build-taken-fix.py` — regenerates the Marcellus-tip base in
   memory, asserts base shas, verifies live staged `/free` still serves the
   tip entry, harvests the live PWA assets, applies the taken fix, patches
