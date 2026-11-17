@@ -3237,7 +3237,7 @@ button:hover{
 
 
 .action[data-kind="share-intel"] { --action-color: #C7CEDC; }
-.action[data-kind="comment"] { --action-color: #ffbf3d; }
+.action[data-kind="comment"] { --action-color: #d4a017; }
 
 .action[data-kind="naya-voice"] { --action-color: #a06bff; }
 
@@ -9320,7 +9320,7 @@ function wallCard(j, iso, pid, idx){
          opens the post's share menu (walk-end destinations + count). The
          hero Share button is NOT inside a wall article, so it keeps the
          old native-sheet-or-copy path below. */
-      var siArt=si.closest?si.closest('#os-wall-list article.intel-board'):null;
+      var siArt=si.closest?si.closest('#os-wall-list article.intel-board, #mwFeedNaya article.intel-board'):null;
       if(siArt && window.BoardActions && window.BoardActions.showShareMenu){
         var siIid=siArt.getAttribute('data-intelligence-id')||'';
         var siBid='note-'+siIid.replace(/^smart-note-/,'').toLowerCase().replace(/[^a-z0-9]+/g,'-');
@@ -9355,7 +9355,7 @@ function wallCard(j, iso, pid, idx){
        from here; FAVORITE/SAVE still toggle, sync Smart Lists, and
        confirm with a toast. */
     var baBtn=e.target.closest?e.target.closest('button[data-kind]'):null;
-    if(baBtn && baBtn.closest('#os-wall-list article.intel-board')){
+    if(baBtn && baBtn.closest('#os-wall-list article.intel-board, #mwFeedNaya article.intel-board')){
       var baKind=baBtn.getAttribute('data-kind');
       if(baKind!=='share-intel'){
         var baArt=baBtn.closest('article.intel-board');
@@ -17399,7 +17399,7 @@ window.BoardActions = (() => {
       b.addEventListener('click', onClick);
       return b;
     };
-    const mobile = mkOpt('Share on mobile', '#2fe89e', () => {
+    const mobile = mkOpt('Share on mobile', '#07925f', () => {
       if (navigator.share) {
         navigator.share({ title: title || 'NayaNET Intelligence', text: (title || 'NayaNET Intelligence') + ' — NayaNET', url: shareUrl }).then(() => { bumpShare(); fsCloseCurrent(); }).catch(err => { if (!err || err.name !== 'AbortError') toast('SHARE NOT COMPLETED — the link above still works.'); });
       } else {
@@ -17407,11 +17407,11 @@ window.BoardActions = (() => {
         note.hidden = false;
       }
     });
-    const fb = mkOpt('Share on Facebook', '#3fb8ff', () => {
+    const fb = mkOpt('Share on Facebook', '#0f52ba', () => {
       window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), '_blank', 'noopener');
       bumpShare();
     });
-    const email = mkOpt('Share by email', '#ffbf3d', () => {
+    const email = mkOpt('Share by email', '#d4a017', () => {
       window.location.href = 'mailto:?subject=' + encodeURIComponent(title || 'NayaNET Intelligence') + '&body=' + encodeURIComponent((title || 'NayaNET Intelligence') + ' — ' + shareUrl);
       bumpShare();
     });
@@ -17519,25 +17519,24 @@ window.ibWallHTML = function(r, idx){
    Gold is the comments color (Playbook spectrum); the share menu reuses the
    walk-end share options (mobile green, Facebook blue, email gold). Board
    black inside, no glow inside ever; white as a real object; outside light
-   in the object's own color; alive on hover. DEEP PALETTE NOTE: this round
-   harvests the walk-end pattern verbatim in the brief's bright spectrum
-   (gold #ffbf3d, blue #3fb8ff, green #2fe89e) so the new buttons speak the
-   same language as the LOVE/LIKE row they sit in; the deep-palette values
-   (deep gold #d4a017, sapphire #0f52ba, emerald #07925f) ride the page-wide
-   palette migration as a named follow-on, not a one-button re-palette. */
+   in the object's own color; alive on hover. DEEP PALETTE (2026-11-17 fix):
+   the walk-end pattern is harvested, its values deepened — comment gold
+   deep gold #d4a017, Facebook blue sapphire #0f52ba, mobile green emerald
+   #07925f. The pre-existing bright LOVE/LIKE row migrates with the
+   page-wide palette migration, not this fix. */
 .naya-fs-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.82); padding: 16px; box-sizing: border-box; }
-.naya-fs-board { position: relative; width: min(680px, 94vw); max-height: 88vh; overflow-y: auto; box-sizing: border-box; background: #0b0d12; border: 1.5px solid var(--fs-ac, #ffbf3d); border-radius: 18px; padding: 22px; color: #fff; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(255,191,61,.25); }
-.naya-fs-board[data-fs-ac="blue"] { border-color: #3fb8ff; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(63,184,255,.25); }
+.naya-fs-board { position: relative; width: min(680px, 94vw); max-height: 88vh; overflow-y: auto; box-sizing: border-box; background: #0b0d12; border: 1.5px solid var(--fs-ac, #d4a017); border-radius: 18px; padding: 22px; color: #fff; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(212,160,23,.25); }
+.naya-fs-board[data-fs-ac="blue"] { border-color: #0f52ba; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(15,82,186,.25); }
 .naya-fs-x { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.4); background: #14141c; color: #fff; font-size: 20px; line-height: 1; cursor: pointer; font-family: inherit; }
 .naya-fs-x:hover { border-color: #fff; }
 .naya-fs-title { margin: 0 44px 4px 0; font-size: 20px; font-weight: 800; color: #fff; }
 .naya-fs-sub { margin: 0 44px 14px 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.85); }
 .naya-fs-h { margin: 16px 0 8px; font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #fff; }
 .naya-fs-ta { width: 100%; box-sizing: border-box; min-height: 120px; background: #050607; border: 1px solid rgba(255,255,255,.22); border-radius: 12px; color: #fff; font-size: 15px; line-height: 1.5; padding: 12px 14px; font-family: inherit; resize: vertical; box-shadow: inset 0 2px 8px rgba(0,0,0,.6); }
-.naya-fs-ta:focus { outline: none; border-color: #ffbf3d; }
+.naya-fs-ta:focus { outline: none; border-color: #d4a017; }
 .naya-fs-row { display: flex; justify-content: flex-end; margin-top: 12px; }
-.naya-fs-post { border: 2px solid #ffbf3d; border-radius: 999px; padding: 12px 26px; font-size: 14px; font-weight: 800; color: #fff; cursor: pointer; font-family: inherit; background: linear-gradient(180deg, #1b1b24, #050507); box-shadow: 0 8px 18px rgba(0,0,0,.55); }
-.naya-fs-post:hover { transform: translateY(-2px); box-shadow: 0 0 22px rgba(255,191,61,.45), 0 10px 22px rgba(0,0,0,.6); }
+.naya-fs-post { border: 2px solid #d4a017; border-radius: 999px; padding: 12px 26px; font-size: 14px; font-weight: 800; color: #fff; cursor: pointer; font-family: inherit; background: linear-gradient(180deg, #1b1b24, #050507); box-shadow: 0 8px 18px rgba(0,0,0,.55); }
+.naya-fs-post:hover { transform: translateY(-2px); box-shadow: 0 0 22px rgba(212,160,23,.45), 0 10px 22px rgba(0,0,0,.6); }
 .naya-fs-post:active { transform: scale(.97); }
 .naya-fs-link { width: 100%; box-sizing: border-box; background: #050607; border: 1px solid rgba(255,255,255,.22); border-radius: 10px; color: #fff; font-size: 13px; padding: 10px 12px; margin-bottom: 14px; font-family: inherit; }
 .naya-fs-opts { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
