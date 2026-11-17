@@ -52682,6 +52682,39 @@
         "Design",
         "Score"
       ]
+    },
+    {
+      "smart_note_id": "SN-3082",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3082-everyone-gets-a-world",
+      "slug": "everyone-gets-a-world",
+      "title": "Everyone Gets a World",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3082/IB-SMART-NOTE-20261117-sn3082-everyone-gets-a-world.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3082/IB-SMART-NOTE-20261117-sn3082-everyone-gets-a-world.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3082/IB-SMART-NOTE-20261117-sn3082-everyone-gets-a-world.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261117-sn3082-everyone-gets-a-world.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-17T22:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-17",
+      "page_hash": "40d240cfe3b2128a62af9384e397e4d83684eda4c2771b3bc5fe1fa3f0725adf",
+      "content_hash": "676c00dc1a34874bf61d6fe824142fa36e57d37d8bfb78050b6d9ac42d01c9c5",
+      "one_line": "NayaNET grows by giving, not by gating. Everyone who claims a name receives a world as a gift — identity, certificate, Personal, Business, and Space pages born filled from their own Welcome answers, mail, connection, and the whole collective to read — a real home, never an empty trial. The paid line sits once, on the engine: NayaNET is the world, NayaPOWER is the engine, and payment turns the engine on rather than unlocking the home button by button. Arrival is designed to take minutes: a name claimed with no payment, password, or code, seven Welcome questions answerable by voice, typing, or one's own AI, and matching seeded from the first answers. The product itself is the marketing — a stranger gains something valuable, creates something that reflects who they are, and shares it because it is them. And everybody gets a job: ambassadors earn fifty percent on all levels, free members included, paid when we are paid.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Citizenship",
+        "Growth"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52692,5 +52725,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "6a74375f4b5fa6c2cb3a3b2d165b6ef3a5e93fe95446e5b4604d3cf5071165f0"
+  "corpus_manifest_hash": "253e9a53815e088b008eb0f8c22299bdcdd09e7cb780501ac7e2efd07353e761"
 }
