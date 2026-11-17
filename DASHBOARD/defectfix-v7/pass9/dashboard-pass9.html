@@ -5003,11 +5003,11 @@ body.os-feed-open #os-feed-list{background:linear-gradient(180deg,#121214,#08080
 body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO FIX 2026-11-09 (b), RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law — supersedes FIX-4): os-bottom-hidden hides the bar WHILE SCROLLING only — it returns ONLY at the very bottom, never when scrolling stops (the _barT ~1s return is removed); visible at load, before the page has ever been scrolled down. */
 .os-b3-badge[hidden]{display:none !important;}
 .os-notif-count[hidden]{display:none !important;}
-.os-b3-badge{position:absolute;top:3px;right:3px;min-width:20px;height:20px;padding:0 4px;
+.os-b3-badge{position:absolute;top:2px;right:2px;min-width:20px;height:20px;padding:0 4px;
   display:inline-flex;align-items:center;justify-content:center;border-radius:999px;
   background:#050607;color:#ffffff;font-size:12px;font-weight:900;line-height:1;
   border:1.5px solid var(--nc);box-shadow:0 0 10px color-mix(in srgb, var(--nc) 60%, transparent),inset 0 1px 0 rgba(255,255,255,.25);}
-.os-b3-badge.os-b3-long{top:2px;right:2px;height:18px;min-width:18px;padding:0 3px;}
+.os-b3-badge.os-b3-long{top:1px;right:1px;height:18px;min-width:18px;padding:0 2px;}
 @media (max-width:768px){
   #os-bottom3{gap:22px;padding:8px 0 18px;}
 }
@@ -5060,8 +5060,9 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    What changes, and only this: .notif-tile loses the white radial core and
    takes obsidian (#050607, light top-left 135deg, no glow inside); the rim
    goes 2px solid in the tile's own deep colour with an outside halo + a real
-   down-right shadow; the glyph goes WHITE as a real object; the radius goes
-   16px -> 20px (squircle, almost round, as in the pictures); hover lifts
+   down-right shadow; the glyph goes WHITE as a real object; the radius went
+   16px -> 20px in this round (squircle, almost round, as in the pictures) and the
+   FIX-PASS restores Personal's 16px (see FIX-PASS above the tile rules); hover lifts
    the whole tile and the white glyph pops. The badge (.os-b3-badge) and the
    news dots (.os-b3-dot) move INSIDE the tile — the badge as a digit tile
    set into the ACTIVITY tile's top-right corner (obsidian, emerald rim,
@@ -5077,8 +5078,9 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    visible only at 3x zoom — empty holes, not jewels. The fix harvests the gauge/metric orb's
    ball (.orb): three stacked radial gradients (specular crown at 34%/26%, mid sheen, deep-colour
    body darkening to board black), a bright own-colour rim, a deep down-right drop shadow so the
-   jewel stands OUT of the tile, and a light pool behind it. The jewel is 15px now (12px was
-   too small to read at 1920), seated top:3px right:3px inside the tile, lit in its own deep
+   jewel stands OUT of the tile, and a light pool behind it. The jewel was 15px (12px was
+   too small to read at 1920), seated top:3px right:3px inside the tile; the FIX-PASS
+   re-seats it at 13px (true gaps re-derived from the live boxes — see FIX-PASS), lit in its own deep
    colour at rest — the material, not a news signal. The news signal stays gated on real counts:
    has-news only brightens the halo and makes the dot clickable. Glow is behind, never the
    effect itself. Press goes IN (tile + jewel shadows compress on :active), release comes OUT.
@@ -5093,17 +5095,46 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    in the rest, hover and has-news stacks. The hover label pill is opacity 0 at rest and 33px
    tall, so it is ruled out as the tick.
    (4) THE 99+ BADGE: a 3-char count gets .os-b3-long (18px tall, seated top:2px right:2px);
-   geometry in the maker report proves it never touches the pulse tip. The 1-2 digit badge is
-   untouched. */
+   the first geometry proof was wrong (border-box frame) and the badge overlapped the pulse by
+   0.54px. The FIX-PASS narrows it to padding 0 2px (27.1px live) and seats it top:1px right:1px:
+   3.57px clear at its live rect; the 1-2 digit badge re-seats to top:2px right:2px: 2.97px clear. */
+/* ═══ FIX-PASS 2026-11-17 — CHECKER NOT PASS, THREE FAILURES WORKED TO ZERO (same round, same branch/PR #3451) ═══
+   (1) GEOMETRY WAS WRONG: the first proof measured the dot from the tile's BORDER box; CSS positions
+   against the PADDING box, so every gap was overstated ~2px and the 99+ badge overlapped the pulse.
+   Re-derived from the LIVE boxes (Firefox getBoundingClientRect on the old build: SVG offset (14.5,14.5),
+   dot offset (34,5); badge widths measured live: 99+ 29.1px, "10" 24.07px). The jewel is 13px at
+   top:3px right:3px now — true solid-edge gaps from the LIVE boxes: Eco 3.97 / Mail 4.95 / Worlds 9.37 /
+   Activity 10.43 / Add 10.94 / Connect 10.94, all >=3px. (Firefox uses a specified 1.5px border as 1px —
+   minimal-page control — so the live padding box is 1..53 and the live dot centre is (43.5,10.5).)
+   The 99+ badge narrows to padding 0 2px (27.1px live) and seats top:1px right:1px: 3.57px clear
+   of the pulse at its live rect; the "10" badge seats top:2px right:2px: 2.97px clear.
+   (2) ORBIT RESTORED: Personal's .notif-tile::after conic comet (orb-spin-rev 60s) harvested verbatim —
+   the moving light around the circle, following the line; the static halo alone was not a moving light.
+   (3) PERSONAL HARVEST: the tile IS Personal blob 9a006c47 effective rules (lines 32404/32407/32408/
+   32413/32467) — radius 16, flat board-black gradient, 1.5px rim, ::before none (the sheen across the
+   middle is gone, closing the hover-law (a) caveat), rest shadow, has-news, orbit. HOVER RECONCILED:
+   Personal's hover adds an own-colour wash fill + turns the glyph its own colour — that conflicts with
+   the hover law (light around only, never glow over the icon), so the wash and the coloured glyph are
+   NOT carried over: hover keeps the board-black face, the glyph stays white, the rim brightens to solid
+   own-colour and the halo grows around the tile; a taller drop joins the hover shadow for the 3D law's
+   elevation. The visible .notif-lbl is NOT carried over: at 10.5px it would be a new §2.3 size FAIL;
+   the name stays in aria-label/title + the hover pill. The Dashboard shell (#os-bottom3, fold,
+   viewport-focus partition), the Deep Palette --nc values (Laws §3.1 supersedes Personal's bright
+   values), and the inside badge/dot seats stay — the shell, the colours and the seats are the
+   Dashboard's own, the tile is Personal's. At <=400px the tile is 46px (Personal's own), the glyph
+   drops to 21px and the jewel to 11px so the >=3px separation holds there too (Eco 4.20 live). NAMED
+   LIMIT: the mobile badge still overlaps the pulse by ~0.9px in a 46px tile (pre-existing: -1.04px
+   in the eye-passed build) — no inside seat clears it without shrinking the digit. */
 .notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#ffffff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;}
 .notif-seg:active{transform:scale(.94);}
-.notif-tile{position:relative;width:54px;height:54px;border-radius:20px;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 120% at 30% 25%, #141419 0%, #050607 55%, #000000 100%);border:2px solid var(--nc);box-shadow:inset 0 2px 4px rgba(255,255,255,.28),inset 0 -8px 14px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.65),0 20px 38px rgba(0,0,0,.45),0 0 18px color-mix(in srgb, var(--nc) 55%, transparent);color:#ffffff;transition:box-shadow .3s, border-color .3s, transform .2s;}
-.notif-tile::before{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;background:linear-gradient(155deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 42%);}
-.notif-tile svg{width:25px;height:25px;color:#ffffff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(255,255,255,.35));position:relative;}
-.notif-seg:hover .notif-tile{transform:translateY(-4px) scale(1.05);border-color:color-mix(in srgb, var(--nc) 85%, #ffffff);box-shadow:inset 0 2px 4px rgba(255,255,255,.35),inset 0 -8px 14px rgba(0,0,0,.55),0 16px 30px rgba(0,0,0,.7),0 28px 50px rgba(0,0,0,.5),0 0 34px color-mix(in srgb, var(--nc) 85%, transparent);}
-.notif-seg:hover .notif-tile svg{filter:drop-shadow(0 1px 2px rgba(0,0,0,.6)) drop-shadow(0 0 9px rgba(255,255,255,.8));}
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07070b,#020203);border:1.5px solid color-mix(in srgb,var(--nc) 62%,rgba(255,255,255,.12));box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:#ffffff;transition:box-shadow .3s,border-color .3s,transform .2s ease,color .2s ease,background .2s ease;}
+.notif-tile::before{display:none}
+.notif-tile svg{width:25px;height:25px;color:#ffffff;filter:drop-shadow(0 2px 2px rgba(0,0,0,.7));position:relative;}
+.notif-seg:hover .notif-tile,.notif-seg:focus-visible .notif-tile{transform:translateY(-2px);border-color:var(--nc);box-shadow:0 10px 20px rgba(0,0,0,.65),0 22px 40px rgba(0,0,0,.45),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent);}
+.notif-seg:hover .notif-tile svg,.notif-seg:focus-visible .notif-tile svg{filter:drop-shadow(0 2px 2px rgba(0,0,0,.7)) drop-shadow(0 0 9px rgba(255,255,255,.8));}
 .notif-seg::after{content:attr(aria-label);position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-transform:uppercase;white-space:nowrap;line-height:1;background:linear-gradient(180deg,#1d1d26,#0b0b10);border:1.5px solid var(--nc);border-radius:999px;padding:8px 14px;box-shadow:0 8px 20px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.3);opacity:0;pointer-events:none;transition:opacity .18s, transform .18s;}
 .notif-seg:hover::after,.notif-seg:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0);}
+.notif-tile::after{content:'';position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc,#8e24aa) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orb-spin-rev 60s linear infinite;opacity:.9;pointer-events:none;z-index:2}
 @media(max-width:560px){#os-bottom3.notif-six{gap:4px !important;}#os-bottom3.notif-six .notif-seg{padding:2px 0 0;}}
 @media(max-width:400px){.notif-tile{width:46px;height:46px;}}
 /* GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control for the Dashboard
@@ -5131,7 +5162,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
    itself was never carried over. When a tile has news, its border goes
    bright in its own colour + white and its glow deepens, like a permanent
    hover. */
-.notif-seg.has-news .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);box-shadow:inset 0 2px 4px rgba(255,255,255,.28),inset 0 -8px 14px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.65),0 20px 38px rgba(0,0,0,.45),0 0 30px color-mix(in srgb,var(--nc) 85%,transparent)}
+.notif-seg.has-news .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
 /* BAR-DEPTH 2026-11-17 — the notification seat sits INSIDE each tile now
    (top-right corner of the tile's own black, never off the corner), so the
    jewel reads as part of the object, not a bubble stuck on it. A real jewel,
@@ -5140,7 +5171,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
    instead of a dot. A dim dot is never clickable (pointer-events:none) so
    the tile's own tap works; a lit dot opens the day view for today (the
    notification path, §3.7). */
-.os-b3-dot{position:absolute;top:3px;right:3px;width:15px;height:15px;border-radius:50%;pointer-events:none;
+.os-b3-dot{position:absolute;top:3px;right:3px;width:13px;height:13px;border-radius:50%;pointer-events:none;
   background:
     radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 14%, transparent 32%),
     radial-gradient(circle at 50% 62%, rgba(255,255,255,.12) 0%, transparent 44%),
@@ -5164,8 +5195,9 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
    the tile's shadow stack compresses while pressed and springs back on release,
    so the object feels alive — something happening when you use it. The jewel
    rides the tile: its cast shadow shortens the same way. */
-.notif-seg:active .notif-tile{box-shadow:inset 0 2px 4px rgba(255,255,255,.22),inset 0 -4px 8px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.7),0 0 10px color-mix(in srgb, var(--nc) 40%, transparent);}
+.notif-seg:active .notif-tile{box-shadow:0 2px 6px rgba(0,0,0,.7),0 0 10px color-mix(in srgb, var(--nc) 40%, transparent);}
 .notif-seg:active .os-b3-dot{box-shadow:inset 0 2px 3px rgba(255,255,255,.18),inset 0 -3px 4px rgba(0,0,0,.6),0 1px 2px rgba(0,0,0,.8),0 0 6px color-mix(in srgb, var(--nc) 40%, transparent);}
+@media(max-width:400px){#os-bottom3 .notif-tile svg{width:21px;height:21px;}#os-bottom3 .os-b3-dot{width:11px;height:11px;top:2px;right:2px;}}
 
 
 </style>
