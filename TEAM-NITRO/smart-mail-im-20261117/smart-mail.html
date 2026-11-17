@@ -1651,7 +1651,9 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function()
    Item 1: the dock-edge dissolve (see the FIX-8 CSS comment above the
    .dock-fade rules). The toggle lives here because only JS can read the
    first card's live rest position; the CSS rules above only describe the
-   gradient shape. State is exposed as window.__fix8DockFade for the
+   gradient shape. A MutationObserver re-syncs after layout-changing
+   toggles (cover/world/format) that move the card without scrolling.
+   State is exposed as window.__fix8DockFade for the
    checker ({on, gap, h}). */
 var fix8Scroll = document.querySelector('.page-scroll');
 function fix8FirstCard(){
@@ -1674,6 +1676,18 @@ function fix8SyncDockFade(){
 }
 if (fix8Scroll) fix8Scroll.addEventListener('scroll', fix8SyncDockFade, {passive:true});
 window.addEventListener('resize', fix8SyncDockFade);
+/* The cover toggle, world switches, mail/IM toggle and list re-renders move
+   the first card WITHOUT scrolling (scrollTop does not change, so no scroll
+   event fires) — e.g. hiding the banner lifts the card ~260px and parks a
+   thread bullet at the dock edge while the fade would still read the stale
+   rest state. A MutationObserver re-syncs on any layout-changing mutation
+   (body class, list re-render, display swap); the sync is idempotent, so
+   the observer settles after one extra run and cannot loop. */
+if (window.MutationObserver && document.body) {
+  var fix8Obs = new MutationObserver(function(){ fix8SyncDockFade(); });
+  fix8Obs.observe(document.body, {subtree: true, childList: true,
+    attributes: true, attributeFilter: ['class', 'hidden', 'style']});
+}
 fix8SyncDockFade();
 if (window.requestAnimationFrame) requestAnimationFrame(fix8SyncDockFade);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(fix8SyncDockFade);
