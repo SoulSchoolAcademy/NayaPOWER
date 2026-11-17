@@ -47,7 +47,11 @@ WELCOME = ROUND + "/welcome-staged.html"
 # /agreement. Source is the agree-fix round's filed file (blob 41d2c71f,
 # 85,625 B, sha 842cae53...), NOT the PR #3404 base (c7b14a98, 85,676 B):
 # the fix round changed exactly one line (line 437, agree destination).
-# The landing-fix round (dispatched 19:18Z) owns the unfold next.
+# AGREEMENT MERGE (2026-11-17, BRIEF-AGREEMENT-UPDATE-20261117.md): the
+# unfold sha moves 842cae53 -> faea2190 (85,679 B) — the agree
+# destination changes from the proof-host welcome-staged.html to
+# /?stage=bridge on this worker. The landing-fix round (dispatched
+# 19:18Z) owns the unfold next.
 UNFOLD = "/home/hatch/workspace/team-nitro/agreement-unfold-fix-20261117/agreement-unfold-fixed.html"
 MIRROR = "/home/hatch/workspace/team-nitro/space-business-mirror-personal-20261112"
 TEMPLATE = MIRROR + "/template-composed.html"
@@ -352,8 +356,31 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # block; the stale S.view='intro' comment fixed. Layout, the nine, the
 # wiring, the legal pages, the unfold and the laws are untouched.
 # Walk, template, identity, unfold shas unchanged.
-assert welcome_sha.startswith("9eea1703"), "welcome sha is not the BRIDGE PRESENTATION welcome sha (2026-11-17: bridge moved out of deckUnfold, die-cut emblem corners, picture rebuild, bars, ?stage=, device dedupe)"
-assert unfold_sha.startswith("842cae53"), "unfold sha is not the agree-fix unfold sha (blob 41d2c71f, 85,625 B)"
+# AGREEMENT MERGE (2026-11-17, BRIEF-AGREEMENT-UPDATE-20261117.md; maker
+# round — deterministic from the bridge bytes 9eea1703 via
+# agreement-update-20261117/work/edit-merge.py):
+# the welcome sha moves 9eea1703 -> 8aad1e5c (1,132,653 B -> 1,133,238 B,
+# +585 B): the two agreement pages merge into ONE at the root — the intro
+# welcome boards are gone from the choice view (their byte-identical copy
+# lives on in #fpBridge, so the citizen reads them once, on the bridge,
+# not twice); the portrait moves into the hero above the play button;
+# the Royal Unfolding header/lines hide in intro view only; stage entry
+# defaults to the intro (choice) view (?stage=bridge + bridge resume
+# still land on the bridge); intro READ + the intro next button go to
+# /agreement (one letter destination); 'Back to the login' leaves the
+# fixed bar for two in-flow buttons (bridge final + footer), so it never
+# covers the twelve legal links; choice pills render 17px at phone
+# widths; phone fit trims at <=640px (layer pad 118->80, deckUnfold
+# margins) so the choice fits one screen at 390x844. R10 (found by
+# verification, not the brief): one stray '}' in the returning-citizen
+# script (block 1) closed the line-220 try with no catch and killed the
+# whole block in the browser — deleted, all three script blocks parse.
+# The unfold sha moves 842cae53 -> faea2190 (85,625 B -> 85,679 B, +54 B):
+# the agree button's destination changes from the proof-host
+# welcome-staged.html to /?stage=bridge on this worker — the proof host
+# is never a destination. Walk, template, identity shas unchanged.
+assert welcome_sha.startswith("8aad1e5c"), "welcome sha is not the AGREEMENT MERGE welcome sha (2026-11-17: one choice screen at the root, intro boards to the bridge, entry defaults to intro, READ -> /agreement, login exits in-flow, phone fit, R10 stray-brace fix)"
+assert unfold_sha.startswith("faea2190"), "unfold sha is not the AGREEMENT MERGE unfold sha (2026-11-17: agree destination proof-host -> /?stage=bridge, 85,679 B)"
 # WALK END SHARE PLUS FIX (2026-11-16, MAKER-BRIEF-WALK-END-SHARE-PLUS-FIX-20261116.md; checker NOT PASS 18:50Z):
 # the welcome sha moved 62f691b4 -> ee348e7c (919,910 B -> 921,988 B,
 # +2,078 B): H8 — the intro legal links keep their natural one-line width
