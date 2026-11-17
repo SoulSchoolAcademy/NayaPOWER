@@ -52484,6 +52484,39 @@
         "Design Craft",
         "Verification"
       ]
+    },
+    {
+      "smart_note_id": "SN-3076",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3076-the-door-must-fit-the-work",
+      "slug": "the-door-must-fit-the-work",
+      "title": "The Door Must Fit the Work",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3076/IB-SMART-NOTE-20261117-sn3076-the-door-must-fit-the-work.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3076/IB-SMART-NOTE-20261117-sn3076-the-door-must-fit-the-work.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3076/IB-SMART-NOTE-20261117-sn3076-the-door-must-fit-the-work.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261117-sn3076-the-door-must-fit-the-work.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-17T22:37:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-17",
+      "page_hash": "42bf0868a0bb65cb194abddeee3f220e17e7d391b78b17a235d8f2f206e88cd7",
+      "content_hash": "5fe3d8e3b9b1a30a9b5b67302bf8af693313d59766eb01f5ce18af4efe3b7470",
+      "one_line": "A publishing door that cannot carry the work will be walked around, and the walk-around is where the record leaks. On 2026-11-14 the canonical door — learning_loop.py publish-note, the thin door over the canonical writer — was built to end the registry leak: capture first, page and registry entry and manifest in one motion, or nothing. But the door only accepted the persisted-block shape and rendered an emoji dialect whose machine note is a JSON dump, while the corpus's real production — the distillation batches, the door's own proof note SN-2832 — is flat captures rendered in the classic nine-section form, with coverage declared in a Distills line the census can parse. So batch 3, one hundred raw notes distilled to ten essences, honored the door's invariant in substance and published by hand, because the subcommand literally could not carry its pages. The cure is not to blame the batch or to move the corpus to the door's dialect; the cure is to teach the door the corpus dialect. From today the door speaks both shapes: the persisted-block path is untouched, and a flat classic capture now publishes through the same writer, under the same invariants, with its coverage line guaranteed parseable before anything is written.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Smart Note System",
+        "Distillation",
+        "Publishing Door"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52494,5 +52527,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "ff206afa36ef3326e09abec8949e0f79c95dfb14306c8a1ad44ef8440b054da1"
+  "corpus_manifest_hash": "229b34ba91f6bbe1e1c93fcb4a5b9064915667fb4324d6ca933830b38e238810"
 }
