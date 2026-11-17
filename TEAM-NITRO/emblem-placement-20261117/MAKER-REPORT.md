@@ -572,10 +572,11 @@ E1–E2.
     `25fd4633a5e5b784c48c352ae2565bdf94268bc5`
 - PR: **#3440**, https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3440,
   open, UNMERGED, base `main`
-- Receipts commit (this report, §13 filled): [filed by
-  `file-emblem-receipts.py --parent
-  cc5da5ccf31486647038881cb177d703377f026a --pr 3440` — commit sha
-  below]
+- Receipts commit (this report, §13 filled):
+  `0996d5993b287c093d7de662443efa9d0f8f21e2`, tree
+  `d01eda7b4297799a19d0772baa62ba19d4dfef33`, report blob
+  `a7d6799da280d0add2af5daf45077d251fc7dbe9` (35,360 B, sha256
+  `462788b78c5c6bef08edf1da8460d9f05e6a72a86d6694690de2d45581657bcb`)
 - Staged: `https://naya-pricing-free-staging.nayapower.workers.dev/free`
   (entry 3,801,588 B, sha `fbe04202…`, worker sha `d3d75854…`,
   `modified_on 2026-11-17T21:26:30Z`; timestamped link verified §4).
