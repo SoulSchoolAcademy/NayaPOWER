@@ -1007,9 +1007,85 @@ function splitSentences(t){
   });
   return out.filter(Boolean);
 }
+/* NUTSHELL — a headline ends at a phrase boundary, never mid-phrase. */
+var TITLE_DANGLING = {a:1,an:1,the:1,and:1,but:1,or:1,so:1,nor:1,yet:1,
+  in:1,on:1,at:1,of:1,to:1,for:1,with:1,by:1,from:1,into:1,over:1,
+  under:1,through:1,after:1,before:1,between:1,about:1,against:1,
+  without:1,within:1,upon:1,per:1,via:1,than:1,
+  who:1,whom:1,whose:1,that:1,which:1,where:1,when:1,while:1,if:1,as:1,
+  because:1,although:1,though:1,since:1,once:1,until:1,unless:1,
+  is:1,are:1,was:1,were:1,be:1,been:1,being:1,has:1,have:1,had:1,
+  do:1,does:1,did:1,will:1,would:1,can:1,could:1,should:1,may:1,might:1,
+  must:1,not:1,no:1};
+var TITLE_CLAUSE = {and:1,but:1,or:1,so:1,nor:1,yet:1,because:1,who:1,
+  whom:1,whose:1,that:1,which:1,where:1,when:1,while:1,if:1,as:1,
+  although:1,though:1,since:1,once:1,until:1,unless:1,for:1,with:1,to:1,
+  of:1,in:1,on:1,at:1,from:1,by:1,into:1,over:1,under:1,through:1,after:1,
+  before:1,between:1,about:1,against:1,without:1,within:1,upon:1,than:1,
+  then:1};
+var TITLE_OPENER = {because:1,who:1,whom:1,whose:1,that:1,which:1,where:1,
+  when:1,while:1,if:1,as:1,although:1,though:1,since:1,once:1,until:1,
+  unless:1};
 function titleFrom(sentence){
-  var w = sentence.replace(/["'”().,;:!?]+$/,'').split(/\s+/).slice(0, 7).join(' ');
-  return w.charAt(0).toUpperCase() + w.slice(1);
+  /* REPAIR 2026-11-17 — the nutshell is the headline of the board, and it
+     must read complete. The old first-7-words cut ended 4 of the 10 deck
+     headlines mid-phrase ("in the", "and", "the new internet,", "who") —
+     and the eye's fresh lighthouse paste got the same treatment ("The
+     lighthouse keeper mends nets at dawn,"). The nutshell now ends at a
+     phrase boundary: a comma, semicolon, colon or dash, or just before a
+     word that opens a new clause — never mid-phrase, never with trailing
+     punctuation, never on a word that needs what follows (in, the, and,
+     who, …). A headline is complete when its last word stands on its own
+     and any subordinate clause inside it has a subject and a verb. The
+     longest complete headline inside the first 7 words wins; a
+     punctuation break may stretch it to 9. A sentence of 7 words or
+     fewer is its own headline. */
+  var words = sentence.replace(/["'”().,;:!?]+$/,'').split(/\s+/);
+  var n = words.length;
+  function clean(w){ return w.replace(/["'”().,;:!?—–-]+$/,'').toLowerCase(); }
+  function complete(ws){
+    if (ws.length < 2) return false;
+    if (TITLE_DANGLING[clean(ws[ws.length - 1])]) return false;
+    var lastOpener = -1;
+    for (var i = 0; i < ws.length; i++){
+      if (TITLE_OPENER[clean(ws[i])]) lastOpener = i;
+    }
+    if (lastOpener >= 0 && ws.length - 1 - lastOpener < 3) return false;
+    return true;
+  }
+  var cands = [];
+  var i, L, w, ws;
+  for (L = 2; L <= Math.min(n, 9); L++){
+    w = words[L - 1];
+    if (w === '—' || w === '–' || w === '-'){
+      if (L - 1 >= 2) cands.push({ws: words.slice(0, L - 1), kind: 0});
+    } else if (/[,;:—–]$/.test(w)){
+      ws = words.slice(0, L);
+      ws[L - 1] = w.replace(/[,;:—–]$/, '');
+      if (ws[L - 1]) cands.push({ws: ws, kind: 0});
+    }
+  }
+  for (L = 2; L <= Math.min(n, 7); L++){
+    if (L < n && TITLE_CLAUSE[clean(words[L])])
+      cands.push({ws: words.slice(0, L), kind: 1});
+  }
+  for (L = Math.min(n, 7); L >= 2; L--){
+    ws = words.slice(0, L);
+    ws[L - 1] = ws[L - 1].replace(/["'”().,;:!?—–-]+$/, '');
+    if (ws[L - 1]) cands.push({ws: ws, kind: 2});
+  }
+  cands.sort(function(a, b){
+    if (b.ws.length !== a.ws.length) return b.ws.length - a.ws.length;
+    return a.kind - b.kind;
+  });
+  for (i = 0; i < cands.length; i++){
+    if (complete(cands[i].ws)){
+      var t = cands[i].ws.join(' ');
+      return t.charAt(0).toUpperCase() + t.slice(1);
+    }
+  }
+  var w7 = words.slice(0, Math.min(n, 7)).join(' ');
+  return w7.charAt(0).toUpperCase() + w7.slice(1);
 }
 function distill(raw){
   var t = cleanPaste(raw);
