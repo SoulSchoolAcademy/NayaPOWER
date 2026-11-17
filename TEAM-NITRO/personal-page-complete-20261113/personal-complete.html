@@ -9342,7 +9342,7 @@ function wallCard(j, iso, pid, idx){
         var siIid=siArt.getAttribute('data-intelligence-id')||'';
         var siBid='note-'+siIid.replace(/^smart-note-/,'').toLowerCase().replace(/[^a-z0-9]+/g,'-');
         var siNut=siArt.querySelector('.ib-nutshell p')||siArt.querySelector('.ib-nutshell');
-        var siTitle=(siNut&&siNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'').slice(0,60))||'Smart World';
+        var siTitle=(siNut&&shortHook(siNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'')))||'Smart World';
         window.BoardActions.showShareMenu(siBid, siTitle, window.BoardActions.shareUrlFor(siBid), siArt);
         return;
       }
@@ -9380,7 +9380,7 @@ function wallCard(j, iso, pid, idx){
         var baRaw=baIid.replace(/^smart-note-/,'');
         var baBid='note-'+baRaw.toLowerCase().replace(/[^a-z0-9]+/g,'-'); /* R4 — same full-id key as the live board: one note, one key. */
         var baNut=baArt?baArt.querySelector('.ib-nutshell p')||baArt.querySelector('.ib-nutshell'):null;
-        var baTitle=(baNut&&baNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'').slice(0,60))||'Smart World';
+        var baTitle=(baNut&&shortHook(baNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'')))||'Smart World';
         var baRead=function(){ try{ return JSON.parse(localStorage.getItem('nayanet-board-actions-v1')||'{}'); }catch(x){ return {}; } };
         var baWrite=function(s){ try{ localStorage.setItem('nayanet-board-actions-v1', JSON.stringify(s)); }catch(x){} };
         if(baKind==='create-space'){
@@ -17100,7 +17100,7 @@ window.BoardActions = (() => {
     if (rated > 0) ratingNum.classList.add('rated');
     for (let i = 1; i <= 5; i++) {
       const sb = document.createElement('button');
-      sb.type = 'button';       sb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>'; /* R5 (item 4) — drawn star, never the flat glyph. */
+      sb.type = 'button';       sb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="sf sf-hi" d="M12 12.5L12 2.6 14.9 8.5Z"/><path class="sf sf-mid" d="M12 12.5L14.9 8.5 21.4 9.4Z"/><path class="sf sf-dim" d="M12 12.5L21.4 9.4 16.7 14Z"/><path class="sf sf-dim" d="M12 12.5L16.7 14 17.8 20.5Z"/><path class="sf sf-dim" d="M12 12.5L17.8 20.5 12 17.4Z"/><path class="sf sf-dim" d="M12 12.5L12 17.4 6.2 20.5Z"/><path class="sf sf-dim" d="M12 12.5L6.2 20.5 7.3 14Z"/><path class="sf sf-mid" d="M12 12.5L7.3 14 2.6 9.4Z"/><path class="sf sf-hi" d="M12 12.5L2.6 9.4 9.1 8.5Z"/><path class="sf sf-hi" d="M12 12.5L9.1 8.5 12 2.6Z"/><path class="sf-cut" d="M12 12.5L12 2.6M12 12.5L14.9 8.5M12 12.5L21.4 9.4M12 12.5L16.7 14M12 12.5L17.8 20.5M12 12.5L12 17.4M12 12.5L6.2 20.5M12 12.5L7.3 14M12 12.5L2.6 9.4M12 12.5L9.1 8.5"/><path class="sf-spark" d="M12 3.6L13.1 7.4 12 9 10.9 7.4Z"/><path class="sf-rim" d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>'; /* R5 (item 4) — drawn star, never the flat glyph. */
       sb.setAttribute('aria-label', i + ' star' + (i > 1 ? 's' : ''));
       if (i <= rated) sb.classList.add('on');
       sb.addEventListener('click', e => {
@@ -17308,12 +17308,22 @@ window.BoardActions = (() => {
      grow/save dialogs); focus returns to the button that opened it. */
   let fsCurrent = null;
   let fsCommentBtn = null; let fsCommentPosted = false;
+  let fsCommentBoardId = null; let fsCommentCard = null;
   function fsCloseCurrent() {
     if (!fsCurrent) return;
     const cur = fsCurrent; fsCurrent = null;
     if (cur.overlay && cur.overlay.parentNode) cur.overlay.parentNode.removeChild(cur.overlay);
-    if (fsCommentBtn && !fsCommentPosted) { fsCommentBtn.classList.remove('on'); fsCommentBtn.setAttribute('aria-pressed', 'false'); }
-    fsCommentBtn = null;
+    document.documentElement.classList.remove('naya-fs-lock');
+    if (document.body) document.body.classList.remove('naya-fs-lock');
+    /* FIX-4 (2026-11-17) — un-light ONLY if the citizen has never posted
+       on this item: the store (boardId + ':commented') is the truth, not
+       just this dialog's flag — the dialog can open from the wall
+       delegate, which never set the flag, and a citizen who posted
+       before must stay lit. Resolve the LIVE button from the card. */
+    (function(){ var posted = fsCommentPosted || (fsCommentBoardId && (function(){ try { return !!read()[fsCommentBoardId + ':commented']; } catch (e) { return false; } })());
+      if (!posted) { var b = (fsCommentCard && fsCommentCard.querySelector) ? fsCommentCard.querySelector('[data-kind="comment"]') : fsCommentBtn;
+        if (b) { b.classList.remove('on'); b.setAttribute('aria-pressed', 'false'); } } })();
+    fsCommentBtn = null; fsCommentBoardId = null; fsCommentCard = null;
     if (cur.returnFocus && cur.returnFocus.focus) { try { cur.returnFocus.focus(); } catch (e) {} }
   }
   if (!window.__nayaFsKeyWired) {
@@ -17335,6 +17345,14 @@ window.BoardActions = (() => {
     if (accent) board.setAttribute('data-fs-ac', accent);
     overlay.appendChild(board);
     document.body.appendChild(overlay);
+    /* FIX-4 (2026-11-17) — PAGE SCROLLBAR GONE + SCROLL LOCKED: a fixed
+       overlay cannot cover the native page scrollbar (it paints above
+       page content) and the page keeps scrolling behind the dialog —
+       the eye proved both. Removing the page scrollbar while the dialog
+       is open kills the thumb, the track and the scroll in one move;
+       the board stays the one scroll surface. Removed on close. */
+    document.documentElement.classList.add('naya-fs-lock');
+    if (document.body) document.body.classList.add('naya-fs-lock');
     return { overlay, board };
   }
 
@@ -17350,6 +17368,16 @@ window.BoardActions = (() => {
     const returnFocus = document.activeElement;
     const { overlay, board } = fsOpenOverlay('gold');
     fsCurrent = { overlay, returnFocus };
+    /* FIX-4 (2026-11-17) — COMMENT lights gold LIVE the moment the composer
+       opens, on EVERY path in: the wall delegate calls showCommentDialog
+       directly and never ran the card button's own click handler, so the
+       facelift's lit-on-open only fired on the live-built path — the
+       facelift eye proved it (lit only after reload). Resolve the live
+       button from the card and light it here. Reset the posted flag:
+       it is stale-true from an earlier post until the next open. */
+    fsCommentBoardId = boardId; fsCommentCard = cardEl || null; fsCommentPosted = false;
+    (function(){ var b = (cardEl && cardEl.querySelector) ? cardEl.querySelector('[data-kind="comment"]') : null;
+      if (b) { fsCommentBtn = b; b.classList.add('on'); b.setAttribute('aria-pressed', 'true'); } })();
     const h = el('h2', 'naya-fs-title', '');
     h.textContent = (window.mwTr ? window.mwTr('Comment') : 'Comment');
     const sub = el('p', 'naya-fs-sub', '');
@@ -17393,6 +17421,12 @@ window.BoardActions = (() => {
       /* FACELIFT (2026-11-17) — the count pops on the post itself now
          that the dialog has closed and the citizen is looking at it. */
       (function(){ var cb = cardEl ? cardEl.querySelector('[data-kind="comment"] .action-count') : null; if (cb) { cb.classList.remove('pop'); void cb.offsetWidth; cb.classList.add('pop'); } })();
+      /* FIX-4 (2026-11-17) — COMMENT lights gold LIVE the moment a comment
+         posts: the close above must not leave the live button unlit on any
+         path (the wall delegate never captured it), so re-assert .on on
+         the live button now that the dialog has closed. */
+      (function(){ var b = (cardEl && cardEl.querySelector) ? cardEl.querySelector('[data-kind="comment"]') : null;
+        if (b) { b.classList.add('on'); b.setAttribute('aria-pressed', 'true'); } })();
     });
     ta.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) post.click(); });
     row.appendChild(post);
@@ -17578,10 +17612,27 @@ window.ibWallHTML = function(r, idx){
    email is a real mailto link; the composer auto-closes after posting.
    FIX-3 (2026-11-17): no inner scrollbar — the thread and the share
    options grow full-height and scroll WITH the dialog; the board is the
-   one scroll surface and its scrollbar is hidden (no thumb at the edge). */
+   one scroll surface and its scrollbar is hidden (no thumb at the edge).
+   FIX-4 (2026-11-17): page scrollbar gone behind dialogs — html/body
+   scroll-lock (.naya-fs-lock) while a dialog is open, so no thumb,
+   track or arrows show at the dialog's right edge, desktop and 635.
+   COMMENT lights gold live on open + on post, on every path in (the
+   wall delegate bypassed the card button's own handler). Stars are
+   cut jewels now: 10 facets, cut lines, top-left light. Dialog
+   subtitle cuts at a word boundary (shortHook), never mid-word. */
 .naya-fs-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.82); padding: 0; box-sizing: border-box; }
 .naya-fs-board { position: relative; width: 100%; height: 100%; max-height: none; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; display: flex; flex-direction: column; box-sizing: border-box; background: #0b0d12; border: 1.5px solid var(--fs-ac, #d4a017); border-radius: 0; padding: 22px; color: #fff; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(212,160,23,.25); }
 .naya-fs-board::-webkit-scrollbar { display: none; }
+/* FIX-4 (2026-11-17) — PAGE SCROLLBAR GONE + SCROLL LOCKED BEHIND DIALOGS:
+   a fixed overlay cannot cover the native page scrollbar (it paints above
+   page content) and the page keeps scrolling behind the dialog — the Fix-3
+   eye (03:30Z) and the facelift eye (03:31Z) both proved it, desktop and
+   635. While a full-screen dialog is open, html/body carry .naya-fs-lock
+   (set in fsOpenOverlay, removed in fsCloseCurrent): the page scrollbar is
+   removed entirely — no thumb, no track, no arrows at the dialog's right
+   edge — and the page cannot scroll behind the dialog. The board stays
+   the ONE scroll surface (Fix-3 stands). */
+html.naya-fs-lock, body.naya-fs-lock { overflow: hidden !important; }
 .naya-fs-board[data-fs-ac="blue"] { border-color: #0f52ba; box-shadow: 0 28px 64px rgba(0,0,0,.6), 0 0 28px rgba(15,82,186,.25); }
 .naya-fs-x { position: fixed; top: 12px; right: 12px; z-index: 5; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.4); background: #14141c; color: #fff; font-size: 20px; line-height: 1; cursor: pointer; font-family: inherit; }
 .naya-fs-x:hover { border-color: #fff; }
@@ -30088,6 +30139,30 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 .board-actions .action[data-kind="love"].on .ba-ico svg,.board-actions .action[data-kind="like"].on .ba-ico svg,.board-actions .action[data-kind="comment"].on .ba-ico svg{fill:var(--action-color);stroke:var(--action-color);filter:drop-shadow(0 0 5px var(--action-color)) drop-shadow(0 1px 1px rgba(0,0,0,.6));}
 .board-actions .action[data-kind="love"].on .action-count,.board-actions .action[data-kind="like"].on .action-count,.board-actions .action[data-kind="comment"].on .action-count{border-color:var(--action-color);background:color-mix(in srgb,var(--action-color) 30%,rgba(255,255,255,.12));color:#fff;animation:countPop .45s cubic-bezier(.16,.84,.22,1);}
 .board-actions .action .action-count.pop{animation:countPop .45s cubic-bezier(.16,.84,.22,1);}
+/* ═══ FEED POSTS FIX-4 (2026-11-17) — FACETED STARS ═══
+   The facelift eye: lit stars read as FLAT solid-gold icons — no facets,
+   no cut lines, no shading, no 3D depth. The star is now a cut jewel:
+   10 facets (centre + each edge of the harvested star path), tones by the
+   one top-left light (hi top/upper-left, mid upper sides, dim right +
+   bottom), cut lines centre-to-every-vertex, a white spark kite at the
+   top point, the original path kept as the rim. Facets ignite ONLY on
+   hover (.on / :hover) — at rest the star stays the facelift's white
+   outline, tile, rim and lighting behaviour untouched. Lit = deep gold
+   #d4a017 via currentColor; hover = pale gold #f8e7a0 via currentColor. */
+.board-actions .star-rating button svg .sf{fill:currentColor;fill-opacity:0;stroke:none}
+.board-actions .star-rating button svg .sf-cut{fill:none;stroke:rgba(0,0,0,.55);stroke-width:.45;stroke-linejoin:round;opacity:0}
+.board-actions .star-rating button svg .sf-spark{fill:#fff;opacity:0}
+.board-actions .star-rating button svg .sf-rim{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:round}
+.board-actions .star-rating button:hover svg .sf-hi{fill-opacity:.9}
+.board-actions .star-rating button:hover svg .sf-mid{fill-opacity:.62}
+.board-actions .star-rating button:hover svg .sf-dim{fill-opacity:.34}
+.board-actions .star-rating button:hover svg .sf-cut{opacity:1}
+.board-actions .star-rating button:hover svg .sf-spark{opacity:.85}
+.board-actions .star-rating button.on svg .sf-hi{fill-opacity:1}
+.board-actions .star-rating button.on svg .sf-mid{fill-opacity:.68}
+.board-actions .star-rating button.on svg .sf-dim{fill-opacity:.38}
+.board-actions .star-rating button.on svg .sf-cut{opacity:1}
+.board-actions .star-rating button.on svg .sf-spark{opacity:.9}
 .os-savebtn::before{content:'';display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.9%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%203h12v18l-6-4.5L6%2021z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;}
 .os-save-contact svg{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:6px;}
 .fc-pi-ico svg{width:15px;height:15px;display:block;}
