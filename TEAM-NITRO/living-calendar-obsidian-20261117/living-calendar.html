@@ -513,8 +513,16 @@ button{font-family:inherit}
    white border AND a spread-only box-shadow (0 0 0 2px #fff, zero blur —
    a hard ring, never a glow), so computed box-shadow reads the ring too.
    Nothing else changes: no fill, no glow over the cell, no pill, no
-   cell-border change. */
-.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;z-index:2;width:12px;height:12px;border-radius:50%;background:var(--dc);border:2px solid #fff;box-shadow:0 0 0 2px #fff;flex:none}
+   cell-border change.
+   FIX-9 (item 1): the 12px dot passes at 635 + 390 (14–24% of the cell)
+   but at desktop 1919 the ~263px cell makes it ~5% — the captain's eye
+   had to hunt for it. The dot scales with the cell now: 18px here
+   (desktop, ~7% of the cell, ~26px with its ring ≈ 10%), 14px at
+   ≤1088px, 12px at ≤768px (the narrow widths that already pass keep
+   their 12px). Same corner, same ring, same z-index — still a dot,
+   still no fill, no glow over the cell, no pill. The NO-HUGE-TODAY law
+   stands. */
+.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;z-index:2;width:18px;height:18px;border-radius:50%;background:var(--dc);border:2px solid #fff;box-shadow:0 0 0 2px #fff;flex:none}
 /* FIX-6 (item 7): a day with records carries a proper visible signal,
    explained — a glimpse line at the bottom of the cell ("2 appointments
    · 1 note"), white, the day's own words, never invented (it counts the
@@ -722,8 +730,15 @@ select.field option{background:#0a0a0f;color:#fff}
      390 — 26px Marcellus plus 28px of padding is wider than the space
      left between the arrows. One line now: nowrap on the base rule, and
      20px here (~166px all-in against ~189px available at 390). Fit fix,
-     not a redesign — same pill, same plaque, same text. */
-  .cal-title{padding:6px 14px;font-size:20px}
+     not a redesign — same pill, same plaque, same text.
+     FIX-9 (item 2): 20px still overflowed 15px BEFORE Marcellus lands —
+     the fallback Georgia title is ~23px wider, so the › button clipped
+     until the font arrived. 18px here now, and the pill narrows beside
+     it (padding 6px 10px): the title shrinks ~23px all-in against the
+     measured 15px overflow, so the nav row fits pre-font with ~8px to
+     spare even on the renderer that overflowed (~27px on the maker's).
+     Same pill, same plaque, same text — only smaller at ≤480. */
+  .cal-title{padding:6px 10px;font-size:18px}
   .cal-nav .primo{padding:10px 12px;font-size:12px}
   .cal-nav .primo.today{padding:10px 14px}
   .os-mini-num.med{gap:3px}
@@ -797,12 +812,18 @@ select.field option{background:#0a0a0f;color:#fff}
 .cal-day .os-mini-num.med .os-mini-tile .rd{height:22px;line-height:22px;font-size:20px}
 @media (max-width:1088px){
   .cal-day{padding:12px 10px}
+  /* FIX-9 (item 1): the dot scales down with the cell — 14px here
+     (~145px cell, ~10%; ringed visual ~22px, ~15%). */
+  .cal-day.today::after{width:14px;height:14px}
   .cal-day .os-mini-num.med .os-mini-tile{width:19px;border-radius:4px}
   .cal-day .os-mini-num.med .os-mini-tile .cap{height:4px}
   .cal-day .os-mini-num.med .os-mini-tile .rd{height:19px;line-height:19px;font-size:17px}
 }
 @media (max-width:768px){
   .cal-day{padding:10px 6px}
+  /* FIX-9 (item 1): 12px here — the narrow widths that already pass
+     keep their 12px (~100px cell at 768, ~14%; ~79px at 635, ~15%). */
+  .cal-day.today::after{width:12px;height:12px}
   .cal-day .os-mini-num.med .os-mini-tile{width:16px;border-radius:4px}
   .cal-day .os-mini-num.med .os-mini-tile .cap{height:3px}
   .cal-day .os-mini-num.med .os-mini-tile .rd{height:16px;line-height:16px;font-size:14px}
@@ -1115,10 +1136,12 @@ function intelLine(ds,books,notes){
    FIX-8 (item 3): the future check used to fire FIRST, so a day WITH
    records still read "This day has not happened yet". Records are checked
    first now: a day with a record gets its report even if it lies ahead;
-   "not happened yet" fires ONLY for a future day with NO record. */
+   "not happened yet" fires ONLY for a future day with NO record.
+   FIX-9 (item 3): counts are singular at 1 ("1 note", "1 appointment"),
+   same ternary idiom as intelLine — the line used to read "1 notes". */
 function dirLine(ds,books,notes){
   const r=dirFor(ds,notes,books);
-  if(r) return (r.notes+' notes · '+r.books+' appointments · what was learned: '+r.learned);
+  if(r) return (r.notes+(r.notes===1?' note':' notes')+' · '+r.books+(r.books===1?' appointment':' appointments')+' · what was learned: '+r.learned);
   if(isFutureDs(ds)) return 'This day has not happened yet — no report until the day has a record.';
   return 'No report — no records for this day.';
 }
