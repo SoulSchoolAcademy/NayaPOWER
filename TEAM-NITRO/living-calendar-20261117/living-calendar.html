@@ -18,12 +18,26 @@
   Notes store 'mw.cal.notes.v1' (this round, same pattern): {id,date,world,
   type,rank,timeframe,text,createdAt}. Daily Intelligence Report is computed
   from the day's own record; an empty day gets no report, none invented.
-  Weekday identity light (Living Calendar definition T1-T38, still law):
-  Sun purple 963 · Mon orange 417 · Tue yellow 528 · Wed sky blue 741 ·
-  Thu green 639 · Fri red 396 · Sat indigo 852. Category chips inside the
-  tile (never the whole tile): Smart Notes #9B5CFF · news #38A4FF ·
-  appointments #19CA9B · community #E05CBE · business #49D6E8 ·
+  Weekday identity light — DNA §1 (LOCKED 2026-11-03, governs; supersedes the
+  older T1–T38 hexes where they differ): Sun #a06bff · Mon #ff9a5a ·
+  Tue #ffbf3d · Wed #7fd4ff · Thu #2fe89e · Fri #ff5e6c · Sat #3a5bff.
+  (The Hz labels on the tiles — Sun 963 · Mon 417 · Tue 528 · Wed 741 ·
+  Thu 639 · Fri 396 · Sat 852 — are the T1–T38 frequencies, kept as labels.)
+  Category chips inside the tile (never the whole tile): Smart Notes #9B5CFF ·
+  news #38A4FF · appointments #19CA9B · community #E05CBE · business #49D6E8 ·
   personal #F5F5FF.
+  FOLLOW-ON (2026-11-17, brief BRIEF-CALENDAR-FOLLOWON-20261117.md, on the
+  fullscreen tip blob f3a07e93): (1) pricing feel — every cell ignites WHOLE
+  in its own weekday color on hover/touch and lifts, like the pricing chart;
+  (2) Dashboard digit-tile numbers — each digit of the day number in its own
+  gematria color; (3) today glows always, brighter at rest; (4) timeline
+  journal first after the day header — the day's whole story in time order;
+  (5) B3 ruling — Search, Add (+), Naya's profile OFF the month view, so the
+  month carries only month title, prev/next/Today, world selector; (6) type
+  floor — dayname 11px, hint 14px, sub2 13px, mobile VIEW label 9px;
+  (7) weather — NOT wired: no profile-location source exists within this
+  page's reach, so the honest-absence line stands; see the maker record for
+  exactly what is needed. Nothing else moved: F1–F6, F9–F11 stand as passed.
   SUPERSESSIONS (brief §3): (1) the 13-button day menu is REPLACED by 8 doors
   + Book/Meet/Create + 3 featured cards — the 13-button menu is not rebuilt.
   (2) Weekday colors STAND as each tile's rim/edge light; content shows as
@@ -73,15 +87,38 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
   box-shadow:0 12px 28px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -4px 10px rgba(0,0,0,.65);
   transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
 .tile::before{content:"";position:absolute;left:8%;right:8%;top:0;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--dc),transparent);opacity:.75;pointer-events:none}
-.tile:not(.blank):hover,.tile:not(.blank):focus-visible{transform:translateY(-3px);border-color:var(--dc);
-  box-shadow:0 18px 34px rgba(0,0,0,.65),0 0 0 1px var(--dc),0 0 26px rgba(160,107,255,.35),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
+/* FOLLOW-ON (1) PRICING FEEL — the whole cell ignites in its OWN weekday
+   color on hover/touch, like the pricing chart: a soft own-color wash fills
+   the tile (Naya Code §8: boards light up WHOLE on hover), the rim and the
+   glow are the day's own color — never the generic purple. */
+.tile::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .18s ease;
+  background:radial-gradient(120% 100% at 50% 0%,color-mix(in srgb,var(--dc) 38%,transparent),transparent 65%),
+  linear-gradient(135deg,color-mix(in srgb,var(--dc) 26%,transparent),transparent 60%)}
+.tile:not(.blank):hover,.tile:not(.blank):focus-visible{transform:translateY(-5px);border-color:var(--dc);
+  box-shadow:0 22px 38px rgba(0,0,0,.7),0 0 0 1.5px var(--dc),0 0 34px color-mix(in srgb,var(--dc) 65%,transparent),inset 0 1px 0 rgba(255,255,255,.32),inset 0 -4px 10px rgba(0,0,0,.6)}
+.tile:not(.blank):hover::after,.tile:not(.blank):focus-visible::after{opacity:1}
+.tile:not(.blank):hover .daynum,.tile:not(.blank):focus-visible .daynum{transform:scale(1.07)}
 .tile:not(.blank):active{transform:translateY(0) scale(.97)}
-.tile.today{border:2px solid #fff;box-shadow:0 0 0 2px #a06bff,0 0 28px rgba(160,107,255,.55),0 12px 28px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -4px 10px rgba(0,0,0,.6)}
+/* FOLLOW-ON (3) TODAY GLOWS — always. Today is always activated at rest:
+   its own-color wash is on, its rim glows more, and it lifts — while every
+   other day lights only on hover. You can still click into any day. */
+.tile.today{border:2px solid #fff;box-shadow:0 0 0 2px #a06bff,0 0 36px color-mix(in srgb,var(--dc) 75%,transparent),0 0 20px rgba(160,107,255,.6),0 16px 32px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
+.tile.today::after{opacity:.55}
+.tile.today:hover::after,.tile.today:focus-visible::after{opacity:1}
 .tile.sel{box-shadow:0 0 0 2px var(--dc),0 0 30px rgba(255,255,255,.25),0 18px 34px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
 .tile.blank{opacity:.22;cursor:default;box-shadow:none}
 .tile.past{opacity:.92}
-.daynum{font-size:clamp(20px,2.1vw,32px);font-weight:800;line-height:1;color:#fff;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85)}
-.dayname{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.9;margin-top:2px}
+.daynum{font-size:clamp(20px,2.1vw,32px);font-weight:800;line-height:1;color:#fff;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85);display:inline-block;transition:transform .18s ease}
+/* FOLLOW-ON (2) DASHBOARD DIGIT-TILE NUMBERS — each digit of the day number
+   in its OWN gematria color, so every day has a different number-color
+   combination. Day 16 = red 1 + indigo 6. Day 23 = orange 2 + gold 3.
+   The number is the tile's jewel: each digit carries its own glow. */
+.daynum .dg{display:inline-block;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85),0 0 16px currentColor}
+.dg0{color:#ffffff}.dg1{color:#ff2a2a}.dg2{color:#ff8c00}.dg3{color:#f5d76e}.dg4{color:#07925f}
+.dg5{color:#29b6f6}.dg6{color:#3f51b5}.dg7{color:#8e24aa}.dg8{color:#b388ff}.dg9{color:#ff1493}
+/* FOLLOW-ON (6) TYPE FLOOR — dayname 11px (was 10px). hint 14px, sub2 13px
+   and the mobile VIEW label 9px already stand at the specified sizes. */
+.dayname{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.9;margin-top:2px}
 .chip{display:inline-flex;max-width:100%;align-items:center;gap:5px;font-size:clamp(9px,1vw,12px);color:#fff;background:#211331;border:1px solid var(--chip,#fff);border-radius:18px;padding:4px 7px;margin:4px 3px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:inset 0 0 9px rgba(0,0,0,.5)}
 .chiplane{margin-top:4px;display:flex;flex-wrap:wrap}
 .dots{display:none}
@@ -96,6 +133,22 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .wisdomcard{border:1.5px solid rgba(255,255,255,.85);border-radius:16px;padding:14px;background:linear-gradient(135deg,#1b1426 0%,#0b0b12 60%,#120d1d 100%);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -3px 8px rgba(0,0,0,.55);margin:15px 0 0}
 .wisdomcard strong{display:block;margin-bottom:5px;color:#fff}
 .wisdomcard span{font-size:14px;color:#fff}
+/* FOLLOW-ON (4) TIMELINE JOURNAL — the day's whole story in time order,
+   first after the day header. One vertical rail, each entry a real moment
+   with its own color dot (appointment emerald, note purple, post white,
+   open time green outline). Past days show their real record; future days
+   show what is booked and what is open. Nothing is invented. */
+.daytimeline{border:1.5px solid rgba(255,255,255,.85);border-radius:16px;padding:14px 16px;margin:15px 0 0;background:linear-gradient(135deg,#1b1426 0%,#0b0b12 60%,#120d1d 100%);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -3px 8px rgba(0,0,0,.55)}
+.daytimeline>strong{display:block;font-size:13px;letter-spacing:.14em}
+.daytimeline .tl-sub{font-size:13px;color:#fff;margin-top:3px}
+.tl-list{list-style:none;margin:12px 0 0;padding:0 0 0 20px;border-left:2px solid rgba(255,255,255,.35);display:grid;gap:14px}
+.tl-list li{position:relative}
+.tl-dot{position:absolute;left:-26px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--tc,#fff);box-shadow:0 0 10px var(--tc,#fff)}
+.tl-time{font-weight:800;font-size:13px;letter-spacing:.04em;color:#fff}
+.tl-kind{display:inline-block;font-size:12px;font-weight:800;color:#fff;border:1px solid var(--tc,#fff);border-radius:999px;padding:2px 8px;margin-left:8px;white-space:nowrap}
+.tl-text{font-size:14px;line-height:1.45;color:#fff;margin-top:3px}
+.tl-note{font-size:13px;color:#fff;margin:12px 0 0}
+.tl-empty{font-size:14px;color:#fff;margin:12px 0 0}
 .scrim{position:fixed;inset:0;z-index:30;background:rgba(2,1,6,.72);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:16px}
 .scrim.show{display:flex}
 .panel{width:min(1100px,100%);max-height:94dvh;overflow:auto;background:radial-gradient(ellipse at 50% 0,#30164f 0,transparent 55%),linear-gradient(180deg,#160b27,#070510 80%);border:1.5px solid rgba(255,255,255,.9);border-radius:26px;box-shadow:0 0 45px rgba(103,55,167,.5),0 24px 60px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.2);padding:clamp(15px,2.1vw,26px)}
@@ -181,9 +234,12 @@ label.flab{display:block;color:#fff;font-size:13px;font-weight:700;margin:14px 0
   <header class="head">
     <div class="brand"><div class="logo" aria-hidden="true">N</div><div class="brandtxt"><strong>NayaNET · MY WORLD</strong><div id="worldname">Your life, organized by day.</div></div></div>
     <div class="toptools">
-      <button class="pill" id="searchBtn" aria-label="Search your calendar">⌕ Search</button>
-      <button class="pill" id="addBtn" aria-label="Add something to today">＋ Add</button>
-      <button class="pill" id="nayaBtn" aria-label="About Naya">◉ Naya</button>
+      <!-- FOLLOW-ON (5) B3 RULING — Search, Add (+) and Naya's profile are OFF
+           the month view: they open non-day views and break the one-purpose
+           viewport (DNA §8). The month view carries only: month title,
+           prev/next/Today, world selector — plus the page brand and the
+           owner/visitor switch, which stay. The Search, Create and Naya
+           views remain in code with no entry point from the month view. -->
       <button class="pill" id="role" aria-label="Switch owner or visitor view">Owner view ▾</button>
     </div>
   </header>
@@ -217,15 +273,15 @@ let year=NOW.getFullYear(), month=NOW.getMonth(), day=NOW.getDate();
 let role='owner', world='Personal';
 let screen='month', section='Dashboard', slot='', meetId='', createKind='smart';
 let lastFocus=null, pendingBookErr='';
-/* Weekday identity light — Living Calendar definition T1-T38 (still law). */
+/* Weekday identity light — DNA §1 (LOCKED 2026-11-03, governs). */
 const WEEKDAY=[
  {name:'Sunday',   short:'Sun', color:'#a06bff', hz:963, label:'purple'},
  {name:'Monday',   short:'Mon', color:'#ff9a5a', hz:417, label:'orange'},
  {name:'Tuesday',  short:'Tue', color:'#ffbf3d', hz:528, label:'yellow'},
- {name:'Wednesday',short:'Wed', color:'#3fb8ff', hz:741, label:'sky blue'},
+ {name:'Wednesday',short:'Wed', color:'#7fd4ff', hz:741, label:'sky blue'},
  {name:'Thursday', short:'Thu', color:'#2fe89e', hz:639, label:'green'},
  {name:'Friday',   short:'Fri', color:'#ff5e6c', hz:396, label:'red'},
- {name:'Saturday', short:'Sat', color:'#7b5cff', hz:852, label:'indigo'}];
+ {name:'Saturday', short:'Sat', color:'#3a5bff', hz:852, label:'indigo'}];
 /* Category chips inside the tile — brief §4 (never the whole tile). */
 const CAT={
  Notes:['#9b5cff','✧'], News:['#38a4ff','◎'], Meeting:['#19ca9b','◷'],
@@ -260,6 +316,11 @@ function isFutureDs(ds){ return ds>dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.
 function dlabel(y,m,d){ return new Date(y,m,d).toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'}); }
 function uid(){ return 'id'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 const TF_ORDER={Morning:0,Afternoon:1,Evening:2};
+/* FOLLOW-ON (2) — each digit of the day number in its own gematria color.
+   0 white · 1 red · 2 orange · 3 gold · 4 emerald · 5 cyan · 6 indigo ·
+   7 royal purple · 8 lavender · 9 hot pink. Day 16 = red 1 + indigo 6. */
+const DIGIT_CLASS=['dg0','dg1','dg2','dg3','dg4','dg5','dg6','dg7','dg8','dg9'];
+function digitNum(d){ return String(d).split('').map(ch=>`<span class="dg ${DIGIT_CLASS[+ch]}">${ch}</span>`).join(''); }
 /* ============ DAILY WISDOM — sourced, with carry-forward ============ */
 function wisdomFor(ds){
   /* Highest-ranked Smart Note of yesterday becomes today's wisdom (definition
@@ -332,7 +393,7 @@ function render(){
     const past=ds<todayKey;
     const wis=wisdomFor(ds).text;
     return `<div class="tile ${today?'today':''} ${sel?'sel':''} ${past?'past':''}" data-day="${d}" role="button" tabindex="0" style="--dc:${wd.color}" aria-label="Open ${dlabel(year,month,d)}, ${esc(daySummary(ds))}">
-      <div class="tilerow"><span class="daynum">${d}</span><button type="button" class="viewbtn" data-viewday="${d}" aria-label="View ${dlabel(year,month,d)}">VIEW</button></div>
+      <div class="tilerow"><span class="daynum">${digitNum(d)}</span><button type="button" class="viewbtn" data-viewday="${d}" aria-label="View ${dlabel(year,month,d)}">VIEW</button></div>
       <div class="dayname">${wd.short} · ${wd.hz} Hz</div>
       <div class="tilewisdom" title="${esc(wis)}">${esc(wis)}</div>
       <div class="chiplane">${h.slice(0,2).map(x=>`<span class="chip" style="--chip:${CAT[x][0]}">${CAT[x][1]} ${esc(x)}</span>`).join('')||`<span class="minitext">${(role==='visitor'&&!BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t)))?'Fully booked':'Open day'}</span>`}</div>
@@ -349,6 +410,49 @@ function render(){
 }
 function openDay(d){ day=d; screen='day'; section='Dashboard'; slot=''; pushRoute(); showPanel(); }
 function button(text, fn, cls){ return `<button class="${cls||'pill'}" data-op="${esc(fn)}">${text}</button>`; }
+/* FOLLOW-ON (4) TIMELINE JOURNAL — the day's whole story in time order,
+   first after the day header. Built ONLY from the day's own local record:
+   bookings by their time; notes by time frame (Morning 09:00, Afternoon
+   14:00, Evening 19:00) then created time. The timeline spans worlds — it
+   is the day's journal, all in one place — and labels each entry's world.
+   Past days show their real record; future days show what is booked and
+   what is open; today shows both. News: the archive is not wired, so the
+   timeline says so honestly instead of inventing headlines. Visitors see
+   only genuinely open times — never bookings, notes, or counts. */
+function timelineHTML(ds){
+  const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+  const past=ds<todayKey, future=isFutureDs(ds);
+  const TF_MIN={Morning:540,Afternoon:840,Evening:1140};
+  const entry=(min,time,color,kind,text)=>`<li style="--tc:${color}"><span class="tl-dot"></span><span class="tl-time">${esc(time)}</span><span class="tl-kind">${esc(kind)}</span><div class="tl-text">${esc(text)}</div></li>`;
+  if(role==='visitor'){
+    const open=past?[]:BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t));
+    const body=open.length
+      ? `<ol class="tl-list">${open.map(t=>{const h=+t.slice(0,2),m=+t.slice(3);return entry(h*60+m,fmtTime(t),'#19ca9b','Open time','Genuinely open — bookable with the owner.');}).join('')}</ol>`
+      : `<p class="tl-empty">${past?'This day has passed — past availability is not bookable.':'No times are open on this day.'}</p>`;
+    return `<section class="daytimeline" aria-label="Timeline for this day"><strong>THE DAY, IN ORDER</strong><div class="tl-sub">Public view — open times only. Private appointments and notes are never shown.</div>${body}</section>`;
+  }
+  const entries=[];
+  dayBookings(ds).forEach(b=>{
+    const h=+String(b.time).slice(0,2), m=+String(b.time).slice(3);
+    entries.push({min:h*60+m, html:entry(h*60+m,fmtTime(b.time),'#19ca9b','Appointment'+(b.meet?' · Smart Meet':''),(b.who||'Appointment')+(b.what?' — '+b.what:''))});
+  });
+  dayNotes(ds).forEach(n=>{
+    const kind=n.type==='smart'?'Smart Note ✧':n.type==='post'?'Post':'Note';
+    const color=n.type==='smart'?'#9b5cff':'#f5f5ff';
+    entries.push({min:TF_MIN[n.timeframe]||540, html:entry(TF_MIN[n.timeframe]||540,n.timeframe||'Morning',color,kind+' · '+n.world,n.text)});
+  });
+  entries.sort((a,b)=>a.min-b.min);
+  const sub=past?'What went on this day — from this day\u2019s own record.':future?'What is booked, and what is still open.':'Today so far, and what is still open.';
+  let body='';
+  if(entries.length) body=`<ol class="tl-list">${entries.map(e=>e.html).join('')}</ol>`;
+  else body=`<p class="tl-empty">${past?'No records for this day — nothing was recorded. Unknown is not zero, and no record is invented.':'Nothing booked or written for this day yet.'}</p>`;
+  if(!past){
+    const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t));
+    body+=open.length?`<p class="tl-note">Open times on this day: ${open.map(t=>esc(fmtTime(t))).join(', ')} — bookable.</p>`:`<p class="tl-note">Every time on this day is booked.</p>`;
+  }
+  body+=`<p class="tl-note">News for this day: the news archive is not wired yet — no headlines are shown, and today\u2019s headlines are never shown as past news.</p>`;
+  return `<section class="daytimeline" aria-label="Timeline for this day"><strong>THE DAY, IN ORDER</strong><div class="tl-sub">${esc(sub)}</div>${body}</section>`;
+}
 /* ============ DAY MENU (8 doors + Book/Meet/Create + 3 cards) ============ */
 const DOORS=[['Dashboard','▥','#a06bff','Daily stats'],['Personal','♙','#f5f5ff','My activity'],
  ['Business','▣','#49d6e8','Work and income'],['Space / Thing','◈','#c987ff','My communities'],
@@ -366,6 +470,7 @@ function showPanel(){
     <h2 id="modalTitle">YOUR WORLD FOR THIS DAY — ${esc(dlabel(year,month,day))}</h2>
     <div class="sub">${publicView?'Public events, available times, and ways to connect':'Your whole world for this date, intelligently organized'}</div>
     <div class="sub">Weather: unavailable — no weather provider is wired yet. Nothing is shown in its place.</div></div>${button('×','close','pill close')}</div>
+    ${timelineHTML(ds)}
     ${publicView?'':`<article class="wisdomcard"><strong>Daily Wisdom</strong><span>${esc(wisdomFor(ds).text)}</span><br><span>${esc(wisdomFor(ds).source)}</span></article>`}
     <div class="actions">${button('‹ Previous day','prevday')}${button('Next day ›','nextday')}${button('← Back to month','close')}</div>`;
     if(publicView){
@@ -741,14 +846,10 @@ $('today').onclick=()=>{ year=NOW.getFullYear(); month=NOW.getMonth(); day=NOW.g
 $('role').onclick=()=>{ role=role==='owner'?'visitor':'owner'; render(); if(screen!=='month'){ screen='day'; showPanel(); } };
 for(const w of ['Personal','Business','Space','Thing'])
   $(w==='Personal'?'pers':w==='Business'?'biz':w.toLowerCase()).onclick=()=>{ world=w; render(); if(screen!=='month'){ screen='day'; showPanel(); } };
-$('searchBtn').onclick=()=>{ lastFocus=document.activeElement;
-  /* F4(b): Search is owner-only in visitor mode — the handler refuses
-     and opens the honest refusal view instead of the search. */
-  section=role==='visitor'?'Owner only':'Search'; screen='view'; pushRoute(); showPanel(); };
-$('addBtn').onclick=()=>{ createKind='smart';
-  /* F4(b): Add/Create is owner-only in visitor mode — same refusal. */
-  section=role==='visitor'?'Owner only':'Create'; screen='view'; pushRoute(); showPanel(); };
-$('nayaBtn').onclick=()=>{ section='Naya'; screen='view'; pushRoute(); showPanel(); };
+/* FOLLOW-ON (5) B3 — the Search / Add / Naya handlers are gone with their
+   buttons (see the header note). Search and Create stay reachable from
+   inside a day view (Notes view, Create action); the Naya view has no entry
+   point from the month view, per the ruling. */
 render();
 try{ history.replaceState({view:'month',year,month,day,world,role},'',''); }catch(e){}
 </script></body></html>
