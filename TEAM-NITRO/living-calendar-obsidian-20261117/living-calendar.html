@@ -169,6 +169,31 @@
   weekday labels too — the same quality everywhere on the page, not just
   on the numbers: weekday plaques, TODAY button, back/forward arrows,
   boards, all speaking the one language.
+  AMENDMENT #9 (FIX-6, 2026-11-17 — the captain's desktop eye, browser
+  task 0065fca3, + the VM 390/635 eye): the structure was right but the
+  product underneath read as a beautiful empty shell. Nine fixes, inside
+  the standing laws: (1) THE EYE, A REAL PEARL — pearl face + distinct
+  dark middle + white "i", rim and glow in the day's color (the
+  color-matched eye Shawn approved 03:54Z), month cells AND day header.
+  (2) TODAY FINDABLE, QUIETLY — a small dot in the day's color on
+  today's cell only, and the weekday plaques' rest glow lives only in
+  the current month, so no weekday reads as "today" in another month;
+  NO-HUGE-TODAY stands (no fill, no glow, no pill). (3) THE FREQUENCY
+  IS LABELED — the jewel reads "417 Hz". (4) TWO-DIGIT DATES READ AS
+  ONE — the day-header pair joins (no gap, one shared seam), each digit
+  keeping its chakra color; month cells untouched. (5) THE DAY VIEW
+  FILLS THE WIDTH — the 1060px column is gone (1600px now). (6)
+  SECTION VIEWS ARE FULL BOARDS — the honest-empty views stand 56vh
+  tall at full width; the words stay honest, only the presentation
+  changes. (7) DAYS WITH RECORDS CARRY A CLEAR, EXPLAINED SIGNAL — a
+  glimpse line in the cell ("2 appointments · 1 note"), a plain dot on
+  phones; nothing invented for empty days. (8) MONTH ARROWS ARE THE
+  BUTTON STANDARD — 22px glyphs, back sapphire, forward emerald. (9)
+  THE NAME — the day number is exposed as one number ("20"). AMENDMENT
+  (390 eye): the day-header eye rides the date line wherever the header
+  stacks; plaques at 390 keep 9px (10px cannot fit "Wednesday") with
+  more breathing room. OUT OF SCOPE, as in the brief: no invented
+  appointments, news, weather, or horoscope content; no provider wired.
 -->
 <style>
 /* ============ ROOT + BASE ============ */
@@ -313,14 +338,30 @@ button{font-family:inherit}
    #3(1) still stands. Placement only
    is adapted: pricing sits it top-right of a plan card; here it sits
    bottom-right of the day cell, the door to the day's info. The old
-   almond eye SVG is gone — the 'i' is the info mark now. */
-.plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;--jc:#ffffff;font-family:Marcellus,Georgia,serif;font-weight:700;font-size:14px;line-height:1;background:linear-gradient(180deg,#0b0b12,#050607 80%);border:1.25px solid var(--jc);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 4px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.55),0 0 10px -4px var(--jc);text-shadow:0 1px 2px rgba(0,0,0,.65)}
+   almond eye SVG is gone — the 'i' is the info mark now.
+   FIX-6 (2026-11-17 — item 1, the desktop eye): the eye as built read as
+   a plain "i" info button — a thin white ring on plain black, no pearl
+   fill, no distinct dark middle. The face is a pearl now: a pearl radial
+   (white to pearl gray, light top-left) with a distinct dark middle disc
+   (board black, its own top-light) holding the white "i", the two split
+   by a hairline light ring — pearl band, dark middle, white "i", at every
+   width. The rim and the outside glow take the day's color (--jc set
+   inline per day by render()/showDay) — the color-matched eye with its
+   glow Shawn approved 03:54Z. The pearl face itself carries no color
+   (amendment #3(1) still stands: no colored iris). Still 30px (26px
+   ≤640, 22px ≤480), still balanced, still less white than the v4 blob —
+   the pearl is a band, the middle is dark. */
+.plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;--jc:#ffffff;font-family:Marcellus,Georgia,serif;font-weight:700;font-size:14px;line-height:1;background:radial-gradient(circle at 50% 50%,#17171f 0%,#050607 52%,rgba(255,255,255,.5) 55%,rgba(255,255,255,0) 59%),radial-gradient(circle at 34% 28%,#ffffff 0%,#f0f0f3 38%,#cfcfd6 68%,#9a9aa2 100%);border:1.25px solid var(--jc);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 4px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.55),0 0 10px -4px var(--jc);text-shadow:0 1px 2px rgba(0,0,0,.65)}
 .plan-eye:hover,.plan-eye:focus-visible{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 4px rgba(0,0,0,.6),0 6px 14px rgba(0,0,0,.6),0 0 16px -3px var(--jc);outline:2px solid #fff;outline-offset:2px}
 /* Calendar placement: bottom-right of the day cell, the door to the day. */
 .cal-day .plan-eye{top:auto;bottom:10px;right:10px}
 @media(max-width:640px){
   .plan-eye{width:26px;height:26px;top:6px;right:6px;font-size:12px}
   .cal-day .plan-eye{top:auto;bottom:8px;right:8px}
+  /* FIX-6 (item 7): on phones the cell is too narrow for the glimpse
+     words — the record signal is the plain dot, fully inside the cell. */
+  .cal-day .day-glimpse{display:none}
+  .cal-day .has{display:block}
 }
 
 /* ============ DAY COLORS — [L] + [C] WEEKDAY ============ */
@@ -357,6 +398,14 @@ button{font-family:inherit}
    invented mapping is assigned to them. */
 .cal-nav .primo.today{border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),0 12px 32px rgba(0,0,0,.65),0 0 18px rgba(var(--glow-rgb),.5)}
 .cal-nav .primo.today:hover{box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.7),0 14px 36px rgba(0,0,0,.65)}
+/* FIX-6 (item 8): the month arrows are the button standard now — PTS / %
+   MONEY quality, each its own color, premium, readable at a glance. Back
+   wears sapphire blue, forward wears deep emerald. No harvested per-arrow
+   mapping exists — the brief orders each its own color, and cool-back /
+   go-forward is the pick, both Deep Palette. The glyph grows to 22px. */
+#prev{--glow:#0f52ba;--glow-rgb:15,82,186}
+#next{--glow:#07925f;--glow-rgb:7,146,95}
+.cal-nav #prev,.cal-nav #next{font-size:22px;line-height:1;padding:12px 22px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),0 12px 32px rgba(0,0,0,.65),0 0 18px rgba(var(--glow-rgb),.5)}
 /* Weekday names in their day's color — [C] render() colored them so.
    Amendment #4(1) (Shawn's eye, 03:19Z): the FULL day names (Sunday,
    Monday...), almost in royalty, in Marcellus — not S/M/T/W/T/F/S. The
@@ -379,7 +428,13 @@ button{font-family:inherit}
    plaque, never from lighting the cell (Amendment 2). The .today class is
    toggled by render(), only while the displayed month is the current one. */
 .cal-week div{background:linear-gradient(180deg,#1a1a22,#050607 70%);border:1.5px solid var(--dc);border-radius:999px;padding:6px 4px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.5)}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5)}
+/* FIX-6 (item 2): the plaques' rest glow lives only in the current month
+   (.cur on #weeknames, toggled by render()) — in any other month no
+   plaque glows, so no weekday can read as "today" there (the desktop eye
+   read December's gold Tuesday plaque as lit). The lit (.today) plaque
+   exists only in the current month, by the same toggle. */
+.cal-week.cur div{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.5)}
 .cal-week div.today{border-width:2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 10px rgba(0,0,0,.5),0 0 36px rgba(var(--dc-rgb),.7),0 0 72px rgba(var(--dc-rgb),.35)}
 /* The grid fills the screen. No scrolling. Rows = the weeks the month
    actually needs (4–6) — the grid ends at the month's last day; no trailing
@@ -412,19 +467,39 @@ button{font-family:inherit}
    is REMOVED — today's cell reads exactly like its siblings. Today is
    known from the weekday plaque (the lit one) and the header TODAY
    button, not from lighting the cell. The .today class stays on the cell
-   (state only); it has no visual rule. The record dot (.has) is untouched
-   — it marks a day with bookings/notes, not today. */
-/* A day with a record carries one small dot, bottom-left, in its day's
-   color — the presence signal, [C] .dots, reduced to a single dot. */
-.cal-day .has{position:absolute;left:12px;bottom:12px;width:7px;height:7px;border-radius:50%;background:var(--dc);box-shadow:0 0 8px var(--dc);flex:none}
-.cal-day .has.none{visibility:hidden}
+   (state only). FIX-6 (item 2): it renders exactly ONE quiet thing now —
+   the small dot below, the day's color, no glow, no fill, no pill (the
+   NO-HUGE-TODAY law stands). The mark is the only .cal-day.today rule in
+   the file; the cell otherwise reads exactly like its siblings. */
+/* FIX-6 (item 2): the quiet mark — a small dot in the day's color, top
+   right of today's cell only. Never a fill, never a glow, never a pill.
+   Today reads from the plaque + the header TODAY button + this mark. */
+.cal-day.today::after{content:'';position:absolute;top:10px;right:10px;width:7px;height:7px;border-radius:50%;background:var(--dc);flex:none}
+/* FIX-6 (item 7): a day with records carries a proper visible signal,
+   explained — a glimpse line at the bottom of the cell ("2 appointments
+   · 1 note"), white, the day's own words, never invented (it counts the
+   day's own local record only). The cell uses its space: color rim,
+   number, eye, and a glimpse of what's inside. The tiny dot is retired
+   on desktop — it read as a speck, half-clipped and unexplained. On
+   phones (≤640px) the cell is too narrow for words, so the signal is a
+   plain dot again — 8px, fully inside the cell, no glow to clip. Days
+   with nothing keep number + eye only; nothing is invented for an
+   empty day. */
+.cal-day .day-glimpse{position:absolute;left:14px;right:52px;bottom:12px;max-height:33px;overflow:hidden;font-size:11px;font-weight:800;letter-spacing:.06em;line-height:1.5;text-transform:uppercase;color:#fff;text-align:left}
+.cal-day .has{display:none;position:absolute;left:8px;bottom:8px;width:8px;height:8px;border-radius:50%;background:var(--dc);flex:none}
 .cal-day.blank{background:transparent;border:2px solid transparent;box-shadow:none;cursor:default}
 .cal-day.blank:hover{transform:none;background:transparent;box-shadow:none}
 
 /* ============ DAY VIEW — inside the day ============ */
 #dayView,#viewView{position:fixed;inset:0;background:#050607;z-index:50;display:none;flex-direction:column;overflow-y:auto;padding:20px 16px 40px}
 #dayView.show,#viewView.show{display:flex}
-.day-head{max-width:1060px;width:100%;margin:0 auto 8px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+/* FIX-6 (item 5 — PRIME REAL ESTATE): the day view fills the desktop
+   width now. The 1060px column (55% of a 1920 screen, ~400px of black
+   margin each side) is gone; the containers run to 1600px — the dash
+   grid spreads, the boards breathe, and the doors row keeps its shape
+   (5 across, 2 empty slots beside the 13th, as in v5 — full-bleed would
+   leave 5). Mobile is unchanged: width:100% throughout. */
+.day-head{max-width:1600px;width:100%;margin:0 auto 8px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
 .day-head .daynum-wrap{flex:none}
 /* [P] THE DAY JEWEL — .os-jewel verbatim, pricing v77 (also Dashboard
    line 4019, same rule). Amendment #2(1): the day header carries a
@@ -438,6 +513,11 @@ button{font-family:inherit}
    line is dropped (the Hz now lives in the jewel). */
 .os-jewel{--jc:#cfc09a;display:inline-grid;place-items:center;flex:none;line-height:1;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);border-radius:9px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
 .os-jewel-lg{width:46px;height:46px;font-size:22px;border-radius:13px}
+/* FIX-6 (item 3): the jewel names the unit — "417 Hz", not a bare number.
+   Same jewel object, widened to carry number + unit on one line (auto
+   width, 20px — the number stays the hero, "Hz" rides beside it). The
+   .os-jewel-lg rule above stays in the file, harvested and untouched. */
+.os-jewel-hz{width:auto;min-width:46px;height:46px;padding:0 12px;font-size:20px;border-radius:13px}
 .day-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,4vw,38px);line-height:1.1;color:#fff;margin:0;text-shadow:0 0 18px rgba(var(--dc-rgb),.5),0 0 48px rgba(var(--dc-rgb),.25)}
 .day-back{margin-left:auto}
 /* v5: the same eye lives in the day header — the door to the day's report.
@@ -446,7 +526,15 @@ button{font-family:inherit}
    Report board below. Same black-middle object as the month cells. */
 .day-head .plan-eye{position:static;flex:none;margin-left:auto}
 .day-head .day-back{margin-left:12px}
-.view-wrap{max-width:1060px;width:100%;margin:0 auto}
+/* FIX-6 (item 4): a two-digit date reads as ONE date. The digits keep
+   their own chakra colors (the digit-color law stands), but in the day
+   header — and in the section views' day number — the pair joins: no gap,
+   the second tile overlapping the first tile's border into one shared
+   seam, one baseline, so "17" reads as seventeen, not one-and-seven.
+   Month cells are untouched (their small tiles stand). */
+.daynum-wrap .os-mini-num.med,.empty .os-mini-num.med{gap:0}
+.daynum-wrap .os-mini-num.med .os-mini-tile+.os-mini-tile,.empty .os-mini-num.med .os-mini-tile+.os-mini-tile{margin-left:-2px}
+.view-wrap{max-width:1600px;width:100%;margin:0 auto}
 /* The 13 doors — INSTRUMENTS, not buttons (scorecard (8), 03:47Z). The
    doors were a row of .primo pills; a pill is a button, and thirteen
    buttons read as a form. An instrument is a board that shows you
@@ -528,16 +616,22 @@ button{font-family:inherit}
 .db-note{font-size:13px;line-height:1.6;color:#fff;margin:8px 0 0}
 @media(max-width:900px){.dash{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.dash{grid-template-columns:1fr}.dash .span2{grid-column:auto}}
-/* Empty state — an object, not a paragraph: board + glyph + day tiles + two words. */
-.empty{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:44px 24px}
-.empty .glyph{font-size:44px;line-height:1;color:#fff;text-shadow:0 0 24px rgba(var(--dc-rgb),.8)}
-.empty .words{font-size:15px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
-.empty .hintline{font-size:13px;color:#fff;max-width:420px;line-height:1.6}
+/* Empty state — an object, not a paragraph: board + glyph + day tiles + two words.
+   FIX-6 (item 6): the honest-empty section view was one small tile in a
+   vast blank black field. It presents as a FULL BOARD now — the card
+   fills the view's width (item 5) and stands 56vh tall, content centered,
+   glyph and words grown to board scale. The WORDS are unchanged and stay
+   honest ("No provider wired", "No source wired", "Archive not wired
+   yet") — only the presentation changes, never the truth. */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:56px 28px;min-height:56vh}
+.empty .glyph{font-size:60px;line-height:1;color:#fff;text-shadow:0 0 24px rgba(var(--dc-rgb),.8)}
+.empty .words{font-size:19px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.empty .hintline{font-size:14px;color:#fff;max-width:560px;line-height:1.6}
 /* Views inside a day */
-.view-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 auto 18px;max-width:1060px;width:100%}
+.view-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 auto 18px;max-width:1600px;width:100%}
 .view-head h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(22px,3.4vw,32px);color:#fff;margin:0;flex:1;min-width:220px}
 .view-head .primo{padding:12px 18px;font-size:13px}
-.viewcard{margin:0 auto 18px;max-width:1060px}
+.viewcard{margin:0 auto 18px;max-width:1600px}
 .viewcard .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin:14px 0}
 .viewcard .stat{text-align:center;padding:14px 8px;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;background:linear-gradient(180deg,#0a0a0f,#050607)}
 .viewcard .stat b{display:block;font-size:34px;font-weight:900;color:#fff;line-height:1}
@@ -577,8 +671,13 @@ select.field option{background:#0a0a0f;color:#fff}
 @media (max-width:480px){
   #monthView{padding:10px 8px 8px;gap:8px}
   .cal-grid{gap:4px}
-  .cal-week{gap:5px}
-  .cal-week div{font-size:9px;letter-spacing:.02em}
+  /* FIX-6 (390 legibility): the week row's gap matches the grid's (4px —
+     the plaques align with the day columns now, they were 1px narrow)
+     and the plaque padding narrows, giving "Wednesday" ~5px more room.
+     The font stays 9px: 10px cannot fit "Wednesday" in a ~49px track, by
+     the arithmetic in the maker report — 9px is the correct maximum. */
+  .cal-week{gap:4px}
+  .cal-week div{font-size:9px;letter-spacing:.02em;padding:6px 2px}
   .cal-day{border-radius:14px;padding:8px 2px;gap:4px}
   .cal-title{padding:6px 14px}
   .cal-nav .primo{padding:10px 12px;font-size:12px}
@@ -602,9 +701,20 @@ select.field option{background:#0a0a0f;color:#fff}
   .cal-day .os-mini-num.med .os-mini-tile .rd{height:22px;line-height:22px;font-size:20px}
   .cal-day .os-mini-num.med .os-mini-gap{width:6px}
   .doors{grid-template-columns:1fr}
-  .day-head{flex-direction:column;align-items:flex-start;gap:12px}
+  /* FIX-6 (amendment A1): at 390 the eye sat alone on its own line,
+     stranded between the date and Back to month. The header becomes a
+     two-column grid here: jewel, day number, then the DATE LINE — title
+     + eye side by side — then Back full-width. The eye rides the date
+     line wherever the header stacks. */
+  .day-head{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
+  /* The Hz jewel is auto-width — without this the grid would stretch it
+     across the whole row; it stays its own size, left-aligned. */
+  .day-head .os-jewel-hz{justify-self:start}
   .day-head .plan-eye{margin-left:0}
-  .day-back{margin-left:0}
+  .day-back{grid-column:1/-1;margin-left:0}
+  /* FIX-6 (item 8): the arrows keep their button-standard size here too
+     (18px glyph — still clearly readable, still inside the 390 header). */
+  #prev,#next{font-size:18px;padding:10px 16px}
 }
 
 /* ============ AMENDMENT #4(3) — DAY NUMBERS SMALL, FIT AT EVERY WIDTH ============ */
@@ -819,13 +929,17 @@ function miniTileHTML(ch){
   if (!isFinite(d)) return '';
   return '<span class="os-mini-tile d' + d + '"><span class="cap"></span><span class="rd">' + d + '</span></span>';
 }
-function miniNumHTML(value, size){
+function miniNumHTML(value, size, label){
   if (value == null) return '—';
   var str = String(value).trim().replace(/,/g, ' ').replace(/ +/g, ' ');
   if (str === '' || str === '—' || str === '-') return '—';
   if (!/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(str) && str !== '∞') return esc(String(value));
   var cls = (size === 'med') ? 'os-mini-num med' : 'os-mini-num';
-  var html = '<span class="' + cls + '">';
+  /* FIX-6 (item 9): when the number is a day, the wrapper names it outright
+     (role="img" + aria-label) so the date is exposed as one number — "20",
+     not a digit at a time — whatever reads the name. Counts pass no label
+     and are unchanged. */
+  var html = '<span class="' + cls + '"' + (label ? ' role="img" aria-label="' + esc(label) + '"' : '') + '>';
   for (var i = 0; i < str.length; i++) html += miniTileHTML(str[i]);
   return html + '</span>';
 }
@@ -1008,6 +1122,10 @@ function render(){
   document.querySelectorAll('#weeknames div').forEach((el,i)=>{
     el.classList.toggle('today', year===NOW.getFullYear()&&month===NOW.getMonth()&&i===NOW.getDay());
   });
+  /* FIX-6 (item 2): the plaques' rest glow lives only in the current month
+     (.cur on #weeknames) — in any other month no plaque glows, so no
+     weekday can read as "today" there; the lit plaque exists only here. */
+  $('weeknames').classList.toggle('cur', year===NOW.getFullYear()&&month===NOW.getMonth());
   const tw=WEEKDAY[NOW.getDay()];
   $('todayBtn').style.setProperty('--glow',tw.color);
   $('todayBtn').style.setProperty('--glow-rgb',tw.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(','));
@@ -1025,11 +1143,15 @@ function render(){
     const ds=dateKey(year,month,d);
     const today=isToday(year,month,d);
     const rec=dayHasRecord(ds);
-    const summary=rec?((dayBookings(ds).length?dayBookings(ds).length+' appointment'+(dayBookings(ds).length===1?'':'s'):'')+(dayBookings(ds).length&&dayNotes(ds).length?', ':'')+(dayNotes(ds).length?dayNotes(ds).length+' note'+(dayNotes(ds).length===1?'':'s'):'')+'.'):'No records for this day.';
+    const bN=dayBookings(ds).length, nN=dayNotes(ds).length;
+    const summary=rec?((bN?bN+' appointment'+(bN===1?'':'s'):'')+(bN&&nN?', ':'')+(nN?nN+' note'+(nN===1?'':'s'):'')+'.'):'No records for this day.';
+    /* FIX-6 (item 7): the glimpse says what is inside the day, in the
+       day's own words — counts from the local record only, never invented. */
+    const glimpse=rec?((bN?bN+' appointment'+(bN===1?'':'s'):'')+(bN&&nN?' · ':'')+(nN?nN+' note'+(nN===1?'':'s'):'')) : '';
     return `<div class="cal-day dow-${new Date(year,month,d).getDay()}${today?' today':''}" data-day="${d}" role="button" tabindex="0" aria-label="Open ${dlabel(year,month,d)}. ${esc(summary)}">
-      ${miniNumHTML(d,'med')}
-      <span class="has${rec?'':' none'}" aria-hidden="true"></span>
-      <button class="plan-eye" type="button" data-eye="${d}" aria-label="See inside ${dlabel(year,month,d)}">i</button></div>`;
+      ${miniNumHTML(d,'med',String(d))}
+      ${rec?`<span class="day-glimpse">${esc(glimpse)}</span><span class="has" aria-hidden="true"></span>`:''}
+      <button class="plan-eye" type="button" data-eye="${d}" style="--jc:${wd.color}" aria-label="See inside ${dlabel(year,month,d)}">i</button></div>`;
   }).join('');
   document.querySelectorAll('[data-day]').forEach(b=>{ b.onclick=()=>openDay(+b.dataset.day);
     b.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openDay(+b.dataset.day); } }; });
@@ -1049,10 +1171,10 @@ function showDay(){
   $('dayView').style.setProperty('--dc',wd.color);
   $('dayView').style.setProperty('--dc-rgb',wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(','));
   $('dayHead').innerHTML=`
-    <span class="os-jewel os-jewel-lg" style="--jc:${wd.color}" role="img" aria-label="${wd.name}, ${wd.hz} Hz">${wd.hz}</span>
-    <div class="daynum-wrap">${miniNumHTML(day,'med')}</div>
+    <span class="os-jewel os-jewel-hz" style="--jc:${wd.color}" role="img" aria-label="${wd.name}, ${wd.hz} Hz">${wd.hz} Hz</span>
+    <div class="daynum-wrap">${miniNumHTML(day,'med',String(day))}</div>
     <div><h2 class="day-title">${esc(dlabel(year,month,day))}</h2></div>
-    <button class="plan-eye" data-op="report" type="button" aria-label="See the daily report for this day">i</button>
+    <button class="plan-eye" data-op="report" type="button" style="--jc:${wd.color}" aria-label="See the daily report for this day">i</button>
     <button class="primo day-back" data-op="close" type="button">← Back to month</button>`;
   /* v5: the wisdom banner runs across the top of the day view (the harvested
      [C] wisdomFor, moved up from the bottom board); below the 13 doors the
@@ -1103,7 +1225,7 @@ function viewHeadHTML(title, ds){
 }
 function emptyState(glyph, words, hint){
   const wd=WEEKDAY[new Date(year,month,day).getDay()];
-  return `<div class="viewcard ph-card empty" style="--dc:${wd.color};--dc-rgb:${wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(',')}"><span class="glyph" aria-hidden="true">${glyph}</span>${miniNumHTML(day,'med')}<span class="words">${esc(words)}</span><span class="hintline">${esc(hint)}</span></div>`;
+  return `<div class="viewcard ph-card empty" style="--dc:${wd.color};--dc-rgb:${wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(',')}"><span class="glyph" aria-hidden="true">${glyph}</span>${miniNumHTML(day,'med',String(day))}<span class="words">${esc(words)}</span><span class="hintline">${esc(hint)}</span></div>`;
 }
 function notesListHTML(list, emptyWords, emptyHint){
   if(!list.length) return emptyState('✧', emptyWords, emptyHint);
