@@ -390,8 +390,10 @@ a { color: inherit; }
    Spaces gold, count bubbles with a 9+ cap, hidden at 0. The trio rides
    at the very bottom (bottom: var(--smartbar-h, 0px) — 0 now that the
    Smart Bar is OUT, Shawn 15:43Z). Two adaptations, named: (1) the fade
-   — .nsb-trio-faded, driven by the trio-fold listener (same scroll, same
-   1.5s return); the base rule carries the opacity transition for it.
+   — .nsb-trio-faded, which no listener in this file drives (the fold is
+   driven by os-bottom-hidden in the stack script below, Amendment #3:
+   down hides the bar, only the very bottom brings it back); the base rule
+   carries the opacity transition for it.
    (2) The Hub-only rules are NOT carried over: the eco-bottombar rider
    (no such element here), the .toast-stack/.main padding, and the
    .corner-plus block. */
@@ -441,14 +443,19 @@ a { color: inherit; }
    right amount of elegance): the slow turning flow around every tile — the
    orbit from this morning, taken from the hamburger and the brand mark
    (the same travelling-dot object, never a rotating element, so the glyph
-   stays upright). Odd tiles turn clockwise in 120s, even tiles counter in
+   stays upright). AMENDMENT #3 (2026-11-17 20:29Z): the filed flow was
+   VERIFIED against the morning orbit and differed in exactly one
+   declaration — it missed background-repeat:no-repeat, so the 9px dot
+   tiled into a dotted band instead of one dot travelling the ring. The
+   no-repeat is restored from the canonical object (hamburger .rail-toggle,
+   brand mark), verbatim. Odd tiles turn clockwise in 120s, even tiles counter in
    150s, the same pair as the hamburger (120s CW) and the brand mark
    (150s CCW) — one treatment, congruent on all six. Amendment #2: the
    flow goes here and NOWHERE else new in this round — the sidebar icons,
    the sub-tabs, the tab jewels, the top controls and the brand mark
    already carry it where it belongs; piling it onto more places in this
    round would be too much in one place. */
-.notif-tile::after{content:""; position:absolute; inset:-6px; z-index:-1; pointer-events:none; border-radius:inherit; border:1px solid color-mix(in srgb, var(--nc) 35%, transparent); background-image:radial-gradient(circle,#fff 0 1.5px,var(--nc) 2px 3.5px,transparent 4.5px); background-size:9px 9px; background-position:50% 0; animation:naya-orbit-dot-cw 120s linear infinite;}
+.notif-tile::after{content:""; position:absolute; inset:-6px; z-index:-1; pointer-events:none; border-radius:inherit; border:1px solid color-mix(in srgb, var(--nc) 35%, transparent); background-image:radial-gradient(circle,#fff 0 1.5px,var(--nc) 2px 3.5px,transparent 4.5px); background-size:9px 9px; background-repeat:no-repeat; background-position:50% 0; animation:naya-orbit-dot-cw 120s linear infinite;}
 .notif-seg:nth-child(even) .notif-tile::after{animation:naya-orbit-dot-ccw 150s linear infinite;}
 .notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 3px 3px rgba(0,0,0,.95)) drop-shadow(0 0 2px rgba(255,255,255,.9)) drop-shadow(0 0 7px rgba(255,255,255,.55)); position: relative; transition: transform .22s, filter .22s; }
 .notif-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; color: #fff; }
@@ -1070,6 +1077,16 @@ svg.jewel { display: block; }
 
 /* Main Show hero */
 .hero { padding: 30px 0 6px; }
+/* AMENDMENT #3 2026-11-17 20:29Z (the Hub welcome folds away): on login the
+   Hub greets you — good-afternoon banner with the time and the quote of the
+   day — then folds up and hides away. The hero itself collapses to zero
+   height (max-height + opacity + padding, one transition); nothing else is
+   added, no new chrome, no new button. Underneath it sits flush: search at
+   the top, then Collective / Personal / Activity, then the categories, then
+   the feed. */
+.hero{transition:max-height .6s cubic-bezier(.16,.84,.22,1),opacity .45s ease,padding-top .6s cubic-bezier(.16,.84,.22,1),padding-bottom .6s cubic-bezier(.16,.84,.22,1);}
+.hero.hero-folded{max-height:0!important;opacity:0;overflow:hidden;padding-top:0;padding-bottom:0;margin-top:0;margin-bottom:0;pointer-events:none;}
+@media(prefers-reduced-motion:reduce){.hero{transition:none!important;}}
 .hero .eyebrow {
   font-size: 11px; letter-spacing: .24em; font-weight: 700;
   color: var(--room-accent, var(--green)); margin-bottom: 12px;
@@ -5362,8 +5379,9 @@ function HubView(params) {
      hidden, never invented; Business Connections sub-row beneath it) ·
      Your World (RENAMED from Space — your thing, your world) · Smart Worlds
      (the directory of all worlds/spaces, RIGHT UNDERNEATH Your World) ·
-     then the room rows 7–12 in v4 order: Intel Today · Your Reports ·
-     Smart Factory · Smart Growth · Intelligent Library · Your Connections.
+     then the room rows 7–11 in order: Intel Today · Your Reports · Smart
+     Growth · Intelligent Library · Your Connections. (Amendment #3: Smart
+     Factory moved to the top of the RIGHT rail.)
      OUT per v4: Smart Feed as its own item (Hub IS the Smart Feed) · Ask Naya
      (Hub-only obsidian button now) · Smart Spaces (Smart Worlds is the
      directory) · Smart Ledger (a button inside Smart Stats, not a row) ·
@@ -5517,9 +5535,10 @@ function HubView(params) {
      not on the corrected LEFT 16. The citizen's world lives in My Worlds
      on the right. (The NayaPersonalApp API above stays: settings and
      the walk still use it.) */
-  /* ——— HUB FIX v4 2026-11-16: rows 7–12 of the OFFICIAL v4 LEFT list ———
-     Intel Today · Your Reports · Smart Factory · Smart Growth ·
-     Intelligent Library · Your Connections, in that order, from R.ROOMS.
+  /* ——— HUB FIX v4 2026-11-16: rows 7–11 of the OFFICIAL v4 LEFT list ———
+     Intel Today · Your Reports · Smart Growth · Intelligent Library ·
+     Your Connections, in that order, from R.ROOMS. (Amendment #3: Smart
+     Factory moved to the top of the RIGHT rail.)
      OUT per v4: Smart Feed (Hub IS the Smart Feed) · Ask Naya (Hub-only
      obsidian button) · Smart Spaces (Smart Worlds is the directory) ·
      Smart Ledger (a button inside Smart Stats) · Start Here (led by Smart
@@ -5527,9 +5546,11 @@ function HubView(params) {
      NOT on the v4 lists — they lose their sidebar home here (open
      questions, recorded in the fix record; the rooms still exist at their
      router paths). */
-  /* EYE-NOTES 2026-11-17 §3.5–§3.8 (the spectrum flow): rows 7–12 wear the
+  /* EYE-NOTES 2026-11-17 §3.5–§3.8 (the spectrum flow): rows 7–11 wear the
      flow in order from where row 6 (Smart Worlds, gold) leaves off — orange,
-     red, magenta, VIOLET, indigo, cyan. EYE-NOTES-FIX §3.1: violet replaces
+     red, VIOLET, indigo, cyan. AMENDMENT #3: Smart Factory left the left —
+     its magenta step goes with it; red → violet is a widened step, the order
+     kept. EYE-NOTES-FIX §3.1: violet replaces
      purple — purple sat next to magenta and read as the same color; the step
      is widened, the order kept. The ROOMS accents stay as the rooms' own
      identity; only these sidebar rows take flow colors. Intel Today's
@@ -5537,14 +5558,14 @@ function HubView(params) {
      EYE-NOTES-FIX §3.5: Your Reports wears 'ledger' (the record book) so
      Dashboard can wear 'report' (bars); Smart Growth wears 'check' (a join
      confirmed) — the 'gauge' arc and the 'users' heads both read as @. */
-  const SIDEBAR_FLOW_7_12 = { today: '#c2410c', reports: '#c62828', factory: '#a21caf', growth: '#6d28d9', library: '#3f51b5', connections: '#0e7490' };
-  const SIDEBAR_ICON_7_12 = { today: 'feed', reports: 'ledger', growth: 'check' };
-  ['today', 'reports', 'factory', 'growth', 'library', 'connections']
+  const SIDEBAR_FLOW_7_11 = { today: '#c2410c', reports: '#c62828', growth: '#6d28d9', library: '#3f51b5', connections: '#0e7490' }; /* AMENDMENT #3: rows 7–11 now — the Factory's magenta step leaves with it; red → violet is a widened step, the order kept */
+  const SIDEBAR_ICON_7_11 = { today: 'feed', reports: 'ledger', growth: 'check' };
+  ['today', 'reports', 'growth', 'library', 'connections'] /* AMENDMENT #3: Smart Factory leaves the left — it leads the RIGHT rail now */
     .map(id => R.ROOMS.find(r => r.id === id)).filter(Boolean).forEach(r => {
     const b = el('button', 'nav-btn' + (r.id === room.id ? ' active' : ''));
-    b.style.setProperty('--nav', SIDEBAR_FLOW_7_12[r.id] || r.accent);
+    b.style.setProperty('--nav', SIDEBAR_FLOW_7_11[r.id] || r.accent);
     b.setAttribute('data-spy-key', 'room:' + r.id);
-    b.innerHTML = '<span class="ico">' + Icons.icon(SIDEBAR_ICON_7_12[r.id] || r.icon, 'glyph-xl') + '</span><span class="lbl">' + esc(r.name) + '</span>';
+    b.innerHTML = '<span class="ico">' + Icons.icon(SIDEBAR_ICON_7_11[r.id] || r.icon, 'glyph-xl') + '</span><span class="lbl">' + esc(r.name) + '</span>';
     b.setAttribute('aria-current', r.id === room.id ? 'page' : 'false');
     // Phase 1 (2026-10-19): today/reports/ledger/connect render their internal
     // rooms (ConnectRoom + honest empty states) — the legacy *.html stubs are
@@ -5562,9 +5583,8 @@ function HubView(params) {
       today: '/rooms/today', reports: '/rooms/reports', library: '/rooms/library',
       ledger: '/rooms/ledger', connections: '/rooms/connections',
       mail: '/rooms/mail', spaces: '/rooms/spaces',
-      growth: '/rooms/growth',
-      factory: '/smartfactory'
-    };
+      growth: '/rooms/growth'
+    }; /* AMENDMENT #3: the factory line leaves with its row — the right rail navigates by href now */
     b.addEventListener('click', () => {
       closeDrawer();
       if (EXTERNAL[r.id]) { location.href = EXTERNAL[r.id] + location.search; return; }
@@ -5576,8 +5596,9 @@ function HubView(params) {
      on the corrected lists (open question, fix record). Install still
      exists: the first-load install modal and the browser install path. */
   /* HUB FIX 2026-11-16: the Your-world doors move to the RIGHT rail —
-     My Worlds, top of the right, where the citizen reaches their world
-     first. The four world pages are already LEFT rows 2–5. */
+     My Worlds, just below Smart Factory at the top of the right (Amendment
+     #3), where the citizen reaches their world first. The four world pages
+     are already LEFT rows 2–5. */
   const priv = el('div', 'private', 'PRIVATE BY DEFAULT<br>SHARED BY CHOICE<br>COLLECTIVE BY CONSENT');
   /* FIX-5 2026-11-17 (item 1): the left drawer gets its own X. Below 1440px
      the open drawer covers the top-bar hamburger, so the hamburger cannot
@@ -5671,14 +5692,14 @@ function HubView(params) {
          reopens the docked right rail — only the left-rail side effect
          is gone.) */
       openRightRail();
-      menuBtn.setAttribute('aria-expanded', 'true');
+      syncMenuBtn(); /* AMENDMENT #3: the left label does not move when the RIGHT rail opens — the old write marked the menu expanded for the right rail's opening */
     } else if (shell.classList.contains('rail-right-open')) {
       /* The drawer is open: this tap closes it back to the on-load layout. */
       closeRightRail();
     } else {
       shell.classList.toggle('rail-collapsed');
       const collapsed = shell.classList.contains('rail-collapsed');
-      menuBtn.setAttribute('aria-label', collapsed ? 'Show sidebar' : 'Hide sidebar');
+      syncMenuBtn(); /* AMENDMENT #3: label AND state, from the classes — the old line set the label but never the expanded state */
       try { localStorage.setItem('naya.rail-collapsed', collapsed ? '1' : '0'); } catch(e) {}
     }
   });
@@ -5693,6 +5714,7 @@ function HubView(params) {
   } catch(e) {
     if (window.innerWidth < 1440) shell.classList.add('rail-collapsed');
   }
+  syncMenuBtn(); /* AMENDMENT #3: the label is true on load — 'Hide sidebar' at desktop where the rail stands open, 'Show sidebar' where it starts hidden */
   const title = el('div', 'top-title', '<b>INTELLIGENT HUB</b>');
   /* Ask Naya in the LEFT corner, Life with Naya in the RIGHT corner —
      rebuilt to the §1 language: obsidian inside, double-layered, glossy,
@@ -6456,12 +6478,12 @@ window.NayaNotif = window.NayaNotif || {
   backdrop.addEventListener('click', () => { closeDrawer(); closeRightRail(); });
 
   /* ——— HUB FIX v4 2026-11-16: the RIGHT rail (OFFICIAL v4, 10) ———
-     RIGHT is WHAT'S YOURS + WHAT NAYANET OFFERS. My Worlds (TOP — the
-     citizen's created world sits here; more than one, each one after
-     another) · Favorite Worlds · Leaderboards · Naya Academy · AI
-     Masterclass · Fast Action Club · Maxis "AI Score" · About Us ·
-     White Paper · Pricing (bottom, very bottom) · Settings underneath
-     Pricing (EYE-NOTES 2026-11-17 §3.9).
+     RIGHT is WHAT'S YOURS + WHAT NAYANET OFFERS. AMENDMENT #3 (2026-11-17
+     20:29Z): Smart Factory (TOP) · My Worlds just below it — because then
+     you're going to create your world first · Favorite Worlds ·
+     Leaderboards · Naya Academy · AI Masterclass · Fast Action Club ·
+     Maxis "AI Score" · About Us · White Paper · Pricing (bottom, very
+     bottom) · Settings underneath Pricing (EYE-NOTES 2026-11-17 §3.9).
      CUT per v4: Life with Naya (Hub-only obsidian button now) · Your Hired
      (page doesn't exist anymore, already hired) · Member Login (the
      memberships ARE the logins). REMOVED already: "5" Day Challenge (same as
@@ -6488,13 +6510,18 @@ window.NayaNotif = window.NayaNotif || {
   const navR = el('nav', 'nav');
   navR.setAttribute('aria-label', 'Your worlds and NayaNET');
   /* EYE-NOTES 2026-11-17 §3.5–§3.9 (the spectrum flow): the right rail runs
-     the flow from the top — magenta, VIOLET, indigo, cyan, green, gold,
-     orange, red, magenta, VIOLET, indigo. EYE-NOTES-FIX §3.1: violet replaces
-     purple — purple sat next to magenta and read as the same color; the step
-     is widened, the order kept. Every item its own icon AND its own color in
-     the flow; White Paper (magenta) ≠ Pricing (violet); Settings sits
-     underneath Pricing, with its own icon (gear) and color (indigo). */
+     the flow from the top — RED, magenta, VIOLET, indigo, cyan, green, gold,
+     orange, red, magenta, VIOLET, indigo. AMENDMENT #3: Smart Factory leads
+     in red — the flow step before magenta, so the cycle runs unbroken (red
+     → magenta → violet → indigo → cyan → green → gold → orange → red …)
+     with every adjacent step widened past the eye's threshold; no two
+     neighbours share a colour. EYE-NOTES-FIX §3.1: violet replaces purple —
+     purple sat next to magenta and read as the same color. Every item its
+     own icon AND its own color in the flow; White Paper (magenta) ≠ Pricing
+     (violet); Settings sits underneath Pricing, with its own icon (gear)
+     and color (indigo). */
   const RIGHT_ITEMS = [
+    { id: 'factory', label: 'Smart Factory', icon: 'core', color: '#c62828', href: '/smartfactory' }, /* AMENDMENT #3: Smart Factory moves to the RIGHT, near the top — red, the flow step before My Worlds magenta, so the cycle runs unbroken; the destination is the same '/smartfactory' the left row used, harvested not invented */
     { id: 'myworlds', label: 'My Worlds', icon: 'unify', color: '#a21caf', href: 'https://nayanet.app/#/hub/spaces' },
     { id: 'favworlds', label: 'Favorite Worlds', icon: 'spark', color: '#6d28d9', href: 'https://nayanet.app/#/hub/spaces' }, /* EYE-NOTES-FIX §3.1: violet — purple sat next to My Worlds magenta and read as the same color */
     { id: 'leaderboards', label: 'Leaderboards', icon: 'trophy', color: '#3f51b5', href: 'https://nayanet.app/dashboard' },
@@ -6552,15 +6579,32 @@ window.NayaNotif = window.NayaNotif || {
        restores the collapsed default unless the citizen chose it visible. */
     shell.classList.remove('rail-collapsed');
     document.body.classList.add('drawer-open');
-    menuBtn.setAttribute('aria-expanded', 'true');
+    syncMenuBtn(); /* AMENDMENT #3: one sync for every close path */
     const f = nav.querySelector('.nav-btn');
     if (f) f.focus();
   }
   function closeDrawer() {
     shell.classList.remove('drawer-open');
     document.body.classList.remove('drawer-open');
-    menuBtn.setAttribute('aria-expanded', 'false');
     try { if (localStorage.getItem('naya.rail-collapsed') !== '0') shell.classList.add('rail-collapsed'); } catch (e) { shell.classList.add('rail-collapsed'); }
+    syncMenuBtn(); /* AMENDMENT #3: synced AFTER the classes settle — the label reads the end state, never the mid-state */
+  }
+  /* AMENDMENT #3 2026-11-17 20:29Z (the left control, mirroring §3.2): ONE
+     place keeps the LEFT control true. The left drawer closes five ways —
+     the three-bars, the drawer's X, the backdrop, Escape, a rail link — and
+     only the three-bars' own handler updated its label and state, so an
+     X-close left it reading stale (it never said 'Hide sidebar' while the
+     drawer stood open, and after an X-close it still read open). Every
+     closer runs through openDrawer() / closeDrawer(), so syncing there
+     covers all five — the same shape as syncRailBtn() for the right. The
+     drawer panel itself covers the three-bars while open (FIX-5, known) —
+     so while the drawer stands open its X is the closer, and the
+     three-bars reopens it from closed; what this fix guarantees is that
+     the label and state are TRUE in every state, on either side. */
+  function syncMenuBtn() {
+    const leftOpen = shell.classList.contains('drawer-open') || (window.innerWidth >= 1440 && !shell.classList.contains('rail-collapsed'));
+    menuBtn.setAttribute('aria-expanded', leftOpen ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', leftOpen ? 'Hide sidebar' : 'Show sidebar');
   }
   /* EYE-NOTES-FIX 2026-11-17 §3.2: ONE place keeps the control true. The
      panel closes five ways — the control, the panel's X, the backdrop,
@@ -6598,7 +6642,7 @@ window.NayaNotif = window.NayaNotif || {
       shell.classList.remove('rail-right-collapsed');
       shell.classList.remove('rail-collapsed');
       document.body.classList.remove('rail-right-open');
-      menuBtn.setAttribute('aria-expanded', 'false');
+      syncMenuBtn(); /* AMENDMENT #3: closing the right drawer restores the LEFT docked — the old write marked the menu closed while the left stood open */
       syncRailBtn();
       return;
     }
@@ -6632,7 +6676,7 @@ window.NayaNotif = window.NayaNotif || {
       if (live && api.closeDrawer) api.closeDrawer();
       if (live) {
         const liveMenu = document.querySelector('.shell .rail-toggle');
-        if (liveMenu) { liveMenu.setAttribute('aria-expanded', 'false'); liveMenu.focus(); }
+        if (liveMenu) { liveMenu.focus(); } /* AMENDMENT #3: no manual state write here — closeDrawer() already synced it, and a manual write would stale it again */
       }
       if (api.closeRightRail) api.closeRightRail();
     });
@@ -6833,6 +6877,7 @@ window.NayaJewels = (() => {
       not be laid out yet when it is built) and is idempotent. */
       var bq = hero.querySelector('blockquote'); if (!bq) return;
       function trim() {
+        if (hero.classList.contains('hero-folded')) return; /* AMENDMENT #3: never trim while folded — the blockquote measures zero high folded, and the guard would eat the quote word by word; the unfold path re-runs the trim */
         var words = bq.textContent.replace(/[\u201c\u201d]/g, '').trim().split(/\s+/);
         var guard = 40;
         while (bq.scrollHeight > bq.clientHeight && words.length > 1 && guard-- > 0) {
@@ -6842,6 +6887,68 @@ window.NayaJewels = (() => {
       }
       if (window.requestAnimationFrame) window.requestAnimationFrame(trim);
       setTimeout(trim, 1000);
+      hero._nayaTrimWisdom = trim; /* AMENDMENT #3: the unfold path re-runs the trim, so the quote still ends whole after a fold */
+    })();
+
+    /* AMENDMENT #3 2026-11-17 20:29Z — THE HUB WELCOME FOLDS AWAY. On login
+       the Hub greets you (good-afternoon banner with the time and the quote
+       of the day), then folds up and hides away — the best interface is the
+       one that folds up and hides away. Underneath it sits flush: search at
+       the top, then Collective / Personal / Activity (the explainer text
+       below them is gone — the caption went out in EYE-NOTES §3.3 and the
+       tab sub-lines live only in aria-label/title, never as visible text),
+       then the categories (the Smart Tabs ribbon), then the feed. The fold
+       is the hero itself collapsing to zero height — no new chrome, no new
+       button, nothing invented. It folds on first scroll down, or 15s after
+       arrival, whichever comes first; it folds back when you scroll back to
+       the very top, so the greeting is never stranded. The state lives for
+       the page lifetime only (window, not storage) — a fresh load logs in
+       and greets again. The Wisdom trim never runs while folded (it would
+       measure a zero-high blockquote and eat the quote); the unfold path
+       re-runs it. */
+    (function () {
+      function getFolded() { return !!window._nayaWelcomeFolded; }
+      function setFolded(v) { window._nayaWelcomeFolded = !!v; }
+      function foldEl(h) {
+        if (!h || h.classList.contains('hero-folded')) return;
+        h.style.maxHeight = h.scrollHeight + 'px';
+        void h.offsetHeight;
+        h.classList.add('hero-folded');
+        h.style.maxHeight = '0px';
+        h.setAttribute('aria-hidden', 'true');
+        setFolded(true);
+      }
+      function unfoldEl(h) {
+        if (!h || !h.classList.contains('hero-folded')) return;
+        h.classList.remove('hero-folded');
+        h.style.maxHeight = h.scrollHeight + 'px';
+        h.setAttribute('aria-hidden', 'false');
+        setFolded(false);
+        if (h._nayaTrimWisdom) h._nayaTrimWisdom();
+        setTimeout(function () { if (!h.classList.contains('hero-folded')) h.style.maxHeight = ''; }, 650);
+      }
+      if (getFolded()) {
+        hero.style.transition = 'none';
+        hero.classList.add('hero-folded');
+        hero.style.maxHeight = '0px';
+        hero.setAttribute('aria-hidden', 'true');
+        void hero.offsetHeight;
+        hero.style.transition = '';
+      } else if (!window._nayaWelcomeTimer) {
+        window._nayaWelcomeTimer = setTimeout(function () {
+          var h = document.querySelector('.main-show .hero');
+          if (h) foldEl(h);
+        }, 15000);
+      }
+      if (!window._nayaWelcomeFold) {
+        window._nayaWelcomeFold = true;
+        window.addEventListener('scroll', function () {
+          var h = document.querySelector('.main-show .hero');
+          if (!h) return;
+          if (window.scrollY > 40) foldEl(h);
+          else if (window.scrollY <= 8) unfoldEl(h);
+        }, { passive: true });
+      }
     })();
 
     /* — No name ask on the home screen (Shawn 2026-10-21): a name is claimed
@@ -10860,8 +10967,9 @@ html.nsb-calm .nsb-tab{transition:none;}
   .nsb-search.open{flex:1;}
 }
 /* ——— The bottom bar — one bar (HUB SIDEBARS+PLUS 2026-11-16) ——— */
-/* Fold on scroll (the 2026-11-07 fold-away law): scrolling hides the
-   bottom bar; stopping folds it back. The driver is the stack script below. */
+/* Fold on scroll (Amendment #3, 2026-11-17 20:29Z — tightens the 19:24Z rule):
+   scrolling down hides the bottom bar; it folds back ONLY at the very bottom.
+   The driver is the stack script below. */
 body.os-bottom-hidden .notif-bar{transform:translateY(110%);opacity:0}
 .notif-bar{transition:transform .3s cubic-bezier(.16,.84,.22,1),opacity .3s}
 /* Bottom bar off (Settings): the six are gone. */
@@ -11822,16 +11930,22 @@ window.NayaSmartBar = {
   window.addEventListener('load', syncSmartbarH);
   window.addEventListener('resize', syncSmartbarH);
   document.addEventListener('smartbar-settings', syncSmartbarH);
-  /* Fold on scroll (the 2026-11-07 fold-away law): scrolling hides the
-     bottom bar; ~1s after scrolling stops it folds back. Never folds at
-     the very top of the page. */
-  var settle = null;
+  /* Fold on scroll — AMENDMENT #3 (Shawn 2026-11-17 20:29Z, tightens the
+     19:24Z rule, which folded the bar back ~1s after scrolling stopped):
+     the bar folds away as soon as you scroll down, and it ONLY folds back
+     up when you are at the very bottom. No return on scroll-stop, no return
+     on scroll-up mid-page — the bottom, and only the bottom. Same on every
+     page: the Hub leads — Personal and Business mirroring is a follow-on,
+     named, not built in this Hub-only round. The bar still shows on arrival
+     (scrollY 0, no scroll event yet) and on a short page that has no scroll
+     (the bottom is already the top). */
   function onScroll(){
-    if (window.scrollY > 120) { document.body.classList.add('os-bottom-hidden'); }
-    if (settle) { clearTimeout(settle); }
-    settle = setTimeout(function(){ document.body.classList.remove('os-bottom-hidden'); syncSmartbarH(); }, 1000);
+    var atBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 2);
+    if (atBottom) { document.body.classList.remove('os-bottom-hidden'); }
+    else if (window.scrollY > 8) { document.body.classList.add('os-bottom-hidden'); }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
   syncSmartbarH();
 })();
 </script>
