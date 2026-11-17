@@ -2955,13 +2955,19 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
      the layout at call time, but the beat is still settling then (the
      dial-in runs 550ms, a smooth scroll ~500ms, a late font swap) — the
      speaking line moves under it (deck 1 +11, deck 9 -48, letter 0 +23).
-     One guarded re-run 650ms later re-measures from the settled layout;
-     a manual re-run lands exactly on the line and stays there. The
-     settle pass calls the inner function directly, so it never
-     reschedules itself. */
+     One re-run 650ms later re-measures from the settled layout; a manual
+     re-run lands exactly on the line and stays there. The settle pass
+     calls the inner function directly, so it never reschedules itself.
+     FIX ROUND 3 (2026-11-17, same day) — the timer is RE-ARMED on every
+     call: the guarded version let a timer set by an earlier beat serve a
+     later one (clicks 500ms apart), so letter 11's settle fired 150ms
+     after its own show, mid-dial-in, and the face sat +10px for ever —
+     stable to 4s, exact (0.0) on a manual re-run. The timer must fire
+     650ms after the LAST placement, never after the first. */
   function placeFaces(){
     placeFacesInner();
-    if (!_pfSettle) _pfSettle = setTimeout(function(){ _pfSettle = null; placeFacesInner(); }, 650);
+    if (_pfSettle) clearTimeout(_pfSettle);
+    _pfSettle = setTimeout(function(){ _pfSettle = null; placeFacesInner(); }, 650);
   }
   function fitBarPadding(){
     var bar = document.getElementById('fpStageBarB');
