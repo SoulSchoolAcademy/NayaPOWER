@@ -188,6 +188,59 @@
   cloud browser path: heading straddle at 25/50/75/100% with whole glyphs
   at every stop, computed color of the named lines at desktop + 390.
 -->
+<!--
+  FIX-6 (2026-11-17, brief BRIEF-SMART-MAIL-FIX6-20261117 — 2 items only;
+  nothing in "What stands" touched; base = Fix-5 commit e156af1b):
+  1. Slicing — Fix-5's 30px skirts FAILED live at BOTH headers (cloud eye
+     05:13-05:28Z, desktop 1920: the left inbox row-nut "The new cover
+     lands tonight — purpl…" and the Maya R. board heading "The cover is
+     ready for your eyes NEW" still showed hard-cut half-glyphs at the
+     header's solid bottom edge at every scroll stop; the narrow eye
+     05:37Z PASSED at 390/635 but never caught a line STRADDLING the edge
+     — its lines were all fully inside the fade zone, so its PASS does not
+     refute the desktop FAIL). The skirt is an overlay that must win the
+     paint order over the scrolling content; the mask REPLACES it — it
+     applies to the scroller's whole rendering, so no stacking order can
+     defeat it, and it fades the content itself as it nears the header, so
+     a line sitting EXACTLY at the edge dissolves instead of shearing.
+     (a) .page-scroll.title-stuck: mask opaque over the menu-bar + stuck
+     title, transparent at the title's bottom edge (--titleEdge, measured
+     live from the title's own rect when stuck; CSS defaults 108px
+     desktop / 90px <=900px 1-line / 117px <=420px 2-line), fading back
+     to opaque 30px below it. The mask is OFF until the title sticks
+     (JS toggles .title-stuck) — at load it would stripe the hero cover —
+     and the toggle is seamless because the title's 30px margin-bottom
+     keeps the fade band empty of text at the exact moment the title
+     sticks (the margin stays for this reason; the skirt is gone).
+     (b) .thread-body: the same 30px fade permanently (its head is a
+     sibling outside the masked element, so the head stays opaque; the
+     fade covers only the body's top padding + the board's top padding at
+     rest, no text). Both skirts (.page-title::after,
+     .thread-head::after) are REMOVED; the thread-head's skirt scaffolding
+     (position:relative + z-index:5) is reverted with them. The skirt is
+     NOT widened — the mask's fade is the same ~30px zone. Gray-text
+     weights are untouched (they PASS live at all three widths).
+  2. First inbox card at load — its lower edge sat behind the dock (the
+     stack above it is taller than the scroller's visible height at
+     390/635, and at short desktop viewports). fix6FirstCard measures the
+     real geometry at boot and scrolls .page-scroll by exactly the deficit
+     (+6px) — only if tucked, only the minimal amount, never back up; the
+     applied offset is exposed as window.__fix6LoadOffset for the checker.
+     Trade-off, stated plainly: at narrow widths the hero cover scrolls
+     up by the offset at load (its top, with the h1 and + buttons, moves
+     above the fold); the cover itself stays visible and the card clears —
+     that is the brief's own "scroll offset" shape. Nit (c) from the
+     narrow eye (last "You wrote" board's bottom border behind the dock
+     at thread-scroll 100% + main-scroll 950) is NOT separately fixed: at
+     main-scroll 100% the board is in view; no bottom-padding move was
+     needed for item 2, so the nit is recorded unchanged.
+  BLOCKER (honest): same as Fix-5 — the maker could NOT verify live in
+  this VM (no live-browser operation for this seat). The checker MUST
+  prove it live: straddle at 25/50/75/100% AND small scroll steps that
+  park a line exactly on each header's bottom edge, at desktop + 390 +
+  635 (whole glyphs, no half-letters, no half badges); first inbox card
+  clears the dock at load at all three widths.
+-->
 <style>
 /* --- SMART MAIL FIX round (2026-11-17, brief BRIEF-SMART-MAIL-FIX-20261117)
    + THE DEEP PALETTE amendment (01:30Z). White small text (DNA §9);
@@ -216,7 +269,23 @@ body{background:#050507;color:#fff;font-family:Inter,ui-sans-serif,system-ui,-ap
    at End. Window scrolling is gone by construction (body overflow hidden);
    wheel / keyboard / scrollIntoView all drive .page-scroll. --- */
 body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
-.page-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.page-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;--titleEdge:108px}
+/* FIX-6 (item 1a): the Fix-5 skirt FAILED live at this header — the skirt
+   is an overlay that must win the paint order over the scrolling content,
+   and the desktop eye saw hard-cut half-glyphs at the header's solid
+   bottom edge at every stop. The mask replaces it: it applies to the
+   scroller's whole rendering, so no stacking order can defeat it, and it
+   fades the content itself as it nears the header, so a line sitting
+   EXACTLY at the edge dissolves instead of shearing. The mask is OFF
+   until the title sticks (JS toggles .title-stuck): at load it would
+   stripe the hero cover. The gradient is opaque over the menu-bar +
+   stuck title, transparent at the title's bottom edge (--titleEdge,
+   measured live from the title's own rect when stuck; CSS defaults
+   108px desktop / 90px <=900px 1-line / 117px <=420px 2-line), fading
+   back to opaque 30px below it. The toggle is seamless because the
+   title's 30px margin-bottom keeps the fade band empty of text at the
+   exact moment the title sticks. */
+.page-scroll.title-stuck{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),#000 calc(var(--titleEdge) + 30px),#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),#000 calc(var(--titleEdge) + 30px),#000 100%);mask-size:100% 100%}
 a{color:#fff}
 button{font-family:inherit}
 img{max-width:100%}
@@ -260,22 +329,15 @@ body.no-cover .ph-main{padding-top:12px}
    working example): nothing ever shows through it sliced. top:60px tucks
    the band 0–2px under the ~60px sticky menu-bar so no hairline gap ever
    shows scrolling text between the two bands.
-   FIX-5 (2026-11-17): the "impossible by construction" claim was REFUTED
-   live — the band is solid and text is STILL cut mid-line under it. The
-   real mechanism is the band's bottom edge itself: a hard clip boundary
-   falling mid-line as content scrolls under it. The band stays solid;
-   the fix is the 30px fade skirt below it (.page-title::after), so a
-   line dissolves before the edge can cut it. margin-bottom:30px gives
-   the skirt real flow space at load (invisible on #050507). */
+   FIX-6 (2026-11-17): the Fix-5 skirt below this heading FAILED live —
+   the desktop eye still saw hard-cut half-glyphs at the band's bottom
+   edge at every scroll stop. The skirt is REMOVED (.page-title::after
+   deleted below); the mask on .page-scroll replaces it (see the
+   .title-stuck rule). margin-bottom:30px STAYS — not as skirt space
+   but as the mask's toggle clearance: it keeps the fade band empty of
+   text at the exact moment the title sticks, so the mask switching on
+   is seamless in both scroll directions. */
 .page-title{margin:4px 0 30px;text-align:center;font-size:28px;font-weight:800;position:sticky;top:60px;z-index:40;background:#050507;padding-bottom:14px;scroll-margin-top:78px}
-/* FIX-5 (item 1): fade skirt below the sticky heading — the mechanism that
-   actually stops the slicing. The heading's bottom edge is a hard clip
-   boundary; a line passing under it is cut mid-glyph. The skirt (opaque
-   #050507 at its top, fading to transparent over 30px) dissolves the line
-   before the edge can cut it: no hard half-glyph is ever visible below
-   the heading, at any scroll stop. The 30px margin-bottom above is the
-   skirt's flow space at load — it sits over the #050507 page, invisible. */
-.page-title::after{content:'';position:absolute;left:0;right:0;top:100%;height:30px;background:linear-gradient(180deg,#050507,rgba(5,5,7,0));pointer-events:none}
 .page-head p{margin:4px 0 0;font-size:15px;color:#fff}
 .cover-toggle{margin-top:10px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
@@ -334,19 +396,14 @@ body.no-cover .ph-main{padding-top:12px}
 .stub-note{padding:0 18px 8px;font-size:12px;color:#fff;line-height:1.5}
 /* --- THREAD --- */
 .thread{display:flex;flex-direction:column;min-height:560px}
-.thread-head{display:flex;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.09);position:relative;z-index:5}
-/* FIX-5 (item 1): fade skirt below the conversation header — the same
-   mechanism as the main heading. The thread-head is not sticky itself,
-   but .thread-body scrolls beneath it, so its bottom edge is the same
-   hard clip boundary (the mail-board heading and the "Reply with the one
-   word" point were cut here at 50%/75%). The skirt dissolves lines as
-   they pass under the header. position:relative + z-index:5 above make
-   the skirt paint ABOVE the thread-body's scrolling content (the body is
-   a later sibling — without the z-index the content would cover the
-   skirt). At load the skirt covers only the body's 20px top padding +
-   the board's top padding — no text is faded at rest. The skirt starts
-   at #12101a, the panel's top colour, so it is invisible at load. */
-.thread-head::after{content:'';position:absolute;left:0;right:0;top:100%;height:30px;background:linear-gradient(180deg,#12101a,rgba(18,16,26,0));pointer-events:none}
+/* FIX-6 (item 1b): the Fix-5 skirt below this header FAILED live (the
+   Maya R. board heading showed hard-cut half-glyphs at 50%/75%). The
+   skirt is REMOVED (.thread-head::after deleted below) and its
+   scaffolding reverted (position:relative + z-index:5 were only for the
+   skirt); the mask on .thread-body replaces it — the head is a sibling
+   outside the masked element, so it stays opaque while the body's
+   content dissolves under it. */
+.thread-head{display:flex;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.09)}
 .thread-head .who{flex:1;min-width:0}
 .thread-head .who b{font-size:17px}
 .thread-head .who span{display:block;font-size:12.5px;color:#fff;margin-top:2px}
@@ -363,7 +420,16 @@ body.no-cover .ph-main{padding-top:12px}
 .toggle button.on{background:#0a0a0f;color:#fff;border-color:var(--tc);box-shadow:0 0 20px var(--tc),0 8px 20px rgba(0,0,0,.5)}
 .toggle button.on .tgl-ico{color:#fff;text-shadow:0 0 12px var(--tc),0 0 4px #fff}
 .toggle button[disabled]{opacity:.45;cursor:not-allowed}
-.thread-body{flex:1;padding:20px 18px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px}
+/* FIX-6 (item 1b): mask on the thread's own scroller — the Fix-5 skirt
+   below the thread-head FAILED live. The mask fades the body's content
+   itself over its top 30px (transparent at the head's bottom edge,
+   opaque 30px below), so a line sitting EXACTLY at the edge dissolves
+   instead of shearing; it applies to the scroller's whole rendering, so
+   no stacking order can defeat it. The head is a sibling outside this
+   element, so it stays opaque. At load the fade covers only the body's
+   20px top padding + the board's top padding — the first text starts
+   ~40px down, so no text is faded at rest. */
+.thread-body{flex:1;padding:20px 18px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30px);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,transparent 0,#000 30px);mask-size:100% 100%}
 .msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:14.5px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);transition:transform .25s,box-shadow .25s,border-color .25s}
 .msg:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.65);box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),0 0 22px rgba(142,36,170,.45)}
 .msg .meta{display:block;font-size:11.5px;color:#fff;margin-top:6px}
@@ -496,7 +562,7 @@ body.no-cover .ph-main{padding-top:12px}
   .ph-cover-inner{padding:10px}   .ph-cover-inner h1{font-size:24px}   .ph-cover-inner p{font-size:13px;margin-top:6px;max-width:420px}
   /* FIX-3 round 2, 2026-11-17: narrow stack trims so the first row clears the fixed dock:
      h2 22px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
-  .page-title{font-size:22px;top:50px}
+  .page-title{font-size:22px;top:50px}   .page-scroll{--titleEdge:90px} /* FIX-6: 1-line title edge ≈50+40 */
   .cover-toggle{margin-top:8px}
   .org-tabs{padding:6px 2px 8px}
   .search-row{padding:10px 16px;margin-bottom:10px}
@@ -513,6 +579,7 @@ body.no-cover .ph-main{padding-top:12px}
   .toggle button{padding:10px 11px;font-size:12px}
   .thread-head{flex-wrap:wrap}
   .msg{max-width:88%}
+  .page-scroll{--titleEdge:117px} /* FIX-6: 2-line title edge ≈50+67 */
 }
 /* --- FIX 2026-11-12 (checker NOT PASS 8/10): thread head at phone widths ---
    Was: orb + who + toggle on one row left the presence 35px wide at 390
@@ -1413,6 +1480,63 @@ renderTabs(); renderConvs(); renderTopicPeople(); renderThread(); renderSmartLis
 setWorldCount('personal', 2); setWorldCount('business', 1); setWorldCount('thing', 1);
 renderWorlds(); renderInbox(); setFormat(state.format);
 window.__booted = true;
+/* --- FIX-6 (2026-11-17, brief BRIEF-SMART-MAIL-FIX6-20261117) ---
+   Item 1: the Fix-5 skirts FAILED live at both headers (cloud eye
+   05:13-05:28Z, desktop: the inbox row-nut and the Maya R. board heading
+   still showed hard-cut half-glyphs at the header's solid bottom edge at
+   every scroll stop). The skirt is an overlay that must win the paint
+   order over the scrolling content; the mask replaces it — it applies to
+   the scroller's whole rendering, so no stacking order can defeat it,
+   and it fades the content itself as it nears the header, so a line
+   sitting EXACTLY at the edge dissolves instead of shearing.
+   (a) fix6SyncMask toggles .title-stuck on .page-scroll exactly when the
+   title sticks (its rect top reaches its sticky top), and measures the
+   title's real bottom edge into --titleEdge, so the mask's fade band
+   tracks the edge at every width, font and line count. The mask is OFF
+   until then — at load it would stripe the hero cover — and the toggle
+   is seamless because the title's 30px margin-bottom keeps the fade band
+   empty of text at the exact moment the title sticks.
+   (b) The thread-body mask is pure CSS (always on); its head is a
+   sibling outside the masked element, so the head stays opaque.
+   Item 2: at load the first inbox card's lower edge sat behind the dock
+   (the stack above it is taller than the scroller's visible height at
+   390/635, and at short desktop viewports). fix6FirstCard measures the
+   real geometry at boot and scrolls .page-scroll by exactly the deficit
+   (+6px) — only if tucked, only the minimal amount, never back up; the
+   applied offset is exposed as window.__fix6LoadOffset (and the
+   post-scroll geometry as window.__fix6FirstCard) for the checker.
+   Trade-off, stated plainly: at narrow widths the hero cover scrolls up
+   by the offset at load (its top, with the h1 and + buttons, moves above
+   the fold); the cover itself stays visible and the card clears — that
+   is the brief's own "scroll offset" shape. The gray-text weights are
+   untouched. */
+var fix6Scroll = document.querySelector('.page-scroll');
+var fix6Title = document.querySelector('.page-title');
+var fix6Applied = 0;
+function fix6SyncMask(){
+  if (!fix6Scroll || !fix6Title) return;
+  var top = parseFloat(getComputedStyle(fix6Title).top) || 60;
+  var r = fix6Title.getBoundingClientRect();
+  var stuck = r.top <= top + 1;
+  fix6Scroll.classList.toggle('title-stuck', stuck);
+  if (stuck) fix6Scroll.style.setProperty('--titleEdge', Math.round(r.bottom) + 'px');
+}
+function fix6FirstCard(){
+  var sc = document.querySelector('.page-scroll');
+  var card = document.querySelector('#mailInbox .row');
+  if (card && !card.offsetParent) card = document.querySelector('#convList .row');
+  if (!sc || !card) return;
+  var need = card.getBoundingClientRect().bottom - sc.getBoundingClientRect().bottom + 6;
+  if (need > 0) { sc.scrollTop += need; fix6Applied += need; }
+  window.__fix6LoadOffset = Math.round(fix6Applied);
+  window.__fix6FirstCard = {cardBottom: Math.round(card.getBoundingClientRect().bottom), fold: Math.round(sc.getBoundingClientRect().bottom), applied: Math.round(fix6Applied)};
+}
+if (fix6Scroll) fix6Scroll.addEventListener('scroll', fix6SyncMask, {passive:true});
+window.addEventListener('resize', fix6SyncMask);
+fix6SyncMask();
+fix6FirstCard();
+if (window.requestAnimationFrame) requestAnimationFrame(function(){ fix6SyncMask(); fix6FirstCard(); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fix6SyncMask(); fix6FirstCard(); });
 /* U+25C9 GUARD: no rendered text on this page may contain the literal
    string — the Dashboard pill and every glyph here are CSS shapes, never
    text escapes. True = clean. (The guard's own search needle and the
