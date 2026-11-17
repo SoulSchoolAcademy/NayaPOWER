@@ -340,6 +340,38 @@ body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidd
    50px below the edge. The 2px opaque→transparent step at the edge is
    kept from Fix-6. */
 .page-scroll.title-stuck{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),rgba(0,0,0,0) calc(var(--titleEdge) + 24px),rgba(0,0,0,.06) calc(var(--titleEdge) + 30px),rgba(0,0,0,.18) calc(var(--titleEdge) + 36px),rgba(0,0,0,.45) calc(var(--titleEdge) + 42px),rgba(0,0,0,.80) calc(var(--titleEdge) + 47px),#000 calc(var(--titleEdge) + 50px),#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),rgba(0,0,0,0) calc(var(--titleEdge) + 24px),rgba(0,0,0,.06) calc(var(--titleEdge) + 30px),rgba(0,0,0,.18) calc(var(--titleEdge) + 36px),rgba(0,0,0,.45) calc(var(--titleEdge) + 42px),rgba(0,0,0,.80) calc(var(--titleEdge) + 47px),#000 calc(var(--titleEdge) + 50px),#000 100%);mask-size:100% 100%}
+/* FIX-8 (2026-11-17, brief BRIEF-SMART-MAIL-FIX8-20261117): the captain's
+   desktop eye found a THIRD slicing site — the bottom dock's top edge: a
+   thread bullet parked exactly at the dock edge showed bright half-glyphs
+   (tops above the solid black dock, bottoms cut), with NO fade gradient
+   above the dock. The same mechanism cut the inbox row-nut and the KEY
+   POINTS bullet after hiding the banner. The dock gets the same dead-band
+   + eased-ramp dissolve the headers have (Fix-7 shape, mirrored): 24px
+   transparent above the dock edge, then an eased ramp to opaque 50px above
+   it, as a mask on .page-scroll — so a line crossing the dock edge
+   dissolves whole instead of shearing. The dock itself is untouched (it
+   sits outside .page-scroll, in normal flow). WHY JS, not CSS-only: the
+   fade must be OFF exactly at the load rest state — the first card clears
+   the dock by 6px and its nut sits 19-20px above the dock, i.e. INSIDE a
+   50px fade zone, so an always-on bottom mask would dissolve the nut at
+   load and break Fix-7 item 3 — and ON at every other scroll position. No
+   CSS selector can express "scrolled exactly to the load rest state" (the
+   load offset is measured live by fix6FirstCard and differs per width:
+   162/105/74/0). So fix8SyncDockFade measures the first card's live bottom
+   against its rest position (6px above the scroller's bottom edge = the
+   dock's top edge) and grows the zone from 0 to 50px — 2px of zone per 1px
+   the card travels from rest — so the fade is FULL before any line can park
+   at the edge, and the mask is REMOVED exactly at rest. The zone grows
+   upward from the fold, so at the switch-on instant it is 0px tall and
+   changes nothing visible; the first card's nut stays whole until the card
+   has travelled 19px. The rest test keys on the card's live rect, not on
+   scrollTop, so it stays correct after the cover toggle, the mail/IM
+   toggle and world switches (which move the card without moving scrollTop).
+   When the title is stuck too, the top fade and the bottom fade ride in
+   ONE gradient (no mask-composite), in the combined rule below. */
+.page-scroll.dock-fade{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - var(--dockFade,50px)),rgba(0,0,0,.80) calc(100% - var(--dockFade,50px) * .94),rgba(0,0,0,.45) calc(100% - var(--dockFade,50px) * .84),rgba(0,0,0,.18) calc(100% - var(--dockFade,50px) * .72),rgba(0,0,0,.06) calc(100% - var(--dockFade,50px) * .60),rgba(0,0,0,0) calc(100% - var(--dockFade,50px) * .48),rgba(0,0,0,0) 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - var(--dockFade,50px)),rgba(0,0,0,.80) calc(100% - var(--dockFade,50px) * .94),rgba(0,0,0,.45) calc(100% - var(--dockFade,50px) * .84),rgba(0,0,0,.18) calc(100% - var(--dockFade,50px) * .72),rgba(0,0,0,.06) calc(100% - var(--dockFade,50px) * .60),rgba(0,0,0,0) calc(100% - var(--dockFade,50px) * .48),rgba(0,0,0,0) 100%);mask-size:100% 100%}
+.page-scroll.title-stuck.dock-fade{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),rgba(0,0,0,0) calc(var(--titleEdge) + 24px),rgba(0,0,0,.06) calc(var(--titleEdge) + 30px),rgba(0,0,0,.18) calc(var(--titleEdge) + 36px),rgba(0,0,0,.45) calc(var(--titleEdge) + 42px),rgba(0,0,0,.80) calc(var(--titleEdge) + 47px),#000 calc(var(--titleEdge) + 50px),#000 0,#000 calc(100% - var(--dockFade,50px)),rgba(0,0,0,.80) calc(100% - var(--dockFade,50px) * .94),rgba(0,0,0,.45) calc(100% - var(--dockFade,50px) * .84),rgba(0,0,0,.18) calc(100% - var(--dockFade,50px) * .72),rgba(0,0,0,.06) calc(100% - var(--dockFade,50px) * .60),rgba(0,0,0,0) calc(100% - var(--dockFade,50px) * .48),rgba(0,0,0,0) 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),rgba(0,0,0,0) calc(var(--titleEdge) + 24px),rgba(0,0,0,.06) calc(var(--titleEdge) + 30px),rgba(0,0,0,.18) calc(var(--titleEdge) + 36px),rgba(0,0,0,.45) calc(var(--titleEdge) + 42px),rgba(0,0,0,.80) calc(var(--titleEdge) + 47px),#000 calc(var(--titleEdge) + 50px),#000 0,#000 calc(100% - var(--dockFade,50px)),rgba(0,0,0,.80) calc(100% - var(--dockFade,50px) * .94),rgba(0,0,0,.45) calc(100% - var(--dockFade,50px) * .84),rgba(0,0,0,.18) calc(100% - var(--dockFade,50px) * .72),rgba(0,0,0,.06) calc(100% - var(--dockFade,50px) * .60),rgba(0,0,0,0) calc(100% - var(--dockFade,50px) * .48),rgba(0,0,0,0) 100%);mask-size:100% 100%}
+
 a{color:#fff}
 button{font-family:inherit}
 img{max-width:100%}
@@ -1615,6 +1647,37 @@ fix6SyncMask();
 fix6FirstCard();
 if (window.requestAnimationFrame) requestAnimationFrame(function(){ fix6SyncMask(); fix6FirstCard(); });
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fix6SyncMask(); fix6FirstCard(); });
+/* --- FIX-8 (2026-11-17, brief BRIEF-SMART-MAIL-FIX8-20261117) ---
+   Item 1: the dock-edge dissolve (see the FIX-8 CSS comment above the
+   .dock-fade rules). The toggle lives here because only JS can read the
+   first card's live rest position; the CSS rules above only describe the
+   gradient shape. State is exposed as window.__fix8DockFade for the
+   checker ({on, gap, h}). */
+var fix8Scroll = document.querySelector('.page-scroll');
+function fix8FirstCard(){
+  var card = document.querySelector('#mailInbox .row');
+  if (card && !card.offsetParent) card = document.querySelector('#convList .row');
+  return card || null;
+}
+function fix8SyncDockFade(){
+  if (!fix8Scroll) return;
+  var card = fix8FirstCard();
+  var fold = fix8Scroll.getBoundingClientRect().bottom;
+  var gap = null;
+  if (card) gap = (fold - 6) - card.getBoundingClientRect().bottom;
+  var on = (gap === null) || (Math.abs(gap) > 3);
+  var h = (gap === null) ? 50 : Math.min(50, Math.abs(gap) * 2);
+  fix8Scroll.classList.toggle('dock-fade', on);
+  if (on) fix8Scroll.style.setProperty('--dockFade', Math.round(h) + 'px');
+  else fix8Scroll.style.removeProperty('--dockFade');
+  window.__fix8DockFade = {on: on, gap: (gap === null ? null : Math.round(gap)), h: Math.round(h)};
+}
+if (fix8Scroll) fix8Scroll.addEventListener('scroll', fix8SyncDockFade, {passive:true});
+window.addEventListener('resize', fix8SyncDockFade);
+fix8SyncDockFade();
+if (window.requestAnimationFrame) requestAnimationFrame(fix8SyncDockFade);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fix8SyncDockFade);
+
 /* U+25C9 GUARD: no rendered text on this page may contain the literal
    string — the Dashboard pill and every glyph here are CSS shapes, never
    text escapes. True = clean. (The guard's own search needle and the
