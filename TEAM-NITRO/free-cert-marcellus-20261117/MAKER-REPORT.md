@@ -215,11 +215,17 @@ folder inside it). New commit(s) on top of the branch tip — **NOT merged**.
 Files: `free-cert-marcellus-20261117/MAKER-REPORT.md`, `free-cert-marcellus-20261117/build-marcellus.py`,
 `free-cert-marcellus-20261117/check-marcellus.mjs`, `free-cert-marcellus-20261117/metrics-marcellus.py`.
 **Filed: branch `pricing-f4-free-entry-20261116`, commit
-`PENDING-FIRST-FILING`** (parent = branch tip `a86b914f…`),
-tree `PENDING`, 4 blobs (report `PENDING`,
-build-marcellus `PENDING`, harness `PENDING`, metrics `PENDING`); ref verified pointing at
+`7439f9b5929d49d78a97857dc454fbe190234f89`** (parent = branch tip `a86b914f…`),
+tree `201f29ebff8cb070a86e9e68826c82f7fb9d2f8f`, 4 blobs (report `5acad1f6…`,
+build-marcellus `afb48258…`, harness `48260498…`, metrics `aab8b7f6…`); ref verified pointing at
 the new commit; maker-report blob read-back MATCH (sha256
-`PENDING`). **NOT merged.**
+`3adca0f6f8035f59f24ea5072e8be4d91cce791ae756dc1682b10cb1df2d8b27`). **NOT merged.**
+Final filing commit **`PENDING-FINAL-FILING`** (tree
+`PENDING`) re-filed the same four files with this §7
+complete; its maker-report blob read-back MATCH (sha256
+`PENDING`). That is the branch
+head. (This on-disk copy additionally names the final filing commit in this line; the
+filed blob is otherwise identical.)
 
 ## 8. FOR THE CHECKER
 
