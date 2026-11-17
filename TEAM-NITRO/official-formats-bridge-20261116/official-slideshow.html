@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Official Slideshow — canonical implementation | NayaNET</title>
+<!-- THE OFFICIAL SLIDESHOW (sideways) — CANONICAL IMPLEMENTATION, 2026-11-16.
+     Harvested VERBATIM from the Smart Note Studio (blob edd5f1d8): the
+     slides-mode CSS (in the <style> below) + wireReveal() + showSlide().
+     The <style> is the canonical style (deck + Studio fixes; deltas: ['.p3-enter', '.p3-enter:hover,.p3-enter:active', '.deck-next', '.deck-next:hover,.deck-next:active']).
+     The beats are the SAME beats as the unfold — one board at a time,
+     sideways: Back / Slide N of M / Next. GLUE (marked below): the two
+     format buttons + setFormat(), the Studio's minus render() — render()
+     rebuilds beats from the Studio's note engine; here beats are static
+     HTML, so setFormat resets the reveal state instead. Everything else
+     is verbatim. Future pages harvest THIS file. ONE slideshow — never a
+     second variant. -->
+<style>
+
+/* HARVESTED — walk base (walk-beginning-fixed-fc6bb640-baseline.html).
+   ONE TOKEN ADAPTED: the top glow reads var(--glowc) so the back light
+   changes color with each beat (DECK: the theme switch). Default is the
+   walk's own purple, so beat 1 on entry looks exactly as harvested. */
+@property --glowc{syntax:'<color>';inherits:true;initial-value:rgba(160,107,255,.14)}
+
+html,body{margin:0;padding:0}
+
+body{background:radial-gradient(1200px 520px at 50% -10%,var(--glowc,rgba(160,107,255,.14)),transparent 60%),#050507;color:#F8F7FB;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;transition:--glowc 1s ease}
+
+button{font-family:inherit}
+
+/* HARVESTED — .p3-enter, the elite system button (walk line 72). */
+.p3-enter{position:relative;overflow:hidden;display:block;margin:12px auto 0;padding:16px 46px;border-radius:999px;font-size:15px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#050507,#050507);border:2px solid #a06bff;text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px rgba(160,107,255,.45);box-shadow:inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px #a06bff,0 10px 22px rgba(0,0,0,.55);transition:box-shadow .25s,transform .25s,border-color .25s}
+
+.p3-enter::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.16) 50%,transparent 58%);transform:translateX(-130%);animation:enterFlow 4.5s ease-in-out infinite;pointer-events:none}
+
+@keyframes enterFlow{0%,55%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
+
+.p3-enter:hover,.p3-enter:active{border-color:#c09aff;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #a06bff,0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+
+/* HARVESTED — the unfold container + jewel palette vars (walk line 776). */
+.p3-deal-unfold{--ink:#f4f2f7;--bg:#050607;--bg-raise:#121019;--muted:#9a97a8;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--purple:#a06bff;--sapphire:#3fb8ff;--emerald:#2fe89e;--gold:#ffbf3d;--magenta:#e84fff;--red:#ff5e6c;--orange:#ff9a5a;--yellow:#ffea00;--lime:#b8ee57;--indigo:#6675ff;--teal:#40d3bb;--rich-orange:#ff9a5a;--radius-md:18px;--radius-lg:26px;--radius-pill:999px;--ease:cubic-bezier(.22,1,.36,1);--depth-hi:inset 0 1px #fff8,0 24px 60px #000b;--depth-drop:0 16px 40px #000a}
+
+.p3-deal-unfold{position:relative;border:1.5px solid rgba(255,255,255,.32);border-radius:22px;padding:28px 18px 30px;margin:0 auto;max-width:980px;box-shadow:0 18px 40px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.14)}
+
+/* HARVESTED — deck title + step label. */
+.deal-title{font-family:Marcellus,Georgia,serif;font-size:30px;line-height:1.2;color:#fff;text-align:center;margin:6px 0 4px;padding:0 64px}
+
+@media(max-width:480px){.deal-title{font-size:24px;padding:0 60px}.deal-top-who{font-size:20px}}
+
+.letter-steplabel{text-align:center;font-size:14px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin:0 0 12px}
+ .letter-steplabel:empty{display:none}
+
+/* HARVESTED — the Royal Unfolding letter beats (walk lines 446-468). */
+.letter-beat{font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.62;color:#ffffff;margin:0 0 17px}
+
+.letter-beat.lead{font-size:clamp(25px,3.6vw,34px);line-height:1.28;color:#fff}
+
+.letter-beat.final{font-size:21px;letter-spacing:.02em}
+
+.letter-beat.reveal,.letter-sign.reveal{animation:letter-in .7s var(--ease)}
+
+@keyframes letter-in{from{opacity:0;transform:translateY(10px)}}
+
+.letter-controls{margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:13px;position:relative;z-index:2}
+
+.letter-controls[hidden]{display:none}
+
+.letter-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:940px;margin:0 auto}
+
+.ldot{width:14px;height:14px;border:none;border-radius:0;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);background:conic-gradient(from 210deg,rgba(255,255,255,.85),rgba(255,255,255,.18) 25%,rgba(0,0,0,.55) 50%,rgba(255,255,255,.3) 75%,rgba(255,255,255,.85)),var(--dc,#a06bff);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--dc,#a06bff) 60%,transparent))}
+
+@media(max-width:480px){.letter-dots{gap:5px}.ldot{width:10px;height:10px}}
+
+.ldot.on{background:conic-gradient(from 210deg,#fff,rgba(255,255,255,.4) 25%,rgba(0,0,0,.3) 50%,rgba(255,255,255,.5) 75%,#fff),var(--dc,#a06bff);border:none;box-shadow:none;filter:drop-shadow(0 0 10px var(--dc,rgba(160,107,255,.9)))}
+
+.letter-next{padding:13px 30px;font-size:14px}
+
+.letter-all{background:none;border:none;font-family:inherit;font-size:12.5px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 8px}
+
+.letter-beat .ib-foot{color:#fff}
+
+.p3-deal-unfold .ib-title{color:#fff}
+
+.p3-deal-unfold .ib-nutshell b, .p3-deal-unfold .ib-layer-head b{color:#fff}
+
+.letter-all:hover{color:#fff}
+
+.letter-beat[hidden]{display:none}
+
+@media(max-width:640px){.letter-beat{font-size:16.5px;line-height:1.58;margin-bottom:14px}
+.letter-beat.lead{font-size:24px}
+.letter-beat.final{font-size:18px}
+.letter-next{width:100%;justify-content:center}}
+
+@media(prefers-reduced-motion:reduce){.letter-frame-light,.letter-seal::after,.letter-beat.reveal,.letter-sign.reveal{animation:none!important}}
+
+.letter-all{padding:14px 10px;min-height:44px}
+
+/* HARVESTED — Naya's portrait on every beat (walk lines 412, 435). */
+.deal-beat-photo{width:240px;height:240px;flex:0 0 auto;border-radius:50%;object-fit:cover;border:2px solid color-mix(in srgb, var(--tone, #a06bff) 70%, #fff 10%);box-shadow:0 0 22px color-mix(in srgb, var(--tone, #a06bff) 55%, transparent),0 8px 20px rgba(0,0,0,.6)}
+
+.letter-beat.lead .deal-beat-photo{border-color:rgba(168,107,255,.7);box-shadow:0 0 22px rgba(168,107,255,.55),0 8px 20px rgba(0,0,0,.6)}
+
+@media(max-width:480px){.deal-beat-photo{width:168px;height:168px}.deal-sign-photo{width:288px;height:288px}.letter-beat .deal-eye-note{padding-right:58px}.face-right .deal-eye-note{padding-left:58px}.deal-quote-photo{width:38px;height:38px}}
+
+/* HARVESTED — the Hub Intelligent Block (walk lines ~471-510). */
+.ib-subtitle{font-size:18px;color:#f2f2f6;text-align:center;margin:6px 0 2px;font-weight:500;letter-spacing:.02em;line-height:1.4}
+
+.intel-board {
+  --tone: var(--purple);
+  position: relative;
+  border: 2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%);
+  border-radius: 26px;
+  padding: 32px 32px 24px;
+  background: #050607;
+  box-shadow:
+    inset 0 1px #ffffff2e,
+    0 28px 64px #000000c0,
+    0 0 44px color-mix(in srgb, var(--tone) 18%, transparent);
+  overflow: hidden;
+}
+
+.intel-board.tone-purple  { --tone: var(--purple); }
+
+.intel-board.tone-sapphire { --tone: var(--sapphire); }
+
+.intel-board.tone-emerald { --tone: var(--emerald); }
+
+.intel-board.tone-indigo { --tone: #6675ff; }
+
+.intel-board.tone-forest { --tone: #2e9e6a; }
+
+.intel-board.tone-lime { --tone: #b8ee57; }
+
+.intel-board.tone-teal { --tone: var(--teal); }
+
+.intel-board.tone-orange { --tone: #ff8c42; }
+
+.intel-board.tone-ruby { --tone: #ff5e6c; }
+
+.intel-board.tone-magenta { --tone: #ed42c4; }
+
+.intel-board::before {
+  content: ""; position: absolute; left: 10px; top: 18px; bottom: 18px; width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--tone), color-mix(in srgb, var(--tone) 70%, #fff 12%), var(--tone));
+  box-shadow: 0 0 28px color-mix(in srgb, var(--tone) 55%, transparent);
+  pointer-events: none;
+}
+
+.intel-board::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: none; 
+}
+
+.ib-jewel {
+  width: 64px; height: 64px; border-radius: 50%; flex: none;
+  display: grid; place-items: center; font-size: 30px; font-weight: 800; color: #fff; line-height: 1; text-shadow: 0 0 10px var(--tone), 0 0 24px var(--tone);
+  
+  background:
+    conic-gradient(from 210deg at 50% 50%, rgba(255,255,255,.6) 0deg, transparent 45deg, rgba(0,0,0,.38) 90deg, transparent 135deg, rgba(255,255,255,.45) 180deg, transparent 225deg, rgba(0,0,0,.32) 270deg, transparent 315deg, rgba(255,255,255,.6) 360deg),
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), transparent 35%),
+    radial-gradient(circle at 70% 75%, rgba(0,0,0,.45), transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--tone), color-mix(in srgb, var(--tone) 55%, #000) 85%);
+  border: 2px solid rgba(255,255,255,.4);
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.6),
+    inset 0 -4px 12px rgba(0,0,0,.5),
+    0 0 36px color-mix(in srgb, var(--tone) 85%, transparent), 0 0 64px color-mix(in srgb, var(--tone) 45%, transparent),
+    0 10px 24px rgba(0,0,0,.6);
+  
+  animation: jewelBreathe 4s ease-in-out infinite;
+}
+
+.ib-kind { font-size: 13px; font-weight: 800; letter-spacing: .14em; color: var(--tone); }
+
+.ib-title {
+  color: var(--ink); font-size: clamp(24px, 2.8vw, 32px); line-height: 1.12;
+  letter-spacing: -0.01em; margin: 0 0 20px; font-weight: 800;
+  text-wrap: balance;
+}
+
+.ib-nutshell {
+  margin: 22px 0 19px; padding: 20px 21px;
+  border: 2px solid #ffffff16; border-radius: 18px;
+  background: #08080d;
+  box-shadow: inset 0 1px #fff3, 0 16px 35px #0009;
+}
+
+.ib-nutshell p {
+  font-size: 17px; line-height: 1.65; color: #eeeaf2;
+  margin: 0; font-weight: 500;
+}
+
+.ib-blocktop {
+  display: flex; justify-content: space-between; gap: 16px; align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.ib-identity { display: flex; gap: 14px; min-width: 0; align-items: flex-start; }
+
+.ib-identity .ib-jewel { width: 64px; height: 64px; }
+
+.ib-title {
+  line-height: 1.05; letter-spacing: -.02em;
+  margin: 0 0 8px; color: var(--ink); font-weight: 850;
+}
+
+.ib-foot {
+  margin-top: 18px; padding-top: 14px; border-top: 2px solid #ffffff16;
+  color: #fff; font-size: 12.5px; line-height: 1.5; word-break: normal; overflow-wrap: normal;
+}
+
+.ib-foot-logo{width:22px;height:22px;flex:0 0 auto;vertical-align:-6px;border-radius:5px}
+
+/* HARVESTED — the board's lit state + nutshell overrides (walk lines ~763-773).
+   Only the rules the deck uses are carried (no .ib-layer rules: the deck
+   has no layers; no .ib-card rule: the deck has no cards). */
+.ib-identity { gap: 26px; }
+
+.intel-board .ib-subtitle{font-size:20px !important;background:transparent !important;border:0 !important;box-shadow:none !important;color:#fff;padding:14px 18px;line-height:1.5}
+
+.intel-board .ib-nutshell{font-size:20px !important;background:#050607 !important;border:2px solid color-mix(in srgb, var(--tone, #a06bff) 55%, #fff 14%) !important;border-radius:18px !important;box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #a06bff) 18%, transparent) !important;color:#fff}
+
+.intel-board .ib-nutshell p{font-size:20px !important;color:#fff;background:transparent !important}
+
+.intel-board .ib-nutshell p+p{margin-top:12px !important}
+
+.intel-board{opacity:.84;background:#050607 !important;border:2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%) !important;border-radius:26px;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}
+
+.intel-board.rv-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}
+
+.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important}
+
+.intel-board .ib-nutshell:hover,.intel-board .ib-nutshell:active{transform:translateY(-3px) !important;box-shadow:inset 0 1px #ffffff2e,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #a06bff) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important;border-color:color-mix(in srgb, var(--tone, #a06bff) 75%, #fff 10%) !important}
+
+.intel-board.rv-lit .ib-nutshell{box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent),0 0 34px -8px #ffffff !important}
+
+.intel-board.rv-lit .ib-nutshell:hover,.intel-board.rv-lit .ib-nutshell:active{transform:translateY(-3px) !important;box-shadow:inset 0 1px #ffffff2e,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #a06bff) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important;border-color:color-mix(in srgb, var(--tone, #a06bff) 75%, #fff 10%) !important}
+
+/* HARVESTED — the showcase frame (edit-unfolding-add-images.py lines 57-60).
+   ONE LINE ADAPTED: aspect-ratio:4/3 is dropped — the deck slides are
+   16:9 (1672x941), not 4:3, and the frame fits the image as it is;
+   width:100% + height:auto + object-fit:contain shows the whole picture,
+   never cropped, with no letterbox bars. */
+.lb-showcase{margin:18px auto 4px;max-width:min(640px,100%);box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#a06bff) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#a06bff) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+
+.lb-showcase img{display:block;width:100%;height:auto;object-fit:contain;border-radius:12px;background:#05060a}
+
+.lb-showcase:hover{box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#a06bff) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+
+@media(max-width:480px){.lb-showcase{padding:8px;border-radius:18px;margin-top:14px}}
+
+/* HARVESTED — phone rhythm for the block (walk lines ~640, block parts only). */
+@media (max-width: 640px) {
+  .ib-blocktop {
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 10px;
+  }
+  .intel-board { padding: 22px 18px 18px; border-radius: 20px; }
+  .ib-title { font-size: clamp(24px, 6.4vw, 32px); }
+}
+
+@media(max-width:480px){.p3-deal-unfold{padding:22px 12px 26px}}
+
+/* DECK — the only new CSS. The per-beat button lights in its beat's color:
+   --tone is set on each beat's article and inherited, so the button, the
+   frame edge, the portrait ring, the jewel and the board all light together.
+   The Join link is the same button, as a link. The head line under the title
+   is one quiet line, white, nothing gray. Beats stack on the 8px grid. */
+.deck-next{border-color:var(--tone);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone);box-shadow:inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone),0 10px 22px rgba(0,0,0,.55)}
+
+.deck-next:hover,.deck-next:active{border-color:var(--tone);box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+
+.deck-next[hidden]{display:none}
+
+a.deck-next{text-decoration:none;text-align:center}
+
+.deck-sub{text-align:center;font-size:15px;line-height:1.6;color:#fff;margin:0 0 8px}
+
+#deckBody{display:grid;gap:32px}
+
+@media (prefers-reduced-motion: reduce){body{transition:none}}
+ block is carried below with the
+       BLACK DIAMOND fix applied (BRIEF-STUDIO-BLACK-DIAMOND-FIX-20261116.md):
+       the banned white top highlight is removed from its buttons and the
+       button black is board black; everything else in the block is verbatim
+       (injected by build-studio.py, verified by the build); only STUDIO CSS follows it.
+     - The reveal mechanism: the deck's wireDeck(), adapted names only (studio-*).
+     - Speak/type: walk-v23-assembly-20261114/walk-beginning-fixed.html, startDictation()
+       (line 1810) — SpeechRecognition, live interim results, tap again to stop.
+     - The composer entry: personal/index-master-20261105-v4.html (1,189,192 B) — the
+       Personal page composer (Make a post / Naya note / Smart note) and Smart Note
+       rendering (noteCard, NOTES layers). The Studio is the composer's "Smart note"
+       choice, grown into its own page.
+     - The Hub feed Smart Notes: hub-live-20261110.html (4,796,207 B) — the reading
+       place a shared note lands in (live-feed posting wires up after staging).
+     - The Naya Note three-output template: Personal NOTES layers — "What it is /
+       Why it matters / How to apply it" — the lineage of the why-it-matters /
+       what's-in-it-for-you / how-it-connects perspectives.
+     - Naya's face: Naya.png, sha256 b63d7b3e002b... (2,054,581 B); the speaking
+       faces below are the deck's already-filed crops, URLs verbatim, face-1..9.
+     STAGED ONLY — nothing live, no money, no credentials, no existing Smart Note
+     reworded. Your words stay on this page until you share them.
+     AMENDMENT 23:10Z (same round): bite-sized is the point; the outputs ARE the
+     smart system blocks (copy the blocks, add more, build a page); Like / Share /
+     Save on every shared output; style picker with PLAIN working labels
+     ("Unfold down" / "Unfold sideways") — the official name is Shawn's call,
+     never invented; shared unfolds show a preview, one can be the hero of the
+     feed — the feed hero only; the hero on a featured space or page is a
+     follow-on surface, not built on this standalone page; the promise — no
+     matter what goes in, it always comes out beautiful.
+     SEO is NOT in this round — separate queued workstream. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* HARVESTED — walk base (walk-beginning-fixed-fc6bb640-baseline.html).
+   ONE TOKEN ADAPTED: the top glow reads var(--glowc) so the back light
+   changes color with each beat (DECK: the theme switch). Default is the
+   walk's own purple, so beat 1 on entry looks exactly as harvested. */
+@property --glowc{syntax:'<color>';inherits:true;initial-value:rgba(160,107,255,.14)}
+
+/* STUDIO — the only new CSS. Everything above this line is the deck, verbatim.
+   New rules: the input board, the speak row, the format toggle, the face swap,
+   the six perspective buttons, the slides mode (one board at a time, sideways),
+   the chain dividers, the share board and the shared-feed cards. Same materials
+   (obsidian, white rim, top-left light), same 8px grid, white text always. */
+.studio-wrap{max-width:980px;margin:0 auto;padding:0 16px 64px}
+
+.studio-steps{list-style:none;margin:18px auto 28px;padding:0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:940px}
+
+.studio-steps li{flex:1 1 200px;display:flex;gap:10px;align-items:flex-start;background:#08080d;border:1.5px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.5)}
+
+.studio-steps .step-n{flex:0 0 auto;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;color:#fff;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.9),transparent 40%),radial-gradient(circle at 50% 50%,var(--sc,#a06bff),#000 90%);border:2px solid rgba(255,255,255,.4);box-shadow:0 0 16px var(--sc,#a06bff)}
+
+.studio-steps b{display:block;font-size:15px;color:#fff;line-height:1.3}
+
+.studio-steps span{font-size:13px;line-height:1.5;color:#fff;opacity:.92}
+
+.studio-input{width:100%;box-sizing:border-box;min-height:132px;resize:vertical;margin:18px 0 12px;padding:18px 20px;font-family:inherit;font-size:17px;line-height:1.6;color:#fff;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:2px solid rgba(255,255,255,.55);border-radius:18px;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),inset 0 -1px 0 rgba(255,255,255,.12),0 12px 28px rgba(0,0,0,.55)}
+
+.studio-input:focus{outline:none;border-color:#a06bff;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.2),0 0 28px -4px #a06bff,0 12px 28px rgba(0,0,0,.55)}
+
+.studio-input::placeholder{color:rgba(255,255,255,.55)}
+
+.speak-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:4px 0 6px}
+
+.speak-btn{flex:0 0 auto;width:56px;height:56px;border-radius:50%;border:2px solid #a06bff;background:linear-gradient(180deg,#050507,#050507);color:#fff;font-size:24px;cursor:pointer;box-shadow:inset 0 -4px 8px rgba(0,0,0,.55),0 0 22px -4px #a06bff,0 8px 18px rgba(0,0,0,.55)}
+
+.speak-btn.live{border-color:#ff5e6c;box-shadow:0 0 28px -2px #ff5e6c,0 8px 18px rgba(0,0,0,.55);animation:speakPulse 1.6s ease-in-out infinite}
+
+@keyframes speakPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+.speak-text{font-size:15px;line-height:1.5;color:#fff}
+
+.speak-text b{font-size:16px}
+
+.speak-status{font-size:14px;line-height:1.5;color:#fff;margin:6px 0 0;min-height:20px}
+
+.speak-status:empty{display:none}
+
+.fact-count{font-size:14px;color:#fff;margin:10px 0 0}
+
+.input-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+
+.sample-btn{background:none;border:none;font-family:inherit;font-size:13.5px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:12px 10px;min-height:44px}
+
+.studio-note{font-size:14px;line-height:1.6;color:#fff;margin:16px 0 0}
+
+.studio-toolbar{display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;justify-content:space-between;margin:28px auto 20px;max-width:980px}
+
+.fmt-group,.face-group{background:#08080d;border:1.5px solid rgba(255,255,255,.14);border-radius:18px;padding:16px 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 12px 28px rgba(0,0,0,.5)}
+
+.fmt-group{flex:1 1 420px}
+
+.face-group{flex:1 1 300px}
+
+.toolbar-label{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 12px}
+
+.fmt-row{display:flex;flex-wrap:wrap;gap:12px}
+
+.fmt-btn{flex:1 1 180px;padding:13px 18px;border-radius:999px;font-size:14px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(180deg,#050507,#050507);border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 18px rgba(0,0,0,.5)}
+
+.fmt-btn.on{border-color:var(--tone,#a06bff);box-shadow:0 0 24px -4px var(--tone,#a06bff),0 10px 22px rgba(0,0,0,.55)}
+
+.face-row{display:flex;align-items:center;gap:14px}
+
+.face-mini{width:56px;height:56px;flex:0 0 auto;border-radius:50%;object-fit:cover;border:2px solid rgba(168,107,255,.7);box-shadow:0 0 16px rgba(168,107,255,.45),0 6px 14px rgba(0,0,0,.6)}
+
+.face-mono-mini{width:56px;height:56px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;color:#fff;background:linear-gradient(135deg,#1e1e26,#0a0a0f);border:2px solid rgba(255,255,255,.55);box-shadow:0 6px 14px rgba(0,0,0,.6)}
+
+.face-mono-mini[hidden]{display:none}
+
+.face-state{font-size:15px;line-height:1.5;color:#fff}
+
+.face-state b{display:block;font-size:15px}
+
+.swap-btn{background:none;border:2px solid rgba(255,255,255,.45);border-radius:999px;font-family:inherit;font-size:13px;font-weight:800;color:#fff;cursor:pointer;padding:10px 16px;margin-top:8px}
+
+.swap-btn:hover{border-color:#a06bff}
+
+.face-file{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+
+.persp-block{max-width:980px;margin:26px auto 0;text-align:center}
+
+.persp-label{font-size:16px;font-weight:800;color:#fff;margin:0 0 4px}
+
+.persp-sub{font-size:14px;line-height:1.6;color:#fff;margin:0 0 16px}
+
+.persp-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+.persp-btn{padding:13px 22px;border-radius:999px;font-size:14px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(180deg,#050507,#050507);border:2px solid var(--pc,#a06bff);box-shadow:0 8px 18px rgba(0,0,0,.5)}
+
+.persp-btn.on{box-shadow:0 0 28px -2px var(--pc,#a06bff),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
+
+.persp-proof{font-size:14.5px;line-height:1.6;color:#fff;margin:16px 0 0}
+
+.persp-proof b{color:#fff}
+
+.persp-how{font-size:13.5px;line-height:1.6;color:#fff;margin:8px 0 0}
+
+.persp-how button{background:none;border:none;font-family:inherit;font-size:13.5px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px 8px}
+
+.slides-nav{display:none;align-items:center;justify-content:center;gap:16px;margin:22px 0 4px}
+
+.slides-mode .slides-nav{display:flex}
+
+.slides-nav .slide-count{font-size:15px;font-weight:800;color:#fff;min-width:96px;text-align:center}
+
+.slide-prev,.slide-next{padding:12px 22px;font-size:14px}
+
+.slides-mode #studioBody{display:block}
+
+.slides-mode #studioBody .letter-beat{display:none}
+
+.slides-mode #studioBody .letter-beat.slide-current{display:block;animation:slide-in .45s var(--ease)}
+
+@keyframes slide-in{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+
+.fact-num{color:var(--tone,#a06bff);font-weight:800;margin-right:8px}
+
+.chain .ib-nutshell p:not(:last-child)::after{content:"◆";display:block;text-align:center;color:var(--tone,#a06bff);font-size:12px;margin:12px 0 2px}
+
+.face-mono{width:240px;height:240px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:26px;color:#fff;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:2px solid color-mix(in srgb, var(--tone, #a06bff) 70%, #fff 10%);box-shadow:0 0 22px color-mix(in srgb, var(--tone, #a06bff) 55%, transparent),0 8px 20px rgba(0,0,0,.6)}
+
+@media(max-width:480px){.face-mono{width:168px;height:168px;font-size:20px}}
+
+.share-board{margin-top:32px}
+
+.share-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+
+.share-meta{font-size:15px;line-height:1.6;color:#fff;margin:14px 0 0}
+
+.share-status{font-size:15px;line-height:1.6;color:#fff;margin:14px 0 0;min-height:22px}
+
+.share-status:empty{display:none}
+
+.shared-section{max-width:980px;margin:40px auto 0}
+
+.shared-section h2{font-family:Marcellus,Georgia,serif;font-size:26px;color:#fff;text-align:center;margin:0 0 6px}
+
+.staged-note{font-size:14px;line-height:1.6;color:#fff;text-align:center;margin:0 0 20px}
+
+.shared-empty{font-size:15px;line-height:1.6;color:#fff;text-align:center;margin:0}
+
+.shared-card{margin-bottom:24px}
+
+.shared-card .ib-nutshell p{font-size:16px}
+
+.working-labels{font-size:13px;line-height:1.5;color:#fff;margin:10px 0 0}
+
+.bite-line{font-size:15px;line-height:1.6;color:#fff;text-align:center;margin:20px auto 0;max-width:640px}
+
+.preview-label{font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 10px}
+
+.hero-card{border:2px solid #ffbf3d !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px rgba(255,191,61,.35) !important}
+
+.hero-badge{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.12em;color:#000;background:linear-gradient(135deg,#ffe9a8,#ffbf3d);border-radius:999px;padding:5px 12px;margin-left:8px;vertical-align:2px}
+
+.like-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+.like-btn{padding:10px 16px;border-radius:999px;font-size:13.5px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(180deg,#050507,#050507);border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 14px rgba(0,0,0,.5)}
+
+.like-btn.on{border-color:var(--pc,#ff5e6c);box-shadow:0 0 22px -2px var(--pc,#ff5e6c),0 8px 18px rgba(0,0,0,.6)}
+
+.saved-badge{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.12em;color:#fff;background:#2fe89e;border-radius:999px;padding:5px 12px;margin-left:8px;vertical-align:2px;color:#04220f}
+
+.shared-meta{font-size:14.5px;line-height:1.6;color:#fff;margin:12px 0 0}
+
+.shared-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+
+.mini-btn{padding:11px 20px;font-size:13.5px}
+
+@media(max-width:640px){.studio-toolbar{flex-direction:column}.fmt-group,.face-group{flex:0 0 auto}.fmt-btn{flex:1 1 100%}}
+
+@media (prefers-reduced-motion: reduce){.speak-btn.live{animation:none}.slides-mode #studioBody .letter-beat.slide-current{animation:none}}
+</style>
+</head>
+<body>
+<main class="p3-deal-unfold" id="studioUnfold" style="margin-top:24px;margin-bottom:48px">
+<p class="letter-steplabel">NayaNET &middot; The Official Slideshow</p>
+<h2 class="deal-title">The Official Slideshow</h2>
+<p class="deck-sub">The same beats, sideways &mdash; one screen at a time.</p>
+<div class="letter-controls" id="studioControls">
+<div class="letter-dots" id="studioDots" aria-hidden="true"><span class="ldot on" style="--dc:#a06bff"></span><span class="ldot" style="--dc:#3fb8ff"></span><span class="ldot" style="--dc:#2fe89e"></span></div>
+<button class="letter-all" id="studioAll" type="button">or read the whole thing at once</button>
+</div>
+<div id="studioBody">
+<article class="intel-board letter-beat" data-beat="1" style="--tone:#a06bff"><div class="ib-blocktop"><div class="face-mono" style="--tone:#a06bff">N</div><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">◆</span><div><span class="ib-kind">THE FIRST IDEA</span><h2 class="ib-title">One idea per board.</h2><p class="ib-subtitle">One board, one idea.</p></div></div></div><div class="ib-nutshell"><p>This is the first beat — one idea, in about three sentences.</p><p>Press Keep reading and the next board unfolds below it.</p><p>That is the whole of the unfold: bits, not walls.</p></div>
+<button class="p3-enter letter-next deck-next" type="button" data-beat="1">Keep reading ◆</button></article>
+<article class="intel-board letter-beat" data-beat="2" style="--tone:#3fb8ff" hidden><div class="ib-blocktop"><div class="face-mono" style="--tone:#3fb8ff">N</div><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">◆</span><div><span class="ib-kind">THE SECOND IDEA</span><h2 class="ib-title">Press the button, go to the next experience.</h2><p class="ib-subtitle">One board, one idea.</p></div></div></div><div class="ib-nutshell"><p>The second beat arrives only when you ask for it.</p><p>Nothing ahead is shown early — the page stays short until you open it.</p><p>One board at a time is how a brain takes things in.</p></div>
+<button class="p3-enter letter-next deck-next" type="button" data-beat="2">Keep reading ◆</button></article>
+<article class="intel-board letter-beat" data-beat="3" style="--tone:#2fe89e" hidden><div class="ib-blocktop"><div class="face-mono" style="--tone:#2fe89e">N</div><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">◆</span><div><span class="ib-kind">THE THIRD IDEA</span><h2 class="ib-title">The slideshow is the same beats, sideways.</h2><p class="ib-subtitle">One board, one idea.</p></div></div></div><div class="ib-nutshell"><p>The same three beats can slide, one screen at a time.</p><p>Back and Next move between them; the count says where you are.</p><p>Two official formats, one set of beats — never a third.</p></div></article>
+</div>
+<div class="slides-nav" id="slidesNav" hidden>
+<button class="p3-enter letter-next slide-prev" id="slidePrev" type="button">&#8249; Back</button>
+<span class="slide-count" id="slideCount"></span>
+<button class="p3-enter letter-next slide-next" id="slideNext" type="button">Next &#8250;</button>
+</div>
+<div style="display:flex;gap:12px;justify-content:center;margin-top:22px">
+<button class="p3-enter letter-next" id="fmtDown" type="button">Unfold down</button>
+<button class="p3-enter letter-next" id="fmtSide" type="button">Unfold sideways</button>
+</div>
+</main>
+<script>
+var state = { format: 'down', slide: 0 };
+function $(id){ return document.getElementById(id); }
+function wireReveal(){
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#studioBody .letter-beat'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#studioDots .ldot'));
+  var all = $('studioAll');
+  function scrollBehavior(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'; }
+  function toneOf(b){ var c = b.style.getPropertyValue('--tone'); return c ? c.trim() : '#a06bff'; }
+  function glowFor(b){
+    var hex = toneOf(b), n = parseInt(hex.slice(1), 16);
+    document.body.style.setProperty('--glowc', 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',.14)');
+  }
+  function show(n){
+    var b = beats[n]; if (!b) return;
+    b.hidden = false; b.classList.add('reveal');
+    if (dots[n]) dots[n].classList.add('on');
+    glowFor(b);
+  }
+  function ensureBeatVisible(b){
+    if (!b) return;
+    var r = b.getBoundingClientRect();
+    if (r.bottom > window.innerHeight || r.top < 0) b.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest', inline: 'nearest' });
+  }
+  beats.forEach(function(b, i){
+    var btn = b.querySelector('.deck-next[data-beat]');
+    if (!btn) return;
+    btn.addEventListener('click', function(){
+      if (state.format === 'slides'){ showSlide(i + 1); return; }
+      var cur = i + 1;
+      if (cur < beats.length){
+        show(cur); btn.hidden = true;
+        if (cur === beats.length - 1) all.hidden = true;
+        ensureBeatVisible(beats[cur]);
+      }
+    });
+  });
+  all.addEventListener('click', function(){
+    for (var n = 1; n < beats.length; n++) show(n);
+    beats.forEach(function(b){ var btn = b.querySelector('.deck-next[data-beat]'); if (btn) btn.hidden = true; });
+    all.hidden = true;
+    ensureBeatVisible(beats[beats.length - 1]);
+  });
+  dots.forEach(function(d, i){
+    d.addEventListener('click', function(){
+      if (state.format === 'slides'){ showSlide(i); return; }
+      for (var n = 1; n <= i; n++) show(n);
+      ensureBeatVisible(beats[i]);
+    });
+  });
+  if (beats[0]) glowFor(beats[0]);
+  if (!('IntersectionObserver' in window)){
+    document.querySelectorAll('.intel-board').forEach(function(c){ c.classList.add('rv-lit'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('rv-lit'); io.unobserve(en.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.intel-board:not(.rv-lit)').forEach(function(c){ io.observe(c); });
+  }
+}
+function showSlide(i){
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#studioBody .letter-beat'));
+  if (!beats.length) return;
+  state.slide = Math.max(0, Math.min(i, beats.length - 1));
+  beats.forEach(function(b, j){
+    b.hidden = false;
+    b.classList.toggle('slide-current', j === state.slide);
+  });
+  document.querySelectorAll('#studioDots .ldot').forEach(function(d, j){ d.classList.toggle('on', j === state.slide); });
+  $('slideCount').textContent = 'Slide ' + (state.slide + 1) + ' of ' + beats.length;
+  $('slidePrev').hidden = state.slide === 0;
+  $('slideNext').textContent = state.slide === beats.length - 1 ? 'Back to the start \u2039' : 'Next \u203a';
+  $('slidesNav').hidden = false;
+}
+/* GLUE — setFormat(), the Studio's minus render(): beats here are static
+   HTML, so switching back to down re-hides every beat past the first and
+   shows the first Keep reading button again. (In the Studio, render()
+   rebuilds the beats; the reset below is its equivalent for static beats.) */
+function setFormat(f){
+  state.format = f;
+  if (f === 'slides'){ state.slide = 0; showSlide(0); }
+  else {
+    var beats = Array.prototype.slice.call(document.querySelectorAll('#studioBody .letter-beat'));
+    beats.forEach(function(b, i){
+      b.hidden = (i !== 0);
+      b.classList.remove('slide-current');
+      var btn = b.querySelector('.deck-next[data-beat]');
+      if (btn) btn.hidden = (i !== 0);
+    });
+    document.querySelectorAll('#studioDots .ldot').forEach(function(d, j){ d.classList.toggle('on', j === 0); });
+    $('studioAll').hidden = false;
+    $('slidesNav').hidden = true;
+  }
+  $('studioUnfold').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+$('fmtDown').addEventListener('click', function(){ setFormat('down'); });
+$('fmtSide').addEventListener('click', function(){ setFormat('slides'); });
+$('slidePrev').addEventListener('click', function(){ showSlide(state.slide - 1); });
+$('slideNext').addEventListener('click', function(){
+  var n = document.querySelectorAll('#studioBody .letter-beat').length;
+  showSlide(state.slide === n - 1 ? 0 : state.slide + 1);
+});
+wireReveal();
+</script>
+</body>
+</html>
