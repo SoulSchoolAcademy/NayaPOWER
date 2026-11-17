@@ -1,0 +1,1636 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NayaNET — Living Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+<!--
+  LIVING CALENDAR — OBSIDIAN REBUILD (2026-11-17)
+  The old calendar build is thrown out. This file is built from scratch
+  from harvested pieces only — nothing re-created from a picture, nothing
+  invented. Harvest trace lives in MAKER-REPORT.md beside this build.
+  Sources:
+  [D] Dashboard digit tile + board + gauge — branch dashboard/done-done-20261116,
+      commit 6df003f9, blob f87d938cb57eaabd0a5116dc892580a4d94bf417
+      (DASHBOARD/defectfix-v7/pass9/dashboard-pass9.html, 1,940,710 B,
+      sha256 834c42b98cfe0d01fee83cbcfdb1ddfbb303bba8751da9fda769cff536d87d39)
+  [P] Pricing chart digit tiles + .primo pill — pricing v77
+      (~/workspace/team-nitro/pricing/v77/pricing-v77.html, 11,355,594 B,
+      sha256 b043167b2fa9a863a18216cdd2d282a20dcf5ff4159ac93e0da28ddea1635577)
+      v78 (11,360,503 B, sha256 ca2eafeb…) = v77 + free-entry groups only;
+      the v78 local copy is 0-byte flake damage and its rebuild is blocked
+      by the EPERM flake — the tile code is identical in v77 (see report).
+  [C] Functions only (booking store, slots, timeline, meet, routing) —
+      branch calendar/fullscreen-20261117, tip 9a7087ca,
+      blob d3a9f64b9405637c3e838190eae1e0d05d70659b
+      (TEAM-NITRO/living-calendar-20261117/living-calendar.html, 73,137 B).
+      Presentation NOT carried — only the functions it proved.
+  [L] Deep Palette — ~/workspace/team-nitro/THE-DEEP-PALETTE.md (the law).
+      Bright DAY values in [D] are SUPERSEDED by [L]. The DIGIT TILES
+      were the exception under amendment #3(4) (verbatim bright) — that
+      exception is SUPERSEDED by the 03:47Z scorecard (7): the tiles take
+      the Deep Palette values now, form still [D].
+  Day colors [L]: Sun #8e24aa · Mon #c2410c · Tue #d4a017 · Wed #0f52ba ·
+  Thu #07925f · Fri #c62828 · Sat #3f51b5.
+  Digit tiles — DEEP PALETTE now (scorecard (7), 03:47Z, the newest word):
+  0 white #ffffff · 1 ruby #c62828 · 2 burnt orange #c2410c ·
+  3 deep gold #d4a017 · 4 emerald #07925f · 5 deep cyan #0e7490 ·
+  6 indigo #3f51b5 · 7 royal purple #8e24aa · 8 deep violet #6d28d9 ·
+  9 deep magenta #a21caf (caps and glows per tile, derived from each deep
+  hex by the file's own lighten/darken rule; $ tile deep gold #d4a017).
+  Amendment #3(4)'s verbatim-bright-tiles rule is SUPERSEDED — the 03:47Z
+  scorecard names the color fight ("red 1, indigo 6, orange diamond, gold,
+  green all at once") and orders ONE elegant flow, Deep Palette only. The
+  v4.1 tension is resolved by his eye, exactly as the v4.1 report said it
+  would be: a values swap, not a rebuild. The tile FORM is still [D].
+  AMENDMENT #1 (Shawn's eye, 02:58Z — OVERRIDES the brief's hover rule):
+  the day number sits TOP LEFT; on hover the whole cell does NOT light up —
+  only the OUTSIDE rim lights, with a light glow of the day's color even at
+  rest, brighter on hover, NO glow in the middle; every day is lit at rest;
+  the BOTTOM RIGHT corner holds the info-eye, the door to the day's info —
+  in v4 the harvested [P] .eye-jewel circle, pearl/diamond, with a little
+  'i' inside it (amendment #4(2)); the numbers are literally the Dashboard
+  digit tiles, shrunk small in the day cell per amendment #4(3), smaller
+  still per amendment #8(1); the cells
+  are BIG; pearl gems, not neon; no trailing next-month days in the grid.
+  AMENDMENT #2 (Shawn's eye, 03:01Z — the DAY VIEW): the day header carries
+  a beautiful jewel icon for the day (Monday = 417 Hz, orange in it) — the
+  harvested [P] .os-jewel, the day's Hz inside it; the day name is white
+  inside with the day's color glowing OUTSIDE it, NO gray text underneath
+  (the gray date line is dropped); the 13 doors are NOT big empty black
+  bars — each carries a live glimpse of what's inside it (next appointment,
+  top headline, count), a window into the day; the door colors follow the
+  spectrum flow in order, never the same color twice in a row.
+  AMENDMENT #3 (Shawn's eye, 03:02Z): NO jewel eye with a colored iris —
+  the eye is a NORMAL, nice, WHITE info eye, no color in it; no weird glow
+  anywhere (cell halos are pearl, one soft halo); the other month's numbers
+  are GONE entirely — those cells are blank; the numbers are the Dashboard
+  digit tiles VERBATIM (markup + CSS + values); nothing Halloween — the glow
+  is pearl and elegant, never orange-neon. Amendments #1 and #2 otherwise
+  stand. NO GRAY TEXT (Shawn, 03:04Z): any gray text is white now — the
+  least text possible, spoken in icons.
+  AMENDMENT #4 (Shawn's eye, 03:19Z — the front entrance is the elegance
+  standard): (1) the weekday header carries the FULL day names (Sunday,
+  Monday...), almost in royalty, in Marcellus — not S/M/T/W/T/F/S; the
+  Marcellus font is now really loaded, from the [P] pricing font link
+  (verbatim, lines 9-11), not left to a Georgia fallback. (2) The info eye
+  becomes a CIRCLE, a real element coming off the page, pearl/diamond,
+  with a little 'i' inside it — the harvested [P] .eye-jewel CSS (pricing v77
+  line 140: 20px circle, Marcellus 700, border-radius:50%; .os-jewel-md size
+  [P] line 42; .os-jewel base [P] line 40). The 'i' is the amendment's
+  directed mark: .eye-jewel exists in pricing only as CSS (lines 140, 1460),
+  never in markup; pricing's nearest usage is the white jewel + SVG eye at
+  [P] line 2259.
+  (3) The day numbers shrink (54px med tiles → 40px in the day cell,
+  then → 22px per amendment #8(1) — "now the numbers are way too big")
+  so the page breathes; the cells can't get bigger, so the numbers shrink —
+  with fit breakpoints so two-digit days fit whole at every width, 635 and
+  390 included (this also fixes the checker's clipping finding). (4) Less
+  busy, less colorful, more elegant — the light stays on the SIDE (rim),
+  never the middle; the rim halos are softened (lower alphas). The TILE
+  VALUES were NOT swapped in v4 — amendment #3(4) (newest word on the tiles
+  then) stood, and #4(4) ordered no values swap. That tension is RESOLVED
+  in v5 by the 03:47Z scorecard (7): his eye said the bright tiles fight,
+  so the values swap to the Deep Palette now (see the tile-block comment).
+  (5) AMENDMENT #6 (03:47Z, in v5 too): today lights up WAY more, the
+  weekday name is a royal object, the eye shrinks and loses white — the
+  three named fixes, in the tile block and the month grid below.
+  THE CAPTAIN'S SCORECARD (03:47Z — the don't-love is the build list, all
+  ten ride in v5): (1) TODAY LIGHTS UP WAY MORE, unmistakable at a glance,
+  the brightest thing on the page — SUPERSEDED by amendment #7 (03:54Z):
+  no TODAY pill, no cell fill, no glow, no pulse; today is known from the
+  weekday plaque and the header TODAY button. (2) The eye too big and too
+  shrink it, balance it, less white, a jewel not a white blob (same pass
+  as the black-middle fix). (3) The weekday name plain white text — a
+  ROYAL OBJECT, Marcellus, elevated, jewel-like, never plain text.
+  (4) The top half empty black land — fill it, no blank field. (5) The
+  timeline empty hours — a day lived in, not a list of times. (6) Every
+  box says nothing yet / not connected — five honest empties in a row
+  reads dead; the day must feel alive with real glimpses (honest empties
+  stay honest — never invent content — but they are beautiful objects,
+  not gray confessions). (7) The colors fight — ONE elegant flow, Deep
+  Palette only. (8) The thirteen doors a row of pills — instruments, not
+  buttons. (9) Gray small text everywhere — white at minimum, gone
+  entirely where possible. (10) It feels like a form, not a cockpit —
+  real objects you can touch, high-tech elegant, easy to operate.
+  AMENDMENT #5 (Shawn's eye, 03:35Z — v5, THIS ROUND): (1) THE EYE — BLACK
+  IN THE MIDDLE. The pearl "i" disc is too bright to read — its middle goes
+  BLACK so the white "i" reads on it. The disc stays a real object (pearl
+  rim, elevation, coming off the page); only the face goes black, and the
+  white glow on the "i" itself is gone — the light lives outside only.
+  Applies to the month-grid cells AND the day view, so the day view carries
+  the same eye in its header, opening the Daily Intelligence Report.
+  (2) THE DAY VIEW IS A DASHBOARD — PRIME REAL ESTATE. Tap a day and you
+  are inside a different dashboard, not buttons on blank space. A wisdom
+  quote of the day runs across the top (the harvested [C] wisdomFor, moved
+  up from the bottom board). Below it the day's instruments fill the page —
+  appointments as tiles, the daily report, Intel Today, daily notes, daily
+  smart notes, the timeline, news, weather, horoscope — each a live
+  glimpse, each board a door into its view. The 13 doors keep their exact
+  names, order, colors and glimpses; the space around and below them is
+  used. No gray text; Deep Palette only; the day's color glows outside,
+  never in the middle.
+  AMENDMENT #6 (Shawn's eye, 03:47Z — arrived mid-round, rides into v5 as
+  an amendment the same turn): (1) TODAY LIGHTS UP WAY MORE — you must
+  tell what day it is at a glance; today is unmistakable, not a whisper —
+  SUPERSEDED by amendment #7 (03:54Z); the #6 today treatment (second rim,
+  strong halos, jewel dot) was removed in full. (2) THE WEEKDAY NAME IS A
+  written in royalty, it's just written in plain text" — the weekday name
+  must read as a real object, royalty, elevated, jewel-like, never plain
+  text on black. (3) THE EYE, BALANCED — SMALLER, LESS WHITE — "maybe made
+  it too big. Or there's too much white or like something's unbalanced...
+  it just doesn't look good." The eye shrinks, the white pulls back, it
+  reads as a jewel, not a white blob. (The 03:47Z scorecard's 10 love /
+  10 don't love was not in this seat's context — only these three named
+  fixes are applied here.)
+  AMENDMENT #7 (Shawn's eye, 03:54Z — REVISES amendment #6(1)): "So you
+  don't need to put the huge today. I don't want it to light up. Um
+  glowing over the day itself." NO huge TODAY pill, NO glow over the day
+  itself, NO cell filled with the day's color, no pulse, no TODAY tag —
+  the cell reads exactly like its siblings. Today is known from the
+  weekday plaque (today's plaque is the lit one, the mode-pill active
+  treatment) and the header TODAY button. THE BUTTON LESSON: the PTS /
+  % / MONEY button quality ([D] .os-pts-btn, harvested — obsidian pill,
+  bold white label, own color as the outer glow at rest, the lit one
+  burning brighter) goes on the weekday plaques, the boards, the month
+  header (NOVEMBER 2026), the TODAY button, and the back/forward arrows.
+  The eye as built is APPROVED — "I do like the eye better now where you
+  have it color matched too. Glow that looks much better" — do not touch it.
+  AMENDMENT #8 (Shawn's eye, 03:55Z — the restored tiles): (1) NUMBERS
+  SMALL — "now the numbers are way too big. You know to make them small."
+  The Dashboard digit tiles stay (good, harvested verbatim, never remade)
+  but SMALL in the month cells, much smaller than the restored size — the
+  tiles must never dominate the cell. Only the scale changes (54px → 22px
+  at base, down the breakpoints); the tile object is untouched. (2) COMMON
+  LANGUAGE THROUGHOUT — "use the high quality stuff that I just shared
+  with you... you didn't put that quality into the buttons or the labels
+  right of the days." The button lesson goes into the buttons AND the
+  weekday labels too — the same quality everywhere on the page, not just
+  on the numbers: weekday plaques, TODAY button, back/forward arrows,
+  boards, all speaking the one language.
+  AMENDMENT #9 (FIX-6, 2026-11-17 — the captain's desktop eye, browser
+  task 0065fca3, + the VM 390/635 eye): the structure was right but the
+  product underneath read as a beautiful empty shell. Nine fixes, inside
+  the standing laws: (1) THE EYE, A REAL PEARL — pearl face + distinct
+  dark middle + white "i", rim and glow in the day's color (the
+  color-matched eye Shawn approved 03:54Z), month cells AND day header.
+  (2) TODAY FINDABLE, QUIETLY — a small dot in the day's color on
+  today's cell only, and the weekday plaques' rest glow lives only in
+  the current month, so no weekday reads as "today" in another month;
+  NO-HUGE-TODAY stands (no fill, no glow, no pill). (3) THE FREQUENCY
+  IS LABELED — the jewel reads "417 Hz". (4) TWO-DIGIT DATES READ AS
+  ONE — the day-header pair joins (no gap, one shared seam), each digit
+  keeping its chakra color; month cells untouched. (5) THE DAY VIEW
+  FILLS THE WIDTH — the 1060px column is gone (1600px now). (6)
+  SECTION VIEWS ARE FULL BOARDS — the honest-empty views stand 56vh
+  tall at full width; the words stay honest, only the presentation
+  changes. (7) DAYS WITH RECORDS CARRY A CLEAR, EXPLAINED SIGNAL — a
+  glimpse line in the cell ("2 appointments · 1 note"), a plain dot on
+  phones; nothing invented for empty days. (8) MONTH ARROWS ARE THE
+  BUTTON STANDARD — 22px glyphs, back sapphire, forward emerald. (9)
+  THE NAME — the day number is exposed as one number ("20"). AMENDMENT
+  (390 eye): the day-header eye rides the date line wherever the header
+  stacks; plaques at 390 keep 9px (10px cannot fit "Wednesday") with
+  more breathing room. OUT OF SCOPE, as in the brief: no invented
+  appointments, news, weather, or horoscope content; no provider wired.
+-->
+<style>
+/* ============ ROOT + BASE ============ */
+/* [P] :root — pricing v77, first :root rule. --purple deepened to [L] royal
+   purple #8e24aa (the bright #a06bff is superseded by the Deep Palette). */
+:root{color-scheme:dark;--ink:#fff;--soft:#e8e8ec;--purple:#8e24aa;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{height:100%}
+/* [D] body — dashboard-pass9.html line 628: background #050607, Inter stack.
+   Board black is [L] #050607. */
+body{background:#050607;color:#F8F7FB;font-family:Inter,system-ui,sans-serif;min-height:100dvh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font-family:inherit}
+:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* ============ THE BOARD — [D] .ph-card verbatim ============ */
+/* dashboard-pass9.html lines 2084-2089: gradient, 2px rim, 20px radius,
+   inset top light, drop shadow; hover lifts with gold glow. The day cell
+   and the view boards are this board, with --dc (the day's color) as the
+   rim/glow instead of gold. */
+.ph-card{background:linear-gradient(180deg,#07070b,#050607);
+  border:2px solid rgba(255,255,255,.16);border-radius:20px;padding:28px;margin-bottom:20px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5);
+  transition:all .25s;}
+.ph-card:hover{border-color:rgba(212,160,23,.6);transform:translateY(-4px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(212,160,23,.25);}
+.ph-card h3{font-size:18px;margin:0 0 12px;color:#fff;}
+.ph-card p{font-size:14px;color:#fff;margin:0 0 14px;line-height:1.65;}
+
+/* ============ THE PILL BUTTON — [P] .primo verbatim ============ */
+/* pricing v77: "Harvested from factory.css (NAYA-BTN-005)". The door pill:
+   obsidian pill, radius 999px, rim, white word, icon left, sheen sweep.
+   --glow is the door's own color (default: --purple). */
+.primo{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-weight:800;font-size:15px;letter-spacing:.08em;color:#F8F7FB;padding:16px 32px;border-radius:999px;border:1.5px solid rgba(248,247,251,.9);
+  background:linear-gradient(180deg,#1a1a22 0%,#0a0a0f 45%,#050507 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),0 12px 32px rgba(0,0,0,.65);
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease);--glow:var(--purple);position:relative;overflow:hidden;font-family:inherit}
+.primo::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);transform:translateX(-100%);animation:primo-sheen 3.5s ease-in-out infinite;pointer-events:none}
+@keyframes primo-sheen{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.primo:hover{transform:translateY(-2px);border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px var(--glow),0 14px 36px rgba(0,0,0,.65)}
+.primo:active{transform:translateY(1px) scale(.985)}
+.primo .ico{font-size:18px;line-height:1}
+.primo.on{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px var(--glow),0 14px 36px rgba(0,0,0,.65)}
+
+/* ============ THE DIGIT TILE — [D] .os-mini-tile, FORM VERBATIM, VALUES DEEP ============ */
+/* dashboard-pass9.html lines 4816-4865 (PASS 3 — ADDENDUM 8): the form is
+   copied byte-for-byte — comment, base, cap, digit, med, dollar, gap, dot,
+   pct, and the d0–d9 chakra rims/caps. The VALUES are the Deep Palette
+   [L], per the 03:47Z scorecard (7) — the newest word on the tiles,
+   superseding amendment #3(4)'s verbatim-bright rule: the bright rims
+   (red 1, indigo 6, orange, gold, green all at once) fought, and the
+   order is ONE elegant flow, Deep Palette only. So d1–d5, d8–d9 and the $
+   tile take their hue's deep hex for rim, cap mid, and glow; d0, d6, d7
+   already were their deep hex and stand. Each cap gradient is derived
+   from its deep hex by the file's own lighten/darken rule — light = hex
+   mixed 55% toward white, dark = hex mixed 45% toward black, mid = hex —
+   the same relationship [D]'s own d7 cap already uses (#d8a0ff / #8e24aa /
+   #4d0f5e; the formula reproduces it as #cc9cd9 / #8e24aa / #4e145e).
+   Day colors, door colors and every other system color stay Deep Palette
+   [L]. The tile's own halo (0 0 12px, alpha .5) is part of the harvested
+   object, not a glow added here. A structural diff of this block vs [D]
+   4821-4865 now returns differences ONLY in these rim/cap/glow values
+   (see the maker report). */
+.os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
+.os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
+.os-mini-tile .rd{display:block;height:30px;line-height:30px;text-align:center;font-size:27px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
+/* medium: drill / dialog totals — [D] lines 4827-4830 */
+.os-mini-num.med{gap:4px;}
+.os-mini-num.med .os-mini-tile{width:54px;border-radius:10px;border-width:2px;box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 18px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-num.med .os-mini-tile .cap{height:9px;}
+.os-mini-num.med .os-mini-tile .rd{height:54px;line-height:54px;font-size:48px;}
+/* FIX-7 (item 1): a two-digit DATE is one object. Fix-6's seam (gap:0 +
+   -2px overlap) only closed the flex gap: each tile kept its own rounded
+   corners, rim, cap and halo, so "17" still read live as two tiles — in
+   the month grid (never patched) and in the day header. The join is
+   structural now: miniNumHTML emits ONE .duo tile holding both digits
+   (white, as in every tile) when the number is a two-digit day, rim/cap/
+   glow in the DAY's color — per-date, not per-digit. One border, one cap,
+   one shadow: one date. Counts never take this path (no label, no color)
+   and keep their per-digit tiles. The cell rule (0,5,0) beats every
+   per-breakpoint tile width below (0,4,0), so the duo tile always sizes
+   to its two digits instead of being squeezed into one digit's width. */
+.os-mini-num .os-mini-tile.duo{width:auto;min-width:0;padding:0 6px;border-color:var(--dc);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(var(--dc-rgb),.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-num.med .os-mini-tile.duo{width:auto;padding:0 8px;box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 18px rgba(var(--dc-rgb),.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.cal-day .os-mini-num.med .os-mini-tile.duo{width:auto;padding:0 2px}
+/* the $ tile (money only), the dot tile (decimals), the % tile — [D] 4831-4844 */
+.os-mini-tile.dollar{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.dollar .cap{background:linear-gradient(180deg,#ecd497,#d4a017 55%,#75580d);}
+.os-mini-gap{flex:none;width:10px;}
+.os-mini-num.med .os-mini-gap{width:14px;}
+.os-mini-tile.dot{width:12px;}
+.os-mini-num.med .os-mini-tile.dot{width:20px;}
+.os-mini-tile.dot .rd{display:flex;align-items:flex-end;justify-content:center;height:30px;line-height:1;padding-bottom:4px;box-sizing:border-box;}
+.os-mini-num.med .os-mini-tile.dot .rd{height:54px;padding-bottom:8px;}
+.os-mini-tile.pct{width:34px;}
+.os-mini-num.med .os-mini-tile.pct{width:60px;}
+/* chakra colours — the same as the big number */
+.os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
+.os-mini-tile.d1{border-color:#c62828;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(198,40,40,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d1 .cap{background:linear-gradient(180deg,#e59e9e,#c62828 55%,#6d1616);}
+.os-mini-tile.d2{border-color:#c2410c;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(194,65,12,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d2 .cap{background:linear-gradient(180deg,#e4aa92,#c2410c 55%,#6b2407);}
+.os-mini-tile.d3{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d3 .cap{background:linear-gradient(180deg,#ecd497,#d4a017 55%,#75580d);}
+.os-mini-tile.d4{border-color:#07925f;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(7,146,95,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d4 .cap{background:linear-gradient(180deg,#8fceb7,#07925f 55%,#045034);}
+.os-mini-tile.d5{border-color:#0e7490;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(14,116,144,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d5 .cap{background:linear-gradient(180deg,#93c0cd,#0e7490 55%,#08404f);}
+.os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d6 .cap{background:linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#232a6b);}
+.os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d7 .cap{background:linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#4d0f5e);}
+.os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(109,40,217,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d8 .cap{background:linear-gradient(180deg,#bd9eee,#6d28d9 55%,#3c1677);}
+.os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(162,28,175,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d9 .cap{background:linear-gradient(180deg,#d599db,#a21caf 55%,#590f60);}
+/* [P] .os-mini-tile.inf — the ∞ tile, pricing v77: silver/white,
+   black-and-silver (the d0 silver cap language), sized to sit in line
+   with the digit tiles. Verbatim. */
+.os-mini-tile.inf{width:34px;border-color:#e8e8ec;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(232,232,236,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.inf .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0)}
+/* (The med-width override for .inf that used to sit here was invented —
+   no such rule exists in [D] or [P]. Removed per amendment #3(4). The
+   base 34px .inf tile stands, verbatim from [P].) */
+
+/* [P] THE INFO EYE — the harvested .eye-jewel circle, pricing v77 ===== */
+/* Amendment #4(2) (Shawn's eye, 03:19Z): the info eye becomes a CIRCLE, a
+   real element coming off the page, pearl/diamond, with a little 'i' info
+   thing inside it so people know to click it for the day's info. The
+   object already exists in [P] — pricing v77 line 140 `.eye-jewel`
+   (20px circle, Marcellus 700, border-radius:50%). `.eye-jewel` exists in
+   pricing only as CSS (lines 140, 1460), never in markup — no
+   'i'-inside-a-white-jewel usage exists there; pricing's nearest usage is
+   the white jewel + SVG eye at [P] line 2259. The 'i' here is the
+   amendment's directed mark. This button IS that object, at the
+   harvested .os-jewel-md size (36px, 17px — [P] line 42): the .os-jewel
+   base below (verbatim from [P], already in this file) with --jc:#ffffff,
+   border-radius:50% from .eye-jewel, Marcellus 700 from .eye-jewel.
+   Pearl/diamond = the jewel in white: white rim, white glow outside, and
+   the 'i' itself white (the .os-jewel's own color:#fff).
+   v5 (Shawn's eye, 03:35Z — THE EYE, BLACK IN THE MIDDLE): the disc was
+   too bright to read, so the FACE goes BLACK — board black #050607 — and
+   the white glow on the 'i' itself is gone. The 'i' reads white on black;
+   the pearl rim, the elevation and the outside glow stay, so the disc is
+   still a real object coming off the page. The light lives outside only.
+   Amendment #6 (Shawn's eye, 03:47Z — BALANCED, SMALLER, LESS WHITE):
+   the eye was too big, too much white, unbalanced — a white blob, not a
+   jewel. It shrinks 36px → 30px (26px at ≤640, 22px at ≤480), the rim
+   thins to 1.25px, the inset top light and the outside glow soften, and
+   the 'i' drops to 14px so it sits balanced in the disc. The black middle
+   and the white 'i' on it stand — the eye still reads, it just reads as
+   a jewel now.
+   No color in it — amendment
+   #3(1) still stands. Placement only
+   is adapted: pricing sits it top-right of a plan card; here it sits
+   bottom-right of the day cell, the door to the day's info. The old
+   almond eye SVG is gone — the 'i' is the info mark now.
+   FIX-6 (2026-11-17 — item 1, the desktop eye): the eye as built read as
+   a plain "i" info button — a thin white ring on plain black, no pearl
+   fill, no distinct dark middle. The face is a pearl now: a pearl radial
+   (white to pearl gray, light top-left) with a distinct dark middle disc
+   (board black, its own top-light) holding the white "i", the two split
+   by a hairline light ring — pearl band, dark middle, white "i", at every
+   width. The rim and the outside glow take the day's color (--jc set
+   inline per day by render()/showDay) — the color-matched eye with its
+   glow Shawn approved 03:54Z. The pearl face itself carries no color
+   (amendment #3(1) still stands: no colored iris). Still 30px (26px
+   ≤640, 22px ≤480), still balanced, still less white than the v4 blob —
+   the pearl is a band, the middle is dark. */
+.plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;--jc:#ffffff;font-family:Marcellus,Georgia,serif;font-weight:700;font-size:14px;line-height:1;background:radial-gradient(circle at 50% 50%,#17171f 0%,#050607 52%,rgba(255,255,255,.5) 55%,rgba(255,255,255,0) 59%),radial-gradient(circle at 34% 28%,#ffffff 0%,#f0f0f3 38%,#cfcfd6 68%,#9a9aa2 100%);border:1.25px solid var(--jc);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 4px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.55),0 0 10px -4px var(--jc);text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.plan-eye:hover,.plan-eye:focus-visible{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 4px rgba(0,0,0,.6),0 6px 14px rgba(0,0,0,.6),0 0 16px -3px var(--jc);outline:2px solid #fff;outline-offset:2px}
+/* Calendar placement: bottom-right of the day cell, the door to the day. */
+.cal-day .plan-eye{top:auto;bottom:10px;right:10px}
+@media(max-width:640px){
+  .plan-eye{width:26px;height:26px;top:6px;right:6px;font-size:12px}
+  .cal-day .plan-eye{top:auto;bottom:8px;right:8px}
+  /* FIX-6 (item 7): on phones the cell is too narrow for the glimpse
+     words — the record signal is the plain dot, fully inside the cell.
+     FIX-7 (item 4): the .has{display:block} that stood here NEVER fired —
+     the base .has{display:none} below comes LATER in source order, and at
+     equal specificity (0,2,0) the later rule wins, so the phone dot was
+     display:none at every width and Nov 20 showed no signal at 635. The
+     override now lives in the later ≤640 block, after the base rule. */
+  .cal-day .day-glimpse{display:none}
+}
+
+/* ============ DAY COLORS — [L] + [C] WEEKDAY ============ */
+/* The day's color is its rim at rest; on hover only the OUTSIDE rim
+   lights, brighter — the middle never lights (amendment #1, 02:58Z).
+   Per-weekday classes carry the deep hex + its rgb triplet for the pearl
+   halo. Hz from [C] WEEKDAY. */
+.dow-0{--dc:#8e24aa;--dc-rgb:142,36,170}
+.dow-1{--dc:#c2410c;--dc-rgb:194,65,12}
+.dow-2{--dc:#d4a017;--dc-rgb:212,160,23}
+.dow-3{--dc:#0f52ba;--dc-rgb:15,82,186}
+.dow-4{--dc:#07925f;--dc-rgb:7,146,95}
+.dow-5{--dc:#c62828;--dc-rgb:198,40,40}
+.dow-6{--dc:#3f51b5;--dc-rgb:63,81,181}
+
+/* ============ MONTH VIEW — the whole screen is just a calendar ============ */
+#monthView{height:100dvh;display:flex;flex-direction:column;padding:16px 16px 12px;gap:10px}
+/* The month name + prev/next are the calendar itself — nothing else. */
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none}
+/* Amendment 2 (03:54Z — THE BUTTON LESSON): the month header is a royal
+   object too — an obsidian plaque, white Marcellus, white rim, its own
+   soft glow, elevated. The year's color is white (the header's own color
+   is white); the plaque is the object, not plain text on black. */
+.cal-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(26px,4.4vw,44px);line-height:1.05;color:#fff;margin:0;text-align:center;display:inline-block;white-space:nowrap;background:linear-gradient(180deg,#1a1a22,#050607 70%);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;padding:10px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 24px rgba(0,0,0,.55),0 0 18px rgba(255,255,255,.35)}
+.cal-title em{font-style:normal;color:#fff}
+.cal-nav{display:flex;gap:8px;align-items:center;flex:none}
+.cal-nav .primo{padding:12px 18px;font-size:14px}
+.cal-nav .primo.today{padding:12px 20px}
+/* Amendment 2 — THE BUTTON LESSON ([D] .os-pts-btn, harvested): each button
+   wears its own color as an outer glow at rest; the lit one burns brighter.
+   TODAY wears today's weekday color (--glow / --glow-rgb set by render()).
+   FIX-7 (item 2): the arrows wear their own colors too — back sapphire,
+   forward emerald — in the BORDER and in the outer glow, not only in a
+   --glow variable. Fix-6 set --glow/--glow-rgb and added a colored glow
+   at the END of the shadow stack, but never set border-color (the .primo
+   base border is white) and the two big WHITE outer glows sat ahead of
+   the colored one in the stack — box-shadow paints first-listed on top —
+   so the color was buried and the arrows read black/white live. The rule
+   below drops the white outer glows and leads with the own-color glow. */
+.cal-nav .primo.today{border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),0 12px 32px rgba(0,0,0,.65),0 0 18px rgba(var(--glow-rgb),.5)}
+.cal-nav .primo.today:hover{box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.7),0 14px 36px rgba(0,0,0,.65)}
+/* FIX-6 (item 8): the month arrows are the button standard now — PTS / %
+   MONEY quality, each its own color, premium, readable at a glance. Back
+   wears sapphire blue, forward wears deep emerald. No harvested per-arrow
+   mapping exists — the brief orders each its own color, and cool-back /
+   go-forward is the pick, both Deep Palette. The glyph grows to 22px.
+   FIX-7 (item 2): the Fix-6 colors never painted (see the note above) —
+   the border now takes --glow and the outer glow leads with the own color,
+   so sapphire/emerald are the first thing the eye reads, at rest and on
+   hover. The white stays only in the inner highlights and the chevron. */
+#prev{--glow:#0f52ba;--glow-rgb:15,82,186}
+#next{--glow:#07925f;--glow-rgb:7,146,95}
+.cal-nav #prev,.cal-nav #next{font-size:22px;line-height:1;padding:12px 22px;border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(var(--glow-rgb),.6),0 0 48px rgba(var(--glow-rgb),.25),0 12px 32px rgba(0,0,0,.65)}
+.cal-nav #prev:hover,.cal-nav #next:hover{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.75),0 14px 36px rgba(0,0,0,.65)}
+/* Weekday names in their day's color — [C] render() colored them so.
+   Amendment #4(1) (Shawn's eye, 03:19Z): the FULL day names (Sunday,
+   Monday...), almost in royalty, in Marcellus — not S/M/T/W/T/F/S. The
+   Marcellus is real now (the [P] font link in <head>); the size scales
+   with the viewport so the longest name still fits its cell. */
+.cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;flex:none}
+.cal-week div{text-align:center;font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(11px,2.2vw,20px);letter-spacing:.04em;white-space:nowrap;color:#fff}
+/* Amendment #6 (Shawn's eye, 03:47Z — THE WEEKDAY NAME IS A ROYAL OBJECT):
+   "Sunday at the top is not written in royalty, it's just written in plain
+   text." Each weekday name is a real object now — an obsidian pill, rim in
+   its day's color (--dc from the dow-N class the renderer sets), elevated
+   with its own outside glow. The pill IS the grid cell, so it always fits
+   its track; padding stays small so the longest name still fits at 390.
+   Amendments 2 + 3 (03:54Z/03:55Z — THE BUTTON LESSON, [D] .os-pts-btn
+   harvested): the label is BOLD WHITE, readable at a glance like the PTS /
+   % / MONEY pills — the day's color lives in the rim and in the outer glow
+   at rest (0 0 18px, the mode pills' rest treatment), not in the text.
+   TODAY's plaque is the LIT one (the mode-pill active treatment — the
+   border thickens, the glow burns brighter): today is known from the
+   plaque, never from lighting the cell (Amendment 2). The .today class is
+   toggled by render(), only while the displayed month is the current one. */
+.cal-week div{background:linear-gradient(180deg,#1a1a22,#050607 70%);border:1.5px solid var(--dc);border-radius:999px;padding:6px 4px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5)}
+/* FIX-6 (item 2): the plaques' rest glow lives only in the current month
+   (.cur on #weeknames, toggled by render()) — in any other month no
+   plaque glows, so no weekday can read as "today" there (the desktop eye
+   read December's gold Tuesday plaque as lit). The lit (.today) plaque
+   exists only in the current month, by the same toggle. */
+.cal-week.cur div{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.5)}
+.cal-week div.today{border-width:2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 10px rgba(0,0,0,.5),0 0 36px rgba(var(--dc-rgb),.7),0 0 72px rgba(var(--dc-rgb),.35)}
+/* The grid fills the screen. No scrolling. Rows = the weeks the month
+   actually needs (4–6) — the grid ends at the month's last day; no trailing
+   next-month days, no trailing blank row at the bottom. Rows stretch to
+   fill, so the cells are BIG. */
+.cal-grid{flex:1;display:grid;grid-template-columns:repeat(7,1fr);gap:8px;min-height:0}
+/* THE DAY BLOCK — the .ph-card board [D], rim in the day's color.
+   AMENDMENT (Shawn 02:58Z): the number sits TOP LEFT; the eye sits BOTTOM
+   RIGHT and is the door to the day's info; on hover the whole cell does NOT
+   light up — only the OUTSIDE rim lights, brighter on hover, with a light
+   glow of the day's color even at rest; NO glow in the middle. Every day is
+   lit at rest (you can see each day's color line), just not as bright as
+   the hovered day. Pearl gems, not neon — Deep Palette hexes only. */
+.cal-day{margin:0;padding:14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:6px;cursor:pointer;border:2px solid var(--dc);border-radius:20px;background:linear-gradient(180deg,#07070b,#050607);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.5),0 0 10px rgba(var(--dc-rgb),.14);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);position:relative;overflow:hidden}
+/* Hover: rim only. The middle stays obsidian — no wash, no inner glow.
+   The rim brightens and the outside halo strengthens; the number lifts.
+   Pearl, never neon — one soft halo, amendment #3(2)(5). */
+.cal-day:hover,.cal-day:focus-visible{transform:translateY(-4px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 20px 44px rgba(0,0,0,.6),0 0 24px rgba(var(--dc-rgb),.30)}
+.cal-day:hover .os-mini-tile,.cal-day:focus-visible .os-mini-tile{transform:translateY(-2px)}
+.cal-day:active{transform:translateY(1px) scale(.985)}
+.cal-day .os-mini-tile{transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+/* Today carries NO light of its own — Amendment 2 (Shawn, 03:54Z) REVISES
+   the 03:47Z "today lights up WAY more": "I don't want it to light up.
+   Um glowing over the day itself." No huge TODAY pill, no glow over the
+   day itself, no cell filled with the day's color, no pulse, no TODAY
+   tag. The Amendment #6 treatment (second rim, strong halos, jewel dot)
+   is REMOVED — today's cell reads exactly like its siblings. Today is
+   known from the weekday plaque (the lit one) and the header TODAY
+   button, not from lighting the cell. The .today class stays on the cell
+   (state only). FIX-6 (item 2): it renders exactly ONE quiet thing now —
+   the small dot below, the day's color, no glow, no fill, no pill (the
+   NO-HUGE-TODAY law stands). The mark is the only .cal-day.today rule in
+   the file; the cell otherwise reads exactly like its siblings. */
+/* FIX-6 (item 2): the quiet mark — a small dot in the day's color, top
+   right of today's cell only. Never a fill, never a glow, never a pill.
+   Today reads from the plaque + the header TODAY button + this mark.
+   FIX-7 (item 3): the 7px dot was found only by zooming on desktop and
+   not at all at 635 — too small to find at a glance. The mark is 12px
+   now, ringed white so it cannot blend into the day's rim, and z-indexed
+   above the tiles so nothing can paint over it. Still a dot, still no
+   fill, no glow, no pill — the NO-HUGE-TODAY law stands.
+   FIX-8 (item 1): the Fix-7 checker claimed the white ring from the
+   border, but the live eye measured computed box-shadow: none — the ring
+   as the eye measures it did not exist. The ring is now BOTH: the 2px
+   white border AND a spread-only box-shadow (0 0 0 2px #fff, zero blur —
+   a hard ring, never a glow), so computed box-shadow reads the ring too.
+   Nothing else changes: no fill, no glow over the cell, no pill, no
+   cell-border change.
+   FIX-9 (item 1): the 12px dot passes at 635 + 390 (14–24% of the cell)
+   but at desktop 1919 the ~263px cell makes it ~5% — the captain's eye
+   had to hunt for it. The dot scales with the cell now: 18px here
+   (desktop, ~7% of the cell, ~26px with its ring ≈ 10%), 14px at
+   ≤1088px, 12px at ≤768px (the narrow widths that already pass keep
+   their 12px). Same corner, same ring, same z-index — still a dot,
+   still no fill, no glow over the cell, no pill. The NO-HUGE-TODAY law
+   stands. */
+.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;z-index:2;width:18px;height:18px;border-radius:50%;background:var(--dc);border:2px solid #fff;box-shadow:0 0 0 2px #fff;flex:none}
+/* FIX-6 (item 7): a day with records carries a proper visible signal,
+   explained — a glimpse line at the bottom of the cell ("2 appointments
+   · 1 note"), white, the day's own words, never invented (it counts the
+   day's own local record only). The cell uses its space: color rim,
+   number, eye, and a glimpse of what's inside. The tiny dot is retired
+   on desktop — it read as a speck, half-clipped and unexplained. On
+   phones (≤640px) the cell is too narrow for words, so the signal is a
+   plain dot again — 8px, fully inside the cell, no glow to clip. Days
+   with nothing keep number + eye only; nothing is invented for an
+   empty day. */
+.cal-day .day-glimpse{position:absolute;left:14px;right:52px;bottom:12px;max-height:33px;overflow:hidden;font-size:11px;font-weight:800;letter-spacing:.06em;line-height:1.5;text-transform:uppercase;color:#fff;text-align:left}
+.cal-day .has{display:none;position:absolute;left:8px;bottom:8px;width:8px;height:8px;border-radius:50%;background:var(--dc);flex:none}
+.cal-day.blank{background:transparent;border:2px solid transparent;box-shadow:none;cursor:default}
+.cal-day.blank:hover{transform:none;background:transparent;box-shadow:none}
+
+/* ============ DAY VIEW — inside the day ============ */
+#dayView,#viewView{position:fixed;inset:0;background:#050607;z-index:50;display:none;flex-direction:column;overflow-y:auto;padding:20px 16px 40px}
+#dayView.show,#viewView.show{display:flex}
+/* FIX-6 (item 5 — PRIME REAL ESTATE): the day view fills the desktop
+   width now. The 1060px column (55% of a 1920 screen, ~400px of black
+   margin each side) is gone; the containers run to 1600px — the dash
+   grid spreads, the boards breathe, and the doors row keeps its shape
+   (5 across, 2 empty slots beside the 13th, as in v5 — full-bleed would
+   leave 5). Mobile is unchanged: width:100% throughout. */
+.day-head{max-width:1600px;width:100%;margin:0 auto 8px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.day-head .daynum-wrap{flex:none}
+/* [P] THE DAY JEWEL — .os-jewel verbatim, pricing v77 (also Dashboard
+   line 4019, same rule). Amendment #2(1): the day header carries a
+   beautiful jewel icon for the day — the day's own icon, like a jewel.
+   The jewel's color is the day's color (--jc set inline); inside it sits
+   the day's frequency — Monday = 417 Hz, orange in it. A number inside a
+   jewel is the harvested pattern (pricing carries digits 1–10 in jewels).
+   --dc-rgb is set on #dayView by showDay, so the name's glow reads the
+   day's color. Amendment #2(2): the day name is white inside with the
+   day's color glowing OUTSIDE it; no gray text underneath — the gray date
+   line is dropped (the Hz now lives in the jewel). */
+.os-jewel{--jc:#cfc09a;display:inline-grid;place-items:center;flex:none;line-height:1;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);border-radius:9px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
+.os-jewel-lg{width:46px;height:46px;font-size:22px;border-radius:13px}
+/* FIX-6 (item 3): the jewel names the unit — "417 Hz", not a bare number.
+   Same jewel object, widened to carry number + unit on one line (auto
+   width, 20px — the number stays the hero, "Hz" rides beside it). The
+   .os-jewel-lg rule above stays in the file, harvested and untouched. */
+.os-jewel-hz{width:auto;min-width:46px;height:46px;padding:0 12px;font-size:20px;border-radius:13px}
+.day-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,4vw,38px);line-height:1.1;color:#fff;margin:0;text-shadow:0 0 18px rgba(var(--dc-rgb),.5),0 0 48px rgba(var(--dc-rgb),.25)}
+.day-back{margin-left:auto}
+/* v5: the same eye lives in the day header — the door to the day's report.
+   Static in the flex header (not absolute like the month-cell eye); it sits
+   at the right, beside Back to month, and opens the Daily Intelligence
+   Report board below. Same black-middle object as the month cells. */
+.day-head .plan-eye{position:static;flex:none;margin-left:auto}
+.day-head .day-back{margin-left:12px}
+/* FIX-7 (item 1): the Fix-6 seam rules (gap:0 + margin-left:-2px) are
+   REMOVED — they only closed the flex gap while each tile kept its own
+   object cues, so "17" still read as two tiles live. The join is the
+   .duo tile above (one tile, one rim, one cap, one glow, in the day's
+   color); with it there are never two adjacent digit tiles in a day
+   number, at any width, in the month grid, the day header or the section
+   views. Counts keep their per-digit tiles (they never take the duo path). */
+.view-wrap{max-width:1600px;width:100%;margin:0 auto}
+/* The 13 doors — INSTRUMENTS, not buttons (scorecard (8), 03:47Z). The
+   doors were a row of .primo pills; a pill is a button, and thirteen
+   buttons read as a form. An instrument is a board that shows you
+   something: an obsidian board with a jewel icon in the door's own color,
+   the name, and the live glimpse as its reading — touch it and it opens
+   that door. Same 13 names, order, colors and glimpses; only the form
+   changes, pill → instrument board. The .primo pill stays for the
+   navigation buttons (prev/next/Today/Back/Create). Amendment #2(3)
+   still governs the glimpse: a door is a window into the day, never a
+   blank bar. The doors are wide enough for the glimpse to read (300px min). */
+.doors{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:18px 0}
+.doors .door-inst{display:flex;align-items:center;gap:14px;width:100%;min-width:0;cursor:pointer;text-align:left;color:#F8F7FB;font-family:inherit;font-weight:800;font-size:15px;letter-spacing:.08em;padding:16px 18px;border-radius:18px;border:1.5px solid rgba(255,255,255,.2);
+  background:linear-gradient(180deg,#1a1a22 0%,#0a0a0f 45%,#050507 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -2px 6px rgba(0,0,0,.5),0 8px 20px rgba(0,0,0,.5),0 0 18px -6px var(--glow);
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s var(--ease);--glow:var(--purple)}
+.doors .door-inst:hover,.doors .door-inst:focus-visible{transform:translateY(-2px);border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -2px 6px rgba(0,0,0,.5),0 0 28px var(--glow),0 12px 28px rgba(0,0,0,.6)}
+.doors .door-inst:active{transform:translateY(1px) scale(.985)}
+.doors .door-inst .ico{flex:none;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;font-size:20px;line-height:1;color:#fff;border:1.5px solid var(--glow);
+  background:linear-gradient(180deg,#0b0b12,#050607 80%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 10px rgba(0,0,0,.55),0 0 12px -2px var(--glow)}
+.doors .door-inst .lbl{display:flex;flex-direction:column;align-items:flex-start;min-width:0;flex:1}
+.doors .door-inst .sub{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:#fff;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+/* v5: the 3-count instrument row is gone — its counts live in the dashboard
+   board headers below (.dash-board .db-count), and the day view is a
+   dashboard now. The [D] .os-sl-stat pattern (number on top, label
+   underneath) is superseded here by the board headers. */
+/* Timeline — [C] .daytimeline board, .ph-card construction, rim in the day color. */
+.daytimeline{border:2px solid var(--dc);border-radius:20px;padding:20px 22px;margin:18px 0 0;background:linear-gradient(180deg,#07070b,#050607);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
+.daytimeline>strong{display:block;font-size:13px;letter-spacing:.14em}
+.daytimeline .tl-sub{font-size:13px;color:#fff;margin-top:4px}
+.tl-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.tl-list li{display:grid;grid-template-columns:auto auto auto 1fr;gap:10px;align-items:baseline;padding:10px 12px;border-left:3px solid var(--tc,#8e24aa);background:rgba(255,255,255,.04);border-radius:0 12px 12px 0}
+.tl-time{font-weight:800;font-size:13px;white-space:nowrap}
+.tl-kind{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tc,#8e24aa);white-space:nowrap}
+.tl-text{font-size:14px;line-height:1.5}
+.tl-empty,.tl-note{font-size:14px;line-height:1.6;margin:12px 0 0}
+.tl-note{color:#fff}
+/* Scorecard (5): open times as objects — obsidian chips, white time. */
+.tl-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.tl-chip{display:inline-block;padding:8px 12px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:linear-gradient(180deg,#1a1a22,#050607);color:#fff;font-size:13px;font-weight:800;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5)}
+/* ============ v5 — THE DAY DASHBOARD: wisdom banner + instrument boards ============ */
+/* Shawn's words, 03:35Z: "maybe a quote or wisdom for the Monday that goes
+   across the top ... imagine a different dashboard in this ... prime real
+   estate." The wisdom banner runs across the top of the day view — the
+   harvested [C] wisdomFor, moved up from the bottom board, full width,
+   Marcellus, rim in the day's color. Below the doors, the day's
+   instruments fill the page as boards: appointments as tiles, the daily
+   report, Intel Today, daily notes, daily smart notes, posts, the
+   timeline, news, weather, horoscope. Every board is the harvested [D]
+   .ph-card already in this file, rim in the day's color, lighting whole
+   on hover (Naya Code §8 — boards light up). Counts are the harvested
+   digit tiles (miniNumHTML). List rows reuse the .viewcard .list item
+   construction already in this file, same values. Nothing invented:
+   news/weather/horoscope have no live source wired, so their boards say
+   so honestly as beautiful empty states — never blank, never fake. Each
+   board with a matching door opens that door on tap (role=button). */
+.wisdom-banner{margin:18px 0 0;border-color:var(--dc);text-align:center;padding:26px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
+.wisdom-banner:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
+.wisdom-banner .wq-glyph{display:block;font-size:22px;line-height:1;color:#fff;text-shadow:0 0 18px rgba(var(--dc-rgb),.8);margin-bottom:10px}
+.wisdom-banner .wq{font-family:Marcellus,Georgia,serif;font-size:clamp(19px,2.6vw,26px);line-height:1.45;color:#fff;margin:0}
+.wisdom-banner .ws{display:block;margin-top:12px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.dash{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.dash .span2{grid-column:span 2}
+.dash-board{margin:0;border-color:var(--dc);cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
+.dash-board:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
+.dash .daytimeline{margin:0}
+.db-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.db-ico{font-size:20px;line-height:1;color:#fff}
+.db-head strong{font-size:13px;letter-spacing:.14em;color:#fff}
+.db-count{margin-left:auto}
+.db-go{font-size:20px;line-height:1;color:#fff;margin-left:auto}
+.db-count + .db-go{margin-left:6px}
+.db-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.db-list li{padding:10px 12px;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;line-height:1.55;color:#fff}
+.db-list li b{color:#fff}
+.db-text{font-size:14px;line-height:1.65;color:#fff;margin:10px 0 0}
+.db-empty{font-size:15px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin:12px 0 0}
+.db-note{font-size:13px;line-height:1.6;color:#fff;margin:8px 0 0}
+@media(max-width:900px){.dash{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.dash{grid-template-columns:1fr}.dash .span2{grid-column:auto}}
+/* Empty state — an object, not a paragraph: board + glyph + day tiles + two words.
+   FIX-6 (item 6): the honest-empty section view was one small tile in a
+   vast blank black field. It presents as a FULL BOARD now — the card
+   fills the view's width (item 5) and stands 56vh tall, content centered,
+   glyph and words grown to board scale. The WORDS are unchanged and stay
+   honest ("No provider wired", "No source wired", "Archive not wired
+   yet") — only the presentation changes, never the truth. */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:56px 28px;min-height:56vh}
+.empty .glyph{font-size:60px;line-height:1;color:#fff;text-shadow:0 0 24px rgba(var(--dc-rgb),.8)}
+.empty .words{font-size:19px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.empty .hintline{font-size:14px;color:#fff;max-width:560px;line-height:1.6}
+/* Views inside a day */
+.view-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 auto 18px;max-width:1600px;width:100%}
+.view-head h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(22px,3.4vw,32px);color:#fff;margin:0;flex:1;min-width:220px}
+.view-head .primo{padding:12px 18px;font-size:13px}
+.viewcard{margin:0 auto 18px;max-width:1600px}
+.viewcard .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin:14px 0}
+.viewcard .stat{text-align:center;padding:14px 8px;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;background:linear-gradient(180deg,#0a0a0f,#050607)}
+.viewcard .stat b{display:block;font-size:34px;font-weight:900;color:#fff;line-height:1}
+.viewcard .stat span{display:block;font-size:10px;font-weight:800;letter-spacing:.16em;color:#fff;margin-top:6px}
+.viewcard .list{list-style:none;margin:12px 0;padding:0;display:grid;gap:8px}
+.viewcard .list li{padding:12px 14px;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;line-height:1.55}
+.viewcard .list li b{color:#fff}
+.viewcard .hint{font-size:13px;color:#fff;line-height:1.6}
+.viewcard .err{font-size:13px;color:#fff;font-weight:700;min-height:18px}
+.viewcard .status{font-size:14px;font-weight:700;color:#fff;background:rgba(7,146,95,.16);border:1.5px solid #07925f;border-radius:12px;padding:12px 14px}
+/* Booking slots — [C] slot buttons, rebuilt in the pill language. */
+.slotbox{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
+.slot{cursor:pointer;font-weight:800;font-size:14px;color:#fff;padding:12px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);background:linear-gradient(180deg,#1a1a22,#050607);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px rgba(0,0,0,.5);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease)}
+.slot:hover{transform:translateY(-2px);border-color:#07925f;box-shadow:0 10px 20px rgba(0,0,0,.55),0 0 16px rgba(7,146,95,.4)}
+.slot.on{border-color:#07925f;box-shadow:0 0 16px rgba(7,146,95,.5)}
+.slot.taken{opacity:.35;cursor:not-allowed}
+.slot.taken:hover{transform:none;border-color:rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px rgba(0,0,0,.5)}
+.flab{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin:16px 0 8px}
+.field{width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.35);border-radius:12px;color:#fff;font-size:15px;padding:14px;font-family:inherit;
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12)}
+.field:focus{outline:none;border-color:#fff;box-shadow:inset 0 2px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.25)}
+.field::placeholder{color:rgba(255,255,255,.85)}
+textarea.field{min-height:110px;resize:vertical}
+select.field option{background:#0a0a0f;color:#fff}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.actions .primo{padding:13px 22px;font-size:14px}
+.meetbox{text-align:center}
+.meetbox .face{width:64px;height:64px;margin:0 auto 12px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:900;color:#fff;
+  background:linear-gradient(180deg,#1a1a22,#050607);border:2px solid #8e24aa;box-shadow:0 0 24px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.meetbox .timer{font-size:44px;font-weight:900;color:#fff;letter-spacing:.04em;line-height:1;margin:8px 0}
+.meetbox video{width:100%;max-width:520px;border-radius:16px;background:#050607;border:1.5px solid rgba(255,255,255,.85);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 24px rgba(142,36,170,.35);display:none}
+/* Phone — [D] 480px med-tile overrides, values verbatim (lines 4592-4600).
+   The .os-sl-gauge-num selector prefix is dropped on every line — this
+   file has no gauge, and the one retained prefix (a dead selector) is
+   removed in v4 per the checker correction. */
+@media (max-width:480px){
+  #monthView{padding:10px 8px 8px;gap:8px}
+  .cal-grid{gap:4px}
+  /* FIX-6 (390 legibility): the week row's gap matches the grid's (4px —
+     the plaques align with the day columns now, they were 1px narrow)
+     and the plaque padding narrows, giving "Wednesday" ~5px more room.
+     The font stays 9px: 10px cannot fit "Wednesday" in a ~49px track, by
+     the arithmetic in the maker report — 9px is the correct maximum. */
+  .cal-week{gap:4px}
+  .cal-week div{font-size:9px;letter-spacing:.02em;padding:6px 2px}
+  .cal-day{border-radius:14px;padding:8px 2px;gap:4px}
+  /* FIX-8 (item 4): "November 2026" wrapped to two lines in its pill at
+     390 — 26px Marcellus plus 28px of padding is wider than the space
+     left between the arrows. One line now: nowrap on the base rule, and
+     20px here (~166px all-in against ~189px available at 390). Fit fix,
+     not a redesign — same pill, same plaque, same text.
+     FIX-9 (item 2): 20px still overflowed 15px BEFORE Marcellus lands —
+     the fallback Georgia title is ~23px wider, so the › button clipped
+     until the font arrived. 18px here now, and the pill narrows beside
+     it (padding 6px 10px): the title shrinks ~23px all-in against the
+     measured 15px overflow, so the nav row fits pre-font with ~8px to
+     spare even on the renderer that overflowed (~27px on the maker's).
+     Same pill, same plaque, same text — only smaller at ≤480. */
+  .cal-title{padding:6px 10px;font-size:18px}
+  .cal-nav .primo{padding:10px 12px;font-size:12px}
+  .cal-nav .primo.today{padding:10px 14px}
+  .os-mini-num.med{gap:3px}
+  .os-mini-num.med .os-mini-tile{width:28px;border-radius:5px;border-width:1.5px}
+  .os-mini-num.med .os-mini-tile .cap{height:5px}
+  .os-mini-num.med .os-mini-tile .rd{height:28px;line-height:28px;font-size:25px}
+  .os-mini-num.med .os-mini-tile.dollar{width:31px}
+  .os-mini-num.med .os-mini-tile.dot{width:10px}
+  .os-mini-num.med .os-mini-tile.dot .rd{height:28px;padding-bottom:3px}
+  .os-mini-num.med .os-mini-tile.pct{width:31px}
+  .os-mini-num.med .os-mini-gap{width:7px}
+  /* Day numbers on a 390px phone: two 28px tiles + gap = 59px, the cell is
+     ~50px — so the day tiles take the harvested 22px revenue-cell pattern
+     ([D] lines 4608-4613, same values, selector moved from the 4th gauge
+     to the day cell). 2×22+2 = 46px, fits the cell. */
+  .cal-day .os-mini-num.med{gap:2px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:22px;border-radius:4px;border-width:1.5px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:4px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:22px;line-height:22px;font-size:20px}
+  .cal-day .os-mini-num.med .os-mini-gap{width:6px}
+  .doors{grid-template-columns:1fr}
+  /* FIX-6 (amendment A1): at 390 the eye sat alone on its own line,
+     stranded between the date and Back to month. The header becomes a
+     two-column grid here: jewel, day number, then the DATE LINE — title
+     + eye side by side — then Back full-width. The eye rides the date
+     line wherever the header stacks. */
+  .day-head{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
+  /* The Hz jewel is auto-width — without this the grid would stretch it
+     across the whole row; it stays its own size, left-aligned. */
+  .day-head .os-jewel-hz{justify-self:start}
+  .day-head .plan-eye{margin-left:0}
+  .day-back{grid-column:1/-1;margin-left:0}
+  /* FIX-6 (item 8): the arrows keep their button-standard size here too
+     (18px glyph — still clearly readable, still inside the 390 header). */
+  #prev,#next{font-size:18px;padding:10px 16px}
+}
+
+/* ============ AMENDMENT #4(3) — DAY NUMBERS SMALL, FIT AT EVERY WIDTH ============ */
+/* Shawn's eye, 03:19Z: the numbers shrink so the page breathes and looks
+   bigger and more elegant; the cells can't get bigger, so the numbers
+   shrink. This ALSO fixes the checker's clipping finding: the harvested
+   med tiles are 54px, so a two-digit day is 112px wide, and .cal-day has
+   overflow:hidden — two-digit days were cut at every width from 481px to
+   ~1088px, including 635px (a cell there holds only ~47px of a 112px
+   number). The harvested [D] tile block above is NOT touched (it stays
+   verbatim); this is a calendar-only override on .cal-day, the same kind
+   of sizing adaptation the 480px day rules already make.
+   AMENDMENT 3(1) (Shawn, 03:55Z — NUMBERS SMALL): "now the numbers are
+   way too big. You know to make them small." The tiles stay — they are
+   good, harvested verbatim, never remade — but SMALL in the month cells,
+   much smaller than the restored size; the tiles must never dominate the
+   cell. The ~25% shrink (54px → 40px) is superseded by this scale:
+   54px → 22px at base, and down the breakpoints. Only the SCALE changes;
+   the tile object (form, values, caps) is untouched.
+   Fit math — cell = (viewport − monthView padding − 6×grid gap) / 7,
+   content = cell − 2×cell padding − 4px border; two-digit width must be
+   ≤ content. Worked at each breakpoint's narrow end:
+   · base (>1088): 22px tile, 46px two-digit; at 1089 the cell holds 112px.
+   · ≤1088: 19px tile, 40px two-digit, padding 10px; at 769 the cell holds 74px.
+   · ≤768: 16px tile, 34px two-digit, padding 6px; at 641 the cell holds 64px.
+   · ≤640: 13px tile, 27px two-digit, padding 3px; at 481 the cell holds 47px.
+   · ≤480: 11px tile, 23px two-digit (the harvested 22px day rule above is
+     overridden here); at 390 the cell holds 42px.
+   · ≤360: 9px tile, 19px two-digit, padding 1px; at 320 the cell holds 34px.
+   The day-view header number and the instrument counts keep the full
+   54px med tiles — they have room, and only the month-view day numbers
+   were ordered smaller. */
+.cal-day .os-mini-num.med{gap:2px}
+.cal-day .os-mini-num.med .os-mini-tile{width:22px;border-radius:5px;border-width:2px}
+.cal-day .os-mini-num.med .os-mini-tile .cap{height:4px}
+.cal-day .os-mini-num.med .os-mini-tile .rd{height:22px;line-height:22px;font-size:20px}
+@media (max-width:1088px){
+  .cal-day{padding:12px 10px}
+  /* FIX-9 (item 1): the dot scales down with the cell — 14px here
+     (~145px cell, ~10%; ringed visual ~22px, ~15%). */
+  .cal-day.today::after{width:14px;height:14px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:19px;border-radius:4px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:4px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:19px;line-height:19px;font-size:17px}
+}
+@media (max-width:768px){
+  .cal-day{padding:10px 6px}
+  /* FIX-9 (item 1): 12px here — the narrow widths that already pass
+     keep their 12px (~100px cell at 768, ~14%; ~79px at 635, ~15%). */
+  .cal-day.today::after{width:12px;height:12px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:16px;border-radius:4px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:3px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:16px;line-height:16px;font-size:14px}
+}
+@media (max-width:640px){
+  .cal-day{padding:8px 3px}
+  .cal-day .os-mini-num.med{gap:1px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:13px;border-radius:3px;border-width:1.5px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:3px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:13px;line-height:13px;font-size:12px}
+  /* FIX-7 (item 4): the record dot, at last. This block sits AFTER the
+     base .has{display:none}, so at equal specificity (0,2,0) this
+     display:block wins at ≤640 — the glimpse hides here, so the dot IS
+     the signal. 10px, ringed white, bottom-left, clear of the eye. */
+  .cal-day .has{display:block;width:10px;height:10px;border:1.5px solid rgba(255,255,255,.9)}
+  /* FIX-7 (item 5a): the ≤480 day-head grid now runs at ≤640 too. At 635
+     the flex header wrapped the eye onto the Back line for long weekday
+     names ("Tuesday, November 17, 2026"); as a grid the title and the eye
+     share the date line at every width, and Back goes full-width below. */
+  .day-head{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
+  .day-head .os-jewel-hz{justify-self:start}
+  .day-head .plan-eye{margin-left:0}
+  .day-back{grid-column:1/-1;margin-left:0}
+}
+@media (max-width:480px){
+  .plan-eye{width:22px;height:22px;font-size:11px}
+  .cal-day .plan-eye{bottom:6px;right:6px}
+  /* Overrides the harvested 22px day rule in the 480px block above. */
+  .cal-day .os-mini-num.med .os-mini-tile{width:11px;border-radius:3px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:11px;line-height:11px;font-size:10px}
+}
+@media (max-width:360px){
+  .cal-day{padding:6px 1px}
+  .cal-day .os-mini-num.med{gap:1px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:9px;border-radius:2px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:2px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:9px;line-height:9px;font-size:8px}
+  .cal-week div{font-size:8px;letter-spacing:0}
+  /* FIX-8 (item 4): the nowrap title must still fit at 320 — 14px here
+     (~114px all-in) and the nav buttons narrow beside it, so the pill
+     keeps ~145px of room instead of ~119px. Same colors, same objects,
+     only narrower at the smallest width. */
+  .cal-title{font-size:14px;padding:6px 8px}
+  .cal-nav #prev,.cal-nav #next{font-size:16px;padding:8px 12px}
+  .cal-nav .primo.today{padding:8px 10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .primo::before{animation:none}
+  *{transition-duration:.01ms !important}
+}
+</style></head>
+<body>
+<!-- MONTH VIEW — the whole screen is just a calendar. Nothing else. -->
+<main id="monthView" aria-label="Living calendar">
+  <div class="cal-head">
+    <div class="cal-nav"><button class="primo" id="prev" type="button" aria-label="Previous month">‹</button></div>
+    <h1 class="cal-title" id="monthname"></h1>
+    <div class="cal-nav">
+      <button class="primo today" id="todayBtn" type="button">Today</button>
+      <button class="primo" id="next" type="button" aria-label="Next month">›</button>
+    </div>
+  </div>
+  <div class="cal-week" id="weeknames" aria-hidden="true"></div>
+  <div class="cal-grid" id="days" role="grid" aria-label="Days of the month"></div>
+</main>
+
+<!-- DAY VIEW — inside the day. -->
+<section id="dayView" aria-label="Day view" aria-hidden="true">
+  <div class="day-head" id="dayHead"></div>
+  <div class="view-wrap" id="dayBody"></div>
+</section>
+
+<!-- DESTINATION VIEW — one door open. Back everywhere. -->
+<section id="viewView" aria-label="Day section view" aria-hidden="true">
+  <div class="view-wrap" id="viewBody"></div>
+</section>
+
+<script>
+/* ============ STATE ============ */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const TZ=(Intl.DateTimeFormat().resolvedOptions().timeZone)||'UTC';
+const NOW=new Date();
+let year=NOW.getFullYear(), month=NOW.getMonth(), day=NOW.getDate();
+let screen='month', section='Dashboard', slot='', meetId='', createKind='smart';
+let lastFocus=null, pendingBookErr='';
+
+/* Weekday identity — [C] WEEKDAY verbatim (colors already the Deep Palette [L]). */
+const WEEKDAY=[
+ {name:'Sunday',   short:'Sun', color:'#8e24aa', hz:963, label:'purple'},
+ {name:'Monday',   short:'Mon', color:'#c2410c', hz:417, label:'orange'},
+ {name:'Tuesday',  short:'Tue', color:'#d4a017', hz:528, label:'gold'},
+ {name:'Wednesday',short:'Wed', color:'#0f52ba', hz:741, label:'sapphire'},
+ {name:'Thursday', short:'Thu', color:'#07925f', hz:639, label:'green'},
+ {name:'Friday',   short:'Fri', color:'#c62828', hz:396, label:'red'},
+ {name:'Saturday', short:'Sat', color:'#3f51b5', hz:852, label:'indigo'}];
+
+/* The 13 doors, in the brief's exact order and names. Amendment #2(4):
+   the door colors follow the SPECTRUM FLOW in order — never the same color
+   twice in a row. Playbook order: purple → blue → green → gold → orange →
+   red → magenta, then indigo → cyan → violet, cycling. All hexes from the
+   Deep Palette [L] only. Icons are the white object-glyphs of [C]'s
+   vocabulary. The glimpse under each name is live (doorGlimpse, below) —
+   amendment #2(3): a door is a window into the day, not a blank bar. */
+const DOORS=[
+ ['Appointments','◷','#8e24aa'],
+ ['Local news','⌖','#0f52ba'],
+ ['Provincial news','▧','#07925f'],
+ ['Global news','◎','#d4a017'],
+ ['Personal feed','♙','#c2410c'],
+ ['Business feed','▣','#c62828'],
+ ['Thing feed','◈','#a21caf'],
+ ['Your World','✦','#3f51b5'],
+ ['Smart Notes for that day','✧','#0e7490'],
+ ['Notes for that day','☰','#6d28d9'],
+ ['Weather','☀','#8e24aa'],
+ ['Horoscope','☾','#0f52ba'],
+ ['Posts for that day','✎','#07925f']];
+
+/* ============ DOOR GLIMPSES — amendment #2(3) ============ */
+/* Each door carries a live glimpse of what's inside it, from the day's own
+   local record only — the next appointment, the count, the latest note.
+   Nothing invented: news, weather and horoscope have no live source wired
+   yet, so their glimpse says so honestly (the honest-absence rule of the
+   brief). The glimpse is rendered under the door's name, white, one line. */
+function escT(t){ const s=String(t||''); return s.length>56? s.slice(0,55)+'…' : s; }
+/* FIX-7 (item 5b): doorGlimpse takes an optional (books, notes) snapshot —
+   when the day view passes its one freshly-read snapshot, every door on
+   the page counts from the same truth; when omitted it reads the store
+   itself, exactly as before. The open-times count uses the snapshot books
+   (same test bookTimeTaken runs). */
+function doorGlimpse(name,ds,books,notes){
+  books=books||dayBookings(ds); notes=notes||dayNotes(ds);
+  const open=BOOK_SLOTS.filter(t=>!books.some(b=>b.time===t)).length;
+  switch(name){
+    case 'Appointments': {
+      if(!books.length) return open? open+' open times — book one' : 'Fully booked';
+      const b=books[0];
+      return 'Next: '+fmtTime(b.time)+' — '+(b.who||'Appointment');
+    }
+    case 'Local news': case 'Provincial news': case 'Global news':
+      return 'Archive not wired yet';
+    case 'Personal feed': case 'Business feed': case 'Thing feed': {
+      const w=name.split(' ')[0];
+      const list=notes.filter(n=>n.world===w);
+      if(!list.length) return 'Nothing in '+w+' today';
+      const last=list[list.length-1];
+      return list.length+(list.length===1?' note':' notes')+' · “'+escT(last.text)+'”';
+    }
+    case 'Your World': {
+      const b=books.length, n=notes.length;
+      return b+' appointment'+(b===1?'':'s')+' · '+n+' note'+(n===1?'':'s');
+    }
+    case 'Smart Notes for that day': {
+      const list=notes.filter(n=>n.type==='smart');
+      if(!list.length) return 'No Smart Notes yet';
+      const top=list.filter(n=>n.rank).sort((a,b)=>b.rank-a.rank)[0]||list[list.length-1];
+      return list.length+(list.length===1?' Smart Note':' Smart Notes')+' · “'+escT(top.text)+'”';
+    }
+    case 'Notes for that day': {
+      const list=notes.filter(n=>n.type==='naya');
+      if(!list.length) return 'No notes yet';
+      return list.length+(list.length===1?' note':' notes')+' · “'+escT(list[list.length-1].text)+'”';
+    }
+    case 'Weather': return 'No provider wired';
+    case 'Horoscope': return 'No source wired';
+    case 'Posts for that day': {
+      const list=notes.filter(n=>n.type==='post');
+      if(!list.length) return 'No posts yet';
+      return list.length+(list.length===1?' post':' posts')+' · “'+escT(list[list.length-1].text)+'”';
+    }
+  }
+  return '';
+}
+
+/* ============ DIGIT TILES — [D] miniTileHTML + _osMiniNumHTML, ADAPTED ============ */
+/* dashboard-pass9.html lines 26593-26620: one number, one style. A landed
+   tile shows cap + digit + rim + digit colour. Money gets the $ tile,
+   decimals a dot tile, percentages a % tile. A comma becomes a gap.
+   ADAPTED, not verbatim (checker correction, v4): the tile branches are
+   exact, but this file renames the function (window._osMiniNumHTML →
+   plain miniNumHTML), adds an ∞ branch and a space/comma gap branch,
+   extends the regex with `str !== '∞'`, returns esc(...) instead of
+   String(value), and drops the 'orb' size branch. Functionally equivalent
+   for digits — the only inputs day numbers and counts use. */
+function miniTileHTML(ch){
+  if (ch === ' ' || ch === ',') return '<span class="os-mini-gap"></span>';
+  if (ch === '$') return '<span class="os-mini-tile dollar"><span class="cap"></span><span class="rd">$</span></span>';
+  if (ch === '.') return '<span class="os-mini-tile dot"><span class="cap"></span><span class="rd">.</span></span>';
+  if (ch === '%') return '<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>';
+  if (ch === '∞') return '<span class="os-mini-tile inf"><span class="cap"></span><span class="rd">∞</span></span>';
+  var d = parseInt(ch, 10);
+  if (!isFinite(d)) return '';
+  return '<span class="os-mini-tile d' + d + '"><span class="cap"></span><span class="rd">' + d + '</span></span>';
+}
+/* FIX-7 (item 1): mix a hex color toward another by amt (0–1). The file's
+   own lighten/darken rule for tile caps — light = hex mixed 55% toward
+   white, dark = hex mixed 45% toward black — verified against [D]'s own
+   d7 cap: mixHex('#8e24aa', white, .55) = '#cc9cd9', toward black .45 =
+   '#4e145e', exactly the values the tile comment documents. */
+function mixHex(hex, toward, amt){
+  const a=hex.match(/\w\w/g).map(x=>parseInt(x,16));
+  const b=toward.match(/\w\w/g).map(x=>parseInt(x,16));
+  return '#'+a.map((v,i)=>Math.round(v+(b[i]-v)*amt).toString(16).padStart(2,'0')).join('');
+}
+/* FIX-7 (item 1): ONE tile for a two-digit day — the duo tile. Both digits
+   ride inside a single tile (white, as in every tile) with one rim, one
+   cap and one glow in the DAY's color (--dc/--dc-rgb set inline). The cap
+   gradient follows the file's own lighten/darken rule above. */
+function duoTileHTML(str, color){
+  const rgb=color.match(/\w\w/g).map(x=>parseInt(x,16)).join(',');
+  const light=mixHex(color,'#ffffff',0.55), dark=mixHex(color,'#000000',0.45);
+  return '<span class="os-mini-tile duo" style="--dc:'+color+';--dc-rgb:'+rgb+'"><span class="cap" style="background:linear-gradient(180deg,'+light+','+color+' 55%,'+dark+')"></span><span class="rd">'+str+'</span></span>';
+}
+function miniNumHTML(value, size, label, color){
+  if (value == null) return '—';
+  var str = String(value).trim().replace(/,/g, ' ').replace(/ +/g, ' ');
+  if (str === '' || str === '—' || str === '-') return '—';
+  if (!/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(str) && str !== '∞') return esc(String(value));
+  var cls = (size === 'med') ? 'os-mini-num med' : 'os-mini-num';
+  /* FIX-6 (item 9): when the number is a day, the wrapper names it outright
+     (role="img" + aria-label) so the date is exposed as one number — "20",
+     not a digit at a time — whatever reads the name. Counts pass no label
+     and are unchanged. */
+  var html = '<span class="' + cls + '"' + (label ? ' role="img" aria-label="' + esc(label) + '"' : '') + '>';
+  /* FIX-7 (item 1): a two-digit DAY is one duo tile (see above) — the day's
+     color is passed by the three day-number call sites. Single digits and
+     all counts (no label, no color) fall through to the per-digit tiles,
+     byte-identical to before. */
+  if (label && color && /^[0-9]{2}$/.test(str)) return html + duoTileHTML(str, color) + '</span>';
+  for (var i = 0; i < str.length; i++) html += miniTileHTML(str[i]);
+  return html + '</span>';
+}
+
+/* ============ STORES — [C] verbatim ============ */
+/* Booking logic harvested from the old calendar build (branch
+   calendar/fullscreen-20261117, tip 9a7087ca,
+   blob d3a9f64b9405637c3e838190eae1e0d05d70659b): store
+   'mw.cal.bookings.v1', 9 hourly slots 09:00-17:00, taken slots disabled,
+   double-booking refused, survives reload. Meet room: getUserMedia on join. */
+const BOOK_KEY='mw.cal.bookings.v1';
+const NOTE_KEY='mw.cal.notes.v1';
+const BOOK_SLOTS=['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'];
+function loadBookings(){ try{ var a=JSON.parse(localStorage.getItem(BOOK_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+function saveBookings(a){ try{ localStorage.setItem(BOOK_KEY,JSON.stringify(a)); return true; }catch(e){ return false; } }
+function dayBookings(ds){ return loadBookings().filter(b=>b.date===ds).sort((x,y)=>String(x.time).localeCompare(String(y.time))); }
+function bookTimeTaken(ds,t){ return dayBookings(ds).some(b=>b.time===t); }
+function loadNotes(){ try{ var a=JSON.parse(localStorage.getItem(NOTE_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+function saveNotes(a){ try{ localStorage.setItem(NOTE_KEY,JSON.stringify(a)); return true; }catch(e){ return false; } }
+function dayNotes(ds, w){ return loadNotes().filter(n=>n.date===ds && (!w || n.world===w)); }
+function fmtTime(t){ try{ var h=+t.slice(0,2), m=t.slice(3); var ap=h>=12?'PM':'AM'; h=h%12||12; return h+':'+m+' '+ap; }catch(e){ return t; } }
+function dateKey(y,m,d){ return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0'); }
+function selKey(){ return dateKey(year,month,day); }
+function isToday(y,m,d){ return y===NOW.getFullYear()&&m===NOW.getMonth()&&d===NOW.getDate(); }
+function isFutureDs(ds){ return ds>dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate()); }
+function dlabel(y,m,d){ return new Date(y,m,d).toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'}); }
+function uid(){ return 'id'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+const TF_ORDER={Morning:0,Afternoon:1,Evening:2};
+
+/* Fallback wisdom store — [C] WISDOM_STORE verbatim, 7 lines. */
+const WISDOM_STORE=[
+ 'The day is yours to shape — begin with the one thing that matters most, and let the rest follow.',
+ 'Ask Naya to carry the small things, so your mind stays free for the big ones.',
+ 'A note written down is a thought kept — what you record today, you can build on tomorrow.',
+ 'Success is a habit, not a moment — small steps, taken every day, add up to a life.',
+ 'Work with the intelligence beside you, not against it — tell it what you want, and let it do the doing.',
+ 'Share what you learn — wisdom grows when it is given away.',
+ 'Rest is part of the work — a clear mind sees further than a tired one.'];
+
+/* ============ DAILY WISDOM / REPORT / INTEL — [C] verbatim ============ */
+function wisdomFor(ds){
+  const parts=ds.split('-').map(Number);
+  const prev=new Date(parts[0],parts[1]-1,parts[2]-1);
+  const prevKey=dateKey(prev.getFullYear(),prev.getMonth(),prev.getDate());
+  const ranked=loadNotes().filter(n=>n.date===prevKey&&n.type==='smart'&&n.rank)
+    .sort((a,b)=>(b.rank-a.rank)||String(a.createdAt).localeCompare(String(b.createdAt)));
+  if(ranked.length) return {text:ranked[0].text, source:'Carried forward — the highest-ranked Smart Note of '+dlabel(prev.getFullYear(),prev.getMonth(),prev.getDate())};
+  const idx=Math.floor(new Date(parts[0],parts[1]-1,parts[2]).getTime()/86400000);
+  return {text:WISDOM_STORE[((idx%WISDOM_STORE.length)+WISDOM_STORE.length)%WISDOM_STORE.length], source:'NayaNET wisdom store — from what we have learned'};
+}
+/* FIX-7 (item 5b): dirFor takes the same optional snapshot.
+   FIX-8 (item 2): "what was learned" used to read "Nothing was recorded
+   as learned on this day yet." whenever no note carried a rank — even
+   with a smart note sitting on the same screen. Learned prefers the
+   highest-ranked note, as before; with no ranked note it now quotes the
+   day's earliest smart note (the day's recorded learning, unranked but
+   real). "Nothing recorded" fires ONLY when the day has no smart note
+   at all — it can never contradict a smart note on the same screen. */
+function dirFor(ds,notes,books){
+  notes=notes||dayNotes(ds); books=books||dayBookings(ds);
+  if(!notes.length && !books.length) return null;
+  const smart=notes.filter(n=>n.type==='smart'), naya=notes.filter(n=>n.type==='naya'), posts=notes.filter(n=>n.type==='post');
+  const top=notes.filter(n=>n.rank).sort((a,b)=>b.rank-a.rank)[0];
+  const firstSmart=smart.slice().sort((a,b)=>String(a.createdAt||'').localeCompare(String(b.createdAt||'')))[0];
+  return {notes:notes.length, smart:smart.length, naya:naya.length, posts:posts.length,
+    books:books.length,
+    learned: top ? top.text : (firstSmart ? firstSmart.text : 'Nothing was recorded as learned on this day yet.')};
+}
+/* FIX-7 (item 5b): intelLine takes the same optional snapshot. */
+function intelLine(ds,books,notes){
+  books=books||dayBookings(ds); notes=notes||dayNotes(ds);
+  const bits=[];
+  if(books.length) bits.push(books.length+(books.length===1?' appointment':' appointments')+' booked');
+  if(notes.length) bits.push(notes.length+(notes.length===1?' note':' notes')+' saved');
+  if(!bits.length) bits.push('No records for this day yet');
+  bits.push('News archive not wired — no headlines shown for this date');
+  return bits.join(' · ')+'.';
+}
+/* FIX-7 (item 5b): dirLine takes the same optional snapshot.
+   FIX-8 (item 3): the future check used to fire FIRST, so a day WITH
+   records still read "This day has not happened yet". Records are checked
+   first now: a day with a record gets its report even if it lies ahead;
+   "not happened yet" fires ONLY for a future day with NO record.
+   FIX-9 (item 3): counts are singular at 1 ("1 note", "1 appointment"),
+   same ternary idiom as intelLine — the line used to read "1 notes". */
+function dirLine(ds,books,notes){
+  const r=dirFor(ds,notes,books);
+  if(r) return (r.notes+(r.notes===1?' note':' notes')+' · '+r.books+(r.books===1?' appointment':' appointments')+' · what was learned: '+r.learned);
+  if(isFutureDs(ds)) return 'This day has not happened yet — no report until the day has a record.';
+  return 'No report — no records for this day.';
+}
+
+/* ============ TIMELINE JOURNAL — [C] timelineHTML, world filter removed ============ */
+/* The day's whole story in time order, built ONLY from the day's own local
+   record: bookings by their time; notes by time frame (Morning 09:00,
+   Afternoon 14:00, Evening 19:00) then created time. Past days show their
+   real record; future days show what is booked and what is open; today
+   shows both. News: the archive is not wired, so the timeline says so
+   honestly instead of inventing headlines. */
+/* FIX-7 (item 5b): timelineHTML takes the same optional snapshot. */
+function timelineHTML(ds,books,notes){
+  const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+  const past=ds<todayKey, future=isFutureDs(ds);
+  books=books||dayBookings(ds); notes=notes||dayNotes(ds);
+  const TF_MIN={Morning:540,Afternoon:840,Evening:1140};
+  const entry=(min,time,color,kind,text)=>`<li style="--tc:${color}"><span class="tl-time">${esc(time)}</span><span class="tl-kind">${esc(kind)}</span><div class="tl-text">${esc(text)}</div></li>`;
+  const entries=[];
+  books.forEach(b=>{
+    const h=+String(b.time).slice(0,2), m=+String(b.time).slice(3);
+    entries.push({min:h*60+m, html:entry(h*60+m,fmtTime(b.time),'#07925f','Appointment'+(b.meet?' · Smart Meet':''),(b.who||'Appointment')+(b.what?' — '+b.what:''))});
+  });
+  notes.forEach(n=>{
+    const kind=n.type==='smart'?'Smart Note ✧':n.type==='post'?'Post':'Note';
+    const color=n.type==='smart'?'#6d28d9':n.type==='post'?'#07925f':'#c62828';
+    entries.push({min:TF_MIN[n.timeframe]||540, html:entry(TF_MIN[n.timeframe]||540,n.timeframe||'Morning',color,kind+' · '+n.world,n.text)});
+  });
+  entries.sort((a,b)=>a.min-b.min);
+  const sub=past?'What went on this day — from this day’s own record.':future?'What is booked, and what is still open.':'Today so far, and what is still open.';
+  let body='';
+  if(entries.length) body=`<ol class="tl-list">${entries.map(e=>e.html).join('')}</ol>`;
+  else body=`<p class="tl-empty">${past?'No records for this day — nothing was recorded. Unknown is not zero, and no record is invented.':'Nothing booked or written for this day yet.'}</p>`;
+  if(!past){
+    const open=BOOK_SLOTS.filter(t=>!books.some(b=>b.time===t));
+    /* Scorecard (5), 03:47Z: the timeline is a day lived in, not a list of
+       times — the open times are objects (chips), not a comma list. */
+    body+=open.length?`<div class="tl-chips" aria-label="Open times on this day">${open.map(t=>`<span class="tl-chip">${esc(fmtTime(t))}</span>`).join('')}</div><p class="tl-note">These times are open — bookable.</p>`:`<p class="tl-note">Every time on this day is booked.</p>`;
+  }
+  body+=`<p class="tl-note">News for this day: the news archive is not wired yet — no headlines are shown, and today’s headlines are never shown as past news.</p>`;
+  return `<section class="daytimeline" aria-label="Timeline for this day"><strong>THE DAY, IN ORDER</strong><div class="tl-sub">${esc(sub)}</div>${body}</section>`;
+}
+
+/* ============ DAY DASHBOARD — v5: the day view is a dashboard ============ */
+/* Shawn's words, 03:35Z: "when you go inside it's just a bunch of buttons
+   ... imagine a different dashboard in this ... prime real estate ... you
+   built the buildings on like a third of the land." The day view is a
+   dashboard now: the wisdom banner across the top, then the day's
+   instruments as boards that fill the page — appointments as tiles, the
+   daily report, Intel Today, daily notes, daily smart notes, posts, the
+   timeline, news, weather, horoscope — each a live glimpse, a window into
+   what's inside. Every board is the harvested [D] .ph-card already in this
+   file, rim in the day's color; counts are the harvested digit tiles;
+   lists reuse the .viewcard .list item construction already in this file.
+   Nothing invented: news/weather/horoscope have no live source wired, so
+   their boards say so honestly, as beautiful empty states — never blank,
+   never fake. Each board with a matching door opens that door on tap. */
+function boardHead(ico,label,count,door){
+  return `<div class="db-head"><span class="db-ico" aria-hidden="true">${ico}</span><strong>${label}</strong>${count==null?'':'<span class="db-count">'+miniNumHTML(count)+'</span>'}${door?'<span class="db-go" aria-hidden="true">›</span>':''}</div>`;
+}
+/* FIX-7 (item 5b): apptTiles takes the same optional snapshot. */
+function apptTiles(ds,books){
+  books=books||dayBookings(ds);
+  if(!books.length){
+    const open=BOOK_SLOTS.filter(t=>!books.some(b=>b.time===t));
+    return `<p class="db-empty">No appointments yet</p>`+(open.length?`<p class="db-note">Open today: ${open.map(t=>esc(fmtTime(t))).join(' · ')}</p>`:`<p class="db-note">Every time is booked.</p>`);
+  }
+  return `<ul class="db-list">${books.map(b=>`<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'Appointment')}${b.what?' — '+esc(b.what):''}${b.meet?' ✧ Meet':''}</li>`).join('')}</ul>`;
+}
+function noteLines(list, emptyWords){
+  if(!list.length) return `<p class="db-empty">${esc(emptyWords)}</p>`;
+  return `<ul class="db-list">${list.slice(0,4).map(n=>`<li><b>${esc(n.timeframe||'')}</b> · ${esc(n.text)}</li>`).join('')}</ul>`+(list.length>4?`<p class="db-note">+ ${list.length-4} more — open the door to see them all.</p>`:'');
+}
+function dashHTML(ds){
+  const books=dayBookings(ds), notes=dayNotes(ds);
+  const smart=notes.filter(n=>n.type==='smart'), naya=notes.filter(n=>n.type==='naya'), posts=notes.filter(n=>n.type==='post');
+  const door=(view,inner,id)=>`<article class="ph-card dash-board" role="button" tabindex="0" data-view="${esc(view)}"${id?` id="${id}"`:''}>${inner}</article>`;
+  return `<div class="dash">
+    ${door('Appointments', boardHead('◷','APPOINTMENTS',books.length,true)+apptTiles(ds,books))}
+    ${door('Your World', boardHead('✦','DAILY REPORT',null,true)+`<p class="db-text">${esc(dirLine(ds,books,notes))}</p>`, 'dayReport')}
+    ${door('Your World', boardHead('◎','INTEL TODAY',null,true)+`<p class="db-text">${esc(intelLine(ds,books,notes))}</p>`)}
+    ${door('Smart Notes for that day', boardHead('✧','SMART NOTES',smart.length,true)+noteLines(smart,'No Smart Notes yet'))}
+    ${door('Notes for that day', boardHead('☰','NOTES',naya.length,true)+noteLines(naya,'No notes yet'))}
+    ${door('Posts for that day', boardHead('✎','POSTS',posts.length,true)+noteLines(posts,'No posts yet'))}
+    <div class="span2">${timelineHTML(ds,books,notes)}</div>
+    ${door('Local news', boardHead('◎','NEWS',null,true)+`<ul class="db-list"><li><b>Local</b> — Archive not wired yet</li><li><b>Provincial</b> — Archive not wired yet</li><li><b>Global</b> — Archive not wired yet</li></ul>`)}
+    ${door('Weather', boardHead('☀','WEATHER',null,true)+`<p class="db-empty">No provider wired</p><p class="db-note">Nothing is shown in its place.</p>`)}
+    ${door('Horoscope', boardHead('☾','HOROSCOPE',null,true)+`<p class="db-empty">No source wired</p><p class="db-note">Nothing is shown in its place.</p>`)}
+  </div>`;
+}
+
+/* ============ MONTH — the numbers fill the screen ============ */
+/* Amendment #6: the weekday pill takes its day's color from the dow-N class
+   (--dc / --dc-rgb), so the rim and the glow read the day's color. The
+   label itself is white (Amendments 2 + 3 — the button lesson: bold white
+   label, color in the rim and glow, like the PTS / % / MONEY pills). */
+$('weeknames').innerHTML=WEEKDAY.map((w,i)=>`<div class="dow-${i}">${w.name}</div>`).join('');
+function dayHasRecord(ds){ return dayBookings(ds).length>0 || dayNotes(ds).length>0; }
+/* The eye mark — [P] .eye-jewel CSS, pricing v77 line 140: a white jewel
+   circle (Marcellus 700). `.eye-jewel` exists in pricing only as CSS
+   (lines 140, 1460), never in markup; the 'i' is the amendment's directed
+   mark. The button carries the 'i' as its text; the circle, pearl rim and
+   glow are the .plan-eye rule above. Amendment #4(2). v5: the disc's
+   middle is black now (amendment #5(1)) — the 'i' reads white on black. */
+function render(){
+  const first=new Date(year,month,1).getDay();
+  const n=new Date(year,month+1,0).getDate();
+  /* Amendment 2 (03:54Z): today is known from the weekday plaque — the
+     plaque for today's weekday is the lit one (the mode-pill active
+     treatment) — and from the header TODAY button, which wears today's
+     weekday color. Only while the displayed month is the current month;
+     the cell itself carries no light. */
+  document.querySelectorAll('#weeknames div').forEach((el,i)=>{
+    el.classList.toggle('today', year===NOW.getFullYear()&&month===NOW.getMonth()&&i===NOW.getDay());
+  });
+  /* FIX-6 (item 2): the plaques' rest glow lives only in the current month
+     (.cur on #weeknames) — in any other month no plaque glows, so no
+     weekday can read as "today" there; the lit plaque exists only here. */
+  $('weeknames').classList.toggle('cur', year===NOW.getFullYear()&&month===NOW.getMonth());
+  const tw=WEEKDAY[NOW.getDay()];
+  $('todayBtn').style.setProperty('--glow',tw.color);
+  $('todayBtn').style.setProperty('--glow-rgb',tw.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(','));
+  /* AMENDMENT (Shawn 02:58Z): the grid ends at the month's last day — no
+     trailing next-month days, no trailing blank row. Rows = the weeks the
+     month actually needs; they stretch to fill, so the cells are BIG. */
+  const rows=Math.ceil((first+n)/7);
+  const total=first+n;
+  $('days').style.gridTemplateRows='repeat('+rows+',1fr)';
+  $('monthname').innerHTML=new Date(year,month,1).toLocaleDateString('en-CA',{month:'long'})+' <em>'+year+'</em>';
+  $('days').innerHTML=Array.from({length:total},(_,i)=>{
+    const d=i-first+1;
+    if(d<1||d>n) return '<div class="cal-day blank" aria-hidden="true"></div>';
+    const wd=WEEKDAY[new Date(year,month,d).getDay()];
+    const ds=dateKey(year,month,d);
+    const today=isToday(year,month,d);
+    const rec=dayHasRecord(ds);
+    const bN=dayBookings(ds).length, nN=dayNotes(ds).length;
+    const summary=rec?((bN?bN+' appointment'+(bN===1?'':'s'):'')+(bN&&nN?', ':'')+(nN?nN+' note'+(nN===1?'':'s'):'')+'.'):'No records for this day.';
+    /* FIX-6 (item 7): the glimpse says what is inside the day, in the
+       day's own words — counts from the local record only, never invented. */
+    const glimpse=rec?((bN?bN+' appointment'+(bN===1?'':'s'):'')+(bN&&nN?' · ':'')+(nN?nN+' note'+(nN===1?'':'s'):'')) : '';
+    return `<div class="cal-day dow-${new Date(year,month,d).getDay()}${today?' today':''}" data-day="${d}" role="button" tabindex="0" aria-label="Open ${dlabel(year,month,d)}. ${esc(summary)}">
+      ${miniNumHTML(d,'med',String(d),wd.color)}
+      ${rec?`<span class="day-glimpse">${esc(glimpse)}</span><span class="has" aria-hidden="true"></span>`:''}
+      <button class="plan-eye" type="button" data-eye="${d}" style="--jc:${wd.color}" aria-label="See inside ${dlabel(year,month,d)}">i</button></div>`;
+  }).join('');
+  document.querySelectorAll('[data-day]').forEach(b=>{ b.onclick=()=>openDay(+b.dataset.day);
+    b.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openDay(+b.dataset.day); } }; });
+  document.querySelectorAll('[data-eye]').forEach(b=>{ b.onclick=e=>{ e.stopPropagation(); openDay(+b.dataset.eye); }; });
+}
+function openDay(d){ day=d; screen='day'; section='Dashboard'; slot=''; pushRoute(); showDay(); }
+
+/* ============ DAY VIEW — the 13 doors + the day's instruments ============ */
+function showDay(){
+  const ds=selKey();
+  const wd=WEEKDAY[new Date(year,month,day).getDay()];
+  const r=dirFor(ds);
+  const books=dayBookings(ds), notes=dayNotes(ds);
+  lastFocus=document.activeElement;
+  $('dayView').classList.add('show');
+  $('dayView').setAttribute('aria-hidden','false');
+  $('dayView').style.setProperty('--dc',wd.color);
+  $('dayView').style.setProperty('--dc-rgb',wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(','));
+  $('dayHead').innerHTML=`
+    <span class="os-jewel os-jewel-hz" style="--jc:${wd.color}" role="img" aria-label="${wd.name}, ${wd.hz} Hz">${wd.hz} Hz</span>
+    <div class="daynum-wrap">${miniNumHTML(day,'med',String(day),wd.color)}</div>
+    <div><h2 class="day-title">${esc(dlabel(year,month,day))}</h2></div>
+    <button class="plan-eye" data-op="report" type="button" style="--jc:${wd.color}" aria-label="See the daily report for this day">i</button>
+    <button class="primo day-back" data-op="close" type="button">← Back to month</button>`;
+  /* v5: the wisdom banner runs across the top of the day view (the harvested
+     [C] wisdomFor, moved up from the bottom board); below the 13 doors the
+     dashboard fills the page — the old 3-count row, the standalone timeline
+     and the bottom dayboards are all folded into dashHTML. */
+  const w=wisdomFor(ds);
+  const wisdom=`<div class="ph-card wisdom-banner"><span class="wq-glyph" aria-hidden="true">✧</span><p class="wq">“${esc(w.text)}”</p><span class="ws">${esc(w.source)}</span></div>`;
+  $('dayBody').innerHTML=`
+    ${wisdom}
+    <div class="doors">${DOORS.map(([x,i,c])=>`<button class="door-inst" style="--glow:${c}" data-view="${esc(x)}" type="button"><span class="ico" aria-hidden="true">${i}</span><span class="lbl">${esc(x)}<span class="sub">${esc(doorGlimpse(x,ds,books,notes))}</span></span></button>`).join('')}</div>
+    ${dashHTML(ds)}
+    <div class="actions">
+      <button class="primo" data-op="Create" type="button"><span class="ico" aria-hidden="true">+</span>Create a note for this day</button>
+      <button class="primo" data-op="prevday" type="button">‹ Previous day</button>
+      <button class="primo" data-op="nextday" type="button">Next day ›</button>
+    </div>`;
+  wireDay();
+  const mh=$('dayHead').querySelector('.day-title'); if(mh){ mh.setAttribute('tabindex','-1'); mh.focus(); }
+}
+function wireDay(){
+  document.querySelectorAll('#dayView [data-view]').forEach(b=>b.onclick=()=>{ section=b.dataset.view; screen='view'; slot=''; pushRoute(); showView(); });
+  /* v5: the dashboard boards are doors too — keyboard-openable like the buttons. */
+  document.querySelectorAll('#dayView article[data-view]').forEach(b=>{ b.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); section=b.dataset.view; screen='view'; slot=''; pushRoute(); showView(); } }; });
+  document.querySelectorAll('#dayView [data-op]').forEach(b=>b.onclick=()=>{ const op=b.dataset.op;
+    if(op==='close'){ closeDay(); return; }
+    /* v5: the day header's eye is the door to the day's info — it takes you
+       to the Daily Intelligence Report board and puts focus on it.
+       Instant scroll (behavior:'auto') + focus({preventScroll:true}): the
+       smooth scroll + focus pair raced and landed 48px short of the board
+       (probe 03:52Z: scrollTop 0 → 48, board top still at 676px). */
+    if(op==='report'){ const r=$('dayReport'); if(r){ r.scrollIntoView({behavior:'auto',block:'start'}); r.focus({preventScroll:true}); } return; }
+    if(op==='prevday'||op==='nextday'){ const d=new Date(year,month,day+(op==='prevday'?-1:1)); year=d.getFullYear(); month=d.getMonth(); day=d.getDate(); render(); pushRoute(); showDay(); return; }
+    section=op; screen='view'; slot=''; pushRoute(); showView();
+  });
+}
+function closeDay(){
+  screen='month'; $('dayView').classList.remove('show'); $('dayView').setAttribute('aria-hidden','true');
+  if(history.state && history.state.view!=='month') history.replaceState({view:'month',year,month,day},'','');
+  render();
+  const t=document.querySelector(`[data-day="${day}"]`); if(t) t.focus();
+}
+
+/* ============ DESTINATION VIEWS — one door open, Back everywhere ============ */
+function viewHeadHTML(title, ds){
+  return `<div class="view-head"><h2>${esc(title)}</h2>
+    <button class="primo" data-op="back" type="button">← Back to day menu</button>
+    <button class="primo" data-op="close" type="button">← Back to month</button></div>`;
+}
+function emptyState(glyph, words, hint){
+  const wd=WEEKDAY[new Date(year,month,day).getDay()];
+  return `<div class="viewcard ph-card empty" style="--dc:${wd.color};--dc-rgb:${wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(',')}"><span class="glyph" aria-hidden="true">${glyph}</span>${miniNumHTML(day,'med',String(day),wd.color)}<span class="words">${esc(words)}</span><span class="hintline">${esc(hint)}</span></div>`;
+}
+function notesListHTML(list, emptyWords, emptyHint){
+  if(!list.length) return emptyState('✧', emptyWords, emptyHint);
+  return `<div class="viewcard ph-card"><div class="timeline">${list.slice().sort((a,b)=>(TF_ORDER[a.timeframe]-TF_ORDER[b.timeframe])||String(a.createdAt).localeCompare(String(b.createdAt))).map(n=>`<p><strong>${esc(n.timeframe||'')}</strong> · ${esc(n.type==='smart'?'Smart Note ✧':n.type==='post'?'Post':'Note')} · ${esc(n.world)}${n.rank?' · rank '+n.rank:''} — ${esc(n.text)}</p>`).join('')}</div></div>`;
+}
+function showView(){
+  const ds=selKey();
+  const wd=WEEKDAY[new Date(year,month,day).getDay()];
+  const notes=dayNotes(ds), books=dayBookings(ds);
+  let html=viewHeadHTML(section+' — '+dlabel(year,month,day), ds);
+  if(section==='Appointments'){
+    html+=appointmentsHTML(ds);
+  } else if(section==='Local news'||section==='Provincial news'||section==='Global news'){
+    html+=emptyState('◎','No archived news','No archived news for this date in this build. The news archive is not wired yet — and today’s headlines are never shown as past news. When the archive is wired, this view will show sourced, date-stamped headlines published on this day.');
+  } else if(section==='Personal feed'||section==='Business feed'||section==='Thing feed'){
+    const w=section==='Personal feed'?'Personal':section==='Business feed'?'Business':'Thing';
+    const list=dayNotes(ds).filter(n=>n.world===w);
+    html+=notesListHTML(list,'Nothing in '+w+' for this day','No records for this day in '+w+'. Nothing is shown from any other day.');
+  } else if(section==='Your World'){
+    const r=dirFor(ds);
+    html+=`<div class="viewcard ph-card"><h3>Your world for this day</h3>
+    <div class="statgrid">
+      <div class="stat"><b>${notes.filter(n=>n.type==='smart').length}</b><span>SMART NOTES</span></div>
+      <div class="stat"><b>${books.length}</b><span>APPOINTMENTS</span></div>
+      <div class="stat"><b>${notes.length}</b><span>NOTES + POSTS</span></div>
+    </div>
+    ${r?`<p><strong>What was learned:</strong> ${esc(r.learned)}</p>`:`<p class="hint">No records for this day — unknown is not zero, and no report is invented.</p>`}
+    <p class="hint">Counts from this device's local record only. A past day shows what was recorded for that day — never today's numbers.</p></div>`;
+  } else if(section==='Smart Notes for that day'){
+    html+=notesListHTML(notes.filter(n=>n.type==='smart'),'No Smart Notes','No Smart Notes recorded for this day. Notes you write are tied to their day and time frame, and the timeline orders them morning to night.');
+  } else if(section==='Notes for that day'){
+    html+=notesListHTML(notes.filter(n=>n.type==='naya'),'No notes','No notes recorded for this day. Write one from the day menu — it lands on this day, in its time frame.');
+  } else if(section==='Weather'){
+    html+=emptyState('☀','Weather unavailable','No weather provider is wired yet. Nothing is shown in its place.');
+  } else if(section==='Horoscope'){
+    html+=emptyState('☾','Horoscope unavailable','No horoscope source is wired yet. Nothing is shown in its place.');
+  } else if(section==='Posts for that day'){
+    html+=notesListHTML(notes.filter(n=>n.type==='post'),'No posts','No posts for this day yet. A post you write lands here, on its day.');
+  } else if(section==='Smart Meet'){
+    html+=meetViewHTML(ds);
+  } else if(section==='Create'){
+    html+=createHTML(ds, isFutureDs(ds));
+  } else {
+    html+=emptyState('✧','Nothing here','No records for this day in this view.');
+  }
+  $('viewView').classList.add('show');
+  $('viewView').setAttribute('aria-hidden','false');
+  $('viewBody').innerHTML=html;
+  wireView();
+  const h=$('viewBody').querySelector('h2'); if(h){ h.setAttribute('tabindex','-1'); h.focus(); }
+  const si=$('searchInput'); if(si){ si.focus(); }
+  const ni=$('noteText'); if(ni) ni.focus();
+  const be=$('mwCalBookErr'); if(be&&pendingBookErr){ be.textContent=pendingBookErr; pendingBookErr=''; }
+}
+function wireView(){
+  document.querySelectorAll('#viewView [data-op]').forEach(b=>b.onclick=()=>{ const op=b.dataset.op;
+    if(meetId&&(op==='back'||op==='close'||op==='prevday'||op==='nextday')) leaveMeet(true);
+    if(op==='close'){ closeView(true); return; }
+    if(op==='back'){ backToDay(); return; }
+    if(op==='prevday'||op==='nextday'){ const d=new Date(year,month,day+(op==='prevday'?-1:1)); year=d.getFullYear(); month=d.getMonth(); day=d.getDate(); render(); pushRoute(); showView(); return; }
+    if(op.startsWith('slot:')){ slot=op.slice(5); showView(); return; }
+    if(op.startsWith('join:')){ openMeet(op.slice(5)); return; }
+    if(op.startsWith('cancel:')){ cancelBooking(op.slice(7)); return; }
+    if(op==='confirm'){ confirmBooking(); return; }
+    if(op==='saveNote'){ saveNote(); return; }
+    if(op==='leaveMeet'){ leaveMeet(); return; }
+    section=op; screen='view'; slot=''; pushRoute(); showView();
+  });
+  document.querySelectorAll('#viewView [data-kind]').forEach(b=>b.onclick=()=>{ createKind=b.dataset.kind; showView(); });
+  document.querySelectorAll('#viewView [data-mode]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#viewView [data-mode]').forEach(x=>x.classList.remove('on')); b.classList.add('on'); $('mwCalMeetMode').value=b.dataset.mode; });
+  document.querySelectorAll('#viewView [data-mw-cal-slot]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#viewView [data-mw-cal-slot]').forEach(x=>x.classList.remove('on')); b.classList.add('on'); const h=$('mwCalBookTime'); if(h) h.value=b.dataset.mwCalSlot; });
+  const mb=$('mwCalBookMeet'); if(mb) mb.onchange=()=>{ const r=$('mwCalMeetModeRow'); if(r) r.hidden=!mb.checked; };
+}
+function backToDay(){ $('viewView').classList.remove('show'); $('viewView').setAttribute('aria-hidden','true'); screen='day'; pushRoute(); showDay(); }
+function closeView(fromView){
+  $('viewView').classList.remove('show'); $('viewView').setAttribute('aria-hidden','true');
+  closeDay();
+}
+
+/* ============ BOOKING — [C] appointmentsHTML + confirmBooking, owner-only ============ */
+/* The old build's visitor paths (public view, open-times-only, taken slots
+   hidden) are NOT carried: this build is the citizen's own calendar — the
+   brief orders nothing else on the page, no selector, no second view. The
+   owner path below is [C] verbatim in function. */
+function appointmentsHTML(ds){
+  const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+  const past=ds<todayKey;
+  const books=dayBookings(ds);
+  let h=`<div class="viewcard ph-card"><h3>Appointments — ${esc(dlabel(year,month,day))}</h3>`;
+  if(books.length){
+    h+='<ul class="list">'+books.map(b=>{
+      return `<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'Appointment')}${b.what?' — '+esc(b.what):''}${b.meet?` <span class="chip" style="color:#fff">✧ ${b.mode==='audio'?'Audio meet':'Video meet'}</span> <button class="primo" data-op="join:${esc(b.id)}" type="button">Join the meet →</button>`:''} <button class="primo" data-op="cancel:${esc(b.id)}" type="button">Cancel</button></li>`;
+    }).join('')+'</ul>';
+  } else h+='<p>No appointments in this calendar’s record for this day.</p>';
+  if(past){
+    h+='<p class="hint">This day has passed — bookings live on today and the days ahead.</p>';
+  } else {
+    const firstFree=BOOK_SLOTS.find(t=>!bookTimeTaken(ds,t))||'';
+    h+=`<h3 style="margin-top:18px">Book a time on this day</h3>
+    <label class="flab">Pick a time</label><div class="slotbox">${BOOK_SLOTS.map(t=>{const taken=bookTimeTaken(ds,t);
+      return `<button type="button" class="slot${taken?' taken':''}${(!taken&&t===firstFree)?' on':''}" data-mw-cal-slot="${t}"${taken?' disabled':''}>${esc(fmtTime(t))}</button>`;}).join('')}</div>
+    <input type="hidden" id="mwCalBookTime" value="${esc(firstFree)}">
+    ${firstFree?'':`<p class="hint">Every time on this day is booked.</p>`}
+    <label class="flab" for="mwCalBookWho">Who are you meeting?</label>
+    <input class="field" type="text" id="mwCalBookWho" placeholder="Their name" autocomplete="off">
+    <label class="flab" for="mwCalBookWhat">What is it about?</label>
+    <input class="field" type="text" id="mwCalBookWhat" placeholder="The subject of the appointment" autocomplete="off">
+    <div style="margin-top:12px"><label><input type="checkbox" id="mwCalBookMeet"> Meet with them — Smart Meet, in this calendar</label></div>
+    <div id="mwCalMeetModeRow" hidden style="margin-top:10px"><input type="hidden" id="mwCalMeetMode" value="video">
+      <button type="button" class="primo" data-mode="audio">Audio meet</button>
+      <button type="button" class="primo on" data-mode="video">Video meet</button></div>
+    <div class="actions"><button class="primo" data-op="confirm" type="button">Book this time →</button></div>
+    <p class="err" id="mwCalBookErr" role="alert"></p>
+    <p class="hint">Requested is not confirmed: a booking is confirmed only when it is saved into this calendar's store (<b>mw.cal.bookings.v1</b>). Server sync is not wired yet — bookings live on this device.</p>`;
+  }
+  return h+'</div>';
+}
+function confirmBooking(){
+  const ds=selKey();
+  const time=($('mwCalBookTime')||{}).value||'';
+  const who=($('mwCalBookWho')||{}).value.trim();
+  const what=($('mwCalBookWhat')||{}).value.trim();
+  const err=$('mwCalBookErr');
+  if(!time){ if(err) err.textContent='Pick a time first.'; return; }
+  if(bookTimeTaken(ds,time)){ pendingBookErr='That time was just taken — pick another time.'; showView(); return; }
+  if(!who){ if(err) err.textContent='Add a name so the appointment says who it is with.'; return; }
+  const meet=!!($('mwCalBookMeet')||{}).checked;
+  const mode=(($('mwCalMeetMode')||{}).value)||'video';
+  const all=loadBookings();
+  all.push({id:uid(),date:ds,time,who,what,meet,mode});
+  if(!saveBookings(all)){ if(err) err.textContent='The booking could not be saved on this device. Nothing was confirmed.'; return; }
+  slot=time;
+  section='Appointments'; screen='view'; pushRoute(); showView();
+  render();
+  const card=document.querySelector('#viewBody .viewcard');
+  if(card){ const p=document.createElement('p'); p.className='status';
+    p.textContent='Booked — '+fmtTime(time)+' on '+dlabel(year,month,day)+'. Saved in this device’s calendar store (mw.cal.bookings.v1). Server sync is not wired yet.';
+    card.prepend(p); }
+}
+function cancelBooking(id){
+  const all=loadBookings().filter(b=>b.id!==id);
+  saveBookings(all); render(); showView();
+}
+
+/* ============ MEET — [C] meetViewHTML + openMeet + leaveMeet verbatim in function ============ */
+let meetTimer=null, meetSecs=0, meetStream=null, micOn=true, camOn=true;
+function meetViewHTML(ds){
+  const books=dayBookings(ds).filter(b=>b.meet);
+  let h=`<div class="viewcard ph-card"><h3>Smart Meet — ${esc(dlabel(year,month,day))}</h3>`;
+  if(!books.length){ h+='<p>No confirmed Smart Meet booking on this day. Meet joins a confirmed booking only — book a time with Smart Meet first. There is no dead Join button here.</p>'; }
+  else h+='<ul class="list">'+books.map(b=>`<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'')} ${b.what?'— '+esc(b.what):''} (${b.mode==='audio'?'Audio':'Video'}) <button class="primo" data-op="join:${esc(b.id)}" type="button">Join the meet →</button></li>`).join('')+'</ul>';
+  h+='<p class="hint">Meet gates: video/audio authorization, runtime availability, waiting room, safe link, guest access, privacy. The live media leg is proven only in a browser that can grant camera and mic — this seat reports the outcome honestly instead of claiming it.</p></div>';
+  return h;
+}
+function openMeet(id){
+  const b=loadBookings().find(x=>x.id===id);
+  if(!b){ return; }
+  meetId=id; meetSecs=0; micOn=true; camOn=true;
+  const ds=selKey();
+  $('viewBody').innerHTML=viewHeadHTML('Smart Meet — '+fmtTime(b.time), ds)+
+   `<div class="viewcard ph-card meetbox"><div class="face" aria-hidden="true">◉</div>
+    <h3>${esc(b.who||'Meet')} · ${esc(dlabel(year,month,day))} · ${esc(fmtTime(b.time))} · ${b.mode==='audio'?'Audio':'Video'}</h3>
+    <div class="timer" id="meetTimer">00:00</div>
+    <p id="meetStatus">Joining the room…</p>
+    <video id="meetVideo" autoplay playsinline muted></video>
+    <div class="actions" style="justify-content:center">
+      <button class="primo" id="micBtn" type="button">🎙 Mic on</button>
+      <button class="primo" id="camBtn" type="button">📷 Camera on</button>
+      <button class="primo" data-op="leaveMeet" type="button">Leave</button>
+    </div>
+    <p class="hint">Waiting room: only the booked parties can enter. No recording unless everyone consents — recording is not implemented here.</p></div>`;
+  wireView();
+  $('micBtn').onclick=()=>{ micOn=!micOn; if(meetStream) meetStream.getAudioTracks().forEach(t=>t.enabled=micOn); $('micBtn').textContent=micOn?'🎙 Mic on':'🎙 Mic off'; };
+  $('camBtn').onclick=()=>{ camOn=!camOn; if(meetStream) meetStream.getVideoTracks().forEach(t=>t.enabled=camOn); $('camBtn').textContent=camOn?'📷 Camera on':'📷 Camera off'; };
+  meetTimer=setInterval(()=>{ meetSecs++; const m=String(Math.floor(meetSecs/60)).padStart(2,'0'), s=String(meetSecs%60).padStart(2,'0'); const t=$('meetTimer'); if(t) t.textContent=m+':'+s; },1000);
+  const status=$('meetStatus');
+  if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+    navigator.mediaDevices.getUserMedia({audio:true,video:b.mode!=='audio'}).then(st=>{
+      meetStream=st;
+      if(status) status.textContent='Camera and mic are live — you are in the room.';
+      const v=$('meetVideo');
+      if(v&&b.mode!=='audio'){ v.srcObject=st; v.style.display='block'; }
+    }).catch(e=>{
+      if(status) status.textContent='Camera/mic unavailable here ('+(e&&e.name?e.name:'unknown')+') — you are still in the room, audio/video off. Join from a device that can grant them, or meet in person.';
+    });
+  } else if(status) status.textContent='This browser cannot grant camera/mic here — you are still in the room. Join from a device that can, or meet in person.';
+}
+function leaveMeet(keepPanel){
+  if(meetTimer){ clearInterval(meetTimer); meetTimer=null; }
+  if(meetStream){ meetStream.getTracks().forEach(t=>t.stop()); meetStream=null; }
+  meetId='';
+  if(!keepPanel){ screen='view'; section='Smart Meet'; showView(); }
+}
+
+/* ============ CREATE — [C] createHTML + saveNote, owner-only ============ */
+function createHTML(ds, future){
+  const kinds=[['smart','Smart Note ✧'],['naya','Note'],['post','Post']];
+  return `<div class="viewcard ph-card"><h3>Create — ${esc(dlabel(year,month,day))}</h3>
+  <p>Create on this day. A note is tied to its day and time frame; the timeline orders it morning to night.</p>
+  <div class="actions">${kinds.map(([k,l])=>`<button class="primo${createKind===k?' on':''}" data-kind="${k}" type="button">${l}</button>`).join('')}</div>
+  <label class="flab" for="noteTF">Time frame</label>
+  <select class="field" id="noteTF"><option>Morning</option><option>Afternoon</option><option>Evening</option></select>
+  <label class="flab" for="noteWorld">Which world is this for?</label>
+  <select class="field" id="noteWorld"><option>Personal</option><option>Business</option><option>Thing</option></select>
+  ${createKind==='smart'?`<label class="flab" for="noteRank">Rank (1–5 — the highest-ranked Smart Note of the day becomes tomorrow's wisdom)</label>
+  <select class="field" id="noteRank"><option value="">No rank</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>`:''}
+  <label class="flab" for="noteText">${createKind==='smart'?'Smart Note':createKind==='post'?'Post':'Note'}</label>
+  <textarea class="field" id="noteText" placeholder="Write it in your own words…"></textarea>
+  <div class="actions"><button class="primo" data-op="saveNote" type="button">Save to this day →</button></div>
+  <p class="err" id="noteErr" role="alert"></p>
+  <p class="hint">Saved into this device's notes store (mw.cal.notes.v1), with its date, world, source and permission. Nothing is copied into the calendar by hand.</p>
+  <div class="actions"><button class="primo" data-op="Appointments" type="button">Or book a time instead →</button></div></div>`;
+}
+function saveNote(){
+  const err=$('noteErr');
+  const text=($('noteText')||{}).value.trim();
+  if(!text){ if(err) err.textContent='Write the note first.'; return; }
+  const tf=($('noteTF')||{}).value||'Morning';
+  const world=($('noteWorld')||{}).value||'Personal';
+  const rankEl=$('noteRank');
+  const all=loadNotes();
+  all.push({id:uid(),date:selKey(),world, type:createKind, rank:rankEl?parseInt(rankEl.value||'0',10)||null:null, timeframe:tf, text, createdAt:new Date().toISOString()});
+  if(!saveNotes(all)){ if(err) err.textContent='The note could not be saved on this device.'; return; }
+  render(); section=createKind==='smart'?'Smart Notes for that day':createKind==='post'?'Posts for that day':'Notes for that day'; screen='view'; pushRoute(); showView();
+  /* FIX-7 (item 5b): say where the note landed, at the moment of saving —
+     the same .status line confirmBooking prepends for a booking. A Smart
+     Note counts in SMART NOTES, a Post in POSTS, a plain Note in NOTES;
+     all three count in their world's feed and in INTEL TODAY. Naming the
+     bucket here is what stops "NOTES says 0" reading as a stale count: the
+     NOTES board counts plain Notes only, by design, and the line says so. */
+  const card=document.querySelector('#viewBody .viewcard');
+  if(card){ const p=document.createElement('p'); p.className='status';
+    p.textContent='Saved — '+(createKind==='smart'?'Smart Note':createKind==='post'?'Post':'Note')+' on '+dlabel(year,month,day)+'. It counts in '+(createKind==='smart'?'SMART NOTES':createKind==='post'?'POSTS':'NOTES')+' and '+world+' feed, and in INTEL TODAY.';
+    card.prepend(p); }
+}
+
+/* ============ ROUTING — [C] pushRoute/applyState, Month → Day → View → Day → Month ============ */
+function pushRoute(){
+  const st={view:screen, year, month, day, section};
+  try{ history.pushState(st,'',''); }catch(e){}
+}
+function applyState(st){
+  if(!st) return;
+  screen=st.view||'month'; year=st.year!=null?st.year:year; month=st.month!=null?st.month:month;
+  day=st.day!=null?st.day:day; section=st.section||'Appointments';
+  render();
+  if(screen==='month'){ $('dayView').classList.remove('show'); $('viewView').classList.remove('show'); }
+  else if(screen==='day') showDay();
+  else showView();
+}
+window.addEventListener('popstate',e=>{ leaveMeet(true); applyState(e.state); });
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&screen!=='month'){
+    if(meetId){ leaveMeet(); return; }
+    if(screen==='view'){ backToDay(); }
+    else closeDay();
+  }
+  if(e.key==='Tab'&&($('dayView').classList.contains('show')||$('viewView').classList.contains('show'))){
+    const scope=screen==='view'?$('viewView'):$('dayView');
+    const f=Array.from(scope.querySelectorAll('button,input,textarea,select,[tabindex]'))
+      .filter(el=>!el.disabled&&el.type!=='hidden'&&el.getAttribute('tabindex')!=='-1'&&!el.closest('[hidden]'));
+    if(!f.length) return;
+    const first=f[0], last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey&&document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+});
+$('prev').onclick=()=>{ const d=new Date(year,month-1,1); year=d.getFullYear(); month=d.getMonth(); render(); };
+$('next').onclick=()=>{ const d=new Date(year,month+1,1); year=d.getFullYear(); month=d.getMonth(); render(); };
+$('todayBtn').onclick=()=>{ year=NOW.getFullYear(); month=NOW.getMonth(); day=NOW.getDate(); render(); };
+render();
+try{ history.replaceState({view:'month',year,month,day},'',''); }catch(e){}
+</script></body></html>
