@@ -2542,7 +2542,6 @@ button:hover{
 #nsbSearchLevel:not(.nsb-modal){display:none!important;}
 .tnps-band{position:relative;z-index:5;padding:2px 0 4px;}
 @media (max-width:640px){.tnps-band .tn-search-wrap{padding-top:12px;}}
-@media (prefers-reduced-motion:reduce){}
 
 </style>
 <style id="up-junction">
@@ -4859,8 +4858,6 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 .os-dash .ph-card.os-sl-board{box-shadow:inset 0 2px 0 rgba(255,255,255,.22),inset 0 -12px 26px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.1),0 34px 80px rgba(0,0,0,.8),0 12px 28px rgba(0,0,0,.55) !important}
 .os-sl-live{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:900;letter-spacing:.14em;color:#fff;border:1.5px solid rgba(255,255,255,.45);border-radius:999px;padding:3px 9px;vertical-align:3px;margin-left:6px}
 .os-sl-live i{width:8px;height:8px;border-radius:50%;background:#31cb8d;box-shadow:0 0 10px 2px #31cb8d;animation:pulseGlow 2s infinite}
-html.os-calm 
-@media (prefers-reduced-motion: reduce){}
 .os-dash .os-sl-board h3,.os-dash .os-sl-board .os-note,.os-dash .os-sl-board .os-status,.os-dash .os-sl-board .os-link-name,.os-dash .os-sl-board .os-link-host,.os-dash .os-sl-board .os-dim-lab,.os-dash .os-sl-board .os-sl-graph-note{color:#fff}
 .os-dash .os-sl-board .os-link-num i{color:#fff}
 .os-dash .os-sl-board .os-link-num b{color:#fff;text-shadow:0 0 12px var(--ac,#ff9a5a),0 0 28px -6px var(--ac,#ff9a5a)}
@@ -6870,11 +6867,11 @@ button.os-ld-node .os-ld-n{
 </style>
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> About Me</div>
-<div class="os-about-choice" role="group" aria-label="How to show About">
-<span class="ib-kind" style="--tone:#a06bff">How do you want to tell it?</span>
-<div class="os-about-choice-btns"><button type="button" class="ph-connect" data-os-about-view="unfold" aria-pressed="true">Unfold</button><button type="button" class="ph-msg" data-os-about-view="deck" aria-pressed="false">Presentation</button><button type="button" class="ph-msg" data-os-about-view="both" aria-pressed="false">Both</button></div>
-</div>
-<div class="ib-layer layer-purple open">
+<div class="of-bridge" id="ofAboutBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#a06bff"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofAboutFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofAboutFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#a06bff"><span class="ib-kind" style="--tone:#a06bff">About me &middot; In a nutshell</span><h3 class="ib-title">Shawn Vibert builds NayaNET</h3><div class="ib-nutshell"><p>Shawn Vibert builds NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live.</p></div></div></div><p class="of-bridge-q">Which presentation do you want?</p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-unfold" style="--tone:#ffbf3d">Unfold down &#9670;</button><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-slides" style="--tone:#3fb8ff">Slideshow &#9670;</button></div><button type="button" class="of-lib-door" data-of-open="about-library"><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">&#10022;</span> Enter the Intelligent Library <span class="of-lib-count" id="ofLibCount"></span></button><p class="of-bridge-note">About unfolds one board at a time &mdash; or slides, one screen at a time. The Library holds the best of what is saved here.</p></div>
+<div class="of-pres-head" id="ofAboutPresHead" hidden><button type="button" class="ph-msg of-back" data-of-back="about">&#8249; Back to the bridge</button><span class="ib-kind of-pres-label" id="ofAboutPresLabel" style="--tone:#a06bff"></span></div>
+<div class="of-controls" id="ofAboutControls" hidden><div class="of-dots" id="ofAboutDots" aria-hidden="true"></div><button class="of-all" id="ofAboutAll" type="button">or read the whole thing at once</button></div>
+
+<div class="ib-layer layer-purple open of-beat" data-of-beat="1" style="--tone:#a06bff">
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#a06bff">S</span><span class="os-jewel os-jewel-h" style="--jc:#a06bff"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M10 7.5H6.8A3.3 3.3 0 0 0 3.5 10.8V17h6.6v-6.6H6.9a1.6 1.6 0 0 1 1.5-1.7v-1.2zm10.4 0h-3.2a3.3 3.3 0 0 0-3.3 3.3V17h6.6v-6.6h-3.2a1.6 1.6 0 0 1 1.5-1.7V7.5z"/></svg></span><b>My motto</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#a06bff"><p id="os-sec-motto-text" class="os-note" style="margin:0;"></p></div>
@@ -6882,9 +6879,10 @@ button.os-ld-node .os-ld-n{
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="motto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="motto" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="os-status" id="os-sec-motto-status"></div>
 </div>
-</div>
 
-<div class="ib-layer layer-sapphire open"><button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#3ca8ff">S</span><span class="os-jewel os-jewel-h" style="--jc:#3ca8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11.5V6a1.5 1.5 0 0 1 3 0v4.5m0-6a1.5 1.5 0 0 1 3 0V11m0-5.5a1.5 1.5 0 0 1 3 0V12m0-3.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-2.3a6 6 0 0 1-4.7-2.3L3.6 15a1.5 1.5 0 0 1 2.4-1.7L7 14.5"/></svg></span><b>My story</b><span class="ib-chev">▾</span></button>
+<button type="button" class="p3-enter of-next" data-of-beat="1">Keep reading ◆</button></div>
+
+<div class="ib-layer layer-sapphire open of-beat" data-of-beat="2" style="--tone:#3ca8ff" hidden><button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#3ca8ff">S</span><span class="os-jewel os-jewel-h" style="--jc:#3ca8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11.5V6a1.5 1.5 0 0 1 3 0v4.5m0-6a1.5 1.5 0 0 1 3 0V11m0-5.5a1.5 1.5 0 0 1 3 0V12m0-3.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-2.3a6 6 0 0 1-4.7-2.3L3.6 15a1.5 1.5 0 0 1 2.4-1.7L7 14.5"/></svg></span><b>My story</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#3ca8ff"><p id="abouttext">Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.</p></div>
 <div class="os-fieldwrap"><textarea class="ph-about-edit" id="aboutedit" style="display:none;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="aboutedit" aria-label="Dictate your story" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
@@ -6895,13 +6893,14 @@ button.os-ld-node .os-ld-n{
 </div>
 <div class="os-status" id="os-about-status"></div>
 </div>
-</div>
+
+<button type="button" class="p3-enter of-next" data-of-beat="2">Keep reading ◆</button></div>
 
 <!-- FIX-PASS-3 FAIL 4: WHAT I DO slot — the About section had motto, story,
      goals, purpose, mission, vision, but no WHAT I DO. The slot is here,
      empty, wired to the same Edit/Save machinery (key "whatido") — the
      words are Shawn's to write, never invented. -->
-<div class="ib-layer layer-emerald open">
+<div class="ib-layer layer-emerald open of-beat" data-of-beat="3" style="--tone:#31cb8d" hidden>
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#31cb8d">S</span><span class="os-jewel os-jewel-h" style="--jc:#31cb8d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-8 8l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 8-8l-3.8 3.8z"/></svg></span><b>What I do</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#31cb8d"><p id="os-sec-whatido-text" class="os-note" style="margin:0;">I build NayaNET &mdash; a new internet where everyone gets their own world. Tap Edit to say what you do, in your own words.</p></div>
@@ -6909,8 +6908,9 @@ button.os-ld-node .os-ld-n{
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="whatido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="whatido" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="os-status" id="os-sec-whatido-status"></div>
 </div>
-</div>
-<div class="ib-layer layer-gold open">
+
+<button type="button" class="p3-enter of-next" data-of-beat="3">Keep reading ◆</button></div>
+<div class="ib-layer layer-gold open of-beat" data-of-beat="4" style="--tone:#ffd45a" hidden>
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#ffd45a">S</span><span class="os-jewel os-jewel-h" style="--jc:#ffd45a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span><b>My goals</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#ffd45a"><p id="os-sec-goals-text" class="os-note" style="margin:0;">One million citizens by 2027.</p></div>
@@ -6918,8 +6918,9 @@ button.os-ld-node .os-ld-n{
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="goals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="goals" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="goals" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="goals" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="os-status" id="os-sec-goals-status"></div>
 </div>
-</div>
-<div class="ib-layer layer-indigo open">
+
+<button type="button" class="p3-enter of-next" data-of-beat="4">Keep reading ◆</button></div>
+<div class="ib-layer layer-indigo open of-beat" data-of-beat="5" style="--tone:#6675ff" hidden>
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#6675ff">S</span><span class="os-jewel os-jewel-h" style="--jc:#6675ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span><b>My purpose</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#6675ff"><p id="os-sec-purpose-text" class="os-note" style="margin:0;">No purpose written yet &mdash; tap Edit and say why this page exists, in one line.</p></div>
@@ -6927,8 +6928,9 @@ button.os-ld-node .os-ld-n{
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="purpose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="purpose" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="purpose" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="purpose" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="os-status" id="os-sec-purpose-status"></div>
 </div>
-</div>
-<div class="ib-layer layer-orange open">
+
+<button type="button" class="p3-enter of-next" data-of-beat="5">Keep reading ◆</button></div>
+<div class="ib-layer layer-orange open of-beat" data-of-beat="6" style="--tone:#ff8c42" hidden>
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#ff8c42">S</span><span class="os-jewel os-jewel-h" style="--jc:#ff8c42"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0"/><path d="M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></span><b>My mission</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#ff8c42"><p id="os-sec-mission-text" class="os-note" style="margin:0;">Build NayaNET — the intelligent highway for the AI age.</p></div>
@@ -6936,8 +6938,9 @@ button.os-ld-node .os-ld-n{
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="mission"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="mission" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="mission" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="mission" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="os-status" id="os-sec-mission-status"></div>
 </div>
-</div>
-<div class="ib-layer layer-magenta open">
+
+<button type="button" class="p3-enter of-next" data-of-beat="6">Keep reading ◆</button></div>
+<div class="ib-layer layer-magenta open of-beat" data-of-beat="7" style="--tone:#ed42c4" hidden>
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#ed42c4">S</span><span class="os-jewel os-jewel-h" style="--jc:#ed42c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20L14 10"/><path d="M14 10l6-6 2 2-6 6z"/><path d="M20 2l2 2"/></svg></span><b>My vision</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#ed42c4"><p id="os-sec-vision-text" class="os-note" style="margin:0;">A world where intelligence compounds and everybody wins.</p></div>
@@ -6948,12 +6951,9 @@ button.os-ld-node .os-ld-n{
 </div>
 
 
-<div id="osAboutDeck" class="os-about-deck" hidden>
-<div class="os-about-deck-head"><span class="ib-kind" style="--tone:#a06bff">About, as a presentation</span><span class="os-about-deck-count" id="osAboutCount">1 of 7</span></div>
-<div class="os-about-slides" id="osAboutSlides"></div>
-<div class="os-about-dots" id="osAboutDots" aria-label="Choose a slide"></div>
-<div class="os-about-nav"><button type="button" class="ph-msg" id="osAboutPrev" hidden>‹ Back</button><button type="button" class="ph-connect" id="osAboutNext">My story ◆</button></div>
-</div>
+<div class="of-slides-nav" id="ofAboutSlidesNav" hidden><button type="button" class="p3-enter of-slide-prev" id="ofAboutPrev">&#8249; Back</button><span class="of-slide-count" id="ofAboutCount">Slide 1 of 7</span><button type="button" class="p3-enter of-slide-next" id="ofAboutNext">Next &#8250;</button></div>
+<div class="of-library" id="ofAboutLibrary" hidden><div class="of-pres-head"><button type="button" class="ph-msg of-back" data-of-back="about">&#8249; Back to the bridge</button><span class="ib-kind" style="--tone:#2fe89e">The Intelligent Library</span></div><p class="of-lib-sub">The best of what is saved here &mdash; smart notes and answers, organized. Tap any one to learn about the page, the person, the topic, the business.</p><div class="of-lib-cats" id="ofLibCats" role="group" aria-label="Categories"></div><input class="os-input of-lib-search" id="ofLibSearch" type="text" placeholder="Search the library &mdash; type to filter its answers&hellip;"><div id="ofLibList"><p class="os-note">Reading the library&hellip;</p></div><div class="ph-actions"><button class="ph-connect" id="ofLibAdd" type="button">Add to the library</button></div><p class="os-status" id="ofLibStatus">Entries save onto this app, for every visitor.</p></div>
+
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span> My facts</h3>
 <div id="os-about-facts"><p class="os-note">Reading this app&rsquo;s facts&hellip;</p></div>
@@ -7155,9 +7155,12 @@ button.os-ld-node .os-ld-n{
 
 <div class="ph-sec os-view" data-os-view="skills" hidden>
 <div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Smart Skills</div>
-<p class="os-note">The skills so far — the list keeps growing. Every skill is a capability you call on by name: a Smart Note (the knowledge) + a Factory template (the ability to do it), stored in your Smart Vault. Tap a skill to see why it matters.</p>
 
-<div class="os-skills-choice" role="group" aria-label="How to show Skills"> <span class="ib-kind" style="--tone:#e84fff">How do you want to tell it?</span> <div class="os-skills-choice-btns"><button type="button" class="ph-connect" data-os-skills-view="unfold" aria-pressed="true">Unfold</button><button type="button" class="ph-msg" data-os-skills-view="deck" aria-pressed="false">Presentation</button><button type="button" class="ph-msg" data-os-skills-view="both" aria-pressed="false">Both</button></div> </div> <div id="osSkillsDeck" class="os-skills-deck" hidden> <div class="os-skills-deck-head"><span class="ib-kind" style="--tone:#e84fff">Skills, as a presentation</span><span class="os-skills-deck-count" id="osSkillsCount">1 of 14</span></div> <div class="os-skills-slides" id="osSkillsSlides"></div> <div class="os-skills-dots" id="osSkillsDots" aria-label="Choose a skill"></div> <div class="os-skills-nav"><button type="button" class="ph-msg" id="osSkillsPrev" hidden>&#8249; Back</button><button type="button" class="ph-connect" id="osSkillsNext">Next &#9670;</button></div> </div> <div class="ph-card" style="--ac:#e84fff;" id="os-skill-add-card">
+
+<div class="of-bridge" id="ofSkillsBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#e84fff"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofSkillsFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofSkillsFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#e84fff"><span class="ib-kind" style="--tone:#e84fff">Smart Skills &middot; In a nutshell</span><h3 class="ib-title">Smart Skills</h3><div class="ib-nutshell"><p>The skills so far &mdash; the list keeps growing. Every skill is a capability you call on by name: a Smart Note (the knowledge) + a Factory template (the ability to do it), stored in your Smart Vault. Tap a skill to see why it matters.</p></div></div></div><p class="of-bridge-q">Which presentation do you want?</p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="skills-unfold" style="--tone:#ff5e6c">Unfold down &#9670;</button><button type="button" class="p3-enter of-bridge-btn" data-of-open="skills-slides" style="--tone:#e84fff">Slideshow &#9670;</button></div><p class="of-bridge-note">Skills unfold one board at a time &mdash; or slide, one screen at a time.</p></div>
+<div class="of-pres-head" id="ofSkillsPresHead" hidden><button type="button" class="ph-msg of-back" data-of-back="skills">&#8249; Back to the bridge</button><span class="ib-kind of-pres-label" id="ofSkillsPresLabel" style="--tone:#e84fff"></span></div>
+<div class="of-controls" id="ofSkillsControls" hidden><div class="of-dots" id="ofSkillsDots" aria-hidden="true"></div><button class="of-all" id="ofSkillsAll" type="button">or read the whole thing at once</button></div> <div class="of-slides-nav" id="ofSkillsSlidesNav" hidden><button type="button" class="p3-enter of-slide-prev" id="ofSkillsPrev">&#8249; Back</button><span class="of-slide-count" id="ofSkillsCount">Slide 1 of 14</span><button type="button" class="p3-enter of-slide-next" id="ofSkillsNext">Next &#8250;</button></div>
+ <div class="ph-card" style="--ac:#e84fff;" id="os-skill-add-card">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">✦</span> Add a skill</h3>
 <p class="os-note" style="margin-top:8px;">One skill, three answers — what it is, why it matters, and what’s in it for them.</p>
 <div class="os-fieldwrap"><input class="os-input" id="os-skill-new-what" type="text" placeholder="What it is — the skill, in a few words" maxlength="80" autocomplete="off"></div>
@@ -7167,98 +7170,111 @@ button.os-ld-node .os-ld-n{
 <div class="os-status" id="os-skill-new-status"></div>
 </div>
 <div id="os-skills-list">
-<div class="ph-card sa-skill" style="--ac:#a06bff;">
+<div class="ph-card sa-skill of-beat" data-of-beat="1" style="--ac:#a06bff;--tone:#a06bff">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> The Login Skill</h3>
 <p class="sa-skill-nutshell">One dial, your name, your code — and you&#x27;re in. The door into NayaNET.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>The login is the first thing anyone ever touches. If it feels like a form, the whole system feels like a form. If it feels like stepping through a portal into a private world, the whole system feels like a place worth entering. The door sets the feeling for everything after it.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>You step into your private world in seconds, through a door that feels like yours.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#3fb8ff;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="1">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="2" style="--ac:#3fb8ff;--tone:#3fb8ff" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> The Mail Skill</h3>
 <p class="sa-skill-nutshell">Your mail and your messages in one place, private by default — nobody reads them, not even us.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>The old internet spied on your mail. Every message you sent was read, scanned, and sold. Here it is the opposite: your mail is yours, and it stays yours. When people know nobody is listening, they talk freely — and that is when real connection happens.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>You talk freely, knowing nobody is listening — and that is when real connection happens.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#6675ff;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="2">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="3" style="--ac:#6675ff;--tone:#6675ff" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#6675ff">✦</span> The Notes Skill</h3>
 <p class="sa-skill-nutshell">I take your notes and turn what you learn into intelligence everyone can use.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>A good idea that isn&#x27;t written down is gone by tomorrow. And an idea that is written down but never shared only helps one person. When I take the note and share the good ones, your learning doesn&#x27;t die with the day — it compounds, and everyone gets smarter from it.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>Your learning compounds — what you learn today keeps helping everyone tomorrow.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#7fd4ff;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="3">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="4" style="--ac:#7fd4ff;--tone:#7fd4ff" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#7fd4ff">✦</span> The Lists Skill</h3>
 <p class="sa-skill-nutshell">Your people and your notes, organized, one tap away.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>The old internet made you hunt. Your contacts were in one app, your notes in another, and the thing you were looking for was always in the third place you checked. When your world is organized for you, you stop hunting and start doing.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>You stop hunting and start doing — your people and your notes, one tap away.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#31cb8d;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="4">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="5" style="--ac:#31cb8d;--tone:#31cb8d" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#31cb8d">✦</span> The Links Skill</h3>
 <p class="sa-skill-nutshell">Every link you share is clean, short, and tracked — you see the click and the return.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>A raw link is a mess — long, ugly, and silent. You share it and you never know if anyone came. A clean link is an address someone can remember, and the tracking means you know it worked. Sharing without knowing is shouting into the dark; sharing with a Smart Link is a conversation.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>You share a clean link and you know it worked — every click and return, seen.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#ff9a5a;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="5">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="6" style="--ac:#ff9a5a;--tone:#ff9a5a" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ff9a5a">✦</span> The Meet Skill</h3>
 <p class="sa-skill-nutshell">Meet face to face, right inside your world, whenever you book it.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>A meeting that makes you leave your world breaks your flow. You were in your page, with your notes and your people, and then you had to go somewhere else to talk. When the meeting lives where your world lives, the conversation starts where you left off — with everything you need right there.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>You meet face to face without leaving your world — the conversation starts where you left off.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#e84fff;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="6">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="7" style="--ac:#e84fff;--tone:#e84fff" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">✦</span> The Factory Skill</h3>
 <p class="sa-skill-nutshell">Tell me what you want to build, and I build it from the parts that already exist.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>You should not need design skill to have a beautiful world. The old way said: learn to design, or hire someone who can. The factory says: the taste is locked into the template. You bring the idea, I bring the parts, and the result is beautiful from the first click — because the parts were already made beautiful by someone who knows how.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>You bring the idea, the parts bring the beauty — a beautiful world from the first click.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#ff5e6c;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="7">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="8" style="--ac:#ff5e6c;--tone:#ff5e6c" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c">✦</span> The Match Skill</h3>
 <p class="sa-skill-nutshell">I find the people like you, automatically, and show you how close the match is.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>The old internet showed you strangers and called it connection. You had to hunt for your people, and most of the time you never found them. When the system knows who you are, it can bring your people to you — and that is the difference between a feed full of noise and a world full of like minds.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>Your people come to you — a world full of like minds, not a feed full of noise.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#2dd4bf;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="8">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="9" style="--ac:#2dd4bf;--tone:#2dd4bf" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#2dd4bf">✦</span> The Smart Vault Skill</h3>
 <p class="sa-skill-nutshell">Your own private vault that remembers everything for you and keeps it organized.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>There is a sickness in the old internet: you save things and you never find them again. The note is in one app, the file in another, the lesson in a third — and when you need it, it is gone. The vault cures that. Everything you save goes to one place, and one place is the only place you ever have to look.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>Everything you save goes to one place — and one place is the only place you ever look.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#ffbf3d;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="9">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="10" style="--ac:#ffbf3d;--tone:#ffbf3d" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">✦</span> The Numbers Skill</h3>
 <p class="sa-skill-nutshell">Everything you do is recorded, and your numbers are shown back to you as gauges you can read in two seconds.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>If you can&#x27;t see your numbers, you can&#x27;t see your world. How many points have you earned? How many people joined through you? How is your world doing? Without the record, you are guessing. With it, you know — and knowing is what lets you decide what to do next.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>You see where you stand and decide what to do next — no guessing.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#7c3aed;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="10">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="11" style="--ac:#7c3aed;--tone:#7c3aed" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#7c3aed">✦</span> The Access Skill</h3>
 <p class="sa-skill-nutshell">Turn any page into a membership — your course, your lessons, your people, behind a door that fits.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>Your teaching should live in your world, not in a separate app. The old way said: build a course somewhere else, send people away from your page, and hope they come back. Here the course IS your page — the same cover, the same feed, the same login. Your people never leave your world to learn from you.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>Your people never leave your world to learn from you — your course lives on your page.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#22d3ee;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="11">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="12" style="--ac:#22d3ee;--tone:#22d3ee" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#22d3ee">✦</span> The Ask Skill</h3>
 <p class="sa-skill-nutshell">Ask me anything, and I answer from everything the system knows.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>Intelligence is only useful if you can ask for it. A library nobody asks is a locked room. A system that knows everything but answers nothing is a machine with no door. Asking is the door — it is how the intelligence gets from the system to you, in the moment you need it.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>You get the answer in the moment you need it — the intelligence comes to you.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#a5d154;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="12">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="13" style="--ac:#a5d154;--tone:#a5d154" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#a5d154">✦</span> The Growth Skill</h3>
 <p class="sa-skill-nutshell">Invite people to your world, watch them join, and earn half of what they pay, automatically.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>The people who love a place are the ones who bring the next people. The old internet took that gift and gave nothing back — you brought your friends, and the company kept the money. Here it is the opposite: the citizens grow the network, so the citizens earn from it. That is how a network becomes a community instead of a company.</p>
 <p class="sa-skill-foryou"><b>What’s in it for you</b>You bring the people, you earn half of what they pay — the network becomes a community.</p>
-</div>
-<div class="ph-card sa-skill" style="--ac:#c8ccd6;">
+
+<button type="button" class="p3-enter of-next" data-of-beat="13">Keep reading ◆</button></div>
+<div class="ph-card sa-skill of-beat" data-of-beat="14" style="--ac:#c8ccd6;--tone:#c8ccd6" hidden>
 <h3><span class="os-jewel os-jewel-h" style="--jc:#c8ccd6">✦</span> The Reports Skill</h3>
 <p class="sa-skill-nutshell">Every day, I look back on what you did, learned, and noted, and give you the day in a nutshell.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
@@ -30062,37 +30078,6 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 #about .ib-layer-body .ib-nutshell{padding-right:64px!important} /* ABOUT UNFOLD 2026-11-16 (F4 follow-through): the 60px lost to the 16px !important shorthand, so the motto + goals texts ran under the corner pencil. */
 #about .ib-layer-body .ph-actions button[data-os-sec-edit],#about .ib-layer-body .ph-actions #editabout{font-size:0;padding:9px 11px}
 .os-about-orb{width:40px;height:40px;font-size:15px;flex:none}
-.os-about-next{width:100%;margin:2px 0 20px;padding:16px 20px;font-size:17px}
-
-/* --- About BOTH-PRESENTATIONS (2026-11-16, Shawn 03:45Z) — the choice + the deck --- */
-/* The choice row: unfold, presentation, or both. Active = the page's own lit button (ph-connect); the rest stay quiet (ph-msg). No new button invented. */
-#about .os-about-choice{display:flex;flex-direction:column;gap:10px;margin:4px 0 16px;}
-#about .os-about-choice-btns{display:flex;gap:10px;flex-wrap:wrap;}
-/* Deck mode hides the unfold stack (layers + next button); the choice row stays, so the citizen can always switch back — neither locks the other out. */
-#about.os-about-mode-deck .ib-layer,#about.os-about-mode-deck .os-about-next{display:none!important;}
-#about .os-about-deck{margin:0 0 20px;}
-#about .os-about-deck[hidden]{display:none;}
-#about .os-about-deck-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:2px 0 12px;}
-#about .os-about-deck-count{font-size:13px;font-weight:800;letter-spacing:.08em;color:#fff;opacity:.75;}
-/* Slides: the Visual Collective Agreement deck's pattern (one board at a time, identity row, tone) in the About layer's own board language — same border, radius, background, shadow as .ib-layer. */
-#about .os-about-slide{position:relative;border:2px solid color-mix(in srgb, var(--tone,#a06bff) 42%, #fff 8%);border-radius:18px;background:linear-gradient(145deg,#0d0d13,#050508);box-shadow:inset 0 1px rgba(255,255,255,.11),0 14px 30px rgba(0,0,0,.56),0 0 20px color-mix(in srgb, var(--tone,#a06bff) 10%, transparent);padding:20px 24px;margin-bottom:12px;}
-#about .os-about-slide[hidden]{display:none;}
-#about .os-about-slide-top{display:flex;align-items:flex-start;gap:14px;padding-right:48px;}
-#about .os-about-slide .os-about-orb{width:64px;height:64px;font-size:22px;}
-#about .os-about-slide-id{min-width:0;flex:1;}
-#about .os-about-slide-title{margin:6px 0 0;font-size:22px;line-height:1.25;color:#fff;letter-spacing:.01em;}
-#about .os-about-slide-text{margin:16px 0 0;font-size:18px;line-height:1.6;color:#fff;border-left:3px solid var(--tone,#a06bff);background:#050607;border-radius:12px;padding:14px 16px;}
-#about .os-about-slide-edit{position:absolute;top:12px;right:12px;font-size:0;padding:9px 11px;}
-/* The deck's face-right alternation, desktop only — stacked on phones. */
-#about .os-about-slide:nth-child(even) .os-about-slide-top{flex-direction:row-reverse;}
-#about .os-about-slide:nth-child(even) .os-about-slide-id{text-align:right;}
-@media(max-width:640px){#about .os-about-slide:nth-child(even) .os-about-slide-top{flex-direction:row;}#about .os-about-slide:nth-child(even) .os-about-slide-id{text-align:left;}}
-/* Dots: reached beats lit, in each slide's own tone. */
-#about .os-about-dots{display:flex;gap:10px;justify-content:center;margin:16px 0 12px;}
-#about .os-about-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--tone,#a06bff);background:transparent;padding:0;cursor:pointer;appearance:none;}
-#about .os-about-dot.on{background:var(--tone,#a06bff);box-shadow:0 0 10px var(--tone,#a06bff);}
-#about .os-about-nav{display:flex;gap:10px;justify-content:space-between;}
-#about .os-about-nav .ph-connect{flex:1;}
 /* --- My World rectangles (W2/W3) — the page's own .mw-pagebtn language --- */
 .mw-rect-main{flex:1;display:flex;flex-direction:column;align-items:stretch;gap:10px;text-align:left;padding:16px 18px;border-radius:14px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;font-family:inherit;background:linear-gradient(180deg,#1b1b24,#07070b);border:1.5px solid rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.5);transition:border-color .2s,box-shadow .2s,transform .2s}
 .mw-rect-main:hover,.mw-rect-main:focus-visible{transform:translateY(-2px);border-color:var(--pc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 28px var(--pc,#a06bff),0 12px 26px rgba(0,0,0,.55);outline:none}
@@ -30126,46 +30111,6 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 </style>
 
 <style id="skills-three-part-20261116">
-/* ═══ SKILLS THREE-PART S5 2026-11-16 — Both presentations (Shawn 03:45Z) ═══
-   Harvested from the About choice row + deck in this same file (os-about-choice,
-   os-about-deck, 08:40Z): same structure, same board language, re-scoped to the
-   Skills view. The choice row stays, so the citizen can always switch back —
-   neither locks the other out. Unfold active on landing; no persistence, so
-   every fresh load lands on the unfold. In deck mode the unfold list hides;
-   the add-skill card stays, so a skill can be entered in any mode. Slides are
-   built from the skill cards at runtime and their words are read live on show,
-   so the deck can never drift from the board's own words — and a skill added
-   through the form joins the deck the moment it joins the list. */
-[data-os-view="skills"] .os-skills-choice{display:flex;flex-direction:column;gap:10px;margin:4px 0 16px;}
-[data-os-view="skills"] .os-skills-choice-btns{display:flex;gap:10px;flex-wrap:wrap;}
-/* Deck mode hides the unfold stack (the list); the choice row stays. */
-[data-os-view="skills"].os-skills-mode-deck #os-skills-list{display:none!important;}
-[data-os-view="skills"] .os-skills-deck{margin:0 0 20px;}
-[data-os-view="skills"] .os-skills-deck[hidden]{display:none;}
-[data-os-view="skills"] .os-skills-deck-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:2px 0 12px;}
-[data-os-view="skills"] .os-skills-deck-count{font-size:13px;font-weight:800;letter-spacing:.08em;color:#fff;opacity:.75;}
-/* Slides: the About deck's board language — same border, radius, background, shadow. */
-[data-os-view="skills"] .os-skills-slide{position:relative;border:2px solid color-mix(in srgb, var(--tone,#e84fff) 42%, #fff 8%);border-radius:18px;background:linear-gradient(145deg,#0d0d13,#050508);box-shadow:inset 0 1px rgba(255,255,255,.11),0 14px 30px rgba(0,0,0,.56),0 0 20px color-mix(in srgb, var(--tone,#e84fff) 10%, transparent);padding:20px 24px;margin-bottom:12px;}
-[data-os-view="skills"] .os-skills-slide[hidden]{display:none;}
-[data-os-view="skills"] .os-skills-slide-top{display:flex;align-items:flex-start;gap:14px;}
-[data-os-view="skills"] .os-skills-slide-id{min-width:0;flex:1;}
-[data-os-view="skills"] .os-skills-slide-title{margin:6px 0 0;font-size:22px;line-height:1.25;color:#fff;letter-spacing:.01em;}
-/* What it is: the About slide-text treatment — tone edge, dark inset board. */
-[data-os-view="skills"] .os-skills-slide-what{margin:16px 0 0;font-size:18px;line-height:1.6;color:#fff;border-left:3px solid var(--tone,#e84fff);background:#050607;border-radius:12px;padding:14px 16px;}
-/* Why it matters / What's in it for you: the skill board's own foryou treatment. */
-[data-os-view="skills"] .os-skills-slide-part{margin:12px 0 0;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.38);border:1px solid color-mix(in srgb, var(--tone,#e84fff) 55%, transparent);}
-[data-os-view="skills"] .os-skills-slide-part-label{display:block;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:4px;}
-[data-os-view="skills"] .os-skills-slide-part p{margin:0;font-size:15px;line-height:1.6;color:#fff;}
-/* The deck's face-right alternation, desktop only — stacked on phones. */
-[data-os-view="skills"] .os-skills-slide:nth-child(even) .os-skills-slide-top{flex-direction:row-reverse;}
-[data-os-view="skills"] .os-skills-slide:nth-child(even) .os-skills-slide-id{text-align:right;}
-@media(max-width:640px){[data-os-view="skills"] .os-skills-slide:nth-child(even) .os-skills-slide-top{flex-direction:row;}[data-os-view="skills"] .os-skills-slide:nth-child(even) .os-skills-slide-id{text-align:left;}}
-/* Dots: reached beats lit, in each skill's own tone. */
-[data-os-view="skills"] .os-skills-dots{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0 12px;}
-[data-os-view="skills"] .os-skills-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--tone,#e84fff);background:transparent;padding:0;cursor:pointer;appearance:none;}
-[data-os-view="skills"] .os-skills-dot.on{background:var(--tone,#e84fff);box-shadow:0 0 10px var(--tone,#e84fff);}
-[data-os-view="skills"] .os-skills-nav{display:flex;gap:10px;justify-content:space-between;}
-[data-os-view="skills"] .os-skills-nav .ph-connect{flex:1;}
 </style>
 
 <script>
@@ -30177,52 +30122,19 @@ function pxSlug(s){ return String(s||'guest').toLowerCase().trim().replace(/[^a-
 function pxGet(k,fb){ try{ var v=localStorage.getItem(k); return v===null?fb:JSON.parse(v); }catch(e){ return fb; } }
 function pxPut(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
 
-/* ---------- ABOUT UNFOLD (D2/D3) — motto alone, then one beat per click ---------- */
+/* ---------- ABOUT UNFOLD — RETIRED 2026-11-16 (official formats round) ----------
+   The D2/D3 collapse-chain (the next-thing button) is retired: the official unfold
+   (deck wireDeck, as ofWireUnfold) now drives the About beats, and the
+   official slideshow (Studio showSlide, as ofShowSlide) drives the deck.
+   The citizen's initial orb is set here, as before; everything else lives
+   in the of-bridge script (last in the document). */
 var about=document.getElementById('about');
 if(about){
-  var layers=[];
-  Array.prototype.forEach.call(about.children,function(el){ if(el.classList&&el.classList.contains('ib-layer')) layers.push(el); });
-  /* Orb initial follows the citizen's own name on the page (default S). */
   var pn=document.getElementById('pname');
   var ini=pn?(pn.textContent||'').trim().charAt(0).toUpperCase():'S';
   if(!ini) ini='S';
-  layers.forEach(function(l){ var o=l.querySelector('.os-about-orb'); if(o) o.textContent=ini; });
-  var nextBtn=document.createElement('button');
-  nextBtn.type='button'; nextBtn.className='ph-connect os-about-next';
-  function firstClosed(){ for(var i=0;i<layers.length;i++){ if(!layers[i].classList.contains('open')) return i; } return -1; }
-  function refreshNext(){
-    var ix=firstClosed();
-    if(ix<0){ if(nextBtn.parentNode) nextBtn.parentNode.removeChild(nextBtn); return; }
-    var b=layers[ix].querySelector('.ib-layer-head b');
-    var label=b?(b.textContent||'').trim():'';
-    nextBtn.textContent=label+' \u25be';
-    var lastOpen=-1;
-    for(var j=0;j<layers.length;j++){ if(layers[j].classList.contains('open')) lastOpen=j; }
-    var after=layers[Math.max(0,lastOpen)];
-    if(nextBtn.parentNode!==after.parentNode||nextBtn.previousElementSibling!==after){
-      after.parentNode.insertBefore(nextBtn,after.nextSibling);
-    }
-  }
-  nextBtn.addEventListener('click',function(){
-    var ix=firstClosed(); if(ix<0) return;
-    layers[ix].classList.add('open');
-    var h=layers[ix].querySelector('.ib-layer-head'); if(h) h.setAttribute('aria-expanded','true');
-    refreshNext();
-    try{ layers[ix].scrollIntoView({behavior:'smooth',block:'nearest'}); }catch(e){}
-  });
-  for(var k=1;k<layers.length;k++){
-    layers[k].classList.remove('open');
-    var hh=layers[k].querySelector('.ib-layer-head'); if(hh) hh.setAttribute('aria-expanded','false');
-  }
-  refreshNext();
-  window.__osAboutRefreshNext=refreshNext; /* ABOUT UNFOLD 2026-11-16: the chain-opener (Story-tab edit, deck edit) repositions the next button after opening layers. */
-  /* If the citizen opens a layer by its own head, the next-thing button follows. */
-  document.addEventListener('click',function(e){
-    var h=e.target&&e.target.closest?e.target.closest('#about [data-os-ib-toggle]'):null;
-    if(h) setTimeout(refreshNext,0);
-  });
+  Array.prototype.forEach.call(about.querySelectorAll('.os-about-orb'),function(o){ o.textContent=ini; });
 }
-
 /* ---------- SKILLS (S1/S2) — three-field entry + citizen-added boards ---------- */
 var SKILL_COLORS=['#a06bff','#3fb8ff','#6675ff','#7fd4ff','#31cb8d','#ff9a5a','#e84fff','#ff5e6c','#2dd4bf','#ffbf3d','#7c3aed','#22d3ee','#a5d154','#c8ccd6'];
 function pxSkillCardHTML(sk,ix){
@@ -30393,108 +30305,7 @@ pxEnhancePerson();
 })();
 </script>
 
-<script>
-/* ═══ SKILLS THREE-PART S5 2026-11-16 — the visual presentation ═══
-   Harvested from the About deck IIFE in this file: one board at a time, dots for
-   progress, a next button that says the next thing. Slides are BUILT from the
-   skill cards at runtime — title, tone and words are read from the card itself
-   every time a slide shows, so the deck can never drift from the citizen's own
-   words. The presentation shows the same three parts per skill, in slide form:
-   what it is (big, tone-edged), why it matters (in full — no collapsed button
-   here), what's in it for them (in full). One slide per skill, in list order,
-   so a skill added through the form joins the deck too. Unfold is the default.
-   No persistence: every fresh load lands on the unfold, so the landing is
-   deterministic. */
-(function(){
-'use strict';
-var view=document.querySelector('[data-os-view="skills"]'); if(!view) return;
-var deck=document.getElementById('osSkillsDeck'); if(!deck) return;
-function skillCards(){ return Array.prototype.slice.call(document.querySelectorAll('#os-skills-list .sa-skill')); }
-function titleOf(c){ var t=c.querySelector('h3'); var s=t?(t.textContent||'').replace(/^\u2726\s*/,'').trim():''; return s||'Skill'; }
-function toneOf(c){ var v=c.style.getPropertyValue('--ac'); return v?v.trim():'#e84fff'; }
-function textOf(c,sel){ var el=c.querySelector(sel); return el?(el.textContent||'').trim():''; }
-function foryouOf(c){ var p=c.querySelector('.sa-skill-foryou'); if(!p) return ''; var cl=p.cloneNode(true); var b=cl.querySelector('b'); if(b) b.remove(); return (cl.textContent||'').trim(); }
-var slidesHost=document.getElementById('osSkillsSlides');
-var dotsHost=document.getElementById('osSkillsDots');
-var prevBtn=document.getElementById('osSkillsPrev');
-var nextBtn=document.getElementById('osSkillsNext');
-var countEl=document.getElementById('osSkillsCount');
-var cur=0, mode='unfold', cards=[];
-function buildSlides(){
-  cards=skillCards();
-  slidesHost.innerHTML=''; dotsHost.innerHTML='';
-  cards.forEach(function(c,i){
-    var title=titleOf(c), tone=toneOf(c);
-    var art=document.createElement('article');
-    art.className='os-skills-slide'; art.setAttribute('data-os-skills-slide',title);
-    art.style.setProperty('--tone',tone); art.hidden=true;
-    art.innerHTML='<div class="os-skills-slide-top"><span class="os-jewel os-jewel-lg" style="--jc:'+tone+'">\u2726</span>'
-      +'<div class="os-skills-slide-id"><span class="ib-kind" style="--tone:'+tone+'">Smart Skills</span>'
-      +'<h3 class="os-skills-slide-title"></h3></div></div>'
-      +'<p class="os-skills-slide-what"></p>'
-      +'<div class="os-skills-slide-part"><span class="os-skills-slide-part-label">Why it matters</span><p class="os-skills-slide-why"></p></div>'
-      +'<div class="os-skills-slide-part"><span class="os-skills-slide-part-label">What\u2019s in it for you</span><p class="os-skills-slide-foryou"></p></div>';
-    art.querySelector('.os-skills-slide-title').textContent=title;
-    slidesHost.appendChild(art);
-    var d=document.createElement('button');
-    d.type='button'; d.className='os-skills-dot'; d.style.setProperty('--tone',tone);
-    d.setAttribute('aria-label','Show '+title);
-    d.addEventListener('click',function(){ showSlide(i); });
-    dotsHost.appendChild(d);
-  });
-  if(cur>=cards.length) cur=Math.max(0,cards.length-1);
-}
-function showSlide(i){
-  var slides=Array.prototype.slice.call(slidesHost.children);
-  var dots=Array.prototype.slice.call(dotsHost.children);
-  if(!slides.length) return;
-  cur=((i%slides.length)+slides.length)%slides.length;
-  slides.forEach(function(sl,j){
-    sl.hidden=(j!==cur);
-    if(j===cur){
-      var c=cards[j];
-      var w=sl.querySelector('.os-skills-slide-what'); if(w) w.textContent=textOf(c,'.sa-skill-nutshell');
-      var y=sl.querySelector('.os-skills-slide-why'); if(y) y.textContent=textOf(c,'.sa-skill-why');
-      var f=sl.querySelector('.os-skills-slide-foryou'); if(f) f.textContent=foryouOf(c);
-    }
-  });
-  dots.forEach(function(d,j){ d.classList.toggle('on', j<=cur); });
-  var nxt=slides[(cur+1)%slides.length].getAttribute('data-os-skills-slide');
-  if(nextBtn) nextBtn.textContent=nxt+' \u25C6';
-  if(prevBtn) prevBtn.hidden=(cur===0);
-  if(countEl) countEl.textContent=(cur+1)+' of '+slides.length;
-}
-function setMode(m){
-  mode=m;
-  view.classList.toggle('os-skills-mode-deck', m==='deck');
-  deck.hidden=(m==='unfold');
-  Array.prototype.forEach.call(view.querySelectorAll('[data-os-skills-view]'),function(b){
-    var on=b.getAttribute('data-os-skills-view')===m;
-    b.setAttribute('aria-pressed', on?'true':'false');
-    b.classList.toggle('ph-connect', on);
-    b.classList.toggle('ph-msg', !on);
-  });
-  if(m!=='unfold'){ buildSlides(); showSlide(cur); }
-}
-if(prevBtn) prevBtn.addEventListener('click',function(){ showSlide(cur-1); });
-if(nextBtn) nextBtn.addEventListener('click',function(){ showSlide(cur+1); });
-var choice=view.querySelector('.os-skills-choice');
-if(choice) choice.addEventListener('click',function(e){
-  var b=e.target&&e.target.closest?e.target.closest('[data-os-skills-view]'):null;
-  if(b) setMode(b.getAttribute('data-os-skills-view'));
-});
-/* A skill added through the form joins the deck the moment it joins the list. */
-var addBtn=document.getElementById('os-skill-new-add');
-if(addBtn) addBtn.addEventListener('click',function(){
-  setTimeout(function(){ if(mode!=='unfold'){ buildSlides(); showSlide(cur); } },80);
-});
-window.__osSkillsRebuild=function(){ buildSlides(); showSlide(cur); };
-window.__osSkillsSetMode=setMode;
-buildSlides();
-showSlide(0);
-setMode('unfold');
-})();
-</script>
+
 
 <style id="one-round-addenda-20261115">
 /* ═══ ONE ROUND ADDENDA 2026-11-15 (H1 · tile fix · R1–R7 · S1 · C1–C3) ═══
@@ -30850,7 +30661,6 @@ setMode('unfold');
    the word "his". Every About body now keeps 64px clear on the right. */
 #about .ib-layer-body #abouttext{padding-right:64px!important}
 #about .ib-layer-body .ph-actions{background:rgba(10,10,15,.85);border-radius:999px;padding:2px}
-#about .ib-layer.pc-eye-future{display:none!important}
 /* F5 — My World: each row is its own distinct elevated rectangle, and the
    stats icon sits fully inside it. The article is the card now; the inner
    button goes borderless so the card reads as one object. */
@@ -31131,164 +30941,6 @@ try{
   setTimeout(function(){ stampFaces(document); },4000);
 }catch(e){}
 
-/* ── F4 — About: one-thing-at-a-time reveal. ──
-   The seven named layers (motto → story → what I do → goals → purpose →
-   mission → vision) reveal in order: only the next unopened layer's head
-   is visible; opening it reveals the one after. The layers stay in the
-   DOM (7/7, same order) — only future heads are hidden. */
-var ABOUT_ORDER=['My motto','My story','What I do','My goals','My purpose','My mission','My vision'];
-function aboutLayers(){
-  var out=[];
-  qa('#about .ib-layer').forEach(function(l){
-    var b=l.querySelector('.ib-layer-head b');
-    var t=b?(b.textContent||'').trim():'';
-    if(ABOUT_ORDER.indexOf(t)>=0) out.push(l);
-  });
-  out.sort(function(a,b){
-    var ta=a.querySelector('.ib-layer-head b').textContent.trim();
-    var tb=b.querySelector('.ib-layer-head b').textContent.trim();
-    return ABOUT_ORDER.indexOf(ta)-ABOUT_ORDER.indexOf(tb);
-  });
-  return out;
-}
-function refreshAboutReveal(){
-  try{
-    var layers=aboutLayers(); if(!layers.length) return;
-    var firstClosed=-1;
-    for(var i=0;i<layers.length;i++){ if(!layers[i].classList.contains('open')){ firstClosed=i; break; } }
-    if(firstClosed<0) firstClosed=layers.length;
-    layers.forEach(function(l,i){ l.classList.toggle('pc-eye-future', i>=firstClosed); /* ABOUT UNFOLD 2026-11-16 (D7): the first-closed layer's collapsed head showed beside the next button, so "My story" read twice at landing. Hiding it too leaves the next button as the only visible trace until the layer opens — one "My story" per presentation, always. */ });
-  }catch(e){}
-}
-try{
-  refreshAboutReveal();
-  document.addEventListener('click',function(e){
-    var h=e.target&&e.target.closest?e.target.closest('#about [data-os-ib-toggle], #about .os-about-next'):null;
-    if(h) setTimeout(refreshAboutReveal,60);
-  });
-  if(window.MutationObserver){
-    var _ab=q('#about');
-    if(_ab) new MutationObserver(function(){ refreshAboutReveal(); }).observe(_ab,{attributes:true,subtree:true,attributeFilter:['class']});
-  }
-}catch(e){}
-/* ═══ ABOUT BOTH-PRESENTATIONS (2026-11-16, Shawn 03:45Z) — unfold OR presentation OR both ═══
-   The choice is offered on About opening; the unfold above (Nov 15) is the
-   default. The visual presentation follows the Visual Collective Agreement
-   deck's pattern (welcome-staged-visual-agreement-end.html): one board at a
-   time, dots for progress, a next button that says the next thing (L8).
-   Slides are BUILT from the layers at runtime — title, tone and words are
-   read from the layer itself every time a slide shows, so the deck can never
-   drift from the citizen's own words (D4 by construction). The citizen's
-   initial orb (D3) is the slide's identity, in the slide's own colour.
-   No persistence: every fresh load lands on the unfold (motto alone, D2),
-   so the landing is deterministic. */
-(function(){
-'use strict';
-var about=document.getElementById('about'); if(!about) return;
-var deck=document.getElementById('osAboutDeck'); if(!deck) return;
-var ORDER=['My motto','My story','What I do','My goals','My purpose','My mission','My vision'];
-var KEY={'My motto':'motto','My story':'story','What I do':'whatido','My goals':'goals','My purpose':'purpose','My mission':'mission','My vision':'vision'};
-function aboutLayers(){ var out=[]; Array.prototype.forEach.call(about.querySelectorAll(':scope > .ib-layer'),function(l){ var b=l.querySelector('.ib-layer-head b'); var t=b?(b.textContent||'').trim():''; if(ORDER.indexOf(t)>=0) out.push(l); }); out.sort(function(a,b){ var ta=a.querySelector('.ib-layer-head b').textContent.trim(), tb=b.querySelector('.ib-layer-head b').textContent.trim(); return ORDER.indexOf(ta)-ORDER.indexOf(tb); }); return out; }
-function ini(){ var pn=document.getElementById('pname'); var c=pn?(pn.textContent||'').trim().charAt(0).toUpperCase():''; return c||'S'; }
-function toneOf(l){ var n=l.querySelector('.ib-nutshell'); var t=n?n.style.getPropertyValue('--tone'):''; if(t) return t.trim(); var o=l.querySelector('.os-about-orb'); if(o){ var v=o.style.getPropertyValue('--avc'); if(v) return v.trim(); } return '#a06bff'; }
-function textOf(l){ var p=l.querySelector('.ib-nutshell p'); return p?(p.textContent||'').trim():''; }
-var PENCIL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>';
-var layers=aboutLayers();
-var slidesHost=document.getElementById('osAboutSlides');
-var dotsHost=document.getElementById('osAboutDots');
-var prevBtn=document.getElementById('osAboutPrev');
-var nextBtn=document.getElementById('osAboutNext');
-var countEl=document.getElementById('osAboutCount');
-var cur=0, mode='unfold';
-/* Build one slide per section — shell only; the words are read live on show. */
-layers.forEach(function(l,i){
-  var b=l.querySelector('.ib-layer-head b'); var title=b?(b.textContent||'').trim():ORDER[i];
-  var tone=toneOf(l);
-  var art=document.createElement('article');
-  art.className='os-about-slide'; art.setAttribute('data-os-about-slide',title);
-  art.style.setProperty('--tone',tone); art.hidden=true;
-  art.innerHTML='<div class="os-about-slide-top"><span class="os-av os-about-orb" style="--avc:'+tone+'">'+ini()+'</span>'
-    +'<div class="os-about-slide-id"><span class="ib-kind" style="--tone:'+tone+'">About me</span>'
-    +'<h3 class="os-about-slide-title"></h3></div></div>'
-    +'<p class="os-about-slide-text"></p>';
-  art.querySelector('.os-about-slide-title').textContent=title;
-  var eb=document.createElement('button');
-  eb.type='button'; eb.className='ph-msg os-about-slide-edit';
-  eb.setAttribute('data-os-about-edit',title); eb.setAttribute('aria-label','Edit '+title);
-  eb.innerHTML=PENCIL;
-  art.appendChild(eb);
-  slidesHost.appendChild(art);
-  var d=document.createElement('button');
-  d.type='button'; d.className='os-about-dot'; d.style.setProperty('--tone',tone);
-  d.setAttribute('aria-label','Show '+title);
-  d.addEventListener('click',function(){ showSlide(i); });
-  dotsHost.appendChild(d);
-});
-var slides=Array.prototype.slice.call(slidesHost.children);
-var dots=Array.prototype.slice.call(dotsHost.children);
-function showSlide(i){
-  if(!slides.length) return;
-  cur=((i%slides.length)+slides.length)%slides.length;
-  slides.forEach(function(sl,j){
-    sl.hidden=(j!==cur);
-    if(j===cur){ var tx=sl.querySelector('.os-about-slide-text'); if(tx) tx.textContent=textOf(layers[j]); }
-  });
-  dots.forEach(function(d,j){ d.classList.toggle('on', j<=cur); });
-  var nxt=slides[(cur+1)%slides.length].getAttribute('data-os-about-slide');
-  if(nextBtn) nextBtn.textContent=nxt+' \u25C6';
-  if(prevBtn) prevBtn.hidden=(cur===0);
-  if(countEl) countEl.textContent=(cur+1)+' of '+slides.length;
-}
-function setMode(m){
-  mode=m;
-  about.classList.toggle('os-about-mode-deck', m==='deck');
-  deck.hidden=(m==='unfold');
-  Array.prototype.forEach.call(about.querySelectorAll('[data-os-about-view]'),function(b){
-    var on=b.getAttribute('data-os-about-view')===m;
-    b.setAttribute('aria-pressed', on?'true':'false');
-    b.classList.toggle('ph-connect', on);
-    b.classList.toggle('ph-msg', !on);
-  });
-  if(m!=='unfold') showSlide(cur);
-}
-/* Unfold the chain to a section (Story-tab Edit-in-About, deck edit buttons):
-   every layer up to the named one opens, the next button follows, and the
-   reveal un-hides them. */
-window.__osAboutOpenTo=function(title){
-  var ix=ORDER.indexOf(title); if(ix<0) return;
-  layers.forEach(function(l,j){
-    if(j>ix) return;
-    if(!l.classList.contains('open')){ l.classList.add('open'); var h=l.querySelector('[data-os-ib-toggle]'); if(h) h.setAttribute('aria-expanded','true'); }
-    l.classList.remove('pc-eye-future'); /* synchronous un-hide: the reveal's observer runs as a microtask, after secEdit's focus() — without this the editor opens on a still-hidden layer and focus silently fails. The observer re-runs and agrees. */
-  });
-  if(window.__osAboutRefreshNext) window.__osAboutRefreshNext();
-  try{ layers[ix].scrollIntoView({behavior:'smooth',block:'nearest'}); }catch(e){}
-};
-function editSection(title){
-  setMode('unfold');
-  window.__osAboutOpenTo(title);
-  setTimeout(function(){
-    var key=KEY[title];
-    if(key==='story'){ var eb=document.getElementById('editabout'); if(eb) eb.click(); }
-    else { var fb=document.querySelector('[data-os-sec-edit="'+key+'"]'); if(fb) fb.click(); }
-  },120);
-}
-if(prevBtn) prevBtn.addEventListener('click',function(){ showSlide(cur-1); });
-if(nextBtn) nextBtn.addEventListener('click',function(){ showSlide(cur+1); });
-deck.addEventListener('click',function(e){
-  var eb=e.target&&e.target.closest?e.target.closest('[data-os-about-edit]'):null;
-  if(eb){ editSection(eb.getAttribute('data-os-about-edit')); }
-});
-var choice=about.querySelector('.os-about-choice');
-if(choice) choice.addEventListener('click',function(e){
-  var b=e.target&&e.target.closest?e.target.closest('[data-os-about-view]'):null;
-  if(b) setMode(b.getAttribute('data-os-about-view'));
-});
-showSlide(0);
-setMode('unfold');
-})();
-
-
 /* ── F5 — Smart Link bloat: honestly grouped, never 50 identical boards. ──
    #os-sl-mine renders one board per Smart Link (invite-xxxx, 0 clicks).
    Past six, the rest collapse behind one honest summary line + toggle. */
@@ -31417,7 +31069,7 @@ try{
 }catch(e){}
 
 /* First sweep + reveal passes once the page has settled. */
-setTimeout(function(){ try{ sweepCards(document); refreshAboutReveal(); ensureNayaBtn(); collapseSmartLinks(); tilePoints(); stampFaces(document); }catch(e){} },1200);
+setTimeout(function(){ try{ sweepCards(document); ensureNayaBtn(); collapseSmartLinks(); tilePoints(); stampFaces(document); }catch(e){} },1200);
 })();
 </script>
 
@@ -32126,166 +31778,7 @@ document.addEventListener('keydown', function(e){
 });
 })();
 </script>
-<script>
-/* ═══ PERSONAL CORRECTION 2026-11-16 (item 5, Shawn 15:35Z) — About +
-   Skills unfold AS YOU GO DOWN ═══
-   The finding: About's layers past the motto only opened behind the
-   next-thing button (the closed layers are display:none, so scrolling
-   could never reveal them), and each Skills card's "Why it matters"
-   only opened behind its ▾ button. Both now present as you scroll down:
-   - About: when the next-thing button scrolls into view, it opens the
-     next layer by itself (the button's own click — same path, same
-     refresh). The button then moves down; scrolling further opens the
-     next. A layer the citizen closed by its own head is never re-opened
-     by the scroll — their close stands until they tap the button or the
-     head again.
-   - Skills: when a skill card scrolls into view in unfold mode, its
-     "Why it matters" opens (the toggle's own open branch). A card the
-     citizen closed by its button is never re-opened by the scroll.
-   Deck mode hides both stacks, so the observers never fire there. */
-(function(){
-'use strict';
-/* --- About: the next button opens itself when it comes into view --- */
-var about=document.getElementById('about');
-var aboutClosedByHand=new WeakSet();
-function aboutNextTarget(){
-  /* The next-thing button names the first closed layer (direct children
-     only — the unfold script's own set). Declared at IIFE level, not
-     inside if(about): strict mode scopes block-level function declarations
-     to their block, and the scroll check below reads it from outside. */
-  if(!about) return null;
-  var kids=about.children;
-  for(var i=0;i<kids.length;i++){ var l=kids[i]; if(l.classList&&l.classList.contains('ib-layer')&&!l.classList.contains('open')) return l; }
-  return null;
-}
 
-if(about){
-  document.addEventListener('click',function(e){
-    var h=e.target&&e.target.closest?e.target.closest('#about .ib-layer-head'):null;
-    if(!h) return;
-    var layer=h.closest('.ib-layer'); if(!layer) return;
-    /* The head toggle runs first (registered at parse); read the state after it. */
-    setTimeout(function(){
-      if(layer.classList.contains('open')) aboutClosedByHand.delete(layer);
-      else aboutClosedByHand.add(layer);
-    },0);
-  });
-  if('IntersectionObserver' in window){
-    var nextBtn=null;
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(!en.isIntersecting) return;
-        if(about.classList.contains('os-about-mode-deck')) return;
-        var target=aboutNextTarget(); if(!target) return;
-        if(aboutClosedByHand.has(target)) return;
-        var btn=about.querySelector('.os-about-next'); if(!btn) return;
-        btn.click();
-      });
-    },{rootMargin:'0px 0px -15% 0px',threshold:0});
-    /* The button is re-positioned by refreshNext on every open; re-observe
-       it whenever it moves (a MutationObserver on About is the cheap watch). */
-    var mo=new MutationObserver(function(){
-      var b=about.querySelector('.os-about-next');
-      if(b && b!==nextBtn){ if(nextBtn) io.unobserve(nextBtn); nextBtn=b; io.observe(b); }
-      if(!b && nextBtn){ io.unobserve(nextBtn); nextBtn=null; }
-    });
-    mo.observe(about,{childList:true,subtree:true});
-    var first=about.querySelector('.os-about-next');
-    if(first){ nextBtn=first; io.observe(first); }
-  }
-}
-  /* The observer fires on moves, but a button that merely sits in view
-     after a scroll settles can miss its notification (proven at 1440:
-     the button sat intersecting at 596px and never opened). The scroll
-     itself is the reliable trigger — every scroll re-checks the button's
-     place and opens the next layer when it is on screen. */
-  var aboutTicking=false;
-  function aboutMaybeOpen(){
-    aboutTicking=false;
-    if(!about.classList.contains('on')) return;
-    if(about.classList.contains('os-about-mode-deck')) return;
-    var btn=about.querySelector('.os-about-next'); if(!btn) return;
-    var r=btn.getBoundingClientRect();
-    /* A fast scroll can jump the button clean past the viewport — it must
-       open anyway once it is at or above the line (scrolled past means
-       reached). The 'on' check above is what stops this firing while
-       About is hidden (a hidden button reads as 0,0). */
-    if(r.top < window.innerHeight*0.85){
-      var target=aboutNextTarget(); if(!target) return;
-      if(aboutClosedByHand.has(target)) return;
-      btn.click();
-    }
-  }
-  window.addEventListener('scroll',function(){
-    if(!aboutTicking){ aboutTicking=true; requestAnimationFrame(aboutMaybeOpen); }
-  },{passive:true});
-/* --- Skills: a card's "Why it matters" opens when the card comes into view --- */
-var skillsList=document.getElementById('os-skills-list');
-var skillsClosedByHand=new WeakSet();
-function skillOpen(card){
-  var why=card.querySelector('.sa-skill-why'); if(!why) return;
-  var btn=card.querySelector('.sa-skill-more'); if(!btn) return;
-  if(!why.hidden) return;
-  why.hidden=false;
-  btn.setAttribute('aria-expanded','true');
-  btn.textContent='Why it matters \u25b4';
-}
-if(skillsList){
-  document.addEventListener('click',function(e){
-    var b=e.target&&e.target.closest?e.target.closest('.sa-skill-more'):null;
-    if(!b) return;
-    var card=b.closest('.sa-skill'); if(!card) return;
-    /* skillToggle (registered at parse) runs first; read the state after it. */
-    setTimeout(function(){
-      var why=card.querySelector('.sa-skill-why');
-      if(why && why.hidden) skillsClosedByHand.add(card);
-      else skillsClosedByHand.delete(card);
-    },0);
-  });
-  if('IntersectionObserver' in window){
-    var sio=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(!en.isIntersecting) return;
-        var card=en.target;
-        var view=card.closest('[data-os-view="skills"]');
-        if(view && view.classList.contains('os-skills-mode-deck')) return;
-        if(skillsClosedByHand.has(card)) return;
-        skillOpen(card);
-      });
-    },{rootMargin:'0px 0px -10% 0px',threshold:0.15});
-    Array.prototype.forEach.call(skillsList.querySelectorAll('.sa-skill'),function(c){ sio.observe(c); });
-    if(window.MutationObserver){
-      new MutationObserver(function(muts){
-        muts.forEach(function(m){
-          Array.prototype.forEach.call(m.addedNodes,function(n){
-            if(n.nodeType===1 && n.classList && n.classList.contains('sa-skill')) sio.observe(n);
-          });
-        });
-      }).observe(skillsList,{childList:true});
-    }
-  }
-}
-  /* Scroll-driven twin of the observer above: every scroll opens the
-     skill cards currently on screen (unfold mode, never a card the
-     citizen closed by hand). */
-  var skillsTicking=false;
-  function skillsMaybeOpen(){
-    skillsTicking=false;
-    var view=document.querySelector('[data-os-view="skills"]');
-    if(!view || !view.classList.contains('on')) return;
-    if(view.classList.contains('os-skills-mode-deck')) return;
-    Array.prototype.forEach.call(skillsList.querySelectorAll('.sa-skill'),function(card){
-      if(skillsClosedByHand.has(card)) return;
-      var r=card.getBoundingClientRect();
-      /* Same jumped-past rule as About: a card at or above the line opens. */
-      if(r.top < window.innerHeight*0.9) skillOpen(card);
-    });
-  }
-  window.addEventListener('scroll',function(){
-    if(!skillsTicking){ skillsTicking=true; requestAnimationFrame(skillsMaybeOpen); }
-  },{passive:true});
-})();
-</script>
 <script>
 /* PERSONAL CORRECTION 2026-11-16 (item 6) — My World IS the calendar.
    The month grid, Sun-first, each day lit in its own colour (Sunday purple
@@ -32739,4 +32232,561 @@ renderGrid();
 .notif-tile::after{content:'';position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc,#a06bff) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orb-spin-rev 60s linear infinite;opacity:.9;pointer-events:none;z-index:2}
 #pcComposerPlus .notif-tile::after{animation:osArcSpin 180s linear infinite}
 </style>
+<style id="of-bridge-20261116">
+/* ═══ OF-BRIDGE 2026-11-16 — the official formats on Personal ═══
+   HARVESTED (deck-royal-unfolding.html <style> + wireDeck, as in the
+   Smart Note Studio blob edd5f1d8; scoped to #about + Skills, renamed
+   per the map in the maker report). NEW rules are marked NEW. */
+#about .p3-enter, [data-os-view="skills"] .p3-enter{position:relative;overflow:hidden;display:block;margin:12px auto 0;padding:16px 46px;border-radius:999px;font-size:15px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#050507,#050507);border:2px solid #a06bff;text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px rgba(160,107,255,.45);box-shadow:inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px #a06bff,0 10px 22px rgba(0,0,0,.55);transition:box-shadow .25s,transform .25s,border-color .25s}
+#about .p3-enter::after, [data-os-view="skills"] .p3-enter::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.16) 50%,transparent 58%);transform:translateX(-130%);animation:enterFlow 4.5s ease-in-out infinite;pointer-events:none}
+#about .p3-enter:hover, [data-os-view="skills"] .p3-enter:hover, #about .p3-enter:active, [data-os-view="skills"] .p3-enter:active{border-color:#c09aff;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #a06bff,0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+@keyframes enterFlow{0%,55%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
+#about .of-next, [data-os-view="skills"] .of-next{border-color:var(--tone);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone);box-shadow:inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone),0 10px 22px rgba(0,0,0,.55)}
+#about .of-next:hover, [data-os-view="skills"] .of-next:hover, #about .of-next:active, [data-os-view="skills"] .of-next:active{border-color:var(--tone);box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+#about .of-next[hidden], [data-os-view="skills"] .of-next[hidden]{display:none}
+#about .of-dots, [data-os-view="skills"] .of-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:940px;margin:0 auto}
+#about .of-dot, [data-os-view="skills"] .of-dot{width:14px;height:14px;border:none;border-radius:0;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);background:conic-gradient(from 210deg,rgba(255,255,255,.85),rgba(255,255,255,.18) 25%,rgba(0,0,0,.55) 50%,rgba(255,255,255,.3) 75%,rgba(255,255,255,.85)),var(--dc,#a06bff);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--dc,#a06bff) 60%,transparent))}
+#about .of-dot.on, [data-os-view="skills"] .of-dot.on{background:conic-gradient(from 210deg,#fff,rgba(255,255,255,.4) 25%,rgba(0,0,0,.3) 50%,rgba(255,255,255,.5) 75%,#fff),var(--dc,#a06bff);border:none;box-shadow:none;filter:drop-shadow(0 0 10px var(--dc,rgba(160,107,255,.9)))}
+#about .of-all, [data-os-view="skills"] .of-all{background:none;border:none;font-family:inherit;font-size:12.5px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 8px;padding:14px 10px;min-height:44px}
+#about .of-all:hover, [data-os-view="skills"] .of-all:hover{color:#fff}
+#about .of-controls, [data-os-view="skills"] .of-controls{margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:13px;position:relative;z-index:2}
+#about .of-controls[hidden], [data-os-view="skills"] .of-controls[hidden]{display:none}
+#about .of-beat.of-reveal, [data-os-view="skills"] .of-beat.of-reveal{animation:of-letter-in .7s cubic-bezier(.22,1,.36,1)}
+@keyframes of-letter-in{from{opacity:0;transform:translateY(10px)}}
+#about .of-beat[hidden], [data-os-view="skills"] .of-beat[hidden]{display:none}
+#about .of-slides-nav, [data-os-view="skills"] .of-slides-nav{display:none;align-items:center;justify-content:center;gap:16px;margin:22px 0 4px}
+#about .of-slides-mode .of-slides-nav, [data-os-view="skills"] .of-slides-mode .of-slides-nav{display:flex}
+#about .of-slides-nav .of-slide-count, [data-os-view="skills"] .of-slides-nav .of-slide-count{font-size:15px;font-weight:800;color:#fff;min-width:96px;text-align:center}
+#about .of-slide-prev, [data-os-view="skills"] .of-slide-prev, #about .of-slide-next, [data-os-view="skills"] .of-slide-next{padding:12px 22px;font-size:14px}
+#about .of-slides-mode .of-beat, [data-os-view="skills"] .of-slides-mode .of-beat{display:none}
+#about .of-slides-mode .of-beat.of-current, [data-os-view="skills"] .of-slides-mode .of-beat.of-current{display:block;animation:of-slide-in .45s var(--ease)}
+@keyframes of-slide-in{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+#about .of-beat.of-lit, [data-os-view="skills"] .of-beat.of-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}
+.of-bridge .intel-board:hover,.of-bridge .intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important}
+#about .of-bridge-btn,[data-os-view="skills"] .of-bridge-btn{border-color:var(--tone);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone);box-shadow:inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone),0 10px 22px rgba(0,0,0,.55)}
+#about .of-bridge-btn:hover,#about .of-bridge-btn:active,[data-os-view="skills"] .of-bridge-btn:hover,[data-os-view="skills"] .of-bridge-btn:active{border-color:var(--tone);box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+
+/* NEW — the bridge: face beside the speaking board (picture-with-box law). */
+.of-bridge-top{display:flex;gap:24px;align-items:flex-start;margin:8px 0 4px}
+.of-bridge-top .of-nutshell{flex:1;min-width:0}
+@media(max-width:640px){.of-bridge-top{flex-direction:column;align-items:center}}
+.of-face{width:240px;height:240px;flex:0 0 auto;border-radius:50%;position:relative;display:grid;place-items:center;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:2px solid color-mix(in srgb, var(--tone,#a06bff) 70%, #fff 10%);box-shadow:0 0 22px color-mix(in srgb, var(--tone,#a06bff) 55%, transparent),0 8px 20px rgba(0,0,0,.6)}
+.of-face-img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;border:0;box-shadow:none}
+.of-face-mono{font-size:64px;font-weight:800;color:#fff}
+@media(max-width:480px){.of-face{width:168px;height:168px}.of-face-mono{font-size:44px}}
+.of-bridge-q{text-align:center;font-size:16px;font-weight:800;color:#fff;margin:20px 0 12px}
+.of-bridge-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+/* (Bridge-button tone rules are appended below from the harvested .deck-next.) */
+.of-lib-door{display:flex;align-items:center;gap:10px;margin:16px auto 0;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(180deg,#07070b,#020203);border:2px solid #2fe89e;box-shadow:0 8px 18px rgba(0,0,0,.5),0 0 17px rgba(47,232,158,.28);transition:box-shadow .25s,transform .25s}
+.of-lib-door:hover,.of-lib-door:active{box-shadow:0 0 28px -2px #2fe89e,0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
+.of-lib-count{font-size:13px;font-weight:800;color:#2fe89e}
+.of-bridge-note{text-align:center;font-size:13.5px;line-height:1.6;color:#fff;margin:14px auto 0;max-width:560px}
+/* NEW — the way back + the presentation head (one control, both modes). */
+.of-pres-head{display:flex;align-items:center;gap:12px;margin:8px 0 12px}
+.of-pres-head[hidden]{display:none}
+.of-back{flex:0 0 auto}
+.of-pres-label{font-size:13px}
+.of-controls[hidden]{display:none}
+/* NEW — THE ORBIT (§8): every circle in the touched sections carries flow.
+   Two rings (one static, one arcing counter-clockwise at 120s) + one orb
+   riding an outer ring clockwise at 90s. Slow, alternating, never frantic. */
+.of-flow{position:relative}
+.of-face::before{content:"";position:absolute;top:-7px;right:-7px;bottom:-7px;left:-7px;border-radius:50%;border:1.5px solid color-mix(in srgb, var(--tone,#a06bff) 35%, transparent);pointer-events:none}
+.of-face::after{content:"";position:absolute;top:-7px;right:-7px;bottom:-7px;left:-7px;border-radius:50%;border:1.5px solid transparent;border-top-color:var(--tone,#a06bff);border-right-color:color-mix(in srgb, var(--tone,#a06bff) 60%, transparent);animation:of-spin 120s linear infinite reverse;pointer-events:none}
+.of-orb-ring{position:absolute;top:-13px;right:-13px;bottom:-13px;left:-13px;border-radius:50%;animation:of-spin 90s linear infinite;pointer-events:none}
+.of-orb-ring .of-orb{position:absolute;left:50%;top:-5px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--tone,#a06bff);box-shadow:0 0 12px var(--tone,#a06bff),0 0 22px var(--tone,#a06bff)}
+.of-ring{position:absolute;border-radius:50%;pointer-events:none}
+.of-ring-a{top:-7px;right:-7px;bottom:-7px;left:-7px;border:1.5px solid color-mix(in srgb, var(--tone,#a06bff) 35%, transparent)}
+.of-ring-b{top:-7px;right:-7px;bottom:-7px;left:-7px;border:1.5px solid transparent;border-top-color:var(--tone,#a06bff);border-right-color:color-mix(in srgb, var(--tone,#a06bff) 60%, transparent);animation:of-spin 120s linear infinite reverse}
+@keyframes of-spin{to{transform:rotate(360deg)}}
+#about .ib-layer-head .os-about-orb,#about .ib-layer-head .os-jewel,[data-os-view="skills"] .sa-skill .os-jewel{--tone:var(--jc,#a06bff)}
+/* NEW — in slideshow mode a skill shows its why in full (the bespoke deck
+   did the same); the collapse button rests. */
+.of-slides-mode .sa-skill-why{display:block}
+.of-slides-mode .sa-skill-more{display:none}
+/* NEW — the Library view (item 6): organized notes + categories. */
+.of-library[hidden]{display:none}
+.of-lib-sub{font-size:15px;line-height:1.6;color:#fff;margin:4px 0 14px}
+.of-lib-cats{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 14px}
+.of-lib-cat{padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(180deg,#07070b,#020203);border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 14px rgba(0,0,0,.5)}
+.of-lib-cat.on{border-color:var(--tone,#2fe89e);box-shadow:0 0 22px -2px var(--tone,#2fe89e),0 8px 18px rgba(0,0,0,.6)}
+.of-lib-search{margin-bottom:6px}
+.of-lib-share{margin-top:10px}
+@media (prefers-reduced-motion: reduce){.of-face::after,.of-orb-ring,.of-ring-b{animation:none}.of-beat.of-reveal{animation:none}.of-slides-mode .of-beat.of-current{animation:none}}
+
+</style>
+<script id="of-bridge-js-20261116">
+/* ═══ OF-BRIDGE 2026-11-16 — the official formats on Personal ═══
+   HARVESTED: wireDeck (deck-royal-unfolding.html) as ofWireUnfold, and the
+   Studio's showSlide as ofShowSlide — bodies follow the originals line for
+   line, modulo the rename map (deck/Studio name -> of- name; see the maker
+   report for the map and the diff proof). GLUE (marked): the bridge
+   controller, face sync, orbit classes, hooks, Library view. */
+(function(){
+'use strict';
+function $(id){ return document.getElementById(id); }
+function qa(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
+function scrollBehavior(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'; }
+function toneOfBeat(b){
+  var n = b.querySelector('.ib-nutshell');
+  var t = n ? n.style.getPropertyValue('--tone') : '';
+  if (t) return t.trim();
+  var o = b.querySelector('.os-about-orb');
+  if (o){ var v = o.style.getPropertyValue('--avc'); if (v) return v.trim(); }
+  var ac = b.style.getPropertyValue('--ac');
+  if (ac) return ac.trim();
+  return '#a06bff';
+}
+/* --- ofWireUnfold: wireDeck, parameterized (two sections, one mechanism).
+   The deck wires once; here beats can arrive later (a citizen-added skill),
+   so refresh() rebinds unbound buttons + rebuilds dots (GLUE). --- */
+function ofWireUnfold(cfg){
+  var dotsHost = $(cfg.dotsId);
+  var all = $(cfg.allId);
+  var idx = 1, furthest = 0;
+  function beats(){ return qa(cfg.beatsSel); }
+  function dots(){ return qa(cfg.dotsSel); }
+  function toneOf(b){ var c = b.style.getPropertyValue('--tone'); return c ? c.trim() : '#a06bff'; }
+  function glowFor(b){
+    var hex = toneOf(b);
+    var n = parseInt(hex.slice(1), 16);
+    var r = (n >> 16) & 255, g = (n >> 8) & 255, bl = n & 255;
+    document.body.style.setProperty('--glowc', 'rgba(' + r + ',' + g + ',' + bl + ',.14)');
+  }
+  function show(n){
+    var b = beats()[n];
+    if (!b) return;
+    b.hidden = false;
+    b.classList.add('of-reveal');
+    if (n > furthest) furthest = n;
+    var d = dots()[n]; if (d) d.classList.add('on');
+    glowFor(b);
+  }
+  function ensureBeatVisible(b){
+    if (!b) return;
+    var r = b.getBoundingClientRect();
+    if (r.bottom > window.innerHeight || r.top < 0) {
+      b.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest', inline: 'nearest' });
+    }
+  }
+  function finish(){ if (all) all.hidden = true; }
+  function bindBeat(b, i){
+    var btn = b.querySelector(cfg.nextSel);
+    if (!btn || btn.getAttribute('data-of-wired')) return;
+    btn.setAttribute('data-of-wired', '1');
+    btn.addEventListener('click', function(){
+      var cur = i + 1;
+      if (cur < beats().length) {
+        show(cur);
+        idx = cur + 1;
+        btn.hidden = true;
+        if (idx >= beats().length) finish();
+        else ensureBeatVisible(beats()[cur]);
+      }
+    });
+  }
+  function buildDots(){
+    if (!dotsHost) return;
+    dotsHost.innerHTML = '';
+    beats().forEach(function(b, i){
+      var d = document.createElement('span');
+      d.className = 'of-dot' + (i <= furthest ? ' on' : '');
+      d.style.setProperty('--dc', toneOf(b));
+      d.addEventListener('click', function(){
+        for (var n = 1; n <= i; n++) show(n);
+        ensureBeatVisible(beats()[i]);
+      });
+      dotsHost.appendChild(d);
+    });
+  }
+  function refresh(){ beats().forEach(bindBeat); buildDots(); }
+  if (all) all.addEventListener('click', function(){
+    var bs = beats();
+    for (var n = 1; n < bs.length; n++) show(n);
+    bs.forEach(function(b){
+      var btn = b.querySelector(cfg.nextSel);
+      if (btn) btn.hidden = true;
+    });
+    idx = bs.length;
+    finish();
+    ensureBeatVisible(bs[bs.length - 1]);
+  });
+  refresh();
+  if (!('IntersectionObserver' in window)) {
+    beats().forEach(function(c){ c.classList.add('of-lit'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('of-lit'); io.unobserve(en.target); } });
+    }, { threshold: .12 });
+    beats().forEach(function(c){ io.observe(c); });
+  }
+  return { refresh: refresh, show: show, finish: finish,
+    reset: function(){
+      var bs = beats();
+      furthest = 0; idx = 1;
+      bs.forEach(function(b, i){
+        b.hidden = (i !== 0);
+        b.classList.remove('of-reveal');
+        var btn = b.querySelector(cfg.nextSel);
+        if (btn) btn.hidden = false;
+      });
+      if (all) all.hidden = false;
+      buildDots();
+      if (bs[0]) glowFor(bs[0]);
+    }};
+}
+/* --- ofShowSlide: the Studio's showSlide, parameterized. --- */
+function ofShowSlide(cfg, i){
+  var beats = qa(cfg.beatsSel);
+  if (!beats.length) return;
+  cfg.slide = Math.max(0, Math.min(i, beats.length - 1));
+  beats.forEach(function(b, j){
+    b.hidden = false;
+    b.classList.toggle('of-current', j === cfg.slide);
+  });
+  qa(cfg.dotsSel).forEach(function(d, j){ d.classList.toggle('on', j === cfg.slide); });
+  var c = $(cfg.countId);
+  if (c) c.textContent = 'Slide ' + (cfg.slide + 1) + ' of ' + beats.length;
+  var p = $(cfg.prevId); if (p) p.hidden = cfg.slide === 0;
+  var nx = $(cfg.nextId);
+  if (nx) nx.textContent = cfg.slide === beats.length - 1 ? 'Back to the start \u2039' : 'Next \u203a';
+  var nav = $(cfg.navId); if (nav) nav.hidden = false;
+}
+/* --- the bridge controller (GLUE) --- */
+var SECTIONS = {
+  about: { kind: 'about', root: $('about'), bridge: $('ofAboutBridge'),
+    presHead: $('ofAboutPresHead'), presLabel: $('ofAboutPresLabel'),
+    controls: $('ofAboutControls'), nav: $('ofAboutSlidesNav'),
+    library: $('ofAboutLibrary'), mode: 'bridge',
+    labelUnfold: 'About \u00b7 Unfold down', labelSlides: 'About \u00b7 Slideshow',
+    beatsSel: '#about .of-beat', dotsSel: '#ofAboutDots .of-dot',
+    slide: { beatsSel: '#about .of-beat', dotsSel: '#ofAboutDots .of-dot',
+      countId: 'ofAboutCount', prevId: 'ofAboutPrev', nextId: 'ofAboutNext',
+      navId: 'ofAboutSlidesNav', slide: 0 } },
+  skills: { kind: 'skills', root: document.querySelector('[data-os-view="skills"]'),
+    bridge: $('ofSkillsBridge'), presHead: $('ofSkillsPresHead'),
+    presLabel: $('ofSkillsPresLabel'), controls: $('ofSkillsControls'),
+    nav: $('ofSkillsSlidesNav'), library: null, mode: 'bridge',
+    labelUnfold: 'Skills \u00b7 Unfold down', labelSlides: 'Skills \u00b7 Slideshow',
+    beatsSel: '[data-os-view="skills"] .of-beat', dotsSel: '#ofSkillsDots .of-dot',
+    slide: { beatsSel: '[data-os-view="skills"] .of-beat', dotsSel: '#ofSkillsDots .of-dot',
+      countId: 'ofSkillsCount', prevId: 'ofSkillsPrev', nextId: 'ofSkillsNext',
+      navId: 'ofSkillsSlidesNav', slide: 0 } }
+};
+var UNFOLD = {};
+function furniture(kind, show){
+  var sel = kind === 'about' ? '#about > .ph-card' : '[data-os-view="skills"] > .ph-card';
+  qa(sel).forEach(function(el){ el.hidden = !show; });
+}
+function setMode(kind, mode, scroll){
+  var S = SECTIONS[kind]; if (!S || !S.root) return;
+  S.mode = mode;
+  var isBridge = (mode === 'bridge');
+  if (S.bridge) S.bridge.hidden = !isBridge;
+  if (S.presHead) S.presHead.hidden = isBridge || mode === 'library';
+  if (S.controls) S.controls.hidden = (mode !== 'unfold');
+  if (S.nav) S.nav.hidden = (mode !== 'slides');
+  if (S.library) S.library.hidden = (mode !== 'library');
+  S.root.classList.toggle('of-slides-mode', mode === 'slides');
+  furniture(kind, isBridge);
+  var beats = qa(S.beatsSel);
+  var doScroll = scroll !== false;
+  if (mode === 'unfold'){
+    if (S.presLabel) S.presLabel.textContent = S.labelUnfold;
+    if (UNFOLD[kind]) UNFOLD[kind].reset();
+    if (doScroll && S.presHead) S.presHead.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
+  } else if (mode === 'slides'){
+    if (S.presLabel) S.presLabel.textContent = S.labelSlides;
+    ofShowSlide(S.slide, 0);
+    if (doScroll && S.presHead) S.presHead.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
+  } else if (mode === 'library'){
+    beats.forEach(function(b){ b.hidden = true; });
+    openLibrary();
+  } else {
+    beats.forEach(function(b){ b.hidden = true; });
+    if (doScroll && S.bridge) S.bridge.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
+  }
+}
+/* --- the face beside the speaking boards (GLUE): the citizen's own picture,
+   harvested from the profile photo at runtime; the monogram stands in until
+   one is chosen (never a stock photo). .os-avatar-img keeps it in sync when
+   a photo is applied later (applyPhoto updates every .os-avatar-img). --- */
+function syncFace(){
+  var avv = $('avv');
+  var im = avv ? avv.querySelector('img') : null;
+  var src = im ? (im.getAttribute('src') || '') : '';
+  var pn = $('pname');
+  var ini = pn ? (pn.textContent || '').trim().charAt(0).toUpperCase() : 'S';
+  [['ofAboutFaceImg', 'ofAboutFaceMono'], ['ofSkillsFaceImg', 'ofSkillsFaceMono']].forEach(function(pair){
+    var f = $(pair[0]), m = $(pair[1]);
+    if (!f) return;
+    if (src && src.indexOf('data:image/svg') !== 0){
+      f.src = src; f.hidden = false; if (m) m.hidden = true;
+    } else {
+      f.hidden = true;
+      if (m){ m.hidden = false; m.textContent = ini || 'S'; }
+    }
+  });
+}
+/* --- the orbit on the touched circles (GLUE, §8): rings on the face are in
+   CSS; the layer orbs + skill jewels get ring spans here (children, so no
+   ::before/::after collision is possible). --- */
+function orbitCircles(){
+  qa('#about .ib-layer-head .os-about-orb, #about .ib-layer-head .os-jewel, [data-os-view="skills"] .sa-skill .os-jewel').forEach(function(el){
+    if (el.getAttribute('data-of-flow')) return;
+    el.setAttribute('data-of-flow', '1');
+    el.classList.add('of-flow');
+    var tone = el.style.getPropertyValue('--avc') || el.style.getPropertyValue('--jc') || '#a06bff';
+    el.style.setProperty('--tone', (tone || '').trim());
+    ['of-ring-a', 'of-ring-b'].forEach(function(cls){
+      var r = document.createElement('span');
+      r.className = 'of-ring ' + cls; r.setAttribute('aria-hidden', 'true');
+      el.appendChild(r);
+    });
+  });
+}
+/* --- skills beats arriving later (GLUE): a citizen-added skill joins the
+   presentations the moment it joins the list. --- */
+function refreshSkillsBeats(){
+  var list = $('os-skills-list'); if (!list) return;
+  var cards = qa('#os-skills-list .sa-skill');
+  cards.forEach(function(c, i){
+    if (c.classList.contains('of-beat')) return;
+    c.classList.add('of-beat');
+    c.setAttribute('data-of-beat', String(i + 1));
+    var tone = toneOfBeat(c);
+    c.style.setProperty('--tone', tone);
+    c.hidden = true;
+  });
+  /* The last beat never gets a Keep button (deck pattern); every other beat
+     has one — including a card that stopped being last when a newer skill
+     arrived. */
+  cards.forEach(function(c, i){
+    var has = !!c.querySelector(':scope > .of-next');
+    if (i < cards.length - 1 && !has){
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'p3-enter of-next';
+      btn.setAttribute('data-of-beat', String(i + 1));
+      btn.textContent = 'Keep reading \u25c6';
+      c.appendChild(btn);
+    }
+  });
+  orbitCircles();
+  if (UNFOLD.skills) UNFOLD.skills.refresh();
+}
+/* --- hooks the rest of the page relies on (kept, new semantics) --- */
+var ABOUT_ORDER = ['My motto', 'My story', 'What I do', 'My goals', 'My purpose', 'My mission', 'My vision'];
+window.__osAboutOpenTo = function(title){
+  var ix = ABOUT_ORDER.indexOf(title); if (ix < 0) return;
+  setMode('about', 'unfold');
+  var beats = qa('#about .of-beat');
+  for (var j = 1; j <= ix; j++){
+    if (beats[j]){ beats[j].hidden = false; beats[j].classList.add('of-reveal'); }
+  }
+  if (window.__osAboutRefreshNext) window.__osAboutRefreshNext();
+  try { beats[ix].scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch(e){}
+};
+window.__osAboutRefreshNext = function(){
+  var beats = qa('#about .of-beat');
+  var last = -1;
+  beats.forEach(function(b, i){ if (!b.hidden) last = i; });
+  beats.forEach(function(b, i){
+    var btn = b.querySelector('.of-next');
+    if (btn) btn.hidden = (i > last);
+  });
+};
+window.__osSkillsRebuild = function(){
+  refreshSkillsBeats();
+  var S = SECTIONS.skills;
+  if (S.mode === 'slides') ofShowSlide(S.slide, S.slide.slide);
+  else if (S.mode === 'unfold' && UNFOLD.skills) UNFOLD.skills.reset();
+};
+window.__osSkillsSetMode = function(m){
+  if (m === 'deck') setMode('skills', 'slides');
+  else setMode('skills', 'unfold');
+};
+/* --- the Intelligent Library (item 6, GLUE) --- */
+var libState = { entries: [], shown: [], cats: ['All'], cat: 'All', q: '' };
+var LIB_TONES = ['#a06bff', '#3fb8ff', '#2fe89e', '#ffbf3d', '#ff9a5a', '#ff5e6c', '#e84fff'];
+function libClient(){
+  try {
+    return (window.NayaAuth && window.NayaAuth.client)
+      || (window.getSb ? window.getSb() : null)
+      || ((typeof getSb === 'function') ? getSb() : null);
+  } catch(e){ return null; }
+}
+function libCatOf(row){
+  var f = row && row.naya_note_filing;
+  if (!f) return 'Unfiled';
+  if (Array.isArray(f)) return (f[0] && f[0].category_name) || 'Unfiled';
+  return f.category_name || 'Unfiled';
+}
+function libFromDom(){
+  var cards = qa('#os-lib-list .ph-card');
+  libState.entries = cards.map(function(card){
+    var h = card.querySelector('h3'), p = card.querySelector('p');
+    return { q: h ? (h.textContent || '').trim() : '',
+      a: p ? (p.textContent || '').trim() : '', at: '', cat: 'Unfiled' };
+  }).filter(function(e){ return e.q || e.a; });
+  renderLibCats(); renderLibList();
+}
+function renderLibCats(){
+  var host = $('ofLibCats'); if (!host) return;
+  var seen = {};
+  libState.cats = ['All'];
+  libState.entries.forEach(function(e){
+    if (!seen[e.cat]){ seen[e.cat] = 1; libState.cats.push(e.cat); }
+  });
+  host.innerHTML = '';
+  libState.cats.forEach(function(cat, i){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'of-lib-cat' + (cat === libState.cat ? ' on' : '');
+    b.style.setProperty('--tone', LIB_TONES[i % LIB_TONES.length]);
+    b.textContent = cat;
+    b.setAttribute('data-of-lib-cat', cat);
+    host.appendChild(b);
+  });
+}
+function libFiltered(){
+  var q = libState.q.trim().toLowerCase();
+  return libState.entries.filter(function(e){
+    if (libState.cat !== 'All' && e.cat !== libState.cat) return false;
+    if (q && (e.q + ' ' + e.a).toLowerCase().indexOf(q) < 0) return false;
+    return true;
+  });
+}
+function escHtml(s){
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+function renderLibList(){
+  var host = $('ofLibList'); if (!host) return;
+  libState.shown = libFiltered();
+  var meta = $('ofLibStatus');
+  if (!libState.entries.length){
+    host.innerHTML = '<p class="os-note">No entries yet — the first answer added below starts it.</p>';
+    if (meta) meta.textContent = 'Entries save onto this app, for every visitor.';
+    return;
+  }
+  if (!libState.shown.length){
+    host.innerHTML = '<p class="os-note">No answer matches that yet — try other words, or add it below.</p>';
+    return;
+  }
+  host.innerHTML = libState.shown.map(function(e, i){
+    var tone = LIB_TONES[(libState.cats.indexOf(e.cat)) % LIB_TONES.length] || '#2fe89e';
+    return '<div class="ph-card" style="--ac:' + tone + ';margin-top:12px">'
+      + '<h3 style="font-size:16px">' + escHtml(e.q) + '</h3>'
+      + '<p>' + escHtml(e.a) + '</p>'
+      + '<div class="os-note" style="margin-top:8px">' + escHtml(e.cat)
+      + (e.at ? ' &middot; ' + escHtml(e.at.slice(0, 10)) : '') + '</div>'
+      + '<div class="ph-actions"><button type="button" class="ph-connect of-lib-share" '
+      + 'data-of-lib-share="' + i + '">Share to the feed \u25c6</button></div></div>';
+  }).join('');
+  if (meta) meta.textContent = libState.shown.length + ' shown, of '
+    + libState.entries.length + ' in this app\u2019s library.';
+}
+function openLibrary(){
+  renderLibCats(); renderLibList();
+  var cnt = $('ofLibCount');
+  var sb = libClient();
+  if (!sb || typeof PAGE_ALIAS === 'undefined'){ libFromDom(); return; }
+  sb.from('smart_notes').select('id,content,created_at,naya_note_filing(category_name,match_score)')
+    .eq('owner_alias', PAGE_ALIAS).order('created_at', { ascending: false }).limit(300)
+    .then(function(res){
+      if (res && !res.error){
+        var rows = (res.data || []).map(function(r){
+          var c = null; try { c = JSON.parse(r.content); } catch(e){}
+          if (!c || c.k !== 'qa') return null;
+          return { q: c.q || '', a: c.a || '', at: r.created_at || '', cat: libCatOf(r) };
+        }).filter(Boolean);
+        libState.entries = rows;
+        renderLibCats(); renderLibList();
+        if (cnt) cnt.textContent = rows.length ? ('\u00b7 ' + rows.length + ' saved') : '';
+      } else { libFromDom(); }
+    }, function(){ libFromDom(); });
+}
+function shareEntry(i){
+  var e = libState.shown[i]; if (!e) return;
+  var text = (e.q ? e.q + '\n' : '') + e.a;
+  var st = $('ofLibStatus');
+  var say = function(msg){ if (st) st.textContent = msg; };
+  var pre = $('os-post-body');
+  if (pre) pre.value = text;
+  var doneMsg = 'Your words are in the composer \u2014 open it and tap Post to share them to the feed.';
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      say('Copied \u2014 paste it into a post, or open the composer: your words are already in it. Tap Post to share it to the feed.');
+    }, function(){ say(doneMsg); });
+  } else { say(doneMsg); }
+}
+/* --- init (GLUE) --- */
+UNFOLD.about = ofWireUnfold({ beatsSel: '#about .of-beat', dotsSel: '#ofAboutDots .of-dot',
+  dotsId: 'ofAboutDots', allId: 'ofAboutAll', nextSel: '.of-next' });
+UNFOLD.skills = ofWireUnfold({ beatsSel: '[data-os-view="skills"] .of-beat', dotsSel: '#ofSkillsDots .of-dot',
+  dotsId: 'ofSkillsDots', allId: 'ofSkillsAll', nextSel: '.of-next' });
+[['about', 'ofAboutPrev', 'ofAboutNext'], ['skills', 'ofSkillsPrev', 'ofSkillsNext']].forEach(function(pair){
+  var S = SECTIONS[pair[0]];
+  var pv = $(pair[1]), nx = $(pair[2]);
+  if (pv) pv.addEventListener('click', function(){ ofShowSlide(S.slide, S.slide.slide - 1); });
+  if (nx) nx.addEventListener('click', function(){
+    var n = qa(S.beatsSel).length;
+    ofShowSlide(S.slide, S.slide.slide === n - 1 ? 0 : S.slide.slide + 1);
+  });
+});
+document.addEventListener('click', function(e){
+  var o = e.target && e.target.closest ? e.target.closest('[data-of-open]') : null;
+  if (o){
+    var v = o.getAttribute('data-of-open');
+    if (v === 'about-unfold') setMode('about', 'unfold');
+    else if (v === 'about-slides') setMode('about', 'slides');
+    else if (v === 'about-library') setMode('about', 'library');
+    else if (v === 'skills-unfold') setMode('skills', 'unfold');
+    else if (v === 'skills-slides') setMode('skills', 'slides');
+    return;
+  }
+  var b = e.target && e.target.closest ? e.target.closest('[data-of-back]') : null;
+  if (b){ setMode(b.getAttribute('data-of-back'), 'bridge'); return; }
+  var cat = e.target && e.target.closest ? e.target.closest('[data-of-lib-cat]') : null;
+  if (cat){ libState.cat = cat.getAttribute('data-of-lib-cat'); renderLibCats(); renderLibList(); return; }
+  var sh = e.target && e.target.closest ? e.target.closest('[data-of-lib-share]') : null;
+  if (sh){ shareEntry(parseInt(sh.getAttribute('data-of-lib-share'), 10)); return; }
+});
+document.addEventListener('keydown', function(e){
+  var kind = null;
+  if (SECTIONS.about.mode === 'slides') kind = 'about';
+  else if (SECTIONS.skills.mode === 'slides') kind = 'skills';
+  if (!kind) return;
+  var S = SECTIONS[kind];
+  if (e.key === 'ArrowRight'){
+    var n = qa(S.beatsSel).length;
+    ofShowSlide(S.slide, S.slide.slide === n - 1 ? 0 : S.slide.slide + 1);
+  } else if (e.key === 'ArrowLeft'){ ofShowSlide(S.slide, S.slide.slide - 1); }
+});
+var libSearch = $('ofLibSearch');
+if (libSearch) libSearch.addEventListener('input', function(){
+  libState.q = libSearch.value || ''; renderLibList();
+});
+var libAdd = $('ofLibAdd');
+if (libAdd) libAdd.addEventListener('click', function(){
+  setMode('about', 'bridge');
+  setTimeout(function(){
+    var nq = $('os-lib-nq');
+    if (nq){ nq.scrollIntoView({ behavior: 'smooth', block: 'center' }); nq.focus(); }
+  }, 60);
+});
+syncFace();
+var _avv = $('avv');
+if (_avv && window.MutationObserver){
+  new MutationObserver(function(){ syncFace(); }).observe(_avv,
+    { attributes: true, subtree: true, attributeFilter: ['src'] });
+}
+orbitCircles();
+var _skList = $('os-skills-list');
+if (_skList && window.MutationObserver){
+  new MutationObserver(function(){ refreshSkillsBeats(); }).observe(_skList, { childList: true });
+}
+setMode('about', 'bridge', false);
+setMode('skills', 'bridge', false);
+})();
+</script>
 </body></html>
