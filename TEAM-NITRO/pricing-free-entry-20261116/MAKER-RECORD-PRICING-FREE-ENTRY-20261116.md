@@ -187,9 +187,12 @@ served bytes at the shas above.
 2. **Big files not yet on disk** (flake, above). Retry loops running; shas to verify
    against when they land: v78 `ca2eafeb…`, walk-free `ea1e77a6…`, free-entry `e0534a61…`,
    free worker `7a6a9095…`.
-3. **GitHub filing** — branch `pricing-f4-free-entry-20261116`, maker record + build/stage
-   scripts only (the 11 MB v78 source is NOT filed through the blob API; the staged worker
-   serves it byte-exact). Filed after this record; commit/blob in the report.
+3. **GitHub filing** — DONE: branch `pricing-f4-free-entry-20261116` in
+   `SoulSchoolAcademy/NayaPOWER` (TEAM-NITRO is a folder inside that repo),
+   commit `44d58b59206c2fecc5979c00500a50c58f84bf08` (+ this record's amendment
+   commit — see the report), 9 blobs, maker-record blob read-back MATCH.
+   NOT merged. The 11 MB v78 source is not filed; the staged worker serves it
+   byte-exact. `diff-v78.txt` not filed (0 bytes on disk — flake).
 4. **Live deploy** — not mine, not run. Live still serves v77. The live deploy swaps ONE
    string: the staged free URL in v78 (`FREE_ENTRY_URL` + button href) for the live walk
    entry, per the comment in the file. That swap is Shawn's tap.
