@@ -52517,6 +52517,39 @@
         "Distillation",
         "Publishing Door"
       ]
+    },
+    {
+      "smart_note_id": "SN-3077",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3077-proof-must-be-able-to-fail",
+      "slug": "proof-must-be-able-to-fail",
+      "title": "Proof Must Be Able to Fail",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3077/IB-SMART-NOTE-20261117-sn3077-proof-must-be-able-to-fail.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3077/IB-SMART-NOTE-20261117-sn3077-proof-must-be-able-to-fail.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3077/IB-SMART-NOTE-20261117-sn3077-proof-must-be-able-to-fail.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261117-sn3077-proof-must-be-able-to-fail.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-17T22:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-17",
+      "page_hash": "8580f606151ab1a91447fb3afd1673ab8ce0c87bcd4f103f7e79b7dbe0de3c78",
+      "content_hash": "2bd18ddeb8dd7ce2373f14314ee2878d4ba03a523905539653932e2bf169ba70",
+      "one_line": "No claim in this house counts until it has survived a real chance to be wrong. A verdict belongs to the exact bytes it was measured on and expires when those bytes move, unless the same blob is proven identical at both tips. A gate that cannot say no, a test that cannot fail, a checker that trusts the maker's own receipt, and a number that disagrees with its own ledger have all said nothing, however green they look. So we classify every red before touching it, price every wait by what new information it can actually buy, carry uncertainty only as far as the evidence carries it, and let nobody's word — not a teammate's, not our own earlier sentence, not even a confident summary — stand in for measurement. Proof is not reassurance. Proof is a measurement that could have come back against us, and did not.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Verification",
+        "Gates"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52527,5 +52560,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "229b34ba91f6bbe1e1c93fcb4a5b9064915667fb4324d6ca933830b38e238810"
+  "corpus_manifest_hash": "efbd0868e0198e03a54c43cbe1a7306ff7ec49774fe32799ca3080d0156191b3"
 }
