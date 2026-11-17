@@ -18,7 +18,7 @@ script and the file, and re-verified.
 
 | File | Size | sha256 |
 |---|---|---|
-| `fixed-entry.html` | 337,770 B | `9ac3b4f5f8189bf353af34f186ea9d14133e4024e1312be879a09a87d5f01ad3` |
+| `fixed-entry.html` | 337,779 B | `9ac3b4f5f8189bf353af34f186ea9d14133e4024e1312be879a09a87d5f01ad3` |
 | `manifest.webmanifest` | 585 B | `4e7958edfd722fbd8d3e842a7dd1076edf9e6bdfaef6a10f6be3dd6ad588a155` |
 | `icons/icon-512.png` | 229,337 B, 512×512 | `770cfa135f5e5dd983d7c1d7cd0b1e3e397e3ff482adc0465d644c15c4d8acbd` |
 | `icons/icon-192.png` | 48,626 B, 192×192 | `32903142c8e364e7ec01c32ced0bb47d2fe9bf4c3552b3ad751074d76005eb29` |

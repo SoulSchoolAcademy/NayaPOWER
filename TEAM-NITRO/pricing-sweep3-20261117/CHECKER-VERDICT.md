@@ -1,7 +1,7 @@
 # CHECKER VERDICT (SELF-CHECK) — Free Entry (/free), Inspector Sweep #3
 
 **Round:** Inspector Sweep #3 fix round, 2026-11-17 · **File checked:**
-`fixed-entry.html`, 337,770 B, sha256
+`fixed-entry.html`, 337,779 B, sha256
 `9ac3b4f5f8189bf353af34f186ea9d14133e4024e1312be879a09a87d5f01ad3`
 **Verdict: PASS with two owed items (see §6).**
 
