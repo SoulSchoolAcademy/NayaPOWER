@@ -5003,21 +5003,21 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 @media (max-width:768px){
   #os-bottom3{gap:22px;padding:8px 0 10px;}
 }
-/* ═══ FIX-3 2026-11-17 — THE FIVE TILES (Shawn 03:05Z) ═══
-   The Personal bottom bar's five tiles (+ ADD purple · MAIL blue ·
-   ACTIVITY green · WORLDS gold · ECOSYSTEM burnt orange) ride on the Dashboard
+/* ═══ FIX-3 2026-11-17 — THE SIX TILES (Shawn 03:05Z; GREETING-OUT 2026-11-17 adds CONNECT) ═══
+   The Personal bottom bar's six tiles (+ ADD purple · MAIL blue ·
+   ACTIVITY green · WORLDS gold · ECOSYSTEM burnt orange · CONNECT ruby) ride on the Dashboard
    too, so the way you move around your world is the same on every page.
    HARVESTED VERBATIM from the Personal bottom bar
    (hub-board-edit/check-hub-personal-alignment-20261116/personal-r4f2.html,
-   .notif-seg/.notif-tile L13453-13479; the five inline SVGs and the SEGS
-   order plus/mail/activity/spaces/eco): the tile construction, the tile
+   .notif-seg/.notif-tile L13453-13479; the six inline SVGs and the SEGS
+   order plus/mail/activity/spaces/eco/plus-connect): the tile construction, the tile
    size, the press scale, the count-bubble seat. ADAPTATIONS, named:
    (1) the shell stays the Dashboard's own #os-bottom3 (fixed bottom,
    z-200, os-bottom-hidden show/hide, drill-view hiding) — NOT Personal's
    .notif-bar shell — so there is ONE bar, not two stacked bars;
-   (2) the five colors are the Deep Palette deep values of the same hues
+   (2) the six colors are the Deep Palette deep values of the same hues
    (ADD #8e24aa royal purple · MAIL #0f52ba sapphire · ACTIVITY #07925f
-   deep emerald · WORLDS #d4a017 deep gold · ECOSYSTEM #c2410c) — the
+   deep emerald · WORLDS #d4a017 deep gold · ECOSYSTEM #c2410c · CONNECT #c62828 ruby) — the
    bright Personal values (#a06bff/#3fb8ff/#31cb8d/#ffbf3d) are superseded
    as values by the Deep Palette law; the hues are kept;
    (3) the hover lift+glow is Personal's own has-news shadow
@@ -5030,12 +5030,16 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    (5) the live count stays the Dashboard's own .os-b3-badge (feed count,
    99+ cap, synced by the FIX 5 script) inside the ACTIVITY tile. The
    gold home tile retires: the Dashboard IS the home view, and the
-   five-tile form carries no home.
-   (6) RESPONSIVE FIT — five tiles are wider than three buttons, so the gap
-   tightens below 560px: 5x54 + 4x28 = 442px fits desktop, but a 390px
-   phone needs 5x54 + 4x12 = 378px, and at 400px and under the tiles
-   shrink to Personal's 46px (5x46 + 4x12 = 338px). The gap rules carry
-   the .notif-five marker class so they outrank the pass-10
+   six-tile form carries no home.
+   (6) RESPONSIVE FIT — six tiles are wider than five, so the gap
+   tightens below 560px: the tile itself stays 54px (the harvested
+   object, never resized); the seg side padding goes to 0 and the gap
+   to 4px: 6x54 + 5x4 = 344px, which fits a 390px phone (46px spare)
+   and a 360px phone (16px spare); at 400px and under the tiles shrink
+   to Personal's 46px as before (6x46 + 5x4 = 296px). Desktop: 6 segs
+   x 66px + 5x28 = 536px; the 561-768 band keeps gap 22px (6x66 + 5x22
+   = 506px, fits 561px). The gap rules carry the .notif-six marker
+   class so they outrank the pass-10
    #os-bottom3{gap:28px !important} rule at any stylesheet position. */
 .notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#E8E8EC;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;}
 .notif-seg:active{transform:scale(.94);}
@@ -5045,7 +5049,7 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 .notif-seg:hover .notif-tile{transform:translateY(-3px);border-color:color-mix(in srgb, var(--nc) 88%, #ffffff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);}
 .notif-seg::after{content:attr(aria-label);position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-transform:uppercase;white-space:nowrap;line-height:1;background:linear-gradient(180deg,#1d1d26,#0b0b10);border:1.5px solid var(--nc);border-radius:999px;padding:8px 14px;box-shadow:0 8px 20px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.3);opacity:0;pointer-events:none;transition:opacity .18s, transform .18s;}
 .notif-seg:hover::after,.notif-seg:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0);}
-@media(max-width:560px){#os-bottom3.notif-five{gap:12px !important;}}
+@media(max-width:560px){#os-bottom3.notif-six{gap:4px !important;}#os-bottom3.notif-six .notif-seg{padding:2px 0 0;}}
 @media(max-width:400px){.notif-tile{width:46px;height:46px;}}
 
 </style>
@@ -5064,20 +5068,6 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 <!-- 2026-11-07 — PASS 3 (Addenda 3+4): the hero, zoomed to fit the viewport.
      Number at the very top, gauge + orbs below it, PTS/% underneath.
      One viewpoint, nothing else in it. The wrapper is scaled by fitHero(). -->
-<!-- DASHBOARD DONE-DONE 2026-11-17 — THE HERO: time-aware greeting with the signed-in citizen's name + the Wisdom of the Day quote + the time and the date + the Ledger sync line. Placed OUTSIDE #os-hero-fit on purpose: fitHero() measures the gauge inside that wrapper, and this band must not move its math. The greeting, the quote and the clock are filled by the DONE-DONE script at the end of the file; the static text below is only the loading skeleton, never a hardcoded name or quote. -->
-<section class="os-dd-hero" id="os-dd-hero" aria-label="Good morning">
-  <div class="os-dd-orb" aria-hidden="true"><span class="os-dd-ring os-dd-r1"></span><span class="os-dd-ring os-dd-r2"></span><span class="os-dd-core">N</span></div>
-  <div class="os-dd-main">
-    <h1 class="os-dd-greet" id="os-dd-greet">Good morning.</h1>
-    <div class="os-dd-wisdom" id="os-dd-wisdom" hidden>
-      <div class="os-dd-wk">Wisdom of the Day</div>
-      <blockquote class="os-dd-quote" id="os-dd-quote"></blockquote>
-      <div class="os-dd-src" id="os-dd-src"></div>
-    </div>
-    <p class="os-dd-date"><span class="os-dd-dot" aria-hidden="true"></span><span class="os-dd-date-str" id="os-dd-date-str"></span> <span class="os-dd-time" id="os-dd-time"></span></p>
-    <p class="os-dd-ledger" id="os-dd-ledger">Syncing&hellip;</p>
-  </div>
-</section>
 <div id="os-hero-fit">
 <div class="os-score-elegant" id="os-score-elegant">
   <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-msg">Loading&hellip;</span></span></div>
@@ -28944,21 +28934,22 @@ body.viewport-focus #viewport-back{
   }
 }
 </style>
-<!-- FIX-3 2026-11-17 — THE FIVE TILES (Shawn 03:05Z): the Personal bottom
-     bar's five tiles ride here — + ADD · MAIL · ACTIVITY · WORLDS ·
-     ECOSYSTEM — so the way you move around your world is the same on every
+<!-- FIX-3 2026-11-17 — THE SIX TILES (Shawn 03:05Z; GREETING-OUT 2026-11-17 adds CONNECT): the Personal bottom
+     bar's six tiles ride here — + ADD · MAIL · ACTIVITY · WORLDS ·
+     ECOSYSTEM · CONNECT — so the way you move around your world is the same on every
      page. ONE bar: the Dashboard's own #os-bottom3 shell (fixed bottom,
      os-bottom-hidden show/hide, drill-view hiding) carries Personal's
      tiles; the old three-button bar (mail / activity / gold home) retires.
      The badge is the live feed count, never a hard-coded number. Deep
      Palette: ADD purple #8e24aa · MAIL blue #0f52ba · ACTIVITY green
-     #07925f · WORLDS gold #d4a017 · ECOSYSTEM burnt orange #c2410c. -->
-<nav id="os-bottom3" class="os-bottom3 notif-five" aria-label="Dashboard">
+     #07925f · WORLDS gold #d4a017 · ECOSYSTEM burnt orange #c2410c · CONNECT ruby #c62828. -->
+<nav id="os-bottom3" class="os-bottom3 notif-six" aria-label="Dashboard">
   <button type="button" class="notif-seg" data-b3="add" style="--nc:#8e24aa" aria-label="Add" title="Add"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button>
   <button type="button" class="notif-seg" data-b3="mail" style="--nc:#0f52ba" aria-label="Smart Mail" title="Smart Mail"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span></button>
   <button type="button" class="notif-seg" data-b3="activity" style="--nc:#07925f" aria-label="Activity" title="Activity"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="os-b3-badge" id="os-b3-badge" hidden></span></span></button>
   <button type="button" class="notif-seg" data-b3="worlds" style="--nc:#d4a017" aria-label="Worlds" title="Worlds"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span></button>
   <button type="button" class="notif-seg" data-b3="eco" style="--nc:#c2410c" aria-label="Ecosystem" title="Ecosystem"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span></button>
+  <button type="button" class="notif-seg" data-b3="connect" style="--nc:#c62828" aria-label="Connect" title="Connect"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button>
 </nav>
 <script>
 /* FIX 5 — FIX 5 + FIX 7 init. Runs at end of body; DOM is ready. */
@@ -29020,6 +29011,15 @@ body.viewport-focus #viewport-back{
      The synthetic click on #os-eco-plus already stopPropagation()s itself. */
   var eco = document.querySelector('[data-b3="eco"]');
   if (eco) eco.addEventListener('click', function(e){ if(e && e.stopPropagation) e.stopPropagation(); var b=document.getElementById('os-eco-plus'); if (b) b.click(); });
+  /* GREETING-OUT 2026-11-17 — the sixth tile, CONNECT, harvested from
+     Personal's bar (plus-connect, ruby #c62828, the same + glyph as ADD).
+     Personal opens its plus menu in 'connect' mode (fcTogglePlusMenu),
+     which does not exist on the Dashboard — so this tile follows the
+     Dashboard's own connect destination, the page's own "Start Here"
+     connect link (https://nayanet.app/#/hub/connect), in the same
+     location.href shape as the mail and worlds tiles. Never a dead tile. */
+  var connect = document.querySelector('[data-b3="connect"]');
+  if (connect) connect.addEventListener('click', function(){ window.location.href='https://nayanet.app/#/hub/connect'; });
   /* the badges follow the live feed render — a MutationObserver on the list,
      so any render path updates them (no wrapping of the feed renderer). */
   try{
@@ -29772,57 +29772,6 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 }
 </style>
 <style>
-/* ================= DASHBOARD DONE-DONE 2026-11-17 — THE HERO =================
-   The greeting band: Good morning + Wisdom of the Day + time/date + Ledger
-   sync line. The board is the Smart Note board (board black inside, white
-   as a real object, rim in its own color — royal purple #8e24aa, joins/primary (Deep Palette) —
-   one top-left light at 135deg). ALIVE: the whole board lifts and lights up
-   on hover; dead on hover is a defect. The orb carries the orbit (two
-   rings, 120s CW / 180s CCW — ambient, alternating, never frantic).
-   No gray text anywhere — white, or the deep hues (deep gold kicker,
-   deep emerald date, deep gold time). The quote is 28px — double the 14px body font —
-   in quotation marks. Greeting, kicker, date/time colors are the Deep Palette deep
-   values (the Hub hero's bright values are superseded by his word, 2026-11-17 01:30Z); the quote size is the brief's "double font".
-   PEDESTAL (2026-11-17 01:41Z, Design Language §2/§5/§6 + Real Object Law):
-   every object in this band is a real object, never flat — board and orb
-   measured against the Smart Note board (§3 #2) and the top-left + (§3 #1);
-   inside is board black with black depth only, NO white inset top-light
-   (§6: out inside icons and buttons — the base's 315 occurrences predate
-   the law, this band follows the law); the white lives in the middle as a
-   real object with a tight edge light, never a wash; light lives outside
-   only (rim, halo, shadow down-right, one top-left source at 135deg); the
-   live dot is a bead, lit top-left, halo in deep emerald. No inputs and no
-   nested buttons exist in this band — checked, not applicable. The orbit
-   rings are flow (Naya Code §8), not objects. */
-.os-dd-hero{position:relative;display:flex;gap:24px;align-items:flex-start;margin:16px 16px 24px;padding:24px;border-radius:20px;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:1.5px solid #8e24aa;box-shadow:inset 0 -2px 4px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.5);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
-.os-dd-hero:hover{transform:translateY(-2px);border-color:#8e24aa;box-shadow:inset 0 -2px 4px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.6),0 0 32px rgba(142,36,170,.55);}
-.os-dd-hero:active{transform:scale(.97);}
-.os-dd-orb{position:relative;flex:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:1.5px solid #8e24aa;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.55),0 0 20px -2px rgba(142,36,170,.6);display:grid;place-items:center;}
-.os-dd-core{font-size:28px;font-weight:900;color:#fff;text-shadow:0 0 2px rgba(255,255,255,.9),0 1px 2px rgba(0,0,0,.8);}
-.os-dd-ring{position:absolute;border-radius:50%;border:1.5px solid transparent;pointer-events:none;}
-.os-dd-r1{inset:-10px;border-top-color:#8e24aa;border-right-color:rgba(142,36,170,.35);animation:os-dd-spin 120s linear infinite;}
-.os-dd-r2{inset:-20px;border-top-color:rgba(142,36,170,.6);border-left-color:rgba(142,36,170,.25);animation:os-dd-spin-rev 180s linear infinite;}
-@keyframes os-dd-spin{to{transform:rotate(360deg);}}
-@keyframes os-dd-spin-rev{to{transform:rotate(-360deg);}}
-.os-dd-main{flex:1;min-width:0;}
-.os-dd-greet{margin:0 0 8px;font-size:28px;line-height:1.15;font-weight:900;color:#fff;}
-.os-dd-wisdom{margin:4px 0 0;}
-.os-dd-wk{font-size:11px;letter-spacing:.24em;font-weight:800;color:#d4a017;text-transform:uppercase;}
-.os-dd-quote{margin:6px 0 4px;font-size:28px;line-height:1.4;font-weight:600;color:#fff;}
-.os-dd-src{font-size:13px;color:#fff;font-weight:600;opacity:1;} /* FIX-5 2026-11-17: 13px/400 read gray — weight 600 + opacity 1. */
-.os-dd-date{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 0;font-size:16px;color:#fff;}
-.os-dd-dot{width:10px;height:10px;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),rgba(255,255,255,0) 60%),#07925f;box-shadow:0 2px 4px rgba(0,0,0,.5),0 0 12px rgba(7,146,95,.8);animation:os-dd-breathe 4s ease-in-out infinite alternate;}
-@keyframes os-dd-breathe{from{opacity:.6;}to{opacity:1;}}
-.os-dd-time{color:#d4a017;font-variant-numeric:tabular-nums;text-shadow:0 0 18px rgba(212,160,23,.45);}
-.os-dd-date-str{color:#07925f;}
-.os-dd-ledger{margin:8px 0 0;font-size:13px;color:#fff;font-weight:600;opacity:1;} /* FIX-5 2026-11-17: 13px/400 read gray — weight 600 + opacity 1. */
-@media (max-width:900px){
-  .os-dd-hero{margin:12px 12px 16px;padding:16px;gap:16px;}
-  .os-dd-orb{width:48px;height:48px;}
-  .os-dd-core{font-size:20px;}
-  .os-dd-r1{inset:-7px;}
-  .os-dd-r2{inset:-13px;}
-}
 
 /* FIX-2 2026-11-17 (item 5) — "See every link" clickable at every scroll position.
    The fixed bottom bar (.ph-bottom, fixed bottom, z-index 200) can cover the
@@ -29833,188 +29782,6 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
    both bars. No color, no paint change. */
 [data-sl-summary-open]{scroll-margin-top:96px;scroll-margin-bottom:120px;}
 </style>
-<script>
-/* ================= DASHBOARD DONE-DONE 2026-11-17 — THE HERO =================
-   Greeting + Wisdom of the Day + time/date + Ledger sync line.
-   WISDOM — the pick logic is harvested from the Hub fix (2026-11-16,
-   SN-3014): today's Smart Note of the Day from the feed's own Smart Notes;
-   no note today, the newest earlier note carries forward, named with its
-   day; no notes at all -> no wisdom block renders — never an invented
-   quote. (Translated to this file's ES5 style; same branches, same caps,
-   same strings.) Source: the live Smart Note registry (/feed-live.json,
-   the same fetch the Hub uses) with the baked snapshot below as the
-   photograph when the fetch cannot run (proof host / offline). The bake is
-   trimmed to the fields the picker reads (title / subtitle / created).
-   NAME — the Hub's identity handoff (?name=, then this device's memory) —
-   never a hardcoded name. No name known -> greeting without a name (the
-   Hub precedent: environmental, not a defect). The R.identitySnapshot
-   branch is guarded by typeof because this page has no Hub runtime R.
-   LEDGER LINE — reads the page's own spine state (window._osSpine) and
-   funnel totals (window._dashFunnel: found / boardClicks / joined) — the
-   same numbers the stats flow from. Points only, always ("score 350 pts");
-   money appears nowhere here — the money law: money only on joins, and
-   the joins orb is the only $ carrier (r6-fixpass, 213 samples). */
-(function(){
-  var DD_BAKE = [{"title": "The Deed, the List, and the Way Around", "subtitle": "Shawn, 2026-11-16 19:44Z\u201320:51Z, seven notes: the sidebar list becomes official, the name box becomes a deed, and the night's failures become a law. **THE LIST (SN-3017 + SN-3018 + SN-3019 + SN-3021):** his corrections make the list. The reasoned proposal did its job: he corrected it \u2014 Pricing is Naya Power, so Pricing (Naya Pricing) belongs on the RIGHT, in the lower bottom, closer to the bottom ", "created": "2026-11-16T22:05:00Z"}, {"title": "One Eye, One System, On Fire", "subtitle": "Shawn, 2026-11-16 19:03Z\u201319:38Z, ten notes: the team at full fire, the eye done once, and the navigation decided once for the whole system. **THE TEAM (SN-3007 + SN-3011):** fine-tune the team \u2014 on fire 24-7, non-stop. \"Like, I want you to fine tune your team where they're on fire 24-7, non-stop. Full armies out there getting it done because you got this set up right. And it's at a perfect flow. Y", "created": "2026-11-16T22:00:00Z"}, {"title": "The Tap Is the Switch", "subtitle": "Shawn, 2026-11-16 18:47Z\u201319:02Z, ten notes from the live walk: the scorecard, the ship-gate, and the sidebar and bottom bar made to actually work. **THE SCORECARD (SN-2997):** scorecarding \u2014 the ultimate answer first. \"What you're really doing is like you're scorecarding. Figuring out what's the ultimate answer. What are you ultimately trying to do and then optimizing for that.\" Every job, round, ", "created": "2026-11-16T21:55:00Z"}, {"title": "Earn It, Don't Declare It", "subtitle": "Shawn, 2026-11-16 17:54Z\u201318:47Z, ten notes on the legal pages, the entrance, and how the machine behaves. **THE PRESENTATION (SN-2987 + SN-2989):** legal pages present as the unfolding \u2014 he makes the words perfect, Naya outputs them properly, one elevated board unfolding to the next, all the way through, for ALL legal pages; refined 17:59Z to the rhythm: three elevated boards at a time, then a but", "created": "2026-11-16T21:50:00Z"}, {"title": "Do It Right, Every Layer Great", "subtitle": "Shawn, 2026-11-16 16:55Z\u201317:53Z, ten notes on the professional standard. **THE PROMISE (SN-2977):** one page changes the world \u2014 everybody's world, on their smartphone, all their data in one place that's secure; mail, schedule, post, all operations, automated if they wish, open if they want in. The measure: land on a NayaNET page vs an average social feed \u2014 a whole different world. **THE CENTER + ", "created": "2026-11-16T21:44:00Z"}, {"title": "Right First Time, Right Away", "subtitle": "Shawn, 2026-11-16 16:01Z\u201316:50Z, ten notes on the day's work, in order. **THE COMPOSER (SN-2967):** make a post, beautiful \u2014 is it 10 out of 10? The post itself must be the most beautiful post in the network: feed chooser at the top, each post type explained in plain words, words with speak, up to nine photos as a block with the size stated plainly, preview as you type, scheduler, private/public w", "created": "2026-11-16T21:42:00Z"}, {"title": "The Page Is a Smart App", "subtitle": "Shawn, 2026-11-16 ~16:0x\u201316:2xZ, the anatomy of the smart app in ten notes. **THE MAP (SN-2960):** the page is a smart app \u2014 Personal, Business, Space, Thing, one machine, different faces, a Rubik's Cube matrix. What it has: stats, memberships, the running feed with comment and like. The anatomy answers what it has, how it functions, what works, what will be where, and why. v2 is a DRAFT for his w", "created": "2026-11-16T21:39:00Z"}, {"title": "Personal, Just Right, Done Today", "subtitle": "Shawn, 2026-11-16 15:29Z\u201316:01Z, ten notes on finishing the Personal page. **THE STANDARD (SN-2947):** the eight top buttons must be just right \u2014 perfect fit, edge to edge, no black space either side; \"slightly smaller so they fit\" (22:03Z) is superseded, it made them too small. CONNECT always green, the % white and alive like real digital output, greens toned down a notch \u2014 elegance, not rainbow ", "created": "2026-11-16T21:36:00Z"}];
-  var DD_BAKE_REF = 'registry@37c542f6f1525de29ed31e04ce7d06f01112065ad4fd48ccb17bc70d3e6f7ea7';
-  /* FIX-4 2026-11-17: strip markdown markers from the quote source — the
-     baked/live subtitles carry raw **bold** markers, which rendered literally
-     ("**THE LIST (SN-3017 + SN-30…"). Clean title, subtitle and layer 0
-     the same way before joining; collapse whitespace. */
-  function ddClean(v){
-    return String(v||'').replace(/\*+/g,'').replace(/__+/g,'').replace(/`+/g,'').replace(/\s+/g,' ').trim();
-  }
-  /* FIX-5 2026-11-17: the last sentence end (. ! ?) at or before LIM, past
-     MIN — a real sentence boundary (next char a space), never inside an
-     abbreviation (e.g. i.e. Mr. Dr. vs. etc.). -1 when there is none, so the
-     caller shows the FULL text instead of cutting mid-sentence. */
-  function ddSentenceEnd(t, lim, min){
-    var abbr=['e.g.','i.e.','Mr.','Ms.','Mrs.','Dr.','vs.','etc.'];
-    var end=-1;
-    for(var k=0;k<t.length && k<=lim;k++){
-      var ch=t[k];
-      if((ch==='.'||ch==='!'||ch==='?') && k>min && (k+1>=t.length || t[k+1]===' ')){
-        var isAb=false;
-        for(var a=0;a<abbr.length;a++){ var ab=abbr[a]; if(k+1>=ab.length && t.slice(k+1-ab.length,k+1)===ab){ isAb=true; break; } }
-        if(!isAb) end=k;
-      }
-    }
-    return end;
-  }
-  function ddPickWisdom(notes){
-    try{
-      var list=[], i, n;
-      for(i=0;i<(notes||[]).length;i++){ n=notes[i]; if(n && (n.title || n.subtitle)) list.push(n); }
-      if(!list.length) return null;
-      var dayKey=function(d){ var t=Date.parse(d||''); if(isNaN(t)) return ''; var x=new Date(t); return x.getFullYear()+'-'+(x.getMonth()+1)+'-'+x.getDate(); };
-      var today=dayKey(new Date().toISOString());
-      var dated=[];
-      for(i=0;i<list.length;i++){ var t=Date.parse(list[i].created_at || list[i].created || ''); if(!isNaN(t)) dated.push({n:list[i], t:t}); }
-      dated.sort(function(a,b){ return b.t-a.t; });
-      var todays=[];
-      for(i=0;i<dated.length;i++){ if(dayKey(dated[i].n.created_at || dated[i].n.created)===today) todays.push(dated[i]); }
-      var pick=todays[0] || dated[0];
-      if(!pick) return null;
-      var nn=pick.n;
-      var title=ddClean(nn.title);
-      var sub=ddClean(nn.subtitle);
-      var layer0=(nn.layers && nn.layers[0] && nn.layers[0].body) ? ddClean(nn.layers[0].body) : '';
-      /* FIX-5 2026-11-17: a subtitle that repeats the title (live notes quote
-         it mid-text) makes the visible quote repeat itself. Strip any repeat
-         of the title from the subtitle/layer before joining. */
-      if(title){
-        var _li=sub.toLowerCase().indexOf(title.toLowerCase());
-        if(_li!==-1){ sub=(sub.slice(0,_li)+sub.slice(_li+title.length)).replace(/\s+/g,' ').trim(); }
-        var _lj=layer0.toLowerCase().indexOf(title.toLowerCase());
-        if(_lj!==-1){ layer0=(layer0.slice(0,_lj)+layer0.slice(_lj+title.length)).replace(/\s+/g,' ').trim(); }
-      }
-      var text=title;
-      if(sub && sub!==title) text=title+' \u2014 '+sub;
-      else if(layer0 && layer0!==title) text=title+' \u2014 '+layer0;
-      var full=text; /* FIX-4 2026-11-17: the full cleaned text, kept for title/data-full below. */
-      if(text.length>220){ var _se=ddSentenceEnd(text,220,100); if(_se>100){ text=text.slice(0,_se+1); } /* FIX-5 2026-11-17: cut ONLY at a sentence end — the visible quote is a whole sentence, never a mid-list cut, and no ellipsis (it ends with its own period). No sentence end in range: show the FULL text, never cut mid-sentence. The char-limit cut is gone. */ }
-      var when=new Date(pick.t).toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-      var carried=todays.length ? 'Smart Note of the Day' : 'Daily Wisdom, carried forward \u2014 the Smart Note of the Day from '+when;
-      return {text:text, full:full, src:carried};
-    }catch(e){ return null; }
-  }
-  function ddWho(){
-    var who='';
-    try{
-      var qp=new URLSearchParams(location.search);
-      var qn=(qp.get('name') || '').trim();
-      var qa=(qp.get('alias') || '').trim().toLowerCase().replace(/[^a-z0-9]/g,'');
-      if(qa){ try{ localStorage.setItem('nayanet_smart_alias', qa); }catch(e){} }
-      if(qn){
-        who=qn.split(/\s+/)[0];
-        try{ localStorage.setItem('nayanet_smart_name', qn); }catch(e){}
-        try{ history.replaceState(null,'',location.pathname+location.hash); }catch(e){}
-      }else{
-        try{
-          var _pn=document.getElementById('pname');
-          if(_pn && _pn.textContent){ var _pw=_pn.textContent.trim().split(/\s+/)[0]; if(_pw && _pw.toLowerCase()!=='you') who=_pw; }
-        }catch(e){}
-        if(who){ try{ localStorage.setItem('nayanet_smart_name', who); }catch(e){} }
-        if(!who){
-          who=(localStorage.getItem('nayanet_smart_name') || '').trim().split(/\s+/)[0];
-        }
-        if(qa){ try{ history.replaceState(null,'',location.pathname+location.hash); }catch(e){} }
-      }
-      if(!who){
-        var Rref=(typeof R !== 'undefined') ? R : null;
-        var id=Rref && Rref.identitySnapshot && Rref.identitySnapshot();
-        if(id && id.display_name && id.display_name!=='You') who=id.display_name;
-      }
-      try{ if(who || qa) document.cookie='nayanet_returning=1; path=/; max-age=31536000; SameSite=Lax'; }catch(e){}
-    }catch(e){ /* identity unavailable - fall back to neutral greeting */ }
-    return who;
-  }
-  function ddFmt(n){
-    try{ if(typeof window._osSpc==='function') return window._osSpc(Number(n)); }catch(e){}
-    return String(Number(n));
-  }
-  function ddRenderClock(){
-    var now=new Date();
-    var hour=now.getHours();
-    var greet=hour<12 ? 'Good morning' : hour<18 ? 'Good afternoon' : 'Good evening';
-    var who=ddWho();
-    var g=document.getElementById('os-dd-greet');
-    if(g) g.textContent=greet+(who ? ', '+who : '')+'.';
-    var ds=document.getElementById('os-dd-date-str');
-    if(ds) ds.textContent=now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-    var tm=document.getElementById('os-dd-time');
-    if(tm) tm.textContent=now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit'});
-  }
-  function ddRenderWisdom(w){
-    var box=document.getElementById('os-dd-wisdom');
-    if(!box) return;
-    if(!w){ box.hidden=true; return; }
-    var q=document.getElementById('os-dd-quote');
-    var s=document.getElementById('os-dd-src');
-    if(q){ q.textContent='\u201C'+w.text+'\u201D'; if(w.full){ q.setAttribute('title', w.full); q.setAttribute('data-full', w.full); } } /* FIX-4 2026-11-17: the full quote is reachable (hover title + data-full) even when the shown text is trimmed. */
-    if(s) s.textContent=w.src;
-    box.hidden=false;
-  }
-  function ddRenderLedger(){
-    var el=document.getElementById('os-dd-ledger');
-    if(!el) return;
-    var sp=window._osSpine, f=window._dashFunnel;
-    if(!sp || sp.loading || typeof sp.score!=='number'){ el.textContent='Syncing\u2026'; return; }
-    var txt='Ledger \u00B7 '+ddFmt(sp.score)+' pts';
-    if(f && typeof f.found==='number' && typeof f.boardClicks==='number' && typeof f.joined==='number'){
-      txt+=' \u00B7 Found '+ddFmt(f.found)+' \u00B7 Board '+ddFmt(f.boardClicks);
-      if(typeof f.plan9Clicks==='number'){ txt+=' \u00B7 Plan '+ddFmt(f.plan9Clicks); }
-      txt+=' \u00B7 Joined '+ddFmt(f.joined);
-    }else{ txt+=' \u00B7 synced'; }
-    var at=sp.updatedAt || window._osHeroUpdatedAt || 0;
-    if(at){
-      var s2=Math.max(0,Math.round((Date.now()-at)/1000));
-      txt+= s2<5 ? ' \u00B7 now' : ' \u00B7 '+s2+'s ago';
-    }
-    if(el.textContent!==txt) el.textContent=txt;
-  }
-  function ddLoadWisdom(){
-    var bake=[];
-    for(var i=0;i<DD_BAKE.length;i++) bake.push({title:DD_BAKE[i].title, subtitle:DD_BAKE[i].subtitle, created:DD_BAKE[i].created});
-    ddRenderWisdom(ddPickWisdom(bake));
-    var ctl=null, timer=null;
-    try{ ctl=new AbortController(); }catch(e){}
-    if(ctl){ timer=setTimeout(function(){ try{ ctl.abort(); }catch(e){} },15000); }
-    var p=ctl ? fetch('/feed-live.json',{signal:ctl.signal}) : fetch('/feed-live.json');
-    p.then(function(r){ if(!r.ok) throw new Error('live fetch '+r.status); return r.json(); }).then(function(d){
-      if(timer) clearTimeout(timer);
-      if(!d || !Array.isArray(d.notes) || !d.notes.length) throw new Error('live feed empty');
-      ddRenderWisdom(ddPickWisdom(d.notes));
-    }).catch(function(){ /* the bake still serves - nothing breaks */ });
-  }
-  ddRenderClock();
-  ddRenderLedger();
-  ddLoadWisdom();
-  if(!window._ddClock){
-    window._ddClock=setInterval(function(){ ddRenderClock(); ddRenderLedger(); },1000);
-  }
-})();
-</script>
 <div class="os-v6-stamp">Dashboard v9 · DONE-DONE · 2026-11-17</div>
 <style id="os-fix4">
 /* ═══ FIX-4 2026-11-17 — the captain's 390px eye (04:18Z) ═══
@@ -30051,14 +29818,13 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
    (5) the left + (#os-rooms-plus) moves to 250px — clear of the N orb's
    halo ring + glow at desktop and at 390 (see the build script for the
    geometry); Fix-4's 170px still stands underneath and is overridden here.
-   (6) the five-tile bottom bar STAYS VISIBLE inside drill dialogs: the
+   (6) the six-tile bottom bar STAYS VISIBLE inside drill dialogs: the
    viewport-focus hide is overridden and the bar is raised above the drill
    (z-index 10002 over the drill's 10001); the Smart Links drill gets
    bottom padding so its last row clears the bar. */
 input::placeholder,textarea::placeholder{color:#fff !important;opacity:1 !important;}
 input::-moz-placeholder,textarea::-moz-placeholder{color:#fff !important;opacity:1 !important;}
 input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#fff !important;opacity:1 !important;}
-#os-dd-src,#os-dd-ledger{color:#fff !important;opacity:1 !important;}
 .os-note{color:#fff !important;opacity:1 !important;}
 #os-rooms-plus{top:250px !important;}
 body.viewport-focus #os-bottom3{display:flex !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;transform:none !important;z-index:10002 !important;}
