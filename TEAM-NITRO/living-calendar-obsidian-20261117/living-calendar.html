@@ -51,7 +51,8 @@
   the BOTTOM RIGHT corner holds the info-eye, the door to the day's info —
   in v4 the harvested [P] .eye-jewel circle, pearl/diamond, with a little
   'i' inside it (amendment #4(2)); the numbers are literally the Dashboard
-  digit tiles, shrunk ~25% in the day cell per amendment #4(3); the cells
+  digit tiles, shrunk small in the day cell per amendment #4(3), smaller
+  still per amendment #8(1); the cells
   are BIG; pearl gems, not neon; no trailing next-month days in the grid.
   AMENDMENT #2 (Shawn's eye, 03:01Z — the DAY VIEW): the day header carries
   a beautiful jewel icon for the day (Monday = 417 Hz, orange in it) — the
@@ -81,7 +82,8 @@
   directed mark: .eye-jewel exists in pricing only as CSS (lines 140, 1460),
   never in markup; pricing's nearest usage is the white jewel + SVG eye at
   [P] line 2259.
-  (3) The day numbers shrink ~25% (54px med tiles → 40px in the day cell)
+  (3) The day numbers shrink (54px med tiles → 40px in the day cell,
+  then → 22px per amendment #8(1) — "now the numbers are way too big")
   so the page breathes; the cells can't get bigger, so the numbers shrink —
   with fit breakpoints so two-digit days fit whole at every width, 635 and
   390 included (this also fixes the checker's clipping finding). (4) Less
@@ -96,7 +98,9 @@
   three named fixes, in the tile block and the month grid below.
   THE CAPTAIN'S SCORECARD (03:47Z — the don't-love is the build list, all
   ten ride in v5): (1) TODAY LIGHTS UP WAY MORE, unmistakable at a glance,
-  the brightest thing on the page. (2) The eye too big and too white —
+  the brightest thing on the page — SUPERSEDED by amendment #7 (03:54Z):
+  no TODAY pill, no cell fill, no glow, no pulse; today is known from the
+  weekday plaque and the header TODAY button. (2) The eye too big and too
   shrink it, balance it, less white, a jewel not a white blob (same pass
   as the black-middle fix). (3) The weekday name plain white text — a
   ROYAL OBJECT, Marcellus, elevated, jewel-like, never plain text.
@@ -129,8 +133,9 @@
   never in the middle.
   AMENDMENT #6 (Shawn's eye, 03:47Z — arrived mid-round, rides into v5 as
   an amendment the same turn): (1) TODAY LIGHTS UP WAY MORE — you must
-  tell what day it is at a glance; today is unmistakable, not a whisper.
-  (2) THE WEEKDAY NAME IS A ROYAL OBJECT — "Sunday at the top is not
+  tell what day it is at a glance; today is unmistakable, not a whisper —
+  SUPERSEDED by amendment #7 (03:54Z); the #6 today treatment (second rim,
+  strong halos, jewel dot) was removed in full. (2) THE WEEKDAY NAME IS A
   written in royalty, it's just written in plain text" — the weekday name
   must read as a real object, royalty, elevated, jewel-like, never plain
   text on black. (3) THE EYE, BALANCED — SMALLER, LESS WHITE — "maybe made
@@ -139,6 +144,31 @@
   reads as a jewel, not a white blob. (The 03:47Z scorecard's 10 love /
   10 don't love was not in this seat's context — only these three named
   fixes are applied here.)
+  AMENDMENT #7 (Shawn's eye, 03:54Z — REVISES amendment #6(1)): "So you
+  don't need to put the huge today. I don't want it to light up. Um
+  glowing over the day itself." NO huge TODAY pill, NO glow over the day
+  itself, NO cell filled with the day's color, no pulse, no TODAY tag —
+  the cell reads exactly like its siblings. Today is known from the
+  weekday plaque (today's plaque is the lit one, the mode-pill active
+  treatment) and the header TODAY button. THE BUTTON LESSON: the PTS /
+  % / MONEY button quality ([D] .os-pts-btn, harvested — obsidian pill,
+  bold white label, own color as the outer glow at rest, the lit one
+  burning brighter) goes on the weekday plaques, the boards, the month
+  header (NOVEMBER 2026), the TODAY button, and the back/forward arrows.
+  The eye as built is APPROVED — "I do like the eye better now where you
+  have it color matched too. Glow that looks much better" — do not touch it.
+  AMENDMENT #8 (Shawn's eye, 03:55Z — the restored tiles): (1) NUMBERS
+  SMALL — "now the numbers are way too big. You know to make them small."
+  The Dashboard digit tiles stay (good, harvested verbatim, never remade)
+  but SMALL in the month cells, much smaller than the restored size — the
+  tiles must never dominate the cell. Only the scale changes (54px → 22px
+  at base, down the breakpoints); the tile object is untouched. (2) COMMON
+  LANGUAGE THROUGHOUT — "use the high quality stuff that I just shared
+  with you... you didn't put that quality into the buttons or the labels
+  right of the days." The button lesson goes into the buttons AND the
+  weekday labels too — the same quality everywhere on the page, not just
+  on the numbers: weekday plaques, TODAY button, back/forward arrows,
+  boards, all speaking the one language.
 -->
 <style>
 /* ============ ROOT + BASE ============ */
@@ -310,27 +340,47 @@ button{font-family:inherit}
 #monthView{height:100dvh;display:flex;flex-direction:column;padding:16px 16px 12px;gap:10px}
 /* The month name + prev/next are the calendar itself — nothing else. */
 .cal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none}
-.cal-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(26px,4.4vw,44px);line-height:1.05;color:#fff;margin:0;text-align:center}
+/* Amendment 2 (03:54Z — THE BUTTON LESSON): the month header is a royal
+   object too — an obsidian plaque, white Marcellus, white rim, its own
+   soft glow, elevated. The year's color is white (the header's own color
+   is white); the plaque is the object, not plain text on black. */
+.cal-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(26px,4.4vw,44px);line-height:1.05;color:#fff;margin:0;text-align:center;display:inline-block;background:linear-gradient(180deg,#1a1a22,#050607 70%);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;padding:10px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 24px rgba(0,0,0,.55),0 0 18px rgba(255,255,255,.35)}
 .cal-title em{font-style:normal;color:#fff}
 .cal-nav{display:flex;gap:8px;align-items:center;flex:none}
 .cal-nav .primo{padding:12px 18px;font-size:14px}
 .cal-nav .primo.today{padding:12px 20px}
+/* Amendment 2 — THE BUTTON LESSON ([D] .os-pts-btn, harvested): each button
+   wears its own color as an outer glow at rest; the lit one burns brighter.
+   TODAY wears today's weekday color (--glow / --glow-rgb set by render()).
+   The back/forward arrows wear white — their label color, already glowing
+   at rest through the .primo base shadow; white IS their own color, and no
+   invented mapping is assigned to them. */
+.cal-nav .primo.today{border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),0 12px 32px rgba(0,0,0,.65),0 0 18px rgba(var(--glow-rgb),.5)}
+.cal-nav .primo.today:hover{box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.7),0 14px 36px rgba(0,0,0,.65)}
 /* Weekday names in their day's color — [C] render() colored them so.
    Amendment #4(1) (Shawn's eye, 03:19Z): the FULL day names (Sunday,
    Monday...), almost in royalty, in Marcellus — not S/M/T/W/T/F/S. The
    Marcellus is real now (the [P] font link in <head>); the size scales
    with the viewport so the longest name still fits its cell. */
 .cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;flex:none}
-.cal-week div{text-align:center;font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(11px,2.2vw,20px);letter-spacing:.04em;white-space:nowrap}
+.cal-week div{text-align:center;font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(11px,2.2vw,20px);letter-spacing:.04em;white-space:nowrap;color:#fff}
 /* Amendment #6 (Shawn's eye, 03:47Z — THE WEEKDAY NAME IS A ROYAL OBJECT):
    "Sunday at the top is not written in royalty, it's just written in plain
    text." Each weekday name is a real object now — an obsidian pill, rim in
    its day's color (--dc from the dow-N class the renderer sets), elevated
-   with its own outside glow. The name keeps its day color inside the pill.
-   The pill IS the grid cell, so it always fits its track; padding stays
-   small so the longest name still fits at 390. */
+   with its own outside glow. The pill IS the grid cell, so it always fits
+   its track; padding stays small so the longest name still fits at 390.
+   Amendments 2 + 3 (03:54Z/03:55Z — THE BUTTON LESSON, [D] .os-pts-btn
+   harvested): the label is BOLD WHITE, readable at a glance like the PTS /
+   % / MONEY pills — the day's color lives in the rim and in the outer glow
+   at rest (0 0 18px, the mode pills' rest treatment), not in the text.
+   TODAY's plaque is the LIT one (the mode-pill active treatment — the
+   border thickens, the glow burns brighter): today is known from the
+   plaque, never from lighting the cell (Amendment 2). The .today class is
+   toggled by render(), only while the displayed month is the current one. */
 .cal-week div{background:linear-gradient(180deg,#1a1a22,#050607 70%);border:1.5px solid var(--dc);border-radius:999px;padding:6px 4px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5),0 0 12px rgba(var(--dc-rgb),.35)}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.5)}
+.cal-week div.today{border-width:2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 10px rgba(0,0,0,.5),0 0 36px rgba(var(--dc-rgb),.7),0 0 72px rgba(var(--dc-rgb),.35)}
 /* The grid fills the screen. No scrolling. Rows = the weeks the month
    actually needs (4–6) — the grid ends at the month's last day; no trailing
    next-month days, no trailing blank row at the bottom. Rows stretch to
@@ -354,14 +404,16 @@ button{font-family:inherit}
 .cal-day:hover .os-mini-tile,.cal-day:focus-visible .os-mini-tile{transform:translateY(-2px)}
 .cal-day:active{transform:translateY(1px) scale(.985)}
 .cal-day .os-mini-tile{transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
-/* Today glows brighter than the rest at rest — rim + halo only, never the middle. Pearl. */
-/* Amendment #6 (Shawn's eye, 03:47Z — TODAY LIGHTS UP WAY MORE): you must
-   tell what day it is at a glance. Today carries a second rim (outline in
-   the day's color, outside the border — no layout shift, so the v4 fit
-   math stands), halos more than twice as strong, and the today dot is a
-   jewel now — the day's color with a white ring and its own glow. */
-.cal-day.today{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.6),0 0 30px rgba(var(--dc-rgb),.65),0 0 60px rgba(var(--dc-rgb),.3);outline:2px solid rgba(var(--dc-rgb),.55);outline-offset:2px}
-.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;background:var(--dc);box-shadow:0 0 0 2px #fff,0 0 12px var(--dc),0 0 20px rgba(var(--dc-rgb),.6)}
+/* Today carries NO light of its own — Amendment 2 (Shawn, 03:54Z) REVISES
+   the 03:47Z "today lights up WAY more": "I don't want it to light up.
+   Um glowing over the day itself." No huge TODAY pill, no glow over the
+   day itself, no cell filled with the day's color, no pulse, no TODAY
+   tag. The Amendment #6 treatment (second rim, strong halos, jewel dot)
+   is REMOVED — today's cell reads exactly like its siblings. Today is
+   known from the weekday plaque (the lit one) and the header TODAY
+   button, not from lighting the cell. The .today class stays on the cell
+   (state only); it has no visual rule. The record dot (.has) is untouched
+   — it marks a day with bookings/notes, not today. */
 /* A day with a record carries one small dot, bottom-left, in its day's
    color — the presence signal, [C] .dots, reduced to a single dot. */
 .cal-day .has{position:absolute;left:12px;bottom:12px;width:7px;height:7px;border-radius:50%;background:var(--dc);box-shadow:0 0 8px var(--dc);flex:none}
@@ -408,7 +460,7 @@ button{font-family:inherit}
 .doors{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:18px 0}
 .doors .door-inst{display:flex;align-items:center;gap:14px;width:100%;min-width:0;cursor:pointer;text-align:left;color:#F8F7FB;font-family:inherit;font-weight:800;font-size:15px;letter-spacing:.08em;padding:16px 18px;border-radius:18px;border:1.5px solid rgba(255,255,255,.2);
   background:linear-gradient(180deg,#1a1a22 0%,#0a0a0f 45%,#050507 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -2px 6px rgba(0,0,0,.5),0 8px 20px rgba(0,0,0,.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -2px 6px rgba(0,0,0,.5),0 8px 20px rgba(0,0,0,.5),0 0 18px -6px var(--glow);
   transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s var(--ease);--glow:var(--purple)}
 .doors .door-inst:hover,.doors .door-inst:focus-visible{transform:translateY(-2px);border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -2px 6px rgba(0,0,0,.5),0 0 28px var(--glow),0 12px 28px rgba(0,0,0,.6)}
 .doors .door-inst:active{transform:translateY(1px) scale(.985)}
@@ -423,7 +475,7 @@ button{font-family:inherit}
    underneath) is superseded here by the board headers. */
 /* Timeline — [C] .daytimeline board, .ph-card construction, rim in the day color. */
 .daytimeline{border:2px solid var(--dc);border-radius:20px;padding:20px 22px;margin:18px 0 0;background:linear-gradient(180deg,#07070b,#050607);color:#fff;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 24px rgba(var(--dc-rgb),.16)}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
 .daytimeline>strong{display:block;font-size:13px;letter-spacing:.14em}
 .daytimeline .tl-sub{font-size:13px;color:#fff;margin-top:4px}
 .tl-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
@@ -452,14 +504,14 @@ button{font-family:inherit}
    news/weather/horoscope have no live source wired, so their boards say
    so honestly as beautiful empty states — never blank, never fake. Each
    board with a matching door opens that door on tap (role=button). */
-.wisdom-banner{margin:18px 0 0;border-color:var(--dc);text-align:center;padding:26px 28px}
+.wisdom-banner{margin:18px 0 0;border-color:var(--dc);text-align:center;padding:26px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
 .wisdom-banner:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
 .wisdom-banner .wq-glyph{display:block;font-size:22px;line-height:1;color:#fff;text-shadow:0 0 18px rgba(var(--dc-rgb),.8);margin-bottom:10px}
 .wisdom-banner .wq{font-family:Marcellus,Georgia,serif;font-size:clamp(19px,2.6vw,26px);line-height:1.45;color:#fff;margin:0}
 .wisdom-banner .ws{display:block;margin-top:12px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#fff}
 .dash{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
 .dash .span2{grid-column:span 2}
-.dash-board{margin:0;border-color:var(--dc);cursor:pointer}
+.dash-board{margin:0;border-color:var(--dc);cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
 .dash-board:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
 .dash .daytimeline{margin:0}
 .db-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
@@ -528,6 +580,7 @@ select.field option{background:#0a0a0f;color:#fff}
   .cal-week{gap:5px}
   .cal-week div{font-size:9px;letter-spacing:.02em}
   .cal-day{border-radius:14px;padding:8px 2px;gap:4px}
+  .cal-title{padding:6px 14px}
   .cal-nav .primo{padding:10px 12px;font-size:12px}
   .cal-nav .primo.today{padding:10px 14px}
   .os-mini-num.med{gap:3px}
@@ -554,68 +607,72 @@ select.field option{background:#0a0a0f;color:#fff}
   .day-back{margin-left:0}
 }
 
-/* ============ AMENDMENT #4(3) — DAY NUMBERS ~25% SMALLER, FIT AT EVERY WIDTH ============ */
-/* Shawn's eye, 03:19Z: the numbers shrink ~25% so the page breathes and
-   looks bigger and more elegant; the cells can't get bigger, so the
-   numbers shrink. This ALSO fixes the checker's clipping finding: the
-   harvested med tiles are 54px, so a two-digit day is 112px wide, and
-   .cal-day has overflow:hidden — two-digit days were cut at every width
-   from 481px to ~1088px, including 635px (a cell there holds only ~47px
-   of a 112px number). The harvested [D] tile block above is NOT touched
-   (it stays verbatim); this is a calendar-only override on .cal-day, the
-   same kind of sizing adaptation the 480px day rules already make.
-   Sizing: 54px → 40px tiles is the ~25% shrink (two-digit = 83px).
+/* ============ AMENDMENT #4(3) — DAY NUMBERS SMALL, FIT AT EVERY WIDTH ============ */
+/* Shawn's eye, 03:19Z: the numbers shrink so the page breathes and looks
+   bigger and more elegant; the cells can't get bigger, so the numbers
+   shrink. This ALSO fixes the checker's clipping finding: the harvested
+   med tiles are 54px, so a two-digit day is 112px wide, and .cal-day has
+   overflow:hidden — two-digit days were cut at every width from 481px to
+   ~1088px, including 635px (a cell there holds only ~47px of a 112px
+   number). The harvested [D] tile block above is NOT touched (it stays
+   verbatim); this is a calendar-only override on .cal-day, the same kind
+   of sizing adaptation the 480px day rules already make.
+   AMENDMENT 3(1) (Shawn, 03:55Z — NUMBERS SMALL): "now the numbers are
+   way too big. You know to make them small." The tiles stay — they are
+   good, harvested verbatim, never remade — but SMALL in the month cells,
+   much smaller than the restored size; the tiles must never dominate the
+   cell. The ~25% shrink (54px → 40px) is superseded by this scale:
+   54px → 22px at base, and down the breakpoints. Only the SCALE changes;
+   the tile object (form, values, caps) is untouched.
    Fit math — cell = (viewport − monthView padding − 6×grid gap) / 7,
    content = cell − 2×cell padding − 4px border; two-digit width must be
    ≤ content. Worked at each breakpoint's narrow end:
-   · base (>1088): 40px tile, 83px two-digit; at 1089 the cell holds 112px.
-   · ≤1088: 34px tile, 71px two-digit, padding 10px; at 769 the cell holds 74px.
-   · ≤768: 28px tile, 58px two-digit, padding 6px; at 641 the cell holds 64px.
-   · ≤640: 22px tile, 46px two-digit, padding 3px; at 481 the cell holds 47px.
-   · ≤480: 19px tile, 40px two-digit (the harvested 22px day rule above is
-     overridden here — at 390 the cell holds only 42px, so 22px tiles at
-     46px still clipped ~4px); at 390 the cell holds 42px.
-   · ≤360: 15px tile, 31px two-digit, padding 1px; at 320 the cell holds 34px.
+   · base (>1088): 22px tile, 46px two-digit; at 1089 the cell holds 112px.
+   · ≤1088: 19px tile, 40px two-digit, padding 10px; at 769 the cell holds 74px.
+   · ≤768: 16px tile, 34px two-digit, padding 6px; at 641 the cell holds 64px.
+   · ≤640: 13px tile, 27px two-digit, padding 3px; at 481 the cell holds 47px.
+   · ≤480: 11px tile, 23px two-digit (the harvested 22px day rule above is
+     overridden here); at 390 the cell holds 42px.
+   · ≤360: 9px tile, 19px two-digit, padding 1px; at 320 the cell holds 34px.
    The day-view header number and the instrument counts keep the full
    54px med tiles — they have room, and only the month-view day numbers
    were ordered smaller. */
-.cal-day .os-mini-num.med{gap:3px}
-.cal-day .os-mini-num.med .os-mini-tile{width:40px;border-radius:8px;border-width:2px}
-.cal-day .os-mini-num.med .os-mini-tile .cap{height:7px}
-.cal-day .os-mini-num.med .os-mini-tile .rd{height:40px;line-height:40px;font-size:36px}
+.cal-day .os-mini-num.med{gap:2px}
+.cal-day .os-mini-num.med .os-mini-tile{width:22px;border-radius:5px;border-width:2px}
+.cal-day .os-mini-num.med .os-mini-tile .cap{height:4px}
+.cal-day .os-mini-num.med .os-mini-tile .rd{height:22px;line-height:22px;font-size:20px}
 @media (max-width:1088px){
   .cal-day{padding:12px 10px}
-  .cal-day .os-mini-num.med .os-mini-tile{width:34px;border-radius:7px}
-  .cal-day .os-mini-num.med .os-mini-tile .cap{height:6px}
-  .cal-day .os-mini-num.med .os-mini-tile .rd{height:34px;line-height:34px;font-size:30px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:19px;border-radius:4px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:4px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:19px;line-height:19px;font-size:17px}
 }
 @media (max-width:768px){
   .cal-day{padding:10px 6px}
-  .cal-day .os-mini-num.med{gap:2px}
-  .cal-day .os-mini-num.med .os-mini-tile{width:28px;border-radius:6px}
-  .cal-day .os-mini-num.med .os-mini-tile .cap{height:5px}
-  .cal-day .os-mini-num.med .os-mini-tile .rd{height:28px;line-height:28px;font-size:25px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:16px;border-radius:4px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:3px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:16px;line-height:16px;font-size:14px}
 }
 @media (max-width:640px){
   .cal-day{padding:8px 3px}
-  .cal-day .os-mini-num.med .os-mini-tile{width:22px;border-radius:5px;border-width:1.5px}
-  .cal-day .os-mini-num.med .os-mini-tile .cap{height:4px}
-  .cal-day .os-mini-num.med .os-mini-tile .rd{height:22px;line-height:22px;font-size:20px}
+  .cal-day .os-mini-num.med{gap:1px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:13px;border-radius:3px;border-width:1.5px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:3px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:13px;line-height:13px;font-size:12px}
 }
 @media (max-width:480px){
   .plan-eye{width:22px;height:22px;font-size:11px}
   .cal-day .plan-eye{bottom:6px;right:6px}
-  /* Overrides the harvested 22px day rule in the 480px block above —
-     22px tiles (46px two-digit) still clip ~4px in a 42px cell at 390. */
-  .cal-day .os-mini-num.med .os-mini-tile{width:19px;border-radius:4px}
-  .cal-day .os-mini-num.med .os-mini-tile .rd{height:19px;line-height:19px;font-size:17px}
+  /* Overrides the harvested 22px day rule in the 480px block above. */
+  .cal-day .os-mini-num.med .os-mini-tile{width:11px;border-radius:3px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:11px;line-height:11px;font-size:10px}
 }
 @media (max-width:360px){
   .cal-day{padding:6px 1px}
   .cal-day .os-mini-num.med{gap:1px}
-  .cal-day .os-mini-num.med .os-mini-tile{width:15px;border-radius:3px}
-  .cal-day .os-mini-num.med .os-mini-tile .cap{height:3px}
-  .cal-day .os-mini-num.med .os-mini-tile .rd{height:15px;line-height:15px;font-size:13px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:9px;border-radius:2px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:2px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:9px;line-height:9px;font-size:8px}
   .cal-week div{font-size:8px;letter-spacing:0}
 }
 @media (prefers-reduced-motion:reduce){
@@ -929,8 +986,10 @@ function dashHTML(ds){
 
 /* ============ MONTH — the numbers fill the screen ============ */
 /* Amendment #6: the weekday pill takes its day's color from the dow-N class
-   (--dc / --dc-rgb), so the rim and the glow read the day's color. */
-$('weeknames').innerHTML=WEEKDAY.map((w,i)=>`<div class="dow-${i}" style="color:${w.color}">${w.name}</div>`).join('');
+   (--dc / --dc-rgb), so the rim and the glow read the day's color. The
+   label itself is white (Amendments 2 + 3 — the button lesson: bold white
+   label, color in the rim and glow, like the PTS / % / MONEY pills). */
+$('weeknames').innerHTML=WEEKDAY.map((w,i)=>`<div class="dow-${i}">${w.name}</div>`).join('');
 function dayHasRecord(ds){ return dayBookings(ds).length>0 || dayNotes(ds).length>0; }
 /* The eye mark — [P] .eye-jewel CSS, pricing v77 line 140: a white jewel
    circle (Marcellus 700). `.eye-jewel` exists in pricing only as CSS
@@ -941,6 +1000,17 @@ function dayHasRecord(ds){ return dayBookings(ds).length>0 || dayNotes(ds).lengt
 function render(){
   const first=new Date(year,month,1).getDay();
   const n=new Date(year,month+1,0).getDate();
+  /* Amendment 2 (03:54Z): today is known from the weekday plaque — the
+     plaque for today's weekday is the lit one (the mode-pill active
+     treatment) — and from the header TODAY button, which wears today's
+     weekday color. Only while the displayed month is the current month;
+     the cell itself carries no light. */
+  document.querySelectorAll('#weeknames div').forEach((el,i)=>{
+    el.classList.toggle('today', year===NOW.getFullYear()&&month===NOW.getMonth()&&i===NOW.getDay());
+  });
+  const tw=WEEKDAY[NOW.getDay()];
+  $('todayBtn').style.setProperty('--glow',tw.color);
+  $('todayBtn').style.setProperty('--glow-rgb',tw.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(','));
   /* AMENDMENT (Shawn 02:58Z): the grid ends at the month's last day — no
      trailing next-month days, no trailing blank row. Rows = the weeks the
      month actually needs; they stretch to fill, so the cells are BIG. */
