@@ -1813,6 +1813,12 @@ body.fp-stage-on #fpAgreement.fp-view-letterpage.fp-letter-end .letter-page-end{
    Amendment 23:04Z — the letter page: board centered, Keep reading
    just below it, small links at the very bottom, never clipping. */
 #fpAgreement .fp-welcome-hero{flex-direction:column;gap:10px;max-width:860px}
+/* FIX ROUND (2026-11-17) — the hero itself centres: Fix-3's >=1024px rule
+   (margin:0, higher specificity) left the 860px hero in a left column, the
+   play button 495px off the welcome's centre at 1851. This rule uses
+   Fix-3's own selector, later in the sheet, so its margin:0 auto wins;
+   the play button's own bytes are untouched, only its position moves. */
+body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-side .fp-welcome-hero{flex-direction:column;gap:10px;max-width:860px;margin:0 auto 20px}
 .fp-play-name{color:#fff;font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:13px;line-height:1;text-shadow:0 1px 2px rgba(0,0,0,.85)}
 /* Fix 3's side column is superseded: the portrait now sits beside welcome
    board 1 (placeFaces), so the intro is one centred column again. */
@@ -2145,6 +2151,8 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     b.classList.add('reveal');
     if (dots[n]) dots[n].classList.add('on');
     glowFor(b);
+    /* FIX ROUND (2026-11-17) — re-place faces on every beat change. */
+    if (window.__fpPlaceFaces) window.__fpPlaceFaces();
   }
   function ensureBeatVisible(b){
     if (!b) return;
@@ -2210,6 +2218,8 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     var official = parseInt(b.getAttribute('data-beat'), 10);
     if (dots[official]) dots[official].classList.add('on');
     glowFor(b);
+    /* FIX ROUND (2026-11-17) — re-place faces on every beat change. */
+    if (window.__fpPlaceFaces) window.__fpPlaceFaces();
   }
   function ensureBeatVisible(b){
     if (!b) return;
@@ -2297,6 +2307,8 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
        like wireLetterUnfold already does. */
     var official = parseInt(b.getAttribute('data-beat'), 10);
     if (dots[official]) dots[official].classList.add('on');
+    /* FIX ROUND (2026-11-17) — re-place faces on every beat change. */
+    if (window.__fpPlaceFaces) window.__fpPlaceFaces();
   }
   function finish(){
     ctl.hidden = true;
@@ -2478,6 +2490,9 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
       var willShow = panel.hidden;
       panel.hidden = !willShow;
       if (willShow) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      /* FIX ROUND (2026-11-17) — re-place faces when a legal page opens
+         outside the stage render, so its intro face shows. */
+      if (window.__fpPlaceFaces) window.__fpPlaceFaces();
     });
   });
   document.querySelectorAll('.fp-legal-page').forEach(function(panel){
@@ -2521,6 +2536,9 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     if (close) close.addEventListener('click', function(){
       panel.hidden = true;
       document.getElementById('fpLegal').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      /* FIX ROUND (2026-11-17) — re-place faces on close, so the intro
+         face hides with its page. */
+      if (window.__fpPlaceFaces) window.__fpPlaceFaces();
     });
   });
 })();
@@ -2846,9 +2864,27 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
    margin on the face side so the face stays in view. Only visible
    boards get a face; hidden boards' faces hide with them. Runs on load,
    on every stage render (window.__fpPlaceFaces), on resize, and when
-   fonts arrive. fitBarPadding: the layer's bottom padding follows the
+   fonts arrive. FIX ROUND (2026-11-17): a moved-out face is re-found by
+   its data-fp-face tag (see faceImgFor), so stale faces hide and a face
+   first positioned before a font swap is corrected; re-runs on window
+   load too. fitBarPadding: the layer's bottom padding follows the
    real bottom-bar height, so the bar never covers the board's last line. */
 (function(){
+  /* FIX ROUND (2026-11-17) — find a board's face whether it is still
+     inside the board or already moved out into the board's parent:
+     placeFaces moves each photo out (the board has overflow:hidden),
+     so on the next run board.querySelector('.deal-beat-photo') finds
+     nothing and the stale face is never hidden or re-positioned — deck 9
+     showed all nine faces, and deck 1 kept its pre-font position. Each
+     moved face is tagged with data-fp-face (its board's key) and looked
+     up by that tag when it is no longer inside its board. */
+  function faceImgFor(board, key){
+    var img = board.querySelector('.deal-beat-photo');
+    if (img) return img;
+    var parent = board.parentNode;
+    if (!parent) return null;
+    return parent.querySelector('.deal-beat-photo.fp-speak-face[data-fp-face="' + key + '"]');
+  }
   function placeFaces(){
     var faces = [];
     var wPortrait = document.querySelector('.fp-naya-portrait');
@@ -2856,14 +2892,17 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     if (wPortrait && wBoard) faces.push({img: wPortrait, board: wBoard, side: 'left'});
     Array.prototype.slice.call(document.querySelectorAll(
       '#deckBody .letter-beat, #letterBody .letter-beat')).forEach(function(b){
-      var img = b.querySelector('.deal-beat-photo');
-      if (img) faces.push({img: img, board: b,
+      var key = (b.parentNode && b.parentNode.id === 'deckBody' ? 'deck:' : 'letter:') + b.getAttribute('data-beat');
+      var img = faceImgFor(b, key);
+      if (img) faces.push({img: img, board: b, key: key,
         side: b.classList.contains('face-right') ? 'right' : 'left'});
     });
     Array.prototype.slice.call(document.querySelectorAll(
       '.fp-legal-page .fp-legal-intro')).forEach(function(b){
-      var img = b.querySelector('.deal-beat-photo');
-      if (img) faces.push({img: img, board: b, side: 'left'});
+      var panel = (b.closest) ? b.closest('.fp-legal-page') : null;
+      var key = 'legal:' + (panel ? panel.id : '');
+      var img = faceImgFor(b, key);
+      if (img) faces.push({img: img, board: b, key: key, side: 'left'});
     });
     var wide = window.innerWidth >= 900;
     faces.forEach(function(f){
@@ -2879,6 +2918,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
       var parent = board.parentNode;
       if (img.parentNode !== parent) parent.appendChild(img);
       img.classList.add('fp-speak-face');
+      if (f.key) img.setAttribute('data-fp-face', f.key);
       img.style.display = '';
       try {
         if (window.getComputedStyle(parent).position === 'static') {
@@ -2924,6 +2964,10 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
   placeFaces();
   fitBarPadding();
   window.addEventListener('resize', function(){ placeFaces(); fitBarPadding(); });
+  /* FIX ROUND (2026-11-17) — re-place once everything (fonts included)
+     has settled, so a face first positioned before a font swap is
+     corrected even if fonts.ready already fired. */
+  window.addEventListener('load', function(){ placeFaces(); fitBarPadding(); });
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function(){ placeFaces(); fitBarPadding(); });
   }
@@ -3315,13 +3359,14 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
   if(linkToAgree)linkToAgree.addEventListener('click',function(){S.view='agree';S.all=null;render();});
   if(linkLetterBack)linkLetterBack.addEventListener('click',function(){S.view='intro';S.all=null;render();});
   if(linkDeckBack)linkDeckBack.addEventListener('click',function(){S.view='deck';S.deck=deckBeats.length-1;S.all=null;render();});
-  /* SHARE PLUS — the legal row sits at the very bottom of the opening
-     view; a tap opens that page in the footer view (the panel wireLegal
-     already toggled stays open there). */
+  /* FIX ROUND (2026-11-17) — the legal row sits at the very bottom of
+     the opening view; a tap opens that page IN THE LEGAL VIEW (the
+     footer landing left the panel display:none, so all 12 links
+     were dead from the intro strip). */
   legalSec.addEventListener('click',function(e){
     if(S.view!=='intro')return;
     var b=(e.target&&e.target.closest)?e.target.closest('[data-legal-open]'):null;
-    if(b){S.view='footer';S.all=null;render();}
+    if(b){var pid=b.getAttribute('data-legal-open');var lp=q('#legal-'+pid);var lbs=lp?legalBeatsOf(lp):[];var ll=lastShown(lbs);S.view='legal';S.legalId=pid;S.legal=ll>=0?ll:0;S.all=null;render();}
   });
   if(nextBtn2)nextBtn2.addEventListener('click',function(){if(S.view==='intro'||(S.view==='deck'&&S.deck===deckBeats.length-1)){enterLetterPage();}});
   if(letterPageAgree)letterPageAgree.addEventListener('click',function(){agreeFromLetterPage();});
