@@ -918,7 +918,7 @@ svg.jewel { display: block; }
   filter: drop-shadow(0 0 5px rgba(255,255,255,.5));
 }
 .eco-plus:hover {
-  transform: scale(1.1) rotate(90deg);
+  transform: scale(1.1);
   border-color: rgba(157,117,255,.7);
   box-shadow:
     0 0 28px rgba(157,117,255,.55),
@@ -926,7 +926,6 @@ svg.jewel { display: block; }
     0 8px 20px rgba(0,0,0,.55);
 }
 .eco-plus:hover svg {
-  transform: rotate(-90deg);
   filter: drop-shadow(0 0 6px rgba(157,117,255,.8));
 }
 .eco-plus:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
@@ -10564,10 +10563,8 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
    TOP-LEFT + (the button: thin bright purple edge, clone, board
    black); bh-btn = the X (inside) + SMART NOTE BOARD (black) +
    TOP-LEFT + (pill button); tab-jewel = the X + SMART NOTE BOARD. */
-.rooms-plus:hover{transform:translateY(-2px) scale(1.1) rotate(90deg);border-color:rgba(157,117,255,.8);box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent),0 12px 28px rgba(0,0,0,.6);}
-.rooms-plus:hover svg{transform:rotate(-90deg);filter:drop-shadow(0 0 6px rgba(157,117,255,.8));}
-/* FIX-2 glyph (re-check observation): mirror .eco-plus:hover svg (L928) - counter-rotate the svg -90deg so the + stays a + through the spin; the svg needs the same .18s transition to track the button (eco-plus carries its own .25s transition at L917). NOTE: in .top the svg is display:none and the visible + is the ::after glyph - the svg rule cannot steady that glyph; see fix log. */
-.rooms-plus svg{transition:transform .18s cubic-bezier(.16,.84,.22,1);}
+.rooms-plus:hover{transform:translateY(-2px) scale(1.1);border-color:rgba(157,117,255,.8);box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent),0 12px 28px rgba(0,0,0,.6);}
+/* FIX-3 (coordinator decision 2026-11-17): spin DROPPED - rotation is decorative, legibility is law; the svg counter-rotation is removed (dead: the svg never shows - display:none at desktop, hidden in .top) and there is no ::after counter-rotation (it would swing the orbit dot). ALIVE = lift + scale + own-color ignition + white pop, no rotation. */
 .board-h .bh-btn:hover{animation:none;transform:translateY(-2px);border-color:var(--bc);color:#fff;box-shadow:0 0 32px var(--bc),0 0 48px var(--bc),0 10px 22px rgba(0,0,0,.55);}
 /* NOTE on bh-btn: the ambient btn-flash animation animates box-shadow,
    which would mask any hover box-shadow — so :hover sets animation:none
