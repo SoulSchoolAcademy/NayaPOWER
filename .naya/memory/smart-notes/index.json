@@ -52616,6 +52616,39 @@
         "Governance",
         "Authority"
       ]
+    },
+    {
+      "smart_note_id": "SN-3080",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3080-his-eye-is-the-final-gate",
+      "slug": "his-eye-is-the-final-gate",
+      "title": "His Eye Is the Final Gate",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3080/IB-SMART-NOTE-20261117-sn3080-his-eye-is-the-final-gate.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3080/IB-SMART-NOTE-20261117-sn3080-his-eye-is-the-final-gate.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3080/IB-SMART-NOTE-20261117-sn3080-his-eye-is-the-final-gate.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261117-sn3080-his-eye-is-the-final-gate.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-17T22:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-17",
+      "page_hash": "b5e363de58800eafa5f78b7118c1585daa88f6a939ab2836b28207128619e3af",
+      "content_hash": "0bd04107ebe8f7097be5da832319ea9e088da398e9f75ce8f5b1921885cf1150",
+      "one_line": "Every instrument in this house can pass a thing, and the thing can still be wrong — because instruments measure what they were built to measure, and the Director's eye measures what it is actually like to be a person meeting the work. Twelve of twelve checks passed the Dashboard, and his eye still found the gold 3 rendered purple, the flat pills, the small gauge. So the craft law is twofold. Build only from his real material — harvested code, measured anatomy, canonical blocks composed and never invented per page, colour on the rim and never on the glyph, the ground structural and never contingent — and subtract until the thing itself remains, because ten times better means a better human experience, not more effects. Then submit it, without flinching, to the one verdict that settles claims: his eye, on a real screen, feeling whether the numbers and gauges together feel like the high-performance machine they claim to be. When he says ten out of ten, that is a scope boundary as much as a score — what earned it stays exactly as it is.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Design",
+        "Experience"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52626,5 +52659,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "23a53f9083eeea917b738b547669a9fbcb926703d760d09a90685c03c01bf093"
+  "corpus_manifest_hash": "13f2fd4cb24f7065d644bb6d1941f38583497ce33bf7e64d1d705c0cbc9e0f87"
 }
