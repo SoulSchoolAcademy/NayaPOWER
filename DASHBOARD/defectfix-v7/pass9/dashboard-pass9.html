@@ -4549,6 +4549,13 @@ html.os-calm
 .os-sl-gauge{flex:1 1 0;min-width:0;text-align:center}
 .os-sl-gauge-dial .tn-mini-mount{width:100%;max-width:150px;margin:0 auto} /* HERO FIX 2026-11-09 (i): the canonical mini takes the B-star's footprint. */
 .os-sl-gauge-num{font-size:20px;font-weight:900;color:#fff;line-height:1.1;font-variant-numeric:tabular-nums}
+/* GREETING-OUT FIX 2026-11-17 (§3.3b) — the unmeasured-state cell. The state
+   reads in the number's place (17px, the law's small-text floor, white);
+   the dial keeps its height so the row stays aligned. No mount, no gauge,
+   no 0 — the cell is honest about what it does not know. */
+.os-sl-state-cell{display:flex;align-items:center;justify-content:center;min-height:64px;}
+.os-sl-state-txt{font-size:17px;font-weight:800;color:#fff;line-height:1.3;text-align:center;}
+
 /* FIX 6 — METRIC STRIP + LEGEND + MOCK TOGGLE + PER-METRIC NUMBERS + PHONE */
 .os-metric-strip{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:14px 0 4px}
 .os-metric-legend{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
@@ -5041,9 +5048,9 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    = 506px, fits 561px). The gap rules carry the .notif-six marker
    class so they outrank the pass-10
    #os-bottom3{gap:28px !important} rule at any stylesheet position. */
-.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#E8E8EC;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;}
+.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#ffffff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;}
 .notif-seg:active{transform:scale(.94);}
-.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%);border:1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);color:color-mix(in srgb, var(--nc) 72%, #ffffff);transition:box-shadow .3s, border-color .3s, transform .2s;}
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%);border:1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);color:#ffffff;transition:box-shadow .3s, border-color .3s, transform .2s;}
 .notif-tile::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(155deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 42%),linear-gradient(25deg, rgba(255,255,255,0) 62%, color-mix(in srgb, var(--nc) 22%, transparent) 100%);}
 .notif-tile svg{width:25px;height:25px;filter:drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent));position:relative;}
 .notif-seg:hover .notif-tile{transform:translateY(-3px);border-color:color-mix(in srgb, var(--nc) 88%, #ffffff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);}
@@ -5051,6 +5058,46 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 .notif-seg:hover::after,.notif-seg:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0);}
 @media(max-width:560px){#os-bottom3.notif-six{gap:4px !important;}#os-bottom3.notif-six .notif-seg{padding:2px 0 0;}}
 @media(max-width:400px){.notif-tile{width:46px;height:46px;}}
+/* GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control for the Dashboard
+   bar. A real object (Real Object Law; no flatness, 19:48Z): obsidian black,
+   white rim, light from the top-left, elevated, alive on hover. It sits in
+   the corner just above the bar (bottom:100px desktop, 82px at <=768px —
+   the bar is ~91px / ~74px tall); when the bar is folded (scrolling) or
+   off (their choice) it drops to the corner (bottom:12px) so it stays
+   reachable. The down chevron folds the bar down, the up chevron brings it
+   back. */
+#os-b3-hide{position:fixed;right:12px;bottom:100px;z-index:1005;width:38px;height:38px;border-radius:50%;cursor:pointer;
+  color:#fff;font-size:17px;font-weight:800;line-height:1;text-align:center;
+  background:linear-gradient(180deg,#1d1d26,#0b0b10 60%,#050607);
+  border:1.5px solid rgba(255,255,255,.65);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.6),0 0 14px rgba(255,255,255,.12);}
+#os-b3-hide:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.6),0 12px 26px rgba(0,0,0,.65),0 0 18px rgba(255,255,255,.18);}
+#os-b3-hide:active{transform:translateY(1px);}
+body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
+@media(max-width:768px){#os-b3-hide{bottom:82px;}}
+
+/* GREETING-OUT FIX 2026-11-17 (§3.6) — the notification light, bright, for
+   each tile: Personal's has-news, HARVESTED VERBATIM from the Personal
+   build as filed (commit d300db0e, blob 9a006c47, line 32413). The Fix-3
+   comment already names it as "Personal's own has-news shadow" — the rule
+   itself was never carried over. When a tile has news, its border goes
+   bright in its own colour + white and its glow deepens, like a permanent
+   hover. */
+.notif-seg.has-news .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
+/* The notification seat on each tile — a real jewel, dim when the tile has
+   no news, bright in the tile's own colour when it does. The ACTIVITY tile
+   keeps its count badge (the live feed count) instead of a dot. A dim dot
+   is never clickable (pointer-events:none) so the tile's own tap works; a
+   lit dot opens the day view for today (the notification path, §3.7). */
+.os-b3-dot{position:absolute;top:-7px;right:-7px;width:14px;height:14px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.85), color-mix(in srgb, var(--nc) 30%, transparent) 55%, color-mix(in srgb, var(--nc) 18%, transparent));
+  border:1px solid color-mix(in srgb, var(--nc) 45%, transparent);
+  box-shadow:0 0 6px color-mix(in srgb, var(--nc) 25%, transparent);opacity:.55;}
+.notif-seg.has-news .os-b3-dot{pointer-events:auto;cursor:pointer;opacity:1;
+  background:radial-gradient(circle at 35% 30%, #fff, var(--nc) 55%, color-mix(in srgb, var(--nc) 70%, #000));
+  border-color:#fff;
+  box-shadow:0 0 10px var(--nc),0 0 20px color-mix(in srgb, var(--nc) 75%, transparent);}
+
 
 </style>
 <div class="os-dash" id="os-dash">
@@ -8798,6 +8845,8 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <div id="os-dash-funnel"></div>
 <p class="os-note" id="os-dash-links-head"><span class="os-skel-line" style="width:60%"></span></p>
 <div id="os-dash-links"><div class="os-skel"></div></div>
+
+</div>
 <!-- PASS-4 2026-11-09 — YOUR REPORTS, THE SAME STAT PRESENTATION as every
      other board (title + subtitle + stat row + nutshell + open line). The
      stat row is filled live from the spine by _renderReportsBoard (actions
@@ -8817,7 +8866,6 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <p>Newest first.</p>
 <p class="os-reports-cta">Reports room &rarr;</p>
 </a>
-</div>
 <!-- 2026-11-07 — PASS 3 (Addenda 3+4): the running feed — a news report of
      all notifications, everything going on. Below the fold, never above.
      "Open inbox" goes to the real inbox (the page's notification surface). -->
@@ -10343,7 +10391,7 @@ NF.register(UNIT, {
       var _slr=null;
       try{ (window._dashLinkRows||[]).forEach(function(r){ if(r.name===_sln) _slr=r; }); }catch(e){}
       if (!_slr){ try{ var _by=window._slLinkByName||{}; if(_by[_sln]) _slr=_by[_sln]; }catch(e){} }
-      if (_slr && window.openSmartLinkView){ window._smartlinkSingle=_slr; window.openSmartLinkView('nayanet.app/'+_slr.name, _slr.url||((_slr.clicks||0)+' clicks · '+(_slr.joins||0)+((_slr.joins||0)===1?' join':' joins')+' · this link only')); return; }
+      if (_slr && window.openSmartLinkView){ window._smartlinkSingle=_slr; window.openSmartLinkView('nayanet.app/'+_slr.name, _slr.url||((typeof window._osSpc==='function'?window._osSpc(_slr.clicks||0):(_slr.clicks||0))+' clicks · '+(typeof window._osSpc==='function'?window._osSpc(_slr.joins||0):(_slr.joins||0))+((_slr.joins||0)===1?' join':' joins')+' · this link only')); return; }
       showView('notes'); return;
     }
     var suf=t.closest?t.closest('[data-sl-unfile]'):null;
@@ -11383,8 +11431,8 @@ NF.register(UNIT, {
   function slOrbCell(n, label, color){ return '<div class="os-orb-cell"><span class="os-orb" style="--ac:' + color + ';width:52px;height:52px"><b style="font-size:17px">' + n + '</b></span><span class="os-orb-l">' + label + '</span></div>'; }
   function slSentence(st){
     if (!st || !st.clicks) return 'No clicks yet — share this address and every click lands here, counted.';
-    var s = st.clicks + (st.clicks === 1 ? ' click' : ' clicks') + ' so far — ' + st.week + ' of them in the last 7 days.';
-    if (st.joins) s += ' ' + st.joins + (st.joins === 1 ? ' join' : ' joins') + ' credited to this link — someone who clicked became a member.';
+    var s = (typeof window._osSpc==='function'?window._osSpc(st.clicks):(st.clicks)) + (st.clicks === 1 ? ' click' : ' clicks') + ' so far — ' + (typeof window._osSpc==='function'?window._osSpc(st.week):(st.week)) + ' of them in the last 7 days.';
+    if (st.joins) s += ' ' + (typeof window._osSpc==='function'?window._osSpc(st.joins):(st.joins)) + (st.joins === 1 ? ' join' : ' joins') + ' credited to this link — someone who clicked became a member.';
     else s += ' No joins from it yet — a join is credited the moment a visitor who clicked signs up.';
     return s;
   }
@@ -11847,7 +11895,7 @@ NF.register(UNIT, {
     else facts.push('Nothing new arrived today'+(s.lastArrival?(' — the last arrival was '+esc(humanize(s.lastArrival.from_alias))+'’s, '+relLabel(s.lastArrival.created_at)):'')+'.');
     if (s.linksOwned===null || s.links===null || s.links===undefined) facts.push('Your link counts could not be read just now.');
     else if (s.linksOwned) facts.push(s.links.clicks>0
-      ? 'Your links took '+s.links.clicks+(s.links.clicks===1?' click':' clicks')+' today'+(s.links.top?(' — '+esc(s.links.top)+' led the way'):'')+', with '+s.links.joins+(s.links.joins===1?' join':' joins')+' so far.'
+      ? 'Your links took '+(typeof window._osSpc==='function'?window._osSpc(s.links.clicks):(s.links.clicks))+(s.links.clicks===1?' click':' clicks')+' today'+(s.links.top?(' — '+esc(s.links.top)+' led the way'):'')+', with '+(typeof window._osSpc==='function'?window._osSpc(s.links.joins):(s.links.joins))+(s.links.joins===1?' join':' joins')+' so far.'
       : 'Your links are quiet today — no clicks yet.');
     if (s.invites===null || s.invites===undefined) facts.push('Your invites could not be read just now.');
     else if (s.invites.count>0) facts.push(s.invites.count+(s.invites.count===1?' invite is':' invites are')+' still waiting on them.'+(s.invites.allDry?' They are record-only for now — written down, not sent.':''));
@@ -11859,7 +11907,7 @@ NF.register(UNIT, {
     sp.push(w>0 ? w+(w===1?' conversation is':' conversations are')+' waiting for your reply. The oldest is from '+humanize(s.waiting[0].from_alias)+'.'
                 : 'Nothing is waiting on you. You are all caught up.');
     if (s.arrived!==null && s.arrived!==undefined) sp.push(s.arrived>0 ? s.arrived+(s.arrived===1?' new message':' new messages')+' arrived today.' : 'Nothing new arrived today.');
-    if (s.linksOwned && s.links) sp.push(s.links.clicks>0 ? 'Your links took '+s.links.clicks+(s.links.clicks===1?' click':' clicks')+' today, with '+s.links.joins+(s.links.joins===1?' join':' joins')+'.' : 'Your links are quiet today.');
+    if (s.linksOwned && s.links) sp.push(s.links.clicks>0 ? 'Your links took '+(typeof window._osSpc==='function'?window._osSpc(s.links.clicks):(s.links.clicks))+(s.links.clicks===1?' click':' clicks')+' today, with '+(typeof window._osSpc==='function'?window._osSpc(s.links.joins):(s.links.joins))+(s.links.joins===1?' join':' joins')+'.' : 'Your links are quiet today.');
     if (s.invites) sp.push(s.invites.count>0 ? s.invites.count+(s.invites.count===1?' invite is':' invites are')+' still waiting on them.' : 'No invites are waiting on them.');
     if (s.notes!==null && s.notes!==undefined) sp.push(s.notes>0 ? s.notes+(s.notes===1?' note was':' notes were')+' filed today.' : 'No notes were filed today.');
     if (w>0) sp.push('Answer the waiting conversations first, and the day starts clear.');
@@ -14245,7 +14293,7 @@ NF.register(UNIT, {
         if (tc>0){
           var _rate=Math.round(tj/tc*100);
           var _color=_rate>=10?'#2fe89e':(_rate>0?'#ffbf3d':'#ff5e6c');
-          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span>&nbsp;<span>of clicks became joins</span>' + (_rate===0 ? '&nbsp;<span class="os-sl-leak">— the leak is here</span>' : '');
+          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span> <span>of clicks became joins</span>' + (_rate===0 ? ' <span class="os-sl-leak">— the leak is here</span>' : '');
         } else {
           _conv.textContent='Share your link to start the funnel';
         }
@@ -14270,7 +14318,7 @@ NF.register(UNIT, {
           var _bc=_SPEC[_ix%_SPEC.length];
           var _d=new Date(_now); _d.setDate(_d.getDate()-(29-_ix));
           var _dl=_d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-          return '<div class="os-dg-bar" style="position:absolute;bottom:0;width:'+(100/30)+'%;left:'+(_ix*100/30)+'%;height:'+_h+'%;--nc:'+_bc+';" title="'+_dl+': '+v+' clicks"></div>';
+          return '<div class="os-dg-bar" style="position:absolute;bottom:0;width:'+(100/30)+'%;left:'+(_ix*100/30)+'%;height:'+_h+'%;--nc:'+_bc+';" title="'+_dl+': '+(typeof window._osSpc==='function'?window._osSpc(v):(v))+' clicks"></div>';
         }).join('');
         /* 2026-11-01 — Shawn: X-AXIS DATES. Every bar tells you WHEN. */
         var _x=$('os-sl-graph-x');
@@ -18425,7 +18473,7 @@ window.openSmartLinkList = function(){
   var t = window._dashLinkT || {c:0, j:0};
   window._smartlinkSingle = null;
   window._smartlinkListMode = true;
-  smartlinkViewOpen('ALL SMART LINKS', rows.length + ' links · ' + (t.c||0) + ' clicks · ' + (t.j||0) + ((t.j||0)===1 ? ' join' : ' joins'));
+  smartlinkViewOpen('ALL SMART LINKS', rows.length + ' links · ' + (typeof window._osSpc==='function'?window._osSpc((t.c||0)):((t.c||0))) + ' clicks · ' + (typeof window._osSpc==='function'?window._osSpc((t.j||0)):((t.j||0))) + ((t.j||0)===1 ? ' join' : ' joins'));
 };
 document.addEventListener('click', function(e){
   var d = e.target && e.target.closest ? e.target.closest('[data-sl-drill]') : null;
@@ -18435,7 +18483,7 @@ document.addEventListener('click', function(e){
   try{ (window._dashLinkRows || []).forEach(function(r){ if (r.name === _nm) _row = r; }); }catch(_){}
   window._smartlinkSingle = _row;
   var _dest = d.getAttribute('data-sl-drill-url') || '';
-  if (!_dest && _row) _dest = _row.url || ((_row.clicks || 0) + ' clicks · ' + (_row.joins || 0) + ((_row.joins || 0)===1 ? ' join' : ' joins') + ' · this link only');
+  if (!_dest && _row) _dest = _row.url || ((typeof window._osSpc==='function'?window._osSpc((_row.clicks || 0)):((_row.clicks || 0))) + ' clicks · ' + (typeof window._osSpc==='function'?window._osSpc((_row.joins || 0)):((_row.joins || 0))) + ((_row.joins || 0)===1 ? ' join' : ' joins') + ' · this link only');
   try{ smartlinkViewOpen('nayanet.app/' + _nm, _dest); }catch(_){}
 });
 function smartlinkViewOpen(brand, dest){
@@ -18738,7 +18786,7 @@ window._closeOpenDrill = function(){
 window._osOpenDrillDirect = function(key){
   if (key==='smartlink' && typeof smartlinkViewOpen==='function'){
     try{ var _sr=(window._dashLinkRows||[]).length, _st=window._dashLinkT||{c:0,j:0}; var _sj=Number(_st.j||0);
-      smartlinkViewOpen('ALL SMART LINKS', _sr+' links \u00b7 '+Number(_st.c||0)+' clicks \u00b7 '+_sj+(_sj===1?' join':' joins')); }catch(_eSL){}
+      smartlinkViewOpen('ALL SMART LINKS', _sr+' links \u00b7 '+(typeof window._osSpc==='function'?window._osSpc(Number(_st.c||0)):(Number(_st.c||0)))+' clicks \u00b7 '+(typeof window._osSpc==='function'?window._osSpc(_sj):(_sj))+(_sj===1?' join':' joins')); }catch(_eSL){}
     return true;
   }
   var _drill = {sales:salesViewOpen, invs:invitesViewOpen, saves:savesViewOpen, likes:likesViewOpen, posts:creationsViewOpen, shares:sharesViewOpen, comments:commentsViewOpen, notes:notesViewOpen, joins:joinsViewOpen}[key];
@@ -18758,7 +18806,7 @@ function ldOpenNode(key, noFocus){
     try{
       var _sr=(window._dashLinkRows||[]).length, _st=window._dashLinkT||{c:0,j:0};
       var _sj=Number(_st.j||0);
-      smartlinkViewOpen('ALL SMART LINKS', _sr+' links · '+Number(_st.c||0)+' clicks · '+_sj+(_sj===1?' join':' joins'));
+      smartlinkViewOpen('ALL SMART LINKS', _sr+' links · '+(typeof window._osSpc==='function'?window._osSpc(Number(_st.c||0)):(Number(_st.c||0)))+' clicks · '+(typeof window._osSpc==='function'?window._osSpc(_sj):(_sj))+(_sj===1?' join':' joins'));
     }catch(_eSL){}
     return;
   }
@@ -18830,7 +18878,7 @@ function slOpenLink(name){
   }
   var bars = vals.map(function(v){
     var h=Math.max(3, Math.round(v/mx*100));
-    return '<div class="os-dg-bar" style="height:'+h+'%;--nc:#d9a521" title="'+v+' clicks"></div>';
+    return '<div class="os-dg-bar" style="height:'+h+'%;--nc:#d9a521" title="'+(typeof window._osSpc==='function'?window._osSpc(v):(v))+' clicks"></div>';
   }).join('');
   /* best day */
   var best=0, bestK='';
@@ -20058,6 +20106,14 @@ window.ldLayoutNodes = ldLayoutNodes;
      drill arrives as a ready-made attribute string (drillAttr). */
   function _boardCell(value, numTxt, lab, unit, drillAttr){
     var v = (value == null || !isFinite(value)) ? 0 : Number(value);
+    /* GREETING-OUT FIX 2026-11-17 (§3.3b, the zero rule): a non-numeric numTxt
+       is an UNMEASURED state, never a number — it renders as a state cell, not
+       a gauge. No mount (a mount would draw a 0 dial for an unmeasured value),
+       no data-value, no 0 anywhere. The state reads once, in the number's
+       place, in the system's own state words ("Not counted yet"). */
+    if (!/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(String(numTxt).trim())) {
+      return '<div class="os-sl-gauge"><div class="os-sl-gauge-dial os-pricing-mini os-sl-state-cell" ' + drillAttr + ' tabindex="0" role="button" aria-label="' + lab + ' — deeper stats"><span class="os-sl-state-txt">' + _esc(String(numTxt)) + '</span></div><div class="os-sl-gauge-lab">' + lab + '</div></div>';
+    }
     return '<div class="os-sl-gauge"><div class="os-sl-gauge-dial os-pricing-mini" ' + drillAttr + ' tabindex="0" role="button" aria-label="' + lab + ' — deeper stats"><div class="tn-mini-mount" data-share="0" data-color="#ffbf3d" data-num="' + _esc(String(numTxt)) + '" data-value="' + v + '" data-unit="' + unit + '"></div></div><div class="os-sl-gauge-num">' + _esc(String(numTxt)) + '</div><div class="os-sl-gauge-lab">' + lab + '</div></div>';
   }
   function _boardCellsHTML(holder){
@@ -20094,7 +20150,8 @@ window.ldLayoutNodes = ldLayoutNodes;
     }
     var wt = _worldTotals();
     /* ROUND 2 (5): the world board leads with the world's total link clicks — the top-link label lives once, in the sales drill header. */
-    var _wViews = _boardCell(null, '0', 'Total views', 'count', 'data-node="sales"');
+    /* GREETING-OUT FIX 2026-11-17 (§3.3b, the zero rule): views are unmeasured — the ledger records clicks/joins, never page views — so the cell shows the state "Not counted yet", never a 0. The mock path below still shows a sample number (labelled MOCK). */
+    var _wViews = _boardCell(null, 'Not counted yet', 'Total views', 'count', 'data-node="sales"');
     if (window._osMock && typeof window._osMockFor === 'function'){ var _mw = window._osMockFor('dashboard', wt.totalClicks); _wViews = _boardCell(_mw.views, _fmt(_mw.views), 'Total views', 'count', 'data-node="sales"'); }
     var _wConv = (wt.totalClicks > 0) ? (wt.totalJoins/wt.totalClicks*100) : null;
     var _wConvTxt = (_wConv === null) ? '0' : _wConv.toFixed(1)+'%';
@@ -22845,14 +22902,15 @@ var USAGE_KEY = 'naya.smartbar.usage.v1';
    bottomBar: true = the network bar shows; false = their choice, it stays off. */
 function getSettings(){
   var s = storeGet(SETTINGS_KEY, null);
-  if (!s || typeof s.speed !== 'number') s = {speed: 1, bottomBar: true};
+  if (!s || typeof s.speed !== 'number') s = {speed: 1, bottomBar: true, dashBar: true};
   s.speed = Math.max(0, Math.min(2, s.speed));
   if (typeof s.bottomBar !== 'boolean') s.bottomBar = true;
+  if (typeof s.dashBar !== 'boolean') s.dashBar = true;
   return s;
 }
 function saveSettings(s){
-  storeSet(SETTINGS_KEY, {speed: s.speed, bottomBar: s.bottomBar});
-  try { document.dispatchEvent(new CustomEvent('smartbar-settings', {detail:{speed:s.speed, bottomBar:s.bottomBar}})); } catch(e){}
+  storeSet(SETTINGS_KEY, {speed: s.speed, bottomBar: s.bottomBar, dashBar: s.dashBar});
+  try { document.dispatchEvent(new CustomEvent('smartbar-settings', {detail:{speed:s.speed, bottomBar:s.bottomBar, dashBar:s.dashBar}})); } catch(e){}
 }
 function setSpeed(v){
   var s = getSettings();
@@ -22874,6 +22932,28 @@ function applyBottomBar(){
   if (b) b.style.display = on ? '' : 'none';
   document.documentElement.classList.toggle('nsb-nobottom', !on);
 }
+/* GREETING-OUT FIX 2026-11-17 (§3.5) — the Dashboard bar has its own
+   on/off, in the same store as the network bar (same Settings popover,
+   same corner control). dashBar: true = the Dashboard bar shows (default);
+   false = their choice, it stays off. The fold on scroll
+   (body.os-bottom-hidden) is separate — it hides the bar WHILE scrolling
+   and returns ~1s after the scroll stops; this setting hides it until they
+   turn it back on. */
+function setDashBar(on){
+  var s = getSettings();
+  s.dashBar = !!on;
+  saveSettings(s);
+  applyDashBar();
+  return s.dashBar;
+}
+function applyDashBar(){
+  var on = getSettings().dashBar;
+  var b = document.getElementById('os-bottom3');
+  if (b) b.style.display = on ? '' : 'none';
+  document.body.classList.toggle('os-bottom-off', !on);
+  if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(e){} }
+}
+
 function slug(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') || 'tab'; }
 /* usage: {seedId: {taps, last}} — the bar learns their logic, then they shape it */
 function getUsage(){ return storeGet(USAGE_KEY, {}) || {}; }
@@ -23484,6 +23564,20 @@ window.NayaSmartBar = {
         say('bottom', on ? 'Network bar is back on.' : 'Network bar off — your choice. Turn it back on here any time.');
       });
       setPop.appendChild(tog);
+      /* Dashboard bar on/off (GREETING-OUT FIX 2026-11-17 §3.5) — the same
+         store as the network bar, the same corner control. */
+      var dh = document.createElement('h4'); dh.textContent = 'Dashboard bar'; dh.style.fontSize = '13px';
+      dh.style.margin = '14px 0 4px'; setPop.appendChild(dh);
+      var dtog = document.createElement('button'); dtog.type = 'button'; dtog.className = 'nsb-btn';
+      dtog.style.width = '100%';
+      function showDTog(){ dtog.textContent = getSettings().dashBar ? '✓ Dashboard bar is ON — tap to turn off' : 'Dashboard bar is OFF — tap to turn on'; }
+      showDTog();
+      dtog.addEventListener('click', function(){
+        var on = setDashBar(!getSettings().dashBar);
+        showDTog();
+        say('bottom', on ? 'Dashboard bar is back on.' : 'Dashboard bar off — your choice. Turn it back on here any time.');
+      });
+      setPop.appendChild(dtog);
     }
     document.body.appendChild(setPop);
     function closeSettings(){
@@ -23521,7 +23615,10 @@ window.NayaSmartBar = {
     NayaSmartBar.getSpeed = function(){ return getSettings().speed; };
     NayaSmartBar.setBottomBar = setBottomBar;
     NayaSmartBar.bottomBarOn = function(){ return getSettings().bottomBar; };
+    NayaSmartBar.setDashBar = setDashBar;
+    NayaSmartBar.dashBarOn = function(){ return getSettings().dashBar; };
     applyBottomBar(); /* their choice, honored from the first paint */
+    applyDashBar(); /* GREETING-OUT FIX §3.5 — the Dashboard bar's choice, honored from the first paint too */
     return {
       top: top, bottom: bottom,
       destroy: function(){ top.innerHTML=''; if (bottom) bottom.innerHTML=''; }
@@ -28738,6 +28835,43 @@ body.os-tabs-on #os-dash{ padding-top:96px; }
 @media (max-width:700px){
   body.os-tabs-on #os-dash{ padding-top:50px; }
 }
+/* GREETING-OUT FIX 2026-11-17 (§3.2a) — the top section tablist, whole at
+   635px. The 12 tabs (~961px) cannot fit a 635px row in one line, so at
+   <=768px the row WRAPS (flex-wrap) instead of scrolling off the right
+   edge: every tab whole, nothing cut off. The tabs stretch to fill each
+   row (flex:1 1 auto) so no row ends half-empty. The fade mask goes — with
+   no horizontal scroll there is nothing to fade. The wrap is inert where
+   the row is display:none (<=700px, tabs off).
+   The bar grows by one row per wrap: a tab is 36px at <=700px (min-height,
+   border-box) + 6px gap = 42px per extra row; 44px + 8px gap = 52px at
+   701-768px. Worst case 3 rows (2 extra): +84px at <=700px, +104px at
+   701-768px. The search level sits below the taller bar (margin =
+   single-row bar + extra rows + 4px gap). The search's push clears the
+   hero, so #os-dash padding-top returns to its 16px default when tabs are
+   on. At 635px the wrap is certainly 2 rows (2 x 551px lane > ~961px of
+   tabs), so the search sits up to ~42px below the bar there — the honest
+   cost of worst-case clearance, named for the eye. */
+@media (max-width:768px){
+  #nsbTop .nsb-row{flex-wrap:wrap;overflow-x:visible;overflow-y:visible;
+    -webkit-mask-image:none;mask-image:none;}
+  #nsbTop .nsb-tab{flex:1 1 auto;min-width:0;}
+  /* #smarttabs is the same tab set under its own id (CSS/JS only) — the
+     same wrap, with !important to beat its nowrap !importants. */
+  #smarttabs.nf-tabs-row{flex-wrap:wrap !important;overflow-x:visible !important;overflow-y:visible !important;}
+  #smarttabs .nf-smtab{flex:1 1 auto !important;min-width:0 !important;}
+  /* The taller bar: the search level sits below it. Single-row bar 86px at
+     <=700px (documented), 104px at 701-768px (documented desktop). Worst
+     case 3 rows: 86+84+4=174px; 104+104+4=212px. */
+  body.os-tabs-on #nsbSearchLevel{margin-top:174px !important;}
+  /* The search's push clears the hero, so the tabs-on hero padding returns
+     to its 16px default (the hero-clip fix's 50px was the clearance when
+     the search sat under the bar). */
+  body.os-tabs-on #os-dash{padding-top:16px;}
+}
+@media (min-width:701px) and (max-width:768px){
+  body.os-tabs-on #nsbSearchLevel{margin-top:212px !important;}
+}
+
 /* (b) FIX-4 2026-11-17: the bottom bar is visible at load and returns ~1s
    after scroll stops, at any scroll position — never bottom-only. */
 body.os-bottom-hidden #os-bottom3{ transform:translateY(110%) !important; opacity:0 !important; }
@@ -28944,13 +29078,15 @@ body.viewport-focus #viewport-back{
      Palette: ADD purple #8e24aa · MAIL blue #0f52ba · ACTIVITY green
      #07925f · WORLDS gold #d4a017 · ECOSYSTEM burnt orange #c2410c · CONNECT ruby #c62828. -->
 <nav id="os-bottom3" class="os-bottom3 notif-six" aria-label="Dashboard">
-  <button type="button" class="notif-seg" data-b3="add" style="--nc:#8e24aa" aria-label="Add" title="Add"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button>
-  <button type="button" class="notif-seg" data-b3="mail" style="--nc:#0f52ba" aria-label="Smart Mail" title="Smart Mail"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span></button>
+  <button type="button" class="notif-seg" data-b3="add" style="--nc:#8e24aa" aria-label="Add" title="Add"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="os-b3-dot" data-b3-dot="add" aria-hidden="true"></span></button>
+  <button type="button" class="notif-seg" data-b3="mail" style="--nc:#0f52ba" aria-label="Smart Mail" title="Smart Mail"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="os-b3-dot" data-b3-dot="mail" aria-hidden="true"></span></button>
   <button type="button" class="notif-seg" data-b3="activity" style="--nc:#07925f" aria-label="Activity" title="Activity"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="os-b3-badge" id="os-b3-badge" hidden></span></span></button>
-  <button type="button" class="notif-seg" data-b3="worlds" style="--nc:#d4a017" aria-label="Worlds" title="Worlds"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span></button>
-  <button type="button" class="notif-seg" data-b3="eco" style="--nc:#c2410c" aria-label="Ecosystem" title="Ecosystem"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span></button>
-  <button type="button" class="notif-seg" data-b3="connect" style="--nc:#c62828" aria-label="Connect" title="Connect"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button>
+  <button type="button" class="notif-seg" data-b3="worlds" style="--nc:#d4a017" aria-label="Worlds" title="Worlds"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span><span class="os-b3-dot" data-b3-dot="worlds" aria-hidden="true"></span></button>
+  <button type="button" class="notif-seg" data-b3="eco" style="--nc:#c2410c" aria-label="Ecosystem" title="Ecosystem"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span class="os-b3-dot" data-b3-dot="eco" aria-hidden="true"></span></button>
+  <button type="button" class="notif-seg" data-b3="connect" style="--nc:#c62828" aria-label="Connect" title="Connect"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="os-b3-dot" data-b3-dot="connect" aria-hidden="true"></span></button>
 </nav>
+<!-- GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control for the Dashboard bar (the page-icon-bar law: a small corner control can hide it; Settings can turn it off; by default it sits there). A real object, not flat: obsidian, white rim, top light. The down chevron folds the bar down; the up chevron brings it back. -->
+<button type="button" id="os-b3-hide" aria-label="Hide the Dashboard bar" title="Hide the Dashboard bar">▾</button>
 <script>
 /* FIX 5 — FIX 5 + FIX 7 init. Runs at end of body; DOM is ready. */
 (function(){
@@ -28959,9 +29095,80 @@ body.viewport-focus #viewport-back{
     var n = feedCount();
     var nb = document.getElementById('os-notif-count');
     if (nb){ if (n > 0){ nb.textContent = String(n); nb.hidden = false; } else { nb.hidden = true; } }
+    if (typeof window._osSyncB3News === 'function') { try { window._osSyncB3News(); } catch(e){} }
     var ab = document.getElementById('os-b3-badge');
     if (ab){ if (n > 0){ ab.textContent = n > 99 ? '99+' : String(n); ab.hidden = false; } else { ab.hidden = true; } }
   }
+  /* GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control + the Dashboard
+     bar setting. The control and the Settings toggle share one setting
+     (dashBar, in the Smart Bar store): off = their choice, the bar stays
+     off until they turn it back on (here or in Settings). The fold on
+     scroll (body.os-bottom-hidden) is separate and untouched. */
+  window._osSyncB3Hide = function(){
+    var c = document.getElementById('os-b3-hide');
+    if (!c) return;
+    var on = true;
+    try { on = (window.NayaSmartBar && typeof window.NayaSmartBar.dashBarOn === 'function') ? window.NayaSmartBar.dashBarOn() : !document.body.classList.contains('os-bottom-off'); } catch(e){}
+    c.textContent = on ? '\u25be' : '\u25b4';
+    c.setAttribute('aria-label', on ? 'Hide the Dashboard bar' : 'Show the Dashboard bar');
+    c.setAttribute('title', on ? 'Hide the Dashboard bar' : 'Show the Dashboard bar');
+  };
+  var _b3hide = document.getElementById('os-b3-hide');
+  if (_b3hide) _b3hide.addEventListener('click', function(){
+    var on = true;
+    try {
+      if (window.NayaSmartBar && typeof window.NayaSmartBar.setDashBar === 'function' && typeof window.NayaSmartBar.dashBarOn === 'function') {
+        on = window.NayaSmartBar.setDashBar(!window.NayaSmartBar.dashBarOn());
+      } else { throw new Error('no store'); }
+    } catch(e){
+      /* Fallback (store unavailable): the same toggle, locally. */
+      on = document.body.classList.contains('os-bottom-off');
+      document.body.classList.toggle('os-bottom-off', !on);
+      var b = document.getElementById('os-bottom3');
+      if (b) b.style.display = on ? '' : 'none';
+    }
+    window._osSyncB3Hide();
+  });
+  try { if (window.NayaSmartBar && typeof window.NayaSmartBar.dashBarOn === 'function') { var _db0 = window.NayaSmartBar.dashBarOn(); var _b0 = document.getElementById('os-bottom3'); if (_b0) _b0.style.display = _db0 ? '' : 'none'; document.body.classList.toggle('os-bottom-off', !_db0); } } catch(e){}
+  window._osSyncB3Hide();
+
+  /* GREETING-OUT FIX 2026-11-17 (§3.6/§3.7) — the notification, bright, for
+     each tile (Personal's has-news, harvested). Only ACTIVITY has a live
+     count on this page (the feed count, the badge's source); the other five
+     tiles have no live notification source here, so they stay unlit — never
+     invented. A future source sets window._osB3Counts[k] and calls
+     window._osSyncB3News(). The lit notification is the path into the day
+     view (the captain's reading, brief §2 — never Shawn's word): the badge
+     (ACTIVITY) and any lit dot open the day view for today; the tile's own
+     tap keeps its own destination. The day view is the file's own Hub Today
+     route — NOT rooms/today, which is the Intel Today digest Shawn removed
+     from the day view. */
+  window._osB3Counts = window._osB3Counts || {};
+  window._osSyncB3News = function(){
+    var c = {activity: feedCount()};
+    ['add','mail','worlds','eco','connect'].forEach(function(k){
+      var v = window._osB3Counts[k];
+      c[k] = (typeof v === 'number' && v > 0) ? v : 0;
+    });
+    document.querySelectorAll('#os-bottom3 [data-b3]').forEach(function(seg){
+      var k = seg.getAttribute('data-b3');
+      seg.classList.toggle('has-news', (c[k] || 0) > 0);
+    });
+  };
+  var _b3badge = document.getElementById('os-b3-badge');
+  if (_b3badge) _b3badge.addEventListener('click', function(e){
+    if (e && e.stopPropagation) e.stopPropagation();
+    window.location.href = 'https://nayanet.app/#/hub/today';
+  });
+  document.querySelectorAll('#os-bottom3 .os-b3-dot').forEach(function(dot){
+    dot.addEventListener('click', function(e){
+      var seg = dot.closest ? dot.closest('[data-b3]') : null;
+      if (!seg || !seg.classList.contains('has-news')) return;
+      if (e && e.stopPropagation) e.stopPropagation();
+      window.location.href = 'https://nayanet.app/#/hub/today';
+    });
+  });
+  window._osSyncB3News();
   function openFeed(){ try{ if (typeof window._osRenderFeed === 'function') window._osRenderFeed(); }catch(e){} document.body.classList.add('os-feed-open'); syncBadges(); }
   function closeFeed(){ document.body.classList.remove('os-feed-open'); }
   window._osOpenFeed = openFeed; window._osCloseFeed = closeFeed;
@@ -29115,7 +29322,7 @@ body.viewport-focus #viewport-back{
    (≤480px) already reach the last row — their tall rows need no trailing
    space, so the rule stays off there. */
 @media (min-width:481px){
-  .os-smartlink-list{padding-bottom:calc(66vh - 200px);}
+  .os-smartlink-list{padding-bottom:max(110px,calc(66vh - 200px));}
 }
 /* FIXROUND2 PASS-4 (D4-R1, 2026-11-09): REGRESSION from the D4 snap above,
    phone widths only. At ≤480px each row (829px) is TALLER than the list
