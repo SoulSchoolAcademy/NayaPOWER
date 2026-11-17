@@ -254,10 +254,10 @@ tree `ef91f2f3bd30576222cb03fdb77630b63506425c`, 4 blobs (report `ec71407c…`,
 build-followon `067f639a…`, harness `999b11e3…`, cleanup `a9fdabe5…`); ref verified pointing at
 the new commit; maker-report blob read-back MATCH (sha256
 `0dc3de3c23cb683f81520bd15f841e650d5753c3e61b1b615a6ef61b2a05ea29`). **NOT merged.**
-Amendment commit **`[AMENDMENT]`** (tree `[TREE]`) re-filed the same four files with this §8
-filled in; its maker-report blob read-back MATCH (sha256 `[REPORT-SHA]`). That is the branch
-head. (This on-disk copy additionally names the amendment commit in this line; the filed
-blob is otherwise identical.)
+Amendment commit **`6a2533d1c7374bfb51906345ff852df0897080bc`** (tree
+`5c997307fc6706d9903649e0d61420e78ede0917`) re-filed the same four files with this §8
+filled in (first filing above); its maker-report blob read-back MATCH (sha256
+`50e8be045586ed64dddb0d1e943829f77a9a74721187615ca1d16dab0a2c40ae`). **NOT merged.**
 
 ## 9. FOR THE CHECKER
 
