@@ -164,7 +164,12 @@ window.addEventListener('appinstalled', function () {
 
 html {
   -webkit-text-size-adjust: 100%;
-  scrollbar-color: rgba(142,36,170,.6) transparent;
+  /* FIX-5c 2026-11-17: scrollbar-color MUST stay auto here — in Chromium a
+     set scrollbar-color paints the thumb flat and overrides the
+     ::-webkit-scrollbar-thumb gradient below (proven live: the thumb
+     painted exactly rgba(142,36,170,.65), no gradient, no rim). Firefox
+     gets the same purple via the @-moz-document block below. */
+  scrollbar-color: auto;
 }
 
 body {
@@ -212,7 +217,15 @@ a { color: inherit; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, rgba(255,255,255,.42), rgba(142,36,170,.6) 52%, rgba(142,36,170,.32)); border-radius: 8px; border: 1px solid rgba(255,255,255,.4); box-shadow: 0 0 12px rgba(142,36,170,.5), inset 0 1px 0 rgba(255,255,255,.55); }
 ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(142,36,170,.75) 52%, rgba(142,36,170,.45)); border: 1px solid rgba(255,255,255,.55); box-shadow: 0 0 16px rgba(142,36,170,.65), inset 0 1px 0 rgba(255,255,255,.65); }
 .rail.left::-webkit-scrollbar-thumb, .rail.right::-webkit-scrollbar-thumb { background: linear-gradient(180deg, rgba(255,255,255,.42), rgba(142,36,170,.6) 52%, rgba(142,36,170,.32)); border-radius: 8px; border: 1px solid rgba(255,255,255,.4); box-shadow: 0 0 12px rgba(142,36,170,.5), inset 0 1px 0 rgba(255,255,255,.55); }
-.rail.left, .rail.right { scrollbar-color: rgba(142,36,170,.65) transparent; }
+/* FIX-5c 2026-11-17: Firefox has no ::-webkit-scrollbar-*, so it gets the
+   same Hub-purple thumb through scrollbar-color — inside @-moz-document,
+   which Chromium ignores entirely, so the gradient above still paints
+   there. (A plain scrollbar-color on these selectors would override the
+   gradient in Chromium and paint the thumb flat — that was fix-5a's bug.) */
+@-moz-document url-prefix() {
+  html { scrollbar-color: rgba(142,36,170,.6) transparent; }
+  .rail.left, .rail.right { scrollbar-color: rgba(142,36,170,.65) transparent; }
+}
 
 #app { min-height: 100vh; display: flex; flex-direction: column; }
 
