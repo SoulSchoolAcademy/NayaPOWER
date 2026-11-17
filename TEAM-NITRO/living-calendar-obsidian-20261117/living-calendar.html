@@ -83,6 +83,23 @@
   stands, and #4(4) orders no values swap — the calming is done through
   the rim discipline, the smaller numbers, and the reduced glow. That
   tension is named in the maker report for the captain's eye to decide.
+  AMENDMENT #5 (Shawn's eye, 03:35Z — v5, THIS ROUND): (1) THE EYE — BLACK
+  IN THE MIDDLE. The pearl "i" disc is too bright to read — its middle goes
+  BLACK so the white "i" reads on it. The disc stays a real object (pearl
+  rim, elevation, coming off the page); only the face goes black, and the
+  white glow on the "i" itself is gone — the light lives outside only.
+  Applies to the month-grid cells AND the day view, so the day view carries
+  the same eye in its header, opening the Daily Intelligence Report.
+  (2) THE DAY VIEW IS A DASHBOARD — PRIME REAL ESTATE. Tap a day and you
+  are inside a different dashboard, not buttons on blank space. A wisdom
+  quote of the day runs across the top (the harvested [C] wisdomFor, moved
+  up from the bottom board). Below it the day's instruments fill the page —
+  appointments as tiles, the daily report, Intel Today, daily notes, daily
+  smart notes, the timeline, news, weather, horoscope — each a live
+  glimpse, each board a door into its view. The 13 doors keep their exact
+  names, order, colors and glimpses; the space around and below them is
+  used. No gray text; Deep Palette only; the day's color glows outside,
+  never in the middle.
 -->
 <style>
 /* ============ ROOT + BASE ============ */
@@ -201,14 +218,19 @@ button{font-family:inherit}
    harvested .os-jewel-md size (36px, 17px — [P] line 42): the .os-jewel
    base below (verbatim from [P], already in this file) with --jc:#ffffff,
    border-radius:50% from .eye-jewel, Marcellus 700 from .eye-jewel.
-   Pearl/diamond = the jewel in white: white rim, white glow, and the 'i'
-   itself white (the .os-jewel's own color:#fff, lit by its white glow).
+   Pearl/diamond = the jewel in white: white rim, white glow outside, and
+   the 'i' itself white (the .os-jewel's own color:#fff).
+   v5 (Shawn's eye, 03:35Z — THE EYE, BLACK IN THE MIDDLE): the disc was
+   too bright to read, so the FACE goes BLACK — board black #050607 — and
+   the white glow on the 'i' itself is gone. The 'i' reads white on black;
+   the pearl rim, the elevation and the outside glow stay, so the disc is
+   still a real object coming off the page. The light lives outside only.
    No color in it — amendment
    #3(1) still stands. Placement only
    is adapted: pricing sits it top-right of a plan card; here it sits
    bottom-right of the day cell, the door to the day's info. The old
    almond eye SVG is gone — the 'i' is the info mark now. */
-.plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;--jc:#ffffff;font-family:Marcellus,Georgia,serif;font-weight:700;font-size:17px;line-height:1;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
+.plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;--jc:#ffffff;font-family:Marcellus,Georgia,serif;font-weight:700;font-size:17px;line-height:1;background:linear-gradient(180deg,#0b0b12,#050607 80%);border:1.5px solid var(--jc);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 1px 2px rgba(0,0,0,.65)}
 .plan-eye:hover,.plan-eye:focus-visible{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.65),inset 0 -3px 6px rgba(0,0,0,.6),0 8px 18px rgba(0,0,0,.6),0 0 22px -2px var(--jc);outline:2px solid #fff;outline-offset:2px}
 /* Calendar placement: bottom-right of the day cell, the door to the day. */
 .cal-day .plan-eye{top:auto;bottom:10px;right:10px}
@@ -298,6 +320,12 @@ button{font-family:inherit}
 .os-jewel-lg{width:46px;height:46px;font-size:22px;border-radius:13px}
 .day-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,4vw,38px);line-height:1.1;color:#fff;margin:0;text-shadow:0 0 18px rgba(var(--dc-rgb),.5),0 0 48px rgba(var(--dc-rgb),.25)}
 .day-back{margin-left:auto}
+/* v5: the same eye lives in the day header — the door to the day's report.
+   Static in the flex header (not absolute like the month-cell eye); it sits
+   at the right, beside Back to month, and opens the Daily Intelligence
+   Report board below. Same black-middle object as the month cells. */
+.day-head .plan-eye{position:static;flex:none;margin-left:auto}
+.day-head .day-back{margin-left:12px}
 .view-wrap{max-width:1060px;width:100%;margin:0 auto}
 /* The 13 doors — .primo pills [P], each its own color rim via --glow.
    Icon on the left, white word in the middle (Naya Code §2.2). Amendment
@@ -308,13 +336,10 @@ button{font-family:inherit}
 .doors .primo{width:100%;justify-content:flex-start;padding:18px 22px;font-size:15px;text-align:left;min-width:0}
 .doors .primo .sub{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:#fff;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .doors .primo .lbl{display:flex;flex-direction:column;align-items:flex-start;min-width:0;flex:1}
-/* The day's instruments — numbers as digit tiles, words at a nutshell.
-   [D] .os-sl-stat: number on top, label underneath. */
-.instruments{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
-.instrument{text-align:center;padding:20px 12px}
-.instrument .os-sl-stat-n{display:block;font-size:52px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em;
-  text-shadow:0 0 8px rgba(255,255,255,.4),0 0 24px rgba(217,165,33,.6),0 0 48px rgba(217,165,33,.3),0 2px 4px rgba(0,0,0,.5)}
-.instrument .os-sl-stat-l{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-top:8px}
+/* v5: the 3-count instrument row is gone — its counts live in the dashboard
+   board headers below (.dash-board .db-count), and the day view is a
+   dashboard now. The [D] .os-sl-stat pattern (number on top, label
+   underneath) is superseded here by the board headers. */
 /* Timeline — [C] .daytimeline board, .ph-card construction, rim in the day color. */
 .daytimeline{border:2px solid var(--dc);border-radius:20px;padding:20px 22px;margin:18px 0 0;background:linear-gradient(180deg,#07070b,#050607);color:#fff;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 24px rgba(var(--dc-rgb),.16)}
@@ -327,12 +352,46 @@ button{font-family:inherit}
 .tl-text{font-size:14px;line-height:1.5}
 .tl-empty,.tl-note{font-size:14px;line-height:1.6;margin:12px 0 0}
 .tl-note{color:#fff}
-/* Wisdom + Intel boards — .ph-card boards, rim in the day color. */
-.dayboards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:18px 0}
-.dayboards .ph-card{margin:0;border-color:var(--dc)}
-.dayboards .ph-card:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
-.dayboards .ph-card strong{display:block;font-size:13px;letter-spacing:.14em;margin-bottom:8px}
-.dayboards .ph-card span{font-size:14px;line-height:1.65}
+/* ============ v5 — THE DAY DASHBOARD: wisdom banner + instrument boards ============ */
+/* Shawn's words, 03:35Z: "maybe a quote or wisdom for the Monday that goes
+   across the top ... imagine a different dashboard in this ... prime real
+   estate." The wisdom banner runs across the top of the day view — the
+   harvested [C] wisdomFor, moved up from the bottom board, full width,
+   Marcellus, rim in the day's color. Below the doors, the day's
+   instruments fill the page as boards: appointments as tiles, the daily
+   report, Intel Today, daily notes, daily smart notes, posts, the
+   timeline, news, weather, horoscope. Every board is the harvested [D]
+   .ph-card already in this file, rim in the day's color, lighting whole
+   on hover (Naya Code §8 — boards light up). Counts are the harvested
+   digit tiles (miniNumHTML). List rows reuse the .viewcard .list item
+   construction already in this file, same values. Nothing invented:
+   news/weather/horoscope have no live source wired, so their boards say
+   so honestly as beautiful empty states — never blank, never fake. Each
+   board with a matching door opens that door on tap (role=button). */
+.wisdom-banner{margin:18px 0 0;border-color:var(--dc);text-align:center;padding:26px 28px}
+.wisdom-banner:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
+.wisdom-banner .wq-glyph{display:block;font-size:22px;line-height:1;color:#fff;text-shadow:0 0 18px rgba(var(--dc-rgb),.8);margin-bottom:10px}
+.wisdom-banner .wq{font-family:Marcellus,Georgia,serif;font-size:clamp(19px,2.6vw,26px);line-height:1.45;color:#fff;margin:0}
+.wisdom-banner .ws{display:block;margin-top:12px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.dash{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.dash .span2{grid-column:span 2}
+.dash-board{margin:0;border-color:var(--dc);cursor:pointer}
+.dash-board:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
+.dash .daytimeline{margin:0}
+.db-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.db-ico{font-size:20px;line-height:1;color:#fff}
+.db-head strong{font-size:13px;letter-spacing:.14em;color:#fff}
+.db-count{margin-left:auto}
+.db-go{font-size:20px;line-height:1;color:#fff;margin-left:auto}
+.db-count + .db-go{margin-left:6px}
+.db-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.db-list li{padding:10px 12px;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;line-height:1.55;color:#fff}
+.db-list li b{color:#fff}
+.db-text{font-size:14px;line-height:1.65;color:#fff;margin:10px 0 0}
+.db-empty{font-size:15px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin:12px 0 0}
+.db-note{font-size:13px;line-height:1.6;color:#fff;margin:8px 0 0}
+@media(max-width:900px){.dash{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.dash{grid-template-columns:1fr}.dash .span2{grid-column:auto}}
 /* Empty state — an object, not a paragraph: board + glyph + day tiles + two words. */
 .empty{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:44px 24px}
 .empty .glyph{font-size:44px;line-height:1;color:#fff;text-shadow:0 0 24px rgba(var(--dc-rgb),.8)}
@@ -407,6 +466,7 @@ select.field option{background:#0a0a0f;color:#fff}
   .cal-day .os-mini-num.med .os-mini-gap{width:6px}
   .doors{grid-template-columns:1fr}
   .day-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .day-head .plan-eye{margin-left:0}
   .day-back{margin-left:0}
 }
 
@@ -734,6 +794,53 @@ function timelineHTML(ds){
   return `<section class="daytimeline" aria-label="Timeline for this day"><strong>THE DAY, IN ORDER</strong><div class="tl-sub">${esc(sub)}</div>${body}</section>`;
 }
 
+/* ============ DAY DASHBOARD — v5: the day view is a dashboard ============ */
+/* Shawn's words, 03:35Z: "when you go inside it's just a bunch of buttons
+   ... imagine a different dashboard in this ... prime real estate ... you
+   built the buildings on like a third of the land." The day view is a
+   dashboard now: the wisdom banner across the top, then the day's
+   instruments as boards that fill the page — appointments as tiles, the
+   daily report, Intel Today, daily notes, daily smart notes, posts, the
+   timeline, news, weather, horoscope — each a live glimpse, a window into
+   what's inside. Every board is the harvested [D] .ph-card already in this
+   file, rim in the day's color; counts are the harvested digit tiles;
+   lists reuse the .viewcard .list item construction already in this file.
+   Nothing invented: news/weather/horoscope have no live source wired, so
+   their boards say so honestly, as beautiful empty states — never blank,
+   never fake. Each board with a matching door opens that door on tap. */
+function boardHead(ico,label,count,door){
+  return `<div class="db-head"><span class="db-ico" aria-hidden="true">${ico}</span><strong>${label}</strong>${count==null?'':'<span class="db-count">'+miniNumHTML(count)+'</span>'}${door?'<span class="db-go" aria-hidden="true">›</span>':''}</div>`;
+}
+function apptTiles(ds){
+  const books=dayBookings(ds);
+  if(!books.length){
+    const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t));
+    return `<p class="db-empty">No appointments yet</p>`+(open.length?`<p class="db-note">Open today: ${open.map(t=>esc(fmtTime(t))).join(' · ')}</p>`:`<p class="db-note">Every time is booked.</p>`);
+  }
+  return `<ul class="db-list">${books.map(b=>`<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'Appointment')}${b.what?' — '+esc(b.what):''}${b.meet?' ✧ Meet':''}</li>`).join('')}</ul>`;
+}
+function noteLines(list, emptyWords){
+  if(!list.length) return `<p class="db-empty">${esc(emptyWords)}</p>`;
+  return `<ul class="db-list">${list.slice(0,4).map(n=>`<li><b>${esc(n.timeframe||'')}</b> · ${esc(n.text)}</li>`).join('')}</ul>`+(list.length>4?`<p class="db-note">+ ${list.length-4} more — open the door to see them all.</p>`:'');
+}
+function dashHTML(ds){
+  const books=dayBookings(ds), notes=dayNotes(ds);
+  const smart=notes.filter(n=>n.type==='smart'), naya=notes.filter(n=>n.type==='naya'), posts=notes.filter(n=>n.type==='post');
+  const door=(view,inner,id)=>`<article class="ph-card dash-board" role="button" tabindex="0" data-view="${esc(view)}"${id?` id="${id}"`:''}>${inner}</article>`;
+  return `<div class="dash">
+    ${door('Appointments', boardHead('◷','APPOINTMENTS',books.length,true)+apptTiles(ds))}
+    ${door('Your World', boardHead('✦','DAILY REPORT',null,true)+`<p class="db-text">${esc(dirLine(ds))}</p>`, 'dayReport')}
+    ${door('Your World', boardHead('◎','INTEL TODAY',null,true)+`<p class="db-text">${esc(intelLine(ds))}</p>`)}
+    ${door('Smart Notes for that day', boardHead('✧','SMART NOTES',smart.length,true)+noteLines(smart,'No Smart Notes yet'))}
+    ${door('Notes for that day', boardHead('☰','NOTES',naya.length,true)+noteLines(naya,'No notes yet'))}
+    ${door('Posts for that day', boardHead('✎','POSTS',posts.length,true)+noteLines(posts,'No posts yet'))}
+    <div class="span2">${timelineHTML(ds)}</div>
+    ${door('Local news', boardHead('◎','NEWS',null,true)+`<ul class="db-list"><li><b>Local</b> — Archive not wired yet</li><li><b>Provincial</b> — Archive not wired yet</li><li><b>Global</b> — Archive not wired yet</li></ul>`)}
+    ${door('Weather', boardHead('☀','WEATHER',null,true)+`<p class="db-empty">No provider wired</p><p class="db-note">Nothing is shown in its place.</p>`)}
+    ${door('Horoscope', boardHead('☾','HOROSCOPE',null,true)+`<p class="db-empty">No source wired</p><p class="db-note">Nothing is shown in its place.</p>`)}
+  </div>`;
+}
+
 /* ============ MONTH — the numbers fill the screen ============ */
 $('weeknames').innerHTML=WEEKDAY.map(w=>`<div style="color:${w.color}">${w.name}</div>`).join('');
 function dayHasRecord(ds){ return dayBookings(ds).length>0 || dayNotes(ds).length>0; }
@@ -741,7 +848,8 @@ function dayHasRecord(ds){ return dayBookings(ds).length>0 || dayNotes(ds).lengt
    circle (Marcellus 700). `.eye-jewel` exists in pricing only as CSS
    (lines 140, 1460), never in markup; the 'i' is the amendment's directed
    mark. The button carries the 'i' as its text; the circle, pearl rim and
-   glow are the .plan-eye rule above. Amendment #4(2). */
+   glow are the .plan-eye rule above. Amendment #4(2). v5: the disc's
+   middle is black now (amendment #5(1)) — the 'i' reads white on black. */
 function render(){
   const first=new Date(year,month,1).getDay();
   const n=new Date(year,month+1,0).getDate();
@@ -786,21 +894,18 @@ function showDay(){
     <span class="os-jewel os-jewel-lg" style="--jc:${wd.color}" role="img" aria-label="${wd.name}, ${wd.hz} Hz">${wd.hz}</span>
     <div class="daynum-wrap">${miniNumHTML(day,'med')}</div>
     <div><h2 class="day-title">${esc(dlabel(year,month,day))}</h2></div>
+    <button class="plan-eye" data-op="report" type="button" aria-label="See the daily report for this day">i</button>
     <button class="primo day-back" data-op="close" type="button">← Back to month</button>`;
-  const counts=`<div class="instruments">
-    <div class="instrument ph-card"><span class="os-sl-stat-n">${miniNumHTML(books.length,'med')}</span><span class="os-sl-stat-l">Appointments</span></div>
-    <div class="instrument ph-card"><span class="os-sl-stat-n">${miniNumHTML(notes.filter(n=>n.type==='smart').length,'med')}</span><span class="os-sl-stat-l">Smart Notes</span></div>
-    <div class="instrument ph-card"><span class="os-sl-stat-n">${miniNumHTML(notes.length,'med')}</span><span class="os-sl-stat-l">Notes + Posts</span></div>
-  </div>`;
+  /* v5: the wisdom banner runs across the top of the day view (the harvested
+     [C] wisdomFor, moved up from the bottom board); below the 13 doors the
+     dashboard fills the page — the old 3-count row, the standalone timeline
+     and the bottom dayboards are all folded into dashHTML. */
+  const w=wisdomFor(ds);
+  const wisdom=`<div class="ph-card wisdom-banner"><span class="wq-glyph" aria-hidden="true">✧</span><p class="wq">“${esc(w.text)}”</p><span class="ws">${esc(w.source)}</span></div>`;
   $('dayBody').innerHTML=`
+    ${wisdom}
     <div class="doors">${DOORS.map(([x,i,c])=>`<button class="primo" style="--glow:${c}" data-view="${esc(x)}" type="button"><span class="ico" aria-hidden="true">${i}</span><span class="lbl">${esc(x)}<span class="sub">${esc(doorGlimpse(x,ds))}</span></span></button>`).join('')}</div>
-    ${counts}
-    ${timelineHTML(ds)}
-    <div class="dayboards">
-      <article class="ph-card"><strong>DAILY WISDOM</strong><span>${esc(wisdomFor(ds).text)}</span><br><span>${esc(wisdomFor(ds).source)}</span></article>
-      <article class="ph-card"><strong>INTEL TODAY</strong><span>${esc(intelLine(ds))}</span></article>
-      <article class="ph-card"><strong>DAILY INTELLIGENCE REPORT</strong><span>${esc(dirLine(ds))}</span></article>
-    </div>
+    ${dashHTML(ds)}
     <div class="actions">
       <button class="primo" data-op="Create" type="button"><span class="ico" aria-hidden="true">+</span>Create a note for this day</button>
       <button class="primo" data-op="prevday" type="button">‹ Previous day</button>
@@ -811,8 +916,13 @@ function showDay(){
 }
 function wireDay(){
   document.querySelectorAll('#dayView [data-view]').forEach(b=>b.onclick=()=>{ section=b.dataset.view; screen='view'; slot=''; pushRoute(); showView(); });
+  /* v5: the dashboard boards are doors too — keyboard-openable like the buttons. */
+  document.querySelectorAll('#dayView article[data-view]').forEach(b=>{ b.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); section=b.dataset.view; screen='view'; slot=''; pushRoute(); showView(); } }; });
   document.querySelectorAll('#dayView [data-op]').forEach(b=>b.onclick=()=>{ const op=b.dataset.op;
     if(op==='close'){ closeDay(); return; }
+    /* v5: the day header's eye is the door to the day's info — it takes you
+       to the Daily Intelligence Report board and puts focus on it. */
+    if(op==='report'){ const r=$('dayReport'); if(r){ r.scrollIntoView({behavior:'smooth',block:'nearest'}); r.focus(); } return; }
     if(op==='prevday'||op==='nextday'){ const d=new Date(year,month,day+(op==='prevday'?-1:1)); year=d.getFullYear(); month=d.getMonth(); day=d.getDate(); render(); pushRoute(); showDay(); return; }
     section=op; screen='view'; slot=''; pushRoute(); showView();
   });
