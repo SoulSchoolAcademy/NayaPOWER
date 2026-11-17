@@ -11,6 +11,7 @@ never a look-alike, never edited here.
 |---|---|---|---|---|
 | Unfold (down) | `official-unfold.html` | `34c756fff6286c46a2ff61fa6224bc49e35d5abf` | 32,079 | `70abc8e96712393d0b3f087b8410379fc39970a5905d06de1884afdf2d7b346c` |
 | Slideshow (sideways) | `official-slideshow.html` | `21d08a88e0f2e63d3c30d8f5112a2479ecf52d59` | 34,896 | `fcfa0c4c9794b8a92a3dea5ba2e4a1802376b2c75b2ba291fa8791b1da30693f` |
+| Epic engine (auto-format) | `epic-auto-format.html` | `4319256de01d3a6454d427b701a50662ecfdeefc` | 77,758 | `ff5697091610e9d171cb04ded8761024ad7938939f242a6f61f498baab165f61` |
 
 Source: the official-formats round, branch
 `personal/official-formats-bridge-20261116` — the unfold fix commit
@@ -20,6 +21,25 @@ Source: the official-formats round, branch
 (`wireDeck` / `showSlide`, Studio blob `a7114308`), re-checker PASS on all
 items. The two files are ONE implementation each — there is no other
 unfold and no other slideshow anywhere in the system.
+
+## The Epic engine — the auto-format step (Epic fold-in, 2026-11-17)
+
+The third stored asset is the Intelligent Block Epic engine
+(`epic-auto-format.html`) — the paste-anything auto-format step. It is stored
+and emitted exactly like the two formats above: `factory.py` carries the
+`EPIC` table (filename + blob sha + byte size + sha256) and `emit_epic()`,
+which verifies size + sha256 on every build (a mismatch is a hard stop) and
+writes the bytes verbatim into the build output dir. The receipt carries the
+`epic` entry (label + vault + source branch/commit/PR) on every build.
+
+Source: the Epic round, branch `intelligent-block/epic-20261117`, commit
+`3920de9f`, PR #3390 (open, unmerged — its bytes are the harvest source;
+whether it merges or closes is Shawn's hand). Its eye PASSED 03:34Z
+2026-11-17 (paste text/note/image all beautiful, numbers alive, self-check
+10/10). The standalone Epic page is retired as a destination; its only
+surviving surface is this engine, inside the Factory (and wherever pasting
+happens — the feed, the pages). Full inventory, harvest ledger, survey
+wiring, and known loose ends: `EPIC.md` in this directory.
 
 ## How the builder uses them
 
@@ -71,7 +91,31 @@ sha256sum formats/*.html out/official-*.html
 Both diffs must be EMPTY (byte-identical). The receipt
 (`out/formats-test.html.receipt.json`) carries the `formats` entries with
 bytes + sha256 per format, plus `label` + `vault` per format (the Vault
-Sharpening — see "The Vault" above).
+Sharpening — see "The Vault" above). Every build also emits the Epic engine
+— verify it the same way:
+
+```sh
+diff formats/epic-auto-format.html out/epic-auto-format.html
+sha256sum formats/epic-auto-format.html out/epic-auto-format.html
+```
+
+That diff must be EMPTY too, and the receipt must carry the `epic` entry.
+The survey proof build (the end-to-end proof — ten answers in, a beautiful
+page out) is:
+
+```sh
+python3 factory.py specs/epic-survey.json --out out/epic-survey-proof.html --no-gate
+python3 ../factory-epic-fold-in-20261117/verify_foldin.py
+```
+
+`--no-gate` is the honest flag here, not a shortcut: the design gate is the
+factory-shell instrument and it fails the pure Epic engine itself on 13
+checks (same families — button DNA, board formula, press yield); the
+fold-in's proof is `verify_foldin.py` (31 checks, including the strip test:
+the built page minus the Factory's work equals the engine bytes exactly),
+the checker, and the captain's eye. See `EPIC.md` ("The design gate") for
+the full comparison (engine 13 vs survey 21) and the two survey-only
+deltas, named, not hidden.
 
 If the design gate blocks the build, isolate the format step with the
 `--no-gate` variant — the format diffs are the proof, the gate is a
@@ -103,3 +147,7 @@ new blob sha from its own round — never by editing these files in place.
 Replace the file, update the `FORMATS` table in `factory.py` AND this file
 (blob sha, bytes, sha256) in the same pass, re-run the verify above, and
 file. A hash mismatch after replacement means the wrong bytes were stored.
+The same rule holds for the Epic engine (`EPIC` table in `factory.py` AND
+the row in the table above AND `EPIC.md`): a new engine version arrives
+only as a new filed file from its own round, never by editing the stored
+bytes in place.
