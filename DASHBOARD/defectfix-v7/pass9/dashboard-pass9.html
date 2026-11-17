@@ -23892,6 +23892,21 @@ function expectedFor(key, s, el){
           /* the world/page score — the windowed total in a period window,
              the spine in All. The dial (not in feat-stats) keeps the delta
              expectation in the switch below. */
+          /* FIX-5b 2026-11-17: in % mode the Fix-5 orb-sum branch rewrites
+             the dial center to the orb-% sum (350) while the featured
+             panel's first stat keeps the spine points (400) — the stat is
+             spine points, not the featured dial, so expecting _fv.center
+             paints a permanent false "Score shows 400, featured says 350"
+             over the Daily Wisdom quote. When the orb-sum branch is active
+             (world holder, % mode, All window, no featured metric), expect
+             the spine. Every other case still expects the center. */
+          if (_fv.kind === 'world'
+              && (typeof window !== 'undefined' && window._dashMode) === 'pct'
+              && (window._ldWindow || 'all') === 'all'
+              && !window._featuredMetric
+              && typeof s.score === 'number'){
+            return s.score;
+          }
           return _fv.center;
         }
       }
