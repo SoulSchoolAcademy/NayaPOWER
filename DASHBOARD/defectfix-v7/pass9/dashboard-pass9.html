@@ -59,6 +59,10 @@ window._osSetDashMode = function(mode, persist){
   window._dashPctMode = (m === 'pct');
   if (persist !== false){ try{ localStorage.setItem('dashPctMode', m); }catch(e){} }
   try{ window._osSyncModePills(m); }catch(e){}
+  /* FIX-5c 2026-11-17: a mode flip changes what the meter must expect
+     (the Fix-5b spine guard is % mode only) — re-evaluate on the flip,
+     not only on the meter's 15s tick. */
+  try{ if(window.tnTruth) window.tnTruth.tick(); }catch(_){}
   return m;
 };
 /* The orb's spoken label, from the SAME display rule as its number
@@ -19550,6 +19554,9 @@ window.ldLayoutNodes = ldLayoutNodes;
          orb's number (intended). Same call the orbs re-render already makes
          at the end of its pass. */
       if (typeof window.renderBoards === 'function') window.renderBoards();
+      /* FIX-5c 2026-11-17: re-evaluate the meter on this state change —
+         a banner must clear (or never start) now, not on the next 15s tick. */
+      try{ if(window.tnTruth) window.tnTruth.tick(); }catch(_){}
       return true;
     }catch(e){ return false; }
   };
@@ -19565,6 +19572,10 @@ window.ldLayoutNodes = ldLayoutNodes;
          compares a stale featured panel against the live score. Same
          renderBoards() call as the set side; same reason. */
       if (typeof window.renderBoards === 'function') window.renderBoards();
+      /* FIX-5c 2026-11-17: re-evaluate the meter on this state change —
+         restoring the score must dismiss a stale banner now, not on the
+         next 15s tick. */
+      try{ if(window.tnTruth) window.tnTruth.tick(); }catch(_){}
     }catch(e){}
   };
   /* FIX 6 — THE WINDOW TOTAL, ONE SOURCE (2026-11-08: Day tiles 0 vs math 25).
@@ -20363,6 +20374,9 @@ window.ldLayoutNodes = ldLayoutNodes;
     try{ if (typeof loadPointsBoard === 'function') loadPointsBoard(); }catch(e){}
     try{ window._featuredSyncBig(); }catch(e){}
     try{ window.renderBoards(); }catch(e){}
+    /* FIX-5c 2026-11-17: choosing a holder ends the orb override — re-evaluate
+       the meter on the state change, not only on its 15s tick. */
+    try{ if(window.tnTruth) window.tnTruth.tick(); }catch(_){}
     try{ if (typeof window._osRerenderLinks === 'function') window._osRerenderLinks(); }catch(e){} /* HERO FIX 2026-11-09 (l): the link cards re-render too, so the card's button reads 'On the gauge ✓' after its click. */
     try{
       /* PASS 4 fix C3 (replaces C/C2's full drill re-render: re-rendering
@@ -23892,6 +23906,19 @@ function expectedFor(key, s, el){
           /* the world/page score — the windowed total in a period window,
              the spine in All. The dial (not in feat-stats) keeps the delta
              expectation in the switch below. */
+          /* FIX-5c 2026-11-17: when an orb is tapped (window._featuredMetric
+             set), the featured panel's first stat shows the ORB's number,
+             not the score and not the dial center — in % mode the Clicks
+             orb shows its share (30) while the dial center is the share
+             x 5 (150), and a zero orb headlines its worth (e.g. 5) instead
+             of 0. No single expectation is honest for that numeral, so the
+             meter has no expectation for it while the orb is active
+             (null = skip, never guess). The tachometer numeral still
+             expects the dial, the other stats still check, and the
+             default-state score check below is untouched. */
+          if (window._featuredMetric){
+            return null;
+          }
           /* FIX-5b 2026-11-17: in % mode the Fix-5 orb-sum branch rewrites
              the dial center to the orb-% sum (350) while the featured
              panel's first stat keeps the spine points (400) — the stat is
