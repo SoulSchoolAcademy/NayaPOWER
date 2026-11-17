@@ -74,6 +74,46 @@
      entry ?from=hub (any world selectable) or ?from=<world> (that
      world's mail first); the organizer tabs, the trio, the mail inbox
      and the thread share one state (organizer + messenger, one system).
+  ---
+  SMART MAIL UNIFICATION round (2026-11-17, brief
+  BRIEF-SMART-MAIL-UNIFY-20261117.md; comparison
+  smart-mail-unify-20261117/COMPARISON-BEST-OF-BOTH-20261117.md).
+  Base: Fix-3 tip commit 94ec9327, blob e59e09b7, 92,927 B — Fix-3 fixes
+  STAND (dock clearance at scroll top, orbit 60-180s); this round ADDS:
+  1. THE FIVE bottom bar, harvested verbatim from the Personal page
+     (NayaNotif SEGS + ICONS, personal-fixed.html, from
+     probe-icons-plus-fix-r3/work-r5-fixpass3.html, captain-verified
+     2026-11-13): ADD #8e24aa · MAIL #0f52ba · ACTIVITY #07925f ·
+     WORLDS #d4a017 · ECOSYSTEM #c2410c. Icons only, as on Personal.
+     NO CONNECT — adding or removing it is Shawn's call. The trio is gone.
+  2. BEST OF BOTH: B's hero cover restored (min(55vh,600px), 420px phone),
+     B's breathing room (menu 12px, tabs 44px, search 13px/16px), ONE name
+     (Smart Mail everywhere), board visible at load (no boot auto-scroll
+     past it). Kept from A: Deep Palette, white text, mail-by-world,
+     self-lighting toggle, depth, orbit, dock clearance, centred letters.
+  3. F/D: Design crew #8e24aa -> emerald #07925f (out of the purple
+     family); Family #a21caf, Family mail #a21caf, Clients #0f52ba kept.
+     Same move for peer clashes: Sam's orb #a21caf -> #c2410c, Gardening
+     tab #a21caf -> #c2410c, CC cycle 5th #a21caf -> #c2410c, cover wash
+     magenta stop -> gold. Two lists never share one hex by meaning.
+  4. COVER CONTROL: the Cover / No cover / Full screen trio is gone —
+     "Full screen" never went fullscreen (zero requestFullscreen in
+     either presentation). One plain button, always visible in the
+     page-head: "Hide the banner" / "Show the banner".
+  5. NOTHING FLAT: inactive toggle side, install-x, list-chip, feed-item,
+     choice-toggle all gain real depth; inset top-light removed from
+     toggle .on / world-pill hover / mail-board hover; .msg.mine colour
+     fill -> obsidian + royal-purple rim + glow. World pills restyled to
+     the Dashboard PTS / % / MONEY button standard (Shawn 03:51Z):
+     obsidian pill, bold white text, one deep colour as rim + glow.
+  6. ALIVE, LESS TEXT, MORE ICONS: orbit kept (60/90s satellites,
+     dock 60/75s); labels cut to the nutshell; no gray text anywhere
+     (placeholders opacity:1, every text colour #fff).
+  EYE FINDINGS (03:39-03:49Z) folded in: (a) bottom clearance 160px ->
+  200px at EVERY width + scroll-padding-bottom, dock shortened by
+  dropping its labels (icons-only Five); (b) gray meta lines -> white;
+  (c) sticky heading's solid black band -> bottom fade so scrolling text
+  never slices; (d) everything the eye PASSED is untouched.
   HONEST BOUNDARY: mail read access is Shawn's hand. All mail here is
   SEEDED sample mail, labelled as such. No real mail is read, and the
   real-messages formatting proof is honestly OWED, never faked.
@@ -96,19 +136,22 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
+html{scroll-padding-bottom:120px}
 body{background:#050507;color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
 a{color:#fff}
 button{font-family:inherit}
 img{max-width:100%}
 /* --- COVER: .ph-cover harvested verbatim in shape (Personal page) --- */
-.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(17vh,170px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(142,36,170,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(162,28,175,.32),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(15,82,186,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
+.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(55vh,600px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(142,36,170,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(212,160,23,.30),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(15,82,186,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
 .ph-cover::before{content:'';position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(180deg,rgba(2,2,6,0) 0%,rgba(2,2,6,.38) 52%,rgba(2,2,6,.78) 100%);pointer-events:none;z-index:1}
-@media(max-width:900px){.ph-cover{height:100px !important;aspect-ratio:auto !important;max-height:none !important;}}
-/* COVER CHOICE (addendum 1 §2): the citizen chooses — Cover / No cover / Full screen.
-   No cover = content up to the bars at the top. Full screen = cover + menu away. */
+@media(max-width:900px){.ph-cover{height:420px !important;aspect-ratio:auto !important;max-height:none !important;}}
+/* COVER TOGGLE (Unification 2026-11-17): one plain button in the page-head —
+   "Hide the banner" / "Show the banner". The old Cover / No cover /
+   Full screen trio is gone: "Full screen" never went fullscreen (zero
+   requestFullscreen in either presentation) and the words said nothing
+   plain. One button, plain words, always visible, always undoable. */
 body.no-cover .ph-cover{display:none}
-body.fullscreen .ph-cover,body.fullscreen .menu-bar{display:none}
-body.fullscreen .ph-main{padding-top:12px}
+body.no-cover .ph-main{padding-top:12px}
 .ph-cover-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
 .ph-cover-inner h1{margin:0;font-size:44px;font-weight:800;letter-spacing:.2px;text-shadow:0 4px 24px rgba(0,0,0,.6)}
 .ph-cover-inner p{margin:10px 0 0;font-size:16px;color:#fff;max-width:560px;line-height:1.5}
@@ -116,25 +159,29 @@ body.fullscreen .ph-main{padding-top:12px}
 .ph-plus:hover{border-color:#a21caf;box-shadow:0 0 26px rgba(162,28,175,.65),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
 .ph-plus.left{left:24px}.ph-plus.right{right:24px}
 /* --- MENU BAR under the cover: Personal .topnav + .steppill VERBATIM --- */
-.menu-bar{display:flex;gap:10px;justify-content:center;align-items:center;padding:8px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;background:rgba(5,5,7,.92);backdrop-filter:blur(10px);z-index:50;overflow-x:auto;scrollbar-width:none}
+.menu-bar{display:flex;gap:10px;justify-content:center;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;background:rgba(5,5,7,.92);backdrop-filter:blur(10px);z-index:50;overflow-x:auto;scrollbar-width:none}
 .menu-bar::-webkit-scrollbar{display:none}
-.menu-bar .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:11px;letter-spacing:.14em;color:#fff;padding:8px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #fff;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap;text-decoration:none}
+.menu-bar .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:11px;letter-spacing:.14em;color:#fff;padding:10px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #fff;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap;text-decoration:none}
 .steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
 .menu-bar .steppill:hover{border-color:var(--sc);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}
 .menu-bar .steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
 .menu-bar .steppill.on{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc),0 0 22px -4px var(--sc)}
 .menu-bar .steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
 /* --- PAGE --- */
-.ph-main{padding:8px 24px 160px}
+/* DOCK CLEARANCE (Unification, eye finding (a)): 200px of empty space
+   reserved above the fixed dock at EVERY width, so any element can be
+   scrolled fully clear of it and nothing is cut at max scroll. */
+.ph-main{padding:8px 24px 200px}
 .page-head{text-align:center;margin:0 0 10px}
-.page-title{margin:4px 0 0;text-align:center;font-size:28px;font-weight:800;position:sticky;top:62px;z-index:40;background:#050507;scroll-margin-top:78px}
+/* EYE (c): the solid band sliced the top line scrolling under it — the
+   band now fades out over its bottom edge instead of cutting. */
+.page-title{margin:4px 0 0;text-align:center;font-size:28px;font-weight:800;position:sticky;top:62px;z-index:40;background:linear-gradient(180deg,#050507 72%,rgba(5,5,7,0));padding-bottom:14px;scroll-margin-top:78px}
 .page-head p{margin:4px 0 0;font-size:15px;color:#fff}
-.cover-modes{display:flex;gap:8px;justify-content:center;margin-top:8px;flex-wrap:wrap}
-.cover-modes .btn{padding:9px 16px;font-size:12px;min-height:32px}
+.cover-toggle{margin-top:10px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
 .smart-lists h3{margin:0;padding:16px 18px 4px;font-size:15px;font-weight:800}
-.smart-lists .list-chip{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.02);color:#fff;font-family:inherit;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.4);transition:border-color .2s,box-shadow .2s}
-.smart-lists .list-chip:hover{border-color:var(--ac,#8e24aa);box-shadow:0 0 20px -2px var(--ac,#8e24aa),0 10px 22px rgba(0,0,0,.55)}
+.smart-lists .list-chip{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:2px solid rgba(255,255,255,.14);background:linear-gradient(180deg,#12101a,#08080c);color:#fff;font-family:inherit;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.55),0 0 14px color-mix(in srgb,var(--ac,#8e24aa) 20%,transparent);transition:border-color .2s,box-shadow .2s,transform .2s}
+.smart-lists .list-chip:hover{border-color:var(--ac,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 20px -2px var(--ac,#8e24aa),0 14px 28px rgba(0,0,0,.6);transform:translateY(-2px)}
 .smart-lists .list-chip.active{border-color:var(--ac,#8e24aa);background:rgba(142,36,170,.08);box-shadow:0 0 22px -2px var(--ac,#8e24aa),0 10px 22px rgba(0,0,0,.55)}
 .smart-lists .list-chip b{font-size:14px}
 .smart-lists .list-chip span:not(.cx-ava){font-size:12px;color:#fff;display:block;margin-top:2px}
@@ -146,14 +193,14 @@ body.fullscreen .ph-main{padding-top:12px}
 .org-tabs{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 8px;scrollbar-width:thin}
 .org-tabs::-webkit-scrollbar{height:6px}
 .org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
-.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:40px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
+.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
 .nf-smtab small{color:#fff;font-weight:800}
 .nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
 .nf-smtab.active{border-color:rgba(255,255,255,.6);box-shadow:0 0 16px rgba(255,255,255,.18),inset 0 1px rgba(255,255,255,.15)}
 /* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
-.search-row{display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:10px}
+.search-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:16px}
 .search-row input{flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-size:15px;font-family:inherit}
-.search-row input::placeholder{color:#fff}
+.search-row input::placeholder{color:#fff;opacity:1}
 /* --- MESSENGER GRID --- */
 .messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
 .panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
@@ -194,21 +241,22 @@ body.fullscreen .ph-main{padding-top:12px}
 .thread-head .who span.mail-mode{color:#fff}
 /* --- TOGGLE: Smart Mail | Instant Message, in place --- */
 .toggle{display:flex;border-radius:999px;border:1.5px solid rgba(142,36,170,.55);overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15);flex:none}
-.toggle button{padding:10px 16px;background:#0a0a0f;color:#fff;border:1.5px solid transparent;font-size:13px;font-weight:800;cursor:pointer;transition:box-shadow .2s,border-color .2s;display:inline-flex;align-items:center;gap:8px}
+.toggle button{padding:10px 16px;background:#0a0a0f;color:#fff;border:1.5px solid rgba(255,255,255,.35);font-size:13px;font-weight:800;cursor:pointer;transition:box-shadow .2s,border-color .2s;display:inline-flex;align-items:center;gap:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 6px 16px rgba(0,0,0,.5)}
 .toggle button:hover{box-shadow:0 0 18px var(--tc,rgba(142,36,170,.5))}
 /* TOGGLE, PRO-LEVEL (brief §2): one control; the active side's OWN icon
    lights up in its own colour — mail blue, IM green. The icon IS the
    light (its own glow); there is no separate dot or light beside it.
    No gradient fill on .on: obsidian inside, light outside only. */
 .toggle button .tgl-ico{font-size:15px;line-height:1;color:#fff;transition:text-shadow .25s,color .25s}
-.toggle button.on{background:#0a0a0f;color:#fff;border-color:var(--tc);box-shadow:0 0 20px var(--tc),inset 0 1px 0 rgba(255,255,255,.15)}
+.toggle button.on{background:#0a0a0f;color:#fff;border-color:var(--tc);box-shadow:0 0 20px var(--tc),0 8px 20px rgba(0,0,0,.5)}
 .toggle button.on .tgl-ico{color:#fff;text-shadow:0 0 12px var(--tc),0 0 4px #fff}
 .toggle button[disabled]{opacity:.45;cursor:not-allowed}
 .thread-body{flex:1;padding:20px 18px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px}
 .msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:14.5px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);transition:transform .25s,box-shadow .25s,border-color .25s}
 .msg:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.65);box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),0 0 22px rgba(142,36,170,.45)}
 .msg .meta{display:block;font-size:11.5px;color:#fff;margin-top:6px}
-.msg.mine{align-self:flex-end;background:linear-gradient(180deg,#8e24aa,color-mix(in srgb,#8e24aa 55%,#050607));border-color:rgba(142,36,170,.6)}
+/* .msg.mine: colour FILL is gone — obsidian inside, royal-purple rim + glow outside (Code §4: colour in rims and halos, never fills). */
+.msg.mine{align-self:flex-end;background:linear-gradient(180deg,#17102a,#0a0a0f);border-color:#8e24aa;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12),0 0 22px rgba(142,36,170,.35)}
 .msg.theirs{align-self:flex-start;background:linear-gradient(180deg,#1b1b24,#0c0c11)}
 .msg.letter{align-self:stretch;max-width:100%;background:linear-gradient(180deg,#14141d,#0a0a0f)}
 .msg.letter .subject{font-weight:800;font-size:15px;margin-bottom:6px}
@@ -228,7 +276,7 @@ body.fullscreen .ph-main{padding-top:12px}
 .composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:15px;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.22)}
 .composer input[type=text]:focus{border-color:#8e24aa;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 0 28px rgba(142,36,170,.5)}
 .composer input.subject{flex:0 0 180px}
-.composer input[type=text]::placeholder{color:#fff}
+.composer input[type=text]::placeholder{color:#fff;opacity:1}
 .btn{--btn-accent:var(--room-accent,var(--magenta));display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;padding:0 22px;border-radius:var(--radius-pill);border:1px solid color-mix(in srgb,var(--btn-accent) 45%,transparent);background:linear-gradient(145deg,color-mix(in srgb,var(--btn-accent) 26%,#1a1424),color-mix(in srgb,var(--btn-accent) 10%,#0b0a10));color:var(--ink);font-size:12.5px;font-weight:800;letter-spacing:.06em;cursor:pointer;box-shadow:var(--depth-hi),0 10px 26px #000a,0 0 22px color-mix(in srgb,var(--btn-accent) 26%,transparent);transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-med) var(--ease),filter var(--dur-fast) var(--ease);white-space:nowrap;font-family:inherit}
 .btn:hover{transform:translateY(-2px);filter:brightness(1.12);box-shadow:var(--depth-hi),0 16px 36px #000b,0 0 34px color-mix(in srgb,var(--btn-accent) 40%,transparent)}
 .btn:active{transform:translateY(0) scale(.985)}
@@ -249,24 +297,25 @@ body.fullscreen .ph-main{padding-top:12px}
 .install-card{position:relative;width:min(420px,100%);border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1px solid rgba(142,36,170,.55);box-shadow:0 0 40px rgba(142,36,170,.45),0 30px 60px rgba(0,0,0,.8);padding:28px 24px;text-align:center}
 .install-card h2{margin:0 0 8px;font-size:22px}
 .install-card p{margin:0 0 16px;font-size:14px;line-height:1.55;color:#fff}
-.install-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#0a0a0f;color:#fff;font-size:16px;cursor:pointer}
+.install-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#0a0a0f;color:#fff;font-size:16px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 18px rgba(0,0,0,.55),0 0 12px rgba(162,28,175,.25)}
 .install-x:hover{border-color:#a21caf;box-shadow:0 0 18px rgba(162,28,175,.55)}
 .install-manual{text-align:left;margin-top:16px;font-size:13.5px;line-height:1.6;color:#fff}
 .install-manual b{color:#fff}
 .install-later{display:block;margin:14px auto 0;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(142,36,170,.55);color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;padding:8px 18px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 18px rgba(0,0,0,.5),0 0 14px rgba(142,36,170,.25);transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
 .install-later:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 24%,#12101a),color-mix(in srgb,#8e24aa 12%,#08080c));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5);text-shadow:0 0 12px rgba(142,36,170,.8)}
-/* --- NOTIF TRIO BAR: the ULTIMATE icons (Shawn 20:34Z) — Hub .notif-bar VERBATIM
-   (Personal file, harvested from the Hub nav file): no divider line above the
-   trio, bar shadow 0 -16px 44px, entry animation, opacity transition. --- */
+/* --- THE FIVE bottom bar (Unification 2026-11-17): the official bar, harvested
+   verbatim from the Personal page (NayaNotif SEGS + ICONS). Hub .notif-bar /
+   .notif-tile construction unchanged; the segments are now the Five, icons
+   only, no visible labels — the dock is shorter, so less of the page hides
+   behind it. Five segments, equal 84px, gap 22px. --- */
 .notif-bar{position:fixed;left:0;right:0;bottom:var(--smartbar-h,0px);z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) both;transition:opacity .45s ease}
 @keyframes notifUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
-.notif-row{display:flex;gap:34px;width:100%;max-width:640px;padding:8px 14px 6px;justify-content:center}
+.notif-row{display:flex;gap:22px;width:100%;max-width:720px;padding:8px 14px 6px;justify-content:center}
 .notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#fff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;min-width:84px}
 .notif-seg:active{transform:scale(.94)}
 .notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 36%,#12121a),#07070b 78%);border:1.5px solid color-mix(in srgb,var(--nc) 62%,rgba(255,255,255,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:color-mix(in srgb,var(--nc) 72%,#ffffff);transition:box-shadow .3s,border-color .3s}
 .notif-tile::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(155deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 42%),linear-gradient(25deg,rgba(255,255,255,0) 62%,color-mix(in srgb,var(--nc) 22%,transparent) 100%)}
 .notif-tile svg{width:25px;height:25px;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--nc) 75%,transparent));position:relative}
-.notif-lbl{font-size:12px;font-weight:800;letter-spacing:.04em;color:#fff}
 .notif-count{position:absolute;top:-8px;right:-10px;min-width:24px;height:24px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:12px;font-weight:900;color:#06060a;background:var(--nc);border:2px solid #05050a;box-shadow:0 0 14px var(--nc),0 3px 8px rgba(0,0,0,.5);animation:notifPulse 2.4s ease-in-out infinite}
 @keyframes notifPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
 .notif-seg.has-news .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
@@ -276,8 +325,8 @@ body.fullscreen .ph-main{padding-top:12px}
 .feed-panel h3{margin:0 0 2px;font-size:17px}
 .feed-panel .feed-sub{font-size:13px;color:#fff;margin:0 0 12px;line-height:1.5}
 .feed-panel .feed-thing{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:14px 0 6px}
-.feed-item{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#fff;font-family:inherit;cursor:pointer;margin-bottom:8px;box-shadow:0 6px 16px rgba(0,0,0,.4)}
-.feed-item:hover{border-color:#8e24aa;box-shadow:0 0 20px rgba(142,36,170,.4),0 10px 22px rgba(0,0,0,.55)}
+.feed-item{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:14px;border:2px solid rgba(255,255,255,.14);background:linear-gradient(180deg,#12101a,#08080c);color:#fff;font-family:inherit;cursor:pointer;margin-bottom:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.55);transition:border-color .2s,box-shadow .2s,transform .2s}
+.feed-item:hover{border-color:#8e24aa;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 20px rgba(142,36,170,.4),0 14px 28px rgba(0,0,0,.6);transform:translateY(-2px)}
 .feed-item b{font-size:14px}
 .feed-item p{margin:4px 0 0;font-size:13px;color:#fff;line-height:1.45}
 .feed-item .src{display:none;margin-top:6px;font-size:12px;color:#fff}
@@ -288,18 +337,20 @@ body.fullscreen .ph-main{padding-top:12px}
 .choice-row:last-of-type{border-bottom:0}
 .choice-row span{font-size:14px;font-weight:700}
 .choice-row small{display:block;font-size:12px;color:#fff;font-weight:400;margin-top:2px}
-.choice-toggle{flex:none;width:52px;height:30px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:#0a0a0f;cursor:pointer;position:relative;box-shadow:inset 0 2px 6px rgba(0,0,0,.7)}
+.choice-toggle{flex:none;width:52px;height:30px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:#0a0a0f;cursor:pointer;position:relative;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 6px 14px rgba(0,0,0,.5),0 0 10px rgba(255,255,255,.08)}
 .choice-toggle::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.5);transition:left .2s}
-.choice-toggle[aria-pressed="true"]{border-color:#07925f;background:rgba(7,146,95,.25);box-shadow:0 0 16px rgba(7,146,95,.4)}
+.choice-toggle[aria-pressed="true"]{border-color:#07925f;background:rgba(7,146,95,.25);box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 6px 14px rgba(0,0,0,.5),0 0 18px rgba(7,146,95,.45)}
 .choice-toggle[aria-pressed="true"]::after{left:25px;background:#07925f}
 /* --- WORLD SELECTOR: one universal mail, any world (brief §1) ---
    Personal blue · Business green · Space magenta. The active pill is
    the one that lights up — rim + glow in its own colour, obsidian inside. */
 .world-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:2px 0 10px}
-.world-row .world-lbl{font-size:13px;font-weight:800;color:#fff;margin-right:2px}
-.world-pill{--wc:#0f52ba;display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:800;font-size:13px;color:#fff;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 20px rgba(0,0,0,.5);transition:box-shadow .25s,border-color .2s,transform .2s;white-space:nowrap}
+/* WORLD PILLS — the Dashboard PTS / % / MONEY button standard (Shawn
+   03:51Z, best buttons in the system): obsidian pill, bold white text,
+   one deep colour per button as rim + glow. No gradient fill, no inset. */
+.world-pill{--wc:#0f52ba;display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:900;font-size:13px;color:#fff;background:#0a0a0f;border:1.5px solid var(--wc);box-shadow:0 0 14px color-mix(in srgb,var(--wc) 35%,transparent),0 8px 20px rgba(0,0,0,.5);transition:box-shadow .25s,border-color .2s,transform .2s;white-space:nowrap}
 .world-pill .wdot{width:9px;height:9px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
-.world-pill:hover{background:linear-gradient(180deg,color-mix(in srgb,var(--wc) 24%,#131318),color-mix(in srgb,var(--wc) 12%,#08080b));border-color:var(--wc);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 22px -2px var(--wc),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+.world-pill:hover{background:#0a0a0f;border-color:var(--wc);box-shadow:0 0 26px -2px var(--wc),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
 .world-pill:hover .wdot{background:var(--wc);box-shadow:0 0 10px var(--wc)}
 .world-pill.on{border-color:var(--wc);box-shadow:0 0 0 1px var(--wc),0 0 24px -2px var(--wc),0 12px 26px rgba(0,0,0,.6)}
 .world-pill.on .wdot{background:var(--wc);box-shadow:0 0 12px var(--wc)}
@@ -309,7 +360,7 @@ body.fullscreen .ph-main{padding-top:12px}
    Board black inside, white as a real object, the whole board lights up
    and lifts on hover in its own world colour. --- */
 .mail-board{--wc:#0f52ba;border-radius:18px;border:1.5px solid var(--wc);background:linear-gradient(180deg,#12101a,#08080c);padding:18px 20px;box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08),0 0 22px -6px var(--wc);margin:4px 0;transition:box-shadow .25s,transform .2s,border-color .2s}
-.mail-board:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.12),0 0 34px -2px var(--wc)}
+.mail-board:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(0,0,0,.65),0 0 34px -2px var(--wc)}
 .mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#fff;text-transform:uppercase}
 .mail-board h4{margin:10px 0 4px;font-size:17px;font-weight:800;color:#fff}
 .mail-nut{margin:0;font-size:14.5px;line-height:1.55;color:#fff}
@@ -329,14 +380,14 @@ body.fullscreen .ph-main{padding-top:12px}
 @keyframes orbitCCW{to{transform:rotate(-360deg)}}
 .ph-plus::before{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 50% 0%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCW 60s linear infinite}
 @media (max-width:900px){
-  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:4px}   .menu-bar{padding:6px 16px}
+  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:4px}   .menu-bar{padding:8px 16px}
   .ph-cover-inner{padding:10px}   .ph-cover-inner h1{font-size:24px}   .ph-cover-inner p{font-size:13px;margin-top:6px;max-width:420px}
   /* FIX-3 round 2, 2026-11-17: narrow stack trims so the first row clears the fixed dock:
      h2 22px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
   .page-title{font-size:22px}
-  .cover-modes{margin-top:6px}
+  .cover-toggle{margin-top:8px}
   .org-tabs{padding:6px 2px 8px}
-  .search-row{padding:8px 16px;margin-bottom:8px}
+  .search-row{padding:10px 16px;margin-bottom:10px}
   .world-row{margin:2px 0 8px;gap:6px}
   .panel h3{padding-top:4px}
   .panel .panel-sub{padding-bottom:2px}
@@ -346,7 +397,7 @@ body.fullscreen .ph-main{padding-top:12px}
   .composer-inner{flex-wrap:wrap}
 }
 @media (max-width:420px){
-  .ph-main{padding:18px 12px 150px}
+  .ph-main{padding:18px 12px 190px}
   .toggle button{padding:10px 11px;font-size:12px}
   .thread-head{flex-wrap:wrap}
   .msg{max-width:88%}
@@ -373,6 +424,8 @@ body.fullscreen .ph-main{padding-top:12px}
 .notif-tile::after{content:'';position:absolute;inset:-8px;border-radius:22px;pointer-events:none;background:radial-gradient(circle 6px at 50% 0%,var(--nc) 98%,transparent 100%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--nc) 30%,transparent);filter:drop-shadow(0 0 6px var(--nc));animation:orbitCW 60s linear infinite}
 .notif-seg::before{content:'';position:absolute;top:-6px;left:50%;width:70px;height:70px;margin-left:-35px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 0% 50%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCCW 75s linear infinite}
 .notif-seg:hover .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 55%,#12121a),#07070b 78%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 30px color-mix(in srgb,var(--nc) 70%,transparent)}
+/* FIVE at phone widths: five tiles must fit 390px — tighter gap, 48px tiles. */
+@media(max-width:480px){.notif-row{gap:10px;padding:8px 8px 6px}.notif-seg{min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}}
 .row:hover .cx-ava{filter:brightness(1.18)}
 /* --- ELEVATION FIX 2026-11-17 (checker item 8): the six flat/dead elements
    gain elevation + whole-item hover light in their own deep color — .format-note,
@@ -390,7 +443,7 @@ body.fullscreen .ph-main{padding-top:12px}
     <p>One conversation, two formats — mail and instant message, in every world.</p>
   </div>
   <button class="ph-plus left" id="plusNew" type="button" aria-label="New message">+</button>
-  <button class="ph-plus right" id="plusInstall" type="button" aria-label="Install the messenger">+</button>
+  <button class="ph-plus right" id="plusInstall" type="button" aria-label="Install Smart Mail">+</button>
 </header>
 
 <!-- MENU BAR -->
@@ -400,7 +453,7 @@ body.fullscreen .ph-main{padding-top:12px}
   <a class="steppill" style="--sc:#07925f" href="https://nayanet.app/personal"><span class="sdot"></span>Personal</a>
   <a class="steppill" style="--sc:#d4a017" href="https://nayanet.app/business"><span class="sdot"></span>Business</a>
   <a class="steppill" style="--sc:#a21caf" href="https://nayanet.app/spaces"><span class="sdot"></span>Space</a>
-  <a class="steppill on" style="--sc:#8e24aa" href="#" aria-current="page"><span class="sdot"></span>Messenger</a>
+  <a class="steppill on" style="--sc:#8e24aa" href="#" aria-current="page"><span class="sdot"></span>Smart Mail</a>
   <a class="steppill" style="--sc:#07925f" href="https://nayanet.app/pricing"><span class="sdot"></span>Pricing</a>
 </nav>
 
@@ -408,11 +461,7 @@ body.fullscreen .ph-main{padding-top:12px}
   <h2 class="page-title">Message anybody — by topic, not just by contact</h2>
   <div class="page-head">
     <p>Flip the format, pick a topic, tap a person. One tap and you are talking.</p>
-    <div class="cover-modes" role="group" aria-label="Cover view">
-      <button class="btn" type="button" id="modeCover" aria-pressed="true">Cover</button>
-      <button class="btn ghost" type="button" id="modeNoCover" aria-pressed="false">No cover</button>
-      <button class="btn ghost" type="button" id="modeFull" aria-pressed="false">Full screen</button>
-    </div>
+    <button class="btn ghost cover-toggle" type="button" id="coverToggle" aria-pressed="false">Hide the banner</button>
   </div>
 
   <!-- ORGANIZER TABS: the Smart Organizer's topics, harvested verbatim -->
@@ -428,7 +477,6 @@ body.fullscreen .ph-main{padding-top:12px}
        Opening mail from a page shows THAT world's mail first (?world= or
        ?from=<world>); from the Hub (?from=hub) the citizen picks any world. -->
   <div class="world-row" id="worldRow" role="group" aria-label="Which world's mail">
-    <span class="world-lbl">World:</span>
     <span id="worldPills"></span>
     <span class="world-note" id="worldNote"></span>
   </div>
@@ -437,11 +485,11 @@ body.fullscreen .ph-main{padding-top:12px}
     <!-- LEFT: mail inbox (mail mode) / conversations + topic people (IM mode) -->
     <section class="panel" aria-label="Conversations">
       <h3 id="inboxTitle" hidden>Mail inbox — Personal</h3>
-      <p class="panel-sub" id="inboxSub" hidden>Your letters in this world — tap one to open it as a board.</p>
+      <p class="panel-sub" id="inboxSub" hidden>Tap a letter to open it.</p>
       <p class="stub-note">Preview people — sample names showing the shape of the page. Live people come from the Smart Organizer and the Auto-Match engine; no sample person here is a real citizen.</p>
       <div class="rows" id="mailInbox" hidden></div>
       <h3 id="convHead">Conversations</h3>
-      <p class="panel-sub" id="convSub">Your contacts — and the people online in your topic.</p>
+      <p class="panel-sub" id="convSub">Contacts · people online in your topic.</p>
       <div class="rows" id="convList"></div>
       <h3 id="topicPeopleTitle">Online in Design</h3>
       <p class="panel-sub" id="topicSub">Tap a person to open a conversation with them.</p>
@@ -473,8 +521,8 @@ body.fullscreen .ph-main{padding-top:12px}
         </div>
       </div>
       <div class="thread-foot">
-        <button class="btn ghost" type="button" id="backHub">← Back to the Hub</button>
-        <button class="btn ghost" type="button" id="downloadBtn">⬇ Install the app</button>
+        <button class="btn ghost" type="button" id="backHub">← Hub</button>
+        <button class="btn ghost" type="button" id="downloadBtn">⬇ Install app</button>
       </div>
     </section>
   </div>
@@ -486,12 +534,12 @@ body.fullscreen .ph-main{padding-top:12px}
   <div class="smart-lists" id="smartLists">
     <section class="panel" aria-label="Saved instant-message lists">
       <h3>Instant-message lists</h3>
-      <p class="panel-sub">Your saved IM conversations — who you message live.</p>
+      <p class="panel-sub">Who you message live.</p>
       <div class="rows" id="imLists"></div>
     </section>
     <section class="panel" aria-label="Saved mail lists">
       <h3>Mail lists</h3>
-      <p class="panel-sub">Your saved mail — who you write letters to.</p>
+      <p class="panel-sub">Who you write to.</p>
       <div class="rows" id="mailLists"></div>
     </section>
   </div>
@@ -509,54 +557,62 @@ body.fullscreen .ph-main{padding-top:12px}
 <div class="install-veil" id="installVeil" hidden>
   <div class="install-card" role="dialog" aria-modal="true" aria-labelledby="installTitle">
     <button type="button" class="install-x" id="installX" aria-label="Close">✕</button>
-    <h2 id="installTitle">Install Smart Messenger</h2>
-    <p>Put the messenger on your home screen. One tap opens straight into your conversations.</p>
+    <h2 id="installTitle">Install Smart Mail</h2>
+    <p>Put Smart Mail on your home screen. One tap opens your conversations.</p>
     <button type="button" class="btn" id="installGo">Install App</button>
     <div class="install-manual" id="installManual" hidden>
       <p><b>Your browser needs the manual way — seconds, I promise:</b></p>
       <p><b>iPhone:</b> tap Share — the square with the arrow pointing up — then <b>Add to Home Screen</b>, then <b>Add</b>. Done.</p>
       <p><b>Android:</b> tap the menu, then <b>Add to Home screen</b>. Done.</p>
-      <p>The live store listing is still owed — this installs the messenger as an app from this page.</p>
+      <p>The live store listing is still owed — this installs Smart Mail as an app from this page.</p>
     </div>
     <button type="button" class="install-later" id="installLater">Not now</button>
   </div>
 </div>
 
-<!-- NOTIF TRIO BAR: the three WORLDS — Personal activity · Business activity ·
-     Thing activity (settled 20:34Z; the notification spec). Ultimate icons
-     are GEMS (20:41Z): amethyst Personal · emerald Business · diamond Thing,
-     in the Hub .notif-tile construction + staged label, aligned in equal
-     segments. The third button is labelled by the thing (here: the active
-     topic), never "space". -->
+<!-- THE FIVE — the official bottom bar (Personal page, harvested verbatim):
+     + ADD purple · MAIL blue · ACTIVITY green · WORLDS gold · ECOSYSTEM
+     burnt orange — NayaNotif SEGS + ICONS from the Personal page
+     (personal-whole-page-20261117/work/personal-fixed.html, harvested from
+     probe-icons-plus-fix-r3/work-r5-fixpass3.html, captain-verified
+     2026-11-13). Icons only — names live in aria-label + title, as on
+     Personal. CONNECT is NOT here: adding or removing it is Shawn's call.
+     The trio (Personal/Business/Thing gems) is gone from this page. -->
 <footer class="notif-bar" id="notifBar">
   <div class="notif-row">
-    <button class="notif-seg has-news" type="button" id="segPersonal" data-gem="amethyst" style="--nc:#8e24aa" aria-label="Personal activity — open">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="rgba(142,36,170,.28)"/><circle cx="12" cy="12" r="4" fill="rgba(255,255,255,.30)" stroke-width="1"/><path d="M12 3.5v4.5M12 16v4.5M3.5 12h4.5M16 12h4.5M6.2 6.2l3 3M17.8 6.2l-3 3M6.2 17.8l3-3M17.8 17.8l-3-3" stroke-width="1" opacity=".65"/><path d="M8.3 7.2l.9 1.9 1.9.9-1.9.9-.9 1.9-.9-1.9-1.9-.9 1.9-.9z" fill="#fff" stroke="none" opacity=".95"/></svg><span class="notif-count" id="personalCount">2</span></span><span class="notif-lbl">Personal</span>
+    <button class="notif-seg" type="button" id="segAdd" data-notif="plus" style="--nc:#8e24aa" aria-label="ADD — open" title="ADD">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
     </button>
-    <button class="notif-seg has-news" type="button" id="segBusiness" data-gem="emerald" style="--nc:#07925f" aria-label="Business activity — open">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8l4 4v12l-4 4H8l-4-4V8z" fill="rgba(7,146,95,.22)"/><path d="M10 7h4l2.5 2.5v9L14 21h-4l-2.5-2.5v-9z" fill="rgba(255,255,255,.22)" stroke-width="1"/><rect x="10.2" y="10.2" width="3.6" height="3.6" fill="rgba(255,255,255,.30)" stroke="none"/><path d="M7.6 6.4l.8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z" fill="#fff" stroke="none" opacity=".95"/></svg><span class="notif-count" id="businessCount">1</span></span><span class="notif-lbl">Business</span>
+    <button class="notif-seg has-news" type="button" id="segMail" data-notif="mail" style="--nc:#0f52ba" aria-label="MAIL — open" title="MAIL">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count" id="mailCount">6</span></span>
     </button>
-    <button class="notif-seg has-news" type="button" id="segThing" data-gem="diamond" style="--nc:#ffffff" aria-label="Thing activity — open">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5h10l4 4L12 20 3 9z" fill="rgba(255,255,255,.14)"/><path d="M7 5l2.5 4M17 5l-2.5 4M12 5v4M3 9h18M9.5 9L12 20M14.5 9L12 20" stroke-width="1" opacity=".7"/><path d="M7 5h5l-2.5 4z" fill="rgba(255,255,255,.35)" stroke="none"/><path d="M12 5h5l-2.5 4z" fill="rgba(255,255,255,.18)" stroke="none"/><path d="M9.5 9L12 20l-3.2-6.6z" fill="rgba(255,255,255,.25)" stroke="none"/><path d="M8.6 6.2l.7 1.5 1.5.7-1.5.7-.7 1.5-.7-1.5-1.5-.7 1.5-.7z" fill="#fff" stroke="none" opacity=".95"/></svg><span class="notif-count" id="thingCount">1</span></span><span class="notif-lbl" id="thingLbl">Design</span>
+    <button class="notif-seg has-news" type="button" id="segActivity" data-notif="activity" style="--nc:#07925f" aria-label="ACTIVITY — open" title="ACTIVITY">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count" id="activityCount">4</span></span>
+    </button>
+    <button class="notif-seg" type="button" id="segWorlds" data-notif="spaces" style="--nc:#d4a017" aria-label="WORLDS — open" title="WORLDS">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span>
+    </button>
+    <button class="notif-seg" type="button" id="segEco" data-notif="eco" style="--nc:#c2410c" aria-label="ECOSYSTEM — open" title="ECOSYSTEM">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
     </button>
   </div>
 </footer>
 
-<!-- WORLD FEED PANEL: tap a trio button, see that world's feed, each item sourced -->
+<!-- WORLD FEED PANEL: tap ACTIVITY in the Five, see that world's feed, each item sourced -->
 <div class="feed-panel" id="feedPanel" role="dialog" aria-label="World activity feed">
   <h3 id="feedTitle">Personal activity</h3>
   <p class="feed-sub" id="feedSub"></p>
   <div id="feedItems"></div>
   <div class="feed-actions">
-    <button class="btn ghost" type="button" id="feedChoiceBtn">Choose what notifies you</button>
+    <button class="btn ghost" type="button" id="feedChoiceBtn">🔔 Notifications</button>
     <button class="btn ghost" type="button" id="feedCloseBtn">Close</button>
   </div>
 </div>
 
 <!-- NOTIFICATION CHOICE SHEET: the citizen picks what they get notified on -->
 <div class="feed-panel" id="choicePanel" role="dialog" aria-label="Choose your notifications">
-  <h3>Choose what notifies you</h3>
-  <p class="feed-sub">Pick what raises a count on the trio. What you do not pick never notifies you.</p>
+  <h3>Notifications</h3>
+  <p class="feed-sub">Pick what raises a count on the bar. The rest never notifies you.</p>
   <div id="choiceRows"></div>
   <div class="feed-actions">
     <button class="btn ghost" type="button" id="choiceCloseBtn">Done</button>
@@ -567,13 +623,15 @@ body.fullscreen .ph-main{padding-top:12px}
 /* STUB DATASET — sample people in the page's own shape (initial, name,
    nutshell, match %). Named as a stub: no sample person is a real citizen.
    Live path owed: Smart Organizer tabs + Auto-Match engine people. */
-var CC = ['#8e24aa','#0f52ba','#07925f','#d4a017','#a21caf'];
+/* CC cycle: five distinct Deep Palette families — the 5th was #a21caf
+   (deep magenta), a purple-family peer of #8e24aa; now burnt orange. */
+var CC = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c'];
 var CONTACTS = [
   {id:'maya', initial:'M', name:'Maya R.', nut:'Designing a kinder internet, one page at a time.', match:94, last:'That cover is beautiful — can you send the link?', cc:'#8e24aa'},
   {id:'jordan', initial:'J', name:'Jordan K.', nut:'Cooks slow food, grows fast herbs.', match:88, last:'Sunday market at nine — bring the sourdough.', cc:'#0f52ba'},
   {id:'priya', initial:'P', name:'Priya S.', nut:'Sings, teaches, and never misses a morning walk.', match:82, last:'The new song is ready. Want the first listen?', cc:'#07925f'},
   {id:'leo', initial:'L', name:'Leo T.', nut:'Fixing bikes, riding farther every month.', match:76, last:'Trail on Saturday if the rain holds off.', cc:'#d4a017'},
-  {id:'sam', initial:'S', name:'Sam V.', nut:'Your son — football, guitars, and big questions.', match:100, last:'Dad, did you see the game?', cc:'#a21caf'}
+  {id:'sam', initial:'S', name:'Sam V.', nut:'Your son — football, guitars, and big questions.', match:100, last:'Dad, did you see the game?', cc:'#c2410c'}
 ];
 var TOPICS = {
   'Design': [
@@ -620,7 +678,7 @@ var TOPICS = {
   ]
 };
 var TAB_ORDER = ['Design','Music','Cooking','Fitness','Gardening','Travel','Business'];
-var TOPIC_COLORS = { Design:'#8e24aa', Music:'#0f52ba', Cooking:'#07925f', Fitness:'#d4a017', Gardening:'#a21caf', Travel:'#0f52ba', Business:'#d4a017' };
+var TOPIC_COLORS = { Design:'#8e24aa', Music:'#0f52ba', Cooking:'#07925f', Fitness:'#d4a017', Gardening:'#c2410c', Travel:'#0f52ba', Business:'#d4a017' };
 /* Topic people carry their Connections-orb colour, assigned here (never invented per render). */
 Object.keys(TOPICS).forEach(function(k){ TOPICS[k].forEach(function(p, i){ p.cc = CC[i % CC.length]; }); });
 var THREADS = {
@@ -685,12 +743,25 @@ var CHOICE_DEFS = [
   ['shares','Shares','Someone shared your thing'], ['stats','Stats','Your numbers, moving'],
   ['updates','Updates','Changes to your pages'], ['leaderboards','Leaderboards','Leaderboard moves, when live']
 ];
+/* THE FIVE counts: MAIL carries the unread letters across all worlds;
+   ACTIVITY carries the activity total across all worlds. The old trio
+   segments are gone with the trio. */
+function refreshFiveCounts(){
+  var unread = 0;
+  Object.keys(MAIL).forEach(function(w){ MAIL[w].forEach(function(m){ if (m.unread) unread++; }); });
+  var mc = $('mailCount');
+  mc.textContent = unread > 9 ? '9+' : String(unread);
+  mc.style.display = unread === 0 ? 'none' : 'flex';
+  $('segMail').classList.toggle('has-news', unread > 0);
+  var act = WORLD_COUNTS.personal + WORLD_COUNTS.business + WORLD_COUNTS.thing;
+  var ac = $('activityCount');
+  ac.textContent = act > 9 ? '9+' : String(act);
+  ac.style.display = act === 0 ? 'none' : 'flex';
+  $('segActivity').classList.toggle('has-news', act > 0);
+}
 function setWorldCount(world, n){
   WORLD_COUNTS[world] = n;
-  var el = $(world + 'Count');
-  el.textContent = n > 9 ? '9+' : String(n);
-  el.style.display = n === 0 ? 'none' : 'flex';
-  $('seg' + world.charAt(0).toUpperCase() + world.slice(1)).classList.toggle('has-news', n > 0);
+  refreshFiveCounts();
 }
 function raiseCount(world, kind, n){
   if (!NOTIF[kind]) { window.__lastSkipped = { world: world, kind: kind }; return false; }
@@ -721,7 +792,7 @@ function pushFeed(world, item){ FEEDS[world].unshift(item); }
 var SMART_LISTS = {
   im: [
     { name:'Family', color:'#a21caf', members:['sam','maya'], note:'Sam V. · Maya R.' },
-    { name:'Design crew', color:'#8e24aa', members:['t-d1','t-d2'], note:'Ava L. · Noah B.' }
+    { name:'Design crew', color:'#07925f', members:['t-d1','t-d2'], note:'Ava L. · Noah B.' }
   ],
   mail: [
     { name:'Family mail', color:'#a21caf', members:['sam','jordan'], note:'Sam V. · Jordan K.' },
@@ -834,7 +905,11 @@ function renderThread(){
     html += '<p class="stub-note">' + (isGroup ? 'No messages in the ' + esc(state.topic) + ' chat yet — say hello to get it going.' : 'No messages yet with ' + esc(p.name) + ' — say hello to start the conversation.') + '</p>';
   }
   $('threadBody').innerHTML = html;
-  $('threadBody').scrollTop = $('threadBody').scrollHeight;
+  /* UNIFY (comparison §8.6): at boot the mail-board is the first thing in
+     the thread — do NOT auto-scroll past it to the latest message. After
+     boot, opening/sending scrolls to the latest as before. */
+  if (!window.__booted) { $('threadBody').scrollTop = 0; }
+  else { $('threadBody').scrollTop = $('threadBody').scrollHeight; }
   $('composerInput').placeholder = isGroup ? 'Message the ' + state.topic + ' group…' : (fmt === 'im' ? 'Message ' + p.name.split(' ')[0] + ' instantly…' : 'Write a letter to ' + p.name.split(' ')[0] + '…');
   $('mailSubject').hidden = fmt !== 'mail';
   $('sendBtn').textContent = fmt === 'im' ? 'Send' : 'Send mail';
@@ -857,7 +932,6 @@ function openTopicChat(topic){
 function pickTopic(t){
   state.topic = (t === 'All') ? 'Design' : t;
   state.thing = state.topic;
-  $('thingLbl').textContent = state.topic;
   renderTabs(); renderTopicPeople();
   openTopicChat(state.topic);
 }
@@ -894,7 +968,7 @@ function renderWorlds(){
   });
   $('worldNote').textContent = state.entryFrom === 'hub'
     ? 'Opened from the Hub — pick any world.'
-    : 'Opened from your ' + WORLDS[state.world].label + ' page — showing ' + WORLDS[state.world].label + ' mail first. Pick any world.';
+    : 'Showing ' + WORLDS[state.world].label + ' mail first — pick any world.';
 }
 function personForMail(m, w){
   var p = findPersonAnywhere(m.fromId);
@@ -930,6 +1004,7 @@ function renderInbox(){
   $('mailInbox').querySelectorAll('.row').forEach(function(r){
     r.addEventListener('click', function(){ openMail(r.dataset.mail); });
   });
+  refreshFiveCounts();
 }
 function openMail(id){
   var m = MAIL[state.world].find(function(x){ return x.id===id; });
@@ -1057,7 +1132,9 @@ $('installLater').addEventListener('click', closeInstall);
 $('installX').addEventListener('click', closeInstall);
 $('plusNew').addEventListener('click', function(){ $('composerInput').focus(); });
 $('backHub').addEventListener('click', function(){ window.location.href = 'https://nayanet.app/'; });
-/* --- TRIO: tap a world, see its feed (grouped by thing, each item sourced) --- */
+/* --- THE FIVE: ADD creates (composer focus) · MAIL opens mail ·
+   ACTIVITY opens this world's activity feed · WORLDS jumps to the world
+   selector · ECOSYSTEM jumps to the saved lists. No CONNECT — his call. --- */
 function findPersonAnywhere(id){
   var c = CONTACTS.find(function(x){ return x.id===id; });
   if (c) return c;
@@ -1136,24 +1213,25 @@ function renderSmartLists(){
         state.listFilter = contacts.length ? contacts : null;
         var first = findPersonAnywhere(list.members[0]);
         $('listFilterNote').hidden = false;
-        $('listFilterNote').textContent = 'Showing ' + list.name + ' (' + (kind==='im' ? 'instant messages' : 'mail') + ') — ' + list.members.length + ' people. Tap the list again to show everyone.';
+        $('listFilterNote').textContent = 'Showing ' + list.name + ' — ' + list.members.length + ' people. Tap again for everyone.';
         if (first) openPerson(CONTACTS.indexOf(first) >= 0 ? first : { id: first.id, initial: first.initial, name: first.name, nut: first.nut || '', match: first.match, last: 'Say hello — start the conversation.', cc: first.cc || '#8e24aa' });
       }
       renderConvs(); renderSmartLists();
     });
   });
 }
-function setCoverMode(mode){
-  document.body.classList.toggle('no-cover', mode === 'no-cover');
-  document.body.classList.toggle('fullscreen', mode === 'fullscreen');
-  var map = { cover: 'modeCover', 'no-cover': 'modeNoCover', fullscreen: 'modeFull' };
-  Object.keys(map).forEach(function(m){
-    var b = $(map[m]);
-    var on = m === mode;
-    b.setAttribute('aria-pressed', String(on));
-    b.classList.toggle('ghost', !on);
-  });
-  window.__coverMode = mode;
+/* One plain cover button: "Hide the banner" / "Show the banner". The old
+   three-mode control is gone with the "Full screen" label that never went
+   fullscreen. The button lives in the page-head, so it survives both
+   states — hiding the banner can never strand the reader. */
+function toggleCover(){
+  var hidden = !document.body.classList.contains('no-cover');
+  document.body.classList.toggle('no-cover', hidden);
+  var b = $('coverToggle');
+  b.textContent = hidden ? 'Show the banner' : 'Hide the banner';
+  b.setAttribute('aria-pressed', String(hidden));
+  b.classList.toggle('ghost', !hidden);
+  window.__coverMode = hidden ? 'no-cover' : 'cover';
 }
 /* STUB event (named): the probe and the citizen's eye prove the trio moves.
    Live path owed: the real-time socket/push per world. */
@@ -1162,19 +1240,20 @@ function stubEvent(world, kind, text){
   return raiseCount(world, kind, 1);
 }
 window.__stubEvent = stubEvent;
-$('segPersonal').addEventListener('click', function(){ openFeed('personal'); });
-$('segBusiness').addEventListener('click', function(){ openFeed('business'); });
-$('segThing').addEventListener('click', function(){ openFeed('thing'); });
+$('segAdd').addEventListener('click', function(){ $('composerInput').focus(); });
+$('segMail').addEventListener('click', function(){ setFormat('mail'); $('mailInbox').scrollIntoView({block:'nearest'}); });
+$('segActivity').addEventListener('click', function(){ openFeed(state.world === 'space' ? 'thing' : state.world); });
+$('segWorlds').addEventListener('click', function(){ $('worldRow').scrollIntoView({block:'center'}); });
+$('segEco').addEventListener('click', function(){ $('smartLists').scrollIntoView({block:'center'}); });
 $('feedCloseBtn').addEventListener('click', closeFeed);
 $('feedChoiceBtn').addEventListener('click', openChoice);
 $('choiceCloseBtn').addEventListener('click', function(){ $('choicePanel').classList.remove('show'); });
-$('modeCover').addEventListener('click', function(){ setCoverMode('cover'); });
-$('modeNoCover').addEventListener('click', function(){ setCoverMode('no-cover'); });
-$('modeFull').addEventListener('click', function(){ setCoverMode('fullscreen'); });
+$('coverToggle').addEventListener('click', toggleCover);
 initMailEntry();
 renderTabs(); renderConvs(); renderTopicPeople(); renderThread(); renderSmartLists(); renderChoice();
 setWorldCount('personal', 2); setWorldCount('business', 1); setWorldCount('thing', 1);
 renderWorlds(); renderInbox(); setFormat(state.format);
+window.__booted = true;
 /* U+25C9 GUARD: no rendered text on this page may contain the literal
    string — the Dashboard pill and every glyph here are CSS shapes, never
    text escapes. True = clean. (The guard's own search needle and the
