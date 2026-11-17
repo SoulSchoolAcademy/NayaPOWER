@@ -4,10 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Official Slideshow — canonical implementation | NayaNET</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 <!-- THE OFFICIAL SLIDESHOW (sideways) — CANONICAL IMPLEMENTATION, 2026-11-16.
-     Harvested VERBATIM from the Smart Note Studio (blob edd5f1d8): the
-     slides-mode CSS (in the <style> below) + wireReveal() + showSlide().
-     The <style> is the canonical style (deck + Studio fixes; deltas: ['.p3-enter', '.p3-enter:hover,.p3-enter:active', '.deck-next', '.deck-next:hover,.deck-next:active']).
+     Harvested VERBATIM from the Smart Note Studio (blob a7114308 —
+     supersedes the brief's edd5f1d8, Black Diamond fix landed 00:04Z,
+     checker PASS): the slides-mode CSS (in the style block below) +
+     wireReveal() + showSlide().
+     The style block is the canonical style (deck + Studio fixes; deltas: ['.p3-enter', '.p3-enter:hover,.p3-enter:active', '.deck-next', '.deck-next:hover,.deck-next:active']).
+     Deliberately omitted: the Studio's tiny second style block —
+     .letter-beat[hidden]{display:block} and .slides-nav{display:none} — is
+     NOT carried here (beats must hide on [hidden]; the slideshow nav must
+     show). The font links above are the Studio's, verbatim, in head.
      The beats are the SAME beats as the unfold — one board at a time,
      sideways: Back / Slide N of M / Next. GLUE (marked below): the two
      format buttons + setFormat(), the Studio's minus render() — render()
@@ -283,44 +291,6 @@ a.deck-next{text-decoration:none;text-align:center}
 #deckBody{display:grid;gap:32px}
 
 @media (prefers-reduced-motion: reduce){body{transition:none}}
- block is carried below with the
-       BLACK DIAMOND fix applied (BRIEF-STUDIO-BLACK-DIAMOND-FIX-20261116.md):
-       the banned white top highlight is removed from its buttons and the
-       button black is board black; everything else in the block is verbatim
-       (injected by build-studio.py, verified by the build); only STUDIO CSS follows it.
-     - The reveal mechanism: the deck's wireDeck(), adapted names only (studio-*).
-     - Speak/type: walk-v23-assembly-20261114/walk-beginning-fixed.html, startDictation()
-       (line 1810) — SpeechRecognition, live interim results, tap again to stop.
-     - The composer entry: personal/index-master-20261105-v4.html (1,189,192 B) — the
-       Personal page composer (Make a post / Naya note / Smart note) and Smart Note
-       rendering (noteCard, NOTES layers). The Studio is the composer's "Smart note"
-       choice, grown into its own page.
-     - The Hub feed Smart Notes: hub-live-20261110.html (4,796,207 B) — the reading
-       place a shared note lands in (live-feed posting wires up after staging).
-     - The Naya Note three-output template: Personal NOTES layers — "What it is /
-       Why it matters / How to apply it" — the lineage of the why-it-matters /
-       what's-in-it-for-you / how-it-connects perspectives.
-     - Naya's face: Naya.png, sha256 b63d7b3e002b... (2,054,581 B); the speaking
-       faces below are the deck's already-filed crops, URLs verbatim, face-1..9.
-     STAGED ONLY — nothing live, no money, no credentials, no existing Smart Note
-     reworded. Your words stay on this page until you share them.
-     AMENDMENT 23:10Z (same round): bite-sized is the point; the outputs ARE the
-     smart system blocks (copy the blocks, add more, build a page); Like / Share /
-     Save on every shared output; style picker with PLAIN working labels
-     ("Unfold down" / "Unfold sideways") — the official name is Shawn's call,
-     never invented; shared unfolds show a preview, one can be the hero of the
-     feed — the feed hero only; the hero on a featured space or page is a
-     follow-on surface, not built on this standalone page; the promise — no
-     matter what goes in, it always comes out beautiful.
-     SEO is NOT in this round — separate queued workstream. -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-/* HARVESTED — walk base (walk-beginning-fixed-fc6bb640-baseline.html).
-   ONE TOKEN ADAPTED: the top glow reads var(--glowc) so the back light
-   changes color with each beat (DECK: the theme switch). Default is the
-   walk's own purple, so beat 1 on entry looks exactly as harvested. */
-@property --glowc{syntax:'<color>';inherits:true;initial-value:rgba(160,107,255,.14)}
 
 /* STUDIO — the only new CSS. Everything above this line is the deck, verbatim.
    New rules: the input board, the speak row, the format toggle, the face swap,
