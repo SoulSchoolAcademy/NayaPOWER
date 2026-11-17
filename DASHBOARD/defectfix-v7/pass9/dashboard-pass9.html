@@ -5000,7 +5000,7 @@ body.os-feed-open #os-feed-list{background:linear-gradient(180deg,#121214,#08080
   display:flex;justify-content:center;align-items:center;gap:28px;
   padding:10px 0 12px;background:linear-gradient(180deg,rgba(0,0,0,0),#000 35%);
   transition:transform .35s ease,opacity .35s ease;}
-body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO FIX 2026-11-09 (b), FIX-4 2026-11-17: os-bottom-hidden hides the bar WHILE SCROLLING only — it returns ~1s after scroll stops (the _barT timer), visible at load and at any scroll position. */
+body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO FIX 2026-11-09 (b), RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law — supersedes FIX-4): os-bottom-hidden hides the bar WHILE SCROLLING only — it returns ONLY at the very bottom, never when scrolling stops (the _barT ~1s return is removed); visible at load, before the page has ever been scrolled down. */
 .os-b3-badge[hidden]{display:none !important;}
 .os-notif-count[hidden]{display:none !important;}
 .os-b3-badge{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;
@@ -5050,9 +5050,9 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    #os-bottom3{gap:28px !important} rule at any stylesheet position. */
 .notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#ffffff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;}
 .notif-seg:active{transform:scale(.94);}
-.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%);border:1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);color:#ffffff;transition:box-shadow .3s, border-color .3s, transform .2s;}
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(52% 52% at 50% 50%, #ffffff 0%, color-mix(in srgb, var(--nc) 22%, #ffffff) 58%, color-mix(in srgb, var(--nc) 36%, #12121a) 82%, #07070b 100%);border:1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);color:color-mix(in srgb, var(--nc) 72%, #ffffff);transition:box-shadow .3s, border-color .3s, transform .2s;}
 .notif-tile::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(155deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 42%),linear-gradient(25deg, rgba(255,255,255,0) 62%, color-mix(in srgb, var(--nc) 22%, transparent) 100%);}
-.notif-tile svg{width:25px;height:25px;filter:drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent));position:relative;}
+.notif-tile svg{width:25px;height:25px;color:var(--nc);filter:drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent));position:relative;}
 .notif-seg:hover .notif-tile{transform:translateY(-3px);border-color:color-mix(in srgb, var(--nc) 88%, #ffffff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);}
 .notif-seg::after{content:attr(aria-label);position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-transform:uppercase;white-space:nowrap;line-height:1;background:linear-gradient(180deg,#1d1d26,#0b0b10);border:1.5px solid var(--nc);border-radius:999px;padding:8px 14px;box-shadow:0 8px 20px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.3);opacity:0;pointer-events:none;transition:opacity .18s, transform .18s;}
 .notif-seg:hover::after,.notif-seg:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0);}
@@ -22937,8 +22937,8 @@ function applyBottomBar(){
    same corner control). dashBar: true = the Dashboard bar shows (default);
    false = their choice, it stays off. The fold on scroll
    (body.os-bottom-hidden) is separate — it hides the bar WHILE scrolling
-   and returns ~1s after the scroll stops; this setting hides it until they
-   turn it back on. */
+   and returns only at the very bottom (RETURN-AT-BOTTOM 2026-11-17); this
+   setting hides it until they turn it back on. */
 function setDashBar(on){
   var s = getSettings();
   s.dashBar = !!on;
@@ -26691,22 +26691,32 @@ window._repaintOrbMinis = function(box){
   /* --- HERO FIX 2026-11-09 (a)(b): the folding bars. The top bar is hidden
      while the scroll position is inside the hero (os-hero-top — the tabs are
      gone from the hero) and folds while scrolling below it, returning on stop /
-     at the ends / on tap. FIX-4 2026-11-17: the bottom bar is VISIBLE
-     EVERYWHERE — at load and ~1s after scroll stops, at any scroll position
-     (the page-icon-bar law: it fades while scrolling, returns slowly after
-     stop, never jumping back quick). The old law (bottom only, never on
-     scroll-stop) hid it from every reader not at the page bottom. os-nav-hidden
-     still folds the legacy #nayanet-nav / .ph-bottom in parallel. --- */
+     at the ends / on tap. RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z,
+     confirmed law — supersedes FIX-4 2026-11-17): the bottom bar is visible
+     at load (before the page has ever been scrolled down) and returns ONLY
+     at the very bottom — never when scrolling stops. The _barT ~1s return
+     is removed. The old FIX-4 law (return ~1s after scroll stops, at any
+     scroll position) is gone. os-nav-hidden still folds the legacy
+     #nayanet-nav / .ph-bottom in parallel. --- */
   var _navT = null;
-  var _barT = null; /* FIX-4 2026-11-17: owns the bottom bar's return. */
+  /* RETURN-AT-BOTTOM 2026-11-17: no _barT. The bottom bar has no timed
+     return any more — once the page has been scrolled down, only the very
+     bottom brings it back. _osBarEverScrolled stays false until the first
+     scroll event below the top, so the bar is visible at load. */
+  var _osBarEverScrolled = false;
   function _osAtPageBottom(){ try{ return (window.scrollY||0) + window.innerHeight >= (document.documentElement.scrollHeight||0) - 2; }catch(e){ return false; } }
   function _osHeroBottom(){ try{ var g = document.querySelector('.os-block-gauge'); if (!g) return 0; return g.getBoundingClientRect().bottom + (window.scrollY||0); }catch(e){ return 0; } }
   function onScroll(){
     var y = window.scrollY || 0;
+    if (y > 0) _osBarEverScrolled = true;
     document.body.classList.toggle('os-hero-top', y < _osHeroBottom());
     document.body.classList.add('os-nav-hidden');
     document.body.classList.add('os-top-hidden');
-    document.body.classList.add('os-bottom-hidden');
+    /* RETURN-AT-BOTTOM 2026-11-17: the fold is decided here, every scroll
+       event — hidden once scrolled down, back ONLY at the very bottom
+       (or before the page has ever been scrolled down, i.e. at load). */
+    if (_osAtPageBottom() || !_osBarEverScrolled) document.body.classList.remove('os-bottom-hidden');
+    else document.body.classList.add('os-bottom-hidden');
     if (_navT) clearTimeout(_navT);
     _navT = setTimeout(function(){
       document.body.classList.remove('os-nav-hidden');
@@ -26721,31 +26731,28 @@ window._repaintOrbMinis = function(box){
          must not re-snap on every scroll-stop) is the robust form. */
       try{ fitHero(); }catch(_br3){}
     }, 150);
-    /* FIX-4 2026-11-17: the bottom bar returns ~1s after scroll stops, at ANY
-       scroll position — not only at the page bottom. The 150ms timer above
-       still returns the top bar fast; the bottom bar returns slowly (the
-       page-icon-bar law), and its return re-fits the hero so barH measures
-       true once the slide finishes. */
-    if (_barT) clearTimeout(_barT);
-    _barT = setTimeout(function(){
-      document.body.classList.remove('os-bottom-hidden');
-      try{ fitHero(); }catch(_br4){}
-    }, 1000);
-    if (_osAtPageBottom()) document.body.classList.remove('os-bottom-hidden');
+    /* RETURN-AT-BOTTOM 2026-11-17: no timed return any more. The 150ms
+       timer above still returns the top bar fast and re-fits the hero on
+       scroll stop; the transitionend listener below re-fits it when the
+       bar finishes sliding — so barH still measures true. The bottom bar
+       itself comes back only at the very bottom, decided at the top of
+       onScroll on every scroll event. */
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   /* PASS-8 2026-11-10 — a tap inside the hero must NOT show the bottom bar.
      The old handler showed it on ANY button tap, including the mode toggle:
      the bar slid up over the hero's own note + toggle, so the next tap aimed
      at the toggle hit the bar's middle button instead — and that button opens
-     the feed, which is the ~150px scroll-jump the eye-check caught. The bar
-     still shows on a tap once the page is scrolled past the hero (and at the
-     page bottom, as before); the re-fit applies the bar-height subtraction. */
+     the feed, which is the ~150px scroll-jump the eye-check caught.
+     RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law): a tap
+     no longer recalls the bar either — it returns ONLY at the very bottom.
+     The handler keeps its hero guard and its re-fit; the bar-show line is
+     removed. The corner control + Settings toggle still govern the bar's
+     on/off setting. */
   document.addEventListener('click', function(e){
     var b = e.target && e.target.closest ? e.target.closest('button, a') : null;
     if (!b) return;
     if (document.body.classList.contains('os-hero-top')) return;
-    document.body.classList.remove('os-bottom-hidden');
     try{ refit(); }catch(_br2){}
   });
   /* PASS-8 2026-11-10 (round 4): re-fit the hero when the bottom bar finishes
@@ -26766,7 +26773,7 @@ window._repaintOrbMinis = function(box){
     if (e.propertyName && e.propertyName !== 'transform') return;
     try{ fitHero(); }catch(_te){}
   });
-  try{ onScroll(); }catch(e){} /* init: both bars start hidden at scroll 0 */
+  try{ onScroll(); }catch(e){} /* init: the top bar starts hidden in the hero; the bottom bar starts VISIBLE at scroll 0 (RETURN-AT-BOTTOM: visible at load, before any scroll down). */
   /* --- fit wiring --- */
   function refit(){ var el = numEl(); if (el && el.querySelector('.reel')) fitNumber(el); fitHero();
     /* FIXROUND PASS-4 (D2): a resize across the 768px breakpoint changes the
@@ -28872,8 +28879,7 @@ body.os-tabs-on #os-dash{ padding-top:96px; }
   body.os-tabs-on #nsbSearchLevel{margin-top:212px !important;}
 }
 
-/* (b) FIX-4 2026-11-17: the bottom bar is visible at load and returns ~1s
-   after scroll stops, at any scroll position — never bottom-only. */
+/* (b) RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law — supersedes FIX-4): the bottom bar is visible at load and returns ONLY at the very bottom — never when scrolling stops. */
 body.os-bottom-hidden #os-bottom3{ transform:translateY(110%) !important; opacity:0 !important; }
 /* (o) The points strip is out of the top. The data is not deleted — the same
    math lives in the derivation detail below. */
@@ -29992,12 +29998,12 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 <div class="os-v6-stamp">Dashboard v9 · DONE-DONE · 2026-11-17</div>
 <style id="os-fix4">
 /* ═══ FIX-4 2026-11-17 — the captain's 390px eye (04:18Z) ═══
-   (1) THE BAR IS VISIBLE EVERYWHERE: the old law hid #os-bottom3 on every
-   scroll and showed it only at the page bottom (or on a button tap), so a
-   reader anywhere else on the page had no bottom bar at all. The page-icon-bar
-   law now governs it: it fades while scrolling and returns ~1s after scroll
-   stops (the _barT timer in the folding-bars script), visible at load. The
-   os-bottom-hidden class still hides it while scrolling and in drill views.
+   (1) THE BAR FOLDS AND RETURNS ONLY AT THE BOTTOM (RETURN-AT-BOTTOM
+   2026-11-17, Shawn heart 20:50Z, confirmed law — supersedes FIX-4): the
+   bar is visible at load, folds away the moment you scroll down, and returns
+   ONLY when the scroll reaches the very bottom — never when scrolling stops
+   (the _barT ~1s return is removed) and never on a tap. The os-bottom-hidden
+   class still hides it while scrolling and in drill views.
    (2) ECOSYSTEM is burnt orange #c2410c (Deep Palette), never purple — the
    04:03Z correction; two purples side by side was the defect.
    (4a) the Smart Links drill × moves to the top-right corner, clear of the
