@@ -3092,6 +3092,22 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function(){ placeFaces(); fitBarPadding(); });
   }
+  /* FIX ROUND 2 AMENDMENT (2026-11-17, item 10) — re-place when a
+     picture lands: the showcase and face pictures load lazily, and a
+     late picture grows its board AFTER the 650ms settle pass has run
+     (letter board 19 at 1851: the picture landed after the settle, the
+     board grew 546 -> 736px and re-centred, the speaking line moved
+     95px and the face and the Keep-reading row stayed where the old
+     layout put them — face +95.5px off the line, gap -81px). The
+     picture's own load event IS the layout shift's cause, so listen to
+     it: every picture in the agreement/legal layers re-places faces
+     (and re-seats the row and the bar padding) the moment it lands.
+     Pictures already loaded before this runs are already in the layout,
+     so they have nothing to shift. */
+  Array.prototype.slice.call(document.querySelectorAll(
+    '#fpAgreement img, #fpLegal img')).forEach(function(im){
+    im.addEventListener('load', function(){ placeFaces(); fitBarPadding(); });
+  });
 })();
 
 (function wireStage(){
