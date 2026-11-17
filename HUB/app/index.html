@@ -7670,8 +7670,9 @@ window.HubView = HubView;
 .lb-gap{display:inline-block;width:10px}
 .lb-d.d0{--dc:#ffffff}.lb-d.d1{--dc:#c62828}.lb-d.d2{--dc:#c2410c}.lb-d.d3{--dc:#d4a017}.lb-d.d4{--dc:#07925f}.lb-d.d5{--dc:#0e7490}.lb-d.d6{--dc:#3f51b5}.lb-d.d7{--dc:#8e24aa}.lb-d.d8{--dc:#6d28d9}.lb-d.d9{--dc:#a21caf}
 .lb-state{display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;border:1.5px solid #ffffff;background:#050607;color:#ffffff;font-size:17px;font-weight:700}
-.lb-your{border-color:#d4a017}
+.lb-your{border-color:#d4a017;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 28px color-mix(in srgb,var(--lb-c) 35%,transparent)}
 .lb-youtag{font-size:17px;font-weight:800;letter-spacing:.12em;color:#d4a017}
+.lb-board{border-color:color-mix(in srgb,var(--room-accent) 55%,transparent)}
 .lb-empty{text-align:center;padding:24px}
 .lb-empty b{display:block;font-size:19px;color:#ffffff;margin-bottom:8px}
 .lb-empty p{font-size:17px;line-height:1.6;color:#ffffff;margin:0}
@@ -7701,9 +7702,20 @@ window.HubView = HubView;
    varies by board. Hexes from Laws §3.1, never sampled.
    FIX 2026-11-17: the second step widens from purple to deep violet
    (Laws §3.1) — purple and magenta sit ~6 degrees apart in hue and read as
-   one color on the first two boards; violet sits ~35 degrees from magenta,
+   one color on the first two boards; violet sits ~31 degrees from magenta,
    clearly distinct. Order holds, no adjacent duplicates. (Hexes named in
    the maker report, not here, so the file's hex counts stay diff-provable.)
+   FIX2 2026-11-17: the eye still read the first two boards as one purple
+   (violet sits ~31 degrees from magenta and the hue lived only in the
+   small icon glow). The boards now step magenta -> indigo -> cyan ->
+   green -> gold -> orange: Top area moves to indigo (blue, ~64 degrees
+   from magenta) and every board after it shifts one step along the
+   spectrum, so the order holds and no two neighbours share a colour.
+   The hue is also carried into the board itself — the selected tab takes
+   the board's hue, the board's rim takes its own hue, and your row keeps
+   its gold border and gold YOU with an outside halo in the board's hue.
+   (Hexes named in the maker report, not here, so the file's hex counts
+   stay diff-provable.)
    Zero rule (ruled 17:28Z): a number shows only when the Ledger slice
    measured that citizen — a verified zero is a digit tile; unmeasured
    shows as a state ("Not counted yet"), never a 0, never a bare dash.
@@ -7719,11 +7731,11 @@ window.HubView = HubView;
   var STARS=['Starting Star','Emerging Star','Advancing Star','Pro Star','Five Star','Superstar','Serious Star','Mega Star','Master Star','Ten Star'];
   var BOARDS=[
     {id:'overall',label:'Overall',icon:'trophy',start:0,title:'Overall points',sub:'Every point, added up.'},
-    {id:'top',label:'Top area',icon:'star',start:1,title:'Your top area',sub:'The area where you rank highest.'},
-    {id:'pbt',label:'Personal · Business · Thing',icon:'home',start:2,title:'Personal · Business · Thing',sub:'Where your points were earned.'},
-    {id:'topic',label:'Topic / skill',icon:'spark',start:3,title:'By topic / skill',sub:'What you earn points for.'},
-    {id:'local',label:'Local',icon:'orbit',start:4,title:'Local',sub:'Near you — country, city, area.'},
-    {id:'ambassador',label:'Ambassador',icon:'users',start:5,title:'Ambassador',sub:'Share, signups, clicks.'}
+    {id:'top',label:'Top area',icon:'star',start:2,title:'Your top area',sub:'The area where you rank highest.'},
+    {id:'pbt',label:'Personal · Business · Thing',icon:'home',start:3,title:'Personal · Business · Thing',sub:'Where your points were earned.'},
+    {id:'topic',label:'Topic / skill',icon:'spark',start:4,title:'By topic / skill',sub:'What you earn points for.'},
+    {id:'local',label:'Local',icon:'orbit',start:5,title:'Local',sub:'Near you — country, city, area.'},
+    {id:'ambassador',label:'Ambassador',icon:'users',start:6,title:'Ambassador',sub:'Share, signups, clicks.'}
   ];
   function tierFor(points){
     var idx=0;
@@ -7912,10 +7924,15 @@ window.HubView = HubView;
     function render(){
       if(!data){ return; }
       var board=boardDef(current);
+      /* FIX2: the selected tab takes the current board's hue — the house
+         segmented control lights its active pill in --room-accent, so the
+         tab reads magenta on Overall, indigo on Top area, and so on. */
+      seg.style.setProperty('--room-accent',FLOW[board.start]);
       var events=data.events;
       zone.innerHTML='';
       if(data.failed){
         var fb=K.board(FLOW[board.start],board.icon,board.title,board.sub);
+        fb.classList.add('lb-board');
         var fyou=alias?{alias:alias,state:'unknown'}:null;
         fb.body.innerHTML=yourCardHTML(fyou,board.title,FLOW[board.start])+
           '<p class="lb-nutshell">The boards fill from the Ledger. Until it answers, nothing is invented here — no ranks, no points, no crowd.</p>';
@@ -7923,6 +7940,7 @@ window.HubView = HubView;
         return;
       }
       var b=K.board(FLOW[board.start],board.icon,board.title,board.sub);
+      b.classList.add('lb-board');
       var body='';
       var you=null, rows=[], groups=null;
       if(board.id==='ambassador'){
