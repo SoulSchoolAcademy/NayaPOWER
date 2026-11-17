@@ -15304,14 +15304,14 @@ window.NayaNotif = window.NayaNotif || {
         spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>',
         eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
         plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
-        /* EYE-FIX 2026-11-17 (E): CONNECT is its own glyph now — a link, not a second +. */
-        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>'
+        /* HUB-RETURN 2026-11-16 (item 2): the right + is the same + object. */
+        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
       };
-      /* HUB-RETURN 2026-11-16 (item 2): the link at the RIGHT end. The six
+      /* HUB-RETURN 2026-11-16 (item 2): the + at the RIGHT end. The six
          stay exactly as harvested (plus/mail/activity/spaces/eco/connect, same
          order, same form); PART D 2026-11-17 deepened only the colours to the
          Deep Palette: left + royal purple, mail sapphire, activity emerald,
-         worlds deep gold, ecosystem burnt orange, right link ruby. It opens CONNECT, never CREATE. */
+         worlds deep gold, ecosystem burnt orange, right + ruby. It opens CONNECT, never CREATE. */
       var SEGS = [['plus', 'ADD', '#8e24aa'], ['mail', 'MAIL', '#0f52ba'], ['activity', 'ACTIVITY', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plus-connect', 'CONNECT', '#c62828']];
       bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
       bar.setAttribute('aria-label', 'Notifications');
