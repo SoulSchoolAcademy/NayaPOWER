@@ -338,13 +338,26 @@ anything is shown to him as done.
 
 ## §12 Filing receipts
 - Branch: `pricing/certificate-current-20261117` (NEW, from tip `eafbac16`)
-- Commit / blobs / PR: _filed after this report was written — see the
-  filing run output; receipts added here in a follow-up commit._
-- Files filed: `pricing-certificate-current-20261117/MAKER-REPORT.md`,
-  `build-certificate.py`, `probe-certificate.py`, `laws-check-new.py`,
-  `audit-static.py`, `audit-static2.py`, `fetch-new.py`,
-  `fixed-entry.html` (332,182 B, sha256
+- Commit: `52ae64d2c24b740be53530bc64895a6f053288a9`
+  (tree `eef5c23c973a131e007fb20f5a71d7256d9c9dcd`, parent `eafbac16`)
+- Files filed (8 blobs, all read-back MATCH by sha256):
+  `MAKER-REPORT.md` (blob `1fbd6c0b…`, 21,606 B — this version, before
+  receipts were added; the receipts update follows as a second commit) ·
+  `build-certificate.py` (blob `c9ad618f…`) ·
+  `probe-certificate.py` (blob `94c7246e…`) ·
+  `laws-check-new.py` (blob `8d026c81…`) · `audit-static.py` (blob
+  `34863e3f…`) · `audit-static2.py` (blob `4d9b491c…`) ·
+  `fetch-new.py` (blob `cdb49c7f…`) · `fixed-entry.html` (blob
+  `5cc7f40e…`, 332,182 B, sha256
   `1e1bb4894b3e4bffed026781ac08976e8353b0e2bb020652357f567a711b16a3` —
   re-derived in memory, never read from disk).
+- PR: **#3419**, https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3419
+  — open, UNMERGED (base `main`).
 - Staged: `https://naya-pricing-free-staging.nayapower.workers.dev/free`
-- PR: open, UNMERGED (live `naya-model-pricing` untouched; nothing merged).
+  (entry sha `1e1bb489…`, worker sha
+  `f4cc645f218b8b2a81f4daff7fcbb0ef604d8ac82bd867c38875dab0e6f44e73`).
+- Live `naya-model-pricing` untouched; nothing merged.
+- Base-tip correction: the branch tip at filing time was `eafbac16`
+  (a receipts-only commit on top of pricing-fix `e6bf9a87`), not
+  `e6bf9a87` as an earlier note said. Verified live from the ref and
+  the branch history before filing.
