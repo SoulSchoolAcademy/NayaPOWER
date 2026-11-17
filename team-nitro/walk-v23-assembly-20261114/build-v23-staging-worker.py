@@ -352,7 +352,20 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # block; the stale S.view='intro' comment fixed. Layout, the nine, the
 # wiring, the legal pages, the unfold and the laws are untouched.
 # Walk, template, identity, unfold shas unchanged.
-assert welcome_sha.startswith("9eea1703"), "welcome sha is not the BRIDGE PRESENTATION welcome sha (2026-11-17: bridge moved out of deckUnfold, die-cut emblem corners, picture rebuild, bars, ?stage=, device dedupe)"
+# BRIDGE PRESENTATION FIX #2 (2026-11-17, BRIEF-BRIDGE-PRESENTATION-FIX2-20261117.md; maker
+# fix round — deterministic from the presentation welcome 9eea1703 via
+# bridge-presentation-fix2-20261117/build-bridge-fix2.py):
+# the welcome sha moves 9eea1703 -> b1d4b16d (1,132,653 B -> 1,134,179 B,
+# +1,526 B): D1 — the stray `}` that killed script block 1 (try with no
+# catch) is deleted, so the returning-user flow runs again; D2 — the
+# restore block stands down when ?stage= was handled by the hook, so
+# ?stage=deck lands on the deck; D3 — the top corner emblems move up into
+# the logo gap, off the kicker, and sit 8px inside the head's edges at
+# <=480px, off the viewport edge at 390; D4 — the W6 wrap override is
+# deleted, so the legal strip stays one nowrap row and the 72px lift
+# clears it at phone widths (the stale eyebrow comment goes with it).
+# Walk, template, identity, unfold shas unchanged.
+assert welcome_sha.startswith("b1d4b16d"), "welcome sha is not the BRIDGE PRESENTATION FIX #2 welcome sha (2026-11-17: D1 stray brace out, D2 ?stage=deck lands, D3 emblems off the kicker, D4 strip one row)"
 assert unfold_sha.startswith("842cae53"), "unfold sha is not the agree-fix unfold sha (blob 41d2c71f, 85,625 B)"
 # WALK END SHARE PLUS FIX (2026-11-16, MAKER-BRIEF-WALK-END-SHARE-PLUS-FIX-20261116.md; checker NOT PASS 18:50Z):
 # the welcome sha moved 62f691b4 -> ee348e7c (919,910 B -> 921,988 B,
