@@ -1588,6 +1588,7 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         return _canonical_content_hash(json.dumps(data["intelligence"], sort_keys=True, separators=(",", ":"), ensure_ascii=False))
 
     capture_by_hash = {}
+    capture_files_by_hash = {}
     if cap_dir.exists():
         for p in sorted(cap_dir.glob("*.json")):
             try:
@@ -1599,6 +1600,7 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
                 defects["captures_missing_intelligence"].append(p.name)
                 continue
             capture_by_hash[hash_of(data)] = p.name
+            capture_files_by_hash.setdefault(hash_of(data), []).append((p.name, data))
 
     entry_hashes = {}
     for e in entries:
@@ -1618,6 +1620,55 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
     for h, name in capture_by_hash.items():
         if h not in entry_hashes:
             defects["captures_unregistered_by_hash"].append(name)
+
+    # TWIN RECLASSIFICATION (Resolve, 2026-11-17 — corpus-gate reconciliation):
+    # a capture whose hash no entry binds is not automatically an unregistered
+    # note. Migration-era notes legitimately carry TWO captures: the original
+    # and the registry-heal/reconstruction capture the entry binds. The spare
+    # is a superseded TWIN of a registered note, proven strictly from bytes:
+    # the capture's intelligent-block identity (its intelligent_block_id field
+    # or its filename stem) names exactly ONE registry entry, and that entry
+    # is hash-bound to a DIFFERENT capture on disk. Anything failing that
+    # proof stays in captures_unregistered_by_hash — the class keeps its
+    # teeth; twins are reported separately so the count stays visible.
+    entries_by_ib = {}
+    for e in entries:
+        if e.get("intelligent_block_id"):
+            entries_by_ib.setdefault(e["intelligent_block_id"], []).append(e)
+    twin_captures = []
+    still_unregistered = []
+    unregistered_pairs = [
+        (h, name) for h, name in capture_by_hash.items() if h not in entry_hashes
+    ]
+    for h, name in unregistered_pairs:
+        candidate_ibs = set()
+        for fname, data in capture_files_by_hash.get(h, []):
+            if data.get("intelligent_block_id"):
+                candidate_ibs.add(data["intelligent_block_id"])
+            candidate_ibs.add(fname[:-5] if fname.endswith(".json") else fname)
+        matched = []
+        seen_keys = set()
+        for ib in candidate_ibs:
+            for e in entries_by_ib.get(ib, []):
+                key = (e.get("smart_note_id"), e.get("intelligent_block_id"))
+                if key not in seen_keys:
+                    seen_keys.add(key)
+                    matched.append(e)
+        proven = [
+            e for e in matched
+            if e.get("content_hash") and e["content_hash"] != h
+            and e["content_hash"] in capture_by_hash
+        ]
+        if len(matched) == 1 and len(proven) == 1:
+            twin_captures.append({
+                "capture": name,
+                "smart_note_id": matched[0].get("smart_note_id"),
+                "intelligent_block_id": matched[0].get("intelligent_block_id"),
+                "bound_capture": capture_by_hash[matched[0]["content_hash"]],
+            })
+        else:
+            still_unregistered.append(name)
+    defects["captures_unregistered_by_hash"] = still_unregistered
 
     for e in entries:
         sn = e.get("smart_note_id") or e.get("intelligent_block_id") or "<unknown>"
@@ -1680,6 +1731,10 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
             defects["published_pages_without_registry_entry"].append({"page": name, "paths": paths})
 
     counts = {k: len(v) for k, v in defects.items()}
+    defect_total = sum(counts.values())
+    # Twins are proven registrations, not defects: reported as their own
+    # count (ratcheted by the drift test) but never inside defect_total.
+    counts["twin_captures_of_registered_notes"] = len(twin_captures)
     # ORPHAN DECOMPOSITION (Naya 5, 2026-11-15 — the orphan count conflates
     # two defects: pages never registered, and pages filed under an SN id the
     # registry already gave to an earlier page. A cure that "registers the
@@ -1701,10 +1756,11 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
     for items in orphan_decomposition.values():
         items.sort(key=lambda d: d["path"])
     return {
-        "ok": sum(counts.values()) == 0,
+        "ok": defect_total == 0,
         "counts": counts,
-        "defect_total": sum(counts.values()),
+        "defect_total": defect_total,
         "defects": defects,
+        "twin_captures": twin_captures,
         "orphan_decomposition": orphan_decomposition,
         "orphan_decomposition_counts": {k: len(v) for k, v in orphan_decomposition.items()},
         "surfaces": {
