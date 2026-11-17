@@ -314,7 +314,7 @@ body{background:#050507;color:#fff;font-family:Inter,ui-sans-serif,system-ui,-ap
    at End. Window scrolling is gone by construction (body overflow hidden);
    wheel / keyboard / scrollIntoView all drive .page-scroll. --- */
 body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
-.page-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;--titleEdge:108px}
+.page-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;--titleEdge:102px}
 /* FIX-6 (item 1a): the Fix-5 skirt FAILED live at this header — the skirt
    is an overlay that must win the paint order over the scrolling content,
    and the desktop eye saw hard-cut half-glyphs at the header's solid
@@ -386,9 +386,10 @@ body.no-cover .ph-main{padding-top:12px}
 /* FIX-4 (brief item 1): the fade did NOT land as a fix — its transparent
    bottom let scrolling text show through, cut mid-glyph with a hard edge.
    The band is now SOLID opaque #050507 (the menu-bar above it is the
-   working example): nothing ever shows through it sliced. top:60px tucks
-   the band 0–2px under the ~60px sticky menu-bar so no hairline gap ever
-   shows scrolling text between the two bands.
+   working example): nothing ever shows through it sliced. top:54px tucks
+   the band 2px under the 56px sticky menu-bar so no hairline gap ever
+   shows scrolling text between the two bands (FIX-7 item 2b: the old
+   top:60px left a 4px gap once the item-3 trims shrank the bar to 56px).
    FIX-6 (2026-11-17): the Fix-5 skirt below this heading FAILED live —
    the desktop eye still saw hard-cut half-glyphs at the band's bottom
    edge at every scroll stop. The skirt is REMOVED (.page-title::after
@@ -397,7 +398,17 @@ body.no-cover .ph-main{padding-top:12px}
    but as the mask's toggle clearance: it keeps the fade band empty of
    text at the exact moment the title sticks, so the mask switching on
    is seamless in both scroll directions. */
-.page-title{margin:4px 0 30px;text-align:center;font-size:28px;font-weight:800;position:sticky;top:60px;z-index:40;background:#050507;padding-bottom:10px;scroll-margin-top:78px}
+/* FIX-7 (item 2b): the item-3 trims shrank the menu bar 62px→56px
+   (padding 12→10, steppill 10→9), so the title's top:60px left a 4px
+   HAIRLINE GAP between the bar's bottom (56) and the title's top (60)
+   — the live probe caught scrolling glyph bottoms showing through it
+   at all three widths (2px at 390/635, 4px desktop). The title now
+   tucks 2px under the bar again at every width: top:54px desktop,
+   top:46px at <=900px. Sticky top only — document flow, stack height
+   and load offsets are unchanged, so item 3 is untouched. The --titleEdge
+   defaults follow the new stuck edges (desktop 54+48=102, <=900 46+40=86,
+   <=420 46+62=108); the JS measures the live edge anyway. */
+.page-title{margin:4px 0 30px;text-align:center;font-size:28px;font-weight:800;position:sticky;top:54px;z-index:40;background:#050507;padding-bottom:10px;scroll-margin-top:78px}
 .page-head p{margin:4px 0 0;font-size:15px;color:#fff}
 .cover-toggle{margin-top:8px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
@@ -620,7 +631,7 @@ body.no-cover .ph-main{padding-top:12px}
   .ph-cover-inner{padding:10px 10px 12px}   .ph-cover-inner h1{font-size:24px}   .ph-cover-inner p{font-size:13px;margin-top:6px;max-width:420px}
   /* FIX-3 round 2, 2026-11-17: narrow stack trims so the first row clears the fixed dock:
      h2 22px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
-  .page-title{font-size:22px;top:50px}   .page-scroll{--titleEdge:90px} /* FIX-6: 1-line title edge ≈50+40 */
+  .page-title{font-size:22px;top:46px}   .page-scroll{--titleEdge:86px} /* FIX-6: 1-line title edge ≈46+40 (FIX-7: 54px bar-tuck) */
   .cover-toggle{margin-top:8px}
   .org-tabs{padding:4px 2px 4px}
   .search-row{padding:8px 16px;margin-bottom:8px}
@@ -637,7 +648,7 @@ body.no-cover .ph-main{padding-top:12px}
   .toggle button{padding:10px 11px;font-size:12px}
   .thread-head{flex-wrap:wrap}
   .msg{max-width:88%}
-  .page-scroll{--titleEdge:117px} /* FIX-6: 2-line title edge ≈50+67 */
+  .page-scroll{--titleEdge:108px} /* FIX-6: 2-line title edge ≈46+62 (FIX-7: 54px bar-tuck) */
   /* FIX-7 (item 3): narrow-width stack trims so the first card clears
      the dock at load while the (bottom-anchored) cover still reads:
      title one step smaller (still 2 lines), tabs + search tighter,
