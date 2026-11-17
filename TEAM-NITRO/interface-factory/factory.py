@@ -268,12 +268,19 @@ def emit_formats(out_dir, receipt):
 # + 1 template string; _osMiniNumHTML trimmed, not byte-verbatim;
 # miniTileHTML re-indented; a wrapped continuation starting with a capital
 # or digit splits (the stop-word guard is a follow-on, not this round).
+# FIX ROUND 2026-11-17 (fold-in fix, PR #3395): the Factory's copy of the
+# engine repairs titleFrom — the nutshell now ends at a phrase boundary,
+# never mid-phrase (the eye failed 4 of 10 deck headlines on it). The
+# stored engine is therefore NO LONGER byte-identical to the Epic source
+# blob 4319256d; the hashes below are the FIXED engine. The Epic branch
+# (PR #3390) was not touched — the engine's home is the Factory now, and
+# the repair lives here, in the Factory's copy, nowhere else.
 # ----------------------------------------------------------------------------
 EPIC = {
     "file": "epic-auto-format.html",
-    "blob": "4319256de01d3a6454d427b701a50662ecfdeefc",
-    "bytes": 77758,
-    "sha256": "ff5697091610e9d171cb04ded8761024ad7938939f242a6f61f498baab165f61",
+    "blob": "3a4b0bf8b2e2f29fe5b956d5d6ca04e6f8c2baef",
+    "bytes": 81357,
+    "sha256": "158d5e58504e915655f7955ac6c506ce1a514c1d572bc693d0d8fc40f9dbd045",
     "label": "epic-auto-format — the Intelligent Block Epic engine, the Factory's auto-format step",
     "vault": "TEAM-NITRO/interface-factory/formats/epic-auto-format.html — the Factory's vault shelf, filed on the factory branch",
     "source_branch": "intelligent-block/epic-20261117",
@@ -856,9 +863,10 @@ def build_epic_survey_page(spec, receipt):
         'your Space — distilled by the Epic engine, inside the Factory.</p>'
         '</div></div></div><div class="ib-nutshell">'
         f'<p>{deck_total} boards in the deck — 3 from the engine, '
-        f'{baked_total} from your answers. 3 pastes proved below in the '
-        'studio: plain text, a smart note, an image — each came out '
-        'beautiful.</p><p>Paste anything of your own in the studio above '
+        f'{baked_total} from your answers. <span '
+        'id="factory-provenance-pastes">3 pastes proved in the studio '
+        'above: plain text, a smart note, an image — each came out '
+        'beautiful.</span></p><p>Paste anything of your own in the studio above '
         'and press \u201cMake it beautiful\u201d — the same engine formats '
         'it, the same way.</p></div></section>\n'
         "<!-- FACTORY EPIC FOLD-IN END provenance -->\n")
@@ -885,7 +893,21 @@ def build_epic_survey_page(spec, receipt):
         "      next.hidden=false; next.classList.add('reveal');\n"
         "      btn.hidden=true;\n"
         "      next.scrollIntoView({behavior:'smooth',block:'nearest'});\n"
-        "    }\n  });\n});\n})();\n</script>\n"
+        "    }\n  });\n});\n"
+        "/* FIX 2026-11-17 — the provenance board says what the studio\n"
+        "   SHOWS, so when a visitor's own paste replaces the baked proofs\n"
+        "   the line follows it: it counts the boards actually in the\n"
+        "   results, and it never says \"below\" (the studio sits above the\n"
+        "   board, not below it). The baked line stands until the first real\n"
+        "   paste; every paste after that re-counts. */\n"
+        "var prov=document.getElementById('factory-provenance-pastes');\n"
+        "if(prov&&('MutationObserver' in window)){\n"
+        "  new MutationObserver(function(){\n"
+        "    var n=body.querySelectorAll('.epic-result, .epic-img-board').length;\n"
+        "    prov.textContent='Your paste proved in the studio above — '+n+' board'\n"
+        "      +(n===1?'':'s')+', the same engine, the same way.';\n"
+        "  }).observe(body,{childList:true});\n"
+        "}\n})();\n</script>\n"
         "<!-- FACTORY EPIC FOLD-IN END factory-wiring -->\n")
     page = _replace_once(page, "</script>\n</body>",
                          "</script>\n" + wiring + "</body>",
