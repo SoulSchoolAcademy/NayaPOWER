@@ -189,6 +189,51 @@
   at every stop, computed color of the named lines at desktop + 390.
 -->
 <!--
+  FIX-7 (2026-11-17, brief BRIEF-SMART-MAIL-FIX7-20261117 — 3 items only;
+  base = Fix-6 commit 114a794b, blob 098665e1, 117,387 B):
+  1. Slicing — the Fix-6 checker proved live that BOTH mask gradients fail
+     the straddle test: a line parked with its middle exactly on either
+     header's edge still shows readable half-glyphs (the linear 0→100%
+     ramp over 30px leaves a mid-parked line's bottom half at up to ~37%
+     opacity). The mechanism is NOT replaced — it is reshaped: each
+     gradient now has a DEAD BAND (transparent ~one line-height, 24px,
+     below the edge) and then an EASED ramp (multi-stop, slow at first so
+     a half-line emerging from the dead band stays too faint to read,
+     reaching opaque 50px below the edge). The tallest straddling line is
+     ~22.5px (.mail-nut 14.5px x 1.55); a mid-parked or top-parked line
+     sits wholly inside the dead band and vanishes instead of shearing.
+     The .thread-body mask gets the same shape; its top padding grows
+     20px -> 48px so the format-note pill (first text) still reads bright
+     at rest (its top lands past the fade instead of inside it).
+  2. Slicing, third site — the menu bar's bottom edge: lines scrolling
+     under the bar showed through its .92-alpha background (Fix-6
+     checker: subtitle straddling the bar edge at desktop a-50, inbox
+     line faintly through the bar at a-100). Fix: the bar's background is
+     now SOLID #050507 — the same near-black, so its look does not
+     change, but nothing can show through it. The title's solid band
+     covers everything below the bar; the dead band dissolves lines
+     before they reach the title.
+  3. Cover cost at 390 — Fix-6's first-card fix scrolled the cover
+     almost entirely away at load (20px strip at 390). The offset is
+     NOT changed (fix6FirstCard still measures live and applies exactly
+     deficit + 6px); instead the stack above the first card is shortened
+     by small, certain spacing trims (menu/title/tabs/search/world/panel/
+     stub/rows paddings and margins, 2-10px each, no content removed, no
+     text changed) AND the cover's inner content is bottom-anchored
+     (justify-content:flex-end) at every width, so the h1 + tagline sit
+     in the cover's lower third — the part that stays visible after the
+     load scroll — instead of centred where the scroll takes them away.
+     The cover's own bottom-darkening gradient already darkens that
+     zone, so the text sits on its best contrast. Cover heights are
+     unchanged (270 desktop / 260 narrow / 225 at 1920x900 by the 25vh
+     cap); only the inner composition moves.
+  What stands is untouched: gray-text weights, dock/five, cover toggle
+  both ways, mail-by-world, mail/IM toggle, orbit, hover lighting,
+  F/D/C hexes, 5 segs no CONNECT, nit (c). The Fix-6 mask toggle JS
+  (fix6SyncMask / fix6FirstCard) is UNCHANGED — the gradients are pure
+  CSS on the live --titleEdge var it already measures.
+-->
+<!--
   FIX-6 (2026-11-17, brief BRIEF-SMART-MAIL-FIX6-20261117 — 2 items only;
   nothing in "What stands" touched; base = Fix-5 commit e156af1b):
   1. Slicing — Fix-5's 30px skirts FAILED live at BOTH headers (cloud eye
@@ -285,7 +330,16 @@ body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidd
    back to opaque 30px below it. The toggle is seamless because the
    title's 30px margin-bottom keeps the fade band empty of text at the
    exact moment the title sticks. */
-.page-scroll.title-stuck{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),#000 calc(var(--titleEdge) + 30px),#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),#000 calc(var(--titleEdge) + 30px),#000 100%);mask-size:100% 100%}
+/* FIX-7 (item 1a): the Fix-6 checker proved the linear 0→100% ramp over
+   30px leaves a mid-parked line's bottom half at up to ~37% opacity —
+   readable half-glyphs. The gradient is RESHAPED, not replaced: a DEAD
+   BAND (transparent from the edge to 24px below it — ~one line-height;
+   tallest straddling line ~22.5px) so a top- or mid-parked line vanishes
+   whole, then an EASED ramp (multi-stop, slow at first: a half-line
+   emerging from the dead band stays too faint to read) reaching opaque
+   50px below the edge. The 2px opaque→transparent step at the edge is
+   kept from Fix-6. */
+.page-scroll.title-stuck{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),rgba(0,0,0,0) calc(var(--titleEdge) + 24px),rgba(0,0,0,.06) calc(var(--titleEdge) + 30px),rgba(0,0,0,.18) calc(var(--titleEdge) + 36px),rgba(0,0,0,.45) calc(var(--titleEdge) + 42px),rgba(0,0,0,.80) calc(var(--titleEdge) + 47px),#000 calc(var(--titleEdge) + 50px),#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),rgba(0,0,0,0) calc(var(--titleEdge) + 24px),rgba(0,0,0,.06) calc(var(--titleEdge) + 30px),rgba(0,0,0,.18) calc(var(--titleEdge) + 36px),rgba(0,0,0,.45) calc(var(--titleEdge) + 42px),rgba(0,0,0,.80) calc(var(--titleEdge) + 47px),#000 calc(var(--titleEdge) + 50px),#000 100%);mask-size:100% 100%}
 a{color:#fff}
 button{font-family:inherit}
 img{max-width:100%}
@@ -300,16 +354,22 @@ img{max-width:100%}
    plain. One button, plain words, always visible, always undoable. */
 body.no-cover .ph-cover{display:none}
 body.no-cover .ph-main{padding-top:12px}
-.ph-cover-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+.ph-cover-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:20px}
 .ph-cover-inner h1{margin:0;font-size:44px;font-weight:800;letter-spacing:.2px;text-shadow:0 4px 24px rgba(0,0,0,.6)}
 .ph-cover-inner p{margin:10px 0 0;font-size:16px;color:#fff;max-width:560px;line-height:1.5}
 .ph-plus{position:absolute;top:32px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);display:grid;place-items:center;font-size:24px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.55);transition:box-shadow .2s,border-color .2s,transform .2s}
 .ph-plus:hover{border-color:#a21caf;box-shadow:0 0 26px rgba(162,28,175,.65),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
 .ph-plus.left{left:24px}.ph-plus.right{right:24px}
 /* --- MENU BAR under the cover: Personal .topnav + .steppill VERBATIM --- */
-.menu-bar{display:flex;gap:10px;justify-content:center;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;background:rgba(5,5,7,.92);backdrop-filter:blur(10px);z-index:50;overflow-x:auto;scrollbar-width:none}
+/* FIX-7 (item 2): the menu bar's background was rgba(5,5,7,.92) — lines
+   scrolling under it showed through faintly (Fix-6 checker: subtitle
+   straddling its bottom edge at desktop a-50, inbox line through it at
+   a-100). It is now SOLID #050507, the same near-black: the bar looks
+   identical, but nothing can show through it. The title's solid band
+   covers everything below the bar. */
+.menu-bar{display:flex;gap:10px;justify-content:center;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;background:#050507;backdrop-filter:blur(10px);z-index:50;overflow-x:auto;scrollbar-width:none}
 .menu-bar::-webkit-scrollbar{display:none}
-.menu-bar .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:11px;letter-spacing:.14em;color:#fff;padding:10px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #fff;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap;text-decoration:none}
+.menu-bar .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:11px;letter-spacing:.14em;color:#fff;padding:9px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #fff;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap;text-decoration:none}
 .steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
 .menu-bar .steppill:hover{border-color:var(--sc);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}
 .menu-bar .steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
@@ -321,7 +381,7 @@ body.no-cover .ph-main{padding-top:12px}
    fixed dock. Clearance is now structural: .page-scroll ends above the
    dock (see body rule), so it holds at EVERY scroll position. The 32px
    bottom padding is just breathing room for the last content. */
-.ph-main{padding:8px 24px 32px}
+.ph-main{padding:6px 24px 32px}
 .page-head{text-align:center;margin:0 0 10px}
 /* FIX-4 (brief item 1): the fade did NOT land as a fix — its transparent
    bottom let scrolling text show through, cut mid-glyph with a hard edge.
@@ -337,9 +397,9 @@ body.no-cover .ph-main{padding-top:12px}
    but as the mask's toggle clearance: it keeps the fade band empty of
    text at the exact moment the title sticks, so the mask switching on
    is seamless in both scroll directions. */
-.page-title{margin:4px 0 30px;text-align:center;font-size:28px;font-weight:800;position:sticky;top:60px;z-index:40;background:#050507;padding-bottom:14px;scroll-margin-top:78px}
+.page-title{margin:4px 0 30px;text-align:center;font-size:28px;font-weight:800;position:sticky;top:60px;z-index:40;background:#050507;padding-bottom:10px;scroll-margin-top:78px}
 .page-head p{margin:4px 0 0;font-size:15px;color:#fff}
-.cover-toggle{margin-top:10px}
+.cover-toggle{margin-top:8px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
 .smart-lists h3{margin:0;padding:16px 18px 4px;font-size:15px;font-weight:800}
 .smart-lists .list-chip{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:2px solid rgba(255,255,255,.14);background:linear-gradient(180deg,#12101a,#08080c);color:#fff;font-family:inherit;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.55),0 0 14px color-mix(in srgb,var(--ac,#8e24aa) 20%,transparent);transition:border-color .2s,box-shadow .2s,transform .2s}
@@ -352,23 +412,23 @@ body.no-cover .ph-main{padding-top:12px}
    from the Hub (index-2.html .smart-tab, SmartTabs v9) via the Personal file:
    dark pill, bold label, per-tab --tc, white light idle, own color ignites
    on hover. The row scrolls natively (marquee removed 2026-10-19). --- */
-.org-tabs{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 8px;scrollbar-width:thin}
+.org-tabs{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 6px;scrollbar-width:thin}
 .org-tabs::-webkit-scrollbar{height:6px}
 .org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
-.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
+.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
 .nf-smtab small{color:#fff;font-weight:900;font-size:12px}
 .nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
 .nf-smtab.active{border-color:rgba(255,255,255,.6);box-shadow:0 0 16px rgba(255,255,255,.18),inset 0 1px rgba(255,255,255,.15)}
 /* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
-.search-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:16px}
+.search-row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:12px}
 .search-row input{flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-size:15px;font-family:inherit}
 .search-row input::placeholder{color:#fff;opacity:1;font-weight:600}
 /* --- MESSENGER GRID --- */
 .messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
 .panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
 .panel:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.45);box-shadow:0 24px 48px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1),0 0 26px rgba(142,36,170,.22)}
-.panel h3{margin:0;padding:8px 18px 8px;font-size:15px;font-weight:800}
-.panel .panel-sub{padding:0 18px 6px;font-size:12.5px;color:#fff}
+.panel h3{margin:0;padding:8px 18px 6px;font-size:15px;font-weight:800}
+.panel .panel-sub{padding:0 18px 4px;font-size:12.5px;color:#fff}
 /* --- ORB: the EXACT Connections-room orb — .cx-stage .cx-ava, live from
    https://nayanet.app/rooms/connections. Initial by default (JS sets
    textContent = initials(name)); per-person --cc; the spin is the conic
@@ -384,8 +444,8 @@ body.no-cover .ph-main{padding-top:12px}
 .orb-wrap{position:relative;flex:none}
 .orb-dot{position:absolute;right:0;bottom:2px;width:12px;height:12px;border-radius:50%;background:#07925f;border:2px solid #08080c;box-shadow:0 0 10px rgba(7,146,95,.8)}
 /* --- CONVERSATION / PERSON ROWS --- */
-.rows{display:flex;flex-direction:column;gap:8px;padding:4px 12px 16px}
-.row{--ac:#8e24aa;display:flex;gap:12px;align-items:center;padding:12px;border-radius:20px;border:2px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#07070b,#020203);cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -4px 12px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.06),0 12px 40px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.4);transition:all .25s;text-align:left;width:100%;color:#fff;font-family:inherit}
+.rows{display:flex;flex-direction:column;gap:8px;padding:2px 12px 16px}
+.row{--ac:#8e24aa;display:flex;gap:12px;align-items:center;padding:11px;border-radius:20px;border:2px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#07070b,#020203);cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -4px 12px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.06),0 12px 40px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.4);transition:all .25s;text-align:left;width:100%;color:#fff;font-family:inherit}
 .row:hover{background:linear-gradient(180deg,color-mix(in srgb,var(--ac) 24%,#07070b),color-mix(in srgb,var(--ac) 12%,#020203));border-color:var(--ac);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 14px -2px var(--ac),0 18px 56px rgba(0,0,0,.55);transform:translateY(-4px)}
 .row.active{border-color:var(--ac);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 18px -2px var(--ac),0 18px 56px rgba(0,0,0,.55)}
 .row-body{flex:1;min-width:0}
@@ -393,7 +453,7 @@ body.no-cover .ph-main{padding-top:12px}
 .row-name .match{font-size:11.5px;color:#fff;font-weight:800}
 .row-last{display:block;font-size:13px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
 .row-nut{display:block;font-size:12.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
-.stub-note{padding:0 18px 8px;font-size:12px;color:#fff;line-height:1.5}
+.stub-note{padding:0 18px 8px;font-size:12px;color:#fff;line-height:1.4}
 /* --- THREAD --- */
 .thread{display:flex;flex-direction:column;min-height:560px}
 /* FIX-6 (item 1b): the Fix-5 skirt below this header FAILED live (the
@@ -420,16 +480,14 @@ body.no-cover .ph-main{padding-top:12px}
 .toggle button.on{background:#0a0a0f;color:#fff;border-color:var(--tc);box-shadow:0 0 20px var(--tc),0 8px 20px rgba(0,0,0,.5)}
 .toggle button.on .tgl-ico{color:#fff;text-shadow:0 0 12px var(--tc),0 0 4px #fff}
 .toggle button[disabled]{opacity:.45;cursor:not-allowed}
-/* FIX-6 (item 1b): mask on the thread's own scroller — the Fix-5 skirt
-   below the thread-head FAILED live. The mask fades the body's content
-   itself over its top 30px (transparent at the head's bottom edge,
-   opaque 30px below), so a line sitting EXACTLY at the edge dissolves
-   instead of shearing; it applies to the scroller's whole rendering, so
-   no stacking order can defeat it. The head is a sibling outside this
-   element, so it stays opaque. At load the fade covers only the body's
-   20px top padding + the board's top padding — the first text starts
-   ~40px down, so no text is faded at rest. */
-.thread-body{flex:1;padding:20px 18px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30px);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,transparent 0,#000 30px);mask-size:100% 100%}
+/* FIX-7 (item 1b): the Fix-6 checker proved the same linear 30px ramp
+   fails here too (mid-parked h4 + NEW badge sliver, lead paragraph
+   bottom half, all widths). Same reshape as site (a): a 24px DEAD BAND
+   (transparent) then an EASED ramp to opaque 50px below the head's
+   bottom edge. Top padding grows 20px -> 48px so the format-note pill
+   (first text) still reads bright at rest: its top lands at 48px (~87%
+   opacity) and its text at ~57px (100%), instead of inside the fade. */
+.thread-body{flex:1;padding:48px 18px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);mask-size:100% 100%}
 .msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:14.5px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);transition:transform .25s,box-shadow .25s,border-color .25s}
 .msg:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.65);box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),0 0 22px rgba(142,36,170,.45)}
 .msg .meta{display:block;font-size:11.5px;color:#fff;margin-top:6px}
@@ -522,11 +580,11 @@ body.no-cover .ph-main{padding-top:12px}
 /* --- WORLD SELECTOR: one universal mail, any world (brief §1) ---
    Personal blue · Business green · Space magenta. The active pill is
    the one that lights up — rim + glow in its own colour, obsidian inside. */
-.world-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:2px 0 10px}
+.world-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:2px 0 8px}
 /* WORLD PILLS — the Dashboard PTS / % / MONEY button standard (Shawn
    03:51Z, best buttons in the system): obsidian pill, bold white text,
    one deep colour per button as rim + glow. No gradient fill, no inset. */
-.world-pill{--wc:#0f52ba;display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:900;font-size:13px;color:#fff;background:#0a0a0f;border:1.5px solid var(--wc);box-shadow:0 0 14px color-mix(in srgb,var(--wc) 35%,transparent),0 8px 20px rgba(0,0,0,.5);transition:box-shadow .25s,border-color .2s,transform .2s;white-space:nowrap}
+.world-pill{--wc:#0f52ba;display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:900;font-size:13px;color:#fff;background:#0a0a0f;border:1.5px solid var(--wc);box-shadow:0 0 14px color-mix(in srgb,var(--wc) 35%,transparent),0 8px 20px rgba(0,0,0,.5);transition:box-shadow .25s,border-color .2s,transform .2s;white-space:nowrap}
 .world-pill .wdot{width:9px;height:9px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
 .world-pill:hover{background:#0a0a0f;border-color:var(--wc);box-shadow:0 0 26px -2px var(--wc),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
 .world-pill:hover .wdot{background:var(--wc);box-shadow:0 0 10px var(--wc)}
@@ -558,28 +616,37 @@ body.no-cover .ph-main{padding-top:12px}
 @keyframes orbitCCW{to{transform:rotate(-360deg)}}
 .ph-plus::before{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 50% 0%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCW 60s linear infinite}
 @media (max-width:900px){
-  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:4px}   .menu-bar{padding:8px 16px}
-  .ph-cover-inner{padding:10px}   .ph-cover-inner h1{font-size:24px}   .ph-cover-inner p{font-size:13px;margin-top:6px;max-width:420px}
+  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:0}   .menu-bar{padding:6px 16px}
+  .ph-cover-inner{padding:10px 10px 12px}   .ph-cover-inner h1{font-size:24px}   .ph-cover-inner p{font-size:13px;margin-top:6px;max-width:420px}
   /* FIX-3 round 2, 2026-11-17: narrow stack trims so the first row clears the fixed dock:
      h2 22px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
   .page-title{font-size:22px;top:50px}   .page-scroll{--titleEdge:90px} /* FIX-6: 1-line title edge ≈50+40 */
   .cover-toggle{margin-top:8px}
-  .org-tabs{padding:6px 2px 8px}
-  .search-row{padding:10px 16px;margin-bottom:10px}
+  .org-tabs{padding:4px 2px 4px}
+  .search-row{padding:8px 16px;margin-bottom:8px}
   .world-row{margin:2px 0 8px;gap:6px}
   .panel h3{padding-top:4px}
-  .panel .panel-sub{padding-bottom:2px}
-  .rows{padding-top:2px}
+  .panel .panel-sub{padding-bottom:0}
+  .rows{padding-top:0}
   .thread{min-height:480px}
   .composer input.subject{flex:1 1 100%}
   .composer-inner{flex-wrap:wrap}
 }
 @media (max-width:420px){
-  .ph-main{padding:18px 12px 32px}
+  .ph-main{padding:8px 12px 32px}
   .toggle button{padding:10px 11px;font-size:12px}
   .thread-head{flex-wrap:wrap}
   .msg{max-width:88%}
   .page-scroll{--titleEdge:117px} /* FIX-6: 2-line title edge ≈50+67 */
+  /* FIX-7 (item 3): narrow-width stack trims so the first card clears
+     the dock at load while the (bottom-anchored) cover still reads:
+     title one step smaller (still 2 lines), tabs + search tighter,
+     cover-toggle shorter. No content removed, no text changed. */
+  .page-title{font-size:19px}
+  .nf-smtab{padding:8px 16px}
+  .org-tabs{padding:2px 2px 2px}
+  #coverToggle{min-height:38px}
+  .search-row{padding:7px 16px;margin-bottom:6px}
 }
 /* --- FIX 2026-11-12 (checker NOT PASS 8/10): thread head at phone widths ---
    Was: orb + who + toggle on one row left the presence 35px wide at 390
