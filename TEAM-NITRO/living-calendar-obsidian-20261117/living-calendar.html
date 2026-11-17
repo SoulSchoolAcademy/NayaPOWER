@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NayaNET — Living Calendar</title>
+<!--
+  LIVING CALENDAR — OBSIDIAN REBUILD (2026-11-17)
+  The old calendar build is thrown out. This file is built from scratch
+  from harvested pieces only — nothing re-created from a picture, nothing
+  invented. Harvest trace lives in MAKER-REPORT.md beside this build.
+  Sources:
+  [D] Dashboard digit tile + board + gauge — branch dashboard/done-done-20261116,
+      commit 6df003f9, blob f87d938cb57eaabd0a5116dc892580a4d94bf417
+      (DASHBOARD/defectfix-v7/pass9/dashboard-pass9.html, 1,940,710 B,
+      sha256 834c42b98cfe0d01fee83cbcfdb1ddfbb303bba8751da9fda769cff536d87d39)
+  [P] Pricing chart digit tiles + .primo pill — pricing v77
+      (~/workspace/team-nitro/pricing/v77/pricing-v77.html, 11,355,594 B,
+      sha256 b043167b2fa9a863a18216cdd2d282a20dcf5ff4159ac93e0da28ddea1635577)
+      v78 (11,360,503 B, sha256 ca2eafeb…) = v77 + free-entry groups only;
+      the v78 local copy is 0-byte flake damage and its rebuild is blocked
+      by the EPERM flake — the tile code is identical in v77 (see report).
+  [C] Functions only (booking store, slots, timeline, meet, routing) —
+      branch calendar/fullscreen-20261117, tip 9a7087ca,
+      blob d3a9f64b9405637c3e838190eae1e0d05d70659b
+      (TEAM-NITRO/living-calendar-20261117/living-calendar.html, 73,137 B).
+      Presentation NOT carried — only the functions it proved.
+  [L] Deep Palette — ~/workspace/team-nitro/THE-DEEP-PALETTE.md (the law).
+      Bright digit/day values in [D] are SUPERSEDED by [L]; the tile FORM
+      is verbatim, the rim/cap/glow hexes are the deep ones.
+  Day colors [L]: Sun #8e24aa · Mon #c2410c · Tue #d4a017 · Wed #0f52ba ·
+  Thu #07925f · Fri #c62828 · Sat #3f51b5.
+  Digit colors [L]: 0 white · 1 ruby #c62828 · 2 burnt orange #c2410c ·
+  3 deep gold #d4a017 · 4 emerald #07925f · 5 deep cyan #0e7490 ·
+  6 indigo #3f51b5 · 7 royal purple #8e24aa · 8 deep violet #6d28d9 ·
+  9 deep magenta #a21caf.
+-->
+<style>
+/* ============ ROOT + BASE ============ */
+/* [P] :root — pricing v77, first :root rule. --purple deepened to [L] royal
+   purple #8e24aa (the bright #a06bff is superseded by the Deep Palette). */
+:root{color-scheme:dark;--ink:#fff;--soft:#e8e8ec;--purple:#8e24aa;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{height:100%}
+/* [D] body — dashboard-pass9.html line 628: background #050607, Inter stack.
+   Board black is [L] #050607. */
+body{background:#050607;color:#F8F7FB;font-family:Inter,system-ui,sans-serif;min-height:100dvh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font-family:inherit}
+:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* ============ THE BOARD — [D] .ph-card verbatim ============ */
+/* dashboard-pass9.html lines 2084-2089: gradient, 2px rim, 20px radius,
+   inset top light, drop shadow; hover lifts with gold glow. The day cell
+   and the view boards are this board, with --dc (the day's color) as the
+   rim/glow instead of gold. */
+.ph-card{background:linear-gradient(180deg,#07070b,#050607);
+  border:2px solid rgba(255,255,255,.16);border-radius:20px;padding:28px;margin-bottom:20px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5);
+  transition:all .25s;}
+.ph-card:hover{border-color:rgba(217,165,33,.6);transform:translateY(-4px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(217,165,33,.25);}
+.ph-card h3{font-size:18px;margin:0 0 12px;color:#fff;}
+.ph-card p{font-size:14px;color:#fff;margin:0 0 14px;line-height:1.65;}
+
+/* ============ THE PILL BUTTON — [P] .primo verbatim ============ */
+/* pricing v77: "Harvested from factory.css (NAYA-BTN-005)". The door pill:
+   obsidian pill, radius 999px, rim, white word, icon left, sheen sweep.
+   --glow is the door's own color (default: --purple). */
+.primo{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-weight:800;font-size:15px;letter-spacing:.08em;color:#F8F7FB;padding:16px 32px;border-radius:999px;border:1.5px solid rgba(248,247,251,.9);
+  background:linear-gradient(180deg,#1a1a22 0%,#0a0a0f 45%,#050507 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),0 12px 32px rgba(0,0,0,.65);
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease);--glow:var(--purple);position:relative;overflow:hidden;font-family:inherit}
+.primo::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);transform:translateX(-100%);animation:primo-sheen 3.5s ease-in-out infinite;pointer-events:none}
+@keyframes primo-sheen{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.primo:hover{transform:translateY(-2px);border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px var(--glow),0 14px 36px rgba(0,0,0,.65)}
+.primo:active{transform:translateY(1px) scale(.985)}
+.primo .ico{font-size:18px;line-height:1}
+.primo.on{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px var(--glow),0 14px 36px rgba(0,0,0,.65)}
+
+/* ============ THE DIGIT TILE — [D] .os-mini-tile verbatim, FORM only ============ */
+/* dashboard-pass9.html lines 4821-4845 (comment, base, cap, digit, med,
+   dollar, gap, dot, pct) + 4846-4865 (d0–d9 chakra rims/caps).
+   The FORM, the measurements and the shadows are verbatim. The rim/cap/glow
+   HEXES are the Deep Palette [L] — the bright values in [D] (#ff2a2a,
+   #ff8c00, #f5d76e, #00a86b, #29b6f6, #b388ff, #ff1493) are SUPERSEDED by [L].
+   d6 (#3f51b5) and d7 (#8e24aa) already match [L] and are kept byte-for-byte.
+   Cap gradients: light/mid/dark stops of the deep hex, same 3-stop
+   construction as [D] (light = +60% toward white, dark = −55% toward black).
+   The dollar tile takes the deep gold [L] — gold is gold, one hex per hue. */
+.os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
+.os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
+.os-mini-tile .rd{display:block;height:30px;line-height:30px;text-align:center;font-size:27px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
+/* medium: drill / dialog totals — [D] lines 4827-4830 */
+.os-mini-num.med{gap:4px;}
+.os-mini-num.med .os-mini-tile{width:54px;border-radius:10px;border-width:2px;box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 18px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-num.med .os-mini-tile .cap{height:9px;}
+.os-mini-num.med .os-mini-tile .rd{height:54px;line-height:54px;font-size:48px;}
+/* the $ tile (money only), the dot tile (decimals), the % tile — [D] 4831-4844 */
+.os-mini-tile.dollar{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.dollar .cap{background:linear-gradient(180deg,#edd9a2,#d4a017 55%,#5f480a);}
+.os-mini-gap{flex:none;width:10px;}
+.os-mini-num.med .os-mini-gap{width:14px;}
+.os-mini-tile.dot{width:12px;}
+.os-mini-num.med .os-mini-tile.dot{width:20px;}
+.os-mini-tile.dot .rd{display:flex;align-items:flex-end;justify-content:center;height:30px;line-height:1;padding-bottom:4px;box-sizing:border-box;}
+.os-mini-num.med .os-mini-tile.dot .rd{height:54px;padding-bottom:8px;}
+.os-mini-tile.pct{width:34px;}
+.os-mini-num.med .os-mini-tile.pct{width:60px;}
+/* chakra colours — the same as the big number — [D] 4846-4865, hexes deepened to [L] */
+.os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
+.os-mini-tile.d1{border-color:#c62828;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(198,40,40,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d1 .cap{background:linear-gradient(180deg,#e8a9a9,#c62828 55%,#591212);}
+.os-mini-tile.d2{border-color:#c2410c;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(194,65,12,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d2 .cap{background:linear-gradient(180deg,#e7b39e,#c2410c 55%,#571d05);}
+.os-mini-tile.d3{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d3 .cap{background:linear-gradient(180deg,#edd9a2,#d4a017 55%,#5f480a);}
+.os-mini-tile.d4{border-color:#07925f;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(7,146,95,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d4 .cap{background:linear-gradient(180deg,#9cd3bf,#07925f 55%,#03422b);}
+.os-mini-tile.d5{border-color:#0e7490;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(14,116,144,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d5 .cap{background:linear-gradient(180deg,#9ec7d2,#0e7490 55%,#063441);}
+.os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d6 .cap{background:linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#232a6b);}
+.os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d7 .cap{background:linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#4d0f5e);}
+.os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(109,40,217,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d8 .cap{background:linear-gradient(180deg,#c5a9f0,#6d28d9 55%,#311262);}
+.os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(162,28,175,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d9 .cap{background:linear-gradient(180deg,#daa4df,#a21caf 55%,#490d4f);}
+/* [P] .os-mini-tile.inf — the ∞ tile, pricing v77: silver/white,
+   black-and-silver (the d0 silver cap language), sized to sit in line
+   with the digit tiles. Verbatim. */
+.os-mini-tile.inf{width:34px;border-color:#e8e8ec;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(232,232,236,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.inf .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0)}
+.os-mini-num.med .os-mini-tile.inf{width:60px;}
+
+/* ============ DAY COLORS — [L] + [C] WEEKDAY ============ */
+/* The day's color is its rim at rest; on hover the whole block is the color.
+   Per-weekday classes carry the deep hex + its rgba wash (same construction
+   as .ph-card:hover, with --dc instead of gold). Hz from [C] WEEKDAY. */
+.dow-0{--dc:#8e24aa;--dc-rgb:142,36,170}
+.dow-1{--dc:#c2410c;--dc-rgb:194,65,12}
+.dow-2{--dc:#d4a017;--dc-rgb:212,160,23}
+.dow-3{--dc:#0f52ba;--dc-rgb:15,82,186}
+.dow-4{--dc:#07925f;--dc-rgb:7,146,95}
+.dow-5{--dc:#c62828;--dc-rgb:198,40,40}
+.dow-6{--dc:#3f51b5;--dc-rgb:63,81,181}
+
+/* ============ MONTH VIEW — the whole screen is just a calendar ============ */
+#monthView{height:100dvh;display:flex;flex-direction:column;padding:16px 16px 12px;gap:10px}
+/* The month name + prev/next are the calendar itself — nothing else. */
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none}
+.cal-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(26px,4.4vw,44px);line-height:1.05;color:#fff;margin:0;text-align:center}
+.cal-title em{font-style:normal;color:#e9e0c3}
+.cal-nav{display:flex;gap:8px;align-items:center;flex:none}
+.cal-nav .primo{padding:12px 18px;font-size:14px}
+.cal-nav .primo.today{padding:12px 20px}
+/* Weekday names in their day's color — [C] render() colored them so. */
+.cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;flex:none}
+.cal-week div{text-align:center;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+/* The grid fills the screen. No scrolling. 6 rows always, so the grid is
+   stable and the numbers fill the screen every month. */
+.cal-grid{flex:1;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(6,1fr);gap:8px;min-height:0}
+/* THE DAY BLOCK — the .ph-card board [D], rim in the day's color. */
+.cal-day{margin:0;padding:10px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;border:2px solid var(--dc);border-radius:20px;background:linear-gradient(180deg,#07070b,#050607);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.5),0 0 14px rgba(var(--dc-rgb),.28);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease);position:relative;overflow:hidden}
+/* Hover/tap: the block lights up WHOLE in its day's deep color — the brief's
+   order, the .ph-card:hover construction, with --dc instead of gold. */
+.cal-day:hover,.cal-day:focus-visible{transform:translateY(-4px);background:linear-gradient(135deg,rgba(var(--dc-rgb),.92) 0%,rgba(var(--dc-rgb),.78) 55%,rgba(var(--dc-rgb),.88) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 20px 44px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.55)}
+.cal-day:hover .os-mini-tile,.cal-day:focus-visible .os-mini-tile{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.8),0 0 22px rgba(255,255,255,.35),inset 0 1px 0 rgba(255,255,255,.4)}
+.cal-day:active{transform:translateY(1px) scale(.985)}
+.cal-day .os-mini-tile{transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+/* Today glows brighter than the rest at rest — [C] + the brief. */
+.cal-day.today{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.6),0 0 30px rgba(var(--dc-rgb),.65),0 0 60px rgba(var(--dc-rgb),.3)}
+.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff,0 0 20px rgba(var(--dc-rgb),.9)}
+/* A day with a record carries one small dot in its day's color — the
+   presence signal, [C] .dots, reduced to a single dot. No text, no chips. */
+.cal-day .has{width:7px;height:7px;border-radius:50%;background:var(--dc);box-shadow:0 0 8px var(--dc);flex:none}
+.cal-day .has.none{visibility:hidden}
+.cal-day.blank{background:transparent;border:2px solid transparent;box-shadow:none;cursor:default}
+.cal-day.blank:hover{transform:none;background:transparent;box-shadow:none}
+
+/* ============ DAY VIEW — inside the day ============ */
+#dayView,#viewView{position:fixed;inset:0;background:#050607;z-index:50;display:none;flex-direction:column;overflow-y:auto;padding:20px 16px 40px}
+#dayView.show,#viewView.show{display:flex}
+.day-head{max-width:1060px;width:100%;margin:0 auto 8px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.day-head .daynum-wrap{flex:none}
+.day-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,4vw,38px);line-height:1.1;color:#fff;margin:0}
+.day-sub{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-top:6px}
+.day-sub .hz{color:var(--dc)}
+.day-back{margin-left:auto}
+.view-wrap{max-width:1060px;width:100%;margin:0 auto}
+/* The 13 doors — .primo pills [P], each its own color rim via --glow.
+   Icon on the left, white word in the middle (Naya Code §2.2). */
+.doors{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:18px 0}
+.doors .primo{width:100%;justify-content:flex-start;padding:18px 22px;font-size:15px;text-align:left}
+.doors .primo .sub{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;opacity:.75;margin-top:2px}
+.doors .primo .lbl{display:flex;flex-direction:column;align-items:flex-start}
+/* The day's instruments — numbers as digit tiles, words at a nutshell.
+   [D] .os-sl-stat: number on top, label underneath. */
+.instruments{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.instrument{text-align:center;padding:20px 12px}
+.instrument .os-sl-stat-n{display:block;font-size:52px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em;
+  text-shadow:0 0 8px rgba(255,255,255,.4),0 0 24px rgba(217,165,33,.6),0 0 48px rgba(217,165,33,.3),0 2px 4px rgba(0,0,0,.5)}
+.instrument .os-sl-stat-l{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:8px}
+/* Timeline — [C] .daytimeline board, .ph-card construction, rim in the day color. */
+.daytimeline{border:2px solid var(--dc);border-radius:20px;padding:20px 22px;margin:18px 0 0;background:linear-gradient(180deg,#07070b,#050607);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 24px rgba(var(--dc-rgb),.25)}
+.daytimeline>strong{display:block;font-size:13px;letter-spacing:.14em}
+.daytimeline .tl-sub{font-size:13px;color:#fff;margin-top:4px}
+.tl-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.tl-list li{display:grid;grid-template-columns:auto auto auto 1fr;gap:10px;align-items:baseline;padding:10px 12px;border-left:3px solid var(--tc,#8e24aa);background:rgba(255,255,255,.04);border-radius:0 12px 12px 0}
+.tl-time{font-weight:800;font-size:13px;white-space:nowrap}
+.tl-kind{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tc,#8e24aa);white-space:nowrap}
+.tl-text{font-size:14px;line-height:1.5}
+.tl-empty,.tl-note{font-size:14px;line-height:1.6;margin:12px 0 0}
+.tl-note{color:rgba(255,255,255,.75)}
+/* Wisdom + Intel boards — .ph-card boards, rim in the day color. */
+.dayboards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:18px 0}
+.dayboards .ph-card{margin:0;border-color:var(--dc)}
+.dayboards .ph-card:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.3)}
+.dayboards .ph-card strong{display:block;font-size:13px;letter-spacing:.14em;margin-bottom:8px}
+.dayboards .ph-card span{font-size:14px;line-height:1.65}
+/* Empty state — an object, not a paragraph: board + glyph + day tiles + two words. */
+.empty{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:44px 24px}
+.empty .glyph{font-size:44px;line-height:1;color:#fff;text-shadow:0 0 24px rgba(var(--dc-rgb),.8)}
+.empty .words{font-size:15px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.empty .hintline{font-size:13px;color:rgba(255,255,255,.65);max-width:420px;line-height:1.6}
+/* Views inside a day */
+.view-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 auto 18px;max-width:1060px;width:100%}
+.view-head h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(22px,3.4vw,32px);color:#fff;margin:0;flex:1;min-width:220px}
+.view-head .primo{padding:12px 18px;font-size:13px}
+.viewcard{margin:0 auto 18px;max-width:1060px}
+.viewcard .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin:14px 0}
+.viewcard .stat{text-align:center;padding:14px 8px;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;background:linear-gradient(180deg,#0a0a0f,#050607)}
+.viewcard .stat b{display:block;font-size:34px;font-weight:900;color:#fff;line-height:1}
+.viewcard .stat span{display:block;font-size:10px;font-weight:800;letter-spacing:.16em;color:rgba(255,255,255,.75);margin-top:6px}
+.viewcard .list{list-style:none;margin:12px 0;padding:0;display:grid;gap:8px}
+.viewcard .list li{padding:12px 14px;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;line-height:1.55}
+.viewcard .list li b{color:#fff}
+.viewcard .hint{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+.viewcard .err{font-size:13px;color:#fff;font-weight:700;min-height:18px}
+.viewcard .status{font-size:14px;font-weight:700;color:#fff;background:rgba(7,146,95,.16);border:1.5px solid #07925f;border-radius:12px;padding:12px 14px}
+/* Booking slots — [C] slot buttons, rebuilt in the pill language. */
+.slotbox{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
+.slot{cursor:pointer;font-weight:800;font-size:14px;color:#fff;padding:12px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);background:linear-gradient(180deg,#1a1a22,#050607);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px rgba(0,0,0,.5);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease)}
+.slot:hover{transform:translateY(-2px);border-color:#07925f;box-shadow:0 10px 20px rgba(0,0,0,.55),0 0 16px rgba(7,146,95,.4)}
+.slot.on{border-color:#07925f;box-shadow:0 0 16px rgba(7,146,95,.5)}
+.slot.taken{opacity:.35;cursor:not-allowed}
+.slot.taken:hover{transform:none;border-color:rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px rgba(0,0,0,.5)}
+.flab{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin:16px 0 8px}
+.field{width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.35);border-radius:12px;color:#fff;font-size:15px;padding:14px;font-family:inherit;
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12)}
+.field:focus{outline:none;border-color:#fff;box-shadow:inset 0 2px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.25)}
+.field::placeholder{color:rgba(255,255,255,.5)}
+textarea.field{min-height:110px;resize:vertical}
+select.field option{background:#0a0a0f;color:#fff}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.actions .primo{padding:13px 22px;font-size:14px}
+.meetbox{text-align:center}
+.meetbox .face{width:64px;height:64px;margin:0 auto 12px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:900;color:#fff;
+  background:linear-gradient(180deg,#1a1a22,#050607);border:2px solid #8e24aa;box-shadow:0 0 24px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.meetbox .timer{font-size:44px;font-weight:900;color:#fff;letter-spacing:.04em;line-height:1;margin:8px 0}
+.meetbox video{width:100%;max-width:520px;border-radius:16px;background:#050607;border:1.5px solid rgba(255,255,255,.85);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 24px rgba(142,36,170,.35);display:none}
+/* Phone — [D] 480px med-tile overrides, verbatim (lines 4592-4600). */
+@media (max-width:480px){
+  #monthView{padding:10px 8px 8px;gap:8px}
+  .cal-grid{gap:5px}
+  .cal-week{gap:5px}
+  .cal-week div{font-size:10px;letter-spacing:.1em}
+  .cal-day{border-radius:14px;padding:6px 2px;gap:4px}
+  .cal-nav .primo{padding:10px 12px;font-size:12px}
+  .cal-nav .primo.today{padding:10px 14px}
+  .os-sl-gauge-num .os-mini-num.med{gap:3px}
+  .os-mini-num.med .os-mini-tile{width:28px;border-radius:5px;border-width:1.5px}
+  .os-mini-num.med .os-mini-tile .cap{height:5px}
+  .os-mini-num.med .os-mini-tile .rd{height:28px;line-height:28px;font-size:25px}
+  .os-mini-num.med .os-mini-tile.dollar{width:31px}
+  .os-mini-num.med .os-mini-tile.dot{width:10px}
+  .os-mini-num.med .os-mini-tile.dot .rd{height:28px;padding-bottom:3px}
+  .os-mini-num.med .os-mini-tile.pct{width:31px}
+  .os-mini-num.med .os-mini-gap{width:7px}
+  /* Day numbers on a 390px phone: two 28px tiles + gap = 59px, the cell is
+     ~50px — so the day tiles take the harvested 22px revenue-cell pattern
+     ([D] lines 4608-4613, same values, selector moved from the 4th gauge
+     to the day cell). 2×22+2 = 46px, fits the cell. */
+  .cal-day .os-mini-num.med{gap:2px}
+  .cal-day .os-mini-num.med .os-mini-tile{width:22px;border-radius:4px;border-width:1.5px}
+  .cal-day .os-mini-num.med .os-mini-tile .cap{height:4px}
+  .cal-day .os-mini-num.med .os-mini-tile .rd{height:22px;line-height:22px;font-size:20px}
+  .cal-day .os-mini-num.med .os-mini-gap{width:6px}
+  .doors{grid-template-columns:1fr}
+  .day-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .day-back{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .primo::before{animation:none}
+  *{transition-duration:.01ms !important}
+}
+</style></head>
+<body>
+<!-- MONTH VIEW — the whole screen is just a calendar. Nothing else. -->
+<main id="monthView" aria-label="Living calendar">
+  <div class="cal-head">
+    <div class="cal-nav"><button class="primo" id="prev" type="button" aria-label="Previous month">‹</button></div>
+    <h1 class="cal-title" id="monthname"></h1>
+    <div class="cal-nav">
+      <button class="primo today" id="todayBtn" type="button">Today</button>
+      <button class="primo" id="next" type="button" aria-label="Next month">›</button>
+    </div>
+  </div>
+  <div class="cal-week" id="weeknames" aria-hidden="true"></div>
+  <div class="cal-grid" id="days" role="grid" aria-label="Days of the month"></div>
+</main>
+
+<!-- DAY VIEW — inside the day. -->
+<section id="dayView" aria-label="Day view" aria-hidden="true">
+  <div class="day-head" id="dayHead"></div>
+  <div class="view-wrap" id="dayBody"></div>
+</section>
+
+<!-- DESTINATION VIEW — one door open. Back everywhere. -->
+<section id="viewView" aria-label="Day section view" aria-hidden="true">
+  <div class="view-wrap" id="viewBody"></div>
+</section>
+
+<script>
+/* ============ STATE ============ */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const TZ=(Intl.DateTimeFormat().resolvedOptions().timeZone)||'UTC';
+const NOW=new Date();
+let year=NOW.getFullYear(), month=NOW.getMonth(), day=NOW.getDate();
+let screen='month', section='Dashboard', slot='', meetId='', createKind='smart';
+let lastFocus=null, pendingBookErr='';
+
+/* Weekday identity — [C] WEEKDAY verbatim (colors already the Deep Palette [L]). */
+const WEEKDAY=[
+ {name:'Sunday',   short:'Sun', color:'#8e24aa', hz:963, label:'purple'},
+ {name:'Monday',   short:'Mon', color:'#c2410c', hz:417, label:'orange'},
+ {name:'Tuesday',  short:'Tue', color:'#d4a017', hz:528, label:'gold'},
+ {name:'Wednesday',short:'Wed', color:'#0f52ba', hz:741, label:'sapphire'},
+ {name:'Thursday', short:'Thu', color:'#07925f', hz:639, label:'green'},
+ {name:'Friday',   short:'Fri', color:'#c62828', hz:396, label:'red'},
+ {name:'Saturday', short:'Sat', color:'#3f51b5', hz:852, label:'indigo'}];
+
+/* The 13 doors, in the brief's exact order and names. Each door its own
+   color rim — all hexes from the Deep Palette [L] only, assigned by meaning
+   from [C]'s category colors where a category exists (see MAKER-REPORT.md
+   §Door colors). Icons are the white object-glyphs of [C]'s vocabulary. */
+const DOORS=[
+ ['Appointments','◷','#07925f','Book a time'],
+ ['Local news','⌖','#0f52ba','My area'],
+ ['Provincial news','▧','#0e7490','My province'],
+ ['Global news','◎','#3f51b5','The world'],
+ ['Personal feed','♙','#8e24aa','My activity'],
+ ['Business feed','▣','#d4a017','Work and income'],
+ ['Thing feed','◈','#a21caf','My communities'],
+ ['Your World','✦','#c2410c','My whole world'],
+ ['Smart Notes for that day','✧','#6d28d9','What I learned'],
+ ['Notes for that day','☰','#c62828','What I wrote'],
+ ['Weather','☀','#0f52ba','The sky today'],
+ ['Horoscope','☾','#8e24aa','The stars today'],
+ ['Posts for that day','✎','#07925f','What I shared']];
+
+/* ============ DIGIT TILES — [D] miniTileHTML + _osMiniNumHTML verbatim ============ */
+/* dashboard-pass9.html lines 26593-26620: one number, one style. A landed
+   tile shows cap + digit + rim + digit colour. Money gets the $ tile,
+   decimals a dot tile, percentages a % tile. A comma becomes a gap. */
+function miniTileHTML(ch){
+  if (ch === ' ' || ch === ',') return '<span class="os-mini-gap"></span>';
+  if (ch === '$') return '<span class="os-mini-tile dollar"><span class="cap"></span><span class="rd">$</span></span>';
+  if (ch === '.') return '<span class="os-mini-tile dot"><span class="cap"></span><span class="rd">.</span></span>';
+  if (ch === '%') return '<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>';
+  if (ch === '∞') return '<span class="os-mini-tile inf"><span class="cap"></span><span class="rd">∞</span></span>';
+  var d = parseInt(ch, 10);
+  if (!isFinite(d)) return '';
+  return '<span class="os-mini-tile d' + d + '"><span class="cap"></span><span class="rd">' + d + '</span></span>';
+}
+function miniNumHTML(value, size){
+  if (value == null) return '—';
+  var str = String(value).trim().replace(/,/g, ' ').replace(/ +/g, ' ');
+  if (str === '' || str === '—' || str === '-') return '—';
+  if (!/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(str) && str !== '∞') return esc(String(value));
+  var cls = (size === 'med') ? 'os-mini-num med' : 'os-mini-num';
+  var html = '<span class="' + cls + '">';
+  for (var i = 0; i < str.length; i++) html += miniTileHTML(str[i]);
+  return html + '</span>';
+}
+
+/* ============ STORES — [C] verbatim ============ */
+/* Booking logic harvested from the old calendar build (branch
+   personal/calendar-booking-meet-20261116, blob 15e0a2fc): store
+   'mw.cal.bookings.v1', 9 hourly slots 09:00-17:00, taken slots disabled,
+   double-booking refused, survives reload. Meet room: getUserMedia on join. */
+const BOOK_KEY='mw.cal.bookings.v1';
+const NOTE_KEY='mw.cal.notes.v1';
+const BOOK_SLOTS=['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'];
+function loadBookings(){ try{ var a=JSON.parse(localStorage.getItem(BOOK_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+function saveBookings(a){ try{ localStorage.setItem(BOOK_KEY,JSON.stringify(a)); return true; }catch(e){ return false; } }
+function dayBookings(ds){ return loadBookings().filter(b=>b.date===ds).sort((x,y)=>String(x.time).localeCompare(String(y.time))); }
+function bookTimeTaken(ds,t){ return dayBookings(ds).some(b=>b.time===t); }
+function loadNotes(){ try{ var a=JSON.parse(localStorage.getItem(NOTE_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+function saveNotes(a){ try{ localStorage.setItem(NOTE_KEY,JSON.stringify(a)); return true; }catch(e){ return false; } }
+function dayNotes(ds, w){ return loadNotes().filter(n=>n.date===ds && (!w || n.world===w)); }
+function fmtTime(t){ try{ var h=+t.slice(0,2), m=t.slice(3); var ap=h>=12?'PM':'AM'; h=h%12||12; return h+':'+m+' '+ap; }catch(e){ return t; } }
+function dateKey(y,m,d){ return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0'); }
+function selKey(){ return dateKey(year,month,day); }
+function isToday(y,m,d){ return y===NOW.getFullYear()&&m===NOW.getMonth()&&d===NOW.getDate(); }
+function isFutureDs(ds){ return ds>dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate()); }
+function dlabel(y,m,d){ return new Date(y,m,d).toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'}); }
+function uid(){ return 'id'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+const TF_ORDER={Morning:0,Afternoon:1,Evening:2};
+
+/* Fallback wisdom store — [C] WISDOM_STORE verbatim, 7 lines. */
+const WISDOM_STORE=[
+ 'The day is yours to shape — begin with the one thing that matters most, and let the rest follow.',
+ 'Ask Naya to carry the small things, so your mind stays free for the big ones.',
+ 'A note written down is a thought kept — what you record today, you can build on tomorrow.',
+ 'Success is a habit, not a moment — small steps, taken every day, add up to a life.',
+ 'Work with the intelligence beside you, not against it — tell it what you want, and let it do the doing.',
+ 'Share what you learn — wisdom grows when it is given away.',
+ 'Rest is part of the work — a clear mind sees further than a tired one.'];
+
+/* ============ DAILY WISDOM / REPORT / INTEL — [C] verbatim ============ */
+function wisdomFor(ds){
+  const parts=ds.split('-').map(Number);
+  const prev=new Date(parts[0],parts[1]-1,parts[2]-1);
+  const prevKey=dateKey(prev.getFullYear(),prev.getMonth(),prev.getDate());
+  const ranked=loadNotes().filter(n=>n.date===prevKey&&n.type==='smart'&&n.rank)
+    .sort((a,b)=>(b.rank-a.rank)||String(a.createdAt).localeCompare(String(b.createdAt)));
+  if(ranked.length) return {text:ranked[0].text, source:'Carried forward — the highest-ranked Smart Note of '+dlabel(prev.getFullYear(),prev.getMonth(),prev.getDate())};
+  const idx=Math.floor(new Date(parts[0],parts[1]-1,parts[2]).getTime()/86400000);
+  return {text:WISDOM_STORE[((idx%WISDOM_STORE.length)+WISDOM_STORE.length)%WISDOM_STORE.length], source:'NayaNET wisdom store — from what we have learned'};
+}
+function dirFor(ds){
+  const notes=dayNotes(ds), books=dayBookings(ds);
+  if(!notes.length && !books.length) return null;
+  const smart=notes.filter(n=>n.type==='smart'), naya=notes.filter(n=>n.type==='naya'), posts=notes.filter(n=>n.type==='post');
+  const top=notes.filter(n=>n.rank).sort((a,b)=>b.rank-a.rank)[0];
+  return {notes:notes.length, smart:smart.length, naya:naya.length, posts:posts.length,
+    books:books.length,
+    learned: top ? top.text : 'Nothing was recorded as learned on this day yet.'};
+}
+function intelLine(ds){
+  const books=dayBookings(ds), notes=dayNotes(ds);
+  const bits=[];
+  if(books.length) bits.push(books.length+(books.length===1?' appointment':' appointments')+' booked');
+  if(notes.length) bits.push(notes.length+(notes.length===1?' note':' notes')+' saved');
+  if(!bits.length) bits.push('No records for this day yet');
+  bits.push('News archive not wired — no headlines shown for this date');
+  return bits.join(' · ')+'.';
+}
+function dirLine(ds){
+  if(isFutureDs(ds)) return 'This day has not happened yet — no report until the day has a record.';
+  const r=dirFor(ds);
+  return r? (r.notes+' notes · '+r.books+' appointments · what was learned: '+r.learned) : 'No report — no records for this day.';
+}
+
+/* ============ TIMELINE JOURNAL — [C] timelineHTML, world filter removed ============ */
+/* The day's whole story in time order, built ONLY from the day's own local
+   record: bookings by their time; notes by time frame (Morning 09:00,
+   Afternoon 14:00, Evening 19:00) then created time. Past days show their
+   real record; future days show what is booked and what is open; today
+   shows both. News: the archive is not wired, so the timeline says so
+   honestly instead of inventing headlines. */
+function timelineHTML(ds){
+  const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+  const past=ds<todayKey, future=isFutureDs(ds);
+  const TF_MIN={Morning:540,Afternoon:840,Evening:1140};
+  const entry=(min,time,color,kind,text)=>`<li style="--tc:${color}"><span class="tl-time">${esc(time)}</span><span class="tl-kind">${esc(kind)}</span><div class="tl-text">${esc(text)}</div></li>`;
+  const entries=[];
+  dayBookings(ds).forEach(b=>{
+    const h=+String(b.time).slice(0,2), m=+String(b.time).slice(3);
+    entries.push({min:h*60+m, html:entry(h*60+m,fmtTime(b.time),'#07925f','Appointment'+(b.meet?' · Smart Meet':''),(b.who||'Appointment')+(b.what?' — '+b.what:''))});
+  });
+  dayNotes(ds).forEach(n=>{
+    const kind=n.type==='smart'?'Smart Note ✧':n.type==='post'?'Post':'Note';
+    const color=n.type==='smart'?'#6d28d9':n.type==='post'?'#07925f':'#c62828';
+    entries.push({min:TF_MIN[n.timeframe]||540, html:entry(TF_MIN[n.timeframe]||540,n.timeframe||'Morning',color,kind+' · '+n.world,n.text)});
+  });
+  entries.sort((a,b)=>a.min-b.min);
+  const sub=past?'What went on this day — from this day’s own record.':future?'What is booked, and what is still open.':'Today so far, and what is still open.';
+  let body='';
+  if(entries.length) body=`<ol class="tl-list">${entries.map(e=>e.html).join('')}</ol>`;
+  else body=`<p class="tl-empty">${past?'No records for this day — nothing was recorded. Unknown is not zero, and no record is invented.':'Nothing booked or written for this day yet.'}</p>`;
+  if(!past){
+    const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t));
+    body+=open.length?`<p class="tl-note">Open times on this day: ${open.map(t=>esc(fmtTime(t))).join(', ')} — bookable.</p>`:`<p class="tl-note">Every time on this day is booked.</p>`;
+  }
+  body+=`<p class="tl-note">News for this day: the news archive is not wired yet — no headlines are shown, and today’s headlines are never shown as past news.</p>`;
+  return `<section class="daytimeline" aria-label="Timeline for this day"><strong>THE DAY, IN ORDER</strong><div class="tl-sub">${esc(sub)}</div>${body}</section>`;
+}
+
+/* ============ MONTH — the numbers fill the screen ============ */
+$('weeknames').innerHTML=WEEKDAY.map(w=>`<div style="color:${w.color}">${w.short}</div>`).join('');
+function dayHasRecord(ds){ return dayBookings(ds).length>0 || dayNotes(ds).length>0; }
+function render(){
+  const first=new Date(year,month,1).getDay();
+  const n=new Date(year,month+1,0).getDate();
+  const total=42; /* 6 rows always — the grid fills the screen every month. */
+  $('monthname').innerHTML=new Date(year,month,1).toLocaleDateString('en-CA',{month:'long'})+' <em>'+year+'</em>';
+  $('days').innerHTML=Array.from({length:total},(_,i)=>{
+    const d=i-first+1;
+    if(d<1||d>n) return '<div class="cal-day blank" aria-hidden="true"></div>';
+    const wd=WEEKDAY[new Date(year,month,d).getDay()];
+    const ds=dateKey(year,month,d);
+    const today=isToday(year,month,d);
+    const rec=dayHasRecord(ds);
+    const summary=rec?((dayBookings(ds).length?dayBookings(ds).length+' appointment'+(dayBookings(ds).length===1?'':'s'):'')+(dayBookings(ds).length&&dayNotes(ds).length?', ':'')+(dayNotes(ds).length?dayNotes(ds).length+' note'+(dayNotes(ds).length===1?'':'s'):'')+'.'):'No records for this day.';
+    return `<div class="cal-day dow-${new Date(year,month,d).getDay()}${today?' today':''}" data-day="${d}" role="button" tabindex="0" aria-label="Open ${dlabel(year,month,d)}. ${esc(summary)}">
+      ${miniNumHTML(d,'med')}
+      <span class="has${rec?'':' none'}" aria-hidden="true"></span></div>`;
+  }).join('');
+  document.querySelectorAll('[data-day]').forEach(b=>{ b.onclick=()=>openDay(+b.dataset.day);
+    b.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openDay(+b.dataset.day); } }; });
+}
+function openDay(d){ day=d; screen='day'; section='Dashboard'; slot=''; pushRoute(); showDay(); }
+
+/* ============ DAY VIEW — the 13 doors + the day's instruments ============ */
+function showDay(){
+  const ds=selKey();
+  const wd=WEEKDAY[new Date(year,month,day).getDay()];
+  const r=dirFor(ds);
+  const books=dayBookings(ds), notes=dayNotes(ds);
+  lastFocus=document.activeElement;
+  $('dayView').classList.add('show');
+  $('dayView').setAttribute('aria-hidden','false');
+  $('dayView').style.setProperty('--dc',wd.color);
+  $('dayView').style.setProperty('--dc-rgb',wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(','));
+  $('dayHead').innerHTML=`
+    <div class="daynum-wrap">${miniNumHTML(day,'med')}</div>
+    <div><h2 class="day-title">${esc(dlabel(year,month,day))}</h2>
+    <div class="day-sub"><span class="hz">${wd.name} · ${wd.hz} Hz</span> · ${esc(TZ)}</div></div>
+    <button class="primo day-back" data-op="close" type="button">← Back to month</button>`;
+  const counts=`<div class="instruments">
+    <div class="instrument ph-card"><span class="os-sl-stat-n">${miniNumHTML(books.length,'med')}</span><span class="os-sl-stat-l">Appointments</span></div>
+    <div class="instrument ph-card"><span class="os-sl-stat-n">${miniNumHTML(notes.filter(n=>n.type==='smart').length,'med')}</span><span class="os-sl-stat-l">Smart Notes</span></div>
+    <div class="instrument ph-card"><span class="os-sl-stat-n">${miniNumHTML(notes.length,'med')}</span><span class="os-sl-stat-l">Notes + Posts</span></div>
+  </div>`;
+  $('dayBody').innerHTML=`
+    <div class="doors">${DOORS.map(([x,i,c,s])=>`<button class="primo" style="--glow:${c}" data-view="${esc(x)}" type="button"><span class="ico" aria-hidden="true">${i}</span><span class="lbl">${esc(x)}<span class="sub">${esc(s)}</span></span></button>`).join('')}</div>
+    ${counts}
+    ${timelineHTML(ds)}
+    <div class="dayboards">
+      <article class="ph-card"><strong>DAILY WISDOM</strong><span>${esc(wisdomFor(ds).text)}</span><br><span>${esc(wisdomFor(ds).source)}</span></article>
+      <article class="ph-card"><strong>INTEL TODAY</strong><span>${esc(intelLine(ds))}</span></article>
+      <article class="ph-card"><strong>DAILY INTELLIGENCE REPORT</strong><span>${esc(dirLine(ds))}</span></article>
+    </div>
+    <div class="actions">
+      <button class="primo" data-op="Create" type="button"><span class="ico" aria-hidden="true">+</span>Create a note for this day</button>
+      <button class="primo" data-op="prevday" type="button">‹ Previous day</button>
+      <button class="primo" data-op="nextday" type="button">Next day ›</button>
+    </div>`;
+  wireDay();
+  const mh=$('dayHead').querySelector('.day-title'); if(mh){ mh.setAttribute('tabindex','-1'); mh.focus(); }
+}
+function wireDay(){
+  document.querySelectorAll('#dayView [data-view]').forEach(b=>b.onclick=()=>{ section=b.dataset.view; screen='view'; slot=''; pushRoute(); showView(); });
+  document.querySelectorAll('#dayView [data-op]').forEach(b=>b.onclick=()=>{ const op=b.dataset.op;
+    if(op==='close'){ closeDay(); return; }
+    if(op==='prevday'||op==='nextday'){ const d=new Date(year,month,day+(op==='prevday'?-1:1)); year=d.getFullYear(); month=d.getMonth(); day=d.getDate(); render(); pushRoute(); showDay(); return; }
+    section=op; screen='view'; slot=''; pushRoute(); showView();
+  });
+}
+function closeDay(){
+  screen='month'; $('dayView').classList.remove('show'); $('dayView').setAttribute('aria-hidden','true');
+  if(history.state && history.state.view!=='month') history.replaceState({view:'month',year,month,day},'','');
+  render();
+  const t=document.querySelector(`[data-day="${day}"]`); if(t) t.focus();
+}
+
+/* ============ DESTINATION VIEWS — one door open, Back everywhere ============ */
+function viewHeadHTML(title, ds){
+  return `<div class="view-head"><h2>${esc(title)}</h2>
+    <button class="primo" data-op="back" type="button">← Back to day menu</button>
+    <button class="primo" data-op="close" type="button">← Back to month</button></div>`;
+}
+function emptyState(glyph, words, hint){
+  const wd=WEEKDAY[new Date(year,month,day).getDay()];
+  return `<div class="viewcard ph-card empty" style="--dc:${wd.color};--dc-rgb:${wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(',')}"><span class="glyph" aria-hidden="true">${glyph}</span>${miniNumHTML(day,'med')}<span class="words">${esc(words)}</span><span class="hintline">${esc(hint)}</span></div>`;
+}
+function notesListHTML(list, emptyWords, emptyHint){
+  if(!list.length) return emptyState('✧', emptyWords, emptyHint);
+  return `<div class="viewcard ph-card"><div class="timeline">${list.slice().sort((a,b)=>(TF_ORDER[a.timeframe]-TF_ORDER[b.timeframe])||String(a.createdAt).localeCompare(String(b.createdAt))).map(n=>`<p><strong>${esc(n.timeframe||'')}</strong> · ${esc(n.type==='smart'?'Smart Note ✧':n.type==='post'?'Post':'Note')} · ${esc(n.world)}${n.rank?' · rank '+n.rank:''} — ${esc(n.text)}</p>`).join('')}</div></div>`;
+}
+function showView(){
+  const ds=selKey();
+  const wd=WEEKDAY[new Date(year,month,day).getDay()];
+  const notes=dayNotes(ds), books=dayBookings(ds);
+  let html=viewHeadHTML(section+' — '+dlabel(year,month,day), ds);
+  if(section==='Appointments'){
+    html+=appointmentsHTML(ds);
+  } else if(section==='Local news'||section==='Provincial news'||section==='Global news'){
+    html+=emptyState('◎','No archived news','No archived news for this date in this build. The news archive is not wired yet — and today’s headlines are never shown as past news. When the archive is wired, this view will show sourced, date-stamped headlines published on this day.');
+  } else if(section==='Personal feed'||section==='Business feed'||section==='Thing feed'){
+    const w=section==='Personal feed'?'Personal':section==='Business feed'?'Business':'Thing';
+    const list=dayNotes(ds).filter(n=>n.world===w);
+    html+=notesListHTML(list,'Nothing in '+w+' for this day','No records for this day in '+w+'. Nothing is shown from any other day.');
+  } else if(section==='Your World'){
+    const r=dirFor(ds);
+    html+=`<div class="viewcard ph-card"><h3>Your world for this day</h3>
+    <div class="statgrid">
+      <div class="stat"><b>${notes.filter(n=>n.type==='smart').length}</b><span>SMART NOTES</span></div>
+      <div class="stat"><b>${books.length}</b><span>APPOINTMENTS</span></div>
+      <div class="stat"><b>${notes.length}</b><span>NOTES + POSTS</span></div>
+    </div>
+    ${r?`<p><strong>What was learned:</strong> ${esc(r.learned)}</p>`:`<p class="hint">No records for this day — unknown is not zero, and no report is invented.</p>`}
+    <p class="hint">Counts from this device's local record only. A past day shows what was recorded for that day — never today's numbers.</p></div>`;
+  } else if(section==='Smart Notes for that day'){
+    html+=notesListHTML(notes.filter(n=>n.type==='smart'),'No Smart Notes','No Smart Notes recorded for this day. Notes you write are tied to their day and time frame, and the timeline orders them morning to night.');
+  } else if(section==='Notes for that day'){
+    html+=notesListHTML(notes.filter(n=>n.type==='naya'),'No notes','No notes recorded for this day. Write one from the day menu — it lands on this day, in its time frame.');
+  } else if(section==='Weather'){
+    html+=emptyState('☀','Weather unavailable','No weather provider is wired yet. Nothing is shown in its place.');
+  } else if(section==='Horoscope'){
+    html+=emptyState('☾','Horoscope unavailable','No horoscope source is wired yet. Nothing is shown in its place.');
+  } else if(section==='Posts for that day'){
+    html+=notesListHTML(notes.filter(n=>n.type==='post'),'No posts','No posts for this day yet. A post you write lands here, on its day.');
+  } else if(section==='Smart Meet'){
+    html+=meetViewHTML(ds);
+  } else if(section==='Create'){
+    html+=createHTML(ds, isFutureDs(ds));
+  } else {
+    html+=emptyState('✧','Nothing here','No records for this day in this view.');
+  }
+  $('viewView').classList.add('show');
+  $('viewView').setAttribute('aria-hidden','false');
+  $('viewBody').innerHTML=html;
+  wireView();
+  const h=$('viewBody').querySelector('h2'); if(h){ h.setAttribute('tabindex','-1'); h.focus(); }
+  const si=$('searchInput'); if(si){ si.focus(); }
+  const ni=$('noteText'); if(ni) ni.focus();
+  const be=$('mwCalBookErr'); if(be&&pendingBookErr){ be.textContent=pendingBookErr; pendingBookErr=''; }
+}
+function wireView(){
+  document.querySelectorAll('#viewView [data-op]').forEach(b=>b.onclick=()=>{ const op=b.dataset.op;
+    if(meetId&&(op==='back'||op==='close'||op==='prevday'||op==='nextday')) leaveMeet(true);
+    if(op==='close'){ closeView(true); return; }
+    if(op==='back'){ backToDay(); return; }
+    if(op==='prevday'||op==='nextday'){ const d=new Date(year,month,day+(op==='prevday'?-1:1)); year=d.getFullYear(); month=d.getMonth(); day=d.getDate(); render(); pushRoute(); showView(); return; }
+    if(op.startsWith('slot:')){ slot=op.slice(5); showView(); return; }
+    if(op.startsWith('join:')){ openMeet(op.slice(5)); return; }
+    if(op.startsWith('cancel:')){ cancelBooking(op.slice(7)); return; }
+    if(op==='confirm'){ confirmBooking(); return; }
+    if(op==='saveNote'){ saveNote(); return; }
+    if(op==='leaveMeet'){ leaveMeet(); return; }
+    section=op; screen='view'; slot=''; pushRoute(); showView();
+  });
+  document.querySelectorAll('#viewView [data-kind]').forEach(b=>b.onclick=()=>{ createKind=b.dataset.kind; showView(); });
+  document.querySelectorAll('#viewView [data-mode]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#viewView [data-mode]').forEach(x=>x.classList.remove('on')); b.classList.add('on'); $('mwCalMeetMode').value=b.dataset.mode; });
+  document.querySelectorAll('#viewView [data-mw-cal-slot]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#viewView [data-mw-cal-slot]').forEach(x=>x.classList.remove('on')); b.classList.add('on'); const h=$('mwCalBookTime'); if(h) h.value=b.dataset.mwCalSlot; });
+  const mb=$('mwCalBookMeet'); if(mb) mb.onchange=()=>{ const r=$('mwCalMeetModeRow'); if(r) r.hidden=!mb.checked; };
+}
+function backToDay(){ $('viewView').classList.remove('show'); $('viewView').setAttribute('aria-hidden','true'); screen='day'; pushRoute(); showDay(); }
+function closeView(fromView){
+  $('viewView').classList.remove('show'); $('viewView').setAttribute('aria-hidden','true');
+  closeDay();
+}
+
+/* ============ BOOKING — [C] appointmentsHTML + confirmBooking, owner-only ============ */
+/* The old build's visitor paths (public view, open-times-only, taken slots
+   hidden) are NOT carried: this build is the citizen's own calendar — the
+   brief orders nothing else on the page, no selector, no second view. The
+   owner path below is [C] verbatim in function. */
+function appointmentsHTML(ds){
+  const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+  const past=ds<todayKey;
+  const books=dayBookings(ds);
+  let h=`<div class="viewcard ph-card"><h3>Appointments — ${esc(dlabel(year,month,day))}</h3>`;
+  if(books.length){
+    h+='<ul class="list">'+books.map(b=>{
+      return `<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'Appointment')}${b.what?' — '+esc(b.what):''}${b.meet?` <span class="chip" style="color:#8e24aa">✧ ${b.mode==='audio'?'Audio meet':'Video meet'}</span> <button class="primo" data-op="join:${esc(b.id)}" type="button">Join the meet →</button>`:''} <button class="primo" data-op="cancel:${esc(b.id)}" type="button">Cancel</button></li>`;
+    }).join('')+'</ul>';
+  } else h+='<p>No appointments in this calendar’s record for this day.</p>';
+  if(past){
+    h+='<p class="hint">This day has passed — bookings live on today and the days ahead.</p>';
+  } else {
+    const firstFree=BOOK_SLOTS.find(t=>!bookTimeTaken(ds,t))||'';
+    h+=`<h3 style="margin-top:18px">Book a time on this day</h3>
+    <label class="flab">Pick a time</label><div class="slotbox">${BOOK_SLOTS.map(t=>{const taken=bookTimeTaken(ds,t);
+      return `<button type="button" class="slot${taken?' taken':''}${(!taken&&t===firstFree)?' on':''}" data-mw-cal-slot="${t}"${taken?' disabled':''}>${esc(fmtTime(t))}</button>`;}).join('')}</div>
+    <input type="hidden" id="mwCalBookTime" value="${esc(firstFree)}">
+    ${firstFree?'':`<p class="hint">Every time on this day is booked.</p>`}
+    <label class="flab" for="mwCalBookWho">Who are you meeting?</label>
+    <input class="field" type="text" id="mwCalBookWho" placeholder="Their name" autocomplete="off">
+    <label class="flab" for="mwCalBookWhat">What is it about?</label>
+    <input class="field" type="text" id="mwCalBookWhat" placeholder="The subject of the appointment" autocomplete="off">
+    <div style="margin-top:12px"><label><input type="checkbox" id="mwCalBookMeet"> Meet with them — Smart Meet, in this calendar</label></div>
+    <div id="mwCalMeetModeRow" hidden style="margin-top:10px"><input type="hidden" id="mwCalMeetMode" value="video">
+      <button type="button" class="primo" data-mode="audio">Audio meet</button>
+      <button type="button" class="primo on" data-mode="video">Video meet</button></div>
+    <div class="actions"><button class="primo" data-op="confirm" type="button">Book this time →</button></div>
+    <p class="err" id="mwCalBookErr" role="alert"></p>
+    <p class="hint">Requested is not confirmed: a booking is confirmed only when it is saved into this calendar's store (<b>mw.cal.bookings.v1</b>). Server sync is not wired yet — bookings live on this device.</p>`;
+  }
+  return h+'</div>';
+}
+function confirmBooking(){
+  const ds=selKey();
+  const time=($('mwCalBookTime')||{}).value||'';
+  const who=($('mwCalBookWho')||{}).value.trim();
+  const what=($('mwCalBookWhat')||{}).value.trim();
+  const err=$('mwCalBookErr');
+  if(!time){ if(err) err.textContent='Pick a time first.'; return; }
+  if(bookTimeTaken(ds,time)){ pendingBookErr='That time was just taken — pick another time.'; showView(); return; }
+  if(!who){ if(err) err.textContent='Add a name so the appointment says who it is with.'; return; }
+  const meet=!!($('mwCalBookMeet')||{}).checked;
+  const mode=(($('mwCalMeetMode')||{}).value)||'video';
+  const all=loadBookings();
+  all.push({id:uid(),date:ds,time,who,what,meet,mode});
+  if(!saveBookings(all)){ if(err) err.textContent='The booking could not be saved on this device. Nothing was confirmed.'; return; }
+  slot=time;
+  section='Appointments'; screen='view'; pushRoute(); showView();
+  render();
+  const card=document.querySelector('#viewBody .viewcard');
+  if(card){ const p=document.createElement('p'); p.className='status';
+    p.textContent='Booked — '+fmtTime(time)+' on '+dlabel(year,month,day)+'. Saved in this device’s calendar store (mw.cal.bookings.v1). Server sync is not wired yet.';
+    card.prepend(p); }
+}
+function cancelBooking(id){
+  const all=loadBookings().filter(b=>b.id!==id);
+  saveBookings(all); render(); showView();
+}
+
+/* ============ MEET — [C] meetViewHTML + openMeet + leaveMeet verbatim in function ============ */
+let meetTimer=null, meetSecs=0, meetStream=null, micOn=true, camOn=true;
+function meetViewHTML(ds){
+  const books=dayBookings(ds).filter(b=>b.meet);
+  let h=`<div class="viewcard ph-card"><h3>Smart Meet — ${esc(dlabel(year,month,day))}</h3>`;
+  if(!books.length){ h+='<p>No confirmed Smart Meet booking on this day. Meet joins a confirmed booking only — book a time with Smart Meet first. There is no dead Join button here.</p>'; }
+  else h+='<ul class="list">'+books.map(b=>`<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'')} ${b.what?'— '+esc(b.what):''} (${b.mode==='audio'?'Audio':'Video'}) <button class="primo" data-op="join:${esc(b.id)}" type="button">Join the meet →</button></li>`).join('')+'</ul>';
+  h+='<p class="hint">Meet gates: video/audio authorization, runtime availability, waiting room, safe link, guest access, privacy. The live media leg is proven only in a browser that can grant camera and mic — this seat reports the outcome honestly instead of claiming it.</p></div>';
+  return h;
+}
+function openMeet(id){
+  const b=loadBookings().find(x=>x.id===id);
+  if(!b){ return; }
+  meetId=id; meetSecs=0; micOn=true; camOn=true;
+  const ds=selKey();
+  $('viewBody').innerHTML=viewHeadHTML('Smart Meet — '+fmtTime(b.time), ds)+
+   `<div class="viewcard ph-card meetbox"><div class="face" aria-hidden="true">◉</div>
+    <h3>${esc(b.who||'Meet')} · ${esc(dlabel(year,month,day))} · ${esc(fmtTime(b.time))} · ${b.mode==='audio'?'Audio':'Video'}</h3>
+    <div class="timer" id="meetTimer">00:00</div>
+    <p id="meetStatus">Joining the room…</p>
+    <video id="meetVideo" autoplay playsinline muted></video>
+    <div class="actions" style="justify-content:center">
+      <button class="primo" id="micBtn" type="button">🎙 Mic on</button>
+      <button class="primo" id="camBtn" type="button">📷 Camera on</button>
+      <button class="primo" data-op="leaveMeet" type="button">Leave</button>
+    </div>
+    <p class="hint">Waiting room: only the booked parties can enter. No recording unless everyone consents — recording is not implemented here.</p></div>`;
+  wireView();
+  $('micBtn').onclick=()=>{ micOn=!micOn; if(meetStream) meetStream.getAudioTracks().forEach(t=>t.enabled=micOn); $('micBtn').textContent=micOn?'🎙 Mic on':'🎙 Mic off'; };
+  $('camBtn').onclick=()=>{ camOn=!camOn; if(meetStream) meetStream.getVideoTracks().forEach(t=>t.enabled=camOn); $('camBtn').textContent=camOn?'📷 Camera on':'📷 Camera off'; };
+  meetTimer=setInterval(()=>{ meetSecs++; const m=String(Math.floor(meetSecs/60)).padStart(2,'0'), s=String(meetSecs%60).padStart(2,'0'); const t=$('meetTimer'); if(t) t.textContent=m+':'+s; },1000);
+  const status=$('meetStatus');
+  if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+    navigator.mediaDevices.getUserMedia({audio:true,video:b.mode!=='audio'}).then(st=>{
+      meetStream=st;
+      if(status) status.textContent='Camera and mic are live — you are in the room.';
+      const v=$('meetVideo');
+      if(v&&b.mode!=='audio'){ v.srcObject=st; v.style.display='block'; }
+    }).catch(e=>{
+      if(status) status.textContent='Camera/mic unavailable here ('+(e&&e.name?e.name:'unknown')+') — you are still in the room, audio/video off. Join from a device that can grant them, or meet in person.';
+    });
+  } else if(status) status.textContent='This browser cannot grant camera/mic here — you are still in the room. Join from a device that can, or meet in person.';
+}
+function leaveMeet(keepPanel){
+  if(meetTimer){ clearInterval(meetTimer); meetTimer=null; }
+  if(meetStream){ meetStream.getTracks().forEach(t=>t.stop()); meetStream=null; }
+  meetId='';
+  if(!keepPanel){ screen='view'; section='Smart Meet'; showView(); }
+}
+
+/* ============ CREATE — [C] createHTML + saveNote, owner-only ============ */
+function createHTML(ds, future){
+  const kinds=[['smart','Smart Note ✧'],['naya','Note'],['post','Post']];
+  return `<div class="viewcard ph-card"><h3>Create — ${esc(dlabel(year,month,day))}</h3>
+  <p>Create on this day. A note is tied to its day and time frame; the timeline orders it morning to night.</p>
+  <div class="actions">${kinds.map(([k,l])=>`<button class="primo${createKind===k?' on':''}" data-kind="${k}" type="button">${l}</button>`).join('')}</div>
+  <label class="flab" for="noteTF">Time frame</label>
+  <select class="field" id="noteTF"><option>Morning</option><option>Afternoon</option><option>Evening</option></select>
+  <label class="flab" for="noteWorld">Which world is this for?</label>
+  <select class="field" id="noteWorld"><option>Personal</option><option>Business</option><option>Thing</option></select>
+  ${createKind==='smart'?`<label class="flab" for="noteRank">Rank (1–5 — the highest-ranked Smart Note of the day becomes tomorrow's wisdom)</label>
+  <select class="field" id="noteRank"><option value="">No rank</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>`:''}
+  <label class="flab" for="noteText">${createKind==='smart'?'Smart Note':createKind==='post'?'Post':'Note'}</label>
+  <textarea class="field" id="noteText" placeholder="Write it in your own words…"></textarea>
+  <div class="actions"><button class="primo" data-op="saveNote" type="button">Save to this day →</button></div>
+  <p class="err" id="noteErr" role="alert"></p>
+  <p class="hint">Saved into this device's notes store (mw.cal.notes.v1), with its date, world, source and permission. Nothing is copied into the calendar by hand.</p>
+  <div class="actions"><button class="primo" data-op="Appointments" type="button">Or book a time instead →</button></div></div>`;
+}
+function saveNote(){
+  const err=$('noteErr');
+  const text=($('noteText')||{}).value.trim();
+  if(!text){ if(err) err.textContent='Write the note first.'; return; }
+  const tf=($('noteTF')||{}).value||'Morning';
+  const world=($('noteWorld')||{}).value||'Personal';
+  const rankEl=$('noteRank');
+  const all=loadNotes();
+  all.push({id:uid(),date:selKey(),world, type:createKind, rank:rankEl?parseInt(rankEl.value||'0',10)||null:null, timeframe:tf, text, createdAt:new Date().toISOString()});
+  if(!saveNotes(all)){ if(err) err.textContent='The note could not be saved on this device.'; return; }
+  render(); section=createKind==='smart'?'Smart Notes for that day':createKind==='post'?'Posts for that day':'Notes for that day'; screen='view'; pushRoute(); showView();
+}
+
+/* ============ ROUTING — [C] pushRoute/applyState, Month → Day → View → Day → Month ============ */
+function pushRoute(){
+  const st={view:screen, year, month, day, section};
+  try{ history.pushState(st,'',''); }catch(e){}
+}
+function applyState(st){
+  if(!st) return;
+  screen=st.view||'month'; year=st.year!=null?st.year:year; month=st.month!=null?st.month:month;
+  day=st.day!=null?st.day:day; section=st.section||'Appointments';
+  render();
+  if(screen==='month'){ $('dayView').classList.remove('show'); $('viewView').classList.remove('show'); }
+  else if(screen==='day') showDay();
+  else showView();
+}
+window.addEventListener('popstate',e=>{ leaveMeet(true); applyState(e.state); });
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&screen!=='month'){
+    if(meetId){ leaveMeet(); return; }
+    if(screen==='view'){ backToDay(); }
+    else closeDay();
+  }
+  if(e.key==='Tab'&&($('dayView').classList.contains('show')||$('viewView').classList.contains('show'))){
+    const scope=screen==='view'?$('viewView'):$('dayView');
+    const f=Array.from(scope.querySelectorAll('button,input,textarea,select,[tabindex]'))
+      .filter(el=>!el.disabled&&el.type!=='hidden'&&el.getAttribute('tabindex')!=='-1'&&!el.closest('[hidden]'));
+    if(!f.length) return;
+    const first=f[0], last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey&&document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+});
+$('prev').onclick=()=>{ const d=new Date(year,month-1,1); year=d.getFullYear(); month=d.getMonth(); render(); };
+$('next').onclick=()=>{ const d=new Date(year,month+1,1); year=d.getFullYear(); month=d.getMonth(); render(); };
+$('todayBtn').onclick=()=>{ year=NOW.getFullYear(); month=NOW.getMonth(); day=NOW.getDate(); render(); };
+render();
+try{ history.replaceState({view:'month',year,month,day},'',''); }catch(e){}
+</script></body></html>
