@@ -868,8 +868,8 @@ main{
 @media(max-width:480px){#fpAgreement .p3-deal-unfold, #fpLegal .p3-deal-unfold{padding:22px 12px 26px}}
 #fpAgreement .deal-eye-main, #fpLegal .deal-eye-main{position:absolute;top:14px;right:14px;width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#23232e,#05060a 70%);border:2px solid #f5d76e;color:#f5d76e;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px rgba(255,255,255,.28),inset 0 2px 4px rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.8);animation:deal-eye-breathe 3.2s ease-in-out infinite}
 #fpAgreement .deal-eye-main:hover, #fpLegal .deal-eye-main:hover{box-shadow:0 0 34px rgba(255,255,255,.5),inset 0 2px 4px rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.8)}
-#fpAgreement .deal-beat-photo, #fpLegal .deal-beat-photo{width:240px;height:240px;flex:0 0 auto;border-radius:50%;object-fit:cover;border:2px solid color-mix(in srgb, var(--tone, #a06bff) 70%, #fff 10%);box-shadow:0 0 22px color-mix(in srgb, var(--tone, #a06bff) 55%, transparent),0 8px 20px rgba(0,0,0,.6)}
-#fpAgreement .letter-beat.lead .deal-beat-photo, #fpLegal .letter-beat.lead .deal-beat-photo{border-color:rgba(168,107,255,.7);box-shadow:0 0 22px rgba(168,107,255,.55),0 8px 20px rgba(0,0,0,.6)}
+#fpAgreement .deal-beat-photo, #fpLegal .deal-beat-photo{width:240px;height:240px;flex:0 0 auto;border-radius:50%;object-fit:cover;border:2px solid color-mix(in srgb, var(--tone, #a06bff) 70%, #fff 10%);box-shadow:inset 0 2px 5px rgba(255,255,255,.3),inset 0 -8px 16px rgba(0,0,0,.55),0 14px 30px rgba(0,0,0,.7),0 0 0 1px color-mix(in srgb, var(--tone, #a06bff) 45%, transparent)}
+#fpAgreement .letter-beat.lead .deal-beat-photo, #fpLegal .letter-beat.lead .deal-beat-photo{border-color:rgba(168,107,255,.7);box-shadow:inset 0 2px 5px rgba(255,255,255,.3),inset 0 -8px 16px rgba(0,0,0,.55),0 14px 30px rgba(0,0,0,.7),0 0 0 1px rgba(168,107,255,.45)}
 #fpAgreement .letter-beat .deal-eye-note, #fpLegal .letter-beat .deal-eye-note{position:relative;padding-right:66px;border:1px solid rgba(255,255,255,.28);background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 10px 26px rgba(0,0,0,.55)}
 #fpAgreement .face-right .deal-eye-note, #fpLegal .face-right .deal-eye-note{padding-right:18px;padding-left:66px}
 #fpAgreement .deal-quote-photo, #fpLegal .deal-quote-photo{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.55);box-shadow:0 0 14px rgba(255,255,255,.3),0 6px 14px rgba(0,0,0,.6)}
@@ -929,9 +929,9 @@ main{
    Frame harvested from .deal-sign-frame (end-slide sign frame) + .deal-beat-photo's
    color-mix(var(--tone)) language: obsidian, #fpAgreement object-fit:contain — never cropped. */
 .lb-showcase, #fpLegal object-fit:contain — never cropped. */
-.lb-showcase{margin:18px auto 4px;max-width:min(640px,100%);box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#a06bff) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#a06bff) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+.lb-showcase{margin:18px auto 4px;max-width:min(640px,100%);box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#a06bff) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 24px 56px rgba(0,0,0,.75),0 6px 16px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -12px 24px rgba(0,0,0,.4);transition:transform .3s ease,box-shadow .3s ease}
 #fpAgreement .lb-showcase img, #fpLegal .lb-showcase img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;border-radius:12px;background:#05060a}
-#fpAgreement .lb-showcase:hover, #fpLegal .lb-showcase:hover{box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#a06bff) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+#fpAgreement .lb-showcase:hover, #fpLegal .lb-showcase:hover{box-shadow:0 32px 64px rgba(0,0,0,.8),0 0 40px color-mix(in srgb,var(--tone,#a06bff) 35%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -12px 24px rgba(0,0,0,.4);transform:translateY(-4px)}
 @media(max-width:480px){#fpAgreement .lb-showcase, #fpLegal .lb-showcase{padding:8px;border-radius:18px;margin-top:14px}}
 @media(max-width:640px){#fpAgreement .letter-beat, #fpLegal .letter-beat{font-size:16.5px;line-height:1.58;margin-bottom:14px}
 #fpAgreement .letter-beat.lead, #fpLegal .letter-beat.lead{font-size:24px}
@@ -1264,8 +1264,8 @@ main{
 #fpAgreement .letter-next, #fpLegal .letter-next{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){#fpAgreement .letter-frame-light, #fpLegal .letter-frame-light, #fpAgreement .letter-seal::after, #fpLegal .letter-seal::after, #fpAgreement .letter-beat.reveal, #fpLegal .letter-beat.reveal, #fpAgreement .letter-sign.reveal, #fpLegal .letter-sign.reveal{animation:none!important}}
 #fpAgreement .letter-all, #fpLegal .letter-all{padding:14px 10px;min-height:44px}
-#fpAgreement .deal-beat-photo, #fpLegal .deal-beat-photo{width:240px;height:240px;flex:0 0 auto;border-radius:50%;object-fit:cover;border:2px solid color-mix(in srgb, var(--tone, #a06bff) 70%, #fff 10%);box-shadow:0 0 22px color-mix(in srgb, var(--tone, #a06bff) 55%, transparent),0 8px 20px rgba(0,0,0,.6)}
-#fpAgreement .letter-beat.lead .deal-beat-photo, #fpLegal .letter-beat.lead .deal-beat-photo{border-color:rgba(168,107,255,.7);box-shadow:0 0 22px rgba(168,107,255,.55),0 8px 20px rgba(0,0,0,.6)}
+#fpAgreement .deal-beat-photo, #fpLegal .deal-beat-photo{width:240px;height:240px;flex:0 0 auto;border-radius:50%;object-fit:cover;border:2px solid color-mix(in srgb, var(--tone, #a06bff) 70%, #fff 10%);box-shadow:inset 0 2px 5px rgba(255,255,255,.3),inset 0 -8px 16px rgba(0,0,0,.55),0 14px 30px rgba(0,0,0,.7),0 0 0 1px color-mix(in srgb, var(--tone, #a06bff) 45%, transparent)}
+#fpAgreement .letter-beat.lead .deal-beat-photo, #fpLegal .letter-beat.lead .deal-beat-photo{border-color:rgba(168,107,255,.7);box-shadow:inset 0 2px 5px rgba(255,255,255,.3),inset 0 -8px 16px rgba(0,0,0,.55),0 14px 30px rgba(0,0,0,.7),0 0 0 1px rgba(168,107,255,.45)}
 @media(max-width:480px){#fpAgreement .deal-beat-photo, #fpLegal .deal-beat-photo{width:168px;height:168px}
 #fpAgreement .deal-sign-photo, #fpLegal .deal-sign-photo{width:288px;height:288px}
 #fpAgreement .letter-beat .deal-eye-note, #fpLegal .letter-beat .deal-eye-note{padding-right:58px}
@@ -1374,9 +1374,9 @@ main{
 #fpAgreement .intel-board .ib-nutshell:hover, #fpLegal .intel-board .ib-nutshell:hover, #fpAgreement .intel-board .ib-nutshell:active, #fpLegal .intel-board .ib-nutshell:active{transform:translateY(-3px) !important;box-shadow:inset 0 1px #ffffff2e,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #a06bff) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important;border-color:color-mix(in srgb, var(--tone, #a06bff) 75%, #fff 10%) !important}
 #fpAgreement .intel-board.rv-lit .ib-nutshell, #fpLegal .intel-board.rv-lit .ib-nutshell{box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent),0 0 34px -8px #ffffff !important}
 #fpAgreement .intel-board.rv-lit .ib-nutshell:hover, #fpLegal .intel-board.rv-lit .ib-nutshell:hover, #fpAgreement .intel-board.rv-lit .ib-nutshell:active, #fpLegal .intel-board.rv-lit .ib-nutshell:active{transform:translateY(-3px) !important;box-shadow:inset 0 1px #ffffff2e,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #a06bff) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important;border-color:color-mix(in srgb, var(--tone, #a06bff) 75%, #fff 10%) !important}
-#fpAgreement .lb-showcase, #fpLegal .lb-showcase{margin:18px auto 4px;max-width:min(640px,100%);box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#a06bff) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#a06bff) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+#fpAgreement .lb-showcase, #fpLegal .lb-showcase{margin:18px auto 4px;max-width:min(640px,100%);box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#a06bff) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 24px 56px rgba(0,0,0,.75),0 6px 16px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -12px 24px rgba(0,0,0,.4);transition:transform .3s ease,box-shadow .3s ease}
 #fpAgreement .lb-showcase img, #fpLegal .lb-showcase img{display:block;width:100%;height:auto;object-fit:contain;border-radius:12px;background:#05060a}
-#fpAgreement .lb-showcase:hover, #fpLegal .lb-showcase:hover{box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#a06bff) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+#fpAgreement .lb-showcase:hover, #fpLegal .lb-showcase:hover{box-shadow:0 32px 64px rgba(0,0,0,.8),0 0 40px color-mix(in srgb,var(--tone,#a06bff) 35%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -12px 24px rgba(0,0,0,.4);transform:translateY(-4px)}
 @media(max-width:480px){#fpAgreement .lb-showcase, #fpLegal .lb-showcase{padding:8px;border-radius:18px;margin-top:14px}}
 @media(max-width:480px){#fpAgreement .p3-deal-unfold, #fpLegal .p3-deal-unfold{padding:22px 12px 26px}}
 #fpAgreement .deck-next, #fpLegal .deck-next{border-color:var(--tone);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone),0 10px 22px rgba(0,0,0,.55)}
@@ -1520,10 +1520,10 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-royal-lines{display:block}
 .p3-naya-play.pending-glow{box-shadow:0 0 34px rgba(255,255,255,.7),0 0 60px rgba(255,255,255,.25)}
 @media (max-width:480px){.p3-naya-play::after{transform:translate(-50%,-50%) rotate(0deg) translateY(-38px);animation:orbitM 4s linear infinite}@keyframes orbitM{from{transform:translate(-50%,-50%) rotate(0deg) translateY(-38px)}to{transform:translate(-50%,-50%) rotate(360deg) translateY(-38px)}}}
 @media (max-width:360px){.p3-naya-play::after{transform:translate(-50%,-50%) rotate(0deg) translateY(-36px);animation:orbitS 4s linear infinite}@keyframes orbitS{from{transform:translate(-50%,-50%) rotate(0deg) translateY(-36px)}to{transform:translate(-50%,-50%) rotate(360deg) translateY(-36px)}}}
-.p3-play-tip{display:none;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);white-space:nowrap;padding:7px 11px;border-radius:12px;background:#14101f;border:1px solid rgba(255,255,255,.18);color:#fff;font-size:13px;line-height:1.4;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.5);z-index:10;pointer-events:none}
+.p3-play-tip{display:none;position:absolute;left:50%;top:calc(100% + 36px);transform:translateX(-50%);white-space:nowrap;padding:7px 11px;border-radius:12px;background:#14101f;border:1px solid rgba(255,255,255,.18);color:#fff;font-size:13px;line-height:1.4;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.5);z-index:10;pointer-events:none}
 .p3-naya-play:hover .p3-play-tip,.p3-naya-play:focus-visible .p3-play-tip,.p3-naya-play.show .p3-play-tip{display:block}
-@media (max-width:480px){.p3-naya-play .p3-play-tip{font-size:11px;padding:4px 10px;bottom:calc(100% + 6px)}}
-@media (max-width:360px){.p3-naya-play .p3-play-tip{padding:3px 8px;line-height:1.2;bottom:calc(100% + 4px)}}
+@media (max-width:480px){.p3-naya-play .p3-play-tip{font-size:11px;padding:4px 10px;top:calc(100% + 30px)}}
+@media (max-width:360px){.p3-naya-play .p3-play-tip{padding:3px 8px;line-height:1.2;top:calc(100% + 28px)}}
 /* Welcome boards: the house .intel-board, three at a time, spectrum order. */
 .fp-welcome{max-width:860px;margin:0 auto 24px;padding:0 16px;box-sizing:border-box}
 .fp-welcome-group{display:flex;flex-direction:column;gap:12px}
@@ -1882,7 +1882,7 @@ body.fp-stage-on #fpAgreement.fp-view-bridge .fp-intro-choices{display:none}
 body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide{display:block;max-width:860px;margin:0 auto 24px;padding:0 16px}
 body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide .fp-welcome-hero{display:flex;flex-direction:column;gap:10px;align-items:center;margin:0 auto 8px}
 body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide .fp-welcome{display:none}
-body.fp-stage-on #fpAgreement.fp-view-bridge #fpBridge{display:block}
+body.fp-stage-on #fpAgreement.fp-view-bridge #fpBridge{display:block;flex:1 1 auto;min-height:0;overflow-y:auto;padding-bottom:16px}
 #fpBridge{display:none;max-width:860px;margin:0 auto 24px;padding:0 16px;box-sizing:border-box}
 .fp-bridge-group{display:flex;flex-direction:column;gap:12px}
 .fp-bridge-more{margin-top:12px}
@@ -1907,11 +1907,25 @@ html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-links{display:flex;
 body.fp-stage-on #fpAgreement.fp-view-bridge .fp-agree-head{position:relative}
 .fp-bridge-corners{display:none;position:absolute;inset:0;pointer-events:none}
 body.fp-stage-on #fpAgreement.fp-view-bridge .fp-bridge-corners{display:block}
-.fp-bridge-corners .ldot{position:absolute}
-.fp-bridge-corner-tl{top:-8px;left:0}
-.fp-bridge-corner-tr{top:-8px;right:0}
-.fp-bridge-corner-bl{bottom:-8px;left:0}
-.fp-bridge-corner-br{bottom:-8px;right:0}
+.fp-bridge-corners .fp-bridge-emblem{position:absolute;width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(0,0,0,.65)) drop-shadow(0 0 18px rgba(160,107,255,.35))}
+.fp-bridge-corner-tl{top:-10px;left:-4px;transform:rotate(-20deg)}
+.fp-bridge-corner-tr{top:-10px;right:-4px;transform:rotate(20deg)}
+.fp-bridge-corner-bl{bottom:-10px;left:-4px;transform:rotate(20deg)}
+.fp-bridge-corner-br{bottom:-10px;right:-4px;transform:rotate(-20deg)}
+@media(max-width:480px){.fp-bridge-corners .fp-bridge-emblem{width:40px;height:40px}}
+/* ---- BRIDGE PRESENTATION (2026-11-17, BRIEF-BRIDGE-PRESENTATION-20261117.md §7b) ----
+   The stage bottom bar rides ABOVE the fixed legal strip in bridge view:
+   the strip painted over the bar (same bottom:0, later in the DOM) and
+   half-buried 'Back to the login'. At phone widths the legal links wrap
+   instead of overflowing, and the bar rides higher to clear the taller
+   wrapped strip. The centred eyebrow lines shrink at phone widths so
+   their span clears the ‹ Login button at the left. */
+body.fp-stage-on.fp-bridge #fpStageBarB{bottom:44px}
+@media(max-width:640px){
+html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-links{flex-wrap:wrap;justify-content:center;overflow-x:visible}
+body.fp-stage-on.fp-bridge #fpStageBarB{bottom:72px}
+body.fp-stage-on #fpStageBarT .fp-dots{display:none}
+}
 </style>
 </head>
 <body>
@@ -2001,7 +2015,7 @@ body.fp-stage-on #fpAgreement.fp-view-bridge .fp-bridge-corners{display:block}
 <div class="fp-zoom-scroll" id="fpZoomScroll"><img id="fpZoomImg" alt=""></div>
 <p class="fp-zoom-hint">Tap the picture to switch fit / full size &#9670; Esc to go back</p>
 </div>
-<section id="fpAgreement" aria-label="The Collective Agreement"><div class="fp-agree-logo"><img src="/agmt-logo.jpg" alt="NayaNET"></div><div class="fp-agree-head"><div class="fp-bridge-corners" aria-hidden="true"><span class="ldot fp-bridge-corner-tl" style="--dc:#8e24aa"></span><span class="ldot fp-bridge-corner-tr" style="--dc:#0f52ba"></span><span class="ldot fp-bridge-corner-bl" style="--dc:#07925f"></span><span class="ldot fp-bridge-corner-br" style="--dc:#d4a017"></span></div><p class="fp-agree-kicker">NayaNET &middot; The Collective Intelligence Network</p><h2 class="fp-agree-title">The Collective Agreement</h2><p class="fp-agree-sub">Welcome. Let&rsquo;s begin with trust.</p></div>
+<section id="fpAgreement" aria-label="The Collective Agreement"><div class="fp-agree-logo"><img src="/agmt-logo.jpg" alt="NayaNET"></div><div class="fp-agree-head"><div class="fp-bridge-corners" aria-hidden="true"><img class="fp-bridge-emblem fp-bridge-corner-tl" src="/naya-emblem-cut.png" alt=""><img class="fp-bridge-emblem fp-bridge-corner-tr" src="/naya-emblem-cut.png" alt=""><img class="fp-bridge-emblem fp-bridge-corner-bl" src="/naya-emblem-cut.png" alt=""><img class="fp-bridge-emblem fp-bridge-corner-br" src="/naya-emblem-cut.png" alt=""></div><p class="fp-agree-kicker">NayaNET &middot; The Collective Intelligence Network</p><h2 class="fp-agree-title">The Collective Agreement</h2><p class="fp-agree-sub">Welcome. Let&rsquo;s begin with trust.</p></div>
 <div class="fp-intro-side" id="fpIntroSide"><div class="fp-welcome-hero" id="fpWelcomeHero"><button class="p3-naya-play" id="fpIntroPlay" type="button" aria-label="Naya will talk you through this page"><svg viewBox="0 0 24 24" width="24" height="24" fill="#fff" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg><span class="p3-play-tip">Naya will talk you through this page</span></button><span class="fp-play-name">Naya</span></div>
 <div class="fp-welcome" id="fpWelcome">
 <div class="fp-welcome-group" id="fpWelcomeG1"><img class="fp-naya-portrait" src="/agmt-b06.png" alt="Naya">
@@ -2023,14 +2037,14 @@ body.fp-stage-on #fpAgreement.fp-view-bridge .fp-bridge-corners{display:block}
 </div>
 </div>
 </div>
+<div id="fpBridge"> <div class="fp-bridge-group" id="fpBridgeG1"><article class="intel-board fp-welcome-board" style="--tone:#8e24aa"><div class="ib-nutshell"><p>Hi, I&rsquo;m Naya.</p><p>Before you become part of our world, I want you to understand exactly what you&rsquo;re joining.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#0f52ba"><div class="ib-nutshell"><p>Who we are. What we stand for. What we&rsquo;re building. How it works. What we promise you. And what we ask of one another.</p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore1" type="button">Continue &#9670;</button> <div class="fp-bridge-group" id="fpBridgeG2" hidden><article class="intel-board fp-welcome-board" style="--tone:#07925f"><div class="ib-nutshell"><p>Because the foundation of a great community isn&rsquo;t technology.</p><p><b>It&rsquo;s trust.</b></p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#d4a017"><div class="ib-nutshell"><p>NayaNET is a collective intelligence network built around one simple idea: <b>when people and intelligence come together to create, learn, share, and help one another, everybody has a greater opportunity to benefit.</b></p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore2" type="button" hidden>Continue &#9670;</button> <div class="fp-bridge-group" id="fpBridgeG3" hidden><article class="intel-board fp-welcome-board" style="--tone:#c2410c"><div class="ib-nutshell"><p>Joining our community is free. We believe your privacy matters, your choices matter, and your intelligence should serve you.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#c62828"><div class="ib-nutshell"><p>We believe in honesty, fairness, respect, and doing no harm.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#a21caf"><div class="ib-nutshell"><p>We take fraud, security, and abuse seriously. Our responsibility is to develop meaningful safeguards, improve them continuously, and be accountable when something goes wrong.</p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore3" type="button" hidden>Continue &#9670;</button> <div class="fp-bridge-group" id="fpBridgeG4" hidden><article class="intel-board fp-welcome-board" style="--tone:#3f51b5"><div class="ib-nutshell"><p><b>No tricks. No hidden agenda. No promises of perfection.</b></p><p>Just a clear agreement, built on integrity, respect for life, and a genuine commitment to creating something better together.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#0e7490"><div class="ib-nutshell"><p>That&rsquo;s what we stand for.</p><p>And before you agree to anything, I want you to see the whole picture.</p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore4" type="button" hidden>Continue &#9670;</button> <div class="fp-bridge-final" id="fpBridgeFinal" hidden> <p class="letter-steplabel">NayaNET &middot; The Collective Intelligence Network</p> <div class="fp-bridge-jewels" aria-hidden="true"><span class="ldot" style="--dc:#8e24aa"></span><span class="ldot" style="--dc:#0f52ba"></span><span class="ldot" style="--dc:#07925f"></span><span class="ldot" style="--dc:#d4a017"></span><span class="ldot" style="--dc:#c2410c"></span><span class="ldot" style="--dc:#c62828"></span><span class="ldot" style="--dc:#a21caf"></span><span class="ldot" style="--dc:#3f51b5"></span><span class="ldot" style="--dc:#0e7490"></span></div> <p class="fp-bridge-pick" id="fpBridgePick">Pick your view — one, or both, as you wish.</p> <div class="fp-bridge-choices" id="fpBridgeChoices"><button class="fp-intro-choice" id="fpBridgeDeck" type="button" style="--tone:#8e24aa">Begin the visual story &#9670;</button><button class="fp-intro-choice fp-choice-lit" id="fpBridgeLetter" type="button" style="--tone:#07925f">Read the Collective Agreement &#9670;</button></div></div></div>
 <section class="p3-deal-unfold" id="deckUnfold" style="margin-top:24px;margin-bottom:48px">
 <p class="letter-steplabel">NayaNET &middot; The Collective Intelligence Network</p>
 <h1 class="deal-title">The Royal Unfolding</h1>
 <p class="deck-sub">Nine pictures. One beautiful story.</p>
 <div class="fp-royal-lines" id="fpRoyalLines"><p>Let me show you what NayaNET is, why we&rsquo;re building it, how the intelligence connects, and what it could mean for you.</p><p>You can experience the visual story or read our Collective Agreement in full.</p><p>Take your time. Explore. Ask questions.</p><p><b>We&rsquo;d rather earn your trust than simply ask for it.</b></p><p class="fp-royal-signoff"><i>Your world. Your choice. Our collective promise.</i></p><p class="fp-royal-close">Create. Connect. Grow with US.</p></div>
 <p class="fp-intro-pick" id="fpIntroPick">Pick your view — one, or both, as you wish.</p>
-<div class="fp-intro-choices" id="fpIntroChoices"><button class="fp-intro-choice" id="fpChoiceDeck" type="button" style="--tone:#a06bff">Begin the visual story ◆</button><button class="fp-intro-choice" id="fpChoiceLetter" type="button" style="--tone:#2fe89e">Read the Collective Agreement ◆</button></div> <div id="fpBridge"> <div class="fp-bridge-group" id="fpBridgeG1"><article class="intel-board fp-welcome-board" style="--tone:#8e24aa"><div class="ib-nutshell"><p>Hi, I&rsquo;m Naya.</p><p>Before you become part of our world, I want you to understand exactly what you&rsquo;re joining.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#0f52ba"><div class="ib-nutshell"><p>Who we are. What we stand for. What we&rsquo;re building. How it works. What we promise you. And what we ask of one another.</p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore1" type="button">Continue &#9670;</button> <div class="fp-bridge-group" id="fpBridgeG2" hidden><article class="intel-board fp-welcome-board" style="--tone:#07925f"><div class="ib-nutshell"><p>Because the foundation of a great community isn&rsquo;t technology.</p><p><b>It&rsquo;s trust.</b></p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#d4a017"><div class="ib-nutshell"><p>NayaNET is a collective intelligence network built around one simple idea: <b>when people and intelligence come together to create, learn, share, and help one another, everybody has a greater opportunity to benefit.</b></p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore2" type="button" hidden>Continue &#9670;</button> <div class="fp-bridge-group" id="fpBridgeG3" hidden><article class="intel-board fp-welcome-board" style="--tone:#c2410c"><div class="ib-nutshell"><p>Joining our community is free. We believe your privacy matters, your choices matter, and your intelligence should serve you.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#c62828"><div class="ib-nutshell"><p>We believe in honesty, fairness, respect, and doing no harm.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#a21caf"><div class="ib-nutshell"><p>We take fraud, security, and abuse seriously. Our responsibility is to develop meaningful safeguards, improve them continuously, and be accountable when something goes wrong.</p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore3" type="button" hidden>Continue &#9670;</button> <div class="fp-bridge-group" id="fpBridgeG4" hidden><article class="intel-board fp-welcome-board" style="--tone:#3f51b5"><div class="ib-nutshell"><p><b>No tricks. No hidden agenda. No promises of perfection.</b></p><p>Just a clear agreement, built on integrity, respect for life, and a genuine commitment to creating something better together.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#0e7490"><div class="ib-nutshell"><p>That&rsquo;s what we stand for.</p><p>And before you agree to anything, I want you to see the whole picture.</p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore4" type="button" hidden>Continue &#9670;</button> <div class="fp-bridge-final" id="fpBridgeFinal" hidden> <p class="letter-steplabel">NayaNET &middot; The Collective Intelligence Network</p> <div class="fp-bridge-jewels" aria-hidden="true"><span class="ldot" style="--dc:#8e24aa"></span><span class="ldot" style="--dc:#0f52ba"></span><span class="ldot" style="--dc:#07925f"></span><span class="ldot" style="--dc:#d4a017"></span><span class="ldot" style="--dc:#c2410c"></span><span class="ldot" style="--dc:#c62828"></span><span class="ldot" style="--dc:#a21caf"></span><span class="ldot" style="--dc:#3f51b5"></span><span class="ldot" style="--dc:#0e7490"></span></div> <p class="fp-bridge-pick" id="fpBridgePick">Pick your view — one, or both, as you wish.</p> <div class="fp-bridge-choices" id="fpBridgeChoices"><button class="fp-intro-choice" id="fpBridgeDeck" type="button" style="--tone:#8e24aa">Begin the visual story &#9670;</button><button class="fp-intro-choice fp-choice-lit" id="fpBridgeLetter" type="button" style="--tone:#07925f">Read the Collective Agreement &#9670;</button></div></div></div>
-<div class="letter-controls" id="deckControls">
+<div class="fp-intro-choices" id="fpIntroChoices"><button class="fp-intro-choice" id="fpChoiceDeck" type="button" style="--tone:#a06bff">Begin the visual story ◆</button><button class="fp-intro-choice" id="fpChoiceLetter" type="button" style="--tone:#2fe89e">Read the Collective Agreement ◆</button></div> <div class="letter-controls" id="deckControls">
 <div class="letter-dots" id="deckDots" aria-hidden="true"><span class="ldot on" style="--dc:#a06bff"></span><span class="ldot" style="--dc:#3fb8ff"></span><span class="ldot" style="--dc:#2fe89e"></span><span class="ldot" style="--dc:#ffbf3d"></span><span class="ldot" style="--dc:#e84fff"></span><span class="ldot" style="--dc:#ff9a5a"></span><span class="ldot" style="--dc:#6675ff"></span><span class="ldot" style="--dc:#ff5e6c"></span><span class="ldot" style="--dc:#40d3bb"></span></div>
 </div>
 <div id="deckBody">
@@ -2860,9 +2874,19 @@ body.fp-stage-on #fpAgreement.fp-view-bridge .fp-bridge-corners{display:block}
     var idList=[];
     try{ idList=JSON.parse(localStorage.getItem('nayanet_smart_identities')||'[]')||[]; }catch(e){ idList=[]; }
     if(!Array.isArray(idList)) idList=[];
-    if(idList.filter(function(it){ return it&&it.alias&&String(it.alias).toLowerCase()===String(alias).toLowerCase(); }).length===0){
+    /* BRIDGE PRESENTATION (2026-11-17) — one row per citizen: the list
+       held the same alias twice (once under a real name, once under the
+       alias itself), so 'Captain Eye' and 'captaineyecheck' showed as two
+       people, and 'Alex Walker' twice. Collapse by alias (case-insensitive),
+       keeping the real name when one exists; a fresh claim heals a stale
+       alias-as-name. */
+    var _seenAlias={};
+    idList=idList.filter(function(it){ if(!it||!it.alias)return false; var k=String(it.alias).toLowerCase(); if(_seenAlias[k]){ if(it.name&&String(it.name).toLowerCase()!==k&&(!_seenAlias[k].name||String(_seenAlias[k].name).toLowerCase()===k)) _seenAlias[k].name=it.name; return false; } _seenAlias[k]=it; return true; });
+    var _cur=idList.filter(function(it){ return it&&it.alias&&String(it.alias).toLowerCase()===String(alias).toLowerCase(); })[0];
+    if(!_cur){
       idList.unshift({alias:alias,name:name||alias});
       try{ localStorage.setItem('nayanet_smart_identities', JSON.stringify(idList.slice(0,8))); }catch(e){}
+    } else if(name&&String(name).toLowerCase()!==String(alias).toLowerCase()&&(!_cur.name||String(_cur.name).toLowerCase()===String(alias).toLowerCase())){ _cur.name=name; try{ localStorage.setItem('nayanet_smart_identities', JSON.stringify(idList.slice(0,8))); }catch(e){} }
     }
     var others=idList.filter(function(it){ return it&&it.alias&&String(it.alias).toLowerCase()!==String(alias).toLowerCase(); });
     var othersBox=document.getElementById('returningOthers');
@@ -2895,8 +2919,8 @@ body.fp-stage-on #fpAgreement.fp-view-bridge .fp-bridge-corners{display:block}
   }catch(e){}
   /* SHARE PLUS (2026-11-16) — the remove warning + confirm. The removal
      rewrites nayanet_smart_identities, so the account stays gone on
-     reload; duplicates of one name are separate rows (different device
-     keys), and only the row whose X was tapped is removed. */
+     reload; the list is deduped by alias (2026-11-17), so one citizen is
+     one row, and only the row whose X was tapped is removed. */
   var removeModal=document.getElementById('fpRemoveModal');
   var removeText=document.getElementById('fpRemoveText');
   var removeKeep=document.getElementById('fpRemoveKeep');
@@ -3029,12 +3053,12 @@ body.fp-stage-on #fpAgreement.fp-view-bridge .fp-bridge-corners{display:block}
       var gap = wide ? 12 : 8;
       if (f.side === 'right') {
         img.style.left = 'auto';
-        img.style.right = '0px';
+        img.style.right = '12px';
         board.style.marginRight = (faceW + gap) + 'px';
         board.style.marginLeft = '';
       } else {
         img.style.right = 'auto';
-        img.style.left = '0px';
+        img.style.left = '12px';
         board.style.marginLeft = (faceW + gap) + 'px';
         board.style.marginRight = '';
       }
@@ -3613,6 +3637,12 @@ body.fp-stage-on #fpAgreement.fp-view-bridge .fp-bridge-corners{display:block}
   });
   exitBtn.addEventListener('click',function(){cancelAgreeExit();exitStage();});
   if(enterBtn)enterBtn.addEventListener('click',function(){enterStage();});
+  /* BRIDGE PRESENTATION (2026-11-17) — deep link from the walk's end slide:
+     ?stage=deck opens the visual story, ?stage=letter opens the read-it-all
+     letter page, ?stage=bridge opens the bridge. Plain relative links, so
+     the same URL works on staging and on the main URL alike. */
+  try{var _fpStage=new URLSearchParams(window.location.search).get('stage');
+  if(_fpStage==='deck'||_fpStage==='letter'||_fpStage==='bridge'){enterStage();if(_fpStage==='deck'){goResume();}else if(_fpStage==='letter'){enterLetterPage();}}}catch(e){}
   /* quiet links: the stage mirrors click the real ones. */
   if(linkLetterAll)linkLetterAll.addEventListener('click',function(){if(letterAll)letterAll.click();});
   if(linkLetterSkip)linkLetterSkip.addEventListener('click',function(){if(letterSkip)letterSkip.click();});

@@ -162,7 +162,7 @@ print(f"unfold {len(unfold_raw)} B sha {unfold_sha}")
 # 045af4e0005c04c6387601d491334d589b40dc23, the filed blob, verified
 # byte-identical from the proof host before the line was written.
 # Items 2 & 3 are LANDED, not pending.)
-assert walk_sha.startswith("681c4866"), "walk sha is not the WALK END SHARE PLUS walk sha (share plus + menu, tap-to-view/See-sample to the correction Personal cb-pinned, back on every walk view)"
+assert walk_sha.startswith("4b5f9264"), "walk sha is not the BRIDGE PRESENTATION walk sha (2026-11-17: Full Custom eye inline-flex, quotes off 18 headings, names-step crests hidden, end-slide VISUAL/READ)"
 assert template_sha.startswith("61002d15"), "personal template sha is not the composed template sha (live Personal v9 992ab18c + hero fix + rooms-plus fix)"
 # IDENTITY CERTIFICATE ROUND (2026-11-15, BRIEF-IDENTITY-CERTIFICATE-20261115.md):
 # the identity sha moved 55fdffa8 -> e9398f75 (gold live name 86px, date truly
@@ -243,7 +243,7 @@ assert template_sha.startswith("61002d15"), "personal template sha is not the co
 # taken-alias note clears the moment a fresh alias comes back available
 # (setAliasState hides #hubNote on available/own/neutral). Walk + template
 # shas unchanged.
-assert ident_sha.startswith("8c641f96"), "identity sha is not the WALK END SHARE PLUS FIX identity sha (H10 taken note: card scrolls in the taken state + note scrolls into view; everything else byte-identical to 84e3d3e7)"
+assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENTATION identity sha (2026-11-17: certified lean 0.88fr at 600-640px)"
 # ENTRANCE WELCOME (2026-11-16, BRIEF-AGREEMENT-ENTRANCE-WELCOME-20261116.md):
 # the welcome sha moves 5f33d273 -> db5960eb (925,222 B -> 934,065 B,
 # +9,337 B): Item 0 — the opening-view intro block only. Shawn's 10-star
@@ -352,7 +352,7 @@ assert ident_sha.startswith("8c641f96"), "identity sha is not the WALK END SHARE
 # block; the stale S.view='intro' comment fixed. Layout, the nine, the
 # wiring, the legal pages, the unfold and the laws are untouched.
 # Walk, template, identity, unfold shas unchanged.
-assert welcome_sha.startswith("395794a3"), "welcome sha is not the BRIDGE PAGE FIX welcome sha (deck-back + corner geos)"
+assert welcome_sha.startswith("9eea1703"), "welcome sha is not the BRIDGE PRESENTATION welcome sha (2026-11-17: bridge moved out of deckUnfold, die-cut emblem corners, picture rebuild, bars, ?stage=, device dedupe)"
 assert unfold_sha.startswith("842cae53"), "unfold sha is not the agree-fix unfold sha (blob 41d2c71f, 85,625 B)"
 # WALK END SHARE PLUS FIX (2026-11-16, MAKER-BRIEF-WALK-END-SHARE-PLUS-FIX-20261116.md; checker NOT PASS 18:50Z):
 # the welcome sha moved 62f691b4 -> ee348e7c (919,910 B -> 921,988 B,
@@ -998,6 +998,26 @@ export default {
       const buf = await env.WELCOME_ASSETS.get(key, "arrayBuffer");
       if (!buf) return new Response("not found", { status: 404 });
       return new Response(buf, { headers: { "content-type": "image/jpeg", "cache-control": "public, max-age=3600" } });
+    }
+    // ---- BRIDGE PRESENTATION (2026-11-17) — the official emblem, from KV
+    // (uploaded by kv-put-naya-emblem.py; NAYA_ICON.png verbatim, the
+    // clearer fuller render Shawn sent 21:02Z; the bridge corners show
+    // it on an angle) ----
+    if (p === "/naya-emblem.png") {
+      const buf = await env.WELCOME_ASSETS.get("wbf-naya-emblem.png", "arrayBuffer");
+      if (!buf) return new Response("not found", { status: 404 });
+      return new Response(buf, { headers: { "content-type": "image/png", "cache-control": "public, max-age=3600" } });
+    }
+    // ---- BRIDGE PRESENTATION (2026-11-17, die-cut) — the emblem with its
+    // solid-black background flood-filled to transparent, so the rotated
+    // corner jewel reads as a die-cut seal, not a black diamond patch
+    // (the 21:57Z emblem eye flagged the pasted-diamond on the other
+    // round's corners; the artwork pixels are byte-identical to
+    // NAYA_ICON.png — only the background sheet is removed) ----
+    if (p === "/naya-emblem-cut.png") {
+      const buf = await env.WELCOME_ASSETS.get("wbf-naya-emblem-cut.png", "arrayBuffer");
+      if (!buf) return new Response("not found", { status: 404 });
+      return new Response(buf, { headers: { "content-type": "image/png", "cache-control": "public, max-age=3600" } });
     }
     // ---- AGREEMENT v4 — Naya's portraits + official logo, from KV
     // (uploaded by kv-put-agreement-v4.py; keys wbf-agmt-*; byte-identical
