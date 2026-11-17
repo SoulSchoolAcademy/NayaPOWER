@@ -24,21 +24,38 @@
       (TEAM-NITRO/living-calendar-20261117/living-calendar.html, 73,137 B).
       Presentation NOT carried — only the functions it proved.
   [L] Deep Palette — ~/workspace/team-nitro/THE-DEEP-PALETTE.md (the law).
-      Bright digit/day values in [D] are SUPERSEDED by [L]; the tile FORM
-      is verbatim, the rim/cap/glow hexes are the deep ones.
+      Bright DAY values in [D] are SUPERSEDED by [L]. The DIGIT TILES are
+      the exception: amendment #3(4) (03:02Z, the newest word) restores the
+      Dashboard's EXACT tile values — rim, cap, glow — verbatim from [D].
+      The tile FORM was always verbatim; now the VALUES are too.
   Day colors [L]: Sun #8e24aa · Mon #c2410c · Tue #d4a017 · Wed #0f52ba ·
   Thu #07925f · Fri #c62828 · Sat #3f51b5.
-  Digit colors [L]: 0 white · 1 ruby #c62828 · 2 burnt orange #c2410c ·
-  3 deep gold #d4a017 · 4 emerald #07925f · 5 deep cyan #0e7490 ·
-  6 indigo #3f51b5 · 7 royal purple #8e24aa · 8 deep violet #6d28d9 ·
-  9 deep magenta #a21caf.
-  AMENDMENT (Shawn's eye, 02:58Z — OVERRIDES the brief's hover rule):
+  Digit tiles [D] verbatim: 0 white #ffffff · 1 #ff2a2a · 2 #ff8c00 ·
+  3 #f5d76e · 4 #00a86b · 5 #29b6f6 · 6 #3f51b5 · 7 #8e24aa · 8 #b388ff ·
+  9 #ff1493 (caps and glows per tile, [D] lines 4846-4865; $ tile #ffbf3d).
+  AMENDMENT #1 (Shawn's eye, 02:58Z — OVERRIDES the brief's hover rule):
   the day number sits TOP LEFT; on hover the whole cell does NOT light up —
   only the OUTSIDE rim lights, with a light glow of the day's color even at
   rest, brighter on hover, NO glow in the middle; every day is lit at rest;
   the BOTTOM RIGHT corner holds the info-eye [P] .plan-eye, the door to the
   day's info; the numbers are literally the Dashboard digit tiles; the cells
   are BIG; pearl gems, not neon; no trailing next-month days in the grid.
+  AMENDMENT #2 (Shawn's eye, 03:01Z — the DAY VIEW): the day header carries
+  a beautiful jewel icon for the day (Monday = 417 Hz, orange in it) — the
+  harvested [P] .os-jewel, the day's Hz inside it; the day name is white
+  inside with the day's color glowing OUTSIDE it, NO gray text underneath
+  (the gray date line is dropped); the 13 doors are NOT big empty black
+  bars — each carries a live glimpse of what's inside it (next appointment,
+  top headline, count), a window into the day; the door colors follow the
+  spectrum flow in order, never the same color twice in a row.
+  AMENDMENT #3 (Shawn's eye, 03:02Z): NO jewel eye with a colored iris —
+  the eye is a NORMAL, nice, WHITE info eye, no color in it; no weird glow
+  anywhere (cell halos are pearl, one soft halo); the other month's numbers
+  are GONE entirely — those cells are blank; the numbers are the Dashboard
+  digit tiles VERBATIM (markup + CSS + values); nothing Halloween — the glow
+  is pearl and elegant, never orange-neon. Amendments #1 and #2 otherwise
+  stand. NO GRAY TEXT (Shawn, 03:04Z): any gray text is white now — the
+  least text possible, spoken in icons.
 -->
 <style>
 /* ============ ROOT + BASE ============ */
@@ -83,16 +100,17 @@ button{font-family:inherit}
 .primo .ico{font-size:18px;line-height:1}
 .primo.on{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px var(--glow),0 14px 36px rgba(0,0,0,.65)}
 
-/* ============ THE DIGIT TILE — [D] .os-mini-tile verbatim, FORM only ============ */
-/* dashboard-pass9.html lines 4821-4845 (comment, base, cap, digit, med,
-   dollar, gap, dot, pct) + 4846-4865 (d0–d9 chakra rims/caps).
-   The FORM, the measurements and the shadows are verbatim. The rim/cap/glow
-   HEXES are the Deep Palette [L] — the bright values in [D] (#ff2a2a,
-   #ff8c00, #f5d76e, #00a86b, #29b6f6, #b388ff, #ff1493) are SUPERSEDED by [L].
-   d6 (#3f51b5) and d7 (#8e24aa) already match [L] and are kept byte-for-byte.
-   Cap gradients: light/mid/dark stops of the deep hex, same 3-stop
-   construction as [D] (light = +60% toward white, dark = −55% toward black).
-   The dollar tile takes the deep gold [L] — gold is gold, one hex per hue. */
+/* ============ THE DIGIT TILE — [D] .os-mini-tile, VERBATIM ============ */
+/* dashboard-pass9.html lines 4816-4865 (PASS 3 — ADDENDUM 8), copied
+   byte-for-byte: comment, base, cap, digit, med, dollar, gap, dot, pct,
+   and the d0–d9 chakra rims/caps. Amendment #3(4) (03:02Z, the newest
+   word) restores the Dashboard's EXACT tile values — the brief's deep-digit
+   instruction and the Deep Palette's digit supersession are overridden FOR
+   THE TILES ONLY. Day colors, door colors and every other system color
+   stay Deep Palette [L] per the brief and amendment #3(5). The tile's own
+   halo (0 0 12px, alpha .5) is part of the harvested object, not a glow
+   added here. A structural diff of this block vs [D] 4821-4865 now returns
+   zero differences (see the maker report). */
 .os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
 .os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
 .os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
@@ -103,8 +121,8 @@ button{font-family:inherit}
 .os-mini-num.med .os-mini-tile .cap{height:9px;}
 .os-mini-num.med .os-mini-tile .rd{height:54px;line-height:54px;font-size:48px;}
 /* the $ tile (money only), the dot tile (decimals), the % tile — [D] 4831-4844 */
-.os-mini-tile.dollar{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.dollar .cap{background:linear-gradient(180deg,#edd9a2,#d4a017 55%,#5f480a);}
+.os-mini-tile.dollar{border-color:#ffbf3d;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,191,61,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.dollar .cap{background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a);}
 .os-mini-gap{flex:none;width:10px;}
 .os-mini-num.med .os-mini-gap{width:14px;}
 .os-mini-tile.dot{width:12px;}
@@ -113,44 +131,47 @@ button{font-family:inherit}
 .os-mini-num.med .os-mini-tile.dot .rd{height:54px;padding-bottom:8px;}
 .os-mini-tile.pct{width:34px;}
 .os-mini-num.med .os-mini-tile.pct{width:60px;}
-/* chakra colours — the same as the big number — [D] 4846-4865, hexes deepened to [L] */
+/* chakra colours — the same as the big number */
 .os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
 .os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
-.os-mini-tile.d1{border-color:#c62828;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(198,40,40,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d1 .cap{background:linear-gradient(180deg,#e8a9a9,#c62828 55%,#591212);}
-.os-mini-tile.d2{border-color:#c2410c;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(194,65,12,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d2 .cap{background:linear-gradient(180deg,#e7b39e,#c2410c 55%,#571d05);}
-.os-mini-tile.d3{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d3 .cap{background:linear-gradient(180deg,#edd9a2,#d4a017 55%,#5f480a);}
-.os-mini-tile.d4{border-color:#07925f;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(7,146,95,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d4 .cap{background:linear-gradient(180deg,#9cd3bf,#07925f 55%,#03422b);}
-.os-mini-tile.d5{border-color:#0e7490;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(14,116,144,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d5 .cap{background:linear-gradient(180deg,#9ec7d2,#0e7490 55%,#063441);}
+.os-mini-tile.d1{border-color:#ff2a2a;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,42,42,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d1 .cap{background:linear-gradient(180deg,#ff8a8a,#e60000 55%,#8f0000);}
+.os-mini-tile.d2{border-color:#ff8c00;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,140,0,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d2 .cap{background:linear-gradient(180deg,#ffc27a,#ff8c00 55%,#994d00);}
+.os-mini-tile.d3{border-color:#f5d76e;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(245,215,110,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d3 .cap{background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a);}
+.os-mini-tile.d4{border-color:#00a86b;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(0,168,107,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d4 .cap{background:linear-gradient(180deg,#6ee7a0,#00a86b 55%,#005c3a);}
+.os-mini-tile.d5{border-color:#29b6f6;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(41,182,246,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d5 .cap{background:linear-gradient(180deg,#a5e3ff,#29b6f6 55%,#0e6b9e);}
 .os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
 .os-mini-tile.d6 .cap{background:linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#232a6b);}
 .os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
 .os-mini-tile.d7 .cap{background:linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#4d0f5e);}
-.os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(109,40,217,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d8 .cap{background:linear-gradient(180deg,#c5a9f0,#6d28d9 55%,#311262);}
-.os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(162,28,175,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d9 .cap{background:linear-gradient(180deg,#daa4df,#a21caf 55%,#490d4f);}
+.os-mini-tile.d8{border-color:#b388ff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(179,136,255,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d8 .cap{background:linear-gradient(180deg,#e9d5ff,#b388ff 55%,#6d4bb0);}
+.os-mini-tile.d9{border-color:#ff1493;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,20,147,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d9 .cap{background:linear-gradient(180deg,#ff9ed2,#ff1493 55%,#8f0057);}
 /* [P] .os-mini-tile.inf — the ∞ tile, pricing v77: silver/white,
    black-and-silver (the d0 silver cap language), sized to sit in line
    with the digit tiles. Verbatim. */
 .os-mini-tile.inf{width:34px;border-color:#e8e8ec;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(232,232,236,.5),inset 0 1px 0 rgba(255,255,255,.35)}
 .os-mini-tile.inf .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0)}
-.os-mini-num.med .os-mini-tile.inf{width:60px;}
+/* (The med-width override for .inf that used to sit here was invented —
+   no such rule exists in [D] or [P]. Removed per amendment #3(4). The
+   base 34px .inf tile stands, verbatim from [P].) */
 
 /* [P] THE INFO-EYE — .plan-eye verbatim, pricing v77 ============ */
 /* The "see what is included" eye (pricing v77, harvested before for the
-   Factory flow). A human eye, like a jewel: almond outline, white iris,
-   dark pupil, highlight dot. --pc is the eye's own color — here the day's
-   color, set per cell as --pc:var(--dc). Placement only is adapted:
-   pricing sits it top-right of a plan card; here it sits bottom-right of
-   the day cell, the door to the day's info. */
-.plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;display:grid;place-items:center;border-radius:12px;cursor:pointer;color:#fff;background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.28),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--pc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 4px 10px rgba(0,0,0,.55),0 0 14px -2px var(--pc)}
+   Factory flow). A human eye: almond outline, white iris, dark pupil,
+   highlight dot. Amendment #3(1): NO color in it — the eye is NORMAL and
+   WHITE. The rim and the glow are white only (--pc is white, fixed, not
+   the day's color). The SVG markup is pricing v77 verbatim. Placement only
+   is adapted: pricing sits it top-right of a plan card; here it sits
+   bottom-right of the day cell, the door to the day's info. */
+.plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;display:grid;place-items:center;border-radius:12px;cursor:pointer;color:#fff;background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.28),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid #fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 4px 10px rgba(0,0,0,.55),0 0 12px rgba(255,255,255,.25)}
 .plan-eye svg{width:21px;height:21px;display:block;filter:drop-shadow(0 0 5px rgba(255,255,255,.45))}
-.plan-eye:hover,.plan-eye:focus-visible{box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 4px 10px rgba(0,0,0,.55),0 0 22px var(--pc);outline:2px solid var(--pc);outline-offset:2px}
+.plan-eye:hover,.plan-eye:focus-visible{box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 4px 10px rgba(0,0,0,.55),0 0 18px rgba(255,255,255,.45);outline:2px solid #fff;outline-offset:2px}
 /* Calendar placement: bottom-right of the day cell, the door to the day. */
 .cal-day .plan-eye{top:auto;bottom:10px;right:10px}
 @media(max-width:640px){
@@ -160,9 +181,10 @@ button{font-family:inherit}
 }
 
 /* ============ DAY COLORS — [L] + [C] WEEKDAY ============ */
-/* The day's color is its rim at rest; on hover the whole block is the color.
-   Per-weekday classes carry the deep hex + its rgba wash (same construction
-   as .ph-card:hover, with --dc instead of gold). Hz from [C] WEEKDAY. */
+/* The day's color is its rim at rest; on hover only the OUTSIDE rim
+   lights, brighter — the middle never lights (amendment #1, 02:58Z).
+   Per-weekday classes carry the deep hex + its rgb triplet for the pearl
+   halo. Hz from [C] WEEKDAY. */
 .dow-0{--dc:#8e24aa;--dc-rgb:142,36,170}
 .dow-1{--dc:#c2410c;--dc-rgb:194,65,12}
 .dow-2{--dc:#d4a017;--dc-rgb:212,160,23}
@@ -195,19 +217,20 @@ button{font-family:inherit}
    glow of the day's color even at rest; NO glow in the middle. Every day is
    lit at rest (you can see each day's color line), just not as bright as
    the hovered day. Pearl gems, not neon — Deep Palette hexes only. */
-.cal-day{margin:0;padding:14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:6px;cursor:pointer;border:2px solid var(--dc);border-radius:20px;background:linear-gradient(180deg,#07070b,#050607);--pc:var(--dc);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.5),0 0 14px rgba(var(--dc-rgb),.28);
+.cal-day{margin:0;padding:14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:6px;cursor:pointer;border:2px solid var(--dc);border-radius:20px;background:linear-gradient(180deg,#07070b,#050607);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.5),0 0 10px rgba(var(--dc-rgb),.22);
   transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);position:relative;overflow:hidden}
 /* Hover: rim only. The middle stays obsidian — no wash, no inner glow.
-   The rim brightens and the outside halo strengthens; the number lifts. */
+   The rim brightens and the outside halo strengthens; the number lifts.
+   Pearl, never neon — one soft halo, amendment #3(2)(5). */
 .cal-day:hover,.cal-day:focus-visible{transform:translateY(-4px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 20px 44px rgba(0,0,0,.6),0 0 36px rgba(var(--dc-rgb),.6),0 0 80px rgba(var(--dc-rgb),.25)}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 20px 44px rgba(0,0,0,.6),0 0 24px rgba(var(--dc-rgb),.45)}
 .cal-day:hover .os-mini-tile,.cal-day:focus-visible .os-mini-tile{transform:translateY(-2px)}
 .cal-day:active{transform:translateY(1px) scale(.985)}
 .cal-day .os-mini-tile{transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
-/* Today glows brighter than the rest at rest — rim + halo only, never the middle. */
-.cal-day.today{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.6),0 0 30px rgba(var(--dc-rgb),.65),0 0 60px rgba(var(--dc-rgb),.3)}
-.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff,0 0 20px rgba(var(--dc-rgb),.9)}
+/* Today glows brighter than the rest at rest — rim + halo only, never the middle. Pearl. */
+.cal-day.today{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.6),0 0 22px rgba(var(--dc-rgb),.5),0 0 44px rgba(var(--dc-rgb),.22)}
+.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff,0 0 14px rgba(var(--dc-rgb),.5)}
 /* A day with a record carries one small dot, bottom-left, in its day's
    color — the presence signal, [C] .dots, reduced to a single dot. */
 .cal-day .has{position:absolute;left:12px;bottom:12px;width:7px;height:7px;border-radius:50%;background:var(--dc);box-shadow:0 0 8px var(--dc);flex:none}
@@ -220,24 +243,37 @@ button{font-family:inherit}
 #dayView.show,#viewView.show{display:flex}
 .day-head{max-width:1060px;width:100%;margin:0 auto 8px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
 .day-head .daynum-wrap{flex:none}
-.day-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,4vw,38px);line-height:1.1;color:#fff;margin:0}
-.day-sub{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-top:6px}
-.day-sub .hz{color:var(--dc)}
+/* [P] THE DAY JEWEL — .os-jewel verbatim, pricing v77 (also Dashboard
+   line 4019, same rule). Amendment #2(1): the day header carries a
+   beautiful jewel icon for the day — the day's own icon, like a jewel.
+   The jewel's color is the day's color (--jc set inline); inside it sits
+   the day's frequency — Monday = 417 Hz, orange in it. A number inside a
+   jewel is the harvested pattern (pricing carries digits 1–10 in jewels).
+   --dc-rgb is set on #dayView by showDay, so the name's glow reads the
+   day's color. Amendment #2(2): the day name is white inside with the
+   day's color glowing OUTSIDE it; no gray text underneath — the gray date
+   line is dropped (the Hz now lives in the jewel). */
+.os-jewel{--jc:#cfc09a;display:inline-grid;place-items:center;flex:none;line-height:1;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);border-radius:9px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
+.os-jewel-lg{width:46px;height:46px;font-size:22px;border-radius:13px}
+.day-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,4vw,38px);line-height:1.1;color:#fff;margin:0;text-shadow:0 0 18px rgba(var(--dc-rgb),.5),0 0 48px rgba(var(--dc-rgb),.25)}
 .day-back{margin-left:auto}
 .view-wrap{max-width:1060px;width:100%;margin:0 auto}
 /* The 13 doors — .primo pills [P], each its own color rim via --glow.
-   Icon on the left, white word in the middle (Naya Code §2.2). */
-.doors{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:18px 0}
-.doors .primo{width:100%;justify-content:flex-start;padding:18px 22px;font-size:15px;text-align:left}
-.doors .primo .sub{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;opacity:.75;margin-top:2px}
-.doors .primo .lbl{display:flex;flex-direction:column;align-items:flex-start}
+   Icon on the left, white word in the middle (Naya Code §2.2). Amendment
+   #2(3): a door is NOT a big empty black bar — each carries a live glimpse
+   of what's inside it (the .sub), so the bar is a window into the day.
+   The doors are wide enough for the glimpse to read (300px min). */
+.doors{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:18px 0}
+.doors .primo{width:100%;justify-content:flex-start;padding:18px 22px;font-size:15px;text-align:left;min-width:0}
+.doors .primo .sub{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:#fff;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.doors .primo .lbl{display:flex;flex-direction:column;align-items:flex-start;min-width:0;flex:1}
 /* The day's instruments — numbers as digit tiles, words at a nutshell.
    [D] .os-sl-stat: number on top, label underneath. */
 .instruments{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
 .instrument{text-align:center;padding:20px 12px}
 .instrument .os-sl-stat-n{display:block;font-size:52px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em;
   text-shadow:0 0 8px rgba(255,255,255,.4),0 0 24px rgba(217,165,33,.6),0 0 48px rgba(217,165,33,.3),0 2px 4px rgba(0,0,0,.5)}
-.instrument .os-sl-stat-l{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:8px}
+.instrument .os-sl-stat-l{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-top:8px}
 /* Timeline — [C] .daytimeline board, .ph-card construction, rim in the day color. */
 .daytimeline{border:2px solid var(--dc);border-radius:20px;padding:20px 22px;margin:18px 0 0;background:linear-gradient(180deg,#07070b,#050607);color:#fff;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 24px rgba(var(--dc-rgb),.25)}
@@ -249,7 +285,7 @@ button{font-family:inherit}
 .tl-kind{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tc,#8e24aa);white-space:nowrap}
 .tl-text{font-size:14px;line-height:1.5}
 .tl-empty,.tl-note{font-size:14px;line-height:1.6;margin:12px 0 0}
-.tl-note{color:rgba(255,255,255,.75)}
+.tl-note{color:#fff}
 /* Wisdom + Intel boards — .ph-card boards, rim in the day color. */
 .dayboards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:18px 0}
 .dayboards .ph-card{margin:0;border-color:var(--dc)}
@@ -260,7 +296,7 @@ button{font-family:inherit}
 .empty{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:44px 24px}
 .empty .glyph{font-size:44px;line-height:1;color:#fff;text-shadow:0 0 24px rgba(var(--dc-rgb),.8)}
 .empty .words{font-size:15px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
-.empty .hintline{font-size:13px;color:rgba(255,255,255,.65);max-width:420px;line-height:1.6}
+.empty .hintline{font-size:13px;color:#fff;max-width:420px;line-height:1.6}
 /* Views inside a day */
 .view-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 auto 18px;max-width:1060px;width:100%}
 .view-head h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(22px,3.4vw,32px);color:#fff;margin:0;flex:1;min-width:220px}
@@ -269,11 +305,11 @@ button{font-family:inherit}
 .viewcard .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin:14px 0}
 .viewcard .stat{text-align:center;padding:14px 8px;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;background:linear-gradient(180deg,#0a0a0f,#050607)}
 .viewcard .stat b{display:block;font-size:34px;font-weight:900;color:#fff;line-height:1}
-.viewcard .stat span{display:block;font-size:10px;font-weight:800;letter-spacing:.16em;color:rgba(255,255,255,.75);margin-top:6px}
+.viewcard .stat span{display:block;font-size:10px;font-weight:800;letter-spacing:.16em;color:#fff;margin-top:6px}
 .viewcard .list{list-style:none;margin:12px 0;padding:0;display:grid;gap:8px}
 .viewcard .list li{padding:12px 14px;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;line-height:1.55}
 .viewcard .list li b{color:#fff}
-.viewcard .hint{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+.viewcard .hint{font-size:13px;color:#fff;line-height:1.6}
 .viewcard .err{font-size:13px;color:#fff;font-weight:700;min-height:18px}
 .viewcard .status{font-size:14px;font-weight:700;color:#fff;background:rgba(7,146,95,.16);border:1.5px solid #07925f;border-radius:12px;padding:12px 14px}
 /* Booking slots — [C] slot buttons, rebuilt in the pill language. */
@@ -288,7 +324,7 @@ button{font-family:inherit}
 .field{width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.35);border-radius:12px;color:#fff;font-size:15px;padding:14px;font-family:inherit;
   box-shadow:inset 0 2px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12)}
 .field:focus{outline:none;border-color:#fff;box-shadow:inset 0 2px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.25)}
-.field::placeholder{color:rgba(255,255,255,.5)}
+.field::placeholder{color:rgba(255,255,255,.85)}
 textarea.field{min-height:110px;resize:vertical}
 select.field option{background:#0a0a0f;color:#fff}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
@@ -380,24 +416,78 @@ const WEEKDAY=[
  {name:'Friday',   short:'Fri', color:'#c62828', hz:396, label:'red'},
  {name:'Saturday', short:'Sat', color:'#3f51b5', hz:852, label:'indigo'}];
 
-/* The 13 doors, in the brief's exact order and names. Each door its own
-   color rim — all hexes from the Deep Palette [L] only, assigned by meaning
-   from [C]'s category colors where a category exists (see MAKER-REPORT.md
-   §Door colors). Icons are the white object-glyphs of [C]'s vocabulary. */
+/* The 13 doors, in the brief's exact order and names. Amendment #2(4):
+   the door colors follow the SPECTRUM FLOW in order — never the same color
+   twice in a row. Playbook order: purple → blue → green → gold → orange →
+   red → magenta, then indigo → cyan → violet, cycling. All hexes from the
+   Deep Palette [L] only. Icons are the white object-glyphs of [C]'s
+   vocabulary. The glimpse under each name is live (doorGlimpse, below) —
+   amendment #2(3): a door is a window into the day, not a blank bar. */
 const DOORS=[
- ['Appointments','◷','#07925f','Book a time'],
- ['Local news','⌖','#0f52ba','My area'],
- ['Provincial news','▧','#0e7490','My province'],
- ['Global news','◎','#3f51b5','The world'],
- ['Personal feed','♙','#8e24aa','My activity'],
- ['Business feed','▣','#d4a017','Work and income'],
- ['Thing feed','◈','#a21caf','My communities'],
- ['Your World','✦','#c2410c','My whole world'],
- ['Smart Notes for that day','✧','#6d28d9','What I learned'],
- ['Notes for that day','☰','#c62828','What I wrote'],
- ['Weather','☀','#0f52ba','The sky today'],
- ['Horoscope','☾','#8e24aa','The stars today'],
- ['Posts for that day','✎','#07925f','What I shared']];
+ ['Appointments','◷','#8e24aa'],
+ ['Local news','⌖','#0f52ba'],
+ ['Provincial news','▧','#07925f'],
+ ['Global news','◎','#d4a017'],
+ ['Personal feed','♙','#c2410c'],
+ ['Business feed','▣','#c62828'],
+ ['Thing feed','◈','#a21caf'],
+ ['Your World','✦','#3f51b5'],
+ ['Smart Notes for that day','✧','#0e7490'],
+ ['Notes for that day','☰','#6d28d9'],
+ ['Weather','☀','#8e24aa'],
+ ['Horoscope','☾','#0f52ba'],
+ ['Posts for that day','✎','#07925f']];
+
+/* ============ DOOR GLIMPSES — amendment #2(3) ============ */
+/* Each door carries a live glimpse of what's inside it, from the day's own
+   local record only — the next appointment, the count, the latest note.
+   Nothing invented: news, weather and horoscope have no live source wired
+   yet, so their glimpse says so honestly (the honest-absence rule of the
+   brief). The glimpse is rendered under the door's name, white, one line. */
+function escT(t){ const s=String(t||''); return s.length>56? s.slice(0,55)+'…' : s; }
+function doorGlimpse(name,ds){
+  const books=dayBookings(ds), notes=dayNotes(ds);
+  const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t)).length;
+  switch(name){
+    case 'Appointments': {
+      if(!books.length) return open? open+' open times — book one' : 'Fully booked';
+      const b=books[0];
+      return 'Next: '+fmtTime(b.time)+' — '+(b.who||'Appointment');
+    }
+    case 'Local news': case 'Provincial news': case 'Global news':
+      return 'Archive not wired yet';
+    case 'Personal feed': case 'Business feed': case 'Thing feed': {
+      const w=name.split(' ')[0];
+      const list=notes.filter(n=>n.world===w);
+      if(!list.length) return 'Nothing in '+w+' today';
+      const last=list[list.length-1];
+      return list.length+(list.length===1?' note':' notes')+' · “'+escT(last.text)+'”';
+    }
+    case 'Your World': {
+      const b=books.length, n=notes.length;
+      return b+' appointment'+(b===1?'':'s')+' · '+n+' note'+(n===1?'':'s');
+    }
+    case 'Smart Notes for that day': {
+      const list=notes.filter(n=>n.type==='smart');
+      if(!list.length) return 'No Smart Notes yet';
+      const top=list.filter(n=>n.rank).sort((a,b)=>b.rank-a.rank)[0]||list[list.length-1];
+      return list.length+(list.length===1?' Smart Note':' Smart Notes')+' · “'+escT(top.text)+'”';
+    }
+    case 'Notes for that day': {
+      const list=notes.filter(n=>n.type==='naya');
+      if(!list.length) return 'No notes yet';
+      return list.length+(list.length===1?' note':' notes')+' · “'+escT(list[list.length-1].text)+'”';
+    }
+    case 'Weather': return 'No provider wired';
+    case 'Horoscope': return 'No source wired';
+    case 'Posts for that day': {
+      const list=notes.filter(n=>n.type==='post');
+      if(!list.length) return 'No posts yet';
+      return list.length+(list.length===1?' post':' posts')+' · “'+escT(list[list.length-1].text)+'”';
+    }
+  }
+  return '';
+}
 
 /* ============ DIGIT TILES — [D] miniTileHTML + _osMiniNumHTML verbatim ============ */
 /* dashboard-pass9.html lines 26593-26620: one number, one style. A landed
@@ -574,9 +664,9 @@ function showDay(){
   $('dayView').style.setProperty('--dc',wd.color);
   $('dayView').style.setProperty('--dc-rgb',wd.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(','));
   $('dayHead').innerHTML=`
+    <span class="os-jewel os-jewel-lg" style="--jc:${wd.color}" role="img" aria-label="${wd.name}, ${wd.hz} Hz">${wd.hz}</span>
     <div class="daynum-wrap">${miniNumHTML(day,'med')}</div>
-    <div><h2 class="day-title">${esc(dlabel(year,month,day))}</h2>
-    <div class="day-sub"><span class="hz">${wd.name} · ${wd.hz} Hz</span> · ${esc(TZ)}</div></div>
+    <div><h2 class="day-title">${esc(dlabel(year,month,day))}</h2></div>
     <button class="primo day-back" data-op="close" type="button">← Back to month</button>`;
   const counts=`<div class="instruments">
     <div class="instrument ph-card"><span class="os-sl-stat-n">${miniNumHTML(books.length,'med')}</span><span class="os-sl-stat-l">Appointments</span></div>
@@ -584,7 +674,7 @@ function showDay(){
     <div class="instrument ph-card"><span class="os-sl-stat-n">${miniNumHTML(notes.length,'med')}</span><span class="os-sl-stat-l">Notes + Posts</span></div>
   </div>`;
   $('dayBody').innerHTML=`
-    <div class="doors">${DOORS.map(([x,i,c,s])=>`<button class="primo" style="--glow:${c}" data-view="${esc(x)}" type="button"><span class="ico" aria-hidden="true">${i}</span><span class="lbl">${esc(x)}<span class="sub">${esc(s)}</span></span></button>`).join('')}</div>
+    <div class="doors">${DOORS.map(([x,i,c])=>`<button class="primo" style="--glow:${c}" data-view="${esc(x)}" type="button"><span class="ico" aria-hidden="true">${i}</span><span class="lbl">${esc(x)}<span class="sub">${esc(doorGlimpse(x,ds))}</span></span></button>`).join('')}</div>
     ${counts}
     ${timelineHTML(ds)}
     <div class="dayboards">
