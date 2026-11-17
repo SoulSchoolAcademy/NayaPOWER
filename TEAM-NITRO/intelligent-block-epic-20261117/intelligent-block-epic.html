@@ -497,6 +497,13 @@ a.deck-next{text-decoration:none;text-align:center}
 .orbit-btn:hover{transform:translateY(-3px) scale(1.02)}
 .orbit-btn:hover::before{opacity:1;animation-duration:18s}
 .orbit-btn:hover::after{opacity:1}
+/* EPIC REPAIR 2026-11-17 — hover/active in the button's OWN deep color.
+   The epic hover above sets only transform, so the canonical button hover
+   still fired: a bright purple border and glow on every hover/tap, beside
+   the deep halo. This epic-layer rule (later in the file, and the
+   button-qualified form higher in specificity) lights the button in its own
+   --oc instead, mirroring the canonical hover's shape. Canonical untouched. */
+.orbit-btn:hover,.orbit-btn:active,button.p3-enter.orbit-btn:hover,button.p3-enter.orbit-btn:active{border-color:var(--oc);box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--oc),0 12px 26px rgba(0,0,0,.6)}
 .orbit-btn:active{transform:translateY(1px) scale(.98);transition-duration:.08s}
 @keyframes orbit-spin{to{--oa:360deg}}
 /* .p3-enter keeps its canonical shape; the epic orbit rides on top of it. */
@@ -588,6 +595,12 @@ button.p3-enter.orbit-btn.letter-next{padding:13px 30px;font-size:14px}
 .epic-file-btn{cursor:pointer;padding:13px 22px;font-size:13.5px}
 .epic-url{flex:1 1 260px;box-sizing:border-box;padding:13px 18px;font-family:inherit;font-size:15px;color:#fff;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:2px solid rgba(255,255,255,.35);border-radius:999px;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 8px 18px rgba(0,0,0,.5)}
 .epic-url:focus{outline:none;border-color:#d4a017;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 0 24px -4px #d4a017,0 8px 18px rgba(0,0,0,.5)}
+/* EPIC REPAIR 2026-11-17 — paste textarea focus in deep gold, matching the
+   URL input above. The canonical studio-input focus glows bright purple, and
+   openStudio calls paste.focus() on every door open, so the bright glow was
+   the first thing seen after opening a door. Higher specificity than the
+   canonical rule, later in the file. Canonical untouched. */
+.studio-input.epic-paste:focus{outline:none;border-color:#d4a017;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 0 24px -4px #d4a017,0 8px 18px rgba(0,0,0,.5)}
 .epic-url::placeholder{color:rgba(255,255,255,.55)}
 .epic-status{font-size:15px;line-height:1.6;color:#fff;margin:14px 0 0;min-height:22px;text-align:center}
 .epic-status:empty{display:none}
@@ -950,14 +963,49 @@ function cleanPaste(raw){
   var t = String(raw || '').replace(/\r\n?/g, '\n');
   t = t.replace(/SN-\d+\s*[—–-]\s*/g, '');
   t = t.replace(/^\s*(Hook|Nutshell|What it is|Why it matters|How to apply it|In a nutshell)\s*:\s*/gim, '');
+  /* REPAIR 2026-11-17 — labels also hide mid-line, after a sentence break:
+     a pasted paragraph ("…messy. Nutshell: the new internet…") boarded
+     "Nutshell:" visibly. The word after the label is capitalised — it
+     followed a colon, so it arrives lowercase, and it now starts a sentence. */
+  t = t.replace(/([.!?;—–]\s+)(Hook|Nutshell|What it is|Why it matters|How to apply it|In a nutshell)\s*:\s*([a-z]?)/g, function(m, punc, label, c){ return punc + (c ? c.toUpperCase() : ''); });
   t = t.replace(/^#{1,6}\s+/gm, '').replace(/[*_]{1,3}/g, '');
   t = t.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n');
   return t.trim();
 }
 function splitSentences(t){
-  var m = t.match(/[^.!?]+[.!?]+["'”)]?\s*/g);
-  if (m && m.length) return m.map(function(s){ return s.trim(); }).filter(Boolean);
-  return t.split(/\n+/).map(function(s){ return s.trim(); }).filter(Boolean);
+  /* REPAIR 2026-11-17 — a line with no terminal punctuation is a title when
+     the next line starts a new sentence (capital): break there, so "The Heart
+     of the Machine" never fuses with the sentence after it. Any other line
+     break is wrapping: join with a space, so a sentence wrapped over two
+     lines stays one sentence. A leftover unpunctuated tail is its own
+     sentence, never glued onto the one before it. */
+  var lines = t.split(/\n+/).map(function(s){ return s.trim(); }).filter(Boolean);
+  var segs = [];
+  var buf = '';
+  for (var i = 0; i < lines.length; i++){
+    if (buf){
+      var prevEnds = /[.!?]["'”)]?$/.test(lines[i - 1]);
+      var nextCap = /^[A-Z0-9"“']/.test(lines[i]);
+      if (prevEnds || nextCap){ segs.push(buf); buf = ''; }
+      else buf += ' ';
+    }
+    buf += lines[i];
+  }
+  if (buf) segs.push(buf);
+  var out = [];
+  segs.forEach(function(seg){
+    /* NB: a failing exec() resets lastIndex to 0, so the end of the last
+       match is captured inside the loop, before the loop ends. */
+    var re = /[^.!?]+[.!?]+["'”)]?/g, mm, found = false, lastEnd = 0;
+    while ((mm = re.exec(seg)) !== null){ found = true; out.push(mm[0].trim()); lastEnd = re.lastIndex; }
+    if (found){
+      var tail = seg.slice(lastEnd).trim();
+      if (tail) out.push(tail);
+    } else {
+      out.push(seg.trim());
+    }
+  });
+  return out.filter(Boolean);
 }
 function titleFrom(sentence){
   var w = sentence.replace(/["'”().,;:!?]+$/,'').split(/\s+/).slice(0, 7).join(' ');
@@ -1052,11 +1100,21 @@ function makeBeautiful(){
 }
 function epicImageBoard(src, title, caption){
   var tone = '#d4a017';
-  var html = '<article class="epic-img-board" style="--tone:' + tone + ';background-image:url(&quot;' + esc(src) + '&quot;)">' +
+  /* REPAIR 2026-11-17 — a " in the address broke the quoted url() silently
+     while the status still said success. " and \ are percent-encoded before
+     boarding (the load probe already fetched the same encoded form), and the
+     boarded address is re-probed: if the background cannot load, the status
+     says so honestly instead of claiming the board. A ) in the address
+     boards fine inside the quotes — no change there. */
+  var safe = String(src).replace(/\\/g, '%5C').replace(/"/g, '%22').replace(/[\r\n]/g, '');
+  var html = '<article class="epic-img-board" style="--tone:' + tone + ';background-image:url(&quot;' + esc(safe) + '&quot;)">' +
     '<div class="epic-img-words"><span class="ib-kind">AN IMAGE, AS A BOARD</span>' +
     '<h2 class="ib-title">' + esc(title) + '</h2><p>' + esc(caption) + '</p>' +
     '<div class="ib-foot">Written by Naya for you &middot; the image is the board</div></div></article>';
   showResults(html, 'The image is the board — full-bleed, rimmed, lit. Not a picture pasted inside a box.');
+  var check = new Image();
+  check.onerror = function(){ setStatus('That image could not be shown as a board — the address loaded, but the board itself did not. Check the address and try again.'); };
+  check.src = safe;
 }
 var makeBtn = document.getElementById('epicMakeBtn');
 if (makeBtn) makeBtn.addEventListener('click', makeBeautiful);
