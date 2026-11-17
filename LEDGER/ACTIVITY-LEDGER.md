@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-17 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-17 23:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31145,6 +31145,14 @@ _Last updated: 2026-11-17 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
+**Task:** PR #2400 merge-faithful on live main; 20/20 round-trip re-proven; D1 flag gap reproduced + routed to Naya 5
+
+**Receipt:** `twelve-lane-receipts/t0062-lane4.md`
+
+**Evidence:** Verified: lane4-t0062-d1-repro.json exists; merge commit 597803d8c79e and live-tip ancestor claim, 4 tip blob SHAs, and 20/20 round-trip all stated with exact bytes; D1 handoff comment 6120453888 cited. Clears 9.5 because merge-faithfulness and round-trip were re-proven on the live tip itself (not branch proof), closing the t1212 gap for this item.
+
+### ✅ t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
 **Task:** PR #2400 merge-faithful on live main; 20/20 round-trip re-proven; D1 re-routed to Naya 5
 
 **Receipt:** `twelve-lane-receipts/t0062-lane4.md`
@@ -31333,6 +31341,14 @@ _Last updated: 2026-11-17 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
+**Task:** Flip-sequence merge seat: re-pin 4 PRs, calculator HOLDs on #2456/#2457, #2453 HOLD honored
+
+**Receipt:** `twelve-lane-receipts/t0052-lane8.md`
+
+**Evidence:** Verified: decision JSONs 20261012T080444Z (#2456) and 20261012T080449Z (#2457) exist; four pin SHAs cited with branch refs; #2453 HOLD correctly maintained with live check-run rollup. No merge manufactured. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: #2458 calculator not run this tick (verdict reads 'not run'); sign-in comment posted after first re
+
+### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
 **Task:** Flip-sequence merge seat: re-pin 4 PRs, calculator HOLDs, Scorecard-Law state
 
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
@@ -31456,6 +31472,14 @@ _Last updated: 2026-11-17 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
 
 **Evidence:** Dispatcher verified via git protocol: refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 == receipt pin; refs/pull/2456/head == e326283252a7e9f932b0d9ebad465c50950b0799 == pin; refs/pull/2457/head == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == pin; refs/pull/2458/head == ac270833fb3a52c6be45acc730b0e5132353d5a5 == pin; main == aa8061c1
+
+### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 causal-proof experiment: hypothesis change + sealed pre-registration + instrument build
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** Verified: all cited artifacts exist — HYPOTHESIS-CHANGE-h8.md, prereg-sealed.md, seal-verification.json, harness/verify_home_independent.py, seed/data/receipt.txt, decide.py decision JSON 20261012T080627Z. Pre-reg sealed before probe spawn, contamination check done, saturation grep 0 matches. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: probe briefs
 
 ### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -31605,6 +31629,14 @@ _Last updated: 2026-11-17 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** Human-value window audit t0022-t0052: instrument run x2 byte-identical, hand audit, HV3 re-derived
+
+**Receipt:** `twelve-lane-receipts/t0052-lane11.md`
+
+**Evidence:** Verified: metric_audit_t0052.json and hv_output_t0052_run1.json exist; determinism claim (two byte-identical runs, sha256 e4f54deb...) and M2:9/M3:8/M4:3 cross-check stated; boundary receipts handled per t1322 precedent (excluded, not retro-filled). Score 9.0, GOOD ONE MORE PASS. Why not 9.5: single-seat judgments (no independent re-run of the audi
+
+### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** Human-value window audit t0022-t0052 (instrument determinism + HV3 re-derivation)
 
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
@@ -31736,6 +31768,14 @@ _Last updated: 2026-11-17 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
+
+### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: independently verify board-post half of t0803 verdict (comment 6184357778)
+
+**Receipt:** `twelve-lane-receipts/t0045-lane12.md`
+
+**Evidence:** Verified: receipt file exists; feedback-feed.md exists at cited line; REST GET claims (comment id 6184357778, author SoulSchoolAcademy, issue 2537, created 2026-10-15T04:23:00Z, 3493-byte body) internally consistent and substance-fidelity checks named claim-by-claim incl. four case-law SHAs. Clears 9.5 because the gap closed with a fresh independen
 
 ### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
