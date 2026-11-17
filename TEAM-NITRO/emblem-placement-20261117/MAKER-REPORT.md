@@ -315,8 +315,23 @@ landing link incident). They concern the standard, future briefs, and
 the captain's delivery — not this build. The Link Law IS applied here
 (the timestamped staged link above, verified). The training file is
 for future briefs; this brief did not name it and the round is
-unaffected. Named here so the coordinator sees them, not silently
-absorbed.
+unaffected. **21:37Z — THE MAIN URL LAW (done means live, like
+auto-save):** when work is done it goes in the system and goes LIVE on
+the main URL (nayanet.app) — always live, always there, like auto-save.
+Practice URLs are for CHECKING before a thing is done, never for
+keeping the finished thing. "Done" still means checked — the captain's
+eye first, then his eye on the main URL itself — and then it is live.
+Nothing finished sits on a practice URL. The URL inventory (every
+practice URL, what it is, when it was made, which is newest) is being
+compiled separately (21:37Z,
+`~/workspace/team-nitro/URL-INVENTORY-20261117.md`). This round's
+staged URL belongs in that inventory:
+`https://naya-pricing-free-staging.nayapower.workers.dev/free` — emblem
+certificate, staged 21:26:30Z, entry sha `fbe04202…`, PR #3440. This
+round does NOT push anything live: the eye is owed (§7) and going live
+is his tap after the checks — the law and the brief agree at this
+stage (practice URL for checking; live on his hand after the eyes).
+Named here so the coordinator sees them, not silently absorbed.
 
 ## §9 The identity + unfold sequencing (the one open build item)
 **Why they are NOT staged in this round — two measured reasons:**
@@ -525,15 +540,42 @@ E1–E2.
 ## §13 Filing receipts
 - Branch: `emblem/certificate-20261117` (NEW, from certificate-fix tip
   `7299a57c`)
-- Commit: [TO BE FILLED by the receipts commit]
-- Files filed (blobs, all read-back MATCH by sha256): MAKER-REPORT.md ·
-  `build-emblem-certificate.py` · `audit-emblem-certificate.py` ·
-  `probe-emblem.py` ·
-  `build-emblem-identity-agreement-SPEC.py` ·
-  `inspect-base.py` · `survey-walk.py` · `survey-walk2.py` ·
-  `new-entry.html` (the staged entry bytes 3,801,588 B, sha256
-  `fbe04202…` — re-derived in memory, never read from disk).
-- PR: [TO BE FILLED — open, UNMERGED, base `main`]
+- Commit: `cc5da5ccf31486647038881cb177d703377f026a`
+- Tree: `b8159d91cc7f3723e6421ff551052ce6631dc35b`
+- Files filed (blobs, all read-back MATCH by sha256):
+  - MAKER-REPORT.md (commit-1 version, without these receipts):
+    blob `6a7e840a195d681492a7a7dbe355560b0901201f`, 32,822 B,
+    sha256 `62ba686b41d23f104bc61f8f2ef1eaf8c01ce4f536d4ada629ed1604cdbc5f5e`
+  - `build-emblem-certificate.py`: blob
+    `fe18a81da06a09ffdfd2dcf90abe480a450dc3b1`, 19,426 B,
+    sha256 `0d0919d1a80b456e7bff663339e0a7ec2b68c21fa472d8334ab583e96f77d1ff`
+  - `audit-emblem-certificate.py`: blob
+    `0367889b8080a2abbf92579c6cc70b7b45168ed4`, 6,475 B,
+    sha256 `7a7fa97c1eebc18b7ed9abb5ee442c1c0d79580b38f064cab95b1bfec26368e6`
+  - `probe-emblem.py`: blob
+    `19fc10062a185f165be35249fd424c63d9e19528`, 8,971 B,
+    sha256 `7ce6e22cdf8cf611472f8594bf27af2cab00c3fd3655b28790dd83c6cc1f3a75`
+  - `build-emblem-identity-agreement-SPEC.py`: blob
+    `8d3b71c509ef25e59af39a74e03443eaa0803f77`, 10,026 B,
+    sha256 `e2016d7760f927db45f02d3493d30463ead19c93e01abcb230f291a3a592c20a`
+  - `inspect-base.py`: blob
+    `fec8d9ee3be0ee21acd4d0ecfbdbd402a54f831b`, 2,079 B,
+    sha256 `d3789cce5f3325ccc1342eec25e0ae5265eff11d777eaf7e50f0b61d16e7f606`
+  - `survey-walk.py`: blob
+    `f2960c54a8d1a5880200b62b0f5fd491aff9a634`, 1,686 B,
+    sha256 `7987ffc13bb0f6774a24b9a5ae0b879594446e742ccf5406f61b727c0ff6ec19`
+  - `survey-walk2.py`: blob
+    `518f8536d32275651c5fa510059a30f9acc54144`, 1,857 B,
+    sha256 `eac4edc5376dddc3bce9278066bec52ec76706c5053a253a2dbd68f1c63753a4`
+  - `new-entry.html` (the staged entry bytes 3,801,588 B, sha256
+    `fbe04202…` — re-derived in memory, never read from disk): blob
+    `25fd4633a5e5b784c48c352ae2565bdf94268bc5`
+- PR: **#3440**, https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3440,
+  open, UNMERGED, base `main`
+- Receipts commit (this report, §13 filled): [filed by
+  `file-emblem-receipts.py --parent
+  cc5da5ccf31486647038881cb177d703377f026a --pr 3440` — commit sha
+  below]
 - Staged: `https://naya-pricing-free-staging.nayapower.workers.dev/free`
   (entry 3,801,588 B, sha `fbe04202…`, worker sha `d3d75854…`,
   `modified_on 2026-11-17T21:26:30Z`; timestamped link verified §4).
