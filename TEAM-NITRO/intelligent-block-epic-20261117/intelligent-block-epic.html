@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Intelligent Block — Epic | NayaNET</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<!-- THE OFFICIAL SLIDESHOW (sideways) — CANONICAL IMPLEMENTATION, 2026-11-16.
+     Harvested VERBATIM from the Smart Note Studio (blob a7114308 —
+     supersedes the brief's edd5f1d8, Black Diamond fix landed 00:04Z,
+     checker PASS): the slides-mode CSS (in the style block below) +
+     wireReveal() + showSlide().
+     The style block is the canonical style (deck + Studio fixes; deltas: ['.p3-enter', '.p3-enter:hover,.p3-enter:active', '.deck-next', '.deck-next:hover,.deck-next:active']).
+     Deliberately omitted: the Studio's tiny second style block —
+     .letter-beat[hidden]{display:block} and .slides-nav{display:none} — is
+     NOT carried here (beats must hide on [hidden]; the slideshow nav must
+     show). The font links above are the Studio's, verbatim, in head.
+     The beats are the SAME beats as the unfold — one board at a time,
+     sideways: Back / Slide N of M / Next. GLUE (marked below): the two
+     format buttons + setFormat(), the Studio's minus render() — render()
+     rebuilds beats from the Studio's note engine; here beats are static
+     HTML, so setFormat resets the reveal state instead. Everything else
+     is verbatim. Future pages harvest THIS file. ONE slideshow — never a
+     second variant. -->
+<style>
+
+/* HARVESTED — walk base (walk-beginning-fixed-fc6bb640-baseline.html).
+   ONE TOKEN ADAPTED: the top glow reads var(--glowc) so the back light
+   changes color with each beat (DECK: the theme switch). Default is the
+   walk's own purple, so beat 1 on entry looks exactly as harvested. */
+@property --glowc{syntax:'<color>';inherits:true;initial-value:rgba(160,107,255,.14)}
+
+html,body{margin:0;padding:0}
+
+body{background:radial-gradient(1200px 520px at 50% -10%,var(--glowc,rgba(160,107,255,.14)),transparent 60%),#050507;color:#F8F7FB;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;transition:--glowc 1s ease}
+
+button{font-family:inherit}
+
+/* HARVESTED — .p3-enter, the elite system button (walk line 72). */
+.p3-enter{position:relative;overflow:hidden;display:block;margin:12px auto 0;padding:16px 46px;border-radius:999px;font-size:15px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#050507,#050507);border:2px solid #a06bff;text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px rgba(160,107,255,.45);box-shadow:inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px #a06bff,0 10px 22px rgba(0,0,0,.55);transition:box-shadow .25s,transform .25s,border-color .25s}
+
+.p3-enter::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.16) 50%,transparent 58%);transform:translateX(-130%);animation:enterFlow 4.5s ease-in-out infinite;pointer-events:none}
+
+@keyframes enterFlow{0%,55%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
+
+.p3-enter:hover,.p3-enter:active{border-color:#c09aff;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #a06bff,0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+
+/* HARVESTED — the unfold container + jewel palette vars (walk line 776). */
+.p3-deal-unfold{--ink:#f4f2f7;--bg:#050607;--bg-raise:#121019;--muted:#9a97a8;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--purple:#a06bff;--sapphire:#3fb8ff;--emerald:#2fe89e;--gold:#ffbf3d;--magenta:#e84fff;--red:#ff5e6c;--orange:#ff9a5a;--yellow:#ffea00;--lime:#b8ee57;--indigo:#6675ff;--teal:#40d3bb;--rich-orange:#ff9a5a;--radius-md:18px;--radius-lg:26px;--radius-pill:999px;--ease:cubic-bezier(.22,1,.36,1);--depth-hi:inset 0 1px #fff8,0 24px 60px #000b;--depth-drop:0 16px 40px #000a}
+
+.p3-deal-unfold{position:relative;border:1.5px solid rgba(255,255,255,.32);border-radius:22px;padding:28px 18px 30px;margin:0 auto;max-width:980px;box-shadow:0 18px 40px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.14)}
+
+/* HARVESTED — deck title + step label. */
+.deal-title{font-family:Marcellus,Georgia,serif;font-size:30px;line-height:1.2;color:#fff;text-align:center;margin:6px 0 4px;padding:0 64px}
+
+@media(max-width:480px){.deal-title{font-size:24px;padding:0 60px}.deal-top-who{font-size:20px}}
+
+.letter-steplabel{text-align:center;font-size:14px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin:0 0 12px}
+ .letter-steplabel:empty{display:none}
+
+/* HARVESTED — the Royal Unfolding letter beats (walk lines 446-468). */
+.letter-beat{font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.62;color:#ffffff;margin:0 0 17px}
+
+.letter-beat.lead{font-size:clamp(25px,3.6vw,34px);line-height:1.28;color:#fff}
+
+.letter-beat.final{font-size:21px;letter-spacing:.02em}
+
+.letter-beat.reveal,.letter-sign.reveal{animation:letter-in .7s var(--ease)}
+
+@keyframes letter-in{from{opacity:0;transform:translateY(10px)}}
+
+.letter-controls{margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:13px;position:relative;z-index:2}
+
+.letter-controls[hidden]{display:none}
+
+.letter-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:940px;margin:0 auto}
+
+.ldot{width:14px;height:14px;border:none;border-radius:0;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);background:conic-gradient(from 210deg,rgba(255,255,255,.85),rgba(255,255,255,.18) 25%,rgba(0,0,0,.55) 50%,rgba(255,255,255,.3) 75%,rgba(255,255,255,.85)),var(--dc,#a06bff);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--dc,#a06bff) 60%,transparent))}
+
+@media(max-width:480px){.letter-dots{gap:5px}.ldot{width:10px;height:10px}}
+
+.ldot.on{background:conic-gradient(from 210deg,#fff,rgba(255,255,255,.4) 25%,rgba(0,0,0,.3) 50%,rgba(255,255,255,.5) 75%,#fff),var(--dc,#a06bff);border:none;box-shadow:none;filter:drop-shadow(0 0 10px var(--dc,rgba(160,107,255,.9)))}
+
+.letter-next{padding:13px 30px;font-size:14px}
+
+.letter-all{background:none;border:none;font-family:inherit;font-size:12.5px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 8px}
+
+.letter-beat .ib-foot{color:#fff}
+
+.p3-deal-unfold .ib-title{color:#fff}
+
+.p3-deal-unfold .ib-nutshell b, .p3-deal-unfold .ib-layer-head b{color:#fff}
+
+.letter-all:hover{color:#fff}
+
+.letter-beat[hidden]{display:none}
+
+@media(max-width:640px){.letter-beat{font-size:16.5px;line-height:1.58;margin-bottom:14px}
+.letter-beat.lead{font-size:24px}
+.letter-beat.final{font-size:18px}
+.letter-next{width:100%;justify-content:center}}
+
+@media(prefers-reduced-motion:reduce){.letter-frame-light,.letter-seal::after,.letter-beat.reveal,.letter-sign.reveal{animation:none!important}}
+
+.letter-all{padding:14px 10px;min-height:44px}
+
+/* HARVESTED — Naya's portrait on every beat (walk lines 412, 435). */
+.deal-beat-photo{width:240px;height:240px;flex:0 0 auto;border-radius:50%;object-fit:cover;border:2px solid color-mix(in srgb, var(--tone, #a06bff) 70%, #fff 10%);box-shadow:0 0 22px color-mix(in srgb, var(--tone, #a06bff) 55%, transparent),0 8px 20px rgba(0,0,0,.6)}
+
+.letter-beat.lead .deal-beat-photo{border-color:rgba(168,107,255,.7);box-shadow:0 0 22px rgba(168,107,255,.55),0 8px 20px rgba(0,0,0,.6)}
+
+@media(max-width:480px){.deal-beat-photo{width:168px;height:168px}.deal-sign-photo{width:288px;height:288px}.letter-beat .deal-eye-note{padding-right:58px}.face-right .deal-eye-note{padding-left:58px}.deal-quote-photo{width:38px;height:38px}}
+
+/* HARVESTED — the Hub Intelligent Block (walk lines ~471-510). */
+.ib-subtitle{font-size:18px;color:#f2f2f6;text-align:center;margin:6px 0 2px;font-weight:500;letter-spacing:.02em;line-height:1.4}
+
+.intel-board {
+  --tone: var(--purple);
+  position: relative;
+  border: 2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%);
+  border-radius: 26px;
+  padding: 32px 32px 24px;
+  background: #050607;
+  box-shadow:
+    inset 0 1px #ffffff2e,
+    0 28px 64px #000000c0,
+    0 0 44px color-mix(in srgb, var(--tone) 18%, transparent);
+  overflow: hidden;
+}
+
+.intel-board.tone-purple  { --tone: var(--purple); }
+
+.intel-board.tone-sapphire { --tone: var(--sapphire); }
+
+.intel-board.tone-emerald { --tone: var(--emerald); }
+
+.intel-board.tone-indigo { --tone: #6675ff; }
+
+.intel-board.tone-forest { --tone: #2e9e6a; }
+
+.intel-board.tone-lime { --tone: #b8ee57; }
+
+.intel-board.tone-teal { --tone: var(--teal); }
+
+.intel-board.tone-orange { --tone: #ff8c42; }
+
+.intel-board.tone-ruby { --tone: #ff5e6c; }
+
+.intel-board.tone-magenta { --tone: #ed42c4; }
+
+.intel-board::before {
+  content: ""; position: absolute; left: 10px; top: 18px; bottom: 18px; width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--tone), color-mix(in srgb, var(--tone) 70%, #fff 12%), var(--tone));
+  box-shadow: 0 0 28px color-mix(in srgb, var(--tone) 55%, transparent);
+  pointer-events: none;
+}
+
+.intel-board::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: none; 
+}
+
+.ib-jewel {
+  width: 64px; height: 64px; border-radius: 50%; flex: none;
+  display: grid; place-items: center; font-size: 30px; font-weight: 800; color: #fff; line-height: 1; text-shadow: 0 0 10px var(--tone), 0 0 24px var(--tone);
+  
+  background:
+    conic-gradient(from 210deg at 50% 50%, rgba(255,255,255,.6) 0deg, transparent 45deg, rgba(0,0,0,.38) 90deg, transparent 135deg, rgba(255,255,255,.45) 180deg, transparent 225deg, rgba(0,0,0,.32) 270deg, transparent 315deg, rgba(255,255,255,.6) 360deg),
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), transparent 35%),
+    radial-gradient(circle at 70% 75%, rgba(0,0,0,.45), transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--tone), color-mix(in srgb, var(--tone) 55%, #000) 85%);
+  border: 2px solid rgba(255,255,255,.4);
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.6),
+    inset 0 -4px 12px rgba(0,0,0,.5),
+    0 0 36px color-mix(in srgb, var(--tone) 85%, transparent), 0 0 64px color-mix(in srgb, var(--tone) 45%, transparent),
+    0 10px 24px rgba(0,0,0,.6);
+  
+  animation: jewelBreathe 4s ease-in-out infinite;
+}
+
+.ib-kind { font-size: 13px; font-weight: 800; letter-spacing: .14em; color: var(--tone); }
+
+.ib-title {
+  color: var(--ink); font-size: clamp(24px, 2.8vw, 32px); line-height: 1.12;
+  letter-spacing: -0.01em; margin: 0 0 20px; font-weight: 800;
+  text-wrap: balance;
+}
+
+.ib-nutshell {
+  margin: 22px 0 19px; padding: 20px 21px;
+  border: 2px solid #ffffff16; border-radius: 18px;
+  background: #08080d;
+  box-shadow: inset 0 1px #fff3, 0 16px 35px #0009;
+}
+
+.ib-nutshell p {
+  font-size: 17px; line-height: 1.65; color: #eeeaf2;
+  margin: 0; font-weight: 500;
+}
+
+.ib-blocktop {
+  display: flex; justify-content: space-between; gap: 16px; align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.ib-identity { display: flex; gap: 14px; min-width: 0; align-items: flex-start; }
+
+.ib-identity .ib-jewel { width: 64px; height: 64px; }
+
+.ib-title {
+  line-height: 1.05; letter-spacing: -.02em;
+  margin: 0 0 8px; color: var(--ink); font-weight: 850;
+}
+
+.ib-foot {
+  margin-top: 18px; padding-top: 14px; border-top: 2px solid #ffffff16;
+  color: #fff; font-size: 12.5px; line-height: 1.5; word-break: normal; overflow-wrap: normal;
+}
+
+.ib-foot-logo{width:22px;height:22px;flex:0 0 auto;vertical-align:-6px;border-radius:5px}
+
+/* HARVESTED — the board's lit state + nutshell overrides (walk lines ~763-773).
+   Only the rules the deck uses are carried (no .ib-layer rules: the deck
+   has no layers; no .ib-card rule: the deck has no cards). */
+.ib-identity { gap: 26px; }
+
+.intel-board .ib-subtitle{font-size:20px !important;background:transparent !important;border:0 !important;box-shadow:none !important;color:#fff;padding:14px 18px;line-height:1.5}
+
+.intel-board .ib-nutshell{font-size:20px !important;background:#050607 !important;border:2px solid color-mix(in srgb, var(--tone, #a06bff) 55%, #fff 14%) !important;border-radius:18px !important;box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #a06bff) 18%, transparent) !important;color:#fff}
+
+.intel-board .ib-nutshell p{font-size:20px !important;color:#fff;background:transparent !important}
+
+.intel-board .ib-nutshell p+p{margin-top:12px !important}
+
+.intel-board{opacity:.84;background:#050607 !important;border:2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%) !important;border-radius:26px;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}
+
+.intel-board.rv-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}
+
+.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important}
+
+.intel-board .ib-nutshell:hover,.intel-board .ib-nutshell:active{transform:translateY(-3px) !important;box-shadow:inset 0 1px #ffffff2e,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #a06bff) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important;border-color:color-mix(in srgb, var(--tone, #a06bff) 75%, #fff 10%) !important}
+
+.intel-board.rv-lit .ib-nutshell{box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent),0 0 34px -8px #ffffff !important}
+
+.intel-board.rv-lit .ib-nutshell:hover,.intel-board.rv-lit .ib-nutshell:active{transform:translateY(-3px) !important;box-shadow:inset 0 1px #ffffff2e,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #a06bff) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important;border-color:color-mix(in srgb, var(--tone, #a06bff) 75%, #fff 10%) !important}
+
+/* HARVESTED — the showcase frame (edit-unfolding-add-images.py lines 57-60).
+   ONE LINE ADAPTED: aspect-ratio:4/3 is dropped — the deck slides are
+   16:9 (1672x941), not 4:3, and the frame fits the image as it is;
+   width:100% + height:auto + object-fit:contain shows the whole picture,
+   never cropped, with no letterbox bars. */
+.lb-showcase{margin:18px auto 4px;max-width:min(640px,100%);box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#a06bff) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#a06bff) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+
+.lb-showcase img{display:block;width:100%;height:auto;object-fit:contain;border-radius:12px;background:#05060a}
+
+.lb-showcase:hover{box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#a06bff) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+
+@media(max-width:480px){.lb-showcase{padding:8px;border-radius:18px;margin-top:14px}}
+
+/* HARVESTED — phone rhythm for the block (walk lines ~640, block parts only). */
+@media (max-width: 640px) {
+  .ib-blocktop {
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 10px;
+  }
+  .intel-board { padding: 22px 18px 18px; border-radius: 20px; }
+  .ib-title { font-size: clamp(24px, 6.4vw, 32px); }
+}
+
+@media(max-width:480px){.p3-deal-unfold{padding:22px 12px 26px}}
+
+/* DECK — the only new CSS. The per-beat button lights in its beat's color:
+   --tone is set on each beat's article and inherited, so the button, the
+   frame edge, the portrait ring, the jewel and the board all light together.
+   The Join link is the same button, as a link. The head line under the title
+   is one quiet line, white, nothing gray. Beats stack on the 8px grid. */
+.deck-next{border-color:var(--tone);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone);box-shadow:inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone),0 10px 22px rgba(0,0,0,.55)}
+
+.deck-next:hover,.deck-next:active{border-color:var(--tone);box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+
+.deck-next[hidden]{display:none}
+
+a.deck-next{text-decoration:none;text-align:center}
+
+.deck-sub{text-align:center;font-size:15px;line-height:1.6;color:#fff;margin:0 0 8px}
+
+#deckBody{display:grid;gap:32px}
+
+@media (prefers-reduced-motion: reduce){body{transition:none}}
+
+/* STUDIO — the only new CSS. Everything above this line is the deck, verbatim.
+   New rules: the input board, the speak row, the format toggle, the face swap,
+   the six perspective buttons, the slides mode (one board at a time, sideways),
+   the chain dividers, the share board and the shared-feed cards. Same materials
+   (obsidian, white rim, top-left light), same 8px grid, white text always. */
+.studio-wrap{max-width:980px;margin:0 auto;padding:0 16px 64px}
+
+.studio-steps{list-style:none;margin:18px auto 28px;padding:0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:940px}
+
+.studio-steps li{flex:1 1 200px;display:flex;gap:10px;align-items:flex-start;background:#08080d;border:1.5px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.5)}
+
+.studio-steps .step-n{flex:0 0 auto;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;color:#fff;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.9),transparent 40%),radial-gradient(circle at 50% 50%,var(--sc,#a06bff),#000 90%);border:2px solid rgba(255,255,255,.4);box-shadow:0 0 16px var(--sc,#a06bff)}
+
+.studio-steps b{display:block;font-size:15px;color:#fff;line-height:1.3}
+
+.studio-steps span{font-size:13px;line-height:1.5;color:#fff;opacity:.92}
+
+.studio-input{width:100%;box-sizing:border-box;min-height:132px;resize:vertical;margin:18px 0 12px;padding:18px 20px;font-family:inherit;font-size:17px;line-height:1.6;color:#fff;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:2px solid rgba(255,255,255,.55);border-radius:18px;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),inset 0 -1px 0 rgba(255,255,255,.12),0 12px 28px rgba(0,0,0,.55)}
+
+.studio-input:focus{outline:none;border-color:#a06bff;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.2),0 0 28px -4px #a06bff,0 12px 28px rgba(0,0,0,.55)}
+
+.studio-input::placeholder{color:rgba(255,255,255,.55)}
+
+.speak-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:4px 0 6px}
+
+.speak-btn{flex:0 0 auto;width:56px;height:56px;border-radius:50%;border:2px solid #a06bff;background:linear-gradient(180deg,#050507,#050507);color:#fff;font-size:24px;cursor:pointer;box-shadow:inset 0 -4px 8px rgba(0,0,0,.55),0 0 22px -4px #a06bff,0 8px 18px rgba(0,0,0,.55)}
+
+.speak-btn.live{border-color:#ff5e6c;box-shadow:0 0 28px -2px #ff5e6c,0 8px 18px rgba(0,0,0,.55);animation:speakPulse 1.6s ease-in-out infinite}
+
+@keyframes speakPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+.speak-text{font-size:15px;line-height:1.5;color:#fff}
+
+.speak-text b{font-size:16px}
+
+.speak-status{font-size:14px;line-height:1.5;color:#fff;margin:6px 0 0;min-height:20px}
+
+.speak-status:empty{display:none}
+
+.fact-count{font-size:14px;color:#fff;margin:10px 0 0}
+
+.input-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+
+.sample-btn{background:none;border:none;font-family:inherit;font-size:13.5px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:12px 10px;min-height:44px}
+
+.studio-note{font-size:14px;line-height:1.6;color:#fff;margin:16px 0 0}
+
+.studio-toolbar{display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;justify-content:space-between;margin:28px auto 20px;max-width:980px}
+
+.fmt-group,.face-group{background:#08080d;border:1.5px solid rgba(255,255,255,.14);border-radius:18px;padding:16px 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 12px 28px rgba(0,0,0,.5)}
+
+.fmt-group{flex:1 1 420px}
+
+.face-group{flex:1 1 300px}
+
+.toolbar-label{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 12px}
+
+.fmt-row{display:flex;flex-wrap:wrap;gap:12px}
+
+.fmt-btn{flex:1 1 180px;padding:13px 18px;border-radius:999px;font-size:14px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(180deg,#050507,#050507);border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 18px rgba(0,0,0,.5)}
+
+.fmt-btn.on{border-color:var(--tone,#a06bff);box-shadow:0 0 24px -4px var(--tone,#a06bff),0 10px 22px rgba(0,0,0,.55)}
+
+.face-row{display:flex;align-items:center;gap:14px}
+
+.face-mini{width:56px;height:56px;flex:0 0 auto;border-radius:50%;object-fit:cover;border:2px solid rgba(168,107,255,.7);box-shadow:0 0 16px rgba(168,107,255,.45),0 6px 14px rgba(0,0,0,.6)}
+
+.face-mono-mini{width:56px;height:56px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;color:#fff;background:linear-gradient(135deg,#1e1e26,#0a0a0f);border:2px solid rgba(255,255,255,.55);box-shadow:0 6px 14px rgba(0,0,0,.6)}
+
+.face-mono-mini[hidden]{display:none}
+
+.face-state{font-size:15px;line-height:1.5;color:#fff}
+
+.face-state b{display:block;font-size:15px}
+
+.swap-btn{background:none;border:2px solid rgba(255,255,255,.45);border-radius:999px;font-family:inherit;font-size:13px;font-weight:800;color:#fff;cursor:pointer;padding:10px 16px;margin-top:8px}
+
+.swap-btn:hover{border-color:#a06bff}
+
+.face-file{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+
+.persp-block{max-width:980px;margin:26px auto 0;text-align:center}
+
+.persp-label{font-size:16px;font-weight:800;color:#fff;margin:0 0 4px}
+
+.persp-sub{font-size:14px;line-height:1.6;color:#fff;margin:0 0 16px}
+
+.persp-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+.persp-btn{padding:13px 22px;border-radius:999px;font-size:14px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(180deg,#050507,#050507);border:2px solid var(--pc,#a06bff);box-shadow:0 8px 18px rgba(0,0,0,.5)}
+
+.persp-btn.on{box-shadow:0 0 28px -2px var(--pc,#a06bff),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
+
+.persp-proof{font-size:14.5px;line-height:1.6;color:#fff;margin:16px 0 0}
+
+.persp-proof b{color:#fff}
+
+.persp-how{font-size:13.5px;line-height:1.6;color:#fff;margin:8px 0 0}
+
+.persp-how button{background:none;border:none;font-family:inherit;font-size:13.5px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px 8px}
+
+.slides-nav{display:none;align-items:center;justify-content:center;gap:16px;margin:22px 0 4px}
+
+.slides-mode .slides-nav{display:flex}
+
+.slides-nav .slide-count{font-size:15px;font-weight:800;color:#fff;min-width:96px;text-align:center}
+
+.slide-prev,.slide-next{padding:12px 22px;font-size:14px}
+
+.slides-mode #studioBody{display:block}
+
+.slides-mode #studioBody .letter-beat{display:none}
+
+.slides-mode #studioBody .letter-beat.slide-current{display:block;animation:slide-in .45s var(--ease)}
+
+@keyframes slide-in{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+
+.fact-num{color:var(--tone,#a06bff);font-weight:800;margin-right:8px}
+
+.chain .ib-nutshell p:not(:last-child)::after{content:"◆";display:block;text-align:center;color:var(--tone,#a06bff);font-size:12px;margin:12px 0 2px}
+
+.face-mono{width:240px;height:240px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:26px;color:#fff;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:2px solid color-mix(in srgb, var(--tone, #a06bff) 70%, #fff 10%);box-shadow:0 0 22px color-mix(in srgb, var(--tone, #a06bff) 55%, transparent),0 8px 20px rgba(0,0,0,.6)}
+
+@media(max-width:480px){.face-mono{width:168px;height:168px;font-size:20px}}
+
+.share-board{margin-top:32px}
+
+.share-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+
+.share-meta{font-size:15px;line-height:1.6;color:#fff;margin:14px 0 0}
+
+.share-status{font-size:15px;line-height:1.6;color:#fff;margin:14px 0 0;min-height:22px}
+
+.share-status:empty{display:none}
+
+.shared-section{max-width:980px;margin:40px auto 0}
+
+.shared-section h2{font-family:Marcellus,Georgia,serif;font-size:26px;color:#fff;text-align:center;margin:0 0 6px}
+
+.staged-note{font-size:14px;line-height:1.6;color:#fff;text-align:center;margin:0 0 20px}
+
+.shared-empty{font-size:15px;line-height:1.6;color:#fff;text-align:center;margin:0}
+
+.shared-card{margin-bottom:24px}
+
+.shared-card .ib-nutshell p{font-size:16px}
+
+.working-labels{font-size:13px;line-height:1.5;color:#fff;margin:10px 0 0}
+
+.bite-line{font-size:15px;line-height:1.6;color:#fff;text-align:center;margin:20px auto 0;max-width:640px}
+
+.preview-label{font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 10px}
+
+.hero-card{border:2px solid #ffbf3d !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px rgba(255,191,61,.35) !important}
+
+.hero-badge{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.12em;color:#000;background:linear-gradient(135deg,#ffe9a8,#ffbf3d);border-radius:999px;padding:5px 12px;margin-left:8px;vertical-align:2px}
+
+.like-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+.like-btn{padding:10px 16px;border-radius:999px;font-size:13.5px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(180deg,#050507,#050507);border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 14px rgba(0,0,0,.5)}
+
+.like-btn.on{border-color:var(--pc,#ff5e6c);box-shadow:0 0 22px -2px var(--pc,#ff5e6c),0 8px 18px rgba(0,0,0,.6)}
+
+.saved-badge{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.12em;color:#fff;background:#2fe89e;border-radius:999px;padding:5px 12px;margin-left:8px;vertical-align:2px;color:#04220f}
+
+.shared-meta{font-size:14.5px;line-height:1.6;color:#fff;margin:12px 0 0}
+
+.shared-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+
+.mini-btn{padding:11px 20px;font-size:13.5px}
+
+@media(max-width:640px){.studio-toolbar{flex-direction:column}.fmt-group,.face-group{flex:0 0 auto}.fmt-btn{flex:1 1 100%}}
+
+@media (prefers-reduced-motion: reduce){.speak-btn.live{animation:none}.slides-mode #studioBody .letter-beat.slide-current{animation:none}}
+</style>
+<!-- EPIC LAYER — Intelligent Block Epic, 2026-11-17 (brief BRIEF-INTELLIGENT-BLOCK-EPIC-20261117.md).
+     Everything above this line is the canonical slideshow (blob 21d08a88),
+     byte-identical. Everything below is the epic layer, added — never a
+     rewrite of the canonical form. Harvest ledger (forms taken verbatim):
+     [D] Dashboard blob f87d938c — .os-mini-num / .os-mini-tile (+ .cap/.rd,
+     .dollar/.dot/.pct, .med, phone rules) and miniTileHTML/_osMiniNumHTML;
+     BTN-026 .orbit-btn + @property --oa + @keyframes orbit-spin; the demo
+     .orbit-btn ::after halo + hover lift. [P] Personal blob 925a4340 —
+     live-page context only (bottom-bar orbit flow, the slow ring).
+     TWO LAWFUL ADAPTATIONS, both named in THE-DEEP-PALETTE.md / the Playbook:
+     (1) the Dashboard's bright digit colors are REPLACED by the Deep Palette
+     (one hex per hue) — the palette doc supersedes the bright values; the
+     tile construction (rim + cap + white digit) is untouched. (2) the
+     harvested orbit spins at 3.2s/4s — the Playbook + Naya Code §8 forbid
+     motion faster than 12s, ambient 60–180s — so the epic orbit runs 60s
+     ambient, 18s on hover. Same construction, lawful speed. -->
+<style id="epic-style">
+/* EPIC — the Deep Palette, one hex per hue (THE-DEEP-PALETTE.md). */
+.epic-scope{--dp-purple:#8e24aa;--dp-blue:#0f52ba;--dp-green:#07925f;--dp-gold:#d4a017;--dp-orange:#c2410c;--dp-red:#c62828;--dp-magenta:#a21caf;--dp-indigo:#3f51b5;--dp-cyan:#0e7490;--dp-violet:#6d28d9}
+
+/* EPIC — the best button (BTN-026, Dashboard f87d938c, verbatim construction;
+   duration lawfully slowed 3.2s -> 60s ambient, 18s on hover). */
+@property --oa{syntax:'<angle>';inherits:false;initial-value:0deg}
+.orbit-btn{--oc:#8e24aa;--oc-rgb:142,36,170;position:relative;display:inline-flex;align-items:center;justify-content:center;padding:14px 34px;border-radius:999px;background:#050607;color:#fff;font-size:14px;font-weight:800;letter-spacing:.08em;cursor:pointer;border:1px solid rgba(255,255,255,.55);text-shadow:0 -1px 2px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.6);box-shadow:inset 0 1px rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 10px 26px rgba(0,0,0,.6);transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s}
+.orbit-btn::before{content:"";position:absolute;inset:-3px;border-radius:inherit;padding:2px;background:conic-gradient(from var(--oa),transparent 0 200deg,var(--oc) 290deg,#fff 320deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:orbit-spin 60s linear infinite;pointer-events:none;opacity:.75;filter:drop-shadow(0 0 8px rgba(var(--oc-rgb),.6))}
+.orbit-btn::after{content:"";position:absolute;inset:-18px;border-radius:999px;z-index:-1;background:radial-gradient(ellipse at center,rgba(var(--oc-rgb),.35),transparent 70%);opacity:0;transition:opacity .4s ease;filter:blur(6px)}
+.orbit-btn .orbit-label{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px}
+.orbit-btn:hover{transform:translateY(-3px) scale(1.02)}
+.orbit-btn:hover::before{opacity:1;animation-duration:18s}
+.orbit-btn:hover::after{opacity:1}
+.orbit-btn:active{transform:translateY(1px) scale(.98);transition-duration:.08s}
+@keyframes orbit-spin{to{--oa:360deg}}
+/* .p3-enter keeps its canonical shape; the epic orbit rides on top of it. */
+button.p3-enter.orbit-btn{padding:16px 46px;font-size:15px;letter-spacing:.05em;border-width:2px}
+button.p3-enter.orbit-btn.letter-next{padding:13px 30px;font-size:14px}
+.epic-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:20px 0 8px}
+.epic-doors{margin-top:20px}
+
+/* EPIC — the living digit tiles (Dashboard f87d938c, .os-mini-num/.os-mini-tile
+   verbatim construction; digit colors deepened per THE-DEEP-PALETTE.md). */
+.os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle}
+.os-mini-gap{width:7px}
+.os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+.os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35)}
+.os-mini-tile .rd{display:block;height:30px;line-height:30px;text-align:center;font-size:27px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);transition:color .3s,text-shadow .3s}
+.os-mini-num.med{gap:4px}
+.os-mini-num.med .os-mini-tile{width:54px;border-radius:10px;border-width:2px;box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 18px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-num.med .os-mini-tile .cap{height:9px}
+.os-mini-num.med .os-mini-tile .rd{height:54px;line-height:54px;font-size:48px}
+.os-mini-num.med .os-mini-gap{width:14px}
+.os-mini-tile.dollar{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.dollar .cap{background:linear-gradient(180deg,#fff3a0,#d4a017 55%,#8a6d03)}
+.os-mini-tile.dot{width:12px}
+.os-mini-num.med .os-mini-tile.dot{width:20px}
+.os-mini-tile.dot .rd{display:flex;align-items:flex-end;justify-content:center;height:30px;line-height:1;padding-bottom:4px;box-sizing:border-box}
+.os-mini-num.med .os-mini-tile.dot .rd{height:54px;padding-bottom:8px}
+.os-mini-tile.pct{width:34px}
+.os-mini-num.med .os-mini-tile.pct{width:60px}
+/* Digit colors — Deep Palette (supersedes the Dashboard brights). */
+.os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0)}
+.os-mini-tile.d1{border-color:#c62828;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(198,40,40,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.d1 .cap{background:linear-gradient(180deg,#ff8a8a,#c62828 55%,#7f0000)}
+.os-mini-tile.d2{border-color:#c2410c;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(194,65,12,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.d2 .cap{background:linear-gradient(180deg,#ffc27a,#c2410c 55%,#7a2e00)}
+.os-mini-tile.d3{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.d3 .cap{background:linear-gradient(180deg,#fff3a0,#d4a017 55%,#8a6d03)}
+.os-mini-tile.d4{border-color:#07925f;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(7,146,95,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.d4 .cap{background:linear-gradient(180deg,#6ee7a0,#07925f 55%,#045c39)}
+.os-mini-tile.d5{border-color:#0e7490;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(14,116,144,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.d5 .cap{background:linear-gradient(180deg,#a5e3ff,#0e7490 55%,#084a5e)}
+.os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.d6 .cap{background:linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#232a6b)}
+.os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.d7 .cap{background:linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#4d0f5e)}
+.os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(109,40,217,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.d8 .cap{background:linear-gradient(180deg,#e9d5ff,#6d28d9 55%,#3d1478)}
+.os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(162,28,175,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.d9 .cap{background:linear-gradient(180deg,#ff9ed2,#a21caf 55%,#5e0a63)}
+/* EPIC — the tile ignites: lift + glow + digit in its own color (hover/tap). */
+.epic-num .os-mini-tile:hover,.epic-num .os-mini-tile.ignited{transform:translateY(-4px) scale(1.06)}
+.epic-num .os-mini-tile.d0:hover,.epic-num .os-mini-tile.d0.ignited{box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 26px rgba(255,255,255,.75),inset 0 1px 0 rgba(255,255,255,.35)}
+.epic-num .os-mini-tile.d1:hover,.epic-num .os-mini-tile.d1.ignited{box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 26px rgba(198,40,40,.8),inset 0 1px 0 rgba(255,255,255,.35)}
+.epic-num .os-mini-tile.d2:hover,.epic-num .os-mini-tile.d2.ignited{box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 26px rgba(194,65,12,.8),inset 0 1px 0 rgba(255,255,255,.35)}
+.epic-num .os-mini-tile.d3:hover,.epic-num .os-mini-tile.d3.ignited{box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 26px rgba(212,160,23,.8),inset 0 1px 0 rgba(255,255,255,.35)}
+.epic-num .os-mini-tile.d4:hover,.epic-num .os-mini-tile.d4.ignited{box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 26px rgba(7,146,95,.8),inset 0 1px 0 rgba(255,255,255,.35)}
+.epic-num .os-mini-tile.d5:hover,.epic-num .os-mini-tile.d5.ignited{box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 26px rgba(14,116,144,.8),inset 0 1px 0 rgba(255,255,255,.35)}
+.epic-num .os-mini-tile.d6:hover,.epic-num .os-mini-tile.d6.ignited{box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 26px rgba(63,81,181,.8),inset 0 1px 0 rgba(255,255,255,.35)}
+.epic-num .os-mini-tile.d7:hover,.epic-num .os-mini-tile.d7.ignited{box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 26px rgba(142,36,170,.8),inset 0 1px 0 rgba(255,255,255,.35)}
+.epic-num .os-mini-tile.d8:hover,.epic-num .os-mini-tile.d8.ignited{box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 26px rgba(109,40,217,.8),inset 0 1px 0 rgba(255,255,255,.35)}
+.epic-num .os-mini-tile.d9:hover,.epic-num .os-mini-tile.d9.ignited{box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 26px rgba(162,28,175,.8),inset 0 1px 0 rgba(255,255,255,.35)}
+.epic-num .os-mini-tile.d0:hover .rd,.epic-num .os-mini-tile.d0.ignited .rd{color:#fff;text-shadow:0 0 12px rgba(255,255,255,.9)}
+.epic-num .os-mini-tile.d1:hover .rd,.epic-num .os-mini-tile.d1.ignited .rd{color:#c62828;text-shadow:0 0 12px rgba(198,40,40,.9)}
+.epic-num .os-mini-tile.d2:hover .rd,.epic-num .os-mini-tile.d2.ignited .rd{color:#c2410c;text-shadow:0 0 12px rgba(194,65,12,.9)}
+.epic-num .os-mini-tile.d3:hover .rd,.epic-num .os-mini-tile.d3.ignited .rd{color:#d4a017;text-shadow:0 0 12px rgba(212,160,23,.9)}
+.epic-num .os-mini-tile.d4:hover .rd,.epic-num .os-mini-tile.d4.ignited .rd{color:#07925f;text-shadow:0 0 12px rgba(7,146,95,.9)}
+.epic-num .os-mini-tile.d5:hover .rd,.epic-num .os-mini-tile.d5.ignited .rd{color:#0e7490;text-shadow:0 0 12px rgba(14,116,144,.9)}
+.epic-num .os-mini-tile.d6:hover .rd,.epic-num .os-mini-tile.d6.ignited .rd{color:#3f51b5;text-shadow:0 0 12px rgba(63,81,181,.9)}
+.epic-num .os-mini-tile.d7:hover .rd,.epic-num .os-mini-tile.d7.ignited .rd{color:#8e24aa;text-shadow:0 0 12px rgba(142,36,170,.9)}
+.epic-num .os-mini-tile.d8:hover .rd,.epic-num .os-mini-tile.d8.ignited .rd{color:#6d28d9;text-shadow:0 0 12px rgba(109,40,217,.9)}
+.epic-num .os-mini-tile.d9:hover .rd,.epic-num .os-mini-tile.d9.ignited .rd{color:#a21caf;text-shadow:0 0 12px rgba(162,28,175,.9)}
+/* EPIC — the number rolls into its new value (flip, staggered per tile). */
+@keyframes epicFlip{0%{transform:rotateX(0)}45%{transform:rotateX(88deg)}55%{transform:rotateX(-88deg)}100%{transform:rotateX(0)}}
+.epic-num .os-mini-tile.flipping{animation:epicFlip .45s cubic-bezier(.22,1,.36,1)}
+/* EPIC — the slow orbit ring around each number row (BTN-026 construction,
+   rectangular ring, 60s ambient, 18s on hover). */
+.epic-num-wrap{margin:24px 0 8px}
+.epic-num-ring{position:relative;display:flex;flex-wrap:wrap;gap:32px;justify-content:center;padding:24px 16px;border-radius:16px}
+.epic-num-ring::before{content:"";position:absolute;inset:-3px;border-radius:18px;padding:2px;background:conic-gradient(from var(--oa),transparent 0 200deg,var(--oc) 290deg,#fff 320deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:orbit-spin 60s linear infinite;pointer-events:none;opacity:.75;filter:drop-shadow(0 0 8px rgba(var(--oc-rgb),.6))}
+.epic-num-ring:hover::before{opacity:1;animation-duration:18s}
+.epic-stat{display:flex;flex-direction:column;align-items:center;gap:12px}
+.epic-stat-label{font-size:12px;font-weight:800;letter-spacing:.22em;color:#fff}
+/* EPIC — the studio + the results. */
+.epic-studio{margin-top:8px}
+.epic-studio-label{display:block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 10px}
+.epic-paste{min-height:132px}
+.epic-samples{margin-top:16px}
+.epic-image-row{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;margin:16px 0 4px}
+.epic-file-btn{cursor:pointer;padding:13px 22px;font-size:13.5px}
+.epic-url{flex:1 1 260px;box-sizing:border-box;padding:13px 18px;font-family:inherit;font-size:15px;color:#fff;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:2px solid rgba(255,255,255,.35);border-radius:999px;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 8px 18px rgba(0,0,0,.5)}
+.epic-url:focus{outline:none;border-color:#d4a017;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 0 24px -4px #d4a017,0 8px 18px rgba(0,0,0,.5)}
+.epic-url::placeholder{color:rgba(255,255,255,.55)}
+.epic-status{font-size:15px;line-height:1.6;color:#fff;margin:14px 0 0;min-height:22px;text-align:center}
+.epic-status:empty{display:none}
+.epic-results{max-width:980px;margin:40px auto 0}
+.epic-results-title{font-family:Marcellus,Georgia,serif;font-size:26px;color:#fff;text-align:center;margin:0 0 6px}
+.epic-results-sub{font-size:14px;line-height:1.6;color:#fff;text-align:center;margin:0 0 20px}
+.epic-results-empty{font-size:15px;line-height:1.6;color:#fff;text-align:center;margin:0;padding:20px;border:2px solid rgba(255,255,255,.14);border-radius:18px;background:#08080d}
+.epic-result{margin-bottom:24px}
+.epic-result[hidden]{display:none}
+.epic-result .ib-nutshell p{font-size:16px}
+/* EPIC — the image IS the board: full-bleed, rimmed, lit. Never a picture
+   pasted inside a box (no .lb-showcase frame here — the board is the image). */
+.epic-img-board{position:relative;min-height:340px;border-radius:26px;overflow:hidden;background-size:cover;background-position:center;border:2px solid color-mix(in srgb,var(--tone) 70%,#fff 10%);box-shadow:inset 0 1px rgba(255,255,255,.18),0 28px 64px rgba(0,0,0,.75),0 0 44px color-mix(in srgb,var(--tone) 35%,transparent)}
+.epic-img-board::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,7,0) 40%,rgba(5,6,7,.88) 78%,#050607 100%);pointer-events:none}
+.epic-img-board .epic-img-words{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:24px 28px 20px}
+.epic-img-board .ib-kind{color:#fff;text-shadow:0 0 12px var(--tone)}
+.epic-img-board .ib-title{color:#fff;margin:0 0 8px;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+.epic-img-board p{color:#fff;font-size:16px;line-height:1.6;margin:0;text-shadow:0 1px 8px rgba(0,0,0,.9)}
+.epic-img-board .ib-foot{border-top:2px solid rgba(255,255,255,.25);color:#fff}
+.epic-selfcheck{max-width:980px;margin:32px auto 0;padding:20px;border:2px solid #07925f;border-radius:18px;background:#08080d;font-size:14px;line-height:1.7;color:#fff;white-space:pre-wrap}
+.epic-selfcheck:empty{display:none}
+/* EPIC — phone rhythm (635 / 390). */
+@media (max-width:768px){
+  .os-mini-num.med .os-mini-tile{width:40px}
+  .os-mini-num.med .os-mini-tile .cap{height:7px}
+  .os-mini-num.med .os-mini-tile .rd{height:40px;line-height:40px;font-size:36px}
+  .os-mini-num.med .os-mini-tile.dollar{width:44px}
+  .os-mini-num.med .os-mini-tile.dot{width:14px}
+  .os-mini-num.med .os-mini-tile.pct{width:44px}
+  .os-mini-num.med .os-mini-gap{width:10px}
+}
+@media (max-width:480px){
+  .os-mini-tile{width:20px;border-radius:4px}
+  .os-mini-tile .cap{height:4px}
+  .os-mini-tile .rd{height:20px;line-height:20px;font-size:18px}
+  .os-mini-num.med .os-mini-tile{width:32px;border-radius:6px}
+  .os-mini-num.med .os-mini-tile .cap{height:6px}
+  .os-mini-num.med .os-mini-tile .rd{height:32px;line-height:32px;font-size:28px}
+  .epic-num-ring{gap:20px;padding:18px 8px}
+  .epic-img-board{min-height:280px}
+  .epic-file-btn{flex:1 1 100%;justify-content:center}
+  button.p3-enter.orbit-btn.letter-next{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion: reduce){
+  .orbit-btn::before,.epic-num-ring::before{animation:none}
+  .epic-num .os-mini-tile.flipping{animation:none}
+}
+</style>
+</head>
+<body>
+<main class="p3-deal-unfold" id="studioUnfold" style="margin-top:24px;margin-bottom:48px">
+<p class="letter-steplabel">NayaNET &middot; The Intelligent Block &middot; Epic</p>
+<h2 class="deal-title">The Intelligent Block, Epic</h2>
+<p class="deck-sub">The numbers are alive. The buttons are the best. Anything you paste comes out beautiful.</p>
+<div class="letter-controls" id="studioControls">
+<div class="letter-dots" id="studioDots" aria-hidden="true"><span class="ldot on" style="--dc:#8e24aa"></span><span class="ldot" style="--dc:#0f52ba"></span><span class="ldot" style="--dc:#07925f"></span></div>
+<button class="letter-all" id="studioAll" type="button">or read the whole thing at once</button>
+</div>
+<div id="studioBody">
+<article class="intel-board letter-beat" data-beat="1" style="--tone:#8e24aa"><div class="ib-blocktop"><div class="face-mono" style="--tone:#8e24aa">N</div><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">◆</span><div><span class="ib-kind">THE NUMBERS ARE ALIVE</span><h2 class="ib-title">The numbers are alive.</h2><p class="ib-subtitle">Touch a tile — it lifts, it glows, it ignites in its own color.</p></div></div></div><div class="ib-nutshell"><p>These are the Dashboard's own digit tiles — the same objects, beautiful and elegant, not close: the same.</p><p>Hover or tap any tile and the whole tile comes alive. Press the button and the numbers roll into their new values, one tile at a time.</p><p>A slow ring of light flows around each row, like the bottom bar — the numbers are never still pictures again.</p></div>
+<div class="epic-num-wrap">
+<div class="epic-num-ring" style="--oc:#8e24aa;--oc-rgb:142,36,170">
+<div class="epic-stat"><span class="epic-num" id="epicNumMoney" data-value="$4,500"></span><span class="epic-stat-label">MONEY &middot; THIS MONTH</span></div>
+<div class="epic-stat"><span class="epic-num" id="epicNumClicks" data-value="1 566"></span><span class="epic-stat-label">CLICKS</span></div>
+<div class="epic-stat"><span class="epic-num" id="epicNumPoints" data-value="408"></span><span class="epic-stat-label">POINTS</span></div>
+</div>
+</div>
+<div class="epic-actions"><button class="p3-enter letter-next deck-next orbit-btn epic-btn" type="button" id="epicChangeBtn" style="--oc:#a21caf;--oc-rgb:162,28,175"><span class="orbit-label">◆ Watch them change</span></button></div>
+<button class="p3-enter letter-next deck-next orbit-btn" type="button" data-beat="1" style="--oc:#8e24aa;--oc-rgb:142,36,170"><span class="orbit-label">Keep reading ◆</span></button></article>
+<article class="intel-board letter-beat" data-beat="2" style="--tone:#0f52ba" hidden><div class="ib-blocktop"><div class="face-mono" style="--tone:#0f52ba">N</div><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">◆</span><div><span class="ib-kind">THE BUTTONS ARE THE BEST</span><h2 class="ib-title">The buttons are the best.</h2><p class="ib-subtitle">Real objects. Rims in their own deep color. Light flowing around them.</p></div></div></div><div class="ib-nutshell"><p>Every button in this block is the best button in the network — the same button everywhere, only the color and the word change.</p><p>Each one is obsidian black inside, white as a real object in the middle, and its own deep color on the edge — and a slow ring of light flows around it.</p><p>Touch one and the whole thing lights up. These three doors open the studio on the next board — each with its sample already inside.</p></div>
+<div class="epic-actions epic-doors">
+<button class="p3-enter letter-next orbit-btn epic-btn" type="button" data-epic-door="text" style="--oc:#07925f;--oc-rgb:7,146,95"><span class="orbit-label">✎ Paste text</span></button>
+<button class="p3-enter letter-next orbit-btn epic-btn" type="button" data-epic-door="note" style="--oc:#0f52ba;--oc-rgb:15,82,186"><span class="orbit-label">◆ Paste a smart note</span></button>
+<button class="p3-enter letter-next orbit-btn epic-btn" type="button" data-epic-door="image" style="--oc:#d4a017;--oc-rgb:212,160,23"><span class="orbit-label">▣ Paste an image</span></button>
+</div>
+<button class="p3-enter letter-next deck-next orbit-btn" type="button" data-beat="2" style="--oc:#0f52ba;--oc-rgb:15,82,186"><span class="orbit-label">Keep reading ◆</span></button></article>
+<article class="intel-board letter-beat" data-beat="3" style="--tone:#07925f" hidden><div class="ib-blocktop"><div class="face-mono" style="--tone:#07925f">N</div><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">◆</span><div><span class="ib-kind">PASTE ANYTHING</span><h2 class="ib-title">Paste anything. It comes out beautiful.</h2><p class="ib-subtitle">Plain text, a smart note, an image — the format does the work.</p></div></div></div><div class="ib-nutshell"><p>Type or paste anything in the box below — a paragraph, a smart note, a whole page — and press the button.</p><p>Text comes back distilled into the block's own voice: nutshell first, one idea per board, three sentences at most. An image comes back as the board itself — full-bleed, rimmed, lit.</p><p>The content never shows its seams. What you pasted stays in the box above; what comes out below is the beautiful version.</p></div>
+<div class="epic-studio">
+<label class="epic-studio-label" for="epicPaste">Your paste — text, a smart note, or words about an image</label>
+<textarea class="studio-input epic-paste" id="epicPaste" placeholder="Paste anything here — a paragraph, a smart note, a whole page…"></textarea>
+<div class="epic-actions epic-samples">
+<button class="p3-enter letter-next orbit-btn epic-btn epic-sample" type="button" data-epic-sample="text" style="--oc:#07925f;--oc-rgb:7,146,95"><span class="orbit-label">✎ Try the plain text</span></button>
+<button class="p3-enter letter-next orbit-btn epic-btn epic-sample" type="button" data-epic-sample="note" style="--oc:#0f52ba;--oc-rgb:15,82,186"><span class="orbit-label">◆ Try the smart note</span></button>
+<button class="p3-enter letter-next orbit-btn epic-btn epic-sample" type="button" data-epic-sample="image" style="--oc:#d4a017;--oc-rgb:212,160,23"><span class="orbit-label">▣ Try the image</span></button>
+</div>
+<div class="epic-image-row">
+<label class="epic-file-btn orbit-btn" style="--oc:#d4a017;--oc-rgb:212,160,23"><span class="orbit-label">▣ Choose an image file</span><input type="file" id="epicFile" accept="image/*" hidden></label>
+<input class="epic-url" id="epicImgUrl" type="url" placeholder="…or paste an image address (https://…)" aria-label="Image address">
+</div>
+<div class="epic-actions"><button class="p3-enter letter-next orbit-btn epic-btn" type="button" id="epicMakeBtn" style="--oc:#8e24aa;--oc-rgb:142,36,170"><span class="orbit-label">◆ Make it beautiful</span></button></div>
+<p class="epic-status" id="epicStatus" aria-live="polite"></p>
+</div>
+</article>
+</div>
+<div class="slides-nav" id="slidesNav" hidden>
+<button class="p3-enter letter-next slide-prev orbit-btn" id="slidePrev" type="button" style="--oc:#0f52ba;--oc-rgb:15,82,186"><span class="orbit-label">&#8249; Back</span></button>
+<span class="slide-count" id="slideCount"></span>
+<button class="p3-enter letter-next slide-next orbit-btn" id="slideNext" type="button" style="--oc:#0f52ba;--oc-rgb:15,82,186"><span class="orbit-label">Next &#8250;</span></button>
+</div>
+<div style="display:flex;gap:12px;justify-content:center;margin-top:22px">
+<button class="p3-enter letter-next orbit-btn" id="fmtDown" type="button" style="--oc:#8e24aa;--oc-rgb:142,36,170"><span class="orbit-label">Unfold down</span></button>
+<button class="p3-enter letter-next orbit-btn" id="fmtSide" type="button" style="--oc:#6d28d9;--oc-rgb:109,40,217"><span class="orbit-label">Unfold sideways</span></button>
+</div>
+<section class="epic-results" id="epicResults" aria-live="polite">
+<h2 class="epic-results-title">Your beautiful block</h2>
+<p class="epic-results-sub">What you pasted, made beautiful — the format did the work.</p>
+<div class="epic-results-empty" id="epicResultsEmpty">Nothing here yet. Open the third board, paste anything, and press “Make it beautiful”.</div>
+<div id="epicResultsBody"></div>
+</section>
+</main>
+<script>
+var state = { format: 'down', slide: 0 };
+function $(id){ return document.getElementById(id); }
+function wireReveal(){
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#studioBody .letter-beat'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#studioDots .ldot'));
+  var all = $('studioAll');
+  function scrollBehavior(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'; }
+  function toneOf(b){ var c = b.style.getPropertyValue('--tone'); return c ? c.trim() : '#a06bff'; }
+  function glowFor(b){
+    var hex = toneOf(b), n = parseInt(hex.slice(1), 16);
+    document.body.style.setProperty('--glowc', 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',.14)');
+  }
+  function show(n){
+    var b = beats[n]; if (!b) return;
+    b.hidden = false; b.classList.add('reveal');
+    if (dots[n]) dots[n].classList.add('on');
+    glowFor(b);
+  }
+  function ensureBeatVisible(b){
+    if (!b) return;
+    var r = b.getBoundingClientRect();
+    if (r.bottom > window.innerHeight || r.top < 0) b.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest', inline: 'nearest' });
+  }
+  beats.forEach(function(b, i){
+    var btn = b.querySelector('.deck-next[data-beat]');
+    if (!btn) return;
+    btn.addEventListener('click', function(){
+      if (state.format === 'slides'){ showSlide(i + 1); return; }
+      var cur = i + 1;
+      if (cur < beats.length){
+        show(cur); btn.hidden = true;
+        if (cur === beats.length - 1) all.hidden = true;
+        ensureBeatVisible(beats[cur]);
+      }
+    });
+  });
+  all.addEventListener('click', function(){
+    for (var n = 1; n < beats.length; n++) show(n);
+    beats.forEach(function(b){ var btn = b.querySelector('.deck-next[data-beat]'); if (btn) btn.hidden = true; });
+    all.hidden = true;
+    ensureBeatVisible(beats[beats.length - 1]);
+  });
+  dots.forEach(function(d, i){
+    d.addEventListener('click', function(){
+      if (state.format === 'slides'){ showSlide(i); return; }
+      for (var n = 1; n <= i; n++) show(n);
+      ensureBeatVisible(beats[i]);
+    });
+  });
+  if (beats[0]) glowFor(beats[0]);
+  if (!('IntersectionObserver' in window)){
+    document.querySelectorAll('.intel-board').forEach(function(c){ c.classList.add('rv-lit'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('rv-lit'); io.unobserve(en.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.intel-board:not(.rv-lit)').forEach(function(c){ io.observe(c); });
+  }
+}
+function showSlide(i){
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#studioBody .letter-beat'));
+  if (!beats.length) return;
+  state.slide = Math.max(0, Math.min(i, beats.length - 1));
+  beats.forEach(function(b, j){
+    b.hidden = false;
+    b.classList.toggle('slide-current', j === state.slide);
+  });
+  document.querySelectorAll('#studioDots .ldot').forEach(function(d, j){ d.classList.toggle('on', j === state.slide); });
+  $('slideCount').textContent = 'Slide ' + (state.slide + 1) + ' of ' + beats.length;
+  $('slidePrev').hidden = state.slide === 0;
+  $('slideNext').textContent = state.slide === beats.length - 1 ? 'Back to the start \u2039' : 'Next \u203a';
+  $('slidesNav').hidden = false;
+}
+/* GLUE — setFormat(), the Studio's minus render(): beats here are static
+   HTML, so switching back to down re-hides every beat past the first and
+   shows the first Keep reading button again. (In the Studio, render()
+   rebuilds the beats; the reset below is its equivalent for static beats.) */
+function setFormat(f){
+  state.format = f;
+  if (f === 'slides'){ state.slide = 0; showSlide(0); }
+  else {
+    var beats = Array.prototype.slice.call(document.querySelectorAll('#studioBody .letter-beat'));
+    beats.forEach(function(b, i){
+      b.hidden = (i !== 0);
+      b.classList.remove('slide-current');
+      var btn = b.querySelector('.deck-next[data-beat]');
+      if (btn) btn.hidden = (i !== 0);
+    });
+    document.querySelectorAll('#studioDots .ldot').forEach(function(d, j){ d.classList.toggle('on', j === 0); });
+    $('studioAll').hidden = false;
+    $('slidesNav').hidden = true;
+  }
+  $('studioUnfold').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+$('fmtDown').addEventListener('click', function(){ setFormat('down'); });
+$('fmtSide').addEventListener('click', function(){ setFormat('slides'); });
+$('slidePrev').addEventListener('click', function(){ showSlide(state.slide - 1); });
+$('slideNext').addEventListener('click', function(){
+  var n = document.querySelectorAll('#studioBody .letter-beat').length;
+  showSlide(state.slide === n - 1 ? 0 : state.slide + 1);
+});
+wireReveal();
+</script>
+<!-- EPIC SCRIPT — Intelligent Block Epic, 2026-11-17.
+     Harvested verbatim from Dashboard blob f87d938c: miniTileHTML +
+     _osMiniNumHTML (the tile renderer; separator is a SPACE, never a comma).
+     Everything else here is the epic layer: the tiles ignite on hover/tap,
+     the numbers flip into new values, the doors open the studio with a
+     sample inside, and the distiller turns any paste into beautiful boards. -->
+<script>
+(function epic(){
+'use strict';
+/* HARVESTED — Dashboard blob f87d938c, miniTileHTML + _osMiniNumHTML verbatim. */
+function miniTileHTML(ch){
+  if (ch === ' ' || ch === ',') return '<span class="os-mini-gap"></span>';
+  if (ch === '$') return '<span class="os-mini-tile dollar"><span class="cap"></span><span class="rd">$</span></span>';
+  if (ch === '.') return '<span class="os-mini-tile dot"><span class="cap"></span><span class="rd">.</span></span>';
+  if (ch === '%') return '<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>';
+  var d = parseInt(ch, 10);
+  if (!isFinite(d)) return '';
+  return '<span class="os-mini-tile d' + d + '"><span class="cap"></span><span class="rd">' + d + '</span></span>';
+}
+window._osMiniNumHTML = function(value, size){
+  if (value == null) return '—';
+  var str = String(value).trim().replace(/,/g, ' ').replace(/ +/g, ' ');
+  if (str === '' || str === '—' || str === '-') return '—';
+  if (!/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(str)) return String(value);
+  var cls = (size === 'med') ? 'os-mini-num med' : 'os-mini-num';
+  var out = '';
+  for (var i = 0; i < str.length; i++) out += miniTileHTML(str[i]);
+  return '<span class="' + cls + '">' + out + '</span>';
+};
+/* EPIC — the living numbers. */
+var DEEP = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf','#3f51b5'];
+var SETS = [
+  { money: '$4,500', clicks: '1 566', points: '408' },
+  { money: '$5,208', clicks: '1 842', points: '512' },
+  { money: '$3,977', clicks: '1 204', points: '365' }
+];
+var setIdx = 0;
+function renderNum(id, value){
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = window._osMiniNumHTML(value, 'med');
+  el.classList.add('epic-num');
+  el.setAttribute('data-value', value);
+}
+function paintNumbers(set){
+  renderNum('epicNumMoney', set.money);
+  renderNum('epicNumClicks', set.clicks);
+  renderNum('epicNumPoints', set.points);
+}
+function flipNumbers(next){
+  var ids = ['epicNumMoney', 'epicNumClicks', 'epicNumPoints'];
+  var keys = ['money', 'clicks', 'points'];
+  ids.forEach(function(id, k){
+    var el = document.getElementById(id);
+    if (!el) return;
+    var cur = el.getAttribute('data-value');
+    if (cur === next[keys[k]]) return;
+    var tiles = el.querySelectorAll('.os-mini-tile');
+    tiles.forEach(function(t, i){
+      setTimeout(function(){
+        t.classList.add('flipping');
+        setTimeout(function(){
+          renderNum(id, next[keys[k]]);
+          var fresh = document.getElementById(id).querySelectorAll('.os-mini-tile');
+          if (fresh[i]) fresh[i].classList.add('flipping');
+          setTimeout(function(){ if (fresh[i]) fresh[i].classList.remove('flipping'); }, 460);
+        }, 225);
+        setTimeout(function(){ t.classList.remove('flipping'); }, 460);
+      }, i * 70);
+    });
+    /* A value with more tiles than before still lands whole. */
+    setTimeout(function(){ renderNum(id, next[keys[k]]); }, tiles.length * 70 + 500);
+  });
+}
+paintNumbers(SETS[0]);
+/* Tap a tile: it ignites, then settles (hover does the same in CSS). */
+document.querySelectorAll('.epic-num').forEach(function(row){
+  row.addEventListener('click', function(ev){
+    var t = ev.target.closest('.os-mini-tile');
+    if (!t) return;
+    t.classList.add('ignited');
+    setTimeout(function(){ t.classList.remove('ignited'); }, 900);
+  });
+});
+var changeBtn = document.getElementById('epicChangeBtn');
+if (changeBtn) changeBtn.addEventListener('click', function(){
+  setIdx = (setIdx + 1) % SETS.length;
+  flipNumbers(SETS[setIdx]);
+});
+/* EPIC — the doors + the samples: open the studio with a sample inside. */
+var SAMPLES = {
+  text: "The old internet was messy and manual. Fifty apps glued together, nothing connected, and the human did all the work. The new internet is auto-organized and automatic. The system does the work, and the human receives the finished output, served on a platter, one click, done for you.",
+  note: "SN-2657 — The Heart of the Machine. NayaNET is an AI operating system whose sole mission is to give the user ten-star service by giving them ten-star outputs. How it works: for her to run the user's world, she first had to create a world in HER language — a language a machine can operate. That language is objects, not documents: the Intelligent Block, the Smart Note, the Smart Link, the Smart Box. What is the heart of the machine? The compounding loop: note to block to feed to Box to Ledger to Dashboard to Auto-Match to Smart Links to Factory. Why it cannot fail: it is push-button simple, and it is just logical.",
+  image: ""
+};
+var DEMO_IMG = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">' +
+  '<rect width="1200" height="800" fill="#050607"/>' +
+  '<circle cx="600" cy="300" r="150" fill="#d4a017"/>' +
+  '<circle cx="600" cy="300" r="150" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>' +
+  '<polygon points="0,800 320,380 640,800" fill="#07925f"/>' +
+  '<polygon points="480,800 820,300 1200,800" fill="#0f52ba"/>' +
+  '<polygon points="820,300 900,420 740,420" fill="#fff" fill-opacity=".85"/>' +
+  '<rect y="640" width="1200" height="160" fill="#050607" fill-opacity=".55"/>' +
+  '</svg>');
+function openStudio(kind){
+  var beat3 = document.querySelector('#studioBody .letter-beat[data-beat="3"]');
+  var paste = document.getElementById('epicPaste');
+  var url = document.getElementById('epicImgUrl');
+  if (kind === 'image'){
+    if (paste) paste.value = '';
+    if (url) url.value = '';
+    epicImageBoard(DEMO_IMG, 'A world, in deep color.', 'The demo image — gold sun, emerald mountain, sapphire mountain. The image is the board.');
+    setStatus('The demo image became the board — full-bleed, rimmed, lit. Choose your own file or paste an image address to make it yours.');
+  } else {
+    if (paste) paste.value = SAMPLES[kind] || '';
+    if (url) url.value = '';
+    setStatus(kind === 'note' ? 'A smart note is in the box — press “Make it beautiful”.' : 'Plain text is in the box — press “Make it beautiful”.');
+    if (paste) paste.focus();
+  }
+  if (beat3){
+    if (state && state.format === 'slides'){ showSlide(2); }
+    else {
+      beat3.hidden = false;
+      beat3.classList.add('reveal');
+      var b1 = document.querySelector('#studioBody .letter-beat[data-beat="1"] .deck-next[data-beat]');
+      var b2 = document.querySelector('#studioBody .letter-beat[data-beat="2"] .deck-next[data-beat]');
+      if (b1) b1.hidden = true;
+      if (b2) b2.hidden = true;
+      var all = document.getElementById('studioAll');
+      if (all) all.hidden = true;
+      beat3.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}
+document.querySelectorAll('[data-epic-door]').forEach(function(btn){
+  btn.addEventListener('click', function(){ openStudio(btn.getAttribute('data-epic-door')); });
+});
+document.querySelectorAll('[data-epic-sample]').forEach(function(btn){
+  btn.addEventListener('click', function(){ openStudio(btn.getAttribute('data-epic-sample')); });
+});
+/* EPIC — the distiller: any paste, in the block's own voice. */
+function setStatus(msg){ var s = document.getElementById('epicStatus'); if (s) s.textContent = msg || ''; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function cleanPaste(raw){
+  var t = String(raw || '').replace(/\r\n?/g, '\n');
+  t = t.replace(/SN-\d+\s*[—–-]\s*/g, '');
+  t = t.replace(/^\s*(Hook|Nutshell|What it is|Why it matters|How to apply it|In a nutshell)\s*:\s*/gim, '');
+  t = t.replace(/^#{1,6}\s+/gm, '').replace(/[*_]{1,3}/g, '');
+  t = t.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n');
+  return t.trim();
+}
+function splitSentences(t){
+  var m = t.match(/[^.!?]+[.!?]+["'”)]?\s*/g);
+  if (m && m.length) return m.map(function(s){ return s.trim(); }).filter(Boolean);
+  return t.split(/\n+/).map(function(s){ return s.trim(); }).filter(Boolean);
+}
+function titleFrom(sentence){
+  var w = sentence.replace(/["'”().,;:!?]+$/,'').split(/\s+/).slice(0, 7).join(' ');
+  return w.charAt(0).toUpperCase() + w.slice(1);
+}
+function distill(raw){
+  var t = cleanPaste(raw);
+  if (!t) return null;
+  var sentences = splitSentences(t).slice(0, 9);
+  var beats = [];
+  for (var i = 0; i < sentences.length; i += 3){
+    beats.push(sentences.slice(i, i + 3));
+  }
+  return { title: titleFrom(sentences[0]), beats: beats, total: sentences.length };
+}
+function boardHTML(kind, title, subtitle, paras, tone, idx, total){
+  var hidden = idx > 0 ? ' hidden' : '';
+  var btn = idx < total - 1
+    ? '<button class="p3-enter letter-next deck-next orbit-btn epic-result-next" type="button" style="--oc:' + tone + ';--oc-rgb:' + hexRgb(tone) + '"><span class="orbit-label">Keep reading ◆</span></button>'
+    : '';
+  return '<article class="intel-board letter-beat epic-result" style="--tone:' + tone + '"' + hidden + '>' +
+    '<div class="ib-blocktop"><div class="face-mono" style="--tone:' + tone + '">N</div>' +
+    '<div class="ib-identity"><span class="ib-jewel" aria-hidden="true">◆</span><div>' +
+    '<span class="ib-kind">' + esc(kind) + '</span><h2 class="ib-title">' + esc(title) + '</h2>' +
+    '<p class="ib-subtitle">' + esc(subtitle) + '</p></div></div></div>' +
+    '<div class="ib-nutshell">' + paras.map(function(p){ return '<p>' + esc(p) + '</p>'; }).join('') + '</div>' + btn + '</article>';
+}
+function hexRgb(hex){
+  var n = parseInt(hex.slice(1), 16);
+  return ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255);
+}
+function showResults(html, statusMsg){
+  var body = document.getElementById('epicResultsBody');
+  var empty = document.getElementById('epicResultsEmpty');
+  if (!body) return;
+  body.innerHTML = html;
+  if (empty) empty.hidden = true;
+  body.querySelectorAll('.epic-result-next').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var cur = btn.closest('.epic-result');
+      var next = cur && cur.nextElementSibling;
+      if (next && next.classList.contains('epic-result')){
+        next.hidden = false;
+        next.classList.add('reveal');
+        btn.hidden = true;
+        next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  });
+  setStatus(statusMsg);
+  document.getElementById('epicResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function makeBeautiful(){
+  var paste = document.getElementById('epicPaste');
+  var url = document.getElementById('epicImgUrl');
+  var file = document.getElementById('epicFile');
+  var urlVal = url ? url.value.trim() : '';
+  if (file && file.files && file.files[0]){
+    var reader = new FileReader();
+    reader.onload = function(){
+      epicImageBoard(String(reader.result), file.files[0].name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ') || 'Your image, as a board.', 'Your image is the board — full-bleed, rimmed, lit.');
+      setStatus('Your image became the board. Nothing else was added — the image is the board.');
+    };
+    reader.onerror = function(){ setStatus('That file could not be read. Try another image.'); };
+    reader.readAsDataURL(file.files[0]);
+    return;
+  }
+  if (urlVal){
+    var probe = new Image();
+    probe.onload = function(){
+      epicImageBoard(urlVal, 'An image, as a board.', 'This image is the board — full-bleed, rimmed, lit. It came from the address you pasted.');
+      setStatus('The image at that address became the board.');
+    };
+    probe.onerror = function(){ setStatus('That address did not load as an image. Check the address and try again.'); };
+    probe.src = urlVal;
+    return;
+  }
+  var d = distill(paste ? paste.value : '');
+  if (!d){
+    setStatus('Paste something first — text, a smart note, or an image file or address.');
+    if (paste) paste.focus();
+    return;
+  }
+  var kind = /smart note/i.test(paste.value) ? 'A SMART NOTE, DISTILLED' : 'PLAIN TEXT, DISTILLED';
+  var html = '';
+  d.beats.forEach(function(sentences, i){
+    var tone = DEEP[i % DEEP.length];
+    var title = i === 0 ? d.title : titleFrom(sentences[0]);
+    html += boardHTML(kind, title, 'One idea per board.', sentences, tone, i, d.beats.length);
+  });
+  showResults(html, d.total + ' sentence' + (d.total === 1 ? '' : 's') + ' distilled into ' + d.beats.length + ' board' + (d.beats.length === 1 ? '' : 's') + ' — nutshell first, one idea per board. Your words stay in the box above.');
+}
+function epicImageBoard(src, title, caption){
+  var tone = '#d4a017';
+  var html = '<article class="epic-img-board" style="--tone:' + tone + ';background-image:url(&quot;' + esc(src) + '&quot;)">' +
+    '<div class="epic-img-words"><span class="ib-kind">AN IMAGE, AS A BOARD</span>' +
+    '<h2 class="ib-title">' + esc(title) + '</h2><p>' + esc(caption) + '</p>' +
+    '<div class="ib-foot">Written by Naya for you &middot; the image is the board</div></div></article>';
+  showResults(html, 'The image is the board — full-bleed, rimmed, lit. Not a picture pasted inside a box.');
+}
+var makeBtn = document.getElementById('epicMakeBtn');
+if (makeBtn) makeBtn.addEventListener('click', makeBeautiful);
+var fileInput = document.getElementById('epicFile');
+if (fileInput) fileInput.addEventListener('change', function(){
+  if (fileInput.files && fileInput.files[0]) setStatus('“' + fileInput.files[0].name + '” is ready — press “Make it beautiful”.');
+});
+/* EPIC — self-check (?selfcheck=1): proves the epic layer in the page itself. */
+function selfCheck(){
+  var out = [];
+  function ck(name, ok, detail){ out.push((ok ? 'PASS' : 'FAIL') + ' — ' + name + (detail ? ' (' + detail + ')' : '')); }
+  var styleText = document.getElementById('epic-style') ? document.getElementById('epic-style').textContent : '';
+  ck('canonical wireReveal + showSlide + setFormat present', typeof wireReveal === 'function' && typeof showSlide === 'function' && typeof setFormat === 'function');
+  var beats = document.querySelectorAll('#studioBody .letter-beat');
+  ck('3 epic beats, 3 dots', beats.length === 3 && document.querySelectorAll('#studioDots .ldot').length === 3, beats.length + ' beats');
+  var money = document.querySelectorAll('#epicNumMoney .os-mini-tile').length;
+  var clicks = document.querySelectorAll('#epicNumClicks .os-mini-tile').length;
+  var points = document.querySelectorAll('#epicNumPoints .os-mini-tile').length;
+  ck('hero tiles tiled ($4,500 / 1 566 / 408)', money === 5 && clicks === 4 && points === 3, money + '/' + clicks + '/' + points);
+  var btns = document.querySelectorAll('#studioUnfold .p3-enter, #studioUnfold .orbit-btn');
+  var orbit = document.querySelectorAll('#studioUnfold .orbit-btn').length;
+  ck('every button in the block is an orbit button', orbit > 0 && document.querySelectorAll('#studioUnfold .p3-enter:not(.orbit-btn)').length === 0, orbit + ' orbit buttons');
+  var d = distill(SAMPLES.text);
+  ck('distiller: nutshell first, ≤3 sentences per board', !!d && d.beats.every(function(b){ return b.length <= 3; }), d ? d.beats.length + ' boards' : 'null');
+  ck('distiller strips smart-note seams (SN- id, labels)', cleanPaste(SAMPLES.note).indexOf('SN-') === -1 && cleanPaste(SAMPLES.note).indexOf('Nutshell:') === -1);
+  var probe = document.createElement('div');
+  probe.innerHTML = '';
+  var imgOk = DEMO_IMG.indexOf('data:image/svg+xml') === 0;
+  ck('image board: demo image is a data URI, board is full-bleed cover', imgOk && styleText.indexOf('.epic-img-board') !== -1 && styleText.indexOf('background-size:cover') !== -1);
+  var brights = ['a06bff','3fb8ff','2fe89e','ffbf3d','ff9a5a','ff5e6c','e84fff'].map(function(h){ return '#' + h; });
+  var found = brights.filter(function(h){ return styleText.toLowerCase().indexOf(h) !== -1; });
+  ck('epic layer uses the Deep Palette only (no bright hexes)', found.length === 0, found.join(',') || 'deep only');
+  var orbitSlow = /animation:orbit-spin 60s/.test(styleText);
+  ck('orbit runs slow (60s ambient, never under 12s)', orbitSlow);
+  var before = document.getElementById('epicNumPoints').getAttribute('data-value');
+  flipNumbers(SETS[1]);
+  setTimeout(function(){
+    var after = document.getElementById('epicNumPoints').getAttribute('data-value');
+    ck('numbers flip into new values', after === SETS[1].points, before + ' → ' + after);
+    setIdx = 1; /* the check landed on set 1 — the next press moves on, never repeats */
+    var el = document.getElementById('epicSelfcheck');
+    if (el){ el.textContent = 'EPIC SELF-CHECK — ' + out.filter(function(l){ return l.indexOf('PASS') === 0; }).length + '/' + out.length + ' pass\n' + out.join('\n'); }
+    if (window.console) console.log(out.join('\n'));
+  }, 1400);
+}
+if (/[?&]selfcheck=1/.test(window.location.search)){
+  var panel = document.createElement('div');
+  panel.className = 'epic-selfcheck';
+  panel.id = 'epicSelfcheck';
+  panel.textContent = 'EPIC SELF-CHECK — running…';
+  document.getElementById('studioUnfold').appendChild(panel);
+  if (document.readyState === 'complete') selfCheck();
+  else window.addEventListener('load', selfCheck);
+}
+})();
+</script>
+</body>
+</html>
