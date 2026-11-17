@@ -79,21 +79,29 @@
   real-messages formatting proof is honestly OWED, never faked.
 -->
 <style>
+/* --- SMART MAIL FIX round (2026-11-17, brief BRIEF-SMART-MAIL-FIX-20261117)
+   + THE DEEP PALETTE amendment (01:30Z). White small text (DNA §9);
+   mail-by-world whole (entry opens in Smart Mail mode on that world's
+   first letter's sender; setWorld switches person + thread + composer);
+   two satellites per orb + whole-item hover light; preview ellipsis on
+   block rows; dock shortened + cover tightened so the World row clears
+   the dock at scroll top; plus buttons fully inside (20px insets).
+   Deep palette: every bright spectrum value swapped to its deep hex. --- */
 /* TOKENS — Hub :root (hub-live-harvest.html) + our palette (brief §1 D) */
 :root{
-  --purple:#a06bff; --blue:#3fb8ff; --green:#2fe89e; --gold:#ffbf3d; --magenta:#e84fff;
-  --ink:#F5F7FB; --ink-dim:#F5F7FB; --line:#ffffff18;
+  --purple:#8e24aa; --blue:#0f52ba; --green:#07925f; --gold:#d4a017; --magenta:#a21caf;
+  --ink:#fff; --ink-dim:#fff; --line:#ffffff18;
   --depth-hi:inset 0 1px #fff6; --depth-drop:0 18px 42px #000b; --depth-deep:0 20px 48px #000d;
   --radius-pill:999px; --ease:cubic-bezier(.16,.84,.22,1); --dur-fast:.18s; --dur-med:.28s;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{background:#050507;color:#F5F7FB;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-a{color:#c4a8ff}
+body{background:#050507;color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#fff}
 button{font-family:inherit}
 img{max-width:100%}
 /* --- COVER: .ph-cover harvested verbatim in shape (Personal page) --- */
-.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(55vh,600px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(160,107,255,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(232,79,255,.32),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(63,184,255,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
+.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(48vh,520px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(142,36,170,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(162,28,175,.32),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(15,82,186,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
 .ph-cover::before{content:'';position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(180deg,rgba(2,2,6,0) 0%,rgba(2,2,6,.38) 52%,rgba(2,2,6,.78) 100%);pointer-events:none;z-index:1}
 @media(max-width:760px){.ph-cover{height:420px !important;aspect-ratio:auto !important;max-height:none !important;}}
 /* COVER CHOICE (addendum 1 §2): the citizen chooses — Cover / No cover / Full screen.
@@ -103,14 +111,14 @@ body.fullscreen .ph-cover,body.fullscreen .menu-bar{display:none}
 body.fullscreen .ph-main{padding-top:12px}
 .ph-cover-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
 .ph-cover-inner h1{margin:0;font-size:44px;font-weight:800;letter-spacing:.2px;text-shadow:0 4px 24px rgba(0,0,0,.6)}
-.ph-cover-inner p{margin:10px 0 0;font-size:16px;color:rgba(245,247,251,.85);max-width:560px;line-height:1.5}
-.ph-plus{position:absolute;top:16px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);display:grid;place-items:center;font-size:24px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.55);transition:box-shadow .2s,border-color .2s,transform .2s}
-.ph-plus:hover{border-color:#e84fff;box-shadow:0 0 26px rgba(232,79,255,.65),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
-.ph-plus.left{left:16px}.ph-plus.right{right:16px}
+.ph-cover-inner p{margin:10px 0 0;font-size:16px;color:#fff;max-width:560px;line-height:1.5}
+.ph-plus{position:absolute;top:20px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);display:grid;place-items:center;font-size:24px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.55);transition:box-shadow .2s,border-color .2s,transform .2s}
+.ph-plus:hover{border-color:#a21caf;box-shadow:0 0 26px rgba(162,28,175,.65),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
+.ph-plus.left{left:20px}.ph-plus.right{right:20px}
 /* --- MENU BAR under the cover: Personal .topnav + .steppill VERBATIM --- */
 .menu-bar{display:flex;gap:10px;justify-content:center;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;background:rgba(5,5,7,.92);backdrop-filter:blur(10px);z-index:50;overflow-x:auto;scrollbar-width:none}
 .menu-bar::-webkit-scrollbar{display:none}
-.menu-bar .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:11px;letter-spacing:.14em;color:#F8F7FB;padding:10px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #F8F7FB;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap;text-decoration:none}
+.menu-bar .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:11px;letter-spacing:.14em;color:#fff;padding:10px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #fff;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap;text-decoration:none}
 .steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
 .menu-bar .steppill:hover{border-color:var(--sc);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}
 .menu-bar .steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
@@ -120,16 +128,16 @@ body.fullscreen .ph-main{padding-top:12px}
 .ph-main{padding:8px 24px 160px}
 .page-head{text-align:center;margin:4px 0 18px}
 .page-head h2{margin:0;font-size:28px;font-weight:800}
-.page-head p{margin:8px 0 0;font-size:15px;color:rgba(245,247,251,.85)}
+.page-head p{margin:8px 0 0;font-size:15px;color:#fff}
 .cover-modes{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
 .cover-modes .btn{padding:9px 16px;font-size:12px;min-height:36px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
 .smart-lists h3{margin:0;padding:16px 18px 4px;font-size:15px;font-weight:800}
-.smart-lists .list-chip{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.02);color:#F5F7FB;font-family:inherit;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.4);transition:border-color .2s,box-shadow .2s}
-.smart-lists .list-chip:hover{border-color:var(--ac,#a06bff);box-shadow:0 0 20px -2px var(--ac,#a06bff),0 10px 22px rgba(0,0,0,.55)}
-.smart-lists .list-chip.active{border-color:var(--ac,#a06bff);background:rgba(160,107,255,.08);box-shadow:0 0 22px -2px var(--ac,#a06bff),0 10px 22px rgba(0,0,0,.55)}
+.smart-lists .list-chip{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.02);color:#fff;font-family:inherit;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.4);transition:border-color .2s,box-shadow .2s}
+.smart-lists .list-chip:hover{border-color:var(--ac,#8e24aa);box-shadow:0 0 20px -2px var(--ac,#8e24aa),0 10px 22px rgba(0,0,0,.55)}
+.smart-lists .list-chip.active{border-color:var(--ac,#8e24aa);background:rgba(142,36,170,.08);box-shadow:0 0 22px -2px var(--ac,#8e24aa),0 10px 22px rgba(0,0,0,.55)}
 .smart-lists .list-chip b{font-size:14px}
-.smart-lists .list-chip span{font-size:12px;color:rgba(245,247,251,.85);display:block;margin-top:2px}
+.smart-lists .list-chip span{font-size:12px;color:#fff;display:block;margin-top:2px}
 @media (max-width:900px){.smart-lists{grid-template-columns:1fr}}
 /* --- ORGANIZER TABS: the HUB's organizer — .nf-smtab pill skin HARVESTED VERBATIM
    from the Hub (index-2.html .smart-tab, SmartTabs v9) via the Personal file:
@@ -137,20 +145,20 @@ body.fullscreen .ph-main{padding-top:12px}
    on hover. The row scrolls natively (marquee removed 2026-10-19). --- */
 .org-tabs{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 14px;scrollbar-width:thin}
 .org-tabs::-webkit-scrollbar{height:6px}
-.org-tabs::-webkit-scrollbar-thumb{background:rgba(160,107,255,.5);border-radius:3px}
+.org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
 .nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
-.nf-smtab small{color:#c4a8ff;font-weight:800}
-.nf-smtab:hover,.nf-smtab:focus-visible{border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
+.nf-smtab small{color:#fff;font-weight:800}
+.nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
 .nf-smtab.active{border-color:rgba(255,255,255,.6);box-shadow:0 0 16px rgba(255,255,255,.18),inset 0 1px rgba(255,255,255,.15)}
 /* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
-.search-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(160,107,255,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(160,107,255,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:16px}
-.search-row input{flex:1;background:none;border:none;outline:none;color:#fff;font-size:15px;font-family:inherit}
-.search-row input::placeholder{color:rgba(245,247,251,.8)}
+.search-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:16px}
+.search-row input{flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-size:15px;font-family:inherit}
+.search-row input::placeholder{color:#fff}
 /* --- MESSENGER GRID --- */
 .messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
 .panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden}
 .panel h3{margin:0;padding:16px 18px 8px;font-size:15px;font-weight:800}
-.panel .panel-sub{padding:0 18px 10px;font-size:12.5px;color:rgba(245,247,251,.85)}
+.panel .panel-sub{padding:0 18px 10px;font-size:12.5px;color:#fff}
 /* --- ORB: the EXACT Connections-room orb — .cx-stage .cx-ava, live from
    https://nayanet.app/rooms/connections. Initial by default (JS sets
    textContent = initials(name)); per-person --cc; the spin is the conic
@@ -164,59 +172,59 @@ body.fullscreen .ph-main{padding-top:12px}
 @media(max-width:760px){.cx-ava{width:48px;height:48px;font-size:16px}
 .cx-ava.big{width:64px;height:64px;font-size:24px}}
 .orb-wrap{position:relative;flex:none}
-.orb-dot{position:absolute;right:0;bottom:2px;width:12px;height:12px;border-radius:50%;background:#2fe89e;border:2px solid #08080c;box-shadow:0 0 10px rgba(47,232,158,.8)}
+.orb-dot{position:absolute;right:0;bottom:2px;width:12px;height:12px;border-radius:50%;background:#07925f;border:2px solid #08080c;box-shadow:0 0 10px rgba(7,146,95,.8)}
 /* --- CONVERSATION / PERSON ROWS --- */
 .rows{display:flex;flex-direction:column;gap:8px;padding:6px 12px 16px}
-.row{--ac:#a06bff;display:flex;gap:12px;align-items:center;padding:14px;border-radius:20px;border:2px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#07070b,#020203);cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -4px 12px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.06),0 12px 40px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.4);transition:all .25s;text-align:left;width:100%;color:#F5F7FB;font-family:inherit}
-.row:hover{border-color:var(--ac);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 14px -2px var(--ac),0 18px 56px rgba(0,0,0,.55);transform:translateY(-4px)}
+.row{--ac:#8e24aa;display:flex;gap:12px;align-items:center;padding:14px;border-radius:20px;border:2px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#07070b,#020203);cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -4px 12px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.06),0 12px 40px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.4);transition:all .25s;text-align:left;width:100%;color:#fff;font-family:inherit}
+.row:hover{background:linear-gradient(180deg,color-mix(in srgb,var(--ac) 24%,#07070b),color-mix(in srgb,var(--ac) 12%,#020203));border-color:var(--ac);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 14px -2px var(--ac),0 18px 56px rgba(0,0,0,.55);transform:translateY(-4px)}
 .row.active{border-color:var(--ac);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 18px -2px var(--ac),0 18px 56px rgba(0,0,0,.55)}
 .row-body{flex:1;min-width:0}
 .row-name{font-size:15px;font-weight:800;display:flex;gap:8px;align-items:baseline}
-.row-name .match{font-size:11.5px;color:#c4a8ff;font-weight:800}
-.row-last{font-size:13px;color:rgba(245,247,251,.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
-.row-nut{font-size:12.5px;color:rgba(245,247,251,.8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
-.stub-note{padding:0 18px 14px;font-size:12px;color:rgba(245,247,251,.8);line-height:1.5}
+.row-name .match{font-size:11.5px;color:#fff;font-weight:800}
+.row-last{display:block;font-size:13px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.row-nut{display:block;font-size:12.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.stub-note{padding:0 18px 14px;font-size:12px;color:#fff;line-height:1.5}
 /* --- THREAD --- */
 .thread{display:flex;flex-direction:column;min-height:560px}
 .thread-head{display:flex;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.09)}
 .thread-head .who{flex:1;min-width:0}
 .thread-head .who b{font-size:17px}
-.thread-head .who span{display:block;font-size:12.5px;color:#2fe89e;margin-top:2px}
-.thread-head .who span.mail-mode{color:#c4a8ff}
+.thread-head .who span{display:block;font-size:12.5px;color:#fff;margin-top:2px}
+.thread-head .who span.mail-mode{color:#fff}
 /* --- TOGGLE: Smart Mail | Instant Message, in place --- */
-.toggle{display:flex;border-radius:999px;border:1.5px solid rgba(160,107,255,.55);overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15);flex:none}
-.toggle button{padding:10px 16px;background:#0a0a0f;color:#E8E8EC;border:1.5px solid transparent;font-size:13px;font-weight:800;cursor:pointer;transition:box-shadow .2s,border-color .2s;display:inline-flex;align-items:center;gap:8px}
-.toggle button:hover{box-shadow:0 0 18px var(--tc,rgba(160,107,255,.5))}
+.toggle{display:flex;border-radius:999px;border:1.5px solid rgba(142,36,170,.55);overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15);flex:none}
+.toggle button{padding:10px 16px;background:#0a0a0f;color:#fff;border:1.5px solid transparent;font-size:13px;font-weight:800;cursor:pointer;transition:box-shadow .2s,border-color .2s;display:inline-flex;align-items:center;gap:8px}
+.toggle button:hover{box-shadow:0 0 18px var(--tc,rgba(142,36,170,.5))}
 /* TOGGLE, PRO-LEVEL (brief §2): one control; the active side's OWN icon
    lights up in its own colour — mail blue, IM green. The icon IS the
    light (its own glow); there is no separate dot or light beside it.
    No gradient fill on .on: obsidian inside, light outside only. */
-.toggle button .tgl-ico{font-size:15px;line-height:1;color:#E8E8EC;transition:text-shadow .25s,color .25s}
+.toggle button .tgl-ico{font-size:15px;line-height:1;color:#fff;transition:text-shadow .25s,color .25s}
 .toggle button.on{background:#0a0a0f;color:#fff;border-color:var(--tc);box-shadow:0 0 20px var(--tc),inset 0 1px 0 rgba(255,255,255,.15)}
 .toggle button.on .tgl-ico{color:#fff;text-shadow:0 0 12px var(--tc),0 0 4px #fff}
 .toggle button[disabled]{opacity:.45;cursor:not-allowed}
 .thread-body{flex:1;padding:20px 18px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px}
 .msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:14.5px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
-.msg .meta{display:block;font-size:11.5px;color:rgba(245,247,251,.8);margin-top:6px}
-.msg.mine{align-self:flex-end;background:linear-gradient(180deg,#7b3fe0,#4a2a86);border-color:rgba(160,107,255,.6)}
+.msg .meta{display:block;font-size:11.5px;color:#fff;margin-top:6px}
+.msg.mine{align-self:flex-end;background:linear-gradient(180deg,#8e24aa,color-mix(in srgb,#8e24aa 55%,#050607));border-color:rgba(142,36,170,.6)}
 .msg.theirs{align-self:flex-start;background:linear-gradient(180deg,#1b1b24,#0c0c11)}
 .msg.letter{align-self:stretch;max-width:100%;background:linear-gradient(180deg,#14141d,#0a0a0f)}
 .msg.letter .subject{font-weight:800;font-size:15px;margin-bottom:6px}
-.msg.letter .letter-to{font-size:12.5px;color:#c4a8ff;margin-bottom:8px}
-.typing{align-self:flex-start;font-size:12.5px;color:rgba(245,247,251,.8);padding:6px 4px}
-.format-note{align-self:center;font-size:12px;color:rgba(245,247,251,.8);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:7px 12px;border-radius:999px}
+.msg.letter .letter-to{font-size:12.5px;color:#fff;margin-bottom:8px}
+.typing{align-self:flex-start;font-size:12.5px;color:#fff;padding:6px 4px}
+.format-note{align-self:center;font-size:12px;color:#fff;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:7px 12px;border-radius:999px}
 /* --- SMART NOTE card in the thread (L6 format) --- */
-.smart-note{border-radius:16px;border:1px solid rgba(160,107,255,.4);background:linear-gradient(180deg,#17102a,#0a0a0f);padding:16px 18px;box-shadow:0 10px 26px rgba(0,0,0,.5);margin:4px 0}
+.smart-note{border-radius:16px;border:1px solid rgba(142,36,170,.4);background:linear-gradient(180deg,#17102a,#0a0a0f);padding:16px 18px;box-shadow:0 10px 26px rgba(0,0,0,.5);margin:4px 0}
 .smart-note h4{margin:0 0 4px;font-size:15px}
-.smart-note h5{margin:12px 0 3px;font-size:12.5px;color:#c4a8ff;text-transform:uppercase;letter-spacing:.4px}
-.smart-note p{margin:0;font-size:13.5px;line-height:1.55;color:rgba(245,247,251,.8)}
+.smart-note h5{margin:12px 0 3px;font-size:12.5px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
+.smart-note p{margin:0;font-size:13.5px;line-height:1.55;color:#fff}
 /* --- COMPOSER with real depth --- */
 .composer{padding:14px;border-top:1px solid rgba(255,255,255,.09)}
 .composer-inner{display:flex;gap:10px;align-items:flex-end}
-.composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(160,107,255,.55);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:15px;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(160,107,255,.22)}
-.composer input[type=text]:focus{border-color:#a06bff;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 0 28px rgba(160,107,255,.5)}
+.composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:15px;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.22)}
+.composer input[type=text]:focus{border-color:#8e24aa;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 0 28px rgba(142,36,170,.5)}
 .composer input.subject{flex:0 0 180px}
-.composer input[type=text]::placeholder{color:rgba(245,247,251,.8)}
+.composer input[type=text]::placeholder{color:#fff}
 .btn{--btn-accent:var(--room-accent,var(--magenta));display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;padding:0 22px;border-radius:var(--radius-pill);border:1px solid color-mix(in srgb,var(--btn-accent) 45%,transparent);background:linear-gradient(145deg,color-mix(in srgb,var(--btn-accent) 26%,#1a1424),color-mix(in srgb,var(--btn-accent) 10%,#0b0a10));color:var(--ink);font-size:12.5px;font-weight:800;letter-spacing:.06em;cursor:pointer;box-shadow:var(--depth-hi),0 10px 26px #000a,0 0 22px color-mix(in srgb,var(--btn-accent) 26%,transparent);transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-med) var(--ease),filter var(--dur-fast) var(--ease);white-space:nowrap;font-family:inherit}
 .btn:hover{transform:translateY(-2px);filter:brightness(1.12);box-shadow:var(--depth-hi),0 16px 36px #000b,0 0 34px color-mix(in srgb,var(--btn-accent) 40%,transparent)}
 .btn:active{transform:translateY(0) scale(.985)}
@@ -226,96 +234,96 @@ body.fullscreen .ph-main{padding-top:12px}
 .thread-foot{display:flex;gap:10px;flex-wrap:wrap;padding:0 14px 14px}
 .thread-foot .btn{padding:10px 14px;font-size:13px}
 /* --- NOTIFICATION TOAST --- */
-.toast{position:fixed;top:16px;right:16px;z-index:80;width:min(360px,calc(100vw - 32px));border-radius:16px;border:1px solid rgba(160,107,255,.55);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:0 0 30px rgba(160,107,255,.5),0 20px 44px rgba(0,0,0,.7);padding:14px 16px;cursor:pointer;display:none}
+.toast{position:fixed;top:16px;right:16px;z-index:80;width:min(360px,calc(100vw - 32px));border-radius:16px;border:1px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:0 0 30px rgba(142,36,170,.5),0 20px 44px rgba(0,0,0,.7);padding:14px 16px;cursor:pointer;display:none}
 .toast.show{display:block}
 .toast b{font-size:14.5px}
-.toast p{margin:5px 0 0;font-size:13px;color:rgba(245,247,251,.8);line-height:1.45}
-.toast small{color:#c4a8ff;font-weight:700}
+.toast p{margin:5px 0 0;font-size:13px;color:#fff;line-height:1.45}
+.toast small{color:#fff;font-weight:700}
 /* --- INSTALL VEIL: harvested from the live identity page --- */
 .install-veil{position:fixed;inset:0;z-index:90;background:rgba(3,3,6,.82);display:none;align-items:center;justify-content:center;padding:20px}
 .install-veil.show{display:flex}
-.install-card{position:relative;width:min(420px,100%);border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1px solid rgba(160,107,255,.55);box-shadow:0 0 40px rgba(160,107,255,.45),0 30px 60px rgba(0,0,0,.8);padding:28px 24px;text-align:center}
+.install-card{position:relative;width:min(420px,100%);border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1px solid rgba(142,36,170,.55);box-shadow:0 0 40px rgba(142,36,170,.45),0 30px 60px rgba(0,0,0,.8);padding:28px 24px;text-align:center}
 .install-card h2{margin:0 0 8px;font-size:22px}
-.install-card p{margin:0 0 16px;font-size:14px;line-height:1.55;color:rgba(245,247,251,.8)}
+.install-card p{margin:0 0 16px;font-size:14px;line-height:1.55;color:#fff}
 .install-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#0a0a0f;color:#fff;font-size:16px;cursor:pointer}
-.install-x:hover{border-color:#e84fff;box-shadow:0 0 18px rgba(232,79,255,.55)}
-.install-manual{text-align:left;margin-top:16px;font-size:13.5px;line-height:1.6;color:rgba(245,247,251,.8)}
+.install-x:hover{border-color:#a21caf;box-shadow:0 0 18px rgba(162,28,175,.55)}
+.install-manual{text-align:left;margin-top:16px;font-size:13.5px;line-height:1.6;color:#fff}
 .install-manual b{color:#fff}
-.install-later{display:block;margin:14px auto 0;background:none;border:none;color:#c4a8ff;font-size:13.5px;font-weight:700;cursor:pointer;padding:8px}
-.install-later:hover{text-shadow:0 0 14px rgba(196,168,255,.8)}
+.install-later{display:block;margin:14px auto 0;background:none;border:none;color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;padding:8px}
+.install-later:hover{text-shadow:0 0 14px rgba(142,36,170,.8)}
 /* --- NOTIF TRIO BAR: the ULTIMATE icons (Shawn 20:34Z) — Hub .notif-bar VERBATIM
    (Personal file, harvested from the Hub nav file): no divider line above the
    trio, bar shadow 0 -16px 44px, entry animation, opacity transition. --- */
 .notif-bar{position:fixed;left:0;right:0;bottom:var(--smartbar-h,0px);z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) both;transition:opacity .45s ease}
 @keyframes notifUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
-.notif-row{display:flex;gap:34px;width:100%;max-width:640px;padding:12px 14px 10px;justify-content:center}
-.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#E8E8EC;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;min-width:84px}
+.notif-row{display:flex;gap:34px;width:100%;max-width:640px;padding:10px 14px 8px;justify-content:center}
+.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#fff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;min-width:84px}
 .notif-seg:active{transform:scale(.94)}
 .notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 36%,#12121a),#07070b 78%);border:1.5px solid color-mix(in srgb,var(--nc) 62%,rgba(255,255,255,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:color-mix(in srgb,var(--nc) 72%,#ffffff);transition:box-shadow .3s,border-color .3s}
 .notif-tile::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(155deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 42%),linear-gradient(25deg,rgba(255,255,255,0) 62%,color-mix(in srgb,var(--nc) 22%,transparent) 100%)}
 .notif-tile svg{width:25px;height:25px;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--nc) 75%,transparent));position:relative}
-.notif-lbl{font-size:12px;font-weight:800;letter-spacing:.04em;color:#E8E8EC}
+.notif-lbl{font-size:12px;font-weight:800;letter-spacing:.04em;color:#fff}
 .notif-count{position:absolute;top:-8px;right:-10px;min-width:24px;height:24px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:12px;font-weight:900;color:#06060a;background:var(--nc);border:2px solid #05050a;box-shadow:0 0 14px var(--nc),0 3px 8px rgba(0,0,0,.5);animation:notifPulse 2.4s ease-in-out infinite}
 @keyframes notifPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
 .notif-seg.has-news .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
 /* --- WORLD FEED PANEL + NOTIFICATION CHOICE SHEET (trio's door, spec §) --- */
-.feed-panel{position:fixed;left:50%;transform:translateX(-50%) translateY(12px);bottom:104px;z-index:46;width:min(560px,calc(100vw - 24px));max-height:min(62vh,560px);overflow-y:auto;border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1.5px solid rgba(160,107,255,.55);box-shadow:0 0 40px rgba(160,107,255,.4),0 30px 60px rgba(0,0,0,.8);padding:18px 18px 14px;display:none;opacity:0;transition:opacity .25s,transform .25s}
+.feed-panel{position:fixed;left:50%;transform:translateX(-50%) translateY(12px);bottom:104px;z-index:46;width:min(560px,calc(100vw - 24px));max-height:min(62vh,560px);overflow-y:auto;border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1.5px solid rgba(142,36,170,.55);box-shadow:0 0 40px rgba(142,36,170,.4),0 30px 60px rgba(0,0,0,.8);padding:18px 18px 14px;display:none;opacity:0;transition:opacity .25s,transform .25s}
 .feed-panel.show{display:block;opacity:1;transform:translateX(-50%) translateY(0)}
 .feed-panel h3{margin:0 0 2px;font-size:17px}
-.feed-panel .feed-sub{font-size:13px;color:rgba(245,247,251,.85);margin:0 0 12px;line-height:1.5}
-.feed-panel .feed-thing{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#c4a8ff;margin:14px 0 6px}
-.feed-item{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#F5F7FB;font-family:inherit;cursor:pointer;margin-bottom:8px;box-shadow:0 6px 16px rgba(0,0,0,.4)}
-.feed-item:hover{border-color:#a06bff;box-shadow:0 0 20px rgba(160,107,255,.4),0 10px 22px rgba(0,0,0,.55)}
+.feed-panel .feed-sub{font-size:13px;color:#fff;margin:0 0 12px;line-height:1.5}
+.feed-panel .feed-thing{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:14px 0 6px}
+.feed-item{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#fff;font-family:inherit;cursor:pointer;margin-bottom:8px;box-shadow:0 6px 16px rgba(0,0,0,.4)}
+.feed-item:hover{border-color:#8e24aa;box-shadow:0 0 20px rgba(142,36,170,.4),0 10px 22px rgba(0,0,0,.55)}
 .feed-item b{font-size:14px}
-.feed-item p{margin:4px 0 0;font-size:13px;color:rgba(245,247,251,.8);line-height:1.45}
-.feed-item .src{display:none;margin-top:6px;font-size:12px;color:#c4a8ff}
+.feed-item p{margin:4px 0 0;font-size:13px;color:#fff;line-height:1.45}
+.feed-item .src{display:none;margin-top:6px;font-size:12px;color:#fff}
 .feed-item.open .src{display:block}
 .feed-panel .feed-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
 .feed-panel .feed-actions .btn{padding:9px 14px;font-size:12px;min-height:36px}
 .choice-row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:11px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
 .choice-row:last-of-type{border-bottom:0}
 .choice-row span{font-size:14px;font-weight:700}
-.choice-row small{display:block;font-size:12px;color:rgba(245,247,251,.8);font-weight:400;margin-top:2px}
+.choice-row small{display:block;font-size:12px;color:#fff;font-weight:400;margin-top:2px}
 .choice-toggle{flex:none;width:52px;height:30px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:#0a0a0f;cursor:pointer;position:relative;box-shadow:inset 0 2px 6px rgba(0,0,0,.7)}
 .choice-toggle::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.5);transition:left .2s}
-.choice-toggle[aria-pressed="true"]{border-color:#2fe89e;background:rgba(47,232,158,.25);box-shadow:0 0 16px rgba(47,232,158,.4)}
-.choice-toggle[aria-pressed="true"]::after{left:25px;background:#2fe89e}
+.choice-toggle[aria-pressed="true"]{border-color:#07925f;background:rgba(7,146,95,.25);box-shadow:0 0 16px rgba(7,146,95,.4)}
+.choice-toggle[aria-pressed="true"]::after{left:25px;background:#07925f}
 /* --- WORLD SELECTOR: one universal mail, any world (brief §1) ---
    Personal blue · Business green · Space magenta. The active pill is
    the one that lights up — rim + glow in its own colour, obsidian inside. */
 .world-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:2px 0 16px}
 .world-row .world-lbl{font-size:13px;font-weight:800;color:#fff;margin-right:2px}
-.world-pill{--wc:#3fb8ff;display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:800;font-size:13px;color:#fff;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 20px rgba(0,0,0,.5);transition:box-shadow .25s,border-color .2s,transform .2s;white-space:nowrap}
+.world-pill{--wc:#0f52ba;display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:800;font-size:13px;color:#fff;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 20px rgba(0,0,0,.5);transition:box-shadow .25s,border-color .2s,transform .2s;white-space:nowrap}
 .world-pill .wdot{width:9px;height:9px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
-.world-pill:hover{border-color:var(--wc);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 22px -2px var(--wc),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+.world-pill:hover{background:linear-gradient(180deg,color-mix(in srgb,var(--wc) 24%,#131318),color-mix(in srgb,var(--wc) 12%,#08080b));border-color:var(--wc);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 22px -2px var(--wc),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
 .world-pill:hover .wdot{background:var(--wc);box-shadow:0 0 10px var(--wc)}
 .world-pill.on{border-color:var(--wc);box-shadow:0 0 0 1px var(--wc),0 0 24px -2px var(--wc),0 12px 26px rgba(0,0,0,.6)}
 .world-pill.on .wdot{background:var(--wc);box-shadow:0 0 12px var(--wc)}
-.world-note{font-size:13px;color:rgba(245,247,251,.85)}
+.world-note{font-size:13px;color:#fff}
 /* --- MAIL BOARD: the letter as an elevated board (Shawn 2026-11-13 15:32Z —
    mail mirrors Smart Notes: title, nutshell, key points, jewels as bullets).
    Board black inside, white as a real object, the whole board lights up
    and lifts on hover in its own world colour. --- */
-.mail-board{--wc:#3fb8ff;border-radius:18px;border:1.5px solid var(--wc);background:linear-gradient(180deg,#12101a,#08080c);padding:18px 20px;box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08),0 0 22px -6px var(--wc);margin:4px 0;transition:box-shadow .25s,transform .2s,border-color .2s}
+.mail-board{--wc:#0f52ba;border-radius:18px;border:1.5px solid var(--wc);background:linear-gradient(180deg,#12101a,#08080c);padding:18px 20px;box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08),0 0 22px -6px var(--wc);margin:4px 0;transition:box-shadow .25s,transform .2s,border-color .2s}
 .mail-board:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.12),0 0 34px -2px var(--wc)}
-.mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--wc);text-transform:uppercase}
+.mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#fff;text-transform:uppercase}
 .mail-board h4{margin:10px 0 4px;font-size:17px;font-weight:800;color:#fff}
-.mail-nut{margin:0;font-size:14.5px;line-height:1.55;color:rgba(245,247,251,.9)}
-.mail-board h5{margin:14px 0 6px;font-size:12.5px;color:#c4a8ff;text-transform:uppercase;letter-spacing:.4px}
+.mail-nut{margin:0;font-size:14.5px;line-height:1.55;color:#fff}
+.mail-board h5{margin:14px 0 6px;font-size:12.5px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
 .mail-points{margin:0;padding:0;list-style:none}
 .mail-points li{position:relative;font-size:14px;line-height:1.55;color:#fff;padding-left:22px;margin-bottom:6px}
 .mail-points li::before{content:'◆';position:absolute;left:0;top:0;color:var(--wc);text-shadow:0 0 8px var(--wc)}
-.mail-meta{margin:12px 0 0;font-size:12.5px;color:#c4a8ff}
+.mail-meta{margin:12px 0 0;font-size:12.5px;color:#fff}
 .mail-board .mail-unread{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:var(--wc);color:#06060a;font-size:11px;font-weight:900;letter-spacing:.04em;vertical-align:2px}
 /* --- ORBIT (Naya Code §8): every circle carries flow. The ring lives on
    .orb-wrap's own ::before/::after, so every orb — rows, thread head —
    orbits with no HTML change. Two satellites, slow, alternating: CW 60s,
    CCW 90s. The cover + buttons get the same slow ring. --- */
-.orb-wrap::before{content:'';position:absolute;inset:-7px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 3px at 50% 0%,#fff 98%,transparent 100%);animation:orbitCW 60s linear infinite}
-.orb-wrap::after{content:'';position:absolute;inset:-7px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 2px at 50% 100%,#fff 98%,transparent 100%);animation:orbitCCW 90s linear infinite}
+.orb-wrap::before{content:'';position:absolute;inset:-7px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 4px at 50% 0%,var(--ac,#fff) 98%,transparent 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);filter:drop-shadow(0 0 5px var(--ac,#fff));animation:orbitCW 60s linear infinite}
+.orb-wrap::after{content:'';position:absolute;inset:-7px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 3px at 50% 100%,var(--ac,#fff) 98%,transparent 100%);filter:drop-shadow(0 0 4px var(--ac,#fff));animation:orbitCCW 90s linear infinite}
 @keyframes orbitCW{to{transform:rotate(360deg)}}
 @keyframes orbitCCW{to{transform:rotate(-360deg)}}
-.ph-plus::before{content:'';position:absolute;inset:-7px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 3px at 50% 0%,#fff 98%,transparent 100%);animation:orbitCW 60s linear infinite}
+.ph-plus::before{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 4px at 50% 0%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCW 60s linear infinite}
 @media (max-width:900px){
   .messenger{grid-template-columns:1fr}
   .ph-cover{height:260px}
@@ -344,6 +352,14 @@ body.fullscreen .ph-main{padding-top:12px}
   .thread-head .toggle{flex:1 1 100%}
   .thread-head .toggle button{flex:1;padding:8px 10px}
 }
+/* --- FIX 2026-11-17 (Smart Mail fix round): trio orbit + whole-item light.
+   The bottom activity orbs carry two satellites each, slow, alternating
+   (tile ::after CW 60s in the orb's own colour; seg ::before CCW 90s white),
+   so the flow is visible. Hover lights the WHOLE tile in its own colour. --- */
+.notif-tile::after{content:'';position:absolute;inset:-8px;border-radius:22px;pointer-events:none;background:radial-gradient(circle 4px at 50% 0%,var(--nc) 98%,transparent 100%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--nc) 30%,transparent);filter:drop-shadow(0 0 6px var(--nc));animation:orbitCW 60s linear infinite}
+.notif-seg::before{content:'';position:absolute;top:-6px;left:50%;width:70px;height:70px;margin-left:-35px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 3px at 50% 100%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCCW 90s linear infinite}
+.notif-seg:hover .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 55%,#12121a),#07070b 78%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 30px color-mix(in srgb,var(--nc) 70%,transparent)}
+.row:hover .cx-ava{filter:brightness(1.18)}
 </style>
 </head>
 <body>
@@ -360,13 +376,13 @@ body.fullscreen .ph-main{padding-top:12px}
 
 <!-- MENU BAR -->
 <nav class="menu-bar" aria-label="Network menu">
-  <a class="steppill" style="--sc:#a06bff" href="https://nayanet.app/"><span class="sdot"></span>Hub</a>
-  <a class="steppill" style="--sc:#3fb8ff" href="https://nayanet.app/dashboard"><span class="sdot"></span>Dashboard</a>
-  <a class="steppill" style="--sc:#2fe89e" href="https://nayanet.app/personal"><span class="sdot"></span>Personal</a>
-  <a class="steppill" style="--sc:#ffbf3d" href="https://nayanet.app/business"><span class="sdot"></span>Business</a>
-  <a class="steppill" style="--sc:#e84fff" href="https://nayanet.app/spaces"><span class="sdot"></span>Space</a>
-  <a class="steppill on" style="--sc:#a06bff" href="#" aria-current="page"><span class="sdot"></span>Messenger</a>
-  <a class="steppill" style="--sc:#2fe89e" href="https://nayanet.app/pricing"><span class="sdot"></span>Pricing</a>
+  <a class="steppill" style="--sc:#8e24aa" href="https://nayanet.app/"><span class="sdot"></span>Hub</a>
+  <a class="steppill" style="--sc:#0f52ba" href="https://nayanet.app/dashboard"><span class="sdot"></span>Dashboard</a>
+  <a class="steppill" style="--sc:#07925f" href="https://nayanet.app/personal"><span class="sdot"></span>Personal</a>
+  <a class="steppill" style="--sc:#d4a017" href="https://nayanet.app/business"><span class="sdot"></span>Business</a>
+  <a class="steppill" style="--sc:#a21caf" href="https://nayanet.app/spaces"><span class="sdot"></span>Space</a>
+  <a class="steppill on" style="--sc:#8e24aa" href="#" aria-current="page"><span class="sdot"></span>Messenger</a>
+  <a class="steppill" style="--sc:#07925f" href="https://nayanet.app/pricing"><span class="sdot"></span>Pricing</a>
 </nav>
 
 <main class="ph-main">
@@ -416,14 +432,14 @@ body.fullscreen .ph-main{padding-top:12px}
     <!-- RIGHT: open thread -->
     <section class="panel thread" aria-label="Open conversation">
       <div class="thread-head">
-        <div class="orb-wrap"><div class="cx-ava big" id="threadOrb" style="--cc:#a06bff">M</div><span class="orb-dot" id="threadDot"></span></div>
+        <div class="orb-wrap"><div class="cx-ava big" id="threadOrb" style="--cc:#8e24aa">M</div><span class="orb-dot" id="threadDot"></span></div>
         <div class="who">
           <b id="threadName">Maya R.</b>
           <span id="threadPresence">Online now · Instant Message</span>
         </div>
         <div class="toggle" role="group" aria-label="Message format">
-          <button type="button" id="toggleMail" aria-pressed="false" style="--tc:#3fb8ff"><span class="tgl-ico" aria-hidden="true">✉</span>Smart Mail</button>
-          <button type="button" id="toggleIM" class="on" aria-pressed="true" style="--tc:#2fe89e"><span class="tgl-ico" aria-hidden="true">✦</span>Instant Message</button>
+          <button type="button" id="toggleMail" aria-pressed="false" style="--tc:#0f52ba"><span class="tgl-ico" aria-hidden="true">✉</span>Smart Mail</button>
+          <button type="button" id="toggleIM" class="on" aria-pressed="true" style="--tc:#07925f"><span class="tgl-ico" aria-hidden="true">✦</span>Instant Message</button>
         </div>
       </div>
 
@@ -494,13 +510,13 @@ body.fullscreen .ph-main{padding-top:12px}
      topic), never "space". -->
 <footer class="notif-bar" id="notifBar">
   <div class="notif-row">
-    <button class="notif-seg has-news" type="button" id="segPersonal" data-gem="amethyst" style="--nc:#a06bff" aria-label="Personal activity — open">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="rgba(160,107,255,.28)"/><circle cx="12" cy="12" r="4" fill="rgba(255,255,255,.30)" stroke-width="1"/><path d="M12 3.5v4.5M12 16v4.5M3.5 12h4.5M16 12h4.5M6.2 6.2l3 3M17.8 6.2l-3 3M6.2 17.8l3-3M17.8 17.8l-3-3" stroke-width="1" opacity=".65"/><path d="M8.3 7.2l.9 1.9 1.9.9-1.9.9-.9 1.9-.9-1.9-1.9-.9 1.9-.9z" fill="#fff" stroke="none" opacity=".95"/></svg><span class="notif-count" id="personalCount">2</span></span><span class="notif-lbl">Personal</span>
+    <button class="notif-seg has-news" type="button" id="segPersonal" data-gem="amethyst" style="--nc:#8e24aa" aria-label="Personal activity — open">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="rgba(142,36,170,.28)"/><circle cx="12" cy="12" r="4" fill="rgba(255,255,255,.30)" stroke-width="1"/><path d="M12 3.5v4.5M12 16v4.5M3.5 12h4.5M16 12h4.5M6.2 6.2l3 3M17.8 6.2l-3 3M6.2 17.8l3-3M17.8 17.8l-3-3" stroke-width="1" opacity=".65"/><path d="M8.3 7.2l.9 1.9 1.9.9-1.9.9-.9 1.9-.9-1.9-1.9-.9 1.9-.9z" fill="#fff" stroke="none" opacity=".95"/></svg><span class="notif-count" id="personalCount">2</span></span><span class="notif-lbl">Personal</span>
     </button>
-    <button class="notif-seg has-news" type="button" id="segBusiness" data-gem="emerald" style="--nc:#2fe89e" aria-label="Business activity — open">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8l4 4v12l-4 4H8l-4-4V8z" fill="rgba(47,232,158,.22)"/><path d="M10 7h4l2.5 2.5v9L14 21h-4l-2.5-2.5v-9z" fill="rgba(255,255,255,.22)" stroke-width="1"/><rect x="10.2" y="10.2" width="3.6" height="3.6" fill="rgba(255,255,255,.30)" stroke="none"/><path d="M7.6 6.4l.8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z" fill="#fff" stroke="none" opacity=".95"/></svg><span class="notif-count" id="businessCount">1</span></span><span class="notif-lbl">Business</span>
+    <button class="notif-seg has-news" type="button" id="segBusiness" data-gem="emerald" style="--nc:#07925f" aria-label="Business activity — open">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8l4 4v12l-4 4H8l-4-4V8z" fill="rgba(7,146,95,.22)"/><path d="M10 7h4l2.5 2.5v9L14 21h-4l-2.5-2.5v-9z" fill="rgba(255,255,255,.22)" stroke-width="1"/><rect x="10.2" y="10.2" width="3.6" height="3.6" fill="rgba(255,255,255,.30)" stroke="none"/><path d="M7.6 6.4l.8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z" fill="#fff" stroke="none" opacity=".95"/></svg><span class="notif-count" id="businessCount">1</span></span><span class="notif-lbl">Business</span>
     </button>
-    <button class="notif-seg has-news" type="button" id="segThing" data-gem="diamond" style="--nc:#e8eaf2" aria-label="Thing activity — open">
+    <button class="notif-seg has-news" type="button" id="segThing" data-gem="diamond" style="--nc:#ffffff" aria-label="Thing activity — open">
       <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5h10l4 4L12 20 3 9z" fill="rgba(255,255,255,.14)"/><path d="M7 5l2.5 4M17 5l-2.5 4M12 5v4M3 9h18M9.5 9L12 20M14.5 9L12 20" stroke-width="1" opacity=".7"/><path d="M7 5h5l-2.5 4z" fill="rgba(255,255,255,.35)" stroke="none"/><path d="M12 5h5l-2.5 4z" fill="rgba(255,255,255,.18)" stroke="none"/><path d="M9.5 9L12 20l-3.2-6.6z" fill="rgba(255,255,255,.25)" stroke="none"/><path d="M8.6 6.2l.7 1.5 1.5.7-1.5.7-.7 1.5-.7-1.5-1.5-.7 1.5-.7z" fill="#fff" stroke="none" opacity=".95"/></svg><span class="notif-count" id="thingCount">1</span></span><span class="notif-lbl" id="thingLbl">Design</span>
     </button>
   </div>
@@ -531,13 +547,13 @@ body.fullscreen .ph-main{padding-top:12px}
 /* STUB DATASET — sample people in the page's own shape (initial, name,
    nutshell, match %). Named as a stub: no sample person is a real citizen.
    Live path owed: Smart Organizer tabs + Auto-Match engine people. */
-var CC = ['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#e84fff'];
+var CC = ['#8e24aa','#0f52ba','#07925f','#d4a017','#a21caf'];
 var CONTACTS = [
-  {id:'maya', initial:'M', name:'Maya R.', nut:'Designing a kinder internet, one page at a time.', match:94, last:'That cover is beautiful — can you send the link?', cc:'#a06bff'},
-  {id:'jordan', initial:'J', name:'Jordan K.', nut:'Cooks slow food, grows fast herbs.', match:88, last:'Sunday market at nine — bring the sourdough.', cc:'#3fb8ff'},
-  {id:'priya', initial:'P', name:'Priya S.', nut:'Sings, teaches, and never misses a morning walk.', match:82, last:'The new song is ready. Want the first listen?', cc:'#2fe89e'},
-  {id:'leo', initial:'L', name:'Leo T.', nut:'Fixing bikes, riding farther every month.', match:76, last:'Trail on Saturday if the rain holds off.', cc:'#ffbf3d'},
-  {id:'sam', initial:'S', name:'Sam V.', nut:'Your son — football, guitars, and big questions.', match:100, last:'Dad, did you see the game?', cc:'#e84fff'}
+  {id:'maya', initial:'M', name:'Maya R.', nut:'Designing a kinder internet, one page at a time.', match:94, last:'That cover is beautiful — can you send the link?', cc:'#8e24aa'},
+  {id:'jordan', initial:'J', name:'Jordan K.', nut:'Cooks slow food, grows fast herbs.', match:88, last:'Sunday market at nine — bring the sourdough.', cc:'#0f52ba'},
+  {id:'priya', initial:'P', name:'Priya S.', nut:'Sings, teaches, and never misses a morning walk.', match:82, last:'The new song is ready. Want the first listen?', cc:'#07925f'},
+  {id:'leo', initial:'L', name:'Leo T.', nut:'Fixing bikes, riding farther every month.', match:76, last:'Trail on Saturday if the rain holds off.', cc:'#d4a017'},
+  {id:'sam', initial:'S', name:'Sam V.', nut:'Your son — football, guitars, and big questions.', match:100, last:'Dad, did you see the game?', cc:'#a21caf'}
 ];
 var TOPICS = {
   'Design': [
@@ -584,7 +600,7 @@ var TOPICS = {
   ]
 };
 var TAB_ORDER = ['Design','Music','Cooking','Fitness','Gardening','Travel','Business'];
-var TOPIC_COLORS = { Design:'#a06bff', Music:'#3fb8ff', Cooking:'#2fe89e', Fitness:'#ffbf3d', Gardening:'#e84fff', Travel:'#3fb8ff', Business:'#ffbf3d' };
+var TOPIC_COLORS = { Design:'#8e24aa', Music:'#0f52ba', Cooking:'#07925f', Fitness:'#d4a017', Gardening:'#a21caf', Travel:'#0f52ba', Business:'#d4a017' };
 /* Topic people carry their Connections-orb colour, assigned here (never invented per render). */
 Object.keys(TOPICS).forEach(function(k){ TOPICS[k].forEach(function(p, i){ p.cc = CC[i % CC.length]; }); });
 var THREADS = {
@@ -616,9 +632,9 @@ var THREADS = {
    no seeded letter is a real citizen's mail. Live path owed: the real
    mail store per world (mail read access is Shawn's hand). --- */
 var WORLDS = {
-  personal: { label:'Personal', color:'#3fb8ff' },
-  business: { label:'Business', color:'#2fe89e' },
-  space: { label:'Space', color:'#e84fff' }
+  personal: { label:'Personal', color:'#0f52ba' },
+  business: { label:'Business', color:'#07925f' },
+  space: { label:'Space', color:'#a21caf' }
 };
 var MAIL = {
   personal: [
@@ -684,20 +700,20 @@ function pushFeed(world, item){ FEEDS[world].unshift(item); }
    Sam is in BOTH — Family (IM) and Family mail — you IM him AND email him. --- */
 var SMART_LISTS = {
   im: [
-    { name:'Family', color:'#e84fff', members:['sam','maya'], note:'Sam V. · Maya R.' },
-    { name:'Design crew', color:'#a06bff', members:['t-d1','t-d2'], note:'Ava L. · Noah B.' }
+    { name:'Family', color:'#a21caf', members:['sam','maya'], note:'Sam V. · Maya R.' },
+    { name:'Design crew', color:'#8e24aa', members:['t-d1','t-d2'], note:'Ava L. · Noah B.' }
   ],
   mail: [
-    { name:'Family mail', color:'#e84fff', members:['sam','jordan'], note:'Sam V. · Jordan K.' },
-    { name:'Clients', color:'#3fb8ff', members:['t-b1','t-b2'], note:'Vera K. · David L.' }
+    { name:'Family mail', color:'#a21caf', members:['sam','jordan'], note:'Sam V. · Jordan K.' },
+    { name:'Clients', color:'#0f52ba', members:['t-b1','t-b2'], note:'Vera K. · David L.' }
   ]
 };
 function nowTime(){ var d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
 
 function renderTabs(){
-  var html = '<button class="nf-smtab" type="button" data-topic="All" style="--tc:#a06bff">All topics</button>';
+  var html = '<button class="nf-smtab" type="button" data-topic="All" style="--tc:#8e24aa">All topics</button>';
   TAB_ORDER.forEach(function(t){
-    html += '<button class="nf-smtab' + (state.topic===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#a06bff') + '">' + t + ' <small>' + TOPICS[t].length + ' online</small></button>';
+    html += '<button class="nf-smtab' + (state.topic===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#8e24aa') + '">' + t + ' <small>' + TOPICS[t].length + ' online</small></button>';
   });
   $('orgTabs').innerHTML = html;
   $('orgTabs').querySelectorAll('.nf-smtab').forEach(function(b){
@@ -709,8 +725,8 @@ function renderConvs(){
   var list = CONTACTS.filter(function(c){ return !q || c.name.toLowerCase().indexOf(q) >= 0 || c.nut.toLowerCase().indexOf(q) >= 0; });
   if (state.listFilter) list = list.filter(function(c){ return state.listFilter.indexOf(c.id) >= 0; });
   $('convList').innerHTML = list.map(function(c){
-    return '<button class="row' + (state.person.id===c.id ? ' active' : '') + '" type="button" data-id="' + c.id + '" style="--ac:' + (c.cc || '#a06bff') + '">' +
-      '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (c.cc || '#a06bff') + '">' + c.initial + '</span><span class="orb-dot"></span></span>' +
+    return '<button class="row' + (state.person.id===c.id ? ' active' : '') + '" type="button" data-id="' + c.id + '" style="--ac:' + (c.cc || '#8e24aa') + '">' +
+      '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (c.cc || '#8e24aa') + '">' + c.initial + '</span><span class="orb-dot"></span></span>' +
       '<span class="row-body"><span class="row-name">' + esc(c.name) + ' <span class="match">' + c.match + '% match</span></span>' +
       '<span class="row-last" data-last="' + c.id + '">' + esc(c.last) + '</span></span></button>';
   }).join('') || '<p class="stub-note">Nobody in this list matches that search yet — try another word.</p>';
@@ -724,15 +740,15 @@ function renderTopicPeople(){
   var q = $('smartSearch').value.trim().toLowerCase();
   var list = (TOPICS[topic] || []).filter(function(p){ return !q || p.name.toLowerCase().indexOf(q) >= 0 || p.nut.toLowerCase().indexOf(q) >= 0 || topic.toLowerCase().indexOf(q) >= 0; });
   $('topicPeople').innerHTML = list.map(function(p){
-    return '<button class="row topic-person" type="button" data-id="' + p.id + '" data-topic="' + topic + '" style="--ac:' + (p.cc || '#a06bff') + '">' +
-      '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (p.cc || '#a06bff') + '">' + p.initial + '</span><span class="orb-dot"></span></span>' +
+    return '<button class="row topic-person" type="button" data-id="' + p.id + '" data-topic="' + topic + '" style="--ac:' + (p.cc || '#8e24aa') + '">' +
+      '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (p.cc || '#8e24aa') + '">' + p.initial + '</span><span class="orb-dot"></span></span>' +
       '<span class="row-body"><span class="row-name">' + esc(p.name) + ' <span class="match">' + p.match + '% match</span></span>' +
       '<span class="row-nut">' + esc(p.nut) + '</span></span></button>';
   }).join('') || '<p class="stub-note">Nobody online in this topic matches that search.</p>';
   $('topicPeople').querySelectorAll('.topic-person').forEach(function(r){
     r.addEventListener('click', function(){
       var p = TOPICS[r.dataset.topic].find(function(x){ return x.id===r.dataset.id; });
-      openPerson({id:p.id, initial:p.initial, name:p.name, nut:p.nut, match:p.match, last:'Say hello — start the conversation.', cc:p.cc || '#a06bff'});
+      openPerson({id:p.id, initial:p.initial, name:p.name, nut:p.nut, match:p.match, last:'Say hello — start the conversation.', cc:p.cc || '#8e24aa'});
       /* STUB receive: the topic person greets first, proving receive + notification. */
       setTimeout(function(){ receiveMessage(p, 'Hi! Great to meet you here in ' + r.dataset.topic + '. What are you working on?'); }, 900);
     });
@@ -743,7 +759,7 @@ function renderThread(){
   var isGroup = !!state.group;
   var fmt = isGroup ? 'im' : state.format;
   $('threadOrb').textContent = p.initial;
-  $('threadOrb').style.setProperty('--cc', p.cc || '#a06bff');
+  $('threadOrb').style.setProperty('--cc', p.cc || '#8e24aa');
   $('threadName').textContent = p.name;
   if (isGroup) {
     $('threadPresence').textContent = p.members.length + ' online · topic chat';
@@ -809,7 +825,7 @@ function openPerson(p){
 function openTopicChat(topic){
   var members = TOPICS[topic] || [];
   state.group = topic;
-  state.person = { id: 'topic:' + topic, initial: topic.charAt(0), name: topic, nut: 'Topic chat — everyone online in ' + topic + '.', match: null, cc: TOPIC_COLORS[topic] || '#a06bff', members: members };
+  state.person = { id: 'topic:' + topic, initial: topic.charAt(0), name: topic, nut: 'Topic chat — everyone online in ' + topic + '.', match: null, cc: TOPIC_COLORS[topic] || '#8e24aa', members: members };
   if (!THREADS['topic:' + topic]) THREADS['topic:' + topic] = [
     { who:'theirs', name: members.length ? members[0].name : 'Naya', text:'Welcome to the ' + topic + ' chat — everyone online in ' + topic + ' is here.', time:'09:30', topic: topic }
   ];
@@ -857,12 +873,21 @@ function renderWorlds(){
     ? 'Opened from the Hub — pick any world.'
     : 'Opened from your ' + WORLDS[state.world].label + ' page — showing ' + WORLDS[state.world].label + ' mail first. Pick any world.';
 }
+function personForMail(m, w){
+  var p = findPersonAnywhere(m.fromId);
+  if (!p) return null;
+  return CONTACTS.indexOf(p) >= 0 ? p : { id: p.id, initial: p.initial, name: p.name, nut: p.nut || '', match: p.match, last: m.subject, cc: p.cc || WORLDS[w].color };
+}
 function setWorld(w){
   if (!WORLDS[w]) return;
   state.world = w;
-  state.mailId = (MAIL[w][0] || {}).id || null;
+  var first = MAIL[w][0] || null;
+  state.mailId = first ? first.id : null;
   renderWorlds(); renderInbox();
-  if (state.format === 'mail') renderThread();
+  /* World switch switches EVERYTHING — inbox, top letter, conversation
+     header, thread cards, composer — the way opening a letter does. */
+  if (first) { var p = personForMail(first, w); if (p) openPerson(p); }
+  renderThread();
   window.__mailWorld = w;
 }
 function renderInbox(){
@@ -906,7 +931,13 @@ function initMailEntry(){
   if (!WORLDS[world]) world = 'personal';
   state.world = world;
   state.entryFrom = from || 'hub';
+  /* Mail entry opens in Smart Mail mode on that world's mail — the letters
+     are what the door was opened for. An explicit ?format= still wins. */
   if (q.format === 'mail' || q.format === 'im') state.format = q.format;
+  else state.format = 'mail';
+  var first = MAIL[world][0] || null;
+  state.mailId = first ? first.id : null;
+  if (first) { var p = personForMail(first, world); if (p) state.person = p; }
   window.__mailEntry = { world: world, from: state.entryFrom, format: state.format };
   window.__hubHookup = { entry: state.entryFrom, world: world, interface: 'smart-mail-im' };
   window.__mailWorld = world;
@@ -978,7 +1009,7 @@ function openToast(){
   var p = CONTACTS.find(function(c){ return c.id===window.__toastFor; });
   if (p) { openPerson(p); setWorldCount(state.world === 'space' ? 'thing' : state.world, 0); return; }
   var t = Object.keys(TOPICS).map(function(k){ return TOPICS[k]; }).flat().find(function(x){ return x.id===window.__toastFor; });
-  if (t) openPerson({id:t.id, initial:t.initial, name:t.name, nut:t.nut||'', match:t.match, last:'Say hello — start the conversation.', cc:t.cc || '#a06bff'});
+  if (t) openPerson({id:t.id, initial:t.initial, name:t.name, nut:t.nut||'', match:t.match, last:'Say hello — start the conversation.', cc:t.cc || '#8e24aa'});
   setWorldCount(state.world === 'space' ? 'thing' : state.world, 0);
 }
 function openInstall(){
@@ -1033,7 +1064,7 @@ function openFeed(world){
       var person = null;
       CONTACTS.forEach(function(c){ if (c.name===b.dataset.who) person = c; });
       if (!person) Object.keys(TOPICS).forEach(function(k){ TOPICS[k].forEach(function(p){ if (p.name===b.dataset.who) person = p; }); });
-      if (person) { closeFeed(); openPerson(person.id && CONTACTS.indexOf(person) >= 0 ? person : { id: person.id, initial: person.initial, name: person.name, nut: person.nut || '', match: person.match, last: 'Say hello — start the conversation.', cc: person.cc || '#a06bff' }); }
+      if (person) { closeFeed(); openPerson(person.id && CONTACTS.indexOf(person) >= 0 ? person : { id: person.id, initial: person.initial, name: person.name, nut: person.nut || '', match: person.match, last: 'Say hello — start the conversation.', cc: person.cc || '#8e24aa' }); }
       else b.classList.toggle('open');
     });
   });
@@ -1083,7 +1114,7 @@ function renderSmartLists(){
         var first = findPersonAnywhere(list.members[0]);
         $('listFilterNote').hidden = false;
         $('listFilterNote').textContent = 'Showing ' + list.name + ' (' + (kind==='im' ? 'instant messages' : 'mail') + ') — ' + list.members.length + ' people. Tap the list again to show everyone.';
-        if (first) openPerson(CONTACTS.indexOf(first) >= 0 ? first : { id: first.id, initial: first.initial, name: first.name, nut: first.nut || '', match: first.match, last: 'Say hello — start the conversation.', cc: first.cc || '#a06bff' });
+        if (first) openPerson(CONTACTS.indexOf(first) >= 0 ? first : { id: first.id, initial: first.initial, name: first.name, nut: first.nut || '', match: first.match, last: 'Say hello — start the conversation.', cc: first.cc || '#8e24aa' });
       }
       renderConvs(); renderSmartLists();
     });
