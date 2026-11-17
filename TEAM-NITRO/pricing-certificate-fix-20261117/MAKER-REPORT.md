@@ -461,5 +461,39 @@ v2.13 harvested, not remade; the current base kept, not rebuilt; nothing
 removed, moved, or touched beyond F1–F6.
 
 ## §12 Filing receipts
-PENDING — updated after filing (second commit, mirroring the prior
-round's two-commit shape: files + report, then the report with receipts).
+- Branch: `pricing/certificate-fix-20261117` (NEW, from
+  certificate-current tip `d60151b2`)
+- Commit: `9ba0bca62dd998c3d04c096bf1b2f5b439641531`
+  (tree `80beb4bfd7995ddbaa2e9e979fc0b8d3c034bbb4`, parent `d60151b2…`)
+- Files filed (10 blobs, all read-back MATCH by sha256):
+  `MAKER-REPORT.md` (blob `46363657aaa0bd44977ed47487aaa7e05c288449`,
+  29,035 B — this version, before receipts were added; the receipts
+  update follows as a second commit) ·
+  `build-fix.py` (blob `88d7bf00a18f39edf0fe1e55de9988ad0c029c74`, 27,443 B)
+  · `probe-fix.py` (blob `c15c962828bc26705174dbac13e0651720bb8284`, 9,823 B)
+  · `laws-check-fix.py` (blob `db3a92a106770604894acce597666bf8bf1d1033`,
+  4,182 B) · `audit-fix.py` (blob
+  `266ed565fa76422f697698de0a5f483f137c4d04`, 7,835 B) ·
+  `fetch-fix.py` (blob `dfd2907608006c8bbe12d250ce4b05a77992d289`, 1,262 B)
+  · `inspect-base.py` (blob `a99c39c4fc9d417a8bbb6f37f9a8d2862e0ae962`,
+  3,219 B) · `inspect-base2.py` (blob
+  `bb5f96fed7a78bdf625c56ce8393544862da080a`, 2,077 B) ·
+  `inspect-base3.py` (blob `4242b4f7bdbdc2c56c7d82027e2b328388628cb8`,
+  1,426 B) · `fixed-entry.html` (blob
+  `67334408be3ae947ade81c11372dc173e6d47358`, 335,915 B, sha256
+  `fbd6477f348ab50b8b0eb278fb36e475c25eb55ae27a4d79ca416942161f16fd` —
+  re-derived in memory, never read from disk).
+- PR: **#3429**, https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3429
+  — open, UNMERGED (base `main`).
+- Staged: `https://naya-pricing-free-staging.nayapower.workers.dev/free`
+  (entry 335,915 B, sha `fbd6477f…`, worker sha
+  `041c8a5944f3b52f017185ca522498b0df12aafe246f3baa0bcdd27efc9eb2f3`,
+  `modified_on 2026-11-17T19:54:29Z`).
+- Live `naya-model-pricing` untouched; nothing merged.
+- The filing scripts themselves (`file-fix-to-github.py`,
+  `file-report-receipts.py`) live only on disk in the round directory,
+  as in the prior round — they are the mechanism, not the record.
+- Superseded first staging (recorded, not hidden): 19:50:11Z, entry
+  335,913 B sha `6ef38123…`, worker `10e7acfa…` — it carried the `(0
+  <form> tags` comment artifact; reworded and re-staged as the canonical
+  bytes above.
