@@ -1,0 +1,1151 @@
+{
+  "provenance": "",
+  "board_buttons": {
+    "board": true,
+    "buttons": [
+      {
+        "cls": "action primo theme-purple elev-2",
+        "label": "Create a smart space from this intelligence",
+        "text": "\uff0b CREATE SPACE"
+      },
+      {
+        "cls": "action primo theme-purple elev-2",
+        "label": "Mark as favorite",
+        "text": "\u2605 FAVORITE"
+      },
+      {
+        "cls": "action primo theme-purple elev-2",
+        "label": "Save this intelligence",
+        "text": "SAVE"
+      },
+      {
+        "cls": "ib-layer-head open",
+        "label": null,
+        "text": "Human Note"
+      },
+      {
+        "cls": "ib-layer-head open",
+        "label": null,
+        "text": "Child Note"
+      },
+      {
+        "cls": "ib-layer-head open",
+        "label": null,
+        "text": "Grandma Note"
+      },
+      {
+        "cls": "ib-layer-head open",
+        "label": null,
+        "text": "Naya Note"
+      },
+      {
+        "cls": "ib-layer-head",
+        "label": null,
+        "text": "What It Means"
+      },
+      {
+        "cls": "ib-layer-head",
+        "label": null,
+        "text": "What\u2019s In It For You"
+      },
+      {
+        "cls": "ib-layer-head",
+        "label": null,
+        "text": "How It Applies"
+      },
+      {
+        "cls": "action primo theme-purple elev-2",
+        "label": "Love this intelligence",
+        "text": "\u2764\ufe0f LOVE0"
+      },
+      {
+        "cls": "action primo theme-purple elev-2",
+        "label": "Like this intelligence",
+        "text": "\ud83d\udc4d LIKE0"
+      },
+      {
+        "cls": "",
+        "label": "1 star",
+        "text": "\u2605"
+      },
+      {
+        "cls": "",
+        "label": "2 stars",
+        "text": "\u2605"
+      },
+      {
+        "cls": "",
+        "label": "3 stars",
+        "text": "\u2605"
+      },
+      {
+        "cls": "",
+        "label": "4 stars",
+        "text": "\u2605"
+      },
+      {
+        "cls": "",
+        "label": "5 stars",
+        "text": "\u2605"
+      },
+      {
+        "cls": "action primo theme-purple elev-2",
+        "label": "Share this intelligence",
+        "text": "\uff0b SHARE INTEL"
+      },
+      {
+        "cls": "action primo theme-purple elev-2",
+        "label": "Add your contribution",
+        "text": "ADD INTEL"
+      }
+    ],
+    "layerPlays": 0,
+    "nayaVoice": true,
+    "voicePlayFns": [
+      "_speaking",
+      "_currentUtterance",
+      "_preferredVoice",
+      "_bakedAudioCache",
+      "init",
+      "_selectVoice",
+      "_resolveVoice",
+      "play",
+      "_playWholeText",
+      "playSections",
+      "_chunkText",
+      "_newSession",
+      "_sessionLive",
+      "_runSession",
+      "_finishSession",
+      "_resolvePlayable",
+      "_textKey",
+      "_probeAudio",
+      "_awaitStream",
+      "_awaitSynthesis"
+    ]
+  },
+  "layer_play_total": 0,
+  "play_click": "no-play-control",
+  "play_after": {
+    "speaking": false,
+    "pending": false,
+    "voices": 0
+  },
+  "share_dialog": {
+    "dialogHtml": "<div id=\"naya-install-overlay\" class=\"naya-install-overlay show\" role=\"dialog\" aria-label=\"Install NayaNET as an app\" style=\"display: flex;\"><div class=\"naya-install-card\"><img class=\"naya-install-icon\" src=\"/icon-192.png\" alt=\"NayaNET\" width=\"96\" height=\"96\"><div class=\"naya-install-title\">Install NayaNET</div><div class=\"naya-install-sub\">Your intelligent hub, on your home screen \u2014 one tap away, no login, ever. Any page can become an app: install it from here, from the sidebar, or from Settings.</div><button type=\"button\" class=\"primo theme-purple elev-2 naya-install-go\" id=\"naya-install-go\">Install the app</button><div class=\"naya-install-steps\" id=\"naya-install-steps\" style=\"display:none\"><div class=\"naya-install-row mine\"><div class=\"naya-install-plat\">Computer \u00b7 Chrome or Edge <span class=\"naya-install-you\">you</span></div><ol><li>Click the <b>install icon</b> at the right end of the address bar.</li><li>Click <b>\u201cInstall\u201d</b>.</li><li>NayaNET opens as its own app.</li></ol></div><div class=\"naya-install-row\"><div class=\"naya-install-plat\">iPhone \u00b7 iPad \u00b7 Safari</div><ol><li>Tap the <b>Share</b> icon \u2014 the square with an arrow \u2014 at the bottom of Safari.</li><li>Scroll the list and tap <b>\u201cAdd to Home Screen\u201d</b>.</li><li>Tap <b>\u201cAdd\u201d</b> \u2014 NayaNET is on your home screen.</li></ol></div><div class=\"naya-install-row\"><div class=\"naya-install-plat\">Android \u00b7 Chrome</div><ol><li>Tap the <b>three-dot menu</b> at the top right.</li><li>Tap <b>\u201cInstall app\u201d</b> (on some phones: \u201cAdd to Home screen\u201d).</li><li>Tap <b>\u201cInstall\u201d</b> \u2014 you\u2019re done.</li></ol></div><div class=\"naya-install-row\"><div class=\"naya-install-plat\">Mac \u00b7 Safari</div><ol><li>In the menu bar, click <b>File</b>.</li><li>Choose <b>\u201cAdd to Dock\u201d</b>.</li><li>NayaNET lands in your Dock.</li></ol></div></div><button type=\"button\" class=\"naya-install-later\" id=\"naya-install-later\">Not now</button></div></div>",
+    "inputs": [
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "",
+        "ro": false
+      },
+      {
+        "cls": "",
+        "val": "https://naya-proof-host.nayapower.workers.dev/#/smart-notes/ib-smart-note-20261117-one-flow-acceptan",
+        "ro": true
+      }
+    ]
+  },
+  "share_link": "https://naya-proof-host.nayapower.workers.dev/?file=HUB/app/index.html&ref=smart-feed/one-flow-20261117&cb=3aed69891c6909b678c2e413008cd9cbb455bacc#/smart-notes/nn-05f949dc-2df0-4940-971f-01d5cae4cf8b",
+  "share_link_opens_note": false
+}

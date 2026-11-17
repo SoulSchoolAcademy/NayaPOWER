@@ -4009,6 +4009,181 @@ window.NayaContent = {
   tryLive();
 })();
 </script>
+<script>/* ═══════════════════════════════════════════════════════════════════
+   ONE FLOW — SMART FEED LIVE READ (2026-11-17, Smart Feed / One Flow round)
+   The wire: Supabase-direct anon REST read, no member session, no deploy
+   injection, no re-bake. This COMPLETES PR #3173 (merged 2026-11-04,
+   fd5763fe): #3173 built the live-first attempt (feedLiveFirst ->
+   roomData('feed') -> NayaPowerRuntime.smartFeed) but its transport could
+   never arrive — smartFeed() needs window.NayaBridgeConfig with an
+   authenticated memberId + accessToken, which the public Hub page never
+   has, so every load fell back to the baked snapshot. This block is the
+   transport #3173 was waiting for: the public feed reads the public
+   tables with the public anon key (the same key the Personal page
+   already ships in its own bytes), and re-points the SAME seam the
+   feed-live.json override uses — window.NayaFeedIntelligence — so the
+   harvested feed room, liveNoteFromCard, intelBoard, solo-note view,
+   and provenance line all work unchanged. Nothing is redesigned.
+   Tables (both anon-SELECT, verified live 2026-11-17):
+     public.hub_smart_notes — the sync's feed table (ib_id, title,
+       nutshell, human/child/grandma/naya/machine_note, what_it_means,
+       whats_in_it_for_you, how_it_applies, source, github_path).
+     public.naya_notes — the composer's table; ONLY rows with
+       category='Smart Note' for owner_alias 'flagship-personal' are
+       surfaced (the explicit share act — a citizen filing a note AS a
+       Smart Note). naya_notes carries no owner_scope column; the
+       category gate is the filter until that column exists (see
+       HUB-CONTRACT.md D4 note in this round's filing).
+   Poll: every 15s + once at load. A changed newest note re-points the
+   feed and re-renders the room (same hashchange nudge the override
+   uses). A failed read NEVER goes silent: the provenance line says
+   the read failed and the page keeps the last good cards;
+   window.NayaLiveFeed carries {ok, error, at} for probes. The line
+   is re-applied across room re-renders (the room rebuilds the
+   element empty each render, and its own writer only fills it for
+   the governed runtime) — see the watcher below. v2 (2026-11-17
+   16:40Z): provenance persistence added after the staged walk showed
+   the line reading empty between renders, even while the live read
+   was ok.
+   The baked NOTES array and /feed-live.json stay as the honest
+   fallback only — the re-bake is irrelevant to cards from here on.
+   ═══════════════════════════════════════════════════════════════════ */
+window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s' };
+(function(){
+  if (typeof window === 'undefined' || typeof fetch !== 'function') return;
+  var CFG = window.NayaLiveFeedConfig || {};
+  if (!CFG.url || !CFG.key) { try { console.warn('[one-flow] live read not configured'); } catch(e){} return; }
+  var TONES = ['magenta', 'purple', 'blue', 'green', 'gold', 'orange', 'red'];
+  function toneFor(id){ var h=0, s=String(id||''); for (var i=0;i<s.length;i++) h=((h*31)+s.charCodeAt(i))>>>0; return TONES[h % TONES.length]; }
+  function clean(t){ return String(t||'').replace(/[#>*_`"]/g,'').replace(/\s+/g,' ').trim(); }
+  function firstSentence(t){
+    var c = clean(t); if (!c) return '';
+    var m = c.match(/^[^.!?]+[.!?]/); return (m ? m[0] : c.slice(0, 140)).trim();
+  }
+  function relAge(ms){
+    if (!ms || isNaN(ms)) return 'unknown age';
+    var m = Math.floor((Date.now()-ms)/60000);
+    if (m < 1) return 'just now'; if (m < 60) return m + 'm ago';
+    var h = Math.floor(m/60); if (h < 24) return h + 'h ago';
+    return Math.floor(h/24) + 'd ago';
+  }
+  function layer(name, key, color, tier, body){
+    body = String(body||'').trim(); if (!body) return null;
+    return { name:name, key:key, color:color, tier:tier, body:body };
+  }
+  function sectionsFromMd(md){
+    var out = {}, cur = null;
+    String(md||'').split('\n').forEach(function(line){
+      var hm = line.match(/^##\s+(.+?)\s*$/);
+      if (hm) { cur = hm[1].trim().toUpperCase(); out[cur] = ''; }
+      else if (cur) { out[cur] += line + '\n'; }
+    });
+    Object.keys(out).forEach(function(k){ out[k] = out[k].trim(); });
+    return out;
+  }
+  function hubRowToNote(r){
+    var layers = [];
+    [['IN A NUTSHELL','IN A NUTSHELL','white','primary',r.nutshell],
+     ['Human Note','HUMAN NOTE','magenta','primary',r.human_note],
+     ['Child Note','CHILD NOTE','sapphire','primary',r.child_note],
+     ['Grandma Note','GRANDMA NOTE','emerald','primary',r.grandma_note],
+     ['Naya Note','NAYA NOTE','purple','primary',r.naya_note],
+     ['What It Means','WHAT IT MEANS','indigo','deeper',r.what_it_means],
+     ['What\u2019s In It For You','WHAT\u2019S IN IT FOR YOU','gold','deeper',r.whats_in_it_for_you],
+     ['How It Applies','HOW IT APPLIES','orange','deeper',r.how_it_applies],
+     ['Machine Record','MACHINE RECORD','sapphire','deeper',r.machine_note]
+    ].forEach(function(spec){ var l = layer(spec[0],spec[1],spec[2],spec[3],spec[4]); if (l) layers.push(l); });
+    return {
+      id: r.ib_id, title: r.title || '', subtitle: firstSentence(r.nutshell),
+      created: r.created_at || r.note_created || '', created_at: r.created_at || r.note_created || '',
+      topics: ['Smart Notes'], topic: 'Smart Notes', category: 'Smart Note',
+      tone: toneFor(r.ib_id), icon: 'note', kind: 'smart-note', personal: false,
+      github_path: r.github_path || '', layers: layers
+    };
+  }
+  function nnRowToNote(r){
+    var sec = sectionsFromMd(r.body || '');
+    var nut = sec['IN A NUTSHELL'] || '';
+    if (!nut) { var paras = String(r.body||'').split(/\n\s*\n/); nut = clean(paras.join(' ')).slice(0, 600); }
+    var layers = [];
+    [['In A Nutshell','IN A NUTSHELL','white','primary',nut],
+     ['What It Means','WHAT IT MEANS','indigo','deeper',sec['WHAT IT MEANS']],
+     ['What\u2019s In It For You','WHAT\u2019S IN IT FOR YOU','gold','deeper',sec['WHAT\u2019S IN IT FOR YOU']],
+     ['How It Applies','HOW IT APPLIES','orange','deeper',sec['HOW IT APPLIES']],
+     ['The Message, Word For Word','THE MESSAGE, WORD FOR WORD','sapphire','deeper',sec['THE MESSAGE, WORD FOR WORD']]
+    ].forEach(function(spec){ var l = layer(spec[0],spec[1],spec[2],spec[3],spec[4]); if (l) layers.push(l); });
+    if (!layers.length) layers.push(layer('In A Nutshell','IN A NUTSHELL','white','primary',clean(r.body||'').slice(0,600)));
+    return {
+      id: 'nn-' + r.id, title: r.title || firstSentence(r.body || '') || 'A note from Naya',
+      subtitle: firstSentence(nut || r.body || ''),
+      created: r.created_at || '', created_at: r.created_at || '',
+      topics: ['Naya Notes'], topic: 'Naya Notes', category: 'Smart Note',
+      tone: toneFor(r.id), icon: 'note', kind: 'naya-note', personal: false, layers: layers
+    };
+  }
+  function headers(){ return { 'apikey': CFG.key, 'Authorization': 'Bearer ' + CFG.key }; }
+  function checkedTime(){ try { return new Date().toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit'}); } catch(e){ return ''; } }
+  var lastProvText = '';
+  function setProvenance(text){
+    lastProvText = text || '';
+    try { var el = document.getElementById('feed-provenance-line'); if (el && el.textContent !== lastProvText) el.textContent = lastProvText; } catch(e){}
+  }
+  /* The room rebuilds the provenance element on every render (a fresh
+     empty <p id="feed-provenance-line">) and its own writer
+     (updateFeedProvenance) only fills it when the governed runtime
+     says live — which never happens on this page. A one-shot write is
+     therefore wiped by the next render, and the line read EMPTY on the
+     staged walk even while the live read was ok. This watcher
+     re-applies the last live text whenever the element appears or is
+     emptied, so the line always tells the live truth. The guard
+     (write only when different) keeps the observer from looping on
+     its own write. */
+  try {
+    if (typeof MutationObserver !== 'undefined') {
+      var provObs = new MutationObserver(function(){ if (lastProvText) setProvenance(lastProvText); });
+      provObs.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+    }
+  } catch(e){}
+  function nudgeRoom(){
+    try {
+      if (window.NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }
+      window.dispatchEvent(new HashChangeEvent('hashchange'));
+    } catch(e){}
+  }
+  var lastNewest = '';
+  function fetchLive(){
+    var hubQ = '/rest/v1/hub_smart_notes?select=id,ib_id,title,nutshell,human_note,child_note,grandma_note,naya_note,machine_note,what_it_means,whats_in_it_for_you,how_it_applies,source,author,github_path,created_at,note_created&order=created_at.desc&limit=200';
+    var nnQ = '/rest/v1/naya_notes?select=id,title,body,category,created_at&owner_alias=eq.flagship-personal&category=eq.Smart%20Note&order=created_at.desc&limit=100';
+    return Promise.all([
+      fetch(CFG.url + hubQ, { cache:'no-store', headers: headers() }).then(function(r){ if(!r.ok) throw new Error('hub_smart_notes '+r.status); return r.json(); }),
+      fetch(CFG.url + nnQ, { cache:'no-store', headers: headers() }).then(function(r){ if(!r.ok) throw new Error('naya_notes '+r.status); return r.json(); })
+    ]).then(function(parts){
+      var notes = [];
+      (parts[0]||[]).forEach(function(r){ if (r && r.ib_id) notes.push(hubRowToNote(r)); });
+      (parts[1]||[]).forEach(function(r){ if (r && r.id) notes.push(nnRowToNote(r)); });
+      var seen = {};
+      notes = notes.filter(function(n){ if (seen[n.id]) return false; seen[n.id]=1; return true; });
+      notes.sort(function(a,b){ return Date.parse(b.created_at||b.created||'') - Date.parse(a.created_at||a.created||''); });
+      notes = notes.slice(0, 200);
+      window.NayaFeedIntelligence = { notes: notes, ref: 'live-supabase' };
+      var newestMs = notes.length ? Date.parse(notes[0].created_at || notes[0].created || '') : 0;
+      var newestKey = notes.length ? (notes[0].id + '|' + notes[0].created_at) : '';
+      window.NayaLiveFeed = { ok:true, at:new Date().toISOString(), count:notes.length, newest:notes.length?notes[0].created_at:null, backend:'supabase-direct', error:null };
+      setProvenance('Live intelligence \u00b7 ' + notes.length + ' note' + (notes.length===1?'':'s') + ' \u00b7 newest ' + relAge(newestMs) + ' \u00b7 backend: supabase-direct \u00b7 checked ' + checkedTime());
+      if (newestKey && newestKey !== lastNewest) { lastNewest = newestKey; nudgeRoom(); }
+      return window.NayaLiveFeed;
+    }).catch(function(err){
+      var msg = (err && err.message) ? err.message : 'live read failed';
+      window.NayaLiveFeed = { ok:false, at:new Date().toISOString(), count:0, newest:null, backend:'supabase-direct', error:msg };
+      try { console.warn('[one-flow] live read failed:', msg); } catch(e){}
+      setProvenance('Live feed unavailable \u2014 showing the last cards \u00b7 ' + msg + ' \u00b7 checked ' + checkedTime());
+      return window.NayaLiveFeed;
+    });
+  }
+  fetchLive();
+  setInterval(fetchLive, 15000);
+})();
+</script>
 <script>
 /* Live feed override v2 face rules (Resolve, 2026-11-05): companion to the
    v1 override above. Once live data is in: (1) the provenance line stops
