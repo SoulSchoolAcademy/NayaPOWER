@@ -375,23 +375,14 @@ body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidd
 a{color:#fff}
 button{font-family:inherit}
 img{max-width:100%}
-/* --- COVER: .ph-cover harvested verbatim in shape (Personal page) --- */
-.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(25vh,360px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(142,36,170,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(212,160,23,.30),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(15,82,186,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
-.ph-cover::before{content:'';position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(180deg,rgba(2,2,6,0) 0%,rgba(2,2,6,.38) 52%,rgba(2,2,6,.78) 100%);pointer-events:none;z-index:1}
-@media(max-width:900px){.ph-cover{height:260px !important;aspect-ratio:auto !important;max-height:none !important;}}
-/* COVER TOGGLE (Unification 2026-11-17): one plain button in the page-head —
-   "Hide the banner" / "Show the banner". The old Cover / No cover /
-   Full screen trio is gone: "Full screen" never went fullscreen (zero
-   requestFullscreen in either presentation) and the words said nothing
-   plain. One button, plain words, always visible, always undoable. */
-body.no-cover .ph-cover{display:none}
-body.no-cover .ph-main{padding-top:12px}
-.ph-cover-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:20px}
-.ph-cover-inner h1{margin:0;font-size:44px;font-weight:800;letter-spacing:.2px;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+/* WHITE-MIDDLE (2026-11-17, brief §3(c)): the cover banner is GONE — Shawn 20:46Z, no banner in a banner; the page starts flush at the top like the rest and opens on the mail itself. The cover CSS, the cover-toggle rules and the toggle itself go with it. The two + controls survive in .ph-top below — same buttons, same ids, same handlers, only their parent changed. */
 
 .ph-plus{position:absolute;top:32px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);display:grid;place-items:center;font-size:24px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.55);transition:box-shadow .2s,border-color .2s,transform .2s}
 .ph-plus:hover{border-color:#a21caf;box-shadow:0 0 26px rgba(162,28,175,.65),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
 .ph-plus.left{left:24px}.ph-plus.right{right:24px}
+/* WHITE-MIDDLE §3(c): the slim top strip — flush at the top of .page-scroll, no banner, no title, no wasted space. The + buttons sit in-flow here (position:relative keeps their orbit ring anchored); their look and handlers are untouched. */
+.ph-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px 0}
+.ph-top .ph-plus{position:relative;top:auto;left:auto;right:auto}
 /* --- MENU BAR under the cover: Personal .topnav + .steppill VERBATIM --- */
 /* FIX-7 (item 2): the menu bar's background was rgba(5,5,7,.92) — lines
    scrolling under it showed through faintly (Fix-6 checker: subtitle
@@ -414,7 +405,6 @@ body.no-cover .ph-main{padding-top:12px}
    dock (see body rule), so it holds at EVERY scroll position. The 32px
    bottom padding is just breathing room for the last content. */
 .ph-main{padding:6px 24px 32px}
-.page-head{text-align:center;margin:0 0 10px}
 /* FIX-4 (brief item 1): the fade did NOT land as a fix — its transparent
    bottom let scrolling text show through, cut mid-glyph with a hard edge.
    The band is now SOLID opaque #050507 (the menu-bar above it is the
@@ -587,15 +577,19 @@ body.no-cover .ph-main{padding-top:12px}
    .notif-tile construction unchanged; the segments are now the Five, icons
    only, no visible labels — the dock is shorter, so less of the page hides
    behind it. Six segments, equal 84px, gap 22px. --- */
-.notif-bar{position:static;flex:none;z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) both;transition:opacity .45s ease}
+.notif-bar{position:static;flex:none;z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;transition:transform .35s ease,opacity .45s ease} /* WHITE-MIDDLE: fill 'both' -> 'backwards' so the entrance animation releases the transform after it lands — otherwise it would override the fold. */
+/* WHITE-MIDDLE §3(a): the fold rule (Shawn 20:29Z, confirmed 20:50Z). The bar folds away the moment you scroll down and returns ONLY at the very bottom. */
+#naya-notif-bar.bar-folded{transform:translateY(110%);opacity:0;pointer-events:none}
 @keyframes notifUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
 .notif-row{display:flex;gap:22px;width:100%;max-width:720px;padding:8px 14px 6px;justify-content:center}
 .notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#fff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;min-width:84px}
 .notif-seg:active{transform:scale(.94)}
-.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 36%,#12121a),#07070b 78%);border:1.5px solid var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:var(--nc);transition:box-shadow .3s,border-color .3s}
+/* WHITE-MIDDLE (2026-11-17, brief BRIEF-SMART-MAIL-WHITE-MIDDLE-FLUSH-TOP-20261117 §3(a)): the tile construction harvested from the Dashboard sweep-#07 fix (blob 614513a1, PR #3430) — white radial core, glyph in the tile's own color. The morning orbit flow stays (see .notif-tile::after / .notif-seg::before). Border stays the mail's bare var(--nc) (fix-5 law), not Dashboard's 62% white mix. */
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(52% 52% at 50% 50%, #ffffff 0%, color-mix(in srgb, var(--nc) 22%, #ffffff) 58%, color-mix(in srgb, var(--nc) 36%, #12121a) 82%, #07070b 100%);border:1.5px solid var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);color:color-mix(in srgb, var(--nc) 72%, #ffffff);transition:box-shadow .3s, border-color .3s, transform .2s;}
 .notif-tile::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(155deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 42%),linear-gradient(25deg,rgba(255,255,255,0) 62%,color-mix(in srgb,var(--nc) 22%,transparent) 100%)}
-.notif-tile svg{width:25px;height:25px;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--nc) 75%,transparent));position:relative}
-.notif-count{position:absolute;top:-8px;right:-10px;min-width:24px;height:24px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:12px;font-weight:900;color:#06060a;background:var(--nc);border:2px solid #05050a;box-shadow:0 0 14px var(--nc),0 3px 8px rgba(0,0,0,.5);animation:notifPulse 2.4s ease-in-out infinite}
+.notif-tile svg{width:25px;height:25px;color:var(--nc);filter:drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent));position:relative;}
+/* WHITE-MIDDLE §3(b): every count is a black (obsidian) badge with a white number — the Dashboard black-badge construction (blob 614513a1 L29302, the F1 fix: black bg + white text + own-color rim) and the PTS/%/MONEY pill law. Rim is the tile's own color (var(--nc)); digits 17px, the Dashboard badge size. */
+.notif-count{position:absolute;top:-8px;right:-10px;min-width:24px;height:24px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:17px;line-height:1;font-weight:900;color:#fff;background:#050607;border:2px solid var(--nc);box-shadow:0 0 12px color-mix(in srgb, var(--nc) 80%, transparent),0 3px 8px rgba(0,0,0,.5);animation:notifPulse 2.4s ease-in-out infinite}
 @keyframes notifPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
 .notif-seg.has-news .notif-tile{border-color:var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
 /* --- WORLD FEED PANEL + NOTIFICATION CHOICE SHEET (trio's door, spec §) --- */
@@ -660,7 +654,6 @@ body.no-cover .ph-main{padding-top:12px}
 .ph-plus::before{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 50% 0%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCW 60s linear infinite}
 @media (max-width:900px){
   .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:0}   
-  .ph-cover-inner{padding:10px 10px 12px}   .ph-cover-inner h1{font-size:24px}   
   /* FIX-3 round 2, 2026-11-17: narrow stack trims so the first row clears the fixed dock:
      h2 22px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
      .page-scroll{--titleEdge:86px} /* FIX-6: 1-line title edge ≈46+40 (FIX-7: 54px bar-tuck) */
@@ -688,7 +681,6 @@ body.no-cover .ph-main{padding-top:12px}
   
   .nf-smtab{padding:8px 16px}
   .org-tabs{padding:2px 2px 2px}
-  #coverToggle{min-height:38px}
   
 }
 /* --- FIX 2026-11-12 (checker NOT PASS 8/10): thread head at phone widths ---
@@ -748,7 +740,7 @@ body.no-cover .ph-main{padding-top:12px}
    so the flow is visible. Hover lights the WHOLE tile in its own colour. --- */
 .notif-tile::after{content:'';position:absolute;inset:-8px;border-radius:22px;pointer-events:none;background:radial-gradient(circle 6px at 50% 0%,var(--nc) 98%,transparent 100%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--nc) 30%,transparent);filter:drop-shadow(0 0 6px var(--nc));animation:orbitCW 60s linear infinite}
 .notif-seg::before{content:'';position:absolute;top:-6px;left:50%;width:70px;height:70px;margin-left:-35px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 0% 50%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCCW 75s linear infinite}
-.notif-seg:hover .notif-tile{border-color:var(--nc);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 55%,#12121a),#07070b 78%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 30px color-mix(in srgb,var(--nc) 70%,transparent)}
+.notif-seg:hover .notif-tile{transform:translateY(-3px);border-color:var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);} /* WHITE-MIDDLE: hover lifts + lights (Dashboard) but keeps the white middle — the old dark-gradient hover killed the white core on touch. Border stays bare var(--nc) (fix-5). */
 /* SIX at phone widths: six tiles must fit 390px — tighter gap, 48px tiles. */
 @media(max-width:480px){.notif-row{gap:10px;padding:8px 8px 6px}.notif-seg{min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}}
 .row:hover .cx-ava{filter:brightness(1.18)}
@@ -777,25 +769,18 @@ body.no-cover .ph-main{padding-top:12px}
 -->
 </head>
 <body>
-<!-- FIX-4: .page-scroll is the page's only scroller (see body rule) — cover,
-     menu-bar and main scroll inside it; the Five sit below it in flow. -->
+<!-- FIX-4: .page-scroll is the page's only scroller (see body rule) — menu-bar and main scroll inside it; the bar sits below it in flow. -->
 <div class="page-scroll">
 
-<!-- COVER -->
-<header class="ph-cover" id="cover">
-  <div class="ph-cover-inner">
-    <h1>Smart Mail</h1>
-  </div>
+<!-- WHITE-MIDDLE §3(c): the cover banner stood here — gone (Shawn 20:46Z). The page opens on the mail itself. The two + controls live in this slim strip, flush at the top: New message left, Install Smart Mail right. -->
+<div class="ph-top">
   <button class="ph-plus left" id="plusNew" type="button" aria-label="New message">+</button>
   <button class="ph-plus right" id="plusInstall" type="button" aria-label="Install Smart Mail">+</button>
-</header>
+</div>
 
 <!-- MENU BAR -->
 
 <main class="ph-main">
-  <div class="page-head">
-    <button class="btn ghost cover-toggle" type="button" id="coverToggle" aria-pressed="false">Hide the banner</button>
-  </div>
 
   <!-- ORGANIZER TABS: the Smart Organizer's topics, harvested verbatim -->
   <div class="org-tabs" id="orgTabs" role="tablist" aria-label="Topics in NayaNET"></div>
@@ -1351,6 +1336,7 @@ function setFormat(f){
     renderInbox();
   }
   renderThread();
+  if (isMail) $('threadBody').scrollTop = 0; /* WHITE-MIDDLE §3(e): mail mode opens on the letter board — its heading first (see openMail). */
 }
 /* --- WORLDS: one universal mail, any world selectable (brief §1) --- */
 /* REVAMP: world pills removed (§4) — the world's mail still comes from entry
@@ -1372,6 +1358,7 @@ function setWorld(w){
      header, thread cards, composer — the way opening a letter does. */
   if (first) { var p = personForMail(first, w); if (p) openPerson(p); }
   renderThread();
+  if (state.format === 'mail') $('threadBody').scrollTop = 0; /* WHITE-MIDDLE §3(e): a world switch opens its first letter — heading first (see openMail). */
   window.__mailWorld = w;
 }
 function renderInbox(){
@@ -1402,6 +1389,8 @@ function openMail(id){
   if (p) openPerson(CONTACTS.indexOf(p) >= 0 ? p : { id: p.id, initial: p.initial, name: p.name, nut: p.nut || '', match: p.match, last: m.subject, cc: p.cc || WORLDS[state.world].color });
   renderInbox();
   if (state.format === 'mail') renderThread();
+  /* WHITE-MIDDLE §3(e): a newly opened letter shows its heading at once — renderThread() scrolls the thread to the latest, which parks the letter board's eyebrow/title/opening line above the view (and in the mask fade); only KEY POINTS and the From line showed. The opened letter is the thing — scroll the thread back to its top. */
+  if (state.format === 'mail') $('threadBody').scrollTop = 0;
 }
 /* --- ENTRY: which world's mail first, and the Hub hookup (brief §4).
    ?world=personal|business|space wins; else ?from=<world> (a page's mail
@@ -1605,19 +1594,6 @@ function renderSmartLists(){
     });
   });
 }
-/* One plain cover button: "Hide the banner" / "Show the banner". The old
-   three-mode control is gone with the "Full screen" label that never went
-   fullscreen. The button lives in the page-head, so it survives both
-   states — hiding the banner can never strand the reader. */
-function toggleCover(){
-  var hidden = !document.body.classList.contains('no-cover');
-  document.body.classList.toggle('no-cover', hidden);
-  var b = $('coverToggle');
-  b.textContent = hidden ? 'Show the banner' : 'Hide the banner';
-  b.setAttribute('aria-pressed', String(hidden));
-  b.classList.toggle('ghost', !hidden);
-  window.__coverMode = hidden ? 'no-cover' : 'cover';
-}
 /* STUB event (named): the probe and the citizen's eye prove the trio moves.
    Live path owed: the real-time socket/push per world. */
 function stubEvent(world, kind, text){
@@ -1631,10 +1607,39 @@ document.querySelector('[data-notif="activity"]').addEventListener('click', func
 document.querySelector('[data-notif="spaces"]').addEventListener('click', function(){ $('orgTabs').scrollIntoView({block:'nearest'}); refreshFiveCounts(); }); // REVAMP: world pills gone (§4) — WORLDS opens the topics. BAR-FIX: counts re-asserted (see ACTIVITY).
 document.querySelector('[data-notif="eco"]').addEventListener('click', function(){ $('smartLists').scrollIntoView({block:'center'}); refreshFiveCounts(); }); // BAR-FIX: counts re-asserted (see ACTIVITY).
 /* BAR-FIX: CONNECT (data-notif="plus-connect") keeps only Personal's NayaNotif handler — it opens the CONNECT plus menu where that menu exists; this page has no plus menu yet, so the tap is a guarded no-op. Present and tappable, never CREATE. */
+/* WHITE-MIDDLE §3(a): the fold rule (Shawn 20:29Z, confirmed 20:50Z, generalized 20:54Z — the fold is the experience, same on every page). The bar folds away the moment you scroll down and returns ONLY at the very bottom. The scroller is .page-scroll (body never scrolls). Visible at load and whenever the scroll sits at the very bottom; folded everywhere between. The bar is in-flow below .page-scroll (flex:1), so display:none after the slide lets the mail grow into the freed space; showing restores it first, then the slide runs. The latch records the settled scroll position at arming (600ms) as its baseline and only latches 12px below it — so the fix-6 boot nudge never folds the bar at load, whatever its size. State exposed as window.__mailBarFold for the checker. */
+var __mailBarFolded = false, __mailBarTimer = null, __mailScrolled = false, __mailFoldArmed = false, __mailBootTop = 0;
+function __setMailBarFolded(folded){
+  var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+  if (folded === __mailBarFolded) return; __mailBarFolded = folded;
+  if (typeof clearTimeout === 'function') clearTimeout(__mailBarTimer);
+  if (folded) {
+    bar.classList.add('bar-folded');
+    if (typeof setTimeout === 'function') __mailBarTimer = setTimeout(function(){ if (__mailBarFolded) bar.style.display = 'none'; }, 380);
+    else bar.style.display = 'none';
+  } else {
+    bar.style.display = '';
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(function(){ bar.classList.remove('bar-folded'); });
+    else bar.classList.remove('bar-folded');
+  }
+}
+function __syncMailBarFold(){
+  var sc = document.querySelector('.page-scroll'); if (!sc) return;
+  if (__mailFoldArmed && sc.scrollTop > __mailBootTop + 12) __mailScrolled = true;
+  var atBottom = (sc.scrollHeight - sc.scrollTop - sc.clientHeight) <= 2;
+  __setMailBarFolded(__mailScrolled && !atBottom);
+  window.__mailBarFold = { folded: __mailBarFolded, scrolled: __mailScrolled, atBottom: atBottom, top: sc.scrollTop };
+}
+(function(){
+  var sc = document.querySelector('.page-scroll'); if (!sc) return;
+  sc.addEventListener('scroll', __syncMailBarFold, {passive:true});
+  if (typeof setTimeout === 'function') setTimeout(function(){ var sc2 = document.querySelector('.page-scroll'); if (sc2) __mailBootTop = sc2.scrollTop; __mailFoldArmed = true; __syncMailBarFold(); }, 600);
+  else { __mailFoldArmed = true; }
+  __syncMailBarFold();
+})();
 $('feedCloseBtn').addEventListener('click', closeFeed);
 $('feedChoiceBtn').addEventListener('click', openChoice);
 $('choiceCloseBtn').addEventListener('click', function(){ $('choicePanel').classList.remove('show'); });
-$('coverToggle').addEventListener('click', toggleCover);
 initMailEntry();
 renderTabs(); renderConvs(); renderTopicPeople(); renderThread(); renderSmartLists(); renderChoice();
 setWorldCount('personal', 2); setWorldCount('business', 1); setWorldCount('thing', 1);
@@ -1726,9 +1731,9 @@ function fix8SyncDockFade(){
 }
 if (fix8Scroll) fix8Scroll.addEventListener('scroll', fix8SyncDockFade, {passive:true});
 window.addEventListener('resize', fix8SyncDockFade);
-/* The cover toggle, world switches, mail/IM toggle and list re-renders move
+/* World switches, mail/IM toggle and list re-renders move
    the first card WITHOUT scrolling (scrollTop does not change, so no scroll
-   event fires) — e.g. hiding the banner lifts the card ~260px and parks a
+   event fires) — e.g. a world switch moves the card and parks a
    thread bullet at the dock edge while the fade would still read the stale
    rest state. A MutationObserver re-syncs on any layout-changing mutation
    (body class, list re-render, display swap); the sync is idempotent, so
