@@ -9152,6 +9152,42 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   if (!location.hash) { location.hash = '#/hub'; }
   if (defaultedHash && noteSlug) { location.hash = '#/smart-notes/' + noteSlug; }
 
+  /* Identity handoff, hoisted to boot (2026-11-17, session hoist Half A).
+     The handoff used to live only in mainShow() (feed hero), so it never
+     ran on any other route, and it read only ?name= while the live gate
+     submits ?userName=. It now runs here, on EVERY route, before
+     Router.render(). Name present (?name= or ?userName=, + ?alias= as
+     before): persist it on this device and set the returning cookie, then
+     scrub only the identity params out of the query (other params such as
+     ?cluster= / ?installation_id= / ?n= are kept, and the hash is kept).
+     No name in the query: re-set the cookie when a name is already stored.
+     First-time visitors (no stored name, no query) are unchanged: no write,
+     no cookie. The name stays on the citizen's own device; nothing is sent
+     anywhere. The mainShow() copy below is left untouched. */
+  (function identityHandoffAtBoot() {
+    try {
+      var qp = new URLSearchParams(location.search);
+      var qn = (qp.get('name') || qp.get('userName') || '').trim();
+      var qa = (qp.get('alias') || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (qa) { try { localStorage.setItem('nayanet_smart_alias', qa); } catch (e) {} }
+      if (qn) {
+        try { localStorage.setItem('nayanet_smart_name', qn); } catch (e) {}
+        try { document.cookie = 'nayanet_returning=1; path=/; max-age=31536000; SameSite=Lax'; } catch (e) {}
+      } else {
+        var stored = '';
+        try { stored = (localStorage.getItem('nayanet_smart_name') || '').trim(); } catch (e) {}
+        if (stored || qa) { try { document.cookie = 'nayanet_returning=1; path=/; max-age=31536000; SameSite=Lax'; } catch (e) {} }
+      }
+      if (qn || qa) {
+        try {
+          qp.delete('name'); qp.delete('userName'); qp.delete('alias');
+          var rest = qp.toString();
+          history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash);
+        } catch (e) {}
+      }
+    } catch (e) { /* identity unavailable — first-time visitors and fallbacks unchanged */ }
+  })();
+
   Router.render();
 
   /* The notifications bar is hub CHROME: it initializes with the shell on
