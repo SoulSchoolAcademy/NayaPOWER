@@ -52583,6 +52583,39 @@
         "Repair",
         "Canon"
       ]
+    },
+    {
+      "smart_note_id": "SN-3079",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3079-authority-is-a-property-of-artifacts",
+      "slug": "authority-is-a-property-of-artifacts",
+      "title": "Authority Is a Property of Artifacts",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3079/IB-SMART-NOTE-20261117-sn3079-authority-is-a-property-of-artifacts.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3079/IB-SMART-NOTE-20261117-sn3079-authority-is-a-property-of-artifacts.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3079/IB-SMART-NOTE-20261117-sn3079-authority-is-a-property-of-artifacts.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261117-sn3079-authority-is-a-property-of-artifacts.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-17T22:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-17",
+      "page_hash": "100dcb604c18041c1eafae3d39f111c2c3419a9ef70d898a8bf147f4b27e3b97",
+      "content_hash": "de32fd5672aedbfdbb855dc1160938751c25f34e7a9059d4f891d1620107824d",
+      "one_line": "Authority never travels in a message, a mood, or a confident sentence. It lives in the fields of the artifact itself — ratified by the named ratifier, in the envelope that proves it — or it does not exist. A relay between seats hands over evidence, bytes, and boundaries, and stops there: it never hands over a decision, an ownership, or a verdict, and the seat that opens the door recuses from judging what came through it. A constitution placed on a branch is a candidate until the ratifier's explicit word; a merge message claiming ratified while the artifact says false is a claim, and the fields are right. Around that core stands the machine this law demands: one pipeline — brief, build, verify, file, report — enforced by code rather than by text that cannot enforce itself, built whole and in order, because the year taught us that verification coming last, lanes sitting empty, and work held in memory until the end is how a library gets mistaken for an operating system.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Governance",
+        "Authority"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52593,5 +52626,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "aea20e356635d4355bec7c2f8c2ee94f4b7480064856d1a8394873837ca794ac"
+  "corpus_manifest_hash": "23a53f9083eeea917b738b547669a9fbcb926703d760d09a90685c03c01bf093"
 }
