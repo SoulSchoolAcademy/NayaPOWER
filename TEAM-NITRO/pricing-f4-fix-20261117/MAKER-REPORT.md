@@ -181,7 +181,12 @@ Branch `pricing-f4-free-entry-20261116` (repo `SoulSchoolAcademy/NayaPOWER`, TEA
 folder inside it). New commit on top of the branch tip — **NOT merged**.
 Files: `pricing-f4-fix-20261117/MAKER-REPORT.md`, `pricing-f4-fix-20261117/build-fix.py`,
 `pricing-f4-fix-20261117/check-walk-flow.mjs`, `pricing-f4-fix-20261117/cleanup-test-alias.py`.
-Commit + blobs recorded here after the filing run: _(filled in below)._
+**Filed: branch `pricing-f4-free-entry-20261116`, commit
+`57a6d9e3847a41322c1028c983d65d2c4f986fa7`** (parent = branch tip `f5fc9b53…` as briefed),
+tree `6730faea8035010b5fb4e8820beb14ec59045d79`, 4 blobs (report `4a8b78b2…`,
+build-fix `52d7be07…`, harness `b022dfae…`, cleanup `4fa28615…`); ref verified pointing at
+the new commit; maker-report blob read-back MATCH (sha256
+`22a39f09f975fe02b7aa9aa4b7962ad2b63095b08544a8f12ad522375f518f53`). **NOT merged.**
 
 ## 7. FOR THE CHECKER
 
