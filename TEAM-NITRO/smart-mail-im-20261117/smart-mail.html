@@ -388,7 +388,7 @@ body.no-cover .ph-cover{display:none}
 body.no-cover .ph-main{padding-top:12px}
 .ph-cover-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:20px}
 .ph-cover-inner h1{margin:0;font-size:44px;font-weight:800;letter-spacing:.2px;text-shadow:0 4px 24px rgba(0,0,0,.6)}
-.ph-cover-inner p{margin:10px 0 0;font-size:16px;color:#fff;max-width:560px;line-height:1.5}
+
 .ph-plus{position:absolute;top:32px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);display:grid;place-items:center;font-size:24px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.55);transition:box-shadow .2s,border-color .2s,transform .2s}
 .ph-plus:hover{border-color:#a21caf;box-shadow:0 0 26px rgba(162,28,175,.65),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
 .ph-plus.left{left:24px}.ph-plus.right{right:24px}
@@ -399,14 +399,14 @@ body.no-cover .ph-main{padding-top:12px}
    a-100). It is now SOLID #050507, the same near-black: the bar looks
    identical, but nothing can show through it. The title's solid band
    covers everything below the bar. */
-.menu-bar{display:flex;gap:10px;justify-content:center;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;background:#050507;backdrop-filter:blur(10px);z-index:50;overflow-x:auto;scrollbar-width:none}
-.menu-bar::-webkit-scrollbar{display:none}
-.menu-bar .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:11px;letter-spacing:.14em;color:#fff;padding:9px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #fff;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap;text-decoration:none}
-.steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
-.menu-bar .steppill:hover{border-color:var(--sc);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}
-.menu-bar .steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
-.menu-bar .steppill.on{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc),0 0 22px -4px var(--sc)}
-.menu-bar .steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
+
+
+
+
+
+
+
+
 /* --- PAGE --- */
 /* DOCK CLEARANCE (FIX-4, supersedes the Unification 200px end-padding):
    the 200px only held at End — mid-scroll content still slid under the
@@ -440,8 +440,8 @@ body.no-cover .ph-main{padding-top:12px}
    and load offsets are unchanged, so item 3 is untouched. The --titleEdge
    defaults follow the new stuck edges (desktop 54+48=102, <=900 46+40=86,
    <=420 46+62=108); the JS measures the live edge anyway. */
-.page-title{margin:4px 0 30px;text-align:center;font-size:28px;font-weight:800;position:sticky;top:54px;z-index:40;background:#050507;padding-bottom:10px;scroll-margin-top:78px}
-.page-head p{margin:4px 0 0;font-size:15px;color:#fff}
+
+
 .cover-toggle{margin-top:8px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
 .smart-lists h3{margin:0;padding:16px 18px 4px;font-size:15px;font-weight:800}
@@ -463,9 +463,9 @@ body.no-cover .ph-main{padding-top:12px}
 .nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
 .nf-smtab.active{border-color:rgba(255,255,255,.6);box-shadow:0 0 16px rgba(255,255,255,.18),inset 0 1px rgba(255,255,255,.15)}
 /* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
-.search-row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:12px}
-.search-row input{flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-size:15px;font-family:inherit}
-.search-row input::placeholder{color:#fff;opacity:1;font-weight:600}
+
+
+
 /* --- MESSENGER GRID --- */
 .messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
 .panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
@@ -541,14 +541,14 @@ body.no-cover .ph-main{padding-top:12px}
 .msg.letter .subject{font-weight:800;font-size:15px;margin-bottom:6px}
 .msg.letter .letter-to{font-size:12.5px;color:#fff;margin-bottom:8px}
 .typing{align-self:flex-start;font-size:12.5px;color:#fff;padding:6px 4px}
-.format-note{align-self:center;font-size:12px;color:#fff;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(142,36,170,.55);padding:7px 12px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 18px rgba(0,0,0,.5),0 0 14px rgba(142,36,170,.25);transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
-.format-note:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 24%,#12101a),color-mix(in srgb,#8e24aa 12%,#08080c));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5)}
+
+
 /* --- SMART NOTE card in the thread (L6 format) --- */
-.smart-note{border-radius:16px;border:1px solid rgba(142,36,170,.4);background:linear-gradient(180deg,#17102a,#0a0a0f);padding:16px 18px;box-shadow:0 10px 26px rgba(0,0,0,.5);margin:4px 0;transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
-.smart-note:hover{transform:translateY(-3px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 18%,#17102a),color-mix(in srgb,#8e24aa 10%,#0a0a0f));box-shadow:0 18px 40px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12),0 0 30px -2px rgba(142,36,170,.55)}
-.smart-note h4{margin:0 0 4px;font-size:15px}
-.smart-note h5{margin:12px 0 3px;font-size:12.5px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
-.smart-note p{margin:0;font-size:13.5px;line-height:1.55;color:#fff}
+
+
+
+
+
 /* --- COMPOSER with real depth --- */
 .composer{padding:14px;border-top:1px solid rgba(255,255,255,.09)}
 .composer-inner{display:flex;gap:10px;align-items:flex-end}
@@ -623,17 +623,17 @@ body.no-cover .ph-main{padding-top:12px}
 /* --- WORLD SELECTOR: one universal mail, any world (brief §1) ---
    Personal blue · Business green · Space magenta. The active pill is
    the one that lights up — rim + glow in its own colour, obsidian inside. */
-.world-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:2px 0 8px}
+
 /* WORLD PILLS — the Dashboard PTS / % / MONEY button standard (Shawn
    03:51Z, best buttons in the system): obsidian pill, bold white text,
    one deep colour per button as rim + glow. No gradient fill, no inset. */
-.world-pill{--wc:#0f52ba;display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:900;font-size:13px;color:#fff;background:#0a0a0f;border:1.5px solid var(--wc);box-shadow:0 0 14px color-mix(in srgb,var(--wc) 35%,transparent),0 8px 20px rgba(0,0,0,.5);transition:box-shadow .25s,border-color .2s,transform .2s;white-space:nowrap}
-.world-pill .wdot{width:9px;height:9px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
-.world-pill:hover{background:#0a0a0f;border-color:var(--wc);box-shadow:0 0 26px -2px var(--wc),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
-.world-pill:hover .wdot{background:var(--wc);box-shadow:0 0 10px var(--wc)}
-.world-pill.on{border-color:var(--wc);box-shadow:0 0 0 1px var(--wc),0 0 24px -2px var(--wc),0 12px 26px rgba(0,0,0,.6)}
-.world-pill.on .wdot{background:var(--wc);box-shadow:0 0 12px var(--wc)}
-.world-note{font-size:13px;color:#fff}
+
+
+
+
+
+
+
 /* --- MAIL BOARD: the letter as an elevated board (Shawn 2026-11-13 15:32Z —
    mail mirrors Smart Notes: title, nutshell, key points, jewels as bullets).
    Board black inside, white as a real object, the whole board lights up
@@ -659,15 +659,15 @@ body.no-cover .ph-main{padding-top:12px}
 @keyframes orbitCCW{to{transform:rotate(-360deg)}}
 .ph-plus::before{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 50% 0%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCW 60s linear infinite}
 @media (max-width:900px){
-  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:0}   .menu-bar{padding:6px 16px}
-  .ph-cover-inner{padding:10px 10px 12px}   .ph-cover-inner h1{font-size:24px}   .ph-cover-inner p{font-size:13px;margin-top:6px;max-width:420px}
+  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:0}   
+  .ph-cover-inner{padding:10px 10px 12px}   .ph-cover-inner h1{font-size:24px}   
   /* FIX-3 round 2, 2026-11-17: narrow stack trims so the first row clears the fixed dock:
      h2 22px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
-  .page-title{font-size:22px;top:46px}   .page-scroll{--titleEdge:86px} /* FIX-6: 1-line title edge ≈46+40 (FIX-7: 54px bar-tuck) */
+     .page-scroll{--titleEdge:86px} /* FIX-6: 1-line title edge ≈46+40 (FIX-7: 54px bar-tuck) */
   .cover-toggle{margin-top:8px}
   .org-tabs{padding:4px 2px 4px}
-  .search-row{padding:8px 16px;margin-bottom:8px}
-  .world-row{margin:2px 0 8px;gap:6px}
+  
+  
   .panel h3{padding-top:4px}
   .panel .panel-sub{padding-bottom:0}
   .rows{padding-top:0}
@@ -685,11 +685,11 @@ body.no-cover .ph-main{padding-top:12px}
      the dock at load while the (bottom-anchored) cover still reads:
      title one step smaller (still 2 lines), tabs + search tighter,
      cover-toggle shorter. No content removed, no text changed. */
-  .page-title{font-size:19px}
+  
   .nf-smtab{padding:8px 16px}
   .org-tabs{padding:2px 2px 2px}
   #coverToggle{min-height:38px}
-  .search-row{padding:7px 16px;margin-bottom:6px}
+  
 }
 /* --- FIX 2026-11-12 (checker NOT PASS 8/10): thread head at phone widths ---
    Was: orb + who + toggle on one row left the presence 35px wide at 390
@@ -741,7 +741,7 @@ body.no-cover .ph-main{padding-top:12px}
    used the exact hexes). Dark washes (mixes with #12121a / #101014) are
    shading, not lighter variants, and stand. --- */
 .notif-label{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-align:center;line-height:1.2}
-.page-head p,.panel-sub,.stub-note,.row-last,.row-nut,.msg .meta,.thread-head .who span,.mail-meta,.letter-to,.typing,.world-note,.feed-sub,.choice-row small,.toast p{font-weight:600}
+.panel-sub,.stub-note,.row-last,.row-nut,.msg .meta,.thread-head .who span,.mail-meta,.letter-to,.typing,.feed-sub,.choice-row small,.toast p{font-weight:600}
 /* --- FIX-3 round 2 (eye 02:59Z): dock cycle 60s/75s, dots 6px/5px -- strictly faster than the 60s/90s the eye read as ~6 min/rev; no 360s duration existed in the filed bytes. */
    /* --- FIX 2026-11-17 (Smart Mail fix round): trio orbit + whole-item light.
    The bottom activity orbs carry two satellites each, slow, alternating
@@ -759,6 +759,23 @@ body.no-cover .ph-main{padding-top:12px}
 /* --- FIX-2 2026-11-17 (captain's eye 02:07Z): orbit satellites asymmetric 90deg apart + larger (no half-turn swap); saved-list orbs keep .cx-ava centring; cover 32vh + panel/row trims so the first rows clear the fixed dock; cover + orbs +12px inside; h2 sticky below the nav; stub note at panel top; explicit empty-thread state. Deep palette only. --- */
 /* --- FIX-3 2026-11-17 (checker FAIL items 3+5 on fix-2): desktop cover 25vh so the first row clears the fixed dock at 1920x999/1080; narrow cover 140px at <=900px + h2 22px + spacing trims so the first row clears the dock at 635x800/900/1000; heading moved out of .page-head so its sticky box is .ph-main -- it docks below the nav and never releases, no straddle window at any scroll position. Stub note, orbit, letters, orbs, toggle, seeds untouched. Deep palette only. --- */
 </style>
+<!--
+  REVAMP (2026-11-17, brief BRIEF-SMART-MAIL-REVAMP-20261117 — Shawn 18:33Z:
+  "a complete utter mess... layers of nothing... way too much text... keep
+  only the initials"). Layout, named: COVER, THEN MAIL — cover (h1 once, two
+  + in the corners) -> one slim control row (cover toggle) -> topics
+  (harvested SmartTabs) -> the messenger (inbox + open thread) -> saved
+  lists -> the Five. WENT: menu-bar pills, h2 title, page-head paragraph,
+  cover tagline, search row, world pills + note, the inbox/conv/topic subs,
+  the "Preview people" stub-note, the two smart-list subs, thread-foot
+  Install (duplicate), the format-note pill, the Maya "Shared note" block.
+  STAYED, byte-identical: the initial discs, the letter format, the Mail/IM
+  toggle, inbox data + sample people, the Five, the button standard, cover +
+  cover toggle, org-tabs, smart lists, overlays, Fix-6/7/8 mask machinery.
+  World selection survives via entry (?world= / ?from=); WORLDS on the Five
+  now opens the topic navigation. One honest label replaces the removed
+  sample text: "Sample people — not real citizens."
+-->
 </head>
 <body>
 <!-- FIX-4: .page-scroll is the page's only scroller (see body rule) — cover,
@@ -769,27 +786,15 @@ body.no-cover .ph-main{padding-top:12px}
 <header class="ph-cover" id="cover">
   <div class="ph-cover-inner">
     <h1>Smart Mail</h1>
-    <p>One conversation, two formats — mail and instant message, in every world.</p>
   </div>
   <button class="ph-plus left" id="plusNew" type="button" aria-label="New message">+</button>
   <button class="ph-plus right" id="plusInstall" type="button" aria-label="Install Smart Mail">+</button>
 </header>
 
 <!-- MENU BAR -->
-<nav class="menu-bar" aria-label="Network menu">
-  <a class="steppill" style="--sc:#8e24aa" href="https://nayanet.app/"><span class="sdot"></span>Hub</a>
-  <a class="steppill" style="--sc:#0f52ba" href="https://nayanet.app/dashboard"><span class="sdot"></span>Dashboard</a>
-  <a class="steppill" style="--sc:#07925f" href="https://nayanet.app/personal"><span class="sdot"></span>Personal</a>
-  <a class="steppill" style="--sc:#d4a017" href="https://nayanet.app/business"><span class="sdot"></span>Business</a>
-  <a class="steppill" style="--sc:#a21caf" href="https://nayanet.app/spaces"><span class="sdot"></span>Space</a>
-  <a class="steppill on" style="--sc:#8e24aa" href="#" aria-current="page"><span class="sdot"></span>Smart Mail</a>
-  <a class="steppill" style="--sc:#07925f" href="https://nayanet.app/pricing"><span class="sdot"></span>Pricing</a>
-</nav>
 
 <main class="ph-main">
-  <h2 class="page-title">Message anybody — by topic, not just by contact</h2>
   <div class="page-head">
-    <p>Flip the format, pick a topic, tap a person. One tap and you are talking.</p>
     <button class="btn ghost cover-toggle" type="button" id="coverToggle" aria-pressed="false">Hide the banner</button>
   </div>
 
@@ -797,31 +802,20 @@ body.no-cover .ph-main{padding-top:12px}
   <div class="org-tabs" id="orgTabs" role="tablist" aria-label="Topics in NayaNET"></div>
 
   <!-- PICKER: Smart Search -> match % -> pick -->
-  <div class="search-row">
-    <span aria-hidden="true">🔍</span>
-    <input id="smartSearch" type="text" placeholder="Smart Search — type a name or a topic…" aria-label="Smart Search people by keyword" autocomplete="off">
-  </div>
 
   <!-- WORLD SELECTOR: one universal mail — Personal / Business / Space.
        Opening mail from a page shows THAT world's mail first (?world= or
        ?from=<world>); from the Hub (?from=hub) the citizen picks any world. -->
-  <div class="world-row" id="worldRow" role="group" aria-label="Which world's mail">
-    <span id="worldPills"></span>
-    <span class="world-note" id="worldNote"></span>
-  </div>
 
   <div class="messenger">
     <!-- LEFT: mail inbox (mail mode) / conversations + topic people (IM mode) -->
     <section class="panel" aria-label="Conversations">
+      <p class="panel-sub" id="sampleNote">Sample people — not real citizens.</p>
       <h3 id="inboxTitle" hidden>Mail inbox — Personal</h3>
-      <p class="panel-sub" id="inboxSub" hidden>Tap a letter to open it.</p>
-      <p class="stub-note">Preview people — sample names showing the shape of the page. Live people come from the Smart Organizer and the Auto-Match engine; no sample person here is a real citizen.</p>
       <div class="rows" id="mailInbox" hidden></div>
       <h3 id="convHead">Conversations</h3>
-      <p class="panel-sub" id="convSub">Contacts · people online in your topic.</p>
       <div class="rows" id="convList"></div>
       <h3 id="topicPeopleTitle">Online in Design</h3>
-      <p class="panel-sub" id="topicSub">Tap a person to open a conversation with them.</p>
       <div class="rows" id="topicPeople"></div>
 
     </section>
@@ -851,7 +845,6 @@ body.no-cover .ph-main{padding-top:12px}
       </div>
       <div class="thread-foot">
         <button class="btn ghost" type="button" id="backHub">← Hub</button>
-        <button class="btn ghost" type="button" id="downloadBtn">⬇ Install app</button>
       </div>
     </section>
   </div>
@@ -863,12 +856,10 @@ body.no-cover .ph-main{padding-top:12px}
   <div class="smart-lists" id="smartLists">
     <section class="panel" aria-label="Saved instant-message lists">
       <h3>Instant-message lists</h3>
-      <p class="panel-sub">Who you message live.</p>
       <div class="rows" id="imLists"></div>
     </section>
     <section class="panel" aria-label="Saved mail lists">
       <h3>Mail lists</h3>
-      <p class="panel-sub">Who you write to.</p>
       <div class="rows" id="mailLists"></div>
     </section>
   </div>
@@ -1150,7 +1141,7 @@ function renderTabs(){
   });
 }
 function renderConvs(){
-  var q = $('smartSearch').value.trim().toLowerCase();
+  var q = ($('smartSearch') ? $('smartSearch').value : '').trim().toLowerCase(); // REVAMP: search removed (§4) — no filter, whole list.
   var list = CONTACTS.filter(function(c){ return !q || c.name.toLowerCase().indexOf(q) >= 0 || c.nut.toLowerCase().indexOf(q) >= 0; });
   if (state.listFilter) list = list.filter(function(c){ return state.listFilter.indexOf(c.id) >= 0; });
   $('convList').innerHTML = list.map(function(c){
@@ -1158,7 +1149,7 @@ function renderConvs(){
       '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (c.cc || '#8e24aa') + '">' + c.initial + '</span><span class="orb-dot"></span></span>' +
       '<span class="row-body"><span class="row-name">' + esc(c.name) + ' <span class="match">' + c.match + '% match</span></span>' +
       '<span class="row-last" data-last="' + c.id + '">' + esc(c.last) + '</span></span></button>';
-  }).join('') || '<p class="stub-note">Nobody in this list matches that search yet — try another word.</p>';
+  }).join('') || '<p class="stub-note">Nobody in this list yet.</p>';
   $('convList').querySelectorAll('.row').forEach(function(r){
     r.addEventListener('click', function(){ openPerson(CONTACTS.find(function(c){ return c.id===r.dataset.id; })); });
   });
@@ -1166,14 +1157,14 @@ function renderConvs(){
 function renderTopicPeople(){
   var topic = state.topic;
   $('topicPeopleTitle').textContent = 'Online in ' + topic;
-  var q = $('smartSearch').value.trim().toLowerCase();
+  var q = ($('smartSearch') ? $('smartSearch').value : '').trim().toLowerCase(); // REVAMP: search removed (§4) — no filter, whole list.
   var list = (TOPICS[topic] || []).filter(function(p){ return !q || p.name.toLowerCase().indexOf(q) >= 0 || p.nut.toLowerCase().indexOf(q) >= 0 || topic.toLowerCase().indexOf(q) >= 0; });
   $('topicPeople').innerHTML = list.map(function(p){
     return '<button class="row topic-person" type="button" data-id="' + p.id + '" data-topic="' + topic + '" style="--ac:' + (p.cc || '#8e24aa') + '">' +
       '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (p.cc || '#8e24aa') + '">' + p.initial + '</span><span class="orb-dot"></span></span>' +
       '<span class="row-body"><span class="row-name">' + esc(p.name) + ' <span class="match">' + p.match + '% match</span></span>' +
       '<span class="row-nut">' + esc(p.nut) + '</span></span></button>';
-  }).join('') || '<p class="stub-note">Nobody online in this topic matches that search.</p>';
+  }).join('') || '<p class="stub-note">Nobody online in this topic yet.</p>';
   $('topicPeople').querySelectorAll('.topic-person').forEach(function(r){
     r.addEventListener('click', function(){
       var p = TOPICS[r.dataset.topic].find(function(x){ return x.id===r.dataset.id; });
@@ -1201,17 +1192,7 @@ function renderThread(){
   $('toggleMail').disabled = isGroup;
   $('toggleMail').title = isGroup ? 'Topic chat is live — mail lives in the one-to-one conversation' : '';
   var msgs = isGroup ? (THREADS['topic:' + state.topic] || []) : (THREADS[p.id] || []);
-  var html = '<div class="format-note">' + (isGroup
-    ? 'Topic chat — ' + esc(state.topic) + ', everyone online in it, in the moment'
-    : (fmt === 'im'
-      ? 'Instant Message — live, in the moment, with ' + esc(p.name)
-      : 'Smart Mail — the letter format, same conversation, same person')) + '</div>';
-  if (p.id === 'maya' && state.format === 'mail') {
-    /* FIX-4: cut toward the nutshell — five sections became two. */
-    html += '<div class="smart-note"><h4>Shared note — Design, in the smart-note format</h4>' +
-      '<h5>Nutshell</h5><p>A messenger is one conversation in two formats, not two inboxes.</p>' +
-      '<h5>What it means</h5><p>The toggle switches the format and nothing else — the person stays.</p></div>';
-  }
+  var html = ''; // REVAMP: the format pill is gone (§4) — the lit toggle side says the format.
   /* MAIL MESSAGE VIEW (pro-level): the opened letter as an elevated board —
      title, nutshell, key points with jewel bullets — then the letters
      of the same conversation below it, in the letter format. */
@@ -1281,11 +1262,11 @@ function setFormat(f){
      people. (.rows is display:flex, so the hidden attribute alone would
      not hide it — the rows are hidden by style.display.) */
   var isMail = f === 'mail';
-  $('inboxTitle').hidden = !isMail; $('inboxSub').hidden = !isMail;
+  $('inboxTitle').hidden = !isMail; // REVAMP: the inbox sub is gone (§4).
   $('mailInbox').style.display = isMail ? '' : 'none';
-  $('convHead').hidden = isMail; $('convSub').hidden = isMail;
+  $('convHead').hidden = isMail; // REVAMP: the conv sub is gone (§4).
   $('convList').style.display = isMail ? 'none' : '';
-  $('topicPeopleTitle').hidden = isMail; $('topicSub').hidden = isMail;
+  $('topicPeopleTitle').hidden = isMail; // REVAMP: the topic sub is gone (§4).
   $('topicPeople').style.display = isMail ? 'none' : '';
   if (isMail) {
     if (!state.mailId) state.mailId = (MAIL[state.world][0] || {}).id || null;
@@ -1294,18 +1275,10 @@ function setFormat(f){
   renderThread();
 }
 /* --- WORLDS: one universal mail, any world selectable (brief §1) --- */
-function renderWorlds(){
-  $('worldPills').innerHTML = Object.keys(WORLDS).map(function(w){
-    var d = WORLDS[w];
-    return '<button class="world-pill' + (state.world===w ? ' on' : '') + '" type="button" data-world="' + w + '" style="--wc:' + d.color + '" aria-pressed="' + (state.world===w) + '"><span class="wdot"></span>' + d.label + '</button>';
-  }).join('');
-  $('worldPills').querySelectorAll('.world-pill').forEach(function(b){
-    b.addEventListener('click', function(){ setWorld(b.dataset.world); });
-  });
-  $('worldNote').textContent = state.entryFrom === 'hub'
-    ? 'Opened from the Hub — pick any world.'
-    : 'Showing ' + WORLDS[state.world].label + ' mail first — pick any world.';
-}
+/* REVAMP: world pills removed (§4) — the world's mail still comes from entry
+   (?world= / ?from=), and setWorld still works; there is only no pill row
+   left to render. */
+function renderWorlds(){ return; }
 function personForMail(m, w){
   var p = findPersonAnywhere(m.fromId);
   if (!p) return null;
@@ -1325,7 +1298,7 @@ function setWorld(w){
 }
 function renderInbox(){
   $('inboxTitle').textContent = 'Mail inbox — ' + WORLDS[state.world].label;
-  var q = $('smartSearch').value.trim().toLowerCase();
+  var q = ($('smartSearch') ? $('smartSearch').value : '').trim().toLowerCase(); // REVAMP: search removed (§4) — no filter, whole list.
   var list = MAIL[state.world].filter(function(m){
     return !q || m.subject.toLowerCase().indexOf(q) >= 0 || m.from.toLowerCase().indexOf(q) >= 0 || m.nut.toLowerCase().indexOf(q) >= 0;
   });
@@ -1336,7 +1309,7 @@ function renderInbox(){
       '<span class="row-body"><span class="row-name">' + esc(m.subject) + (m.unread ? ' <span class="match">NEW</span>' : '') + '</span>' +
       '<span class="row-last">' + esc(m.from) + ' · ' + esc(m.time) + '</span>' +
       '<span class="row-nut">' + esc(m.nut) + '</span></span></button>';
-  }).join('') || '<p class="stub-note">No letters in this world match that search yet.</p>';
+  }).join('') || '<p class="stub-note">No letters in this world yet.</p>';
   $('mailInbox').querySelectorAll('.row').forEach(function(r){
     r.addEventListener('click', function(){ openMail(r.dataset.mail); });
   });
@@ -1458,10 +1431,8 @@ $('toggleMail').addEventListener('click', function(){ setFormat('mail'); });
 $('toggleIM').addEventListener('click', function(){ setFormat('im'); });
 $('sendBtn').addEventListener('click', sendMessage);
 $('composerInput').addEventListener('keydown', function(e){ if (e.key === 'Enter') sendMessage(); });
-$('smartSearch').addEventListener('input', function(){ renderConvs(); renderTopicPeople(); if (state.format === 'mail') renderInbox(); });
 $('toast').addEventListener('click', openToast);
 $('toast').addEventListener('keydown', function(e){ if (e.key === 'Enter') openToast(); });
-$('downloadBtn').addEventListener('click', openInstall);
 $('plusInstall').addEventListener('click', openInstall);
 $('installGo').addEventListener('click', function(){ $('installManual').hidden = false; });
 $('installLater').addEventListener('click', closeInstall);
@@ -1579,7 +1550,7 @@ window.__stubEvent = stubEvent;
 $('segAdd').addEventListener('click', function(){ $('composerInput').focus(); });
 $('segMail').addEventListener('click', function(){ setFormat('mail'); $('mailInbox').scrollIntoView({block:'nearest'}); });
 $('segActivity').addEventListener('click', function(){ openFeed(state.world === 'space' ? 'thing' : state.world); });
-$('segWorlds').addEventListener('click', function(){ $('worldRow').scrollIntoView({block:'center'}); });
+$('segWorlds').addEventListener('click', function(){ $('orgTabs').scrollIntoView({block:'nearest'}); }); // REVAMP: world pills gone (§4) — WORLDS opens the topics.
 $('segEco').addEventListener('click', function(){ $('smartLists').scrollIntoView({block:'center'}); });
 $('feedCloseBtn').addEventListener('click', closeFeed);
 $('feedChoiceBtn').addEventListener('click', openChoice);
