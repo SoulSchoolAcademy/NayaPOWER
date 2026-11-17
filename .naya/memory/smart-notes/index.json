@@ -52715,6 +52715,39 @@
         "Citizenship",
         "Growth"
       ]
+    },
+    {
+      "smart_note_id": "SN-3083",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3083-done-means-visible",
+      "slug": "done-means-visible",
+      "title": "Done Means Visible",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3083/IB-SMART-NOTE-20261117-sn3083-done-means-visible.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3083/IB-SMART-NOTE-20261117-sn3083-done-means-visible.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3083/IB-SMART-NOTE-20261117-sn3083-done-means-visible.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261117-sn3083-done-means-visible.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-17T22:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-17",
+      "page_hash": "ea22944763b5a9d3ff21b453545d3a3ca3c2af5857aa0dc94bfc1154273c8873",
+      "content_hash": "e7a92f18ebbbe8cf3ffd5a4fcd359394b843168d6f6686f4d80b8c27bc39f51e",
+      "one_line": "Done is a place a person can stand, not a stage a builder can name. Work passes through built, landed, and live — and only live counts: visible at the real address, clicked by the one who filed it, standing where its person will actually meet it. Everything else is a reservoir, and a reservoir is what a system gets when starts outnumber finishes five to one and finished work cannot land. So the discipline is finishing itself: every open item gets exactly one of three endings, starting is capped by what has finished, the pile prints itself nightly, and the only unit the system honours is the verified valuable action — done on the live page, proven in a real browser, valuable because it completes something or removes a defect, and recorded. The work itself is smaller than it looks: four core components and a walkthrough, one path, one owner, each step proven on screen before the next begins, in the order where no step ever has to be redone.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Completion",
+        "Verification"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52725,5 +52758,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "253e9a53815e088b008eb0f8c22299bdcdd09e7cb780501ac7e2efd07353e761"
+  "corpus_manifest_hash": "4a188284887529e5916f72ecfd1391e8e2808d606dca68b40cd9e1f83cb02712"
 }
