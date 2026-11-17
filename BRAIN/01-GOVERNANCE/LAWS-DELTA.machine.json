@@ -26,11 +26,13 @@
    "0032-house-standard-v1.machine.json": "c1bb2ffa2f41ff49940ff0b218dc12cc0c9987bf",
    "0033-the-balanced-machine-v1.machine.json": "3ff258b9536213ba0cf20f34f9b505dea41f6ac7",
    "0034-the-house-fire-law-v1.machine.json": "b26079232d91f5e8fe4a072c9cc019649826dd12",
-   "0035-design-law-ratification-v1.machine.json": "0992eb9c81c77fb639e99e6dbdc1c6e1247f61bc"
+   "0035-design-law-ratification-v1.machine.json": "0992eb9c81c77fb639e99e6dbdc1c6e1247f61bc",
+   "0036-naya-constitution-v1.machine.json": "a443ff815ea4dc0931c711273b3be0f85a2399be",
+   "0037-LOCKED-IN-DECLARATION-V1.machine.json": "63f415a75a993879e2f0498593d4c9d860aed53a"
   },
-  "source_fingerprint_sha256": "b74c253206e5cd76f0114f7a9cf06188b84662a86dd90397ed9ab4c791405bf0"
+  "source_fingerprint_sha256": "8b52e49caa729ce6eda35c25dc0def0b7afa10d825c59b6e1fcada46c8530bab"
  },
- "law_count": 24,
+ "law_count": 26,
  "laws": [
   {
    "falsifier": null,
@@ -390,6 +392,36 @@
     "ai": "BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.ai.md",
     "human": "BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.human.md",
     "machine": "BRAIN/01-GOVERNANCE/0035-design-law-ratification-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0036",
+   "number": "0036",
+   "owner": null,
+   "source_blob_sha": "a443ff815ea4dc0931c711273b3be0f85a2399be",
+   "statement": "The Naya Constitution",
+   "status": null,
+   "title": "The Naya Constitution",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0036-NAYA-CONSTITUTION-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0036-NAYA-CONSTITUTION-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0036-naya-constitution-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0037",
+   "number": "0037",
+   "owner": null,
+   "source_blob_sha": "63f415a75a993879e2f0498593d4c9d860aed53a",
+   "statement": null,
+   "status": null,
+   "title": "0037-LOCKED-IN-DECLARATION-V1.machine.json",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.machine.json"
    }
   }
  ],
