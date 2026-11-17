@@ -9979,7 +9979,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   transition:transform .3s,box-shadow .3s,border-color .3s;}
 .naya-guide:hover .naya-guide-avatar{transform:scale(1.05);border-color:var(--room-accent,#a06bff);
   box-shadow:0 0 16px var(--room-accent,#a06bff);}
-.naya-guide-play{width:42px;height:42px;flex:0 0 auto;border-radius:50%;cursor:pointer;position:relative;overflow:hidden;
+.naya-guide-play{width:42px;height:42px;flex:0 0 auto;border-radius:50%;cursor:pointer;position:relative;/* ORBIT FIX 2026-11-17: overflow:hidden REMOVED — it clipped the circling orb, which lives OUTSIDE the circle (inset:-6px); the conic sheen it once clipped was deleted by the Black Diamond round. */
   border:1px solid rgba(232,232,236,.4);color:#fff;padding:0;
   background:#050607; /* BLACK DIAMOND: flat board black */
   display:flex;align-items:center;justify-content:center;
@@ -10548,6 +10548,77 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
   box-shadow: inset 0 -3px 6px rgba(0,0,0,.6), 0 0 14px color-mix(in srgb, var(--nav, var(--purple)) 55%, transparent), 0 4px 10px rgba(0,0,0,.5), 0 8px 18px rgba(0,0,0,.55);
   transform: scale(1.06);
 }
+/* ================================================================
+   FIX 2026-11-17 — CHECKER FAILS: ALIVE (Naya Code §3) + ORBIT (§8)
+   + BOARDS LIGHT UP WHOLE (§8). Scope: ONLY the checker-named fails
+   (plus .intel-board + .board-h whole-light, a SEPARATE hunk group
+   below). Nothing else in this file is touched.
+   Law: flow is OUTSIDE the circle only — a faint ring + an orb dot at
+   inset:-6px — never a glow or wash inside. Durations 60–180s,
+   alternating CW/CCW, never faster than 12s. No new object type:
+   every rule is a :hover or ::after on an existing class.
+   ================================================================ */
+
+/* ——— (1) ALIVE — the three dead-on-hover elements ———
+   §3 reference per element (Design Language §3): rooms-plus = the
+   TOP-LEFT + (the button: thin bright purple edge, clone, board
+   black); bh-btn = the X (inside) + SMART NOTE BOARD (black) +
+   TOP-LEFT + (pill button); tab-jewel = the X + SMART NOTE BOARD. */
+.rooms-plus:hover{transform:translateY(-2px) scale(1.1) rotate(90deg);border-color:rgba(157,117,255,.8);box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent),0 12px 28px rgba(0,0,0,.6);}
+.rooms-plus:hover svg{filter:drop-shadow(0 0 6px rgba(157,117,255,.8));}
+.board-h .bh-btn:hover{animation:none;transform:translateY(-2px);border-color:var(--bc);color:#fff;box-shadow:0 0 32px var(--bc),0 0 48px var(--bc),0 10px 22px rgba(0,0,0,.55);}
+/* NOTE on bh-btn: the ambient btn-flash animation animates box-shadow,
+   which would mask any hover box-shadow — so :hover sets animation:none
+   (pulse resumes on mouse-out) and the hover ignition shows instead. */
+.lens-tab:hover .tab-jewel{transform:translateY(-2px) scale(1.08);border-color:var(--jc,#a06bff);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.55),0 0 22px color-mix(in srgb, var(--jc,#a06bff) 75%, transparent);color:#fff;text-shadow:0 0 12px rgba(255,255,255,.9),0 0 9px var(--jc,#a06bff);}
+/* NOTE on the tab itself: .lens-tab is also .primo, so the tab already
+   lifts via .primo:hover (translateY(-2px)); the jewel rule above is
+   the missing hover response the checker named. */
+
+/* ——— (2) ORBIT — one slow orb circling each touched circle ———
+   One mechanism for all nine: a faint static ring OUTSIDE the circle
+   (inset:-6px, own color at 35%) with a white-cored orb dot travelling
+   around it. The dot moves by background-position — the element itself
+   never rotates, so the + glyphs on .eco-plus/.rooms-plus (rendered by
+   their ::after in .top) stay upright: a rotating '+' would read as '×'.
+   The ::after interior is transparent: no glow or wash inside, ever. */
+@keyframes naya-orbit-dot-cw{0%{background-position:50% 0}12.5%{background-position:100% 0}25%{background-position:100% 50%}37.5%{background-position:100% 100%}50%{background-position:50% 100%}62.5%{background-position:0 100%}75%{background-position:0 50%}87.5%{background-position:0 0}100%{background-position:50% 0}}
+@keyframes naya-orbit-dot-ccw{0%{background-position:50% 0}12.5%{background-position:0 0}25%{background-position:0 50%}37.5%{background-position:0 100%}50%{background-position:50% 100%}62.5%{background-position:100% 100%}75%{background-position:100% 50%}87.5%{background-position:100% 0}100%{background-position:50% 0}}
+.rail-toggle::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 120s linear infinite;}
+.eco-plus::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 90s linear infinite;}
+.rooms-plus::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 150s linear infinite;}
+.eco-bb-ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--eco,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--eco,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 60s linear infinite;}
+.fc-plusitem .fc-pi-ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--mc,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--mc,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 180s linear infinite;}
+.nav-btn .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--nav,var(--purple)) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 96s linear infinite;}
+.nav-sub .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--nav,var(--purple)) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 72s linear infinite;}
+.lens-tab .tab-jewel::after{content:'';position:absolute;inset:-4px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--jc,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--jc,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 132s linear infinite;}
+/* NOTE on tab-jewel: inset:-4px (not -6px) — the jewel sits inside
+   .primo, which has overflow:hidden; -4px keeps the whole ring inside
+   the tab's 13px/10px padding. */
+.naya-guide-play::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--room-accent,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--room-accent,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 108s linear infinite;}
+/* NOTE on guide-play: this is a NEW outside-only flow. The deleted
+   white conic sheen is NOT restored (Black Diamond: no white wash
+   inside, ever) — the old spin keyframes definition remains in the
+   file, unused. */
+/* In .top (mobile) the + buttons render their '+' glyph via ::after
+   (higher-specificity rule wins the content) — keep that glyph centred
+   in the now-absolute orbit box, and let it pop white on hover. */
+.top .eco-plus::after,.top .rooms-plus::after{display:grid;place-items:center;}
+.top .eco-plus:hover::after,.top .rooms-plus:hover::after{color:#fff;text-shadow:0 0 12px rgba(255,255,255,.9);}
+
+/* ——— (2b) BOARDS LIGHT UP WHOLE on hover — the face itself lights ———
+   Own-color tint on the face (never white): the board fills alive,
+   not just its rim + outside halo. */
+.sh-board:hover{background-color:color-mix(in srgb, var(--bc) 16%, transparent);}
+.sh-board:hover .board-h{background:linear-gradient(180deg,color-mix(in srgb, var(--bc) 30%, #0d0d14),color-mix(in srgb, var(--bc) 14%, #07070b));}
+.activity-card:hover{background-image:linear-gradient(180deg,color-mix(in srgb, var(--ac,#9d75ff) 20%, transparent),color-mix(in srgb, var(--ac,#9d75ff) 8%, transparent));}
+
+/* ——— SEPARATE HUNK GROUP — pre-existing gaps the checker named, NOT
+   this round's fails: .intel-board + .board-h light up whole on hover.
+   Same law, same own-color face tint; judged apart from the FAIL fix. */
+.intel-board:hover{background-image:linear-gradient(180deg,color-mix(in srgb, var(--tone) 22%, transparent),color-mix(in srgb, var(--tone) 8%, transparent));}
+.board-h:hover{background:linear-gradient(180deg,color-mix(in srgb, var(--bc) 30%, #0d0d14),color-mix(in srgb, var(--bc) 14%, #07070b));}
+
 </style>
 <script>
 /* ================= SMART BAR SYSTEM v1.0 ================= */
