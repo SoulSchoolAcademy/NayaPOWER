@@ -67,8 +67,12 @@
   Marcellus font is now really loaded, from the [P] pricing font link
   (verbatim, lines 9-11), not left to a Georgia fallback. (2) The info eye
   becomes a CIRCLE, a real element coming off the page, pearl/diamond,
-  with a little 'i' inside it — the harvested [P] .eye-jewel (pricing v77
-  line 140 + line 2711: white .os-jewel, 'i' inside, Marcellus 700).
+  with a little 'i' inside it — the harvested [P] .eye-jewel CSS (pricing v77
+  line 140: 20px circle, Marcellus 700, border-radius:50%; .os-jewel-md size
+  [P] line 42; .os-jewel base [P] line 40). The 'i' is the amendment's
+  directed mark: .eye-jewel exists in pricing only as CSS (lines 140, 1460),
+  never in markup; pricing's nearest usage is the white jewel + SVG eye at
+  [P] line 2259.
   (3) The day numbers shrink ~25% (54px med tiles → 40px in the day cell)
   so the page breathes; the cells can't get bigger, so the numbers shrink —
   with fit breakpoints so two-digit days fit whole at every width, 635 and
@@ -189,15 +193,17 @@ button{font-family:inherit}
    real element coming off the page, pearl/diamond, with a little 'i' info
    thing inside it so people know to click it for the day's info. The
    object already exists in [P] — pricing v77 line 140 `.eye-jewel`
-   (20px circle, Marcellus 700, border-radius:50%) used at line 2711 as
-   `<span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff">i</span>`
-   — a white jewel, 'i' inside. This button IS that object, at the
+   (20px circle, Marcellus 700, border-radius:50%). `.eye-jewel` exists in
+   pricing only as CSS (lines 140, 1460), never in markup — no
+   'i'-inside-a-white-jewel usage exists there; pricing's nearest usage is
+   the white jewel + SVG eye at [P] line 2259. The 'i' here is the
+   amendment's directed mark. This button IS that object, at the
    harvested .os-jewel-md size (36px, 17px — [P] line 42): the .os-jewel
    base below (verbatim from [P], already in this file) with --jc:#ffffff,
    border-radius:50% from .eye-jewel, Marcellus 700 from .eye-jewel.
    Pearl/diamond = the jewel in white: white rim, white glow, and the 'i'
-   itself white (the .os-jewel's own color:#fff — pricing's 'i' is white
-   on the dark jewel, lit by its white glow). No color in it — amendment
+   itself white (the .os-jewel's own color:#fff, lit by its white glow).
+   No color in it — amendment
    #3(1) still stands. Placement only
    is adapted: pricing sits it top-right of a plan card; here it sits
    bottom-right of the day cell, the door to the day's info. The old
@@ -731,10 +737,11 @@ function timelineHTML(ds){
 /* ============ MONTH — the numbers fill the screen ============ */
 $('weeknames').innerHTML=WEEKDAY.map(w=>`<div style="color:${w.color}">${w.name}</div>`).join('');
 function dayHasRecord(ds){ return dayBookings(ds).length>0 || dayNotes(ds).length>0; }
-/* The eye mark — [P] .eye-jewel, pricing v77 line 2711: a white jewel
-   circle with a little 'i' inside it (Marcellus 700). The button carries
-   the 'i' as its text; the circle, pearl rim and glow are the .plan-eye
-   rule above. Amendment #4(2). */
+/* The eye mark — [P] .eye-jewel CSS, pricing v77 line 140: a white jewel
+   circle (Marcellus 700). `.eye-jewel` exists in pricing only as CSS
+   (lines 140, 1460), never in markup; the 'i' is the amendment's directed
+   mark. The button carries the 'i' as its text; the circle, pearl rim and
+   glow are the .plan-eye rule above. Amendment #4(2). */
 function render(){
   const first=new Date(year,month,1).getDay();
   const n=new Date(year,month+1,0).getDate();
