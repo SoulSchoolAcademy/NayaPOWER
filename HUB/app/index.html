@@ -4001,9 +4001,15 @@ window.NayaContent = {
        HUB-CONTRACT.md D4 note in this round's filing).
    Poll: every 15s + once at load. A changed newest note re-points the
    feed and re-renders the room (same hashchange nudge the override
-   uses). A failed read NEVER goes silent: the provenance line (when
-   present) says the read failed and the page keeps the last good
-   cards; window.NayaLiveFeed carries {ok, error, at} for probes.
+   uses). A failed read NEVER goes silent: the provenance line says
+   the read failed and the page keeps the last good cards;
+   window.NayaLiveFeed carries {ok, error, at} for probes. The line
+   is re-applied across room re-renders (the room rebuilds the
+   element empty each render, and its own writer only fills it for
+   the governed runtime) — see the watcher below. v2 (2026-11-17
+   16:40Z): provenance persistence added after the staged walk showed
+   the line reading empty between renders, even while the live read
+   was ok.
    The baked NOTES array and /feed-live.json stay as the honest
    fallback only — the re-bake is irrelevant to cards from here on.
    ═══════════════════════════════════════════════════════════════════ */
@@ -4082,9 +4088,27 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
   }
   function headers(){ return { 'apikey': CFG.key, 'Authorization': 'Bearer ' + CFG.key }; }
   function checkedTime(){ try { return new Date().toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit'}); } catch(e){ return ''; } }
+  var lastProvText = '';
   function setProvenance(text){
-    try { var el = document.getElementById('feed-provenance-line'); if (el) el.textContent = text; } catch(e){}
+    lastProvText = text || '';
+    try { var el = document.getElementById('feed-provenance-line'); if (el && el.textContent !== lastProvText) el.textContent = lastProvText; } catch(e){}
   }
+  /* The room rebuilds the provenance element on every render (a fresh
+     empty <p id="feed-provenance-line">) and its own writer
+     (updateFeedProvenance) only fills it when the governed runtime
+     says live — which never happens on this page. A one-shot write is
+     therefore wiped by the next render, and the line read EMPTY on the
+     staged walk even while the live read was ok. This watcher
+     re-applies the last live text whenever the element appears or is
+     emptied, so the line always tells the live truth. The guard
+     (write only when different) keeps the observer from looping on
+     its own write. */
+  try {
+    if (typeof MutationObserver !== 'undefined') {
+      var provObs = new MutationObserver(function(){ if (lastProvText) setProvenance(lastProvText); });
+      provObs.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+    }
+  } catch(e){}
   function nudgeRoom(){
     try {
       if (window.NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }
