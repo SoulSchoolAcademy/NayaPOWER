@@ -1799,7 +1799,7 @@ body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody .letter-beat.fp-now
    block duplicated the bar's own controls — the in-flow agree button
    beside the mirror agree button, and the in-flow back button beside
    the stage back link. Both in-flow buttons call the identical
-   handlers the bar already calls (agreeFromLetterPage / S.view='intro'),
+   handlers the bar already calls (agreeFromLetterPage / S.view='bridge'),
    so in stage the end block hides and the bar is the single control.
    The non-stage letter path has no fp-stage-on, so it is untouched. */
 html.fp-locked body.fp-stage-on.fp-intro #fpLegal .fp-legal-link{flex:0 0 auto;white-space:nowrap}
@@ -1866,6 +1866,52 @@ body.fp-stage-on.fp-letterview #fpStageBarB .fp-stage-links{order:2}
 body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body{overflow-y:auto;position:relative}
 body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{flex:0 0 auto}
 
+
+/* ---- BRIDGE PAGE (2026-11-17, BRIEF-BRIDGE-PAGE-20261117.md) ----
+   The agreement click lands here: the nine welcome boards, re-grouped
+   2+2+3+2 with a Continue button between groups, then the final page
+   (the nine jewels = the nine unrolled), then the two choices.
+   Top: logo + title + play button + her name, per §4.5 (harvested hero).
+   Boards: harvested verbatim from #fpWelcome; only --tone deepens
+   (bright -> Design Laws §3.1 deep). Legal strip at the bottom mirrors
+   the intro's fixed strip (body.fp-bridge, same shape as fp-intro). */
+body.fp-stage-on #fpAgreement.fp-view-bridge .fp-agree-logo,
+body.fp-stage-on #fpAgreement.fp-view-bridge .fp-agree-head{display:block}
+body.fp-stage-on #fpAgreement.fp-view-bridge .fp-intro-pick,
+body.fp-stage-on #fpAgreement.fp-view-bridge .fp-intro-choices{display:none}
+body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide{display:block;max-width:860px;margin:0 auto 24px;padding:0 16px}
+body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide .fp-welcome-hero{display:flex;flex-direction:column;gap:10px;align-items:center;margin:0 auto 8px}
+body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide .fp-welcome{display:none}
+body.fp-stage-on #fpAgreement.fp-view-bridge #fpBridge{display:block}
+#fpBridge{display:none;max-width:860px;margin:0 auto 24px;padding:0 16px;box-sizing:border-box}
+.fp-bridge-group{display:flex;flex-direction:column;gap:12px}
+.fp-bridge-more{margin-top:12px}
+.fp-bridge-jewels{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:940px;margin:14px auto 4px}
+.fp-bridge-pick{margin:16px 0 0;text-align:center;color:#fff;font-size:17px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.85)}
+.fp-bridge-choices{display:flex;flex-direction:column;gap:12px;align-items:center;margin:12px auto 8px}
+/* The two choices are the same size and both elite (one class). The READ
+   choice is the more prominent: it rests lit, in its hover state. */
+.fp-intro-choice.fp-choice-lit{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone,#07925f),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+html.fp-locked body.fp-stage-on.fp-bridge #fpLegal{display:block;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:8px 8px calc(8px + env(safe-area-inset-bottom));box-sizing:border-box;background:linear-gradient(0deg,rgba(5,6,7,.96),rgba(5,6,7,.85) 80%,rgba(5,6,7,0));text-align:center}
+html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-kicker,html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-sub,html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-page{display:none}
+html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-links{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:2px 20px;max-width:none;margin:0;overflow-x:auto;padding:0 4px}
+/* ---- BRIDGE FIX (2026-11-17, BRIEF-BRIDGE-PAGE-FIX-20261117.md) ----
+   Corner geos: the agreement page's own .ldot jewels — the hexagonal geo
+   gem, 14px, clip-path polygon. The .ldot rule already lives on this page
+   (#fpAgreement .ldot) and on /agreement; the four spans below are
+   byte-identical in markup to the bridge final page's nine jewels. No new
+   object: only the page's own geo, placed at the four corners of the
+   bridge top title block. The 8px offsets sit the jewels in the empty
+   gutters (logo gap above, hero gap below) so they never touch the
+   centred title text at any width; the far left/right corners are exact. */
+body.fp-stage-on #fpAgreement.fp-view-bridge .fp-agree-head{position:relative}
+.fp-bridge-corners{display:none;position:absolute;inset:0;pointer-events:none}
+body.fp-stage-on #fpAgreement.fp-view-bridge .fp-bridge-corners{display:block}
+.fp-bridge-corners .ldot{position:absolute}
+.fp-bridge-corner-tl{top:-8px;left:0}
+.fp-bridge-corner-tr{top:-8px;right:0}
+.fp-bridge-corner-bl{bottom:-8px;left:0}
+.fp-bridge-corner-br{bottom:-8px;right:0}
 </style>
 </head>
 <body>
@@ -1946,7 +1992,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
 </div>
 <div id="fpStageBarB" hidden>
 <p class="fp-pick-line" id="fpPickLine" hidden>Pick your view — one, or both, as you wish.</p>
-<div class="fp-stage-links" id="fpStageLinks"><button class="fp-stage-link" id="fpLinkLetterAll" type="button" hidden>or read the whole letter at once</button><button class="fp-stage-link" id="fpLinkLetterSkip" type="button" hidden>Skip the agreement &rarr;</button><button class="fp-stage-link" id="fpLinkLegalAll" type="button" hidden>or read the whole page at once</button><button class="fp-stage-link" id="fpLinkToFooter" type="button" hidden>The whole deal &mdash; legal pages &#9670;</button><button class="fp-stage-link" id="fpLinkToAgree" type="button" hidden>Back to the agreement &#9670;</button><button class="fp-stage-link" id="fpLinkLetterBack" type="button" hidden>&#8249; Back to the opening page &#9670;</button><button class="fp-stage-link" id="fpLinkDeckBack" type="button" hidden>&#8249; Back to the deck end &#9670;</button></div>
+<div class="fp-stage-links" id="fpStageLinks"><button class="fp-stage-link" id="fpLinkLetterAll" type="button" hidden>or read the whole letter at once</button><button class="fp-stage-link" id="fpLinkLetterSkip" type="button" hidden>Skip the agreement &rarr;</button><button class="fp-stage-link" id="fpLinkLegalAll" type="button" hidden>or read the whole page at once</button><button class="fp-stage-link" id="fpLinkToFooter" type="button" hidden>The whole deal &mdash; legal pages &#9670;</button><button class="fp-stage-link" id="fpLinkToAgree" type="button" hidden>Back to the agreement &#9670;</button><button class="fp-stage-link" id="fpLinkLetterBack" type="button" hidden>&#8249; Back to the opening page &#9670;</button><button class="fp-stage-link" id="fpDeckBack" type="button" hidden>&#8249; Back to the opening page &#9670;</button><button class="fp-stage-link" id="fpLinkDeckBack" type="button" hidden>&#8249; Back to the deck end &#9670;</button></div>
 <div id="fpAgreeCountdown" class="fp-agree-countdown" hidden>Going to the login in <span id="fpAgreeCountNum">10</span>&hellip; Tap &ldquo;The whole deal&rdquo; above to stay and read the legal pages.</div>
 <div class="fp-next-row" id="fpNextRow"><button class="fp-next" id="fpNextBtn" type="button">Begin the visual story &#9670;</button><button class="fp-next" id="fpNextBtn2" type="button" hidden>Read the Collective Agreement &#9670;</button></div>
 </div>
@@ -1955,7 +2001,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
 <div class="fp-zoom-scroll" id="fpZoomScroll"><img id="fpZoomImg" alt=""></div>
 <p class="fp-zoom-hint">Tap the picture to switch fit / full size &#9670; Esc to go back</p>
 </div>
-<section id="fpAgreement" aria-label="The Collective Agreement"><div class="fp-agree-logo"><img src="/agmt-logo.jpg" alt="NayaNET"></div><div class="fp-agree-head"><p class="fp-agree-kicker">NayaNET &middot; The Collective Intelligence Network</p><h2 class="fp-agree-title">The Collective Agreement</h2><p class="fp-agree-sub">Welcome. Let&rsquo;s begin with trust.</p></div>
+<section id="fpAgreement" aria-label="The Collective Agreement"><div class="fp-agree-logo"><img src="/agmt-logo.jpg" alt="NayaNET"></div><div class="fp-agree-head"><div class="fp-bridge-corners" aria-hidden="true"><span class="ldot fp-bridge-corner-tl" style="--dc:#8e24aa"></span><span class="ldot fp-bridge-corner-tr" style="--dc:#0f52ba"></span><span class="ldot fp-bridge-corner-bl" style="--dc:#07925f"></span><span class="ldot fp-bridge-corner-br" style="--dc:#d4a017"></span></div><p class="fp-agree-kicker">NayaNET &middot; The Collective Intelligence Network</p><h2 class="fp-agree-title">The Collective Agreement</h2><p class="fp-agree-sub">Welcome. Let&rsquo;s begin with trust.</p></div>
 <div class="fp-intro-side" id="fpIntroSide"><div class="fp-welcome-hero" id="fpWelcomeHero"><button class="p3-naya-play" id="fpIntroPlay" type="button" aria-label="Naya will talk you through this page"><svg viewBox="0 0 24 24" width="24" height="24" fill="#fff" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg><span class="p3-play-tip">Naya will talk you through this page</span></button><span class="fp-play-name">Naya</span></div>
 <div class="fp-welcome" id="fpWelcome">
 <div class="fp-welcome-group" id="fpWelcomeG1"><img class="fp-naya-portrait" src="/agmt-b06.png" alt="Naya">
@@ -1983,7 +2029,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
 <p class="deck-sub">Nine pictures. One beautiful story.</p>
 <div class="fp-royal-lines" id="fpRoyalLines"><p>Let me show you what NayaNET is, why we&rsquo;re building it, how the intelligence connects, and what it could mean for you.</p><p>You can experience the visual story or read our Collective Agreement in full.</p><p>Take your time. Explore. Ask questions.</p><p><b>We&rsquo;d rather earn your trust than simply ask for it.</b></p><p class="fp-royal-signoff"><i>Your world. Your choice. Our collective promise.</i></p><p class="fp-royal-close">Create. Connect. Grow with US.</p></div>
 <p class="fp-intro-pick" id="fpIntroPick">Pick your view — one, or both, as you wish.</p>
-<div class="fp-intro-choices" id="fpIntroChoices"><button class="fp-intro-choice" id="fpChoiceDeck" type="button" style="--tone:#a06bff">Begin the visual story ◆</button><button class="fp-intro-choice" id="fpChoiceLetter" type="button" style="--tone:#2fe89e">Read the Collective Agreement ◆</button></div>
+<div class="fp-intro-choices" id="fpIntroChoices"><button class="fp-intro-choice" id="fpChoiceDeck" type="button" style="--tone:#a06bff">Begin the visual story ◆</button><button class="fp-intro-choice" id="fpChoiceLetter" type="button" style="--tone:#2fe89e">Read the Collective Agreement ◆</button></div> <div id="fpBridge"> <div class="fp-bridge-group" id="fpBridgeG1"><article class="intel-board fp-welcome-board" style="--tone:#8e24aa"><div class="ib-nutshell"><p>Hi, I&rsquo;m Naya.</p><p>Before you become part of our world, I want you to understand exactly what you&rsquo;re joining.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#0f52ba"><div class="ib-nutshell"><p>Who we are. What we stand for. What we&rsquo;re building. How it works. What we promise you. And what we ask of one another.</p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore1" type="button">Continue &#9670;</button> <div class="fp-bridge-group" id="fpBridgeG2" hidden><article class="intel-board fp-welcome-board" style="--tone:#07925f"><div class="ib-nutshell"><p>Because the foundation of a great community isn&rsquo;t technology.</p><p><b>It&rsquo;s trust.</b></p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#d4a017"><div class="ib-nutshell"><p>NayaNET is a collective intelligence network built around one simple idea: <b>when people and intelligence come together to create, learn, share, and help one another, everybody has a greater opportunity to benefit.</b></p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore2" type="button" hidden>Continue &#9670;</button> <div class="fp-bridge-group" id="fpBridgeG3" hidden><article class="intel-board fp-welcome-board" style="--tone:#c2410c"><div class="ib-nutshell"><p>Joining our community is free. We believe your privacy matters, your choices matter, and your intelligence should serve you.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#c62828"><div class="ib-nutshell"><p>We believe in honesty, fairness, respect, and doing no harm.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#a21caf"><div class="ib-nutshell"><p>We take fraud, security, and abuse seriously. Our responsibility is to develop meaningful safeguards, improve them continuously, and be accountable when something goes wrong.</p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore3" type="button" hidden>Continue &#9670;</button> <div class="fp-bridge-group" id="fpBridgeG4" hidden><article class="intel-board fp-welcome-board" style="--tone:#3f51b5"><div class="ib-nutshell"><p><b>No tricks. No hidden agenda. No promises of perfection.</b></p><p>Just a clear agreement, built on integrity, respect for life, and a genuine commitment to creating something better together.</p></div></article> <article class="intel-board fp-welcome-board" style="--tone:#0e7490"><div class="ib-nutshell"><p>That&rsquo;s what we stand for.</p><p>And before you agree to anything, I want you to see the whole picture.</p></div></article></div> <button class="p3-enter fp-welcome-more fp-bridge-more" id="fpBridgeMore4" type="button" hidden>Continue &#9670;</button> <div class="fp-bridge-final" id="fpBridgeFinal" hidden> <p class="letter-steplabel">NayaNET &middot; The Collective Intelligence Network</p> <div class="fp-bridge-jewels" aria-hidden="true"><span class="ldot" style="--dc:#8e24aa"></span><span class="ldot" style="--dc:#0f52ba"></span><span class="ldot" style="--dc:#07925f"></span><span class="ldot" style="--dc:#d4a017"></span><span class="ldot" style="--dc:#c2410c"></span><span class="ldot" style="--dc:#c62828"></span><span class="ldot" style="--dc:#a21caf"></span><span class="ldot" style="--dc:#3f51b5"></span><span class="ldot" style="--dc:#0e7490"></span></div> <p class="fp-bridge-pick" id="fpBridgePick">Pick your view — one, or both, as you wish.</p> <div class="fp-bridge-choices" id="fpBridgeChoices"><button class="fp-intro-choice" id="fpBridgeDeck" type="button" style="--tone:#8e24aa">Begin the visual story &#9670;</button><button class="fp-intro-choice fp-choice-lit" id="fpBridgeLetter" type="button" style="--tone:#07925f">Read the Collective Agreement &#9670;</button></div></div></div>
 <div class="letter-controls" id="deckControls">
 <div class="letter-dots" id="deckDots" aria-hidden="true"><span class="ldot on" style="--dc:#a06bff"></span><span class="ldot" style="--dc:#3fb8ff"></span><span class="ldot" style="--dc:#2fe89e"></span><span class="ldot" style="--dc:#ffbf3d"></span><span class="ldot" style="--dc:#e84fff"></span><span class="ldot" style="--dc:#ff9a5a"></span><span class="ldot" style="--dc:#6675ff"></span><span class="ldot" style="--dc:#ff5e6c"></span><span class="ldot" style="--dc:#40d3bb"></span></div>
 </div>
@@ -3197,6 +3243,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
       linkLetterSkip=q('#fpLinkLetterSkip'), linkLegalAll=q('#fpLinkLegalAll'),
       linkToFooter=q('#fpLinkToFooter'), linkToAgree=q('#fpLinkToAgree');
   var linkLetterBack=q('#fpLinkLetterBack'), linkDeckBack=q('#fpLinkDeckBack'), nextBtn2=q('#fpNextBtn2'), pickLine=q('#fpPickLine'), nextRow=q('#fpNextRow');
+   var deckBack=q('#fpDeckBack');
   var letterPageAgree=q('#letterPageAgree'), letterPageBack=q('#letterPageBack');
   var zoom=q('#fpZoom'), zoomImg=q('#fpZoomImg'), zoomScroll=q('#fpZoomScroll'), zoomClose=q('#fpZoomClose');
   var plainEl=q('#dealPlain'), enterBtn=q('#fpEnterDeal');
@@ -3223,6 +3270,17 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
   var cDeck=q('#fpChoiceDeck'), cLetter=q('#fpChoiceLetter');
   if(cDeck){cDeck.addEventListener('click',function(){if(S.view==='intro')goResume();});}
   if(cLetter){cLetter.addEventListener('click',function(){if(S.view==='intro')enterLetterPage();});}
+   /* BRIDGE PAGE (2026-11-17) — four groups, then the final page, then the
+      two choices. The Continue buttons mirror fpWelcomeMore1/2 exactly. */
+   var bMore1=q('#fpBridgeMore1'), bMore2=q('#fpBridgeMore2'), bMore3=q('#fpBridgeMore3'), bMore4=q('#fpBridgeMore4'),
+       bG2=q('#fpBridgeG2'), bG3=q('#fpBridgeG3'), bG4=q('#fpBridgeG4'), bFin=q('#fpBridgeFinal'),
+       bDeck=q('#fpBridgeDeck'), bLetter=q('#fpBridgeLetter');
+   if(bMore1&&bG2){bMore1.addEventListener('click',function(){bG2.hidden=false;if(bMore2)bMore2.hidden=false;bMore1.hidden=true;});}
+   if(bMore2&&bG3){bMore2.addEventListener('click',function(){bG3.hidden=false;if(bMore3)bMore3.hidden=false;bMore2.hidden=true;});}
+   if(bMore3&&bG4){bMore3.addEventListener('click',function(){bG4.hidden=false;if(bMore4)bMore4.hidden=false;bMore3.hidden=true;});}
+   if(bMore4&&bFin){bMore4.addEventListener('click',function(){bFin.hidden=false;bMore4.hidden=true;});}
+   if(bDeck){bDeck.addEventListener('click',function(){if(S.view==='bridge')goResume();});}
+   if(bLetter){bLetter.addEventListener('click',function(){if(S.view==='bridge')window.location.href='/agreement';});}
   var action='begin', dialTimer=null, lastKey='', orbFadeTimer=null;
   function legalPages(){return qa('.fp-legal-page');}
   function openLegal(){var ps=legalPages();for(var i=0;i<ps.length;i++){if(!ps[i].hidden)return ps[i];}return null;}
@@ -3241,16 +3299,18 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     [linkLetterAll,linkLetterSkip,linkLegalAll,linkToFooter,linkToAgree].forEach(function(l){if(l)l.hidden=true;});
     if(linkLetterBack)linkLetterBack.hidden=true;
     if(linkDeckBack)linkDeckBack.hidden=true;
+    if(deckBack)deckBack.hidden=true;
     if(nextBtn2)nextBtn2.hidden=true;
     if(pickLine)pickLine.hidden=true;
     if(nextRow)nextRow.classList.remove('fp-two');
-    if(S.view==='intro'){setNext('Begin the visual story \u25C6','#a06bff','begin');if(pickLine)pickLine.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the Collective Agreement \u25C6';nextBtn2.style.setProperty('--tone','#2fe89e');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
+    if(S.view==='bridge'){setNext('Back to the login \u25C6','#a06bff','exit');}
+     else if(S.view==='intro'){setNext('Begin the visual story \u25C6','#a06bff','begin');if(pickLine)pickLine.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the Collective Agreement \u25C6';nextBtn2.style.setProperty('--tone','#2fe89e');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
     else if(S.view==='deck'){
       tone=toneOf(deckBeats[S.deck]);
       dotsEl.classList.add('fp-on');
       qa('.fp-dot',dotsEl).forEach(function(d,i){d.classList.toggle('on',i<=S.deck);});
-      if(S.deck<deckBeats.length-1){setNext('Keep reading \u25C6',tone,'deckNext');if(linkLetterBack)linkLetterBack.hidden=false;}
-      else{setNext('Enter NayaNET \u25C6','#40d3bb','deckJoin');if(linkLetterBack)linkLetterBack.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the full agreement \u25C6';nextBtn2.style.setProperty('--tone','#a06bff');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
+      if(S.deck<deckBeats.length-1){setNext('Keep reading \u25C6',tone,'deckNext');if(deckBack)deckBack.hidden=false;}
+      else{setNext('Enter NayaNET \u25C6','#40d3bb','deckJoin');if(deckBack)deckBack.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the full agreement \u25C6';nextBtn2.style.setProperty('--tone','#a06bff');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
     }
     else if(S.view==='letter'){
       tone=toneOf(letterBeats[S.letter]);
@@ -3315,6 +3375,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     agreeSec.classList.toggle('fp-layer-on',!onLegal);
     legalSec.classList.toggle('fp-layer-on',onLegal);
     agreeSec.classList.toggle('fp-view-intro',S.view==='intro');
+     agreeSec.classList.toggle('fp-view-bridge',S.view==='bridge');
     agreeSec.classList.toggle('fp-view-deck',S.view==='deck');
     agreeSec.classList.toggle('fp-view-letter',S.view==='letter');
     agreeSec.classList.toggle('fp-view-agree',S.view==='agree');
@@ -3373,6 +3434,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
       }
     }
     body.classList.toggle('fp-intro',S.view==='intro');
+     body.classList.toggle('fp-bridge',S.view==='bridge');
     body.classList.toggle('fp-letterview',S.view==='letter'||S.view==='letterPage');
     updateChrome();
     if (window.__fpPlaceFaces) window.__fpPlaceFaces();
@@ -3397,13 +3459,15 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
           orbFadeTimer=setTimeout(function(){var b=currentBeatEl();if(b&&(S.view==='letter'||S.view==='letterPage'))b.classList.add('fp-orb-faded');},1500);}
       }
       /* ITEM 11 — save the stage: the agree end is the only view that
-         persists across a refresh, so it is the only one saved; every
+         persists across a refresh, so it is the only one saved as itself; the bridge — and the deck, entered from the bridge — save 'bridge'; every
          other view clears the key, so a deliberate step back is honored
          on refresh. This runs on the view-change branch, so it fires
          exactly once per arrival at the end view. */
       if(body.classList.contains('fp-stage-on')){
         try{
           if(S.view==='agree')localStorage.setItem('nayanet_fp_stage','agree');
+           else if(S.view==='bridge')localStorage.setItem('nayanet_fp_stage','bridge');
+           else if(S.view==='deck')localStorage.setItem('nayanet_fp_stage','bridge');
           else localStorage.removeItem('nayanet_fp_stage');
         }catch(e){}
       }
@@ -3442,7 +3506,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
        enter-name page; re-entering the agreement lands back at 9/9, so
        the other button is one tap away. */
     if(window.__fpDeckEndReturn){window.__fpDeckEndReturn=false;S.view='deck';S.deck=deckBeats.length-1;}
-    else{S.view='intro';}
+    else{S.view='bridge';var bg2=q('#fpBridgeG2'),bg3=q('#fpBridgeG3'),bg4=q('#fpBridgeG4'),bf=q('#fpBridgeFinal'),bm1=q('#fpBridgeMore1'),bm2=q('#fpBridgeMore2'),bm3=q('#fpBridgeMore3'),bm4=q('#fpBridgeMore4');if(bg2)bg2.hidden=true;if(bg3)bg3.hidden=true;if(bg4)bg4.hidden=true;if(bf)bf.hidden=true;if(bm1)bm1.hidden=false;if(bm2)bm2.hidden=true;if(bm3)bm3.hidden=true;if(bm4)bm4.hidden=true;}
     S.all=null;S.legalId=null;
     render();
   }
@@ -3557,7 +3621,8 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
   });
   if(linkToFooter)linkToFooter.addEventListener('click',function(){cancelAgreeExit();S.view='footer';S.all=null;render();});
   if(linkToAgree)linkToAgree.addEventListener('click',function(){cancelAgreeExit();S.view='agree';S.all=null;render();});
-  if(linkLetterBack)linkLetterBack.addEventListener('click',function(){cancelAgreeExit();S.view='intro';S.all=null;render();});
+  if(linkLetterBack)linkLetterBack.addEventListener('click',function(){cancelAgreeExit();S.view='bridge';S.all=null;render();});
+   if(deckBack)deckBack.addEventListener('click',function(){cancelAgreeExit();S.view='bridge';S.all=null;render();});
   if(linkDeckBack)linkDeckBack.addEventListener('click',function(){cancelAgreeExit();S.view='deck';S.deck=deckBeats.length-1;S.all=null;render();});
   /* FIX ROUND (2026-11-17) — the legal row sits at the very bottom of
      the opening view; a tap opens that page IN THE LEGAL VIEW (the
@@ -3568,9 +3633,9 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     var b=(e.target&&e.target.closest)?e.target.closest('[data-legal-open]'):null;
     if(b){var pid=b.getAttribute('data-legal-open');var lp=q('#legal-'+pid);var lbs=lp?legalBeatsOf(lp):[];var ll=lastShown(lbs);S.view='legal';S.legalId=pid;S.legal=ll>=0?ll:0;S.all=null;render();}
   });
-  if(nextBtn2)nextBtn2.addEventListener('click',function(){if(S.view==='intro'||(S.view==='deck'&&S.deck===deckBeats.length-1)){enterLetterPage();}});
+  if(nextBtn2)nextBtn2.addEventListener('click',function(){if(S.view==='intro'){enterLetterPage();}else if(S.view==='deck'&&S.deck===deckBeats.length-1){window.location.href='/agreement';}});
   if(letterPageAgree)letterPageAgree.addEventListener('click',function(){agreeFromLetterPage();});
-  if(letterPageBack)letterPageBack.addEventListener('click',function(){S.view='intro';S.all=null;render();});
+  if(letterPageBack)letterPageBack.addEventListener('click',function(){S.view='bridge';S.all=null;render();});
   /* I agree: the seal stamps where the citizen can see it (the stage is
      still on), then the stage exits just before the original handler's
      2000ms scroll + focus, so the bump lands on the visible login. */
@@ -3672,6 +3737,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
      resumeTarget() for any return that goes through goResume. */
   try{
     if(localStorage.getItem('nayanet_fp_stage')==='agree'){enterStage();S.view='agree';S.all=null;render();}
+     else if(localStorage.getItem('nayanet_fp_stage')==='bridge'){enterStage();}
   }catch(e){}
   window.__fpStage={state:S,enter:enterStage,exit:exitStage,render:render};
 })();
