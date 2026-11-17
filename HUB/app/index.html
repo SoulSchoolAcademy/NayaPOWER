@@ -55,13 +55,13 @@ window.addEventListener('appinstalled', function () {
 .intel-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
 .intel-item{display:flex;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:12px 14px;box-shadow:0 0 12px rgba(255,255,255,.12),0 2px 8px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.15);animation:intelSlideIn .35s ease-out}
 @keyframes intelSlideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.intel-avatar{--av:36px;--av-hue:#a06bff;--soul:#a06bff;width:var(--av);height:var(--av);border-radius:50%;flex:none;display:inline-grid;place-items:center;font-size:calc(var(--av) * .38);font-weight:800;color:#F8F7FB;position:relative;border:1.5px solid #F8F7FB;background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.9) 0%,rgba(255,255,255,.25) 14%,transparent 32%),radial-gradient(circle at 50% 50%,var(--av-hue,var(--soul)) 0%,#040406 100%);box-shadow:inset 0 2px 4px rgba(255,255,255,.4),inset 0 -6px 12px rgba(0,0,0,.6),0 0 24px var(--av-hue,var(--soul)),0 12px 28px rgba(0,0,0,.6)}
+.intel-avatar{--av:36px;--av-hue:#8e24aa;--soul:#8e24aa;width:var(--av);height:var(--av);border-radius:50%;flex:none;display:inline-grid;place-items:center;font-size:calc(var(--av) * .38);font-weight:800;color:#F8F7FB;position:relative;border:1.5px solid #F8F7FB;background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.9) 0%,rgba(255,255,255,.25) 14%,transparent 32%),radial-gradient(circle at 50% 50%,var(--av-hue,var(--soul)) 0%,#040406 100%);box-shadow:inset 0 2px 4px rgba(255,255,255,.4),inset 0 -6px 12px rgba(0,0,0,.6),0 0 24px var(--av-hue,var(--soul)),0 12px 28px rgba(0,0,0,.6)}
 .intel-avatar::before{content:'';position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 270deg,var(--av-hue,var(--soul)) 320deg,rgba(255,255,255,.95) 348deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orbSpin 4s linear infinite;opacity:.9;pointer-events:none}
 @keyframes orbSpin{to{transform:rotate(360deg)}}
 .intel-body{flex:1;min-width:0}
 .intel-text{display:block;color:#fff;font-size:15px;line-height:1.5;margin-bottom:6px}
 .intel-when{display:block;color:rgba(255,255,255,.45);font-size:12px}
-.intel-empty{color:rgba(255,255,255,.35);font-size:14px;font-style:italic;padding:8px 0}
+.intel-empty{color:#fff;font-size:14px;font-style:italic;padding:8px 0}
 /* css/tokens.css @ baf1221d9 */
 /* ═══════════════════════════════════════════════════════════════════
    NAYANET HUB — DESIGN TOKENS
@@ -90,23 +90,23 @@ window.addEventListener('appinstalled', function () {
   --line-soft: #ffffff0d;
 
   /* ——— The semantic spectrum — one color, one job (Law v2 §2.3) ——— */
-  --purple:     #9d75ff;  /* Naya's signature. Primary actions, Naya presence. */
-  --indigo:     #6675ff;  /* Comprehension / depth / reports. */
-  --sapphire:   #55b9ee;  /* Knowledge. Calm, deep, at rest. */
-  --blue:       #55b9ee;  /* (alias of sapphire — the working blue) */
-  --teal:       #40d3bb;  /* Connection / flow. */
-  --emerald:    #55e39a;  /* Alive and well. Working, true, now. */
-  --green:      #55e39a;  /* (alias of emerald — the working green) */
-  --lime:       #b8ee57;  /* Learning / growth. */
-  --yellow:     #f1d75a;  /* Attention / signal. */
-  --gold:       #e8b64c;  /* Extraordinary. The rarest word. */
-  --orange:     #ff9a5a;  /* Action / movement. */
-  --rich-orange:#ff7a3d;  /* Transition / momentum. */
-  --red:        #ff5a6e;  /* Blocked / failed. The alarm. Never decorative. */
-  --magenta:    #d86cff;  /* Human significance. The human's own things. */
+  --purple:     #8e24aa;  /* Naya's signature. Primary actions, Naya presence. */
+  --indigo:     #3f51b5;  /* Comprehension / depth / reports. */
+  --sapphire:   #0f52ba;  /* Knowledge. Calm, deep, at rest. */
+  --blue:       #0f52ba;  /* (alias of sapphire — the working blue) */
+  --teal:       #0e7490;  /* Connection / flow. */
+  --emerald:    #07925f;  /* Alive and well. Working, true, now. */
+  --green:      #07925f;  /* (alias of emerald — the working green) */
+  --lime:       #07925f;  /* Learning / growth. */
+  --yellow:     #d4a017;  /* Attention / signal. */
+  --gold:       #d4a017;  /* Extraordinary. The rarest word. */
+  --orange:     #c2410c;  /* Action / movement. */
+  --rich-orange:#c2410c;  /* Transition / momentum. */
+  --red:        #c62828;  /* Blocked / failed. The alarm. Never decorative. */
+  --magenta:    #a21caf;  /* Human significance. The human's own things. */
 
   /* ——— Room accents (one distinct color per room — never two rooms alike) ——— */
-  --accent-feed:        #a06bff;            /* grape royal purple — the main page wears the soul color (Shawn 2026-10-20) */
+  --accent-feed:        #8e24aa;            /* grape royal purple — the main page wears the soul color (Shawn 2026-10-20) */
   --accent-today:       var(--magenta);     /* human significance */
   --accent-reports:     var(--indigo);      /* comprehension / depth */
   --accent-library:     var(--blue);        /* knowledge at rest */
@@ -148,8 +148,8 @@ window.addEventListener('appinstalled', function () {
 
   /* ——— The living field behind everything ——— */
   --field:
-    radial-gradient(1000px 650px at 55% -12%, #6675ff18, transparent 68%),
-    radial-gradient(900px 700px at 100% 100%, #d86cff12, transparent 70%),
+    radial-gradient(1000px 650px at 55% -12%, #3f51b518, transparent 68%),
+    radial-gradient(900px 700px at 100% 100%, #a21caf12, transparent 70%),
     var(--bg);
 }
 
@@ -201,7 +201,7 @@ a { color: inherit; }
   }
 }
 
-::selection { background: #d86cff55; }
+::selection { background: #a21caf55; }
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { background: #ffffff22; border-radius: 8px; border: 2px solid transparent; background-clip: content-box; }
@@ -318,7 +318,7 @@ a { color: inherit; }
 }
 .eco-bb-ico svg {
 /* BLACK DIAMOND: clone layer behind the eco dock icon. */
-.eco-bb-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
+.eco-bb-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
   width: 20px; height: 20px;
   transition: transform .22s;
   filter: drop-shadow(0 0 3px rgba(255,255,255,.4));
@@ -412,11 +412,11 @@ a { color: inherit; }
   transition: box-shadow .3s, border-color .3s, transform .22s cubic-bezier(.16,.84,.22,1);
 }
 .notif-tile::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 16px; pointer-events: none; border: 1.5px solid color-mix(in srgb, var(--nc) 45%, transparent); transform: translate(2px, 3px); box-shadow: 0 6px 14px rgba(0,0,0,.5);
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 16px; pointer-events: none; border: 1.5px solid color-mix(in srgb, var(--nc) 45%, transparent); transform: translate(1px, 1px); box-shadow: 0 6px 14px rgba(0,0,0,.5);
   background: #050607; /* BLACK DIAMOND: the wash is out — ::before is now the clone layer */
 
 }
-.notif-tile svg { width: 25px; height: 25px; filter: drop-shadow(0 2px 2px rgba(0,0,0,.9)) drop-shadow(0 0 5px rgba(255,255,255,.5)); position: relative; }
+.notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 3px 3px rgba(0,0,0,.95)) drop-shadow(0 0 2px rgba(255,255,255,.9)) drop-shadow(0 0 7px rgba(255,255,255,.55)); position: relative; transition: transform .22s, filter .22s; }
 .notif-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; color: #fff; }
 .notif-count { position: absolute; top: -8px; right: -10px; min-width: 24px; height: 24px; padding: 0 6px;
   display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
@@ -446,15 +446,15 @@ a { color: inherit; }
 /* ——— HUB SIDEBARS+PLUS 2026-11-16 (item 4): the two + menus ———
    Chrome harvested VERBATIM from the Personal correction's .fc-plusmenu
    (blob 3328238b): fixed, centered on its anchor, own-color hover. */
-.fc-plusmenu{position:fixed;z-index:1700;transform:translateX(-50%);background:#050607;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:8px;min-width:220px;box-shadow:inset 0 -8px 16px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.65),0 0 24px -6px rgba(160,107,255,.45);}
+.fc-plusmenu{position:fixed;z-index:1700;transform:translateX(-50%);background:#050607;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:8px;min-width:220px;box-shadow:inset 0 -8px 16px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.65),0 0 24px -6px rgba(142,36,170,.45);}
 .fc-plusmenu[hidden]{display:none;}
 .fc-plusitem{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;background:#050607;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 3px 8px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:all .18s ease;}
-.fc-plusitem:hover{background:#050607;border-color:var(--mc,#a06bff);box-shadow:0 0 18px -4px var(--mc,#a06bff),0 6px 16px rgba(0,0,0,.5),0 10px 22px rgba(0,0,0,.55);transform:translateY(-2px);}
-.fc-plusitem:hover .fc-pi-ico{border-color:var(--mc,#a06bff);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--mc,#a06bff) 70%,transparent),0 6px 14px rgba(0,0,0,.5);}
-.fc-plusitem .fc-pi-ico{color:#fff;flex:none;width:34px;height:34px;display:grid;place-items:center;position:relative;z-index:0;border-radius:10px;background:#050607;border:1.5px solid color-mix(in srgb,var(--mc,#a06bff) 65%,rgba(255,255,255,.25));box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 12px -2px color-mix(in srgb,var(--mc,#a06bff) 55%,transparent),0 6px 14px rgba(0,0,0,.5);}
+.fc-plusitem:hover{background:#050607;border-color:var(--mc,#8e24aa);box-shadow:0 0 18px -4px var(--mc,#8e24aa),0 6px 16px rgba(0,0,0,.5),0 10px 22px rgba(0,0,0,.55);transform:translateY(-2px);}
+.fc-plusitem:hover .fc-pi-ico{border-color:var(--mc,#8e24aa);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--mc,#8e24aa) 70%,transparent),0 6px 14px rgba(0,0,0,.5);}
+.fc-plusitem .fc-pi-ico{color:#fff;flex:none;width:34px;height:34px;display:grid;place-items:center;position:relative;z-index:0;border-radius:10px;background:#050607;border:1.5px solid color-mix(in srgb,var(--mc,#8e24aa) 65%,rgba(255,255,255,.25));box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 12px -2px color-mix(in srgb,var(--mc,#8e24aa) 55%,transparent),0 6px 14px rgba(0,0,0,.5);}
 .fc-plusitem .fc-pi-ico svg{width:19px;height:19px;filter:drop-shadow(0 0 3px rgba(255,255,255,.5));}
 /* BLACK DIAMOND: clone layer behind every + menu icon chip. */
-.fc-plusitem .fc-pi-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--mc, #a06bff) 45%, transparent);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
+.fc-plusitem .fc-pi-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--mc, #8e24aa) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
 /* The eco dock rides above the notifications bar — but ONLY when the bar is
    actually in the DOM (body.has-notif is set by NayaNotif.init). Without the
    bar, the dock sits at bottom: 0 (its base rule) and can never float over a
@@ -492,16 +492,16 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 /* BLACK DIAMOND (§3): clone layer behind the hamburger circle — the
    three-line hamburger is NOT replaced, only made premium: board black,
    stacked layers, real shadow. Flagged for Shawn's eye. */
-.rail-toggle::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
+.rail-toggle::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
   width: 26px; height: 26px;
   transition: transform .25s cubic-bezier(.16,.84,.22,1);
   filter: drop-shadow(0 0 5px rgba(255,255,255,.5));
 }
 .rail-toggle:hover {
   transform: translateY(-2px) scale(1.06);
-  border-color: rgba(157,117,255,.7);
+  border-color: rgba(142,36,170,.7);
   box-shadow:
-    0 0 28px rgba(157,117,255,.55),
+    0 0 28px rgba(142,36,170,.55),
     0 4px 16px rgba(0,0,0,.5),
     0 8px 20px rgba(0,0,0,.55);
 }
@@ -528,10 +528,10 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 
 /* ——— Ecosystem quick menu (top-right +) ——— */
 .eco-plus {
-  --jewel: #ffea00;
+  --jewel: #d4a017;
   width: 48px; height: 48px; flex: 0 0 48px;
   border-radius: 14px;
-  border: 1.5px solid rgba(157,117,255,.8); /* §3 reference +: thin bright purple edge */
+  border: 1.5px solid rgba(142,36,170,.8); /* §3 reference +: thin bright purple edge */
   background: #050607;
   /* BLACK DIAMOND: white wash + jewel core out — flat board black. */
 
@@ -553,7 +553,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
    obsidian inside, double-layered (clone behind, nudged), pearl purple
    light on the OUTSIDE at rest, bright on hover. */
 .powercast-topbtn{
-  --pc-purple:#8b5cf6;
+  --pc-purple:#8e24aa;
   position:relative;z-index:0;
   display:inline-flex;align-items:center;gap:8px;
   min-height:48px;padding:0 22px;margin-right:10px;
@@ -563,25 +563,25 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   color:#fff;font-weight:800;font-size:13px;letter-spacing:.08em;
   font-family:inherit;text-decoration:none;white-space:nowrap;
   box-shadow:inset 0 -2px 4px rgba(0,0,0,.5),
-    0 8px 24px rgba(0,0,0,.5),0 0 28px rgba(139,92,246,.65),0 0 48px rgba(139,92,246,.30);
+    0 8px 24px rgba(0,0,0,.5),0 0 28px rgba(142,36,170,.65),0 0 48px rgba(142,36,170,.30);
   transition:all .22s cubic-bezier(.16,.84,.22,1);
   -webkit-tap-highlight-color:transparent;
 }
 .powercast-topbtn::before{
   content:'';position:absolute;inset:0;z-index:-1;
   border-radius:999px;
-  border:1.5px solid rgba(139,92,246,.55);
+  border:1.5px solid rgba(142,36,170,.55);
   background:#050607;
-  transform:translate(2px,3px);
+  transform:translate(1px,1px);
   box-shadow:0 10px 22px rgba(0,0,0,.5);
 }
 .powercast-topbtn:hover,.powercast-topbtn:focus-visible{
 /* BLACK DIAMOND (D1): second clone — Powercasts sits as high as Ask/Life. */
-.powercast-topbtn::after{content:'';position:absolute;inset:0;z-index:-2;border-radius:999px;background:#050607;border:1.5px solid rgba(139,92,246,.35);transform:translate(4px,6px);box-shadow:0 14px 30px rgba(0,0,0,.55);}
+.powercast-topbtn::after{content:'';position:absolute;inset:0;z-index:-2;border-radius:999px;background:#050607;border:1.5px solid rgba(142,36,170,.35);transform:translate(2px,2px);box-shadow:0 14px 30px rgba(0,0,0,.55);}
 .powercast-topbtn svg{width:18px;height:18px;flex:none;}
   border-color:var(--pc-purple);color:#fff;transform:translateY(-2px);
   box-shadow:inset 0 -2px 6px rgba(0,0,0,.4),
-    0 0 40px rgba(139,92,246,.85),0 0 64px rgba(139,92,246,.35),0 8px 24px rgba(0,0,0,.5);
+    0 0 40px rgba(142,36,170,.85),0 0 64px rgba(142,36,170,.35),0 8px 24px rgba(0,0,0,.5);
 }
 .powercast-topbtn:active{transform:translateY(0) scale(.97);}
 @media (max-width:560px){ .powercast-topbtn{padding:0 14px;font-size:12px;min-height:44px;margin-right:8px;} }
@@ -622,21 +622,21 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   width: 32px; height: 32px; flex: 0 0 32px;
   display: grid; place-items: center;
   border-radius: 10px;
-  color: var(--eco, #9d75ff);
-  background: color-mix(in srgb, var(--eco, #9d75ff) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--eco, #9d75ff) 30%, transparent);
+  color: var(--eco, #8e24aa);
+  background: color-mix(in srgb, var(--eco, #8e24aa) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--eco, #8e24aa) 30%, transparent);
   transition: all .2s cubic-bezier(.16,.84,.22,1);
 }
 .eco-menu a .eco-ico svg { width: 18px; height: 18px; }
 .eco-menu a:hover .eco-ico {
   color: #fff;
-  background: color-mix(in srgb, var(--eco, #9d75ff) 35%, transparent);
-  border-color: var(--eco, #9d75ff);
-  box-shadow: 0 0 16px color-mix(in srgb, var(--eco, #9d75ff) 60%, transparent);
+  background: color-mix(in srgb, var(--eco, #8e24aa) 35%, transparent);
+  border-color: var(--eco, #8e24aa);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--eco, #8e24aa) 60%, transparent);
   transform: scale(1.08);
 }
 .eco-menu a:hover {
-  background: color-mix(in srgb, var(--eco, #9d75ff) 12%, transparent);
+  background: color-mix(in srgb, var(--eco, #8e24aa) 12%, transparent);
 }
 .eco-menu a .dot {
   width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px;
@@ -660,7 +660,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   .top .hub-obsidian-btn { padding: 10px 14px; font-size: 13px; }
   .top .rooms-plus {
     border-radius: 50%;
-    border: 1.5px solid rgba(157,117,255,.8);
+    border: 1.5px solid rgba(142,36,170,.8);
     background: #050607;
   }
   /* Left + mirrors the right + exactly (Shawn 2026-10-20): hide the SVG icon,
@@ -674,7 +674,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 }
 
 .brand { display: flex; align-items: center; gap: 12px; padding: 2px 8px 0; }
-.brand img { width: 44px; height: 44px; border-radius: 50%; display: block; background: var(--bg-raise); border: 2px solid rgba(255,255,255,.2); box-shadow: 0 0 16px rgba(157,117,255,.3); }
+.brand img { width: 44px; height: 44px; border-radius: 50%; display: block; background: var(--bg-raise); border: 2px solid rgba(255,255,255,.2); box-shadow: 0 0 16px rgba(142,36,170,.3); }
 .brand b { display: block; font-size: 15px; letter-spacing: .14em; }
 .brand small { display: block; font-size: 10px; letter-spacing: .22em; color: var(--muted); margin-top: 3px; }
 
@@ -707,7 +707,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 }
 .nav-btn .ico svg {
 /* BLACK DIAMOND: clone layer behind every sidebar icon chip — own-color rim, stacked layers. */
-.nav-btn .ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--nav, var(--purple)) 45%, transparent);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
+.nav-btn .ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--nav, var(--purple)) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
   width: 24px; height: 24px;
   stroke-width: 1.8;
 }
@@ -794,7 +794,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 .nav-sub .ico{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;position:relative;z-index:0;border-radius:9px;color:#fff;background:#050607;border:1.5px solid var(--nav,var(--purple));box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);}
 .nav-sub .ico svg{width:18px;height:18px;}
 /* BLACK DIAMOND: clone layer behind every sub-row icon chip. */
-.nav-sub .ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--nav, var(--purple)) 45%, transparent);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
+.nav-sub .ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--nav, var(--purple)) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
 .nav-sub .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:550;}
 .nav-sub .nav-count{position:absolute;top:2px;right:4px;min-width:20px;height:20px;padding:0 5px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:11px;font-weight:900;color:#06060a;background:var(--nav);border:2px solid #05050a;box-shadow:0 0 12px var(--nav),0 3px 8px rgba(0,0,0,.5);}
 .nav-sub.has-news .nav-count{display:flex;}
@@ -803,13 +803,13 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 .nav-btn .chev{margin-left:auto;font-size:12px;color:var(--ink-dim);transition:transform .2s;}
 .nav-btn[aria-expanded="true"] .chev{transform:rotate(180deg);}
 /* Lens-tab jewels — Personal's feed tabs carry a jewel in the tab's own color. */
-.lens-tab .tab-jewel{display:inline-grid;place-items:center;position:relative;z-index:0;flex:none;width:27px;height:27px;font-size:14px;line-height:1;color:#fff;background:#050607;border:1.5px solid var(--jc,#a06bff);border-radius:8px;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.55),0 0 16px -2px var(--jc,#a06bff);text-shadow:0 0 9px var(--jc,#a06bff),0 1px 2px rgba(0,0,0,.65);}
-.lens-legend{font-size:13px;color:var(--ink-dim);margin:10px 2px 0;line-height:1.5;}
+.lens-tab .tab-jewel{display:inline-grid;place-items:center;position:relative;z-index:0;flex:none;width:27px;height:27px;font-size:14px;line-height:1;color:#fff;background:#050607;border:1.5px solid var(--jc,#8e24aa);border-radius:8px;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.55),0 0 16px -2px var(--jc,#8e24aa);text-shadow:0 0 9px var(--jc,#8e24aa),0 1px 2px rgba(0,0,0,.65);}
+.lens-legend{font-size:13px;color:#fff;margin:10px 2px 0;line-height:1.5;}
 /* BLACK DIAMOND: clone layer behind every lens-tab jewel. */
-.lens-tab .tab-jewel::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--jc, #a06bff) 45%, transparent);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
+.lens-tab .tab-jewel::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--jc, #8e24aa) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
 /* Hero Wisdom of the Day. */
 .hero-wisdom{margin:6px 0 12px;max-width:760px;}
-.hero-wisdom .wisdom-kicker{font-size:11px;letter-spacing:.24em;font-weight:800;color:#ffbf3d;text-transform:uppercase;}
+.hero-wisdom .wisdom-kicker{font-size:11px;letter-spacing:.24em;font-weight:800;color:#d4a017;text-transform:uppercase;}
 .hero-wisdom blockquote{margin:6px 0 4px;font-size:28px;line-height:1.45;font-weight:800;color:#ffffff;text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 26px rgba(255,255,255,.16);}
 .hero-wisdom .wisdom-src{font-size:13px;color:#ffffff;}
 
@@ -841,7 +841,7 @@ svg.jewel { display: block; }
 .primo { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #F8F7FB; padding: 16px 32px; border-radius: 999px; border: 1.5px solid rgba(248,247,251,.9);
   background: #050607; /* BLACK DIAMOND: flat board black */
   box-shadow: inset 0 -8px 16px rgba(0,0,0,.8), 0 0 24px rgba(248,247,251,.45), 0 0 48px rgba(248,247,251,.15), 0 12px 32px rgba(0,0,0,.65), 0 18px 44px rgba(0,0,0,.65);
-  transition: transform .22s var(--ease), box-shadow .22s var(--ease); --glow: var(--soul, #a06bff); position: relative; overflow: hidden; }
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease); --glow: var(--soul, #8e24aa); position: relative; overflow: hidden; }
 .primo:hover { transform: translateY(-2px); border-color: var(--glow); box-shadow: inset 0 0 0 1.5px var(--glow), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 36px var(--glow), 0 14px 36px rgba(0,0,0,.65); }
 .primo:active { transform: translateY(1px) scale(.985); }
 .primo.theme-purple { --glow: var(--purple); }
@@ -855,7 +855,7 @@ svg.jewel { display: block; }
    shadow); each ignites in its own color on hover. Harvested from the file's
    own obsidian language (.primo base, .nav-btn jewel ignition). ——— */
 .hub-cta { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; }
-.hub-obsidian-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 14px; letter-spacing: .06em; color: #fff; padding: 11px 20px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.9); background: #050607; box-shadow: inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5); transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease); --glow: #a06bff; white-space: nowrap; }
+.hub-obsidian-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 14px; letter-spacing: .06em; color: #fff; padding: 11px 20px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.9); background: #050607; box-shadow: inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5); transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease); --glow: #8e24aa; white-space: nowrap; }
 .hub-obsidian-btn:hover { transform: translateY(-2px); border-color: var(--glow); box-shadow: inset 0 -6px 14px rgba(0,0,0,.65), 0 0 40px var(--glow), 0 0 64px color-mix(in srgb, var(--glow) 40%, transparent), 0 12px 32px rgba(0,0,0,.65); }
 .hub-obsidian-btn:active { transform: translateY(1px) scale(.985); }
 .top-status {
@@ -872,11 +872,11 @@ svg.jewel { display: block; }
 
 /* Rooms plus — mobile only */
 .rooms-plus {
-  --jewel: #8a5cff;
+  --jewel: #8e24aa;
   display: none;
   width: 48px; height: 48px; flex: 0 0 48px; position: relative; z-index: 0;
   border-radius: 14px;
-  border: 1.5px solid rgba(157,117,255,.8); /* §3 reference +: thin bright purple edge */
+  border: 1.5px solid rgba(142,36,170,.8); /* §3 reference +: thin bright purple edge */
   background: #050607;
   /* BLACK DIAMOND: white wash + jewel core out — flat board black. */
 
@@ -892,14 +892,14 @@ svg.jewel { display: block; }
 }
 .rooms-plus svg { width: 20px; height: 20px; }
 /* BLACK DIAMOND (§3): clone layer behind the rooms + button. */
-.rooms-plus::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
+.rooms-plus::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
 .rooms-plus:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
 
 /* Ecosystem toggle — black + elegant plus · white light idle · purple hover · alive */
 .eco-plus {
   width: 48px; height: 48px; flex: 0 0 48px;
   border-radius: 50%;
-  border: 1.5px solid rgba(157,117,255,.8); /* §3 reference +: thin bright purple edge */
+  border: 1.5px solid rgba(142,36,170,.8); /* §3 reference +: thin bright purple edge */
   background: #050607;
   color: #fff; cursor: pointer;
   display: grid; place-items: center;
@@ -912,21 +912,21 @@ svg.jewel { display: block; }
 }
 .eco-plus svg {
 /* BLACK DIAMOND (§3): clone layer behind the + button — the reference button. */
-.eco-plus::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(2px,3px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
+.eco-plus::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
   width: 26px; height: 26px;
   transition: transform .25s cubic-bezier(.16,.84,.22,1);
   filter: drop-shadow(0 0 5px rgba(255,255,255,.5));
 }
 .eco-plus:hover {
   transform: scale(1.1);
-  border-color: rgba(157,117,255,.7);
+  border-color: rgba(142,36,170,.7);
   box-shadow:
-    0 0 28px rgba(157,117,255,.55),
+    0 0 28px rgba(142,36,170,.55),
     0 4px 16px rgba(0,0,0,.5),
     0 8px 20px rgba(0,0,0,.55);
 }
 .eco-plus:hover svg {
-  filter: drop-shadow(0 0 6px rgba(157,117,255,.8));
+  filter: drop-shadow(0 0 6px rgba(142,36,170,.8));
 }
 .eco-plus:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
 .eco-plus[aria-expanded="true"] {
@@ -977,14 +977,14 @@ svg.jewel { display: block; }
 .searchRow {
   display: flex; align-items: center; gap: 12px;
   background: linear-gradient(180deg, #050508, #0a0a10 55%, #050508);
-  border: 1.5px solid rgba(160,107,255,.55);
+  border: 1.5px solid rgba(142,36,170,.55);
   border-radius: var(--radius-lg);
   padding: 13px 18px;
-  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 22px rgba(160,107,255,.35), 0 0 48px rgba(160,107,255,.12), 0 14px 30px rgba(0,0,0,.6);
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 22px rgba(142,36,170,.35), 0 0 48px rgba(142,36,170,.12), 0 14px 30px rgba(0,0,0,.6);
 }
 .searchRow:focus-within {
-  border-color: #a06bff;
-  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 34px rgba(160,107,255,.6), 0 0 70px rgba(160,107,255,.2), 0 16px 34px rgba(0,0,0,.65);
+  border-color: #8e24aa;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 34px rgba(142,36,170,.6), 0 0 70px rgba(142,36,170,.2), 0 16px 34px rgba(0,0,0,.65);
 }
 .search-ico { color: var(--muted); display: grid; place-items: center; }
 .search-ico svg { width: 20px; height: 20px; }
@@ -992,7 +992,7 @@ svg.jewel { display: block; }
   flex: 1; min-width: 0; background: transparent; border: 0; outline: 0;
   color: var(--ink); font-size: 16px; font-family: var(--font);
 }
-.searchRow input::placeholder { color: var(--muted); }
+.searchRow input::placeholder { color: #fff; opacity: 1; }
 
 /* Shell lens slot (room-owned lens, chassis-positioned) · full width */
 .shell-lens { padding: 18px 28px 0; }
@@ -1013,29 +1013,29 @@ svg.jewel { display: block; }
   font-family: Newsreader, Georgia, serif; font-style: italic; font-weight: 500;
   font-size: clamp(24px, 1.2vw + 19px, 32px); letter-spacing: .01em; text-transform: none; line-height: 1.35;
   color: #fff; text-align: center;
-  text-shadow: 0 0 24px rgba(160,107,255,.55), 0 2px 12px rgba(0,0,0,.6);
+  text-shadow: 0 0 24px rgba(142,36,170,.55), 0 2px 12px rgba(0,0,0,.6);
   margin: 4px auto 20px; max-width: min(680px, 94vw);
 }
 /* The living clock: breathing dot + glowing ticking time (Shawn 2026-10-20) */
 .hero-date { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .live-dot {
   width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px;
-  background: #a06bff; box-shadow: 0 0 12px #a06bff, 0 0 24px rgba(160,107,255,.5);
+  background: #8e24aa; box-shadow: 0 0 12px #8e24aa, 0 0 24px rgba(142,36,170,.5);
   animation: livePulse 2s ease-in-out infinite;
 }
 @keyframes livePulse {
-  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 12px #a06bff, 0 0 24px rgba(160,107,255,.5); }
-  50% { opacity: .5; transform: scale(.8); box-shadow: 0 0 4px #a06bff; }
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 12px #8e24aa, 0 0 24px rgba(142,36,170,.5); }
+  50% { opacity: .5; transform: scale(.8); box-shadow: 0 0 4px #8e24aa; }
 }
-.hero-time { color: #ffbf3d; font-variant-numeric: tabular-nums; text-shadow: 0 0 18px rgba(255,191,61,.45); } /* gold — syncs with Collective/Spaces (Shawn 2026-10-20) */
-.hero-date-str { color: #2fe89e; /* green — syncs with Activity (Shawn 2026-10-20) */ }
-.hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; font-weight: 900; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.85), 0 0 30px color-mix(in srgb, var(--room-accent, #a06bff) 35%, transparent); }
+.hero-time { color: #d4a017; font-variant-numeric: tabular-nums; text-shadow: 0 0 18px rgba(212,160,23,.45); } /* gold — syncs with Collective/Spaces (Shawn 2026-10-20) */
+.hero-date-str { color: #07925f; /* green — syncs with Activity (Shawn 2026-10-20) */ }
+.hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; font-weight: 900; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.85), 0 0 30px color-mix(in srgb, var(--room-accent, #8e24aa) 35%, transparent); }
 .hero-sub { font-size: 21px; line-height: 1.55; color: #F2F2F6; font-weight: 600; max-width: 760px; margin: 0 0 10px; }
 /* Intel Today (2026-11-12): the Hub is the public blog. Gold wordmark
    for what matters; the public-feed link is the harvested primo button
    (NAYA-BTN-005), same class the lens tabs wear. */
 .intel-today { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
-.intel-today-mark { color: #ffbf3d; font-weight: 900; letter-spacing: .04em; }
+.intel-today-mark { color: #d4a017; font-weight: 900; letter-spacing: .04em; }
 .intel-feed-link { text-decoration: none; padding: 10px 22px; font-size: 13px; text-align: center; line-height: 1.4; }
 
 /* Room head (non-feed rooms) */
@@ -1071,7 +1071,7 @@ svg.jewel { display: block; }
   width: 64px; height: 64px; margin: 0 auto 12px; border-radius: 50%;
   display: grid; place-items: center;
   font-size: 26px; font-weight: 800; color: #0b0d12;
-  background: radial-gradient(circle at 32% 28%, #c9b3ff, var(--purple) 62%, #6a4fd0);
+  background: radial-gradient(circle at 32% 28%, #ffffff, var(--purple) 62%, #8e24aa);
   box-shadow: 0 6px 22px color-mix(in srgb, var(--purple) 45%, transparent);
 }
 .naya-card h2 { font-size: 19px; margin: 0; }
@@ -1174,9 +1174,9 @@ svg.jewel { display: block; }
 .lens-tab b { letter-spacing: .08em; }
 /* Each lens owns its color (Shawn 2026-10-20): collective = purple,
    personal = blue, activity = green — at rest white, ignites in its color. */
-.lens-tab.lens-collective { --glow: #ffbf3d; } /* gold — syncs with Spaces (Shawn 2026-10-20) */
-.lens-tab.lens-personal { --glow: #3fb8ff; }
-.lens-tab.lens-activity { --glow: #2fe89e; }
+.lens-tab.lens-collective { --glow: #d4a017; } /* gold — syncs with Spaces (Shawn 2026-10-20) */
+.lens-tab.lens-personal { --glow: #0f52ba; }
+.lens-tab.lens-activity { --glow: #07925f; }
 .lens-tab.active {
   border-color: var(--glow); color: #fff;
   box-shadow: inset 0 0 0 1.5px var(--glow), inset 0 2px 5px rgba(255,255,255,.28), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 36px color-mix(in srgb, var(--glow) 75%, transparent), 0 14px 36px rgba(0,0,0,.65);
@@ -1216,7 +1216,7 @@ svg.jewel { display: block; }
 /* SmartTabs: white light at rest, lights ON (Shawn 2026-10-20) · color
    ignites on hover; the active tab wears beautiful purple. */
 .smart-tab {
-  --tc: #9d75ff;
+  --tc: #8e24aa;
   flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px;
   padding: 12px 20px; border-radius: 999px; cursor: pointer; user-select: none;
   border: 2px solid rgba(255,255,255,.7); background: rgba(0,0,0,.55);
@@ -1234,9 +1234,9 @@ svg.jewel { display: block; }
 }
 /* Active: beautiful purple ignition (Shawn 2026-10-20) */
 .smart-tab.active {
-  border-color: #a06bff;
-  box-shadow: 0 0 22px rgba(160,107,255,.55), inset 0 0 0 1.5px rgba(160,107,255,.8), inset 0 1px rgba(255,255,255,.2);
-  text-shadow: 0 0 10px rgba(160,107,255,.9);
+  border-color: #8e24aa;
+  box-shadow: 0 0 22px rgba(142,36,170,.55), inset 0 0 0 1.5px rgba(142,36,170,.8), inset 0 1px rgba(255,255,255,.2);
+  text-shadow: 0 0 10px rgba(142,36,170,.9);
 }
 .smart-tab.active:hover {
   border-color: var(--tc);
@@ -1353,13 +1353,13 @@ svg.jewel { display: block; }
 .intel-board.tone-purple  { --tone: var(--purple); }
 .intel-board.tone-sapphire { --tone: var(--sapphire); }
 .intel-board.tone-emerald { --tone: var(--emerald); }
-.intel-board.tone-indigo { --tone: #6675ff; }
-.intel-board.tone-forest { --tone: #2e9e6a; }
-.intel-board.tone-lime { --tone: #b8ee57; }
-.intel-board.tone-gold { --tone: #ffd45a; }
-.intel-board.tone-orange { --tone: #ff8c42; }
-.intel-board.tone-ruby { --tone: #ff5e6c; }
-.intel-board.tone-magenta { --tone: #ed42c4; }
+.intel-board.tone-indigo { --tone: #3f51b5; }
+.intel-board.tone-forest { --tone: #07925f; }
+.intel-board.tone-lime { --tone: #07925f; }
+.intel-board.tone-gold { --tone: #d4a017; }
+.intel-board.tone-orange { --tone: #c2410c; }
+.intel-board.tone-ruby { --tone: #c62828; }
+.intel-board.tone-magenta { --tone: #a21caf; }
 /* Elevated edge light */
 .intel-board::before {
   content: ""; position: absolute; left: 10px; top: 18px; bottom: 18px; width: 4px;
@@ -1452,20 +1452,20 @@ svg.jewel { display: block; }
   width: 24px; height: 24px; margin-top: 2px; border-radius: 50%;
   background:
     radial-gradient(circle at 50% 50%, #0a0a0e 0%, #0a0a0e 35%, transparent 36%),
-    radial-gradient(circle at 50% 50%, var(--lc, #8a5cff), color-mix(in srgb, var(--lc, #8a5cff) 30%, #000) 100%);
-  border: 2px solid var(--lc, #8a5cff);
+    radial-gradient(circle at 50% 50%, var(--lc, #8e24aa), color-mix(in srgb, var(--lc, #8e24aa) 30%, #000) 100%);
+  border: 2px solid var(--lc, #8e24aa);
   box-shadow:
 
     inset 0 -2px 6px rgba(0,0,0,.5),
-    0 0 16px var(--lc, #8a5cff),
-    0 0 4px var(--lc, #8a5cff),
+    0 0 16px var(--lc, #8e24aa),
+    0 0 4px var(--lc, #8e24aa),
     0 4px 12px rgba(0,0,0,.6);
 }
 /* v1.1 accent jewel cycle: hot pink → purple → blue → green → gold (repeat) */
-.ib-layer-body ul li:nth-child(5n+1)::before, .board-body ul li:nth-child(5n+1)::before { --lc: #ed42c4; }
-.ib-layer-body ul li:nth-child(5n+2)::before, .board-body ul li:nth-child(5n+2)::before { --lc: #8a5cff; }
-.ib-layer-body ul li:nth-child(5n+3)::before, .board-body ul li:nth-child(5n+3)::before { --lc: #3ca8ff; }
-.ib-layer-body ul li:nth-child(5n+4)::before, .board-body ul li:nth-child(5n+4)::before { --lc: #35e39b; }
+.ib-layer-body ul li:nth-child(5n+1)::before, .board-body ul li:nth-child(5n+1)::before { --lc: #a21caf; }
+.ib-layer-body ul li:nth-child(5n+2)::before, .board-body ul li:nth-child(5n+2)::before { --lc: #8e24aa; }
+.ib-layer-body ul li:nth-child(5n+3)::before, .board-body ul li:nth-child(5n+3)::before { --lc: #0f52ba; }
+.ib-layer-body ul li:nth-child(5n+4)::before, .board-body ul li:nth-child(5n+4)::before { --lc: #07925f; }
 .ib-layer-body ul li:nth-child(5n+5)::before, .board-body ul li:nth-child(5n+5)::before { --lc: #d4a017; }
 
 
@@ -1473,7 +1473,7 @@ svg.jewel { display: block; }
 
 /* ——— Mobile share FAB (bottom-corner) ——— */
 .share-fab {
-  --jewel: #ffea00;
+  --jewel: #d4a017;
   position: fixed; right: 20px; bottom: 20px; z-index: 9000;
   width: 56px; height: 56px; border-radius: 18px;
   border: 1px solid rgba(255,255,255,.35);
@@ -1511,9 +1511,9 @@ svg.jewel { display: block; }
   color: var(--ink) !important;
 }
 .hero-date .hero-time {
-  color: #ffbf3d; /* gold — syncs with Collective/Spaces (Shawn 2026-10-20) */
+  color: #d4a017; /* gold — syncs with Collective/Spaces (Shawn 2026-10-20) */
   font-weight: 500;
-  text-shadow: 0 0 18px rgba(255,191,61,.45);
+  text-shadow: 0 0 18px rgba(212,160,23,.45);
   margin-left: 8px;
 }
 
@@ -1548,7 +1548,7 @@ svg.jewel { display: block; }
 /* ——— Rating numeric display ——— */
 .rating-num {
   font-size: 13px; font-weight: 800;
-  color: var(--gold, #ffea00);
+  color: var(--gold, #d4a017);
   margin-left: 8px;
   min-width: 32px;
 }
@@ -1592,8 +1592,8 @@ svg.jewel { display: block; }
   font-size: 18px !important;
   line-height: 1.7 !important;
   padding: 16px 20px 16px 24px !important;
-  border-left: 3px solid var(--tone, #9d75ff) !important;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--tone, #9d75ff) 8%, transparent), transparent 70%) !important;
+  border-left: 3px solid var(--tone, #8e24aa) !important;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--tone, #8e24aa) 8%, transparent), transparent 70%) !important;
   border-radius: 0 12px 12px 0 !important;
   margin: 16px 0 20px !important;
 }
@@ -1602,7 +1602,7 @@ svg.jewel { display: block; }
   font-size: 11px;
   letter-spacing: .18em;
   font-weight: 800;
-  color: var(--tone, #9d75ff);
+  color: var(--tone, #8e24aa);
   margin-bottom: 8px;
 }
 
@@ -1629,17 +1629,17 @@ svg.jewel { display: block; }
   transform: translateY(-6px);
 }
 .intel-board.tone-gold:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #d4a01755; }
-.intel-board.tone-red:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #ff5e6c55; }
-.intel-board.tone-purple:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #9d75ff55; }
-.intel-board.tone-blue:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #55b9ee55; }
-.intel-board.tone-green:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #55e39a55; }
+.intel-board.tone-red:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #c6282855; }
+.intel-board.tone-purple:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #8e24aa55; }
+.intel-board.tone-blue:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #0f52ba55; }
+.intel-board.tone-green:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #07925f55; }
 
 /* ——— Theme-colored block borders (from deployed original) ——— */
 .intel-board.tone-gold { border-color: color-mix(in srgb, #d4a017 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #d4a01733; }
-.intel-board.tone-red { border-color: color-mix(in srgb, #ff5e6c 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #ff5e6c33; }
-.intel-board.tone-purple { border-color: color-mix(in srgb, #9d75ff 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #9d75ff33; }
-.intel-board.tone-blue { border-color: color-mix(in srgb, #55b9ee 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #55b9ee33; }
-.intel-board.tone-green { border-color: color-mix(in srgb, #55e39a 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #55e39a33; }
+.intel-board.tone-red { border-color: color-mix(in srgb, #c62828 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #c6282833; }
+.intel-board.tone-purple { border-color: color-mix(in srgb, #8e24aa 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #8e24aa33; }
+.intel-board.tone-blue { border-color: color-mix(in srgb, #0f52ba 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #0f52ba33; }
+.intel-board.tone-green { border-color: color-mix(in srgb, #07925f 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #07925f33; }
 
 /* ——— Microcopy trust signals (from deployed original) ——— */
 .ib-microcopy {
@@ -1654,7 +1654,7 @@ svg.jewel { display: block; }
 
 /* ——— Premium jewel elements (reports-grade DOM jewels) ——— */
 .pj-jewel {
-  --jewel: #8a5cff;
+  --jewel: #8e24aa;
   width: 26px; height: 26px; flex: none; border-radius: 8px;
   display: grid; place-items: center; font-size: 11px; font-weight: 900;
   color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.6);
@@ -1707,22 +1707,22 @@ svg.jewel { display: block; }
   min-height: 52px; padding: 12px 20px;
   font-size: 13px; white-space: nowrap; cursor: pointer;
 }
-.action[data-kind] { --glow: var(--action-color, #a06bff); }
+.action[data-kind] { --glow: var(--action-color, #8e24aa); }
 .action:focus-visible { outline: 2px solid var(--glow); outline-offset: 2px; }
 .action.on {
   border-color: var(--glow);
   box-shadow: inset 0 0 0 1.5px var(--glow), inset 0 2px 5px rgba(255,255,255,.28), inset 0 -6px 14px rgba(0,0,0,.65),
     0 0 26px color-mix(in srgb, var(--glow) 55%, transparent), 0 10px 24px rgba(0,0,0,.6);
 }
-.action[data-kind="create-space"] { --action-color: #9d75ff; }
+.action[data-kind="create-space"] { --action-color: #8e24aa; }
 .action[data-kind="favorite"] { --action-color: #d4a017; }
-.action[data-kind="save"] { --action-color: #55b9ee; }
-.action[data-kind="love"] { --action-color: #ff5e6c; }
-.action[data-kind="like"] { --action-color: #55b9ee; }
+.action[data-kind="save"] { --action-color: #0f52ba; }
+.action[data-kind="love"] { --action-color: #c62828; }
+.action[data-kind="like"] { --action-color: #0f52ba; }
 /* Share Intel: light silver, not pink (Shawn 2026-10-20) */
 .action[data-kind="share-intel"] { --action-color: #C7CEDC; }
-.action[data-kind="naya-voice"] { --action-color: #a06bff; }
-.action[data-kind="add-intel"] { --action-color: #a06bff; }
+.action[data-kind="naya-voice"] { --action-color: #8e24aa; }
+.action[data-kind="add-intel"] { --action-color: #8e24aa; }
 .action[data-kind="love"].on { border-color: #ff3f52; background: linear-gradient(145deg,#391019,#09090d); }
 .star-rating {
   display: inline-flex; gap: 4px; align-items: center; padding: 6px;
@@ -1804,7 +1804,7 @@ svg.jewel { display: block; }
 }
 .ib-meta {
   display: flex; gap: 8px; flex-wrap: wrap;
-  color: #817a89; font-size: 11px; font-weight: 800; letter-spacing: .08em;
+  color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .08em;
 }
 .ib-meta span { white-space: nowrap; }
 /* ——— Smart Note timestamp (Shawn 2026-10-21): every note shows WHEN it
@@ -1818,15 +1818,15 @@ svg.jewel { display: block; }
   font-variant-numeric: tabular-nums;
 }
 .ib-stamp .live-dot { width: 7px; height: 7px; flex: 0 0 7px; }
-.ib-stamp-date { color: #2fe89e; text-shadow: 0 0 14px rgba(47,232,158,.40); }
-.ib-stamp-time { color: #ffbf3d; text-shadow: 0 0 14px rgba(255,191,61,.45); }
-.ib-stamp-rel { color: #d9d3e6; text-shadow: 0 0 10px rgba(217,211,230,.28); }
+.ib-stamp-date { color: #07925f; text-shadow: 0 0 14px rgba(7,146,95,.40); }
+.ib-stamp-time { color: #d4a017; text-shadow: 0 0 14px rgba(212,160,23,.45); }
+.ib-stamp-rel { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,.28); }
 @media (prefers-reduced-motion: reduce) {
   .ib-stamp .live-dot { animation: none; }
 }
 .ib-truth {
-  padding: 8px 12px; border: 2px solid #55e39a45; border-radius: 999px;
-  color: #bfffd8; background: #55e39a08;
+  padding: 8px 12px; border: 2px solid #07925f45; border-radius: 999px;
+  color: #ffffff; background: #07925f08;
   font-size: 11px; font-weight: 800; letter-spacing: .08em; white-space: nowrap;
   flex: none;
 }
@@ -1887,7 +1887,7 @@ svg.jewel { display: block; }
 
 .ib-foot {
   margin-top: 18px; padding-top: 14px; border-top: 2px solid #ffffff16;
-  color: #8f8898; font-size: 12.5px; line-height: 1.5; word-break: break-all;
+  color: #fff; font-size: 12.5px; line-height: 1.5; word-break: break-all;
 }
 
 /* ——— Activity stream ——— */
@@ -1906,7 +1906,7 @@ svg.jewel { display: block; }
   position: absolute; top: 50%; left: 50%;
   width: 400px; height: 400px; border-radius: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(157,117,255,.12), rgba(237,66,196,.06) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(142,36,170,.12), rgba(162,28,175,.06) 45%, transparent 70%);
   animation: pulsebreathe 5s ease-in-out infinite;
   pointer-events: none;
 }
@@ -1918,14 +1918,14 @@ svg.jewel { display: block; }
   margin-bottom: 16px; text-shadow: 0 0 14px rgba(255,255,255,.4);
 }
 .activity-live-dot {
-  width: 10px; height: 10px; border-radius: 50%; background: #35e39b;
-  box-shadow: 0 0 14px #35e39b; animation: livedot 1.6s ease-in-out infinite;
+  width: 10px; height: 10px; border-radius: 50%; background: #07925f;
+  box-shadow: 0 0 14px #07925f; animation: livedot 1.6s ease-in-out infinite;
 }
 @keyframes livedot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.75); } }
 .activity-hero-title {
   font-size: clamp(36px, 5vw, 56px); font-weight: 900; letter-spacing: -.02em;
   color: #fff; margin: 0 0 14px; line-height: 1.1;
-  text-shadow: 0 0 40px rgba(157,117,255,.35);
+  text-shadow: 0 0 40px rgba(142,36,170,.35);
 }
 .activity-hero-sub {
   font-size: 16px; line-height: 1.65; color: #d8d3c4;
@@ -1950,9 +1950,9 @@ button, .btn, .tab, .activity-card, .eco-btn, [role="button"] {
 }
 .activity-card:active {
   transform: translateY(-1px) scale(.99);
-  border-color: var(--ac, #9d75ff);
+  border-color: var(--ac, #8e24aa);
   box-shadow: inset 0 1px rgba(255,255,255,.07), 0 12px 30px rgba(0,0,0,.5),
-              0 0 30px -4px var(--ac, #9d75ff);
+              0 0 30px -4px var(--ac, #8e24aa);
 }
 .btn:active, .tab:active, .eco-btn:active {
   transform: scale(.96);
@@ -1973,13 +1973,13 @@ button, .btn, .tab, .eco-btn, .activity-card {
 .activity-search-wrap { margin-bottom: 8px; }
 .activity-search {
   width: 100%; padding: 14px 20px; border-radius: 999px;
-  border: 1.5px solid rgba(160,107,255,.5); background: linear-gradient(180deg, #050508, #0a0a10 55%, #050508);
+  border: 1.5px solid rgba(142,36,170,.5); background: linear-gradient(180deg, #050508, #0a0a10 55%, #050508);
   color: #fff; font-size: 15px; outline: none;
-  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.2), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 20px rgba(160,107,255,.3), 0 12px 26px rgba(0,0,0,.55);
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.2), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 20px rgba(142,36,170,.3), 0 12px 26px rgba(0,0,0,.55);
   transition: border-color .2s, box-shadow .2s;
 }
 .activity-search::placeholder { color: var(--muted); }
-.activity-search:focus { border-color: var(--purple); box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -8px 16px rgba(0,0,0,.55), 0 0 32px rgba(160,107,255,.55), 0 14px 30px rgba(0,0,0,.6); }
+.activity-search:focus { border-color: var(--purple); box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -8px 16px rgba(0,0,0,.55), 0 0 32px rgba(142,36,170,.55), 0 14px 30px rgba(0,0,0,.6); }
 
 /* Time group */
 .activity-time-group { margin-bottom: 8px; }
@@ -2019,29 +2019,29 @@ button, .btn, .tab, .eco-btn, .activity-card {
 }
 .activity-card::before {
   content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
-  background: var(--ac, #9d75ff); box-shadow: 0 0 18px var(--ac, #9d75ff);
+  background: var(--ac, #8e24aa); box-shadow: 0 0 18px var(--ac, #8e24aa);
   animation: actbar 3.2s ease-in-out infinite;
 }
-@keyframes actbar { 0%,100% { opacity: .7; } 50% { opacity: 1; box-shadow: 0 0 28px var(--ac, #9d75ff); } }
+@keyframes actbar { 0%,100% { opacity: .7; } 50% { opacity: 1; box-shadow: 0 0 28px var(--ac, #8e24aa); } }
 .activity-card:hover {
   transform: translateY(-3px);
-  border-color: var(--ac, #9d75ff);
+  border-color: var(--ac, #8e24aa);
   box-shadow: inset 0 1px rgba(255,255,255,.07), 0 24px 55px rgba(0,0,0,.6),
-              0 0 40px -6px var(--ac, #9d75ff);
+              0 0 40px -6px var(--ac, #8e24aa);
 }
 /* Card top: icon + source + time */
 .activity-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
 .activity-card-jewel {
   width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
   background: #050607;
-  border: 1px solid color-mix(in srgb, var(--ac, #9d75ff) 50%, transparent);
-  box-shadow: 0 0 14px color-mix(in srgb, var(--ac, #9d75ff) 30%, transparent);
-  color: var(--ac, #9d75ff); flex-shrink: 0;
+  border: 1px solid color-mix(in srgb, var(--ac, #8e24aa) 50%, transparent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--ac, #8e24aa) 30%, transparent);
+  color: var(--ac, #8e24aa); flex-shrink: 0;
 }
 .activity-card-jewel svg { width: 18px; height: 18px; }
 .activity-card-source {
   font-size: 11px; font-weight: 800; letter-spacing: .16em;
-  color: var(--ac, #9d75ff); text-transform: uppercase;
+  color: var(--ac, #8e24aa); text-transform: uppercase;
 }
 .activity-card-time {
   font-size: 12px; color: var(--muted); margin-left: auto;
@@ -2081,7 +2081,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
 .digest-stats strong {
   font-size: 22px; font-weight: 900; color: #fff;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 12px rgba(157,117,255,.5);
+  text-shadow: 0 0 12px rgba(142,36,170,.5);
 }
 
 /* Project activity (GitHub-synced) */
@@ -2089,9 +2089,9 @@ button, .btn, .tab, .eco-btn, .activity-card {
   margin-top: 28px;
   padding: 24px;
   border-radius: 20px;
-  background: linear-gradient(180deg, rgba(157,117,255,.06), transparent);
-  border: 2px solid rgba(157,117,255,.25);
-  box-shadow: 0 0 20px rgba(157,117,255,.08);
+  background: linear-gradient(180deg, rgba(142,36,170,.06), transparent);
+  border: 2px solid rgba(142,36,170,.25);
+  box-shadow: 0 0 20px rgba(142,36,170,.08);
 }
 .project-activity-note {
   font-size: 12px;
@@ -2265,11 +2265,11 @@ button, .btn, .tab, .eco-btn, .activity-card {
   white-space: nowrap;
 }
 .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-.pill.live   { color: var(--green);  border-color: #55e39a55; background: #55e39a12; }
+.pill.live   { color: var(--green);  border-color: #07925f55; background: #07925f12; }
 .pill.live .dot { box-shadow: 0 0 8px var(--green); animation: pulse 2.4s infinite; }
-.pill.ready  { color: var(--blue);   border-color: #55b9ee55; background: #55b9ee12; }
+.pill.ready  { color: var(--blue);   border-color: #0f52ba55; background: #0f52ba12; }
 .pill.soon   { color: #ffffff;   border-color: #d4a01755; background: #d4a01712; }
-.pill.contract { color: #b9a8e8; border-color: #9d75ff44; background: #9d75ff0d; }
+.pill.contract { color: #b9a8e8; border-color: #8e24aa44; background: #8e24aa0d; }
 .pill.spec   { color: var(--muted); }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
 
@@ -2374,7 +2374,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
     conic-gradient(from 210deg, var(--magenta), var(--purple), var(--indigo), var(--sapphire),
       var(--blue), var(--teal), var(--green), var(--lime), var(--yellow), var(--gold),
       var(--orange), var(--red), var(--magenta));
-  box-shadow: var(--depth-hi), 0 30px 80px #000d, 0 0 90px #d86cff55;
+  box-shadow: var(--depth-hi), 0 30px 80px #000d, 0 0 90px #a21caf55;
   animation: jewel-breathe 5s ease-in-out infinite;
   position: relative;
 }
@@ -2423,7 +2423,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
   background:
     radial-gradient(circle at 32% 26%, #ffffffcc, transparent 44%),
     conic-gradient(from 210deg, var(--magenta), var(--purple), var(--indigo), var(--blue), var(--teal), var(--green), var(--magenta));
-  box-shadow: var(--depth-hi), 0 16px 44px #000b, 0 0 44px #9d75ff55;
+  box-shadow: var(--depth-hi), 0 16px 44px #000b, 0 0 44px #8e24aa55;
   position: relative;
   transition: transform var(--dur-med) var(--ease);
 }
@@ -2440,7 +2440,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
 .alias-preview .avatar {
   width: 34px; height: 34px; border-radius: 50%; flex: none;
   background: conic-gradient(from 210deg, var(--magenta), var(--purple), var(--indigo), var(--blue), var(--teal), var(--green), var(--magenta));
-  box-shadow: inset 0 1px #fff6, 0 0 16px #9d75ff66;
+  box-shadow: inset 0 1px #fff6, 0 0 16px #8e24aa66;
 }
 .privacy-line {
   color: var(--muted); font-size: 12px; letter-spacing: .1em; line-height: 1.8;
@@ -2463,7 +2463,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
 }
 .welcome-orbit{animation:welcome-spectrum 78s linear infinite}
 .welcome-orbit-jewel{
-  --a:0deg;--j:#9d75ff;--s:1;
+  --a:0deg;--j:#8e24aa;--s:1;
   position:absolute;left:50%;top:50%;width:7px;height:11px;margin:-5.5px 0 0 -3.5px;
   clip-path:polygon(50% 0,88% 26%,74% 82%,50% 100%,26% 82%,12% 26%);
   background:radial-gradient(circle at 30% 20%,#fff 0 8%,transparent 28%),
@@ -2632,7 +2632,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
 .list-card{padding:12px;border:1px solid var(--line-soft);border-radius:11px;background:#121019;margin-bottom:9px}
 .list-card{position:relative}
 .saved-remove{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.35);color:#fff;font-size:12px;line-height:1;cursor:pointer;padding:0}
-.saved-remove:hover{background:rgba(255,94,108,.35);border-color:#ff5e6c}
+.saved-remove:hover{background:rgba(198,40,40,.35);border-color:#c62828}
 .list-card b{font-size:12.5px}.why{margin-top:6px;font-size:10.5px;color:var(--muted);line-height:1.45}
 .why::before{content:"WHY · ";font-weight:900;color:var(--room-accent)}
 
@@ -2693,16 +2693,16 @@ button, .btn, .tab, .eco-btn, .activity-card {
 .naya-install-card{
   width:min(430px, 100%); text-align:center; color:#F8F7FB;
   background:linear-gradient(180deg,#17171f 0%, #0a0a10 60%, #060609 100%);
-  border:1.5px solid rgba(160,107,255,.5); border-radius:26px;
+  border:1.5px solid rgba(142,36,170,.5); border-radius:26px;
   padding:34px 26px 24px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -14px 28px rgba(0,0,0,.6),
-              0 28px 60px rgba(0,0,0,.7), 0 0 44px rgba(160,107,255,.28);
+              0 28px 60px rgba(0,0,0,.7), 0 0 44px rgba(142,36,170,.28);
   transform:translateY(14px) scale(.97); transition:transform .26s ease;
 }
 .naya-install-overlay.show .naya-install-card{ transform:none; }
 .naya-install-icon{
   width:96px; height:96px; border-radius:22px;
-  box-shadow: 0 10px 26px rgba(0,0,0,.65), 0 0 30px rgba(160,107,255,.4),
+  box-shadow: 0 10px 26px rgba(0,0,0,.65), 0 0 30px rgba(142,36,170,.4),
               inset 0 1px 0 rgba(255,255,255,.4);
   border:1.5px solid rgba(255,255,255,.25);
 }
@@ -2719,10 +2719,10 @@ button, .btn, .tab, .eco-btn, .activity-card {
   padding:12px 14px; border-radius:14px; margin-bottom:9px;
   background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.10);
 }
-.naya-install-row.mine{ border-color:rgba(160,107,255,.65); background:rgba(160,107,255,.08); }
+.naya-install-row.mine{ border-color:rgba(142,36,170,.65); background:rgba(142,36,170,.08); }
 .naya-install-plat{ font-weight:800; font-size:13.5px; letter-spacing:.02em; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
 .naya-install-you{
-  background:#a06bff; color:#0b0616; font-size:10.5px; font-weight:900;
+  background:#8e24aa; color:#0b0616; font-size:10.5px; font-weight:900;
   letter-spacing:.08em; padding:2px 8px; border-radius:999px; text-transform:uppercase;
 }
 .naya-install-row ol{ margin:0; padding-left:20px; color:#d8dbe8; font-size:14px; line-height:1.6; }
@@ -2731,7 +2731,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
        (Shawn 2026-10-20: the card's heartbeat — replaces the static jewel).
        --oc = orb color, --oc-rgb = its decimal triple. .ib-card-orb sizes it
        for the intelligence-board header. */
-.orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+.orb { --oc: #8e24aa; --oc-rgb: 142,36,170; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
   background:
     radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
     radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
@@ -2781,10 +2781,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
     0 0 72px -6px rgba(var(--oc-rgb),.75),
     0 18px 38px rgba(0,0,0,.65);
 }
-.ib-card-orb::before {
-  inset: -4px; padding: 3px;
-  filter: drop-shadow(0 0 28px var(--oc)) drop-shadow(0 0 12px #fff);
-}
+.ib-card-orb::before{content:'';position:absolute;inset:-6px;border-radius:50%;z-index:2;pointer-events:none;border:1px solid color-mix(in srgb, var(--oc) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--oc) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;-webkit-mask:none;mask:none;padding:0;filter:drop-shadow(0 0 6px var(--oc));animation:naya-orbit-dot-cw 120s linear infinite;}
 .ib-card-orb::after { bottom: -18px; height: 16px;
   background: radial-gradient(ellipse, rgba(var(--oc-rgb),.7), transparent 70%); }
 /* — Playback states (NayaVoice contract, Shawn 2026-10-20): the orb flows
@@ -2809,13 +2806,13 @@ button, .btn, .tab, .eco-btn, .activity-card {
    #0a0910 / #030304 / #14111a so the burst reads as light inside polished stone. */
 .hero{
   border-radius:22px; padding:30px 24px 20px; margin-top:10px;
-  border:1px solid color-mix(in srgb, var(--room-accent, #a06bff) 42%, transparent);
+  border:1px solid color-mix(in srgb, var(--room-accent, #8e24aa) 42%, transparent);
   background:
     linear-gradient(180deg, rgba(255,255,255,.09) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,.38) 100%),
-    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--room-accent, #a06bff) 15%, transparent), transparent 62%),
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--room-accent, #8e24aa) 15%, transparent), transparent 62%),
     repeating-conic-gradient(from 4deg at 50% -6%, #0a0910 0 13deg, #030304 13deg 28deg, #14111a 28deg 30deg),
     linear-gradient(180deg,#1b1b22 0%,#08080c 60%,#030304 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.16), inset 0 -22px 38px rgba(0,0,0,.5), 0 0 38px -8px color-mix(in srgb, var(--room-accent, #a06bff) 55%, transparent), 0 22px 48px rgba(0,0,0,.55);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.16), inset 0 -22px 38px rgba(0,0,0,.5), 0 0 38px -8px color-mix(in srgb, var(--room-accent, #8e24aa) 55%, transparent), 0 22px 48px rgba(0,0,0,.55);
 }
 .hero::before{
   content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
@@ -2901,39 +2898,39 @@ const Runtime = (() => {
   const DOORS = [
     { id: 'ai', name: 'AI Connect', for: 'Reasoning over retained intelligence',
       desc: 'Model inference over what Naya retains — the registry marks this door live and bounded.',
-      accent: '#9d75ff', icon: 'spark', status: 'live', priority: 0,
+      accent: '#8e24aa', icon: 'spark', status: 'live', priority: 0,
       registry: 'LIVE_BOUNDED_EXISTING_CAPABILITY' },
     { id: 'data', name: 'Supabase / Data Connect', for: 'The governed data substrate',
       desc: 'Reads and writes against the data layer pass through governance. Live and bounded, per the registry.',
-      accent: '#55e39a', icon: 'db', status: 'live', priority: 1,
+      accent: '#07925f', icon: 'db', status: 'live', priority: 1,
       registry: 'LIVE_BOUNDED' },
     { id: 'github', name: 'GitHub Connect', for: 'Coding & repository agents',
       desc: 'The governed channel for repository work — code, issues, pull requests. Writes are consequential: LAW decides, VERIFY checks.',
-      accent: '#55b9ee', icon: 'github', status: 'contract', priority: 2,
+      accent: '#0f52ba', icon: 'github', status: 'contract', priority: 2,
       registry: 'REGISTERED_CONTRACT_ONLY' },
     { id: 'mcp', name: 'MCP Connect', for: 'AI agents → provider tools',
       desc: 'Any MCP-capable agent reaches provider tools through one governed door. Invocation is consequential and receipted.',
-      accent: '#d86cff', icon: 'mcp', status: 'contract', priority: 3,
+      accent: '#a21caf', icon: 'mcp', status: 'contract', priority: 3,
       registry: 'REGISTERED_CONTRACT_ONLY' },
     { id: 'naya', name: 'Naya-to-Naya Connect', for: 'Seat ↔ seat collaboration',
       desc: 'Nayas reach each other through governed doors — shared context, receipts on every crossing.',
-      accent: '#b8ee57', icon: 'a2a', status: 'contract', priority: 4,
+      accent: '#07925f', icon: 'a2a', status: 'contract', priority: 4,
       registry: 'REGISTERED_CONTRACT_ONLY' },
     { id: 'email', name: 'Email Connect', for: 'Human & network communication',
       desc: 'Reach NayaPOWER through email adapters. The intelligence meets people where they already are.',
-      accent: '#ff9a5a', icon: 'mail', status: 'contract', priority: 5,
+      accent: '#c2410c', icon: 'mail', status: 'contract', priority: 5,
       registry: 'REGISTERED_CONTRACT_ONLY' },
     { id: 'calendar', name: 'Calendar Connect', for: 'Schedules & time',
       desc: 'Calendars connect as a governed door — time becomes something the intelligence can reason about.',
-      accent: '#f1d75a', icon: 'cal', status: 'contract', priority: 6,
+      accent: '#d4a017', icon: 'cal', status: 'contract', priority: 6,
       registry: 'REGISTERED_CONTRACT_ONLY' },
     { id: 'voice', name: 'Voice Connect', for: 'Spoken interaction',
       desc: 'Voice in and voice out, through the same governed intelligence.',
-      accent: '#ff5e6c', icon: 'mic', status: 'contract', priority: 7,
+      accent: '#c62828', icon: 'mic', status: 'contract', priority: 7,
       registry: 'REGISTERED_CONTRACT_ONLY' },
     { id: 'web', name: 'Web Connect', for: 'The open web, governed',
       desc: 'Web sources and actions through one door — retrieval with provenance, never silent browsing.',
-      accent: '#6675ff', icon: 'connect', status: 'contract', priority: 8,
+      accent: '#3f51b5', icon: 'connect', status: 'contract', priority: 8,
       registry: 'REGISTERED_CONTRACT_ONLY' },
   ];
 
@@ -3982,8 +3979,8 @@ window.NayaContent = {
       '.intel-board .ib-nutshell p{font-size:20px !important;color:#fff;background:transparent !important}',
       '.sh-nutshell{font-size:20px !important;line-height:1.55}',
       '.intel-board{opacity:.84;background:#050607 !important;border:2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%) !important;border-radius:26px;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}',
-      '.intel-board.rv-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}',
-      '.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important}',
+      '.intel-board.rv-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8e24aa)}',
+      '.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8e24aa) !important}',
       '.intel-board.rv-lit .ib-layer{box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, var(--lc) 10%, transparent),0 0 34px -8px var(--lc)}',
       '.intel-board.rv-lit .ib-nutshell{box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent),0 0 34px -8px #ffffff !important}',
       '@media (max-width:640px){.intel-board{border-radius:20px !important}}'
@@ -4210,42 +4207,42 @@ function layerIconKind(name) {
 /* v1.1 Job #3: SmartNote board sections — FIXED color mapping.
    This is law, not a suggestion. Each section type has ONE permanent color. */
 const LAYER_COLORS = {
-  white: '#ffffff', magenta: '#ed42c4', purple: '#8a5cff', indigo: '#6675ff',
-  cyan: '#3ca8ff', forest: '#2e9e6a', lime: '#b8ee57', yellow: '#ffea00',
-  gold: '#d4a017', orange: '#ff8c42', red: '#ff5e6c',
+  white: '#ffffff', magenta: '#a21caf', purple: '#8e24aa', indigo: '#3f51b5',
+  cyan: '#0f52ba', forest: '#07925f', lime: '#07925f', yellow: '#d4a017',
+  gold: '#d4a017', orange: '#c2410c', red: '#c62828',
   /* Legacy aliases */
-  sapphire: '#3ca8ff', emerald: '#2e9e6a', teal: '#3ca8ff',
-  richorange: '#ff8c42',
+  sapphire: '#0f52ba', emerald: '#07925f', teal: '#0f52ba',
+  richorange: '#c2410c',
 };
 /* v1.1 fixed section → color mapping — COMPLETE for all 16 layer types.
    Each type has ONE permanent color. No fallback dumping ground. */
 function layerColorFor(name) {
   const n = String(name || '').toUpperCase();
   if (n.includes('NUTSHELL')) return '#ffffff';
-  if (n.includes('HUMAN NOTE')) return '#ed42c4';
-  if (n.includes('CHILD')) return '#8a5cff';
-  if (n.includes('GRANDMA')) return '#6675ff';
-  if (n.includes('NAYA NOTE')) return '#3ca8ff';
-  if (n.includes('MACHINE')) return '#2e9e6a';
-  if (n.includes('WHAT IT MEANS')) return '#b8ee57';
-  if (n.includes('HOW TO USE')) return '#ffea00';
+  if (n.includes('HUMAN NOTE')) return '#a21caf';
+  if (n.includes('CHILD')) return '#8e24aa';
+  if (n.includes('GRANDMA')) return '#3f51b5';
+  if (n.includes('NAYA NOTE')) return '#0f52ba';
+  if (n.includes('MACHINE')) return '#07925f';
+  if (n.includes('WHAT IT MEANS')) return '#07925f';
+  if (n.includes('HOW TO USE')) return '#d4a017';
   if (n.includes('HOW TO APPLY')) return '#d4a017';
-  if (n.includes("WHAT'S IN IT")) return '#ffbf3d'; // v5.1 GOLD: the orb-walk gold (was #ff8c42 orange)
-  if (n.includes('WHY IT MATTERS')) return '#ff5e6c'; // v5.1 RED: why it matters (no such content in any data yet — wiring only)
-  if (n.includes('KEY DECISIONS')) return '#ff5e6c';
+  if (n.includes("WHAT'S IN IT")) return '#d4a017'; // v5.1 GOLD: the orb-walk gold (was #c2410c orange)
+  if (n.includes('WHY IT MATTERS')) return '#c62828'; // v5.1 RED: why it matters (no such content in any data yet — wiring only)
+  if (n.includes('KEY DECISIONS')) return '#c62828';
   if (n.includes('LEARNING LESSON')) return '#e8c766';
   if (n.includes('HOW IT CONNECTS')) return '#22d3ee';
-  if (n.includes('PROOF PROVENANCE')) return '#35e39b';
+  if (n.includes('PROOF PROVENANCE')) return '#07925f';
   if (n.includes('TRUTH BOUNDARY')) return '#a371f7';
-  if (n.includes('NEXT ACTION')) return '#ff8c42';
-  if (n.includes('HOW IT WORKS')) return '#ff8c42';
+  if (n.includes('NEXT ACTION')) return '#c2410c';
+  if (n.includes('HOW IT WORKS')) return '#c2410c';
   if (n.includes('WHAT CAN IT DO')) return '#22d3ee';
-  if (n.includes('WHAT IT UNLOCKS')) return '#b8ee57';
+  if (n.includes('WHAT IT UNLOCKS')) return '#07925f';
   if (n.includes('CRITICAL DISTINCTION')) return '#a371f7';
-  if (n.includes('EXAMPLE')) return '#35e39b';
-  if (n.includes('WHAT YOU GET')) return '#3ca8ff';
-  if (n.includes('WHAT IT COSTS')) return '#ff8c42';
-  return '#8a5cff'; /* true unknown — should never happen */
+  if (n.includes('EXAMPLE')) return '#07925f';
+  if (n.includes('WHAT YOU GET')) return '#0f52ba';
+  if (n.includes('WHAT IT COSTS')) return '#c2410c';
+  return '#8e24aa'; /* true unknown — should never happen */
 }
 
 function layerJewel(name, color) {
@@ -4461,7 +4458,7 @@ const ActivityLog = (() => {
   }
   function log(type, text, icon, color, iconPath) {
     const items = read();
-    items.unshift({ type, text, icon: icon || 'spark', color: color || '#9d75ff', iconPath: iconPath || null, ts: Date.now() });
+    items.unshift({ type, text, icon: icon || 'spark', color: color || '#8e24aa', iconPath: iconPath || null, ts: Date.now() });
     write(items);
     try { if (window.NayaNotif) window.NayaNotif.refresh(); } catch (e) {}
   }
@@ -4563,7 +4560,7 @@ window.BoardActions = (() => {
           if (ent) { ent.category = cat; localStorage.setItem('naya.smartlist', JSON.stringify(sl)); }
         } catch (e) {}
         closeCategoryPicker();
-        toast('FILED IN SMART LISTS', 'Saved under "' + cat + '" — find it in the Smart Lists room.', '#55b9ee');
+        toast('FILED IN SMART LISTS', 'Saved under "' + cat + '" — find it in the Smart Lists room.', '#0f52ba');
       });
       catPanel.appendChild(mi);
     });
@@ -4658,8 +4655,8 @@ window.BoardActions = (() => {
           var spName = (note && note.title) || title || 'Smart Space';
           try {
             var TOPIC_SPECTRUM = {
-              'Start Here': '#a06bff', 'Vision': '#3fb8ff', 'Learn': '#2fe89e', 'Create': '#ffbf3d',
-              'Connect': '#ff9a5a', 'Grow': '#ff5e6c', 'General': '#e84fff'
+              'Start Here': '#8e24aa', 'Vision': '#0f52ba', 'Learn': '#07925f', 'Create': '#d4a017',
+              'Connect': '#c2410c', 'Grow': '#c62828', 'General': '#a21caf'
             };
             var spTopic = (note && note.topics && note.topics[0]) || 'General';
             var sp = {
@@ -4667,7 +4664,7 @@ window.BoardActions = (() => {
               name: spName,
               topic: spTopic,
               desc: (note && note.subtitle) || '',
-              color: TOPIC_SPECTRUM[spTopic] || '#e84fff',
+              color: TOPIC_SPECTRUM[spTopic] || '#a21caf',
               privacy: 'public',
               memberIds: [],
               custom: true,
@@ -4695,16 +4692,16 @@ window.BoardActions = (() => {
             }
           } catch (e) {}
           if (typeof ActivityLog !== 'undefined') {
-            ActivityLog.log('space', 'Space created from "' + title + '"', 'spaces', '#9d75ff',
+            ActivityLog.log('space', 'Space created from "' + title + '"', 'spaces', '#8e24aa',
               '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>');
           }
-          toast('SMART SPACE CREATED', '"' + spName + '" is live in Smart Spaces — open the Spaces room to step inside.', '#9d75ff');
+          toast('SMART SPACE CREATED', '"' + spName + '" is live in Smart Spaces — open the Spaces room to step inside.', '#8e24aa');
           return;
         }
         const next = !s[key]; s[key] = next; write(s);
         if (typeof ActivityLog !== 'undefined' && next) {
           const actLabel = kind === 'favorite' ? 'Favorited' : 'Saved';
-          const actColor = kind === 'favorite' ? '#ffea00' : '#55b9ee';
+          const actColor = kind === 'favorite' ? '#d4a017' : '#0f52ba';
           const actPath = kind === 'favorite'
             ? '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>'
             : '<path d="M6 3h12v18H6z"/><path d="M6 3l6 6 6-6"/>';
@@ -4732,7 +4729,7 @@ window.BoardActions = (() => {
         b.classList.toggle('on', next); b.setAttribute('aria-pressed', String(next));
         const msg = { favorite: 'Importance remembered on this device.', save: 'Saved on this device.' }[kind];
         toast('INTELLIGENCE STATE CHANGED', kind.toUpperCase() + ' is now ' + (next ? 'ACTIVE' : 'REMOVED') + '. ' + msg,
-          kind === 'favorite' ? '#d4a017' : '#55b9ee');
+          kind === 'favorite' ? '#d4a017' : '#0f52ba');
       });
       wrap.appendChild(b);
     }
@@ -4776,7 +4773,7 @@ window.BoardActions = (() => {
       const b = document.createElement('button');
       b.type = 'button'; b.textContent = label;
       b.style.cssText = 'border:0;border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:700;cursor:pointer;' +
-        (primary ? 'background:#a06bff;color:#fff;' : 'background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);');
+        (primary ? 'background:#8e24aa;color:#fff;' : 'background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);');
       return b;
     };
     const close = () => { overlay.remove(); document.removeEventListener('keydown', onKey, true); };
@@ -4792,15 +4789,15 @@ window.BoardActions = (() => {
       if (!ok) {
         try { field.select(); ok = document.execCommand('copy'); } catch (e) { ok = false; }
       }
-      if (ok) { toast('LINK COPIED', 'The intelligence link is on your clipboard.', '#2fe89e'); close(); }
-      else { toast('COPY BLOCKED', 'Select the link above and copy it by hand — it is right there.', '#ffbf3d'); try { field.select(); field.focus(); } catch (e) {} }
+      if (ok) { toast('LINK COPIED', 'The intelligence link is on your clipboard.', '#07925f'); close(); }
+      else { toast('COPY BLOCKED', 'Select the link above and copy it by hand — it is right there.', '#d4a017'); try { field.select(); field.focus(); } catch (e) {} }
     });
     row.appendChild(copyBtn);
     if (navigator.share) {
       const sysBtn = mkBtn('Share…', false);
       sysBtn.addEventListener('click', async () => {
         try { await navigator.share({ title: title || 'NayaNET Intelligence', text: (title || 'NayaNET Intelligence') + ' — NayaNET Intelligent Hub', url: shareUrl }); close(); }
-        catch (err) { if (!err || err.name !== 'AbortError') toast('SHARE NOT COMPLETED', 'The sharing pathway could not complete. The link above still works.', '#ff5e6c'); }
+        catch (err) { if (!err || err.name !== 'AbortError') toast('SHARE NOT COMPLETED', 'The sharing pathway could not complete. The link above still works.', '#c62828'); }
       });
       row.appendChild(sysBtn);
     }
@@ -4859,7 +4856,7 @@ window.BoardActions = (() => {
               ? 'This intelligence resonated deeply. It is now part of your signal.'
               : 'This intelligence earned your approval. The system is listening.',
             meta: 'you · just now',
-            color: isLove ? '#ff5e6c' : '#55b9ee',
+            color: isLove ? '#c62828' : '#0f52ba',
             iconPath: ipath, ts: Date.now()
           };
           const items = ActivityLog.read(); items.unshift(entry);
@@ -4873,7 +4870,7 @@ window.BoardActions = (() => {
           board.classList.add('flash');
         }
         toast('INTELLIGENCE STATE CHANGED', kind.toUpperCase() + ' is now ' + (next ? 'ACTIVE' : 'REMOVED') + ' on this device.',
-          kind === 'love' ? '#ff5e6c' : '#55b9ee');
+          kind === 'love' ? '#c62828' : '#0f52ba');
       });
       left.appendChild(b);
     }
@@ -4907,7 +4904,7 @@ window.BoardActions = (() => {
         });
         ratingNum.textContent = i + '/5';
         if (typeof ActivityLog !== 'undefined') {
-          ActivityLog.log('rate', 'Rated "' + title + '" ' + i + ' of 5 stars', 'star', '#ffea00',
+          ActivityLog.log('rate', 'Rated "' + title + '" ' + i + ' of 5 stars', 'star', '#d4a017',
             '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>');
         }
         toast('INTELLIGENCE RATED', i + ' of 5 stars recorded on this device. Rating is feedback, not truth.', '#d4a017');
@@ -4981,7 +4978,7 @@ window.BoardActions = (() => {
         const empty = el('div', 'intel-empty'); empty.textContent = 'Be the first to add intel...';
         listWrap.appendChild(empty); return;
       }
-      const richHues = ['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff','#6675ff','#40d3bb'];
+      const richHues = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf','#3f51b5','#0e7490'];
       const hueFor = (name) => { let h = 0; for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return richHues[h % richHues.length]; };
       list.forEach(c => {
         const item = el('div', 'intel-item');
@@ -5000,7 +4997,7 @@ window.BoardActions = (() => {
     const addBtn = btn('ADD INTEL', 'add-intel', 'Add your contribution');
     addBtn.addEventListener('click', () => {
       const v = input.value.trim();
-      if (!v) { toast('NOTHING TO ADD', 'Write your observation first.', '#f1d75a'); return; }
+      if (!v) { toast('NOTHING TO ADD', 'Write your observation first.', '#d4a017'); return; }
       const s = read();
       const key = boardId + ':contributions';
       const userName = userNameNow;
@@ -5008,7 +5005,7 @@ window.BoardActions = (() => {
       s[key] = list; write(s);
       input.value = '';
       renderList();
-      toast('INTEL ADDED', 'Your contribution was recorded on this device.', '#55e39a');
+      toast('INTEL ADDED', 'Your contribution was recorded on this device.', '#07925f');
     });
     input.addEventListener('keydown', e => { if (e.key === 'Enter') addBtn.click(); });
     row.append(input, addBtn);
@@ -5111,12 +5108,12 @@ function HubView(params) {
      Personal Mail → mail; no other count feed exists on the Hub.
      Scroll lighting lives in the spy IIFE below. */
   var HUB_AREAS = [
-    { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#a06bff', href: 'https://nayanet.app/hub',       countKey: 'activity', glyphCls: 'glyph-xl' },
-    { id: 'dashboard', label: 'Dashboard',     icon: 'gauge', color: '#2fe89e', href: 'https://nayanet.app/dashboard', countKey: null, glyphCls: 'glyph-xl' },
-    { id: 'personal',  label: 'Personal',      icon: 'heart', color: '#3fb8ff', href: 'https://nayanet.app/personal',  countKey: null, subtab: true, glyphCls: 'glyph-xl' },
-    { id: 'business',  label: 'Business',      icon: 'brief', color: '#ffbf3d', href: 'https://nayanet.app/business',  countKey: null, glyphCls: 'glyph-xl' },
-    { id: 'space',     label: 'Your World',    icon: 'spaces', color: '#ff9a5a', href: 'https://nayanet.app/space',     countKey: 'spaces' },
-    { id: 'smartworlds', label: 'Smart Worlds', icon: 'doors', color: '#e84fff', href: 'https://nayanet.app/#/hub/spaces', countKey: null }
+    { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#8e24aa', href: 'https://nayanet.app/hub',       countKey: 'activity', glyphCls: 'glyph-xl' },
+    { id: 'dashboard', label: 'Dashboard',     icon: 'gauge', color: '#07925f', href: 'https://nayanet.app/dashboard', countKey: null, glyphCls: 'glyph-xl' },
+    { id: 'personal',  label: 'Personal',      icon: 'heart', color: '#0f52ba', href: 'https://nayanet.app/personal',  countKey: null, subtab: true, glyphCls: 'glyph-xl' },
+    { id: 'business',  label: 'Business',      icon: 'brief', color: '#d4a017', href: 'https://nayanet.app/business',  countKey: null, glyphCls: 'glyph-xl' },
+    { id: 'space',     label: 'Your World',    icon: 'spaces', color: '#c2410c', href: 'https://nayanet.app/space',     countKey: 'spaces' },
+    { id: 'smartworlds', label: 'Smart Worlds', icon: 'doors', color: '#a21caf', href: 'https://nayanet.app/#/hub/spaces', countKey: null }
   ];
   /* Personal is a SUB-TAB (v4): it expands into Personal Mail · Personal Instant
      Messages · Personal Page · Personal Connections — it never navigates on the first tap. */
@@ -5130,10 +5127,10 @@ function HubView(params) {
     btn.innerHTML = '<span class="ico">' + Icons.icon(a.icon, a.glyphCls || '') + '</span><span class="lbl">Personal</span><span class="chev">\u25be</span>';
     var wrap = document.createElement('div'); wrap.className = 'nav-subwrap'; wrap.hidden = true;
     var subs = [
-      { label: 'Personal Mail', icon: 'mail', color: '#3fb8ff', href: 'https://nayanet.app/rooms/mail', countKey: 'mail' },
-      { label: 'Personal Instant Messages', icon: 'users', color: '#2fe89e', href: 'https://nayanet.app/rooms/mail' },
-      { label: 'Personal Page', icon: 'home', color: '#3fb8ff', href: 'https://nayanet.app/personal' },
-      { label: 'Personal Connections', icon: 'nodes', color: '#3fb8ff', href: 'https://nayanet.app/rooms/connections' }
+      { label: 'Personal Mail', icon: 'mail', color: '#0f52ba', href: 'https://nayanet.app/rooms/mail', countKey: 'mail' },
+      { label: 'Personal Instant Messages', icon: 'users', color: '#07925f', href: 'https://nayanet.app/rooms/mail' },
+      { label: 'Personal Page', icon: 'home', color: '#0f52ba', href: 'https://nayanet.app/personal' },
+      { label: 'Personal Connections', icon: 'nodes', color: '#0f52ba', href: 'https://nayanet.app/rooms/connections' }
     ];
     subs.forEach(function (s) {
       var r = document.createElement('a'); r.className = 'nav-sub'; r.href = s.href;
@@ -5385,13 +5382,13 @@ function HubView(params) {
   askBtn.setAttribute('type', 'button');
   askBtn.setAttribute('aria-label', 'Ask Naya');
   askBtn.setAttribute('title', 'Ask Naya — ask her anything');
-  askBtn.style.setProperty('--glow', '#a06bff'); /* 23:18Z: Ask = purple, Life = green */
+  askBtn.style.setProperty('--glow', '#8e24aa'); /* 23:18Z: Ask = purple, Life = green */
   askBtn.addEventListener('click', () => { if (window.NayaRouter) window.NayaRouter.navigate('/hub/ask'); else location.hash = '#/hub/ask'; });
   const lwnBtn = el('button', 'hub-obsidian-btn', '<span class="hb-ico">' + Icons.icon('heart') + '</span>Life with Naya');
   lwnBtn.setAttribute('type', 'button');
   lwnBtn.setAttribute('aria-label', 'Watch the Life with Naya presentation');
   lwnBtn.setAttribute('title', 'Life with Naya — the full presentation');
-  lwnBtn.style.setProperty('--glow', '#35e39b');
+  lwnBtn.style.setProperty('--glow', '#07925f');
   lwnBtn.addEventListener('click', () => { location.href = 'https://lifewithnaya.nayapower.workers.dev/'; });
   // The marketing "ecosystem destinations" menu is gone — this is the logged-in
   // app, not the marketing site.
@@ -5447,8 +5444,8 @@ function HubView(params) {
      Per-tab spectrum color, 💜/⭐ priority markers, ⋯ menu per pill
      (Edit / Heart / Star / Remove), ＋Add with editor dialog,
      heart-first sort, localStorage persistence, keyboard nav. */
-  const SPECTRUM = ['#9d75ff','#6675ff','#55b9ee','#4fd6c4','#55e39a','#b8ee57',
-    '#f1d75a','#d4a017','#ff9a5a','#ff7a3c','#ff5e6c','#d86cff'];
+  const SPECTRUM = ['#8e24aa','#3f51b5','#0f52ba','#4fd6c4','#07925f','#07925f',
+    '#d4a017','#d4a017','#c2410c','#ff7a3c','#c62828','#a21caf'];
   function tabColor(key) {
     let h = 0; const s = String(key || '');
     for (let i = 0; i < s.length; i++) h = ((h * 31) + s.charCodeAt(i)) | 0;
@@ -5576,7 +5573,7 @@ function HubView(params) {
       closeTabPanels();
       const t = tabMenuTab; if (!t) return;
       if (t.kind === 'system' && (act === 'remove')) {
-        toast('SYSTEM TAB', 'System tabs stay — they mirror your real topics.', '#9d75ff');
+        toast('SYSTEM TAB', 'System tabs stay — they mirror your real topics.', '#8e24aa');
         return;
       }
       const h = readHumanTabs();
@@ -5773,7 +5770,7 @@ function HubView(params) {
      live in aria-label + title. */
 window.NayaNotif = window.NayaNotif || {
     get(k) { try { return parseInt(localStorage.getItem('nayanet.notif.' + k) || '0', 10) || 0; } catch (e) { return 0; } },
-    set(k, n) { var prev = this.get(k); try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} if ((k === 'mail' || k === 'activity' || k === 'spaces') && n > prev) { this.playSound(); if (k === 'mail' && n > 0) { if (window.NayaUI && window.NayaUI.toast) { window.NayaUI.toast('New mail — ' + n + ' waiting.', '#3fb8ff'); } else if (window.toast) { window.toast('New mail — ' + n + ' waiting.'); } } }  this.refresh(); },
+    set(k, n) { var prev = this.get(k); try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} if ((k === 'mail' || k === 'activity' || k === 'spaces') && n > prev) { this.playSound(); if (k === 'mail' && n > 0) { if (window.NayaUI && window.NayaUI.toast) { window.NayaUI.toast('New mail — ' + n + ' waiting.', '#0f52ba'); } else if (window.toast) { window.toast('New mail — ' + n + ' waiting.'); } } }  this.refresh(); },
     bump(k) { this.set(k, this.get(k) + 1); this.refresh(); },
     soundOn() { try { return localStorage.getItem('nayanet.notif.sound') === '1'; } catch (e) { return false; } },
     playSound() {
@@ -5839,9 +5836,11 @@ window.NayaNotif = window.NayaNotif || {
         plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
       };
       /* SIXTH seg: plusR (CONNECT) reuses the plus SVG — the two + buttons are
-     distinguished by position and menu, never by color (Shawn: the two +
-     are different jobs and must never get mixed up). */
-  var SEGS = [['plus', 'ADD', '#a06bff'], ['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'WORLDS', '#ffbf3d'], ['eco', 'ECOSYSTEM', '#a06bff'], ['plusR', 'CONNECT', '#a06bff']];
+     distinguished by position and menu (different jobs, never mixed up).
+     FIX-4 (Deep Palette, DNA §1): rims run the spectrum, one color each —
+     left + royal purple, mail sapphire, activity emerald, home deep gold,
+     grid burnt orange, right + ruby. Never the same twice in a row. */
+  var SEGS = [['plus', 'ADD', '#8e24aa'], ['mail', 'MAIL', '#0f52ba'], ['activity', 'ACTIVITY', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plusR', 'CONNECT', '#c62828']];
       bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
       bar.setAttribute('aria-label', 'Notifications');
       var row = document.createElement('div'); row.className = 'notif-row';
@@ -6038,7 +6037,7 @@ window.NayaNotif = window.NayaNotif || {
         localStorage.setItem('nayanet.installed', '1');
         localStorage.setItem('nayanet_install_done', '1');
       } catch (e) {}
-      T('NayaNET is on your home screen. One tap, you&rsquo;re home.', '#2fe89e');
+      T('NayaNET is on your home screen. One tap, you&rsquo;re home.', '#07925f');
       var o = document.getElementById('naya-install-overlay'); if (o) o.style.display = 'none';
     });
     return {
@@ -6116,22 +6115,26 @@ window.NayaNotif = window.NayaNotif || {
   railRX.setAttribute('aria-label', 'Close right sidebar');
   /* ITEM B (drawer X-path): below 1440px the right drawer opens TOGETHER with
      the left drawer, so its X must close BOTH (plus the backdrop); at desktop
-     the drawers are docked sidebars and the X only undocks the right one. */
+     the drawers are docked sidebars and the X only undocks the right one.
+     FIX-4 (2026-11-17, verified at 1920px): at desktop there is no left
+     drawer to close — the drawer-open rules live only below 1440px, the left
+     rail is a docked grid column — and closeRightRail() restores both
+     sidebars docked, the both-closed end state. Handler unchanged. */
   railRX.addEventListener('click', () => { if (window.innerWidth < 1440) { closeDrawer(); closeRightRail(); } else { closeRightRail(); } });
   railRHead.appendChild(railRX);
   const navR = el('nav', 'nav');
   navR.setAttribute('aria-label', 'Your worlds and NayaNET');
   const RIGHT_ITEMS = [
-    { id: 'myworlds', label: 'My Worlds', icon: 'spaces', color: '#ff9a5a', href: 'https://nayanet.app/#/hub/spaces' },
-    { id: 'favworlds', label: 'Favorite Worlds', icon: 'star', color: '#e84fff', href: 'https://nayanet.app/#/hub/spaces' },
-    { id: 'leaderboards', label: 'Leaderboards', icon: 'trophy', color: '#ffbf3d', href: 'https://nayanet.app/dashboard' },
-    { id: 'academy', label: 'Naya Academy', icon: 'cap', color: '#ff8c42', href: 'https://nayanet.groovepages.com/academy' },
-    { id: 'masterclass', label: 'AI Masterclass', icon: 'star', color: '#8a5cff', href: 'https://aimasterclass.help/' },
-    { id: 'fac', label: 'Fast Action Club', icon: 'bolt', color: '#31cb8d', href: 'https://nayanet.app/personal#memberships' },
-    { id: 'maxis', label: 'Maxis "AI Score"', icon: 'gauge', color: '#ed42c4', href: 'https://app.nayanet.technology/' },
-    { id: 'about', label: 'About Us', icon: 'users', color: '#3ca8ff', href: 'https://nayanet.groovepages.com/aboutus' },
-    { id: 'whitepaper', label: 'White Paper', icon: 'doc', color: '#ffea00', href: 'https://nayanet.groovepages.com/whitepaper' },
-    { id: 'pricing', label: 'Pricing', icon: 'tag', color: '#e8b64c', href: 'https://naya-model-pricing.nayapower.workers.dev/' }
+    { id: 'myworlds', label: 'My Worlds', icon: 'spaces', color: '#c2410c', href: 'https://nayanet.app/#/hub/spaces' },
+    { id: 'favworlds', label: 'Favorite Worlds', icon: 'star', color: '#a21caf', href: 'https://nayanet.app/#/hub/spaces' },
+    { id: 'leaderboards', label: 'Leaderboards', icon: 'trophy', color: '#d4a017', href: 'https://nayanet.app/dashboard' },
+    { id: 'academy', label: 'Naya Academy', icon: 'cap', color: '#c2410c', href: 'https://nayanet.groovepages.com/academy' },
+    { id: 'masterclass', label: 'AI Masterclass', icon: 'star', color: '#8e24aa', href: 'https://aimasterclass.help/' },
+    { id: 'fac', label: 'Fast Action Club', icon: 'bolt', color: '#07925f', href: 'https://nayanet.app/personal#memberships' },
+    { id: 'maxis', label: 'Maxis "AI Score"', icon: 'gauge', color: '#a21caf', href: 'https://app.nayanet.technology/' },
+    { id: 'about', label: 'About Us', icon: 'users', color: '#0f52ba', href: 'https://nayanet.groovepages.com/aboutus' },
+    { id: 'whitepaper', label: 'White Paper', icon: 'doc', color: '#d4a017', href: 'https://nayanet.groovepages.com/whitepaper' },
+    { id: 'pricing', label: 'Pricing', icon: 'tag', color: '#d4a017', href: 'https://naya-model-pricing.nayapower.workers.dev/' }
   ];
   var aliasR = '';
   try { aliasR = (localStorage.getItem('nayanet_smart_alias') || '').trim(); } catch (e) {}
@@ -6261,7 +6264,7 @@ window.NayaNotif = window.NayaNotif || {
 
 
 window.NayaJewels = (() => {
-  const JEWELS = ['#ffea00', '#35e39b', '#3ca8ff', '#8a5cff', '#ed42c4'];
+  const JEWELS = ['#d4a017', '#07925f', '#0f52ba', '#8e24aa', '#a21caf'];
   const GLYPHS = ['\u25C6', '\u2726', '\u25B3', '\u2727', '\u25C6'];
 
   function jewel(color, glyph, large) {
@@ -6288,7 +6291,7 @@ window.NayaJewels = (() => {
   function enhanceMainIcon(el, color) {
     if (!el || el.dataset.jewelEnhanced) return;
     el.dataset.jewelEnhanced = '1';
-    const j = jewel(color || '#8a5cff', '\u25C6', true);
+    const j = jewel(color || '#8e24aa', '\u25C6', true);
     el.innerHTML = '';
     el.appendChild(j);
   }
@@ -6448,9 +6451,9 @@ window.NayaJewels = (() => {
     const lens = el('nav', 'lens-tabs');
     lens.setAttribute('aria-label', 'Feed lens');
     const tabs = [
-      ['collective', 'COLLECTIVE', 'The shared intelligence stream', '/hub/feed', '#ffbf3d'],
-      ['personal', 'PERSONAL', 'What is yours — your directives, your philosophy', '/hub/feed-personal', '#3fb8ff'],
-      ['activity', 'ACTIVITY', 'What is happening — chronological', '/hub/feed-activity', '#31cb8d'],
+      ['collective', 'COLLECTIVE', 'The shared intelligence stream', '/hub/feed', '#d4a017'],
+      ['personal', 'PERSONAL', 'What is yours — your directives, your philosophy', '/hub/feed-personal', '#0f52ba'],
+      ['activity', 'ACTIVITY', 'What is happening — chronological', '/hub/feed-activity', '#07925f'],
     ];
     tabs.forEach(([key, label, sub, path, color]) => {
       const b = el('button', 'primo theme-purple elev-2 lens-tab lens-' + key + (stream === key ? ' active' : ''));
@@ -6663,7 +6666,7 @@ window.NayaJewels = (() => {
          jewel + CAPS label + time → headline → narrative → monospace meta */
       const buildCard = (a, priority) => {
         const card = el('div', 'activity-card' + (priority === 'high' ? ' activity-card-high' : ''));
-        card.style.setProperty('--ac', a.color || '#9d75ff');
+        card.style.setProperty('--ac', a.color || '#8e24aa');
         const iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">' +
           (a.iconPath || '<circle cx="12" cy="12" r="4"/>') + '</svg>';
         /* Prefer structured fields; fall back to parsing text */
@@ -6735,23 +6738,23 @@ window.NayaJewels = (() => {
     const showcaseEvents = [
       { type: 'space-created', headline: 'Created space "Deep Work Collective"',
         narrative: 'A new smart space is live. The relevance engine is matching members — 3 people notified at 85%+ relevance.',
-        meta: 'you · 3 members matched', ts: Date.now() - 1*3600000, color: '#8a5cff', priority: 'high',
+        meta: 'you · 3 members matched', ts: Date.now() - 1*3600000, color: '#8e24aa', priority: 'high',
         iconPath: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>' },
       { type: 'smart-note', headline: 'Smart Note SN-229 captured',
         narrative: '"Tune to Intent, Not to Words" — locked as collective intelligence. All seats inherit the Intent Rule.',
-        meta: 'system · CANDIDATE → CANONICAL', ts: Date.now() - 2*3600000, color: '#6675ff',
+        meta: 'system · CANDIDATE → CANONICAL', ts: Date.now() - 2*3600000, color: '#3f51b5',
         iconPath: '<path d="M12 3c-4 0-7 3-7 7 0 2 1 3.5 2 5v3h10v-3c1-1.5 2-3 2-5 0-4-3-7-7-7z"/><path d="M9 21h6"/>' },
       { type: 'intel-added', headline: 'Added intel to "AI Strategy"',
         narrative: 'Your contribution is now part of the collective intelligence. 12 people will see this in their feed.',
-        meta: 'you · collective', ts: Date.now() - 3*3600000, color: '#2e9e6a',
+        meta: 'you · collective', ts: Date.now() - 3*3600000, color: '#07925f',
         iconPath: '<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>' },
       { type: 'space-joined', headline: 'Maya joined "Deep Work Collective"',
         narrative: 'A new mind in your space. 92% relevance match — she loves AI strategy and deep work systems.',
-        meta: 'network · 92% relevant', ts: Date.now() - 4*3600000, color: '#b8ee57',
+        meta: 'network · 92% relevant', ts: Date.now() - 4*3600000, color: '#07925f',
         iconPath: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><path d="M18 8v6M15 11h6"/>' },
       { type: 'rating', headline: 'Rated "Smart Ledger Room" 5 of 5 stars',
         narrative: 'A perfect score. This sets the bar — the system compares all future rooms against this standard.',
-        meta: 'you · ★★★★★', ts: Date.now() - 5*3600000, color: '#ffea00',
+        meta: 'you · ★★★★★', ts: Date.now() - 5*3600000, color: '#d4a017',
         iconPath: '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>' },
       { type: 'favorite', headline: 'Favorited "Naya Design Contract v1.1"',
         narrative: 'Pinned to your favorites. Quick access from anywhere — this is your canonical reference.',
@@ -6759,36 +6762,36 @@ window.NayaJewels = (() => {
         iconPath: '<path d="M6 3h12v18l-6-4-6 4z"/>' },
       { type: 'commit-fix', headline: 'fix: Three-greens color collision',
         narrative: 'Commits now use type-based colors instead of uniform emerald. No two adjacent cards share a color.',
-        meta: 'd4e5f6a · main', ts: Date.now() - 7*3600000, color: '#ff8c42',
+        meta: 'd4e5f6a · main', ts: Date.now() - 7*3600000, color: '#c2410c',
         iconPath: '<path d="M14 7a4 4 0 105.6 5.6L22 10l-2-2-2.4 2.4A4 4 0 0014 7z"/><path d="M14 7L4 17l-1 4 4-1z"/>' },
       { type: 'love', headline: 'Loved "The Design Contract Is Law"',
         narrative: 'This intelligence resonated deeply. It is now part of your signal — the system weighs it heavier in relevance matching.',
-        meta: 'you · personal', ts: Date.now() - 8*3600000, color: '#ff5e6c', priority: 'high',
+        meta: 'you · personal', ts: Date.now() - 8*3600000, color: '#c62828', priority: 'high',
         iconPath: '<path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/>' },
       { type: 'share', headline: 'Shared "The Law Is the Code"',
         narrative: 'Sent to your network. Ideas spread through sharing — this is how intelligence compounds.',
-        meta: 'you · shared externally', ts: Date.now() - 9*3600000, color: '#ed42c4',
+        meta: 'you · shared externally', ts: Date.now() - 9*3600000, color: '#a21caf',
         iconPath: '<circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.5 10.5l7-4M8.5 13.5l7 4"/>' },
       /* Flow repeats */
       { type: 'pull-request', headline: 'PR #1346 opened: Design Contract v1.0',
         narrative: 'Naya Design Contract ratified as canonical collective intelligence. All seats adopt immediately.',
-        meta: '#1346 · open · brain-build/naya-design-contract-v1', ts: Date.now() - 10*3600000, color: '#8a5cff', priority: 'high',
+        meta: '#1346 · open · brain-build/naya-design-contract-v1', ts: Date.now() - 10*3600000, color: '#8e24aa', priority: 'high',
         iconPath: '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><circle cx="12" cy="14" r="2"/>' },
       { type: 'relevant-space', headline: 'New space: "AI Safety Research"',
         narrative: '87% relevant to you — based on your loves in AI strategy and 4 related intelligences you rated highly.',
-        meta: 'network · 87% match · why: 4 loves, 2 spaces', ts: Date.now() - 11*3600000, color: '#6675ff',
+        meta: 'network · 87% match · why: 4 loves, 2 spaces', ts: Date.now() - 11*3600000, color: '#3f51b5',
         iconPath: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 8v4l2.5 2.5"/>' },
       { type: 'pr-merged', headline: 'PR #1343 merged: Brain index repair',
         narrative: 'Canonical repair landed on main. The brain index is green — 177 files, all verified.',
-        meta: '#1343 · merged · 02eec14a', ts: Date.now() - 12*3600000, color: '#2e9e6a',
+        meta: '#1343 · merged · 02eec14a', ts: Date.now() - 12*3600000, color: '#07925f',
         iconPath: '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M9 14l2 2 4-4"/>' },
       { type: 'like', headline: 'Liked "Relevance Algorithm v1"',
         narrative: 'This intelligence earned your approval. The matching engine now knows this topic matters to you.',
-        meta: 'you · personal', ts: Date.now() - 13*3600000, color: '#b8ee57',
+        meta: 'you · personal', ts: Date.now() - 13*3600000, color: '#07925f',
         iconPath: '<path d="M7 11v9H4v-9h3zm2 9h9c1 0 1.8-.8 1.9-1.8l1-7c.1-1-.7-1.9-1.8-1.9H14l.5-3.5c.1-.7-.4-1.4-1.1-1.5-.8-.1-1.5.4-1.7 1.1L9 10v10z"/>' },
       { type: 'commit-feat', headline: 'feat: Activity digest grouping',
         narrative: 'Same-type event bursts now collapse into single cards. Three commits become one beautiful summary.',
-        meta: 'a1b2c3d · main', ts: Date.now() - 14*3600000, color: '#ffea00',
+        meta: 'a1b2c3d · main', ts: Date.now() - 14*3600000, color: '#d4a017',
         iconPath: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>' },
       { type: 'save', headline: 'Saved "Activity Feed Research Brief"',
         narrative: 'Stored to your library. Available offline, searchable, yours forever.',
@@ -6796,7 +6799,7 @@ window.NayaJewels = (() => {
         iconPath: '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v3h16v-3"/>' },
       { type: 'contract-amended', headline: 'Design Contract amended to v1.1',
         narrative: 'Color language updated: three jobs, endless flow, active intelligence. Posted to #554, all seats adopt.',
-        meta: 'system · by Shawn Vibert', ts: Date.now() - 16*3600000, color: '#ff8c42', priority: 'high',
+        meta: 'system · by Shawn Vibert', ts: Date.now() - 16*3600000, color: '#c2410c', priority: 'high',
         iconPath: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 019 9h-9z"/><circle cx="12" cy="12" r="3"/>' },
     ];
     /* DEMO FLAG (board function audit, 2026-10-20): the showcase set above
@@ -6914,9 +6917,9 @@ window.NayaJewels = (() => {
        Every board takes the next spectrum color — magenta → purple → blue →
        green → gold → orange → red → round again. Real piece, never still. */
     const ORB_WALK = [
-      ['#e84fff', '232,79,255'], ['#a06bff', '160,107,255'], ['#3fb8ff', '63,184,255'],
-      ['#2fe89e', '47,232,158'], ['#ffbf3d', '255,191,61'], ['#ff9a5a', '255,154,90'],
-      ['#ff5e6c', '255,94,108']
+      ['#a21caf', '162,28,175'], ['#8e24aa', '142,36,170'], ['#0f52ba', '15,82,186'],
+      ['#07925f', '7,146,95'], ['#d4a017', '212,160,23'], ['#c2410c', '194,65,12'],
+      ['#c62828', '198,40,40']
     ];
     const oc = ORB_WALK[(idx || 0) % ORB_WALK.length];
     const jewel = el('span', 'orb orb--sm ib-card-orb');
@@ -7036,8 +7039,8 @@ window.NayaJewels = (() => {
     const layers = el('div', 'ib-layers');
     /* v5.1 GOLD + RED (Shawn 01:52Z/01:54Z): board order is ... What It
        Means, GOLD (What's In It For You, carrying How It Connects),
-       RED (Why It Matters) — spectrum order, gold #ffbf3d then red
-       #ff5e6c. The machine layer is NOT rendered anymore. Data order
+       RED (Why It Matters) — spectrum order, gold #d4a017 then red
+       #c62828. The machine layer is NOT rendered anymore. Data order
        is canonical (why-it-matters before what's-in-it-for-you), so
        gold/red are pulled out and placed after What It Means;
        everything else keeps data order. A section with no content in
@@ -7465,7 +7468,7 @@ window.HubView = HubView;
       if(window.NayaRouter)window.NayaRouter.navigate('/hub/feed');else location.hash='#/hub/feed';
       setTimeout(()=>{
         const card=document.querySelector('[data-intelligence-id="smart-note-'+id.toLowerCase()+'"]');
-        if(card){card.scrollIntoView({behavior:'smooth',block:'center'});card.style.outline='2px solid '+(accent||'#a06bff');setTimeout(()=>{card.style.outline='';},1800);}
+        if(card){card.scrollIntoView({behavior:'smooth',block:'center'});card.style.outline='2px solid '+(accent||'#8e24aa');setTimeout(()=>{card.style.outline='';},1800);}
       },450);
       return;
     }
@@ -7572,7 +7575,7 @@ window.HubView = HubView;
       if(window.NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash='#/hub/feed';
       setTimeout(()=>{
         const card=document.querySelector('[data-intelligence-id="smart-note-'+ref.id.toLowerCase()+'"]');
-        if(card){ card.scrollIntoView({behavior:'smooth',block:'center'}); card.style.outline='2px solid #a06bff'; setTimeout(()=>{card.style.outline='';},1800); }
+        if(card){ card.scrollIntoView({behavior:'smooth',block:'center'}); card.style.outline='2px solid #8e24aa'; setTimeout(()=>{card.style.outline='';},1800); }
       },450);
     }
 
@@ -7944,7 +7947,7 @@ window.HubView = HubView;
                 const target = document.querySelector('[data-intelligence-id="smart-note-' + String(en.id).toLowerCase() + '"]');
                 if (target) {
                   target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  target.style.outline = '2px solid #a06bff';
+                  target.style.outline = '2px solid #8e24aa';
                   setTimeout(() => { target.style.outline = ''; }, 1800);
                 }
               }, 450);
@@ -8146,14 +8149,14 @@ function ConnectRoom() {
       '<div class="sh-hero-kicker">NAYA MEANS NEW — WELCOME TO THE NEW NET</div>' +
       '<h1 class="sh-hero-title">This is the <span class="sh-glow">new internet.</span></h1>' +
       '<div class="sh-benefits">' +
-        '<div class="board-h sh-board" style="--bc:#a06bff"><div class="bh-icon">⬢</div><div class="bh-text"><h3>Apps in minutes, not weeks.</h3><p>Describe what you want. Get a working smart app. The Smart Factory builds it.</p></div></div>' +
-        '<div class="board-h sh-board" style="--bc:#3fb8ff"><div class="bh-icon">◉</div><div class="bh-text"><h3>Your own super-brain.</h3><p>An AI that actually remembers you. Yours for life. Works on any AI — Muse, ChatGPT, whatever you love.</p></div></div>' +
-        '<div class="board-h sh-board" style="--bc:#2fe89e"><div class="bh-icon">⬡</div><div class="bh-text"><h3>An internet that thinks.</h3><p>Automatically connected with people like you. No algorithms farming your attention — just intelligence matching intelligence.</p></div></div>' +
-        '<div class="board-h sh-board" style="--bc:#ffbf3d"><div class="bh-icon">✦</div><div class="bh-text"><h3>You&rsquo;re hired.</h3><p>Everyone&rsquo;s an ambassador by default. Share NayaNET, earn 50% of the revenue. Half price right now. Free to try.</p></div></div>' +
-        '<div class="board-h sh-board" style="--bc:#ff9a5a"><div class="bh-icon">◐</div><div class="bh-text"><h3>Results in 24 hours.</h3><p>Your first daily intelligence report lands tomorrow. Then weekly, monthly, yearly. It compounds — never starts fresh.</p></div></div>' +
-        '<div class="board-h sh-board" style="--bc:#e84fff"><div class="bh-icon">⬒</div><div class="bh-text"><h3>Private by design.</h3><p>Share your wisdom without sharing your identity. You choose what the world sees. Always.</p></div></div>' +
+        '<div class="board-h sh-board" style="--bc:#8e24aa"><div class="bh-icon">⬢</div><div class="bh-text"><h3>Apps in minutes, not weeks.</h3><p>Describe what you want. Get a working smart app. The Smart Factory builds it.</p></div></div>' +
+        '<div class="board-h sh-board" style="--bc:#0f52ba"><div class="bh-icon">◉</div><div class="bh-text"><h3>Your own super-brain.</h3><p>An AI that actually remembers you. Yours for life. Works on any AI — Muse, ChatGPT, whatever you love.</p></div></div>' +
+        '<div class="board-h sh-board" style="--bc:#07925f"><div class="bh-icon">⬡</div><div class="bh-text"><h3>An internet that thinks.</h3><p>Automatically connected with people like you. No algorithms farming your attention — just intelligence matching intelligence.</p></div></div>' +
+        '<div class="board-h sh-board" style="--bc:#d4a017"><div class="bh-icon">✦</div><div class="bh-text"><h3>You&rsquo;re hired.</h3><p>Everyone&rsquo;s an ambassador by default. Share NayaNET, earn 50% of the revenue. Half price right now. Free to try.</p></div></div>' +
+        '<div class="board-h sh-board" style="--bc:#c2410c"><div class="bh-icon">◐</div><div class="bh-text"><h3>Results in 24 hours.</h3><p>Your first daily intelligence report lands tomorrow. Then weekly, monthly, yearly. It compounds — never starts fresh.</p></div></div>' +
+        '<div class="board-h sh-board" style="--bc:#a21caf"><div class="bh-icon">⬒</div><div class="bh-text"><h3>Private by design.</h3><p>Share your wisdom without sharing your identity. You choose what the world sees. Always.</p></div></div>' +
       '</div>' +
-      '<div class="board-h sh-board sh-life-board" style="--bc:#a06bff;margin:48px auto 64px;max-width:640px;" onclick="window.open(\'https://lifewithnaya.nayapower.workers.dev\', \'_blank\')">' +
+      '<div class="board-h sh-board sh-life-board" style="--bc:#8e24aa;margin:48px auto 64px;max-width:640px;" onclick="window.open(\'https://lifewithnaya.nayapower.workers.dev\', \'_blank\')">' +
       '<div class="bh-icon">✦</div>' +
       '<div class="bh-text"><h3>Life with Naya</h3><p>imagine a life with Naya — the full presentation</p></div>' +
       '<button class="bh-btn" type="button" onclick="event.stopPropagation();window.open(\'https://lifewithnaya.nayapower.workers.dev\', \'_blank\')">Open</button>' +
@@ -8161,7 +8164,7 @@ function ConnectRoom() {
     '<div class="sh-bridge">' +
       '<p class="sh-bridge-text">All of that — yours in <strong>five minutes.</strong></p>' +
       '<p class="sh-bridge-sub">No credit card. No tech skills. Just six simple steps.</p>' +
-      '<button class="board-h sh-board" style="--bc:#ffbf3d;display:inline-flex;margin:24px auto;cursor:pointer;max-width:420px;" onclick="document.querySelector(\'.sh-step\').scrollIntoView({behavior:\'smooth\',block:\'center\'})">' +
+      '<button class="board-h sh-board" style="--bc:#d4a017;display:inline-flex;margin:24px auto;cursor:pointer;max-width:420px;" onclick="document.querySelector(\'.sh-step\').scrollIntoView({behavior:\'smooth\',block:\'center\'})">' +
         '<div class="bh-text" style="text-align:center;"><h3 style="margin:0 0 4px;">Try Her Free Today</h3><p style="margin:0;font-size:13px;opacity:.8;">100% zero risk · 100% upside</p></div>' +
       '</button>' +
     '</div>' +
@@ -8217,7 +8220,7 @@ function ConnectRoom() {
 .sh-board:hover { transform: translateY(-3px); border-color: var(--bc); box-shadow: inset 0 1px rgba(255,255,255,.35), inset 0 -4px 12px rgba(0,0,0,.4), 0 0 42px -8px var(--bc), 0 0 64px -14px var(--bc), 0 22px 44px rgba(0,0,0,.55); }
 .sh-board:hover .bh-icon { box-shadow: 0 0 34px var(--bc), 0 8px 18px rgba(0,0,0,.5); }
 .sh-board:hover .bh-text h3 { text-shadow: 0 0 18px var(--bc); }
-.sh-lifeln { display: inline-block; color: #a06bff; font-size: 16px; font-weight: 600; text-decoration: none; margin-bottom: 20px; }
+.sh-lifeln { display: inline-block; color: #8e24aa; font-size: 16px; font-weight: 600; text-decoration: none; margin-bottom: 20px; }
 .sh-lifeln:hover { text-decoration: underline; }
 .board-h .bh-btn{flex:none;padding:14px 28px;background:#050607;border:1.5px solid #F8F7FB;border-radius:999px;color:#F8F7FB;font-weight:800;font-size:14px;letter-spacing:.08em;cursor:pointer;box-shadow:0 0 18px rgba(248,247,251,.35),0 8px 18px rgba(0,0,0,.5);animation:btn-flash 2.2s ease-in-out infinite}
 
@@ -8396,7 +8399,7 @@ function ConnectRoom() {
   /* ——— ask naya board (bottom CTA) ——— */
   const askWrap = el('div', 'sh-ask-wrap');
   askWrap.innerHTML =
-    '<div class="board-h sh-board" style="--bc:#3fb8ff;cursor:pointer;max-width:640px;margin:64px auto 48px;" onclick="location.hash=\'#/hub/ask\'">' +
+    '<div class="board-h sh-board" style="--bc:#0f52ba;cursor:pointer;max-width:640px;margin:64px auto 48px;" onclick="location.hash=\'#/hub/ask\'">' +
       '<div class="bh-icon">?</div>' +
       '<div class="bh-text"><h3>Ask Naya</h3><p>ask anything about NayaNET — she knows</p></div>' +
       '<button class="bh-btn" type="button" onclick="event.stopPropagation();location.hash=\'#/hub/ask\'">Ask</button>' +
@@ -8474,7 +8477,7 @@ function ConnectRoom() {
       '.sh-hero{text-align:center;margin:6px 0 34px}',
       '.sh-hero .sh-kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}',
       '.sh-hero h1{font-size:clamp(30px,6vw,44px);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin:0 0 16px;color:var(--ink)}',
-      '.sh-hero h1 .sh-glow{color:var(--purple);text-shadow:0 0 28px #9d75ff66}',
+      '.sh-hero h1 .sh-glow{color:var(--purple);text-shadow:0 0 28px #8e24aa66}',
       '.sh-hero p{font-size:18px;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.6}',
       '.sh-rail{display:flex;align-items:center;justify-content:center;gap:0;margin:0 auto 44px;max-width:520px}',
       '.sh-dot{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;background:var(--bg-raise);border:1px solid var(--edge);color:var(--muted);transition:all .28s cubic-bezier(.16,.84,.22,1);flex-shrink:0}',
@@ -8499,14 +8502,14 @@ function ConnectRoom() {
       '.sh-arr{font-size:17px;line-height:1}',
       '.sh-alt{margin-top:14px;font-size:13px;color:var(--muted);width:100%}',
       '.sh-alt a{color:var(--c);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--c) 40%,transparent)}',
-      '.sh-textbtn{background:none;border:none;color:var(--c,#9d75ff);font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:8px 4px}',
+      '.sh-textbtn{background:none;border:none;color:var(--c,#8e24aa);font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:8px 4px}',
       '.sh-done-mark{display:none;margin-top:20px;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--emerald)}',
-      '.sh-tick{width:22px;height:22px;border-radius:50%;background:var(--emerald);color:#04240f;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;box-shadow:0 0 14px #55e39a88}',
+      '.sh-tick{width:22px;height:22px;border-radius:50%;background:var(--emerald);color:#04240f;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;box-shadow:0 0 14px #07925f88}',
       '.sh-step.is-done .sh-done-mark{display:flex}',
       '.sh-step.is-done{border-color:color-mix(in srgb,var(--emerald) 40%,var(--edge))}',
       '.sh-conn-line{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--ink);background:#00000055;border:1px solid color-mix(in srgb,var(--emerald) 45%,var(--edge));border-radius:12px;padding:12px 16px;width:100%}',
       '.sh-conn-line .sh-led{width:9px;height:9px;border-radius:50%;background:var(--emerald);box-shadow:0 0 12px var(--emerald);flex-shrink:0}',
-      '.sh-privacy{--c:var(--sapphire);position:relative;background:linear-gradient(180deg,#0d1420,var(--bg-raise));border:1px solid color-mix(in srgb,var(--sapphire) 35%,var(--edge));border-radius:22px;padding:30px;margin:40px 0;box-shadow:inset 0 1px #fff6,0 0 40px #55b9ee14;opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}',
+      '.sh-privacy{--c:var(--sapphire);position:relative;background:linear-gradient(180deg,#0d1420,var(--bg-raise));border:1px solid color-mix(in srgb,var(--sapphire) 35%,var(--edge));border-radius:22px;padding:30px;margin:40px 0;box-shadow:inset 0 1px #fff6,0 0 40px #0f52ba14;opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}',
       '.sh-privacy.lit{opacity:1;transform:none}',
       '.sh-privacy h3{font-size:18px;font-weight:700;margin:0 0 10px;display:flex;align-items:center;gap:10px;color:var(--ink)}',
       '.sh-privacy h3 .sh-jewel{width:10px;height:10px;background:linear-gradient(135deg,#fff,var(--sapphire) 60%,#0a2a3f);box-shadow:0 0 10px var(--sapphire)}',
@@ -8573,7 +8576,7 @@ function SettingsRoom(){
   function pref(k,def){try{const v=localStorage.getItem(k);return v===null?def:v;}catch(e){return def;}}
   function setPref(k,v){try{localStorage.setItem(k,v);}catch(e){}}
   const T=window.NayaUI.toast;
-  const INPUT_STYLE='background:linear-gradient(180deg,#050508,#0a0a10 55%,#050508);border:1.5px solid rgba(160,107,255,.55);border-radius:14px;padding:14px 16px;color:#fff;font-size:16px;width:100%;box-sizing:border-box;font-family:inherit;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -8px 16px rgba(0,0,0,.65),0 0 22px rgba(160,107,255,.32),0 14px 30px rgba(0,0,0,.6);outline:none';
+  const INPUT_STYLE='background:linear-gradient(180deg,#050508,#0a0a10 55%,#050508);border:1.5px solid rgba(142,36,170,.55);border-radius:14px;padding:14px 16px;color:#fff;font-size:16px;width:100%;box-sizing:border-box;font-family:inherit;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -8px 16px rgba(0,0,0,.65),0 0 22px rgba(142,36,170,.32),0 14px 30px rgba(0,0,0,.6);outline:none';
   const BTN_ON='background:#fff;color:#000;font-size:14px;font-weight:700;padding:10px 18px;border-radius:999px;border:1.5px solid #fff;cursor:pointer';
   const BTN_OFF='background:none;color:var(--ink-dim);font-size:14px;font-weight:600;padding:10px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);cursor:pointer';
   const ROW_STYLE='display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)';
@@ -8597,7 +8600,7 @@ function SettingsRoom(){
     try{document.documentElement.style.setProperty('--fs-body',s+'px');}catch(e){}
   }
   applyTextSize();
-  const HUES=['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff','#6675ff','#40d3bb'];
+  const HUES=['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf','#3f51b5','#0e7490'];
   function hueFor(name){let h=0;for(const ch of name)h=(h*31+ch.charCodeAt(0))>>>0;return HUES[h%HUES.length];}
   const myName=ls('nayanet_smart_name'), myAlias=ls('nayanet_smart_alias');
 
@@ -8663,7 +8666,7 @@ function SettingsRoom(){
       ident.body.appendChild(wb);
       if(name||alias){
         const out=document.createElement('button');out.textContent='Log out of this device';
-        out.style.cssText='display:block;margin-top:16px;background:none;border:1.5px solid rgba(255,94,108,.55);color:#ff8b95;font-size:14px;font-weight:600;padding:11px 22px;border-radius:999px;cursor:pointer';
+        out.style.cssText='display:block;margin-top:16px;background:none;border:1.5px solid rgba(198,40,40,.55);color:#ff8b95;font-size:14px;font-weight:600;padding:11px 22px;border-radius:999px;cursor:pointer';
         let armed=false;
         out.addEventListener('click',function(){
           if(!armed){armed=true;out.textContent='Tap again to log out — this device forgets your name, your personal app, and your GitHub connection';return;}
@@ -8671,7 +8674,7 @@ function SettingsRoom(){
             ['nayanet_smart_name','nayanet_smart_alias','nayanet_vault_key','nayanet.github.installation','naya.activity','nayanet.notif.mail','nayanet.notif.spaces','nayanet.notif.seen.activity'].forEach(k=>localStorage.removeItem(k));
             if(window.NayaPersonalApp&&window.NayaPersonalApp.KEY)localStorage.removeItem(window.NayaPersonalApp.KEY);
           }catch(e){}
-          T('Logged out. This device no longer knows you.','#ff5e6c');
+          T('Logged out. This device no longer knows you.','#c62828');
           setTimeout(function(){location.href='https://nayanet.nayapower.workers.dev/';},900);
         });
         ident.body.appendChild(out);
@@ -8701,12 +8704,12 @@ function SettingsRoom(){
       const wrap2=document.createElement('div');wrap2.style.cssText='display:flex;flex-direction:column;gap:10px;margin-top:14px;max-width:520px';
       const inp=document.createElement('input');inp.type='text';inp.value=pref('nayanet.pref.language','English');inp.placeholder='Your main language';
       inp.style.cssText=INPUT_STYLE;
-      inp.addEventListener('change',function(){const v=inp.value.trim()||'English';setPref('nayanet.pref.language',v);T('Language saved — '+v+'.','#3fb8ff');});
+      inp.addEventListener('change',function(){const v=inp.value.trim()||'English';setPref('nayanet.pref.language',v);T('Language saved — '+v+'.','#0f52ba');});
       wrap2.appendChild(inp);
       const lab=document.createElement('div');lab.style.cssText='color:var(--ink-dim);font-size:15px;margin-top:6px';lab.textContent='Auto-translate — pages and citizens\u2019 worlds translate into your language:';
       wrap2.appendChild(lab);
       const cur=pref('nayanet.pref.auto_translate','on');
-      wrap2.appendChild(seg([{label:'On',value:'on'},{label:'Off',value:'off'}],cur,function(v){setPref('nayanet.pref.auto_translate',v);T(v==='on'?'Auto-translate is on.':'Auto-translate is off.','#3fb8ff');render();}));
+      wrap2.appendChild(seg([{label:'On',value:'on'},{label:'Off',value:'off'}],cur,function(v){setPref('nayanet.pref.auto_translate',v);T(v==='on'?'Auto-translate is on.':'Auto-translate is off.','#0f52ba');render();}));
       lang.body.appendChild(wrap2);
     }
     render();
@@ -8726,7 +8729,7 @@ function SettingsRoom(){
         '<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;margin-top:18px;max-width:680px">We do NOT view or record conversations — they are deleted by default. Choose how long they live before they are gone:</p>';
       const cur=pref('nayanet.pref.retention','day');
       const row=document.createElement('div');row.style.cssText='margin-top:12px';
-      row.appendChild(seg([{label:'A day',value:'day'},{label:'A week',value:'week'},{label:'A month',value:'month'}],cur,function(v){setPref('nayanet.pref.retention',v);T('Conversations are now deleted after '+(v==='day'?'a day':v==='week'?'a week':'a month')+'.','#ff5e6c');render();}));
+      row.appendChild(seg([{label:'A day',value:'day'},{label:'A week',value:'week'},{label:'A month',value:'month'}],cur,function(v){setPref('nayanet.pref.retention',v);T('Conversations are now deleted after '+(v==='day'?'a day':v==='week'?'a week':'a month')+'.','#c62828');render();}));
       priv.body.appendChild(row);
       const note=document.createElement('p');note.style.cssText=MUTED_STYLE+';margin-top:12px;max-width:680px';
       note.textContent='Deletion is not optional — the choice is only the window. We don\u2019t read, we don\u2019t keep.';
@@ -8839,7 +8842,7 @@ function SettingsRoom(){
     list.forEach(function(d){
       const card=DoorCard(d,function(door){
         const res=R.connectDoor?R.connectDoor(door.id):{ok:false,message:'No connect action available.'};
-        T(res.message,door.accent||'#a06bff');
+        T(res.message,door.accent||'#8e24aa');
       });
       if(d.status==='live'){
         const foot=card.querySelector('.door-foot');
@@ -8847,10 +8850,10 @@ function SettingsRoom(){
           const mg=document.createElement('button');
           mg.type='button';mg.textContent='Manage';
           mg.className='btn btn-ghost';
-          mg.style.setProperty('--btn-accent',d.accent||'#a06bff');
+          mg.style.setProperty('--btn-accent',d.accent||'#8e24aa');
           mg.addEventListener('click',function(){
             const res=R.connectDoor?R.connectDoor(d.id):{ok:false,message:'No connect action available.'};
-            T(res.message,d.accent||'#a06bff');
+            T(res.message,d.accent||'#8e24aa');
           });
           foot.appendChild(mg);
         }
@@ -8872,7 +8875,7 @@ function SettingsRoom(){
   const sl=Board({accent:ACC,icon:'bolt',title:'Smart Links',sub:'Your address on the network — and how you earn from it',lift:false});
   (function(){
     function copyText(txt,msg){
-      function done(){T(msg,'#ffbf3d');}
+      function done(){T(msg,'#d4a017');}
       try{
         if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback();});return;}
         fallback();
@@ -8882,7 +8885,7 @@ function SettingsRoom(){
           const ta=document.createElement('textarea');ta.value=txt;ta.style.cssText='position:fixed;opacity:0';
           document.body.appendChild(ta);ta.select();
           document.execCommand('copy');document.body.removeChild(ta);done();
-        }catch(e2){T('Copy didn\u2019t work — long-press the link to copy it.','#ffbf3d');}
+        }catch(e2){T('Copy didn\u2019t work — long-press the link to copy it.','#d4a017');}
       }
     }
     sl.body.innerHTML='';
@@ -8917,7 +8920,7 @@ function SettingsRoom(){
         '<div style="color:var(--ink-dim);font-size:15px;margin-top:16px">Distillation:</div>';
       const cur=pref('nayanet.pref.distillation','on');
       const row=document.createElement('div');row.style.cssText='margin-top:10px';
-      row.appendChild(seg([{label:'On',value:'on'},{label:'Off',value:'off'}],cur,function(v){setPref('nayanet.pref.distillation',v);T(v==='on'?'Distillation is on — only distilled wisdom is ever shared.':'Distillation is off.','#2fe89e');render();}));
+      row.appendChild(seg([{label:'On',value:'on'},{label:'Off',value:'off'}],cur,function(v){setPref('nayanet.pref.distillation',v);T(v==='on'?'Distillation is on — only distilled wisdom is ever shared.':'Distillation is off.','#07925f');render();}));
       sb.body.appendChild(row);
       const note=document.createElement('p');note.style.cssText=MUTED_STYLE+';margin-top:12px;max-width:680px';
       note.textContent='The Box itself is not yet connected on this device — this page shows what it will do, never fake numbers about what is stored.';
@@ -8928,7 +8931,7 @@ function SettingsRoom(){
   wrap.appendChild(sb);
 
   /* §11 — My Personal App: who owns the sidebar's top spot. Behavior UNCHANGED, demoted to #11. */
-  const mpa=Board({accent:'#a06bff',icon:'star',title:'My Personal App',sub:'The top spot in your sidebar',lift:false});
+  const mpa=Board({accent:'#8e24aa',icon:'star',title:'My Personal App',sub:'The top spot in your sidebar',lift:false});
   (function(){
     const PA=window.NayaPersonalApp, T2=window.NayaUI.toast;
     function render(){
@@ -8936,32 +8939,32 @@ function SettingsRoom(){
       if(!mine){
         mpa.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">Start Here holds the top spot in your sidebar for now. Once you have your personal app, paste its address and the top spot becomes <strong style="color:#fff">yours</strong> \u2014 only on this device.</p>';
         const f=document.createElement('div');f.style.cssText='display:flex;flex-direction:column;gap:10px;margin-top:14px;max-width:520px';
-        const u=document.createElement('input');u.type='url';u.placeholder='Your personal app address';u.style.cssText='background:linear-gradient(180deg,#050508,#0a0a10 55%,#050508);border:1.5px solid rgba(160,107,255,.55);border-radius:14px;padding:14px 16px;color:#fff;font-size:16px;width:100%;box-sizing:border-box;font-family:inherit;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -8px 16px rgba(0,0,0,.65),0 0 22px rgba(160,107,255,.32),0 14px 30px rgba(0,0,0,.6);outline:none';
+        const u=document.createElement('input');u.type='url';u.placeholder='Your personal app address';u.style.cssText='background:linear-gradient(180deg,#050508,#0a0a10 55%,#050508);border:1.5px solid rgba(142,36,170,.55);border-radius:14px;padding:14px 16px;color:#fff;font-size:16px;width:100%;box-sizing:border-box;font-family:inherit;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -8px 16px rgba(0,0,0,.65),0 0 22px rgba(142,36,170,.32),0 14px 30px rgba(0,0,0,.6);outline:none';
         const n=document.createElement('input');n.type='text';n.placeholder='Sidebar name (optional)';n.style.cssText=u.style.cssText;
         const go=document.createElement('button');go.textContent='Make it my top spot';
         go.style.cssText='align-self:flex-start;background:#000;color:#fff;font-size:15px;font-weight:600;padding:14px 28px;border-radius:999px;border:1.5px solid rgba(248,247,251,.9);cursor:pointer;margin-top:4px';
-        go.addEventListener('click',function(){const s=PA.set(u.value,n.value);if(!s){T2('That address doesn\u2019t look complete \u2014 paste the full address of your app.','#a06bff');return;}T2('Done \u2014 the top spot in your sidebar is now yours.','#a06bff');render();});
+        go.addEventListener('click',function(){const s=PA.set(u.value,n.value);if(!s){T2('That address doesn\u2019t look complete \u2014 paste the full address of your app.','#8e24aa');return;}T2('Done \u2014 the top spot in your sidebar is now yours.','#8e24aa');render();});
         f.append(u);f.append(n);f.append(go);mpa.body.appendChild(f);return;
       }
-      mpa.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">The top spot in your sidebar opens <strong style="color:#fff">'+esc(mine.name)+'</strong>. Only on this device \u2014 the public Hub is unchanged.</p><div style="margin-top:8px;font-size:13.5px;color:#a06bff;word-break:break-all">'+esc(mine.url)+'</div>';
+      mpa.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">The top spot in your sidebar opens <strong style="color:#fff">'+esc(mine.name)+'</strong>. Only on this device \u2014 the public Hub is unchanged.</p><div style="margin-top:8px;font-size:13.5px;color:#8e24aa;word-break:break-all">'+esc(mine.url)+'</div>';
       const row=document.createElement('div');row.style.cssText='display:flex;gap:16px;margin-top:14px;flex-wrap:wrap';
-      const ch=document.createElement('button');ch.textContent='Change address';ch.style.cssText='background:none;border:none;color:#a06bff;font-size:14px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px';
+      const ch=document.createElement('button');ch.textContent='Change address';ch.style.cssText='background:none;border:none;color:#8e24aa;font-size:14px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px';
       const back=document.createElement('button');back.textContent='Bring Start Here back';back.style.cssText=ch.style.cssText;
       ch.addEventListener('click',function(){try{localStorage.removeItem(PA.KEY);}catch(e){}mpa.body.innerHTML='';renderEmpty();});
-      back.addEventListener('click',function(){PA.clear();T2('Start Here is back at the top of your sidebar.','#a06bff');render();});
+      back.addEventListener('click',function(){PA.clear();T2('Start Here is back at the top of your sidebar.','#8e24aa');render();});
       row.append(ch);row.append(back);mpa.body.appendChild(row);
     }
     function renderEmpty(){mpa.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7">Paste the new address for your personal app:</p>';
-      const u=document.createElement('input');u.type='url';u.placeholder='Your personal app address';u.style.cssText='background:linear-gradient(180deg,#050508,#0a0a10 55%,#050508);border:1.5px solid rgba(160,107,255,.55);border-radius:14px;padding:14px 16px;color:#fff;font-size:16px;width:100%;box-sizing:border-box;font-family:inherit;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -8px 16px rgba(0,0,0,.65),0 0 22px rgba(160,107,255,.32),0 14px 30px rgba(0,0,0,.6);outline:none;margin-top:10px;max-width:520px';
+      const u=document.createElement('input');u.type='url';u.placeholder='Your personal app address';u.style.cssText='background:linear-gradient(180deg,#050508,#0a0a10 55%,#050508);border:1.5px solid rgba(142,36,170,.55);border-radius:14px;padding:14px 16px;color:#fff;font-size:16px;width:100%;box-sizing:border-box;font-family:inherit;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -8px 16px rgba(0,0,0,.65),0 0 22px rgba(142,36,170,.32),0 14px 30px rgba(0,0,0,.6);outline:none;margin-top:10px;max-width:520px';
       const go=document.createElement('button');go.textContent='Save';go.style.cssText='background:#000;color:#fff;font-size:15px;font-weight:600;padding:14px 28px;border-radius:999px;border:1.5px solid rgba(248,247,251,.9);cursor:pointer;margin-top:10px';
-      go.addEventListener('click',function(){const s=PA.set(u.value,'');if(!s){T2('That address doesn\u2019t look complete \u2014 paste the full address of your app.','#a06bff');return;}T2('Done \u2014 the top spot in your sidebar is now yours.','#a06bff');render();});
+      go.addEventListener('click',function(){const s=PA.set(u.value,'');if(!s){T2('That address doesn\u2019t look complete \u2014 paste the full address of your app.','#8e24aa');return;}T2('Done \u2014 the top spot in your sidebar is now yours.','#8e24aa');render();});
       mpa.body.appendChild(u);mpa.body.appendChild(go);}
     render();
   })();
   wrap.appendChild(mpa);
 
   /* §12 — Install NayaNET as an app: always available here too (Shawn 2026-10-20). Unchanged, demoted to #12. */
-  const inst=Board({accent:'#ffbf3d',icon:'bolt',title:'Install NayaNET as an app',sub:'On your home screen — phone or laptop',lift:false});
+  const inst=Board({accent:'#d4a017',icon:'bolt',title:'Install NayaNET as an app',sub:'On your home screen — phone or laptop',lift:false});
   (function(){
     const T2=window.NayaUI.toast;
     const done=(function(){try{return (window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true||localStorage.getItem('nayanet.installed')==='1';}catch(e){return false;}})();
@@ -9468,7 +9471,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
       this._setState(session.options, 'reading');
       if (!session.toasted) {
         session.toasted = true;
-        if (typeof toast === 'function') toast('NAYA IS READING', 'Naya is reading this — one moment.', '#a06bff');
+        if (typeof toast === 'function') toast('NAYA IS READING', 'Naya is reading this — one moment.', '#8e24aa');
       }
       const played = new Set();
       let lastReadyAt = Date.now();
@@ -9524,7 +9527,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
         this._setState(session.options, 'reading');
         if (!session.toasted) {
           session.toasted = true;
-          if (typeof toast === 'function') toast('NAYA IS READING', 'Naya is reading this — one moment.', '#a06bff');
+          if (typeof toast === 'function') toast('NAYA IS READING', 'Naya is reading this — one moment.', '#8e24aa');
         }
         const requestSynthesis = () => {
           try {
@@ -9558,7 +9561,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
           if (elapsed > 90000 && !slowToastShown) {
             slowToastShown = true;
             if (typeof toast === 'function') {
-              toast('VOICE STILL PREPARING', 'Naya is still preparing her voice for this one — she will start reading the moment it is ready. No need to click again.', '#a06bff');
+              toast('VOICE STILL PREPARING', 'Naya is still preparing her voice for this one — she will start reading the moment it is ready. No need to click again.', '#8e24aa');
             }
           }
           if (Date.now() - lastRequest > 150000) {
@@ -9601,7 +9604,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
     _voiceNotReady(options) {
       this._updateButtonStates(options && options.button, false);
       if (options && options.onEnd) options.onEnd();
-      if (typeof toast === 'function') toast('VOICE NOT READY', "Naya's natural voice for this note is still baking — her voice is being made, never a robot's.", '#a06bff');
+      if (typeof toast === 'function') toast('VOICE NOT READY', "Naya's natural voice for this note is still baking — her voice is being made, never a robot's.", '#8e24aa');
     },
 
     /* Play a registered audio to completion; the promise resolves either
@@ -9839,10 +9842,10 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
       padding: 6px 12px;
       min-height: 44px;
       min-width: 44px;
-      border: 1px solid rgba(157, 117, 255, 0.4);
+      border: 1px solid rgba(142,36,170, 0.4);
       border-radius: 20px;
-      background: rgba(157, 117, 255, 0.1);
-      color: #9d75ff;
+      background: rgba(142,36,170, 0.1);
+      color: #8e24aa;
       font-size: 12px;
       font-weight: 500;
       cursor: pointer;
@@ -9850,13 +9853,13 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
       font-family: inherit;
     }
     .naya-voice-btn:hover {
-      background: rgba(157, 117, 255, 0.2);
-      border-color: rgba(157, 117, 255, 0.7);
-      box-shadow: 0 0 12px rgba(157, 117, 255, 0.3);
+      background: rgba(142,36,170, 0.2);
+      border-color: rgba(142,36,170, 0.7);
+      box-shadow: 0 0 12px rgba(142,36,170, 0.3);
     }
     .naya-voice-btn.playing {
-      background: rgba(157, 117, 255, 0.3);
-      border-color: #9d75ff;
+      background: rgba(142,36,170, 0.3);
+      border-color: #8e24aa;
       color: #fff;
       animation: naya-voice-pulse 1.5s ease-in-out infinite;
     }
@@ -9868,8 +9871,8 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
       letter-spacing: 0.05em;
     }
     @keyframes naya-voice-pulse {
-      0%, 100% { box-shadow: 0 0 8px rgba(157, 117, 255, 0.3); }
-      50% { box-shadow: 0 0 20px rgba(157, 117, 255, 0.6); }
+      0%, 100% { box-shadow: 0 0 8px rgba(142,36,170, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(142,36,170, 0.6); }
     }
   `;
   document.head.appendChild(style);
@@ -9972,12 +9975,9 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 .naya-guide{display:flex;align-items:center;gap:12px;margin:14px 0 6px;padding:10px 14px;border-radius:16px;
   border:1px solid rgba(232,232,236,.14);background:rgba(255,255,255,.03);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.35);}
-.naya-guide-avatar{width:46px;height:46px;flex:0 0 auto;border-radius:50%;object-fit:cover;
-  border:2px solid rgba(232,232,236,.35);
-  box-shadow:0 0 10px rgba(0,0,0,.45);
-  transition:transform .3s,box-shadow .3s,border-color .3s;}
-.naya-guide:hover .naya-guide-avatar{transform:scale(1.05);border-color:var(--room-accent,#a06bff);
-  box-shadow:0 0 16px var(--room-accent,#a06bff);}
+.naya-guide-avatar{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;}
+.naya-guide:hover .naya-guide-face{transform:scale(1.05);border-color:var(--room-accent,#8e24aa);
+  box-shadow:0 0 16px var(--room-accent,#8e24aa);}
 .naya-guide-play{width:42px;height:42px;flex:0 0 auto;border-radius:50%;cursor:pointer;position:relative;/* ORBIT FIX 2026-11-17: overflow:hidden REMOVED — it clipped the circling orb, which lives OUTSIDE the circle (inset:-6px); the conic sheen it once clipped was deleted by the Black Diamond round. */
   border:1px solid rgba(232,232,236,.4);color:#fff;padding:0;
   background:#050607; /* BLACK DIAMOND: flat board black */
@@ -9985,15 +9985,15 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   transition:all .3s cubic-bezier(.22,.61,.36,1);
   box-shadow:0 0 10px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.5);}
 .naya-guide-play span{position:relative;z-index:1;margin-left:.12em;font-size:15px;text-shadow:0 0 6px rgba(255,255,255,.7);}
-.naya-guide-play:hover{transform:scale(1.10);border-color:var(--room-accent,#a06bff);
-  box-shadow:0 0 16px var(--room-accent,#a06bff), inset 0 0 10px rgba(255,255,255,.14);}
-.naya-guide-play.playing,.naya-guide-play.reading{border-color:var(--room-accent,#a06bff);
+.naya-guide-play:hover{transform:scale(1.10);border-color:var(--room-accent,#8e24aa);
+  box-shadow:0 0 16px var(--room-accent,#8e24aa), inset 0 0 10px rgba(255,255,255,.14);}
+.naya-guide-play.playing,.naya-guide-play.reading{border-color:var(--room-accent,#8e24aa);
   animation:nayaGuidePulse 1.6s ease-in-out infinite;}
 .naya-guide-text{min-width:0;}
 .naya-guide-label{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#E8E8EC;font-weight:600;}
 .naya-guide-sub{font-size:14px;color:var(--ink-dim,#b9b9c4);margin-top:2px;line-height:1.45;}
 @keyframes nayaGuideSpin{to{transform:rotate(360deg);}}
-@keyframes nayaGuidePulse{0%,100%{box-shadow:0 0 10px var(--room-accent,#a06bff);}50%{box-shadow:0 0 22px var(--room-accent,#a06bff),0 0 40px var(--room-accent,#a06bff);}}
+@keyframes nayaGuidePulse{0%,100%{box-shadow:0 0 10px var(--room-accent,#8e24aa);}50%{box-shadow:0 0 22px var(--room-accent,#8e24aa),0 0 40px var(--room-accent,#8e24aa);}}
 </style>
 
 <script>
@@ -10038,7 +10038,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
     var d = document.createElement('div');
     d.className = 'naya-guide';
     d.setAttribute('data-guide-room', room);
-    d.innerHTML = '<img class="naya-guide-avatar" src="' + PHOTO + '" alt="Naya">'
+    d.innerHTML = '<span class="naya-guide-face"><img class="naya-guide-avatar" src="' + PHOTO + '" alt="Naya"></span>'
       + '<button type="button" class="naya-guide-play naya-voice-btn" aria-label="Hear Naya introduce this page"><span>&#9654;</span></button>'
       + '<div class="naya-guide-text"><div class="naya-guide-label">Naya &middot; Your Guide</div>'
       + '<div class="naya-guide-sub">Press play &mdash; I&rsquo;ll tell you what this page does.</div></div>';
@@ -10229,14 +10229,14 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
     inset 0 0 0 1px rgba(255,255,255,.3),
     0 2px 5px rgba(0,0,0,.7), 0 14px 32px rgba(0,0,0,.55),
     0 0 26px rgba(255,255,255,.13);}
-.nsb-tab.loved{border-color:color-mix(in srgb, #a06bff 60%, rgba(255,255,255,.25));
-  box-shadow:inset 0 0 0 1.5px rgba(160,107,255,.8), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.45),
+.nsb-tab.loved{border-color:color-mix(in srgb, #8e24aa 60%, rgba(255,255,255,.25));
+  box-shadow:inset 0 0 0 1.5px rgba(142,36,170,.8), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.45),
   0 2px 5px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.55),
-  0 10px 26px -6px rgba(160,107,255,.55);}
-.nsb-tab.starred{border-color:color-mix(in srgb, #ffbf3d 60%, rgba(255,255,255,.25));
-  box-shadow:inset 0 0 0 1.5px rgba(255,191,61,.8), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.45),
+  0 10px 26px -6px rgba(142,36,170,.55);}
+.nsb-tab.starred{border-color:color-mix(in srgb, #d4a017 60%, rgba(255,255,255,.25));
+  box-shadow:inset 0 0 0 1.5px rgba(212,160,23,.8), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.45),
   0 2px 5px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.55),
-  0 10px 26px -6px rgba(255,191,61,.55);}
+  0 10px 26px -6px rgba(212,160,23,.55);}
 /* honesty states on tabs */
 .nsb-tab.is-working{border-style:dashed;}
 .nsb-tab.is-locked{opacity:.85;}
@@ -10363,8 +10363,8 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
   box-shadow:inset 0 2px 8px rgba(0,0,0,.5);}
 /* v1.6 COLOR LANGUAGE: rest = beautiful black; hover ignites EACH in its own color. Never all the same. */
 .nsb-menu .mi-ico{font-style:normal;}
-.nsb-menu .mi-heart .mi-ico{color:var(--purple);text-shadow:0 0 10px rgba(160,107,255,.85);}
-.nsb-menu .mi-star .mi-ico{color:var(--gold);text-shadow:0 0 10px rgba(255,191,61,.85);}
+.nsb-menu .mi-heart .mi-ico{color:var(--purple);text-shadow:0 0 10px rgba(142,36,170,.85);}
+.nsb-menu .mi-star .mi-ico{color:var(--gold);text-shadow:0 0 10px rgba(212,160,23,.85);}
 .nsb-menu .mi-edit:hover{border-color:var(--green);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--green);}
 .nsb-menu .mi-heart:hover{border-color:var(--purple);
@@ -10384,9 +10384,9 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
   transition:border-color .25s ease-out, box-shadow .25s ease-out;}
 .nsb-ed.open{display:block;}
 /* v1.6: nothing static — the panel's outer edge ignites purple on hover (Aliveness law). */
-.nsb-ed:hover{border-color:rgba(160,107,255,.65);
+.nsb-ed:hover{border-color:rgba(142,36,170,.65);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -8px 22px rgba(0,0,0,.35),
-    0 18px 44px rgba(0,0,0,.6), 0 0 26px -4px rgba(160,107,255,.5);}
+    0 18px 44px rgba(0,0,0,.6), 0 0 26px -4px rgba(142,36,170,.5);}
 .nsb-ed p{margin:0 0 4px;font-size:16px;font-weight:700;color:#fff;}
 .nsb-ed label{display:block;font-size:13px;color:#fff;margin:10px 0 4px;opacity:1;}
 .nsb-ed input,.nsb-ed select{width:100%;box-sizing:border-box;color:#fff;
@@ -10516,14 +10516,14 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
   border-radius: 999px;
   border: 1.5px solid color-mix(in srgb, var(--glow) 55%, transparent);
   background: #050607;
-  transform: translate(2px, 3px);
+  transform: translate(1px, 1px);
   box-shadow: 0 10px 22px rgba(0,0,0,.5);
 }
 .hub-obsidian-btn .hb-ico { display: inline-flex; color: var(--glow); }
 .hub-obsidian-btn .hb-ico svg { width: 18px; height: 18px; }
 /* Bottom bar: hover lights up outside in its own color AND lifts. */
 /* BLACK DIAMOND (§4): second clone — the pair sits higher than any single button. */
-.hub-obsidian-btn::after{content:'';position:absolute;inset:0;z-index:-2;border-radius:999px;background:#050607;border:1.5px solid color-mix(in srgb, var(--glow) 35%, transparent);transform:translate(4px,6px);box-shadow:0 14px 30px rgba(0,0,0,.55);}
+.hub-obsidian-btn::after{content:'';position:absolute;inset:0;z-index:-2;border-radius:999px;background:#050607;border:1.5px solid color-mix(in srgb, var(--glow) 35%, transparent);transform:translate(2px,2px);box-shadow:0 14px 30px rgba(0,0,0,.55);}
 /* 23:18Z (3): rest = white icon on board black; lit = the pair's own color. */
 .hub-obsidian-btn .hb-ico{color:#fff;}
 .hub-obsidian-btn:hover .hb-ico,.hub-obsidian-btn:focus-visible .hb-ico{color:var(--glow);}
@@ -10540,7 +10540,7 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
     0 10px 22px rgba(0,0,0,.6);
   /* BLACK DIAMOND: inset white out. */
 }
-.notif-seg:hover .notif-tile svg { filter: drop-shadow(0 0 6px var(--nc)); }
+.notif-seg:hover .notif-tile svg { filter: drop-shadow(0 3px 3px rgba(0,0,0,.95)) drop-shadow(0 0 8px var(--nc)) drop-shadow(0 0 3px rgba(255,255,255,.9)); transform: scale(1.06); }
 /* Sidebar sub-rows: hover lifts the icon chip too. */
 .nav-sub:hover .ico {
   border-color: var(--nav, var(--purple));
@@ -10563,13 +10563,13 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
    TOP-LEFT + (the button: thin bright purple edge, clone, board
    black); bh-btn = the X (inside) + SMART NOTE BOARD (black) +
    TOP-LEFT + (pill button); tab-jewel = the X + SMART NOTE BOARD. */
-.rooms-plus:hover{transform:translateY(-2px) scale(1.1);border-color:rgba(157,117,255,.8);box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent),0 12px 28px rgba(0,0,0,.6);}
+.rooms-plus:hover{transform:translateY(-2px) scale(1.1);border-color:rgba(142,36,170,.8);box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent),0 12px 28px rgba(0,0,0,.6);}
 /* FIX-3 (coordinator decision 2026-11-17): spin DROPPED - rotation is decorative, legibility is law; the svg counter-rotation is removed (dead: the svg never shows - display:none at desktop, hidden in .top) and there is no ::after counter-rotation (it would swing the orbit dot). ALIVE = lift + scale + own-color ignition + white pop, no rotation. */
 .board-h .bh-btn:hover{animation:none;transform:translateY(-2px);border-color:var(--bc);color:#fff;box-shadow:0 0 32px var(--bc),0 0 48px var(--bc),0 10px 22px rgba(0,0,0,.55);}
 /* NOTE on bh-btn: the ambient btn-flash animation animates box-shadow,
    which would mask any hover box-shadow — so :hover sets animation:none
    (pulse resumes on mouse-out) and the hover ignition shows instead. */
-.lens-tab:hover .tab-jewel{transform:translateY(-2px) scale(1.08);border-color:var(--jc,#a06bff);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.55),0 0 22px color-mix(in srgb, var(--jc,#a06bff) 75%, transparent);color:#fff;text-shadow:0 0 12px rgba(255,255,255,.9),0 0 9px var(--jc,#a06bff);}
+.lens-tab:hover .tab-jewel{transform:translateY(-2px) scale(1.08);border-color:var(--jc,#8e24aa);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.55),0 0 22px color-mix(in srgb, var(--jc,#8e24aa) 75%, transparent);color:#fff;text-shadow:0 0 12px rgba(255,255,255,.9),0 0 9px var(--jc,#8e24aa);}
 /* NOTE on the tab itself: .lens-tab is also .primo, so the tab already
    lifts via .primo:hover (translateY(-2px)); the jewel rule above is
    the missing hover response the checker named. */
@@ -10610,7 +10610,7 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
    not just its rim + outside halo. */
 /* FIX-2 (re-check FAIL): the two rules above were dead - background-color paints UNDER the opaque injected .board-h gradient (sh-hero-css L8212), and the descendant rule matches nothing (all 9 boards carry BOTH classes on one element). One working rule on the element itself, background shorthand, replaces the gradient - same gradient as .board-h:hover below. */
 .sh-board:hover{background:linear-gradient(180deg,color-mix(in srgb, var(--bc) 30%, #0d0d14),color-mix(in srgb, var(--bc) 14%, #07070b));}
-.activity-card:hover{background-image:linear-gradient(180deg,color-mix(in srgb, var(--ac,#9d75ff) 20%, transparent),color-mix(in srgb, var(--ac,#9d75ff) 8%, transparent));}
+.activity-card:hover{background-image:linear-gradient(180deg,color-mix(in srgb, var(--ac,#8e24aa) 20%, transparent),color-mix(in srgb, var(--ac,#8e24aa) 8%, transparent));}
 
 /* ——— SEPARATE HUNK GROUP — pre-existing gaps the checker named, NOT
    this round's fails: .intel-board + .board-h light up whole on hover.
@@ -10619,12 +10619,38 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 .intel-board:hover{background-image:linear-gradient(180deg,color-mix(in srgb, var(--tone) 22%, transparent),color-mix(in srgb, var(--tone) 8%, transparent)) !important;}
 .board-h:hover{background:linear-gradient(180deg,color-mix(in srgb, var(--bc) 30%, #0d0d14),color-mix(in srgb, var(--bc) 14%, #07070b));}
 
+/* ——— HUB ICONS FIX-4 2026-11-17 ———
+   (1) DOUBLE-UP JUST A TAD: every clone offset in this file is now
+   (1px,1px), second clones (2px,2px) — a hair, never a visible gap.
+   The orbit ::after dots above are untouched (approved as-is).
+   (3) BOARDS LIGHT WHOLE: hero, .ib-layer (Hook / Human Note /
+   IN A NUTSHELL), .board — the whole face tints in its own color on
+   hover, headers ignite too. (4) ORBIT: article orbs + face circle
+   carry the approved travelling-dot mechanism (60–180s, alternating).
+   (6) GLYPHS: .notif-tile svg object stack. Deep palette throughout:
+   royal purple #8e24aa · sapphire #0f52ba · emerald #07925f ·
+   deep gold #d4a017 · burnt orange #c2410c · ruby #c62828. */
+.hero{transition:transform .25s cubic-bezier(.16,.84,.22,1),box-shadow .25s,background .25s,border-color .25s;}
+.hero:hover{transform:translateY(-3px);border-color:color-mix(in srgb, var(--room-accent,#8e24aa) 78%, #fff);background:linear-gradient(180deg,color-mix(in srgb, var(--room-accent,#8e24aa) 26%, transparent),color-mix(in srgb, var(--room-accent,#8e24aa) 10%, transparent)),linear-gradient(180deg, rgba(255,255,255,.09) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,.38) 100%),radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--room-accent,#8e24aa) 15%, transparent), transparent 62%),repeating-conic-gradient(from 4deg at 50% -6%, #0a0910 0 13deg, #030304 13deg 28deg, #14111a 28deg 30deg),linear-gradient(180deg,#1b1b22 0%,#08080c 60%,#030304 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -22px 38px rgba(0,0,0,.5),0 0 48px -4px color-mix(in srgb, var(--room-accent,#8e24aa) 70%, transparent),0 26px 54px rgba(0,0,0,.6);}
+.ib-layer{transition:transform .25s cubic-bezier(.16,.84,.22,1),box-shadow .25s,background .25s,border-color .25s;}
+.ib-layer:hover{transform:translateY(-2px);border-color:color-mix(in srgb, var(--lc) 85%, #fff);background:linear-gradient(145deg,color-mix(in srgb, var(--lc) 30%, var(--bg-raise)),color-mix(in srgb, var(--lc) 12%, var(--bg)));box-shadow:inset 0 1px #ffffff2e,0 18px 36px rgba(0,0,0,.55),0 0 32px color-mix(in srgb, var(--lc) 45%, transparent);}
+.ib-layer-head{transition:transform .2s cubic-bezier(.16,.84,.22,1),background .2s;}
+.ib-layer-head:hover{transform:translateY(-1px);background:linear-gradient(180deg,color-mix(in srgb, var(--lc) 20%, transparent),transparent 85%);}
+.ib-layer-head:hover b{color:#fff;text-shadow:0 0 14px color-mix(in srgb, var(--lc) 85%, transparent);}
+.ib-layer-head:hover .ib-dot{transform:scale(1.18);box-shadow:0 0 18px var(--lc),0 0 30px var(--lc);}
+.ib-layer-head:hover .ib-chev{color:#fff;text-shadow:0 0 12px var(--lc);}
+.board.lift:hover{background-image:linear-gradient(145deg,color-mix(in srgb, var(--room-accent) 22%, #151021f2),color-mix(in srgb, var(--room-accent) 10%, #0b0a10f2));}
+.board.lift:hover .board-title{text-shadow:0 0 14px color-mix(in srgb, var(--room-accent) 80%, transparent);}
+.ib-card-orb::before{animation-name:naya-orbit-dot-cw;}
+.show-feed > article:nth-child(even) .ib-card-orb::before,.intel-board:nth-of-type(even) .ib-card-orb::before{animation-name:naya-orbit-dot-ccw;animation-duration:150s;}
+.naya-guide-face{width:46px;height:46px;flex:0 0 auto;border-radius:50%;position:relative;border:2px solid rgba(232,232,236,.35);box-shadow:0 0 10px rgba(0,0,0,.45);transition:transform .3s,box-shadow .3s,border-color .3s;}
+.naya-guide-face::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:50%;pointer-events:none;border:1px solid color-mix(in srgb, var(--room-accent,#8e24aa) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--room-accent,#8e24aa) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 132s linear infinite;}
 </style>
 <script>
 /* ================= SMART BAR SYSTEM v1.0 ================= */
 (function(){
 'use strict';
-var SPECTRUM = ['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff']; /* harvested v1.1.4 */
+var SPECTRUM = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf']; /* harvested v1.1.4 */
 var TOP_SPEED = 16, BOTTOM_SPEED = 24; /* px/s at 1x, decided */
 var STORE_KEY = 'naya.smarttabs.v1';
 var SETTINGS_KEY = 'naya.smartbar.settings.v1';
@@ -11369,16 +11395,16 @@ window.NayaSmartBar = {
      never the same menu. Chrome harvested from the Personal correction's
      .fc-plusmenu (blob 3328238b); items in brief order, most-used first. -->
 <div id="hubPlusCreate" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Create">
-<div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#a06bff"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal" style="--mc:#e8e8ec"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-href="https://nayanet.app/personal" style="--mc:#a06bff"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal" style="--mc:#31cb8d"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-href="https://nayanet.app/personal" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
 </div>
 <div id="hubPlusConnect" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Connect">
-<div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#a06bff"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="message" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#3fb8ff"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span data-mw-tr="pm">Message</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="mail" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#ffbf3d"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg></span><span data-mw-tr="pm">Mail</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="world" data-hub-href="https://nayanet.app/rooms/spaces" style="--mc:#9d75ff"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span><span data-mw-tr="pm">Create world</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="message" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span data-mw-tr="pm">Message</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="mail" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg></span><span data-mw-tr="pm">Mail</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="world" data-hub-href="https://nayanet.app/rooms/spaces" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span><span data-mw-tr="pm">Create world</span></div>
 </div>
 </body>
 </html>
