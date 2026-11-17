@@ -403,7 +403,7 @@ button{font-family:inherit}
    object too — an obsidian plaque, white Marcellus, white rim, its own
    soft glow, elevated. The year's color is white (the header's own color
    is white); the plaque is the object, not plain text on black. */
-.cal-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(26px,4.4vw,44px);line-height:1.05;color:#fff;margin:0;text-align:center;display:inline-block;background:linear-gradient(180deg,#1a1a22,#050607 70%);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;padding:10px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 24px rgba(0,0,0,.55),0 0 18px rgba(255,255,255,.35)}
+.cal-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(26px,4.4vw,44px);line-height:1.05;color:#fff;margin:0;text-align:center;display:inline-block;white-space:nowrap;background:linear-gradient(180deg,#1a1a22,#050607 70%);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;padding:10px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 24px rgba(0,0,0,.55),0 0 18px rgba(255,255,255,.35)}
 .cal-title em{font-style:normal;color:#fff}
 .cal-nav{display:flex;gap:8px;align-items:center;flex:none}
 .cal-nav .primo{padding:12px 18px;font-size:14px}
@@ -506,8 +506,15 @@ button{font-family:inherit}
    not at all at 635 — too small to find at a glance. The mark is 12px
    now, ringed white so it cannot blend into the day's rim, and z-indexed
    above the tiles so nothing can paint over it. Still a dot, still no
-   fill, no glow, no pill — the NO-HUGE-TODAY law stands. */
-.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;z-index:2;width:12px;height:12px;border-radius:50%;background:var(--dc);border:2px solid #fff;flex:none}
+   fill, no glow, no pill — the NO-HUGE-TODAY law stands.
+   FIX-8 (item 1): the Fix-7 checker claimed the white ring from the
+   border, but the live eye measured computed box-shadow: none — the ring
+   as the eye measures it did not exist. The ring is now BOTH: the 2px
+   white border AND a spread-only box-shadow (0 0 0 2px #fff, zero blur —
+   a hard ring, never a glow), so computed box-shadow reads the ring too.
+   Nothing else changes: no fill, no glow over the cell, no pill, no
+   cell-border change. */
+.cal-day.today::after{content:'';position:absolute;top:8px;right:8px;z-index:2;width:12px;height:12px;border-radius:50%;background:var(--dc);border:2px solid #fff;box-shadow:0 0 0 2px #fff;flex:none}
 /* FIX-6 (item 7): a day with records carries a proper visible signal,
    explained — a glimpse line at the bottom of the cell ("2 appointments
    · 1 note"), white, the day's own words, never invented (it counts the
@@ -711,7 +718,12 @@ select.field option{background:#0a0a0f;color:#fff}
   .cal-week{gap:4px}
   .cal-week div{font-size:9px;letter-spacing:.02em;padding:6px 2px}
   .cal-day{border-radius:14px;padding:8px 2px;gap:4px}
-  .cal-title{padding:6px 14px}
+  /* FIX-8 (item 4): "November 2026" wrapped to two lines in its pill at
+     390 — 26px Marcellus plus 28px of padding is wider than the space
+     left between the arrows. One line now: nowrap on the base rule, and
+     20px here (~166px all-in against ~189px available at 390). Fit fix,
+     not a redesign — same pill, same plaque, same text. */
+  .cal-title{padding:6px 14px;font-size:20px}
   .cal-nav .primo{padding:10px 12px;font-size:12px}
   .cal-nav .primo.today{padding:10px 14px}
   .os-mini-num.med{gap:3px}
@@ -829,6 +841,13 @@ select.field option{background:#0a0a0f;color:#fff}
   .cal-day .os-mini-num.med .os-mini-tile .cap{height:2px}
   .cal-day .os-mini-num.med .os-mini-tile .rd{height:9px;line-height:9px;font-size:8px}
   .cal-week div{font-size:8px;letter-spacing:0}
+  /* FIX-8 (item 4): the nowrap title must still fit at 320 — 14px here
+     (~114px all-in) and the nav buttons narrow beside it, so the pill
+     keeps ~145px of room instead of ~119px. Same colors, same objects,
+     only narrower at the smallest width. */
+  .cal-title{font-size:14px;padding:6px 8px}
+  .cal-nav #prev,.cal-nav #next{font-size:16px;padding:8px 12px}
+  .cal-nav .primo.today{padding:8px 10px}
 }
 @media (prefers-reduced-motion:reduce){
   .primo::before{animation:none}
@@ -1064,15 +1083,23 @@ function wisdomFor(ds){
   const idx=Math.floor(new Date(parts[0],parts[1]-1,parts[2]).getTime()/86400000);
   return {text:WISDOM_STORE[((idx%WISDOM_STORE.length)+WISDOM_STORE.length)%WISDOM_STORE.length], source:'NayaNET wisdom store — from what we have learned'};
 }
-/* FIX-7 (item 5b): dirFor takes the same optional snapshot. */
+/* FIX-7 (item 5b): dirFor takes the same optional snapshot.
+   FIX-8 (item 2): "what was learned" used to read "Nothing was recorded
+   as learned on this day yet." whenever no note carried a rank — even
+   with a smart note sitting on the same screen. Learned prefers the
+   highest-ranked note, as before; with no ranked note it now quotes the
+   day's earliest smart note (the day's recorded learning, unranked but
+   real). "Nothing recorded" fires ONLY when the day has no smart note
+   at all — it can never contradict a smart note on the same screen. */
 function dirFor(ds,notes,books){
   notes=notes||dayNotes(ds); books=books||dayBookings(ds);
   if(!notes.length && !books.length) return null;
   const smart=notes.filter(n=>n.type==='smart'), naya=notes.filter(n=>n.type==='naya'), posts=notes.filter(n=>n.type==='post');
   const top=notes.filter(n=>n.rank).sort((a,b)=>b.rank-a.rank)[0];
+  const firstSmart=smart.slice().sort((a,b)=>String(a.createdAt||'').localeCompare(String(b.createdAt||'')))[0];
   return {notes:notes.length, smart:smart.length, naya:naya.length, posts:posts.length,
     books:books.length,
-    learned: top ? top.text : 'Nothing was recorded as learned on this day yet.'};
+    learned: top ? top.text : (firstSmart ? firstSmart.text : 'Nothing was recorded as learned on this day yet.')};
 }
 /* FIX-7 (item 5b): intelLine takes the same optional snapshot. */
 function intelLine(ds,books,notes){
@@ -1084,11 +1111,16 @@ function intelLine(ds,books,notes){
   bits.push('News archive not wired — no headlines shown for this date');
   return bits.join(' · ')+'.';
 }
-/* FIX-7 (item 5b): dirLine takes the same optional snapshot. */
+/* FIX-7 (item 5b): dirLine takes the same optional snapshot.
+   FIX-8 (item 3): the future check used to fire FIRST, so a day WITH
+   records still read "This day has not happened yet". Records are checked
+   first now: a day with a record gets its report even if it lies ahead;
+   "not happened yet" fires ONLY for a future day with NO record. */
 function dirLine(ds,books,notes){
-  if(isFutureDs(ds)) return 'This day has not happened yet — no report until the day has a record.';
   const r=dirFor(ds,notes,books);
-  return r? (r.notes+' notes · '+r.books+' appointments · what was learned: '+r.learned) : 'No report — no records for this day.';
+  if(r) return (r.notes+' notes · '+r.books+' appointments · what was learned: '+r.learned);
+  if(isFutureDs(ds)) return 'This day has not happened yet — no report until the day has a record.';
+  return 'No report — no records for this day.';
 }
 
 /* ============ TIMELINE JOURNAL — [C] timelineHTML, world filter removed ============ */
