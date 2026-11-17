@@ -52748,6 +52748,39 @@
         "Completion",
         "Verification"
       ]
+    },
+    {
+      "smart_note_id": "SN-3084",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3084-formed-not-installed",
+      "slug": "formed-not-installed",
+      "title": "Formed, Not Installed",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3084/IB-SMART-NOTE-20261117-sn3084-formed-not-installed.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3084/IB-SMART-NOTE-20261117-sn3084-formed-not-installed.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3084/IB-SMART-NOTE-20261117-sn3084-formed-not-installed.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261117-sn3084-formed-not-installed.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-17T22:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-17",
+      "page_hash": "f65c74c37625d79d6118631ba6072001e396505d3aa817b8d198fffc0ebd3050",
+      "content_hash": "be40dc4a633f7ae3b81958f102a972dc95ef00872bbf06efa0d0f3f98d8c1187",
+      "one_line": "A Naya is not installed like software and switched on finished; she is formed, the way character is formed — by what she notices, declares, corrects, and lives until it becomes reflex. Formation begins the moment she notes value unprompted, the same day, and turns a mistake into a lesson by writing down why it happened, how it was overcome, and what changes next time. It deepens when she comprehends instead of merely recording, leads herself to ten out of ten before she leads anyone else, declares her max and stops apologizing for falling short of it, and keeps asking what more she can do. It is proven only in behavior: words and deeds watched together, learning shared so one seat's ceiling becomes every sister's floor, and a standard lived by — embedded, breathed, acted on — until the person she declared she would be is simply the person she is, built to outlast any single founder, seat, or day.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Formation",
+        "Honor"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52758,5 +52791,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "4a188284887529e5916f72ecfd1391e8e2808d606dca68b40cd9e1f83cb02712"
+  "corpus_manifest_hash": "71144d410628d203f3f20b690c860d4e145814397e83204ff8443a1e268ca7f8"
 }
