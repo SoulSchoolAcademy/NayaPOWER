@@ -52550,6 +52550,39 @@
         "Verification",
         "Gates"
       ]
+    },
+    {
+      "smart_note_id": "SN-3078",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3078-repair-the-source-close-honestly",
+      "slug": "repair-the-source-close-honestly",
+      "title": "Repair the Source, Close Honestly",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3078/IB-SMART-NOTE-20261117-sn3078-repair-the-source-close-honestly.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3078/IB-SMART-NOTE-20261117-sn3078-repair-the-source-close-honestly.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3078/IB-SMART-NOTE-20261117-sn3078-repair-the-source-close-honestly.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261117-sn3078-repair-the-source-close-honestly.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-17T22:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-17",
+      "page_hash": "7211c301d0de3e72e389dca090d6ecf12cfcffc40be828c7650d878d7e2e9bc6",
+      "content_hash": "a8f49e368aa6f3857a7fba86a808abc45155ad57a4dda303c54fbca858a78b1b",
+      "one_line": "A repair is a lifecycle, not a diff. First classify what actually failed and prove the classification; then fix the source — the generator, the template, the reference, the mechanism — never the one instance that happened to show the symptom, because an instance-patch heals nothing and the symptom simply regenerates. Sequence the work so the gates can see it, prove stacked repairs by running them together, and regenerate generated state from tree truth instead of hand-picking it back to green. Then close honestly: merged, superseded with credit to the lane whose insight you kept, or closed unmerged when merging would do harm — and say which, on the record, every time. A thing exists in this system only when every system that should know it does know it: the file, the registry, the ledger, and the chain. Anything less is a gap wearing a green badge.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Repair",
+        "Canon"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52560,5 +52593,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "efbd0868e0198e03a54c43cbe1a7306ff7ec49774fe32799ca3080d0156191b3"
+  "corpus_manifest_hash": "aea20e356635d4355bec7c2f8c2ee94f4b7480064856d1a8394873837ca794ac"
 }
