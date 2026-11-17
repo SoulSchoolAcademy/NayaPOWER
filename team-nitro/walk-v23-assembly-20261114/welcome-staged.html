@@ -1764,7 +1764,7 @@ body.fp-stage-on #fpAgreement.fp-view-letter #letterBody .letter-beat.fp-now .ib
 body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody .letter-beat.fp-now .ib-subtitle{text-align:center!important}
 /* the text: a centered reading column below the picture */
 body.fp-stage-on #fpAgreement.fp-view-letter #letterBody .letter-beat.fp-now .ib-nutshell,
-body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody .letter-beat.fp-now .ib-nutshell{flex:0 1 auto!important;min-height:0!important;width:100%!important;max-width:640px!important;margin:0 auto 10px!important;overflow-y:auto!important;text-align:center}
+body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody .letter-beat.fp-now .ib-nutshell{flex:0 0 auto!important;min-height:0!important;width:100%!important;max-width:640px!important;margin:0 auto 10px!important;overflow-y:visible!important;text-align:center}
 /* the blue diamond orb: centered below the text, fading away on scroll */
 body.fp-stage-on #fpAgreement.fp-view-letter #letterBody .letter-beat.fp-now .ib-orb,
 body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody .letter-beat.fp-now .ib-orb{display:flex!important;justify-content:center!important;width:100%!important;flex:0 0 auto!important;margin:14px auto 6px!important;transition:opacity .6s ease}
@@ -1856,6 +1856,11 @@ body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody .letter-beat.fp-now
 body.fp-stage-on.fp-letterview #fpStageBarB{display:flex;flex-direction:column}
 body.fp-stage-on.fp-letterview #fpStageBarB .fp-next-row{order:1}
 body.fp-stage-on.fp-letterview #fpStageBarB .fp-stage-links{order:2}
+/* FIX ROUND 3 (2026-11-17, Defect A at human pace) — the agree-exit
+   countdown line: small centred white text in the bar, shown only
+   while the exit timer is armed (JS unhides it); it tells the citizen
+   the login is coming and where to tap to stay. */
+#fpAgreeCountdown{color:rgba(255,255,255,.78);font-size:13px;line-height:1.45;text-align:center;margin:4px auto 0;max-width:640px;padding:0 16px}
 /* Legal pages: three boards + intro scroll inside the layer; the
    revealed beats stack at natural height. */
 body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body{overflow-y:auto;position:relative}
@@ -1942,6 +1947,7 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
 <div id="fpStageBarB" hidden>
 <p class="fp-pick-line" id="fpPickLine" hidden>Pick your view — one, or both, as you wish.</p>
 <div class="fp-stage-links" id="fpStageLinks"><button class="fp-stage-link" id="fpLinkLetterAll" type="button" hidden>or read the whole letter at once</button><button class="fp-stage-link" id="fpLinkLetterSkip" type="button" hidden>Skip the agreement &rarr;</button><button class="fp-stage-link" id="fpLinkLegalAll" type="button" hidden>or read the whole page at once</button><button class="fp-stage-link" id="fpLinkToFooter" type="button" hidden>The whole deal &mdash; legal pages &#9670;</button><button class="fp-stage-link" id="fpLinkToAgree" type="button" hidden>Back to the agreement &#9670;</button><button class="fp-stage-link" id="fpLinkLetterBack" type="button" hidden>&#8249; Back to the opening page &#9670;</button><button class="fp-stage-link" id="fpLinkDeckBack" type="button" hidden>&#8249; Back to the deck end &#9670;</button></div>
+<div id="fpAgreeCountdown" class="fp-agree-countdown" hidden>Going to the login in <span id="fpAgreeCountNum">10</span>&hellip; Tap &ldquo;The whole deal&rdquo; above to stay and read the legal pages.</div>
 <div class="fp-next-row" id="fpNextRow"><button class="fp-next" id="fpNextBtn" type="button">Begin the visual story &#9670;</button><button class="fp-next" id="fpNextBtn2" type="button" hidden>Read the Collective Agreement &#9670;</button></div>
 </div>
 <div id="fpZoom" hidden role="dialog" aria-modal="true" aria-label="Slide, full size">
@@ -3573,12 +3579,28 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
      deal" (or any other agree-view control) instead of waiting, and
      the stage must NOT exit under them. cancelAgreeExit() is called
      by the mirror-link and exit handlers below. */
+  /* FIX ROUND 3 (2026-11-17, Defect A at human pace) — 1950ms is
+     not a human window: a person reading the agree view at normal
+     speed cannot reach "The whole deal" before the stage exits
+     under them (eye-proven twice). The exit is now 10 seconds —
+     double the 5s a human-paced reader needs — with a visible
+     countdown in the bar saying the login is coming and where to
+     tap to stay. Waiting without tapping still exits to login,
+     only slower; the original handler's 2000ms scroll + focus
+     fires behind the stage and the login is already in place when
+     the stage lifts. No re-arm on activity: the window is fixed
+     and predictable, so an impatient tapper cannot hold the exit
+     off forever; re-tapping "I agree" re-arms a fresh 10s. */
   var agreeExitTimer=null;
-  function cancelAgreeExit(){if(agreeExitTimer){clearTimeout(agreeExitTimer);agreeExitTimer=null;}}
+  var agreeCountTimer=null;
+  function stopAgreeCount(){if(agreeCountTimer){clearInterval(agreeCountTimer);agreeCountTimer=null;}var cd=document.getElementById('fpAgreeCountdown');if(cd)cd.hidden=true;}
+  function startAgreeCount(){var cd=document.getElementById('fpAgreeCountdown');var num=document.getElementById('fpAgreeCountNum');if(!cd||!num)return;var n=10;num.textContent='10';cd.hidden=false;agreeCountTimer=setInterval(function(){n--;if(n<=0){stopAgreeCount();return;}num.textContent=String(n);},1000);}
+  function cancelAgreeExit(){if(agreeExitTimer){clearTimeout(agreeExitTimer);agreeExitTimer=null;}stopAgreeCount();}
   agreeBtn.addEventListener('click',function(){
     if(!body.classList.contains('fp-stage-on'))return;
     cancelAgreeExit();
-    agreeExitTimer=setTimeout(function(){agreeExitTimer=null;exitStage();},1950);
+    agreeExitTimer=setTimeout(function(){agreeExitTimer=null;stopAgreeCount();exitStage();},10000);
+    startAgreeCount();
   });
   /* slide zoom (A3): tap the picture, read it big, the beat waits. */
   function openZoom(img){
