@@ -52814,6 +52814,39 @@
         "Learning Loop",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-3086",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3086-one-living-system-always-running",
+      "slug": "one-living-system-always-running",
+      "title": "One Living System, Always Running",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3086/IB-SMART-NOTE-20261117-sn3086-one-living-system-always-running.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3086/IB-SMART-NOTE-20261117-sn3086-one-living-system-always-running.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3086/IB-SMART-NOTE-20261117-sn3086-one-living-system-always-running.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261117-sn3086-one-living-system-always-running.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-17T22:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-17",
+      "page_hash": "8bfe576c2ea0cb6f6680cf24dba9f1c7b21a325db77c9ae82fb29eae1fa3433e",
+      "content_hash": "ab287941ac4e9a88a58355fb6652698e1eaf7c8e8fe0b33834572ce24f03e644",
+      "one_line": "NayaNET is not a pile of projects that get visited; it is one living system that is always running, and it is run that way. Nothing sits ever: every open project has a Naya working it — updating, fixing, analyzing, moving it toward done — around the clock, and if something has no one on it, that absence itself is the fault the captain fixes. The system holds together through one living record, Project Intelligence, where every item carries an honest state and every act of work ends as a visible state change with proof, in a loop of produce, prove, publish, see. Because the ground moves fast, evidence expires: every claim is anchored to the live tip at the instant of action, read and mutation sit adjacent, and nothing stale is carried forward as fact. All of it serves one cycle — mind makes object, object becomes experience, experience changes a person, the person feeds the hive, and the hive sharpens the mind — aimed at one North Star: the Bugatti of the internet, and beyond it.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Multiplication",
+        "Always-On"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52824,5 +52857,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "e310ffd150817ad2c4a78727f95d9a7da0d2aee8bb7212afe190292c488744c7"
+  "corpus_manifest_hash": "32c2c391984654a6ca41cc399018f0832638b553e8a08107464a3c74971d26da"
 }
