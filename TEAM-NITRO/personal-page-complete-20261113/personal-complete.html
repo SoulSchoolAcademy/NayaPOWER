@@ -3964,7 +3964,7 @@ body.mw-strip-bottom #nsbBottom{bottom:0!important}
 .mw-face-row .os-face{flex:1;min-width:0}
 .mw-pick-cb{width:20px;height:20px;margin-top:14px;accent-color:#07925f;cursor:pointer;flex:none}
 .mw-match-badge{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.04em;border:1px solid #07925f;color:#07925f}
-.mw-mailbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 4px}
+.mw-mailbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 4px} @media(max-width:760px){#mwMailSel{display:none!important}} /* COMPLETION 2026-11-17 (D6): the pick boxes are hidden at phone width, so the button's hint points at boxes that are not there — the button hides too. */
 /* Fix 4 — default membership cards. */
 .mw-default-badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.06em;border:1px solid #d4a017;color:#d4a017}
 .mw-plan{margin-top:10px}
@@ -5103,7 +5103,7 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 /* Item 4: the four-tab legend, plain words, one line. */
 .pc-tabs-legend{margin:6px 2px 0;font-size:13.5px;line-height:1.55;}
 /* Item 6: My World IS the calendar. Boards stay obsidian; the colour is the
-   light, never the fill. Each day lights in its own colour; today glows. */
+   light, never the fill. Each day lights in its own colour; today reads from the weekday plaque and the header. */
 .mw-cal-sec h3{font-size:19px;font-weight:900;color:#fff;margin:0 0 4px;}
 .mw-cal-sub{margin:0 0 14px;}
 .mw-cal-nav{display:flex;gap:10px;align-items:center;margin:2px 0 12px;}
@@ -6526,7 +6526,7 @@ button.os-ld-node .os-ld-n{
 <div class="ph-actions"><button class="ph-msg" type="button" data-mw-real-dash data-mw-tr="lf">Go to my Dashboard →</button><button class="ph-msg" type="button" data-os-go="settings" data-mw-tr="set">Change what shows here</button></div>
 </div><section class="os-view mw-cal-sec" id="os-world-calendar" data-os-view="myworld">
 <h3>Your world, day by day</h3>
-<p class="os-note mw-cal-sub">My World is the calendar. Every day lights in its own colour &mdash; today glows. Tap a day to open your world for that day: what went on, what you learned, the day&rsquo;s wisdom.</p>
+<p class="os-note mw-cal-sub">My World is the calendar. Every day lights in its own colour. Tap a day to open your world for that day: what went on, what you learned, the day&rsquo;s wisdom.</p>
 <div class="mw-cal-nav">
 <button type="button" class="ph-msg mw-cal-navbtn" id="mwCalPrev" aria-label="Previous month">&lsaquo;</button>
 <span class="mw-cal-month" id="mwCalMonthLabel">Loading&hellip;</span>
@@ -6870,9 +6870,9 @@ button.os-ld-node .os-ld-n{
 </style>
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#0f52ba;color:#0f52ba;"></span> About Me</div>
-<div class="of-bridge" id="ofAboutBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#8e24aa"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofAboutFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofAboutFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#8e24aa"><span class="ib-kind" style="--tone:#8e24aa">About me &middot; In a nutshell</span><h3 class="ib-title">Shawn Vibert builds NayaNET</h3><div class="ib-nutshell"><p>Shawn Vibert builds NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live.</p></div></div></div><p class="of-bridge-q">About unfolds one board at a time &mdash; tap to begin.</p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-unfold" style="--tone:#d4a017">Unfold down &#9670;</button></div><button type="button" class="of-lib-door" data-of-open="about-library"><span class="os-jewel os-jewel-h" style="--jc:#07925f">&#10022;</span> Enter the Intelligent Library <span class="of-lib-count" id="ofLibCount"></span></button><p class="of-bridge-note">About unfolds one board at a time. The Library holds the best of what is saved here. <span class="of-lib-count" id="ofLibCountBridge"></span></p></div>
+<div class="of-bridge" id="ofAboutBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#8e24aa"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofAboutFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofAboutFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#8e24aa"><span class="ib-kind" style="--tone:#8e24aa">About me &middot; In a nutshell</span><h3 class="ib-title">Shawn Vibert builds NayaNET</h3><div class="ib-nutshell"><p>Shawn Vibert builds NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live.</p></div></div></div><p class="of-bridge-q">About unfolds one board at a time &mdash; tap to begin.</p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-unfold" style="--tone:#d4a017">Unfold down &#9670;</button><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-slides" style="--tone:#8e24aa">Slideshow &#9670;</button></div><button type="button" class="of-lib-door" data-of-open="about-library"><span class="os-jewel os-jewel-h" style="--jc:#07925f">&#10022;</span> Enter the Intelligent Library <span class="of-lib-count" id="ofLibCount"></span></button><p class="of-bridge-note">About unfolds one board at a time. The Library holds the best of what is saved here. <span class="of-lib-count" id="ofLibCountBridge"></span></p></div>
 <div class="of-pres-head" id="ofAboutPresHead" hidden><button type="button" class="ph-msg of-back" data-of-back="about">&#8249; Back to the bridge</button><span class="ib-kind of-pres-label" id="ofAboutPresLabel" style="--tone:#8e24aa"></span></div>
-<div class="of-controls" id="ofAboutControls" hidden><div class="of-dots" id="ofAboutDots" aria-hidden="true"></div><button class="of-all" id="ofAboutAll" type="button">or read the whole thing at once</button></div>
+<div class="of-controls" id="ofAboutControls" hidden><div class="of-dots" id="ofAboutDots" aria-hidden="true"></div><button class="of-all" id="ofAboutAll" type="button">or read the whole thing at once</button></div> <div class="of-slides-nav" id="ofAboutSlidesNav" hidden><button type="button" class="p3-enter of-slide-prev" id="ofAboutPrev">&#8249; Back</button><span class="of-slide-count" id="ofAboutCount">Slide 1 of 7</span><button type="button" class="p3-enter of-slide-next" id="ofAboutNext">Next &#8250;</button></div>
 
 <div class="ib-layer layer-purple open of-beat" data-of-beat="1" style="--tone:#8e24aa">
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#8e24aa">S</span><span class="os-jewel os-jewel-h" style="--jc:#8e24aa"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M10 7.5H6.8A3.3 3.3 0 0 0 3.5 10.8V17h6.6v-6.6H6.9a1.6 1.6 0 0 1 1.5-1.7v-1.2zm10.4 0h-3.2a3.3 3.3 0 0 0-3.3 3.3V17h6.6v-6.6h-3.2a1.6 1.6 0 0 1 1.5-1.7V7.5z"/></svg></span><b>My motto</b><span class="ib-chev">▾</span></button>
@@ -7160,7 +7160,7 @@ button.os-ld-node .os-ld-n{
 <div class="ph-sec-t"><span class="ph-dot" style="background:#a21caf;color:#a21caf;"></span> Smart Skills</div>
 
 
-<div class="of-bridge" id="ofSkillsBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#a21caf"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofSkillsFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofSkillsFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#a21caf"><span class="ib-kind" style="--tone:#a21caf">Smart Skills &middot; In a nutshell</span><h3 class="ib-title">Smart Skills</h3><div class="ib-nutshell"><p>The skills so far &mdash; the list keeps growing. Every skill is a capability you call on by name: a Smart Note (the knowledge) + a Factory template (the ability to do it), stored in your Smart Vault. Tap a skill to see why it matters.</p></div></div></div><p class="of-bridge-q">Skills slide one screen at a time &mdash; tap to begin the presentation.</p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="skills-slides" style="--tone:#a21caf">Slideshow &#9670;</button></div><p class="of-bridge-note">Skills slide one screen at a time &mdash; a presentation you can send to get work.</p><div class="of-skill-chips" id="ofSkillsChips" role="group" aria-label="Tap a skill to see its board"></div></div>
+<div class="of-bridge" id="ofSkillsBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#a21caf"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofSkillsFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofSkillsFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#a21caf"><span class="ib-kind" style="--tone:#a21caf">Smart Skills &middot; In a nutshell</span><h3 class="ib-title">Smart Skills</h3><div class="ib-nutshell"><p>The skills so far &mdash; the list keeps growing. Every skill is a capability you call on by name: a Smart Note (the knowledge) + a Factory template (the ability to do it), stored in your Smart Vault. Tap a skill to see why it matters.</p></div></div></div><p class="of-bridge-q">Skills slide one screen at a time &mdash; tap to begin the presentation.</p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="skills-unfold" style="--tone:#d4a017">Unfold down &#9670;</button><button type="button" class="p3-enter of-bridge-btn" data-of-open="skills-slides" style="--tone:#a21caf">Slideshow &#9670;</button></div><p class="of-bridge-note">Skills slide one screen at a time &mdash; a presentation you can send to get work.</p><div class="of-skill-chips" id="ofSkillsChips" role="group" aria-label="Tap a skill to see its board"></div></div>
 <div class="of-pres-head" id="ofSkillsPresHead" hidden><button type="button" class="ph-msg of-back" data-of-back="skills">&#8249; Back to the bridge</button><span class="ib-kind of-pres-label" id="ofSkillsPresLabel" style="--tone:#a21caf"></span></div>
 <div class="of-controls" id="ofSkillsControls" hidden><div class="of-dots" id="ofSkillsDots" aria-hidden="true"></div><button class="of-all" id="ofSkillsAll" type="button">or read the whole thing at once</button></div> <div class="of-slides-nav" id="ofSkillsSlidesNav" hidden><button type="button" class="p3-enter of-slide-prev" id="ofSkillsPrev">&#8249; Back</button><span class="of-slide-count" id="ofSkillsCount">Slide 1 of 14</span><button type="button" class="p3-enter of-slide-next" id="ofSkillsNext">Next &#8250;</button></div>
  <div class="ph-card" style="--ac:#a21caf;" id="os-skill-add-card">
@@ -24778,6 +24778,15 @@ function mwApplyLang(){
   if(window.mwBuildFeedPills){ try{ window.mwBuildFeedPills(); }catch(e){} }
   if(window.mwSyncWallMeta){ try{ window.mwSyncWallMeta(); }catch(e){} }
   /* AUTO-TRANSLATE: the Translate taps re-label with the chrome. */
+  /* COMPLETION 2026-11-17 (D3): the invite-board heading is painted by
+     mwPaintWallPosts — repaint it here so it follows the switch at once
+     instead of lagging one switch behind. The call repaints from the
+     stored wall (or the public store); it never overwrites the store
+     with an empty read. */
+  if(typeof window.mwPaintWallPosts==='function'){ try{
+    var _pub=false; try{ var _pt=document.getElementById('mwTabNaya'); _pub=!!(_pt&&_pt.classList.contains('active')); }catch(e){}
+    window.mwPaintWallPosts(_pub?(window.MW_PUBLIC_POSTS||[]):(window.MW_WALL_POSTS||[]));
+  }catch(e){} }
   try{ document.dispatchEvent(new CustomEvent('mw-lang-changed')); }catch(e){}
 }
 /* ---------- settings binding ---------- */
@@ -25674,7 +25683,7 @@ document.addEventListener('DOMContentLoaded', function(){ try{ mwApplyBars(); mw
     '#d4a017', '#c2410c', '#c2410c', '#c62828', '#c62828', '#a21caf'
   ];
   var REPEATS = 3;
-  var JEWEL_SIZE = 4.9;
+  var JEWEL_SIZE = 7.5;
 
   function hexToRgb(hex){
     var h = String(hex || '').replace('#', '');
@@ -25833,14 +25842,19 @@ document.addEventListener('DOMContentLoaded', function(){ try{ mwApplyBars(); mw
     }
 
     /* --- NAYANET ORBITAL JEWEL GENERATOR — harvested verbatim from the
-       live gate / v6. 12 colour families × 3 shades × 3 repetitions =
+       live gate / v8. 12 colour families × 3 shades × 3 repetitions =
        108 luxury crystal jewels. Scoped per mount (see file header). --- */
     function positionJewels(){
       var orbitSize = orbitFrame.getBoundingClientRect().width;
-      var radius = orbitSize * .47; /* 47%, not the gate's 44%: at 44% the ring hides
-      behind the core at this dial's size (measured 246px vs the portal's
-      260px radius at 1440x900). 47% puts it just outside the vault,
-      as the gate's own comment intends. */
+      var radius = orbitSize * .487; /* 48.7%, not the gate's 44% and not v7's 47% on a
+      bigger container: v7 went too far (the ring floated ~19px clear of
+      the silver). v8 (Shawn 23:21Z — the sweet spot in between): the
+      orbit container stays v6's size (493px desktop, 90vw phone) — the
+      WHOLE circle does NOT get bigger — and the factor moves the lights
+      out just a bit, to ~240px desktop (gap ~10.6px to the jewel's center,
+      ~6.9px to its edge) and ~171px phone (gap ~14.9px center, ~11.9px
+      edge). The individual lights get bigger (7.5px desktop, 6px mobile)
+      — that is where "bigger" goes, not the circle. */
       orbit.style.setProperty('--computed-orbit-radius', radius + 'px');
       var jewels = orbit.querySelectorAll('.naya-jewel');
       jewels.forEach(function(jewel){
@@ -25858,7 +25872,7 @@ document.addEventListener('DOMContentLoaded', function(){ try{ mwApplyBars(); mw
       jewel.style.setProperty('--jewel', PALETTE[colorIndex]);
       jewel.style.setProperty('--angle', angle + 'deg');
       jewel.style.setProperty('--size', JEWEL_SIZE + 'px');
-      jewel.style.setProperty('--size-mobile', '4.25px');
+      jewel.style.setProperty('--size-mobile', '6px');
       jewel.style.setProperty('--scale', '1');
       jewel.style.setProperty('--opacity', '.9');
       orbit.appendChild(jewel);
@@ -26131,9 +26145,12 @@ function saOpen(name){
   saCur = m;
   saRenderAll();
   if(m.access==='paid'){
-    /* Paid + not a member -> the Pricing page (verified). No mock link,
-       no preview entry: the door stays closed until they return with a code. */
-    try{ window.open(SA_PRICING_URL, '_blank', 'noopener'); }catch(e){}
+    /* MEMBERSHIP 2026-11-15 — the paywall stands before the login. No mock
+       link, no preview entry: the door stays closed until they return with
+       a code. The paywall shows the ladder, the 9-day trial at Max, and the
+       pay button (the pricing page carries the nine PayPal subscribe URLs);
+       the return is the thank-you Smart Link, and the return activates. */
+    saOpenPaywall(m);
     return;
   }
   if(m.access==='free'){
@@ -26143,6 +26160,66 @@ function saOpen(name){
     return;
   }
   saOpenLogin();
+}
+/* ---------- MEMBERSHIP 2026-11-15 — the paywall before the login ----------
+   The Paid door's gate. Ladder figures verified against the pricing page
+   (Power / Pro / Max — the three monthly figures, kept in sync with TIERS);
+   the 9-day trial lives in PayPal only, offered at Max. The pay button opens
+   the pricing page, where the nine PayPal subscribe URLs live on the chooser
+   blocks.
+   Return = activation: PayPal auto-returns the buyer to the thank-you
+   Smart Link, and the return activates the membership — the code then
+   arrives in Smart Mail. The dashboard marks it "returned from PayPal",
+   never payment-proven. No payment is ever made by this page. */
+/* PAYWALL MODAL CHROME — harvested verbatim from mshipOpenModalFallback
+   (the memberships modal's own fallback: the same .up-modal-ov / .up-modal
+   chrome openModal builds), plus openModal's P9 visible-x block (the
+   handler name is escM here, the fallback's own Escape handler). Defined
+   inside the sa* closure because window.openModal is NOT global — openModal
+   lives inside the ULTIMATE-PERSONAL IIFE. */
+function saModalFallback(title, sub){
+  var ov = document.createElement('div'); ov.className = 'up-modal-ov';
+  var m = document.createElement('div'); m.className = 'up-modal';
+  var h = document.createElement('h3'); h.textContent = title; m.appendChild(h);
+  if (sub) {
+    var p = document.createElement('p'); p.className = 'os-note';
+    p.textContent = sub; m.appendChild(p);
+  }
+  var x=document.createElement('button'); x.type='button'; x.className='nsb-modal-x'; x.textContent='\u00d7'; x.setAttribute('aria-label','Close');
+  x.addEventListener('click', function(){ ov.remove(); document.removeEventListener('keydown',escM); });
+  m.appendChild(x);
+  function escM(e){ if(e.key==='Escape'){ ov.remove(); document.removeEventListener('keydown',escM); } }
+  ov.appendChild(m);
+  ov.addEventListener('click', function (e) { if (e.target === ov) ov.remove(); });
+  document.addEventListener('keydown', escM);
+  document.body.appendChild(ov);
+  return m;
+}
+function saOpenPaywall(m){
+  /* REPAIR 2026-11-15 (verify find): window.openModal is NOT global — it
+     lives inside the ULTIMATE-PERSONAL IIFE, so the typeof test was always
+     false and the paid door fell straight through to the pricing page.
+     The paywall now opens with the harvested fallback chrome above. */
+  var modal = saModalFallback(m.name + ' \u2014 members only', 'Paid members only. Pick your key, pay once, and your code arrives in Smart Mail.');
+  if(!modal) return;
+  try{ modal.classList.add('mship-upgrade'); }catch(e){}
+  var wrap = document.createElement('div');
+  wrap.innerHTML =
+    '<div class="mship-tiers">'
+    + '<div class="mship-tier" style="--tc:#a06bff;"><div class="mship-tier-name"><span class="os-jewel" style="--jc:#a06bff;font-size:17px;padding:7px 10px;">\u2726</span> Power</div><div class="mship-tier-price">$25<span>/mo</span></div><ul class="mship-tier-perks"><li>10 membership sites</li><li>AI Masterclass included</li></ul></div>'
+    + '<div class="mship-tier hot" style="--tc:#ffbf3d;"><div class="mship-tier-name"><span class="os-jewel" style="--jc:#ffbf3d;font-size:17px;padding:7px 10px;">\u2726</span> Pro</div><div class="mship-tier-price">$50<span>/mo</span></div><ul class="mship-tier-perks"><li>100 membership sites</li><li>Create memberships on your pages</li></ul></div>'
+    + '<div class="mship-tier" style="--tc:#e84fff;"><div class="mship-tier-name"><span class="os-jewel" style="--jc:#e84fff;font-size:17px;padding:7px 10px;">\u2726</span> Max</div><div class="mship-tier-price">$100<span>/mo</span></div><ul class="mship-tier-perks"><li>Unlimited membership sites</li><li>Highest limits everywhere</li></ul></div>'
+    + '</div>'
+    + '<p class="os-note" style="margin-top:12px;">Start with 9 days free at Max \u2014 the trial lives in PayPal: pick Max, and PayPal gives you 9 days before the first charge.</p>'
+    + '<p class="os-note">First 1,000 founders get half price \u2014 and double points once a thousand founders join.</p>'
+    + '<p class="os-note">After you pay, PayPal sends you back to your thank-you Smart Link (nayanet.app/thankyou) \u2014 that return activates your membership, and your code arrives in Smart Mail. The dashboard marks it \u201creturned from PayPal\u201d, never payment-proven.</p>'
+    + '<div class="ph-actions" style="margin-top:14px;"><button type="button" class="ph-connect" data-sa-paywall-pay>Continue to payment \u2192</button>'
+    + '<button type="button" class="ph-connect" data-sa-paywall-paid>I already paid \u2014 send my code</button></div>';
+  modal.appendChild(wrap);
+  var pay = wrap.querySelector('[data-sa-paywall-pay]');
+  if(pay) pay.addEventListener('click', function(){ try{ window.open(SA_PRICING_URL, '_blank', 'noopener'); }catch(e){} });
+  var paid = wrap.querySelector('[data-sa-paywall-paid]');
+  if(paid) paid.addEventListener('click', function(){ try{ var ov = modal.closest('.up-modal-ov'); if(ov) ov.remove(); }catch(e){} saOpenLogin(); });
 }
 function saClose(){
   /* Total close: the login stage too, if it is open \u2014 saClose is the one
@@ -32618,6 +32695,48 @@ function ofShowSlide(cfg, i){
   if (nx) nx.textContent = cfg.slide === beats.length - 1 ? 'Back to the start \u2039' : 'Next \u203a';
   var nav = $(cfg.navId); if (nav) nav.hidden = false;
 }
+/* --- PERSONAL DATA SOURCE (COMPLETION 2026-11-17, §3C) ---
+   ONE shared source feeds BOTH presentations of About and of Skills.
+   About: the words are the citizen's stored answers (the mirrors and the
+   app's own store, read through window.__osAboutSecs and localStorage);
+   the file carries the story's filed line as the default. Skills: the
+   14 boards, harvested verbatim from the filed boards. Both presentations
+   read the SAME beat nodes, and the nodes are written from THIS object —
+   change one answer here and both presentations change. The walk-side
+   write (the walk writing the ten answers into this source) is OWED —
+   see the maker report §9.1 for the exact precondition. --- */
+var OF_DATA = {"about": [{"key": "motto", "title": "My motto", "node": "os-sec-motto-text", "tone": "#8e24aa", "text": ""}, {"key": "story", "title": "My story", "node": "abouttext", "tone": "#0f52ba", "text": "Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net."}, {"key": "whatido", "title": "What I do", "node": "os-sec-whatido-text", "tone": "#07925f", "text": ""}, {"key": "goals", "title": "My goals", "node": "os-sec-goals-text", "tone": "#d4a017", "text": ""}, {"key": "purpose", "title": "My purpose", "node": "os-sec-purpose-text", "tone": "#3f51b5", "text": ""}, {"key": "mission", "title": "My mission", "node": "os-sec-mission-text", "tone": "#c2410c", "text": ""}, {"key": "vision", "title": "My vision", "node": "os-sec-vision-text", "tone": "#a21caf", "text": ""}], "skills": [{"tone": "#8e24aa", "title": "The Login Skill", "nutshell": "One dial, your name, your code — and you're in. The door into NayaNET.", "why": "The login is the first thing anyone ever touches. If it feels like a form, the whole system feels like a form. If it feels like stepping through a portal into a private world, the whole system feels like a place worth entering. The door sets the feeling for everything after it.", "foryou": "You step into your private world in seconds, through a door that feels like yours."}, {"tone": "#0f52ba", "title": "The Mail Skill", "nutshell": "Your mail and your messages in one place, private by default — nobody reads them, not even us.", "why": "The old internet spied on your mail. Every message you sent was read, scanned, and sold. Here it is the opposite: your mail is yours, and it stays yours. When people know nobody is listening, they talk freely — and that is when real connection happens.", "foryou": "You talk freely, knowing nobody is listening — and that is when real connection happens."}, {"tone": "#3f51b5", "title": "The Notes Skill", "nutshell": "I take your notes and turn what you learn into intelligence everyone can use.", "why": "A good idea that isn't written down is gone by tomorrow. And an idea that is written down but never shared only helps one person. When I take the note and share the good ones, your learning doesn't die with the day — it compounds, and everyone gets smarter from it.", "foryou": "Your learning compounds — what you learn today keeps helping everyone tomorrow."}, {"tone": "#0f52ba", "title": "The Lists Skill", "nutshell": "Your people and your notes, organized, one tap away.", "why": "The old internet made you hunt. Your contacts were in one app, your notes in another, and the thing you were looking for was always in the third place you checked. When your world is organized for you, you stop hunting and start doing.", "foryou": "You stop hunting and start doing — your people and your notes, one tap away."}, {"tone": "#07925f", "title": "The Links Skill", "nutshell": "Every link you share is clean, short, and tracked — you see the click and the return.", "why": "A raw link is a mess — long, ugly, and silent. You share it and you never know if anyone came. A clean link is an address someone can remember, and the tracking means you know it worked. Sharing without knowing is shouting into the dark; sharing with a Smart Link is a conversation.", "foryou": "You share a clean link and you know it worked — every click and return, seen."}, {"tone": "#c2410c", "title": "The Meet Skill", "nutshell": "Meet face to face, right inside your world, whenever you book it.", "why": "A meeting that makes you leave your world breaks your flow. You were in your page, with your notes and your people, and then you had to go somewhere else to talk. When the meeting lives where your world lives, the conversation starts where you left off — with everything you need right there.", "foryou": "You meet face to face without leaving your world — the conversation starts where you left off."}, {"tone": "#a21caf", "title": "The Factory Skill", "nutshell": "Tell me what you want to build, and I build it from the parts that already exist.", "why": "You should not need design skill to have a beautiful world. The old way said: learn to design, or hire someone who can. The factory says: the taste is locked into the template. You bring the idea, I bring the parts, and the result is beautiful from the first click — because the parts were already made beautiful by someone who knows how.", "foryou": "You bring the idea, the parts bring the beauty — a beautiful world from the first click."}, {"tone": "#c62828", "title": "The Match Skill", "nutshell": "I find the people like you, automatically, and show you how close the match is.", "why": "The old internet showed you strangers and called it connection. You had to hunt for your people, and most of the time you never found them. When the system knows who you are, it can bring your people to you — and that is the difference between a feed full of noise and a world full of like minds.", "foryou": "Your people come to you — a world full of like minds, not a feed full of noise."}, {"tone": "#0e7490", "title": "The Smart Vault Skill", "nutshell": "Your own private vault that remembers everything for you and keeps it organized.", "why": "There is a sickness in the old internet: you save things and you never find them again. The note is in one app, the file in another, the lesson in a third — and when you need it, it is gone. The vault cures that. Everything you save goes to one place, and one place is the only place you ever have to look.", "foryou": "Everything you save goes to one place — and one place is the only place you ever look."}, {"tone": "#d4a017", "title": "The Numbers Skill", "nutshell": "Everything you do is recorded, and your numbers are shown back to you as gauges you can read in two seconds.", "why": "If you can't see your numbers, you can't see your world. How many points have you earned? How many people joined through you? How is your world doing? Without the record, you are guessing. With it, you know — and knowing is what lets you decide what to do next.", "foryou": "You see where you stand and decide what to do next — no guessing."}, {"tone": "#6d28d9", "title": "The Access Skill", "nutshell": "Turn any page into a membership — your course, your lessons, your people, behind a door that fits.", "why": "Your teaching should live in your world, not in a separate app. The old way said: build a course somewhere else, send people away from your page, and hope they come back. Here the course IS your page — the same cover, the same feed, the same login. Your people never leave your world to learn from you.", "foryou": "Your people never leave your world to learn from you — your course lives on your page."}, {"tone": "#0e7490", "title": "The Ask Skill", "nutshell": "Ask me anything, and I answer from everything the system knows.", "why": "Intelligence is only useful if you can ask for it. A library nobody asks is a locked room. A system that knows everything but answers nothing is a machine with no door. Asking is the door — it is how the intelligence gets from the system to you, in the moment you need it.", "foryou": "You get the answer in the moment you need it — the intelligence comes to you."}, {"tone": "#07925f", "title": "The Growth Skill", "nutshell": "Invite people to your world, watch them join, and earn half of what they pay, automatically.", "why": "The people who love a place are the ones who bring the next people. The old internet took that gift and gave nothing back — you brought your friends, and the company kept the money. Here it is the opposite: the citizens grow the network, so the citizens earn from it. That is how a network becomes a community instead of a company.", "foryou": "You bring the people, you earn half of what they pay — the network becomes a community."}, {"tone": "#ffffff", "title": "The Reports Skill", "nutshell": "Every day, I look back on what you did, learned, and noted, and give you the day in a nutshell.", "why": "A day you don't look back on is a day you don't learn from. You did things, you learned things, you met people — and by tomorrow, most of it is gone, because nobody wrote it down. The report writes it down for you. It is how a life becomes a story you can read, instead of a blur you can barely remember.", "foryou": "Your day becomes a story you can read — nothing learned is lost by tomorrow."}]};
+function ofRenderFromSource(){
+  var i, d, node, beats, h, tn;
+  /* About: the stored answer wins — capture it into the source first (the
+     mirrors already wrote it into the node), then write the source back
+     into the node. A board with no stored answer keeps what it has. */
+  OF_DATA.about.forEach(function(d){
+    node = document.getElementById(d.node);
+    if(!node) return;
+    if(!d.text){
+      try{ if(window.__osAboutSecs && window.__osAboutSecs[d.key]) d.text = window.__osAboutSecs[d.key]; }catch(e){}
+      if(!d.text){ try{ var v = localStorage.getItem('naya.aboutsec.' + d.key); if(v) d.text = v; }catch(e){} }
+      if(!d.text && node.textContent) d.text = node.textContent;
+    }
+    if(d.text) node.textContent = d.text;
+  });
+  /* Skills: the source carries the filed words; write them into the beats.
+     The first 14 beats in DOM order are the filed boards (citizen-added
+     boards arrive after them and keep their own words). */
+  beats = document.querySelectorAll('[data-os-view="skills"] .of-beat');
+  for(i = 0; i < 14 && i < beats.length; i++){
+    d = OF_DATA.skills[i]; if(!d) continue;
+    h = beats[i].querySelector('h3');
+    if(h){ tn = h.lastChild; if(tn && tn.nodeType === 3) tn.nodeValue = ' ' + d.title; }
+    var n1 = beats[i].querySelector('.sa-skill-nutshell'); if(n1) n1.textContent = d.nutshell;
+    var n2 = beats[i].querySelector('.sa-skill-why'); if(n2) n2.textContent = d.why;
+    var n3 = beats[i].querySelector('.sa-skill-foryou');
+    if(n3){ var b = n3.querySelector('b'); n3.textContent = d.foryou; if(b) n3.insertBefore(b, n3.firstChild); }
+  }
+}
+window.__ofData = OF_DATA;
+window.__ofRenderFromSource = ofRenderFromSource;
 /* --- the bridge controller (GLUE) --- */
 var SECTIONS = {
   about: { kind: 'about', root: $('about'), bridge: $('ofAboutBridge'),
@@ -32971,6 +33090,7 @@ function ofLibDeleteEntry(i){
   var st = $('ofLibStatus'); if (st) st.textContent = 'Deleted — the entry is gone from the library.';
 }
 /* --- init (GLUE) --- */
+ofRenderFromSource();
 UNFOLD.about = ofWireUnfold({ beatsSel: '#about .of-beat', dotsSel: '#ofAboutDots .of-dot',
   dotsId: 'ofAboutDots', allId: 'ofAboutAll', nextSel: '.of-next' });
 UNFOLD.skills = ofWireUnfold({ beatsSel: '[data-os-view="skills"] .of-beat', dotsSel: '#ofSkillsDots .of-dot',
@@ -33021,7 +33141,11 @@ document.addEventListener('keydown', function(e){
   if (e.key === 'ArrowRight'){
     var n = qa(S.beatsSel).length;
     ofShowSlide(S.slide, S.slide.slide === n - 1 ? 0 : S.slide.slide + 1);
-  } else if (e.key === 'ArrowLeft'){ ofShowSlide(S.slide, S.slide.slide - 1); }
+  } else if (e.key === 'ArrowLeft'){
+    /* COMPLETION 2026-11-17 (D9): ArrowLeft on slide 1 exits to the bridge. */
+    if (S.slide.slide === 0){ setMode(kind, 'bridge'); }
+    else { ofShowSlide(S.slide, S.slide.slide - 1); }
+  }
 });
 var libSearch = $('ofLibSearch');
 if (libSearch) libSearch.addEventListener('input', function(){
