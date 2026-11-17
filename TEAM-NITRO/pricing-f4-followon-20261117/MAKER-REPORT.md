@@ -244,8 +244,20 @@ not delete failures.)
 
 ## 8. GITHUB FILING
 
-[TO BE FILLED AFTER FILING — same pattern as F4: branch
-`pricing-f4-free-entry-20261116`, new commit on tip `c0c3f78a…`, NOT merged.]
+Branch `pricing-f4-free-entry-20261116` (repo `SoulSchoolAcademy/NayaPOWER`, TEAM-NITRO is a
+folder inside it). New commit on top of the branch tip — **NOT merged**.
+Files: `pricing-f4-followon-20261117/MAKER-REPORT.md`, `pricing-f4-followon-20261117/build-followon.py`,
+`pricing-f4-followon-20261117/check-followon.mjs`, `pricing-f4-followon-20261117/cleanup-followon.py`.
+**Filed: branch `pricing-f4-free-entry-20261116`, commit
+`a4cbeffc01f2119598c96fde815f06079a9086d8`** (parent = branch tip `c0c3f78a…`),
+tree `ef91f2f3bd30576222cb03fdb77630b63506425c`, 4 blobs (report `ec71407c…`,
+build-followon `067f639a…`, harness `999b11e3…`, cleanup `a9fdabe5…`); ref verified pointing at
+the new commit; maker-report blob read-back MATCH (sha256
+`0dc3de3c23cb683f81520bd15f841e650d5753c3e61b1b615a6ef61b2a05ea29`). **NOT merged.**
+Amendment commit **`[AMENDMENT]`** (tree `[TREE]`) re-filed the same four files with this §8
+filled in; its maker-report blob read-back MATCH (sha256 `[REPORT-SHA]`). That is the branch
+head. (This on-disk copy additionally names the amendment commit in this line; the filed
+blob is otherwise identical.)
 
 ## 9. FOR THE CHECKER
 
