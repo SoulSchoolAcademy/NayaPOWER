@@ -10937,16 +10937,17 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 /* ——— (2b) BOARDS LIGHT UP WHOLE on hover — the face itself lights ———
    Own-color tint on the face (never white): the board fills alive,
    not just its rim + outside halo. */
+/* EYE-NOTES §3.2 (Shawn 18:00Z 2026-11-17, newer word wins per Laws §0): "BOARDS LIGHT UP WHOLE" above is SUPERSEDED — hover glow on the EDGES only, the face stays as it is at rest. The four wash rules below are removed, each carrying its own note. */
 /* FIX-2 (re-check FAIL): the two rules above were dead - background-color paints UNDER the opaque injected .board-h gradient (sh-hero-css L8212), and the descendant rule matches nothing (all 9 boards carry BOTH classes on one element). One working rule on the element itself, background shorthand, replaces the gradient - same gradient as .board-h:hover below. */
-.sh-board:hover{background:linear-gradient(180deg,color-mix(in srgb, var(--bc) 30%, #0d0d14),color-mix(in srgb, var(--bc) 14%, #07070b));}
-.activity-card:hover{background-image:linear-gradient(180deg,color-mix(in srgb, var(--ac,#8e24aa) 20%, transparent),color-mix(in srgb, var(--ac,#8e24aa) 8%, transparent));}
+.sh-board:hover{/* EYE-NOTES §3.2: hover background wash removed — the face stays as it is at rest */}
+.activity-card:hover{/* EYE-NOTES §3.2: hover background wash removed — the face stays as it is at rest */}
 
 /* ——— SEPARATE HUNK GROUP — pre-existing gaps the checker named, NOT
    this round's fails: .intel-board + .board-h light up whole on hover.
    Same law, same own-color face tint; judged apart from the FAIL fix. */
 /* FIX-2 (re-check FAIL): !important REQUIRED here - the live injected rv-face-style rule sets .intel-board{background:#050607 !important} (face() invoked L4051, appended L3992); a shorthand !important sets background-image:none !important, so only an !important hover background-image can beat it. Important-vs-important resolves by specificity: .intel-board:hover (0,2,0) beats .intel-board (0,1,0). Rest state untouched; rv-face-style untouched. */
-.intel-board:hover{background-image:linear-gradient(180deg,color-mix(in srgb, var(--tone) 22%, transparent),color-mix(in srgb, var(--tone) 8%, transparent)) !important;}
-.board-h:hover{background:linear-gradient(180deg,color-mix(in srgb, var(--bc) 30%, #0d0d14),color-mix(in srgb, var(--bc) 14%, #07070b));}
+.intel-board:hover{/* EYE-NOTES §3.2: hover background wash removed — the face stays as it is at rest */}
+.board-h:hover{/* EYE-NOTES §3.2: hover background wash removed — the face stays as it is at rest */}
 
 /* ——— HUB ICONS FIX-4 2026-11-17 ———
    (1) DOUBLE-UP JUST A TAD: every clone offset in this file is now
