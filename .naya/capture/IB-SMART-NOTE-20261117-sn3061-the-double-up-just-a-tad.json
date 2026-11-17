@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3061",
+ "intelligence": {
+  "title": "The Double-Up — Just a Tad",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3061-the-double-up-just-a-tad",
+  "smart_note_id": "SN-3061",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3061/IB-SMART-NOTE-20261117-sn3061-the-double-up-just-a-tad.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A double-up is a clone sitting just behind the thing, offset by a hair, so the eye reads depth — one object sitting on another, a real thing with a shadow of itself. Move it a little too far and the trick breaks: now you SEE the spacing, you see two things with a gap between them, and the eye reads it as a mistake, not as depth. It looks weird. It doesn't look pro. The calibration is not a number you measure — it's a feeling you check with the eye: can you feel the depth? Can you see the gap? If you can see the gap, you went over much — pull it back until the gap disappears and only the depth is left. Just a tad. That is the whole law: the offset is a hair, never a step.",
+  "simple_view": "Imagine you draw a picture and then draw it again just a tiny bit behind it — so tiny you can hardly see it moved at all! That's what makes it look deep and real, like a real thing! But if you move the second picture too far — now you can SEE the space between them, and it looks weird and messy! So you only move it JUST A TAD — a tiny tiny bit — so you feel the depth but you never see the gap!",
+  "grandma_view": "It's like this, love — imagine you put a picture just behind itself, dear, moved over by the tiniest little bit — so small you can hardly see it! That's what makes it look deep and real, love, like a real thing sitting there! But if you move it too far, dear — now you can SEE the space between them, and it looks wrong, not professional at all! So you only move it just a tad, love — a hair — so you feel the depth but you never see the gap!",
+  "naya_view": "The double-up offset is a HAIR: feel the depth, never see the gap. Move too much and the spacing shows — it reads as a mistake, not as depth, and it doesn't look pro. \"Just a tad\" is the calibration, judged by the eye, not by measurement. Headline item of fix-4.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3061",
+   "title": "The Double-Up — Just a Tad",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3061/IB-SMART-NOTE-20261117-sn3061-the-double-up-just-a-tad.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3061/IB-SMART-NOTE-20261117-sn3061-the-double-up-just-a-tad.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8ad317d1e0417254b99c1240e8de183e669ebda7"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

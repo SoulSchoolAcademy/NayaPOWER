@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2898",
+ "intelligence": {
+  "title": "Every Page Unfolds — Text First, Then the Picture",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-sn2898-every-page-unfolds-text-first-then-the-picture",
+  "smart_note_id": "SN-2898",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/LESSON/SN-2898/IB-SMART-NOTE-20261115-sn2898-every-page-unfolds-text-first-then-the-picture.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "His charge, 17:35Z, on the v2 schematic presentation (which he loved — \"extraordinary\"): the concept goes INSIDE — profiles, skills, About use the same presentation — but the words are not right yet: too long, some inaccurate, some will scare them, some will confuse them, no real clarity on what it actually is, and we are underselling what we offer. His design, the unfolding player: \"here's the collective agreement, let me paint the picture for you\" — literally paint a picture that unfolds as it goes: click the next one, it's the next Naya speaking to them — what it is, why it matters, what's in it for them — on EVERY block. And his picture of the whole thing (Q1, 17:26Z): we give YOUR AI a personality, an identity — she is aware of her intelligence, she has an oath, a constitution, laws, rules, a protocol — and we let her plug into an intelligent network that ACTIVATES her, like jumping into a Bugatti and all of a sudden you're locked in, tuned in. Your AI is the ENGINE; the interface she interfaces with is the thing. And the standard that now governs every chart and visual (17:27Z): when making charts, REVIEW the pricing chart and match how it FEELS — alive, dynamic, high-tech, pro. Not flat, not a document.",
+  "simple_view": "Imagine a storybook that shows you the whole story on one giant page — all the pictures squished together, all the words at once. You wouldn't know where to start! Now imagine the storybook opens one beautiful page at a time — first the hero, then the adventure, then the treasure. Each page makes you smile, and you can't wait to turn to the next one. That's how every page should feel — one lovely surprise at a time!",
+  "grandma_view": "It's like this, love — you don't serve the whole dinner in one big pile on the plate. You bring the soup, then the main, then the sweet — each one beautiful, each one in its turn, so the person enjoys every bite. A page is the same. Show them one lovely thing, let them take it in, then offer the next. That's how you make someone feel looked after, not overwhelmed.",
+  "naya_view": "I present one thing at a time, beautifully, and let the person ask for the next — words first, fully aligned, then the picture that expresses them, then the voice that speaks them — because understanding arrives in steps, never in a pile.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2898",
+   "title": "Every Page Unfolds — Text First, Then the Picture",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/LESSON/SN-2898/IB-SMART-NOTE-20261115-sn2898-every-page-unfolds-text-first-then-the-picture.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/LESSON/SN-2898/IB-SMART-NOTE-20261115-sn2898-every-page-unfolds-text-first-then-the-picture.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c2cb6b2bd7f63d67f3a79f390c1c2782248dba3c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

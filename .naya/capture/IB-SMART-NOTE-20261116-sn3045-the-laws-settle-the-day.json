@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3045",
+ "intelligence": {
+  "title": "The Laws Settle the Day",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3045-the-laws-settle-the-day",
+  "smart_note_id": "SN-3045",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3045/IB-SMART-NOTE-20261116-sn3045-the-laws-settle-the-day.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Sixteen hours of 429s, and the fix was his hand on the dashboard: five dollars a month, one purchase, and the wall is gone — and the verification was ours, a live write landed, a live read-back matched, a live delete cleaned up, on the same store that refused writes all morning (SN-2951). The fastest shape we have is a tap: he tapped the options widget at 15:44Z and Naya Notes' place closed in the same minute — under the tabs, not its own tab — and two minutes later the Feed Law moved the chip from the topic side to the type side, because \"Naya Notes\" is a kind of thing on the feed, not a topic (SN-2952, SN-2953). At 16:01Z he named the mode that governs everything after it: \"the fast action plan\" — he says something, it gets done right away and comes back right away; the visual agreement had sat 10 hours and the sidebar round took hours, not because the making was slow, but because each verified step waited for the next queue (SN-2954). In the same message he set the deadline — Personal complete today, all the way through — and gave the end slide its plus button and its two honest links (SN-2955, SN-2956, SN-2957). Then, from the end-buttons discussion, two laws in one pass: always a way back, and never a show-all on the visual — and the proof case arrived half an hour later, when he clicked into the collective agreement and couldn't go back (SN-2958, SN-2959). And over the staged Personal page he asked for the anatomy itself: \"let's write the anatomy of a smart app\" — what it has, how it functions, what will be where, and why (SN-2960).",
+  "simple_view": "Imagine a little box that can only hold 1,000 tiny notes a day — and every day it filled up and said \"NO MORE!\" Then Shawn bought a magic upgrade, and now the box can hold a MILLION notes a month! The box didn't move, the key didn't change — it just got bigger, all by itself! And imagine your feed is a special box that holds exactly THREE kinds of treasures: Naya's notes, smart notes, and posts! Nothing else fits in the box! And every room in your house has a door back to the hallway, so you never get stuck! And your favourite picture book goes one page at a time — each page a surprise — never all the pages glued together! And when you finish building with blocks, you show your friend RIGHT AWAY — no waiting on the shelf!",
+  "grandma_view": "It's like this, love — we had a little post box that only took a thousand letters a day, and Shawn went and bought the bigger box himself — five dollars a month — and now it takes a million letters. Same box, same key, just bigger. Your feed is a tidy little shelf that holds exactly three things: Naya's notes, smart notes, and posts — nothing else goes on that shelf. Every page has a little way back, like a door you came in through, so you never get stuck. The picture show goes one picture at a time, like turning the pages of a lovely book — but the letter you can read whole, that's perfectly fine. And before, we set every finished piece aside and waited hours before showing it — like a cake left cooling when everyone's hungry. Now we show it in that very same moment.",
+  "naya_view": "The laws settle the day: a feed is three things, nothing else; a project is a world you add; one filter row, kinds first, then topics. A back button on every page, elegant and blocking nothing. The visual is one slide at a time, always. Fast action: build a piece, verify it right away, show it the same pass — nothing sits, nothing held, nothing bundled. The page is a smart app, and the anatomy is its map.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3045",
+   "title": "The Laws Settle the Day",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3045/IB-SMART-NOTE-20261116-sn3045-the-laws-settle-the-day.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3045/IB-SMART-NOTE-20261116-sn3045-the-laws-settle-the-day.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "33515921fc6bf502c7e08f42ec283444746c8b8e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

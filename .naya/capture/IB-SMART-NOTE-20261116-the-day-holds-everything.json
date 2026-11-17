@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2920",
+ "intelligence": {
+  "title": "The Day Holds Everything",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-the-day-holds-everything",
+  "smart_note_id": "SN-2920",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2920/IB-SMART-NOTE-20261116-the-day-holds-everything.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The day is the unit of a life, and the calendar is the unit of the system. Three dictations in seventeen minutes build one shape: the month fits the screen exactly (math, like the pricing charts — hover and a block lights up alive in its day's color); the day holds everything (stats, feeds, Intel Today, weather, news, personal, business, space, the daily intelligence report); and the day has its wisdom (the highest-ranked smart note of the day, or the truest wisdom from everything learned — a new one every day). \"Operate from the day, not the Hub\" is the sentence that makes it a system instead of a feature: the Hub is a place you go to; the day is a place you live in. Intel Today and the Daily Intelligence Report are two different things on purpose — highlights vs the report — because a day has both a glance and a record. And the optional dailies default OFF, because the day's own wisdom is the default and everything else is a choice. The whole thing is structured on the daily: back for any day's data, plan for the future, book, wisdom for the day. That is the operating system, stated as a calendar.",
+  "simple_view": "Imagine a magic calendar! It fits perfectly on your screen, and every day lights up in its own beautiful colour! You tap a day — and WOW! — everything from that day pops up: your notes, your news, the weather, your friends! And every day has a special wisdom — the smartest thing anyone learned that day! You can go back to any day and see what happened, like a time machine!",
+  "grandma_view": "It's like this, love — it's a calendar, but a clever one. It fits your screen perfectly, and every day lights up in its own colour. Tap a day and there it all is — your notes, your news, the weather, what's happening — the whole day in one place. And each day has its own little piece of wisdom, the best thing learned that day. You can go back to any day and see what happened, plan ahead, and book your appointments. Operate from the day, dear — nice and easy to understand.",
+  "naya_view": "The day holds everything. Open the app and the calendar opens, today already highlighted. Click a day and you're in that day's world — and every day has its wisdom.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2920",
+   "title": "The Day Holds Everything",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2920/IB-SMART-NOTE-20261116-the-day-holds-everything.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2920/IB-SMART-NOTE-20261116-the-day-holds-everything.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e79f54e7ec5acfcd3b30c2e566439f52d3cf3a18"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

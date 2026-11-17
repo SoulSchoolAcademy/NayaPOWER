@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2966",
+ "intelligence": {
+  "title": "The Full-Screen Law",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2966-the-full-screen-law",
+  "smart_note_id": "SN-2966",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2966/IB-SMART-NOTE-20261116-sn2966-the-full-screen-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A pop-up that uses a corner of the screen wastes the screen and insults the citizen's eyes: tiny text, hard to read, while the rest of the screen sits empty and black. The whole screen is there — use it. Max experience is not a luxury for big screens; it is the standard for every screen, regardless of how much information is on it. \"Regardless of the information on the screen\" is the key: a pop-up with three lines deserves the full screen just as much as a pop-up with three hundred, because the citizen's eyes are the same size either way. A small pop-up is a fail, the same as a flat button.",
+  "simple_view": "Imagine you open a present, but it's in a teeny tiny box in the corner of a giant room, and you have to squint to see it! Silly, right? The room is YOURS — open the present right in the middle, big and beautiful, so you can see everything! That's the law: pop-ups open big, almost the whole screen, with a little X to close them.",
+  "grandma_view": "It's like this, love — when a little window pops up, it shouldn't be a tiny thing squished in the corner that you can hardly read. You've got the whole screen, dear — use it! Open it up big, almost full screen, with a nice little X in the corner to close it when you're done. Big and clear, whatever's in it.",
+  "naya_view": "Pop-ups open big, almost full screen, with an X in the corner to exit. The whole screen is there — use it. Max experience, regardless of what's on it. Small pop-ups are done.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2966",
+   "title": "The Full-Screen Law",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2966/IB-SMART-NOTE-20261116-sn2966-the-full-screen-law.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2966/IB-SMART-NOTE-20261116-sn2966-the-full-screen-law.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8d6488129bb3defb727193add708693d99744b4b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

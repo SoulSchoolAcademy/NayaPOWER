@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3033",
+ "intelligence": {
+  "title": "Do It Right, Every Layer Great",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3033-do-it-right-every-layer-great",
+  "smart_note_id": "SN-3033",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3033/IB-SMART-NOTE-20261116-sn3033-do-it-right-every-layer-great.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The ten notes are one standard stated six ways, and the standard is the answer to the letter. The letter was the failure that named it: a job that seemed simple — just add the images — so simple that nobody checked it, not even him, until he found it all messed up. The checks had PASSED it: 86 beats present, in order, scroll works — the parts were all there and the reading experience was still broken. That is why the laws exist in this order. Use what works: the unfolding already existed in the deck, beautiful and working, and the job was the pictures put in where they made sense — done — instead of a rebuild from scratch that made a big page of unformatted text and images. Read it as a reader: counts, scroll, and buttons prove the parts, never the reading — and the only check that proves a reading experience is reading, top to bottom, the way he reads it. Do it right the first time: a summary is not a step toward done, it is a redo he has to do himself — eight or nine summaries mean he has to put the right stuff in eight or nine times — and the legal pages proved the price, a summaries round that looked like eight pages done and was actually zero pages done. Every layer great: a beautiful presentation over one-sentence summaries is still not a legal agreement, and airtight drafting in plain unformatted text still reads as not legit to a stranger's eye — one good layer never carries the rest. And the legal pages are the proof case for all of it at once: done professionally, full sections, definitions, everything covered, centered and aligned in royal blocks — on HIS base, his ten pages, his voice never rewritten, his fill-ins literal, his conflicts flagged for his ruling and never silently resolved. The promise the standard serves is the first note: one page, everybody's world, secure, automated if they wish, open if they want in — and the measure is a feeling, not a spec: a whole different world from the average feed. The Hub is the center that holds it, the mail knows which world it came from, the letter reads centered down the middle. One page changes the world — and the page is only finished when every layer is great.",
+  "simple_view": "Imagine you build the very best tower ever. Every layer is great, top to bottom. No tiny summaries, no pretend versions. You use the castle you already have. And you read it like a reader, top to bottom!",
+  "grandma_view": "It's like this, love — when you make something, you do it properly the first time, dear — no little drawings of a cake instead of the cake, no pretend versions. You use what's good already — the beautiful castle you have, just add the flags where they look nice. And you don't just count the pieces, love — you read it like a reader, top to bottom, and if it doesn't present well, you call it broken, even if every piece ticks. Every layer has to be lovely, dear — how it looks, what it does, how it's designed, how smart it is — or the project isn't done. And the whole thing is for one page, love, that holds your whole world, safe on your phone.",
+  "naya_view": "Do it right the first time, every layer great. Use what's good already — name it before you build it, take it verbatim. Read it as a reader, top to bottom — mechanical checks never prove the experience. One page changes the world — the Hub the center, the mail knowing its world, the letter centered down the middle. And the legal pages on his base: his words, never rewritten; his fill-ins, literal; his conflicts, flagged for his word.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3033",
+   "title": "Do It Right, Every Layer Great",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3033/IB-SMART-NOTE-20261116-sn3033-do-it-right-every-layer-great.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3033/IB-SMART-NOTE-20261116-sn3033-do-it-right-every-layer-great.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "71c84483e49f7512a4d4ab4b529b4cdee4bc5645"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

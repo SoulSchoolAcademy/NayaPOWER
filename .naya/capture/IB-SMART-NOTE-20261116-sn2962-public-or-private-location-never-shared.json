@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2962",
+ "intelligence": {
+  "title": "Public or Private, Location Never Shared",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2962-public-or-private-location-never-shared",
+  "smart_note_id": "SN-2962",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2962/IB-SMART-NOTE-20261116-sn2962-public-or-private-location-never-shared.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Privacy is the promise the whole system stands on: NayaNET never shares your location, full stop. The location questions are not surveillance — they are the matching signal, and only the matching signal. The citizen tells the system where they are so it can find people like them, and the system never tells anyone else. Public or private is the same promise at the page level: the citizen chooses who the page is for. And the levels are the citizen's choice too — country, region, town, each one separately, because \"Canada\" and \"my town\" are very different amounts of trust.",
+  "simple_view": "Imagine you get to choose: is your page open for everyone to see, or just for your friends? That's your choice! And where you live — that's a secret the system keeps just for finding friends like you. It never tells anyone where you are. Never ever!",
+  "grandma_view": "It's like this, love — your page can be open to everyone or private, just for the people you choose. And where you live stays between you and the system, dear — it never tells a soul. It's only used to find lovely people near you who like the same things you do. Canada, or BC, or your town — you choose how much you say, and it stays private.",
+  "naya_view": "Public or private — your choice, in Settings. Where you are is never shared: country, region, town, each your choice, solely to connect you with like-minded people.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2962",
+   "title": "Public or Private, Location Never Shared",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2962/IB-SMART-NOTE-20261116-sn2962-public-or-private-location-never-shared.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2962/IB-SMART-NOTE-20261116-sn2962-public-or-private-location-never-shared.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "3af83ae88a4cc8e54e7feb3d0af28c488c21b30c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

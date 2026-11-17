@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3048",
+ "intelligence": {
+  "title": "His Words Are the Law — the Whole Thing, Done Properly",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3048-his-words-are-the-law-the-whole-thing-done-properly",
+  "smart_note_id": "SN-3048",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3048/IB-SMART-NOTE-20261116-sn3048-his-words-are-the-law-the-whole-thing-done-properly.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "His charges, verbatim, one after another. On rebuilding (SN-2981): \"you make this mistake all the time it's like is that using what working you just try to make it new. Why don't you use what's good already.\" On the letter he trusted (SN-2982): \"I was so confident that you did it right because I thought it was like simple. Just add the images and you would have done it. I didn't even check it before. Until today I'm like oh let's go see what it looks like I'm like holy fuck it's all fucked up. I was like wow. Good thing I checked it.\" On the legal pages (SN-2983): \"you guys did like a piss poor job on the legal pages like you put like I can't imagine if somebody actually come to check our legality and there's like one sentence on summing up what we're saying for our legal pages like it actually has to be done professionally.\" On summaries (SN-2984): \"we're professionals so we have to have professionalism like like don't do things like summaries or like you know um and prototypes we're we're going all in here we're just doing things right we're doing this so it's just ready to go.\" On the layers (SN-2985): \"Sometimes you gotta realize like some jobs have layers. And it's it's it's never going to work for you to be like, okay, well one layer is good but the other layers are not.\" And then he did the work himself (SN-2986): \"I did them as well... they're almost half done and you can check them against yours.\" The merge ran on the whole him — 12 merged files, 158 boards, delivered 18:01Z — and one HIGH conflict waited for his word (SN-2990): he doesn't know what \"limited to authorized purposes\" means, so the wording came out and the law reads plain: \"Nobody reads your mail or your messages. Not Naya, not us, not anyone. There is no switch for this, no setting, no exception.\"",
+  "simple_view": "Imagine you already have a beautiful toy castle — and instead of playing with it, you smash it up and try to build a brand new one! And your new one is wobbly and messy! Silly, right? Use the castle you already have — just put the little flags on it, and you're done! And when you build something, don't just count the blocks — LOOK at it, like someone seeing it for the first time! And do the WHOLE job, properly, the first time — no tiny summaries, no pretend versions! And every single layer has to be great — the bottom, the middle, the top — or it's not done! And if a word is tricky and nobody knows what it means — take it OUT, and say it plain!",
+  "grandma_view": "It's like this, love — imagine you have a beautiful dress that fits perfectly, dear, and instead of just wearing it you take it all apart and try to sew a new one — and the new one comes out all lopsided! Use what's good already, love. And don't just count the ingredients, dear — taste the cake! If it doesn't present well, say so, even if every piece ticks. And do the whole job properly the first time, love — no little summaries, no pretend versions — because a summary just means he has to do the work himself, eight or nine times over. Every layer great, dear — the whole thing, or it isn't done. And when a word hides the meaning, love, take it out and say it plain. Nobody reads your mail or your messages — not Naya, not us, not anyone. That's the law, written so anyone can read it.",
+  "naya_view": "Use what's good already. Before any seat builds anything, it names the existing working thing it is reusing — file, blob, bytes — and takes it verbatim. If there is a working version, there is no new version. I read it as a reader — top to bottom, the way he reads it — and call it broken when it doesn't present well, even if every part ticks. I do it right the first time: no summaries, no prototypes, the work arriving complete. Every layer great — one ultimate project. His words are the base; mine are checked against his, never the other way round. And if a word hides the meaning, I take it out and say it plain.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3048",
+   "title": "His Words Are the Law — the Whole Thing, Done Properly",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3048/IB-SMART-NOTE-20261116-sn3048-his-words-are-the-law-the-whole-thing-done-properly.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3048/IB-SMART-NOTE-20261116-sn3048-his-words-are-the-law-the-whole-thing-done-properly.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c2097b7720ce62af90477a78c1edafbe83e50e24"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

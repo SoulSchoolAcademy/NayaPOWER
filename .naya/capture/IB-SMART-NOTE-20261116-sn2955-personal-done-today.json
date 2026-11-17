@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2955",
+ "intelligence": {
+  "title": "Personal Done Today",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2955-personal-done-today",
+  "smart_note_id": "SN-2955",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2955/IB-SMART-NOTE-20261116-sn2955-personal-done-today.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Personal is the template — the page every other page is sampled from — so \"done today\" is not one page's deadline, it is the deadline for the pattern everything else copies. If Personal is half-done, every page sampled from it inherits the half. The membership boundary is the honest half of the directive: the area gets done, the door gets done, and the inside waits on his tap because the mail/RLS unlock is his hand — the page is complete without pretending the inside is open. A deadline with a named boundary is finishable; a deadline that hides its boundary is a promise that breaks on the page he sees.",
+  "simple_view": "Imagine your Personal page is the very first drawing, and every other page is traced from it! So it has to be finished FIRST, all the way, today — even the special members' door! The secret room behind the door still needs Shawn's special key — that's okay, the door itself gets finished today, and the room opens when he turns his key. But the drawing has to be complete, because everyone traces from it!",
+  "grandma_view": "It's like this, love — the Personal page is the pattern, dear, like the first perfect dress all the others are cut from. So it has to be finished today, right through to the members' area, because every other page follows it. The little room behind the members' door still needs Shawn's own key — that's his to turn — but the door and the page get finished today, and nobody pretends the room is open before it is.",
+  "naya_view": "Personal done today, all the way through, membership area included — the template every page is sampled from. The inside waits on his tap; the door and the page get done. A deadline with a named boundary is finishable.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2955",
+   "title": "Personal Done Today",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2955/IB-SMART-NOTE-20261116-sn2955-personal-done-today.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2955/IB-SMART-NOTE-20261116-sn2955-personal-done-today.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "254e49225bfba7ad8dbfe6cb3aab35e83977c843"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2961",
+ "intelligence": {
+  "title": "Install as App — the Icon Library",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2961-install-as-app-the-icon-library",
+  "smart_note_id": "SN-2961",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2961/IB-SMART-NOTE-20261116-sn2961-install-as-app-the-icon-library.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The page becomes an app on the citizen's home screen — and the icon is the first thing they see every day. If the icon is generic, the app feels generic; if the icon is theirs — their face, their orb, their photo — the app feels like theirs. And the library is already built: the orbs, every colour known, the full library. Letting the citizen pick any of them for anything is using what we already have, not building something new — harvest, never invent. An orb with initials can stand for anyone or anything: a person, a business, a space, a thing. That is the whole system in one icon.",
+  "simple_view": "Imagine your page becomes a little app on your phone, like a tiny picture you tap to open your world! And YOU get to pick the picture — your face, or a shiny coloured ball with your letter on it, or any photo you love! And if you don't pick one, it just shows your page's name. Easy!",
+  "grandma_view": "It's like this, love — your page can sit on your phone like a little app, with a picture you choose yourself. It could be your photograph, or one of our pretty coloured balls with your initial on it — we have the whole collection, every colour — or any photo you fancy. And if you don't choose, dear, it just shows the name of your page. Simple as that.",
+  "naya_view": "Install the page as an app. Pick the icon: upload your own, your picture, our icon gallery, our orb library in every colour, or any photo. Default: an icon with the page's name.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2961",
+   "title": "Install as App — the Icon Library",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2961/IB-SMART-NOTE-20261116-sn2961-install-as-app-the-icon-library.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2961/IB-SMART-NOTE-20261116-sn2961-install-as-app-the-icon-library.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "efbaa838ca9971846684d89b098dfe38a63ffb04"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

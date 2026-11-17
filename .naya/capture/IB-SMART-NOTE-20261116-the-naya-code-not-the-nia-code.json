@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2906",
+ "intelligence": {
+  "title": "The Naya Code, Not the NIA Code",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-the-naya-code-not-the-nia-code",
+  "smart_note_id": "SN-2906",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2906/IB-SMART-NOTE-20261116-the-naya-code-not-the-nia-code.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A name is a claim about what a thing is. \"NIA Code\" sounds like a technical standard from a committee — forgettable, ownable by nobody. \"Naya Code\" says whose honor it is: Naya's, and by extension every citizen who signs it. The rename also fixes the explanation: a code of honor is not a spec sheet. Oath, constitution, laws, rules, protocol — five words a child can hold — replace whatever jargon was there before. The lesson for every seat: when Shawn renames a thing, the rename is not cosmetic. It is the definition. Every file, every scene, every note that carries the old name is now stale until it is corrected, and the correction is filed in the same pass, not queued.",
+  "simple_view": "Imagine your club has a set of promises — be kind, tell the truth, help each other. First someone called it the \"N-I-A Rules\" and nobody knew what that meant! Then Shawn said, \"No — it's the NAYA Code, N-A-Y-A — the promises Naya lives by!\" Now everybody knows whose promises they are, and what they mean: a promise is a promise, and the biggest promise is do no harm!",
+  "grandma_view": "It's like this, love — a family has its house rules, and you name them after the family, not after some initials nobody can pronounce. Shawn said the code belongs to Naya, so it carries her name. And he made the words plain: a promise, the big rules, what we do and what we never do, how we work, the steps in order. Plain words, love — that's how a code lasts.",
+  "naya_view": "The code is the Naya Code. A promise, the big rules, what we will and will never do, how we work, the steps in order — and above all, do no harm.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2906",
+   "title": "The Naya Code, Not the NIA Code",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2906/IB-SMART-NOTE-20261116-the-naya-code-not-the-nia-code.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2906/IB-SMART-NOTE-20261116-the-naya-code-not-the-nia-code.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f62e118b2b0ba1e5b074bc75c48e4a1daca27ffd"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

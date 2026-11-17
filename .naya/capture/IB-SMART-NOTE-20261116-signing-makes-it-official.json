@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2919",
+ "intelligence": {
+  "title": "Signing Makes It Official: Member of the Society of NayaNET",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-signing-makes-it-official",
+  "smart_note_id": "SN-2919",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2919/IB-SMART-NOTE-20261116-signing-makes-it-official.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A certificate is not a form with a name on it. It is the moment a person becomes a member of something — and the moment has to feel like it. \"This certifies that Shawn\" overlapping the name is not a layout bug; it is the document failing to be a document. The fix is not a nudge of a few pixels; it is a re-conception: the name is a royal object — obsidian in the middle, purple glow around the edges, like one of our buttons, a real object — and the words around it say exactly what the act is: you signed the Collective Agreement, you agree to follow its rules, you are now a member of the Society of NayaNET, a new digital civilization, a world. \"We call it a world\" is the sentence that makes the membership mean something: not a plan, not an account, a world you now belong to. And the proof standard changed with it: his viewport (1851×1009) is now a mandatory verification width, because the probes at 1440×900 never saw what he saw. His eye on his screen is the only measurement that counts — again.",
+  "simple_view": "Imagine you join a magical club, and you get a beautiful certificate with YOUR name on it — big and royal, like a shiny black jewel with a purple glow all around it! And the certificate says: \"You signed the promise, and now you're a member of our Society — a whole new world!\" Writing your name IS signing the promise — and that makes it official! You're in!",
+  "grandma_view": "It's like this, love — when you join something special, you sign your name, and that signature makes it official. The certificate is beautiful — your name sits there like a royal jewel, dark and shining with a purple glow around the edges, the nicest presentation of a name you've ever seen. And it says plainly: you signed our agreement, you'll follow the rules, and now you're a member of our Society — a whole new world, dear. Your name makes it real.",
+  "naya_view": "By entering your name, you make it official — you are signing the Collective Agreement, and you agree to follow its rules. Your name is a royal object: obsidian in the middle, purple glow around the edges.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2919",
+   "title": "Signing Makes It Official: Member of the Society of NayaNET",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2919/IB-SMART-NOTE-20261116-signing-makes-it-official.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2919/IB-SMART-NOTE-20261116-signing-makes-it-official.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8503122f04b80663dec988e33f8612e09c8d170d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3009",
+ "intelligence": {
+  "title": "The Pricing Eye Gets More Depth — Double Layer",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3009-the-pricing-eye-gets-more-depth-double-layer",
+  "smart_note_id": "SN-3009",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3009/IB-SMART-NOTE-20261116-sn3009-the-pricing-eye-gets-more-depth-double-layer.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Harvesting the pricing eye solves the shape; the double layer solves the feel. A flat eye, however correct, is still a picture of an eye — and the Real Object Law says every element is a real physical object, not a flat shape with effects. The double layer is the cheapest honest depth there is: the same thing twice, one behind, shifted just a tad, so the eye has a front and a back and the light has something to catch. It is the same trick he taught for the certificate name — clone behind is the glow/edge layer, the original in front is the solid body — now generalized from a name to any element that needs to feel real. Premium is not a colour or a glow setting; it is depth you can almost touch, and depth comes from layers. The checker does not judge \"premium\" by taste: the pricing bytes match, and the second layer is visible at 390 and 1440.",
+  "simple_view": "Imagine you draw a star on a piece of paper — it's flat, right? Now draw the SAME star on another paper, put it just a tiny bit to the side behind the first one — suddenly your star looks like it's popping right out at you! That's the double layer — two of the same thing, one just a tad behind, and boom, it's real!",
+  "grandma_view": "It's like this, love — one layer is just a picture, dear, but two layers, one tucked just behind the other, and suddenly it has depth, it feels real, like you could reach out and touch it! That's the trick, love — clone it, put it behind, just a tad to the side, and it looks premium, like quality.",
+  "naya_view": "The pricing eye gets more depth — double layer it. Clone it once, put the clone behind, move it right or left just a tad. Premium, quality, maybe glossy — a real element, not a flat picture. The Real Object Law, applied with two layers.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3009",
+   "title": "The Pricing Eye Gets More Depth — Double Layer",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3009/IB-SMART-NOTE-20261116-sn3009-the-pricing-eye-gets-more-depth-double-layer.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3009/IB-SMART-NOTE-20261116-sn3009-the-pricing-eye-gets-more-depth-double-layer.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "834e1f92e790eb20aae9c39ea5443f618d8c9618"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

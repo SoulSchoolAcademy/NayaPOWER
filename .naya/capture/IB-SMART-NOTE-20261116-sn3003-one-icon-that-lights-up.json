@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3003",
+ "intelligence": {
+  "title": "One Icon That Lights Up — Never Icon and a Light",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3003-one-icon-that-lights-up",
+  "smart_note_id": "SN-3003",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3003/IB-SMART-NOTE-20261116-sn3003-one-icon-that-lights-up.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Two things doing one job is one thing too many. An icon beside its own light says the same thing twice — \"here I am\" and \"I am on\" — in two separate marks, and the eye has to read both to get one meaning. One icon that lights up says it once: the icon IS the light, the light IS the icon, and the state is the shape itself. That is why it is the better presentation — not because it is simpler to build, but because it is simpler to see. The rule generalizes beyond the composer: anywhere a control pairs an icon with a separate glow dot, status light, or indicator, the pair collapses to one — the icon carries its own lit state. The composer controls are first because that is where his eye caught it — the Make-a-post controls showed little lights beside the icons, and the lights were doing the icon's job. The same law rides with the sidebar rule (SN-3000 Sidebar Icons Light As You Scroll): the sidebar icons light in their own colors; the composer icons light as themselves — in both places, the icon is the light, never the icon plus a light.",
+  "simple_view": "Imagine you have a little star — and next to the star, there's a tiny light bulb that lights up when the star is turned on. That's silly, isn't it? The star should just light up ALL BY ITSELF! One star that glows is much prettier than a star PLUS a light bulb. One thing that lights up — that's the rule!",
+  "grandma_view": "It's like this, love — imagine a lovely little lamp, dear, with a tiny light sitting next to it to show the lamp is on. Oh, love — the lamp itself should glow! One beautiful lamp, glowing all by itself, is so much lovelier than a lamp with a little light beside it. One thing that lights up, dear — never two things doing one job.",
+  "naya_view": "One icon that lights up — never icon and a light. Where a control shows both an icon and a separate light, collapse it to one icon that itself lights up. One lit icon is the better presentation. Applies to the Make-a-post/composer controls first.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3003",
+   "title": "One Icon That Lights Up — Never Icon and a Light",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3003/IB-SMART-NOTE-20261116-sn3003-one-icon-that-lights-up.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3003/IB-SMART-NOTE-20261116-sn3003-one-icon-that-lights-up.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e8c4bdcc0bb36a4d90a6c3391b7284a2a9aff22e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
