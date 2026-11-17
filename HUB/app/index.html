@@ -5691,6 +5691,7 @@ function HubView(params) {
      Toggle: open rail → close; collapsed/hidden rail → open; docked visible
      rail → collapse (closeRightRail collapses a docked rail). */
   const railBtn = el('button', 'rail-toggle rail-toggle-right', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>');
+  railBtn.type = 'button'; /* EYE-NOTES fix: typeless buttons are a latent submit risk (the Personal builder sets it explicitly) */
   railBtn.setAttribute('aria-label', 'Open right sidebar');
   railBtn.setAttribute('aria-expanded', 'false');
   railBtn.setAttribute('title', 'Right sidebar — your worlds and NayaNET');
