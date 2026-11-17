@@ -156,7 +156,8 @@ body.fullscreen .ph-main{padding-top:12px}
 .search-row input::placeholder{color:#fff}
 /* --- MESSENGER GRID --- */
 .messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
-.panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden}
+.panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
+.panel:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.45);box-shadow:0 24px 48px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1),0 0 26px rgba(142,36,170,.22)}
 .panel h3{margin:0;padding:16px 18px 8px;font-size:15px;font-weight:800}
 .panel .panel-sub{padding:0 18px 10px;font-size:12.5px;color:#fff}
 /* --- ORB: the EXACT Connections-room orb — .cx-stage .cx-ava, live from
@@ -204,7 +205,8 @@ body.fullscreen .ph-main{padding-top:12px}
 .toggle button.on .tgl-ico{color:#fff;text-shadow:0 0 12px var(--tc),0 0 4px #fff}
 .toggle button[disabled]{opacity:.45;cursor:not-allowed}
 .thread-body{flex:1;padding:20px 18px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px}
-.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:14.5px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
+.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:14.5px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);transition:transform .25s,box-shadow .25s,border-color .25s}
+.msg:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.65);box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),0 0 22px rgba(142,36,170,.45)}
 .msg .meta{display:block;font-size:11.5px;color:#fff;margin-top:6px}
 .msg.mine{align-self:flex-end;background:linear-gradient(180deg,#8e24aa,color-mix(in srgb,#8e24aa 55%,#050607));border-color:rgba(142,36,170,.6)}
 .msg.theirs{align-self:flex-start;background:linear-gradient(180deg,#1b1b24,#0c0c11)}
@@ -212,9 +214,11 @@ body.fullscreen .ph-main{padding-top:12px}
 .msg.letter .subject{font-weight:800;font-size:15px;margin-bottom:6px}
 .msg.letter .letter-to{font-size:12.5px;color:#fff;margin-bottom:8px}
 .typing{align-self:flex-start;font-size:12.5px;color:#fff;padding:6px 4px}
-.format-note{align-self:center;font-size:12px;color:#fff;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:7px 12px;border-radius:999px}
+.format-note{align-self:center;font-size:12px;color:#fff;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(142,36,170,.55);padding:7px 12px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 18px rgba(0,0,0,.5),0 0 14px rgba(142,36,170,.25);transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
+.format-note:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 24%,#12101a),color-mix(in srgb,#8e24aa 12%,#08080c));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5)}
 /* --- SMART NOTE card in the thread (L6 format) --- */
-.smart-note{border-radius:16px;border:1px solid rgba(142,36,170,.4);background:linear-gradient(180deg,#17102a,#0a0a0f);padding:16px 18px;box-shadow:0 10px 26px rgba(0,0,0,.5);margin:4px 0}
+.smart-note{border-radius:16px;border:1px solid rgba(142,36,170,.4);background:linear-gradient(180deg,#17102a,#0a0a0f);padding:16px 18px;box-shadow:0 10px 26px rgba(0,0,0,.5);margin:4px 0;transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
+.smart-note:hover{transform:translateY(-3px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 18%,#17102a),color-mix(in srgb,#8e24aa 10%,#0a0a0f));box-shadow:0 18px 40px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12),0 0 30px -2px rgba(142,36,170,.55)}
 .smart-note h4{margin:0 0 4px;font-size:15px}
 .smart-note h5{margin:12px 0 3px;font-size:12.5px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
 .smart-note p{margin:0;font-size:13.5px;line-height:1.55;color:#fff}
@@ -228,8 +232,8 @@ body.fullscreen .ph-main{padding-top:12px}
 .btn{--btn-accent:var(--room-accent,var(--magenta));display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;padding:0 22px;border-radius:var(--radius-pill);border:1px solid color-mix(in srgb,var(--btn-accent) 45%,transparent);background:linear-gradient(145deg,color-mix(in srgb,var(--btn-accent) 26%,#1a1424),color-mix(in srgb,var(--btn-accent) 10%,#0b0a10));color:var(--ink);font-size:12.5px;font-weight:800;letter-spacing:.06em;cursor:pointer;box-shadow:var(--depth-hi),0 10px 26px #000a,0 0 22px color-mix(in srgb,var(--btn-accent) 26%,transparent);transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-med) var(--ease),filter var(--dur-fast) var(--ease);white-space:nowrap;font-family:inherit}
 .btn:hover{transform:translateY(-2px);filter:brightness(1.12);box-shadow:var(--depth-hi),0 16px 36px #000b,0 0 34px color-mix(in srgb,var(--btn-accent) 40%,transparent)}
 .btn:active{transform:translateY(0) scale(.985)}
-.btn.ghost{background:transparent;border:1px solid var(--line);box-shadow:var(--depth-hi);color:var(--ink-dim)}
-.btn.ghost:hover{border-color:color-mix(in srgb,var(--btn-accent) 40%,transparent)}
+.btn.ghost{background:linear-gradient(180deg,#12101a,#08080c);border:1px solid color-mix(in srgb,var(--btn-accent) 45%,transparent);box-shadow:var(--depth-hi),0 10px 26px #000a,0 0 18px color-mix(in srgb,var(--btn-accent) 22%,transparent);color:var(--ink-dim)}
+.btn.ghost:hover{transform:translateY(-2px);filter:brightness(1.12);border-color:color-mix(in srgb,var(--btn-accent) 65%,transparent);box-shadow:var(--depth-hi),0 16px 36px #000b,0 0 30px color-mix(in srgb,var(--btn-accent) 40%,transparent)}
 .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;filter:none}
 .thread-foot{display:flex;gap:10px;flex-wrap:wrap;padding:0 14px 14px}
 .thread-foot .btn{padding:10px 14px;font-size:13px}
@@ -249,8 +253,8 @@ body.fullscreen .ph-main{padding-top:12px}
 .install-x:hover{border-color:#a21caf;box-shadow:0 0 18px rgba(162,28,175,.55)}
 .install-manual{text-align:left;margin-top:16px;font-size:13.5px;line-height:1.6;color:#fff}
 .install-manual b{color:#fff}
-.install-later{display:block;margin:14px auto 0;background:none;border:none;color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;padding:8px}
-.install-later:hover{text-shadow:0 0 14px rgba(142,36,170,.8)}
+.install-later{display:block;margin:14px auto 0;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(142,36,170,.55);color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;padding:8px 18px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 18px rgba(0,0,0,.5),0 0 14px rgba(142,36,170,.25);transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
+.install-later:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 24%,#12101a),color-mix(in srgb,#8e24aa 12%,#08080c));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5);text-shadow:0 0 12px rgba(142,36,170,.8)}
 /* --- NOTIF TRIO BAR: the ULTIMATE icons (Shawn 20:34Z) — Hub .notif-bar VERBATIM
    (Personal file, harvested from the Hub nav file): no divider line above the
    trio, bar shadow 0 -16px 44px, entry animation, opacity transition. --- */
@@ -360,6 +364,9 @@ body.fullscreen .ph-main{padding-top:12px}
 .notif-seg::before{content:'';position:absolute;top:-6px;left:50%;width:70px;height:70px;margin-left:-35px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 3px at 50% 100%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCCW 90s linear infinite}
 .notif-seg:hover .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 55%,#12121a),#07070b 78%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 30px color-mix(in srgb,var(--nc) 70%,transparent)}
 .row:hover .cx-ava{filter:brightness(1.18)}
+/* --- ELEVATION FIX 2026-11-17 (checker item 8): the six flat/dead elements
+   gain elevation + whole-item hover light in their own deep color — .format-note,
+   .smart-note, .panel, .msg family, .install-later, .btn.ghost. Deep palette only. --- */
 </style>
 </head>
 <body>
@@ -1156,7 +1163,7 @@ renderWorlds(); renderInbox(); setFormat(state.format);
    string — the Dashboard pill and every glyph here are CSS shapes, never
    text escapes. True = clean. (The guard's own search needle and the
    header comment naming the defect are the only occurrences in the file.) */
-window.__glyphCheck = !/u25c9/i.test(document.body.innerText);
+window.__glyphCheck = !/\u25c9/.test(document.body.innerText);
 </script>
 </body>
 </html>
