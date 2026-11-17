@@ -7696,9 +7696,14 @@ window.HubView = HubView;
    score. Points table + tier ladder: locked (§7 of the brief, V6_RUNGS
    in the Dashboard bytes). Star levels pair 1:1 with the ten rungs, in
    order. Spectrum flow (Shawn 18:00Z, supersedes the brief's §3 walk):
-   magenta 963 Hz crown -> purple -> indigo -> cyan -> green -> gold ->
+   magenta 963 Hz crown -> violet -> indigo -> cyan -> green -> gold ->
    orange -> red -> back to magenta; the order never changes, the start
    varies by board. Hexes from Laws §3.1, never sampled.
+   FIX 2026-11-17: the second step widens from purple to deep violet
+   (Laws §3.1) — purple and magenta sit ~6 degrees apart in hue and read as
+   one color on the first two boards; violet sits ~35 degrees from magenta,
+   clearly distinct. Order holds, no adjacent duplicates. (Hexes named in
+   the maker report, not here, so the file's hex counts stay diff-provable.)
    Zero rule (ruled 17:28Z): a number shows only when the Ledger slice
    measured that citizen — a verified zero is a digit tile; unmeasured
    shows as a state ("Not counted yet"), never a 0, never a bare dash.
@@ -7708,7 +7713,7 @@ window.HubView = HubView;
    never guessed; an empty or unconnected Ledger shows honest empty
    states, never invented rows. */
 (function(){
-  var FLOW=['#a21caf','#8e24aa','#3f51b5','#0e7490','#07925f','#d4a017','#c2410c','#c62828'];
+  var FLOW=['#a21caf','#6d28d9','#3f51b5','#0e7490','#07925f','#d4a017','#c2410c','#c62828'];
   var POINTS={create:25,note:35,like:1,love:1,save:5,comment:3,shareIn:5,shareOut:10,invite:25,join:50,sale:100};
   var RUNGS=[[0,'Emerging'],[1000,'Stirring'],[3000,'Rising'],[6000,'Advancing'],[9000,'Radiant'],[12000,'Loved'],[15000,'Mastering'],[25000,'Legendary'],[50000,'Iconic'],[75000,'Ten Star']];
   var STARS=['Starting Star','Emerging Star','Advancing Star','Pro Star','Five Star','Superstar','Serious Star','Mega Star','Master Star','Ten Star'];
@@ -12070,5 +12075,3 @@ window.NayaSmartBar = {
 </div>
 </body>
 </html>
-LEADERBOARDS markers: 3
-leaderboards occurrences: 26
