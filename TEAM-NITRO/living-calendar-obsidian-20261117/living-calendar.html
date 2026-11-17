@@ -214,29 +214,36 @@ button{font-family:inherit}
    inset top light, drop shadow; hover lifts with gold glow. The day cell
    and the view boards are this board, with --dc (the day's color) as the
    rim/glow instead of gold. */
-.ph-card{background:linear-gradient(180deg,#07070b,#050607);
+.ph-card{background:linear-gradient(135deg,#07070b,#050607);
   border:2px solid rgba(255,255,255,.16);border-radius:20px;padding:28px;margin-bottom:20px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),8px 14px 36px rgba(0,0,0,.5);
   transition:all .25s;}
 .ph-card:hover{border-color:rgba(212,160,23,.6);transform:translateY(-4px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(212,160,23,.25);}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),14px 24px 56px rgba(0,0,0,.6),0 0 44px rgba(212,160,23,.25);}
 .ph-card h3{font-size:18px;margin:0 0 12px;color:#fff;}
-.ph-card p{font-size:14px;color:#fff;margin:0 0 14px;line-height:1.65;}
+.ph-card p{font-size:17px;color:#fff;margin:0 0 14px;line-height:1.65;}
 
 /* ============ THE PILL BUTTON — [P] .primo verbatim ============ */
 /* pricing v77: "Harvested from factory.css (NAYA-BTN-005)". The door pill:
    obsidian pill, radius 999px, rim, white word, icon left, sheen sweep.
    --glow is the door's own color (default: --purple). */
-.primo{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-weight:800;font-size:15px;letter-spacing:.08em;color:#F8F7FB;padding:16px 32px;border-radius:999px;border:1.5px solid rgba(248,247,251,.9);
-  background:linear-gradient(180deg,#1a1a22 0%,#0a0a0f 45%,#050507 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),0 12px 32px rgba(0,0,0,.65);
+.primo{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-weight:800;font-size:17px;letter-spacing:.08em;color:#F8F7FB;padding:16px 32px;border-radius:999px;border:1.5px solid rgba(248,247,251,.9);
+  background:linear-gradient(135deg,#1a1a22 0%,#0a0a0f 45%,#050507 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),7px 12px 32px rgba(0,0,0,.65);
   transition:transform .22s var(--ease),box-shadow .22s var(--ease);--glow:var(--purple);position:relative;overflow:hidden;font-family:inherit}
-.primo::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);transform:translateX(-100%);animation:primo-sheen 3.5s ease-in-out infinite;pointer-events:none}
+.primo::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);transform:translateX(-100%);animation:primo-sheen 120s ease-in-out infinite;pointer-events:none}
+/* SWEEP-3 (F7): the sheen was a 3.5s infinite sweep on EVERY button at rest
+   — faster than the 12s ambient floor, decorative motion that means
+   nothing. It now runs once per 120s, inside the 60–180s ambient band
+   (laws §1: slow, alternating, never faster than 12s ambient). The
+   keyframes still hold the sweep off-screen for the first 60% of the
+   cycle, so the sweep itself stays a brief pass, not a constant shimmer.
+   prefers-reduced-motion still disables it (below). */
 @keyframes primo-sheen{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-.primo:hover{transform:translateY(-2px);border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px var(--glow),0 14px 36px rgba(0,0,0,.65)}
+.primo:hover{transform:translateY(-2px);border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px var(--glow),8px 14px 36px rgba(0,0,0,.65)}
 .primo:active{transform:translateY(1px) scale(.985)}
 .primo .ico{font-size:18px;line-height:1}
-.primo.on{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px var(--glow),0 14px 36px rgba(0,0,0,.65)}
+.primo.on{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px var(--glow),8px 14px 36px rgba(0,0,0,.65)}
 
 /* ============ THE DIGIT TILE — [D] .os-mini-tile, FORM VERBATIM, VALUES DEEP ============ */
 /* dashboard-pass9.html lines 4816-4865 (PASS 3 — ADDENDUM 8): the form is
@@ -258,12 +265,12 @@ button{font-family:inherit}
    4821-4865 now returns differences ONLY in these rim/cap/glow values
    (see the maker report). */
 .os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
-.os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
+.os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(135deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile .cap{display:block;height:5px;background:linear-gradient(135deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
 .os-mini-tile .rd{display:block;height:30px;line-height:30px;text-align:center;font-size:27px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
 /* medium: drill / dialog totals — [D] lines 4827-4830 */
 .os-mini-num.med{gap:4px;}
-.os-mini-num.med .os-mini-tile{width:54px;border-radius:10px;border-width:2px;box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 18px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-num.med .os-mini-tile{width:54px;border-radius:10px;border-width:2px;box-shadow:5px 8px 18px rgba(0,0,0,.75),0 0 18px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35);}
 .os-mini-num.med .os-mini-tile .cap{height:9px;}
 .os-mini-num.med .os-mini-tile .rd{height:54px;line-height:54px;font-size:48px;}
 /* FIX-7 (item 1): a two-digit DATE is one object. Fix-6's seam (gap:0 +
@@ -277,12 +284,12 @@ button{font-family:inherit}
    and keep their per-digit tiles. The cell rule (0,5,0) beats every
    per-breakpoint tile width below (0,4,0), so the duo tile always sizes
    to its two digits instead of being squeezed into one digit's width. */
-.os-mini-num .os-mini-tile.duo{width:auto;min-width:0;padding:0 6px;border-color:var(--dc);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(var(--dc-rgb),.5),inset 0 1px 0 rgba(255,255,255,.35)}
-.os-mini-num.med .os-mini-tile.duo{width:auto;padding:0 8px;box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 18px rgba(var(--dc-rgb),.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-num .os-mini-tile.duo{width:auto;min-width:0;padding:0 6px;border-color:var(--dc);box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(var(--dc-rgb),.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-num.med .os-mini-tile.duo{width:auto;padding:0 8px;box-shadow:5px 8px 18px rgba(0,0,0,.75),0 0 18px rgba(var(--dc-rgb),.5),inset 0 1px 0 rgba(255,255,255,.35)}
 .cal-day .os-mini-num.med .os-mini-tile.duo{width:auto;padding:0 2px}
 /* the $ tile (money only), the dot tile (decimals), the % tile — [D] 4831-4844 */
-.os-mini-tile.dollar{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.dollar .cap{background:linear-gradient(180deg,#ecd497,#d4a017 55%,#75580d);}
+.os-mini-tile.dollar{border-color:#d4a017;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.dollar .cap{background:linear-gradient(135deg,#ecd497,#d4a017 55%,#75580d);}
 .os-mini-gap{flex:none;width:10px;}
 .os-mini-num.med .os-mini-gap{width:14px;}
 .os-mini-tile.dot{width:12px;}
@@ -292,31 +299,31 @@ button{font-family:inherit}
 .os-mini-tile.pct{width:34px;}
 .os-mini-num.med .os-mini-tile.pct{width:60px;}
 /* chakra colours — the same as the big number */
-.os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
-.os-mini-tile.d1{border-color:#c62828;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(198,40,40,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d1 .cap{background:linear-gradient(180deg,#e59e9e,#c62828 55%,#6d1616);}
-.os-mini-tile.d2{border-color:#c2410c;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(194,65,12,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d2 .cap{background:linear-gradient(180deg,#e4aa92,#c2410c 55%,#6b2407);}
-.os-mini-tile.d3{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d3 .cap{background:linear-gradient(180deg,#ecd497,#d4a017 55%,#75580d);}
-.os-mini-tile.d4{border-color:#07925f;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(7,146,95,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d4 .cap{background:linear-gradient(180deg,#8fceb7,#07925f 55%,#045034);}
-.os-mini-tile.d5{border-color:#0e7490;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(14,116,144,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d5 .cap{background:linear-gradient(180deg,#93c0cd,#0e7490 55%,#08404f);}
-.os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d6 .cap{background:linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#232a6b);}
-.os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d7 .cap{background:linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#4d0f5e);}
-.os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(109,40,217,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d8 .cap{background:linear-gradient(180deg,#bd9eee,#6d28d9 55%,#3c1677);}
-.os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(162,28,175,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-.os-mini-tile.d9 .cap{background:linear-gradient(180deg,#d599db,#a21caf 55%,#590f60);}
+.os-mini-tile.d0{border-color:#fff;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d0 .cap{background:linear-gradient(135deg,#fff,#d9d9de 55%,#9a9aa0);}
+.os-mini-tile.d1{border-color:#c62828;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(198,40,40,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d1 .cap{background:linear-gradient(135deg,#e59e9e,#c62828 55%,#6d1616);}
+.os-mini-tile.d2{border-color:#c2410c;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(194,65,12,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d2 .cap{background:linear-gradient(135deg,#e4aa92,#c2410c 55%,#6b2407);}
+.os-mini-tile.d3{border-color:#d4a017;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d3 .cap{background:linear-gradient(135deg,#ecd497,#d4a017 55%,#75580d);}
+.os-mini-tile.d4{border-color:#07925f;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(7,146,95,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d4 .cap{background:linear-gradient(135deg,#8fceb7,#07925f 55%,#045034);}
+.os-mini-tile.d5{border-color:#0e7490;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(14,116,144,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d5 .cap{background:linear-gradient(135deg,#93c0cd,#0e7490 55%,#08404f);}
+.os-mini-tile.d6{border-color:#3f51b5;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d6 .cap{background:linear-gradient(135deg,#9aa5ff,#3f51b5 55%,#232a6b);}
+.os-mini-tile.d7{border-color:#8e24aa;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d7 .cap{background:linear-gradient(135deg,#d8a0ff,#8e24aa 55%,#4d0f5e);}
+.os-mini-tile.d8{border-color:#6d28d9;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(109,40,217,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d8 .cap{background:linear-gradient(135deg,#bd9eee,#6d28d9 55%,#3c1677);}
+.os-mini-tile.d9{border-color:#a21caf;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(162,28,175,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d9 .cap{background:linear-gradient(135deg,#d599db,#a21caf 55%,#590f60);}
 /* [P] .os-mini-tile.inf — the ∞ tile, pricing v77: silver/white,
    black-and-silver (the d0 silver cap language), sized to sit in line
    with the digit tiles. Verbatim. */
-.os-mini-tile.inf{width:34px;border-color:#e8e8ec;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(232,232,236,.5),inset 0 1px 0 rgba(255,255,255,.35)}
-.os-mini-tile.inf .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0)}
+.os-mini-tile.inf{width:34px;border-color:#e8e8ec;box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(232,232,236,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.inf .cap{background:linear-gradient(135deg,#fff,#d9d9de 55%,#9a9aa0)}
 /* (The med-width override for .inf that used to sit here was invented —
    no such rule exists in [D] or [P]. Removed per amendment #3(4). The
    base 34px .inf tile stands, verbatim from [P].) */
@@ -364,7 +371,12 @@ button{font-family:inherit}
    glow Shawn approved 03:54Z. The pearl face itself carries no color
    (amendment #3(1) still stands: no colored iris). Still 30px (26px
    ≤640, 22px ≤480), still balanced, still less white than the v4 blob —
-   the pearl is a band, the middle is dark. */
+   the pearl is a band, the middle is dark.
+   SWEEP-3 (F3 — DECISION, recorded): the "i" glyph sizes (14px / 12px /
+   11px at ≤640 / ≤480) are a glyph inside a jewel object, not reading
+   text — the eye is the approved object (03:54Z) and is NOT re-scaled.
+   The checker flags these three lines; they are a recorded decision,
+   not an oversight. */
 .plan-eye{position:absolute;top:8px;right:8px;z-index:3;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;--jc:#ffffff;font-family:Marcellus,Georgia,serif;font-weight:700;font-size:14px;line-height:1;background:radial-gradient(circle at 50% 50%,#17171f 0%,#050607 52%,rgba(255,255,255,.5) 55%,rgba(255,255,255,0) 59%),radial-gradient(circle at 34% 28%,#ffffff 0%,#f0f0f3 38%,#cfcfd6 68%,#9a9aa2 100%);border:1.25px solid var(--jc);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 4px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.55),0 0 10px -4px var(--jc);text-shadow:0 1px 2px rgba(0,0,0,.65)}
 .plan-eye:hover,.plan-eye:focus-visible{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 4px rgba(0,0,0,.6),0 6px 14px rgba(0,0,0,.6),0 0 16px -3px var(--jc);outline:2px solid #fff;outline-offset:2px}
 /* Calendar placement: bottom-right of the day cell, the door to the day. */
@@ -396,51 +408,143 @@ button{font-family:inherit}
 .dow-6{--dc:#3f51b5;--dc-rgb:63,81,181}
 
 /* ============ MONTH VIEW — the whole screen is just a calendar ============ */
-#monthView{height:100dvh;display:flex;flex-direction:column;padding:16px 16px 12px;gap:10px}
+#monthView{height:100dvh;display:flex;flex-direction:column;padding:16px 16px 76px;gap:10px}
 /* The month name + prev/next are the calendar itself — nothing else. */
-.cal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none}
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;flex-wrap:wrap}
 /* Amendment 2 (03:54Z — THE BUTTON LESSON): the month header is a royal
    object too — an obsidian plaque, white Marcellus, white rim, its own
    soft glow, elevated. The year's color is white (the header's own color
    is white); the plaque is the object, not plain text on black. */
-.cal-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(26px,4.4vw,44px);line-height:1.05;color:#fff;margin:0;text-align:center;display:inline-block;white-space:nowrap;background:linear-gradient(180deg,#1a1a22,#050607 70%);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;padding:10px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 24px rgba(0,0,0,.55),0 0 18px rgba(255,255,255,.35)}
+.cal-title{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(26px,4.4vw,44px);line-height:1.05;color:#fff;margin:0;text-align:center;display:inline-block;white-space:nowrap;background:linear-gradient(135deg,#1a1a22,#050607 70%);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;padding:10px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),5px 8px 24px rgba(0,0,0,.55),0 0 18px rgba(255,255,255,.35)}
 .cal-title em{font-style:normal;color:#fff}
 .cal-nav{display:flex;gap:8px;align-items:center;flex:none}
-.cal-nav .primo{padding:12px 18px;font-size:14px}
-.cal-nav .primo.today{padding:12px 20px}
+.cal-nav .primo{padding:12px 18px;font-size:17px}
+/* SWEEP-3 (F2): the TODAY button is GONE — Shawn's newest word (v15).
+   The rules that styled it (.cal-nav .primo.today, its border/glow and
+   its hover) are removed with it. The header carries the date + the live
+   time now, in the now-plaque below. The "Back to today" return gesture
+   lives under the header, shown only off-month — never a TODAY button. */
 /* Amendment 2 — THE BUTTON LESSON ([D] .os-pts-btn, harvested): each button
    wears its own color as an outer glow at rest; the lit one burns brighter.
-   TODAY wears today's weekday color (--glow / --glow-rgb set by render()).
-   FIX-7 (item 2): the arrows wear their own colors too — back sapphire,
-   forward emerald — in the BORDER and in the outer glow, not only in a
-   --glow variable. Fix-6 set --glow/--glow-rgb and added a colored glow
-   at the END of the shadow stack, but never set border-color (the .primo
-   base border is white) and the two big WHITE outer glows sat ahead of
-   the colored one in the stack — box-shadow paints first-listed on top —
-   so the color was buried and the arrows read black/white live. The rule
-   below drops the white outer glows and leads with the own-color glow. */
-.cal-nav .primo.today{border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(248,247,251,.45),0 0 48px rgba(248,247,251,.15),0 12px 32px rgba(0,0,0,.65),0 0 18px rgba(var(--glow-rgb),.5)}
-.cal-nav .primo.today:hover{box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.7),0 14px 36px rgba(0,0,0,.65)}
+   SWEEP-3 (F2): the TODAY button is gone, and the sentence that styled it
+   went with it — the record of it lives in the header design notes above.
+   The arrows wear their own colors in the BORDER and in the outer glow,
+   not only in a --glow variable. Fix-6 set --glow/--glow-rgb and added a
+   colored glow at the END of the shadow stack, but never set border-color
+   (the .primo base border is white) and the two big WHITE outer glows sat
+   ahead of the colored one in the stack — box-shadow paints first-listed
+   on top — so the color was buried and the arrows read black/white live.
+   The rule below drops the white outer glows and leads with the own-color
+   glow. */
 /* FIX-6 (item 8): the month arrows are the button standard now — PTS / %
    MONEY quality, each its own color, premium, readable at a glance. Back
    wears sapphire blue, forward wears deep emerald. No harvested per-arrow
    mapping exists — the brief orders each its own color, and cool-back /
    go-forward is the pick, both Deep Palette. The glyph grows to 22px.
-   FIX-7 (item 2): the Fix-6 colors never painted (see the note above) —
+   SWEEP-3 (F1): SUPERSEDED — both arrows royal purple now (see below). */
+/* FIX-7 (item 2): the Fix-6 colors never painted (see the note above) —
    the border now takes --glow and the outer glow leads with the own color,
    so sapphire/emerald are the first thing the eye reads, at rest and on
-   hover. The white stays only in the inner highlights and the chevron. */
-#prev{--glow:#0f52ba;--glow-rgb:15,82,186}
-#next{--glow:#07925f;--glow-rgb:7,146,95}
-.cal-nav #prev,.cal-nav #next{font-size:22px;line-height:1;padding:12px 22px;border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(var(--glow-rgb),.6),0 0 48px rgba(var(--glow-rgb),.25),0 12px 32px rgba(0,0,0,.65)}
-.cal-nav #prev:hover,.cal-nav #next:hover{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.75),0 14px 36px rgba(0,0,0,.65)}
+   hover. The white stays only in the inner highlights and the chevron.
+   SWEEP-3 (F1, 2026-11-17 — Shawn's newest word, v15 index.html lines
+   191–200): BOTH arrows royal purple now — the green forward arrow goes.
+   Supersedes Fix-6 item 8 (back sapphire, forward emerald). The arrows
+   are separated by the title plaque, not adjacent, so the two-purples
+   tension does not bite. */
+#prev{--glow:#8e24aa;--glow-rgb:142,36,170}
+#next{--glow:#8e24aa;--glow-rgb:142,36,170}
+.cal-nav #prev,.cal-nav #next{font-size:22px;line-height:1;padding:12px 22px;border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(var(--glow-rgb),.6),0 0 48px rgba(var(--glow-rgb),.25),7px 12px 32px rgba(0,0,0,.65)}
+.cal-nav #prev:hover,.cal-nav #next:hover{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.75),8px 14px 36px rgba(0,0,0,.65)}
+/* ============ THE NOW-PLAQUE — harvested from v15 (SWEEP-3 F2) ============ */
+/* v15 ~/workspace/ts-spaces/the-ultimate-calendar/index.html — the TODAY
+   button is GONE (Shawn, 2026-11-17); in its place the header carries
+   today's DATE and the LIVE TIME, read from the viewer's own clock in
+   their own time zone, ticking every second. Harvested: the plaque
+   (v15 lines 208–233), the live dot (lines 773–782), the clock tiles
+   (lines 104–114), the one-row-at-390 behavior (lines 1293/1320).
+   Adapted, not rebuilt: color-mix() becomes this file's rgba(var(--dc-rgb))
+   idiom (--dc/--dc-rgb set by renderNowPlaque from today's weekday);
+   gradients at 135° and shadows down-right per laws §5 (the harvest is
+   the source of the values, not the angle — F8); the date wraps at a
+   space instead of ever overflowing the pill (v15 ≤560). The plaque
+   follows TODAY's color — rim, live dot, and the hour's color on the
+   time — never gold. The month title plaque beside it still names the
+   month being browsed; the plaque names today. */
+.nowplaque{--dc:#d4a017;--dc-rgb:212,160,23;flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 10px;min-height:44px;padding:6px 18px;border-radius:999px;
+  background:radial-gradient(90% 140% at 50% 0%,rgba(var(--dc-rgb),.08),transparent 62%),linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%);
+  border:1.5px solid rgba(var(--dc-rgb),.62);
+  box-shadow:0 0 10px rgba(var(--dc-rgb),.18),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),3px 5px 12px rgba(0,0,0,.5)}
+.now-date{font-family:Marcellus,Georgia,serif;font-size:19px;letter-spacing:.05em;color:#fff;white-space:nowrap;text-shadow:0 0 12px rgba(255,255,255,.3)}
+.now-time{display:inline-flex;align-items:center}
+/* The live dot — v15's .live-dot, harvested: a jewel dot in today's
+   color that pulses to say "live" — the pulse IS the live signal, not
+   decoration. One lit icon, never an icon beside its own light. */
+.live-dot{flex:none;width:11px;height:11px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff 0%,var(--dc) 55%,rgba(0,0,0,.5) 100%);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 0 7px var(--dc),0 0 13px rgba(var(--dc-rgb),.32);
+  animation:livepulse 2.4s ease-in-out infinite}
+@keyframes livepulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.78)}}
+/* The clock tiles — v15's clocknum/clock-colon/letter tiles (lines
+   104–114), harvested: the live time as Dashboard digit tiles, the colon
+   a plain white separator, AM/PM in the SAME tile block with the hour's
+   color as rim (letters take the hour's color). --hc/--hc-rgb are set by
+   clockTilesHTML from the hour's digit color (laws §4). */
+.clocknum{align-items:center}
+.clock-colon{color:#fff;font-weight:900;font-size:19px;line-height:1;text-shadow:0 0 8px rgba(255,255,255,.35)}
+.os-mini-tile.letter{border-color:var(--hc,#fff);box-shadow:2px 4px 10px rgba(0,0,0,.7),0 0 12px rgba(var(--hc-rgb,255,255,255),.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.os-mini-tile.letter .cap{background:linear-gradient(135deg,#fff,#d9d9de 55%,#9a9aa0)}
+.os-mini-tile.letter .rd{font-size:24px}
+/* The day header's live time (F6) — the same clock tiles, under the date. */
+.day-clock{margin-top:8px}
+/* "Back to today" — the return gesture (v15 line 2117), never the old
+   TODAY button, which stays gone from the month header. Shown only when
+   the viewed month is not the month holding today (render() toggles it). */
+.back-today-row{display:flex;justify-content:center;flex:none}
+.back-today-row[hidden]{display:none}
+/* F19 — one quiet line that guides like a best friend, then never again:
+   "tap a day to open it", white, 17px, once on the page. */
+.cal-hint{font-size:17px;font-weight:600;letter-spacing:.04em;color:#fff;text-align:center;margin:0;flex:none}
+/* SWEEP-3 (F10 — the zero rule): a missing number is a STATE in words,
+   never a bare dash. miniNumHTML returns this for null/empty input. */
+.num-state{font-size:17px;font-weight:800;letter-spacing:.08em;color:#fff;white-space:nowrap}
+/* ============ THE BOTTOM FIVE — laws §3.2 (SWEEP-3 F5) ============ */
+/* The page had no bottom bar at all — a calendar with no way back to the
+   rest of NayaNET. The five are fixed, everywhere, one bar: + ADD royal
+   purple #8e24aa · MAIL sapphire #0f52ba · ACTIVITY emerald #07925f ·
+   WORLDS deep gold #d4a017 · ECOSYSTEM burnt orange #c2410c.
+   No single byte-verbatim five-bar file exists to harvest (the evidence
+   shows three different bars — Personal's six tiles, the Hub's nine
+   icons, the Smart Bar + trio — laws §13), so the bar is composed in
+   this file's own harvested language: the [P] .primo pill, each pill
+   wearing its own deep color as rim + glow, bold white 17px labels.
+   ADD opens Create for today (a real action). MAIL / ACTIVITY / WORLDS /
+   ECOSYSTEM have no destination inside this file, so they answer
+   honestly in the five-note line instead of pretending to navigate.
+   Fixed to the bottom; the month grid and the day/view scrolls leave
+   room for it (padding below). */
+.naya-five{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(135deg,transparent,rgba(5,5,8,.94) 30%);border-top:1px solid rgba(255,255,255,.08)}
+.naya-five .primo{padding:12px 18px;font-size:17px;border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 18px rgba(var(--glow-rgb),.5),7px 12px 32px rgba(0,0,0,.65)}
+.naya-five .primo:hover{box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.7),8px 14px 36px rgba(0,0,0,.65)}
+.naya-five .five-add{--glow:#8e24aa;--glow-rgb:142,36,170}
+.naya-five .five-mail{--glow:#0f52ba;--glow-rgb:15,82,186}
+.naya-five .five-activity{--glow:#07925f;--glow-rgb:7,146,95}
+.naya-five .five-worlds{--glow:#d4a017;--glow-rgb:212,160,23}
+.naya-five .five-eco{--glow:#c2410c;--glow-rgb:194,65,12}
+.five-note{position:fixed;left:50%;transform:translateX(-50%);bottom:76px;z-index:61;max-width:min(92vw,560px);padding:12px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.9);background:linear-gradient(135deg,#1a1a22,#050607 70%);color:#fff;font-size:17px;font-weight:700;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),3px 8px 24px rgba(0,0,0,.55)}
+.five-note[hidden]{display:none}
+@media (max-width:640px){
+  .naya-five{gap:6px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px))}
+  .naya-five .primo{padding:10px 12px;font-size:17px}
+  .five-note{bottom:124px}
+}
 /* Weekday names in their day's color — [C] render() colored them so.
    Amendment #4(1) (Shawn's eye, 03:19Z): the FULL day names (Sunday,
    Monday...), almost in royalty, in Marcellus — not S/M/T/W/T/F/S. The
    Marcellus is real now (the [P] font link in <head>); the size scales
    with the viewport so the longest name still fits its cell. */
 .cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;flex:none}
-.cal-week div{text-align:center;font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(11px,2.2vw,20px);letter-spacing:.04em;white-space:nowrap;color:#fff}
+.cal-week div{text-align:center;font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(17px,2.2vw,20px);letter-spacing:.04em;white-space:nowrap;color:#fff}
 /* Amendment #6 (Shawn's eye, 03:47Z — THE WEEKDAY NAME IS A ROYAL OBJECT):
    "Sunday at the top is not written in royalty, it's just written in plain
    text." Each weekday name is a real object now — an obsidian pill, rim in
@@ -455,15 +559,15 @@ button{font-family:inherit}
    border thickens, the glow burns brighter): today is known from the
    plaque, never from lighting the cell (Amendment 2). The .today class is
    toggled by render(), only while the displayed month is the current one. */
-.cal-week div{background:linear-gradient(180deg,#1a1a22,#050607 70%);border:1.5px solid var(--dc);border-radius:999px;padding:6px 4px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5)}
+.cal-week div{background:linear-gradient(135deg,#1a1a22,#050607 70%);border:1.5px solid var(--dc);border-radius:999px;padding:6px 4px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),2px 4px 10px rgba(0,0,0,.5)}
 /* FIX-6 (item 2): the plaques' rest glow lives only in the current month
    (.cur on #weeknames, toggled by render()) — in any other month no
    plaque glows, so no weekday can read as "today" there (the desktop eye
    read December's gold Tuesday plaque as lit). The lit (.today) plaque
    exists only in the current month, by the same toggle. */
-.cal-week.cur div{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.5)}
-.cal-week div.today{border-width:2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 10px rgba(0,0,0,.5),0 0 36px rgba(var(--dc-rgb),.7),0 0 72px rgba(var(--dc-rgb),.35)}
+.cal-week.cur div{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),2px 4px 10px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.5)}
+.cal-week div.today{border-width:2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),2px 4px 10px rgba(0,0,0,.5),0 0 36px rgba(var(--dc-rgb),.7),0 0 72px rgba(var(--dc-rgb),.35)}
 /* The grid fills the screen. No scrolling. Rows = the weeks the month
    actually needs (4–6) — the grid ends at the month's last day; no trailing
    next-month days, no trailing blank row at the bottom. Rows stretch to
@@ -476,14 +580,14 @@ button{font-family:inherit}
    glow of the day's color even at rest; NO glow in the middle. Every day is
    lit at rest (you can see each day's color line), just not as bright as
    the hovered day. Pearl gems, not neon — Deep Palette hexes only. */
-.cal-day{margin:0;padding:14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:6px;cursor:pointer;border:2px solid var(--dc);border-radius:20px;background:linear-gradient(180deg,#07070b,#050607);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.5),0 0 10px rgba(var(--dc-rgb),.14);
+.cal-day{margin:0;padding:14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:6px;cursor:pointer;border:2px solid var(--dc);border-radius:20px;background:linear-gradient(135deg,#07070b,#050607);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),5px 8px 22px rgba(0,0,0,.5),0 0 10px rgba(var(--dc-rgb),.14);
   transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);position:relative;overflow:hidden}
 /* Hover: rim only. The middle stays obsidian — no wash, no inner glow.
    The rim brightens and the outside halo strengthens; the number lifts.
    Pearl, never neon — one soft halo, amendment #3(2)(5). */
 .cal-day:hover,.cal-day:focus-visible{transform:translateY(-4px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),0 20px 44px rgba(0,0,0,.6),0 0 24px rgba(var(--dc-rgb),.30)}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 8px rgba(0,0,0,.3),12px 20px 44px rgba(0,0,0,.6),0 0 24px rgba(var(--dc-rgb),.30)}
 .cal-day:hover .os-mini-tile,.cal-day:focus-visible .os-mini-tile{transform:translateY(-2px)}
 .cal-day:active{transform:translateY(1px) scale(.985)}
 .cal-day .os-mini-tile{transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
@@ -501,7 +605,7 @@ button{font-family:inherit}
    the file; the cell otherwise reads exactly like its siblings. */
 /* FIX-6 (item 2): the quiet mark — a small dot in the day's color, top
    right of today's cell only. Never a fill, never a glow, never a pill.
-   Today reads from the plaque + the header TODAY button + this mark.
+   Today reads from the plaque + the header now-plaque + this mark.
    FIX-7 (item 3): the 7px dot was found only by zooming on desktop and
    not at all at 635 — too small to find at a glance. The mark is 12px
    now, ringed white so it cannot blend into the day's rim, and z-indexed
@@ -533,13 +637,13 @@ button{font-family:inherit}
    plain dot again — 8px, fully inside the cell, no glow to clip. Days
    with nothing keep number + eye only; nothing is invented for an
    empty day. */
-.cal-day .day-glimpse{position:absolute;left:14px;right:52px;bottom:12px;max-height:33px;overflow:hidden;font-size:11px;font-weight:800;letter-spacing:.06em;line-height:1.5;text-transform:uppercase;color:#fff;text-align:left}
+.cal-day .day-glimpse{position:absolute;left:14px;right:52px;bottom:12px;max-height:52px;overflow:hidden;font-size:17px;font-weight:800;letter-spacing:.06em;line-height:1.5;text-transform:uppercase;color:#fff;text-align:left}
 .cal-day .has{display:none;position:absolute;left:8px;bottom:8px;width:8px;height:8px;border-radius:50%;background:var(--dc);flex:none}
 .cal-day.blank{background:transparent;border:2px solid transparent;box-shadow:none;cursor:default}
 .cal-day.blank:hover{transform:none;background:transparent;box-shadow:none}
 
 /* ============ DAY VIEW — inside the day ============ */
-#dayView,#viewView{position:fixed;inset:0;background:#050607;z-index:50;display:none;flex-direction:column;overflow-y:auto;padding:20px 16px 40px}
+#dayView,#viewView{position:fixed;inset:0;background:#050607;z-index:50;display:none;flex-direction:column;overflow-y:auto;padding:20px 16px 84px}
 #dayView.show,#viewView.show{display:flex}
 /* FIX-6 (item 5 — PRIME REAL ESTATE): the day view fills the desktop
    width now. The 1060px column (55% of a 1920 screen, ~400px of black
@@ -559,7 +663,7 @@ button{font-family:inherit}
    day's color. Amendment #2(2): the day name is white inside with the
    day's color glowing OUTSIDE it; no gray text underneath — the gray date
    line is dropped (the Hz now lives in the jewel). */
-.os-jewel{--jc:#cfc09a;display:inline-grid;place-items:center;flex:none;line-height:1;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);border-radius:9px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
+.os-jewel{--jc:#cfc09a;display:inline-grid;place-items:center;flex:none;line-height:1;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(135deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);border-radius:9px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),3px 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
 .os-jewel-lg{width:46px;height:46px;font-size:22px;border-radius:13px}
 /* FIX-6 (item 3): the jewel names the unit — "417 Hz", not a bare number.
    Same jewel object, widened to carry number + unit on one line (auto
@@ -593,36 +697,36 @@ button{font-family:inherit}
    still governs the glimpse: a door is a window into the day, never a
    blank bar. The doors are wide enough for the glimpse to read (300px min). */
 .doors{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:18px 0}
-.doors .door-inst{display:flex;align-items:center;gap:14px;width:100%;min-width:0;cursor:pointer;text-align:left;color:#F8F7FB;font-family:inherit;font-weight:800;font-size:15px;letter-spacing:.08em;padding:16px 18px;border-radius:18px;border:1.5px solid rgba(255,255,255,.2);
-  background:linear-gradient(180deg,#1a1a22 0%,#0a0a0f 45%,#050507 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -2px 6px rgba(0,0,0,.5),0 8px 20px rgba(0,0,0,.5),0 0 18px -6px var(--glow);
+.doors .door-inst{display:flex;align-items:center;gap:14px;width:100%;min-width:0;cursor:pointer;text-align:left;color:#F8F7FB;font-family:inherit;font-weight:800;font-size:17px;letter-spacing:.08em;padding:16px 18px;border-radius:18px;border:1.5px solid rgba(255,255,255,.2);
+  background:linear-gradient(135deg,#1a1a22 0%,#0a0a0f 45%,#050507 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -2px 6px rgba(0,0,0,.5),5px 8px 20px rgba(0,0,0,.5),0 0 18px -6px var(--glow);
   transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s var(--ease);--glow:var(--purple)}
-.doors .door-inst:hover,.doors .door-inst:focus-visible{transform:translateY(-2px);border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -2px 6px rgba(0,0,0,.5),0 0 28px var(--glow),0 12px 28px rgba(0,0,0,.6)}
+.doors .door-inst:hover,.doors .door-inst:focus-visible{transform:translateY(-2px);border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -2px 6px rgba(0,0,0,.5),0 0 28px var(--glow),7px 12px 28px rgba(0,0,0,.6)}
 .doors .door-inst:active{transform:translateY(1px) scale(.985)}
 .doors .door-inst .ico{flex:none;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;font-size:20px;line-height:1;color:#fff;border:1.5px solid var(--glow);
-  background:linear-gradient(180deg,#0b0b12,#050607 80%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 10px rgba(0,0,0,.55),0 0 12px -2px var(--glow)}
+  background:linear-gradient(135deg,#0b0b12,#050607 80%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),2px 4px 10px rgba(0,0,0,.55),0 0 12px -2px var(--glow)}
 .doors .door-inst .lbl{display:flex;flex-direction:column;align-items:flex-start;min-width:0;flex:1}
-.doors .door-inst .sub{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:#fff;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.doors .door-inst .sub{display:block;font-size:17px;font-weight:700;letter-spacing:.1em;color:#fff;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 /* v5: the 3-count instrument row is gone — its counts live in the dashboard
    board headers below (.dash-board .db-count), and the day view is a
    dashboard now. The [D] .os-sl-stat pattern (number on top, label
    underneath) is superseded here by the board headers. */
 /* Timeline — [C] .daytimeline board, .ph-card construction, rim in the day color. */
-.daytimeline{border:2px solid var(--dc);border-radius:20px;padding:20px 22px;margin:18px 0 0;background:linear-gradient(180deg,#07070b,#050607);color:#fff;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
-.daytimeline>strong{display:block;font-size:13px;letter-spacing:.14em}
-.daytimeline .tl-sub{font-size:13px;color:#fff;margin-top:4px}
+.daytimeline{border:2px solid var(--dc);border-radius:20px;padding:20px 22px;margin:18px 0 0;background:linear-gradient(135deg,#07070b,#050607);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),8px 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
+.daytimeline>strong{display:block;font-size:19px;letter-spacing:.14em}
+.daytimeline .tl-sub{font-size:17px;color:#fff;margin-top:4px}
 .tl-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
 .tl-list li{display:grid;grid-template-columns:auto auto auto 1fr;gap:10px;align-items:baseline;padding:10px 12px;border-left:3px solid var(--tc,#8e24aa);background:rgba(255,255,255,.04);border-radius:0 12px 12px 0}
-.tl-time{font-weight:800;font-size:13px;white-space:nowrap}
-.tl-kind{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tc,#8e24aa);white-space:nowrap}
-.tl-text{font-size:14px;line-height:1.5}
-.tl-empty,.tl-note{font-size:14px;line-height:1.6;margin:12px 0 0}
+.tl-time{font-weight:800;font-size:17px;white-space:nowrap}
+.tl-kind{font-size:17px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tc,#8e24aa);white-space:nowrap}
+.tl-text{font-size:17px;line-height:1.5}
+.tl-empty,.tl-note{font-size:17px;line-height:1.6;margin:12px 0 0}
 .tl-note{color:#fff}
 /* Scorecard (5): open times as objects — obsidian chips, white time. */
 .tl-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
-.tl-chip{display:inline-block;padding:8px 12px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:linear-gradient(180deg,#1a1a22,#050607);color:#fff;font-size:13px;font-weight:800;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5)}
+.tl-chip{display:inline-block;padding:8px 12px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:linear-gradient(135deg,#1a1a22,#050607);color:#fff;font-size:17px;font-weight:800;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),2px 4px 10px rgba(0,0,0,.5)}
 /* ============ v5 — THE DAY DASHBOARD: wisdom banner + instrument boards ============ */
 /* Shawn's words, 03:35Z: "maybe a quote or wisdom for the Monday that goes
    across the top ... imagine a different dashboard in this ... prime real
@@ -639,28 +743,28 @@ button{font-family:inherit}
    news/weather/horoscope have no live source wired, so their boards say
    so honestly as beautiful empty states — never blank, never fake. Each
    board with a matching door opens that door on tap (role=button). */
-.wisdom-banner{margin:18px 0 0;border-color:var(--dc);text-align:center;padding:26px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
-.wisdom-banner:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
+.wisdom-banner{margin:18px 0 0;border-color:var(--dc);text-align:center;padding:26px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),8px 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
+.wisdom-banner:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),14px 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
 .wisdom-banner .wq-glyph{display:block;font-size:22px;line-height:1;color:#fff;text-shadow:0 0 18px rgba(var(--dc-rgb),.8);margin-bottom:10px}
 .wisdom-banner .wq{font-family:Marcellus,Georgia,serif;font-size:clamp(19px,2.6vw,26px);line-height:1.45;color:#fff;margin:0}
-.wisdom-banner .ws{display:block;margin-top:12px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.wisdom-banner .ws{display:block;margin-top:12px;font-size:17px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#fff}
 .dash{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
 .dash .span2{grid-column:span 2}
-.dash-board{margin:0;border-color:var(--dc);cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--dc-rgb),.35)}
-.dash-board:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--dc-rgb),.2)}
+.dash-board{margin:0;border-color:var(--bc,var(--dc));cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),8px 14px 36px rgba(0,0,0,.5),0 0 18px rgba(var(--bc-rgb,var(--dc-rgb)),.35)}
+.dash-board:hover{border-color:var(--bc,var(--dc));box-shadow:inset 0 1px 0 rgba(255,255,255,.14),14px 24px 56px rgba(0,0,0,.6),0 0 44px rgba(var(--bc-rgb,var(--dc-rgb)),.2)}
 .dash .daytimeline{margin:0}
 .db-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 .db-ico{font-size:20px;line-height:1;color:#fff}
-.db-head strong{font-size:13px;letter-spacing:.14em;color:#fff}
+.db-head strong{font-size:19px;letter-spacing:.14em;color:#fff}
 .db-count{margin-left:auto}
 .db-go{font-size:20px;line-height:1;color:#fff;margin-left:auto}
 .db-count + .db-go{margin-left:6px}
 .db-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
-.db-list li{padding:10px 12px;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;line-height:1.55;color:#fff}
+.db-list li{padding:10px 12px;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.04);font-size:17px;line-height:1.55;color:#fff}
 .db-list li b{color:#fff}
-.db-text{font-size:14px;line-height:1.65;color:#fff;margin:10px 0 0}
-.db-empty{font-size:15px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin:12px 0 0}
-.db-note{font-size:13px;line-height:1.6;color:#fff;margin:8px 0 0}
+.db-text{font-size:17px;line-height:1.65;color:#fff;margin:10px 0 0}
+.db-empty{font-size:17px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin:12px 0 0}
+.db-note{font-size:17px;line-height:1.6;color:#fff;margin:8px 0 0}
 @media(max-width:900px){.dash{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.dash{grid-template-columns:1fr}.dash .span2{grid-column:auto}}
 /* Empty state — an object, not a paragraph: board + glyph + day tiles + two words.
@@ -673,44 +777,59 @@ button{font-family:inherit}
 .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:56px 28px;min-height:56vh}
 .empty .glyph{font-size:60px;line-height:1;color:#fff;text-shadow:0 0 24px rgba(var(--dc-rgb),.8)}
 .empty .words{font-size:19px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
-.empty .hintline{font-size:14px;color:#fff;max-width:560px;line-height:1.6}
+.empty .hintline{font-size:17px;color:#fff;max-width:560px;line-height:1.6}
 /* Views inside a day */
 .view-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 auto 18px;max-width:1600px;width:100%}
 .view-head h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(22px,3.4vw,32px);color:#fff;margin:0;flex:1;min-width:220px}
-.view-head .primo{padding:12px 18px;font-size:13px}
+.view-head .primo{padding:12px 18px;font-size:17px}
 .viewcard{margin:0 auto 18px;max-width:1600px}
 .viewcard .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin:14px 0}
-.viewcard .stat{text-align:center;padding:14px 8px;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;background:linear-gradient(180deg,#0a0a0f,#050607)}
+.viewcard .stat{text-align:center;padding:14px 8px;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;background:linear-gradient(135deg,#0a0a0f,#050607)}
 .viewcard .stat b{display:block;font-size:34px;font-weight:900;color:#fff;line-height:1}
-.viewcard .stat span{display:block;font-size:10px;font-weight:800;letter-spacing:.16em;color:#fff;margin-top:6px}
+.viewcard .stat span{display:block;font-size:17px;font-weight:800;letter-spacing:.16em;color:#fff;margin-top:6px}
 .viewcard .list{list-style:none;margin:12px 0;padding:0;display:grid;gap:8px}
-.viewcard .list li{padding:12px 14px;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;line-height:1.55}
+.viewcard .list li{padding:12px 14px;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.04);font-size:17px;line-height:1.55}
 .viewcard .list li b{color:#fff}
-.viewcard .hint{font-size:13px;color:#fff;line-height:1.6}
-.viewcard .err{font-size:13px;color:#fff;font-weight:700;min-height:18px}
-.viewcard .status{font-size:14px;font-weight:700;color:#fff;background:rgba(7,146,95,.16);border:1.5px solid #07925f;border-radius:12px;padding:12px 14px}
+.viewcard .hint{font-size:17px;color:#fff;line-height:1.6}
+.viewcard .err{font-size:17px;color:#fff;font-weight:700;min-height:18px}
+.viewcard .status{font-size:17px;font-weight:700;color:#fff;border:1.5px solid #07925f;border-radius:12px;padding:12px 14px}
 /* Booking slots — [C] slot buttons, rebuilt in the pill language. */
 .slotbox{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
-.slot{cursor:pointer;font-weight:800;font-size:14px;color:#fff;padding:12px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);background:linear-gradient(180deg,#1a1a22,#050607);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px rgba(0,0,0,.5);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease)}
-.slot:hover{transform:translateY(-2px);border-color:#07925f;box-shadow:0 10px 20px rgba(0,0,0,.55),0 0 16px rgba(7,146,95,.4)}
+.slot{cursor:pointer;font-weight:800;font-size:17px;color:#fff;padding:12px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);background:linear-gradient(135deg,#1a1a22,#050607);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),4px 6px 16px rgba(0,0,0,.5);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease)}
+.slot:hover{transform:translateY(-2px);border-color:#07925f;box-shadow:6px 10px 20px rgba(0,0,0,.55),0 0 16px rgba(7,146,95,.4)}
 .slot.on{border-color:#07925f;box-shadow:0 0 16px rgba(7,146,95,.5)}
-.slot.taken{opacity:.35;cursor:not-allowed}
-.slot.taken:hover{transform:none;border-color:rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px rgba(0,0,0,.5)}
-.flab{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin:16px 0 8px}
-.field{width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.35);border-radius:12px;color:#fff;font-size:15px;padding:14px;font-family:inherit;
+.slot.taken{opacity:1;cursor:not-allowed}
+/* SWEEP-3 (F14): a taken slot was 35% opacity — its text rendered at 35%
+   white, dimmed past reading. Full white now; "taken" is marked with a
+   struck time + the state word TAKEN in the button itself (see
+   appointmentsHTML), not by dimming. */
+.slot.taken:hover{transform:none;border-color:rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),4px 6px 16px rgba(0,0,0,.5)}
+.flab{display:block;font-size:17px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin:16px 0 8px}
+.field{width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.35);border-radius:12px;color:#fff;font-size:17px;padding:14px;font-family:inherit;
   box-shadow:inset 0 2px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12)}
 .field:focus{outline:none;border-color:#fff;box-shadow:inset 0 2px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.25)}
-.field::placeholder{color:rgba(255,255,255,.85)}
+.field::placeholder{color:#fff}
+/* SWEEP-3 (F14): the placeholder was 85% white — dimmed text, which the
+   law does not carve out (the carve-out covers dimmed state DOTS, not
+   dimmed TEXT). Full white now; the placeholder still reads as a hint
+   because it is the field's own words ("Their name", "Write it in your
+   own words…"), not because it is dimmed. */
 textarea.field{min-height:110px;resize:vertical}
 select.field option{background:#0a0a0f;color:#fff}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.actions .primo{padding:13px 22px;font-size:14px}
+.actions .primo{padding:13px 22px;font-size:17px}
+/* SWEEP-3 (F18): the day-view prev/next-day buttons wear the same royal
+   purple as the month arrows (F1) — the both-arrows-purple law governs
+   the day view's arrows as well. Same treatment as .cal-nav #prev/#next:
+   border in the own color, outer glow leading with the own color. */
+.actions .primo.daystep{--glow:#8e24aa;--glow-rgb:142,36,170;border-color:var(--glow);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px rgba(var(--glow-rgb),.6),0 0 48px rgba(var(--glow-rgb),.25),7px 12px 32px rgba(0,0,0,.65)}
+.actions .primo.daystep:hover{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(var(--glow-rgb),.75),8px 14px 36px rgba(0,0,0,.65)}
 .meetbox{text-align:center}
 .meetbox .face{width:64px;height:64px;margin:0 auto 12px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:900;color:#fff;
-  background:linear-gradient(180deg,#1a1a22,#050607);border:2px solid #8e24aa;box-shadow:0 0 24px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+  background:linear-gradient(135deg,#1a1a22,#050607);border:2px solid #8e24aa;box-shadow:0 0 24px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35)}
 .meetbox .timer{font-size:44px;font-weight:900;color:#fff;letter-spacing:.04em;line-height:1;margin:8px 0}
-.meetbox video{width:100%;max-width:520px;border-radius:16px;background:#050607;border:1.5px solid rgba(255,255,255,.85);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 24px rgba(142,36,170,.35);display:none}
+.meetbox video{width:100%;max-width:520px;border-radius:16px;background:#050607;border:1.5px solid rgba(255,255,255,.85);box-shadow:6px 10px 24px rgba(0,0,0,.6),0 0 24px rgba(142,36,170,.35);display:none}
 /* Phone — [D] 480px med-tile overrides, values verbatim (lines 4592-4600).
    The .os-sl-gauge-num selector prefix is dropped on every line — this
    file has no gauge, and the one retained prefix (a dead selector) is
@@ -722,10 +841,27 @@ select.field option{background:#0a0a0f;color:#fff}
      the plaques align with the day columns now, they were 1px narrow)
      and the plaque padding narrows, giving "Wednesday" ~5px more room.
      The font stays 9px: 10px cannot fit "Wednesday" in a ~49px track, by
-     the arithmetic in the maker report — 9px is the correct maximum. */
+     the arithmetic in the maker report — 9px is the correct maximum.
+     SWEEP-3 (F3 — RULING OWED, not a silent compromise): the 17px floor
+     of laws §2.3 truly cannot fit here — "Wednesday" at 17px Marcellus
+     needs ~85px in a ~49px track, and the names are never abbreviated
+     (§7: full names, never abbreviations). v15's 17px-floor dark-letter
+     treatment (index.html lines ~270–283) only fits because v15 uses
+     3-letter abbreviations. The base rule above now carries the 17px
+     floor (clamp(17px,2.2vw,20px)); at ≤480 the plaque keeps its fit
+     size and this question goes to Shawn — 17px floor vs full names vs
+     the 7-column geometry. The checker still flags this line; that flag
+     is the open question, correctly raised. */
   .cal-week{gap:4px}
   .cal-week div{font-size:9px;letter-spacing:.02em;padding:6px 2px}
   .cal-day{border-radius:14px;padding:8px 2px;gap:4px}
+  /* SWEEP-3 (F11): the 12px dot is ~29% of the ~42–50px cell at 390
+     (nearly half with its ring) — it stops being quiet. 8px here
+     (16px with ring, ~32% visual — the 2px border + 2px ring are the
+     floor; the dot itself is 16% of the cell). Same corner, same ring,
+     same z-index — still a dot, still no fill, no glow, no pill. The
+     Fix-9 gate as defined passes; this is the sense check. */
+  .cal-day.today::after{width:8px;height:8px}
   /* FIX-8 (item 4): "November 2026" wrapped to two lines in its pill at
      390 — 26px Marcellus plus 28px of padding is wider than the space
      left between the arrows. One line now: nowrap on the base rule, and
@@ -739,8 +875,21 @@ select.field option{background:#0a0a0f;color:#fff}
      spare even on the renderer that overflowed (~27px on the maker's).
      Same pill, same plaque, same text — only smaller at ≤480. */
   .cal-title{padding:6px 10px;font-size:18px}
-  .cal-nav .primo{padding:10px 12px;font-size:12px}
-  .cal-nav .primo.today{padding:10px 14px}
+  /* SWEEP-3 (F2): the header holds ONE ROW at 390 — purple arrow, month
+     plaque, now-plaque, purple arrow — so the head tightens (4px gaps,
+     compact arrows) and the plaque wraps its own date + time inside the
+     pill instead of ever overflowing it. The clock tiles go compact and
+     the date may wrap at a space; the seconds hide in this band only
+     (see the 361–480 rule below) and return wherever the plaque has room. */
+  .cal-head{gap:4px}
+  .nowplaque{padding:5px 4px;gap:4px 6px}
+  .now-date{font-size:17px;white-space:normal;text-align:center}
+  .clocknum .os-mini-tile{width:15px;border-radius:4px}
+  .clocknum .os-mini-tile .cap{height:3px}
+  .clocknum .os-mini-tile .rd{height:20px;line-height:20px;font-size:17px}
+  .clocknum .os-mini-tile.letter .rd{font-size:15px}
+  .clock-colon{font-size:17px}
+  .cal-nav .primo{padding:10px 12px;font-size:17px}
   .os-mini-num.med{gap:3px}
   .os-mini-num.med .os-mini-tile{width:28px;border-radius:5px;border-width:1.5px}
   .os-mini-num.med .os-mini-tile .cap{height:5px}
@@ -773,7 +922,14 @@ select.field option{background:#0a0a0f;color:#fff}
   .day-back{grid-column:1/-1;margin-left:0}
   /* FIX-6 (item 8): the arrows keep their button-standard size here too
      (18px glyph — still clearly readable, still inside the 390 header). */
-  #prev,#next{font-size:18px;padding:10px 16px}
+  #prev,#next{font-size:18px;padding:6px 10px}
+}
+@media (max-width:480px) and (min-width:361px){
+  /* SWEEP-3 (F2): the one-row header at 390 has no room for seconds — the
+     clock shows HH:MM there; seconds return wherever the plaque has room
+     (≥481, and ≤360 where the plaque takes its own row). The seconds
+     tiles still tick in the DOM, hidden, so the time is never stale. */
+  .clock-secs{display:none}
 }
 
 /* ============ AMENDMENT #4(3) — DAY NUMBERS SMALL, FIT AT EVERY WIDTH ============ */
@@ -815,6 +971,12 @@ select.field option{background:#0a0a0f;color:#fff}
   /* FIX-9 (item 1): the dot scales down with the cell — 14px here
      (~145px cell, ~10%; ringed visual ~22px, ~15%). */
   .cal-day.today::after{width:14px;height:14px}
+  /* SWEEP-3 (F2): the plaque's clock tiles go compact here so the header
+     still holds one row at tablet widths. */
+  .clocknum .os-mini-tile{width:24px;border-radius:5px}
+  .clocknum .os-mini-tile .cap{height:4px}
+  .clocknum .os-mini-tile .rd{height:26px;line-height:26px;font-size:21px}
+  .clocknum .os-mini-tile.letter .rd{font-size:19px}
   .cal-day .os-mini-num.med .os-mini-tile{width:19px;border-radius:4px}
   .cal-day .os-mini-num.med .os-mini-tile .cap{height:4px}
   .cal-day .os-mini-num.med .os-mini-tile .rd{height:19px;line-height:19px;font-size:17px}
@@ -847,6 +1009,10 @@ select.field option{background:#0a0a0f;color:#fff}
   .day-head .os-jewel-hz{justify-self:start}
   .day-head .plan-eye{margin-left:0}
   .day-back{grid-column:1/-1;margin-left:0}
+  /* SWEEP-3 (F5): the bottom five wrap to two rows here, so the month
+     grid and the day/view scrolls leave 124px at the bottom. */
+  #monthView{padding-bottom:124px}
+  #dayView,#viewView{padding-bottom:124px}
 }
 @media (max-width:480px){
   .plan-eye{width:22px;height:22px;font-size:11px}
@@ -862,13 +1028,20 @@ select.field option{background:#0a0a0f;color:#fff}
   .cal-day .os-mini-num.med .os-mini-tile .cap{height:2px}
   .cal-day .os-mini-num.med .os-mini-tile .rd{height:9px;line-height:9px;font-size:8px}
   .cal-week div{font-size:8px;letter-spacing:0}
+  /* SWEEP-3 (F3 — RULING OWED, same question as the ≤480 rule above):
+     8px here is the fit size for the ~40px track at 320; the 17px floor
+     cannot fit. Full names kept, never abbreviated. */
   /* FIX-8 (item 4): the nowrap title must still fit at 320 — 14px here
      (~114px all-in) and the nav buttons narrow beside it, so the pill
      keeps ~145px of room instead of ~119px. Same colors, same objects,
      only narrower at the smallest width. */
-  .cal-title{font-size:14px;padding:6px 8px}
-  .cal-nav #prev,.cal-nav #next{font-size:16px;padding:8px 12px}
-  .cal-nav .primo.today{padding:8px 10px}
+  .cal-title{font-size:17px;padding:6px 8px}
+  .cal-nav #prev,.cal-nav #next{font-size:17px;padding:8px 12px}
+  /* SWEEP-3 (F2): at 320 the plaque takes its own row, full width — the
+     arrows + title hold row one, the date + full clock (seconds back)
+     hold row two. Nothing clips, nothing shrinks below the scale. */
+  .nowplaque{flex:1 1 100%;padding:6px 10px}
+  .now-date{white-space:nowrap}
 }
 @media (prefers-reduced-motion:reduce){
   .primo::before{animation:none}
@@ -881,14 +1054,28 @@ select.field option{background:#0a0a0f;color:#fff}
   <div class="cal-head">
     <div class="cal-nav"><button class="primo" id="prev" type="button" aria-label="Previous month">‹</button></div>
     <h1 class="cal-title" id="monthname"></h1>
-    <div class="cal-nav">
-      <button class="primo today" id="todayBtn" type="button">Today</button>
-      <button class="primo" id="next" type="button" aria-label="Next month">›</button>
+    <div class="nowplaque" id="nowPlaque" role="timer" aria-label="Today's date and your local time">
+      <span class="live-dot" id="nowDot" aria-hidden="true"></span>
+      <span class="now-date" id="nowDate"></span>
+      <span class="now-time" id="nowTime"></span>
     </div>
+    <div class="cal-nav"><button class="primo" id="next" type="button" aria-label="Next month">›</button></div>
   </div>
+  <p class="cal-hint">Tap a day to open it</p>
+  <div class="back-today-row" id="backTodayRow" hidden><button class="primo" id="backTodayBtn" type="button">‹ Back to today</button></div>
   <div class="cal-week" id="weeknames" aria-hidden="true"></div>
   <div class="cal-grid" id="days" role="grid" aria-label="Days of the month"></div>
 </main>
+
+<!-- THE BOTTOM FIVE — laws §3.2 (SWEEP-3 F5). One bar, everywhere. -->
+<nav class="naya-five" aria-label="NayaNET">
+  <button class="primo five-add" id="fiveAdd" type="button"><span class="ico" aria-hidden="true">+</span>ADD</button>
+  <button class="primo five-mail" data-five="Smart Mail" type="button">MAIL</button>
+  <button class="primo five-activity" data-five="Activity" type="button">ACTIVITY</button>
+  <button class="primo five-worlds" data-five="Worlds" type="button">WORLDS</button>
+  <button class="primo five-eco" data-five="Ecosystem" type="button">ECOSYSTEM</button>
+</nav>
+<div class="five-note" id="fiveNote" role="status" hidden></div>
 
 <!-- DAY VIEW — inside the day. -->
 <section id="dayView" aria-label="Day view" aria-hidden="true">
@@ -923,25 +1110,32 @@ const WEEKDAY=[
 
 /* The 13 doors, in the brief's exact order and names. Amendment #2(4):
    the door colors follow the SPECTRUM FLOW in order — never the same color
-   twice in a row. Playbook order: purple → blue → green → gold → orange →
-   red → magenta, then indigo → cyan → violet, cycling. All hexes from the
-   Deep Palette [L] only. Icons are the white object-glyphs of [C]'s
+   twice in a row. SWEEP-3 (F4): the Flow is Shawn's 18:00Z law — magenta
+   → purple → indigo → cyan → green → gold → orange → red → magenta,
+   cycling; start varies by area, here purple (door 1 keeps its purple).
+   The old playbook order (purple → blue → green → gold → orange → red
+   → magenta → indigo → cyan → violet) is gone: blue (#0f52ba) and violet
+   (#6d28d9) have no place in the Flow's eight hues and are re-mapped.
+   All hexes from the Deep Palette [L] only. SWEEP-3 (F13): the icons are
+   distinct glyphs now — the near-duplicates are gone (✦ vs ✧, ▧ vs ▣,
+   ◷ vs ◎ were the same shapes in different colors, which §8 forbids
+   calling two icons). Icons are the white object-glyphs of [C]'s
    vocabulary. The glimpse under each name is live (doorGlimpse, below) —
    amendment #2(3): a door is a window into the day, not a blank bar. */
 const DOORS=[
  ['Appointments','◷','#8e24aa'],
- ['Local news','⌖','#0f52ba'],
- ['Provincial news','▧','#07925f'],
- ['Global news','◎','#d4a017'],
- ['Personal feed','♙','#c2410c'],
- ['Business feed','▣','#c62828'],
- ['Thing feed','◈','#a21caf'],
- ['Your World','✦','#3f51b5'],
- ['Smart Notes for that day','✧','#0e7490'],
- ['Notes for that day','☰','#6d28d9'],
- ['Weather','☀','#8e24aa'],
- ['Horoscope','☾','#0f52ba'],
- ['Posts for that day','✎','#07925f']];
+ ['Local news','⌖','#3f51b5'],
+ ['Provincial news','▧','#0e7490'],
+ ['Global news','♁','#07925f'],
+ ['Personal feed','♙','#d4a017'],
+ ['Business feed','▲','#c2410c'],
+ ['Thing feed','◈','#c62828'],
+ ['Your World','✦','#a21caf'],
+ ['Smart Notes for that day','❖','#8e24aa'],
+ ['Notes for that day','☰','#3f51b5'],
+ ['Weather','☀','#0e7490'],
+ ['Horoscope','☾','#07925f'],
+ ['Posts for that day','✎','#d4a017']];
 
 /* ============ DOOR GLIMPSES — amendment #2(3) ============ */
 /* Each door carries a live glimpse of what's inside it, from the day's own
@@ -1032,16 +1226,28 @@ function mixHex(hex, toward, amt){
 /* FIX-7 (item 1): ONE tile for a two-digit day — the duo tile. Both digits
    ride inside a single tile (white, as in every tile) with one rim, one
    cap and one glow in the DAY's color (--dc/--dc-rgb set inline). The cap
-   gradient follows the file's own lighten/darken rule above. */
+   gradient follows the file's own lighten/darken rule above.
+   SWEEP-3 (F16 — DECISION, recorded): this is a deliberate, recorded
+   exception to laws §4 ("a digit's color is its digit's color"). The DATE
+   is one object in the day's color — Fix-7 ordered the join so "17" reads
+   as one date, not two digits — while COUNTS keep their per-digit tiles
+   (no label, no color, never the duo path). The tension is named here so
+   no later round "fixes" the join back into two tiles, and no checker
+   reads it as an accident. */
 function duoTileHTML(str, color){
   const rgb=color.match(/\w\w/g).map(x=>parseInt(x,16)).join(',');
   const light=mixHex(color,'#ffffff',0.55), dark=mixHex(color,'#000000',0.45);
-  return '<span class="os-mini-tile duo" style="--dc:'+color+';--dc-rgb:'+rgb+'"><span class="cap" style="background:linear-gradient(180deg,'+light+','+color+' 55%,'+dark+')"></span><span class="rd">'+str+'</span></span>';
+  return '<span class="os-mini-tile duo" style="--dc:'+color+';--dc-rgb:'+rgb+'"><span class="cap" style="background:linear-gradient(135deg,'+light+','+color+' 55%,'+dark+')"></span><span class="rd">'+str+'</span></span>';
 }
 function miniNumHTML(value, size, label, color){
-  if (value == null) return '—';
+  /* SWEEP-3 (F10 — the zero rule, Shawn 17:28Z): a missing number never
+     wears a bare dash. A verified zero shows as a digit tile (the call
+     sites pass counts, and 0 renders as the d0 tile); unknown / unmeasured
+     shows as a STATE in words. No live call site passes null today — the
+     path is removed now, before one does. */
+  if (value == null) return '<span class="num-state">Not counted yet</span>';
   var str = String(value).trim().replace(/,/g, ' ').replace(/ +/g, ' ');
-  if (str === '' || str === '—' || str === '-') return '—';
+  if (str === '' || str === '—' || str === '-') return '<span class="num-state">Not counted yet</span>';
   if (!/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(str) && str !== '∞') return esc(String(value));
   var cls = (size === 'med') ? 'os-mini-num med' : 'os-mini-num';
   /* FIX-6 (item 9): when the number is a day, the wrapper names it outright
@@ -1056,6 +1262,47 @@ function miniNumHTML(value, size, label, color){
   if (label && color && /^[0-9]{2}$/.test(str)) return html + duoTileHTML(str, color) + '</span>';
   for (var i = 0; i < str.length; i++) html += miniTileHTML(str[i]);
   return html + '</span>';
+}
+
+/* SWEEP-3 (F2/F6/F9 — the live clocks, harvested from v15): the live time
+   as Dashboard digit tiles — v15's clockTilesHTML (index.html lines
+   1681–1695), adapted to this file's own miniTileHTML (v15's digitsHTML
+   is the same construction). The digits keep their digit colors (laws
+   §4); the colon is a plain white separator; AM/PM ride in the SAME tile
+   block with the hour's color as rim (letters take the hour's color).
+   The hour's color IS its frequency made visible — the color of the
+   hour's FIRST digit under the digit law: 1 ruby, 2 orange, 3 gold,
+   4 emerald, 5 cyan, 6 indigo, 7 purple, 8 violet, 9 magenta, 10/11/12
+   red (leading 1). Deep Palette hues only. The seconds ride in their own
+   span so CSS can hide them where the one-row header has no room (390);
+   the tick still updates them, hidden, so the time is never stale. */
+const HOUR_COLORS={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa',8:'#6d28d9',9:'#a21caf',10:'#c62828',11:'#c62828',12:'#c62828'};
+function clockTilesHTML(d){
+  const h24=d.getHours(), m=d.getMinutes(), s=d.getSeconds();
+  const ap=h24>=12?'PM':'AM';
+  const h12=h24%12||12;
+  const hc=HOUR_COLORS[h12];
+  const rgb=hc.match(/\w\w/g).map(x=>parseInt(x,16)).join(',');
+  const hh=String(h12), mm=String(m).padStart(2,'0'), ss=String(s).padStart(2,'0');
+  let t='<span class="os-mini-num clocknum" style="--hc:'+hc+';--hc-rgb:'+rgb+'" role="img" aria-label="Live time, '+h12+':'+mm+':'+ss+' '+ap+'">';
+  for(let i=0;i<hh.length;i++) t+=miniTileHTML(hh[i]);
+  t+='<span class="clock-colon" aria-hidden="true">:</span>';
+  t+=miniTileHTML(mm[0])+miniTileHTML(mm[1]);
+  t+='<span class="clock-secs"><span class="clock-colon" aria-hidden="true">:</span>'+miniTileHTML(ss[0])+miniTileHTML(ss[1])+'</span>';
+  t+='<span class="os-mini-gap"></span>';
+  t+='<span class="os-mini-tile letter"><span class="cap"></span><span class="rd">'+ap.charAt(0)+'</span></span>';
+  t+='<span class="os-mini-tile letter"><span class="cap"></span><span class="rd">'+ap.charAt(1)+'</span></span>';
+  return t+'</span>';
+}
+/* SWEEP-3 (F9): the meet timer is digit tiles now, never plain text —
+   the same clock construction, minus the hours and the AM/PM. MM:SS as
+   tiles with a plain white colon between the groups. */
+function timerTilesHTML(mins, secs){
+  const mm=String(mins).padStart(2,'0'), ss=String(secs).padStart(2,'0');
+  return '<span class="os-mini-num clocknum" role="img" aria-label="Meet time, '+mins+' minutes '+secs+' seconds">'
+    +miniTileHTML(mm[0])+miniTileHTML(mm[1])
+    +'<span class="clock-colon" aria-hidden="true">:</span>'
+    +miniTileHTML(ss[0])+miniTileHTML(ss[1])+'</span>';
 }
 
 /* ============ STORES — [C] verbatim ============ */
@@ -1154,7 +1401,7 @@ function dirLine(ds,books,notes){
    shows both. News: the archive is not wired, so the timeline says so
    honestly instead of inventing headlines. */
 /* FIX-7 (item 5b): timelineHTML takes the same optional snapshot. */
-function timelineHTML(ds,books,notes){
+function timelineHTML(ds,books,notes,flow){
   const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
   const past=ds<todayKey, future=isFutureDs(ds);
   books=books||dayBookings(ds); notes=notes||dayNotes(ds);
@@ -1166,7 +1413,7 @@ function timelineHTML(ds,books,notes){
     entries.push({min:h*60+m, html:entry(h*60+m,fmtTime(b.time),'#07925f','Appointment'+(b.meet?' · Smart Meet':''),(b.who||'Appointment')+(b.what?' — '+b.what:''))});
   });
   notes.forEach(n=>{
-    const kind=n.type==='smart'?'Smart Note ✧':n.type==='post'?'Post':'Note';
+    const kind=n.type==='smart'?'Smart Note ❖':n.type==='post'?'Post':'Note';
     const color=n.type==='smart'?'#6d28d9':n.type==='post'?'#07925f':'#c62828';
     entries.push({min:TF_MIN[n.timeframe]||540, html:entry(TF_MIN[n.timeframe]||540,n.timeframe||'Morning',color,kind+' · '+n.world,n.text)});
   });
@@ -1182,7 +1429,7 @@ function timelineHTML(ds,books,notes){
     body+=open.length?`<div class="tl-chips" aria-label="Open times on this day">${open.map(t=>`<span class="tl-chip">${esc(fmtTime(t))}</span>`).join('')}</div><p class="tl-note">These times are open — bookable.</p>`:`<p class="tl-note">Every time on this day is booked.</p>`;
   }
   body+=`<p class="tl-note">News for this day: the news archive is not wired yet — no headlines are shown, and today’s headlines are never shown as past news.</p>`;
-  return `<section class="daytimeline" aria-label="Timeline for this day"><strong>THE DAY, IN ORDER</strong><div class="tl-sub">${esc(sub)}</div>${body}</section>`;
+  return `<section class="daytimeline" aria-label="Timeline for this day"${flow?` style="--dc:${flow[0]};--dc-rgb:${flow[1]}"`:''}><strong>THE DAY, IN ORDER</strong><div class="tl-sub">${esc(sub)}</div>${body}</section>`;
 }
 
 /* ============ DAY DASHBOARD — v5: the day view is a dashboard ============ */
@@ -1218,18 +1465,29 @@ function noteLines(list, emptyWords){
 function dashHTML(ds){
   const books=dayBookings(ds), notes=dayNotes(ds);
   const smart=notes.filter(n=>n.type==='smart'), naya=notes.filter(n=>n.type==='naya'), posts=notes.filter(n=>n.type==='post');
-  const door=(view,inner,id)=>`<article class="ph-card dash-board" role="button" tabindex="0" data-view="${esc(view)}"${id?` id="${id}"`:''}>${inner}</article>`;
+  /* SWEEP-3 (F12 — coordinator's decision, made): the ten dashboard
+     boards vary their rims in Spectrum Flow order. The law forbids the
+     same color twice in a row for boards, and ten gold-rimmed boards in
+     one grid was the same color ten times. The day's color lives in the
+     header and the jewel only (showDay sets --dc on #dayView; the wisdom
+     banner keeps it as the day's banner). Each board takes its Flow color
+     as --bc/--bc-rgb; the .dash-board CSS reads --bc with --dc fallback.
+     Flow: magenta → purple → indigo → cyan → green → gold → orange → red,
+     cycling — the same order as the doors (F4). */
+  const FLOW=[['#a21caf','162,28,175'],['#8e24aa','142,36,170'],['#3f51b5','63,81,181'],['#0e7490','14,116,144'],['#07925f','7,146,95'],['#d4a017','212,160,23'],['#c2410c','194,65,12'],['#c62828','198,40,40']];
+  const bc=i=>FLOW[i%FLOW.length];
+  const door=(view,inner,id,ci)=>`<article class="ph-card dash-board" role="button" tabindex="0" data-view="${esc(view)}"${id?` id="${id}"`:''} style="--bc:${bc(ci)[0]};--bc-rgb:${bc(ci)[1]}">${inner}</article>`;
   return `<div class="dash">
-    ${door('Appointments', boardHead('◷','APPOINTMENTS',books.length,true)+apptTiles(ds,books))}
-    ${door('Your World', boardHead('✦','DAILY REPORT',null,true)+`<p class="db-text">${esc(dirLine(ds,books,notes))}</p>`, 'dayReport')}
-    ${door('Your World', boardHead('◎','INTEL TODAY',null,true)+`<p class="db-text">${esc(intelLine(ds,books,notes))}</p>`)}
-    ${door('Smart Notes for that day', boardHead('✧','SMART NOTES',smart.length,true)+noteLines(smart,'No Smart Notes yet'))}
-    ${door('Notes for that day', boardHead('☰','NOTES',naya.length,true)+noteLines(naya,'No notes yet'))}
-    ${door('Posts for that day', boardHead('✎','POSTS',posts.length,true)+noteLines(posts,'No posts yet'))}
-    <div class="span2">${timelineHTML(ds,books,notes)}</div>
-    ${door('Local news', boardHead('◎','NEWS',null,true)+`<ul class="db-list"><li><b>Local</b> — Archive not wired yet</li><li><b>Provincial</b> — Archive not wired yet</li><li><b>Global</b> — Archive not wired yet</li></ul>`)}
-    ${door('Weather', boardHead('☀','WEATHER',null,true)+`<p class="db-empty">No provider wired</p><p class="db-note">Nothing is shown in its place.</p>`)}
-    ${door('Horoscope', boardHead('☾','HOROSCOPE',null,true)+`<p class="db-empty">No source wired</p><p class="db-note">Nothing is shown in its place.</p>`)}
+    ${door('Appointments', boardHead('◷','APPOINTMENTS',books.length,true)+apptTiles(ds,books),null,0)}
+    ${door('Your World', boardHead('✦','DAILY REPORT',null,true)+`<p class="db-text">${esc(dirLine(ds,books,notes))}</p>`, 'dayReport',1)}
+    ${door('Your World', boardHead('◆','INTEL TODAY',null,true)+`<p class="db-text">${esc(intelLine(ds,books,notes))}</p>`,null,2)}
+    ${door('Smart Notes for that day', boardHead('❖','SMART NOTES',smart.length,true)+noteLines(smart,'No Smart Notes yet'),null,3)}
+    ${door('Notes for that day', boardHead('☰','NOTES',naya.length,true)+noteLines(naya,'No notes yet'),null,4)}
+    ${door('Posts for that day', boardHead('✎','POSTS',posts.length,true)+noteLines(posts,'No posts yet'),null,5)}
+    <div class="span2">${timelineHTML(ds,books,notes,bc(6))}</div>
+    ${door('Local news', boardHead('♁','NEWS',null,true)+`<ul class="db-list"><li><b>Local</b> — Archive not wired yet</li><li><b>Provincial</b> — Archive not wired yet</li><li><b>Global</b> — Archive not wired yet</li></ul>`,null,7)}
+    ${door('Weather', boardHead('☀','WEATHER',null,true)+`<p class="db-empty">No provider wired</p><p class="db-note">Nothing is shown in its place.</p>`,null,8)}
+    ${door('Horoscope', boardHead('☾','HOROSCOPE',null,true)+`<p class="db-empty">No source wired</p><p class="db-note">Nothing is shown in its place.</p>`,null,9)}
   </div>`;
 }
 
@@ -1251,9 +1509,10 @@ function render(){
   const n=new Date(year,month+1,0).getDate();
   /* Amendment 2 (03:54Z): today is known from the weekday plaque — the
      plaque for today's weekday is the lit one (the mode-pill active
-     treatment) — and from the header TODAY button, which wears today's
-     weekday color. Only while the displayed month is the current month;
-     the cell itself carries no light. */
+     treatment) — and from the header now-plaque, which carries today's
+     date + the live time. SWEEP-3 (F2): the header TODAY button is gone;
+     the plaque replaces it. Only while the displayed month is the current
+     month; the cell itself carries no light. */
   document.querySelectorAll('#weeknames div').forEach((el,i)=>{
     el.classList.toggle('today', year===NOW.getFullYear()&&month===NOW.getMonth()&&i===NOW.getDay());
   });
@@ -1261,9 +1520,10 @@ function render(){
      (.cur on #weeknames) — in any other month no plaque glows, so no
      weekday can read as "today" there; the lit plaque exists only here. */
   $('weeknames').classList.toggle('cur', year===NOW.getFullYear()&&month===NOW.getMonth());
-  const tw=WEEKDAY[NOW.getDay()];
-  $('todayBtn').style.setProperty('--glow',tw.color);
-  $('todayBtn').style.setProperty('--glow-rgb',tw.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(','));
+  /* SWEEP-3 (F2): "Back to today" — the return gesture, shown only when
+     the viewed month is not the month holding today. Never the old TODAY
+     button, which stays gone from the month header. */
+  $('backTodayRow').hidden=(year===NOW.getFullYear()&&month===NOW.getMonth());
   /* AMENDMENT (Shawn 02:58Z): the grid ends at the month's last day — no
      trailing next-month days, no trailing blank row. Rows = the weeks the
      month actually needs; they stretch to fill, so the cells are BIG. */
@@ -1281,11 +1541,17 @@ function render(){
     const bN=dayBookings(ds).length, nN=dayNotes(ds).length;
     const summary=rec?((bN?bN+' appointment'+(bN===1?'':'s'):'')+(bN&&nN?', ':'')+(nN?nN+' note'+(nN===1?'':'s'):'')+'.'):'No records for this day.';
     /* FIX-6 (item 7): the glimpse says what is inside the day, in the
-       day's own words — counts from the local record only, never invented. */
+       day's own words — counts from the local record only, never invented.
+       SWEEP-3 (F17): a second line — the first appointment's time — from
+       the same record, via doorGlimpse ("Next: 9:00 AM", time only, never
+       invented). Empty days stay empty; days with no booking show no
+       second line. */
     const glimpse=rec?((bN?bN+' appointment'+(bN===1?'':'s'):'')+(bN&&nN?' · ':'')+(nN?nN+' note'+(nN===1?'':'s'):'')) : '';
+    const apptG=rec?doorGlimpse('Appointments',ds,dayBookings(ds),dayNotes(ds)):'';
+    const nextLine=apptG.indexOf('Next: ')===0?apptG.split(' — ')[0]:'';
     return `<div class="cal-day dow-${new Date(year,month,d).getDay()}${today?' today':''}" data-day="${d}" role="button" tabindex="0" aria-label="Open ${dlabel(year,month,d)}. ${esc(summary)}">
       ${miniNumHTML(d,'med',String(d),wd.color)}
-      ${rec?`<span class="day-glimpse">${esc(glimpse)}</span><span class="has" aria-hidden="true"></span>`:''}
+      ${rec?`<span class="day-glimpse">${esc(glimpse)}${nextLine?'<br>'+esc(nextLine):''}</span><span class="has" aria-hidden="true"></span>`:''}
       <button class="plan-eye" type="button" data-eye="${d}" style="--jc:${wd.color}" aria-label="See inside ${dlabel(year,month,d)}">i</button></div>`;
   }).join('');
   document.querySelectorAll('[data-day]').forEach(b=>{ b.onclick=()=>openDay(+b.dataset.day);
@@ -1308,9 +1574,14 @@ function showDay(){
   $('dayHead').innerHTML=`
     <span class="os-jewel os-jewel-hz" style="--jc:${wd.color}" role="img" aria-label="${wd.name}, ${wd.hz} Hz">${wd.hz} Hz</span>
     <div class="daynum-wrap">${miniNumHTML(day,'med',String(day),wd.color)}</div>
-    <div><h2 class="day-title">${esc(dlabel(year,month,day))}</h2></div>
+    <div><h2 class="day-title">${esc(dlabel(year,month,day))}</h2><div class="day-clock" id="dayClock" role="timer" aria-label="Live time"></div></div>
     <button class="plan-eye" data-op="report" type="button" style="--jc:${wd.color}" aria-label="See the daily report for this day">i</button>
     <button class="primo day-back" data-op="close" type="button">← Back to month</button>`;
+  /* SWEEP-3 (F6): the day header carries the live time too — the same
+     ticking clock tiles as the month now-plaque, under the date line.
+     renderNowPlaque fills #dayClock on every tick while the day view is
+     open; showDay refreshes it here so it is never empty on entry. */
+  renderNowPlaque();
   /* v5: the wisdom banner runs across the top of the day view (the harvested
      [C] wisdomFor, moved up from the bottom board); below the 13 doors the
      dashboard fills the page — the old 3-count row, the standalone timeline
@@ -1323,8 +1594,8 @@ function showDay(){
     ${dashHTML(ds)}
     <div class="actions">
       <button class="primo" data-op="Create" type="button"><span class="ico" aria-hidden="true">+</span>Create a note for this day</button>
-      <button class="primo" data-op="prevday" type="button">‹ Previous day</button>
-      <button class="primo" data-op="nextday" type="button">Next day ›</button>
+      <button class="primo daystep" data-op="prevday" type="button">‹ Previous day</button>
+      <button class="primo daystep" data-op="nextday" type="button">Next day ›</button>
     </div>`;
   wireDay();
   const mh=$('dayHead').querySelector('.day-title'); if(mh){ mh.setAttribute('tabindex','-1'); mh.focus(); }
@@ -1364,7 +1635,7 @@ function emptyState(glyph, words, hint){
 }
 function notesListHTML(list, emptyWords, emptyHint){
   if(!list.length) return emptyState('✧', emptyWords, emptyHint);
-  return `<div class="viewcard ph-card"><div class="timeline">${list.slice().sort((a,b)=>(TF_ORDER[a.timeframe]-TF_ORDER[b.timeframe])||String(a.createdAt).localeCompare(String(b.createdAt))).map(n=>`<p><strong>${esc(n.timeframe||'')}</strong> · ${esc(n.type==='smart'?'Smart Note ✧':n.type==='post'?'Post':'Note')} · ${esc(n.world)}${n.rank?' · rank '+n.rank:''} — ${esc(n.text)}</p>`).join('')}</div></div>`;
+  return `<div class="viewcard ph-card"><div class="timeline">${list.slice().sort((a,b)=>(TF_ORDER[a.timeframe]-TF_ORDER[b.timeframe])||String(a.createdAt).localeCompare(String(b.createdAt))).map(n=>`<p><strong>${esc(n.timeframe||'')}</strong> · ${esc(n.type==='smart'?'Smart Note ❖':n.type==='post'?'Post':'Note')} · ${esc(n.world)}${n.rank?' · rank '+n.rank:''} — ${esc(n.text)}</p>`).join('')}</div></div>`;
 }
 function showView(){
   const ds=selKey();
@@ -1374,7 +1645,7 @@ function showView(){
   if(section==='Appointments'){
     html+=appointmentsHTML(ds);
   } else if(section==='Local news'||section==='Provincial news'||section==='Global news'){
-    html+=emptyState('◎','No archived news','No archived news for this date in this build. The news archive is not wired yet — and today’s headlines are never shown as past news. When the archive is wired, this view will show sourced, date-stamped headlines published on this day.');
+    html+=emptyState('♁','No archived news','No archived news for this date in this build. The news archive is not wired yet — and today’s headlines are never shown as past news. When the archive is wired, this view will show sourced, date-stamped headlines published on this day.');
   } else if(section==='Personal feed'||section==='Business feed'||section==='Thing feed'){
     const w=section==='Personal feed'?'Personal':section==='Business feed'?'Business':'Thing';
     const list=dayNotes(ds).filter(n=>n.world===w);
@@ -1383,9 +1654,9 @@ function showView(){
     const r=dirFor(ds);
     html+=`<div class="viewcard ph-card"><h3>Your world for this day</h3>
     <div class="statgrid">
-      <div class="stat"><b>${notes.filter(n=>n.type==='smart').length}</b><span>SMART NOTES</span></div>
-      <div class="stat"><b>${books.length}</b><span>APPOINTMENTS</span></div>
-      <div class="stat"><b>${notes.length}</b><span>NOTES + POSTS</span></div>
+      <div class="stat">${miniNumHTML(notes.filter(n=>n.type==='smart').length)}<span>SMART NOTES</span></div>
+      <div class="stat">${miniNumHTML(books.length)}<span>APPOINTMENTS</span></div>
+      <div class="stat">${miniNumHTML(notes.length)}<span>NOTES + POSTS</span></div>
     </div>
     ${r?`<p><strong>What was learned:</strong> ${esc(r.learned)}</p>`:`<p class="hint">No records for this day — unknown is not zero, and no report is invented.</p>`}
     <p class="hint">Counts from this device's local record only. A past day shows what was recorded for that day — never today's numbers.</p></div>`;
@@ -1461,7 +1732,7 @@ function appointmentsHTML(ds){
     const firstFree=BOOK_SLOTS.find(t=>!bookTimeTaken(ds,t))||'';
     h+=`<h3 style="margin-top:18px">Book a time on this day</h3>
     <label class="flab">Pick a time</label><div class="slotbox">${BOOK_SLOTS.map(t=>{const taken=bookTimeTaken(ds,t);
-      return `<button type="button" class="slot${taken?' taken':''}${(!taken&&t===firstFree)?' on':''}" data-mw-cal-slot="${t}"${taken?' disabled':''}>${esc(fmtTime(t))}</button>`;}).join('')}</div>
+      return `<button type="button" class="slot${taken?' taken':''}${(!taken&&t===firstFree)?' on':''}" data-mw-cal-slot="${t}"${taken?' disabled':''}>${taken?`<s>${esc(fmtTime(t))}</s> Taken`:esc(fmtTime(t))}</button>`;}).join('')}</div>
     <input type="hidden" id="mwCalBookTime" value="${esc(firstFree)}">
     ${firstFree?'':`<p class="hint">Every time on this day is booked.</p>`}
     <label class="flab" for="mwCalBookWho">Who are you meeting?</label>
@@ -1523,7 +1794,7 @@ function openMeet(id){
   $('viewBody').innerHTML=viewHeadHTML('Smart Meet — '+fmtTime(b.time), ds)+
    `<div class="viewcard ph-card meetbox"><div class="face" aria-hidden="true">◉</div>
     <h3>${esc(b.who||'Meet')} · ${esc(dlabel(year,month,day))} · ${esc(fmtTime(b.time))} · ${b.mode==='audio'?'Audio':'Video'}</h3>
-    <div class="timer" id="meetTimer">00:00</div>
+    <div class="timer" id="meetTimer">${timerTilesHTML(0,0)}</div>
     <p id="meetStatus">Joining the room…</p>
     <video id="meetVideo" autoplay playsinline muted></video>
     <div class="actions" style="justify-content:center">
@@ -1535,7 +1806,7 @@ function openMeet(id){
   wireView();
   $('micBtn').onclick=()=>{ micOn=!micOn; if(meetStream) meetStream.getAudioTracks().forEach(t=>t.enabled=micOn); $('micBtn').textContent=micOn?'🎙 Mic on':'🎙 Mic off'; };
   $('camBtn').onclick=()=>{ camOn=!camOn; if(meetStream) meetStream.getVideoTracks().forEach(t=>t.enabled=camOn); $('camBtn').textContent=camOn?'📷 Camera on':'📷 Camera off'; };
-  meetTimer=setInterval(()=>{ meetSecs++; const m=String(Math.floor(meetSecs/60)).padStart(2,'0'), s=String(meetSecs%60).padStart(2,'0'); const t=$('meetTimer'); if(t) t.textContent=m+':'+s; },1000);
+  meetTimer=setInterval(()=>{ meetSecs++; const t=$('meetTimer'); if(t) t.innerHTML=timerTilesHTML(Math.floor(meetSecs/60),meetSecs%60); },1000);
   const status=$('meetStatus');
   if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
     navigator.mediaDevices.getUserMedia({audio:true,video:b.mode!=='audio'}).then(st=>{
@@ -1557,7 +1828,7 @@ function leaveMeet(keepPanel){
 
 /* ============ CREATE — [C] createHTML + saveNote, owner-only ============ */
 function createHTML(ds, future){
-  const kinds=[['smart','Smart Note ✧'],['naya','Note'],['post','Post']];
+  const kinds=[['smart','Smart Note ❖'],['naya','Note'],['post','Post']];
   return `<div class="viewcard ph-card"><h3>Create — ${esc(dlabel(year,month,day))}</h3>
   <p>Create on this day. A note is tied to its day and time frame; the timeline orders it morning to night.</p>
   <div class="actions">${kinds.map(([k,l])=>`<button class="primo${createKind===k?' on':''}" data-kind="${k}" type="button">${l}</button>`).join('')}</div>
@@ -1630,7 +1901,46 @@ document.addEventListener('keydown',e=>{
 });
 $('prev').onclick=()=>{ const d=new Date(year,month-1,1); year=d.getFullYear(); month=d.getMonth(); render(); };
 $('next').onclick=()=>{ const d=new Date(year,month+1,1); year=d.getFullYear(); month=d.getMonth(); render(); };
-$('todayBtn').onclick=()=>{ year=NOW.getFullYear(); month=NOW.getMonth(); day=NOW.getDate(); render(); };
+/* SWEEP-3 (F2/F6): the header's now-plaque — today's date and the LIVE
+   time, harvested from v15 (renderNowPlaque, index.html lines 2511–2533).
+   Read fresh from the viewer's own clock on every tick, so it is always
+   their time in their time zone — never hardcoded, never stale. The time
+   is just the time: NO zone label ever. There is no TODAY button anymore:
+   today reads from this plaque and the weekday plaque. The plaque follows
+   TODAY's color — its rim and its live dot take the day's color, never
+   gold. The same tick fills the day header's clock (#dayClock, F6) while
+   the day view is open. */
+function renderNowPlaque(){
+  const dEl=$('nowDate'), tEl=$('nowTime');
+  if(!dEl||!tEl) return;
+  const t=new Date();
+  dEl.textContent=dlabel(t.getFullYear(),t.getMonth(),t.getDate());
+  tEl.innerHTML=clockTilesHTML(t);
+  const dc=WEEKDAY[t.getDay()].color;
+  const plaque=$('nowPlaque');
+  if(plaque){ plaque.style.setProperty('--dc',dc); plaque.style.setProperty('--dc-rgb',dc.match(/\w\w/g).map(x=>parseInt(x,16)).join(',')); }
+  const dcEl=$('dayClock');
+  if(dcEl) dcEl.innerHTML=clockTilesHTML(t);
+}
+/* "Back to today" — the return gesture (v15 line 2117), shown only when
+   the viewed month is not the month holding today (render() toggles the
+   row). Never the old TODAY button, which stays gone. */
+$('backTodayBtn').onclick=()=>{ year=NOW.getFullYear(); month=NOW.getMonth(); day=NOW.getDate(); render(); };
+/* SWEEP-3 (F5): the bottom five. ADD opens Create for today — a real
+   action. MAIL / ACTIVITY / WORLDS / ECOSYSTEM have no destination inside
+   this file, so they answer honestly in the five-note line instead of
+   pretending to navigate. */
+let fiveNoteTimer=null;
+function fiveNote(msg){
+  const n=$('fiveNote'); if(!n) return;
+  n.textContent=msg; n.hidden=false;
+  if(fiveNoteTimer) clearTimeout(fiveNoteTimer);
+  fiveNoteTimer=setTimeout(()=>{ n.hidden=true; },4000);
+}
+$('fiveAdd').onclick=()=>{ year=NOW.getFullYear(); month=NOW.getMonth(); day=NOW.getDate(); render(); openDay(day); section='Create'; screen='view'; pushRoute(); showView(); };
+document.querySelectorAll('[data-five]').forEach(b=>b.onclick=()=>fiveNote(b.dataset.five+' is not wired into this calendar yet.'));
 render();
+renderNowPlaque();
+setInterval(renderNowPlaque,1000);
 try{ history.replaceState({view:'month',year,month,day},'',''); }catch(e){}
 </script></body></html>
