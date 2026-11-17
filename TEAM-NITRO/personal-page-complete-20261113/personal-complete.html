@@ -2229,7 +2229,12 @@ body:not(.is-owner) #settingsbtn,
 body:not(.is-owner) #avedit,
 body:not(.is-owner) [data-os-go="settings"],
 body:not(.is-owner) #about [data-os-sec-edit],
-body:not(.is-owner) #about #editabout{display:none!important;}
+body:not(.is-owner) #about #editabout,
+/* VISITOR-GATE-FIX 2026-11-17 (a): the two add forms + both delete kinds. */
+body:not(.is-owner) #os-skill-add-card,
+body:not(.is-owner) #os-lib-add-card,
+body:not(.is-owner) [data-os-lib-del],
+body:not(.is-owner) [data-px-del-skill]{display:none!important;}
 /* EYE-FIX 2026-11-17 (F): the footer closes the page — obsidian board,
    white Marcellus line, doors to the three rooms. */
 .ph-footer{margin:26px 0 0;padding:30px 18px 118px;text-align:center;border-top:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,#07070b,#040405);}
@@ -7011,7 +7016,7 @@ button.os-ld-node .os-ld-n{
 <input class="os-input" id="os-lib-q" type="text" placeholder="Search my library&hellip;" style="margin-top:12px;">
 <div id="os-lib-list"><div class="os-skel"></div></div>
 </div>
-<div class="ph-card" style="--ac:#0f52ba;" data-feature="qa-library">
+<div class="ph-card" style="--ac:#0f52ba;" id="os-lib-add-card" data-feature="qa-library">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#0f52ba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span> Add to my Q&amp;A</h3>
 <input class="os-input" id="os-lib-nq" type="text" placeholder="The question">
 <textarea class="os-textarea" id="os-lib-na" rows="3" placeholder="The answer &mdash; in plain words"></textarea>
@@ -11797,11 +11802,13 @@ function wallCard(j, iso, pid, idx){
   function renderLibrary(){
     var listEl=$('os-lib-list'); if (!listEl) return;
     var all=osLibCache||[];
+    /* VISITOR-GATE-FIX 2026-11-17 (a): visitors read the library — only the owner deletes from it. */
+    var _own=false; try{ _own=!!(window.pcIsPageOwner&&window.pcIsPageOwner()); }catch(e){}
     var meta=$('os-lib-meta');
     if (meta) meta.textContent=all.length?(all.length+(all.length===1?' answer':' answers')+' in this app’s library'+(all[0]&&all[0].at?(' — newest added '+relLabel(all[0].at)):'')+'.'):'This library is empty — the first answer added below starts it.';
     var q=(($('os-lib-q')||{}).value||'').trim().toLowerCase();
     var shown=q?all.filter(function(x){ return (x.q+' '+x.a).toLowerCase().indexOf(q)>=0; }):all;
-    listEl.innerHTML=shown.length?shown.map(function(x, i){ return '<div class="ph-card os-draw-in" style="--ac:#0f52ba;margin-top:12px;animation-delay:'+Math.min(i*0.05, 0.35)+'s"><h3 style="font-size:16px">'+esc(x.q)+'</h3><p>'+esc(x.a)+'</p>'+(x.at?'<div class="os-stamp" style="margin-top:8px">'+stamp(x.at)+'</div>':'')+'<div class="ph-actions"><button type="button" class="ph-msg os-lib-del" data-os-lib-del="'+all.indexOf(x)+'">Delete</button><button type="button" class="ph-connect os-lib-share" data-os-lib-share="'+all.indexOf(x)+'">Share to the feed ◆</button></div></div>'; }).join(''):(all.length?'<p class="os-note" style="margin-top:12px">No answer matches that yet — try other words, or add it below.</p>':'<p class="os-note" style="margin-top:12px">No entries yet.</p>');
+    listEl.innerHTML=shown.length?shown.map(function(x, i){ return '<div class="ph-card os-draw-in" style="--ac:#0f52ba;margin-top:12px;animation-delay:'+Math.min(i*0.05, 0.35)+'s"><h3 style="font-size:16px">'+esc(x.q)+'</h3><p>'+esc(x.a)+'</p>'+(x.at?'<div class="os-stamp" style="margin-top:8px">'+stamp(x.at)+'</div>':'')+'<div class="ph-actions">'+(_own?'<button type="button" class="ph-msg os-lib-del" data-os-lib-del="'+all.indexOf(x)+'">Delete</button>':'')+'<button type="button" class="ph-connect os-lib-share" data-os-lib-share="'+all.indexOf(x)+'">Share to the feed ◆</button></div></div>'; }).join(''):(all.length?'<p class="os-note" style="margin-top:12px">No answer matches that yet — try other words, or add it below.</p>':'<p class="os-note" style="margin-top:12px">No entries yet.</p>');
   }
   function saveQuestion(){
     var qEl=$('os-lib-nq'), aEl=$('os-lib-na'), st=$('os-lib-status');
@@ -15381,11 +15388,24 @@ window.NayaNotif = window.NayaNotif || {
       var owner=false;
       try{ owner=window.pcIsPageOwner(); }catch(e){}
       try{ document.body.classList.toggle('is-owner', !!owner); }catch(e){}
-      if(owner) return;
+      var avv=document.getElementById('avv');
+      if(owner){
+        /* VISITOR-GATE-FIX 2026-11-17 (a): a claim restores the picture control. */
+        if(avv){
+          if(!avv.getAttribute('data-mw-title')) avv.setAttribute('data-mw-title','Tap to change your picture');
+          avv.title=(window.mwTr?window.mwTr('Tap to change your picture'):'Tap to change your picture');
+          avv.style.cursor='pointer';
+        }
+        return;
+      }
       ['pname','ptag'].forEach(function(id){
         var el=document.getElementById(id);
         if(el && el.getAttribute('title')==='Click to edit') el.removeAttribute('title');
       });
+      /* VISITOR-GATE-FIX 2026-11-17 (a): no "Tap to change your picture" for a
+         visitor — strip the tooltip AND its language-switch re-sync source,
+         and the pointer cursor. The click guard below already blocks #avv. */
+      if(avv){ avv.removeAttribute('title'); avv.removeAttribute('data-mw-title'); avv.style.cursor='default'; }
     }
     document.addEventListener('click', function(e){
       var owner=false;
@@ -19154,10 +19174,10 @@ else init();
           '<span class="tn-tacho-livedot"></span></span>' +
           '<span class="tn-tacho-bandline"></span>' +
         '</div>' +
-        '<div class="tn-tacho-cap" hidden></div>' +
         '<div class="tn-tacho-bands"><span class="tn-tacho-bandlo"></span><span class="tn-tacho-bandhi"></span><span class="tn-tacho-bands-label"></span></div>' +
         '<div class="tn-tacho-truth" hidden></div>' +
       '</div>' +
+      '<div class="tn-tacho-cap" hidden></div>' +
     '</div>';
   }
 
@@ -29795,6 +29815,14 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     var pick=e.target.closest('[data-pc-world-pick]');
     if(pick){ var nm=pick.getAttribute('data-pc-world-pick'); var ws=pcWorlds();
       for(var i=0;i<ws.length;i++){ if(ws[i].name===nm){ if(typeof window.fcClosePicker==='function') window.fcClosePicker(); window.__pcPickAt=Date.now();
+      /* VISITOR-GATE-FIX 2026-11-17 (g, Amendment #1): the pick IS the citizen
+         choosing the World tab — mark it the way a tab tap marks it
+         (sessionStorage 'pc-eye-tab-user', the F8 recorder's own marker), so
+         bootTab's one-shot forced-Personal click (DOMContentLoaded+300ms, the
+         only non-user writer of the stored feed tab) can never flip the tab
+         back after a pick, and its programmatic click can never poison the
+         re-assert's provenance below. */
+      try{ sessionStorage.setItem('pc-eye-tab-user','1'); }catch(e){}
       /* FIX-MAKER 2026-11-16 (item 2 — checker FAIL, intermittent 12 pass / 4 fail): the pick used to set the scope and PAINT FIRST, and only then activate the World tab — so the unfiltered paint could stand as the last one whenever a late repaint landed after the tab call, and the stuck state (scope set, tab never active, wall unfiltered, feed name + world bar hidden) sat there with no further paint to heal it. Now the tab activates FIRST, the scope paints into the already-active tab (one filtered paint), and the tab is asserted once more after it — so the last paint is always the filtered one. */
       if(typeof window.mwApplyFeedTab==='function'){ try{ window.mwApplyFeedTab('world'); }catch(e){} }
       pcSetWorldObj(ws[i]);
@@ -30404,8 +30432,10 @@ if(about){
 var SKILL_COLORS=['#8e24aa','#0f52ba','#3f51b5','#0f52ba','#07925f','#c2410c','#a21caf','#c62828','#0e7490','#d4a017','#6d28d9','#0e7490','#07925f','#ffffff'];
 function pxSkillCardHTML(sk,ix,delIx){
   var c=SKILL_COLORS[ix%SKILL_COLORS.length];
+  /* VISITOR-GATE-FIX 2026-11-17 (a): visitors read the skills — only the owner deletes one. */
+  var _own=false; try{ _own=!!(window.pcIsPageOwner&&window.pcIsPageOwner()); }catch(e){}
   return '<div class="ph-card sa-skill" style="--ac:'+c+';">'
-    + (typeof delIx==='number' ? '<button type="button" class="sa-skill-del" data-px-del-skill="'+delIx+'" aria-label="Delete this skill">×</button>' : '')
+    + (typeof delIx==='number' && _own ? '<button type="button" class="sa-skill-del" data-px-del-skill="'+delIx+'" aria-label="Delete this skill">×</button>' : '')
     +'<h3><span class="os-jewel os-jewel-h" style="--jc:'+c+'">\u2726</span> '+pxEsc(sk.what)+'</h3>'
     +'<p class="sa-skill-nutshell">'+pxEsc(sk.what)+'</p>'
     +'<button type="button" class="sa-skill-more" aria-expanded="false">Why it matters \u25be</button>'
@@ -31251,14 +31281,31 @@ function collapseSmartLinks(){
       });
       host.appendChild(btn);
     }
-    if(hidden===0){ extra.forEach(function(w){ w.style.display='none'; }); }
-    btn.textContent='Show all '+wells.length+' Smart Links ('+(wells.length-3)+' more)';
+    /* VISITOR-GATE-FIX 2026-11-17 (b): the toggle is a real switch now — when
+       the citizen expanded the list ("Show fewer"), a collapse pass must not
+       snap it shut again behind them. */
+    var _expanded=btn&&btn.textContent.indexOf('Show fewer')===0;
+    if(hidden===0 && !_expanded){ extra.forEach(function(w){ w.style.display='none'; }); }
+    /* VISITOR-GATE-FIX 2026-11-17 (b): the freeze. This observer watches
+       #os-sl-mine, and the old line re-wrote the toggle label on EVERY pass —
+       even when the label was already exactly that string. A textContent
+       write inside the observed subtree re-fires this observer, whose pass
+       re-writes the label, which re-fires the observer: the microtask queue
+       never drains, the main thread never yields, and the tab freezes the
+       moment Growth renders (50 wells > 6, so the toggle exists). Write the
+       label only when it actually changes and only while collapsed. */
+    var _slT='Show all '+wells.length+' Smart Links ('+(wells.length-3)+' more)';
+    if(!_expanded && btn.textContent!==_slT) btn.textContent=_slT;
   }catch(e){}
 }
 try{
   collapseSmartLinks();
   var _sl=q('#os-sl-mine');
-  if(_sl&&window.MutationObserver) new MutationObserver(function(){ collapseSmartLinks(); }).observe(_sl,{childList:true,subtree:true});
+  /* VISITOR-GATE-FIX 2026-11-17 (b): one collapse pass per 120ms at most
+     (the osIgnite/sweepSoon idiom) — a burst of link renders can never stack
+     full passes inside one microtask turn, so the thread always yields. */
+  var _slT2=null;
+  if(_sl&&window.MutationObserver) new MutationObserver(function(){ if(_slT2) return; _slT2=setTimeout(function(){ _slT2=null; collapseSmartLinks(); },120); }).observe(_sl,{childList:true,subtree:true});
   setTimeout(collapseSmartLinks,2500);
 }catch(e){}
 
