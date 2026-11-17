@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Smart Mail — NayaNET</title>
 <!--
+  TEXT-TOPIC-PILLS (2026-11-17, brief BRIEF-SMART-MAIL-TEXT-TOPIC-PILLS-20261117 — Shawn 21:47Z text + 21:52Z pills; base = white-middle tip 4be1b6ee, blob 4ce03c84):
+  1. TEXT — the 25/19/17 scale, all the way through the mail: letter titles 25, sender names 19, opening lines 19 bold, PERSONAL MAIL / KEY POINTS 17, inbox previews 17 near-white with no ellipsis (the preview text itself is shortened so it fits whole), secondary lines 17, bubbles layered with a per-speaker colored rim, Send mail pill untouched as the standard, real labels under the six bar tiles.
+  2. PILLS — the seven topic pills lose the "N online" count and gain their own deep-color rim + glow at rest; "All topics" restores the mail view.
+  3. BADGE COMMENT — reworded only (see the .notif-count note): the L29302 line is a green badge, not the black badge.
+  AMENDMENT 21:59Z (Shawn's pictures aaa_2.png / aaa_11111.png, SUPERSEDES the white middle): the bar tiles are dark middle, white icon, own-color rim + glow; the count badge sits INSIDE the tile corner, not hung off it. Same six glyphs, same six colors, no new icon for this page (one-set law, 22:00Z).
+  Words: MAIL nuts shortened (removals only); no new copy on the page surface.
+  VM browsers are dead (EPERM flake) — no live render proof; the eye proves it on the staged link.
+-->
+<!--
   SMART MESSENGER — REBUILD round, staged only (2026-11-12, Shawn 20:27Z eye +
   20:31Z STOP REDESIGNING + 20:34Z trio/icons settled).
   The messenger IS the Personal page, adjusted — its feed morphed into the
@@ -434,12 +443,12 @@ img{max-width:100%}
 
 .cover-toggle{margin-top:8px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
-.smart-lists h3{margin:0;padding:16px 18px 4px;font-size:15px;font-weight:800}
+.smart-lists h3{margin:0;padding:16px 18px 4px;font-size:19px;font-weight:800}
 .smart-lists .list-chip{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:2px solid rgba(255,255,255,.14);background:linear-gradient(180deg,#12101a,#08080c);color:#fff;font-family:inherit;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.55),0 0 14px color-mix(in srgb,var(--ac,#8e24aa) 20%,transparent);transition:border-color .2s,box-shadow .2s,transform .2s}
 .smart-lists .list-chip:hover{border-color:var(--ac,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 20px -2px var(--ac,#8e24aa),0 14px 28px rgba(0,0,0,.6);transform:translateY(-2px)}
 .smart-lists .list-chip.active{border-color:var(--ac,#8e24aa);background:rgba(142,36,170,.08);box-shadow:0 0 22px -2px var(--ac,#8e24aa),0 10px 22px rgba(0,0,0,.55)}
-.smart-lists .list-chip b{font-size:14px}
-.smart-lists .list-chip span:not(.cx-ava){font-size:12px;color:#fff;display:block;margin-top:2px}
+.smart-lists .list-chip b{font-size:17px}
+.smart-lists .list-chip span:not(.cx-ava){font-size:17px;color:#fff;display:block;margin-top:2px}
 @media (max-width:900px){.smart-lists{grid-template-columns:1fr}}
 /* --- ORGANIZER TABS: the HUB's organizer — .nf-smtab pill skin HARVESTED VERBATIM
    from the Hub (index-2.html .smart-tab, SmartTabs v9) via the Personal file:
@@ -448,10 +457,9 @@ img{max-width:100%}
 .org-tabs{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 6px;scrollbar-width:thin}
 .org-tabs::-webkit-scrollbar{height:6px}
 .org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
-.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
-.nf-smtab small{color:#fff;font-weight:900;font-size:12px}
+.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid var(--tc);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--tc) 55%,transparent),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
 .nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
-.nf-smtab.active{border-color:rgba(255,255,255,.6);box-shadow:0 0 16px rgba(255,255,255,.18),inset 0 1px rgba(255,255,255,.15)}
+.nf-smtab.active{border-color:var(--tc);background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));box-shadow:0 0 20px color-mix(in srgb,var(--tc) 65%,transparent),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
 /* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
 
 
@@ -460,8 +468,8 @@ img{max-width:100%}
 .messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
 .panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
 .panel:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.45);box-shadow:0 24px 48px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1),0 0 26px rgba(142,36,170,.22)}
-.panel h3{margin:0;padding:8px 18px 6px;font-size:15px;font-weight:800}
-.panel .panel-sub{padding:0 18px 4px;font-size:12.5px;color:#fff}
+.panel h3{margin:0;padding:8px 18px 6px;font-size:19px;font-weight:800}
+.panel .panel-sub{padding:0 18px 4px;font-size:17px;color:#fff}
 /* --- ORB: the EXACT Connections-room orb — .cx-stage .cx-ava, live from
    https://nayanet.app/rooms/connections. Initial by default (JS sets
    textContent = initials(name)); per-person --cc; the spin is the conic
@@ -482,11 +490,11 @@ img{max-width:100%}
 .row:hover{background:linear-gradient(180deg,color-mix(in srgb,var(--ac) 24%,#07070b),color-mix(in srgb,var(--ac) 12%,#020203));border-color:var(--ac);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 14px -2px var(--ac),0 18px 56px rgba(0,0,0,.55);transform:translateY(-4px)}
 .row.active{border-color:var(--ac);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 18px -2px var(--ac),0 18px 56px rgba(0,0,0,.55)}
 .row-body{flex:1;min-width:0}
-.row-name{font-size:15px;font-weight:800;display:flex;gap:8px;align-items:baseline}
-.row-name .match{font-size:11.5px;color:#fff;font-weight:800}
-.row-last{display:block;font-size:13px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
-.row-nut{display:block;font-size:12.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
-.stub-note{padding:0 18px 8px;font-size:12px;color:#fff;line-height:1.4}
+.row-name{font-size:17px;font-weight:800;display:flex;gap:8px;align-items:baseline}
+.row-name .match{font-size:17px;color:#fff;font-weight:800}
+.row-last{display:block;font-size:17px;line-height:1.45;color:#fff;margin-top:2px}
+.row-nut{display:block;font-size:17px;line-height:1.45;color:#fff;margin-top:2px}
+.stub-note{padding:0 18px 8px;font-size:17px;color:#fff;line-height:1.4}
 /* --- THREAD --- */
 .thread{display:flex;flex-direction:column;min-height:560px}
 /* FIX-6 (item 1b): the Fix-5 skirt below this header FAILED live (the
@@ -498,8 +506,8 @@ img{max-width:100%}
    content dissolves under it. */
 .thread-head{display:flex;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.09)}
 .thread-head .who{flex:1;min-width:0}
-.thread-head .who b{font-size:17px}
-.thread-head .who span{display:block;font-size:12.5px;color:#fff;margin-top:2px}
+.thread-head .who b{font-size:19px}
+.thread-head .who span{display:block;font-size:17px;color:#fff;margin-top:2px}
 .thread-head .who span.mail-mode{color:#fff}
 /* --- TOGGLE: Smart Mail | Instant Message, in place --- */
 .toggle{display:flex;border-radius:999px;border:1.5px solid rgba(142,36,170,.55);overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15);flex:none}
@@ -521,15 +529,15 @@ img{max-width:100%}
    (first text) still reads bright at rest: its top lands at 48px (~87%
    opacity) and its text at ~57px (100%), instead of inside the fade. */
 .thread-body{flex:1;padding:48px 18px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);mask-size:100% 100%}
-.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:14.5px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);transition:transform .25s,box-shadow .25s,border-color .25s}
+.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:17px;line-height:1.55;box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 16px rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.16);transition:transform .25s,box-shadow .25s,border-color .25s}
 .msg:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.65);box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),0 0 22px rgba(142,36,170,.45)}
-.msg .meta{display:block;font-size:11.5px;color:#fff;margin-top:6px}
+.msg .meta{display:block;font-size:17px;color:#fff;margin-top:6px}
 /* .msg.mine: colour FILL is gone — obsidian inside, royal-purple rim + glow outside (Code §4: colour in rims and halos, never fills). */
-.msg.mine{align-self:flex-end;background:linear-gradient(180deg,#17102a,#0a0a0f);border-color:#8e24aa;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12),0 0 22px rgba(142,36,170,.35)}
-.msg.theirs{align-self:flex-start;background:linear-gradient(180deg,#1b1b24,#0c0c11)}
-.msg.letter{align-self:stretch;max-width:100%;background:linear-gradient(180deg,#14141d,#0a0a0f)}
-.msg.letter .subject{font-weight:800;font-size:15px;margin-bottom:6px}
-.msg.letter .letter-to{font-size:12.5px;color:#fff;margin-bottom:8px}
+.msg.mine{align-self:flex-end;background:linear-gradient(180deg,#17102a,#0a0a0f);border-color:#8e24aa;box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 26px rgba(142,36,170,.45)}
+.msg.theirs{align-self:flex-start;background:linear-gradient(180deg,#1b1b24,#0c0c11);border-color:var(--mc,#0f52ba);box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 22px color-mix(in srgb,var(--mc,#0f52ba) 40%,transparent)}
+.msg.letter{align-self:stretch;max-width:100%;background:linear-gradient(180deg,#14141d,#0a0a0f);border:1.5px solid var(--wc,#0f52ba);box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12),0 0 22px color-mix(in srgb,var(--wc,#0f52ba) 35%,transparent)}
+.msg.letter .subject{font-weight:800;font-size:19px;margin-bottom:6px}
+.msg.letter .letter-to{font-size:17px;color:#fff;margin-bottom:8px}
 .typing{align-self:flex-start;font-size:12.5px;color:#fff;padding:6px 4px}
 
 
@@ -542,7 +550,7 @@ img{max-width:100%}
 /* --- COMPOSER with real depth --- */
 .composer{padding:14px;border-top:1px solid rgba(255,255,255,.09)}
 .composer-inner{display:flex;gap:10px;align-items:flex-end}
-.composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:15px;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.22)}
+.composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:17px;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.22)}
 .composer input[type=text]:focus{border-color:#8e24aa;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 0 28px rgba(142,36,170,.5)}
 .composer input.subject{flex:0 0 180px}
 .composer input[type=text]::placeholder{color:#fff;opacity:1}
@@ -574,22 +582,26 @@ img{max-width:100%}
 .install-later:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 24%,#12101a),color-mix(in srgb,#8e24aa 12%,#08080c));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5);text-shadow:0 0 12px rgba(142,36,170,.8)}
 /* --- THE FIVE bottom bar (Unification 2026-11-17): the official bar, harvested
    verbatim from the Personal page (NayaNotif SEGS + ICONS). Hub .notif-bar /
-   .notif-tile construction unchanged; the segments are now the Five, icons
-   only, no visible labels — the dock is shorter, so less of the page hides
-   behind it. Six segments, equal 84px, gap 22px. --- */
+   .notif-tile construction unchanged; the segments are the six, each with its
+   visible white label under the tile (ADD / MAIL / ACTIVITY / WORLDS /
+   ECOSYSTEM / CONNECT — the text-pills round added the labels the Fix-4 note
+   claimed; the eye's spot 8: labels must show whole). Six segments,
+   min-width 104px, gap 12px. --- */
 .notif-bar{position:static;flex:none;z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;transition:transform .35s ease,opacity .45s ease} /* WHITE-MIDDLE: fill 'both' -> 'backwards' so the entrance animation releases the transform after it lands — otherwise it would override the fold. */
 /* WHITE-MIDDLE §3(a): the fold rule (Shawn 20:29Z, confirmed 20:50Z). The bar folds away the moment you scroll down and returns ONLY at the very bottom. */
 #naya-notif-bar.bar-folded{transform:translateY(110%);opacity:0;pointer-events:none}
 @keyframes notifUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
-.notif-row{display:flex;gap:22px;width:100%;max-width:720px;padding:8px 14px 6px;justify-content:center}
-.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#fff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;min-width:84px}
+.notif-row{display:flex;gap:12px;width:100%;max-width:720px;padding:8px 14px 6px;justify-content:center}
+.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#fff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;min-width:104px}
 .notif-seg:active{transform:scale(.94)}
-/* WHITE-MIDDLE (2026-11-17, brief BRIEF-SMART-MAIL-WHITE-MIDDLE-FLUSH-TOP-20261117 §3(a)): the tile construction harvested from the Dashboard sweep-#07 fix (blob 614513a1, PR #3430) — white radial core, glyph in the tile's own color. The morning orbit flow stays (see .notif-tile::after / .notif-seg::before). Border stays the mail's bare var(--nc) (fix-5 law), not Dashboard's 62% white mix. */
-.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(52% 52% at 50% 50%, #ffffff 0%, color-mix(in srgb, var(--nc) 22%, #ffffff) 58%, color-mix(in srgb, var(--nc) 36%, #12121a) 82%, #07070b 100%);border:1.5px solid var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);color:color-mix(in srgb, var(--nc) 72%, #ffffff);transition:box-shadow .3s, border-color .3s, transform .2s;}
+/* TEXT-TOPIC-PILLS + AMENDMENT 2026-11-17 21:59Z (Shawn's pictures aaa_2.png / aaa_11111.png — SUPERSEDES the white middle): dark middle, white icon. Obsidian tile, glyph white and lit, rim + glow in the tile's own color — the pictures' construction, the one set (no new tile style for this page). The orbit flow stays (see .notif-tile::after / .notif-seg::before). Border stays the mail's bare var(--nc) (fix-5 law), not Dashboard's 62% white mix. */
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#17121f,#0a0a0f);border:1.5px solid var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -8px 14px rgba(0,0,0,.65),0 8px 18px rgba(0,0,0,.6),0 0 20px color-mix(in srgb, var(--nc) 45%, transparent);color:#fff;transition:box-shadow .3s, border-color .3s, transform .2s;}
 .notif-tile::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(155deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 42%),linear-gradient(25deg,rgba(255,255,255,0) 62%,color-mix(in srgb,var(--nc) 22%,transparent) 100%)}
-.notif-tile svg{width:25px;height:25px;color:var(--nc);filter:drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent));position:relative;}
-/* WHITE-MIDDLE §3(b): every count is a black (obsidian) badge with a white number — the Dashboard black-badge construction (blob 614513a1 L29302, the F1 fix: black bg + white text + own-color rim) and the PTS/%/MONEY pill law. Rim is the tile's own color (var(--nc)); digits 17px, the Dashboard badge size. */
-.notif-count{position:absolute;top:-8px;right:-10px;min-width:24px;height:24px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:17px;line-height:1;font-weight:900;color:#fff;background:#050607;border:2px solid var(--nc);box-shadow:0 0 12px color-mix(in srgb, var(--nc) 80%, transparent),0 3px 8px rgba(0,0,0,.5);animation:notifPulse 2.4s ease-in-out infinite}
+.notif-tile svg{width:25px;height:25px;color:#fff;filter:drop-shadow(0 0 6px rgba(255,255,255,.6));position:relative;}
+/* TEXT-TOPIC-PILLS §3: every count is a black (obsidian) badge with a white number — the Dashboard black-badge construction (blob 614513a1, PR #3430, the F1 fix: black bg + white text + own-color rim) and the PTS/%/MONEY pill law. CORRECTION: the earlier draft of this comment cited Dashboard L29302 for the badge — that line is a green .os-b3-badge, not the black badge. Rim is the tile's own color (var(--nc)); digits 17px, the Dashboard badge size. AMENDMENT 21:57Z: the badge sits INSIDE the tile corner (top/right 3px), part of the tile — never a bubble hung off the corner. */
+.notif-count{position:absolute;top:3px;right:3px;min-width:24px;height:24px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:17px;line-height:1;font-weight:900;color:#fff;background:#050607;border:2px solid var(--nc);box-shadow:0 0 12px color-mix(in srgb, var(--nc) 80%, transparent),0 3px 8px rgba(0,0,0,.5);animation:notifPulse 2.4s ease-in-out infinite}
+/* TEXT-TOPIC-PILLS spot 8: the visible label under each tile — bold white, one size, whole (never clipped). At phone widths the row scrolls so the labels stay whole. */
+.notif-label{display:block;font-size:17px;font-weight:800;color:#fff;letter-spacing:.04em;line-height:1.25;white-space:nowrap;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 @keyframes notifPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
 .notif-seg.has-news .notif-tile{border-color:var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
 /* --- WORLD FEED PANEL + NOTIFICATION CHOICE SHEET (trio's door, spec §) --- */
@@ -634,14 +646,14 @@ img{max-width:100%}
    and lifts on hover in its own world colour. --- */
 .mail-board{--wc:#0f52ba;border-radius:18px;border:1.5px solid var(--wc);background:linear-gradient(180deg,#12101a,#08080c);padding:18px 20px;box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08),0 0 22px -6px var(--wc);margin:4px 0;transition:box-shadow .25s,transform .2s,border-color .2s}
 .mail-board:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(0,0,0,.65),0 0 34px -2px var(--wc)}
-.mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#fff;text-transform:uppercase}
-.mail-board h4{margin:10px 0 4px;font-size:17px;font-weight:800;color:#fff}
-.mail-nut{margin:0;font-size:14.5px;line-height:1.55;color:#fff;font-weight:700}
-.mail-board h5{margin:14px 0 6px;font-size:12.5px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
+.mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:17px;font-weight:900;letter-spacing:.08em;color:#fff;text-transform:uppercase}
+.mail-board h4{margin:10px 0 4px;font-size:25px;font-weight:800;color:#fff}
+.mail-nut{margin:0 0 10px;font-size:19px;line-height:1.55;color:#fff;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.mail-board h5{margin:16px 0 8px;font-size:17px;color:var(--wc);font-weight:900;text-transform:uppercase;letter-spacing:.12em}
 .mail-points{margin:0;padding:0;list-style:none}
-.mail-points li{position:relative;font-size:14px;line-height:1.55;color:#fff;padding-left:22px;margin-bottom:6px}
+.mail-points li{position:relative;font-size:17px;line-height:1.55;color:#fff;padding-left:22px;margin-bottom:6px}
 .mail-points li::before{content:'◆';position:absolute;left:0;top:0;color:var(--wc);text-shadow:0 0 8px var(--wc)}
-.mail-meta{margin:12px 0 0;font-size:12.5px;color:#fff}
+.mail-meta{margin:12px 0 0;font-size:17px;color:#fff}
 .mail-board .mail-unread{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:var(--wc);color:#06060a;font-size:11px;font-weight:900;letter-spacing:.04em;vertical-align:2px}
 /* --- ORBIT (Naya Code §8): every circle carries flow. The ring lives on
    .orb-wrap's own ::before/::after, so every orb — rows, thread head —
@@ -693,7 +705,7 @@ img{max-width:100%}
   .thread-head{flex-wrap:wrap;row-gap:6px;padding:10px 14px}
   .thread-head .who{flex:1 1 0;min-width:0}
   .thread-head .who b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .thread-head .who span{font-size:12px}
+  .thread-head .who span{font-size:17px}
   .thread-head .toggle{flex:1 1 100%}
   .thread-head .toggle button{flex:1;padding:8px 10px}
 }
@@ -701,9 +713,12 @@ img{max-width:100%}
    (item 3) DOCK LABELS: the Five carry visible white labels under the
    tiles (ADD / MAIL / ACTIVITY / WORLDS / ECOSYSTEM) — the eye read the
    labels as falling below the viewport; the unification's icons-only dock
-   carried the names in aria-label + title only. Labels are white, 11px,
-   10px under 480px so all five fit 390px. Dock height is now ~88px
-   desktop / ~81px phone; the feed-panel (bottom:104px) still clears it.
+   carried the names in aria-label + title only. CORRECTION (text-pills
+   round, 2026-11-17): the bar builder never emitted the labels, so this
+   claim was false in the filed bytes — the round added the real
+   .notif-label under each tile, six labels, bold white at 17px, and at
+   phone widths the row scrolls so they stay whole. Dock height is now
+   ~92px desktop; the feed-panel (bottom:104px) still clears it.
    (item 4) SECONDARY TEXT: every text colour in this file already computes
    to #fff — no opacity rule and no desktop-only rule dims these lines
    (the 390 eye's 0 gray hits agree). What the desktop eye read as gray
@@ -740,9 +755,9 @@ img{max-width:100%}
    so the flow is visible. Hover lights the WHOLE tile in its own colour. --- */
 .notif-tile::after{content:'';position:absolute;inset:-8px;border-radius:22px;pointer-events:none;background:radial-gradient(circle 6px at 50% 0%,var(--nc) 98%,transparent 100%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--nc) 30%,transparent);filter:drop-shadow(0 0 6px var(--nc));animation:orbitCW 60s linear infinite}
 .notif-seg::before{content:'';position:absolute;top:-6px;left:50%;width:70px;height:70px;margin-left:-35px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 0% 50%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCCW 75s linear infinite}
-.notif-seg:hover .notif-tile{transform:translateY(-3px);border-color:var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);} /* WHITE-MIDDLE: hover lifts + lights (Dashboard) but keeps the white middle — the old dark-gradient hover killed the white core on touch. Border stays bare var(--nc) (fix-5). */
+.notif-seg:hover .notif-tile{transform:translateY(-3px);border-color:var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -8px 14px rgba(0,0,0,.6),0 8px 18px rgba(0,0,0,.6),0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);} /* TEXT-TOPIC-PILLS: hover lifts + lights in the tile's own color on the dark middle. Border stays bare var(--nc) (fix-5). */
 /* SIX at phone widths: six tiles must fit 390px — tighter gap, 48px tiles. */
-@media(max-width:480px){.notif-row{gap:10px;padding:8px 8px 6px}.notif-seg{min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}}
+@media(max-width:480px){.notif-row{gap:10px;padding:8px 8px 6px;overflow-x:auto;justify-content:flex-start}.notif-seg{min-width:96px;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}}
 .row:hover .cx-ava{filter:brightness(1.18)}
 /* --- ELEVATION FIX 2026-11-17 (checker item 8): the six flat/dead elements
    gain elevation + whole-item hover light in their own deep color — .format-note,
@@ -970,7 +985,7 @@ var TOPICS = {
   ]
 };
 var TAB_ORDER = ['Design','Music','Cooking','Fitness','Gardening','Travel','Business'];
-var TOPIC_COLORS = { Design:'#8e24aa', Music:'#0f52ba', Cooking:'#07925f', Fitness:'#d4a017', Gardening:'#c2410c', Travel:'#0f52ba', Business:'#d4a017' };
+var TOPIC_COLORS = { Design:'#8e24aa', Music:'#0f52ba', Cooking:'#07925f', Fitness:'#d4a017', Gardening:'#c2410c', Travel:'#c62828', Business:'#a21caf' };
 /* Topic people carry their Connections-orb colour, assigned here (never invented per render). */
 Object.keys(TOPICS).forEach(function(k){ TOPICS[k].forEach(function(p, i){ p.cc = CC[i % CC.length]; }); });
 var THREADS = {
@@ -1008,19 +1023,19 @@ var WORLDS = {
 };
 var MAIL = {
   personal: [
-    { id:'m-p1', from:'Maya R.', fromId:'maya', subject:'The cover is ready for your eyes', nut:'The new cover lands tonight — purple light on the edge, exactly as we drew it.', points:['Cover ships tonight, purple edge light included','One link inside — tap it to see it live','Reply with the one word you would change'], time:'09:41', unread:true },
-    { id:'m-p2', from:'Sam V.', fromId:'sam', subject:'Did you see the game?', nut:'Sam’s team won 3–1 and he scored twice — the whole story is inside.', points:['Final score 3–1, two goals from Sam','The winning goal came in the last minute','He wants to tell you himself tonight'], time:'18:52', unread:true },
-    { id:'m-p3', from:'Jordan K.', fromId:'jordan', subject:'Sunday market at nine', nut:'Sourdough, herbs, and the stall with the good honey — bring a bag.', points:['Meet at the gate at nine','Two loaves, one for you','The honey stall is back this week'], time:'08:12', unread:false }
+    { id:'m-p1', from:'Maya R.', fromId:'maya', subject:'The cover is ready for your eyes', nut:'The new cover lands tonight — purple light on the edge.', points:['Cover ships tonight, purple edge light included','One link inside — tap it to see it live','Reply with the one word you would change'], time:'09:41', unread:true },
+    { id:'m-p2', from:'Sam V.', fromId:'sam', subject:'Did you see the game?', nut:'Sam’s team won 3–1 and he scored twice.', points:['Final score 3–1, two goals from Sam','The winning goal came in the last minute','He wants to tell you himself tonight'], time:'18:52', unread:true },
+    { id:'m-p3', from:'Jordan K.', fromId:'jordan', subject:'Sunday market at nine', nut:'Sourdough, herbs, and the good honey stall.', points:['Meet at the gate at nine','Two loaves, one for you','The honey stall is back this week'], time:'08:12', unread:false }
   ],
   business: [
-    { id:'m-b1', from:'Vera K.', fromId:'t-b1', subject:'The proposal is ready', nut:'The proposal is written, priced, and waiting for your eyes before it goes out.', points:['Three pages, one clear price','Your name goes on the front','Send it Friday if you approve'], time:'11:20', unread:true },
-    { id:'m-b2', from:'David L.', fromId:'t-b2', subject:'Your numbers this week', nut:'Visits are up, replies are up — the business page is moving.', points:['42 visits today','6 new replies','Best day since the launch'], time:'Yesterday', unread:true },
-    { id:'m-b3', from:'Emma D.', fromId:'t-b3', subject:'First ten founders', nut:'Ten founders are waiting for the first call — here is who they are.', points:['Ten names, all warm','First call Thursday','You open, I take notes'], time:'Yesterday', unread:false }
+    { id:'m-b1', from:'Vera K.', fromId:'t-b1', subject:'The proposal is ready', nut:'The proposal is written, priced, and waiting.', points:['Three pages, one clear price','Your name goes on the front','Send it Friday if you approve'], time:'11:20', unread:true },
+    { id:'m-b2', from:'David L.', fromId:'t-b2', subject:'Your numbers this week', nut:'Visits are up, replies are up — the page is moving.', points:['42 visits today','6 new replies','Best day since the launch'], time:'Yesterday', unread:true },
+    { id:'m-b3', from:'Emma D.', fromId:'t-b3', subject:'First ten founders', nut:'Ten founders are waiting for the first call.', points:['Ten names, all warm','First call Thursday','You open, I take notes'], time:'Yesterday', unread:false }
   ],
   space: [
-    { id:'m-s1', from:'Ava L.', fromId:'t-d1', subject:'The Design space is open', nut:'The Design space opened its doors — four people are already inside talking.', points:['Doors open, everyone welcome','First thread: light that feels real','Your note is pinned at the top'], time:'10:05', unread:true },
-    { id:'m-s2', from:'Noah B.', fromId:'t-d2', subject:'A note on type and light', nut:'Noah wrote the note we talked about — type, light, and the space between.', points:['Type sets the tone','Light does the talking','Read it before Thursday'], time:'Yesterday', unread:true },
-    { id:'m-s3', from:'Sofia M.', fromId:'t-d3', subject:'Worlds you can walk through', nut:'Sofia’s illustrations are in — the space finally looks like the world it is.', points:['Twelve new illustrations','The walk-through is live','She wants your first reaction'], time:'Yesterday', unread:false }
+    { id:'m-s1', from:'Ava L.', fromId:'t-d1', subject:'The Design space is open', nut:'The Design space opened its doors — come in.', points:['Doors open, everyone welcome','First thread: light that feels real','Your note is pinned at the top'], time:'10:05', unread:true },
+    { id:'m-s2', from:'Noah B.', fromId:'t-d2', subject:'A note on type and light', nut:'Noah wrote the note — type, light, and space.', points:['Type sets the tone','Light does the talking','Read it before Thursday'], time:'Yesterday', unread:true },
+    { id:'m-s3', from:'Sofia M.', fromId:'t-d3', subject:'Worlds you can walk through', nut:'Sofia’s illustrations are in — the world, at last.', points:['Twelve new illustrations','The walk-through is live','She wants your first reaction'], time:'Yesterday', unread:false }
   ]
 };
 var state = { person: CONTACTS[0], topic: 'Design', thing: 'Design', format: 'im', group: null, listFilter: null, listName: '', world: 'personal', mailId: null };
@@ -1121,7 +1136,7 @@ window.NayaNotif = window.NayaNotif || {
         b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
         b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
         b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
-        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>';
+        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span><span class="notif-label">' + s[1] + '</span>';
         b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'create', b); return; } if (s[0] === 'plus-connect') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'connect', b); return; } self.tap(s[0]); });
         row.appendChild(b);
       });
@@ -1194,9 +1209,10 @@ var SMART_LISTS = {
 function nowTime(){ var d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
 
 function renderTabs(){
-  var html = '<button class="nf-smtab" type="button" data-topic="All" style="--tc:#8e24aa">All topics</button>';
+  /* TEXT-TOPIC-PILLS: the pills are Smart Links on Smart Tabs — one bold white label at one size, each topic's own deep-color rim + glow (the "N online" count is gone: the same number stood on every pill). "All topics" is lit while the mail view is open; a topic is lit while its chat is open. The title says what the tap does. */
+  var html = '<button class="nf-smtab' + (!state.group ? ' active' : '') + '" type="button" data-topic="All" style="--tc:#8e24aa" title="Back to mail" aria-label="All topics — back to mail">All topics</button>';
   TAB_ORDER.forEach(function(t){
-    html += '<button class="nf-smtab' + (state.topic===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#8e24aa') + '">' + t + ' <small>' + TOPICS[t].length + ' online</small></button>';
+    html += '<button class="nf-smtab' + (state.group===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#8e24aa') + '" title="Open the ' + t + ' topic chat" aria-label="' + t + ' — open the topic chat">' + t + '</button>';
   });
   $('orgTabs').innerHTML = html;
   $('orgTabs').querySelectorAll('.nf-smtab').forEach(function(b){
@@ -1255,6 +1271,7 @@ function renderThread(){
   $('toggleMail').disabled = isGroup;
   $('toggleMail').title = isGroup ? 'Topic chat is live — mail lives in the one-to-one conversation' : '';
   var msgs = isGroup ? (THREADS['topic:' + state.topic] || []) : (THREADS[p.id] || []);
+  var wc = WORLDS[state.world].color; /* TEXT-TOPIC-PILLS: the world color rims the letter cards below. */
   var html = ''; // REVAMP: the format pill is gone (§4) — the lit toggle side says the format.
   /* MAIL MESSAGE VIEW (pro-level): the opened letter as an elevated board —
      title, nutshell, key points with jewel bullets — then the letters
@@ -1274,11 +1291,11 @@ function renderThread(){
   }
   msgs.forEach(function(m){
     if (fmt === 'mail') {
-      html += '<div class="msg letter"><div class="subject">' + (m.who==='mine' ? 'You wrote' : esc(p.name) + ' wrote') + '</div>' +
+      html += '<div class="msg letter" style="--wc:' + wc + '"><div class="subject">' + (m.who==='mine' ? 'You wrote' : esc(p.name) + ' wrote') + '</div>' +
         '<div class="letter-to">To ' + (m.who==='mine' ? esc(p.name) : 'you') + ' · Smart Mail</div>' +
         esc(m.text) + '<span class="meta">' + esc(m.time) + (m.topic ? ' · ' + esc(m.topic) : '') + '</span></div>';
     } else {
-      html += '<div class="msg ' + m.who + '">' + esc(m.text) + '<span class="meta">' + (m.name ? esc(m.name) + ' · ' : '') + esc(m.time) + (m.topic ? ' · ' + esc(m.topic) : '') + '</span></div>';
+      html += '<div class="msg ' + m.who + '" style="--mc:' + (p.cc || '#8e24aa') + '">' + esc(m.text) + '<span class="meta">' + (m.name ? esc(m.name) + ' · ' : '') + esc(m.time) + (m.topic ? ' · ' + esc(m.topic) : '') + '</span></div>';
     }
   });
   if (!msgs.length && fmt !== 'mail') {
@@ -1310,7 +1327,14 @@ function openTopicChat(topic){
   renderConvs(); renderTopicPeople(); renderThread();
 }
 function pickTopic(t){
-  state.topic = (t === 'All') ? 'Design' : t;
+  if (t === 'All') {
+    /* TEXT-TOPIC-PILLS: "All topics" restores the mail view — the group chat closes and the world's mail opens. */
+    state.group = null;
+    renderTabs(); renderTopicPeople();
+    setFormat('mail');
+    return;
+  }
+  state.topic = t;
   state.thing = state.topic;
   renderTabs(); renderTopicPeople();
   openTopicChat(state.topic);
