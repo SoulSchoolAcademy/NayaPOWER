@@ -129,9 +129,19 @@ def _max_allocated_sn_number():
 
 
 
-def test_explicit_smart_note_id_is_honored():
+def test_explicit_smart_note_id_is_honored(tmp_path):
+    # Isolated registry: the live registry owns SN-9999 since 2026-11-12
+    # (retired-test-fixture lifecycle record
+    # IB-SMART-NOTE-20261022-sn9999-live-fire-test-lifecycle), so the
+    # honored-id behavior must not depend on live registry content.
+    m = _problem_b_fresh_module(tmp_path)
+    m.REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    m.REGISTRY.write_text(json.dumps({
+        "sequence_policy": {"next_sequence": 458},
+        "entries": [],
+    }), encoding="utf-8")
     capture = {"smart_note_id": "SN-9999", "source": {"captured_at": "2026-09-30"}}
-    assert mod.allocate_smart_note_id(capture, "IB-EXPLICIT") == "SN-9999"
+    assert m.allocate_smart_note_id(capture, "IB-EXPLICIT") == "SN-9999"
 
 
 def test_explicit_smart_note_id_collision_fails_closed(tmp_path):
