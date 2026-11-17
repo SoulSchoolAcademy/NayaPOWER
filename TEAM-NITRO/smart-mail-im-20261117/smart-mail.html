@@ -103,7 +103,7 @@ img{max-width:100%}
 /* --- COVER: .ph-cover harvested verbatim in shape (Personal page) --- */
 .ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(17vh,170px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(142,36,170,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(162,28,175,.32),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(15,82,186,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
 .ph-cover::before{content:'';position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(180deg,rgba(2,2,6,0) 0%,rgba(2,2,6,.38) 52%,rgba(2,2,6,.78) 100%);pointer-events:none;z-index:1}
-@media(max-width:900px){.ph-cover{height:110px !important;aspect-ratio:auto !important;max-height:none !important;}}
+@media(max-width:900px){.ph-cover{height:100px !important;aspect-ratio:auto !important;max-height:none !important;}}
 /* COVER CHOICE (addendum 1 §2): the citizen chooses — Cover / No cover / Full screen.
    No cover = content up to the bars at the top. Full screen = cover + menu away. */
 body.no-cover .ph-cover{display:none}
@@ -329,8 +329,8 @@ body.fullscreen .ph-main{padding-top:12px}
 @keyframes orbitCCW{to{transform:rotate(-360deg)}}
 .ph-plus::before{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 50% 0%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCW 60s linear infinite}
 @media (max-width:900px){
-  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:6px}   .nf-smtab{min-height:38px}
-  .ph-cover-inner{padding:12px}   .ph-cover-inner h1{font-size:26px}   .ph-cover-inner p{font-size:14px;margin-top:8px;max-width:420px}
+  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:4px}   .menu-bar{padding:6px 16px}
+  .ph-cover-inner{padding:10px}   .ph-cover-inner h1{font-size:24px}   .ph-cover-inner p{font-size:13px;margin-top:6px;max-width:420px}
   /* FIX-3 round 2, 2026-11-17: narrow stack trims so the first row clears the fixed dock:
      h2 22px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
   .page-title{font-size:22px}
