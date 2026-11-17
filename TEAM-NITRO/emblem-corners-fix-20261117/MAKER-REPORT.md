@@ -568,11 +568,35 @@ nothing removed, moved, or touched beyond F1–F4b.
 ## §13 Filing receipts
 - Branch: `emblem/corners-fix-20261117` (NEW, from emblem/certificate
   tip `f23b6202`)
-- Commit: TO BE FILLED
-- Tree: TO BE FILLED
-- Files filed (blobs, all read-back MATCH by sha256): TO BE FILLED
-- PR: TO BE FILLED, open, UNMERGED, base `main`
-- Receipts commit (this report, §13 filled): TO BE FILLED
+- Commit: `0a81922995b31e0c676e7cfd2bb11c92bba2c35c`
+- Tree: `37534df87c5400e8c41bcef88c9a500695615ebe`
+- Files filed (blobs, all read-back MATCH by sha256):
+  - MAKER-REPORT.md (commit-1 version, without these receipts):
+    blob `0749b4f38458e9ee5efa1095baacab4441a72186`, 34,006 B,
+    sha256 `2ce7a8351bf23d31e7a52559fc8bac13b820fbdc3c9a9b86326e509c3b8a1236`
+  - `build-emblem-corners-fix.py`: blob
+    `4683089cd598ab53b21be83dbfae9a59fbcbced5`, 38,031 B,
+    sha256 `dbd57bfacb055e678fbbadad7a56ce44984520d7cbcda4deb85b6d81b56a586f`
+  - `audit-emblem-corners-fix.py`: blob
+    `021bec4ac2da2f5a93dd802a1a1b78c977bd7ea1`, 9,953 B,
+    sha256 `480c40b6c9be8914ad7909ce14509b5987aba91d149c2fab76b2d929881d15e5`
+  - `probe-emblem-corners-fix.py`: blob
+    `9142172ba245531f502780ae2128ed8d82b584e8`, 13,226 B,
+    sha256 `6c05cf88d8d284ece253240ff00489c514b32ef88fb1b4c1918233a37c7876ac`
+  - `compare-old-new.py`: blob
+    `74e98cb2962cd2414f1d17275cc2edce33fc6ec7`, 3,350 B,
+    sha256 `4be859d878f2faa260887eb371d8856b1123468fdaa8fc470e5d43fb7d901dad`
+  - `probe-corners-results.json` (120/120, exit 0): blob
+    `e3f0016ae8c8256c29a1501a7b4a40d86e7ab042`, 16,874 B,
+    sha256 `8315358386f6cc5a935f826d8ba8312fa0037d819f456b1995b949c028b5a568`
+  - `new-entry.html` (the staged entry bytes 3,804,043 B, sha256
+    `a5e529f9…` — re-derived in memory, never read from disk): blob
+    `e0434b40241c4fb929962415fc3c10ef88553535`
+- PR: **#3450**, https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3450,
+  open, UNMERGED, base `main`
+- Receipts commit (this report, §13 filled): filed second on this
+  branch — see the branch tip (a commit cannot name its own sha
+  inside itself; the on-disk report below names it once filed).
 - Staged: `https://naya-pricing-free-staging.nayapower.workers.dev/free`
   (entry 3,804,043 B, sha `a5e529f9…`, worker sha `5bfa072a…`,
   `modified_on 2026-11-17T22:35:03Z`; timestamped link verified §4).
