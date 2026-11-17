@@ -10565,7 +10565,9 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
    black); bh-btn = the X (inside) + SMART NOTE BOARD (black) +
    TOP-LEFT + (pill button); tab-jewel = the X + SMART NOTE BOARD. */
 .rooms-plus:hover{transform:translateY(-2px) scale(1.1) rotate(90deg);border-color:rgba(157,117,255,.8);box-shadow:inset 0 -3px 8px rgba(0,0,0,.4),0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent),0 12px 28px rgba(0,0,0,.6);}
-.rooms-plus:hover svg{filter:drop-shadow(0 0 6px rgba(157,117,255,.8));}
+.rooms-plus:hover svg{transform:rotate(-90deg);filter:drop-shadow(0 0 6px rgba(157,117,255,.8));}
+/* FIX-2 glyph (re-check observation): mirror .eco-plus:hover svg (L928) - counter-rotate the svg -90deg so the + stays a + through the spin; the svg needs the same .18s transition to track the button (eco-plus carries its own .25s transition at L917). NOTE: in .top the svg is display:none and the visible + is the ::after glyph - the svg rule cannot steady that glyph; see fix log. */
+.rooms-plus svg{transition:transform .18s cubic-bezier(.16,.84,.22,1);}
 .board-h .bh-btn:hover{animation:none;transform:translateY(-2px);border-color:var(--bc);color:#fff;box-shadow:0 0 32px var(--bc),0 0 48px var(--bc),0 10px 22px rgba(0,0,0,.55);}
 /* NOTE on bh-btn: the ambient btn-flash animation animates box-shadow,
    which would mask any hover box-shadow — so :hover sets animation:none
@@ -10609,14 +10611,15 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 /* ——— (2b) BOARDS LIGHT UP WHOLE on hover — the face itself lights ———
    Own-color tint on the face (never white): the board fills alive,
    not just its rim + outside halo. */
-.sh-board:hover{background-color:color-mix(in srgb, var(--bc) 16%, transparent);}
-.sh-board:hover .board-h{background:linear-gradient(180deg,color-mix(in srgb, var(--bc) 30%, #0d0d14),color-mix(in srgb, var(--bc) 14%, #07070b));}
+/* FIX-2 (re-check FAIL): the two rules above were dead - background-color paints UNDER the opaque injected .board-h gradient (sh-hero-css L8212), and the descendant rule matches nothing (all 9 boards carry BOTH classes on one element). One working rule on the element itself, background shorthand, replaces the gradient - same gradient as .board-h:hover below. */
+.sh-board:hover{background:linear-gradient(180deg,color-mix(in srgb, var(--bc) 30%, #0d0d14),color-mix(in srgb, var(--bc) 14%, #07070b));}
 .activity-card:hover{background-image:linear-gradient(180deg,color-mix(in srgb, var(--ac,#9d75ff) 20%, transparent),color-mix(in srgb, var(--ac,#9d75ff) 8%, transparent));}
 
 /* ——— SEPARATE HUNK GROUP — pre-existing gaps the checker named, NOT
    this round's fails: .intel-board + .board-h light up whole on hover.
    Same law, same own-color face tint; judged apart from the FAIL fix. */
-.intel-board:hover{background-image:linear-gradient(180deg,color-mix(in srgb, var(--tone) 22%, transparent),color-mix(in srgb, var(--tone) 8%, transparent));}
+/* FIX-2 (re-check FAIL): !important REQUIRED here - the live injected rv-face-style rule sets .intel-board{background:#050607 !important} (face() invoked L4051, appended L3992); a shorthand !important sets background-image:none !important, so only an !important hover background-image can beat it. Important-vs-important resolves by specificity: .intel-board:hover (0,2,0) beats .intel-board (0,1,0). Rest state untouched; rv-face-style untouched. */
+.intel-board:hover{background-image:linear-gradient(180deg,color-mix(in srgb, var(--tone) 22%, transparent),color-mix(in srgb, var(--tone) 8%, transparent)) !important;}
 .board-h:hover{background:linear-gradient(180deg,color-mix(in srgb, var(--bc) 30%, #0d0d14),color-mix(in srgb, var(--bc) 14%, #07070b));}
 
 </style>
