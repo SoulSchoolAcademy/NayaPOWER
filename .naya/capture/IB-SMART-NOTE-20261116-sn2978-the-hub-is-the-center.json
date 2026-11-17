@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2978",
+ "intelligence": {
+  "title": "The Hub Is the Center + The Flow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2978-the-hub-is-the-center",
+  "smart_note_id": "SN-2978",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2978/IB-SMART-NOTE-20261116-sn2978-the-hub-is-the-center.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Navigation is not a menu tree, it is a center with a flow. The Hub is the center of it all — the home, the main page — and it sits where a center sits: the top button on the left, so the citizen always knows where home is and where they were welcomed in when they first joined. The + buttons are the quick way everywhere: one click, prioritized top to bottom by what they're most likely to use, and the Hub's + buttons must navigate to the right places. The bottom bar is the way between worlds: Personal, Business, Space — tap one and it shows the notifications in that area, then goes right to the page. And inside a page the flow is one motion: click your world, and you're in the scheduler — the day's mail, your messages with how many, the news, what's going on in any of the feeds for that day. Center, then worlds, then the day: that is the whole navigation, in that order, and nothing in it needs explaining once it sits in the right places.",
+  "simple_view": "Imagine your house has one front door — that's the Hub! It's the very first button, right at the top, so you always know how to get home. And at the bottom there are three magic doors — Personal, Business, Space — and each one shows you how many new things are waiting behind it! Tap one and zoom — you're there! And inside, you tap your world and — pop! — there's your whole day: your mail, your messages, your news, everything happening today!",
+  "grandma_view": "It's like this, love — think of the Hub as the front door of the house, dear, right at the top on the left, so you always know where home is — it's where you were welcomed in when you first joined. The little + buttons are the quick way to everything, the things you use most sitting right at the top. And along the bottom are your three rooms — Personal, Business, Space — each one showing you how many new things are waiting inside. Tap one and you're there, love. And once you're in, you tap your world and there's your whole day laid out — your mail, your messages, the news, everything going on. Home, then your rooms, then your day — simple as that.",
+  "naya_view": "Hub is the center — top button on the left, the home, the main page, where they were welcomed in. + buttons: quick access everywhere, most-used on top, Hub's + navigate to the right places. Bottom-bar icons Personal / Business / Space carry the notification counts for each area — tap one, see the notifications, go right to the page. Flow inside a page: click your world → the scheduler → that day's mail, messages (with how many), news, what's going on in any of the feeds for that day.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2978",
+   "title": "The Hub Is the Center + The Flow",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2978/IB-SMART-NOTE-20261116-sn2978-the-hub-is-the-center.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2978/IB-SMART-NOTE-20261116-sn2978-the-hub-is-the-center.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8d1df87e8f1f97234a590d88b3481c1d12466734"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

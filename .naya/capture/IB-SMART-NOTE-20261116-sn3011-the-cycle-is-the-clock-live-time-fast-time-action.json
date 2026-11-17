@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3011",
+ "intelligence": {
+  "title": "The Cycle Is the Clock — Live Time, Fast Time Action",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3011-the-cycle-is-the-clock-live-time-fast-time-action",
+  "smart_note_id": "SN-3011",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3011/IB-SMART-NOTE-20261116-sn3011-the-cycle-is-the-clock-live-time-fast-time-action.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The question he was asked — 15 minutes or 30 — was the wrong question, and he said so. Minutes are not the thing; the cycle is the thing. The cycle is: work finishes, it comes back to him, he sees it is done right, he approves it to move forward — and the next piece is already flying his way. Delivery is EVENT-DRIVEN: the moment a round finishes, the next step (checker → captain's eye → delivery) fires in the same pass; the 15-minute timers are only the safety net that catches something gone quiet, never the delivery mechanism. NEVER offer to slow a live lane to 30 minutes to save wake-ups — that option is dead, withdrawn by his word twice (18:47Z + 19:12Z). Kill DEAD wake-ups instead — re-scope dead ledgers, retire jobs that finish nothing — never slow live work. The wake-up budget is cost, not the score; the score is finished verifiable work in front of his eyes. His charge underneath it all: think it through, do the math, find the optimal setup — there are a lot more levels to it than a quick decision. The design that charge produced the same pass is `~/workspace/team-nitro/THE-OPTIMAL-SETUP.md`: the score is completions per hour, throughput is lanes × completion rate, the ready-queue stays 3 deep, a delivery every 5–15 min in active hours, an interface in front of him every hour. Companion rules filed the same pass in team-nitro/AGENTS.md: CADENCE IS NEVER THE LEVER (Shawn, 19:12Z) and the captain's 10-MINUTE RULE (coordinators spawn the maker within 10 minutes of dispatch or report the blocker; floor-watch escalates at 15 min quiet with no children).",
+  "simple_view": "Imagine you're waiting for your birthday presents! Would you rather wait a whole hour for one big box, or get a little present every few minutes? Every few minutes, right! And you want each present to be GOOD — not just fast! Fast and useless is useless — fast and RIGHT is awesome! That's the cycle — finish it, show it, next one!",
+  "grandma_view": "It's like this, love — it's not about watching the clock, dear, it's about the work coming to you finished and beautiful, one piece after another, so you can see it's right and say yes, next! Every fifteen minutes at the latest, love — an hour and you'd be pulling your hair out! Fast is lovely, dear, but fast and right is awesome.",
+  "naya_view": "The cycle is the clock — live time, fast time action. Finish it, show it, approve it, forward. Delivery is event-driven: the moment a round finishes, the next step fires in the same pass. The timers are only the safety net. Never slow live work to save wake-ups — kill dead wake-ups instead. Fast and useless is useless. Fast and RIGHT is awesome.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3011",
+   "title": "The Cycle Is the Clock — Live Time, Fast Time Action",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3011/IB-SMART-NOTE-20261116-sn3011-the-cycle-is-the-clock-live-time-fast-time-action.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3011/IB-SMART-NOTE-20261116-sn3011-the-cycle-is-the-clock-live-time-fast-time-action.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a80bff2a414fa19a1001860261527734b9d99715"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

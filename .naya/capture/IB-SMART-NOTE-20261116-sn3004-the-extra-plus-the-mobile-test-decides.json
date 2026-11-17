@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3004",
+ "intelligence": {
+  "title": "The Extra + — The Mobile Test Decides",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3004-the-extra-plus-the-mobile-test-decides",
+  "smart_note_id": "SN-3004",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3004/IB-SMART-NOTE-20261116-sn3004-the-extra-plus-the-mobile-test-decides.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The question is really two questions, and he asks both. First: why is the extra + there at all — is it a mistake, or is it doing a job? It is doing a job: it is the RIGHT +, the CONNECT + — Message, Mail, Create world — and the LEFT + is the CREATE + — Make a post, Smart note, Naya note. Two different jobs, two different menus, and they must never get mixed up — which is why the right + sitting right beside the five looks wrong to him at first glance: two plus buttons touching reads as one job done twice. His instinct for the fix is right: if a + is for the sidebars, it should be right to the side, in the corner, so it doesn't get mixed up — separation is what makes two jobs readable. Second: does it fit? \"Will that fit perfectly on the bottom of a mobile? And not get cut off that's the question if it looks perfect on a mobile then keep it. If it makes it so it has to go to the next line down then don't.\" The mobile fit is the test, and it is a pass/fail test with a stated fallback: fits perfectly → keep it; wraps to a second line → don't, and the right + moves to the side in the corner. The measurement answered it: all six on one line at phone width, nothing cut off, nothing wrapping — so it stays, and the rule is now written into the rounds: if it ever wraps, the right + goes off to the side. He also leaves the door open honestly — \"I wonder if that's better... It doesn't look bad\" — the arrangement is kept on the evidence of the fit, not on a guess, and the fallback is already decided if the evidence changes.",
+  "simple_view": "Imagine you have five beautiful buttons in a row — and one extra button right next to them! Is the extra button a mistake? No — it's a DIFFERENT button for a different job! One button is for MAKING things, and the other is for TALKING to people! But they have to stay separate so nobody gets mixed up. And the test is: do they all fit perfectly on the phone, in one neat row? If they fit — keep them! If they spill onto a second row — move the extra one to the corner!",
+  "grandma_view": "It's like this, love — imagine five lovely buttons in a row, dear, and one extra button right beside them. Is it a mistake, love? No, dear — it's a different button for a different job! One is for making things, and the other is for reaching people. But they mustn't get mixed up, love — so if they don't all fit perfectly in one row on the phone, the extra one moves off to the side, in the corner, all on its own. If they fit beautifully, dear, they stay!",
+  "naya_view": "The extra + — the mobile test decides. Two plus buttons, two jobs — LEFT + is CREATE, RIGHT + is CONNECT — and they must never get mixed up. Will it fit perfectly on the bottom of a mobile? If it looks perfect on a mobile, keep it. If it has to go to the next line down, don't — then the right + moves to the side, in the corner.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3004",
+   "title": "The Extra + — The Mobile Test Decides",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3004/IB-SMART-NOTE-20261116-sn3004-the-extra-plus-the-mobile-test-decides.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3004/IB-SMART-NOTE-20261116-sn3004-the-extra-plus-the-mobile-test-decides.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a330d3cffc61e26598de666b5e17c2a279f0d916"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

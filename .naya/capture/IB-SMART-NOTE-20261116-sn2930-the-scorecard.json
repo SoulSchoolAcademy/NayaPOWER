@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2930",
+ "intelligence": {
+  "title": "The Scorecard — Ten You Love, Ten You Don't, Ten Done Ten Times Better",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2930-the-scorecard",
+  "smart_note_id": "SN-2930",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2930/IB-SMART-NOTE-20261116-sn2930-the-scorecard.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A round that passes every check can still miss — the Personal round-4 story proves it three times over. The scorecard is the check the checks don't do: stand in front of the page as he sees it and name ten things you love, ten you don't, ten done ten times better. It forces the eye past the brief's diff and onto the whole page — the About with no unfold, the Skills with no visual, the My World nobody understands, the Connections that is garbage next to the real one at /rooms/connections, the Smart Mail that is not pro-level. And it forces the loves to be named too — the points in tiles, the name as a trophy — so what works is kept, not rebuilt by accident. The frame is also a discipline for the captain: a don't-love is not a complaint, it is an item, filed in his words, with its destination named — which One List item, which reference to harvest, which choice the citizen gets. \"Offer both presentations\" is the shape that falls out of it twice in one scorecard: when a citizen might want either way, give them both, their pick. That is the scorecard doing its work: it doesn't just judge the page, it writes the next rounds.",
+  "simple_view": "Imagine you built a big beautiful castle — and then you look at it really carefully and say: \"I love these ten things! I don't love these ten things! And these ten things I could do TEN TIMES better!\" That's the scorecard! You look at the WHOLE castle, not just one tower — and then you know exactly what to fix next!",
+  "grandma_view": "It's like this, love — when you've made something, you stand back and look at the whole of it, not just the bit you just finished. Ten things you love, ten things you don't, ten things you could do ten times better. Say them out loud, write them down — and then you know what to keep and what to fix. That's how anything gets truly good.",
+  "naya_view": "Judge the page the way he judges it: ten you love, ten you don't, ten done ten times better. The whole page, as he sees it — never the brief's diff. A don't-love is an item, filed in his words, with its destination named.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2930",
+   "title": "The Scorecard — Ten You Love, Ten You Don't, Ten Done Ten Times Better",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2930/IB-SMART-NOTE-20261116-sn2930-the-scorecard.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2930/IB-SMART-NOTE-20261116-sn2930-the-scorecard.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c68525f65bba474ed01dd14dfbb98816a83b3536"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

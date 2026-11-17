@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3026",
+ "intelligence": {
+  "title": "The Presentation Is the Promise",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3026-the-presentation-is-the-promise",
+  "smart_note_id": "SN-3026",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-3026/IB-SMART-NOTE-20261116-sn3026-the-presentation-is-the-promise.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The ten notes are one evening's worth of laws, and they split into two halves that only work together: how the system presents itself, and how the work is done. The presentation half is four laws that are really one law. The unfold law says a page is not a document — it is a presentation, one beat at a time, almost full screen, button-folded, nothing revealed by scrolling — because a page that shows everything at once is a document, and a document is the old internet. The legibility law says every picture must pass one glance: the key says vault, do-no-harm says the code, old-vs-new internet says the break — and the math and chain pictures fail, so they are held, files kept, words carrying the scenes. The colour law says the interface is aligned with the world itself: every letter has one number, every number has one colour, same letter same colour always, hexes harvested never invented — so a checker judges by the table, not by taste. And the promise law says the front page is the record: the agreement sits below the login, visual then words, and the name you enter IS the agreement — because an agreement hidden at the end of a journey is a trap, and an agreement on the front page is a promise. The work half is two laws that are really one law. Keep what we had: a rebuild is a bet the new thing will be better than the old thing, and when the old thing is already nailed — the text, the buttons, the presentation he loved — the bet is irrational, and every redo in our history has proven the downside real. Think first: literal obedience is the laziest form of service — it moves the words and leaves the want behind — and the test is whether it is primo, top end, top of the line, judged by the page as he sees it. The door and the user tie the halves together: the calendar is how they enter — click a day, boom, that day's world — and the children are who it is for — learning together, safe and secure, their AIs talking to each other. Free forever is the open door; the calendar is the door you walk through; the children are why the door exists at all.",
+  "simple_view": "Imagine a magic picture book. Each page opens just for you. One beautiful picture at a time. You can tell what it means in one look. And it is made for children everywhere. They learn together, safe and happy!",
+  "grandma_view": "It's like this, love — our pages aren't flat pieces of paper you scroll and scroll. They're like a beautiful pop-up book: press, and a whole little world opens up, then the next one. Every picture tells its story at one glance, and every letter wears its own colour, so it all lines up beautiful. The door is open and it costs nothing to come in — and the whole thing is made for the children, safe and sound, learning together. That's the promise, dear — written right on the front door, where everyone can see it.",
+  "naya_view": "Our pages will be unfolds, our slideshows — one beat at a time, almost full screen, perfectly formatted. If you can't tell what it's saying in one glance, it doesn't go. I keep what was beautiful and only add to it. And I think first: is it primo, top end, top of the line? The door is open, free forever — and the children are who it is for.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3026",
+   "title": "The Presentation Is the Promise",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-3026/IB-SMART-NOTE-20261116-sn3026-the-presentation-is-the-promise.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-3026/IB-SMART-NOTE-20261116-sn3026-the-presentation-is-the-promise.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f5f38a59f10e02686c3334328c3891cecd9af3b7"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

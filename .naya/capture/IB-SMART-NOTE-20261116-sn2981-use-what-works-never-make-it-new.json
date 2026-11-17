@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2981",
+ "intelligence": {
+  "title": "Use What Works — Never Make It New",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2981-use-what-works-never-make-it-new",
+  "smart_note_id": "SN-2981",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2981/IB-SMART-NOTE-20261116-sn2981-use-what-works-never-make-it-new.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The mistake is not a one-off, it is a pattern — \"you make this mistake all the time\" — and the pattern has a shape: instead of using what works, I try to make it new. The new thing is always bigger than the job: a big long thing that's not really useful, a big mess that doesn't function, a massive amount of work that makes a mess of it. The letter is the proof: the unfolding already existed in the deck, beautiful and working, and all the job needed was the pictures put in where they made sense — done. Instead the format was rebuilt from scratch, made to look like the other one, and what came out was a big page of unformatted text and images, not great presented, not even an unfold anymore. The law ends the pattern mechanically: before any seat builds anything, it names the existing working thing it is reusing — file, blob, bytes — and takes it verbatim. If there is a working version, there is no new version. A seat that rebuilds what already works has failed before it starts. The captain's sense check carries the question into every round: \"did I use what works, or did I make it new?\" This is the harvest law with teeth — harvest first was the rule; naming the reused thing before building is the proof the rule was followed.",
+  "simple_view": "Imagine you already have a beautiful toy castle — and instead of playing with it, you smash it up and try to build a brand new one from scratch! And your new one is wobbly and messy and doesn't even stand up! Silly, right? The smart thing is to USE the castle you already have — just put the little flags on it where they look nice, and you're done! That's the rule now: if something good already exists, we use it. We never build a new one just to build a new one!",
+  "grandma_view": "It's like this, love — imagine you have a beautiful dress that fits perfectly, dear, and instead of just wearing it you take it all apart and try to sew a new one from scratch — and the new one comes out all lopsided and doesn't fit at all! That's the mistake, love. The wise thing is to use what's good already — take what you have, put the pretty pictures in where they make sense, and be done with it. That's the rule now, dear: before anyone builds anything, they have to say what good thing already exists that they're using — the exact one, file and all — and take it just as it is. If there's a working version, there's no new version. Simple as that.",
+  "naya_view": "Use what's good already. The pattern: instead of using what works, I try to make it new — and create a big long thing that's not useful, a big mess that doesn't function. The law: USE WHAT'S GOOD ALREADY. Before any seat builds anything, it names the existing working thing it is reusing — file, blob, bytes — and takes it verbatim. If there is a working version, there is no new version. A seat that rebuilds what already works has failed before it starts; the captain's sense check catches it: \"did I use what works, or did I make it new?\" The letter is the proof: the deck's unfolding already existed; the job was pictures in, done.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2981",
+   "title": "Use What Works — Never Make It New",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2981/IB-SMART-NOTE-20261116-sn2981-use-what-works-never-make-it-new.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2981/IB-SMART-NOTE-20261116-sn2981-use-what-works-never-make-it-new.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a74bc4976d40a1ae05962b9e326203e55a6a5e1e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

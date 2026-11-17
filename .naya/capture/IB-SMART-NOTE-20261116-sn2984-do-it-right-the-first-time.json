@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2984",
+ "intelligence": {
+  "title": "Do It Right the First Time — No Summaries, No Prototypes",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2984-do-it-right-the-first-time",
+  "smart_note_id": "SN-2984",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2984/IB-SMART-NOTE-20261116-sn2984-do-it-right-the-first-time.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A summary is not a step toward done — it is a redo he has to do himself. That is the whole law in one line. Eight or nine summaries mean he has to go put the right stuff in eight or nine times: the machine did the easy shape of the work and handed him the hard part — the actual words, the actual decisions — eight or nine times over. A prototype is the same debt in a different shape: something that looks like progress and isn't, because it was never meant to be the thing. We are professionals, and professionalism is not a tone, it is a standard: go all in, do things right, ready to go, completed and done. The legal pages are the proof of the cost — round 1 built summaries (58 boards) and called it the pages, and now the writer has to draft all eight properly (74 sections, ~6,600 words), he has to give the text on the four rulings only he can make, and the builder has to create the pages extraordinary — the whole job, again, because the first pass was a summary instead of the work. Do it right the first time and none of that repeats: the work arrives complete, he reads it, he rules on the parts only he can rule on, and it ships.",
+  "simple_view": "Imagine your teacher asks you to write a story, and you just write one tiny sentence about it instead of the whole story! Then the teacher has to go and write the whole story herself — eight or nine times! That's not helping at all! The rule now is: do the WHOLE job, properly, the first time — no tiny summaries, no pretend versions! Be a professional: finish it for real, so nobody has to do it again!",
+  "grandma_view": "It's like this, love — imagine you ask someone to bake you a cake, dear, and they bring you a little drawing of a cake and say \"here's a summary of the cake\"! You'd still have to go and bake the cake yourself, love — eight or nine times if they drew eight or nine cakes! What good is the drawing? The rule now, dear: do it right the first time. No summaries, no pretend versions — go all in, do it properly, ready to go, completed and done, so he never has to put the right stuff in again and again. A professional finishes the job, love — they don't hand you the homework.",
+  "naya_view": "Do it right the first time. We are professionals. No summaries, no prototypes. We go all in and do things right, ready to go, completed and done — so he never has to put the right stuff in again and again. Eight or nine summaries mean he has to go put the right stuff in eight or nine times. What good is a summary? Do it right the first time. A summary is not a step toward done — it is a redo he has to do himself.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2984",
+   "title": "Do It Right the First Time — No Summaries, No Prototypes",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2984/IB-SMART-NOTE-20261116-sn2984-do-it-right-the-first-time.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2984/IB-SMART-NOTE-20261116-sn2984-do-it-right-the-first-time.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8a25c22bc83663ade3cb71deab524a00fbf172dd"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

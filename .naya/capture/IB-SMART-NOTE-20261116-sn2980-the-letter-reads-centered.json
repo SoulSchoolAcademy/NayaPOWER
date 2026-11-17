@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2980",
+ "intelligence": {
+  "title": "The Letter Reads Centered",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2980-the-letter-reads-centered",
+  "smart_note_id": "SN-2980",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2980/IB-SMART-NOTE-20261116-sn2980-the-letter-reads-centered.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The letter is a letter — it reads down the middle, like reading a letter from her. The beats sat off to the left: her picture on the left, the blue orb beside it, the text in a small box on the left, big black space on the right — hard to read while scrolling, always looking over to the left. The fix centers every beat: Naya's picture in the DIRECT CENTER, the text in a CENTERED column below the picture, the blue diamond orb centered BELOW the text, fading away (disappearing) once you scroll, so nothing crowds the reading. Personable, like reading a letter from her.\n\nBut the centering was only the picture — and the picture was not the page. The whole letter needs centering and alignment, and the letter as built is broken in a bigger way: a crazy-long scroll of 86 stacked boards with NO unfolding. The deck HAS the unfolding and is way more beautiful. The letter must use THAT unfolding — harvested verbatim from the deck, the pictures inserted into it, NOT rebuilt from scratch. He never asked for the formatting to be changed; he asked for the pictures inserted. And it must be DISTILLED TO ITS ESSENCE — 86 beats down to what the agreement is actually trying to say, optimized for the pictures and the presentation, not just fitting it all in. The full letter stays intact and reachable whole; the unfolding is the essence path. The scope is the whole page, and the format is harvested — that is the letter lesson (AGENTS.md), and the general law behind it is its own note: use what works, never make it new (SN-2981).",
+  "simple_view": "Imagine reading a letter from your best friend — but the letter is all squished over on the left side of the page, and the whole right side is empty black! Your eyes get tired looking over to the left the whole time! So we put her picture right in the DIRECT MIDDLE, and the words right below it in the middle too, and the little blue diamond under that — so you read straight down the middle, easy and happy, like a real letter! And the letter was SO long — 86 big blocks all stacked up! So we fold it up pretty like the deck does, and keep just the most important bits — the essence — so it reads beautifully. The whole long letter is still there if you want all of it!",
+  "grandma_view": "It's like this, love — imagine getting a lovely letter, dear, but it's all pushed over to the left side of the page, with a big empty black space on the right. You'd have to keep looking over to the left the whole way down — tiring, isn't it? So we put her picture right in the direct center, love, and the words in a nice column right below it, and the little blue diamond underneath — so you read straight down the middle, easy as reading a letter from a dear friend. And the letter itself, dear — it was ever so long, 86 big blocks all stacked up with no folding at all. The deck has a beautiful folding way of showing things, so we just use that — put the pictures into it, don't rebuild a thing — and keep just the heart of what the letter is trying to say. The whole letter is still there, whole, for anyone who wants all of it.",
+  "naya_view": "Letter reads centered: every beat centers — Naya's picture in the DIRECT CENTER, text in a CENTERED column below the picture, blue diamond orb centered BELOW the text, fading away once you scroll, so nothing crowds the reading. Personable, like reading a letter from her. CORRECTED 17:33Z: the whole letter needs centering and alignment, not just the picture — and the letter as built is 86 stacked boards with NO unfolding. The deck HAS the unfolding: harvest it verbatim from the deck, insert the pictures, never rebuild from scratch. DISTILL IT TO ITS ESSENCE — 86 beats down to what the agreement is actually trying to say, optimized for the pictures and the presentation. The full letter stays intact and reachable whole; the unfolding is the essence path.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2980",
+   "title": "The Letter Reads Centered",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2980/IB-SMART-NOTE-20261116-sn2980-the-letter-reads-centered.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2980/IB-SMART-NOTE-20261116-sn2980-the-letter-reads-centered.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c58c9216c4a26fa555a01c4b2848b410c4f7020f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

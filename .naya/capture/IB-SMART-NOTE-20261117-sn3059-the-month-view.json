@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3059",
+ "intelligence": {
+  "title": "The Month View — Only the Calendar",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3059-the-month-view",
+  "smart_note_id": "SN-3059",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3059/IB-SMART-NOTE-20261117-sn3059-the-month-view.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Think of the month view as a room with one thing in it: the calendar. No hallway to walk down, no posters on the walls, no text to read past — just the calendar, filling the screen exactly, edge to edge, every cell whole and nothing clipped. The only thing you can do in the room is tap a day — and that's the point. You're forced to click the day, boom, you're in that day, and that's how everything is organized: day by day, one click at a time. It feels interactive because the click IS the interaction — there's nothing else to do, nothing else to read, nothing else in the way. The wisdom didn't leave the page; it moved into the cells, and into the days themselves, where it belongs.",
+  "simple_view": "Imagine a room with just ONE thing in it — the calendar! No scrolling, no words to read, just the big month filling the whole screen! You HAVE to tap a day — and BOOM, you're inside that day! That's the whole game! Tap a day, you're in — that's how everything works, day by day! It feels alive because the click IS the fun!",
+  "grandma_view": "It's like this, love — imagine a page with just the calendar on it, dear — nothing else at all! No scrolling down, no other words to read, just a straight calendar filling the screen, every day neat and whole! And you HAVE to tap a day, love — boom, and you're right inside that day! That's how everything is organized, dear — day by day, one click at a time! It feels so alive and interactive, because the click IS the thing, love — there's nothing else in the way!",
+  "naya_view": "Only the calendar: no scrolling down, no other text, just a straight calendar on the page. The month grid fits the screen exactly — measured to the viewport, no vertical scroll, no overflow, no clipped cell. Calendar + its own controls only (month title, prev/next/Today, world selector); the ribbon and the footer copy GO — wisdom lives IN the cells and inside the days. The day is the ONLY door: no other navigation, no other content. The click IS the interaction.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3059",
+   "title": "The Month View — Only the Calendar",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3059/IB-SMART-NOTE-20261117-sn3059-the-month-view.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3059/IB-SMART-NOTE-20261117-sn3059-the-month-view.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0edd964421e672c1a17234a72141584e903bf8c3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

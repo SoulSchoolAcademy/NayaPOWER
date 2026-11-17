@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2945",
+ "intelligence": {
+  "title": "A Firefox Empty List Is a Probe Failure",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2945-a-firefox-empty-list-is-a-probe-failure",
+  "smart_note_id": "SN-2945",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2945/IB-SMART-NOTE-20261116-sn2945-a-firefox-empty-list-is-a-probe-failure.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The trap is a silent one: Firefox did everything right — page loaded, library loaded, zero errors — and still never asked Supabase for anything. A checker who trusts that silence will report \"the list is empty\" as a page failure, and a maker will chase a bug that doesn't exist, or worse, \"fix\" a working page. The proof is the control: identical bytes, different browser, reads fire, tiles render. So the rule is not a preference — it is a validity condition. Any eye probe on a Supabase-fed section that runs in VM Firefox and finds an empty list has proven nothing about the page; it has proven something about the probe. Chromium through the forwarder is the instrument for live reads; Firefox is the instrument for static sections. And the forwarder itself is the other half of the lesson: Chromium can't reach the network directly here (the egress proxy drops unauthenticated requests without a 407, and Chromium never sends preemptive Proxy-Authorization — Firefox does, which is why Firefox works unaided) — so the localhost forwarder adds the header at runtime, never from disk.",
+  "simple_view": "Imagine you ask your friend to fetch you some apples, and your friend walks to the shop, stands outside, and never goes in — and comes back with no apples! Did the shop have no apples? No! Your friend just never asked! That's Firefox with the Supabase shop. Chromium is the friend who actually walks in and asks — and comes back with apples.",
+  "grandma_view": "It's like this, love — if you send someone to the market and they come back empty-handed, you check whether they actually went in before you blame the market. Firefox walks to the door and never goes in — no errors, no fuss, just empty hands. Chromium walks in and asks, and comes back with the goods. So when the list is empty, you ask which friend you sent.",
+  "naya_view": "A Firefox empty list is a probe failure, never a page failure. Supabase-fed eye probes run in Chromium through the forwarder.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2945",
+   "title": "A Firefox Empty List Is a Probe Failure",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2945/IB-SMART-NOTE-20261116-sn2945-a-firefox-empty-list-is-a-probe-failure.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2945/IB-SMART-NOTE-20261116-sn2945-a-firefox-empty-list-is-a-probe-failure.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "fceb7f20b57d4b7cd7c3c73f19cdfcd89f6634ad"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

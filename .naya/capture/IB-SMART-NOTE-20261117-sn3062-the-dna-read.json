@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3062",
+ "intelligence": {
+  "title": "The DNA — Read",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3062-the-dna-read",
+  "smart_note_id": "SN-3062",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3062/IB-SMART-NOTE-20261117-sn3062-the-dna-read.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Every system has a root — the document everything else grows out of, locked on a date by his word, that you read before you decide anything changes. Shawn sent the DNA doc, and the captain read it against the Official — the design language, the Naya Code, the Playbook — line by line. And nothing moved. The spectrum, the obsidian, the white-at-rest, the elevation, the rectangles, the Real Object Law, the text law, the Smart Tab — the Official already says all of it, because the Official was grown from this root. Reading the root didn't overturn the tree; it confirmed the tree was grown right. And it did one more thing: it gave the Hub rim fix its backing in locked law. Purple three times in a row on the bottom bar isn't just ugly — it breaks §1, the very first rule: never the same color twice in a row. A fix with a locked law behind it is not a preference; it is the law, applied. Two places looked like conflicts, and both are ruled, not left open: the entrance play button stands against §14's no-voice-buttons because his repeated explicit orders govern — glow only, zero audio, not a button on a card; and the calendar cells stand as squares against §5's rectangles because his screenshot — his latest word — governs the cells.",
+  "simple_view": "Imagine there's a magic book with all the most important rules in it — the root of everything! Shawn sent us the book, and we read it very carefully. And guess what? Nothing needed to change! All the rules we already follow came from that very book! And the book even says why the purple repeating three times is wrong — rule number one says never the same color twice in a row! Two things looked like they disagreed with the book, but we figured them out: the play button stays because Shawn said so lots of times, and the calendar squares stay because Shawn's picture says so!",
+  "grandma_view": "It's like this, love — imagine there's a very special book, dear, with all the most important rules written down in it — the root of everything! Shawn sent us the book, and we read it very carefully, love. And nothing needed to change! All the rules we already follow came from that very book! And the book even tells us why the purple repeating three times is wrong, dear — rule number one says never the same color twice in a row! Two things looked like they disagreed with the book, but we sorted them out, love: the play button stays because Shawn said so many times, and the calendar squares stay because Shawn's picture says so!",
+  "naya_view": "The DNA is the ROOT: `BRAIN/10-INTERFACES/DNA/NAYA-DNA-LOCKED.md` (blob 092c3123, locked 2026-11-03 by his word). Spectrum flow (never the same color twice in a row) · obsidian #050607, period · white at rest, color ignites · elevation everywhere · rectangles, full width · Real Object Law · viewport optimization · text law (white always) · Smart Tab canonical · derive don't invent · harvest-first · no-redesign · no voice buttons · presentation standard. It changes NOTHING in the Official — it IS the root the Official derives from. Purple ×3 on the Hub bottom bar violates §1 — the rim fix has locked-law backing. Two tensions ruled: (a) entrance play button stands vs §14 by his repeated explicit orders (glow-only, zero audio, not a button on a card); (b) calendar cells are squares vs §5 by his screenshot — his latest word governs.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3062",
+   "title": "The DNA — Read",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3062/IB-SMART-NOTE-20261117-sn3062-the-dna-read.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3062/IB-SMART-NOTE-20261117-sn3062-the-dna-read.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f7885c30839b617651a39bb103365fccf5a64866"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

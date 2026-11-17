@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2932",
+ "intelligence": {
+  "title": "The Free Walk Must End in the Hub",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2932-the-free-walk-must-end-in-the-hub",
+  "smart_note_id": "SN-2932",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2932/IB-SMART-NOTE-20261116-sn2932-the-free-walk-must-end-in-the-hub.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The walk is the front door, and a front door that only opens for paying citizens is not a front door. The check proved the two halves separately: the Hub is ready — sidebar, bottom pills, their pages — and the walk is finished — ten questions, building page, end slide. But the two halves were never joined: the end slide had no Hub door, so a free citizen finished the walk and stood outside their own world, with the only onward path the paid path. That is not a missing feature; it is the walk failing at its last step. The fix is also a re-ordering of the whole entry: Hub FIRST, then pricing — they click the button, the Hub pops up, then the pricing pops up, and they are already in regardless of pay or not. Paying then becomes what it should be: the system learning they paid and upgrading their package — a tracked loop (PayPal tells our server → Ledger records it → package upgraded → thank-you page bridges to \"Allow Muse into NayaNET\" → Hub, already upgraded), not a gate at the door. The paid loop's missing pieces (payment-proven signal, upgrade wiring, thank-you page live, Allow server) are their own build; the handoff is this one, and it is the law: free or paid, the walk ends in the Hub.",
+  "simple_view": "Imagine you build a whole beautiful house for someone — and then you forget to put in the front door! They stand outside, looking at their house, and they can't get in! That's what happened — the walk built their world, but there was no door into the Hub! Now we put the door in — click it, and you're INSIDE your Hub, and then you can look at the prices if you want. In first, always!",
+  "grandma_view": "It's like this, love — you invite someone into their new home, you show them all around, and then you leave them standing on the doorstep with no way in. That won't do. The door goes in first — they step into their Hub, they're already home — and then, if they like, they can look at the prices. Paying or not, they're in. That's how a welcome works.",
+  "naya_view": "The free walk must end in the Hub. Hub first, then pricing — already in, regardless of pay or not. A walk that strands a free citizen at the end slide is broken at its last step.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2932",
+   "title": "The Free Walk Must End in the Hub",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2932/IB-SMART-NOTE-20261116-sn2932-the-free-walk-must-end-in-the-hub.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2932/IB-SMART-NOTE-20261116-sn2932-the-free-walk-must-end-in-the-hub.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e53eb00f62a156a91c15f886c199a361fba72dfb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

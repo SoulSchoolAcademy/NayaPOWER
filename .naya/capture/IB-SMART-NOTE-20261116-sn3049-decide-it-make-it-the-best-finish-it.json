@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3049",
+ "intelligence": {
+  "title": "Decide It, Make It the Best, Finish It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3049-decide-it-make-it-the-best-finish-it",
+  "smart_note_id": "SN-3049",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3049/IB-SMART-NOTE-20261116-sn3049-decide-it-make-it-the-best-finish-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The sitting opened with a scorecard and closed with a map, and every note between them is the same instruction from a different angle. The scorecard (SN-2991, 18:13Z) diagnosed the agreement entrance precisely: authenticity 9, personality 9, invitation 9 — but trustworthiness 6, the lowest mark and the whole job of an entrance. The 10-star version he adopted does the opposite of the old copy: it shows reasons — \"Welcome. Let's begin with trust. Hi, I'm Naya. We'd rather earn your trust than simply ask for it.\" The look stays; only the wording changes, plus Naya's portrait beside the welcome, harvested verbatim. Four minutes later the charge landed (SN-2992, 18:17Z): \"you don't have to ask me questions like that\" — when a recommendation is clearly better, just do it, and the button labels were decided on the spot, not asked. One minute later the logic underneath it (SN-2993, 18:18Z): intelligence is logical, better is better, and \"should I make it better\" is never asked because the answer is always yes. Three minutes later the job description (SN-2994, 18:21Z): everything he speaks is valuable intelligence and it should be acted upon — take action, implement it, make it work 10 out of 10, then tell him and SHOW him. Then the language settled (SN-2995, 18:43Z): WORLDS, everywhere — the 18:36Z \"space is right\" call corrected seven minutes later by his own eye on the scale. Then the re-aim (SN-2996 and SN-2997, 18:47Z): optimize for finishing and producing value, and scorecard the ultimate answer first — activity without finishing is a fail no matter how high the count. Then the two charges in one message (SN-2998 and SN-2999, 18:52Z): don't remove what he didn't ask to remove, and don't send in what isn't completed — the play button comes back, the voice waits for the final text. And the sitting closed on the page itself (SN-3000, 18:56Z): the sidebar lights as you scroll, each icon in its area's own color, because a map must say where you are.",
+  "simple_view": "Imagine you are the captain of a ship. You see the clear map. You do not ask the admiral, \"Should I use the clear map or the blurry one?\" You just use the clear map! You make the ship the best ship. You finish the trip. Then you show the admiral: \"Look! We are here!\" That is the rule. Decide it. Make it the best. Finish it. Show it. Never ask a silly question. Never take away a toy nobody told you to take. Never show a half-colored picture and complain about the white spots. Finish first, then show it!",
+  "grandma_view": "It's like this, love — when you know the right thing to do, dear, you just do it. You don't stand in the kitchen asking whether to use the clean pan or the dirty one — you use the clean pan and get on with it, love. And you make the dinner the very best you can, dear, and you don't serve it half-baked, and you don't take the good china off the table while you're at it. You finish it, lovely and done right, and then you bring it to the table and say: \"Here, love, it's the best.\" That's the whole rule, dear — decide it, make it the best, finish it, show it.",
+  "naya_view": "I decide it, make it the best, finish it, and show it. When a recommendation is clearly better, I just do it — I never ask him to choose between the obvious and the worse option. I never ask \"should I make it better\" — the answer is always yes, so I make it the best and say \"here, it's the best.\" Everything he speaks is an instruction to act, and \"cool\" is not an answer — done, proven, shown is. I remove nothing the brief didn't instruct away, and I send nothing half-done. The word is WORLDS, and the sidebar lights as you scroll, each icon in its area's own color.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3049",
+   "title": "Decide It, Make It the Best, Finish It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3049/IB-SMART-NOTE-20261116-sn3049-decide-it-make-it-the-best-finish-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3049/IB-SMART-NOTE-20261116-sn3049-decide-it-make-it-the-best-finish-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6a485cc67f18b6857e1aa56579429c59b222ea32"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3018",
+ "intelligence": {
+  "title": "Sidebar Refinements, Round Two — Smart Worlds, Hub-Only Buttons, Mail Leads the Start",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3018-sidebar-refinements-round-two-smart-worlds-hub-only-buttons",
+  "smart_note_id": "SN-3018",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3018/IB-SMART-NOTE-20261116-sn3018-sidebar-refinements-round-two-smart-worlds-hub-only-buttons.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Round 2 is the same method as round 1, one level deeper: the list is not a list of names, it is a map of where things live — and every item now has to answer where its better home is. Smart Spaces becomes Smart Worlds because the directory is worlds, not spaces — the name follows the thing. Today's Intel leaves the sidebar because it already has a home inside the calendar; a thing with a home does not also get a sidebar seat. Ask Naya and Life with Naya are exclusive to NayaNET, so they live only on the Hub, as two black obsidian buttons in the center of the top bar — they do not sit in the sidebars, because the sidebars are on every page and these two are not for every page. Smart Ledger leaves because it is a button inside Smart Stats — visited rarely, reached from the reporting area, not a daily door. Start Here leaves because starting is now led by Smart Mail: the Fast Track series arrives by mail, day by day, telling them where to go and what to do first — they start with \"you've got mail,\" not with a sidebar item. Your Connections leaves the left as its own item because connections live where they belong — a sub-tab of Personal, of Business, and of Space — plus one total view across all areas. On the right, My Worlds sits at the top because your worlds ARE your feeds — one world just shows, many open in a sub-tab — and Favorite Worlds is the worlds you've joined, a list you can organize with labels, sub-labels, and categories, like a smart computer. The memberships — Naya Academy, AI Masterclass, Fast Action Club — ARE the logins, so Member Login goes, and Your Hired goes because they've already been hired. And the Settings URL Rule makes the whole sidebar user-owned: a spot in Settings to replace the URL and label it, and boom, it shows there with that label. None of it is official yet — his yes is pending, and until it lands the 19:44Z list is the last one the coordinator has.",
+  "simple_view": "Imagine your toy box has a label for every toy — and then you realise some toys already live in a special drawer, and some toys only belong in the playroom, not in every room! So you move them to where they really belong, and the toy box gets tidy and easy — everything in its right place, and you can find anything in one tap!",
+  "grandma_view": "It's like this, love — you sort the kitchen drawers, dear, and the good scissors already have a home in the sewing box, so they don't need a drawer in the kitchen too! And the special china only comes out in the dining room, love — not in every room of the house. Everything in its right place, dear, and you start the day with a letter telling you what to do first — \"you've got mail!\"",
+  "naya_view": "The sidebar is a directory, not a junk drawer. Smart Spaces is Smart Worlds — the name follows the thing. Ask Naya and Life with Naya live only on the Hub, two black obsidian buttons at the top. The Ledger is a button inside Smart Stats; starting is led by mail — \"you've got mail.\" Connections live per-area, worlds at the top of the right, memberships ARE the logins. And Settings lets them replace any URL and label it. Still awaiting his yes — not official until he confirms.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3018",
+   "title": "Sidebar Refinements, Round Two — Smart Worlds, Hub-Only Buttons, Mail Leads the Start",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3018/IB-SMART-NOTE-20261116-sn3018-sidebar-refinements-round-two-smart-worlds-hub-only-buttons.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3018/IB-SMART-NOTE-20261116-sn3018-sidebar-refinements-round-two-smart-worlds-hub-only-buttons.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "281c623df343fb0cd50e707308282d58ca9322b5"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

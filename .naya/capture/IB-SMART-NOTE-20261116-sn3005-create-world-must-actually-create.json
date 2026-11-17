@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3005",
+ "intelligence": {
+  "title": "Create World Must Actually Create",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3005-create-world-must-actually-create",
+  "smart_note_id": "SN-3005",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3005/IB-SMART-NOTE-20261116-sn3005-create-world-must-actually-create.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A button that does nothing is the same failure as the picker that switches nothing (SN-3001 My World Picker Must Switch) — a control that performs its own performance instead of its job. The Create world modal performs twice over: it looks like a form (flat buttons, plain text) and it acts like a dead end (tap create, nothing happens, nowhere to go). His correction has two halves and both are absolute. First, the look: \"not flat buttons all depth and nice and primo\" — the design law is a habit, and a modal is a human surface, so its buttons are real objects with real depth, not flat shapes. Second, the deed: creating a world must actually create the feed and show you the feed, optimized to that world — the tap builds the world and takes you into it, tuned to that world, in the same motion. \"It never just goes nowhere\" is the rule in its shortest form: a create action that creates nothing is not a create action. The verification is the tap itself, like the picker's: create a world, and you are standing in that world's feed — proven on the page, not asserted in a brief.",
+  "simple_view": "Imagine you have a magic button that says \"MAKE A WORLD!\" — you press it, and... NOTHING happens! No world appears! That's not a magic button at all! A real magic button makes the world AND takes you right into it, so you can see it and play in it! And the button shouldn't be flat and boring — it should be big and shiny and pop right out, like a real button you want to press!",
+  "grandma_view": "It's like this, love — imagine a button that says \"make a world,\" dear, and when you press it, nothing happens at all! Oh, love — that's not a button, that's a picture of a button! A real button does its job, dear — you press it, and there is your world, all made and waiting for you, lovely and just for you. And the button itself should be beautiful, love — not flat and dull, but deep and rich, a real thing you want to press.",
+  "naya_view": "Create world must actually create. The pop-up looks flat and boring, and when you tap create it goes nowhere. Buttons with all depth, nice and primo — and when you create a world it actually builds that world's feed and shows it to you, tuned to that world. It never just goes nowhere.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3005",
+   "title": "Create World Must Actually Create",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3005/IB-SMART-NOTE-20261116-sn3005-create-world-must-actually-create.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3005/IB-SMART-NOTE-20261116-sn3005-create-world-must-actually-create.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "fb9a62979d12d12fdf4214dceed248f4463a34cb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

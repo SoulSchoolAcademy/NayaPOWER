@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2972",
+ "intelligence": {
+  "title": "Implement Right Away — the Calendar Is the Main Thing Today",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2972-implement-right-away-the-calendar-is-the-main-thing-today",
+  "smart_note_id": "SN-2972",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2972/IB-SMART-NOTE-20261116-sn2972-implement-right-away-the-calendar-is-the-main-thing-today.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Implement right away is fast action with the waiting removed: the instruction doesn't sit, it moves — airtight, to the agents, done — while he works live with the captain on the main thing. And the main thing today is the calendar, because My World IS the calendar: the endless scrolling links he doesn't understand go away when the calendar is built, and everything else falls into place around it. Live with him, back to back to back, is how it gets done today — not sent away, not queued, not tomorrow. The calendar is the page the whole anatomy turns on: the month grid fits the viewport exactly by math, day cells light in their day's color, click a day and you're in that day's world.",
+  "simple_view": "Imagine your teacher gives you a job, and instead of waiting, you do it RIGHT AWAY — and you do it together with them, right there, one thing after another! And the big job today is the calendar — a magic calendar where every day is a little world you can visit! That's how we work today: right away, together, back to back to back!",
+  "grandma_view": "It's like this, love — when he gives us a job, we do it right away, dear — clear instructions to the helpers, and done. And we do it together with him, live, one thing after another. And the big job today is the calendar — your world, in a calendar, where every day is a little world of its own. That's the main thing, and that's what we're building today.",
+  "naya_view": "Implement right away: airtight instructions to the agents, get it done, work with him directly, live. Today the main thing is the calendar — My World IS the calendar — worked live with him, back to back to back.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2972",
+   "title": "Implement Right Away — the Calendar Is the Main Thing Today",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2972/IB-SMART-NOTE-20261116-sn2972-implement-right-away-the-calendar-is-the-main-thing-today.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2972/IB-SMART-NOTE-20261116-sn2972-implement-right-away-the-calendar-is-the-main-thing-today.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "04764bf7b3ea96e1328a87794b98911a164ab227"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

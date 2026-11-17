@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3010",
+ "intelligence": {
+  "title": "Leaderboards — See Where You Score in Any Area",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3010-leaderboards",
+  "smart_note_id": "SN-3010",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3010/IB-SMART-NOTE-20261116-sn3010-leaderboards.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "This is a small dictation with a big shape inside it. He is not asking for a ranking table; he is asking for a mirror. A citizen should be able to go and see where they score in any area — their standing, made visible — and when they are at the top of an area, it shows. The aside matters: \"a lot of times at the beginning they will\" be at the top — early citizens top early boards, and the board showing that is what makes the beginning feel like winning instead of empty. The open questions are honest and still open: where the leaderboard lives, which areas count, what counts as scoring in an area, how top-of-area displays. Those are the brief's job, not this note's — the note records the decision (leaderboards exist, as their own feature, because seeing your score matters) and the shape (any area, your score visible, top shows). It rides no current round; it queues cleanly behind the page work, so it is never half-built inside a fix round.",
+  "simple_view": "Imagine a big scoreboard at a game! You can run over and see how many points you have, and if you're the very best at something — it shows your name right at the top for everyone to see! And when you're just starting, you're often at the top — and the board shows it, so you feel like a winner!",
+  "grandma_view": "It's like this, love — imagine a lovely board on the wall, dear, where you can see how you're doing at everything — and when you're the best at something, your name sits right at the top for all to see! And at the beginning, love, you're often at the top, and the board shows it — so you know you're doing wonderfully, dear.",
+  "naya_view": "Leaderboards — see where you score in any area. If you are at the top, it shows. That is the whole feature: your standing, visible, in every area that counts.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3010",
+   "title": "Leaderboards — See Where You Score in Any Area",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3010/IB-SMART-NOTE-20261116-sn3010-leaderboards.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3010/IB-SMART-NOTE-20261116-sn3010-leaderboards.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "4da4857ea339069900ca781b0a71641523215e30"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

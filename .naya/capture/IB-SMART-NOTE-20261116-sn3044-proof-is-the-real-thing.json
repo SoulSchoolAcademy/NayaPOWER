@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3044",
+ "intelligence": {
+  "title": "Proof Is the Real Thing",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3044-proof-is-the-real-thing",
+  "smart_note_id": "SN-3044",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3044/IB-SMART-NOTE-20261116-sn3044-proof-is-the-real-thing.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "His eye caught the drift twice in one day. At 01:28Z the Hub and the Personal had different bars and the Smart Notes system only \"kind of\" lived in the Hub — and the alignment round grounded itself in the settled navigation, harvested the actual system over, counted live, and swept every click (SN-2941). At 15:29Z the staged Personal page wore the Hub's nine-pill bar — a copy, not alignment — and the ruling redrew the line: the five only on Personal, the Hub bar Hub-only, and the page returns whole or it does not return (SN-2949). The same morning, the machine killed a live lane: the sidebar coordinator sat quiet ~44 minutes, the captain closed it, and its completion report landed seconds later — blob checks PASSED, maker running 675s — the close had cancelled the maker mid-work and lost ~11 minutes (SN-2944). The counter-lesson was proven the same day in the Connections eye: Firefox loaded the page, threw 0 errors, and issued ZERO Supabase requests in 90 seconds — identical bytes in Chromium fired the reads and rendered 3 tiles — so a Firefox empty list is a probe failure, never a page failure (SN-2945). And the proof host ignores `cb`, so every staged build is verified from the branch's own blob, byte-compared, or an independently curled copy (SN-2946). The standard underneath is the finish line: \"just right, no black space either side\" — not smaller, not bigger (SN-2947).",
+  "simple_view": "Imagine your two favourite rooms in your house — but one has different light switches than the other, and one has a toy box and the other doesn't! That's silly. You make both rooms the same: same switches, same toy box, every door opens. Then everything feels like ONE house! And imagine a teacher waiting quietly while her student does the work — the teacher isn't asleep, she's WAITING! If you send the teacher home because she's quiet, the student stops working too! So before you ever send anyone home, you check: is their student still working? If yes — the lane is ALIVE! And if you send a friend to fetch apples and they never walk into the shop, don't blame the shop — send the friend who actually walks in!",
+  "grandma_view": "It's like this, love — if the kitchen and the parlour each do things a different way, you spend your whole visit figuring out where things are. Make them match, and the whole house feels like home. And a mother hen sitting quiet on the nest isn't doing nothing, she's keeping the eggs warm — you look underneath first before you chase her off. And if you send someone to the market and they come back empty-handed, you check whether they actually went in before you blame the market. A row of buttons is like pictures on a wall: they should fill the wall just right, edge to edge, no gaps at the sides. And if your neighbour has the perfect recipe, you go and ask for hers — you don't invent a new one in your kitchen.",
+  "naya_view": "Proof is the real thing. I align both ways, harvest the room, measure in pixels, verify by blob, and sweep every click. I never close a lane without checking its children. A Firefox empty list is a probe failure, never a page failure. Just right is the standard — a direction says which way to move, a standard says where to stop.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3044",
+   "title": "Proof Is the Real Thing",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3044/IB-SMART-NOTE-20261116-sn3044-proof-is-the-real-thing.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3044/IB-SMART-NOTE-20261116-sn3044-proof-is-the-real-thing.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e65a2095906950f96acbc332d117abfe76b9fdcb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

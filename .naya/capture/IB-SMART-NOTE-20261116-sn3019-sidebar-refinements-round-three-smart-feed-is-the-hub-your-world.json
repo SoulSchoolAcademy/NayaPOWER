@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3019",
+ "intelligence": {
+  "title": "Sidebar Refinements, Round Three — Smart Feed Is the Hub, Your World, Connections Stay",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3019-sidebar-refinements-round-three-smart-feed-is-the-hub-your-world",
+  "smart_note_id": "SN-3019",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3019/IB-SMART-NOTE-20261116-sn3019-sidebar-refinements-round-three-smart-feed-is-the-hub-your-world.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Round 3 is the correction correcting itself — and that is the method working, not failing. Three moves, each one a name matching the thing. First, Smart Feed leaves the left because Smart Feed IS the Hub — the main home hub, not a separate thing, so a separate item would be a duplicate of the home itself. The Hub entry now carries that meaning: Hub (that IS the Smart Feed, the main home). Second, Space becomes Your World — \"your thing, your world, just call it your world\" — and Smart Worlds, the directory of all the worlds, goes right underneath Your World, so the one world and the directory of worlds sit together. He even caught his own slip in the same breath — \"Smart Worlds — you did have it there, which is Smart Spaces, my bad\" — the rename from round 2 was already his, and round 3 keeps it in its right place. Third, Intel Today comes BACK on the left, and it travels with Your Reports — the two go together, right after the worlds, while Intel Today also stays reachable from inside the calendar: two doors to the same room, one in the sidebar, one in the calendar. And the move that proves a correction can restore, not only remove: Your Connections STAYS as its own left item — the main area for all your connections, the directory of connections — after round 2 had moved it off into per-area sub-tabs only. The sub-tabs stand alongside it now: per-area connections inside Personal, Business, and Your World, plus the directory of all connections on the left. Start Here = Fast Track mail, confirmed again — still not a sidebar item. The right side and the two Hub-only top-bar buttons are unchanged from round 2. None of it is official yet — his yes is pending, and until it lands the 19:44Z list is still the last one the coordinator has, with round 2 waiting behind it.",
+  "simple_view": "Imagine you name your treehouse \"My Treehouse\" — but then you realise the treehouse IS your whole clubhouse, so you don't need a second sign that says \"Clubhouse\" too! And your friend's name tag says \"Buddy\" but everybody calls him \"Buddy-Bear\" — so you change the tag to match what everybody already calls him! And the toy you took out of the box? You put it back in — because it belonged there after all!",
+  "grandma_view": "It's like this, love — you call the spare room \"the spare room,\" dear, but everybody lives in it like it's their own world — so you just call it \"your world,\" love, because that's what it is! And the address book you tucked away — you bring it back out, dear, because it's the directory of everybody you love, and it deserves its own place on the shelf. A name should match the thing, love, and a good correction can put something back, not just take it away!",
+  "naya_view": "Names match the thing: Smart Feed IS the Hub, so no separate item. Space is Your World — \"just call it your world\" — with Smart Worlds, the directory, right underneath. Intel Today is back, travelling with Your Reports, right after the worlds. Your Connections stays as its own item — the directory of all connections — beside the per-area sub-tabs. Start Here is Fast Track mail, confirmed again. Still awaiting his yes — not official until he confirms.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3019",
+   "title": "Sidebar Refinements, Round Three — Smart Feed Is the Hub, Your World, Connections Stay",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3019/IB-SMART-NOTE-20261116-sn3019-sidebar-refinements-round-three-smart-feed-is-the-hub-your-world.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3019/IB-SMART-NOTE-20261116-sn3019-sidebar-refinements-round-three-smart-feed-is-the-hub-your-world.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "57f81a3ee47fd74c5d11e076a7f4acc3bbc36ee2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

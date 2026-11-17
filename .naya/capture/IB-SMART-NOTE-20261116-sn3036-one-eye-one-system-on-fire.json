@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3036",
+ "intelligence": {
+  "title": "One Eye, One System, On Fire",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3036-one-eye-one-system-on-fire",
+  "smart_note_id": "SN-3036",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3036/IB-SMART-NOTE-20261116-sn3036-one-eye-one-system-on-fire.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The ten notes are one system stated at three scales, and the scale is the point. At the scale of the machine: on fire 24-7 is not a mood, it is a setup — full armies in parallel lanes, finishing at staggered times, so a finished piece lands every few minutes; the fast little jobs are the heartbeat and the big page rounds are the substance, and the heartbeat serves the substance. The queue never runs dry because the next rounds are already briefed before the current ones finish — nobody waits for a timer, because delivery is event-driven: the moment a round finishes, the next step fires in the same pass. The cycle is the clock: finish, show, approve, forward. He needs the work back as soon as possible so he can see it is done right and approve it to move forward — and the 15-minute timers are only the safety net that catches something gone quiet, never the delivery mechanism. At the scale of the element: one eye, not a new eye per page. The pricing eye is the eye — white and pearl, purple edge light — harvested verbatim from the pricing page, never redrawn; and the double layer is added on top of the harvested eye, clone behind, shifted just a tad, so it reads as a real object. One canonical version of every element, because making a new variant per page is the same failure as rebuilding what works: the system drifts into many systems. At the scale of the whole: one navigation system. Every page's sidebars are the same sidebars, the feature split decided once, Home at the top of both — and the list that decides it is made by thinking, not transcribed from a screenshot. A screenshot shows the problem; it is not the list. The Hub is the main central stage — Good morning, the Wisdom of the Day, the time and the date — and the lines that misname it come out, because the Hub is public and anybody free can come in. The red N orb stays exactly as it is and persists across refresh, because official must not vanish. And leaderboards queue cleanly as their own feature, brief owed before any build, because a feature half-built inside a fix round is a feature that never lands. The law over all three scales is the last note: not many systems — one ultimate system, one ultimate language, the power language, the language of Naya. High-level design, high-level functions, super useful, super helpful, ten stars all the way through.",
+  "simple_view": "Imagine one big team, all working together, all the time! They use the same beautiful eye everywhere — never a new one! And when something finishes, it shows up right away, like magic!",
+  "grandma_view": "It's like this, love — one big team, all working together all the time, dear, and finished pieces landing every few minutes, like a heartbeat. And they use the same beautiful eye everywhere, love — never a new one for every page, because the good one is already there. And the whole system is one system, dear — the same sidebars, the same look, the same feel, everywhere you go. That's the whole thing, love: one system, one language, on fire all the time.",
+  "naya_view": "One ultimate system, one ultimate language. The team on fire 24-7 — parallel lanes, staggered finishes, the cycle finish → show → approve → forward, event-driven, never slowed to save wake-ups. One eye — the pricing eye, harvested verbatim, double-layered, never redrawn per page. Leaderboards queued as their own feature, brief owed. The red N orb kept exactly, persisting across refresh. One navigation — the same sidebars everywhere, the split decided once, Home at the top of both, the list made by thinking, not transcribed. The Hub the main central stage: Good morning, Wisdom of the Day, time and date.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3036",
+   "title": "One Eye, One System, On Fire",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3036/IB-SMART-NOTE-20261116-sn3036-one-eye-one-system-on-fire.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3036/IB-SMART-NOTE-20261116-sn3036-one-eye-one-system-on-fire.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "cdb9348e89e351c9e223e66a03142c69bbaae01c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
