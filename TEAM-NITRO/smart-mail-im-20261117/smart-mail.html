@@ -152,6 +152,42 @@
   The checker must do the live pass (desktop scrolled + 635 + 390) and
   scroll .page-scroll, not the window.
 -->
+<!--
+  FIX-5 (2026-11-17, brief BRIEF-SMART-MAIL-FIX5-20261117 — 2 items only;
+  nothing in "What stands" touched; base = Fix-4 commit 9670d022):
+  1. Sticky-heading slicing — FIX-4's claim REFUTED live (browser-task
+     b854a7e9): the heading is solid opaque black, yet content is STILL cut
+     mid-line under it at 50/75/100% scroll. REAL MECHANISM: opacity was
+     never it — the sticky band's bottom edge is a hard clip boundary that
+     falls mid-line, because scrolling is continuous and lines sit
+     arbitrarily against that edge; the visible fragment below the edge is
+     a partial line. FIX: every header that clips scrolling content now
+     carries a 30px fade skirt below it (its own ::after, opaque at the
+     top fading to transparent) so a line dissolves before any hard edge
+     can cut it — .page-title::after (margin-bottom:30px gives the skirt
+     real flow space at load, invisible on the #050507 page) and
+     .thread-head::after (the Maya R. header; thread-head gains
+     position:relative + z-index:5 so the skirt paints above the
+     thread-body's scrolling content). No mask on the scrollers (that
+     would mask the sticky headers themselves); no snap (unreliable at
+     arbitrary stops, stepped scrolling); the menu-bar is untouched.
+  2. Gray text — the veil theory is DEAD (veils gone, text still gray).
+     REAL MECHANISM: no color/opacity/blend rule dims these lines — every
+     computed color is #fff and effective opacity is 1.0 (full scan). The
+     dimming is in the GLYPH RENDERING: font-weight:400 (lead paragraph,
+     placeholder) and font-size:smaller ~10.8px ("4 online") under
+     -webkit-font-smoothing:antialiased make ~1px strokes with no solid
+     white core — the rendered glyphs are mostly antialiased gray fringe,
+     so the eye reads them gray next to 800/900-weight white neighbours.
+     FIX: .mail-nut 400 -> 700; .nf-smtab small ~10.8px/800 -> 12px/900;
+     .search-row input::placeholder 400 -> 600. Computed color stays
+     #fff throughout (it already was); the change is weight/size.
+  BLOCKER (honest): the maker could NOT verify live in this VM — Chromium
+  exits SIGTRAP and Firefox SIGSEGV on any navigation (recorded
+  2026-11-12, still broken). The checker must do the live pass via the
+  cloud browser path: heading straddle at 25/50/75/100% with whole glyphs
+  at every stop, computed color of the named lines at desktop + 390.
+-->
 <style>
 /* --- SMART MAIL FIX round (2026-11-17, brief BRIEF-SMART-MAIL-FIX-20261117)
    + THE DEEP PALETTE amendment (01:30Z). White small text (DNA §9);
@@ -223,8 +259,23 @@ body.no-cover .ph-main{padding-top:12px}
    The band is now SOLID opaque #050507 (the menu-bar above it is the
    working example): nothing ever shows through it sliced. top:60px tucks
    the band 0–2px under the ~60px sticky menu-bar so no hairline gap ever
-   shows scrolling text between the two bands. */
-.page-title{margin:4px 0 0;text-align:center;font-size:28px;font-weight:800;position:sticky;top:60px;z-index:40;background:#050507;padding-bottom:14px;scroll-margin-top:78px}
+   shows scrolling text between the two bands.
+   FIX-5 (2026-11-17): the "impossible by construction" claim was REFUTED
+   live — the band is solid and text is STILL cut mid-line under it. The
+   real mechanism is the band's bottom edge itself: a hard clip boundary
+   falling mid-line as content scrolls under it. The band stays solid;
+   the fix is the 30px fade skirt below it (.page-title::after), so a
+   line dissolves before the edge can cut it. margin-bottom:30px gives
+   the skirt real flow space at load (invisible on #050507). */
+.page-title{margin:4px 0 30px;text-align:center;font-size:28px;font-weight:800;position:sticky;top:60px;z-index:40;background:#050507;padding-bottom:14px;scroll-margin-top:78px}
+/* FIX-5 (item 1): fade skirt below the sticky heading — the mechanism that
+   actually stops the slicing. The heading's bottom edge is a hard clip
+   boundary; a line passing under it is cut mid-glyph. The skirt (opaque
+   #050507 at its top, fading to transparent over 30px) dissolves the line
+   before the edge can cut it: no hard half-glyph is ever visible below
+   the heading, at any scroll stop. The 30px margin-bottom above is the
+   skirt's flow space at load — it sits over the #050507 page, invisible. */
+.page-title::after{content:'';position:absolute;left:0;right:0;top:100%;height:30px;background:linear-gradient(180deg,#050507,rgba(5,5,7,0));pointer-events:none}
 .page-head p{margin:4px 0 0;font-size:15px;color:#fff}
 .cover-toggle{margin-top:10px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
@@ -243,13 +294,13 @@ body.no-cover .ph-main{padding-top:12px}
 .org-tabs::-webkit-scrollbar{height:6px}
 .org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
 .nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
-.nf-smtab small{color:#fff;font-weight:800}
+.nf-smtab small{color:#fff;font-weight:900;font-size:12px}
 .nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
 .nf-smtab.active{border-color:rgba(255,255,255,.6);box-shadow:0 0 16px rgba(255,255,255,.18),inset 0 1px rgba(255,255,255,.15)}
 /* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
 .search-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:16px}
 .search-row input{flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-size:15px;font-family:inherit}
-.search-row input::placeholder{color:#fff;opacity:1}
+.search-row input::placeholder{color:#fff;opacity:1;font-weight:600}
 /* --- MESSENGER GRID --- */
 .messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
 .panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
@@ -283,7 +334,19 @@ body.no-cover .ph-main{padding-top:12px}
 .stub-note{padding:0 18px 8px;font-size:12px;color:#fff;line-height:1.5}
 /* --- THREAD --- */
 .thread{display:flex;flex-direction:column;min-height:560px}
-.thread-head{display:flex;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.09)}
+.thread-head{display:flex;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.09);position:relative;z-index:5}
+/* FIX-5 (item 1): fade skirt below the conversation header — the same
+   mechanism as the main heading. The thread-head is not sticky itself,
+   but .thread-body scrolls beneath it, so its bottom edge is the same
+   hard clip boundary (the mail-board heading and the "Reply with the one
+   word" point were cut here at 50%/75%). The skirt dissolves lines as
+   they pass under the header. position:relative + z-index:5 above make
+   the skirt paint ABOVE the thread-body's scrolling content (the body is
+   a later sibling — without the z-index the content would cover the
+   skirt). At load the skirt covers only the body's 20px top padding +
+   the board's top padding — no text is faded at rest. The skirt starts
+   at #12101a, the panel's top colour, so it is invisible at load. */
+.thread-head::after{content:'';position:absolute;left:0;right:0;top:100%;height:30px;background:linear-gradient(180deg,#12101a,rgba(18,16,26,0));pointer-events:none}
 .thread-head .who{flex:1;min-width:0}
 .thread-head .who b{font-size:17px}
 .thread-head .who span{display:block;font-size:12.5px;color:#fff;margin-top:2px}
@@ -412,7 +475,7 @@ body.no-cover .ph-main{padding-top:12px}
 .mail-board:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(0,0,0,.65),0 0 34px -2px var(--wc)}
 .mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#fff;text-transform:uppercase}
 .mail-board h4{margin:10px 0 4px;font-size:17px;font-weight:800;color:#fff}
-.mail-nut{margin:0;font-size:14.5px;line-height:1.55;color:#fff}
+.mail-nut{margin:0;font-size:14.5px;line-height:1.55;color:#fff;font-weight:700}
 .mail-board h5{margin:14px 0 6px;font-size:12.5px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
 .mail-points{margin:0;padding:0;list-style:none}
 .mail-points li{position:relative;font-size:14px;line-height:1.55;color:#fff;padding-left:22px;margin-bottom:6px}
@@ -481,6 +544,17 @@ body.no-cover .ph-main{padding-top:12px}
    are gone; as belt-and-braces the small secondary lines below go to
    weight 600 so no eye can call them dim at any width. Disabled buttons
    keep opacity:.45 — a correct disabled affordance, out of scope.
+   FIX-5 (2026-11-17): the veil theory is DEAD — the veils are gone and
+   the lead paragraph is STILL gray in all three worlds, so the dimming
+   was never the veils. Full scan: no color/opacity/blend rule dims any
+   of the named lines (computed #fff, effective opacity 1.0). The real
+   mechanism is glyph rendering: weight 400 (.mail-nut, the search
+   placeholder) and font-size:smaller ~10.8px (.nf-smtab small) under
+   antialiased smoothing give ~1px strokes with no solid white core —
+   the glyphs render as gray fringe next to 800/900-weight white text.
+   Fixed by weight/size, not color: .mail-nut 400 -> 700, .nf-smtab
+   small -> 12px/900, search placeholder -> 600. Computed color stays
+   #fff (it already was).
    (item 5) ONE-SET PRECISION: dock icon strokes (svg currentColor via
    .notif-tile color) and avatar rings (.cx-ava border) were color-mix
    blends with WHITE — 72% / 62% / 88% / 80% — which is exactly the
