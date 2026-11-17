@@ -183,8 +183,11 @@ regression, and the certified CSS rules are asserted byte-identical.
   `fixed-walk.html` (**the fixed /free/walk bytes**, 3,293,555 B).
 - Filing script: `file-fix-to-github.py` (git data API: blobs → tree →
   commit → ref PATCH; verifies the ref and blob read-backs by sha256).
-- **Filed commit SHA: (recorded below after filing — see the filing
-  section added at filing time.)**
+- **Filed commit SHA: `e6bf9a87fbe80f33515f9117516375deec6c334b`** (on top
+  of tip `fc6f70b0`; ref verified; all 6 blobs read-back MATCH).
+  Fixed entry blob `069dc721e14d16ed487ff239df3824d54308cade`
+  (sha256 `06b08242…`); fixed walk blob
+  `69187bb3db00a6bcbaaa5c9b6ef79aab1f41416b` (sha256 `46bc52e5…`).
 
 ## Test Supabase rows (Shawn's hand for cleanup)
 - `fixfresh17a` (claimed + walked, cert Nº unknown — device key lost
