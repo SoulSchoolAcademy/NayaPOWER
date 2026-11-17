@@ -58,7 +58,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .topline{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .monthtitle{font-size:clamp(19px,2.6vw,28px);min-width:166px;text-align:center;font-weight:800;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8)}
 .eyebrow{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:#fff;font-weight:800}
-.hint{color:#fff;font-size:12px}
+.hint{color:#fff;font-size:14px}
 .barleft,.barright{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .board{flex:1;min-height:0;border:1.5px solid rgba(255,255,255,.85);box-shadow:inset 0 0 34px #180926,0 0 32px #1f0e35,0 14px 34px rgba(0,0,0,.6);border-radius:22px;padding:10px;display:flex;flex-direction:column;background:linear-gradient(135deg,#15151f 0%,#0b0816 55%,#07050b 100%);overflow:hidden}
 .weekrow,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
@@ -66,7 +66,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .weekrow div{color:#fff}
 .days{flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
 /* ---- DAY TILE — Living Obsidian, seven layers ---- */
-.tile{--dc:#a06bff;position:relative;text-align:left;min-height:64px;color:#fff;overflow:hidden;border-radius:16px;padding:10px 10px 8px;
+.tile{--dc:#a06bff;position:relative;text-align:left;min-height:64px;color:#fff;overflow:hidden;border-radius:16px;padding:10px 10px 8px;cursor:pointer;display:flex;flex-direction:column;
   background:linear-gradient(135deg,#232330 0%,#0b0b12 48%,#171722 100%);
   border:1.5px solid #6b5a80;
   border-color:color-mix(in srgb,var(--dc) 55%,#ffffff 12%);
@@ -88,10 +88,14 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .minitext{font-size:11px;color:#fff;margin-top:6px}
 .more{font-size:11px;color:#fff;margin-top:4px}
 .spark{position:absolute;right:10px;top:9px;color:#fff;font-size:13px;text-shadow:0 0 8px var(--dc)}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#fff;font-size:12px;padding:4px 9px;min-height:30px}
-.foot button{background:none;border:0;color:#fff;font-size:12px;padding:8px 4px;text-align:left;min-height:44px}
-.foot b{color:#fff}
-.foot .wisdom{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.tilerow{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.tilewisdom{font-size:11px;line-height:1.35;color:#fff;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.viewbtn{align-self:flex-start;flex:none;min-height:24px;padding:3px 9px;border-radius:9px;border:1.5px solid rgba(255,255,255,.85);background:linear-gradient(135deg,#2b2140,#0b0b12 55%,#171722);color:#fff;font-weight:800;font-size:11px;letter-spacing:.08em;box-shadow:0 4px 12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.22);transition:transform .15s,border-color .15s,box-shadow .15s}
+.viewbtn:hover,.viewbtn:focus-visible{border-color:var(--dc);box-shadow:0 6px 16px rgba(0,0,0,.55),0 0 12px rgba(160,107,255,.4)}
+.viewbtn:active{transform:scale(.96)}
+.wisdomcard{border:1.5px solid rgba(255,255,255,.85);border-radius:16px;padding:14px;background:linear-gradient(135deg,#1b1426 0%,#0b0b12 60%,#120d1d 100%);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -3px 8px rgba(0,0,0,.55);margin:15px 0 0}
+.wisdomcard strong{display:block;margin-bottom:5px;color:#fff}
+.wisdomcard span{font-size:14px;color:#fff}
 .scrim{position:fixed;inset:0;z-index:30;background:rgba(2,1,6,.72);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:16px}
 .scrim.show{display:flex}
 .panel{width:min(1100px,100%);max-height:94dvh;overflow:auto;background:radial-gradient(ellipse at 50% 0,#30164f 0,transparent 55%),linear-gradient(180deg,#160b27,#070510 80%);border:1.5px solid rgba(255,255,255,.9);border-radius:26px;box-shadow:0 0 45px rgba(103,55,167,.5),0 24px 60px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.2);padding:clamp(15px,2.1vw,26px)}
@@ -111,7 +115,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .door:hover,.door:focus-visible{transform:translateY(-3px);border-color:var(--c);box-shadow:0 16px 30px rgba(0,0,0,.65),0 0 0 1px var(--c),0 0 24px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
 .door:active{transform:translateY(0) scale(.97)}
 .door .ico{font-size:27px;color:var(--c);text-shadow:0 0 12px var(--c),0 2px 6px rgba(0,0,0,.8)}
-.door .sub2{font-size:11px;font-weight:400;color:#fff}
+.door .sub2{font-size:13px;font-weight:400;color:#fff}
 @keyframes orbit{to{transform:rotate(360deg)}}
 .insight{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:17px 0}
 .insight article,.viewcard{border:1.5px solid rgba(255,255,255,.85);border-radius:16px;padding:14px;background:linear-gradient(135deg,#1b1426 0%,#0b0b12 60%,#120d1d 100%);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -3px 8px rgba(0,0,0,.55)}
@@ -155,12 +159,13 @@ label.flab{display:block;color:#fff;font-size:13px;font-weight:700;margin:14px 0
   .days,.weekrow{gap:3px}
   .weekrow{font-size:10px;padding:4px 0}
   .tile{min-height:46px;padding:5px 3px;border-radius:10px;text-align:center}
-  .daynum{font-size:16px}.dayname{font-size:8px}
+  .daynum{font-size:16px}.dayname{font-size:11px}
   .tile.today{border-width:2px}
+  .tilewisdom{display:none}
+  .viewbtn{min-height:22px;font-size:9px;padding:2px 6px;letter-spacing:.04em}
   .chiplane,.minitext,.spark,.more{display:none}
   .dots{display:flex;justify-content:center;gap:2px;margin-top:6px}
   .dot{width:5px;height:5px;border-radius:50%}
-  .foot{font-size:10px}
   .scrim{padding:0;align-items:stretch}
   .panel{max-height:100dvh;width:100%;border-radius:0;padding:18px 13px;border:0;box-shadow:none}
   .doors{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
@@ -200,10 +205,6 @@ label.flab{display:block;color:#fff;font-size:13px;font-weight:700;margin:14px 0
     <div class="weekrow" id="weeknames"></div>
     <div class="days" id="days"></div>
   </section>
-  <footer class="foot">
-    <button id="ribbon" aria-label="Open today's Daily Wisdom"><b>✦ Daily Wisdom — </b><span class="wisdom" id="ribbonText"></span></button>
-    <div>Private by default · Shared by choice</div>
-  </footer>
 </main>
 <div class="scrim" id="scrim"><section class="panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div id="panelContent"></div></section></div>
 <script>
@@ -215,7 +216,7 @@ const NOW=new Date();
 let year=NOW.getFullYear(), month=NOW.getMonth(), day=NOW.getDate();
 let role='owner', world='Personal';
 let screen='month', section='Dashboard', slot='', meetId='', createKind='smart';
-let lastFocus=null;
+let lastFocus=null, pendingBookErr='';
 /* Weekday identity light — Living Calendar definition T1-T38 (still law). */
 const WEEKDAY=[
  {name:'Sunday',   short:'Sun', color:'#a06bff', hz:963, label:'purple'},
@@ -230,21 +231,16 @@ const CAT={
  Notes:['#9b5cff','✧'], News:['#38a4ff','◎'], Meeting:['#19ca9b','◷'],
  Event:['#e05cbe','✦'], Project:['#49d6e8','◈'], Journal:['#f5f5ff','☰'],
  Community:['#e05cbe','♧'], Business:['#49d6e8','▣'], Open:['#19ca9b','◷']};
+/* Fallback wisdom store — harvested VERBATIM from the old calendar build
+   (branch personal/calendar-booking-meet-20261116, blob 15e0a2fc), 7 lines. */
 const WISDOM_STORE=[
- 'Think before you act. The wise choice is the one that serves everyone it touches.',
- 'One day at a time, done right, beats ten days rushed.',
- 'Your notes are your memory. Write what matters, and the day stays alive.',
- 'Invite one person who thinks like you. A world grows one connection at a time.',
- 'The calendar shows what was. Go back, see it, learn from it, carry it forward.',
- 'Small steps, every day, in the right direction — that is how a world is built.',
- 'Ask Naya before you decide. A second mind sees what one mind misses.',
- 'What you share wisely returns to you. Give the best of what you know.',
- 'A booked hour kept is trust kept. Keep your word to the day.',
- 'Order your day by what matters most, and the rest finds its place.',
- 'The best of today becomes the wisdom of tomorrow.',
- 'Slow down, look at the whole day, then choose the one thing that moves it.',
- 'Your world is yours to shape. Build it one honest day at a time.',
- 'Learn one true thing each day, and in a year you will know a thousand.'];
+ 'The day is yours to shape — begin with the one thing that matters most, and let the rest follow.',
+ 'Ask Naya to carry the small things, so your mind stays free for the big ones.',
+ 'A note written down is a thought kept — what you record today, you can build on tomorrow.',
+ 'Success is a habit, not a moment — small steps, taken every day, add up to a life.',
+ 'Work with the intelligence beside you, not against it — tell it what you want, and let it do the doing.',
+ 'Share what you learn — wisdom grows when it is given away.',
+ 'Rest is part of the work — a clear mind sees further than a tired one.'];
 /* ============ STORES (harvested booking store; notes store in the same pattern) ============ */
 const BOOK_KEY='mw.cal.bookings.v1';
 const NOTE_KEY='mw.cal.notes.v1';
@@ -278,8 +274,10 @@ function wisdomFor(ds){
   return {text:WISDOM_STORE[((idx%WISDOM_STORE.length)+WISDOM_STORE.length)%WISDOM_STORE.length], source:'NayaNET wisdom store — from what we have learned'};
 }
 /* ============ DAILY INTELLIGENCE REPORT — computed from the day's own record ============ */
-function dirFor(ds){
-  const notes=dayNotes(ds), books=dayBookings(ds);
+function dirFor(ds, w){
+  /* Notes filter by world; bookings carry no world field on the record
+     ({id,date,time,who,what,meet,mode}), so they cannot be world-filtered. */
+  const notes=dayNotes(ds, w), books=dayBookings(ds);
   if(!notes.length && !books.length) return null;
   const smart=notes.filter(n=>n.type==='smart'), naya=notes.filter(n=>n.type==='naya'), posts=notes.filter(n=>n.type==='post');
   const top=notes.filter(n=>n.rank).sort((a,b)=>b.rank-a.rank)[0];
@@ -287,12 +285,13 @@ function dirFor(ds){
     books:books.length,
     learned: top ? top.text : 'Nothing was recorded as learned on this day yet.'};
 }
-/* Day highlights for the tile: up to 2 category chips + count of the rest. */
+/* Day highlights for the tile: up to 2 category chips + count of the rest.
+   World-scoped: the world pill scopes the month, its tiles, and its stats. */
 function dayHighlights(ds){
   const out=[];
   const books=dayBookings(ds);
   if(books.length) out.push('Meeting');
-  const notes=dayNotes(ds);
+  const notes=dayNotes(ds, world);
   if(notes.some(n=>n.type==='smart')) out.push('Notes');
   if(notes.some(n=>n.type==='naya')) out.push('Journal');
   if(notes.some(n=>n.type==='post')) out.push(notes.some(n=>n.world==='Business')?'Business':'Community');
@@ -300,10 +299,12 @@ function dayHighlights(ds){
 }
 function daySummary(ds){
   if(role==='visitor'){
-    const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t)).length;
-    return open? open+' open times' : 'fully booked';
+    /* Open count is never shown: with 9 known slots it would reveal the
+       booked count. Visitors see only that times are open, or fully booked. */
+    const open=BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t));
+    return open?'open times available':'fully booked';
   }
-  const h=dayHighlights(ds), n=dayNotes(ds).length, b=dayBookings(ds).length;
+  const h=dayHighlights(ds), n=dayNotes(ds, world).length, b=dayBookings(ds).length;
   const bits=[];
   if(b) bits.push(b+(b===1?' appointment':' appointments'));
   if(n) bits.push(n+(n===1?' note':' notes'));
@@ -327,21 +328,24 @@ function render(){
     const h = role==='visitor'
       ? (BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t)) ? ['Open'] : [])
       : dayHighlights(ds);
-    const today=isToday(year,month,d), sel=(screen!=='month'&&ds===selKey());
+    const today=isToday(year,month,d), sel=(ds===selKey());
     const past=ds<todayKey;
-    return `<button class="tile ${today?'today':''} ${sel?'sel':''} ${past?'past':''}" data-day="${d}" style="--dc:${wd.color}" aria-label="Open ${dlabel(year,month,d)}, ${esc(daySummary(ds))}">
-      <div class="daynum">${d}</div><div class="dayname">${wd.short} · ${wd.hz} Hz</div>
+    const wis=wisdomFor(ds).text;
+    return `<div class="tile ${today?'today':''} ${sel?'sel':''} ${past?'past':''}" data-day="${d}" role="button" tabindex="0" style="--dc:${wd.color}" aria-label="Open ${dlabel(year,month,d)}, ${esc(daySummary(ds))}">
+      <div class="tilerow"><span class="daynum">${d}</span><button type="button" class="viewbtn" data-viewday="${d}" aria-label="View ${dlabel(year,month,d)}">VIEW</button></div>
+      <div class="dayname">${wd.short} · ${wd.hz} Hz</div>
+      <div class="tilewisdom" title="${esc(wis)}">${esc(wis)}</div>
       <div class="chiplane">${h.slice(0,2).map(x=>`<span class="chip" style="--chip:${CAT[x][0]}">${CAT[x][1]} ${esc(x)}</span>`).join('')||`<span class="minitext">${(role==='visitor'&&!BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t)))?'Fully booked':'Open day'}</span>`}</div>
       ${h.length>2?`<div class="more">+${h.length-2} more</div>`:''}
       <div class="dots">${h.slice(0,3).map(x=>`<span class="dot" style="background:${CAT[x][0]}"></span>`).join('')}</div>
-      ${h.length?'<span class="spark">✧</span>':''}</button>`;
+      ${h.length?'<span class="spark">✧</span>':''}</div>`;
   }).join('');
-  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>openDay(+b.dataset.day));
+  document.querySelectorAll('[data-day]').forEach(b=>{ b.onclick=()=>openDay(+b.dataset.day);
+    b.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openDay(+b.dataset.day); } }; });
+  document.querySelectorAll('[data-viewday]').forEach(b=>b.onclick=e=>{ e.stopPropagation(); openDay(+b.dataset.viewday); });
   for(const w of ['Personal','Business','Space','Thing'])
     $(w==='Personal'?'pers':w==='Business'?'biz':w.toLowerCase()).classList.toggle('active',world===w);
   $('role').textContent=role==='owner'?'Owner view ▾':'Visitor view ▾';
-  const w=wisdomFor(todayKey);
-  $('ribbonText').textContent=w.text;
 }
 function openDay(d){ day=d; screen='day'; section='Dashboard'; slot=''; pushRoute(); showPanel(); }
 function button(text, fn, cls){ return `<button class="${cls||'pill'}" data-op="${esc(fn)}">${text}</button>`; }
@@ -362,11 +366,12 @@ function showPanel(){
     <h2 id="modalTitle">YOUR WORLD FOR THIS DAY — ${esc(dlabel(year,month,day))}</h2>
     <div class="sub">${publicView?'Public events, available times, and ways to connect':'Your whole world for this date, intelligently organized'}</div>
     <div class="sub">Weather: unavailable — no weather provider is wired yet. Nothing is shown in its place.</div></div>${button('×','close','pill close')}</div>
+    ${publicView?'':`<article class="wisdomcard"><strong>Daily Wisdom</strong><span>${esc(wisdomFor(ds).text)}</span><br><span>${esc(wisdomFor(ds).source)}</span></article>`}
     <div class="actions">${button('‹ Previous day','prevday')}${button('Next day ›','nextday')}${button('← Back to month','close')}</div>`;
     if(publicView){
       html+=`<div class="doors">${[['Public Events','✦','#e05cbe','What is open to all'],['Available Times','◷','#19ca9b','Genuinely open slots'],['Send a Message','✉','#9b5cff','Through an authorized channel'],['About This World','◎','#38a4ff','About this world']].map(([x,i,c,s])=>`<button class="door" style="--c:${c}" data-view="${esc(x)}"><span class="ico">${i}</span>${esc(x)}<span class="sub2">${esc(s)}</span></button>`).join('')}</div>
       <div class="insight"><article><strong>Public information only</strong><span>Visitors never see private appointments, notes, mail, or daily statistics.</span></article>
-      <article><strong>Booking</strong><span>Only genuinely open slots are displayed. Taken times show as unavailable — never with a name or subject.</span></article>
+      <article><strong>Booking</strong><span>Only genuinely open slots are displayed. Taken times are never listed — never with a name or subject.</span></article>
       <article><strong>Stay connected</strong><span>Message the owner through an authorized channel.</span></article></div>`;
     } else {
       const meetBooks=dayBookings(ds).filter(b=>b.meet);
@@ -374,7 +379,6 @@ function showPanel(){
       <div class="actions">${button('◷ Book','Appointments')}${button('▣ Smart Meet','Smart Meet')}${button('+ Create','Create')}</div>
       ${meetBooks.length?'':'<p class="hint">Smart Meet joins a confirmed booking — book a time with Smart Meet first.</p>'}
       <div class="insight">
-        <article><strong>Daily Wisdom</strong><span>${esc(wisdomFor(ds).text)}</span><br><span>${esc(wisdomFor(ds).source)}</span></article>
         <article><strong>Intel Today</strong><span>${esc(intelLine(ds))}</span></article>
         <article><strong>Daily Intelligence Report</strong><span>${esc(dirLine(ds))}</span></article>
       </div>`;
@@ -404,9 +408,10 @@ function showPanel(){
   const si=$('searchInput'); if(si){ si.focus(); si.oninput=()=>renderSearch(si.value); }
   const ni=$('noteText'); if(ni) ni.focus();
   const mh=$('modalTitle'); if(mh) mh.setAttribute('tabindex','-1'), mh.focus();
+  const be=$('mwCalBookErr'); if(be&&pendingBookErr){ be.textContent=pendingBookErr; pendingBookErr=''; }
 }
 function intelLine(ds){
-  const books=dayBookings(ds), notes=dayNotes(ds);
+  const books=dayBookings(ds), notes=dayNotes(ds, world);
   const bits=[];
   if(books.length) bits.push(books.length+(books.length===1?' appointment':' appointments')+' booked');
   if(notes.length) bits.push(notes.length+(notes.length===1?' note':' notes')+' saved');
@@ -416,12 +421,14 @@ function intelLine(ds){
 }
 function dirLine(ds){
   if(isFutureDs(ds)) return 'This day has not happened yet — no report until the day has a record.';
-  const r=dirFor(ds);
+  const r=dirFor(ds, world);
   return r? (r.notes+' notes · '+r.books+' appointments · what was learned: '+r.learned) : 'No report — no records for this day.';
 }
 function closePanel(){
   screen='month'; $('scrim').classList.remove('show');
-  if(history.state && history.state.view!=='month') history.pushState({view:'month',year,month,day,world,role},'','');
+  /* replaceState, not pushState: Back after closing must leave the page,
+     not reopen the day menu. */
+  if(history.state && history.state.view!=='month') history.replaceState({view:'month',year,month,day,world,role},'','');
   render();
   const t=document.querySelector(`[data-day="${day}"]`); if(t) t.focus();
 }
@@ -433,9 +440,11 @@ function viewHead(title, ds){
 }
 function viewHTML(ds, future, wd){
   let html=viewHead(section, ds);
-  const notes=dayNotes(ds), books=dayBookings(ds);
+  /* World-scoped: the world pill scopes the month, the stats, and the
+     Notes view. Bookings carry no world field, so they stay unfiltered. */
+  const notes=dayNotes(ds, world), books=dayBookings(ds);
   if(section==='Dashboard'){
-    const r=dirFor(ds);
+    const r=dirFor(ds, world);
     html+=`<div class="viewcard"><h3>Daily stats — ${esc(dlabel(year,month,day))}</h3>
     <p>Counts from this device's local record only. A past day shows what was recorded for that day — never today's numbers.</p>
     <div class="statgrid">
@@ -462,17 +471,25 @@ function viewHTML(ds, future, wd){
     :`<p>No notes or Smart Notes recorded for this day. Notes you write are tied to their day and time frame, and the timeline orders them morning to night.</p>`}
     <div class="actions">${button('+ Create a note','Create')}</div></div>`;
   } else if(section==='Appointments'||section==='Available Times'){
-    html+=appointmentsHTML(ds, future);
+    html+=appointmentsHTML(ds);
   } else if(section==='Smart Meet'){
     html+=meetViewHTML(ds);
   } else if(section==='Create'){
-    html+=createHTML(ds, future);
+    if(role==='visitor'){
+      html+=`<div class="viewcard"><h3>Create — owner only</h3>
+      <p>Creating notes is available to the owner only. Visitors never write into the owner's notes.</p></div>`;
+    } else {
+      html+=createHTML(ds, future);
+    }
   } else if(section==='Public Events'){
-    const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t)).length;
     html+=`<div class="viewcard"><h3>Public events — ${esc(dlabel(year,month,day))}</h3>
     <p>No published events for this day yet.</p>
-    <p>${open} of ${BOOK_SLOTS.length} hourly times are still open. Private appointments are never listed here.</p>
+    <p>Open times are listed under Available Times. Private appointments are never listed here, and no count of them is shown.</p>
     <div class="actions">${button('See available times','Available Times')}</div></div>`;
+  } else if(section==='Owner only'){
+    html+=`<div class="viewcard"><h3>Owner only</h3>
+    <p>Search and creating notes are available to the owner only. Visitors see public events, genuinely open times, and ways to connect — never private notes, bookings, or search.</p>
+    <p class="hint">Switch back to Owner view to search or create.</p></div>`;
   } else if(section==='Send a Message'){
     html+=`<div class="viewcard"><h3>Send a message</h3>
     <p>Messages need a verified private delivery path and an authenticated sender — that path is not wired in this build.</p>
@@ -483,10 +500,15 @@ function viewHTML(ds, future, wd){
     <p>This is the ${esc(world)} world of My World on NayaNET. The calendar is the door: visitors can see public events, book genuinely open times, and connect — never private notes or feeds.</p>
     <p class="hint">Timezone for this world: ${esc(TZ)}.</p></div>`;
   } else if(section==='Search'){
+    if(role==='visitor'){
+      html+=`<div class="viewcard"><h3>Search — owner only</h3>
+      <p>Search is available to the owner only. Visitors never search private notes or bookings.</p></div>`;
+    } else {
     html+=`<div class="viewcard"><h3>Search your calendar</h3>
     <p>Searches only this device's local record — your notes and bookings. Type a word, a name, or a date like 2026-11-16.</p>
     <input class="field" id="searchInput" type="search" placeholder="Search notes and bookings…" autocomplete="off">
     <div id="searchResults" style="margin-top:12px"></div></div>`;
+    }
   } else if(section==='Naya'){
     html+=`<div class="viewcard meetbox"><div class="face" aria-hidden="true">N</div>
     <h3>Naya — your Naya</h3><p>Naya keeps your days alive, so yesterday is never lost — you go to the day and it is there.</p>
@@ -499,37 +521,53 @@ function viewHTML(ds, future, wd){
   return html;
 }
 /* ============ BOOKING (harvested store + slots; single system, never a second one) ============ */
-function appointmentsHTML(ds, future){
+function appointmentsHTML(ds){
+  /* F3: the passed-day message applies ONLY to strictly past days; today
+     and future days show the 9-slot form. The old condition
+     (future || !isFutureDs(ds)) was a tautology — always true. */
+  const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+  const past=ds<todayKey;
   const books=dayBookings(ds);
   let h=`<div class="viewcard"><h3>${role==='visitor'?'Available times':'Appointments'} — ${esc(dlabel(year,month,day))}</h3>`;
-  if(books.length){
+  if(role==='visitor'){
+    /* F4(d): visitors see ONLY genuinely open slots. Taken slots are never
+       enumerated and no booked count is shown. */
+    if(past){
+      h+='<p>This day has passed — past availability is not bookable.</p>';
+    } else {
+      const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t));
+      if(open.length) h+='<p>Genuinely open times on this day:</p><ul class="list">'+open.map(t=>`<li><b>${esc(fmtTime(t))}</b> — open</li>`).join('')+'</ul>';
+      else h+='<p>No times are open on this day.</p>';
+    }
+  } else if(books.length){
     h+='<ul class="list">'+books.map(b=>{
-      if(role==='visitor') return `<li><b>${esc(fmtTime(b.time))}</b> — Unavailable (booked). No name or subject is shown to visitors.</li>`;
       return `<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'Appointment')}${b.what?' — '+esc(b.what):''}${b.meet?` <span class="chip" style="--chip:#9b5cff">✧ ${b.mode==='audio'?'Audio meet':'Video meet'}</span> <button class="pill" data-op="join:${esc(b.id)}">Join the meet →</button>`:''} <button class="pill" data-op="cancel:${esc(b.id)}">Cancel</button></li>`;
     }).join('')+'</ul>';
   } else h+='<p>No appointments in this calendar\u2019s record for this day.</p>';
-  if(future||!isFutureDs(ds)){
-    if(!future){
-      h+='<p class="hint">This day has passed — bookings live on today and the days ahead.</p>';
-    } else {
-      const firstFree=BOOK_SLOTS.find(t=>!bookTimeTaken(ds,t))||'';
-      h+=`<h3 style="margin-top:18px">Book a time on this day</h3>
-      <label class="flab">Pick a time</label><div class="slotbox">${BOOK_SLOTS.map(t=>{const taken=bookTimeTaken(ds,t);
-        return `<button type="button" class="slot${taken?' taken':''}${(!taken&&t===firstFree)?' on':''}" data-mw-cal-slot="${t}"${taken?' disabled':''}>${esc(fmtTime(t))}</button>`;}).join('')}</div>
-      <input type="hidden" id="mwCalBookTime" value="${esc(firstFree)}">
-      ${firstFree?'':`<p class="hint">Every time on this day is booked.</p>`}
-      <label class="flab" for="mwCalBookWho">${role==='visitor'?'Your name':'Who are you meeting?'}</label>
-      <input class="field" type="text" id="mwCalBookWho" placeholder="${role==='visitor'?'Your name':'Their name'}" autocomplete="off">
-      <label class="flab" for="mwCalBookWhat">What is it about?</label>
-      <input class="field" type="text" id="mwCalBookWhat" placeholder="The subject of the appointment" autocomplete="off">
-      <div style="margin-top:12px"><label><input type="checkbox" id="mwCalBookMeet"> Meet with them — Smart Meet, in this calendar</label></div>
-      <div id="mwCalMeetModeRow" hidden style="margin-top:10px"><input type="hidden" id="mwCalMeetMode" value="video">
-        <button type="button" class="pill" data-mode="audio">Audio meet</button>
-        <button type="button" class="pill on" data-mode="video">Video meet</button></div>
-      <div class="actions"><button class="pill" data-op="confirm">Book this time →</button></div>
-      <p class="err" id="mwCalBookErr" role="alert"></p>
-      <p class="hint">Requested is not confirmed: a booking is confirmed only when it is saved into this calendar's store (<b>mw.cal.bookings.v1</b>). Server sync is not wired yet — bookings live on this device.</p>`;
-    }
+  if(past){
+    h+='<p class="hint">This day has passed — bookings live on today and the days ahead.</p>';
+  } else {
+    const firstFree=BOOK_SLOTS.find(t=>!bookTimeTaken(ds,t))||'';
+    /* Visitors see only genuinely open slots in the picker too — taken
+       times are omitted entirely, never shown disabled. Owners see taken
+       slots disabled, as before. */
+    const shownSlots=role==='visitor'?BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t)):BOOK_SLOTS;
+    h+=`<h3 style="margin-top:18px">Book a time on this day</h3>
+    <label class="flab">Pick a time</label><div class="slotbox">${shownSlots.map(t=>{const taken=bookTimeTaken(ds,t);
+      return `<button type="button" class="slot${taken?' taken':''}${(!taken&&t===firstFree)?' on':''}" data-mw-cal-slot="${t}"${taken?' disabled':''}>${esc(fmtTime(t))}</button>`;}).join('')}</div>
+    <input type="hidden" id="mwCalBookTime" value="${esc(firstFree)}">
+    ${firstFree?'':`<p class="hint">Every time on this day is booked.</p>`}
+    <label class="flab" for="mwCalBookWho">${role==='visitor'?'Your name':'Who are you meeting?'}</label>
+    <input class="field" type="text" id="mwCalBookWho" placeholder="${role==='visitor'?'Your name':'Their name'}" autocomplete="off">
+    <label class="flab" for="mwCalBookWhat">What is it about?</label>
+    <input class="field" type="text" id="mwCalBookWhat" placeholder="The subject of the appointment" autocomplete="off">
+    <div style="margin-top:12px"><label><input type="checkbox" id="mwCalBookMeet"> Meet with them — Smart Meet, in this calendar</label></div>
+    <div id="mwCalMeetModeRow" hidden style="margin-top:10px"><input type="hidden" id="mwCalMeetMode" value="video">
+      <button type="button" class="pill" data-mode="audio">Audio meet</button>
+      <button type="button" class="pill on" data-mode="video">Video meet</button></div>
+    <div class="actions"><button class="pill" data-op="confirm">Book this time →</button></div>
+    <p class="err" id="mwCalBookErr" role="alert"></p>
+    <p class="hint">Requested is not confirmed: a booking is confirmed only when it is saved into this calendar's store (<b>mw.cal.bookings.v1</b>). Server sync is not wired yet — bookings live on this device.</p>`;
   }
   return h+'</div>';
 }
@@ -540,7 +578,9 @@ function confirmBooking(){
   const what=($('mwCalBookWhat')||{}).value.trim();
   const err=$('mwCalBookErr');
   if(!time){ if(err) err.textContent='Pick a time first.'; return; }
-  if(bookTimeTaken(ds,time)){ if(err) err.textContent='That time was just taken — pick another time.'; showPanel(); return; }
+  /* F10: the "just taken" error must survive the showPanel() re-render —
+     stash it in pendingBookErr; showPanel() restores it into #mwCalBookErr. */
+  if(bookTimeTaken(ds,time)){ pendingBookErr='That time was just taken — pick another time.'; showPanel(); return; }
   if(!who){ if(err) err.textContent='Add a name so the appointment says who it is with.'; return; }
   const meet=!!($('mwCalBookMeet')||{}).checked;
   const mode=(($('mwCalMeetMode')||{}).value)||'video';
@@ -632,8 +672,10 @@ function createHTML(ds, future){
   <div class="actions"><button class="pill" data-op="Appointments">Or book a time instead →</button></div></div>`;
 }
 function saveNote(){
-  const text=($('noteText')||{}).value.trim();
   const err=$('noteErr');
+  /* F4(c): a visitor must never write into the owner's mw.cal.notes.v1 store. */
+  if(role==='visitor'){ if(err) err.textContent='Visitors cannot save notes — notes belong to the owner.'; return; }
+  const text=($('noteText')||{}).value.trim();
   if(!text){ if(err) err.textContent='Write the note first.'; return; }
   const tf=($('noteTF')||{}).value||'Morning';
   const rankEl=$('noteRank');
@@ -645,6 +687,8 @@ function saveNote(){
 /* ============ SEARCH ============ */
 function renderSearch(q){
   const box=$('searchResults'); if(!box) return;
+  /* F4(a): visitors never search private notes or bookings. */
+  if(role==='visitor'){ box.innerHTML='<p>Search is available to the owner only. Visitors never search private notes or bookings.</p>'; return; }
   q=(q||'').trim().toLowerCase();
   if(!q){ box.innerHTML='<p class="hint">Type to search your notes and bookings.</p>'; return; }
   const hits=[];
@@ -679,6 +723,17 @@ document.addEventListener('keydown',e=>{
     else closePanel();
   }
 });
+/* F7 — focus trap: while the scrim dialog is shown, Tab cycles inside
+   .panel and never escapes to the background month controls. */
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Tab'||!$('scrim').classList.contains('show')) return;
+  const f=Array.from(document.querySelectorAll('.panel button,.panel input,.panel textarea,.panel select,.panel [tabindex]'))
+    .filter(el=>!el.disabled&&el.type!=='hidden'&&el.getAttribute('tabindex')!=='-1'&&!el.closest('[hidden]'));
+  if(!f.length) return;
+  const first=f[0], last=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey&&document.activeElement===last){ e.preventDefault(); first.focus(); }
+});
 $('scrim').addEventListener('click',e=>{ if(e.target===$('scrim')) closePanel(); });
 $('prev').onclick=()=>{ const d=new Date(year,month-1,1); year=d.getFullYear(); month=d.getMonth(); render(); };
 $('next').onclick=()=>{ const d=new Date(year,month+1,1); year=d.getFullYear(); month=d.getMonth(); render(); };
@@ -686,10 +741,14 @@ $('today').onclick=()=>{ year=NOW.getFullYear(); month=NOW.getMonth(); day=NOW.g
 $('role').onclick=()=>{ role=role==='owner'?'visitor':'owner'; render(); if(screen!=='month'){ screen='day'; showPanel(); } };
 for(const w of ['Personal','Business','Space','Thing'])
   $(w==='Personal'?'pers':w==='Business'?'biz':w.toLowerCase()).onclick=()=>{ world=w; render(); if(screen!=='month'){ screen='day'; showPanel(); } };
-$('searchBtn').onclick=()=>{ lastFocus=document.activeElement; section='Search'; screen='view'; pushRoute(); showPanel(); };
-$('addBtn').onclick=()=>{ createKind='smart'; section='Create'; screen='view'; pushRoute(); showPanel(); };
+$('searchBtn').onclick=()=>{ lastFocus=document.activeElement;
+  /* F4(b): Search is owner-only in visitor mode — the handler refuses
+     and opens the honest refusal view instead of the search. */
+  section=role==='visitor'?'Owner only':'Search'; screen='view'; pushRoute(); showPanel(); };
+$('addBtn').onclick=()=>{ createKind='smart';
+  /* F4(b): Add/Create is owner-only in visitor mode — same refusal. */
+  section=role==='visitor'?'Owner only':'Create'; screen='view'; pushRoute(); showPanel(); };
 $('nayaBtn').onclick=()=>{ section='Naya'; screen='view'; pushRoute(); showPanel(); };
-$('ribbon').onclick=()=>{ day=NOW.getDate(); year=NOW.getFullYear(); month=NOW.getMonth(); openDay(day); };
 render();
 try{ history.replaceState({view:'month',year,month,day,world,role},'',''); }catch(e){}
 </script></body></html>
