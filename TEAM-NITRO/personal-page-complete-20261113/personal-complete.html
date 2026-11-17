@@ -2724,7 +2724,7 @@ button:hover{
 }
 
 /* --- Rating + action counts (harvested) --- */
-.ib-rating-num { font-size: 13px; font-weight: 800; color: #ffea00; margin-left: 8px; min-width: 32px; }
+.ib-rating-num { font-size: 13px; font-weight: 800; color: #d4a017; margin-left: 8px; min-width: 32px; }
 .ib-action-count {
   display: inline-grid; place-items: center;
   min-width: 22px; height: 22px; padding: 0 6px; margin-left: 8px;
@@ -3072,7 +3072,7 @@ button:hover{
 
 .rating-num {
   font-size: 13px; font-weight: 800;
-  color: var(--gold, #ffea00);
+  color: var(--gold, #d4a017);
   margin-left: 8px;
   min-width: 32px;
 }
@@ -3231,9 +3231,9 @@ button:hover{
 
 .action[data-kind="save"] { --action-color: #55b9ee; }
 
-.action[data-kind="love"] { --action-color: #ff5e6c; }
+.action[data-kind="love"] { --action-color: #c62828; }
 
-.action[data-kind="like"] { --action-color: #55b9ee; }
+.action[data-kind="like"] { --action-color: #0f52ba; }
 
 
 .action[data-kind="share-intel"] { --action-color: #C7CEDC; }
@@ -3243,7 +3243,7 @@ button:hover{
 
 .action[data-kind="add-intel"] { --action-color: #a06bff; }
 
-.action[data-kind="love"].on { border-color: #ff3f52; background: linear-gradient(145deg,#391019,#09090d); }
+.action[data-kind="love"].on { border-color: #c62828; background: linear-gradient(145deg,#391019,#09090d); }
 
 .star-rating {
   display: inline-flex; gap: 4px; align-items: center; padding: 6px;
@@ -9503,7 +9503,7 @@ function wallCard(j, iso, pid, idx){
             if(baOn){ baKid.classList.remove('pulse'); void baKid.offsetWidth; baKid.classList.add('pulse'); }
           }
           var baNum=baBox.querySelector('.rating-num');
-          if(baNum) baNum.textContent=baSv+'/5';
+          if(baNum){ baNum.textContent=baSv+'/5'; baNum.classList.add('rated'); }
         }
         toast('INTELLIGENCE RATED — '+baSv+' of 5 stars recorded on this device.');
         return;
@@ -17034,6 +17034,7 @@ window.BoardActions = (() => {
         s[countKey] = Math.max(0, cur + delta);
         write(s);
         badge.textContent = String(s[countKey]);
+        badge.classList.remove('pop'); void badge.offsetWidth; badge.classList.add('pop');
       };
       b.addEventListener('click', e => {
         e.stopPropagation();
@@ -17052,7 +17053,7 @@ window.BoardActions = (() => {
               ? 'This intelligence resonated deeply. It is now part of your signal.'
               : 'This intelligence earned your approval. The system is listening.',
             meta: 'you · just now',
-            color: isLove ? '#ff5e6c' : '#55b9ee',
+            color: isLove ? '#c62828' : '#0f52ba',
             iconPath: ipath, ts: Date.now()
           };
           const items = ActivityLog.read(); items.unshift(entry);
@@ -17066,7 +17067,7 @@ window.BoardActions = (() => {
           board.classList.add('flash');
         }
         toast('INTELLIGENCE STATE CHANGED', kind.toUpperCase() + ' is now ' + (next ? 'ACTIVE' : 'REMOVED') + ' on this device.',
-          kind === 'love' ? '#ff5e6c' : '#55b9ee');
+          kind === 'love' ? '#c62828' : '#0f52ba');
       });
       left.appendChild(b);
     }
@@ -17083,7 +17084,8 @@ window.BoardActions = (() => {
     cmtBtn.insertBefore(_icC, cmtBtn.firstChild);
     const cmtBadge = el('span', 'action-count', String((read()[boardId + ':comments'] || []).length));
     cmtBtn.appendChild(cmtBadge);
-    cmtBtn.addEventListener('click', e => { e.stopPropagation(); showCommentDialog(boardId, title, cmtBtn.closest('.intel-board')); });
+    if ((read()[boardId + ':commented'])) { cmtBtn.classList.add('on'); cmtBtn.setAttribute('aria-pressed', 'true'); }
+    cmtBtn.addEventListener('click', e => { e.stopPropagation(); cmtBtn.classList.add('on'); cmtBtn.setAttribute('aria-pressed', 'true'); fsCommentBtn = cmtBtn; fsCommentPosted = false; showCommentDialog(boardId, title, cmtBtn.closest('.intel-board')); });
     left.appendChild(cmtBtn);
 
     /* Rating: collective only (not personal — it's private) */
@@ -17093,8 +17095,9 @@ window.BoardActions = (() => {
     stars.setAttribute('aria-label', (window.mwTr ? window.mwTr('Rate this intelligence from one to five stars') : 'Rate this intelligence from one to five stars')); stars.setAttribute('data-mw-aria', 'Rate this intelligence from one to five stars');
     const rated = store[boardId + ':rate'] || 0;
     /* Numeric rating display — dynamic */
-    const ratingNum = el('span', 'rating-num', rated > 0 ? rated + '/5' : '—');
+    const ratingNum = el('span', 'rating-num', rated > 0 ? rated + '/5' : '0/5');
     ratingNum.setAttribute('aria-live', 'polite');
+    if (rated > 0) ratingNum.classList.add('rated');
     for (let i = 1; i <= 5; i++) {
       const sb = document.createElement('button');
       sb.type = 'button';       sb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>'; /* R5 (item 4) — drawn star, never the flat glyph. */
@@ -17112,9 +17115,9 @@ window.BoardActions = (() => {
             x.classList.add('pulse');
           }
         });
-        ratingNum.textContent = i + '/5';
+        ratingNum.textContent = i + '/5'; ratingNum.classList.add('rated');
         if (typeof ActivityLog !== 'undefined') {
-          ActivityLog.log('rate', 'Rated "' + title + '" ' + i + ' of 5 stars', 'star', '#ffea00',
+          ActivityLog.log('rate', 'Rated "' + title + '" ' + i + ' of 5 stars', 'star', '#d4a017',
             '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>');
         }
         toast('INTELLIGENCE RATED', i + ' of 5 stars recorded on this device. Rating is feedback, not truth.', '#d4a017');
@@ -17304,10 +17307,13 @@ window.BoardActions = (() => {
   /* One open dialog at a time; Escape closes it (same P9 pattern as the
      grow/save dialogs); focus returns to the button that opened it. */
   let fsCurrent = null;
+  let fsCommentBtn = null; let fsCommentPosted = false;
   function fsCloseCurrent() {
     if (!fsCurrent) return;
     const cur = fsCurrent; fsCurrent = null;
     if (cur.overlay && cur.overlay.parentNode) cur.overlay.parentNode.removeChild(cur.overlay);
+    if (fsCommentBtn && !fsCommentPosted) { fsCommentBtn.classList.remove('on'); fsCommentBtn.setAttribute('aria-pressed', 'false'); }
+    fsCommentBtn = null;
     if (cur.returnFocus && cur.returnFocus.focus) { try { cur.returnFocus.focus(); } catch (e) {} }
   }
   if (!window.__nayaFsKeyWired) {
@@ -17371,11 +17377,12 @@ window.BoardActions = (() => {
       const s = read();
       const list2 = s[boardId + ':comments'] || [];
       list2.push({ text: v, at: new Date().toISOString(), name: fsUserName() });
-      s[boardId + ':comments'] = list2; write(s);
+      s[boardId + ':comments'] = list2; s[boardId + ':commented'] = true; write(s);
       ta.value = '';
       render();
       fsUpdateCommentUI(boardId, cardEl);
       toast('COMMENT POSTED — your comment is on this post.');
+      fsCommentPosted = true;
       /* FIX-2 (2026-11-17) — INTENT, stated: the composer AUTO-CLOSES
          after posting. The comment is already on the post —
          fsUpdateCommentUI just re-rendered the inline thread under the
@@ -17383,6 +17390,9 @@ window.BoardActions = (() => {
          on the post to see it there. Same pattern as the copy handler
          below (toast, then close). */
       fsCloseCurrent();
+      /* FACELIFT (2026-11-17) — the count pops on the post itself now
+         that the dialog has closed and the citizen is looking at it. */
+      (function(){ var cb = cardEl ? cardEl.querySelector('[data-kind="comment"] .action-count') : null; if (cb) { cb.classList.remove('pop'); void cb.offsetWidth; cb.classList.add('pop'); } })();
     });
     ta.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) post.click(); });
     row.appendChild(post);
@@ -17632,7 +17642,7 @@ document.addEventListener("click", function(e){
       localStorage.setItem(key, on ? "0" : "1");
       var cnt = t.querySelector(".cnt");
       if(cnt){ cnt.textContent = String(Math.max(0, parseInt(cnt.textContent||"0",10) + (on ? -1 : 1))); }
-      t.style.borderColor = on ? "" : (action === "love" ? "#ff5e6c" : "#3fb8ff");
+      t.style.borderColor = on ? "" : (action === "love" ? "#c62828" : "#0f52ba");
     }catch(err){}
   }
   if(action === "star"){
@@ -28210,7 +28220,7 @@ document.addEventListener('click', function(e){
 /* --- F11 STAR RATING (.star-rating): container + buttons. Hover/on
    restated verbatim from the original + glow. --- */
 .star-rating{background:linear-gradient(180deg,#17171f,#0a0a10);border-color:rgba(212,160,23,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -4px rgba(212,160,23,.5),0 8px 18px rgba(0,0,0,.55);}
-.star-rating button{background:linear-gradient(180deg,#241d0e,#120e05);border:2px solid rgba(212,160,23,.65);color:#ffbf3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 14px -4px rgba(212,160,23,.55),0 4px 10px rgba(0,0,0,.5);}
+.star-rating button{background:linear-gradient(180deg,#241d0e,#120e05);border:2px solid rgba(212,160,23,.65);color:#d4a017;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 14px -4px rgba(212,160,23,.55),0 4px 10px rgba(0,0,0,.5);}
 .star-rating button:hover,.star-rating button.on{color:#fff3a6;border-color:#f8e7a0;background:#2a230f;text-shadow:0 0 14px #f4d97899;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 20px -2px rgba(255,191,61,.8),0 6px 14px rgba(0,0,0,.55);}
 
 /* --- F7 SMART TABS (.smart-tab): REMOVED in R5 — the rule painted a coloured
@@ -30046,6 +30056,38 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 .star-rating button svg{width:22px;height:22px;display:block;}
 .star-rating button.on svg{fill:currentColor;}
 .os-like svg,.ib-act svg{width:15px;height:15px;display:inline-block;vertical-align:-2px;}
+
+/* ═══ FEED POSTS FACELIFT (2026-11-17) — stars + LOVE/LIKE/COMMENT ═══
+   The five stars and the three action icons become real jewel objects.
+   Harvested from the pieces already on this page: the star-tile buttons
+   (.star-rating button, F11), the R5 raised icon disc (.action .ba-ico),
+   the digit-tile grammar (obsidian tile, own-color rim, white digit).
+   Deep Palette only: gold #d4a017 · ruby #c62828 · sapphire #0f52ba.
+   Pills, rims, labels and count badges are untouched. */
+@keyframes countPop{0%{transform:scale(1)}35%{transform:scale(1.35)}100%{transform:scale(1)}}
+/* 1 — STARS: each star a real jewel in its own tile. Rest: white star
+   outline on obsidian, gold rim. Lit (.on): the star fills whole in deep
+   gold #d4a017 and the tile lights gold. Lit stars stay lit (JS .on). */
+.board-actions .star-rating button{display:inline-grid;place-items:center;color:#fff;border:2px solid rgba(212,160,23,.65);background:linear-gradient(135deg,#241d0e,#120e05);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -2px 6px rgba(0,0,0,.5),0 0 14px -4px rgba(212,160,23,.55),0 4px 10px rgba(0,0,0,.5);}
+.board-actions .star-rating button svg{width:22px;height:22px;display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.7));}
+.board-actions .star-rating button:hover{color:#f8e7a0;border-color:#d4a017;transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.5),0 0 20px -2px rgba(212,160,23,.8),0 6px 14px rgba(0,0,0,.55);}
+.board-actions .star-rating button.on{color:#d4a017;border-color:#d4a017;background:linear-gradient(135deg,#3a2f10,#1a1405);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -2px 6px rgba(0,0,0,.5),0 0 22px -2px rgba(212,160,23,.8),0 6px 14px rgba(0,0,0,.55);}
+.board-actions .star-rating button.on svg{fill:currentColor;filter:drop-shadow(0 0 6px rgba(212,160,23,.9)) drop-shadow(0 1px 2px rgba(0,0,0,.7));}
+/* 1b — THE SIXTH SLOT, MADE WHOLE: the "-" was the rating number with
+   nothing in it. It is now a digit tile like the Dashboard digit tiles —
+   same height, same rim, same obsidian — showing 0/5 at rest (white) and
+   n/5 in deep gold once rated (.rated, set by JS). Nothing unfinished. */
+.board-actions .star-rating .rating-num{display:inline-grid;place-items:center;min-width:52px;height:44px;padding:0 10px;margin-left:8px;border:2px solid rgba(212,160,23,.65);border-radius:9px;background:linear-gradient(135deg,#241d0e,#120e05);color:#fff;font-size:15px;font-weight:800;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -2px 6px rgba(0,0,0,.5),0 0 14px -4px rgba(212,160,23,.55),0 4px 10px rgba(0,0,0,.5);}
+.board-actions .star-rating .rating-num.rated{color:#d4a017;border-color:#d4a017;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -2px 6px rgba(0,0,0,.5),0 0 22px -2px rgba(212,160,23,.8),0 6px 14px rgba(0,0,0,.55);}
+/* 2+3 — ACTION ICONS: the heart, thumb and bubble are white objects at
+   rest (the R5 disc already raises them). Active (.on): the disc lights
+   in its own color and the glyph fills whole in that color — LOVE ruby
+   #c62828, LIKE sapphire #0f52ba, COMMENT deep gold #d4a017 — and the
+   count pops. Pills, rims, labels and badges stay exactly as they are. */
+.board-actions .action[data-kind="love"].on .ba-ico,.board-actions .action[data-kind="like"].on .ba-ico,.board-actions .action[data-kind="comment"].on .ba-ico{border-color:var(--action-color);background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--action-color) 55%,#fff),color-mix(in srgb,var(--action-color) 22%,#0a0a10) 55%),linear-gradient(180deg,#23232e,#0a0a10);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 4px rgba(0,0,0,.55),0 0 14px -2px var(--action-color),0 2px 6px rgba(0,0,0,.55);}
+.board-actions .action[data-kind="love"].on .ba-ico svg,.board-actions .action[data-kind="like"].on .ba-ico svg,.board-actions .action[data-kind="comment"].on .ba-ico svg{fill:var(--action-color);stroke:var(--action-color);filter:drop-shadow(0 0 5px var(--action-color)) drop-shadow(0 1px 1px rgba(0,0,0,.6));}
+.board-actions .action[data-kind="love"].on .action-count,.board-actions .action[data-kind="like"].on .action-count,.board-actions .action[data-kind="comment"].on .action-count{border-color:var(--action-color);background:color-mix(in srgb,var(--action-color) 30%,rgba(255,255,255,.12));color:#fff;animation:countPop .45s cubic-bezier(.16,.84,.22,1);}
+.board-actions .action .action-count.pop{animation:countPop .45s cubic-bezier(.16,.84,.22,1);}
 .os-savebtn::before{content:'';display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.9%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%203h12v18l-6-4.5L6%2021z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;}
 .os-save-contact svg{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:6px;}
 .fc-pi-ico svg{width:15px;height:15px;display:block;}
