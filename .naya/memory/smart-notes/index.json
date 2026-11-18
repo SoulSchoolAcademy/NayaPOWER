@@ -59800,6 +59800,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3438",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3438-the-door-and-the-heart",
+      "slug": "the-door-and-the-heart",
+      "title": "The Door and the Heart",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3438/IB-SMART-NOTE-20261118-sn3438-the-door-and-the-heart.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3438/IB-SMART-NOTE-20261118-sn3438-the-door-and-the-heart.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3438/IB-SMART-NOTE-20261118-sn3438-the-door-and-the-heart.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3438-the-door-and-the-heart.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:39:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "c069c0d97765796d12b6b40f7b81b2f9407239d2ed91fbaacc3a75a4d8b200aa",
+      "content_hash": "b9e55ab9e545e53b435da534c4432c390f6709bd01ced0aa3ed55c95d0534cb7",
+      "one_line": "The front door has a law, and the system has a heart. The door: nayanet.app, your name, your certificate, then the walkthrough — ten questions, each with Naya talking you through it — then your actual pages. There is no welcome-back screen and no continue page; that screen does not exist in the walk and must never be built — the staged copy that showed one is a different build, not the walk. The entry is name-only: a code field on the main login is the members' door's clothing on the front door, wrong from the start. After the questions you name your pages — the system listening — then the building page, the system proving it — and only then pricing, because pricing after the proof sells something already held, while pricing first sells a promise. On the certificate page the button law holds: nothing steals the identity moment, a returning citizen is one click from home, and nothing auto-jumps a choice away. The heart: the infinite smart feeds — the original concept, ten years old, before AI existed. Not one feed: infinite feeds, one per topic, each a world's activity in full screen, in two views — the space's own and the public — with the matched people of that topic scrolling at the side, one tap from a message. One logic runs it and everything else: match, then organize, then connect — and the heart page runs the real engine from the first day, because a stub heart is a dead page wearing the heart's name.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "System",
+        "Lesson",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59810,5 +59843,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "d4e50b7ed60517c02fdc084d22c5182eeda94fa7c9a98d6f6f89554d50983f12"
+  "corpus_manifest_hash": "617e9e00e4cd5c52f7100055b327f69c5a92b1b991c31d01d26b1c3126a89ab5"
 }
