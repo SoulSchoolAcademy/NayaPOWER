@@ -70,6 +70,7 @@
          stats button on the month view. */
       :root {
         --bg: #040407;
+        --violet: #8e24aa;
         --panel: #0a0a10;
         --ink: #f4f4f8;
         --rim: rgba(255, 255, 255, 0.09);
@@ -679,7 +680,7 @@
            the top right corner, level with the eye at left */
         position: absolute; z-index: 3;
         top: 0; right: 0;
-        display: flex; flex-direction: column; align-items: center; gap: 3px;
+        display: flex; flex-direction: column; align-items: center; gap: 2px;
       }
       /* The Hz jewel — a real diamond, not a flat mark: it sits on an
          obsidian pedestal in the day's colour, wrapped in a slow ring
@@ -689,7 +690,7 @@
          takes 70s, the stone 24s, the radiance breathes over 12s */
       .hz-stage {
         position: relative; flex: none;
-        width: clamp(56px, 8vmin, 68px); height: clamp(56px, 8vmin, 68px);
+        width: clamp(48px, 6.5vmin, 56px); height: clamp(48px, 6.5vmin, 56px);
         display: flex; align-items: center; justify-content: center;
       }
       .hz-aura {
@@ -718,7 +719,7 @@
       }
       .dayjewel .gem {
         position: relative; z-index: 1;
-        width: clamp(36px, 5.6vmin, 46px); height: auto; display: block;
+        width: clamp(32px, 4.8vmin, 40px); height: auto; display: block;
         filter: drop-shadow(0 6px 10px rgba(0,0,0,.75)) drop-shadow(0 0 12px color-mix(in srgb, var(--dc, #fff) 45%, transparent));
         animation: hzspin 24s linear infinite;
         transform-origin: 50% 50%;
@@ -728,7 +729,7 @@
       .dayjewel:hover .hz-aura { animation-duration: 6s; }
       .dayjewel .freq {
         /* The Hz text takes the DAY's colour too */
-        font-size: var(--type-small); font-weight: 800;
+        font-size: var(--type-small); font-weight: 800; line-height: 1;
         letter-spacing: 0.24em; text-indent: 0.24em;
         color: color-mix(in srgb, var(--dc, #fff) 55%, #ffffff 45%);
         text-shadow: 0 0 7px color-mix(in srgb, var(--dc, #fff) 26%, transparent);
@@ -800,6 +801,7 @@
         animation: orbitspin 70s linear infinite;
       }
       @keyframes orbitspin { to { transform: rotate(360deg); } }
+      @keyframes orbit{to{transform:rotate(360deg)}}
       .greet-hello {
         /* Marcellus, the high-level font (Shawn 00:16Z — the certificate
            font; the Wisdom font is the noted alternative, the eye
@@ -1139,6 +1141,21 @@
         font-size: var(--type-small); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
         transition: box-shadow 0.25s, transform 0.25s;
       }
+      /* CALENDAR FIX 2026-11-18 (5) — the Smart Meet room, harvested
+         VERBATIM from the month file (blob 848620d0): the month panel's
+         working Join lands on this room — face, live timer, Mic/Camera/
+         Leave — so the day view joins its own meet instead of showing
+         a plain-text chip. .pill is the month panel's Join button. */
+.face{width:120px;height:120px;border-radius:50%;display:grid;place-items:center;font-size:56px;color:#fff;margin:0 auto 12px;position:relative;background:radial-gradient(circle at 35% 30%,#3a1a5e,#0b0714 70%);border:2px solid #8e24aa;box-shadow:0 0 30px rgba(142,36,170,.5),0 12px 28px rgba(0,0,0,.6)}
+.face::before{content:"";position:absolute;inset:-10px;border:1px dashed #8e24aa;border-radius:50%;opacity:.5;animation:orbit 60s linear infinite}
+      .meetbox{text-align:center}
+      .timer{font-size:34px;font-weight:800;color:#fff;margin:8px 0}
+      .pill{min-height:44px;background:linear-gradient(135deg,#232330 0%,#0b0b12 50%,#171722 100%);border:1.5px solid rgba(255,255,255,.85);color:#fff;padding:10px 14px;border-radius:13px;box-shadow:0 6px 16px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.6);transition:transform .18s ease,border-color .18s,box-shadow .18s}
+.pill:hover{transform:translateY(-2px);border-color:var(--violet);box-shadow:0 10px 22px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.45),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.6)}
+.pill:active{transform:translateY(0) scale(.97)}
+.pill.active{border-color:#8e24aa;box-shadow:0 0 16px #8e24aa,0 6px 16px rgba(0,0,0,.55)}
+.pill[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+      .actions{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
       .bookbtn:hover { box-shadow: 0 0 26px color-mix(in srgb, var(--dc, #fff) 50%, transparent), inset 0 1px 0 rgba(255,255,255,.2); transform: translateY(-1px); }
       .noteitem {
         padding: 12px 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -2306,6 +2323,7 @@
         }
 
         function openDay(d, opts) {
+          stopMeet();
           sel = d;
           /* v17 — a day step never leaves yesterday's detail panel open
              on today's screen: the notification menu closes on the walk */
@@ -2631,7 +2649,56 @@
           return h + ":" + m + " " + ap;
         }
 
+
+        /* CALENDAR FIX 2026-11-18 (5) — the meeting room, harvested from the
+           month file's openMeet/leaveMeet (blob 848620d0): the same room —
+           face, live timer, Mic/Camera/Leave, honest no-camera report —
+           rendered into the appointments door. The day's appointments carry
+           no mode, so every meet here is Video. Leave returns to the
+           appointments door. stopMeet() runs on every exit path so the
+           timer never ticks behind another screen. */
+        var meetTimer = null, meetSecs = 0, meetStream = null, micOn = true, camOn = true;
+        function stopMeet() {
+          if (meetTimer) { clearInterval(meetTimer); meetTimer = null; }
+          if (meetStream) { meetStream.getTracks().forEach(function (t) { t.stop(); }); meetStream = null; }
+        }
+        function openMeetRoom(a) {
+          if (!a) return;
+          stopMeet();
+          meetSecs = 0; micOn = true; camOn = true;
+          $("doorTitle").textContent = "Smart Meet — " + fmtTime(a.time);
+          $("doorSub").textContent = a.title + " · " + WEEKDAYS[sel.getDay()] + " · " + MONTHS[sel.getMonth()] + " " + sel.getDate() + ", " + sel.getFullYear() + " · " + fmtTime(a.time) + " · Video";
+          var body = $("doorBody");
+          body.innerHTML =
+            '<div class="panel meetbox"><div class="face" aria-hidden="true">N</div>' +
+            '<div class="timer" id="meetTimer">00:00</div>' +
+            '<p id="meetStatus">Joining the room…</p>' +
+            '<video id="meetVideo" autoplay playsinline muted style="width:100%;max-width:520px;border-radius:16px;background:#050607;border:1.5px solid rgba(255,255,255,.85);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 24px rgba(142,36,170,.35);display:none"></video>' +
+            '<div class="actions" style="justify-content:center">' +
+            '<button class="pill" id="micBtn">Mic on</button>' +
+            '<button class="pill" id="camBtn">Camera on</button>' +
+            '<button class="pill" id="leaveMeetBtn">Leave</button></div>' +
+            '<p class="none-line">Waiting room: only the booked parties can enter. No recording unless everyone consents — recording is not implemented here.</p></div>';
+          $("micBtn").addEventListener("click", function () { micOn = !micOn; if (meetStream) meetStream.getAudioTracks().forEach(function (t) { t.enabled = micOn; }); $("micBtn").textContent = micOn ? "Mic on" : "Mic off"; });
+          $("camBtn").addEventListener("click", function () { camOn = !camOn; if (meetStream) meetStream.getVideoTracks().forEach(function (t) { t.enabled = camOn; }); $("camBtn").textContent = camOn ? "Camera on" : "Camera off"; });
+          $("leaveMeetBtn").addEventListener("click", function () { leaveMeetRoom(); });
+          meetTimer = setInterval(function () { meetSecs++; var m = String(Math.floor(meetSecs / 60)).padStart(2, "0"), s = String(meetSecs % 60).padStart(2, "0"); var t = $("meetTimer"); if (t) t.textContent = m + ":" + s; }, 1000);
+          var status = $("meetStatus");
+          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (st) {
+              meetStream = st;
+              if (status) status.textContent = "Camera and mic are live — you are in the room.";
+              var v = $("meetVideo");
+              if (v) { v.srcObject = st; v.style.display = "block"; }
+            }).catch(function (e) {
+              if (status) status.textContent = "Camera/mic unavailable here (" + (e && e.name ? e.name : "unknown") + ") — you are still in the room, audio/video off. Join from a device that can grant them, or meet in person.";
+            });
+          } else if (status) status.textContent = "This browser cannot grant camera/mic here — you are still in the room. Join from a device that can, or meet in person.";
+        }
+        function leaveMeetRoom() { stopMeet(); var door = doorById("appointments"); if (door) openDoor(door); }
+
         function openDoor(door, newsScope) {
+          stopMeet();
           curDoor = door;
           var dc = DAY_COLORS[sel.getDay()];
           var bar = $("doorBar");
@@ -2650,7 +2717,7 @@
             var rows = list.length ? list.map(function (a, idx) {
               return '<div class="appt"><span class="when">' + fmtTime(a.time) + '</span>' +
                      '<span class="what">' + escapeHTML(a.title) + "</span>" +
-                     (a.meet ? '<span class="meet">Smart Meet</span>' : "") +
+                     (a.meet ? '<span class="meet">Smart Meet</span><button type="button" class="pill" data-join="' + idx + '" aria-label="Join the Smart Meet at ' + fmtTime(a.time) + '">Join the meet →</button>' : "") +
                      '<button type="button" class="del" data-del="' + idx + '" aria-label="Remove ' + escapeHTML(a.title) + '">' + ICONS.x + "</button></div>";
             }).join("") : '<p class="none-line">Nothing booked for this day yet.</p>';
             body.innerHTML =
@@ -2666,6 +2733,12 @@
             $("bkMeet").addEventListener("click", function () {
               var on = this.getAttribute("aria-pressed") === "true";
               this.setAttribute("aria-pressed", String(!on));
+            });
+            body.querySelectorAll("[data-join]").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                var sorted = (appointments[k] || []).slice().sort(function (a, b) { return a.time < b.time ? -1 : 1; });
+                openMeetRoom(sorted[parseInt(btn.getAttribute("data-join"), 10)]);
+              });
             });
             body.querySelectorAll("[data-del]").forEach(function (btn) {
               btn.addEventListener("click", function () {
@@ -2888,7 +2961,7 @@
         setInterval(renderNowPlaque, 1000);
         /* Amendment #3 — the plaque is the door into today */
         $("nowPlaque").addEventListener("click", function () { openDay(new Date()); });
-        $("backToMonth").addEventListener("click", function () { renderMonth(); show("screen-month"); });
+        $("backToMonth").addEventListener("click", function () { stopMeet(); renderMonth(); show("screen-month"); });
         $("backToDay").addEventListener("click", function () { if (sel) openDay(sel); });
         document.addEventListener("keydown", function (ev) {
           /* Arrow keys walk day to day while the day screen is showing
@@ -2901,7 +2974,7 @@
           }
           if (ev.key !== "Escape") return;
           if (!$("screen-door").classList.contains("hidden")) { if (sel) openDay(sel); }
-          else if (!$("screen-day").classList.contains("hidden")) { renderMonth(); show("screen-month"); }
+          else if (!$("screen-day").classList.contains("hidden")) { stopMeet(); renderMonth(); show("screen-month"); }
         });
 
         /* What was written before is kept — load it before the first render */

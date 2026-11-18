@@ -120,14 +120,14 @@
   Smart Meet joins a confirmed booking only, live media leg unproven here.
 -->
 <style>
-:root{color-scheme:dark;--bg:#050607;--panel:#0a0a0f;--line:#43345b;--violet:#8e24aa;--text:#f9f7ff;--news:#0f52ba;--book:#07925f;--social:#a21caf;--biz:#0e7490;--notes:#8e24aa}
+:root{color-scheme:dark;--bg:#050607;--type-headline:25px;--type-sub:19px;--type-small:17px;--panel:#0a0a0f;--line:#43345b;--violet:#8e24aa;--text:#f9f7ff;--news:#0f52ba;--book:#07925f;--social:#a21caf;--biz:#0e7490;--notes:#8e24aa}
 *{box-sizing:border-box}
 html,body{margin:0;background:radial-gradient(ellipse 55% 40% at 50% 98%,#26103f 0,transparent 80%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100%;letter-spacing:.01em;font-size:17px}
 button,select,input,textarea{font:inherit}
 button{cursor:pointer}
 button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .shell{height:100dvh;display:flex;flex-direction:column;padding:14px clamp(10px,2.2vw,40px) 12px;gap:9px}
-.head{display:flex;gap:12px;align-items:center;justify-content:space-between;min-height:65px}
+.head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;min-height:65px}
 .brand{display:flex;align-items:center;gap:14px;min-width:0}
 .logo{height:56px;width:56px;flex:none;display:grid;place-items:center;font:bold 44px Georgia,serif;color:#fff;text-shadow:0 0 10px #8e24aa,0 0 26px #8e24aa;background:linear-gradient(145deg,#130723,#06030c);border:1px solid #8e24aa;border-radius:16px;box-shadow:inset 0 0 14px #351453,0 0 16px #8e24aa,0 8px 20px rgba(0,0,0,.6)}
 .brandtxt strong{font-size:clamp(22px,2.6vw,32px);letter-spacing:.02em;white-space:nowrap}
@@ -141,6 +141,77 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .topline{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .monthtitle{font-size:clamp(19px,2.6vw,28px);min-width:166px;text-align:center;font-weight:800;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8)}
 .eyebrow{font-size:17px;letter-spacing:.17em;text-transform:uppercase;color:#fff;font-weight:800}
+/* CALENDAR FIX 2026-11-18 (1) — time + date DEAD CENTER across the top.
+   Harvested VERBATIM from the day file (blob e11cfd83): the day file's own
+   month grid already has this centered plaque, weekday balls and 'i'
+   jewels — the month file takes them byte for byte instead of rebuilding.
+   The plaque is a button: tap it and you are in today. */
+      .nowplaque {
+        --dc: #d4a017;
+        display: flex; align-items: center; justify-content: center; gap: 10px;
+        min-height: 44px; padding: 6px 18px; border-radius: 999px;
+        justify-self: center; cursor: pointer; font: inherit; text-align: center;
+        transition: box-shadow .25s, transform .25s, filter .25s;
+        background:
+          radial-gradient(90% 140% at 50% 0%, color-mix(in srgb, var(--dc) 8%, transparent), transparent 62%),
+          linear-gradient(180deg, #17171f 0%, #0a0a11 62%, #060609 100%);
+        border: 1.5px solid color-mix(in srgb, var(--dc) 62%, transparent);
+        box-shadow:
+          0 0 10px color-mix(in srgb, var(--dc) 18%, transparent),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+      }
+      .nowplaque:hover { transform: translateY(-1px); filter: brightness(1.22); }
+      .nowplaque:active { transform: scale(0.97); }
+      .now-date {
+        font-family: "Marcellus", serif; font-size: var(--type-sub);
+        letter-spacing: 0.05em; color: #ffffff; white-space: nowrap;
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+      }
+      .now-time {
+        /* The time takes TODAY's colour — never gold (Shawn, 2026-11-17);
+           --dc is set on the plaque from today's weekday in JS */
+        font-size: var(--type-sub); font-weight: 800; letter-spacing: 0.06em;
+        color: color-mix(in srgb, var(--dc, #d4a017) 58%, #ffffff 42%);
+        font-variant-numeric: tabular-nums; white-space: nowrap;
+        text-shadow: 0 0 8px color-mix(in srgb, var(--dc, #d4a017) 30%, transparent);
+      }
+      .live-dot {
+        flex: none; width: 11px; height: 11px; border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, #ffffff 0%, var(--sc) 55%, color-mix(in srgb, var(--sc) 50%, #000000) 100%);
+        border: 1px solid rgba(255,255,255,.85);
+        box-shadow: 0 0 7px var(--sc), 0 0 13px color-mix(in srgb, var(--sc) 32%, transparent);
+        animation: livepulse 2.4s ease-in-out infinite;
+      }
+      @keyframes livepulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .55; transform: scale(.78); } }
+      .clocknum { align-items: center; }
+      .clock-colon { color: #ffffff; font-weight: 900; font-size: var(--type-sub); line-height: 1; text-shadow: 0 0 8px rgba(255,255,255,.35); }
+      .os-mini-tile.letter { border-color: var(--hc, #ffffff); box-shadow: 0 4px 10px rgba(0,0,0,.7), 0 0 12px color-mix(in srgb, var(--hc, #ffffff) 50%, transparent), inset 0 1px 0 rgba(255,255,255,.35); }
+      .os-mini-tile.letter .cap { background: linear-gradient(180deg,#ffffff,#d9d9de 55%,#9a9aa0); }
+      .os-mini-tile.letter .rd { font-size: 24px; }
+      @media (max-width:768px){
+        .os-mini-tile{width:20px;border-radius:4px;}
+        .os-mini-tile .cap{height:4px;}
+        .os-mini-tile .rd{height:22px;line-height:22px;font-size:19px;}
+        /* v18-fix: the AM/PM letter is 17px in the 20px tile — the
+           v18 19px still clipped 2px live (real Archivo 900 "M" at
+           19px is 20px wide in the 18px content box; at 17px the "M"
+           is ~18px, the box). The v17 defect was the letter rd
+           staying 24px in a 20px tile */
+        .os-mini-tile.letter .rd{font-size:17px;}
+        .os-mini-num{gap:2px;}
+        .os-mini-num.med .os-mini-tile{width:40px;}
+        .os-mini-num.med .os-mini-tile .cap{height:7px;}
+        .os-mini-num.med .os-mini-tile .rd{height:40px;line-height:40px;font-size:36px;}
+        .os-mini-tile.dot{width:8px;}
+        .os-mini-num.med .os-mini-tile.dot{width:14px;}
+        .os-mini-tile.pct{width:24px;}
+        .os-mini-num.med .os-mini-tile.pct{width:44px;}
+        .os-mini-gap{width:8px;}
+        .os-mini-num.med .os-mini-gap{width:10px;}
+      }
+
 .hint{color:#fff;font-size:17px}
 .barleft,.barright{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .board{flex:1;min-height:0;border:1.5px solid rgba(255,255,255,.85);box-shadow:inset 0 0 34px #180926,0 0 32px #1f0e35,0 14px 34px rgba(0,0,0,.6);border-radius:22px;padding:10px;display:flex;flex-direction:column;background:linear-gradient(135deg,#15151f 0%,#0b0816 55%,#07050b 100%);overflow:hidden}
@@ -150,7 +221,36 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 /* AMENDMENT #3 — each abbreviation a real object (the standing law):
    obsidian middle, bold white letters, the day's own colour as rim +
    glow. The headers were plain coloured text. */
-.weekrow .wk{display:flex;align-items:center;justify-content:center;min-height:34px;border-radius:10px;background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%);border:1.5px solid var(--dc);box-shadow:0 0 10px color-mix(in srgb,var(--dc) 30%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 5px 12px rgba(0,0,0,.5)}
+.weekrow .wk{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:68px;padding:6px 2px 5px;border-radius:10px;background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%);border:1.5px solid var(--dc);box-shadow:0 0 10px color-mix(in srgb,var(--dc) 30%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 5px 12px rgba(0,0,0,.5);transition:transform .18s ease,box-shadow .18s ease}
+.weekrow .wk:hover{transform:translateY(-2px);box-shadow:0 0 18px color-mix(in srgb,var(--dc) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 8px 16px rgba(0,0,0,.5)}
+/* CALENDAR FIX 2026-11-18 (2) — the day's icon as a real 3D BALL above the
+   word, harvested VERBATIM from the day file (blob e11cfd83). */
+      .weekrow .wk-ico {
+        /* The day's icon — a real 3D BALL now (Amendment #3), not a flat
+           circle, not a hula hoop: a sphere, lit from the top-left, dark
+           at its base, the day's colour as rim + glow outside, white
+           glyph as an object inside (§4 THE ICON) */
+        flex: none; width: 34px; height: 34px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        color: #ffffff;
+        background: radial-gradient(circle at 32% 28%, #4a5068 0%, #232838 38%, #0a0a11 68%, #050607 100%);
+        border: 1.5px solid var(--dc);
+        box-shadow:
+          0 0 8px color-mix(in srgb, var(--dc) 30%, transparent),
+          inset 0 2px 3px rgba(255,255,255,.4),
+          inset 0 -8px 12px rgba(0,0,0,.6),
+          0 5px 12px rgba(0,0,0,.5);
+      }
+      .weekrow .wk-ico svg { width: 19px; height: 19px; }
+      .weekrow .wk.today-col .wk-ico {
+        box-shadow:
+          0 0 12px color-mix(in srgb, var(--dc) 45%, transparent),
+          inset 0 1px 0 rgba(255,255,255,.28),
+          inset 0 -6px 10px rgba(0,0,0,.5),
+          0 5px 12px rgba(0,0,0,.5);
+      }
+.weekrow .wk:hover .wk-ico{transform:translateY(-2px);box-shadow:0 0 12px color-mix(in srgb,var(--dc) 45%,transparent),inset 0 2px 3px rgba(255,255,255,.4),inset 0 -8px 12px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.5)}
+.weekrow .wk-ico{transition:transform .18s ease,box-shadow .18s ease}
 .days{flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
 /* ---- DAY TILE — Living Obsidian, seven layers ---- */
 .tile{--dc:#8e24aa;position:relative;text-align:left;min-height:64px;color:#fff;overflow:hidden;border-radius:16px;padding:10px 10px 8px;cursor:pointer;display:flex;flex-direction:column;
@@ -183,7 +283,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .tile.sel{box-shadow:0 0 0 2px var(--dc),0 0 30px rgba(255,255,255,.25),0 18px 34px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
 .tile.blank{opacity:.22;cursor:default;box-shadow:none}
 .tile.past{opacity:.92}
-.daynum{font-size:clamp(25px,2.6vw,40px);font-weight:800;line-height:1;color:#fff;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85);display:inline-block;transition:transform .18s ease}
+.daynum{font-size:clamp(25px,2.6vw,40px);font-weight:800;line-height:1;white-space:nowrap;color:#fff;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85);display:inline-block;transition:transform .18s ease}
 /* FOLLOW-ON (2) DASHBOARD DIGIT-TILE NUMBERS — each digit of the day number
    in its OWN gematria color, so every day has a different number-color
    combination. Day 16 = ruby 1 + indigo 6. Day 23 = burnt orange 2 + deep gold 3.
@@ -228,8 +328,42 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .spark{position:absolute;right:10px;top:9px;width:14px;height:14px;border-radius:3px;transform:rotate(45deg);
   background:linear-gradient(135deg,color-mix(in srgb,var(--dc) 75%,#fff),var(--dc) 50%,#050607);
   border:1px solid rgba(255,255,255,.75);box-shadow:0 0 12px var(--dc),0 2px 6px rgba(0,0,0,.6)}
-.tilerow{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.tilerow{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
 .tilewisdom{font-size:11px;line-height:1.35;color:#fff;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* CALENDAR FIX 2026-11-18 (3) — the 'i' button on every day: a pearl/diamond
+   circle with a white 'i', black middle (Laws §8). Construction harvested
+   VERBATIM from the day file's .cell .jewel (blob e11cfd83); only the size
+   grows — clamp(28px,4.4vmin,36px) here, bigger than the day grid's
+   clamp(21px,3.4vmin,28px). It sits bottom-right, the corner opposite the
+   number, and opens the day's info panel — the day's info, one tap. */
+      .tile .ijewel {
+        /* The info eye, rebalanced: a small dark obsidian jewel — no
+           white disc. A thin rim in the day's color, one soft highlight
+           at the top, and a small white i on the black centre. It sits
+           quiet in the corner instead of shouting across the cell */
+        position: absolute; right: clamp(6px, 1.1vmin, 11px); bottom: clamp(6px, 1.1vmin, 11px);
+        width: clamp(28px, 4.4vmin, 36px); height: clamp(28px, 4.4vmin, 36px);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        background: radial-gradient(circle at 34% 26%, #2c3044 0%, #13131f 52%, #050508 100%);
+        border: 1px solid color-mix(in srgb, var(--dc) 55%, rgba(255, 255, 255, 0.25) 45%);
+        box-shadow:
+          0 3px 7px rgba(0, 0, 0, 0.6),
+          0 0 8px color-mix(in srgb, var(--dc) 22%, transparent),
+          inset 0 1px 2px rgba(255, 255, 255, 0.35),
+          inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .tile .ijewel svg { width: 74%; height: 74%; display: block; }
+      .tile:hover .ijewel, .tile:focus-visible .ijewel, .ijewel:hover {
+        transform: translateY(-1px);
+        box-shadow:
+          0 5px 10px rgba(0, 0, 0, 0.65),
+          0 0 12px color-mix(in srgb, var(--dc) 40%, transparent),
+          inset 0 1px 2px rgba(255, 255, 255, 0.45),
+          inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+      }
+.tile .ijewel:active{transform:scale(.97)}
 .viewbtn{align-self:flex-start;flex:none;min-height:24px;padding:3px 9px;border-radius:9px;border:1.5px solid rgba(255,255,255,.85);background:linear-gradient(135deg,#2b2140,#0b0b12 55%,#171722);color:#fff;font-weight:800;font-size:11px;letter-spacing:.08em;box-shadow:0 4px 12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.22);transition:transform .15s,border-color .15s,box-shadow .15s}
 .viewbtn:hover,.viewbtn:focus-visible{transform:translateY(-2px);border-color:var(--dc);box-shadow:0 8px 18px rgba(0,0,0,.6),0 0 0 1px var(--dc),0 0 16px color-mix(in srgb,var(--dc) 65%,transparent),inset 0 1px 0 rgba(255,255,255,.22)}
 .viewbtn:active{transform:scale(.96)}
@@ -365,7 +499,20 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
 .mobileonly{display:none}
 @media(max-width:740px){
   .shell{height:100dvh;padding:8px 8px 9px;gap:8px}
-  .head{min-height:51px}.logo{width:39px;height:39px;font-size:33px;border-radius:12px}
+  .head{min-height:51px;display:flex;flex-wrap:wrap}.logo{width:39px;height:39px;font-size:33px;border-radius:12px}
+  /* CALENDAR FIX 2026-11-18 (1/4) — at phone width the plaque takes its own
+     row, dead center, so brand + Owner view never crowd it; the number and
+     the VIEW pill stack, both whole; the dots sit bottom-left, capped at
+     two, clear of the 20px 'i' jewel bottom-right. */
+  .nowplaque{order:-1;flex:1 1 100%;min-width:0;flex-wrap:wrap;justify-content:center;row-gap:0;gap:6px;padding:5px 6px}
+  .now-date,.now-time{font-size:17px;letter-spacing:.02em}
+  .now-date{white-space:normal;text-align:center}
+  .tilerow{flex-direction:column;align-items:center;gap:2px}
+  .viewbtn{max-width:100%}
+  .tile .ijewel{width:20px;height:20px;right:4px;bottom:4px}
+  .dots{display:flex;gap:2px;position:absolute;left:6px;bottom:6px;margin-top:0}
+  .dots .dot:nth-child(3){display:none}
+  .dot{width:6px;height:6px}
   .brand{gap:8px}.brandtxt strong{font-size:18px}.brandtxt div{font-size:17px}
   .topline{gap:7px}.topline .pill{padding:8px 9px;font-size:17px;min-height:44px}
   .monthtitle{min-width:110px;font-size:17px}
@@ -378,7 +525,6 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .tilewisdom{display:none}
   .viewbtn{min-height:22px;font-size:9px;padding:2px 6px;letter-spacing:.04em}
   .chiplane,.minitext,.spark,.more{display:none}
-  .dots{display:flex;justify-content:center;gap:2px;margin-top:6px}
   .dot{width:7px;height:7px;border-radius:2px;transform:rotate(45deg);
     background:linear-gradient(135deg,color-mix(in srgb,var(--dc) 70%,#fff),var(--dc) 50%,#050607);
     border:1px solid rgba(255,255,255,.6);box-shadow:0 0 8px var(--dc)}
@@ -398,6 +544,11 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
 <main class="shell">
   <header class="head">
     <div class="brand"><div class="logo" aria-hidden="true">N</div><div class="brandtxt"><strong>NayaNET · MY WORLD</strong><div id="worldname">Your life, organized by day.</div></div></div>
+    <button type="button" class="nowplaque" id="nowPlaque" aria-label="Today's date and your local time — tap to open today">
+      <span class="live-dot" id="nowDot" style="--sc:#d4a017"></span>
+      <span class="now-date" id="nowDate"></span>
+      <span class="now-time" id="nowTime"></span>
+    </button>
     <div class="toptools">
       <!-- FOLLOW-ON (5) B3 RULING — Search, Add (+) and Naya's profile are OFF
            the month view: they open non-day views and break the one-purpose
@@ -510,11 +661,23 @@ const ICONS={
   note: icon('<path d="M6 3.5h9L19 7.5v13H6z"/><path d="M14.5 3.5v4.5H19M9 12.5h6M9 16h6"/>'),
   book: icon('<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.7A1.7 1.7 0 0 0 5 19.7z"/><path d="M5 19.5A1.5 1.5 0 0 1 6.5 18H19M9 7.5h6"/>'),
   eye: icon('<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'),
+            crown: icon('<path d="M4 17.5 3 8.5l4.6 2.8L12 5l4.4 6.3L21 8.5 20 17.5z"/><path d="M5 20.5h14"/>'),
+            moon: icon('<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'),
+            sun: icon('<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19"/>'),
+            waves: icon('<circle cx="4" cy="12" r="1.3" fill="currentColor" stroke="none"/><path d="M8.5 9.5a4 4 0 0 1 0 5M12 7a7.5 7.5 0 0 1 0 10M15.5 4.5a11 11 0 0 1 0 15"/>'),
+            heart: icon('<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>'),
+            mountain: icon('<path d="M3 19.5 9.5 8l3.5 5.5 3-4.5 5 10.5z"/>'),
+            eye: icon('<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'),
   mail: icon('<rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/>'),
   people: icon('<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.9-3 2.9-4.5 5.5-4.5s4.6 1.5 5.5 4.5"/><circle cx="17" cy="9.5" r="2.6"/><path d="M16.5 15.2c2 .3 3.4 1.7 4 4.3"/>'),
   calendar: icon('<rect x="4" y="5.5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8 3.5v4M16 3.5v4M8 14h3M14 14h3M8 17.5h3"/>'),
   plus: icon('<path d="M12 5v14M5 12h14"/>')
 };
+/* THE WEEKDAY ICONS — harvested VERBATIM from the day file (blob e11cfd83):
+   one unique icon per day, for what the day represents (Laws §3.3) —
+   Sun crown 963 · Mon moon 417 · Tue sun 528 · Wed waves 741 ·
+   Thu heart 639 · Fri mountain 396 · Sat eye 852. */
+const WEEKDAY_ICONS=['crown','moon','sun','waves','heart','mountain','eye'];
 /* Digit tiles for the stat counts — miniTileHTML harvested VERBATIM from
    the day file (blob 3834919b); the tile CSS above is the same harvest
    with rims deepened (see the CSS note). */
@@ -527,7 +690,47 @@ function miniTileHTML(ch){
   if(!isFinite(d)) return '';
   return '<span class="os-mini-tile d'+d+'"><span class="cap"></span><span class="rd">'+d+'</span></span>';
 }
+function infoJewelSVG(){ return '<svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="8.8" r="1.5" fill="#ffffff"/><path d="M12 11.9v5" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" fill="none"/></svg>'; }
 function statNum(n){ return '<span class="os-mini-num">'+String(n).split('').map(function(ch){ return miniTileHTML(ch); }).join('')+'</span>'; }
+/* CALENDAR FIX 2026-11-18 (1) — the live clock + plaque, harvested VERBATIM
+   from the day file (blob e11cfd83): MONTHS, HOUR_COLORS, digitsHTML and
+   clockTilesHTML are the day file's own; renderNowPlaque follows the same
+   shape, reading the month file's WEEKDAY names/colours. */
+const MONTHS = ["January", "February", "March", "April", "May", "June",
+                      "July", "August", "September", "October", "November", "December"];
+const HOUR_COLORS = { 1: "#c62828", 2: "#c2410c", 3: "#d4a017", 4: "#07925f", 5: "#0e7490", 6: "#3f51b5", 7: "#8e24aa", 8: "#6d28d9", 9: "#a21caf", 10: "#c62828", 11: "#c62828", 12: "#c62828" };
+function digitsHTML(num, med) {
+          var html = '<span class="os-mini-num' + (med ? " med" : "") + '">';
+          String(num).split("").forEach(function (ch) { html += miniTileHTML(ch); });
+          return html + "</span>";
+        }
+function clockTilesHTML(d) {
+          var h24 = d.getHours(), m = d.getMinutes(), s = d.getSeconds();
+          var ap = h24 >= 12 ? "PM" : "AM";
+          var h12 = h24 % 12; if (h12 === 0) h12 = 12;
+          var hc = HOUR_COLORS[h12];
+          var t = '<span class="os-mini-num clocknum" style="--hc:' + hc + '">';
+          t += digitsHTML(h12);
+          t += '<span class="clock-colon" aria-hidden="true">:</span>';
+          t += digitsHTML(String(m).padStart(2, "0"));
+          t += '<span class="clock-colon" aria-hidden="true">:</span>';
+          t += digitsHTML(String(s).padStart(2, "0"));
+          t += '<span class="os-mini-gap"></span>';
+          t += '<span class="os-mini-tile letter"><span class="cap"></span><span class="rd">' + ap.charAt(0) + '</span></span>';
+          t += '<span class="os-mini-tile letter"><span class="cap"></span><span class="rd">' + ap.charAt(1) + '</span></span>';
+          return t + "</span>";
+        }
+function renderNowPlaque(){
+  const dEl=$('nowDate'), tEl=$('nowTime');
+  if(!dEl||!tEl) return;
+  const t=new Date();
+  dEl.textContent=WEEKDAY[t.getDay()].name+', '+MONTHS[t.getMonth()]+' '+t.getDate()+', '+t.getFullYear();
+  tEl.innerHTML=clockTilesHTML(t);
+  const dc=WEEKDAY[t.getDay()].color;
+  const plaque=$('nowPlaque'), dot=$('nowDot');
+  if(plaque) plaque.style.setProperty('--dc',dc);
+  if(dot) dot.style.setProperty('--sc',dc);
+}
 function digitNum(d){ return String(d).split('').map(ch=>`<span class="dg ${DIGIT_CLASS[+ch]}">${ch}</span>`).join(''); }
 /* ============ DAILY WISDOM — sourced, with carry-forward ============ */
 function wisdomFor(ds){
@@ -580,8 +783,13 @@ function daySummary(ds){
   return bits.length?bits.join(', '):'no highlighted activity';
 }
 /* ============ MONTH ============ */
-$('weeknames').innerHTML=WEEKDAY.map(w=>`<div class="wk" style="--dc:${w.color}">${w.short}</div>`).join('');
+function renderWeeknames(){
+  const viewingNow=year===NOW.getFullYear()&&month===NOW.getMonth();
+  $('weeknames').innerHTML=WEEKDAY.map((w,i)=>`<div class="wk${viewingNow&&i===NOW.getDay()?' today-col':''}" style="--dc:${w.color}" title="${w.name} · ${w.hz} Hz"><span class="wk-ico">${ICONS[WEEKDAY_ICONS[i]]}</span><span>${w.short}</span></div>`).join('');
+}
+renderWeeknames();
 function render(){
+  renderWeeknames();
   const first=new Date(year,month,1).getDay();
   const n=new Date(year,month+1,0).getDate();
   const total=Math.ceil((first+n)/7)*7;
@@ -607,11 +815,13 @@ function render(){
       <div class="chiplane">${h.slice(0,2).map(x=>`<span class="chip" style="--chip:${CAT[x][0]}">${ICONS[CAT[x][1]]} ${esc(x)}</span>`).join('')||`<span class="minitext">${(role==='visitor'&&!BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t)))?'Fully booked':'Open day'}</span>`}</div>
       ${h.length>2?`<div class="more">+${h.length-2} more</div>`:''}
       <div class="dots">${h.slice(0,3).map(x=>`<span class="dot" style="--dc:${CAT[x][0]}"></span>`).join('')}</div>
-      ${h.length?'<span class="spark" aria-hidden="true"></span>':''}</div>`;
+      ${h.length?'<span class="spark" aria-hidden="true"></span>':''}
+      <button type="button" class="ijewel" data-infoday="${d}" aria-label="About ${dlabel(year,month,d)} — open this day's info" title="About this day">${infoJewelSVG()}</button></div>`;
   }).join('');
   document.querySelectorAll('[data-day]').forEach(b=>{ b.onclick=()=>openDay(+b.dataset.day);
-    b.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openDay(+b.dataset.day); } }; });
+    b.onkeydown=e=>{ if(e.target!==b) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openDay(+b.dataset.day); } }; });
   document.querySelectorAll('[data-viewday]').forEach(b=>b.onclick=e=>{ e.stopPropagation(); openDay(+b.dataset.viewday); });
+  document.querySelectorAll('[data-infoday]').forEach(b=>b.onclick=e=>{ e.stopPropagation(); openDay(+b.dataset.infoday); });
   for(const w of ['Personal','Business','Space','Thing'])
     $(w==='Personal'?'pers':w==='Business'?'biz':w.toLowerCase()).classList.toggle('active',world===w);
   $('role').textContent=role==='owner'?'Owner view ▾':'Visitor view ▾';
@@ -1059,6 +1269,9 @@ $('today').onclick=()=>{ year=NOW.getFullYear(); month=NOW.getMonth(); day=NOW.g
 $('role').onclick=()=>{ role=role==='owner'?'visitor':'owner'; render(); if(screen!=='month'){ screen='day'; showPanel(); } };
 for(const w of ['Personal','Business','Space','Thing'])
   $(w==='Personal'?'pers':w==='Business'?'biz':w.toLowerCase()).onclick=()=>{ world=w; render(); if(screen!=='month'){ screen='day'; showPanel(); } };
+renderNowPlaque();
+setInterval(renderNowPlaque,1000);
+$('nowPlaque').onclick=()=>{ const t=new Date(); year=t.getFullYear(); month=t.getMonth(); render(); openDay(t.getDate()); };
 /* FOLLOW-ON (5) B3 — the Search / Add / Naya handlers are gone with their
    buttons (see the header note). Search and Create stay reachable from
    inside a day view (Notes view, Create action); the Naya view has no entry
