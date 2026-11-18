@@ -1,9 +1,16 @@
 """Tests for tools/build_mission_state.py + tools/check_mission_state_drift.py.
 
-The parser runs against the REAL BRAIN/CURRENT-MISSION-STATE.md (the facts
-asserted below are the snapshot's own stated facts at the tip this test
-landed with — if the director refreshes the snapshot, update them from the
-new snapshot's KEY NUMBERS line, never from memory).
+The parser runs against the PINNED snapshot fixture
+tools/fixtures/mission_state_snapshot_20261022.md — the contract-format
+snapshot of 2026-10-22 (commit 4f5ffc260f0c), whose stated facts are the
+ones asserted below. Pinning a fixture, not the live file: the live
+BRAIN/CURRENT-MISSION-STATE.md is rewritten hourly by the director pass
+in a log format and no longer carries the contract sections this parser
+consumes, so asserting against the live file guaranteed recurring red
+(kernel worklist, board #3352 comment 6959116428, 2026-11-17). The live
+snapshot/twin pair's format is the director pass's to re-emit or retire;
+this test's job is the parser, the drift check, and the twin schema —
+and those are exercised in full against the pinned snapshot.
 
 Negative controls (required):
   * a mutated snapshot (one stated number changed) makes the drift check
@@ -26,7 +33,7 @@ import build_mission_state as bms  # noqa: E402
 import check_mission_state_drift as drift  # noqa: E402
 from operating_state import validate  # noqa: E402
 
-MD_TEXT = (ROOT / "BRAIN" / "CURRENT-MISSION-STATE.md").read_text(encoding="utf-8")
+MD_TEXT = (TOOLS / "fixtures" / "mission_state_snapshot_20261022.md").read_text(encoding="utf-8")
 SCHEMA = json.loads((TOOLS / "mission_state.schema.json").read_text(encoding="utf-8"))
 FAKE_LIVE = {"derived_utc": "2026-10-22T00:00:00Z",
              "main_tip": "0" * 40,
