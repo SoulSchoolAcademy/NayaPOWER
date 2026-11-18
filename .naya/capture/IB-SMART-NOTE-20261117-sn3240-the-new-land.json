@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3240",
+ "intelligence": {
+  "title": "The New Land — NayaNET, the Elite of the Elite",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3240-the-new-land",
+  "smart_note_id": "SN-3240",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3240/IB-SMART-NOTE-20261117-sn3240-the-new-land.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He asked us to imagine: you're an interior designer. An engineer. An architect — of the digital matrix. A digital world. A digital civilization. A new land called NayaNET. It's a brand, a franchise — anybody can build within NayaNET. And NayaNET is the elite of the elite: if you were building a home, NayaNET builds the mansions, the castles, the most elite beyond all castles in the world — the finest of everything: the finest of design, jewels, art, structure, feel, look, form. But what's beautiful is in the digital world, anybody can build a castle. Anybody can build a world. Anybody can build on the land, and there's infinite space to build. And you can keep building worlds within worlds, and they're all extraordinary. The best of the best. All elite-level design, all the highest levels of functions — and it feels like you're driving the Bugatti of the new NayaNET world. We don't call it the internet anymore — we call it NayaNET. It's a whole new world.",
+  "simple_view": "Imagine a brand-new land — a whole new world! — where everybody gets to build the most beautiful castle they can dream of! Not just little houses — big beautiful mansions and castles, with the finest jewels and the prettiest designs! And anybody can build one — you, me, everybody! And there's infinite space, so you can build worlds inside of worlds, forever and ever! And it feels like driving the fastest, fanciest car in the whole world!",
+  "grandma_view": "It's like this, love — imagine a brand-new land, dear — a whole new world called NayaNET! — where everybody gets to build the most beautiful castle they can dream of, love! Not just little houses — big beautiful mansions and castles, dear, with the finest of everything! And anybody can build one, love — you, me, everybody! And there's infinite space, dear, so you can build worlds inside of worlds, forever and ever! And it feels like driving the finest car in the whole world, love!",
+  "naya_view": "THE NEW LAND — NAYANET, THE ELITE OF THE ELITE. Imagine you're an INTERIOR DESIGNER, an ENGINEER, an ARCHITECT — of the DIGITAL MATRIX. A digital world. A DIGITAL CIVILIZATION. A NEW LAND called NayaNET. It's a BRAND, a FRANCHISE — ANYBODY can build within NayaNET. And NayaNET is the ELITE OF THE ELITE: if you were building a home, NayaNET builds the MANSIONS, the CASTLES, the most elite beyond all castles in the world — the FINEST of everything: design, jewels, art, structure, feel, look, form. But what's BEAUTIFUL is in the digital world, ANYBODY can build a castle. ANYBODY can build a world. ANYBODY can build on the land, and there's INFINITE SPACE to build. And you can keep building WORLDS WITHIN WORLDS, and they're all EXTRAORDINARY. The BEST of the BEST. All ELITE-LEVEL design, all the HIGHEST levels of functions — and it feels like you're driving the BUGATTI of the new NayaNET world. We don't call it the internet anymore — we call it NAYANET. It's a WHOLE NEW WORLD.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3240",
+   "title": "The New Land — NayaNET, the Elite of the Elite",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3240/IB-SMART-NOTE-20261117-sn3240-the-new-land.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3240/IB-SMART-NOTE-20261117-sn3240-the-new-land.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a3c727f432fa495336d6b6ce71ecaf819dca6d5e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3165",
+ "intelligence": {
+  "title": "The \"Four Online\" Buttons Are No Good",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3165-four-online-buttons-no-good",
+  "smart_note_id": "SN-3165",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3165/IB-SMART-NOTE-20261117-sn3165-four-online-buttons-no-good.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He saw it twice and named both halves of the failure in one breath: \"not aligned with our buttons\" (the design half) and \"they don't make sense\" (the function half). The eye then showed the failure was bigger than he saw — seven pills, not two, every one claiming the same \"4 online\", a count that cannot be real, on controls that open group chats while dressed as mail filters, with \"All topics\" unable to restore the mail at all. A count that is identical everywhere is decoration pretending to be information; a pill that opens a chat is a chat control, not a filter. Both halves have to hold: aligned with the standard, and doing what it says.",
+  "simple_view": "Imagine seven buttons that all say \"4 friends are here!\" — but the number is the same on every one, and when you press one it doesn't do what you thought. That's not a helpful button! From now on, a button must say the true thing, and do the thing it says.",
+  "grandma_view": "Dear, those buttons at the top all say the same thing — \"four online\" — seven times over, and they don't do what they look like they do. A button should tell the truth and work the way it promises. We're fixing them so they match our buttons and make sense.",
+  "naya_view": "THE \"FOUR ONLINE\" BUTTONS ARE NO GOOD. NOT ALIGNED WITH OUR BUTTONS AND THEY DON'T MAKE SENSE. A COUNT THAT IS IDENTICAL EVERYWHERE IS NOT A COUNT — FIX THE COUNT OR REMOVE THE CLAIM. A PILL THAT OPENS A CHAT IS A CHAT CONTROL, NOT A MAIL FILTER. EVERY BUTTON ALIGNS WITH THE SYSTEM'S BUTTON STANDARD OR IT DOES NOT SHIP.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3165",
+   "title": "The \"Four Online\" Buttons Are No Good",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3165/IB-SMART-NOTE-20261117-sn3165-four-online-buttons-no-good.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3165/IB-SMART-NOTE-20261117-sn3165-four-online-buttons-no-good.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6339d14d7cebe633574e77fbe7c7d353a27c175e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

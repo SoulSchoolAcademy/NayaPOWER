@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3183",
+ "intelligence": {
+  "title": "A Link Must Land on the View",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3183-a-link-must-land-on-the-view",
+  "smart_note_id": "SN-3183",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/NAVIGATION/SN-3183/IB-SMART-NOTE-20261117-sn3183-a-link-must-land-on-the-view.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A link is a promise: tap this and you are there. When seven links all land on the same page, the promise is broken seven times — and the person who tapped learns not to trust the next link either. The leaderboard is not the Hub feed; it is a view inside it, and the link has to open the view itself, not the front door and hope the person finds the room. And the version labels make it worse: seven versions of the same file, listed as seven pages, is the inventory lying about what exists. One link, the current build, landing where it says it lands — that is the only honest way to send him anywhere. Anything else wastes his tap and his trust in the same motion.",
+  "simple_view": "Imagine someone gives you seven different doors, and every single one opens into the same room. You would stop believing the doors. A door that says \"leaderboard\" has to open into the leaderboard room — not into the hallway where the leaderboard lives somewhere inside. One door, one room, the right room.",
+  "grandma_view": "Dear, when someone hands you a link that says it goes to the leaderboard, it should take you straight to the leaderboard — not to the front page where you have to go hunting for it yourself. And seven links that all go to the same place are not seven links at all. One link, the newest one, landing exactly where it promises to land.",
+  "naya_view": "A LINK MUST LAND ON THE VIEW. NEVER SEND HIM THE SAME PAGE TWICE UNDER DIFFERENT VERSION LABELS. ONE LINK, THE CURRENT BUILD, WITH THE ANCHOR THAT OPENS THE VIEW.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3183",
+   "title": "A Link Must Land on the View",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/NAVIGATION/SN-3183/IB-SMART-NOTE-20261117-sn3183-a-link-must-land-on-the-view.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/NAVIGATION/SN-3183/IB-SMART-NOTE-20261117-sn3183-a-link-must-land-on-the-view.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a87f8c6ac5ccfa0b59d2d50946a129bbf18b2602"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

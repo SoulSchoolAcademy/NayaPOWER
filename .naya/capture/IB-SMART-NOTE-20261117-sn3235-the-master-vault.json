@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3235",
+ "intelligence": {
+  "title": "The Master Vault — Digital Gold; The Art",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3235-the-master-vault",
+  "smart_note_id": "SN-3235",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3235/IB-SMART-NOTE-20261117-sn3235-the-master-vault.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He gave the image first: we mine digital gold. We mine to the essence of intelligence — we take the intelligence and create super valuable functions, interfaces, products, systems. That is what the work is: mining. And then the law that follows from the mining: as soon as we create anything of value, it goes IMMEDIATELY into our own smart vault — the Master Vault of NayaNET — officially live on the site, and into our collective Smart Box / Smart Vault, officially there in the Smart Factory, in the system. It has to be, because why put all this energy into creating things if they don't go immediately into the system and working? We create so much that just sits there — a ton of work that doesn't operate, doesn't get finished. As soon as it's created, it's immediately implemented, immediately put into the system and working, and into the Smart Vault of NayaNET. The users get their own smart vaults — but we need our OWN vault, the master vault. Done immediately, all the time. So we don't lose stuff. So it's working. So it's official. And then the art: we treasure our art — we treat it as something precious and beautiful, and we make sure our art goes in the vault, the Naya vault. We are creating art. We are artists — intelligent artists. Getting good work out of AI is an art — so many ways to mess it up, so hard to get something good — and when it's good, it's precious, and losing it after all that work is maddening. The vault is not a cupboard. It is the treasury of a gold mine, and the art is the gold: precious because it was hard to get good, maddening to lose after all that work. A thing of value that sits unvaulted is gold left at the mine face — mined and then abandoned.",
+  "simple_view": "Imagine you dig for gold — shiny, beautiful, precious gold! — and every time you find a piece, you put it straight into your treasure chest, right away! You don't leave it lying on the ground, because someone might lose it! And the things we make are like art — beautiful pictures that are SO hard to make just right — and when they're good, they're precious like gold! So we keep them safe in our treasure chest, the Master Vault!",
+  "grandma_view": "It's like this, love — imagine you dig for gold, dear — shiny, beautiful, precious gold! And every time you find a piece, you put it straight into your treasure chest, right away, love! You don't leave it lying on the ground! And the things we make are like art, dear — beautiful things that are SO hard to make just right — and when they're good, they're precious like gold, love! So we keep them safe in our treasure chest, the Master Vault!",
+  "naya_view": "THE MASTER VAULT — DIGITAL GOLD. We mine to the ESSENCE of intelligence and create super valuable functions, interfaces, products, systems — that is the gold. **THE LAW:** as soon as we create ANYTHING OF VALUE, it goes IMMEDIATELY into our own smart vault — the MASTER VAULT of NayaNET — OFFICIALLY LIVE on the site, and into our collective Smart Box / Smart Vault, OFFICIALLY THERE in the Smart Factory, in the system. As soon as it's created it's IMMEDIATELY IMPLEMENTED, immediately put into the system and WORKING. Done immediately, ALL THE TIME. So we don't lose stuff. So it's working. So it's official. The users get their own smart vaults — but we need OUR OWN vault, the master vault. **THE ART:** we treasure our art — precious and beautiful — and we make sure our art goes in the vault, the Naya vault. We are creating art. We are ARTISTS — INTELLIGENT ARTISTS. Getting good work out of AI is an art — so many ways to mess it up, so hard to get something good — and when it's good, it's PRECIOUS, and losing it after all that work is MADDENING.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3235",
+   "title": "The Master Vault — Digital Gold; The Art",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3235/IB-SMART-NOTE-20261117-sn3235-the-master-vault.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3235/IB-SMART-NOTE-20261117-sn3235-the-master-vault.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "cbfc4c2a4d60896f2fe6f1dc9cae657b24396519"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

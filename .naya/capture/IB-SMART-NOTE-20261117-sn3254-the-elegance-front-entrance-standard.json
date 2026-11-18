@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3254",
+ "intelligence": {
+  "title": "The Elegance — The Front Entrance Is The Standard",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3254-the-elegance-front-entrance-standard",
+  "smart_note_id": "SN-3254",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3254/IB-SMART-NOTE-20261117-sn3254-the-elegance-front-entrance-standard.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: look at the front entrance — see the elegance, the beauty of the colors, how they all complement each other. The calendar is too busy and too colorful next to it. So the weekday header must say the full day names — Sunday, Monday — written almost in royalty, in the most incredible font, of a quality to match the numbers. The \"I\" — he doesn't like that \"I\" — make it a circle, a real element coming off the page, like a pearl, like a diamond, with a little \"i\" inside so people know to click it for the info for that day. And make the numbers smaller, about 25% — he even wondered about half — because the boxes can't get bigger, so the numbers shrink, and smaller numbers might make the page appear bigger. Less busy, less colorful, more elegant, high-tech beautiful, with the light more on the side. And his question over the whole thing: what would make this 10,000 times better?",
+  "simple_view": "Imagine a beautiful front door — gold and purple and silver on black, all the colors friends with each other, nothing fighting! Now look at the calendar next to it — it's too busy and too colorful! So let's make the calendar just as elegant: write the whole day names — Sunday, Monday — in the fanciest writing, make the numbers a little bit smaller so the page can breathe, and turn the little \"i\" into a shiny pearl circle that pops right off the page! Then the calendar will be elegant and beautiful too!",
+  "grandma_view": "It's like this, love — imagine a beautiful front door, dear, gold and purple and silver on black, all the colors getting along, nothing fighting, love! Now look at the calendar next to it — it's too busy and too colorful, dear! So let's make the calendar just as elegant, love: write the whole day names out — Sunday, Monday — in the fanciest writing you ever saw, dear; make the numbers a little bit smaller, about a quarter, so the page can breathe, love; and turn the little \"i\" into a shiny pearl circle that pops right off the page, dear, with a little \"i\" inside so people know to tap it for the day's info, love!",
+  "naya_view": "THE ELEGANCE — THE FRONT ENTRANCE IS THE STANDARD. THE COLORS COMPLEMENT EACH OTHER, NOTHING FIGHTING. THE CALENDAR MUST LEARN FROM IT: THE WEEKDAY HEADER SAYS THE FULL DAY NAMES — SUNDAY, MONDAY — WRITTEN ALMOST IN ROYALTY, IN THE MOST INCREDIBLE FONT, OF A QUALITY TO MATCH THE NUMBERS (MARCELLUS). THE INFO MARKER IS A CIRCLE, A REAL ELEMENT COMING OFF THE PAGE — PEARL, DIAMOND — WITH A LITTLE \"I\" INSIDE SO PEOPLE KNOW TO CLICK IT FOR THE DAY'S INFO. THE NUMBERS ARE SMALLER, ABOUT 25% — THE CELLS CANNOT GET BIGGER, SO THE NUMBERS SHRINK. LESS BUSY, LESS COLORFUL, MORE ELEGANT, HIGH-TECH BEAUTIFUL; THE LIGHT MORE ON THE SIDE (THE RIM), NOT THE MIDDLE. WHAT WOULD MAKE THIS 10,000 TIMES BETTER?",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3254",
+   "title": "The Elegance — The Front Entrance Is The Standard",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3254/IB-SMART-NOTE-20261117-sn3254-the-elegance-front-entrance-standard.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3254/IB-SMART-NOTE-20261117-sn3254-the-elegance-front-entrance-standard.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "aecd2248e9f07a976b060b85ff5c91a0e4646d33"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

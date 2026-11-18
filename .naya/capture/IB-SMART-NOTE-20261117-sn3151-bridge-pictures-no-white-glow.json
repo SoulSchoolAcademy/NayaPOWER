@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3151",
+ "intelligence": {
+  "title": "The Bridge Pictures — No White Glow Over Black",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3151-bridge-pictures-no-white-glow",
+  "smart_note_id": "SN-3151",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3151/IB-SMART-NOTE-20261117-sn3151-bridge-pictures-no-white-glow.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A white glow over black is the opposite of depth: it washes the picture out, flattens it, and the text sitting on it stops reading — the picture looks like a picture of an object instead of the object itself, which is the one failure the Real Object Law exists to forbid. His eye caught it on the three pictures because they are the three doors of the whole system — Personal, Business, Space — the first choice a citizen makes. If the doors look flat, the house looks flat. \"Extraordinary help\" is the scale he sets: not a tweak, a rise of the whole page to the elite standard, board by board, read as a reader.",
+  "simple_view": "The three big pictures — your Personal, your Business, your Space — have a funny white glow on them that makes them look flat, and you can't read the words! They need to be real and deep, like shiny black jewels, so the words read nice and clear.",
+  "grandma_view": "The three big pictures, dear — your Personal, your Business, your Space — have a funny white glow on them that makes them look flat, and you can't read the words! They need to be real and deep, like shiny black jewels, so the words read nice and clear.",
+  "naya_view": "THE BRIDGE PICTURES: NO WHITE GLOW OVER BLACK, EVER. EACH PICTURE IS A REAL OBJECT — OBSIDIAN DEPTH, LAYERED ELEVATION, ITS OWN DEEP COLOR AS ITS LIGHT — AND THE TEXT ON IT READS GREAT. THE WHOLE BRIDGE PAGE NEEDS EXTRAORDINARY HELP ON PRESENTATION.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3151",
+   "title": "The Bridge Pictures — No White Glow Over Black",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3151/IB-SMART-NOTE-20261117-sn3151-bridge-pictures-no-white-glow.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3151/IB-SMART-NOTE-20261117-sn3151-bridge-pictures-no-white-glow.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "17f6d79f52e6a21171dc2dc2390ddb189b5ae040"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

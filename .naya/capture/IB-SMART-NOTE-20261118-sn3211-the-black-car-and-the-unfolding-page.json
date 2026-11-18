@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3211",
+ "intelligence": {
+  "title": "The Black Car and the Unfolding Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3211-the-black-car-and-the-unfolding-page",
+  "smart_note_id": "SN-3211",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3211/IB-SMART-NOTE-20261118-sn3211-the-black-car-and-the-unfolding-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the whole language in one image and the whole behavior in one sentence, and the day view is the first page measured against both. The black car says what obsidian means: not a background color but the center of the thing — the car is black, and everything else is an accent around the black. Purple underglow, black leather, white interior, white pin striping, a lit-up dashboard: each accent has its place around the obsidian, none of them fills it. That is the obsidian-inside law (SN-3210) made visible — the day's color around the board, never the board itself — and it is also the reason the text is white in the middle (it pops on obsidian) and multi-layered everywhere (so every word looks dynamic and live, not flat and single-layer). High contrast and raised depth are not finishes; they are the car. The unfold says what a page is: a machine. \"Click a button, boom, it always does something\" — no dead buttons, no press that does nothing, no page that sits still. Everything moves, everything is an object, everything is functional, it lights up and does things. And the page goes down by unfolding — click, the next thing unfolds, then the next — with the agreement's unfold as the template and the day view taking it as its spine. This generalizes SN-3150 (optimize for the fold: every page folds away, unfolds, reveals) into the page's structure itself: the unfold is not a feature on the page, it is how the page goes down. Then he scorecards the day view against his own image, honestly: 6/10. It works, it's clean, the wisdom and the clock are good — but it is brown not black, the boards are filled with the day's color, the text is flat and single-layer, the greeting is in a plain font, the boards don't move, and the page is a stack not a machine. Every defect in that list is one of the two laws unapplied. The path to 10 is named in the same breath: the restructure (SN-3210) + the black-car law + the unfold. Amendment #2 went to the calendar inner pages round at 00:21Z.",
+  "simple_view": "Imagine the most beautiful black car you have ever seen — shiny black all over, with soft purple lights glowing underneath it, black leather seats, white inside, white stripes along the side, and a dashboard all lit up like a spaceship. That's what our pages should look like: black in the middle, pretty colors glowing around the edges, white words that pop, and every word with layers so it looks alive. And imagine every page is a little machine — you press a button and BOOM, something happens! The page opens up like a flower, one part after another, every time you click. The day page right now is only 6 out of 10 — it's brown instead of black, the words are flat, and nothing moves. Make it the black car, make it unfold, and it becomes a 10.",
+  "grandma_view": "Dear, he gave us a picture for the whole thing — a beautiful black car, black all over, with lovely purple lights glowing underneath, black leather seats, white inside, white stripes, and a dashboard all lit up, a proper high-performance machine. That's our pages, dear: black at the center, the colors only glowing around it, white words in the middle because they pop on the black, every word with layers so it looks dynamic and alive, and everything raised up with depth. And every page should be a little machine — you press a button and boom, it does something, everything moves and lights up, and the page goes down by unfolding, one thing after the next, like the agreement does. The day page is 6 out of 10 as it stands, dear — it works and it's clean, but it's brown not black, the words are flat, and nothing moves. The new order, the black car, and the unfold take it to 10.",
+  "naya_view": "THE BLACK CAR: OBSIDIAN AT THE CENTER, EVERYTHING ELSE AN ACCENT AROUND IT. WHITE THAT POPS. WORDS WITH LAYERS, ALIVE. DEPTH ON EVERYTHING. THE PAGE IS A MACHINE: CLICK, BOOM, IT DOES SOMETHING — IT GOES DOWN BY UNFOLDING. THE DAY VIEW IS 6/10. THE RESTRUCTURE + THE BLACK CAR + THE UNFOLD TAKES IT TO 10.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3211",
+   "title": "The Black Car and the Unfolding Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3211/IB-SMART-NOTE-20261118-sn3211-the-black-car-and-the-unfolding-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3211/IB-SMART-NOTE-20261118-sn3211-the-black-car-and-the-unfolding-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7f5e9290c30d1f7e07f065eed61547a97ab4baad"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3142",
+ "intelligence": {
+  "title": "The Orbit Is Back on All Six Bottom Buttons",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3142-the-orbit-is-back-on-all-six-bottom-buttons",
+  "smart_note_id": "SN-3142",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3142/IB-SMART-NOTE-20261117-sn3142-the-orbit-is-back-on-all-six-bottom-buttons.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is \"use what works — never make it new\" in his own words, said out loud while looking at the page. The machine keeps rebuilding the bottom buttons, and each rebuild loses something the earlier version had right — this time the orbit. \"I don't understand why you don't do the same thing for all of them\" is the question every rebuild has to answer before it ships: if the older version was nicer, the new version is wrong, and the fix is to put back what worked, verbatim, on all six — not to design a third version. One treatment, everywhere, is also the law for the whole system: the same button, the same motion, on every page, so he never has to learn a new bottom bar twice. The orbit is not a decoration to be redesigned; it is the button. The Hub eye-notes fix round carries this law.",
+  "simple_view": "The buttons at the bottom used to have a little thing slowly circling around them, like a ring going round and round — and they were nicer! The new buttons lost the ring. So put the ring back on all six buttons, the same for every one!",
+  "grandma_view": "The buttons at the bottom used to have a little thing slowly circling around them, dear, like a ring going round and round — and they were nicer, love! The new buttons lost the ring. So put the ring back on all six buttons, the same for every one!",
+  "naya_view": "THE ORBIT IS BACK ON ALL SIX BOTTOM BUTTONS. THE OLDER BUTTONS HAD THE SLOW CIRCLING ORBIT AND WERE NICER. THE NEW BUTTONS DROPPED IT AND ARE THE WRONG VERSIONS. ONE TREATMENT, EVERYWHERE — THE SAME FOR ALL OF THEM. THE ORBIT WAS APPROVED 01:27Z AND STAYS EXACTLY AS-IS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3142",
+   "title": "The Orbit Is Back on All Six Bottom Buttons",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3142/IB-SMART-NOTE-20261117-sn3142-the-orbit-is-back-on-all-six-bottom-buttons.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3142/IB-SMART-NOTE-20261117-sn3142-the-orbit-is-back-on-all-six-bottom-buttons.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "48bd83434fa588f77965254b066ae8ceec033048"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

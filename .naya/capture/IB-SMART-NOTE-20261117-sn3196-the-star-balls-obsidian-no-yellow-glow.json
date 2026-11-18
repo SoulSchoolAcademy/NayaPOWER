@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3196",
+ "intelligence": {
+  "title": "The Star Balls: Obsidian, No Yellow Glow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3196-the-star-balls-obsidian-no-yellow-glow",
+  "smart_note_id": "SN-3196",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3196/IB-SMART-NOTE-20261117-sn3196-the-star-balls-obsidian-no-yellow-glow.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The yellow glow over the top is the same mistake as the purple glow over the board (SN-3180): light poured over the face of the object, washing out what sits on it. The stars cannot read sharp under a wash — the glow has to go so the black can be black and the star can be sharp. Obsidian black is not the absence of beauty; it is what makes the star readable. Any light lives behind or around the ball, never over it — the same rule, on the smallest object in the system. And the superseding matters: the eye was going to judge the halo; now there is nothing to judge, because the order is the verdict — the halo goes regardless. A judgment call became a law, and the law is final.",
+  "simple_view": "Imagine a shiny black marble with a bright star sitting on it — and then someone smears yellow glowing paint all over the top, so the star goes blurry. Take the paint off, and the black marble is black again, and the star is sharp and clear. That is what Shawn wants: black balls, sharp stars, no yellow paint on top.",
+  "grandma_view": "Dear, the little star balls should be obsidian black — deep and dark, like polished stone — with the stars sharp and clear on top of them. The yellow glow over them only blurs them and doesn't look right. Take the glow off, let the black be black, and the stars will shine sharp. Any light belongs behind the ball or around it, never over the top.",
+  "naya_view": "GET RID OF THAT YELLOW GLOW THAT'S ON THE STAR BALLS. THE STAR BALLS ARE OBSIDIAN BLACK AND THE STARS READ SHARP. ANY LIGHT LIVES BEHIND OR AROUND THE BALL, NEVER OVER IT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3196",
+   "title": "The Star Balls: Obsidian, No Yellow Glow",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3196/IB-SMART-NOTE-20261117-sn3196-the-star-balls-obsidian-no-yellow-glow.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3196/IB-SMART-NOTE-20261117-sn3196-the-star-balls-obsidian-no-yellow-glow.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "01ca4a48b61e745508f3d013f54401dd96cc118e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

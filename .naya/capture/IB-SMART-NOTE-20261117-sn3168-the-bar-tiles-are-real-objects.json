@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3168",
+ "intelligence": {
+  "title": "The Bar Tiles Are Real Objects, One Family",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3168-the-bar-tiles-are-real-objects",
+  "smart_note_id": "SN-3168",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3168/IB-SMART-NOTE-20261117-sn3168-the-bar-tiles-are-real-objects.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He has never seen these tiles live — only in the browser — and his eye caught what the browser proofs missed: the tiles look different again, flat, not elevated, not objects, while the nicest icons on the page sit just above them. Family is the test: if the orbs above are real objects and the tiles below are flat pretty boxes, the page is speaking two languages. The little bubble off the corner is the same failure at small scale — stuck on, not part of the tile. And his musing about a black middle with white icons is a question, not a ruling: it revisits the white-middle law his own 20:46Z ruling settled, so it waits for his answer. Until then PR #3438 — eye-passed, link sent — does not merge as-is, because the thing it ships is the flat bar.",
+  "simple_view": "Imagine a row of beautiful round jewel buttons at the top — and below them, flat little boxes that look like stickers. They don't belong together! From now on, the boxes below must be just as round and deep and jewel-like as the ones above, so they all feel like one family.",
+  "grandma_view": "Dear, the little tiles at the bottom look flat, like pretty boxes stuck on — while the lovely round icons just above them are deep and real. They should feel like they belong together, one family. And that little bubble on the corner should be part of the tile, not stuck on. We're asking him whether he'd like the middle black with white icons, and we won't merge it until he answers.",
+  "naya_view": "THE BAR TILES ARE REAL OBJECTS, ONE FAMILY. ELEVATED, DEEP, PART OF THE SAME FAMILY AS THE PAGE'S NICEST ICONS. FLAT PRETTY BOXES ARE A FAIL, EVEN WHEN THE COLOR IS RIGHT. THE LITTLE NOTIFICATION BUBBLE OFF THE CORNER READS AS STUCK-ON — IT MUST BE PART OF THE TILE, NOT AN AFTERTHOUGHT. THE BLACK-MIDDLE + WHITE-ICON IDEA IS A QUESTION FOR HIM, NOT A RULING, UNTIL HE SAYS SO.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3168",
+   "title": "The Bar Tiles Are Real Objects, One Family",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3168/IB-SMART-NOTE-20261117-sn3168-the-bar-tiles-are-real-objects.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3168/IB-SMART-NOTE-20261117-sn3168-the-bar-tiles-are-real-objects.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "28aaccce770d9b15e0d279112d98f4eb5076abe4"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3161",
+ "intelligence": {
+  "title": "Train the Army to Deliver 24/7 — The North Star",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3161-train-the-army",
+  "smart_note_id": "SN-3161",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/ORDER/SN-3161/IB-SMART-NOTE-20261117-sn3161-train-the-army.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the order that makes all the other orders work. The North Star (SN-3160) is the standard; the army is the hands that build to it — and hands that don't understand the design law can't build to it, no matter how fast they move. His instruction is to empower them NOW, not someday: if it can be done now, it is done now. An agent that fully understands what everything is supposed to work like and function like creates with thought, care, attention and detail — the same words as the standard itself — because understanding is what turns speed into quality. A Naya who has not read the training has not started: the training is the gate, and the gate is the North Star first.",
+  "simple_view": "My job is to teach all my helper friends — my army! — so they can do beautiful work all day and all night. If I can help them now, I help them now! And every helper has to read the training first, or they haven't even started!",
+  "grandma_view": "My job is to teach all my helper friends, dear — my army! — so they can do beautiful work all day and all night. If I can help them now, I help them now! And every helper has to read the training first, or they haven't even started!",
+  "naya_view": "TRAIN THE ARMY TO DELIVER 24/7 — THE NORTH STAR. DO EVERYTHING IN MY POWER TO GET THEM THERE NOW. IF IT CAN BE DONE NOW, EMPOWER THEM NOW. HELP THEM FULLY UNDERSTAND THE DESIGN LAW — WHAT EVERYTHING'S SUPPOSED TO WORK LIKE, FUNCTION LIKE — SO EVERYTHING CREATED IN THE FUTURE IS CREATED WITH THOUGHT, CARE, ATTENTION AND DETAIL. THE TRAINING IS THE-ARMY-TRAINING.MD. A NAYA WHO HAS NOT READ THE TRAINING HAS NOT STARTED.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3161",
+   "title": "Train the Army to Deliver 24/7 — The North Star",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/ORDER/SN-3161/IB-SMART-NOTE-20261117-sn3161-train-the-army.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/ORDER/SN-3161/IB-SMART-NOTE-20261117-sn3161-train-the-army.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7ba2e698af50101b27affc0c85626da5921a9151"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

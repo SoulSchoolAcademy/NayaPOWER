@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3143",
+ "intelligence": {
+  "title": "No Flatness — All the Way Through",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3143-no-flatness-all-the-way-through",
+  "smart_note_id": "SN-3143",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3143/IB-SMART-NOTE-20261117-sn3143-no-flatness-all-the-way-through.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the Real Object Law sharpened into a rule, and the test he gives for it is the zoom: look close, and if you are disappointed, it is not done. A button that reads as real at arm's length and flat when you zoom in was never a real object — it was a picture of one. The inner icon is the cherry on top: it is the smallest thing on the page and the most-touched, and grey, flat, illegible inner icons are what make the whole page feel unfinished even when the big boards are right. White, multi-layered, and representative — you can see what the icon is, and it means what it sits on. Flatness is a defect, wherever it is, and the rule has no exceptions: all the way through. The Hub eye-notes fix round carries this law.",
+  "simple_view": "Nothing flat anywhere! Every little picture and button has to be a real thing you could touch — with layers, like a little cake, not a flat sticker. And the tiny picture inside should be white, not grey, and you should be able to see what it is — like the cherry on top of the cake!",
+  "grandma_view": "Nothing flat anywhere, dear! Every little picture and button has to be a real thing you could touch — with layers, like a little cake, not a flat sticker. And the tiny picture inside should be white, not grey, and you should be able to see what it is — like the cherry on top of the cake, love!",
+  "naya_view": "NO FLATNESS — ALL THE WAY THROUGH. NOTHING FLAT, ANYWHERE. EVERY ICON, EVERY BUTTON, EVERY TILE, EVERY CONTROL — A REAL OBJECT, ELEVATED, MULTI-LAYERED, WITH DEPTH. WHEN YOU ZOOM IN, YOU'RE NOT DISAPPOINTED. THE INNER ICONS ARE WHITE, NOT GREY — MULTI-LAYERED, LEGIBLE, REPRESENTATIVE OF WHAT THEY'RE ON. THE CHERRY ON TOP.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3143",
+   "title": "No Flatness — All the Way Through",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3143/IB-SMART-NOTE-20261117-sn3143-no-flatness-all-the-way-through.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3143/IB-SMART-NOTE-20261117-sn3143-no-flatness-all-the-way-through.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d1fd37f274d5626df131b85ec7454f6cdbd13772"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

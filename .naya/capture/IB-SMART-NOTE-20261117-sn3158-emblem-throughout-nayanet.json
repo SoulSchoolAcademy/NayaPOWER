@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3158",
+ "intelligence": {
+  "title": "The Emblem Elegantly Throughout NayaNET",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3158-emblem-throughout-nayanet",
+  "smart_note_id": "SN-3158",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3158/IB-SMART-NOTE-20261117-sn3158-emblem-throughout-nayanet.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The emblem was the corners and the official areas; now it is the mark of the premium everywhere it makes sense. His point is about the feeling a citizen gets before they read a word: they see the symbol, they see the icon, and they feel \"oh yeah, this is a high-end rich premium interface.\" The emblem does that work because it looks for real (SN-3157) — a crowned jewel with wings, placed elegantly, makes the whole surface read high-end. Elegantly is the constraint that keeps it from becoming wallpaper: not everywhere, not stamped on everything — all the places that make sense, sitting as a real object, in the spots where the premium needs to be felt.",
+  "simple_view": "Put the pretty emblem all over NayaNET — in the Dashboard, in the day-by-day, everywhere it makes sense! Then everybody feels: wow, this is a fancy premium place, just from looking at the symbol!",
+  "grandma_view": "Put the pretty emblem all over NayaNET, dear — in the Dashboard, in the day-by-day, everywhere it makes sense! Then everybody feels: wow, this is a fancy premium place, just from looking at the symbol!",
+  "naya_view": "THE EMBLEM ELEGANTLY THROUGHOUT NAYANET, ON ALL THE PLACES THAT MAKE SENSE — DASHBOARD, DAY-BY-DAY, CERTIFICATES, DOCUMENTS, OFFICIAL AREAS — SO THEY FEEL: OH YEAH, THIS IS A HIGH-END RICH PREMIUM INTERFACE. LOOK AT EVEN THEIR SYMBOL, LOOK AT THEIR ICON.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3158",
+   "title": "The Emblem Elegantly Throughout NayaNET",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3158/IB-SMART-NOTE-20261117-sn3158-emblem-throughout-nayanet.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3158/IB-SMART-NOTE-20261117-sn3158-emblem-throughout-nayanet.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "485d70d896f6206743d54dd5872694fd3b838d37"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

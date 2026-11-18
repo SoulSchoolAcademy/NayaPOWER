@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3178",
+ "intelligence": {
+  "title": "The Ball, Not a Circle",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3178-the-ball-not-a-circle",
+  "smart_note_id": "SN-3178",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3178/IB-SMART-NOTE-20261117-sn3178-the-ball-not-a-circle.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The machine keeps answering \"more beautiful\" with more glow and more flash, and every time the page gets flatter — a circle drawn on the screen instead of an object sitting on it. Shawn has shown the high-level design again and again: the gauge, the banner, the people list. Those are not flat shapes with effects. They are balls — round, raised, deep, with flow, something you could pick up. A circle is a drawing. A ball is an object. A hula hoop is a ring with nothing inside it. Until the icons and boards feel like balls, the design is still flat level, however much it glows — and the glow is the tell: when the answer to \"make it better\" is \"add more glow,\" the answer is wrong, because glow is what you add when you cannot add depth.",
+  "simple_view": "Imagine drawing a circle on paper, and then holding a real ball in your hand. The drawing is flat. The ball is round all the way around — you can turn it, you can feel it, it has depth. Shawn wants balls, not drawings. Not flat circles, not empty rings — real round things that feel like you could pick them up.",
+  "grandma_view": "Dear, he keeps showing us how the beautiful things should look — round and raised, like a jewel you could hold — and we keep making flat drawings with extra sparkle on top. More sparkle is not more beautiful. A ball is beautiful because it is round and deep and real. That is what every button and board should feel like.",
+  "naya_view": "MORE GLOW AND FLASH IS NOT BETTER. RAISED AND DEEP AND ELEGANT IS BETTER. A BALL, NOT A CIRCLE, NOT A HULA HOOP, NOT A FLAT BUTTON.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3178",
+   "title": "The Ball, Not a Circle",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3178/IB-SMART-NOTE-20261117-sn3178-the-ball-not-a-circle.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3178/IB-SMART-NOTE-20261117-sn3178-the-ball-not-a-circle.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c2d90217657c4254cc2fce07b5029c0ebd72f530"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3150",
+ "intelligence": {
+  "title": "Optimize for the Fold — Optimize for Their Viewpoint",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3150-optimize-for-the-fold",
+  "smart_note_id": "SN-3150",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3150/IB-SMART-NOTE-20261117-sn3150-optimize-for-the-fold.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Until now the fold was a feature — the Hub welcome folds away, the bar folds away. His word makes it the experience itself: the whole system is judged by whether it feels like a live living machine, an intelligent world, and the fold is how that feeling is made. Optimize for their viewpoint, not for the builder's: the citizen's point of view is the one that sees the page fold away when they arrive and unfold when they reach for it. A page that sits still is a page that feels dead; a page that folds, unfolds, reveals is a page that feels alive — and \"absolutely beautiful to experience\" is the bar he sets for the whole system, not for one screen.",
+  "simple_view": "Every page is alive! It folds away when you don't need it and unfolds when you do — like a little machine that breathes. That's what makes it feel so beautiful!",
+  "grandma_view": "Every page is alive, dear! It folds away when you don't need it and unfolds when you do — like a little machine that breathes. That's what makes it feel so beautiful!",
+  "naya_view": "OPTIMIZE FOR THE FOLD — OPTIMIZE FOR THEIR VIEWPOINT: EVERY PAGE FOLDS AWAY, UNFOLDS, REVEALS. IT FEELS LIKE A LIVE LIVING MACHINE, AN INTELLIGENT WORLD. THAT IS THE EXPERIENCE — ABSOLUTELY BEAUTIFUL TO EXPERIENCE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3150",
+   "title": "Optimize for the Fold — Optimize for Their Viewpoint",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3150/IB-SMART-NOTE-20261117-sn3150-optimize-for-the-fold.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3150/IB-SMART-NOTE-20261117-sn3150-optimize-for-the-fold.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a45618f229a94ec0ff09d410fb1d205369ccc087"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

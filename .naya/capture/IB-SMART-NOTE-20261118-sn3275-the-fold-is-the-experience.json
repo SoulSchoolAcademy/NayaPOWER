@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3275",
+ "intelligence": {
+  "title": "The Fold Is the Experience",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3275-the-fold-is-the-experience",
+  "smart_note_id": "SN-3275",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN-LAW/SN-3275/IB-SMART-NOTE-20261118-sn3275-the-fold-is-the-experience.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a house where every door opens the same way. You walk in and the host greets you warmly — then steps aside, and you are simply in the room, nothing explaining itself. The lights are real lamps you could touch, not pictures of lamps. The colors on the walls are ones you can tell apart at a glance, not two purples pretending to be different. The little row of buttons at the bottom has a slow ring circling each one, the same ring on all six, because that ring is what made them beautiful in the first place — and when a rebuild lost it, the answer was to put the ring back, not to invent a new button. When you scroll, the bar slips away so it never interrupts your reading, and it comes back only when you have reached the bottom and are ready to go somewhere else. At the bottom of a note, one row holds everything: ten gold stars in a circle, a heart that stays because love is a jewel, a comment box that unfolds below for the why. One treatment everywhere, judged by one eye — his — after it lands.",
+  "simple_view": "The page says hello to you. Then it folds itself away, all tidy. The little bar at the bottom hides when you scroll down. It only comes back at the very bottom. Every button is a real little object, not a flat sticker. The tiny pictures inside are white, not grey. The colors next to each other must look different. If two purples look the same, fix them! At the bottom of a note, ten shiny gold stars wait in a circle. Tap one and the stars light up. The heart stays, because love is a jewel.",
+  "grandma_view": "It is like a good host, love — she greets you at the door, dear, then steps aside so you can simply enjoy the room. The little bar hides away while you read, and only comes back when you reach the very bottom, love. Every button is a real little object you could pick up, not a flat picture — and the tiny pictures inside are white, never grey, dear. The colors beside each other must look different, love, or the eye cannot tell them apart. And at the bottom of a note, ten little gold stars wait in a circle, dear — tap one and they light up, and the heart stays, because love is a jewel.",
+  "naya_view": "THE FOLD IS THE EXPERIENCE: EVERY PAGE FOLDS AWAY, UNFOLDS, REVEALS — A LIVE LIVING MACHINE, AN INTELLIGENT WORLD. THE HUB WELCOME GREETS, THEN FOLDS UP AND HIDES AWAY. THE BAR FOLDS THE MOMENT YOU SCROLL AND RETURNS ONLY AT THE VERY BOTTOM. NOTHING FLAT, ANYWHERE — EVERY ICON A REAL, ELEVATED, MULTI-LAYERED OBJECT, WHITE INNER ICONS, THE ZOOM IS THE TEST. THE MORNING ORBIT ICONS ARE THE STANDARD, RESTORED VERBATIM ON ALL SIX BUTTONS. ADJACENT COLORS MUST READ AS DIFFERENT TO THE EYE, NOT JUST DIFFER IN HEX. THE WHITE MIDDLE STAYS; THE NUMBERS POP IN BLACK WITH WHITE INSIDE. SMART MAIL FLUSH TO THE TOP. ONE ROW AT THE BOTTOM OF EVERY NOTE: TEN GOLD STARS, THE HEART AS THE LOVE JEWEL. SAME ON EVERY PAGE. HIS EYE JUDGES AFTER IT LANDS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3275",
+   "title": "The Fold Is the Experience",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN-LAW/SN-3275/IB-SMART-NOTE-20261118-sn3275-the-fold-is-the-experience.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN-LAW/SN-3275/IB-SMART-NOTE-20261118-sn3275-the-fold-is-the-experience.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "62630b2b77f79591ba045a8a23ed2ed7280373bc"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

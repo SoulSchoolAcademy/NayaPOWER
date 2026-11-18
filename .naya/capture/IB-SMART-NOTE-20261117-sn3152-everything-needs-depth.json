@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3152",
+ "intelligence": {
+  "title": "Everything Needs Depth — Nothing Flat, Not Even a Little",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3152-everything-needs-depth",
+  "smart_note_id": "SN-3152",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3152/IB-SMART-NOTE-20261117-sn3152-everything-needs-depth.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "\"Very blah, very flat, flat text not alive\" is his eye reading the page the way a citizen would — and a citizen does not forgive flatness because the parts are present. The Real Object Law says every element is a real physical object; \"a little flat\" is the same failure at a smaller size, and his word now forbids the excuse that a little is acceptable. The plus sign is the counter-example in his own words: it is good, it stays, and it should open up — the control that works is the one that is alive and does something. Depth is not decoration on top of the page; it is what makes the page alive at all.",
+  "simple_view": "Everything looks blah and flat — even the words look flat and sleepy! Everything needs to be deep and alive, like real things you can touch. But the little plus sign is good — keep it! — and it should open up when you tap it.",
+  "grandma_view": "Everything looks blah and flat, dear — even the words look flat and sleepy! Everything needs to be deep and alive, like real things you can touch. But the little plus sign is good — keep it! — and it should open up when you tap it.",
+  "naya_view": "EVERYTHING NEEDS DEPTH — NOTHING FLAT, NOT EVEN A LITTLE. EVERY PART, EVERY TEXT, ALIVE WITH DEPTH, ALL THE WAY THROUGH. THE PLUS SIGN STAYS — IT IS GOOD — AND IT SHOULD OPEN UP. THEY ALL SHARE THEIR LINK.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3152",
+   "title": "Everything Needs Depth — Nothing Flat, Not Even a Little",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3152/IB-SMART-NOTE-20261117-sn3152-everything-needs-depth.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3152/IB-SMART-NOTE-20261117-sn3152-everything-needs-depth.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "27a58ccf94bf316affa2c9e772ab09df8717d828"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3276",
+ "intelligence": {
+  "title": "Real, Premium and Elite in Every Way",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3276-real-premium-and-elite-in-every-way",
+  "smart_note_id": "SN-3276",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN-LAW/SN-3276/IB-SMART-NOTE-20261118-sn3276-real-premium-and-elite-in-every-way.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is one teaching in four parts, and each part needs the others. Craft: flatness is the defect, at any size — a white-glow wash over black flattens the picture and kills the text, and \"a little flat\" is still flat. The fix is depth everywhere: every part, every text, a real object with obsidian depth, layered elevation, its own deep color as its light. Knowledge: the emblem is settled fact, not a choice to re-make — NAYA_ICON.png, the most beautiful render, taken verbatim, never redrawn, placed on an angle in every corner because that is what gives the high-level effect. Honor: the standard is the identity — eliteness, triple-A, fine art, inside and out, in every way — and the governing principle is to optimize for what software should be at its absolute best, never for what it has traditionally been. Multiplication: the simple rules carry the standard into the system without a curve or a banner — one point per star, one tap on a clean \"+\" to compose, the emblem elegantly wherever it makes sense. Beauty without substance is decoration, not excellence — the standard is five pillars, and the quality is the proof.",
+  "simple_view": "Nothing may look flat — not even a little bit! Every picture must be deep and real, like a shiny black jewel. The pretty emblem goes in every corner, tilted just so. One star means one point. The mail button is a big clean plus. And everything must be the very best — never just okay!",
+  "grandma_view": "Nothing may look flat, dear — not even a little bit! Every picture must be deep and real, like a shiny black jewel. The pretty emblem goes in every corner, tilted just so. One star means one point. The mail button is a big clean plus. And everything must be the very best — never just okay!",
+  "naya_view": "REAL, PREMIUM AND ELITE IN EVERY WAY — NOTHING FLAT, NOT EVEN A LITTLE. NO WHITE-GLOW WASH OVER BLACK, EVER. THE TRUE EMBLEM — NAYA_ICON.PNG, TAKEN VERBATIM — ON AN ANGLE IN EVERY CORNER AND ELEGANTLY THROUGHOUT NAYANET WHEREVER IT MAKES SENSE. ONE POINT PER STAR. THE MAIL IS A CLEAN \"+\". WHEN IT LOOKS FOR REAL, THEY TAKE YOU FOR REAL. NEVER ACCEPT 8/10 WHEN A PRACTICAL PATH TO 10/10 EXISTS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3276",
+   "title": "Real, Premium and Elite in Every Way",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN-LAW/SN-3276/IB-SMART-NOTE-20261118-sn3276-real-premium-and-elite-in-every-way.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN-LAW/SN-3276/IB-SMART-NOTE-20261118-sn3276-real-premium-and-elite-in-every-way.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "dd69395bef1443f20d173419b52ff2ded8ebb94d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

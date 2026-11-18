@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3247",
+ "intelligence": {
+  "title": "The Intelligent Block — Epic Numbers, Best Buttons",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3247-the-intelligent-block-epic-numbers",
+  "smart_note_id": "SN-3247",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3247/IB-SMART-NOTE-20261117-sn3247-the-intelligent-block-epic-numbers.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: the numbers — the way they are — they could be more dynamic. They could be way higher level. Imagine we just made them epic, because they're going to be throughout our whole network, seen everywhere — so why don't we do the best, the best for all of our buttons? So I'd like to scorecard our Intelligent Block and think: how can I make this now take it to another level, so no matter what they're pasting — text, a smart note, an image — it formats beautifully and it's extraordinary to feel and see and look at. The captain scored it 7: what's good is the format does the work, the unfold and the slideshow are one language, the boards light whole. What's holding it back: the numbers sit still — they're pictures of numbers, not living numbers — the buttons are good but not the best, and pasted content still shows its seams. The next level: the numbers become epic and dynamic — living tiles that respond, glow, and move — the buttons become the best in the network, and the format gets so strong that anything pasted in comes out beautiful and extraordinary to feel, see, and look at.",
+  "simple_view": "Imagine your numbers are just still pictures — they don't move at all! Let's make them EPIC — living number blocks that glow and sparkle and dance when you touch them! And the buttons become the very best buttons in the whole world — real shiny treasures! And no matter what you put inside — words, a note, a picture — it comes out beautiful every single time, like magic!",
+  "grandma_view": "It's like this, love — imagine your numbers, dear, are just still pictures — they don't move at all! Let's make them epic, love — living number blocks that glow and sparkle and dance when you touch them! And the buttons become the very best buttons in the whole world, dear — real shiny treasures! And no matter what you put inside, love — words, a note, a picture — it comes out beautiful every single time, like magic, dear!",
+  "naya_view": "THE INTELLIGENT BLOCK — EPIC NUMBERS, BEST BUTTONS. THE NUMBERS SHOULD BE MORE DYNAMIC, WAY HIGHER LEVEL, EPIC — BECAUSE THEY'RE GOING TO BE THROUGHOUT THE WHOLE NETWORK, SEEN EVERYWHERE — SO DO THE BEST FOR ALL OF OUR BUTTONS. SCORECARD THE INTELLIGENT BLOCK AND TAKE IT TO ANOTHER LEVEL, SO NO MATTER WHAT SOMEONE PASTES — TEXT, A SMART NOTE, AN IMAGE — IT FORMATS BEAUTIFULLY AND IS EXTRAORDINARY TO FEEL, SEE, AND LOOK AT. THE NUMBERS SIT STILL — THEY'RE PICTURES OF NUMBERS, NOT LIVING NUMBERS. THE NUMBERS BECOME EPIC AND DYNAMIC — LIVING TILES THAT LIFT, GLOW, AND IGNITE IN THEIR DIGIT COLOR, ANIMATE WHEN THEY CHANGE, SLOW ORBIT FLOW. THE BUTTONS BECOME THE BEST IN THE NETWORK. THE FORMAT GETS SO STRONG THAT ANYTHING PASTED IN COMES OUT BEAUTIFUL — THE IMAGE BECOMES THE BOARD. NO SEAMS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3247",
+   "title": "The Intelligent Block — Epic Numbers, Best Buttons",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3247/IB-SMART-NOTE-20261117-sn3247-the-intelligent-block-epic-numbers.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3247/IB-SMART-NOTE-20261117-sn3247-the-intelligent-block-epic-numbers.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "1399df7131b353c70d062aa95aee0979f47fb0bd"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

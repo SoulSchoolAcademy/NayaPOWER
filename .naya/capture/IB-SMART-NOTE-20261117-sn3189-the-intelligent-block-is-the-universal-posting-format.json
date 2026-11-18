@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3189",
+ "intelligence": {
+  "title": "The Intelligent Block Is the Universal Posting Format",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3189-the-intelligent-block-is-the-universal-posting-format",
+  "smart_note_id": "SN-3189",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3189/IB-SMART-NOTE-20261117-sn3189-the-intelligent-block-is-the-universal-posting-format.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Everything he has taught tonight — the ball not the circle, the 3D object, the light around, the white words, the whole nutshell, the ten stars and the LOVE — was never meant to live in one page. It was meant to become the way everything is posted, by everybody, everywhere: one template, one format, every image, every post, every piece of intelligence, in every feed. And his question is the test: have you applied everything you learned to this block? If the block carries all of it, the answer is yes — and the format is the proof that the teaching landed. The block is already great — four layers, color flow, elevation, whole nutshells, stars and LOVE, the dynamic foot, machine on the back and human on the front — so the renovation keeps all of that and only adjusts what isn't yet ultimate: the ending that ranks value and intelligence together, the Personal page's presentation language harvested in, the images in the same format. Renovate, don't rebuild. The block is the format now — and the format is everything he taught, in one place, used by everyone.",
+  "simple_view": "Imagine everyone in a whole town writes their letters on the same beautiful paper — same size, same pretty borders, same way of showing how much everyone loved it. Every picture, every story, every smart idea, all on the same beautiful paper, everywhere. That is what Shawn wants: one format for everything, made from everything he taught us, so every post looks as good as the best one.",
+  "grandma_view": "Dear, he asked a wonderful question: have we taken everything he taught us and put it into this one beautiful block? Because that block is going to be how everybody shares everything — every picture, every post, every clever thought, in every feed. So we keep everything that's already lovely about it — the layers, the colours flowing, the whole story, the stars and the love — and we finish it properly: a beautiful ending that shows how much it is loved and how smart it is, the Personal page's lovely way of presenting things brought in, and all the pictures in the same format. One format, for everyone, made from everything he taught.",
+  "naya_view": "THE INTELLIGENT BLOCK IS THE POSTING FORMAT. ONE TEMPLATE EVERYBODY USES, FOR ALL IMAGES, ALL POSTS, ALL INTELLIGENCE, IN EVERY FEED. RENOVATE IT INTO THE ULTIMATE WITHOUT WRECKING IT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3189",
+   "title": "The Intelligent Block Is the Universal Posting Format",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3189/IB-SMART-NOTE-20261117-sn3189-the-intelligent-block-is-the-universal-posting-format.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3189/IB-SMART-NOTE-20261117-sn3189-the-intelligent-block-is-the-universal-posting-format.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b2829026bbfb497f29438ba952fe2483760d216c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

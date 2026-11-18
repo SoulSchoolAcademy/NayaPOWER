@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3185",
+ "intelligence": {
+  "title": "The Personal Bar Tiles Are the Model",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3185-the-personal-bar-tiles-are-the-model",
+  "smart_note_id": "SN-3185",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3185/IB-SMART-NOTE-20261117-sn3185-the-personal-bar-tiles-are-the-model.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The machine keeps making new icon sets, and every new set is a little less real than the one he already loved. The answer is not another set — it is the set that already works, taken verbatim. The Personal bar tiles are the most beautiful, the most real, the most applicable, the most valuable — and once they are the one set everywhere, every page carries the same real objects, and no page has to be re-judged from scratch. Harvest, don't invent: the standard already exists, on the page he showed us. That is the use-what-works law in its purest form — the good thing is already built, so take it byte for byte and put it everywhere, instead of building a look-alike that is a little worse every time.",
+  "simple_view": "Imagine you have a set of the most beautiful toy jewels — the shiniest, the most real-looking ones. And every time you need jewels somewhere else, you try to make new ones, and they never come out as good. The smart thing is to take the beautiful ones you already have and use them everywhere. Same jewels, every page, the best ones.",
+  "grandma_view": "Dear, he showed us the little icons at the bottom of his Personal page — the most beautiful ones, the most real, the ones he loves best. We don't need to make new ones. We just take those very same ones, exactly as they are, and put them on every page — the Dashboard, the Hub, the Personal page, all the same. That way everything matches, and everything is the best.",
+  "naya_view": "THE BOTTOM-BAR TILES ON THE PERSONAL WHOLE-PAGE BUILD ARE THE MODEL. HARVEST THEM VERBATIM AS THE ONE ICON SET EVERYWHERE. THAT IS THE STANDARD THE OTHER PAGES ARE JUDGED AGAINST.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3185",
+   "title": "The Personal Bar Tiles Are the Model",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3185/IB-SMART-NOTE-20261117-sn3185-the-personal-bar-tiles-are-the-model.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3185/IB-SMART-NOTE-20261117-sn3185-the-personal-bar-tiles-are-the-model.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a1e58670df09b070156f271d3f13a555ce8e0462"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

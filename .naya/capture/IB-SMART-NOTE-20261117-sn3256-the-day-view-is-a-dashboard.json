@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3256",
+ "intelligence": {
+  "title": "The Day View Is A Dashboard — Prime Real Estate",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3256-the-day-view-is-a-dashboard",
+  "smart_note_id": "SN-3256",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3256/IB-SMART-NOTE-20261117-sn3256-the-day-view-is-a-dashboard.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: when you go inside the day, it's just a bunch of buttons, and it's not a great presentation — it needs to be way more super impressive than that. Maybe a quote, or wisdom for the Monday, that goes across the top, or something — that's what we should have. And then the wisdom quote of the day. And then inside — imagine a different dashboard in this. It just looks like — look at it — do you think that's pro? He would scorecard that and go: what am I supposed to say about that? Just buttons and icons on the page and left all this blank space. If he logged into a login like that he'd be like: what are you doing? Imagine you bought high-level land in prime real estate and then you built the buildings on like a third of the land, not even, and you just left the rest of it — but you paid for the whole thing. It's called prime real estate. And then if you have the opportunity to build anything on that land, what would you build? You just put a button and an icon and text and just nothing else, and the rest of the page blank, when you could do anything with that page?",
+  "simple_view": "Imagine you bought the very best land in the whole city — prime real estate! — and then you built one tiny little house on a third of it and left the rest all empty! That would be silly, right? You paid for the WHOLE thing! The day page is like that land — it's prime real estate, so we build on the whole thing: a wise quote across the top, and then all your appointments and notes and news filling the page, like a whole city of buildings! Never just one button on a big empty field!",
+  "grandma_view": "It's like this, love — imagine you bought the very best land in the whole city, dear — prime real estate, love! — and then you built one tiny little house on a third of it, dear, and left the rest all empty, love! That would be silly, right, dear? You paid for the WHOLE thing, love! The day page is like that land, dear — it's prime real estate, love, so we build on the whole thing: a wise quote across the top, dear, and then all your appointments and notes and news filling the page, love, like a whole city of buildings! Never just one button on a big empty field, dear!",
+  "naya_view": "THE DAY VIEW IS A DASHBOARD — PRIME REAL ESTATE. THE DAY VIEW IS A DASHBOARD INSIDE THE CALENDAR, NOT BUTTONS ON BLANK SPACE. WISDOM QUOTE OF THE DAY ACROSS THE TOP, THE DAY'S INSTRUMENTS FILLING THE PAGE (APPOINTMENTS AS TILES, REPORT, INTEL, NOTES, SMART NOTES, TIMELINE, NEWS, WEATHER, HOROSCOPE AS LIVE GLIMPSES). PRIME REAL ESTATE: THE WHOLE LAND IS BUILT ON, NEVER A THIRD WITH THE REST BLANK.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3256",
+   "title": "The Day View Is A Dashboard — Prime Real Estate",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3256/IB-SMART-NOTE-20261117-sn3256-the-day-view-is-a-dashboard.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3256/IB-SMART-NOTE-20261117-sn3256-the-day-view-is-a-dashboard.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "66018a4a794f84ce7771e7bd83b15dd9fc9f5805"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

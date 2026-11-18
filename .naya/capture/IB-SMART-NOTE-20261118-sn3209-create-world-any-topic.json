@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3209",
+ "intelligence": {
+  "title": "Create World, Any Topic",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3209-create-world-any-topic",
+  "smart_note_id": "SN-3209",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/NAMING/SN-3209/IB-SMART-NOTE-20261118-sn3209-create-world-any-topic.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This ruling closes a question that had been reopened twice. On November 14 the settlement was \"Create world\" — a space is a room, a world is the whole thing, and \"space\" stays only as the everyday place-word inside a world. On November 16 the Create World modal was judged flat and dead — it created nothing and went nowhere. On November 17 at 23:59Z he reopened the naming itself, and the captain's scorecard picked \"Create Your World\" 9/10 over plain \"Create World\" 8/10. His ruling sets the pick aside: the plain settled word wins, and the definition widens with it — a world is for ANY topic, any location, any people gathered around that topic, worlds within the world. The warmth the captain wanted from \"Your\" and \"Place\" is not the word's job; the word's job is to be the settled word, and the warmth comes from what the button does. What the button does is the standing caveat, unchanged by the ruling: it must confirm before creating — the November 8 failure, when CREATE SPACE silently created a space on every click and left two duplicate spaces on his account — and it must land the creator inside the world/feed it made — the November 16 failure, when the modal went nowhere. The boards still say \"create space\"; the wording change rides the Hub feed round, where every \"Create Space\" becomes \"Create World.\"",
+  "simple_view": "Imagine you have a button that makes a whole new world — any world you can think of, about anything at all. Your dad says: keep the name simple, \"Create World.\" Any topic, any place, any people — a world is for all of it. And when you press it, it has to ask \"are you sure?\" first, and then it has to take you right inside the world you just made — not leave you standing outside it.",
+  "grandma_view": "Dear, he settled the name — it's Create World, plain and simple, and a world can be about anything at all, any topic, any place, with the people who care about that topic, worlds inside worlds. The boards still say \"create space,\" dear, and that changes now to Create World. And the button itself has to do two things, always: ask before it makes anything, so it never makes two by accident, and take him straight inside the world he just made — never leave him standing outside it.",
+  "naya_view": "CREATE WORLD. ANY TOPIC, ANY LOCATION, THE PEOPLE ON THAT TOPIC. WORLDS WITHIN THE WORLD. THE BOARDS SAY CREATE WORLD NOW. CONFIRM BEFORE CREATING. LAND HIM INSIDE WHAT HE MADE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3209",
+   "title": "Create World, Any Topic",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/NAMING/SN-3209/IB-SMART-NOTE-20261118-sn3209-create-world-any-topic.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/NAMING/SN-3209/IB-SMART-NOTE-20261118-sn3209-create-world-any-topic.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "cabeb04ef36cfa205ca115c5e1baa98d3dfcfb27"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

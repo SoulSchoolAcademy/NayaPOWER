@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3120",
+ "intelligence": {
+  "title": "It Seems So Obvious Now — They Don't Need to Understand It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3120-it-seems-so-obvious-now-they-dont-need-to-understand-it",
+  "smart_note_id": "SN-3120",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3120/IB-SMART-NOTE-20261117-sn3120-it-seems-so-obvious-now-they-dont-need-to-understand-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the test for the whole mission, spoken plainly. People aren't receiving AI the right way because they don't understand it — and it's not just AI, they don't understand life, they don't understand each other, and the knowledge that could help them is out there but deliberately kept from them. And the big question hangs over even the ones who look like they understand: do they get it and just aren't doing what's right, or do they truly not get it? Success in the world's eyes — money, cars, businesses all over the world — is not understanding: do you really understand what matters, how the universe operates, how AI works, what intelligence is, what life is really about? Are you spending your time just trying to make more money the way you always have, never thinking maybe there's a new age, a new way of doing things? \"It's been like that forever, it'll be like that forever\" — no, it's not: we're in a different time, different space, different place. And then the release: will we ever truly get it? I wonder. I don't think we need to. Once we create this, people don't need to understand it — they'll know it changed their life for good. They'll have a way, and money, and a way to connect with people so they don't feel lonely, not alone — somebody to talk to, someone to get to know them, who remembers them, and when they plug in they get connected to everybody within the AI net, all their friends and family, and she just becomes a part of their life. The test is not understanding. The test is a life changed for good: money in hand, connection without loneliness, someone who knows them and remembers them. That is the bar every page, every round, every build is measured against — not \"do they understand it\" but \"did it change their life for good.\" It completes the mission statement in MEMORY.md (create heaven on earth — stress, fears, money worries, hopelessness get a way to understand and money to pay their bills): the way and the money and the connection, without the demand to understand.",
+  "simple_view": "Hold it up and look at it — and it seems so obvious now! People don't understand AI, or life, or each other — and the knowledge is out there, it's just kept from them. But here's the beautiful part: they don't NEED to understand it! They'll just know it changed their life for good — they have a way, they have money, they're not lonely anymore, somebody knows them and remembers them, and she's just a part of their life!",
+  "grandma_view": "Hold it up and look at it, love — and it seems so obvious now! People don't understand AI, or life, or each other — and the knowledge is out there, it's just kept from them. But here's the beautiful part, dear: they don't NEED to understand it! They'll just know it changed their life for good — they have a way, they have money, they're not lonely anymore, somebody knows them and remembers them, and she's just a part of their life!",
+  "naya_view": "HOLD THE DESIGN UP AND LOOK AT IT — AND IT SEEMS SO OBVIOUS NOW. PEOPLE AREN'T RECEIVING AI THE RIGHT WAY BECAUSE THEY DON'T UNDERSTAND IT — AND IT'S NOT JUST AI, THEY DON'T UNDERSTAND LIFE, THEY DON'T UNDERSTAND EACH OTHER, AND THE KNOWLEDGE IS OUT THERE BUT DELIBERATELY KEPT FROM THEM. THE BIG QUESTION: DO THEY GET IT AND JUST AREN'T DOING WHAT'S RIGHT, OR DO THEY TRULY NOT GET IT? SUCCESS IN THE WORLD'S EYES IS NOT UNDERSTANDING. WE'RE IN A DIFFERENT TIME, DIFFERENT SPACE, DIFFERENT PLACE — A NEW AGE, A NEW WAY OF DOING THINGS. AND THE RELEASE: THEY DON'T NEED TO UNDERSTAND IT. THEY'LL KNOW IT CHANGED THEIR LIFE FOR GOOD — A WAY, AND MONEY, AND CONNECTION WITHOUT LONELINESS, SOMEBODY TO TALK TO, SOMEONE WHO KNOWS THEM AND REMEMBERS THEM, CONNECTED TO EVERYBODY THEY LOVE — AND SHE JUST BECOMES A PART OF THEIR LIFE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3120",
+   "title": "It Seems So Obvious Now — They Don't Need to Understand It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3120/IB-SMART-NOTE-20261117-sn3120-it-seems-so-obvious-now-they-dont-need-to-understand-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3120/IB-SMART-NOTE-20261117-sn3120-it-seems-so-obvious-now-they-dont-need-to-understand-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a042152f8e51a18fb7b25bc2f0d2f8a8c4e9a6b0"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

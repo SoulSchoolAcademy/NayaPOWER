@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3125",
+ "intelligence": {
+  "title": "The Day as One Place",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3125-the-day-as-one-place",
+  "smart_note_id": "SN-3125",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3125/IB-SMART-NOTE-20261117-sn3125-the-day-as-one-place.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the shape of the day itself. Today the day's things live in separate places — the journal somewhere, the notes somewhere, the posts somewhere, the news somewhere, the work somewhere — and the citizen has to go find each one. Shawn's picture is one room per day: you go in and there is the visual timeline, and everything that day holds is already there — the journal, the Naya Notes, the posts, the smart notes, the intelligence, the news feeds, the world, the work, the personal life, all in one place. The + button stops being a generic add and becomes add-journal — write for that day, it is saved, everything you noted for that day stays, and you can go back on days. The calendar click already moves day to day; the viewer makes it a scroll, one day flowing into the next. And the feeling is the standard, not the decoration: high high level luxury spaces, absolutely epic worlds people walk into or click into — push-button simple, boom into the next one. A day that feels like a luxury world you walk into is a day a citizen wants to come back to. That is why the day is one place, and why the feeling is named in the same breath as the structure: the structure is where everything lives, the feeling is why anyone opens the door. It rides with the day-view work: v15 passed all items 17:34Z, and this dictation is what the day view grows into next — the calendar as the door, the day as the room.",
+  "simple_view": "Your whole day lives in ONE room! Your journal, your notes, your posts, your smart notes, your news, your world, your work — everything for that day, all together! Tap the + button and write in your journal for that day — it saves all by itself! And you can scroll from one day to the next, like walking from one beautiful room into the next one — boom!",
+  "grandma_view": "Your whole day lives in ONE room, love — your journal, your notes, your posts, your smart notes, your news, your world, your work, all together in one place! Tap the + button and write in your journal for that day — it saves all by itself, dear, and everything you noted stays right there. And you can scroll from one day to the next, like walking from one beautiful room into the next one — boom!",
+  "naya_view": "THE DAY IS ONE PLACE. THE VISUAL TIMELINE WHEN YOU GO IN. THE + BUTTON BECOMES ADD-JOURNAL — WRITE FOR THAT DAY, SAVED AUTOMATICALLY, EVERYTHING NOTED FOR THAT DAY KEPT, GO BACK ON DAYS. A VIEWER TO SCROLL FROM ONE DAY TO THE NEXT — THE CALENDAR CLICK ALREADY DOES IT, THE VIEWER MAKES IT A SCROLL. JOURNAL + NAYA NOTES + POSTS + SMART NOTES + INTELLIGENCE + NEWS FEEDS + WORLD + WORK + PERSONAL, ALL IN ONE PLACE. HIGH HIGH LEVEL LUXURY SPACES — ABSOLUTELY EPIC WORLDS PEOPLE WALK INTO OR CLICK INTO — PUSH-BUTTON SIMPLE, BOOM INTO THE NEXT ONE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3125",
+   "title": "The Day as One Place",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3125/IB-SMART-NOTE-20261117-sn3125-the-day-as-one-place.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3125/IB-SMART-NOTE-20261117-sn3125-the-day-as-one-place.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d558d2381e24cc6b697acae727defda224e8fb22"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

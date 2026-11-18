@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3236",
+ "intelligence": {
+  "title": "Personal First — The One Births the Many",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3236-personal-first",
+  "smart_note_id": "SN-3236",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3236/IB-SMART-NOTE-20261117-sn3236-personal-first.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He was asked about the smart-notes problem — the notes that can't go in because of the glitch — and he answered with an order about what matters more. Figure out the solution, yes. But don't put it as a priority over getting Personal done: the smart app, the first one, with the calendar, the About, the Skills, the whole thing done, the membership — because it's so important once that's done. Once that one page is done, the front end, the walk flow, is done — because that page clones to create all the other pages, the Business, the Space, the Thing, and the users get their own pages. And he wanted us to understand how important it is, and how hard it is: the hardest thing he ever did in his life, for sure — enormous patience, enormous intelligence, understanding of systems and AI, a whole lot to this — no wonder people are not succeeding, it's an enormous amount of work. And that is exactly why it has to end push-button simple for people: once we get this done it's easy for people. Create one machine, the machine creates all the rest, all the other pages, the whole internet creates itself — endless, like the big bang, boom, she's birthed, the one creates the many and the many create many more, infinitely, exponential on all levels. The difficulty is the reason for the simplicity, not an excuse for complexity: because it was that hard to build, it has to be that easy to use.",
+  "simple_view": "Imagine you have one really important toy to finish — the very first one! — and a bunch of little notes about it. The notes are nice, but the TOY comes first! Because once the first toy is done, it can make all the other toys by itself — like magic! One toy makes many toys, and those make even more, forever and ever!",
+  "grandma_view": "It's like this, love — you have one really important thing to finish first, dear — the very first page, the Personal page, with its calendar and its stories and its skills and its membership, all done right, love! The little notes about it can wait, dear — they're safe, nothing's lost! Because once that one page is done, love, it makes all the other pages by itself — the Business, the Space, the Thing — like a mother having babies, dear, one becomes many, and many become many more, forever and ever! And it was the hardest thing he ever did, love — that's why it has to be so simple for everyone else, just push a button, dear!",
+  "naya_view": "PERSONAL FIRST. The smart-notes problem gets FIGURED OUT — but it is NEVER a priority over getting Personal DONE WHOLE. Personal is the smart app, THE FIRST ONE: the calendar, the About, the Skills, the membership — THE WHOLE THING DONE RIGHT. Once Personal is done, the walk flow is done — because that page CLONES to create all the other pages: Business, Space, the Thing — and the users get their own pages. ONE MACHINE creates all the rest; the whole internet creates itself; THE ONE BIRTHS THE MANY and the many birth many more, INFINITELY, EXPONENTIAL ON ALL LEVELS. This is the HARDEST thing he ever did — enormous patience, enormous intelligence, understanding of systems and AI — no wonder people are not succeeding. And that is why it must end PUSH-BUTTON SIMPLE for people.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3236",
+   "title": "Personal First — The One Births the Many",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3236/IB-SMART-NOTE-20261117-sn3236-personal-first.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3236/IB-SMART-NOTE-20261117-sn3236-personal-first.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "07b9a5491764c4fcc8b5aa1acc21c0ed630de5fd"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

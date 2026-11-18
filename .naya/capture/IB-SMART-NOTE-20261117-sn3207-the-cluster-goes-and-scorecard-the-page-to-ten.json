@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3207",
+ "intelligence": {
+  "title": "The Cluster Goes — and Scorecard the Page to Ten",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3207-the-cluster-goes-and-scorecard-the-page-to-ten",
+  "smart_note_id": "SN-3207",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3207/IB-SMART-NOTE-20261117-sn3207-the-cluster-goes-and-scorecard-the-page-to-ten.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He was looking at a page we had just called done and delivered — and the first thing his eye caught was something left over from before the Smart Tabs that nobody had removed, and icons that differ from page to page. A delivered page is not a finished page if it still carries the old thing and the wrong icons. That is the first lesson: the eye that delivers must also be the eye that removes — a leftover is not a detail, it is the page not being clean. The charge is wider than the one cluster: as I go through these pages, I look for anything that needs to be aligned and put right — the bottom bar, the sidebars, the plus buttons, all the same on every page, not different on each page. One icon set, one bar, one language, everywhere — the alignment law, now with its enforcement: look through as you go, not in a separate audit later. And the learning runs both ways and always: take a feature from one page to another whenever it makes it beautiful — not only \"if needed\" — because we learn from each other, we grow, we help, and the art we're crafting is an art to master. \"If needed\" was the old bar; \"if it makes it beautiful\" is the new one. The scorecard question is the tool for it: why is this whole page not a ten, what is it missing, what would make it ten times better, how aligned is it with the universal smart app page — and what can we learn from here to take over to the next page. The universal smart app page is the standard the whole page is measured against; the calendar inner pages are the first place the learning lands.",
+  "simple_view": "Imagine you tidy your bedroom and show it to your dad — but you left an old broken toy in the middle of the floor, and all your toy boxes are different colors on every shelf. He says: why is that old toy still there? We don't need it anymore — take it away. And look — as you tidy each room, check everything matches: the same boxes, the same handles, everywhere, not different in each room. And if one room has a beautiful idea — like numbers on the boxes — use it in every room, because it makes them all more beautiful. That's how we learn from each other. And then ask: why isn't this room a ten? What's missing? What would make it ten times better?",
+  "grandma_view": "Dear, he looked at a page we had just delivered and the first thing he saw was an old cluster of buttons left over from before — he didn't know what it was or why it was there, and he's right, it should go. The good icons — the points, the percentages, the money — those are the best, keep those. And as we go through the pages, dear, we look for anything that needs lining up and putting right — the bottom bar, the sidebars, the little plus buttons, all the same on every page, not different on each one. We learn from each other: take a beautiful idea from one page and use it on all the others, whenever it makes them more beautiful — not only when it's needed. The numbers on this page are lovely; you could use letters or symbols too. And for every page, ask: why isn't this a ten? What's missing? What would make it ten times better? How does it measure against the one universal smart app page? That's how the art gets mastered.",
+  "naya_view": "A DELIVERED PAGE STILL CARRYING THE OLD THING IS NOT A FINISHED PAGE. REMOVE THE LEFTOVER. LOOK THROUGH AS YOU GO — BOTTOM BAR, SIDEBARS, PLUS BUTTONS, ALL THE SAME ON EVERY PAGE. LEARN FROM EVERY PAGE, BOTH WAYS, WHENEVER IT MAKES IT BEAUTIFUL — NOT ONLY IF NEEDED. SCORECARD THE WHOLE PAGE AGAINST THE UNIVERSAL SMART APP PAGE: WHY IS IT NOT A TEN, WHAT IS IT MISSING, WHAT MAKES IT TEN TIMES BETTER.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3207",
+   "title": "The Cluster Goes — and Scorecard the Page to Ten",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3207/IB-SMART-NOTE-20261117-sn3207-the-cluster-goes-and-scorecard-the-page-to-ten.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3207/IB-SMART-NOTE-20261117-sn3207-the-cluster-goes-and-scorecard-the-page-to-ten.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d6a2bca3c75df5389587c9479f6bd89ff2b83f20"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3122",
+ "intelligence": {
+  "title": "Both Formats for Both Pages",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3122-both-formats-for-both-pages",
+  "smart_note_id": "SN-3122",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3122/IB-SMART-NOTE-20261117-sn3122-both-formats-for-both-pages.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This supersedes the 01:49Z assignment in his own live word: it was unfold for About and slideshow for Skills — one format each — and now it is BOTH formats for BOTH pages. About gets the unfold down and the slideshow; Skills gets the unfold down and the slideshow; a bridge page offers the choice (in a nutshell, then \"which presentation do you want?\"). The one shared data source feeds all four presentations — one source, four faces, no copies drifting apart. And in the same breath he re-emphasized the two laws the formats live or die by: motion must never falsely imply that work is happening (Design Law #4 — the unfold must never pretend to be working when it is only moving), and color is a language, not decoration (Design Law #5 — every color in the formats means something). The formats are the presentation; the laws are what make the presentation honest. And the timing matters: the amendment went to the Personal coordinator BEFORE its build step, so the round builds both formats from the start instead of building one and redoing it — the correction landed before the work, not after it. This is the correction compound working as designed: the lesson lands in the same hour as the build it governs.",
+  "simple_view": "About and Skills BOTH get BOTH ways to look at them — the unfold-down way AND the slideshow way! And there's a little bridge page that says \"here's what this is — which way do you want?\" And all four ways drink from the SAME well — one source, so nothing ever disagrees! And remember: moving must never pretend to be working, and every color must MEAN something!",
+  "grandma_view": "About and Skills BOTH get BOTH ways to look at them, love — the unfold-down way AND the slideshow way! And there's a little bridge page that says \"here's what this is — which way do you want?\" And all four ways drink from the SAME well, dear — one source, so nothing ever disagrees! And remember: moving must never pretend to be working, and every color must MEAN something!",
+  "naya_view": "ABOUT AND SKILLS EACH GET BOTH OFFICIAL PRESENTATIONS — THE UNFOLD DOWN AND THE SLIDESHOW — WITH A BRIDGE PAGE OFFERING THE CHOICE. ONE SHARED DATA SOURCE FEEDS ALL FOUR PRESENTATIONS. THIS SUPERSEDES THE 01:49Z ONE-FORMAT-EACH ASSIGNMENT. MOTION MUST NEVER FALSELY IMPLY THAT WORK IS HAPPENING. COLOR IS A LANGUAGE, NOT DECORATION.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3122",
+   "title": "Both Formats for Both Pages",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3122/IB-SMART-NOTE-20261117-sn3122-both-formats-for-both-pages.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3122/IB-SMART-NOTE-20261117-sn3122-both-formats-for-both-pages.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "3578806d7685fd9b38c4fe2a01ea7b1c312041a2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3214",
+ "intelligence": {
+  "title": "The Hub Banner, Simplified",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3214-the-hub-banner-simplified",
+  "smart_note_id": "SN-3214",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/HUB/SN-3214/IB-SMART-NOTE-20261118-sn3214-the-hub-banner-simplified.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The banner was doing two jobs and doing both badly: it was the greeting and it was the wisdom, and the wisdom was a big block that pushed everything else down. His fix is subtraction, and the subtraction is precise — three named things come out (the Wisdom of the Day label, the long quote, the \"Smart Note of the Day\" label), and what remains is four things in a fixed order: motto at the top, greeting, date and live time underneath the greeting, and the sharing line. The order matters: the motto says what this place is, the greeting says who it is for, the date and live time underneath say when it is — live time under the greeting is the day's pulse, not a clock in a corner — and the sharing line says what happens here, replacing the \"Our public smart feed\" pill, which goes with it. Nothing else is allowed in. The wisdom is not thrown away; it is moved to where it already works — it circulates like a slide in the feed, one after the next, proven by his own two screenshots four minutes apart (Twin Rank 4:41 PM, One Screen Complete 4:46 PM), and he likes the slide, so it stays as feed content and never again as a big block on the banner. The close box moves to the top corner, superseding the 22:25Z bottom-right placement — top corner because that is where a close box lives, and closing folds the banner away so the search bar sits flush at the top, hugging the top bar. You can leave it open if you want; there must be an obvious way to bring it back, because a banner you cannot bring back is a banner you are afraid to close. And the topic chips row scrolls horizontally — right now it doesn't, it sits static and clipped, which means the topics past the edge do not exist for the person looking. People related to the chosen feed or tab still show automatically on the side, anybody online and relevant included — that stands unchanged from 22:25Z. The amendment went to the Hub feed round at 00:49Z, pending application.",
+  "simple_view": "Imagine the top of your Hub page is like a little hello card — just four lines: what NayaNET is, \"Good afternoon, Shawn!\", today's date and the time right underneath, and \"We share value and intelligence and connect you with like minds.\" That's it! The big long quote goes away — but don't worry, the wise words still slide past in the feed, one after another, like a little show. And there's a tiny close box in the top corner if you want to fold the card away, and you can always bring it back.",
+  "grandma_view": "Dear, the top of the Hub is getting simpler — just four lovely lines, dear: what NayaNET is, \"Good afternoon, Shawn.\", today's date and the live time right underneath the greeting, and \"We share value and intelligence and connect you with like minds.\" The big long quote comes out, dear — but the wise words aren't gone, they slide along in the feed, one after the next, just as you like them. There's a little close box in the top corner if you'd like to fold it away, and you can always bring it back, dear.",
+  "naya_view": "FORGET THE BIG QUOTE. THE BANNER IS FOUR THINGS: THE MOTTO, THE GREETING, THE DATE AND LIVE TIME UNDERNEATH, THE SHARING LINE. THE WISDOM SLIDES IN THE FEED, ONE AFTER THE NEXT. THE CLOSE BOX LIVES IN THE TOP CORNER. THE TOPIC CHIPS SCROLL.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3214",
+   "title": "The Hub Banner, Simplified",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/HUB/SN-3214/IB-SMART-NOTE-20261118-sn3214-the-hub-banner-simplified.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/HUB/SN-3214/IB-SMART-NOTE-20261118-sn3214-the-hub-banner-simplified.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "921f934c4f7011556a57b5fbcb4d75dda09f1c26"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

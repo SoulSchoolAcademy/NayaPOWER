@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3252",
+ "intelligence": {
+  "title": "The Inspector — The Quality Standard",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3252-the-inspector-quality-standard",
+  "smart_note_id": "SN-3252",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3252/IB-SMART-NOTE-20261117-sn3252-the-inspector-quality-standard.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: like, you always want an inspector that goes over the whole project and makes sure that every page is up to standard — like a quality standard — where they inspect: is everybody in line? Is everybody designing in the brand language, in line with Naya's design, where it's truly her design all the way through? The captain answered: yes — that's exactly what's missing. An inspector that walks the whole project page by page against the language and calls out anything that isn't her design all the way through. The first sweep is on its way now — every page scored against the Code, the Design Language, the Palette, the Real Object Law — with the breaks listed and ranked, worst first. And it stays standing — it runs again after every round lands, so nothing drifts out of line without being caught.",
+  "simple_view": "Imagine a friendly inspector who walks through your whole big building, room by room, and checks: is everything beautiful? Is everything following the rules? Is it all truly Naya's design, all the way through? And if something is wrong, she writes it down in a list — the worst things first — so we can fix them!",
+  "grandma_view": "It's like this, love — imagine a friendly inspector, dear, who walks through your whole big building, room by room, and checks: is everything beautiful, love? Is everything following the rules? Is it all truly Naya's design, all the way through, dear? And if something is wrong, love, she writes it down in a list — the worst things first — so we can fix them!",
+  "naya_view": "THE INSPECTOR — THE QUALITY STANDARD. ALWAYS HAVE AN INSPECTOR THAT GOES OVER THE WHOLE PROJECT AND MAKES SURE EVERY PAGE IS UP TO STANDARD — A QUALITY STANDARD — INSPECTING: IS EVERYBODY IN LINE? IS EVERYBODY DESIGNING IN THE BRAND LANGUAGE, IN LINE WITH NAYA'S DESIGN, WHERE IT'S TRULY HER DESIGN ALL THE WAY THROUGH? SWEEP #1 DISPATCHED 03:04Z; THE INSPECTOR IS A STANDING SEAT — IT SWEEPS AGAIN AFTER EVERY MAJOR LANDING AND ONCE A DAY WITH THE DAILY REPORT. EVERY PAGE SCORED AGAINST THE CODE, THE DESIGN LANGUAGE, THE PALETTE, THE REAL OBJECT LAW — WITH THE BREAKS LISTED AND RANKED, WORST FIRST.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3252",
+   "title": "The Inspector — The Quality Standard",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3252/IB-SMART-NOTE-20261117-sn3252-the-inspector-quality-standard.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3252/IB-SMART-NOTE-20261117-sn3252-the-inspector-quality-standard.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6603c58806b9a4b52e33685d74e8b1ec733a40f8"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

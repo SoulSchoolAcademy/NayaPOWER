@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3224",
+ "intelligence": {
+  "title": "We Take the Wisdom, Not the Name",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3224-we-take-the-wisdom-not-the-name",
+  "smart_note_id": "SN-3224",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3224/IB-SMART-NOTE-20261118-sn3224-we-take-the-wisdom-not-the-name.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a confessional that keeps the lesson and burns the name. You walk in, you speak freely because you know nobody is writing down who said it — and the next week the sermon is wiser for what was heard, without a single person in the pews knowing whose story taught it. That is the deal here, stated plainly instead of hidden: your words are yours, they leave after a week, and what stays is the distilled essence — the useful part, the intelligent part — which goes into the shared system so everybody learns from it. Nobody reads your mail to do this. Nobody listens to your calls. The machine distills, it does not eavesdrop. And when your wisdom reaches other people, your name does not travel with it unless you put it there yourself. That is why people can talk freely here, and why the collective gets smarter every day without anyone being exposed.",
+  "simple_view": "Imagine you tell your friend a secret, and she promises two things: she will never repeat WHO told her, and after a week she will forget the exact words but remember the lesson — like \"be kind when someone is sad.\" Then she shares the lesson with everyone, and everyone gets kinder, and nobody knows it came from you. That is how NayaNET works. Nobody reads your letters. Nobody listens to your calls. Your words go away after a week, the good lesson stays, and your name stays with you unless you choose to share it.",
+  "grandma_view": "Dear, it is like the old village rule: what is said in confidence stays in confidence. Nobody here opens your letters, dear, nobody listens at the door, nobody watches through the window — and after a week your words are gone, the way spoken words should be gone, with only the wisdom kept, the way a good cook keeps the recipe and throws away the shopping list. And when that wisdom is shared around the village, dear, nobody says whose kitchen it came from unless you are proud and choose to say so yourself. Everybody learns, nobody is exposed, and that is why people can speak freely here, the way they used to on a neighbour's porch.",
+  "naya_view": "NOBODY READS YOUR MAIL. NOBODY READS YOUR MESSAGES. NOBODY LISTENS TO YOUR CALLS. NOBODY WATCHES YOUR VIDEO. WE DON'T KEEP YOUR CONTENT — AFTER A WEEK THE WORDS GO AND THE ESSENCE STAYS. EVERY DAY THE INTELLIGENCE IS DISTILLED: A THOUSAND IN, A HUNDRED KEPT; A HUNDRED IN, TEN KEPT. WE TAKE THE WISDOM, NOT THE NAME — UNLESS YOU CHOOSE IT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3224",
+   "title": "We Take the Wisdom, Not the Name",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3224/IB-SMART-NOTE-20261118-sn3224-we-take-the-wisdom-not-the-name.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3224/IB-SMART-NOTE-20261118-sn3224-we-take-the-wisdom-not-the-name.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "30193621baa7d22b1e85eb0b0ead40973551e10a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

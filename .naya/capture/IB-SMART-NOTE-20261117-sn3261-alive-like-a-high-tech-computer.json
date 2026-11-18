@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3261",
+ "intelligence": {
+  "title": "Alive Like A High-Tech Computer, Not A Video Game",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3261-alive-like-a-high-tech-computer",
+  "smart_note_id": "SN-3261",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3261/IB-SMART-NOTE-20261117-sn3261-alive-like-a-high-tech-computer.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: some of it looks really good — like, obviously, the orb stuff going, spinning around — the more alive it feels, the better. But we gotta have — we don't want to be a video game alive. We want to more be like high-tech computer alive, right? Intelligent, elegant, system alive. Less text, more icons. The aliveness is not the problem; the flavour of it is. Spinning orbs are good — they make the page feel alive. But the aliveness must read as a high-tech computer, intelligent and elegant and system-alive, not as a video game.",
+  "simple_view": "Imagine a robot friend that moves and spins — that's fun! But if it moves like a cartoon video game, it feels silly. If it moves like a real super-smart computer — smooth, calm, elegant — it feels AMAZING! So we keep the spinning orbs, because alive is good — but we make them move like a high-tech computer, not like a video game. And we use more pictures and fewer words, so everything is easy to understand!",
+  "grandma_view": "It's like this, love — imagine a robot friend that moves and spins, dear — that's fun, love! But if it moves like a cartoon video game, dear, it feels silly, love. If it moves like a real super-smart computer, dear — smooth, calm, elegant, love — it feels AMAZING, dear! So we keep the spinning orbs, love, because alive is good — but we make them move like a high-tech computer, dear, not like a video game, love. And we use more pictures and fewer words, dear, so everything is easy to understand!",
+  "naya_view": "ALIVE LIKE A HIGH-TECH COMPUTER, NOT A VIDEO GAME. ALIVE IS GOOD — THE ORBS SPINNING MAKE IT FEEL ALIVE — BUT THE FEEL IS HIGH-TECH COMPUTER ALIVE, NOT VIDEO-GAME ALIVE: INTELLIGENT, ELEGANT, SYSTEM ALIVE. LESS TEXT, MORE ICONS. PAGES DRIFT FROM EACH OTHER (EACH A NEW DESIGN, SORT OF LIKE IT BUT NOT COMPLETELY) — THE INSPECTOR SCORES THE DRIFT, THE FACTORY IS THE ONE LANGUAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3261",
+   "title": "Alive Like A High-Tech Computer, Not A Video Game",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3261/IB-SMART-NOTE-20261117-sn3261-alive-like-a-high-tech-computer.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3261/IB-SMART-NOTE-20261117-sn3261-alive-like-a-high-tech-computer.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "cbac1011adac130ca3dd2271fc40bb7a4ecaf271"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

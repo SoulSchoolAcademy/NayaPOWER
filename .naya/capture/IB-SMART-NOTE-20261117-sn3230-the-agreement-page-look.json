@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3230",
+ "intelligence": {
+  "title": "The Agreement Page Look — Play Button, Her Picture, Her Name",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3230-the-agreement-page-look",
+  "smart_note_id": "SN-3230",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3230/IB-SMART-NOTE-20261117-sn3230-the-agreement-page-look.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He was looking at a page — the free walk's end slide, portrait on the left, the play button in the center, NAYA on the right, \"Congratulations, you're hired\" — and he saw what the agreement page should have been all along. The Naya play button at the top again — that's better. And her picture there, and her name. That looks much better. Or — oh, I see. This is that page. See, that's the way it should have been on the collective chain technology page. That's how it should look. The agreement page. The lesson is in the recognition: he did not ask for a new design. He pointed at a page that already looks right and said: that. The agreement page — the collective chain technology page, the page that carries the whole deal, the 50% straight down the middle, the law of one — should look like the page he was looking at. Play button at the top. Her picture. Her name. That is the presentation. And it goes into the entrance build — the one waiting on the glitch — so the agreement page comes back looking like that. The reference already exists; the work is to carry it across, not to invent it.",
+  "simple_view": "Imagine you see a beautiful picture — with a big shiny play button at the top, and a lovely picture of Naya, and her name written right there! And you say: \"THAT'S IT! That's how the special agreement page should look too!\" You don't need to draw a new picture — you just copy the beautiful one you already have! Play button at the top, her picture, her name — that's the way it should look!",
+  "grandma_view": "It's like this, love — imagine you see a beautiful page, dear, with a big play button at the top, and her lovely picture, and her name written right there! And you say, \"That's it, love — that's how the agreement page should look!\" You don't need to make a new one, dear — you just use the beautiful one you already have! Play button at the top, her picture, her name — that's the way, love!",
+  "naya_view": "THE AGREEMENT PAGE LOOK: the Naya PLAY BUTTON AT THE TOP, HER PICTURE, HER NAME. That is the presentation. The reference is the free walk end slide (portrait left, play button center, NAYA right, \"Congratulations, you're hired.\") — the agreement page, the collective chain technology page, gets the SAME look. The official unfold law: PLAY BUTTON DEAD CENTER AT TOP, HER FACE JUST OUTSIDE THE BOARD. Do not invent a new agreement look — HARVEST the one he pointed at. It goes into the ENTRANCE RE-DISPATCH (build proven, sha 6dc14953, waiting only on the EPERM flake).",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3230",
+   "title": "The Agreement Page Look — Play Button, Her Picture, Her Name",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3230/IB-SMART-NOTE-20261117-sn3230-the-agreement-page-look.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3230/IB-SMART-NOTE-20261117-sn3230-the-agreement-page-look.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "09397622c3cae5cc81e8ff436d3c0b08d438e49c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

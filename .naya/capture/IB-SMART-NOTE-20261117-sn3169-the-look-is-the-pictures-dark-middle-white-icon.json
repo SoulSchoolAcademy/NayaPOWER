@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3169",
+ "intelligence": {
+  "title": "The Look Is the Pictures — Dark Middle, White Icon",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3169-the-look-is-the-pictures-dark-middle-white-icon",
+  "smart_note_id": "SN-3169",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3169/IB-SMART-NOTE-20261117-sn3169-the-look-is-the-pictures-dark-middle-white-icon.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Two minutes after his 21:57Z musing — a question, carefully left open — he answered it himself by showing the pictures again. The musing was not a new idea; it was a description of the tiles in front of him. That is why no option was put to him: the images answered the question, and the answer supersedes his own 20:46Z ruling. The white middle is out — not by debate, by his pictures and his words together. And the sidebar correction stings because it is true: he told us to put the exact icons in the sidebar buttons and we didn't. The remedy is the concept, learned properly this time: the sidebar takes the exact icons, and every other icon is raised like them — elevated, glowing, lit up, real buttons.",
+  "simple_view": "Imagine you have a picture of the perfect button — dark in the middle, a bright white picture on top, glowing around the edges like a real button! That's the look. The old white-middle buttons are out — these dark ones with white pictures are in. And every button should look like these, not a new kind every time.",
+  "grandma_view": "Dear, he showed us the pictures again — dark in the middle, white icon, glowing edges, rounded like real buttons — and that's the look we're after now. The white middles are out. The sidebar gets those exact icons, and every other icon is raised up to look like them.",
+  "naya_view": "THE LOOK IS THE PICTURES — DARK MIDDLE, WHITE ICON. ELEVATED, GLOWING, LIT UP, ROUNDED, REAL BUTTONS. THE WHITE MIDDLE IS OUT — SUPERSEDED. THE SIDEBAR GETS THE EXACT ICONS FROM HIS IMAGES; EVERY OTHER ICON IS RAISED LIKE THEM.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3169",
+   "title": "The Look Is the Pictures — Dark Middle, White Icon",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3169/IB-SMART-NOTE-20261117-sn3169-the-look-is-the-pictures-dark-middle-white-icon.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3169/IB-SMART-NOTE-20261117-sn3169-the-look-is-the-pictures-dark-middle-white-icon.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d050c978fa25a0ee2db3e747ef52aa7b45de5fa1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

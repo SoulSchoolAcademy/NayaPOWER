@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3146",
+ "intelligence": {
+  "title": "The Hub Welcome Folds Away",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3146-hub-welcome-folds-away",
+  "smart_note_id": "SN-3146",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3146/IB-SMART-NOTE-20261117-sn3146-hub-welcome-folds-away.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The greeting is a welcome, not a page: it says hello and gets out of the way, and what is left is clean like software — search, three doors, categories, nothing explaining itself. The sidebar balance is the same idea at the edges: even on either side, nothing doubled, nothing the same colour twice in a row, the things you reach for first (My Worlds — create your world first) sitting where the hand falls. And the social-network feel is the shape he has been circling all day: Facebook's structure, but different, ours.",
+  "simple_view": "When you come in, the Hub says good afternoon and shows you the time — and then it folds itself away, all tidy, so you just see the search and your doors. Clean and simple, like real software!",
+  "grandma_view": "When you come in, dear, the Hub says good afternoon and shows you the time — and then it folds itself away, all tidy, so you just see the search and your doors. Clean and simple, like real software!",
+  "naya_view": "THE HUB WELCOME FOLDS AWAY: IT GREETS YOU — GOOD AFTERNOON, TIME, QUOTE OF THE DAY — THEN IT FOLDS UP AND HIDES AWAY. UNDERNEATH, FLUSH: SEARCH, COLLECTIVE / PERSONAL / ACTIVITY, THEN THE CATEGORIES. SIDEBARS BALANCED, EVEN ON EITHER SIDE. THE BEST INTERFACE IS THE ONE THAT FOLDS UP AND HIDES AWAY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3146",
+   "title": "The Hub Welcome Folds Away",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3146/IB-SMART-NOTE-20261117-sn3146-hub-welcome-folds-away.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3146/IB-SMART-NOTE-20261117-sn3146-hub-welcome-folds-away.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ca3857916f5d0df0765f8d78ad1012a773d0b716"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

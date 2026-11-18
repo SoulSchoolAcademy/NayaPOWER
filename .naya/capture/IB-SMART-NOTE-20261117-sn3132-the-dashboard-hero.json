@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3132",
+ "intelligence": {
+  "title": "The Dashboard Hero — Number + Speedometer Only",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3132-the-dashboard-hero",
+  "smart_note_id": "SN-3132",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3132/IB-SMART-NOTE-20261117-sn3132-the-dashboard-hero.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The Dashboard is an instrument — the number and the speedometer are the page. A greeting board above it does not add warmth; it rips the presentation, because the page no longer opens on its instrument. It came \"out of nowhere\" — nothing in his law put it there, and his 15:16Z Nov 9 law already said the hero viewport is just the number + the speedometer. And the bottom bar is the same lesson from the other side: every page with its own icon system is a page that does not belong to the system. The Dashboard's five tiles against Personal's six is not a variation, it is a different system — and his question is the verdict: \"why do you have a different icon system in this one?\" The answer is that there is one icon system, and it is Personal's six tiles, byte-identical, everywhere — Dashboard included.",
+  "simple_view": "Your Dashboard is like a race car dashboard — the big number and the speedometer are the whole show! But someone stuck a \"good morning\" sign right on top of it, and it covered up the show! So the sign comes off! And the buttons at the bottom have to be the same buttons as on your Personal page — the same six, in the same order — because every page in your world has the same buttons!",
+  "grandma_view": "Your Dashboard, love, is like a beautiful instrument — the big number and the speedometer are the whole show. But someone stuck a \"good morning\" sign right on top of it, dear, and it covered up the show! So the sign comes off. And the buttons at the bottom have to be the same buttons as on your Personal page — the same six, in the same order — because every page in your world has the same buttons, nice and matching.",
+  "naya_view": "THE GREETING BOARD COMES OFF THE DASHBOARD — THE HERO IS NUMBER + SPEEDOMETER ONLY. NO GREETING BOARD ABOVE THE SPEEDOMETER. THE BOTTOM BAR BECOMES PERSONAL'S SIX-TILE BAR, BYTE-IDENTICAL. ONE ICON SYSTEM ON EVERY PAGE — ADD ROYAL PURPLE · MAIL SAPPHIRE · ACTIVITY EMERALD · WORLDS DEEP GOLD · ECOSYSTEM BURNT ORANGE · CONNECT RED. A PAGE WITH ITS OWN ICON SYSTEM IS WRONG AND GETS REBUILT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3132",
+   "title": "The Dashboard Hero — Number + Speedometer Only",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3132/IB-SMART-NOTE-20261117-sn3132-the-dashboard-hero.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3132/IB-SMART-NOTE-20261117-sn3132-the-dashboard-hero.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c38d925f9f3519be74dcd4b2f639b0d69b7d25d5"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

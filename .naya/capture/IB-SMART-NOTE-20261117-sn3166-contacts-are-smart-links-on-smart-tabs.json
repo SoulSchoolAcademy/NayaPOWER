@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3166",
+ "intelligence": {
+  "title": "Contacts Are Smart Links on Smart Tabs",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3166-contacts-are-smart-links-on-smart-tabs",
+  "smart_note_id": "SN-3166",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3166/IB-SMART-NOTE-20261117-sn3166-contacts-are-smart-links-on-smart-tabs.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He reached back to a presentation he already loves — \"those beautiful nice Smart Links like we used before\" — and said: that is how contacts should look. Not a directory, not a settings screen: the Smart Link on the Smart Tab, one click to organize, edit, star, love. And the default is the machine doing the work: contacts auto-organized into lists, so nobody organizes by hand. The human clicks; the machine sorts. The same object does double duty: the Smart Mail topic pills are Smart Links on Smart Tabs too, which is why this law rides their fix — one object, one presentation, everywhere.",
+  "simple_view": "Imagine your friends all have beautiful name cards on a bar — you tap one and it tidies itself, or you give it a star and it goes on your favorites list! And the cards sort themselves into groups all by themselves, so you never have to tidy them. That's how contacts should work.",
+  "grandma_view": "Dear, your contacts will look like those lovely Smart Links on the Smart Bar — tap one and it organizes itself, or you can change it, or give it a star so it goes on your favorites. And the system sorts them into lists for you, so you never have to do the organizing yourself.",
+  "naya_view": "CONTACTS ARE SMART LINKS ON SMART TABS. A CLICK ORGANIZES THE CONTACT; A CLICK CHANGES OR EDITS IT; A STAR OR A LOVE PUTS IT ON THE FAVORITES LIST. A NEW LIST IS MADE WITH AN EDIT BUTTON / A + BUTTON. BY DEFAULT THE SYSTEM ORGANIZES CONTACTS FOR THEM — AUTO-ORGANIZED INTO LISTS — SO NOBODY HAS TO ORGANIZE THEM BY HAND.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3166",
+   "title": "Contacts Are Smart Links on Smart Tabs",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3166/IB-SMART-NOTE-20261117-sn3166-contacts-are-smart-links-on-smart-tabs.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3166/IB-SMART-NOTE-20261117-sn3166-contacts-are-smart-links-on-smart-tabs.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "66de660034eaea7878f9dc9ce89f0cb9da1dbf62"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

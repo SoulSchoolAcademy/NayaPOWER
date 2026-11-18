@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3130",
+ "intelligence": {
+  "title": "The Sidebar — Sub-Tabs for the Three Worlds",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3130-the-sidebar-sub-tabs",
+  "smart_note_id": "SN-3130",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3130/IB-SMART-NOTE-20261117-sn3130-the-sidebar-sub-tabs.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "What he noticed was good — the sub-list exists — and his correction is the order of it. Page first, then mail, then messages, then connections: the thing itself before the ways to reach it, and the people last because they belong to the page. \"DMs\" is what they're always called, so that's what they're called — no \"instant messages\" nobody says. And the three worlds stay separate where they should be separate — your personal connections, your business connections, your world connections, each under its own world — while the two directories gather everything in one place: Smart Worlds for all your worlds, Your Connections for all your connections. The difference between the directory and the sub-tab is the whole shape: the sub-tab shows you this world's people; the directory shows you all of them, organized in one place. And the leaderboard is the open item he named plainly: not done, gotta get it done.",
+  "simple_view": "When you tap Personal, you see four little doors in a row: your Page first, then your Mail, then your Messages — we call them DMs, because that's what everybody calls them! — then your Connections, the people connected to that page! Business gets the same four doors, and it's called Business / Work now, because business is your work! And Your World gets the same four doors too! Your personal friends, your work friends, and your world friends each stay in their own place — but Your Connections shows ALL of them together in one big place!",
+  "grandma_view": "When you tap Personal, love, you see four little doors in a row: your Page first, then your Mail, then your Messages — we call them DMs, dear, because that's what everybody calls them — then your Connections, the people connected to that page! Business gets the same four doors, and it's called Business / Work now, because business is your work! And Your World gets the same four doors too! Your personal friends, your work friends, and your world friends each stay in their own place — but Your Connections shows all of them together in one big place, organized nice and neat.",
+  "naya_view": "PERSONAL SUB-TABS, IN ORDER: PERSONAL PAGE → PERSONAL MAIL → PERSONAL MESSAGES — PERSONAL DMS, BECAUSE DMS IS WHAT THEY'RE ALWAYS CALLED → PERSONAL CONNECTIONS. BUSINESS BECOMES BUSINESS / WORK — SAME SUB-TABS: WORK PAGE → WORK MAIL → WORK DMS → WORK CONNECTIONS. YOUR WORLD GETS THE SAME SUB-TABS: WORLD PAGE → WORLD MAIL → WORLD DMS → WORLD CONNECTIONS. THE THREE CONNECTIONS ARE SEPARATED — PERSONAL, BUSINESS, WORLD, EACH UNDER ITS OWN WORLD. SMART WORLDS IS THE DIRECTORY OF ALL THE WORLDS YOU'RE CONNECTED TO, INCLUDING YOURS. YOUR CONNECTIONS IS THE DIRECTORY OF ALL YOUR CONNECTIONS, ORGANIZED IN ONE PLACE. THE INTELLIGENT LIBRARY IS THE HUB'S LIBRARY. SMART GROWTH IS INVITE PEOPLE. LEADERBOARDS: NOT DONE — YOU GOTTA GET THE LEADERBOARD DONE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3130",
+   "title": "The Sidebar — Sub-Tabs for the Three Worlds",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3130/IB-SMART-NOTE-20261117-sn3130-the-sidebar-sub-tabs.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3130/IB-SMART-NOTE-20261117-sn3130-the-sidebar-sub-tabs.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d84701a98191972bb8de6cb7844cb73136185e5f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

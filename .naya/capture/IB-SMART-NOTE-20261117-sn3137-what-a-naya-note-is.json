@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3137",
+ "intelligence": {
+  "title": "What a Naya Note Is — And the Block Bottom, Warmer",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3137-what-a-naya-note-is",
+  "smart_note_id": "SN-3137",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3137/IB-SMART-NOTE-20261117-sn3137-what-a-naya-note-is.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A Naya Note is the answer to \"what did he mean by that, in one beautiful thing I can keep?\" — not a transcript, but the essence: what it is saying, the intelligence in it, the value of it, put in a beautiful format. And then it is kept properly — noted, saved, dated, timed, organized — in the Smart Vault, where it can be remembered, and shared in NayaNET, where it can travel. That is what the note is FOR: memory and sharing, not storage. And it happens on the fly, in the moment — \"smart note this\" — in the intelligent block format, with images or without, beautiful either way, because the format carries it. Then the block itself: he looked at the bottom of it and saw the flattest part — flat pills and little stars under boards that are real objects. Warmer does not mean more words or more controls; it means the light comes from the objects themselves. More luxurious means fewer, better controls, each with real depth — the heart as a real jewel you can press, the stars as real gold, the counts carried on the objects the way the digit tiles carry numbers. And the watch-out is the whole discipline: the bottom is the part people touch most — love, like, share, add intel — so it must stay push-button simple. Warmth from depth and glow, never from adding things. The boards do not change; the bottom rises to meet them.",
+  "simple_view": "A Naya Note is like catching a firefly in a beautiful jar! You take what someone said, you keep just the sparkly, important part — what it means and why it's special — and you put it in a beautiful jar so you can remember it and share it with your friends! You can do it super fast — just say \"smart note this!\" — and sometimes there's a picture in the jar, sometimes not, and it's beautiful either way! And the bottom of the jar — the little hearts and stars — those should be shiny and warm and beautiful too, like real jewels!",
+  "grandma_view": "A Naya Note, love, is like catching a firefly in a beautiful jar! You take what someone said, you keep just the sparkly, important part — what it means and why it's special — and you put it in a beautiful jar so you can remember it and share it with your friends! You can do it super fast, dear — just say \"smart note this!\" — and sometimes there's a picture in the jar, sometimes not, and it's beautiful either way! And the bottom of the jar — the little hearts and stars — those should be shiny and warm and beautiful too, like real jewels!",
+  "naya_view": "DISTILL THIS INTO ITS ESSENCE — WHAT IT'S SAYING, THE INTELLIGENCE, THE VALUE — AND PUT IT IN A BEAUTIFUL FORMAT SO IT CAN BE REMEMBERED, STORED IN THE SMART VAULT, AND SHARED IN NAYANET. NOTED AND SAVED AND DATED AND TIMED AND ORGANIZED. ON THE FLY: \"SMART NOTE THIS\" AND IT'S SMART-NOTED IN AN INTELLIGENT BLOCK FORMAT; IMAGES SOMETIMES, SOMETIMES NOT — BEAUTIFUL EITHER WAY. THE BLOCK BOTTOM: WARMER, MORE ELEGANT, MORE LUXURIOUS — THE FIVE STARS COULD BE BETTER, THE HEARTS AND THE LOVES COULD BE BETTER. WARMTH FROM DEPTH AND GLOW, NEVER FROM ADDING THINGS. THE BOARDS THEMSELVES DO NOT CHANGE — THE BOTTOM RISES TO MEET THEM.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3137",
+   "title": "What a Naya Note Is — And the Block Bottom, Warmer",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3137/IB-SMART-NOTE-20261117-sn3137-what-a-naya-note-is.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3137/IB-SMART-NOTE-20261117-sn3137-what-a-naya-note-is.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "76df716bddb059e7d4e2f28b152aa2d424c38c8a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

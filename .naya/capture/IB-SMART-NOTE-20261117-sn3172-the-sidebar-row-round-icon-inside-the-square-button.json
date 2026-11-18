@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3172",
+ "intelligence": {
+  "title": "The Sidebar Row — Round Icon Inside the Square Button, With the Label",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3172-the-sidebar-row-round-icon-inside-the-square-button",
+  "smart_note_id": "SN-3172",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3172/IB-SMART-NOTE-20261117-sn3172-the-sidebar-row-round-icon-inside-the-square-button.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He had to say it three times because each time the machine fixed the wrong layer: first the icon shape, then the Hub's squares, and now the row itself — because a round icon floating without its button, or a square button with gray text inside it, is still not the row he showed. The clarification draws the line exactly where the confusion was: the OUTSIDE (the button, the glow, the flow) stays; the INNER (the icon) becomes the circle. Nothing about the row's frame changes. Everything about what sits inside it does. And the label is not a hover secret or a tooltip — it sits beside the button, visible, because a row you cannot read is a row you cannot use.",
+  "simple_view": "Imagine a little picture frame: the frame is square, and inside it sits a round shiny button with a picture on it — and next to the frame, the name is written out so you can read it. The frame stays square, the button inside stays round, and the name is right there beside it. We don't put gray words inside the frame — the round button goes there.",
+  "grandma_view": "Dear, each row in the sidebar is a square button, and inside it sits the round icon — raised up, shining — with the name written beside it where you can see it. The glow around the outside stays just as it is; only the inside changes. No gray words in the middle, no gray dot — the round icon is the thing inside.",
+  "naya_view": "THE SIDEBAR ROW IS A SQUARE BUTTON HOLDING THE ROUND ICON INSIDE IT, WITH THE LABEL BESIDE IT. THE BUTTON IS ELEVATED AND LIGHTS UP. THE GLOW AND FLOW AROUND THE OUTSIDE STAYS. ONLY THE INNER CHANGES — THE ROUND ICON IS THE INNER ONE, NOT GRAY TEXT, NOT A GRAY DOT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3172",
+   "title": "The Sidebar Row — Round Icon Inside the Square Button, With the Label",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3172/IB-SMART-NOTE-20261117-sn3172-the-sidebar-row-round-icon-inside-the-square-button.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3172/IB-SMART-NOTE-20261117-sn3172-the-sidebar-row-round-icon-inside-the-square-button.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "380926e9f8147da38d32f350d97fe3267ddade67"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

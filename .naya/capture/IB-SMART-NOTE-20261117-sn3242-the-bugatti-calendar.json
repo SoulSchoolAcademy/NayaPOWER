@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3242",
+ "intelligence": {
+  "title": "The Bugatti Calendar — The Most Intelligent Calendar",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3242-the-bugatti-calendar",
+  "smart_note_id": "SN-3242",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3242/IB-SMART-NOTE-20261117-sn3242-the-bugatti-calendar.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He asked for a healthy exercise: scorecard the calendar. Tell me why it's not ten out of ten. Ten things you love about it, ten things you don't love about it, what you do to make it ten times better, and ten reasons why it's not aligned with NayaNET and what we're trying to do. And then — if you're going to create the most intelligent calendar, a scheduling day-to-day hub, call it where you just log in and you can see your world, the ultimate login for your life, your online life — and you're going to create the presentation of the calendar and how you experience things within it, how would that look? He imagined it would look 10,000 times more advanced and beautiful than this — with all the language he gave us and all the examples, we can do a whole lot better. Forget web page. Think more like inner matrix type look. Think Rubik's Cube. Think Tetris. Think high-end elite Bugatti times a thousand — imagine Bugatti became involved in creating AI interfaces. That's what we're talking about. The captain scored it 4 out of 10: the 4 is real — the month fits, today glows, the timeline is real, it never invents, Back works everywhere. The 6 missing are the presentation, the menu, and the knowing — it's a web page with a grid of text, not an object, not a world, not a machine. And the vision he closed with is the 10,000-times version: you log in and you see your world.",
+  "simple_view": "Imagine the calendar is not a boring page with a grid of words — imagine it's a magic cube you can turn in your hands! Turn it, and the next month is the next face! And today is the face that's all lit up and glowing! And when you tap a day, you're INSIDE that day — like stepping into a beautiful cockpit with dials and lights and orbs all around you! And it feels like the fanciest, fastest car in the whole world — times a thousand!",
+  "grandma_view": "It's like this, love — imagine the calendar is not a boring page, dear — imagine it's a beautiful cube you can turn in your hands, love! Turn it, and the next month is the next face! And today is the face that's all lit up and glowing, dear! And when you tap a day, you're inside that day, love — like stepping into a beautiful cockpit with dials and lights and orbs all around you! And it feels like the fanciest, fastest car in the whole world — times a thousand, dear!",
+  "naya_view": "THE BUGATTI CALENDAR — THE MOST INTELLIGENT CALENDAR. The score is **4 OUT OF 10**. The 4 is REAL — the month fits, today glows, the timeline is real, it never invents, Back works everywhere. The 6 missing are the PRESENTATION, the MENU, and the KNOWING — it's a WEB PAGE with a grid of text, NOT an object, NOT a world, NOT a machine. FORGET WEB PAGE — think INNER MATRIX: RUBIK'S CUBE, TETRIS, HIGH-END ELITE BUGATTI TIMES A THOUSAND — imagine BUGATTI became involved in creating AI interfaces. The month is a CUBE YOU TURN; today is the FACE THAT'S LIT; the day is a COCKPIT OF INSTRUMENTS, not paragraphs; the page KNOWS YOU and arranges itself around you BEFORE YOU ASK. 10,000 TIMES more advanced and beautiful than the page as it stands. The most intelligent calendar is the ULTIMATE LOGIN FOR YOUR LIFE — log in and SEE YOUR WORLD.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3242",
+   "title": "The Bugatti Calendar — The Most Intelligent Calendar",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3242/IB-SMART-NOTE-20261117-sn3242-the-bugatti-calendar.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3242/IB-SMART-NOTE-20261117-sn3242-the-bugatti-calendar.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "def7019586448cf7f4ef4ee6f196b46defdfac71"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

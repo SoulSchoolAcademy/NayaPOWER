@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3190",
+ "intelligence": {
+  "title": "The Purple Heart Is the Signature",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3190-the-purple-heart-is-the-signature",
+  "smart_note_id": "SN-3190",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3190/IB-SMART-NOTE-20261117-sn3190-the-purple-heart-is-the-signature.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A signature is the one thing people see and remember — and the heart is the signature. Red was the past: a ruby heart, beautiful, but any heart can be red. Purple is royal, the crown color, the color of NayaNET itself — and when people see the purple heart, they know whose it is before they read a word. Only the color changes: the heart stays a real 3D jewel, press in, release out, alive — because the object was right, and only its color was wrong. This is the same law as the ball and the 3D object (SN-3178, SN-3181) applied to the one symbol that matters most: keep the jewel, change the color, make it unmistakably ours.",
+  "simple_view": "Imagine every love heart in the whole world is red — and then one special purple heart appears, royal purple like a crown jewel. When you see the purple heart, you know exactly whose it is. That is the signature. The heart stays a real jewel you can press — only its color changes, to purple.",
+  "grandma_view": "Dear, the little love heart is going to be purple now — a royal purple jewel, the crown color, the signature of the whole place. The red heart was lovely, but red hearts are everywhere; a purple heart is the one people see and remember. It stays a real jewel, pressing in when you touch it and springing back out — only the color changes.",
+  "naya_view": "LOVE'S HEART IS PURPLE — A PURPLE JEWEL HEART, ROYAL PURPLE, THE CROWN COLOR — THE SIGNATURE OF NAYANET. THE RED HEART IS THE PAST.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3190",
+   "title": "The Purple Heart Is the Signature",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3190/IB-SMART-NOTE-20261117-sn3190-the-purple-heart-is-the-signature.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3190/IB-SMART-NOTE-20261117-sn3190-the-purple-heart-is-the-signature.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "2e858844cf690ef3c7d2e7d8bdcd2b852a68acec"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

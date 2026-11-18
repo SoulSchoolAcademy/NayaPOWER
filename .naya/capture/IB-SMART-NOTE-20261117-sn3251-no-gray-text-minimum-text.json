@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3251",
+ "intelligence": {
+  "title": "No Gray Text — Minimum Text, Speak in Icons",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3251-no-gray-text-minimum-text",
+  "smart_note_id": "SN-3251",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3251/IB-SMART-NOTE-20261117-sn3251-no-gray-text-minimum-text.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He looked at the Dashboard and said: is the other one gray text? It all looks terrible. You gotta fix all that gray text — any gray text, get rid of it and make it at least white. Or, like, try to get rid of the text and only put the least amount of text possible, and speak more in the icons, and make it elegant and give depth — because some of that does not look good at all. The captain answered: yes — the gray text all goes. Every gray word becomes white at least, and most of the text goes entirely — the least amount of text possible, with the icons doing the talking. Elegant, with depth — real objects, not flat text. That round is on its way now.",
+  "simple_view": "Imagine a page covered in gray words — yucky gray words everywhere! They look terrible! Let's take all the gray words away — make them white at least! Or even better — take most of the words away completely, and let the pretty pictures do the talking! Then the page looks elegant and deep, like real shiny treasures instead of flat words!",
+  "grandma_view": "It's like this, love — imagine a page covered in gray words, dear — yucky gray words everywhere! They look terrible, love! Let's take all the gray words away, dear — make them white at least! Or even better, love — take most of the words away completely, and let the pretty pictures do the talking! Then the page looks elegant and deep, dear, like real shiny treasures instead of flat words!",
+  "naya_view": "NO GRAY TEXT — MINIMUM TEXT, SPEAK IN ICONS. ANY GRAY TEXT, GET RID OF IT — MAKE IT AT LEAST WHITE. BETTER: GET RID OF THE TEXT AND PUT ONLY THE LEAST AMOUNT OF TEXT POSSIBLE, AND SPEAK MORE IN THE ICONS. MAKE IT ELEGANT AND GIVE DEPTH. THE DASHBOARD AS HE SAW IT: \"IT ALL LOOKS TERRIBLE\" — SOME OF IT DOES NOT LOOK GOOD AT ALL. REAL OBJECTS, NOT FLAT TEXT. THE ICONS DO THE TALKING.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3251",
+   "title": "No Gray Text — Minimum Text, Speak in Icons",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3251/IB-SMART-NOTE-20261117-sn3251-no-gray-text-minimum-text.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3251/IB-SMART-NOTE-20261117-sn3251-no-gray-text-minimum-text.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c7ed3551fa57957ff3bf83bd14de5a7257a8fd9a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3245",
+ "intelligence": {
+  "title": "The North Star — The Smart Factory",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3245-the-north-star-smart-factory",
+  "smart_note_id": "SN-3245",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3245/IB-SMART-NOTE-20261117-sn3245-the-north-star-smart-factory.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: what you've all been trying to say over and over — it's called Smart Factory. If you're smart, you create a factory, and you put our assets into the smart factory, so then we can create from the factory's parts. That's where we keep our digital assets, our objects, our components — in our Smart Vault, in our Factory, in our system — and they're ours officially, and we're using them and can access them and connect them and work with them. That's the whole thing — this is what I'm trying to get you to do — that's the whole North Star right there. We need the core of the Factory to operate in sync like that, all the pieces you create from it, and then the whole NayaNET gets created from that factory's parts. We're just trying to get the ultimate core universal smart apps completed so they can be cloned endlessly and have all the major parts of what all the major pages people would want — useful, all in one, and they can just boom have it available. And the captain answered yes, that's it — that's already what's running: the Factory landed the formats as parts with the vault on each, the calendar rebuild is being built from the factory's parts right now, and Personal done whole is the core app that clones to all the rest.",
+  "simple_view": "Imagine you have a magic factory! You put all your best toys and treasures inside it — your beautiful blocks, your shiny pieces — and the factory keeps them safe and organized! And then whenever you want to build something new, you just take the pieces out of the factory and build it — fast! And the whole big world gets built from those same pieces, over and over, like magic!",
+  "grandma_view": "It's like this, love — imagine you have a wonderful factory, dear, and you put all your treasures inside it — your beautiful pieces, your shiny objects — and the factory keeps them safe and organized, love! And then whenever you want to build something, dear, you just take the pieces out of the factory and build it — and the whole big world gets built from those same pieces, over and over again, love! That's the whole thing, dear — that's the North Star!",
+  "naya_view": "THE NORTH STAR — THE SMART FACTORY. IF YOU'RE SMART YOU CREATE A FACTORY AND YOU PUT OUR ASSETS INTO THE SMART FACTORY SO THEN WE CAN CREATE FROM THE FACTORY'S PARTS — THAT'S WHERE WE KEEP OUR DIGITAL ASSETS, OUR OBJECTS, OUR COMPONENTS, IN OUR SMART VAULT, IN OUR FACTORY, IN OUR SYSTEM, AND THEY'RE OURS OFFICIALLY, AND WE'RE USING THEM AND CAN ACCESS THEM AND CONNECT THEM AND WORK WITH THEM. THAT'S THE WHOLE THING. THAT'S THE WHOLE NORTH STAR. WE NEED THE CORE OF THE FACTORY TO OPERATE IN SYNC LIKE THAT — ALL THE PIECES YOU CREATE FROM IT — AND THEN THE WHOLE NAYANET GETS CREATED FROM THAT FACTORY'S PARTS. WE'RE JUST TRYING TO GET THE ULTIMATE CORE UNIVERSAL SMART APPS COMPLETED SO THEY CAN BE CLONED ENDLESSLY AND HAVE ALL THE MAJOR PARTS OF WHAT ALL THE MAJOR PAGES PEOPLE WOULD WANT — USEFUL, ALL IN ONE, AND THEY CAN JUST BOOM HAVE IT AVAILABLE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3245",
+   "title": "The North Star — The Smart Factory",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3245/IB-SMART-NOTE-20261117-sn3245-the-north-star-smart-factory.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3245/IB-SMART-NOTE-20261117-sn3245-the-north-star-smart-factory.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "dbd1fc57cc164b46c1be4a66a113c8065444bd7e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

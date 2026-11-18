@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3138",
+ "intelligence": {
+  "title": "The Hub Buttons Are the Standard",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3138-the-hub-buttons-are-the-standard",
+  "smart_note_id": "SN-3138",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3138/IB-SMART-NOTE-20261117-sn3138-the-hub-buttons-are-the-standard.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Before this, \"the standard\" was a description in the laws — real objects, elevation, alive on hover, depth you can see. Now it is a build he has looked at and said yes to. That changes how every future button is judged: not against a paragraph, but against the Hub buttons. Does it move like that? Does it light up like that? Does it have layers and depth like that? If not, it goes back. And the gap he named in the same breath is part of the same law, not a footnote: the sidebar colors are not aligned. Each item keeps its own icon and its own color — that is the system — but the colors must come from the ONE set, in spectrum order, and no two the same may sit next to each other. Smart Worlds purple next to Intel Today purple is the example he showed. The buttons are the standard; the sidebar alignment is the work still owed, riding the Hub eye-notes round and the icon-consistency sweep.",
+  "simple_view": "You know the buttons on the Hub? They are the best ones — they are sharp and shiny and they move and light up when you touch them, like real buttons you can press! Those are the buttons we want everywhere now. The only thing still to fix is the colors on the sides — every button keeps its own color, but the colors have to go in order, like a rainbow, and never two of the same next to each other!",
+  "grandma_view": "You know the buttons on the Hub, love? They are the best ones — sharp and shiny, and they move and light up when you touch them, like real buttons you can press! Those are the buttons we want everywhere now, dear. The only thing still to fix is the colors on the sides — every button keeps its own color, but the colors have to go in order, like a rainbow, and never two of the same next to each other!",
+  "naya_view": "THE HUB BUTTONS ARE THE STANDARD. SHARP, MOTION, ACTIVE STATES, LAYERS, DEPTH — ALIVE ON HOVER, REAL OBJECTS, DEPTH YOU CAN SEE. THIS BUILD IS THE PROOF. THE GAP: THE SIDEBAR COLORS ARE NOT ALL ALIGNED — EACH ITEM KEEPS ITS OWN ICON + ITS OWN COLOR, BUT THE COLORS COME FROM THE ONE SET, IN ORDER, NO ADJACENT DUPLICATES. THE ALIGNMENT RIDES THE HUB EYE-NOTES ROUND / THE ICON-CONSISTENCY SWEEP.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3138",
+   "title": "The Hub Buttons Are the Standard",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3138/IB-SMART-NOTE-20261117-sn3138-the-hub-buttons-are-the-standard.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3138/IB-SMART-NOTE-20261117-sn3138-the-hub-buttons-are-the-standard.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c1fd1e6f0bc2bd4e16a3f45214226a00b8f689c2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

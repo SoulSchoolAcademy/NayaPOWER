@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3181",
+ "intelligence": {
+  "title": "3D, Not 2D — Elevation Over Glow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3181-3d-not-2d-elevation-over-glow",
+  "smart_note_id": "SN-3181",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3181/IB-SMART-NOTE-20261117-sn3181-3d-not-2d-elevation-over-glow.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Beautiful is not the bar anymore — the icons are already beautiful, and they still read flat. Flat means 2D: sitting on the screen, not coming out of it. What he wants is the object itself: full, round, elevated, alive — press it and it goes in, let go and it comes out, something happening when you use it. That is the difference between a picture of an object and the object: a picture sits there, an object answers your hand. Glow is not the effect; glow behind is only ever the frame. And the test is merciless and simple — if it still reads flat, it failed, however beautiful it is. Beauty without elevation is the old mistake in a prettier dress.",
+  "simple_view": "Imagine a sticker of a button, and a real button you can press. The sticker is flat — it just sits there. The real button pops out toward you, and when you press it, it goes in, and when you let go, it pops back out. Shawn wants real buttons, not stickers. Everything should pop out and press in, like it is alive.",
+  "grandma_view": "Dear, the little icons are pretty, but they lie flat on the screen like pictures in a book. He wants them to feel like real things — round and raised, coming toward you, so when you touch one it presses in and springs back out, like a real button on a real machine. A thing that moves when you touch it feels alive. A flat picture never does.",
+  "naya_view": "I DON'T WANT ANYTHING FLAT. I WANT 3D EFFECT OVER GLOW EVERY DAY OF THE WEEK. PRESS IT AND IT GOES IN, LET GO AND IT COMES OUT — ALIVE, SOMETHING HAPPENING. FULL CIRCLE, NOT A HULA HOOP.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3181",
+   "title": "3D, Not 2D — Elevation Over Glow",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3181/IB-SMART-NOTE-20261117-sn3181-3d-not-2d-elevation-over-glow.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3181/IB-SMART-NOTE-20261117-sn3181-3d-not-2d-elevation-over-glow.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c8bc6b774f0193c9bf462a7c435411c3d8c156f2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3226",
+ "intelligence": {
+  "title": "The Library — He Has to See It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3226-the-library-where-it-lives",
+  "smart_note_id": "SN-3226",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3226/IB-SMART-NOTE-20261117-sn3226-the-library-where-it-lives.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said he likes all three — the unfold down, the slideshow, and the Intelligent Library. That looks good. And then the question that matters more than the praise: where is it? I'm not sure, I have to see it. Liking a thing is not the same as having it. The answer is a place, not a description: on the Personal page, in About. About unfolds, seven boards, one at a time. The Slideshow button beside Unfold down is the sideways way of reading the same boards. The green door on the bridge — \"Enter the Intelligent Library\" — opens the Library. That is where it lives. But he has not seen it in place himself, and the eye that walked it found it not yet working: no count anywhere, so he cannot see how much is inside; Add fails, so nothing can go inside; and with nothing inside, Share and search and the category chips cannot even be tested. A door that opens onto an empty room that cannot be filled is not a library. It is a door. The lesson is the question itself: \"I have to see it\" is the gate. Until he sees the count, saves an entry, and shares one, the Library is a promise, not a place.",
+  "simple_view": "Imagine someone shows you a beautiful treasure chest and says \"look how nice it is!\" — and you say \"that's great — but where is it, and can I open it and put my treasures inside?\" If the chest won't open, or it's empty and you can't put anything in, it's not really a treasure chest yet — it's just a pretty box! You have to SEE it open, SEE the treasures inside, and put one in yourself!",
+  "grandma_view": "It's like this, love — imagine someone tells you about a lovely library, dear, and you say \"that sounds wonderful — but where is it, love, let me see it with my own eyes!\" If the door won't open, or the shelves are empty and you can't put a single book on them, dear, it's not a library yet — it's just a door! You have to see the books on the shelves, love, and put one there yourself!",
+  "naya_view": "HE HAS TO SEE IT. The Library lives on the Personal page, in About — About unfolds (7 boards, one at a time); the Slideshow button beside Unfold down reads the same boards sideways; the green \"✦ Enter the Intelligent Library\" door on the About bridge opens it. A door is not a Library: it must show a LIVE COUNT (door, bridge text, header), ADD must save, and SHARE / search / category chips must work on real entries. The eye verdict (01:23–01:35Z) is FAIL — no count anywhere; Add failed twice (\"That entry could not be saved — try once more.\"); the library stayed empty; Share/search/chips untestable. The fix rides in the Personal whole-page round, Part C. The eye's test skill (\"Captain's-eye test skill\", Skills board 15) is removed — Skills returns to 14 boards.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3226",
+   "title": "The Library — He Has to See It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3226/IB-SMART-NOTE-20261117-sn3226-the-library-where-it-lives.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3226/IB-SMART-NOTE-20261117-sn3226-the-library-where-it-lives.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0d13811607c4ae7b1c0b00216a069aa7abf4fa62"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

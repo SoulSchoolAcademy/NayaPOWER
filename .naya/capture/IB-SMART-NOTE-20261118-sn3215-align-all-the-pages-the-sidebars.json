@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3215",
+ "intelligence": {
+  "title": "Align All the Pages — The Sidebars",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3215-align-all-the-pages-the-sidebars",
+  "smart_note_id": "SN-3215",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/ALIGNMENT/SN-3215/IB-SMART-NOTE-20261118-sn3215-align-all-the-pages-the-sidebars.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A sidebar is the map of the whole system — WHERE YOU GO on the left, YOUR WORLDS & NAYANET on the right — and when the map is different on every page, the person has to re-learn where they are on every page. That is what he saw: the sidebars across the pages are out of date and not aligned, so the fix is not to tidy one page's sidebar but to make them all the same sidebar. The Hub's is the reference, and the reference is frozen by the Hub feed round's amendment, so the other pages align to a fixed target and not to a moving one. Same items, same order, same icons, same colors — harvested verbatim from the Hub's filed build (A4 blob 71d5b07f), not re-drawn, not re-imagined, because a re-drawn sidebar is a different sidebar the moment one icon drifts. This is standing law, not a new idea: 2026-11-16 settled Hub and Personal aligned both ways, the same icons on each page, every click working, the plus button opening the same official Hub sidebar — tonight's direction extends that law to every page and makes the Hub's filed build the single source. The Dashboard's hidden-by-default sidebar goes, because a map you have to summon is not a map; it is visible, like the Hub's. The order is the clobber law made concrete: Dashboard first, riding the cluster follow-on that is already on that file; Personal next, as follow-on #3 after the #2 eye; then Business, Space, and Smart Mail — never two rounds on the same file at once, because two rounds on one file clobber each other and the page comes back worse than either round intended.",
+  "simple_view": "Imagine every page in NayaNET has the same two sidebars — the same list on the left of where you can go, and the same list on the right of your worlds — same pictures, same order, same colors, everywhere! So you never get lost, no matter which page you're on. The Hub's sidebars are the perfect ones, so we copy them exactly onto all the other pages. The Dashboard's sidebar was hiding — now it stays out where you can see it, just like the Hub's.",
+  "grandma_view": "Dear, all the pages are getting the same sidebars as the Hub — the same list on the left of where you go, the same list on the right of your worlds, the same pictures in the same order in the same colors, everywhere, dear. So you never have to re-learn where you are. We copy them exactly from the Hub, so nothing drifts. The Dashboard's sidebar was hiding away — now it stays out where you can see it, just like the Hub's. One page at a time, dear, so nothing gets tangled.",
+  "naya_view": "ONE MAP FOR THE WHOLE SYSTEM. EVERY PAGE'S SIDEBARS MATCH THE HUB'S — SAME ITEMS, SAME ORDER, SAME ICONS, SAME COLORS, HARVESTED VERBATIM. THE DASHBOARD'S HIDDEN SIDEBAR GOES. DASHBOARD FIRST, PERSONAL NEXT, THEN BUSINESS, SPACE, SMART MAIL. NEVER TWO ROUNDS ON THE SAME FILE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3215",
+   "title": "Align All the Pages — The Sidebars",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/ALIGNMENT/SN-3215/IB-SMART-NOTE-20261118-sn3215-align-all-the-pages-the-sidebars.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/ALIGNMENT/SN-3215/IB-SMART-NOTE-20261118-sn3215-align-all-the-pages-the-sidebars.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a6c724d4f2db68c4469d21eccbdd3634878c4006"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

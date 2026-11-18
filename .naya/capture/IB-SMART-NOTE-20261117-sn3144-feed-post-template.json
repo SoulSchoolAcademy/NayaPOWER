@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3144",
+ "intelligence": {
+  "title": "The Feed Post Template — Love, Like, Stars, Comment",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3144-feed-post-template",
+  "smart_note_id": "SN-3144",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3144/IB-SMART-NOTE-20261117-sn3144-feed-post-template.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The action row is the smallest thing on a feed post and the most-touched — it is where a citizen says what a post meant to them, and where the post's standing is counted. A flat LOVE / LIKE row with plain numbers undersells the thing it measures. Ten stars is the language of the whole system — \"we talk about 10 stars all the time\" — so a five-star cap would make the feed speak a smaller language than the house speaks. Circles with a flow around them, stars that light up when you click: that is the orbit and the light-up he has already ruled for the bottom bar and the icons, brought to the feed. And the question underneath — one choice point or two standing buttons — is the push-button-simple question: one elegant place to say what you feel, or two buttons side by side. The comment box matters the same way: the \"why\" behind the stars is the intelligence, and a beautiful box is what invites it.",
+  "simple_view": "When you love a post, you should be able to show it in the prettiest way! Big beautiful buttons, shiny stars that light up when you tap them — and not just five stars, TEN stars, because ten is our number! And a lovely little box where you can write why you loved it.",
+  "grandma_view": "When you love a post, dear, you should be able to show it in the prettiest way! Big beautiful buttons, shiny stars that light up when you tap them — and not just five stars, TEN stars, because ten is our number! And a lovely little box where you can write why you loved it.",
+  "naya_view": "THE FEED POST TEMPLATE: BEAUTIFUL LOVE AND LIKE BUTTONS, DASHBOARD-LIKE NUMBERS, A STAR RATING THAT LIGHTS UP ON CLICK WITH A FLOW AROUND THE CIRCLES — UP TO 10 STARS, BECAUSE WE TALK ABOUT 10 STARS ALL THE TIME — AND A BEAUTIFUL COMMENT BOX FOR THE WHY. ONE CHOICE POINT OR TWO STANDING BUTTONS — THE CAPTAIN DECIDES WHAT IS MOST ELEGANT, AND SHAWN CONFIRMS. NOTHING IS DECIDED UNTIL THEN.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3144",
+   "title": "The Feed Post Template — Love, Like, Stars, Comment",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3144/IB-SMART-NOTE-20261117-sn3144-feed-post-template.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3144/IB-SMART-NOTE-20261117-sn3144-feed-post-template.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a988419df5a5ba2af4196ea8fd71aa938ea27f63"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

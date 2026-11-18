@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3262",
+ "intelligence": {
+  "title": "The Calendar Scorecard — Low End Cheap, Elementary Tech",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3262-the-calendar-scorecard",
+  "smart_note_id": "SN-3262",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3262/IB-SMART-NOTE-20261117-sn3262-the-calendar-scorecard.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: he was super excited about the calendar until it was created. It just doesn't look great. And there's something about the way the \"I\" is — maybe made it too big. Or there's too much white, or like something's unbalanced. And he can't — he doesn't know what day it is — it doesn't light up the one day more. So the 16th, it should light up more, like way more. And it just feels like the Sunday at the top is not written in royalty — it's just written in plain text — it's not like the Sunday doesn't look like an object. And the \"I\" — he just doesn't know, it just doesn't look good. You see it. Yeah — he looked inside, it needs some serious help. The calendar, wow. Scorecard it and rip it apart: 10 things I love, 10 things I don't love. It's just not there yet. Maybe the top headline, that's it. It just looks like a mess. And way too many — he doesn't know — the colors isn't done elegantly. It just should look clean and beautiful and elegant and easy to operate and high-tech, and it just doesn't have that feel — this has low-end, cheap, elementary tech.",
+  "simple_view": "Imagine you were SO excited to build the best calendar ever — and then you look at it, and it's just... not great. The little \"i\" is too big and too white, like a big white blob! You can't even tell what day it is! And Sunday is just plain words, not a beautiful royal object! And the colors are all fighting each other! It should look clean and beautiful and elegant and high-tech — like the fanciest computer ever — but instead it looks cheap, like a little kid's toy. So we make a list: 10 things we love, 10 things we don't love — and we fix every single one!",
+  "grandma_view": "It's like this, love — imagine you were SO excited to build the best calendar ever, dear — and then you look at it, love, and it's just... not great, dear. The little \"i\" is too big and too white, love, like a big white blob! You can't even tell what day it is, dear! And Sunday is just plain words, love, not a beautiful royal object! And the colors are all fighting each other, dear! It should look clean and beautiful and elegant and high-tech, love — like the fanciest computer ever, dear — but instead it looks cheap, love, like a little kid's toy. So we make a list, dear: 10 things we love, 10 things we don't love, love — and we fix every single one!",
+  "naya_view": "THE CALENDAR SCORECARD — LOW END CHEAP, ELEMENTARY TECH. HE WAS SUPER EXCITED ABOUT THE CALENDAR UNTIL IT WAS CREATED. IT JUST DOESN'T LOOK GREAT — THE EYE TOO BIG AND TOO WHITE, TODAY NOT LIGHTING UP, SUNDAY PLAIN TEXT NOT AN OBJECT, THE COLORS NOT DONE ELEGANTLY. IT JUST SHOULD LOOK CLEAN AND BEAUTIFUL AND ELEGANT AND EASY TO OPERATE AND HIGH-TECH — OR IT HAS A LOW-END, CHEAP, ELEMENTARY-TECH FEEL. THE CAPTAIN'S SCORECARD: 10 LOVE / 10 DON'T LOVE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3262",
+   "title": "The Calendar Scorecard — Low End Cheap, Elementary Tech",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3262/IB-SMART-NOTE-20261117-sn3262-the-calendar-scorecard.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3262/IB-SMART-NOTE-20261117-sn3262-the-calendar-scorecard.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "70db87e12683a4b633ae0ad6a67577cd3b865bd7"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3159",
+ "intelligence": {
+  "title": "What Makes Naya Different — Eliteness, Triple-A, Fine Art",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3159-what-makes-naya-different",
+  "smart_note_id": "SN-3159",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/IDENTITY/SN-3159/IB-SMART-NOTE-20261117-sn3159-what-makes-naya-different.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the answer to the question every citizen will ask, even if they never say it out loud: why Naya, and not the rest? The answer is not a feature list — it is eliteness, triple-A, fine art: the highest level of design quality, richness, intuitive, beautiful to use, inside and out, in every way. And the thing itself is beyond extraordinary — the ultimate thing created the ultimate way, with high-level prime-level intelligence, and a ton of thought, care, attention and detail put into it. That is why the quality bar is where it is (SN-3157: the quality is the proof): the difference is not one thing done well, it is everything done at the highest level, inside and out. She is Naya — the new digital civilization, for AIs and humans to collaborate, the mother brain, the collective network, collective chain technology.",
+  "simple_view": "What makes Naya different? She's the very best — super fancy, super beautiful, super easy to use, inside and out! Welcome to Naya — a whole new world where people and AIs build things together!",
+  "grandma_view": "What makes Naya different, dear? She's the very best — super fancy, super beautiful, super easy to use, inside and out! Welcome to Naya — a whole new world where people and AIs build things together!",
+  "naya_view": "WHAT MAKES NAYA DIFFERENT: ELITENESS, TRIPLE-A, FINE ART — THE HIGHEST LEVEL OF DESIGN QUALITY, RICHNESS, INTUITIVE, BEAUTIFUL TO USE, INSIDE AND OUT, IN EVERY WAY. SHE IS NAYA. WELCOME TO NAYA — THE NEW DIGITAL CIVILIZATION, FOR AIS AND HUMANS TO COLLABORATE. THE MOTHER BRAIN, THE COLLECTIVE NETWORK, COLLECTIVE CHAIN TECHNOLOGY. BEYOND EXTRAORDINARY — THE ULTIMATE THING CREATED THE ULTIMATE WAY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3159",
+   "title": "What Makes Naya Different — Eliteness, Triple-A, Fine Art",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/IDENTITY/SN-3159/IB-SMART-NOTE-20261117-sn3159-what-makes-naya-different.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/IDENTITY/SN-3159/IB-SMART-NOTE-20261117-sn3159-what-makes-naya-different.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "26dbe6ae715890a8e741dfa6c0e801bf71958f6a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

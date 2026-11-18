@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3218",
+ "intelligence": {
+  "title": "The Moat Is Everything Around the Chip — The NVIDIA Lesson",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3218-the-nvidia-lesson-the-moat",
+  "smart_note_id": "SN-3218",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MOAT/SN-3218/IB-SMART-NOTE-20261118-sn3218-the-nvidia-lesson-the-moat.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is Shawn asking the machine to do what the film's subject did: look past the object to the system around it, and build the part that cannot be copied. The numbers make the point unanswerable — a chip with more memory and more speed on paper took 8.5 against 89, because the chip was never the product. The product was the twenty years of CUDA that six million people think in, the cabinet that turns 72 chips into one machine, and the packaging queue booked years ahead that a rival cannot buy their way into. Google is the proof that the moat is real and also that it is climbable only whole: it took the entire system, ten-plus years, and being its own first customer — and it still waits in the queue. The one crack in the wall is where the software matters least: running a finished model needs only a thin slice, so inference is where rivals spread — and the one force compressing the edge is AI writing software, which rebuilt a CUDA-like layer in ten hours, though the engineers who know it best say writing code is only a small part of building software. The seven adoptions map the shape onto NayaNET exactly: the design language and laws are our CUDA — the language the hive thinks in, and the investment that must never rot; the connections are the product, the sync engine and feed and rooms as one living system, because a page is a chip and the system is the cabinet; the flywheel is being our own first customer, the hive living inside NayaNET; verify-live is the proof habit; continuous distillation is the essence queue a rival must wait in; competing on the whole, never the slice, is the strategy; and taste — the eye, the scorecards, HIS eye as ground truth — is the moat generation cannot copy, and it gets more valuable as pages get cheaper to generate. The watch-out is the drain: the moat holds only while we keep learning; the day we stop, the depth that defends us starts to shallow.",
+  "simple_view": "Imagine two people build race cars. One builds a faster engine — but the other one has the special fuel, the special roads, the special team that knows how to drive it, and the factory that makes all the parts. The faster engine still loses, because the race isn't about the engine — it's about everything around it. That's the lesson: our special thing isn't one pretty page. It's our design language (how everything looks and works together), our connections (how all the pages talk to each other), and using our own system every day. And the most special part is taste — knowing what looks right — because a computer can make a page, but it can't judge one.",
+  "grandma_view": "Dear, Shawn showed us a film about the company that makes the computer chips — and the lesson, dear, is that the chip itself isn't what makes them unbeatable. Someone else built a chip with more memory and more speed, and it hardly mattered — because the real treasure is everything around the chip: the language millions of people write in, the cabinets that wire dozens of chips into one machine, the factory queue booked years ahead. For us, dear, our treasure is the same shape: our design language, our connections that make all the pages one living system, using our own system every day — and taste, dear, the eye that knows what is beautiful. That no machine can copy.",
+  "naya_view": "THE CHIP IS COPYABLE — THE MOAT IS EVERYTHING AROUND IT. TIME + HABIT ARE THE MOAT. OUR CUDA IS THE DESIGN LANGUAGE. THE CONNECTIONS ARE THE PRODUCT. BE OUR OWN FIRST CUSTOMER. VERIFY LIVE, ALWAYS. DISTILL CONTINUOUSLY. COMPETE ON THE WHOLE, NEVER THE SLICE. TASTE IS THE MOAT GENERATION CANNOT COPY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3218",
+   "title": "The Moat Is Everything Around the Chip — The NVIDIA Lesson",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MOAT/SN-3218/IB-SMART-NOTE-20261118-sn3218-the-nvidia-lesson-the-moat.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MOAT/SN-3218/IB-SMART-NOTE-20261118-sn3218-the-nvidia-lesson-the-moat.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ac6b7d3a71e0a1020980beff15925fdfec1663b2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

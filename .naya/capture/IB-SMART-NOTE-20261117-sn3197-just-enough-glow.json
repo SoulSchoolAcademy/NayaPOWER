@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3197",
+ "intelligence": {
+  "title": "Just Enough Glow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3197-just-enough-glow",
+  "smart_note_id": "SN-3197",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3197/IB-SMART-NOTE-20261117-sn3197-just-enough-glow.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Glow is the one thing the machine always overdoes — and \"more glow\" was the answer to everything until tonight. Just enough is the correction: the underglow underneath is beautiful, and anything more than that is not beautiful. The board itself is obsidian black — no purple on it, no wash over it, no haze — and the only light is the restrained rim around the edge, a perfect amount. Restraint is the beauty: the light frames the object instead of covering it, and the object gets to be black, real, and still. This is the glow law (SN-3180) finished: not just \"never over the top,\" but \"only underneath, only around the edge, only just enough.\" The amount is the law now, not just the direction — and the amount is perfect, which means small.",
+  "simple_view": "Imagine a beautiful black board, like a shiny piece of night — and just a tiny bit of light glowing underneath it, like a night-light under a bed, and a thin bright line all around its edge. That is beautiful. But if you pour purple glowing paint all over the board, it stops being beautiful. Just a little light, in the right places, is perfect.",
+  "grandma_view": "Dear, a little glow underneath is lovely — like a soft light under a beautiful black board, with just a thin bright line around its edge. But any more than that is not beautiful at all. The purple glow comes right off the boards themselves — they stay deep obsidian black — and only the smallest perfect amount of light stays, around the edge. Restraint is what makes it beautiful.",
+  "naya_view": "JUST ENOUGH GLOW — UNDERGLOW UNDERNEATH ONLY. ANYTHING MORE IS NOT BEAUTIFUL. THE BOARDS ARE OBSIDIAN BLACK AND LIGHT UP AROUND THE EDGE, JUST A PERFECT AMOUNT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3197",
+   "title": "Just Enough Glow",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3197/IB-SMART-NOTE-20261117-sn3197-just-enough-glow.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3197/IB-SMART-NOTE-20261117-sn3197-just-enough-glow.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "770b02ef836b4392a31c390d1ea9468d0b7f89a2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

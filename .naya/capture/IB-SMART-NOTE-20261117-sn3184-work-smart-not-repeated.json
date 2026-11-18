@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3184",
+ "intelligence": {
+  "title": "Work Smart, Not Repeated",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3184-work-smart-not-repeated",
+  "smart_note_id": "SN-3184",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/PROCESS/SN-3184/IB-SMART-NOTE-20261117-sn3184-work-smart-not-repeated.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Every repeat is a round he has to read, check, and send back — work he does because the machine did not do its own organizing first. One fix split across two rounds is two reviews for one change. A round re-sent while it is already running is two makers on one file, and one of them will clobber the other. The same page shown twice is his time spent twice on the same thing, and his time is the most expensive cost in the whole system. The machine's job is to hold the whole list at once and send it once, whole. That is what \"get on top of this\" means: the organizing happens before the round goes out, not after it comes back. Fewer rounds, fuller rounds — that is how the round count goes down, and his time comes back.",
+  "simple_view": "Imagine you ask someone to clean your room, and they bring you one sock, then go back for one shirt, then go back for one shoe — ten trips for ten things, and you have to check every trip. Or they could bring everything at once, in one trip, all done. One trip, everything, done. That is working smart.",
+  "grandma_view": "Dear, when there is a lot to do, the smart way is to gather it all up first, put it in one neat pile, and carry it in once — not to run back and forth ten times with one little thing each time, and never to send the same thing twice. Fewer trips, fuller trips. That is how you respect someone's time.",
+  "naya_view": "DO IT SMARTLY. ORGANIZED AND NOT DUPLICATED AND NOT JUST SEND MORE THAN WHAT YOU NEED. FEWER, FULLER ROUNDS. CONSOLIDATE EVERYTHING KNOWN INTO ONE ROUND. THE ROUND COUNT GOES DOWN, NOT UP.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3184",
+   "title": "Work Smart, Not Repeated",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/PROCESS/SN-3184/IB-SMART-NOTE-20261117-sn3184-work-smart-not-repeated.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/PROCESS/SN-3184/IB-SMART-NOTE-20261117-sn3184-work-smart-not-repeated.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "bbc060ba0a6325c122517e7f09fcd8a1c595fde6"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

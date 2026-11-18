@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3220",
+ "intelligence": {
+  "title": "Put Them All Through — He Approves Them All Anyway",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3220-put-them-all-through",
+  "smart_note_id": "SN-3220",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MERGE/SN-3220/IB-SMART-NOTE-20261118-sn3220-put-them-all-through.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The pile shocked him because it looked like fifty things waiting on him — and the first order, at 01:31Z, still left him as the bottleneck, with a triage sorting PRs into proven, superseded, in-flight, and needs-a-ruling. The refinement, five minutes later, takes him out of the loop entirely: put them all through, he will approve them all anyway, he assumes they are good, he can check the code in main afterward. Only what he absolutely has to do comes to him. That is the shape of the whole system in one order — the machine does the work, the machine checks the work, the machine closes the work, and his eye lands on main afterward, where the finished thing actually lives. The condition is the whole order: done right, nothing messed up. Merging to main is not going live, so the merge is safe to do at full speed — but \"done right\" means the Self-Check Law first (maker checks three times, seven questions in writing, captain double-checks, maker merges), stacking order respected (bases before follow-ons), conflicts resolved properly, and main verified after. The triage mandate was expanded in the same pass to match: merge all, in stacking order, conflicts resolved properly, main verified after. The pile itself is the failure to learn from — creation outran closing because finished rounds sat with nobody assigned to close them. A round that finishes without its close is a round that is not finished.",
+  "simple_view": "Imagine you finish fifty drawings and pile them all on the table for Dad to look at one by one. He says: don't make me look at every single one — just put them all in the book, I trust they're good, and I'll look at the book when it's done. Only bring me the one you really can't decide about. That's the rule: finish it, check it yourself, put it in the book, and let him see the finished book.",
+  "grandma_view": "Dear, Shawn looked at a pile of fifty finished pieces of work and said, dear, just put them all through — I trust they're good, I'll look at them in the book afterward, and only bring me the ones you truly can't decide. The pile, dear, wasn't the problem — the problem was that finished work sat there with nobody putting it away. From now on, dear, finished means filed, and only the truly hard ones come to him.",
+  "naya_view": "PUT THEM ALL THROUGH — HE APPROVES THEM ALL ANYWAY. HE ASSUMES THEY ARE GOOD. HE CHECKS THE CODE IN MAIN AFTERWARD. ONLY WHAT HE ABSOLUTELY HAS TO DO COMES TO HIM. DONE RIGHT, NOTHING MESSED UP. CREATION OUTRAN CLOSING — FINISHED MEANS CLOSED.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3220",
+   "title": "Put Them All Through — He Approves Them All Anyway",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MERGE/SN-3220/IB-SMART-NOTE-20261118-sn3220-put-them-all-through.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MERGE/SN-3220/IB-SMART-NOTE-20261118-sn3220-put-them-all-through.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8dc9c4596ef0c0100e545179e591792849e35742"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

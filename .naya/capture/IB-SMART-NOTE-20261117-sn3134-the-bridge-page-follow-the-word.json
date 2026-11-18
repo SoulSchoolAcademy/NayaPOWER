@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3134",
+ "intelligence": {
+  "title": "The Bridge Page — Follow the Word",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3134-the-bridge-page-follow-the-word",
+  "smart_note_id": "SN-3134",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3134/IB-SMART-NOTE-20261117-sn3134-the-bridge-page-follow-the-word.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "There are two lessons here, and the first is the one that stings: he told us the edits yesterday, and the page came back unedited, with a request for his word — the word he had already given. Asking again for a decided thing is not diligence; it is the failure he named, because it spends his attention and leaves the work undone. \"It's the same word as yesterday, you should have just followed the word.\" The rule that follows is simple and absolute: a decided thing is built, not re-asked. The second lesson is the bridge itself — the front door to the agreement. The click has to land somewhere, and that somewhere has to show both ways in: the visual presentation and the read-and-listen unfold, both ending at the login page. His layout is the shape of that door: the colors arrive in groups — purple and blue above the fold, then green and gold, then orange and red and magenta, then blue and green — a button between each group, then the final page of the nine unrolling, and only then the two choices, the same size and both elite, with the read one bigger. It fits perfect in the fold because it is paced — two, then two, then three, then two, then the end — never a wall of nine at once.",
+  "simple_view": "When you click the agreement, you should go to a special bridge page — but the bridge wasn't there, because we forgot to build what he told us yesterday! He said: don't ask me again, just follow my word and build it! So the bridge goes like this: purple and blue at the top, then a button, then green and gold, then a button, then orange and red and pink, then a button, then blue and green, then a button, then the very last page of the nine — and then you get to choose: watch it, or read it! The read button is a little bit bigger!",
+  "grandma_view": "When you click the agreement, love, you should go to a special bridge page — but the bridge wasn't there, dear, because we forgot to build what he told us yesterday! He said: don't ask me again, just follow my word and build it! So the bridge goes like this: purple and blue at the top, then a button, then green and gold, then a button, then orange and red and pink, then a button, then blue and green, then a button, then the very last page of the nine — and then you get to choose: watch it, or read it! And the read button is a little bit bigger, because reading is the bigger choice!",
+  "naya_view": "WHEN HE ALREADY GAVE THE WORD, DON'T ASK AGAIN — FOLLOW IT AND BUILD IT. IT'S THE SAME WORD AS YESTERDAY, YOU SHOULD HAVE JUST FOLLOWED THE WORD. THE BRIDGE: PURPLE + BLUE ABOVE THE FOLD → BUTTON → GREEN + GOLD → BUTTON → ORANGE + RED + MAGENTA → BUTTON → BLUE + GREEN → BUTTON → THE FINAL PAGE OF THE NINE INTELLIGENCE NETWORK UNROLLING → THEN THE TWO CHOICES, SAME SIZE, BOTH ELITE, THE READ CHOICE BIGGER. BOTH VIEWS THERE, BOTH ENDING AT THE LOGIN PAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3134",
+   "title": "The Bridge Page — Follow the Word",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3134/IB-SMART-NOTE-20261117-sn3134-the-bridge-page-follow-the-word.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3134/IB-SMART-NOTE-20261117-sn3134-the-bridge-page-follow-the-word.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e5c3f6a9a205882a3351cac7ae2e42166d7033e5"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

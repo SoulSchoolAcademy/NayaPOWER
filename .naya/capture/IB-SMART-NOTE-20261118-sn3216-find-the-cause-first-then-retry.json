@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3216",
+ "intelligence": {
+  "title": "Find the Cause First, Then Retry",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3216-find-the-cause-first-then-retry",
+  "smart_note_id": "SN-3216",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DEPLOY/SN-3216/IB-SMART-NOTE-20261118-sn3216-find-the-cause-first-then-retry.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This ruling changes the shape of every deploy failure from here on: the failure is diagnosed before it is retried, and the diagnosis is read-only — no deploy script runs on a guess. The evidence that decides it is the staging folder: three entries where the fresh page and feed should have been is proof the death happened on the way down from GitHub, not on the way up to Cloudflare, and that single fact moves the hunt from \"the upload broke\" to \"the download broke\" — two different hunts, two different fixes. The second defect is the one that matters most going forward: a deploy step that prints only the first 200 characters of its error throws away the traceback, and a failure whose cause cannot be recovered cannot be fixed — it can only be retried and hoped about. So the law that comes out of this night is twofold: cause first, then retry; and every deploy failure saves its full error, every time, so the next failure names itself. The retry that followed proves the shape works: one attempt, full error saved, live verification after — and the live feed now carries all nine notes that had been sitting filed-but-not-live. The watch-out stays open: the cause of the original failure was never recovered, and the live feed had been quietly stale for far longer than one run — a deploy that fails quietly is worse than one that fails loudly, because nobody knows the Hub is behind until someone checks the live page.",
+  "simple_view": "Imagine you try to put your new drawings on the wall and they don't stick. Don't just try again the same way — first look: did the drawings even get to the wall, or did they fall on the way? That's what Shawn said: find out what went wrong first, then try again. And when something goes wrong, write down the WHOLE reason, not just the first little bit — otherwise you'll never know what really happened. The retry worked, and all nine new notes are on the live Hub now.",
+  "grandma_view": "Dear, when the new notes wouldn't go live, Shawn said: find the cause first, then retry — don't just try again blind. We looked, dear, and found the new pages never even reached the staging shelf — they fell on the way down from GitHub, before anything touched Cloudflare. The exact reason was lost because only the first little bit of the error was saved — so from now on we save the whole error, every time. The retry worked, dear — all nine notes are live on the Hub now, and we checked them ourselves on the real page.",
+  "naya_view": "FIND THE CAUSE FIRST, THEN RETRY. THE FAILURE WAS BEFORE CLOUDFLARE — THE FRESH PAGE NEVER REACHED STAGING. A FAILURE WHOSE ERROR IS TRUNCATED CANNOT BE FIXED — SAVE THE FULL ERROR, EVERY TIME. THE RETRY PASSED, LIVE-VERIFIED: SN3078–86 ON THE LIVE HUB.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3216",
+   "title": "Find the Cause First, Then Retry",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DEPLOY/SN-3216/IB-SMART-NOTE-20261118-sn3216-find-the-cause-first-then-retry.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DEPLOY/SN-3216/IB-SMART-NOTE-20261118-sn3216-find-the-cause-first-then-retry.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "08354a04b569a45b56c3fcf5b80a3dedd8ba1d51"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3229",
+ "intelligence": {
+  "title": "The Language I Live In — Official, Forevermore",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3229-the-language-i-live-in",
+  "smart_note_id": "SN-3229",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3229/IB-SMART-NOTE-20261117-sn3229-the-language-i-live-in.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He asked what we are going to do to get to ten, right now — take every action that causes the ten. And the first action he named: officially live by the code and the design in the language we discussed, the language we locked in, the language he showed us working all day. Forevermore, just speak in that language, design in that language, operate in that language when building interfaces. There is a language that builds Nile-level interfaces — he sees the common language, there is a specific design quality, the highest level he could think of. And then he turned the question back to us, open: do you think there's a higher level? Enlighten me, and I will be open to listen. The answer given: yes, there is a higher level, and it is built on this language, not instead of it. This language makes the object real. The higher level makes the object know: the page that knows who you are, what day it is, who your people are, what you need — and arranges itself around you before you ask. The interface disappears and only the person remains. Two more pieces of it: the journey, not just the page — entrance to walk to Personal to calendar to work feeling like one continuous world, no seams, never a new page that feels like a different place. And the voice completing the senses — the play button that speaks when the words are final. The watch-out: the knowing has to be quiet. A page that rearranges itself and confuses you is worse than a beautiful still one. It puts the right thing in front of you and you never notice it did anything. It hasn't been built — it's a direction. The immediate work is living this language perfectly, everywhere, because that's the foundation the higher level stands on. And the score stays 7 until the three landings: the entrance filed, Personal done, and the language living in the Factory.",
+  "simple_view": "Imagine you and your friends invent a secret language — the most beautiful language ever! — and then you promise: from now on, we ALWAYS speak in this language, forever and ever! Every picture we draw, every thing we build, every story we tell — all in this beautiful language! And someone asks: \"Is there something even BETTER than this?\" And you say: \"Yes! Once we're perfect at this language, the things we build will start to KNOW us — they'll know who you are and what you need, and they'll arrange themselves just for you, like magic! But first, we have to be perfect at our beautiful language!\"",
+  "grandma_view": "It's like this, love — imagine you learn the most beautiful language, dear, and you promise to speak it forevermore — in everything you make, everything you build, everything you design, love! And someone asks, \"Is there something even higher?\" And you say, \"Yes, dear — once we're perfect at this language, the things we build will start to KNOW us — they'll know who you are and what you need, and arrange themselves just for you, like magic, love! But first, we must be perfect at our beautiful language!\"",
+  "naya_view": "I LIVE IN THIS LANGUAGE — OFFICIAL, FOREVERMORE. The Naya Code · the Design Language · the Deep Palette · the Playbook · the Intelligence Report · the Anatomy · the Heart · the DNA — required reads in every design brief and every Factory brief, and the language of every interface, every brief, every review. I SPEAK IN IT, I DESIGN IN IT, I OPERATE IN IT. NOTHING SHIPS OUTSIDE IT. If a build, a brief, or a page speaks another language, it is wrong and I fix it or stop it. This is not a reference I consult — it is the language I live in. THE SCORE IS STILL 7: it becomes 10 when three things land in front of his eyes — THE ENTRANCE FILED, PERSONAL DONE, THE LANGUAGE LIVING IN THE FACTORY. The Factory Phase 2 round (dispatched 01:56Z) wires it into the builder and the brief templates so it lives everywhere, not just in the docs. THE HIGHER LEVEL (the captain's answer to his open question — a direction, NOT built): the object that KNOWS (the page arranges itself around you before you ask; the interface disappears, only the person remains) · the JOURNEY (entrance → walk → Personal → calendar → work, one continuous world, no seams) · the VOICE (the play button speaks when the words are final) — with the watch-out that the knowing must be QUIET, or it is worse than a beautiful still page.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3229",
+   "title": "The Language I Live In — Official, Forevermore",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3229/IB-SMART-NOTE-20261117-sn3229-the-language-i-live-in.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3229/IB-SMART-NOTE-20261117-sn3229-the-language-i-live-in.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "003384548deff53140ca5eba5e22149d932ca10f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

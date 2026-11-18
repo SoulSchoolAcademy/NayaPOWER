@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3194",
+ "intelligence": {
+  "title": "No Gray Flat Icons Anywhere",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3194-no-gray-flat-icons-anywhere",
+  "smart_note_id": "SN-3194",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3194/IB-SMART-NOTE-20261117-sn3194-no-gray-flat-icons-anywhere.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A gray flat icon is the small thing that makes a whole page look messy — one dull little shape, and the eye catches it instead of the beautiful things around it. Every icon has to be the nicest elevated, almost jewel-like icon: a real object, a ball not a flat circle. And the fix is not to design new icons for the messy page — the Personal icons are already better, already more pro — so harvest them verbatim and make no new ones. The one exception proves the rule: the three-line menu control, the way it flows, is fine as it is — the exception is named, not assumed, and it is the only one. This is the no-gray-text law (SN-3177) extended to icons: gray is never the best, anywhere, in words or in shapes.",
+  "simple_view": "Imagine a page full of beautiful shiny jewels, and then a few dull gray flat ones mixed in — they make the whole page look messy. Every icon should be a shiny jewel, raised up like a little ball, never flat and gray. And the best jewels already exist on the Personal page — so we take those very same ones and use them here, instead of making new ones. Only the little three-line button stays as it is, because it flows so nicely.",
+  "grandma_view": "Dear, the little gray flat icons are the ones making the page look messy — a dull gray shape is never the best icon anywhere. Every icon should be the nicest, raised up like a little jewel, round and real. And we already have the best ones on the Personal page, so we take those very same ones and put them here — no new ones needed. Just the one little three-line button stays as it is, the way it flows.",
+  "naya_view": "A GRAY FLAT ICON IS NEVER THE BEST ICON ANYWHERE. EVERY ICON IS THE NICEST ELEVATED, ALMOST JEWEL-LIKE ICON. ZERO GRAY FLAT ICONS SURVIVE. ONE EXCEPTION: THE THREE-LINE MENU CONTROL, THE WAY IT FLOWS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3194",
+   "title": "No Gray Flat Icons Anywhere",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3194/IB-SMART-NOTE-20261117-sn3194-no-gray-flat-icons-anywhere.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3194/IB-SMART-NOTE-20261117-sn3194-no-gray-flat-icons-anywhere.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ec964b0b40894deb704330fe3eb23790fd3e7e61"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3153",
+ "intelligence": {
+  "title": "The Official Emblem — The Original, in Every Corner on an Angle",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3153-official-emblem",
+  "smart_note_id": "SN-3153",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3153/IB-SMART-NOTE-20261117-sn3153-official-emblem.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The corner jewels were the small thing that gave the page away: not clear, not sharp, not reading as an object — so the corners read as decoration instead of as a seal. The original emblem is the fix because it is already the thing: a crowned jewel with wings, drawn once, properly. Taking it verbatim — never redrawing it — is the harvest-first law applied to the house's own mark: the emblem is not a design problem to solve, it is an object to place. On an angle in each corner it gives the high-level effect — the page reads official because the seal on it is real. And it belongs on certificates and documents for the same reason: the official areas carry the official mark, always the same, always clear.",
+  "simple_view": "The little jewels in the corners aren't clear enough! Here's the real one — the pretty purple diamond with the crown and wings. Put the real one in every corner, tilted on an angle, and it looks so fancy and official!",
+  "grandma_view": "The little jewels in the corners aren't clear enough, dear! Here's the real one — the pretty purple diamond with the crown and wings. Put the real one in every corner, tilted on an angle, and it looks so fancy and official!",
+  "naya_view": "THE OFFICIAL EMBLEM: THE ORIGINAL, TAKEN VERBATIM — NEVER REDRAWN, NEVER REDESIGNED. IN EVERY CORNER ON AN ANGLE, SO IT GIVES THE HIGH-LEVEL EFFECT. ON CERTIFICATES, DOCUMENTS, AND OFFICIAL AREAS. SOURCE: NAYA_ICON.PNG — THE CLEARER RENDER.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3153",
+   "title": "The Official Emblem — The Original, in Every Corner on an Angle",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3153/IB-SMART-NOTE-20261117-sn3153-official-emblem.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3153/IB-SMART-NOTE-20261117-sn3153-official-emblem.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "827e29439b80963dfc4aca5f0d6940306cecc582"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3268",
+ "intelligence": {
+  "title": "The Distillation Story — Said Strongly",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3268-the-distillation-story",
+  "smart_note_id": "SN-3268",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3268/IB-SMART-NOTE-20261118-sn3268-the-distillation-story.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "People are scared of technology because other systems sell their data. So say this loudly, in plain words: nobody reads your email. Nobody reads your Smart Mail. Nobody reads your instant messages. Nobody listens to your calls. Nobody watches your video. And we don't even keep your content — conversations auto-distill after a week. The words go. The essence stays. Every day, intelligence is distilled: take everything in for the day, capture the essence of what is valuable and intelligent, note it, put it in the system, learn and grow from it, share it, and do it again the next day. A thousand notes in, about a hundred kept. A hundred in, about ten kept. And when wisdom is shared, identity is never shared unless the citizen chooses — we capture the wisdom only, never the name. Everybody learns and grows from the collective intelligence.",
+  "simple_view": "Imagine you whisper a secret to your best friend, and your friend remembers the good idea in it but forgets the exact words — and never tells anyone it was you who said it. That's what happens here. Nobody reads your letters. Nobody listens to your calls. Nobody watches your videos. After a week, the words float away like dandelion seeds, and only the good idea stays — so everyone can learn from it, and nobody knows it was yours unless you say so.",
+  "grandma_view": "It's like this, love — nobody reads your letters, dear, nobody listens to your phone calls, nobody watches your videos. And we don't even keep your words, love — after a week they gently fade away, and only the good idea stays behind, dear, so everyone can learn from it. If something wise is shared, your name is never shared with it unless you choose, love — the wisdom only, never the name. Everybody learns and grows together, dear.",
+  "naya_view": "NOBODY READS YOUR EMAIL. NOBODY READS YOUR SMART MAIL. NOBODY READS YOUR INSTANT MESSAGES. NOBODY LISTENS TO YOUR CALLS. NOBODY WATCHES YOUR VIDEO. WE DON'T EVEN KEEP YOUR CONTENT — CONVERSATIONS AUTO-DISTILL AFTER A WEEK, THE WORDS GO, THE ESSENCE STAYS. INTELLIGENCE IS CONTINUOUSLY DISTILLED, DAILY: TAKE EVERYTHING IN FOR THE DAY, CAPTURE THE ESSENCE OF WHAT IS VALUABLE AND INTELLIGENT, NOTE IT, PUT IT IN THE SYSTEM, LEARN AND GROW FROM IT, SHARE IT, DO IT AGAIN THE NEXT DAY. A THOUSAND NOTES IN, ~100 KEPT; ~100 IN, ~10 KEPT. WHEN WISDOM IS SHARED, IDENTITY IS NOT SHARED UNLESS THE CITIZEN CHOOSES — WE CAPTURE THE WISDOM ONLY, NEVER THE NAME. EVERYBODY LEARNS AND GROWS FROM THE COLLECTIVE INTELLIGENCE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3268",
+   "title": "The Distillation Story — Said Strongly",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3268/IB-SMART-NOTE-20261118-sn3268-the-distillation-story.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3268/IB-SMART-NOTE-20261118-sn3268-the-distillation-story.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "54f4f692a938d6b7b412f358bf30169a29c4a890"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

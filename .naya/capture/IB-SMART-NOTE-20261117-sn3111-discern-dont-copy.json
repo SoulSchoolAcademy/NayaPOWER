@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3111",
+ "intelligence": {
+  "title": "Discern, Don't Copy — The Bullseye",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3111-discern-dont-copy",
+  "smart_note_id": "SN-3111",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3111/IB-SMART-NOTE-20261117-sn3111-discern-dont-copy.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the order that stops the two opposite failures at once. One failure is copying blindly: he shows the Hub's greeting and the builder pastes the Hub's greeting, word for word, into a place where it does not belong. The other failure is ignoring the reference: he shows something and the builder does something else entirely. The middle is discernment: learn from everything else, and ask — what makes sense HERE, what is logical HERE, what is the most intelligent way to display THIS date, THIS time, THIS introduction, THESE buttons. Sometimes the answer is a direct copy, and he says so himself. Usually the answer is the lesson carried over, reshaped for this place. The harvest law already says take the object that works, byte for byte — discernment says know WHEN the direct copy is the intelligent answer and when the intelligent answer is the lesson reshaped. And the standard is not \"good\" — it is high class, luxury, elite level tech, the highest level of object reality and aliveness and intelligence, the most incredible experience. The method is elevation: put everything on a pedestal, raise it, fine-tune it, lock in the color, the language, the math — everything dialed in. \"It'll take some time today\" — take it. Time is not the constraint; the bullseye is. \"So let's hit it\" is not a cheer; it is the order. This is a standing charge, not a round — it governs how the v14, top-bar, and headliner rounds are judged.",
+  "simple_view": "Imagine you're building the most special calendar ever, and you learn from everything you've already built — but you don't just copy it! You think really hard: what makes sense HERE? What's the smartest way to show the date, the time, the hello, the buttons? And then you put everything up on a beautiful pedestal, raised high, and make it shiny and perfect — the most incredible calendar ever! And you aim right for the bullseye — and hit it!",
+  "grandma_view": "It's like this, love — imagine you're building the most special calendar ever, dear, and you learn from everything you've already built — but you don't just copy it! You think really hard, love: what makes sense HERE? What's the smartest way to show the date, the time, the hello, the buttons? And then you put everything up on a beautiful pedestal, dear, raised high, and make it shiny and perfect — the most incredible calendar ever! And you aim right for the bullseye, love — and hit it!",
+  "naya_view": "MOLD THE INNER CALENDAR EXPERIENCE FROM EVERYTHING LEARNED ON ALL THE OTHER PAGES, AND MAKE IT SOMETHING SPECIAL. IT TAKES TIME TODAY — TAKE IT. WHEN HE SHOWS SOMETHING AND SAYS IT SHOULD BE LIKE THIS, THAT DOES NOT ALWAYS MEAN A DIRECT COPY (SOMETIMES IT DOES): DISCERN WHAT MAKES SENSE HERE, WHAT IS LOGICAL HERE, WHAT IS THE MOST INTELLIGENT WAY TO DISPLAY THE DATE, THE TIME, THE INTRODUCTION, THE BUTTONS. THE STANDARD IS HIGH CLASS, LUXURY, ELITE LEVEL TECH — THE HIGHEST LEVEL OF OBJECT REALITY AND ALIVENESS AND INTELLIGENCE IN THE INTERFACE, THE MOST INCREDIBLE EXPERIENCE. THE METHOD IS ELEVATION: PUT EVERYTHING ON A PEDESTAL, RAISE IT, FINE-TUNE IT, AND LOCK IN THE COLOR, THE LANGUAGE, THE MATH — EVERYTHING DIALED IN TO THE ULTIMATE INTERFACE EXPERIENCE. UNDERSTAND WHAT THAT LOOKS LIKE, AND HIT THE BULLSEYE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3111",
+   "title": "Discern, Don't Copy — The Bullseye",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3111/IB-SMART-NOTE-20261117-sn3111-discern-dont-copy.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3111/IB-SMART-NOTE-20261117-sn3111-discern-dont-copy.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "10d9be6a667dba6325a1bd10e556b75825e52792"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

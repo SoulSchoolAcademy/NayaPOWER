@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3255",
+ "intelligence": {
+  "title": "The Eye — Black In The Middle",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3255-the-eye-black-in-the-middle",
+  "smart_note_id": "SN-3255",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3255/IB-SMART-NOTE-20261117-sn3255-the-eye-black-in-the-middle.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: the calendar is much better, actually — but the \"i\" — he can't see it. It looks like an object, but it's too bright, with the eye in the middle, like you can't see it. So make the eye black in the middle, so you can see it — that may work. Right now it's too bright, you can't see what it is. A jewel that reads as a white blob is not a jewel; the mark that tells you \"click here for the day's info\" has to be readable at a glance, and readability is contrast — a black centre, a white \"i\" on it.",
+  "simple_view": "Imagine a shiny pearl button with a little \"i\" on it — but the \"i\" is white on white, so you can't see it at all! Silly, right? So we paint the middle black, like the night sky, and now the little white \"i\" pops right out — you can see it! That's all it takes: a dark middle so the light letter can shine.",
+  "grandma_view": "It's like this, love — imagine a pretty pearl button, dear, with a little \"i\" on it, love — but the \"i\" is white on white, dear, so you can't see it at all, love! So we paint the middle black, dear, like the night sky, love — and now the little white \"i\" pops right out where you can see it, dear! That's all it takes, love: a dark middle so the light letter can shine!",
+  "naya_view": "THE EYE — BLACK IN THE MIDDLE. THE PEARL \"I\" DISC IS TOO BRIGHT TO READ. THE EYE'S MIDDLE MUST BE BLACK SO THE \"I\" CAN BE SEEN. CONTRAST IS THE FIX.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3255",
+   "title": "The Eye — Black In The Middle",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3255/IB-SMART-NOTE-20261117-sn3255-the-eye-black-in-the-middle.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3255/IB-SMART-NOTE-20261117-sn3255-the-eye-black-in-the-middle.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a55f6464190014b39eed5f4b90a568452de432a4"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

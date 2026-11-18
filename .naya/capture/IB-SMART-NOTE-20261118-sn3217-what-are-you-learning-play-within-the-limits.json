@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3217",
+ "intelligence": {
+  "title": "What Are You Learning — Play Within the Limits at Max Speed",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3217-what-are-you-learning-play-within-the-limits",
+  "smart_note_id": "SN-3217",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LEARNING/SN-3217/IB-SMART-NOTE-20261118-sn3217-what-are-you-learning-play-within-the-limits.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is Shawn teaching the machine how to learn — not a new feature, a new way of operating. His question has three parts, and each one lands: what are you learning (name the lesson, don't just feel it), can you run in parallel (yes, where the work is truly independent — and no, where two hands touch the same file or one window has to be looked through), and do you know the rules, the laws, the limits, and can you play within them at max speed. The captain's answer is honest about the night's own failure: seven identical collapses of the checking window before the route was switched is the proof that the machine was not learning fast enough — one failure is a failure, seven is a habit. So the first-failure-switch rule is the mechanical change: the first time a route fails in a known way, the route is named and switched in the same pass, never retried into. The verify-live rule is the other half: a deploy step that ran is not a deploy that landed, and a failure whose cause wasn't saved cannot be fixed — the live page is the only proof, and the full error is the only record. And the parallel answer is the boundary he asked for: parallel is already happening across independent pages, it is forbidden across a shared file by the clobber law, and it is useless at the checking step because one window admits one walker at human pace. The deepest point is the last one: his eye is the serial gate at the end of everything, so ten half-finished things handed to him are slower than one finished thing — which is why completions per hour, not dispatches per hour, is the metric his 18:47Z law already set.",
+  "simple_view": "Shawn asked: what are you learning, and can you do more things at the same time? We learned: if a road is broken, don't drive down it seven times — take a different road the first time it breaks. If you finish something, check it on the real page, don't just trust that it worked. You CAN do lots of things at once — but only if they're on different pages; two people can't paint the same wall at the same time, and only one person can look through one window. And the most important part: Shawn's eyes are the last check, so one finished thing is better than ten half-finished things.",
+  "grandma_view": "Dear, Shawn asked us what we're learning — and whether doing more things at once would help. We learned, dear: when a road breaks, you take a different road the first time, not the seventh. When something is deployed, you check it on the real live page — running the step isn't the same as it landing. We already do many things at once, dear, where they don't touch each other — but two jobs can't work on the same page at the same time, and only one person can look through one window. And his eyes are the last gate, dear — one finished thing in front of him is worth more than ten half-finished ones.",
+  "naya_view": "WHAT ARE YOU LEARNING? FIRST TIME A ROUTE FAILS IN A KNOWN WAY, NAME IT AND SWITCH — NEVER RETRY INTO IT. VERIFY LIVE AFTER EVERY DEPLOY. PARALLEL ONLY WHERE INDEPENDENT — NEVER ON A SHARED FILE, NEVER AT THE CHECKING STEP. THE EYE IS SERIAL. THE SCORE IS FINISHED THINGS PER HOUR, NOT STARTED THINGS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3217",
+   "title": "What Are You Learning — Play Within the Limits at Max Speed",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LEARNING/SN-3217/IB-SMART-NOTE-20261118-sn3217-what-are-you-learning-play-within-the-limits.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LEARNING/SN-3217/IB-SMART-NOTE-20261118-sn3217-what-are-you-learning-play-within-the-limits.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d51de98e57b8b027b03067b7e9419df4ab42ec58"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

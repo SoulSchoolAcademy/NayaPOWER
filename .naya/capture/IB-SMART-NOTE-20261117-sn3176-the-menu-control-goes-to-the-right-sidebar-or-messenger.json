@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3176",
+ "intelligence": {
+  "title": "The Menu Control Goes to the Right — Sidebar or Messenger",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3176-the-menu-control-goes-to-the-right-sidebar-or-messenger",
+  "smart_note_id": "SN-3176",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3176/IB-SMART-NOTE-20261117-sn3176-the-menu-control-goes-to-the-right-sidebar-or-messenger.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The control sat at the top-left because that is where menus usually sit — and that is exactly why it was wrong here. On the Hub, the left is where the world already lives: the sidebar, the feed, the person's own place. The menu control is not the world; it is the way in to the world — and the way in belongs on the right, where the hand reaches for it and where the choice it offers can open without covering what you came to see. And the choice itself is the point: one tap, two doors — the sidebar or the smart messenger — and whichever opens, the people are already there, the ones related to the feed topic you are looking at. Not a menu you have to hunt through, not people you have to go and find: the control on the right, the choice in one tap, the people on the side automatically. That is the Hub behaving like Personal, Business, and World already do — the same pattern, the same side, the same automatic people. One system, one gesture, everywhere.",
+  "simple_view": "Imagine the little menu button is sitting on the wrong side of the page — on the left, where all your things already are. Move it to the right side, where your hand can reach it easily. When you tap it, it asks you: would you like to see the sidebar, or talk to your friends in the messenger? And whichever you pick, your friends are already standing right there beside you — the ones who care about the same thing you're looking at.",
+  "grandma_view": "Dear, the little menu button at the top was on the left, getting in the way of everything — so it moves to the right side of the top bar. Tap it, and it offers you two things: open the sidebar, or open the messenger to talk to people. And the people who belong with whatever you're looking at are already there on the side, waiting for you — just like on your Personal page.",
+  "naya_view": "THE MENU CONTROL GOES TO THE RIGHT SIDE OF THE TOP BAR — NOT ON THE LEFT. TAPPING IT OFFERS TWO CHOICES: OPEN THE SIDEBAR, OR OPEN THE SMART MESSENGER. THE PEOPLE RELATED TO THE CURRENT FEED TOPIC SHOW AUTOMATICALLY ON THE SIDE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3176",
+   "title": "The Menu Control Goes to the Right — Sidebar or Messenger",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3176/IB-SMART-NOTE-20261117-sn3176-the-menu-control-goes-to-the-right-sidebar-or-messenger.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3176/IB-SMART-NOTE-20261117-sn3176-the-menu-control-goes-to-the-right-sidebar-or-messenger.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f24a8a4e8f3c44c59a1ab0cd6fb86e993291c02f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

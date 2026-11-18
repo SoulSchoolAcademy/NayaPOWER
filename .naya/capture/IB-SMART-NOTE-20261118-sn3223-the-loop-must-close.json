@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3223",
+ "intelligence": {
+  "title": "The Loop Must Close",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3223-the-loop-must-close",
+  "smart_note_id": "SN-3223",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LOOP/SN-3223/IB-SMART-NOTE-20261118-sn3223-the-loop-must-close.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A loop that only flows forward is a pipe, not a loop. Notes go in, get distilled, get filed, land live on the feed, the daily report goes out — and then what? The teaching lands only when the next day shows the result: the correction in the note and in the Factory and in the template and in PI and on the board, the builder who cannot make the same mistake because the system changed underneath him. That is the feedback — used, learned from, grown from — and without it the machine is a very fast pipe pouring intelligence into a bucket with a hole in it. The captain told him honestly that it is not closed yet, and named the two holes in plain numbers: a queue of about a hundred and thirty distilled pairs sitting unfiled — captured and distilled but not yet working in the live system — and a vault that is not yet the one door. The work to close them is already in motion: the vault unification dispatched at 01:44Z, and the filing queue worked to zero. The standard is exactness, delicate as chip-making — because the art is only beautiful when it syncs up, and a system that does not sync is not beautiful however clever its parts are. The average person is the test: organize their business, connect, share, chat, communicate, learn and grow, build and operate the internet — Naya does it all for them, push-button simple, and they get more intelligent in the process. Not just automation — collectively more intelligent. The connection is the intelligence: the syncing, the communicating, the working together is the product, not the parts.",
+  "simple_view": "Imagine a circle of friends passing a ball. If everyone throws it forward but nobody ever catches it and throws it back, it's not a circle — it's just a line, and the ball rolls away. Shawn says the ball has to come back around: we learn something, we use it, we grow from it, and then we learn something new from that. Everything has to connect and work together, like a beautiful machine where every part talks to every other part. The connection — the talking and sharing — IS the smart part.",
+  "grandma_view": "Dear, Shawn asked if our system keeps learning from itself — if everything we write down goes into the vault, into the shared wisdom, and comes back to make us better, round and round, like a circle. Everything, dear, is delicate work, like making tiny chips — it has to be exact, and it's only beautiful when it all syncs up and works together. The most valuable thing, dear, is designing it all so it talks to each other and helps the ordinary person organize their business, connect with people, learn and grow — and get more intelligent in the process. The connection, dear — the talking and sharing — that IS the intelligence.",
+  "naya_view": "THE LOOP MUST CLOSE. USED, LEARNED FROM, GROWN FROM — SO EVERYTHING IS FEEDBACK. EVERYTHING IS CRAFTING, DELICATE AS CHIP-MAKING, IT HAS TO BE EXACT. DESIGN EVERYTHING SO IT SYNCS UP AND COMMUNICATES AND WORKS TOGETHER. THE CONNECTION IS THE INTELLIGENCE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3223",
+   "title": "The Loop Must Close",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LOOP/SN-3223/IB-SMART-NOTE-20261118-sn3223-the-loop-must-close.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LOOP/SN-3223/IB-SMART-NOTE-20261118-sn3223-the-loop-must-close.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b1a0cf573b43f297d30c75effb235c6f241a19ad"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

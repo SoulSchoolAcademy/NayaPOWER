@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3174",
+ "intelligence": {
+  "title": "The Merge — One Agreement Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3174-the-merge-one-agreement-page",
+  "smart_note_id": "SN-3174",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/AGREEMENT/SN-3174/IB-SMART-NOTE-20261117-sn3174-the-merge-one-agreement-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Six minutes after he settled the agreement's URL, text, length, and voice, he looked at the two pages side by side and saw the real shape of the problem: we had built the entrance twice. One page had the look — the emblems, the welcome, the play button in the middle, the thing that feels right the moment you see it. The other page had the choice — the two buttons that let a person pick visual or text. Neither page alone was the entrance, and the first page was carrying a scrollable letter underneath its play button and a login button overlapping its own footer, as if the choice had nowhere to go. His fix is not a redesign; it is a merge. Take the page that looks right, take the two buttons from the page that chooses right, put the buttons underneath the play button, and make it all fit on one screen. One entrance, one choice, no scroll, no overlap. Do not keep two pages that both claim to be the agreement entrance — because a person who finds two entrances does not know which one is the door.",
+  "simple_view": "Imagine you have two front doors to the same house — one is beautiful but has no handle, and the other has the handle but isn't the pretty door. You don't need two doors! You take the pretty door, put the handle on it, and now there's just one door that looks right AND opens right. Everything fits on the one door — no squeezing, no overlapping, nothing hidden underneath.",
+  "grandma_view": "Dear, there were two pages both trying to be the front door to the agreement — one looked lovely, the other had the two buttons to choose. So we put them together into one: the lovely page stays, the two buttons go right underneath the play button, and everything fits on one screen with nothing to scroll past and nothing overlapping. One door, not two.",
+  "naya_view": "MERGE THE TWO AGREEMENT PAGES INTO ONE. THE ROOT PAGE IS THE BASE. THE TWO BUTTONS GO UNDERNEATH THE PLAY BUTTON. NO SCROLLABLE TEXT ON THE CHOICE PAGE — THE LETTER LIVES BEHIND THE TEXT BUTTON, THE DECK BEHIND THE VISUAL BUTTON. BACK TO THE LOGIN MUST NOT OVERLAY THE BOTTOM BAR. EVERYTHING FITS RIGHT ON ONE SCREEN. DO NOT KEEP TWO PAGES THAT BOTH CLAIM TO BE THE AGREEMENT ENTRANCE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3174",
+   "title": "The Merge — One Agreement Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/AGREEMENT/SN-3174/IB-SMART-NOTE-20261117-sn3174-the-merge-one-agreement-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/AGREEMENT/SN-3174/IB-SMART-NOTE-20261117-sn3174-the-merge-one-agreement-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "502adf14d2929304c210beff3dce72dd90757803"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

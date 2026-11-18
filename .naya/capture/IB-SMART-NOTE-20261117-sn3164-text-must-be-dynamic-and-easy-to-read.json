@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3164",
+ "intelligence": {
+  "title": "Text Must Be Dynamic and Easy to Read",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3164-text-must-be-dynamic-and-easy-to-read",
+  "smart_note_id": "SN-3164",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3164/IB-SMART-NOTE-20261117-sn3164-text-must-be-dynamic-and-easy-to-read.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He praised what was better — icons, numbers, initials — and then named what still failed, in the plainest words: the text is not dynamic, it is not easy to see or read. A page is read, not just looked at, and grey small text on black asks the reader to work for every word while an inverted hierarchy (title smaller than the sender name) tells the eye the wrong thing first. The fix is not more text — it is layered text: the 25/19/17 scale doing the hierarchy, multiple colors doing the guidance, every trick that makes it easier to read and clear. The eye confirmed it the same hour: the page's text failed in exactly the ways he named, and the fix round went out the same night.",
+  "simple_view": "Imagine a beautiful birthday card where the words are so tiny and grey you can barely read them! The pictures are lovely — but you can't read the message. From now on, the words are big and clear and colorful, so anyone can read them easily.",
+  "grandma_view": "Dear, the pictures and numbers look lovely — but the words are too small and grey to read easily. From now on, the big words are biggest, the smaller words are smaller, and we use colors to help your eyes find what matters. Everything should be easy to read.",
+  "naya_view": "TEXT MUST BE DYNAMIC AND EASY TO READ. HEADLINES 25, SUB-HEADLINES 19, SMALLER TEXT 17. MULTIPLE COLORS. LAYER THE TEXT SO IT READS BETTER. EVERY TRICK THAT MAKES IT EASIER TO READ AND CLEAR. NO FLAT, HARD-TO-READ TEXT ANYWHERE, ON ANY PAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3164",
+   "title": "Text Must Be Dynamic and Easy to Read",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3164/IB-SMART-NOTE-20261117-sn3164-text-must-be-dynamic-and-easy-to-read.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3164/IB-SMART-NOTE-20261117-sn3164-text-must-be-dynamic-and-easy-to-read.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "371b66a45ad4adaee7b9f6a38e761d2577043fc5"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

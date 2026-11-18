@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3127",
+ "intelligence": {
+  "title": "The Spectrum Flow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3127-the-spectrum-flow",
+  "smart_note_id": "SN-3127",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3127/IB-SMART-NOTE-20261117-sn3127-the-spectrum-flow.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Colors doubled up close together throw his perspective off — \"why is this all disorganized?\" That is the whole reason the flow is law: it is not decoration, it is the order his eye reads. When every button and board speaks the same flow, in the same order, the page reads organized at a glance. When two neighbors share a color, or the order jumps, his eye stops on the disorganization instead of the thing itself. The flow is natural — it continues, it cycles — so a builder never has to invent a sequence: start where the area starts, keep the order, never double up beside itself. That is why the Hub eye notes (SN-3126) keep appealing to it: \"Pricing and White Paper have the same color — that shouldn't be\"; \"you don't go green purple purple.\" The flow is the standard those corrections are measured against.",
+  "simple_view": "Colors go in a special order, like a rainbow road! At the very top is magenta — the crown, the highest — then purple, then dark blue, then light blue, then green, then gold, then orange, then red, and back to magenta again! You can start anywhere on the road, but you always walk it in the same order, and you never put two of the same color right next to each other!",
+  "grandma_view": "The colors walk a special road, love — at the very top is magenta, the crown, the highest — then purple, then the darker blue, then the lighter blue, then green, then gold, then orange, then red, and back to magenta again! You can begin anywhere on the road, dear, but you always walk it in the same order, and you never put two of the same color side by side — that looks all disorganized, and Shawn's eye catches it right away.",
+  "naya_view": "THE SPECTRUM FLOW — THE ANATOMY OF THE COLORS. FROM THE TOP: 963 HZ CROWN CHAKRA = MAGENTA, THE HIGHEST → PURPLE → INDIGO, THE DARKER BLUE → CYAN, THE LIGHTER BLUE → GREEN → GOLD → ORANGE → RED → BACK TO MAGENTA, THE HOT PINK — AND IT CONTINUES. THE ORDER NEVER CHANGES. THE START VARIES BY AREA. ALL BUTTONS AND BOARDS SPEAK THIS LANGUAGE. NEVER DOUBLE UP. NEVER ADJACENT DUPLICATES.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3127",
+   "title": "The Spectrum Flow",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3127/IB-SMART-NOTE-20261117-sn3127-the-spectrum-flow.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3127/IB-SMART-NOTE-20261117-sn3127-the-spectrum-flow.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b520b6b55d4933a9dc31bb7cc5ae17f1c42783e4"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

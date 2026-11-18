@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3239",
+ "intelligence": {
+  "title": "The Day Is the Unit — The Day View Is the Cockpit",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3239-the-day-is-the-unit",
+  "smart_note_id": "SN-3239",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3239/IB-SMART-NOTE-20261117-sn3239-the-day-is-the-unit.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He could see how it lines up: reports, daily reports, and Intel Today are perfectly aligned with the calendar for that day — because we have daily reports, we have daily Intel reports, and they can see their daily notes, they see their daily smart notes, they can see their daily news on multiple levels, they can see their daily action in their business, their personal, their thing — all for that day. Everything for a day aligns on that day. The day view is the cockpit: the Daily Intelligence Report, Intel Today, daily notes, daily smart notes, daily news (local, provincial, global), and daily action (business, personal, thing) — all for that day, on that day. The calendar round now carries it as an explicit check: the day view has to show all of it for that day, not just the menu buttons.",
+  "simple_view": "Imagine every day is like a little airplane cockpit! When you tap on a day, you see EVERYTHING for that day — your notes, your smart notes, your news, what you did — all right there, like all the buttons and dials in a cockpit! Not just a list of doors — the whole day, all in one place!",
+  "grandma_view": "It's like this, love — imagine every day has its own little cockpit, dear! When you tap on a day, you see everything for that day, love — your daily report, your Intel Today, your notes, your smart notes, your news near and far, and what you did in your business and your personal and your thing — all for that day, on that day, dear! Not just a list of doors, love — the whole day, all in one place!",
+  "naya_view": "THE DAY IS THE UNIT. Reports, daily reports, and Intel Today are PERFECTLY ALIGNED with the calendar FOR THAT DAY. Everything for a day aligns ON THAT DAY: daily notes, daily smart notes, daily news ON MULTIPLE LEVELS, daily action in business, personal, and thing. The day view is the COCKPIT: the Daily Intelligence Report, Intel Today, daily notes, daily smart notes, daily news (local, provincial, global), and daily action (business, personal, thing) — ALL FOR THAT DAY, ON THAT DAY. The day view has to SHOW ALL OF IT for that day — not just the menu buttons.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3239",
+   "title": "The Day Is the Unit — The Day View Is the Cockpit",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3239/IB-SMART-NOTE-20261117-sn3239-the-day-is-the-unit.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3239/IB-SMART-NOTE-20261117-sn3239-the-day-is-the-unit.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "63fa4e2681986e9e979c278519166f572854ab32"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

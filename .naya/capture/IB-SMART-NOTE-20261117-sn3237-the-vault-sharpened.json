@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3237",
+ "intelligence": {
+  "title": "The Vault, Sharpened — Labeled, Inventoried, Organized, Active",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3237-the-vault-sharpened",
+  "smart_note_id": "SN-3237",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3237/IB-SMART-NOTE-20261117-sn3237-the-vault-sharpened.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He sharpened the vault law he had just given. The most important thing, he said, is that the system is forever becoming alive and active as we create it — because we implement it as it's being created. What we create is LOCKED into the Smart Vault — locked into our core memory, our systems — where it just stays there. The digital asset — the object, the value, the precious art, whatever you want to call it — is labeled, inventoried, organized, active there, and it never goes away because it's part of the system now. So it never gets lost in not-being-finished, or lost in the feed, or on a computer, or not active. We make things active and official continuously — that's what he's saying. The captain sent it to the Factory round the same pass, so the vault law rides in every brief template from now on: every build lands active and official, continuously.",
+  "simple_view": "Imagine you're building a big Lego castle, and every time you snap a piece on, it LOCKS in — click! — and it can never fall off! And every piece has a little label on it, and it's on the list, and it's in the right place, and it's DOING its job! That's how we build — everything locks in and stays, forever and ever!",
+  "grandma_view": "It's like this, love — imagine you're building something beautiful, dear, and every piece you put in LOCKS in tight, love — it just stays there, safe in our treasure chest! And every piece has a label, dear, and it's counted on the list, and it's organized in its place, and it's alive and working! So nothing ever gets lost, love — not in being unfinished, not in the feed, not on a computer, not sitting there doing nothing! We make things active and official, dear, all the time, continuously!",
+  "naya_view": "THE VAULT, SHARPENED. The system is FOREVER BECOMING ALIVE AND ACTIVE AS WE CREATE IT — because we IMPLEMENT it as it's being created. What we create is LOCKED into the Smart Vault, locked into our core memory, our systems, where it JUST STAYS THERE. The digital asset — the object, the value, the precious art — is LABELED, INVENTORIED, ORGANIZED, ACTIVE there, and it NEVER GOES AWAY because it's PART OF THE SYSTEM NOW. So it never gets lost in not-being-finished, or lost in the feed, or on a computer, or not active. We make things ACTIVE and OFFICIAL CONTINUOUSLY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3237",
+   "title": "The Vault, Sharpened — Labeled, Inventoried, Organized, Active",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3237/IB-SMART-NOTE-20261117-sn3237-the-vault-sharpened.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3237/IB-SMART-NOTE-20261117-sn3237-the-vault-sharpened.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0a00f55db5caed83fc85c70cd84857606c424bcb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

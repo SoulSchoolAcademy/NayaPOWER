@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3191",
+ "intelligence": {
+  "title": "All Icons Extraordinary, All the Way Through",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3191-all-icons-extraordinary-all-the-way-through",
+  "smart_note_id": "SN-3191",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3191/IB-SMART-NOTE-20261117-sn3191-all-icons-extraordinary-all-the-way-through.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Extraordinary cannot be a special case — the moment one icon is ordinary, the whole page drops to its level. The tiles are already triple-A, the most pro (SN-3185, SN-3188); now the bar extends to all of them, all the way through: the sidebar icons, the pills, the controls, every icon on every page. No icon gets to be merely fine. Every one of them has to present extraordinarily — real, raised, deep, alive, a ball not a circle (SN-3178), 3D not 2D (SN-3181), crisp at any zoom (SN-3179) — because the system is only as extraordinary as its most ordinary icon. This is the model-tiles law (SN-3185) generalized: the standard that judged the tiles now judges everything.",
+  "simple_view": "Imagine a box of jewels where one jewel is dull and plain, and all the others are sparkling. The dull one makes the whole box look less beautiful. Every jewel has to sparkle — all of them, all the way through. That is what Shawn wants for every little icon: all of them extraordinary, none of them ordinary.",
+  "grandma_view": "Dear, the little icons are like jewels — and every single one of them should be extraordinary, not just the pretty ones at the bottom. The sidebar, the little pills, the buttons, every icon on every page — all of them beautiful, all of them special. One ordinary one would let the whole page down.",
+  "naya_view": "MAKE ALL OUR ICONS JUST BE EXTRAORDINARY IN THEIR PRESENTATION. ALL OF THEM ALL THE WAY THROUGH. EXTRAORDINARY IS THE BAR FOR ALL OF THEM, NOT A SPECIAL CASE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3191",
+   "title": "All Icons Extraordinary, All the Way Through",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3191/IB-SMART-NOTE-20261117-sn3191-all-icons-extraordinary-all-the-way-through.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3191/IB-SMART-NOTE-20261117-sn3191-all-icons-extraordinary-all-the-way-through.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f04e5039429fc87d114565c693785f100446c182"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

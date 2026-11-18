@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3227",
+ "intelligence": {
+  "title": "The Format Assignment — Unfold in About, Slideshow in Skills, and Personal Done",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3227-the-format-assignment",
+  "smart_note_id": "SN-3227",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3227/IB-SMART-NOTE-20261117-sn3227-the-format-assignment.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He started with the speed: don't send it away. We want it back — action. A fast action plan is to get that action done like right away, but make sure the quality is there and it's done right. Fast and right, together, in the same pass — not fast now and right later, not right somewhere else while he waits. Then the thing that was never completed right: the official unfold page. Where it says the collective agreement, clicking it is supposed to go to the bridge page — the two different views, all the legal pages — click there and it gives you the visual presentation that directs you. That was never completed. The unfold for that was never done right. You need to complete that. Then the assignment that settles the formats: the unfold goes in About, the slideshow goes in Skills. About is you — your story, unfolding down, board by board. Skills is the showcase — your skills and who you are, sliding sideways, one screen at a time, almost a presentation. And a presentation is what it is for: a citizen sends their profile for getting work — here you go, you can see my skills, there's even a presentation. The presentations are made by default so impressive that anybody could add an image or put in text and it would look extraordinary, because of the formatting. This is what he's getting at: the format does the work. And then the unit of work, the thing he is really trying to do: get the Personal page done. The calendar is part of the Personal page — the world thing — so both matter to get it done right: the unfold completing Skills and About, and the calendar as the sibling half. Personal done is the whole-page round and the calendar follow-on landing together. One page, whole, in front of his eyes — or not at all.",
+  "simple_view": "Imagine you have two special ways to show your story! One way you open it down, down, down — like unrolling a long beautiful scroll — and that goes in the part about YOU! The other way you slide it sideways, like a picture show — and that goes in the part about your SKILLS, so you can send it to someone and say \"here you go, look at all the amazing things I can do!\" And the magic is: the way it's put together is SO beautiful that anything you put in it — a picture, some words — looks extraordinary all by itself!",
+  "grandma_view": "It's like this, love — imagine you have two beautiful ways to tell your story, dear! One way opens downward, like unrolling a lovely scroll — and that belongs in the part about you, love! The other way slides sideways, like a picture show — and that belongs in the part about your skills, dear, so you can send it to someone and say \"here you go, look at what I can do!\" And the magic, love, is that it's made SO beautifully that anything you put in it — a picture, some words — looks extraordinary all by itself!",
+  "naya_view": "FAST ACTION, DON'T SEND IT AWAY. ONE FORMAT PER BRIDGE: About = the UNFOLD only (your story, down, board by board); Skills = the SLIDESHOW only (your skills and who you are, sideways, one screen at a time — a presentation worth sending for work). The canonical implementations stand; the entrance bridge still uses BOTH formats for the agreement/legal pages. THE FORMAT DOES THE WORK: the presentations are made SO impressive BY DEFAULT that anybody could add an image or put in text and it would look extraordinary BECAUSE OF THE FORMATTING. THE BRIDGE PAGE WAS NEVER COMPLETED RIGHT: the agreement click must go to the bridge page — two views, all the legal pages, the visual presentation that directs you — and that unfold was never done right. It IS the entrance round: build finished and proven (sha 6dc14953, 1,101,040 B, 11 self-checks pass), waiting only on the EPERM flake. PERSONAL DONE IS THE UNIT: the whole-page round + the calendar follow-on landing together — the calendar is part of Personal (the world thing), the unfold completes Skills and About, and BOTH matter to get it done right.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3227",
+   "title": "The Format Assignment — Unfold in About, Slideshow in Skills, and Personal Done",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3227/IB-SMART-NOTE-20261117-sn3227-the-format-assignment.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3227/IB-SMART-NOTE-20261117-sn3227-the-format-assignment.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "55e6f80f3deeb8890d111c0edf7d8169c7dd34a4"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

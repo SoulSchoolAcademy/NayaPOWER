@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3246",
+ "intelligence": {
+  "title": "Smart Posts Facelift — Stars + Action Icons",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3246-smart-posts-facelift",
+  "smart_note_id": "SN-3246",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3246/IB-SMART-NOTE-20261117-sn3246-smart-posts-facelift.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He showed us a smart post — five outline stars plus an empty \"-\" slot, LOVE / LIKE / COMMENT pills — and asked: our smart posts, our presentation, the formatting, would you say it's 10 out of 10? Could we give our intelligent boards, our posts, a facelift? Because I believe they're good, but I think they could be better. Do we have the best stars? Do we have the best love and like and comment? Is that the best way to do it? I don't mind it — but I think the stars could be better, the buttons probably could be better, the icons within the buttons could be better. What do you think? The captain answered honestly: no, not 10 — 7. The boards are good, the pills and the counts are right, but the stars are flat outlines and the heart, thumb, and bubble are thin line drawings. So the facelift round went out: the stars become jewels that light up gold, the icons become real objects, and the active state lights whole — and the empty sixth slot is made whole or removed, because nothing unfinished stays.",
+  "simple_view": "Imagine your star stickers are just flat outlines — not shiny at all! And the little heart and thumbs-up pictures are just thin lines! Let's make them beautiful: the stars become real shiny jewels that light up gold when you tap them, and the heart and thumbs-up become real little treasures you can almost touch! And that empty box with the dash in it? We either fill it up or take it away — no empty boxes allowed!",
+  "grandma_view": "It's like this, love — imagine your little star stickers, dear, are just flat outlines, not shiny at all! And the heart and the thumbs-up, love, are just thin little lines! So we give them a facelift, dear — the stars become real shiny jewels that light up gold when you tap them, and the heart and thumbs-up become real little treasures! And that empty box with the dash, love — we either fill it up proper or take it away, because nothing unfinished stays, dear!",
+  "naya_view": "SMART POSTS FACELIFT — STARS + ACTION ICONS. THE POSTS' PRESENTATION, THE FORMATTING — IS IT 10 OUT OF 10? THEY'RE GOOD, BUT THEY COULD BE BETTER: THE STARS COULD BE BETTER, THE BUTTONS PROBABLY COULD BE BETTER, THE ICONS WITHIN THE BUTTONS COULD BE BETTER. NO — NOT 10. SEVEN. THE BOARDS ARE GOOD, THE PILLS AND THE COUNTS ARE RIGHT, BUT THE STARS ARE FLAT OUTLINES AND THE HEART, THUMB, AND BUBBLE ARE THIN LINE DRAWINGS. THE FACELIFT: THE STARS BECOME REAL JEWEL OBJECTS IN THEIR OWN TILES, LIGHTING UP WHOLE IN GOLD WHEN TAPPED, LIT STARS STAY LIT; THE EMPTY \"-\" SIXTH SLOT IS MADE WHOLE OR REMOVED — NOTHING UNFINISHED STAYS. LOVE/LIKE/COMMENT ICONS BECOME DIMENSIONAL REAL OBJECTS ON THE OBSIDIAN PILL. ACTIVE STATE LIGHTS UP WHOLE IN ITS OWN COLOR — LOVE RUBY/RED, LIKE SAPPHIRE, COMMENT DEEP GOLD — AND THE COUNT POPS. AT REST THE ICONS ARE WHITE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3246",
+   "title": "Smart Posts Facelift — Stars + Action Icons",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3246/IB-SMART-NOTE-20261117-sn3246-smart-posts-facelift.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3246/IB-SMART-NOTE-20261117-sn3246-smart-posts-facelift.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "5447493bec7be6a2a41d109762184b761b4706f2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

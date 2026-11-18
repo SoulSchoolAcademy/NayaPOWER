@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3179",
+ "intelligence": {
+  "title": "Clarity at Zoom",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3179-clarity-at-zoom",
+  "smart_note_id": "SN-3179",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3179/IB-SMART-NOTE-20261117-sn3179-clarity-at-zoom.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A design that only looks right at one size is not finished — it is a picture that falls apart the moment his eye gets close. When the icon and the circle run into each other under zoom, the object stops being an object and becomes a smudge: two shapes fighting for the same space, neither of them clean. Quality is not what it looks like from far away; quality is what survives being looked at closely. The zoom is the test because his eye zooms — he looks, he leans in, he checks — and the page has to hold up under his looking, not just under a glance. Real space between the icon and the circle is not decoration; it is the thing that keeps them two things instead of one blur.",
+  "simple_view": "Imagine a picture that looks nice from far away, but when you walk up close, two shapes are squished together and you can't tell where one ends and the other begins. That is not a good picture. A good picture stays clear when you look closely — the shapes have space between them, like friends standing apart, not crowding each other.",
+  "grandma_view": "Dear, when you look closely at something beautiful, it should stay beautiful — the little picture and the circle around it should each be clear, with a little breathing room between them. If they melt into each other when you zoom in, that is not quality. Good work holds up when you look at it properly.",
+  "naya_view": "IF YOU ZOOM IN AND YOU CANNOT SEE THE CLARITY, THAT IS BAD DESIGN. THAT IS NOT QUALITY. THE ICON AND THE CIRCLE STAY CRISP AND SEPARATE AT ANY ZOOM, WITH REAL SPACE BETWEEN THEM.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3179",
+   "title": "Clarity at Zoom",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3179/IB-SMART-NOTE-20261117-sn3179-clarity-at-zoom.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3179/IB-SMART-NOTE-20261117-sn3179-clarity-at-zoom.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6a7139a7d783694d415cde4217280b859f817f63"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

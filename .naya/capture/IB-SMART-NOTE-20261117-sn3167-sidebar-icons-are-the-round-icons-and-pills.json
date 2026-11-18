@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3167",
+ "intelligence": {
+  "title": "Sidebar Icons Are the Round Icons + Pills",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3167-sidebar-icons-are-the-round-icons-and-pills",
+  "smart_note_id": "SN-3167",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3167/IB-SMART-NOTE-20261117-sn3167-sidebar-icons-are-the-round-icons-and-pills.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He showed the object instead of describing it — \"Remember these? These were nice.\" The round icons were already right, and the sidebar should have taken them verbatim instead of making a new shape. His correction is precise about what failed: the color was nice, the middle icon was lacking, and the chips should have been more circles. That is the whole lesson in one sentence: the rim is not the icon, and a soft middle is a fail no color can rescue. Circles win because that is what he showed — the open call is settled by his images, not by debate. The amendment went to the Hub fix coordinator in the same pass (21:54Z).",
+  "simple_view": "Imagine you have beautiful round badges with a sharp little picture in the middle — and someone makes them square-ish with a blurry picture. The color is pretty, but the picture is the point! From now on, the badges stay round, and the picture in the middle stays sharp.",
+  "grandma_view": "Dear, he showed us the lovely round icons — black circles with a colored edge and a sharp white picture in the middle — and said the sidebar should use those. The color was nice but the middle picture was soft, and the chips should be circles, not squares. So from now on: round, with a sharp picture in the middle.",
+  "naya_view": "SIDEBAR ICONS ARE THE ROUND ICONS + PILLS. BLACK CIRCLES, COLORED RIM, SHARP WHITE ICON IN THE MIDDLE. THE LABELED CONTROLS ARE THE OBSIDIAN PILL BUTTONS WITH THE SMALL COLORED ICON AND BOLD WHITE TEXT. THE CHIPS ARE CIRCLES, NOT ROUNDED SQUARES. THE COLOR AROUND THE EDGE CAN BE RIGHT AND THE ICON STILL FAIL: THE MIDDLE ICON MUST BE SHARP.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3167",
+   "title": "Sidebar Icons Are the Round Icons + Pills",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3167/IB-SMART-NOTE-20261117-sn3167-sidebar-icons-are-the-round-icons-and-pills.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3167/IB-SMART-NOTE-20261117-sn3167-sidebar-icons-are-the-round-icons-and-pills.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "32f0889aeb01dd1d854aa991d51ea74ba217eef5"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

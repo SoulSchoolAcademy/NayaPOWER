@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3213",
+ "intelligence": {
+  "title": "The Month-View Top Bar and the Ten Things",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3213-month-view-top-bar-and-the-ten-things",
+  "smart_note_id": "SN-3213",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CALENDAR/SN-3213/IB-SMART-NOTE-20261118-sn3213-month-view-top-bar-and-the-ten-things.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The month view's job, in his words, is to tell you the time and the date at a glance — boom — and then get out of the way. That is why the time and date go dead center across the top: centered is where the eye lands first, and on mobile it is the whole point of the page. A time stranded in the corner is a time you have to hunt for; a time dead center, the nicest display, fitting perfectly across the top, is a time you cannot miss — and you can click into your calendar from it, because the top bar is a door, not a label. The flat diamond pill goes because it is flat and purposeless and doing nothing — it sits in the middle doing no work, and a thing that does no work on the top bar is clutter wearing a jewel's shape. That is not the Hz diamond: the Hz diamond is a real spinning jewel by his own law (2026-11-17 16:23Z), and the restructure places it with the centered time — so if it stays, it stays as the real spinning jewel beside the centered time+date, never flat, never covering a word. The rest is readability made physical: day numbers about 25% bigger because the numbers are the grid; \"i\" buttons bigger and visible because a button you cannot see is a button that does not exist — and it must do something clear, or it goes like the pill; weekday glow toned down because glow is an accent, not a wash; weekday icons as real 3D balls because flat circles and hula hoops are pictures of objects, not objects. The captain's ten turns his direction into a scorecard the round must answer: today reads instantly once plugged in; a day with something in it shows it, not a black box; the grid reads as a stack of boxes, not a machine; the day tap opens the day beautifully, because the day is the only door; and there is no stats door from here — the Your Stats button is the door, carried by the same amendment, day-synced (SN-3212). The weekday rebuild law stands with tonight's sharpening: the little diamonds above each weekday word go, each abbreviation is a real object — obsidian middle, white letters, the day's color as rim and glow — and the headliner weekday stays white. Amendment #3 went to the calendar inner pages round at 00:41Z, pending application.",
+  "simple_view": "Imagine your calendar page: right across the very top, in the middle, is the time and the date — big and beautiful, so you see it the second you look, boom! The flat diamond in the middle goes away because it doesn't do anything. The day numbers get bigger, the little \"i\" buttons get bigger so you can see them, and the little circles above the days become real shiny balls you could pick up. And today — today jumps right out at you, so you always know what day you're on.",
+  "grandma_view": "Dear, the month page should tell you the time and the date the moment you look at it — right across the top, in the middle, lovely and clear, so on your phone you see it at a glance, boom, and you can tap right into your calendar. That flat diamond in the middle goes, dear — it's flat and it does nothing. The day numbers get bigger, the little \"i\" buttons get bigger so you can see them, the glow on the weekdays comes down a touch, and the little circles above Sunday through Saturday become real shiny balls. And today reads instantly, dear — you always know what day you're on.",
+  "naya_view": "TIME + DATE DEAD CENTER ACROSS THE TOP — THE NICEST DISPLAY, AT A GLANCE, BOOM. THE FLAT DIAMOND PILL GOES. NUMBERS 25% BIGGER. \"i\" BUTTONS BIGGER AND VISIBLE. WEEKDAY GLOW DOWN. WEEKDAY ICONS AS REAL 3D BALLS. TODAY READS INSTANTLY. THE DAY IS THE ONLY DOOR.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3213",
+   "title": "The Month-View Top Bar and the Ten Things",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CALENDAR/SN-3213/IB-SMART-NOTE-20261118-sn3213-month-view-top-bar-and-the-ten-things.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CALENDAR/SN-3213/IB-SMART-NOTE-20261118-sn3213-month-view-top-bar-and-the-ten-things.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "9bf0e73f907fee47623a864bbc55daab69d75ff8"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

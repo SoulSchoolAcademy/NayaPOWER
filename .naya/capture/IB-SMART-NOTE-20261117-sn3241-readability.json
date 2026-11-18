@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3241",
+ "intelligence": {
+  "title": "Readability — Too Much Text Is a Fail",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3241-readability",
+  "smart_note_id": "SN-3241",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3241/IB-SMART-NOTE-20261117-sn3241-readability.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He looked at the calendar — the follow-on build, fresh from its checker's pass — and what he saw was terrible. Way too much text. The buttons carry an enormous amount of text and not enough style. It looks not good at all. Too heavy in text, hard to read, not enough contrast, not enough icons, not enough separation. Some of the buttons are okay, but it just looks way too busy, and it's not easy to read. He's not impressed with that at all — not for what he can see. And the captain agreed on the spot: the checker's pass doesn't matter against what his eyes see. If it reads terrible, it is terrible. A fix round is on its way for exactly that — fewer words, more icons, more contrast, more separation, more style — and the eye walking it now will add the details when it lands.",
+  "simple_view": "Imagine a page that's just a BIG wall of words — so many words, all squished together, with hardly any pictures or buttons to look at! It's too busy and too hard to read! A good page is like a tidy toy box — a few words, lots of pretty pictures and buttons, everything easy to see at a glance!",
+  "grandma_view": "It's like this, love — imagine a page that's just a big wall of words, dear — so many words, all squished together, with hardly any pictures or buttons, love! It's too busy and too hard to read, dear! A good page is like a tidy room, love — a few words, lots of pretty pictures and buttons, everything easy to see at a glance, dear!",
+  "naya_view": "READABILITY — TOO MUCH TEXT IS A FAIL. The calendar as he saw it looks TERRIBLE — WAY TOO MUCH TEXT, an enormous amount of text, NOT ENOUGH STYLE, too heavy in text, HARD TO READ, not enough contrast, not enough icons, not enough separation, WAY TOO BUSY, not easy to read. He's NOT IMPRESSED AT ALL. A checker's pass does NOT override what his eyes see — mechanical checks NEVER prove the experience; the EYE is the FINAL GATE, and a page that reads terrible IS terrible, whatever the counts say. The fix is FEWER WORDS, MORE ICONS, MORE CONTRAST, MORE SEPARATION, MORE STYLE — a page that reads AT A GLANCE, phone first, a stranger cold can follow it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3241",
+   "title": "Readability — Too Much Text Is a Fail",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3241/IB-SMART-NOTE-20261117-sn3241-readability.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3241/IB-SMART-NOTE-20261117-sn3241-readability.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ae0e7ca636dd7d56b2acc58fd7290b4f8a4a0a76"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

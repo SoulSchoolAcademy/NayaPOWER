@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3195",
+ "intelligence": {
+  "title": "The Notification Ball",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3195-the-notification-ball",
+  "smart_note_id": "SN-3195",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3195/IB-SMART-NOTE-20261117-sn3195-the-notification-ball.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The count bubble was the stuck-on disc from the A4 eye — a purple disc straddling the tile's corner, half outside, reading as stuck on. The ball fixes it by being part of the tile: black obsidian, white number, sitting inside, never on the corner — and lit around it in the tile's own color, so the rim light ties it to its tile the way the tile's own rim ties it to the page. A ball, not a disc stuck on; inside, not half outside; the tile's color, not a stranger's. That is the notification done the way the whole system is done: a real object, inside its place, lit in its own color. And it closes a loop from 23:00Z: the badge was the one part of the tiles he had not seen — now he has not only seen it, he has designed it, and his design is the build.",
+  "simple_view": "Imagine a little black ball with a white number on it, sitting neatly inside a tile — like a jewel set into a ring, not stuck on the outside like a sticker. And a pretty light glows around the ball in the same color as the tile it sits on, so it belongs there. Never hanging off the corner, never half outside — inside, where it belongs.",
+  "grandma_view": "Dear, the little number that tells you how many new things there are should be a black ball with a white number, sitting neatly inside the tile — never stuck on the corner like a label hanging off. And a gentle light glows around it in the color of the tile it sits on, so it looks like it belongs there. A ball, inside, lit in its own color.",
+  "naya_view": "A BLACK OBSIDIAN BALL WITH A WHITE NUMBER, INTEGRATED INSIDE THE TILE, NEVER STUCK ON THE CORNER, LIT UP AROUND IT IN THE COLOR OF WHATEVER TILE IT SITS ON.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3195",
+   "title": "The Notification Ball",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3195/IB-SMART-NOTE-20261117-sn3195-the-notification-ball.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3195/IB-SMART-NOTE-20261117-sn3195-the-notification-ball.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8664a7d30d781d110e204f454ab3d0c75d5140d1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

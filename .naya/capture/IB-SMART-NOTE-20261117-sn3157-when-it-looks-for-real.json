@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3157",
+ "intelligence": {
+  "title": "When It Looks for Real, They Take You for Real",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3157-when-it-looks-for-real",
+  "smart_note_id": "SN-3157",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3157/IB-SMART-NOTE-20261117-sn3157-when-it-looks-for-real.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Until now the Real Object Law was a rule about how things look — real objects, not flat shapes. His word gives it its why: quality is what makes people believe. When an official piece looks so for real, people take you for real — they want to be part of it, they want it, they respect it. The quality is not polish on top of the product; it is the proof of the product. A system that looks premium is a system people trust to be premium, and a system that looks flat is a system people dismiss before they ever use it. That is why nothing less than the highest quality is acceptable, all the way through — not on the hero page, not on the certificate, everywhere.",
+  "simple_view": "When something looks SO real and SO beautiful, people believe it's real — and they want to be part of it! That's why everything has to be the very best, all the way through!",
+  "grandma_view": "When something looks SO real and SO beautiful, dear, people believe it's real — and they want to be part of it! That's why everything has to be the very best, all the way through!",
+  "naya_view": "WHEN IT LOOKS FOR REAL, THEY TAKE YOU FOR REAL. THE QUALITY IS THE PROOF. THE HIGHEST QUALITY OF DESIGN, ALL THE WAY THROUGH — NOTHING THAT'S NOT HIGH-TECH, PREMIUM, TOP OF THE LINE, SPECTACULAR, STUNNING, USEFUL, VALUABLE, ELITE IN EVERY WAY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3157",
+   "title": "When It Looks for Real, They Take You for Real",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3157/IB-SMART-NOTE-20261117-sn3157-when-it-looks-for-real.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3157/IB-SMART-NOTE-20261117-sn3157-when-it-looks-for-real.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "18675f91bb9cb942214c3df40e7bde1c08b7309a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

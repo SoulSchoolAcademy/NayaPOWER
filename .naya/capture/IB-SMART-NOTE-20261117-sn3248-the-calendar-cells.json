@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3248",
+ "intelligence": {
+  "title": "The Calendar Cells — Numbers Top Left, Eye Bottom Right, Rim Only, Pearl Not Neon",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3248-the-calendar-cells",
+  "smart_note_id": "SN-3248",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3248/IB-SMART-NOTE-20261117-sn3248-the-calendar-cells.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He looked at the vision page and said: the numbers should be in the top corner of each cell — that's the way you're supposed to do it, the calendar, and if you did that it would present a lot better. And when you go over it, don't have the whole thing light up and glow — just the outside. You can have a light glow of the day's color even when it's not lit up, and once you hover over it, it just gets brighter. And in the box itself, a nice little eye in the bottom right corner — a really beautiful one — and now you can get your info for the day. And he said he didn't think it'd be so small — he pictured it bigger. Then you see the orange around them and the purple for each day, you can actually see the line. And what's at the very bottom — numbers that shouldn't be there, going into the next month — those stop bleeding in. And make it way more elegant: these ones don't look great, they look more like neons — he wants them to look like pearl gems, not the feeling of a neon lighting up but elegance. And the numbers must look like objects, beautiful and the same — literally the ones in the Dashboard, because these are close but not the same. And all the days should be lit up, just not as bright as the day you hover — and no glow in the middle.",
+  "simple_view": "Imagine a calendar made of big beautiful boxes! The number sits in the top left corner of each box — like a shiny treasure! And when you touch a box, only its edges light up — not the whole box, never the middle! And in the bottom right corner there's a beautiful eye — like a jewel! — and if you tap the eye, it shows you everything about that day! And all the boxes glow a little bit all the time, in pretty pearl colors — not bright neon, but soft and elegant like pearls!",
+  "grandma_view": "It's like this, love — imagine a calendar made of big beautiful boxes, dear! The number sits in the top left corner of each box, love — like a shiny treasure! And when you touch a box, dear, only its edges light up — not the whole box, never the middle! And in the bottom right corner, love, there's a beautiful eye — like a jewel! — and if you tap the eye, dear, it shows you everything about that day! And all the boxes glow a little bit all the time, love, in pretty pearl colors — not bright neon, but soft and elegant like pearls, dear!",
+  "naya_view": "THE CALENDAR CELLS — NUMBERS TOP LEFT, EYE BOTTOM RIGHT, RIM ONLY, PEARL NOT NEON. THE DAY NUMBER SITS IN THE TOP LEFT CORNER OF EACH CELL. ON HOVER THE WHOLE CELL DOES NOT LIGHT UP — ONLY THE OUTSIDE RIM LIGHTS, WITH A LIGHT GLOW OF THE DAY'S COLOR EVEN AT REST, BRIGHTER ON HOVER; NO GLOW IN THE MIDDLE. EVERY DAY IS LIT AT REST — YOU CAN SEE EACH DAY'S COLOR LINE — JUST NOT AS BRIGHT AS THE HOVERED DAY. IN THE BOTTOM RIGHT CORNER OF EACH CELL SITS A BEAUTIFUL HUMAN EYE — THE MOST BEAUTIFUL EYE, LIKE A JEWEL — AND THE EYE IS THE DOOR TO THE DAY'S INFO. THE NUMBERS ARE LITERALLY THE DASHBOARD DIGIT TILES — OBJECTS, BEAUTIFUL, ELEGANT — NOT CLOSE, THE SAME. THE CELLS ARE BIG — HE PICTURED IT BIGGER. THE COLORS ARE PEARL GEMS, NOT NEON. AND THE NEXT MONTH'S NUMBERS DO NOT BLEED IN AT THE BOTTOM.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3248",
+   "title": "The Calendar Cells — Numbers Top Left, Eye Bottom Right, Rim Only, Pearl Not Neon",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3248/IB-SMART-NOTE-20261117-sn3248-the-calendar-cells.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3248/IB-SMART-NOTE-20261117-sn3248-the-calendar-cells.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "842cb8d2ac5817b58cba39bac2323a8922e1f6a1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

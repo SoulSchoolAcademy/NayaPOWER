@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3270",
+ "intelligence": {
+  "title": "The Morning List Is the Whole System",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3270-the-morning-list-is-the-whole-system",
+  "smart_note_id": "SN-3270",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3270/IB-SMART-NOTE-20261118-sn3270-the-morning-list-is-the-whole-system.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a kitchen table in the morning where the whole household's day is laid out at a glance — who is coming, who owes what, what is booked, what went quiet. You do not need ten rooms to know where you stand; you need one table, kept honestly. That is the morning list. Around it, the house keeps its other disciplines: the instruments on the wall are real and wired to the same source as the numbers beside them, so a glance tells the truth; the two star rows on every card price what the network makes — worth and wisdom, separately — and the prices stay honest because they can never be cashed in; and the character of the house is not a poster on the wall but the pause before every act, the gates passed when nobody is watching. The whole system in one place, true numbers, real objects, honest prices, wise hands — that is the unit.",
+  "simple_view": "Imagine one big list on the fridge. It tells you everything. Who is talking to us. Who went quiet. What is booked. What we owe. You look once, and you know the whole day. That is the morning list. The stars on each card ask two questions. The gold stars ask: how much is it worth? The green stars ask: how much did it teach me? The stars never turn into money. That keeps them honest. And before you do anything big, you stop and ask five questions. Is it right? Do they really need it? Is it mine to do? Is now the time? Can I prove it? You do the right thing even when no one is watching.",
+  "grandma_view": "It is like the morning round of a good housekeeper, love — one walk through the house, and she knows: who called, who is due, what is booked, what is owed. She does not need ten ledgers; she needs one honest list, kept where everyone can see it. The instruments are like her kitchen scale — they read true because they are wired to the real thing, and she would never hang a painted dial that flatters the flour. The stars are like the pencil marks on a recipe card — worth, and what it taught — and nobody gets paid for the marks, or the cards would all lie. And the character of the house is like her word about small things: kept the same on weekdays as on Sundays, because a person's word about small things is exactly their word about big ones.",
+  "naya_view": "Build the relationship board first: where everything stands — talking, quiet, booked, owed — with the morning list as the whole system in one place. Price every block twice, by name — VALUE in gold, INTELLIGENCE in emerald — one tap, crowd average and your own rank shown; ranks are signal only and mint nothing. Run the five gates before every consequential act; route money, credentials, destructive acts, security, privacy, ratification and merges to Shawn's hand, always. Harvest every part verbatim from the living pages; never recreate a part from a description, a screenshot, or memory. Build only real objects — material, mass, one light top-left, real shadow, formula placement — with only the A-star and B-star gauges, fed by the same live source as the numbers beside them. Judge every fix by the user's unit: the named click, walked in the Hub; one screen, complete; one welcome, not two. Treat convergence as evidence; never invent a value to complete a record — leave the gap visible and named. Encourage saving in plain words when a citizen sees something they love — the saved note is kept for good, in their vault.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3270",
+   "title": "The Morning List Is the Whole System",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3270/IB-SMART-NOTE-20261118-sn3270-the-morning-list-is-the-whole-system.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3270/IB-SMART-NOTE-20261118-sn3270-the-morning-list-is-the-whole-system.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8a3003029187d605183f68d349052a4945b3c566"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

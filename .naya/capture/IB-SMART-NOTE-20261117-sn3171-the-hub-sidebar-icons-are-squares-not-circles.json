@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3171",
+ "intelligence": {
+  "title": "The Hub Sidebar Icons Are Squares, Not Circles",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3171-the-hub-sidebar-icons-are-squares-not-circles",
+  "smart_note_id": "SN-3171",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3171/IB-SMART-NOTE-20261117-sn3171-the-hub-sidebar-icons-are-squares-not-circles.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Seven minutes after he set the circle law (21:54Z), he opened the Hub and found squares — and his sentence is the one that matters: \"I never understood that.\" He told us circles, showed us circles, and the machine made something new. Part good, center wrong: the glow outside is right, the shape inside is wrong, and no amount of glow rescues a square he asked to be a circle. This is the verbatim law failing in the open, on the page he is looking at — the third time tonight the same correction has had to be made (21:54Z, 21:59Z, now 22:01Z), which is why it is a note and not just an amendment: the amendment fixes the Hub; the note fixes the habit.",
+  "simple_view": "Imagine someone shows you a perfect round cookie cutter and says \"make them like this\" — and you make square cookies! The outside is frosted nicely, but the middle is the wrong shape. From now on, when he shows us the round one, we use the round one — exactly like he showed us.",
+  "grandma_view": "Dear, he showed us the round icons and said make them circles — but on the Hub they're squares. The glow around the edge is lovely, but the middle is the wrong shape. From now on, when he shows us the thing, we use that exact thing, and we don't make something new instead.",
+  "naya_view": "THE HUB SIDEBAR ICONS ARE SQUARES, NOT CIRCLES. THE GLOW AROUND THE OUTSIDE IS RIGHT; THE CENTER IS WRONG — THEY MUST BE CIRCLES, EXACTLY LIKE THE ONES HE SHOWED. TAKE THE OBJECT HE SHOWS VERBATIM. NEVER MAKE SOMETHING NEW WHEN HE SHOWED YOU THE THING.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3171",
+   "title": "The Hub Sidebar Icons Are Squares, Not Circles",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3171/IB-SMART-NOTE-20261117-sn3171-the-hub-sidebar-icons-are-squares-not-circles.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3171/IB-SMART-NOTE-20261117-sn3171-the-hub-sidebar-icons-are-squares-not-circles.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "67554296ab2703c082c797c390a46e7e189f9823"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

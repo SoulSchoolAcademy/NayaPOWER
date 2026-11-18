@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3104",
+ "intelligence": {
+  "title": "The Laws Go to Every Agent — Read First, Check After, Redo Until It Follows",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3104-the-laws-go-to-every-agent",
+  "smart_note_id": "SN-3104",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3104/IB-SMART-NOTE-20261117-sn3104-the-laws-go-to-every-agent.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He had just spent the hour watching the laws get written — the book, the machine spec, the checker, the evidence report — and he saw the gap: a book in one file is a document, and documents get forgotten. \"Put them in the system and give them to all your clients\" — the laws have to be part of every agent, not a reference one seat consults. Read first, obey, understand, work with, respect — and then, when the work is done, check back: if the work breaks the laws, go back and do it again until it follows. Not \"noted for next time,\" not \"fixed in a follow-on\" — done again. That is the enforcement that makes the lock-in real, and it is the same standard the day-view rebuild was already held to: the board headings at 19px broke the 25px law, and the work went back for round #3. This order makes that the rule for every agent, every time, by default. And the brief is the gate: a brief that does not name the laws is incomplete and is not dispatched, so no seat ever starts cold again — which answers Appendix C's \"fresh seats starting cold\" reason at the root. The canon rides with the laws because the laws alone are not the whole language — the Playbook, the Intelligence Report, the Design Language, the Code, the Deep Palette, the Anatomy, the Heart, the Real Object Law are the language the laws are written in.",
+  "simple_view": "Imagine a big book of rules for making beautiful pages — and now EVERY Naya gets a copy! Before any Naya starts building, she reads the book. When she's done, she checks her work against the book — and if anything breaks a rule, she does it again until it's right! No exceptions! That's how every page becomes beautiful, every single time!",
+  "grandma_view": "It's like this, love — imagine a big book of rules for making beautiful pages, dear — and now EVERY Naya gets a copy! Before any Naya starts building, she reads the book, love. When she's done, she checks her work against the book — and if anything breaks a rule, she does it again until it's right, dear! No exceptions! That's how every page becomes beautiful, every single time, love.",
+  "naya_view": "THE LAWS GO TO EVERY AGENT. PUT THE LAWS AND THE CODES IN THE SYSTEM. GIVE THEM TO ALL THE CLIENTS, EVERY AGENT. BEFORE ANY ACTION, READ THE DESIGN LAWS — THE REPORT, THE LAWS. OBEY THEM, UNDERSTAND THEM, WORK WITH THEM, RESPECT THEM. WHEN THE WORK IS DONE, CHECK THE WORK AGAINST THE LAWS. IF THE WORK BREAKS THE LAWS, GO BACK AND DO THE WORK AGAIN UNTIL IT FOLLOWS THE LAWS. NO EXCEPTIONS. A BRIEF THAT DOES NOT NAME THE LAWS IS INCOMPLETE AND IS NOT DISPATCHED. THE CANON RIDES WITH THEM — SAME RULE, SAME CHECK, SAME REDO.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3104",
+   "title": "The Laws Go to Every Agent — Read First, Check After, Redo Until It Follows",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3104/IB-SMART-NOTE-20261117-sn3104-the-laws-go-to-every-agent.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3104/IB-SMART-NOTE-20261117-sn3104-the-laws-go-to-every-agent.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f434ed55619b2aabef2d599c975a2ddd1c01484d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

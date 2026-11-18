@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3193",
+ "intelligence": {
+  "title": "The Pills Are Triple-A Plus",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3193-the-pills-are-triple-a-plus",
+  "smart_note_id": "SN-3193",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3193/IB-SMART-NOTE-20261117-sn3193-the-pills-are-triple-a-plus.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The pills prove the standard is already on the page: obsidian, bold white words, a small icon, one deep color as rim and glow, the lit one glowing in its color — triple-A plus, amazing. The rest of the page does not need a new design; it needs to be brought up to the pills. Keep them verbatim — they are the measure now, and everything else is judged against them. When the standard is already built, the job is to spread it, not to invent another one. That is the use-what-works law (SN-3185) on the page itself: the best thing on the page becomes the standard for the page, and the messy parts are cleaned up toward it, never away from it.",
+  "simple_view": "Imagine three beautiful little buttons on a page — dark and shiny, with bright white words and one pretty color glowing around each one. They look amazing — the best things on the whole page. Now everything else on the page should be made to look just as good as those three buttons. Keep the buttons exactly as they are, and bring the rest of the page up to them.",
+  "grandma_view": "Dear, the three little pills at the top of the feed — the gold one, the silver one, the green one — are just beautiful, the very best things on the page. Dark and shiny, bright white words, one lovely color glowing around each. We keep them exactly as they are, and we tidy the rest of the page up to match them. They show the way.",
+  "naya_view": "THE PILLS ARE TRIPLE-A PLUS. THOSE LOOK AMAZING. KEEP THEM VERBATIM. THEY ARE THE STANDARD THE REST OF THE PAGE IS JUDGED AGAINST.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3193",
+   "title": "The Pills Are Triple-A Plus",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3193/IB-SMART-NOTE-20261117-sn3193-the-pills-are-triple-a-plus.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3193/IB-SMART-NOTE-20261117-sn3193-the-pills-are-triple-a-plus.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "81e1101e495612afd70b6fbb091bf6a723e52b05"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

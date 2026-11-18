@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3231",
+ "intelligence": {
+  "title": "The Agreement Page Feel — Orb, Geo Corners, Sharp and Real",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3231-the-agreement-page-feel",
+  "smart_note_id": "SN-3231",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3231/IB-SMART-NOTE-20261117-sn3231-the-agreement-page-feel.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He was looking at the page and describing the feeling of it: even with the glowing orb around it — it's just nice and clean. And then the geo things in the corners — the way they make it look sharp and make it real. So that's how that page should feel, right from the start. The feel is not an afterthought you add when the page is done; it is the first thing a person meets, and it decides what they think of everything after it. An orb glowing around the play button says: this is alive, this is listening, this is real. Geometric things in the corners say: this is sharp, this is designed, this is a real object in a real place — not a flat page floating nowhere. Clean says: nothing crowding it, nothing fighting it, the eye knows where to go. Sharp and real, right from the start — that is the feel, and the feel is the law for the page: orb, corners, clean. If any of the three is missing, the page feels like something else, and the agreement — the whole deal — reads weaker for it.",
+  "simple_view": "Imagine a beautiful page with a glowing magic ball around the play button — nice and clean! And in the corners, there are cool sharp shapes, like diamonds, that make everything look sharp and REAL — like a real treasure, not just a picture! That's how the page should FEEL the very first second you see it — sharp, real, and clean!",
+  "grandma_view": "It's like this, love — imagine a lovely page with a glowing orb around the play button, dear — nice and clean! And in the corners, beautiful sharp shapes that make it look sharp and real, love — like a real treasure, not just a picture! That's how the page should feel the very first second you see it, dear — sharp, real, and clean!",
+  "naya_view": "THE AGREEMENT PAGE FEEL — RIGHT FROM THE START: the GLOWING ORB around the play button, NICE AND CLEAN; the GEO THINGS IN THE CORNERS making it look SHARP and making it REAL. That is how the page should feel right from the start. The feel is the first thing they meet — orb (alive, listening, real) · corners (sharp, designed, a real object in a real place) · clean (nothing crowding it, the eye knows where to go). If any of the three is missing, the page feels like something else, and the agreement reads weaker for it. Goes into the ENTRANCE RE-DISPATCH with the agreement page look (SN-3064).",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3231",
+   "title": "The Agreement Page Feel — Orb, Geo Corners, Sharp and Real",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3231/IB-SMART-NOTE-20261117-sn3231-the-agreement-page-feel.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3231/IB-SMART-NOTE-20261117-sn3231-the-agreement-page-feel.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "661cb8d6b44fe76fcf33441c00965c0261c016f1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

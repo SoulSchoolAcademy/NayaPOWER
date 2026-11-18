@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3108",
+ "intelligence": {
+  "title": "The Month View — Weekdays Fit Whole and Royal, Both Arrows Purple, No TODAY Button",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3108-the-month-view-weekdays",
+  "smart_note_id": "SN-3108",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3108/IB-SMART-NOTE-20261117-sn3108-the-month-view-weekdays.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Three small defects, one lesson. A cut-off word is not a layout bug — it is an elegance failure: \"it doesn't look elegant when you have half the words cut off.\" A weekday name sliced at the edge tells the eye the page was not finished, and his fix is not \"make the columns wider\" but \"make the presentation more elite than text in a button.\" The weekday name is a royal object — the same law as the 03:47Z \"weekday written in royalty,\" now with the fit requirement attached: whole, at every width, checked on mobile. \"Check it on mobile\" is not an aside; it is the check — the page is judged at phone width first. The arrows: purple on one side, green on the other, and he wants purple and purple — one color, one direction language, no green forward arrow breaking the flow. And the TODAY button: \"I don't know why you have the button today there actually what is it there for Is that today's intel?\" — that is the sense check in his own words. A control with no clear purpose is a control that goes. The header already carries the date and the live time; that is what you go there for. And the time must be accurate to THEIR time zone — the viewer's, not the server's — because the calendar belongs to the person looking at it. No fix round has been dispatched from this dictation yet at filing — the round is owed, and the weekday-fit check must run on mobile as well as desktop.",
+  "simple_view": "Imagine the days of the week — Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday — all fit perfectly, none of them cut off! And each day's name is a beautiful royal jewel, not just words in a button! Both arrows are purple, and instead of a TODAY button, the top of the page just shows you the date and the time — your time, wherever you are!",
+  "grandma_view": "It's like this, love — imagine the days of the week all fit perfectly, dear, none of them cut off at the edge! And each day's name is a beautiful royal jewel, love, not just words in a button! Both arrows are purple, dear, and instead of a TODAY button, the top of the page just shows you the date and the time — your time, wherever you are, love!",
+  "naya_view": "ALL SEVEN WEEKDAY NAMES FIT WHOLE, AT DESKTOP AND PHONE WIDTH, CHECKED ON MOBILE. THE WEEKDAY NAME IS A ROYAL OBJECT — MARCELLUS, ELEVATED, JEWEL-LIKE, THE DAY'S COLOR AS RIM + GLOW — NEVER TEXT IN A BUTTON WITH A LIGHT. BOTH MONTH ARROWS ARE PURPLE — THE GREEN FORWARD ARROW GOES. THE TODAY BUTTON GOES: THE HEADER CARRIES THE DATE AND THE LIVE TIME INSTEAD, AND THE TIME IS ACCURATE TO THE VIEWER'S OWN TIME ZONE. THIS SUPERSEDES THE 03:54Z MECHANISM; THE NO-GLOW-OVER-THE-DAY PART STANDS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3108",
+   "title": "The Month View — Weekdays Fit Whole and Royal, Both Arrows Purple, No TODAY Button",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3108/IB-SMART-NOTE-20261117-sn3108-the-month-view-weekdays.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3108/IB-SMART-NOTE-20261117-sn3108-the-month-view-weekdays.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "74ace9044899b021c4d22e5a492026e3c7e3223b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

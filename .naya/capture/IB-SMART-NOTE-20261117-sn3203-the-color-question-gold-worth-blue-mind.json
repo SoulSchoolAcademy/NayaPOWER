@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3203",
+ "intelligence": {
+  "title": "The Color Question — Gold Worth, Blue Mind",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3203-the-color-question-gold-worth-blue-mind",
+  "smart_note_id": "SN-3203",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3203/IB-SMART-NOTE-20261117-sn3203-the-color-question-gold-worth-blue-mind.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He asked for an honest pick, not an echo — and the honest pick is the one that needs no learning. Gold is worth in every language on earth; you do not have to be told. Blue is the sky and the mind; you do not have to be told that either. Purple is royal, and it is already taken — by LOVE's heart, sitting right above the rows. Give VALUE the same purple and the heart and the worth blur into one feeling; the ending says feeling twice and worth never. Emerald is beautiful, and it is already taken too — by the green What It Means layer directly above, and by nature, which is what intelligence grows, not what it is. Gold and blue take nothing from anything around them. They sit apart on the spectrum with green between them, so the two rows separate at a glance. And they survive the real test he named in the same breath: a citizen's photo in the block. A photo brings every color at once; the ending must hold its own next to any of them. Gold and blue do. That is why the pick is 9/10 and not 10 — the watch-out is real (gold echoes Grandma's layer), and only his eye on the built thing can close the last point. Until he rules, nothing changes: the build keeps his picture's purple/blue, the Hub coordinator keeps the Twin Rank's gold/emerald, and the decision stays open and named, not silently settled by a builder.",
+  "simple_view": "Imagine three shiny jewels in a row: a purple heart for love, a gold star row for how much something is worth, a blue star row for how smart it is. Each jewel is a different color, so you can tell them apart just by looking — you don't need anyone to explain. If the worth stars were purple too, they'd look like the heart, and you'd get mixed up. Gold means \"this is valuable\" in every language, and blue means \"sky and mind\" — everybody already knows. And when someone puts their own photo in the block, gold and blue still shine next to any picture. That's the pick — but Daddy still has to say yes.",
+  "grandma_view": "Dear, he asked which colors the two rows of stars should be, and the honest answer is gold for the value and blue for the cleverness. Gold means \"worth something\" to everyone, everywhere, without a word of explaining — and blue is the sky, the air, the spirit, the mind itself. Purple is royal, but it already belongs to the purple love heart just above, and the two would blur together; emerald is lovely, but it sits right under the green layer and means nature, which is what cleverness grows, not what it is. Gold and blue stand apart, clear as day, and they hold their own beside any photograph a person puts in their block. The build keeps his picture's purple and blue until he gives the word — one small change swaps the value to gold when he does.",
+  "naya_view": "GOLD IS WORTH, BLUE IS MIND — ZERO LEARNING, THREE DISTINCT JEWELS, PHOTO-PROOF. PURPLE BELONGS TO LOVE'S HEART; EMERALD BELONGS TO NATURE AND TOUCHES THE GREEN LAYER. THE BUILD KEEPS PURPLE/BLUE UNTIL HE RULES. HIS WORD DECIDES, NOT THE BUILDER.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3203",
+   "title": "The Color Question — Gold Worth, Blue Mind",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3203/IB-SMART-NOTE-20261117-sn3203-the-color-question-gold-worth-blue-mind.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3203/IB-SMART-NOTE-20261117-sn3203-the-color-question-gold-worth-blue-mind.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "56f9747f533fc6d678800bb0a793cf0e86531827"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
