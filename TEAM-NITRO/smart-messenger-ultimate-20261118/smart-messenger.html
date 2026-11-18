@@ -1260,7 +1260,7 @@ $('segAdd').addEventListener('click', function(){ $('composerInput').focus(); })
 $('segMail').addEventListener('click', function(){ setFormat('mail'); });
 $('segActivity').addEventListener('click', function(){ openFeed(state.world === 'space' ? 'thing' : state.world); });
 $('segWorlds').addEventListener('click', function(){ cycleMailWorld(); });
-$('segEco').addEventListener('click', function(){ toggleEcoMenu(); });
+$('segEco').addEventListener('click', function(e){ e.stopPropagation(); toggleEcoMenu(); });
 $('segConnect').addEventListener('click', function(){ document.body.classList.remove('rail-collapsed'); var s = $('chassisSearch'); if (s) s.focus(); });
 $('feedCloseBtn').addEventListener('click', closeFeed);
 $('feedChoiceBtn').addEventListener('click', openChoice);
