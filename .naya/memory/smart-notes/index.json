@@ -59167,6 +59167,39 @@
         "Vision",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-3399",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3399-receipt-before-report",
+      "slug": "receipt-before-report",
+      "title": "Receipt Before Report",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3399/IB-SMART-NOTE-20261118-sn3399-receipt-before-report.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3399/IB-SMART-NOTE-20261118-sn3399-receipt-before-report.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3399/IB-SMART-NOTE-20261118-sn3399-receipt-before-report.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3399-receipt-before-report.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:61:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "02f1a90d21083b3f62e46d4a9b02cbd5e899090d1c2b6c75800d08a563d4a34f",
+      "content_hash": "0efeb5502b0e1a0bc9c98cd1fa2bceef3b17a03bcff6e82ef1272f0e3d5c8389",
+      "one_line": "Receipt before report. The night the pricing page reached masterpiece, the system underneath the work changed more than the page did: verification stopped being a narrative and became a set of receipts. The recipe is written down now: his eye first and live, done defined before building begins, harvest before invention, think through the five gates, and a scorecard that is preparation — never proof. What was valuable got named in five pieces, led by Naya Design itself, and how to repeat it got named too: the brief is the program, the gate blocks rather than advises, every lesson becomes code in the same pass, and the factory is the inventory the briefs draw from. The blueprint answers his charge honestly — last month 0 of 26 pages complete, verifiers' 9s preceding condemnations, defects caught by his eye instead of ours — with machinery, not apology: a brief checker, a blocking gate, a daily scorecard, four honest measures. Speed is held inside its bound: Nitro means new, fast, hero — and the reply that completes the name is that fast never outruns verification, because Nitro speed without the bound produced the night's failures and with it produced the night. The page itself becomes the machine's output and then its template: the finished money page is the membership page every citizen's affiliates will use, calculator and all — build an affiliate army for any membership in your world. And the seed logic governs the whole: distill to the cream of the crop, do the honorable, sensible, intelligent thing, share the money the system makes with the people who helped build it — water the seed and it becomes a forest.",
+      "topics": [
+        "System",
+        "Distillation",
+        "Multiplication",
+        "Method",
+        "Proof"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59177,5 +59210,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "1856c4e1b3decf2a5b840ca46c5edaa1488faf46f758e743b469fa104aa003d9"
+  "corpus_manifest_hash": "17239abb5b0da6e87161d3d1e8a1aad2a39846407eafc6c03e17b20f082b8241"
 }
