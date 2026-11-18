@@ -451,7 +451,17 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # Intro pair, pick line, press/hover, deck, legal row, #fpNextBtn2 and the
 # bridge pair's jewel/label untouched. Walk, template, identity, unfold
 # shas unchanged.
-assert welcome_sha.startswith("fb18f9d9"), "welcome sha is not the AGREEMENT BUTTONS FIX 4 welcome sha (2026-11-18: 1. More4 handler scrolls #fpBridge to bottom, 2. .p3-enter[hidden] hides the dead Continue pill, 3. #fpNextBtn[hidden] + bridge bar display:none)"
+# AGREEMENT BUTTONS FIX 4b (2026-11-18, maker sense-check on the fix-4
+# live render; maker round - agreement-buttons-20261118/work/fix4/edit-fix4b.py):
+# the welcome sha moves fb18f9d9 -> 65555c37 (1,168,845 B -> 1168891 B):
+# the fix-4 scroll-to-bottom moved #fpBridgeExit above the fold (live bottom
+# 920 at 1919), so the brief's leave-alone premise ('below the fold') no
+# longer holds and the Fix 3 target (zero flat diamonds on first paint)
+# plus Design Law S1 cover it: the exit button gets the same harvested
+# .fp-btn-jewel span as its sibling pair (no new image bytes). One line.
+# #fpLegalExit in the footer view is NOT touched. Walk, template, identity,
+# unfold shas unchanged.
+assert welcome_sha.startswith("65555c37"), "welcome sha is not the AGREEMENT BUTTONS FIX 4b welcome sha (2026-11-18: #fpBridgeExit gains the harvested jewel span)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
