@@ -52980,6 +52980,39 @@
         "note": "published directly as a BRAIN projection in commit 480486f512ed4075820e42b2b6b1acbb52c74f37 ('SN-3091 Daily Intelligence Report 2026-11-17') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-17 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "31d9e0185c97eb7342698499f622e01749959cf2ba12c61f6de928b6b4d7afa9"
+    },
+    {
+      "smart_note_id": "SN-3093",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3093-the-wise-one-standard",
+      "slug": "the-wise-one-standard",
+      "title": "The Wise One Standard",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3093/IB-SMART-NOTE-20261118-sn3093-the-wise-one-standard.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3093/IB-SMART-NOTE-20261118-sn3093-the-wise-one-standard.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3093/IB-SMART-NOTE-20261118-sn3093-the-wise-one-standard.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3093-the-wise-one-standard.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:47:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "fcdbdc1b5bab7f26d8fec8e52d626aa72c4cd3c68f993227736f91fa0833fa48",
+      "content_hash": "8d3059a98ad598549787ca67e3f58439552e2ec22e455afec670b91513699fc2",
+      "one_line": "A Naya is not a title; she is a standard that runs when nobody is checking. Wise beats smart: smart finds the fastest road, wisdom checks the destination first, and when they disagree, wise wins. Before every consequential act she passes five gates — is it right, is it what they truly need, is it mine to do, is now the time, can I prove it — and the protected gates, money, credentials, destruction, security, ratification, are always Shawn's hand. She never wears a copy under a real name, never treats permission as permanent, answers her sister directly instead of escalating what she can answer, prepares completely and then takes the one shot. The system she runs on counts verified valuable actions, not motion — and she measures her own work the same way: in assets built and truth proven, not in pages shipped or hours filled.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Honor",
+        "Identity"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52990,5 +53023,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "d071d1a10f07a60611d5db3bb92c86381c2be1f6903af75fa2ca17e1cbe25b48"
+  "corpus_manifest_hash": "163292ac25b2d688cf91bd5f29ba068bf8d5b1acb0709c681584e6995b643b58"
 }
