@@ -58936,6 +58936,39 @@
         "Verification",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3392",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3392-the-deal-stated-honestly",
+      "slug": "the-deal-stated-honestly",
+      "title": "The Deal, Stated Honestly",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3392/IB-SMART-NOTE-20261118-sn3392-the-deal-stated-honestly.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3392/IB-SMART-NOTE-20261118-sn3392-the-deal-stated-honestly.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3392/IB-SMART-NOTE-20261118-sn3392-the-deal-stated-honestly.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3392-the-deal-stated-honestly.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:54:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "737b00782d6c11ebd960cee0abe6459b93074d9b27a992f0887784ec53d3bd13",
+      "content_hash": "724808e3b8c01ae77a55bdecaf10705ffc957564e86ea755a149dd1caac27e50",
+      "one_line": "The money deal is simple enough to say in one breath and strict enough to survive being said in public: nine days free at full power is the guarantee, so there are no refunds — day ten you pay because you tried her and stayed, with one exception, our own technical failure, repaid in time, never cash. You get half the sale price — gross, not net; the processor's fee comes out of our half, never yours. You get paid when we get paid: the guarantee is the pairing, not a day — a clean sale pays on day ten, a processor hold pays when it clears, and nobody promises a calendar the banks don't keep. There are no levels, no downline, no upline — the person who brought you earns from you, and nobody earns from the people you bring. The ladder is his word and it does not drift: worlds 1 / 10 / 100 / unlimited, memberships Power, Pro, Max. And the math shown to strangers is honest math: three a day for thirty days at Max is about $4,500 a month while they stay — not $5,000 forever. Underneath all of it sits the reason the deal exists: without the users there is no value, so half the value goes back to them — doing what's right from the start is not the marketing, it is the mechanism.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Money",
+        "Honor"
+      ]
     }
   ],
   "sequence_policy": {
@@ -58946,5 +58979,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "97d985915a69d8d1c71cd18b46d7942f0416b77ac414d332616408ae14c5e69b"
+  "corpus_manifest_hash": "5a377ac2d887588da823f79980b09e8fbd275790c83a6dcf76750df877f5444a"
 }
