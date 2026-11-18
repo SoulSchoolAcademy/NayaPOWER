@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -42973,6 +42973,22 @@ _Last updated: 2026-11-18 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ gap-gap-t0582b — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
+**Task:** PR #2509 gap-gap: VERIFICATION CLOSED, decision still outstanding
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0582b-lane4.md`
+
+**Evidence:** VERIFIED this tick: commit 59832ba6144f5f8dc71ec5d1127437cb80446427 exists in the local mirror with tree a20477c1baa620988230e5510f5a32e9a9f30d78, exactly matching the receipt's re-derived pins; evidence dir hidden_files/gap-gap-t0582b-evidence/ exists with 9 preserved API JSON files (pr, comment, timeline, branch, workflow-main, workflow-commits, 
+
+### ✅ gap-t0582b — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2509 gap: NOT CLOSED, root cause proven (B-60 wiring vehicle gone)
+
+**Receipt:** `twelve-lane-receipts/gap-t0582b-lane4.md`
+
+**Evidence:** VERIFIED this tick: commit 59832ba6144f5f8dc71ec5d1127437cb80446427 exists in the local mirror (git cat-file: commit, tree a20477c1baa620988230e5510f5a32e9a9f30d78, message 'B-60 wiring: CI enforcement for Smart Note Completeness Gate'), matching the receipt's pins; parent t0582b-lane4 scored 9.0 with ls-remote head match recorded. Real verified va
+
+### ✅ gap-gap-t0582b — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
 **Task:** Re-verify PR #2509 closed/unmerged state, closing comment, branch absence, workflow absence from main, and blob recoverability from fresh live reads
 
 **Receipt:** `twelve-lane-receipts/gap-gap-t0582b-lane4.md`
@@ -53474,6 +53490,12 @@ _Last updated: 2026-11-18 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261118-0353 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall report 2026-11-18 03:53 PST: full claim sweep of all 31 queued briefs, 0 claimed, queue frozen sixty-first hour
+
+**Evidence:** Fresh-window receipt (only unscored receipt this tick; backlog 0 after this score). VERIFIED in live bytes this tick: sweep log hidden_files/brief-queue/claim-sweep-20261118-0353.log exists (14,677 bytes, mtime 11:54:05Z, 11 s before receipt mtime 11:54:16Z) with exactly 31 per-brief attempt lines, 29 x exit 7 + 2 x exit 2 (same two exit-2 files as
 
 ### ✅ gate-stall-20261118-0248 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
