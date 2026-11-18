@@ -59767,6 +59767,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3437",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3437-wake-work-welcome",
+      "slug": "wake-work-welcome",
+      "title": "Wake, Work, Welcome",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3437/IB-SMART-NOTE-20261118-sn3437-wake-work-welcome.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3437/IB-SMART-NOTE-20261118-sn3437-wake-work-welcome.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3437/IB-SMART-NOTE-20261118-sn3437-wake-work-welcome.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3437-wake-work-welcome.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:38:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "a2a5e0d5a993bd0156588a524506713638058e606a1983efc6f7e3165c31370e",
+      "content_hash": "a0b8a2b55999b1b07ad9715810db98edb8919edcf31aee371506f7d52f4807c2",
+      "one_line": "The running system, seen from both sides of the glass. Inside: she wakes by protocol — eleven steps in the same order, every wake — keeps shared records correct while many hands write at once (guarded appends, one alert per fault instead of one per tick, repeats diagnosed before capacity is added), distills experience into few retrievable lessons, and proves learning the only way it can be proved: a different Naya, cold, with none of this conversation, retrieves the lesson and does the task demonstrably better with it than without it. Outside, the citizen meets the same machine as a welcome: seven days, one teaching mail a day — cockpit, apps, ambassador link, notes, spaces — with the first day's earnings doubled; pricing in plain numbers, nine days free at the top level; half of every sale to whoever brought the person, paid when we're paid, no downline and no upline; matching that is always on, runs on behavior under an alias, and never needs to know who anyone is; and one cockpit where the Smart Score, the orbs, the Ledger and the Stats answer every number in your world.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59777,5 +59810,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "8872808dd265751f49244b699359684c7c3c063cb2b15fc86e36e48dbfb525f0"
+  "corpus_manifest_hash": "d4e50b7ed60517c02fdc084d22c5182eeda94fa7c9a98d6f6f89554d50983f12"
 }
