@@ -4986,21 +4986,21 @@ html.os-calm
 </div>
 <div class="ph-head">
   <div class="ph-idcol">
-    <div class="ph-pointsrow">
-      <div class="ph-points pc-restyled" id="pointsdisplay" title="Your Naya points" data-derive="score" role="button" tabindex="0">
-        <span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label" data-mw-tr="pts">pts</span></span>
-      </div>
-      <!-- R3 — the first-paint points script lives OUTSIDE the pill now: inside it, a screen reader read the code itself as the pill's name. Same code, same timing, just outside the button. -->
-      <script>try{var _pc0=JSON.parse(localStorage.getItem('naya.points.total.v1')||'null');if(_pc0&&typeof _pc0.total==='number'&&isFinite(_pc0.total)){var _el0=document.getElementById('pointscount');if(_el0)_el0.textContent=_pc0.total.toLocaleString();}}catch(e){}</script>
-    </div>
-    <!-- TIER HOME (follow-on, tier ruling 2026-11-14): the tier label lands here, under the points pill. -->
   <div class="ph-avwrap"><span class="ph-av-orb" aria-hidden="true"></span><div class="ph-av" id="avv" data-mw-title="Tap to change your picture"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22256%22%20height%3D%22256%22%3E%3Crect%20width%3D%22256%22%20height%3D%22256%22%20fill%3D%22%230b0b11%22/%3E%3Cpolygon%20points%3D%22128%2C28%20218%2C128%20128%2C228%2038%2C128%22%20fill%3D%22none%22%20stroke%3D%22%23a06bff%22%20stroke-width%3D%2210%22/%3E%3Ctext%20x%3D%22128%22%20y%3D%22148%22%20font-size%3D%2284%22%20font-family%3D%22Georgia%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EN%3C/text%3E%3C/svg%3E" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">✦<input type="file" id="avin" accept="image/*" style="display:none;"></div><button class="ph-av-edit" id="avedit" type="button" data-mw-aria="Change picture" aria-label="Change picture" data-mw-title="Edit photo" title="Edit photo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h2.5L7.5 5.8h9L18.5 8H21a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.4"/></svg></button></div>
   </div>
   <div class="ph-intro-board" id="phIntroBoard">
     <div class="ph-nm ph-intro-name" id="pname" title="Click to edit"><span class="ph-intro-orb" aria-hidden="true"></span>Shawn Vibert</div>
     <div class="ph-intro-motto-row"><div class="ph-tg ph-intro-motto" id="ptag" title="Click to edit">Welcome to my world — make a post on my feed, send a message, make yourself at home.</div><button class="pc-info ph-intro-info" id="phIntroInfo" type="button" data-os-go="about" aria-label="About me" title="About me"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button></div>
+    
+    <div class="ph-pointsrow">
+    <div class="ph-points pc-restyled" id="pointsdisplay" title="Your Naya points" data-derive="score" role="button" tabindex="0">
+    <span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label" data-mw-tr="pts">pts</span></span>
+    </div>
+    <!-- R3 — the first-paint points script lives OUTSIDE the pill now: inside it, a screen reader read the code itself as the pill's name. Same code, same timing, just outside the button. -->
+    <script>try{var _pc0=JSON.parse(localStorage.getItem('naya.points.total.v1')||'null');if(_pc0&&typeof _pc0.total==='number'&&isFinite(_pc0.total)){var _el0=document.getElementById('pointscount');if(_el0)_el0.textContent=_pc0.total.toLocaleString();}}catch(e){}</script>
+    </div>
+    <!-- TIER HOME (follow-on, tier ruling 2026-11-14): the tier label lands here, under the points pill. -->
   </div>
-</div>
 <div class="ph-actions-row up-actions">
       <button class="up-act" id="saBackBtn" type="button" style="--ac:#e8e8ec;display:none;">← Back to my world</button>
       <button class="up-act" id="msgbtn" type="button" style="--ac:#31cb8d;"><span class="os-jewel os-jewel-sm" style="--jc:#31cb8d">✉</span> Message</button>
@@ -5012,6 +5012,7 @@ html.os-calm
       <button class="up-act" id="sharebtn" type="button" style="--ac:#0f52ba;"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba">⇄</span> Share</button>
       <a class="up-act" id="joinbtn" href="https://nayanet.app/joinus" style="--ac:#31cb8d;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;"><span class="os-jewel os-jewel-sm" style="--jc:#31cb8d">✦</span> Join NayaNET</a>
       <button class="up-act" id="memberbtn" type="button" style="--ac:#e84fff;display:none;">★ Become a Member</button>
+</div>
 </div>
 </div>
 <style>
@@ -28057,18 +28058,25 @@ function pcConnectRequested(alias){
 }
 function pcCardWithConnect(p, live){
   var base=pcCard(p, live);
-  var req=pcConnectRequested(p.alias);
-  /* R5 Part 5 (amended) — CONNECT + the GREEN ACTIVE NUMBER beside it, on every
-     card: the seed pct for the seed family, the endpoint pct for live matches. */
+  /* FOLLOW-ON 3b (2026-11-18) — one line per row: ball, name, %, i, the four
+     contact buttons. NO CONNECT in any row: message and mail are automatic —
+     sending the message IS the request for connection; acceptance is by
+     action (they answer back), never by a button. The four buttons are
+     harvested from the profile board's Reach them row + the popover's
+     actions: same glyphs, same colours — Message sapphire, Smart Mail gold,
+     Audio emerald, Video purple. The % is the seed pct for the seed family,
+     the endpoint pct for live matches. */
   var pct=(typeof p.pct==='number')?p.pct:null;
   var pctHtml=(pct===null)?'':'<span class="pc-pct r4-tiles" title="'+pcTr('Match')+'">'+pcTiles(pct)+'</span>';
-  var btn='<button type="button" class="pc-connect-btn'+(req?' requested':'')+'" data-pc-connect="'+esc(p.alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested \u2713':'CONNECT')+'</button>';
-  var note=req?'<p class="pc-req-note">Request sent \u2014 waiting for them to accept.</p>':'';
-  var at=base.indexOf('</article>');
-  if(at<0) return base;
   var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button>';
-  var row='<div class="pc-connect-row">'+pctHtml+infoBtn+btn+'</div>'; /* HEADER-V2 2026-11-14: the info sits beside the %, top-right, fixed — long names cannot move it. */
-  return base.slice(0, at)+row+note+base.slice(at);
+  var acts=[['chat','\u270e','#0f52ba','Message'],['mail','\u2709','#d4a017','Smart Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
+  var btns='';
+  for(var i=0;i<acts.length;i++){
+    btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
+  }
+  var at=base.lastIndexOf('</div></article>');
+  if(at<0) return base;
+  return base.slice(0, at)+pctHtml+infoBtn+btns+base.slice(at);
 }
 window.pcRenderRailForTab=function(tab){
   var list=document.getElementById('pcRailList'); if(!list) return;
@@ -32762,6 +32770,80 @@ if(document.readyState==='loading'){
 #pcRailPop .pc-pop-label-status{margin:8px 0 0;font-size:12px;line-height:1.5;color:#fff;min-height:18px;}
 #pcRailPop .pc-pop-label-status:empty{display:none;}
 </style>
+<style id="personal-layout-fix-20261118-css">
+/* PERSONAL LAYOUT FIX 2026-11-18 — Shawn's screenshot 14:55Z, four defects.
+   PLACEMENT (v2 lesson, read first): this block sits AFTER every rule that
+   touches the head or the rail — round3 (L32471, whose -165px!important at
+   L32489 beat v1's -70px at equal specificity), round4-fix (L32666, whose
+   .pc-card-top 204px reserve at L32685 beat v1's 0 override and zeroed the
+   names), people-rail (L32711). Equal specificity + !important is decided
+   by source order, so this block MUST be the last of the head/rail rules.
+   (1) PHOTO LEVEL WITH THE BUTTONS: the head is a two-row grid — row 1 is the
+   profile block (name + motto + points, full width); row 2 is the photo (col 1)
+   + the button row (col 2), both align-self:center, so the photo's centre-y
+   IS the button row's centre-y at 1919, 635 and 390. The photo no longer
+   overlaps the cover's bottom edge. This only works because the button row
+   was MOVED inside .ph-head (M1b): the DOM proves it was a child of
+   div[data-block="cover"], never of .ph-head, so no grid rule could place it.
+   (2) POINTS OFF THE COVER: .ph-pointsrow moved into #phIntroBoard, below the
+   name — the pill + its receipt line travel with the profile block. The head's
+   >=808px pull-up returns to -70px (the base L1908 value): round3's -165px
+   would leave the relocated pill over the cover's bottom edge. At <=807px the
+   pull-up was already -70px; the pill clears the cover there too.
+   v3: the row shrink-wraps to the pill (121px) and centres — L32427's
+   justify-self:center proved INERT (tested: no movement), and no width rule
+   for it exists in the file; width:100% moves the pill to x24, left-aligned
+   under the name, and is proven in the probe. The receipt (flex 100%) then
+   spans the row with text-align:left.
+   (3) CHANGE COVER + SETTINGS: the page's own controls (#cvrbtn top-right on
+   the cover, #settingsbtn gear beside it) — kept verbatim, nothing added,
+   nothing hidden; the gear opens the Settings view.
+   (4) RAIL ROWS: the 3b mechanism (separate block, harvested verbatim).
+   v3: NO narrow-width button rule — the button row is display:grid (2 cols
+   at <=640px), not flex, so a flex-basis rule is inert; the 2-up grid fits
+   every label whole at 390 ("Join NayaNET" included), so nothing is forced
+   to one-per-row. The page's own responsive grid governs.
+   Nothing else moves. No other rule in this block touches any other element. */
+[data-block="cover"] .ph-head{margin-top:-70px!important;}
+#phIntroBoard{grid-column:1/3!important;grid-row:1!important;align-self:start!important;margin:0!important;}
+.ph-pointsrow{grid-column:auto!important;grid-row:auto!important;justify-content:flex-start!important;flex-wrap:wrap!important;margin-top:12px!important;width:100%!important;}
+/* .pc-points-receipt harvested verbatim from the 3b lineage (fix2 L5306),
+   except text-align: it sits under the left-aligned name now, so it aligns
+   left with it instead of centring under the old 156px column. */
+.pc-points-receipt{flex:0 0 100%;text-align:left;font-size:17px;color:#fff;margin:8px 0 0;}
+.pc-points-receipt:empty{display:none;}
+.ph-head > .ph-actions-row{grid-column:2!important;grid-row:2!important;align-self:center!important;margin-top:0!important;}
+</style>
+<style id="followon-3b-people-rail-20261118-css">
+/* FOLLOW-ON 3b (2026-11-18), FIX ROUND 2 (2026-11-18) — one line per row:
+   ball, name, %, i, message / mail / audio / video, all centred on the same
+   horizontal line. NO CONNECT in any row. FIX 2 reclaims 38px for the name
+   (the eye: 9 of 13 names read as two letters + ellipsis at 1919 + 390):
+   row gap 6 to 4, card side padding 12 to 8, contact buttons 30 to 26.
+   Ball stays 40, info stays 32, % tiles stay as harvested, name stays full.
+   Buttons harvested from the profile board's Reach them row +
+   the popover's actions — same glyphs, same colours (Message sapphire
+   #0f52ba, Smart Mail gold #d4a017, Audio emerald #07925f, Video royal
+   purple #8e24aa) — as icon-only obsidian circles after the bottom-bar
+   icons: board black inside, white glyph as a real object, rim + underglow
+   in the button's own deep colour, alive on hover, press sinks 0.97. */
+#pcRailList .pc-card{padding:10px 8px;}
+#pcRailList .pc-card-top{flex-wrap:nowrap;gap:4px;}
+#pcRailList .pc-card-top .fc-pick-av{width:40px;height:40px;font-size:17px;flex:none;}
+#pcRailList .pc-card-top .pc-pct{flex:none;display:flex;align-items:center;}
+#pcRailList .pc-card-top .pc-info{flex:none;width:32px;height:32px;}
+#pcRailList .pc-act-btn{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;padding:0;background:linear-gradient(135deg,#07070b,#020203);border:1.5px solid var(--ac,#8e24aa);color:#fff;font-size:17px;line-height:1;text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 8px rgba(255,255,255,.35);box-shadow:0 4px 10px rgba(0,0,0,.55),0 0 10px -2px var(--ac,#8e24aa);cursor:pointer;font-family:inherit;transition:transform .18s ease,box-shadow .3s ease;}
+#pcRailList .pc-act-btn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.55),0 0 18px -2px var(--ac,#8e24aa);}
+#pcRailList .pc-act-btn:active{transform:scale(.97);box-shadow:0 2px 6px rgba(0,0,0,.55),0 0 8px -2px var(--ac,#8e24aa);}
+#pcRailList .pc-act-btn:focus-visible{outline:2px solid var(--ac,#8e24aa);outline-offset:2px;}
+ /* LAYOUT FIX 2026-11-18 — the 190/204px !important reserves (H5) would
+    squeeze the one-line row to 140px at 1919; this line is harvested from
+    the 3b lineage (fix2 L33881, ITEM 8) and zeroes the reserve, so the
+    ball + name + % + i + four buttons fit one line. It MUST sit after
+    base L32685 (the 204px reserve) — v1 placed it before L28247 and the
+    reserve won, squeezing every name to 0px. */
+ .pc-card-top{padding-right:0!important}
+</style>
 
 <script id="fix-personal-people-rail-20261116-js">
 /* PEOPLE-RAIL ROUND 2 (2026-11-16) — H2 scroll light + H5 label a connection.
@@ -33488,4 +33570,48 @@ renderGrid();
 .notif-tile::after{content:'';position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc,#a06bff) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orb-spin-rev 60s linear infinite;opacity:.9;pointer-events:none;z-index:2}
 #pcComposerPlus .notif-tile::after{animation:osArcSpin 180s linear infinite}
 </style>
+<script>
+/* FOLLOW-ON 2026-11-17, harvested verbatim from the 3b lineage (fix2
+   L34331-34364 + L34371 call): any points movement says what it was for.
+   The pill is watched; the first numeric paint is the baseline, never
+   receipted. A move is explained by the spine rows that grew. The line
+   (#pcPointsReceipt) is appended into .ph-pointsrow, so it moves WITH
+   the pill into the profile block, below the name. pcProfileRefreshHistory
+   (fix2 L34365-34370) is NOT taken: it belongs to the profile view. */
+function pcSpineSnap(){
+  var s=window._osSpine||{};
+  var snap={};
+  ['posts','notes','saves','invitesSent','inviteJoins','clicks','sales','likes','comments','shares'].forEach(function(k){ snap[k]=+s[k]||0; });
+  return snap;
+}
+function pcPointsWatch(){
+  var pill=document.getElementById('pointscount');
+  if(!pill) return;
+  var base=null, prev=null, lastSnap=pcSpineSnap();
+  function digits(el){ var m=String(el.textContent||'').replace(/[^0-9]/g,''); return m?parseInt(m,10):null; }
+  function check(){
+    var n=digits(pill);
+    if(n===null) return;
+    if(base===null){ base=n; prev=n; return; }
+    if(n===prev) return;
+    var d=n-prev; prev=n;
+    var snap=pcSpineSnap(), parts=[];
+    var labels={clicks:'link clicks',posts:'posts',notes:'notes',saves:'saves',invitesSent:'invites sent',inviteJoins:'joins from invites',sales:'sales',likes:'likes',comments:'comments',shares:'shares'};
+    Object.keys(labels).forEach(function(k){
+      var g=snap[k]-lastSnap[k];
+      if(g>0) parts.push(g+' '+labels[k]);
+    });
+    lastSnap=snap;
+    var why=parts.length?parts.join(', '):'tap the pill to see the math';
+    var row=document.querySelector('.ph-pointsrow');
+    var r=document.getElementById('pcPointsReceipt');
+    if(!r){ r=document.createElement('p'); r.id='pcPointsReceipt'; r.className='pc-points-receipt'; if(row) row.appendChild(r); }
+    if(r) r.textContent='Points '+(d>0?'+':'')+d+' \u2014 '+why+'.';
+  }
+  var ob=new MutationObserver(check);
+  ob.observe(pill, {childList:true, characterData:true, subtree:true});
+  setTimeout(check, 800);
+}
+ pcPointsWatch();
+</script>
 </body></html>
