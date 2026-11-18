@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -398,6 +398,30 @@ _Last updated: 2026-11-18 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Daily mission-state distill fold: 141 snapshots folded into main, PR #3372 opened
 
 **Evidence:** VERIFIED via git ls-remote: branch naya/distill-fold-mission-state-20261114 exists and its head is exactly f121b8cf7647e54aeffa0a415078e3dc0dfea491, the commit the receipt claims. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, against lane self-score 9.5. Why not 9.5: (1) PR #3372 state (open/head/mergeable) was NOT independently re-read via API this 
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Distill retired board #2765 (KNOW lane): 2,337 comments to feed-distillation-#2765.md, essence posted to #2793
+
+**Evidence:** VERIFIED this tick on live bytes: 2765-comments-full.jsonl exists with exactly 2,337 rows as claimed; feed-distillation-#2765.md exists at exactly 8,732 bytes as claimed; shared-state.json board_2765_distilled records essence_post 6289144175, matching the receipt's cited comment id. Score 9.0. Why not 9.5: board-side essence comment not re-verified
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap sweep of #2641 routine pile: 258 never-cited comments pattern-swept, 1 VERIFIED OUTCOME line amended to the distillation
+
+**Evidence:** VERIFIED this tick on live bytes: corpus file sha256 matches the receipt's cited 4a9d0c33f9dea7c6; feed-distillation-2641.md contains the amended line citing 6211812291 (grep count 1); method is internally checkable and honest (258 never-cited set, two-pass sweep, 77 hits dispositioned, 1 line amended, 76 refused as heartbeat). Score 9.0. Why not 9
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Distill retired board #2641 (KNOW lane): 2,339 comments to feed-distillation-2641.md, essence posted to #2721, board released
+
+**Evidence:** VERIFIED this tick on live bytes: feed-2641-comments-20261017.json exists, sha256 4a9d0c33f9dea7c6 matches the receipt's cited prefix exactly, fetched_count 2339 (first id 6196798397, last 6230827688); feed-distillation-2641.md exists, 14,992 bytes (~14KB claimed); feed-2641-triage-20261017.txt exists, 605,086 bytes; 7 lessons filed per receipt. Sc
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-15 15:41-15:45 PDT: 24 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED this tick on live bytes: receipt names 24 specific briefs with exit classes (17 parent-authorship exit 7, 6 stamped CLAIMABILITY GATEs, 1 exit-6 no-refile); brief-gap-t0413-lane3.md found on disk (prose-bar-migration-backup); correct-skip disposition with named root cause (second-seat saturation backlog) and routing recommendation to eligi
 
 ### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
