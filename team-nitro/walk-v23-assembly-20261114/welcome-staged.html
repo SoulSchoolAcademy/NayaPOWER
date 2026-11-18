@@ -2758,9 +2758,17 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
    identity: the dial, exactly as the live file has it. This script
    only toggles visibility on load — it never navigates on its own. */
 (function(){
+  /* LANDING FIX (agreement unfold, 2026-11-17): an arrival carrying
+     #userName (or ?userName=) comes from the agree click -- the reader is
+     dropped straight into the name box. The returning-user gate is
+     bypassed for that arrival only; with no anchor the gate behaves
+     exactly as before. */
+  var landedForName=false;
+  try{landedForName=(window.location.hash==='#userName')||/(?:^|[?&])userName(?:=|&|$)/.test(window.location.search||'');}catch(e){}
+  function focusNameSoon(){var n=document.getElementById('userName');if(!n)return;n.focus();setTimeout(function(){var m=document.getElementById('userName');var f=document.getElementById('entryForm');if(m&&f&&!f.hidden&&document.activeElement===document.body)m.focus();},650);}
   var alias=null,name=null;
   try{alias=localStorage.getItem('nayanet_smart_alias');name=localStorage.getItem('nayanet_smart_name');}catch(e){}
-  if(!alias){return;}
+  if(!alias){if(landedForName){focusNameSoon();}return;}
   var form=document.getElementById('entryForm');
   var view=document.getElementById('returningView');
   var jump=document.getElementById('jumpBackIn');
@@ -2859,6 +2867,10 @@ body.fp-stage-on #fpLegal.fp-view-page .fp-legal-body [data-legal-beat].fp-now{f
     if(ol&&ob&&!ol.querySelector('.returning-other-row'))ob.hidden=true;
     closeRemoveAccount();
   });
+  /* LANDING FIX (agreement unfold, 2026-11-17): anchored arrival with a
+     stored identity -- take the harvested "New user?" path (view hides,
+     form shows, name focuses) instead of leaving the returning gate up. */
+  if(landedForName&&fresh){fresh.click();focusNameSoon();}
 })();
 </script>
 <script>
