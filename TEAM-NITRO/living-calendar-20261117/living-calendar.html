@@ -126,13 +126,18 @@ html,body{margin:0;background:radial-gradient(ellipse 55% 40% at 50% 98%,#26103f
 button,select,input,textarea{font:inherit}
 button{cursor:pointer}
 button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.shell{height:100dvh;display:flex;flex-direction:column;padding:14px clamp(10px,2.2vw,40px) 12px;gap:9px}
-.head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;min-height:65px}
-.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.shell{height:100dvh;display:flex;flex-direction:column;padding:14px clamp(10px,2.2vw,40px) 28px;gap:9px}
+/* CALENDAR FIX 2 (F1) — DEAD CENTRE: the head was `auto 1fr auto` with
+   a ~400px brand left and a ~130px toptools right, so the middle column centred
+   ~105-115px RIGHT of the viewport centre (eye 02:53Z: plaque centre ~1065-1075
+   vs viewport 960). `1fr auto 1fr` makes the two outer lanes equal, so the auto
+   column — the plaque+jewel pair — centres exactly on the viewport. */
+.head{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;min-height:65px}
+.brand{display:flex;align-items:center;gap:14px;min-width:0;justify-self:start}
 .logo{height:56px;width:56px;flex:none;display:grid;place-items:center;font:bold 44px Georgia,serif;color:#fff;text-shadow:0 0 10px #8e24aa,0 0 26px #8e24aa;background:linear-gradient(145deg,#130723,#06030c);border:1px solid #8e24aa;border-radius:16px;box-shadow:inset 0 0 14px #351453,0 0 16px #8e24aa,0 8px 20px rgba(0,0,0,.6)}
 .brandtxt strong{font-size:clamp(22px,2.6vw,32px);letter-spacing:.02em;white-space:nowrap}
 .brandtxt div{font-size:clamp(17px,1.5vw,19px);color:#fff}
-.toptools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.toptools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end;justify-self:end}
 .pill{min-height:44px;background:linear-gradient(135deg,#232330 0%,#0b0b12 50%,#171722 100%);border:1.5px solid rgba(255,255,255,.85);color:#fff;padding:10px 14px;border-radius:13px;box-shadow:0 6px 16px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.6);transition:transform .18s ease,border-color .18s,box-shadow .18s}
 .pill:hover{transform:translateY(-2px);border-color:var(--violet);box-shadow:0 10px 22px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.45),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.6)}
 .pill:active{transform:translateY(0) scale(.97)}
@@ -267,8 +272,21 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
         transform-origin: 50% 50%;
       }
       @keyframes hzspin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+      @keyframes orbitspin { to { transform: rotate(360deg); } }
       .dayjewel:hover .gem { animation-duration: 12s; }
       .dayjewel:hover .hz-aura { animation-duration: 6s; }
+      /* CALENDAR FIX 2 (R3) — THE SIGNATURE PIECE: the flat drawn gem (gemSVG,
+         harvested) no longer stands alone — it is the stone in a setting now:
+         two concentric pearl rings on the pedestal face, counter-rotating
+         (60s / 90s reverse, Laws §1), each carrying a pearl bead (silver-cap
+         gradient, harvested from .os-mini-tile .cap). The rings take --dc, so
+         the piece changes colour each day with the weekday. NEW composition;
+         gem / pedestal / aura / spin are the harvested day-file mechanism. */
+      .hz-ring-a,.hz-ring-b{position:absolute;border-radius:50%;pointer-events:none}
+      .hz-ring-a{inset:3px;border:1px solid color-mix(in srgb,var(--dc,#fff) 38%,transparent);animation:hzring 60s linear infinite}
+      .hz-ring-b{inset:7px;border:1px solid color-mix(in srgb,var(--dc,#fff) 30%,transparent);animation:hzring 90s linear infinite reverse}
+      .hz-ring-a::before,.hz-ring-b::before{content:"";position:absolute;top:-3px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#ffffff 0%,#d9d9de 55%,#8a8a90 100%);box-shadow:0 1px 3px rgba(0,0,0,.6),0 0 6px color-mix(in srgb,var(--dc,#fff) 55%,transparent)}
+      @keyframes hzring{from{transform:rotate(0)}to{transform:rotate(360deg)}}
       .dayjewel .freq {
         /* The Hz text takes the DAY's colour too */
         font-size: var(--type-small); font-weight: 800; line-height: 1;
@@ -288,14 +306,23 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .hint{color:#fff;font-size:17px}
 .barleft,.barright{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .board{flex:1;min-height:0;border:1.5px solid rgba(255,255,255,.85);box-shadow:inset 0 0 34px #180926,0 0 32px #1f0e35,0 14px 34px rgba(0,0,0,.6);border-radius:22px;padding:10px;display:flex;flex-direction:column;background:linear-gradient(135deg,#15151f 0%,#0b0816 55%,#07050b 100%);overflow:hidden}
+/* CALENDAR FIX 2 (R4) — SCROLL LIGHT: NO scroll-light mechanism exists in the
+   filed bytes (0x IntersectionObserver, 0x scroll listener in either file) —
+   this is the minimal build, not a harvest. A board lights in its own colour
+   as it enters the viewpoint and HOLDS a restrained lit state. The tiles carry
+   their weekday --dc (never two the same together down a week); the board
+   takes today's weekday colour, set in JS. */
+.board.lit{border-color:color-mix(in srgb,var(--dc,#8e24aa) 65%,#ffffff 20%);box-shadow:inset 0 0 34px #180926,0 0 24px color-mix(in srgb,var(--dc,#8e24aa) 30%,transparent),0 14px 34px rgba(0,0,0,.6)}
+.tile.lit{border-color:color-mix(in srgb,var(--dc) 75%,#ffffff 15%);box-shadow:0 0 0 1px color-mix(in srgb,var(--dc) 55%,#ffffff 10%),0 0 16px color-mix(in srgb,var(--dc) 30%,transparent),0 12px 28px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -4px 10px rgba(0,0,0,.65)}
+.weekrow .wk.lit{box-shadow:0 0 12px color-mix(in srgb,var(--dc) 32%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 5px 12px rgba(0,0,0,.5)}
 .weekrow,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
 .weekrow{padding:3px 0 6px;text-align:center;font-weight:800;font-size:17px}
 .weekrow div{color:#fff}
 /* AMENDMENT #3 — each abbreviation a real object (the standing law):
    obsidian middle, bold white letters, the day's own colour as rim +
    glow. The headers were plain coloured text. */
-.weekrow .wk{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:68px;padding:6px 2px 5px;border-radius:10px;background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%);border:1.5px solid var(--dc);box-shadow:0 0 10px color-mix(in srgb,var(--dc) 30%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 5px 12px rgba(0,0,0,.5);transition:transform .18s ease,box-shadow .18s ease}
-.weekrow .wk:hover{transform:translateY(-2px);box-shadow:0 0 18px color-mix(in srgb,var(--dc) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 8px 16px rgba(0,0,0,.5)}
+.weekrow .wk{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:68px;padding:6px 2px 5px;border-radius:10px;background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%);border:1.5px solid var(--dc);box-shadow:0 0 6px color-mix(in srgb,var(--dc) 14%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 5px 12px rgba(0,0,0,.5);transition:transform .18s ease,box-shadow .18s ease}
+.weekrow .wk:hover{transform:translateY(-2px);box-shadow:0 0 10px color-mix(in srgb,var(--dc) 25%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 8px 16px rgba(0,0,0,.5)}
 /* CALENDAR FIX 2026-11-18 (2) — the day's icon as a real 3D BALL above the
    word, harvested VERBATIM from the day file (blob e11cfd83). */
       .weekrow .wk-ico {
@@ -303,7 +330,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
            circle, not a hula hoop: a sphere, lit from the top-left, dark
            at its base, the day's colour as rim + glow outside, white
            glyph as an object inside (§4 THE ICON) */
-        flex: none; width: 34px; height: 34px; border-radius: 50%;
+        position: relative; flex: none; width: 34px; height: 34px; border-radius: 50%;
         display: inline-flex; align-items: center; justify-content: center;
         color: #ffffff;
         background: radial-gradient(circle at 32% 28%, #4a5068 0%, #232838 38%, #0a0a11 68%, #050607 100%);
@@ -314,7 +341,14 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
           inset 0 -8px 12px rgba(0,0,0,.6),
           0 5px 12px rgba(0,0,0,.5);
       }
-      .weekrow .wk-ico svg { width: 19px; height: 19px; }
+      .weekrow .wk-ico svg { width: 19px; height: 19px; filter: drop-shadow(0 2px 2px rgba(0,0,0,.7)) drop-shadow(0 0 6px rgba(255,255,255,.35)); }
+      /* CALENDAR FIX 2 (F2) — the ball, made REAL (see note above). Specular:
+         white light with volume, top-left. Orbit: the pedestal-arc pattern,
+         90s; even balls 120s reversed. Press sinks the ball .97. */
+      .weekrow .wk-ico::before{content:"";position:absolute;top:2px;left:3px;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.9),rgba(255,255,255,.25) 55%,transparent 75%);pointer-events:none}
+      .weekrow .wk-ico::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1.5px solid transparent;border-top-color:color-mix(in srgb,var(--dc) 70%,#ffffff);border-right-color:color-mix(in srgb,var(--dc) 22%,transparent);animation:orbitspin 90s linear infinite;pointer-events:none}
+      .weekrow .wk:nth-child(even) .wk-ico::after{animation-duration:120s;animation-direction:reverse}
+      .weekrow .wk:active .wk-ico{transform:scale(.97)}
       .weekrow .wk.today-col .wk-ico {
         box-shadow:
           0 0 12px color-mix(in srgb, var(--dc) 45%, transparent),
@@ -356,7 +390,10 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .tile.sel{box-shadow:0 0 0 2px var(--dc),0 0 30px rgba(255,255,255,.25),0 18px 34px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
 .tile.blank{opacity:.22;cursor:default;box-shadow:none}
 .tile.past{opacity:.92}
-.daynum{font-size:clamp(25px,2.6vw,40px);font-weight:800;line-height:1;white-space:nowrap;color:#fff;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85);display:inline-block;transition:transform .18s ease}
+/* CALENDAR FIX 2 (R1) — the number is the tile now: .daynum is only the
+   wrapper (the digits live in harvested .os-mini-tile below, sized here).
+   The plain gradient numerals (.dg spans) are retired with digitNum. */
+.daynum{display:inline-block;white-space:nowrap;transition:transform .18s ease}
 /* FOLLOW-ON (2) DASHBOARD DIGIT-TILE NUMBERS — each digit of the day number
    in its OWN gematria color, so every day has a different number-color
    combination. Day 16 = ruby 1 + indigo 6. Day 23 = burnt orange 2 + deep gold 3.
@@ -364,9 +401,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
    DEEP PALETTE (2026-11-17): digits take their hue's deep hex — 0 white ·
    1 ruby · 2 burnt orange · 3 deep gold · 4 emerald · 5 deep cyan ·
    6 indigo · 7 royal purple · 8 deep violet · 9 deep magenta. */
-.daynum .dg{display:inline-block;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85),0 0 16px currentColor}
-.dg0{color:#ffffff}.dg1{color:#c62828}.dg2{color:#c2410c}.dg3{color:#d4a017}.dg4{color:#07925f}
-.dg5{color:#0e7490}.dg6{color:#3f51b5}.dg7{color:#8e24aa}.dg8{color:#6d28d9}.dg9{color:#a21caf}
+/* (R1) .dg spans retired — digits are white inside their tiles now (Laws §4). */
 /* DASHBOARD DIGIT TILES — construction harvested VERBATIM from the day
    file (blob 3834919b, lines 66-83) = Dashboard Fix-5c (blob aa6ca89f):
    cap + face + rim + shadow, same sizes. Rims deepened to this file's
@@ -389,6 +424,14 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#8e24aa 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
 .os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#6d28d9 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
 .os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#a21caf 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
+/* CALENDAR FIX 2 (R1) — DAY-TILE SIZE: the harvested .os-mini-tile at the R1
+   size. Digit clamp(24px, 2.52vw, 38.4px) = the ORIGINAL clamp (20px, 2.1vw,
+   32px) x 1.20, exactly; tile 42.7px and cap 7.1px by the harvested tile
+   ratios (30px tile / 27px digit / 5px cap). White digit, deep rim per digit. */
+.daynum .os-mini-num{gap:3px}
+.daynum .os-mini-tile{width:clamp(26.7px,2.8vw,42.7px);border-radius:6px}
+.daynum .os-mini-tile .cap{height:clamp(4.4px,.47vw,7.1px)}
+.daynum .os-mini-tile .rd{height:clamp(26.7px,2.8vw,42.7px);line-height:clamp(26.7px,2.8vw,42.7px);font-size:clamp(24px,2.52vw,38.4px)}
 /* FOLLOW-ON (6) TYPE FLOOR — dayname 11px (was 10px). hint 14px, sub2 13px
    and the mobile VIEW label 9px already stand at the specified sizes. */
 .dayname{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.9;margin-top:2px}
@@ -570,6 +613,20 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
 .timer{font-size:34px;font-weight:800;color:#fff;margin:8px 0}
 .honest{border-left:3px solid var(--violet);background:#1a1128;border-radius:6px;padding:10px 12px;margin:12px 0;color:#fff;font-size:17px;box-shadow:0 6px 16px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.14)}
 .mobileonly{display:none}
+@media (min-width:741px) and (max-width:860px){
+  /* CALENDAR FIX 2 (R5) — 741-860px EXACT FIT: the desktop tilerow overran the
+     cell by ~6-14px here (checker Fix 12: ~14px at 741, ~6px at 800), wrapped,
+     and grew every row ~30px. One row now: tile padding 3px/side, tilerow gap
+     4px, VIEW compact (9px, as at phone width), day-tiles at their fluid
+     small size, wisdom/chips hidden (phone compaction, same as <=740px). */
+  .tile{padding:5px 3px 4px}
+  .tilerow{gap:4px}
+  .viewbtn{min-height:22px;font-size:9px;padding:2px 6px;letter-spacing:.04em}
+  .daynum .os-mini-tile{width:clamp(20px,2.8vw,42.7px)}
+  .daynum .os-mini-tile .cap{height:clamp(3.3px,.47vw,7.1px)}
+  .daynum .os-mini-tile .rd{height:clamp(20px,2.8vw,42.7px);line-height:clamp(20px,2.8vw,42.7px);font-size:clamp(18px,2.52vw,38.4px)}
+  .tilewisdom,.chiplane,.minitext,.more,.spark{display:none}
+}
 @media(max-width:740px){
   .shell{height:100dvh;padding:8px 8px 9px;gap:8px}
   .head{min-height:51px;display:flex;flex-wrap:wrap}.logo{width:39px;height:39px;font-size:33px;border-radius:12px}
@@ -583,6 +640,7 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .nowplaque{flex:1 1 auto;min-width:0;flex-wrap:wrap;justify-content:center;row-gap:0;gap:6px;padding:5px 6px}
   .nowcenter .hz-stage{width:48px;height:48px}
   .nowcenter .dayjewel .gem{width:38px}
+  .nowcenter .hz-ring-b{inset:4px}
   .nowcenter .dayjewel .freq{letter-spacing:.10em;text-indent:.10em}
   .now-date,.now-time{font-size:17px;letter-spacing:.02em}
   .now-date{white-space:normal;text-align:center}
@@ -598,12 +656,12 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .board{min-height:0;border-radius:17px;padding:6px}
   .days,.weekrow{gap:3px}
   .weekrow{font-size:17px;padding:4px 0}
-  .tile{min-height:46px;padding:5px 3px;border-radius:10px;text-align:center}
-  .daynum{font-size:20px}.dayname{font-size:11px}
+  .tile{min-height:46px;padding:3px 3px;border-radius:10px;text-align:center}
+  .dayname{font-size:11px}
   .tile.today{border-width:2px}
   .tilewisdom{display:none}
-  .viewbtn{min-height:22px;font-size:9px;padding:2px 6px;letter-spacing:.04em}
-  .chiplane,.minitext,.spark,.more{display:none}
+  .viewbtn{min-height:18px;font-size:9px;padding:1px 6px;letter-spacing:.04em}
+  .chiplane,.minitext,.spark,.more,.dayname{display:none}
   .dot{width:7px;height:7px;border-radius:2px;transform:rotate(45deg);
     background:linear-gradient(135deg,color-mix(in srgb,var(--dc) 70%,#fff),var(--dc) 50%,#050607);
     border:1px solid rgba(255,255,255,.6);box-shadow:0 0 8px var(--dc)}
@@ -616,6 +674,14 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .insight{grid-template-columns:1fr}
   .statgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .mobileonly{display:initial}
+}
+@media(max-width:560px){
+  /* CALENDAR FIX 2 (R1/R5) — phone day-tiles: 19px tiles, 17px digits, 2px gap.
+     2x19+2 = 40px fits the 390px cell's 40.9px inner width (see report). */
+  .daynum .os-mini-num{gap:2px}
+  .daynum .os-mini-tile{width:19px;border-radius:4px}
+  .daynum .os-mini-tile .cap{height:3.2px}
+  .daynum .os-mini-tile .rd{height:19px;line-height:19px;font-size:17px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 </style></head>
@@ -726,7 +792,6 @@ const TF_ORDER={Morning:0,Afternoon:1,Evening:2};
    DEEP PALETTE (2026-11-17): 0 white · 1 ruby · 2 burnt orange · 3 deep gold ·
    4 emerald · 5 deep cyan · 6 indigo · 7 royal purple · 8 deep violet ·
    9 deep magenta. Day 16 = ruby 1 + indigo 6. */
-const DIGIT_CLASS=['dg0','dg1','dg2','dg3','dg4','dg5','dg6','dg7','dg8','dg9'];
 /* ICONS — harvested VERBATIM from the day view (blob 3834919b): one SVG
    stroke icon per meaning (stroke 1.8, round caps/joins), white inside
    the jewel. The plus is the top-left + reference object itself — two
@@ -846,11 +911,10 @@ function renderNowPlaque(){
   if(jewel) jewel.setAttribute('aria-label',"Today's frequency: "+hz+" Hz, "+WEEKDAY[t.getDay()].name);
   const dayKey=t.getFullYear()+'-'+t.getMonth()+'-'+t.getDate();
   if(stage && lastJewelDay!==dayKey){
-    stage.innerHTML='<span class="hz-aura"></span><span class="hz-pedestal"></span>'+gemSVG(dc);
+    stage.innerHTML='<span class="hz-aura"></span><span class="hz-pedestal"></span><span class="hz-ring-a"></span><span class="hz-ring-b"></span>'+gemSVG(dc);
     lastJewelDay=dayKey;
   }
 }
-function digitNum(d){ return String(d).split('').map(ch=>`<span class="dg ${DIGIT_CLASS[+ch]}">${ch}</span>`).join(''); }
 /* ============ DAILY WISDOM — sourced, with carry-forward ============ */
 function wisdomFor(ds){
   /* Highest-ranked Smart Note of yesterday becomes today's wisdom (definition
@@ -928,7 +992,7 @@ function render(){
     const past=ds<todayKey;
     const wis=wisdomFor(ds).text;
     return `<div class="tile ${today?'today':''} ${sel?'sel':''} ${past?'past':''}" data-day="${d}" role="button" tabindex="0" style="--dc:${wd.color}" aria-label="Open ${dlabel(year,month,d)}, ${esc(daySummary(ds))}">
-      <div class="tilerow"><span class="daynum">${digitNum(d)}</span><button type="button" class="viewbtn" data-viewday="${d}" aria-label="View ${dlabel(year,month,d)}">VIEW</button></div>
+      <div class="tilerow"><span class="daynum">${digitsHTML(d)}</span><button type="button" class="viewbtn" data-viewday="${d}" aria-label="View ${dlabel(year,month,d)}">VIEW</button></div>
       <div class="dayname">${wd.short} · ${wd.hz} Hz</div>
       <div class="tilewisdom" title="${esc(wis)}">${esc(wis)}</div>
       <div class="chiplane">${h.slice(0,2).map(x=>`<span class="chip" style="--chip:${CAT[x][0]}">${ICONS[CAT[x][1]]} ${esc(x)}</span>`).join('')||`<span class="minitext">${(role==='visitor'&&!BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t)))?'Fully booked':'Open day'}</span>`}</div>
@@ -944,6 +1008,18 @@ function render(){
   for(const w of ['Personal','Business','Space','Thing'])
     $(w==='Personal'?'pers':w==='Business'?'biz':w.toLowerCase()).classList.toggle('active',world===w);
   $('role').textContent=role==='owner'?'Owner view ▾':'Visitor view ▾';
+  armScrollLight();
+}
+/* CALENDAR FIX 2 (R4) — the scroll-light driver (see CSS note). Re-armed at
+   the end of render() because render() rebuilds the tiles and weekrow. */
+let scrollIO=null;
+function armScrollLight(){
+  if(typeof IntersectionObserver==='undefined') return;
+  if(!scrollIO){ scrollIO=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('lit'); scrollIO.unobserve(e.target); } }); },{threshold:.25}); }
+  const b=document.querySelector('.board');
+  if(b){ b.style.setProperty('--dc',WEEKDAY[NOW.getDay()].color); scrollIO.observe(b); }
+  document.querySelectorAll('.weekrow .wk').forEach(function(el){ scrollIO.observe(el); });
+  document.querySelectorAll('.tile').forEach(function(el){ if(!el.classList.contains('blank')) scrollIO.observe(el); });
 }
 function openDay(d){ day=d; screen='day'; section='Dashboard'; slot=''; pushRoute(); showPanel(); }
 function button(text, fn, cls){ return `<button class="${cls||'pill'}" data-op="${esc(fn)}">${text}</button>`; }
