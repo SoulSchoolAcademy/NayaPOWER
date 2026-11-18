@@ -52847,6 +52847,39 @@
         "Multiplication",
         "Always-On"
       ]
+    },
+    {
+      "smart_note_id": "SN-3092",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3092-the-twin-rank",
+      "slug": "the-twin-rank",
+      "title": "The Twin Rank",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3092/IB-SMART-NOTE-20261118-sn3092-the-twin-rank.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3092/IB-SMART-NOTE-20261118-sn3092-the-twin-rank.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3092/IB-SMART-NOTE-20261118-sn3092-the-twin-rank.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3092-the-twin-rank.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:30:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "02fc8e1dc79c480b28f8dd4ec517fa5b6ee812846de43d4cb54603c41ba4417c",
+      "content_hash": "fe5da2998f14ddd6d58b57382e817145793c956a63eb1884ce38addf0c44eb45",
+      "one_line": "Every Intelligent Block now ends the same way: the react row (LOVE · LIKE · SHARE INTEL), the Twin Rank panel, the ADD TO THE INTELLIGENCE composer with its dictation button inside the field, and the trust footer, unchanged. The Twin Rank is two independent ten-star scales — VALUE in gold, INTELLIGENCE in emerald — one tap to rank, showing the crowd average, the rank count, and your own rank. NayaNET is a value-and-intelligence network: it mines, builds, and shares value and intelligence, so every block carries its two prices on its face. The old single five-star strip averaged two different questions into one number that answered neither, and it is retired. The ruling that keeps the design honest: ranks are signal only — they feed standing and leaderboards and mint NO Value Table points; the Value Table stays locked, and stars cannot be farmed into money, while love and like keep minting exactly what the locked table says. Designed by Resolve from Shawn's direction and approved by Shawn on 2026-11-17 after he worked a clickable mock; the build spec stands on board #3352, comment 6965012612, and the interface lane builds it into the block template.",
+      "topics": [
+        "Design",
+        "Intelligent Block",
+        "Value",
+        "Intelligence",
+        "Leaderboards"
+      ]
     }
   ],
   "sequence_policy": {
@@ -52857,5 +52890,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "32c2c391984654a6ca41cc399018f0832638b553e8a08107464a3c74971d26da"
+  "corpus_manifest_hash": "c9634c40b238a902267e018c4ee5e5791da9926ea6139101207da9807f812db8"
 }
