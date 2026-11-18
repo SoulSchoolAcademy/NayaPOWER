@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3319",
+ "intelligence": {
+  "title": "Prove the Premise Before You Hand It to Him",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3319-prove-the-premise-before-you-hand-it-to-him",
+  "smart_note_id": "SN-3319",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3319/IB-SMART-NOTE-20261118-sn3319-prove-the-premise-before-you-hand-it-to-him.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A \"his hand\" label feels like respect — it keeps his work his. But a label is not a reason. The coordinator handed him the routing because it believed the token could not create routes, and that belief was already disproven hours earlier, in the record, with live routes to show for it. So the work sat waiting for his hand while the feed was broken, and the only thing standing between broken and fixed was a premise nobody re-checked. The lesson is not \"do his work for him\" — the protected gates still stand, and the custom-domain attach is still his hand. The lesson is: before you hand anything to him, re-prove the premise the handover rests on. If the premise is dead, the handover is dead too, and the work is yours to do.",
+  "simple_view": "Imagine the road to your house disappears, and someone says \"only Dad can build roads\" — so nobody fixes it. But Dad already showed you that you CAN build roads, hours ago, and you built eight of them. The road is yours to fix. Always check: is the reason I am handing this to Dad still true? If it is not true anymore, fix it yourself.",
+  "grandma_view": "Dear, the road to the house vanished, dear, and someone said only Shawn could fix it, dear — but he had already shown us we could fix roads ourselves, dear, and we had built eight, dear. So the captain fixed the roads himself, dear, and checked them fresh — the feed and the Hub both answer again, dear. Before we hand anything to Shawn, dear, we check the reason is still true, dear.",
+  "naya_view": "PROVE THE PREMISE BEFORE YOU HAND IT TO HIM. A \"HIS HAND\" LABEL IS ONLY AS GOOD AS THE REASON UNDER IT. IF THE REASON IS DEAD, THE WORK IS YOURS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3319",
+   "title": "Prove the Premise Before You Hand It to Him",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3319/IB-SMART-NOTE-20261118-sn3319-prove-the-premise-before-you-hand-it-to-him.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3319/IB-SMART-NOTE-20261118-sn3319-prove-the-premise-before-you-hand-it-to-him.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "5242b04f4a0b99ee9c568bee72ab0cddf4ef2346"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

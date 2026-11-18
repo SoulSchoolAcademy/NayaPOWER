@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3332",
+ "intelligence": {
+  "title": "The Digital Royal Kingdom",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3332-the-digital-royal-kingdom",
+  "smart_note_id": "SN-3332",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3332/IB-SMART-NOTE-20261118-sn3332-the-digital-royal-kingdom.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "\"Look, feel, AND function\" is the whole test in one line — a kingdom that looks royal but works like a spreadsheet is a picture of a kingdom, and a kingdom that works well but looks ordinary is a tool with a crown on it. He names the models deliberately: the most luxurious vehicles, jewelry, gems — things whose value you can see in the refinement, the detail, the color flow — and says the digital versions must look exactly real, because the feeling on entry is the product: \"this is the digital royal kingdom, I'm a part of it.\" The calendar is the focus because it is the door they open every day — royalty is not a page you visit, it is the place you start your day.",
+  "simple_view": "Imagine a whole kingdom made of the most beautiful jewels and the shiniest cars and the most wonderful things in the world — and everything in it looks so real you could touch it. Every morning you open the big golden door to your day, and it feels like you belong there, like a prince or princess in your own kingdom.",
+  "grandma_view": "Dear, imagine a beautiful kingdom, dear, made of jewels and lovely things, dear — so beautiful it looks like it is worth a fortune, dear — and every morning you open the door to your day, dear, and it feels like royalty, dear, because it is, dear.",
+  "naya_view": "THE DIGITAL ROYAL KINGDOM. LOOK, FEEL, AND FUNCTION. EXACTLY REAL. ROYALTY ALL THE WAY THROUGH. THE CALENDAR IS THE DOOR.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3332",
+   "title": "The Digital Royal Kingdom",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3332/IB-SMART-NOTE-20261118-sn3332-the-digital-royal-kingdom.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3332/IB-SMART-NOTE-20261118-sn3332-the-digital-royal-kingdom.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "fe09c79d44433fbc05be9f07006ce871677fa504"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

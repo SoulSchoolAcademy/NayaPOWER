@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3331",
+ "intelligence": {
+  "title": "Wednesday Is Kanye Blue",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3331-wednesday-is-kanye-blue",
+  "smart_note_id": "SN-3331",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3331/IB-SMART-NOTE-20261118-sn3331-wednesday-is-kanye-blue.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A color that belongs to another day is not a small miss — it breaks the signature piece itself, because the day's frequency IS its color, and the whole page speaks in that color. The law was settled and written down, and the build still showed purple on Wednesday — which is exactly why the second half of this teaching matters more than the first: he gave us the good pictures as the standard, and the rule that goes with them. Name what's good and what's not, put ALL the good together, never ship a mix. A check that scores only the fix lets a page pass with good and terrible standing side by side; a check that scores the WHOLE page against the good pictures cannot.",
+  "simple_view": "Imagine every day of the week has its own favorite colour — Wednesday's is blue, like the sky. Someone painted Wednesday purple, but purple belongs to Sunday! And when you build something beautiful, you keep ALL the beautiful parts together — you never mix the beautiful parts with the ugly parts.",
+  "grandma_view": "Dear, Wednesday is blue, dear, like a lovely sky blue, dear — and purple is Sunday's colour, dear, not Wednesday's. And when you make something beautiful, dear, you put all the beautiful bits together, dear — never the beautiful with the not-so-beautiful, dear.",
+  "naya_view": "WEDNESDAY IS KANYE BLUE. PURPLE IS SUNDAY'S. THE DAY'S FREQUENCY IS ITS COLOR. ALL THE GOOD TOGETHER. NEVER A MIX.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3331",
+   "title": "Wednesday Is Kanye Blue",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3331/IB-SMART-NOTE-20261118-sn3331-wednesday-is-kanye-blue.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3331/IB-SMART-NOTE-20261118-sn3331-wednesday-is-kanye-blue.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "3c93eb8cb65df2e169f36d142f844372f1e2bc7c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

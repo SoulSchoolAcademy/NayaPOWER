@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3321",
+ "intelligence": {
+  "title": "Count It Yourself",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3321-count-it-yourself",
+  "smart_note_id": "SN-3321",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3321/IB-SMART-NOTE-20261118-sn3321-count-it-yourself.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A claim is cheap and a count is work, so the machine takes the claim. \"200% bigger\" sounds like a triumph; 32→40 is a quarter bigger, and the eye had to count it to know. The press was \"fixed\" and dead; the scroll light was \"built\" and dark — both provable from the bytes in seconds, both missed because the claim was taken instead of the measurement. The checker's own arithmetic was wrong twice on the same grid, which is the same disease one level up: numbers copied, not counted. The rule that fixes all three is one line: count it yourself. Read the bytes, run the probe, measure the render — and never let a maker's multiplier, a fixed label, or a copied margin stand in for a number you measured.",
+  "simple_view": "Imagine someone tells you their tower is twice as tall as yours. You don't just believe them — you count the blocks. Their tower went from 32 blocks to 40 blocks. That is not twice as tall. Count the blocks yourself, every time.",
+  "grandma_view": "Dear, the builders said the numbers were twice as big, dear — but when we counted, they were only a quarter bigger, dear. And the button they said was fixed didn't sink when you pressed it, dear, and the little light they said was built never lit up, dear. From now on we count it ourselves, dear — we read the real thing, never just the claim.",
+  "naya_view": "COUNT IT YOURSELF. READ THE BYTES, NOT THE CLAIM. A MULTIPLIER YOU DIDN'T MEASURE IS A GUESS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3321",
+   "title": "Count It Yourself",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3321/IB-SMART-NOTE-20261118-sn3321-count-it-yourself.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3321/IB-SMART-NOTE-20261118-sn3321-count-it-yourself.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "5284d50cf4f65f59f6ade1bd21ada261b12fdfef"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

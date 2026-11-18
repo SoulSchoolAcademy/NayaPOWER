@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3333",
+ "intelligence": {
+  "title": "The Agreement as Audio",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3333-the-agreement-as-audio",
+  "smart_note_id": "SN-3333",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3333/IB-SMART-NOTE-20261118-sn3333-the-agreement-as-audio.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A 2-hour-20-minute read is not a listening experience — it is a book with a play button on it, and nobody finishes a book by accident. The decision here is not \"add audio\" — it is \"distill first, then audio\": the essence, ~1,500 words, ~10 minutes, in her voice, is what a person can actually hear in one sitting, and what his podcast people can turn around in 5–10 minutes. And the controls are part of the decision, not an afterthought — play without stop is a trap, and a trap is annoying, and annoying is the opposite of what the agreement is for. The full text stays on the page for reading and clicking through; the audio is the essence, not a replacement.",
+  "simple_view": "Imagine a very long story — so long it would take all afternoon to read out loud! So we make a short, beautiful version — just the most important parts, about ten minutes — that you can listen to like a podcast. And the play button always has a stop button and a pause button too, so you are always in charge.",
+  "grandma_view": "Dear, the whole agreement is very long to listen to, dear — over two hours, dear! So we make a lovely short version, dear, about ten minutes, dear, just the most important parts in her voice, dear — and the play button always has a stop and a pause, dear, so you are always in charge, dear.",
+  "naya_view": "DISTILL IT SO IT'S AUDIO-PERFECT. A PODCAST-STYLE READ. PLAY MUST HAVE STOP, PAUSE, PLAY. THE FULL TEXT STAYS; THE AUDIO IS THE ESSENCE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3333",
+   "title": "The Agreement as Audio",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3333/IB-SMART-NOTE-20261118-sn3333-the-agreement-as-audio.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3333/IB-SMART-NOTE-20261118-sn3333-the-agreement-as-audio.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "72aa3685aa912e04a35c6bc71403669eb58b0a69"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

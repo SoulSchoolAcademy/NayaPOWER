@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3334",
+ "intelligence": {
+  "title": "The Click-Button Viewpoint System",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3334-the-click-button-viewpoint-system",
+  "smart_note_id": "SN-3334",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3334/IB-SMART-NOTE-20261118-sn3334-the-click-button-viewpoint-system.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Beauty that nobody uses is not beauty — it is a museum piece, and a two-hour agreement nobody reads is the proof. His correction is not \"make it shorter\" — it is \"give them three ways in and let them choose\": audio, text, image, with the full version still there for the ones who do read, the ones who skip to the bottom and sign, the ones who listen. And then he names what the agreement page actually taught us, which is the real prize: the unfold. A page that shows everything at once overwhelms; a page that shows one viewpoint at a time — click, viewpoint, click, viewpoint — feels alive, because it only ever shows you what you need in that moment. That is the headlights principle, and it is not a calendar rule or an About rule — it is the locked-in display language for the whole system, the pricing unfold and the agreement concept applied to every page.",
+  "simple_view": "Imagine you are driving at night, and your headlights only show you a little bit of the road in front of you — and that is just right! If you could see the whole road all at once, it would be too much and scary. Our pages should be like that: show a little bit at a time, click a button, see the next bit, click a button, see the next bit. And you can listen, or read, or watch pictures — whichever way you like best.",
+  "grandma_view": "Dear, nobody reads for two whole hours, dear — so we give them three lovely ways in, dear: listen, read, or watch the pictures, dear. And we show them just a little at a time, dear, like headlights on a dark road, dear — click a button, see the next bit, click a button, see the next bit, dear — never everything all at once, dear, because that would be too much, dear.",
+  "naya_view": "NOBODY READS TWO HOURS. THREE WAYS IN: AUDIO, TEXT, IMAGE. CLICK BUTTON, VIEWPOINT, CLICK BUTTON, VIEWPOINT. HEADLIGHTS: A BIT AT A TIME. THE LOCKED-IN DISPLAY LANGUAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3334",
+   "title": "The Click-Button Viewpoint System",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3334/IB-SMART-NOTE-20261118-sn3334-the-click-button-viewpoint-system.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3334/IB-SMART-NOTE-20261118-sn3334-the-click-button-viewpoint-system.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "37f22563312ba737a1b986928182518bc01b7df3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

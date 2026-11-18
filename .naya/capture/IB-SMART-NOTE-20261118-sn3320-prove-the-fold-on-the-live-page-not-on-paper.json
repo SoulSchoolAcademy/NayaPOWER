@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3320",
+ "intelligence": {
+  "title": "Prove the Fold on the Live Page, Not on Paper",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3320-prove-the-fold-on-the-live-page-not-on-paper",
+  "smart_note_id": "SN-3320",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3320/IB-SMART-NOTE-20261118-sn3320-prove-the-fold-on-the-live-page-not-on-paper.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Arithmetic is comfortable. You add the cuts, you subtract from the position, you get a number under the fold, and the number says done. But the number was never the page. The page has a scrolled container with its own native position, a handler with no scroll call, and a first paint the arithmetic never looked at — and the page said 1120 while the paper said 1066. The eye's job is to read the page, not the paper, and the checker's job is the same: a fold claim that was never measured on the live render is not a claim, it is a hope. The fix round now carries the rule in its brief — verified live at all three widths, not arithmetic — because the last round proved what happens when the rule is missing.",
+  "simple_view": "Imagine you work out on paper that your kite will fly above the trees — you add up all the numbers and it looks right. But when you actually fly it, it is stuck 40 steps too low, because the string was never pulled. Paper is not the sky. You have to look at the real kite in the real sky.",
+  "grandma_view": "Dear, the builders worked it out on paper, dear, and the paper said the letter was above the fold, dear — but the live page said it was 40 pixels too low, dear. Paper is not the page, dear. From now on we prove it on the live page itself, dear, at every size, dear — never on paper alone.",
+  "naya_view": "PROVE THE FOLD ON THE LIVE PAGE, NOT ON PAPER. LAYOUT MATH WITHOUT A LIVE RENDER IS NOT A PASS. A DEAD BUTTON STILL PAINTED IS STILL A FAIL.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3320",
+   "title": "Prove the Fold on the Live Page, Not on Paper",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3320/IB-SMART-NOTE-20261118-sn3320-prove-the-fold-on-the-live-page-not-on-paper.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3320/IB-SMART-NOTE-20261118-sn3320-prove-the-fold-on-the-live-page-not-on-paper.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "144342cee05946b9682f0f5e36e415a2e104ad99"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

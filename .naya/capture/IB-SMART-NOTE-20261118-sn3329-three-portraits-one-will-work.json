@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3329",
+ "intelligence": {
+  "title": "The Three Portraits",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3329-three-portraits-one-will-work",
+  "smart_note_id": "SN-3329",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3329/IB-SMART-NOTE-20261118-sn3329-three-portraits-one-will-work.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A portrait that is not clear enough is not a portrait — it is a placeholder with a face in it. He gave us three clear pictures and named what makes them work: she looks official, and you can see her. The pick is not a taste call — NAYA_POWER.jpg is already a circle, made for the slot, so it goes in without being reshaped to fit. Vera and Sophia stay in the system as alternates with their own jobs (official spots, wisdom spots), because a good picture with no assigned home gets lost and re-found later at full cost.",
+  "simple_view": "Imagine you have a photo that is blurry, and then someone hands you three beautiful clear ones. You pick the round one that fits the round frame perfectly — and you keep the other two safe, because each of them is perfect for a different spot.",
+  "grandma_view": "Dear, he sent three lovely clear pictures, dear, and the round one fits the round frame just right, dear — so that is the one we put in, dear, and the other two we keep safe for their own spots, dear.",
+  "naya_view": "ONE OF THESE THREE WILL WORK. SHE LOOKS OFFICIAL. YOU CAN SEE HER. THE ROUND ONE FITS THE ROUND SLOT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3329",
+   "title": "The Three Portraits",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3329/IB-SMART-NOTE-20261118-sn3329-three-portraits-one-will-work.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3329/IB-SMART-NOTE-20261118-sn3329-three-portraits-one-will-work.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ffe4591b3c920dddb656639bdfcff018165975e4"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

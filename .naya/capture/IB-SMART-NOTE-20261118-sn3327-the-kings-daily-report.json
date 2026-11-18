@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3327",
+ "intelligence": {
+  "title": "The King's Daily Report",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3327-the-kings-daily-report",
+  "smart_note_id": "SN-3327",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3327/IB-SMART-NOTE-20261118-sn3327-the-kings-daily-report.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A reference page is not a mood board — it is the floor. \"Don't make a page that's less quality\" means the Hub, Life with Naya, the Personal page, and nayanet.app are the minimum a new page has to clear, and the day view has to clear them by being one of the most extraordinary pages of all — because it is the first thing a person sees in their day. And \"the king's daily report\" tells you what extraordinary means here: it is not decoration, it is a welcome — your name, a wisdom quote, your whole day, unfolding section by section, mechanical and alive. If the page does not feel like that, it is text in a box, and he has already told us what that is: a fumbled ball.",
+  "simple_view": "Imagine the king wakes up and someone hands him his whole day — beautifully, like a treasure unfolding, one wonderful part after another. That is what the day page should feel like. Not a list in a box. A royal report, made just for you, every morning.",
+  "grandma_view": "Dear, when he wakes up, dear, his day should open like a beautiful present, dear — his name, a wise little saying, his whole day unfolding, dear, one lovely part after another, dear. Not words in a box, dear — something extraordinary, dear, like a report made for a king, dear.",
+  "naya_view": "THE KING'S DAILY REPORT. EVERY PAGE AT THE QUALITY OF THE ICON. NEVER LESS THAN THE REFERENCE PAGES.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3327",
+   "title": "The King's Daily Report",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3327/IB-SMART-NOTE-20261118-sn3327-the-kings-daily-report.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3327/IB-SMART-NOTE-20261118-sn3327-the-kings-daily-report.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7f3a9994465eb760873daf789b90acc24d2fc84d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3336",
+ "intelligence": {
+  "title": "The Smart Block",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3336-the-smart-block",
+  "smart_note_id": "SN-3336",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3336/IB-SMART-NOTE-20261118-sn3336-the-smart-block.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The formatting IS the service. A page that dumps all its content at once makes the person do the machine's work — scroll, squint, find where they are, read a squished wall of text. A Smart Block does that work for them: one screen, perfectly formed to what they're seeing, and the next one a click away. The name matters because the team needs one word for the unit — when every seat says \"Smart Block\" they mean the same thing: a screen that fits perfect, presents beautifully, and looks real, high tech, premium. And \"presentation is everything\" is the standard that judges it: not what the page says, how it says it — the ten-star delivery of intelligence.",
+  "simple_view": "Imagine a book where every page is just right — big and beautiful, and you press a button and the next page pops right up, perfect! Every page is its own little show, and it looks like magic.",
+  "grandma_view": "Dear, imagine a lovely book, dear, where every page fits just right, dear — you press a button and the next page comes right up, perfect, dear. Every page its own little show, dear, and it looks so beautiful, dear, like the finest thing, dear.",
+  "naya_view": "EVERY SCREEN IS A SMART BLOCK. PERFECTLY FORMATTED. REAL. HIGH TECH. PREMIUM. LIKE A NAYA.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3336",
+   "title": "The Smart Block",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3336/IB-SMART-NOTE-20261118-sn3336-the-smart-block.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3336/IB-SMART-NOTE-20261118-sn3336-the-smart-block.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "436bcf123f5448d18398678a7ebcb0c0b60b58bb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

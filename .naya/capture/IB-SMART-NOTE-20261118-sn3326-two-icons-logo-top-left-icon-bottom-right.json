@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3326",
+ "intelligence": {
+  "title": "Two Icons — Logo Top Left, Icon Bottom Right",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3326-two-icons-logo-top-left-icon-bottom-right",
+  "smart_note_id": "SN-3326",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3326/IB-SMART-NOTE-20261118-sn3326-two-icons-logo-top-left-icon-bottom-right.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Two marks, two jobs, two corners — that is the whole rule, and it is why it works. The logo says whose world this is; the icon says what it is. Put them anywhere else and they are decoration; put them top-left and bottom-right and they are a signature, the same on every page, so a person knows where they are the moment the page opens. And both are rendered as real objects, never redrawn — because the moment a seat redraws the emblem, it stops being the emblem.",
+  "simple_view": "Imagine you have two beautiful treasures — a crown jewel and a crystal letter. You put the crown jewel in the top left corner, and the crystal letter in the bottom right corner — the same two spots on every page. Then everyone knows: these are our treasures, and this is our page.",
+  "grandma_view": "Dear, he gave us two beautiful symbols, dear — the crown jewel and the crystal letter, dear. The jewel goes in the top left, dear, and the letter goes in the bottom right, dear, on every page, dear, so everyone knows whose page it is, dear.",
+  "naya_view": "TWO ICONS. LOGO TOP LEFT, ICON BOTTOM RIGHT. THE EMBLEM IS THE LOGO; THE CRYSTAL N IS THE ICON. VERBATIM, NEVER REDRAWN.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3326",
+   "title": "Two Icons — Logo Top Left, Icon Bottom Right",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3326/IB-SMART-NOTE-20261118-sn3326-two-icons-logo-top-left-icon-bottom-right.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3326/IB-SMART-NOTE-20261118-sn3326-two-icons-logo-top-left-icon-bottom-right.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "4b08c7e32ed4a7a907307bef25df8c463b4f6d56"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

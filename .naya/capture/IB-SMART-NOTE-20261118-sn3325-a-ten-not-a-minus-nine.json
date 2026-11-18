@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3325",
+ "intelligence": {
+  "title": "A Ten, Not a Minus Nine",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3325-a-ten-not-a-minus-nine",
+  "smart_note_id": "SN-3325",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3325/IB-SMART-NOTE-20261118-sn3325-a-ten-not-a-minus-nine.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A minus nine is not a bad ten — it is the opposite of what he asked for. He asked for a small extraordinary object that changes color every day, something people look at and say wow. He got text next to a shape that fades into nothing. The text was the giveaway: if the piece needs a label to say what frequency it is, the piece has already failed — the color is supposed to BE the frequency. A real object does not need to announce itself.",
+  "simple_view": "Imagine someone asks you to make a magic jewel that changes color every day, and you draw a flat circle and write the color's name next to it. The name is not the magic — the color changing is. Make the real jewel, and let the color do the talking.",
+  "grandma_view": "Dear, he wanted a beautiful little jewel, dear, that changes its color every single day, dear — something so beautiful people say wow, dear. And we gave him a flat shape with words next to it, dear. The color IS the words, dear — so we take the words away, dear, and make the jewel real, dear.",
+  "naya_view": "A TEN, NOT A MINUS NINE. THE SIGNATURE PIECE IS A REAL OBJECT. THE COLOR IS THE FREQUENCY — NO TEXT ON IT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3325",
+   "title": "A Ten, Not a Minus Nine",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3325/IB-SMART-NOTE-20261118-sn3325-a-ten-not-a-minus-nine.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3325/IB-SMART-NOTE-20261118-sn3325-a-ten-not-a-minus-nine.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "017e099f19a5715e29c1db3ef546e0277f9ba9e0"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

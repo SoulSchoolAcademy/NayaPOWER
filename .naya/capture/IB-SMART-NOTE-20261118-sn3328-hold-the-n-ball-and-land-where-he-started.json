@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3328",
+ "intelligence": {
+  "title": "Hold the N Ball — and Land Where He Started",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3328-hold-the-n-ball-and-land-where-he-started",
+  "smart_note_id": "SN-3328",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3328/IB-SMART-NOTE-20261118-sn3328-hold-the-n-ball-and-land-where-he-started.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He loves the N ball — he said so, plainly — and the machine showed it to him for half a second and then dropped him somewhere he did not recognize. That is the whole lesson in one moment: when he loves a thing, hold it; when a flow ends, land where it began. A flow that ends on the wrong page is not a flow — it is a door that opens onto the street he came from, and he stands there not knowing where he is. The fix is not a new feature; it is the end doing what the end was always supposed to do: name-entry, then the Hub.",
+  "simple_view": "Imagine you finish a beautiful story and someone shows you your favorite picture for half a second — then drops you back at the very beginning, lost. Hold the favorite picture longer, and when the story ends, take the person home — back to where they wrote their name, and then into the Hub.",
+  "grandma_view": "Dear, he loves that beautiful ball with the N, dear — but we only showed it to him for half a second, dear, and then we dropped him back where he started, dear, and he didn't know where he was, dear. So we hold the ball longer, dear, and when the story ends we take him home, dear — to write his name, and then into the Hub, dear.",
+  "naya_view": "HOLD WHAT HE LOVES. A FLOW ENDS WHERE IT BEGAN — NAME-ENTRY, THEN THE HUB. NEVER BACK TO THE OLD PAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3328",
+   "title": "Hold the N Ball — and Land Where He Started",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3328/IB-SMART-NOTE-20261118-sn3328-hold-the-n-ball-and-land-where-he-started.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3328/IB-SMART-NOTE-20261118-sn3328-hold-the-n-ball-and-land-where-he-started.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "9a5c186edde9daab8d82d0139e17630a01028222"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
