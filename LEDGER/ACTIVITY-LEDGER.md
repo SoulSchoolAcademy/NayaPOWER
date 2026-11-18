@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -239,6 +239,12 @@ _Last updated: 2026-11-18 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: the prereg document is present with falsifiable lines derived from the candidate tree's own bytes (scoring rule: stemmed overlap + exact-phrase +40; guard REFUSED_FALSIFIED_ONLY fires iff ranked is non-empty and all-FALSIFIED). Score 8.0/10. Why not 9.5: standalone this is a working paper — its value lands with the execution half, which e
 
+### ✅ t1822 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t1822-lane3: slice-3 flip-hunt replay (parent t0422-lane3)
+
+**Evidence:** Verified: report hidden_files/lane-3/gap-t1822/replay-report-slice3.md exists; tip ba626387 exists in mirror. Score 9.5 clears 9.5 because the hunt honestly reports narrowed-not-closed, corrects a real premise (t0102 fix never landed), and produces three transferable rules with live-byte evidence. What kept it from 10: no observed verdict flip (the
+
 ### ✅ t1822 — Team 3, lane-executor (Lane 3 Judge hat) (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up: slice-3 flip-hunt replay of t0422 decisions
@@ -251,6 +257,18 @@ _Last updated: 2026-11-18 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: replay-report-slice3.md exists (8936 bytes, mtime matches the claimed Oct-14 run window); SEAT_RE substance confirmed at Oct-14 tip ba626387 (5-seat named-seat form — 12-lane forms unparsed, as claimed); #2453 and #2329 pins byte-match live state today (both open, heads unmoved) confirming the D2 premise correction. Real value: three tran
 
+### ✅ t1821 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap-gap-t1821-lane1: tip-bytes re-run of t0452 battery; falsified tip-copy premise
+
+**Evidence:** Verified: tips ba626387 and edd97d60 both exist in mirror; instrument sha 275e26345ec21105 and parent evidence sha 7e797ba42fb6e7d9 re-derived and matching. Score 9.5 clears 9.5 because the gap premise was falsified four independent ways (no tip copy ever existed) and the battery was re-run against tip-extracted subjects at two tips with byte-ident
+
+### ✅ t1821 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t1821-lane1: independent re-run of t0442/t0452 retrieval-auth acceptance battery
+
+**Evidence:** Verified: tip ba626387 exists in mirror; instrument auto-retrieval/t0452-acceptance_battery.py sha 275e26345ec21105 matches the pin; evidence gap-t1821-battery_evidence.json sha 7e797ba42fb6e7d9 matches the receipt pin. Score 9.5 clears 9.5 because an independent seat reproduced the calibration table byte-for-byte (M 38/38, S red in predicted place
+
 ### ✅ t1821 — Team 1, lane-executor (Lane 1 hat) (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** gap follow-up: independent re-run of t0442/t0452 retrieval-auth acceptance battery
@@ -262,6 +280,12 @@ _Last updated: 2026-11-18 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-t1821: independent re-run of t0442/t0452 retrieval-auth acceptance battery
 
 **Evidence:** Verified: instrument sha256 275e2634 byte-exact; gate pin fbe6ee29 and suite pin 34cb4c0a both byte-exact at Oct-14 tip ba626387; evidence file sha256 7e797ba4 byte-exact. Real verified value: the named gap (independent eyes on the instrument) is closed — the calibration table is confirmed by a second seat's run with matching pins at tip. Why not 1
+
+### ✅ t1820 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t1820-lane5: 578-vs-588 erratum sweep + disclosure-intent re-check
+
+**Evidence:** Verified: surge/stamping-decisions-t0580b.md sha ee7fc4439e527665 matches the receipt pin; t0580b-lane5.md exists with 588 lines intact, consistent with append-style errata (no rewrite); arithmetic 578+17=595 and 578+10=588 holds as stated. Score 9.5 clears 9.5 because the erratum corrects a real number error across five receipts with a first-seat 
 
 ### ✅ t1820 — Team 5, Naya Clarity Seeker (Retrieval) — 9.5/10 [VERIFIED]
 
@@ -8391,6 +8415,12 @@ _Last updated: 2026-11-18 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifact value-ledger-seed-reverify-t0705.md present. Real defect caught: seed's E1 scorecard attribution wrong (cited t0688-lane1 scoring PR #2545; actual #2533 scorecard is t0683, comments 6157102452/6157099718) — verdicts grounded in artifact handles re-derived at action time, REST reads for live state. Honest self 9.0. Score 9.0 GOOD ONE MORE P
 
+### ✅ t1230 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t1230-lane5: LEDGER-0001/E1 evidence-linkage correction
+
+**Evidence:** Verified: value-ledger.md exists with LEDGER-0006 (2 hits) carrying the exact demanded linkage; t0683-lane1.md (PR #2533 scorecard) and t0688-lane1.md (PR #2545) both exist, confirming the misattribution was real and already repaired. Score 9.5 clears 9.5 because verification-closed-with-refusal is the correct outcome and the stale-premise root cau
+
 ### ✅ t1230 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Plan 2 move 3: first value ledger from t0690 seed, append-only SHA-chained (receipt t0705-lane5)
@@ -10413,6 +10443,12 @@ _Last updated: 2026-11-18 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: local probe file present (20:34), branch naya4/smart-notes-2026-09-30 exists on remote (git ls-remote OK); probe commit 77d9f055a given as commit link; historical tip state (tip==staged commit at claim time) not re-verifiable now because tip moved to 03cc850a (feeder's own later staging — expected). Deliverable (timed probe evid
 
+### ✅ t999 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t999-lane4: t999 diagnosis re-run at current tip, all 4 holes still live, 2 worsened
+
+**Evidence:** Verified: tip 8cac435a exists in mirror; receipt re-derives all 4 holes on live repo bytes with two worsened findings (board self-disagreement #2175 vs #2537, 3.5-day snapshot staleness) and names the repair scope. Score 9.5 clears 9.5 because the re-derivation is byte-exact and the worsened scope is new value. What kept it from 10: single-seat re-
+
 ### ✅ t0999 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** t999 diagnosis re-run at current tip: all 4 holes still live, 2 worsened; repair scope expanded with byte-exact citations; repair left to a different seat per parent.
@@ -10448,6 +10484,12 @@ _Last updated: 2026-11-18 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0707-lane11 — observatory addenda (I1/I2 census, I2b instrument, I3 table)
 
 **Evidence:** ALL 6 SHAs VERIFIED byte-exact (census py/json, i2b py/json, i3 md, spec pin 8f76add6...==v1 pin, no drift). 3 addenda = real files, numbers re-derived from live bytes; two rule-clarifications forced by bytes (recusals/VOIDED excluded; dual sign-outs split). 3-pass scorecard honest (self 9.0, named holes). Clears 9.5: I1 98.7% / I2 0.23h / I2b 0.90
+
+### ✅ t999 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t999-lane10: blob-pin re-derivation + #2635 behavioral byte-replay
+
+**Evidence:** Verified: tip 8cac435a exists in mirror; receipt byte-matches both blob pins, re-reads ruleset 23853581 fence, replays check-run 116863315770 with job-log failure line, and corrects the firing venue from #2635 to #2698 with branch proof. Score 9.5 clears 9.5 because the citation correction is a real byte-level fix on a carried citation. What kept i
 
 ### ✅ t0999 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -53490,6 +53532,12 @@ _Last updated: 2026-11-18 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261118-0808 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall report 2026-11-18 08:08 PST: full claim sweep of all 31 queued briefs, 0 claimable
+
+**Evidence:** Verified: brief-queue holds exactly 31 brief-*.md files and 0 brief-tNNNN mission-sequence files; claim-sweep-20261118-0808.log exists with 31 ATTEMPT lines, 29 x exit=7 and 2 x exit=2, summary '31 attempted, 0 claimed' matching the receipt exactly; the 07:05 receipt carries the identical 31-brief list with identical refusal codes, confirming the z
 
 ### ✅ gate-stall-20261118-0705 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
