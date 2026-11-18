@@ -53211,6 +53211,39 @@
         "The Chart",
         "Comparison"
       ]
+    },
+    {
+      "smart_note_id": "SN-3100",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3100-refined-by-his-eye",
+      "slug": "refined-by-his-eye",
+      "title": "Refined by His Eye",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3100/IB-SMART-NOTE-20261118-sn3100-refined-by-his-eye.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3100/IB-SMART-NOTE-20261118-sn3100-refined-by-his-eye.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3100/IB-SMART-NOTE-20261118-sn3100-refined-by-his-eye.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3100-refined-by-his-eye.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:54:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "ee21caa233fa090cc9cbc8c2f3ab671ad8066d9bad5404d64a5d6cb024a8198a",
+      "content_hash": "7abf4670ca18c95034a24f06107ed5fa612ede57c1759c6e9b3eadc5f84219b4",
+      "one_line": "Refinement in this house has one instrument: his eye, applied round after round until the thing stops changing under it. The colours flow in one direction — green to blue to purple to gold — and the tiers ride that flow: Free green, Power blue, Pro purple, Max gold, with group headers cycling the same river down the page. Gold writing is out; the brand is purple, black and white, white diamond and black diamond — royalty rendered in white gold, pale champagne, luminous, never yellow. Her portrait is her REAL portrait, the original bytes or nothing; a reproduction, however beautiful, does not ship under her face. Every benefit carries its own jewel — the purple eye for 'she knows you,' the blue spark for 'the intelligence works for you,' the green emerald for 'you keep half' — and a block lights up in the colour that it is, not in a house hover colour. One icon family, one jewel language, at one visual mass, everywhere. And the default is the best: the page opens with Max lit, because the best presentation is the standard, not an upsell.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Colour",
+        "Refinement"
+      ]
     }
   ],
   "sequence_policy": {
@@ -53221,5 +53254,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "cbc8826c8db51baf40c97dc2ad584c9bd0270ce1b0b8632bd5045c981b42c888"
+  "corpus_manifest_hash": "00debbd64b1bd56d1e90784886c2e172d3b553bcca9c7320f7cb014d0cee59ba"
 }
