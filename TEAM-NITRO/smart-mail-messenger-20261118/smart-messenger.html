@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Messenger — NayaNET</title>
+<!--
+  SMART MESSENGER — OWN PAGE (2026-11-18, Ultimate Plan lane, Shawn 19:16Z).
+  The messenger as its own page, Personal page's shape: cover -> menu -> page.
+  The feed becomes the conversations: headline cover "Messenger", below it the
+  smart feeds organised by the Smart Organizer / Hub smart tabs across the top;
+  click a smart tab to switch to that topic's conversations.
+  BASE HARVESTED VERBATIM (never reinvented): TEAM-NITRO/smart-mail-im-20261117/
+  smart-mail.html, branch mail/pro-level-20261117, tip commit 1ffcaa84, blob
+  87f601e1f31cc5bea134514beab89532142dd261, 130,228 B, sha256
+  2dee1bffdfd9b8ef6dbb54b1108ecdce51c4b03326eeca9ba83e5f32761d6a24 — verified
+  from the filed blob before taking anything (size + sha match). Its full
+  fix history (Fix-2..Fix-8) lives in smart-mail-fix8-20261117/
+  MAKER-REPORT-FIX8-20261117.md; the long fix-history comments are condensed
+  here, the code is verbatim. What stands from the base: cover/menu/shape,
+  organizer tabs (.nf-smtab), Connections orbs (.cx-ava), Mail<->IM toggle,
+  mail-by-world, the Five bottom bar, toast, install veil, feed panel,
+  Smart Lists, Fix-6/7/8 slice masks, orbit, send/receive stub.
+  THIS ROUND'S DELTA (only this):
+  1. Cover + title say Messenger; menu pill Messenger active; page reads
+     feed -> conversations. Default format is Instant Message (messenger-first);
+     ?format=mail still wins, and flipping to Mail shows that world's mail first.
+  2. Audio call + Video call buttons in the conversation (thread-foot), each
+     its own deep colour — working stub behind them, named as a stub; the live
+     Smart Meet path is owed, never a dead click.
+  3. Install veil retitled Messenger.
+  STUBS (named, live path owed): every person and letter below is SEEDED SAMPLE
+  data in the page's own shape — no sample person is a real citizen. Live path
+  owed: the Smart Organizer's tabs + the Auto-Match engine's people, the real
+  mail store per world (mail read/send access is Shawn's hand — the team's
+  tools' key lost access when privacy was tightened: reads return 0 rows,
+  writes are refused by row-level security; the fix is moving the team's mail
+  tools onto the server-side key), and the real-time socket/push for
+  send/receive + calls. The live store listing for install is owed.
+  NOT IN THIS ROUND: no merge, no PR, no live deploy · no live real-time
+  delivery · the mail auto-delete machine (queued behind the access fix) ·
+  the Ultimate Border (Shawn 19:19Z, portal frame — new direction, no artwork
+  asset in hand; follow-on, not invented here).
+-->
+<style>
+/* TOKENS — Hub :root + Deep Palette (Design Laws §3.1) */
+:root{
+  --purple:#8e24aa; --blue:#0f52ba; --green:#07925f; --gold:#d4a017; --magenta:#a21caf;
+  --ink:#fff; --ink-dim:#fff; --line:#ffffff18;
+  --depth-hi:inset 0 1px #fff6; --depth-drop:0 18px 42px #000b; --depth-deep:0 20px 48px #000d;
+  --radius-pill:999px; --ease:cubic-bezier(.16,.84,.22,1); --dur-fast:.18s; --dur-med:.28s;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-padding-bottom:120px}
+body{background:#050507;color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+/* FIX-4: document is a 100dvh flex column; .page-scroll is the only scroller; the Five sit in normal flow beneath it. */
+body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+.page-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;--titleEdge:102px}
+/* FIX-7: title-stuck mask — dead band 24px + eased ramp to opaque 50px below the title edge. */
+.page-scroll.title-stuck{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),rgba(0,0,0,0) calc(var(--titleEdge) + 24px),rgba(0,0,0,.06) calc(var(--titleEdge) + 30px),rgba(0,0,0,.18) calc(var(--titleEdge) + 36px),rgba(0,0,0,.45) calc(var(--titleEdge) + 42px),rgba(0,0,0,.80) calc(var(--titleEdge) + 47px),#000 calc(var(--titleEdge) + 50px),#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),rgba(0,0,0,0) calc(var(--titleEdge) + 24px),rgba(0,0,0,.06) calc(var(--titleEdge) + 30px),rgba(0,0,0,.18) calc(var(--titleEdge) + 36px),rgba(0,0,0,.45) calc(var(--titleEdge) + 42px),rgba(0,0,0,.80) calc(var(--titleEdge) + 47px),#000 calc(var(--titleEdge) + 50px),#000 100%);mask-size:100% 100%}
+/* FIX-8: dock-edge dissolve — same dead-band + eased-ramp shape, mirrored; JS grows the zone with the first card's travel, off at rest. */
+.page-scroll.dock-fade{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - var(--dockFade,50px)),rgba(0,0,0,.80) calc(100% - var(--dockFade,50px) * .94),rgba(0,0,0,.45) calc(100% - var(--dockFade,50px) * .84),rgba(0,0,0,.18) calc(100% - var(--dockFade,50px) * .72),rgba(0,0,0,.06) calc(100% - var(--dockFade,50px) * .60),rgba(0,0,0,0) calc(100% - var(--dockFade,50px) * .48),rgba(0,0,0,0) 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - var(--dockFade,50px)),rgba(0,0,0,.80) calc(100% - var(--dockFade,50px) * .94),rgba(0,0,0,.45) calc(100% - var(--dockFade,50px) * .84),rgba(0,0,0,.18) calc(100% - var(--dockFade,50px) * .72),rgba(0,0,0,.06) calc(100% - var(--dockFade,50px) * .60),rgba(0,0,0,0) calc(100% - var(--dockFade,50px) * .48),rgba(0,0,0,0) 100%);mask-size:100% 100%}
+.page-scroll.title-stuck.dock-fade{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),rgba(0,0,0,0) calc(var(--titleEdge) + 24px),rgba(0,0,0,.06) calc(var(--titleEdge) + 30px),rgba(0,0,0,.18) calc(var(--titleEdge) + 36px),rgba(0,0,0,.45) calc(var(--titleEdge) + 42px),rgba(0,0,0,.80) calc(var(--titleEdge) + 47px),#000 calc(var(--titleEdge) + 50px),#000 0,#000 calc(100% - var(--dockFade,50px)),rgba(0,0,0,.80) calc(100% - var(--dockFade,50px) * .94),rgba(0,0,0,.45) calc(100% - var(--dockFade,50px) * .84),rgba(0,0,0,.18) calc(100% - var(--dockFade,50px) * .72),rgba(0,0,0,.06) calc(100% - var(--dockFade,50px) * .60),rgba(0,0,0,0) calc(100% - var(--dockFade,50px) * .48),rgba(0,0,0,0) 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,#000 0,#000 calc(var(--titleEdge) - 4px),rgba(0,0,0,0) calc(var(--titleEdge) - 2px),rgba(0,0,0,0) calc(var(--titleEdge) + 24px),rgba(0,0,0,.06) calc(var(--titleEdge) + 30px),rgba(0,0,0,.18) calc(var(--titleEdge) + 36px),rgba(0,0,0,.45) calc(var(--titleEdge) + 42px),rgba(0,0,0,.80) calc(var(--titleEdge) + 47px),#000 calc(var(--titleEdge) + 50px),#000 0,#000 calc(100% - var(--dockFade,50px)),rgba(0,0,0,.80) calc(100% - var(--dockFade,50px) * .94),rgba(0,0,0,.45) calc(100% - var(--dockFade,50px) * .84),rgba(0,0,0,.18) calc(100% - var(--dockFade,50px) * .72),rgba(0,0,0,.06) calc(100% - var(--dockFade,50px) * .60),rgba(0,0,0,0) calc(100% - var(--dockFade,50px) * .48),rgba(0,0,0,0) 100%);mask-size:100% 100%}
+a{color:#fff}
+button{font-family:inherit}
+img{max-width:100%}
+/* --- COVER: .ph-cover harvested verbatim in shape (Personal page) --- */
+.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(25vh,360px);position:relative;overflow:hidden;background:radial-gradient(560px 240px at 12% -10%,rgba(142,36,170,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(212,160,23,.30),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(15,82,186,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
+.ph-cover::before{content:'';position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(180deg,rgba(2,2,6,0) 0%,rgba(2,2,6,.38) 52%,rgba(2,2,6,.78) 100%);pointer-events:none;z-index:1}
+@media(max-width:900px){.ph-cover{height:260px !important;aspect-ratio:auto !important;max-height:none !important;}}
+/* COVER TOGGLE: one plain button — "Hide the banner" / "Show the banner". */
+body.no-cover .ph-cover{display:none}
+body.no-cover .ph-main{padding-top:12px}
+.ph-cover-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:20px}
+.ph-cover-inner h1{margin:0;font-size:44px;font-weight:800;letter-spacing:.2px;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.ph-cover-inner p{margin:10px 0 0;font-size:17px;color:#fff;max-width:560px;line-height:1.5}
+.ph-plus{position:absolute;top:32px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);display:grid;place-items:center;font-size:24px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.55);transition:box-shadow .2s,border-color .2s,transform .2s}
+.ph-plus:hover{border-color:#a21caf;box-shadow:0 0 26px rgba(162,28,175,.65),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
+.ph-plus.left{left:24px}.ph-plus.right{right:24px}
+/* --- MENU BAR under the cover: Personal .topnav + .steppill VERBATIM; background SOLID #050507 (Fix-7). --- */
+.menu-bar{display:flex;gap:10px;justify-content:center;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;background:#050507;backdrop-filter:blur(10px);z-index:50;overflow-x:auto;scrollbar-width:none}
+.menu-bar::-webkit-scrollbar{display:none}
+.menu-bar .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:17px;letter-spacing:.14em;color:#fff;padding:9px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #fff;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap;text-decoration:none}
+.steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
+.menu-bar .steppill:hover{border-color:var(--sc);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}
+.menu-bar .steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
+.menu-bar .steppill.on{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc),0 0 22px -4px var(--sc)}
+.menu-bar .steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
+/* --- PAGE --- */
+.ph-main{padding:6px 24px 32px}
+.page-head{text-align:center;margin:0 0 10px}
+/* FIX-7: title sticks below the menu bar (top:54px desktop, 46px <=900px); margin-bottom:30px is the mask's toggle clearance. */
+.page-title{margin:4px 0 30px;text-align:center;font-size:28px;font-weight:800;position:sticky;top:54px;z-index:40;background:#050507;padding-bottom:10px;scroll-margin-top:78px}
+.page-head p{margin:4px 0 0;font-size:17px;color:#fff}
+.cover-toggle{margin-top:8px}
+.smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.smart-lists h3{margin:0;padding:16px 18px 4px;font-size:19px;font-weight:800}
+.smart-lists .list-chip{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:2px solid rgba(255,255,255,.14);background:linear-gradient(180deg,#12101a,#08080c);color:#fff;font-family:inherit;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.55),0 0 14px color-mix(in srgb,var(--ac,#8e24aa) 20%,transparent);transition:border-color .2s,box-shadow .2s,transform .2s}
+.smart-lists .list-chip:hover{border-color:var(--ac,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 20px -2px var(--ac,#8e24aa),0 14px 28px rgba(0,0,0,.6);transform:translateY(-2px)}
+.smart-lists .list-chip.active{border-color:var(--ac,#8e24aa);background:rgba(142,36,170,.08);box-shadow:0 0 22px -2px var(--ac,#8e24aa),0 10px 22px rgba(0,0,0,.55)}
+.smart-lists .list-chip b{font-size:17px}
+.smart-lists .list-chip span:not(.cx-ava){font-size:17px;color:#fff;display:block;margin-top:2px}
+@media (max-width:900px){.smart-lists{grid-template-columns:1fr}}
+/* --- ORGANIZER TABS: the HUB's organizer — .nf-smtab pill skin HARVESTED VERBATIM from the Hub via the Personal file. --- */
+.org-tabs{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 6px;scrollbar-width:thin}
+.org-tabs::-webkit-scrollbar{height:6px}
+.org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
+.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:17px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
+.nf-smtab small{color:#fff;font-weight:900;font-size:17px}
+.nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
+.nf-smtab.active{border-color:rgba(255,255,255,.6);box-shadow:0 0 16px rgba(255,255,255,.18),inset 0 1px rgba(255,255,255,.15)}
+/* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
+.search-row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:12px}
+.search-row input{flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-size:17px;font-family:inherit}
+.search-row input::placeholder{color:#fff;opacity:1;font-weight:600}
+/* --- MESSENGER GRID --- */
+.messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
+.panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
+.panel:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.45);box-shadow:0 24px 48px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1),0 0 26px rgba(142,36,170,.22)}
+.panel h3{margin:0;padding:8px 18px 6px;font-size:19px;font-weight:800}
+.panel .panel-sub{padding:0 18px 4px;font-size:17px;color:#fff}
+/* --- ORB: the EXACT Connections-room orb — .cx-stage .cx-ava, live from
+   https://nayanet.app/rooms/connections. Initial by default (JS sets
+   textContent = initials(name)); per-person --cc; the spin is the conic
+   sheen ::after rotating (cxsheen 7s linear infinite). 58px, 48px under 760px, .big 78px. --- */
+.cx-ava{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;font-size:22px;font-weight:900;color:#fff;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 42%),radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--cc) 55%,#101014) 0%,color-mix(in srgb,var(--cc) 28%,#060607) 78%);border:2px solid var(--cc);box-shadow:0 0 24px -4px var(--cc),inset 0 2px 3px rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.55);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.cx-ava.big{width:78px;height:78px;font-size:30px}
+.cx-ava::after{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.35) 40deg,transparent 90deg);animation:cxsheen 7s linear infinite;pointer-events:none}
+.cx-ava{position:relative;overflow:hidden}
+@keyframes cxsheen{to{transform:rotate(360deg)}}
+@media(max-width:760px){.cx-ava{width:48px;height:48px;font-size:17px}
+.cx-ava.big{width:64px;height:64px;font-size:24px}}
+.orb-wrap{position:relative;flex:none}
+.orb-dot{position:absolute;right:0;bottom:2px;width:12px;height:12px;border-radius:50%;background:#07925f;border:2px solid #08080c;box-shadow:0 0 10px rgba(7,146,95,.8)}
+/* --- CONVERSATION / PERSON ROWS --- */
+.rows{display:flex;flex-direction:column;gap:8px;padding:2px 12px 16px}
+.row{--ac:#8e24aa;display:flex;gap:12px;align-items:center;padding:11px;border-radius:20px;border:2px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#07070b,#020203);cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -4px 12px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.06),0 12px 40px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.4);transition:all .25s;text-align:left;width:100%;color:#fff;font-family:inherit}
+.row:hover{background:linear-gradient(180deg,color-mix(in srgb,var(--ac) 24%,#07070b),color-mix(in srgb,var(--ac) 12%,#020203));border-color:var(--ac);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 14px -2px var(--ac),0 18px 56px rgba(0,0,0,.55);transform:translateY(-4px)}
+.row.active{border-color:var(--ac);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 18px -2px var(--ac),0 18px 56px rgba(0,0,0,.55)}
+.row-body{flex:1;min-width:0}
+.row-name{font-size:19px;font-weight:800;display:flex;gap:8px;align-items:baseline}
+.row-name .match{font-size:17px;color:#fff;font-weight:800}
+.row-last{display:block;font-size:17px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.row-nut{display:block;font-size:17px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.stub-note{padding:0 18px 8px;font-size:17px;color:#fff;line-height:1.4}
+/* --- THREAD --- */
+.thread{display:flex;flex-direction:column;min-height:560px}
+.thread-head{display:flex;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.09)}
+.thread-head .who{flex:1;min-width:0}
+.thread-head .who b{font-size:19px}
+.thread-head .who span{display:block;font-size:17px;color:#fff;margin-top:2px}
+.thread-head .who span.mail-mode{color:#fff}
+/* --- TOGGLE: Smart Mail | Instant Message, in place. The active side's OWN icon lights up in its own colour — mail blue, IM green. The icon IS the light, never an icon beside a separate light. No gradient fill on .on. --- */
+.toggle{display:flex;border-radius:999px;border:1.5px solid rgba(142,36,170,.55);overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15);flex:none}
+.toggle button{padding:10px 16px;background:#0a0a0f;color:#fff;border:1.5px solid rgba(255,255,255,.35);font-size:17px;font-weight:800;cursor:pointer;transition:box-shadow .2s,border-color .2s;display:inline-flex;align-items:center;gap:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 6px 16px rgba(0,0,0,.5)}
+.toggle button:hover{box-shadow:0 0 18px var(--tc,rgba(142,36,170,.5))}
+.toggle button .tgl-ico{font-size:17px;line-height:1;color:#fff;transition:text-shadow .25s,color .25s}
+.toggle button.on{background:#0a0a0f;color:#fff;border-color:var(--tc);box-shadow:0 0 20px var(--tc),0 8px 20px rgba(0,0,0,.5)}
+.toggle button.on .tgl-ico{color:#fff;text-shadow:0 0 12px var(--tc),0 0 4px #fff}
+.toggle button[disabled]{opacity:.45;cursor:not-allowed}
+/* FIX-7: thread-body mask — 24px dead band + eased ramp to opaque 50px below the head; top padding 48px so the format-note pill reads bright at rest. */
+.thread-body{flex:1;padding:48px 18px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);mask-size:100% 100%}
+.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:17px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);transition:transform .25s,box-shadow .25s,border-color .25s}
+.msg:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.65);box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),0 0 22px rgba(142,36,170,.45)}
+.msg .meta{display:block;font-size:17px;color:#fff;margin-top:6px}
+/* .msg.mine: colour FILL is gone — obsidian inside, royal-purple rim + glow outside. */
+.msg.mine{align-self:flex-end;background:linear-gradient(180deg,#17102a,#0a0a0f);border-color:#8e24aa;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12),0 0 22px rgba(142,36,170,.35)}
+.msg.theirs{align-self:flex-start;background:linear-gradient(180deg,#1b1b24,#0c0c11)}
+.msg.letter{align-self:stretch;max-width:100%;background:linear-gradient(180deg,#14141d,#0a0a0f)}
+.msg.letter .subject{font-weight:800;font-size:17px;margin-bottom:6px}
+.msg.letter .letter-to{font-size:17px;color:#fff;margin-bottom:8px}
+.typing{align-self:flex-start;font-size:17px;color:#fff;padding:6px 4px}
+.format-note{align-self:center;font-size:17px;color:#fff;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(142,36,170,.55);padding:7px 12px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 18px rgba(0,0,0,.5),0 0 14px rgba(142,36,170,.25);transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
+.format-note:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 24%,#12101a),color-mix(in srgb,#8e24aa 12%,#08080c));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5)}
+/* --- SMART NOTE card in the thread (L6 format) --- */
+.smart-note{border-radius:16px;border:1px solid rgba(142,36,170,.4);background:linear-gradient(180deg,#17102a,#0a0a0f);padding:16px 18px;box-shadow:0 10px 26px rgba(0,0,0,.5);margin:4px 0;transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
+.smart-note:hover{transform:translateY(-3px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 18%,#17102a),color-mix(in srgb,#8e24aa 10%,#0a0a0f));box-shadow:0 18px 40px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12),0 0 30px -2px rgba(142,36,170,.55)}
+.smart-note h4{margin:0 0 4px;font-size:19px}
+.smart-note h5{margin:12px 0 3px;font-size:17px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
+.smart-note p{margin:0;font-size:17px;line-height:1.55;color:#fff}
+/* --- COMPOSER with real depth --- */
+.composer{padding:14px;border-top:1px solid rgba(255,255,255,.09)}
+.composer-inner{display:flex;gap:10px;align-items:flex-end}
+.composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:17px;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.22)}
+.composer input[type=text]:focus{border-color:#8e24aa;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 0 28px rgba(142,36,170,.5)}
+.composer input.subject{flex:0 0 180px}
+.composer input[type=text]::placeholder{color:#fff;opacity:1}
+.btn{--btn-accent:var(--room-accent,var(--magenta));display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;padding:0 22px;border-radius:var(--radius-pill);border:1px solid color-mix(in srgb,var(--btn-accent) 45%,transparent);background:linear-gradient(145deg,color-mix(in srgb,var(--btn-accent) 26%,#1a1424),color-mix(in srgb,var(--btn-accent) 10%,#0b0a10));color:var(--ink);font-size:17px;font-weight:800;letter-spacing:.06em;cursor:pointer;box-shadow:var(--depth-hi),0 10px 26px #000a,0 0 22px color-mix(in srgb,var(--btn-accent) 26%,transparent);transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-med) var(--ease),filter var(--dur-fast) var(--ease);white-space:nowrap;font-family:inherit}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.12);box-shadow:var(--depth-hi),0 16px 36px #000b,0 0 34px color-mix(in srgb,var(--btn-accent) 40%,transparent)}
+.btn:active{transform:translateY(0) scale(.985)}
+.btn.ghost{background:linear-gradient(180deg,#12101a,#08080c);border:1px solid color-mix(in srgb,var(--btn-accent) 45%,transparent);box-shadow:var(--depth-hi),0 10px 26px #000a,0 0 18px color-mix(in srgb,var(--btn-accent) 22%,transparent);color:var(--ink-dim)}
+.btn.ghost:hover{transform:translateY(-2px);filter:brightness(1.12);border-color:color-mix(in srgb,var(--btn-accent) 65%,transparent);box-shadow:var(--depth-hi),0 16px 36px #000b,0 0 30px color-mix(in srgb,var(--btn-accent) 40%,transparent)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;filter:none}
+.thread-foot{display:flex;gap:10px;flex-wrap:wrap;padding:0 14px 14px}
+.thread-foot .btn{padding:10px 14px;font-size:17px}
+/* --- CALL BUTTONS (this round): audio + video in the conversation. Each its own deep colour — audio emerald, video sapphire — obsidian pill, bold white word, rim + glow. Working stub behind them (named); live Smart Meet path owed. --- */
+.call-btn{--btn-accent:#07925f}
+.call-btn.video{--btn-accent:#0f52ba}
+.call-state{flex:1 1 100%;font-size:17px;color:#fff;padding:2px 4px 0}
+/* --- NOTIFICATION TOAST --- */
+.toast{position:fixed;top:16px;right:16px;z-index:80;width:min(360px,calc(100vw - 32px));border-radius:16px;border:1px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:0 0 30px rgba(142,36,170,.5),0 20px 44px rgba(0,0,0,.7);padding:14px 16px;cursor:pointer;display:none}
+.toast.show{display:block}
+.toast b{font-size:17px}
+.toast p{margin:5px 0 0;font-size:17px;color:#fff;line-height:1.45}
+.toast small{color:#fff;font-weight:700;font-size:17px}
+/* --- INSTALL VEIL: harvested from the live identity page --- */
+.install-veil{position:fixed;inset:0;z-index:90;background:rgba(3,3,6,.82);display:none;align-items:center;justify-content:center;padding:20px}
+.install-veil.show{display:flex}
+.install-card{position:relative;width:min(420px,100%);border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1px solid rgba(142,36,170,.55);box-shadow:0 0 40px rgba(142,36,170,.45),0 30px 60px rgba(0,0,0,.8);padding:28px 24px;text-align:center}
+.install-card h2{margin:0 0 8px;font-size:25px}
+.install-card p{margin:0 0 16px;font-size:17px;line-height:1.55;color:#fff}
+.install-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#0a0a0f;color:#fff;font-size:17px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 18px rgba(0,0,0,.55),0 0 12px rgba(162,28,175,.25)}
+.install-x:hover{border-color:#a21caf;box-shadow:0 0 18px rgba(162,28,175,.55)}
+.install-manual{text-align:left;margin-top:16px;font-size:17px;line-height:1.6;color:#fff}
+.install-manual b{color:#fff}
+.install-later{display:block;margin:14px auto 0;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(142,36,170,.55);color:#fff;font-size:17px;font-weight:700;cursor:pointer;padding:8px 18px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 18px rgba(0,0,0,.5),0 0 14px rgba(142,36,170,.25);transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
+.install-later:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 24%,#12101a),color-mix(in srgb,#8e24aa 12%,#08080c));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5);text-shadow:0 0 12px rgba(142,36,170,.8)}
+/* --- THE FIVE bottom bar (Unification): the official bar, harvested verbatim from the Personal page. Five segments, equal 84px, gap 22px. Icons only + visible white labels. No CONNECT — his call. --- */
+.notif-bar{position:static;flex:none;z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) both;transition:opacity .45s ease}
+@keyframes notifUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
+.notif-row{display:flex;gap:22px;width:100%;max-width:720px;padding:8px 14px 6px;justify-content:center}
+.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#fff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;min-width:84px}
+.notif-seg:active{transform:scale(.94)}
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 36%,#12121a),#07070b 78%);border:1.5px solid var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:var(--nc);transition:box-shadow .3s,border-color .3s}
+.notif-tile::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(155deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 42%),linear-gradient(25deg,rgba(255,255,255,0) 62%,color-mix(in srgb,var(--nc) 22%,transparent) 100%)}
+.notif-tile svg{width:25px;height:25px;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--nc) 75%,transparent));position:relative}
+.notif-count{position:absolute;top:-8px;right:-10px;min-width:28px;height:28px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:17px;font-weight:900;color:#06060a;background:var(--nc);border:2px solid #05050a;box-shadow:0 0 14px var(--nc),0 3px 8px rgba(0,0,0,.5);animation:notifPulse 2.4s ease-in-out infinite}
+@keyframes notifPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
+.notif-seg.has-news .notif-tile{border-color:var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
+/* --- WORLD FEED PANEL + NOTIFICATION CHOICE SHEET --- */
+.feed-panel{position:fixed;left:50%;transform:translateX(-50%) translateY(12px);bottom:104px;z-index:46;width:min(560px,calc(100vw - 24px));max-height:min(62vh,560px);overflow-y:auto;border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1.5px solid rgba(142,36,170,.55);box-shadow:0 0 40px rgba(142,36,170,.4),0 30px 60px rgba(0,0,0,.8);padding:18px 18px 14px;display:none;opacity:0;transition:opacity .25s,transform .25s}
+.feed-panel.show{display:block;opacity:1;transform:translateX(-50%) translateY(0)}
+.feed-panel h3{margin:0 0 2px;font-size:19px}
+.feed-panel .feed-sub{font-size:17px;color:#fff;margin:0 0 12px;line-height:1.5}
+.feed-panel .feed-thing{font-size:17px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:14px 0 6px}
+.feed-item{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:14px;border:2px solid rgba(255,255,255,.14);background:linear-gradient(180deg,#12101a,#08080c);color:#fff;font-family:inherit;cursor:pointer;margin-bottom:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.55);transition:border-color .2s,box-shadow .2s,transform .2s}
+.feed-item:hover{border-color:#8e24aa;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 20px rgba(142,36,170,.4),0 14px 28px rgba(0,0,0,.6);transform:translateY(-2px)}
+.feed-item b{font-size:17px}
+.feed-item p{margin:4px 0 0;font-size:17px;color:#fff;line-height:1.45}
+.feed-item .src{display:none;margin-top:6px;font-size:17px;color:#fff}
+.feed-item.open .src{display:block}
+.feed-panel .feed-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.feed-panel .feed-actions .btn{padding:9px 14px;font-size:17px;min-height:36px}
+.choice-row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:11px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+.choice-row:last-of-type{border-bottom:0}
+.choice-row span{font-size:17px;font-weight:700}
+.choice-row small{display:block;font-size:17px;color:#fff;font-weight:400;margin-top:2px}
+.choice-toggle{flex:none;width:52px;height:30px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:#0a0a0f;cursor:pointer;position:relative;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 6px 14px rgba(0,0,0,.5),0 0 10px rgba(255,255,255,.08)}
+.choice-toggle::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.5);transition:left .2s}
+.choice-toggle[aria-pressed="true"]{border-color:#07925f;background:rgba(7,146,95,.25);box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 6px 14px rgba(0,0,0,.5),0 0 18px rgba(7,146,95,.45)}
+.choice-toggle[aria-pressed="true"]::after{left:25px;background:#07925f}
+/* --- WORLD SELECTOR: one universal mail, any world. Personal blue · Business green · Space magenta. The active pill lights up — rim + glow in its own colour, obsidian inside. --- */
+.world-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:2px 0 8px}
+.world-pill{--wc:#0f52ba;display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:900;font-size:17px;color:#fff;background:#0a0a0f;border:1.5px solid var(--wc);box-shadow:0 0 14px color-mix(in srgb,var(--wc) 35%,transparent),0 8px 20px rgba(0,0,0,.5);transition:box-shadow .25s,border-color .2s,transform .2s;white-space:nowrap}
+.world-pill .wdot{width:9px;height:9px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
+.world-pill:hover{background:#0a0a0f;border-color:var(--wc);box-shadow:0 0 26px -2px var(--wc),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+.world-pill:hover .wdot{background:var(--wc);box-shadow:0 0 10px var(--wc)}
+.world-pill.on{border-color:var(--wc);box-shadow:0 0 0 1px var(--wc),0 0 24px -2px var(--wc),0 12px 26px rgba(0,0,0,.6)}
+.world-pill.on .wdot{background:var(--wc);box-shadow:0 0 12px var(--wc)}
+.world-note{font-size:17px;color:#fff}
+/* --- MAIL BOARD: the letter as an elevated board — title, nutshell, key points with jewel bullets. Board black inside, white as a real object, whole board lights up and lifts on hover in its own world colour. --- */
+.mail-board{--wc:#0f52ba;border-radius:18px;border:1.5px solid var(--wc);background:linear-gradient(180deg,#12101a,#08080c);padding:18px 20px;box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08),0 0 22px -6px var(--wc);margin:4px 0;transition:box-shadow .25s,transform .2s,border-color .2s}
+.mail-board:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(0,0,0,.65),0 0 34px -2px var(--wc)}
+.mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:17px;font-weight:800;letter-spacing:.06em;color:#fff;text-transform:uppercase}
+.mail-board h4{margin:10px 0 4px;font-size:19px;font-weight:800;color:#fff}
+.mail-nut{margin:0;font-size:17px;line-height:1.55;color:#fff;font-weight:700}
+.mail-board h5{margin:14px 0 6px;font-size:17px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
+.mail-points{margin:0;padding:0;list-style:none}
+.mail-points li{position:relative;font-size:17px;line-height:1.55;color:#fff;padding-left:22px;margin-bottom:6px}
+.mail-points li::before{content:'◆';position:absolute;left:0;top:0;color:var(--wc);text-shadow:0 0 8px var(--wc)}
+.mail-meta{margin:12px 0 0;font-size:17px;color:#fff}
+.mail-board .mail-unread{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:var(--wc);color:#06060a;font-size:17px;font-weight:900;letter-spacing:.04em;vertical-align:2px}
+/* --- ORBIT: every circle carries flow. Two satellites, slow, alternating: CW 60s, CCW 90s, 90deg apart, different sizes. --- */
+.orb-wrap::before{content:'';position:absolute;inset:-7px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 50% 0%,var(--ac,#fff) 98%,transparent 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);filter:drop-shadow(0 0 5px var(--ac,#fff));animation:orbitCW 60s linear infinite}
+.orb-wrap::after{content:'';position:absolute;inset:-7px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 4px at 100% 50%,var(--ac,#fff) 98%,transparent 100%);filter:drop-shadow(0 0 4px var(--ac,#fff));animation:orbitCCW 90s linear infinite}
+@keyframes orbitCW{to{transform:rotate(360deg)}}
+@keyframes orbitCCW{to{transform:rotate(-360deg)}}
+.ph-plus::before{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 50% 0%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCW 60s linear infinite}
+@media (max-width:900px){
+  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:0}   .menu-bar{padding:6px 16px}
+  .ph-cover-inner{padding:10px 10px 12px}   .ph-cover-inner h1{font-size:25px}   .ph-cover-inner p{font-size:17px;margin-top:6px;max-width:420px}
+  .page-title{font-size:25px;top:46px}   .page-scroll{--titleEdge:86px}
+  .cover-toggle{margin-top:8px}
+  .org-tabs{padding:4px 2px 4px}
+  .search-row{padding:8px 16px;margin-bottom:8px}
+  .world-row{margin:2px 0 8px;gap:6px;flex-wrap:nowrap}
+  .world-pill{padding:8px 12px}
+  .world-note{display:none}
+  .panel h3{padding-top:4px}
+  .panel .panel-sub{padding-bottom:0}
+  .rows{padding-top:0}
+  .thread{min-height:480px}
+  .composer input.subject{flex:1 1 100%}
+  .composer-inner{flex-wrap:wrap}
+}
+@media (max-width:420px){
+  .ph-main{padding:8px 12px 32px}
+  .toggle button{padding:10px 11px;font-size:17px}
+  .thread-head{flex-wrap:wrap}
+  .msg{max-width:88%}
+  .page-scroll{--titleEdge:108px}
+  .page-title{font-size:19px}
+  .nf-smtab{padding:8px 16px}
+  .org-tabs{padding:2px 2px 2px}
+  #coverToggle{min-height:38px}
+  .search-row{padding:7px 16px;margin-bottom:6px}
+}
+/* Thread head at phone widths: row 1 = orb + name + presence; row 2 = toggle full width, buttons split evenly. 1440 untouched. */
+@media (max-width:640px){
+  .thread-head{flex-wrap:wrap;row-gap:6px;padding:10px 14px}
+  .thread-head .who{flex:1 1 0;min-width:0}
+  .thread-head .who b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .thread-head .who span{font-size:17px}
+  .thread-head .toggle{flex:1 1 100%}
+  .thread-head .toggle button{flex:1;padding:8px 10px}
+}
+/* FIX-4/5: dock labels visible white (11px, 10px under 480px — tile labels, see Laws §13 open question); small secondary lines weight 600 so no eye can call them dim. */
+.notif-label{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-align:center;line-height:1.2}
+.page-head p,.panel-sub,.stub-note,.row-last,.row-nut,.msg .meta,.thread-head .who span,.mail-meta,.letter-to,.typing,.world-note,.feed-sub,.choice-row small,.toast p{font-weight:600}
+/* Dock orbit: tile ::after CW 60s in the orb's own colour; seg ::before CCW 75s white. Hover lights the WHOLE tile in its own colour. */
+.notif-tile::after{content:'';position:absolute;inset:-8px;border-radius:22px;pointer-events:none;background:radial-gradient(circle 6px at 50% 0%,var(--nc) 98%,transparent 100%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--nc) 30%,transparent);filter:drop-shadow(0 0 6px var(--nc));animation:orbitCW 60s linear infinite}
+.notif-seg::before{content:'';position:absolute;top:-6px;left:50%;width:70px;height:70px;margin-left:-35px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 0% 50%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCCW 75s linear infinite}
+.notif-seg:hover .notif-tile{border-color:var(--nc);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 55%,#12121a),#07070b 78%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 30px color-mix(in srgb,var(--nc) 70%,transparent)}
+@media(max-width:480px){.notif-row{gap:10px;padding:8px 8px 6px}.notif-seg{min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}.notif-label{font-size:10px;letter-spacing:.08em}}
+.row:hover .cx-ava{filter:brightness(1.18)}
+</style>
+</head>
+<body>
+<!-- FIX-4: .page-scroll is the page's only scroller — cover, menu-bar and main scroll inside it; the Five sit below it in flow. -->
+<div class="page-scroll">
+
+<!-- COVER -->
+<header class="ph-cover" id="cover">
+  <div class="ph-cover-inner">
+    <h1>Messenger</h1>
+    <p>Whoever is online in your feed — tap a face, boom, you are talking. Message, mail, audio, video.</p>
+  </div>
+  <button class="ph-plus left" id="plusNew" type="button" aria-label="New message">+</button>
+  <button class="ph-plus right" id="plusInstall" type="button" aria-label="Install Messenger">+</button>
+</header>
+
+<!-- MENU BAR -->
+<nav class="menu-bar" aria-label="Network menu">
+  <a class="steppill" style="--sc:#8e24aa" href="https://nayanet.app/"><span class="sdot"></span>Hub</a>
+  <a class="steppill" style="--sc:#0f52ba" href="https://nayanet.app/dashboard"><span class="sdot"></span>Dashboard</a>
+  <a class="steppill" style="--sc:#07925f" href="https://nayanet.app/personal"><span class="sdot"></span>Personal</a>
+  <a class="steppill" style="--sc:#d4a017" href="https://nayanet.app/business"><span class="sdot"></span>Business</a>
+  <a class="steppill" style="--sc:#a21caf" href="https://nayanet.app/spaces"><span class="sdot"></span>Space</a>
+  <a class="steppill on" style="--sc:#8e24aa" href="#" aria-current="page"><span class="sdot"></span>Messenger</a>
+  <a class="steppill" style="--sc:#07925f" href="https://nayanet.app/pricing"><span class="sdot"></span>Pricing</a>
+</nav>
+
+<main class="ph-main">
+  <h2 class="page-title">Message anybody — by topic, not just by contact</h2>
+  <div class="page-head">
+    <p>Pick a feed, tap a person — boom, you are talking.</p>
+    <button class="btn ghost cover-toggle" type="button" id="coverToggle" aria-pressed="false">Hide the banner</button>
+  </div>
+
+  <!-- ORGANIZER TABS: the Smart Organizer's topics, harvested verbatim — click a smart tab to switch to that topic's conversations -->
+  <div class="org-tabs" id="orgTabs" role="tablist" aria-label="Topics in NayaNET"></div>
+
+  <!-- PICKER: Smart Search -> match % -> pick -->
+  <div class="search-row">
+    <span aria-hidden="true">🔍</span>
+    <input id="smartSearch" type="text" placeholder="Smart Search — type a name or a topic…" aria-label="Smart Search people by keyword" autocomplete="off">
+  </div>
+
+  <!-- WORLD SELECTOR: one universal mail — Personal / Business / Space.
+       Opening mail from a page shows THAT world's mail first (?world= or
+       ?from=<world>); from the Hub (?from=hub) the citizen picks any world. -->
+  <div class="world-row" id="worldRow" role="group" aria-label="Which world's mail">
+    <span id="worldPills"></span>
+    <span class="world-note" id="worldNote"></span>
+  </div>
+
+  <div class="messenger">
+    <!-- LEFT: mail inbox (mail mode) / conversations + topic people (IM mode) -->
+    <section class="panel" aria-label="Conversations">
+      <h3 id="inboxTitle" hidden>Mail inbox — Personal</h3>
+      <p class="panel-sub" id="inboxSub" hidden>Tap a letter to open it.</p>
+      <p class="stub-note">Sample people only — live people come from the Smart Organizer. No sample person here is a real citizen.</p>
+      <div class="rows" id="mailInbox" hidden></div>
+      <h3 id="convHead">Conversations</h3>
+      <p class="panel-sub" id="convSub">Contacts · people online in your topic.</p>
+      <div class="rows" id="convList"></div>
+      <h3 id="topicPeopleTitle">Online in Design</h3>
+      <p class="panel-sub" id="topicSub">Tap a person to open a conversation with them.</p>
+      <div class="rows" id="topicPeople"></div>
+
+    </section>
+
+    <!-- RIGHT: open thread -->
+    <section class="panel thread" aria-label="Open conversation">
+      <div class="thread-head">
+        <div class="orb-wrap"><div class="cx-ava big" id="threadOrb" style="--cc:#8e24aa">M</div><span class="orb-dot" id="threadDot"></span></div>
+        <div class="who">
+          <b id="threadName">Maya R.</b>
+          <span id="threadPresence">Online now · Instant Message</span>
+        </div>
+        <div class="toggle" role="group" aria-label="Message format">
+          <button type="button" id="toggleMail" aria-pressed="false" style="--tc:#0f52ba"><span class="tgl-ico" aria-hidden="true">✉</span>Smart Mail</button>
+          <button type="button" id="toggleIM" class="on" aria-pressed="true" style="--tc:#07925f"><span class="tgl-ico" aria-hidden="true">✦</span>Instant Message</button>
+        </div>
+      </div>
+
+      <div class="thread-body" id="threadBody"></div>
+
+      <div class="composer">
+        <div class="composer-inner">
+          <input type="text" class="subject" id="mailSubject" placeholder="Subject" aria-label="Mail subject" hidden>
+          <input type="text" id="composerInput" placeholder="Message Maya instantly…" aria-label="Write a message" autocomplete="off">
+          <button class="btn" type="button" id="sendBtn">Send</button>
+        </div>
+      </div>
+      <div class="thread-foot">
+        <button class="btn ghost call-btn" type="button" id="audioBtn">🎙 Audio call</button>
+        <button class="btn ghost call-btn video" type="button" id="videoBtn">📹 Video call</button>
+        <button class="btn ghost" type="button" id="backHub">← Hub</button>
+        <button class="btn ghost" type="button" id="downloadBtn">⬇ Install app</button>
+        <p class="call-state" id="callState">Audio and video ride on Smart Meet — live calls are owed; tapping starts a working preview, not a dead button.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- SMART LISTS: saved lists of IM conversations AND saved lists of mail, kept separate — two worlds, connected but disconnected. The same person can be in both. -->
+  <div class="smart-lists" id="smartLists">
+    <section class="panel" aria-label="Saved instant-message lists">
+      <h3>Instant-message lists</h3>
+      <p class="panel-sub">Who you message live.</p>
+      <div class="rows" id="imLists"></div>
+    </section>
+    <section class="panel" aria-label="Saved mail lists">
+      <h3>Mail lists</h3>
+      <p class="panel-sub">Who you write to.</p>
+      <div class="rows" id="mailLists"></div>
+    </section>
+  </div>
+  <p class="stub-note" id="listFilterNote" hidden style="padding:12px 6px 0"></p>
+</main>
+</div><!-- / .page-scroll — the dock below is in normal flow, never overlapped -->
+
+<!-- NOTIFICATION TOAST -->
+<div class="toast" id="toast" role="button" tabindex="0" aria-label="New message notification">
+  <small id="toastKind">New instant message</small><br>
+  <b id="toastTitle"></b>
+  <p id="toastText"></p>
+</div>
+
+<!-- INSTALL VEIL: harvested from the live identity page -->
+<div class="install-veil" id="installVeil" hidden>
+  <div class="install-card" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+    <button type="button" class="install-x" id="installX" aria-label="Close">✕</button>
+    <h2 id="installTitle">Install Messenger</h2>
+    <p>Put Messenger on your home screen. One tap opens your conversations.</p>
+    <button type="button" class="btn" id="installGo">Install App</button>
+    <div class="install-manual" id="installManual" hidden>
+      <p><b>Your browser needs the manual way — seconds, I promise:</b></p>
+      <p><b>iPhone:</b> tap Share — the square with the arrow pointing up — then <b>Add to Home Screen</b>, then <b>Add</b>. Done.</p>
+      <p><b>Android:</b> tap the menu, then <b>Add to Home screen</b>. Done.</p>
+      <p>The live store listing is still owed — this installs Messenger as an app from this page.</p>
+    </div>
+    <button type="button" class="install-later" id="installLater">Not now</button>
+  </div>
+</div>
+
+<!-- THE FIVE — the official bottom bar (Personal page, harvested verbatim):
+     + ADD purple · MAIL blue · ACTIVITY green · WORLDS gold · ECOSYSTEM
+     burnt orange. CONNECT is NOT here: adding or removing it is Shawn's call. -->
+<footer class="notif-bar" id="notifBar">
+  <div class="notif-row">
+    <button class="notif-seg" type="button" id="segAdd" data-notif="plus" style="--nc:#8e24aa" aria-label="ADD — open" title="ADD">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+      <span class="notif-label">ADD</span>
+    </button>
+    <button class="notif-seg has-news" type="button" id="segMail" data-notif="mail" style="--nc:#0f52ba" aria-label="MAIL — open" title="MAIL">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count" id="mailCount">6</span></span>
+      <span class="notif-label">MAIL</span>
+    </button>
+    <button class="notif-seg has-news" type="button" id="segActivity" data-notif="activity" style="--nc:#07925f" aria-label="ACTIVITY — open" title="ACTIVITY">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count" id="activityCount">4</span></span>
+      <span class="notif-label">ACTIVITY</span>
+    </button>
+    <button class="notif-seg" type="button" id="segWorlds" data-notif="spaces" style="--nc:#d4a017" aria-label="WORLDS — open" title="WORLDS">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span>
+      <span class="notif-label">WORLDS</span>
+    </button>
+    <button class="notif-seg" type="button" id="segEco" data-notif="eco" style="--nc:#c2410c" aria-label="ECOSYSTEM — open" title="ECOSYSTEM">
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
+      <span class="notif-label">ECOSYSTEM</span>
+    </button>
+  </div>
+</footer>
+
+<!-- WORLD FEED PANEL: tap ACTIVITY in the Five, see that world's feed, each item sourced -->
+<div class="feed-panel" id="feedPanel" role="dialog" aria-label="World activity feed">
+  <h3 id="feedTitle">Personal activity</h3>
+  <p class="feed-sub" id="feedSub"></p>
+  <div id="feedItems"></div>
+  <div class="feed-actions">
+    <button class="btn ghost" type="button" id="feedChoiceBtn">🔔 Notifications</button>
+    <button class="btn ghost" type="button" id="feedCloseBtn">Close</button>
+  </div>
+</div>
+
+<!-- NOTIFICATION CHOICE SHEET: the citizen picks what they get notified on -->
+<div class="feed-panel" id="choicePanel" role="dialog" aria-label="Choose your notifications">
+  <h3>Notifications</h3>
+  <p class="feed-sub">Pick what raises a count on the bar. The rest never notifies you.</p>
+  <div id="choiceRows"></div>
+  <div class="feed-actions">
+    <button class="btn ghost" type="button" id="choiceCloseBtn">Done</button>
+  </div>
+</div>
+
+<script>
+/* STUB DATASET — sample people in the page's own shape (initial, name,
+   nutshell, match %). Named as a stub: no sample person is a real citizen.
+   Live path owed: Smart Organizer tabs + Auto-Match engine people. */
+/* CC cycle: five distinct Deep Palette families. */
+var CC = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c'];
+var CONTACTS = [
+  {id:'maya', initial:'M', name:'Maya R.', nut:'Designing a kinder internet, one page at a time.', match:94, last:'That cover is beautiful — can you send the link?', cc:'#8e24aa'},
+  {id:'jordan', initial:'J', name:'Jordan K.', nut:'Cooks slow food, grows fast herbs.', match:88, last:'Sunday market at nine — bring the sourdough.', cc:'#0f52ba'},
+  {id:'priya', initial:'P', name:'Priya S.', nut:'Sings, teaches, and never misses a morning walk.', match:82, last:'The new song is ready. Want the first listen?', cc:'#07925f'},
+  {id:'leo', initial:'L', name:'Leo T.', nut:'Fixing bikes, riding farther every month.', match:76, last:'Trail on Saturday if the rain holds off.', cc:'#d4a017'},
+  {id:'sam', initial:'S', name:'Sam V.', nut:'Your son — football, guitars, and big questions.', match:100, last:'Dad, did you see the game?', cc:'#c2410c'}
+];
+var TOPICS = {
+  'Design': [
+    {id:'t-d1', initial:'A', name:'Ava L.', nut:'Makes interfaces feel like real objects.', match:96},
+    {id:'t-d2', initial:'N', name:'Noah B.', nut:'Type, light, and the space between.', match:91},
+    {id:'t-d3', initial:'S', name:'Sofia M.', nut:'Illustrates worlds you can walk through.', match:87},
+    {id:'t-d4', initial:'E', name:'Ethan W.', nut:'Prototypes before breakfast, ships by lunch.', match:83}
+  ],
+  'Music': [
+    {id:'t-m1', initial:'L', name:'Lena F.', nut:'Writes songs on the train, records at dawn.', match:95},
+    {id:'t-m2', initial:'O', name:'Omar D.', nut:'Collects vinyl, plays oud on Fridays.', match:90},
+    {id:'t-m3', initial:'I', name:'Ivy C.', nut:'Choir lead, harmony hunter, tea drinker.', match:86},
+    {id:'t-m4', initial:'K', name:'Kai H.', nut:'Produces beats from kitchen sounds.', match:81}
+  ],
+  'Cooking': [
+    {id:'t-c1', initial:'R', name:'Rosa G.', nut:'Grandma recipes, measured in handfuls.', match:93},
+    {id:'t-c2', initial:'T', name:'Tom A.', nut:'Bakes bread, ferments everything else.', match:89},
+    {id:'t-c3', initial:'H', name:'Hana Y.', nut:'Five spices, one pan, zero waste.', match:85},
+    {id:'t-c4', initial:'D', name:'Dan P.', nut:'Grill master, rain or shine.', match:78}
+  ],
+  'Fitness': [
+    {id:'t-f1', initial:'Z', name:'Zoe N.', nut:'Runs at sunrise, stretches at sunset.', match:92},
+    {id:'t-f2', initial:'C', name:'Chris E.', nut:'Lifts heavy, laughs louder.', match:88},
+    {id:'t-f3', initial:'F', name:'Farah Q.', nut:'Yoga teacher, breath first, always.', match:84},
+    {id:'t-f4', initial:'B', name:'Ben O.', nut:'Cycling coach, hill lover.', match:79}
+  ],
+  'Gardening': [
+    {id:'t-g1', initial:'G', name:'Grace V.', nut:'Grows tomatoes the size of softballs.', match:91},
+    {id:'t-g2', initial:'W', name:'Will J.', nut:'Compost evangelist, bee friend.', match:87},
+    {id:'t-g3', initial:'M', name:'Mia Z.', nut:'Herb windowsills in every room.', match:83},
+    {id:'t-g4', initial:'S', name:'Sam U.', nut:'Prunes roses, plants wildflowers.', match:77}
+  ],
+  'Travel': [
+    {id:'t-t1', initial:'Y', name:'Yuki S.', nut:'Slow travel, fast friendships.', match:94},
+    {id:'t-t2', initial:'A', name:'Alex I.', nut:'Maps the world one train ride at a time.', match:89},
+    {id:'t-t3', initial:'N', name:'Nina R.', nut:'Mountain huts and morning mist.', match:85},
+    {id:'t-t4', initial:'J', name:'Jo M.', nut:'City walks, street food, golden hour.', match:80}
+  ],
+  'Business': [
+    {id:'t-b1', initial:'V', name:'Vera K.', nut:'Builds small businesses that last.', match:93},
+    {id:'t-b2', initial:'D', name:'David L.', nut:'Numbers guy with a storyteller heart.', match:88},
+    {id:'t-b3', initial:'E', name:'Emma D.', nut:'Helps founders find their first ten.', match:84},
+    {id:'t-b4', initial:'O', name:'Owen P.', nut:'Markets with honesty, sells with care.', match:76}
+  ]
+};
+var TAB_ORDER = ['Design','Music','Cooking','Fitness','Gardening','Travel','Business'];
+var TOPIC_COLORS = { Design:'#8e24aa', Music:'#0f52ba', Cooking:'#07925f', Fitness:'#d4a017', Gardening:'#c2410c', Travel:'#0f52ba', Business:'#d4a017' };
+/* Topic people carry their Connections-orb colour, assigned here (never invented per render). */
+Object.keys(TOPICS).forEach(function(k){ TOPICS[k].forEach(function(p, i){ p.cc = CC[i % CC.length]; }); });
+var THREADS = {
+  maya: [
+    {who:'theirs', text:'That cover is beautiful — can you send the link?', time:'09:41'},
+    {who:'mine', text:'Of course — sending it now. It is the one from last night.', time:'09:43'},
+    {who:'theirs', text:'Got it. The purple light on the edge is perfect.', time:'09:44'}
+  ],
+  jordan: [
+    {who:'theirs', text:'Sunday market at nine — bring the sourdough.', time:'08:12'},
+    {who:'mine', text:'On it. Two loaves, one for you.', time:'08:15'}
+  ],
+  priya: [
+    {who:'theirs', text:'The new song is ready. Want the first listen?', time:'Yesterday'},
+    {who:'mine', text:'Always. Send it over.', time:'Yesterday'}
+  ],
+  leo: [
+    {who:'theirs', text:'Trail on Saturday if the rain holds off.', time:'Yesterday'},
+    {who:'mine', text:'I am in. Meet at the gate at eight?', time:'Yesterday'}
+  ],
+  sam: [
+    {who:'theirs', text:'Dad, did you see the game?', time:'18:52'},
+    {who:'mine', text:'Not yet — tell me everything.', time:'18:55'}
+  ]
+};
+/* --- WORLDS + SEEDED MAIL: mail is SEPARATED by world. Personal mail,
+   Business mail, Space mail — each world's own letters. SEEDED samples in
+   the page's own shape; no seeded letter is a real citizen's mail. Live path
+   owed: the real mail store per world (mail read access is Shawn's hand). --- */
+var WORLDS = {
+  personal: { label:'Personal', color:'#0f52ba' },
+  business: { label:'Business', color:'#07925f' },
+  space: { label:'Space', color:'#a21caf' }
+};
+var MAIL = {
+  personal: [
+    { id:'m-p1', from:'Maya R.', fromId:'maya', subject:'The cover is ready for your eyes', nut:'The new cover lands tonight — purple light on the edge, exactly as we drew it.', points:['Cover ships tonight, purple edge light included','One link inside — tap it to see it live','Reply with the one word you would change'], time:'09:41', unread:true },
+    { id:'m-p2', from:'Sam V.', fromId:'sam', subject:'Did you see the game?', nut:'Sam’s team won 3–1 and he scored twice — the whole story is inside.', points:['Final score 3–1, two goals from Sam','The winning goal came in the last minute','He wants to tell you himself tonight'], time:'18:52', unread:true },
+    { id:'m-p3', from:'Jordan K.', fromId:'jordan', subject:'Sunday market at nine', nut:'Sourdough, herbs, and the stall with the good honey — bring a bag.', points:['Meet at the gate at nine','Two loaves, one for you','The honey stall is back this week'], time:'08:12', unread:false }
+  ],
+  business: [
+    { id:'m-b1', from:'Vera K.', fromId:'t-b1', subject:'The proposal is ready', nut:'The proposal is written, priced, and waiting for your eyes before it goes out.', points:['Three pages, one clear price','Your name goes on the front','Send it Friday if you approve'], time:'11:20', unread:true },
+    { id:'m-b2', from:'David L.', fromId:'t-b2', subject:'Your numbers this week', nut:'Visits are up, replies are up — the business page is moving.', points:['42 visits today','6 new replies','Best day since the launch'], time:'Yesterday', unread:true },
+    { id:'m-b3', from:'Emma D.', fromId:'t-b3', subject:'First ten founders', nut:'Ten founders are waiting for the first call — here is who they are.', points:['Ten names, all warm','First call Thursday','You open, I take notes'], time:'Yesterday', unread:false }
+  ],
+  space: [
+    { id:'m-s1', from:'Ava L.', fromId:'t-d1', subject:'The Design space is open', nut:'The Design space opened its doors — four people are already inside talking.', points:['Doors open, everyone welcome','First thread: light that feels real','Your note is pinned at the top'], time:'10:05', unread:true },
+    { id:'m-s2', from:'Noah B.', fromId:'t-d2', subject:'A note on type and light', nut:'Noah wrote the note we talked about — type, light, and the space between.', points:['Type sets the tone','Light does the talking','Read it before Thursday'], time:'Yesterday', unread:true },
+    { id:'m-s3', from:'Sofia M.', fromId:'t-d3', subject:'Worlds you can walk through', nut:'Sofia’s illustrations are in — the space finally looks like the world it is.', points:['Twelve new illustrations','The walk-through is live','She wants your first reaction'], time:'Yesterday', unread:false }
+  ]
+};
+var state = { person: CONTACTS[0], topic: 'Design', thing: 'Design', format: 'im', group: null, listFilter: null, listName: '', world: 'personal', mailId: null };
+var $ = function(id){ return document.getElementById(id); };
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+/* --- WORLD COUNTS (trio): one count per world, not per channel. --- */
+var WORLD_COUNTS = { personal: 2, business: 1, thing: 1 };
+var NOTIF = { mail:true, im:true, posts:true, likes:true, shares:true, stats:true, updates:true, leaderboards:true };
+var CHOICE_DEFS = [
+  ['mail','Mail','Letters in Smart Mail'], ['im','Instant messages','Live messages, in the moment'],
+  ['posts','Posts','New posts in your worlds'], ['likes','Likes','Someone liked your thing'],
+  ['shares','Shares','Someone shared your thing'], ['stats','Stats','Your numbers, moving'],
+  ['updates','Updates','Changes to your pages'], ['leaderboards','Leaderboards','Leaderboard moves, when live']
+];
+/* THE FIVE counts: MAIL carries the unread letters across all worlds;
+   ACTIVITY carries the activity total across all worlds. */
+function refreshFiveCounts(){
+  var unread = 0;
+  Object.keys(MAIL).forEach(function(w){ MAIL[w].forEach(function(m){ if (m.unread) unread++; }); });
+  var mc = $('mailCount');
+  mc.textContent = unread > 9 ? '9+' : String(unread);
+  mc.style.display = unread === 0 ? 'none' : 'flex';
+  $('segMail').classList.toggle('has-news', unread > 0);
+  var act = WORLD_COUNTS.personal + WORLD_COUNTS.business + WORLD_COUNTS.thing;
+  var ac = $('activityCount');
+  ac.textContent = act > 9 ? '9+' : String(act);
+  ac.style.display = act === 0 ? 'none' : 'flex';
+  $('segActivity').classList.toggle('has-news', act > 0);
+}
+function setWorldCount(world, n){
+  WORLD_COUNTS[world] = n;
+  refreshFiveCounts();
+}
+function raiseCount(world, kind, n){
+  if (!NOTIF[kind]) { window.__lastSkipped = { world: world, kind: kind }; return false; }
+  setWorldCount(world, WORLD_COUNTS[world] + (n || 1));
+  return true;
+}
+/* --- WORLD FEEDS (stub, labelled): each world's items, grouped by the thing
+   they came from; every item carries its source. Live path owed: the real
+   activity stream per world. --- */
+var FEEDS = {
+  personal: [
+    { thing:'Design', kind:'im', who:'Maya R.', text:'That cover is beautiful — can you send the link?', src:'Personal · Design · Maya R. · instant message' },
+    { thing:'Family', kind:'mail', who:'Sam V.', text:'Dad, did you see the game?', src:'Personal · Family · Sam V. · mail' },
+    { thing:'Cooking', kind:'posts', who:'Jordan K.', text:'Sunday market at nine — bring the sourdough.', src:'Personal · Cooking · Jordan K. · post' }
+  ],
+  business: [
+    { thing:'Business', kind:'mail', who:'Vera K.', text:'The proposal is ready for your eyes.', src:'Business · Business · Vera K. · mail' },
+    { thing:'Business', kind:'stats', who:'Naya', text:'Your business page had 42 visits today.', src:'Business · Business · Naya · stats' }
+  ],
+  thing: [
+    { thing:'Design', kind:'posts', who:'Ava L.', text:'New interface study: light that feels real.', src:'Thing · Design · Ava L. · post' },
+    { thing:'Design', kind:'likes', who:'Noah B.', text:'Noah B. liked your Design note.', src:'Thing · Design · Noah B. · like' }
+  ]
+};
+function pushFeed(world, item){ FEEDS[world].unshift(item); }
+/* --- SMART LISTS (stub, labelled): IM lists and mail lists, kept separate.
+   Sam is in BOTH — Family (IM) and Family mail — you IM him AND email him. --- */
+var SMART_LISTS = {
+  im: [
+    { name:'Family', color:'#a21caf', members:['sam','maya'], note:'Sam V. · Maya R.' },
+    { name:'Design crew', color:'#07925f', members:['t-d1','t-d2'], note:'Ava L. · Noah B.' }
+  ],
+  mail: [
+    { name:'Family mail', color:'#a21caf', members:['sam','jordan'], note:'Sam V. · Jordan K.' },
+    { name:'Clients', color:'#0f52ba', members:['t-b1','t-b2'], note:'Vera K. · David L.' }
+  ]
+};
+function nowTime(){ var d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
+
+function renderTabs(){
+  var html = '<button class="nf-smtab" type="button" data-topic="All" style="--tc:#8e24aa">All topics</button>';
+  TAB_ORDER.forEach(function(t){
+    html += '<button class="nf-smtab' + (state.topic===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#8e24aa') + '">' + t + ' <small>' + TOPICS[t].length + ' online</small></button>';
+  });
+  $('orgTabs').innerHTML = html;
+  $('orgTabs').querySelectorAll('.nf-smtab').forEach(function(b){
+    b.addEventListener('click', function(){ pickTopic(b.dataset.topic); });
+  });
+}
+function renderConvs(){
+  var q = $('smartSearch').value.trim().toLowerCase();
+  var list = CONTACTS.filter(function(c){ return !q || c.name.toLowerCase().indexOf(q) >= 0 || c.nut.toLowerCase().indexOf(q) >= 0; });
+  if (state.listFilter) list = list.filter(function(c){ return state.listFilter.indexOf(c.id) >= 0; });
+  $('convList').innerHTML = list.map(function(c){
+    return '<button class="row' + (state.person.id===c.id ? ' active' : '') + '" type="button" data-id="' + c.id + '" style="--ac:' + (c.cc || '#8e24aa') + '">' +
+      '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (c.cc || '#8e24aa') + '">' + c.initial + '</span><span class="orb-dot"></span></span>' +
+      '<span class="row-body"><span class="row-name">' + esc(c.name) + ' <span class="match">' + c.match + '% match</span></span>' +
+      '<span class="row-last" data-last="' + c.id + '">' + esc(c.last) + '</span></span></button>';
+  }).join('') || '<p class="stub-note">Nobody in this list matches that search yet — try another word.</p>';
+  $('convList').querySelectorAll('.row').forEach(function(r){
+    r.addEventListener('click', function(){ openPerson(CONTACTS.find(function(c){ return c.id===r.dataset.id; })); });
+  });
+}
+function renderTopicPeople(){
+  var topic = state.topic;
+  $('topicPeopleTitle').textContent = 'Online in ' + topic;
+  var q = $('smartSearch').value.trim().toLowerCase();
+  var list = (TOPICS[topic] || []).filter(function(p){ return !q || p.name.toLowerCase().indexOf(q) >= 0 || p.nut.toLowerCase().indexOf(q) >= 0 || topic.toLowerCase().indexOf(q) >= 0; });
+  $('topicPeople').innerHTML = list.map(function(p){
+    return '<button class="row topic-person" type="button" data-id="' + p.id + '" data-topic="' + topic + '" style="--ac:' + (p.cc || '#8e24aa') + '">' +
+      '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (p.cc || '#8e24aa') + '">' + p.initial + '</span><span class="orb-dot"></span></span>' +
+      '<span class="row-body"><span class="row-name">' + esc(p.name) + ' <span class="match">' + p.match + '% match</span></span>' +
+      '<span class="row-nut">' + esc(p.nut) + '</span></span></button>';
+  }).join('') || '<p class="stub-note">Nobody online in this topic matches that search.</p>';
+  $('topicPeople').querySelectorAll('.topic-person').forEach(function(r){
+    r.addEventListener('click', function(){
+      var p = TOPICS[r.dataset.topic].find(function(x){ return x.id===r.dataset.id; });
+      openPerson({id:p.id, initial:p.initial, name:p.name, nut:p.nut, match:p.match, last:'Say hello — start the conversation.', cc:p.cc || '#8e24aa'});
+      /* STUB receive: the topic person greets first, proving receive + notification. */
+      setTimeout(function(){ receiveMessage(p, 'Hi! Great to meet you here in ' + r.dataset.topic + '. What are you working on?'); }, 900);
+    });
+  });
+}
+function renderThread(){
+  var p = state.person;
+  var isGroup = !!state.group;
+  var fmt = isGroup ? 'im' : state.format;
+  $('threadOrb').textContent = p.initial;
+  $('threadOrb').style.setProperty('--cc', p.cc || '#8e24aa');
+  $('threadName').textContent = p.name;
+  if (isGroup) {
+    $('threadPresence').textContent = p.members.length + ' online · topic chat';
+    $('threadPresence').className = '';
+  } else {
+    $('threadPresence').textContent = state.format === 'im' ? 'Online now · Instant Message' : 'Smart Mail · they read it when they read it';
+    $('threadPresence').className = state.format === 'im' ? '' : 'mail-mode';
+  }
+  /* Topic chat is live-only: the mail toggle rests while a group is open. */
+  $('toggleMail').disabled = isGroup;
+  $('toggleMail').title = isGroup ? 'Topic chat is live — mail lives in the one-to-one conversation' : '';
+  var msgs = isGroup ? (THREADS['topic:' + state.topic] || []) : (THREADS[p.id] || []);
+  var html = '<div class="format-note">' + (isGroup
+    ? 'Topic chat — ' + esc(state.topic) + ', everyone online in it, in the moment'
+    : (fmt === 'im'
+      ? 'Instant Message — live, in the moment, with ' + esc(p.name)
+      : 'Smart Mail — the letter format, same conversation, same person')) + '</div>';
+  if (p.id === 'maya' && state.format === 'mail') {
+    html += '<div class="smart-note"><h4>Shared note — Design, in the smart-note format</h4>' +
+      '<h5>Nutshell</h5><p>A messenger is one conversation in two formats, not two inboxes.</p>' +
+      '<h5>What it means</h5><p>The toggle switches the format and nothing else — the person stays.</p></div>';
+  }
+  /* MAIL MESSAGE VIEW: the opened letter as an elevated board — title, nutshell, key points with jewel bullets. */
+  if (fmt === 'mail') {
+    var open = MAIL[state.world].find(function(m){ return m.id===state.mailId; }) || MAIL[state.world][0];
+    if (open) {
+      state.mailId = open.id;
+      var wc = WORLDS[state.world].color;
+      html += '<article class="mail-board" style="--wc:' + wc + '">' +
+        '<div class="mail-board-top"><span>' + esc(WORLDS[state.world].label) + ' mail</span><span>' + esc(open.time) + '</span></div>' +
+        '<h4>' + esc(open.subject) + (open.unread ? '<span class="mail-unread">NEW</span>' : '') + '</h4>' +
+        '<p class="mail-nut">' + esc(open.nut) + '</p>' +
+        '<h5>Key points</h5><ul class="mail-points">' + open.points.map(function(pt){ return '<li>' + esc(pt) + '</li>'; }).join('') + '</ul>' +
+        '<p class="mail-meta">From ' + esc(open.from) + ' · ' + esc(WORLDS[state.world].label) + ' · ' + esc(open.time) + '</p></article>';
+    }
+  }
+  msgs.forEach(function(m){
+    if (fmt === 'mail') {
+      html += '<div class="msg letter"><div class="subject">' + (m.who==='mine' ? 'You wrote' : esc(p.name) + ' wrote') + '</div>' +
+        '<div class="letter-to">To ' + (m.who==='mine' ? esc(p.name) : 'you') + ' · Smart Mail</div>' +
+        esc(m.text) + '<span class="meta">' + esc(m.time) + (m.topic ? ' · ' + esc(m.topic) : '') + '</span></div>';
+    } else {
+      html += '<div class="msg ' + m.who + '">' + esc(m.text) + '<span class="meta">' + (m.name ? esc(m.name) + ' · ' : '') + esc(m.time) + (m.topic ? ' · ' + esc(m.topic) : '') + '</span></div>';
+    }
+  });
+  if (!msgs.length && fmt !== 'mail') {
+    html += '<p class="stub-note">' + (isGroup ? 'No messages in the ' + esc(state.topic) + ' chat yet — say hello to get it going.' : 'No messages yet with ' + esc(p.name) + ' — say hello to start the conversation.') + '</p>';
+  }
+  $('threadBody').innerHTML = html;
+  if (!window.__booted) { $('threadBody').scrollTop = 0; }
+  else { $('threadBody').scrollTop = $('threadBody').scrollHeight; }
+  $('composerInput').placeholder = isGroup ? 'Message the ' + state.topic + ' group…' : (fmt === 'im' ? 'Message ' + p.name.split(' ')[0] + ' instantly…' : 'Write a letter to ' + p.name.split(' ')[0] + '…');
+  $('mailSubject').hidden = fmt !== 'mail';
+  $('sendBtn').textContent = fmt === 'im' ? 'Send' : 'Send mail';
+}
+function openPerson(p){
+  state.person = p;
+  state.group = null;
+  if (!THREADS[p.id]) THREADS[p.id] = [];
+  renderConvs(); renderTopicPeople(); renderThread();
+}
+function openTopicChat(topic){
+  var members = TOPICS[topic] || [];
+  state.group = topic;
+  state.person = { id: 'topic:' + topic, initial: topic.charAt(0), name: topic, nut: 'Topic chat — everyone online in ' + topic + '.', match: null, cc: TOPIC_COLORS[topic] || '#8e24aa', members: members };
+  if (!THREADS['topic:' + topic]) THREADS['topic:' + topic] = [
+    { who:'theirs', name: members.length ? members[0].name : 'Naya', text:'Welcome to the ' + topic + ' chat — everyone online in ' + topic + ' is here.', time:'09:30', topic: topic }
+  ];
+  renderConvs(); renderTopicPeople(); renderThread();
+}
+function pickTopic(t){
+  state.topic = (t === 'All') ? 'Design' : t;
+  state.thing = state.topic;
+  renderTabs(); renderTopicPeople();
+  openTopicChat(state.topic);
+}
+function setFormat(f){
+  state.format = f;
+  $('toggleMail').classList.toggle('on', f === 'mail');
+  $('toggleIM').classList.toggle('on', f === 'im');
+  $('toggleMail').setAttribute('aria-pressed', f === 'mail');
+  $('toggleIM').setAttribute('aria-pressed', f === 'im');
+  /* Mail mode shows the world's inbox; IM mode shows conversations + topic
+     people. (.rows is display:flex, so the hidden attribute alone would
+     not hide it — the rows are hidden by style.display.) */
+  var isMail = f === 'mail';
+  $('inboxTitle').hidden = !isMail; $('inboxSub').hidden = !isMail;
+  $('mailInbox').style.display = isMail ? '' : 'none';
+  $('convHead').hidden = isMail; $('convSub').hidden = isMail;
+  $('convList').style.display = isMail ? 'none' : '';
+  $('topicPeopleTitle').hidden = isMail; $('topicSub').hidden = isMail;
+  $('topicPeople').style.display = isMail ? 'none' : '';
+  if (isMail) {
+    if (!state.mailId) state.mailId = (MAIL[state.world][0] || {}).id || null;
+    renderInbox();
+  }
+  renderThread();
+}
+/* --- WORLDS: one universal mail, any world selectable --- */
+function renderWorlds(){
+  $('worldPills').innerHTML = Object.keys(WORLDS).map(function(w){
+    var d = WORLDS[w];
+    return '<button class="world-pill' + (state.world===w ? ' on' : '') + '" type="button" data-world="' + w + '" style="--wc:' + d.color + '" aria-pressed="' + (state.world===w) + '"><span class="wdot"></span>' + d.label + '</button>';
+  }).join('');
+  $('worldPills').querySelectorAll('.world-pill').forEach(function(b){
+    b.addEventListener('click', function(){ setWorld(b.dataset.world); });
+  });
+  $('worldNote').textContent = state.entryFrom === 'hub'
+    ? 'Opened from the Hub — pick any world.'
+    : 'Showing ' + WORLDS[state.world].label + ' mail first — pick any world.';
+}
+function personForMail(m, w){
+  var p = findPersonAnywhere(m.fromId);
+  if (!p) return null;
+  return CONTACTS.indexOf(p) >= 0 ? p : { id: p.id, initial: p.initial, name: p.name, nut: p.nut || '', match: p.match, last: m.subject, cc: p.cc || WORLDS[w].color };
+}
+function setWorld(w){
+  if (!WORLDS[w]) return;
+  state.world = w;
+  var first = MAIL[w][0] || null;
+  state.mailId = first ? first.id : null;
+  renderWorlds(); renderInbox();
+  /* World switch switches EVERYTHING — inbox, top letter, conversation
+     header, thread cards, composer — the way opening a letter does. */
+  if (first) { var p = personForMail(first, w); if (p) openPerson(p); }
+  renderThread();
+  window.__mailWorld = w;
+}
+function renderInbox(){
+  $('inboxTitle').textContent = 'Mail inbox — ' + WORLDS[state.world].label;
+  var q = $('smartSearch').value.trim().toLowerCase();
+  var list = MAIL[state.world].filter(function(m){
+    return !q || m.subject.toLowerCase().indexOf(q) >= 0 || m.from.toLowerCase().indexOf(q) >= 0 || m.nut.toLowerCase().indexOf(q) >= 0;
+  });
+  $('mailInbox').innerHTML = list.map(function(m){
+    var who = findPersonAnywhere(m.fromId) || { initial: m.from.charAt(0), cc: WORLDS[state.world].color };
+    return '<button class="row' + (state.mailId===m.id ? ' active' : '') + '" type="button" data-mail="' + m.id + '" style="--ac:' + WORLDS[state.world].color + '">' +
+      '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (who.cc || WORLDS[state.world].color) + '">' + who.initial + '</span>' + (m.unread ? '<span class="orb-dot"></span>' : '') + '</span>' +
+      '<span class="row-body"><span class="row-name">' + esc(m.subject) + (m.unread ? ' <span class="match">NEW</span>' : '') + '</span>' +
+      '<span class="row-last">' + esc(m.from) + ' · ' + esc(m.time) + '</span>' +
+      '<span class="row-nut">' + esc(m.nut) + '</span></span></button>';
+  }).join('') || '<p class="stub-note">No letters in this world match that search yet.</p>';
+  $('mailInbox').querySelectorAll('.row').forEach(function(r){
+    r.addEventListener('click', function(){ openMail(r.dataset.mail); });
+  });
+  refreshFiveCounts();
+}
+function openMail(id){
+  var m = MAIL[state.world].find(function(x){ return x.id===id; });
+  if (!m) return;
+  state.mailId = id;
+  m.unread = false;
+  var p = findPersonAnywhere(m.fromId);
+  if (p) openPerson(CONTACTS.indexOf(p) >= 0 ? p : { id: p.id, initial: p.initial, name: p.name, nut: p.nut || '', match: p.match, last: m.subject, cc: p.cc || WORLDS[state.world].color });
+  renderInbox();
+  if (state.format === 'mail') renderThread();
+}
+/* --- ENTRY: which world's mail first, and the Hub hookup.
+   ?world=personal|business|space wins; else ?from=<world> (a page's mail
+   door); else ?from=hub (the Hub's mail — any world). Default: Personal.
+   MESSENGER DELTA: this page opens in Instant Message mode (messenger-first);
+   an explicit ?format=mail still wins, and flipping to Mail shows that
+   world's mail first. --- */
+function initMailEntry(){
+  var q = {};
+  try { var sp = new URLSearchParams(location.search); sp.forEach(function(v, k){ q[k] = v; }); } catch(e) {}
+  var from = q.from || '';
+  var world = q.world || (WORLDS[from] ? from : 'personal');
+  if (!WORLDS[world]) world = 'personal';
+  state.world = world;
+  state.entryFrom = from || 'hub';
+  if (q.format === 'mail' || q.format === 'im') state.format = q.format;
+  else state.format = 'im';
+  var first = MAIL[world][0] || null;
+  state.mailId = first ? first.id : null;
+  if (first) { var p = personForMail(first, world); if (p) state.person = p; }
+  window.__mailEntry = { world: world, from: state.entryFrom, format: state.format };
+  window.__hubHookup = { entry: state.entryFrom, world: world, interface: 'smart-messenger' };
+  window.__mailWorld = world;
+}
+/* STUB send/receive — the working stub behind send + receive. Live path owed:
+   the real-time socket/push that carries a message the instant it is sent. */
+function sendGroupMessage(text){
+  var key = 'topic:' + state.topic;
+  var payload = { sender: 'You', text: text, time: nowTime(), topic: state.topic, format: 'im' };
+  THREADS[key].push({ who:'mine', text: text, time: payload.time, topic: payload.topic });
+  $('composerInput').value = '';
+  renderThread();
+  window.__lastPayload = payload;
+  var members = TOPICS[state.topic] || [];
+  var replier = members.length > 1 ? members[1] : members[0];
+  setTimeout(function(){
+    if (!replier) return;
+    THREADS[key].push({ who:'theirs', name: replier.name, text: 'Love that — yes, exactly. What does everyone else think?', time: nowTime(), topic: state.topic });
+    pushFeed('thing', { thing: state.topic, kind: 'im', who: replier.name, text: 'Love that — yes, exactly. What does everyone else think?', src: 'Thing · ' + state.topic + ' · ' + replier.name + ' · instant message' });
+    raiseCount('thing', 'im', 1);
+    window.__lastReceived = { sender: replier.name, text: 'Love that — yes, exactly. What does everyone else think?', time: nowTime(), topic: state.topic, format: 'im' };
+    renderThread();
+  }, 1200);
+}
+function sendMessage(){
+  var text = $('composerInput').value.trim();
+  if (!text) return;
+  if (state.group) { sendGroupMessage(text); return; }
+  var payload = { sender: 'You', text: text, time: nowTime(), topic: state.topic, format: state.format };
+  var subj = $('mailSubject').value.trim();
+  if (state.format === 'mail' && subj) payload.subject = subj;
+  if (!THREADS[state.person.id]) THREADS[state.person.id] = [];
+  THREADS[state.person.id].push({ who:'mine', text: text, time: payload.time, topic: payload.topic });
+  state.person.last = text;
+  $('composerInput').value = ''; $('mailSubject').value = '';
+  if (state.format === 'mail' && state.mailId) { var om = MAIL[state.world].find(function(m){ return m.id===state.mailId; }); if (om) { om.unread = false; renderInbox(); } }
+  renderConvs(); renderThread();
+  window.__lastPayload = payload;
+  /* STUB reply: the other side answers, proving receive. */
+  var person = state.person;
+  setTimeout(function(){
+    receiveMessage(person, state.format === 'im' ? 'Got it — thank you! That is exactly what I needed.' : 'Thank you for your letter — I will read it properly tonight.');
+  }, 1200);
+}
+function receiveMessage(person, text){
+  var payload = { sender: person.name, text: text, time: nowTime(), topic: state.topic, format: state.format };
+  if (!THREADS[person.id]) THREADS[person.id] = [];
+  THREADS[person.id].push({ who:'theirs', text: text, time: payload.time, topic: payload.topic });
+  person.last = text;
+  window.__lastReceived = payload;
+  /* The trio counts activity worlds; mail world Space rides as Thing. */
+  var fw = state.world === 'space' ? 'thing' : state.world;
+  pushFeed(fw, { thing: state.topic, kind: state.format === 'im' ? 'im' : 'mail', who: person.name, text: text, src: WORLDS[state.world].label + ' · ' + state.topic + ' · ' + person.name + (state.format === 'im' ? ' · instant message' : ' · mail') });
+  raiseCount(fw, state.format === 'im' ? 'im' : 'mail', 1);
+  $('toastTitle').textContent = person.name + ' · ' + state.topic;
+  $('toastText').textContent = text;
+  $('toast').classList.add('show');
+  window.__toastFor = person.id;
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(function(){ $('toast').classList.remove('show'); }, 8000);
+  renderConvs();
+  if (state.person.id === person.id) renderThread();
+}
+function openToast(){
+  $('toast').classList.remove('show');
+  var p = CONTACTS.find(function(c){ return c.id===window.__toastFor; });
+  if (p) { openPerson(p); setWorldCount(state.world === 'space' ? 'thing' : state.world, 0); return; }
+  var t = Object.keys(TOPICS).map(function(k){ return TOPICS[k]; }).flat().find(function(x){ return x.id===window.__toastFor; });
+  if (t) openPerson({id:t.id, initial:t.initial, name:t.name, nut:t.nut||'', match:t.match, last:'Say hello — start the conversation.', cc:t.cc || '#8e24aa'});
+  setWorldCount(state.world === 'space' ? 'thing' : state.world, 0);
+}
+function openInstall(){
+  var v = $('installVeil');
+  v.hidden = false; v.classList.add('show');
+}
+function closeInstall(){
+  var v = $('installVeil');
+  v.classList.remove('show'); v.hidden = true;
+}
+/* --- CALLS (this round): audio + video in the conversation. STUB behind
+   them, named as a stub — tapping starts a working preview (toast + state +
+   payload) and says so in plain words; the live Smart Meet call path is
+   owed, never a dead click, never a faked live call. --- */
+function startCall(kind){
+  var p = state.person;
+  var label = kind === 'audio' ? 'Audio call' : 'Video call';
+  var payload = { kind: kind, with: p.name, withId: p.id, topic: state.topic, time: nowTime(), stub: true };
+  window.__lastCall = payload;
+  $('callState').textContent = label + ' with ' + p.name + ' — preview started (stub). The live Smart Meet call is owed.';
+  $('toastKind').textContent = label + ' — preview';
+  $('toastTitle').textContent = p.name + ' · ' + state.topic;
+  $('toastText').textContent = label + ' started with ' + p.name + ' (preview — the live Smart Meet call is owed). Tap the toast to open the conversation.';
+  $('toast').classList.add('show');
+  window.__toastFor = p.id;
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(function(){ $('toast').classList.remove('show'); }, 8000);
+}
+$('toggleMail').addEventListener('click', function(){ setFormat('mail'); });
+$('toggleIM').addEventListener('click', function(){ setFormat('im'); });
+$('sendBtn').addEventListener('click', sendMessage);
+$('composerInput').addEventListener('keydown', function(e){ if (e.key === 'Enter') sendMessage(); });
+$('smartSearch').addEventListener('input', function(){ renderConvs(); renderTopicPeople(); if (state.format === 'mail') renderInbox(); });
+$('toast').addEventListener('click', openToast);
+$('toast').addEventListener('keydown', function(e){ if (e.key === 'Enter') openToast(); });
+$('downloadBtn').addEventListener('click', openInstall);
+$('plusInstall').addEventListener('click', openInstall);
+$('installGo').addEventListener('click', function(){ $('installManual').hidden = false; });
+$('installLater').addEventListener('click', closeInstall);
+$('installX').addEventListener('click', closeInstall);
+$('plusNew').addEventListener('click', function(){ $('composerInput').focus(); });
+$('backHub').addEventListener('click', function(){ window.location.href = 'https://nayanet.app/'; });
+$('audioBtn').addEventListener('click', function(){ startCall('audio'); });
+$('videoBtn').addEventListener('click', function(){ startCall('video'); });
+/* --- THE FIVE: ADD creates (composer focus) · MAIL opens mail ·
+   ACTIVITY opens this world's activity feed · WORLDS jumps to the world
+   selector · ECOSYSTEM jumps to the saved lists. No CONNECT — his call. --- */
+function findPersonAnywhere(id){
+  var c = CONTACTS.find(function(x){ return x.id===id; });
+  if (c) return c;
+  var found = null;
+  Object.keys(TOPICS).forEach(function(k){ TOPICS[k].forEach(function(p){ if (p.id===id) found = p; }); });
+  return found;
+}
+function openFeed(world){
+  var titles = { personal: ['Personal activity', 'Your instant messages, your mail, and everything personal — together, grouped by the thing it came from.'],
+    business: ['Business activity', 'Everything in your business world — grouped by the thing it came from.'],
+    thing: [state.thing + ' activity', 'Everything going on in the space for your ' + state.thing + ' — grouped by the thing it came from.'] };
+  $('feedTitle').textContent = titles[world][0];
+  $('feedSub').textContent = titles[world][1];
+  var items = FEEDS[world] || [];
+  var things = [];
+  items.forEach(function(it){ if (things.indexOf(it.thing) < 0) things.push(it.thing); });
+  var html = '';
+  things.forEach(function(th){
+    html += '<div class="feed-thing">' + esc(th) + '</div>';
+    items.filter(function(it){ return it.thing===th; }).forEach(function(it, i){
+      html += '<button class="feed-item" type="button" data-who="' + esc(it.who) + '"><b>' + esc(it.who) + ' · ' + esc(it.kind) + '</b><p>' + esc(it.text) + '</p><span class="src">Source: ' + esc(it.src) + '</span></button>';
+    });
+  });
+  $('feedItems').innerHTML = html || '<p class="feed-sub">Nothing here yet.</p>';
+  $('feedItems').querySelectorAll('.feed-item').forEach(function(b){
+    b.addEventListener('click', function(){
+      var person = null;
+      CONTACTS.forEach(function(c){ if (c.name===b.dataset.who) person = c; });
+      if (!person) Object.keys(TOPICS).forEach(function(k){ TOPICS[k].forEach(function(p){ if (p.name===b.dataset.who) person = p; }); });
+      if (person) { closeFeed(); openPerson(person.id && CONTACTS.indexOf(person) >= 0 ? person : { id: person.id, initial: person.initial, name: person.name, nut: person.nut || '', match: person.match, last: 'Say hello — start the conversation.', cc: person.cc || '#8e24aa' }); }
+      else b.classList.toggle('open');
+    });
+  });
+  $('choicePanel').classList.remove('show');
+  $('feedPanel').classList.add('show');
+  window.__openFeed = world;
+}
+function closeFeed(){ $('feedPanel').classList.remove('show'); }
+function openChoice(){
+  $('feedPanel').classList.remove('show');
+  $('choicePanel').classList.add('show');
+}
+function renderChoice(){
+  $('choiceRows').innerHTML = CHOICE_DEFS.map(function(d){
+    return '<div class="choice-row"><span>' + d[1] + '<small>' + d[2] + '</small></span>' +
+      '<button class="choice-toggle" type="button" data-kind="' + d[0] + '" aria-pressed="' + NOTIF[d[0]] + '" aria-label="Notify on ' + d[1] + '"></button></div>';
+  }).join('');
+  $('choiceRows').querySelectorAll('.choice-toggle').forEach(function(b){
+    b.addEventListener('click', function(){
+      var k = b.dataset.kind;
+      NOTIF[k] = !NOTIF[k];
+      b.setAttribute('aria-pressed', String(NOTIF[k]));
+    });
+  });
+}
+function renderSmartLists(){
+  function chips(kind, elId){
+    $(elId).innerHTML = SMART_LISTS[kind].map(function(l){
+      return '<button class="list-chip' + (state.listName===l.name ? ' active' : '') + '" type="button" data-list="' + esc(l.name) + '" data-kind="' + kind + '" style="--ac:' + l.color + '">' +
+        '<span class="cx-ava" style="--cc:' + l.color + ';width:40px;height:40px;font-size:17px">' + esc(l.name.charAt(0)) + '</span>' +
+        '<span><b>' + esc(l.name) + '</b><span>' + esc(l.note) + '</span></span></button>';
+    }).join('');
+  }
+  chips('im', 'imLists');
+  chips('mail', 'mailLists');
+  document.querySelectorAll('.list-chip').forEach(function(b){
+    b.addEventListener('click', function(){
+      var kind = b.dataset.kind;
+      var list = SMART_LISTS[kind].find(function(l){ return l.name===b.dataset.list; });
+      if (state.listName===list.name) {
+        state.listFilter = null; state.listName = '';
+        $('listFilterNote').hidden = true;
+      } else {
+        state.listName = list.name;
+        var contacts = list.members.filter(function(id){ return CONTACTS.some(function(c){ return c.id===id; }); });
+        state.listFilter = contacts.length ? contacts : null;
+        var first = findPersonAnywhere(list.members[0]);
+        $('listFilterNote').hidden = false;
+        $('listFilterNote').textContent = 'Showing ' + list.name + ' — ' + list.members.length + ' people. Tap again for everyone.';
+        if (first) openPerson(CONTACTS.indexOf(first) >= 0 ? first : { id: first.id, initial: first.initial, name: first.name, nut: first.nut || '', match: first.match, last: 'Say hello — start the conversation.', cc: first.cc || '#8e24aa' });
+      }
+      renderConvs(); renderSmartLists();
+    });
+  });
+}
+/* One plain cover button: "Hide the banner" / "Show the banner". */
+function toggleCover(){
+  var hidden = !document.body.classList.contains('no-cover');
+  document.body.classList.toggle('no-cover', hidden);
+  var b = $('coverToggle');
+  b.textContent = hidden ? 'Show the banner' : 'Hide the banner';
+  b.setAttribute('aria-pressed', String(hidden));
+  b.classList.toggle('ghost', !hidden);
+  window.__coverMode = hidden ? 'no-cover' : 'cover';
+}
+/* STUB event (named): the probe and the citizen's eye prove the trio moves.
+   Live path owed: the real-time socket/push per world. */
+function stubEvent(world, kind, text){
+  pushFeed(world, { thing: state.thing, kind: kind, who: 'Naya', text: text || ('A new ' + kind + ' in ' + world), src: world.charAt(0).toUpperCase() + world.slice(1) + ' · ' + state.thing + ' · Naya · ' + kind });
+  return raiseCount(world, kind, 1);
+}
+window.__stubEvent = stubEvent;
+$('segAdd').addEventListener('click', function(){ $('composerInput').focus(); });
+$('segMail').addEventListener('click', function(){ setFormat('mail'); $('mailInbox').scrollIntoView({block:'nearest'}); });
+$('segActivity').addEventListener('click', function(){ openFeed(state.world === 'space' ? 'thing' : state.world); });
+$('segWorlds').addEventListener('click', function(){ $('worldRow').scrollIntoView({block:'center'}); });
+$('segEco').addEventListener('click', function(){ $('smartLists').scrollIntoView({block:'center'}); });
+$('feedCloseBtn').addEventListener('click', closeFeed);
+$('feedChoiceBtn').addEventListener('click', openChoice);
+$('choiceCloseBtn').addEventListener('click', function(){ $('choicePanel').classList.remove('show'); });
+$('coverToggle').addEventListener('click', toggleCover);
+initMailEntry();
+renderTabs(); renderConvs(); renderTopicPeople(); renderThread(); renderSmartLists(); renderChoice();
+setWorldCount('personal', 2); setWorldCount('business', 1); setWorldCount('thing', 1);
+renderWorlds(); renderInbox(); setFormat(state.format);
+window.__booted = true;
+/* --- FIX-6: title-stuck mask sync + first-card load offset (live geometry, never eyeballed). --- */
+var fix6Scroll = document.querySelector('.page-scroll');
+var fix6Title = document.querySelector('.page-title');
+var fix6Applied = 0;
+function fix6SyncMask(){
+  if (!fix6Scroll || !fix6Title) return;
+  var top = parseFloat(getComputedStyle(fix6Title).top) || 60;
+  var r = fix6Title.getBoundingClientRect();
+  var stuck = r.top <= top + 1;
+  fix6Scroll.classList.toggle('title-stuck', stuck);
+  if (stuck) fix6Scroll.style.setProperty('--titleEdge', Math.round(r.bottom) + 'px');
+}
+function fix6FirstCard(){
+  var sc = document.querySelector('.page-scroll');
+  var card = document.querySelector('#mailInbox .row');
+  if (card && !card.offsetParent) card = document.querySelector('#convList .row');
+  if (!sc || !card) return;
+  var need = card.getBoundingClientRect().bottom - sc.getBoundingClientRect().bottom + 6;
+  if (need > 0) { sc.scrollTop += need; fix6Applied += need; }
+  window.__fix6LoadOffset = Math.round(fix6Applied);
+  window.__fix6FirstCard = {cardBottom: Math.round(card.getBoundingClientRect().bottom), fold: Math.round(sc.getBoundingClientRect().bottom), applied: Math.round(fix6Applied)};
+}
+if (fix6Scroll) fix6Scroll.addEventListener('scroll', fix6SyncMask, {passive:true});
+window.addEventListener('resize', fix6SyncMask);
+fix6SyncMask();
+fix6FirstCard();
+if (window.requestAnimationFrame) requestAnimationFrame(function(){ fix6SyncMask(); fix6FirstCard(); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fix6SyncMask(); fix6FirstCard(); });
+/* --- FIX-8: dock-edge dissolve sync. Only JS can read the first card's live
+   rest position; the CSS rules above only describe the gradient shape.
+   A MutationObserver re-syncs after layout-changing toggles (cover/world/
+   format) that move the card without scrolling. State exposed as
+   window.__fix8DockFade ({on, gap, h}). --- */
+var fix8Scroll = document.querySelector('.page-scroll');
+function fix8FirstCard(){
+  var card = document.querySelector('#mailInbox .row');
+  if (card && !card.offsetParent) card = document.querySelector('#convList .row');
+  return card || null;
+}
+function fix8SyncDockFade(){
+  if (!fix8Scroll) return;
+  var card = fix8FirstCard();
+  var fold = fix8Scroll.getBoundingClientRect().bottom;
+  var gap = null;
+  if (card) gap = (fold - 6) - card.getBoundingClientRect().bottom;
+  var on = (gap === null) || (Math.abs(gap) > 3);
+  var h = (gap === null) ? 50 : Math.min(50, Math.abs(gap) * 2);
+  fix8Scroll.classList.toggle('dock-fade', on);
+  if (on) fix8Scroll.style.setProperty('--dockFade', Math.round(h) + 'px');
+  else fix8Scroll.style.removeProperty('--dockFade');
+  window.__fix8DockFade = {on: on, gap: (gap === null ? null : Math.round(gap)), h: Math.round(h)};
+}
+if (fix8Scroll) fix8Scroll.addEventListener('scroll', fix8SyncDockFade, {passive:true});
+window.addEventListener('resize', fix8SyncDockFade);
+if (window.MutationObserver && document.body) {
+  var fix8Obs = new MutationObserver(function(){ fix8SyncDockFade(); });
+  fix8Obs.observe(document.body, {subtree: true, childList: true,
+    attributes: true, attributeFilter: ['class', 'hidden', 'style']});
+}
+fix8SyncDockFade();
+if (window.requestAnimationFrame) requestAnimationFrame(fix8SyncDockFade);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fix8SyncDockFade);
+
+/* U+25C9 GUARD: no rendered text on this page may contain the literal
+   string — every pill dot is a CSS shape (.sdot), every jewel is a CSS shape
+   or a literal character. True = clean. */
+window.__glyphCheck = !/\u25c9/.test(document.body.innerText);
+</script>
+</body>
+</html>
