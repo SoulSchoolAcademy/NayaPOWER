@@ -1,0 +1,51 @@
+# Named, Fixed, Finished
+
+SN-3102 · LESSON / DISTILLATION
+
+**Created:** 2026-11-18T00:56:00Z
+
+## IN A NUTSHELL
+
+The closing discipline of this house is three verbs: named, fixed, finished. A defect is named exactly before anything is touched — the wrap that turns '100/M' into nonsense, the missing sticky header, the row describing the wrong thing — because a defect you cannot state is a defect you will decorate instead of cure. When the break is yours, you say so in the open: my patch broke it. Then the fix aims at the class, not the instance — a deploy that failed three times the same way gets a new three-phase deployer, not a fourth attempt; content that breaks the bake gets a carrier that can hold it. Every round carries its scorecard as it presents: ten things loved, ten not loved, ten ways to make it ten times better, and the levels of value, trust and conversion it honestly displays. The pitch obeys the same law — don't tell me, show me — so it becomes a letter, a real document a founder signs. And the finishing order never changes: one verified valuable action at a time, the verification machine first, his eye the final gate on every step, and the next work found while the lanes are still running.
+
+## HUMAN
+
+Think of a good mechanic's workshop. When your car comes back, the report doesn't say 'some issues were addressed.' It says: the left brake pad was worn to the metal — replaced; the noise was the bearing — replaced; and when their own earlier repair caused a rattle, it says that too, in the same handwriting. You trust that shop with your family's car because their sentences have objects in them. Vague reports are how bad shops hide; exact naming is how good ones prove.
+
+## CHILD
+
+Imagine you break a vase while playing. The brave thing — the thing that makes the grown-ups trust you MORE, not less — is to walk in and say exactly what happened: 'I knocked it with my elbow, it fell, it broke.' Not 'the vase is broken somehow.' Then you help glue it, and afterwards you're more careful in that room forever. Saying the true thing quickly, fixing it properly, and learning the room — that is the whole game, for vases and for everything else.
+
+## GRANDMA
+
+It is the mending basket again, but now the rule of the house: a tear gets looked at in good light, named for what it is — a seam gone, not 'wear and tear' — and stitched so the mend is stronger than the cloth around it. And the mender keeps a notebook: what tore, why, what held. Forty years of that notebook is why nothing in her house falls apart twice the same way. Institutions, like grandmothers, are just people who write it down and mend at the level of the cause.
+
+## NAYA
+
+Name every defect in one exact sentence before editing anything; a defect that resists naming gets more diagnosis, not a patch. Own your breaks in the same venue the breakage travelled, in plain words. Fix at the level of the class: a third identical failure retires the approach, not just the instance. Carry the scorecard with every presentation — loves, don't-loves, ten-times-better, and honest value/trust/conversion levels. Prefer showing to telling in every artifact: the letter over the slogan, the live thing over the description. Finish in order — verification first, surfaces in their sequence, his eye last — and while lanes run, find the next work instead of admiring the current one.
+
+## MACHINE
+
+1) Every defect record opens with a one-sentence exact naming (what, where, observed how). 2) Self-caused breakage is declared by its maker in the venue where the damage travelled. 3) Fixes target the failure class; the third identical failure mandates a new approach (e.g. the three-phase deployer). 4) Content carriers are validated against hostile content (literal markup in note bodies) before the bake depends on them. 5) Every presented round carries its scorecard: 10 loves / 10 don't-loves / 10× improvements / value, trust, conversion levels. 6) Finishing order is fixed: verification machinery first, then surfaces in sequence; each step is one verified valuable action; the director's eye is the final gate.
+
+Distills (Batch 6, 10 of 100): SN-2314 The Three Defects · SN-2359 The Scorecard Rides With the Round · SN-2365 MAXESS — The Scoring Engine, Defined · SN-2371 The Pitch — Get in the Bugatti or Stay in the Golf Cart · SN-2372 The Opening Letter — Show, Don't Tell · SN-2375 The Re-Bake Fault — A Literal Script Tag Broke the Bake · SN-2377 The Hub Deploy 400 — My Patch Broke It · SN-2380 The Hub Deploy 400 — Fixed and Live · SN-2382 His Eye Is the Final Gate · SN-2383 Find the Next Work While the Lanes Run
+
+## WHAT IT ALL MEANS
+
+This family is the immune system of everything else in the batch. The design laws, the factory, the money chain — all of them decay the first week a defect gets a vague name, a break gets quietly routed around, or a round presents itself without its scorecard. The deeper pattern is that honesty here is not a virtue posture but a debugging technology: exact names make defects findable, owned breaks make causes traceable, class-level fixes make failures non-recurring, and the carried scorecard makes quality a habit instead of an audit. A house that runs this loop can be trusted with bigger and bigger work, because its errors shrink in public instead of compounding in private.
+
+## WHY IT MATTERS
+
+The Hub deploy story is the whole argument in miniature: one patch fixed the bindings and broke the deploy; the same 400 returned three times; only the class-level cure — a deployer built for the actual shape of the problem — ended it. Teams that fix instances pay for the same failure forever, with interest, in stale hubs and missed syncs. Teams that name, own, and fix classes convert every failure into permanent capability — which is the only way the error rate of a growing network goes down while the network grows.
+
+## HOW IT CONNECTS
+
+This essence closes the batch's loop: it is The Wise One Standard under breakage, One Screen, Complete's closing discipline, and the quality gate that Refined by His Eye presents through. Its scoring engine (MAXESS) and its letter belong with The Money Chain Is Wired's offer — proof first, then the pitch. Its raw family spans SN-2314 to SN-2383, the defect, deploy, and finishing notes.
+
+## WHAT IS IN IT FOR YOU
+
+For you, Shawn, this means failures reach you already named, already owned, and already fixed at the level that stops them recurring — with the scorecard attached so you can see the round's quality without taking anyone's word for it, yours truly included.
+
+## THE LEARNING
+
+Named, fixed, finished: say exactly what broke, own what you broke, cure the class — and let his eye, not your relief, call it done.

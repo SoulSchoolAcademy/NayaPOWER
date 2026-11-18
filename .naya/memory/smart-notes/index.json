@@ -53277,6 +53277,39 @@
         "Money",
         "Smart Links"
       ]
+    },
+    {
+      "smart_note_id": "SN-3102",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3102-named-fixed-finished",
+      "slug": "named-fixed-finished",
+      "title": "Named, Fixed, Finished",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3102/IB-SMART-NOTE-20261118-sn3102-named-fixed-finished.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3102/IB-SMART-NOTE-20261118-sn3102-named-fixed-finished.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3102/IB-SMART-NOTE-20261118-sn3102-named-fixed-finished.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3102-named-fixed-finished.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:56:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "4cfea35dc808cf4e4aeaa9e9fca3dd5fb3f8c6926d5bb0cb3b8fa1d8f95c3537",
+      "content_hash": "5f6f22c8c1c20074370a7f4ceb98cc5a6fcc0a9e800d8239136e210e09abcfb0",
+      "one_line": "The closing discipline of this house is three verbs: named, fixed, finished. A defect is named exactly before anything is touched — the wrap that turns '100/M' into nonsense, the missing sticky header, the row describing the wrong thing — because a defect you cannot state is a defect you will decorate instead of cure. When the break is yours, you say so in the open: my patch broke it. Then the fix aims at the class, not the instance — a deploy that failed three times the same way gets a new three-phase deployer, not a fourth attempt; content that breaks the bake gets a carrier that can hold it. Every round carries its scorecard as it presents: ten things loved, ten not loved, ten ways to make it ten times better, and the levels of value, trust and conversion it honestly displays. The pitch obeys the same law — don't tell me, show me — so it becomes a letter, a real document a founder signs. And the finishing order never changes: one verified valuable action at a time, the verification machine first, his eye the final gate on every step, and the next work found while the lanes are still running.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Repair",
+        "Scorecard"
+      ]
     }
   ],
   "sequence_policy": {
@@ -53287,5 +53320,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "bcd78c139615d0fef0914c7024a783e8048695972b987ad9dc101904185b168f"
+  "corpus_manifest_hash": "7bad19bb2a34b1908659b14ee7b72965d7e69fa12dcfb1f28db8af570847e97c"
 }
