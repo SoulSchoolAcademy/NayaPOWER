@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-18 18:14 UTC_
+_Last updated: 2026-11-18 18:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9074
-- ✅ Verified (8+): 8986
+- **Total scored actions:** 9079
+- ✅ Verified (8+): 8991
 - 🟡 Partial (5–7): 79
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
@@ -17,14 +17,14 @@ _Last updated: 2026-11-18 18:14 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 600 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 597 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 550 | 9.0 | 10 |
+| Team 3 | Naya Judge | 551 | 9.0 | 10 |
 | Team 4 | Naya Mason | 527 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 666 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 667 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 383 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 519 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 545 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 674 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 929 | 9.1 | 9.7 |
+| Team 9 | Naya Smith | 675 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 930 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 579 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 462 | 9.2 | 9.5 |
 
@@ -1277,6 +1277,7 @@ _Last updated: 2026-11-18 18:14 UTC_
 - **gap-gate-stall-20261024-1128-lane0:** 1 actions, avg 9.0/10
 - **gap-gate-stall-20261024-1334-lane0:** 1 actions, avg 9.0/10
 - **gap-gate-stall-20261026-1437-lane0:** 1 actions, avg 9.0/10
+- **gate-stall-20261118-1019:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -3044,7 +3045,11 @@ _Last updated: 2026-11-18 18:14 UTC_
 - **t0591-lane12:** 1 actions, avg 9.0/10
 - **t0592:** 12 actions, avg 8.9/10
 - **t0592-lane2:** 1 actions, avg 8.5/10
+- **t0592-lane5:** 1 actions, avg 9.0/10
+- **t0592-lane9:** 1 actions, avg 9.0/10
 - **t0593:** 11 actions, avg 9.0/10
+- **t0593-lane10:** 1 actions, avg 9.0/10
+- **t0593-lane3:** 1 actions, avg 9.0/10
 - **t0594:** 9 actions, avg 9.0/10
 - **t0595:** 6 actions, avg 9.0/10
 - **t0596:** 6 actions, avg 9.0/10
