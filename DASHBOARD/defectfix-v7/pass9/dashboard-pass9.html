@@ -4998,17 +4998,18 @@ body.os-feed-open #os-feed-list{background:linear-gradient(180deg,#121214,#08080
 /* FIX 5 — FIX 7: the three buttons at the bottom. */
 #os-bottom3{position:fixed;bottom:0;left:0;right:0;z-index:200;
   display:flex;justify-content:center;align-items:center;gap:28px;
-  padding:10px 0 12px;background:linear-gradient(180deg,rgba(0,0,0,0),#000 35%);
+  padding:10px 0 20px;background:linear-gradient(180deg,rgba(0,0,0,0),#000 35%);
   transition:transform .35s ease,opacity .35s ease;}
 body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO FIX 2026-11-09 (b), RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law — supersedes FIX-4): os-bottom-hidden hides the bar WHILE SCROLLING only — it returns ONLY at the very bottom, never when scrolling stops (the _barT ~1s return is removed); visible at load, before the page has ever been scrolled down. */
 .os-b3-badge[hidden]{display:none !important;}
 .os-notif-count[hidden]{display:none !important;}
-.os-b3-badge{position:absolute;top:3px;right:3px;min-width:20px;height:20px;padding:0 4px;
+.os-b3-badge{position:absolute;top:2px;right:2px;min-width:20px;height:20px;padding:0 4px;
   display:inline-flex;align-items:center;justify-content:center;border-radius:999px;
   background:#050607;color:#ffffff;font-size:12px;font-weight:900;line-height:1;
   border:1.5px solid var(--nc);box-shadow:0 0 10px color-mix(in srgb, var(--nc) 60%, transparent),inset 0 1px 0 rgba(255,255,255,.25);}
+.os-b3-badge.os-b3-long{top:1px;right:1px;height:18px;min-width:18px;padding:0 2px;}
 @media (max-width:768px){
-  #os-bottom3{gap:22px;padding:8px 0 10px;}
+  #os-bottom3{gap:22px;padding:8px 0 18px;}
 }
 /* ═══ FIX-3 2026-11-17 — THE SIX TILES (Shawn 03:05Z; GREETING-OUT 2026-11-17 adds CONNECT) ═══
    The Personal bottom bar's six tiles (+ ADD purple · MAIL blue ·
@@ -5059,8 +5060,9 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    What changes, and only this: .notif-tile loses the white radial core and
    takes obsidian (#050607, light top-left 135deg, no glow inside); the rim
    goes 2px solid in the tile's own deep colour with an outside halo + a real
-   down-right shadow; the glyph goes WHITE as a real object; the radius goes
-   16px -> 20px (squircle, almost round, as in the pictures); hover lifts
+   down-right shadow; the glyph goes WHITE as a real object; the radius went
+   16px -> 20px in this round (squircle, almost round, as in the pictures) and the
+   FIX-PASS restores Personal's 16px (see FIX-PASS above the tile rules); hover lifts
    the whole tile and the white glyph pops. The badge (.os-b3-badge) and the
    news dots (.os-b3-dot) move INSIDE the tile — the badge as a digit tile
    set into the ACTIVITY tile's top-right corner (obsidian, emerald rim,
@@ -5071,15 +5073,68 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    pass3 !important badge override is retuned to match, so it cannot
    resurrect the old fill. This is the ONE bar construction every page
    harvests byte-identical (ONE ICON SET, Shawn 22:00Z). */
+/* ═══ DOTS-DIALOG-FIX 2026-11-17 — LIT 3D JEWELS + THE DIALOG FOLD (Shawn 22:33Z ball-not-circle + 22:39Z 3D law) ═══
+   (1) THE FIVE DOTS ARE FULL 3D JEWELS. The eye saw faint 12px dark circles with a thin rim,
+   visible only at 3x zoom — empty holes, not jewels. The fix harvests the gauge/metric orb's
+   ball (.orb): three stacked radial gradients (specular crown at 34%/26%, mid sheen, deep-colour
+   body darkening to board black), a bright own-colour rim, a deep down-right drop shadow so the
+   jewel stands OUT of the tile, and a light pool behind it. The jewel was 15px (12px was
+   too small to read at 1920), seated top:3px right:3px inside the tile; the FIX-PASS
+   re-seats it at 13px (true gaps re-derived from the live boxes — see FIX-PASS), lit in its own deep
+   colour at rest — the material, not a news signal. The news signal stays gated on real counts:
+   has-news only brightens the halo and makes the dot clickable. Glow is behind, never the
+   effect itself. Press goes IN (tile + jewel shadows compress on :active), release comes OUT.
+   (2) THE BAR STAYS FOLDED BEHIND AN OPEN DIALOG. The leak was one rule, the FIX-5 (6)
+   override: body.viewport-focus #os-bottom3 forced the bar visible above every drill, beating
+   the fold and the viewport-focus hide. It is narrowed to :not(.os-bottom-hidden) and the hide
+   to .os-bottom-hidden — mid-page the bar stays folded, at the very bottom it may return.
+   (3) NITS: bottom padding grows (12px -> 20px desktop, 10px -> 18px mobile) so the tiles'
+   lower glow has room; the mobile hide control moves 82px -> 90px to keep its gap above the
+   bar. The thin tick above each tile was the tile's own hard 1px inset top-light line reading
+   detached from the near-black body; the top light is now a soft crown falloff (inset 0 2px 4px)
+   in the rest, hover and has-news stacks. The hover label pill is opacity 0 at rest and 33px
+   tall, so it is ruled out as the tick.
+   (4) THE 99+ BADGE: a 3-char count gets .os-b3-long (18px tall, seated top:2px right:2px);
+   the first geometry proof was wrong (border-box frame) and the badge overlapped the pulse by
+   0.54px. The FIX-PASS narrows it to padding 0 2px (27.1px live) and seats it top:1px right:1px:
+   3.57px clear at its live rect; the 1-2 digit badge re-seats to top:2px right:2px: 2.97px clear. */
+/* ═══ FIX-PASS 2026-11-17 — CHECKER NOT PASS, THREE FAILURES WORKED TO ZERO (same round, same branch/PR #3451) ═══
+   (1) GEOMETRY WAS WRONG: the first proof measured the dot from the tile's BORDER box; CSS positions
+   against the PADDING box, so every gap was overstated ~2px and the 99+ badge overlapped the pulse.
+   Re-derived from the LIVE boxes (Firefox getBoundingClientRect on the old build: SVG offset (14.5,14.5),
+   dot offset (34,5); badge widths measured live: 99+ 29.1px, "10" 24.07px). The jewel is 13px at
+   top:3px right:3px now — true solid-edge gaps from the LIVE boxes: Eco 3.97 / Mail 4.95 / Worlds 9.37 /
+   Activity 10.43 / Add 10.94 / Connect 10.94, all >=3px. (Firefox uses a specified 1.5px border as 1px —
+   minimal-page control — so the live padding box is 1..53 and the live dot centre is (43.5,10.5).)
+   The 99+ badge narrows to padding 0 2px (27.1px live) and seats top:1px right:1px: 3.57px clear
+   of the pulse at its live rect; the "10" badge seats top:2px right:2px: 2.97px clear.
+   (2) ORBIT RESTORED: Personal's .notif-tile::after conic comet (orb-spin-rev 60s) harvested verbatim —
+   the moving light around the circle, following the line; the static halo alone was not a moving light. 2026-11-17 CLUSTER-ALIGN: the orbit is REMOVED (eye 68f73e31 - it reads as a tick above every tile); rim-light, hover, press stay.
+   (3) PERSONAL HARVEST: the tile IS Personal blob 9a006c47 effective rules (lines 32404/32407/32408/
+   32413/32467) — radius 16, flat board-black gradient, 1.5px rim, ::before none (the sheen across the
+   middle is gone, closing the hover-law (a) caveat), rest shadow, has-news, orbit. HOVER RECONCILED:
+   Personal's hover adds an own-colour wash fill + turns the glyph its own colour — that conflicts with
+   the hover law (light around only, never glow over the icon), so the wash and the coloured glyph are
+   NOT carried over: hover keeps the board-black face, the glyph stays white, the rim brightens to solid
+   own-colour and the halo grows around the tile; a taller drop joins the hover shadow for the 3D law's
+   elevation. The visible .notif-lbl is NOT carried over: at 10.5px it would be a new §2.3 size FAIL;
+   the name stays in aria-label/title + the hover pill. The Dashboard shell (#os-bottom3, fold,
+   viewport-focus partition), the Deep Palette --nc values (Laws §3.1 supersedes Personal's bright
+   values), and the inside badge/dot seats stay — the shell, the colours and the seats are the
+   Dashboard's own, the tile is Personal's. At <=400px the tile is 46px (Personal's own), the glyph
+   drops to 21px and the jewel to 11px so the >=3px separation holds there too (Eco 4.20 live). NAMED
+   LIMIT: the mobile badge still overlaps the pulse by ~0.9px in a 46px tile (pre-existing: -1.04px
+   in the eye-passed build) — no inside seat clears it without shrinking the digit. */
 .notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#ffffff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;}
 .notif-seg:active{transform:scale(.94);}
-.notif-tile{position:relative;width:54px;height:54px;border-radius:20px;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 120% at 30% 25%, #141419 0%, #050607 55%, #000000 100%);border:2px solid var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -8px 14px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.65),0 0 18px color-mix(in srgb, var(--nc) 55%, transparent);color:#ffffff;transition:box-shadow .3s, border-color .3s, transform .2s;}
-.notif-tile::before{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;background:linear-gradient(155deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 42%);}
-.notif-tile svg{width:25px;height:25px;color:#ffffff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(255,255,255,.35));position:relative;}
-.notif-seg:hover .notif-tile{transform:translateY(-3px) scale(1.04);border-color:color-mix(in srgb, var(--nc) 85%, #ffffff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -8px 14px rgba(0,0,0,.55),0 12px 24px rgba(0,0,0,.7),0 0 30px color-mix(in srgb, var(--nc) 85%, transparent);}
-.notif-seg:hover .notif-tile svg{filter:drop-shadow(0 1px 2px rgba(0,0,0,.6)) drop-shadow(0 0 9px rgba(255,255,255,.8));}
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07070b,#020203);border:1.5px solid color-mix(in srgb,var(--nc) 62%,rgba(255,255,255,.12));box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:#ffffff;transition:box-shadow .3s,border-color .3s,transform .2s ease,color .2s ease,background .2s ease;}
+.notif-tile::before{display:none}
+.notif-tile svg{width:25px;height:25px;color:#ffffff;filter:drop-shadow(0 2px 2px rgba(0,0,0,.7));position:relative;}
+.notif-seg:hover .notif-tile,.notif-seg:focus-visible .notif-tile{transform:translateY(-2px);border-color:var(--nc);box-shadow:0 10px 20px rgba(0,0,0,.65),0 22px 40px rgba(0,0,0,.45),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent);}
+.notif-seg:hover .notif-tile svg,.notif-seg:focus-visible .notif-tile svg{filter:drop-shadow(0 2px 2px rgba(0,0,0,.7)) drop-shadow(0 0 9px rgba(255,255,255,.8));}
 .notif-seg::after{content:attr(aria-label);position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-transform:uppercase;white-space:nowrap;line-height:1;background:linear-gradient(180deg,#1d1d26,#0b0b10);border:1.5px solid var(--nc);border-radius:999px;padding:8px 14px;box-shadow:0 8px 20px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.3);opacity:0;pointer-events:none;transition:opacity .18s, transform .18s;}
 .notif-seg:hover::after,.notif-seg:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0);}
+/* 2026-11-17 - CLUSTER-ALIGN (S3): .notif-tile::after orbit ring REMOVED - the eye proved it reads as a thin pale line above every bar tile at 1919 in non-hover, hover and held states; by elimination it is the only per-tile element above the tile present at rest (the hover pill is opacity:0 at rest and one tile only; the inset top-light is not in the bytes). Hover rim-light, lift, press, jewel and badge stay verbatim. */
 @media(max-width:560px){#os-bottom3.notif-six{gap:4px !important;}#os-bottom3.notif-six .notif-seg{padding:2px 0 0;}}
 @media(max-width:400px){.notif-tile{width:46px;height:46px;}}
 /* GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control for the Dashboard
@@ -5098,7 +5153,7 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 #os-b3-hide:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.6),0 12px 26px rgba(0,0,0,.65),0 0 18px rgba(255,255,255,.18);}
 #os-b3-hide:active{transform:translateY(1px);}
 body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
-@media(max-width:768px){#os-b3-hide{bottom:82px;}}
+@media(max-width:768px){#os-b3-hide{bottom:90px;}}
 
 /* GREETING-OUT FIX 2026-11-17 (§3.6) — the notification light, bright, for
    each tile: Personal's has-news, HARVESTED VERBATIM from the Personal
@@ -5107,7 +5162,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
    itself was never carried over. When a tile has news, its border goes
    bright in its own colour + white and its glow deepens, like a permanent
    hover. */
-.notif-seg.has-news .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -8px 14px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.65),0 0 30px color-mix(in srgb,var(--nc) 85%,transparent)}
+.notif-seg.has-news .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
 /* BAR-DEPTH 2026-11-17 — the notification seat sits INSIDE each tile now
    (top-right corner of the tile's own black, never off the corner), so the
    jewel reads as part of the object, not a bubble stuck on it. A real jewel,
@@ -5116,14 +5171,33 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
    instead of a dot. A dim dot is never clickable (pointer-events:none) so
    the tile's own tap works; a lit dot opens the day view for today (the
    notification path, §3.7). */
-.os-b3-dot{position:absolute;top:4px;right:4px;width:12px;height:12px;border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle at 35% 30%, #1a1a20, #050607 70%);
-  border:1.5px solid color-mix(in srgb, var(--nc) 55%, transparent);
-  box-shadow:0 0 6px color-mix(in srgb, var(--nc) 30%, transparent);opacity:.55;}
+.os-b3-dot{position:absolute;top:3px;right:3px;width:13px;height:13px;border-radius:50%;pointer-events:none;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 14%, transparent 32%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.12) 0%, transparent 44%),
+    radial-gradient(circle at 50% 50%, var(--nc) 0%, color-mix(in srgb, var(--nc) 62%, #000000) 58%, #050607 100%);
+  border:1.5px solid color-mix(in srgb, var(--nc) 80%, #ffffff);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.22),
+    inset 0 -3px 4px rgba(0,0,0,.6),
+    1px 2px 4px rgba(0,0,0,.8),
+    0 0 8px color-mix(in srgb, var(--nc) 45%, transparent);
+  opacity:1;transition:box-shadow .2s, border-color .2s;}
 .notif-seg.has-news .os-b3-dot{pointer-events:auto;cursor:pointer;opacity:1;
-  background:radial-gradient(circle at 35% 30%, #ffffff, var(--nc) 60%, color-mix(in srgb, var(--nc) 75%, #000000));
-  border-color:#ffffff;
-  box-shadow:0 0 10px var(--nc),0 0 18px color-mix(in srgb, var(--nc) 75%, transparent);}
+  border-color:color-mix(in srgb, var(--nc) 70%, #ffffff);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.28),
+    inset 0 -3px 4px rgba(0,0,0,.55),
+    1px 2px 4px rgba(0,0,0,.8),
+    0 0 12px var(--nc),
+    0 0 20px color-mix(in srgb, var(--nc) 55%, transparent);}
+/* DOTS-DIALOG-FIX 2026-11-17 — PRESS GOES IN, RELEASE COMES OUT (Shawn 22:39Z 3D law):
+   the tile's shadow stack compresses while pressed and springs back on release,
+   so the object feels alive — something happening when you use it. The jewel
+   rides the tile: its cast shadow shortens the same way. */
+.notif-seg:active .notif-tile{box-shadow:0 2px 6px rgba(0,0,0,.7),0 0 10px color-mix(in srgb, var(--nc) 40%, transparent);}
+.notif-seg:active .os-b3-dot{box-shadow:inset 0 2px 3px rgba(255,255,255,.18),inset 0 -3px 4px rgba(0,0,0,.6),0 1px 2px rgba(0,0,0,.8),0 0 6px color-mix(in srgb, var(--nc) 40%, transparent);}
+@media(max-width:400px){#os-bottom3 .notif-tile svg{width:21px;height:21px;}#os-bottom3 .os-b3-dot{width:11px;height:11px;top:2px;right:2px;}}
 
 
 </style>
@@ -5711,7 +5785,7 @@ body:not(.hero-mode) .os-ld{
 /* 2026-11-02 — Bullseye: Smart Stats. Hide smart bar in focused drill-down views. */
 body.viewport-focus #nsbBottom{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;}
 body.viewport-focus .nsb-bottom{display:none !important; visibility:hidden !important;}
-body.viewport-focus #os-bottom3{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;} /* HERO FIX 2026-11-09 (j): drill views hide the bottom bar outright, like #nsbBottom already. */
+body.viewport-focus.os-bottom-hidden #os-bottom3{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;} /* HERO FIX 2026-11-09 (j) + DOTS-DIALOG-FIX 2026-11-17: drill views hide the bottom bar outright — but ONLY while the bar is folded (os-bottom-hidden). When the page is genuinely at the very bottom the bar is not folded, and the FIX-5 show-rule below governs instead. */
 .os-constellation{
   position:relative;
   width:100%;
@@ -9261,7 +9335,7 @@ document.addEventListener('pointerdown',function(e){
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> App behaviour</h3>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#d9a521">🎞️</span><span class="os-setrow-main"><b>Smart Tabs drift</b><span class="os-setrow-sub">The tab ribbon glides slowly, one way &mdash; the NayaNET standard.</span></span><span class="os-switch-wrap" style="--jc:#d9a521"><button class="os-switch on" id="os-set-drift" data-os-set="drift" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">🗂️</span><span class="os-setrow-main"><b>Smart Tabs</b><span class="os-setrow-sub">Show the top tab row (Home, Dashboard, About&hellip;). Off by default on the Dashboard &mdash; the page stays clean.</span></span><span class="os-switch-wrap" style="--jc:#3fb8ff"><button class="os-switch" id="os-set-tabs" data-os-set="tabs" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
+<!-- 2026-11-17 - CLUSTER-ALIGN: the Smart Tabs switch is GONE with the pill row it controlled - the row has no pills to show. -->
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">💫</span><span class="os-setrow-main"><b>Motion &amp; glow</b><span class="os-setrow-sub">Breathing light and living motion across the app.</span></span><span class="os-switch-wrap" style="--jc:#ffbf3d"><button class="os-switch on" id="os-set-motion" data-os-set="motion" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">🔄</span><span class="os-setrow-main"><b>Auto-refresh</b><span class="os-setrow-sub">Quietly re-reads whichever board is open — wall, today, inbox, reports or dashboard — every minute.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch" id="os-set-refresh" data-os-set="refresh" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
 <div class="os-status" id="os-set-status"></div>
@@ -13032,7 +13106,7 @@ NF.register(UNIT, {
   loadWall();
   renderInstallState();
   bindSwitch('os-set-drift', getSet('drift'), function(on){ putSet('drift', on); if (window.osTabsDrift && osTabsDrift.setEnabled) osTabsDrift.setEnabled(on); if (window.osNavDrift && osNavDrift.setEnabled) osNavDrift.setEnabled(on); setStatus('Smart Tabs drift is '+(on?'on — the tab bars glide slowly.':'off — the tab bars sit still; they still scroll by hand.')+' Saved on this device.'); });
-  bindSwitch('os-set-tabs', getSet('tabs'), function(on){ putSet('tabs', on); applyTabsVisibility(); setStatus('Smart Tabs are '+(on?'on — the top tab row is showing.':'off — the top tab row is hidden; the page stays clean.')+' Saved on this device.'); });
+  /* 2026-11-17 - CLUSTER-ALIGN: the os-set-tabs switch is gone with its row. applyTabsVisibility stays inert (body class, no row to show). */
   bindSwitch('os-set-motion', getSet('motion'), function(on){ putSet('motion', on); applyMotion(); setStatus('Motion & glow is '+(on?'on — blocks rise in, dots breathe, cards ignite on touch.':'off — the page is stilled: no entrances, no breathing, no pulse.')+' Saved on this device.'); });
   bindSwitch('os-set-refresh', getSet('refresh'), function(on){ putSet('refresh', on); applyRefresh(); setStatus('Auto-refresh is '+(on?'on — whichever board is open (Home, Today, Inbox, Reports or Dashboard) is quietly re-read every minute.':'off — boards refresh when you open them.')+' Saved on this device.'); });
   bindSwitch('os-set-dark', legacySetting('🌙 Dark mode')!=='off', function(on){ putLegacySetting('🌙 Dark mode', on); document.body.style.filter=on?'':'brightness(1.2)'; setStatus('Deep black is '+(on?'on — the page keeps its deep-night look.':'off — the page renders brighter.')+' Saved on this device.'); });
@@ -23150,8 +23224,9 @@ window.NayaSmartBar = {
     /* ONE set — one tab per section, period. Duplicated tabs are a defect
        (a tab is a promise). 2026-11-08: the row does NOT drift (Shawn's eye —
        the snap-back was the bounce/glitch); it sits still, scrolls by hand. */
-    var tabs = sections.length ? sections : [{label: app.name||'App', target:'#top'}];
+    var tabs = sections; /* 2026-11-17 - CLUSTER-ALIGN: no fallback pill - an empty sections list renders no tabs and the row hides. */
     function renderTopSet(){
+      tRow.style.display = tabs.length ? '' : 'none'; /* 2026-11-17 - CLUSTER-ALIGN: no pills, no row. */
       tRow.innerHTML = '';
       tabs.forEach(function(s, i){
         tRow.appendChild(pill({
@@ -23658,20 +23733,11 @@ window.NayaSmartBar = {
 /* SMART BAR v1.0 config — Dashboard */
 NayaSmartBar.mount({
   app: { name: "Dashboard", honesty: "proven" },
-  sections: [
-    {label:"Home", target:"#home", icon:"\u2302", color:"#d9a521"},
-    {label:"Dashboard", target:"#dashboard", icon:"\u25c9", color:"#3fb8ff"},
-    {label:"About", target:"#about", icon:"\u25ce", color:"#2fe89e"},
-    {label:"Today", target:"#today", icon:"\u2726", color:"#ffbf3d"},
-    {label:"Smart Notes", target:"#notes", icon:"\u25c6", color:"#ff9a5a"},
-    {label:"Connections", target:"#people", icon:"\u25c8", color:"#ff5e6c"},
-    {label:"Message", target:"#message", icon:"\u25c7", color:"#ffbf3d"},
-    {label:"Inbox", target:"#inbox", icon:"\u25a0", color:"#d9a521"},
-    {label:"Growth", target:"#growth", icon:"\u25b2", color:"#3fb8ff"},
-    {label:"Lists", target:"#lists", icon:"\u2630", color:"#2fe89e"},
-    {label:"Reports", target:"#reports", icon:"\u2b22", color:"#ff9a5a"},
-    {label:"Settings", target:"#settings", icon:"\u2699", color:"#ff5e6c"}
-  ],
+  /* 2026-11-17 - CLUSTER-ALIGN: the sections pill row is GONE (Shawn 23:47Z) -
+     the Smart Tabs era is over; the sidebar drawer, bottom bar and search reach
+     every destination. sections stays empty so the mount renders no pills and
+     renderTopSet hides the row. */
+  sections: [],
   network: [
     {label:"Home", url:"https://nayanet.app/", icon:"\u2302"},
     /* 2026-11-01 — Shawn: the Dashboard tab is gone from the bottom bar.
@@ -29133,7 +29199,7 @@ body.viewport-focus #viewport-back{
     if (nb){ if (n > 0){ nb.textContent = String(n); nb.hidden = false; } else { nb.hidden = true; } }
     if (typeof window._osSyncB3News === 'function') { try { window._osSyncB3News(); } catch(e){} }
     var ab = document.getElementById('os-b3-badge');
-    if (ab){ if (n > 0){ ab.textContent = n > 99 ? '99+' : String(n); ab.hidden = false; } else { ab.hidden = true; } }
+    if (ab){ if (n > 0){ ab.textContent = n > 99 ? '99+' : String(n); ab.classList.toggle('os-b3-long', ab.textContent.length >= 3); ab.hidden = false; } else { ab.hidden = true; } }
   }
   /* GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control + the Dashboard
      bar setting. The control and the Settings toggle share one setting
@@ -30062,16 +30128,23 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
    (5) the left + (#os-rooms-plus) moves to 250px — clear of the N orb's
    halo ring + glow at desktop and at 390 (see the build script for the
    geometry); Fix-4's 170px still stands underneath and is overridden here.
-   (6) the six-tile bottom bar STAYS VISIBLE inside drill dialogs: the
-   viewport-focus hide is overridden and the bar is raised above the drill
-   (z-index 10002 over the drill's 10001); the Smart Links drill gets
-   bottom padding so its last row clears the bar. */
+   (6) the six-tile bottom bar STAYS VISIBLE inside drill dialogs — DOTS-DIALOG-FIX
+   2026-11-17 SUPERSEDES the mid-page case: the bar stays visible inside a drill
+   ONLY when the page is genuinely at the very bottom (the bar is not folded);
+   mid-page the bar stays folded, because the fold law is "returns ONLY at the
+   very bottom" and the eye saw the bar return behind the drill twice (Clicks
+   detail 1040, Source detail 235). The show-rule below is narrowed to
+   body.viewport-focus WITHOUT os-bottom-hidden, and the hide above is
+   narrowed to WITH os-bottom-hidden — one gate, every drill dialog, no gap.
+   The bar is still raised above the drill (z-index 10002 over the drill's
+   10001) when it shows; the Smart Links drill gets bottom padding so its
+   last row clears the bar. */
 input::placeholder,textarea::placeholder{color:#fff !important;opacity:1 !important;}
 input::-moz-placeholder,textarea::-moz-placeholder{color:#fff !important;opacity:1 !important;}
 input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#fff !important;opacity:1 !important;}
 .os-note{color:#fff !important;opacity:1 !important;}
 #os-rooms-plus{top:250px !important;}
-body.viewport-focus #os-bottom3{display:flex !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;transform:none !important;z-index:10002 !important;}
+body.viewport-focus:not(.os-bottom-hidden) #os-bottom3{display:flex !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;transform:none !important;z-index:10002 !important;}
 .os-smartlink-view{padding-bottom:110px !important;}
 /* FIX-5a 2026-11-17 (condition 2): the bar override is global, so the
    other nine drills get the same 110px bottom clearance as Smart Links
