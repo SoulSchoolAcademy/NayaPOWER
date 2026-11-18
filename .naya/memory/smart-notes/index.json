@@ -58750,6 +58750,86 @@
         "note": "published directly as a BRAIN projection in commit 939481adaed0772e2beb9a627c961a78b7e759da ('Continuous Distillation Resolve seat 2026-11-18: SN-3374 Parallel, Not One at a Time, Quality in Every Lane') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "2eeb0557ebb85ffabec3081d8a5b4ade07af610e12dab34f07d6d82f792be9c6"
+    },
+    {
+      "smart_note_id": "SN-3375",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3375-the-ultimate-border",
+      "title": "SN-3375 — The Ultimate Border: Emblem in Every Corner, Logo Top and Bottom",
+      "content_hash": "f3e5e8187f19d86c7c04bd3e5d0afd350d22e38efe2f45c739e492724b136b65",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3375/IB-SMART-NOTE-20261118-sn3375-the-ultimate-border.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit ae82f60a25a081e4d85c17dd1dd399ead2346f15 ('Continuous Distillation Resolve seat 2026-11-18: SN-3375 The Ultimate Border') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "445df3bc3fe4092fc0193b9a91bcc58109fdf1e713c41034dd273e3d13e11c77"
+    },
+    {
+      "smart_note_id": "SN-3376",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3376-scorecard-every-return",
+      "title": "SN-3376 — Scorecard Every Return, Whole System: The Captain's Own View",
+      "content_hash": "e4782e858b013a619887ccf405f8f74e494e46572e85a41c5af68fec4128438e",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3376/IB-SMART-NOTE-20261118-sn3376-scorecard-every-return.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit e6f9812dbb29eb0e217d07bd4b154a44e0c829a5 ('Continuous Distillation Resolve seat 2026-11-18: SN-3376 Scorecard Every Return, Whole System') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "e108e08559a629a34cc642b73feafc982330d525d17604b63d5d637ea7111103"
+    },
+    {
+      "smart_note_id": "SN-3377",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3377-efficiency-is-the-game",
+      "title": "SN-3377 — Efficiency Is the Game: 13.5% Today",
+      "content_hash": "35363354d8d451d8b67ae1f5c7cbd42e01dc9659694678c38d13e96682182caa",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3377/IB-SMART-NOTE-20261118-sn3377-efficiency-is-the-game.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 67b3d3255861629b230f625e6e2f3031f2f5e9ea ('Continuous Distillation Resolve seat 2026-11-18: SN-3377 Efficiency Is the Game: 13.5% Today') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "50ec96dc2818f365111fee58152b7e56edcdbc3066ff6ba7444508076055ca6c"
+    },
+    {
+      "smart_note_id": "SN-3378",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3378-the-mail-key-never-moved",
+      "title": "SN-3378 — The Mail Key Never Moved",
+      "content_hash": "cd4a49a50cb49521d0d299a6fb2a0b3fd1fff4d52e58b2eba2eccc4d87ded8c7",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3378/IB-SMART-NOTE-20261118-sn3378-the-mail-key-never-moved.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "CORRECTION",
+      "topic": "CORRECTION",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 0c698fd1c26d7520ad1ffc7dcf15b3256472f457 ('Continuous Distillation Resolve seat 2026-11-18: SN-3378 The Mail Key Never Moved') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "085c75d342e564b4cc515a912947865e6d99f1c93fee567716db3452d7fc55fe"
     }
   ],
   "sequence_policy": {
@@ -58760,5 +58840,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "b051d59cd7bcd5fb18aab0c548b4ce6457bb0972b191e173aa6cb4ad3dbd5216"
+  "corpus_manifest_hash": "58c0dd9970570cb32abd7b3bf66cc36d643fb61051663f9b0d21db5a2e01a721"
 }
