@@ -59371,6 +59371,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3415",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3415-the-vault-is-the-cure",
+      "slug": "the-vault-is-the-cure",
+      "title": "The Vault Is the Cure",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3415/IB-SMART-NOTE-20261118-sn3415-the-vault-is-the-cure.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3415/IB-SMART-NOTE-20261118-sn3415-the-vault-is-the-cure.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3415/IB-SMART-NOTE-20261118-sn3415-the-vault-is-the-cure.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3415-the-vault-is-the-cure.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:15:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "8d34a6dad34dd767f0536e43a741160f5c2a05fcd12b056a378b8ff002ca9a94",
+      "content_hash": "c331b0ec2fd74a3883b741a63822e840f5e778ee6d8836b255df79cb6eecf4bb",
+      "one_line": "The Smart Box is the cure for the saving sickness — the citizen's scattered saves, screenshots and good intentions — and this family builds its legal and mechanical frame: the Harvest Law (take the real parts, literally), first-filed-keeps-the-number, plain-language as law, privacy as the trust story, and the vault mechanics underneath. The Box works only if two things are true at once: what goes in is the real thing, not a retyped shadow of it, and what is in stays private by architecture, told in words a stranger understands. Harvest gives the first; the privacy story, honestly mechanised, gives the second.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59381,5 +59414,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "a70cfb6cbc16cd0eb69c992e784ef35f34ab8fb807650e855bdf46f164da7694"
+  "corpus_manifest_hash": "bfaf924812ef415e8187887e68dca282e5e32c67b2a7087c90cb55b870374f2e"
 }

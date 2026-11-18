@@ -1,0 +1,92 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3415",
+ "title": "The Vault Is the Cure",
+ "slug": "the-vault-is-the-cure",
+ "topic": "SYSTEM",
+ "category": "SYSTEM",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-18T20:15:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "The Smart Box is the cure for the saving sickness — the citizen's scattered saves, screenshots and good intentions — and this family builds its legal and mechanical frame: the Harvest Law (take the real parts, literally), first-filed-keeps-the-number, plain-language as law, privacy as the trust story, and the vault mechanics underneath. The Box works only if two things are true at once: what goes in is the real thing, not a retyped shadow of it, and what is in stays private by architecture, told in words a stranger understands. Harvest gives the first; the privacy story, honestly mechanised, gives the second.",
+  "human_view": "A safety deposit box works because of two facts together: your actual documents are in there — not photocopies you made from memory — and the bank genuinely cannot open it without you. If either fact wobbled, you'd keep your papers at home. The Box asks for the same two facts, in software.",
+  "child_view": "Imagine a treasure chest that only your key opens, and inside are your REAL treasures, not drawings of them. A drawing of your favourite marble is not your marble. The chest has to hold the real things, and the key has to really work.",
+  "grandma_view": "We kept the important papers in a tin box: birth certificates, the deed, real documents, not copies of copies. And nobody else in the family could open it without asking. Sixty years later that box still does its job, because both halves — real papers, real lock — were true from the start.",
+  "ai_view": "Store originals via harvest; reject recreation uploads as Box contents. Enforce owner-scoped access at the data layer, not the UI. Plain-language check every citizen-facing string. Verify retrieval of the original bytes in the saved-game test.",
+  "what_it_means": "A vault is a promise with a mechanism. The promise side lives in this family's law notes: plain language (no term a citizen can't parse), privacy as the headline trust story rather than a policy page, and provenance rules (first filed keeps the number) that make the record itself trustworthy. The mechanism side — harvest the real parts, build the vault to hold them — is what makes the promise keepable. Either half alone is a brochure.",
+  "whats_inside": [
+   "The Harvest Law — Take the Real Parts, Literally",
+   "The Pricing Presentation Is Locked — Best I've Ever Seen Yet",
+   "One Universal App, Starting With Personal",
+   "Dashboard Done-Done Includes the Ledger Spine",
+   "First Filed Keeps the Number"
+  ],
+  "topics": [
+   "Distillation",
+   "System",
+   "Lesson",
+   "Knowledge",
+   "Craft"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 8,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2537",
+     "title": "The Harvest Law — Take the Real Parts, Literally"
+    },
+    {
+     "sn": "SN-2538",
+     "title": "The Pricing Presentation Is Locked — Best I've Ever Seen Yet"
+    },
+    {
+     "sn": "SN-2539",
+     "title": "One Universal App, Starting With Personal"
+    },
+    {
+     "sn": "SN-2540",
+     "title": "Dashboard Done-Done Includes the Ledger Spine"
+    },
+    {
+     "sn": "SN-2541",
+     "title": "First Filed Keeps the Number"
+    },
+    {
+     "sn": "SN-2542",
+     "title": "The Flake Returns — Test the Cause Before You Name It"
+    },
+    {
+     "sn": "SN-2543",
+     "title": "The Smart Box Is the Cure for the Saving Sickness"
+    },
+    {
+     "sn": "SN-2544",
+     "title": "The Click Is Counted, But Not in the Dashboard"
+    },
+    {
+     "sn": "SN-2545",
+     "title": "The Super Brain Is Yours"
+    },
+    {
+     "sn": "SN-2546",
+     "title": "Shawn's Plain-Language Law"
+    }
+   ]
+  },
+  "machine": "1) The Box stores harvested originals (real parts, real files), never retyped recreations. 2) Provenance: first filed keeps the number; later duplicates yield, visibly. 3) Every citizen-facing term is plain-language checked before it ships. 4) Privacy properties are architectural (owner-scoped access), and the trust story states only what the architecture proves. 5) Vault mechanics are verified by the saved-game test: save, leave, return, retrieve the real thing.",
+  "why_it_matters": "Citizens will put their working lives into this Box only if it is both genuinely useful and genuinely private — and they will test both claims exactly once. This essence binds the build rules to the promise rules so the first test passes: real contents, private by construction, explained in plain words.",
+  "how_it_connects": "This essence is batch 8's E6 panel; its raw family spans SN-2537 to SN-2546 (The Harvest Law — Take the Real Parts, Literally → Shawn's Plain-Language Law), and it sits in the standing sequence of sixty essences that came before it — each one checked against the census coverage map for zero overlap before it was written.",
+  "what_is_in_it_for_you": "For you, Shawn, this means this stratum of the record no longer has to be re-read note by note: its law is stated once, whole, in words a cold reader can use — and the hundred raw notes beneath it are accounted for, by number, in the Distills line.",
+  "the_learning": "A vault is a promise with a mechanism: harvest the real thing, keep it private by architecture, and say it in plain words."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3415/IB-SMART-NOTE-20261118-sn3415-the-vault-is-the-cure.md",
+ "page_hash": "8d34a6dad34dd767f0536e43a741160f5c2a05fcd12b056a378b8ff002ca9a94",
+ "content_hash": "c331b0ec2fd74a3883b741a63822e840f5e778ee6d8836b255df79cb6eecf4bb"
+}
