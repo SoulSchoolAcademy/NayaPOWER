@@ -21021,13 +21021,16 @@ function loadPointsBoard(_t){
            pill and the donut can never disagree in one session. Guarded on
            window._dashD: before the live rows land the pill keeps its loading
            glyph (…) instead of printing a false 0. */
+        /* PHONE-390 FIX (2026-11-18): on a dataless profile total is 0 -
+           never paint or persist 0 over the seeded pill; the pill keeps its
+           seed (or its loading glyph) until live rows land with a real total. */
         try{ var _pc = document.getElementById('pointscount');
-          if (_pc && window._dashD) _pc.textContent = total.toLocaleString(); }catch(_){}
+          if (_pc && window._dashD && total > 0) _pc.textContent = total.toLocaleString(); }catch(_){}
         /* ICONS-PLUS-FIX 2026-11-14 (item 1): remember the last-known
            total so the pill can paint it at first paint, before the live
            rows land — "… pts" at first paint is the same lazy pattern as
            the late motto. The live total overwrites it when it lands. */
-        try{ if (typeof total === 'number' && isFinite(total)) localStorage.setItem('naya.points.total.v1', JSON.stringify({total: total, at: Date.now()})); }catch(_){}
+        try{ if (typeof total === 'number' && isFinite(total) && total > 0) localStorage.setItem('naya.points.total.v1', JSON.stringify({total: total, at: Date.now()})); }catch(_){}
         /* #6 PROGRESS RING — to next tier */
         var ringWrap = document.getElementById('os-ring-wrap');
         if (ringWrap){
@@ -30285,10 +30288,16 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
   window.pcCurrentWorld=function(){ return pcCurrent(); };
   function pcApplyWorld(w){
     window.MW_SEARCH_WORLD=w.name;
+    /* PHONE-390 FIX (2026-11-18): at phone width the row is too narrow
+       for 'Search <world>...' - the scope chip beside the input already
+       names the world, so the placeholder shortens to 'Search...' there;
+       full text above phone width. */
+    var _phShort=(window.innerWidth||0)<=480;
+    var _ph=_phShort?'Search\u2026':('Search '+w.name+'\u2026');
     var inp=document.getElementById('pcHubSearchInput');
-    if(inp){ inp.setAttribute('placeholder','Search '+w.name+'\u2026'); inp.setAttribute('aria-label','Search '+w.name); }
+    if(inp){ inp.setAttribute('placeholder',_ph); inp.setAttribute('aria-label','Search '+w.name); }
     var tn=document.getElementById('tnSearchPersonalInput');
-    if(tn){ tn.setAttribute('placeholder','Search '+w.name+'\u2026'); tn.setAttribute('aria-label','Search '+w.name); }
+    if(tn){ tn.setAttribute('placeholder',_ph); tn.setAttribute('aria-label','Search '+w.name); }
     var chip=document.getElementById('pcSearchScope');
     if(chip){ chip.textContent=w.name; chip.setAttribute('aria-label','World: '+w.name+' \u2014 choose a thing'); }
     var wfn=document.getElementById('mwFeedNameWorld');
@@ -33036,6 +33045,30 @@ if(document.readyState==='loading'){
 .pc-points-receipt{flex:0 0 100%;text-align:left;font-size:17px;color:#fff;margin:8px 0 0;}
 .pc-points-receipt:empty{display:none;}
 .ph-head > .ph-actions-row{grid-column:2!important;grid-row:2!important;align-self:center!important;margin-top:0!important;}
+</style>
+<style id="personal-phone-390-fix-20261118">
+/* PERSONAL PHONE-390 FIX 2026-11-18 - five pre-existing defects from the
+   layout-fix eye verdict section 6 (branch personal/phone-390-fix-20261118).
+   (1) Feed-card LOVE / LIKE / COMMENT: below 700px the three buttons were
+   flex:1 - three equal 100px boxes at 390, clipping COMMENT to "COM" and
+   LOVE's final E. Let them size to their labels and wrap instead.
+   (2) Feed-card footer microcopy: the two phrases abutted with zero gap at
+   390. Stack them with a gap at phone width.
+   (4) Late 4px overflow sliver: the cover image's 60s drift scales it to
+   1.05, and the scaled box pokes past the viewport at 390/635.
+   overflow:clip on #cvr keeps the drift visible inside the cover while
+   the clipped box no longer contributes to the page's scrollable overflow.
+   Any late-loading image is also capped at its container. */
+@media (max-width:700px){
+  .board-actions .board-actions-left{flex-wrap:wrap;}
+  .board-actions .board-actions-left .action{flex:0 1 auto;}
+}
+@media (max-width:480px){
+  .ib-microcopy{flex-direction:column;align-items:flex-start;gap:8px;}
+  .ib-microcopy .left,.ib-microcopy .right{text-align:left;}
+}
+#cvr{overflow:clip;}
+img{max-width:100%;}
 </style>
 <style id="personal-layout-fix-20261118-demographics-css">
 /* FOLLOW-ON 3 AMEND (2026-11-18) — the demographics menu. A section inside
