@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2957",
+ "intelligence": {
+  "title": "Tap to View, See Sample",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2957-tap-to-view-see-sample",
+  "smart_note_id": "SN-2957",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2957/IB-SMART-NOTE-20261116-sn2957-tap-to-view-see-sample.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A \"view your page\" that opens a demo is a lie the citizen discovers in one tap — and a \"see sample\" that opens a stale page teaches them the wrong page. Both links go to the real Personal because the real Personal is the page: the one being corrected today (SN-2955, Personal done today), the template every other page is sampled from. There is one page to see, and it is theirs. \"See sample\" going to the same updated Personal is the honest part: the sample IS the real page, because the real page is the standard — there is no second, prettier version kept aside for showing.",
+  "simple_view": "Imagine you just built your very own page, and there are two buttons: \"Tap to view your page\" and \"See sample\". Both of them take you to YOUR real page — the beautiful new one we're working on right now! Not a pretend page, not an old page — YOUR page, the real one! Because your page IS the sample — it's the best one there is!",
+  "grandma_view": "It's like this, love — when you've just made your page, there are two little buttons: \"Tap to view your page\" and \"See sample\". Both of them take you to your REAL page, dear — the lovely updated one we're working on today. Not a pretend one, not an old one — yours. Because your page IS the sample, love: it's the pattern all the others follow, so there's only one page to see, and it's yours.",
+  "naya_view": "Tap to view your page: their real page, the updated Personal. See sample: the updated Personal too. Neither ever opens a demo, a mock, or a stale sample. One page to see, and it is theirs.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2957",
+   "title": "Tap to View, See Sample",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2957/IB-SMART-NOTE-20261116-sn2957-tap-to-view-see-sample.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2957/IB-SMART-NOTE-20261116-sn2957-tap-to-view-see-sample.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b0235c7cd13d983880fb3353db89dd62726ebec0"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

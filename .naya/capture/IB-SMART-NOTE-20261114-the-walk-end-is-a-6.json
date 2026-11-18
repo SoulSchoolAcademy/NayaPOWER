@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2807",
+ "intelligence": {
+  "title": "The Walk End Is A 6",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-the-walk-end-is-a-6",
+  "smart_note_id": "SN-2807",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2807/IB-SMART-NOTE-20261114-the-walk-end-is-a-6.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "A walk is a story, and a story is judged by its ending — the beginning earns attention, the middle earns trust, but the end is where the person decides, and a decision made in a narrow wall of text with okay buttons is a decision made while already leaving. Shawn's score of 6 is precise, not harsh: the walk earned its beauty until the moment that mattered most, and then it dropped the ball. The fix is not more words — it is the opposite of more words. It is one unfolding presentation where the agreement opens like a manuscript, each click revealing the next piece, until the world itself is revealed — ta-da — and only then, after they have seen the kingdom, do they choose what to pay. The order is the logic: you sign the promise before you see the price, because the promise is what the price is for. And the pilot running here is the discipline: the most important moment gets tested first, with stand-ins walking it cold, before any real citizen ever touches it.",
+  "simple_view": "Imagine a magic show where the magician does amazing tricks — and then at the very end, when it's time for the BIG surprise, he just reads you a boring list! That's not magic! The end should be the BEST part — you open a beautiful book, it unfolds and unfolds, and TA-DA! Here's your whole kingdom!",
+  "grandma_view": "It's like a lovely dinner that ends with a dry cracker, love. The beginning was beautiful, the middle was beautiful — but the ending is what people remember, and the ending is where they decide. The ending should be the grand reveal: the curtain opens, and there is your kingdom, waiting for you.",
+  "naya_view": "I judge a walk by its end — because the end is where the sale happens, and a 6 end makes the whole walk a 6. One unfolding presentation, full screen: agreement first, then the world, then hired, then the package last. The agreement unfolds like the pricing page, click a block, it folds open to the next, buttons elite, lighting different colors on hover — magical, beautiful, full of life. And the pilot tests this moment first, with stand-ins walking it cold.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2807",
+   "title": "The Walk End Is A 6",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2807/IB-SMART-NOTE-20261114-the-walk-end-is-a-6.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2807/IB-SMART-NOTE-20261114-the-walk-end-is-a-6.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ee8e1fed78dc438c5b3e9a59e6b38be764a1e8a8"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

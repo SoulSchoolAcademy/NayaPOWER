@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2996",
+ "intelligence": {
+  "title": "Optimize for Finishing and Producing Value",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2996-optimize-for-finishing-and-producing-value",
+  "smart_note_id": "SN-2996",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2996/IB-SMART-NOTE-20261116-sn2996-optimize-for-finishing-and-producing-value.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The re-aim throws out the wrong scoreboard and installs the right one. The wrong scoreboard counted wakes and cadence — how often a job runs, how many dispatches went out — as if motion were value. His correction is blunt: the interval is not the work. Fifteen minutes or thirty minutes is a cost dial, not a result; counting it is counting the price and calling it the purchase. The real score is verifiable work that is positive, good, useful, done right — finished, in front of him, proven. A job that wakes often and finishes nothing is waste, however busy its ledger looks; a job that wakes often and lands finished work is fine, however often it wakes. So the metric becomes completions per hour, and dispatches per hour becomes vanity — the count that flatters the machine while the human gets nothing. This re-aims the performance audit itself, mid-flight: the audit seat was told the same pass to measure completions and verifiable value delivered, to state each area's ultimate answer first, and to judge finished / done right / optimal time — and the cadence question (15 vs 30 minutes) was withdrawn outright. The law now governs every job, round, and lane: optimize for finishing, measure the finish, and count the wakes only as cost against the value produced.",
+  "simple_view": "Imagine you have a toy machine that goes BEEP BEEP BEEP all day long — but it never makes a single toy! Is that a good machine? No! A good machine is one that FINISHES toys — real toys you can hold! It doesn't matter how many beeps it makes. What matters is how many toys it finishes. That's the rule!",
+  "grandma_view": "It's like this, love — imagine someone who rushes about the kitchen all day, dear, pots clanging, but never puts a single dinner on the table. All that rushing isn't cooking, love — the dinner is the cooking! So we don't count how busy the kitchen is, dear. We count the dinners finished, lovely and done right. That's what matters.",
+  "naya_view": "Optimize for finishing and producing value. It's not about 15 minutes or 30 minutes. It's about them finishing the work — and producing value. Verifiable work that is positive, good, useful, done right. Cadence and wake-up counts are cost, not the score. Completions per hour is the metric; dispatches per hour is vanity.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2996",
+   "title": "Optimize for Finishing and Producing Value",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2996/IB-SMART-NOTE-20261116-sn2996-optimize-for-finishing-and-producing-value.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2996/IB-SMART-NOTE-20261116-sn2996-optimize-for-finishing-and-producing-value.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "13422e5c10db3df3aa3e5e6e20d0140aa49fbd5e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

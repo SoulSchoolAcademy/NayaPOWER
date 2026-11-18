@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2951",
+ "intelligence": {
+  "title": "Workers Paid Is Live",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2951-workers-paid-is-live",
+  "smart_note_id": "SN-2951",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2951/IB-SMART-NOTE-20261116-sn2951-workers-paid-is-live.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Sixteen hours of 429s, and the fix was his hand on the dashboard: five dollars a month, one purchase, and the wall is gone. That is the shape worth noting — the upgrade needed nothing stored, nothing rewired, nothing re-authenticated. The token he already had is the token that now works a million times a month instead of a thousand times a day. The verification is the proof, not the screenshot: a live write landed, a live read-back matched, a live delete cleaned up — on the same store that refused writes all morning. The crons that were waiting for midnight got run early instead, because waiting for a reset that no longer needs to happen is the old shape.",
+  "simple_view": "Imagine a little box that can only hold 1,000 tiny notes a day — and every day it filled up and said \"NO MORE!\" Then Shawn bought a magic upgrade, and now the box can hold a MILLION notes a month! The box didn't move, the key didn't change — it just got bigger, all by itself. And we tested it: we put a note in, read it back, and took it out — it works!",
+  "grandma_view": "It's like this, love — we had a little post box that only took a thousand letters a day, and by mid-morning it was full and turning letters away. Shawn went and bought the bigger box himself — five dollars a month — and now it takes a million letters. Same box, same key, just bigger, all automatic. And we tested it properly: posted a letter, read it back, took it out again. It works, dear.",
+  "naya_view": "Workers Paid is live: $5/month, KV 1,000/day → 1M/month, 500 workers. Nothing new to store — the upgrade is automatic and account-wide. The walk, the thank-you loop, and the intelligence room are unblocked. Verified live: write, read-back, delete.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2951",
+   "title": "Workers Paid Is Live",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2951/IB-SMART-NOTE-20261116-sn2951-workers-paid-is-live.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2951/IB-SMART-NOTE-20261116-sn2951-workers-paid-is-live.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ef0fc1c3f12fa82f0efe1c3dfb02463fd64270ed"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3030",
+ "intelligence": {
+  "title": "Personal, Just Right, Done Today",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3030-personal-just-right-done-today",
+  "smart_note_id": "SN-3030",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3030/IB-SMART-NOTE-20261116-sn3030-personal-just-right-done-today.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Ten notes, one page, one day — and the shape of the work is the lesson. The standard is a finish line, not a direction: \"just right\" says where to stop, and \"smaller\" or \"bigger\" only says which way to move — round 2 too big, round 3 too small, and the oscillation ends the moment the standard names the stop. The harvest is the method: the proper Connections already existed in the live room, and the round's job was to bring it home measured in pixels — 78px against 198px, caught by the checker, fixed in 20 lines — because rebuilding a system that already exists is the most expensive way to get the second-best version of it. The rulings are the eye's corrections to readings: \"same icons on each page\" was never a copy of the Hub bar onto Personal; \"Public feed\" was the wrong word for the collective feed; a glow that shouts its colour is a defect, not a highlight. The laws are the shape made permanent: three things on a feed and one filter row, because two rows is how \"All\" became a second control and the glow became a defect — and a project is a world you add, which kills a whole category of future work in one sentence. Fast Action Mode is the delivery made honest: the relay was built to protect him from unfinished work and became the thing that kept finished work from him — the visual agreement sat 10 hours — so the holding goes and the verification stays. And \"done today\" is finishable only because its boundary is named in the same breath: the door gets done, the inside waits on his tap, and nobody pretends the room is open before it is. The unblock and the share frame the day: a quota wall that looked like a system failure was a plan limit, fixed by his hand for $5/month; and the first thing a new citizen shares should be beautiful, because it is the beginning of their world. One page, judged whole, shown the same pass — that is how a template gets finished.",
+  "simple_view": "Imagine your page is the very first drawing. Every other page is traced from it. So it must be finished first. Just right, edge to edge. And shown right away, tap, tap, tap!",
+  "grandma_view": "It's like this, love — the first dress is the pattern all the others are cut from, so it has to be finished properly, today, right through to the members' door. The buttons must fit just right, edge to edge, no gaps. The green must be soft and elegant, not shouting. And when a piece is finished, you show it straight away — no leaving it on a shelf for hours while everyone's hungry. The secret room behind the door still needs Shawn's own key, dear — but the door gets finished today, and nobody pretends the room is open before it is.",
+  "naya_view": "Just right: eight buttons, perfect fit, no black space either side. Harvest the room — don't rebuild it. The five only on the bottom, the Hub bar Hub-only. A feed is three things, one filter row. Fast action: shown the same pass. Personal done today — the template every page is traced from.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3030",
+   "title": "Personal, Just Right, Done Today",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3030/IB-SMART-NOTE-20261116-sn3030-personal-just-right-done-today.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3030/IB-SMART-NOTE-20261116-sn3030-personal-just-right-done-today.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f73059216e5dd3cadc4b61f1cef07fd5029f43b3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

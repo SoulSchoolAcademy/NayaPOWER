@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2963",
+ "intelligence": {
+  "title": "The Demographics That Connect You",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2963-the-demographics-that-connect-you",
+  "smart_note_id": "SN-2963",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2963/IB-SMART-NOTE-20261116-sn2963-the-demographics-that-connect-you.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "This is the onboarding promise made visible: what you tell the system is how the system finds people like you. The more you tell it, the more it finds; if you don't set it, they can't find you; if you don't want to be found, don't set it. Every question is the citizen's choice — on or off, entered or skipped — and the feed follows: people into those things as connections, content about those things in the feed, people recommended. And the content source is the same choice: public content on a topic, setting or filter, just NayaNET content, or both. That is the customizable internet: it seeks to optimize for you, and you choose what \"for you\" means.",
+  "simple_view": "Imagine a magic friend who asks you questions: what do you like? What music? What books? Where do you live? And every answer you give helps the friend find other kids who like the same things! You can answer all the questions, or just some, or none at all — it's your choice. And the more you share, the more friends like you show up!",
+  "grandma_view": "It's like this, love — in the settings there's a lovely list of questions about you: where you're from, what language you speak, what you're into, your favourite music and books and people. You answer the ones you fancy, dear, and leave the rest — each one you can switch on or off. And what happens is, the system finds people just like you — they show up in your feed, and lovely things about the things you love show up too. It's your internet, made just for you.",
+  "naya_view": "The demographics are the questions that connect you: where you are, what you do, what you love — each one on or off, your call. What you enter is what finds people like you, in your feed and in your recommendations. Public, NayaNET, or both — your setting.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2963",
+   "title": "The Demographics That Connect You",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2963/IB-SMART-NOTE-20261116-sn2963-the-demographics-that-connect-you.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2963/IB-SMART-NOTE-20261116-sn2963-the-demographics-that-connect-you.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "4f931756edb5b1243e81d314242c670c6ddd457c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

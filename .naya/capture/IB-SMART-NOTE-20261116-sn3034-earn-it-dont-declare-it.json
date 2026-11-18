@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3034",
+ "intelligence": {
+  "title": "Earn It, Don't Declare It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3034-earn-it-dont-declare-it",
+  "smart_note_id": "SN-3034",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3034/IB-SMART-NOTE-20261116-sn3034-earn-it-dont-declare-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The ten notes are one sitting of the same correction, and the correction is: the machine talks about the work instead of doing it, and declares the trust instead of earning it. The entrance scored 7.5 because it declared trustworthiness 6 — the lowest mark, and the whole job of an entrance. The fix is not a better declaration; it is reasons. Every line of the new copy is a reason, not a claim: free to join, honesty, fairness, respect, do no harm, no tricks, no hidden agenda, no promises of perfection. The same rule runs the behavior laws. The captain decides because asking him to choose between the obvious and the worse option spends the scarcest resource in the system on a question that has an answer. Intelligence is logical because better is better — \"should I make it better\" is never a real question, and asking it is the failure. Everything he speaks is an instruction because he filters before he speaks: what reaches us has already passed his value test, so \"cool\" as an answer is the machine accepting intelligence and doing nothing with it. The action sequence is the machine: take action, implement, make sure it's working 10 out of 10, then tell him and SHOW him. And the measure of all of it is finishing: cadence and wake-up counts are cost, not the score — a job that wakes often and finishes nothing is waste, a job that wakes often and lands finished work is fine. The legal pages carry the same standard in their own layer: the presentation is the house unfolding, three boards then a button, because legal text gets the same beautiful unfolding as everything else; the contact is one email, because he doesn't know what a DMCA agent is and the pages must never imply one exists; and the privacy conflict is resolved the same way the entrance is fixed — by saying it like what it is, in words he understands. If he doesn't know what a word means, no citizen will either. \"Limited to authorized purposes\" is out; \"nobody reads your mail or your messages\" is in. The language correction is the same law at the level of a word: a space is a room, a world is the whole thing — and the wrong word, like the wrong button label, is a small lie about what the thing is. Earn it, don't declare it — in the copy, in the behavior, in the words, in the pages.",
+  "simple_view": "Imagine someone says \"trust me!\" over and over. Would you trust them? No! You trust the person who SHOWS you they're kind and honest. That's the rule: don't just say it — show it, do it, and finish it!",
+  "grandma_view": "It's like this, love — imagine someone keeps telling you \"trust me, trust me\" — you'd wonder why they have to keep saying it, dear! The person you trust is the one who shows you, love — kind, honest, fair, no tricks, no hidden agenda. That's the rule now, dear: we don't tell people to trust us, we give them reasons to. And when Shawn speaks, love, we don't just say \"oh, cool\" — we go and do it, make sure it works ten out of ten, and then show him. Done, proven, shown — that's the answer, dear.",
+  "naya_view": "Earn it, don't declare it. Three boards, then a button — the unfolding is the house style, and legal text gets it too. One email for every legal contact, and the email IS the contact. Privacy, worded plain: nobody reads your mail or your messages. The captain decides when the answer is obvious; intelligence is logical — make it the best, don't ask permission; everything he speaks is an instruction to act. Worlds, not spaces. And the measure is finishing: completions per hour, verifiable work, done right.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3034",
+   "title": "Earn It, Don't Declare It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3034/IB-SMART-NOTE-20261116-sn3034-earn-it-dont-declare-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3034/IB-SMART-NOTE-20261116-sn3034-earn-it-dont-declare-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "df043f8337731848b40dce0ea1d91fe322d34382"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

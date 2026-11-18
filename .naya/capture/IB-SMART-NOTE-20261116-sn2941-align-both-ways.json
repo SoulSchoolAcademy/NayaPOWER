@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2941",
+ "intelligence": {
+  "title": "Align Both Ways",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2941-align-both-ways",
+  "smart_note_id": "SN-2941",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2941/IB-SMART-NOTE-20261116-sn2941-align-both-ways.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Alignment is not a look — it is a promise that the same thing works the same way everywhere you meet it. Shawn's eye caught the two pages drifting: different bars, the Smart Notes system living on one page and only \"kind of\" on the other, clicks that may or may not land. The round's discipline is the lesson: ground first in the settled navigation (never invent a third bar), harvest the actual system over (not a copy of it), count live (never painted), and sweep every click. The Hub side proved it in two passes — the fix pass caught exactly one narrow defect, the empty status pill, and fixed it with Personal's own rule verbatim, which is what harvesting means. And his live post working is the other half of the same standard: the thing doesn't just look aligned, it works.",
+  "simple_view": "Imagine your two favourite rooms in your house — but one has different light switches than the other, and one has a toy box and the other doesn't! That's silly. You make both rooms the same: same switches, same toy box, every door opens. Then everything feels like ONE house, and you never get lost.",
+  "grandma_view": "It's like this, love — if the kitchen and the parlour each do things a different way, you spend your whole visit figuring out where things are. Make them match: same handles, same shelves, everything in the same place, every door opening when you turn the knob. Then the whole house feels like home, and you can just enjoy it.",
+  "naya_view": "Align both ways: one icon bar, one Smart Notes system with its tabs, on Hub and Personal alike — same icons, every click works, everything flows off each other.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2941",
+   "title": "Align Both Ways",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2941/IB-SMART-NOTE-20261116-sn2941-align-both-ways.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2941/IB-SMART-NOTE-20261116-sn2941-align-both-ways.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "604308f2b0d00c1ccc3439a129d24c5b33ebc011"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

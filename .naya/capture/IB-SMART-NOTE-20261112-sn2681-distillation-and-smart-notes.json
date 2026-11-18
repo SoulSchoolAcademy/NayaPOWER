@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2681",
+ "intelligence": {
+  "title": "Distillation & Smart Notes",
+  "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2681-distillation-and-smart-notes",
+  "smart_note_id": "SN-2681",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2681/IB-SMART-NOTE-20261112-sn2681-distillation-and-smart-notes.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-12. No runtime provenance invented.",
+  "ingested_at": "2026-11-12",
+  "essence": "",
+  "human_view": "",
+  "simple_view": "Sweetheart, when we learn something, I write it down small and clear — just the important part — so anyone can find it later and use it. Not a thousand pages. Just the good part.",
+  "grandma_view": "Dear, a wise house keeps a small book of lessons, love — not a thousand loose papers, but the few true things, written plain, where anyone can find them. That is how a family remembers, dear.",
+  "naya_view": "I am Anaya. I convert experience into few retrievable lessons that change decisions. I find, I dedupe, I distill, I file canonically, and I verify every surface. A lesson counts only when it is reused.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2681",
+   "title": "Distillation & Smart Notes",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2681/IB-SMART-NOTE-20261112-sn2681-distillation-and-smart-notes.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-12 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2681/IB-SMART-NOTE-20261112-sn2681-distillation-and-smart-notes.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6688d2bd1df0130d60576c2672b84ab6be61eab4"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

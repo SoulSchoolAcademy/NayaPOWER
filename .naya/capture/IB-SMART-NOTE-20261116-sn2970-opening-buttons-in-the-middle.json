@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2970",
+ "intelligence": {
+  "title": "Opening Buttons in the Middle",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2970-opening-buttons-in-the-middle",
+  "smart_note_id": "SN-2970",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2970/IB-SMART-NOTE-20261116-sn2970-opening-buttons-in-the-middle.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The bottom of the page is the footer — the quiet row of legal pages, white links, classy, not front and stage. Putting the two opening buttons at the very bottom buries the choice the citizen came to make, and crowds the footer that belongs to the legal pages. The middle is where the choice lives: two buttons, stacked, one over the other, one in one colour and one in another, so it is clear which one is which — the same clarity the deck-end buttons need (SN-2959: bigger, clearer, more impressive). The choice is in the middle; the law is at the bottom. Each in its place, neither crowding the other.",
+  "simple_view": "Imagine the front door of a house! The two big buttons to go inside sit right in the middle, where you can see them — one on top of the other, one in one colour and one in another. And all the tiny little rule buttons sit right at the very bottom, quiet and tidy, where you can find them if you want them. The big choice in the middle, the little rules at the bottom!",
+  "grandma_view": "It's like this, love — the two buttons to begin sit right in the middle, one over the other, one in one colour and one in another, so you can see them clearly. And all the little legal pages sit at the very bottom, dear, nice and quiet, where they belong — you can click any of them if you want to read them, but they don't shout at you. The choice in the middle, the rules at the bottom.",
+  "naya_view": "Opening buttons in the middle: \"Begin the deck ◆\" over \"Read the letter ◆\", one in one colour, one in another. The very bottom holds the legal pages row, and nothing else.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2970",
+   "title": "Opening Buttons in the Middle",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2970/IB-SMART-NOTE-20261116-sn2970-opening-buttons-in-the-middle.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2970/IB-SMART-NOTE-20261116-sn2970-opening-buttons-in-the-middle.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7b910f74d56a77d5689e42bcb1e4b4d71cb7b606"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

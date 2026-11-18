@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2956",
+ "intelligence": {
+  "title": "Walk-End Plus Button",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2956-walk-end-plus-button",
+  "smart_note_id": "SN-2956",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2956/IB-SMART-NOTE-20261116-sn2956-walk-end-plus-button.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The end slide is the moment the citizen has something to share — their pages, their world, their Smart Link — and until now there was no way to share it from that moment. The button is the share: one tap, out to mobile, Facebook, email, wherever they live. The design is specified in his words, not approximated: black/obsidian, a white glowing circling orb over it, a white plus in the middle — a beautiful icon, because the first thing a new citizen shares should look like the world they just joined. An orb that circles and glows is a living thing, not a flat shape; the plus in the middle says \"more\" without a word.",
+  "simple_view": "Imagine you just finished building your very own world, and on the last page there's a beautiful magic button — black like shiny stone, with a glowing white ring circling around it, and a white plus right in the middle! You tap it, and your world flies out to your phone, to Facebook, to email — to all your friends! One tap, and everyone can see what you made!",
+  "grandma_view": "It's like this, love — when you've just finished making your beautiful new world, the last page should have a lovely little button, right where your special link shows. It's black like polished stone, with a soft white ring glowing and circling around it, and a white plus in the middle. One tap, dear, and your world goes out to your phone, to Facebook, to email — to everyone you love. The first thing you share should be beautiful, because it's the beginning of your world.",
+  "naya_view": "The end slide gets a plus button where the Smart Link shows — tap to share out. Black/obsidian, white glowing circling orb, white plus in the middle. A beautiful icon for the moment a citizen's world begins.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2956",
+   "title": "Walk-End Plus Button",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2956/IB-SMART-NOTE-20261116-sn2956-walk-end-plus-button.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2956/IB-SMART-NOTE-20261116-sn2956-walk-end-plus-button.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f5b2e833929a58a4b29768e3b0deb265ed6284b3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

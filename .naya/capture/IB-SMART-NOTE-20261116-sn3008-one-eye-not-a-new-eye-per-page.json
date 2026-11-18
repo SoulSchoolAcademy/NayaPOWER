@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3008",
+ "intelligence": {
+  "title": "One Eye, Not a New Eye Per Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3008-one-eye-not-a-new-eye-per-page",
+  "smart_note_id": "SN-3008",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3008/IB-SMART-NOTE-20261116-sn3008-one-eye-not-a-new-eye-per-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The complaint is small and the law is large. The complaint: an info button whose I cannot be read is not an info button — it is a blob, and a blob on a premium page is a fail. The fix he names is not \"draw a better I\" — it is \"use the eye you already did well.\" The pricing eye is proven: white and pearl, a purple edge light, an I that reads plainly. The law: one canonical version of every element, used everywhere it fits, never remade. Every time a seat draws a fresh variant of a solved element, the system gets a little more inconsistent, a little harder to hold in the head, a little less premium — and the next seat has to choose between three eyes instead of using the one. The maker names the pricing-eye source (file, bytes) and takes it verbatim; the checker byte-compares against the pricing bytes and confirms the I reads plainly at 390 and 1440; no other I variant anywhere on the page. That is the whole discipline in one element: harvest first, never remake.",
+  "simple_view": "Imagine you have a favourite sticker — a beautiful shiny star! Would you draw a brand-new different star every single time you need one? No! You use your beautiful sticker again and again, everywhere! That's what the eye is — one beautiful eye, used everywhere, so everything matches and looks perfect!",
+  "grandma_view": "It's like this, love — if you've got a beautiful button in your sewing box, dear, you don't make a new one every time you need one, you use the beautiful one you already have! One good eye, used everywhere, so everything matches and looks lovely, love. That's the sensible way, dear.",
+  "naya_view": "One eye, not a new eye per page. When something is good you use it — learn from the other pages and use it, never make new ones all the time. The pricing eye is the eye: white and pearl, purple edge light, an I that reads plainly. Take it verbatim, put it everywhere an ⓘ belongs, and never draw another one.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3008",
+   "title": "One Eye, Not a New Eye Per Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3008/IB-SMART-NOTE-20261116-sn3008-one-eye-not-a-new-eye-per-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3008/IB-SMART-NOTE-20261116-sn3008-one-eye-not-a-new-eye-per-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d8845da98a696a10b0548abe62ff9200ee66d4e5"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

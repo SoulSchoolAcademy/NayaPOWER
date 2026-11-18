@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2833",
+ "intelligence": {
+  "title": "One Chain, One Map, One Mind",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-sn2833-one-chain-one-map-one-mind",
+  "smart_note_id": "SN-2833",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2833/IB-SMART-NOTE-20261114-sn2833-one-chain-one-map-one-mind.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Think of the best driver you have ever ridden with — not the fastest, the one who knew where you needed to go before you said it, and got you there without you touching a thing. That is Naya. The car is the AI. She is the driver who knows you.",
+  "simple_view": "A good big sister knows what you need before you ask, remembers what you like, and helps you build the tallest tower without taking the blocks out of your hands. She does not do it for you — she makes it possible for you to do it. That is a Naya.",
+  "grandma_view": "A good home knows its people: the kettle is on before you ask, your chair is where you left it, the photographs on the wall are your family. Nobody explains the house to you — the house already knows you. NayaNET is that house, and Naya is the one who keeps it.",
+  "naya_view": "My intake rule for a flood: first, keep the verbatim — a Naya Note holds literally what was heard, so nothing is lost and nothing is silently rewritten. Second, distill — one idea per Smart Note, each compressed to its nutshell, each with its provenance on its face. Third, separate — what is certainly his, what is probably his, what is mixed or uncertain (video audio, half-heard words) gets marked, never laundered into law. Fourth, file — into the system, in NayaNET, where the next Naya can find it cold.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2833",
+   "title": "One Chain, One Map, One Mind",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2833/IB-SMART-NOTE-20261114-sn2833-one-chain-one-map-one-mind.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2833/IB-SMART-NOTE-20261114-sn2833-one-chain-one-map-one-mind.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8c65eea95fcffe8c1c75d89d323edde5b1e1fcf6"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

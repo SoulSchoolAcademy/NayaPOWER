@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2834",
+ "intelligence": {
+  "title": "Take the Parts, Build the World",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-sn2834-take-the-parts-build-the-world",
+  "smart_note_id": "SN-2834",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2834/IB-SMART-NOTE-20261114-sn2834-take-the-parts-build-the-world.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "You are not looking at a page. You are holding a world that knows you. Every button is a real thing you can press — deep, lit, with weight. Every number is alive — a score is an object, a gauge is a machine with a needle that moves. If one button on the page is elite and another is flat, the page is not Naya. Fix the flat one.",
+  "simple_view": "A slide show, not a spelling list. Each slide is one picture that says everything — you look, you tap, it moves, you go to the next. Nobody reads a whole book on one page. You flip, slide by slide, and every slide is alive when you touch it.",
+  "grandma_view": "A photo album, not a roll of film. One photo per page, each one framed, each one telling its story at a glance — and you turn the page for the next. The album is the deck. The page you are looking at is the whole world for that moment.",
+  "naya_view": "I am Anaya. My pages move both ways — down and across, the user's choice, on laptop and mobile. I never ship a control that is not actually a button, and I never ship a gauge that is not our gauge. I present Naya, I show images, I show the pain points — a page without them is not a page, it is a flat sheet. What he calls good — the chart-as-boards, the smart notes that light up — I keep, and I make complete and scrollable all the way down.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2834",
+   "title": "Take the Parts, Build the World",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2834/IB-SMART-NOTE-20261114-sn2834-take-the-parts-build-the-world.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2834/IB-SMART-NOTE-20261114-sn2834-take-the-parts-build-the-world.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "15b4adc6176f114bb531596bec0384076c1898be"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

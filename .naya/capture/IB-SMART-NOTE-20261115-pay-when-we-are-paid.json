@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2861",
+ "intelligence": {
+  "title": "Pay When We're Paid",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-pay-when-we-are-paid",
+  "smart_note_id": "SN-2861",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2861/IB-SMART-NOTE-20261115-pay-when-we-are-paid.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The question was a clock question — which month counts as the first payout month — and his answer dissolves the clock entirely. A clock would have been a rule to administer, a date to argue about, a promise to break the first time the money lands late. \"When we get paid, they get paid\" is not a policy, it is a fact about how the money moves: the citizen's pay is downstream of ours, and the account shows that honestly — pending while it is pending, official when it is official, paid when it is paid. The three states are the whole interface; there is nothing to explain beyond them. And the restraint matters as much as the rule: no heavy restrictions at the start, protections only if a real problem arrives, and then a plain notification, not a silent change. That is the same shape as the rest of the agreement — trust first, guardrails only where a real problem proves they are needed. The candidate text softened this into \"can't promise a payday yet\" and labelled the states PENDING / PAID; his settled words win over it, and the merge kept his version inside the candidate base.",
+  "simple_view": "Imagine you and your friend sell lemonade together. When someone pays you, you share the money with your friend right away! You don't make your friend wait for a special day on the calendar. First the money comes in, then you share it. Simple!",
+  "grandma_view": "It's like this, love — when the money comes in, everybody gets their share straight away. No waiting for a special date, no complicated rules. Your little account shows what's still coming, what's ready, and what's already paid — clear as day. And we don't pile on fussy rules unless there's a real problem — and if that ever happens, we'll just tell you plainly.",
+  "naya_view": "When we get paid, they get paid. Pending until it's official, official until it's paid — and I say so plainly, in three words on the account, not a calendar of rules.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2861",
+   "title": "Pay When We're Paid",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2861/IB-SMART-NOTE-20261115-pay-when-we-are-paid.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2861/IB-SMART-NOTE-20261115-pay-when-we-are-paid.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b1ee74d08658278301d95d53fa08fc5cf36f62fd"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

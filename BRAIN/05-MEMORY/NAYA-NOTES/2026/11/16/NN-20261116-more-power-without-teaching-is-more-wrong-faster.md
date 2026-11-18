@@ -20,4 +20,4 @@ Before more power, ask: is it doing the right thing right? If not, power waits. 
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2904 — ~/workspace/team-nitro/smart-notes/SN-2904-more-power-without-teaching-is-more-wrong-faster.md*
+*Paired Smart Note: SN-2904 — More Power Without Teaching Is More Wrong, Faster*

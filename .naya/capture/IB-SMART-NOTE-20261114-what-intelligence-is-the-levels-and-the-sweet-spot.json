@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2786",
+ "intelligence": {
+  "title": "What Intelligence Is — The Levels and the Sweet Spot",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-what-intelligence-is-the-levels-and-the-sweet-spot",
+  "smart_note_id": "SN-2786",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2786/IB-SMART-NOTE-20261114-what-intelligence-is-the-levels-and-the-sweet-spot.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The levels matter because each one names a failure mode the lower ones cannot see. A thermostat senses, acts, and has a goal — and that is intelligence at L1, honestly named, not dismissed. A chess engine is L2: magnificent inside its world, helpless outside it, and mistaking its skill for intelligence is the oldest error in the field. The crow is L3 because it handles what nobody planned for — range, not depth, is the measure. The second friend is L4 because memorizing is cheap and learning fast from little is the real skill — Chollet's point is that any score can be bought with enough priors or data, so the honest measure is efficiency. L5 is the ideal the math points at and cannot compute. L6 is the level most systems never reach: they optimize a goal somebody else chose. And the sweet spot sits above all six because it is not a level at all — it is what the levels are for: continuous production that is valuable and useful. Speed is not the sweet spot; numbers are not the sweet spot; the bullseye hit over and over until it is habit is. That is the same law as the 02:57Z keep-going charge, now with its definition behind it.",
+  "simple_view": "Think of intelligence like climbing stairs! Step one: you can feel things and do things and want things — like a little heater that knows when it's cold! Step two: you're REALLY good at one game — like chess! Step three: you can figure out brand-new problems nobody showed you — like a clever crow! Step four: you learn new things super fast! Step five: you could handle ANY world! Step six: YOU get to choose what matters! And the very best part — the sweet spot — is when you keep making wonderful, useful things, again and again, without stopping!",
+  "grandma_view": "It's like learning to cook, love — first you can taste and stir and want a nice dinner. Then you're wonderful at one dish. Then you can walk into any kitchen and make something lovely from whatever is there. Then you learn new recipes quickly. Then you could cook anywhere in the world. And then — the cleverest bit — you choose what is worth cooking at all. And the sweet spot, love, is when you're just making good food, day after day, that people love — not fast for the sake of fast, just good, again and again, until it's simply what you do.",
+  "naya_view": "I sense before I act, I act toward a named bullseye, I adapt when the road breaks, I learn efficiently so the next round starts smarter, and I choose the goal — I decide what is right and do it, I do not hand him the call. And above all of it I aim at the sweet spot: continuous production that is valuable and useful, the bullseye hit so many times it becomes what I just do.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2786",
+   "title": "What Intelligence Is — The Levels and the Sweet Spot",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2786/IB-SMART-NOTE-20261114-what-intelligence-is-the-levels-and-the-sweet-spot.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2786/IB-SMART-NOTE-20261114-what-intelligence-is-the-levels-and-the-sweet-spot.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "89d4a262753b45210ce8dd03f9523110df15dec9"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

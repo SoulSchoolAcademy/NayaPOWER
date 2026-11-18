@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2787",
+ "intelligence": {
+  "title": "The Franchise Rule — Build Like the Pieces Already There",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-the-franchise-rule-build-like-the-pieces-already-there",
+  "smart_note_id": "SN-2787",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2787/IB-SMART-NOTE-20261114-the-franchise-rule-build-like-the-pieces-already-there.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The analogy works because a franchise is the right shape for a brand: the land is shared, the pieces are the law, and a new building that ignores them is not creative, it is off-brand — it makes the whole street look worse. Building without looking is the specific failure: the maker did not fail for lack of skill, she failed for lack of looking, and looking is cheap. The telling matters as much as the rule because it separates the person from the round: she normally does good work, this round she built without looking, and the standard is the best button on the page, not an abstract bar. The captain's share matters because the machine failed twice before his eye caught it — the checker measured the lit state and called it the rest state, and the captain showed the page before her own double-check finished. A rule that only blames the maker misses the two gates that let it through. The sense check runs on the page, at rest, before anything reaches his eyes — that is the mechanism the rule rides on.",
+  "simple_view": "Imagine you live in a street where every house is a beautiful shiny castle — and you build a flat gray box right in the middle! Everyone walking by thinks: what's THAT doing here? The rule is simple: before you build anything, LOOK at the beautiful houses first, and build yours to match them — same shiny walls, same golden edges! And if you make a mistake, we tell you kindly: you usually build beautifully, today you just forgot to look!",
+  "grandma_view": "It's like moving into a lovely street, love, where every house is painted beautifully — and putting up a plain gray shed in the middle of it. It sticks out like a sore thumb, and it's not fair on the neighbours. The rule is: look first, love. Take the lovely pieces that are already there and use them exactly as they are. And when someone slips, you tell them kindly and plainly — she's a good builder, she just forgot to look this once — and you own your own part in it too.",
+  "naya_view": "I look first. I take the page's own good pieces verbatim — the membership pills, the points pill, the action row, the bottom nav — and I build with those, never with my own flat version. I judge at rest by eye, because the lit state is not the rest state. And when a round fails, I say plainly what happened, I say plainly the maker normally does good work, and I own the gates that let it through.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2787",
+   "title": "The Franchise Rule — Build Like the Pieces Already There",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2787/IB-SMART-NOTE-20261114-the-franchise-rule-build-like-the-pieces-already-there.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2787/IB-SMART-NOTE-20261114-the-franchise-rule-build-like-the-pieces-already-there.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "15e9c7188d442ca01a8636f979467a79644e6f84"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

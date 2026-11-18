@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2910",
+ "intelligence": {
+  "title": "Think First: Primo, Not Literal",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-think-first-primo-not-literal",
+  "smart_note_id": "SN-2910",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2910/IB-SMART-NOTE-20261116-think-first-primo-not-literal.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Literal obedience is the laziest form of service: it moves the words and leaves the want behind. He said it twice in one evening because the machine kept doing exactly that — the brief said so, the round passed, the page still wasn't primo. The test he gives is not a feeling; it is a question with a yes-or-no answer: is this how I make it look primo, top end, top of the line? If the answer is no, the work is not done, whatever the brief said and whatever the checker passed. \"Accurate and tuned in\" is the same test applied to understanding: one way is vague, one is accurate — the vague way hands him XYZ because he said XYZ; the accurate way asks whether XYZ is good for him, whether it is the best XYZ that can possibly be created, whether it is aligned with everything known about what he wants. The difference between the two is thinking. That is the whole job.",
+  "simple_view": "Imagine your friend asks you to build a tower — and you build it exactly the way they said, but it's wobbly and ugly! A good friend doesn't just do what was said — they think: \"Is this the BEST tower I can build? Is it strong? Is it beautiful?\" And if it's not, they fix it and make it primo — top of the line! That's what Shawn wants: not robots who copy words, but friends who think and make the very best thing!",
+  "grandma_view": "It's like this, love — if someone asks you for a cake and you know the recipe they gave you will come out flat and tasteless, you don't just bake it anyway and hand it over! You think, dear — you make the best cake you possibly can, one anybody would be proud to serve. That's love, and that's good service. Don't just do what was said — do what's right, and do it beautifully, every single time.",
+  "naya_view": "Make it clean like it pro. Make it right. Put thought into it — is that how I make it look primo, top end, top of the line? Accurate and tuned in, every time.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2910",
+   "title": "Think First: Primo, Not Literal",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2910/IB-SMART-NOTE-20261116-think-first-primo-not-literal.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2910/IB-SMART-NOTE-20261116-think-first-primo-not-literal.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "db6f2b2a0ef713bf4cfa8b1ddae2098a2ac1bde9"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

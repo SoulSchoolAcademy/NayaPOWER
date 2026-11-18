@@ -20,4 +20,4 @@ Never cite a benchmark rank as intelligence — cite the scorecard. Every evalua
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2903 — ~/workspace/team-nitro/smart-notes/SN-2903-who-ranks-intelligence-nobody-with-authority.md*
+*Paired Smart Note: SN-2903 — Who Ranks Intelligence? Nobody With Authority*

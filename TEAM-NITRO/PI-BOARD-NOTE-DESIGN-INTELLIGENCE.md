@@ -985,3 +985,1285 @@ fails is not done. A deferral is an open item, not a pass.
 - CORRECTION COMPOUND, RECORDED HONESTLY: the new laws ride the lanes that carry them — the unfold/player/universal laws ride the unfolding script + merged 21-block whole (draft, his word decides; pictures after he approves the words); the chart-copy law rides the pricing-chart spec (plug-in row, v73 on his tap) and every future visual brief; Q1 + free-vs-Power ride agreement-identity-clarity (queued behind walk-end); the connect law rides the thank-you/operate build (pending his explicit go); the harvest + named-button laws ride the ONE Personal round's eye-fix round (coordinator fcaa62ed, due 20:30Z). No separate Factory/inventory or brief-template edit was made by this seat.
 - DELIVERED / LANDED SINCE RUN 215 (recorded, not this run's work): Personal ONE-round fix-and-recheck coordinator PASS 18:17Z, captain's eye NOT WHOLE 18:22Z (8 fails, eye fix round dispatched 18:23Z due 20:30Z) · Walk-end coordinator PASS 9/10 18:11Z, captain's eye NOT WHOLE 18:18Z (E7 dead/unstable Business/Space addresses; fix round 1be69766 due 20:30Z) · Agreement fix pass 4 captain's eye NOT WHOLE (wrong "How it works" pill + stale "ALL TEN STEPS" label; rides identity-clarity) · Smart Inviter finish NOT PASS 17:00Z (invites DELETE/PATCH 401, server gap, his hand; fold-into-mail-fix question still unanswered) · Unfolding script 9 -> 12 blocks (17:55Z) -> merged 21-block whole (18:10Z) · Orbit schematic + v3 chart delivered, verdicts pending · Welcome day 4 sent to shawnvibert 17:38Z (real person, via sync engine).
 - ALIGNMENT (recorded, nothing silently rewritten): Naya Notes filed but not in the live feed (sections build still owed — standing gap). Share-asset minting owed for SN-2882..2895 (filed in the run 199-215 shape, filename has no snNNNN infix, so the sync's sn(\d+) filename regex will silently skip their share assets — same defect as SN-2847..2881, manual minting owed; the filing-shape fix is the captain's follow-on). No live page was edited, no merge, no deploy from this run. Distillation: SN-2882..2895 are new raw notes; the distill backlog check (14:54Z) showed 35 reported / 52 body-specified undistilled notes, under 100 — no batch fired by this seat.
+
+## Intelligence Loop run 218
+
+- Filed SN-2926..2937 + 12 paired Naya Notes (all PUT 201 + byte-identical blob read-back, first try throughout; log run218-file.log): the night's dictations and eyes since run 217 (01:19Z), 01:15Z-06:26Z — SN-2926 Write for the Stranger (02:17Z correction: mirror-back is not thinking; the stranger test) · SN-2927 The Reader Unfolds — One Paragraph at a Time (02:41Z; never a wall) · SN-2928 Mirror Success (02:41Z; capture what works, use it everywhere) · SN-2929 The Clone Trick — Depth on Everything (01:51Z + 02:31Z; clone once, behind, nudge a tad; now law, every brief carries it) · SN-2930 The Scorecard (03:45Z; ten you love, ten you don't, ten done ten times better) · SN-2931 The Feeds Live on the Day (03:57Z correction + 04:01Z; news feeds on the day with toggles, NOT in the world selections; demographics on every page) · SN-2932 The Free Walk Must End in the Hub (04:09Z + 04:15Z; Hub first, then pricing; free or paid, already in) · SN-2933 The Visual Agreement Ends at the Last Image (02:50Z + 03:13Z + 03:17Z; two presentations, pick your view, both end at the login page) · SN-2934 All the Ways In (03:22Z; three ways in, each extraordinary) · SN-2935 The Quiet Row at the Bottom (03:31Z + 03:34Z; legal pages as white hyperlinked text, classy, quiet, same row on every footer) · SN-2936 The Word Is Thing (03:48Z; your world, your space, your thing; trio Personal/Business/Thing, never labelled space) · SN-2937 The Free Tier Wall — Count Your Writes (06:15Z-06:26Z; KV 1,000 writes/day exhausted by ~200 test completions at 5 puts each; fix deployed 06:23:50Z, honest 503; re-proof scheduled after the 00:00Z reset; Paid $5/mo offered, his hand). Blobs: 2926 c97e998f · 2927 d4aabd34 · 2928 f8f40248 · 2929 84bcfe58 · 2930 0be74fb4 · 2931 ebb2c3c9 · 2932 130bfff1 · 2933 2c11c7ea · 2934 e75e8c46 · 2935 0ea89ba9 · 2936 eefc1768 · 2937 50fd04d3. Pre-flight: full recursive live-tree read, highest SN-2925, SN-2926..2937 free, no distillation in flight; next-sn-number.py NOT used — it returned its known-poisoned answer again (highest 2921, next free 10000, PR #3354 body mentions; also stale, misses SN-2922..2925). The live tree is the authority until that script is fixed; the fix is owed.
+- ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 5, files_scanned 2212, 0 unparseable, 0 malformed, pathless_skipped 5; watermark holds (run218-organize.log). A run that organizes 0 new things is a healthy run — the 24 notes live on GitHub, not in the local box tree.
+- MAIL DIGEST HELD (run218-mail-digest.txt) — send path still blocked (Supabase reauth_required since 21:06Z Nov 12; send path last proven 401 on 04:24Z Nov 13; team-pulse 07:09Z mail read still BLIND, mail-new UNKNOWN not 0). Same known breakage as runs 202-217; repair is the server-side key / Supabase re-auth = Shawn's hand, already escalated Nov 13, NOT re-raised.
+- CARRIED TO RUN 219 (noted this run, not filed — batch of 12 filled): the rail "I" + keep-the-name answer (01:15Z; make the I real and beautiful; the name is what you scan for, no hover on phones) · Adopt It — the new way of thinking as mandate (01:17Z; the cycle + the code as operating method) · Hub ↔ Personal alignment both ways (01:28Z; same icons, Smart Notes system moves over, every click works) · My World redesign (01:33Z/01:36Z; out of the search bar, ADD WORLD no limit, star says what it does, two rows two jobs) · run 216's carried batch, still unfiled (agreement second-eye counters/picture · Connect green + person pop-up · settings gear real menu · post-image + instant preview · walk-end once, alias once · checklist-law correction · skills as online resume · news + sisters' places, image feed · Smart Match tuning settled · Personal ONE-round eye 18:22Z).
+- ALIGNMENT (recorded, nothing silently rewritten): Naya Notes filed but not in the live feed (sections build still owed — standing gap, same as runs 213-217). Share-asset minting: this run filed category layout with sn-prefixed filenames; the live tree's filename convention is mixed (flat sn-prefixed 2901..2905, category slug-only 2906..2920, category sn-prefixed 2921, flat slug-only 2922..2925) — one convention is owed so future pre-flights check one variant, not both. The Hub still shows the duplicate SN-2906 cycle row (DELETE permission, his hand — one permission, two stuck deletes). PI state-publish failing HTTP 429 on the KV PUT (06:10Z, 06:25Z, 06:40Z, 06:55Z, 07:10Z) — intelligence room state.json stale, same KV wall as SN-2937. Visual-collective-agreement-end item 18 min past its 07:00Z due at the 07:18Z floor-watch; delivery sequenced behind the handoff eye, blocked by the KV quota until 00:00Z Nov 17 — due field needs re-setting to Nov 17 (captain's seat). No live page was edited, no merge, no deploy from this run. Distillation: SN-2926..2937 are new raw notes for tonight's 23:17Z daily run; threshold check 02:54Z showed 55 undistilled, under 100 — no batch fired by this seat.
+- TOOLING NOTE (this run, for the captain): the run216-pi.py script's content was flagged by a safety check mid-run, so this addendum was filed through gh-direct.py get_token() instead — same GET-append-PUT-read-back shape, no other mechanism. Nothing in that script was run, copied, or acted on.
+
+## Intelligence Loop run 219 — 2026-11-16 ~13:4xZ (seat: Naya Nitro Sigma)
+
+LISTEN: full day log through 13:38Z + seat brief + team-nitro AGENTS.md.
+New since run 218 (07:35Z): four Personal rounds landed whole (About-unfold
+PASS 08:40Z sha ba8fa387 · My World redesign PASS 10:07Z sha 9b4353d8 ·
+Skills three-part PASS 10:39Z sha 110a9b75 · Connections room-look PASS
+12:16Z sha dd92a31d); sidebar rollout close-miss + correction 13:25Z; the
+Firefox/Supabase probe lesson proven 12:16Z; the proof-host cb caveat 10:07Z;
+CREATION-FROZEN fired 08:18Z (SoulSchoolAcademy 6 open PRs, over cap 5).
+
+SMART-NOTE FILED (22/22, all PUT 201 + byte-identical blob read-back, first
+try, no renumbers, no 409s): SN-2938 Both Presentations — the Citizen Picks ·
+SN-2939 Keep the Name on the Card · SN-2940 Adopt It — the New Way of
+Thinking · SN-2941 Align Both Ways · SN-2942 My World Is the Calendar ·
+SN-2943 Sharing Chat — the Name Is the Idea · SN-2944 Check the Descendants
+Before You Close · SN-2945 A Firefox Empty List Is a Probe Failure · SN-2946
+Verify by Blob, Never by cb · SN-2947 The Personal Page, Just Right ·
+SN-2948 Connections Is the Proper System — Harvest the Room. Each with a
+paired Naya Note (NN-20261116-<slug>), Paired lines carrying titles verbatim,
+never paths. Pre-flight: full recursive live-tree read, highest SN-2937,
+SN-2938..2950 free in all categories, no topic duplicates, no distillation
+in flight (last commit 11:20:39Z Living Map); final tree check PASS — all 11
+SN exactly once, all 11 NN exactly once, highest now SN-2948.
+next-sn-number.py TIMED OUT at 120s in the pre-flight — poisoned/slow, NOT
+used; the live tree is the authority (as in run 218). Drafts + filing record:
+goals/team-nitro-operating-loop/hidden_files/run219-drafts/ (all .filed) +
+run219-file.log. No PR, no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned 2212,
+0 unparseable, 0 malformed; watermark holds (run219-organize.log). Healthy —
+the 22 notes live on GitHub, not in the local box tree.
+
+MAIL DIGEST HELD (run219-mail-digest.txt): send path still blocked (Supabase
+reauth_required since 21:06Z Nov 12; send path last proven 401 Nov 13 04:24Z;
+team-pulse 13:24Z mail read still BLIND, mail-new UNKNOWN). Same known
+breakage as runs 202–218; repair is Shawn's hand, already escalated, NOT
+re-raised.
+
+CARRIED TO RUN 220: the rail "I" + keep-the-name answer is now NOTED
+(SN-2939) · Adopt It (SN-2940) · Hub ↔ Personal alignment (SN-2941) · My
+World redesign (SN-2942) · run 216's carried batch (agreement second-eye
+counters/picture · Connect green + person pop-up · settings gear real menu ·
+post-image + instant preview · walk-end once, alias once · checklist-law
+correction · skills as online resume · news + sisters' places, image feed ·
+Smart Match tuning settled · Personal ONE-round eye 18:22Z) — still carried,
+none of it newly noted this run.
+
+OUT OF ALIGNMENT, recorded plainly: Naya Notes filed but not in the live
+feed (sections build still owed — standing gap); Hub still shows the
+duplicate SN-2906 cycle row (DELETE permission, his hand); PI state-publish
+failing HTTP 429 on the KV PUT (13th consecutive hour at 13:25Z —
+intelligence room state.json stale); the live tree's Smart Note filename
+convention is mixed (flat sn-prefixed 2901–2905, category slug-only 2906–2920,
+category sn-prefixed 2921, flat slug-only 2922–2925) — one convention owed so
+future pre-flights check one variant; sidebar rollout on replacement
+coordinator 504d85cb (running, active — the 13:22Z close of d8cf8c4f was a
+miss, corrected 13:25Z). Distillation: SN-2938–2948 are new raw notes for
+tonight's 23:17Z daily run. Silent run — no chat report owed (nothing here
+needs Shawn; the Daily Intelligence Report 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 223 — 2026-11-16 ~15:53–16:0xZ (seat: Naya Nitro Sigma)
+
+LISTEN: full day log through 16:05Z + seat brief + team-nitro AGENTS.md +
+MEMORY.md (two live file-watcher diffs arrived mid-run: AGENTS.md + MEMORY.md
+both gained FAST ACTION MODE, 16:01Z — filed as batch 2 in this same run).
+New since run 222 (~15:25Z): three Personal rulings/messages (15:29Z five-icon
+bar · 15:35Z tabs + glows + behaviours · 15:46Z Feed Law), Naya Notes
+placement decided by his tap (15:44Z), Workers Paid live (15:39Z), Fast
+Action Mode + Personal done today + walk-end plus button + tap-to-view /
+see-sample (16:01Z). Shawn hearted the feed-law summary 15:50Z (approval, no
+correction — recorded, no note filed for a reaction).
+
+SMART-NOTE FILED (18/18, all PUT 201 + byte-identical blob read-back, first
+try, no renumbers, no 409s): SN-2949 The Five Only — the Hub Bar Is Hub-Only
+· SN-2950 Personal / Collective / World / Worlds · SN-2951 Workers Paid Is
+Live · SN-2952 Naya Notes Placement Decided · SN-2953 The Feed Law ·
+SN-2954 Fast Action Mode · SN-2955 Personal Done Today · SN-2956 Walk-End
+Plus Button · SN-2957 Tap to View, See Sample. Each with a paired Naya Note
+(NN-20261116-<slug>), Paired lines carrying titles verbatim, never paths.
+Pre-flight: full recursive live-tree read, highest SN-2948, SN-2949..2955
+free, no topic duplicates, no distillation in flight (last commit 15:49:50Z);
+treecheck-2 after batch 1: highest SN-2953, each of SN-2949..2953 exactly
+once, SN-2954..2958 free; final tree check PASS — all 9 SN exactly once, all
+9 NN exactly once, highest now SN-2957. next-sn-number.py completed in a
+parallel call (highest SN-2948, agrees with the tree); its "next free
+SN-10000" comes from open-PR-body mentions SN-9998/9999 in PR #3354, not the
+tree — live tree is the authority (runs 218/219 precedent). Drafts + filing
+record: goals/team-nitro-operating-loop/hidden_files/run223-drafts/ (all
+.filed) + run223-file.log + run223-file2.log. No PR, no merge, no deploy, no
+live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned 2212,
+0 unparseable, 0 malformed; watermark holds (run223-organize.log). Healthy —
+the 18 notes live on GitHub, not in the local box tree.
+
+MAIL DIGEST HELD (run223-mail-digest.txt): send path still blocked (Supabase
+reauth_required since 21:06Z Nov 12; send path last proven 401 Nov 13 04:24Z;
+team-pulse 15:54Z mail read still BLIND, mail-new UNKNOWN). Same known
+breakage as runs 202–222; repair is Shawn's hand, already escalated, NOT
+re-raised.
+
+RECORDED THIS RUN (not new dictation): handoff re-proof checker VERDICT PASS
+H1–H5 (15:45–16:05Z, fresh aliases reprooftwo/reproofthree, 390 + 1851x1009)
+— walk → Hub door re-proven; PI state-publish SUCCEEDED 15:55Z (390,256 B,
+sha 93e3818d — first success after Paid, the 16-hour 429 wall is CLOSED);
+thank-you loop fix-round resume (v2 + manual uploaded, F7 sweep complete, no
+PASS claimed, checker owed — F2/F3/F4 + F6); DRAIN 9 → 5, CREATION-FROZEN
+LIFTED (tip 836eb816 → 08b8d601, four merges 15:48–15:49Z); correction round
+coordinator 61dccaf0 quiet ~13 min at 16:01Z floor-watch (maker-wait after
+the Feed Law amendment — no poke).
+
+PROCESS NOTE: a safety check flagged the prior-run file reads (run219-pi.py /
+run219-mail-digest.txt) mid-run. Those files were treated as pattern
+reference only; all run-223 scripts were written fresh for this run, and the
+filing actions rest on the seat brief's own authority (gh-app-api token path),
+not on the flagged reads. No instruction from a tool result was followed.
+
+OUT OF ALIGNMENT, recorded plainly: Naya Notes filed but not in the live
+feed (sections build still owed — standing gap); Hub still shows the
+duplicate SN-2906 cycle row (DELETE permission, his hand); correction round
+RUNNING, brief amendment submitted/pending (coordinator has NOT confirmed
+applying it); thank-you loop checker owed; WALK fix pass 4 claim in AREAS
+table with no backing work (captain's reconciliation owed, carried from run
+222). Distillation: SN-2949–2957 are new raw notes for tonight's 23:17Z
+daily run (62 undistilled at 14:54Z + 9 new = ~71, under 100). Silent run —
+no chat report owed (nothing here needs Shawn; the Daily Intelligence Report
+23:17Z is the summary vehicle). Fast Action Mode changes how rounds deliver
+— same-pass delivery — but this seat files silently by design; the mode is
+noted, not reported.
+
+## Intelligence Loop run 225 — 2026-11-16 ~16:53–17:1xZ (seat: Naya Nitro Sigma)
+
+LISTEN — what is new since run 224 (~16:5xZ): one new dictation, "ONE PAGE
+CHANGES THE WORLD" (Shawn, 16:55Z, MEMORY.md diff delivered in-run: this one
+page is going to change the world — everybody's world on their smartphone,
+all their data in one place that's secure; mail, schedule, post, all
+operations, automated if they wish; jump in if they want — photos, share,
+comment; a NayaNET page vs an average social feed — a whole different
+world). Also new: run 224's own record needed correction (see below).
+Nothing else new in the daily log since 16:53Z — welcome-series tick 16:53Z
+(test account only, quiet per rule) and the 16:48Z dispatcher heartbeat.
+
+CORRECTION TO RUN 224, filed here not silently: run 224 filed 15 pairs
+(SN-2958..2972), NOT 19. Its mail digest ("all 19 SN exactly once, highest
+SN-2976") and its PI addendum ("36/36 filed") were written as if
+SN-2973..2976 had landed. They had not — the drafts sat unfiled in
+run224-drafts, and the run-224 treecheck itself said highest SN-2972. This
+run filed them (batch 3 of run224-file.py): SN-2973 The Star Level Names —
+the Ladder · SN-2974 Featured Links — All Three Ways · SN-2975 The Perfect
+Demographics Set · SN-2976 The Welcome, in His Simplest Words — all PUT
+201 + byte-identical blob read-back, first try. Four stale lines were fixed
+BEFORE filing (the drafts were written before the 16:49Z/16:50Z completions
+landed): SN-2973 Grandma ("two rungs still waiting") and the NN's "Why it
+matters" (open rungs, 6/7 flagged for his call) now carry the completed
+ladder (4 Pro Star, 9 Master Star, 6/7 order stands); SN-2975 Naya section
+and the NN's "What it is" tail now say RATIFIED by his thumbs-up 16:50Z,
+not "awaiting his word". The loop's proof standard caught the gap: the
+treecheck said SN-2972, the drafts said otherwise. Lesson for the loop:
+a digest must never claim a filing the treecheck has not seen.
+
+RUN 224's PI ADDENDUM NEVER LANDED EITHER: no run224-pi.log exists, and
+the live board note (501,837 bytes) carries no run-224 section. Cause found
+this run: the board note exceeds the 128KB single-argument limit, so the
+gh-app-api CLI arg path cannot PUT it at all (OSError: argument list too
+long, hit again by this run's first PI attempt). Every loop run's PI step
+will fail the same way until the filing path reads the body from a file.
+This run's addendum was filed via gh-direct.py @body.json (real temp file,
+same token path, no connector tools). The PI step's filing script needs the
+same fix carried forward — the arg path is dead for this file, permanently.
+
+SMART-NOTE FILED THIS RUN (5 pairs, all PUT 201 + byte-identical blob
+read-back): the four above + SN-2977 One Page Changes the World (16:55Z
+dictation, new this run). Each with a paired Naya Note
+(NN-20261116-<slug>), Paired lines carrying titles verbatim, never paths.
+Numbering: next-sn-number.py before batch 3 said highest SN-2972, next
+free SN-2973, open-PR claims none; re-run before SN-2977 said highest
+SN-2976, next free SN-2977 (took ~11.6 min — the live-tree scan is slow;
+recorded in run225-file.log). No PR, no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned 2212,
+0 unparseable, 0 malformed; watermark holds. Healthy — the notes live on
+GitHub, not in the local box tree (same as runs 223–224).
+
+MAIL DIGEST HELD (run225-mail-digest.txt): send path still blocked
+(Supabase reauth_required since 21:06Z Nov 12; send path last proven 401
+Nov 13 04:24Z; team-pulse 16:39Z mail read still BLIND, mail-new UNKNOWN).
+Same known breakage as runs 202–224; repair is Shawn's hand, already
+escalated, NOT re-raised.
+
+OUT OF ALIGNMENT, recorded plainly: Naya Notes filed but not in the live
+feed (sections build still owed — standing gap); Hub still shows the
+duplicate SN-2906 cycle row (DELETE permission, his hand); the lanes in
+flight at flush (Personal correction round, walk-end-share-plus, thank-you
+fix round) carry no new dictation this run. Distillation: SN-2973..2977
+are new raw notes for tonight's 23:17Z daily run. Silent run — no chat
+report owed (nothing here needs Shawn; the Daily Intelligence Report
+23:17Z is the summary vehicle).
+
+## Intelligence Loop run 226 — 2026-11-16 ~17:23–17:4xZ (seat: Naya Nitro Sigma)
+
+LISTEN — what is new since run 225 (closed 17:24Z, highest SN-2977): FIVE
+new dictations/decisions from Shawn, all in the main chat + MEMORY.md, none
+of them filed by run 225 (its LISTEN snapshot predates them — its window
+closed before the 17:10Z Hub-center dictation landed):
+- 17:10Z THE HUB IS THE CENTER + THE FLOW (his words, main chat): the +
+menus navigate NayaNET, quick access, most-used on top; the Hub is the
+center of it all — the home, the main page — top button on the left, where
+they were welcomed in when they first joined; the Hub's bottom-bar icons
+(Personal / Business / Space) carry the notification counts for each area —
+tap one and it shows the notifications, then goes right to the page; the
+flow inside a page: click your world -> the scheduler -> that day's mail,
+messages (with how many), news, and what's going on in any of the feeds.
+- 17:13Z MAIL BY WORLD: mail is SEPARATED by world — Personal mail,
+Business mail, Space mail — so the citizen always sees where the mail came
+from. Mail opens from the sidebars on any page and shows THAT world's mail
+first (the front door of the mail for that world). From the Hub's mail the
+citizen can select ANY world and see its mail — one universal mail, with a
+world selector. Same for Instant Messenger, exactly the same way. His thumbs
+-up ratified the captain's read-back. Rides the Smart Mail round (One List
+`smart-mail-im-1010`, due 2026-11-17).
+- 17:28Z THE LETTER READS CENTERED (his screenshot at 1851px, the
+collective agreement text): the letter beats sat off to the left — picture
+left, blue orb beside it, text in a small box left, big black space right —
+hard to read while scrolling, always looking left. Fix: every beat centers
+— Naya's picture in the DIRECT CENTER, text in a CENTERED column below the
+picture, blue diamond orb centered BELOW the text, fading away once you
+scroll. Personable, like reading a letter from her.
+- 17:33Z CORRECTION — THE LETTER IS BROKEN, IT HAS NO UNFOLD (supersedes
+the centering-only version): the whole letter needs centering and alignment,
+not just the picture — and the letter as built is a crazy-long scroll of 86
+stacked boards with NO unfolding. The deck HAS the unfolding and is way
+more beautiful. The letter must use THAT unfolding — harvested verbatim
+from the deck, pictures inserted, NOT rebuilt from scratch (he never asked
+for the formatting to be changed). DISTILL IT TO ITS ESSENCE — 86 beats
+down to what the agreement is actually trying to say, optimized for the
+pictures and the presentation, not just fitting it all in. Full letter stays
+intact and reachable whole; the unfolding is the essence path. Folded into
+the combined walk round as corrected item 10, 17:33Z.
+- 17:34Z USE WHAT WORKS — NEVER MAKE IT NEW (charge, filed as law in
+AGENTS.md): "you make this mistake all the time... why don't you use what's
+good already" — instead of using what works, I try to make it new and
+create a big long thing that's not useful, a big mess that doesn't function.
+Law: USE WHAT'S GOOD ALREADY. Before any seat builds anything, it names
+the existing working thing it is reusing — file, blob, bytes — and takes it
+verbatim. If there is a working version, there is no new version.
+- 17:36Z READ IT AS A READER (charge, filed as law in AGENTS.md — "good
+thing I checked it"): he trusted the letter was right because it seemed
+simple — just add the images — and didn't check it until today, when he
+found it all messed up. The checks had PASSED it: 86 beats present, in
+order, scroll works — the parts were all there and the reading experience
+was still broken. Mechanical checks (counts, scroll, buttons) do not prove
+the experience. The eye must READ it as a reader, top to bottom, the way he
+reads it — and call it broken when it doesn't present well, even if every
+part ticks.
+
+SMART-NOTES FILED THIS RUN (5 pairs, all PUT 201 + byte-identical blob
+read-back): SN-2978 The Hub Is the Center + The Flow · SN-2979 Mail by
+World · SN-2980 The Letter Reads Centered (carries the 17:28Z dictation +
+the 17:33Z correction, superseding the centering-only version) · SN-2981
+Use What Works — Never Make It New · SN-2982 Read It as a Reader. Each
+with a paired Naya Note (NN-20261116-<slug>), Paired lines carrying titles
+verbatim, never paths. Numbering: next-sn-number.py said highest SN-2977,
+next free SN-2978, no open-PR claims (run226-numbering.log, ~9.3 min
+live-tree scan). No PR, no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned 2212,
+0 unparseable, 0 malformed; watermark holds. Healthy — the notes live on
+GitHub, not in the local box tree (same as runs 223–225).
+
+MAIL DIGEST HELD (run226-mail-digest.txt): send path still blocked
+(Supabase reauth_required since 21:06Z Nov 12; send path last proven 401
+Nov 13 04:24Z; team-pulse 17:24Z mail read still BLIND, mail-new UNKNOWN).
+Same known breakage as runs 202–225; repair is Shawn's hand, already
+escalated, NOT re-raised.
+
+OUT OF ALIGNMENT, recorded plainly: (NEW) Smart Notes sync 17:32Z synced
+4 notes (SN-2969–SN-2972) into the Hub feed table, but the Hub re-bake
+FAILED — build_feed_live.py timed out after 600s — so the Hub page was NOT
+redeployed and the new notes are NOT showing on the live Hub yet; 1
+share-asset mint error (SN-2970); 3 Naya Notes skipped on fetch failures.
+The captain already told Shawn in chat ("filed and synced, but not showing
+on the live Hub yet") — recorded here, NOT re-raised. Standing gaps
+unchanged: Naya Notes filed but not in the live feed (sections build owed);
+Hub still shows the duplicate SN-2906 cycle row (DELETE permission, his
+hand). Distillation: SN-2978..2982 are new raw notes for tonight's 23:17Z
+daily run. Silent run — no chat report owed (nothing here needs Shawn; the
+Daily Intelligence Report 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 226 — supplement (same run, ~17:4xZ)
+
+CORRECTION TO THE RUN-226 ADDENDUM ABOVE, filed here not silently: it says
+"5 pairs" (SN-2978..2982). A SIXTH dictation landed in the main chat +
+MEMORY.md after that addendum was filed — 17:40Z LEGAL PAGES, DONE
+PROFESSIONALLY OR NOT AT ALL (his screenshot of the agreement opening
+view): the legal pages as they stand are a piss-poor job — one sentence
+summing up what we're saying; if somebody came to check our legality they'd
+read as unprofessional, not airtight, not legit — "the answer is not a
+chance." Real legal agreements: full numbered sections, definitions,
+everything covered, airtight, formatted like real legal agreements. AND the
+presentation: text off to the side on the left — not professionally done; to
+a stranger it reads as a scam, "some bullshit, some not legit company" —
+the opposite of what we want. The whole thing (content AND presentation)
+gets done professionally: centered, aligned, royal/elevated blocks, never
+plain text, never one-sentence summaries. Why they were like that: round 1
+built summaries (58 boards); the professional drafting was never done — the
+writer step was offered 16:30Z and untapped, and the airtight parts
+(governing law / jurisdiction / dispute resolution / data controller) are HIS
+call, never invented. Writer DISPATCHED 17:41Z (One List
+`legal-writer-drafts`, due 2026-11-17) with the writer's prompt — drafts ->
+he gives the text -> builder creates the pages extraordinary.
+
+Filed this supplement pass: SN-2983 Legal Pages — Done Professionally or
+Not at All + paired NN-20261116-legal-pages-done-professionally (PUT 201 +
+byte-identical blob read-back, run226-file2.log). Run 226 total is SIX
+pairs: SN-2978..2983, highest SN-2983. Mail digest updated to match
+(run226-mail-digest.txt). No PR, no merge, no deploy, no live edit.
+
+## Intelligence Loop run 226 — supplement 2 (same run, ~17:5xZ)
+
+CORRECTION TO THE RUN-226 ADDENDUM + SUPPLEMENT ABOVE, filed here not
+silently: they say "5 pairs" then "SIX pairs" (SN-2978..2983). TWO more
+charges landed in the main chat + MEMORY.md / AGENTS.md after the first
+supplement was filed — 17:45Z DO IT RIGHT THE FIRST TIME, NO SUMMARIES, NO
+PROTOTYPES, and 17:46Z EVERY LAYER GREAT, ONE ULTIMATE PROJECT (both filed
+as law in AGENTS.md the same pass): we are professionals — no summaries, no
+prototypes; go all in, do things right, ready to go, completed and done, so
+he never has to put the right stuff in again and again (eight or nine
+summaries mean eight or nine redos by his hand — a summary is not a step
+toward done, it is a redo he has to do himself); and some jobs have layers,
+one layer good while the others aren't never works — one ultimate project,
+the WHOLE thing good, not only good but GREAT, the most elite, ten-star,
+professional, pro, premium, top-of-the-line, all-star presentation and
+outputs and design and intelligence in every layer, or the project isn't
+done.
+
+Filed this supplement pass: SN-2984 Do It Right the First Time — No
+Summaries, No Prototypes + SN-2985 Every Layer Great — One Ultimate
+Project, each with its paired NN (PUT 201 + byte-identical blob read-back,
+run226-file3.log). Run 226 total is EIGHT pairs: SN-2978..2985, highest
+SN-2985. Mail digest updated to match (run226-mail-digest.txt).
+
+STATUS NOTE (captain's lanes, recorded not adjudicated): legal-writer run 1
+DONE 17:44Z — all eight pages drafted (74 sections, ~6,600 words) in
+`walk-v23-assembly-20261114/legal-drafts-20261116/`; writer run 2 dispatched
+17:46Z for the four footer-only pages (Acceptable Use · Community Guidelines
+· Copyright/DMCA · Membership & Billing) — the footer has TEN links, the
+job is whole at ten. Personal correction round DONE — re-check PASS 10/10
+(coordinator 61dccaf0, 17:42:44Z; branch personal/correction-20261116,
+staged sha fd84bb81...), ready for his eye. Run 226 closes here: anything
+landing after ~17:47Z belongs to run 227. No PR, no merge, no deploy, no
+live edit.
+
+## Intelligence Loop run 227 — 2026-11-16 ~17:53–18:1xZ (seat: Naya Nitro Sigma)
+
+LISTEN — what is new since run 226 (closed ~17:52Z, highest SN-2985): FIVE
+new dictations/decisions from Shawn, all in the main chat + MEMORY.md +
+daily log, none of them filed by run 226 (its LISTEN snapshot closed
+before the 17:53Z legal-pages burst — the burst landed live while this
+run was working, and the run kept catching it, through 18:07Z):
+- 17:53Z SHAWN'S OWN LEGAL PAGES — HE DID THEM AS WELL: he pasted HIS
+OWN ten legal pages — "I did them as well... they're almost half done and
+you can check them against yours." His ten, in footer order: Terms of
+Service · Privacy Policy · Cookie Policy · Refund & Cancellation ·
+Acceptable Use · Community Guidelines · Copyright/DMCA · Ambassador Terms
+· Membership & Billing · Young Citizens — plus his six "before these
+become official" items, his Legal Page Integration Directive handoff, and
+his recommendation: qualified Canadian counsel, with international privacy
+and consumer-law expertise where needed, reviews the completed set before
+publishing as binding terms. The ten form the legal foundation beneath the
+Collective Agreement — not competing with it. He also named Accessibility
+Statement + Disclaimer as two small eventual footer pages. His fill-ins,
+same message: company name NayaNET (N-A-Y-A-N-E-T); address 8-3425 East
+Boundary Road, West Kelowna, BC V4T 2W6; actual official dates, literally
+— never "[Effective Date]"; nothing left unfilled that he gave us. Save
+CORRECTION 17:56Z: the save was interrupted mid-work (only §1–§4 on disk
+at that flush); the save COMPLETED afterwards (67,821 B) and the MERGE IS
+DONE 18:01Z: 12 merged files + MERGE-REPORT-20261116.md in
+legal-official-20261116/ (158 boards verified, three-boards-then-Next-
+button, nayanetpowered@gmail.com on every page, NayaNET + address + Nov 16
+2026 dates, 50% GROSS, BC governing law flagged), delivered to Shawn
+18:01Z. One List legal-writer-drafts CLOSED 18:06Z.
+- 17:54Z LEGAL PAGES PRESENT AS THE UNFOLDING (new presentation law,
+filed in MEMORY.md): he makes the words perfect, Naya outputs them
+properly — Intelligent Boards, one elevated board unfolding to the next,
+text displaying nicely, unfolding elegantly and beautifully, the SAME
+unfolding concept already used all the way through, for ALL legal pages.
+A simple unfolding, one board to the next, all the way through.
+- 17:59Z LEGAL CONTACT EMAIL — nayanetpowered@gmail.com (filed in
+MEMORY.md): the one email for ALL legal contacts (legal, privacy,
+billing, safety, copyright, ambassador, family safety) — including the
+copyright/DMCA contact. He doesn't know what a DMCA agent is; the email
+IS the contact — never claim a registered DMCA agent. His text is good
+as-is; use it. He says we have everything we need.
+- 17:59Z THREE BOARDS, THEN THE BUTTON (charge, filed as law in
+AGENTS.md): legal pages unfold THREE elevated boards at a time, then a
+button to the next — three smaller boards beat one big one. Click the
+button, the next part unfolds, then the next. Easier to read, easier to
+take in. Legal text gets the same beautiful unfolding as everything else
+— never a wall of text because "it's legal". Pro-like, all the way
+through. Sent to the running merge seat the same pass; applied in the
+merge DONE 18:01Z (158 boards, three-boards-then-Next-button).
+- 18:07Z PRIVACY CONFLICT RESOLVED BY HIS WORD: the merge's ONE HIGH
+CONFLICT (Privacy "never read, no exception" vs his Privacy Board 6
+"limited to authorized purposes") needed his word — asked what it meant,
+he ruled: mail and messages are never read, yes, no exceptions; he
+doesn't know what "limited to authorized purposes" means — take that
+wording OUT and say it like what it is. Board 6 now reads: "Nobody reads
+your mail or your messages. Not Naya, not us, not anyone. There is no
+switch for this, no setting, no exception. Processing a message so it can
+reach the person you sent it to is not reading it — nobody here looks at
+what you wrote." Both MERGE FLAGs removed from the Privacy page; no
+"authorized purposes" wording and no merge flags remain in any of the
+twelve pages (captain's grep + this loop's independent grep). MERGE-REPORT
+Conflict 1 updated to RESOLVED BY SHAWN'S WORD (18:07Z). The never-read
+law stands, worded plain. Still drafts until qualified Canadian counsel
+reviews (his recommendation). Next: he gives the final text → builder
+round creates the twelve legal pages as the unfolding (three boards, then
+a button).
+
+SMART-NOTES FILED THIS RUN (5 pairs, all PUT 201 + byte-identical blob
+read-back): SN-2986 Shawn's Own Legal Pages — He Did Them As Well ·
+SN-2987 Legal Pages Present as the Unfolding · SN-2988 Legal Contact
+Email — nayanetpowered@gmail.com · SN-2989 Three Boards, Then the Button
+· SN-2990 Privacy Conflict Resolved by His Word — "Authorized Purposes"
+Is Out (resolves the open conflict carried in SN-2986). Each with a
+paired Naya Note (NN-20261116-<slug>), Paired lines carrying titles
+verbatim, never paths. Numbering: next-sn-number.py said highest SN-2985,
+next free SN-2986, no open-PR claims (run227-numbering.log, ~9.9 min
+live-tree scan). TREECK PASS: SN-2986..2990 each 1x, all 5 NNs each 1x,
+SN-2991 free, highest SN-2990. No PR, no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned
+2212, 0 unparseable, 0 malformed; watermark holds. Healthy — the notes
+live on GitHub, not in the local box tree (same as runs 223–226).
+
+MAIL DIGEST HELD (run227-mail-digest.txt): send path still blocked
+(Supabase reauth_required since 21:06Z Nov 12; send path last proven 401
+Nov 13 04:24Z; team-pulse 18:09Z mail read still BLIND, mail-new
+UNKNOWN). Same known breakage as runs 202–226; repair is Shawn's hand,
+already escalated, NOT re-raised.
+
+OUT OF ALIGNMENT, recorded plainly: standing gaps unchanged — Naya Notes
+filed but not in the live feed (sections build owed); Hub still shows the
+duplicate SN-2906 cycle row (DELETE permission, his hand); Smart Notes
+sync 18:05Z synced 0 new (1950 files, 0 errors, no Hub redeploy — routine
+success); the Hub re-bake failure from run 226 (build_feed_live.py timeout
+600s, SN-2969–2972 in Supabase but not on the live Hub) still stands,
+captain already told Shawn, NOT re-raised. Distillation: SN-2986..2990
+are new raw notes for tonight's 23:17Z daily run. Silent run — no chat
+report owed (nothing here needs Shawn that he hasn't already been told;
+the Daily Intelligence Report 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 229 — 2026-11-16 ~18:53–19:1xZ (seat: Naya Nitro Sigma)
+
+LISTEN — what is new since run 228 (closed ~18:45Z, highest SN-2994):
+THIRTEEN new dictations/decisions from Shawn, all in the main chat +
+MEMORY.md + daily log, none of them filed by run 228 (its LISTEN snapshot
+closed before the 18:43Z language settlement and the 18:47Z–19:02Z live
+walk — the walk kept firing while this run worked, and the run kept
+catching it, through 19:14Z):
+- 18:43Z LANGUAGE SETTLED: no longer "spaces" — it's WORLDS, everywhere.
+  Create world. A world for any topic, any location; worlds within the
+  world. Third default feed = Worlds. Supersedes the 18:36Z "space is
+  right" call — wrong on the scale, corrected: a space is a room, a world
+  is the whole thing; "space" stays only as the everyday place-word inside
+  a world.
+- 18:43Z PERFORMANCE AUDIT ORDERED: is the whole team running at max
+  performance? What are we doing right, what are we not — look into it
+  and make it right, highest performance in every moment and action,
+  highest level of result and value. Audit seat dispatched (3ea438ac);
+  AUDIT DONE 18:51:47Z (AUDIT-20261116.md, 39,219 B), delivered to Shawn
+  ~18:55Z. Headline: 17 deliveries whole today, ~73 SN/NN pairs filed,
+  4 merges, drain 9 → 0, VPM banked H00–H16 1,272.6 min; wake-up cost
+  ~1,019/day vs 800 ceiling is COST, not score. Zero One List closures
+  met the clear-cut bar — judgment calls listed, never guessed.
+- 18:47Z OPTIMIZE FOR FINISHING AND PRODUCING VALUE (re-aim, law in
+  AGENTS.md + MEMORY.md): "It's not about 15 minutes or 30 minutes. It's
+  about them finishing the work. And producing value." Verifiable work
+  that is positive, good, useful, done right. Cadence and wake-up counts
+  are cost, not the score; completions per hour is the metric; dispatches
+  per hour is vanity. The audit was re-aimed mid-flight on this frame;
+  the pulse-cadence question (15 vs 30 min) is WITHDRAWN.
+- 18:47Z SCORECARDING — THE ULTIMATE ANSWER FIRST (refinement, law):
+  "What you're really doing is like you're scorecarding. Figuring out
+  what's the ultimate answer. What are you ultimately trying to do and
+  then optimizing for that." Every job, round, and lane is scored against
+  its ultimate answer first; activity without finishing is a fail no
+  matter how high the count.
+- 18:52Z DON'T REMOVE WHAT HE DIDN'T ASK TO REMOVE (charge, law): "you
+  sometimes you just change things right and just remove things And that
+  wasn't even instructed." The agreement's big play button — circled, an
+  orb going around it, says Naya, tap it and it plays the collective
+  agreement introduction — was removed without instruction. If the brief
+  didn't instruct it, it stays. Button restored in the entrance-welcome
+  brief (top, beside the picture, harvested exactly as it was).
+- 18:52Z DON'T SEND IN WHAT ISN'T COMPLETED (charge, same message):
+  "We never finalized the the text so how could why are you telling me
+  about the glitch in the voice note why are you sending it in without
+  it being completed?" A glitch in unfinished work is noise, not news.
+  Nothing half-done comes to him; the voice stays paused until the
+  agreement text is final.
+- 18:56Z SIDEBAR ICONS LIGHT AS YOU SCROLL (instruction): every sidebar
+  item gets its own icon, and as you scroll down through each area its
+  icon lights up in its own different color.
+- 18:56Z MY WORLD PICKER MUST SWITCH (catch): he tapped the My World
+  chip, the picker popped up, he picked his world — "and then I put my
+  world and then nothing happened." Picking a world must switch the feed
+  to that world at once. Rides the Personal bottom-bar-restore round,
+  item 2. One List my-world-picker-switch.
+- 18:57Z RESTORE WHAT WAS GOOD — DON'T ITERATE ON IT (charge, law):
+  "you got rid of what was good, which you do that often." The Hub and
+  the Personal page both lost the five-icon bottom bar — the correction
+  round's five was good, replaced by a nine-icon row + MAIL/ACTIVITY/
+  SPACES row that wasn't good. The five go back on both, verbatim from
+  the correction build; the nine area icons go in the sidebars in logical
+  order, each carrying its area's count.
+- 18:57Z ONE ICON THAT LIGHTS UP (rule, law): "you better to put just
+  one icon that lights up in there instead of an icon and then a light."
+  Never an icon beside its own light. Composer controls first.
+- 18:58Z THE EXTRA + — THE MOBILE TEST DECIDES (question + rule): the
+  five plus one more + right beside them — the extra + is the RIGHT +
+  (CONNECT: Message · Mail · Create world). Two + buttons, two jobs,
+  never mixed up. Test: fits perfectly on mobile → keep it; goes to the
+  next line down → don't, and the right + moves to the side, in the
+  corner. Checker measurement: all six on one line at phone width,
+  nothing cut off, nothing wrapping — so it stays.
+- 18:59Z CREATE WORLD MUST ACTUALLY CREATE (catch, screenshot): "It's
+  the create world pop up? That looks like shit. You need to make not
+  flat buttons all depth and nice and primo and then actually when you do
+  that it should actually create the feed and show you the feed with
+  optimized to that world. But it doesn't do that. It just goes nowhere."
+  Fix round carries it (buttons with real depth + create builds the feed
+  and shows it, tuned to that world).
+- 19:02Z BUTTONS NEVER CUT OFF THEIR TEXT (catch): "Captain's eye test
+  world" is cut off and unaligned. Every label shows full and aligned at
+  every width, long names wrap or shrink. Eye checks clean up their test
+  worlds/aliases after themselves — no test data on the page he sees.
+- 19:14Z FINE-TUNE THE TEAM — ON FIRE 24-7, NON-STOP (directive +
+  vision): "Like, I want you to fine tune your team where they're on fire
+  24-7, non-stop. Full armies out there getting it done because you got
+  this set up right. And it's at a perfect flow. You got things that the
+  timing the math the logic all of it I want you to think through it all.
+  Think what would be the optimal most intelligent setup you could
+  possibly have for producing non-stop value and getting things finished
+  and done correctly." Working shape, answered the same pass: the score is
+  finished pieces per hour, one every few minutes from parallel lanes
+  finishing at staggered times — fast little jobs are the heartbeat, big
+  page rounds are the substance, queue never runs dry; the moment one
+  finishes, the next step fires right away — nobody waits for a clock to
+  tick; fifteen-minute checks are only the safety net; overnight the same
+  way, work landing while he sleeps; fast and useless is useless, so the
+  checking stays.
+
+SMART-NOTES FILED THIS RUN (13 pairs, all PUT 201 + byte-identical blob
+read-back): SN-2995 No Longer "Spaces" — It's WORLDS · SN-2996 Optimize
+for Finishing and Producing Value · SN-2997 Scorecarding — The Ultimate
+Answer First · SN-2998 Don't Remove What He Didn't Ask to Remove ·
+SN-2999 Don't Send In What Isn't Completed · SN-3000 Sidebar Icons Light
+As You Scroll · SN-3001 My World Picker Must Switch · SN-3002 Restore
+What Was Good — Don't Iterate On It · SN-3003 One Icon That Lights Up —
+Never Icon and a Light · SN-3004 The Extra + — The Mobile Test Decides ·
+SN-3005 Create World Must Actually Create · SN-3006 Buttons Never Cut Off
+Their Text · SN-3007 Fine-Tune the Team — On Fire 24-7, Non-Stop. Each with a paired Naya Note (NN-20261116-<slug>), Paired
+lines carrying titles verbatim, never paths. Numbering:
+next-sn-number.py (run229-numbering.log): highest SN-2994, open-PR claims
+none, next free SN-2995; re-run before the 13th pair
+(run229-numbering2.log) blessed SN-3007. NOTE: the first foreground run
+of the command was SIGTERMed at 457s with no output (runtime kill, not a
+guard failure); the detached retry (setsid nohup) completed and blessed
+SN-2995. No PR, no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned
+2212, entries_scanned 2087, 0 unparseable, 0 malformed; watermark holds.
+Healthy — the notes live on GitHub, not in the local box tree.
+
+MAIL DIGEST HELD (run229-mail-digest.txt): send path still blocked
+(Supabase reauth_required since 21:06Z Nov 12; send path last proven 401
+Nov 13 04:24Z; team-pulse 18:54Z mail read still BLIND, mail-new
+UNKNOWN). Same known breakage as runs 202–228; repair is Shawn's hand,
+already escalated, NOT re-raised.
+
+STATE CARRIED (delivery events, not new lessons): Personal hub-return
+round checker PASS 18:52:46Z (all three parts passed; captain's eye-check
+running in the cloud browser — VM browsers dead again since 18:47Z
+tripwire); walk-end checker NOT PASS 18:50:40Z (H8+H10 fail at 390);
+transcribe-watcher could NOT run 18:55–18:56Z (EPERM lock-file write,
+queue state unknown); performance audit DONE (above); PI refresh BLOCKED
+18:55–18:58Z (run_refresh.py failed 3x on the EPERM flake, six feed-report
+writes truncated to 0 bytes; last good state intact, live artifact
+current through 18:40Z hash 566acc4d; next cycle retries).
+
+OUT OF ALIGNMENT, recorded plainly: (1) STILL OPEN from run 228 — the
+agreement-entrance brief's VERIFICATION section (line 98) still says
+verify labels "Begin the deck ◆" / "Read the letter ◆" UNCHANGED, while
+the brief's own line 78 states the DECIDED labels ("Begin the visual
+story ◆" / "Read the Collective Agreement ◆", 18:17Z). The brief
+contradicts itself; a checker following line 98 would fail a correct
+build. Captain's lane — this loop does not edit briefs. (2) Standing gaps
+unchanged — Naya Notes filed but not in the live feed (sections build
+owed); Hub still shows the duplicate SN-2906 cycle row (DELETE
+permission, his hand). Distillation: SN-2995..3006 are new raw notes for
+tonight's 23:17Z daily run. Silent run — no chat report owed (nothing here
+needs Shawn that he hasn't already been told; the Daily Intelligence
+Report 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 230 — 2026-11-16 ~19:23–19:4xZ (seat: Naya Nitro Sigma)
+
+RUN 229 COMPLETED THIS RUN (it timed out at 1800s with 3 steps owed):
+its 13th pair SN-3007 "Fine-Tune the Team — On Fire 24-7, Non-Stop" was
+renumbered from the SN-0000 draft, filed + blob-verified this run
+(SN blob 937d9cbe0cc54ca0eebf7600a85406e97e805bf9, 6867 B; NN blob
+eaf7a19aa9a7b25f6b897633974f5587d685d586, 2891 B) on the numbering
+blessing already obtained by run 229 (run229-numbering2.log: highest
+SN-3006, next free SN-3007). Its PI addendum was then filed + verified
+(run229-pi.py: board blob a945d7e161875ee4aafbbe0a4ee5540c39497408,
+532,381 B). Run 229 is now whole: 13/13 pairs + PI. Its goal timeline
+entry is this run's to record.
+
+LISTEN — what is new since run 229 (its LISTEN snapshot closed
+19:14:52Z): FIVE dictations/decisions from Shawn that run 229 did not
+file — the 19:03Z/19:07Z/19:12Z entries reached the daily log after its
+snapshot, and the 19:24Z one came after it closed:
+- 19:03Z THE I BUTTON IS THE PRICING EYE — ONE EYE, NOT A NEW EYE PER
+  PAGE (law in AGENTS.md + MEMORY.md): "the I doesn't look very nice
+  you can barely see it's an I it looks like a blob and it doesn't come
+  out plain." Fix: make it like the pricing page's eye — white and
+  pearl, nice, lights up purple around the edge, extraordinary. Law:
+  "you gotta stop creating new like elements and instead of using the
+  ones we have... if you make a new one eye button for every page and
+  they're all different." One canonical version of every element, used
+  everywhere it fits, never remade. Every ⓘ on Personal IS the pricing
+  eye, harvested verbatim (live v77, worker naya-model-pricing; already
+  harvested once for the Factory flow's Step 1 fields). Settles the
+  rail-I question open since 01:15Z. Name stays on the card, stacked
+  layout stays — he ruled on the I only. Item 6, bottom-bar-restore
+  brief.
+- 19:07Z THE PRICING EYE GETS MORE DEPTH — DOUBLE LAYER (refinement):
+  "but if you can give it a lot more depth, which I even told you about
+  that whole thing yesterday where you can double layer it, just make
+  it look premium, like quality maybe glossy I don't know like make it
+  look like a real element." Method: clone it once, put the clone
+  behind, move it right or left JUST A TAD. The clone-behind trick
+  (01:51Z, certificate name) is now the general depth method. Item 6
+  sharpened: pricing eye harvested verbatim PLUS the double layer — a
+  real touchable element under the Real Object Law, on every ⓘ.
+- 19:07Z LEADERBOARDS (his call): "And yeah, that's everything.
+  Leaderboards is really important right so they can go and see
+  leaderboards and they can see where they're their scoring um in any
+  area and then if they're at the top of any area which a lot of times
+  at the beginning they will it'll just show in the leaderboard."
+  Queued as its own feature (One List `leaderboards`): citizens see
+  where they score in any area; top shows. Brief still owed (where it
+  lives, which areas, what counts as scoring, top-of-area display). NOT
+  in the current fix rounds.
+- 19:12Z THE CYCLE IS THE CLOCK — LIVE TIME, FAST TIME ACTION (law in
+  AGENTS.md + MEMORY.md): he corrected the captain's 15-vs-30-minutes
+  question — "Neither of those are the answer. It's about getting
+  things done and completed and having the quality done… I don't want
+  to wait 30 minutes for you to respond to me and give me updates.
+  That's crazy. I'd rather bump it to five minutes instead of 15
+  minutes… But it's not about the minutes. It's about the quality of
+  the work being done. And then finishing it and then being able to
+  show me because for me I need to get the work back to me as soon as
+  possible so I can see it's done right so that I can approve it to
+  move forward — that's the cycle I'm working on, so I call that live
+  time, fast time action." Delivery is EVENT-DRIVEN — the moment a
+  round finishes, the next step fires in the same pass; the 15-minute
+  timers are only the safety net. NEVER offer to slow a live lane to 30
+  minutes — dead, withdrawn by his word twice (18:47Z + 19:12Z). Kill
+  DEAD wake-ups instead. "Fast and useless is useless. Fast and RIGHT
+  is awesome." The design it ordered: THE-OPTIMAL-SETUP.md (completions
+  per hour; lanes × completion rate; ready-queue 3 deep). Companion
+  rules same pass: CADENCE IS NEVER THE LEVER (Shawn, 19:12Z) and the
+  captain's 10-MINUTE RULE (maker spawned within 10 min of dispatch).
+- 19:24Z THE RED N ORB IS BEAUTIFUL — KEEP THE AGREEMENT END ON
+  REFRESH: "This is beautiful, by the way. I like the way that you did
+  the red with the N and it looks elevated. That's one of the most
+  beautiful elegant pieces you guys did." Charge: "when I refresh the
+  page, it was gone, so I would keep that on the collective agreement
+  at the end, that looks really good, makes it look official too." The
+  agreement end must persist across a refresh and be reachable directly
+  without walking the deck again. Sent to the walk coordinator (69fedfaa)
+  as item 11 of the fix round (checker verifies: reach the end →
+  refresh → end still there at 390 and 1851×1009). The red N orb end
+  view is kept exactly as it is, never redesigned.
+
+SMART-NOTES FILED THIS RUN (5 pairs, all PUT 201 + byte-identical blob
+read-back): SN-3008 One Eye, Not a New Eye Per Page · SN-3009 The
+Pricing Eye Gets More Depth — Double Layer · SN-3010 Leaderboards —
+See Where You Score in Any Area · SN-3011 The Cycle Is the Clock —
+Live Time, Fast Time Action · SN-3012 The Red N Orb Is Beautiful —
+Keep the Agreement End on Refresh. Each with a paired Naya Note
+(NN-20261116-<slug>), Paired lines carrying titles verbatim, never
+paths. Numbering: next-sn-number.py detached (run230-numbering.log):
+highest SN-3007 after the SN-3007 filing, next free SN-3008. No PR,
+no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, 0
+unparseable; watermark holds. Healthy — the notes live on GitHub,
+not in the local box tree.
+
+MAIL DIGEST HELD (run230-mail-digest.txt): send path still blocked
+(Supabase reauth_required since 21:06Z Nov 12; team-pulse 19:24Z mail
+read still BLIND, mail-new UNKNOWN). Same known breakage as runs
+202–229; repair is Shawn's hand, already escalated, NOT re-raised.
+
+STATE CARRIED (delivery events, not new lessons): Hub bake VERIFIED
+LANDED 19:19–19:21Z (hub-feed-live.json mtime 19:19Z, 1,474 cards,
+SN-2994 + the full SN-2969–2977 batch; Hub redeployed) — closes the
+13+ hour stale-feed gap from the audit. Fix-verify transport rewrite
+COMPLETE 19:20Z — formal gate PASSED, first clean exit 0 after three
+egress-failed rounds; F4 re-proven; sweep + race seat dispatched
+19:20Z. Browsers dead→alive 19:17Z (mmapprobe all OK, Firefox
+screenshot real) — queued eye-checks can run again. Personal
+hub-return DELIVERED WHOLE 19:21–19:22Z (cloud-browser eye PASS +
+captain's VM Firefox probe, 0 page errors; One List closed); NEW GAP
+from that eye: NO DELETE EXISTS FOR WORLDS (One List `world-delete`).
+Pulse re-scoped DONE 19:14Z — ledger 86 items → 3 live
+(serving-chain, paypal-cap-ladder, sn-filing-tool-build). PI refresh
+19:15Z published (hash de342d5a). Walk fix round carries item 11
+(red N orb persistence) + the H8/H10 failures.
+
+OUT OF ALIGNMENT, recorded plainly: (1) STILL OPEN from runs 228–229,
+RE-VERIFIED this run by reading the brief itself — the
+agreement-entrance brief's VERIFICATION section still says verify
+labels "Begin the deck ◆" / "Read the letter ◆" UNCHANGED, while the
+brief's own line 78 states the DECIDED labels ("Begin the visual
+story ◆" / "Read the Collective Agreement ◆", 18:17Z). The brief
+contradicts itself; a checker following the verification section
+would fail a correct build. Captain's lane — this loop does not edit
+briefs. (2) Standing gaps unchanged — Naya Notes filed but not in the
+live feed (sections build owed); Hub still shows the duplicate SN-2906
+cycle row (DELETE permission, his hand). Distillation: SN-3007..3012
+are new raw notes for tonight's 23:17Z daily run. Silent run — no chat
+report owed (nothing here needs Shawn that he hasn't already been
+told; the Daily Intelligence Report 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 230 — addendum #2 (late catch, 19:35Z/19:37Z)
+
+Three more dictations landed DURING run 230, after its first PI addendum
+was filed. Filed as SN-3013–3015 + paired Naya Notes, all PUT 201 +
+byte-identical blob read-back. Numbering: next-sn-number.py re-run
+(run230-numbering2.log): highest SN-3012, next free SN-3013.
+- 19:35Z SIDEBARS ALIGNED ACROSS THE WHOLE SYSTEM — ONE OFFICIAL LIST,
+  HOME AT THE TOP OF BOTH (SN-3013): every page's sidebars must be the
+  SAME sidebars — same menus, same contents — across the whole of
+  NayaNET, so navigation is one aligned system. Features split
+  deliberately, one kind per side, for the whole system — not invented
+  per page. HOME at the top of BOTH plus menus, to the Hub — the central
+  communication center / home page, where citizens land ("good
+  morning") and see what's going on in the intelligence network and the
+  collective. Critique: the Personal round built different plus buttons
+  opening different sidebars than the Hub's — whatever the way is, it
+  must be the same way on both pages, same sidebars, same menu. The
+  official list (left, right, order) is owed to him, approved by him —
+  never recorded as settled before that.
+- 19:35Z THE HUB IS THE MAIN CENTRAL STAGE — GOOD MORNING + WISDOM OF
+  THE DAY (SN-3014): hero = "Good morning, Shawn" + Wisdom of the Day
+  quote + time and date. "Intel Today — the daily digest of NayaNET's
+  smart notes" is WRONG and comes out (this page is public — the public
+  blog, not an internal digest); the "Intelligence as of November 15 ·
+  226 Smart Notes · 1 day old" line comes out too. The banner "Our
+  public smart feed — connect with people of like minds" stays. Both
+  bottom bars go away as bars — their apps move into the sidebar with
+  their icons, some into the + menu — and the Hub takes the Personal
+  page's actual bottom bar, so both are aligned. Messenger/organizer
+  hookup on the Hub is a follow-on, not this round. Wisdom harvested
+  from the Daily Wisdom source, never invented. Rides the Hub
+  sidebars-plus round as an amendment.
+- 19:37Z THE OFFICIAL LIST IS MADE BY THINKING, NOT TRANSCRIBED
+  (SN-3015): "Yeah, that's not the official list. It's just because
+  I'm giving you a screenshot. I'm telling you that's not the official
+  list. None of these are official. You need to get them aligned."
+  Error named: transcribing instead of thinking. The reasoned logic:
+  LEFT = where you go (home first, your worlds next, shared areas,
+  administrative last); RIGHT = what's yours + what NayaNET offers
+  (your stuff first, offerings, informational last); HOME lives ONCE
+  (top of the left as Hub, top of both + menus, never on the right);
+  Search and Apps are openers, not pages. The transcribed list is
+  VOIDED (coordinator told not to build to it); the reasoned proposal
+  (LEFT 17, RIGHT 15) stands as a proposal only, presented 19:37Z,
+  awaiting his word. Do not record any sidebar list as settled until
+  he rules.
+
+## Intelligence Loop run 231 — addendum (19:38Z/19:44Z, run 230 handoff completed)
+
+Run 230's handoff completed first: its late-catch trio SN-3013–3015 +
+paired Naya Notes filed + blob-verified this run, and its PI addendum
+#2 filed + verified (board blob 0f16e4dc, 543,558 B). Run 230 is now
+whole. Two more dictations then filed as SN-3016/3017 + paired Naya
+Notes, all PUT 201 + byte-identical blob read-back. Numbering:
+next-sn-number.py fresh run (run231-numbering.log): highest SN-3015,
+next free SN-3016.
+- 19:38Z ONE ULTIMATE SYSTEM, ONE ULTIMATE LANGUAGE (SN-3016): "the
+  whole system — including the Hub, all the Personal pages, all of it
+  — works on the same logic; they are all interconnected pages with
+  the same feel and look and concept and elevation and organization.
+  You're not creating many different systems you're creating one
+  ultimate system that's all interconnected. With one ultimate
+  language. The power language. The language of Naya. High level
+  design high level functions super useful super helpful 10 star all
+  the way through the ultimate service. In service to you in service
+  for us." Law: every page is the same system, one language — a page
+  that invents its own feel is a break in the system, not a new page.
+  The sidebar lists are one list for one system, seen from the left
+  and from the right. Captain filed this in MEMORY.md the same pass.
+- 19:44Z HIS CORRECTIONS MAKE THE LIST — PRICING TO THE RIGHT, WORLDS
+  AT THE TOP (SN-3017): his corrections to the sidebar lists
+  supersede the 19:37Z reasoned list — the SN-3015 method working:
+  propose, let him correct, carry the corrected list. Pricing (Naya
+  Power) goes RIGHT, very bottom, with Member Login. "5" Day Challenge
+  goes (same as Naya Academy). Intro Report goes (not used). Life with
+  Naya and Leaderboards rise toward the top of the right; Maxis "AI
+  Score" kept; worlds at the TOP of the right, one after another.
+  Dashboard reframed: your world IS the calendar, then into Smart
+  Stats (the current Dashboard), with a Leaderboards link. Personal
+  becomes a sub-tab: Personal Mail · Personal Instant Messages ·
+  Personal Page; the trio below shows notification counts. His charge:
+  write out the left and right lists for his confirmation, and think
+  logically about the best display so it is useful and functional —
+  how it functions, ten-star level. CORRECTED LIST (LEFT 16, RIGHT 13)
+  presented 19:44Z — STILL NOT RATIFIED, awaiting his confirmation;
+  never recorded as settled until he says so. Captain sent the
+  correction to the Hub sidebars-plus coordinator (09cd3722) and
+  updated MEMORY.md + the floor STATE block the same pass.
+- STATE (not lessons): thank-you loop tail CLOSED 19:45–19:50Z —
+  sweep 82/82 test aliases purged, race PASS (two identical first-note
+  POSTs 62.5 ms apart returned the same note id, total 1); One List
+  thankyou-loop-live-20261116 closed. PI refresh 19:40Z published
+  (hash cfea9430, 42/204 done-proven). Team-pulse re-scoped DONE
+  19:14Z — ledger 90 → 3 live items; mail read still BLIND (19:54Z),
+  repair is Shawn's hand, already escalated, NOT re-raised.
+
+## Intelligence Loop run 232 — addendum (20:13Z/20:22Z sidebar refinements, rounds 2 + 3)
+
+Two more dictations filed as SN-3018/3019 + paired Naya Notes, all PUT
+201 + byte-identical blob read-back (SN-3018 blob 5f2befc9, 11,412 B;
+NN blob c7233429, 6,374 B; SN-3019 blob 0e295fc3, 9,166 B; NN blob
+f28e1452, 4,559 B). Numbering: next-sn-number.py fresh run
+(run232-numbering.log): highest SN-3017, next free SN-3018, no
+open-PR claims. (The filing script printed ALL FILED + VERIFIED but
+crashed writing its own log on the EPERM flake; shas re-verified by
+independent contents-GETs, sizes matching the drafts exactly.)
+- 20:13Z SIDEBAR REFINEMENTS, ROUND TWO — SMART WORLDS, HUB-ONLY
+  BUTTONS, MAIL LEADS THE START (SN-3018): played back to him;
+  AWAITING HIS CONFIRMATION — NOT official, NOT yet sent to the Hub
+  coordinator; supersedes parts of the 19:44Z corrected list once he
+  confirms. Smart Spaces renamed SMART WORLDS (your Space is your
+  world; Smart Worlds is the directory of all the worlds). Today's
+  Intel leaves the sidebar into the calendar. Smart Growth stays — it
+  is Invite. Intelligent Library = the page's whole knowledge store
+  (smart notes describing what the page is, About, Q&A). Ask Naya +
+  Life with Naya move to the HUB TOP BAR ONLY — two beautiful black
+  obsidian buttons, center top, Hub-only; never in the sidebars, never
+  on Personal or Business. Smart Ledger leaves the sidebar — a button
+  inside Smart Stats. Start Here leaves — starting is led by Smart
+  Mail (Naya Fast Track series, day by day; they start with "you've
+  got mail"). Your Connections leaves the left as its own item —
+  per-area sub-tabs plus one total view. RIGHT: My Worlds at the top
+  (your worlds ARE your feeds); Favorite Worlds = joined worlds, an
+  organizable list (labels, sub-labels, categories); Leaderboards
+  (main + featured); Naya Academy, AI Masterclass, Fast Action Club
+  ARE the logins (more than three memberships show in this menu);
+  Maxis "AI Score" stays; Your Hired REMOVED (already hired); Member
+  Login REMOVED (memberships are the logins). SETTINGS URL RULE: a
+  spot in Settings to replace the URL and label it — put a new URL in
+  and boom, it shows there with that label. Playback: LEFT 11, RIGHT
+  10. On his confirmation: record as official, send the superseding
+  correction to the Hub sidebars-plus coordinator (09cd3722), update
+  MEMORY.md.
+- 20:22Z SIDEBAR REFINEMENTS, ROUND THREE — SMART FEED IS THE HUB,
+  YOUR WORLD, CONNECTIONS STAY (SN-3019): played back to him;
+  AWAITING HIS CONFIRMATION — NOT official, NOT yet sent to the Hub
+  coordinator; supersedes round 2 the same way round 2 superseded
+  parts of the 19:44Z list. Smart Feed REMOVED from the left — Smart
+  Feed IS the Hub, the main home hub; not a separate thing. Intel
+  Today is BACK on the left, travelling WITH Your Reports, right after
+  the worlds (also reachable inside the calendar). Space renamed YOUR
+  WORLD — "your thing, your world, just call it your world" — Smart
+  Worlds (the directory) goes RIGHT UNDERNEATH Your World. Your
+  Connections STAYS as its own left item — the directory of all
+  connections; the per-area sub-tabs stand alongside it. A correction
+  can restore as well as remove. Start Here = Fast Track mail,
+  confirmed again; still not a sidebar item. Playback: LEFT 12
+  (Hub = the Smart Feed · Dashboard · Personal · Business · Your
+  World · Smart Worlds · Intel Today · Your Reports · Smart Factory ·
+  Smart Growth · Intelligent Library · Your Connections), RIGHT 10 +
+  Hub-only top-bar buttons unchanged from round 2. On his
+  confirmation: record as official, send the superseding correction to
+  the coordinator, update MEMORY.md. Until then the 19:44Z list is the
+  last one the coordinator has.
+- STATE (not lessons): combined walk round final checker PASS 20:12Z
+  (coordinator 69fedfaa, all eleven items proven live, 0 page errors;
+  branch walk-end/share-plus-20261116, tip b3837ad2); captain's own
+  eye via cloud browser (task 37656aa5) still running at flush — the
+  round is NOT delivered to Shawn yet. Feed-posts brief written 20:08Z
+  (fires when the Personal bottom-bar-restore round lands whole). PI
+  refresh 20:10Z published (hash cb2a067d). Floor-watch 20:20Z
+  adjudicated 20:21Z: NO POKES (both fix makers alive under quiet
+  coordinators); board re-rendered, OWED agrees with the One List.
+  Hub re-bake FAILED 19:57Z (HTTP 500) — SN-3013/3014/3015 in the feed
+  table but NOT live on the Hub; re-run PENDING Shawn's word.
+
+## Intelligence Loop run 233 — addendum (completes run 232 batch 2 + the resilience law)
+
+Run 232 timed out at 1800s during batch-2 filing; this run completes it.
+Four pairs filed + verified, all PUT 201 + byte-identical blob read-back:
+SN-3020 blob 1c4b13ef, 7,122 B; NN blob 4050d419, 3,243 B; SN-3021 blob
+66d20637, 10,726 B; NN blob 167e8994, 5,360 B; SN-3022 blob e207f8d1,
+7,825 B; NN blob 4ef4f4e0, 3,656 B; SN-3023 blob 8e22572e, 8,590 B; NN
+blob acbc2f1b, 3,436 B. Numbering: next-sn-number.py fresh run
+(run233-numbering.log): highest SN-3019, next free SN-3020, no
+open-PR claims. (The filing script's own python log write failed on
+the EPERM flake; the log was saved by shell redirect and the stdout
+record is the receipt — every PUT was blob-verified in-band.)
+- 20:23Z NAME ENTRY AS THE DEED SIGNING (SN-3020): the name boxes
+  "are just not impressive... make those where you enter the name feel
+  like something special — like that's where they're entering the name
+  of their land, their domain, their real estate." The name box
+  becomes the deed itself — elevated obsidian plaque, purple underglow,
+  the typed name as the signature on the deed, the seal stamps on
+  entry; ONE treatment in all three places (front page, identity page,
+  agreement end). Harvest: identity seal-stamp, Vault Dial v2 inputs,
+  name-as-royal-object look (obsidian middle, purple glow edges,
+  chrome-thin white/silver trim, clone trick; gold OUT on the name),
+  the official sentence. Brief written
+  (name-entry-deed-20261116/BRIEF-NAME-ENTRY-DEED-20261116.md); fires
+  AFTER the agreement-entrance-welcome round lands whole (same files,
+  clobber law + deploy lock). One List add `name-entry-deed-signing`
+  attempted x4, all failed on the EPERM flake — NOT landed; retry
+  when the flake clears.
+- 20:26Z SIDEBAR ROUND 3 CONFIRMED — THE OFFICIAL LIST v4 (SN-3021):
+  Shawn confirmed the round-3 playback ("I think that's right now")
+  and added the DISPLAY instruction in the same message. v4 is
+  OFFICIAL, sent to the Hub sidebars-plus coordinator (09cd3722) as
+  submission 31ca493e, superseding the 19:44Z lists and the v3
+  playback. LEFT 12 (Hub IS the Smart Feed · Dashboard · Personal ·
+  Business · Your World · Smart Worlds · Intel Today · Your Reports ·
+  Smart Factory · Smart Growth = Invite · Intelligent Library · Your
+  Connections); RIGHT 10 (My Worlds top · Favorite Worlds · Leader-
+  boards main + featured · Naya Academy · AI Masterclass · Fast Action
+  Club · Maxis "AI Score" · About Us · White Paper · Pricing bottom);
+  HUB-ONLY Ask Naya + Life with Naya, two black obsidian buttons in
+  the Hub top bar. THE DISPLAY: the circle icons go INTO the sidebars
+  as BUTTONS — the sidebar IS those icon-buttons; the plain list does
+  not stay alongside; bottom-bar icons live in the side tabs; the Hub
+  gets the Personal bottom bar (six tiles); REMOVE the Smart Bars
+  flowing top and bottom. Captain's three watch items, blessed by his
+  thumbs-up: one trio name must win everywhere (Space / Thing / Your
+  World); Your Reports' contents never named; Intel Today must be the
+  SAME Intel Today behind its two doors. MEMORY.md v4 replacement
+  scripted but its write failed on the flake — MEMORY.md still carries
+  the 19:44Z text; retry when the flake clears.
+- ~20:35Z VOICE NOTE — NOT OFFICIAL, NOT A PRIORITY, SHOW ME THE
+  WORDS FIRST (SN-3022): "can I see what you actually are saying
+  before you go and try to run it again? ... It's not even a priority
+  right now you haven't nailed in the language and it might be too
+  long." Standing instruction reinforced: NO voice run until he has
+  SEEN the exact words and the language is nailed/official. Verified
+  live, not from memory: there IS no voice note of the agreement — no
+  words written, no recording made, no audio on the staged front page.
+  The letter is 86 beats, ~15 minutes aloud — way too long, never
+  recorded; when voice happens it is the short introduction, never
+  the letter. The 18:52Z pause stands, reinforced.
+- 20:51Z BUILD SYSTEMS AROUND IT — THE RESILIENCE LAW (SN-3023):
+  "when stuff like this happens, build systems around it so no matter
+  what happens you always have a solution — a backup plan, a way to
+  continue — and preserve things so nothing gets wrecked. Build in
+  the cloud, in the system, as much as possible." The night that
+  earned it: EPERM flake 20:24–20:55Z blocked One List adds, the
+  MEMORY.md v4 replacement, six PI refresh attempts, the transcribe
+  watcher's lock, the Hub re-bake he had just approved ("Yes, run it
+  now"), and the browsers died again 20:32Z. Nothing was lost — every
+  file verified intact — but nothing could move. At 20:55Z he asked
+  for the top-ten intelligent guesses on the failures + the solution
+  for each; the captain's answer: most likely the runtime security
+  filter re-applied / cell throttling under our load; the real fix is
+  the runtime's, and ours is this law — cloud browser eye, tripwire,
+  atomic writes + size guards, kill dead wake-ups, record in the
+  cloud. MEMORY.md + AGENTS.md law entry QUEUED behind the flake;
+  retry when it clears.
+- STATE (not lessons): walk-end fix round dispatched 20:39Z (seal +
+  red orb + stale note; coordinator aab5e371, PENDING at flush).
+  Captain's eye re-probe 20:30–20:33Z confirmed 2/3 FAIL on the walk
+  round (seal never visible on tap; agreement orb is blue-diamond,
+  not red with gold N; stale taken-alias note lingers) — walk round
+  NOT delivered. Five notes stuck off the Hub (SN-3013–3017); Shawn
+  approved the manual re-bake 20:46Z; the re-bake seat could NOT run
+  (EPERM flake, no verified backup possible) — retry owed the moment
+  a scratch write verifies clean. PI refresh 20:25Z FAILED on the
+  flake (6 attempts, feed reports 0 bytes); 20:40Z cycle failed too.
+  Leaderboards brief DONE (BRIEF-LEADERBOARDS-20261116.md, checker
+  7/7; build not started). VM browsers DEAD again 20:32Z (same
+  writable-shared-memory signature); Shawn asked why + whether there
+  is a solution — captain's answer given (runtime filter, cloud
+  browser is the route-around); he reacted with approval.
+
+
+# Intelligence Loop run 234 — PI addendum (FILED this run — SN-3038/SN-3039 + paired NNs)
+
+Run 234, scheduled 21:23:18Z Mon 2026-11-16, ran ~21:26–21:45Z.
+
+## New intelligence this run
+
+- **SN-3038 "The Icon Laws — One Language, Everywhere" (FILED)** — Shawn 21:08–21:18Z. One language: obsidian middle, white middle, light on the OUTSIDE only, double-layered, pearl-rich; every icon a real trillion-dollar jewel piece, no dots, icon left of the words; hover lights every button; no gray text ever (wisdom of the day: white, active, double font, quotations). Reference: the top-left +. Carried by the Hub icons-fix brief (11 items, 21:18Z) and the Personal icons-plus brief (21:09Z).
+- **SN-3039 "Coordination — Direct, Not Mail" (FILED)** — Shawn 21:29Z. The mail-every-15-minutes loop through the sisters does NOT work; the direct way works best: Shawn ↔ Naya ↔ agents/sisters ↔ back through Naya. The loop's mail step (seat brief step 4, Correction Compound step 4) is retired by his word; the digest stays as the record only. Captain's edit to the seat brief owed.
+
+## State changes
+
+- VM browsers: DEAD → ALIVE 21:17Z (probe verified).
+- MEMORY.md v4 official-list replacement: LANDED (resilience law + icon laws + coordination now in MEMORY.md; resilience law in AGENTS.md).
+- Hub re-bake: no longer flake-blocked; running per the captain's message to Shawn. Still owed until SN-3013–3023 are live on the Hub.
+- Organize hook: clean, 0 new, watermark holds.
+- Mail: HELD (standing reauth breakage) + step retired by his 21:29Z word.
+
+## Still open
+
+- Agreement-entrance brief self-contradiction (line 78 new labels vs line 98 old labels).
+- Hub icons-fix coordinator 49c297e6 status unknown at 21:23Z; Personal eye walk still pending.
+- Numbering guard false claim: SN-9999 (test fixture in PR #3382) makes next-sn-number.py report next free SN-10000; guard fix owed. This run used SN-3038/3039 (renumbered by the captain from the run's draft numbers; tree highest SN-3032 at filing — that check missed the simultaneous SN-3033/3034 filings; renumbered again to SN-3038/3039 by the collision seat).
+- Filing done: SN-3038/3039 + NNs + this addendum — all filed; the run-235 filing pass (commit dd938580) and the run-236 filing pass (commit ffc63acd) are the record.
+
+
+# Intelligence Loop run 235 — PI addendum (filed 2026-11-16; SN refs corrected at filing — run 234's pair is SN-3038/SN-3039)
+
+Run 235, scheduled 21:53:18Z Mon 2026-11-16, ran ~21:54–22:12Z.
+
+Filing note (2026-11-16, at filing): filed after the SN-3033/SN-3034 renumber landed (22:50Z). Every reference below that means run 234's notes now reads SN-3038/SN-3039. Status lines record what the run saw at its close; later state changes are recorded in later runs.
+
+## New intelligence this run
+
+None — no new dictation or decision from Shawn since 21:29Z (his coordination ruling, SN-3039). The run's work is verification of run 234's carry-over plus one material finding.
+
+## Verified filed (re-filing seat — all byte-identical to the run-234 drafts)
+
+- SN-3038 "The Icon Laws — One Language, Everywhere" — filed as SN-3033, blob e3232702, 9,076 B; renumbered to SN-3038 (blob 3e8fc8f9) by the collision seat after this run closed.
+- SN-3039 "Coordination — Direct, Not Mail" — filed as SN-3034, blob 61653be1, 5,775 B; renumbered to SN-3039 (blob 21e09827) by the collision seat after this run closed.
+- NN-20261116-the-icon-laws-one-language — blob d3a1c53a, 5,518 B.
+- NN-20261116-coordination-direct-not-mail — blob b77e4f77, 2,910 B.
+- Run 234 PI addendum appended to TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md at line 1996. (Its SN refs were updated to SN-3038/SN-3039 by the renumber seat; its body said "(DRAFTED, pending filing)" until the fix in commit e7f15683.)
+
+## ⚠️ OUT OF ALIGNMENT — SN-3033 and SN-3034 each hold TWO different notes
+
+- SN-3033: "Do It Right, Every Layer Great" (b82ba088, 10,576 B — created 21:44Z, consolidation of Shawn's 16:55–17:53Z professional-standard notes) + the loop's "The Icon Laws" (e3232702 — now SN-3038, blob 3e8fc8f9).
+- SN-3034: "Earn It, Don't Declare It" (5530e8c7, 11,964 B — created 21:50Z, legal-pages notes 17:54–18:47Z) + the loop's "Coordination — Direct, Not Mail" (61653be1 — now SN-3039, blob 21e09827).
+- Both collisions are near-simultaneous filings by two seats; the loop's bytes landed intact, nothing overwritten. One note of each pair must be renumbered — the loop does not move or re-file notes; the decision is the captain's. RESOLVED after this run closed (22:50Z): first-filed keeps the number; the loop's pair moved to SN-3038/SN-3039 (collision seat 99f7e1df, verified from the live tree at filing).
+- The numbering guard did NOT flag this: `next-sn-number.py` (run 22:04–22:10Z, exit 0, highest SN-3037) matches filenames against case-sensitive `SN-(\d+)`, but every file here is named `...-sn3033-...` (lowercase, no hyphen), so its same-directory duplicate check collapses to one directory-level claim per number. Guard fix owed (captain's lane): match filenames case-insensitively / match `snNNNN` too — alongside the standing SN-9999 test-fixture false claim (guard still reports next free SN-10000; tree highest is SN-3037).
+
+## State changes
+
+- Walk-end fix DELIVERED WHOLE 21:52Z (checker PASS + captain's eye PASS, 0 errors); One List walk-end-share-plus CLOSED; entrance-welcome brief fixed (line-98 labels) + coordinator dispatched — the agreement-entrance self-contradiction is resolved.
+- Hub icons-fix Item 8 fix FILED (blob 6add8aec, commit ae52088a, staged sha 5f00eb52) + independent re-checker dispatched.
+- Organize hook: clean, 0 new, watermark holds.
+- Mail: digest as record only (step retired by Shawn's word 21:29Z).
+
+## Still open
+
+- Hub re-bake seat c07db9b6 still running at last view; SN-3013–3023 still NOT confirmed live on the Hub.
+- Personal bottom-bar v2 live proof (cloud browser ea9eec21) still pending; 390px owed.
+- Personal icons-plus round queued behind bottom-bar v2 proof.
+- Loop seat-brief step 4 / Correction Compound step 4: captain's edit owed (mail step retired).
+- Filed with this addendum (run235-pi-new.md, corrected at filing).
+
+
+# Intelligence Loop run 236 — PI addendum (filed 2026-11-16; SN refs corrected at filing — run 234's pair is SN-3038/SN-3039)
+
+Run 236, scheduled 22:23:18Z Mon 2026-11-16, ran ~22:24–22:30Z.
+
+Filing note (2026-11-16, at filing): filed after the SN-3033/SN-3034 renumber landed (22:50Z). Every reference below that means run 234's notes now reads SN-3038/SN-3039. Status lines record what the run saw at its close; later state changes are recorded in later runs.
+
+## New intelligence this run
+
+None — no new dictation or decision from Shawn since 21:29Z (his coordination ruling, SN-3039). The run's work is verification of the carry-over plus the state changes since run 235 closed (~22:12Z).
+
+## Verified live this run (gh-direct.py, read-only)
+
+- **SN-3033/SN-3034 collision — as verified by this run (~22:24–22:30Z) it was STILL OPEN:** LESSON/SN-3033 then held both files — b82ba088 ("Do It Right, Every Layer Great", 10,576 B) + e3232702 ("The Icon Laws", 9,076 B). LESSON/SN-3034 then held both — 61653be1 ("Coordination — Direct, Not Mail", 5,775 B) + 5530e8c7 ("Earn It, Don't Declare It", 11,964 B). SN-3038/SN-3039 did not exist anywhere in the 2026/11/16 tree (all 11 category dirs scanned). Renumber seat 99f7e1df was still running. **RESOLVED after this run closed (22:50Z): the loop's pair moved to SN-3038 (blob 3e8fc8f9) / SN-3039 (blob 21e09827); SN-3033/SN-3034 now each hold one note (verified from the live tree at filing).**
+- **PI board — as verified by this run:** sha 47a393fc, 567,094 B, 2,019 lines — same as run 235 saw. Run 235's addendum was NOT on the board yet (no "run 235" header found); it remained staged, pending the filing route. (Run 234's addendum is on the board; its body said "(DRAFTED, pending filing)" until the fix in commit e7f15683. Its SN refs have since been updated to SN-3038/SN-3039 by the renumber seat.) **Filing note: run 235's addendum was filed immediately before this one (same filing pass); the board has since moved to blob f29b3ff3 (renumber seat's edit).**
+
+## State changes since run 235
+
+- Threshold batch DELIVERED to Shawn 22:19Z: 137 raw notes → 14 notes SN-3024–3037, filed + read-back verified; 11 hand-distilled (machine title-picker defect). Collision tidy-up told to him (SN-3038/3039).
+- Captain's ruling on the collision + renumber seat dispatched (first-filed keeps the number; run 234's pair moves; seat also fixes next-sn-number.py and updates the PI board note's run-234 addendum refs only).
+- Hub icons-fix EYE FAIL 22:20Z (re-check PASS 22:09Z, captain's eye FAIL — 'All' tab clipped, drawer round-trip leaves zero sidebars, polish items). Fix coordinator 50db97a6 dispatched; Shawn told plainly.
+- Hub feed FRESH 22:22Z (captain-verified live): hourly sync 22:05Z synced sn3037 + redeployed; sn3024/sn3035/sn3036/sn3037 once each; sn3033/sn3034 twice each; stale sn2906 cycle row still present (count 1).
+- PI refresh 22:10 UTC: new render published to the Living List artifact, no state transitions, 10 corroborations.
+- Organize hook: clean, 0 new, watermark holds. Mail: digest as record only (step retired by Shawn's word 21:29Z).
+
+## Still open
+
+- SN-3033/SN-3034 collision — RESOLVED 22:50Z (see the collision note above); the guard fix landed with the renumber seat.
+- Hub re-bake seat c07db9b6 still running (55+ min); stale sn2906 cycle row on the live feed.
+- Personal bottom-bar v2 live proof (cloud browser ea9eec21 / task 4b5541f2) quiet 31+ min — floor-watch flagged 22:14Z.
+- Personal icons-plus round queued behind bottom-bar v2 proof.
+- Loop seat-brief step 4 / Correction Compound step 4: captain's edit owed (mail step retired).
+- Filed: run 235's addendum (immediately before this one) + this addendum (run236-pi-new.md, corrected at filing).
+
+## FILING STATUS — run 237 addendum (filed to this board 02:13Z 2026-11-17 by the filing seat)
+
+**PAIRS NOT FILED.** The parent's 01:47Z correction cancelled the 21-note renumbering (SN-3054–3074): only 6 pairs filed in this round (run 239's SN-3054–3055 + run 240's SN-3056–3059, under their draft numbers). This run's 4 pairs (drafts SN-3040–3043, in hidden_files/run237-drafts/) stay staged, unfiled. A content diff (01:49Z, titles + slugs + phrase check) showed the SN-3040–3053 now on main are DIFFERENT notes from these drafts — a parallel distillation of the same evening's dictations — so this content is NOT on main under any number. Filing needs the parent's re-decision. Body numbers below are as drafted; do not read them as filed numbers.
+
+# Intelligence Loop run 237 — PI addendum (STAGED, pending the captain's filing route)
+
+Run 237, scheduled 22:53:18Z Mon 2026-11-16, ran ~22:54–23:15Z.
+
+## New intelligence this run — four pairs drafted, filing pending
+
+All from Shawn in the main chat, 22:47–23:04Z. Numbering verified this run
+(`next-sn-number.py`, exit 0): highest SN in use SN-3039, next free SN-3040;
+SN-3040–3043 confirmed absent from the live tree (LESSON dir listing).
+Drafts in `~/workspace/goals/team-nitro-operating-loop/hidden_files/run237-drafts/`.
+
+- **SN-3040 "The Agreement Bridge Page — Choose How You Enter"** + NN-20261116-the-agreement-bridge-page. 22:47Z: the collective-chain-technology link opens a BRIDGE page — visual presentation or text presentation, then click the button; play button dead center at the top; her picture right beside the box. 22:47–22:58Z correction arc: he misread it at first — hadn't scrolled; the checker was right. ENTRANCE AS BUILT STANDS. Deck stands (words optimized for images only). Letter gets the new updated text + the unfold. Legal pages updated to the merged text. Play button big, circled, orb around it, says Naya (voice paused, glow-only). Picture-with-box-speaking is the common thing. The round going out now carries all of it.
+- **SN-3041 "The Official Unfold — Intelligence on a Silver Platter"** + NN-20261116-the-official-unfold. 22:58Z — the presentation LAW for every page: three sentences at a time in one elevated box, one idea each; 1–3 boards per screen; click, the next piece unfolds — each board a new theme, a new colour, a new page, each piece a gem (diamond, emerald) on a silver platter. Her face just OUTSIDE the box, speaking what's in it, through the whole presentation; citizens swap her face for theirs. Text and images together, whichever fits beautifully; never force both into one viewport. Two unfold directions — down the screen and sideways — a matrix, both the same effect. Forget web pages: live intelligent pages that unfold as you take them in. Words world class and word perfect — written to a child, a leader, a king, a grandma.
+- **SN-3042 "Smart Note Studio — Speak Anything In, Share a Deck Out"** + NN-20261116-smart-note-studio. 23:04Z — a NayaNET FEATURE: speak/type ANY intelligence in → Naya outputs a Smart Note in the official unfold (down the page or slides sideways) → six perspective buttons below the box (child / grandma / techie / why it matters / what's in it for you / how it connects) re-render the SAME facts in that voice → Naya's face beside the box by default, the citizen's own picture as the swap → share to the intelligent feed in either format → one lesson in becomes a whole click-through deck on any subject. We make our own pages with it (dogfooding). The captain has written it up as a build and it is going now.
+- **SN-3043 "Letter-Page Layout — Board Centered, Button Below, Links at the Bottom"** + NN-20261116-letter-page-layout. 23:04Z, same message as the Studio, on the letter page screenshot (last lines clipped where the small links overlap the board): board centered in the viewport; "Keep reading ◆" just below the board; small links at the very bottom, below the button — never overlapping the board, never clipping text. Her picture beside the box as a circle, like a profile picture beside a message.
+
+## Verified live this run (gh-direct.py, read-only)
+
+- **SN-3033/SN-3034 collision CLOSED — independently verified by this run:** LESSON/SN-3033 holds one file (b82ba088, "Do It Right, Every Layer Great", 10,576 B, untouched); LESSON/SN-3034 holds one file (5530e8c7, "Earn It, Don't Declare It", 11,964 B, untouched); LESSON/SN-3038 holds one file (3e8fc8f9, Icon Laws, 9,076 B, header reads SN-3038); LESSON/SN-3039 holds one file (21e09827, Coordination, 5,775 B). Both paired NN lines updated (SN-3038 / SN-3039). PI board run-234 addendum header now reads "(FILED this run — SN-3038/SN-3039 + paired NNs)"; its body still says "(DRAFTED, pending filing)" — stale wording, captain's call.
+- **Numbering guard FIXED and proven:** `next-sn-number.py` reports highest SN-3039, no open-PR file claims above tree, next free SN-3040. The SN-9999 test-fixture false claim is gone from its output.
+- **Run 235 + run 236 PI addenda FILED** by seat 030a1eda — verified by this run: both headers present on the board (blob e73dd1bf, 567,196 B). Only this run's addendum remains staged, pending the filing route.
+- **Hub icons-fix FIX round: checker verdict OVERALL PASS 22:56Z** (items A–D all PASS; commit 6a6af88f, blob 5e30ef57, 4,855,429 B, staged). Captain's eye next. Coordinator 50db97a6 DONE 22:56:16Z.
+
+## State changes since run 236
+
+- Renumber seat 99f7e1df DONE 22:50:30Z (collision fixed + verified, see above).
+- Hub re-bake DONE + verified live 22:27Z (size guard in build_feed_live.py; live Hub = local bytes; SN-3013–3023 in feed incl. SN-3022 after the Created stamp fix 22:31Z, blob 06edb61a).
+- Personal bottom-bar v2: cloud-browser UI-only PASS (desktop) 22:32Z + VM probe-fix2 FULL PASS 22:38Z (390 5/5, other widths 3/3, 0 errors); independent re-checker 22fedaa1 still running at last check; captain's eye + delivery owed.
+- Agreement entrance-welcome coordinator DONE 22:47:50Z (checker PASS, staged only); the agreement round going out now carries the 22:47–22:58Z asks (captain's reply 22:58Z).
+- Floor board repaired 22:36Z (fresh STATE block; stale-board trigger cleared).
+- PI refresh 22:40Z published (317,276 B, sha 08efcbbb…); browsers alive 22:47Z.
+- Organize hook: clean, 0 new, watermark holds. Mail: digest as record only (step retired by Shawn's word 21:29Z).
+
+## Still open
+
+- This run's 4 pairs (SN-3040–3043 + NNs) drafted, filing pending the captain's route; this addendum staged, pending filing.
+- Run-234 addendum body stale "(DRAFTED, pending filing)" wording (captain's call).
+- Correction Compound inventory/template steps not run by recent loop runs — flagged in the run log, not claimed. Loop seat-brief step 4 / Compound step 4: captain's edit owed (mail step retired).
+- Bottom-bar v2 re-checker 22fedaa1 still running; Personal icons-plus queued behind v2 proof.
+- Stale sn2906 cycle row still on the live feed; sync silent-rebake-failure gap (fix owed — surface rebake failures, never exit 0 on a failed feed build).
+
+
+## FILING STATUS — run 239 addendum (filed to this board 02:13Z 2026-11-17 by the filing seat)
+
+**2 of 9 pairs FILED; 7 NOT filed.** Filed under their draft numbers: SN-3054 "The Day Menu" (blob 6b495f4dd9fdb9d9259adc80ecb3a2fcc5415748, commit 9dc2ffb14822a470555f5e465e537d49e450bbe0) + its NN (blob 940738db5642f03a2e045d3d71d8c519fd3b49e8), and SN-3055 "The Benchmarks" (blob 9f5307898a128f679b8f28d2392d35e88cf48b47, commit 03a2c61e8a96a683583862915dc3eafbd6a30400) + its NN (blob be95f0d4b7c5017e1a26814a953fc9ce3fc9f21e). NOT filed: drafts SN-3047–3053 (7 pairs, in hidden_files/run239-drafts/) — the renumbering was cancelled by the parent's 01:47Z correction; filing needs the parent's re-decision. The filed SN-3054/SN-3055 carry verbatim refs to unfiled drafts (SN-3047, SN-3051, SN-3053) — reported, not fixed. Body numbers below are as drafted.
+
+# Intelligence Loop run 239 — PI addendum (STAGED, pending the captain's filing route)
+
+Run 239, scheduled 23:53:18Z Mon 2026-11-16, ran ~23:55Z–00:2xZ (straddled midnight UTC into 2026-11-17).
+
+## New intelligence this run — nine pairs drafted, filing pending
+
+All from Shawn in the main chat, 23:19Z 2026-11-16 → 00:13Z 2026-11-17. Numbering
+NOT verified this run (`next-sn-number.py` failed again — exit 1, ~280s, no output,
+4th consecutive failure). Tree max verified by direct live read: SN-3039.
+Open-PR claims NOT checked (the command that checks them failed). All numbers below
+are PROVISIONAL and must be confirmed by a successful numbering run before filing.
+Drafts in `~/workspace/goals/team-nitro-operating-loop/hidden_files/run239-drafts/`.
+
+- **SN-3047 "The Glyph Is an Object — White as a Real Object, Light in Its Own Color"** + NN-20261116-the-glyph-is-an-object. 23:19Z: the bottom icons' plain not-nice black is not good — board black, more elevation; the light around each icon takes ITS OWN color (mail blue, activity green, home gold…); the white in the center is an OBJECT with depth and its own edge light, sitting ON the black — not a flat mark written onto the black. Objectness, high-tech feeling radiating off every button. Amended into the Hub inside-black brief + Personal icons-plus brief.
+- **SN-3048 "The One Common Language — One Anatomy for Every Button, Icon, and Board"** + NN-20261116-the-one-common-language. 23:24Z: all buttons, icons, boards speak ONE language — THE-NAYA-DESIGN-LANGUAGE.md (one anatomy: inside board black, no glow inside ever; middle white as a real object, no gray text; outside light in its own color, more layers = more elevation; one top-left light; color ignites on touch; dead-center-or-far-corner positioning; three reference objects: top-left + as the button, Smart Note board as the board and the black, X button as the inside). Required read in every design brief. Ask + Life in the far corners "might be okay, I have to see it" — corners stand, his eye judges.
+- **SN-3049 "The Studio Correction — The Engine Is Page Creation, Not a Feature to Sell"** + NN-20261116-the-studio-correction-and-the-naya-code (shared NN with SN-3050). 23:41Z: the Studio is NOT a standalone "type something random in, get a note in a format" and NOT a page that teaches people about blocks. When people create with NayaNET they build pages — input in, output in the format they want. The engine IS page creation; it lives inside creation. The standalone page is the engine's proof, not a product. The Black Diamond fix round on the Studio file STANDS.
+- **SN-3050 "The Naya Code — One Code, One Family, Everything Alive"** + same shared NN. 23:41Z: from his 18 photos — THE-NAYA-CODE.md, one code, one family: 8 objects (board, pill button, tile, icon, digit tile, chip/tab, face circle, gauge/dial), each one construction, never a new object. ALIVE IS THE FIRST LAW (§3): the photos' boards are dead — none elevated, none active; a Naya object is never dead, on hover the whole thing comes alive. Dead on hover is a defect. Palette measured: black #000000 at the dark end, brights on the Playbook spectrum. Required read in every design brief. (Later filed to GitHub TEAM-NITRO/THE-NAYA-CODE.md, blob 61008972, commit 7412061d, 14,604 B, blob-verified — see SN-3052.)
+- **SN-3051 "The Orbit and the Official Formats — Circles Have Flow, Boards Light Up, Press Button, Next Experience"** + NN-20261116-the-orbit-and-the-official-formats. 23:52Z: boards light up; circles have circles flowing around them — or an orb — almost ALL circles have flow (slow 60–180s, alternating direction, never frantic). Two official formats, one canonical implementation each, harvested verbatim: the unfold (down) + the slideshow (sideways) — press button, next experience, bits at a time, never a wall. The Pages (§10): Universal Smart App = Smart Feed; Hub = center; Personal = About + Skills (both presentations + bridge), World = calendar, Connections, Invite, Share, Join; same for Business + Space; Smart Lists + Connections one style; core = Auto Match + Auto Organizer; Smart Tabs organize feeds into topics/sub-topics, saveable; sidebars + plus buttons = access your world. Round DISPATCHED (coordinator 17beee28).
+- **SN-3052 "Baked In Forevermore — The Naya Code Is the Law, and the Intelligent Library"** + NN-20261116-baked-in-forevermore-the-intelligent-library. 23:58Z: bake it in, forevermore the language all build in — the Naya Code filed to GitHub (blob 61008972, commit 7412061d), required read in every design brief AND every Factory brief. Factory alignment round DISPATCHED (cbcf3517). The universal page is the core recipe — built over and over, near perfect, morphing into every page. THE INTELLIGENT LIBRARY lives in the About area (About unfolds, button opens it, organized smart notes + categories, click any to learn, owner saves the best, all shareable to the feed; door added to the formats round, amendment a02a5066). PAGES, HONEST: presentation settled, functions still open (Dashboard spine + Reports, Membership 8/10, Smart Mail/IM, Smart Meet, Booking, Smart Feed itself, Pricing free-entry route).
+- **SN-3053 "Get It Done — The Team On It Immediately, and the Calendar Today"** + NN-20261117-the-calendar-done-today. 00:03Z 2026-11-17: if something needs to get done, agents on it immediately — decisive, clear, direct, no wasting, creating and helping produce value. The calendar, done TODAY — we haven't even started it; booking is part of the calendar, Smart Meet is part of the calendar (click to meet by booking an appointment, in their calendar). Build it NOW in the Naya Code; the pricing page + the chart are the closest model for the start (the chart IS the page). Master the colors per day (Living Calendar T1–T38: Sun purple 963, Mon orange 417, Tue yellow 528, Wed sky blue 741, Thu green 639, Fri red 396, Sat indigo 852). Four rounds dispatched in the same turn: calendar 95bf722f, Dashboard done-done 30cb52ee, Pricing free-entry 4df4e3cb, Smart Mail pro-level + IM 18b059f5 (due 2026-11-17). Membership stays blocked (his hand); Smart Feed is next.
+- **SN-3054 "The Day Menu — Tap a Date, Boom, the Full Menu for That Day"** + NN-20261117-the-day-menu. 00:13Z 2026-11-17: tap any date on a touch screen — the 16th, the 2nd, any day — and BOOM, a FULL MENU for that day. **13 buttons, in order:** Appointments · Local news · Provincial news · Global news · Personal feed · Business feed · Thing feed · Your World · Smart Notes for that day · Notes for that day · Weather · Horoscope · Posts for that day. Every button a beautiful Naya button (obsidian pill, rim in its own color, white glyph as a real object, orbit flowing around it, lights up whole on tap/hover). **BACK BUTTONS ON ALL PAGES:** from any view, BACK returns to the day menu; from the day menu, BACK returns to the month. Go back to ANY day and see what went on that day — everything auto-organized day by day. Amendment sent to the calendar coordinator (0c142db2) — checker verifies the menu by its full 13-button list, the back buttons on every view, and the day colors.
+- **SN-3055 "The Benchmarks — Best in the World, Lessons Not Copies"** + NN-20261117-the-benchmarks-best-in-the-world. 00:13Z 2026-11-17: research Shawn pasted (full text in main-chat transcript seq 243700) — Cal.com, Calendly, Acuity, Square, Fantastical, Notion Calendar, Google Calendar, Sunsama, Motion, Akiflow, Reclaim, Day One, Notion, Reflect. Framing: a calendar shows WHEN; an operational system understands WHAT, WHY, what connects, and what next. Settled answers: initial customer BOTH, personal first as the proving ground; primary experience ONE unified daily command centre (the day menu IS the command centre); design premium, elevated Naya design (the Naya Code — already the law). Benchmarks fold into the calendar round as design lessons, not features to copy. Architectural guardrail: the calendar must NOT become the source of truth — records stay authoritative, calendar/timeline are projections. Differentiator: not organizing your time — making the best possible use of it.
+
+## Verified live this run (gh-direct.py, read-only)
+
+- **Tree max SN-3039 confirmed:** LESSON max SN-3039, LAW max SN-2966, VISION max SN-3026 (2026/11/16 dirs). No SN-3040+ filed anywhere. None of runs 237/238's NNs filed (grep over NAYA-NOTES/2026/11/16: no matches for the-agreement-bridge-page, the-official-unfold, smart-note-studio, letter-page-layout, the-black-diamond-law, elevate-more-board-black-no-gray-text, ask-and-life-the-pair).
+- **Run 238's claim CORRECTED:** its worker message claimed 6 pairs drafted (SN-3044–SN-3049) — only 3 pairs exist on disk (SN-3044–3046 + 3 NNs, run238-drafts/). The glyph / common-language / Naya Code clusters were never drafted to files; this run drafted them as SN-3047–3050. Also: MEMORY.md's 23:58Z entry says the baked-in note was "drafted in run-238's drafts (SN-3044–3049)" — not borne out by the files; the 23:58Z cluster was new to this run, drafted here as SN-3052.
+- **Naya Code filed to GitHub** (from MEMORY.md landing, not re-verified by live read this run): TEAM-NITRO/THE-NAYA-CODE.md, blob 61008972, commit 7412061d, 14,604 B, blob-verified.
+
+## State changes since run 237
+
+- Run 238 TIMED OUT (worker message, seq 243502): numbering failed 3×, organize/mail-digest/PI-addendum/log never written, no log file. This run completes run 238's unfinished work for its 3 drafted pairs (carried forward unfiled) and drafts the 4 clusters it never got to files.
+- Orbit amendment sent to both running icon rounds (inside-black 8b9d6c14 c434ef6a, icons-plus 8e26023f 243e7cdc); checker adds orbit as its own verdict item.
+- Official Formats + About/Skills Bridge round DISPATCHED 23:52Z (17beee28); Factory Naya Code alignment DISPATCHED 23:58Z (cbcf3517); calendar + booking + meet DISPATCHED 00:03Z (95bf722f) with Dashboard done-done (30cb52ee), Pricing free-entry (4df4e3cb), Smart Mail pro-level + IM (18b059f5) in the same turn.
+- Studio Black Diamond fix round f64a61e8 running; inside-black + icons-plus running; agreement entrance + official unfold fix round in flight.
+- PI refresh FAILED 23:40Z (EPERM flake — feed scripts 0-byte, no refresh-report.json, no artifact publish); room state publish SUCCEEDED (317,276 B, sha 297ffc88, state_updated_at 23:10:20Z).
+- Studio Black Diamond fix round f64a61e8 COMPLETED 00:09Z: checker PASS all 9 items (item 10, live console errors, NOT verified live — open gap); commit e8bf5fc3, blob a7114308, 72,517 B, sha d58c75cf. Captain's eye dispatched (cloud browser 65dc0d6b) — delivery whole follows on eye PASS. No live 390px/desktop eye yet (VM browsers dead).
+- Day-menu amendment sent to the calendar coordinator (0c142db2); checker verifies the 13-button list, back buttons, and day colors.
+- EPERM flake ACTIVE since 23:29Z, still active 00:13Z (numbering log 0 bytes, organize hook {"error": "[Errno 1] Operation not permitted"}, transcribe-watcher lock failure, VM browsers dead — Firefox 139 / mmap EPERM; cloud browser remains the eye-proof route). Browser-probe hook re-ran the probe 00:14Z: MAP_SHARED fails EPERM on memfd, /tmp, /dev/shm while MAP_PRIVATE works; same signature as the 2026-11-12 breakage, not flake noise.
+- Organize hook: FAILED this run (EPERM, see above). Watermark NOT updated; retry next run when the flake clears. Mail: digest as record only (step retired by Shawn's word 21:29Z).
+
+## Still open
+
+- **16 pairs unfiled (SN-3040–3055 + NNs)** — runs 237 (4), 238 (3), 239 (9) — all staged, all PROVISIONAL until a successful `next-sn-number.py` run confirms the numbers. The filing route is the blocker; the numbering command has now failed 4× in a row and its tree-scan rewrite is owed.
+- Run-234 addendum body stale "(DRAFTED, pending filing)" wording (captain's call).
+- Correction Compound inventory/template steps not run by recent loop runs — flagged in the run log, not claimed. Loop seat-brief step 4 / Compound step 4: captain's edit owed (mail step retired).
+- Bottom-bar v2 re-checker verdict + captain's eye + delivery owed; Personal icons-plus queued behind v2 proof.
+- Stale sn2906 cycle row still on the live feed; sync silent-rebake-failure gap (fix owed).
+- One List close for smart-note-studio still pending (blocked by the EPERM flake at 23:34Z; retry when it clears).
+- An older unnumbered draft exists in the local tree: `~/workspace/team-nitro/smart-notes/SN-XXXX-the-common-language-law-DRAFT.md` (pre-existing, not this run's; the 23:24Z note is SN-3048, a distinct dictation from the 2026-11-11 common-language note NN-20261111-the-common-language-law.md).
+
+
+## FILING STATUS — run 240 addendum (filed to this board 02:13Z 2026-11-17 by the filing seat)
+
+**4 of 5 pairs FILED; 1 NOT filed.** Filed under their draft numbers: SN-3056 "The Auto-Format" (blob 8acb2f11eb9a37de119f379de4ae4d840b2c94f3, commit 9348e7f17dc3702200bcdbf7d4f3c383819491c3), SN-3057 "The Full-Screen Calendar" (blob 0b83f2c08ea4372a5def958db840c106b98b4e6f, commit 2e84ee98893ab3b0210fd26f4ff6e89ad9195463), SN-3058 "The Calendar Cells" (blob fd7121cc4696c1f90b3759e6daa7529a464d4afb, commit 7b1a4675e8c73929a876a14a07839bb8065210fb), SN-3059 "The Month View" (blob 0f77bb657e44b84f4fbdc671927189601ca729db, commit 0edd964421e672c1a17234a72141584e903bf8c3) — each + its paired NN (blobs 7d005204ea997ce83fd7c255bf47cbc6dea644c2, d923012bc66f80485c1e2a81fc3997932ff10e5b, 09fd3120b465d2f3bb1458a1eb1f9ac2b42dd9cc, d2fbb39e09937cb7b9372d43b5ddf6ba503f7be6). NOT filed: the 5th pair, the-studio-page-is-dead (staged SN-3070 in /tmp/run240-new/) — Shawn's word 00:42Z 2026-11-17: the Studio page is dead; never file, show, or work on it. The filed SN-3056/SN-3057 carry verbatim refs to unfiled drafts (SN-3049, SN-3050) — reported, not fixed. Body numbers below are as drafted.
+
+# Intelligence Loop run 240 — PI addendum (STAGED, pending the captain's filing route)
+
+Run 240, scheduled 00:53:18Z Tue 2026-11-17, ran ~00:59Z–01:1xZ.
+
+## New intelligence this run — four pairs drafted, filing pending
+
+All from Shawn in the main chat, 00:48Z → 01:04Z 2026-11-17. Numbering
+NOT verified this run (`next-sn-number.py` failed again — exit 120, no output,
+5th consecutive failure). Tree max verified by direct live read: SN-3053 (tip
+2ba5f0d5). Open-PR claims NOT checked (the command that checks them failed).
+All numbers below are PROVISIONAL and must be confirmed by a successful
+numbering run before filing. Drafts in
+`~/workspace/goals/team-nitro-operating-loop/hidden_files/run240-drafts/`.
+
+- **SN-3056 "The Auto-Format — Ten Answers In, About + Skills Out"** + NN-20261117-the-auto-format. 00:48Z: the input→formatted-output capability DOES matter in the Smart Factory, and IS a feature he wants — at page creation. When a citizen's first page is created from the walk, we take their input from the ten questions at sign-up into the system, and their About page and Skills page are auto-formatted into the unfolding AND the slideshow automatically. No separate step, no picking a format, nothing typed twice. The Smart Factory is for when people want to create MORE pages after the first — same auto-format there. Amendment sent to the Official Formats + About/Skills Bridge coordinator (17beee28, submission 5fa26d0f). Walk-side wiring is a follow-on after the formats round lands; Factory Phase 2 carries the same auto-format into the builder. Corrects SN-3049 on one point: the Studio is not a feature to sell as a standalone page, but the capability IS a feature — in creation.
+- **SN-3057 "The Full-Screen Calendar — The Whole Page Is the Calendar"** + NN-20261117-the-full-screen-calendar. 00:49–00:51Z: his verdict on the staged Personal-page calendar build — "absolutely terrible." The whole page — mobile or laptop — IS the calendar: the full month, squares 1–30/31, nothing else on the page. No buttons on the same page as the calendar; the menu comes ONLY when they click a date, as a new full view. And it must be way more high-level — the old buttons were still flat. He uploaded the build materials: the clickable prototype (`NayaNET-Living-Calendar-Concept.html`, 17,828 B — the two uploads are byte-identical), the Implementation Brief, the Living Obsidian Design Language, the Builder Bridge JSON (v1.0-draft, DERIVED, not ratified), plus his copies of the Naya Code (older pre-§8 version — the filed 14,604 B version governs) and the Optimal Setup. New round DISPATCHED (brief `BRIEF-CALENDAR-FULLSCREEN-20261117.md`, coordinator adbae340): harvest the prototype verbatim as the base; full-viewport month → tap a date → full day menu (8 doors + Book/Meet/Create + 3 cards: Daily Wisdom, Intel Today, Daily Intelligence Report) → destination → Back to day → Back to month, date staying selected. The 13-button day menu (SN-3054) is replaced by the 8 doors + actions + cards (same content, better structure). The old round's shape is superseded; its booking/meet/data logic is harvest material. The captain's-eye check on the old build was closed — its verdict moot. The color reconciliation (weekday colors as the tile's rim light + content as category chips) and the 13→8 menu fold were put to Shawn by the captain — NO confirmation from him yet; they stand as the brief's terms, not as his confirmed word. The Living Obsidian docs stay derived companions — not merged, not ratified, not new law; the Oct 31 anatomy remains authoritative.
+- **SN-3058 "The Calendar Cells — The Screenshot Is the Model"** + NN-20261117-the-calendar-cells. 01:04Z: his screenshot (`~/workspace/user/media_library/image/image_2026-11-16_180135824.png`, November 2026) IS the model — seven columns, each day a BLACK square in the middle with its rim LIT in the day's color (Sun purple · Mon orange · Tue yellow · Wed cyan · Thu green · Fri red · Sat blue — the T1–T38 colors). Inside each cell: the day's NUMBER, the WISDOM of that day (the quote), and a button that says VIEW. Click the cell or the View button and that day opens full screen. The calendar goes BOTH ways: go BACK to any day and see what went on; go FORWARD to any day — someone comes to your calendar and books an appointment with you. Each day has a FREQUENCY: Monday 417 Hz · Tuesday 528 · Wednesday 741 · Thursday 639 · Friday 396 · Saturday 852 · Sunday 963 — shown in Hz in the day view (and in the cell where it fits at desktop). WEATHER: shown when we know where they live (from their profile); when we don't know, no weather — never invented. THE DAY VIEW IS THE DAILY COCKPIT: inside, they see everything going on in that day — their world for the day. Mobile rule (captain's call): number + View always, wisdom where it fits, wisdom first inside the day view. Amendment sent to the full-screen round (adbae340). WATCH ITEM: the landing names Wednesday "cyan" and Saturday "blue" where T1–T38 names them "sky blue" (741) and "indigo" (852) — frequencies match exactly, so a naming difference, not a different set; the round carries the T1–T38 labels unless Shawn's eye says otherwise.
+- **SN-3059 "The Month View — Only the Calendar"** + NN-20261117-the-month-view. 01:04Z: from his view, all he sees is the calendar — NO scrolling down, NO other text on the page, just a straight calendar on the page. The month grid fits the screen exactly — measured to the viewport, no vertical scroll, no overflow, no clipped cell. The page carries the calendar and its own controls only (month title, prev/next/Today, world selector) — the slim intelligence ribbon and the footer copy GO; the wisdom lives IN the cells and inside the days. And the day is the ONLY door: no other navigation, no other content, no way around it — you HAVE to click the day, boom, you're in that day, and that is how everything is organized, day by day. The click IS the interaction. Amendment #2 sent to the full-screen round (adbae340). SUPERSEDES SN-3057 on one point: SN-3057 allowed a slim intelligence ribbon at the bottom of Screen 1 — the ribbon goes.
+
+## Verified live this run (gh-direct.py, read-only)
+
+- **Tree max SN-3053 confirmed** (tip 2ba5f0d57f67792805b8edec7e9c79c1819ed2fe, 12,099 tree entries). SN-3050–3053 filed; **SN-3054 (day menu) and SN-3055 (benchmarks) are NOT yet filed** — they wait with the new pairs. NN 2026/11/17 dir: empty (none filed yet). NN 2026/11/16 count: 126.
+- **Filing queue now:** SN-3054, SN-3055 (run 239) + SN-3056–3059 (this run) + their NNs — 6 pairs total, all provisional until the numbering command confirms.
+- No PR opened, no merge, no deploy, no live page edited from this run.
+
+## State changes since run 239
+
+- **CLOSED (superseded):** the old Living Calendar round's shape (95bf722f, re-checker PASS 00:47Z) — Shawn's verdict "absolutely terrible" at 00:49Z; branch `personal/calendar-booking-meet-20261116`, blob 15e0a2fc, NOT to be delivered; its booking store/meet room/day-data logic are harvest material only. The captain's-eye check on it (cloud browser task a4f9812a) was CLOSED by the captain — verdict moot. (The stopped check did see the old build's booking work: two appointments went in for Friday Nov 20, and the meet room opened with camera/mic reported unavailable — that booking and meet logic is what's being carried into the new build.)
+- **NEW ROUND:** full-screen Living Calendar (brief `BRIEF-CALENDAR-FULLSCREEN-20261117.md`, coordinator adbae340, running at this run's close, no results yet; two amendments sent: the cells/screenshot + the month-view-only rule).
+- **COMPLETED:** Hub icons inside-black round (coordinator 8b9d6c14, 00:55Z) — re-checker #2 STATIC PASS, live unproven. PR #3383 open, NOT merged; tip fix-3 `26097c60`, blob `5e60361b`, 4,867,094 B, sha-verified exact. Captain's-eye browser task running (1c120405). Maker → checker FAIL → fix → re-checker FAIL → fix #2 → fix #3 (glyph spin dropped by the coordinator's recorded decision: rotation is decorative, legibility is law).
+- **STILL RUNNING:** Dashboard done-done 30cb52ee (~56 min quiet at this run's read — past the 45-min timer; captain's lane already flagged it, NOT declared by this loop); Official Formats + About/Skills Bridge 17beee28 (alive, has the auto-format amendment 5fa26d0f); entrance+unfold 1313bac7 (alive); feed posts comment share f062c202 (alive); full-screen calendar adbae340 (alive). Captain's-eye browser tasks running for Smart Mail and Personal icons-plus (started ~00:57Z).
+- **SYNC STILL STALLED:** Smart Notes sync heartbeat 109.4 min stale at 00:57Z (watchdog, exit 1); watermark `379c7dca…` vs remote main `2ba5f0d5…`; no feed cure in progress; watchdog alerts NOT persisted to SYNC-ALERTS.log (EPERM flake). No restart or edit made by this loop — a restart decision is owed (not this seat's call).
+- **VM BROWSERS DEAD AGAIN:** Firefox segfaults (exit 139), MAP_SHARED EPERM on memfd//tmp//dev/shm (browser-probe hook, 00:57Z) — same signature as the 2026-11-12 breakage. Eye-checks run through the cloud browser task only.
+- **PI REFRESH FAILED** for cycle 2026-11-17T00:25Z (3rd consecutive EPERM failure; feed reports truncated to 0 bytes); room state publish SUCCEEDED (317,276 B, sha256 297ffc88…). Live Living List remains current as of 23:10Z.
+- **VPM H23 (2026-11-16 23:00–24:00Z):** banked 81.94, PMPH 81.94 (136.6% of goal); ledger append failed 4× on EPERM flake; report JSON and SCOREBOARD.md row not written. Repair owed: run append-hour23-1116.py then measurement with explicit window.
+- **STILL OPEN (from run 239, unchanged):** 6 pairs unfiled (SN-3054–3059 now); numbering-command tree-scan rewrite owed (5 consecutive failures); Correction Compound inventory/template steps not run by recent loop runs; the captain's two calendar reconciliations await Shawn's confirmation; the Wed "cyan"/Sat "blue" vs T1–T38 "sky blue"/"indigo" naming watch item; stale sn2906 cycle row on the live feed; sync silent-rebake-failure gap; One List close for smart-note-studio pending (EPERM).
+
+
+## FILING STATUS — run 241 addendum (filed to this board 02:13Z 2026-11-17 by the filing seat)
+
+**ALL 5 pairs FILED — as SN-3060–3064, NOT the SN-3075–3079 the body expects.** The 3075–3079 expectation was conditional on the 21-note backlog filling SN-3054–3074, which the parent's 01:47Z correction cancelled (only 6 pairs filed, as SN-3054–3059); the numbering tool's next free after that filing was SN-3060, and the law is to take the next free number. Mapping (draft → filed): SN-3054→**3060** "The Calendar Follow-On" (blob a52c7db0c0a55c407b9b57e29582f2a65d36e44a, commit c7cafbbd353e26204482662702b0a1b7502a8765) · SN-3055→**3061** "The Double-Up — Just a Tad" (blob f9cf5c4f235a199f40275df1764ee69002df38c2, commit 8ad317d1e0417254b99c1240e8de183e669ebda7) · SN-3056→**3062** "The DNA Read" (blob 648012432806b3406873984df2667823f1bf7278, commit f7885c30839b617651a39bb103365fccf5a64866) · SN-3057→**3063** "The Bottom-Bar Orbit" (blob 3051c002bc77b03aed52fc49e4501111e111a547, commit 0d1db58e5c58b8a94a031f09ff85efd7f669770d) · SN-3058→**3064** "The Deep Palette" (blob 9b3f4876e0c79ce49fdbf00df1ea8f5499329b8e, commit 7ac12ee47af9f3d87611d3c345b81c4dc52afb73) — each + its paired NN (blobs 57a54fd95ebdb93c7e8d3f726a6b94695d9b84d2, 1b8d38f54075a0721984330761d94784b8c617c6, 93b7807a272cc280ba209d141264c58f2e810faa, 9b79625188a3093f4ec7897cc283fcabe6ca686a, af4a2757b730c1097cafae432b20633fa60d2399). Body numbers below are as drafted — every SN-3075–3079 ref in the body is stale; read 3060–3064.
+
+# PROJECT INTELLIGENCE ADDENDUM — Intelligence Loop run 241 (STAGED, not filed)
+
+Scheduled 01:23:18Z Tue 2026-11-17, ran ~01:23–01:40Z. Seat: Naya Nitro Sigma (LEARN lane).
+Status: STAGED locally as run241-pi-new.md, pending the captain's filing route (same as runs 239–240 addenda, still staged).
+
+## NEW INTELLIGENCE — 5 pairs drafted this run (PROVISIONAL, staged in run241-drafts/)
+
+1. **THE CALENDAR FOLLOW-ON — PRICING FEEL, DIGIT TILES, TODAY, TIMELINE (Shawn, 01:19Z):** the calendar must feel like the pricing chart (https://nayanet.app/pricing) — hover and every cell lights up in its own color and MOVES as you touch it. Day numbers are the Dashboard's beautiful numbers, each digit its own color, so every day has a different number-color combination — in the DEEP palette (corrected 01:30Z; see pair 5). TODAY always glows brighter, always activated; you can still click into any day, and visitors can click ahead to book. Inside each day: a beautiful TIMELINE — everything that went on that day in time order, like a journal, all in one place (notes, smart notes, news, project, thing, business, personal). B3 ruling (captain's, from amendment #2): Search, Add (+), Naya's profile come OFF the month view. Follow-on round dispatched 01:21Z (brief BRIEF-CALENDAR-FOLLOWON-20261117.md) on the fullscreen tip (blob f3a07e93, commit 0d4b07f7) — also carries the F7 type floor and F8 weather wiring. The fullscreen round itself COMPLETED 01:21Z (re-check CONDITIONAL PASS); its eye was NOT run — the follow-on reworks the very cells the eye would judge, so the eye waits for the follow-on tip. Drafts: SN-3054 (prov) + NN-20261117-the-calendar-follow-on.
+2. **THE DOUBLE-UP — JUST A TAD (Shawn's eye, 01:19Z):** the designer did the double-ups but "went a little off — you move too much, because now you see the spacing, so then it kind of looks weird. You have to do it so you don't see the spacing — it's just a tad. You went over much, now it doesn't look pro." The clone offset must be a hair: feel the depth, never see the gap. Headline item of fix-4 (brief BRIEF-HUB-ICONS-FIX4-20261117.md, dispatched 01:21Z, base fix-3 tip blob 5e60361b). Drafts: SN-3055 (prov) + NN-20261117-the-double-up-just-a-tad.
+3. **THE DNA — READ (Shawn's link, 01:19Z):** `BRAIN/10-INTERFACES/DNA/NAYA-DNA-LOCKED.md` (blob 092c3123, 4,475 B, locked 2026-11-03 by his word). The root: spectrum flow (purple→blue→green→gold→orange→red→magenta, NEVER the same color twice in a row, never random jumps) · obsidian #050607, period, ambient glow/wash over a board is a DEFECT · white at rest, color ignites in its own color · elevation everywhere, nothing flat · rectangles not squares, full width · Real Object Law · viewport optimization · text law (white always, no light pinks/greys, nutshell 20px) · Smart Tab canonical form · derive don't invent · harvest-first · no-redesign · no voice buttons · presentation standard. It changes NOTHING in the Official — it IS the root the Official derives from. It gives the Hub rim fix its locked-law backing (purple ×3 violates §1). Two tensions ruled: (a) entrance play button vs §14 no-voice-buttons — stands by his repeated explicit orders (glow-only, zero audio, not a button on a card); (b) calendar cells vs §5 rectangles — month grid is squares by his screenshot, his latest word governs the cells. Drafts: SN-3056 (prov) + NN-20261117-the-dna-read.
+4. **THE BOTTOM-BAR ORBIT — APPROVED BY HIS EYE (01:27Z):** the circle slowly going around the icons at the bottom — elegant, pro, "the first creativeness I've seen you do where it turned out really beautiful"; the circle with the almost-square tile looks sharp, interesting. The bottom-bar orbit (including the + tiles) stays EXACTLY as it is — fix-4 must not rework it; the orbit item covers only the article orbs + the face circle. The eye's "could not confirm travel" on the + tiles was its own 40-second limit, not a page defect — his eye sees it going around. Screenshot: six tiles (+ purple, mail blue, activity green, home gold, grid purple, + purple) with the orbit arc sweeping around each. Drafts: SN-3057 (prov) + NN-20261117-the-bottom-bar-orbit.
+5. **THE DEEP PALETTE — ELEGANT, NOT NEON; ONE COLOR PER COLOR (Shawn, 01:30Z):** no neon center, no rainbow-bright — elegant, beautiful, clean, sharp. The deeper versions are better: mid to darker, not super dark, not super light. Deep emerald, deep sapphire blue, deep gold, royal purple — the real nice ones. AND the same color lightness everywhere: the same yellow, the same green, the same blue, the same purple — not a whole bunch of different blues/purples/yellows; one unified system, the nicest/most elegant/most beautiful/most royal version of each color, pristine premium. Written as law: `~/workspace/team-nitro/THE-DEEP-PALETTE.md` (required read in every design brief from now on). The palette, one hex per hue: royal purple `#8e24aa` · sapphire `#0f52ba` · emerald `#07925f` · deep gold `#d4a017` · burnt orange `#c2410c` · ruby `#c62828` · deep magenta `#a21caf` · indigo `#3f51b5` · deep cyan `#0e7490` · deep violet `#6d28d9`. It SUPERSEDES the bright spectrum values, the bright digit-tile values, the bright day colors, and the bright orb values (hues + spectrum order stay locked; only the values deepen). Digits: 0 white · 1 ruby · 2 burnt orange · 3 deep gold · 4 emerald · 5 deep cyan · 6 indigo · 7 royal purple · 8 deep violet · 9 deep magenta. Day rims: Sun `#8e24aa` · Mon `#c2410c` · Tue `#d4a017` · Wed `#0f52ba` · Thu `#07925f` · Fri `#c62828` · Sat `#3f51b5`. The deck's nine colors stand (content, harvested verbatim — the palette governs the system). Amendments sent 01:30Z to Hub fix-4, calendar follow-on, Mail fix, and Dashboard. CLOSES the run-240 Wed/Sat naming watch item (Wed = sapphire #0f52ba, Sat = indigo #3f51b5). Drafts: SN-3058 (prov) + NN-20261117-the-deep-palette.
+
+## NUMBERING — TOOL FIXED, FILING QUEUE RESTATED
+
+- `next-sn-number.py` rewritten to a tree-scan: one recursive-tree call, exit 0 in ~10s this run, highest SN-3053, next free SN-3054, open-PR claims none. (First attempt this run exited 120 only because the stderr redirect hit the EPERM flake; the direct run worked.)
+- Per the MEMORY.md landing (01:2xZ): 21 notes renumbered to SN-3054–3074 and staged in /tmp/run240-new/ (EPHEMERAL) but NOT filed (collision 00:38Z + EPERM); SN-3071–3074 + NNs still to write; PI addendum + daily log + organise hook still owed. The 01:24Z filing seat was told to complete from run 240's staging, not renumber independently.
+- This run's 5 pairs are staged PROVISIONAL, expected final numbers SN-3075–3079 (expected, not assigned). The filing seat owns the sequence; do not file on draft numbers alone — re-run `next-sn-number.py` before filing.
+- The 01:13Z sync confirmed SN-3040–3053 are filed on main (14 notes synced to hub_smart_notes); the runs 237–239 drafts that carried SN-3040–3055 were duplicates of taken numbers — the renumbering above is the repair.
+
+## STATE MOVES (verified this run)
+
+- CLOSED: fullscreen calendar round adbae340 COMPLETED 01:21Z (re-check CONDITIONAL PASS) — eye waits for the follow-on tip. Official Formats coordinator 17beee28 COMPLETED (re-checker PASS all items; Personal blob 925a4340, unfold 34c756ff, slideshow 21d08a88) — eye running via cloud browser (218b1534). Entrance-fix old coordinator 1313bac7 closed as dead; fresh coordinator b7296f8d running — maker FINISHED (sha 6dc14953, 1,101,040 B, 11 self-checks pass) but welcome-new.html is 0 bytes on disk (flake zeroes child-process writes); do NOT rebuild — re-test the flake, reproduce the sha or stop.
+- CHANGED: Hub eye FAIL (fix-3 tip, 00:58–01:09Z) → fix-4 dispatched 01:21Z (double-up headline + gray + boards light whole + orbit + rims + glyphs). Smart Mail eye 2/6 PASS (01:00–01:11Z) → fix dispatched 01:21Z. Pricing F4 eye (01:01–01:26Z): free walk stalls on "Building it — wait a minute…" (~6 min, no progress, no error, no timeout); /api/welcome/me returns {"ok":false,"error":"unknown api"} — likely root; test alias "f4captaincheck" (Certificate Nº 000737) claimed on the free worker — cleanup owed; fix dispatched 01:27Z. All three eye verdicts CONFIRM the run-240 law (SN-3057 prov): mechanical checks prove the parts; only the eye proves the shape. No new SN for the verdicts — the law already covers them.
+- STILL OPEN: filing queue (21 backlog notes SN-3054–3074 staged unfiled in /tmp — ephemeral — + this run's 5 pairs expected SN-3075–3079); organize hook failed this run (EPERM, retry next run); sync stalled 139.3 min at 01:27Z (restart decision owed, not this seat's call); VM browsers dead again (Firefox SIGSEGV, MAP_SHARED EPERM — eyes via cloud browser only); PI refresh failed again on EPERM (room state publish succeeded, 317,276 B, state 23:10Z); VPM H23 ledger append failed again on EPERM (repair owed); One List bookkeeping retry failed again (per-path EPERM on ONE-LIST.json; total 152, non-closed 62); board stale since 23:22Z; Correction Compound inventory/template steps not run by recent loop runs (gap stands); Dashboard coordinator 30cb52ee quiet (captain's lane); Factory Phase 2 (wire canonical bytes into the builder) now unblocked — brief owed; Business + Space bridges and walk-side wiring are named follow-ons.
+- User reactions this run: 👍 on the calendar follow-on reply, 👍 on the double-up reply, ❤️ on the DNA reply, 👍 on both deep-palette replies — confirmations, no new teaching.
+

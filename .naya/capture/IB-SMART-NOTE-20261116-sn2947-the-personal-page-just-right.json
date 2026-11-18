@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2947",
+ "intelligence": {
+  "title": "The Personal Page, Just Right",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2947-the-personal-page-just-right",
+  "smart_note_id": "SN-2947",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2947/IB-SMART-NOTE-20261116-sn2947-the-personal-page-just-right.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Three corrections, one eye: the page must feel finished, not approximated. The buttons are the tell — \"slightly smaller so they fit\" was a reasonable direction at 22:03Z and a wrong one by 22:47Z, because it made them too small; the correction is not \"smaller\" or \"bigger\" but \"just right\", a perfect fit with no black space either side. That is the difference between a direction and a standard: a direction says which way to move, a standard says where to stop. The CONNECT and the % are the same lesson in colour: green always on CONNECT, white and alive for the % — real digital output, not flat text — and the greens toned down a notch, because elegance beats rainbow bright. The rounds embodied all three before this note existed; the note exists so the standard survives the rounds.",
+  "simple_view": "Imagine eight buttons across the top of your page — they have to fit JUST right, like puzzle pieces! Too big and they squash together. Too small and there's ugly black space on the sides. Just right means they stretch all the way across, edge to edge, perfectly balanced. And the green button should glow nicely — not too bright, not rainbow bright — just elegant. And the number next to it should look ALIVE, like a real digital number!",
+  "grandma_view": "It's like this, love — a row of buttons is like a row of pictures on a wall: they should fill the wall just right, edge to edge, no gaps at the sides. Too small looks unfinished, too big looks squashed. And the green should be soft and elegant, not shouting — and the little number beside it should look alive, like a real digital display, not flat paint.",
+  "naya_view": "Just right: eight buttons, perfect fit, no black space either side. CONNECT always green, % white and alive, greens toned down a notch — elegance, not rainbow bright.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2947",
+   "title": "The Personal Page, Just Right",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2947/IB-SMART-NOTE-20261116-sn2947-the-personal-page-just-right.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2947/IB-SMART-NOTE-20261116-sn2947-the-personal-page-just-right.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8cbc407bd197417179fc1103ecb033357b213327"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

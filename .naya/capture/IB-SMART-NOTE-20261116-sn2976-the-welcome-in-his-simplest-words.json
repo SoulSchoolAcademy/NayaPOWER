@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2976",
+ "intelligence": {
+  "title": "The Welcome, in His Simplest Words",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2976-the-welcome-in-his-simplest-words",
+  "smart_note_id": "SN-2976",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2976/IB-SMART-NOTE-20261116-sn2976-the-welcome-in-his-simplest-words.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The welcome is the first thing a new citizen feels, and it has to be simple enough to say in one breath: who are you, what are you all about — and the system does the rest. Ask, look, match, show, connect. The feeds that show up are not just content — they are ideas for feeds the citizen can create themselves, so the network grows by the citizen's own hands. And the end is not a feed, it is people: a super intelligent network that connects people of like minds. That is the ultimate way to optimize the internet — not a better search box, but people finding people. Simple, beautiful, welcoming: three words, and the whole product is in them.",
+  "simple_view": "Imagine you come to a magical new place, and the first thing it asks you is: \"Who are you? What are you all about?\" And then — like magic! — it shows you all the lovely groups and feeds for people just like you! And those give you ideas for groups YOU could make! And then you meet the people — friends who like the same things, from the same places! That's the welcome: simple, beautiful, and friendly!",
+  "grandma_view": "It's like this, love — when someone new comes in, we simply ask them: who are you, dear, and what are you all about? And the system looks at who they are and plays a lovely matching game — it shows them the feeds for people just like them, and those feeds give them ideas for feeds of their own. And then they connect with the people. It becomes a clever network of like-minded souls — same topics, same places, all finding each other. That, dear, is the ultimate way to make the internet better.",
+  "naya_view": "The welcome: ask who they are, what they're all about. The system looks, and plays the game of match. Related feeds show up — and give them ideas of feeds to create. Then they connect with the people. A super intelligent network of like minds. That is the ultimate way to optimize the internet.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2976",
+   "title": "The Welcome, in His Simplest Words",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2976/IB-SMART-NOTE-20261116-sn2976-the-welcome-in-his-simplest-words.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2976/IB-SMART-NOTE-20261116-sn2976-the-welcome-in-his-simplest-words.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "eba5f0bbd356aefc092e73927003e717946c671d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
