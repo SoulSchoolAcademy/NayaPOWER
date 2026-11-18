@@ -59437,6 +59437,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3417",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3417-done-done-means-live",
+      "slug": "done-done-means-live",
+      "title": "Done-Done Means Live",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3417/IB-SMART-NOTE-20261118-sn3417-done-done-means-live.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3417/IB-SMART-NOTE-20261118-sn3417-done-done-means-live.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3417/IB-SMART-NOTE-20261118-sn3417-done-done-means-live.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3417-done-done-means-live.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:17:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "6d1931ac719a86d8fc53a08309cb0cc014fa3739e049492bab0b720a96634aae",
+      "content_hash": "a0f65bcdedbb0d2d63caf8d0561bc609cdd1d26ce8beb9241c4c7df53f45cf8f",
+      "one_line": "Done-done is a live surface, not a status: this family's Dashboard pass-2 went live with its ledger spine preserved, its race proven fixed ten times out of ten, and its unproven hops named as unproven in the same breath. Pricing v74 makes the companion point — trust beats live: a page his eye has passed is worth more than a fresher page it hasn't. And the pass closes with the eye's own verdict: not done — because done-done is judged on the rendered thing by the standard that named it, and seats report the verdict they got, not the one they wanted.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59447,5 +59480,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "4f4b1c29b43d186accd595ac3bc669beaf991c4542c8b92cf64fab10b3f946c2"
+  "corpus_manifest_hash": "7760fe1288fb6f5311257fa145231987f283657d54502a70e98172b7cebf7149"
 }
