@@ -1906,6 +1906,77 @@
    muted. (No muted hex exists in the code — the sublines were flat
    regular-weight white with no depth layer; the layer is the fix.) */
 .cat-row .lr-g,.nb-sub,.nd-sub,.nd-src,.cat-essence,.tl-row .te,.tile-appt-row .tt,.tile-empty,.intel-line,.door .sub2,.sub,.daytimeline .tl-sub,.tl-text,.tl-note,.tl-empty,.recrow .rl span,.list li,.hint,.pwx,.viewcard p,.pcat-essence{color:#fff;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)}
+
+/* ============ V5 — FIX ROUND (eye GOES BACK on v4, 2026-11-18) ============ */
+/* (2) SHORT VIEWPORTS — at 340px tall the absolute nav row and dots sit
+   on the centred content (Back over heading letters, Keep reading over
+   sublines). At short heights the block top-aligns and scrolls, and the
+   nav row and dots flow in place below the content instead of overlaying
+   it. At normal heights the nav and dots stay pinned and only the detail
+   scrolls. No text shrinks below the 17px floor. */
+@media (max-height:480px){
+.smart-block{justify-content:flex-start!important;overflow-y:auto!important;padding-bottom:24px!important}
+.sb-nav{position:static!important;transform:none!important;margin-top:16px;flex:none}
+.sb-dots{position:static!important;transform:none!important;margin-top:10px;flex:none}
+}
+/* (4) BRAND MARKS — Shawn 18:44Z, his word wins over Laws §4 here: the
+   LOGO (the N in a circle) goes TOP LEFT; the ICON (the emblem crest)
+   goes BOTTOM RIGHT. NO glow on either mark. Behind both, obsidian
+   black, so no square edge shows at all — the marks feel part of the
+   natural calendar. The mounts are transparent on the obsidian page,
+   circular-clipped, with a real drop shadow only (no coloured glow). */
+.logo,.dlogo,.corner-n{background:transparent!important;border:none!important;border-radius:50%!important;overflow:hidden!important;box-shadow:0 8px 20px rgba(0,0,0,.65)!important}
+.logo img,.dlogo img,.corner-n img{filter:drop-shadow(0 4px 8px rgba(0,0,0,.7))!important}
+.logo:hover,.dlogo:hover,.corner-n:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.7)!important}
+.logo:active,.dlogo:active,.corner-n:active{transform:scale(.97)}
+/* (5) THE DATE, ALIVE — the date line is a living plaque in the day's
+   colour (Kanye blue #3fb8ff on Wednesday, the day's own colour every
+   other day): obsidian pill, rim and underglow in the day's colour,
+   breathing slowly. The weekday stays white (settled law) and its
+   light is the day's colour, brighter now so Wednesday reads Kanye blue. */
+.hl-date,.phl-date{display:inline-flex;align-items:center;background:linear-gradient(180deg,#171720,#0a0a11 60%,#050507);border:1.5px solid var(--dc,#3fb8ff);border-radius:999px;padding:8px 16px;box-shadow:0 0 16px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent),0 8px 18px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.35);animation:datelive 6s ease-in-out infinite}
+@keyframes datelive{0%,100%{box-shadow:0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),0 8px 18px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.35)}50%{box-shadow:0 0 28px color-mix(in srgb,var(--dc,#3fb8ff) 60%,transparent),0 10px 22px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.45)}}
+.hl-weekday,.phl-weekday{text-shadow:0 -1px 0 rgba(255,255,255,.28),0 2px 3px rgba(0,0,0,.85),0 0 18px color-mix(in srgb,var(--dc,#3fb8ff) 65%,transparent)}
+/* (6) BUTTONS ALIVE, TO THE CIRCLE-N STANDARD — every button is the
+   circle N's construction: obsidian gradient, rim in its own colour,
+   inset top light, deep bottom shade, underglow in its own colour,
+   lift on hover, press to 0.97. Harvested from .corner-n, never remade. */
+.pill{border:2px solid color-mix(in srgb,var(--dc,#8e24aa) 75%,#ffffff 25%)!important;background:linear-gradient(135deg,#232330 0%,#0b0b12 55%,#050507 100%)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 16px color-mix(in srgb,var(--dc,#8e24aa) 35%,transparent),0 8px 18px rgba(0,0,0,.6)!important}
+.pill:hover{transform:translateY(-2px);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 28px color-mix(in srgb,var(--dc,#8e24aa) 55%,transparent),0 12px 24px rgba(0,0,0,.65)!important}
+.pill:active{transform:scale(.97)}
+.door,.cat-row,.recrow{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -4px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--c,#8e24aa) 30%,transparent),0 8px 18px rgba(0,0,0,.55)}
+.door:hover,.cat-row:hover,.recrow:hover{transform:translateY(-2px);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -4px 8px rgba(0,0,0,.5),0 0 28px color-mix(in srgb,var(--c,#8e24aa) 55%,transparent),0 12px 24px rgba(0,0,0,.6)}
+.door:active,.cat-row:active,.recrow:active{transform:scale(.97)}
+.viewbtn{border-width:2px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.5),0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),0 6px 14px rgba(0,0,0,.55)!important}
+.viewbtn:hover{transform:translateY(-2px)}
+.viewbtn:active{transform:scale(.97)}
+.stats-btn,.navbtn,.backbtn,.close{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -4px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),0 8px 18px rgba(0,0,0,.6)}
+.stats-btn:hover,.navbtn:hover,.backbtn:hover,.close:hover{transform:translateY(-2px)}
+.stats-btn:active,.navbtn:active,.backbtn:active,.close:active{transform:scale(.97)}
+/* (6) THE INFO EYE, ALIVE IN THE DAY'S COLOUR — the little "i" jewel
+   takes the viewed day's colour as its rim, bright and lit. On
+   Wednesday that is Kanye blue #3fb8ff, by the data-day-theme rule.
+   The white eye on a black middle (Laws §8) is kept. */
+.tile .ijewel,.pback.eye,.backbtn .jewel{border-color:color-mix(in srgb,var(--dc,#3fb8ff) 80%,#ffffff 20%)!important;box-shadow:0 3px 7px rgba(0,0,0,.6),0 0 14px color-mix(in srgb,var(--dc,#3fb8ff) 55%,transparent),inset 0 1px 2px rgba(255,255,255,.4)!important}
+html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] .pback.eye,html[data-day-theme="wednesday"] .backbtn .jewel{border-color:#3fb8ff!important;box-shadow:0 3px 7px rgba(0,0,0,.6),0 0 14px rgba(63,184,255,.6),inset 0 1px 2px rgba(255,255,255,.4)!important}
+
+/* (1b) THE DETAIL SCROLLBAR, GENUINELY VISIBLE — the v4 thumb was 10px
+   with a dark border and a barely-there track; the eye saw no thumb
+   and no track at 621, and the cards, head, nav and dots scrolled out
+   of view. The rail is now 12px, always shown, the track a visible
+   pale rail, the thumb solid in the scope's colour; the scroll is
+   contained to the detail so the rest never moves. */
+.smart-block .notif-detail{overflow-y:scroll!important;scrollbar-width:auto!important;scrollbar-color:var(--sc,#3fb8ff) rgba(255,255,255,.16)!important;overscroll-behavior:contain}
+.smart-block .notif-detail::-webkit-scrollbar{width:12px!important}
+.smart-block .notif-detail::-webkit-scrollbar-track{background:rgba(255,255,255,.12)!important;border-radius:999px}
+.smart-block .notif-detail::-webkit-scrollbar-thumb{background:var(--sc,#3fb8ff)!important;border-radius:999px;border:2px solid #090910}
+/* (3) ONE JEWEL AND ONE COLOUR PER CHAPTER — spectrum order, never the
+   same colour twice in a row (Laws §3.2): Notifications keeps magenta
+   #a21caf with the diamond; Your worlds takes royal purple #8e24aa
+   with the orb; The world around takes sapphire #0f52ba with the
+   faceted hex. Each jewel is a real jewel object, never a flat dot. */
+.cat.jewel-orb .cat-jewel{border-radius:50%;transform:none;background:radial-gradient(circle at 34% 26%,#ffffff 0%,var(--cc) 55%,color-mix(in srgb,var(--cc) 45%,#000000) 100%)}
+.cat.jewel-hex .cat-jewel{border-radius:3px;transform:none;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)}
     </style>
   </head>
   <body>
@@ -1914,7 +1985,7 @@
       <section id="screen-month" class="screen" aria-label="Month calendar">
         <header class="monthbar">
           <div class="navcluster">
-            <button type="button" class="dlogo" id="brandHome" aria-label="NayaNET — open today"><img src="NAYA_ICON.png" alt="NayaNET"></button>
+            <button type="button" class="dlogo" id="brandHome" aria-label="NayaNET — open today"><picture><source media="(max-width:560px)" srcset="icon-192.png"><img src="icon-512.png" alt="NayaNET"></picture></button>
             <button class="navbtn" id="prevMonth" aria-label="Previous month">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
             </button>
@@ -1967,7 +2038,7 @@
         <div class="doorbody" id="doorBody"></div>
       </section>
     <div class="royal-frame" aria-hidden="true"><i class="rf-c tl"></i><i class="rf-c tr"></i><i class="rf-c bl"></i><i class="rf-c br"></i></div>
-<button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><picture><source media="(max-width:560px)" srcset="icon-192.png"><img src="icon-512.png" alt="Naya"></picture></button>
+<button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><img src="NAYA_ICON.png" alt="Naya"></button>
     </div>
 
     <script>
@@ -2177,8 +2248,8 @@
         function monthBookingsFor(k) {
           var raw = [];
           try { raw = JSON.parse(localStorage.getItem(MONTH_BOOK_KEY) || "[]") || []; } catch (e) { raw = []; }
-          return raw.filter(function (b) { return b && b.date === k && b.meet; }).map(function (b) {
-            return { time: b.time || "12:00", title: (b.who || "Appointment") + (b.what ? " — " + b.what : ""), meet: true, fromMonth: true };
+          return raw.filter(function (b) { return b && b.date === k; }).map(function (b) {
+            return { time: b.time || "12:00", title: (b.who || "Appointment") + (b.what ? " — " + b.what : ""), meet: !!b.meet, fromMonth: true };
           });
         }
         function dayApptsFor(k) {
@@ -2754,7 +2825,7 @@
             '<div class="official-headliner">' +
               '<span class="hl-left"><span class="daynum-tile" aria-hidden="true">'+d.getDate()+'</span><span class="hl-weekday">' + WEEKDAYS[d.getDay()] + '</span>' +
               '<span class="hl-dot" aria-hidden="true"></span>' +
-              '<span class="hl-date">' + MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() + "</span></span>" +
+              '<span class="os-mini-num datenum">' + digitsHTML(d.getDate()) + '</span><span class="hl-date">' + MONTHS[d.getMonth()] + " " + String(d.getFullYear()).slice(2) + "</span></span>" +
               '<span class="hl-time" id="greetClock"></span>' +
               '<button type="button" class="stats-btn" id="statsBtn">Your Stats</button>' +
             "</div>" +
@@ -2874,11 +2945,11 @@
         function doorById(id) {
           return DOORS.filter(function (d) { return d.id === id; })[0];
         }
-        function catSection(cat, inner, foldKey, headNote, headTitle) {
+        function catSection(cat, inner, foldKey, headNote, headTitle, headColor, headJewel) {
           /* foldKey: the section starts folded (hidden) until its button
              unfolds it — the agreement's [hidden] beats, same mechanism */
           var folded = false; /* Smart Flow: every block renders; the viewer shows one at a time — the fold state is dormant */
-          return '<section class="cat smart-block" style="--cc:' + cat.color + '" aria-label="' + (headTitle || cat.label) + '"' +
+          return '<section class="cat smart-block' + (headJewel ? ' jewel-' + headJewel : '') + '" style="--cc:' + (headColor || cat.color) + '" aria-label="' + (headTitle || cat.label) + '"' +
             (foldKey ? ' data-unfold-sec="' + foldKey + '"' : '') + (folded ? ' hidden' : '') + '>' +
             '<div class="cat-head"><span class="cat-jewel" aria-hidden="true"></span>' +
             '<h2 class="cat-title">' + (headTitle || cat.label) + '</h2></div>' +
@@ -3100,9 +3171,9 @@
           var _narrow740 = window.innerWidth <= 740;
           var _tlRows = tl.split(/(?=<div class="tl-row">)/).filter(function (s) { return s; });
           wrap.innerHTML =
-            catSection(CATS[0], notifCards + dayNav("#a21caf", false), null, "Tap a world — see its notifications.") +
-            catSection(CATS[0], notifRowsA + dayNav("#a21caf", false), null, "Rows one to six — the worlds, the mail, the messages.", "Your worlds") +
-            catSection(CATS[0], notifRowsB + dayNav("#a21caf", false), null, "Rows seven to eleven — the news, the weather, the horoscope.", "The world around") +
+            catSection(CATS[0], notifCards + dayNav("#a21caf", false), null, "Tap a world — see its notifications.", "Notifications", "#a21caf", "diamond") +
+            catSection(CATS[0], notifRowsA + dayNav("#8e24aa", false), null, "Rows one to six — the worlds, the mail, the messages.", "Your worlds", "#8e24aa", "orb") +
+            catSection(CATS[0], notifRowsB + dayNav("#0f52ba", false), null, "Rows seven to eleven — the news, the weather, the horoscope.", "The world around", "#0f52ba", "hex") +
             catSection(CATS[1], '<div class="dash-grid">' + apptsTile + '</div>' + dayNav("#8e24aa", false), "appointments") +
             (_narrow740
               ? catSection(CATS[1], '<div class="dash-grid">' + timelineTile(_tlRows.slice(0, 8).join(""), "6 AM – 1 PM") + '</div>' + dayNav("#3f51b5", false), null, "The timeline, first half — 6 AM to 1 PM.") +

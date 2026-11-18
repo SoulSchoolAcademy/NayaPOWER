@@ -1550,11 +1550,80 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
    sublines were flat regular-weight white with no depth layer; the layer
    is the fix.) */
 .door .sub2,.sub,.daytimeline .tl-sub,.tl-text,.tl-note,.tl-empty,.recrow .rl span,.list li,.hint,.pwx,.viewcard p,.pcat-essence,.cat-row .lr-g,.nb-sub,.nd-sub,.nd-src,.cat-essence,.tl-row .te,.tile-appt-row .tt,.tile-empty,.intel-line{color:#fff;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)}
+
+/* ============ V5 — FIX ROUND (eye GOES BACK on v4, 2026-11-18) ============ */
+/* (2) SHORT VIEWPORTS — at 340px tall the absolute nav row and dots sit
+   on the centred content (Back over heading letters, Keep reading over
+   sublines). At short heights the block top-aligns and scrolls, and the
+   nav row and dots flow in place below the content instead of overlaying
+   it. At normal heights the nav and dots stay pinned and only the detail
+   scrolls. No text shrinks below the 17px floor. */
+@media (max-height:480px){
+.smart-block{justify-content:flex-start!important;overflow-y:auto!important;padding-bottom:24px!important}
+.sb-nav{position:static!important;transform:none!important;margin-top:16px;flex:none}
+.sb-dots{position:static!important;transform:none!important;margin-top:10px;flex:none}
+}
+/* (4) BRAND MARKS — Shawn 18:44Z, his word wins over Laws §4 here: the
+   LOGO (the N in a circle) goes TOP LEFT; the ICON (the emblem crest)
+   goes BOTTOM RIGHT. NO glow on either mark. Behind both, obsidian
+   black, so no square edge shows at all — the marks feel part of the
+   natural calendar. The mounts are transparent on the obsidian page,
+   circular-clipped, with a real drop shadow only (no coloured glow). */
+.logo,.dlogo,.corner-n{background:transparent!important;border:none!important;border-radius:50%!important;overflow:hidden!important;box-shadow:0 8px 20px rgba(0,0,0,.65)!important}
+.logo img,.dlogo img,.corner-n img{filter:drop-shadow(0 4px 8px rgba(0,0,0,.7))!important}
+.logo:hover,.dlogo:hover,.corner-n:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.7)!important}
+.logo:active,.dlogo:active,.corner-n:active{transform:scale(.97)}
+/* (5) THE DATE, ALIVE — the date line is a living plaque in the day's
+   colour (Kanye blue #3fb8ff on Wednesday, the day's own colour every
+   other day): obsidian pill, rim and underglow in the day's colour,
+   breathing slowly. The weekday stays white (settled law) and its
+   light is the day's colour, brighter now so Wednesday reads Kanye blue. */
+.hl-date,.phl-date{display:inline-flex;align-items:center;background:linear-gradient(180deg,#171720,#0a0a11 60%,#050507);border:1.5px solid var(--dc,#3fb8ff);border-radius:999px;padding:8px 16px;box-shadow:0 0 16px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent),0 8px 18px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.35);animation:datelive 6s ease-in-out infinite}
+@keyframes datelive{0%,100%{box-shadow:0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),0 8px 18px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.35)}50%{box-shadow:0 0 28px color-mix(in srgb,var(--dc,#3fb8ff) 60%,transparent),0 10px 22px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.45)}}
+.hl-weekday,.phl-weekday{text-shadow:0 -1px 0 rgba(255,255,255,.28),0 2px 3px rgba(0,0,0,.85),0 0 18px color-mix(in srgb,var(--dc,#3fb8ff) 65%,transparent)}
+/* (6) BUTTONS ALIVE, TO THE CIRCLE-N STANDARD — every button is the
+   circle N's construction: obsidian gradient, rim in its own colour,
+   inset top light, deep bottom shade, underglow in its own colour,
+   lift on hover, press to 0.97. Harvested from .corner-n, never remade. */
+.pill{border:2px solid color-mix(in srgb,var(--dc,#8e24aa) 75%,#ffffff 25%)!important;background:linear-gradient(135deg,#232330 0%,#0b0b12 55%,#050507 100%)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 16px color-mix(in srgb,var(--dc,#8e24aa) 35%,transparent),0 8px 18px rgba(0,0,0,.6)!important}
+.pill:hover{transform:translateY(-2px);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 28px color-mix(in srgb,var(--dc,#8e24aa) 55%,transparent),0 12px 24px rgba(0,0,0,.65)!important}
+.pill:active{transform:scale(.97)}
+.door,.cat-row,.recrow{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -4px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--c,#8e24aa) 30%,transparent),0 8px 18px rgba(0,0,0,.55)}
+.door:hover,.cat-row:hover,.recrow:hover{transform:translateY(-2px);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -4px 8px rgba(0,0,0,.5),0 0 28px color-mix(in srgb,var(--c,#8e24aa) 55%,transparent),0 12px 24px rgba(0,0,0,.6)}
+.door:active,.cat-row:active,.recrow:active{transform:scale(.97)}
+.viewbtn{border-width:2px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.5),0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),0 6px 14px rgba(0,0,0,.55)!important}
+.viewbtn:hover{transform:translateY(-2px)}
+.viewbtn:active{transform:scale(.97)}
+.stats-btn,.navbtn,.backbtn,.close{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -4px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),0 8px 18px rgba(0,0,0,.6)}
+.stats-btn:hover,.navbtn:hover,.backbtn:hover,.close:hover{transform:translateY(-2px)}
+.stats-btn:active,.navbtn:active,.backbtn:active,.close:active{transform:scale(.97)}
+/* (6) THE INFO EYE, ALIVE IN THE DAY'S COLOUR — the little "i" jewel
+   takes the viewed day's colour as its rim, bright and lit. On
+   Wednesday that is Kanye blue #3fb8ff, by the data-day-theme rule.
+   The white eye on a black middle (Laws §8) is kept. */
+.tile .ijewel,.pback.eye,.backbtn .jewel{border-color:color-mix(in srgb,var(--dc,#3fb8ff) 80%,#ffffff 20%)!important;box-shadow:0 3px 7px rgba(0,0,0,.6),0 0 14px color-mix(in srgb,var(--dc,#3fb8ff) 55%,transparent),inset 0 1px 2px rgba(255,255,255,.4)!important}
+html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] .pback.eye,html[data-day-theme="wednesday"] .backbtn .jewel{border-color:#3fb8ff!important;box-shadow:0 3px 7px rgba(0,0,0,.6),0 0 14px rgba(63,184,255,.6),inset 0 1px 2px rgba(255,255,255,.4)!important}
+
+/* (1a) THE PANEL DETAIL, IN PLACE — a Notifications door opens its
+   detail inside the Notifications block, like the day file's
+   notif-detail: the dialog, the 8 world cards, the header, the nav
+   and the dots never move. The detail is a shrinking flex item with
+   its own visible scrollbar in the chapter's colour. */
+.pcat .pnotif-detail{flex:0 1 auto;min-height:0;overflow-y:auto;scrollbar-width:auto;scrollbar-color:var(--cc,#a21caf) rgba(255,255,255,.16);border-radius:16px;padding:16px;margin-top:12px;background:linear-gradient(180deg,#151522 0%,#090910 78%,#050508 100%);border:1.5px solid color-mix(in srgb,var(--cc,#a21caf) 60%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -12px 18px rgba(0,0,0,.35),0 14px 30px rgba(0,0,0,.55)}
+.pcat .pnotif-detail::-webkit-scrollbar{width:12px}
+.pcat .pnotif-detail::-webkit-scrollbar-track{background:rgba(255,255,255,.12);border-radius:999px}
+.pcat .pnotif-detail::-webkit-scrollbar-thumb{background:var(--cc,#a21caf);border-radius:999px;border:2px solid #090910}
+.pcat .pnotif-detail[hidden]{display:none}
+.pnd-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pnd-head h3{margin:0;color:#fff}
+.pnd-sub{color:#fff;font-size:17px}
+.pnd-row{color:#fff;font-size:17px;line-height:1.5;margin:10px 0}
+.pnd-close{flex:none}
 </style></head>
 <body>
 <main class="shell">
   <header class="head">
-    <div class="brand"><button type="button" class="logo" id="brandHome" aria-label="NayaNET — open today"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795026793" alt="NayaNET"></button><div class="brandtxt"><strong>NayaNET · MY WORLD</strong><div id="worldname">Your life, organized by day.</div></div></div>
+    <div class="brand"><button type="button" class="logo" id="brandHome" aria-label="NayaNET — open today"><picture><source media="(max-width:560px)" srcset="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/icon-192.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=0917335d417e9326a9ebf2618ebd5c670494b0c7&amp;t=1795028670"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/icon-512.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795028670" alt="NayaNET"></picture></button><div class="brandtxt"><strong>NayaNET · MY WORLD</strong><div id="worldname">Your life, organized by day.</div></div></div>
     <div class="nowcenter" id="nowCenter">
     <button type="button" class="nowplaque" id="nowPlaque" aria-label="Today's date and your local time — tap to open today">
       <span class="live-dot" id="nowDot" style="--sc:#d4a017"></span>
@@ -1593,7 +1662,7 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   </section>
 </main>
 <div class="royal-frame" aria-hidden="true"><i class="rf-c tl"></i><i class="rf-c tr"></i><i class="rf-c bl"></i><i class="rf-c br"></i></div>
-<button type="button" class="corner-n" id="cornerN" aria-label="Naya — open today"><picture><source media="(max-width:560px)" srcset="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/icon-192.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=0917335d417e9326a9ebf2618ebd5c670494b0c7&amp;t=1795026793"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/icon-512.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795026793" alt="Naya"></picture></button>
+<button type="button" class="corner-n" id="cornerN" aria-label="Naya — open today"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795028670" alt="Naya"></button>
 <div class="scrim" id="scrim"><section class="panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div id="panelContent"></div></section></div>
 <script>
 /* ============ STATE ============ */
@@ -1640,7 +1709,7 @@ const NOTE_KEY='mw.cal.notes.v1';
 const BOOK_SLOTS=['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'];
 function loadBookings(){ try{ var a=JSON.parse(localStorage.getItem(BOOK_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
 function saveBookings(a){ try{ localStorage.setItem(BOOK_KEY,JSON.stringify(a)); return true; }catch(e){ return false; } }
-function dayBookings(ds){ return loadBookings().filter(b=>b.date===ds).sort((x,y)=>String(x.time).localeCompare(String(y.time))); }
+function dayBookings(ds){ var out=loadBookings().filter(b=>b.date===ds); try{ var ap=JSON.parse(localStorage.getItem('nayacal.appts.v1')||'{}')||{}; var arr=ap[ds]||[]; arr.forEach(function(a,i){ out.push({id:'day-'+ds+'-'+i, date:ds, time:a.time||'12:00', who:a.title||'Appointment', what:'', meet:!!a.meet, fromDay:true}); }); }catch(e){} return out.sort((x,y)=>String(x.time).localeCompare(String(y.time))); }
 function bookTimeTaken(ds,t){ return dayBookings(ds).some(b=>b.time===t); }
 function loadNotes(){ try{ var a=JSON.parse(localStorage.getItem(NOTE_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
 function saveNotes(a){ try{ localStorage.setItem(NOTE_KEY,JSON.stringify(a)); return true; }catch(e){ return false; } }
@@ -1961,14 +2030,14 @@ function dayScreenHTML(ds, wd, publicView, future){
   let html='<header class="pdaybar" style="--dc:'+dc+'">'
     +'<button class="pback eye" data-op="close" aria-label="Back to month" title="Back to month"><span class="jewel" aria-hidden="true">'+infoJewelSVG()+'</span></button>'
     +'<div class="pdayhead"><div class="phl">'
-    +'<span class="phl-left" id="modalTitle"><span class="daynum-tile" aria-hidden="true">'+day+'</span><span class="phl-weekday">'+esc(wd.name)+'</span><span class="phl-dot" aria-hidden="true"></span><span class="phl-date">'+esc(MONTHS[month])+' '+day+', '+year+'</span></span>'
+    +'<span class="phl-left" id="modalTitle"><span class="daynum-tile" aria-hidden="true">'+day+'</span><span class="phl-weekday">'+esc(wd.name)+'</span><span class="phl-dot" aria-hidden="true"></span><span class="os-mini-num datenum">'+digitsHTML(day)+'</span><span class="phl-date">'+esc(MONTHS[month])+' '+String(year).slice(2)+'</span></span>'
     +'<span class="phl-time"><span id="panelClock">'+clockTilesHTML(new Date())+'</span><span class="sigpiece" style="--dc:'+dc+'" role="img" aria-label="'+esc(wd.name)+'"><span class="sp-ring-a"></span><span class="sp-ring-b"></span><span class="sp-metal"></span><span class="sp-pearl"></span></span></span>'
     +'<span></span>'
     +'</div></div>'
     +'<button class="pill close pclose" data-op="close" aria-label="Close">×</button></header>';
   if(!publicView){
     const w=wisdomFor(ds);
-    html+='<div class="smart-block sb-chamber" style="--dc:'+dc+'"><div class="smart-visual"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/portal-kings-chamber.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&amp;t=1795026793" alt="The king&#8217;s chamber — the portal to your kingdom"></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:'+dc+'">Keep reading ◆</button></div><div class="sb-dots"></div></div>';
+    html+='<div class="smart-block sb-chamber" style="--dc:'+dc+'"><div class="smart-visual"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/portal-kings-chamber.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&amp;t=1795028670" alt="The king&#8217;s chamber — the portal to your kingdom"></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:'+dc+'">Keep reading ◆</button></div><div class="sb-dots"></div></div>';
     html+='<div class="pwisdom smart-block" style="--dc:'+dc+'"><div class="pwq-label">Wisdom of the day</div><blockquote>“'+esc(w.text)+'”</blockquote><div class="pgreet-row"><span class="pgreet-layout"><span class="pavatar" aria-hidden="true">S</span><span class="pgreet-hello">'+greetFor()+', Shawn.</span></span></div><div class="wq-store">NAYANET WISDOM STORE — FROM WHAT WE HAVE LEARNED</div><div class="pdaystep"><button type="button" class="pdaystep-btn" data-op="prevday" aria-label="Previous day, '+NAMES[prev.getDay()]+'">‹ '+ABBR[prev.getDay()]+'</button><button type="button" class="pdaystep-btn" data-op="nextday" aria-label="Next day, '+NAMES[next.getDay()]+'">'+ABBR[next.getDay()]+' ›</button></div><div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:'+dc+'">Keep reading ◆</button></div><div class="sb-dots"></div></div>';
   }
 
@@ -2083,6 +2152,35 @@ if(!window.__panelSplitResize){
     if(pn && pn.classList.contains('flow')) showPanel();
   });
 }
+
+/* V5 (1a) — a Notifications door opens its detail IN PLACE, like the
+   day file's notif-detail: the dialog, the world cards, the header,
+   the nav and the dots never move. Returns true when it handled the
+   tap (so the caller must not navigate); false for doors it does not
+   own, which navigate as before. Tapping the same door again (or the
+   x) closes the detail. */
+function openPanelNotifDetail(btn, view){
+  var sec = btn.closest('section.pcat'); if(!sec) return false;
+  var ds = selKey();
+  var box = sec.querySelector('.pnotif-detail');
+  var open = box && !box.hidden && box.getAttribute('data-view') === view;
+  document.querySelectorAll('.pnotif-detail').forEach(function(el){ el.hidden = true; });
+  if(open) return true;
+  if(!box){ box = document.createElement('div'); box.className = 'pnotif-detail'; box.setAttribute('role','region'); var nav = sec.querySelector('.sb-nav'); if(nav) sec.insertBefore(box, nav); else sec.appendChild(box); }
+  var books = dayBookings(ds), notesAll = dayNotes(ds);
+  var rows = '';
+  if(view==='Dashboard'){ rows = '<p class="pnd-row"><b>'+books.length+'</b> appointment'+(books.length===1?'':'s')+' · <b>'+notesAll.length+'</b> note'+(notesAll.length===1?'':'s')+' recorded for this day.</p>'; }
+  else if(view==='Personal'||view==='Business'){ var list = dayNotes(ds, view); rows = list.length ? list.map(function(n){ return '<p class="pnd-row"><b>'+esc(n.timeframe||'')+'</b> · '+esc(n.type==='smart'?'Smart Note':n.type==='post'?'Post':'Note')+' — '+esc(n.text)+'</p>'; }).join('') : '<p class="pnd-row">No records for this day in '+esc(view)+'.</p>'; }
+  else if(view==='Space / Thing'){ var list2 = dayNotes(ds).filter(function(n){ return n.world==='Space'||n.world==='Thing'; }); rows = list2.length ? list2.map(function(n){ return '<p class="pnd-row"><b>'+esc(n.timeframe||'')+'</b> · '+esc(n.text)+'</p>'; }).join('') : '<p class="pnd-row">No records for this day in '+esc(view)+'.</p>'; }
+  else if(view==='Local'||view==='Provincial'||view==='Global'){ rows = '<p class="pnd-row">No archived news for this date in this build. The news archive is not wired yet — and today\u2019s headlines are never shown as past news.</p>'; }
+  else if(view==='Notes + Smart Notes'){ rows = notesAll.length ? notesAll.map(function(n){ return '<p class="pnd-row"><b>'+esc(n.timeframe||'')+'</b> · '+esc(n.text)+'</p>'; }).join('') : '<p class="pnd-row">No notes for this day.</p>'; }
+  else { return false; }
+  box.setAttribute('data-view', view);
+  box.innerHTML = '<div class="pnd-head"><h3>'+esc(view)+' · Notifications</h3><button type="button" class="pill pnd-close" aria-label="Close detail">\u00d7</button></div><p class="pnd-sub">'+esc(doorGlimpse(view, ds, books, notesAll))+'</p>' + rows;
+  box.hidden = false;
+  var c = box.querySelector('.pnd-close'); if(c) c.onclick = function(){ box.hidden = true; };
+  return true;
+}
 function showPanel(){
   const publicView=role==='visitor';
   $('scrim').classList.add('show');
@@ -2102,7 +2200,7 @@ function showPanel(){
      scroll); every other screen keeps the v1 scroll. */
   document.querySelector('.panel').classList.toggle('flow', screen==='day' && !publicView);
   if(screen==='day' && !publicView){ _panelSplitMode=_panelSplit(); panelShow(panelBlock); }
-  document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{ section=b.dataset.view; screen='view'; slot=''; pushRoute(); showPanel(); });
+  document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{ if(b.closest('.pcat') && openPanelNotifDetail(b, b.dataset.view)) return; section=b.dataset.view; screen='view'; slot=''; pushRoute(); showPanel(); });
   document.querySelectorAll('[data-op]').forEach(b=>b.onclick=()=>{ const op=b.dataset.op;
     if(op==='close'){ closePanel(); return; }
     if(op==='back'){ screen='day'; pushRoute(); showPanel(); return; }
@@ -2316,6 +2414,7 @@ function confirmBooking(){
     card.prepend(p); }
 }
 function cancelBooking(id){
+  if(String(id).indexOf('day-')===0){ try{ var ap=JSON.parse(localStorage.getItem('nayacal.appts.v1')||'{}')||{}; var ds=selKey(); var arr=ap[ds]||[]; var idx=parseInt(String(id).split('-').pop(),10); if(!isNaN(idx)){ arr.splice(idx,1); ap[ds]=arr; localStorage.setItem('nayacal.appts.v1', JSON.stringify(ap)); } }catch(e){} render(); showPanel(); return; }
   const all=loadBookings().filter(b=>b.id!==id);
   saveBookings(all); render(); showPanel();
 }
@@ -2332,7 +2431,7 @@ function meetViewHTML(ds){
   return h;
 }
 function openMeet(id){
-  const b=loadBookings().find(x=>x.id===id);
+  const b=loadBookings().find(x=>x.id===id) || dayBookings(selKey()).find(x=>x.id===id);
   if(!b){ return; }
   meetId=id; meetSecs=0; micOn=true; camOn=true; meetFrom=screen;
   const ds=selKey();
