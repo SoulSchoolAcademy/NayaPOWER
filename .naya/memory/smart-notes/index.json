@@ -59035,6 +59035,39 @@
         "Honor",
         "Thinking"
       ]
+    },
+    {
+      "smart_note_id": "SN-3395",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3395-live-is-what-counts",
+      "slug": "live-is-what-counts",
+      "title": "Live Is What Counts",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3395/IB-SMART-NOTE-20261118-sn3395-live-is-what-counts.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3395/IB-SMART-NOTE-20261118-sn3395-live-is-what-counts.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3395/IB-SMART-NOTE-20261118-sn3395-live-is-what-counts.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3395-live-is-what-counts.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:57:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "4eec54dee1dc82cabdc3edc3cd990e2d2e6e575a67d9cf2d755ee83825ac5421",
+      "content_hash": "9dc72037e381eafbe5135b01cac49497cde8049a1c79f67491631622dc37f827",
+      "one_line": "What counts is what is live in front of them — not what was built, not what was filed, not what a hook claimed it synced. A page is not done when its pieces are beautiful; it is done when the joins are proven: one real click moved the Smart Link count from 110 to 111, and that click is worth more than a hundred build reports. The same standard exposed the night's worst truths gently and exactly: all 36 popups showed a View button and 28 of them were dead — a button that promises and does nothing is worse than no button, because it teaches the visitor the page lies — and of those 28 rows, byte-comparison proved 10 apps real and 18 still to build. The feed is the truth surface: a deploy can be perfect while the live feed sits a day stale with 131 notes missing, so the check is always on the served bytes. Even the plumbing obeys the law — a parser that only reads ## headings silently swallows any note written in bold labels, which is why format is not cosmetics: ## sections, or the note never lands. The pricing page itself is the map of all of this: every row is a claim, every View button a proof, every missing button an honest admission of work remaining.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Verification",
+        "Truth"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59045,5 +59078,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "c09d73f06dc561fcc6639e0c91816faf4e4d1090238bb2d05e67a8b4658e72dd"
+  "corpus_manifest_hash": "f1a820717456fd0becb73ac2a7ff3e3dad5fe1cedf1231dff745f64861c0af0f"
 }
