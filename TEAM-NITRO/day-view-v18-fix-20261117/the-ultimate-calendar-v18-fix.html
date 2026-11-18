@@ -79,7 +79,7 @@
         --d0: #8e24aa; /* Sunday — royal purple · 963 Hz */
         --d1: #c2410c; /* Monday — burnt orange · 417 Hz */
         --d2: #d4a017; /* Tuesday — deep gold · 528 Hz */
-        --d3: #0f52ba; /* Wednesday — sapphire · 741 Hz */
+        --d3: #3fb8ff; /* Wednesday — sky blue (Kanye blue) · 741 Hz */
         --d4: #07925f; /* Thursday — emerald · 639 Hz */
         --d5: #c62828; /* Friday — ruby · 396 Hz */
         --d6: #3f51b5; /* Saturday — indigo · 852 Hz */
@@ -1697,6 +1697,164 @@
 .dlogo img{width:100%;height:100%;object-fit:contain;display:block}
 .dlogo:hover{transform:translateY(-2px);box-shadow:inset 0 0 14px #351453,0 0 24px #8e24aa,0 12px 26px rgba(0,0,0,.6)}
 .dlogo:active{transform:scale(.97)}
+
+/* ============ V2 — THE KING'S CHAMBER (Shawn 2026-11-18 15:45Z) ============ */
+/* THE ROYAL FRAME — the presentation of THIS round's day view. A real
+   machined frame around the viewport edges: a platinum brushed-metal band
+   (the emblem's silver, one light top-left, 135°), an inner rim in the
+   DAY's colour (--dc — the daily theme: each day its own colour from the
+   same family, the colour of the day IS its frequency), four faceted
+   diamond studs set into the band at the corners (platinum + purple,
+   slow 12s shimmer — the frame's life; it is a mount, not a control, so
+   it takes no taps and needs no hover). The frame rims the two calendar
+   files only — the all-interfaces rollout is the FOLLOWING program, not
+   this round. It never covers content: 12px band vs the shell's 14px top
+   / 10–40px side padding (8px band at ≤740px); pointer-events none; z 40
+   sits ABOVE the scrim (z 30) so it stays visible around the pop-up panel. */
+:root{--dc:#3fb8ff}
+.royal-frame{position:fixed;inset:0;z-index:40;pointer-events:none;
+  border:12px solid transparent;
+  border-image:linear-gradient(135deg,#f2f2f5 0%,#c8ccd6 22%,#7a7e88 48%,#e8e8ec 68%,#9a9ea8 84%,#f2f2f5 100%) 1;
+  box-shadow:inset 0 0 0 2px var(--dc,#3fb8ff),inset 0 0 26px color-mix(in srgb,var(--dc,#3fb8ff) 20%,transparent)}
+.royal-frame .rf-c{position:absolute;width:12px;height:12px;transform:rotate(45deg);
+  background:conic-gradient(from 210deg,#ffffff 0%,#d9d9de 18%,#8e24aa 38%,#e8e8ec 55%,#ffffff 72%,#9a9ea8 88%,#ffffff 100%);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 0 10px color-mix(in srgb,var(--dc,#3fb8ff) 55%,transparent),inset 0 1px 2px rgba(255,255,255,.9);
+  animation:rfshimmer 12s ease-in-out infinite alternate}
+.royal-frame .rf-c.tl{top:-12px;left:-12px}
+.royal-frame .rf-c.tr{top:-12px;right:-12px}
+.royal-frame .rf-c.bl{bottom:-12px;left:-12px}
+.royal-frame .rf-c.br{bottom:-12px;right:-12px}
+@keyframes rfshimmer{from{filter:brightness(.92)}to{filter:brightness(1.12)}}
+@media(max-width:740px){.royal-frame{border-width:8px}
+  .royal-frame .rf-c{width:8px;height:8px}
+  .royal-frame .rf-c.tl{top:-8px;left:-8px}
+  .royal-frame .rf-c.tr{top:-8px;right:-8px}
+  .royal-frame .rf-c.bl{bottom:-8px;left:-8px}
+  .royal-frame .rf-c.br{bottom:-8px;right:-8px}}
+/* THE DAY-NUMBER TILE (good picture (b), 15:15Z — the "17" digit tile
+   leading the date line): the day's number as a digit tile in the day's
+   colour. The 528 Hz pill is NOT reinstated — the frequency-text removal
+   stands and the signature piece takes the pill's place (report names it).
+   Note the Nov 17 order that removed the header digit tiles: the good
+   picture (his newer word, the standard for this round) shows the tile
+   leading the date, so the tile returns as the date's number, not as a
+   second header. */
+.daynum-tile{display:inline-grid;place-items:center;min-width:46px;height:46px;padding:0 8px;border-radius:10px;flex:none;
+  background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);
+  border:2px solid var(--dc,#3fb8ff);color:#fff;font-size:25px;font-weight:900;line-height:1;
+  box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 40%,transparent),inset 0 1px 0 rgba(255,255,255,.35)}
+@media(max-width:560px){.daynum-tile{min-width:40px;height:40px;font-size:19px}}
+/* THE WISDOM STORE LINE (good picture (b)): the wisdom board names its store. */
+.wq-store{margin-top:12px;text-align:center;font-size:17px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#fff;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)}
+/* THE DAILY THEME (Shawn 15:45Z): one template for each day, each day its
+   own colour from the same family — the colour of the day IS its
+   frequency/theme. The mechanism is the live --dc (set per viewed day by
+   showPanel / openDay / renderNowPlaque) + data-day-theme on <html>; the
+   piece, the rims, the glow, the frame's inner rim and the hero rays all
+   read --dc. Sun #a06bff 963 · Mon #ff9a5a 417 · Tue #ffbf3d 528 ·
+   Wed #3fb8ff 741 · Thu #2fe89e 639 · Fri #ff5e6c 396 · Sat indigo 852.
+   (Settled day-color law, Oct 31 + SN-3058 — the bright values; the deep
+   palette governs rims elsewhere. Wednesday's #3fb8ff here supersedes
+   Laws §3.3 sapphire #0f52ba, per Shawn 15:46Z.) */
+
+/* ============ V2 — SMART BLOCKS / SMART FLOW (Shawn 2026-11-18 16:07Z + 16:12Z + 16:15Z) ============ */
+/* THE SMART BLOCK is the DISPLAY unit: every screen as it unfolds is a new
+   Smart Block, smartly formatted so it fits perfect. (The Intelligent Block
+   remains the universal POSTING format — that standing law is unchanged;
+   the names are not conflated: this class is the display block only.)
+   THE SMART FLOW is the day view's mode: the unfold, going DOWN (the Smart
+   Show — the slideshow, going ACROSS — is the deck/About/Skills mode and is
+   NOT built into the calendar). The whole game: maximize the user's
+   experience by giving 10-star service through the ultimate formatting for
+   their viewpoint — each block is judged against that, not just "does it
+   fit". The look: real, high tech, premium high-end software — something
+   smart like a Naya — and the royal-kingdom bar.
+   Rules, all in force here:
+   (1) FULL SCREEN — the day view fills the screen edge to edge, the chamber
+       frame as its edge. The panel is 100% x 100% to the frame; pop-ups OVER
+       it (the Meet room) stay at 85% (90% small) so the frame stays visible
+       around them.
+   (2) ONE VISUAL PER BLOCK — a visual gets its own block; never two in one.
+       The portal art gets its own block (Block 1, the chamber) — it no
+       longer lives as a backdrop behind the panel, because the full-screen
+       panel covers the backdrop; the art is seen once, framed.
+   (3) IF IT DOESN'T FIT, IT GOES TO TWO SCREENS — a section that won't fit
+       one screen SPLITS; never squeeze, never overflow, never leave anything
+       half-aligned. The split points are measured by the probe and named in
+       the report (width-conditional in dayScreenHTML / renderCategories). A
+       block never scrolls internally: overflow hidden.
+   (4) NO MORE SCROLLING — down is by button only (Keep reading ◆); a back
+       control (‹ Back) is on every screen after the first; the last block
+       goes home (Back to month ◆). The panel/day-scroll never scroll in flow
+       mode — scrollTop stays 0; the only movement is the button-driven unfold.
+   (5) OPTIMIZE FOR PRESENTATION — every block is a new presentation,
+       perfectly formatted for the exact screen it's on. Life with Naya is the
+       model: one glowing object at the centre, sparseness is the luxury, one
+       thing at a time. Content centres at a readable 1100px in the wide
+       block; at phone width it fills the screen. Each block its own
+       theme/color (its --cc, inside the day's family), with a BREAK between
+       blocks — the fold line in the block's own color.
+   The frame is the thing each block locks INTO. On unfold the new block comes
+   into the screen, pops out toward the viewer a little (scale 1.008, lift
+   -2px), and settles exactly in the viewport. */
+.smart-block{position:relative;flex:1;min-height:0;flex-direction:column;justify-content:safe center;overflow:hidden;
+  border-top:2px solid color-mix(in srgb,var(--cc,var(--dc,#3fb8ff)) 60%,transparent);
+  padding-top:20px;padding-bottom:76px}
+.smart-block>*{max-width:1100px;width:100%;margin-left:auto;margin-right:auto}
+#panelContent .smart-block{margin-top:0}
+#dayScroll .smart-block{margin-top:0}
+/* One block at a time: the viewer shows exactly one .smart-block (class
+   .on); the rest are display:none. #catsWrap is display:contents so the
+   three category blocks are flex items of #dayScroll directly. */
+.panel.flow #panelContent .smart-block{display:none}
+.panel.flow #panelContent .smart-block.on{display:flex}
+#dayScroll .smart-block{display:none}
+#dayScroll .smart-block.on{display:flex}
+#catsWrap{display:contents}
+/* Flow mode: the panel is a column (daybar fixed, one block filling the
+   rest) and never scrolls; view mode keeps the v1 scroll. The day-scroll
+   never scrolls in the day view. */
+.panel.flow{overflow:hidden;display:flex;flex-direction:column}
+.panel.flow #panelContent{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column}
+.panel.flow #panelContent .pdaybar{flex:none}
+.panel:not(.flow) #panelContent{max-width:1100px;margin-inline:auto;width:100%}
+.day-scroll{overflow:hidden}
+/* THE 16:9 VISUAL SLOT (16:12Z clarification): images and video are 16:9
+   and interchangeable — a <video> drops into this same frame. The portal art
+   is filed verbatim; the rework toward the emblem's language is LIGHT over
+   it — a platinum-white top light (::after) and the platinum frame with the
+   day's rim — the purple kept in the diamonds and the frame. */
+.smart-visual{aspect-ratio:16/9;width:100%;max-width:1100px;margin-inline:auto;position:relative;overflow:hidden;
+  border:2px solid var(--dc,#3fb8ff);border-radius:18px;background:#050607;
+  box-shadow:0 12px 32px rgba(0,0,0,.6),0 0 28px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),inset 0 1px 0 rgba(255,255,255,.35)}
+.smart-visual img{width:100%;height:100%;object-fit:cover;display:block}
+.smart-visual::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(232,232,236,.20) 0%,transparent 34%,transparent 78%,rgba(5,6,7,.28) 100%)}
+/* THE BLOCK NAV — pinned to the bottom of the screen, inside the frame:
+   ‹ Back on the left, Keep reading ◆ (or Back to month ◆ on the last block)
+   on the right. Always present; the way down and the way back. */
+.sb-nav{position:absolute;left:50%;transform:translateX(-50%);bottom:20px;width:min(1100px,100%);
+  display:flex;justify-content:space-between;align-items:center;gap:12px}
+/* THE POP: the block comes into the screen, pops out toward the viewer a
+   little (scale 1.008, lift -2px), and settles exactly. 450ms, one beat. */
+@keyframes smartpop{0%{opacity:0;transform:translateY(18px) scale(.965)}
+  60%{opacity:1;transform:translateY(-2px) scale(1.008)}
+  100%{opacity:1;transform:translateY(0) scale(1)}}
+.smart-block.smart-pop{animation:smartpop .45s cubic-bezier(.2,.7,.3,1.2) both}
+/* THE MEET ROOM POP-UP (16:12Z rule 1): the room is a pop-up OVER the day
+   view — 85% of the screen (90% at phone width), so the chamber frame stays
+   visible around it. The day view stays rendered underneath; Leave returns
+   to it. The room keeps the panel's own look (obsidian, white rim, purple
+   glow) at pop-up size. */
+.meet-pop{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;padding:12px;background:rgba(2,1,6,.66);backdrop-filter:blur(4px)}
+.meet-pop[hidden]{display:none}
+.meet-pop .meet-card{width:min(1100px,85%);max-height:85dvh;overflow:auto;
+  background:radial-gradient(ellipse at 50% 0,#30164f 0,transparent 55%),linear-gradient(180deg,#160b27,#070510 80%);
+  border:1.5px solid rgba(255,255,255,.9);border-radius:26px;
+  box-shadow:0 0 45px rgba(142,36,170,.5),0 24px 60px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.2);
+  padding:clamp(15px,2.1vw,26px)}
+@media(max-width:740px){.meet-pop .meet-card{width:90%;max-height:90dvh}}
     </style>
   </head>
   <body>
@@ -1734,12 +1892,11 @@
           <div class="dayhead" id="dayHead"></div>
         </header>
         <div class="day-scroll" id="dayScroll">
-          <div class="wisdom-banner" id="wisdomBanner">
+          <div class="smart-block sb-chamber" id="chamberBlock"><div class="smart-visual"><img src="portal-kings-chamber.png" alt="The king&#8217;s chamber — the portal to your kingdom"></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div></div><div class="wisdom-banner smart-block" id="wisdomBanner">
             <div class="wq-label">Wisdom of the day</div>
             <blockquote id="wisdomQuote"></blockquote>
-            <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span><span class="wx-zone" id="wxZone"></span></div>
+            <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span><span class="wx-zone" id="wxZone"></span></div><div class="wq-store">NAYANET WISDOM STORE — FROM WHAT WE HAVE LEARNED</div><div id="daystepSlot"></div><div class="sb-nav"><button type="button" class="pill sb-back" data-sb="prev">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div>
           </div>
-          <div id="daystepSlot"></div>
           <div id="catsWrap"></div>
         </div>
       </section>
@@ -1758,7 +1915,8 @@
         </header>
         <div class="doorbody" id="doorBody"></div>
       </section>
-    <button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><picture><source media="(max-width:560px)" srcset="icon-192.png"><img src="icon-512.png" alt="Naya"></picture></button>
+    <div class="royal-frame" aria-hidden="true"><i class="rf-c tl"></i><i class="rf-c tr"></i><i class="rf-c bl"></i><i class="rf-c br"></i></div>
+<button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><picture><source media="(max-width:560px)" srcset="icon-192.png"><img src="icon-512.png" alt="Naya"></picture></button>
     </div>
 
     <script>
@@ -1766,7 +1924,7 @@
         "use strict";
 
         /* The day colors — the law of the week */
-        var DAY_COLORS = ["#8e24aa", "#c2410c", "#d4a017", "#0f52ba", "#07925f", "#c62828", "#3f51b5"];
+        var DAY_COLORS = ["#8e24aa", "#c2410c", "#d4a017", "#3fb8ff", "#07925f", "#c62828", "#3f51b5"];
         /* The day frequencies — Living Calendar law: Sunday 963 · Monday 417 ·
            Tuesday 528 · Wednesday 741 · Thursday 639 · Friday 396 · Saturday 852 */
         var DAY_FREQ = [963, 417, 528, 741, 639, 396, 852];
@@ -2510,6 +2668,8 @@
           $("dayBar").style.setProperty("--dc", dc);
           $("dayScroll").style.setProperty("--dc", dc);
           $("wisdomBanner").style.setProperty("--dc", dc);
+          document.documentElement.style.setProperty("--dc", dc);
+          document.documentElement.setAttribute("data-day-theme", WEEKDAYS[d.getDay()].toLowerCase());
           /* ONE HEADLINER (Shawn, 2026-11-17): the date said once,
              the time said once. The old header said the day twice —
              the big digit tiles ("1" "5") standing beside the full
@@ -2541,7 +2701,7 @@
             '</div>';
           head.innerHTML =
             '<div class="official-headliner">' +
-              '<span class="hl-left"><span class="hl-weekday">' + WEEKDAYS[d.getDay()] + '</span>' +
+              '<span class="hl-left"><span class="daynum-tile" aria-hidden="true">'+d.getDate()+'</span><span class="hl-weekday">' + WEEKDAYS[d.getDay()] + '</span>' +
               '<span class="hl-dot" aria-hidden="true"></span>' +
               '<span class="hl-date">' + MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() + "</span></span>" +
               '<span class="hl-time" id="greetClock"></span>' +
@@ -2634,6 +2794,7 @@
             if (door) openDoor(door);
           });
           var sc = $("dayScroll"); if (sc) sc.scrollTop = 0;
+          dayBlock = 0; dayShow(0);
           show("screen-day");
           /* The whole place slides in the direction of travel when the
              day changes from inside the day (stepper, swipe, keys) —
@@ -2665,8 +2826,8 @@
         function catSection(cat, inner, foldKey) {
           /* foldKey: the section starts folded (hidden) until its button
              unfolds it — the agreement's [hidden] beats, same mechanism */
-          var folded = foldKey && !unfolded[foldKey];
-          return '<section class="cat" style="--cc:' + cat.color + '" aria-label="' + cat.label + '"' +
+          var folded = false; /* Smart Flow: every block renders; the viewer shows one at a time — the fold state is dormant */
+          return '<section class="cat smart-block" style="--cc:' + cat.color + '" aria-label="' + cat.label + '"' +
             (foldKey ? ' data-unfold-sec="' + foldKey + '"' : '') + (folded ? ' hidden' : '') + '>' +
             '<div class="cat-head"><span class="cat-jewel" aria-hidden="true"></span>' +
             '<h2 class="cat-title">' + cat.label + '</h2></div>' +
@@ -2680,13 +2841,7 @@
           var tone = key === "appointments" ? "#8e24aa" : "#3f51b5";
           return '<div class="letter-controls" style="--tone:' + tone + '"><button type="button" class="p3-enter letter-next deck-next" data-unfold="' + key + '">Keep reading &#9670;</button></div>';
         }
-        function unfoldControls() {
-          /* One button shows at a time — the next thing to unfold —
-             and once spent it is gone, the agreement's way */
-          if (!unfolded.appointments) return unfoldButton("appointments");
-          if (!unfolded.record) return unfoldButton("record");
-          return "";
-        }
+        /* unfoldControls is gone: the Smart Flow's nav rows live inside each block. */
         function catRow(doorId, color, iconName, label, glimpse, count, extra) {
           return '<button type="button" class="cat-row" style="--c:' + color + '" data-door="' + doorId + '"' + (extra || '') + '>' +
             '<span class="chip">' + ICONS[iconName] + '</span>' +
@@ -2744,6 +2899,41 @@
             if (!el.style.getPropertyValue("--dc")) el.style.setProperty("--dc", SCROLL_SPECTRUM[scrollIdx++ % SCROLL_SPECTRUM.length]);
             scrollIO.observe(el);
           });
+        }
+        /* SMART FLOW VIEWER (16:12Z + 16:15Z): the day view shows one Smart
+           Block at a time — 0 the chamber, 1 wisdom, 2 notifications, 3
+           appointments, 4 the record. dayShow('next'/'prev') steps; 'home'
+           goes back to the month. The new block pops in (comes into the
+           screen, pops out toward the viewer a little, settles exactly);
+           the day-scroll never scrolls — scrollTop stays 0. */
+        var dayBlock = 0;
+        function dayBlocks() {
+          var b = [];
+          document.querySelectorAll("#dayScroll > .smart-block").forEach(function (x) { b.push(x); });
+          document.querySelectorAll("#catsWrap > .cat.smart-block").forEach(function (x) { b.push(x); });
+          return b;
+        }
+        function dayShow(a) {
+          var blocks = dayBlocks(); if (!blocks.length) return;
+          if (a === "next") dayBlock = Math.min(dayBlock + 1, blocks.length - 1);
+          else if (a === "prev") dayBlock = Math.max(dayBlock - 1, 0);
+          else if (a === "home") { var bm = $("backToMonth"); if (bm) bm.click(); return; }
+          else if (typeof a === "number") dayBlock = a;
+          blocks.forEach(function (x, i) {
+            var on = i === dayBlock; x.classList.toggle("on", on);
+            if (on) { x.classList.remove("smart-pop"); void x.offsetWidth; x.classList.add("smart-pop"); }
+          });
+          var sc = $("dayScroll"); if (sc) sc.scrollTop = 0;
+        }
+        function dayNav(idx) {
+          /* The block's nav row: ‹ Back, then Keep reading ◆ (or Back to
+             month ◆ on the last block). Tones are the sections' own colours. */
+          var tones = { 2: "#a21caf", 3: "#8e24aa" };
+          var back = '<button type="button" class="pill sb-back" data-sb="prev">‹ Back</button>';
+          var next = idx < 4
+            ? '<button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:' + (tones[idx] || "#3fb8ff") + '">Keep reading ◆</button>'
+            : '<button type="button" class="pill sb-home" data-sb="home">Back to month ◆</button>';
+          return '<div class="sb-nav">' + back + next + '</div>';
         }
         function renderCategories(apptRows, tl) {
           var wrap = $("catsWrap");
@@ -2813,10 +3003,9 @@
              it is gone (the agreement's button hides itself the same
              way). A fresh day opens folded again (openDay resets) */
           wrap.innerHTML =
-            catSection(CATS[0], notifInner) +
-            catSection(CATS[1], dayInner, "appointments") +
-            catSection(CATS[2], recordInner, "record") +
-            unfoldControls();
+            catSection(CATS[0], notifInner + dayNav(2)) +
+            catSection(CATS[1], dayInner + dayNav(3), "appointments") +
+            catSection(CATS[2], recordInner + dayNav(4), "record");
           var tbb = $("tileBookBtn");
           if (tbb) tbb.addEventListener("click", function () {
             var door = doorById("appointments");
@@ -3099,24 +3288,21 @@
             var b = $("wxBtn"); if (b) b.click();
             return;
           }
-          var un = ev.target.closest("[data-unfold]");
-          if (un) {
-            var key = un.getAttribute("data-unfold");
-            unfolded[key] = true;
-            renderCategories(lastApptRows, lastTl);
-            renderNotifBar();
-            renderNotifDetail();
-            var sec = $("catsWrap").querySelector('[data-unfold-sec="' + key + '"]');
-            if (sec) {
-              sec.classList.add("reveal");
-              if (sec.scrollIntoView) sec.scrollIntoView();
-            }
-            return;
-          }
+          /* The [data-unfold] branch is gone: the Smart Flow's nav is handled
+             by the #dayScroll listener below (it catches the wisdom banner's
+             and the chamber's navs too — the cats' navs bubble up through
+             #catsWrap). */
           var btn = ev.target.closest("[data-door]");
           if (!btn) return;
           var door = DOORS.filter(function (d) { return d.id === btn.dataset.door; })[0];
           if (door) openDoor(door, btn.getAttribute("data-news-scope") || null);
+        });
+        /* SMART FLOW: the block nav (‹ Back / Keep reading ◆) — one listener
+           on #dayScroll catches every block's nav, including the wisdom
+           banner's and the chamber's. */
+        $("dayScroll").addEventListener("click", function (ev) {
+          var sb = ev.target.closest("[data-sb]");
+          if (sb) dayShow(sb.getAttribute("data-sb"));
         });
         /* The swipe — one gesture walks day to day at phone width, the
            way walking through doors feels. A horizontal swipe longer
@@ -3170,9 +3356,9 @@
         setInterval(renderNowPlaque, 1000);
         /* Amendment #3 — the plaque is the door into today */
         $("nowPlaque").addEventListener("click", function () { openDay(new Date()); });
-        $("backToMonth").addEventListener("click", function () { stopMeet(); renderMonth(); show("screen-month"); });
+        $("backToMonth").addEventListener("click", function () { stopMeet(); renderMonth(); document.documentElement.style.setProperty("--dc", DAY_COLORS[new Date().getDay()]); document.documentElement.setAttribute("data-day-theme", WEEKDAYS[new Date().getDay()].toLowerCase()); show("screen-month"); });
         $("brandHome").addEventListener("click", function () { openDay(new Date()); });
-        $("cornerN").addEventListener("click", function () { stopMeet(); renderMonth(); show("screen-month"); });
+        $("cornerN").addEventListener("click", function () { stopMeet(); renderMonth(); document.documentElement.style.setProperty("--dc", DAY_COLORS[new Date().getDay()]); document.documentElement.setAttribute("data-day-theme", WEEKDAYS[new Date().getDay()].toLowerCase()); show("screen-month"); });
         $("backToDay").addEventListener("click", function () { if (sel) openDay(sel); });
         document.addEventListener("keydown", function (ev) {
           /* Arrow keys walk day to day while the day screen is showing
