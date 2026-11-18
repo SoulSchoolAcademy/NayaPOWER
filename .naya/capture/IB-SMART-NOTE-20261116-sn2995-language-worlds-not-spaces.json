@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2995",
+ "intelligence": {
+  "title": "No Longer \"Spaces\" — It's WORLDS",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2995-language-worlds-not-spaces",
+  "smart_note_id": "SN-2995",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2995/IB-SMART-NOTE-20261116-sn2995-language-worlds-not-spaces.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The correction is about scale, and scale is the whole idea. A space is a room — one place, one purpose, walls around it. A world is the whole thing — the topic, the people, the conversation, the feed, the community, everything that belongs to it, inside one place that keeps growing. What Shawn is building is worlds within the world: NayaNET is the world, and inside it every topic, every town, every group gets its own world. Calling them spaces shrinks them to rooms and hides what they are; calling them worlds says what they are. The everyday word \"space\" is not banned — it stays as the place-word inside a world (\"your space in the world\") — but the thing itself, the product, the button, the feed, the name, is WORLDS. The 18:36Z call said \"space is right\" and was corrected seven minutes later by his own eye on the scale: wrong on the scale means the word was smaller than the thing. The rule for every seat from here on: the word is WORLDS — in the icon bar, in the picker, in the composer, in the docs, in every label a citizen reads. A correction that fast is the system working: decide, see it wrong, correct it, lock it — and the lock is this note, so no seat writes \"space\" for the thing again.",
+  "simple_view": "Imagine you have a little room with four walls — that's a space. Now imagine a whole WORLD — with towns and people and everything in it, and little worlds inside the big world! That's what we're building. So we don't call them rooms anymore. We call them WORLDS — because that's how big and wonderful they are!",
+  "grandma_view": "It's like this, love — a space is just one little room, dear. But a world — oh, a world is the whole thing, everything in it, all the people and all the talk and all the togetherness. So we call them worlds now, love, because that's what they truly are — whole little worlds, inside our big world.",
+  "naya_view": "No longer \"spaces\" — it's WORLDS, everywhere. Create world. A world for any topic, any location; you communicate in that world with those people on that topic; worlds within the world. Third default feed = Worlds. A space is a room, a world is the whole thing; \"space\" stays only as the everyday place-word inside a world.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2995",
+   "title": "No Longer \"Spaces\" — It's WORLDS",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2995/IB-SMART-NOTE-20261116-sn2995-language-worlds-not-spaces.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2995/IB-SMART-NOTE-20261116-sn2995-language-worlds-not-spaces.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8571f5258d8b36ed0dd94ca288a51a2d56e0c3d9"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

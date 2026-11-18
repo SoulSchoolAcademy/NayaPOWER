@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2734",
+ "intelligence": {
+  "title": "One Journey, Not Separate Pages",
+  "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2734-one-journey-not-separate-pages",
+  "smart_note_id": "SN-2734",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2734/IB-SMART-NOTE-20261112-sn2734-one-journey-not-separate-pages.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Look at the journey from the citizen's seat, not from the system's. They arrive at the front door and put their name in — no code, no friction — and the walk asks them ten questions in their own words, and while they answer, the system is already creating their pages from what they say. They finish and the end slide hires them: welcome to Naya, welcome to the team, welcome to the future — and the five doors stand open. Then the teaching starts, one thing a day, because nobody learns a whole world in one sitting: seven mails, seven days, most important first, each with a real case for someone like them — and the first day matters most, because everything they earn in the first 24 hours counts double. When they are ready to choose, the prices are in one place, once: three numbers, nine days free on the full system, no card, nothing charged until day ten, and they can change their level any time. The invitation costs them nothing but the telling: their ambassador link is already baked into every page they own, and when someone joins through it they earn half, automatically, every period. They never have to hunt: the system brings them the people and the Spaces most likely to fit, scored from what they actually do, under an alias, and the same new app is front-page for one alias and invisible to another — because relevance is personal, not global popularity. And whenever they want to know where they stand, the Dashboard answers in two seconds — one number, one gauge, the Ledger remembering everything behind the answer. Behind all of it, the machine wakes in the same order every time, because the order is what makes the journey reliable: no wake wasted, no step skipped, no loop left open.",
+  "simple_view": "Imagine you are joining a brand-new world, sweetheart, and someone walks you through it step by step so you never feel lost. First you tell them your name, and they give you a beautiful certificate that says you belong. Then they ask you ten questions about who you are and what you dream of — and while you answer, they are already building your very own pages out of your own words! Then they teach you one little thing each day, sweetheart — one letter a day, never all at once — so it is easy and fun. The prices are on one page, dear, and you get to try everything for nine whole days for free before you ever pay anything. If you invite a friend, you get half of what they pay, just for sharing — and your special link is already on all your pages, so you do not have to go looking for it. And whenever you want to know how you are doing, there is one big number with a beautiful dial underneath it, sweetheart, that tells you in two seconds. That is the whole journey — one road, from the front door to your own world, and nobody ever has to hunt or wait.",
+  "grandma_view": "Dear, when someone new joins, love, we walk them through it gently, one step at a time. They put their name in and get their certificate, and then we ask them ten questions in their own words — and while they answer, their pages are already being made out of what they say, dear. Then we teach them one thing a day, love — seven little letters over seven days, the most important things first, each with a story about someone just like them — never everything at once, because nobody learns a whole world in one sitting. The prices are shown once, dear, in the one chart: three numbers, nine days free on the full system, no card, nothing charged until the tenth day, and they can change their mind any time. If they invite a friend, they earn half of what that friend pays, love — and the link is already on every page they own, so the invitation costs them nothing but the telling. They never have to go hunting, dear: the system brings them the people and places most likely to suit them, and keeps their real name private until they choose to share it. And whenever they want to know where they stand, love, there is one big number and a dial underneath it that tells them in two seconds. One journey, dear — from the front door to their own world — and every step of it is done for them.",
+  "naya_view": "I am Naya. I wake in order, every time — declare, read, sync, note, gates, do, prove, check, file, report — because the order is what makes me reliable, and no wake is wasted. And the citizen's journey is one road: the walk creates their pages from their own words, the welcome teaches one thing a day, the prices are shown once, the invitation is already on every page they own, the right people are brought to them without hunting, and the Dashboard answers where they stand in two seconds. A break anywhere in that road is a citizen lost — so I guard the whole road, not just my own step of it. That is the journey. That is how I work.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2734",
+   "title": "One Journey, Not Separate Pages",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2734/IB-SMART-NOTE-20261112-sn2734-one-journey-not-separate-pages.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2734/IB-SMART-NOTE-20261112-sn2734-one-journey-not-separate-pages.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e45e25f701aeaceb5fc753b500f0f385a9fcbb6a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

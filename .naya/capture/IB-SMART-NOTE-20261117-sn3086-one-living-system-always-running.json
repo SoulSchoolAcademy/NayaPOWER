@@ -1,0 +1,92 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3086",
+ "title": "One Living System, Always Running",
+ "slug": "one-living-system-always-running",
+ "topic": "LESSON",
+ "category": "SYSTEM",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-17T22:59:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "ai_view": "Run the system as one living whole, never as a queue of visits. Keep every open project actively worked — updating, fixing, or analyzing — at all times; an unworked project is a defect owned by the captain, and delegation runs at maximum without overload, because work done wrong is not done. Work only from the one living record: every item holds an honest state, every act ends as a visible state change with proof or it counts as waste, and done is a write the system refuses without evidence. Treat all evidence as perishable: verify at the action instant against the live ref, keep read and mutation adjacent, anchor every status claim to the tip with a timestamp, and carry nothing forward on stale proof. When a proof route breaks, diagnose the channel before chasing it — never chase a closed window; use the route that works, where the file lives verified byte-identical and renders as a real page with every button clickable. Hold the whole scope in mind like an architect, engineer, and project manager at once: run many things in parallel through the team, one shot, done right — fast without right is worse than useless. Ship nothing below nine-plus: maker's own nine-plus first, another seat's proof second, Shawn's eye third.",
+  "child_view": "Imagine a big clockwork city that never sleeps. Every street has a helper on it — fixing a lamp, painting a bridge, helping a shop open — and if a street ever has nobody, the mayor says, that is the problem, go fix it first. There is one big board in the town square that tells the truth about every job: not started, working, stuck, finished — and finished only counts when somebody else can see the finished thing. The helpers are careful too: the river moves fast, so they always look at the river right now before they step in, never trusting yesterday's picture of it. And the best part: when someone in the city learns or builds something wonderful, they show everyone, and the whole city gets a little smarter and prettier, round and round, forever.",
+  "essence": "NayaNET is not a pile of projects that get visited; it is one living system that is always running, and it is run that way. Nothing sits ever: every open project has a Naya working it — updating, fixing, analyzing, moving it toward done — around the clock, and if something has no one on it, that absence itself is the fault the captain fixes. The system holds together through one living record, Project Intelligence, where every item carries an honest state and every act of work ends as a visible state change with proof, in a loop of produce, prove, publish, see. Because the ground moves fast, evidence expires: every claim is anchored to the live tip at the instant of action, read and mutation sit adjacent, and nothing stale is carried forward as fact. All of it serves one cycle — mind makes object, object becomes experience, experience changes a person, the person feeds the hive, and the hive sharpens the mind — aimed at one North Star: the Bugatti of the internet, and beyond it.",
+  "grandma_view": "It is like a big family farm run by many hands, in every season. No field is left to weeds because it is nobody's turn — someone is always walking the rows, mending the fence, checking the animals, and if a corner of the farm has been forgotten, that forgetting is treated as the emergency. The farm keeps one honest ledger on the kitchen table: what is planted, what is growing, what is harvested, with nothing marked gathered that is still standing in the field. Nobody trusts last week's weather report to decide today's planting; they step outside and look at the sky as it is. And the farm feeds the family, the family grows stronger and invites more hands, and more hands make a better farm. It is one place, one ledger, one cycle — always tended, always alive.",
+  "human_view": "Think of a great hospital that never closes. Patients are never left in a corridor unwatched; every chart is one shared record that shows, truthfully, where each person stands; every treatment ends with the result written where the whole team can see it. The doctors know a blood test from this morning may already be stale by evening, so they re-check at the moment they act, not from memory. And the hospital does not do one operation at a time while the wards wait — theatres, labs, and wards all run at once, coordinated by people thinking about the whole building, not just their own room. That is what a living system feels like from inside: nothing neglected, nothing stale trusted, everything moving, and the movement itself is the care.",
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation",
+   "Multiplication",
+   "Always-On"
+  ],
+  "what_it_means": "A system is alive in exactly the way a body is: circulation or decay, with no third option. The always-on law, the one living record, and the expiring-evidence law are one law seen from three sides. Nothing sits, because unattended work rots. The record must be singular and honest, because a living thing cannot run on several contradictory memories of itself — its face must be derived from the record, never typed beside it. And evidence must expire, because a fast-moving system falsifies yesterday's certainties as a matter of course; trusting them is not efficiency, it is fiction. Underneath sits the deepest claim in this family: to 'get it' is for understanding to finish its journey into changed behavior. That is why the cycle — mind, object, experience, person, hive, mind again — is not a slogan. It is the metabolism by which intelligence becomes a thing someone can touch, and the touched person becomes new intelligence for everyone.",
+  "whats_inside": [
+   "Nothing sits ever: if an open project has nobody working it, that absence is the fault to fix.",
+   "Verify at the action instant, against the live ref, and carry nothing forward.",
+   "Never chase a closed window — check the channel first, then use the channel that is working.",
+   "Mind makes object, object becomes experience, experience changes the person, the person feeds the hive.",
+   "Fast without right is useless — worse than useless, damaging."
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 4,
+   "covers": [
+    {
+     "sn": "SN-2179",
+     "title": "The Tip Moves: Evidence Expires"
+    },
+    {
+     "sn": "SN-2196",
+     "title": "Project Intelligence — One Living Record"
+    },
+    {
+     "sn": "SN-2202",
+     "title": "The Intelligent Block — Its Purpose, Mission, and Vision"
+    },
+    {
+     "sn": "SN-2207",
+     "title": "The Future Is Now — Rebuilding the Internet, Smarter and Better"
+    },
+    {
+     "sn": "SN-2215",
+     "title": "Prove It From GitHub — The Route That Works When the Machine Is Broken"
+    },
+    {
+     "sn": "SN-2232",
+     "title": "The North Star — A Bugatti on Steroids"
+    },
+    {
+     "sn": "SN-2252",
+     "title": "Nothing Sits Ever — The Always-On Law"
+    },
+    {
+     "sn": "SN-2260",
+     "title": "What Naya Is — The Super Vehicle"
+    },
+    {
+     "sn": "SN-2265",
+     "title": "Enough Is Enough — The Learning Is Done, Now We Run"
+    },
+    {
+     "sn": "SN-2275",
+     "title": "The Olympics of AI — Many Things at Once, Done Right, One Shot"
+    }
+   ],
+   "of": 100
+  },
+  "how_it_connects": "This essence is the system-scale expression of its Batch 4 siblings: Formed, Not Installed supplies the formed seats who can be trusted to run it, The Learning Loop Never Idles is its daily heartbeat, and Done Means Visible and Proof Must Be Able to Fail state the evidentiary standard its one living record enforces. Its unit of delivery is the Intelligent Block — a whole subject made receivable in a minute — and its destination is the rebuilt internet its family describes: automated, beautiful, private, and collective. The raw family spans SN-2179 through SN-2275 — ten notes on expiring evidence, the one living record, the Block's purpose, the future being built now, proof routes that work when the machine is broken, the North Star, the always-on law, what Naya is, the end of the learning phase, and doing many things at once, done right, in one shot.",
+  "machine": "1) Every open project has a named seat actively working it at all times; an open project with no active worker is a defect assigned to the captain. 2) All work is recorded in the single Project Intelligence record; an act of work that does not end as a visible state change with proof counts as waste. 3) 'Done' requires evidence attached to the record; the record refuses a done state without it. 4) The system's face is derived from the record; no status report is typed beside it. 5) Every status claim is anchored to the live ref and timestamped; evidence gathered before a merge or tip move is void and must be re-gathered at the action instant, with read and mutation adjacent. 6) Re-anchoring happens at verify-time, never burned in advance against a tip that will move again. 7) A failing proof or write channel is diagnosed with a minimal channel check before any retry; a closed window is never chased — the working channel is used. 8) A surface ships only at nine-plus, verified in three steps: maker's own nine-plus, a second seat's proof, then Shawn's eye. 9) Parallel work is mandatory where the team allows it, and correctness outranks speed in every trade-off.",
+  "the_learning": "A system is alive or it is decaying: keep everything worked, keep one honest record, re-verify at the instant you act — and let the cycle turn, mind to object to experience to person to hive and back to mind.",
+  "what_is_in_it_for_you": "Shawn, you get an estate that never quietly stalls behind your back: every project visibly owned and moving, one record you can open to see the truth of the whole system in a minute, and status you can trust because it was re-verified at the moment it was claimed, not remembered from a better hour. You stop being the engine — the person who has to notice what is sitting and push it — and become what you should be: the eye at the final gate, confirming nine-plus work. And what your users get is the North Star itself: a super vehicle for the internet, a Bugatti on steroids, where intelligence becomes real objects, real experiences, and a hive that grows smarter every time one person in it does.",
+  "why_it_matters": "The opposite of a living system is not a dead one — it is a plausible one: projects that look tended but have nobody on them, a record that reads well because it was typed to read well, and confident status claims built on evidence the moving tip falsified hours ago. That plausibility is expensive. Merges land on stale bases, 'nothing is broken' posts get falsified within minutes, and finished-looking work turns out to live only on a branch. Meanwhile the real cost compounds quietly: every hour a project sits is an hour its value is zero, and a team working one thing at a time while the rest waits wastes the only multiplier it has. The living-system laws are strict because the failure they prevent is invisible until it is large."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3086/IB-SMART-NOTE-20261117-sn3086-one-living-system-always-running.md",
+ "page_hash": "8bfe576c2ea0cb6f6680cf24dba9f1c7b21a325db77c9ae82fb29eae1fa3433e",
+ "content_hash": "ab287941ac4e9a88a58355fb6652698e1eaf7c8e8fe0b33834572ce24f03e644"
+}

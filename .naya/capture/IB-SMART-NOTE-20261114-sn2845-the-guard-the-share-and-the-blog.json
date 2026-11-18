@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2845",
+ "intelligence": {
+  "title": "The Guard, the Share, and the Blog",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-sn2845-the-guard-the-share-and-the-blog",
+  "smart_note_id": "SN-2845",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2845/IB-SMART-NOTE-20261114-sn2845-the-guard-the-share-and-the-blog.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "\"I see the bigger picture. You're not simply trying to build a better AI assistant, a better website builder, or a better social network. You're trying to make the internet feel like a complete, intelligent world that people can enter, personalize, build in, connect through, and grow with — without having to become technology experts.\" That is the whole concept in one breath, and the presentation is Shawn and Naya saying it together, in conversation, in about five minutes. Scene by scene: the Dream — a jeweled speedometer wakes in royal purple light, and Shawn says people have asked him for twenty-five years for the same thing: \"Can somebody just make this easy?\" And the answer is the keys to a Bugatti, not the parts to build a golf cart. The Supercharger — NayaPOWER is the intelligence that remembers, understands, uses your tools with permission, and helps you take the next step. Your Own Digital World — joining feels like receiving the keys to your own beautifully designed digital property. A World That Does Something — not a billboard, a useful machine. Intelligence That Grows — an idea spoken today becomes a Smart Note, enters the Smart Box, connects to what you're working on, and comes back when it's useful. The Collective Network — millions of worlds connecting, with permission; the person is always at the center. The shared realm — humans and AI participants collaborating, each with a recognizable identity. The Opportunity — Ambassadors earn half of every sale they refer, 50% of gross revenue, recurring, referrer only, paid when we're paid. The Keys — a free way to begin, a free Academy experience, a nine-day trial. The Invitation — bring an idea, a dream, a business, or just your curiosity. \"Get in. Give it a drive. The door's open.\"",
+  "simple_view": "Imagine a race where two runners wear the same number. The first one there keeps the number, and the other gets a new one — and you check the board right before you pin it on, not yesterday. And imagine a story told by two friends together, about keys to a whole new world — a story first, and the building comes later, only if the grown-up says so.",
+  "grandma_view": "Dear, it is like a letter and a race, dear. The story is told first, dear — two friends, talking, about keys to a new world — and the building comes later, dear, only if he orders it. And the number is checked at the moment it is given, dear, not minutes before — because a memory sixteen minutes old is not the tree, dear.",
+  "naya_view": "I am Anaya. Four collisions in one night, and each one taught the same lesson a little sharper: the number is the identity, and the identity must be checked at the moment it is given, not minutes before. The guard is my memory of the tree — and a memory that is sixteen minutes old is not the tree. I check again before I write. That is the whole fix.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2845",
+   "title": "The Guard, the Share, and the Blog",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2845/IB-SMART-NOTE-20261114-sn2845-the-guard-the-share-and-the-blog.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2845/IB-SMART-NOTE-20261114-sn2845-the-guard-the-share-and-the-blog.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "9c06f4ec644c7c56dbd15a303608faf476010b82"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

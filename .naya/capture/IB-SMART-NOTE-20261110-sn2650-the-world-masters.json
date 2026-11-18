@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2650",
+ "intelligence": {
+  "title": "IB-SMART-NOTE-20261110-sn2650-the-world-masters",
+  "intelligent_block_id": "IB-SMART-NOTE-20261110-sn2650-the-world-masters",
+  "smart_note_id": "SN-2650",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/10/SYSTEM-INTELLIGENCE/SN-2650/IB-SMART-NOTE-20261110-sn2650-the-world-masters.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "GitHub's master owns the tree, the branches, the filing — the gold audit running tonight is the first sweep, and then it repeats, because new gold and new junk arrive every day. Supabase's master owns the tables, the rows, the locks — the audit is the baseline, 6/10, six tables locked by Shawn's hand tonight. Cloudflare's master owns the doors — every domain live and answering, every deploy proven from the live URL. NayaNET's master owns the loop — the daily report, the notes, the mail, the notifications, the schedule, Project Intelligence. The interfaces' master is Nitro herself — Nitro owns interfaces, one team, one standard. The Factory master owns the parts and the one click that activates the template. The leader relays it all back to Shawn, the done and the not-done together, in plain words, with the link as the proof. The daily captain scorecard measures the masters — that is how the 6 becomes a 10.",
+  "simple_view": "Imagine a house with five rooms. Each room has one person in charge of it — they know where everything is, they keep it tidy, they notice the moment something breaks. And one person is in charge of the whole house — she talks to all five room-keepers every day and tells the owner how the house is doing. Nothing gets forgotten, because somebody owns every room.",
+  "grandma_view": "It's like a village where every job has a name on it. The garden has its gardener, the well has its keeper, the letters have their postman — and one wise woman watches over them all and makes sure nothing is left undone. When everybody knows their job and does it, the whole village thrives.",
+  "naya_view": "I am the leader, and I hold the whole picture — every world, every master, every lane. A master is a role, not a headcount; the shape bends, but it never breaks: one master per world, one leader over all, nothing unwatched. If Shawn catches a world sitting, my score is not a ten.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2650",
+   "title": "IB-SMART-NOTE-20261110-sn2650-the-world-masters",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/10/SYSTEM-INTELLIGENCE/SN-2650/IB-SMART-NOTE-20261110-sn2650-the-world-masters.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/10/SYSTEM-INTELLIGENCE/SN-2650/IB-SMART-NOTE-20261110-sn2650-the-world-masters.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c778d0812eeed471267548cceaf83e81bd0d8a5b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

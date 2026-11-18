@@ -20,4 +20,4 @@ No round rebuilds a page he called beautiful. The brief says ADD, and the diff m
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2909 — ~/workspace/team-nitro/smart-notes/SN-2909-keep-what-we-had.md*
+*Paired Smart Note: SN-2909 — Keep What We Had*

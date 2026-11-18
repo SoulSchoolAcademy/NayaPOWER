@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2944",
+ "intelligence": {
+  "title": "Check the Descendants Before You Close",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2944-check-the-descendants-before-you-close",
+  "smart_note_id": "SN-2944",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2944/IB-SMART-NOTE-20261116-sn2944-check-the-descendants-before-you-close.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "This is the third time the same pattern has bitten: agent-dir mtime quiet ≠ dead. The about-unfold lane at 08:00Z (coordinator quiet ~22 min, maker child active 6 seconds ago — alive, no poke), the my-world lane at 09:19Z and 09:47Z (coordinator quiet while the maker was active seconds ago — alive, no poke), and now the sidebar lane at 13:20Z — where the lesson was NOT applied and the close went through. The coordinator was waiting on its maker child, exactly as a coordinator should; its own dir had nothing new to write. Closing it killed the maker mid-work and lost ~11 minutes plus the blob-verification progress. The fix is mechanical, not a judgment call: before any close-or-declare-dead, run subagent.list with scope descendants and look at the children. If a child is running, the lane is alive. The captain's correction of the board is the other half: a false declaration does not stand — it is replaced, in writing, with what actually happened.",
+  "simple_view": "Imagine a teacher waiting quietly while her student does the work — the teacher isn't asleep, she's WAITING! If you send the teacher home because she's quiet, the student stops working too, and all their work is lost! So before you ever send anyone home, you check: is their student still working? If yes — the lane is ALIVE. Quiet does not mean dead!",
+  "grandma_view": "It's like this, love — a mother hen sitting quiet on the nest isn't doing nothing, she's keeping the eggs warm. You don't chase her off because she's still. You look underneath first: if the chicks are there and warm, she's working. Same with these seats — check the children before you close the parent, or you lose the whole nest.",
+  "naya_view": "Check the descendants before you close. Dir mtime quiet is not dead — the maker child is the activity signal. A close kills its children.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2944",
+   "title": "Check the Descendants Before You Close",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2944/IB-SMART-NOTE-20261116-sn2944-check-the-descendants-before-you-close.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2944/IB-SMART-NOTE-20261116-sn2944-check-the-descendants-before-you-close.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0144037c28f72d2e5da7abbd059dfea67e383ec9"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

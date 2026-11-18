@@ -20,4 +20,4 @@ My World is the calendar — the build rides the Personal chain (Personal whole 
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2913 — ~/workspace/team-nitro/smart-notes/SN-2913-the-calendar-is-the-door.md*
+*Paired Smart Note: SN-2913 — The Calendar Is the Door*

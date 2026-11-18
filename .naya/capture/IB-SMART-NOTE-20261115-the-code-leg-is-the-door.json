@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2880",
+ "intelligence": {
+  "title": "The Code Leg Is the Door",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-the-code-leg-is-the-door",
+  "smart_note_id": "SN-2880",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2880/IB-SMART-NOTE-20261115-the-code-leg-is-the-door.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "A membership is not a page. A membership is a door a member walks through — and the code is the key. Everything else in this build works: the dial opens, the paywall reads right, the lessons play. But the key never arrives, so the member stands outside a beautiful door. The score 8/10 is honest about the build and misleading about the membership: the two missing points are not two more build items, they are the one thing that makes the build usable. That is why the verdict is NOT WHOLE and why no fix round was dispatched in this lane — there is nothing left to build here. The work moved to the lane that owns the lock: the mail/RLS lane and its insert policy for `smart_mail_threads`. The lesson for the machine is about where a round belongs: a defect that lives in another lane's policy is not fixed by ordering another maker round on a finished build. It is fixed by naming the owning lane, queuing the item on its condition, and waiting — which is what happened: `membership-brief` sits queued until the policy lands, then the code leg gets re-proved live. The money-guard amendment is the same lesson at smaller scale: a guard that contradicts the build it guards is a broken guard, and the honest move is to amend it in writing (19 → 22, with the reason stated) rather than fail a build for doing what the brief required.",
+  "simple_view": "Imagine you build the most beautiful treehouse in the world — with a ladder, and windows, and a flag on top! But you forgot to build the DOOR. Your friends can see it, they can point at it, but nobody can climb inside! The treehouse isn't finished, even though everything you built is beautiful. You don't need a better treehouse — you need a door. And the door belongs to someone else's job!",
+  "grandma_view": "It's like this, love — you can bake the finest cake, ice it beautifully, put it in the prettiest box, but if the lid is nailed shut, nobody can eat it! The cake is wonderful and the box is the problem. You don't bake another cake. You find the person with the hammer, and you ask them to open the box. That's what happened here: the membership is baked and beautiful, and the little code that lets a person in is stuck — and the fix belongs to the mail side, not the bakers.",
+  "naya_view": "I never call a membership whole while its door is stopped. The build is the house; the code is the key — and I name the lane that owns the key.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2880",
+   "title": "The Code Leg Is the Door",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2880/IB-SMART-NOTE-20261115-the-code-leg-is-the-door.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2880/IB-SMART-NOTE-20261115-the-code-leg-is-the-door.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c98c168cd7435f259a9b9bca8f7c81162594999b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

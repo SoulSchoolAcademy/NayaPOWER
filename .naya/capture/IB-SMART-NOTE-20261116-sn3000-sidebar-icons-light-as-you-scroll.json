@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3000",
+ "intelligence": {
+  "title": "Sidebar Icons Light As You Scroll",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3000-sidebar-icons-light-as-you-scroll",
+  "smart_note_id": "SN-3000",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3000/IB-SMART-NOTE-20261116-sn3000-sidebar-icons-light-as-you-scroll.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A sidebar without icons is a list of words; a sidebar with icons that never light is a map that never says where you are. His instruction fixes both at once: every item gets its own icon — one icon per area, distinct, so the eye can find it without reading — and the icons are alive: as you scroll down through each area, its icon lights up in its own different color, so the sidebar always shows where you are on the page. \"Different colors\" matters — each area's light is its own color (the gematria colour law rides: the area's colour is the area's colour), so the lit icon is recognizable at a glance, not just \"the bright one.\" This rides with the five-go-back restoration (SN-3002 Restore What Was Good): the nine area icons leave the Hub's bottom bar — where they were never good — and go into the sidebars in logical order, each carrying its area's count. The bottom bar keeps the five; the sidebars carry the nine, and the nine light as you scroll. The instruction is also a correction to the new sidebars as built: they arrived without per-item icons that light, and his eye caught it on the live walk. The sidebar is not decoration — it is the way you know where you are.",
+  "simple_view": "Imagine you have a treasure map — and as you walk through the forest, the little tree picture on your map LIGHTS UP! And when you walk to the river, the little river picture lights up in blue! That's how you always know where you are! Every place on the map has its own picture, and the picture lights up in its own color when you're there!",
+  "grandma_view": "It's like this, love — imagine a lovely map of a big house, dear, with a little picture for every room. And as you walk from room to room, the picture of the room you're in lights up — the kitchen glows warm yellow, the garden glows green! You always know exactly where you are, love, just by glancing at the map. That's how the sidebar should work, dear.",
+  "naya_view": "Sidebar icons light as you scroll. Every sidebar item gets its own icon, and as you scroll down through each area its icon lights up in its own different color. The sidebar is the map of the page — the lit icon, in its area's own color, tells you where you are.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3000",
+   "title": "Sidebar Icons Light As You Scroll",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3000/IB-SMART-NOTE-20261116-sn3000-sidebar-icons-light-as-you-scroll.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3000/IB-SMART-NOTE-20261116-sn3000-sidebar-icons-light-as-you-scroll.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "37d3ab0b525f92df62937cb63c780af2c7d11b59"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

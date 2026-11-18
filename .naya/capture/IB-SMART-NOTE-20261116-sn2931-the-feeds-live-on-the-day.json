@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2931",
+ "intelligence": {
+  "title": "The Feeds Live on the Day",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2931-the-feeds-live-on-the-day",
+  "smart_note_id": "SN-2931",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2931/IB-SMART-NOTE-20261116-sn2931-the-feeds-live-on-the-day.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "This is a correction that re-draws the map. The 03:48Z filing had the news feeds in the world selections — wrong, and Shawn corrected it within nine minutes: the feeds live ON THE DAY. The citizen opens the calendar, clicks a day, and there is a spot where they choose which feeds show in that day — local, provincial, global, and every topic feed — each on a beautiful toggle, real, with depth. Whatever is on is what shows; the news feeds are NOT on by default. The defaults are Personal, Business, Thing — the three worlds — and smart notes and Naya Notes categorize INTO those, not beside them as separate feeds (though Smart Tabs can filter to any one of them). More than one thing, more than one space, a joined space, a project feed — no limit on how many, but 4 recommended, 8, 12 max, stacked like Lego blocks, folding up on mobile. And the topic feeds come from who you are: Taurus, born in the year of the dragon — boom, a feed on that, talk to other Tauruses, other dragons. Filter by where you're from, age groups, ethnicity, male/female, language — all set in Profile Settings, and if you don't set it, they can't find you; if you don't want to be found, don't set it. A topic feed carries Smart Notes, Naya Notes, posts, images, videos on that subject, and you talk to people on that same subject. And 04:01Z adds the last piece: the settings live on EVERY page — Business and Space set their demographics too, so the system finds people for the business and the space as well. Custom-tailored to you, features there just in case, valuable at different times — super smart organization and optimization of people, auto-connecting, all benefit.",
+  "simple_view": "Imagine your calendar is like a magic TV! You tap a day, and you get to pick which shows play — your news, your friends, people just like you! Each show has a beautiful little switch — on or off, you choose! And if you tell it you're a Taurus, boom — you get a whole show with other Tauruses! But only if you want to — if you don't tell it, nobody can find you. It's your choice!",
+  "grandma_view": "It's like this, love — your calendar holds everything for the day, and you choose what shows up. Little switches, nice and beautiful, one for each feed — the news from your town, your province, the world, and all the people like you. You set who you are in your settings — where you're from, how old, what language — and the system finds your kind of people. And if you don't set it, they can't find you, which is just as it should be. Your business and your space have their own settings too, so they find their people as well.",
+  "naya_view": "The feeds live on the day, not in the selections. Beautiful toggles, what's on shows. Defaults Personal, Business, Thing. Topic feeds from who you are — set it in Profile Settings, or you can't be found. Demographics on every page.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2931",
+   "title": "The Feeds Live on the Day",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2931/IB-SMART-NOTE-20261116-sn2931-the-feeds-live-on-the-day.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2931/IB-SMART-NOTE-20261116-sn2931-the-feeds-live-on-the-day.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "eb400b4bac988e41c43dc2272ada8b472f728146"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

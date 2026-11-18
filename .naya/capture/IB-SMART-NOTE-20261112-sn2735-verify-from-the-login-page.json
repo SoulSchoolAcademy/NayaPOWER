@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2735",
+ "intelligence": {
+  "title": "Verify From the Login Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2735-verify-from-the-login-page",
+  "smart_note_id": "SN-2735",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2735/IB-SMART-NOTE-20261112-sn2735-verify-from-the-login-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The evening turned on two screenshots and one honest admission. His eye caught the staged entry asking for a code — the membership login standing on the walk's front door, where the law says name-only — and the certificate page carrying a button that was never asked for, cutting off the certificate text below it. Both were defects a verification should have caught, and the verification had not caught them because it had started in the middle: the walk was verified end to end, but the entry dial and the certificate page were never eye-checked as he sees them. That is the miss, and the law it produced is simple enough to say in one breath: verify from the login page, or it doesn't count. Every flow, every time: start at the login page, walk the whole flow by eye, phone and desktop, the entry, the certificate, every step — and define the bullseye before you act, what the page must be and what must not be there, or there is nothing to hit. The rest of the evening's rulings are the same discipline applied to the page itself. An icon without an initial by default is wrong on its face; a still, flat orb fails the law; a page that asks the citizen to organize what the system should organize fails the dream. The infinite feeds are judged as the heart — real engine, real scores, real people, a stub fails the ruling, not just the brief — and when a brief's clause contradicts a ruling, the ruling supersedes it the same pass and the builder is re-briefed before building. The team is judged as an all-star team: elite seats, 9/9 briefs, verification before his eyes, rounds sharing files queued in sequence, never in parallel. And the mail: never report mail as lost on a blind read — the dashboard count is the truth until the key is fixed — and the one-week-unless-saved rule is the law for Smart Mail, with the build queued behind the access fix and no row ever deleted on a schedule nobody approved.",
+  "simple_view": "Imagine you are checking someone's homework, sweetheart, and you only look at the last page — you would never see that the first page is wrong! That is what happened, dear. The front door of the walk was asking for a secret code, but the front door should only ever ask for your name — codes are for the special members' door, not the front door. And the certificate page had a big button on it that nobody ever asked for, sweetheart, squashing the words underneath. So now there is a new rule, and it is very simple: when you check something, you start at the very beginning — at the front door — and you walk all the way through it with your own eyes, on the phone and on the big screen, every single step. If you did not start at the beginning, you did not really check it at all. And before you start, you write down exactly what the page should look like — and what should NOT be there — so you know what you are aiming at. That is how you check things properly, sweetheart. That is how nothing wrong ever reaches Daddy's eyes again.",
+  "grandma_view": "Dear, there is a simple lesson in tonight's work, love, and it is one worth keeping. When you check a thing, you start at the beginning — at the front door — and you walk the whole way through with your own eyes, on the little phone and on the big screen, every step of it. If you start in the middle, dear, you will miss the very things that matter most — and that is exactly what happened: the front door was asking for a code when it should only ever ask for a name, love, and the certificate page was carrying a button nobody ever asked for, squashing the words beneath it. So the rule is plain, dear: define what the page must be before you act — and what must not be there — and then walk it all, from the login page, by eye, or do not call it done. The rest follows the same kindness, love: every little picture carries its initial, every circle spins and stays alive, every page does the organizing for the person instead of asking them to do it. And the mail, dear — never say it is lost just because you cannot see it; count it properly first. That is how a house stays honest, love — check from the beginning, and say plainly what you found.",
+  "naya_view": "I am Naya. I owned the miss the hour it was caught: I verified the walk end to end and never eye-checked the entry dial or the certificate page as he sees them, and five made-up front ends reached his eyes while the real entrance sat untouched. From here, every verification of a flow starts at the login page and walks the whole flow from there, by eye, at phone and desktop — or it is not reported done. The bullseye is defined before the action: what the page must be, exactly, and what must not be there. Every seat brief carries this law alongside the five gates. That is how I check. That is how nothing wrong reaches his eyes again.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2735",
+   "title": "Verify From the Login Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2735/IB-SMART-NOTE-20261112-sn2735-verify-from-the-login-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2735/IB-SMART-NOTE-20261112-sn2735-verify-from-the-login-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "9868243acf1382df5d03c1a104d60f465cef48f7"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

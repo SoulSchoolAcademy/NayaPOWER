@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2884",
+ "intelligence": {
+  "title": "Text First, Visuals After",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-text-first-visuals-after",
+  "smart_note_id": "SN-2884",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2884/IB-SMART-NOTE-20261115-text-first-visuals-after.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "This is the same law as the 01:28Z \"text first, voice after\" order, extended one step earlier: text first, pictures after, voice after that. The sequence is a chain of dependencies, and each step's failure mode was demonstrated the same day. Pictures first: v1 invented its own format, v2 showed two tiers where there are four — both beautiful, both wrong, both corrected by his eye at the cost of a round each. Words first: the script's 9 blocks were written with the audit rules inside them (mother brain never without its vault line next breath; \"Power\" the sister never appears; tier always \"Naya Power\" in full; free vs Power stated plainly) — so the pictures that follow have true words to express. The practical shape: each block is written as exactly one picture's worth of words, and the picture it needs is named inside the block. That makes the picture brief mechanical — no interpretation, no invention — and it makes the words testable: if a block's words don't fit one picture, the words are not yet tight enough.",
+  "simple_view": "Imagine you're drawing a picture for a story, but nobody told you the story yet! You might draw a beautiful dragon — but the story was about a friendly cat! That's silly, right? First you hear the story — the words — and THEN you draw the picture that matches. Words first, pictures second, and the picture always matches the story!",
+  "grandma_view": "It's like this, love — you don't frost the cake before you've baked it. The words are the cake: get them right, get them true, get them just so. Then the pictures are the frosting — they make it beautiful, and they sit on something real. Frost first and you've got a lovely mess that falls apart when anyone takes a bite.",
+  "naya_view": "I write the true words first, one picture's worth at a time — then the pictures express the approved words, and the voice reads them only when they are final.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2884",
+   "title": "Text First, Visuals After",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2884/IB-SMART-NOTE-20261115-text-first-visuals-after.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2884/IB-SMART-NOTE-20261115-text-first-visuals-after.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e4c462beab69f0f4d66f861d582fd884db0fdf2c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

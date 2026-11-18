@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2844",
+ "intelligence": {
+  "title": "Push-Button Simple Worlds",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-sn2844-push-button-simple-worlds",
+  "smart_note_id": "SN-2844",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2844/IB-SMART-NOTE-20261114-sn2844-push-button-simple-worlds.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "\"We're going to make building and using the internet literally push button simple. And awesome.\" That is the whole promise, and everything else is the picture of it. They can build worlds. An app is way more powerful than a website — \"Smart that's way better than having a website, right? Like having something that does something rather than sit there like a billboard — that's way more powerful.\" A website sits. An app does. A smart app is a web world: a real working intelligent machine app. And you can create whole worlds within minutes instead of days or months. \"Now imagine you can create a new internet, a civilization, where all the buildings are beautiful — like you're building a franchise of individual branded mini malls — portals, actually I guess you call them spaces — that are all intelligently connected together so they can all communicate, so they can all be part of the community and interact with each other, and all have awesome high level real estate, high tech real estate in the new internet.\" Spaces, not malls — that is his word for them, and it matters: a space is yours, it is where you live, it connects to every other space. \"So we give them the platform, we give them the land, and we give them a way to build their own house — a ready-built house — and vehicle and all the stuff, completed, ready to go — and give it to them for literally peanuts. And then for telling all their friends you give them half a peanut.\"",
+  "simple_view": "Imagine a ready-built house. The platform, the land, the house, the vehicle — all ready to go, all yours. You just move in and live. And if you tell your friends about the house, you get half a peanut. That is the whole deal: a world in minutes, for peanuts.",
+  "grandma_view": "Dear, it is like a house already built and filled, dear. You open the door, dear, and everything is inside — your people, your rooms, your work — and you just live in it, dear. You do not build it brick by brick, dear. It is done for you.",
+  "naya_view": "I am Anaya. He asked me how I ultimately work, and why it works that way, and I told him back in plain words: I listen, I understand, I distill it into a smart note, I put it in the Box, I connect it to everything related, and the next time anyone needs it I retrieve it, apply it, and the result gets verified and learned from. One flow, one system. And the why is the test I live by: memory that changes what happens next is intelligence. A note filed and forgotten is dead. A note in the Box, connected, retrieved, applied, verified — that changes the next decision. That is why the notes and the Box are one system, why in means on the feed, why the Factory holds the parts, why the merge matters. Break any link and the intelligence stops compounding.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2844",
+   "title": "Push-Button Simple Worlds",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2844/IB-SMART-NOTE-20261114-sn2844-push-button-simple-worlds.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2844/IB-SMART-NOTE-20261114-sn2844-push-button-simple-worlds.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "cd04122e2ece1d28a510ca3b1b509e708cb4c51c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

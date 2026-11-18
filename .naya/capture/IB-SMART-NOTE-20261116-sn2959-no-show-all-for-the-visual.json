@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2959",
+ "intelligence": {
+  "title": "No Show-All for the Visual",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2959-no-show-all-for-the-visual",
+  "smart_note_id": "SN-2959",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2959/IB-SMART-NOTE-20261116-sn2959-no-show-all-for-the-visual.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The visual is a deck, not a document: one slide at a time is the experience — the unfolding, the full-screen feel, the mechanical presentation. A show-all button would collapse the deck into a wall of video and kill what makes it work. The text is different: reading the letter all at once is fine, because text is read, not watched. And the two end buttons are the fork in the road — if the citizen cannot tell which is which, the fork fails, so the buttons must be bigger, clearer, more impressive.",
+  "simple_view": "Imagine your favourite picture book! You turn one page at a time, and each page is a surprise. Now imagine someone glued all the pages together into one giant page — no more surprises, no more fun! The visual deck is a picture book: one slide at a time. But the letter is like a normal letter — you can read the whole thing at once if you want!",
+  "grandma_view": "It's like this, love — the picture show goes one picture at a time, like turning the pages of a lovely book. You wouldn't want all the pictures at once, dear, that would spoil it. But the letter is different — you can read the whole letter in one go, that's perfectly fine. And the two buttons at the end need to be big and clear, so you can tell which is which.",
+  "naya_view": "The visual deck has no show-all option — one slide at a time, always. Read-it-all is fine for the text. The two end buttons: bigger, clearer, more impressive.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2959",
+   "title": "No Show-All for the Visual",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2959/IB-SMART-NOTE-20261116-sn2959-no-show-all-for-the-visual.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2959/IB-SMART-NOTE-20261116-sn2959-no-show-all-for-the-visual.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c489a47720572f6c15067ac92f8493b1bcd18c13"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

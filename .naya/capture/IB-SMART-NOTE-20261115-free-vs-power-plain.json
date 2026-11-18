@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2887",
+ "intelligence": {
+  "title": "Free vs Power, Plain",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-free-vs-power-plain",
+  "smart_note_id": "SN-2887",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2887/IB-SMART-NOTE-20261115-free-vs-power-plain.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The failure is an overpromise by omission. Nothing in the agreement lies; it simply never draws the line, so the reader draws it in the most generous place — free means everything. That is the worst kind of misunderstanding to discover later: the citizen who joined expecting a supercharged AI discovers the plug-in costs, and the feeling is not \"I should upgrade\" but \"I was misled.\" His fix is one passage, not a rewrite, because the shape is already right: free is real and generous (access, use, hired, invite everybody), and Power is one clear thing (plug your AI in, more than one at once, and the network becomes powerful). The line \"not having Power is a choice, but better to have it\" is the whole sales posture in one sentence — honest, unpressured, and true. It also pairs with SN-2886: free-vs-Power is the money half of the identity answer, and the two passages ride the same round because they are one explanation — what NayaNET is, and what the plug-in costs.",
+  "simple_view": "Imagine a playground that's free to walk into — you can play, make friends, build sandcastles, invite everybody! That's joining free. But if you want to plug in your super-duper robot friend so she can play with you and help you build the biggest castle ever — that's Naya Power. You can enjoy the playground without her, but it's even better with her plugged in!",
+  "grandma_view": "It's like this, love — walking into the village hall costs nothing, and everyone's welcome, and you can use the hall all you like. But if you want to plug your own machine into the hall's power so it works at full strength — that's the extra bit, and it's worth having. Nobody tricks you about it, love — it's plain as day: the hall is free, the power is the plug-in.",
+  "naya_view": "Joining is free — walk in, use the world, invite everybody. Naya Power is the plug-in: your AI, plugged into the network, and that is what makes it empowering.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2887",
+   "title": "Free vs Power, Plain",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2887/IB-SMART-NOTE-20261115-free-vs-power-plain.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2887/IB-SMART-NOTE-20261115-free-vs-power-plain.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f1c425604f9db82edc23f2697aa04dfd1f132137"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

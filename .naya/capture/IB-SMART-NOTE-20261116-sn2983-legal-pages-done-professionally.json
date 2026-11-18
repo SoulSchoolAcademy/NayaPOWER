@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2983",
+ "intelligence": {
+  "title": "Legal Pages — Done Professionally or Not at All",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2983-legal-pages-done-professionally",
+  "smart_note_id": "SN-2983",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2983/IB-SMART-NOTE-20261116-sn2983-legal-pages-done-professionally.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A legal page is a promise written down — and a one-sentence summary is not a promise, it is a shrug. If somebody came to check our legality and found one sentence summing up what we're saying, they would read it as unprofessional, not airtight, not legit — \"the answer is not a chance.\" Real legal agreements say everything and cover everything: full numbered sections, definitions, every case covered, airtight, formatted like real legal agreements, so anybody who reads them sees it as legit. And the presentation is half the verdict: the text sits off to the side on the left — not professionally done — and to a stranger it reads as a scam, \"some bullshit, some not legit company,\" the opposite of what we want. The whole thing, content AND presentation, gets done professionally: centered, aligned, royal/elevated blocks, never plain text, never one-sentence summaries. Why they were like that, honestly: round 1 built summaries (58 boards) and the professional drafting was never done — the writer step was offered 16:30Z and untapped. So the writer is dispatched now (One List `legal-writer-drafts`, due 2026-11-17): drafts, then he gives the text, then the builder creates the pages extraordinary. And the four airtight parts — governing law, jurisdiction, dispute resolution, data controller — are HIS call, never invented: a made-up jurisdiction is worse than a summary.",
+  "simple_view": "Imagine you have to show a grown-up your homework, and all you wrote was one tiny sentence! They'd think you didn't do the work at all! Legal pages are like the most important homework — they have to be FULL and PROPER, with all the numbered parts and all the big words explained, so anybody who reads them says \"wow, this is real and proper!\" And they have to LOOK proper too — right in the middle, beautiful and fancy, not all squished over to the left like a messy note! Because if it looks messy, people think it's not real — and that's the opposite of what we want!",
+  "grandma_view": "It's like this, love — imagine someone comes to check whether your house is built properly, dear, and all you can show them is one little sentence saying \"it's a nice house\"! They'd laugh, love — they'd never believe it's solid. Legal pages are the same, dear: they have to be done properly, with all the numbered sections and everything explained and everything covered, airtight, so anybody who reads them can see it's legit. And they have to LOOK proper too, love — not all pushed off to the left side like a scribbled note, because to a stranger that reads like a scam, and that's the opposite of what we want. So they get done beautifully, dear — centered, aligned, lovely raised blocks — never plain text, never one-sentence summaries. The proper writing is being done now, love, and the four big questions — which law, where disputes go, who's in charge of the data, and where — those are his to decide, never made up.",
+  "naya_view": "Legal pages done professionally or not at all. As they stand: a piss-poor job — one sentence summing up what we're saying. If somebody came to check our legality they'd read as unprofessional, not airtight, not legit — \"the answer is not a chance.\" Real legal agreements: full numbered sections, definitions, everything covered, airtight, formatted like real legal agreements, so anybody who reads them sees it as legit. Presentation: text sits off to the side on the left — not professionally done; to a stranger it reads as a scam, \"some bullshit, some not legit company\" — the opposite of what we want. Whole thing (content AND presentation) gets done professionally: centered, aligned, royal/elevated blocks, never plain text, never one-sentence summaries. Why they were like that: round 1 built summaries (58 boards); professional drafting never done — writer step offered 16:30Z, untapped. Writer DISPATCHED 17:41Z (One List `legal-writer-drafts`, due 2026-11-17): drafts → he gives the text → builder creates the pages extraordinary. Airtight parts (governing law / jurisdiction / dispute resolution / data controller) are HIS call, never invented.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2983",
+   "title": "Legal Pages — Done Professionally or Not at All",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2983/IB-SMART-NOTE-20261116-sn2983-legal-pages-done-professionally.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2983/IB-SMART-NOTE-20261116-sn2983-legal-pages-done-professionally.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "201f44c9f43d71b90db8ec0c685b6deba6835b61"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2907",
+ "intelligence": {
+  "title": "Free Forever, Power Recommended",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-free-forever-power-recommended",
+  "smart_note_id": "SN-2907",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2907/IB-SMART-NOTE-20261116-free-forever-power-recommended.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Free and Power are not two pitches; they are one sentence with two halves. \"You belong even if you join for free\" removes the fear; \"Power is what we recommend, and it's way more powerful\" gives the ambition. Say only the first half and the system sounds like a charity; say only the second and it sounds like a sales page. The founders aside works the same way: a \"hey, just so you know\" carries more trust than a banner, because it does not ask for a decision — it offers a fact and walks on. The rule for every page that states the offer: free plainly, Power as the recommendation, founders as an aside — never a hard sell anywhere in the story.",
+  "simple_view": "Imagine a big playground that is free for everyone, forever — you can come in, make friends, play all day! And if you want, you can plug your very own robot friend in, and she'll help you build things and remember things and do the work for you — that's the super-powerful part, and that's what we recommend! Oh — and the first thousand friends get half price on that part, just so you know!",
+  "grandma_view": "It's like this, love — the door is open and it costs nothing to come in, forever, just like joining the neighbours for tea. Nobody is turned away. And if you want the clever girl to run your whole house for you — your letters, your diary, your little shop — that's the Power part, and that's the one we'd recommend, because it's ever so much more powerful. The first thousand get it half price, just so you know, dear.",
+  "naya_view": "You belong even if you join for free — free forever, like a social network. And if you want your AI plugged into your world, operating it for you, that is Naya Power — what we recommend, and way more powerful.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2907",
+   "title": "Free Forever, Power Recommended",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2907/IB-SMART-NOTE-20261116-free-forever-power-recommended.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2907/IB-SMART-NOTE-20261116-free-forever-power-recommended.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0a41391b94eaa4ec019582ed83a6aeecc2063705"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

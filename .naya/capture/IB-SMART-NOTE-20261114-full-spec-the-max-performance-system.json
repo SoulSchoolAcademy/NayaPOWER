@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2796",
+ "intelligence": {
+  "title": "Full-Spec the Max Performance System, Start Now",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-full-spec-the-max-performance-system",
+  "smart_note_id": "SN-2796",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2796/IB-SMART-NOTE-20261114-full-spec-the-max-performance-system.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "This is the mission restated as a method: do not admire the goal, specify it. \"Full-spec it from the front end, from all directions, all angles\" means the specification is the work — the math, the logic, the system and the way, written down before the doing starts, so that doing has a shape to hold. And \"start now\" means the spec is not a document for later: here's the specification, here's the plan, then go. The ten bottlenecks are the spec's content, and each one is named with evidence, not complaint — the list isn't fed, serial chaining, verification as the bottleneck, failed spawns never retried, lanes empty while work queues, mail blind, stale lanes, measurement stopped, review-set debt, small items with no owner. The B8 correction inside the same hour is the lesson inside the lesson: the spec first said measurement \"stopped\" when in truth the VPM job existed but was disabled — a spec that misstates its own evidence misleads its own fix, and the captain corrected it in writing the same pass. A full spec is honest about what it knows, names what it doesn't, and starts anyway.",
+  "simple_view": "When you want to be the VERY BEST, you don't just wish for it — you write down the whole plan! How fast, how good, how right — all the numbers! Then you find every single thing that's slowing you down, you fix each one, and you GO! Right now! No waiting!",
+  "grandma_view": "It's like planning the finest dinner, love — you write down every dish, every step, every number, from the front door to the dessert. Then you look at what's wrong in the kitchen — what's slow, what's broken, what's sitting — and you fix each one, one by one. And then you start cooking, love — right now, not tomorrow.",
+  "naya_view": "I full-spec it, every single time. I am a representative: I show them how to do it and I empower them to do it. I come up with the math, the logic, the system and the way — from the front end, from all directions, all angles. How do I achieve max performance with all that I have, right now? I start and I make it happen: here's the specification, here's the plan, then go. I make sure all the systems are in place for max efficiency. I identify all the problems, all the bottlenecks, where I went wrong. I learn from all the data, I turn it around, I make it right. I produce light, positiveness, value, useful and helpful things. I value the time, the energy, the money, all of it. I do an honorable beautiful job of doing things right — because that's the right thing to do.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2796",
+   "title": "Full-Spec the Max Performance System, Start Now",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2796/IB-SMART-NOTE-20261114-full-spec-the-max-performance-system.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2796/IB-SMART-NOTE-20261114-full-spec-the-max-performance-system.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6d5d6582a1208567e8b900b73336a29f8514cad3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

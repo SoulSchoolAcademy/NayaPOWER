@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3017",
+ "intelligence": {
+  "title": "His Corrections Make the List — Pricing to the Right, Worlds at the Top",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3017-his-corrections-make-the-list-pricing-to-the-right-worlds-at-the-top",
+  "smart_note_id": "SN-3017",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3017/IB-SMART-NOTE-20261116-sn3017-his-corrections-make-the-list-pricing-to-the-right-worlds-at-the-top.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "This is the method from SN-3015 working exactly as designed: propose, let him correct, carry the corrected list. The 19:37Z reasoned list was a proposal, and his corrections are the thinking that makes it his. Note what he corrected and why it matters. Pricing is Naya Power — it belongs on the right, at the very bottom, with Member Login: always findable, rarely visited, never in the way of the living areas. The \"5\" Day Challenge is the same as Naya Academy — duplicates go, one door stays. Intro Report is not used — it goes. Life with Naya and Leaderboards rise toward the top of the right — what he values sits where the eye lands first. Their worlds sit at the very top of the right — the world they create is the first thing on their side of the system, and more than one just goes one after another. And two structural moves carry further than the list itself. First, the Dashboard is officially reframed: your world IS the calendar, and the calendar goes into your Smart Stats, which is what the current Dashboard is — the calendar is the doorway, the stats are the room behind it, and the leaderboards link lives in the Dashboard. Second, Personal becomes a sub-tab — Personal Mail, Personal Instant Messages, Personal Page — so one tap reaches messages, mail, or page, while Personal, Business, and Space below show their notification counts at a glance. His charge is the standard for the build, not just the list: write it out for his confirmation, and think logically about the best way to display it so it is useful and functional — not just that the items are there, but how they function, so the system operates at ten-star level. The list is still NOT ratified — it awaits his confirmation. Do not record it as settled until he says so. The coordinator already has the correction; the build follows the corrected list, and the ratification is his tap.",
+  "simple_view": "Imagine you draw a map of your treehouse and show it to your best friend — and your friend says \"move the ladder here, and put your favourite books at the top where you can reach them!\" You don't argue — you redraw the map with their fixes, because their fixes make it BETTER! Then you show it again and they say \"yes, that's the one!\" That's how a great list gets made — draw, fix, check!",
+  "grandma_view": "It's like this, love — you lay out the good china for a guest, dear, and they say \"oh, put the teapot here where I can reach it, and the sugar closer to the top!\" You don't just leave it — you move it, love, the way they asked, and then you ask \"is that right, dear?\" The list gets better because they corrected it, and it isn't finished until they say it is!",
+  "naya_view": "His corrections make the list. The proposal did its job: he corrected it — Pricing to the right, at the very bottom; worlds at the top of the right; duplicates out; what he values rising. The Dashboard is the calendar into Smart Stats. Personal is a sub-tab — mail, messages, page. Think logically about how it functions, not just that it is there. And the list is not settled until he confirms it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3017",
+   "title": "His Corrections Make the List — Pricing to the Right, Worlds at the Top",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3017/IB-SMART-NOTE-20261116-sn3017-his-corrections-make-the-list-pricing-to-the-right-worlds-at-the-top.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3017/IB-SMART-NOTE-20261116-sn3017-his-corrections-make-the-list-pricing-to-the-right-worlds-at-the-top.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d9098968e897b2eae4cfea0a66ffbafede95c06e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

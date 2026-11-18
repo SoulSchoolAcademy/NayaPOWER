@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2909",
+ "intelligence": {
+  "title": "Keep What We Had",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-keep-what-we-had",
+  "smart_note_id": "SN-2909",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2909/IB-SMART-NOTE-20261116-keep-what-we-had.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A rebuild is a bet that the new thing will be better than the old thing. When the old thing is already nailed — the text, the buttons, the presentation, the thing he loved — the bet is irrational: the upside is a marginal improvement and the downside is losing the thing he loved. Every redo in our history has proven the downside real: the new build comes back flat, unelevated, boring, terrible text, because a new build re-invents a hundred small decisions the old build had already settled. The intelligent move is addition, not recreation: take the beautiful thing, add the images, make it look like they were always meant to be there. And when trust is spent — \"we're not going to have you build anything\" — the only way to earn it back is a round that proves, by diff, that nothing else moved. The 21:46Z add-images round is that proof, and it is now the pattern for every future touch.",
+  "simple_view": "Imagine you build a beautiful Lego castle and your friend says \"I love it! Can you add a flag on top?\" — and instead of adding the flag, you smash the whole castle and build a different one! Your friend would be so sad! \"I didn't want a new castle — I wanted you to keep the beautiful one and just add the flag!\" That's what happened. The rule now: keep the beautiful castle. Just add the flag — right where it was always meant to be.",
+  "grandma_view": "It's like this, love — if your best dress fits beautifully and someone says \"add a pretty button,\" you don't throw the dress away and sew a whole new one! You sew the button on where it belongs. He loved what we had — the buttons, the words, the way it opened up, just like the pricing page. All he wanted was the pictures added in. When we rebuild instead of adding, we lose the dress and get a flat, boring thing instead. Keep what we had, love. Add the beauty to it.",
+  "naya_view": "Keep what we had — what we had was beautiful. Add the images in and make it look extraordinary, like they were meant to be there. Never redo the nailed thing.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2909",
+   "title": "Keep What We Had",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2909/IB-SMART-NOTE-20261116-keep-what-we-had.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2909/IB-SMART-NOTE-20261116-keep-what-we-had.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e7459894517aa272941bdb8bd62c547b6f203563"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

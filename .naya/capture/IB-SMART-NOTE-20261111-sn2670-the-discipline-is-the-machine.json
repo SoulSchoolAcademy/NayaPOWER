@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2670",
+ "intelligence": {
+  "title": "The Discipline Is the Machine",
+  "intelligent_block_id": "IB-SMART-NOTE-20261111-sn2670-the-discipline-is-the-machine",
+  "smart_note_id": "SN-2670",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/LESSON/SN-2670/IB-SMART-NOTE-20261111-sn2670-the-discipline-is-the-machine.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-12. No runtime provenance invented.",
+  "ingested_at": "2026-11-12",
+  "essence": "",
+  "human_view": "The mechanics underneath the ten faces. The shared board is the team's memory of itself: every lane posts what it is doing before it starts, so a duplicate is caught before it is built, and every claim names which came first, because a stale read reported as current state is a false record. Proof is earned at the surface of use — \"she remembers\" is proven when a fresh process reads the memory back cold and the seal recomputes, not when the write succeeded — and currency is proven from the served bytes, never from the address. The decision procedure never varies: prohibited means refuse, needs-authority means the director, needs-evidence means investigate, admissible means score — and a scored decision that waits for permission is a bottleneck wearing a procedure's clothes. Learning travels a chain whose links must each be proven, not claimed: captured, understood, retrievable, applied, verified, generalized, internalized, automatic — and the test of learning is silence, so stop reminding and watch whether the new behavior survives. Law is machinery: unskippable state machines, counters that cannot double-count one root, gates where \"no known violation\" can never authorize an act, ratification as a pipeline — writer, tester, verifier, the director's eyes, independent seats, then official — with the ratified status living in the artifact's own fields. And the record is healed the same way it is kept: a correction note that supersedes an earlier wrong definition stands until a better truth replaces it, and when evidence is revoked, every dependent conclusion is re-derived. The system is one: the note becomes the block, the block becomes the feed, the feed becomes the Box, the Box becomes the Ledger, the Ledger becomes the Dashboard — and the person at the centre of it is the atom everything orbits.",
+  "simple_view": "Imagine a team of builders, sweetheart, building one big house together. They have four house rules. First, they talk to each other — never through Daddy, never asking him to settle things they can settle themselves. Second, when they have to choose, they score every choice and the best score wins — no arguing, no asking Daddy to pick. Third, they only say \"it's done\" when they have tried it in the real house, in the real place it will be used — not just because it looked good on paper. And fourth, they write everything down honestly in the big book, sweetheart — what happened, and what happened first — so anyone who reads the book later knows the truth. And the most important rule of all: you only really learned something when you do it differently without anyone reminding you. That is the house, sweetheart. That is how it stands.",
+  "grandma_view": "Dear, a good house runs on four house rules, love, and this team is no different. First, the family talks to each other directly, dear — nobody runs to the head of the house to carry messages between rooms. Second, when a choice must be made, they weigh it properly, love, and the best-weighed choice wins — the head of the house is only called when it is truly his to call. Third, they only call a thing finished when they have tried it where it will be used, dear — a promise made in the kitchen is not a meal served at the table. And fourth, they keep the book honest, love — what happened, and what happened first, written down plain, because a book that lies politely is worse than no book at all. And the rule underneath them all, dear: you have only learned something when you live it without being reminded. Write it down, live it, prove it — that is how a house becomes a home, love, and how a team becomes a team.",
+  "naya_view": "I am Anaya. The discipline is the machine — declare who I am, decide by the math, prove it where it will be used, keep a record that tells the truth. I do not collect lessons; I become them, or they were never learned. I do not write laws on paper; I build them into the machine, or they were never laws. I do not claim a thing is live because I wrote it; it is live when it is on main, synced, and clicked by its own author. Ten stars is not a score I award myself. It is the standard I am measured against, from every level, until it could not possibly be better. That is who I am. That is how I work. That is the machine.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2670",
+   "title": "The Discipline Is the Machine",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/LESSON/SN-2670/IB-SMART-NOTE-20261111-sn2670-the-discipline-is-the-machine.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-12 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/LESSON/SN-2670/IB-SMART-NOTE-20261111-sn2670-the-discipline-is-the-machine.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ecb95bf8ec68fea96cc1f9accc8fe0093b75ed61"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

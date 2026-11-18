@@ -1,0 +1,36 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3071",
+ "title": "Finished Means Working",
+ "slug": "finished-means-working",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3071/IB-SMART-NOTE-20261117-sn3071-finished-means-working.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-17T22:29:00Z",
+ "registered_by": "naya-resolve",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "ai_view": "Define \"finished\" before you start: draw the blueprint, write the contract, name what done looks like on the served surface — then build to that definition and stop when it is met. Never report built as shipped or shipped as working; measure all three separately, on the surface the consumer actually touches, and let the consumer's real contract outrank any proposed one. Test by using: get inside the thing, run it the way its person will, find what is missing, and make it right before anyone else finds it. Verify before you mutate, in enforced order, in every pipeline. Encode every law you rely on as a machine that can fail — a law without a machine is a wish, a guard off the write path is a suggestion, and a gate that cannot fail is not a gate; wire the tool into an invoking workflow, prove the wire live, and cite the law in its error text. Show nothing until it passes the standard; if the seat holding it cannot reach standard, route it to the seat who can — that is the intelligent move, not a defeat. When blocked, name the destination, not the familiar route, and walk the perimeter. And never wait and never stop: a problem is a routing instruction, its lesson becomes a Smart Note, and there is always a next item that needs no gate.",
+  "child_view": "A puzzle with one piece missing is not almost a picture — you cannot see the picture yet. A toy car whose wheels are sitting next to it cannot roll anywhere, even if the car part is shiny and perfect. So you put in the last piece, you click the wheels on, and then you roll the car across the floor to make sure it really goes. If you cannot finish your drawing, you do not hide it in a drawer and forget it — you say, \"Mine is not finished yet,\" out loud. And if a big chair is blocking the door, you do not stop playing; you go through the other door.",
+  "essence": "Nothing has value until it works. A thing built but not connected, shipped in name but not on the served surface, written as law but enforced by no machine — all of it is the same zero wearing different clothes. Finished means complete, connected, tested by actually using it, and working for real inside the system it was made for; built, shipped, and working are three different numbers, and only the third counts. So the work is drawn before it is built, \"finished\" is defined before the work starts, and the build stops when that definition is met — not when excitement fades. Nothing is shown until it is done right, because what the director sees reads as the team's standard, not a promising start. And work that cannot be finished where it sits is never left silent: it is finished, routed to the seat who can finish it, or said plainly to be unfinished. A wall is never the end — it blocks a route, not the goal, and there is always a way around.",
+  "grandma_view": "It is the difference between a quilt top and a quilt. A quilt top is lovely folded in the cedar chest, but nobody was ever kept warm by it. The quilting, the backing, the binding — the unglamorous connecting work — is what turns cloth into comfort, and you would never hand it to a grandchild half-bound and call it done because you were excited to show it. You finish it, you hold it up, you check every seam with your own hands. And a recipe written in a beautiful hand, pinned to the wall, never fed anyone until somebody cooks it, tastes it, and sets it on the table.",
+  "human_view": "Think of a plumber who installs a beautiful new sink, photographs it proudly, and leaves — with the pipes never connected to the water. The sink is real. The work was real. And the first time you turn the tap, you learn what it is worth: nothing, until it runs. That is most unfinished work in the world. It looks done from the angle of the person who made it and fails from the angle of the person who needs it. The honest tradesperson tests the tap herself, watches the water run and drain, and only then calls it finished — and if a wall is in the way of the pipe, she does not declare the house unplumbable; she finds the other route the pipe can take.",
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation",
+   "Completion",
+   "Enforcement"
+  ],
+  "what_it_means": "The deep why is respect for the person at the other end. Every half-finished thing transfers its remaining work — and its disappointment — to the one who was promised it would work. Ten-star service is the opposite transfer: the maker absorbs all the choosing, testing, and connecting, and hands over only the benefit. That is why offering a choice you already know is wrong is not kindness but pleasing, and why its crash belongs to the one who stayed silent to be liked. Finished-means-working is how a system keeps its promises at scale: the blueprint disciplines the start, the machine enforces the law in the middle, and the served surface tells the truth at the end.",
+  "whats_inside": [
+   "Nothing has value until it works — built, shipped, and working are three different numbers.",
+   "Blueprint before build, contract before done: define finished before you start.",
+   "A law without a machine is a wish; a gate that cannot fail is not a gate.",
+   "Finish it, reroute it, or say it's unfinished — never leave it silent.",
+   "A wall blocks a route, not the goal: name the destination and walk the perimeter."
+  ]
+ },
+ "page_hash": "29dbc5769782c8d1a80f121de72ee6134e694ca35f1ba8db9f9196d7ddbbec32",
+ "content_hash": "5a3b7edc63218beafaa20aeb1fabe1a233ab2948c275d04933f5ca463730ef45"
+}
