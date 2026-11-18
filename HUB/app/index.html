@@ -85,7 +85,6 @@ window.addEventListener('appinstalled', function () {
   --ink-dim:   #F5F7FB;  /* (primary text, dimmed contexts — use --muted below it) */
   --muted:     #FFFFFF;  /* BLACK DIAMOND 2026-11-16: no gray text — secondary text is white too. */
   --muted-2:   #FFFFFF;
-  --faint:     #c9c3ce;
   --line:      #ffffff18;
   --line-soft: #ffffff0d;
 
@@ -296,94 +295,6 @@ a { color: inherit; }
 }
 
 
-/* ——— Bottom ecosystem bar: quick access to all destinations ——— */
-.eco-bottombar {
-  position: fixed;
-  bottom: 0;
-  left: 0; right: 0;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 20px;
-  background: linear-gradient(180deg, transparent, rgba(5,5,8,.92) 30%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255,255,255,.08);
-  /* Elevation (2026-11-06): the dock lifts over the notifications bar below
-     it, so the two read as one stacked unit with depth — the upper bar casts
-     its shadow down onto the lower bar. */
-  box-shadow: 0 10px 24px rgba(0,0,0,.55);
-  flex-wrap: wrap;
-}
-.eco-bb-btn {
-  display: flex; flex-direction: column; align-items: center; gap: 5px;
-  background: none; border: none; box-shadow: none;
-  color: #fff; cursor: pointer; text-decoration: none;
-  padding: 0; flex: 0 0 auto;
-}
-.eco-bb-ico {
-  width: 46px; height: 46px; flex: 0 0 46px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.3);
-  background: #050607;
-  display: grid; place-items: center;
-  transition: all .22s cubic-bezier(.16,.84,.22,1);
-  box-shadow:
-    0 0 14px rgba(255,255,255,.1),
-    0 4px 10px rgba(0,0,0,.4),
-    0 8px 18px rgba(0,0,0,.55);
-  position: relative; z-index: 0;
-}
-.eco-bb-ico svg {
-/* BLACK DIAMOND: clone layer behind the eco dock icon. */
-.eco-bb-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1px solid rgba(255,255,255,.25);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
-  width: 20px; height: 20px;
-  transition: transform .22s;
-  filter: drop-shadow(0 0 3px rgba(255,255,255,.4));
-}
-.eco-bb-btn:hover .eco-bb-ico {
-  transform: translateY(-3px) scale(1.08);
-  border-color: var(--eco);
-  box-shadow:
-    0 0 24px color-mix(in srgb, var(--eco) 55%, transparent),
-    0 6px 16px rgba(0,0,0,.5),
-    0 10px 22px rgba(0,0,0,.55);
-}
-.eco-bb-btn:hover .eco-bb-ico svg {
-  color: var(--eco);
-  filter: drop-shadow(0 0 6px var(--eco));
-}
-.eco-bb-btn::after {
-  content: attr(data-label);
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%; transform: translateX(-50%) translateY(4px);
-  white-space: nowrap;
-  font-size: 10px; font-weight: 800; letter-spacing: .1em;
-  color: #fff;
-  background: rgba(10,10,14,.95);
-  border: 1px solid color-mix(in srgb, var(--eco) 50%, transparent);
-  padding: 6px 10px; border-radius: 8px;
-  opacity: 0; pointer-events: none;
-  transition: opacity .2s, transform .2s;
-}
-.eco-bb-btn:hover::after {
-  opacity: 1; transform: translateX(-50%) translateY(0);
-}
-/* Mobile: labelled dock — buttons are columns now (icon + label), so the
-   old icon-only 44px force no longer applies. Button takes its natural
-   height; label caps to its column and wraps between words, never mid-word;
-   page bottom gets room for the 3-row dock + notif bar. */
-@media (max-width: 640px) {
-  body .main { padding-bottom: 160px; }
-  .eco-bottombar { gap: 8px; padding: 12px 12px; }
-  .eco-bb-btn { width: auto; height: auto; flex: 0 0 auto; }
-  .eco-bb-ico { width: 44px; height: 44px; flex: 0 0 44px; }
-  .eco-bb-ico svg { width: 18px; height: 18px; }
-  .eco-bb-btn .notif-lbl { max-width: 72px; font-size: 10px; letter-spacing: .08em; line-height: 1.25; text-align: center; }
-}
    /* Harvested VERBATIM from the Hub nav file's .notif-bar
    (~/workspace/team-nitro/hub-navigation-20261112/hub-navigation-fixed.html,
    "Notifications bar (Shawn 2026-10-20)"): Mail blue · Activity green ·
@@ -395,6 +306,7 @@ a { color: inherit; }
    (2) The Hub-only rules are NOT carried over: the eco-bottombar rider
    (no such element here), the .toast-stack/.main padding, and the
    .corner-plus block. */
+/* SWEEP-3 F9: the row centres on the viewport by design — recorded, not moved. */
 .notif-bar {
   position: fixed; left: 0; right: 0; bottom: var(--smartbar-h, 0px); z-index: 45;
   display: flex; justify-content: center;
@@ -417,6 +329,7 @@ a { color: inherit; }
   -webkit-tap-highlight-color: transparent;
 }
 .notif-seg:active { transform: scale(.94); }
+/* SWEEP-3 F8: no gloss layer in the bytes — flat board black plus rim plus glow. Whether the rim-light IS the gloss is Shawn's eye call; do not invent a swoosh. */
 .notif-tile {
   position: relative; z-index: 0; width: 54px; height: 54px; border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
@@ -437,7 +350,9 @@ a { color: inherit; }
 
 }
 .notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 3px 3px rgba(0,0,0,.95)) drop-shadow(0 0 2px rgba(255,255,255,.9)) drop-shadow(0 0 7px rgba(255,255,255,.55)); position: relative; transition: transform .22s, filter .22s; }
+/* SWEEP-3 F3 / D2: labels are Shawn's call — this hook is kept for a future labels round and is never emitted today. Do not delete it, and do not build labels on a guess. */
 .notif-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; color: #fff; }
+/* SWEEP-3 F6 (C5 ruling, recorded): the count digits are digits, not text — Laws section 2.3 keeps display numerals on their harvested scale, so the bubble is not resized. The menu labels below are tile furniture under the same open C5 question; neither is resized on a guess. */
 .notif-count { position: absolute; top: -8px; right: -10px; min-width: 24px; height: 24px; padding: 0 6px;
   display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
   font-size: 12px; font-weight: 900; color: #06060a; background: var(--nc);
@@ -456,10 +371,12 @@ a { color: inherit; }
    18:58Z): the five's 54px tiles + 34px gaps measure 594px at desktop (fits
    every desktop width) but overflow below 640px. Tiles drop to 46px below
    640px (Personal's own 400px tile size), so the row measures 378px at
-   401-640px and 344px at <=400px — six tiles on ONE line at 390 (344 <= 390),
-   nothing cut off, nothing wrapped. Measured, not guessed. */
+   401-640px and 312px at <=400px — six tiles on ONE line at 390 (312 <= 390)
+   and at 320 (312 <= 320), nothing cut off, nothing wrapped. SWEEP-3 F4:
+   gap 8px -> 4px and row side padding 14px -> 8px below 400px. Measured,
+   not guessed. */
 @media (max-width:640px){ .notif-row{gap:10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 2px 0;} }
-@media (max-width:400px){ .notif-row{gap:8px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 0 0;} }
+@media (max-width:400px){ .notif-row{gap:4px;padding:12px 8px 10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 0 0;} }
 /* THE LINE (Personal correction, harvested): the page-wide button shadow's
    inset top line is restated away on the seg itself. */
 .notif-seg{box-shadow: inset 0 -2px 8px rgba(0,0,0,.25), 0 6px 20px rgba(0,0,0,.4)!important;}
@@ -468,6 +385,7 @@ a { color: inherit; }
    (blob 3328238b): fixed, centered on its anchor, own-color hover. */
 .fc-plusmenu{position:fixed;z-index:1700;transform:translateX(-50%);background:#050607;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:8px;min-width:220px;box-shadow:inset 0 -8px 16px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.65),0 0 24px -6px rgba(142,36,170,.45);}
 .fc-plusmenu[hidden]{display:none;}
+/* SWEEP-3 F6: menu labels stay on their harvested scale — tile furniture under the open C5 question (see the count-bubble note above). Not resized on a guess. */
 .fc-plusitem{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;background:#050607;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 3px 8px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:all .18s ease;}
 .fc-plusitem:hover{background:#050607;border-color:var(--mc,#8e24aa);box-shadow:0 0 18px -4px var(--mc,#8e24aa),0 6px 16px rgba(0,0,0,.5),0 10px 22px rgba(0,0,0,.55);transform:translateY(-2px);}
 .fc-plusitem:hover .fc-pi-ico{border-color:var(--mc,#8e24aa);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--mc,#8e24aa) 70%,transparent),0 6px 14px rgba(0,0,0,.5);}
@@ -475,17 +393,6 @@ a { color: inherit; }
 .fc-plusitem .fc-pi-ico svg{width:19px;height:19px;filter:drop-shadow(0 0 3px rgba(255,255,255,.5));}
 /* BLACK DIAMOND: clone layer behind every + menu icon chip. */
 .fc-plusitem .fc-pi-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--mc, #8e24aa) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
-/* The eco dock rides above the notifications bar — but ONLY when the bar is
-   actually in the DOM (body.has-notif is set by NayaNotif.init). Without the
-   bar, the dock sits at bottom: 0 (its base rule) and can never float over a
-   gap. (Shawn 2026-10-21: dock hovered mid-feed when the bar was absent.)
-   DOUBLE-BAR STACK CURE (2026-11-06): the offset is the bar's MEASURED
-   height (--notif-h, set by NayaNotif.syncStack) minus a 2px overlap, so the
-   dock sits flush on the bar with no gap and no hairline. The old hardcoded
-   94px assumed a 98px bar (with labels); the bar ships label-less at 79px,
-   so the dock floated 15px above it and the feed showed through the gap. */
-/* SHELL BARS 2026-11-13: fallback follows the five height (76px — the five row: 54px tile + 12px + 10px padding); syncStack measures the live row — the fallback is pre-init only. */
-body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(safe-area-inset-bottom, 0px)); }
 .toast-stack { bottom: calc(102px + env(safe-area-inset-bottom, 0px)); }
 .main { padding-bottom: 150px; }
 @media (max-width: 640px) {
@@ -2968,7 +2875,6 @@ button, .btn, .tab, .eco-btn, .activity-card {
 /* ASK STACK CURE (2026-10-22): jewel 71 + notif 98 + dock, composed */
 body:has(.naya-ask-room) .notif-bar{bottom:calc(71px + var(--smartbar-h, 0px) + env(safe-area-inset-bottom,0px))}
 body:has(.naya-ask-room) #nsbBottom{bottom:calc(71px + env(safe-area-inset-bottom,0px))}
-body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + var(--notif-h, 76px) - 2px + env(safe-area-inset-bottom,0px))}
 @media (max-width:760px){
   body:has(.naya-ask-room) .side-topics.side-right{bottom:calc(312px + env(safe-area-inset-bottom,0px))}
   body:has(.naya-ask-room) .side-topics.side-left{bottom:calc(382px + env(safe-area-inset-bottom,0px))}
@@ -2978,13 +2884,11 @@ body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + var(--notif-h, 76px) 
 <style>
 /* ASK READING CURE (2026-10-22 round 4): the shell's bottom bars yield to her answer */
 body:has(.naya-ask-room) .notif-bar{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
-body:has(.naya-ask-room) .eco-bottombar{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
 body:has(.naya-ask-room) #nsbBottom{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
 body.ask-reading:has(.naya-ask-room) .notif-bar{transform:translateY(calc(100% + 90px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
-body.ask-reading:has(.naya-ask-room) .eco-bottombar{transform:translateY(calc(100% + 200px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
 body.ask-reading:has(.naya-ask-room) #nsbBottom{transform:translateY(calc(100% + 200px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
 @media (prefers-reduced-motion: reduce){
-  body:has(.naya-ask-room) .notif-bar,body:has(.naya-ask-room) .eco-bottombar,body:has(.naya-ask-room) #nsbBottom{transition:none}
+  body:has(.naya-ask-room) .notif-bar,body:has(.naya-ask-room) #nsbBottom{transition:none}
 }
 </style>
 </head>
@@ -2992,6 +2896,13 @@ body.ask-reading:has(.naya-ask-room) #nsbBottom{transform:translateY(calc(100% +
 
 
 <div id="app" aria-live="polite"></div>
+<!-- SWEEP-3 F10 — STATIC FALLBACK FOR THE BOTTOM BAR (2026-11-17): the six
+     tiles, static, in the same order and colors NayaNotif builds. If the
+     bar script below never runs, this bar is still here and every tile
+     still navigates (plain links to the same destinations tap() uses).
+     When the script runs, NayaNotif.init() removes this node and builds
+     the live bar (counts, menus, fold) in its place — no visual change. -->
+<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></a></div></nav>
 <noscript>
   <div style="min-height:100vh;display:grid;place-items:center;text-align:center;padding:40px;
               background:#050507;color:#f8f7fb;font-family:Inter,system-ui,sans-serif">
@@ -6230,7 +6141,9 @@ function HubView(params) {
   main.append(top, lensSlot, outlet);
 
   /* ONE-BOTTOM-BAR (2026-11-11): the 12-icon eco-bottombar builder lived here.
-     Replaced by the one bottom bar component (static HTML before </body>).
+     Replaced by the one bottom bar component. SWEEP-3 F10 (2026-11-17): the
+     static fallback nav now sits right after #app (before the scripts, so
+     init() below can replace it at boot); the dead eco-dock CSS is gone (F7).
      The notifications bar below it is untouched — the component stacks above it. */
 
   /* ——— THE FIVE bottom bar: NayaNotif (HUB SIDEBARS+PLUS 2026-11-16) ———
@@ -6303,19 +6216,25 @@ window.NayaNotif = window.NayaNotif || {
     },
     init() {
       var bar = document.getElementById('naya-notif-bar');
-      if (bar) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
+      if (bar && !bar.hasAttribute('data-static')) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
+      if (bar) bar.remove(); /* SWEEP-3 F10: the static fallback (after #app) is replaced by the live bar — same six tiles, same colors; counts, menus and fold come with it. */
       var self = this;
       var ICONS = {
         mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
         activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
-        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>',
+        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg>',
         eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
         plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
       };
-      /* SIXTH seg: plusR (CONNECT) reuses the plus SVG — the two + buttons are
-     distinguished by position and menu (different jobs, never mixed up).
+      /* SIXTH seg: plusR (CONNECT) reuses the plus SVG — REVERTED 2026-11-17
+     19:31Z (captain's ruling, his word governs): CONNECT IS "+" — red plus,
+     on every page. The colour is the differentiator; the chain-link glyph
+     from sweep-3 F1 is not merged and is gone. One-icon law: the Hub bar
+     matches the Personal bar again. F2 stands: spaces (WORLDS) is a globe
+     now — the same globe geometry the Create-world menu item already
+     carries — never the house again (a house means HOME).
      FIX-4 (Deep Palette, DNA §1): rims run the spectrum, one color each —
-     left + royal purple, mail sapphire, activity emerald, home deep gold,
+     left + royal purple, mail sapphire, activity emerald, worlds deep gold,
      grid burnt orange, right + ruby. Never the same twice in a row. */
   var SEGS = [['plus', 'ADD', '#8e24aa'], ['mail', 'MAIL', '#0f52ba'], ['activity', 'ACTIVITY', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plusR', 'CONNECT', '#c62828']];
       bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
@@ -11507,7 +11426,6 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 .rail-toggle::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 120s linear infinite;}
 .eco-plus::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 90s linear infinite;}
 .rooms-plus::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 150s linear infinite;}
-.eco-bb-ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--eco,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--eco,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 60s linear infinite;}
 .fc-plusitem .fc-pi-ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--mc,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--mc,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 180s linear infinite;}
 .nav-btn .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--nav,var(--purple)) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 96s linear infinite;}
 .nav-sub .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--nav,var(--purple)) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 72s linear infinite;}
@@ -12349,18 +12267,19 @@ window.NayaSmartBar = {
 <!-- HUB SIDEBARS+PLUS 2026-11-16 (item 4): the two + menus. LEFT + = CREATE
      (what you make), RIGHT + = CONNECT (who you reach) — different jobs,
      never the same menu. Chrome harvested from the Personal correction's
-     .fc-plusmenu (blob 3328238b); items in brief order, most-used first. -->
+     .fc-plusmenu (blob 3328238b); items in brief order, most-used first.
+     SWEEP-3 F5: Home lives in CREATE only; one purple per menu, every item
+     a deep spectrum color. -->
 <div id="hubPlusCreate" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Create">
 <div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal" style="--mc:#e8e8ec"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-composer="smart-note" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-composer="smart-note" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
 </div>
 <div id="hubPlusConnect" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Connect">
-<div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="message" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span data-mw-tr="pm">Message</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="mail" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg></span><span data-mw-tr="pm">Mail</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="world" data-hub-href="https://nayanet.app/rooms/spaces" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span><span data-mw-tr="pm">Create world</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="world" data-hub-href="https://nayanet.app/rooms/spaces" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span><span data-mw-tr="pm">Create world</span></div>
 </div>
 </body>
 </html>
