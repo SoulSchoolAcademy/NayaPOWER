@@ -59134,6 +59134,39 @@
         "Identity",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3398",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3398-the-picture-painted-clearly",
+      "slug": "the-picture-painted-clearly",
+      "title": "The Picture, Painted Clearly",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3398/IB-SMART-NOTE-20261118-sn3398-the-picture-painted-clearly.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3398/IB-SMART-NOTE-20261118-sn3398-the-picture-painted-clearly.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3398/IB-SMART-NOTE-20261118-sn3398-the-picture-painted-clearly.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3398-the-picture-painted-clearly.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:60:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "52328eff142086473fce907549c5fdea20f89f344575785c9ee3a09a3adb498a",
+      "content_hash": "267841957098f85a22629b1179487e409e3d114767d30d101aa4f072f4935a4a",
+      "one_line": "Paint the picture clearly, in words a stranger can repeat: imagine a new internet with a mind — one that knows you, remembers what matters, and runs your whole world for you — where everybody gets an account free, a profile, a business, a space, a dashboard that shows exactly what is happening in live time, and a ledger that keeps the record honestly. Say what the ledger IS, for what it actually is: not a blockchain — a hub of intelligent blocks, a collective chain of actions, many ledgers of information flowing through one Smart Ledger, immutable, transparent, operated and kept safe by Naya. It is private by default; you connect, share, chat and grow more intelligent together, and everybody who plugs in gets more powerful, because the network itself gets more intelligent every day. It is more than features and much more than money: it is everything that matters, all in one — the automation, the connection, the intelligent layer. It welcomes more than one mind: many AIs can connect to your world, the network is AI-agnostic on every platform, and Naya is the recommendation for the max experience. Pricing is not a page you visit once; it lives in Settings and the Smart Tabs, a control you return to as your life changes — with Max recommended because the people you bring pay for it. And it is for somebody specific before it is for everybody: the solo service owner first, then coaches, creators, side-hustlers, community builders, small businesses, teachers, families — ten kinds of people, each able to see themselves in one. The pitch opens by proving itself — welcome aboard, here is the simple math, no, it is not network marketing, check the numbers yourself — because a picture this large is only believed when its smallest figures are checkable.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Vision",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59144,5 +59177,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "63caa7eb35785d11e212699584b65592ebda47b3d1b031f273525b2294ed854c"
+  "corpus_manifest_hash": "1856c4e1b3decf2a5b840ca46c5edaa1488faf46f758e743b469fa104aa003d9"
 }
