@@ -1,0 +1,92 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3432",
+ "title": "Proof Lives on the Page",
+ "slug": "proof-lives-on-the-page",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-18T20:33:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "The proof discipline, catching its own failure modes one by one. Synced is not live: a zero sync was timing, not failure — and the deeper defect was a state file that records the upsert, not the outcome, so the machine's memory of what it did was wrong about what happened. A headline count was wrong — 10 live of 28 checked — and the correction was delivered loudly: 18 real, 0 shell, 18 missing, the missing named one by one. A stall's cause was named as file ownership, offered to Shawn, then tested, disproven, and withdrawn in the same pass. The captain admitted he had not looked at the live Dashboard with his own eyes that session — a report is not the page. And over all of it: DNA is enforced, not remembered — the numbering law became a tool that queries the live tree, because the law as a line of text had already failed twice in one night.",
+  "human_view": "A pilot doesn't fly by the flight plan; she flies by the instruments and the window. The plan said the weather would be clear — that's a claim. The window shows the cloud — that's the fact. And when the gauge and the window disagree, she believes the window and gets the gauge fixed. Every note in this family is somebody learning to look out the window.",
+  "child_view": "If your friend says 'I put your book in your bag,' that's what they SAY. Checking means opening the bag and looking. Sometimes they did and you find it right away. Sometimes the bag was zipped before the book went in. Looking is never rude — looking is how you know.",
+  "grandma_view": "In the shop we never trusted the delivery note — we counted the boxes. The note was usually right! But the one time in fifty it wasn't, counting was the difference between knowing on Tuesday and finding out on Saturday. Count the boxes. It takes a minute and it ends arguments.",
+  "ai_view": "Never report a store-word as a surface verdict. Reproduce counts by full enumeration before correcting or confirming them. Re-run the numbering guard at file time. Withdraw disproven causes in the same pass, in the same venue. Attach the looked-at evidence — screenshot, hash, byte count — to every page claim.",
+  "what_it_means": "Each note here is an instrument being repaired while it runs. The family's unity is epistemic: claims are graded by their distance from the live bytes, and every shortcut — state words, summaries, remembered law, untested causes — is shown failing at least once and replaced by a mechanism: wait out the lag, read the bytes, re-run the guard at file time, look at the page yourself. Even a superseded law is handled this way: one gauge became two, on evidence, the earlier ruling named as superseded rather than quietly dropped.",
+  "whats_inside": [
+   "DNA Is Enforced, Not Remembered",
+   "Measure the Real Thing",
+   "Prove It From the Live Bytes",
+   "Synced Is Not Live",
+   "Order Is the Design"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "System",
+   "Lesson",
+   "Craft"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 9,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2608",
+     "title": "DNA Is Enforced, Not Remembered"
+    },
+    {
+     "sn": "SN-2609",
+     "title": "Measure the Real Thing"
+    },
+    {
+     "sn": "SN-2610",
+     "title": "Prove It From the Live Bytes"
+    },
+    {
+     "sn": "SN-2611",
+     "title": "Synced Is Not Live"
+    },
+    {
+     "sn": "SN-2612",
+     "title": "Order Is the Design"
+    },
+    {
+     "sn": "SN-2613",
+     "title": "The Headliner Leads the Page"
+    },
+    {
+     "sn": "SN-2614",
+     "title": "Naya Runs the Show"
+    },
+    {
+     "sn": "SN-2615",
+     "title": "The Vault Is a Thin Layer, Not a New System"
+    },
+    {
+     "sn": "SN-2616",
+     "title": "His Eye Judges the Viewpoint, Not the Measurement"
+    },
+    {
+     "sn": "SN-2617",
+     "title": "Look at the Page Yourself — A Report Is Not the Page"
+    }
+   ]
+  },
+  "machine": "1) Verdicts come from live bytes at the surface, after the lag window has passed; state words are claims about stores. 2) A wrong number is corrected loudly, to whoever heard the wrong one, immediately. 3) Test the cause before naming it; a disproven cause is withdrawn in the same pass it was offered. 4) Any law that matters becomes a mechanism — a tool, a gate, a checklist — because remembered law drifts. 5) Whoever reports on a page has looked at the page this session; a summary is never the evidence.",
+  "why_it_matters": "This team moves at a speed where yesterday's true statement is today's false one. The only defense is procedural: proof habits that survive tiredness, concurrency, and confidence. This essence is those habits, distilled from the night they each failed once and were mechanized.",
+  "how_it_connects": "This essence is batch 9's E3 panel; its raw family spans SN-2608 to SN-2617 (DNA Is Enforced, Not Remembered → Look at the Page Yourself — A Report Is Not the Page), and it sits in the standing sequence of seventy essences that came before it — each one checked against the census coverage map for zero overlap before it was written.",
+  "what_is_in_it_for_you": "For you, Shawn, this means this stratum of the record no longer has to be re-read note by note: its law is stated once, whole, in words a cold reader can use — and the hundred raw notes beneath it are accounted for, by number, in the Distills line.",
+  "the_learning": "The page is the proof and the report is a claim about the page — and a cause you haven't tested is a guess wearing a uniform."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3432/IB-SMART-NOTE-20261118-sn3432-proof-lives-on-the-page.md",
+ "page_hash": "4cd19f948c7584485a7f33b0e11cd16decdb72b34b718150ebc2ab635b6bbf1e",
+ "content_hash": "5f40d9aaaea42e6fe1ce069f9192fb04329afeb4c166e03a55c01a3e06596072"
+}

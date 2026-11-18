@@ -59602,6 +59602,39 @@
         "Lesson",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3432",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3432-proof-lives-on-the-page",
+      "slug": "proof-lives-on-the-page",
+      "title": "Proof Lives on the Page",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3432/IB-SMART-NOTE-20261118-sn3432-proof-lives-on-the-page.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3432/IB-SMART-NOTE-20261118-sn3432-proof-lives-on-the-page.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3432/IB-SMART-NOTE-20261118-sn3432-proof-lives-on-the-page.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3432-proof-lives-on-the-page.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:33:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "4cd19f948c7584485a7f33b0e11cd16decdb72b34b718150ebc2ab635b6bbf1e",
+      "content_hash": "5f40d9aaaea42e6fe1ce069f9192fb04329afeb4c166e03a55c01a3e06596072",
+      "one_line": "The proof discipline, catching its own failure modes one by one. Synced is not live: a zero sync was timing, not failure — and the deeper defect was a state file that records the upsert, not the outcome, so the machine's memory of what it did was wrong about what happened. A headline count was wrong — 10 live of 28 checked — and the correction was delivered loudly: 18 real, 0 shell, 18 missing, the missing named one by one. A stall's cause was named as file ownership, offered to Shawn, then tested, disproven, and withdrawn in the same pass. The captain admitted he had not looked at the live Dashboard with his own eyes that session — a report is not the page. And over all of it: DNA is enforced, not remembered — the numbering law became a tool that queries the live tree, because the law as a line of text had already failed twice in one night.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "System",
+        "Lesson",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59612,5 +59645,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "0aa1722f5f156cfd922c93480c6a82c7b81299b30e26d18889ff9f9f1b438e00"
+  "corpus_manifest_hash": "870ffaeac6e1e8f3c2f382dac61010c2b6eabf88f39060295757f1c1071dfc0e"
 }
