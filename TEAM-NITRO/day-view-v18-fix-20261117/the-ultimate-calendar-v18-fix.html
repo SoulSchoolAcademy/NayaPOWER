@@ -2054,15 +2054,33 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    (c) At <=1024px the pill goes in-flow on its own row above the headline
    (flex column daybar) so the words show at every width with no overlap. */
 .royal-frame::after{inset:0!important}
-.royal-frame .rf-c.tl{top:calc(-var(--bw,96px)/2 - var(--em)/2)!important;left:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
-.royal-frame .rf-c.tr{top:calc(-var(--bw,96px)/2 - var(--em)/2)!important;right:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
-.royal-frame .rf-c.bl{bottom:calc(-var(--bw,96px)/2 - var(--em)/2)!important;left:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
-.royal-frame .rf-c.br{bottom:calc(-var(--bw,96px)/2 - var(--em)/2)!important;right:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
-.royal-frame .rf-seal.top{top:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
-.royal-frame .rf-seal.bottom{bottom:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
 .daybar>.backbtn.eye .btw{letter-spacing:.06em!important}
 @media(min-width:1025px){.official-headliner{margin:0 260px!important}}
 @media(max-width:1024px){.daybar{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;padding:16px 18px!important}.daybar>.backbtn{position:static!important}.dayhead{width:100%!important}}
+
+/* ============ V6.2 — CALC GOTCHA FIX (maker's own eye, staged v6.1 build) ============
+   v6.1's corner/seal offsets NEVER APPLIED: all six emblems fell to their
+   static position (measured centre 128,128 at 1920 — the padding-box origin)
+   instead of the ring (48,48). Root cause, proven by the bytes: the offset
+   was written calc(-var(--bw,96px)/2 - var(--em)/2). In CSS tokenization a
+   leading "-var(" is NOT "minus + var()" — it is a FUNCTION token named
+   "-var" (identifiers may start with a hyphen), an unknown function, so the
+   calc is invalid at computed-value time; the !important invalid declaration
+   still wins the cascade and then resolves to the property's initial value
+   (top:auto). The valid V6 calc underneath it lost. The seals proved it:
+   their left:calc(50% - var(--em)/2) (no leading minus) DID apply (x=960).
+   Fix: literal offsets, no calc at all — they cannot fail to parse.
+   Arithmetic (emblem centred ON the ring): -(bw/2 + em/2); em = max(28,
+   bw*.66): desktop bw 96 em 63.36 -> -79.68 ~ -80px; tablet bw 64 em 42.24
+   -> -53.12 ~ -53px; phone bw 32 em 28 -> -30px. */
+.royal-frame .rf-c.tl{top:-80px!important;left:-80px!important}
+.royal-frame .rf-c.tr{top:-80px!important;right:-80px!important}
+.royal-frame .rf-c.bl{bottom:-80px!important;left:-80px!important}
+.royal-frame .rf-c.br{bottom:-80px!important;right:-80px!important}
+.royal-frame .rf-seal.top{top:-80px!important}
+.royal-frame .rf-seal.bottom{bottom:-80px!important}
+@media(max-width:1024px){.royal-frame .rf-c.tl{top:-53px!important;left:-53px!important}.royal-frame .rf-c.tr{top:-53px!important;right:-53px!important}.royal-frame .rf-c.bl{bottom:-53px!important;left:-53px!important}.royal-frame .rf-c.br{bottom:-53px!important;right:-53px!important}.royal-frame .rf-seal.top{top:-53px!important}.royal-frame .rf-seal.bottom{bottom:-53px!important}}
+@media(max-width:560px){.royal-frame .rf-c.tl{top:-30px!important;left:-30px!important}.royal-frame .rf-c.tr{top:-30px!important;right:-30px!important}.royal-frame .rf-c.bl{bottom:-30px!important;left:-30px!important}.royal-frame .rf-c.br{bottom:-30px!important;right:-30px!important}.royal-frame .rf-seal.top{top:-30px!important}.royal-frame .rf-seal.bottom{bottom:-30px!important}}
 </style>
   </head>
   <body>

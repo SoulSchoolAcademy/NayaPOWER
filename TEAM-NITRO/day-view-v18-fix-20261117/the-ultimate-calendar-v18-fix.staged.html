@@ -1986,7 +1986,7 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
 @media(max-width:1024px){:root{--bw:64px}}
 @media(max-width:560px){:root{--bw:32px}}
 .screen{flex:none!important;margin:var(--bw,96px) var(--bw,96px) 0!important;height:calc(100vh - 2*var(--bw,96px))!important;height:calc(100dvh - 2*var(--bw,96px))!important}
-.royal-frame{--em:max(28px,calc(var(--bw,96px)*.66));border:var(--bw,96px) solid transparent!important;border-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/portal-kings-chamber.png&ref=calendar/calendar-align-20261118&cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&t=1795041616) 30% / var(--bw,96px) / 0 stretch!important;box-shadow:none!important}
+.royal-frame{--em:max(28px,calc(var(--bw,96px)*.66));border:var(--bw,96px) solid transparent!important;border-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/portal-kings-chamber.png&ref=calendar/calendar-align-20261118&cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&t=1795042107) 30% / var(--bw,96px) / 0 stretch!important;box-shadow:none!important}
 .royal-frame::after{content:"";position:absolute;inset:var(--bw,96px);border:2px solid var(--dc,#3fb8ff);border-radius:4px;box-shadow:0 0 24px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),inset 0 0 48px rgba(5,6,7,.85);pointer-events:none}
 .royal-frame .rf-c,.royal-frame .rf-seal{position:absolute;width:var(--em);height:var(--em);border-radius:50%;object-fit:contain;background:transparent!important;border:none!important;box-shadow:0 4px 12px rgba(0,0,0,.6);animation:none!important}
 .royal-frame .rf-c.tl{top:calc(var(--bw,96px)/2 - var(--em)/2);left:calc(var(--bw,96px)/2 - var(--em)/2);transform:rotate(135deg)}
@@ -2054,15 +2054,33 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    (c) At <=1024px the pill goes in-flow on its own row above the headline
    (flex column daybar) so the words show at every width with no overlap. */
 .royal-frame::after{inset:0!important}
-.royal-frame .rf-c.tl{top:calc(-var(--bw,96px)/2 - var(--em)/2)!important;left:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
-.royal-frame .rf-c.tr{top:calc(-var(--bw,96px)/2 - var(--em)/2)!important;right:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
-.royal-frame .rf-c.bl{bottom:calc(-var(--bw,96px)/2 - var(--em)/2)!important;left:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
-.royal-frame .rf-c.br{bottom:calc(-var(--bw,96px)/2 - var(--em)/2)!important;right:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
-.royal-frame .rf-seal.top{top:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
-.royal-frame .rf-seal.bottom{bottom:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
 .daybar>.backbtn.eye .btw{letter-spacing:.06em!important}
 @media(min-width:1025px){.official-headliner{margin:0 260px!important}}
 @media(max-width:1024px){.daybar{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;padding:16px 18px!important}.daybar>.backbtn{position:static!important}.dayhead{width:100%!important}}
+
+/* ============ V6.2 — CALC GOTCHA FIX (maker's own eye, staged v6.1 build) ============
+   v6.1's corner/seal offsets NEVER APPLIED: all six emblems fell to their
+   static position (measured centre 128,128 at 1920 — the padding-box origin)
+   instead of the ring (48,48). Root cause, proven by the bytes: the offset
+   was written calc(-var(--bw,96px)/2 - var(--em)/2). In CSS tokenization a
+   leading "-var(" is NOT "minus + var()" — it is a FUNCTION token named
+   "-var" (identifiers may start with a hyphen), an unknown function, so the
+   calc is invalid at computed-value time; the !important invalid declaration
+   still wins the cascade and then resolves to the property's initial value
+   (top:auto). The valid V6 calc underneath it lost. The seals proved it:
+   their left:calc(50% - var(--em)/2) (no leading minus) DID apply (x=960).
+   Fix: literal offsets, no calc at all — they cannot fail to parse.
+   Arithmetic (emblem centred ON the ring): -(bw/2 + em/2); em = max(28,
+   bw*.66): desktop bw 96 em 63.36 -> -79.68 ~ -80px; tablet bw 64 em 42.24
+   -> -53.12 ~ -53px; phone bw 32 em 28 -> -30px. */
+.royal-frame .rf-c.tl{top:-80px!important;left:-80px!important}
+.royal-frame .rf-c.tr{top:-80px!important;right:-80px!important}
+.royal-frame .rf-c.bl{bottom:-80px!important;left:-80px!important}
+.royal-frame .rf-c.br{bottom:-80px!important;right:-80px!important}
+.royal-frame .rf-seal.top{top:-80px!important}
+.royal-frame .rf-seal.bottom{bottom:-80px!important}
+@media(max-width:1024px){.royal-frame .rf-c.tl{top:-53px!important;left:-53px!important}.royal-frame .rf-c.tr{top:-53px!important;right:-53px!important}.royal-frame .rf-c.bl{bottom:-53px!important;left:-53px!important}.royal-frame .rf-c.br{bottom:-53px!important;right:-53px!important}.royal-frame .rf-seal.top{top:-53px!important}.royal-frame .rf-seal.bottom{bottom:-53px!important}}
+@media(max-width:560px){.royal-frame .rf-c.tl{top:-30px!important;left:-30px!important}.royal-frame .rf-c.tr{top:-30px!important;right:-30px!important}.royal-frame .rf-c.bl{bottom:-30px!important;left:-30px!important}.royal-frame .rf-c.br{bottom:-30px!important;right:-30px!important}.royal-frame .rf-seal.top{top:-30px!important}.royal-frame .rf-seal.bottom{bottom:-30px!important}}
 </style>
   </head>
   <body>
@@ -2071,7 +2089,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
       <section id="screen-month" class="screen" aria-label="Month calendar">
         <header class="monthbar">
           <div class="navcluster">
-            <button type="button" class="dlogo" id="brandHome" aria-label="NayaNET — open today"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795041616" alt="NayaNET — the royal seal"></button>
+            <button type="button" class="dlogo" id="brandHome" aria-label="NayaNET — open today"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795042107" alt="NayaNET — the royal seal"></button>
             <button class="navbtn" id="prevMonth" aria-label="Previous month">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
             </button>
@@ -2100,7 +2118,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           <div class="dayhead" id="dayHead"></div>
         </header>
         <div class="day-scroll" id="dayScroll">
-          <div class="smart-block sb-chamber" id="chamberBlock"><div class="smart-visual"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/portal-kings-chamber.png&amp;ref=calendar/calendar-align-20261118&amp;cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&amp;t=1795041616" alt="The king&#8217;s chamber — the portal to your kingdom"><div class="king-hero" id="kingHero"><span class="kh-tiles os-mini-num" id="kingHeroTiles"></span><span class="kh-mid"><span class="kh-date" id="kingHeroDate">November 26</span><span class="kh-week" id="kingHeroWeek">Wednesday</span></span><span class="kh-hz" id="kingHeroHz">741 Hz</span></div></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div><div class="sb-dots"></div></div><div class="wisdom-banner smart-block" id="wisdomBanner">
+          <div class="smart-block sb-chamber" id="chamberBlock"><div class="smart-visual"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/portal-kings-chamber.png&amp;ref=calendar/calendar-align-20261118&amp;cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&amp;t=1795042107" alt="The king&#8217;s chamber — the portal to your kingdom"><div class="king-hero" id="kingHero"><span class="kh-tiles os-mini-num" id="kingHeroTiles"></span><span class="kh-mid"><span class="kh-date" id="kingHeroDate">November 26</span><span class="kh-week" id="kingHeroWeek">Wednesday</span></span><span class="kh-hz" id="kingHeroHz">741 Hz</span></div></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div><div class="sb-dots"></div></div><div class="wisdom-banner smart-block" id="wisdomBanner">
             <div class="wq-label">Wisdom of the day</div>
             <blockquote id="wisdomQuote"></blockquote>
             <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span><span class="wx-zone" id="wxZone"></span></div><div class="wq-store">NAYANET WISDOM STORE — FROM WHAT WE HAVE LEARNED</div><div id="daystepSlot"></div><div class="sb-nav"><button type="button" class="pill sb-back" data-sb="prev">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div><div class="sb-dots"></div>
@@ -2123,8 +2141,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         </header>
         <div class="doorbody" id="doorBody"></div>
       </section>
-    <div class="royal-frame" aria-hidden="true"><img class="rf-c tl" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795041616" alt=""><img class="rf-c tr" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795041616" alt=""><img class="rf-c bl" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795041616" alt=""><img class="rf-c br" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795041616" alt=""><img class="rf-seal top" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795041616" alt=""><img class="rf-seal bottom" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795041616" alt=""></div>
-<button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/icon-512.png&amp;ref=calendar/calendar-align-20261118&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795041616" alt="Naya"></button>
+    <div class="royal-frame" aria-hidden="true"><img class="rf-c tl" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795042107" alt=""><img class="rf-c tr" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795042107" alt=""><img class="rf-c bl" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795042107" alt=""><img class="rf-c br" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795042107" alt=""><img class="rf-seal top" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795042107" alt=""><img class="rf-seal bottom" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795042107" alt=""></div>
+<button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/icon-512.png&amp;ref=calendar/calendar-align-20261118&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795042107" alt="Naya"></button>
     </div>
 
     <script>
