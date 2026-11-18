@@ -842,7 +842,20 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .topline .pill{padding:8px 4px}
   .barleft #prev,.barleft #next{padding:8px 6px}
 }
-@media(min-width:741px) and (max-width:855px){
+@media(min-width:741px) and (max-width:1661px){
+  /* CALENDAR FIX 8 (R8-860 band extension) — THE FIX6 HEAD REFLOW EXTENDS
+     TO 856-1661. Measured on the base bytes (work/measure-base.py,
+     measure-edge.py, measure-edge2.py, live Chromium, stubbed 10:30):
+     pair centres first at ~970, the pill unwraps first at ~1073, the
+     brand 9-point cover first reads 0/9 at ~1500 — but read as a reader
+     at 1500 the brand still reads "NayaNET · MY WO" (the plaque still
+     covers the strong text's tail, inter 2614.6). The 9-point sample
+     misses it, so the edge is measured on the brand TEXT: plaque
+     overlaps NONE of logo/strong/div first at 1662 exactly (1660: a
+     0.4px sliver, inter 13.6; 1662: 0). TRUE UPPER EDGE = 1662, so the
+     band is 856-1661 — 806px, far beyond the ~960 sketch. The rules
+     below are the FIX6 rules VERBATIM, only the media max-width moved
+     (855 -> 1661); the 741-855 renders are re-proven identical. */
   /* CALENDAR FIX 6 (R6-741 head) — THE HEAD FITS AND CENTRES. Eye
      (fix-5 §6): at 741 the plaque is x -35.2 w 635.7, the jewel x 608.5
      w 83.9, pair off -41.9px; the jewel sits ON the "Owner view" pill
