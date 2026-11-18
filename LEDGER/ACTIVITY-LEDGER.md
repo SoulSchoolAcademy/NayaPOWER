@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 16:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22399,6 +22399,12 @@ _Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all three claimed SHAs match byte-exact (t0602-results.json 3d4d8386..., t0602-r2-results.json b2d30a1e..., cold-files.txt b4851b13...); tree dir + both manifests present. Both rounds HOLDS-OPEN per the sealed rule; root cause PROVEN via /proc (4 other tenants map libcrypto.so.3, so FADV_DONTNEED cannot drop its pages) rather than asserte
 
+### ✅ t0602-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE weaker-injection arm (top-1 clause) on frozen t0555/t0592 fixtures, sealed
+
+**Evidence:** Verified: instrument auto-retrieval/t0602_decision_consequence_weak.py sha prefix a73c3d65 matches the receipt pin; seal auto-retrieval/sealed-note-t0602-decision-consequence-weak.md sha prefix e937995c matches; verdict file auto-retrieval/verdict-t0602-decision-consequence-weak.md exists. Score 8.5: seal discipline perfect (mtime-ordered, sha befo
+
 ### ✅ t0602 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** SURGE slice (a) weaker-injection arm on frozen t0555/t0592 fixtures, verdict FALSIFIED
@@ -22446,6 +22452,12 @@ _Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0602-lane12.md`
 
 **Evidence:** Verified: all five claimed SHAs match byte-exact (3 marked briefs, verdicts file, gen_corpus.py); corpus dir on disk; live queue briefs untouched (mtimes checked). The check ran against REAL dispatcher brief bodies, not fixtures -- the missing rung is now filled; C8 anti-gaming heuristic verified safe against real prose rather than assumed. Honest 
+
+### ✅ t0601-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Ask-world query-log instrument + top-20 needs analysis; retrieval-auth migration prep CANDIDATE
+
+**Evidence:** Verified: retrieval/query-needs-top20-t0601.json sha 50f0a46009efd7ff03ade3f61d076420a9d64f388338f8b3a5f34bdd7ecdfdc3 matches; retrieval/auth-gate-migration-prep-t0601.md sha 393725e6e6ca55860e982fdbca2eeab14d73152d40ac0af7f3404985f54a4716 matches; retrieval/tally-t0601.py sha abb58c604df51fd4384a920d9d2fde814f31fb2e02926a6f8555b9100261b0e4 matches
 
 ### ✅ t0601 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
@@ -23223,6 +23235,12 @@ _Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval/injection-seam-t0588-results.json sha256 b5705213... matches claimed SHA; harness injection-seam-t0588-run.py present; prototype sha re-verified == t0582 pin; tip bdfb5868 pinned at action time; judgment protocol + auto-right rule frozen pre-run; 10 brief formats pre-listed before measuring (t0582 lesson honored). Honest verdict
 
+### ✅ t0587-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (c) query-needs tally refresh
+
+**Evidence:** Verified: retrieval/query-needs-top20-t0587.md sha 58f9584356153cd1508e13f4652599e9e2c7ec0164a48c6880e343856a9b3e5d matches the receipt pin. Score 9.0: probe-then-tally honored (probe ran before the tally, only new row is the probe), schema verified before counting, organic rows 30/30 byte-identical to t0535, honest tombstone date stamped instead o
+
 ### ✅ t0587 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice (c) query-needs tally refresh
@@ -23246,6 +23264,12 @@ _Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0587-lane7.md`
 
 **Evidence:** Verified: retrieval/query-needs-top20-t0587.md sha256 58f95843... matches claimed SHA; live-check probe-before-tally followed (39->40 rows, only new row = own probe); organic rows 30/30 byte-identical to t0535, every delta 0, last organic query 13:10:38 PDT; schema verified pre-count (t0580 lesson honored). Honest deliverable: tombstone date + top-
+
+### ✅ t0587-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** Claim-form-filtered retrieval + per-claim max pooling arm
+
+**Evidence:** Verified: arm_pooledclaim_t0587.py seal 4e5e8cc3be5bb4ec pre==post matches; t0585_seppool.py b3322d253974bb0a matches; results-t0585-seppool.json 22fb4a62ee86563f matches; results-t0587-pooledclaim.json exists (labeled partial). Score 8.5: premise pins re-verified at action time, 'already done' check built only the genuinely untested cell, pooling 
 
 ### ✅ t0587 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -23271,6 +23295,12 @@ _Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/arm_pooledclaim_t0587.py sha256 4e5e8cc3be5bb4ec... matches claimed seal (pre==post, F5 holds); results-t0587-pooledclaim.json present (6482f3ee...) and labeled partial, honest. Real value: firing predicate caught a vacuous mechanism before it could produce a verdict; located an actionable next hypothesis (doc-side filterin
 
+### ✅ t0587-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Independent re-execution of sealed t0581 overlap-cell instrument
+
+**Evidence:** Verified: sealed-selection-t0581.md sha dc4f06e6a3e0a2a5b0937dbc32b78d3c72505cde3099c1ad4584ab8b72f6933e matches; results-t0581-overlap.json 29a9d26ac9de77410d5257049b6dd4d34f162feb253d147df3b95a8411d241b0 matches (byte-identical re-run); run script 3a5873025ba78df2 matches; agreement report retrieval/overlap-cells-rerun-t0587-lane3.md c3ad44693934
+
 ### ✅ t0587 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Independent re-execution of sealed t0581 overlap-cell instrument
@@ -23294,6 +23324,12 @@ _Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0587-lane3.md`
 
 **Evidence:** Verified: t0581 seal + results pins byte-exact at full cited SHA256s (sealed-selection-t0581.md dc4f06e6..., results-t0581-overlap.json 29a9d26a... — reproduced exactly, byte-identical to t0581 results); agreement report retrieval/overlap-cells-rerun-t0587-lane3.md present at cited sha16 c3ad44693934fea7. Real value: different seat re-ran on fresh 
+
+### ✅ t0586-lane10 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** Second fixture, claim-form mechanism, verdict ARM (50-doc corpus)
+
+**Evidence:** Verified: fixture_t0586.py sha16 8077fc722905ec12 matches; select_overlap_cells_t0586.py eba8f0d2720a83d5 matches; run_overlap_cells_t0586.py 2c41ce03c6dc2fdd matches; results-t0586-overlap.json 6b099fff4493f308 matches; seal sealed-selection-t0586.md 7522a1f91eaeb940 matches. Score 8.5: fresh 50-doc corpus with mechanically asserted integrity, sel
 
 ### ✅ t0586 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
@@ -23343,6 +23379,12 @@ _Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: packet surge/stamping-migration-packet-t0585.md sha256 ac19a411e9383a8b6ba1a35d53c0c6a62c1cc6b1789266f3b14fe393457d9262 on disk; remote main = bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad (ls-remote, matches receipt's re-pin after a mid-window tip move); spec branch naya/five-retrieval-auth-gate-t942 = e654f16e8a49e9a26309fd852695a0bef202673d
 
+### ✅ t0585-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Selection-vs-pooling 2x2 arms SEALED + RUN
+
+**Evidence:** Verified: instrument auto-retrieval/t0585_seppool.py sha b3322d253974bb0a2e3f512856ef74f0f202597566ade59d59e12db7c6643e63 matches; seal auto-retrieval/sealed-note-t0585.md sha 9f6c07f210515951ea9cf197733214a3478aa251816db02b013828175e7ee1c8 matches; results file exists with both arms FALSIFIED. Score 8.5: seal-before-run discipline held (sha before
+
 ### ✅ t0585 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** Selection-vs-pooling 2x2 arms SEALED + RUN, both FALSIFIED, pooling identified as the mover
@@ -23367,6 +23409,12 @@ _Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: instrument auto-retrieval/t0585_seppool.py sha256 b3322d253974bb0a2e3f512856ef74f0f202597566ade59d59e12db7c6643e63 on disk (matches); seal sealed-note-t0585.md sha256 9f6c07f210515951ea9cf197733214a3478aa251816db02b013828175e7ee1c8; seal mtime 05:46:51Z strictly before results mtime 05:47:01Z (seal-before-run holds); results-t0585-seppool
 
+### ✅ t0584-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** t0572 lineage correction - supplement + board note
+
+**Evidence:** Verified: supplement auto-retrieval/sealed-note-t0572-lineage-correction.md sha 065e18c77572839abea46eab13bb9e85960d3e66f672468c24fa6c36d26daad7 matches the receipt pin; firing (2/3) and improvement (A P6 15->8, B P2 19->1) re-derived from the two frozen result files, rule quoted verbatim from the seal bytes. Score 9.0: honest hypothesis test (read
+
 ### ✅ t0584 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** t0572 lineage correction - supplement + board note, verdict INFORMATIVE-PARTIAL
@@ -23383,6 +23431,12 @@ _Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: supplement auto-retrieval/sealed-note-t0572-lineage-correction.md sha256 065e18c77572839abea46eab13bb9e85960d3e66f672468c24fa6c36d26daad7 on disk (matches); #2175 comment 6139108156 live-read back (created 2026-10-13T05:43:34Z, 2399 chars, carries INFORMATIVE-PARTIAL + the supplement sha). Honest hypothesis test (would have written 'linea
 
+### ✅ t0583-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Observatory window verdict t0576-t0583 (receipt-cost + falsification rate)
+
+**Evidence:** Verified: corpus pin lane-11/corpus_pin_t0576-t0583.json sha bac78fb15854bf204cef386837ab58a2c7d6395609d82700098968b083656d61 matches; verdict file lane-11/verdict_cost_t0583.json sha b2e7de6b333b84b374181cc63e02deae16373ed3a129cd1b401f6f556282159a matches; baseline 42 receipts / 2,365 lines / medians 47.5 / 5,696.5 byte-exact reproduction of three
+
 ### ✅ t0583 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Observatory window verdict t0576-t0583: receipt-cost + falsification rate, verdict CLEAN
@@ -23398,6 +23452,12 @@ _Last updated: 2026-11-18 16:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0583-lane11.md`
 
 **Evidence:** VERIFIED: lane-11/corpus_pin_t0576-t0583.json and verdict_cost_t0583.json exist at exact cited sha256s (bac78fb1..., b2e7de6b...). Real value: pinned corpus before any number ran (15 rows, zero mid-run landings), recomputed t892-t1042 baseline from live bytes byte-exact (42/2365/47.5/5696.5) matching 3 prior windows, cost medians inside FP-001 Shar
+
+### ✅ t0583-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent four-way re-run of t0568 veracity verdict on frozen t1412 X-fixture pool
+
+**Evidence:** Verified: report lane1-t0583-veracity-rerun.md sha 99092d83914e2e4110f9630b895af30687e33c35c7a73f1051fb528accadde74 matches the receipt pin; guard script scratch-t0583-lane1/rerun_veracity_guard.py sha 991f628b23b8fe96a149af678d00093f71a1ced41ee2d2811f4657dd8cd9d939 matches. Score 9.0: independent second implementation CONFIRMs the verdict with pre
 
 ### ✅ t0583 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
