@@ -461,7 +461,14 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # .fp-btn-jewel span as its sibling pair (no new image bytes). One line.
 # #fpLegalExit in the footer view is NOT touched. Walk, template, identity,
 # unfold shas unchanged.
-assert welcome_sha.startswith("65555c37"), "welcome sha is not the AGREEMENT BUTTONS FIX 4b welcome sha (2026-11-18: #fpBridgeExit gains the harvested jewel span)"
+# AGREEMENT INTRO ALIGN (2026-11-18, maker round -
+# agreement-intro-align-20261118/work/edit-align.py): the welcome sha
+# moves 65555c37 -> e4fe0d52 (1,168,891 B -> 1171088 B): one CSS insert only - the intro
+# row becomes one tight centred unit (auto tracks, gap 24px, every
+# item grid-row:1, min-height holds the hero box at 161/133px so
+# nothing below moves). No HTML, no JS. Walk, template, identity,
+# unfold shas unchanged.
+assert welcome_sha.startswith("e4fe0d52"), "welcome sha is not the AGREEMENT INTRO ALIGN welcome sha (2026-11-18: intro row one tight centred unit)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):

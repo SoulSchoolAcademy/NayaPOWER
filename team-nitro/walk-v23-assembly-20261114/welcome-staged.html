@@ -2097,6 +2097,34 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-side .fp-welcome-hero{disp
 #fpWelcomeHero .fp-play-name{grid-column:2;justify-self:center}
 #fpWelcomeHero #fpIntroPlay{grid-column:3;justify-self:end}
 html.fp-locked body.fp-stage-on.fp-bridge #fpAgreement.fp-layer-on{padding-top:40px}
+/* AGREEMENT INTRO ALIGN (2026-11-18) — the intro row reads as ONE tight
+   centred unit: portrait + NAYA + play on one shared centre line, tight
+   even gaps, the unit centred on the page — like the reference crop
+   (image_2026-11-18_075721164.png: portrait 119px, gaps ~20px/~29px).
+   Why the old row split apart (measured live on the fix-4b base):
+   the 03:41Z grid (1fr auto 1fr, name col 2, play col 3) hit the grid
+   auto-placement cursor trap — the name comes AFTER the play button
+   in the DOM, so once the play took col 3 of row 1 the cursor had
+   passed col 2 and the name fell to row 2 (live 1919: name cy 447.8
+   vs portrait/play cy 359.3, spread 88.5px). And the 1fr tracks
+   shrink-wrap to content (132px each), so the portrait pinned left,
+   the play pinned right, with the empty name column between them —
+   a 140px empty gap at 1919. Fix (CSS only, same selectors, later
+   in the file so they win at equal specificity): auto tracks sized
+   to content, justify-content:center, gap 24px, every item grid-row:1
+   (explicit — immune to DOM order), all justify-self:center,
+   align-content:start, and min-height holding the hero box at its base
+   height (161px; 133px at <=480px) so the row collapses from two rows
+   to one WITHOUT moving anything below it: the intro pair bottoms stay
+   575/566/528 and 652/643/600, the bridge-final fold stays 843/844/613.
+   No HTML, no JS, no sizes, no colours move; the play button keeps its
+   id, handler, tip, orbit and press rules. */
+body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide .fp-welcome-hero,
+body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-side .fp-welcome-hero{grid-template-columns:auto auto auto;justify-content:center;gap:24px;min-height:161px;align-content:start}
+#fpWelcomeHero .fp-naya-portrait{grid-column:1;grid-row:1;justify-self:center}
+#fpWelcomeHero .fp-play-name{grid-column:2;grid-row:1;justify-self:center}
+#fpWelcomeHero #fpIntroPlay{grid-column:3;grid-row:1;justify-self:center}
+@media(max-width:480px){body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide .fp-welcome-hero,body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-side .fp-welcome-hero{min-height:133px}}
 
 /* AGREEMENT BUTTONS FIX 3 (2026-11-18, eye verdict 04:55Z) - round 1's
    three changes landed on the bridge-final pair but not on the intro
