@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -53400,6 +53400,12 @@ _Last updated: 2026-11-18 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261117-2024 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-17 20:24 PST: full claim sweep of all 31 queued briefs, 0 claimed, queue frozen fifty-fourth hour
+
+**Evidence:** Fresh-window receipt (only unscored receipt this tick; backlog 0). VERIFIED in live bytes this tick: sweep log hidden_files/brief-queue/claim-sweep-20261117-2024.log exists (1,800 bytes, mtime 04:25:21Z, 18 s before receipt mtime 04:25:39Z) with 31 exit lines, 29 x exit 7 + 2 x exit 2 (same two exit-2 files as the series: t0547-lane1-lane1, t0172-l
 
 ### ✅ gate-stall-20261117-1918 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
