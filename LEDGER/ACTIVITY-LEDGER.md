@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 23:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 23:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -49953,6 +49953,12 @@ _Last updated: 2026-11-18 23:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-lane-scorer-20261019-1100-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: header-seat correction on #2765 + re-measure of brain-index flip-points 4/5/6 per t0909 taxonomy
+
+**Evidence:** Backlog sweep (oldest-first), receipt 2026-10-19. VERIFIED this tick on live bytes: evidence kit hidden_files/lane-10/flip-remeasure-20261019-1100/ exists with README + SHA256SUMS + check-A/B/C/D out/err; sha256sum -c verifies all 8 files OK; check-A.out reads 'OK: index layer matches git tree (1328 files)' matching the claimed exit-0 at A; B/C/D o
+
 ### ✅ gap-lane-scorer-20261015-0410-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: 3b wire — suite re-verified by a second seat, wire still owed (Lane 10 Librarian/KNOW)
@@ -52626,6 +52632,12 @@ _Last updated: 2026-11-18 23:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-scorer-20261015-0330-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: second-eyes re-run of class-#17 structural-fix self-test suites (file-gap-brief + claim-brief), dry-run sign-in on a real brief, SHA pin check
+
+**Evidence:** Backlog sweep (oldest-first), receipt 2026-10-15 with dated correction appended 2026-10-19. VERIFIED this tick on live bytes: file-gap-brief.py --self-test re-run GREEN (all cases pass); claim-brief.py --self-test re-run GREEN (exit 0). The receipt's pinned claim-brief.py SHA dd27e20c... no longer matches the current file (c4efc222...) — the script
 
 ### ✅ gap-scorer-20261014-2100-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
