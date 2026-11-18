@@ -424,7 +424,20 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # harvested 1fr auto 1fr flank grid); 6. the bridge layer top pad
 # 48px -> 40px. Deck, footer link, legal pages, F1-F4 untouched.
 # Walk, template, identity, unfold shas unchanged.
-assert welcome_sha.startswith("48fc853f"), "welcome sha is not the AGREEMENT BUTTONS FOLLOW-ON welcome sha (2026-11-18: 1. Read the agreement label, 2. bridge pair equal size no-wrap, 3. real emblem diamond jewel in both, 4. pick line removed, 5. hero row portrait-Naya-play, 6. logo up 8px)"
+# AGREEMENT BUTTONS FIX 3 (2026-11-18, eye verdict 04:55Z GOES BACK;
+# maker round - agreement-buttons-20261118/work/fix3/edit-fix3.py):
+# the welcome sha moves 48fc853f -> 685fe27f (1,165,606 B -> 1,166,995 B,
+# +1,389 B): 1. #fpChoiceLetter reads "Read the agreement" (as
+# #fpBridgeLetter already did); 2. both intro buttons gain the
+# .fp-btn-jewel span (same shared class, same harvested PNG - no new
+# image bytes) and the flat diamond text is gone from both; 3. the intro
+# pick line is removed (zero JS references, no JS change); 4. bridge-final
+# fold tightened 64px, bridge view only (steplabel 4, jewels 6, choices 4,
+# logo gap 20, head gap 22, side gap 8), letter bottom 1130 -> 1066 at
+# 1919. Intro fold, hero row, button sizes, press rules, deck, legal row,
+# #fpNextBtn2 and the bridge pair's jewel/label untouched. Walk, template,
+# identity, unfold shas unchanged.
+assert welcome_sha.startswith("685fe27f"), "welcome sha is not the AGREEMENT BUTTONS FIX 3 welcome sha (2026-11-18: 1. intro letter reads Read the agreement, 2. jewel spans on both intro buttons, 3. intro pick line removed, 4. bridge-final fold tightened 64px)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):

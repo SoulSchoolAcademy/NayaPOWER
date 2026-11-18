@@ -2097,6 +2097,29 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-side .fp-welcome-hero{disp
 #fpWelcomeHero .fp-play-name{grid-column:2;justify-self:center}
 #fpWelcomeHero #fpIntroPlay{grid-column:3;justify-self:end}
 html.fp-locked body.fp-stage-on.fp-bridge #fpAgreement.fp-layer-on{padding-top:40px}
+
+/* AGREEMENT BUTTONS FIX 3 (2026-11-18, eye verdict 04:55Z) - round 1's
+   three changes landed on the bridge-final pair but not on the intro
+   pair, the first view. This block finishes them on the intro pair and
+   brings the bridge-final pair above the fold at 1919.
+   1. LABEL + JEWEL (HTML below): the intro letter button reads "Read
+      the agreement" with the same jewel span as the bridge pair; the
+      intro deck button gains the same jewel span. No new image: the
+      spans use the shared .fp-btn-jewel class from round 1.
+   2. PICK LINE GONE: the intro pick line is removed from the HTML
+      below; the .fp-intro-pick rule stays (dead, harmless).
+   3. BRIDGE-FINAL FOLD: tighten spacing above the bridge-final
+      buttons, bridge view only, 64px in all (steplabel 4, jewels 6,
+      choices 4, logo gap 20, head gap 22, side gap 8), so the letter
+      bottom moves 1130 -> 1066 at 1919 on first paint. The intro
+      view, the hero row, the button sizes and the press rules are
+      untouched. */
+#fpBridgeFinal .letter-steplabel{margin-bottom:8px}
+.fp-bridge-jewels{margin:8px auto 4px}
+.fp-bridge-choices{margin:8px auto 8px}
+body.fp-stage-on #fpAgreement.fp-view-bridge .fp-agree-logo{margin-bottom:8px}
+body.fp-stage-on #fpAgreement.fp-view-bridge .fp-agree-head{margin-bottom:8px}
+body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide{margin-bottom:16px}
 </style>
 </head>
 <body>
@@ -2196,8 +2219,7 @@ html.fp-locked body.fp-stage-on.fp-bridge #fpAgreement.fp-layer-on{padding-top:4
 <h1 class="deal-title">The Royal Unfolding</h1>
 <p class="deck-sub">Nine pictures. One beautiful story.</p>
 <div class="fp-royal-lines" id="fpRoyalLines"><p>Let me show you what NayaNET is, why we&rsquo;re building it, how the intelligence connects, and what it could mean for you.</p><p>You can experience the visual story or read our Collective Agreement in full.</p><p>Take your time. Explore. Ask questions.</p><p><b>We&rsquo;d rather earn your trust than simply ask for it.</b></p><p class="fp-royal-signoff"><i>Your world. Your choice. Our collective promise.</i></p><p class="fp-royal-close">Create. Connect. Grow with US.</p></div>
-<p class="fp-intro-pick" id="fpIntroPick">Pick your view — one, or both, as you wish.</p>
-<div class="fp-intro-choices" id="fpIntroChoices"><button class="fp-intro-choice" id="fpChoiceDeck" type="button" style="--tone:#8e24aa">Begin the visual story ◆</button><button class="fp-intro-choice" id="fpChoiceLetter" type="button" style="--tone:#07925f">Read the Collective Agreement ◆</button></div> <div class="letter-controls" id="deckControls">
+<div class="fp-intro-choices" id="fpIntroChoices"><button class="fp-intro-choice" id="fpChoiceDeck" type="button" style="--tone:#8e24aa">Begin the visual story <span class="fp-btn-jewel" aria-hidden="true"></span></button><button class="fp-intro-choice" id="fpChoiceLetter" type="button" style="--tone:#07925f">Read the agreement <span class="fp-btn-jewel" aria-hidden="true"></span></button></div> <div class="letter-controls" id="deckControls">
 <div class="letter-dots" id="deckDots" aria-hidden="true"><span class="ldot on" style="--dc:#a06bff"></span><span class="ldot" style="--dc:#3fb8ff"></span><span class="ldot" style="--dc:#2fe89e"></span><span class="ldot" style="--dc:#ffbf3d"></span><span class="ldot" style="--dc:#e84fff"></span><span class="ldot" style="--dc:#ff9a5a"></span><span class="ldot" style="--dc:#6675ff"></span><span class="ldot" style="--dc:#ff5e6c"></span><span class="ldot" style="--dc:#40d3bb"></span></div>
 </div>
 <div id="deckBody">
