@@ -103,7 +103,7 @@ body.no-cover .ph-main{padding-top:12px}
 .smart-lists .list-chip span:not(.cx-ava){font-size:17px;color:#fff;display:block;margin-top:2px}
 @media (max-width:900px){.smart-lists{grid-template-columns:1fr}}
 /* --- ORGANIZER TABS: the HUB's organizer — .nf-smtab pill skin HARVESTED VERBATIM from the Hub via the Personal file. --- */
-.org-tabs{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 6px;scrollbar-width:thin}
+.org-tabs{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 4px;scrollbar-width:thin}
 .org-tabs::-webkit-scrollbar{height:6px}
 .org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
 .nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:17px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
@@ -111,15 +111,15 @@ body.no-cover .ph-main{padding-top:12px}
 .nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
 .nf-smtab.active{border-color:rgba(255,255,255,.6);box-shadow:0 0 16px rgba(255,255,255,.18),inset 0 1px rgba(255,255,255,.15)}
 /* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
-.search-row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:12px}
+.search-row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:6px}
 .search-row input{flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-size:17px;font-family:inherit}
 .search-row input::placeholder{color:#fff;opacity:1;font-weight:600}
 /* --- MESSENGER GRID --- */
 .messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
 .panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
 .panel:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.45);box-shadow:0 24px 48px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1),0 0 26px rgba(142,36,170,.22)}
-.panel h3{margin:0;padding:8px 18px 6px;font-size:19px;font-weight:800}
-.panel .panel-sub{padding:0 18px 4px;font-size:17px;color:#fff}
+.panel h3{margin:0;padding:4px 18px 6px;font-size:19px;font-weight:800}
+.panel .panel-sub{margin:0;padding:0 18px 4px;font-size:17px;color:#fff}
 /* --- ORB: the EXACT Connections-room orb — .cx-stage .cx-ava, live from
    https://nayanet.app/rooms/connections. Initial by default (JS sets
    textContent = initials(name)); per-person --cc; the spin is the conic
@@ -143,7 +143,7 @@ body.no-cover .ph-main{padding-top:12px}
 .row-name .match{font-size:17px;color:#fff;font-weight:800}
 .row-last{display:block;font-size:17px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
 .row-nut{display:block;font-size:17px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
-.stub-note{padding:0 18px 8px;font-size:17px;color:#fff;line-height:1.4}
+.stub-note{margin:0;padding:0 18px 8px;font-size:17px;color:#fff;line-height:1.4}
 /* --- THREAD --- */
 .thread{display:flex;flex-direction:column;min-height:560px}
 .thread-head{display:flex;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.09)}
@@ -251,7 +251,7 @@ body.no-cover .ph-main{padding-top:12px}
 .choice-toggle[aria-pressed="true"]{border-color:#07925f;background:rgba(7,146,95,.25);box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 6px 14px rgba(0,0,0,.5),0 0 18px rgba(7,146,95,.45)}
 .choice-toggle[aria-pressed="true"]::after{left:25px;background:#07925f}
 /* --- WORLD SELECTOR: one universal mail, any world. Personal blue · Business green · Space magenta. The active pill lights up — rim + glow in its own colour, obsidian inside. --- */
-.world-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:2px 0 8px}
+.world-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 6px}
 .world-pill{--wc:#0f52ba;display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:900;font-size:17px;color:#fff;background:#0a0a0f;border:1.5px solid var(--wc);box-shadow:0 0 14px color-mix(in srgb,var(--wc) 35%,transparent),0 8px 20px rgba(0,0,0,.5);transition:box-shadow .25s,border-color .2s,transform .2s;white-space:nowrap}
 .world-pill .wdot{width:9px;height:9px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
 .world-pill:hover{background:#0a0a0f;border-color:var(--wc);box-shadow:0 0 26px -2px var(--wc),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
@@ -278,7 +278,7 @@ body.no-cover .ph-main{padding-top:12px}
 @keyframes orbitCCW{to{transform:rotate(-360deg)}}
 .ph-plus::before{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 50% 0%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCW 60s linear infinite}
 @media (max-width:900px){
-  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:0}   .menu-bar{padding:6px 16px}
+  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:0}   .menu-bar{padding:4px 16px}
   .ph-cover-inner{padding:10px 10px 12px}   .ph-cover-inner h1{font-size:25px}   .ph-cover-inner p{font-size:17px;margin-top:6px;max-width:420px}
   .page-title{font-size:25px;top:46px}   .page-scroll{--titleEdge:86px}
   .cover-toggle{margin-top:8px}
@@ -334,7 +334,7 @@ body.no-cover .ph-main{padding-top:12px}
 <header class="ph-cover" id="cover">
   <div class="ph-cover-inner">
     <h1>Messenger</h1>
-    <p>Whoever is online in your feed — tap a face, boom, you are talking. Message, mail, audio, video.</p>
+    <p>Whoever is online in your feed — tap a face, boom, you are talking.</p>
   </div>
   <button class="ph-plus left" id="plusNew" type="button" aria-label="New message">+</button>
   <button class="ph-plus right" id="plusInstall" type="button" aria-label="Install Messenger">+</button>
