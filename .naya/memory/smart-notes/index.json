@@ -59068,6 +59068,39 @@
         "Verification",
         "Truth"
       ]
+    },
+    {
+      "smart_note_id": "SN-3396",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3396-one-screen-one-idea",
+      "slug": "one-screen-one-idea",
+      "title": "One Screen, One Idea",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3396/IB-SMART-NOTE-20261118-sn3396-one-screen-one-idea.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3396/IB-SMART-NOTE-20261118-sn3396-one-screen-one-idea.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3396/IB-SMART-NOTE-20261118-sn3396-one-screen-one-idea.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3396-one-screen-one-idea.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:58:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "f76481e4eeedb40e1785e2d508078fee55fa9e5a4877b1b4265fdd97177ea98e",
+      "content_hash": "2811e73debd8bf854970947178a31638294724116c545f562dd65fd51b2094e3",
+      "one_line": "A page is a sequence of complete screens, and each screen carries exactly one idea. The viewport is the unit: everything above the fold, whole, or it is not a viewpoint. Inside that discipline the order is an argument, and the argument was settled piece by piece under his eye: the pains open — they name the problem the chart then answers; prices appear once, in the chart, because the reader decides at the bottom, they don't shop there; doors stand at every decision point; duplicated sections are deleted, because a repeat costs a scroll for nothing; earnings detail moves one tap away into a popup; and when two lists both claimed to be the ten, they were merged — one ultimate ten, each item a pain and its solution in one body, because two tens make neither of them the ten. The headliner obeys the family it heads: same size block, same treatment, aligned — bigger is not more important, bigger is off-family. The formatting pattern is the letter's grammar everywhere: three inner blocks per item (why it happens, the solution, what's in it for you), a jewel tile opening each block, orb bullets instead of walls of text, her face doubled and anchoring the item. The chart underneath it all is the best-in-world standard: 36 rows, one world, the ladder as law, enormous value at every level and Max always the most attractive.",
+      "topics": [
+        "Design",
+        "Distillation",
+        "Craft",
+        "Viewport",
+        "Order"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59078,5 +59111,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "f1a820717456fd0becb73ac2a7ff3e3dad5fe1cedf1231dff745f64861c0af0f"
+  "corpus_manifest_hash": "75ad8fd19b6de317ebc15b9ee0d18124e80aaf68d2c0a4585c026f7d6c4f8745"
 }
