@@ -437,7 +437,21 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # 1919. Intro fold, hero row, button sizes, press rules, deck, legal row,
 # #fpNextBtn2 and the bridge pair's jewel/label untouched. Walk, template,
 # identity, unfold shas unchanged.
-assert welcome_sha.startswith("685fe27f"), "welcome sha is not the AGREEMENT BUTTONS FIX 3 welcome sha (2026-11-18: 1. intro letter reads Read the agreement, 2. jewel spans on both intro buttons, 3. intro pick line removed, 4. bridge-final fold tightened 64px)"
+# AGREEMENT BUTTONS FIX 4 (2026-11-18, eye verdict FIX3 GOES BACK;
+# maker round - agreement-buttons-20261118/work/fix4/edit-fix4.py):
+# the welcome sha moves 685fe27f -> fb18f9d9 (1,166,995 B -> 1168845 B):
+# 1. bridge-final fold BY MECHANISM: the More4 handler now scrolls #fpBridge
+# to its bottom on reveal (round 3's 64px spacing cuts did not move first
+# paint - no code set the container's scroll position); 2. dead Continue
+# pill hidden for real (.p3-enter[hidden]{display:none!important} - hidden
+# did not hide .p3-enter buttons); 3. stage-bar button: #fpNextBtn gains
+# its [hidden] rule (mirroring #fpNextBtn2) so updateChrome's bridge/footer
+# hide lands, and the bar itself is display:none on bridge (mirroring the
+# intro rule) - the jewelled #fpBridgeDeck is the one in front of the user.
+# Intro pair, pick line, press/hover, deck, legal row, #fpNextBtn2 and the
+# bridge pair's jewel/label untouched. Walk, template, identity, unfold
+# shas unchanged.
+assert welcome_sha.startswith("fb18f9d9"), "welcome sha is not the AGREEMENT BUTTONS FIX 4 welcome sha (2026-11-18: 1. More4 handler scrolls #fpBridge to bottom, 2. .p3-enter[hidden] hides the dead Continue pill, 3. #fpNextBtn[hidden] + bridge bar display:none)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):

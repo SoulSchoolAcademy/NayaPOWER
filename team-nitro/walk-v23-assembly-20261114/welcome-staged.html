@@ -2120,6 +2120,34 @@ html.fp-locked body.fp-stage-on.fp-bridge #fpAgreement.fp-layer-on{padding-top:4
 body.fp-stage-on #fpAgreement.fp-view-bridge .fp-agree-logo{margin-bottom:8px}
 body.fp-stage-on #fpAgreement.fp-view-bridge .fp-agree-head{margin-bottom:8px}
 body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide{margin-bottom:16px}
+
+/* AGREEMENT BUTTONS FIX 4 (2026-11-18, eye verdict FIX3 GOES BACK) -
+   the intro is fixed, do not touch it. Three items, by mechanism.
+   1. BRIDGE-FINAL FOLD: round 3's 64px of spacing cuts did not move
+      first paint (letter 1120 at 1919, five settle-verified samples)
+      because no code sets #fpBridge.scrollTop on the bridge path -
+      the More handlers contain no scroll call and the only scrollTop
+      writes in the file are agreeSec/letterPage + face reads. The
+      position is the browser's native reveal behaviour, so it is now
+      set explicitly in the More4 handler (JS below): scroll #fpBridge
+      to its bottom the moment the final view is revealed.
+   2. DEAD CONTINUE PILL: `hidden` does not hide .p3-enter buttons -
+      `.p3-enter{display:block}` beats the UA [hidden] rule. This
+      scoped rule hides exactly the three .p3-enter elements that
+      carry hidden (#fpBridgeMore2/3/4); it is inert once JS removes
+      hidden, so the reveal flow is untouched. No global [hidden]
+      rule: the stage bar's hidden attribute is overridden by design.
+   3. STAGE-BAR BUTTON: the code already orders #fpNextBtn hidden on
+      bridge + footer (updateChrome), but `#fpNextBtn{display:block}`
+      beats UA [hidden] - same root cause as (2). The [hidden] rule
+      makes the ordered hides effective (inert elsewhere: hidden=false
+      on intro/deck/letter/agree). The bridge bar rule mirrors the
+      intro rule (L1551): on bridge the bar has no ordered-visible
+      content, so no empty fixed strip paints. Scoped by render()'s
+      body.fp-bridge toggle; deck flow untouched. */
+.p3-enter[hidden]{display:none!important}
+#fpNextBtn[hidden]{display:none}
+body.fp-stage-on.fp-bridge #fpStageBarB{display:none}
 </style>
 </head>
 <body>
@@ -3481,7 +3509,7 @@ body.fp-stage-on #fpAgreement.fp-view-bridge #fpIntroSide{margin-bottom:16px}
    if(bMore1&&bG2){bMore1.addEventListener('click',function(){bG2.hidden=false;if(bMore2)bMore2.hidden=false;bMore1.hidden=true;});}
    if(bMore2&&bG3){bMore2.addEventListener('click',function(){bG3.hidden=false;if(bMore3)bMore3.hidden=false;bMore2.hidden=true;});}
    if(bMore3&&bG4){bMore3.addEventListener('click',function(){bG4.hidden=false;if(bMore4)bMore4.hidden=false;bMore3.hidden=true;});}
-   if(bMore4&&bFin){bMore4.addEventListener('click',function(){bFin.hidden=false;bMore4.hidden=true;});}
+   if(bMore4&&bFin){bMore4.addEventListener('click',function(){bFin.hidden=false;bMore4.hidden=true;var bBridge=q('#fpBridge');if(bBridge){bBridge.scrollTop=bBridge.scrollHeight-bBridge.clientHeight;}});}
    if(bDeck){bDeck.addEventListener('click',function(){if(S.view==='bridge')goResume();});}
    if(bLetter){bLetter.addEventListener('click',function(){if(S.view==='bridge')window.location.href='/agreement';});}
   /* AGREEMENT MERGE (2026-11-17) - 'Back to the login' lives in the flow
