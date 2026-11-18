@@ -5109,7 +5109,7 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    The 99+ badge narrows to padding 0 2px (27.1px live) and seats top:1px right:1px: 3.57px clear
    of the pulse at its live rect; the "10" badge seats top:2px right:2px: 2.97px clear.
    (2) ORBIT RESTORED: Personal's .notif-tile::after conic comet (orb-spin-rev 60s) harvested verbatim —
-   the moving light around the circle, following the line; the static halo alone was not a moving light.
+   the moving light around the circle, following the line; the static halo alone was not a moving light. 2026-11-17 CLUSTER-ALIGN: the orbit is REMOVED (eye 68f73e31 - it reads as a tick above every tile); rim-light, hover, press stay.
    (3) PERSONAL HARVEST: the tile IS Personal blob 9a006c47 effective rules (lines 32404/32407/32408/
    32413/32467) — radius 16, flat board-black gradient, 1.5px rim, ::before none (the sheen across the
    middle is gone, closing the hover-law (a) caveat), rest shadow, has-news, orbit. HOVER RECONCILED:
@@ -5134,7 +5134,7 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 .notif-seg:hover .notif-tile svg,.notif-seg:focus-visible .notif-tile svg{filter:drop-shadow(0 2px 2px rgba(0,0,0,.7)) drop-shadow(0 0 9px rgba(255,255,255,.8));}
 .notif-seg::after{content:attr(aria-label);position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-transform:uppercase;white-space:nowrap;line-height:1;background:linear-gradient(180deg,#1d1d26,#0b0b10);border:1.5px solid var(--nc);border-radius:999px;padding:8px 14px;box-shadow:0 8px 20px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.3);opacity:0;pointer-events:none;transition:opacity .18s, transform .18s;}
 .notif-seg:hover::after,.notif-seg:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0);}
-.notif-tile::after{content:'';position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc,#8e24aa) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orb-spin-rev 60s linear infinite;opacity:.9;pointer-events:none;z-index:2}
+/* 2026-11-17 - CLUSTER-ALIGN (S3): .notif-tile::after orbit ring REMOVED - the eye proved it reads as a thin pale line above every bar tile at 1919 in non-hover, hover and held states; by elimination it is the only per-tile element above the tile present at rest (the hover pill is opacity:0 at rest and one tile only; the inset top-light is not in the bytes). Hover rim-light, lift, press, jewel and badge stay verbatim. */
 @media(max-width:560px){#os-bottom3.notif-six{gap:4px !important;}#os-bottom3.notif-six .notif-seg{padding:2px 0 0;}}
 @media(max-width:400px){.notif-tile{width:46px;height:46px;}}
 /* GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control for the Dashboard
@@ -9335,7 +9335,7 @@ document.addEventListener('pointerdown',function(e){
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> App behaviour</h3>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#d9a521">🎞️</span><span class="os-setrow-main"><b>Smart Tabs drift</b><span class="os-setrow-sub">The tab ribbon glides slowly, one way &mdash; the NayaNET standard.</span></span><span class="os-switch-wrap" style="--jc:#d9a521"><button class="os-switch on" id="os-set-drift" data-os-set="drift" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">🗂️</span><span class="os-setrow-main"><b>Smart Tabs</b><span class="os-setrow-sub">Show the top tab row (Home, Dashboard, About&hellip;). Off by default on the Dashboard &mdash; the page stays clean.</span></span><span class="os-switch-wrap" style="--jc:#3fb8ff"><button class="os-switch" id="os-set-tabs" data-os-set="tabs" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
+<!-- 2026-11-17 - CLUSTER-ALIGN: the Smart Tabs switch is GONE with the pill row it controlled - the row has no pills to show. -->
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">💫</span><span class="os-setrow-main"><b>Motion &amp; glow</b><span class="os-setrow-sub">Breathing light and living motion across the app.</span></span><span class="os-switch-wrap" style="--jc:#ffbf3d"><button class="os-switch on" id="os-set-motion" data-os-set="motion" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">🔄</span><span class="os-setrow-main"><b>Auto-refresh</b><span class="os-setrow-sub">Quietly re-reads whichever board is open — wall, today, inbox, reports or dashboard — every minute.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch" id="os-set-refresh" data-os-set="refresh" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
 <div class="os-status" id="os-set-status"></div>
@@ -13106,7 +13106,7 @@ NF.register(UNIT, {
   loadWall();
   renderInstallState();
   bindSwitch('os-set-drift', getSet('drift'), function(on){ putSet('drift', on); if (window.osTabsDrift && osTabsDrift.setEnabled) osTabsDrift.setEnabled(on); if (window.osNavDrift && osNavDrift.setEnabled) osNavDrift.setEnabled(on); setStatus('Smart Tabs drift is '+(on?'on — the tab bars glide slowly.':'off — the tab bars sit still; they still scroll by hand.')+' Saved on this device.'); });
-  bindSwitch('os-set-tabs', getSet('tabs'), function(on){ putSet('tabs', on); applyTabsVisibility(); setStatus('Smart Tabs are '+(on?'on — the top tab row is showing.':'off — the top tab row is hidden; the page stays clean.')+' Saved on this device.'); });
+  /* 2026-11-17 - CLUSTER-ALIGN: the os-set-tabs switch is gone with its row. applyTabsVisibility stays inert (body class, no row to show). */
   bindSwitch('os-set-motion', getSet('motion'), function(on){ putSet('motion', on); applyMotion(); setStatus('Motion & glow is '+(on?'on — blocks rise in, dots breathe, cards ignite on touch.':'off — the page is stilled: no entrances, no breathing, no pulse.')+' Saved on this device.'); });
   bindSwitch('os-set-refresh', getSet('refresh'), function(on){ putSet('refresh', on); applyRefresh(); setStatus('Auto-refresh is '+(on?'on — whichever board is open (Home, Today, Inbox, Reports or Dashboard) is quietly re-read every minute.':'off — boards refresh when you open them.')+' Saved on this device.'); });
   bindSwitch('os-set-dark', legacySetting('🌙 Dark mode')!=='off', function(on){ putLegacySetting('🌙 Dark mode', on); document.body.style.filter=on?'':'brightness(1.2)'; setStatus('Deep black is '+(on?'on — the page keeps its deep-night look.':'off — the page renders brighter.')+' Saved on this device.'); });
@@ -23224,8 +23224,9 @@ window.NayaSmartBar = {
     /* ONE set — one tab per section, period. Duplicated tabs are a defect
        (a tab is a promise). 2026-11-08: the row does NOT drift (Shawn's eye —
        the snap-back was the bounce/glitch); it sits still, scrolls by hand. */
-    var tabs = sections.length ? sections : [{label: app.name||'App', target:'#top'}];
+    var tabs = sections; /* 2026-11-17 - CLUSTER-ALIGN: no fallback pill - an empty sections list renders no tabs and the row hides. */
     function renderTopSet(){
+      tRow.style.display = tabs.length ? '' : 'none'; /* 2026-11-17 - CLUSTER-ALIGN: no pills, no row. */
       tRow.innerHTML = '';
       tabs.forEach(function(s, i){
         tRow.appendChild(pill({
@@ -23732,20 +23733,11 @@ window.NayaSmartBar = {
 /* SMART BAR v1.0 config — Dashboard */
 NayaSmartBar.mount({
   app: { name: "Dashboard", honesty: "proven" },
-  sections: [
-    {label:"Home", target:"#home", icon:"\u2302", color:"#d9a521"},
-    {label:"Dashboard", target:"#dashboard", icon:"\u25c9", color:"#3fb8ff"},
-    {label:"About", target:"#about", icon:"\u25ce", color:"#2fe89e"},
-    {label:"Today", target:"#today", icon:"\u2726", color:"#ffbf3d"},
-    {label:"Smart Notes", target:"#notes", icon:"\u25c6", color:"#ff9a5a"},
-    {label:"Connections", target:"#people", icon:"\u25c8", color:"#ff5e6c"},
-    {label:"Message", target:"#message", icon:"\u25c7", color:"#ffbf3d"},
-    {label:"Inbox", target:"#inbox", icon:"\u25a0", color:"#d9a521"},
-    {label:"Growth", target:"#growth", icon:"\u25b2", color:"#3fb8ff"},
-    {label:"Lists", target:"#lists", icon:"\u2630", color:"#2fe89e"},
-    {label:"Reports", target:"#reports", icon:"\u2b22", color:"#ff9a5a"},
-    {label:"Settings", target:"#settings", icon:"\u2699", color:"#ff5e6c"}
-  ],
+  /* 2026-11-17 - CLUSTER-ALIGN: the sections pill row is GONE (Shawn 23:47Z) -
+     the Smart Tabs era is over; the sidebar drawer, bottom bar and search reach
+     every destination. sections stays empty so the mount renders no pills and
+     renderTopSet hides the row. */
+  sections: [],
   network: [
     {label:"Home", url:"https://nayanet.app/", icon:"\u2302"},
     /* 2026-11-01 — Shawn: the Dashboard tab is gone from the bottom bar.
