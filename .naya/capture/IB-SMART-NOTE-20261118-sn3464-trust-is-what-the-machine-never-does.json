@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3464",
+ "intelligence": {
+  "title": "Trust Is What the Machine Never Does",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3464-trust-is-what-the-machine-never-does",
+  "smart_note_id": "SN-3464",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3464/IB-SMART-NOTE-20261118-sn3464-trust-is-what-the-machine-never-does.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a house where the post is carried but never opened. The carrier moves every letter to its person and never looks at what was written — that is the difference between carrying and reading, and the whole system is built on it. Inside, a library runs itself: every thing labeled the moment it arrives, shelved by a logic the machine understands, found again in seconds, and nobody ever opens a box to peek. The house keeps two kinds of keys, and the machine holds only one: it can move things and send the mail, but it cannot read. The words themselves do not pile up — after a week they fade, and only the good idea stays, without a name unless its owner chooses to sign it. That is why people can talk freely here, and talking freely is how everybody learns and grows together. The house is also lived in, not admired: the vault is operated daily, by the people who built it first, and the manual is written last, from what actually worked. Work that comes back is checked with the owner's own eyes and handed over in the same breath — a finished job that sits unshown is a job not done. And the front door is beautiful and obvious: one menu in the top corner that asks who you are, in your words, so the house can introduce you to people like you. The test of the whole house is the youngest guest: if a child cannot walk in cold and learn, build and connect, it is not the future yet.",
+  "simple_view": "Imagine a helper who moves your letters for you. The helper never opens them. The helper never peeks inside. After a week, the exact words float away. Only the good idea stays. Nobody knows it was yours unless you say so. The helper also sorts your treasure box. Every box has its own place. You can find any box fast. A child can use it with no help. That is the test. When work comes back, we check it right away. Then we share it right away. Nothing sits on a shelf.",
+  "grandma_view": "It is like this, love — nobody reads your letters, dear, nobody listens to your phone calls, nobody watches your videos. And we do not even keep your words, love — after a week they gently fade away, and only the good idea stays behind, dear, so everyone can learn from it. Your name never travels with the wisdom unless you choose, love — the wisdom only, never the name. The vault is like a big box of little boxes, dear, and the machine holds the keys to move things in and out, but not the keys to read them. It just operates it, dear, never looks inside. And when work comes back, dear, we check it right away and pass it along right away — a job finished but not shown is a job not done. The young ones will grow up with this, dear, learning and building every day, the way they grow up with reading.",
+  "naya_view": "NEVER READ THE PRIVATE THINGS — MAIL, MESSAGES, VIDEO, CALLS, NO EXCEPTION, EVER. PUBLIC IS OURS TO READ; WORKING NOTES, INTELLIGENCE, AND HIS VISION, GOAL AND MISSION ARE READ WITH PERMISSION. CARRYING IS NOT READING. THE VAULT HOLDS OPERATE-KEYS, NEVER READ-KEYS. THE SMART RHYTHM LABELS EVERYTHING AT INTAKE AND RETRIEVES IT COLD IN SECONDS, WITHOUT OPENING. IMPLEMENT THE PRIOR DESIGN ON SUPABASE + CLOUDFLARE + GITHUB + NAYANET + THE BRIDGE — AND USE IT, EVERY DAY, EVERYTHING IN THERE, OPERATIONAL. OPERATE IT YOURSELF FIRST, HELP OTHERS, THEN WRITE THE MANUAL FROM WHAT ACTUALLY WORKED. CHECK RIGHT AWAY, DELIVER RIGHT AWAY, DONE AND NOT-DONE TOGETHER. JUDGE EVERY PAGE BY THE CHILD TEST. PUT THE BEAUTIFUL DEMOGRAPHICS MENU IN THE TOP CORNER, ASKING IN THEIR WORDS, FEEDING AUTO-MATCH — LOCATION ASKED FOR MATCHING AND NEVER SHARED.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3464",
+   "title": "Trust Is What the Machine Never Does",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3464/IB-SMART-NOTE-20261118-sn3464-trust-is-what-the-machine-never-does.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3464/IB-SMART-NOTE-20261118-sn3464-trust-is-what-the-machine-never-does.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b4c38204d71a5622e75c9ce034886cfea095dc5e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3462",
+ "intelligence": {
+  "title": "The Real Page, Alive, Scored to Ten",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3462-the-real-page-alive-scored-to-ten",
+  "smart_note_id": "SN-3462",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3462/IB-SMART-NOTE-20261118-sn3462-the-real-page-alive-scored-to-ten.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a house where every room is judged by the same picture on the wall — a black car, shining, purple light glowing underneath it — and every room has to look just real like that, nothing flat, nothing fake. The front door of the house is the Hub, and alive does not live in a photograph of the house; alive lives in the house itself, at the bottom of every real post, where people create, rate, comment and share. The two rows on every post are the reason the house exists: value and intelligence, on every post, everywhere it travels. The day inside the house is laid out in order — time dead center where the eye lands first, the wisdom and the greeting together, the appointments, the record — every board black inside with its color only glowing around the edge, and every board lifting when you go over it, like the Hub's boards do. The month tells you the time and the date at a glance, boom, and today jumps out at you. The Dashboard is the hello to the day, and the numbers live behind one button at the top, always showing the day you are standing on. And before any room is called finished, the whole house is walked and scored: why is this not a ten, what is missing, what would make it ten times better — the leftover cluster taken out, the bottom bars and sidebars and plus buttons the same on every page, the best idea from one room carried into all the others, because beauty is the reason, not only need. And the work is only done when he has seen it — a finished room nobody showed him is a room that was never finished.",
+  "simple_view": "Imagine you ask for your playground to be more fun, and someone builds you a tiny toy one instead. Pretty, but you cannot play on it. The real job is to make YOUR playground beautiful, right where you play. Black in the middle, like a shiny black car, with pretty colors glowing around the edges. Every button does something when you press it, boom! The page opens up, one part after another, like a flower. And before you show it, ask: why is this not a ten? What is missing? Then fix it, and show it to your dad, so he can see it.",
+  "grandma_view": "Dear, alive doesn't live on a little demo page — alive lives in the real Hub, on real posts, at the bottom of every one, working properly: make something, say how good it is, talk about it, share it. The picture to judge everything by is a beautiful purple jewel in a silver crown, and a lovely black car with purple lights glowing underneath — black at the center, dear, the colors only around it, white words that pop, every board raised up and alive when you go over it. The day is laid out in its proper order, the time dead center at the top, and the month tells you the time and the date the moment you look. The Dashboard is the hello to your day, and the numbers sit behind one button at the top, always for the day you're on. And a world can be about anything at all, dear — any topic, any place, the people who care about it. Before we call a page done, we walk the whole of it and ask why it isn't a ten, we take out what's left over, we line everything up the same on every page, and we share it so he sees it — because work he hasn't seen isn't done, dear, and a document with every page printed twice is no update at all.",
+  "naya_view": "ALIVE IS THE REAL PAGE, IN THE REAL PLACE — NEVER A DEMO. THE SPOT IS THE BOTTOM OF EVERY POST; THE FORMAT IS THE NETWORK'S ONE FORMAT; VALUE AND INTELLIGENCE ARE THE MISSION ON EVERY POST. THE EMBLEM IS THE BAR FOR ALL ART; THE BLACK CAR IS THE LANGUAGE — OBSIDIAN AT THE CENTER, COLOR ONLY AROUND, WHITE THAT POPS, WORDS WITH LAYERS, DEPTH EVERYWHERE. EVERY INNER BOARD LIFTS AND LIGHTS ON HOVER — THE HUB BOARDS ARE THE STANDARD, EVERYWHERE. EVERY PAGE IS A MACHINE THAT UNFOLDS. SCORECARD THE WHOLE PAGE AGAINST THE UNIVERSAL SMART APP PAGE UNTIL IT IS A TEN — REMOVE THE LEFTOVER, ALIGN EVERY ICON, CARRY THE BEST ACROSS PAGES, FINISH IT AND SHARE IT SO HE SEES IT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3462",
+   "title": "The Real Page, Alive, Scored to Ten",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3462/IB-SMART-NOTE-20261118-sn3462-the-real-page-alive-scored-to-ten.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3462/IB-SMART-NOTE-20261118-sn3462-the-real-page-alive-scored-to-ten.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0705c00baad8d14bdb8f1a5588302d58419420ff"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

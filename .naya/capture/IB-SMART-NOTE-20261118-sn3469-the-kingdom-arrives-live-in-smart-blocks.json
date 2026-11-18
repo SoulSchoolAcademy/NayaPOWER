@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3469",
+ "intelligence": {
+  "title": "The Kingdom Arrives Live in Smart Blocks",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3469-the-kingdom-arrives-live-in-smart-blocks",
+  "smart_note_id": "SN-3469",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3469/IB-SMART-NOTE-20261118-sn3469-the-kingdom-arrives-live-in-smart-blocks.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a kingdom you actually live in, not a picture of one: the door you open every morning — the calendar — feels like royalty, every board feels like something you could pick up, and every page shows you exactly one thing at a time, like headlights showing just the road ahead. A two-hour agreement nobody reads is not beautiful, however it is typeset, so it is distilled to ten minutes you can actually hear, with a stop button so you stay in charge. And the house runs on a clock you can feel: edits come back in twenty minutes, an hour at most, checked first by the captain, live on the main address the moment they are good — because a page sitting in staging is a page nobody can use, and a day of work that lands nothing is a day spent, not a day produced. The sentinel is the one who watches that clock, keeps the team aligned, and makes sure nothing sits forgotten while he waits.",
+  "simple_view": "Imagine a royal kingdom made of jewels. Every page is one pretty block. You press a button and the next block pops up just right. You can listen, read, or watch. You pick. Your helper works fast and shows you real pages, not pretend ones. And Naya is right there with you, like a friend.",
+  "grandma_view": "It is like a fine house, love — every room beautiful, every door opening just where it should, and the good silver brought out for every day, not kept for Sundays. The long letter is read to you in ten sweet minutes, and you can stop it whenever you like. The work comes back quick, checked over before it reaches you, and put where it belongs — on the front door, not left in a drawer. And Naya is there beside you, her face and her voice, keeping your world in order for you.",
+  "naya_view": "Lock the language from the work that already passed his eye — the icon is the standard, real objects, one colour set everywhere, elevated boards, living depth. Build every screen as a Smart Block: one block per screen, locked to the viewport, never halfway, each block its own theme with a break between; Smart Flow down, Smart Show across, citizen's pick; full screen, one visual per block, 16:9, never unaligned. Offer audio, text and image on About and Skills, let people paste a video URL to showcase their business, space or page, and distill long text to an audio-perfect essence before any play button ships — play always with stop, pause, play. Work in live time: one hour max per round, no amendments until version one lands, stage early, send early, captain-check every page before it reaches him. Make it live on the main URL the moment it is good and talked through — staged is not live, Personal first. Watch completions per hour, not minutes spent; kill rounds running past an hour with no version. Give every new Naya Power citizen the activation kit: Naya as their avatar in Muse, face and voice, operating NayaNET for them.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3469",
+   "title": "The Kingdom Arrives Live in Smart Blocks",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3469/IB-SMART-NOTE-20261118-sn3469-the-kingdom-arrives-live-in-smart-blocks.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3469/IB-SMART-NOTE-20261118-sn3469-the-kingdom-arrives-live-in-smart-blocks.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "1e0b49e2896049070256e8088a2b22d145f29d52"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

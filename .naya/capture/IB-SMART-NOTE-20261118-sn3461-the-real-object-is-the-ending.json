@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3461",
+ "intelligence": {
+  "title": "The Real Object Is the Ending",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3461-the-real-object-is-the-ending",
+  "smart_note_id": "SN-3461",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3461/IB-SMART-NOTE-20261118-sn3461-the-real-object-is-the-ending.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a room full of real things: jewels you could pick up, black balls with sharp stars, boards that are black and still, lit only by a thin line around the edge and a soft light underneath. Nothing flat, nothing gray, nothing washed over the top — and everything you touch answers back, pushing in, lighting up, doing something. At the bottom of every note sits the same ending, so a reader can say two things at once: what it is worth, and how smart it is. One row could never say both, and a LIKE button next to a ten-star scale is a weaker duplicate of the scale itself. The picture he chose is the authority for that ending, not the proposal before it — so the build makes his picture move, in his picture's colors, and the open color question is named and held, not settled quietly by a builder. That is the whole evening in one room: the objects real, the light restrained, the touch felt, the verdict twofold, and his eye the final judge.",
+  "simple_view": "Imagine every icon is a shiny jewel you could pick up, not a flat gray shape. A little black ball holds the number, and it sits inside its tile, lit in its own color. The star balls are black, with no yellow paint on top, so the stars stay sharp. The boards are black too, with just a little light under them and around the edge. Every button pushes in when you touch it, lights up, and does something. At the bottom of each note, two rows of stars ask how much it is worth and how smart it is.",
+  "grandma_view": "Dear, every little icon should be a raised jewel, round and real — never a dull gray flat shape — and the best ones already exist, so we take those very same ones and use them here. The number that tells you how many new things there are is a black ball with a white number, sitting neatly inside its tile, lit in the color of the tile it sits on. The star balls stay deep obsidian black, with no yellow glow smeared over them, so the stars shine sharp. The boards stay black too, with only the smallest perfect amount of light underneath and around the edge. When you touch a button, you feel it push in and out, light up, and do something — so clear that a child and a grandma can both use it. And at the bottom of every note, two rows of stars say what it is worth and how clever it is, made alive from the very picture he chose.",
+  "naya_view": "Build no gray flat icons anywhere — every icon the nicest elevated, almost jewel-like icon, a real object, a ball not a flat circle; harvest the Personal icons verbatim and make no new ones; keep only the three-line menu control as it is. Make the notification a black obsidian ball with a white number, inside the tile, lit around it in the tile's own color, never stuck on a corner. Keep the star balls obsidian black with no yellow glow on them — light behind or around, never over. Keep glow underneath only, a restrained rim around the edge, a perfect amount, and the boards obsidian black. Judge every board, button, and icon by objectnality — could you pick it up? Make every control answer the touch: push in and out, light up, move, do stuff. End every Intelligent Block with the twin rank — VALUE gold, INTELLIGENCE emerald, two rows of ten, one tap ranks — with no LIKE and no points minted from ranks. Build the rating footer from his picture, active and alive, VALUE purple and INTELLIGENCE blue as shown, every icon a real 3D object, breathing and orbit, with LOVE the purple jewel heart, no points text, and dictation inside the composer. Change no color until he rules.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3461",
+   "title": "The Real Object Is the Ending",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3461/IB-SMART-NOTE-20261118-sn3461-the-real-object-is-the-ending.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3461/IB-SMART-NOTE-20261118-sn3461-the-real-object-is-the-ending.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6a63dd7b31af3071cc612975f6ca76f1718aef38"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

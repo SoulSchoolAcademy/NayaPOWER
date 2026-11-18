@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3477",
+ "intelligence": {
+  "title": "His Voice, His Icons, One Bar Everywhere",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3477-his-voice-his-icons-one-bar-everywhere",
+  "smart_note_id": "SN-3477",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3477/IB-SMART-NOTE-20261118-sn3477-his-voice-his-icons-one-bar-everywhere.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a house where the host's own voice greets you at the door — not a recording of a stranger pretending to be her — and where every sign on the wall is the one the owner painted himself, hung exactly as painted, nowhere copied by hand. The rooms you enter are the same rooms you already know: the messenger is the living room you sat in yesterday, rearranged, not rebuilt. One low bar runs along the bottom of every room, with the same five doors in the same order, and it only rises when you have actually arrived at the bottom and paused — it never jumps at you mid-step. A door that opens onto the wrong room is taken off its hinges rather than left to mislead the next guest. And the letters in the drawer stay put: the ones marked keep stay forever, the rest are tidied only when the owner says so, and if the key is lost the housekeeper says she cannot get in right now — she never claims the drawer is empty.",
+  "simple_view": "Shawn talks, and you hear his real voice. No robot voice. You can listen to a chat, or watch Naya talk. Both sit under the page, out of the way. The pictures on the side are the ones Shawn drew. No one draws them again. One bar lives at the bottom of every page. It pops up once, calmly, and then it stays. If a door goes to the wrong place, it comes off. And no one throws your letters away unless you say so.",
+  "grandma_view": "It is like hearing your grandson's own voice on the telephone, love — not a machine reading his words back to you. The pictures on the wall are the ones he drew himself, framed as he drew them, and nobody traces over them with a steadier hand. The little bar at the bottom of the page is like the tray by the front door: the same five things in the same places, in every room, and it only slides out when you have reached the bottom and stopped to look. A door that leads you to the wrong room gets taken off, not left to confuse the next visitor. And your letters sit in the drawer where you left them — the ones you marked keep stay forever, and if the key is lost, the honest thing is to say the drawer cannot be opened just now, never that it is empty.",
+  "naya_view": "Replace the robotic agreement audio with Naya's real voice, two options below the agreement page and never in the way: the podcast (Shawn and Naya in conversation, from the notebook-explainer script) and the video (Naya narrating first person, from the audio script) — build nothing until the video exists, and build from the settled assignment, not the superseded one. Transcribe Shawn's uploaded recording once — the two uploads are identical — and report the full transcript, word count, voice count, and which script it matches, so the recording takes its correct place among the two options. Remove the Dashboard's Smart Notes, Inbox and Lists doors; keep the nine-dot sidebar and the clean scrolling middle. Put the Hub's bottom bar — Personal, Business, Space, Ecosystem, plus — on all pages, popping up only when the reader has stopped at the bottom for a second, never sticky, never repeating, then holding. Build the sidebar and the bar only from his uploaded icon files, verbatim, never redrawn or substituted. Ship every walk question with three pickable answers in Naya's voice inside the box plus a Full Custom door; let Skip store nothing, let Speak render words live, let the guide explain in plain words with takeable examples; morph the proven Personal page into the messenger, harvested byte for byte. Report mail state as UNKNOWN under key loss, never zero, and gate every destructive default on his explicit go.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3477",
+   "title": "His Voice, His Icons, One Bar Everywhere",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3477/IB-SMART-NOTE-20261118-sn3477-his-voice-his-icons-one-bar-everywhere.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3477/IB-SMART-NOTE-20261118-sn3477-his-voice-his-icons-one-bar-everywhere.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c70c3dd89e4c0750732a50f719ffa24b38b71709"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

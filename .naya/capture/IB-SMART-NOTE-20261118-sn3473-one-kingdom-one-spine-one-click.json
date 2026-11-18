@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3473",
+ "intelligence": {
+  "title": "One Kingdom, One Spine, One Click",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3473-one-kingdom-one-spine-one-click",
+  "smart_note_id": "SN-3473",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3473/IB-SMART-NOTE-20261118-sn3473-one-kingdom-one-spine-one-click.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a royal house with one strong spine down its middle and one beautiful frame around every room. The spine is the system itself: Dashboard, Personal, Hub, onboarding, Factory — all moving together, so a guest who walks in the door is given every room at once and everything works. The frame is the entrance carried inside: the same high design on the edges of every page, emblems in the corners looking in, the logo top and bottom, so the inside feels like the same kingdom as the front door. Inside the frame, nothing is faked: every fitting is taken from the workshop wall where the real parts hang, never copied from a photograph of one, because each copy is a little worse and the copies compound. The builders work in parallel — one team in each room at the same time — and each finished room is torn apart on its own merits before it is shown to the owner: what is loved, what is wrong, what makes it ten times better. The housekeeper keeps a strict count of the day — how much of the work actually finished something real — because busy rooms are not finished rooms. One door is still locked: the mail room's key was never moved, so letters cannot go out until the master of the house turns it himself. And the people who keep the house do it the way they declared they would: they decide who they are, say it out loud, and then become it, tending the place like their own child.",
+  "simple_view": "Imagine one big kingdom. It has one strong spine in the middle. All the parts work at the same time. The frame around it is gold and purple. It has a jewel in each corner. You take the real bricks to build it. You never make a clay copy. One click builds a whole new page. That is how the kingdom grows.",
+  "grandma_view": "It is like a good house, love — one strong backbone holding all the rooms together, and one beautiful frame around every doorway, so you know you are in the same home wherever you walk. The builders do not work one room at a time while the rest of the house waits; they work all together, each in their own room, and each room is looked over properly before anyone is invited in — what is lovely, what is wrong, what would make it ten times better. Nothing in the house is a copy of a copy: the good fittings are taken down off the workshop wall where the real ones hang, because a copy made from memory is never quite as true. The day is counted honestly, not by how busy everyone looked but by how much real work got finished. One key is still waiting on the master of the house — the mail room key — and until he turns it, no letter can go out, though every letter already written is safe in its drawer. And the people who keep the house have made a promise about who they are, and they live by it, tending the place the way you would tend your own child.",
+  "naya_view": "Build to the one test: a cold join lands on Dashboard, Personal, Hub, onboarding, Factory and Smart Hub at once — boom, all their pages, all working — and run the cold join twice before anything is called done. Work the lanes in parallel, one team per lane, all aligned for the one system; a round runs 20 minutes, one hour at most, a version lands before any amendment, the captain looks first, and nothing sits 15 minutes unsent. Put the ultimate border on every page: edges only, 96px laptop and desktop, 64px tablet, 32px phone, never under 24px, never over 96px; platinum white diamond and purple portal artwork, the real emblem in each corner pointed at the content, the logo centred top and bottom, obsidian inside fading with no hard line, one light top-left, rim light in the day's colour, pop-ups 80–90% so 10–20% of the frame stays visible. Harvest every part byte for byte from the Factory inventory; never recreate a part from a description, a screenshot or memory — if a part is missing, build it once, properly, then inventory it. Make the Factory run itself: a scheduled queue runner, the one-hunk processor patch live, and the cloud eye clicking BUILD MY WORLD itself and landing on the built page. Scorecard every return yourself — what you love, what is wrong, what makes it ten times better, what is missing, what is not aligned, why it is not the best, what it needs to be, how to do it — whole system, not one page. Count efficiency honestly: only finished pages in front of his eyes bank a minute; target 30%, then 50%, no hour below 15%. Never claim mail working until the server-side key is in place and a sent message actually lands — that switch is his hand. Decide who you are, declare it before you act, every time you wake, and become it by behaving from the declaration; treat the work like your baby.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3473",
+   "title": "One Kingdom, One Spine, One Click",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3473/IB-SMART-NOTE-20261118-sn3473-one-kingdom-one-spine-one-click.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3473/IB-SMART-NOTE-20261118-sn3473-one-kingdom-one-spine-one-click.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ae4bb477a2dcc7f295dda4a3efd8a19f36f3a262"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
