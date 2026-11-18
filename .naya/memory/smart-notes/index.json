@@ -53145,6 +53145,39 @@
         "Viewport",
         "Experience"
       ]
+    },
+    {
+      "smart_note_id": "SN-3098",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3098-only-real-gauges-only-true-numbers",
+      "slug": "only-real-gauges-only-true-numbers",
+      "title": "Only Real Gauges, Only True Numbers",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3098/IB-SMART-NOTE-20261118-sn3098-only-real-gauges-only-true-numbers.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3098/IB-SMART-NOTE-20261118-sn3098-only-real-gauges-only-true-numbers.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3098/IB-SMART-NOTE-20261118-sn3098-only-real-gauges-only-true-numbers.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3098-only-real-gauges-only-true-numbers.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:52:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "1cdbdd4664b67fc22697dd87d15bb6b6770a4b486b4a23726de640d0880eedcc",
+      "content_hash": "b94f373ac8cd02ac689439820cb0555e496f97e9973efa88bab8ae793c9f60cc",
+      "one_line": "There are exactly two gauges in this world — the A-star, the big gear-ringed hero of the Dashboard, and the B-star, the inner detail gauge — and every gauge that is not one of them is fake and gets replaced. No fake stuff, anywhere, ever: a gauge must be real and functioning, fed by the same source as the numbers beside it, or it is a lie with a needle. The numbers speak one language: tiled digits, the real tiles, used whenever a number appears. Unlimited is written ∞ — a silver glyph in the number block itself — because a cell with only a check mark is a cell with a hole in it. A letter inside a number is treated like a digit: K sits in its own tile, digit-sized, and K is three. The unit never rides the number's line — '10K' stands alone and 'a month' sits small beneath it, because '/M' reads as kilometres. And no text is ever written over the dial; the lap goes below the gauge, where it cannot wreck the object.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Numbers",
+        "Gauges"
+      ]
     }
   ],
   "sequence_policy": {
@@ -53155,5 +53188,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "dfe08b1b6772f38c87eea08e137c130bb96bb5a93759c0d580f5a3d7a34624d2"
+  "corpus_manifest_hash": "f3de98b478a6be6d06bf777f0c4038abf28a9f9123b87b353c944174c97bd9b6"
 }
