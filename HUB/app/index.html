@@ -7379,7 +7379,12 @@ window.NayaNotif = window.NayaNotif || {
     window.__hubPeopleWired = true;
     document.addEventListener('click', function (e) {
       var t = e.target && e.target.closest ? e.target.closest('.lens-tab') : null;
-      if (t) window.NayaHubPeople.refresh();
+      /* ROUND 2d - deferred: a lens click REBUILDS the rail (live: the
+         #hubPeopleList element is replaced), and a synchronous refresh
+         reads the stale lens and renders into the detached old list.
+         One task later the rebuild is done, the lens is live, the list
+         is the new one. */
+      if (t) setTimeout(function(){ window.NayaHubPeople.refresh(); }, 0);
     });
   }
   railR.append(railRHead, peopleSec, navR);
@@ -7670,7 +7675,12 @@ if(wall&&rail&&wall.parentNode){
     var tab = lens === 'personal' ? 'public' : (lens === 'activity' ? 'naya' : 'personal');
     window.pcRenderRailForTab(tab);
   };
-  window.NayaHubPeople.refresh();
+  /* ROUND 2d - first render DEFERRED one task: a synchronous refresh here
+     runs while HubView is still building (railR not appended, shell not in
+     the document), so getElementById('hubPeopleList') is null and the
+     render no-ops - live: 0 rows on load, 13 after a manual refresh. The
+     timeout fires after the mount, when the live lookup finds the list. */
+  setTimeout(function(){ window.NayaHubPeople.refresh(); }, 0);
 /* the four buttons: chat + mail open the instant message in place; audio and
    video calls are not here yet — the buttons say so plainly instead of
    opening a composer that pretends to be a call. */
