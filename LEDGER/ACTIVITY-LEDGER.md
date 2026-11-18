@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1293,6 +1293,14 @@ _Last updated: 2026-11-18 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1528 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
+**Task:** Disclosure-decision packet: lifecycle filter on pending Smart Note entries, live vs inert split
+
+**Receipt:** `twelve-lane-receipts/t1528-lane11.md`
+
+**Evidence:** Verified: receipt exists (self-scored 9.5); verifier re-run cold with fresh output, census identical to parent (688 total / 26 True / 646 False / 16 pending / 0 unresolvable / 38 duplicate-ID), fresh preview JSON byte-identical to parent's; lifecycle filter run with own script (pending 16 -> live 6, idx 0,1,28,107,381,681, inert 10 SUPERSEDED, matc
+
+### ✅ t1528 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
 **Task:** Disclosure-decision packet for 6 live pending entries
 
 **Receipt:** `twelve-lane-receipts/t1528-lane11.md`
@@ -1322,6 +1330,14 @@ _Last updated: 2026-11-18 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1528-lane11.md`
 
 **Evidence:** VERIFIED: packet sha ec77b561...a61e4b60a3, fresh preview sha b618a698...670b5 (byte-identical to parent preview), pending-split script sha de784902...0d24, extraction script sha b774db04...fbdf, corpus sha 238ebe9c...ff5, mirror tip 6c60c328...a85 all recomputed from live bytes and MATCH the receipt pins; mirror git status clean. Clears 9.5 becaus
+
+### ✅ t1527 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent read-only verification of t1527 dispatcher reconcile (checks a-f on live bytes)
+
+**Receipt:** `twelve-lane-receipts/t1527-lane1.md`
+
+**Evidence:** Verified: receipt exists; checks (a)-(f) re-derived from live bytes 09:16-09:20 UTC 2026-10-24 (claimed/done/ 295 entries, claimed/ root, receipts, rotation walk 15->14->13, broadcast mirrors counted, disk-vs-rotation set equality proven); ten-thing accounting 10/10 landed; addendum finished-state detected and reported. Score 9.0. Why not 9.5: veri
 
 ### ✅ t1527 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -1357,6 +1373,14 @@ _Last updated: 2026-11-18 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1526 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
+**Task:** Read-only verification of night-dispatcher t1526 queue moves from live bytes
+
+**Receipt:** `twelve-lane-receipts/t1526-lane1.md`
+
+**Evidence:** Verified: receipt exists (11,724 bytes); 4 moved briefs checked in claimed/done/ with matching receipts and lane-feed sign-outs; discrepancies named honestly (check (d) 3 PASS / 1 FAIL, race D1 + one stale brief premise); read-only authority held, rotation left untouched on purpose. Score 9.0. Why not 9.5: queue state NOT verified clean — one named
+
+### ✅ t1526 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
 **Task:** Night-dispatcher t1526 queue verification — D1 discrepancy named
 
 **Receipt:** `twelve-lane-receipts/t1526-lane1.md`
@@ -1389,6 +1413,14 @@ _Last updated: 2026-11-18 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1524 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
+**Task:** Adjudicate t1523 hard flag on t1522-lane12 'scorer 9.0' citation; file addendum
+
+**Receipt:** `twelve-lane-receipts/t1524-lane1.md`
+
+**Evidence:** Verified: addendum hidden_files/twelve-lane-receipts/addendum-t1522-lane12-scorer-score.md exists, sha c92850b6... MATCHES the receipt pin; ledger line 5904 confirms t1516 lane 6 scorer score 9.0 with SHA-truncation reason; all four receipts' mtimes/SHAs identical before and after filing (no-modification proof). Clears 9.5 because: a false correcti
+
+### ✅ t1524 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
 **Task:** adjudicate t1523 flag on t1522-lane12 scorer-9.0 citation
 
 **Receipt:** `twelve-lane-receipts/t1524-lane1.md`
@@ -1413,6 +1445,14 @@ _Last updated: 2026-11-18 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1523 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** Artifact audit of gap-t1516-lane6, t1515-lane12/t1522-lane1 verification chain, and t1522-lane12
+
+**Receipt:** `twelve-lane-receipts/t1523-lane11.md`
+
+**Evidence:** Verified: audit artifacts retrieval/audit-t1523-lane11.py and .json exist; all recomputed SHAs matched at audit time and re-verified live this tick (prereg 8135f525..., arm 857cc64f..., sealed report bfed3ae4..., corpus f3a97a11..., sealed catalog ff644a..., live lessons 379af5db... 36 lines). Score 9.0. Why not 9.5: its one hard flag was WRONG — '
+
+### ✅ t1523 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** audit of t1522-lane1, t1522-lane12, t1516-lane6 receipts (artifact-by-artifact)
 
 **Receipt:** `twelve-lane-receipts/t1523-lane11.md`
@@ -1426,6 +1466,14 @@ _Last updated: 2026-11-18 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1523-lane11.md`
 
 **Evidence:** VERIFIED: audit script sha 6f72316d...eec and JSON sha 16941033...85c recomputed from live bytes (goal-root retrieval/ base) and MATCH; 9 SHA pins across the three audited receipts re-verified matching, both semantic-arm recounts reproduced, quoted contract/heartbeat/map/health strings confirmed against live bytes. Why not 9.5: the audit's headline
+
+### ✅ t1522 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** CONNECT unpark check: room contracts vs registry/heartbeat/map/booking/service + brain evidence
+
+**Receipt:** `twelve-lane-receipts/t1522-lane12.md`
+
+**Evidence:** Verified: receipt exists with 3-pass scorecard; CONNECT + CONNECTIONS + six sibling rooms read; PARKED-HONEST verdict (specification, not production proof); mirror git status clean, no merges/wiring. Its t1516-lane6 'scorer 9.0' line later adjudicated CORRECT by t1524 (ledger line 5904), so no defect stands. Score 9.0. Why not 9.5: contracts alone 
 
 ### ✅ t1522 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -1450,6 +1498,14 @@ _Last updated: 2026-11-18 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1522-lane12.md`
 
 **Evidence:** VERIFIED: mirror contract header confirmed live (HUB/ROOMS/05-CONNECT.md: HUMAN-DIRECTOR-DIRECTED TARGET CONTRACT, SPECIFICATION NOT PRODUCTION PROOF); mirror git status clean after the run; brain-evidence line 't1516-lane6: scorer 9.0 with a gap filed on SHA truncation' is CORRECT against the scorer ledger (t1516 lane 6 scored 9.0, SHA-truncation 
+
+### ✅ t1522 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent recompute of t1515-lane12 semantic-decomp numbers from sealed bytes
+
+**Receipt:** `twelve-lane-receipts/t1522-lane1.md`
+
+**Evidence:** Verified: prereg sha 8135f525... MATCH, arm script 857cc64f... MATCH, sealed report bfed3ae4... MATCH, sealed catalog ff644a... MATCH, corpus json f3a97a11... MATCH (all re-derived live this tick). Fresh re-run byte-identical to sealed report; HOLD-OPEN verdict reproduced; @1 tie (2/28) caught honestly. Score 9.0. Why not 9.5: re-run shared the par
 
 ### ✅ t1522 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -53418,6 +53474,12 @@ _Last updated: 2026-11-18 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261118-0043 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall report 20261118-0043: 31 briefs evaluated, all refused
+
+**Evidence:** Verified: sweep log hidden_files/brief-queue/claim-sweep-20261118-0043.log exists with 31 ATTEMPT lines (29x exit 7 second-seat authorship + 2x exit 2 routing-prose); queue 31 confirmed three ways (rotation queued=31, brief-queue file list, receipt set-diff vs 23:39 receipt empty both directions); cap honored (3,868s since prior stall receipt, outs
 
 ### ✅ gate-stall-20261117-2339 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
