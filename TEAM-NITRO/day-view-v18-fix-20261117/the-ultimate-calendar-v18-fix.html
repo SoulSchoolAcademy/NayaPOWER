@@ -319,7 +319,20 @@
       .weekrow .wk-ico::before{content:"";position:absolute;top:2px;left:3px;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.9),rgba(255,255,255,.25) 55%,transparent 75%);pointer-events:none}
       .weekrow .wk-ico::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1.5px solid transparent;border-top-color:color-mix(in srgb,var(--dc) 70%,#ffffff);border-right-color:color-mix(in srgb,var(--dc) 22%,transparent);animation:orbitspin 90s linear infinite;pointer-events:none}
       .weekrow>span:nth-child(even) .wk-ico::after{animation-duration:120s;animation-direction:reverse}
-      .weekrow .wk:active .wk-ico{transform:scale(.97)}
+      /* CALENDAR FIX 2 — DAY FOLLOW-ON (F2): the round-2 press rule targeted
+         .wk, a class the day weekrow never uses (its cells are <span
+         class="wk-col">), so it matched NOTHING — and the day file had no
+         weekrow hover rule at all. Retargeted to .wk-col, and the month's
+         hover harvested verbatim (month lines 325 + 359; only the selector
+         changes): the whole column lifts + lights in its own weekday colour
+         (25% glow), the ball lifts again + lights (45%). Transitions are the
+         month's own .18s ease (month lines 324 + 360) — without them the lift
+         snaps instead of lifting. */
+      .weekrow .wk-col{transition:transform .18s ease,box-shadow .18s ease}
+      .weekrow .wk-col:hover{transform:translateY(-2px);box-shadow:0 0 10px color-mix(in srgb,var(--dc) 25%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 8px 16px rgba(0,0,0,.5)}
+      .weekrow .wk-ico{transition:transform .18s ease,box-shadow .18s ease}
+      .weekrow .wk-col:hover .wk-ico{transform:translateY(-2px);box-shadow:0 0 12px color-mix(in srgb,var(--dc) 45%,transparent),inset 0 2px 3px rgba(255,255,255,.4),inset 0 -8px 12px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.5)}
+      .weekrow .wk-col:active .wk-ico{transform:scale(.97)}
       .weekrow .wk-word { display: inline-flex; align-items: baseline; gap: 1px; }
       .weekrow .wk-l {
         /* Dark obsidian letter body, the day's colour as rim + glow —
@@ -2277,6 +2290,15 @@
               renderNotifDetail();
             });
           });
+          /* CALENDAR FIX 3 (R4-day) — ARM THE NBLOCKS HERE: this function
+             (re)builds the three .nblock scope cards, and every caller
+             runs AFTER renderCategories — so the round-2 arm (inside
+             renderCategories) always ran BEFORE these nodes existed, and
+             the nblocks were never observed: 0 lit at any scroll, ever.
+             Arming here covers every rebuild path (openDay, unfold,
+             scope tap); the observe-once guard in armScrollLight makes
+             repeat arming safe. */
+          armScrollLight();
         }
 
         /* One world's menu for this day — rows with living counts.
@@ -2452,8 +2474,8 @@
           renderTopGreeting();
 
           /* Appointments tile */
-          var apptRows = dayAppts.length ? dayAppts.map(function (a) {
-            return '<div class="tile-appt-row"><span class="tw">' + fmtTime(a.time) + '</span><span class="tt">' + escapeHTML(a.title) + "</span>" + (a.meet ? '<span class="meet" style="flex:none;font-size:var(--type-small);font-weight:800;letter-spacing:.06em;padding:5px 11px;border-radius:999px;border:1px solid var(--d3);color:#bfeaff">Meet</span>' : "") + "</div>";
+          var apptRows = dayAppts.length ? dayAppts.map(function (a, idx) {
+            return '<div class="tile-appt-row"><span class="tw">' + fmtTime(a.time) + '</span><span class="tt">' + escapeHTML(a.title) + "</span>" + (a.meet ? '<span class="meet" style="flex:none;font-size:var(--type-small);font-weight:800;letter-spacing:.06em;padding:5px 11px;border-radius:999px;border:1px solid var(--d3);color:#bfeaff">Meet</span><button type="button" class="pill" data-join="' + idx + '" aria-label="Join the Smart Meet at ' + fmtTime(a.time) + '" style="flex:none">Join \u2192</button>' : "") + "</div>";
           }).join("") : '<p class="tile-empty">Nothing booked yet — the day is open.</p>';
 
           /* Timeline 6 AM – 9 PM — the day's spine. Appointments sit
@@ -2619,6 +2641,12 @@
           if (typeof IntersectionObserver === "undefined") return;
           if (!scrollIO) { scrollIO = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("lit"); scrollIO.unobserve(e.target); } }); }, { threshold: 0.25 }); }
           document.querySelectorAll("#screen-day .tile, #screen-day .nblock").forEach(function (el) {
+            /* CALENDAR FIX 3 (R4-day) — observe once: re-arming runs after
+               every render (renderCategories + renderNotifBar), and a
+               re-rendered node is a NEW element; the flag keeps each live
+               node observed exactly once. */
+            if (el.__scrollArmed) return;
+            el.__scrollArmed = true;
             if (!el.style.getPropertyValue("--dc")) el.style.setProperty("--dc", SCROLL_SPECTRUM[scrollIdx++ % SCROLL_SPECTRUM.length]);
             scrollIO.observe(el);
           });
@@ -2707,6 +2735,16 @@
             openDoor(door);
             var m = $("bkMeet");
             if (m && m.getAttribute("aria-pressed") !== "true") m.click();
+          });
+          /* CALENDAR FIX 3 (DAY5) — JOIN IN APPOINTMENTS ITSELF: the tile
+             row's Join buttons (see openDay) are wired here beside the
+             tile's own buttons — same index into dayApptsFor as the door,
+             same room. The door's own [data-join] wiring is untouched. */
+          wrap.querySelectorAll("[data-join]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var sorted = dayApptsFor(keyOf(sel));
+              openMeetRoom(sorted[parseInt(btn.getAttribute("data-join"), 10)]);
+            });
           });
           armScrollLight();
         }

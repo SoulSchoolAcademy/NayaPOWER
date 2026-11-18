@@ -348,7 +348,6 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
       .weekrow .wk-ico::before{content:"";position:absolute;top:2px;left:3px;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.9),rgba(255,255,255,.25) 55%,transparent 75%);pointer-events:none}
       .weekrow .wk-ico::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1.5px solid transparent;border-top-color:color-mix(in srgb,var(--dc) 70%,#ffffff);border-right-color:color-mix(in srgb,var(--dc) 22%,transparent);animation:orbitspin 90s linear infinite;pointer-events:none}
       .weekrow .wk:nth-child(even) .wk-ico::after{animation-duration:120s;animation-direction:reverse}
-      .weekrow .wk:active .wk-ico{transform:scale(.97)}
       .weekrow .wk.today-col .wk-ico {
         box-shadow:
           0 0 12px color-mix(in srgb, var(--dc) 45%, transparent),
@@ -358,6 +357,12 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
       }
 .weekrow .wk:hover .wk-ico{transform:translateY(-2px);box-shadow:0 0 12px color-mix(in srgb,var(--dc) 45%,transparent),inset 0 2px 3px rgba(255,255,255,.4),inset 0 -8px 12px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.5)}
 .weekrow .wk-ico{transition:transform .18s ease,box-shadow .18s ease}
+      /* CALENDAR FIX 3 (F2) — PRESS AFTER HOVER: the press rule sat before
+         the hover rule (line 351 vs 359); same specificity, so hover won
+         while hovering and press never showed (eye 05:45Z). The press rule
+         now sits AFTER the hover rule — same declarations, only the order,
+         exactly as the day file already does (press rule last). */
+      .weekrow .wk:active .wk-ico{transform:scale(.97)}
 .days{flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
 /* ---- DAY TILE — Living Obsidian, seven layers ---- */
 .tile{--dc:#8e24aa;position:relative;text-align:left;min-height:64px;color:#fff;overflow:hidden;border-radius:16px;padding:10px 10px 8px;cursor:pointer;display:flex;flex-direction:column;
@@ -614,18 +619,25 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
 .honest{border-left:3px solid var(--violet);background:#1a1128;border-radius:6px;padding:10px 12px;margin:12px 0;color:#fff;font-size:17px;box-shadow:0 6px 16px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.14)}
 .mobileonly{display:none}
 @media (min-width:741px) and (max-width:860px){
-  /* CALENDAR FIX 2 (R5) — 741-860px EXACT FIT: the desktop tilerow overran the
-     cell by ~6-14px here (checker Fix 12: ~14px at 741, ~6px at 800), wrapped,
-     and grew every row ~30px. One row now: tile padding 3px/side, tilerow gap
-     4px, VIEW compact (9px, as at phone width), day-tiles at their fluid
-     small size, wisdom/chips hidden (phone compaction, same as <=740px). */
-  .tile{padding:5px 3px 4px}
-  .tilerow{gap:4px}
+  /* CALENDAR FIX 3 (R5-741) — the fix-2 band fit was arithmetic-only and
+     still failed in render (eye 05:45Z): (a) rows overlapped 10px — the
+     tile's min-height:64px exceeds the 53.4px rows, so min-height:0 here
+     and the tile takes the row; (b) VIEW wrapped on two-digit days — the
+     true margin was ~0px (grid gap is 7px, not 4px; the 4px tilerow flex
+     gap was omitted): tile padding 2px/side, tilerow gap 2px + nowrap,
+     number gap 2px — margin +3.6px at 741 (VIEW 39.2px, eye-measured);
+     (c) the 28px i-jewel covered the dayname end ("SUN · 96") — the
+     dayname (~95px) cannot clear a 28px jewel in a 92px cell, so it is
+     hidden here exactly as at <=740px (its weekday duplicates the
+     weekrow above the column). */
+  .tile{padding:5px 2px 4px;min-height:0}
+  .tilerow{gap:2px;flex-wrap:nowrap}
   .viewbtn{min-height:22px;font-size:9px;padding:2px 6px;letter-spacing:.04em}
   .daynum .os-mini-tile{width:clamp(20px,2.8vw,42.7px)}
   .daynum .os-mini-tile .cap{height:clamp(3.3px,.47vw,7.1px)}
   .daynum .os-mini-tile .rd{height:clamp(20px,2.8vw,42.7px);line-height:clamp(20px,2.8vw,42.7px);font-size:clamp(18px,2.52vw,38.4px)}
-  .tilewisdom,.chiplane,.minitext,.more,.spark{display:none}
+  .daynum .os-mini-num{gap:2px}
+  .tilewisdom,.chiplane,.minitext,.more,.spark,.dayname{display:none}
 }
 @media(max-width:740px){
   .shell{height:100dvh;padding:8px 8px 9px;gap:8px}
@@ -656,11 +668,11 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .board{min-height:0;border-radius:17px;padding:6px}
   .days,.weekrow{gap:3px}
   .weekrow{font-size:17px;padding:4px 0}
-  .tile{min-height:46px;padding:3px 3px;border-radius:10px;text-align:center}
+  .tile{min-height:74px;padding:2px 3px 3px;border-radius:10px;text-align:center}
   .dayname{font-size:11px}
   .tile.today{border-width:2px}
   .tilewisdom{display:none}
-  .viewbtn{min-height:18px;font-size:9px;padding:1px 6px;letter-spacing:.04em}
+  .viewbtn{min-height:16px;font-size:9px;padding:1px 6px;letter-spacing:.04em}
   .chiplane,.minitext,.spark,.more,.dayname{display:none}
   .dot{width:7px;height:7px;border-radius:2px;transform:rotate(45deg);
     background:linear-gradient(135deg,color-mix(in srgb,var(--dc) 70%,#fff),var(--dc) 50%,#050607);
@@ -682,6 +694,21 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .daynum .os-mini-tile{width:19px;border-radius:4px}
   .daynum .os-mini-tile .cap{height:3.2px}
   .daynum .os-mini-tile .rd{height:19px;line-height:19px;font-size:17px}
+}
+@media(max-width:740px){
+  /* CALENDAR FIX 3 (R5-390 + item 5) — PHONE SHELL SCROLLS, ROWS HOLD 74px:
+     at phone widths the header stack (~486px at 390, eye-measured) leaves
+     the 5-row grid short of its minimum, so rows overlapped ~23px at
+     390x600 and the grid collapsed to height 0 at 390x400 with no scroll
+     to reach it. The shell now grows past the viewport (min-height
+     100dvh) and the page scrolls — the grid keeps full 74px rows and
+     the last row is reachable at every phone height. The 74px rows are
+     also what clears the i-jewel from the VIEW pill at 390x800: pill
+     bottom 45.2px, jewel top 50px — +4.8px of daylight on all 30 tiles
+     (the jewel stays 20x20, untouched). At 390x800 the page scrolls
+     ~68px; at 635x800 it still fits with no scroll. */
+  .shell{height:auto;min-height:100dvh}
+  .days{grid-auto-rows:minmax(74px,1fr)}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 </style></head>
@@ -1073,7 +1100,7 @@ function timelineHTML(ds){
    a near-white #f5f5ff. Icons are keys into the harvested ICONS map —
    one distinct glyph per door (Laws §8). */
 const DOORS=[['Dashboard','cube','#8e24aa','Daily stats'],['Personal','user','#0f52ba','My activity'],
- ['Business','briefcase','#07925f','Work and income'],['Space / Thing','world','#d4a017','My communities'],
+ ['Business','briefcase','#07925f','Business and income'],['Space / Thing','world','#d4a017','My communities'],
  ['Local','news','#c2410c','My area'],['Provincial','landmark','#c62828','My province'],
  ['Global','globe','#a21caf','The world'],['Notes + Smart Notes','note','#8e24aa','Notes + Smart Notes']];
 function showPanel(){
