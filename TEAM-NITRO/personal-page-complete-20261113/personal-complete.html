@@ -28123,9 +28123,11 @@ window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "LEARN — wisdom. I turn what
 function pcTr(x){ try{ return window.mwTr?window.mwTr(x):x; }catch(e){ return x; } }
 function pcCard(p, live){
   var init=(p.alias||'?')[0].toUpperCase();
-  /* HEADER 2026-11-15 H5 — cards hold orb + name + % + info + CONNECT, nothing
-     else. The motto lives behind the info pop-up; Chat/Mail/Audio/Video live
-     there too (the pop-up's actions). */
+  /* HEADER 2026-11-15 H5, FOLLOW-ON 3b 2026-11-18 — one line per row: orb +
+     name + % + info + the four contact buttons (Message / Smart Mail /
+     Audio / Video), all centred on the same line. NO CONNECT in the row:
+     sending the message IS the request for connection. The motto lives
+     behind the info pop-up; the pop-up still carries the four ways too. */
   var mark = '';;
   return '<article class="pc-card" data-pc-alias="'+esc(p.alias)+'" style="--pc:'+pcColorFor(p.alias)+'">'
     + '<div class="pc-card-top"><button type="button" class="fc-pick-av" data-pc-orb="'+esc(p.alias)+'" aria-label="Open profile: '+esc(p.alias)+'" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</button>'
@@ -28135,9 +28137,11 @@ function pcCard(p, live){
 /* CORRECTIONS 2026-11-13 (Parts 3/4/7) — the rail, rebuilt on the same
    pcCard form: real aliases only (the test fixture is deleted; the seed
    carries the twelve sisters + Shawn, never a test identity); every card
-   one mini Intelligent Block; CONNECT sends a connect offer into the
-   "Connect requests" Smart List (a person ref — the grounded store, see
-   the record); the rail follows the ACTIVE feed tab; online first (no
+   one mini Intelligent Block; FOLLOW-ON 3b: the row carries the four
+   contact buttons — message and mail are automatic, sending the message
+   IS the request for connection (the connect offer itself still lives on
+   the popover / profile / people tiles, same delegated handler); the rail
+   follows the ACTIVE feed tab; online first (no
    online source grounds on this page today, so the online section is
    honestly empty and the seed family is all there is — never shown as online). */
 var PC_TAB_SETS={personal:null,public:['sophia','thora','terra','zoe','wrena','iris','ruth'],naya:['emesa','astraea','mira','vera','aurelia','shawn']};
@@ -28155,20 +28159,25 @@ function pcConnectRequested(alias){
 }
 function pcCardWithConnect(p, live){
   var base=pcCard(p, live);
-  var req=pcConnectRequested(p.alias);
-  var fail=null;
-  try{ fail=localStorage.getItem('pc-connect-fail-'+p.alias); }catch(e){}
-  /* R5 Part 5 (amended) — CONNECT + the GREEN ACTIVE NUMBER beside it, on every
-     card: the seed pct for the seed family, the endpoint pct for live matches. */
+  /* FOLLOW-ON 3b (2026-11-18) — one line per row: ball, name, %, i, the four
+     contact buttons. NO CONNECT in any row: message and mail are automatic —
+     sending the message IS the request for connection; acceptance is by
+     action (they answer back), never by a button. The four buttons are
+     harvested from the profile board's Reach them row + the popover's
+     actions: same glyphs, same colours — Message sapphire, Smart Mail gold,
+     Audio emerald, Video purple. The % is the seed pct for the seed family,
+     the endpoint pct for live matches. */
   var pct=(typeof p.pct==='number')?p.pct:null;
   var pctHtml=(pct===null)?'':'<span class="pc-pct r4-tiles" title="'+pcTr('Match')+'">'+pcTiles(pct)+'</span>';
-  var btn='<button type="button" class="pc-connect-btn'+(req?' requested':(fail?' failed':''))+'" data-pc-connect="'+esc(p.alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested \u2713':(fail?'Not sent \u2014 try again':'CONNECT'))+'</button>';
-  var note=req?'<p class="pc-req-note">Request sent \u2014 waiting for them to accept.</p>':(fail?'<p class="pc-req-note">'+esc(fail)+'</p>':'');
-  var at=base.indexOf('</article>');
-  if(at<0) return base;
   var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button>';
-  var row='<div class="pc-connect-row">'+pctHtml+infoBtn+btn+'</div>'; /* HEADER-V2 2026-11-14: the info sits beside the %, top-right, fixed — long names cannot move it. */
-  return base.slice(0, at)+row+note+base.slice(at);
+  var acts=[['chat','\u270e','#0f52ba','Message'],['mail','\u2709','#d4a017','Smart Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
+  var btns='';
+  for(var i=0;i<acts.length;i++){
+    btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
+  }
+  var at=base.lastIndexOf('</div></article>');
+  if(at<0) return base;
+  return base.slice(0, at)+pctHtml+infoBtn+btns+base.slice(at);
 }
 
 window.pcRenderRailForTab=function(tab){
@@ -28364,6 +28373,25 @@ document.addEventListener('click', function(e){
    feed's topic pull is the Smart Tabs ribbon below (author/category pills). */
 })();
 </script>
+<style id="followon-3b-people-rail-20261118-css">
+/* FOLLOW-ON 3b (2026-11-18) — one line per row: ball, name, %, i, message /
+   mail / audio / video, all centred on the same horizontal line. NO CONNECT
+   in any row. Buttons harvested from the profile board's Reach them row +
+   the popover's actions — same glyphs, same colours (Message sapphire
+   #0f52ba, Smart Mail gold #d4a017, Audio emerald #07925f, Video royal
+   purple #8e24aa) — as icon-only obsidian circles after the bottom-bar
+   icons: board black inside, white glyph as a real object, rim + underglow
+   in the button's own deep colour, alive on hover, press sinks 0.97. */
+#pcRailList .pc-card{padding:10px 12px;}
+#pcRailList .pc-card-top{flex-wrap:nowrap;gap:6px;}
+#pcRailList .pc-card-top .fc-pick-av{width:40px;height:40px;font-size:17px;flex:none;}
+#pcRailList .pc-card-top .pc-pct{flex:none;display:flex;align-items:center;}
+#pcRailList .pc-card-top .pc-info{flex:none;width:32px;height:32px;}
+#pcRailList .pc-act-btn{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;padding:0;background:linear-gradient(135deg,#07070b,#020203);border:1.5px solid var(--ac,#8e24aa);color:#fff;font-size:17px;line-height:1;text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 8px rgba(255,255,255,.35);box-shadow:0 4px 10px rgba(0,0,0,.55),0 0 10px -2px var(--ac,#8e24aa);cursor:pointer;font-family:inherit;transition:transform .18s ease,box-shadow .3s ease;}
+#pcRailList .pc-act-btn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.55),0 0 18px -2px var(--ac,#8e24aa);}
+#pcRailList .pc-act-btn:active{transform:scale(.97);box-shadow:0 2px 6px rgba(0,0,0,.55),0 0 8px -2px var(--ac,#8e24aa);}
+#pcRailList .pc-act-btn:focus-visible{outline:2px solid var(--ac,#8e24aa);outline-offset:2px;}
+</style>
 <style id="pc-corrections-css">
 /* ═══ PERSONAL CORRECTIONS 2026-11-13 (Emesa) — all new rules in one place ═══ */
 /* Part 2 — the gauge's alive shimmer (the width transition already moves it
