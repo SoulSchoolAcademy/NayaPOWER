@@ -512,7 +512,20 @@ assert welcome_sha.startswith("d367efe1"), "welcome sha is not the AGREEMENT FLO
 # longer advances the deck; the deck advances via Keep reading.
 # Gentle scroll-snap on the deck (proximity) toward one block
 # per viewport. Welcome, walk, template, identity shas unchanged.
-assert unfold_sha.startswith("c295061a"), "unfold sha is not the AGREEMENT FLOW-END FIX1 unfold sha (2026-11-18: Play is speech-only, scroll-snap)"
+# AGREEMENT FLOW-END FIX1 CONDITIONS (2026-11-18, conditions seat -
+# agreement-flow-end-fix1-20261118/work/edit-cond.py): the unfold sha
+# moves c295061a -> 984d87af: checker Condition 1 - the visual-phase slot
+# rule (.letter-beat.fp-smart-visual .lb-showcase img) goes
+# object-fit:cover -> contain, so the 4:3 letter images show whole
+# on /agreement too (the two circular-photo cover rules stay);
+# checker Condition 2 - the unfold player's 2.5s watchdog now
+# writes 'Voice not available on this device - read below' into
+# the player's tip element (#playTip, reusing the existing unused
+# .play-note style) instead of returning to idle silently.
+# Watchdog mechanics unchanged (warm-up, pick, assignment, clear
+# on start/end/error). Welcome, walk, template, identity shas
+# unchanged. Divider (.ib-foot-logo) untouched - the eye's call.
+assert unfold_sha.startswith("984d87af"), "unfold sha is not the AGREEMENT FLOW-END FIX1 CONDITIONS unfold sha (2026-11-18: visual slot contain, no-voice tip)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
 # work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b
