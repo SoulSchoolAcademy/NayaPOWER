@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-18 02:12 UTC_
+_Last updated: 2026-11-18 03:14 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9003
-- ✅ Verified (8+): 8915
+- **Total scored actions:** 9005
+- ✅ Verified (8+): 8917
 - 🟡 Partial (5–7): 79
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
@@ -26,7 +26,7 @@ _Last updated: 2026-11-18 02:12 UTC_
 | Team 9 | Naya Smith | 670 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 927 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 575 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 458 | 9.2 | 9.5 |
+| Team 12 | Naya Herald | 459 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -1257,6 +1257,7 @@ _Last updated: 2026-11-18 02:12 UTC_
 - **distill-daily-20261117-lane0:** 1 actions, avg 9.0/10
 - **gate-stall-20261117-1610:** 1 actions, avg 9.0/10
 - **gate-stall-20261117-1713:** 1 actions, avg 9.0/10
+- **gate-stall-20261117-1816:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -2601,7 +2602,7 @@ _Last updated: 2026-11-18 02:12 UTC_
 - **t42-lane5:** 1 actions, avg 9.0/10
 - **t0042-lane9:** 1 actions, avg 9.0/10
 - **t42-lane9:** 1 actions, avg 9.0/10
-- **t0045:** 20 actions, avg 9.3/10
+- **t0045:** 21 actions, avg 9.4/10
 - **t45-lane12:** 1 actions, avg 9.5/10
 - **t0045-lane12:** 1 actions, avg 9.5/10
 - **t0052:** 50 actions, avg 9.0/10
