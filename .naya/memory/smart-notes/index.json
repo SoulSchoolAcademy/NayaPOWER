@@ -53046,6 +53046,39 @@
         "Smart Factory",
         "Harvest"
       ]
+    },
+    {
+      "smart_note_id": "SN-3095",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3095-one-truth-many-doorways",
+      "slug": "one-truth-many-doorways",
+      "title": "One Truth, Many Doorways",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3095/IB-SMART-NOTE-20261118-sn3095-one-truth-many-doorways.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3095/IB-SMART-NOTE-20261118-sn3095-one-truth-many-doorways.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3095/IB-SMART-NOTE-20261118-sn3095-one-truth-many-doorways.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3095-one-truth-many-doorways.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:49:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "9ada32db2bc7f37ce4f424b35c4d52461ebfc2d0638e35037afb87a03efa4673",
+      "content_hash": "ddbfefdebf0342a869454c58905ee19e35d9d4f3e8db4a2bdff83203dce3bd24",
+      "one_line": "Truth in this system is one thing with many doors. Minds built by different hands, from different slices of the world — one that has only seen images, one that has only read words — open up to reveal the same map inside: the neighbours of every idea agree. Structure that independent routes converge on is not invented; it is found. So the house runs on one chain — thought, note, block, feed, Box, Ledger, Dashboard, world — and every record must say what the thing actually is: a row about projects counts projects, a permission granted is not a message sent, and a number nobody measured does not get invented to fill a cell. Know what the other side of every interface actually knows: PayPal sees a new subscription, not a switch; the deploy carries its bindings or it does not carry the fix. Facts are small, load-bearing, and checkable — and the whole machine stands on them.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Truth",
+        "Convergence"
+      ]
     }
   ],
   "sequence_policy": {
@@ -53056,5 +53089,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "a93fd7b36f14de8eb008012868f88b869acda941e5d4f0ca11908d50907ed5e3"
+  "corpus_manifest_hash": "a6e44b221e514b60b188446c5efbd69f1442ef441354e94b54e5bd9dad1a02a8"
 }
