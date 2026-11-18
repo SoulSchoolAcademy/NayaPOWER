@@ -59658,7 +59658,7 @@
       "registered_at": "2026-11-18T20:34:00Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-18",
-      "page_hash": "caf6da03e874ec9b0ae3e91627d6e1fbcae571a6b310475729bfb171056e0cf3",
+      "page_hash": "138a94758d2023caf3b4a39224c114cfe679d3204620189c9d5b802e7f3eafe6",
       "content_hash": "fa31e2cd9bf1e7c1d3d2abeafdbe77307ca0f7956584b28f14364a3a0f01100e",
       "one_line": "Building is cloning with parts replaced; knowing is one flow; and the flow includes telling. The build side: take the proven page, replace some parts, file any new part back into the Factory — and the Factory holds everything in order: the Operation Manual first, Project Intelligence second, the build third, because a builder who hasn't read the manual builds the wrong thing beautifully. The knowing side: she listens, distills it into a smart note, puts it in the Box, connects it to everything related, retrieves and applies it when needed, and verifies the result — memory that changes the next action is intelligence; a note filed and forgotten is dead. The telling side: every note filed is a note told — to the right people, by their choice, when it is live on the feed — specced in full, and honest that the auto-notify is not built yet. Even the numbering race lives here: two filings five seconds apart, one number, proved the guard must check at file time, because a sixteen-minute scan cannot see a same-minute filing.",
       "topics": [
@@ -59876,5 +59876,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "1a7ab53ea4adbf814c42d781a65b21a9e7296e546f43a698db24ba99106c1a10"
+  "corpus_manifest_hash": "6ffe13f82cdb86921467f627cd510198874c4e93e41a807ceb858fcb7e6745ac"
 }
