@@ -1,0 +1,92 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3412",
+ "title": "The Number Is the Hero",
+ "slug": "the-number-is-the-hero",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-18T20:12:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "On the Dashboard the number is the hero and the gauge is its frame — never the other way round. This family fixes the hierarchy: the hero number proportionate and legible, one gauge reused everywhere instead of a menagerie of dials, the gauge following the number it serves, boards checked by eye at real sizes, and Dashboard built first while later systems wait their turn. A gauge that decorates instead of measures, or a number shrunk to fit its ornament, both fail the same test: in one glance, does a stranger know the number and believe it?",
+  "human_view": "A car's dashboard puts the speed in big numerals in front of your face, and the little dials for oil and temperature off to the sides. Nobody would accept a car where the oil gauge was huge and the speed was tiny print. Same panel, same law: the number you steer by is the biggest thing you see.",
+  "child_view": "On a scoreboard at a football game, the score is HUGE — you can read it from the far end of the field. The little clock and the team logos are smaller. That's because the score is the most important thing. Pages work the same way: biggest thing = most important thing.",
+  "grandma_view": "My bank statement used to put the balance in the same small print as everything else, and I needed a magnifier and a quiet room. The new one puts the balance big at the top. Nothing about my money changed — but I finally know where I stand in five seconds. That's all this law is asking for.",
+  "ai_view": "Assert hero order in review: number first, gauge second, ornament last. Reuse the canonical gauge; flag any new dial as a defect. Verify proportions from rendered screenshots at phone and desktop widths, never from CSS values alone.",
+  "what_it_means": "Visual hierarchy is not taste; it is the order in which a stranger's eye receives the truth. When the ornament outranks the number, the page is lying politely — everything is present and nothing is communicated. The reuse rule compounds it: one gauge, mastered once and carried everywhere, means every page teaches the same reading habit, and a fix anywhere improves everywhere.",
+  "whats_inside": [
+   "The Hero Is the Number and the Gauge",
+   "Check the Viewpoint by Eye",
+   "Dashboard First — MAXESS Waits",
+   "Eighteen Real, Eighteen Missing",
+   "Academy Last, Ten as Banner, Who-It's-For Featured"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "System",
+   "Lesson",
+   "Craft"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 8,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2507",
+     "title": "The Hero Is the Number and the Gauge"
+    },
+    {
+     "sn": "SN-2508",
+     "title": "Check the Viewpoint by Eye"
+    },
+    {
+     "sn": "SN-2509",
+     "title": "Dashboard First — MAXESS Waits"
+    },
+    {
+     "sn": "SN-2510",
+     "title": "Eighteen Real, Eighteen Missing"
+    },
+    {
+     "sn": "SN-2511",
+     "title": "Academy Last, Ten as Banner, Who-It's-For Featured"
+    },
+    {
+     "sn": "SN-2512",
+     "title": "Cold-Drill W46 Repaired and Passing"
+    },
+    {
+     "sn": "SN-2513",
+     "title": "Gray Text Is Out"
+    },
+    {
+     "sn": "SN-2514",
+     "title": "One Gauge, Reused Everywhere"
+    },
+    {
+     "sn": "SN-2515",
+     "title": "Bottom Bar Only at Page Bottom"
+    },
+    {
+     "sn": "SN-2516",
+     "title": "Numbers Proportionate"
+    }
+   ]
+  },
+  "machine": "1) The number outranks its gauge in size, contrast and first-glance order on every mount. 2) One canonical gauge component is reused; new dial variants are defects unless the situation's standard is named. 3) Proportion checks are done by eye at real device widths, not from component specs. 4) Build order is honoured: the Dashboard's standard is finished before dependent surfaces borrow it.",
+  "why_it_matters": "The Dashboard is the citizen's instrument panel for their whole world. If its numbers whisper and its ornaments shout, every decision made from it is a little wrong. One hero hierarchy, reused, is what makes the panel readable at speed — and speed of true reading is the product.",
+  "how_it_connects": "This essence is batch 8's E3 panel; its raw family spans SN-2507 to SN-2516 (The Hero Is the Number and the Gauge → Numbers Proportionate), and it sits in the standing sequence of sixty essences that came before it — each one checked against the census coverage map for zero overlap before it was written.",
+  "what_is_in_it_for_you": "For you, Shawn, this means this stratum of the record no longer has to be re-read note by note: its law is stated once, whole, in words a cold reader can use — and the hundred raw notes beneath it are accounted for, by number, in the Distills line.",
+  "the_learning": "Make the number the hero, reuse the one true gauge, and judge proportion with your eyes on the real screen — hierarchy is a truth property, not a style."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3412/IB-SMART-NOTE-20261118-sn3412-the-number-is-the-hero.md",
+ "page_hash": "36f79558d46287fca23d8483dc4a9dcb5b71c149415d6ab433a76b55a22f7c07",
+ "content_hash": "ee6b71f04e3d7913a15b30354672f9a28b8221573528d3ee6d561524251a8a0c"
+}

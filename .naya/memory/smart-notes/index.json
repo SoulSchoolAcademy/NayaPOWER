@@ -59272,6 +59272,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3412",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3412-the-number-is-the-hero",
+      "slug": "the-number-is-the-hero",
+      "title": "The Number Is the Hero",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3412/IB-SMART-NOTE-20261118-sn3412-the-number-is-the-hero.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3412/IB-SMART-NOTE-20261118-sn3412-the-number-is-the-hero.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3412/IB-SMART-NOTE-20261118-sn3412-the-number-is-the-hero.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3412-the-number-is-the-hero.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:12:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "36f79558d46287fca23d8483dc4a9dcb5b71c149415d6ab433a76b55a22f7c07",
+      "content_hash": "ee6b71f04e3d7913a15b30354672f9a28b8221573528d3ee6d561524251a8a0c",
+      "one_line": "On the Dashboard the number is the hero and the gauge is its frame — never the other way round. This family fixes the hierarchy: the hero number proportionate and legible, one gauge reused everywhere instead of a menagerie of dials, the gauge following the number it serves, boards checked by eye at real sizes, and Dashboard built first while later systems wait their turn. A gauge that decorates instead of measures, or a number shrunk to fit its ornament, both fail the same test: in one glance, does a stranger know the number and believe it?",
+      "topics": [
+        "Distillation",
+        "Design",
+        "System",
+        "Lesson",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59282,5 +59315,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "2accfb64713e444e9a77286fef2572b0c0d109b6d30a1e8cc3c9507d426dffaa"
+  "corpus_manifest_hash": "70c40a7577aabbe8745436f40e40f1c20096bf924351c74d35de58ff36753f00"
 }
