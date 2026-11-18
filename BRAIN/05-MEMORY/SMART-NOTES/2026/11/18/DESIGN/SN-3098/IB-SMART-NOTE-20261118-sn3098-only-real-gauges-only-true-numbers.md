@@ -1,0 +1,51 @@
+# Only Real Gauges, Only True Numbers
+
+SN-3098 · DESIGN / DISTILLATION
+
+**Created:** 2026-11-18T00:52:00Z
+
+## IN A NUTSHELL
+
+There are exactly two gauges in this world — the A-star, the big gear-ringed hero of the Dashboard, and the B-star, the inner detail gauge — and every gauge that is not one of them is fake and gets replaced. No fake stuff, anywhere, ever: a gauge must be real and functioning, fed by the same source as the numbers beside it, or it is a lie with a needle. The numbers speak one language: tiled digits, the real tiles, used whenever a number appears. Unlimited is written ∞ — a silver glyph in the number block itself — because a cell with only a check mark is a cell with a hole in it. A letter inside a number is treated like a digit: K sits in its own tile, digit-sized, and K is three. The unit never rides the number's line — '10K' stands alone and 'a month' sits small beneath it, because '/M' reads as kilometres. And no text is ever written over the dial; the lap goes below the gauge, where it cannot wreck the object.
+
+## HUMAN
+
+Think of a car's dashboard. You trust the speedometer because it is connected to the wheels; a painted needle glued at a flattering angle would be a decoration that could kill you. Instruments earn their place by being wired to reality. And think of a price tag that reads '10KM' when it means ten thousand a month — the confusion is not the reader's failure; the tag was typeset by someone who wasn't imagining being read. Real instruments, honest labels: that is the whole law.
+
+## CHILD
+
+Imagine a toy speedometer on your bike that always points at 'super fast,' even when you are standing still. It is not a speedometer — it is a sticker. A real one moves when you move and rests when you rest. And when you write your age on your birthday poster, you write the number big and proud, and if something has no biggest number — like how many stars there are — you draw the sideways eight, the infinity sign, so nobody thinks you forgot to write the number at all.
+
+## GRANDMA
+
+It is like the kitchen scale that has served forty years: it reads true because its spring is honest, and everyone in the family cooks by it without a second thought. The day it starts flattering the flour, every recipe in the house quietly goes wrong. Instruments are promises. You keep very few of them — the good scale, the true thermometer — you keep them calibrated, and you never, ever hang a decorative one that merely looks the part, because someone will cook by it.
+
+## NAYA
+
+Use only the A-star and B-star gauges; replace any other gauge on sight. Wire every gauge and number to the same live source at the same moment; a static or decorative instrument is a defect, not a placeholder. Render every number in tiled digits; render unlimited as ∞ in the number block, silver-white, tile-sized. Treat letters inside numbers as digits (own tile, same size — K is three). Put the value on its own line and the unit small beneath it; the strings '/M' and '/mo' never appear. Never write text over a dial; annotations live below the object.
+
+## MACHINE
+
+1) Gauge inventory is closed: A-star (hero) and B-star (detail) only. 2) Every gauge and displayed number reads the same live source at the same moment; static instruments are defects. 3) Numbers render as tiled digits everywhere, including inside composite values. 4) Unlimited renders as ∞, silver-white, tile-sized, inside the number block. 5) Letters within numbers occupy their own digit-sized tiles (K = 3). 6) Units render on a separate line beneath the value, small; '/M' and '/mo' are forbidden strings. 7) No text is rendered over a dial face.
+
+Distills (Batch 6, 10 of 100): SN-2295 The Dashboard Language — Tiled Digits, the Real Gauge, the Orbs · SN-2318 "/M" Doesn't Read + Not the Real Numbers · SN-2321 Infinity for Unlimited — Every Cell Number + Text + Check · SN-2322 K Is Three — Gematria in the Number Tiles · SN-2336 The Real Gauges — No Fake Stuff · SN-2337 Smaller Gauge, No Text on the Dial · SN-2338 The A-Star / B-Star Gauge Law · SN-2344 Dashboard Gauge Fix Done — All Gauges Real · SN-2349 The Calculator — The Gauge Is the Hero · SN-2360 Depth on Naya: The Gauge Ring
+
+## WHAT IT ALL MEANS
+
+Numbers are this network's native language — the score, the ladder, the ledger, the living number that grows with you — so a fake gauge is not a design shortcut, it is counterfeit currency. The strictness (two gauges, one tile language, one source) is what makes the language learnable: a citizen who learns to read the Dashboard can read every page, because the instruments never change their meaning. And the small typographic laws — ∞ for unlimited, the unit beneath, K in its tile — are respect for the reader measured in milliseconds: comprehension that doesn't require a second look is value delivered before any feature runs.
+
+## WHY IT MATTERS
+
+This family exists because the failures kept recurring in miniature: a gauge that looked right and measured nothing, digits too big for their box wrapping into nonsense, unlimited cells reading as blanks, a lap label scribbled across the hero object. Each one taxed every reader and quietly taxed the brand — a machine that fakes its instruments will be suspected of faking its numbers, and in a network whose ledger is the product, suspicion is fatal.
+
+## HOW IT CONNECTS
+
+This essence is Everything Is a Real Object applied to the number language, drawing its parts from The Factory Holds the Parts, and its values feed The Money Chain Is Wired, where the ladder's numbers must read true at a glance. Its raw family is the gauge and number notes, SN-2295 to SN-2360.
+
+## WHAT IS IN IT FOR YOU
+
+For you, Shawn, this means every number you glance at — on the Dashboard, the chart, the calculator — is the real number, in the one language, from the one source, readable in the half-second a glance lasts. No decoding, no second look, no fake dials.
+
+## THE LEARNING
+
+Instruments are promises: two true gauges, one tile language, one live source — and a number that can't be read at a glance is not yet a number.

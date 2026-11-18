@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2914",
+ "intelligence": {
+  "title": "The Gematria Colour Code",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-the-gematria-colour-code",
+  "smart_note_id": "SN-2914",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2914/IB-SMART-NOTE-20261116-the-gematria-colour-code.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A colour system with no logic is decoration; a colour system with logic is alignment. The eye knows the difference in one glance: two Ts in two colours looks off, and \"looks off\" is the eye detecting a broken pattern before the mind can name it. The septenary wave gives every letter exactly one number and every number exactly one colour, so the whole interface can be checked the way a proof is checked — same letter, same colour, always, everywhere. The correction inside the correction is the lesson about the work: the captain's first map was a guess (rainbow spectrum), the settled record was already in the system (SN-2322, chakra), and the guess was corrected within the same pass because the background search surfaced the truth before the round built on the guess. Two errors were caught, not one: Shawn's \"E is gold\" and the captain's \"5 is blue\" — both wrong, both corrected by the same rule (K=3=gold settles E=5=cyan). And the hexes are harvested, never invented: a colour's hex comes byte-for-byte from the tiled-digit code, because an invented hex is a broken code with a prettier name.",
+  "simple_view": "Imagine every letter has its very own number, and every number has its very own colour — like a secret rainbow code for the whole universe! T is 7, and 7 is royal purple — so EVERY T is royal purple, always! Z is 1, and 1 is red! E is 5, and 5 is cyan — a beautiful blue-green, not gold! When every letter wears its own colour, everything lines up and looks beautiful — and you can just FEEL when it's right!",
+  "grandma_view": "It's like this, love — the universe has a colour code, like a rainbow with rules. Each letter has a number, each number has a colour, and the same letter always wears the same colour — that's what makes things line up and look beautiful. T is seven, and seven is royal purple. E is five, and five is cyan — not gold, dear, gold is three! When you follow the code, everything just falls into place and looks right. Break the code, and even a child can tell something's off.",
+  "naya_view": "Same letter, same colour, always. Never break it. The code is a help in design — when things line up, it just turns out beautiful.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2914",
+   "title": "The Gematria Colour Code",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2914/IB-SMART-NOTE-20261116-the-gematria-colour-code.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2914/IB-SMART-NOTE-20261116-the-gematria-colour-code.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "37b5310088860c37f657a48ae76e85f3011880c1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

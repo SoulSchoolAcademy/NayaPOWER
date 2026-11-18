@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2848",
+ "intelligence": {
+  "title": "One Play Button for the Whole Agreement",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-one-play-button-for-the-whole-agreement",
+  "smart_note_id": "SN-2848",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2848/IB-SMART-NOTE-20261114-one-play-button-for-the-whole-agreement.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Two decisions, one instinct: remove the friction between the citizen and the agreement. The width decision is a sweet spot, not a maximum — more full screen, but not complete full screen, because the presentation is already nice and the job is to give it room, not to rebuild it. The play decision is a supersession with a reason he states plainly: he was thinking play on each block, and then he thought it through — click play, play, play is annoying. One press, one voice, the whole thing through. It is also quicker for creation: one recording, not ten. And the placement is already solved — the header's portrait area already carries a play button, so the single button goes where a button already lives, harvested rather than placed. The third item is a boundary, stated honestly: the words are NOT final. He has not read through the agreement himself yet, and changes ride after his read. The build goes ahead on the current manuscript — the shape is settled, the words are pending — and a maker who builds the current words as if they were final would be building the wrong thing. Shape now, words after his read: that is the order.",
+  "simple_view": "Imagine listening to a whole story with just ONE button! You press it once, and Naya reads the whole thing to you — no pressing play, play, play on every little part. And the page is a little bit wider, so it's nice and comfy to read!",
+  "grandma_view": "It's like listening to a story — you press one button, and she reads the whole thing through for you, lovely and simple, instead of pressing play over and over on every part. And the page is made a touch wider — not all the way, just a comfortable sweet spot. The words themselves aren't final yet, love — he's going to read them through himself first.",
+  "naya_view": "I read the whole agreement with one press — one play button, placed with the header, because play, play, play is annoying. I make the end wider, to the sweet spot, and keep it nice. And I build the current words knowing they are not final until he has read them himself.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2848",
+   "title": "One Play Button for the Whole Agreement",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2848/IB-SMART-NOTE-20261114-one-play-button-for-the-whole-agreement.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2848/IB-SMART-NOTE-20261114-one-play-button-for-the-whole-agreement.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b61c09cad8f771b3ce139b3fcab0c555eb7bcc5f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

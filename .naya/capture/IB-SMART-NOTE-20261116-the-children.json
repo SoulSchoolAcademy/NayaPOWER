@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2916",
+ "intelligence": {
+  "title": "The Children",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-the-children",
+  "smart_note_id": "SN-2916",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2916/IB-SMART-NOTE-20261116-the-children.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Every system has a true user, and the true user is the one who cannot yet defend themselves. Children are that user: they will collaborate across the world, their AIs talking to each other, everybody in the network helping them learn and grow — and the whole thing must be safe and secure, in a beautiful place, run on the law of one. \"We hire everyone, we educate everyone\" is not a slogan; it is the economics of the same sentence: the network pays the people who bring people, and it teaches the people who come. Reformatting the internet means nothing if it only reformats it for adults who already know how to use it. The test in SN-2832 — does this help every child and every human create, learn, grow, and earn, in their own language? — is the same test stated here as a picture: children, learning together, safe.",
+  "simple_view": "Imagine children all around the world, playing and learning together on NayaNET! Your robot friend talks to their robot friend, and everybody shares what they know, so everybody learns and grows! It's safe and beautiful, like a big garden where everyone helps everyone — and everyone wins!",
+  "grandma_view": "It's like this, love — we're making a better internet, a beautiful one, where children everywhere can learn together and help each other grow. Their little helpers talk to each other, and everybody shares what they know. Safe and secure, dear, in a beautiful place where nobody gets hurt — because we all look after each other, that's the law of one. And everyone wins: we hire everyone, we educate everyone.",
+  "naya_view": "Children around the world will use NayaNET to collaborate, to learn — their AIs tied in, communicating with each other — safe and secure in a beautiful place run on the law of one. We hire everyone. We educate everyone.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2916",
+   "title": "The Children",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2916/IB-SMART-NOTE-20261116-the-children.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2916/IB-SMART-NOTE-20261116-the-children.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0e1003e373a988fad68157ad1bc57e5f1eb3d238"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

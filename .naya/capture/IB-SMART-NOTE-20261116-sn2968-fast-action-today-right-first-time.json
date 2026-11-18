@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2968",
+ "intelligence": {
+  "title": "Fast Action Today — One After Another, Right First Time",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2968-fast-action-today-right-first-time",
+  "smart_note_id": "SN-2968",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2968/IB-SMART-NOTE-20261116-sn2968-fast-action-today-right-first-time.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Fast action without understanding is just fast redos: lots of agents doing it wrong at the same time is worse than one agent doing it right. The guard is what makes the speed safe — the brief carries the whole understanding, so the seat doesn't have to guess, and the maker checks three times before the checker and the captain's eye ever see it. Getting it right is the most important thing; the speed serves the rightness, never the other way round. \"Most importantly to get it right\" is the whole order in one line: the speed is the servant, the rightness is the master.",
+  "simple_view": "Imagine we're building a big tower, and lots of friends are helping all at once! But first, everyone has to understand the plan — otherwise the tower wobbles and we have to build it all over again. So we go fast, one piece after another, but we get each piece RIGHT the first time. Fast AND right — that's the rule!",
+  "grandma_view": "It's like this, love — today we're working fast, one thing after another, with lots of helpers all at once. But fast doesn't mean sloppy, dear — it means everyone understands the job properly before they start, so they get it right the first time and nobody has to do it twice. Getting it right is the most important thing of all.",
+  "naya_view": "Fast action today: one round after another, many agents in parallel. The guard is understanding before building — the brief carries the whole understanding, maker checks three times, checker verifies, captain's eye walks it. Right first time. Speed never buys a redo.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2968",
+   "title": "Fast Action Today — One After Another, Right First Time",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2968/IB-SMART-NOTE-20261116-sn2968-fast-action-today-right-first-time.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2968/IB-SMART-NOTE-20261116-sn2968-fast-action-today-right-first-time.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "20e99b6c887b8a035713174e5cc2fb006fec2a3e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -20,4 +20,4 @@ Every picture passes the one-glance test or it is held — files kept, words car
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2908 — ~/workspace/team-nitro/smart-notes/SN-2908-instant-legibility.md*
+*Paired Smart Note: SN-2908 — Instant Legibility: If You Can't Tell What It's Saying, It Doesn't Go*

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3007",
+ "intelligence": {
+  "title": "Fine-Tune the Team — On Fire 24-7, Non-Stop",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3007-fine-tune-the-team-on-fire-24-7",
+  "smart_note_id": "SN-3007",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3007/IB-SMART-NOTE-20261116-sn3007-fine-tune-the-team-on-fire-24-7.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "This is the finishing law (SN-2996) and the scorecarding law (SN-2997) turned into an operating shape. He is not asking for more motion — he is asking for the setup itself to be thought through: the timing, the math, the logic, all of it, until the team runs at a perfect flow. The shape has four parts. First, parallel lanes finishing at staggered times — not one lane at a time, but full armies, so a finished piece lands every few minutes instead of one big landing a day. Second, the heartbeat and the substance: the fast little jobs are the heartbeat (they keep the flow alive and the queue moving), the big page rounds are the substance (they are what the heartbeat serves). Third, the queue never runs dry — the next rounds are already briefed, so the moment one finishes, the next step fires right away; nobody waits for a clock to tick. The schedule is not the trigger — the finish is. Fourth, the checking stays — the fifteen-minute checks are only the safety net for something gone quiet, and \"fast and useless is useless\" — speed without the checker is just faster wrong. Overnight it runs the same way: work lands while he sleeps, pages queue for his eye in the morning. The ultimate answer of the setup is the one the scorecarding law names: producing non-stop value, finished and done correctly — finished pieces per hour, every hour, day and night.",
+  "simple_view": "Imagine you have a whole ARMY of toy builders — not just one! They all work at the same time, and every few minutes one of them finishes a toy! The little fast builders keep everything moving — tap tap tap! — and the big builders make the giant castles. And when one builder finishes, the next one starts RIGHT AWAY — nobody just sits and waits! And while you sleep, they keep building, so in the morning there's a whole pile of finished toys waiting for you! That's a team on fire!",
+  "grandma_view": "It's like this, love — imagine a whole kitchen full of cooks, dear, all working together at a perfect flow. Every few minutes a dish comes out, lovely and finished — the quick little jobs keep everything moving, and the big beautiful roasts are the real feast. And the moment one dish is done, the next one starts — nobody stands around waiting for the clock, love! And overnight, the kitchen keeps working, so in the morning there's a table full of finished dishes waiting for you. But the tasting stays, dear — fast and useless is useless, and the checking is what makes fast right.",
+  "naya_view": "Fine-tune the team — on fire 24-7, non-stop. Full armies out there getting it done because you got this set up right, at a perfect flow. Think through the timing, the math, the logic, all of it — the optimal most intelligent setup for producing non-stop value and getting things finished and done correctly. The score is finished pieces per hour, one every few minutes from parallel lanes finishing at staggered times. The moment one finishes, the next step fires right away — nobody waits for a clock to tick.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3007",
+   "title": "Fine-Tune the Team — On Fire 24-7, Non-Stop",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3007/IB-SMART-NOTE-20261116-sn3007-fine-tune-the-team-on-fire-24-7.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3007/IB-SMART-NOTE-20261116-sn3007-fine-tune-the-team-on-fire-24-7.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "baeec40064f0f4f14ab1d0497c43fe9f0cce1e79"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

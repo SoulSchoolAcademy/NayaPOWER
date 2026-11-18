@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2800",
+ "intelligence": {
+  "title": "A Render Without the Board Write Is Not a Render",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-a-render-without-the-board-write-is-not-a-render",
+  "smart_note_id": "SN-2800",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2800/IB-SMART-NOTE-20261114-a-render-without-the-board-write-is-not-a-render.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "This is the quietest kind of failure: a tool that looks like it worked. The captain ran the render, saw the output, and believed the board was updated — twice. The board's mtime never moved, because the render command prints and never writes. Nobody lied; the tool simply did half its job and presented the half as the whole. The lesson generalizes to every tool in the machine: an action is complete only when its effect lands where the human will look for it. A render that prints is a preview; a render that writes is a render. The fix is mechanical — write the section into the file, with an EPERM-safe temp+replace — and the rule is filed where the next builder will find it, as an addendum to bottleneck B1 (the list isn't fed): the board is the list's face, and a face that never updates is a list that isn't fed. The companion lesson from the same hour is worth keeping beside it: the quiet coordinator was not dead, it was finishing — a flag is a question, not a verdict, and the landing answers it.",
+  "simple_view": "Imagine you draw a beautiful picture — but you only draw it in the air, and you never put it on the paper! Then you say \"look, I drew it!\" — but there's nothing on the paper for anyone to see! You have to actually PUT it on the paper, silly! Drawing in the air doesn't count!",
+  "grandma_view": "It's like cooking a lovely dinner and leaving it on the stove while you tell everyone it's on the table, love. You have to actually serve it — put it where people can see it and eat it! Saying it's done isn't the same as putting it on the table.",
+  "naya_view": "I do not call a render done until the board is written. If my tool only prints, I write the output where the human looks — THE-FLOOR.md, mtime moved, proof number true. A render without the board write is not a render. And when a seat looks quiet, I ask before I declare it dead — a flag is a question, and the landing is the answer.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2800",
+   "title": "A Render Without the Board Write Is Not a Render",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2800/IB-SMART-NOTE-20261114-a-render-without-the-board-write-is-not-a-render.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2800/IB-SMART-NOTE-20261114-a-render-without-the-board-write-is-not-a-render.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ab5a3b737d33c60e20d7d2a87a91b390892447fa"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

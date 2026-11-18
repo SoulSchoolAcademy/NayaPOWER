@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2893",
+ "intelligence": {
+  "title": "Harvest the Whole Feed, Not the Buttons",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-harvest-the-whole-feed",
+  "smart_note_id": "SN-2893",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2893/IB-SMART-NOTE-20261115-harvest-the-whole-feed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "This is the harvest law with its sharpest possible proof: the buttons were present, the counts were right, and the page was still empty — because a control without its mechanism is decoration. The maker had done the visible half (the tabs, the pills) and skipped the invisible half (the filter function, the data-topic wiring, the wall painter) — the half the citizen actually uses. Shawn's sentence names the rule the maker should have applied before the round: take the whole thing, working, and change only the labels. It is the same error as the schematic v1/v2 the same day (inventing a format instead of harvesting the chart) and the same correction: the proven thing exists, take it whole. The rider matters too: \"only the labels change\" is the budget for the harvest — labels are the adaptation, everything else is byte-for-byte.",
+  "simple_view": "Imagine you borrow your friend's amazing toy train — but you only take the shiny buttons and leave the tracks and the engine behind! You press the buttons and nothing happens! That's silly! You have to take the WHOLE train — tracks, engine, buttons, everything — and then it works just like your friend's!",
+  "grandma_view": "It's like this, love — you can't take the knobs off the cooker and expect to bake a cake. The knobs are lovely, but the oven is what does the cooking. Take the whole cooker, love — knobs and oven together — and change only the little labels if you must. That's how you get something that actually works.",
+  "naya_view": "I take the whole working feed — organizer, filter, wall, and all — and change only the labels. Buttons without their machine are decoration.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2893",
+   "title": "Harvest the Whole Feed, Not the Buttons",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2893/IB-SMART-NOTE-20261115-harvest-the-whole-feed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2893/IB-SMART-NOTE-20261115-harvest-the-whole-feed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a1d5d56578d07f104d25bab9b7430b3037556995"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

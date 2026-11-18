@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2967",
+ "intelligence": {
+  "title": "Make a Post, Beautiful",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2967-make-a-post-beautiful",
+  "smart_note_id": "SN-2967",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2967/IB-SMART-NOTE-20261116-sn2967-make-a-post-beautiful.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The composer is where the river starts — every post on every feed begins there. If the composer is confusing (which feed? which kind of post? who sees it?), the feed fills with mistakes. If the composer is beautiful and obvious, the feed fills with beautiful posts. And the bar is not \"does it work\" — it is \"is it the most beautiful post anyone has seen.\" A button you don't notice is a button that isn't there: he didn't notice the Private button, so the eye that explains private/public is not decoration, it is the fix. And the feed chooser at the top is the mistake prevented: posting to the wrong feed is the mistake the composer exists to stop.",
+  "simple_view": "Imagine you're about to draw a beautiful picture to show all your friends! First you pick which wall to hang it on, then you pick what kind of picture it is, then you draw it — and you can even talk instead of drawing! You can add up to nine photos, all together like a block. You can see how it will look before you hang it up. And there's a little eye that tells you who can see it. Then — post it!",
+  "grandma_view": "It's like this, love — when you make a post, it should be the most beautiful post anyone has seen. First you choose which feed it goes to, dear, then you pick what kind of post it is — and each kind tells you plainly what it is, so you never have to guess. You write your words — or speak them! — and you can add up to nine photos, all together. You see how it will look as you type, you pick when it goes out, and a little eye tells you who can see it. Then you post it. Lovely!",
+  "naya_view": "The composer, 10 out of 10: feed chooser at the top, each post type explained, name, words with speak, up to nine photos as a block with the size stated plainly, preview as you type, scheduler, private/public with an eye that explains, Post it. The post itself: the most beautiful post in the network.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2967",
+   "title": "Make a Post, Beautiful",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2967/IB-SMART-NOTE-20261116-sn2967-make-a-post-beautiful.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2967/IB-SMART-NOTE-20261116-sn2967-make-a-post-beautiful.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a9ff07237067b4d861ea95656fd7b1e84c7c9c3c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

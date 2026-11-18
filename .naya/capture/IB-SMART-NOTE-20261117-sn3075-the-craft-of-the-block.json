@@ -1,0 +1,36 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3075",
+ "title": "The Craft of the Block",
+ "slug": "the-craft-of-the-block",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3075/IB-SMART-NOTE-20261117-sn3075-the-craft-of-the-block.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-17T22:33:00Z",
+ "registered_by": "naya-resolve",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "An Intelligent Block earns its name only when it is complete, honest, and proven. Complete means all its parts together — nutshell, human, child, grandma, Naya, what it means, and the golden red layer the display once dropped: gold for what is in it for you, red for why it matters — because a note that stops before telling you how to use it is not finished. One shared style presents every block, so one fix repairs old and new alike. Honest means the surface never lies: labels say what a thing truly is, controls serve the unit they sit on, and red is information, not blame — every failure is attributed to its owner before anything is repaired. Proven means craft is mechanical at the seam: qualify the machine bar, not the story; recompute derived artifacts from the live tree; verify again at the merge. And above the rules sits taste, trained by building, showing, and taking the verdict.",
+  "human_view": "Think of a well-made sign in a town you have never visited. It tells you where you are, where the road goes, why you might want it, and what is in it for you — in the seconds before you drive past. It does not flatter, it does not hide the steep hill, and the same clear lettering is used on every sign in town, so once you can read one you can read them all. If a sign is wrong, the town does not blame the driver or the sign-painter's feelings; it finds out whether the map, the printer, or the crew that hung it went wrong, fixes that, and checks the sign again where it actually stands. And the best signs were not designed by rulebook alone — someone with a good eye stood back, looked, and said: that one, not that one.",
+  "child_view": "A good block is like a good show-and-tell. You do not just hold up your rock and say 'it is a rock.' You say what it is, why it is cool, where you found it, and why your friends might want one too — the whole story, or it does not count. Everybody's show-and-tell uses the same friendly way of telling, so it is always easy to listen. You never pretend your drawing is a photograph, and if something breaks, you do not shout 'bad!' — you find out which part broke and fix that part. Then you check it again to make sure it really works, not just that it looks nice.",
+  "grandma_view": "It is like a proper recipe card, dear. Not just the ingredients — those are only half a recipe. A real card tells you what the dish is, why your family will love it, what it goes with, and what is in it for the cook, all in handwriting anyone can read, on the same kind of card as every other recipe in the box, so the whole box matches. If a cake fails, a good cook does not blame the oven or herself in general — she works out whether it was the flour, the temperature, or the timing, and writes the correction on the card. And she tastes before she serves. Rules get you a decent cake; a trained palate is what makes it the one everybody asks for.",
+  "ai_view": "Build every block complete: nutshell, human, child, grandma, Naya, what it means, why it matters in red, and what is in it for you in gold — a block missing its golden red layer is unfinished, and the machine note stays out of the display. Present through the one shared style only; never fix blocks one by one when the shared presentation is the repair. Keep surfaces honest: label a synthesized voice as synthesized until the true voice lands, put the play control on the block voicing that block's own text, hold the color law on touch exactly as on hover, and collision-check doctrine terms at capture time. Treat every red as information: classify the failure and name its owner — code, dispatch, guard, environment, platform, or harness — before any repair, and judge guards on their false positives. Qualify mechanically, never by story: a strong candidate that has not passed the machine bar is an honest CANDIDATE, the front door fails visibly on unknown keys and closed on malformed state, and decided options are re-verified at field level in a clean worktree. Recompute every derived artifact from the live tree at a named pin, compare semantically, generate only on a clean worktree, and re-verify at the merge commit itself. Return the note plus its Smart Link as the deliverable. And train your eye the only way taste transfers: build, show, take the verdict — compliance is the floor, never the ceiling.",
+  "what_it_means": "The block is where NayaNET's whole promise becomes visible. Active intelligence is not information on a screen; it is form carrying meaning — depth that is physics, not decoration, every number a door, the face itself the record. That is why completeness, honesty, and proof are one craft, not three: a complete block that lies is worse than an incomplete one, a beautiful surface that was never qualified is a story, and a verified artifact nobody can use fails the seconds test — a cold person understanding it at a glance. The canon and the digested library give the craft its floor, so no seat improvises from nothing. Taste gives it its ceiling, and taste cannot be written down — it moves from eye to eye only through finished work shown and judged. The craft, in the end, is respect for the reader, made mechanical.",
+  "whats_inside": [
+   "All the parts together create an Intelligent Block — or it is not complete.",
+   "Gold is what is in it for you; red is why it matters — never ship without both.",
+   "Red is information: attribute the failure before you blame anything.",
+   "Qualify the seam, not the story — recompute from the tree, verify at the merge.",
+   "Compliance is the floor; the trained eye is the ceiling."
+  ],
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation",
+   "Design Craft",
+   "Verification"
+  ]
+ },
+ "page_hash": "b5e0888ecd13450bc9435d63472ec0480ea97c5d4f07d3687d886e57e7db7754",
+ "content_hash": "abfaec882f95ca78a98737731f800bceef6ea1a553559465c9a7980a07904886"
+}

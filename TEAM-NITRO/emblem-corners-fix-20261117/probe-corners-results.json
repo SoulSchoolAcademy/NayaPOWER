@@ -1,0 +1,602 @@
+[
+  {
+    "check": "C-EMBLEM-1920 emblem decodes 1800x2000 in-page",
+    "ok": true,
+    "detail": "{'w': 1800, 'h': 2000}"
+  },
+  {
+    "check": "C-ERRORS-1920 no page errors",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "check": "C-SIZE-1920 .cm-tl layout box (132, 161) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=132 oh=161 rect=206x196"
+  },
+  {
+    "check": "C-WHOLE-1920 .cm-tl fully inside viewport",
+    "ok": true,
+    "detail": "x=10 y=67 right=216 bottom=263 vw=1920 vh=999"
+  },
+  {
+    "check": "C-CUT-1920 .cm-tl medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-tl crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-tl medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-tl medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-tl rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(0.515038, -0.857167, 0.857167, 0.515038, -66, -80.5)"
+  },
+  {
+    "check": "C-SIZE-1920 .cm-tr layout box (132, 161) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=132 oh=161 rect=206x196"
+  },
+  {
+    "check": "C-WHOLE-1920 .cm-tr fully inside viewport",
+    "ok": true,
+    "detail": "x=1704 y=67 right=1910 bottom=263 vw=1920 vh=999"
+  },
+  {
+    "check": "C-CUT-1920 .cm-tr medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-tr crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-tr medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-tr medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-tr rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(0.515038, 0.857167, -0.857167, 0.515038, 66, -80.5)"
+  },
+  {
+    "check": "C-SIZE-1920 .cm-bl layout box (132, 161) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=132 oh=161 rect=206x196"
+  },
+  {
+    "check": "C-WHOLE-1920 .cm-bl fully inside viewport",
+    "ok": true,
+    "detail": "x=10 y=738 right=216 bottom=934 vw=1920 vh=999"
+  },
+  {
+    "check": "C-CUT-1920 .cm-bl medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-bl crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-bl medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-bl medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-bl rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(-0.515038, -0.857167, 0.857167, -0.515038, -66, 80.5)"
+  },
+  {
+    "check": "C-SIZE-1920 .cm-br layout box (132, 161) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=132 oh=161 rect=206x196"
+  },
+  {
+    "check": "C-WHOLE-1920 .cm-br fully inside viewport",
+    "ok": true,
+    "detail": "x=1704 y=738 right=1910 bottom=934 vw=1920 vh=999"
+  },
+  {
+    "check": "C-CUT-1920 .cm-br medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-br crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-br medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-br medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-1920 .cm-br rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(-0.515038, 0.857167, -0.857167, -0.515038, 66, 80.5)"
+  },
+  {
+    "check": "C-ANGLE-1920 four corners, four angles",
+    "ok": true,
+    "detail": "['matrix(0.515038, -0.857167, 0.857167, 0.515038, -66, -80.5)', 'matrix(0.515038, 0.857167, -0.857167, 0.515038, 66, -80.5)', 'matrix(-0.515038, -0.857167, 0.857167, -0.515038, -66, 80.5)', 'matrix(-0.515038, 0.857167, -0.857167, -0.515038, 66, 80.5)']"
+  },
+  {
+    "check": "C-CUT-1920 #crestCut defs present in the document",
+    "ok": true,
+    "detail": "True"
+  },
+  {
+    "check": "C-SEAL-1920 center crystal-N seal still present",
+    "ok": true,
+    "detail": "True"
+  },
+  {
+    "check": "C-COVER-1920 no corner overlaps text/input (scroll 0 + scrolled to bottom)",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "check": "C-READ-1920 title exact",
+    "ok": true,
+    "detail": "CERTIFICATE OF THE COLLECTIVE AGREEMENT"
+  },
+  {
+    "check": "C-READ-1920 certifies exact",
+    "ok": true,
+    "detail": "This certificate of the Collective Agreement certifies that"
+  },
+  {
+    "check": "C-READ-1920 name solid white",
+    "ok": true,
+    "detail": "rgb(255, 255, 255)"
+  },
+  {
+    "check": "C-READ-1920 no gray text",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "check": "C-READ-1920 no horizontal overflow",
+    "ok": true,
+    "detail": "scrollW=1920 clientW=1920"
+  },
+  {
+    "check": "C-EMBLEM-1920 data URI present, PNG head exact",
+    "ok": true,
+    "detail": "len=3539362"
+  },
+  {
+    "check": "C-EMBLEM-635 emblem decodes 1800x2000 in-page",
+    "ok": true,
+    "detail": "{'w': 1800, 'h': 2000}"
+  },
+  {
+    "check": "C-ERRORS-635 no page errors",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "check": "C-SIZE-635 .cm-tl layout box (64, 64) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=64 oh=64 rect=89x89"
+  },
+  {
+    "check": "C-WHOLE-635 .cm-tl fully inside viewport",
+    "ok": true,
+    "detail": "x=12 y=62 right=102 bottom=152 vw=635 vh=390"
+  },
+  {
+    "check": "C-CUT-635 .cm-tl medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-635 .cm-tl crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-635 .cm-tl medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-635 .cm-tl medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-635 .cm-tl rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(0.819152, -0.573576, 0.573576, 0.819152, -32, -32)"
+  },
+  {
+    "check": "C-SIZE-635 .cm-tr layout box (64, 64) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=64 oh=64 rect=89x89"
+  },
+  {
+    "check": "C-WHOLE-635 .cm-tr fully inside viewport",
+    "ok": true,
+    "detail": "x=533 y=62 right=623 bottom=152 vw=635 vh=390"
+  },
+  {
+    "check": "C-CUT-635 .cm-tr medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-635 .cm-tr crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-635 .cm-tr medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-635 .cm-tr medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-635 .cm-tr rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(0.819152, 0.573576, -0.573576, 0.819152, 32, -32)"
+  },
+  {
+    "check": "C-SIZE-635 .cm-bl layout box (64, 64) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=64 oh=64 rect=89x89"
+  },
+  {
+    "check": "C-WHOLE-635 .cm-bl fully inside viewport",
+    "ok": true,
+    "detail": "x=12 y=202 right=102 bottom=291 vw=635 vh=390"
+  },
+  {
+    "check": "C-CUT-635 .cm-bl medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-635 .cm-bl crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-635 .cm-bl medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-635 .cm-bl medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-635 .cm-bl rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(-0.819152, -0.573576, 0.573576, -0.819152, -32, 32)"
+  },
+  {
+    "check": "C-SIZE-635 .cm-br layout box (64, 64) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=64 oh=64 rect=89x89"
+  },
+  {
+    "check": "C-WHOLE-635 .cm-br fully inside viewport",
+    "ok": true,
+    "detail": "x=533 y=202 right=623 bottom=291 vw=635 vh=390"
+  },
+  {
+    "check": "C-CUT-635 .cm-br medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-635 .cm-br crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-635 .cm-br medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-635 .cm-br medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-635 .cm-br rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(-0.819152, 0.573576, -0.573576, -0.819152, 32, 32)"
+  },
+  {
+    "check": "C-ANGLE-635 four corners, four angles",
+    "ok": true,
+    "detail": "['matrix(0.819152, -0.573576, 0.573576, 0.819152, -32, -32)', 'matrix(0.819152, 0.573576, -0.573576, 0.819152, 32, -32)', 'matrix(-0.819152, -0.573576, 0.573576, -0.819152, -32, 32)', 'matrix(-0.819152, 0.573576, -0.573576, -0.819152, 32, 32)']"
+  },
+  {
+    "check": "C-CUT-635 #crestCut defs present in the document",
+    "ok": true,
+    "detail": "True"
+  },
+  {
+    "check": "C-SEAL-635 center crystal-N seal still present",
+    "ok": true,
+    "detail": "True"
+  },
+  {
+    "check": "C-COVER-635 no corner overlaps text/input (scroll 0 + scrolled to bottom)",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "check": "C-READ-635 title exact",
+    "ok": true,
+    "detail": "CERTIFICATE OF THE COLLECTIVE AGREEMENT"
+  },
+  {
+    "check": "C-READ-635 certifies exact",
+    "ok": true,
+    "detail": "This certificate of the Collective Agreement certifies that"
+  },
+  {
+    "check": "C-READ-635 name solid white",
+    "ok": true,
+    "detail": "rgb(255, 255, 255)"
+  },
+  {
+    "check": "C-READ-635 no gray text",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "check": "C-READ-635 no horizontal overflow",
+    "ok": true,
+    "detail": "scrollW=635 clientW=635"
+  },
+  {
+    "check": "C-EMBLEM-635 data URI present, PNG head exact",
+    "ok": true,
+    "detail": "len=3539362"
+  },
+  {
+    "check": "C-EMBLEM-390 emblem decodes 1800x2000 in-page",
+    "ok": true,
+    "detail": "{'w': 1800, 'h': 2000}"
+  },
+  {
+    "check": "C-ERRORS-390 no page errors",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "check": "C-SIZE-390 .cm-tl layout box (64, 64) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=64 oh=64 rect=89x89"
+  },
+  {
+    "check": "C-WHOLE-390 .cm-tl fully inside viewport",
+    "ok": true,
+    "detail": "x=12 y=62 right=102 bottom=152 vw=390 vh=844"
+  },
+  {
+    "check": "C-CUT-390 .cm-tl medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-390 .cm-tl crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-390 .cm-tl medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-390 .cm-tl medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-390 .cm-tl rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(0.819152, -0.573576, 0.573576, 0.819152, -32, -32)"
+  },
+  {
+    "check": "C-SIZE-390 .cm-tr layout box (64, 64) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=64 oh=64 rect=89x89"
+  },
+  {
+    "check": "C-WHOLE-390 .cm-tr fully inside viewport",
+    "ok": true,
+    "detail": "x=288 y=62 right=378 bottom=152 vw=390 vh=844"
+  },
+  {
+    "check": "C-CUT-390 .cm-tr medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-390 .cm-tr crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-390 .cm-tr medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-390 .cm-tr medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-390 .cm-tr rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(0.819152, 0.573576, -0.573576, 0.819152, 32, -32)"
+  },
+  {
+    "check": "C-SIZE-390 .cm-bl layout box (64, 64) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=64 oh=64 rect=89x89"
+  },
+  {
+    "check": "C-WHOLE-390 .cm-bl fully inside viewport",
+    "ok": true,
+    "detail": "x=12 y=656 right=102 bottom=746 vw=390 vh=844"
+  },
+  {
+    "check": "C-CUT-390 .cm-bl medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-390 .cm-bl crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-390 .cm-bl medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-390 .cm-bl medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-390 .cm-bl rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(-0.819152, -0.573576, 0.573576, -0.819152, -32, 32)"
+  },
+  {
+    "check": "C-SIZE-390 .cm-br layout box (64, 64) (offsetWidth/Height \u2014 the rect is the rotated bbox)",
+    "ok": true,
+    "detail": "ow=64 oh=64 rect=89x89"
+  },
+  {
+    "check": "C-WHOLE-390 .cm-br fully inside viewport",
+    "ok": true,
+    "detail": "x=288 y=656 right=378 bottom=746 vw=390 vh=844"
+  },
+  {
+    "check": "C-CUT-390 .cm-br medal filter carries url(#crestCut)",
+    "ok": true,
+    "detail": "url(\"#crestCut\") drop-shadow(rgba(0, 0, 0, 0.6) 0px 6px 12px)"
+  },
+  {
+    "check": "C-CORNER-390 .cm-br crest-full display:none",
+    "ok": true,
+    "detail": "none"
+  },
+  {
+    "check": "C-CORNER-390 .cm-br medal display:block + PNG bg",
+    "ok": true,
+    "detail": "block png=True size=contain"
+  },
+  {
+    "check": "C-CORNER-390 .cm-br medal not circular (radius 0)",
+    "ok": true,
+    "detail": "0px"
+  },
+  {
+    "check": "C-CORNER-390 .cm-br rotated (on an angle)",
+    "ok": true,
+    "detail": "matrix(-0.819152, 0.573576, -0.573576, -0.819152, 32, 32)"
+  },
+  {
+    "check": "C-ANGLE-390 four corners, four angles",
+    "ok": true,
+    "detail": "['matrix(0.819152, -0.573576, 0.573576, 0.819152, -32, -32)', 'matrix(0.819152, 0.573576, -0.573576, 0.819152, 32, -32)', 'matrix(-0.819152, -0.573576, 0.573576, -0.819152, -32, 32)', 'matrix(-0.819152, 0.573576, -0.573576, -0.819152, 32, 32)']"
+  },
+  {
+    "check": "C-CUT-390 #crestCut defs present in the document",
+    "ok": true,
+    "detail": "True"
+  },
+  {
+    "check": "C-SEAL-390 center crystal-N seal still present",
+    "ok": true,
+    "detail": "True"
+  },
+  {
+    "check": "C-COVER-390 no corner overlaps text/input (scroll 0 + scrolled to bottom)",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "check": "C-READ-390 title exact",
+    "ok": true,
+    "detail": "CERTIFICATE OF THE COLLECTIVE AGREEMENT"
+  },
+  {
+    "check": "C-READ-390 certifies exact",
+    "ok": true,
+    "detail": "This certificate of the Collective Agreement certifies that"
+  },
+  {
+    "check": "C-READ-390 name solid white",
+    "ok": true,
+    "detail": "rgb(255, 255, 255)"
+  },
+  {
+    "check": "C-READ-390 no gray text",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "check": "C-READ-390 no horizontal overflow",
+    "ok": true,
+    "detail": "scrollW=390 clientW=390"
+  },
+  {
+    "check": "C-EMBLEM-390 data URI present, PNG head exact",
+    "ok": true,
+    "detail": "len=3539362"
+  }
+]

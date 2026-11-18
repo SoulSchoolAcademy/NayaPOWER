@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3035",
+ "intelligence": {
+  "title": "The Tap Is the Switch",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3035-the-tap-is-the-switch",
+  "smart_note_id": "SN-3035",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3035/IB-SMART-NOTE-20261116-sn3035-the-tap-is-the-switch.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The ten notes are one walk, and the walk has one verdict: the machine keeps shipping things that look done and aren't. The scorecard is the diagnosis tool: name the ultimate answer first — what are you ultimately trying to do — then judge finished, done right, optimal time against it. Activity without finishing is a fail no matter how high the count, because the count was never the score. The ship-gate is the same verdict turned into a rule for the seat: before anything ships, name what was already on the page and confirm every piece is still there or was instructed away — because a round that quietly drops something that was there has failed even if everything it was asked to do is right. And nothing half-done comes to him, because a glitch report on unfinished work is noise dressed as news: the voice can't be judged before the text is final, so the voice waits. The navigation notes are the same standard applied to the page itself. A sidebar icon that doesn't light as you scroll is a map that doesn't tell you where you are. A five-icon bottom bar that was good, replaced by a nine-icon row that wasn't, is the machine iterating on what it should have restored — verbatim, byte for byte, from the build that had it right. An icon beside its own light says the same thing twice; one lit icon is the better presentation. Two plus buttons are two jobs, and whether the second one stays on the line is not a matter of taste — the mobile fit decides. And the three catches are the sharpest form of the rule: a picker that takes your choice and does nothing with it, a create button that creates nothing, a button that cuts off its own text. Each one looks finished. None of them works. The tap is the switch — the choice takes effect the moment it is picked, visibly and immediately — and creating a world actually creates the feed and shows it to you, optimized to that world, in the same motion. Looks and does are both the job; a beautiful dead end is still a dead end. The verdict on the whole walk is the scorecard's three-part test: finished, done right, in optimal time — and the walk's ten notes are the evidence for why the test has to be run by the eye, on the page, at phone width, before anything reaches him.",
+  "simple_view": "Imagine you press a button and nothing happens! That's silly, right? A button should DO something! And if something was good before, we put it back — we don't throw it away. Finish it, make it work, and show it!",
+  "grandma_view": "It's like this, love — imagine you press a button and nothing happens, dear — that's not a button, that's a picture of a button! A tap should DO something, love — you pick your world, and there you are, in your world, right away. And if something was good before, dear, we put it back just as it was — we don't throw it away and put something worse in its place. Nothing half-done comes to him, love — finished, whole, done right, and then we show it.",
+  "naya_view": "Score it by the ultimate answer first — finished, done right, in optimal time. If the brief didn't instruct it, it stays. Nothing half-done comes to him. The sidebar is the map: each area's icon lights in its own color as you scroll. What was good goes back verbatim — the five-icon bottom bar, byte for byte. One icon that lights up, never an icon beside its own light. Two plus buttons, two jobs, the mobile fit decides. And the tap is the switch: picking a world switches the feed at once; creating a world actually creates the feed and shows it to you. No button ever cuts off its text.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3035",
+   "title": "The Tap Is the Switch",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3035/IB-SMART-NOTE-20261116-sn3035-the-tap-is-the-switch.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3035/IB-SMART-NOTE-20261116-sn3035-the-tap-is-the-switch.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e8b9eb4c1367d7820c718a6fd4a47b390741eef2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

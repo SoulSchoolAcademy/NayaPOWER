@@ -20,4 +20,4 @@ Never praise a system for being powerful, knowing much, or computing fast — as
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2901 — ~/workspace/team-nitro/smart-notes/SN-2901-intelligence-is-doing-the-most-intelligent-thing.md*
+*Paired Smart Note: SN-2901 — Intelligence Is Doing the Most Intelligent Thing*

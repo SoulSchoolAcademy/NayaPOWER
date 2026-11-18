@@ -20,4 +20,4 @@ About, Skills, and every new section open as unfolds — never as flat pages. Ev
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2911 — ~/workspace/team-nitro/smart-notes/SN-2911-the-unfold-matrix-law.md*
+*Paired Smart Note: SN-2911 — The Unfold/Matrix Law*

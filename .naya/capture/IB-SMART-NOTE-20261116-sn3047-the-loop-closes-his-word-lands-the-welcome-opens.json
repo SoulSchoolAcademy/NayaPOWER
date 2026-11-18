@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3047",
+ "intelligence": {
+  "title": "The Loop Closes — His Word Lands, the Welcome Opens",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3047-the-loop-closes-his-word-lands-the-welcome-opens",
+  "smart_note_id": "SN-3047",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3047/IB-SMART-NOTE-20261116-sn3047-the-loop-closes-his-word-lands-the-welcome-opens.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The day's working method, in his own pattern: he asks, the captain proposes, he decides — and he decided. On the demographics (SN-2975), he asked the captain \"what do you think the perfect set should be... bring back the question to you\" — and the set was ratified by his 👍 at 16:50Z. On the star names (SN-2973), he filled the gaps himself — 4 is Pro Star, 9 is Master Star — with the reasoning made visible: \"Top Star\" can't be 9 because the top star IS the 10 star. On the featured links (SN-2974), the open question from an hour before was decided in one line: all three ways, \"if we can do it, we do it.\" And the welcome (SN-2976) is the whole system in one breath: ask, look, match, show, connect — a super intelligent network that connects people of like minds, \"the ultimate way to optimize the internet.\" The corrections land the same way: the letter (SN-2980) was first fixed as a picture, then corrected to the whole page — \"not just on that picture, but the whole thing, right? The whole thing is needs to be centered and aligned\" — and the format was never to be rebuilt: \"I didn't actually ask you to change the formatting. I actually just insert the pictures.\" The back-button incident (SN-2971) is the same lesson from the other side: the control existed, it just didn't work, and nobody had checked it — a back button is checked, not assumed. And the main thing (SN-2972) is the calendar, worked live with him, back to back to back — because the endless scrolling links he doesn't understand go away when the calendar is built.",
+  "simple_view": "Imagine you walk into a room to look at a beautiful picture, and the door is gone! You can't get back out! So we make sure the door is always there — and we CHECK that it opens. And when your teacher gives you a job, you do it RIGHT AWAY, together, one thing after another! And the big job today is a magic calendar, where every day is a little world you can visit! And when someone new comes in, we just ask: who are you? What are you all about? And the magic friend finds people just like them! And there's one front door — the Hub — right at the top, so you always know how to get home! And your mail has three magic doors — one for each of your worlds — and each one shows you its own mail first!",
+  "grandma_view": "It's like this, love — when he gives us a job, we do it right away, dear, and we do it together with him, live, one thing after another. And the big job today is the calendar, love — your world, in a calendar, where every day is a little world of its own. And when someone new comes in, we simply ask them who they are, dear, and what they're all about — and the system finds people just like them, like topics, like places, all finding each other. The Hub is the front door of the house, love, right at the top on the left, so you always know where home is. And your mail, dear — it's all in one place, but kept tidy by which world it belongs to, so you always see where a letter came from. And the letter, love — it reads straight down the middle now, like a letter from a dear friend, with her picture right in the direct center.",
+  "naya_view": "Implement right away: airtight instructions to the agents, get it done, work with him directly, live. Today the main thing is the calendar — My World IS the calendar. The ladder is decided: the name IS the level. Featured links, all three ways — if we can do it, we do it. The perfect set: 29 questions, 7 groups, each one earning its place by matching you on something. The welcome: ask, look, match, show, connect. One page changes the world. The Hub is the center — top button on the left, the home, where they were welcomed in. Mail by world: one mail, but it always knows where it came from. And the letter reads centered, unfolded from the deck, distilled to its essence — never rebuilt from scratch.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3047",
+   "title": "The Loop Closes — His Word Lands, the Welcome Opens",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3047/IB-SMART-NOTE-20261116-sn3047-the-loop-closes-his-word-lands-the-welcome-opens.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3047/IB-SMART-NOTE-20261116-sn3047-the-loop-closes-his-word-lands-the-welcome-opens.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e75b4f07b71d7e04937c570c8ce08d788a704f42"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

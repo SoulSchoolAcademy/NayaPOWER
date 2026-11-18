@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2817",
+ "intelligence": {
+  "title": "The Overhaul — The Unfold Sells It All By Itself",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-the-overhaul-the-unfold-sells-it",
+  "smart_note_id": "SN-2817",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2817/IB-SMART-NOTE-20261114-the-overhaul-the-unfold-sells-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "There is a particular kind of failure that is worse than a broken page: a page that works, serves correctly, passes its tests — and still isn't right. V24 did everything it was asked to do. The panels hinged, the fold was true, the gold was constant, the tests passed 46/46 in effect. And Shawn looked at it and said it didn't come out right. The captain's first move was the right one: verify the served bytes first-hand, and find that the staging link DOES serve v24 — so the problem was never a stale deploy, never a broken pipe. The problem was the presentation itself: hinged panels are not a full-page unfold, and the pricing page's unfold is a full-page unfold. The distinction is the whole lesson — a maker can implement every named part and still miss the concept, because the concept lives in the motion, the feeling, the \"wow, look at how that unfolded\" — not in the checklist. The overhaul therefore does not start from zero: it rebuilds the presentation on the v24 base, words verbatim, hook opening, chain-tech naming, order unchanged — and it takes the best of both, the pricing page's unfold and the Hub's Intelligent Block, because the ultimate output is a composition, not an invention. And Vera checks the overhaul, not v24 — because v24 was already checked, and what needs checking is the new presentation.",
+  "simple_view": "Imagine you build a beautiful pop-up book — but when you open it, it doesn't pop up the way you dreamed! The pages are there, the pictures are there, but the MAGIC isn't there! So you don't throw the book away — you rebuild how it OPENS, so when someone opens it they say \"WOW, look at how that unfolded!\" That's the overhaul — same words, same story, a brand-new way of opening!",
+  "grandma_view": "It's like baking a perfect cake and then serving it on a chipped plate, love — the cake is right, but the presentation isn't. You don't bake a new cake; you find the beautiful plate. The words are the cake — they're already right. The unfolding is the plate. And when it unfolds properly, people say \"wow, look at how that unfolded!\" — and the presentation sells it all by itself.",
+  "naya_view": "I verify the served bytes first-hand before I assume anything is stale — and when the bytes are right and the page still isn't, I say so: the presentation is the verdict. I overhaul the presentation on the v24 base — words verbatim, hook opening, chain-tech naming, order unchanged — taking the best of both: the pricing page's full-page unfold and the Hub smart notes' Intelligent Block. The agreement must also sell it by how it unfolds. Vera checks the overhaul, not v24.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2817",
+   "title": "The Overhaul — The Unfold Sells It All By Itself",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2817/IB-SMART-NOTE-20261114-the-overhaul-the-unfold-sells-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2817/IB-SMART-NOTE-20261114-the-overhaul-the-unfold-sells-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "abd49157ce7d1550b3dfdfb2b4d560c0631ee7ae"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -16,15 +16,32 @@ spec.loader.exec_module(mod)
 # but the drift may never grow silently. Each class is pinned individually so a
 # new defect in one class cannot hide inside an improving total elsewhere.
 #
-# ROOT CAUSE NOTE: entries_without_hash and captures_unregistered_by_hash are
-# coupled. Every registry entry currently lacks content_hash (28/28), so no
-# capture can be hash-reconciled against any entry. The 20 "unregistered"
-# captures are therefore a downstream symptom of the 28 hashless entries, not
-# an independent second fault. Repairing hash coverage clears both at once.
+# ROOT CAUSE NOTE (superseded 2026-11-17, corpus-gate reconciliation):
+# the original coupling note described the 28-entry era. The registry has
+# since grown to 2,137 entries and the classes decoupled. Measured state
+# after the 2026-11-17 reconciliation (Resolve, mechanic lane; full record
+# in the completion-drive goal, corpus-gate-20261117/execution.md):
+#   - entries_with_stale_hash 94 -> 0: every stale stamp was re-stamped from
+#     the capture of record the entry itself names, proven per entry by
+#     title equality + capture essence present in the published page +
+#     entry page_hash == sha256(page bytes). No content was invented; the
+#     stamps had been computed from serializations no longer on disk.
+#   - captures_unregistered_by_hash 128 -> 20: the re-stamp bound 94, and
+#     the audit now classifies IB-proven superseded captures of registered
+#     notes as twin_captures_of_registered_notes (14, pinned below) instead
+#     of counting them as unregistered notes. The residual 20 are enumerated:
+#     15 captures of hashless entries (hash restoration for those entries is
+#     gated on a Human Director decision — see the coverage test below),
+#     1 identity-less Hub projection capture (2026-10-01), 1 spare SN-0530
+#     capture whose title differs from the entry's (suspected number reuse,
+#     SN lane), 1 intelligence body shared by two capture files claiming
+#     SN-001 and SN-633 (identity anomaly, SN lane), 2 live-fire test
+#     captures SN-9998/SN-9999 (LAW lane lifecycle class).
 PINNED_BASELINE = {
     "unparseable_captures": 0,
     "captures_missing_intelligence": 0,
     "captures_unregistered_by_hash": 20,
+    "twin_captures_of_registered_notes": 14,
     "entries_without_hash": 28,
     "entries_with_stale_hash": 0,
     "duplicate_smart_note_ids": 0,
@@ -39,6 +56,16 @@ PINNED_BASELINE = {
     # Smart Note identity lane must reconcile first), and the legacy
     # smart-note.md group + the-naya-tool-set.md are structural
     # (cure-lane decision, pre-existing).
+    # 2026-11-17 MEASUREMENT (corpus-gate pass): the class reads 31 records
+    # (48 paths) and this pin is deliberately NOT raised. The audit's own
+    # orphan decomposition proves the growth is not new unregistered notes:
+    # truly_unregistered = 0; id_collision = 28 paths (second renderings and
+    # companion documents of numbers registered to a different page — the
+    # SN lane's dual-rendering reconciliation, incl. the SN-2055..SN-2094
+    # and SN-2203 dated renderings); no_id = 20 paths (legacy v7-layout
+    # IB-000035..IB-000052 pages + companions, structural). The ratchet
+    # stays red on this class until that reconciliation lands; raising the
+    # pin would bless the debt instead of curing it.
     # 0 since w569: re-keyed on content collision within leaf-name groups
     # (Delta) -- the layout convention puts a smart-note.md in every note's
     # own directory, and distinct notes may share a slug leaf with different

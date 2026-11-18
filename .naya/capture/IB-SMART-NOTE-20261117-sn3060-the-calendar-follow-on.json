@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3060",
+ "intelligence": {
+  "title": "The Calendar Follow-On — Pricing Feel, Digit Tiles, Today, Timeline",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3060-the-calendar-follow-on",
+  "smart_note_id": "SN-3060",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3060/IB-SMART-NOTE-20261117-sn3060-the-calendar-follow-on.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "He pointed at the pricing page and said: that feeling — when you move over the chart and every cell lights up in its own color and moves under your touch — that is how the calendar should feel. Alive. Not a grid you read, a surface you touch, and it answers. And the numbers on it are the Dashboard's beautiful numbers: every digit carries its own color, so the 17th doesn't look like the 18th — each day wears a different color combination, the way each day IS a different day. Today is never just another cell: whatever day today is, it glows brighter than the rest, always on, always activated — and you can still click into any day you like, and people who come to your calendar can click ahead into the future to book with you. And when you click into a day, it doesn't scatter — it becomes a timeline, one beautiful journal of that day in time order: your notes, your smart notes, the news, the project, your thing, your business, your personal life, all there in one place. The day view stops being a menu and becomes the story of the day.",
+  "simple_view": "Imagine the calendar is like the pricing chart — when you touch it, every little square lights up in its own color and MOVES, like it's alive! And the numbers are the beautiful rainbow numbers from the Dashboard — every digit its own color, so every day looks different! And TODAY always glows the brightest, like it's switched on! You can tap any day you want — and your friends can tap ahead to book with you! And when you tap a day — boom — you see the whole story of that day, like a journal, everything that happened, all in one place!",
+  "grandma_view": "It's like this, love — imagine the calendar feels like the pricing chart, dear: you move your hand over it and every little square lights up in its own color and moves, like it's alive! And the numbers are the beautiful numbers from the Dashboard, dear — every digit its own color, so each day has its own lovely color combination! And today — whatever day today is — it always glows brighter than the rest, love, always switched on! You can tap into any day, dear, and your friends can tap ahead to book with you! And when you tap a day, love, you see the whole story of that day — a beautiful timeline, like a journal, everything that happened, all in one place!",
+  "naya_view": "The calendar feels like the pricing chart: every cell lights up in its own color and MOVES as you touch it — ALIVE. Day numbers are the Dashboard's beautiful numbers: each digit its own gematria color in the DEEP palette (0 white · 1 ruby · 2 burnt orange · 3 deep gold · 4 emerald · 5 deep cyan · 6 indigo · 7 royal purple · 8 deep violet · 9 deep magenta), so every day has a different number-color combination. TODAY always glows brighter, always activated. Click any day; visitors click ahead to book. Inside each day: a TIMELINE — everything that went on that day in time order, like a journal, all in one place (notes, smart notes, news, project, thing, business, personal). B3: Search, Add (+), Naya's profile OFF the month view.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3060",
+   "title": "The Calendar Follow-On — Pricing Feel, Digit Tiles, Today, Timeline",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3060/IB-SMART-NOTE-20261117-sn3060-the-calendar-follow-on.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3060/IB-SMART-NOTE-20261117-sn3060-the-calendar-follow-on.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c7cafbbd353e26204482662702b0a1b7502a8765"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
