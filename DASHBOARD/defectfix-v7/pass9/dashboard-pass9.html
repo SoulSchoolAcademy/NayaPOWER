@@ -4061,6 +4061,12 @@ body.dash-drawer-open .dash-shell .rail-left-x {display: grid;}
 }
 
 </style>
+<style id="os-dash-r1">
+/* 2026-11-18 DASHBOARD-LANE-FIX3 (R1) — CIRCLES RESTORED. Captain's ruling 03:08Z: sidebar icons are circles. The Hub harvest reverted the circle amendment (50% to 12px/9px squares, sub-label bold to 550). Deliberate Dashboard-side override on top of the verbatim Hub harvest: same selectors, later in the document, so these win. The ::before/::after clone layers use border-radius:inherit, so they follow. */
+.dash-shell .nav-btn .ico{border-radius:50%;}
+.dash-shell .nav-sub .ico{border-radius:50%;}
+.dash-shell .nav-sub .lbl{font-weight:700;}
+</style>
 </head><body>
 <!-- 2026-11-01 — Shawn: HERO MODE ON. The constellation layout is correct.
      Fixed the exit paths so you are never trapped. -->
@@ -5638,6 +5644,42 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
   <button class="os-pts-btn primo" data-mode="money" aria-pressed="false"><span class="os-mode-ico">$</span>MONEY</button>
 </div>
 </div><!-- /os-hero-fit -->
+<!-- 2026-11-18 DASHBOARD-LANE-FIX3 (§1) — VISIBLE NAMED DOORS. Smart Notes, Inbox and Lists had no visible door on this page: zero .ph-navtab elements in the file (hash/search only), and the inbox badge code looks up a .ph-navtab[data-view="inbox"] that did not exist. Three pills in the page's own .ph-navtab anatomy (obsidian pill, own-colour rim, white label, spectrum order purple to sapphire to emerald, never two same colours together), each with data-view so the page's own wiring opens its view: notes opens the Smart Notes section and loads it, inbox opens the Inbox section and loads it, lists opens the Lists section and loads it. Below the hero on purpose: the hero stays gauge plus number plus orbs, nothing else. No navtabs id on the row: the drift marquee would clone three pills into a loop. -->
+<style id="os-doors-css">
+/* 2026-11-18 DASHBOARD-LANE-FIX3 (§1): the doors' labels read at 17px — the harvested pill text sits below the law size; the new doors take the law size. */
+#os-doors .ph-navtab{font-size:17px;}
+</style>
+<div class="ph-navtabs" id="os-doors" role="navigation" aria-label="Rooms">
+  <button class="ph-navtab" type="button" data-view="notes" style="--tc:#8e24aa"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">&#x2726;</span>Smart Notes</button>
+  <button class="ph-navtab" type="button" data-view="inbox" style="--tc:#0f52ba"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba">&#x2709;&#xFE0F;</span>Inbox</button>
+  <button class="ph-navtab" type="button" data-view="lists" style="--tc:#07925f"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">&#x1F4CB;</span>Lists</button>
+</div>
+<script>
+/* 2026-11-18 DASHBOARD-LANE-FIX3 (§4) — RAIL COUNTS, ONLY FROM PROVEN SOURCES.
+   The rail rows carry empty .nav-count spans; the Hub fills them through its spy, which this page does not run. Two counts have a live source ON THIS PAGE, so these two are wired and nothing else is:
+   - activity (Hub row): the feed count — the same source the bottom bar's ACTIVITY lights from (the rendered feed rows). Passed in by _osSyncB3News.
+   - mail (Personal Mail row): the unseen-thread count loadInbox already computes from live smart_mail_threads plus smart_mail_messages reads. Passed in by refreshInboxBadge.
+   Spaces and the six rows with no count key have no live source here — their spans stay empty, never invented. A count shows only when its source reports above zero (the .has-news rule). */
+window._osRailCounts = window._osRailCounts || {};
+window._osSyncRailCounts = function(part){
+  try{
+    if (part && typeof part === 'object'){
+      if (typeof part.activity === 'number') window._osRailCounts.activity = part.activity;
+      if (typeof part.mail === 'number') window._osRailCounts.mail = part.mail;
+    }
+    var map = {activity: '[data-count-key="activity"]', mail: '[data-count-key="mail"]'};
+    Object.keys(map).forEach(function(k){
+      var row = document.querySelector(map[k]);
+      if (!row) return;
+      var span = row.querySelector('.nav-count');
+      if (!span) return;
+      var v = window._osRailCounts[k] || 0;
+      span.textContent = v > 0 ? String(v) : '';
+      row.classList.toggle('has-news', v > 0);
+    });
+  }catch(e){}
+};
+</script>
 <!-- PASS-12 2026-11-11 (3): the money note is GONE — Shawn's eye ("it just looks silly, it's just out of place"). The #os-pts-note element is deleted and its writer _refreshPtsNote is a no-op now; no replacement text anywhere. This reverses pass-11 fix 2 (the note below the hero). The % mode note goes with the element — the brief orders the element deleted, not the line edited. -->
 <!-- 2026-11-02 — SHAWN: pace pill REMOVED. Stuck content, not part of the gauge. -->
 <!-- 2026-11-02 — THE 12 CHARTS #5: DONUT. "Where does it come from."
@@ -11301,6 +11343,8 @@ NF.register(UNIT, {
     if (!badge){ badge=document.createElement('span'); badge.id='os-inbox-badge'; badge.className='os-badge'; tab.appendChild(badge); }
     badge.textContent=osUnseen>0?String(osUnseen):'';
     badge.style.display=(osUnseen>0 && notifOn())?'inline-block':'none';
+    /* 2026-11-18 DASHBOARD-LANE-FIX3 (§4): the rail Personal Mail row takes the same proven unseen-mail count. */
+    if (typeof window._osSyncRailCounts === 'function') { try { window._osSyncRailCounts({mail: osUnseen}); } catch(e){} }
   }
   function loadInbox(){
     if (!sb) { $('os-inbox-list').innerHTML='<div class="os-status">Connection unavailable.</div>'; return; }
@@ -29738,6 +29782,8 @@ body.viewport-focus #viewport-back{
       var k = seg.getAttribute('data-b3');
       seg.classList.toggle('has-news', (c[k] || 0) > 0);
     });
+    /* 2026-11-18 DASHBOARD-LANE-FIX3 (§4): the rail Hub row takes the same proven activity count (the feed count). */
+    if (typeof window._osSyncRailCounts === 'function') { try { window._osSyncRailCounts({activity: c.activity}); } catch(e){} }
   };
   var _b3badge = document.getElementById('os-b3-badge');
   if (_b3badge) _b3badge.addEventListener('click', function(e){
