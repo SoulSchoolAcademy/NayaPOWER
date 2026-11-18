@@ -4086,7 +4086,7 @@ body.fc-open{overflow:hidden;}
 .fc-pick-match{text-align:right;flex:none;}
 .fc-pick-match b{display:block;font-size:16px;color:#07925f;}
 .fc-pick-match i{font-style:normal;font-size:11px;color:#fff;}
-.fc-chat{position:fixed;right:16px;bottom:calc(var(--smartbar-h, 0px) + var(--notif-h,78px) + 16px);width:min(380px,calc(100vw - 32px));z-index:1700;background:radial-gradient(130% 140% at 30% 0%, #1b1b26, #07070b 78%);border:1.5px solid rgba(255,255,255,.2);border-radius:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -8px 16px rgba(0,0,0,.45),0 18px 44px rgba(0,0,0,.65),0 0 24px -6px rgba(15,82,186,.4);padding:14px;display:flex;flex-direction:column;gap:10px;max-height:calc(100vh - 140px);}
+.fc-chat{position:fixed;right:16px;bottom:calc(var(--smartbar-h, 0px) + var(--notif-h,78px) + 16px);width:min(380px,calc(100vw - 32px));z-index:1700;background:radial-gradient(130% 140% at 30% 0%, #1b1b26, #07070b 78%);border:1.5px solid rgba(255,255,255,.2);border-radius:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -8px 16px rgba(0,0,0,.45),0 18px 44px rgba(0,0,0,.65),0 0 24px -6px rgba(15,82,186,.4);padding:14px;display:flex;flex-direction:column;gap:10px;max-height:calc(100vh - 140px);overflow-y:auto;}
 .fc-chat[hidden]{display:none;}
 .fc-chat-head{display:flex;align-items:center;gap:10px;}
 /* FIX-20261112-B: the chat avatar is the same Connections orb as the picker (message-blue
@@ -4098,7 +4098,7 @@ body.fc-open{overflow:hidden;}
 .fc-chat-who b{display:block;font-size:15px;color:#fff;}
 .fc-chat-who span{font-size:12px;color:#fff;}
 .fc-chat-x{position:static;width:32px;height:32px;font-size:13px;flex:none;}
-.fc-chat-thread{display:flex;flex-direction:column;gap:8px;overflow-y:auto;max-height:220px;}
+.fc-chat-thread{display:flex;flex-direction:column;gap:8px;overflow-y:auto;max-height:220px;flex:1 1 auto;min-height:0;}
 .fc-chat-msg{background:#050507;border:1.5px solid rgba(15,82,186,.5);border-radius:14px;padding:12px 14px;color:#fff;font-size:14px;line-height:1.5;white-space:pre-wrap;word-wrap:break-word;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -4px 10px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.45);} /* CORRECTIONS 2026-11-13: a message arrives as an Intelligent Block board, never a plain-text wall — the YOU label is a ::before so the message text (and its Translate read) stays pure */
 .fc-chat-msg::before{content:'YOU';display:block;font-size:11px;font-weight:900;letter-spacing:.18em;color:#d4a017;margin-bottom:6px;}
 .fc-chat-compose{display:flex;flex-direction:column;gap:8px;}
@@ -27622,6 +27622,9 @@ if(csend) csend.addEventListener('click', function(){
       ? (stub?'Sent \u2014 saved on this device. The live send needs a one-time permission from Shawn.':'Sent \u2014 it is in '+chatTo.name+'\u2019s Smart Mail inbox.')
       : (stub?'Sent as an instant message. Saved on this device \u2014 the live send needs a one-time permission from Shawn.':'Sent as an instant message.');
     if(st) st.textContent=txt;
+    /* FIXROUND2 2026-11-18: the dialog is fixed and short viewports overflow it —
+       scroll it to the confirmation line so the line clears the bottom bar. */
+    if(chat){ try{ chat.scrollTop=chat.scrollHeight; }catch(e){} }
     if(window.pcProfileRefreshHistory) window.pcProfileRefreshHistory(chatTo.alias);
     var th=$('fcChatThread');
     if(th){ var d=document.createElement('div'); d.className='fc-chat-msg'; d.textContent=body; th.appendChild(d); }
@@ -27975,7 +27978,9 @@ document.addEventListener('click', function(e){
       sb.from('smart_list_items').select('id').eq('owner_alias',owner).eq('list_id',listId).eq('item_kind','person').eq('item_ref',alias).limit(1).then(function(r2){
         if(r2.error){ done(false, pcConnectWhy(r2.error)); return; }
         if(r2.data&&r2.data.length){ done(true); return; }
-        sb.from('smart_list_items').insert({owner_alias:owner,list_id:listId,item_kind:'person',item_ref:alias,label:alias,position:Date.now()}).select('id').single().then(function(r3){
+        /* FIXROUND2 2026-11-18: position is an int4 ordering index, never a timestamp.
+           Date.now() ms (~1.79e12) is out of range for integer; seconds (~1.79e9) fit. */
+        sb.from('smart_list_items').insert({owner_alias:owner,list_id:listId,item_kind:'person',item_ref:alias,label:alias,position:Math.floor(Date.now()/1000)}).select('id').single().then(function(r3){
           if(r3.error){ done(false, pcConnectWhy(r3.error)); return; }
           done(true);
         }, function(err){ done(false, pcConnectWhy(err)); });
