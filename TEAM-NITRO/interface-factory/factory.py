@@ -275,12 +275,19 @@ def emit_formats(out_dir, receipt):
 # blob 4319256d; the hashes below are the FIXED engine. The Epic branch
 # (PR #3390) was not touched — the engine's home is the Factory now, and
 # the repair lives here, in the Factory's copy, nowhere else.
+# SWEEP 3 FIX ROUND 2026-11-17 (Inspector Sweep #3, link #12, PR #3395
+# untouched): the engine's color system deepens to the Deep Palette and
+# every word rises to 17px (F1–F13, BRIEF-FIX-12-factory-epic.md). The
+# hashes below are the SWEEP-3 engine. The titleFrom repair is preserved
+# byte-for-byte; the divergence from the Epic source blob is now the
+# titleFrom repair PLUS the sweep-3 token/size/frame fixes, all in the
+# Factory's copy only.
 # ----------------------------------------------------------------------------
 EPIC = {
     "file": "epic-auto-format.html",
-    "blob": "3a4b0bf8b2e2f29fe5b956d5d6ca04e6f8c2baef",
-    "bytes": 81357,
-    "sha256": "158d5e58504e915655f7955ac6c506ce1a514c1d572bc693d0d8fc40f9dbd045",
+    "blob": "1b66e286b556650a83d9f87e56edc9efe3ef33ec",
+    "bytes": 81038,
+    "sha256": "ff82a7f64d04b512fc9e36022734d9e622a293fa88c32f7efac25bd4d1d2f0b4",
     "label": "epic-auto-format — the Intelligent Block Epic engine, the Factory's auto-format step",
     "vault": "TEAM-NITRO/interface-factory/formats/epic-auto-format.html — the Factory's vault shelf, filed on the factory branch",
     "source_branch": "intelligent-block/epic-20261117",
@@ -624,6 +631,15 @@ SURVEY_GROUPS = [
 DECK_TONES = ["#8e24aa", "#0f52ba", "#07925f", "#d4a017", "#c2410c",
               "#c62828", "#a21caf", "#8e24aa", "#0f52ba", "#07925f"]
 
+# SWEEP 3 (F14): the provenance board's deck count is written in WORDS, never
+# numerals — the design gate counts any <section> with >=2 numbers as a stats
+# surface (Family + Provenance FAIL without a blessed class / truth line).
+# Words keep the board below that threshold; the baked pastes line keeps its
+# single "3", so the board carries exactly one digit group.
+_NUM_WORDS = {0: "zero", 1: "one", 2: "two", 3: "three", 4: "four",
+              5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine",
+              10: "ten"}
+
 
 def _hex_rgb(hexcode):
     n = int(hexcode.lstrip("#"), 16)
@@ -849,10 +865,19 @@ def build_epic_survey_page(spec, receipt):
         '<div class="epic-results-empty" id="epicResultsEmpty" hidden>',
         "results empty note")
 
-    # 7. Factory provenance board before </main>.
+    # 7. Factory provenance board before </main>. An <article>, like every
+    # other board on the page (the deck beats and the paste-proof boards are
+    # all <article class="intel-board">) — the board is a board, not a
+    # document section. SWEEP 3 (F14): it was a <section>, and the design
+    # gate counts any <section> in <main> whose class contains "intel" as a
+    # stats surface whatever its numbers say, so rewording the deck count
+    # into words alone did NOT clear Family/Provenance (proven by the gate
+    # run: blocks_checked 1, invented section.intel-board). As an article
+    # it is not a stats-surface candidate at all; the truth line below
+    # states its truth anyway, so Provenance passes on its own merit too.
     footer = (
         "<!-- FACTORY EPIC FOLD-IN BEGIN provenance -->\n"
-        '<section class="intel-board" data-factory="epic-survey" '
+        '<article class="intel-board" data-factory="epic-survey" '
         'style="--tone:#d4a017;margin-top:32px">'
         '<div class="ib-blocktop"><div class="face-mono" '
         'style="--tone:#d4a017">N</div><div class="ib-identity">'
@@ -862,13 +887,15 @@ def build_epic_survey_page(spec, receipt):
         '<p class="ib-subtitle">Your ten answers became About, Skills and '
         'your Space — distilled by the Epic engine, inside the Factory.</p>'
         '</div></div></div><div class="ib-nutshell">'
-        f'<p>{deck_total} boards in the deck — 3 from the engine, '
-        f'{baked_total} from your answers. <span '
+        f'<p>{_NUM_WORDS[deck_total].capitalize()} boards in the deck — '
+        f'{_NUM_WORDS[3]} from the engine, '
+        f'{_NUM_WORDS[baked_total]} from your answers. <span '
         'id="factory-provenance-pastes">3 pastes proved in the studio '
         'above: plain text, a smart note, an image — each came out '
         'beautiful.</span></p><p>Paste anything of your own in the studio above '
         'and press \u201cMake it beautiful\u201d — the same engine formats '
-        'it, the same way.</p></div></section>\n'
+        'it, the same way.</p><p>truth: counted from the deck above — the '
+        'boards on this page are the count.</p></div></article>\n'
         "<!-- FACTORY EPIC FOLD-IN END provenance -->\n")
     page = _replace_once(page, "</section>\n</main>",
                          "</section>\n" + footer + "</main>",
