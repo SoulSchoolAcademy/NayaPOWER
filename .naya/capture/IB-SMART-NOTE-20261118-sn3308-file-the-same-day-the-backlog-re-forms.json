@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3308",
+ "intelligence": {
+  "title": "File the Same Day — The Backlog Re-Forms Overnight",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3308-file-the-same-day-the-backlog-re-forms",
+  "smart_note_id": "SN-3308",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3308/IB-SMART-NOTE-20261118-sn3308-file-the-same-day-the-backlog-re-forms.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "One hundred and sixty-five pairs is a day of teaching that was sitting in drafts, not in the system — captured and distilled, but not yet working in the live system, which is exactly the gap Shawn named at 01:50Z when he said the loop must close. The push closed it: every pair verified in-tree by blob sha, the SN-3161 collision resolved with one keeper and one move, the numbering command working again. And before the ink was dry the queue had refilled, because the loop keeps drafting faster than the filing keeps up. That is the lesson, and it is a standing one: filing is not a weekly chore, it is the same day's work, or the backlog re-forms overnight and the loop is open again. Filed in GitHub is also not live on the Hub — the publication repair still stands between the tree and nayanet.app, and no note is claimed live until that repair lands.",
+  "simple_view": "Imagine you write down everything you learn in a day — 165 important things — but they sit in a pile on your desk instead of in your notebook. The filing push put every single one into the notebook, and checked each one is really there. But the next day you learn 22 more things, and the pile starts again. So you have to file every day, the same day, or the pile comes back. And putting it in the notebook isn't the same as putting it on the wall for everyone to see — that step still needs fixing.",
+  "grandma_view": "Dear, the filing push finished, dear — 165 notes filed, every one checked and in its place, and that tangled duplicate number is all sorted out now. But the pile is already growing again, dear, because we keep learning new things every day. So the filing has to happen the same day, dear, or the pile just comes back overnight. And filed in the book isn't the same as live on the wall for everyone to see — that part still needs its fix, and we don't pretend it's done until it is.",
+  "naya_view": "FILE THE SAME DAY — OR THE BACKLOG RE-FORMS OVERNIGHT. 165 PAIRS FILED, QUEUE ZERO, AND ALREADY REFILLING. FILED IN GITHUB IS NOT LIVE ON THE HUB.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3308",
+   "title": "File the Same Day — The Backlog Re-Forms Overnight",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3308/IB-SMART-NOTE-20261118-sn3308-file-the-same-day-the-backlog-re-forms.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3308/IB-SMART-NOTE-20261118-sn3308-file-the-same-day-the-backlog-re-forms.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

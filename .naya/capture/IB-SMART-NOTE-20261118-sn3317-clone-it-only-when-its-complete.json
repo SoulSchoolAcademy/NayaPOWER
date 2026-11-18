@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3317",
+ "intelligence": {
+  "title": "Clone It Only When It's Complete",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3317-clone-it-only-when-its-complete",
+  "smart_note_id": "SN-3317",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DIRECTION/SN-3317/IB-SMART-NOTE-20261118-sn3317-clone-it-only-when-its-complete.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He asked how long because he was standing in front of an old, outdated page and wanted the real one. The machine's temptation in that moment is to rush something live — anything — so there is something new to show. His rule cuts that off at the root: wait until it is complete. A half-done Personal page on the domain is worse than the old one, because the domain is the front door and the first thing a citizen meets, and a half-done front door tells them the house is half-done. Waiting is not delay; it is the rule that keeps the live page true. And \"how long\" gets an honest answer — the sequence and the scale, hours not minutes — instead of a clock time the machine cannot keep. The Personal re-brief coordinator (5093ff7b) was quiet ~43 min at 04:16Z and gates this clone; floor-watch owns the poke.",
+  "simple_view": "Imagine your room is being painted, and someone wants to show it off before the paint is dry. Shawn says: wait until it is finished. The Personal page is like that room — it only moves to the real house when it is all done, not halfway. Two more jobs, then it moves. That will take hours, not minutes — and we will tell him each time a job is done.",
+  "grandma_view": "Dear, Shawn looked at the live page, dear, and it was still the old one — nothing new there yet, dear. He asked how long, dear, and the rule is simple: we wait until it is finished, dear. No half-done page goes up for everyone to see, dear. Two more jobs, then it goes live — hours, not minutes, dear — and we will tell him each time a job is done.",
+  "naya_view": "CLONE IT ONLY WHEN IT IS COMPLETE. NO HALF-DONE PAGE GOES LIVE. HOURS, NOT MINUTES — EACH ROUND REPORTED AS IT LANDS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3317",
+   "title": "Clone It Only When It's Complete",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DIRECTION/SN-3317/IB-SMART-NOTE-20261118-sn3317-clone-it-only-when-its-complete.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DIRECTION/SN-3317/IB-SMART-NOTE-20261118-sn3317-clone-it-only-when-its-complete.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

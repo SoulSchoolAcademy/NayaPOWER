@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3292",
+ "intelligence": {
+  "title": "The Efficiency Bar",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3292-the-efficiency-bar",
+  "smart_note_id": "SN-3292",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/EFFICIENCY/SN-3292/IB-SMART-NOTE-20261118-sn3292-the-efficiency-bar.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The question is the measure, and the bar is the balance — and the two must never be confused. The measure: valuable verifiable usable outputs per minute, per hour, with the team size named — not activity, not wake-ups, not tokens spent. The cost side sits beside it: a billion and a half tokens in a couple of days is his sense of the scale, and if it's all production then it's fine — but the numbers have to be known, not guessed. The path is arithmetic before it is magic: 14 to 50 comes from filing the backlog (work already paid for, turned into proven work the same hour), getting verdicts the same hour instead of hours later, and stopping the waiting (coordinators idle while verifiers run). 50 to 80 is the harder truth, and the captain said it plainly: the only hour ever at 87% was a quiet one, and the machine's real strength is absolute output — 500-plus proven minutes an hour at 34–53%. Chasing 80 steady would mean starting much less work. So the target is 40–60% with the output kept high, not 80 by doing less. And then the bar, which is the whole teaching: what he cares about is it getting done, and done right — absolutely beautiful, incredible, fast, efficient — with no waste along the way. 80–90% would be great; 14% is not; 50 is the floor he can live with on the way up. The number never buys its way past the quality: the checker and the eye stay, because done right is the whole point. What gets cut is the waiting, the unfiled, the redoing. That is the balance, and it is the right way to hold it.",
+  "simple_view": "Imagine a team building a huge tower. Shawn asks: how many good bricks are we really laying every minute — not how busy we look, not how many bricks we bought, but how many good bricks end up in the tower? Right now it's 14 out of every 100 minutes that really count. He says: let's get to 50 first — that's the floor — by finishing the bricks we already made instead of leaving them in a pile, and by not standing around waiting. And the tower still has to be beautiful — we never skip checking the bricks to go faster.",
+  "grandma_view": "Dear, Shawn asks how efficient we really are, dear — how much good, usable work we finish every minute, every hour. Right now, dear, it's 14 in a hundred — and he'd love 80 or 90, but 50 is the floor he can live with on the way up. The way there, dear, is simple: finish filing the work that's already done, get the verdicts the same hour, and stop standing around waiting. But the tower still has to be beautiful, dear — the checking and the eye stay, because done right is the whole point. What gets cut is the waiting, not the quality.",
+  "naya_view": "THE EFFICIENCY BAR. DONE, DONE RIGHT — ABSOLUTELY BEAUTIFUL, INCREDIBLE, FAST, EFFICIENT, NO WASTE. 80–90% GREAT; 14% NOT; 50 IS THE FLOOR. THE CHECKER AND THE EYE STAY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3292",
+   "title": "The Efficiency Bar",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/EFFICIENCY/SN-3292/IB-SMART-NOTE-20261118-sn3292-the-efficiency-bar.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/EFFICIENCY/SN-3292/IB-SMART-NOTE-20261118-sn3292-the-efficiency-bar.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

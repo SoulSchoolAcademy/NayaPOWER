@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3316",
+ "intelligence": {
+  "title": "Records Vanish — Restore to the Verified State",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3316-records-vanish-restore-to-the-verified-state",
+  "smart_note_id": "SN-3316",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3316/IB-SMART-NOTE-20261118-sn3316-records-vanish-restore-to-the-verified-state.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Records are supposed to sit still until someone changes them. These did not. The apex and www AAAA records for nayanet.app were there at 02:55Z and gone by 03:25Z — no change event, no hand, no attribution — and the domain answered NXDOMAIN in between. The right recovery is not to redesign the DNS or to guess at new values: it is to put back exactly what was verified before, the 2026-11-03 four-record state, and then to prove it three times over with fresh fetches that return 200. That is the discipline this incident teaches: keep a verified state on record, because the day a record vanishes without a cause is the day the verified state is the only thing you can trust. And say plainly what is not known — the vanishing is unattributed — rather than inventing a cause to close the story.",
+  "simple_view": "Imagine the address of your house suddenly disappears from the map, and nobody erased it. That's what happened — the address records just vanished. The fix wasn't to make up a new address. It was to put back the exact address that was written down and checked before — the one from November 3rd — and then knock on the door three times to make sure someone answers. Always keep a good copy of the address written down, because sometimes things disappear for no reason anyone can see.",
+  "grandma_view": "Dear, the address of the site just disappeared, dear — nobody erased it, dear, it was simply gone. The fix wasn't to make up a new one, dear — it was to put back the exact address that was written down and checked before, dear, and then knock on the door three times to make sure someone answers, dear. Always keep a good copy written down, dear, because sometimes things disappear for no reason anyone can see.",
+  "naya_view": "RECORDS VANISH. RESTORE THE VERIFIED STATE. PROVE IT THREE TIMES. KEEP THE VERIFIED STATE ON RECORD.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3316",
+   "title": "Records Vanish — Restore to the Verified State",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3316/IB-SMART-NOTE-20261118-sn3316-records-vanish-restore-to-the-verified-state.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3316/IB-SMART-NOTE-20261118-sn3316-records-vanish-restore-to-the-verified-state.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

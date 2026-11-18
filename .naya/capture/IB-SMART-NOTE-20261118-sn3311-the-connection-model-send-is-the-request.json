@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3311",
+ "intelligence": {
+  "title": "The Connection Model — Send Is the Request",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3311-the-connection-model-send-is-the-request",
+  "smart_note_id": "SN-3311",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3311/IB-SMART-NOTE-20261118-sn3311-the-connection-model-send-is-the-request.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Every connection system asks the same question: how do two people start? The old answer is a button — CONNECT — a handshake you press before you may speak, and a request that sits waiting for an accept. His answer is simpler and truer to how people actually meet: you send a message, and the message IS the request. The other person answers by answering — a reply is a yes, silence is a no, and no one has to manage a request queue to have a conversation. Message and mail are automatic because the connection does not need permission to begin; it needs a first word. And the levels — text, audio, video — are the same connection growing deeper, not three different features. No CONNECT click needed is not the removal of a step; it is the recognition that the step was never the connection. The connection is the message.",
+  "simple_view": "Imagine you want to be friends with someone new. Do you have to fill in a form and wait for them to stamp it first? No — you just say hello! Shawn says: sending the message IS asking to connect. If they answer you, that's a yes. If they don't answer, that's a no. You don't need a special CONNECT button first — the hello is the connection. And you can start with words, then talk, then see each other — text, audio, video, all the same friendship growing.",
+  "grandma_view": "Dear, Shawn says connecting is simple, dear — you don't need a special button first. You just send a message, dear, and that message IS the asking. If the person answers you back, that's a yes, dear. If they don't answer, that's a no — and nobody has to manage anything. Message and mail just work, dear, and you can start with words, then talk, then see each other — text, audio, video, all the same friendship growing deeper.",
+  "naya_view": "SEND IS THE REQUEST. ACCEPTANCE IS BY ACTION. NO CONNECT CLICK NEEDED. THE CONNECTION IS THE MESSAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3311",
+   "title": "The Connection Model — Send Is the Request",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3311/IB-SMART-NOTE-20261118-sn3311-the-connection-model-send-is-the-request.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3311/IB-SMART-NOTE-20261118-sn3311-the-connection-model-send-is-the-request.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

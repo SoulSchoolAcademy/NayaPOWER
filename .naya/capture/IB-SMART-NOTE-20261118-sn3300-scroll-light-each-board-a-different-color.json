@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3300",
+ "intelligence": {
+  "title": "Scroll Light — Each Board a Different Color",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3300-scroll-light-each-board-a-different-color",
+  "smart_note_id": "SN-3300",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3300/IB-SMART-NOTE-20261118-sn3300-scroll-light-each-board-a-different-color.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A calendar without separation is a wall — everything at once, nothing distinct, overwhelming. Light is the separation: as you scroll down, each board lights up in its own color, so the eye sees the boundary and the body feels it. See separation and FEEL separation — two senses, not one — because a page that is only seen is a picture, and a page that is felt is a place. The scroll is the journey down the page, and each board lighting up in its own color is the journey having landmarks: you always know where you are, because the color tells you. The calendar is overwhelming without it — which means the light is not decoration, it is the thing that makes the calendar usable at all.",
+  "simple_view": "Imagine a long staircase where every step is the same gray color — you'd get lost, wouldn't you? Now imagine every step lights up in a different color as you walk down — red, blue, green, gold! You'd always know exactly where you are, and it would feel magical. Shawn says the calendar should do that: as you scroll down, each board lights up in its own different color, so you can SEE the separation and FEEL it too!",
+  "grandma_view": "Dear, Shawn says as you scroll down the calendar, each board should light up in its own different color, dear — so you can see where one board ends and the next begins, and you can FEEL it too. Without that, dear, the calendar is just overwhelming — everything all at once, no separation at all. With the colors, dear, it's like walking down a lovely lit path, each step its own color.",
+  "naya_view": "SCROLL LIGHT — EACH BOARD A DIFFERENT COLOR. AS YOU SCROLL DOWN, THE BOARDS LIGHT UP, EACH IN ITS OWN COLOR. SEE SEPARATION AND FEEL SEPARATION. THE CALENDAR IS OVERWHELMING WITHOUT IT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3300",
+   "title": "Scroll Light — Each Board a Different Color",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3300/IB-SMART-NOTE-20261118-sn3300-scroll-light-each-board-a-different-color.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3300/IB-SMART-NOTE-20261118-sn3300-scroll-light-each-board-a-different-color.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

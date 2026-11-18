@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3295",
+ "intelligence": {
+  "title": "Calendar Numbers — 20% Not 200%, and Real",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3295-calendar-numbers-20-not-200-and-real",
+  "smart_note_id": "SN-3295",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3295/IB-SMART-NOTE-20261118-sn3295-calendar-numbers-20-not-200-and-real.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "200% is not 20% with enthusiasm — it is a different number, and the number was the instruction. When he says 20%, the page must be 20% bigger than the original, and the original is the too-small version the instruction was measured against — not the current oversized one, not a guess. A remade copy is never the real thing: the Dashboard digit tiles already exist, already look real, already are the standard — harvest them verbatim and the numbers are real by construction, because they ARE the real numbers. And the placement is the elegance: middle, black area, perfect spacing all round, lined up — classy and clean and nice. Too small was wrong, too big is wrong, 20% is the number — the middle is the answer, and the middle is measurable: 20% is a number, not a feeling.",
+  "simple_view": "Imagine someone asks you to make your drawing just a tiny bit bigger — a little bit, like this much — and instead you make it HUGE, ten times bigger, so it doesn't even fit on the paper! That's silly. Shawn asked for just a little bit bigger — 20%, not 200%. And the numbers should be the REAL numbers from the Dashboard, not copies someone drew again — because copies always look a little bit weird.",
+  "grandma_view": "Dear, Shawn says the calendar numbers are far too big, dear — he asked for 20% bigger, not 200% bigger, just a little bit, so only the number fits in its box. And they aren't even the real numbers, dear — they're copies someone remade, and copies always look a little bit odd. The real ones are right there on the Dashboard, dear — take those, exactly 20% bigger than the little ones, sitting right in the middle of the black, beautifully lined up. Classy and clean and nice, dear — that's the bar.",
+  "naya_view": "CALENDAR NUMBERS — 20% NOT 200%, AND REAL. EXACTLY 20% BIGGER THAN THE ORIGINAL. HARVEST THE DASHBOARD DIGIT TILES VERBATIM. MIDDLE, BLACK AREA, PERFECT SPACING, LINED UP. ELEGANCE IS THE BAR.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3295",
+   "title": "Calendar Numbers — 20% Not 200%, and Real",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3295/IB-SMART-NOTE-20261118-sn3295-calendar-numbers-20-not-200-and-real.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3295/IB-SMART-NOTE-20261118-sn3295-calendar-numbers-20-not-200-and-real.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

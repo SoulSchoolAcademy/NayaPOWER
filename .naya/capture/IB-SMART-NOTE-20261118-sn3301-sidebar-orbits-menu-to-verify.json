@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3301",
+ "intelligence": {
+  "title": "Sidebar Orbits + Menu — To Verify",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3301-sidebar-orbits-menu-to-verify",
+  "smart_note_id": "SN-3301",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3301/IB-SMART-NOTE-20261118-sn3301-sidebar-orbits-menu-to-verify.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "An orbit around each sidebar icon is the system breathing — the alive-on-hover law, the orbit flow, visible on the page he is looking at. If the orbs are not there, the sidebar is standing still, and a still sidebar in a living system is a defect, not a style. And the menu: two of three things showing at once is a crowd — probably only one, maybe one on either side — because a menu that shows everything at once is not a menu, it is a pile. The Hub top stays clean — just the time and date — because the top is the frame, not the content. These are verifications, not rulings: the eye looks, the eye reports, and the report decides. Claiming the orbits are there before the eye sees them would be the same failure as claiming a fix before the checker reads the bytes.",
+  "simple_view": "Imagine a merry-go-round — the little horses go round and round, and that's what makes it fun to watch! Shawn wants to know: do the little icons on the side go round and round too, like a tiny orbit around each one? And the menu — should it show one thing, or a whole crowd of things at once? He has to see it on the big screen to decide. And the top of the page should just show the time and the date — nice and clean, nothing else.",
+  "grandma_view": "Dear, Shawn was asking — are the little icons on the side spinning, dear, with a lovely orb going around each one? He has to see that too. And the menu, dear — two of the three things are showing at once, and he thinks probably only one should show, maybe one on either side. He has to see it full screen to be sure. And the top of the Hub, dear — just the time and the date, clean and simple.",
+  "naya_view": "SIDEBAR ORBITS + MENU — TO VERIFY. AN ORB AROUND EACH SIDEBAR ICON. ONE MENU THING, MAYBE ONE ON EITHER SIDE. HUB TOP: TIME AND DATE, CLEAN. THE EYE DECIDES.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3301",
+   "title": "Sidebar Orbits + Menu — To Verify",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3301/IB-SMART-NOTE-20261118-sn3301-sidebar-orbits-menu-to-verify.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3301/IB-SMART-NOTE-20261118-sn3301-sidebar-orbits-menu-to-verify.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

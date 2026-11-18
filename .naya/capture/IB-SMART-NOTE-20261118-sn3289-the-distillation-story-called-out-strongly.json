@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3289",
+ "intelligence": {
+  "title": "The Distillation Story, Called Out Strongly",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3289-the-distillation-story-called-out-strongly",
+  "smart_note_id": "SN-3289",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3289/IB-SMART-NOTE-20261118-sn3289-the-distillation-story-called-out-strongly.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the privacy promise turned into the selling point — and the reason it has to be said strongly is that people are scared, with cause: other systems sell their data. A privacy policy whispered in legal words does not answer fear; a plain sentence does. Nobody reads your email. Nobody reads your Smart Mail. Nobody reads your instant messages. Nobody listens to your calls. Nobody watches your video. And then the sentence that goes further than any policy: we don't even keep your content. The words go after a week; the essence stays. The distillation numbers are the mechanism made visible — a thousand in, ~100 kept; ~100 in, ~10 kept — daily, continuous, so the system stays current and the citizen's words never pile up anywhere. And the last line is the one that makes sharing safe: when wisdom is shared, identity is not shared unless the citizen chooses. We capture the wisdom only, never the name. Everybody learns and grows from the collective intelligence, and nobody is exposed by it. That is a powerful feature — valuable, and probably appreciated — because it is the opposite of what people are scared of.",
+  "simple_view": "Imagine you whisper a secret to a friend, and your friend remembers only the lesson from it — not your name, not your exact words — and shares just the lesson so all the other kids can learn from it too. And after a week, even your friend forgets the exact words. That's how it works: nobody reads your messages, nobody listens to your calls, and what you said doesn't get kept — only the smart part, without your name.",
+  "grandma_view": "Dear, Shawn says we must say this loudly, dear, because people are frightened of technology — other systems sell what you tell them. But here, dear: nobody reads your email, nobody reads your messages, nobody listens to your calls, nobody watches your videos. And we don't even keep what you said, dear — after a week it's distilled down to just the essence, the smart part, and the words are gone. A thousand notes come in, dear, and we keep about a hundred; a hundred come in, we keep about ten. And when your wisdom is shared, dear, your name isn't — unless you choose it. We take the wisdom, never the name, so everybody learns and grows together.",
+  "naya_view": "THE DISTILLATION STORY, CALLED OUT STRONGLY. NOBODY READS YOUR MAIL. NOBODY LISTENS TO YOUR CALLS. WE DON'T EVEN KEEP YOUR CONTENT — THE WORDS GO, THE ESSENCE STAYS. WE CAPTURE THE WISDOM ONLY, NEVER THE NAME.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3289",
+   "title": "The Distillation Story, Called Out Strongly",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3289/IB-SMART-NOTE-20261118-sn3289-the-distillation-story-called-out-strongly.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3289/IB-SMART-NOTE-20261118-sn3289-the-distillation-story-called-out-strongly.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

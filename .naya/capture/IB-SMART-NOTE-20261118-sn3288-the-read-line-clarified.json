@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3288",
+ "intelligence": {
+  "title": "The Read Line, Clarified",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3288-the-read-line-clarified",
+  "smart_note_id": "SN-3288",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3288/IB-SMART-NOTE-20261118-sn3288-the-read-line-clarified.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The old line was being heard too broadly, and a too-broad line breaks the work it is meant to protect. \"Never read it\" heard absolutely would blind the system to the very intelligence it exists to operate: it could not read the smart-note intelligence, could not smart-note it, could not build a page from his vision, goal, mission — because all of that is reading. The clarification draws the line where it actually lives, in three tiers, and the tiers are the whole teaching. Never is absolute and narrow: mail, messages, video, calls — the private things, no exception, no toggle, ever. Public is ours by definition: smart notes on the feed, anything public — that is the shared intelligence, and reading it is the job. Permission is the middle that makes the system work: the notes we make to understand, the smart-note intelligence, his inputs for a page — read with his permission, because that is what permission is for. And the precision that holds the line together: carrying a message so it reaches the person is not reading it. The machine can move the mail without ever looking at what was written. That is how the vault stays operate-by-permission and never read, while the intelligence still flows.",
+  "simple_view": "Imagine three boxes of letters. The first box is private — you never, ever open it. The second box is on the town notice board for everyone — you can read those, that's what they're for. The third box is letters someone gave you and said \"you can read these to help me\" — you read those because they said yes. And carrying a letter to a friend isn't the same as opening it and reading it.",
+  "grandma_view": "Dear, Shawn says we must be clear about this: we never read your private mail or messages, never watch your videos, never listen to your calls — not ever, dear, no exceptions. But the notes on the public feed, dear, those are ours to read — that's what they're shared for. And the notes we make to understand, and your vision and goals for a page we're building — we read those with your permission, dear, because you gave it. Carrying a letter to someone, dear, isn't reading it — nobody here looks at what was written.",
+  "naya_view": "THE READ LINE, CLARIFIED. NEVER: MAIL, MESSAGES, VIDEO, CALLS — NO EXCEPTION. YES, PUBLIC: THE FEED, ANYTHING PUBLIC. YES, WITH PERMISSION: THE WORKING NOTES, THE INTELLIGENCE, HIS VISION, GOAL, MISSION.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3288",
+   "title": "The Read Line, Clarified",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3288/IB-SMART-NOTE-20261118-sn3288-the-read-line-clarified.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3288/IB-SMART-NOTE-20261118-sn3288-the-read-line-clarified.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

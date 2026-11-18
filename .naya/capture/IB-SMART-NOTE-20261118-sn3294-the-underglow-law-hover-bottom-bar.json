@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3294",
+ "intelligence": {
+  "title": "The Underglow Law — Hover, Bottom Bar",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3294-the-underglow-law-hover-bottom-bar",
+  "smart_note_id": "SN-3294",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3294/IB-SMART-NOTE-20261118-sn3294-the-underglow-law-hover-bottom-bar.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A glow over the icon is a wash over the object: it covers the thing it is meant to light, and the icon stops being an object and becomes a picture with color smeared across it. A glow underneath is light with volume — the icon stays itself, a black ball, and its own color lights up behind and beneath it. That is the Real Object Law in one hover: the light lives in the world around the object, never painted across its face. The models already exist and already do it right — the Dashboard's best icons, the Hub's pills — so this is a harvest, not an invention: take the mechanism that already lights up beautifully and put it on the bottom bar. The orbit light that flows around the circle comes back with it, because the 22:48Z law and this one are the same law: the light moves around the object, under it, behind it — never over it. One set of icons, one look, everywhere: the bottom bar has to match the Dashboard and the Hub, or the system has two laws and neither is the law.",
+  "simple_view": "Imagine a beautiful black marble, and you shine a torch on it. If you shine the torch right onto the top of the marble, you can't see the marble anymore — just bright light. But if you put the light underneath it, the marble glows from below and you can still see how beautiful it is. Shawn says the bottom bar icons should glow from underneath, like the best ones already do.",
+  "grandma_view": "Dear, Shawn says when you hover over the bottom icons, the color washes right over the top of them, dear — and it should glow underneath instead, lighting up beautifully from below, like the best ones on the Dashboard and the Hub pills do. The icon stays itself, dear — a lovely black ball — with its own color glowing underneath it. That's the underglow, dear.",
+  "naya_view": "THE UNDERGLOW LAW. HOVER, BOTTOM BAR. THE COLOR GLOWS UNDERNEATH THE ICON — NEVER A WASH OVER IT. THE LIGHT BEHIND, UNDER, AROUND — NEVER OVER THE TOP.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3294",
+   "title": "The Underglow Law — Hover, Bottom Bar",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3294/IB-SMART-NOTE-20261118-sn3294-the-underglow-law-hover-bottom-bar.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3294/IB-SMART-NOTE-20261118-sn3294-the-underglow-law-hover-bottom-bar.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

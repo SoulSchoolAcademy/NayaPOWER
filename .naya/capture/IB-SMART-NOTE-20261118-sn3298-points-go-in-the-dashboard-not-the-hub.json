@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3298",
+ "intelligence": {
+  "title": "Points Go in the Dashboard, Not the Hub",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3298-points-go-in-the-dashboard-not-the-hub",
+  "smart_note_id": "SN-3298",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3298/IB-SMART-NOTE-20261118-sn3298-points-go-in-the-dashboard-not-the-hub.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The Hub is the center, the meeting place — the feed, the people, the worlds. Points in the Hub would turn the center into a scoreboard, and a scoreboard is not clean. Points go where they should go — the Dashboard, the profile — where they are read as yours, not as the room's. Unless people start requesting them in the Hub, they stay out. He considered it and said no: that consideration is itself the decision, and it holds until citizens ask otherwise. Every thing in its place is the whole design: the Hub is where you meet, the Dashboard is where you see how you are doing, the profile is where you are. Put points in the Hub and the three places blur into one noisy room.",
+  "simple_view": "Imagine your classroom has a big board where everyone talks and shares — and someone sticks your test scores right in the middle of it. That wouldn't feel right, would it? Your scores belong in your own folder, where you can look at them when you want. Shawn says points belong in the Dashboard and on your profile — your own places — not in the middle of the Hub where everyone meets.",
+  "grandma_view": "Dear, Shawn says the Hub is where everybody meets and talks, dear — it's not the place for points. Your points live on your Dashboard and on your profile, where they belong, nice and tidy. He thought about putting them in the Hub and decided no, dear — it's just not as clean. Unless people start asking for them there, they stay where they should go.",
+  "naya_view": "POINTS GO IN THE DASHBOARD, NOT THE HUB. POINTS GO WHERE THEY SHOULD GO — THE DASHBOARD, THE PROFILE. THE HUB STAYS CLEAN.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3298",
+   "title": "Points Go in the Dashboard, Not the Hub",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3298/IB-SMART-NOTE-20261118-sn3298-points-go-in-the-dashboard-not-the-hub.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3298/IB-SMART-NOTE-20261118-sn3298-points-go-in-the-dashboard-not-the-hub.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

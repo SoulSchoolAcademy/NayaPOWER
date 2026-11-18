@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3291",
+ "intelligence": {
+  "title": "The Demographics Menu Is Missing",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3291-the-demographics-menu-is-missing",
+  "smart_note_id": "SN-3291",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PERSONAL/SN-3291/IB-SMART-NOTE-20261118-sn3291-the-demographics-menu-is-missing.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The demographics are not a form — they are the onboarding data that makes auto-match work. Without them, the system cannot become aware and intelligently connect people: related pages, spaces, groups, businesses show up, things not relevant do not. A Personal page with no place to set them is a world with no address. The placement is the teaching's other half: the top corner, where change cover and settings sit together, is where the person's hand already goes — so the menu belongs there, beautiful, asking in their words, not buried in a settings page nobody opens. And the privacy line rides with it: location is asked for matching and never shared, which is the same line as the read line (SN-3288) and the distillation story (SN-3289) — the system asks in order to connect, not in order to keep. The ride matters too: it goes with Personal follow-on #3, so the page comes back whole, because a one-item round on a page with open items is the wrong shape.",
+  "simple_view": "Imagine you move into a new house, but there's no front door — nobody can find you, and you can't tell anyone about yourself. Shawn noticed the Personal page is missing its front door: a beautiful menu in the top corner that asks who you are, what you like, where you're from — so the system can introduce you to people like you.",
+  "grandma_view": "Dear, Shawn noticed the top corner of the page is missing its settings, dear — there should be a beautiful menu there that asks all about you: who you are, what you're into, where you're from, your interests and hobbies, your age and language. That way, dear, the system can connect you with people like you. And your location, dear, is only asked so it can match you — never shared.",
+  "naya_view": "THE DEMOGRAPHICS MENU IS MISSING. THE TOP CORNER: CHANGE COVER AND SETTINGS, A BEAUTIFUL MENU — WHO THEY ARE, WHAT THEY'RE INTO, WHERE THEY'RE FROM. THE ANSWERS FEED AUTO-MATCH.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3291",
+   "title": "The Demographics Menu Is Missing",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PERSONAL/SN-3291/IB-SMART-NOTE-20261118-sn3291-the-demographics-menu-is-missing.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PERSONAL/SN-3291/IB-SMART-NOTE-20261118-sn3291-the-demographics-menu-is-missing.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3297",
+ "intelligence": {
+  "title": "One Icon Set — The Glowing Ones",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3297-one-icon-set-the-glowing-ones",
+  "smart_note_id": "SN-3297",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3297/IB-SMART-NOTE-20261118-sn3297-one-icon-set-the-glowing-ones.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Two pages, two icon sets, and the system has two looks — the eye catches it at once, because the page he is looking at is the scope. The Personal set is real: depth, light, glow — an object you could pick up. The Hub's are copies made from looking, and a copy made from looking is never the thing itself; it is a picture of the thing, and the eye knows the difference even before the mind names it. One set everywhere is not a preference; it is the law that keeps the whole system one system. Harvest the real set; never redraw it. The glowing ones are the standard — the same standard the pills already hold (COLLECTIVE / PERSONAL / ACTIVITY, triple-A plus) — and the standard is the standard on every page, or it is not the standard.",
+  "simple_view": "Imagine you have two toy boxes, and the toys in one box are shiny and glowing, and the toys in the other box are just flat pictures of the same toys. Which box would you play with? The shiny one, of course! Shawn says all the pages should have the shiny glowing toys — the same ones everywhere — not flat pictures on one page and shiny ones on the other.",
+  "grandma_view": "Dear, Shawn was looking at the Hub and the Personal page side by side, dear, and the little icons didn't match — the Personal ones glow so beautifully, and the Hub ones are just copies. He says they have to be the same, dear — the glowing ones, everywhere, so the whole thing feels like one lovely thing, not two different things stitched together.",
+  "naya_view": "ONE ICON SET — THE GLOWING ONES. THE PERSONAL SET IS THE REAL ONE. HARVEST IT VERBATIM. ONE SET EVERYWHERE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3297",
+   "title": "One Icon Set — The Glowing Ones",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3297/IB-SMART-NOTE-20261118-sn3297-one-icon-set-the-glowing-ones.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3297/IB-SMART-NOTE-20261118-sn3297-one-icon-set-the-glowing-ones.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

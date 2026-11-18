@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3305",
+ "intelligence": {
+  "title": "Weekday Glow + The Diamond",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3305-weekday-glow-and-the-diamond",
+  "smart_note_id": "SN-3305",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3305/IB-SMART-NOTE-20261118-sn3305-weekday-glow-and-the-diamond.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Too glowy is not glowing — it is a wash, and a wash covers the object the way the underglow law already forbids: light over the object instead of light with volume around it. The weekdays are objects — each day a ball, a jewel, a real thing — and a real thing does not disappear into its own glow. A diamond that disappears is not a diamond: it is a picture that failed to be an object, and a picture that disappears is worse than no diamond at all. The rule he gives is the escape hatch, not a surrender: if the diamond can't be made real, do something that CAN be made real — a spinning ball, a clock, a gauge. Real is the requirement; the shape is the choice. Just enough glow — the standing law — and the object itself, sharp and touchable, underneath it.",
+  "simple_view": "Imagine a beautiful shiny marble, and someone shines such a bright torch on it that you can't even see the marble anymore — just bright light everywhere! That's too glowy. And imagine a little diamond in the corner that just... disappears, like it was never there. That's not a real diamond! Shawn says: turn the glow down so you can see the real thing, and if the diamond can't look real, make something else instead — a spinning ball, or a clock, or a gauge. It has to look real!",
+  "grandma_view": "Dear, Shawn says Sunday, Monday, Tuesday are glowing far too much, dear — they don't look like real objects anymore, just bright light. Turn the glow down, dear, and make them look lovely and real. And the little diamonds in the corner, dear — they don't look real at all, they just disappear! If a diamond can't be made to look real, dear, make something that can — a spinning ball, or a clock, or a gauge. It has to look real, dear.",
+  "naya_view": "WEEKDAY GLOW + THE DIAMOND. TONE THE GLOW DOWN — REAL LIKE REAL OBJECTS. A DIAMOND THAT DISAPPEARS IS NOT A DIAMOND. IF IT CAN'T BE MADE REAL, MAKE SOMETHING THAT CAN: A SPINNING BALL, A CLOCK, A GAUGE. IT HAS TO LOOK REAL.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3305",
+   "title": "Weekday Glow + The Diamond",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3305/IB-SMART-NOTE-20261118-sn3305-weekday-glow-and-the-diamond.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3305/IB-SMART-NOTE-20261118-sn3305-weekday-glow-and-the-diamond.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

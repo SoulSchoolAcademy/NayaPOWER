@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3309",
+ "intelligence": {
+  "title": "Find the Cause First, Then Retry",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3309-find-the-cause-first-then-retry",
+  "smart_note_id": "SN-3309",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3309/IB-SMART-NOTE-20261118-sn3309-find-the-cause-first-then-retry.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said it twice in one night — first on the deploy (\"find the cause first, then retry\"), then on the Dashboard card — and both times the discipline is the same: do not drive into the broken road again, find out why it is broken first. This time the cause was found, and it was the old one, wearing a wider coat: the filter that blocks writable file-backed shared memory mappings, now covering all three paths instead of one. The timeline is the proof that a single green probe means nothing — alive at 03:02Z, dead again by 03:04Z, a two-minute window that would have swallowed any eye dispatched on it. So the retry condition is now exact and fourfold: all eight mappings, a real launch with a real PNG, the same result again five minutes later, and a re-test at the door. Until then, no VM eye is dispatched, and the cloud browser carries the walks. Cause first is not slowness; it is the thing that stops seven identical failures from becoming eight.",
+  "simple_view": "Imagine the front door keeps sticking, and every time you just push harder. Shawn says: stop pushing — find out WHY it sticks first. So we looked, and the reason is the same as before, only worse now: the house won't let the browser open its shared notebook. And one time the door opened for two minutes and then stuck again — so one lucky opening doesn't mean it's fixed. Now the rule is: it has to open twice, five minutes apart, with a real picture to prove it — only then do we try the walk again.",
+  "grandma_view": "Dear, Shawn tapped the button that says find the cause first, then retry, dear — and that's exactly right. We looked properly this time, dear, and the cause is the same old one, only spread wider now: the machine won't let the browser open its shared notebook. And one morning it worked for just two minutes and then stopped again, dear — so one lucky try doesn't mean it's fixed. Now we only try again when it works twice, five minutes apart, with a real picture to prove it, dear. Until then, we use the other way in.",
+  "naya_view": "FIND THE CAUSE FIRST, THEN RETRY. THE CAUSE IS CONFIRMED — THE SHARED-MEMORY FILTER, WIDENED. A SINGLE ALIVE PROBE IS NOT GREEN. TWO GREEN PROBES, FIVE MINUTES APART, OR NO VM EYE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3309",
+   "title": "Find the Cause First, Then Retry",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3309/IB-SMART-NOTE-20261118-sn3309-find-the-cause-first-then-retry.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3309/IB-SMART-NOTE-20261118-sn3309-find-the-cause-first-then-retry.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

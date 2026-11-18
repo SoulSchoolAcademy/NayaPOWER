@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3315",
+ "intelligence": {
+  "title": "Check the Route List, Not Just the DNS",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3315-check-the-route-list-not-just-the-dns",
+  "smart_note_id": "SN-3315",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3315/IB-SMART-NOTE-20261118-sn3315-check-the-route-list-not-just-the-dns.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A site can be up and down at the same time — up at the root, down at the agreement — and the cause is not the page and not the DNS. The page was fine: /agreement answered 200 on the worker address all along. The DNS was fine: the domain resolved, the records were there. What was missing was the middle step — the route list, the table that says which worker answers which path. The nayanet worker was only handed the exact root and a few assets; /agreement, /enter, and the agreement images matched no route at all, so they fell through to the origin and timed out with a 522. The fix was six surgical routes, each a single pattern, each checked against the full list so nothing overlaps — and then a fresh fetch of every fixed path, byte for byte, against the worker's own hash. That last step is the whole lesson: the claim is not \"routes added\" but \"the live path serves the exact bytes.\" And the record gets corrected, not quietly: the token can create zone routes after all — the earlier claim that it could not is disproven by the six it just created. When a path 522s while the root 200s, check the route list. DNS resolving is not the same as the path being routed.",
+  "simple_view": "Imagine a house with lots of doors, but the map only shows the front door. The agreement door exists and works fine — but nobody wrote it on the map, so visitors can't find it and get lost. Shawn asked: what is it, and how do you fix it? The answer: write the missing doors on the map — six little lines, one for each door. Then check by walking through each door yourself to make sure it opens. Having the address right is not the same as having every door on the map.",
+  "grandma_view": "Dear, the page was never broken, dear — the agreement page worked all along, dear. The problem was the map, dear: it listed the front door but not the agreement door, dear, so visitors got lost trying to reach it. The fix was simple, dear — write the six missing doors on the map, one line each, dear — and then walk through every door yourself to make sure it opens, dear. Having the address right is not the same as having every door on the map, dear.",
+  "naya_view": "THE PAGE WAS NEVER BROKEN. THE ROUTE LIST WAS MISSING THE PATHS. SIX SURGICAL ROUTES. VERIFIED BY FRESH FETCH, BYTE FOR BYTE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3315",
+   "title": "Check the Route List, Not Just the DNS",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3315/IB-SMART-NOTE-20261118-sn3315-check-the-route-list-not-just-the-dns.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3315/IB-SMART-NOTE-20261118-sn3315-check-the-route-list-not-just-the-dns.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

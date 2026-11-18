@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3281",
+ "intelligence": {
+  "title": "The Elite Land, Built from the Factory's Parts",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3281-the-elite-land-built-from-the-factorys-parts",
+  "smart_note_id": "SN-3281",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VISION/SN-3281/IB-SMART-NOTE-20261118-sn3281-the-elite-land-built-from-the-factorys-parts.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a new land where the finest building is the standard, not the privilege — anybody can build a castle there, because in the digital world the finest costs no more than the plain. The calendar is the front door of that land, and right now it is a web page with a grid of text: too many words, too little style, buttons carrying paragraphs. The honest score is 4 out of 10, and the fix is not a tweak — throw it out and rebuild it from pieces that already exist and already look extraordinary, the Dashboard's own number blocks, on obsidian, each day lighting in its own pearl color. The Factory is what makes that honest: every good piece is kept, labeled, and reused, so nothing is invented twice and the finished core clones to every page. The same standard reaches the posts and the blocks — jewel stars that light gold, living numbers that lift and glow, doors that are windows into the day instead of blank black bars. And when it is all done, the interface itself gets out of the way: it knows the day, the people, and the need, and the citizen just logs in and sees their world.",
+  "simple_view": "Imagine a brand-new land where everyone can build a castle! The castles are shiny and beautiful. You build them from pieces in a magic factory. The calendar is a big black board. Its numbers light up in pretty pearl colors. The stars are shiny jewels. They light up gold when you tap them. The numbers dance and glow when you touch them. Each door shows you a peek of what is inside. And the screen is so smart it knows you. It sets everything up before you ask!",
+  "grandma_view": "It is like a brand-new piece of land, love — where everybody gets to build the most beautiful castle they can dream of, dear. You do not start from scratch, love — you take the beautiful pieces you already have, kept safe in the factory, and you build with those, dear. The calendar is a big black board, love, with shiny numbers that light up in soft pearl colors — never bright neon, dear. The stars are little jewels, love, that light up gold when you tap them. And the screen is so clever, dear, it knows your day and your people and sets everything ready before you even ask, love. You just log in and see your whole world, dear.",
+  "naya_view": "THE ELITE LAND, BUILT FROM THE FACTORY'S PARTS. NAYANET IS A NEW LAND — A DIGITAL CIVILIZATION, A BRAND, A FRANCHISE ANYBODY CAN BUILD WITHIN — MANSIONS, CASTLES, THE FINEST OF EVERYTHING, INFINITE SPACE, WORLDS WITHIN WORLDS, THE BUGATTI FEEL. THE CALENDAR SCORES 4/10: THE 4 IS REAL, THE 6 MISSING ARE THE PRESENTATION, THE MENU, AND THE KNOWING. TOO MUCH TEXT IS A FAIL — FEWER WORDS, MORE ICONS, MORE CONTRAST, MORE SEPARATION, MORE STYLE — AND A CHECKER'S PASS NEVER OVERRIDES HIS EYE. THROW THE RAINBOW CALENDAR OUT. BUILD OBSIDIAN FROM THE DASHBOARD'S OWN DIGIT TILES, NOTHING CREATED NEW. THE SMART FACTORY IS THE NORTH STAR: ASSETS IN THE VAULT, IN THE FACTORY, IN THE SYSTEM, OFFICIALLY OURS — CREATE FROM THE PARTS, IN SYNC, CLONE THE FINISHED CORE ENDLESSLY. THE POSTS AND THE BLOCK SCORE 7/10 — JEWEL STARS THAT LIGHT GOLD, LIVING NUMBERS, BEST BUTTONS, NO SEAMS. THE MOST INTELLIGENT INTERFACE IS THE ONE THAT DISAPPEARS — IT KNOWS YOU, AND YOU LOG IN AND SEE YOUR WORLD.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3281",
+   "title": "The Elite Land, Built from the Factory's Parts",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VISION/SN-3281/IB-SMART-NOTE-20261118-sn3281-the-elite-land-built-from-the-factorys-parts.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VISION/SN-3281/IB-SMART-NOTE-20261118-sn3281-the-elite-land-built-from-the-factorys-parts.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

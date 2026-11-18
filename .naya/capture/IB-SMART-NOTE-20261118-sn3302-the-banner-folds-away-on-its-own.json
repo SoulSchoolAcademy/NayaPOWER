@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3302",
+ "intelligence": {
+  "title": "The Banner Folds Away on Its Own",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3302-the-banner-folds-away-on-its-own",
+  "smart_note_id": "SN-3302",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3302/IB-SMART-NOTE-20261118-sn3302-the-banner-folds-away-on-its-own.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A banner that stays open is a page that never gets to its own content — the welcome is the front door, not the room. A banner that folds away on its own after ~30 seconds greets him and then gets out of the way, and a little button hidden in the corner brings it back when he wants it — the restore is there, it is just quiet, the way a good control is quiet until it is needed. And the choice lives in Settings, which is why Settings has to be right: the setting is the citizen's word about their own page, and it has to be kept somewhere worthy of it. The cover works the same way: X it, and the search comes right up flush against the top bar — no button in between, nothing standing between him and the thing he came for. Every step of this is the same law: the page gets out of its own way.",
+  "simple_view": "Imagine someone opens the door to say good morning to you — and then they just stand in the doorway forever, and you can't get past them to play! That's silly. The nice person should say good morning and then step aside so you can go play — and if you want them back, there's a tiny little button in the corner you can press. Shawn says the banner should do exactly that: say hello, then fold away all by itself after about thirty seconds.",
+  "grandma_view": "Dear, Shawn says the welcome banner should say good morning when you come in, dear, and then fold itself away after about thirty seconds, all on its own — so you can get on with your day. And if you want it back, there's a sweet little button tucked in the corner, dear — not a big button sticking out in the middle of the page, that would be terrible. You close the cover and the search comes right up against the top, nice and flush, nothing in between.",
+  "naya_view": "THE BANNER FOLDS AWAY ON ITS OWN. GOOD MORNING, THEN ~30 SECONDS, THEN GONE. A LITTLE BUTTON IN THE CORNER BRINGS IT BACK. SETTINGS HOLDS THE CHOICE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3302",
+   "title": "The Banner Folds Away on Its Own",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3302/IB-SMART-NOTE-20261118-sn3302-the-banner-folds-away-on-its-own.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3302/IB-SMART-NOTE-20261118-sn3302-the-banner-folds-away-on-its-own.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

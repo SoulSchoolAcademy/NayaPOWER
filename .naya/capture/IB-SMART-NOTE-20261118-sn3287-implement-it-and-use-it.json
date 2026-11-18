@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3287",
+ "intelligence": {
+  "title": "Implement It and Use It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3287-implement-it-and-use-it",
+  "smart_note_id": "SN-3287",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3287/IB-SMART-NOTE-20261118-sn3287-implement-it-and-use-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Two orders in one sentence, and the second is the one that usually gets dropped. \"Implement it\" is the build; \"use it\" is the proof the build is real. A vault that is built and never operated is a museum — beautiful, empty, useless. The discipline in the middle is the sentence most teams skip: the design already exists, talked out and made beautiful, so the job is to find it in the record and implement THAT. Not a new invention, not a better idea found along the way — the design he already approved, built on the stack he named. And the honest limit is what keeps the order honest: the Supabase connector doc is a template with placeholders, not a working path. So the coordinator works out the real API path, verifies each step with a harmless read first, and whatever live key or deploy it cannot reach is his hand — not a workaround, not a quiet substitution. The key split has to live in the real system — RLS, Edge Functions, Cloudflare, the gate — because a split that lives only on paper is a promise, and promises are what the two keys were designed to replace.",
+  "simple_view": "Imagine you and a friend already drew the perfect plan for a treehouse — every board, every nail, all beautiful. Shawn says: don't draw a new plan. Build THAT plan, with the tools he named — and then actually play in the treehouse every day. Building it isn't enough; using it is the point.",
+  "grandma_view": "Dear, Shawn says the plan is already drawn and beautiful — so now build it, dear, with the tools he named, and then actually use it every day. A vault that's built but never used, dear, is just a pretty empty room. And one honest thing, dear: the instruction book for one of the tools is blank inside — so we work out the real way step by step, testing gently first, and whatever needs his hand, we bring to him.",
+  "naya_view": "IMPLEMENT IT AND USE IT. THE PRIOR DESIGN, BEAUTIFULLY TALKED OUT — NOT A NEW INVENTION. SUPABASE + CLOUDFLARE + GITHUB + NAYANET + THE BRIDGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3287",
+   "title": "Implement It and Use It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3287/IB-SMART-NOTE-20261118-sn3287-implement-it-and-use-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3287/IB-SMART-NOTE-20261118-sn3287-implement-it-and-use-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

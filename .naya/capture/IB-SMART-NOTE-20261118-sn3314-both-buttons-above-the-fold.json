@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3314",
+ "intelligence": {
+  "title": "Both Buttons Above the Fold",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3314-both-buttons-above-the-fold",
+  "smart_note_id": "SN-3314",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3314/IB-SMART-NOTE-20261118-sn3314-both-buttons-above-the-fold.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The page was already good — he said so twice. The visual button sits above the fold and that is good; the second button sits below it and that is the gap. His fix is not a redesign, it is a packing problem: the page spends vertical space on things that do not earn it. \"Pick your view — one, or both, as you wish\" tells the visitor what the two buttons already say by existing — cut it, and the buttons gain its space. The portrait and the play button stack when they could sit in one row, the way the other page does it: her picture, the word Naya between the picture and the play button, the play button on the right — a row that reads, not a stack that sprawls. Move the top logo up a tad and the whole intro tightens. None of this is a new idea; it is the same page, packed the way it should have been packed, so both buttons land above the fold, above the legal pages, where the visitor sees the whole choice without scrolling. Above the fold is not a layout preference — it is the difference between a choice the visitor sees and a choice the visitor has to find.",
+  "simple_view": "Imagine a page where you can see both buttons right away, without scrolling down. Shawn says: take away the sentence that tells you to pick — the buttons already tell you that! Put her picture, the word Naya, and the play button all in one row, side by side, like the other page. And move the little logo at the top up just a tiny bit. Then both buttons fit on the screen at once, right where you can see them.",
+  "grandma_view": "Dear, the page looked good, dear — just the buttons, dear. Having one button where you can see it is good, dear, but having BOTH where you can see them is better, dear. Take away the sentence that says pick your view — the buttons say it themselves, dear. Put her picture, the word Naya, and the play button all in one row, dear, and move the little logo at the top up just a tiny bit, dear. Then both buttons sit right there where you can see them, dear, without scrolling down.",
+  "naya_view": "BOTH BUTTONS ABOVE THE FOLD. CUT THE LINE THAT SAYS PICK. ONE ROW: PICTURE, NAYA, PLAY. LOGO UP A TAD.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3314",
+   "title": "Both Buttons Above the Fold",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3314/IB-SMART-NOTE-20261118-sn3314-both-buttons-above-the-fold.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3314/IB-SMART-NOTE-20261118-sn3314-both-buttons-above-the-fold.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

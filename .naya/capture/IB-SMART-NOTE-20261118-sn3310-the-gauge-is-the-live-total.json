@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3310",
+ "intelligence": {
+  "title": "The Gauge Is the Live Total — Verify Live, Not Only in Bytes",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3310-the-gauge-is-the-live-total",
+  "smart_note_id": "SN-3310",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VERIFICATION/SN-3310/IB-SMART-NOTE-20261118-sn3310-the-gauge-is-the-live-total.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The checker read the bytes and said the 70% was nowhere — zero hits in the visible text — and it was right about the bytes and wrong about the page. The page does not keep its score in the HTML; it builds it live, in JavaScript, counting up through 40–43% and settling on 70%, which is exactly what the nine tiles add up to. That is the whole lesson in one finding: bytes are the blueprint, the browser is the building, and a claim about what the user sees can only be settled where the user sees it. The eye settled it in paint, in two places, at two widths, with the arithmetic to back it. The gauge is not a defect to erase; it is the live total, and the ruling it now needs is what the gauge should show — a question for Shawn, not a number to invent.",
+  "simple_view": "Imagine a teacher checks your homework by reading the blank paper — and says your answer isn't there. But you wrote it in invisible ink that only shows up when you hold it to the light! The Dashboard's 70% is like that, dear — it's not sitting in the paper, it's drawn live by the page itself, and when you look at the real page you can see it clear as day: 70%, right at the top. So you have to look at the real thing, not just the paper, to know what's really there.",
+  "grandma_view": "Dear, the checker read the page's paper and said the 70% wasn't there at all, dear — but the page draws it live, right in front of your eyes, and when you look at the real page it's right there, big and clear, 70% at the top. The nine little tiles add up to it exactly, dear — 30 and 10 and 20 and 10, that's 70. So the lesson is simple, dear: you have to look at the real thing to know what's really there, not just read the paper it's written on.",
+  "naya_view": "THE GAUGE IS THE LIVE TOTAL. BYTES ARE THE BLUEPRINT; THE BROWSER IS THE BUILDING. VERIFY LIVE, NOT ONLY IN BYTES.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3310",
+   "title": "The Gauge Is the Live Total — Verify Live, Not Only in Bytes",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VERIFICATION/SN-3310/IB-SMART-NOTE-20261118-sn3310-the-gauge-is-the-live-total.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VERIFICATION/SN-3310/IB-SMART-NOTE-20261118-sn3310-the-gauge-is-the-live-total.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

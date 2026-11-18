@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3299",
+ "intelligence": {
+  "title": "Restore the One-Screen Beauty",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3299-restore-the-one-screen-beauty",
+  "smart_note_id": "SN-3299",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3299/IB-SMART-NOTE-20261118-sn3299-restore-the-one-screen-beauty.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the standing law, spoken again on a new page: restore what was good — don't iterate on it. The calendar used to look beautiful, all on one screen; the rounds since made it worse, and iterating on the broken one only polishes the regression — each round adds a fix to a page that was never fixed, and the page drifts further from the beauty it once had. The fix is restoration, harvested byte for byte from the build that had it right — not a new version, not an improvement on the broken one, not a redesign with the good parts kept. The eye knows the difference: the good version was beautiful all on one screen, and the broken one is overwhelming. Put back what worked, and then — only then — the new rulings (20% numbers, toned glow, signature piece, scroll light) land on the restored beauty, not on the regression.",
+  "simple_view": "Imagine you built a beautiful tower of blocks, all neat on one table — and then someone kept adding more and more blocks until it got wobbly and messy and fell over! Would you try to fix the messy pile? No! You'd build it again the way it was when it was beautiful. Shawn says the calendar used to be beautiful, all on one screen — so put it back the way it was, don't keep fixing the messy one.",
+  "grandma_view": "Dear, Shawn says the calendar used to look so beautiful, dear — all on one screen, neat and lovely. But it's gone backwards somehow, dear, something's not right. He says put back what was good, dear — don't keep tinkering with the broken one, just restore the beautiful one, exactly as it was.",
+  "naya_view": "RESTORE THE ONE-SCREEN BEAUTY. IT USED TO LOOK BEAUTIFUL, ALL ON ONE SCREEN. THE CALENDAR REGRESSED. RESTORE WHAT WAS GOOD; DON'T ITERATE ON THE BROKEN ONE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3299",
+   "title": "Restore the One-Screen Beauty",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3299/IB-SMART-NOTE-20261118-sn3299-restore-the-one-screen-beauty.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3299/IB-SMART-NOTE-20261118-sn3299-restore-the-one-screen-beauty.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
