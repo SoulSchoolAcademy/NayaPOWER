@@ -211,6 +211,79 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
         .os-mini-gap{width:8px;}
         .os-mini-num.med .os-mini-gap{width:10px;}
       }
+/* CALENDAR FIX 2026-11-18 — AMENDMENT: the real spinning Hz jewel BESIDE
+   the plaque (the eye's follow-on: 'with the real spinning Hz jewel
+   beside it'). Harvested VERBATIM from the day file's DAY SCREEN
+   (blob e11cfd83): the .dayjewel unit — pedestal, aura, faceted gem,
+   hzspin — the same unit that sits beside the date + live digit-tile
+   time in the day screen's top bar. Sizes are the day file's fix-6
+   sizes (see the harvest note at the top of this script).
+   ONE adaptation, named: the day rule positions the jewel ABSOLUTE in
+   its bar's top-right corner (top:0; right:0); here the jewel sits IN
+   FLOW beside the plaque, so .nowcenter .dayjewel below sets
+   position:static. The harvested rule itself stays byte-identical. */
+      .dayjewel {
+        /* Positioned against the day head, whose own edges ARE the
+           bar's content corners — so 0/0 puts the unit exactly in
+           the top right corner, level with the eye at left */
+        position: absolute; z-index: 3;
+        top: 0; right: 0;
+        display: flex; flex-direction: column; align-items: center; gap: 2px;
+      }
+      .hz-stage {
+        position: relative; flex: none;
+        width: clamp(48px, 6.5vmin, 56px); height: clamp(48px, 6.5vmin, 56px);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .hz-aura {
+        /* Radiance kept quiet — rich, not glowing (Shawn, 2026-11-17) */
+        position: absolute; inset: -10px; border-radius: 50%; pointer-events: none;
+        background: radial-gradient(circle, color-mix(in srgb, var(--dc, #fff) 20%, transparent) 0%, color-mix(in srgb, var(--dc, #fff) 6%, transparent) 52%, transparent 72%);
+        animation: hzradiate 12s ease-in-out infinite alternate;
+      }
+      @keyframes hzradiate { from { opacity: .5; transform: scale(.94); } to { opacity: .85; transform: scale(1.05); } }
+      .hz-pedestal {
+        position: absolute; inset: 0; border-radius: 50%;
+        background: radial-gradient(circle at 34% 26%, #2c3044 0%, #13131f 52%, #050607 100%);
+        border: 2px solid color-mix(in srgb, var(--dc, #fff) 78%, #ffffff 22%);
+        box-shadow:
+          0 8px 16px rgba(0, 0, 0, 0.65),
+          0 0 11px color-mix(in srgb, var(--dc, #fff) 22%, transparent),
+          inset 0 2px 3px rgba(255, 255, 255, 0.4),
+          inset 0 -8px 12px rgba(0, 0, 0, 0.7);
+      }
+      .hz-pedestal::after {
+        content: ""; position: absolute; inset: -8px; border-radius: 50%;
+        border: 2px solid transparent;
+        border-top-color: color-mix(in srgb, var(--dc, #fff) 60%, #ffffff 10%);
+        border-right-color: color-mix(in srgb, var(--dc, #fff) 22%, transparent);
+        animation: orbitspin 70s linear infinite;
+      }
+      .dayjewel .gem {
+        position: relative; z-index: 1;
+        width: clamp(32px, 4.8vmin, 40px); height: auto; display: block;
+        filter: drop-shadow(0 6px 10px rgba(0,0,0,.75)) drop-shadow(0 0 12px color-mix(in srgb, var(--dc, #fff) 45%, transparent));
+        animation: hzspin 24s linear infinite;
+        transform-origin: 50% 50%;
+      }
+      @keyframes hzspin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+      .dayjewel:hover .gem { animation-duration: 12s; }
+      .dayjewel:hover .hz-aura { animation-duration: 6s; }
+      .dayjewel .freq {
+        /* The Hz text takes the DAY's colour too */
+        font-size: var(--type-small); font-weight: 800; line-height: 1;
+        letter-spacing: 0.24em; text-indent: 0.24em;
+        color: color-mix(in srgb, var(--dc, #fff) 55%, #ffffff 45%);
+        text-shadow: 0 0 7px color-mix(in srgb, var(--dc, #fff) 26%, transparent);
+        white-space: nowrap;
+      }
+/* The centre cell: plaque + jewel as ONE centred unit, 8px apart.
+   The pair is dead center; the jewel takes today's weekday colour
+   and frequency from renderNowPlaque, like the plaque. Unit height:
+   56px stage + 2px gap + 17px freq = 75px, so the header grows from
+   its 65px min-height to 75px — calculated, not eyeballed. */
+.nowcenter{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0}
+.nowcenter .dayjewel{position:static;flex:none}
 
 .hint{color:#fff;font-size:17px}
 .barleft,.barright{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -500,11 +573,17 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
 @media(max-width:740px){
   .shell{height:100dvh;padding:8px 8px 9px;gap:8px}
   .head{min-height:51px;display:flex;flex-wrap:wrap}.logo{width:39px;height:39px;font-size:33px;border-radius:12px}
-  /* CALENDAR FIX 2026-11-18 (1/4) — at phone width the plaque takes its own
-     row, dead center, so brand + Owner view never crowd it; the number and
-     the VIEW pill stack, both whole; the dots sit bottom-left, capped at
-     two, clear of the 20px 'i' jewel bottom-right. */
-  .nowplaque{order:-1;flex:1 1 100%;min-width:0;flex-wrap:wrap;justify-content:center;row-gap:0;gap:6px;padding:5px 6px}
+  /* CALENDAR FIX 2026-11-18 (1/4) — at phone width the plaque + jewel
+     take their own row, dead center, so brand + Owner view never crowd
+     them; the number and the VIEW pill stack, both whole; the dots sit
+     bottom-left, capped at two, clear of the 20px 'i' jewel
+     bottom-right. The jewel goes compact at phone width (48px stage,
+     38px gem — the day file's own ≤560px jewel rules, harvested). */
+  .nowcenter{order:-1;flex:1 1 100%;flex-wrap:wrap;row-gap:2px}
+  .nowplaque{flex:1 1 auto;min-width:0;flex-wrap:wrap;justify-content:center;row-gap:0;gap:6px;padding:5px 6px}
+  .nowcenter .hz-stage{width:48px;height:48px}
+  .nowcenter .dayjewel .gem{width:38px}
+  .nowcenter .dayjewel .freq{letter-spacing:.10em;text-indent:.10em}
   .now-date,.now-time{font-size:17px;letter-spacing:.02em}
   .now-date{white-space:normal;text-align:center}
   .tilerow{flex-direction:column;align-items:center;gap:2px}
@@ -544,11 +623,17 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
 <main class="shell">
   <header class="head">
     <div class="brand"><div class="logo" aria-hidden="true">N</div><div class="brandtxt"><strong>NayaNET · MY WORLD</strong><div id="worldname">Your life, organized by day.</div></div></div>
+    <div class="nowcenter" id="nowCenter">
     <button type="button" class="nowplaque" id="nowPlaque" aria-label="Today's date and your local time — tap to open today">
       <span class="live-dot" id="nowDot" style="--sc:#d4a017"></span>
       <span class="now-date" id="nowDate"></span>
       <span class="now-time" id="nowTime"></span>
     </button>
+      <span class="dayjewel" id="nowJewel" style="--dc:#0f52ba" role="img" aria-label="Today's frequency: 741 Hz, Wednesday">
+        <span class="hz-stage" id="nowJewelStage"><span class="hz-aura"></span><span class="hz-pedestal"></span></span>
+        <span class="freq" id="nowFreq">741 Hz</span>
+      </span>
+    </div>
     <div class="toptools">
       <!-- FOLLOW-ON (5) B3 RULING — Search, Add (+) and Naya's profile are OFF
            the month view: they open non-day views and break the one-purpose
@@ -720,6 +805,30 @@ function clockTilesHTML(d) {
           t += '<span class="os-mini-tile letter"><span class="cap"></span><span class="rd">' + ap.charAt(1) + '</span></span>';
           return t + "</span>";
         }
+/* AMENDMENT — the Hz jewel's gem, harvested VERBATIM from the day
+   file (blob e11cfd83; byte-identical in base and filed day). The gem
+   is built by renderNowPlaque only when the day changes, so the 24s
+   hzspin never restarts on the 1-second tick. */
+function gemSVG(dc) {
+          return '<svg class="gem" viewBox="0 0 72 72" aria-hidden="true" focusable="false">' +
+            '<defs><linearGradient id="gemg" x1="0" y1="0" x2="0" y2="1">' +
+              '<stop offset="0" stop-color="#ffffff" stop-opacity="1"/>' +
+              '<stop offset="0.38" stop-color="' + dc + '"/>' +
+              '<stop offset="1" stop-color="' + dc + '" stop-opacity="1"/>' +
+            "</linearGradient></defs>" +
+            '<path d="M14 27 26 13h20L58 27 36 59Z" fill="' + dc + '" stroke="none"/>' +
+            '<path d="M14 27 26 13h20L58 27 36 59Z" fill="url(#gemg)" stroke="rgba(255,255,255,1)" stroke-width="2" stroke-linejoin="round"/>' +
+            '<path d="M14 27h44M26 13l5 14 5 32M46 13l-5 14-5 32M31 27h10" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>' +
+            '<path d="M26 13h20l-5 14H31Z" fill="#ffffff" opacity="0.55"/>' +
+            '<path d="M31 27l5 32 5-32Z" fill="#ffffff" opacity="0.10"/>' +
+            '<path d="M14 27l17 0-5 20Z" fill="#ffffff" opacity="0.10"/>' +
+            '<path d="M58 27H41l5 20Z" fill="#000000" opacity="0.28"/>' +
+            '<circle cx="27" cy="19" r="2.4" fill="#ffffff" opacity="0.95"/>' +
+            '<circle cx="45" cy="21" r="1.5" fill="#ffffff" opacity="0.8"/>' +
+            '<path d="M52 8l1.1 2.9L56 12l-2.9 1.1L52 16l-1.1-2.9L48 12l2.9-1.1Z" fill="#ffffff" opacity="0.9"/' +
+            "</svg>";
+        }
+var lastJewelDay='';
 function renderNowPlaque(){
   const dEl=$('nowDate'), tEl=$('nowTime');
   if(!dEl||!tEl) return;
@@ -730,6 +839,16 @@ function renderNowPlaque(){
   const plaque=$('nowPlaque'), dot=$('nowDot');
   if(plaque) plaque.style.setProperty('--dc',dc);
   if(dot) dot.style.setProperty('--sc',dc);
+  const jewel=$('nowJewel'), freqEl=$('nowFreq'), stage=$('nowJewelStage');
+  const hz=WEEKDAY[t.getDay()].hz;
+  if(jewel) jewel.style.setProperty('--dc',dc);
+  if(freqEl) freqEl.textContent=hz+' Hz';
+  if(jewel) jewel.setAttribute('aria-label',"Today's frequency: "+hz+" Hz, "+WEEKDAY[t.getDay()].name);
+  const dayKey=t.getFullYear()+'-'+t.getMonth()+'-'+t.getDate();
+  if(stage && lastJewelDay!==dayKey){
+    stage.innerHTML='<span class="hz-aura"></span><span class="hz-pedestal"></span>'+gemSVG(dc);
+    lastJewelDay=dayKey;
+  }
 }
 function digitNum(d){ return String(d).split('').map(ch=>`<span class="dg ${DIGIT_CLASS[+ch]}">${ch}</span>`).join(''); }
 /* ============ DAILY WISDOM — sourced, with carry-forward ============ */
