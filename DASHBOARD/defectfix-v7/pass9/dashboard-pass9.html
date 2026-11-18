@@ -3761,7 +3761,7 @@ button:hover{
    Same items, same order, same icons, same colors — see gen-rails2.py.
    Adaptations (Dashboard has no .shell; the plus buttons are the
    rail controls, not the Hub hamburger): state classes live on
-   <body> (dash-rail-collapsed / dash-rail-right-collapsed /
+   <body class="os-bottom-hidden"> (dash-rail-collapsed / dash-rail-right-collapsed /
    dash-drawer-open / dash-rail-right-open); the grid is .dash-shell.
    The Dashboard's own :root sets --purple:#d9a521 (gold); the Hub's
    rail tokens are scoped under .dash-shell so neither side leaks.
@@ -5007,14 +5007,9 @@ html.os-calm
 <a class="nav-btn nav-area" href="https://nayanet.app/hub" data-area="hub" data-spy-key="area:hub" data-count-key="activity" style="--nav:#8e24aa" aria-label="Hub"><span class="ico"><svg class="jewel glyph-xl" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail1-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail1)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-20 12 12)"/><circle cx="19.5" cy="8.5" r="1.6" fill="#ffffff" stroke="none"/></g></svg></span><span class="lbl">Hub</span><span class="nav-count"></span></a>
 <a class="nav-btn nav-area lit" href="https://nayanet.app/dashboard" data-area="dashboard" data-spy-key="area:dashboard" style="--nav:#07925f" aria-label="Dashboard"><span class="ico"><svg class="jewel glyph-xl" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail2" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail2-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail2-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail2)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 1116 0"/><path d="M12 14l4-5"/><path d="M4 18h16"/></g></svg></span><span class="lbl">Dashboard</span><span class="nav-count"></span></a>
 <button class="nav-btn nav-area" aria-label="Personal — your personal mail, messages and page" aria-expanded="false" data-area="personal" data-spy-key="area:personal" style="--nav:#0f52ba"><span class="ico"><svg class="jewel glyph-xl" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail3" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail3-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail3-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail3)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></g></svg></span><span class="lbl">Personal</span><span class="chev">▾</span></button>
-<div class="nav-subwrap" hidden>
-<a class="nav-sub" href="https://nayanet.app/rooms/mail" data-count-key="mail" style="--nav:#0f52ba" aria-label="Personal Mail"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail4" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail4-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail4-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail4)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7.5l8.5 6 8.5-6"/></g></svg></span><span class="lbl">Personal Mail</span><span class="nav-count"></span></a>
-<a class="nav-sub" href="https://nayanet.app/rooms/mail" style="--nav:#07925f" aria-label="Personal Instant Messages"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail5" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail5-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail5-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail5)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.8.4 5 2.6 5 5.5"/></g></svg></span><span class="lbl">Personal Instant Messages</span><span class="nav-count"></span></a>
-<a class="nav-sub" href="https://nayanet.app/personal" style="--nav:#0f52ba" aria-label="Personal Page"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail6" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail6-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail6-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail6)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></g></svg></span><span class="lbl">Personal Page</span><span class="nav-count"></span></a>
-<a class="nav-sub" href="https://nayanet.app/rooms/connections" style="--nav:#0f52ba" aria-label="Personal Connections"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail7" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail7-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail7-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail7)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M12 7.5L6 16M12 7.5l6 8.5M7.4 18h9.2"/></g></svg></span><span class="lbl">Personal Connections</span><span class="nav-count"></span></a>
-</div>
-<a class="nav-btn nav-area" href="https://nayanet.app/business" data-area="business" data-spy-key="area:business" style="--nav:#d4a017" aria-label="Business"><span class="ico"><svg class="jewel glyph-xl" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail8" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail8-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail8-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail8)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></g></svg></span><span class="lbl">Business</span><span class="nav-count"></span></a>
-<a class="nav-btn nav-area" href="https://nayanet.app/space" data-area="space" data-spy-key="area:space" data-count-key="spaces" style="--nav:#c2410c" aria-label="Your World"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail9" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail9-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail9-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail9)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></g></svg></span><span class="lbl">Your World</span><span class="nav-count"></span></a>
+<div class="nav-subwrap" hidden> <a class="nav-sub" href="https://nayanet.app/personal" style="--nav:#0f52ba" aria-label="Personal Page"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail6" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail6-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail6-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail6)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></g></svg></span><span class="lbl">Personal Page</span><span class="nav-count"></span></a> <a class="nav-sub" href="https://nayanet.app/rooms/mail" style="--nav:#07925f" aria-label="Personal Instant Messages"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail5" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail5-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail5-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail5)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.8.4 5 2.6 5 5.5"/></g></svg></span><span class="lbl">Personal Instant Messages</span><span class="nav-count"></span></a> <a class="nav-sub" href="https://nayanet.app/rooms/mail" data-count-key="mail" style="--nav:#0f52ba" aria-label="Personal Mail"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail4" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail4-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail4-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail4)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7.5l8.5 6 8.5-6"/></g></svg></span><span class="lbl">Personal Mail</span><span class="nav-count"></span></a> <a class="nav-sub" href="https://nayanet.app/rooms/connections" style="--nav:#0f52ba" aria-label="Personal Connections"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail7" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail7-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail7-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail7)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M12 7.5L6 16M12 7.5l6 8.5M7.4 18h9.2"/></g></svg></span><span class="lbl">Personal Connections</span><span class="nav-count"></span></a> </div>
+<button class="nav-btn nav-area" aria-label="Business — your business page, mail, messages and connections" aria-expanded="false" data-area="business" data-spy-key="area:business" style="--nav:#d4a017"><span class="ico"><svg class="jewel glyph-xl" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drailB0" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drailB0-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drailB0-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drailB0)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></g></svg></span><span class="lbl">Business</span><span class="chev">▾</span></button> <div class="nav-subwrap" hidden> <a class="nav-sub" href="https://nayanet.app/business" style="--nav:#0f52ba" aria-label="Business Page"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drailB1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drailB1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drailB1-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drailB1)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></g></svg></span><span class="lbl">Business Page</span><span class="nav-count"></span></a> <a class="nav-sub" href="https://nayanet.app/rooms/mail" style="--nav:#07925f" aria-label="Business Instant Messages"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drailB2" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drailB2-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drailB2-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drailB2)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.8.4 5 2.6 5 5.5"/></g></svg></span><span class="lbl">Business Instant Messages</span><span class="nav-count"></span></a> <a class="nav-sub" href="https://nayanet.app/rooms/mail" style="--nav:#0f52ba" aria-label="Business Mail"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drailB3" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drailB3-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drailB3-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drailB3)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7.5l8.5 6 8.5-6"/></g></svg></span><span class="lbl">Business Mail</span><span class="nav-count"></span></a> <a class="nav-sub" href="https://nayanet.app/rooms/connections" style="--nav:#0f52ba" aria-label="Business Connections"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drailB4" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drailB4-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drailB4-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drailB4)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M12 7.5L6 16M12 7.5l6 8.5M7.4 18h9.2"/></g></svg></span><span class="lbl">Business Connections</span><span class="nav-count"></span></a> </div>
+<button class="nav-btn nav-area" aria-label="Your World — your world page, mail, messages and connections" aria-expanded="false" data-area="space" data-spy-key="area:space" style="--nav:#c2410c"><span class="ico"><svg class="jewel glyph-xl" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drailW0" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drailW0-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drailW0-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drailW0)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></g></svg></span><span class="lbl">Your World</span><span class="chev">▾</span></button> <div class="nav-subwrap" hidden> <a class="nav-sub" href="https://nayanet.app/space" style="--nav:#0f52ba" aria-label="Your World Page"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drailW1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drailW1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drailW1-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drailW1)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></g></svg></span><span class="lbl">Your World Page</span><span class="nav-count"></span></a> <a class="nav-sub" href="https://nayanet.app/rooms/mail" style="--nav:#07925f" aria-label="Your World Instant Messages"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drailW2" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drailW2-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drailW2-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drailW2)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.8.4 5 2.6 5 5.5"/></g></svg></span><span class="lbl">Your World Instant Messages</span><span class="nav-count"></span></a> <a class="nav-sub" href="https://nayanet.app/rooms/mail" style="--nav:#0f52ba" aria-label="Your World Mail"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drailW3" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drailW3-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drailW3-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drailW3)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7.5l8.5 6 8.5-6"/></g></svg></span><span class="lbl">Your World Mail</span><span class="nav-count"></span></a> <a class="nav-sub" href="https://nayanet.app/rooms/connections" style="--nav:#0f52ba" aria-label="Your World Connections"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drailW4" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drailW4-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drailW4-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drailW4)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M12 7.5L6 16M12 7.5l6 8.5M7.4 18h9.2"/></g></svg></span><span class="lbl">Your World Connections</span><span class="nav-count"></span></a> </div>
 <a class="nav-btn nav-area" href="https://nayanet.app/#/hub/spaces" data-area="smartworlds" data-spy-key="area:smartworlds" style="--nav:#a21caf" aria-label="Smart Worlds"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail10" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail10-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail10-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail10)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="1.5"/><circle cx="14.5" cy="12" r="1.2" fill="#ffffff" stroke="none"/><path d="M6 3l-2 2v14l2 2M18 3l2 2v14l-2 2" opacity=".5"/></g></svg></span><span class="lbl">Smart Worlds</span><span class="nav-count"></span></a>
 <button class="nav-btn" data-spy-key="room:today" style="--nav:#a21caf" aria-current="false" data-dash-room="/rooms/today"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail11" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail11-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail11-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail11)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></g></svg></span><span class="lbl">Intel Today</span></button>
 <button class="nav-btn" data-spy-key="room:reports" style="--nav:#3f51b5" aria-current="false" data-dash-room="/rooms/reports"><span class="ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="drail12" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#050607"></stop><stop offset="55%" stop-color="#050607"></stop><stop offset="100%" stop-color="#050607"></stop></radialGradient><filter id="drail12-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter></defs><circle cx="12" cy="12" r="8.6" fill="currentColor" filter="url(#drail12-g)" opacity="0.55"></circle><circle cx="12" cy="12" r="6.8" fill="url(#drail12)"></circle><circle cx="12" cy="12" r="7.7" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.8"></circle><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"></circle><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></g></svg></span><span class="lbl">Your Reports</span></button>
@@ -5355,7 +5350,7 @@ body.os-feed-open #os-feed-list{background:linear-gradient(180deg,#121214,#08080
   display:flex;justify-content:center;align-items:center;gap:28px;
   padding:10px 0 20px;background:linear-gradient(180deg,rgba(0,0,0,0),#000 35%);
   transition:transform .35s ease,opacity .35s ease;}
-body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO FIX 2026-11-09 (b), RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law — supersedes FIX-4): os-bottom-hidden hides the bar WHILE SCROLLING only — it returns ONLY at the very bottom, never when scrolling stops (the _barT ~1s return is removed); visible at load, before the page has ever been scrolled down. */
+body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO FIX 2026-11-09 (b), RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law — supersedes FIX-4): DOORS-OUT 2026-11-18 (Shawn ~20:24Z, supersedes RETURN-AT-BOTTOM): os-bottom-hidden hides the bar until its one calm appearance — it shows once, after the reader has stopped at the very bottom for a second, then holds; it starts hidden at load. */
 .os-b3-badge[hidden]{display:none !important;}
 .os-notif-count[hidden]{display:none !important;}
 .os-b3-badge{position:absolute;top:2px;right:2px;min-width:20px;height:20px;padding:0 4px;
@@ -5390,8 +5385,7 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    color; (4) Personal's .notif-lbl is NOT carried over — its gray
    (#C9CEDA) would break Fix-3 item 1, and no label element renders;
    the name lives in aria-label/title + the hover pill only;
-   (5) the live count stays the Dashboard's own .os-b3-badge (feed count,
-   99+ cap, synced by the FIX 5 script) inside the ACTIVITY tile. The
+   (5) DOORS-OUT 2026-11-18: the live count is now the Hub's .notif-count span (feed count, 99+ cap, synced by the FIX 5 script) inside the ACTIVITY tile — the Dashboard's own .os-b3-badge is retired. The
    gold home tile retires: the Dashboard IS the home view, and the
    six-tile form carries no home.
    (6) RESPONSIVE FIT — six tiles are wider than five, so the gap
@@ -5418,8 +5412,7 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    down-right shadow; the glyph goes WHITE as a real object; the radius went
    16px -> 20px in this round (squircle, almost round, as in the pictures) and the
    FIX-PASS restores Personal's 16px (see FIX-PASS above the tile rules); hover lifts
-   the whole tile and the white glyph pops. The badge (.os-b3-badge) and the
-   news dots (.os-b3-dot) move INSIDE the tile — the badge as a digit tile
+   the whole tile and the white glyph pops. DOORS-OUT 2026-11-18: the badge and the news dots are retired with the Hub harvest — the live count is the Hub's .notif-count span inside the tile. (Was: the badge (.os-b3-badge) and the news dots (.os-b3-dot) moved INSIDE the tile — the badge as a digit tile
    set into the ACTIVITY tile's top-right corner (obsidian, emerald rim,
    white digit), the dots as jewels set into their tiles' top-right corners
    (the five dot spans move inside their .notif-tile spans; the badge was
@@ -5644,16 +5637,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
   <button class="os-pts-btn primo" data-mode="money" aria-pressed="false"><span class="os-mode-ico">$</span>MONEY</button>
 </div>
 </div><!-- /os-hero-fit -->
-<!-- 2026-11-18 DASHBOARD-LANE-FIX3 (§1) — VISIBLE NAMED DOORS. Smart Notes, Inbox and Lists had no visible door on this page: zero .ph-navtab elements in the file (hash/search only), and the inbox badge code looks up a .ph-navtab[data-view="inbox"] that did not exist. Three pills in the page's own .ph-navtab anatomy (obsidian pill, own-colour rim, white label, spectrum order purple to sapphire to emerald, never two same colours together), each with data-view so the page's own wiring opens its view: notes opens the Smart Notes section and loads it, inbox opens the Inbox section and loads it, lists opens the Lists section and loads it. Below the hero on purpose: the hero stays gauge plus number plus orbs, nothing else. No navtabs id on the row: the drift marquee would clone three pills into a loop. -->
-<style id="os-doors-css">
-/* 2026-11-18 DASHBOARD-LANE-FIX3 (§1): the doors' labels read at 17px — the harvested pill text sits below the law size; the new doors take the law size. */
-#os-doors .ph-navtab{font-size:17px;}
-</style>
-<div class="ph-navtabs" id="os-doors" role="navigation" aria-label="Rooms">
-  <button class="ph-navtab" type="button" data-view="notes" style="--tc:#8e24aa"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">&#x2726;</span>Smart Notes</button>
-  <button class="ph-navtab" type="button" data-view="inbox" style="--tc:#0f52ba"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba">&#x2709;&#xFE0F;</span>Inbox</button>
-  <button class="ph-navtab" type="button" data-view="lists" style="--tc:#07925f"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">&#x1F4CB;</span>Lists</button>
-</div>
+
 <script>
 /* 2026-11-18 DASHBOARD-LANE-FIX3 (§4) — RAIL COUNTS, ONLY FROM PROVEN SOURCES.
    The rail rows carry empty .nav-count spans; the Hub fills them through its spy, which this page does not run. Two counts have a live source ON THIS PAGE, so these two are wired and nothing else is:
@@ -11338,13 +11322,13 @@ NF.register(UNIT, {
   function markInboxSeen(){ try { localStorage.setItem(INBOX_SEEN_KEY, String(Date.now())); } catch(e){} }
   function notifOn(){ try { return localStorage.getItem('naya.setting.🔔 Notifications')!=='off'; } catch(e){ return true; } }
   function refreshInboxBadge(){
+    /* 2026-11-18 DOORS-OUT: the Smart Notes / Inbox / Lists doors below the hero are out (Shawn ~20:24Z), so there is no .ph-navtab[data-view="inbox"] any more. The unseen-mail count still reaches the rail — the Personal Mail row takes it, as fix #3 wired it. The tab badge below only runs if a tab exists. */
+    if (typeof window._osSyncRailCounts === 'function') { try { window._osSyncRailCounts({mail: osUnseen}); } catch(e){} }
     var tab=document.querySelector('.ph-navtab[data-view="inbox"]'); if (!tab) return;
     var badge=document.getElementById('os-inbox-badge');
     if (!badge){ badge=document.createElement('span'); badge.id='os-inbox-badge'; badge.className='os-badge'; tab.appendChild(badge); }
     badge.textContent=osUnseen>0?String(osUnseen):'';
     badge.style.display=(osUnseen>0 && notifOn())?'inline-block':'none';
-    /* 2026-11-18 DASHBOARD-LANE-FIX3 (§4): the rail Personal Mail row takes the same proven unseen-mail count. */
-    if (typeof window._osSyncRailCounts === 'function') { try { window._osSyncRailCounts({mail: osUnseen}); } catch(e){} }
   }
   function loadInbox(){
     if (!sb) { $('os-inbox-list').innerHTML='<div class="os-status">Connection unavailable.</div>'; return; }
@@ -23518,15 +23502,12 @@ function applyBottomBar(){
 /* GREETING-OUT FIX 2026-11-17 (§3.5) — the Dashboard bar has its own
    on/off, in the same store as the network bar (same Settings popover,
    same corner control). dashBar: true = the Dashboard bar shows (default);
-   false = their choice, it stays off. The fold on scroll
-   (body.os-bottom-hidden) is separate — it hides the bar WHILE scrolling
-   and returns only at the very bottom (RETURN-AT-BOTTOM 2026-11-17); this
-   setting hides it until they turn it back on. */
+   false = their choice, it stays off. The fold (body.os-bottom-hidden) is separate — DOORS-OUT 2026-11-18: the bar shows once, after the reader has stopped at the very bottom for a second, then holds (supersedes RETURN-AT-BOTTOM 2026-11-17); this setting hides it until they turn it back on. */
 function setDashBar(on){
   var s = getSettings();
   s.dashBar = !!on;
   saveSettings(s);
-  applyDashBar();
+  window._osB3UserToggle = true; applyDashBar(); window._osB3UserToggle = false;
   return s.dashBar;
 }
 function applyDashBar(){
@@ -23538,7 +23519,8 @@ function applyDashBar(){
      page had been scrolled the fold held the bar at translateY(110%)
      whatever the setting said. The fold rule itself is untouched: the
      next scroll event re-folds mid-page; only the very bottom returns it. */
-  if (on) document.body.classList.remove('os-bottom-hidden');
+  /* 2026-11-18 DOORS-OUT (§2): the bar is NOT sticky and never force-shows at boot — it appears once, calmly, when the reader has stopped at the very bottom for a second (see onScroll). An explicit ON from the Settings toggle shows it at once and marks it shown. */
+  if (on && window._osB3UserToggle) { document.body.classList.remove('os-bottom-hidden'); window._osB3ShownOnce = true; }
   document.body.classList.toggle('os-bottom-off', !on);
   if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(e){} }
 }
@@ -27273,18 +27255,28 @@ window._repaintOrbMinis = function(box){
      while the scroll position is inside the hero (os-hero-top — the tabs are
      gone from the hero) and folds while scrolling below it, returning on stop /
      at the ends / on tap. RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z,
-     confirmed law — supersedes FIX-4 2026-11-17): the bottom bar is visible
-     at load (before the page has ever been scrolled down) and returns ONLY
-     at the very bottom — never when scrolling stops. The _barT ~1s return
-     is removed. The old FIX-4 law (return ~1s after scroll stops, at any
+     confirmed law — supersedes FIX-4 2026-11-17): DOORS-OUT 2026-11-18 (supersedes RETURN-AT-BOTTOM): the bottom bar starts hidden at load and shows once, after the reader has stopped at the very bottom for a second, then holds — never when scrolling stops, never over and over. The old FIX-4 law (return ~1s after scroll stops, at any
      scroll position) is gone. os-nav-hidden still folds the legacy
      #nayanet-nav / .ph-bottom in parallel. --- */
   var _navT = null;
-  /* RETURN-AT-BOTTOM 2026-11-17: no _barT. The bottom bar has no timed
-     return any more — once the page has been scrolled down, only the very
-     bottom brings it back. _osBarEverScrolled stays false until the first
-     scroll event below the top, so the bar is visible at load. */
+  /* DOORS-OUT 2026-11-18 (supersedes RETURN-AT-BOTTOM): no _barT and no return-at-bottom — the bar starts hidden and shows once, after the reader has stopped at the very bottom for a second (_osB3ArmTimer), then holds. _osBarEverScrolled stays false until the first scroll event below the top. */
   var _osBarEverScrolled = false;
+  /* DOORS-OUT 2026-11-18 (§2) — SHOW ONCE. _osB3ShownOnce: the bar has had its one calm appearance and now holds; nothing re-hides it on scroll. _osB3BarOff(): the reader's own off choice (setting or os-bottom-off) — the timer never fires while off. */
+  window._osB3ShownOnce = false;
+  var _osBarBottomTimer = null;
+  function _osB3BarOff(){ try { if (window.NayaSmartBar && typeof window.NayaSmartBar.dashBarOn === 'function') return !window.NayaSmartBar.dashBarOn(); } catch(e){} return document.body.classList.contains('os-bottom-off'); }
+  function _osB3ArmTimer(){
+    if (window._osB3ShownOnce) return;
+    if (_osBarBottomTimer) clearTimeout(_osBarBottomTimer);
+    if (!_osAtPageBottom() || _osB3BarOff()) return;
+    _osBarBottomTimer = setTimeout(function(){
+      if (window._osB3ShownOnce) return;
+      if (!_osAtPageBottom() || _osB3BarOff()) return;
+      document.body.classList.remove('os-bottom-hidden');
+      window._osB3ShownOnce = true;
+      if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(_sb){} }
+    }, 1000);
+  }
   function _osAtPageBottom(){ try{ return (window.scrollY||0) + window.innerHeight >= (document.documentElement.scrollHeight||0) - 2; }catch(e){ return false; } }
   function _osHeroBottom(){ try{ var g = document.querySelector('.os-block-gauge'); if (!g) return 0; return g.getBoundingClientRect().bottom + (window.scrollY||0); }catch(e){ return 0; } }
   function onScroll(){
@@ -27293,11 +27285,8 @@ window._repaintOrbMinis = function(box){
     document.body.classList.toggle('os-hero-top', y < _osHeroBottom());
     document.body.classList.add('os-nav-hidden');
     document.body.classList.add('os-top-hidden');
-    /* RETURN-AT-BOTTOM 2026-11-17: the fold is decided here, every scroll
-       event — hidden once scrolled down, back ONLY at the very bottom
-       (or before the page has ever been scrolled down, i.e. at load). */
-    if (_osAtPageBottom() || !_osBarEverScrolled) document.body.classList.remove('os-bottom-hidden');
-    else document.body.classList.add('os-bottom-hidden');
+    /* DOORS-OUT 2026-11-18 (Shawn ~20:24Z): the bar is NOT sticky. It stays hidden until the reader has stopped at the very bottom for a full second — one calm appearance, then it holds. It never pops back up over and over: once shown, this code never hides it again. (Supersedes RETURN-AT-BOTTOM 2026-11-17.) */
+    _osB3ArmTimer();
     /* 2026-11-18 CLUSTER-FOLLOWON (§3): the chevron tracks the fold. */
     if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(_sb){} }
     if (_navT) clearTimeout(_navT);
@@ -27322,13 +27311,14 @@ window._repaintOrbMinis = function(box){
        onScroll on every scroll event. */
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  /* DOORS-OUT: the page can load already at the bottom — arm the same one-second timer once, at boot. */
+  try { _osB3ArmTimer(); } catch(_be){}
   /* PASS-8 2026-11-10 — a tap inside the hero must NOT show the bottom bar.
      The old handler showed it on ANY button tap, including the mode toggle:
      the bar slid up over the hero's own note + toggle, so the next tap aimed
      at the toggle hit the bar's middle button instead — and that button opens
      the feed, which is the ~150px scroll-jump the eye-check caught.
-     RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law): a tap
-     no longer recalls the bar either — it returns ONLY at the very bottom.
+     RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law): DOORS-OUT 2026-11-18: a tap on the corner control still recalls the bar (the reader's own tap); scroll alone never brings it back — only the one calm appearance at the very bottom after a second stopped.
      The handler keeps its hero guard and its re-fit; the bar-show line is
      removed. The corner control + Settings toggle still govern the bar's
      on/off setting. */
@@ -27356,7 +27346,7 @@ window._repaintOrbMinis = function(box){
     if (e.propertyName && e.propertyName !== 'transform') return;
     try{ fitHero(); }catch(_te){}
   });
-  try{ onScroll(); }catch(e){} /* init: the top bar starts hidden in the hero; the bottom bar starts VISIBLE at scroll 0 (RETURN-AT-BOTTOM: visible at load, before any scroll down). */
+  try{ onScroll(); }catch(e){} /* init: the top bar starts hidden in the hero; the bottom bar starts HIDDEN at scroll 0 (DOORS-OUT 2026-11-18: hidden at load; one calm appearance at the very bottom after a second stopped). */
   /* --- fit wiring --- */
   function refit(){ var el = numEl(); if (el && el.querySelector('.reel')) fitNumber(el); fitHero();
     /* FIXROUND PASS-4 (D2): a resize across the 768px breakpoint changes the
@@ -29462,7 +29452,7 @@ body.os-tabs-on #os-dash{ padding-top:96px; }
   body.os-tabs-on #nsbSearchLevel{margin-top:212px !important;}
 }
 
-/* (b) RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law — supersedes FIX-4): the bottom bar is visible at load and returns ONLY at the very bottom — never when scrolling stops. */
+/* (b) RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law — supersedes FIX-4): DOORS-OUT 2026-11-18: the bottom bar starts hidden at load and shows once at the very bottom after a second stopped — never when scrolling stops, never over and over. */
 body.os-bottom-hidden #os-bottom3{ transform:translateY(110%) !important; opacity:0 !important; }
 /* (o) The points strip is out of the top. The data is not deleted — the same
    math lives in the derivation detail below. */
@@ -29690,14 +29680,83 @@ body.viewport-focus #viewport-back{
 </aside>
 
 </div><!-- /dash-shell -->
-<nav id="os-bottom3" class="os-bottom3 notif-six" aria-label="Dashboard">
-  <button type="button" class="notif-seg" data-b3="add" style="--nc:#8e24aa" aria-label="Add" title="Add"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="os-b3-dot" data-b3-dot="add" aria-hidden="true"></span></span></button>
-  <button type="button" class="notif-seg" data-b3="mail" style="--nc:#0f52ba" aria-label="Smart Mail" title="Smart Mail"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="os-b3-dot" data-b3-dot="mail" aria-hidden="true"></span></span></button>
-  <button type="button" class="notif-seg" data-b3="activity" style="--nc:#07925f" aria-label="Activity" title="Activity"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="os-b3-badge" id="os-b3-badge" hidden></span></span></button>
-  <button type="button" class="notif-seg" data-b3="worlds" style="--nc:#d4a017" aria-label="Worlds" title="Worlds"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg><span class="os-b3-dot" data-b3-dot="worlds" aria-hidden="true"></span></span></button>
-  <button type="button" class="notif-seg" data-b3="eco" style="--nc:#c2410c" aria-label="Ecosystem" title="Ecosystem"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="os-b3-dot" data-b3-dot="eco" aria-hidden="true"></span></span></button>
-  <button type="button" class="notif-seg" data-b3="connect" style="--nc:#c62828" aria-label="Connect" title="Connect"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="os-b3-dot" data-b3-dot="connect" aria-hidden="true"></span></span></button>
-</nav>
+<style id="os-hubbar-css">
+/* 2026-11-18 DOORS-OUT (§2) — THE BOTTOM BAR, HARVESTED VERBATIM FROM THE HUB (HUB/app/index.html, blob 84e02035ebea306703b59a171736574b23b16eee, Hub feed fix #2). The six tiles are the Hub's own: ADD royal purple · MAIL sapphire · ACTIVITY emerald · WORLDS deep gold · ECOSYSTEM burnt orange · CONNECT ruby. Rule bytes below are the Hub's, in the Hub's order; only the shell selector is re-scoped to #os-bottom3 (this page's nav keeps its id so the page's own wiring keeps working) and the z-index stays the Dashboard's 200. ONE deviation, on Shawn's word: the WORLDS tile keeps the HOUSE glyph he named ("WORLDS deep gold (house)") and uploaded — the Hub file carries a globe there. The Dashboard's old Personal-harvested tile rules (simpler, flat gradient, no orbit ring) sit earlier in this file; this block sits later so the Hub's bytes win. */
+.notif-row { display: flex; gap: 40px /* A9 (2026-11-17): depth + separation — 6×54px + 5×40px = 524px, inside 640px. */; width: 100%; max-width: 640px; padding: 12px 14px 10px; justify-content: center; }
+.notif-seg {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 2px 6px 0; cursor: pointer; background: none; border: none;
+  color: #ffffff; font-family: inherit; transition: transform .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.notif-seg:active { transform: scale(.94); }
+.notif-tile {
+  position: relative; z-index: 0; width: 54px; height: 54px; border-radius: 16px; /* MODEL TILE (blob 9a006c47, 22:48Z + 23:00Z): harvested verbatim — 16px, not the Hub's 26px squircle */
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%); /* MODEL: the ball face — own-color top-left light, obsidian body */
+  border: 1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12)); /* MODEL: the 62% rim */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.38),
+    inset 0 -9px 15px rgba(0,0,0,.6),
+    inset 1px 0 0 rgba(255,255,255,.07),
+    0 7px 16px rgba(0,0,0,.6),
+    0 12px 28px rgba(0,0,0,.55),
+    0 0 17px color-mix(in srgb, var(--nc) 42%, transparent); /* MODEL: the around-glow, restrained */
+  color: #ffffff;
+  transition: box-shadow .3s, border-color .3s, transform .22s cubic-bezier(.16,.84,.22,1);
+}
+.notif-tile::before { display: none; }
+.notif-tile::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; border: 1.5px solid color-mix(in srgb, var(--nc) 45%, transparent); transform: translate(1px, 1px); box-shadow: 0 4px 10px rgba(0,0,0,.5); /* EYE-NOTES-FIX §3.3(a)(b): radius follows the squircle; the clone shadow brought in tight */
+  background: #050607; /* BLACK DIAMOND: the wash is out — ::before is now the clone layer */
+
+}
+.notif-tile::after{content:""; position:absolute; inset:-6px; z-index:-1; pointer-events:none; border-radius:inherit; border:1px solid color-mix(in srgb, var(--nc) 35%, transparent); background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; padding:2px; animation:orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate;}
+.notif-seg:nth-child(even) .notif-tile::after{animation:naya-orbit-dot-ccw 150s linear infinite;}
+.notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 2px 2px rgba(0,0,0,.7)); position: relative; transition: transform .22s, filter .22s; }
+.notif-count { position: absolute; top: 4px; right: 8px; min-width: 24px; height: 24px; padding: 0 6px;
+  display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
+  font-size: 12px; font-weight: 900; color: #fff; background: radial-gradient(130% 140% at 30% 18%, rgba(255,255,255,.22), #07070b 78%);
+  border: 1.5px solid var(--nc);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 12px color-mix(in srgb, var(--nc) 55%, transparent), 0 3px 8px rgba(0,0,0,.5); }
+.notif-seg.has-news .notif-tile {
+  border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
+  box-shadow: 0 7px 16px rgba(0,0,0,.6), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); /* MODEL: the lit state, verbatim. */
+}
+.notif-seg:hover .notif-tile {
+  transform: translateY(-3px);
+  border-color: var(--nc);
+  box-shadow:
+    inset 0 -9px 15px rgba(0,0,0,.6),
+    0 0 14px -2px color-mix(in srgb, var(--nc) 60%, transparent), /* EYE-NOTES §3.2 edge-only */
+    0 8px 18px rgba(0,0,0,.6),
+    0 0 0 1px color-mix(in srgb, var(--nc) 35%, transparent); /* EYE-NOTES-FIX §3.3(b): the outer hairline ring, brought in tight */
+  /* BLACK DIAMOND: inset white out. */
+}
+.notif-seg:hover .notif-tile svg { filter: drop-shadow(0 3px 3px rgba(0,0,0,.95)) drop-shadow(0 0 8px var(--nc)) drop-shadow(0 0 3px rgba(255,255,255,.9)); transform: scale(1.06); }
+.notif-seg:hover .notif-tile::after { border-color: color-mix(in srgb, var(--nc) 80%, transparent); }
+.notif-seg:active .notif-tile { transform: translateY(2px) scale(.96); box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.7), 0 3px 8px rgba(0,0,0,.6), 0 0 8px -2px color-mix(in srgb, var(--nc) 40%, transparent); }
+@media (max-width:640px){ .notif-row{gap:10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 2px 0;} }
+@media (max-width:400px){ .notif-row{gap:4px;padding:12px 8px 10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 0 0;} }
+@media (prefers-reduced-motion: reduce) {
+  .star-rating button.on, .action[data-kind="love"].on .love-heart, .ib-card-orb { animation: none !important; }
+  .notif-tile::after, .nav-btn .ico::after, .nav-sub .ico::after, .rail-toggle::after, .eco-bb-ico::after, .fc-plusitem .fc-pi-ico::after, .ib-card-orb::before { animation: none !important; }
+}
+/* SHELL ADAPTATION — the Hub's .notif-bar declarations, re-scoped to this page's nav id (same values, same order). This outranks the page's older #os-bottom3 padding/background/gap (id+class beats id). The Hub's fold rule (.notif-bar translateY hide) is NOT carried over: the show-once logic below owns visibility now. */
+#os-bottom3.notif-bar{position: fixed; left: 0; right: 0; bottom: var(--smartbar-h, 0px); z-index: 200; /* Dashboard keeps its own 200 so the bar stays above Dashboard content */
+  display: flex; justify-content: center;
+  background: rgba(5,5,9,.96);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  /* F3 (Shawn 16:06Z) — NO divider line above the trio: the border-top and
+     the inset 1px highlight are gone; the icons sit clean on the page. */
+  box-shadow: 0 -10px 34px rgba(0,0,0,.6);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;
+  transition: opacity .45s ease;}
+/* NEUTRALISER — the Dashboard's own !important seg shadow (bar-depth work) would sit under every Hub tile; the Hub's tiles carry their own shadow, so the seg shadow goes, scoped to this bar only. */
+#os-bottom3 .notif-seg{box-shadow:none !important;}
+</style>
+<nav id="os-bottom3" class="os-bottom3 notif-six notif-bar" aria-label="Dashboard"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></a></div></nav>
 <!-- GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control for the Dashboard bar (the page-icon-bar law: a small corner control can hide it; Settings can turn it off; by default it sits there). A real object, not flat: obsidian, white rim, top light. The down chevron folds the bar down; the up chevron brings it back. -->
 <button type="button" id="os-b3-hide" aria-label="Hide the Dashboard bar" title="Hide the Dashboard bar">▾</button>
 <script>
@@ -29709,8 +29768,8 @@ body.viewport-focus #viewport-back{
     var nb = document.getElementById('os-notif-count');
     if (nb){ if (n > 0){ nb.textContent = String(n); nb.hidden = false; } else { nb.hidden = true; } }
     if (typeof window._osSyncB3News === 'function') { try { window._osSyncB3News(); } catch(e){} }
-    var ab = document.getElementById('os-b3-badge');
-    if (ab){ if (n > 0){ ab.textContent = n > 99 ? '99+' : String(n); ab.classList.toggle('os-b3-long', ab.textContent.length >= 3); ab.hidden = false; } else { ab.hidden = true; } }
+    var ab = document.querySelector('#os-bottom3 [data-notif="activity"] .notif-count');
+    if (ab){ if (n > 0){ ab.textContent = n > 99 ? '99+' : String(n); ab.style.display = 'flex'; } else { ab.textContent = '0'; ab.style.display = 'none'; } }
   }
   /* GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control + the Dashboard
      bar setting. The control and the Settings toggle share one setting
@@ -29741,7 +29800,7 @@ body.viewport-focus #viewport-back{
     try {
       var _folded = document.body.classList.contains('os-bottom-hidden');
       var _on = (window.NayaSmartBar && typeof window.NayaSmartBar.dashBarOn === 'function') ? window.NayaSmartBar.dashBarOn() : !document.body.classList.contains('os-bottom-off');
-      if (_on && _folded) { document.body.classList.remove('os-bottom-hidden'); window._osSyncB3Hide(); return; }
+      if (_on && _folded) { document.body.classList.remove('os-bottom-hidden'); window._osB3ShownOnce = true; window._osSyncB3Hide(); return; }
     } catch(_fe){}
     var on = true;
     try {
@@ -29778,25 +29837,18 @@ body.viewport-focus #viewport-back{
       var v = window._osB3Counts[k];
       c[k] = (typeof v === 'number' && v > 0) ? v : 0;
     });
-    document.querySelectorAll('#os-bottom3 [data-b3]').forEach(function(seg){
-      var k = seg.getAttribute('data-b3');
+    document.querySelectorAll('#os-bottom3 [data-notif]').forEach(function(seg){
+      var k = seg.getAttribute('data-notif');
+      k = ({plus:'add', spaces:'worlds', plusR:'connect'})[k] || k;
       seg.classList.toggle('has-news', (c[k] || 0) > 0);
     });
     /* 2026-11-18 DASHBOARD-LANE-FIX3 (§4): the rail Hub row takes the same proven activity count (the feed count). */
     if (typeof window._osSyncRailCounts === 'function') { try { window._osSyncRailCounts({activity: c.activity}); } catch(e){} }
   };
-  var _b3badge = document.getElementById('os-b3-badge');
+  var _b3badge = document.querySelector('#os-bottom3 [data-notif="activity"] .notif-count');
   if (_b3badge) _b3badge.addEventListener('click', function(e){
     if (e && e.stopPropagation) e.stopPropagation();
     window.location.href = 'https://nayanet.app/#/hub/today';
-  });
-  document.querySelectorAll('#os-bottom3 .os-b3-dot').forEach(function(dot){
-    dot.addEventListener('click', function(e){
-      var seg = dot.closest ? dot.closest('[data-b3]') : null;
-      if (!seg || !seg.classList.contains('has-news')) return;
-      if (e && e.stopPropagation) e.stopPropagation();
-      window.location.href = 'https://nayanet.app/#/hub/today';
-    });
   });
   window._osSyncB3News();
   function openFeed(){ try{ if (typeof window._osRenderFeed === 'function') window._osRenderFeed(); }catch(e){} document.body.classList.add('os-feed-open'); syncBadges(); }
@@ -29813,10 +29865,10 @@ body.viewport-focus #viewport-back{
     fb.addEventListener('click', function(e){ if (e.target === fb) closeFeed(); });
   }
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeFeed(); });
-  var mail = document.querySelector('[data-b3="mail"]');
+  var mail = document.querySelector('[data-notif="mail"]');
   if (mail) mail.addEventListener('click', function(){ window.location.href = 'https://nayanet.app/rooms/mail'; });
-  var act = document.querySelector('[data-b3="activity"]');
-  if (act) act.addEventListener('click', openFeed);
+  var act = document.querySelector('[data-notif="activity"]');
+  if (act) act.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); openFeed(); });
   /* PASS-9 2026-11-10 — TAP ONE TO SEE MORE. The notifications list is the
      only home notifications have now (the top pill is gone). Tapping a row
      opens its detail — the full date and time, then the event's own text —
@@ -29837,9 +29889,9 @@ body.viewport-focus #viewport-back{
     det.textContent = (when ? when + ' — ' : '') + txt;
     row.appendChild(det); row.classList.add('open');
   });
-  var add = document.querySelector('[data-b3="add"]');
-  if (add) add.addEventListener('click', function(){ try{ if (window.osShowView) window.osShowView('home'); }catch(e){} var c=document.getElementById('os-post-body'); if (c){ try{ c.scrollIntoView({behavior:'smooth', block:'center'}); }catch(e){} try{ c.focus({preventScroll:true}); }catch(e){ try{ c.focus(); }catch(_){} } } });
-  var worlds = document.querySelector('[data-b3="worlds"]');
+  var add = document.querySelector('[data-notif="plus"]');
+  if (add) add.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); try{ if (window.osShowView) window.osShowView('home'); }catch(e){} var c=document.getElementById('os-post-body'); if (c){ try{ c.scrollIntoView({behavior:'smooth', block:'center'}); }catch(e){} try{ c.focus({preventScroll:true}); }catch(e){ try{ c.focus(); }catch(_){} } } });
+  var worlds = document.querySelector('[data-notif="spaces"]');
   if (worlds) worlds.addEventListener('click', function(){ window.location.href='https://nayanet.app/#/hub/spaces'; });
   /* FIX-4 2026-11-17: the ECO tile MUST stopPropagation — without it the
      tile's own click bubbles to the document-level eco-menu closer, which
@@ -29850,8 +29902,8 @@ body.viewport-focus #viewport-back{
      eco-plus opens the RIGHT RAIL since the follow-on, so that click
      toggled the rail and the menu had ZERO openers (a regression).
      #os-eco-plus keeps the right rail; the menu is the ECO seg's job. */
-  var eco = document.querySelector('[data-b3="eco"]');
-  if (eco) eco.addEventListener('click', function(e){ if(e && e.stopPropagation) e.stopPropagation(); var m=document.getElementById('os-eco-menu'); if (m) m.classList.toggle('open'); });
+  var eco = document.querySelector('[data-notif="eco"]');
+  if (eco) eco.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); if(e && e.stopPropagation) e.stopPropagation(); var m=document.getElementById('os-eco-menu'); if (m) m.classList.toggle('open'); });
   /* GREETING-OUT 2026-11-17 — the sixth tile, CONNECT, harvested from
      Personal's bar (plus-connect, ruby #c62828, the same + glyph as ADD).
      Personal opens its plus menu in 'connect' mode (fcTogglePlusMenu),
@@ -29859,7 +29911,7 @@ body.viewport-focus #viewport-back{
      Dashboard's own connect destination, the page's own "Start Here"
      connect link (https://nayanet.app/#/hub/connect), in the same
      location.href shape as the mail and worlds tiles. Never a dead tile. */
-  var connect = document.querySelector('[data-b3="connect"]');
+  var connect = document.querySelector('[data-notif="plusR"]');
   if (connect) connect.addEventListener('click', function(){ window.location.href='https://nayanet.app/#/hub/connect'; });
   /* the badges follow the live feed render — a MutationObserver on the list,
      so any render path updates them (no wrapping of the feed renderer). */
@@ -30628,10 +30680,7 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 <style id="os-fix4">
 /* ═══ FIX-4 2026-11-17 — the captain's 390px eye (04:18Z) ═══
    (1) THE BAR FOLDS AND RETURNS ONLY AT THE BOTTOM (RETURN-AT-BOTTOM
-   2026-11-17, Shawn heart 20:50Z, confirmed law — supersedes FIX-4): the
-   bar is visible at load, folds away the moment you scroll down, and returns
-   ONLY when the scroll reaches the very bottom — never when scrolling stops
-   (the _barT ~1s return is removed) and never on a tap. The os-bottom-hidden
+   2026-11-17, Shawn heart 20:50Z, confirmed law — supersedes FIX-4): DOORS-OUT 2026-11-18 (supersedes this item): the bar starts hidden at load and shows once, after the reader has stopped at the very bottom for a second, then holds — never on scroll, never over and over. (The corner control tap still recalls it.) The os-bottom-hidden
    class still hides it while scrolling and in drill views.
    (2) ECOSYSTEM is burnt orange #c2410c (Deep Palette), never purple — the
    04:03Z correction; two purples side by side was the defect.
