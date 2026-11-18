@@ -425,7 +425,16 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # 48px -> 40px. Deck, footer link, legal pages, F1-F4 untouched.
 # Walk, template, identity, unfold shas unchanged.
 assert welcome_sha.startswith("48fc853f"), "welcome sha is not the AGREEMENT BUTTONS FOLLOW-ON welcome sha (2026-11-18: 1. Read the agreement label, 2. bridge pair equal size no-wrap, 3. real emblem diamond jewel in both, 4. pick line removed, 5. hero row portrait-Naya-play, 6. logo up 8px)"
-assert unfold_sha.startswith("14bd698c"), "unfold sha is not the AGREEMENT MERGE EYE FOLLOW-ON #2 unfold sha (2026-11-18: F2 /agreement EYEFOLLOW press rules moved out of noscript + agree button sinks scale .94, 88,277 B)"
+# AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
+# maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
+# the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
+# 1. beat 1's picture centred (margin:auto, data-beat="1" only); 2. beat 1's
+# diamond + "THE OPENING / Hi, I'm Naya" header removed (the letter's first
+# line already says it); 3. the voice line removed; 4. the dots row +
+# "or read the whole agreement at once" moved below the letter. Top is now
+# title, play button, centred picture, letter. Welcome, walk, template,
+# identity shas unchanged.
+assert unfold_sha.startswith("96b18b6f"), "unfold sha is not the AGREEMENT INTRO LAYOUT FOLLOW-ON #2 unfold sha (2026-11-18: picture centred, opening header + voice line removed, dots + read-all moved below the letter, 88,848 B)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
 # work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b
