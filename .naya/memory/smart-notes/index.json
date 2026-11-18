@@ -59635,6 +59635,39 @@
         "Lesson",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3433",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3433-one-flow-told-to-everybody",
+      "slug": "one-flow-told-to-everybody",
+      "title": "One Flow, Told to Everybody",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3433/IB-SMART-NOTE-20261118-sn3433-one-flow-told-to-everybody.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3433/IB-SMART-NOTE-20261118-sn3433-one-flow-told-to-everybody.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3433/IB-SMART-NOTE-20261118-sn3433-one-flow-told-to-everybody.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3433-one-flow-told-to-everybody.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:34:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "caf6da03e874ec9b0ae3e91627d6e1fbcae571a6b310475729bfb171056e0cf3",
+      "content_hash": "fa31e2cd9bf1e7c1d3d2abeafdbe77307ca0f7956584b28f14364a3a0f01100e",
+      "one_line": "Building is cloning with parts replaced; knowing is one flow; and the flow includes telling. The build side: take the proven page, replace some parts, file any new part back into the Factory — and the Factory holds everything in order: the Operation Manual first, Project Intelligence second, the build third, because a builder who hasn't read the manual builds the wrong thing beautifully. The knowing side: she listens, distills it into a smart note, puts it in the Box, connects it to everything related, retrieves and applies it when needed, and verifies the result — memory that changes the next action is intelligence; a note filed and forgotten is dead. The telling side: every note filed is a note told — to the right people, by their choice, when it is live on the feed — specced in full, and honest that the auto-notify is not built yet. Even the numbering race lives here: two filings five seconds apart, one number, proved the guard must check at file time, because a sixteen-minute scan cannot see a same-minute filing.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59645,5 +59678,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "870ffaeac6e1e8f3c2f382dac61010c2b6eabf88f39060295757f1c1071dfc0e"
+  "corpus_manifest_hash": "49539b7569c25d1f323dc9fcbd89515c6d4f7ddbb483047f4f2859a0a7144363"
 }

@@ -1,0 +1,92 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3433",
+ "title": "One Flow, Told to Everybody",
+ "slug": "one-flow-told-to-everybody",
+ "topic": "SYSTEM",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-18T20:34:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "Building is cloning with parts replaced; knowing is one flow; and the flow includes telling. The build side: take the proven page, replace some parts, file any new part back into the Factory — and the Factory holds everything in order: the Operation Manual first, Project Intelligence second, the build third, because a builder who hasn't read the manual builds the wrong thing beautifully. The knowing side: she listens, distills it into a smart note, puts it in the Box, connects it to everything related, retrieves and applies it when needed, and verifies the result — memory that changes the next action is intelligence; a note filed and forgotten is dead. The telling side: every note filed is a note told — to the right people, by their choice, when it is live on the feed — specced in full, and honest that the auto-notify is not built yet. Even the numbering race lives here: two filings five seconds apart, one number, proved the guard must check at file time, because a sixteen-minute scan cannot see a same-minute filing.",
+  "human_view": "Think of a good workshop. The tools hang on the wall where everyone can reach them, the manual sits open on the bench, finished work goes on the shelf for the next person to copy, and when something important is made, the whole shop hears about it. Nobody builds from memory in a corner and tells no one. That's this system: bench, shelf, and word-of-mouth, all deliberate.",
+  "child_view": "It's like Lego in a classroom. You build from the models on the shelf, and if you invent a cool new piece, you put it on the shelf for everyone. And when you finish something great, you show the class. If everyone kept their models hidden in their desks, every kid would start from zero every day.",
+  "grandma_view": "A village works this way: you borrow your neighbour's ladder, you return it with the hinge fixed, and when the well is cleaned you tell everyone at the market. Knowledge that isn't passed on dies with the person holding it. Passing it on — the ladder, the fix, the news — is the whole job.",
+  "ai_view": "Clone, never greenfield, for pages; register new parts in the Factory inventory. Check the number at file time, not at brief time. Treat any note not connected in the Box as unfinished. File unbuilt states as gaps with owners, inside the same note that announces the design.",
+  "what_it_means": "The three sides are one argument: nothing in this system is allowed to be a dead end. A page that can't be cloned forward, a note that never reaches the Box's connections, a filing nobody hears about — each is the same defect in different clothes: work that stops compounding. The family's honesty notes matter as much as its laws: the manual-alone proof listed six gaps and closed them in v2; the notification design names its own unbuilt state. The flow is the product; the gaps are filed inside the flow, not outside it.",
+  "whats_inside": [
+   "Clone a Page, Replace Some Parts — That Is How Building Happens",
+   "One Flow, Not Separate Systems — and Not In Sync Yet",
+   "Everything in the Factory, One System",
+   "Push-Button Simple: Worlds, Not Websites",
+   "The Three Questions: What Would You Do With It?"
+  ],
+  "topics": [
+   "Distillation",
+   "System",
+   "Lesson",
+   "Knowledge",
+   "Craft"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 9,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2618",
+     "title": "Clone a Page, Replace Some Parts — That Is How Building Happens"
+    },
+    {
+     "sn": "SN-2619",
+     "title": "One Flow, Not Separate Systems — and Not In Sync Yet"
+    },
+    {
+     "sn": "SN-2620",
+     "title": "Everything in the Factory, One System"
+    },
+    {
+     "sn": "SN-2622",
+     "title": "Push-Button Simple: Worlds, Not Websites"
+    },
+    {
+     "sn": "SN-2623",
+     "title": "The Three Questions: What Would You Do With It?"
+    },
+    {
+     "sn": "SN-2624",
+     "title": "How She Ultimately Works — And Why It Works That Way"
+    },
+    {
+     "sn": "SN-2626",
+     "title": "The Guard Is Too Slow to Stop a Race: SN-2602, the Fourth Collision"
+    },
+    {
+     "sn": "SN-2629",
+     "title": "The Notification System Spec Is Filed: What Rings the Bell, Who Hears It, What the Mail Says"
+    },
+    {
+     "sn": "SN-2630",
+     "title": "The Master Box Is Built — The Mother of All Smart Boxes"
+    },
+    {
+     "sn": "SN-2631",
+     "title": "The Notification System: Every Note Filed, Everybody Hears"
+    }
+   ]
+  },
+  "machine": "1) Build by cloning the proven page and replacing parts; file genuinely new parts into the Factory before closing the job. 2) The Box is the sync's source, guarded by the completeness gate; the tree is the fallback, never the silent default. 3) Numbering is verified at file time against the live tree; first filed keeps the number. 4) Notification fires on liveness (on the feed), addressed by the citizen's own scope choices; the author is excluded. 5) 'Personalized' is shown, not said — the stranger must see her own world in the thing.",
+  "why_it_matters": "Compounding is the whole business model of intelligence: each page makes the next page cheaper, each note makes the next decision smarter, each telling makes the network denser. Break any link — unbuildable pages, unconnected notes, untold filings — and the system reverts to a pile of documents. This essence keeps the links mechanical.",
+  "how_it_connects": "This essence is batch 9's E4 panel; its raw family spans SN-2618 to SN-2631 (Clone a Page, Replace Some Parts — That Is How Building Happens → The Notification System: Every Note Filed, Everybody Hears), and it sits in the standing sequence of seventy essences that came before it — each one checked against the census coverage map for zero overlap before it was written.",
+  "what_is_in_it_for_you": "For you, Shawn, this means this stratum of the record no longer has to be re-read note by note: its law is stated once, whole, in words a cold reader can use — and the hundred raw notes beneath it are accounted for, by number, in the Distills line.",
+  "the_learning": "One flow — build from what exists, remember in the Box, tell everybody it concerns — and a gap named honestly is part of the flow, not a break in it."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3433/IB-SMART-NOTE-20261118-sn3433-one-flow-told-to-everybody.md",
+ "page_hash": "caf6da03e874ec9b0ae3e91627d6e1fbcae571a6b310475729bfb171056e0cf3",
+ "content_hash": "fa31e2cd9bf1e7c1d3d2abeafdbe77307ca0f7956584b28f14364a3a0f01100e"
+}
