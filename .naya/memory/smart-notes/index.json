@@ -59569,6 +59569,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3431",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3431-his-eye-sets-the-standard",
+      "slug": "his-eye-sets-the-standard",
+      "title": "His Eye Sets the Standard",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3431/IB-SMART-NOTE-20261118-sn3431-his-eye-sets-the-standard.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3431/IB-SMART-NOTE-20261118-sn3431-his-eye-sets-the-standard.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3431/IB-SMART-NOTE-20261118-sn3431-his-eye-sets-the-standard.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3431-his-eye-sets-the-standard.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:32:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "380a4c8915c585cfdd3e16a3a6e49b0399820918f4133b6f63406559b342bfe0",
+      "content_hash": "083f596d35dabf93cc94299a6e6ed5f9ec7b86aa32e356749f0195038e00e2c2",
+      "one_line": "Every standard in this family was set the same way: he looked at the live thing and spoke. Dashboard pass-3 was live, hashed, and gate-passed — and condemned in one look: the minis unfixed, the bars a mess, the numbers unaligned, a board that made no sense. The order back was not 'improve it' but 'make them one family' — every board the pricing speedometer, the nice numbers underneath, all congruent. The mini gauge was not designed at all: it is the shown object, the pricing calculator itself, taken. Bullets on the closing page became living orbs, because a jewel nobody recognizes is decoration without meaning. Buttons exist exactly where the app behind them is verified live — 28 dead buttons were worse than none. Prices print once, doors stand at every decision point, phone comes first, and before anything goes out it faces six questions and the stranger test.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "System",
+        "Lesson",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59579,5 +59612,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "b3fc14cdd959a81b93ec0f4e1de21810ca598ea1bbc7c3909dcb4c610715be57"
+  "corpus_manifest_hash": "0aa1722f5f156cfd922c93480c6a82c7b81299b30e26d18889ff9f9f1b438e00"
 }
