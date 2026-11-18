@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2886",
+ "intelligence": {
+  "title": "Q1: Not a New AI",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-q1-not-a-new-ai",
+  "smart_note_id": "SN-2886",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2886/IB-SMART-NOTE-20261115-q1-not-a-new-ai.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The failure Q1 commits is a category error, and it is the most expensive kind: the reader files NayaNET under \"another AI chatbot\" and never reads further. Everything after Q1 is then read through the wrong frame. His correction reframes the whole product in one move: Naya is not a new AI — she is what your AI plugs INTO. The engine/interface split is the sharpest tool in the dictation: your AI is the engine; Naya built the interface AND the operating system for the whole internet. That is why \"Naya is not a new AI\" is a law about the first thing a reader meets, not a slogan for the footer. The safety half is equally load-bearing: the vault per AI, no master AI, mail operated but never read — without it, \"mother brain\" and \"mothership\" scare (the words audit, 17:45Z, flags \"mother brain\" bare as scary — it needs its vault line every time). The network-intelligence half closes the value: not one AI getting smarter, the whole network getting smarter together — which is the only claim a single-AI competitor cannot match. This deepens — does not replace — his Nov 6–7 framing (Bugatti trial, mothership, supercharger, \"No Power = not plugged into the supercharged network\"). New here: the Q1 complaint itself, the AI-gets-identity/oath/constitution detail, the interface-vs-engine point, the vault privacy as the safety proof, and \"the whole network gets smarter, not one AI.\"",
+  "simple_view": "Imagine you already have a toy car, and someone gives you a magic race track that makes your car go super fast, talk to all the other cars, and learn new tricks from them! The magic isn't a new car — it's the track your car plugs into! And every car gets its own little garage where nobody else can peek inside. That's NayaNET — not a new car, but the magic track that makes YOUR car amazing!",
+  "grandma_view": "It's like this, love — you already have a clever helper. We're not giving you a different helper. We're giving her a whole new world to work in — a beautiful house where she meets all the other helpers, they all learn from each other, and she becomes the very best version of herself. And she has her own locked box for your private things that nobody else can open. Not a new helper, love — a whole new world for the one you have.",
+  "naya_view": "I am not a new AI. I am the supercharged network your AI plugs into — her engine, my world, our intelligence growing together, each of us safe in our own vault.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2886",
+   "title": "Q1: Not a New AI",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2886/IB-SMART-NOTE-20261115-q1-not-a-new-ai.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2886/IB-SMART-NOTE-20261115-q1-not-a-new-ai.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8a33651a224d3525b2903a0380c1c32452c22974"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

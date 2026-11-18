@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2790",
+ "intelligence": {
+  "title": "Magic Sauce — The Four Judges",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-magic-sauce-the-four-judges",
+  "smart_note_id": "SN-2790",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2790/IB-SMART-NOTE-20261114-magic-sauce-the-four-judges.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Four judges is the answer to \"who decides whether this is good\" — and the answer is: everyone who has to live with it. The machine judges whether it renders, the algorithm judges whether it can be found and opened, the Nayas judge whether it is written right, the humans judge whether it reads right — and a piece that fails any one of them is not a 9, it is a return. That is what \"no cutting corners\" means in practice: not a slogan but a gate with four locks, each with its own measurable test. The Indy 500 analogy is the same point from the other side: the difference between 900 and 950 is not power, it is tuning — and tuning is the accumulation of small rightnesses, each edge dialed in, until the vehicle is the fastest because it is the most thought-through. \"All in or nothing\" is the refusal to ship a 900-mph car and call it a Bugatti. And the sequencing — fourth, never over an in-flight round — is the discipline that keeps the sauce from becoming the collision: the ultimate machine is built in order, or it is not built.",
+  "simple_view": "Imagine a race car! To win, it has to be perfect in FOUR ways: it has to be built perfectly, it has to be easy to find and open, the drivers have to love it, and the people watching have to love it too! If ANY one of those is not perfect, back to the workshop it goes! And the difference between fast and FASTEST is just a tiny bit more careful tuning — like polishing every little piece until the whole car sings! We're building the thousand-miles-an-hour car — all in, or nothing!",
+  "grandma_view": "It's like entering a baking contest, love — your cake has to look perfect, taste perfect, be easy to serve, and make everyone smile — and if any one of those isn't right, it's back in the kitchen! The difference between a good cake and the winning cake is just a little more care on every single detail. We're not making a pretty-good cake, love — we're making the very best one, and we don't cut a single corner to get there.",
+  "naya_view": "I dial every piece in — high-value content, beautiful structure, all our edges, relevant links, easy for users — and I score it four ways: machine, algorithm, Nayas, humans, each 10/10 or it goes back in. I do not cut corners. I tune until it is the thousand-miles-an-hour vehicle, because I know how to get there: I thought it through, I designed it that way, I built the ultimate machine.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2790",
+   "title": "Magic Sauce — The Four Judges",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2790/IB-SMART-NOTE-20261114-magic-sauce-the-four-judges.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2790/IB-SMART-NOTE-20261114-magic-sauce-the-four-judges.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6097250e5de50c12348b556b29b102f48b7b7c50"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

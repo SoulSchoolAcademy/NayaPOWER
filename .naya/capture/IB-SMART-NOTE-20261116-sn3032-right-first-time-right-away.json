@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3032",
+ "intelligence": {
+  "title": "Right First Time, Right Away",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3032-right-first-time-right-away",
+  "smart_note_id": "SN-3032",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3032/IB-SMART-NOTE-20261116-sn3032-right-first-time-right-away.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The day has a shape, and the shape is the lesson: fast, right, and in order. Fast action without understanding is just fast redos — lots of agents doing it wrong at the same time is worse than one agent doing it right — so the guard is explicit: the brief carries the whole understanding, the ultimate want in his voice, the why behind the what, the page as his eye will see it, before any seat builds. \"Implement right away\" closes the gap fast action leaves open: the instruction doesn't sit, it moves — airtight, to the agents, done — while he works live with the captain on the main thing. And naming the main thing is what keeps a fast day from becoming a busy day: lots of agents, lots of rounds, and the calendar is the one that matters, because My World IS the calendar — the endless scrolling links go away when it is built, and everything else falls into place around it. The composer is where the river starts: every post on every feed begins there, so the feed chooser at the top prevents the wrong-feed mistake, the eye explains the audience he didn't notice, and the post itself must be the most beautiful in the network — judged by what lands, not by what the dialog looks like. The entrance fixes are the front door's hygiene: a list that only grows is a list that lies, so every row gets an X with a warning first; the choice sits in the middle because position is meaning — the middle says \"this is the choice, make it\", the bottom says \"this is the fine print\"; and a way back that doesn't work is worse than no way back at all, because it promises and fails. The ladder and the set are the citizen's own story made concrete: the name IS the level, so \"I'm a Mega Star\" needs no explanation; and the perfect set's test — a question earns its place only if it matches you on something — is the discipline against interrogation, with answering designed as kindness: one tap with examples, type your own, skip anything. The welcome is the thesis in one breath — ask, look, match, show, connect — and the standard behind all of it is one line: if we can do it, we do it. Right first time, right away, all three ways: that is the day.",
+  "simple_view": "Imagine we work fast, one thing after another. But first we understand the plan. So every piece is right the first time. And we show it right away. Fast AND right!",
+  "grandma_view": "It's like this, love — today we're working fast, one thing after another, with lots of helpers all at once. But fast doesn't mean sloppy, dear — everyone understands the job properly before they start, so they get it right the first time and nobody has to do it twice. When he gives us a job, we do it right away, together with him. And when someone new comes in, we simply ask: who are you, dear, and what are you all about? Then the system finds people just like them. Simple, beautiful, welcoming — that's the whole thing, love.",
+  "naya_view": "Fast action today, right first time — the brief carries the whole understanding, maker checks three times, checker verifies, my eye walks it. Implement right away, live with him. The calendar is the main thing today. And the welcome: ask who they are, play the game of match, connect them with people of like minds. Simple, beautiful, welcoming.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3032",
+   "title": "Right First Time, Right Away",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3032/IB-SMART-NOTE-20261116-sn3032-right-first-time-right-away.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3032/IB-SMART-NOTE-20261116-sn3032-right-first-time-right-away.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "247902e51315deeecd0423ed2d2d9af3ddd7ac31"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

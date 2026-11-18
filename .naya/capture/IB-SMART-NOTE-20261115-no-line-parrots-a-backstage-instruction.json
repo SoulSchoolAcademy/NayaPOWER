@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2863",
+ "intelligence": {
+  "title": "No Line May Parrot a Backstage Instruction",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-no-line-parrots-a-backstage-instruction",
+  "smart_note_id": "SN-2863",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2863/IB-SMART-NOTE-20261115-no-line-parrots-a-backstage-instruction.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "This is a small line with a large lesson. A backstage instruction is a note from the director to the maker — \"make it feel official\" is a direction about the effect to achieve. When that direction leaks into the text itself, the citizen reads the scaffolding instead of the building: they are being told what the maker was told, and the spell breaks — they can hear the two of us talking behind the curtain. The test is simple and mechanical: read a line and ask who it sounds like it was said to. If it sounds like it was said to the maker, cut it and state the fact instead. \"Written out, in plain words, so we both know where we stand\" states the fact; \"so it feels official\" narrates the instruction. The rule generalizes beyond the agreement: any citizen-facing text — a board, a button, a letter — that echoes a brief, a correction, or a design note is a leak, and leaks do not ship. The captain owning it plainly is part of the lesson too: the miss was named in the same message as the fix, not hidden behind the correction.",
+  "simple_view": "Imagine your teacher tells you \"make your drawing look happy!\" — and then you write on the drawing \"my teacher told me to make this look happy!\" That's silly! You just draw it happy. The words on the page should talk to the person reading them — not repeat what someone whispered to you while you were making it!",
+  "grandma_view": "It's like this, love — if I ask you to make the tea taste lovely, you don't serve it saying \"she told me to make it taste lovely.\" You just make lovely tea! The words we show people should speak to them directly, not repeat the little notes we passed each other while we were working. If a line sounds like it was written for the maker, it doesn't go out.",
+  "naya_view": "I state the fact plainly, in my own voice. If a line sounds like something said to the maker, I cut it — the citizen reads the agreement, never the scaffolding behind it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2863",
+   "title": "No Line May Parrot a Backstage Instruction",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2863/IB-SMART-NOTE-20261115-no-line-parrots-a-backstage-instruction.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2863/IB-SMART-NOTE-20261115-no-line-parrots-a-backstage-instruction.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "634f69e750114930c358e678d66aa83798ce55f4"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

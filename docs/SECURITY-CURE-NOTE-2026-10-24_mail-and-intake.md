@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-24 · **Builder lane:** Resolve (for the security lane's review) · **Status:** FILE ON BRANCH `resolve/security-cure-mail-intake-v1` — nothing applied; applying rides Shawn's GT-039 tap, after the security lane ratifies the one open decision ([MAIL-1] below).
 
+**2026-11-11 technical completion proposal (unmerged and unapplied):** Read-only live Postgres policy/grant inspection found two extra surviving legacy policies: `smart_mail_threads_owner_select` and `smart_mail_messages_owner_delete`. Both still consult user-editable JWT metadata. The prepared follow-up migration now explicitly drops both and revokes direct anonymous table privileges on the legacy messages/threads tables; it leaves authenticated participant access and v7 Mail untouched. The source-level regression test `tests/test_mail_pending_policy_completion.py` checks the observed policy inventory and negative controls. Five source-level tests pass, and the 13-test focused migration suite is green. An additional 13/13 synthetic PGlite PostgreSQL permission probe passes; both deliberate legacy-policy reintroductions fail its inventory guard and expose unauthorized synthetic behavior. **These are not a Supabase branch test, real production-schema verification, independent security review, or production authorization.** The required `intake_events` and `owner_alias_claims` tables are absent from the observed production database, so the earlier migrations `20261022213000` and `20261022220000` remain mandatory dependencies. Security/DB owner must re-review the final state and receive Shawn's approval for any production deployment.
+
 **The migration:** `20261024194500_smart_mail_participant_completion_and_intake_scope_v1.sql` (this directory). It is a follow-up to `20261023190000_smart_mail_legacy_rls_hardening.sql` (PR #3018), which it never edits. **Hard ordering dependency: #3018 applies first in the same GT-039 batch** — its anon-policy drops and first messages policy are the assumed base state.
 
 **Source standard:** whole-system security census 2026-10-24 (SN-1855 instrument), Surface 1 (Smart Mail) + the `intake_events` read-all finding.
@@ -29,7 +31,7 @@
 
 ## Static verification (this branch, before publish)
 
-- **pglast parse (battery-venv):** the new migration parses clean — 14 statements (begin/commit, 3× ALTER TABLE enable-RLS, 1× CREATE FUNCTION, revoke+grant, 3× DROP POLICY, 3× CREATE POLICY). Controls also parse clean: #3018 landed cure (12), intake v1 (11), alias-binding v1 (22).
+- **pglast parse (battery-venv):** the proposed completion migration parses clean — 17 statements (begin/commit, 3× ALTER TABLE enable-RLS, 1× CREATE FUNCTION, helper REVOKE+GRANT, legacy-table privilege REVOKE, 5× DROP POLICY, 3× CREATE POLICY). Controls also parse clean: #3018 landed cure (12), intake v1 (11), alias-binding v1 (22).
 - **Spoof-source grep:** `user_metadata` and `coalesce` occur in the new file **only in header comments** (lines 34–37, 129) explaining the defect — zero occurrences in executable SQL.
 - **`using (true)` grep across the surface files:** the only executable occurrence is intake v1 line 72 — the original policy this file drops and recreates scoped. Final state (apply #3018 → follow-up; intake v1 → follow-up): **no `using (true)` policy remains on `smart_mail_messages`, `smart_mail_threads`, or `intake_events`.**
 - **Final-state policy inventory (drop/create simulation over the apply sequence):** exactly 5 policies survive on the two surfaces — `smart_mail_messages_participant_select` (follow-up), `smart_mail_threads_participant_select` (follow-up), `intake_events_auth_select` (follow-up, owner-scoped), and the two intake INSERT policies from v1 (`with check (true)`, public intake, by design, deliberately untouched).
@@ -37,6 +39,82 @@
 
 ## What this does NOT do
 
-No production change of any kind; no PR opened; nothing registered in the production migration ledger (registration rides the tap with the batch). The wider GT-039 policy set for the other pending tables (census cure 5 — `hub_smart_notes`, `project_intel_items`, Trinity page tables) still requires the gated production schema read (G3) before it can be authored truthfully; it is not in this package.
+No production change of any kind; a review-only code proposal is not a production approval, and no SQL migration has been registered as applied in the production database (registration rides the authorized tap with the batch). The wider GT-039 policy set for the other pending tables (census cure 5 — `hub_smart_notes`, `project_intel_items`, Trinity page tables) still requires the gated production schema read (G3) before it can be authored truthfully; it is not in this package.
 
 — Resolve's lane, 2026-10-24. Review owner: security lane (Nitro).
+
+
+## 2026-11-11 executable synthetic RLS probe — supplementary evidence
+
+**Files:** tests/mail_rls_synthetic_pglite.mjs and tests/fixtures/mail_rls_synthetic.sql. The synthetic schema contains no customer data or production keys and approximates only the columns and privileges necessary to exercise the two pending Smart Mail migrations. Engine: PGlite 0.5.16 (PostgreSQL compiled to WebAssembly, single-user connection with role switching); **not** a real Supabase branch or full schema rebuild. No project dependencies are added.
+
+**Replay:** Install @electric-sql/pglite@0.5.16 into an isolated temporary directory with npm, set NAYA_PGLITE_MODULE to that package's dist/index.js absolute path, and run:
+- node tests/mail_rls_synthetic_pglite.mjs candidate — **13/13 PASS, exit 0**.
+- node tests/mail_rls_synthetic_pglite.mjs unsafe-thread — **expected exit 2**: omitting the new DROP POLICY smart_mail_threads_owner_select step produces one unauthorized synthetic thread read through user-editable user_metadata.smart_alias; the inventory guard fails.
+- node tests/mail_rls_synthetic_pglite.mjs unsafe-delete — **expected exit 2**: omitting the new DROP POLICY smart_mail_messages_owner_delete step permits a synthetic recipient to delete another sender's message using forged user_metadata.smart_alias; the inventory guard fails.
+
+**Trust boundary:** This is a controlled causal test of the **candidate SQL logic under a synthetic fixture**, not evidence of any real data disclosure, not an independent-seated review, not proof that all Supabase policies/functions are correct, and not proof that the four pending production migrations can be applied safely. GT-039 remains **HOLD** until a qualified security/DB owner reproduces full dependency-chain tests with authoritative metadata and synthetic identities in an approved isolated Supabase environment, then obtains exact-head independent verification and the Director's protected production authorization.
+
+
+## 2026-11-11 full four-migration synthetic dependency-chain proof
+
+**Added proof:** The same optional PGlite harness now has a full-chain mode using tests/fixtures/mail_rls_full_chain.sql. It starts with a synthetic pre-migration schema and runs these four *existing pending* migration files in chronological order:
+
+1. 20261022213000_conversational_intake_v1.sql
+2. 20261022220000_alias_binding_v1.sql
+3. 20261023190000_smart_mail_legacy_rls_hardening.sql
+4. 20261024194500_smart_mail_participant_completion_and_intake_scope_v1.sql
+
+**Candidate result:** node tests/mail_rls_synthetic_pglite.mjs full-chain: **20/20 PASS, exit 0**. Additional scenarios full-chain-unsafe-thread and full-chain-unsafe-delete each exit **2 as required**; their synthetic sabotage control reproduces the respective unauthorized action and the policy inventory fails closed.
+
+**Source-calibrated fixture:** Read-only live Supabase pg_default_acl inspection on November 11 shows public-table default ALL privileges for anon/authenticated/service_role under the postgres and supabase_admin creators. The synthetic PGlite fixture models the relevant anon/authenticated defaults. Without this setting, local INSERT / SELECT tests fail from artificial missing grants, not from production SQL policy behavior. No real production privileges were changed.
+
+**Expanded behavior proven in the synthetic schema:** Alias-binding migration creates canonical owner_alias_claims, backfills a known Alice alias from person_identities, denies direct anonymous claim reads and RPC execution, and permits owner-bound universal search. The intake migration admits an anonymous INSERT with no RETURNING clause (the intended write-only client behavior), but rejects an anonymous INSERT ... RETURNING id and returns no rows for anonymous SELECT. Mail behavior remains as in the 13-check isolated two-script test. All synthetic identities and data are fictitious.
+
+**Limitations / gate remains:** Full-chain *syntax and selected modeled behavior* PASS in a synthetic PostgreSQL fixture does not certify the historical 171 production migrations, the real live database's unmodeled tables/functions/policies, Supabase Auth/Data API, production API keys, revocation of stale JWTs, v7 Edge Function mail regression, independent security sign-off, or production safety. The full deployed migration history/contract and owner authorization must be independently tested in a properly scoped Supabase development environment before any GT-039 production application. No billing or production changes occurred in this proof.
+
+
+## 2026-11-11 production-shape preflight (fail-closed; historical metadata only)
+
+**New bounded technical artifact:** tools/preflight_gt039_schema.py consumes a metadata-only JSON snapshot of public table names, column names, types, and nullable flags, derives the required fields directly from the existing Person Timeline / Universal Search source guards and the existing Smart Links / Naya Notes CREATE TABLE contracts, and reports the first incompatible prerequisite shape without changing any database. It does not duplicate the canonical application schema, grant migrations, or add a new release engine.
+
+**Recorded source fixture:** tests/fixtures/gt039_live_columns_20261111.json contains only table/column names, PostgreSQL types, and nullable flags obtained by read-only Supabase information_schema.columns inspection on November 11; **no owner, customer message, or account data**. It is historical evidence, not a current/fresh pre-deployment check. Its independent replay command is:
+
+python tools/preflight_gt039_schema.py --catalog-json tests/fixtures/gt039_live_columns_20261111.json
+
+**Expected result:** exit 2, verdict BLOCKED_SCHEMA_DRIFT, **13 missing columns across 6 existing production tables, plus one required NOT NULL mismatch**: live `naya_notes.category` currently permits NULL, while its pending CREATE TABLE definition requires NOT NULL. The expanded source-contract check also detects missing `smart_links.updated_at`. No mismatched types were observed among the *present* fields with declared source types. Missing or malformed type/nullability metadata returns UNKNOWN_FAIL_CLOSED, not PASS. Invalid/incomplete metadata fails with exit 3 (UNKNOWN_FAIL_CLOSED). A shape-compatible synthetic input exits 0 but explicitly says SHAPE_COMPATIBLE_ONLY, never production approval. Run tests/test_gt039_schema_preflight.py for sabotage and missing-metadata negative controls.
+
+**For an authorized fresh check:** First re-read the exact current production schema using the following read-only query, without touching table rows or private content:
+
+    SELECT table_name,column_name,udt_name,is_nullable
+    FROM information_schema.columns
+    WHERE table_schema='public'
+      AND table_name IN ('smart_notes','smart_mail_threads','smart_mail_messages',
+                         'invites','naya_notes','smart_links')
+    ORDER BY table_name,ordinal_position;
+
+Collect the results into the fixture's documented JSON shape with kind=information_schema_column_contracts, captured_date_utc set to the *actual* UTC capture date, tables keyed by table_name with a list of column_name strings, column_types keyed by table and column with udt_name values, and not_nullable listing columns where is_nullable=NO. Do not include customer data. Run the script on that snapshot. Read-only catalog results are still NOT proof of full version history, indexes, policies, privilege reachability, services, or production approval.
+
+**Release decision:** Existing PR #3345 remains DRAFT / HOLD. In the captured live schema, CREATE TABLE IF NOT EXISTS will not add the missing owner_id or text columns on existing tables; source guards deliberately reject other absent fields. Do not waive the guards or infer owner_id values from human-readable aliases. Security/DB plus Smart Links, Notes, Timeline/Search owners must reconcile a real schema-preserving dependency plan and obtain independent isolated runtime proof and Shawn's protected production approval.
+
+
+## 2026-11-11 visitor-mail functional compatibility HOLD (source-level)
+
+**New bounded executable preflight:** tools/preflight_gt039_mail_clients.py, and regression tests/test_gt039_mail_client_compat.py. This read-only script reads only committed code; it never calls Supabase or a public site. It deliberately **has no PASS verdict**: a source finding cannot prove what is deployed or whether a replacement message transport is secure.
+
+**Source-observed conflict with the pending security REVOKE:**
+- DASHBOARD/app/index.html has a public-key Supabase JS client plus the visitor "Send message" click path which directly INSERTs a thread, requests the inserted thread via .select().single(), and then INSERTs a message. The UI itself does not require an authenticated session first.
+- interfaces/walk/flagship-template.html and PERSONAL/index-master-20261105.html contain the same direct mail thread/message browser pattern. These are repo consumer candidates, **not proof each variant is currently deployed**.
+- HUB/booking/booking-store.mjs uses an authenticated session to POST directly to the same legacy tables, requesting thread representation for reminder delivery. This authenticated write also requires exact-role positive testing after the proposed policy changes.
+- The pending 20261024194500 mail migration revokes all direct anon privileges on these tables and defines participant SELECT rules but no replacement public visitor-send transport. Previous synthetic PostgreSQL tests correctly deny anonymous legacy-table inserts. An unauthenticated visitor using the committed button would therefore have no supported route to send a message **unless another governed service/path exists in the actual deployed system**.
+
+**Replay:** python tools/preflight_gt039_mail_clients.py returns exit 2 / BLOCKED_MAIL_CLIENT_COMPAT on the committed source, with file/line evidence and the booking-reminder warning. If the security REVOKE disappears, input files disappear, or no source consumer exists, it fails with exit 3 / UNKNOWN_FAIL_CLOSED instead of manufacturing approval. Even after a future transport migration, the static preflight alone cannot certify deployment.
+
+**Required user-journey proof before GT-039 production authorization:**
+1. Security/DB and Nitro confirm which actual deployed message/feedback/booking routes are active. Distinguish anonymous visitors, signed-in owners, and privileged backend transactions.
+2. Design one bounded authorized **write-only** mail intake path, preserving atomic thread+message creation, recipient routing, input validation, abuse/rate limiting, and no anonymous or cross-owner read/list/update/delete. Never expose service_role or unsafe SECURITY DEFINER privileges to a browser.
+3. Nitro owns necessary interface integration; technical owner owns the backend contract. Keep current messages and routes intact until replacement is independently proven.
+4. Synthetic and live isolated test matrix: visitor send PASS, message appears exactly once for rightful owner, stranger inbox DENY, owner read PASS, spoofed alias DENY, booking reminders PASS or intentionally deferred, mail deletion authorization explicit, rollback safe.
+5. Then independent Tier-A security verdict, exact-head required CI and Shawn's protected production approval. **Do not widen RLS to make a dead Send button work; do not deploy the REVOKE first.**
+
+**Proof level:** The file inventory and mismatch are source-observed, while the broken-button outcome is conditional on unauthenticated users running those paths against the proposed RLS state. No real user message was read, sent, or deleted; no production outage was measured or asserted.

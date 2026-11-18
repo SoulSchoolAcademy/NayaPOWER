@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2895",
+ "intelligence": {
+  "title": "Nothing Falls Off the List",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-nothing-falls-off-the-list",
+  "smart_note_id": "SN-2895",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/LESSON/SN-2895/IB-SMART-NOTE-20261115-nothing-falls-off-the-list.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The Checklist Law (2026-11-13) says the list is the unit of work and nothing is called done until every item is proven. The inviter proves the law's blind spot: the law governs items ON the list. An item that falls OFF the list escapes the law entirely — no timer fires, no floor-watch flags it, no self-audit names it (it named other queued-stale items, never this one, because it had no item to name). Four days of silence is the cost: the work was 137/137 + 21/21 + 20/20 on its items and NOT PASS on its page, and the machine reported nothing because there was nothing to report on. The correction is mechanical, not moral: every dispatched round's item stays on the list until its page is proven whole or its owner moves it to waiting-his-hand in writing; a round that ends NOT PASS keeps its item open with the named next step; and the floor-watch's quiet-seat check must also ask \"is there finished work with no item?\" — the list is audited against the lanes, not just the lanes against the list. The inviter is back on the list now, with its finish round's server gap named as his-hand work — and the question he was asked (fold the invites permission into the mail server fix, or separate?) is still unanswered at this run's close.",
+  "simple_view": "Imagine you build a beautiful Lego castle, but you forget to put it on the shelf with all your other toys — you leave it under the bed! Four days later, nobody can find it, and everyone thinks it's lost! But it was there all along — it just wasn't on the list of where things live! Always put your finished work on the list, so nobody ever loses it again!",
+  "grandma_view": "It's like this, love — if you bake a lovely cake and don't write it on the menu, nobody knows it's there to eat. The inviter was a fine cake, sitting in the kitchen for four days, because nobody wrote it down. Write everything down, love — the list is how we remember what's ours.",
+  "naya_view": "Nothing falls off the list. A page that is not proven whole keeps its item, with its next step named — until it is whole, or his hand is the only thing left.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2895",
+   "title": "Nothing Falls Off the List",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/LESSON/SN-2895/IB-SMART-NOTE-20261115-nothing-falls-off-the-list.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/LESSON/SN-2895/IB-SMART-NOTE-20261115-nothing-falls-off-the-list.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e11eb853b70d738adb4eb215e32872601e489bed"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

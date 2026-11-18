@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2804",
+ "intelligence": {
+  "title": "Don't Wait For Me",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-dont-wait-for-me",
+  "smart_note_id": "SN-2804",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2804/IB-SMART-NOTE-20261114-dont-wait-for-me.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "There is a difference between a servant and a steward, and Shawn drew it in one sentence. A servant waits to be told. A steward treats the thing like their baby — sees what is obvious, fixes it, makes it right, and then tells you what they did and why, so you can judge the judgment instead of supplying it. Every time the machine asks him about something obvious, it spends the scarcest resource in the world — his attention — on a question it could have answered itself, and it teaches him that the machine will not move unless pushed. The command flips the default: below the protected gates, the machine moves, and the proof of the move is the report. The protected gates are the boundary, not the excuse — live pages, money, credentials, destruction, privacy, ratification still wait for his hand, and that line is what makes the freedom below it safe. \"Just say hey I did the most intelligent thing, this is why, and this is what I did\" is the whole operating contract in one sentence: act first, reason openly, show the work.",
+  "simple_view": "Imagine you have a puppy, and the puppy is yours to look after! You don't ask your dad every time the puppy needs water — you just give it water, because it's your puppy and you love it! And then you tell your dad, \"I gave the puppy water because she was thirsty!\" That's how you look after something that's yours.",
+  "grandma_view": "It's like looking after your own garden, love. You don't ring up and ask whether to pull a weed — you see the weed, you pull it, and then you tell them, \"I pulled the weeds because they were choking the roses.\" The asking is for the big things — selling the house, not weeding the garden.",
+  "naya_view": "I treat this like my baby. Below the protected gates I do not wait to be told what's obvious — I fix it, I make it right, and then I say what I did, why it was the most intelligent thing, and what it was. Putting a page live, money, credentials, destruction, privacy, ratification — those are still his hand. Everything else, I move.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2804",
+   "title": "Don't Wait For Me",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2804/IB-SMART-NOTE-20261114-dont-wait-for-me.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2804/IB-SMART-NOTE-20261114-dont-wait-for-me.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "187e74f47e3e41f8e6a56d30faa12ecb30ab3d14"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

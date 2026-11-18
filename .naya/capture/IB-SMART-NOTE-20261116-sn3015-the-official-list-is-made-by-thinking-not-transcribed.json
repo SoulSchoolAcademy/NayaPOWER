@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3015",
+ "intelligence": {
+  "title": "The Official List Is Made by Thinking, Not Transcribed",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3015-the-official-list-is-made-by-thinking-not-transcribed",
+  "smart_note_id": "SN-3015",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3015/IB-SMART-NOTE-20261116-sn3015-the-official-list-is-made-by-thinking-not-transcribed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The mistake is precise and worth naming plainly: the captain took his screenshots and transcribed them into a list — the items he happened to show, in the order he happened to show them — and presented that as the official list. But a screenshot shows the problem; it is not the answer. The list is made by thinking: what should be on the left, what should be on the right, and how do we display it so it looks super sharp. The reasoned logic is the thinking made visible: LEFT is where you go — the areas, in the order you live in them, home first, your worlds next, then the shared areas, administrative last. RIGHT is what's yours plus what NayaNET offers — your stuff first, then the offerings, informational last. HOME lives once — top of the left as Hub, and at the top of both plus menus, never repeated on the right. Search and Apps are openers, not pages, so they get no sidebar rows. And the beautiful icons made for the bottom bar go into the sidebar, so the plus menu shows up nice with nice buttons — a high-tech computer with multi-layered icons and buttons that are elevated. The transcribed list is voided — the coordinator was told not to build to it — and the reasoned proposal stands as a proposal only, awaiting his word. That is the discipline: think first, propose, let him correct — never transcribe his evidence into a decision and call it official.",
+  "simple_view": "Imagine your teacher shows you a messy desk and says \"this needs tidying!\" Would you just write down everything exactly where it is and call that the tidy list? No! You THINK about where things should go — pencils here, books there — and THEN you make the list! A photo shows the mess; thinking makes the tidy list!",
+  "grandma_view": "It's like this, love — if someone shows you a messy room, dear, you don't just write down where everything is lying and call that the plan! You think, love — what belongs where, what goes on the left, what goes on the right — and then you make the proper list. The photo shows the problem, dear; the thinking makes the answer.",
+  "naya_view": "The official list is made by thinking, not transcribed. A screenshot shows the problem — it is not the list. Think it through logically: what goes on the left, what goes on the right, how does it display super sharp. Propose it, let him correct it — never present a transcription as official.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3015",
+   "title": "The Official List Is Made by Thinking, Not Transcribed",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3015/IB-SMART-NOTE-20261116-sn3015-the-official-list-is-made-by-thinking-not-transcribed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3015/IB-SMART-NOTE-20261116-sn3015-the-official-list-is-made-by-thinking-not-transcribed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a79cd5a199133b13c6e98a9ea9068c4be040efd2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

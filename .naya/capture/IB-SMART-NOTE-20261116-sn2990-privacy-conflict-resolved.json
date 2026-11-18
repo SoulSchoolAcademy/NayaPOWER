@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2990",
+ "intelligence": {
+  "title": "Privacy Conflict Resolved by His Word — \"Authorized Purposes\" Is Out",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2990-privacy-conflict-resolved",
+  "smart_note_id": "SN-2990",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2990/IB-SMART-NOTE-20261116-sn2990-privacy-conflict-resolved.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The conflict was a wording that permitted what the law forbids: \"limited to authorized purposes\" sounds careful, but it opens a door — access for authorized purposes is still access, and a privacy law that allows reading for the right reasons is not a never-read law. He saw that the moment he was asked, because he doesn't know what \"authorized purposes\" means — and if he doesn't know what it means, no citizen will either. The ruling is the method: when a word hides the meaning, take the word out and say it like what it is. \"Nobody reads your mail or your messages. Not Naya, not us, not anyone. There is no switch for this, no setting, no exception.\" That is the settled law in plain words — the same law that has stood since the beginning (NayaNET is a private system; mail and messages are never read, no toggle, no exception), now written so a child and a grandma can read it and know exactly what it promises. The careful distinction stays, worded just as plainly: processing a message so it can reach the person you sent it to is not reading it — delivering is not looking. And the stop condition did its job: nothing about the conflict shipped, moved, or merged past him — it waited for his word, got his word, and the flags came out the same pass. Both MERGE FLAGs removed, no \"authorized purposes\" wording in any of the twelve pages, the report updated to RESOLVED — the conflict is closed, not parked.",
+  "simple_view": "Imagine someone wrote a rule that said \"we can peek at your letters for special reasons\" — but nobody knows what those \"special reasons\" are! That's sneaky, right? Shawn said: take those tricky words OUT. Say it plain instead: nobody reads your mail or your messages — not Naya, not us, not anyone. No switch, no setting, no exception! And delivering your letter to your friend is NOT the same as reading it — the postman carries the letter, he doesn't open it! Now the rule says exactly what it means, in words anyone can understand!",
+  "grandma_view": "It's like this, love — imagine a rule that said \"we can peek at your letters for authorized purposes,\" dear — fancy words that sound careful but don't mean anything plain. If he doesn't know what those words mean, dear, then nobody does — and a rule nobody understands isn't a rule you can trust. So he said: take those words OUT, love, and say it like what it is. Nobody reads your mail or your messages — not Naya, not us, not anyone. No switch, no setting, no exception, dear. And carrying your letter to your friend is not the same as opening it and reading it — delivering is not looking. That's the law now, love, written plain so anyone can read it and know exactly what it promises.",
+  "naya_view": "Privacy conflict resolved by his word — \"authorized purposes\" is out. He doesn't know what it means, so it's gone. Privacy Board 6 now says it like what it is: nobody reads your mail or your messages — not Naya, not us, not anyone; no switch, no setting, no exception; delivering a message is not reading it. Both MERGE FLAGs removed; no \"authorized purposes\" wording remains in any of the twelve pages. The never-read law stands, worded plain.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2990",
+   "title": "Privacy Conflict Resolved by His Word — \"Authorized Purposes\" Is Out",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2990/IB-SMART-NOTE-20261116-sn2990-privacy-conflict-resolved.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2990/IB-SMART-NOTE-20261116-sn2990-privacy-conflict-resolved.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b5b10497bdbef0c221cd49479cb0e078c1b9472b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

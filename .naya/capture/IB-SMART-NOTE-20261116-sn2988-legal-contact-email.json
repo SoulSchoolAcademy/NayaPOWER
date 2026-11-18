@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2988",
+ "intelligence": {
+  "title": "Legal Contact Email — nayanetpowered@gmail.com",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2988-legal-contact-email",
+  "smart_note_id": "SN-2988",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2988/IB-SMART-NOTE-20261116-sn2988-legal-contact-email.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "This closes a bracket, not a debate. The merge's bracketed list had \"all contact emails (legal/privacy/billing/safety/copyright/ambassador/family safety), DMCA agent name/contact\" sitting unfilled because the seat would not invent them — and Shawn's answer is one line that fills all of them at once: one email, everywhere, for everything legal. The second half of the decision is what NOT to claim: he doesn't know what a DMCA agent is, so the pages must never present a registered DMCA agent — the email is the contact, stated plainly, and any language implying a registered agent gets struck, not softened. \"His text is good as-is; use it\" is the third part: his ten pages stand on their own wording — the merge checks ours against his, it does not improve his. And \"we have everything we need\" is the close: the legal set is no longer waiting on missing contact facts. What remains is his word on the one HIGH conflict (SN-2986) and counsel review — not another missing field.",
+  "simple_view": "Imagine you have one special mailbox where ALL the important letters go — the ones about rules, about money, about staying safe, about your drawings! Just one mailbox, so nobody ever gets confused about where to send something important. That's what Shawn decided: one email, nayanetpowered@gmail.com, for everything legal! And if someone asks about a fancy \"DMCA agent\" — we don't pretend to have one. The email IS the contact. Simple!",
+  "grandma_view": "It's like this, love — imagine one little mailbox by the door, dear, where every important letter goes — the rules, the money, the safety notes, everything — so nobody ever wonders where to send something that matters. That's what Shawn decided, love: one email, nayanetpowered@gmail.com, for all of it. And about that DMCA agent business, dear — he doesn't know what that is, and we never pretend to have one we don't. The email IS the contact, plain and simple, and his words stay just as he wrote them — good as they are, love. We have everything we need.",
+  "naya_view": "Legal contact email — nayanetpowered@gmail.com. One email for ALL legal contacts: legal, privacy, billing, safety, copyright, ambassador, family safety — including the copyright/DMCA contact. He doesn't know what a DMCA agent is; the email IS the contact — never claim a registered DMCA agent. His text is good as-is; use it. We have everything we need.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2988",
+   "title": "Legal Contact Email — nayanetpowered@gmail.com",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2988/IB-SMART-NOTE-20261116-sn2988-legal-contact-email.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2988/IB-SMART-NOTE-20261116-sn2988-legal-contact-email.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "06863a0ab7099d3df1b120256cea0cf71ff1f689"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

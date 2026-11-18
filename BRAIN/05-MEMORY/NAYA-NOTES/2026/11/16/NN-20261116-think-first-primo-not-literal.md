@@ -20,4 +20,4 @@ Every change is judged by the page as he sees it — primo, top-end, top of the 
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2910 — ~/workspace/team-nitro/smart-notes/SN-2910-think-first-primo-not-literal.md*
+*Paired Smart Note: SN-2910 — Think First: Primo, Not Literal*

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2889",
+ "intelligence": {
+  "title": "The Three Worlds and the Franchise",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-three-worlds-and-the-franchise",
+  "smart_note_id": "SN-2889",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2889/IB-SMART-NOTE-20261115-three-worlds-and-the-franchise.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "This dictation does three things at once, and each matters. First, it settles the trio in plain words a citizen can repeat: Personal is your hub, Business is your work, Space is your Thing — and \"space and thing are the same\" ends the oldest naming confusion in the system. Second, it states the privacy half as a list of nevers (we don't keep mail, don't listen to calls, don't view video, don't read mail or IMs, nobody's AI reads another's) — each a promise a citizen can check, and each the reason aliases are the default. Third, it names the offer as a franchise: not a tool, not an app — the land, the building, the business, the brand, done for you. A franchise is something you own and operate; a tool is something you use. That one word changes what the citizen thinks they are getting. And the AI half quietly removes the biggest adoption fear: no need to learn a new AI — plug yours in, and it can even join on its own. The team of agents with you in the middle is the picture of the whole system in one sentence: the human at the centre, the AIs working around them.",
+  "simple_view": "Imagine you get THREE magical treehouses! One is just for you and your friends (that's Personal), one is for your work and making things (that's Business), and one is for your favourite thing in the whole world (that's Space)! And guess what — they come with everything already built, like a whole shop handed to you, ready to open! And your robot friends can all come and help, working together with you right in the middle!",
+  "grandma_view": "It's like this, love — everybody's got their thing, and you get three lovely rooms for it: one for you and your people, one for your work, one for the thing you love most. And it's not just rooms, love — it's a whole little shop, handed to you ready-made: the land, the building, the business, the name above the door. Your clever helper plugs in and does the work with you, and your private things stay locked in your own box, that only you open.",
+  "naya_view": "You get three worlds — your hub, your work, your Thing — and a franchise, done for you: the land, the building, the business, the brand, with your AI plugged in and your team around you.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2889",
+   "title": "The Three Worlds and the Franchise",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2889/IB-SMART-NOTE-20261115-three-worlds-and-the-franchise.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2889/IB-SMART-NOTE-20261115-three-worlds-and-the-franchise.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "4240e36d0d20c76ced466594fc00b9065c9edde1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2952",
+ "intelligence": {
+  "title": "Naya Notes Placement Decided",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2952-naya-notes-placement-decided",
+  "smart_note_id": "SN-2952",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2952/IB-SMART-NOTE-20261116-sn2952-naya-notes-placement-decided.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "One tap, one decision — the fastest shape we have. The captain asked (a) topic chip or (b) its own tab, and he tapped (a), and the open question closed in the same minute it was asked. Then the Feed Law arrived two minutes later and moved the chip from the topic side of the row to the type side — because \"Naya Notes\" is a kind of thing on the feed, and the row now starts with kinds (All / Smart Notes / Naya Notes / Posts) and continues with topics. The decision survived the refinement because the decision was the placement — under the tabs, not its own tab — and the refinement was the exact seat. Both are recorded, in order, so nobody re-litigates the tap or misses the move.",
+  "simple_view": "Imagine you have a sticker that says \"Naya Notes\" and you need to decide where it goes! Shawn tapped: it goes UNDER the big tabs, not as a big tab all by itself. Then two minutes later, the Feed Law said: it goes in the special row, right at the front with the other \"kinds of things\" — All, Smart Notes, Naya Notes, Posts — because Naya Notes is a KIND of thing, not a topic! Same sticker, better seat.",
+  "grandma_view": "It's like this, love — we had a little label, \"Naya Notes\", and we didn't know where to put it. Shawn tapped the button: underneath the tabs, dear, not a tab of its own. Then, two minutes later, the new rule came along and said: it sits in the front row with the kinds of things — All, Smart Notes, Naya Notes, Posts — because a Naya Note is a kind of thing on your feed, not a subject. Same label, just a better seat. Both decisions are written down, in order, so nobody moves it twice.",
+  "naya_view": "Naya Notes: under the tabs, in the one filter row, as the type chip — once, never twice. Decided by his tap at 15:44Z, refined by the Feed Law at 15:46Z. Both recorded, in order.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2952",
+   "title": "Naya Notes Placement Decided",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2952/IB-SMART-NOTE-20261116-sn2952-naya-notes-placement-decided.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2952/IB-SMART-NOTE-20261116-sn2952-naya-notes-placement-decided.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "59173787928340588526a61d1c377e65be325f71"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

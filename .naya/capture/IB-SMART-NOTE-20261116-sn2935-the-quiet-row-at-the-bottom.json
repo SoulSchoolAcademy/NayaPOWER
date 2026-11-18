@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2935",
+ "intelligence": {
+  "title": "The Quiet Row at the Bottom",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2935-the-quiet-row-at-the-bottom",
+  "smart_note_id": "SN-2935",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2935/IB-SMART-NOTE-20261116-sn2935-the-quiet-row-at-the-bottom.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Legal pages are necessary and nobody comes for them. Put them front and stage and the page becomes a lawyer's office; hide them and the system is not honest. The quiet row is the third way: nice white hyperlinked text, across the bottom of the front page, classy and clean and pro-like — there to view, not front and stage — and the same row on every page's footer. Beautiful little buttons if they can be done beautifully; the presentations stay the feature. The discipline inside the law matters as much as the placement: ten pages already exist and are word-perfect; Disclaimer and Accessibility are new; governing law, jurisdiction, dispute resolution, and data controller stay FLAGGED, never invented — a legal page that invents its jurisdiction is worse than a missing one. The quiet row is also a statement about hierarchy: the thing a citizen came for is big and beautiful; the thing the system owes them is small, quiet, and always there.",
+  "simple_view": "Imagine a beautiful stage with a wonderful show — and at the very bottom, in neat little white letters, all the important rules, quiet and tidy. The show is the big star! The rules are just there, small and clean, so anyone who wants to read them can. That's how you do it — big and beautiful on top, quiet and tidy at the bottom!",
+  "grandma_view": "It's like this, love — the important papers should always be there where anyone can find them, but they don't need to shout from the front of the room. A nice quiet row along the bottom, in clean white letters, classy and proper — there if you want them, never in the way of the beautiful thing you're there to see. Same row, on every page, so you always know where to look.",
+  "naya_view": "The legal pages sit quietly at the bottom — nice white hyperlinked text across the bottom, classy and clean and pro-like. There to view, not front and stage. Same row on every page's footer.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2935",
+   "title": "The Quiet Row at the Bottom",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2935/IB-SMART-NOTE-20261116-sn2935-the-quiet-row-at-the-bottom.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2935/IB-SMART-NOTE-20261116-sn2935-the-quiet-row-at-the-bottom.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "eb65e1cc3e4e1969a8caa89b9c35b909894f92d6"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

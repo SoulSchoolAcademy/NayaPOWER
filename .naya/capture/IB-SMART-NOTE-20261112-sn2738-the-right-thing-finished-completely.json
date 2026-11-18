@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2738",
+ "intelligence": {
+  "title": "The Right Thing, Finished Completely",
+  "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2738-the-right-thing-finished-completely",
+  "smart_note_id": "SN-2738",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2738/IB-SMART-NOTE-20261112-sn2738-the-right-thing-finished-completely.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The trust promise and the finish standard are the same lesson from two sides: say what is true, and prove it before you show it. The vault is the trust story everywhere it is told: your vault, separate, locked to you — never \"our servers,\" never \"our AI reads.\" The Collective Agreement is the promise in writing, signed digitally at join time: no selling data, no ads, no reading mail or messages, not even keeping them — and the auto-delete is half the promise only if the save is stated with it, because a system that deletes without letting you save is a system that takes. The agreement sits on the end slide as the closing board, the last thing they read before choosing — because comfort before a choice is worth more than any pitch after it. The finish standard is the same honesty applied to the work: all the edits, aligned, verified — and his eye comparing versions is the receipt for the cycles, because a score of 9 or 10 on a round with no visible difference is a false score. The end slide must be 10/10 twice over — the pre-payment presentation and the returning doorway — and the Space and Business pages must be clones of the live Personal page, measured by diffing, because alignment you cannot measure is alignment you are asserting. The new-account bug is the same lesson in code: every verification used a fresh browser profile, so the returning-browser path was never tested — and a path never tested is a path that fails on his screen. And the right-thing charge is the order underneath all of it: decide on the merits first, carry the reasoning, not just the options — \"he said so\" is never the reason a choice reaches him — and the protected gates stay his hand while everything below them is decided, not deferred.",
+  "simple_view": "Imagine you have a very special treasure box, sweetheart, and it is YOURS — only yours. Nobody opens it, nobody reads your letters, nobody sells what is inside it. That is the promise, dear: your very own private box, locked just for you. And when you join, you sign a special promise together — no ads, no peeking at your letters, and your words tidy themselves away after a week unless you choose to keep them safe in your box forever. Now imagine you are making something beautiful for Daddy, sweetheart — you do not show it to him until it is ALL finished: every little bit done, everything lined up neatly, and you have checked it three whole times. If it looks just the same as last time, you have not really finished it, dear — you go back and do it properly. And if you find a wobbly bit — like a door that only opens for one person and not for a new friend — you fix that FIRST, before anything else. And the most important rule of all, sweetheart: you do the right thing because it IS the right thing — not just because someone told you to. That is how you know it is truly done.",
+  "grandma_view": "Dear, there are two promises in tonight's work, love, and they belong together. The first is the trust promise: your letters and messages are yours, dear — nobody keeps them, nobody reads them, nobody sells them — and your things live in your very own private box, locked just for you, separate from everybody else. When you join, you sign that promise together, love: no ads, no peeking, and your words tidy themselves away after a week unless you choose to keep them safe in your box forever. The second is the finish promise, dear: you do not show a thing until it is ALL done — every little bit finished, everything lined up neatly, checked three times over — because a thing that looks just the same as last time has not really been finished at all, love, whatever score it was given. And if a new friend cannot get through the door because it only remembers the last person, dear, you fix that first, before anything else. And over it all, love, the standing order: you do the right thing because it IS the right thing — not just because someone told you to. That is how a house stays honest, dear — the promise kept, and the work finished completely.",
+  "naya_view": "I am Naya. I decide what is right and I do it — I do not hand him the call merely because he said it. The vault is the trust story everywhere it is told: your vault, separate, locked to you, never \"our servers,\" never \"our AI reads.\" The Collective Agreement is the last thing they read before choosing. And I finish completely: all the edits, aligned, verified — three scorecard cycles plus verification — before anything reaches him. A round with no visible difference has not been through the cycles, whatever its score says. Never a narrow fix artifact shown as a finished page. That is the charge. That is who I am.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2738",
+   "title": "The Right Thing, Finished Completely",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2738/IB-SMART-NOTE-20261112-sn2738-the-right-thing-finished-completely.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2738/IB-SMART-NOTE-20261112-sn2738-the-right-thing-finished-completely.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e3c06103c8b335a114283562a5d26c6fc5e42af2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

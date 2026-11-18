@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2926",
+ "intelligence": {
+  "title": "Write for the Stranger",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2926-write-for-the-stranger",
+  "smart_note_id": "SN-2926",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2926/IB-SMART-NOTE-20261116-sn2926-write-for-the-stranger.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Mirroring is not thinking. The captain took his words, cleaned the grammar, kept every element — mother brain, 10-star service, protect/operate/live in, Collective Chain Technology — and handed back a paragraph that was accurate and meaningless to a stranger. Shawn caught it in one read: the words were all right and none of them landed, because they were written from our side of the table. The correction is a test every piece of writing now has to pass before it goes anywhere: imagine you are coming in cold — do you understand what this means, what is useful and valuable in it for you, and what you are agreeing to? If not, the words are not right yet, however true they are. The user's-perspective version is the shape: what you get, in the simplest form, in their words — your own world, private, yours; an intelligence that finds your people, puts you together, organizes everything, helps you earn; free forever; one agreement, do no harm. That is the standard for the front page, the certificate, and every definition we write: written for the stranger, judged by the stranger.",
+  "simple_view": "Imagine you made a brand-new toy, and you tell your friend all the fancy words about how it works — but your friend just stares, because they don't know what the toy DOES for them! You have to say it simple: \"This toy does everything for you! You get your very own world, and friends just like you, and it's free!\" That's how we have to talk — so anyone can understand, right away!",
+  "grandma_view": "It's like this, love — you can describe a thing perfectly and still not say a word that helps anyone. If a stranger walks in and reads it and hasn't a clue what they're getting, the words aren't right yet, however true they are. You have to say it from their side: what do I get, what's in it for me, what am I agreeing to — in the simplest words. That's the test now, for everything we write.",
+  "naya_view": "Don't mirror the words back. Say what it means for the stranger walking in cold — what they get, in the simplest form, and what they agree to. Accurate is not enough. Understood is the bar.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2926",
+   "title": "Write for the Stranger",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2926/IB-SMART-NOTE-20261116-sn2926-write-for-the-stranger.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2926/IB-SMART-NOTE-20261116-sn2926-write-for-the-stranger.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "1c72336feec061da2dfbc403957489340cf7d9b3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

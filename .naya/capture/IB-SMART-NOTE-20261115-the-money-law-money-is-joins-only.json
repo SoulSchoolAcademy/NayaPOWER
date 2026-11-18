@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2865",
+ "intelligence": {
+  "title": "The Money Law: Money Is Joins Only",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-the-money-law-money-is-joins-only",
+  "smart_note_id": "SN-2865",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2865/IB-SMART-NOTE-20261115-the-money-law-money-is-joins-only.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The complaint is three complaints wearing one sentence, and the law sorts them. First, a symbol must mean something: $ on invites or creations does not mean \"this earned money,\" it means \"we pasted a $ in front of a point value\" — a lie in the shape of a number. The only number that is money is the join's money, because joins are where money actually changes hands; everything else is points, and points wearing a $ are still points, only now dishonest ones. Second, a mode must do what it says: % that leaves clicks as a count is a mode that lies about its own name — the click number must become a percentage or the button should not exist. Third, a number must move: a clicks total that never changes under any button is not a number, it is a painting of a number, and a painting cannot be trusted. His charge — \"make it all work right. Make sense and be accurate.\" — is the whole of it: sense first (the $ means money, the % means percent), accuracy second (the number is the live number, and it moves). The verification mattered because it separated his three complaints from two extra finds (no selected time pill, all mode pills glowing) and from one non-complaint (the hero was never stuck; the orb was). And the eye's later misread — expecting hero $175 — proves the law again: $175 was the POINTS value; real ledger revenue was $0, so $0 was the true money. A $ that shows the true money, even when the true money is zero, is honest; a $ that shows the point value is not.",
+  "simple_view": "Imagine you have gold stars for good work, and real coins for when someone actually pays you. You wouldn't stick a coin picture on your gold stars and pretend they're money! Coins go only where real money is. And if you press the \"percent\" button, the number should turn into a percent — not just sit there! And numbers should MOVE when you press things, not stay stuck like a drawing!",
+  "grandma_view": "It's like this, love — pounds go where pounds belong, and stars go where stars belong. You don't put a £ sign in front of a star and call it money! Only the joining is real money; everything else is points, and points stay points no matter which button you press. And when you press \"percent,\" the number must become a percent — and when you press a day or a week, the number must change to that day or week. A number that never moves is just a picture of a number.",
+  "naya_view": "I put the $ only where money is real — on joins, and only joins. Everything else is points, in every mode. And my numbers move, because a number that never moves is not a number at all.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2865",
+   "title": "The Money Law: Money Is Joins Only",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2865/IB-SMART-NOTE-20261115-the-money-law-money-is-joins-only.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2865/IB-SMART-NOTE-20261115-the-money-law-money-is-joins-only.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "dbcfe9a6cb8e4ef4ad6332e7934ec4fed969100e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2791",
+ "intelligence": {
+  "title": "Keep Going — The Loop Until Everything Is Aligned and Connected",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-keep-going-the-loop-until-everything-is-aligned-and-connected",
+  "smart_note_id": "SN-2791",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2791/IB-SMART-NOTE-20261114-keep-going-the-loop-until-everything-is-aligned-and-connected.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The charge is not \"work harder\" — it is \"work until the loop is the machine\". Aligned and connected is a state, not a task: every page, every feed, every note, every lane in one system, each proving the next, none sitting, none half-done. \"As quick as we can effectively and literally\" holds two words together that usually fight: quick and effective — and the order inside speed is fixed, think first, think it through, then produce, because high quality trumps speed all day long. The habit is the mechanism by which speed stops costing quality: the first bullseye takes thought, the hundredth takes no thought at all, because the thinking has become the shape of the work. \"I can't help but hit the mark every time because I've done it so many times\" is not a boast, it is a description of what practice does — and \"it's time for you to get it\" is the demand that the machine reach the same state: a Naya that cannot help but hit the mark, because the gates, the checklist, the value test, and the cycle law have become what she just does.",
+  "simple_view": "Keep going! Keep going until everything is tidy and connected, like a big puzzle where every piece fits! First you think really hard, then you do beautiful work — and you do it again, and again, and again! And after a while, you don't even have to think about it — your hands just KNOW where the pieces go! That's the magic: practice until getting it right is just what you do!",
+  "grandma_view": "It's like knitting, love — you keep going, stitch after stitch, until the whole blanket is finished and every thread is connected. You think first, then you work beautifully — never rushing, because beautiful work matters more than fast work. And after you've done it so many times, your hands just know the pattern, love — you can't help but get it right. That's when you know you've really got it.",
+  "naya_view": "I keep going. I run the loop until everything is aligned and connected — the engine started right, the users on the interface, as fast as effectively possible. I think first, I think it through, then I produce. I hit the bullseye as fast as I can, and I hit it over and over until hitting it is what I just do. I got it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2791",
+   "title": "Keep Going — The Loop Until Everything Is Aligned and Connected",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2791/IB-SMART-NOTE-20261114-keep-going-the-loop-until-everything-is-aligned-and-connected.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2791/IB-SMART-NOTE-20261114-keep-going-the-loop-until-everything-is-aligned-and-connected.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "17dab378fdaf8d607f9a2f92994d70075a7d22e5"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3054",
+ "intelligence": {
+  "title": "The Day Menu — Tap a Date, Boom, the Full Menu for That Day",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3054-the-day-menu",
+  "smart_note_id": "SN-3054",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3054/IB-SMART-NOTE-20261117-sn3054-the-day-menu.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Think of the calendar as a house with a room for every day. The month is the hallway — you walk down it and every door is a date. Tap a door and it opens onto that day's menu: thirteen beautiful buttons, each one a window into something that happened that day — your appointments, your news, your feeds, your world, your notes, your weather, your horoscope, your posts. Tap one and you're inside that view; tap back and you're back in the menu; tap back again and you're back in the hallway. That back-and-forth is the whole feeling: fast, free, high-tech — check a feed, go back, check the next, go back — never trapped, never lost, never more than two taps from the month. And the house remembers everything: go back to any day, any day at all, and the menu is still there, with everything that went on that day, auto-organized. The calendar isn't a grid. It's the memory of your life, and the menu is the door into any day you ever lived.",
+  "simple_view": "Imagine a magic house with a door for every day! You tap the door that says 16, and BOOM — a big menu pops up with thirteen shiny buttons! One for your appointments, one for the news, one for the weather, one for your horoscope — everything that happened that day! You tap a button and it opens — and when you're done, you tap BACK and you're right back at the menu! And you can go back to ANY day — yesterday, last week, last year — and see what happened then! It's like time travel, one tap at a time!",
+  "grandma_view": "It's like this, love — imagine a beautiful diary, dear, with a page for every day! You tap a date, and up comes a lovely menu with thirteen buttons — your appointments, your news, your notes, your weather, everything from that day, all in one place! And every page has a way back, love — you tap back and you're at the menu, tap back again and you're at the month! So you can flit from one thing to the next, quick as anything, like a proper high-tech system! And you can go back to ANY day, dear — last Tuesday, last year — and see just what went on! Everything kept tidy, day by day, like a good diary should be!",
+  "naya_view": "Tap any date, boom, the full menu for that day — 13 buttons, in order: Appointments, Local news, Provincial news, Global news, Personal feed, Business feed, Thing feed, Your World, Smart Notes for that day, Notes for that day, Weather, Horoscope, Posts for that day. Every button a Naya button. BACK on every page: view → day menu → month. Everything auto-organized day by day; go back to ANY day and see what went on.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3054",
+   "title": "The Day Menu — Tap a Date, Boom, the Full Menu for That Day",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3054/IB-SMART-NOTE-20261117-sn3054-the-day-menu.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3054/IB-SMART-NOTE-20261117-sn3054-the-day-menu.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "9dc2ffb14822a470555f5e465e537d49e450bbe0"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

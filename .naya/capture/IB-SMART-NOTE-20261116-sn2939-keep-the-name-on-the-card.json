@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2939",
+ "intelligence": {
+  "title": "Keep the Name on the Card",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2939-keep-the-name-on-the-card",
+  "smart_note_id": "SN-2939",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2939/IB-SMART-NOTE-20261116-sn2939-keep-the-name-on-the-card.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Two instincts collided here, and both were his: minimalism (hide the name, let the orb speak) and scan-ability (the name is the thing you look for). The answer chose scan-ability, and the reason is a phone fact, not a taste: there is no hover on a phone. A hover-only name is a name that doesn't exist for half the citizens — and even on desktop, hiding the name adds a tap to learn who anyone is, on every card, every time. The rail is a list you scan; the name is the scan key. Option B is honest and workable, but it costs height on every card and pushes the % — the reason the rail exists — down a row. So the ruling is: keep the single row round 4.2 perfected, make the I real and beautiful, and add hover/tap on the orb as a bonus, not as the only way in.",
+  "simple_view": "Imagine a row of your friends, each with a shiny ball and a number. If you take their names away, you'd have to tap every single ball just to find out who is who! That's silly. Keep the name right there on the card, so you can see at a glance who everybody is — and make the little \"I\" button big and beautiful so you can tap it to learn more.",
+  "grandma_view": "It's like this, love — if you hide everyone's name behind a little tap, you make people work just to know who they're looking at. On a phone there's no hovering, so the name would just be gone. Keep the name right on the card where the eye can find it, make the little \"I\" lovely and clear, and let the ball be a bonus when you tap it.",
+  "naya_view": "Keep the name on the card — the name is what you scan the rail for. Make the I real and beautiful. No hover on phones; hiding the name adds a tap to learn who anyone is.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2939",
+   "title": "Keep the Name on the Card",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2939/IB-SMART-NOTE-20261116-sn2939-keep-the-name-on-the-card.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2939/IB-SMART-NOTE-20261116-sn2939-keep-the-name-on-the-card.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e09bb3c06f1ba594ba66f4d88b2321c832d929ae"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,2702 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="data:," />
+    <title>The Ultimate Calendar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #040407;
+        --panel: #0a0a10;
+        --ink: #f4f4f8;
+        --rim: rgba(255, 255, 255, 0.09);
+        /* The day colors — the week as a color flow, hexes from the
+           machine spec's weekday table (§3.3), never from a screenshot */
+        --d0: #8e24aa; /* Sunday — royal purple · 963 Hz */
+        --d1: #c2410c; /* Monday — burnt orange · 417 Hz */
+        --d2: #d4a017; /* Tuesday — deep gold · 528 Hz */
+        --d3: #0f52ba; /* Wednesday — sapphire · 741 Hz */
+        --d4: #07925f; /* Thursday — emerald · 639 Hz */
+        --d5: #c62828; /* Friday — ruby · 396 Hz */
+        --d6: #3f51b5; /* Saturday — indigo · 852 Hz */
+        /* The official type scale — locked, all the way through:
+           headlines 25 · sub-headlines 19 · small text 17.
+           No text on this page is set at any other size. */
+        --type-headline: 25px;
+        --type-sub: 19px;
+        --type-small: 17px;
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(120% 70% at 50% -10%, rgba(255, 255, 255, 0.05), transparent 55%),
+          radial-gradient(90% 60% at 50% 115%, rgba(106, 108, 255, 0.05), transparent 60%),
+          var(--bg);
+        color: var(--ink);
+        font-family: "Archivo", system-ui, sans-serif;
+        font-size: var(--type-small);
+        -webkit-font-smoothing: antialiased;
+        overflow: hidden;
+      }
+      button { font-family: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+      button:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.75);
+        outline-offset: 2px;
+      }
+
+      #app {
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        padding: clamp(8px, 1.6vmin, 18px);
+      }
+      .screen { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+      .hidden { display: none !important; }
+
+      /* ---------- Digit tiles — harvested VERBATIM from the Dashboard
+         (fix-9 mini tiles: cap + digit + rim + chakra colour per digit).
+         Not a remake — the Dashboard's own CSS, values untouched. ---------- */
+      .os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
+      .os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
+      .os-mini-tile .rd{display:block;height:30px;line-height:30px;text-align:center;font-size:27px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
+      .os-mini-num.med{gap:4px;}
+      .os-mini-num.med .os-mini-tile{width:54px;border-radius:10px;border-width:2px;box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 18px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-num.med .os-mini-tile .cap{height:9px;}
+      .os-mini-num.med .os-mini-tile .rd{height:54px;line-height:54px;font-size:48px;}
+      .os-mini-tile.dollar{border-color:#ffbf3d;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,191,61,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.dollar .cap{background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a);}
+      .os-mini-gap{flex:none;width:10px;}
+      .os-mini-num.med .os-mini-gap{width:14px;}
+      .os-mini-tile.dot{width:12px;}
+      .os-mini-num.med .os-mini-tile.dot{width:20px;}
+      .os-mini-tile.dot .rd{display:flex;align-items:flex-end;justify-content:center;height:30px;line-height:1;padding-bottom:4px;box-sizing:border-box;}
+      .os-mini-num.med .os-mini-tile.dot .rd{height:54px;padding-bottom:8px;}
+      .os-mini-tile.pct{width:34px;}
+      .os-mini-num.med .os-mini-tile.pct{width:60px;}
+      .os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
+      .os-mini-tile.d1{border-color:#ff2a2a;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,42,42,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d1 .cap{background:linear-gradient(180deg,#ff8a8a,#e60000 55%,#8f0000);}
+      .os-mini-tile.d2{border-color:#ff8c00;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,140,0,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d2 .cap{background:linear-gradient(180deg,#ffc27a,#ff8c00 55%,#994d00);}
+      .os-mini-tile.d3{border-color:#f5d76e;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(245,215,110,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d3 .cap{background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a);}
+      .os-mini-tile.d4{border-color:#00a86b;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(0,168,107,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d4 .cap{background:linear-gradient(180deg,#6ee7a0,#00a86b 55%,#005c3a);}
+      .os-mini-tile.d5{border-color:#29b6f6;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(41,182,246,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d5 .cap{background:linear-gradient(180deg,#a5e3ff,#29b6f6 55%,#0e6b9e);}
+      .os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d6 .cap{background:linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#232a6b);}
+      .os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d7 .cap{background:linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#4d0f5e);}
+      .os-mini-tile.d8{border-color:#b388ff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(179,136,255,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d8 .cap{background:linear-gradient(180deg,#e9d5ff,#b388ff 55%,#6d4bb0);}
+      .os-mini-tile.d9{border-color:#ff1493;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,20,147,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d9 .cap{background:linear-gradient(180deg,#ff9ed2,#ff1493 55%,#8f0057);}
+      /* THE CLOCK TILES (v15 amendment, Shawn 2026-11-17): the live time
+         as Dashboard blocks — digitsHTML/miniTileHTML above, harvested
+         verbatim, nothing rebuilt. The colon is a plain white separator
+         between the groups. AM/PM ride in the SAME tile block: the
+         harvested .os-mini-tile anatomy (cap + face) with the hour's
+         colour (--hc, set on the clock) as rim + glow, because letters
+         take the hour's colour. The clock is one treatment everywhere */
+      .clocknum { align-items: center; }
+      .clock-colon { color: #ffffff; font-weight: 900; font-size: var(--type-sub); line-height: 1; text-shadow: 0 0 8px rgba(255,255,255,.35); }
+      .os-mini-tile.letter { border-color: var(--hc, #ffffff); box-shadow: 0 4px 10px rgba(0,0,0,.7), 0 0 12px color-mix(in srgb, var(--hc, #ffffff) 50%, transparent), inset 0 1px 0 rgba(255,255,255,.35); }
+      .os-mini-tile.letter .cap { background: linear-gradient(180deg,#ffffff,#d9d9de 55%,#9a9aa0); }
+      .os-mini-tile.letter .rd { font-size: 24px; }
+      @media (max-width:768px){
+        .os-mini-tile{width:20px;border-radius:4px;}
+        .os-mini-tile .cap{height:4px;}
+        .os-mini-tile .rd{height:22px;line-height:22px;font-size:19px;}
+        /* v18: the AM/PM letter takes the same rd size as the digits
+           (the v17 defect: the letter rd stayed 24px in a 20px tile) */
+        .os-mini-tile.letter .rd{font-size:19px;}
+        .os-mini-num{gap:2px;}
+        .os-mini-num.med .os-mini-tile{width:40px;}
+        .os-mini-num.med .os-mini-tile .cap{height:7px;}
+        .os-mini-num.med .os-mini-tile .rd{height:40px;line-height:40px;font-size:36px;}
+        .os-mini-tile.dot{width:8px;}
+        .os-mini-num.med .os-mini-tile.dot{width:14px;}
+        .os-mini-tile.pct{width:24px;}
+        .os-mini-num.med .os-mini-tile.pct{width:44px;}
+        .os-mini-gap{width:8px;}
+        .os-mini-num.med .os-mini-gap{width:10px;}
+      }
+
+      /* ---------- Month screen ---------- */
+      /* The PTS / % / MONEY lesson, carried through the whole page: an
+         obsidian-black pill, a bold white label you can read at a glance,
+         and ONE deep colour per control as its rim + glow. Clean, lit,
+         premium — the same language on the header plaque, the TODAY
+         button, the back / forward arrows, the weekday plaques and the
+         day boards below. */
+      .monthbar {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 12px; padding: 2px 4px clamp(6px, 1.4vmin, 14px);
+      }
+      /* ONE HEADLINER on the month screen too (Shawn, 2026-11-17):
+         the plaque at the right is the single official headliner —
+         the full date said once, the live time said once. This centre
+         pill is NAVIGATION ONLY: it carries no words at all, so the
+         month and year are never restated beside the plaque. It is a
+         jewel medallion between the two purple arrows — a faceted
+         diamond in royal purple, lit from the top-left, turning very
+         slowly like the Hz jewel — and the arrows either side of it
+         do the navigating. The month being browsed is named only in
+         the grid's aria-label, for screen readers, never on screen */
+      .monthtitle {
+        display: flex; align-items: center; justify-content: center;
+        width: 64px; height: 44px; flex: none;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #17171f 0%, #0a0a11 62%, #060609 100%);
+        border: 1.5px solid rgba(154, 92, 255, 0.6);
+        box-shadow:
+          0 0 14px rgba(154, 92, 255, 0.22),
+          inset 0 1px 0 rgba(255, 255, 255, 0.25),
+          inset 0 -8px 14px rgba(0, 0, 0, 0.5),
+          0 6px 16px rgba(0, 0, 0, 0.5);
+      }
+      .month-jewel {
+        /* A real faceted diamond, not a flat mark — the same jewel
+           language as the day's Hz gem: white table on top, royal
+           purple body beneath, a bright edge, depth below */
+        width: 22px; height: 22px; flex: none;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.35) 34%, transparent 35%),
+          linear-gradient(135deg, #ffffff 0%, #8e24aa 52%, #4d0f5e 100%);
+        clip-path: polygon(50% 100%, 0 38%, 22% 0, 78% 0, 100% 38%);
+        filter: drop-shadow(0 3px 4px rgba(0,0,0,0.65)) drop-shadow(0 0 6px rgba(142,36,170,0.35));
+      }
+      .navcluster { display: flex; gap: 8px; align-items: center; min-width: 96px; }
+      .navcluster.right { justify-content: flex-end; }
+      .navbtn {
+        width: 44px; height: 44px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        color: #fff;
+        background: linear-gradient(180deg, #17171f 0%, #0a0a11 62%, #060609 100%);
+        border: 1.5px solid rgba(255, 255, 255, 0.55);
+        box-shadow:
+          0 0 16px rgba(255, 255, 255, 0.16),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.25s, transform 0.25s, filter 0.25s;
+      }
+      /* BOTH arrows carry the royal purple — purple and purple
+         (Shawn, 2026-11-17: the green forward arrow goes) */
+      #prevMonth, #nextMonth {
+        border-color: #8e24aa;
+        box-shadow:
+          0 0 10px rgba(142, 36, 170, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+      }
+      .navbtn:hover { transform: translateY(-1px); filter: brightness(1.22); }
+      .navbtn svg { width: 18px; height: 18px; }
+      /* The header's now-plaque — the TODAY button is GONE (Shawn,
+         2026-11-17). In its place the header carries what you go
+         there for: today's DATE and the LIVE TIME, read from the
+         viewer's own clock in their own time zone, ticking every
+         second. Same obsidian pill language, deep gold rim + glow */
+      .nowplaque {
+        --dc: #d4a017;
+        display: flex; align-items: center; gap: 10px;
+        min-height: 44px; padding: 6px 18px; border-radius: 999px;
+        background:
+          radial-gradient(90% 140% at 50% 0%, color-mix(in srgb, var(--dc) 8%, transparent), transparent 62%),
+          linear-gradient(180deg, #17171f 0%, #0a0a11 62%, #060609 100%);
+        border: 1.5px solid color-mix(in srgb, var(--dc) 62%, transparent);
+        box-shadow:
+          0 0 10px color-mix(in srgb, var(--dc) 18%, transparent),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+      }
+      .now-date {
+        font-family: "Marcellus", serif; font-size: var(--type-sub);
+        letter-spacing: 0.05em; color: #ffffff; white-space: nowrap;
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+      }
+      .now-time {
+        /* The time takes TODAY's colour — never gold (Shawn, 2026-11-17);
+           --dc is set on the plaque from today's weekday in JS */
+        font-size: var(--type-sub); font-weight: 800; letter-spacing: 0.06em;
+        color: color-mix(in srgb, var(--dc, #d4a017) 58%, #ffffff 42%);
+        font-variant-numeric: tabular-nums; white-space: nowrap;
+        text-shadow: 0 0 8px color-mix(in srgb, var(--dc, #d4a017) 30%, transparent);
+      }
+
+      .weekrow {
+        display: grid; grid-template-columns: repeat(7, 1fr); gap: clamp(5px, 0.9vmin, 10px);
+        padding: 0 2px clamp(5px, 1vmin, 10px);
+      }
+      .weekrow > span {
+        /* THE WORD IS THE OBJECT (Shawn, 2026-11-17, from his "Sun"
+           mockup): each letter is the object — a dark obsidian letter
+           body, the day's own colour as rim + glow around the letter.
+           No pill, no diamond above, no rule below — the letters
+           themselves carry it. The day's icon sits above the word, a
+           real object like the word itself. Abbreviations fit whole
+           at desktop AND phone width — nothing clipped, nothing vertical */
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 6px;
+        padding: clamp(6px, 1vmin, 9px) 2px 4px;
+        white-space: nowrap;
+      }
+      .weekrow .wk-ico {
+        /* The day's icon — obsidian disc, the day's colour as rim +
+           glow outside, white glyph as an object inside (§4 THE ICON) */
+        flex: none; width: 34px; height: 34px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        color: #ffffff;
+        background: linear-gradient(180deg, #17171f 0%, #0a0a11 62%, #060609 100%);
+        border: 1.5px solid var(--dc);
+        box-shadow:
+          0 0 12px color-mix(in srgb, var(--dc) 45%, transparent),
+          inset 0 1px 0 rgba(255,255,255,.28),
+          inset 0 -6px 10px rgba(0,0,0,.5),
+          0 5px 12px rgba(0,0,0,.5);
+      }
+      .weekrow .wk-ico svg { width: 19px; height: 19px; }
+      .weekrow .wk-word { display: inline-flex; align-items: baseline; gap: 1px; }
+      .weekrow .wk-l {
+        /* Dark obsidian letter body, the day's colour as rim + glow —
+           the mockup's effect, verbatim: big heavy letters, dark faces,
+           coloured edge light. The stroke draws the rim; the glow is
+           the light around it. Today burns brighter (below) */
+        font-family: "Archivo", system-ui, sans-serif; font-weight: 900;
+        font-size: clamp(17px, 3.4vw, 34px); line-height: 1;
+        color: #07070f;
+        -webkit-text-stroke: 2px var(--dc);
+        paint-order: stroke fill;
+        text-shadow:
+          0 0 10px color-mix(in srgb, var(--dc) 55%, transparent),
+          0 0 26px color-mix(in srgb, var(--dc) 35%, transparent),
+          0 3px 6px rgba(0,0,0,.8);
+      }
+      .weekrow > span.today-col .wk-l {
+        /* Today is known from this word — same dark letters, stronger glow */
+        text-shadow:
+          0 0 14px color-mix(in srgb, var(--dc) 75%, transparent),
+          0 0 32px color-mix(in srgb, var(--dc) 50%, transparent),
+          0 3px 6px rgba(0,0,0,.8);
+      }
+      .weekrow > span.today-col .wk-ico {
+        box-shadow:
+          0 0 18px color-mix(in srgb, var(--dc) 65%, transparent),
+          inset 0 1px 0 rgba(255,255,255,.28),
+          inset 0 -6px 10px rgba(0,0,0,.5),
+          0 5px 12px rgba(0,0,0,.5);
+      }
+
+      .grid {
+        flex: 1; min-height: 0;
+        display: grid; grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        gap: clamp(5px, 0.9vmin, 10px);
+      }
+      .cell {
+        --dc: #ffffff;
+        position: relative;
+        min-width: 0;
+        border-radius: clamp(10px, 1.6vmin, 16px);
+        background: linear-gradient(180deg, #101019 0%, #07070c 78%, #050508 100%);
+        /* Quiet at rest: a fine rim in the day's color and a whisper of
+           light — the color reads as elegance, not noise. Depth comes
+           from the top-edge light and the drop shadow beneath the cell */
+        border: 1px solid color-mix(in srgb, var(--dc) 34%, transparent);
+        box-shadow:
+          0 6px 14px rgba(0, 0, 0, 0.42),
+          0 0 10px color-mix(in srgb, var(--dc) 8%, transparent),
+          inset 0 1px 0 rgba(255, 255, 255, 0.07),
+          inset 0 -10px 16px rgba(0, 0, 0, 0.35);
+        display: flex; align-items: flex-start; justify-content: flex-start;
+        transition: border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease;
+        min-height: 44px; padding: clamp(6px, 1.1vmin, 11px);
+      }
+      /* The boards in the same language: a clearer rim in the day's
+         colour and a real glow around the board's edge, while the face
+         itself stays dark obsidian — lit like the PTS pills, not filled */
+      .cell {
+        border: 1.5px solid color-mix(in srgb, var(--dc) 52%, transparent);
+        box-shadow:
+          0 6px 14px rgba(0, 0, 0, 0.42),
+          0 0 15px color-mix(in srgb, var(--dc) 18%, transparent),
+          inset 0 1px 0 rgba(255, 255, 255, 0.13),
+          inset 0 -10px 16px rgba(0, 0, 0, 0.35);
+      }
+      /* The digit tiles stay — they are the Dashboard's own — but in the
+         month cells they sit SMALL: a quiet number in the corner of the
+         board, not a billboard. (The day screen's med tiles are untouched) */
+      .grid .os-mini-num { gap: 2px; }
+      .grid .os-mini-tile {
+        width: 18px; border-radius: 4px; border-width: 1px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), 0 0 7px rgba(255, 255, 255, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+      .grid .os-mini-tile .cap { height: 3px; }
+      .grid .os-mini-tile .rd {
+        height: 22px; line-height: 22px; font-size: var(--type-small); font-weight: 800;
+        text-shadow: 0 0 6px rgba(134, 126, 152, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
+      }
+      .cell:hover, .cell:focus-visible, .cell:active {
+        /* Hover brightens the rim and its outside light only — the face
+           of the day stays dark and calm */
+        border-color: color-mix(in srgb, var(--dc) 78%, #ffffff 22%);
+        box-shadow:
+          0 0 26px color-mix(in srgb, var(--dc) 28%, transparent),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        z-index: 2;
+      }
+      /* Days of the other months are not shown at all — a blank cell */
+      .cell.blank {
+        border-color: #ffffff0c;
+        box-shadow: none;
+        cursor: default;
+      }
+      /* Today gets NO special cell at all — no TODAY pill, no fill, no
+         glow over the day itself, no pulse. Its cell is styled exactly
+         like every other day's; today is known from the weekday plaque
+         above its column and from the header's date + live time */
+      /* The day's number — the Dashboard's own digit tiles (cap + digit +
+         rim + chakra colour per digit), harvested above, shrunk small
+         for the month cells by the .grid rules above. The cell's rim and
+         light carry the day's color; the tiles carry the number */
+      /* The info jewel — bottom-right of every day, the corner opposite
+         the number. A pearl disc raised off the page like a real object:
+         lit from above, shadowed beneath, a small dark i at its heart so
+         it reads as the day's info. Clicking it opens the day, same as
+         the cell around it. */
+      .cell .jewel {
+        /* The info eye, rebalanced: a small dark obsidian jewel — no
+           white disc. A thin rim in the day's color, one soft highlight
+           at the top, and a small white i on the black centre. It sits
+           quiet in the corner instead of shouting across the cell */
+        position: absolute; right: clamp(6px, 1.1vmin, 11px); bottom: clamp(6px, 1.1vmin, 11px);
+        width: clamp(17px, 2.7vmin, 22px); height: clamp(17px, 2.7vmin, 22px);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        background: radial-gradient(circle at 34% 26%, #2c3044 0%, #13131f 52%, #050508 100%);
+        border: 1px solid color-mix(in srgb, var(--dc) 55%, rgba(255, 255, 255, 0.25) 45%);
+        box-shadow:
+          0 3px 7px rgba(0, 0, 0, 0.6),
+          0 0 8px color-mix(in srgb, var(--dc) 22%, transparent),
+          inset 0 1px 2px rgba(255, 255, 255, 0.35),
+          inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .cell .jewel svg { width: 74%; height: 74%; display: block; }
+      .cell:hover .jewel, .cell:focus-visible .jewel {
+        transform: translateY(-1px);
+        box-shadow:
+          0 5px 10px rgba(0, 0, 0, 0.65),
+          0 0 12px color-mix(in srgb, var(--dc) 40%, transparent),
+          inset 0 1px 2px rgba(255, 255, 255, 0.45),
+          inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+      }
+      .dots {
+        position: absolute; left: clamp(7px, 1.2vmin, 12px); bottom: clamp(7px, 1.1vmin, 11px);
+        display: flex; justify-content: flex-start; gap: 5px;
+      }
+      .dots i {
+        width: 6px; height: 6px; border-radius: 50%;
+        background: color-mix(in srgb, var(--dc) 70%, #ffffff 30%);
+        box-shadow: 0 0 5px color-mix(in srgb, var(--dc) 45%, transparent);
+      }
+      .dots i.note { background: #e8e8f2; box-shadow: 0 0 5px rgba(255,255,255,.55); border-radius: 2px; }
+
+      /* ---------- Shared chrome for inner screens ---------- */
+      .backbtn {
+        /* The inner screens' back arrow speaks the same language: the
+           PTS purple as rim + glow on an obsidian disc, bold white mark */
+        width: 46px; height: 46px; flex: none; border-radius: 50%; color: #fff;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: linear-gradient(180deg, #17171f 0%, #0a0a11 62%, #060609 100%);
+        border: 1.5px solid #9a5cff;
+        box-shadow:
+          0 0 18px rgba(154, 92, 255, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.25s, filter 0.25s;
+      }
+      .backbtn:hover { filter: brightness(1.22); }
+      .backbtn svg { width: 19px; height: 19px; }
+      /* v18 — THE EYE BACK TO MONTH (Shawn's word, 2026-11-17 18:33Z):
+         the back control is the approved info eye — the small dark
+         obsidian jewel with the white "i", not a white blob and not
+         a chevron. Disc treatment harvested verbatim from .cell
+         .jewel (same radial, same rim, same shadows, same 74% "i");
+         only the size is the back button's own 46px. The day's
+         colour rims it, so it reads as this day's eye */
+      .backbtn.eye {
+        background: radial-gradient(circle at 34% 26%, #2c3044 0%, #13131f 52%, #050508 100%);
+        border: 1.5px solid color-mix(in srgb, var(--dc, #fff) 55%, rgba(255, 255, 255, 0.25) 45%);
+        box-shadow:
+          0 3px 7px rgba(0, 0, 0, 0.6),
+          0 0 8px color-mix(in srgb, var(--dc, #fff) 22%, transparent),
+          inset 0 1px 2px rgba(255, 255, 255, 0.35),
+          inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+      }
+      .backbtn.eye .jewel { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+      .backbtn.eye .jewel svg { width: 74%; height: 74%; display: block; }
+      .backbtn.eye:hover {
+        box-shadow:
+          0 5px 10px rgba(0, 0, 0, 0.65),
+          0 0 12px color-mix(in srgb, var(--dc, #fff) 40%, transparent),
+          inset 0 1px 2px rgba(255, 255, 255, 0.45),
+          inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+      }
+
+      /* ---------- Day screen ---------- */
+      .daybar {
+        /* The top bar is the Hub hero, carried into the calendar: a warm,
+           layered surface — the day's colour gathered softly at the top,
+           fine rays fanning behind it, a slow sheen passing across, real
+           depth beneath. Rich and elegant, glow kept quiet (Shawn,
+           2026-11-17). Inside it: ONE official headliner across the top
+           (the eye back to month bracketing it left, the Hz jewel right), and the
+           greeting beneath — each day a mini hub */
+        position: relative; overflow: hidden;
+        display: flex; flex-direction: column; align-items: stretch;
+        gap: clamp(10px, 1.8vmin, 16px);
+        padding: clamp(14px, 2.2vmin, 22px) clamp(12px, 2vmin, 22px) clamp(16px, 2.6vmin, 26px);
+        border-radius: 0 0 22px 22px;
+        background:
+          radial-gradient(90% 150% at 50% 0%, color-mix(in srgb, var(--dc, #fff) 26%, transparent), transparent 68%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 32%, rgba(0, 0, 0, 0.35) 100%),
+          repeating-conic-gradient(from 4deg at 50% -8%, rgba(255, 255, 255, 0.016) 0 13deg, transparent 13deg 28deg),
+          linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 24%, #1b1b22) 0%, color-mix(in srgb, var(--dc, #fff) 13%, #0a0a11) 60%, color-mix(in srgb, var(--dc, #fff) 8%, #050607) 100%);
+        border-bottom: 1.5px solid color-mix(in srgb, var(--dc, #fff) 32%, transparent);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.22),
+          0 14px 30px rgba(0, 0, 0, 0.45),
+          0 0 12px color-mix(in srgb, var(--dc, #fff) 7%, transparent);
+        margin-bottom: clamp(10px, 2vmin, 18px);
+      }
+      /* The eye back to month brackets the headliner at the TOP LEFT corner */
+      .daybar > .backbtn {
+        position: absolute; z-index: 3;
+        top: clamp(14px, 2.2vmin, 22px); left: clamp(12px, 2vmin, 22px);
+        box-shadow:
+          0 0 9px rgba(154, 92, 255, 0.25),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+      }
+      .daybar > .backbtn.eye {
+        /* The eye keeps the jewel's own shadow in the daybar —
+           the purple back-arrow shadow above must not win here */
+        box-shadow:
+          0 3px 7px rgba(0, 0, 0, 0.6),
+          0 0 8px color-mix(in srgb, var(--dc, #fff) 22%, transparent),
+          inset 0 1px 2px rgba(255, 255, 255, 0.35),
+          inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+      }
+      .daybar::before {
+        /* The Hub's passing sheen — light moving slowly across the bar */
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+        transform: translateX(-100%);
+        animation: barsheen 7s ease-in-out infinite;
+      }
+      @keyframes barsheen { 0%, 55% { transform: translateX(-100%); } 88%, 100% { transform: translateX(100%); } }
+      .daybar > * { position: relative; z-index: 1; }
+      .dayhead { display: flex; flex-direction: column; gap: clamp(12px, 2vmin, 18px); min-width: 0; width: 100%; }
+      /* ---------- ONE HEADLINER (Shawn, 2026-11-17) ----------
+         The date is said ONCE, the time ONCE — a single official
+         headliner across the top of the bar, bracketed by the back
+         arrow (top left) and the Hz jewel (top right). Spare: the
+         weekday as straight raised words in the day's colour, the
+         full date, the live time in the day's colour. Nothing else
+         on the page repeats the date or the time — no digit tiles
+         beside the date line, no second clock in the greeting */
+      .official-headliner {
+        display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+        gap: 8px 14px; min-height: 46px;
+        margin: 0 clamp(64px, 9vmin, 96px);
+        padding-bottom: clamp(10px, 1.6vmin, 14px);
+        border-bottom: 1px solid color-mix(in srgb, var(--dc, #fff) 20%, transparent);
+        text-align: center;
+      }
+      .hl-weekday {
+        /* Straight words, no button — raised, WHITE (Shawn, 2026-11-17:
+           the headliner weekday stays white; so much gold on the page
+           already, the white-on-gold contrast is good — leave it). The
+           day's colour lives in the glow around the letters, never in
+           the word itself. This overrides the v14 day-colour treatment */
+        font-family: "Marcellus", serif; font-size: var(--type-headline);
+        letter-spacing: 0.1em; line-height: 1.05;
+        color: #ffffff;
+        text-shadow:
+          0 -1px 0 rgba(255, 255, 255, 0.28),
+          0 2px 3px rgba(0, 0, 0, 0.85),
+          0 0 11px color-mix(in srgb, var(--dc, #fff) 35%, transparent);
+      }
+      .hl-date {
+        font-size: var(--type-sub); font-weight: 800;
+        letter-spacing: 0.16em; text-transform: uppercase; color: #ffffff;
+        text-shadow: 0 1px 0 #000, 0 2px 3px rgba(0, 0, 0, 0.7);
+        white-space: nowrap;
+      }
+      .hl-time {
+        /* The time takes the DAY's colour — not gold — with only a
+           whisper of its light in the letters */
+        font-size: var(--type-sub); font-weight: 800;
+        letter-spacing: 0.1em; font-variant-numeric: tabular-nums;
+        color: color-mix(in srgb, var(--dc, #fff) 55%, #ffffff 45%);
+        text-shadow: 0 0 8px color-mix(in srgb, var(--dc, #fff) 28%, transparent);
+        white-space: nowrap;
+      }
+      .hl-dot {
+        flex: none; width: 7px; height: 7px; transform: rotate(45deg); border-radius: 1.5px;
+        background: linear-gradient(135deg, #ffffff 0%, var(--dc, #fff) 55%, color-mix(in srgb, var(--dc, #fff) 50%, #000000) 100%);
+        box-shadow: 0 0 5px color-mix(in srgb, var(--dc, #fff) 35%, transparent);
+      }
+      /* The greeting row under the headliner — the Hub's warmth.
+         The weather rides at the row's right, kept clear of the
+         Hz jewel standing in the corner above it */
+      .greet-row {
+        display: flex; align-items: center; gap: clamp(12px, 2.4vmin, 26px);
+        flex-wrap: wrap; padding-right: clamp(84px, 10vmin, 104px);
+      }
+      /* The greeting as a grid, so the S disc sits in the greeting's
+         own row: its centre aligns EXACTLY with the centre of the
+         "Good morning, Shawn." line — never floating between lines.
+         v18: ONE row — disc + greeting only. The header says the
+         greeting and nothing else (Shawn, 2026-11-17) */
+      .greet-layout {
+        display: grid; grid-template-columns: auto 1fr;
+        column-gap: 16px; row-gap: 3px; align-items: start;
+        min-width: min(430px, 100%); flex: 1;
+      }
+      .greet-layout .avatar-jewel { grid-column: 1; grid-row: 1; align-self: center; }
+      .greet-layout .greet-hello { grid-column: 2; grid-row: 1; align-self: center; }
+      /* The day's jewel — a faceted gem in the day's color, its frequency
+         beneath it. The whole unit stands in the TOP RIGHT corner of
+         the bar, bracketing the headliner against the eye at left */
+      .dayjewel {
+        /* Positioned against the day head, whose own edges ARE the
+           bar's content corners — so 0/0 puts the unit exactly in
+           the top right corner, level with the eye at left */
+        position: absolute; z-index: 3;
+        top: 0; right: 0;
+        display: flex; flex-direction: column; align-items: center; gap: 3px;
+      }
+      /* The Hz jewel — a real diamond, not a flat mark: it sits on an
+         obsidian pedestal in the day's colour, wrapped in a slow ring
+         of travelling light, radiating the day's colour outward, and
+         the stone itself turns slowly on its axis like jewelry on a
+         stand — a frequency made visible. Slow, always: the ring
+         takes 70s, the stone 24s, the radiance breathes over 12s */
+      .hz-stage {
+        position: relative; flex: none;
+        width: clamp(56px, 8vmin, 68px); height: clamp(56px, 8vmin, 68px);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .hz-aura {
+        /* Radiance kept quiet — rich, not glowing (Shawn, 2026-11-17) */
+        position: absolute; inset: -10px; border-radius: 50%; pointer-events: none;
+        background: radial-gradient(circle, color-mix(in srgb, var(--dc, #fff) 20%, transparent) 0%, color-mix(in srgb, var(--dc, #fff) 6%, transparent) 52%, transparent 72%);
+        animation: hzradiate 12s ease-in-out infinite alternate;
+      }
+      @keyframes hzradiate { from { opacity: .5; transform: scale(.94); } to { opacity: .85; transform: scale(1.05); } }
+      .hz-pedestal {
+        position: absolute; inset: 0; border-radius: 50%;
+        background: radial-gradient(circle at 34% 26%, #2c3044 0%, #13131f 52%, #050607 100%);
+        border: 2px solid color-mix(in srgb, var(--dc, #fff) 78%, #ffffff 22%);
+        box-shadow:
+          0 8px 16px rgba(0, 0, 0, 0.65),
+          0 0 11px color-mix(in srgb, var(--dc, #fff) 22%, transparent),
+          inset 0 2px 3px rgba(255, 255, 255, 0.4),
+          inset 0 -8px 12px rgba(0, 0, 0, 0.7);
+      }
+      .hz-pedestal::after {
+        content: ""; position: absolute; inset: -8px; border-radius: 50%;
+        border: 2px solid transparent;
+        border-top-color: color-mix(in srgb, var(--dc, #fff) 60%, #ffffff 10%);
+        border-right-color: color-mix(in srgb, var(--dc, #fff) 22%, transparent);
+        animation: orbitspin 70s linear infinite;
+      }
+      .dayjewel .gem {
+        position: relative; z-index: 1;
+        width: clamp(36px, 5.6vmin, 46px); height: auto; display: block;
+        filter: drop-shadow(0 6px 10px rgba(0,0,0,.75)) drop-shadow(0 0 12px color-mix(in srgb, var(--dc, #fff) 45%, transparent));
+        animation: hzspin 24s linear infinite;
+        transform-origin: 50% 50%;
+      }
+      @keyframes hzspin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+      .dayjewel:hover .gem { animation-duration: 12s; }
+      .dayjewel:hover .hz-aura { animation-duration: 6s; }
+      .dayjewel .freq {
+        /* The Hz text takes the DAY's colour too */
+        font-size: var(--type-small); font-weight: 800;
+        letter-spacing: 0.24em; text-indent: 0.24em;
+        color: color-mix(in srgb, var(--dc, #fff) 55%, #ffffff 45%);
+        text-shadow: 0 0 7px color-mix(in srgb, var(--dc, #fff) 26%, transparent);
+        white-space: nowrap;
+      }
+      /* ---------- Day dashboard ---------- */
+      /* v18 — 635px guard: the day content can never scroll sideways.
+         The real fix is the width fixes (the feed pill that ran
+         off-screen is gone, the headliner holds its margins); this
+         only stops a horizontal scrollbar ever appearing */
+      .day-scroll {
+        flex: 1; min-height: 0; overflow-y: auto; overflow-x: clip;
+        display: flex; flex-direction: column;
+        gap: clamp(10px, 1.6vmin, 16px);
+        padding: 2px 2px 12px;
+      }
+      .wisdom-banner {
+        flex: none;
+        padding: clamp(14px, 2.4vmin, 22px) clamp(16px, 3vmin, 30px);
+        border-radius: 16px; text-align: center;
+        background:
+          radial-gradient(80% 140% at 50% 0%, color-mix(in srgb, var(--dc, #fff) 14%, transparent), transparent 65%),
+          linear-gradient(180deg, #0e0e16, #06060a);
+        border: 1px solid color-mix(in srgb, var(--dc, #fff) 38%, transparent);
+        box-shadow: 0 0 11px color-mix(in srgb, var(--dc, #fff) 7%, transparent), inset 0 1px 0 rgba(255,255,255,.07);
+      }
+      .wisdom-banner { transition: box-shadow .35s ease, border-color .35s ease, transform .35s ease; }
+      .wisdom-banner:hover { border-color: color-mix(in srgb, var(--dc, #fff) 75%, #ffffff 25%); box-shadow: 0 0 20px color-mix(in srgb, var(--dc, #fff) 18%, transparent), inset 0 1px 0 rgba(255,255,255,.22), 0 14px 30px rgba(0,0,0,.5); transform: translateY(-2px); }
+      .wisdom-banner .wq-label {
+        font-size: var(--type-small); font-weight: 800; letter-spacing: 0.3em; text-indent: 0.3em;
+        text-transform: uppercase; color: #ffd23c; text-shadow: 0 0 7px rgba(255,210,60,.3); margin-bottom: 8px;
+      }
+      .wisdom-banner blockquote {
+        margin: 0; font-family: "Marcellus", serif; font-weight: 400;
+        font-size: var(--type-headline); line-height: 1.35; color: #fff;
+        text-shadow: 0 0 9px color-mix(in srgb, var(--dc, #fff) 22%, transparent);
+      }
+      /* ---------- Greeting — inside the top bar, with the Hub's warmth --
+         Measured against the Hub hero (his picture, 2026-11-17): the
+         italic serif motto above, the greeting HUGE and bold in white,
+         a gold sub-line under it, the feed pill, then date + gold time.
+         The Hub's own bytes carry the same anatomy: hero h1 at weight
+         900 with a deep layered shadow, time in deep gold #d4a017 with
+         its glow, a breathing live dot beside the date. The calendar
+         keeps its locked type scale — the greeting is the headline,
+         set at the headline size, at the Hub's weight */
+      .avatar-jewel {
+        /* His initial as a real object — a jewel disc like the eye:
+           obsidian heart, a rim in the day's colour, light on top,
+           shadow beneath, and a slow orbit of light travelling its rim */
+        position: relative; flex: none; width: 58px; height: 58px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        background: radial-gradient(circle at 34% 26%, #2c3044 0%, #13131f 52%, #050607 100%);
+        border: 2px solid color-mix(in srgb, var(--dc, #fff) 78%, #ffffff 22%);
+        box-shadow:
+          0 6px 14px rgba(0, 0, 0, 0.65),
+          0 0 10px color-mix(in srgb, var(--dc, #fff) 22%, transparent),
+          inset 0 2px 3px rgba(255, 255, 255, 0.4),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.7);
+        font-family: "Marcellus", serif; font-size: var(--type-headline); line-height: 1; color: #ffffff;
+        text-shadow: 0 0 7px color-mix(in srgb, var(--dc, #fff) 35%, transparent), 0 2px 0 rgba(0,0,0,.6);
+      }
+      .avatar-jewel::after {
+        /* The orbit still flows around the disc — its light kept quiet */
+        content: ""; position: absolute; inset: -8px; border-radius: 50%;
+        border: 2px solid transparent;
+        border-top-color: color-mix(in srgb, var(--dc, #fff) 55%, #ffffff 10%);
+        animation: orbitspin 70s linear infinite;
+      }
+      @keyframes orbitspin { to { transform: rotate(360deg); } }
+      .greet-hello {
+        display: block; font-weight: 900;
+        font-size: var(--type-headline); line-height: 1.08; letter-spacing: -0.01em; color: #ffffff;
+        text-shadow: 0 1px 3px rgba(0,0,0,.85), 0 0 13px color-mix(in srgb, var(--dc, #fff) 22%, transparent);
+      }
+      .wx-zone { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+      .wx-btn, .wx-form button {
+        height: 48px; padding: 0 20px; border-radius: 999px; color: #ffffff;
+        background: linear-gradient(180deg, #17171f, #08080d);
+        border: 1.5px solid #d4a017;
+        box-shadow: 0 0 8px rgba(212, 160, 23, .18), inset 0 1px 0 rgba(255,255,255,.2);
+        font-size: var(--type-small); font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+        transition: box-shadow .25s, transform .25s, filter .25s;
+      }
+      .wx-btn:hover, .wx-form button:hover { transform: translateY(-1px); filter: brightness(1.22); box-shadow: 0 0 14px rgba(212, 160, 23, .3), inset 0 1px 0 rgba(255,255,255,.28); }
+      .wx-form { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+      .wx-form input {
+        height: 48px; min-width: 170px; flex: 1;
+        background: #08080d; color: #ffffff;
+        border: 1px solid rgba(255,255,255,.3); border-radius: 10px; padding: 0 14px;
+        font: inherit; font-size: var(--type-small); color-scheme: dark;
+      }
+      .wx-note { font-size: var(--type-small); font-weight: 700; color: #ffffff; line-height: 1.5; }
+      .wx-note strong { color: #ffffff; }
+
+      /* ---------- Notification blocks — big number displays ----------
+         One BIG BLOCK per world across the top, each a real object:
+         the world's NAME ABOVE, and below it the BIG NUMBER as the
+         large Dashboard digit tiles — the same tiles as the 17 in the
+         date header, rimmed and glowing in the world's own colour.
+         The + block is the SAME SIZE, in the same row; the row is
+         dynamic — three blocks, four, whatever he wants. A zero here
+         is a live instrument reading of zero, never flat text. Tap a
+         block and that world's menu opens below; the bar itself
+         shows the counts only */
+      .notif-bar {
+        flex: none;
+        border-radius: 18px; padding: clamp(16px, 2vmin, 22px);
+        background: linear-gradient(180deg, #151522 0%, #090910 78%, #050607 100%);
+        border: 1.5px solid rgba(255, 255, 255, 0.38);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -12px 18px rgba(0,0,0,.35), 0 14px 30px rgba(0,0,0,.55), 0 0 9px rgba(255,255,255,.06);
+      }
+      .notif-head {
+        margin: 0 0 14px; font-size: var(--type-headline); font-weight: 800;
+        letter-spacing: .14em; text-transform: uppercase; color: #ffffff;
+        display: flex; align-items: center; gap: 11px;
+        /* v16: the Add-source pill rides in this row — the row wraps
+           before it ever overflows, so at phone width the pill sits
+           on its own line instead of spilling past the bar */
+        flex-wrap: wrap;
+      }
+      .notif-head .ndot { width: 15px; height: 15px; border-radius: 3px; flex: none; transform: rotate(45deg); background: linear-gradient(135deg, #ffffff 0%, #ffd23c 42%, #7a5b00 100%); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 0 14px #ffd23c, inset 0 1px 2px rgba(255,255,255,.9), 0 3px 6px rgba(0,0,0,.6); }
+      .notif-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(168px, 100%), 1fr)); gap: 12px; align-items: stretch; }
+      .nblock {
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+        min-height: 172px; padding: 20px 14px 22px; border-radius: 18px; text-align: center;
+        background:
+          radial-gradient(85% 90% at 50% 0%, color-mix(in srgb, var(--sc) 13%, transparent), transparent 65%),
+          linear-gradient(180deg, #151522 0%, #090910 78%, #050607 100%);
+        border: 2px solid color-mix(in srgb, var(--sc) 72%, transparent);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -14px 20px rgba(0,0,0,.4), 0 14px 30px rgba(0,0,0,.55), 0 0 12px color-mix(in srgb, var(--sc) 16%, transparent);
+        transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease, background .3s ease;
+      }
+      .nblock:hover, .nblock:focus-visible {
+        background:
+          radial-gradient(85% 90% at 50% 0%, color-mix(in srgb, var(--sc) 24%, transparent), transparent 65%),
+          linear-gradient(180deg, color-mix(in srgb, var(--sc) 15%, #10101a) 0%, color-mix(in srgb, var(--sc) 5%, #06060a) 85%);
+        border-color: var(--sc); transform: translateY(-3px);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -14px 20px rgba(0,0,0,.3), 0 20px 38px rgba(0,0,0,.6), 0 0 24px color-mix(in srgb, var(--sc) 30%, transparent);
+      }
+      .nblock:active { transform: scale(.97); }
+      .nblock[aria-expanded="true"] { border-color: var(--sc); box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -14px 20px rgba(0,0,0,.3), 0 20px 38px rgba(0,0,0,.6), 0 0 26px color-mix(in srgb, var(--sc) 34%, transparent); }
+      .nblock .nb-name {
+        display: inline-flex; align-items: center; gap: 10px;
+        font-size: var(--type-sub); font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #ffffff;
+        text-shadow: 0 0 14px color-mix(in srgb, var(--sc) 55%, transparent);
+      }
+      /* The + of the add block, carried in its own Dashboard-style tile */
+      .plus-tile { display: inline-block; width: 54px; border-radius: 10px; overflow: hidden; vertical-align: top; background: linear-gradient(180deg,#171720,#0f0f15 55%,#020203); border: 2px solid #d4a017; box-shadow: 0 8px 18px rgba(0,0,0,.75), 0 0 18px rgba(212,160,23,.5), inset 0 1px 0 rgba(255,255,255,.35); }
+      .plus-tile .cap { display: block; height: 9px; background: linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a); box-shadow: inset 0 1px 0 rgba(255,255,255,.8), inset 0 -1px 2px rgba(0,0,0,.35); }
+      .plus-tile .rd { display: block; height: 54px; line-height: 50px; text-align: center; font-size: 48px; font-weight: 900; color: #fff; text-shadow: 0 0 10px rgba(212,160,23,.65), 0 0 16px rgba(255,255,255,.25); }
+      .live-dot {
+        flex: none; width: 11px; height: 11px; border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, #ffffff 0%, var(--sc) 55%, color-mix(in srgb, var(--sc) 50%, #000000) 100%);
+        border: 1px solid rgba(255,255,255,.85);
+        box-shadow: 0 0 7px var(--sc), 0 0 13px color-mix(in srgb, var(--sc) 32%, transparent);
+        animation: livepulse 2.4s ease-in-out infinite;
+      }
+      @keyframes livepulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .55; transform: scale(.78); } }
+      /* The count tiles take the WORLD's colour as rim, cap and glow —
+         the digit itself stays white, the machine around it is alive */
+      .os-mini-num.worldnum .os-mini-tile {
+        border-color: var(--sc);
+        box-shadow: 0 4px 10px rgba(0,0,0,.7), 0 0 14px color-mix(in srgb, var(--sc) 70%, transparent), inset 0 1px 0 rgba(255,255,255,.35);
+      }
+      .os-mini-num.worldnum .os-mini-tile .cap {
+        background: linear-gradient(180deg, #ffffff 0%, var(--sc) 55%, color-mix(in srgb, var(--sc) 45%, #000000) 100%);
+      }
+      .addsrc-form { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+      .addsrc-form input {
+        height: 48px; min-width: 200px; flex: 1;
+        background: #08080d; color: #ffffff;
+        border: 1px solid rgba(255,255,255,.3); border-radius: 10px; padding: 0 14px;
+        font: inherit; font-size: var(--type-small); color-scheme: dark;
+      }
+      .addsrc-form button {
+        height: 48px; padding: 0 20px; border-radius: 999px; color: #ffffff;
+        background: linear-gradient(180deg, #17171f, #08080d);
+        border: 1.5px solid #d4a017;
+        box-shadow: 0 0 16px rgba(212, 160, 23, .4), inset 0 1px 0 rgba(255,255,255,.2);
+        font-size: var(--type-small); font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      }
+      /* ---------- Notification detail — one world's menu for the day --- */
+      .notif-detail {
+        flex: none; border-radius: 16px; padding: clamp(16px, 2vmin, 22px);
+        background: linear-gradient(180deg, #151522 0%, #090910 78%, #050508 100%);
+        border: 1.5px solid color-mix(in srgb, var(--sc, #ffffff) 60%, transparent);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -12px 18px rgba(0,0,0,.35), 0 14px 30px rgba(0,0,0,.55), 0 0 24px color-mix(in srgb, var(--sc, #ffffff) 30%, transparent);
+      }
+      .nd-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+      .nd-title {
+        flex: 1; margin: 0; font-size: var(--type-sub); font-weight: 800;
+        letter-spacing: .14em; text-transform: uppercase; color: #ffffff;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .nd-close {
+        flex: none; height: 44px; padding: 0 18px; border-radius: 999px; color: #ffffff;
+        background: linear-gradient(180deg, #17171f, #08080d);
+        border: 1.5px solid color-mix(in srgb, var(--sc, #ffffff) 70%, transparent);
+        box-shadow: 0 0 14px color-mix(in srgb, var(--sc, #ffffff) 35%, transparent), inset 0 1px 0 rgba(255,255,255,.2);
+        font-size: var(--type-small); font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      }
+      .nd-close:hover { filter: brightness(1.22); }
+      .nd-sub { margin: 0 0 8px; font-size: var(--type-small); font-weight: 600; color: #ffffff; line-height: 1.55; }
+      .nd-row {
+        width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+        padding: 10px 4px; border-bottom: 1px solid rgba(255,255,255,.09);
+        font-size: var(--type-small); text-align: left;
+        transition: background .25s ease;
+      }
+      .nd-row:hover { background: color-mix(in srgb, var(--sc, #ffffff) 10%, transparent); }
+      .nd-row .nr-l { font-weight: 700; color: #ffffff; display: inline-flex; align-items: center; gap: 10px; }
+      .nd-row .nr-chev { flex: none; font-weight: 900; color: #ffffff; }
+      .nd-sources { padding: 8px 4px 14px 26px; border-bottom: 1px solid rgba(255,255,255,.09); }
+      .nd-src {
+        margin: 0; padding: 5px 0 5px 22px; position: relative;
+        font-size: var(--type-small); font-weight: 600; color: #ffffff; line-height: 1.55; overflow-wrap: anywhere;
+      }
+      .nd-src::before { content: ""; position: absolute; left: 1px; top: 13px; width: 10px; height: 10px; transform: rotate(45deg); border-radius: 2px; background: linear-gradient(135deg, #ffffff, var(--sc, #ffd23c) 55%, color-mix(in srgb, var(--sc, #ffd23c) 45%, #000000)); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 0 10px var(--sc, #ffd23c); }
+
+      .dash-grid {
+        flex: 1 0 auto;
+        display: grid; gap: clamp(10px, 1.5vmin, 16px);
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: minmax(120px, auto);
+        align-content: stretch;
+      }
+      .tile {
+        --tc: #ffffff;
+        border-radius: 16px; padding: clamp(16px, 2vmin, 22px);
+        background: linear-gradient(180deg, #151522 0%, #090910 78%, #050508 100%);
+        border: 1.5px solid color-mix(in srgb, var(--tc) 48%, transparent);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -12px 18px rgba(0,0,0,.35), 0 14px 30px rgba(0,0,0,.55), 0 0 10px color-mix(in srgb, var(--tc) 11%, transparent);
+        display: flex; flex-direction: column; min-width: 0; min-height: 132px;
+        transition: box-shadow .3s ease, border-color .3s ease, background .3s ease, transform .3s ease;
+      }
+      .tile:hover { background: linear-gradient(180deg, color-mix(in srgb, var(--tc) 16%, #10101a) 0%, color-mix(in srgb, var(--tc) 5%, #06060a) 85%); border-color: var(--tc); box-shadow: inset 0 1px 0 rgba(255,255,255,.32), inset 0 -12px 18px rgba(0,0,0,.3), 0 18px 36px rgba(0,0,0,.6), 0 0 20px color-mix(in srgb, var(--tc) 26%, transparent); transform: translateY(-3px); }
+      .tile h3 {
+        margin: 0 0 12px; font-size: var(--type-headline); font-weight: 800;
+        letter-spacing: .14em; text-transform: uppercase; color: #ffffff;
+        text-shadow: 0 0 12px color-mix(in srgb, var(--tc) 45%, transparent);
+        display: flex; align-items: center; gap: 11px;
+      }
+      .tile h3 .dotc { width: 15px; height: 15px; border-radius: 3px; flex: none; transform: rotate(45deg); background: linear-gradient(135deg, #ffffff 0%, var(--tc, #fff) 42%, color-mix(in srgb, var(--tc, #fff) 45%, #000000) 100%); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 0 14px var(--tc, #fff), inset 0 1px 2px rgba(255,255,255,.9), 0 3px 6px rgba(0,0,0,.6); }
+      .tile .tile-empty { margin: 0; color: #ffffff; font-size: var(--type-small); font-weight: 600; line-height: 1.55; }
+      .tile-appts { grid-column: span 7; }
+      .tile-timeline { grid-column: span 5; }
+      .tile-notes { grid-column: span 5; }
+      .tile-intel { grid-column: span 7; }
+      .tile-weather { grid-column: span 5; }
+      .tile-news { grid-column: span 7; }
+      .tile-appt-row { display: flex; gap: 12px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.14); font-size: var(--type-small); }
+      .tile-appt-row:last-of-type { border-bottom: none; }
+      .tile-appt-row .tw { flex: none; font-weight: 900; color: #ffffff; min-width: 96px; font-variant-numeric: tabular-nums; text-shadow: 0 0 12px color-mix(in srgb, var(--dc, #fff) 70%, transparent); }
+      .tile-appt-row .tt { flex: 1; font-weight: 700; color: #ffffff; overflow-wrap: anywhere; }
+      .tile-book {
+        margin-top: auto; padding-top: 12px;
+      }
+      .tile-book button, .tile-note-form button {
+        height: 48px; padding: 0 22px; border-radius: 999px; color: #ffffff;
+        background: linear-gradient(180deg, #17171f, #08080d);
+        border: 1px solid color-mix(in srgb, var(--dc, #fff) 60%, transparent);
+        box-shadow: 0 0 12px color-mix(in srgb, var(--dc, #fff) 22%, transparent), inset 0 1px 0 rgba(255,255,255,.14);
+        font-size: var(--type-small); font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      }
+      .tl-row { display: flex; align-items: center; gap: 12px; padding: 5px 0; font-size: var(--type-small); }
+      .tl-row .th { flex: none; width: 76px; text-align: right; color: #ffffff; font-weight: 900; font-size: var(--type-small); font-variant-numeric: tabular-nums; text-shadow: 0 0 10px color-mix(in srgb, var(--dc, #fff) 55%, transparent); }
+      .tl-row .tline { flex: none; width: 2px; align-self: stretch; background: rgba(255,255,255,.35); position: relative; }
+      .tl-row .tline::after { content: ""; position: absolute; top: 50%; left: 50%; width: 9px; height: 9px; transform: translate(-50%,-50%) rotate(45deg); border-radius: 2px; background: linear-gradient(135deg, #ffffff, var(--dc, #ffd23c) 55%, #7a5b00); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 0 10px color-mix(in srgb, var(--dc, #fff) 70%, transparent); }
+      .tl-row .te { flex: 1; min-width: 0; }
+      .tl-chip { display: inline-block; max-width: 100%; padding: 5px 13px; border-radius: 999px; font-size: var(--type-small); font-weight: 800; color: #fff; border: 1.5px solid color-mix(in srgb, var(--dc, #fff) 75%, transparent); background: color-mix(in srgb, var(--dc, #fff) 18%, #0a0a10); box-shadow: 0 0 12px color-mix(in srgb, var(--dc, #fff) 30%, transparent); overflow-wrap: break-word; line-height: 1.4; vertical-align: middle; }
+      .tile-note-text { margin: 0 0 10px; font-size: var(--type-small); font-weight: 600; color: #ffffff; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,.06); }
+      .tile-note-form { margin-top: auto; padding-top: 10px; display: flex; gap: 8px; }
+      .tile-note-form input { flex: 1; min-width: 0; height: 48px; background: #08080d; color: var(--ink); border: 1px solid rgba(255,255,255,.16); border-radius: 10px; padding: 0 14px; font: inherit; font-size: var(--type-small); color-scheme: dark; }
+      .intel-line { margin: 0 0 10px; font-size: var(--type-small); font-weight: 600; color: #ffffff; line-height: 1.55; padding-left: 22px; position: relative; }
+      .intel-line::before { content: ""; position: absolute; left: 1px; top: 8px; width: 10px; height: 10px; transform: rotate(45deg); border-radius: 2px; background: linear-gradient(135deg, #ffffff, #ffd23c 55%, #7a5b00); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 0 10px rgba(255,210,60,.7); }
+      .intel-line strong { color: #fff; }
+      .split2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; }
+      .split2 h4 { margin: 0 0 8px; font-size: var(--type-sub); letter-spacing: .14em; text-transform: uppercase; color: #fff; font-weight: 800; }
+      .split2 p { margin: 0; color: #ffffff; font-size: var(--type-small); font-weight: 600; line-height: 1.55; }
+      .news-row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.14); font-size: var(--type-small); align-items: baseline; }
+      .news-row:last-child { border-bottom: none; }
+      .news-row .nl { flex: none; width: 142px; font-weight: 900; font-size: var(--type-small); letter-spacing: .08em; text-transform: uppercase; }
+      .news-row .nv { flex: 1; color: #ffffff; font-weight: 600; }
+
+
+      /* ---------- Door view ---------- */
+      .doorbar {
+        display: flex; align-items: center; gap: 16px;
+        padding: clamp(4px, 1vmin, 10px) 4px clamp(12px, 2vmin, 20px);
+      }
+      .doorbar .chip {
+        width: 44px; height: 44px; border-radius: 13px; flex: none;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: linear-gradient(180deg, #15151f, #08080d);
+        border: 1px solid color-mix(in srgb, var(--c) 65%, transparent);
+        box-shadow: 0 0 14px color-mix(in srgb, var(--c) 35%, transparent), inset 0 1px 0 rgba(255,255,255,.16);
+      }
+      .doorbar .chip svg { width: 22px; height: 22px; }
+      .doorbar h2 {
+        margin: 0; font-family: "Marcellus", serif; font-weight: 400;
+        font-size: var(--type-headline); letter-spacing: 0.06em; color: #ffffff;
+      }
+      .doorbar .sub {
+        font-size: var(--type-sub); font-weight: 700; letter-spacing: 0.18em;
+        text-transform: uppercase; color: #ffffff; margin-top: 4px;
+      }
+      .doorbody { flex: 1; min-height: 0; overflow-y: auto; padding: 2px; }
+      .empty {
+        max-width: 520px; margin: clamp(24px, 7vh, 70px) auto 0; text-align: center;
+        padding: clamp(26px, 5vmin, 44px) 24px;
+        border-radius: 20px;
+        background: linear-gradient(180deg, #0d0d14, #06060a);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      }
+      .empty .chip {
+        width: 62px; height: 62px; border-radius: 18px; margin: 0 auto 16px;
+        display: flex; align-items: center; justify-content: center;
+        background: linear-gradient(180deg, #15151f, #08080d);
+        border: 1px solid color-mix(in srgb, var(--c) 60%, transparent);
+        box-shadow: 0 0 20px color-mix(in srgb, var(--c) 30%, transparent), inset 0 1px 0 rgba(255,255,255,.16);
+      }
+      .empty .chip svg { width: 28px; height: 28px; }
+      .empty p { margin: 0; color: #ffffff; font-size: var(--type-small); font-weight: 600; line-height: 1.55; }
+
+      /* ---------- Appointments / notes ---------- */
+      .panel {
+        max-width: 640px; margin: 0 auto;
+        border-radius: 20px; padding: clamp(16px, 3vmin, 26px);
+        background: linear-gradient(180deg, #0d0d14, #06060a);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      }
+      .panel + .panel { margin-top: 14px; }
+      .appt {
+        display: flex; align-items: center; gap: 14px;
+        padding: 13px 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .appt:last-child { border-bottom: none; }
+      .appt .when {
+        flex: none; min-width: 104px; font-weight: 900; font-size: var(--type-small); letter-spacing: 0.02em; color: #ffffff;
+        color: var(--dc, #fff);
+      }
+      .appt .what { flex: 1; font-size: var(--type-small); font-weight: 700; color: #ffffff; }
+      .appt .meet {
+        flex: none; font-size: var(--type-small); font-weight: 800; letter-spacing: 0.08em;
+        padding: 6px 13px; border-radius: 999px; text-transform: uppercase;
+        border: 1px solid var(--d3); color: #bfeaff;
+        box-shadow: 0 0 10px rgba(62, 198, 248, 0.35);
+      }
+      .appt .del {
+        flex: none; width: 38px; height: 38px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.35); color: #ffffff;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .appt .del:hover { color: #ff8080; border-color: #ff404099; }
+      .appt .del svg { width: 15px; height: 15px; }
+      .none-line { color: #ffffff; font-size: var(--type-small); font-weight: 600; text-align: center; padding: 10px 0 4px; margin: 0; }
+      .formtitle {
+        margin: 0 0 14px; font-size: var(--type-sub); font-weight: 800;
+        letter-spacing: 0.18em; text-transform: uppercase; color: #ffffff;
+      }
+      .frow { display: flex; gap: 10px; flex-wrap: wrap; }
+      .frow input[type="time"], .frow input[type="text"], textarea {
+        background: #08080d; color: var(--ink);
+        border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 12px;
+        padding: 0 14px; height: 52px; font: inherit; font-size: var(--type-small);
+        color-scheme: dark;
+      }
+      .frow input[type="text"] { flex: 1; min-width: 170px; }
+      textarea { width: 100%; height: auto; min-height: 84px; padding: 12px 14px; resize: vertical; }
+      .meettoggle {
+        height: 52px; padding: 0 18px; border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        font-size: var(--type-small); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+        color: #ffffff; transition: all 0.25s;
+      }
+      .meettoggle[aria-pressed="true"] {
+        border-color: var(--d3); color: #dff4ff;
+        box-shadow: 0 0 14px rgba(62, 198, 248, 0.4), inset 0 0 12px rgba(62, 198, 248, 0.15);
+      }
+      .bookbtn {
+        height: 52px; padding: 0 26px; border-radius: 999px; color: #ffffff;
+        background: linear-gradient(180deg, #17171f, #08080d);
+        border: 1px solid color-mix(in srgb, var(--dc, #fff) 70%, transparent);
+        box-shadow: 0 0 16px color-mix(in srgb, var(--dc, #fff) 30%, transparent), inset 0 1px 0 rgba(255,255,255,.16);
+        font-size: var(--type-small); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+        transition: box-shadow 0.25s, transform 0.25s;
+      }
+      .bookbtn:hover { box-shadow: 0 0 26px color-mix(in srgb, var(--dc, #fff) 50%, transparent), inset 0 1px 0 rgba(255,255,255,.2); transform: translateY(-1px); }
+      .noteitem {
+        padding: 12px 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: var(--type-small); font-weight: 600; color: #ffffff; line-height: 1.55; display: flex; gap: 12px; align-items: flex-start;
+      }
+      .noteitem:last-child { border-bottom: none; }
+      .noteitem p { margin: 0; flex: 1; white-space: pre-wrap; }
+      /* The delete cross on a list item — the appointments cross,
+         carried to Smart Lists so the room speaks one language */
+      .noteitem .del {
+        flex: none; width: 38px; height: 38px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.35); color: #ffffff;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .noteitem .del:hover { color: #ff8080; border-color: #ff404099; }
+      .noteitem .del svg { width: 15px; height: 15px; }
+
+      /* ---------- THE ROOM — the day's colour fills the inside ----------
+         (Shawn, 2026-11-17, amendment #6: the soul of the day view.)
+         The inside of a day is a ROOM, and the room is themed to the
+         day's colour: a warm, rich, luxurious fill running through the
+         whole interior — the walls (the screen itself), the air (the
+         scroll field), and the furniture (every board, block, door and
+         panel inside) all carry the day's deep colour mixed into their
+         obsidian, so stepping into a day feels like entering a designed
+         inner space, not opening a page with a colour on it. The fill
+         is COLOUR, never light: no new glows are added anywhere — the
+         rims, halos and jewels keep the quiet levels set in the
+         less-glow pass, and the colour stays deep (the machine spec's
+         weekday hex, mixed down into board black), never neon.
+         Where the colour FILLS: the day screen's ground, the daybar's
+         body, the scroll field, and the faces of the wisdom banner,
+         the notification bar and detail, the doors, the dashboard
+         tiles, and — through the door — the door screen's ground and
+         its panels. Where it stays an ACCENT only: the month screen
+         (each day keeps its own colour there; the room begins when
+         you step in), the digit tiles (their colour is their digit's,
+         by value, harvested), and every rim, orbit and jewel, which
+         were already the day's colour and do not get louder */
+      #screen-day {
+        background:
+          radial-gradient(110% 55% at 50% -6%, color-mix(in srgb, var(--dc, #fff) 22%, transparent), transparent 60%),
+          radial-gradient(90% 50% at 50% 112%, color-mix(in srgb, var(--dc, #fff) 10%, transparent), transparent 62%),
+          linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 15%, #040407) 0%, color-mix(in srgb, var(--dc, #fff) 9%, #040407) 46%, color-mix(in srgb, var(--dc, #fff) 6%, #040407) 100%);
+        border-radius: 22px;
+      }
+      #screen-day .day-scroll {
+        background:
+          radial-gradient(85% 42% at 50% 0%, color-mix(in srgb, var(--dc, #fff) 10%, transparent), transparent 65%),
+          linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 7%, transparent), color-mix(in srgb, var(--dc, #fff) 4%, transparent) 55%, transparent);
+        border-radius: 18px;
+      }
+      #screen-day .wisdom-banner {
+        background:
+          radial-gradient(80% 140% at 50% 0%, color-mix(in srgb, var(--dc, #fff) 20%, transparent), transparent 65%),
+          linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 17%, #0e0e16), color-mix(in srgb, var(--dc, #fff) 10%, #06060a));
+      }
+      #screen-day .notif-bar {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 15%, #151522) 0%, color-mix(in srgb, var(--dc, #fff) 9%, #090910) 78%, color-mix(in srgb, var(--dc, #fff) 7%, #050607) 100%);
+      }
+      #screen-day .notif-detail {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 15%, #151522) 0%, color-mix(in srgb, var(--dc, #fff) 9%, #090910) 78%, color-mix(in srgb, var(--dc, #fff) 7%, #050508) 100%);
+      }
+      #screen-day .nblock {
+        background:
+          radial-gradient(85% 90% at 50% 0%, color-mix(in srgb, var(--sc) 16%, transparent), transparent 65%),
+          linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 13%, #151522) 0%, color-mix(in srgb, var(--dc, #fff) 8%, #090910) 78%, color-mix(in srgb, var(--dc, #fff) 6%, #050607) 100%);
+      }
+
+      #screen-day .tile {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 14%, #151522) 0%, color-mix(in srgb, var(--dc, #fff) 8%, #090910) 78%, color-mix(in srgb, var(--dc, #fff) 6%, #050508) 100%);
+      }
+      #screen-day .tile:hover {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--tc) 16%, color-mix(in srgb, var(--dc, #fff) 13%, #10101a)) 0%, color-mix(in srgb, var(--tc) 5%, color-mix(in srgb, var(--dc, #fff) 7%, #06060a)) 85%);
+      }
+      /* Through the door the room keeps its colour — a view inside the
+         day is still inside the day */
+      #screen-door {
+        background:
+          radial-gradient(110% 55% at 50% -6%, color-mix(in srgb, var(--dc, #fff) 20%, transparent), transparent 60%),
+          linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 13%, #040407) 0%, color-mix(in srgb, var(--dc, #fff) 7%, #040407) 55%, color-mix(in srgb, var(--dc, #fff) 5%, #040407) 100%);
+        border-radius: 22px;
+      }
+      #screen-door .panel, #screen-door .empty {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 14%, #0d0d14), color-mix(in srgb, var(--dc, #fff) 8%, #06060a));
+      }
+
+      /* ---------- v16 — THE DAY AS ONE PLACE (Shawn, 2026-11-17) ----------
+         (1) The day-stepper: the viewer that walks day to day — two
+         pills in the day's colour for the day before and the day after,
+         and a return pill that appears only while the day on screen is
+         NOT today ("Back to today" — a return gesture, never the old
+         TODAY button, which stays gone from the month header). The
+         pills name the neighbour by its weekday only, never its date,
+         so the headliner stays the day's one saying of the date.
+         (2) The Add-source pill in the Notifications header — the
+         add-source-by-URL action moved here: same form, same slot,
+         one tap, never fighting anything for it.
+         (3) Timeline chips for journal + notes, in their doors' own
+         colours (journal sapphire, notes emerald), sitting ON the
+         timeline at the time they were written.
+         (4) The day-to-day slide — the whole place moves when the day
+         changes: a short horizontal slide, 0.35s, in the direction of
+         travel. Motion that means the day changed, never decoration.
+         (5) The journal dot in the month cells — a day with a journal
+         entry shows it, in journal blue.
+         ---------- v17 — THE LOWER PAGE, START AGAIN (Shawn, 2026-11-17)
+         Everything below the wisdom board is thrown away and comes
+         back as CATEGORIES — five sections, each a real object in its
+         own spectrum colour (18:00Z flow: magenta -> purple -> indigo
+         -> cyan -> green, cycling, never adjacent doubles): THE DAY ·
+         THE RECORD · THE WORLD AROUND · YOUR WORLDS · EVERYDAY LIFE.
+         The 15 doors live inside the categories as rows, never a loose
+         grid; the boards (Appointments, Timeline, Daily Intelligence,
+         Smart Notes, Notes, Posts) are the categorized sections,
+         rebuilt. The life board's rows move into THE RECORD; its
+         anatomy (.life-row) becomes the category row (.cat-row). */
+      .daystep {
+        display: flex; align-items: center; justify-content: center;
+        gap: 12px; flex-wrap: wrap;
+        padding-top: clamp(2px, 0.6vmin, 6px);
+      }
+      .daystep-btn {
+        min-height: 44px; padding: 6px 18px; border-radius: 999px;
+        display: inline-flex; align-items: center; justify-content: center;
+        font-size: var(--type-small); font-weight: 800; letter-spacing: 0.06em;
+        color: #ffffff; white-space: nowrap;
+        background: linear-gradient(180deg, #17171f 0%, #0a0a11 62%, #060609 100%);
+        border: 1.5px solid color-mix(in srgb, var(--dc, #fff) 68%, transparent);
+        box-shadow:
+          0 0 12px color-mix(in srgb, var(--dc, #fff) 20%, transparent),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.25s, transform 0.25s, filter 0.25s;
+      }
+      .daystep-btn:hover { transform: translateY(-1px); filter: brightness(1.22); }
+      .daystep-btn:active { transform: scale(0.97); }
+      .daystep-btn.today {
+        border-color: rgba(255, 255, 255, 0.75);
+        box-shadow:
+          0 0 12px rgba(255, 255, 255, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+      }
+      .addsrc-pill {
+        margin-left: auto; flex: none;
+        min-height: 40px; padding: 5px 16px; border-radius: 999px;
+        display: inline-flex; align-items: center; justify-content: center;
+        font-size: var(--type-small); font-weight: 800; letter-spacing: 0.08em;
+        text-transform: uppercase; color: #ffffff; white-space: nowrap;
+        background: linear-gradient(180deg, #17171f, #08080d);
+        border: 1.5px solid #d4a017;
+        box-shadow: 0 0 10px rgba(212, 160, 23, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transition: box-shadow 0.25s, transform 0.25s, filter 0.25s;
+      }
+      .addsrc-pill:hover { transform: translateY(-1px); filter: brightness(1.22); }
+      .addsrc-pill:active { transform: scale(0.97); }
+      /* ---------- v17 — THE CATEGORY SECTION ----------
+         One idea per section, a real object: obsidian slab in the
+         room's day colour, its OWN spectrum colour as rim + glow
+         outside, white inside. The section lights whole on hover —
+         the board itself lights, not just its rim. The spectrum
+         flows through the sections in order (laws §3.2, 18:00Z):
+         magenta -> purple -> indigo -> cyan -> green, and inside
+         each section the rows keep flowing, never two same colours
+         together. Least words: a title, one essence line, then the
+         rows — each row a door that goes deeper, never away. */
+      .cat {
+        flex: none; border-radius: 22px; padding: clamp(16px, 2.4vmin, 26px);
+        background: linear-gradient(180deg, color-mix(in srgb, var(--dc, #fff) 14%, #151522) 0%, color-mix(in srgb, var(--dc, #fff) 8%, #090910) 78%, color-mix(in srgb, var(--dc, #fff) 6%, #050508) 100%);
+        border: 1.5px solid color-mix(in srgb, var(--cc) 55%, transparent);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -12px 18px rgba(0,0,0,.35), 0 14px 30px rgba(0,0,0,.55), 0 0 12px color-mix(in srgb, var(--cc) 14%, transparent);
+        transition: box-shadow .3s ease, border-color .3s ease;
+      }
+      .cat:hover { border-color: var(--cc); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -12px 18px rgba(0,0,0,.3), 0 18px 36px rgba(0,0,0,.6), 0 0 22px color-mix(in srgb, var(--cc) 26%, transparent); }
+      .cat-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+      .cat-jewel { width: 15px; height: 15px; border-radius: 3px; flex: none; transform: rotate(45deg); background: linear-gradient(135deg, #ffffff 0%, var(--cc) 42%, color-mix(in srgb, var(--cc) 45%, #000000) 100%); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 0 14px var(--cc), inset 0 1px 2px rgba(255,255,255,.9), 0 3px 6px rgba(0,0,0,.6); }
+      .cat-title {
+        margin: 0; font-family: "Marcellus", serif; font-weight: 400;
+        font-size: var(--type-headline); letter-spacing: 0.14em; text-transform: uppercase; color: #ffffff;
+        text-shadow: 0 0 12px color-mix(in srgb, var(--cc) 45%, transparent);
+      }
+      .cat-essence { margin: 0 0 12px 27px; font-size: var(--type-small); font-weight: 600; color: #ffffff; line-height: 1.5; }
+      .cat-rows { display: flex; flex-direction: column; }
+      /* The category row — the life board's row anatomy, kept verbatim
+         and renamed: icon chip in the row's own colour, the label, the
+         glimpse in the day's own words (or the honest line when there
+         is nothing yet), the count badge, the chevron. One row, one
+         door. The row lights in its own colour on hover. */
+      .cat-row {
+        --c: #fff;
+        width: 100%; display: flex; align-items: center; gap: 12px;
+        padding: 12px 4px; border-bottom: 1px solid rgba(255,255,255,.09);
+        font-size: var(--type-small); text-align: left;
+        transition: background .25s ease;
+      }
+      .cat-row:last-of-type { border-bottom: none; }
+      .cat-row:hover { background: color-mix(in srgb, var(--c) 10%, transparent); }
+      .cat-row .chip {
+        flex: none; width: 42px; height: 42px; border-radius: 12px;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: linear-gradient(180deg, #15151f, #08080d);
+        border: 1px solid color-mix(in srgb, var(--c) 65%, transparent);
+        box-shadow: 0 0 12px color-mix(in srgb, var(--c) 35%, transparent), inset 0 1px 0 rgba(255,255,255,.16);
+        color: #fff;
+      }
+      .cat-row .chip svg { width: 22px; height: 22px; }
+      .cat-row .lr-l { flex: none; font-weight: 800; color: #ffffff; letter-spacing: 0.02em; }
+      .cat-row .lr-g {
+        flex: 1; min-width: 0; font-weight: 600; color: #ffffff; line-height: 1.4;
+        /* v18 — the glimpse reads whole (up to two lines) or clamps
+           cleanly at a line break — never a mid-word cut */
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+        overflow: hidden; overflow-wrap: break-word;
+      }
+      .cat-row .badge {
+        flex: none; min-width: 34px; height: 34px; padding: 0 9px; border-radius: 999px;
+        display: inline-flex; align-items: center; justify-content: center;
+        border: 1.5px solid var(--c); color: #fff; font-size: var(--type-small); font-weight: 900;
+        background: color-mix(in srgb, var(--c) 18%, #050508);
+        box-shadow: 0 0 10px color-mix(in srgb, var(--c) 45%, transparent);
+      }
+      .cat-row .lr-chev { flex: none; font-weight: 900; color: #ffffff; }
+      /* The unknown-state plaque — the zero rule, RULED 17:28Z: a real
+         (verified) zero shows as a digit tile; unknown / unmeasured
+         shows as a STATE, never a number, never a bare dash. A world
+         nothing is connected to wears this plaque instead of a 0. */
+      .state-pill {
+        display: inline-flex; align-items: center; min-height: 44px; padding: 6px 18px; border-radius: 999px;
+        font-size: var(--type-small); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff;
+        background: linear-gradient(180deg, #17171f, #08080d);
+        border: 1.5px solid color-mix(in srgb, var(--sc, #ffffff) 65%, transparent);
+        box-shadow: 0 0 12px color-mix(in srgb, var(--sc, #ffffff) 25%, transparent), inset 0 1px 0 rgba(255,255,255,.2);
+        white-space: nowrap;
+      }
+      .state-pill.small { min-height: 34px; padding: 4px 14px; }
+      .nblock .nb-sub { font-size: var(--type-small); font-weight: 600; color: #ffffff; line-height: 1.4; }
+      /* A news scope opened from its row reads first, in its own colour */
+      .panel.news-active {
+        border-color: color-mix(in srgb, var(--sc) 70%, transparent);
+        box-shadow: 0 0 18px color-mix(in srgb, var(--sc) 30%, transparent), inset 0 1px 0 rgba(255,255,255,.14);
+      }
+      /* THE DAY's two instruments stack full-width — each board sized
+         to its own content, never stretched into a void beside a taller
+         neighbour: the empty Appointments board standing as tall as
+         the 16-row timeline was blank space, not presentation */
+      .cat .tile-appts, .cat .tile-timeline { grid-column: span 12; }
+      /* Journal + note chips ON the timeline — their doors' own colours,
+         so a glance tells what kind of moment it is */
+      .tl-chip.journal {
+        border-color: #0f52ba;
+        background: color-mix(in srgb, #0f52ba 18%, #0a0a10);
+        box-shadow: 0 0 12px rgba(15, 82, 186, 0.3);
+      }
+      .tl-chip.note {
+        border-color: #07925f;
+        background: color-mix(in srgb, #07925f 18%, #0a0a10);
+        box-shadow: 0 0 12px rgba(7, 146, 95, 0.3);
+      }
+      /* The journal dot in the month cells — journal blue, square like
+         the note dot, so the day's kinds read at a glance */
+      .dots i.journal { background: #0f52ba; box-shadow: 0 0 5px rgba(15,82,186,.55); border-radius: 2px; }
+      /* The day-to-day slide — the whole place moves when the day
+         changes, in the direction of travel */
+      @keyframes dayslide-next { from { transform: translateX(28px); opacity: 0.35; } to { transform: translateX(0); opacity: 1; } }
+      @keyframes dayslide-prev { from { transform: translateX(-28px); opacity: 0.35; } to { transform: translateX(0); opacity: 1; } }
+      #screen-day.anim-next { animation: dayslide-next 0.35s ease; }
+      #screen-day.anim-prev { animation: dayslide-prev 0.35s ease; }
+
+      @media (max-width: 860px) {
+        .tile-appts, .tile-timeline, .tile-notes, .tile-intel, .tile-weather, .tile-news { grid-column: span 12; }
+        .tile { min-height: 0; }
+        /* THE DIAMOND MUST NEVER COVER THE DATE (Shawn, 2026-11-17):
+           at 561–860px the row overflowed and the medallion landed ON
+           the plaque — the jewel covering "Tuesday" (proven at 600 and
+           700px). One row at every width now: arrows and medallion
+           never shrink, the plaque takes the free space and wraps its
+           date/time inside the pill. No object ever covers a word */
+        .monthbar { flex-wrap: nowrap; gap: 8px; }
+        .navcluster { min-width: 0; flex: none; }
+        .monthtitle { flex: none; }
+        .navbtn { flex: none; }
+        .navcluster.right { flex: 1 1 auto; min-width: 0; flex-wrap: nowrap; }
+        .nowplaque { flex: 1 1 auto; min-width: 0; flex-wrap: wrap; justify-content: center; }
+        /* v18 — 635px: the headliner holds a touch more room at
+           561–860px so its wrapped lines never run past the jewel
+           or the eye (the feed pill that ran off-screen here is
+           gone — this is the margin that keeps the wrapped
+           headliner inside the bar) */
+        .official-headliner { margin: 0 clamp(58px, 9vmin, 72px); }
+      }
+      @media (max-width: 560px) {
+        #app { padding: 8px; }
+        .nblock { min-height: 156px; }
+        .plus-tile { width: 40px; }
+        .plus-tile .cap { height: 7px; }
+        .plus-tile .rd { height: 40px; line-height: 37px; font-size: 36px; }
+        .greet-row { padding-right: 64px; }
+        .official-headliner { margin: 0 92px 0 58px; }
+        .hz-stage { width: 48px; height: 48px; }
+        .split2 { grid-template-columns: 1fr; }
+        .grid, .weekrow { gap: 5px; }
+        /* The official scale holds on a phone too — nothing shrinks,
+           nothing is shortened, nothing is clipped. The header holds
+           ONE ROW at 390 (v15): prev arrow, wordless jewel medallion,
+           date+time plaque, next arrow — flex-nowrap, the plaque
+           taking the free space and wrapping its own date and time
+           onto two lines inside the pill (the pill's two-line
+           variant) if it must. Arrows and medallion go compact;
+           plaque type holds the 17px floor, never below the scale */
+        .monthbar { gap: 4px; flex-wrap: nowrap; }
+        .monthtitle { width: 40px; height: 40px; flex: none; }
+        .navbtn { width: 34px; height: 34px; flex: none; }
+        .navbtn svg { width: 15px; height: 15px; }
+        .navcluster { min-width: 0; flex: none; }
+        .navcluster.right { margin-left: 0; flex-wrap: nowrap; justify-content: flex-end; flex: 1 1 auto; min-width: 0; gap: 4px; }
+        .nowplaque { flex: 1 1 auto; min-width: 0; flex-wrap: wrap; justify-content: center; row-gap: 0; gap: 6px; padding: 5px 6px; }
+        .now-date, .now-time { font-size: var(--type-small); letter-spacing: 0.02em; }
+        /* The date may wrap at a space on the longest dates
+           (Wednesday, September 23) instead of ever overflowing
+           the pill — a wrapped date reads fine; a clipped one does not */
+        .now-date { white-space: normal; text-align: center; }
+        .door { min-height: 64px; }
+        /* The day-stepper holds one row at phone width too — the
+           return pill wraps below the arrows before anything clips */
+        .daystep { gap: 8px; }
+        .daystep-btn { min-height: 44px; padding: 6px 14px; }
+        .dayjewel .gem { width: 38px; }
+        /* The headliner date holds clear of the Hz jewel at phone width:
+           tighter letter-spacing keeps the date inside its own box, so
+           no letter ever runs under the jewel (v15 follow-on, proven) */
+        .hl-date { letter-spacing: 0.08em; }
+        /* Weekday letters hold the 17px floor by their clamp; the icon
+           discs go compact so icon + word fit the phone column */
+        .weekrow .wk-ico { width: 26px; height: 26px; }
+        .weekrow .wk-ico svg { width: 15px; height: 15px; }
+        .weekrow > span { padding: 6px 1px 4px; }
+        /* The tile clock goes compact at phone width — same blocks,
+           smaller, so the clock row fits the plaque's inner width */
+        .clocknum .os-mini-tile { width: 24px; border-radius: 5px; }
+        .clocknum .os-mini-tile .cap { height: 4px; }
+        .clocknum .os-mini-tile .rd { height: 26px; line-height: 26px; font-size: 21px; }
+        .clocknum .os-mini-tile.letter .rd { font-size: 21px; }
+        .clock-colon { font-size: var(--type-small); }
+        /* v17 — THE 390 FREQ FIX (the v16 defect, measured live: the
+           "528 Hz" label painted over the clock's PM tiles — M 24x11,
+           P 1x11). Three moves, all at phone width: the headliner
+           takes a wider right margin (the jewel's lane stays its own),
+           the headliner clock goes compact, and the label tightens
+           its tracking — so the clock ends well clear of the label,
+           at every hour and every weekday.
+           v18 — RE-GROUNDED on the Dashboard's own phone tiles
+           (Fix-5c, harvested verbatim): the headliner clock takes
+           the Dashboard's exact phone size — 20px tiles, 19px
+           digits — not v17's 19px/17px shrink. The letter tiles
+           take the same rd size as the digits at every width */
+        .hl-time .clocknum .os-mini-tile { width: 20px; border-radius: 4px; }
+        .hl-time .clocknum .os-mini-tile .cap { height: 4px; }
+        .hl-time .clocknum .os-mini-tile .rd { height: 22px; line-height: 22px; font-size: 19px; }
+        .hl-time .clocknum .os-mini-tile.letter .rd { font-size: 19px; }
+        .hl-time .clocknum .os-mini-gap { width: 6px; }
+        .hl-time .clock-colon { font-size: var(--type-small); }
+        .dayjewel .freq { letter-spacing: 0.10em; text-indent: 0.10em; }
+        .cell .jewel { width: 17px; height: 17px; }
+        /* Month digits hold the official 17 on a phone too */
+        .grid .os-mini-tile { width: 18px; border-radius: 4px; }
+        .grid .os-mini-tile .cap { height: 3px; }
+        .grid .os-mini-tile .rd { height: 22px; line-height: 22px; font-size: var(--type-small); }
+      }
+      @media (max-width: 720px) {
+        /* The abbreviations fit lying down at phone width too — Sun
+           through Sat, whole letters at the official 17, straight
+           words in a row. No vertical plaques, nothing clipped */
+        .weekrow span { letter-spacing: 0.06em; text-indent: 0.06em; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- MONTH — the whole screen is the calendar -->
+      <section id="screen-month" class="screen" aria-label="Month calendar">
+        <header class="monthbar">
+          <div class="navcluster">
+            <button class="navbtn" id="prevMonth" aria-label="Previous month">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+          </div>
+          <div class="monthtitle" id="monthTitle" role="img" aria-label="Month navigation">
+            <span class="month-jewel" aria-hidden="true"></span>
+          </div>
+          <div class="navcluster right">
+            <div class="nowplaque" id="nowPlaque" role="timer" aria-label="Today's date and your local time">
+              <span class="live-dot" id="nowDot" style="--sc:#d4a017"></span>
+              <span class="now-date" id="nowDate"></span>
+              <span class="now-time" id="nowTime"></span>
+            </div>
+            <button class="navbtn" id="nextMonth" aria-label="Next month">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </header>
+        <div class="weekrow" id="weekRow" aria-hidden="true"></div>
+        <div class="grid" id="grid" role="grid" aria-label="Days of the month"></div>
+      </section>
+
+      <!-- DAY — the full menu for one day -->
+      <section id="screen-day" class="screen hidden" aria-label="Day menu">
+        <header class="daybar" id="dayBar">
+          <button class="backbtn eye" id="backToMonth" aria-label="Back to month">
+            <span class="jewel" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="8.8" r="1.5" fill="#ffffff"/><path d="M12 11.9v5" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" fill="none"/></svg></span>
+          </button>
+          <div class="dayhead" id="dayHead"></div>
+        </header>
+        <div class="day-scroll" id="dayScroll">
+          <div class="wisdom-banner" id="wisdomBanner">
+            <div class="wq-label">Wisdom of the day</div>
+            <blockquote id="wisdomQuote"></blockquote>
+          </div>
+          <div id="catsWrap"></div>
+        </div>
+      </section>
+
+      <!-- DOOR — one view inside the day -->
+      <section id="screen-door" class="screen hidden" aria-label="Day view">
+        <header class="doorbar" id="doorBar">
+          <button class="backbtn" id="backToDay" aria-label="Back to day menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <span class="chip" id="doorChip"></span>
+          <div>
+            <h2 id="doorTitle"></h2>
+            <div class="sub" id="doorSub"></div>
+          </div>
+        </header>
+        <div class="doorbody" id="doorBody"></div>
+      </section>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* The day colors — the law of the week */
+        var DAY_COLORS = ["#8e24aa", "#c2410c", "#d4a017", "#0f52ba", "#07925f", "#c62828", "#3f51b5"];
+        /* The day frequencies — Living Calendar law: Sunday 963 · Monday 417 ·
+           Tuesday 528 · Wednesday 741 · Thursday 639 · Friday 396 · Saturday 852 */
+        var DAY_FREQ = [963, 417, 528, 741, 639, 396, 852];
+        /* One wisdom line per weekday — Sunday through Saturday */
+        var WISDOM = [
+          "Rest is not empty time — it is where wisdom gathers what the week scattered.",
+          "Smart finds the fastest road; wisdom checks the destination first.",
+          "Just because you can doesn\u2019t mean you should — ask first if it is right.",
+          "Wisdom asks two questions before it moves: is it mine to do, and is now the time?",
+          "Do no harm, to yourself or to others — all is connected, all is one.",
+          "Prove it before you claim it — what is true can stand being checked.",
+          "Look back with honesty, look forward with care — the day teaches both ways."
+        ];
+        var WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        /* The month row's abbreviations (Shawn, 2026-11-17) — Sun
+           through Sat are how the row fits whole at every width */
+        var WEEKDAY_ABBR = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        var MONTHS = ["January", "February", "March", "April", "May", "June",
+                      "July", "August", "September", "October", "November", "December"];
+
+        function icon(path) {
+          return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + path + "</svg>";
+        }
+        var ICONS = {
+          clock: icon('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+          news: icon('<rect x="3.5" y="5" width="14" height="14" rx="2"/><path d="M17.5 8.5H20a.5.5 0 0 1 .5.5v8a2 2 0 0 1-2 2"/><path d="M7 9h6M7 12.5h6M7 16h4"/>'),
+          /* THE WEEKDAY ICONS (Shawn, 2026-11-17): one unique icon per
+             day, for what the day represents — its chakra + frequency +
+             colour (laws §3.3). Sun crown (his anchor). Mon crescent
+             moon (417 Hz sacral — water, the Moon's day). Tue sun
+             (528 Hz solar plexus). Wed sound waves (741 Hz throat —
+             the voice). Thu heart (639 Hz heart — love). Fri mountain
+             (396 Hz root — the ground). Sat eye (852 Hz third eye —
+             inner sight). Same stroke language as every icon here */
+          crown: icon('<path d="M4 17.5 3 8.5l4.6 2.8L12 5l4.4 6.3L21 8.5 20 17.5z"/><path d="M5 20.5h14"/>'),
+          moon: icon('<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'),
+          sun: icon('<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19"/>'),
+          waves: icon('<circle cx="4" cy="12" r="1.3" fill="currentColor" stroke="none"/><path d="M8.5 9.5a4 4 0 0 1 0 5M12 7a7.5 7.5 0 0 1 0 10M15.5 4.5a11 11 0 0 1 0 15"/>'),
+          heart: icon('<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>'),
+          mountain: icon('<path d="M3 19.5 9.5 8l3.5 5.5 3-4.5 5 10.5z"/>'),
+          eye: icon('<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'),
+          landmark: icon('<path d="M4 20h16M5 20v-8M9.5 20v-8M14.5 20v-8M19 20v-8M3 12l9-7 9 7z"/>'),
+          globe: icon('<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.3 3.6 5.2 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.2-3.6-8.5S9.6 5.8 12 3.5z"/>'),
+          user: icon('<circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.2-3.4 3.8-5 7-5s5.8 1.6 7 5"/>'),
+          briefcase: icon('<rect x="3.5" y="8" width="17" height="11" rx="2"/><path d="M9 8V6.5A2.5 2.5 0 0 1 11.5 4h1A2.5 2.5 0 0 1 15 6.5V8M3.5 13h17"/>'),
+          cube: icon('<path d="M12 3.5 20 8v8l-8 4.5L4 16V8z"/><path d="M4 8l8 4.5L20 8M12 12.5v8"/>'),
+          world: icon('<circle cx="12" cy="12" r="4.2"/><path d="M3.8 15.5c5.5 2.6 12 2.6 16.4-1.2M20.2 8.5C14.7 5.9 8.2 5.9 3.8 9.7"/>'),
+          spark: icon('<path d="M12 3.5 14 10l6.5 2-6.5 2L12 20.5 10 14 3.5 12 10 10z"/>'),
+          note: icon('<path d="M6 3.5h9L19 7.5v13H6z"/><path d="M14.5 3.5v4.5H19M9 12.5h6M9 16h6"/>'),
+          weather: icon('<path d="M7 18.5h9.5a4 4 0 0 0 .8-7.8 5.5 5.5 0 0 0-10.6 1.3A3.8 3.8 0 0 0 7 18.5z"/><path d="M17.5 3.8l.7 1.7M20.8 6.2l-1.7.7M20.5 2.8l-1.2 1.2"/>'),
+          star: icon('<circle cx="12" cy="12" r="8.5"/><path d="M12 7l1.5 3.2L17 10.6l-2.5 2.3.7 3.4L12 14.6l-3.2 1.7.7-3.4L7 10.6l3.5-.4z"/>'),
+          post: icon('<rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9.5" r="1.4"/><path d="M4.5 17.5 10 12l3.5 3.5 2.5-2.5 3.5 3.5"/>'),
+          calendar: icon('<rect x="4" y="5.5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8 3.5v4M16 3.5v4M8 14h3M14 14h3M8 17.5h3"/>'),
+          book: icon('<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.7A1.7 1.7 0 0 0 5 19.7z"/><path d="M5 19.5A1.5 1.5 0 0 1 6.5 18H19M9 7.5h6"/>'),
+          mail: icon('<rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/>'),
+          chat: icon('<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v8a1.5 1.5 0 0 1-1.5 1.5H12l-4.5 4v-4H5.5A1.5 1.5 0 0 1 4 13.5z"/><path d="M8 9h8M8 12h5"/>'),
+          list: icon('<path d="M9.5 6.5h10M9.5 12h10M9.5 17.5h10"/><path d="M4 6.2l1.2 1.2L7.4 5M4 11.7l1.2 1.2L7.4 10.5M4 17.2l1.2 1.2 2.2-2.2"/>'),
+          people: icon('<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.9-3 2.9-4.5 5.5-4.5s4.6 1.5 5.5 4.5"/><circle cx="17" cy="9.5" r="2.6"/><path d="M16.5 15.2c2 .3 3.4 1.7 4 4.3"/>'),
+          x: icon('<path d="M6 6l12 12M18 6L6 18"/>')
+        };
+
+        /* The doors of a day — fifteen, and only these (Shawn,
+           2026-11-17), grouped into the five categories (v17): THE DAY
+           (Appointments) · THE RECORD (Daily Intelligence · Your
+           Reports · Journal · Smart Notes · Posts) · THE WORLD AROUND
+           (News · Horoscope) · YOUR WORLDS (Personal feed · Work feed ·
+           Your world) · EVERYDAY LIFE (Smart Mail · Messages · Smart
+           Lists · Connections). No Events door, no Weather door —
+           weather lives in the header now, and glimpses in THE WORLD
+           AROUND. Colours run in the 18:00Z spectrum order — magenta,
+           purple, indigo, cyan, green, gold, orange, red, then the
+           cycle turns — assigned by position inside each category, so
+           no two of one colour ever sit together */
+        /* v17 — THE CATEGORIES (Shawn, 2026-11-17): the lower page
+           comes back as five sections, each its own beautiful object
+           in its own spectrum colour. The spectrum flows through them
+           in the 18:00Z order — magenta -> purple -> indigo -> cyan ->
+           green — and inside each section the rows keep flowing, never
+           two same colours together. The captain's starting plan had
+           four categories; a fifth, EVERYDAY LIFE, carries the four
+           everyday doors (mail, messages, lists, connections), which
+           fit none of the four — dropping them would break "the 15
+           doors remain", and stuffing them into an unrelated category
+           would break the grouping. Green follows cyan in the flow,
+           so the fifth section lands in order, not as an afterthought */
+        var CATS = [
+          { id: "day", label: "The day", color: "#a21caf", essence: "What went on — the day's instruments, live." },
+          { id: "record", label: "The record", color: "#8e24aa", essence: "The day, written down." },
+          { id: "around", label: "The world around", color: "#3f51b5", essence: "What's happening out there — honestly." },
+          { id: "worlds", label: "Your worlds", color: "#0e7490", essence: "Your people, your work, your world." },
+          { id: "everyday", label: "Everyday life", color: "#07925f", essence: "The simple things, one tap away." }
+        ];
+        var DOORS = [
+          { id: "daily", group: "record", label: "Daily Intelligence", color: "#3f51b5", icon: "spark", empty: "" },
+          { id: "reports", group: "record", label: "Your Reports", color: "#0e7490", icon: "landmark", empty: "" },
+          { id: "smartnotes", group: "record", label: "Smart Notes", color: "#07925f", icon: "note", empty: "" },
+          { id: "posts", group: "record", label: "Posts", color: "#c2410c", icon: "post", empty: "No posts for this day." },
+          { id: "personal", group: "worlds", label: "Personal feed", color: "#07925f", icon: "user", empty: "Nothing in your personal feed for this day. Your personal feed is private by default — only people directly connected to your personal world see it. Any feed can be set private or public; that is a setting, not a fixed rule." },
+          { id: "work", group: "worlds", label: "Work feed", color: "#d4a017", icon: "briefcase", empty: "Nothing in your work feed for this day — your work, your business, your job, all in one feed." },
+          { id: "world", group: "worlds", label: "Your world", color: "#c2410c", icon: "world", empty: "Nothing in your world feed for this day. Your world feed is public by default — everybody can see it. Any feed can be set private or public; that is a setting, not a fixed rule." },
+          { id: "appointments", group: "day", label: "Appointments", color: "#8e24aa", icon: "clock", empty: "" },
+          { id: "journal", group: "record", label: "Journal", color: "#07925f", icon: "book", empty: "" },
+          { id: "horoscope", group: "around", label: "Horoscope", color: "#c62828", icon: "star", empty: "Horoscope is not connected yet — no reading to show for this day." },
+          /* AMENDMENT #7 — THE EVERYDAY WORLD (Shawn, 2026-11-17):
+             the day view is the average everyday person's world, so
+             the simple everyday things stand one tap away as doors
+             in their own group. Smart Mail and Messages were buried
+             two taps deep as rows inside a notification menu — they
+             are doors now. Smart Lists (keeping life in order) was
+             missing entirely — it is here, and it works. Connections
+             (finding people like you) had no named door — the feed
+             pill in the greeting still carries it too. Colours run
+             the spectrum in order — purple, blue, green, gold — so
+             no two of one colour ever sit together. News (v15) takes
+             the next colour in the order, burnt orange, so the
+             spectrum keeps flowing */
+          { id: "mail", group: "everyday", label: "Smart Mail", color: "#d4a017", icon: "mail", empty: "Smart Mail is not connected yet — no mail to show for this day. Your people reach you here the moment it connects." },
+          { id: "messages", group: "everyday", label: "Messages", color: "#c2410c", icon: "chat", empty: "No messages for this day — Messages is not connected yet, so there is no number to show, never an invented conversation." },
+          { id: "lists", group: "everyday", label: "Smart Lists", color: "#c62828", icon: "list", empty: "" },
+          { id: "connections", group: "everyday", label: "Connections", color: "#a21caf", icon: "people", empty: "Connections is not connected yet — no people to show for this day. When it connects, people like you appear here, matched by what you share." },
+          /* v15 — NEWS (Shawn, 2026-11-17): "knowing what's happening"
+             is Intel AND news — news was the missing seventh everyday
+             thing. It takes the next colour in the spectrum order after
+             gold, burnt orange #c2410c (the order picks it, never
+             taste), and the unused `news` icon above. Honest "not
+             connected yet" like Mail, Messages and Connections — no
+             invented headlines. The generic door body renders its
+             empty text, so this opens a real room, not a dead tile.
+             Nothing removed to make room: doors go 14 → 15 */
+          { id: "news", group: "around", label: "News", color: "#0e7490", icon: "news", empty: "News is not connected yet — no news to show for this day." }
+        ];
+
+        /* The notification bar — PERSONAL WORK WORLD (official,
+           2026-11-17). Three worlds, each with its own deep colour from
+           the machine spec, in spectrum order: purple, blue, green.
+           Personal is private by default; World is public by default;
+           any feed can be set either way — a setting, not a fixed rule */
+        var NOTIF_SCOPES = [
+          { id: "personal", label: "Personal", color: "#07925f", note: "Private by default — only people directly connected to your personal world see it." },
+          { id: "work", label: "Work", color: "#d4a017", note: "Your work, your business, your job — one world." },
+          { id: "world", label: "World", color: "#c2410c", note: "Public by default — everybody can see it." }
+        ];
+        /* Colours for sources added with the + chip — the spectrum
+           keeps flowing: gold, orange, red, magenta, then it turns */
+        var SOURCE_COLORS = ["#d4a017", "#c2410c", "#c62828", "#a21caf", "#8e24aa", "#0f52ba", "#07925f"];
+        var NOTIF_ITEMS = [
+          { id: "im", label: "Instant Messages" },
+          { id: "mail", label: "Smart Mail" },
+          { id: "smartnotes", label: "Smart Notes" },
+          { id: "nayanotes", label: "Naya Notes" },
+          { id: "likes", label: "Likes" },
+          { id: "comments", label: "Comments" },
+          { id: "shares", label: "Shares" }
+        ];
+
+        /* Session state — appointments and notes live here while the page is open */
+        var appointments = {}; /* key -> [{time, title, meet}] */
+        var notes = {};        /* key -> [{text, at}] — the day's notes, with the time they were written */
+        var journal = {};      /* key -> [{text, at}] — the day's journal entries, with the time they were written */
+        var lists = {};        /* key -> [text] — the day's Smart List items */
+        var customSources = []; /* sources added with the + chip: [{id, label, url, color}] */
+        var wxCity = "";        /* the city entered for the header weather */
+        var openScopeId = null; /* which notification menu is open */
+        var openRowId = null;   /* which row's source list is open */
+        var greetTimer = null;  /* the greeting clock's heartbeat */
+        var clockTimer = null;  /* the day clock's 1s tick — the tile seconds must never sit stale */
+
+        /* v16 — WHAT IS WRITTEN IS KEPT (Shawn, 2026-11-17): a journal
+           entry, a note, an appointment, a list item is saved the
+           moment it is written — not just while the page is open. The
+           day's own stores live in localStorage, so going to another
+           day and back — or closing the page and coming back — finds
+           everything still there, in the day's own colour. Entries
+           carry the time they were written (`at`), because the
+           timeline shows them at their time (§3.5). A journal draft
+           auto-saves as it is typed (500ms after the last keystroke,
+           and on blur), so nothing typed is ever lost mid-sentence */
+        var LS = {
+          get: function (k) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : null; } catch (e) { return null; } },
+          set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+          del: function (k) { try { localStorage.removeItem(k); } catch (e) {} }
+        };
+        var LS_KEYS = { appts: "nayacal.appts.v1", notes: "nayacal.notes.v1", journal: "nayacal.journal.v1", lists: "nayacal.lists.v1", draft: "nayacal.journalDraft.v1" };
+        function normalizeEntries(arr) {
+          /* An entry is {text, at}; a bare string (older shape) becomes
+             one written at noon, so nothing already kept is dropped */
+          return (arr || []).map(function (e) {
+            return (typeof e === "string") ? { text: e, at: null } : e;
+          });
+        }
+        function loadStores() {
+          var a = LS.get(LS_KEYS.appts); if (a) appointments = a;
+          var n = LS.get(LS_KEYS.notes); if (n) { Object.keys(n).forEach(function (k) { n[k] = normalizeEntries(n[k]); }); notes = n; }
+          var j = LS.get(LS_KEYS.journal); if (j) { Object.keys(j).forEach(function (k) { j[k] = normalizeEntries(j[k]); }); journal = j; }
+          var l = LS.get(LS_KEYS.lists); if (l) lists = l;
+        }
+        function saveStores() {
+          LS.set(LS_KEYS.appts, appointments);
+          LS.set(LS_KEYS.notes, notes);
+          LS.set(LS_KEYS.journal, journal);
+          LS.set(LS_KEYS.lists, lists);
+        }
+
+        var now = new Date();
+        var viewY = now.getFullYear(), viewM = now.getMonth();
+        var sel = null;        /* selected Date */
+        var curDoor = null;
+
+        var $ = function (id) { return document.getElementById(id); };
+        var grid = $("grid"), weekRow = $("weekRow");
+
+        function keyOf(d) {
+          return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+        }
+        /* miniTileHTML — VERBATIM from Dashboard fix-9: digits, $, . and %
+           become the Dashboard's landed tiles (cap + digit + rim + chakra
+           colour). Harvested, not remade. */
+        function miniTileHTML(ch) {
+          if (ch === ' ' || ch === ',') return '<span class="os-mini-gap"></span>';
+          if (ch === '$') return '<span class="os-mini-tile dollar"><span class="cap"></span><span class="rd">$</span></span>';
+          if (ch === '.') return '<span class="os-mini-tile dot"><span class="cap"></span><span class="rd">.</span></span>';
+          if (ch === '%') return '<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>';
+          var d = parseInt(ch, 10);
+          if (!isFinite(d)) return '';
+          return '<span class="os-mini-tile d' + d + '"><span class="cap"></span><span class="rd">' + d + '</span></span>';
+        }
+        function digitsHTML(num, med) {
+          var html = '<span class="os-mini-num' + (med ? " med" : "") + '">';
+          String(num).split("").forEach(function (ch) { html += miniTileHTML(ch); });
+          return html + "</span>";
+        }
+        /* A count as digit tiles wearing its WORLD's colour — rim, cap
+           and glow in the world's own deep colour, the digit white.
+           Alive at any value: a live reading, never flat text */
+        function worldDigitsHTML(num, color, med) {
+          var html = '<span class="os-mini-num worldnum' + (med ? " med" : "") + '" style="--sc:' + color + '">';
+          String(num).split("").forEach(function (ch) { html += miniTileHTML(ch); });
+          return html + "</span>";
+        }
+        /* THE CLOCK'S COLOUR (Shawn, 2026-11-17 — the divine design):
+           the hour's colour IS its frequency made visible — the colour
+           of the hour's FIRST digit under the digit law (laws §4: a
+           digit's colour is its digit's colour; 1 ruby, 2 orange,
+           3 gold, 4 emerald, 5 cyan, 6 indigo, 7 purple, 8 violet,
+           9 magenta, 0 white). So the colour circulates with the hour:
+           1 red · 2 orange · 3 gold · 4 emerald · 5 cyan · 6 indigo ·
+           7 purple · 8 violet · 9 magenta · 10/11/12 red (leading 1).
+           His three examples hold exactly: 9 magenta #a21caf,
+           10 red #c62828, 2 orange #c2410c. Deep Palette hues only */
+        var HOUR_COLORS = { 1: "#c62828", 2: "#c2410c", 3: "#d4a017", 4: "#07925f", 5: "#0e7490", 6: "#3f51b5", 7: "#8e24aa", 8: "#6d28d9", 9: "#a21caf", 10: "#c62828", 11: "#c62828", 12: "#c62828" };
+        /* THE LIVE CLOCK AS DASHBOARD TILES (Shawn, 2026-11-17): the
+           time is the Dashboard's own blocks — digitsHTML/miniTileHTML,
+           harvested verbatim from Dashboard fix-9 (see the tile block
+           above); nothing rebuilt, no look-alike. The digits keep
+           their digit colours; the colon is a plain separator between
+           the groups; AM/PM ride in the SAME tile block — the harvested
+           .os-mini-tile anatomy (cap + face) with the hour's colour as
+           rim, because letters take the hour's colour. The time sits
+           separated a little from the date — its own tile row. One
+           clock, one treatment, wherever the live clock shows: the
+           month plaque AND the day headliner clock */
+        function clockTilesHTML(d) {
+          var h24 = d.getHours(), m = d.getMinutes(), s = d.getSeconds();
+          var ap = h24 >= 12 ? "PM" : "AM";
+          var h12 = h24 % 12; if (h12 === 0) h12 = 12;
+          var hc = HOUR_COLORS[h12];
+          var t = '<span class="os-mini-num clocknum" style="--hc:' + hc + '">';
+          t += digitsHTML(h12);
+          t += '<span class="clock-colon" aria-hidden="true">:</span>';
+          t += digitsHTML(String(m).padStart(2, "0"));
+          t += '<span class="clock-colon" aria-hidden="true">:</span>';
+          t += digitsHTML(String(s).padStart(2, "0"));
+          t += '<span class="os-mini-gap"></span>';
+          t += '<span class="os-mini-tile letter"><span class="cap"></span><span class="rd">' + ap.charAt(0) + '</span></span>';
+          t += '<span class="os-mini-tile letter"><span class="cap"></span><span class="rd">' + ap.charAt(1) + '</span></span>';
+          return t + "</span>";
+        }
+        /* The counts for one scope on the selected day. Only what is
+           really here is counted: your notes for this day are live.
+           Mail, messages and post action are not connected yet — the
+           zero rule (RULED 17:28Z) says unknown shows as a STATE, not
+           a number, so they never read a 0, never an invented number */
+        function scopeCounts(scopeId) {
+          var counts = {};
+          NOTIF_ITEMS.forEach(function (it) { counts[it.id] = 0; });
+          if (scopeId === "personal" && sel) counts.nayanotes = (notes[keyOf(sel)] || []).length;
+          return counts;
+        }
+        /* The one real number a scope can show: your Naya Notes for
+           this day, counted from the store that holds them. Every other
+           scope has nothing connected to measure, so it returns null —
+           unknown — and the card wears the state plaque, never a 0 */
+        function scopeRealCount(scopeId) {
+          if (scopeId === "personal" && sel) return (notes[keyOf(sel)] || []).length;
+          return null;
+        }
+        /* Where a row's action came from — the source list. Real notes
+           name themselves; a quiet row says plainly why it is quiet */
+        function rowSources(scopeId, itemId) {
+          if (scopeId === "personal" && itemId === "nayanotes" && sel) {
+            var ns = notes[keyOf(sel)] || [];
+            if (ns.length) {
+              return ns.map(function (n) {
+                var txt = n.text || "";
+                return "Naya Note — \u201C" + escapeHTML(txt.slice(0, 90)) + (txt.length > 90 ? "\u2026" : "") + "\u201D · written this day";
+              });
+            }
+          }
+          var item = NOTIF_ITEMS.filter(function (x) { return x.id === itemId; })[0];
+          return ["Nothing here yet for this day — " + (item ? item.label : "this source") + " is not connected yet, so there is no number to show."];
+        }
+        function greetingWord(d) {
+          var h = d.getHours();
+          return h < 12 ? "Good morning" : h < 18 ? "Good day" : "Good evening";
+        }
+        /* The info jewel — a pearl disc (styled in CSS so it sits raised
+           off the page) with a small dark i at its heart: the day's info */
+        function jewelSVG() {
+          /* The eye: a small white i on the jewel's black centre — the
+             disc itself is dark obsidian (styled in CSS), so the mark
+             reads at a glance without a white blob around it */
+          return '<span class="jewel" aria-hidden="true">' +
+            '<svg viewBox="0 0 24 24" focusable="false">' +
+            '<circle cx="12" cy="8.8" r="1.5" fill="#ffffff"/>' +
+            '<path d="M12 11.9v5" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" fill="none"/>' +
+            "</svg></span>";
+        }
+        /* The day's jewel — a faceted gem in the day's own color, lit from
+           the top, carrying the day's frequency beneath it in the header.
+           v18: SOLID now — a solid core under the gradient, the gradient
+           itself fully opaque (the stone never lets the background show
+           through), the crown brighter, the shadow facet deeper, a
+           heavier rim and a deeper drop-shadow. Same facet geometry,
+           harvested verbatim — only the material changed (Shawn,
+           2026-11-17: the jewel must read as a real diamond) */
+        function gemSVG(dc) {
+          return '<svg class="gem" viewBox="0 0 72 72" aria-hidden="true" focusable="false">' +
+            '<defs><linearGradient id="gemg" x1="0" y1="0" x2="0" y2="1">' +
+              '<stop offset="0" stop-color="#ffffff" stop-opacity="1"/>' +
+              '<stop offset="0.38" stop-color="' + dc + '"/>' +
+              '<stop offset="1" stop-color="' + dc + '" stop-opacity="1"/>' +
+            "</linearGradient></defs>" +
+            '<path d="M14 27 26 13h20L58 27 36 59Z" fill="' + dc + '" stroke="none"/>' +
+            '<path d="M14 27 26 13h20L58 27 36 59Z" fill="url(#gemg)" stroke="rgba(255,255,255,1)" stroke-width="2" stroke-linejoin="round"/>' +
+            '<path d="M14 27h44M26 13l5 14 5 32M46 13l-5 14-5 32M31 27h10" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>' +
+            '<path d="M26 13h20l-5 14H31Z" fill="#ffffff" opacity="0.55"/>' +
+            '<path d="M31 27l5 32 5-32Z" fill="#ffffff" opacity="0.10"/>' +
+            '<path d="M14 27l17 0-5 20Z" fill="#ffffff" opacity="0.10"/>' +
+            '<path d="M58 27H41l5 20Z" fill="#000000" opacity="0.28"/>' +
+            '<circle cx="27" cy="19" r="2.4" fill="#ffffff" opacity="0.95"/>' +
+            '<circle cx="45" cy="21" r="1.5" fill="#ffffff" opacity="0.8"/>' +
+            '<path d="M52 8l1.1 2.9L56 12l-2.9 1.1L52 16l-1.1-2.9L48 12l2.9-1.1Z" fill="#ffffff" opacity="0.9"/' +
+            "</svg>";
+        }
+        function isToday(d) {
+          return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
+        }
+
+        /* Weekday header — THE WORD IS THE OBJECT (Shawn, 2026-11-17,
+           from his "Sun" mockup): each abbreviation is dark obsidian
+           letters, the day's own colour as rim + glow around each
+           letter, with the day's own icon above the word — one unique
+           icon per day, for what the day represents (its chakra +
+           frequency + colour, laws §3.3). Sun crown 963 Hz (his
+           anchor) · Mon moon 417 Hz sacral, water, the Moon's day ·
+           Tue sun 528 Hz solar plexus · Wed waves 741 Hz throat, the
+           voice · Thu heart 639 Hz heart, love · Fri mountain 396 Hz
+           root, the ground · Sat eye 852 Hz third eye, inner sight.
+           The Wed–Sat icons are derived from the day's chakra and
+           frequency, named here and in the maker report — never
+           guessed silently. The little diamonds above the words and
+           the rule below are gone. The full name rides as the title */
+        var WEEKDAY_ICONS = ["crown", "moon", "sun", "waves", "heart", "mountain", "eye"];
+        function renderWeekRow() {
+          weekRow.innerHTML = WEEKDAY_ABBR.map(function (s, i) {
+            var letters = s.split("").map(function (ch) { return '<span class="wk-l">' + ch + "</span>"; }).join("");
+            return '<span class="wk-col" style="--dc:' + DAY_COLORS[i] + '" title="' + WEEKDAYS[i] + '">' +
+              '<span class="wk-ico">' + ICONS[WEEKDAY_ICONS[i]] + "</span>" +
+              '<span class="wk-word">' + letters + "</span></span>";
+          }).join("");
+          var viewingNow = viewY === now.getFullYear() && viewM === now.getMonth();
+          weekRow.querySelectorAll(".wk-col").forEach(function (s, i) {
+            s.classList.toggle("today-col", viewingNow && i === now.getDay());
+          });
+        }
+        renderWeekRow();
+        window.addEventListener("resize", renderWeekRow);
+
+        function renderMonth() {
+          /* The browsed month is named for screen readers only — the
+             visible page says the date exactly once, in the plaque */
+          grid.setAttribute("aria-label", "Days of " + MONTHS[viewM] + " " + viewY);
+          var mt = $("monthTitle");
+          if (mt) mt.setAttribute("aria-label", "Browsing " + MONTHS[viewM] + " " + viewY + " — use the arrows to change month");
+          /* Today's weekday plaque fills with its color — only while the
+             month on screen is the month that holds today */
+          var viewingNow = viewY === now.getFullYear() && viewM === now.getMonth();
+          weekRow.querySelectorAll(".wk-col").forEach(function (s, i) {
+            s.classList.toggle("today-col", viewingNow && i === now.getDay());
+          });
+          var first = new Date(viewY, viewM, 1);
+          var startDay = first.getDay();
+          var start = new Date(viewY, viewM, 1 - startDay);
+          var html = "";
+          for (var i = 0; i < 42; i++) {
+            var d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
+            var dow = d.getDay();
+            var dc = DAY_COLORS[dow];
+            var k = keyOf(d);
+            var na = (appointments[k] || []).length;
+            var nn = (notes[k] || []).length;
+            var nj = (journal[k] || []).length;
+            var dots = "";
+            if (na || nn || nj) {
+              dots = '<span class="dots" aria-hidden="true">';
+              for (var a = 0; a < Math.min(na, 3); a++) dots += "<i></i>";
+              if (nn) dots += '<i class="note"></i>';
+              if (nj) dots += '<i class="journal"></i>';
+              dots += "</span>";
+            }
+            if (d.getMonth() !== viewM) {
+              /* The other months are not shown at all — the cell stays
+                 blank, no numbers bleeding into this month */
+              html += '<div class="cell blank" aria-hidden="true"></div>';
+              continue;
+            }
+            /* No visual today marking on the cell — no pill, no fill, no
+               glow. "Today" survives only in the aria-label for screen
+               readers, on the weekday plaque, and in the header's
+               date + live time */
+            var label = WEEKDAYS[dow] + ", " + MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() +
+                        (isToday(d) ? " — today" : "") + (na ? " — " + na + (na === 1 ? " appointment" : " appointments") : "");
+            html += '<button type="button" role="gridcell" class="cell" style="--dc:' + dc + '" data-y="' + d.getFullYear() +
+                    '" data-m="' + d.getMonth() + '" data-d="' + d.getDate() + '" aria-label="' + label + '">' +
+                    digitsHTML(d.getDate()) +
+                    dots + jewelSVG() + "</button>";
+          }
+          grid.innerHTML = html;
+        }
+
+        function show(screen) {
+          ["screen-month", "screen-day", "screen-door"].forEach(function (id) {
+            $(id).classList.toggle("hidden", id !== screen);
+          });
+          window.scrollTo(0, 0);
+        }
+
+        /* A city name in proper case — "kELOWNA" reads "Kelowna",
+           "new york" reads "New York" — as entered, cleaned */
+        function properCaseCity(v) {
+          return v.trim().replace(/\s+/g, " ").split(" ").map(function (w) {
+            return w ? w.charAt(0).toUpperCase() + w.slice(1).toLowerCase() : w;
+          }).join(" ");
+        }
+        /* The greeting lives in the TOP BAR now, under the one
+           headliner — the Hub hero's warmth carried over (a feeling,
+           discerned for this place, not the Hub's shape pasted in):
+           the greeting big and bold and nothing else (v18 — the
+           motto, the daily line and the feed pill are gone).
+           The clock it drives is the
+           headliner's time — the only time on the page, as Dashboard
+           tiles with the hour's colour (clockTilesHTML). Weather rides
+           in the bar too: no city yet means an honest enter-your-city
+           button; a city shows in proper case, and the weather says
+           plainly it is not connected — a forecast is never invented */
+        function renderTopGreeting() {
+          var t = new Date();
+          var hello = $("greetHello"), clock = $("greetClock"), wxZone = $("wxZone");
+          if (hello) hello.textContent = greetingWord(t) + ", Shawn.";
+          if (clock) clock.innerHTML = clockTilesHTML(t);
+          if (wxZone) {
+            wxZone.innerHTML = wxCity
+              ? '<span class="wx-note"><strong>' + escapeHTML(properCaseCity(wxCity)) + '</strong> · Weather is not connected yet — no forecast to invent.</span>'
+              : '<button type="button" class="wx-btn" id="wxBtn">Weather · Enter your city</button><span id="wxSlot"></span>';
+            var btn = $("wxBtn");
+            if (btn) btn.addEventListener("click", function () {
+              $("wxSlot").innerHTML =
+                '<form class="wx-form" id="wxForm"><input type="text" id="wxCity" placeholder="Your city" aria-label="Your city" maxlength="60" />' +
+                '<button type="submit">Set</button></form>';
+              var inp = $("wxCity"); if (inp) inp.focus();
+              $("wxForm").addEventListener("submit", function (ev) {
+                ev.preventDefault();
+                var v = $("wxCity").value.trim();
+                if (!v) return;
+                wxCity = properCaseCity(v);
+                renderTopGreeting();
+                updateWxRow();
+              });
+            });
+          }
+          if (greetTimer) clearInterval(greetTimer);
+          greetTimer = setInterval(function () {
+            var c = $("greetClock"), g = $("greetHello");
+            if (!c && !g) { clearInterval(greetTimer); greetTimer = null; return; }
+            var n = new Date();
+            if (c) c.innerHTML = clockTilesHTML(n);
+            if (g) g.textContent = greetingWord(n) + ", Shawn.";
+          }, 20000);
+          /* The day clock ticks every second, like the plaque — the
+             tile seconds must never sit stale. One interval; it
+             updates only while the day screen is showing */
+          if (clockTimer) clearInterval(clockTimer);
+          clockTimer = setInterval(function () {
+            var c = $("greetClock");
+            if (!c || $("screen-day").classList.contains("hidden")) return;
+            c.innerHTML = clockTilesHTML(new Date());
+          }, 1000);
+        }
+
+        /* The big blocks: one block per world — name above, the big
+           Dashboard-tile number below — one block per added source,
+           and the + block the same size. v16 (Shawn, 2026-11-17): the
+           + means WRITE FOR THIS DAY — it is Add journal now, and one
+           tap opens the journal room for the day. The add-source-by-URL
+           action does not vanish: it lives in the header now, a small
+           "Add source" pill beside "Notifications" — same form, same
+           slot, one tap, never fighting the + for it */
+        /* The big blocks, v17: one card per world — name, the one
+           REAL number (or the unknown-state plaque, never a 0), and
+           what the world is. The Add journal block is gone from this
+           row: Add journal lives in THE RECORD now, where the day is
+           written down. The cards open that world's notification menu
+           below them, inside YOUR WORLDS — the menu is the world's,
+           not the page's */
+        function renderNotifBar() {
+          var blocks = NOTIF_SCOPES.map(function (s) {
+            var real = scopeRealCount(s.id);
+            var num = real === null
+              ? '<span class="state-pill">Not connected yet</span>'
+              : worldDigitsHTML(real, s.color, true);
+            var aria = real === null ? s.label + ", not connected yet" : s.label + ", " + real + (real === 1 ? " Naya Note" : " Naya Notes");
+            return '<button type="button" class="nblock" style="--sc:' + s.color + '" data-scope="' + s.id + '" aria-expanded="' + (openScopeId === s.id) + '" aria-label="' + aria + '">' +
+              '<span class="nb-name"><span class="live-dot"></span>' + s.label + "</span>" +
+              '<span class="nb-sub">' + (s.id === "personal" ? "Naya Notes" : "Notifications") + '</span>' + num + "</button>";
+          }).join("");
+          blocks += customSources.map(function (s) {
+            return '<button type="button" class="nblock" style="--sc:' + s.color + '" data-scope="' + s.id + '" aria-expanded="' + (openScopeId === s.id) + '" aria-label="' + escapeHTML(s.label) + ', not connected yet">' +
+              '<span class="nb-name"><span class="live-dot"></span>' + escapeHTML(s.label) + "</span>" +
+              '<span class="nb-sub">Notifications</span><span class="state-pill">Not connected yet</span></button>';
+          }).join("");
+          $("notifBar").innerHTML =
+            '<p class="notif-head"><span class="ndot"></span>Notifications<button type="button" class="addsrc-pill" id="addSrcHeadBtn">Add source</button></p>' +
+            '<div class="notif-blocks">' + blocks + '</div><div id="addSrcSlot"></div>';
+          $("notifBar").querySelectorAll("[data-scope]").forEach(function (chip) {
+            chip.addEventListener("click", function () {
+              var id = chip.getAttribute("data-scope");
+              openScopeId = openScopeId === id ? null : id;
+              openRowId = null;
+              renderNotifBar();
+              renderNotifDetail();
+            });
+          });
+          $("addSrcHeadBtn").addEventListener("click", function () {
+            var slot = $("addSrcSlot");
+            if (!slot) return;
+            if (slot.innerHTML) { slot.innerHTML = ""; return; }
+            slot.innerHTML =
+              '<form class="addsrc-form" id="addSrcForm"><input type="url" id="addSrcUrl" placeholder="Paste a URL — its notifications join this bar" aria-label="Source URL" maxlength="300" />' +
+              '<button type="submit">Add</button></form>';
+            var inp = $("addSrcUrl"); if (inp) inp.focus();
+            $("addSrcForm").addEventListener("submit", function (ev) {
+              ev.preventDefault();
+              var raw = $("addSrcUrl").value.trim();
+              if (!raw) return;
+              var label = raw;
+              try {
+                var u = new URL(raw.indexOf("://") === -1 ? "https://" + raw : raw);
+                label = u.hostname.replace(/^www\./, "") || raw;
+              } catch (e) { label = raw.slice(0, 28); }
+              var src = {
+                id: "src" + Date.now(),
+                label: label,
+                url: raw,
+                color: SOURCE_COLORS[customSources.length % SOURCE_COLORS.length]
+              };
+              customSources.push(src);
+              openScopeId = src.id;
+              openRowId = null;
+              renderNotifBar();
+              renderNotifDetail();
+            });
+          });
+        }
+
+        /* One world's menu for this day — rows with living counts.
+           Tap a row and its source list opens: where it came from */
+        function renderNotifDetail() {
+          var box = $("notifDetail");
+          if (!openScopeId) { box.classList.add("hidden"); box.innerHTML = ""; return; }
+          var scope = NOTIF_SCOPES.filter(function (s) { return s.id === openScopeId; })[0];
+          var custom = null;
+          if (!scope) custom = customSources.filter(function (s) { return s.id === openScopeId; })[0];
+          if (!scope && !custom) { box.classList.add("hidden"); box.innerHTML = ""; return; }
+          var color = scope ? scope.color : custom.color;
+          var title = scope ? scope.label + " · Notifications" : escapeHTML(custom.label) + " · Notifications";
+          var sub = scope ? scope.note
+            : "Added from " + escapeHTML(custom.url) + " — nothing is connected to it yet, so there is no number to show.";
+          box.style.setProperty("--sc", color);
+          var rows;
+          if (custom) {
+            rows = '<div class="nd-sources" style="border-bottom:none"><p class="nd-src">Nothing here yet for this day — this source was just added and is not connected yet, so there is no number to show.</p></div>';
+          } else {
+            var counts = scopeCounts(scope.id);
+            rows = NOTIF_ITEMS.map(function (it) {
+              var open = openRowId === it.id;
+              var srcs = open ? '<div class="nd-sources">' + rowSources(scope.id, it.id).map(function (s) {
+                return '<p class="nd-src">' + s + "</p>";
+              }).join("") + "</div>" : "";
+              var shown = (scope.id === "personal" && it.id === "nayanotes")
+                ? worldDigitsHTML(counts[it.id] || 0, color)
+                : '<span class="state-pill small">Not connected</span>';
+              return '<button type="button" class="nd-row" data-row="' + it.id + '" aria-expanded="' + open + '">' +
+                '<span class="nr-l">' + it.label + '</span>' +
+                '<span style="display:inline-flex;align-items:center;gap:10px">' + shown +
+                '<span class="nr-chev" aria-hidden="true">' + (open ? "▾" : "▸") + "</span></span></button>" + srcs;
+            }).join("");
+          }
+          box.innerHTML =
+            '<div class="nd-head"><p class="nd-title"><span class="live-dot"></span>' + title + '</p>' +
+            '<button type="button" class="nd-close" id="ndClose">Close</button></div>' +
+            /* No date repeated here — the headliner above already
+               says it, once (Shawn, 2026-11-17) */
+            '<p class="nd-sub">' + sub + "</p>" + rows;
+          box.classList.remove("hidden");
+          $("ndClose").addEventListener("click", function () {
+            openScopeId = null; openRowId = null;
+            renderNotifBar();
+            renderNotifDetail();
+          });
+          box.querySelectorAll("[data-row]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var id = btn.getAttribute("data-row");
+              openRowId = openRowId === id ? null : id;
+              renderNotifDetail();
+            });
+          });
+        }
+
+        /* The Daily Intelligence report for the selected day, built
+           only from what is really recorded for it */
+        function intelHTML() {
+          var k = keyOf(sel);
+          var dayAppts = (appointments[k] || []).slice().sort(function (a, b) { return a.time < b.time ? -1 : 1; });
+          var dayNotes = notes[k] || [];
+          var dayJournal = journal[k] || [];
+          var dayList = lists[k] || [];
+          if (!dayAppts.length && !dayNotes.length && !dayJournal.length && !dayList.length) {
+            return '<p class="none-line">Nothing recorded yet for this day — book an appointment or add a note and this report builds itself from what is really here.</p>';
+          }
+          /* No date restated here — the door's subtitle above already
+             carries this day's date, once (Shawn, 2026-11-17) */
+          return '<p class="intel-line"><strong>This day</strong> — ' +
+            dayAppts.length + (dayAppts.length === 1 ? " appointment" : " appointments") + " · " + dayNotes.length + (dayNotes.length === 1 ? " note" : " notes") +
+            (dayJournal.length ? " · " + dayJournal.length + (dayJournal.length === 1 ? " journal entry" : " journal entries") : "") +
+            (dayList.length ? " · " + dayList.length + (dayList.length === 1 ? " list item" : " list items") : "") + ".</p>" +
+            (dayAppts.length ? '<p class="intel-line">First up: <strong>' + fmtTime(dayAppts[0].time) + " — " + escapeHTML(dayAppts[0].title) + "</strong>" + (dayAppts[0].meet ? " (Smart Meet)" : "") + ".</p>" : "") +
+            (dayNotes.length ? '<p class="intel-line">Latest note: \u201C' + escapeHTML((dayNotes[dayNotes.length - 1].text || "").slice(0, 90)) + ((dayNotes[dayNotes.length - 1].text || "").length > 90 ? "\u2026" : "") + "\u201D</p>" : "") +
+            '<p class="intel-line">Wisdom carried: \u201C' + escapeHTML(WISDOM[sel.getDay()]) + "\u201D</p>";
+        }
+
+        /* THE DAY-TO-DAY VIEWER (Shawn, 2026-11-17, v16): the day's
+           whole place moves day to day — the stepper under the greeting
+           walks one day at a time (‹ yesterday · today · tomorrow ›),
+           a swipe across the day screen walks it too, and the arrow
+           keys walk it on a keyboard. The place itself slides in the
+           direction of travel (opts.anim), same place, new colour.
+           Back to the month always lands on the month holding the day
+           on screen, and one gesture — "Back to today" — always brings
+           today back, so the viewer never strands them */
+        function stepDay(dir) {
+          if (!sel) return;
+          var d = new Date(sel.getFullYear(), sel.getMonth(), sel.getDate() + dir);
+          openDay(d, { anim: dir > 0 ? "next" : "prev" });
+        }
+
+        function openDay(d, opts) {
+          sel = d;
+          /* v17 — a day step never leaves yesterday's detail panel open
+             on today's screen: the notification menu closes on the walk */
+          openScopeId = null; openRowId = null;
+          /* The month on screen follows the day on screen — back
+             returns to the month holding this day */
+          viewY = d.getFullYear(); viewM = d.getMonth();
+          var dc = DAY_COLORS[d.getDay()];
+          var head = $("dayHead");
+          head.style.setProperty("--dc", dc);
+          $("screen-day").style.setProperty("--dc", dc);
+          $("dayBar").style.setProperty("--dc", dc);
+          $("dayScroll").style.setProperty("--dc", dc);
+          $("wisdomBanner").style.setProperty("--dc", dc);
+          /* ONE HEADLINER (Shawn, 2026-11-17): the date said once,
+             the time said once. The old header said the day twice —
+             the big digit tiles ("1" "5") standing beside the full
+             date line ("NOVEMBER 15, 2026"). The tiles are gone from
+             the header; in their place a single official headliner
+             across the top: weekday (straight raised words in the
+             day's colour) · full date · live time (the day's colour,
+             id greetClock so the existing heartbeat keeps it true).
+             The greeting below carries NO date and NO clock — the
+             headliner is the only place either is said. The Hz unit
+             stands at the bar's top right corner (CSS), the back
+             arrow at its top left */
+          /* The stepper names the neighbours by weekday only — never
+             their dates — so the headliner stays the day's one saying
+             of its date. The return pill shows only while the day on
+             screen is not today */
+          var prevD = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1);
+          var nextD = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
+          var stepHTML =
+            '<div class="daystep">' +
+              '<button type="button" class="daystep-btn" id="prevDayBtn" aria-label="Previous day, ' + WEEKDAYS[prevD.getDay()] + '">&#8249; ' + WEEKDAY_ABBR[prevD.getDay()] + '</button>' +
+              (isToday(d) ? '' : '<button type="button" class="daystep-btn today" id="todayBtn">Back to today</button>') +
+              '<button type="button" class="daystep-btn" id="nextDayBtn" aria-label="Next day, ' + WEEKDAYS[nextD.getDay()] + '">' + WEEKDAY_ABBR[nextD.getDay()] + ' &#8250;</button>' +
+            '</div>';
+          head.innerHTML =
+            '<div class="official-headliner">' +
+              '<span class="hl-weekday">' + WEEKDAYS[d.getDay()] + '</span>' +
+              '<span class="hl-dot" aria-hidden="true"></span>' +
+              '<span class="hl-date">' + MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() + "</span>" +
+              '<span class="hl-dot" aria-hidden="true"></span>' +
+              '<span class="hl-time" id="greetClock"></span>' +
+            "</div>" +
+            '<div class="greet-row"><span class="greet-layout">' +
+                '<span class="avatar-jewel" aria-hidden="true">S</span>' +
+                '<span class="greet-hello" id="greetHello"></span>' +
+              "</span>" +
+            '<span class="wx-zone" id="wxZone"></span></div>' +
+            stepHTML +
+            '<span class="dayjewel"><span class="hz-stage"><span class="hz-aura"></span><span class="hz-pedestal"></span>' + gemSVG(dc) + "</span>" +
+            '<span class="freq">' + DAY_FREQ[d.getDay()] + " Hz</span></span>";
+          var k = keyOf(d);
+          var dayAppts = (appointments[k] || []).slice().sort(function (a, b) { return a.time < b.time ? -1 : 1; });
+          var dayNotes = notes[k] || [];
+
+          /* Wisdom of the day */
+          $("wisdomQuote").textContent = "\u201C" + WISDOM[d.getDay()] + "\u201D";
+
+          /* The greeting + weather live in the top bar now (rendered
+             into the header above). Below the wisdom board the page is
+             the categories now — renderCategories builds all five
+             sections once the appointments + timeline are built, then
+             the notification cards and their detail render inside
+             YOUR WORLDS */
+          renderTopGreeting();
+
+          /* Appointments tile */
+          var apptRows = dayAppts.length ? dayAppts.map(function (a) {
+            return '<div class="tile-appt-row"><span class="tw">' + fmtTime(a.time) + '</span><span class="tt">' + escapeHTML(a.title) + "</span>" + (a.meet ? '<span class="meet" style="flex:none;font-size:var(--type-small);font-weight:800;letter-spacing:.06em;padding:5px 11px;border-radius:999px;border:1px solid var(--d3);color:#bfeaff">Meet</span>' : "") + "</div>";
+          }).join("") : '<p class="tile-empty">Nothing booked yet — the day is open.</p>';
+
+          /* Timeline 6 AM – 9 PM — the day's spine. Appointments sit
+             at their hour, and the journal entries and notes for the
+             day sit ON it too, at the time they were written (§3.5):
+             the timeline is the spine, the journal is its voice. An
+             entry written before 6 AM rides the 6 AM row, after 9 PM
+             the 9 PM row — the chip always shows its real time */
+          var dayJournal = journal[k] || [];
+          function hourOfEntry(e) {
+            var h = e.at ? new Date(e.at).getHours() : 12;
+            return h < 6 ? 6 : h > 21 ? 21 : h;
+          }
+          function fmtTimeOf(ts) {
+            var dd = new Date(ts);
+            return fmtTime(String(dd.getHours()).padStart(2, "0") + ":" + String(dd.getMinutes()).padStart(2, "0"));
+          }
+          /* v18 — a preview never cuts a word in half: the cut
+             lands on the last space at or before the limit, and the
+             "…" follows a whole word. A single word longer than the
+             limit is the only hard cut left */
+          function clipText(s, n) {
+            if (s.length <= n) return s;
+            var cut = s.slice(0, n), sp = cut.lastIndexOf(" ");
+            if (sp > 0) cut = cut.slice(0, sp);
+            return cut + "\u2026";
+          }
+          var tl = "";
+          for (var h = 6; h <= 21; h++) {
+            var hh = h % 12; if (hh === 0) hh = 12;
+            var hlabel = hh + " " + (h < 12 ? "AM" : "PM");
+            var inHour = dayAppts.filter(function (a) { return parseInt(a.time.split(":")[0], 10) === h; });
+            var jInHour = dayJournal.filter(function (j) { return hourOfEntry(j) === h; });
+            var nInHour = dayNotes.filter(function (n) { return hourOfEntry(n) === h; });
+            var chips = inHour.map(function (a) { return '<span class="tl-chip">' + fmtTime(a.time) + " · " + escapeHTML(a.title) + "</span>"; })
+              .concat(jInHour.map(function (j) { return '<span class="tl-chip journal">Journal · ' + (j.at ? fmtTimeOf(j.at) : "") + " — " + escapeHTML(clipText(j.text || "", 40)) + "</span>"; }))
+              .concat(nInHour.map(function (n) { return '<span class="tl-chip note">Note · ' + (n.at ? fmtTimeOf(n.at) : "") + " — " + escapeHTML(clipText(n.text || "", 40)) + "</span>"; }));
+            tl += '<div class="tl-row"><span class="th">' + hlabel + '</span><span class="tline"></span><span class="te">' +
+              chips.join(" ") + "</span></div>";
+          }
+
+
+          renderCategories(apptRows, tl);
+          renderNotifBar();
+          renderNotifDetail();
+          /* The stepper's own wiring — one tap walks one day */
+          var pdb = $("prevDayBtn"); if (pdb) pdb.addEventListener("click", function () { stepDay(-1); });
+          var ndb = $("nextDayBtn"); if (ndb) ndb.addEventListener("click", function () { stepDay(1); });
+          var tdb = $("todayBtn"); if (tdb) tdb.addEventListener("click", function () {
+            var t0 = new Date(); t0.setHours(0, 0, 0, 0);
+            openDay(new Date(), { anim: sel < t0 ? "next" : "prev" });
+          });
+          var sc = $("dayScroll"); if (sc) sc.scrollTop = 0;
+          show("screen-day");
+          /* The whole place slides in the direction of travel when the
+             day changes from inside the day (stepper, swipe, keys) —
+             never on first entry from the month */
+          if (opts && opts.anim) {
+            var scr = $("screen-day");
+            scr.classList.remove("anim-next", "anim-prev");
+            void scr.offsetWidth;
+            scr.classList.add(opts.anim === "next" ? "anim-next" : "anim-prev");
+            setTimeout(function () { scr.classList.remove("anim-next", "anim-prev"); }, 400);
+          }
+          $("backToMonth").focus({ preventScroll: true });
+        }
+
+        /* v17 — THE CATEGORIES (Shawn, 2026-11-17): the lower page,
+           rebuilt. Five sections, each a real object in its own
+           spectrum colour; inside each, rows that are doors — one row,
+           one door, a live glimpse in the day's own words (or the
+           honest line when there is nothing yet). The 15 doors all
+           live here, grouped, never a loose grid. The boards remain:
+           Appointments + Timeline are THE DAY's instruments; Daily
+           Intelligence, Journal, Smart Notes and Posts are THE
+           RECORD's rows. Nothing for the day lives anywhere else; the
+           doors open INTO the day, not away from it. Counts ride the
+           same badges the doors wear, in the doors' own colours */
+        function doorById(id) {
+          return DOORS.filter(function (d) { return d.id === id; })[0];
+        }
+        function catSection(cat, inner) {
+          return '<section class="cat" style="--cc:' + cat.color + '" aria-label="' + cat.label + '">' +
+            '<div class="cat-head"><span class="cat-jewel" aria-hidden="true"></span>' +
+            '<h2 class="cat-title">' + cat.label + '</h2></div>' +
+            '<p class="cat-essence">' + cat.essence + '</p>' + inner + '</section>';
+        }
+        function catRow(doorId, color, iconName, label, glimpse, count, extra) {
+          return '<button type="button" class="cat-row" style="--c:' + color + '" data-door="' + doorId + '"' + (extra || '') + '>' +
+            '<span class="chip">' + ICONS[iconName] + '</span>' +
+            '<span class="lr-l">' + label + '</span>' +
+            '<span class="lr-g">' + escapeHTML(glimpse) + '</span>' +
+            (count ? '<span class="badge">' + count + '</span>' : '') +
+            '<span class="lr-chev" aria-hidden="true">›</span></button>';
+        }
+        /* v18 — same word-safe cut as clipText (inlined: this
+           function sits outside clipText's scope, so the three
+           lines are carried here rather than called) */
+        function latestText(arr) {
+          if (!arr.length) return "";
+          var t = arr[arr.length - 1].text || "";
+          if (t.length <= 90) return t;
+          var cut = t.slice(0, 90), sp = cut.lastIndexOf(" ");
+          if (sp > 0) cut = cut.slice(0, sp);
+          return cut + "…";
+        }
+        /* The weather glimpse — a row when there is no city yet (tap it
+           and the header's own weather button wakes), a plain glimpse
+           when the city is set (nothing to tap: the state is the news) */
+        function wxRowHTML() {
+          if (wxCity) {
+            return '<div class="cat-row" id="wxRow" style="--c:#c2410c">' +
+              '<span class="chip">' + ICONS.weather + '</span>' +
+              '<span class="lr-l">Weather</span>' +
+              '<span class="lr-g">' + escapeHTML(properCaseCity(wxCity)) + ' · Weather is not connected yet — no forecast to invent.</span></div>';
+          }
+          return '<button type="button" class="cat-row" id="wxRow" style="--c:#c2410c" data-action="weather-city">' +
+            '<span class="chip">' + ICONS.weather + '</span>' +
+            '<span class="lr-l">Weather</span>' +
+            '<span class="lr-g">Weather is not connected yet — tell us your city above.</span>' +
+            '<span class="lr-chev" aria-hidden="true">›</span></button>';
+        }
+        function updateWxRow() {
+          var w = $("wxRow");
+          if (w) w.outerHTML = wxRowHTML();
+        }
+        function renderCategories(apptRows, tl) {
+          var wrap = $("catsWrap");
+          if (!wrap || !sel) return;
+          var k = keyOf(sel);
+          var dc = DAY_COLORS[sel.getDay()];
+          var dayAppts = appointments[k] || [];
+          var dayNotes = notes[k] || [];
+          var dayJournal = journal[k] || [];
+          var dayList = lists[k] || [];
+          var parts = [];
+          parts.push(dayAppts.length + (dayAppts.length === 1 ? " appointment" : " appointments"));
+          parts.push(dayNotes.length + (dayNotes.length === 1 ? " note" : " notes"));
+          parts.push(dayJournal.length + (dayJournal.length === 1 ? " journal entry" : " journal entries"));
+          if (dayList.length) parts.push(dayList.length + (dayList.length === 1 ? " list item" : " list items"));
+          var intel = (dayAppts.length || dayNotes.length || dayJournal.length || dayList.length)
+            ? parts.join(" · ") : "Nothing recorded yet for this day.";
+          /* THE DAY — the day's instruments, live. The appointments
+             tile takes purple (the appointments door's colour, next in
+             the flow after the section's magenta); the timeline takes
+             indigo, the next colour after that */
+          var dayInner =
+            '<div class="dash-grid">' +
+            '<div class="tile tile-appts" style="--dc:' + dc + ';--tc:#8e24aa"><h3><span class="dotc" style="--tc:#8e24aa"></span>Appointments</h3>' + apptRows +
+              '<div class="tile-book"><button type="button" id="tileBookBtn">Book a time</button></div></div>' +
+            '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><h3><span class="dotc" style="--tc:#3f51b5"></span>Timeline · 6 AM – 9 PM</h3>' + tl + "</div></div>";
+          /* THE RECORD — the day, written down. Indigo · cyan · green ·
+             gold · orange, flowing, no doubles */
+          var recordInner = '<div class="cat-rows">' +
+            catRow("daily", "#3f51b5", "spark", "Daily Intelligence", intel, 0) +
+            catRow("reports", "#0e7490", "landmark", "Your Reports", "The day's report — appointments, notes, journal and lists, counted.", 0) +
+            catRow("journal", "#07925f", "book", "Journal", dayJournal.length ? latestText(dayJournal) : "No journal entry yet — write one.", dayJournal.length) +
+            catRow("smartnotes", "#d4a017", "note", "Smart Notes", dayNotes.length ? latestText(dayNotes) : "No notes for this day yet.", dayNotes.length) +
+            catRow("posts", "#c2410c", "post", "Posts", "No posts for this day.", 0) +
+            "</div>";
+          /* THE WORLD AROUND — cyan · green · gold · orange · red.
+             News is one door with three scopes; each scope row opens
+             the news room on its own scope, first */
+          var aroundInner = '<div class="cat-rows">' +
+            catRow("news", "#0e7490", "news", "Local news", "Not connected yet.", 0, ' data-news-scope="local"') +
+            catRow("news", "#07925f", "news", "Provincial news", "Not connected yet.", 0, ' data-news-scope="provincial"') +
+            catRow("news", "#d4a017", "news", "Global news", "Not connected yet.", 0, ' data-news-scope="global"') +
+            wxRowHTML() +
+            catRow("horoscope", "#c62828", "star", "Horoscope", "Not connected yet.", 0) +
+            "</div>";
+          /* YOUR WORLDS — the notification cards live here (their menu
+             opens below them, inside this section), then the three
+             feeds: personal, work, and your world */
+          var worldsInner =
+            '<div class="notif-bar" id="notifBar" aria-label="Notifications"></div>' +
+            '<div class="notif-detail hidden" id="notifDetail"></div>' +
+            '<div class="cat-rows">' +
+            catRow("personal", "#07925f", "user", "Personal feed", "Private by default — only people directly connected see it.", 0) +
+            catRow("work", "#d4a017", "briefcase", "Work feed", "Your work, your business, your job — one feed.", 0) +
+            catRow("world", "#c2410c", "world", "Your world", "Your world feed — public by default.", 0) +
+            "</div>";
+          /* EVERYDAY LIFE — gold · orange · red · magenta */
+          var everydayInner = '<div class="cat-rows">' +
+            catRow("mail", "#d4a017", "mail", "Smart Mail", "Not connected yet.", 0) +
+            catRow("messages", "#c2410c", "chat", "Messages", "Not connected yet.", 0) +
+            catRow("lists", "#c62828", "list", "Smart Lists", dayList.length ? dayList.length + (dayList.length === 1 ? " item on your list." : " items on your list.") : "Nothing on your list for this day yet.", dayList.length) +
+            catRow("connections", "#a21caf", "people", "Connections", "Not connected yet.", 0) +
+            "</div>";
+          wrap.innerHTML =
+            catSection(CATS[0], dayInner) +
+            catSection(CATS[1], recordInner) +
+            catSection(CATS[2], aroundInner) +
+            catSection(CATS[3], worldsInner) +
+            catSection(CATS[4], everydayInner);
+          var tbb = $("tileBookBtn");
+          if (tbb) tbb.addEventListener("click", function () {
+            var door = doorById("appointments");
+            if (door) openDoor(door);
+          });
+        }
+
+        function fmtTime(t) {
+          var p = t.split(":"), h = parseInt(p[0], 10), m = p[1];
+          var ap = h >= 12 ? "PM" : "AM"; h = h % 12; if (h === 0) h = 12;
+          return h + ":" + m + " " + ap;
+        }
+
+        function openDoor(door, newsScope) {
+          curDoor = door;
+          var dc = DAY_COLORS[sel.getDay()];
+          var bar = $("doorBar");
+          bar.style.setProperty("--c", door.color);
+          bar.style.setProperty("--dc", dc);
+          $("screen-door").style.setProperty("--dc", dc);
+          $("doorChip").innerHTML = ICONS[door.icon];
+          $("doorTitle").textContent = door.label;
+          $("doorSub").textContent = WEEKDAYS[sel.getDay()] + " · " + MONTHS[sel.getMonth()] + " " + sel.getDate() + ", " + sel.getFullYear();
+          var body = $("doorBody");
+          body.style.setProperty("--dc", dc);
+          var k = keyOf(sel);
+
+          if (door.id === "appointments") {
+            var list = (appointments[k] || []).slice().sort(function (a, b) { return a.time < b.time ? -1 : 1; });
+            var rows = list.length ? list.map(function (a, idx) {
+              return '<div class="appt"><span class="when">' + fmtTime(a.time) + '</span>' +
+                     '<span class="what">' + escapeHTML(a.title) + "</span>" +
+                     (a.meet ? '<span class="meet">Smart Meet</span>' : "") +
+                     '<button type="button" class="del" data-del="' + idx + '" aria-label="Remove ' + escapeHTML(a.title) + '">' + ICONS.x + "</button></div>";
+            }).join("") : '<p class="none-line">Nothing booked for this day yet.</p>';
+            body.innerHTML =
+              '<div class="panel" role="list" aria-label="Appointments for this day">' + rows + "</div>" +
+              '<form class="panel" id="bookForm">' +
+                '<p class="formtitle">Book a time</p>' +
+                '<div class="frow">' +
+                  '<input type="time" id="bkTime" value="10:00" aria-label="Time" required />' +
+                  '<input type="text" id="bkTitle" placeholder="What is it?" aria-label="Appointment title" maxlength="80" />' +
+                  '<button type="button" class="meettoggle" id="bkMeet" aria-pressed="false">Smart Meet</button>' +
+                  '<button type="submit" class="bookbtn">Book</button>' +
+                "</div></form>";
+            $("bkMeet").addEventListener("click", function () {
+              var on = this.getAttribute("aria-pressed") === "true";
+              this.setAttribute("aria-pressed", String(!on));
+            });
+            body.querySelectorAll("[data-del]").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                var sorted = (appointments[k] || []).slice().sort(function (a, b) { return a.time < b.time ? -1 : 1; });
+                var target = sorted[parseInt(btn.getAttribute("data-del"), 10)];
+                appointments[k] = (appointments[k] || []).filter(function (a) { return a !== target; });
+                saveStores();
+                openDoor(door); renderMonth();
+              });
+            });
+            $("bookForm").addEventListener("submit", function (ev) {
+              ev.preventDefault();
+              var t = $("bkTime").value || "10:00";
+              var title = $("bkTitle").value.trim() || "Appointment";
+              var meet = $("bkMeet").getAttribute("aria-pressed") === "true";
+              (appointments[k] = appointments[k] || []).push({ time: t, title: title, meet: meet });
+              saveStores();
+              openDoor(door); renderMonth();
+            });
+          } else if (door.id === "news") {
+            /* One door, three scopes: local, provincial, global — each
+               an honest not-connected room of its own, the chosen scope
+               first in its own colour. No headlines are ever invented */
+            var scopes = [["local", "Local", "#0e7490"], ["provincial", "Provincial", "#07925f"], ["global", "Global", "#d4a017"]];
+            var scope = newsScope || "local";
+            body.innerHTML = scopes.map(function (sc) {
+              return '<div class="panel' + (sc[0] === scope ? ' news-active' : '') + '" style="--sc:' + sc[2] + '">' +
+                '<p class="formtitle">' + sc[1] + ' news</p>' +
+                '<p class="none-line" style="text-align:left">' + sc[1] + ' news is not connected yet — no news to show for this day.</p></div>';
+            }).join("");
+          } else if (door.id === "daily" || door.id === "reports") {
+            body.innerHTML = '<div class="panel">' + intelHTML() + "</div>";
+          } else if (door.id === "smartnotes") {
+            var ns = notes[k] || [];
+            var items = ns.length ? ns.map(function (n) {
+              return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + "</p></div>";
+            }).join("") : '<p class="none-line">No notes for this day yet.</p>';
+            body.innerHTML =
+              '<div class="panel">' + items + "</div>" +
+              '<form class="panel" id="noteForm"><p class="formtitle">Add a note</p>' +
+              '<textarea id="noteText" placeholder="Write it down…" aria-label="Note text" maxlength="500"></textarea>' +
+              '<div class="frow" style="margin-top:10px; justify-content:flex-end">' +
+              '<button type="submit" class="bookbtn">Add note</button></div></form>';
+            $("noteForm").addEventListener("submit", function (ev) {
+              ev.preventDefault();
+              var v = $("noteText").value.trim();
+              if (!v) return;
+              (notes[k] = notes[k] || []).push({ text: v, at: Date.now() });
+              saveStores();
+              openDoor(door); renderMonth();
+            });
+          } else if (door.id === "journal") {
+            /* The Journal works like the notes — your day, in your
+               words, kept for this day. It was a door to a dead end;
+               now it is a room you can write in (amendment #7). v16:
+               what you type auto-saves as a draft while you write, so
+               nothing typed is ever lost — and a saved entry is kept
+               for this day, in the day's own colour, on the timeline
+               at its time and in Daily Intelligence */
+            var js = journal[k] || [];
+            var jitems = js.length ? js.map(function (n) {
+              return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + "</p></div>";
+            }).join("") : '<p class="none-line">No journal entry for this day yet.</p>';
+            body.innerHTML =
+              '<div class="panel">' + jitems + "</div>" +
+              '<form class="panel" id="journalForm"><p class="formtitle">Write in your journal</p>' +
+              '<textarea id="journalText" placeholder="How was this day?…" aria-label="Journal entry" maxlength="1000"></textarea>' +
+              '<p class="none-line" id="journalDraftNote" style="text-align:left">Your words save as you write — nothing typed is lost.</p>' +
+              '<div class="frow" style="margin-top:10px; justify-content:flex-end">' +
+              '<button type="submit" class="bookbtn">Save entry</button></div></form>';
+            /* The draft: restored when the room opens for this day,
+               auto-saved 500ms after the last keystroke and on blur */
+            var jt = $("journalText");
+            var savedDraft = LS.get(LS_KEYS.draft);
+            if (savedDraft && savedDraft.key === k && savedDraft.text) jt.value = savedDraft.text;
+            var draftTimer = null;
+            jt.addEventListener("input", function () {
+              if (draftTimer) clearTimeout(draftTimer);
+              draftTimer = setTimeout(function () { LS.set(LS_KEYS.draft, { key: k, text: jt.value }); }, 500);
+            });
+            jt.addEventListener("blur", function () { LS.set(LS_KEYS.draft, { key: k, text: jt.value }); });
+            $("journalForm").addEventListener("submit", function (ev) {
+              ev.preventDefault();
+              var v = $("journalText").value.trim();
+              if (!v) return;
+              (journal[k] = journal[k] || []).push({ text: v, at: Date.now() });
+              LS.del(LS_KEYS.draft);
+              saveStores();
+              openDoor(door); renderMonth();
+            });
+          } else if (door.id === "lists") {
+            /* Smart Lists — keeping life in order, one tap away.
+               Items are added and cleared for this day, in session,
+               rendered as a styled list (no checkboxes) */
+            var ls = lists[k] || [];
+            var litems = ls.length ? ls.map(function (n, idx) {
+              return '<div class="noteitem"><p>' + escapeHTML(n) + "</p>" +
+                     '<button type="button" class="del" data-del="' + idx + '" aria-label="Remove ' + escapeHTML(n) + '">' + ICONS.x + "</button></div>";
+            }).join("") : '<p class="none-line">Nothing on your list for this day yet.</p>';
+            body.innerHTML =
+              '<div class="panel">' + litems + "</div>" +
+              '<form class="panel" id="listForm"><p class="formtitle">Add to your list</p>' +
+              '<div class="frow">' +
+              '<input type="text" id="listText" placeholder="What needs doing?" aria-label="List item" maxlength="120" />' +
+              '<button type="submit" class="bookbtn">Add</button></div></form>';
+            body.querySelectorAll("[data-del]").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                (lists[k] || []).splice(parseInt(btn.getAttribute("data-del"), 10), 1);
+                saveStores();
+                openDoor(door); renderMonth();
+              });
+            });
+            $("listForm").addEventListener("submit", function (ev) {
+              ev.preventDefault();
+              var v = $("listText").value.trim();
+              if (!v) return;
+              (lists[k] = lists[k] || []).push(v);
+              saveStores();
+              openDoor(door); renderMonth();
+            });
+          } else {
+            body.innerHTML =
+              '<div class="empty" style="--c:' + door.color + '">' +
+              '<span class="chip">' + ICONS[door.icon] + "</span><p>" + door.empty + "</p></div>";
+          }
+          show("screen-door");
+          $("backToDay").focus({ preventScroll: true });
+        }
+
+        function escapeHTML(s) {
+          return s.replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+          });
+        }
+
+        /* Wiring */
+        grid.addEventListener("click", function (ev) {
+          var cell = ev.target.closest(".cell");
+          if (!cell) return;
+          openDay(new Date(+cell.dataset.y, +cell.dataset.m, +cell.dataset.d));
+        });
+        /* v17 — one delegation for the whole lower page: every
+           category row is a door (news rows carry their scope), and
+           the weather row's "tell us your city" action wakes the
+           header's own weather button */
+        $("catsWrap").addEventListener("click", function (ev) {
+          var act = ev.target.closest("[data-action]");
+          if (act && act.getAttribute("data-action") === "weather-city") {
+            var b = $("wxBtn"); if (b) b.click();
+            return;
+          }
+          var btn = ev.target.closest("[data-door]");
+          if (!btn) return;
+          var door = DOORS.filter(function (d) { return d.id === btn.dataset.door; })[0];
+          if (door) openDoor(door, btn.getAttribute("data-news-scope") || null);
+        });
+        /* The swipe — one gesture walks day to day at phone width, the
+           way walking through doors feels. A horizontal swipe longer
+           than 60px with little vertical drift moves the day; a swipe
+           starting in a text field never does (typing is not walking) */
+        (function () {
+          var sx = null, sy = null;
+          var dayScreen = $("screen-day");
+          dayScreen.addEventListener("touchstart", function (ev) {
+            if (ev.touches.length !== 1) return;
+            if (ev.target.closest("input, textarea")) return;
+            sx = ev.touches[0].clientX; sy = ev.touches[0].clientY;
+          }, { passive: true });
+          dayScreen.addEventListener("touchend", function (ev) {
+            if (sx === null) return;
+            var dx = ev.changedTouches[0].clientX - sx;
+            var dy = ev.changedTouches[0].clientY - sy;
+            sx = sy = null;
+            if (Math.abs(dx) > 60 && Math.abs(dy) < 80) stepDay(dx < 0 ? 1 : -1);
+          }, { passive: true });
+        })();
+        $("prevMonth").addEventListener("click", function () {
+          viewM--; if (viewM < 0) { viewM = 11; viewY--; } renderMonth();
+        });
+        $("nextMonth").addEventListener("click", function () {
+          viewM++; if (viewM > 11) { viewM = 0; viewY++; } renderMonth();
+        });
+        /* The header's now-plaque — today's date and the LIVE time.
+           Read fresh from the viewer's own clock on every tick, so it
+           is always their time in their time zone — never hardcoded,
+           never stale. The time is just the time: NO zone label ever
+           (Shawn, 2026-11-17 — "GMT-8" goes). The time is the
+           Dashboard tile clock (clockTilesHTML), separated a little
+           from the date. There is no TODAY button anymore (Shawn,
+           2026-11-17): today reads from this plaque and the weekday plaque */
+        function renderNowPlaque() {
+          var dEl = $("nowDate"), tEl = $("nowTime");
+          if (!dEl || !tEl) return;
+          var t = new Date();
+          dEl.textContent = WEEKDAYS[t.getDay()] + ", " + MONTHS[t.getMonth()] + " " + t.getDate() + ", " + t.getFullYear();
+          tEl.innerHTML = clockTilesHTML(t);
+          /* The plaque follows TODAY's colour — its rim and its live
+             dot take the day's colour, never gold. The time itself
+             takes the HOUR's colour now (clockTilesHTML) */
+          var dc = DAY_COLORS[t.getDay()];
+          var plaque = $("nowPlaque"), dot = $("nowDot");
+          if (plaque) plaque.style.setProperty("--dc", dc);
+          if (dot) dot.style.setProperty("--sc", dc);
+        }
+        renderNowPlaque();
+        setInterval(renderNowPlaque, 1000);
+        $("backToMonth").addEventListener("click", function () { renderMonth(); show("screen-month"); });
+        $("backToDay").addEventListener("click", function () { if (sel) openDay(sel); });
+        document.addEventListener("keydown", function (ev) {
+          /* Arrow keys walk day to day while the day screen is showing
+             — never while typing in a field */
+          if ((ev.key === "ArrowLeft" || ev.key === "ArrowRight") && !$("screen-day").classList.contains("hidden")) {
+            var tag = ev.target && ev.target.tagName;
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            stepDay(ev.key === "ArrowRight" ? 1 : -1);
+            return;
+          }
+          if (ev.key !== "Escape") return;
+          if (!$("screen-door").classList.contains("hidden")) { if (sel) openDay(sel); }
+          else if (!$("screen-day").classList.contains("hidden")) { renderMonth(); show("screen-month"); }
+        });
+
+        /* What was written before is kept — load it before the first render */
+        loadStores();
+        renderMonth();
+      })();
+    </script>
+  </body>
+</html>
