@@ -53013,6 +53013,39 @@
         "Honor",
         "Identity"
       ]
+    },
+    {
+      "smart_note_id": "SN-3094",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3094-the-factory-holds-the-parts",
+      "slug": "the-factory-holds-the-parts",
+      "title": "The Factory Holds the Parts",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3094/IB-SMART-NOTE-20261118-sn3094-the-factory-holds-the-parts.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3094/IB-SMART-NOTE-20261118-sn3094-the-factory-holds-the-parts.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3094/IB-SMART-NOTE-20261118-sn3094-the-factory-holds-the-parts.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3094-the-factory-holds-the-parts.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:48:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "66b9ffebcad79eea9c5cbef28cffc11606aa2154f7d5f66b9e57a4b4ecb6289d",
+      "content_hash": "050668b3eac42130e3cd69d944672e2e5e22e2c2e51abae438e5076ea31689ed",
+      "one_line": "Speed in this house is an inventory problem, never a genius problem. A page takes three minutes when every part is already built, high-end only, inventoried, and findable — the gauge, the tiled digits, the orbs, the jewels, the boards — each harvested verbatim from the living pages where Shawn's eye already refined it, never recreated from a description. Recreation is the silent quality leak: a builder retyping from memory produces a look-alike that is always a little worse, and the difference is exactly the year of refinement that made the original great. So the Factory is a parts warehouse, not a template library: intent comes in, parts go out, and every finished page pays its best pieces back into the inventory as tomorrow's starting stock — filed honestly, with names that say what the asset is and what it is not.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Smart Factory",
+        "Harvest"
+      ]
     }
   ],
   "sequence_policy": {
@@ -53023,5 +53056,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "163292ac25b2d688cf91bd5f29ba068bf8d5b1acb0709c681584e6995b643b58"
+  "corpus_manifest_hash": "a93fd7b36f14de8eb008012868f88b869acda941e5d4f0ca11908d50907ed5e3"
 }
