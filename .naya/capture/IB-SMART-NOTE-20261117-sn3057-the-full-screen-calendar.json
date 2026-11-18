@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3057",
+ "intelligence": {
+  "title": "The Full-Screen Calendar — The Whole Page Is the Calendar",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3057-the-full-screen-calendar",
+  "smart_note_id": "SN-3057",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3057/IB-SMART-NOTE-20261117-sn3057-the-full-screen-calendar.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Think of the old calendar as a desk with a calendar on it and a pile of buttons next to it — you had to look at everything at once, and nothing felt like the calendar itself. Shawn swept the desk clean. Now the whole desk IS the calendar: the full month fills the whole screen, mobile or laptop, and nothing else is on it. You tap a date and the whole screen becomes that day — its menu, its world — and when you tap back, you're back at the month, exactly where you were. The menu isn't a strip of flat buttons beside the month; it's a whole new view, built high-level, with eight doors and the things that matter that day. And the prototype he uploaded already works that way — the round's job is to harvest it verbatim and make it real and high-level, not to design a new calendar from scratch.",
+  "simple_view": "Imagine your whole screen is just the calendar — big squares for every day, 1 to 30, nothing else! No buttons, no words, just the month! You tap a day and BOOM — the whole screen becomes that day, with all its fun doors to open! And when you tap back, you're right back at the month! The calendar isn't a little box on a page — the calendar IS the page!",
+  "grandma_view": "It's like this, love — imagine the whole screen is just the calendar, dear — the full month, big beautiful squares for every day, and nothing else on the page at all! No clutter, no buttons getting in the way! You tap a day and the whole screen becomes that day, love — its menu, everything going on! And you tap back and you're right back at the month! Simple as anything, dear — the calendar is the whole page, and the day is the door!",
+  "naya_view": "The whole page IS the calendar: full month, squares 1–30/31, nothing else on it. No buttons on the same page as the calendar; the menu comes only when they click a date, as a new full view — 8 doors + Book/Meet/Create + 3 cards. Way more high-level than flat buttons. Harvest Shawn's prototype verbatim as the base. Vertical slice first, then verified booking, then verified Meet. Old round's shape superseded; its booking/meet/data logic is harvest material only.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3057",
+   "title": "The Full-Screen Calendar — The Whole Page Is the Calendar",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3057/IB-SMART-NOTE-20261117-sn3057-the-full-screen-calendar.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3057/IB-SMART-NOTE-20261117-sn3057-the-full-screen-calendar.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "2e84ee98893ab3b0210fd26f4ff6e89ad9195463"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

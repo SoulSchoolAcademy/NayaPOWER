@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3042",
+ "intelligence": {
+  "title": "The Cycle That Runs Everything",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3042-the-cycle-that-runs-everything",
+  "smart_note_id": "SN-3042",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3042/IB-SMART-NOTE-20261116-sn3042-the-cycle-that-runs-everything.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Shawn, 02:10Z (SN-2922), on the signing moment: \"They scroll down, read through, click agree, put their name in — and it officializes them. They feel 'oh, this is serious' — and we ARE serious.\" The mail ID inside it is \"bigger than people realize: one day we'll be able to mail everybody that was online in Canada and get them a notification.\" The test for the interface, the same hour (SN-2923): \"People want the internet to automate it for them — intelligence to automate most things, push-button simple, beautiful, helpful, useful.\" The children, the same hour (SN-2924): they connect on whatever topic, \"and the system automatically puts them together; they don't have to try and find each other\" — and \"we don't read their mail, their messages, we don't listen to their conversations or watch their video. We just let them be.\" The ownership, 04:31Z (SN-2925): \"If everybody owns it, everybody wins\" — \"Fifty percent, straight down the middle, paid every day.\" The words, 02:17Z (SN-2926): \"just imagine you're coming in, I don't think they understand what that means. So what if we say something that's useful and valuable and what's in it for them.\" And the judgment, 03:45Z (SN-2930), looking at the Personal page: \"So I go through this and scorecard it by 10 things you love or 10 things you don't love. Or 10 things you do 10 times better.\"",
+  "simple_view": "Imagine a circle that never stops. First you understand. Then you help. Then you check it worked. Then you learn. Then you do it better next time. Round and round! The same circle works for everything. Signing your name. Building a page. Writing words. Even judging your castle — ten things you love, ten you don't, ten you can do ten times better!",
+  "grandma_view": "It's like this, love — everything good goes in a circle. You understand what someone needs, you help them, you check it worked, you learn from it, and you do it better next time. Round and round, dear, never stopping. The same circle for a signature, for a page, for your words, for how you judge your work. And when something works beautifully, you use it everywhere — you don't go inventing a new way every time.",
+  "naya_view": "I run one cycle on everything: understand, serve, verify, learn, improve. I never skip a step, never verify after the claim, never leave a learning unfiled. A lesson that does not change the next moment is stored, not learned.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3042",
+   "title": "The Cycle That Runs Everything",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3042/IB-SMART-NOTE-20261116-sn3042-the-cycle-that-runs-everything.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3042/IB-SMART-NOTE-20261116-sn3042-the-cycle-that-runs-everything.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "4ba9891b6df7a1352a88cbb9b8471e07514cc88c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

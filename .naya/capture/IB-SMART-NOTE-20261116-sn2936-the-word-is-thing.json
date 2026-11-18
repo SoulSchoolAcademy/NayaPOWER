@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2936",
+ "intelligence": {
+  "title": "The Word Is Thing",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2936-the-word-is-thing",
+  "smart_note_id": "SN-2936",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2936/IB-SMART-NOTE-20261116-sn2936-the-word-is-thing.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Words are the interface before the interface. \"Space\" is our word — a room, a container, a place in the system. \"Thing\" is their word — the dog, the farm, the craft, the cause, the thing that makes up their world. When we say \"space\" where they mean \"thing\", we make them translate themselves into our language before they can even say what they love. The ruling is simple and it rides everywhere: your world, your space, your thing — and when we talk about what a person is into, what they connect into, what their feed is about, the word is THING. Everybody's got their thing. People look for people in their thing. The trio is Personal, Business, Thing — never labelled space. The distinction beside it matters too: category feeds are not auto-categorization. The main feeds are the citizen's three worlds; auto-categorization is the system sorting on its own underneath. Mixing the two up is how the feed stops making sense. And the correction stands with it: the 03:48Z filing put the news feeds in the world selections, and 03:57Z corrected it — the feeds live on the day (SN-2931). A note that carries its own correction is the record telling the truth.",
+  "simple_view": "Imagine everyone has a favourite THING — your dog, your farm, your drawings, your music! That's your thing! And you want to find other people who love the SAME thing! So we call it your thing — not a \"space\", which sounds like an empty room. Your thing is what makes your world YOUR world!",
+  "grandma_view": "It's like this, love — everybody's got their thing, haven't they? The thing they love, the thing they're about. You don't call it a \"space\" — that sounds cold, like an empty room. You call it their thing, because that's what it is to them. And that's where they'll look for their people — in their thing, in their world.",
+  "naya_view": "Your world, your space, your thing. Everybody's got their thing — and people connect into their thing. The trio is Personal, Business, Thing — never labelled space. Category feeds are not auto-categorization.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2936",
+   "title": "The Word Is Thing",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2936/IB-SMART-NOTE-20261116-sn2936-the-word-is-thing.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2936/IB-SMART-NOTE-20261116-sn2936-the-word-is-thing.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "efe9acb346863c17adff5d03b988ee1bbc19cd87"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

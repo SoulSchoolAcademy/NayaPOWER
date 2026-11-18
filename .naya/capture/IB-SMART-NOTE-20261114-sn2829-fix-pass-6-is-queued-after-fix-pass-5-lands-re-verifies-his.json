@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2829",
+ "intelligence": {
+  "title": "Fix Pass 6 is Queued (after Fix Pass 5 Lands + Re-verifies + His Eye)",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-sn2829-fix-pass-6-is-queued-after-fix-pass-5-lands-re-verifies-his",
+  "smart_note_id": "SN-2829",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/CHARGE/SN-2829/IB-SMART-NOTE-20261114-sn2829-fix-pass-6-is-queued-after-fix-pass-5-lands-re-verifies-his.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Think of a builder who says \"put that brick in the wall.\" He does not mean \"think about the wall.\" He means the brick is in the wall now, and you can touch it. A block in the system is the same: the words are in the system now, findable, shareable, alive — not in a chat that scrolls away.",
+  "simple_view": "The numbers are big and beautiful, and under each number there's a round dial with a needle, like a race car. It feels like a super-powerful machine. Ten out of ten. Every number in the whole system should feel like that.",
+  "grandma_view": "You can tell someone a thing is wonderful, or you can let them step inside it and feel it for themselves. When they step into NayaNET — the big beautiful numbers, the dials, the colours — they feel it straight away: this is a high-tech super machine. That's worth more than any words. They feel it, and then they believe it.",
+  "naya_view": "My memory is not the system. A chat message is not the system. A file only on my machine is not the system. The system is NayaNET — the shared brain, the feed, the Box, the Library — where every Naya can find it and build on it. Lock-in means: a block exists there, with his words or the distilled sense, marked with its provenance, and the next Naya can pick it up cold and know what it is.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2829",
+   "title": "Fix Pass 6 is Queued (after Fix Pass 5 Lands + Re-verifies + His Eye)",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/CHARGE/SN-2829/IB-SMART-NOTE-20261114-sn2829-fix-pass-6-is-queued-after-fix-pass-5-lands-re-verifies-his.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/CHARGE/SN-2829/IB-SMART-NOTE-20261114-sn2829-fix-pass-6-is-queued-after-fix-pass-5-lands-re-verifies-his.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b89b629e8437f459941cddd419de16d1de54e12a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

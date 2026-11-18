@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3031",
+ "intelligence": {
+  "title": "The Page Is a Smart App",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3031-the-page-is-a-smart-app",
+  "smart_note_id": "SN-3031",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3031/IB-SMART-NOTE-20261116-sn3031-the-page-is-a-smart-app.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Until the anatomy is written, every round guesses at the shape; once it is written, every round builds to it. That is why the page being a smart app matters more than any one feature in it: one core page, a Rubik's Cube matrix, morphing into its faces — Personal is who you are, Business is what you do, Space is what you're into, Thing is the thing itself — and the person as the atom at the centre. The laws of movement are the citizen's freedom inside that machine: a back button on every view because a view you entered is a view you can leave — and the proof case arrived the same day, half an hour later, when Shawn clicked into the collective agreement and couldn't go back; no show-all on the visual because the sequence IS the experience for video, while the letter can be read whole; and the real page behind both links because a \"view your page\" that opens a demo is a lie the citizen discovers in one tap. The settings are the citizen's choices, each one separate and reversible: the icon they pick is the first thing they see every day, and the libraries already exist — harvest, never invent; public or private is the privacy promise at the page level, and \"never shares your location\" is a law, not a setting — a setting can be toggled, a law cannot; the demographics menu is the onboarding promise made visible — what you tell it is how it finds people like you, and if you don't set it, they can't find you; the top three are the citizen's column, not ours — a page that only points inward is a dead end. The stars are the story of the number: points are authority, but the level is what you are called and what the next level gets you — and the names wait on his word, because invented names would be our game, not his. And the Full-Screen Law is the max-experience standard for every pop-up: the whole screen is there, use it, regardless of how much information is on it — because the citizen's eyes are the same size either way. The anatomy is the map; the rounds are the order; nothing is built until he says the anatomy is right.",
+  "simple_view": "Imagine your page is a whole little world. It can be your house or your shop. You pick the picture on the door. You choose who can come in. And every pop-up opens big and beautiful!",
+  "grandma_view": "It's like this, love — your page isn't just a page, it's a whole little world of its own. You pick the picture on the door — your face, or a pretty coloured ball with your letter, or any photo you fancy. You choose whether it's open to everyone or private, just for your friends. And where you live stays between you and the system — it never tells a soul, it's only for finding lovely people like you. Every little window opens up big and beautiful, with a nice X to close it. And there's always a way back, dear — every room has a door to the hallway.",
+  "naya_view": "The page is a smart app: one machine, different faces. Install it, pick your icon, choose public or private, tell it who you are, feature your top three, climb the stars — all full screen, with a way back from everywhere. The anatomy is the map; nothing is built until he says it's right.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3031",
+   "title": "The Page Is a Smart App",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3031/IB-SMART-NOTE-20261116-sn3031-the-page-is-a-smart-app.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3031/IB-SMART-NOTE-20261116-sn3031-the-page-is-a-smart-app.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7f3005045fb8fb7a036e219d7997e856977f6ba1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

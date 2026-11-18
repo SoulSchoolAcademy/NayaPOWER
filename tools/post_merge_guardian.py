@@ -97,6 +97,13 @@ DEFAULT_BOARD = 2793
 LOG_BRANCH = "live/guardian-log"
 LOG_PATH = "guardian-log.jsonl"
 REVERT_LABEL = "GUARDIAN-REVERT"
+# Revert-commit identity (w3391): the guardian commits in a fresh worktree
+# on runners with no git identity configured; a bare `git commit` dies with
+# "Author identity unknown" and every verified escape dies at the revert
+# step (job 133059079190). The identity rides ONLY this commit via -c -
+# no global or repo config is written, and no other git call is affected.
+GUARDIAN_COMMIT_NAME = "Post-Merge Guardian"
+GUARDIAN_COMMIT_EMAIL = "guardian@nayanet.local"
 SURFACE_URL = "https://nayanet.app/"
 SURFACE_MARKER = "OFFICIAL_NOTES"
 HUB_PREFIXES = ("HUB/",)
@@ -569,7 +576,9 @@ def prepare_revert(repo_path, landing, tip_sha, pusher=None, pr_opener=None, pr_
                               "parent — the landing's defect is an omission (the "
                               "reviewed change never arrived); cure = apply the "
                               "PR's diff forward, prepared from the evidence above"}
-        _git(wt, "commit", "-q", "-m",
+        _git(wt, "-c", f"user.name={GUARDIAN_COMMIT_NAME}",
+             "-c", f"user.email={GUARDIAN_COMMIT_EMAIL}",
+             "commit", "-q", "-m",
              f"Revert {landing.get('subject', merge_sha)[:72]} [{REVERT_LABEL}]\n\n"
              f"Post-Merge Guardian ({LAW_ID}): verified escape on {merge_sha}. "
              "Revert first, diagnose second, fix forward third.")

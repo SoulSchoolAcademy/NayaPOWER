@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3063",
+ "intelligence": {
+  "title": "The Bottom-Bar Orbit — Approved by His Eye",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3063-the-bottom-bar-orbit",
+  "smart_note_id": "SN-3063",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3063/IB-SMART-NOTE-20261117-sn3063-the-bottom-bar-orbit.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "This is the other side of correction: when his eye loves something, that thing is LOCKED. He didn't ask for the circle — not exactly; he asked for icons, and the circle came with them, an invention, not an instruction. And it landed: slowly going around, done elegantly enough that it looks pro. \"The first creativeness I've seen you do where it turned out really beautiful.\" The circle with the almost-square tile looks sharp, interesting. So the orbit on the bottom bar — including the + tiles — stays EXACTLY as it is. Fix-4, which is redoing so much of the Hub, must not rework it; its orbit item covers only the article orbs and the face circle, the ones the eye found static. And one correction to the eye's own report: the cloud eye said it \"could not confirm travel\" on the + tiles — that was the eye's 40-second limit, not a page defect. His eye sees it going around. A check's limit is not the page's failure — and his eye overrules the check.",
+  "simple_view": "Imagine you draw a slow circle going around the little squares at the bottom — and Shawn LOVES it! He says it's elegant and pro and really beautiful — the first creative thing that turned out really beautiful! So we NEVER touch it again — it stays exactly like that, forever! And the robot eye said it couldn't see the circle moving — but that was just because the robot only watched for a tiny bit! Shawn's eyes see it going around just fine!",
+  "grandma_view": "It's like this, love — imagine a slow circle going around the little squares at the bottom, dear — and Shawn LOVES it! He says it's elegant and professional and really beautiful — the first creative thing that turned out really beautiful! So we never touch it again, love — it stays exactly like that, forever! And the robot eye said it couldn't see the circle moving — but that was just because the robot only watched for a little while, dear! Shawn's eyes see it going around just fine!",
+  "naya_view": "The bottom-bar orbit is APPROVED BY HIS EYE — and LOCKED. Slow circle around the icons, elegant, pro: \"the first creativeness I've seen you do where it turned out really beautiful.\" The circle with the almost-square tile looks sharp, interesting. It stays EXACTLY as it is — fix-4 must not rework it; its orbit item covers only the article orbs + the face circle. The eye's \"could not confirm travel\" on the + tiles was the check's 40-second limit, not a page defect — his eye sees it going around.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3063",
+   "title": "The Bottom-Bar Orbit — Approved by His Eye",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3063/IB-SMART-NOTE-20261117-sn3063-the-bottom-bar-orbit.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3063/IB-SMART-NOTE-20261117-sn3063-the-bottom-bar-orbit.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0d1db58e5c58b8a94a031f09ff85efd7f669770d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

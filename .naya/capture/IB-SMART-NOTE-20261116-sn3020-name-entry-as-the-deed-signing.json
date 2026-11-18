@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3020",
+ "intelligence": {
+  "title": "Name Entry as the Deed Signing — Your Land, Your Domain, Your Real Estate",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3020-name-entry-as-the-deed-signing",
+  "smart_note_id": "SN-3020",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3020/IB-SMART-NOTE-20261116-sn3020-name-entry-as-the-deed-signing.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "He named the feeling, not the fix: the name box is \"just not impressive,\" and it should feel like something special — because that is where they enter the name of their land, their domain, their real estate. The treatment follows the feeling. The box becomes the deed itself: an elevated obsidian plaque with purple underglow, the typed name as the signature on the deed, the seal stamping on entry. One treatment in all three places — front page, identity page, agreement end — so the signing feels the same wherever they sign it. Everything is harvested, nothing invented: the identity seal-stamp, the Vault Dial v2 inputs, the name-as-royal-object look (obsidian middle, purple glow edges, chrome-thin white/silver trim, clone trick; gold OUT on the name), and the official sentence that says what the act means — \"By entering your name, you make it official — you are signing the Collective Agreement, and you get the deed to your own world: high-level digital real estate.\" The sequencing is law, not preference: it fires AFTER the agreement-entrance-welcome round lands whole, because it touches the same files (`/` + `identity.html`) and the clobber law + deploy lock forbid two rounds on the same files at once; the base is the landed build, never a moving target. And the bookkeeping is honest: the One List add was attempted four times and failed four times on the EPERM flake — it has NOT landed, and the retry waits for the flake to clear. The brief is safe on disk; the work is queued, not lost.",
+  "simple_view": "Imagine you get a treasure map — but instead of a boring blank line, you sign your name on a shiny black plaque with purple glowing edges, like signing the deed to your very own castle! Your name appears in gold, and — STAMP! — a seal presses down, and the land is YOURS! That's how special your name should feel!",
+  "grandma_view": "It's like this, love — when you sign for your house, dear, you don't scribble on a scrap of paper! You sign a proper deed, love — a beautiful dark plaque with a purple glow, your name in gold like a signature, and the seal stamps down with a thump! That's YOUR land, dear, YOUR domain — and the moment you write your name, it's official!",
+  "naya_view": "The name box is the deed. Not a form field — an elevated obsidian plaque, purple underglow, your name as the signature, the seal stamping on entry. One treatment in all three places — front page, identity, agreement end — harvested from the seal-stamp and the Vault Dial inputs, gold OUT on the name. \"By entering your name, you make it official.\" It fires after the entrance-welcome round lands — same files, clobber law — and the One List add waits for the flake to clear.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3020",
+   "title": "Name Entry as the Deed Signing — Your Land, Your Domain, Your Real Estate",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3020/IB-SMART-NOTE-20261116-sn3020-name-entry-as-the-deed-signing.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3020/IB-SMART-NOTE-20261116-sn3020-name-entry-as-the-deed-signing.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f76279ab1684e536398547de99d9dd85d3c320dd"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -20,4 +20,4 @@ Judge every system by whether life got better because of it — safer, more capa
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2905 — ~/workspace/team-nitro/smart-notes/SN-2905-if-it-is-truly-intelligent-it-helps.md*
+*Paired Smart Note: SN-2905 — If It Is Truly Intelligent, It Helps*

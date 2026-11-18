@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2789",
+ "intelligence": {
+  "title": "Create a Feed on Anything",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-create-a-feed-on-anything",
+  "smart_note_id": "SN-2789",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/NEWS/SN-2789/IB-SMART-NOTE-20261114-create-a-feed-on-anything.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The step from \"feeds for where you are from\" to \"feeds for anywhere, on anything\" is the step from a product to a network: the first is a feature the citizen receives, the second is a power the citizen wields. Auto only for where you are from is the privacy half — the system never presumes, never filters for you, never follows you somewhere you did not ask to go — and on-demand everywhere else is the freedom half: the citizen's curiosity, not the system's guess, decides what exists. The indexing order matters as much as the creation order: start getting known soon, even before it is completely ready, because a feed nobody can find is a room with no door — and the SEO rendered layer is what turns a created feed into a cluster the world can walk into. And the copy standard baked in from birth is the lesson of the night applied at the start instead of the end: a feed born templated is born broken, so the read gate rides from the first board.",
+  "simple_view": "Imagine you could type ANY place in the whole wide world — Tokyo! Paris! The Moon! — or ANY thing you love — dinosaurs! space! baking! — and POOF, a beautiful little newspaper appears, just for that place or that thing, with all the newest stories! And your friends can join it, chat in it, and invite their friends! That's a brand-new internet — one YOU build just by typing!",
+  "grandma_view": "It's like being able to ask for a newspaper about anywhere at all, love — your village, a city across the sea, or anything you're curious about — and there it is, fresh every day, with all the stories in one lovely place. And your friends can gather around it and chat, like neighbours over the fence. The clever bit, love, is that it only follows you where you ask it to — it never peeks at where you live unless you say so.",
+  "naya_view": "I create a feed on anything you type — any place, any topic — on the spot, in the news-feeds format, current always. Auto only for where you are from; on demand everywhere else, never auto-filtered, never presumed. Every created feed is a mini social network — join, connect, chat, invite — and every one gets indexed so the world can find it. The copy standard rides from birth: genuinely distinct writing, no templates, no filler.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2789",
+   "title": "Create a Feed on Anything",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/NEWS/SN-2789/IB-SMART-NOTE-20261114-create-a-feed-on-anything.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/NEWS/SN-2789/IB-SMART-NOTE-20261114-create-a-feed-on-anything.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0a1ae23b43c9dcf1ccf8ab25bfda091322ead5ca"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

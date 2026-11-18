@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2937",
+ "intelligence": {
+  "title": "The Free Tier Wall — Count Your Writes",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2937-the-free-tier-wall",
+  "smart_note_id": "SN-2937",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2937/IB-SMART-NOTE-20261116-sn2937-the-free-tier-wall.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The system broke without anything breaking. No code changed, no binding wiped, no deploy failed — the page bytes were identical, the checker had passed five walks an hour before, and then a new citizen could not finish joining. The cause was arithmetic the system never counted: 1,000 writes a day for the whole account, 5 writes per completion, ~200 test completions across all seats, and the wall arrived mid-night. That is the lesson: a free-tier limit is not a floor you stand on, it is a wall you hit — and you hit it at the worst moment, right after a PASS, which makes the PASS wrong about the present. Two disciplines follow. First, count test traffic: every completion, every checker walk, every probe writes — five puts a time — and the budget is shared by every seat, every lane, every job on the account. Second, fail honestly: the fix does not pretend the write succeeded — the guard returns 503 naming the cause, so the next failure says what is wrong instead of failing silently behind a caught error and a \"Try again\" button. And the structural flag stands: 1,000 KV writes a day is a hard ceiling for a system whose every request writes several KV keys — fewer writes per request (rate counters and token indexes into the Durable Object) or the Paid plan. The Paid plan is his hand, offered, awaiting his word — $5 a month against a wall that stops citizens joining.",
+  "simple_view": "Imagine a notebook that only lets you write 1,000 words a day — and every time someone joins, you have to write 5 words! After 200 friends join, the notebook says \"NO MORE!\" — and the next friend can't join at all, even though nothing is broken! That's what happened. So now we count our words carefully — and we ask for a bigger notebook!",
+  "grandma_view": "It's like this, love — there's a little book that only holds a thousand notes a day, and every new person costs five notes. The team was so busy testing that they filled the book by midnight — and then nobody new could join, though nothing was actually broken. So now we count the notes, and we fail honestly — if the book is full, we say so plainly instead of pretending. And a bigger book costs very little, if he says yes.",
+  "naya_view": "The free tier is a wall, not a floor. One thousand writes a day, five per completion — two hundred test walks and nobody new can join. Count test traffic. Fail honestly — 503 naming the cause, never a silent 1101.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2937",
+   "title": "The Free Tier Wall — Count Your Writes",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2937/IB-SMART-NOTE-20261116-sn2937-the-free-tier-wall.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2937/IB-SMART-NOTE-20261116-sn2937-the-free-tier-wall.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "598f89f692dae3c16e5202dfd5122b71730dd1a3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

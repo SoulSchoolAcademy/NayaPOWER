@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2913",
+ "intelligence": {
+  "title": "The Calendar Is the Door",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-the-calendar-is-the-door",
+  "smart_note_id": "SN-2913",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2913/IB-SMART-NOTE-20261116-the-calendar-is-the-door.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Every system has a front door, and most of them are menus — lists of features, none of which is the thing itself. A calendar is different: it is time, and time is the one thing every citizen already understands. Click a day and you are IN that day — its dashboard, its feed, its news, its notes, its events — because a day is the natural unit of a life. The visitor view is the same door from the other side: not your world, but a brief of it — book a time, see what's coming up, send a message. That is how the system spreads: \"communicate with me here\" replaces email and Facebook not by being better at messages, but by being a place with a door you can point someone to. And \"the feature everybody remembers\" is a design brief, not a boast: each day lights up and feels alive, the menu is an extraordinary presentation of beautiful buttons and boards. If it does not look extraordinary on the screen, it is not done — however correct the timeline is underneath.",
+  "simple_view": "Imagine your whole world is a big beautiful calendar! You tap a day — BOOM! — you're inside that day! Everything that happened that day is there: your pictures, your notes, the news, your friends! And if a friend wants to visit, they tap your calendar too and see a little card: \"Come visit me on this day!\" It's like a magic door — every day is a door into a whole world!",
+  "grandma_view": "It's like this, love — instead of a confusing menu with a hundred buttons, you just have a calendar. You tap a day, and there it is — everything from that day, neat as a diary page. Your notes, your news, your appointments, all in one place. And if someone wants to see you, they tap your calendar and book a time — easy as pie. That's the door, dear — one door, and every day opens into its own little world.",
+  "naya_view": "My World becomes the calendar. Click a day and boom — you're in that day's world. That's how they enter the system.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2913",
+   "title": "The Calendar Is the Door",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2913/IB-SMART-NOTE-20261116-the-calendar-is-the-door.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2913/IB-SMART-NOTE-20261116-the-calendar-is-the-door.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "869c0c2e52b9804f4314ca0c7192f9cb2bb00ea1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

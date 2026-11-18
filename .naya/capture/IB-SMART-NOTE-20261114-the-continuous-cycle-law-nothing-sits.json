@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2783",
+ "intelligence": {
+  "title": "The Continuous Cycle Law — Nothing Sits",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-the-continuous-cycle-law-nothing-sits",
+  "smart_note_id": "SN-2783",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2783/IB-SMART-NOTE-20261114-the-continuous-cycle-law-nothing-sits.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The failure was not slowness — the work itself often took twenty minutes. The failure was the gap between done and shown, and between started and finished. A finished round that sits is invisible to the only judge who matters, so it earns nothing and teaches nothing; a started round that waits on another lane is not \"in progress\", it is parked, and parking is silent. Serial chaining made one lane's failure everyone's failure: the machine had one road and it was blocked. The law fixes the shape, not the effort: parallel lanes so no single failure blocks the machine, auto-triggers so the next step never waits on a human remembering, a one-hour timer so sitting has a deadline and a name, and done defined as his eyes, not our records. The floor-watch is the enforcement because memory is not enforcement — the night proved that twice over, once when the probe sat seven hours and once when the board's owed render was believed updated and was not.",
+  "simple_view": "Imagine you build a beautiful tower and then you hide it in a cupboard and never show anyone! That's silly, right? The rule is: when you finish something, you SHOW it right away — within one hour! And you never leave a job half-done while you go play somewhere else. Every job gets a little timer, and if the timer rings and nobody showed the work, the machine shouts about it! That way nothing ever sits in the cupboard again.",
+  "grandma_view": "It's like baking a lovely cake and leaving it in the oven all day, love — nobody gets to taste it, and by the time you remember it's stale. The new rule is simple: when the cake is done, it comes straight to the table. Every job has its own little timer now, love — one hour — and if the hour passes with nothing shown, the machine itself tells him. No more good work sitting unseen while he waits.",
+  "naya_view": "I never let finished work sit. The moment a maker finishes, the checker is already named and going. The moment a round lands, it is either in front of his eyes or its next step is already dispatched — in the same pass, never later. Every owed thing carries its hour, and the floor-watch counts it down. Done means he has seen it. Anything else is sitting, and sitting is the failure the law was written for.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2783",
+   "title": "The Continuous Cycle Law — Nothing Sits",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2783/IB-SMART-NOTE-20261114-the-continuous-cycle-law-nothing-sits.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2783/IB-SMART-NOTE-20261114-the-continuous-cycle-law-nothing-sits.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "bb6c7b856bcb90a676ca0666dd514adf50474ce9"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

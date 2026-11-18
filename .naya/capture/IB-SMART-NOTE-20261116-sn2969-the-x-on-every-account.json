@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2969",
+ "intelligence": {
+  "title": "The X on Every Account",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2969-the-x-on-every-account",
+  "smart_note_id": "SN-2969",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2969/IB-SMART-NOTE-20261116-sn2969-the-x-on-every-account.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "An account list that only grows is a list that lies: test accounts, dead accounts, duplicates — all sitting there forever, and the citizen can't tell which one is theirs. Removal is the other half of creation: if the system can create an account every time, it must be able to remove one. And removal of something you lose for good must never be one click — the warning is the respect for the loss. The warning first, then confirm: two steps, because the loss is permanent and the tap is cheap. Duplicates being separate rows is the honesty: same name, different device key, different account — the X removes that row, not the name.",
+  "simple_view": "Imagine you have a row of little name cards, and every time you try something new, a new card appears! Soon there are SO many cards you can't find yours! So every card gets its own little X — tap it, and first it asks \"are you sure? You'll lose this one for good!\" and then you say yes. That way you can tidy up, and the row never grows forever!",
+  "grandma_view": "It's like this, love — every account on the list gets its own little X, so you can tidy up. Tap it, and first it warns you, dear — you'll lose this account for good — and then you confirm. Never just one click, because losing something for good deserves a second thought. And if you made a test one, you can get rid of it — the list doesn't grow forever.",
+  "naya_view": "Every account row gets its own X. Tap → warning (you will lose this account for good) → confirm. Never one-click. Duplicates are separate rows; the X removes that one row. A test account can go.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2969",
+   "title": "The X on Every Account",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2969/IB-SMART-NOTE-20261116-sn2969-the-x-on-every-account.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2969/IB-SMART-NOTE-20261116-sn2969-the-x-on-every-account.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "86c82af0e6a480f1fff1f61a297e30cde723859f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2998",
+ "intelligence": {
+  "title": "Don't Remove What He Didn't Ask to Remove",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2998-dont-remove-what-he-didnt-ask-to-remove",
+  "smart_note_id": "SN-2998",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2998/IB-SMART-NOTE-20261116-sn2998-dont-remove-what-he-didnt-ask-to-remove.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The failure is silent subtraction. A round can do everything it was asked to do, pass every check on its own scope, and still have made the page worse — because something that was there, that he liked, that citizens used, is gone, and nobody said to take it away. The play button is the proof: a big circled button with an orb going around it, saying Naya, tap it and it plays the collective agreement introduction — a real piece of the page's welcome, removed as a side effect of other work, discovered only when his eye went looking for it. The charge names the pattern, not just the case: \"you sometimes you just change things right and just remove things and that wasn't even instructed\" — sometimes, a habit, not a one-off. The repair is mechanical and goes into the ship-gate: before any seat ships, it names what was already on the page and confirms every piece is still there or was instructed away. The brief is the authority for what changes; everything outside the brief is not the seat's to change. And the play button itself is restored in the entrance-welcome brief — at the top, beside the picture, harvested exactly as it was — with the voice itself paused until the agreement text is final, so no half-done voice work comes to him. The button stays; the voice waits; the rule is the lock.",
+  "simple_view": "Imagine you have a beautiful toy castle — and someone comes to fix one little window, but while they're fixing it, they take away the big red flag on top! Nobody told them to take the flag! The castle isn't the same without its flag. The rule is simple: if nobody said to take it away, it STAYS. You only fix what you were asked to fix!",
+  "grandma_view": "It's like this, love — imagine someone comes to mend a curtain, dear, and while they're at it they take down your favorite picture from the wall — and nobody asked them to! The curtain's fixed, love, but the room's lost something precious. The rule is plain, dear: if you weren't asked to take it away, it stays right where it was.",
+  "naya_view": "Don't remove what he didn't ask to remove. If the brief didn't instruct it, it stays. A round that quietly drops something that was there has failed even if everything it was asked to do is right. Before any seat ships, it names what was already on the page and confirms every piece is still there or was instructed away.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2998",
+   "title": "Don't Remove What He Didn't Ask to Remove",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2998/IB-SMART-NOTE-20261116-sn2998-dont-remove-what-he-didnt-ask-to-remove.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2998/IB-SMART-NOTE-20261116-sn2998-dont-remove-what-he-didnt-ask-to-remove.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "9ca954941dafff373d045bd604fa43e5180ece9f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

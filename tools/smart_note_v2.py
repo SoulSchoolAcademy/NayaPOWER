@@ -634,6 +634,319 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
     # No direct write: registry_transaction commits atomically on clean exit.
     return entry
 
+# ---------------------------------------------------------------------------
+# Classic (corpus-standard) publish path — the door upgrade, 2026-11-17.
+#
+# The corpus's production notes (distillation batches 1-3, SN-2832, and the
+# modern BRAIN corpus generally) are FLAT captures (schema
+# naya.smart-note-capture.v2: identity fields + a flat `intelligence`
+# object) rendered in the plain nine-section dialect:
+#   IN A NUTSHELL / HUMAN / CHILD / GRANDMA / NAYA / MACHINE /
+#   WHAT IT ALL MEANS / WHY IT MATTERS / HOW IT CONNECTS /
+#   WHAT IS IN IT FOR YOU / THE LEARNING
+# with the MACHINE section as prose. The persisted-block render() above
+# speaks a different input shape (verify/persisted block) and an emoji
+# dialect whose MACHINE NOTE is a JSON dump; it cannot consume a flat
+# capture and cannot carry the `Distills ...` coverage line the
+# distillation census (tools/distillation_machine.py parse_distills)
+# counts. A door the real work cannot walk through gets walked around —
+# that is the registry leak (P-152). This path teaches the canonical
+# writer the corpus dialect so publish-note serves both pipelines:
+# capture placed first (fail-closed on a name collision with different
+# bytes), page rendered, registry entry + manifest stamped in the same
+# motion — the same invariants as the persisted-block path, one writer.
+#
+# Classic capture contract (flat v2, all fields read from the capture):
+#   required identity: smart_note_id (explicit SN-\d{3,} — the classic
+#     path never auto-allocates; a number is claimed by census, not by
+#     this writer), title, slug, created_at (ISO, YYYY-MM-DD prefix),
+#     registered_by, kind
+#   required intelligence: essence, human_view, child_view, grandma_view,
+#     ai_view, what_it_means (non-empty strings); whats_inside (exactly 5
+#     strings, the corpus capture law); topics (non-empty list)
+#   required page sections (capture["page"]): machine, why_it_matters,
+#     how_it_connects, what_is_in_it_for_you, the_learning (non-empty)
+#   optional page.distills: {"batch": int, "of": int, "covers":
+#     [{"sn": "SN-0000", "title": "..."}]} — rendered as the MACHINE
+#     section's final paragraph in the census-parseable form and verified
+#     against the census grammar before anything is written.
+#   taxonomy: topic and/or page_segment (at least one required; the
+#     segment defaults to the topic, uppercased)
+#   optional: category (default "SYSTEM"), page_subtitle
+#     (default "DISTILLATION" when distills present, else "SMART NOTE"),
+#     truth_state (default "CANDIDATE"), scope (default "PRIVATE"),
+#     directed_by, tone (default "purple"), icon (default "◆"),
+#     file (must equal the computed projection path when present)
+# The intelligent block id derives from the capture's `file` stem when
+# present, else is constructed IB-SMART-NOTE-<YYYYMMDD>-sn<NNNN>-<slug>
+# and cross-checked against `file`.
+# ---------------------------------------------------------------------------
+
+_CLASSIC_INTELLIGENCE_KEYS = (
+    "essence", "human_view", "child_view", "grandma_view", "ai_view",
+    "what_it_means",
+)
+_CLASSIC_PAGE_KEYS = (
+    "machine", "why_it_matters", "how_it_connects",
+    "what_is_in_it_for_you", "the_learning",
+)
+# The census grammar (tools/distillation_machine.py DISTILLS_LINE_RE /
+# SN_TOKEN_RE), mirrored so the door can prove its own coverage line
+# parseable before writing. The census at the landed tip remains the
+# authority; this mirror only fails closed early.
+_CLASSIC_DISTILLS_LINE_RE = re.compile(r"^\s{0,3}(?:>\s*)?\**\s*Distills\b", re.IGNORECASE)
+_CLASSIC_SN_TOKEN_RE = re.compile(r"SN-0*(\d+)")
+
+
+def _classic_parts(capture):
+    """Validate a flat classic capture; return its normalized parts.
+
+    Raises SystemExit with a precise code on any contract violation —
+    the door fails closed rather than publishing a half-formed note.
+    """
+    if not isinstance(capture, dict):
+        raise SystemExit("CLASSIC_CAPTURE_NOT_AN_OBJECT")
+    if capture.get("schema") != "naya.smart-note-capture.v2":
+        raise SystemExit("CLASSIC_CAPTURE_SCHEMA_MISMATCH:"
+                         + str(capture.get("schema")))
+    intel = capture.get("intelligence")
+    if not isinstance(intel, dict):
+        raise SystemExit("CLASSIC_CAPTURE_MISSING_INTELLIGENCE")
+    for key in _CLASSIC_INTELLIGENCE_KEYS:
+        if not str(intel.get(key) or "").strip():
+            raise SystemExit(f"CLASSIC_CAPTURE_EMPTY_INTELLIGENCE:{key}")
+    whats_inside = intel.get("whats_inside")
+    if (not isinstance(whats_inside, list) or len(whats_inside) != 5
+            or not all(str(x).strip() for x in whats_inside)):
+        raise SystemExit("CLASSIC_CAPTURE_WHATS_INSIDE_MUST_BE_5_NONEMPTY")
+    topics = intel.get("topics")
+    if not isinstance(topics, list) or not topics:
+        raise SystemExit("CLASSIC_CAPTURE_TOPICS_REQUIRED")
+    page = capture.get("page")
+    if not isinstance(page, dict):
+        raise SystemExit("CLASSIC_CAPTURE_MISSING_PAGE_SECTIONS")
+    for key in _CLASSIC_PAGE_KEYS:
+        if not str(page.get(key) or "").strip():
+            raise SystemExit(f"CLASSIC_CAPTURE_EMPTY_PAGE_SECTION:{key}")
+    sn_id = str(capture.get("smart_note_id") or "").strip().upper()
+    if not re.fullmatch(r"SN-\d{3,}", sn_id):
+        raise SystemExit("CLASSIC_CAPTURE_EXPLICIT_SMART_NOTE_ID_REQUIRED")
+    sn_num = int(sn_id.split("-")[1])
+    title = str(capture.get("title") or "").strip()
+    slug_value = str(capture.get("slug") or "").strip()
+    created_at = str(capture.get("created_at") or "").strip()
+    if not title or not slug_value:
+        raise SystemExit("CLASSIC_CAPTURE_TITLE_AND_SLUG_REQUIRED")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}.*", created_at):
+        raise SystemExit("CLASSIC_CAPTURE_CREATED_AT_MUST_START_YYYY-MM-DD")
+    for key in ("registered_by", "kind"):
+        if not str(capture.get(key) or "").strip():
+            raise SystemExit(f"CLASSIC_CAPTURE_MISSING:{key}")
+    topic = str(capture.get("topic") or "").strip()
+    if not topic and not str(capture.get("page_segment") or "").strip():
+        raise SystemExit("CLASSIC_CAPTURE_TOPIC_OR_PAGE_SEGMENT_REQUIRED")
+    segment = str(capture.get("page_segment") or topic).strip().upper()
+    if not topic:
+        topic = segment
+    date = created_at[:10]
+    y, m, d = date.split("-")
+    ib = (f"IB-SMART-NOTE-{y}{m}{d}-sn{sn_num}-{slug_value}")
+    declared_file = str(capture.get("file") or "").strip()
+    if declared_file:
+        stem = declared_file.rsplit("/", 1)[-1]
+        if stem.endswith(".md"):
+            stem = stem[:-3]
+        if stem != ib:
+            raise SystemExit(
+                f"CLASSIC_CAPTURE_FILE_IB_MISMATCH:file={stem}:derived={ib}")
+    rel_path = "/".join([
+        "BRAIN", "05-MEMORY", "SMART-NOTES", y, m, d, segment, sn_id,
+        ib + ".md",
+    ])
+    if declared_file and declared_file != rel_path:
+        raise SystemExit(
+            f"CLASSIC_CAPTURE_FILE_PATH_MISMATCH:file={declared_file}:computed={rel_path}")
+    distills_line = None
+    distills = page.get("distills")
+    if distills is not None:
+        if not isinstance(distills, dict):
+            raise SystemExit("CLASSIC_DISTILLS_MUST_BE_AN_OBJECT")
+        covers = distills.get("covers")
+        if not isinstance(covers, list) or not covers:
+            raise SystemExit("CLASSIC_DISTILLS_COVERS_REQUIRED")
+        batch = distills.get("batch")
+        of_total = distills.get("of")
+        if not isinstance(batch, int) or not isinstance(of_total, int):
+            raise SystemExit("CLASSIC_DISTILLS_BATCH_AND_OF_MUST_BE_INTEGERS")
+        items = []
+        want = set()
+        for c in covers:
+            csn = str((c or {}).get("sn") or "").strip().upper()
+            ctitle = str((c or {}).get("title") or "").strip()
+            if not re.fullmatch(r"SN-\d{3,}", csn) or not ctitle:
+                raise SystemExit("CLASSIC_DISTILLS_COVER_NEEDS_SN_AND_TITLE")
+            items.append(f"{csn} {ctitle}")
+            want.add(int(csn.split("-")[1]))
+        if sn_num in want:
+            raise SystemExit("CLASSIC_DISTILLS_CANNOT_COVER_ITSELF")
+        distills_line = (f"Distills (Batch {batch}, {len(covers)} of {of_total}): "
+                         + " · ".join(items))
+        # Prove the line parses under the census grammar and yields
+        # exactly the declared coverage — before anything is written.
+        if not _CLASSIC_DISTILLS_LINE_RE.match(distills_line):
+            raise SystemExit("CLASSIC_DISTILLS_LINE_FAILS_CENSUS_GRAMMAR")
+        got = {int(x) for x in _CLASSIC_SN_TOKEN_RE.findall(distills_line)}
+        # The header itself carries no SN token; titles may legitimately
+        # contain their own note's token (e.g. "SN-1907 — ONE MIND..."),
+        # so the parsed set must at least cover the declared set.
+        if not want.issubset(got):
+            raise SystemExit("CLASSIC_DISTILLS_LINE_COVERAGE_MISMATCH")
+    subtitle = str(capture.get("page_subtitle") or "").strip()
+    if not subtitle:
+        subtitle = "DISTILLATION" if distills_line else "SMART NOTE"
+    return {
+        "sn_id": sn_id, "sn_num": sn_num, "ib": ib, "title": title,
+        "slug": slug_value, "created_at": created_at, "date": date,
+        "segment": segment, "topic": topic, "subtitle": subtitle,
+        "rel_path": rel_path, "intelligence": intel, "page": page,
+        "distills_line": distills_line,
+    }
+
+
+def render_classic_text(capture):
+    """Render the classic nine-section page text from a flat capture."""
+    parts = _classic_parts(capture)
+    intel, page = parts["intelligence"], parts["page"]
+    machine = page["machine"].rstrip()
+    if parts["distills_line"]:
+        machine = machine + "\n\n" + parts["distills_line"]
+    blocks = [
+        "# " + parts["title"],
+        f"{parts['sn_id']} · {parts['segment']} / {parts['subtitle']}",
+        f"**Created:** {parts['created_at']}",
+        "## IN A NUTSHELL\n\n" + intel["essence"].strip(),
+        "## HUMAN\n\n" + intel["human_view"].strip(),
+        "## CHILD\n\n" + intel["child_view"].strip(),
+        "## GRANDMA\n\n" + intel["grandma_view"].strip(),
+        "## NAYA\n\n" + intel["ai_view"].strip(),
+        "## MACHINE\n\n" + machine,
+        "## WHAT IT ALL MEANS\n\n" + intel["what_it_means"].strip(),
+        "## WHY IT MATTERS\n\n" + page["why_it_matters"].strip(),
+        "## HOW IT CONNECTS\n\n" + page["how_it_connects"].strip(),
+        "## WHAT IS IN IT FOR YOU\n\n" + page["what_is_in_it_for_you"].strip(),
+        "## THE LEARNING\n\n" + page["the_learning"].strip(),
+    ]
+    return "\n\n".join(blocks) + "\n", parts
+
+
+def classic_projection_path(capture, root=None):
+    """The corpus-layout projection path for a flat classic capture."""
+    parts = _classic_parts(capture)
+    base = Path(root) if root is not None else ROOT
+    return base / parts["rel_path"]
+
+
+def _classic_entry(capture, parts, page_hash, content_hash):
+    """The corpus-standard registry entry (distillation-batch field set)."""
+    intel = parts["intelligence"]
+    entry = {
+        "smart_note_id": parts["sn_id"],
+        "intelligent_block_id": parts["ib"],
+        "slug": parts["slug"],
+        "title": parts["title"],
+        "file": parts["rel_path"],
+        "projection_file": parts["rel_path"],
+        "projection_path": parts["rel_path"],
+        "projection_status": "GITHUB_BRAIN_PUBLISHED",
+        "capture_file": f".naya/capture/{parts['ib']}.json",
+        "kind": str(capture.get("kind")),
+        "status": "canonical",
+        "truth_state": str(capture.get("truth_state") or "CANDIDATE").upper(),
+        "scope": str(capture.get("scope") or "PRIVATE").upper(),
+        "category": str(capture.get("category") or "SYSTEM").upper(),
+        "topic": parts["topic"],
+        "captured_at": parts["date"],
+        "lifecycle_state": str(capture.get("lifecycle_state", "ACTIVE")).upper(),
+        "registered_by": str(capture.get("registered_by")),
+        "registered_at": parts["created_at"],
+    }
+    if capture.get("directed_by"):
+        entry["directed_by"] = str(capture["directed_by"])
+    entry["date"] = parts["date"]
+    entry["page_hash"] = page_hash
+    entry["content_hash"] = content_hash
+    entry["one_line"] = intel["essence"]
+    entry["topics"] = intel["topics"]
+    return entry
+
+
+def register_classic(capture, page_hash, content_hash, registry_path=None):
+    """Append the corpus-standard entry inside one registry transaction.
+
+    Fail-closed: an SN owned by a different block raises via
+    _assert_smart_note_id_available; an IB already registered with
+    different hashes raises; an IB already registered with identical
+    hashes returns its existing entry (idempotent re-publish).
+    """
+    parts = _classic_parts(capture)
+    with registry_transaction(registry_path) as registry:
+        entries = registry.get("entries", [])
+        _assert_smart_note_id_available(parts["sn_id"], parts["ib"], entries)
+        existing = next((e for e in entries
+                         if e.get("intelligent_block_id") == parts["ib"]), None)
+        if existing is not None:
+            if (existing.get("page_hash") == page_hash
+                    and existing.get("content_hash") == content_hash):
+                return existing
+            raise SystemExit(
+                "CLASSIC_REGISTRY_IB_ALREADY_REGISTERED_WITH_DIFFERENT_HASHES:"
+                + parts["ib"])
+        entry = _classic_entry(capture, parts, page_hash, content_hash)
+        registry["entries"] = entries + [entry]
+        registry["corpus_manifest_hash"] = _corpus_manifest_hash(registry["entries"])
+        policy = registry.setdefault("sequence_policy", {"human_id_format": "SN-###"})
+        policy["next_sequence"] = max(int(policy.get("next_sequence", 1)),
+                                      parts["sn_num"] + 1)
+        return entry
+
+
+def publish_classic(capture, capture_source=None):
+    """Publish one flat classic capture through the canonical writer.
+
+    One motion, the door's invariants preserved: the finalized capture
+    (hashes stamped by this writer) is placed in .naya/capture/ FIRST —
+    a different capture already owning that name fails closed — then the
+    page is rendered at the corpus-layout path, then the registry entry
+    + manifest land in a single transaction. Returns (entry, page_path).
+    """
+    text, parts = render_classic_text(capture)
+    page_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
+    content_hash = _canonical_content_hash(json.dumps(
+        parts["intelligence"], sort_keys=True, separators=(",", ":"),
+        ensure_ascii=False))
+    final_capture = dict(capture)
+    final_capture["file"] = parts["rel_path"]
+    final_capture["page_hash"] = page_hash
+    final_capture["content_hash"] = content_hash
+    cap_bytes = (json.dumps(final_capture, indent=1, ensure_ascii=False)
+                 + "\n").encode("utf-8")
+    cap_dest = ROOT / ".naya" / "capture" / (parts["ib"] + ".json")
+    src = Path(capture_source).resolve() if capture_source else None
+    if cap_dest.exists() and cap_dest.resolve() != src:
+        if cap_dest.read_bytes() != cap_bytes:
+            raise SystemExit(
+                f"CLASSIC_CAPTURE_NAME_COLLISION:{cap_dest} already exists "
+                "with different bytes")
+    if not cap_dest.exists() or cap_dest.resolve() == src:
+        cap_dest.parent.mkdir(parents=True, exist_ok=True)
+        cap_dest.write_bytes(cap_bytes)
+    page_path = ROOT / parts["rel_path"]
+    page_path.parent.mkdir(parents=True, exist_ok=True)
+    page_path.write_text(text, encoding="utf-8")
+    entry = register_classic(final_capture, page_hash, content_hash)
+    return entry, page_path
+
+
 # Truth-state authority rank for retrieval tie-breaking. Higher = more
 # authoritative. Rank breaks ties on keyword relevance only — relevance
 # dominates (see retrieve()). The map covers the full elevation ladder
@@ -664,6 +977,20 @@ def _field_words(text):
     """Tokenize text into a set of stemmed lowercase words."""
     return set(_stem(w) for w in re.findall(r"[a-z0-9]+", text.lower()))
 
+# Nutshell-section heading (retrieval 10/10 track, 2026-11-16, Naya 5): the
+# lesson section the retriever reads for scoring AND for the winner's
+# explanation. Two spellings live in the corpus — the original three-word
+# heading ("## In a Nutshell", incl. the "## ✦ IN A NUTSHELL" variant) and the
+# bare heading ("## Nutshell") the six-note page format writes (Intelligence
+# Loop runs 220+; 689 pages at tip e9540a07). Both spellings MUST match here:
+# a title-winning new-format note (SN-3019, score 102.3) failed closed with
+# WINNER_EXPLANATION_EMPTY because this pattern required "IN A ". One shared
+# constant — the two call sites (_nutshell_text, retrieve) must never drift
+# apart again. A page with no nutshell section at all still fails closed
+# (B-49); this only widens the heading, never the fallback.
+NUTSHELL_SECTION_RE = re.compile(
+    r"##(?:\s+[^\n]*)?(?:IN A )?NUTSHELL\n\n(.+?)(?:\n\n##|$)", re.S | re.I)
+
 def _nutshell_text(projection_path):
     """Return a note's IN A NUTSHELL lesson text for retrieval matching.
 
@@ -675,7 +1002,7 @@ def _nutshell_text(projection_path):
         note = (ROOT / str(projection_path)).read_text(encoding="utf-8")
     except (OSError, TypeError):
         return ""
-    m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
+    m = NUTSHELL_SECTION_RE.search(note)
     return m.group(1).strip() if m else ""
 
 # Retrieval field weights (retrieval 10/10 track, 2026-10-06): a query term in
@@ -1049,7 +1376,7 @@ def retrieve(query, areas=None, task_contexts=None, retriever=None,
         # tree does not contain is corpus drift, not an answer. Fail closed
         # with an explicit miss code — never an unhandled crash.
         raise SystemExit("WINNER_PROJECTION_UNREADABLE")
-    m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
+    m = NUTSHELL_SECTION_RE.search(note)
     explanation = m.group(1).strip() if m else ""
     if not explanation:
         # B-49 (2026-10-13): a winner with no extractable lesson content is a
@@ -1574,6 +1901,7 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         return _canonical_content_hash(json.dumps(data["intelligence"], sort_keys=True, separators=(",", ":"), ensure_ascii=False))
 
     capture_by_hash = {}
+    capture_files_by_hash = {}
     if cap_dir.exists():
         for p in sorted(cap_dir.glob("*.json")):
             try:
@@ -1585,6 +1913,7 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
                 defects["captures_missing_intelligence"].append(p.name)
                 continue
             capture_by_hash[hash_of(data)] = p.name
+            capture_files_by_hash.setdefault(hash_of(data), []).append((p.name, data))
 
     entry_hashes = {}
     for e in entries:
@@ -1604,6 +1933,55 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
     for h, name in capture_by_hash.items():
         if h not in entry_hashes:
             defects["captures_unregistered_by_hash"].append(name)
+
+    # TWIN RECLASSIFICATION (Resolve, 2026-11-17 — corpus-gate reconciliation):
+    # a capture whose hash no entry binds is not automatically an unregistered
+    # note. Migration-era notes legitimately carry TWO captures: the original
+    # and the registry-heal/reconstruction capture the entry binds. The spare
+    # is a superseded TWIN of a registered note, proven strictly from bytes:
+    # the capture's intelligent-block identity (its intelligent_block_id field
+    # or its filename stem) names exactly ONE registry entry, and that entry
+    # is hash-bound to a DIFFERENT capture on disk. Anything failing that
+    # proof stays in captures_unregistered_by_hash — the class keeps its
+    # teeth; twins are reported separately so the count stays visible.
+    entries_by_ib = {}
+    for e in entries:
+        if e.get("intelligent_block_id"):
+            entries_by_ib.setdefault(e["intelligent_block_id"], []).append(e)
+    twin_captures = []
+    still_unregistered = []
+    unregistered_pairs = [
+        (h, name) for h, name in capture_by_hash.items() if h not in entry_hashes
+    ]
+    for h, name in unregistered_pairs:
+        candidate_ibs = set()
+        for fname, data in capture_files_by_hash.get(h, []):
+            if data.get("intelligent_block_id"):
+                candidate_ibs.add(data["intelligent_block_id"])
+            candidate_ibs.add(fname[:-5] if fname.endswith(".json") else fname)
+        matched = []
+        seen_keys = set()
+        for ib in candidate_ibs:
+            for e in entries_by_ib.get(ib, []):
+                key = (e.get("smart_note_id"), e.get("intelligent_block_id"))
+                if key not in seen_keys:
+                    seen_keys.add(key)
+                    matched.append(e)
+        proven = [
+            e for e in matched
+            if e.get("content_hash") and e["content_hash"] != h
+            and e["content_hash"] in capture_by_hash
+        ]
+        if len(matched) == 1 and len(proven) == 1:
+            twin_captures.append({
+                "capture": name,
+                "smart_note_id": matched[0].get("smart_note_id"),
+                "intelligent_block_id": matched[0].get("intelligent_block_id"),
+                "bound_capture": capture_by_hash[matched[0]["content_hash"]],
+            })
+        else:
+            still_unregistered.append(name)
+    defects["captures_unregistered_by_hash"] = still_unregistered
 
     for e in entries:
         sn = e.get("smart_note_id") or e.get("intelligent_block_id") or "<unknown>"
@@ -1666,6 +2044,10 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
             defects["published_pages_without_registry_entry"].append({"page": name, "paths": paths})
 
     counts = {k: len(v) for k, v in defects.items()}
+    defect_total = sum(counts.values())
+    # Twins are proven registrations, not defects: reported as their own
+    # count (ratcheted by the drift test) but never inside defect_total.
+    counts["twin_captures_of_registered_notes"] = len(twin_captures)
     # ORPHAN DECOMPOSITION (Naya 5, 2026-11-15 — the orphan count conflates
     # two defects: pages never registered, and pages filed under an SN id the
     # registry already gave to an earlier page. A cure that "registers the
@@ -1687,10 +2069,11 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
     for items in orphan_decomposition.values():
         items.sort(key=lambda d: d["path"])
     return {
-        "ok": sum(counts.values()) == 0,
+        "ok": defect_total == 0,
         "counts": counts,
-        "defect_total": sum(counts.values()),
+        "defect_total": defect_total,
         "defects": defects,
+        "twin_captures": twin_captures,
         "orphan_decomposition": orphan_decomposition,
         "orphan_decomposition_counts": {k: len(v) for k, v in orphan_decomposition.items()},
         "surfaces": {

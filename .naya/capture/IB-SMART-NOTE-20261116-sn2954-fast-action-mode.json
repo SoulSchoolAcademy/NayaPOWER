@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2954",
+ "intelligence": {
+  "title": "Fast Action Mode",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2954-fast-action-mode",
+  "smart_note_id": "SN-2954",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2954/IB-SMART-NOTE-20261116-sn2954-fast-action-mode.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The relay was built to protect him from unfinished work, and it became the thing that kept finished work from him. The visual agreement sat 10 hours. The sidebar round took hours. Not because the making was slow — because each verified step waited for the next queue, and the delivery waited for the whole chain, and the chain waited to be bundled with another round. Verification is not the delay; holding is. Fast action keeps the verification and drops the hold: the captain looks and the delivery goes in the same pass the report lands. He reacts, we fix, it comes back — that loop IS the work, not the overhead around it. \"It's exhausting\" is the diagnosis: waiting is the cost, not the making.",
+  "simple_view": "Imagine you're building with blocks, and every time you finish a tower you have to put it on a shelf and wait HOURS before showing it to your friend! That's silly — you want to show it right away, and if your friend says \"make the top red!\", you fix it and show it again, right away! That's fast action: build it, check it, show it, fix it, show it again — back and forth, back and forth, never sitting on the shelf!",
+  "grandma_view": "It's like this, love — before, every time we finished a piece of work, we set it aside and waited hours before showing it to him, like a cake left cooling when everyone's hungry. That's exhausting for him, dear — he says something, it should come back right away, he makes another little change, it comes back right away. So now: we build a piece, we check it ourselves straight away, and we show it to him in that very same moment. He reacts, we fix it, back it comes. Nothing sitting, nothing held back. The checking still happens — we still check everything twice — but the showing happens at once.",
+  "naya_view": "Fast action: build a piece, verify it right away, show it the same pass. He reacts, fix, back again. The relay still verifies; the eye and the delivery land together. Nothing sits, nothing held, nothing bundled.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2954",
+   "title": "Fast Action Mode",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2954/IB-SMART-NOTE-20261116-sn2954-fast-action-mode.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2954/IB-SMART-NOTE-20261116-sn2954-fast-action-mode.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "44361d0673c292675f485c24e4756f7690f923df"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

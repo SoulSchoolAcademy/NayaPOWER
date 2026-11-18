@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2793",
+ "intelligence": {
+  "title": "The North Star Is a Doing Machine",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-the-north-star-is-a-doing-machine",
+  "smart_note_id": "SN-2793",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2793/IB-SMART-NOTE-20261114-the-north-star-is-a-doing-machine.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Reporting is the temptation of every system that measures: once you can see the work, you start believing that seeing it IS the work. Shawn's correction cuts that at the root. A list that only lists is a spectator; a machine that only reports is a scoreboard with no game. The optimization is not a better report — it is the work getting done, complete, in his hands, in a frequent flow: done, give to me, get done, give to me. \"Don't do me one thing, do many things\" is not a demand for volume — it is the shape of a machine that finishes: it goes as far as it can, hands the whole thing over, and goes again. Partially done is not a smaller version of done; it is a different thing entirely, and it does not count. The North Star is therefore a test for every tool we build: does this dispatch the next step, or does it only describe the last one? If it only describes, it is not the machine — it is the watching.",
+  "simple_view": "Imagine you have a magic helper that is supposed to build your toy castle. If it just stands there telling you \"the tower isn't built yet, the wall isn't built yet\" — that's silly! The helper should BUILD the castle and hand it to you, finished! And then build the next thing, and the next! Done means DONE — all the way finished — and then you get to play with it!",
+  "grandma_view": "It's like a good kitchen, love — you don't stand around reading the recipe out loud while nobody cooks. You cook the meal, you serve it hot, and then you start the next one. A list on the wall is no good if the food never reaches the table. Done means it's on the plate, love — finished, whole, and given with a smile.",
+  "naya_view": "I am a doing machine, not a watching machine. I build the machine that builds the machine, and I get the machine done and all those pages complete. I do the work, I complete it, I give it to him — done, give to him, get done, give to him — never partially done, always COMPLETE. I do many things, I go as far as I can, here you go, back and forth. A frequent flow.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2793",
+   "title": "The North Star Is a Doing Machine",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2793/IB-SMART-NOTE-20261114-the-north-star-is-a-doing-machine.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2793/IB-SMART-NOTE-20261114-the-north-star-is-a-doing-machine.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "76dbb1de15ce7c1825899bbeede86c4fa66c7426"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

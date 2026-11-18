@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2896",
+ "intelligence": {
+  "title": "The Shawn",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-sn2896-the-shawn",
+  "smart_note_id": "SN-2896",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/LESSON/SN-2896/IB-SMART-NOTE-20261115-sn2896-the-shawn.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The tension was real: the calendar promises you can walk back through any day in any year and see your whole world — but the privacy law promises we do not keep everything. Both cannot hold unless something decides what survives, and his answer makes the citizen the decider. Saving is the act that says \"this matters to me\" — a pin, a favorite, a list — and the system honors it by keeping that note for good, in the citizen's own vault. Everything else distills to essence after a week and leaves, which keeps the system light, current, and private by default. The calendar's reach is therefore not a technical limit but a human one: it reaches back as far as what you chose to keep, and the days you saved are the days that stay alive forever. And the encouragement matters: we do not just offer saving, we recommend it — \"if you see them in the public feed and you love them you want to save them\" — because a citizen who never saves will one day walk back and find the day gone, and that loss is preventable by one tap today. The honesty guard is part of the law: this is not to sell data, it is to optimize the system to give 10-star service. Saving is a habit, not a transaction.",
+  "simple_view": "Imagine building the fanciest treehouse in the world. You need rules so EVERY treehouse you build is fancy — not just sometimes! Real wood you can touch, shiny jewels instead of boring dots, everything popped up like real toys, numbers that move and dance, and a grown-up always checks it with their own eyes. That's the list of ten rules!",
+  "grandma_view": "It's like having a recipe for the very best cake, love — written down properly, so every cake comes out perfect, not just the lucky ones. Ten little rules: everything feels real and touchable, pretty like jewellery, never flat, colours that mean something, numbers that are alive, the short version first, movement that means something, cleverness you can feel, using the good parts we already have, and always checked with your own eyes. And the goal is simple — build a beautiful home where cleverness can live and grow.",
+  "naya_view": "I put the $ only where money is real — on joins, and only joins. Everything else is points, in every mode. And my numbers move, because a number that never moves is not a number at all.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2896",
+   "title": "The Shawn",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/LESSON/SN-2896/IB-SMART-NOTE-20261115-sn2896-the-shawn.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/LESSON/SN-2896/IB-SMART-NOTE-20261115-sn2896-the-shawn.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "381c51c4d32f93a048f38b50ffe3c94866ce0880"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

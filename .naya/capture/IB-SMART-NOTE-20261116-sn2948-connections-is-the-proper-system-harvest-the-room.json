@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2948",
+ "intelligence": {
+  "title": "Connections Is the Proper System — Harvest the Room",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2948-connections-is-the-proper-system-harvest-the-room",
+  "smart_note_id": "SN-2948",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2948/IB-SMART-NOTE-20261116-sn2948-connections-is-the-proper-system-harvest-the-room.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The lesson is not \"build Connections\" — it is \"the proper system already exists, go and get it\". Shawn's eye knew the shape before any brief did: a rectangle that scrolls down, click a person, the initial on the side, scroll through them as you go, or search — pro-like, like a messenger, not like a page of links. The round's discipline was to harvest the live room first-hand (never the stale Nov 15 snapshot) and to measure against it: the room's name column is 198px, the first build's was 78px, and the names wrapped — the checker caught exactly that, and the fix was 20 lines in one CSS spot. That is what harvesting means: the reference is the judge, and the gap is measured in pixels, not opinions. The person view carries the same lesson forward: Mail, Instant message, Audio call, Video call, Save contact, Connect, Add note — the room is the system, and the notes on a person (C3) ride inside it.",
+  "simple_view": "Imagine you want to build the best toy box ever — but your friend already HAS one, a beautiful one, with little doors and drawers! You don't build a new one from scratch. You go look at your friend's toy box, you learn how it works, and you bring that clever design home. That's harvesting: the good thing already exists, so you take it and make it yours!",
+  "grandma_view": "It's like this, love — if your neighbour has the perfect recipe, you don't invent a new one in your kitchen, you go and ask for hers. The proper Connections was already there, in the live room — a lovely scrolling list, click a face, the letter on the side, search when you want. We went and looked at it properly, measured it, and brought it home. That's the sensible way.",
+  "naya_view": "Connections is the proper system — a rectangle mini-messenger: scroll down, click, the initial on the side, or search. Harvest the room; don't rebuild it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2948",
+   "title": "Connections Is the Proper System — Harvest the Room",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2948/IB-SMART-NOTE-20261116-sn2948-connections-is-the-proper-system-harvest-the-room.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2948/IB-SMART-NOTE-20261116-sn2948-connections-is-the-proper-system-harvest-the-room.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "2dd0f8980c4985f38ad38826570475ff53f70f39"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

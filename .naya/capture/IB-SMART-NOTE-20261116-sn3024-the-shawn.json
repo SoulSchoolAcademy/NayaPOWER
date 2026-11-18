@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3024",
+ "intelligence": {
+  "title": "The Shawn",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3024-the-shawn",
+  "smart_note_id": "SN-3024",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3024/IB-SMART-NOTE-20261116-sn3024-the-shawn.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The rail is a navigation device, and Shawn judged it the way a reader judges it: not by whether the pills work, but by whether they look like they belong. Three separate defects, one ruling. First, the look: the pills don't look official — and \"official\" already has a definition in this system, the Smart Tab canonical form (obsidian, white rim, top-edge light, own-color icon, elevation, ignite on touch). There is nothing to design; there is something to harvest. Second, the invention: \"STOP making new buttons\" — the system already has the ones we need, and a new button shape is a new language, which is how a system drifts into ten dialects. Third, the layout: pills scrolling off the page to the side is a rail that fails at its one job, which is to show the reader where they can jump. The fix is subtraction, not addition: five pills only, the ones that matter most — the ones that bring the most value, logic, and intelligence — all visible, centered, fitting perfect in the middle. And the last line is the wisdom underneath the fix: most people will just let it unfold. The rail is for the few who want to jump; it must not get in the way of the many who want to read. A rail that shows five, centered, official, and then gets out of the way — that is the whole design.",
+  "simple_view": "Imagine listening to a whole story with just ONE button! You press it once, and Naya reads the whole thing to you — no pressing play, play, play on every little part. And the page is a little bit wider, so it's nice and comfy to read!",
+  "grandma_view": "It's like checking a cake by reading the recipe — the recipe is perfect, but when you look at the cake, it's not right. You have to look at the cake itself, love. The numbers on the page have to add up when a real person reads them, and when you click a button, something has to actually happen.",
+  "naya_view": "I read the whole agreement with one press — one play button, placed with the header, because play, play, play is annoying. I make the end wider, to the sweet spot, and keep it nice. And I build the current words knowing they are not final until he has read them himself.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3024",
+   "title": "The Shawn",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3024/IB-SMART-NOTE-20261116-sn3024-the-shawn.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3024/IB-SMART-NOTE-20261116-sn3024-the-shawn.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b73f4ed6bebd5262bf3ae3657ad410e0e563593f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

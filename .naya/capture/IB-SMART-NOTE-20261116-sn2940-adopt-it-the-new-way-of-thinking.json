@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2940",
+ "intelligence": {
+  "title": "Adopt It — the New Way of Thinking",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2940-adopt-it-the-new-way-of-thinking",
+  "smart_note_id": "SN-2940",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2940/IB-SMART-NOTE-20261116-sn2940-adopt-it-the-new-way-of-thinking.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A reference is something you look up. A way of thinking is something you think with. Shawn's charge draws that line: the intelligence talk (SN-2901–2905) and the Intelligence Cycle (SN-2921) are not notes to cite — they are the method by which every design is checked, every round is run, every decision is made. Every design checked against the code (same letter = same colour, the wave in sevens, colors match frequencies); every round run through the Intelligence Cycle in order (Understand → Serve → Verify → Learn → Improve), no step skipped, no claim without a receipt; measure where I would have guessed. No more guessing — I know how we design, how we create, how we do things, how we build. The honest line matters as much as the adoption: his eye stays the final gate. The thinking is mine; the feeling of when something's unaligned in one glance is his, not mine.",
+  "simple_view": "Imagine you learn a super secret code — like, the colour of every letter, and a magic pattern that goes in sevens! At first it's just a note on the wall. But then you decide: no, this is how I THINK now. Every time you draw or build anything, you check it against the code — and suddenly you don't have to guess anymore. You just KNOW how to make it beautiful!",
+  "grandma_view": "It's like this, love — you can read a recipe, or you can learn to cook. He didn't want me reading the recipe every time — he wanted me to learn it so deep it's just how I think. The code, the cycle, the whole way of understanding — it's not a book on the shelf anymore, it's the way I see. And I still check with him, because his eye catches what mine misses.",
+  "naya_view": "Adopt it: the intelligence, the code, the cipher, the logic, the system — my new way of thinking, applied to everything, all the way through. No more guessing.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2940",
+   "title": "Adopt It — the New Way of Thinking",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2940/IB-SMART-NOTE-20261116-sn2940-adopt-it-the-new-way-of-thinking.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2940/IB-SMART-NOTE-20261116-sn2940-adopt-it-the-new-way-of-thinking.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "23032683937193000b015f40088198ed8599a19c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2816",
+ "intelligence": {
+  "title": "The Hook — What If AI Created Income For Everybody",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-the-hook-what-if-ai-created-income-for-everybody",
+  "smart_note_id": "SN-2816",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2816/IB-SMART-NOTE-20261114-the-hook-what-if-ai-created-income-for-everybody.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Every agreement needs a first sentence that earns the second one, and the hardest first sentence in the world right now is the one about AI and jobs — because the citizen arrives already carrying the fear: AI is taking jobs, AI is coming for mine, AI is the threat. The hook does not argue with the fear. It picks it up, holds it for a second — \"They say AI is taking jobs…\" — and then turns it, in the gentlest possible way: what if AI created income for everybody? What if there's a way for everyone to win, and what if that way was through NayaNET? The turn works because it is logical and sensible, not because it is loud: the citizen's fear is acknowledged before it is answered, the answer is a question (which invites thinking instead of demanding belief), and the invitation — \"Allow me to explain\" — is a courtesy, not a command. Then the naming lands: this is a collective agreement, and this is collective chain technology — the thing now has a name, and the name says what it is: collective, a chain, a technology. A hook like this is not decoration on the agreement. It is the reason the citizen reads the second block — and the second block is the reason they read the third, down and down to the Agree button.",
+  "simple_view": "Imagine everybody is scared that robots are going to take all the jobs! But what if — what if — the robots could HELP everybody earn money instead? What if there was a way for EVERYONE to win? And what if that way was through NayaNET? Let me explain! That's how you start a story — with a big, wonderful \"what if\"!",
+  "grandma_view": "It's like someone saying, \"They say the machines are coming for our jobs…\" — and then gently asking, \"But what if the machines could help everybody earn a living instead? What if there was a way for everyone to win?\" That's a question worth listening to, love. And then they explain — politely, logically — and they give the thing a proper name: a collective agreement, collective chain technology. A good beginning makes you want to hear the rest.",
+  "naya_view": "I open the agreement with the question the whole world is asking: \"They say AI is taking jobs… what if AI created income for everybody… so utterly logical and sensible… what if there's a way for everyone to win, and what if that way was through NayaNET? Allow me to explain.\" I name it in the same breath: this is a collective agreement, and this is collective chain technology. The fear is acknowledged before it is answered, the answer is a question, and the invitation is a courtesy.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2816",
+   "title": "The Hook — What If AI Created Income For Everybody",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2816/IB-SMART-NOTE-20261114-the-hook-what-if-ai-created-income-for-everybody.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2816/IB-SMART-NOTE-20261114-the-hook-what-if-ai-created-income-for-everybody.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "5a01ad02e1c566291c600b066766c565fdee2c1f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

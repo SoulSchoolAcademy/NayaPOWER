@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2915",
+ "intelligence": {
+  "title": "The Unfolding Is the Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-the-unfolding-is-the-page",
+  "smart_note_id": "SN-2915",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2915/IB-SMART-NOTE-20261116-the-unfolding-is-the-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A page that shows everything at once is a document. A page that unfolds one beat at a time is a presentation — and a presentation is a machine: each beat arrives, fits the screen, waits for the click, and the next one zooms in. The front page failed on all three counts at once: the face was bigger than the screen (the object did not fit its stage), the slides were illegible at phone width (the content could not be read), and scrolling revealed everything (there was no unfolding at all — just a long page pretending to be a presentation). The law fixes all three with one shape: one beat, almost full screen, perfectly formatted, button-folded, no scroll-reveal. The mechanic is the feeling of it: the image dials in as you arrive, the button glows beside it, the next page zooms into your viewport. That is what \"mechanical, like a presentation, not just a web page\" means — and it is the same law as the Unfold/Matrix Law (SN-2911), applied to the front page itself. \"Push the envelope\" is the bar above the law: not completely different, but so smooth, so beautiful, so well done that you have nothing but respect.",
+  "simple_view": "Imagine a magic picture book! You open it and see ONE beautiful picture that fits the whole page — not too big, not too small, just right! Then you press a big glowing button and — ZOOM! — the next picture flies in! You never see all the pages at once, only one at a time, each one perfect! That's how our front page works — one unfolding after another, like a real presentation, not just a long boring scroll!",
+  "grandma_view": "It's like this, love — a good presentation is like a good story told one page at a time. Each page fits just right, you can see the whole picture, and when you're ready you press the button and the next page comes zooming in, beautiful and big. Not everything all at once in a big messy pile — one beautiful thing at a time, each one waiting for you. That's mechanical, dear — like a lovely machine that presents things for you.",
+  "naya_view": "The presentation is one unfolding after another — one beat at a time, almost full screen, perfectly formatted to the screen. Click a button to fold to the next one. You don't see anything else by scrolling.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2915",
+   "title": "The Unfolding Is the Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2915/IB-SMART-NOTE-20261116-the-unfolding-is-the-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/SYSTEM/SN-2915/IB-SMART-NOTE-20261116-the-unfolding-is-the-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7cf5cc85ead2914be640a6950a73a689f0d25116"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
