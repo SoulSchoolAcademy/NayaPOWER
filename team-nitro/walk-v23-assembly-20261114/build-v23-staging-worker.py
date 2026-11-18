@@ -379,8 +379,31 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # the agree button's destination changes from the proof-host
 # welcome-staged.html to /?stage=bridge on this worker — the proof host
 # is never a destination. Walk, template, identity shas unchanged.
-assert welcome_sha.startswith("8aad1e5c"), "welcome sha is not the AGREEMENT MERGE welcome sha (2026-11-17: one choice screen at the root, intro boards to the bridge, entry defaults to intro, READ -> /agreement, login exits in-flow, phone fit, R10 stray-brace fix)"
-assert unfold_sha.startswith("faea2190"), "unfold sha is not the AGREEMENT MERGE unfold sha (2026-11-17: agree destination proof-host -> /?stage=bridge, 85,679 B)"
+# AGREEMENT MERGE EYE FOLLOW-ON (2026-11-17, BRIEF-AGREEMENT-MERGE-EYE-FOLLOWON-20261117.md
+# + bridge fix #2 amendment; maker round — agreement-merge-eye-followon-20261117/work/
+# edit-followon.py + edit-followon2.py + edit-followon3.py):
+# the welcome sha moves 8aad1e5c -> c8f0df54 (1,133,238 B -> 1,140,854 B,
+# +7,616 B): F1 first load shows the clean choice (the 'bridge' localStorage
+# save + auto-restore are gone — only 'agree' is ever saved/restored, ITEM 11);
+# F2 every button visibly presses in while held (depress + dim + shadow collapse,
+# spring back on release, incl. the NAYA play control); F3 choice rims go DEEP
+# purple #8e24aa / deep green #07925f (deck-end pills + Keep reading, button-scoped);
+# F4 all twelve legal buttons open their legal text in-page (ungated handler +
+# bridge return); F5 title clear of the corner emblems (harvested bridge fix #2
+# D3: top emblems up to -76px/-56px, measured 10-12px clear, 0 overlap). D1-D4
+# carried from bridge-presentation-fix2-20261117 (blob 36b0eaa6, sha b1d4b16d):
+# D1 stray '}' already present via the merge R10 (same deletion); D2 the
+# _fpRestoreStage guard carried verbatim in mechanism, agree-only per F1;
+# D3/D4 carried verbatim (emblem lift + legal-strip one-row, wrap override
+# deleted). The 13px final-vs-bar overlap at 635/390 is pre-existing (fix2
+# checker: lifts/padding/final layout byte-identical to base; bar hidden at
+# max scroll) — not redesigned. Button labels UNCHANGED (named per arrival in
+# the maker report). Walk, template, identity shas unchanged.
+# The unfold sha moves faea2190 -> 87fa3fa4 (85,679 B -> 87,076 B, +1,397 B):
+# the /agreement play control gets a base transition so its press/release
+# animates instead of snapping (part 2); the rest is the merged unfold bytes.
+assert welcome_sha.startswith("c8f0df54"), "welcome sha is not the AGREEMENT MERGE EYE FOLLOW-ON welcome sha (2026-11-17: F1 clean-choice first load, F2 visible press-in, F3 deep rims, F4 twelve legal unfolds, F5/D3 emblem clearance, D1-D4 carried from fix2)"
+assert unfold_sha.startswith("87fa3fa4"), "unfold sha is not the AGREEMENT MERGE EYE FOLLOW-ON unfold sha (2026-11-17: /agreement play-button press transition, 87,076 B)"
 # WALK END SHARE PLUS FIX (2026-11-16, MAKER-BRIEF-WALK-END-SHARE-PLUS-FIX-20261116.md; checker NOT PASS 18:50Z):
 # the welcome sha moved 62f691b4 -> ee348e7c (919,910 B -> 921,988 B,
 # +2,078 B): H8 — the intro legal links keep their natural one-line width

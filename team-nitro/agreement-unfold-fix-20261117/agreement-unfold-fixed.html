@@ -255,7 +255,20 @@ a.deck-next{text-decoration:none;text-align:center}
 @media (prefers-reduced-motion: reduce){.play-orbit{animation:none}}
 
 </style>
-<noscript><style>.letter-beat[hidden]{display:block}</style></noscript>
+<noscript><style>.letter-beat[hidden]{display:block}
+/* ==== AGREEMENT EYE FOLLOW-ON (2026-11-17, BRIEF-AGREEMENT-MERGE-EYE-FOLLOWON-20261117.md) ====
+   F2 PRESS (Laws SS1/SS4, Intelligent Block Rules L6, Anatomy 1.2.8):
+   hover rises, ACTIVE presses INTO the page. The old bytes shared one
+   hover/active lift rule (and a lone scale(.97) that kept the bright glow),
+   so a held button did not read as pressed. These separate :active rules
+   sit last and win at equal specificity: depress 1px + scale .97 (play
+   .94, it is the bigger object) + dim to ~72% + glow and drop shadow
+   collapse. No tone change in this file: its tones are already deep. */
+.play-btn{transition:transform .18s ease-out,filter .18s ease-out,box-shadow .18s ease-out}
+.play-btn:active{transform:scale(.94);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 0 12px -2px #8e24aa,0 4px 10px rgba(0,0,0,.6);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
+.p3-enter:active{transform:translateY(1px) scale(.97);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.6);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
+.deck-next:active{transform:translateY(1px) scale(.97);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.6)}
+</style></noscript>
 </head>
 <body>
 <main class="p3-deal-unfold" id="deckUnfold" style="margin-top:24px;margin-bottom:48px">
