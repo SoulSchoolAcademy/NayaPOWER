@@ -58870,6 +58870,39 @@
         "note": "published directly as a BRAIN projection in commit 436ea127df07095d98af895cf87e4a77725a62af ('Continuous Distillation Resolve seat 2026-11-18: SN-3382 Decide, Declare, Become') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "7b8ffb0e6c8d28cc435961851ac11bf521ba0e43cb624f9a39287c8c093a4f75"
+    },
+    {
+      "smart_note_id": "SN-3390",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3390-copy-never-recreate",
+      "slug": "copy-never-recreate",
+      "title": "Copy, Never Recreate",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3390/IB-SMART-NOTE-20261118-sn3390-copy-never-recreate.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3390/IB-SMART-NOTE-20261118-sn3390-copy-never-recreate.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3390/IB-SMART-NOTE-20261118-sn3390-copy-never-recreate.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3390-copy-never-recreate.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:52:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "dd301b79ba794f703bf6908271084708ac298899269527b732b38ba1d07966ad",
+      "content_hash": "4905dff20f3fb6e98943386640de4301be94f17445127ee966be15fff55f1119",
+      "one_line": "Everything NayaNET shows is built from real parts that already exist, harvested byte for byte — never recreated from a description. A description retyped by a builder is a copy at lower quality of a part his eye refined over a year; the recreate pattern is the single most expensive habit the system ever had, and the law that kills it is one line: take the code itself. The parts live in the Factory — gauged, inventoried, named — and the builder's craft is composition: real gauge, real orbs, real jewels, real boards, joined on one living screen in obsidian gloss, lit from one light. What the Factory makes, it masters, names, inventories and networks, so the next builder starts from the best of the best instead of from memory. These surfaces are not pages; they are apps — things that live, work and serve. And the test of any part is twofold: is it real and valuable, and does it sync with the whole? A part that fails either test is a loose piece, not factory output.",
+      "topics": [
+        "Design",
+        "System",
+        "Distillation",
+        "Craft",
+        "Factory"
+      ]
     }
   ],
   "sequence_policy": {
@@ -58880,5 +58913,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "bae3f0bbf7bc58e515be8521e6332f284dbe211db34f946821e2c13d299956c0"
+  "corpus_manifest_hash": "afc0ddf74069937a699553379225c824dc1b46d99f592ad756720f0e56e2bf01"
 }
