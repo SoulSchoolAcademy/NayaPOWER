@@ -59866,6 +59866,366 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3400",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3400-dont-send-it-back-keep-driving-until-ten",
+      "title": "SN-3400 — Don't Send It Back — Keep Driving Until Ten",
+      "content_hash": "e3e5accf3e396b92cf181718ee30749a3db5d432672cd28ef42aaebaafe40e28",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3400/IB-SMART-NOTE-20261118-sn3400-dont-send-it-back-keep-driving-until-ten.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 061c2da5b16dd94b8ec1490321464f263cb9a623 ('Intelligence Loop run 328: SN-3400 Don't Send It Back — Keep Driving Until Ten (Shawn voice call ~19:35-19:43Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "90db974636821f6bbe37ba0aa85ed6da0ab46e24b41ca4c0b9f8f7ad12d4a893"
+    },
+    {
+      "smart_note_id": "SN-3401",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3401-login-bridge-page-landing",
+      "title": "SN-3401 — Login Still Doesn't Land on the Bridge Page",
+      "content_hash": "ec474520a59360f359e4daf3987c93f9128acc6ec370b5af4de3a53b44e048e4",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3401/IB-SMART-NOTE-20261118-sn3401-login-bridge-page-landing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 7becc9b7f983e455ba9ba9bbcb617537792252b3 ('Intelligence Loop run 328: SN-3401 Login Still Doesn't Land on the Bridge Page (Shawn voice call ~19:51Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "d3f4560d497c3f814d868b6f97d72947c75e1bf12e726f6ae5d22a8e92bc9619"
+    },
+    {
+      "smart_note_id": "SN-3440",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3440-agreement-audio-video-two-options-below-the-page",
+      "title": "SN-3440 — Agreement Audio and Video: Two Options Below the Page, in Real Naya Voice",
+      "content_hash": "bfe3cb3d4a0bcec6f3082a692bfc3e6a4778d4d3937a9a9321f63422b5d15ca3",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3440/IB-SMART-NOTE-20261118-sn3440-agreement-audio-video-two-options-below-the-page.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 675ab5ef326b2f46f260c7b36b328fae63ba0dd4 ('Intelligence Loop run 329: SN-3440 Agreement Audio and Video — Two Options Below the Page, in Real Naya Voice (Shawn voice call ~20:14-20:18Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "dba5b1e4fe8a3791751cc5f41e3fc190a952ad7dd3343f91c45550df54a325a6"
+    },
+    {
+      "smart_note_id": "SN-3441",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3441-dashboard-live-walk-remove-doors-hub-bottom-bar",
+      "title": "SN-3441 — Dashboard Live Walk: Remove the Doors, Hub Bottom Bar on All Pages",
+      "content_hash": "26ede21cf446abff13db31ff9cd743653f6a9d26de542fa643a3fb1d599d6de5",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3441/IB-SMART-NOTE-20261118-sn3441-dashboard-live-walk-remove-doors-hub-bottom-bar.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 6a5d96cf78e4663134d541bd064871c8fa77bdbb ('Intelligence Loop run 329: SN-3441 Dashboard Live Walk — Remove the Doors, Hub Bottom Bar on All Pages (Shawn voice call ~20:24Z, bar refined ~20:28Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "6a372117c9ff40bea55c640543ecaeb29f2e72ee4e98c5d0154f4652197ceaf6"
+    },
+    {
+      "smart_note_id": "SN-3442",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3442-icons-uploaded-verbatim-sidebar-bottom-bar",
+      "title": "SN-3442 — The Icons, Uploaded Verbatim: Sidebar Set and Bottom Bar Set",
+      "content_hash": "e3ec8a671ab1f434d4684d83c0ae9a88425ace7e437a69f029997d6166e89c3c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3442/IB-SMART-NOTE-20261118-sn3442-icons-uploaded-verbatim-sidebar-bottom-bar.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit d233a7994b5a8c590e57a8d541049858540afcf7 ('Intelligence Loop run 329: SN-3442 The Icons, Uploaded Verbatim — Sidebar Set and Bottom Bar Set (Shawn voice call ~20:27Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "4337b568b6f7bb9938304e6893d5948a98e4886d0ec5162055b65287b211b0ee"
+    },
+    {
+      "smart_note_id": "SN-3443",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3443-agreement-audio-uploaded-his-recording",
+      "title": "SN-3443 — Agreement Audio Uploaded: His Recording, Transcription Owed",
+      "content_hash": "a8ae5a7b5d885158f2abb1af2b57a84c69ceeeec2be76636539e68214de7aa16",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3443/IB-SMART-NOTE-20261118-sn3443-agreement-audio-uploaded-his-recording.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit e59de07c27f76562cba2f832bce7ad90da6c9561 ('Intelligence Loop run 329: SN-3443 Agreement Audio Uploaded — His Recording, Transcription Owed (Shawn voice call ~20:31Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "6d16addfc70928e659e5de70f838e7c0a7dc1b190387f21d90664800eeba06c5"
+    },
+    {
+      "smart_note_id": "SN-3444",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3444-factory-test-worker-removed-cover-owed",
+      "title": "SN-3444 — Factory Test Worker Removed on His Order: The Cover Is the One Right Thing Owed",
+      "content_hash": "4e4f1372184d7072f41d6293fc997e5a3ad204add7d88409371d7421587b8b90",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3444/IB-SMART-NOTE-20261118-sn3444-factory-test-worker-removed-cover-owed.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 18e0f3fefaf4c732c74e292eb65a826a1f36631a ('Intelligence Loop run 330: SN-3444 Factory Test Worker Removed on His Order — The Cover Is the One Right Thing Owed (Shawn voice call ~20:53Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c5f602ad1d683b9a155b3c529083ec51ebf0ffe8938be22deb9186f7f63570ae"
+    },
+    {
+      "smart_note_id": "SN-3445",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3445-halfb-staging-checked-live-no-play-button-wrong-portrait",
+      "title": "SN-3445 — Halfb Staging Checked Live: No Play Button, Wrong Portrait",
+      "content_hash": "788e7e52961dbc27a395736ad0e81c8883d99dde9364a28b7541eddbab4b39e6",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3445/IB-SMART-NOTE-20261118-sn3445-halfb-staging-checked-live-no-play-button-wrong-portrait.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit d436a5365c620a8d50b4ddbd7c7e682c2012c162 ('Intelligence Loop run 330: SN-3445 Halfb Staging Checked Live — No Play Button, Wrong Portrait (Shawn voice call ~20:53Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "0ae67a9449f6cc530754c32516ae21d045a646057c52720ff24c9d625fb90c44"
+    },
+    {
+      "smart_note_id": "SN-3446",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3446-transcription-landed-audio-is-not-his-podcast",
+      "title": "SN-3446 — Transcription Landed: The Audio Is Not His Podcast",
+      "content_hash": "44e928418ba405e9ec6b4a680c459fefd57cadfbe2d7305ec8e1041621d08cf9",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3446/IB-SMART-NOTE-20261118-sn3446-transcription-landed-audio-is-not-his-podcast.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 9128c13d0b5a1403104fdf3fcc50a5c39a5a7ac1 ('Intelligence Loop run 330: SN-3446 Transcription Landed — The Audio Is Not His Podcast (transcription subagent c3a19e8a 20:55Z; ruling ~20:57Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "4927703efb452810f9a7339435ef7bebee5f96c249a36521b0fa3aded2d8ac14"
+    },
+    {
+      "smart_note_id": "SN-3447",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3447-messenger-alignment-round-align-do-not-rebuild",
+      "title": "SN-3447 — Messenger Alignment Round: Align, Do Not Rebuild",
+      "content_hash": "2159379ac157e8ebda2160410c258aa3a5a7081cdb360f704ba96f762ec95780",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3447/IB-SMART-NOTE-20261118-sn3447-messenger-alignment-round-align-do-not-rebuild.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 90cff2b6240e864f68675b1570397e61c8d01f45 ('Intelligence Loop run 330: SN-3447 Messenger Alignment Round — Align, Do Not Rebuild (Shawn voice call ~20:57Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "1793f21872f1cb08f5b94c201ffeb1032b7f6b74c5b4faf8addf9fb1a7167bfb"
+    },
+    {
+      "smart_note_id": "SN-3448",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3448-identity-polish-round-polish-only-not-a-rebuild",
+      "title": "SN-3448 — Identity Polish Round: Polish Only, Not a Rebuild",
+      "content_hash": "e58e93e614d3135b1f424c8954416af261933cc258906e33a2b43f64a857a410",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3448/IB-SMART-NOTE-20261118-sn3448-identity-polish-round-polish-only-not-a-rebuild.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 2becce3d623d8634e4c08e987fdf4fda9b24b46e ('Intelligence Loop run 330: SN-3448 Identity Polish Round — Polish Only, Not a Rebuild (Shawn voice call ~20:57Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "16e844339721a3e640ec66887ba3fdc6c93ca514243559f193bcd7d8b9bc5ca7"
+    },
+    {
+      "smart_note_id": "SN-3449",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3449-the-page-is-the-standard",
+      "title": "The Page Is the Standard",
+      "content_hash": "fa4f975e4c672acfa1c0433c27fc150a3989eb7ba01db211c58e1c54fecc1aef",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3449/IB-SMART-NOTE-20261118-sn3449-the-page-is-the-standard.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 054524222301e90adf5d5044b00f3f3a54a3c3ba ('SN-3449 The Page Is the Standard — distilled 10 notes to one (hand-distilled)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "597c208f477e4092a913d919a1d2df65d74dec6f9bc5426b717d31328230ea22"
+    },
+    {
+      "smart_note_id": "SN-3450",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3450-messenger-looks-exactly-the-same",
+      "title": "SN-3450 — Messenger 'Looks Exactly the Same': A Detail-Only Fix Does Not Count as Change",
+      "content_hash": "eb7d5e0ac0778f9505b42a8cbfb8a6082e1fd7005542737c729107ab84e34839",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3450/IB-SMART-NOTE-20261118-sn3450-messenger-looks-exactly-the-same.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b765682fa44025c9275f54c0d971264dec673be1 ('Intelligence Loop run 331: SN-3450 Messenger Looks Exactly the Same — Detail-Only Fix Does Not Count as Change (Shawn voice call ~21:12Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "38b725d947981a75c5b1f4538f2bb413fc2f810e157d8147b0f823c4c52cf655"
+    },
+    {
+      "smart_note_id": "SN-3451",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3451-messenger-layout-dictated",
+      "title": "SN-3451 — Messenger Layout Dictated: Strip Everything, Hub Frame, Faces Down the Side",
+      "content_hash": "a63d18a7a9251a81dcbc164996b07d6cf5d005b57ce1730deb17b67af5baa46e",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3451/IB-SMART-NOTE-20261118-sn3451-messenger-layout-dictated.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit f15904082ee8d5826ad097c5070282175012e21b ('Intelligence Loop run 331: SN-3451 Messenger Layout Dictated — Strip Everything, Hub Frame, Faces Down the Side (Shawn voice call ~21:14Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "12ebf931dec1dcc4475998da06b478f48848602c26c7e03bb481fa34ee3e8456"
+    },
+    {
+      "smart_note_id": "SN-3452",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3452-the-one-system-law",
+      "title": "SN-3452 — The One-System Law: The Frame Stays the Hub, Only the Center Morphs",
+      "content_hash": "d3db7bffdaa7e97df92ca7b327bee50f5727d5f06092f2574f1d24ea160e6630",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3452/IB-SMART-NOTE-20261118-sn3452-the-one-system-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 4d38bc7eb50fe053e237fb9148708c747966a954 ('Intelligence Loop run 331: SN-3452 The One-System Law — Frame Stays the Hub, Only the Center Morphs (Shawn voice call ~21:16Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "eb01b67a7322f5bac3b199d2b88ad5f271cac4293a23bd3b047d21ece5b66cbf"
+    },
+    {
+      "smart_note_id": "SN-3453",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3453-latest-finished-personal-3b",
+      "title": "SN-3453 — Latest Finished Personal Settled: Follow-On 3b Is the Latest, the 390 Fix Is Not Finished",
+      "content_hash": "45fc89cd2c04f521724e4ccf3022cce1dd60896f78c706af0e926ae7271368c1",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3453/IB-SMART-NOTE-20261118-sn3453-latest-finished-personal-3b.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit ed550a5f09feb6e4a5a0dbc7f9550ff0b6fc725d ('Intelligence Loop run 331: SN-3453 Latest Finished Personal Settled — Follow-On 3b Is the Latest (Shawn ruling ~21:21Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "2d9c519e43681105bbd5eee5277c5cddbdd7daecab314fd8eeba86083720a965"
+    },
+    {
+      "smart_note_id": "SN-3454",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3454-personal-3b-defects-three-fixes",
+      "title": "SN-3454 — Personal 3b Defects: Settings, Change Cover, Cover Alignment — Three Fixes, One Round",
+      "content_hash": "83065c5534ddcd4fb491d751dc184de5bf2c4383d7ada3def23264051b72d33b",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3454/IB-SMART-NOTE-20261118-sn3454-personal-3b-defects-three-fixes.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit cfa607655fb589f354e8de2b6a562d82881d2c40 ('Intelligence Loop run 331: SN-3454 Personal 3b Defects — Settings, Change Cover, Cover Alignment (Shawn voice call ~21:22Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "7f4e595564c69ff040ac013c076317664e4ea362bcd4119db68d9586b15ef778"
+    },
+    {
+      "smart_note_id": "SN-3455",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3455-personal-tabs-and-sidebar",
+      "title": "SN-3455 — Personal Tabs and Sidebar: Too Many Worlds, and the Sidebar Is Where the Hub Aligns",
+      "content_hash": "cad4c1ddb0a26d8c4af82879c19bc0930e8dfb814a8660761a8c5558198c868f",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3455/IB-SMART-NOTE-20261118-sn3455-personal-tabs-and-sidebar.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 522f807968ef69cb0e89fc3b1876d086869ef023 ('Intelligence Loop run 331: SN-3455 Personal Tabs and Sidebar — Too Many Worlds, Sidebar Is Where the Hub Aligns (Shawn voice call ~21:26Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "b373777d93a3a28ddbe99bd6ba4e19b02d67e02feb8ee67729252469be70e53e"
     }
   ],
   "sequence_policy": {
@@ -59876,5 +60236,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "6ffe13f82cdb86921467f627cd510198874c4e93e41a807ceb858fcb7e6745ac"
+  "corpus_manifest_hash": "e5d42112cfa2b9bd4868a5d5783484b2e81b97b0a2ce87edd386c549cad2611f"
 }

@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-11-17",
-  "receipt_basis_commit": "f953687ae2df3a658a2363519b9adb1405dfa7b1",
-  "inventory_file_count": 3783,
+  "generated_at": "2026-11-18",
+  "receipt_basis_commit": "522f807968ef69cb0e89fc3b1876d086869ef023",
+  "inventory_file_count": 4424,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 49,
-    "05-MEMORY": 2736,
+    "05-MEMORY": 3377,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -1570,6 +1570,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-11-17-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md",
       "blob_sha": "7cf747737f2419c13c974e20090b547ffd0133d0",
       "size": 27860
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-11-18-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md",
+      "blob_sha": "662fa9e40d6ef9980dcf1a6defa825800fa0ec30",
+      "size": 29216
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -3497,9 +3502,284 @@
       "size": 2327
     },
     {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-3d-not-2d-elevation-over-glow.md",
+      "blob_sha": "250b582d59f20a507a9dfe7168c7f103690c50e9",
+      "size": 2915
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-a-link-must-land-on-the-view.md",
+      "blob_sha": "578860cfc4ccc24c75b1ef5f55d35b247d5ddd15",
+      "size": 2229
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-alive-like-a-high-tech-computer.md",
+      "blob_sha": "37b67d1a4ab600ad7c09609de798ce8fb9442782",
+      "size": 3108
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-alive-means-in-the-hub.md",
+      "blob_sha": "707c23ef6583a6678efa07f91a103376fa527e70",
+      "size": 2524
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-all-icons-extraordinary-all-the-way-through.md",
+      "blob_sha": "e59c3c8c91253266ffb600f3274a8edee0005af0",
+      "size": 1479
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-bar-returns-only-at-bottom.md",
+      "blob_sha": "57fd3c463ee3bd517922f3e0d819123d5e2e0931",
+      "size": 3225
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-best-of-both-one-smart-mail.md",
+      "blob_sha": "cf49291f9cdd9ea1d2c2f8a87856b391de98bcd5",
+      "size": 2978
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-both-formats-for-both-pages.md",
+      "blob_sha": "eeb3650d9f3c547795d8b2deda850e98789ecc74",
+      "size": 3446
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-bridge-pictures-no-white-glow.md",
+      "blob_sha": "b72329d2b338863c1ef1242ee1a0e2fc8e23378e",
+      "size": 2744
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-clarity-at-zoom.md",
+      "blob_sha": "90ca6066d91212a440f128f3f8963d2936c832da",
+      "size": 1315
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-color-separation.md",
+      "blob_sha": "e6ae7b0b0744abe0c87c9f1a855a72c949d533da",
+      "size": 3241
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-contacts-are-smart-links-on-smart-tabs.md",
+      "blob_sha": "87d82ae627d48cf9e56a4bf8af0f295077ee6075",
+      "size": 2290
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-discern-dont-copy.md",
+      "blob_sha": "9b833ee7fe6366158c589b38b7eb1362aeaadf3c",
+      "size": 4973
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-emblem-throughout-nayanet.md",
+      "blob_sha": "53762eb93f4623dc8f02aca142f92ed26fe3e55c",
+      "size": 2762
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-everything-is-an-object.md",
+      "blob_sha": "140dc1572f8d32e28f1074c7ba6c80382dd23eb9",
+      "size": 7728
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-everything-needs-depth.md",
+      "blob_sha": "6847a6f73c56ceefe585bb63f1f1c2ac9d301785",
+      "size": 2300
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-feed-post-template.md",
+      "blob_sha": "e6d548eeaf7aeddfaa88e0fdcaccbe9464f057c0",
+      "size": 5102
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-four-online-buttons-no-good.md",
+      "blob_sha": "e4634e161e54112e6704bf9022a2471f9b4a3ece",
+      "size": 2125
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-glow-over-not-glow-around.md",
+      "blob_sha": "0d2881eb899d2b12ddd91e0fa3afd23339a53b43",
+      "size": 2267
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-hover-light-around-the-moving-light-comes-back.md",
+      "blob_sha": "f3bd5538b41f7af213eafd737d991079c5a1d463",
+      "size": 2761
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-hub-welcome-folds-away.md",
+      "blob_sha": "f7e4944cce866a3ab69a832033d593649cfaf458",
+      "size": 5291
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-it-seems-so-obvious-now-they-dont-need-to-understand-it.md",
+      "blob_sha": "6bc8007032ae3a093db8da10e5587820d58daa4a",
+      "size": 8470
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-just-enough-glow.md",
+      "blob_sha": "1a9609a82fa46b6326c08e41ad411a507d2db96a",
+      "size": 2359
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-link-was-old.md",
+      "blob_sha": "5bfd695b4556d3aa355bb5f16e78d14cf1f424e9",
+      "size": 3845
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-machine-on-the-back-human-on-the-front.md",
+      "blob_sha": "b07c828ac71b78075c4e9f2d37032a0439afc265",
+      "size": 1643
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-make-the-mail-the-plus.md",
+      "blob_sha": "c031610e413cc1e72a1f365a1474ae042ef04992",
+      "size": 1756
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-morning-orbit-icons.md",
+      "blob_sha": "e311d0bcf6bc5a2f069a52e8bafb806f17992dc4",
+      "size": 2801
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-naya-standard-north-star.md",
+      "blob_sha": "975403e35ae7365ce6335b22b9963ee91d9847e1",
+      "size": 4640
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-no-flatness-all-the-way-through.md",
+      "blob_sha": "e9f0d89549576199b43ee16757ae1371917bf8df",
+      "size": 3390
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-no-gray-flat-icons-anywhere.md",
+      "blob_sha": "1acb9c44a484187f75c37e73eca4f81c4754fd61",
+      "size": 2278
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-no-gray-text-emphatic-again.md",
+      "blob_sha": "459e8937888b4701684547294858298a88e8e323",
+      "size": 1386
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-no-gray-text-minimum-text.md",
+      "blob_sha": "428edee6faf9a8d88a0791591d5eca431f34c0c5",
+      "size": 1924
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-no-huge-today.md",
+      "blob_sha": "a22077732e828e42097509de7bd1e1a75fb1d260",
+      "size": 1978
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-numbers-way-too-big-common-language.md",
+      "blob_sha": "c4e3ca737fb036fed9f746ea4cb015a90460ee4b",
+      "size": 1645
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-objectnality.md",
+      "blob_sha": "d7977b7f41d085936d62060b0542398e417d69bb",
+      "size": 2301
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-official-emblem.md",
+      "blob_sha": "54d349e3cebe32bf1af4ae59f5d3a24ff882b3a1",
+      "size": 4091
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-on-top-of-things.md",
+      "blob_sha": "6bca8fb59fb5e58dbcd4b62a75e6b42d8bda3c51",
+      "size": 2459
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-one-bottom-bar-the-five-everywhere.md",
+      "blob_sha": "be7e8bbdf15a56764c8fd419ac80f84727fb82c1",
+      "size": 3240
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-one-headliner.md",
+      "blob_sha": "b8cd812ceaf8efe1756b8ea0bff2cd69c6ef74d7",
+      "size": 3110
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-one-icon-set-one-sidebar-one-look.md",
+      "blob_sha": "184bce69a7794e0be31019177f44a7a07c6babeb",
+      "size": 1953
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-optimize-for-the-fold.md",
+      "blob_sha": "a20f6f45f1d245e0614aafd1bcc4600026772cc6",
+      "size": 2447
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-personal-first.md",
+      "blob_sha": "d09937921420d60d29eec36068396bf9023a43ce",
+      "size": 4223
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-readability.md",
+      "blob_sha": "4d44d1f8b81a8ca3c2ad5fe09913b0286e6a2e4d",
+      "size": 2348
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-sidebar-icons-are-the-round-icons-and-pills.md",
+      "blob_sha": "e6dc82eec62d1ec2f6e618b292c0c7c9027456e6",
+      "size": 2538
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-smart-mail-total-revamp.md",
+      "blob_sha": "6a78b350491d86fc1183b371ccde5bea9bf0c831",
+      "size": 3043
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-smart-posts-facelift.md",
+      "blob_sha": "2d67f4068f436e3834a6e013c6e0e62385d2ecfe",
+      "size": 3599
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-star-rating-points.md",
+      "blob_sha": "fd0bbe2af6acc737eaa5607f199315a1ebf6850d",
+      "size": 1888
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-ten-star-block-bottom-yes.md",
+      "blob_sha": "d15c73c2867805465be392e268f46df0a589a49a",
+      "size": 3271
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-text-must-be-dynamic-and-easy-to-read.md",
+      "blob_sha": "5927ab1d82b51fc9840ea5240907aad939aea351",
+      "size": 2456
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-agreement-page-feel.md",
+      "blob_sha": "408d8af2c50e3eee31e8f128a101898ee1bf689c",
+      "size": 2306
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-agreement-page-look.md",
+      "blob_sha": "e68a703c10e26e41fa14165c538b6ddda2a07474",
+      "size": 3539
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-agreement-page-right-url-shorter-letter-word-perfect-text.md",
+      "blob_sha": "6d057345305339dca408ab51b2c29ce43a25a395",
+      "size": 3858
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-agreement-unfold-becomes-the-template.md",
+      "blob_sha": "31458f7dd00efe0222686fd91b22b7cd1791fb5e",
+      "size": 4103
+    },
+    {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-auto-format.md",
       "blob_sha": "7d005204ea997ce83fd7c255bf47cbc6dea644c2",
       "size": 3350
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-ball-not-a-circle.md",
+      "blob_sha": "76f4e41a559e3ac6363ea02febf35e915f05497c",
+      "size": 1963
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-bar-tiles-are-real-objects.md",
+      "blob_sha": "2e7d81bf8bfc8adba89394b110488ce582fe5f85",
+      "size": 3045
     },
     {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-benchmarks-best-in-the-world.md",
@@ -3507,9 +3787,39 @@
       "size": 6062
     },
     {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-best-buttons-in-the-system.md",
+      "blob_sha": "6be7146fd63553c87f07d420b6b0a34e83e2af7c",
+      "size": 2855
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-best-parts-the-magnet-the-living-system.md",
+      "blob_sha": "5489118d308d8e7b05f53649c9348effac7443f0",
+      "size": 6646
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-bottom-bar-mirror-personal-fold-down.md",
+      "blob_sha": "811cdcfff6dbb0b8fbb0fb846d30b0db451c0d6a",
+      "size": 3566
+    },
+    {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-bottom-bar-orbit.md",
       "blob_sha": "9b79625188a3093f4ec7897cc283fcabe6ca686a",
       "size": 3203
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-bridge-page-follow-the-word.md",
+      "blob_sha": "7211f0ee0f03b6cbabb51b9aea24de5bbeba0662",
+      "size": 4254
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-bugatti-calendar.md",
+      "blob_sha": "49c397d667e3f60123bb8529160a7788083e9110",
+      "size": 8539
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-button-lesson-on-the-calendar.md",
+      "blob_sha": "a99de7530f25ab6035eb9f8c3db23cd9c9eb6123",
+      "size": 1978
     },
     {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-calendar-cells.md",
@@ -3522,14 +3832,124 @@
       "size": 5126
     },
     {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-calendar-inner-pages-never-finished-never-shared.md",
+      "blob_sha": "75d0479274e7591c07ba5c648f84d6680e509e84",
+      "size": 2014
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-calendar-scorecard.md",
+      "blob_sha": "954f583cd781bd5c614acce7ed379224ca8837e5",
+      "size": 3786
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-certificate-current.md",
+      "blob_sha": "01dddb1e59e89b76c732733bf9a703ab82d7a2ee",
+      "size": 3088
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-clock-and-the-weekday-objects.md",
+      "blob_sha": "b65f900d3a976f4efb5587384ab63baa4e01a683",
+      "size": 7123
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-cluster-goes-and-scorecard-the-page-to-ten.md",
+      "blob_sha": "0750f3890050b0641ecc54b28b4981f725728f17",
+      "size": 4673
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-code-of-naya.md",
+      "blob_sha": "b2bab43dc8746f0e6e265474bc331aa798d3ae1f",
+      "size": 13515
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-collective-agreement-never-completed-never-shown.md",
+      "blob_sha": "c4090959f738be959cefbf695687438039e36cae",
+      "size": 3716
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-color-question.md",
+      "blob_sha": "9b28ec8afa5ad602780928c145990a402b3dcacf",
+      "size": 3365
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-connection-profile-the-elite-contact-card-as-a-full-page.md",
+      "blob_sha": "c5e2b306d7206a93f69d9651a912b118e1793528",
+      "size": 3333
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-connections-page.md",
+      "blob_sha": "5eceeac55e44246f03f94c29cd33d30d1a3d5490",
+      "size": 5398
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-dashboard-hero.md",
+      "blob_sha": "47ad2efbc54204e0170c1b3cfbc7e72fbb8ffedf",
+      "size": 2539
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-day-as-one-place.md",
+      "blob_sha": "077932e98c75837ca6ed04324ba4f18fb21f63be",
+      "size": 4651
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-day-is-the-unit.md",
+      "blob_sha": "606c67fd611295fdd3b6ba31e23e32b5bc10f565",
+      "size": 2393
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-day-menu-jewel-icon.md",
+      "blob_sha": "3d851735e934d1150c4b8bd78ad2aaade292465d",
+      "size": 3201
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-day-menu-notification-bar.md",
+      "blob_sha": "726bed6352726716d4219aaf2363f119cdfbcd6e",
+      "size": 6472
+    },
+    {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-day-menu.md",
       "blob_sha": "940738db5642f03a2e045d3d71d8c519fd3b49e8",
       "size": 6229
     },
     {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-day-view-even-better-v18.md",
+      "blob_sha": "32ee3e8db8cfb7f18236e7d4c6b83ed0ca7dcd19",
+      "size": 4664
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-day-view-is-a-dashboard.md",
+      "blob_sha": "bdfdce6df0eb447c0f6cc69e74fa65649f23c044",
+      "size": 3116
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-day-view-top-bar.md",
+      "blob_sha": "8c494f85c4a200efe49b9fcd2017b535983390d3",
+      "size": 6303
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-day-view-top-stays.md",
+      "blob_sha": "c98036258c2afd41353797d795bcdeaee92db1e6",
+      "size": 3269
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-day-view-v14.md",
+      "blob_sha": "9d9c8bf1727d2fa38f9d550d82d9c96b65ba13c3",
+      "size": 5751
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-days-color-fills-the-inside.md",
+      "blob_sha": "49946be534884c5d6b814e88caca770dd981a0ba",
+      "size": 3962
+    },
+    {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-deep-palette.md",
       "blob_sha": "af4a2757b730c1097cafae432b20633fa60d2399",
       "size": 4238
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-divine-design-the-alignment.md",
+      "blob_sha": "3d27c3850949f75cce192a9e21dc2f95ef19c740",
+      "size": 5347
     },
     {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-dna-read.md",
@@ -3542,14 +3962,984 @@
       "size": 2194
     },
     {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-elegance-front-entrance-standard.md",
+      "blob_sha": "0fd92c24054d4cb7589833b54de8f163e68506ad",
+      "size": 4441
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-emblem-is-the-north-star-for-all-art.md",
+      "blob_sha": "490a7a7f8d2a7a94191b434a2d3e82cccc876e95",
+      "size": 2323
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-everyday-world-viral-law-divine-design.md",
+      "blob_sha": "05737401423e1ef845242aae4f428b26793efaae",
+      "size": 7459
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-eye-black-in-the-middle.md",
+      "blob_sha": "1320bc80cbab44f638d93238a31ab6c1a436dbe8",
+      "size": 2947
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-eye-normal-white-info-eye.md",
+      "blob_sha": "14d1c0483650fcd3bdf770554823d1f3b93e6bc2",
+      "size": 3521
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-factory-is-the-formatter.md",
+      "blob_sha": "ff779ca2514684300d0153052ff5e224136d8d1f",
+      "size": 3333
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-five-icons-on-every-page.md",
+      "blob_sha": "4f48c5d20246cc646d598aab5ab48f11907d914a",
+      "size": 2245
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-font-marcellus.md",
+      "blob_sha": "7a397aa278e579a5c802c5b49e1dd4a27586aa55",
+      "size": 3019
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-format-assignment.md",
+      "blob_sha": "a8dc6eeb9443a79cf25b9589c6170408c46bd3ee",
+      "size": 4206
+    },
+    {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-full-screen-calendar.md",
       "blob_sha": "d923012bc66f80485c1e2a81fc3997932ff10e5b",
       "size": 5159
     },
     {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-hub-as-he-sees-it.md",
+      "blob_sha": "2bb8a1f02dcad14b893271ccbf96a979a33b7414",
+      "size": 5148
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-hub-buttons-are-the-standard.md",
+      "blob_sha": "1035bbbcd4a127a19ce32f566022b122f6e696e4",
+      "size": 3241
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-hub-feed-remove-the-machine-text-short-wisdom-close-button-search-flush.md",
+      "blob_sha": "476f253f65a440664f9b991b72ac06312d4352c2",
+      "size": 3324
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-hub-sidebar-icons-are-squares-not-circles.md",
+      "blob_sha": "3408270f298826df95804befc27df5d8737ea459",
+      "size": 2421
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-hz-diamond.md",
+      "blob_sha": "302816708268fff4aa67d56b4eb21520885f291f",
+      "size": 2854
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-inspector-full-sweep.md",
+      "blob_sha": "947e2401431730cab1500bf4d1701dcb34cf2c12",
+      "size": 2521
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-inspector-quality-standard.md",
+      "blob_sha": "895ce2887196a9bc948432a94aeb1abfddaad451",
+      "size": 2365
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-inspector-sweep.md",
+      "blob_sha": "395a0cedf182d2c0fbd088a5b7a40112adbcd673",
+      "size": 4125
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-intelligent-block-epic-numbers.md",
+      "blob_sha": "8db3cdc33bd386ea8dc8e310fa65deba3e971446",
+      "size": 3748
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-intelligent-block-is-the-universal-posting-format.md",
+      "blob_sha": "5f0edaa239e441a9b7c9ca08ab20b14829ea6107",
+      "size": 3270
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-language-i-live-in.md",
+      "blob_sha": "620004f2885417ff6c4f7edd9ea7c17e3a67ad13",
+      "size": 5640
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-laws-go-to-every-agent.md",
+      "blob_sha": "6f1565cf2df5fc58ea3f0ff097d017a7d1abc9ed",
+      "size": 4264
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-library-where-it-lives.md",
+      "blob_sha": "45e9588a2ae646f0b97d2e13e7aecad2fc813db5",
+      "size": 2729
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-look-is-the-pictures-dark-middle-white-icon.md",
+      "blob_sha": "a5a0dc874c1adf0e9bee78ca39991d7abb1c949a",
+      "size": 2944
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-main-url-law.md",
+      "blob_sha": "f0532b4d3c96f6e617594ddfaa79d911d13d8545",
+      "size": 4281
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-master-vault.md",
+      "blob_sha": "ae17eb33ef958b6fc1b28edf5778b8dc8d7dc2ae",
+      "size": 3553
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-menu-control-goes-to-the-right-sidebar-or-messenger.md",
+      "blob_sha": "566dd8120fc45cc6e1a5107f9f6b4915dae78298",
+      "size": 2496
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-menu-toggle-sidebar-or-messenger-or-neither.md",
+      "blob_sha": "2e6522da16ae8ac76f6ea59e267a28063eb889ed",
+      "size": 2546
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-merge-one-agreement-page.md",
+      "blob_sha": "48f2e8843964ecced136c703fb45ab455a24faee",
+      "size": 4054
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-mockup-revised-to-10-10.md",
+      "blob_sha": "9a688acab25ba6fbd684a17e492bcc24c8841529",
+      "size": 3081
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-month-view-weekdays.md",
+      "blob_sha": "734df5cb5ce90f6e4b45d4cda4eaa8d9b958ccfd",
+      "size": 4871
+    },
+    {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-month-view.md",
       "blob_sha": "d2fbb39e09937cb7b9372d43b5ddf6ba503f7be6",
       "size": 2953
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-most-intelligent-interface.md",
+      "blob_sha": "ec62382e4ae8732e43d8e7aa625d98aa23c05a13",
+      "size": 3349
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-new-land.md",
+      "blob_sha": "c4c625c9a0d01004081a75de4c24321b167b7d0a",
+      "size": 3286
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-north-star-smart-factory.md",
+      "blob_sha": "78601b00f118d04aec6bea6eed057f44c3eaf18f",
+      "size": 3955
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-notification-ball.md",
+      "blob_sha": "60cfb5115061427e28c0c21020955de2567120ec",
+      "size": 2078
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-obsidian-calendar.md",
+      "blob_sha": "af3dc48602c7dad9120c34c72ad9c7b8ca712902",
+      "size": 4933
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-one-set-aligned-everywhere.md",
+      "blob_sha": "dc66affbc52464e7deb0a12d77533f683843712e",
+      "size": 4586
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-orbit-is-back-on-all-six-bottom-buttons.md",
+      "blob_sha": "d5bcced9a966da6c6dc4267f82da34858776863d",
+      "size": 2775
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-pedestal.md",
+      "blob_sha": "576e97b95fdf615a9f8749fd27afbf3c470212eb",
+      "size": 3960
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-performance-question.md",
+      "blob_sha": "85601ee22c51df3f6e427ad2119809e71dd787fa",
+      "size": 7333
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-personal-bar-tiles-are-the-model.md",
+      "blob_sha": "475ddeb717bda201c341e04810dbbb9f194f61e2",
+      "size": 2295
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-pills-are-triple-a-plus.md",
+      "blob_sha": "a5c28dcccc76fc8d5793496bca3891b40fb7dc40",
+      "size": 1676
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-purple-heart-is-the-signature.md",
+      "blob_sha": "9e034f5ea929e6e2af4c7e4c79292d3c2a7bc033",
+      "size": 1677
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-rating-footer-is-the-one.md",
+      "blob_sha": "ff943ed5d5df940745c9cefcaadf04d6968837bd",
+      "size": 2896
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-sidebar-row-round-icon-inside-the-square-button.md",
+      "blob_sha": "77fe06427872b18f7fe0aeaa7f738d6371305742",
+      "size": 2473
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-sidebar-sub-tabs.md",
+      "blob_sha": "094f6dff4b056eccf8b4d7ef6622e26d008c3154",
+      "size": 5276
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-smart-note-format.md",
+      "blob_sha": "e7519f7027295a8a5f48dd0a0a79b89806470c50",
+      "size": 7460
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-spectrum-flow.md",
+      "blob_sha": "5fd055c82e84da3f8905366a0049112dd7a4053f",
+      "size": 3433
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-spot-and-the-two-things.md",
+      "blob_sha": "3e2ce0126c8accd17d3e8031f3e3f39d01cc6590",
+      "size": 2755
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-star-balls-obsidian-no-yellow-glow.md",
+      "blob_sha": "8c3e156112d68508fc62dcdec34a12d2709ca66a",
+      "size": 2071
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-system-breathes-living-intelligence.md",
+      "blob_sha": "8a52b1d76e71eabacc2aeea24a32d36a282f3215",
+      "size": 2446
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-text-laws.md",
+      "blob_sha": "35217997f4be2b81db98812cf440d9d3067ab164",
+      "size": 10067
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-touch-press-useful-helpful-obvious.md",
+      "blob_sha": "86e903936f9da85165aa23eba1bedfe9ad2003f3",
+      "size": 2014
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-twin-rank-is-the-shape.md",
+      "blob_sha": "9d30fd463426168980d76d11335eb7b8f9bad5e8",
+      "size": 3071
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-two-choices.md",
+      "blob_sha": "8fab329df82715b7bbfb758a8089569550e0bccd",
+      "size": 2812
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-vault-rule.md",
+      "blob_sha": "c262a6df7def6505363c4e4f632d6b82fd43de3c",
+      "size": 4599
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-vault-sharpened.md",
+      "blob_sha": "33fcfee36c1be7534981079e05847df2628d1c3b",
+      "size": 3024
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-the-weekday-icons-what-each-day-represents.md",
+      "blob_sha": "ea33115520edf702051013497c01138b30f552c4",
+      "size": 4392
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-today-calendar-and-personal-completed.md",
+      "blob_sha": "684a70a1b8e5c50dd36fa041846fc21eea7e97fb",
+      "size": 3500
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-train-the-army.md",
+      "blob_sha": "4d0639c6e381c3fa850581abf57e4e5aeed134bd",
+      "size": 3317
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-voice-not-a-law-where-playback-makes-sense.md",
+      "blob_sha": "8ab0a969e005430e639f77fc4a23c729d8d4a899",
+      "size": 7856
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-what-a-naya-note-is.md",
+      "blob_sha": "fec2a0867c552834dde3ff62a780249fdf2df32b",
+      "size": 4631
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-what-makes-naya-different.md",
+      "blob_sha": "6858018122bd04c8e0c8e954cedca30e4d93b5dd",
+      "size": 2980
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-when-it-looks-for-real.md",
+      "blob_sha": "39d5cf2f2ad859aba17360071e4a0397bc9fbfad",
+      "size": 2744
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-which-is-most-beautiful.md",
+      "blob_sha": "88f60c42b0f64796cd940bfb12966ec85d6e0a7a",
+      "size": 2520
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-white-middle-numbers-pop-flush-top.md",
+      "blob_sha": "62621c2220ea88b788bea5f05547fcd015c7f92e",
+      "size": 3961
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/17/NN-20261117-work-smart-not-repeated.md",
+      "blob_sha": "8c774ab98a702fcb9704f7ea55927a0b6d83c4b5",
+      "size": 1832
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-a-ten-not-a-minus-nine.md",
+      "blob_sha": "65a0fd331d0c1e7e757d21194731d7f3a332655c",
+      "size": 2552
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-activation-kit-verdict.md",
+      "blob_sha": "99a3e4f5188a116b1abcba715f403e9b379b878c",
+      "size": 1437
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-agreement-audio-uploaded.md",
+      "blob_sha": "d5f80375d75d3dc2f374b5a379be3ba99edb499b",
+      "size": 1994
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-agreement-audio-video-two-options-below-the-page.md",
+      "blob_sha": "1e60febda1ed989283ff7011b58a3c6074a1e8ae",
+      "size": 3203
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-align-all-the-pages-the-sidebars.md",
+      "blob_sha": "34891e0caf94b06efd68d2d2add06a399e7266da",
+      "size": 2482
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-all-buttons-as-beautiful-as-the-circle-n.md",
+      "blob_sha": "5fa4671b3633b6dcaa8b215aa76712f9219f909b",
+      "size": 1136
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-are-any-lanes-missing.md",
+      "blob_sha": "6eefb3cab03991cfa5a61500b99727e99e0d8130",
+      "size": 1504
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-back-to-back-not-closed-rounds.md",
+      "blob_sha": "16954b9878dbcabc586a2a51ab4c767a4589400e",
+      "size": 2722
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-both-buttons-above-the-fold.md",
+      "blob_sha": "a82d26a6af146fb5fe698d4c51d19dd42b7a39ff",
+      "size": 2873
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-calendar-date-active.md",
+      "blob_sha": "814d9251b9875f510eb928b492135506ea3e9caf",
+      "size": 1230
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-calendar-icon-vs-logo.md",
+      "blob_sha": "bdaf3a8c805e9d361eb525d5a49c6b4bb1c55ed9",
+      "size": 1169
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-calendar-numbers-20-not-200-and-real.md",
+      "blob_sha": "7af5047f1f6756d1b033dd3a16aeef03216249c9",
+      "size": 1975
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-check-the-route-list-not-just-the-dns.md",
+      "blob_sha": "adcf0bb13abc6bd9269936e8b51378c760a17d5c",
+      "size": 2785
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-clone-it-only-when-its-complete.md",
+      "blob_sha": "7a6f5822a2d3fbee480ce60fd0243031015271a8",
+      "size": 2659
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-complete-the-vault-operate-it-then-write-the-manual.md",
+      "blob_sha": "27d12ae4f39148eefdf2eb8c555346da843ccc2d",
+      "size": 2427
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-count-it-yourself.md",
+      "blob_sha": "6434a7a49874293c9a5aeff5aa267fad79360981",
+      "size": 3150
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-create-world-any-topic.md",
+      "blob_sha": "aac77fd07b0a1436524f4325f25a8ded1ae6f3cf",
+      "size": 1720
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-dashboard-eye-verdicts-live-walk.md",
+      "blob_sha": "d1ae8c2611de113451b548245777e8c361ebffaf",
+      "size": 3153
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-dashboard-is-the-days-introduction.md",
+      "blob_sha": "a4b3337eda9a0a80e9c6322fe898f660cbd9c7ae",
+      "size": 3164
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-distilled-decide-declare-become.md",
+      "blob_sha": "65c86e0a8953ce0e76554ac6ce6077cf4ebbc3bc",
+      "size": 795
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-distilled-efficiency-is-the-game.md",
+      "blob_sha": "30ef6732a1b09c057e31a641b2c4d36f3d49abe5",
+      "size": 1027
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-distilled-factory-first-one-click-build.md",
+      "blob_sha": "4d38537f5508d3eb701b3ccd9546208f1bf1b25f",
+      "size": 1075
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-distilled-parallel-quality-in-every-lane.md",
+      "blob_sha": "254808ef869124d62d53ff92ad4e0a00eadf15d2",
+      "size": 990
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-distilled-scorecard-every-return.md",
+      "blob_sha": "120d26f60671c989c2d91786b8c3afcbc5caf38c",
+      "size": 997
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-distilled-the-mail-key-never-moved.md",
+      "blob_sha": "07282bf5a5faa1702e2cbb79f66a1075eaa6d13e",
+      "size": 896
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-distilled-the-spine-is-the-system.md",
+      "blob_sha": "f8da7e52a75ccae233031ba13a40e840479cae6a",
+      "size": 845
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-distilled-the-ultimate-border.md",
+      "blob_sha": "8ca7306de9a897e66bd3a0da8993185124140a8f",
+      "size": 1035
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-dont-send-it-back-keep-driving-until-ten.md",
+      "blob_sha": "dbba4e8062d9904f5f7e160e9049d35e9ba7362a",
+      "size": 1900
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-eat-our-own-cooking.md",
+      "blob_sha": "889659d26ff5b237ebf020ffe705e03b4de13aab",
+      "size": 2394
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-efficiency-get-the-number-up.md",
+      "blob_sha": "7586093dc19c7eafc6bb4755a7796d7eb04136d0",
+      "size": 1204
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-factory-test-worker-removed.md",
+      "blob_sha": "995fb0f6ee985be182f9ee0a11e124863c967578",
+      "size": 1770
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-file-the-same-day-the-backlog-re-forms.md",
+      "blob_sha": "13b6d0e2ee201f521be9907993b30c41924f9808",
+      "size": 2378
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-find-the-cause-first-then-retry-vm-browsers.md",
+      "blob_sha": "0e808a56eaabaa36c434dd009ce5544fe32af3fa",
+      "size": 2419
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-find-the-cause-first-then-retry.md",
+      "blob_sha": "e971a5df691366834e72925414423ca8708e2a4a",
+      "size": 3667
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-flat-goes-icons-speak.md",
+      "blob_sha": "a541e5b60796efccbfd8491c30cfebdfbeeba808",
+      "size": 1909
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-go-live-and-test-the-flow.md",
+      "blob_sha": "9e19c39380e496a49ab1b590e64671b8c7bbf9bf",
+      "size": 2214
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-halfb-staging-checked-live.md",
+      "blob_sha": "18366895d0fe57d4f42e3a059dfde4e352f26574",
+      "size": 1650
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-her-face-throughout-nayanet.md",
+      "blob_sha": "595fce541cdd3ab915610f528212e3a1536aa688",
+      "size": 1146
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-hold-the-n-ball-and-land-where-he-started.md",
+      "blob_sha": "52b08a96608a5961286da44646d9b27283413691",
+      "size": 3049
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-icons-uploaded-verbatim.md",
+      "blob_sha": "a898fe3b564e7ee6b1ca790d4f0d5b95d2501f9a",
+      "size": 2327
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-identity-polish-round.md",
+      "blob_sha": "3ccbf5d71e3ea205f7543650ddf6b9b5d19d5f84",
+      "size": 1644
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-implement-it-and-use-it.md",
+      "blob_sha": "16bf70e651a583922b76b9f5351ccd4e93429a71",
+      "size": 2744
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-join-goes-where-the-meeting-lives.md",
+      "blob_sha": "f5e7d43b7309fef9acf5279a6d94b8d3a8ff7c77",
+      "size": 2147
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-kit-emblem.md",
+      "blob_sha": "a80f308c64a7e15dd4c37b8ac227146044134eb6",
+      "size": 1021
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-latest-finished-personal-3b.md",
+      "blob_sha": "063f586b9d3bc0efe10999c95204baa60e9e1a9d",
+      "size": 1651
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-lock-in-the-ten.md",
+      "blob_sha": "2eb6e3fae09173c6d6355f2c8bf69b79789fc656",
+      "size": 2918
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-login-bridge-page-landing.md",
+      "blob_sha": "e0806cf72956b5232f681a24de23f73fafffa1d8",
+      "size": 1882
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-messenger-alignment-round.md",
+      "blob_sha": "eb791449152346aa1e1eb080ac3cdef7227b9597",
+      "size": 2048
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-messenger-layout-dictated.md",
+      "blob_sha": "961d1cb04dafbcaf6d330cbc7c0f318e2bf91615",
+      "size": 1882
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-messenger-looks-exactly-the-same.md",
+      "blob_sha": "076187d818daba0e8673908a7c92256017bd50e5",
+      "size": 2332
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-messenger-mail-optimised-for-each-feed.md",
+      "blob_sha": "6d7f6eaabef3a607afb1cdc579d913789b1d5fe7",
+      "size": 1004
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-month-view-top-bar-and-the-ten-things.md",
+      "blob_sha": "e379ab0f035f63c25933a46a1acfc3dff3fb323c",
+      "size": 3559
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-one-block-per-screen.md",
+      "blob_sha": "90456575aced70d6d934c05f13838c62e8b46062",
+      "size": 2910
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-one-icon-set-the-glowing-ones.md",
+      "blob_sha": "7176e52277e22ee93fcc7d71df02a88315ec85c7",
+      "size": 1766
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-one-naya-everywhere.md",
+      "blob_sha": "3fbd6b18ea89176114857f914904da83ddd1ad72",
+      "size": 1243
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-people-use-what-they-can-see.md",
+      "blob_sha": "9fe8acc993e6bc7e431dbc4d6b7d7c14cdd4587f",
+      "size": 2482
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-personal-3b-defects-three-fixes.md",
+      "blob_sha": "e485f9d226af2b1a9ac08a2b4398c4e70f6f6a8c",
+      "size": 2175
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-points-go-in-the-dashboard-not-the-hub.md",
+      "blob_sha": "eba4833713814a068e740fd1791e9749ba4d1db1",
+      "size": 1860
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-prove-the-fold-on-the-live-page-not-on-paper.md",
+      "blob_sha": "342bbdc4ad891cdd5bc4e8430906dbf3816c1993",
+      "size": 3363
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-prove-the-premise-before-you-hand-it-to-him.md",
+      "blob_sha": "92d918be6ba4504bc9aa6daeb88380d7843af6b4",
+      "size": 3204
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-put-them-all-through.md",
+      "blob_sha": "bf99990ce240d0e38667cb7643248967cf279fe8",
+      "size": 3153
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-records-vanish-restore-to-the-verified-state.md",
+      "blob_sha": "fe1fc5dd977fa0a85331191678db838c6f6034bc",
+      "size": 2252
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-restore-the-one-screen-beauty.md",
+      "blob_sha": "06d8475950e6d4fb5991b1dd43c3235470f20a07",
+      "size": 1476
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-scorecard-every-return-whole-system.md",
+      "blob_sha": "d4fa180802eed2c28a71285df83d20e04c357883",
+      "size": 1497
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-scroll-light-each-board-a-different-color.md",
+      "blob_sha": "e6f7f6b7f4c963ec4de7a054b1ee0e7382038aff",
+      "size": 1572
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-showcase-the-points-no.md",
+      "blob_sha": "4ad458b4477510d150c704788a82c91748ce1143",
+      "size": 2176
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-sidebar-orbits-menu-to-verify.md",
+      "blob_sha": "8e0a1dfb051842e71a9f783446c1726fd47902d3",
+      "size": 1979
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-smart-meet-button-alive.md",
+      "blob_sha": "c6d20d16ce88ac5218fb60f31117a3a29aaeb932",
+      "size": 795
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-ten-x-the-workflow-find-the-root.md",
+      "blob_sha": "288780d9ca546aef65230b0329fc8c6e5333673b",
+      "size": 1725
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-18-is-the-big-one.md",
+      "blob_sha": "56215715dd4d68fe11040f1894047477cdcf51bc",
+      "size": 1578
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-action-plan-parallel.md",
+      "blob_sha": "2321dd17555bef61f1a954879465d540224744ec",
+      "size": 1378
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-activation-kit-and-nayas-voice.md",
+      "blob_sha": "ead79108ae92d25206bb29576f22e69d6ec9ac15",
+      "size": 3020
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-agreement-as-audio.md",
+      "blob_sha": "90940148f6174124c8c17e858b315c7b49e1c9ac",
+      "size": 2157
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-agreement-buttons-read-the-agreement.md",
+      "blob_sha": "282d4a99b5c73c0e169437275fca040c9cfbf5dc",
+      "size": 3466
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-architect-scorecarder-walk.md",
+      "blob_sha": "66616cef029a58964c51527607abb5f3220a9fa2",
+      "size": 1057
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-banner-folds-away-on-its-own.md",
+      "blob_sha": "67d26c438591914788b41096da345abad232269a",
+      "size": 2125
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-black-car-and-the-unfolding-page.md",
+      "blob_sha": "c1e530f14beac4368706668f388f7cfecad4ff22",
+      "size": 2976
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-calendar-self-scorecard.md",
+      "blob_sha": "daa30e0ffc674a77c8345e0d4be3c503919cb735",
+      "size": 1691
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-captain-looks-first.md",
+      "blob_sha": "122d298c2f7315c3c26d7bb96280b9fb8a4dadfc",
+      "size": 3642
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-click-button-viewpoint-system.md",
+      "blob_sha": "83446ca71a4b4b3077e92c9b446513ad5f926638",
+      "size": 4640
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-connection-model-send-is-the-request.md",
+      "blob_sha": "75eb65d574d88d719d400160e4f11f38a12cbc03",
+      "size": 3916
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-day-view-restructure-obsidian-inside-alive-on-hover.md",
+      "blob_sha": "d34456749c1a614bc64b699f1ce3d4b0c773dd8e",
+      "size": 3300
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-declaration.md",
+      "blob_sha": "25f6a02b24f608883948731bb72878af0950e483",
+      "size": 1752
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-demographics-menu-is-missing.md",
+      "blob_sha": "2ca86cc9db257607a132296653429abf88a4bacb",
+      "size": 2691
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-design-language-locked-in.md",
+      "blob_sha": "2c405c6fa9b64a65ba189fec7ddd808880d9e8fd",
+      "size": 1348
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-digital-royal-kingdom.md",
+      "blob_sha": "5c20857364e9db5e117e2d1e79836b3654b54f98",
+      "size": 2340
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-distillation-story-called-out-strongly.md",
+      "blob_sha": "c60b27369f9d0e615889eba3284763c871caec0b",
+      "size": 3441
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-efficiency-bar.md",
+      "blob_sha": "09be7cb5602e3fad9d9b886953ac79ceebd774ac",
+      "size": 3854
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-feed-shows-everybody.md",
+      "blob_sha": "dc11e7ba1bca1ceafca9db1243c64ff276b4c7a1",
+      "size": 2902
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-gauge-is-the-live-total.md",
+      "blob_sha": "fe93553f1dd1bbfb61ef4305ff69cd40efeca023",
+      "size": 2831
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-hub-banner-simplified.md",
+      "blob_sha": "031b261026e3bfcdd73be0e5698966b262bb532c",
+      "size": 2888
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-hub-not-forgotten.md",
+      "blob_sha": "135dd91ca5435e9890db5190e0254015c4e76edd",
+      "size": 1000
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-identity-page-and-the-live-rule.md",
+      "blob_sha": "bb5d7f60aa87960ad0b405e436f64d6105a1a464",
+      "size": 2445
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-intro-is-title-play-picture-letter.md",
+      "blob_sha": "38704ca296255ca9f169181fe3e389b0d0c770c1",
+      "size": 3313
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-kings-chamber.md",
+      "blob_sha": "aae9e5dd5811196133395be970f57c10ff0f4e2a",
+      "size": 2976
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-kings-daily-report.md",
+      "blob_sha": "f12e38c9d6fec9351e84c4a457c5511e128e319e",
+      "size": 2869
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-live-sequence.md",
+      "blob_sha": "d9e9289e73c9431139796f2c4fcd9ede4deb79fe",
+      "size": 2712
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-look-rotation.md",
+      "blob_sha": "27d9192d84897d32e3fdeb22473c6913be643393",
+      "size": 1254
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-loop-must-close.md",
+      "blob_sha": "8b5c7b26e4c94c2534e7fd6783384617adf7138c",
+      "size": 3211
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-mail-messenger-key.md",
+      "blob_sha": "12fc7052a3a5d6a49858adf715f61e96acb352a2",
+      "size": 1267
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-nvidia-lesson-the-moat.md",
+      "blob_sha": "e1b3bc5a1cf651b83e37795f7a4a692b2fc79d37",
+      "size": 3934
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-one-system-law.md",
+      "blob_sha": "df33f28c83bd6d4aa661ecba023629ddeddb646e",
+      "size": 2143
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-pr-pile-merge-them-yourself.md",
+      "blob_sha": "6b0c8a9bd0bcb537ecbca95a9726e2ece492b69f",
+      "size": 2346
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-rating-footer-dont-forget-it.md",
+      "blob_sha": "9f33ef5d01fc357567fd1d20a77361d0b5df5ab2",
+      "size": 2647
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-read-line-clarified.md",
+      "blob_sha": "a13cc77ff192abe4886448dd13ee51f5f4478516",
+      "size": 2865
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-sentinel-token-question.md",
+      "blob_sha": "3d9ac36fa17dfeeff46c5fd31b84d9e767749ce2",
+      "size": 1490
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-signature-piece.md",
+      "blob_sha": "371ebe63484ef1aaef7b7e4f0cc07e3947ca281b",
+      "size": 1593
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-smart-block.md",
+      "blob_sha": "ba763e301eab27971cb5b2f89fa7ab3921e41b76",
+      "size": 3029
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-smart-rhythm.md",
+      "blob_sha": "3a855de6ed296dc8a103aed3c8d283e455fdd624",
+      "size": 3226
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-smart-vault-is-the-one-door.md",
+      "blob_sha": "b07368ba5ff2bd4ce436c3ae1c0b63e364f3bac8",
+      "size": 3472
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-spine.md",
+      "blob_sha": "0011125554a33fb7a479a45af51a8a2a364a91e4",
+      "size": 985
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-three-portraits.md",
+      "blob_sha": "2e5df72f6c3b4442d176421e4a6e6005369a939f",
+      "size": 1666
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-two-keys-boxes-within-a-box.md",
+      "blob_sha": "54fd93d105ec7c3cdc04f4ffabf63db2ac4c69d9",
+      "size": 2689
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-ultimate-border-exact-specs.md",
+      "blob_sha": "5e66325f0381a3dedbd27bda45cc8295687c2f0d",
+      "size": 2157
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-underglow-law-hover-bottom-bar.md",
+      "blob_sha": "6157713fcca4539ade26bf3294cb7b3434466871",
+      "size": 2505
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-the-way-children-learn.md",
+      "blob_sha": "9be856f9cd9850d29e7e0d702990a8c0a1271ee9",
+      "size": 2060
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-transcription-landed-not-his-podcast.md",
+      "blob_sha": "c66a1a473297b85482acf694574f8bd894de1506",
+      "size": 2171
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-treat-it-like-your-baby.md",
+      "blob_sha": "769acf7891a90a905116e15b84e55b14f744af16",
+      "size": 1005
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-two-documents.md",
+      "blob_sha": "7a93efe634d2270563ae87fdc5467af7c02b7137",
+      "size": 1997
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-two-icons-logo-top-left-icon-bottom-right.md",
+      "blob_sha": "21fe35b351ff6a4e43886e3231d6b8e9350a8a55",
+      "size": 2708
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-two-worlds-become-one.md",
+      "blob_sha": "92ef479d6e459fcb38fe3a98e1b2a02ae63e2cdd",
+      "size": 1529
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-understand-then-fix-then-optimize.md",
+      "blob_sha": "c28a314a65f321f255be3c1c22466d23422e2be4",
+      "size": 1514
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-wednesday-is-kanye-blue.md",
+      "blob_sha": "8ce1659df95108f28b5f60d846432a4830db175c",
+      "size": 3030
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-wednesday-kanye-blue-again.md",
+      "blob_sha": "366aa26c827b0a75ede1798f97a15cf0620fd28a",
+      "size": 974
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-weekday-glow-and-the-diamond.md",
+      "blob_sha": "a67fa62930eaa205796fb90bc3358a018f9dd838",
+      "size": 1588
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-what-are-you-learning-play-within-the-limits.md",
+      "blob_sha": "401e3be985a139c39539dc988054e2a57b34e9ab",
+      "size": 3724
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-whole-system-and-team-of-nayas.md",
+      "blob_sha": "ced0669528a70f4c6e03297b41b6a490bcaf8367",
+      "size": 2033
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/18/NN-20261118-willow-fastest-most-accurate.md",
+      "blob_sha": "e957dde3fcb1335513a5a606667c9fc2fb42a91c",
+      "size": 909
     },
     {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/NAYA-NOTE-TEMPLATE.md",
@@ -14272,6 +15662,296 @@
       "size": 9075
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/AGREEMENT/SN-3173/IB-SMART-NOTE-20261117-sn3173-the-agreement-page-right-url-shorter-letter-word-perfect-text.md",
+      "blob_sha": "cdcec6ed1334f662189c4f08ce59bee4e83f57ba",
+      "size": 8424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/AGREEMENT/SN-3174/IB-SMART-NOTE-20261117-sn3174-the-merge-one-agreement-page.md",
+      "blob_sha": "9195b7f27771b83e6c3c5845ddd6057d5931eaeb",
+      "size": 8590
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/CALENDAR/SN-3208/IB-SMART-NOTE-20261117-sn3208-the-calendar-inner-pages-never-finished-never-shared.md",
+      "blob_sha": "83e38e4918d141c8a01a36bbd4163a58993c48e0",
+      "size": 6221
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/CONNECTIONS/SN-3187/IB-SMART-NOTE-20261117-sn3187-the-connection-profile-the-elite-contact-card-as-a-full-page.md",
+      "blob_sha": "0acee493b5da1d08e035ffce3353e6a15028eaa5",
+      "size": 6219
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3149/IB-SMART-NOTE-20261117-sn3149-ten-star-block-bottom-yes.md",
+      "blob_sha": "01e79c897fa110b2baa9135724237daf92d84ebc",
+      "size": 5368
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3154/IB-SMART-NOTE-20261117-sn3154-star-rating-points.md",
+      "blob_sha": "93e00beecd89c73ef29111de2d3a431f523bd962",
+      "size": 3642
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3156/IB-SMART-NOTE-20261117-sn3156-make-the-mail-the-plus.md",
+      "blob_sha": "3411b3dabc4860dc95f2b2a7d1a557c7856ef168",
+      "size": 3531
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3144/IB-SMART-NOTE-20261117-sn3144-feed-post-template.md",
+      "blob_sha": "6a66955d45136be3ce0efcb1cf56830465dbc20c",
+      "size": 7706
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3145/IB-SMART-NOTE-20261117-sn3145-morning-orbit-icons.md",
+      "blob_sha": "b875afce0fdaaab5b5bcb9fb7987d7dffa390aae",
+      "size": 4468
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3146/IB-SMART-NOTE-20261117-sn3146-hub-welcome-folds-away.md",
+      "blob_sha": "65ca224a021da3a2985be40400486bc7580d3f5e",
+      "size": 5006
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3147/IB-SMART-NOTE-20261117-sn3147-bar-returns-only-at-bottom.md",
+      "blob_sha": "d19f271b720f6785f79e2c1c12e56c15f157f225",
+      "size": 4900
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3148/IB-SMART-NOTE-20261117-sn3148-white-middle-numbers-pop-flush-top.md",
+      "blob_sha": "9b4ab9a33eb5186cf7b67164d8a44194af4e725a",
+      "size": 6272
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3150/IB-SMART-NOTE-20261117-sn3150-optimize-for-the-fold.md",
+      "blob_sha": "8b289bc924c59a94bff87bb1c47d37dba5fad217",
+      "size": 4520
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3151/IB-SMART-NOTE-20261117-sn3151-bridge-pictures-no-white-glow.md",
+      "blob_sha": "be98f31b9224eaaebe09a09edfb3eaa6ae68431b",
+      "size": 5172
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3152/IB-SMART-NOTE-20261117-sn3152-everything-needs-depth.md",
+      "blob_sha": "fc579a88aadeb7588d69cebec76d2967a341cc29",
+      "size": 4517
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3153/IB-SMART-NOTE-20261117-sn3153-official-emblem.md",
+      "blob_sha": "4c79aad2f5fb44015027a08b6e647cbe1c9d3454",
+      "size": 5898
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3155/IB-SMART-NOTE-20261117-sn3155-which-is-most-beautiful.md",
+      "blob_sha": "a9cd033be01d953bd4ee82a31847de2e6b53c043",
+      "size": 4877
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3157/IB-SMART-NOTE-20261117-sn3157-when-it-looks-for-real.md",
+      "blob_sha": "e67fabbd6d4d59ac0a9d1b26f3600be5d152c3c4",
+      "size": 5096
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3158/IB-SMART-NOTE-20261117-sn3158-emblem-throughout-nayanet.md",
+      "blob_sha": "489cb3af57723f219f33111528b676f2520d10df",
+      "size": 5307
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3164/IB-SMART-NOTE-20261117-sn3164-text-must-be-dynamic-and-easy-to-read.md",
+      "blob_sha": "b191a157f1d4821fb9b5fb8fe32fe23f00d292e1",
+      "size": 4782
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3165/IB-SMART-NOTE-20261117-sn3165-four-online-buttons-no-good.md",
+      "blob_sha": "861e83afb3fe3fec87cea87e0b81f0408afe7d7f",
+      "size": 4527
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3167/IB-SMART-NOTE-20261117-sn3167-sidebar-icons-are-the-round-icons-and-pills.md",
+      "blob_sha": "59e92c94926bb247d5cfd37bad39b6e7e5927068",
+      "size": 5426
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3168/IB-SMART-NOTE-20261117-sn3168-the-bar-tiles-are-real-objects.md",
+      "blob_sha": "62cfa6bb2e2fedc80bbe7523da78c7d9aac8a211",
+      "size": 5938
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3169/IB-SMART-NOTE-20261117-sn3169-the-look-is-the-pictures-dark-middle-white-icon.md",
+      "blob_sha": "dccb95bd14c8511e5b3d0ac1d65c230b5f1802c6",
+      "size": 5776
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3170/IB-SMART-NOTE-20261117-sn3170-one-icon-set-one-sidebar-one-look.md",
+      "blob_sha": "cda749ad67ac8d8e0e669b91be2b9a51cc1b481d",
+      "size": 4505
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3171/IB-SMART-NOTE-20261117-sn3171-the-hub-sidebar-icons-are-squares-not-circles.md",
+      "blob_sha": "625b67883fa9fb3839416feb6ca2c1020867df0d",
+      "size": 5220
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3172/IB-SMART-NOTE-20261117-sn3172-the-sidebar-row-round-icon-inside-the-square-button.md",
+      "blob_sha": "1e72caaf1d248a19d127a93c068b9e2f081f27ad",
+      "size": 5165
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3177/IB-SMART-NOTE-20261117-sn3177-no-gray-text-emphatic-again.md",
+      "blob_sha": "a78f7b2c8fbe355fdf5c4330d5cbf7e9207f4814",
+      "size": 3696
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3178/IB-SMART-NOTE-20261117-sn3178-the-ball-not-a-circle.md",
+      "blob_sha": "d37275e0e92fe52c5d93b650b22253df09f21771",
+      "size": 4377
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3179/IB-SMART-NOTE-20261117-sn3179-clarity-at-zoom.md",
+      "blob_sha": "49d5090e11635c722f15e42c08a554c76773ef24",
+      "size": 3615
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3180/IB-SMART-NOTE-20261117-sn3180-glow-over-not-glow-around.md",
+      "blob_sha": "debdd13b129aef4dd64211ae202ad41a357fc1e8",
+      "size": 4763
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3181/IB-SMART-NOTE-20261117-sn3181-3d-not-2d-elevation-over-glow.md",
+      "blob_sha": "04baa23452c27d776cb227ad238703344840b37c",
+      "size": 5727
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3185/IB-SMART-NOTE-20261117-sn3185-the-personal-bar-tiles-are-the-model.md",
+      "blob_sha": "deab4e20d09433e5fb700b35110c6040fb1bc75e",
+      "size": 5211
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3186/IB-SMART-NOTE-20261117-sn3186-hover-light-around-the-moving-light-comes-back.md",
+      "blob_sha": "fc76b8ebc0b51239f6a237bc3cb113c34818e863",
+      "size": 5483
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3190/IB-SMART-NOTE-20261117-sn3190-the-purple-heart-is-the-signature.md",
+      "blob_sha": "95c0840efa7fd9bb8e7f40fe66e8163cd2e2cd8e",
+      "size": 3817
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3191/IB-SMART-NOTE-20261117-sn3191-all-icons-extraordinary-all-the-way-through.md",
+      "blob_sha": "f0fec34586e84f919041a7ce785367ec8f700bbd",
+      "size": 3694
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3192/IB-SMART-NOTE-20261117-sn3192-the-system-breathes-living-intelligence.md",
+      "blob_sha": "d896fb4d0b9ffcd0fba05447cf322dbd555507fd",
+      "size": 5174
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3193/IB-SMART-NOTE-20261117-sn3193-the-pills-are-triple-a-plus.md",
+      "blob_sha": "a9f962e58ea32c44ff412c29f811f3195762b6bd",
+      "size": 3926
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3194/IB-SMART-NOTE-20261117-sn3194-no-gray-flat-icons-anywhere.md",
+      "blob_sha": "0b1397968b1e87e33710edb7774cabfb580a5471",
+      "size": 4742
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3195/IB-SMART-NOTE-20261117-sn3195-the-notification-ball.md",
+      "blob_sha": "76cfa5b135565f8b59068a8afb1f84b5141901c5",
+      "size": 4624
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3196/IB-SMART-NOTE-20261117-sn3196-the-star-balls-obsidian-no-yellow-glow.md",
+      "blob_sha": "4650f3ba1a0278d3657870587f7095b9218028e4",
+      "size": 4783
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3197/IB-SMART-NOTE-20261117-sn3197-just-enough-glow.md",
+      "blob_sha": "d427ae7fdc02cf9465209313e38510c9b7f952cb",
+      "size": 4784
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3198/IB-SMART-NOTE-20261117-sn3198-objectnality.md",
+      "blob_sha": "59b6f060dab7959cf01df8de279bcc667022ab24",
+      "size": 5014
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3199/IB-SMART-NOTE-20261117-sn3199-the-touch-press-useful-helpful-obvious.md",
+      "blob_sha": "0970287aab58d4f4c2ea89c7a5691a3d9642115b",
+      "size": 5129
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3205/IB-SMART-NOTE-20261117-sn3205-the-emblem-is-the-north-star-for-all-art.md",
+      "blob_sha": "ab9046369c4dc73e4d210e64caab693512dbaf3b",
+      "size": 6435
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3207/IB-SMART-NOTE-20261117-sn3207-the-cluster-goes-and-scorecard-the-page-to-ten.md",
+      "blob_sha": "cab44a65f108da92d88787abe76717a1947e5224",
+      "size": 9794
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3175/IB-SMART-NOTE-20261117-sn3175-the-hub-feed-remove-the-machine-text-short-wisdom-close-button-search-flush.md",
+      "blob_sha": "9a3146f4b3285955c5adae4a1a81a09d30622ad5",
+      "size": 7855
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3176/IB-SMART-NOTE-20261117-sn3176-the-menu-control-goes-to-the-right-sidebar-or-messenger.md",
+      "blob_sha": "83ace370791dfbc5c13c7c41640c406b54730009",
+      "size": 5961
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3188/IB-SMART-NOTE-20261117-sn3188-the-menu-toggle-sidebar-or-messenger-or-neither.md",
+      "blob_sha": "b8d75b5efa1f05e6060ffc733699422b9b01d196",
+      "size": 5945
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/IDENTITY/SN-3159/IB-SMART-NOTE-20261117-sn3159-what-makes-naya-different.md",
+      "blob_sha": "3f140c209f13fb43e8b4d780c8dc354068009bf0",
+      "size": 5565
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/IDENTITY/SN-3160/IB-SMART-NOTE-20261117-sn3160-naya-standard-north-star.md",
+      "blob_sha": "5db9902f08e939b31e52084ce6300264f40a9e4e",
+      "size": 8106
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3189/IB-SMART-NOTE-20261117-sn3189-the-intelligent-block-is-the-universal-posting-format.md",
+      "blob_sha": "daa1e0ea1a83dd928d8b37cda839b7aa83f2ea39",
+      "size": 7098
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3200/IB-SMART-NOTE-20261117-sn3200-the-twin-rank-is-the-shape.md",
+      "blob_sha": "dd8e6535afdbc668ef3d41af62762d0d36171660",
+      "size": 6754
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3201/IB-SMART-NOTE-20261117-sn3201-the-mockup-revised-to-10-10.md",
+      "blob_sha": "a464fdaac8fd45d855a506030a559e8c03526f70",
+      "size": 6570
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3202/IB-SMART-NOTE-20261117-sn3202-the-rating-footer-is-the-one.md",
+      "blob_sha": "866ae12d50a12af5ba719d1ec9754a725bf75bf4",
+      "size": 6847
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3203/IB-SMART-NOTE-20261117-sn3203-the-color-question-gold-worth-blue-mind.md",
+      "blob_sha": "69e2ddf64369015a535db3999890dca3088dca39",
+      "size": 8122
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3204/IB-SMART-NOTE-20261117-sn3204-alive-means-in-the-hub.md",
+      "blob_sha": "85b29268ba69e10ffc3cc0e6ddbb1a4e477017a0",
+      "size": 6277
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3206/IB-SMART-NOTE-20261117-sn3206-the-spot-and-the-two-things.md",
+      "blob_sha": "193d27d51ad3eb6596c1d055fd798664b6ff528d",
+      "size": 6069
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3054/IB-SMART-NOTE-20261117-sn3054-the-day-menu.md",
       "blob_sha": "6b495f4dd9fdb9d9259adc80ecb3a2fcc5415748",
       "size": 8606
@@ -14317,6 +15997,521 @@
       "size": 10248
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3087/IB-SMART-NOTE-20261117-sn3087-the-full.md",
+      "blob_sha": "ed4e3617fc94257668e95339d65c845645d5c619",
+      "size": 9103
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3103/IB-SMART-NOTE-20261117-sn3103-everything-is-an-object.md",
+      "blob_sha": "c19ec5a28dcbf0e614b42481845b1e4f0815c03f",
+      "size": 11577
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3104/IB-SMART-NOTE-20261117-sn3104-the-laws-go-to-every-agent.md",
+      "blob_sha": "2b398cfc1a7cacc0254a67ef574a6968a58d6d4c",
+      "size": 9239
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3106/IB-SMART-NOTE-20261117-sn3106-the-day-view-v14.md",
+      "blob_sha": "a5dab554d53d89b63afd9dd5819ad633b2ad1551",
+      "size": 10368
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3107/IB-SMART-NOTE-20261117-sn3107-the-hz-diamond.md",
+      "blob_sha": "a6ea362a1c193ffcac8231b088d2937827924af3",
+      "size": 6482
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3108/IB-SMART-NOTE-20261117-sn3108-the-month-view-weekdays.md",
+      "blob_sha": "b28b05967747bdf95279fe4230e257d34fc96870",
+      "size": 9636
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3109/IB-SMART-NOTE-20261117-sn3109-the-day-view-top-bar.md",
+      "blob_sha": "cfc91bb1d3ffcf9bf67f269a861c632dbfb601c4",
+      "size": 11101
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3110/IB-SMART-NOTE-20261117-sn3110-one-headliner.md",
+      "blob_sha": "f443857d4ec89ec2e44faf7c3e088a7447d1536b",
+      "size": 6478
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3111/IB-SMART-NOTE-20261117-sn3111-discern-dont-copy.md",
+      "blob_sha": "756c4d8adc070a9b7d675af4f50de60acc479f7d",
+      "size": 10369
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3112/IB-SMART-NOTE-20261117-sn3112-the-days-color-fills-the-inside.md",
+      "blob_sha": "c207d56b1d8ac71257f305724c640a3ecf851f13",
+      "size": 8293
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3114/IB-SMART-NOTE-20261117-sn3114-today-calendar-and-personal-completed.md",
+      "blob_sha": "ab1f7cdfe0402da7725b494384fa3527d9520a06",
+      "size": 6570
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3115/IB-SMART-NOTE-20261117-sn3115-voice-not-a-law-where-playback-makes-sense.md",
+      "blob_sha": "6d8219c834a1d05d3f3039df0a0b89cad6afe8a0",
+      "size": 12976
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3116/IB-SMART-NOTE-20261117-sn3116-the-clock-and-the-weekday-objects.md",
+      "blob_sha": "c91efef92a7a072de9d7509b6fe7ed90206dba0a",
+      "size": 12382
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3117/IB-SMART-NOTE-20261117-sn3117-the-weekday-icons-what-each-day-represents.md",
+      "blob_sha": "e950ca4c50adceb12edd9ea7b73e1aecccf6ffc1",
+      "size": 8115
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3121/IB-SMART-NOTE-20261117-sn3121-the-code-of-naya.md",
+      "blob_sha": "ce787b29a37d9f610f704b8fc641e2e848ad2a5c",
+      "size": 16051
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3122/IB-SMART-NOTE-20261117-sn3122-both-formats-for-both-pages.md",
+      "blob_sha": "9c38b82b8b5cc704dc3626d3e52af84966b1616f",
+      "size": 7280
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3123/IB-SMART-NOTE-20261117-sn3123-the-collective-agreement-never-completed-never-shown.md",
+      "blob_sha": "d083162e4046abb6059e5d0dca3ee274145cf5f6",
+      "size": 7912
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3124/IB-SMART-NOTE-20261117-sn3124-the-agreement-unfold-becomes-the-template.md",
+      "blob_sha": "4ca2aaa624b5b2e8893f1c2c56acbaba985d1270",
+      "size": 8879
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3125/IB-SMART-NOTE-20261117-sn3125-the-day-as-one-place.md",
+      "blob_sha": "aaf7e400ad59140471a850d6a6877cb48a6f169d",
+      "size": 8843
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3126/IB-SMART-NOTE-20261117-sn3126-the-hub-as-he-sees-it.md",
+      "blob_sha": "ee43692abba1cd53a75b42bb8c3c765470ada49e",
+      "size": 7896
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3127/IB-SMART-NOTE-20261117-sn3127-the-spectrum-flow.md",
+      "blob_sha": "4757b5b0be9492c451738305d4b0de289f473e55",
+      "size": 6750
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3128/IB-SMART-NOTE-20261117-sn3128-the-connections-page.md",
+      "blob_sha": "ecb48bfb1889d79c2bdd676284ddacff2dc170e1",
+      "size": 8805
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3129/IB-SMART-NOTE-20261117-sn3129-the-inspector-sweep.md",
+      "blob_sha": "587185f3988dbff2f279ccd37bd6cfc4288c4d63",
+      "size": 7266
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3130/IB-SMART-NOTE-20261117-sn3130-the-sidebar-sub-tabs.md",
+      "blob_sha": "2e06ca89fcc525590d9f4899042bb55a20171ec7",
+      "size": 9831
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3131/IB-SMART-NOTE-20261117-sn3131-the-day-view-top-stays.md",
+      "blob_sha": "9e35a0e0491803d2fdce8ffa755092a9dd26074a",
+      "size": 6795
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3132/IB-SMART-NOTE-20261117-sn3132-the-dashboard-hero.md",
+      "blob_sha": "3c5f0a158c13809d7552a5028ca710a8df9e9e0f",
+      "size": 6516
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3133/IB-SMART-NOTE-20261117-sn3133-smart-mail-total-revamp.md",
+      "blob_sha": "7999eccc7133b9809e2de20c8a4c8ca6f019529b",
+      "size": 7061
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3134/IB-SMART-NOTE-20261117-sn3134-the-bridge-page-follow-the-word.md",
+      "blob_sha": "df02867d45214e0f5c87b9880c85e7a0f8e08cb0",
+      "size": 10859
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3135/IB-SMART-NOTE-20261117-sn3135-the-certificate-current.md",
+      "blob_sha": "a1da9a34db4ad3249e8ec53867103ac7f84e08c9",
+      "size": 6971
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3136/IB-SMART-NOTE-20261117-sn3136-the-smart-note-format.md",
+      "blob_sha": "c1db0e93b32b4b803219a577e9887bfa2222e1e6",
+      "size": 14163
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3137/IB-SMART-NOTE-20261117-sn3137-what-a-naya-note-is.md",
+      "blob_sha": "e342447c1816a141f9fefdee536715a728301456",
+      "size": 10097
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3138/IB-SMART-NOTE-20261117-sn3138-the-hub-buttons-are-the-standard.md",
+      "blob_sha": "fe707cad965aaf48624554e0f9e6eea0bcfb5d55",
+      "size": 6584
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3139/IB-SMART-NOTE-20261117-sn3139-the-bottom-bar-mirror-personal-fold-down.md",
+      "blob_sha": "ecee92c564c275ba27119df4742997c5903d5558",
+      "size": 8523
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3140/IB-SMART-NOTE-20261117-sn3140-the-day-view-even-better-v18.md",
+      "blob_sha": "d2d98e1c2a41c35d60ee145f1e15a0a31f966ae4",
+      "size": 9739
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3141/IB-SMART-NOTE-20261117-sn3141-color-separation.md",
+      "blob_sha": "b2c9bbf65a4d849d5668e358bcb10974ac7237ba",
+      "size": 5536
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3142/IB-SMART-NOTE-20261117-sn3142-the-orbit-is-back-on-all-six-bottom-buttons.md",
+      "blob_sha": "b98aa73a9513b77882527c26f893c728f59523b9",
+      "size": 5087
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3143/IB-SMART-NOTE-20261117-sn3143-no-flatness-all-the-way-through.md",
+      "blob_sha": "dc2072b26968f3b0536451d87853efe651073704",
+      "size": 5755
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3225/IB-SMART-NOTE-20261117-sn3225-the-pedestal.md",
+      "blob_sha": "ea2f927f8e56d4cbf2aac91fe3207b443cb0c910",
+      "size": 9157
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3226/IB-SMART-NOTE-20261117-sn3226-the-library-where-it-lives.md",
+      "blob_sha": "a7fdb9e20735aa45c76f93d42e81d45c295c4294",
+      "size": 7474
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3229/IB-SMART-NOTE-20261117-sn3229-the-language-i-live-in.md",
+      "blob_sha": "6cb5d0ad2e9bca284f6a8bf5c62761cc29fb527c",
+      "size": 12052
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3230/IB-SMART-NOTE-20261117-sn3230-the-agreement-page-look.md",
+      "blob_sha": "75ecbcf0b90b791779864131e8cab76b2c30794c",
+      "size": 9122
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3231/IB-SMART-NOTE-20261117-sn3231-the-agreement-page-feel.md",
+      "blob_sha": "f7eb36b3439796ad7578a47e7c6e0dea462b9b4f",
+      "size": 6716
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3233/IB-SMART-NOTE-20261117-sn3233-the-font-marcellus.md",
+      "blob_sha": "30e297b9fa79a1937b20a7d566deca3f58025a8b",
+      "size": 8270
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3234/IB-SMART-NOTE-20261117-sn3234-the-vault-rule.md",
+      "blob_sha": "6d29ba0b146d3dc72ba5f0f6ba066ddc7b1cbb2d",
+      "size": 10469
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3235/IB-SMART-NOTE-20261117-sn3235-the-master-vault.md",
+      "blob_sha": "4e168cca925a4e01236126f2156ae2cc815ec9a8",
+      "size": 11055
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3237/IB-SMART-NOTE-20261117-sn3237-the-vault-sharpened.md",
+      "blob_sha": "1396fb110ebf53a305f96e776912b3f64c37c558",
+      "size": 8731
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3238/IB-SMART-NOTE-20261117-sn3238-the-one-set-aligned-everywhere.md",
+      "blob_sha": "24cdbc009424648e4905adc0ed00adaff7c6908e",
+      "size": 11618
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3239/IB-SMART-NOTE-20261117-sn3239-the-day-is-the-unit.md",
+      "blob_sha": "a474ded0de8e74cb07a23b5e4b15017fe1769c4c",
+      "size": 7579
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3241/IB-SMART-NOTE-20261117-sn3241-readability.md",
+      "blob_sha": "8530a3f8297c5f54094c4849d3ad863f249f4828",
+      "size": 7933
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3243/IB-SMART-NOTE-20261117-sn3243-the-obsidian-calendar.md",
+      "blob_sha": "d2c4be81796013f996d84466caad3368ca8712ba",
+      "size": 12882
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3246/IB-SMART-NOTE-20261117-sn3246-smart-posts-facelift.md",
+      "blob_sha": "80b70fab3848b93aa19a9a3b7c08993670863d8f",
+      "size": 9176
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3248/IB-SMART-NOTE-20261117-sn3248-the-calendar-cells.md",
+      "blob_sha": "624a6c6af8c65c11318df188ba88b855fa92fe52",
+      "size": 13023
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3249/IB-SMART-NOTE-20261117-sn3249-the-day-menu-jewel-icon.md",
+      "blob_sha": "d67eb264beed589ecdd99216bfd2e73f70f2180e",
+      "size": 9667
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3250/IB-SMART-NOTE-20261117-sn3250-the-eye-normal-white-info-eye.md",
+      "blob_sha": "3b3f6e706f4ce6ccec8b0735c77b25ed493ef9cc",
+      "size": 11183
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3251/IB-SMART-NOTE-20261117-sn3251-no-gray-text-minimum-text.md",
+      "blob_sha": "37b9f8b0ff9a7e6a993d02f6750b629c04ad62ef",
+      "size": 6561
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3252/IB-SMART-NOTE-20261117-sn3252-the-inspector-quality-standard.md",
+      "blob_sha": "bd81f55d60175ce7800969305011fee69164d5a0",
+      "size": 7216
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3253/IB-SMART-NOTE-20261117-sn3253-the-five-icons-on-every-page.md",
+      "blob_sha": "a8145a39457ac9d407c048bebc06b934f9b8a765",
+      "size": 7495
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3254/IB-SMART-NOTE-20261117-sn3254-the-elegance-front-entrance-standard.md",
+      "blob_sha": "a8be46e81bdeec855c1493144c0bbed8c4a26632",
+      "size": 10141
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3255/IB-SMART-NOTE-20261117-sn3255-the-eye-black-in-the-middle.md",
+      "blob_sha": "f7f15cc7b7fe0132086ec0d7087375ca7256f1a1",
+      "size": 5156
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3256/IB-SMART-NOTE-20261117-sn3256-the-day-view-is-a-dashboard.md",
+      "blob_sha": "d88735387d247a5cd800e6361d8c6c2c996b7040",
+      "size": 7944
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3257/IB-SMART-NOTE-20261117-sn3257-the-inspector-full-sweep.md",
+      "blob_sha": "867ab3703a329f6f4b985b0b2abac289ad297916",
+      "size": 7655
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3258/IB-SMART-NOTE-20261117-sn3258-the-factory-is-the-formatter.md",
+      "blob_sha": "d4c2c03ce3b8c8f2dd6583396fa89edc5595473d",
+      "size": 8824
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3259/IB-SMART-NOTE-20261117-sn3259-one-bottom-bar-the-five-everywhere.md",
+      "blob_sha": "03a8dfdccd381686159fe61f01be279904d7f4f9",
+      "size": 6940
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3260/IB-SMART-NOTE-20261117-sn3260-best-of-both-one-smart-mail.md",
+      "blob_sha": "7a298392dcdf1e099975811486cba5683093d6f1",
+      "size": 6768
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3261/IB-SMART-NOTE-20261117-sn3261-alive-like-a-high-tech-computer.md",
+      "blob_sha": "1bacafbfa003711766252a431a44b6921e1a9272",
+      "size": 6188
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3262/IB-SMART-NOTE-20261117-sn3262-the-calendar-scorecard.md",
+      "blob_sha": "dc272bf90a8b266cbf0c5b61f038df47d68b60f9",
+      "size": 9393
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3263/IB-SMART-NOTE-20261117-sn3263-the-best-buttons-in-the-system.md",
+      "blob_sha": "16872f262752a7a3d7c4649692f9da72bf3e59a3",
+      "size": 7305
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3264/IB-SMART-NOTE-20261117-sn3264-no-huge-today.md",
+      "blob_sha": "fa14944d894134450dc2659f5bbff5ecdada3f87",
+      "size": 5478
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3265/IB-SMART-NOTE-20261117-sn3265-the-button-lesson-on-the-calendar.md",
+      "blob_sha": "39d7dc6eed9b03eb1315f612fa482de95a8bb872",
+      "size": 6097
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3266/IB-SMART-NOTE-20261117-sn3266-numbers-way-too-big-common-language.md",
+      "blob_sha": "038b7fa7cd5a4fa145cf1b3fa8530403347824ff",
+      "size": 6748
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3267/IB-SMART-NOTE-20261117-sn3267-the-text-laws.md",
+      "blob_sha": "fda0e59897c8ac96456f3b34dcb6a70e97ceea9c",
+      "size": 10212
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3066/IB-SMART-NOTE-20261117-sn3066-the-only-mistake-is-the-unnoted-one.md",
+      "blob_sha": "b64cc04f21485d0e82ed8e798b1532966b9e5063",
+      "size": 8058
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3067/IB-SMART-NOTE-20261117-sn3067-verification-must-be-able-to-say-no.md",
+      "blob_sha": "3c8fe1170321395f125d0f25ce6e9079f6c8b6da",
+      "size": 8186
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3068/IB-SMART-NOTE-20261117-sn3068-the-record-corrects-itself-in-the-open.md",
+      "blob_sha": "e43f8c1f262411ddf9389fd889583373255394eb",
+      "size": 9193
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3069/IB-SMART-NOTE-20261117-sn3069-every-handoff-is-a-claim.md",
+      "blob_sha": "5885efe28890045c9137675d1fa43b2e76d77c8d",
+      "size": 9717
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3070/IB-SMART-NOTE-20261117-sn3070-think-completely-then-choose-the-ultimate.md",
+      "blob_sha": "c67152761d693811936da973c5b55ca7c6ba74ab",
+      "size": 8758
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3071/IB-SMART-NOTE-20261117-sn3071-finished-means-working.md",
+      "blob_sha": "0df36dc3c80c5469e535a369951c7758d6a8290e",
+      "size": 8594
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3072/IB-SMART-NOTE-20261117-sn3072-one-mind-held-in-trust.md",
+      "blob_sha": "4ca1bc92e46845368a7aa3b7f19622fbe0b80195",
+      "size": 9467
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3073/IB-SMART-NOTE-20261117-sn3073-the-self-improving-machine.md",
+      "blob_sha": "b3c3e8f32056ab90fb29dc4a01f10d6c60a6355e",
+      "size": 8509
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3074/IB-SMART-NOTE-20261117-sn3074-built-for-the-citizen-operated-by-naya.md",
+      "blob_sha": "e6fa95bad74fadcf18cc66dc820cb6d54b2a929f",
+      "size": 8433
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3075/IB-SMART-NOTE-20261117-sn3075-the-craft-of-the-block.md",
+      "blob_sha": "0100fe9bd39fd07ba0be4b90caf4a05e83e80896",
+      "size": 9965
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3076/IB-SMART-NOTE-20261117-sn3076-the-door-must-fit-the-work.md",
+      "blob_sha": "4fe1bc598c7bde900a57ea6913c69a89f6553118",
+      "size": 9498
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3077/IB-SMART-NOTE-20261117-sn3077-proof-must-be-able-to-fail.md",
+      "blob_sha": "3a5544aa79f6f2e689461ef9ea956c8cbc741649",
+      "size": 8737
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3078/IB-SMART-NOTE-20261117-sn3078-repair-the-source-close-honestly.md",
+      "blob_sha": "cba50b612a1552cd437a7dd7db219004c7b3da41",
+      "size": 9303
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3079/IB-SMART-NOTE-20261117-sn3079-authority-is-a-property-of-artifacts.md",
+      "blob_sha": "c540c707391464aa5688fb61a269c5efbfad3cb8",
+      "size": 9922
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3080/IB-SMART-NOTE-20261117-sn3080-his-eye-is-the-final-gate.md",
+      "blob_sha": "eeb5e9be472d8b600ad51986f0367e5bdfb4d1f0",
+      "size": 9846
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3081/IB-SMART-NOTE-20261117-sn3081-the-living-number.md",
+      "blob_sha": "7b207710865a4d6da6a5b5afff2046e5daa735c5",
+      "size": 7832
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3082/IB-SMART-NOTE-20261117-sn3082-everyone-gets-a-world.md",
+      "blob_sha": "692e9b205e74a8554a20938f9b3edb7ead98efe0",
+      "size": 8667
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3083/IB-SMART-NOTE-20261117-sn3083-done-means-visible.md",
+      "blob_sha": "7b0c6b1c5aa3ccd8d7ef7dbcac3bb0c37bce355a",
+      "size": 8831
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3084/IB-SMART-NOTE-20261117-sn3084-formed-not-installed.md",
+      "blob_sha": "0d8cae04a354cccbf21e9c457567df5d16c5575e",
+      "size": 8837
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3085/IB-SMART-NOTE-20261117-sn3085-the-learning-loop-never-idles.md",
+      "blob_sha": "753847ecfe9eeb53c14ceb33610ee70c3d2cd66b",
+      "size": 9758
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3086/IB-SMART-NOTE-20261117-sn3086-one-living-system-always-running.md",
+      "blob_sha": "4d913f8aa15698e81b5023054109bbcd0712bd9a",
+      "size": 10134
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3088/IB-SMART-NOTE-20261117-sn3088-the-discipline-of-nine.md",
+      "blob_sha": "87b51a94f58501775d5a9e966df488cf75b3bcee",
+      "size": 9383
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3089/IB-SMART-NOTE-20261117-sn3089-prove-it-where-it-lives.md",
+      "blob_sha": "a8e5e13b9dfd2857344a201ba8b19c8f4248543e",
+      "size": 9647
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3090/IB-SMART-NOTE-20261117-sn3090-the-loop-that-never-idles.md",
+      "blob_sha": "179f3495258c495151a813a9fd9f2161810425ff",
+      "size": 6353
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/NAVIGATION/SN-3183/IB-SMART-NOTE-20261117-sn3183-a-link-must-land-on-the-view.md",
+      "blob_sha": "c07fb8a925397cad3a3690e5a6fc64e8399184ca",
+      "size": 4787
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3162/IB-SMART-NOTE-20261117-sn3162-link-was-old.md",
+      "blob_sha": "a2b4d82bd95979303aa345c8cd5c1ec1d4fd120c",
+      "size": 7368
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3163/IB-SMART-NOTE-20261117-sn3163-the-main-url-law.md",
+      "blob_sha": "b6b7955c899e771d01635c18309897ad9401817f",
+      "size": 6695
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3269/IB-SMART-NOTE-20261117-sn3269-on-top-of-things.md",
+      "blob_sha": "f23bf76ef4e8408f1dfd47ebe4eba9a613bdb6c5",
+      "size": 5458
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/ORDER/SN-3161/IB-SMART-NOTE-20261117-sn3161-train-the-army.md",
+      "blob_sha": "ed68227b33d597fdae0b544bc0ed8c2dbc500286",
+      "size": 6122
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/PROCESS/SN-3184/IB-SMART-NOTE-20261117-sn3184-work-smart-not-repeated.md",
+      "blob_sha": "56857f5b48c6e6b120beb7ee34aa59c7ce82d87a",
+      "size": 4214
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/REPORT/SN-3091/IB-SMART-NOTE-20261117-sn3091-daily-intelligence-report-2026-11-17.md",
+      "blob_sha": "20cffffd6776013f0a7d5c766fd71b4912df3bcb",
+      "size": 13034
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/SMART/SN-3182/IB-SMART-NOTE-20261117-sn3182-machine-on-the-back-human-on-the-front.md",
+      "blob_sha": "cbf6e296e567ed199a0ac231f8b685c817fd0065",
+      "size": 4104
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3055/IB-SMART-NOTE-20261117-sn3055-the-benchmarks-best-in-the-world.md",
       "blob_sha": "9f5307898a128f679b8f28d2392d35e88cf48b47",
       "size": 8621
@@ -14325,6 +16520,1016 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3056/IB-SMART-NOTE-20261117-sn3056-the-auto-format.md",
       "blob_sha": "8acb2f11eb9a37de119f379de4ae4d840b2c94f3",
       "size": 6779
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3105/IB-SMART-NOTE-20261117-sn3105-the-day-menu-notification-bar.md",
+      "blob_sha": "ad79bda4e5d0b1a3776b978464db1a9057c287fd",
+      "size": 10746
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3113/IB-SMART-NOTE-20261117-sn3113-the-everyday-world-viral-law-divine-design.md",
+      "blob_sha": "d84ffb1a1952c613d0822c415ee94ebda1fba73d",
+      "size": 13171
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3118/IB-SMART-NOTE-20261117-sn3118-the-divine-design-the-alignment.md",
+      "blob_sha": "7d727bfd53ee4a3e198cac1e3ebc7c8aa9946bbe",
+      "size": 10482
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3119/IB-SMART-NOTE-20261117-sn3119-the-best-parts-the-magnet-the-living-system.md",
+      "blob_sha": "27154284df8bcf1bdc7a67a5e1ee9196fc35bb74",
+      "size": 11396
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3120/IB-SMART-NOTE-20261117-sn3120-it-seems-so-obvious-now-they-dont-need-to-understand-it.md",
+      "blob_sha": "296fcda0567bc22bd12639be18dc2d4b63ab314f",
+      "size": 12371
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3166/IB-SMART-NOTE-20261117-sn3166-contacts-are-smart-links-on-smart-tabs.md",
+      "blob_sha": "e0321e866c4a572ce22e90475102579d00625c58",
+      "size": 4819
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3227/IB-SMART-NOTE-20261117-sn3227-the-format-assignment.md",
+      "blob_sha": "9636f675675a8637178496f671a82be5c5fd2e46",
+      "size": 11485
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3228/IB-SMART-NOTE-20261117-sn3228-the-performance-question.md",
+      "blob_sha": "01bdf933180d5369732406bd121958eb433133db",
+      "size": 11424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3232/IB-SMART-NOTE-20261117-sn3232-the-two-choices.md",
+      "blob_sha": "0293410debc726ebc5cfc7e90ad966267a37e83c",
+      "size": 8693
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3236/IB-SMART-NOTE-20261117-sn3236-personal-first.md",
+      "blob_sha": "60391c1bac1403cb312e6bb932c114b3f1f314d6",
+      "size": 9652
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3240/IB-SMART-NOTE-20261117-sn3240-the-new-land.md",
+      "blob_sha": "d2613435dfcea77aff3afe7da9bd73668ed38ae4",
+      "size": 9838
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3242/IB-SMART-NOTE-20261117-sn3242-the-bugatti-calendar.md",
+      "blob_sha": "a41c9595f066a50ef0c376deebc0f4473bcc537c",
+      "size": 12904
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3244/IB-SMART-NOTE-20261117-sn3244-the-most-intelligent-interface.md",
+      "blob_sha": "c8db64beea0ffb37dd1402047396a377e55180fe",
+      "size": 8721
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3245/IB-SMART-NOTE-20261117-sn3245-the-north-star-smart-factory.md",
+      "blob_sha": "04400305f7d43996e96b4df938ff52bbf3ff3a97",
+      "size": 9461
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3247/IB-SMART-NOTE-20261117-sn3247-the-intelligent-block-epic-numbers.md",
+      "blob_sha": "878a731639d15e132b83bbe02dce80e2621da4e4",
+      "size": 9974
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/ADOPTION/SN-3222/IB-SMART-NOTE-20261118-sn3222-eat-our-own-cooking.md",
+      "blob_sha": "e203fdcbc0db9e2c45d6fc5283cf0cc90f936843",
+      "size": 6266
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/ALIGNMENT/SN-3215/IB-SMART-NOTE-20261118-sn3215-align-all-the-pages-the-sidebars.md",
+      "blob_sha": "9db68dd9678d945ebe2351d67df4b08dfc7803d0",
+      "size": 7271
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CALENDAR/SN-3210/IB-SMART-NOTE-20261118-sn3210-the-day-view-restructure-obsidian-inside-alive-on-hover.md",
+      "blob_sha": "9ac3cdd68198551162e173c39e0979fa16ca1371",
+      "size": 7112
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CALENDAR/SN-3213/IB-SMART-NOTE-20261118-sn3213-month-view-top-bar-and-the-ten-things.md",
+      "blob_sha": "d884c6a18658be4a4bb631a93d5a9ad72210833a",
+      "size": 9997
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3319/IB-SMART-NOTE-20261118-sn3319-prove-the-premise-before-you-hand-it-to-him.md",
+      "blob_sha": "4c1635a3565985ccbd610634a559d5f9473620d4",
+      "size": 6728
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3320/IB-SMART-NOTE-20261118-sn3320-prove-the-fold-on-the-live-page-not-on-paper.md",
+      "blob_sha": "479e47fef1a08b29d313ce653a3c4ec02fe0e7ea",
+      "size": 6847
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3321/IB-SMART-NOTE-20261118-sn3321-count-it-yourself.md",
+      "blob_sha": "87f5a3ca5e7b8162209a5e167a2d93a6ae0db297",
+      "size": 6844
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3323/IB-SMART-NOTE-20261118-sn3323-back-to-back-not-closed-rounds.md",
+      "blob_sha": "0d543e39989785d8c2627b4f3f5a148c248f8f91",
+      "size": 5030
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3324/IB-SMART-NOTE-20261118-sn3324-the-captain-looks-first.md",
+      "blob_sha": "4ce51b04fb4484f30c89faa6b52595bbfc215ef5",
+      "size": 6382
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3328/IB-SMART-NOTE-20261118-sn3328-hold-the-n-ball-and-land-where-he-started.md",
+      "blob_sha": "6235419ca8f522e15adff26af3f142644f27fd66",
+      "size": 5770
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3331/IB-SMART-NOTE-20261118-sn3331-wednesday-is-kanye-blue.md",
+      "blob_sha": "fb943bbb3c0ef07a571a2bcb9b75050e34bca92c",
+      "size": 5845
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3378/IB-SMART-NOTE-20261118-sn3378-the-mail-key-never-moved.md",
+      "blob_sha": "c984b301e826e30620d86a706707ac176b89ad4e",
+      "size": 2294
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DASHBOARD/SN-3212/IB-SMART-NOTE-20261118-sn3212-dashboard-is-the-days-introduction.md",
+      "blob_sha": "53d1510bd8ba19059ae51a8de84c78207c818cde",
+      "size": 8222
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3322/IB-SMART-NOTE-20261118-sn3322-join-goes-where-the-meeting-lives.md",
+      "blob_sha": "fbb25093bb57eae237ed9752816638efc6ec7df4",
+      "size": 4631
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3333/IB-SMART-NOTE-20261118-sn3333-the-agreement-as-audio.md",
+      "blob_sha": "d97a8e85a5f8649e2f252ab7152f8d7728745c0f",
+      "size": 5160
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3377/IB-SMART-NOTE-20261118-sn3377-efficiency-is-the-game.md",
+      "blob_sha": "573af4b5c8768a63ff4055a9d06edbd68367063d",
+      "size": 2637
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3379/IB-SMART-NOTE-20261118-sn3379-factory-first-one-click-build.md",
+      "blob_sha": "296198171deeaffe92807b85e1816b332eb4bcf4",
+      "size": 2513
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DEPLOY/SN-3216/IB-SMART-NOTE-20261118-sn3216-find-the-cause-first-then-retry.md",
+      "blob_sha": "c50eabe145d03fa9f155df9e96b56db126779bcd",
+      "size": 7842
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN-LAW/SN-3275/IB-SMART-NOTE-20261118-sn3275-the-fold-is-the-experience.md",
+      "blob_sha": "13fa7c9a8acbbe089c19ccc875ea71ff5f36c7dd",
+      "size": 9919
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN-LAW/SN-3276/IB-SMART-NOTE-20261118-sn3276-real-premium-and-elite-in-every-way.md",
+      "blob_sha": "4a3b981ff5819ee389bf510cc646779b46774e4a",
+      "size": 7686
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3092/IB-SMART-NOTE-20261118-sn3092-the-twin-rank.md",
+      "blob_sha": "9b9c030fbf0d2d01e35a0d2c71839349acbbd324",
+      "size": 9804
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3096/IB-SMART-NOTE-20261118-sn3096-everything-is-a-real-object.md",
+      "blob_sha": "59750e563776a758b0778ed6f8882ddb6216651c",
+      "size": 5999
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3097/IB-SMART-NOTE-20261118-sn3097-one-screen-complete.md",
+      "blob_sha": "c8fd4d60f1dbf1e9bdbd2147daee06e050a9cf60",
+      "size": 5992
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3098/IB-SMART-NOTE-20261118-sn3098-only-real-gauges-only-true-numbers.md",
+      "blob_sha": "501ee98eb1ec30a21124179f3fa39d9dd5e9cb85",
+      "size": 6153
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3099/IB-SMART-NOTE-20261118-sn3099-the-chart-is-the-page.md",
+      "blob_sha": "a0e06bfc9d2b17a090b7c45fa2898e83bf5ae2e3",
+      "size": 6317
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3100/IB-SMART-NOTE-20261118-sn3100-refined-by-his-eye.md",
+      "blob_sha": "b6959446b11aee2392f5cc200827a9fa34dd1f57",
+      "size": 6503
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3211/IB-SMART-NOTE-20261118-sn3211-the-black-car-and-the-unfolding-page.md",
+      "blob_sha": "2559f4b1aa6d096cb507d52d9951caecab85e7d2",
+      "size": 9017
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3270/IB-SMART-NOTE-20261118-sn3270-the-morning-list-is-the-whole-system.md",
+      "blob_sha": "a20db6baef01b37f0ccb70ed71cde89a7ef3dbd3",
+      "size": 9127
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3277/IB-SMART-NOTE-20261118-sn3277-the-check-the-link-and-the-look.md",
+      "blob_sha": "a11352200d3e0f638433099b0466ca35fad31759",
+      "size": 8470
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3278/IB-SMART-NOTE-20261118-sn3278-the-same-ones-everywhere-taken-verbatim-built-as-balls.md",
+      "blob_sha": "4f2f7f62c2f3efb141067a9b470a3e814fc6abc6",
+      "size": 12403
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3294/IB-SMART-NOTE-20261118-sn3294-the-underglow-law-hover-bottom-bar.md",
+      "blob_sha": "f13f612f2ab3c85459fb91948738fc7c8209c81b",
+      "size": 5824
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3295/IB-SMART-NOTE-20261118-sn3295-calendar-numbers-20-not-200-and-real.md",
+      "blob_sha": "abacb502febd0004d0223678e0c15d6b60c4ffff",
+      "size": 5169
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3296/IB-SMART-NOTE-20261118-sn3296-flat-goes-icons-speak.md",
+      "blob_sha": "e15befe2c7a765fe2b0ef9fc6b428f7effac821c",
+      "size": 4916
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3297/IB-SMART-NOTE-20261118-sn3297-one-icon-set-the-glowing-ones.md",
+      "blob_sha": "fb01cd980835f952eed5f176b48edff4738c92ce",
+      "size": 4295
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3298/IB-SMART-NOTE-20261118-sn3298-points-go-in-the-dashboard-not-the-hub.md",
+      "blob_sha": "c203dd826b173a3dfefb7e7b73e4d0fd217bff12",
+      "size": 4369
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3299/IB-SMART-NOTE-20261118-sn3299-restore-the-one-screen-beauty.md",
+      "blob_sha": "3fe79e124262de01e0dd006735b0f66813260bdf",
+      "size": 4249
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3300/IB-SMART-NOTE-20261118-sn3300-scroll-light-each-board-a-different-color.md",
+      "blob_sha": "f3e7d2363429f999ce255dc0e6ebadbdfdf72dc2",
+      "size": 4250
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3301/IB-SMART-NOTE-20261118-sn3301-sidebar-orbits-menu-to-verify.md",
+      "blob_sha": "72fa998146a6ae30acfc37c40e5ba457300d2d07",
+      "size": 4883
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3302/IB-SMART-NOTE-20261118-sn3302-the-banner-folds-away-on-its-own.md",
+      "blob_sha": "f0535eb9cf51f125397feed03cac01b5d6675142",
+      "size": 5197
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3303/IB-SMART-NOTE-20261118-sn3303-the-rating-footer-dont-forget-it.md",
+      "blob_sha": "0096e3f2b0e8c565b67fad5a19298979df74e454",
+      "size": 5824
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3304/IB-SMART-NOTE-20261118-sn3304-the-signature-piece.md",
+      "blob_sha": "500856fe314a24a10ff2ecaf4528878566a9dbe2",
+      "size": 4455
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3305/IB-SMART-NOTE-20261118-sn3305-weekday-glow-and-the-diamond.md",
+      "blob_sha": "6ca2c25f0c5ed269803197caf65a3b27422ff167",
+      "size": 4717
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3306/IB-SMART-NOTE-20261118-sn3306-showcase-the-points-no.md",
+      "blob_sha": "8b8dc65a497546e709e00045f11a286b940843f2",
+      "size": 5064
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3307/IB-SMART-NOTE-20261118-sn3307-people-use-what-they-can-see.md",
+      "blob_sha": "39a03e44edaf81a6f2226bc3e37d3eed013efba7",
+      "size": 6182
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3311/IB-SMART-NOTE-20261118-sn3311-the-connection-model-send-is-the-request.md",
+      "blob_sha": "a804a110b54bfd47cab33d63319dd56f3be60db2",
+      "size": 7358
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3312/IB-SMART-NOTE-20261118-sn3312-the-feed-shows-everybody.md",
+      "blob_sha": "5e7610150c02cc475a94a96d286886ec4876f39a",
+      "size": 6705
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3313/IB-SMART-NOTE-20261118-sn3313-the-agreement-buttons-read-the-agreement.md",
+      "blob_sha": "d63a2223ccca63586c88ffa779b9c5a785a6161c",
+      "size": 7295
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3314/IB-SMART-NOTE-20261118-sn3314-both-buttons-above-the-fold.md",
+      "blob_sha": "b07b512d7eb8555d9202b16c5a41d45aa157c56d",
+      "size": 6365
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3318/IB-SMART-NOTE-20261118-sn3318-the-intro-is-title-play-picture-letter.md",
+      "blob_sha": "d836d670e489cc1d652c048a5167c743563521dd",
+      "size": 6875
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3325/IB-SMART-NOTE-20261118-sn3325-a-ten-not-a-minus-nine.md",
+      "blob_sha": "3739ef275c81a956b4eedc943c70271ca70244e4",
+      "size": 4408
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3327/IB-SMART-NOTE-20261118-sn3327-the-kings-daily-report.md",
+      "blob_sha": "841f9e657ca7303017bc9b3c6967ee6ae9a124ad",
+      "size": 5134
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3329/IB-SMART-NOTE-20261118-sn3329-three-portraits-one-will-work.md",
+      "blob_sha": "79b44893aab401b399e7e58c1a690a76fc1e8710",
+      "size": 3874
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3330/IB-SMART-NOTE-20261118-sn3330-the-kings-chamber.md",
+      "blob_sha": "ae768ac398e8993e960afa864c27e4c831106756",
+      "size": 5980
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3332/IB-SMART-NOTE-20261118-sn3332-the-digital-royal-kingdom.md",
+      "blob_sha": "924c6a5f7ff2c898addcb9038446fa94b5b32239",
+      "size": 5113
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3334/IB-SMART-NOTE-20261118-sn3334-the-click-button-viewpoint-system.md",
+      "blob_sha": "212c2490c005546538c84c8ab085580f0aaffef3",
+      "size": 8770
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3335/IB-SMART-NOTE-20261118-sn3335-one-block-per-screen.md",
+      "blob_sha": "24c136cf2bc590d26150ab20753babddb3e9832f",
+      "size": 6078
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3336/IB-SMART-NOTE-20261118-sn3336-the-smart-block.md",
+      "blob_sha": "fd1a92705ce326e34d597dde825d373e87088dab",
+      "size": 6482
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3337/IB-SMART-NOTE-20261118-sn3337-the-design-language-locked-in.md",
+      "blob_sha": "974d57d414e37d7d29136c0920f98ca9826d9ad2",
+      "size": 4530
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3375/IB-SMART-NOTE-20261118-sn3375-the-ultimate-border.md",
+      "blob_sha": "bd4f805bda6ccb581c848ae5259b55138deac6f6",
+      "size": 2925
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3390/IB-SMART-NOTE-20261118-sn3390-copy-never-recreate.md",
+      "blob_sha": "8ae6a8c19097df5a9c3782fe32991c75b337a7fc",
+      "size": 6170
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3393/IB-SMART-NOTE-20261118-sn3393-the-letter-is-the-close.md",
+      "blob_sha": "6280b7e56bae72d90e07d225c10e64ee4c3d02fc",
+      "size": 6546
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3396/IB-SMART-NOTE-20261118-sn3396-one-screen-one-idea.md",
+      "blob_sha": "d83b0a6d39de6c04d6b5cf34f13a90dc7413691b",
+      "size": 6753
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3397/IB-SMART-NOTE-20261118-sn3397-her-voice-her-face.md",
+      "blob_sha": "3ae4d0a62962a7bc86d27bdd6bb28ca53acfd229",
+      "size": 6869
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3412/IB-SMART-NOTE-20261118-sn3412-the-number-is-the-hero.md",
+      "blob_sha": "34f0de07af759d26f492db9d9af4e67d84679ee9",
+      "size": 4150
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3413/IB-SMART-NOTE-20261118-sn3413-labels-must-explain-the-number.md",
+      "blob_sha": "a5b4ff4db1c46b861b9e8a7656926e2af6028313",
+      "size": 4129
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3418/IB-SMART-NOTE-20261118-sn3418-the-saved-game-is-real.md",
+      "blob_sha": "c2b1fb5168a49896bac87af876490a8299fbb2da",
+      "size": 4548
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3431/IB-SMART-NOTE-20261118-sn3431-his-eye-sets-the-standard.md",
+      "blob_sha": "784273bc939b5ffcb080d1923d670b5925d8394f",
+      "size": 5024
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3432/IB-SMART-NOTE-20261118-sn3432-proof-lives-on-the-page.md",
+      "blob_sha": "4c316c9d7911170f563dc7abf4ee328197554d13",
+      "size": 4870
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3438/IB-SMART-NOTE-20261118-sn3438-the-door-and-the-heart.md",
+      "blob_sha": "ea7c489e839b4543ecf0afbeb686d4f3be71e33c",
+      "size": 6208
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3449/IB-SMART-NOTE-20261118-sn3449-the-page-is-the-standard.md",
+      "blob_sha": "026fea1f34588ded35f15c23a78cb7c8b39c9f50",
+      "size": 8248
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DIRECTION/SN-3317/IB-SMART-NOTE-20261118-sn3317-clone-it-only-when-its-complete.md",
+      "blob_sha": "82da35c2469d5e2cd505197c2e0d7c74fa1d2fb6",
+      "size": 5594
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/EFFICIENCY/SN-3292/IB-SMART-NOTE-20261118-sn3292-the-efficiency-bar.md",
+      "blob_sha": "d8dcbb70ca4260b413d76edf05c67e5e6420639b",
+      "size": 8311
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/FUTURE/SN-3284/IB-SMART-NOTE-20261118-sn3284-the-way-children-learn.md",
+      "blob_sha": "e9e8b6a7e3366d0f239e66104e5fa101d451b1db",
+      "size": 4857
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/GO/SN-3293/IB-SMART-NOTE-20261118-sn3293-go-live-and-test-the-flow.md",
+      "blob_sha": "50b27cc4bfacd8e724292f932acbd66884cc8b9b",
+      "size": 5467
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/HUB/SN-3214/IB-SMART-NOTE-20261118-sn3214-the-hub-banner-simplified.md",
+      "blob_sha": "479d61256a0b31db27db0179158e1993c57bbf0c",
+      "size": 8472
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3268/IB-SMART-NOTE-20261118-sn3268-the-distillation-story.md",
+      "blob_sha": "656a57486fd8829f85a016db32e98c1e9c78a153",
+      "size": 6993
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3271/IB-SMART-NOTE-20261118-sn3271-the-whole-runs-on-the-law.md",
+      "blob_sha": "0bd2544bca079a46c22febbaac38f2f902f561f7",
+      "size": 8608
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3272/IB-SMART-NOTE-20261118-sn3272-the-one-law-the-one-atom-the-everyday-world.md",
+      "blob_sha": "4aea785f851bf45aaa5f75bc20ab4c2e20835839",
+      "size": 11957
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3273/IB-SMART-NOTE-20261118-sn3273-prove-the-one-then-clone-it-everywhere.md",
+      "blob_sha": "cdb325fcd23b229dc2044111cc6626fe057a8c03",
+      "size": 12787
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3274/IB-SMART-NOTE-20261118-sn3274-follow-the-word-keep-the-good.md",
+      "blob_sha": "d0f75f109de16cb7d662716e415116ccab0174bc",
+      "size": 10553
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3279/IB-SMART-NOTE-20261118-sn3279-live-the-language-and-prove-it-by-his-eye.md",
+      "blob_sha": "9deab574372b981ce01470aa7bf11ed7bea33f1c",
+      "size": 10391
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3280/IB-SMART-NOTE-20261118-sn3280-treasure-the-art-vault-it-alive.md",
+      "blob_sha": "7867abec413cc9f87c401f7935e800d2542c440f",
+      "size": 10037
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3282/IB-SMART-NOTE-20261118-sn3282-the-front-entrance-judges-every-page.md",
+      "blob_sha": "f4939607c6f57cf251d56661019d8f34b5053b55",
+      "size": 14991
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3283/IB-SMART-NOTE-20261118-sn3283-one-language-everywhere.md",
+      "blob_sha": "9f08e68e0bfbc47f2a9536278e864c8c79b451e9",
+      "size": 9428
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3326/IB-SMART-NOTE-20261118-sn3326-two-icons-logo-top-left-icon-bottom-right.md",
+      "blob_sha": "ca7891d511fa379fcadcfd4f13ba6c71edf01c76",
+      "size": 4560
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3338/IB-SMART-NOTE-20261118-sn3338-the-live-sequence.md",
+      "blob_sha": "2cdb68256aff15e71404706f91c6f324c9eb6abe",
+      "size": 6065
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3339/IB-SMART-NOTE-20261118-sn3339-the-sentinel-token-question.md",
+      "blob_sha": "01a1659588b6a101f6f356f6c7bcb19ff2dd9871",
+      "size": 4061
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3340/IB-SMART-NOTE-20261118-sn3340-the-live-rule.md",
+      "blob_sha": "d64334e90aa52138bb1d0edbc16533f0f9b3cdb4",
+      "size": 3675
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3341/IB-SMART-NOTE-20261118-sn3341-the-activation-kit.md",
+      "blob_sha": "2a79de7308679319d5a10ca997c434ea382f05c2",
+      "size": 3878
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3342/IB-SMART-NOTE-20261118-sn3342-understand-then-fix-then-optimize.md",
+      "blob_sha": "506a1efd6f98eda2f2ce90c1c1fa059963a9bc32",
+      "size": 2565
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3343/IB-SMART-NOTE-20261118-sn3343-lock-in-the-ten.md",
+      "blob_sha": "4aec4b055962e7c95acb7c3ba49ae62d20130beb",
+      "size": 4192
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3344/IB-SMART-NOTE-20261118-sn3344-the-look-rotation.md",
+      "blob_sha": "9241967e630aa01322b91cecd756af79ebff40ae",
+      "size": 2205
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3345/IB-SMART-NOTE-20261118-sn3345-one-naya-everywhere.md",
+      "blob_sha": "9da56465b1621ae5169593cfd5c93fbb00914a3a",
+      "size": 2285
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3346/IB-SMART-NOTE-20261118-sn3346-her-face-throughout-nayanet.md",
+      "blob_sha": "2f533cc18e267adc0e1c253c994b80abdfffd2ec",
+      "size": 2110
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3347/IB-SMART-NOTE-20261118-sn3347-two-worlds-become-one.md",
+      "blob_sha": "acdee621394020ee1f9a7ffef091032a7aaa824e",
+      "size": 2624
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3348/IB-SMART-NOTE-20261118-sn3348-activation-kit-verdict.md",
+      "blob_sha": "309407185f55730aa4d216e49089eb766dbfa22a",
+      "size": 3044
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3349/IB-SMART-NOTE-20261118-sn3349-the-declaration.md",
+      "blob_sha": "45a268a3f381f60a8becb1dc151e3de132470be4",
+      "size": 3009
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3350/IB-SMART-NOTE-20261118-sn3350-two-documents.md",
+      "blob_sha": "1ea1889fefe21b77d186f29a15052a4c35008cd5",
+      "size": 3396
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3351/IB-SMART-NOTE-20261118-sn3351-whole-system-and-team-of-nayas.md",
+      "blob_sha": "7dacfef0d7184f317e3a40acfd4b2fdd9cf96c4d",
+      "size": 3644
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3352/IB-SMART-NOTE-20261118-sn3352-kit-emblem.md",
+      "blob_sha": "c60ef7e61776d391328f6683ff8e86d116b23873",
+      "size": 1890
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3353/IB-SMART-NOTE-20261118-sn3353-calendar-icon-vs-logo.md",
+      "blob_sha": "ac670ccebdf3ea329540f4928ef25917d8aa2de1",
+      "size": 2461
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3354/IB-SMART-NOTE-20261118-sn3354-calendar-date-active.md",
+      "blob_sha": "6879aed2098bef03d0e50a680813b374ed80f844",
+      "size": 2292
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3355/IB-SMART-NOTE-20261118-sn3355-the-18-is-the-big-one.md",
+      "blob_sha": "c88b2339faec26c5026a469fae0cac5f416d394f",
+      "size": 3423
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3356/IB-SMART-NOTE-20261118-sn3356-smart-meet-button-alive.md",
+      "blob_sha": "cce5bbac4b0fd3ac9dc64d560e5cf35b5e7ac876",
+      "size": 1675
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3357/IB-SMART-NOTE-20261118-sn3357-wednesday-kanye-blue-again.md",
+      "blob_sha": "a25db35ecd4d98d390b7e75b394dca15be0e9baf",
+      "size": 1885
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3358/IB-SMART-NOTE-20261118-sn3358-all-buttons-as-beautiful-as-the-circle-n.md",
+      "blob_sha": "d3841cb60d9f018e2ac80f16d13d3a95963cf889",
+      "size": 2064
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3359/IB-SMART-NOTE-20261118-sn3359-the-architect-scorecarder-walk.md",
+      "blob_sha": "85a3c7bdce9e1959bbdca738317d9e48cdd7857e",
+      "size": 2597
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3360/IB-SMART-NOTE-20261118-sn3360-scorecard-every-return-whole-system.md",
+      "blob_sha": "43ca3b533216ff1a8d56f0f30b6c142dbe27351a",
+      "size": 2854
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3361/IB-SMART-NOTE-20261118-sn3361-the-spine.md",
+      "blob_sha": "e62ab6c3c32cb6b68332942fcbadca268a42a074",
+      "size": 1871
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3362/IB-SMART-NOTE-20261118-sn3362-the-hub-not-forgotten.md",
+      "blob_sha": "e7a207ff7bb6b002298d227a25c27ab94ced398a",
+      "size": 1947
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3363/IB-SMART-NOTE-20261118-sn3363-willow-fastest-most-accurate.md",
+      "blob_sha": "67a467efe1d6b8f2123c5b3388dea2c5266f497f",
+      "size": 1759
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3364/IB-SMART-NOTE-20261118-sn3364-efficiency-get-the-number-up.md",
+      "blob_sha": "d955c7569e9e447c3cb4973e71148080b6e7da40",
+      "size": 2344
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3365/IB-SMART-NOTE-20261118-sn3365-ten-x-the-workflow-find-the-root.md",
+      "blob_sha": "9142c49f8ebea6251d5942fe6f813693a192d957",
+      "size": 3302
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3366/IB-SMART-NOTE-20261118-sn3366-the-action-plan-parallel.md",
+      "blob_sha": "fb75f08f00c37b4d7f8ac110d61ab451903da81b",
+      "size": 2520
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3367/IB-SMART-NOTE-20261118-sn3367-are-any-lanes-missing.md",
+      "blob_sha": "506184d0807c9317d079ba05fbfe505fe9d5273f",
+      "size": 2702
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3368/IB-SMART-NOTE-20261118-sn3368-treat-it-like-your-baby.md",
+      "blob_sha": "91ce58629e53a7f579155866ccafe93ee9a189b1",
+      "size": 2089
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3369/IB-SMART-NOTE-20261118-sn3369-the-mail-messenger-key.md",
+      "blob_sha": "723a58a7710d9c28a96f3d271e1517b9c7af8caf",
+      "size": 2441
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3370/IB-SMART-NOTE-20261118-sn3370-messenger-mail-optimised-for-each-feed.md",
+      "blob_sha": "0d4ca435595b218644ad9072cf9c43aa68f0d47c",
+      "size": 1914
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3371/IB-SMART-NOTE-20261118-sn3371-the-calendar-self-scorecard.md",
+      "blob_sha": "ab4bdcbad5a775431dd50ab7d10382c6f4a3d1d5",
+      "size": 2849
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3372/IB-SMART-NOTE-20261118-sn3372-the-ultimate-border-exact-specs.md",
+      "blob_sha": "07defa6dbf1046ade38e5ca9aea18dbded110b1a",
+      "size": 3824
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3373/IB-SMART-NOTE-20261118-sn3373-the-spine-is-the-system.md",
+      "blob_sha": "4b927ef3679dbb1513aa1ffca53e022baa0bd17a",
+      "size": 2033
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3374/IB-SMART-NOTE-20261118-sn3374-parallel-quality-in-every-lane.md",
+      "blob_sha": "58529b5b3c49dfa72b47819ed277d34a210894a5",
+      "size": 2236
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3376/IB-SMART-NOTE-20261118-sn3376-scorecard-every-return.md",
+      "blob_sha": "813d796bc82e3a377cf232bbfd20698f8eb250eb",
+      "size": 2967
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3382/IB-SMART-NOTE-20261118-sn3382-decide-declare-become.md",
+      "blob_sha": "05dd041cce138df99e3cc17b2a3bfd8a8b1bc313",
+      "size": 2553
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3400/IB-SMART-NOTE-20261118-sn3400-dont-send-it-back-keep-driving-until-ten.md",
+      "blob_sha": "d866b114b53ffb9246afacd3f76ce6aa0129568a",
+      "size": 2720
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3401/IB-SMART-NOTE-20261118-sn3401-login-bridge-page-landing.md",
+      "blob_sha": "be5d2468870ed10916916213038e7c468351b5b6",
+      "size": 2543
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3440/IB-SMART-NOTE-20261118-sn3440-agreement-audio-video-two-options-below-the-page.md",
+      "blob_sha": "e1dadbeea6db667540b55bfbe5baee32c6944f60",
+      "size": 3437
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3441/IB-SMART-NOTE-20261118-sn3441-dashboard-live-walk-remove-doors-hub-bottom-bar.md",
+      "blob_sha": "d6fe310da98c464677d458fb8d69408e8569bf94",
+      "size": 4037
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3442/IB-SMART-NOTE-20261118-sn3442-icons-uploaded-verbatim-sidebar-bottom-bar.md",
+      "blob_sha": "10afff501b766077b998357b0a140102f7c635ff",
+      "size": 2881
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3443/IB-SMART-NOTE-20261118-sn3443-agreement-audio-uploaded-his-recording.md",
+      "blob_sha": "59af3bde5d573a0ac109b30fbf10da62c2277960",
+      "size": 2419
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3444/IB-SMART-NOTE-20261118-sn3444-factory-test-worker-removed-cover-owed.md",
+      "blob_sha": "f6d17ff5c536f07c7f3d2c8cd19b90a96cf862ac",
+      "size": 2349
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3445/IB-SMART-NOTE-20261118-sn3445-halfb-staging-checked-live-no-play-button-wrong-portrait.md",
+      "blob_sha": "0aeb5a80a421d8ea2c5aa4312412cf4f753e7f01",
+      "size": 2845
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3446/IB-SMART-NOTE-20261118-sn3446-transcription-landed-audio-is-not-his-podcast.md",
+      "blob_sha": "22d4a8eb3c4865f93d6649818a81473e15b148bf",
+      "size": 3439
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3447/IB-SMART-NOTE-20261118-sn3447-messenger-alignment-round-align-do-not-rebuild.md",
+      "blob_sha": "940e5e6b82965b1b42587427ad79ae3ee41998b5",
+      "size": 2912
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3448/IB-SMART-NOTE-20261118-sn3448-identity-polish-round-polish-only-not-a-rebuild.md",
+      "blob_sha": "d093d8cd33db5f21025063f23222d6ae543efb66",
+      "size": 2398
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3450/IB-SMART-NOTE-20261118-sn3450-messenger-looks-exactly-the-same.md",
+      "blob_sha": "e15b373b4b1f1206a8aea6f88deaabcabb0094f9",
+      "size": 2962
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3451/IB-SMART-NOTE-20261118-sn3451-messenger-layout-dictated.md",
+      "blob_sha": "6f7ff4443dd78272ccbaa24d16c23a5cebc60a9a",
+      "size": 2396
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3452/IB-SMART-NOTE-20261118-sn3452-the-one-system-law.md",
+      "blob_sha": "47350c96f741083cec8d39a9af22077085751bb6",
+      "size": 2700
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3453/IB-SMART-NOTE-20261118-sn3453-latest-finished-personal-3b.md",
+      "blob_sha": "9c8e75489c1a612765c7d186e2e13e94fdeeb9bd",
+      "size": 2126
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3454/IB-SMART-NOTE-20261118-sn3454-personal-3b-defects-three-fixes.md",
+      "blob_sha": "febd866b625e7072fa357f2381460bd9a5ca915f",
+      "size": 3679
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3455/IB-SMART-NOTE-20261118-sn3455-personal-tabs-and-sidebar.md",
+      "blob_sha": "7e64692577073e2d18f62cb3f7fe339406168b59",
+      "size": 3096
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LEARNING/SN-3217/IB-SMART-NOTE-20261118-sn3217-what-are-you-learning-play-within-the-limits.md",
+      "blob_sha": "8a7eb17489f2a379e561a5dd2517c2711691ed24",
+      "size": 9040
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3093/IB-SMART-NOTE-20261118-sn3093-the-wise-one-standard.md",
+      "blob_sha": "123a9e2d0ba5dd76dcf0da1d5d1ffb8ecf15d3da",
+      "size": 6659
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3095/IB-SMART-NOTE-20261118-sn3095-one-truth-many-doorways.md",
+      "blob_sha": "a075c55de9fbcd56f1ef5657e2a25cc2eb2678a2",
+      "size": 6056
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3102/IB-SMART-NOTE-20261118-sn3102-named-fixed-finished.md",
+      "blob_sha": "04d5fff750833e6e559730928fa2f4988af988aa",
+      "size": 6779
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3391/IB-SMART-NOTE-20261118-sn3391-his-eye-is-the-instrument.md",
+      "blob_sha": "0eeeb343dc9f367d6cbe698dc03e44eb3b991577",
+      "size": 6304
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3392/IB-SMART-NOTE-20261118-sn3392-the-deal-stated-honestly.md",
+      "blob_sha": "56507c27c2978c312b10abec0434e157dbc36c5f",
+      "size": 6783
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3394/IB-SMART-NOTE-20261118-sn3394-think-dont-just-obey.md",
+      "blob_sha": "7619476e83ecbfb7081a45130c22592a2b9962be",
+      "size": 6853
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3395/IB-SMART-NOTE-20261118-sn3395-live-is-what-counts.md",
+      "blob_sha": "dcf823e2292c6e6f8d0453a8d2c2b99e3e3c8814",
+      "size": 6187
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3398/IB-SMART-NOTE-20261118-sn3398-the-picture-painted-clearly.md",
+      "blob_sha": "1d73b18d6069fd49d515c71068e410583c356835",
+      "size": 7705
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3410/IB-SMART-NOTE-20261118-sn3410-synced-is-not-live.md",
+      "blob_sha": "4c941d67dda2dea30aaf175a597ad578093c703d",
+      "size": 4539
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3411/IB-SMART-NOTE-20261118-sn3411-the-proof-route-is-the-parent-task.md",
+      "blob_sha": "4c6a67be791398ac6616c59485bc56a3475cec65",
+      "size": 4556
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3414/IB-SMART-NOTE-20261118-sn3414-done-immediately-then-next.md",
+      "blob_sha": "afd007aaa5435e7d31412fd5910aec5dea82d8d6",
+      "size": 4568
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3417/IB-SMART-NOTE-20261118-sn3417-done-done-means-live.md",
+      "blob_sha": "6571880eec53c8e30a4559a03434b4b1cdae76be",
+      "size": 4113
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3436/IB-SMART-NOTE-20261118-sn3436-how-a-naya-decides.md",
+      "blob_sha": "7e36e672e0105bb91b1eda32f8ec993b1dc9457a",
+      "size": 5420
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LOOP/SN-3223/IB-SMART-NOTE-20261118-sn3223-the-loop-must-close.md",
+      "blob_sha": "fd9cd8273eaea678ba6f5421aa1e0d25a3f47e54",
+      "size": 8849
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MERGE/SN-3220/IB-SMART-NOTE-20261118-sn3220-put-them-all-through.md",
+      "blob_sha": "a1c20e5511e18c85e59bdb99dbb71054b4fc278c",
+      "size": 6864
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MERGES/SN-3219/IB-SMART-NOTE-20261118-sn3219-the-pr-pile-merge-them-yourself.md",
+      "blob_sha": "4ff1d77ef080c47f800eb1fe700d0bfe8d5fcb91",
+      "size": 6570
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MOAT/SN-3218/IB-SMART-NOTE-20261118-sn3218-the-nvidia-lesson-the-moat.md",
+      "blob_sha": "589c7d025942bf2bce0dd61baa15aa30093d601d",
+      "size": 10484
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/NAMING/SN-3209/IB-SMART-NOTE-20261118-sn3209-create-world-any-topic.md",
+      "blob_sha": "f93e160ddb526517a44a7acfde215b71cb6b7dfa",
+      "size": 5281
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3308/IB-SMART-NOTE-20261118-sn3308-file-the-same-day-the-backlog-re-forms.md",
+      "blob_sha": "12ecfcc9d5a783e812f676c43095d127ef12c408",
+      "size": 6999
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3309/IB-SMART-NOTE-20261118-sn3309-find-the-cause-first-then-retry.md",
+      "blob_sha": "28edf69a9d1baccf3fc7b42f09498d3cc3d2fb9f",
+      "size": 6827
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3315/IB-SMART-NOTE-20261118-sn3315-check-the-route-list-not-just-the-dns.md",
+      "blob_sha": "8625173eee4cfddc614cc44e8b47813c89740855",
+      "size": 8030
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/OPERATIONS/SN-3316/IB-SMART-NOTE-20261118-sn3316-records-vanish-restore-to-the-verified-state.md",
+      "blob_sha": "5f396d771517348fa192a7471a418144f2d13ed8",
+      "size": 5663
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PERSONAL/SN-3291/IB-SMART-NOTE-20261118-sn3291-the-demographics-menu-is-missing.md",
+      "blob_sha": "f1440d73baa770262fc07f3ef353dfed81b8e591",
+      "size": 5852
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3224/IB-SMART-NOTE-20261118-sn3224-we-take-the-wisdom-not-the-name.md",
+      "blob_sha": "635e4f4b15a9a7b4596faf388d948c115e3db2c6",
+      "size": 7938
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3288/IB-SMART-NOTE-20261118-sn3288-the-read-line-clarified.md",
+      "blob_sha": "c7302c92751bad5f4fdc0e54eb6ef73ce5cac2ab",
+      "size": 6118
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PRIVACY/SN-3289/IB-SMART-NOTE-20261118-sn3289-the-distillation-story-called-out-strongly.md",
+      "blob_sha": "f19be5a43b61eda61f9f545efbb7abb5b3d5847a",
+      "size": 7312
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3094/IB-SMART-NOTE-20261118-sn3094-the-factory-holds-the-parts.md",
+      "blob_sha": "ad487570de5abfc722afc9f70c94378255948fd7",
+      "size": 6219
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3101/IB-SMART-NOTE-20261118-sn3101-the-money-chain-is-wired.md",
+      "blob_sha": "8e5d6a92f4f69b531780cf0d30afaf7b5f694e22",
+      "size": 6839
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3399/IB-SMART-NOTE-20261118-sn3399-receipt-before-report.md",
+      "blob_sha": "8e3260b9f72bc66118173c61785bc564f67b327a",
+      "size": 7521
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3415/IB-SMART-NOTE-20261118-sn3415-the-vault-is-the-cure.md",
+      "blob_sha": "ba681bc6704adcb2f9596c4a7927f65e0d3b736c",
+      "size": 4465
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3416/IB-SMART-NOTE-20261118-sn3416-one-app-one-law.md",
+      "blob_sha": "8dbe3626e642b02f5a2657b562a08f60a4be1acc",
+      "size": 4318
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3419/IB-SMART-NOTE-20261118-sn3419-push-button-creation.md",
+      "blob_sha": "01f446d83ccf506a8134aaac5b3bdcba6207260d",
+      "size": 4552
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3430/IB-SMART-NOTE-20261118-sn3430-one-system-honestly-synced.md",
+      "blob_sha": "af2233d378c421ae3cbb756607115354614d06c3",
+      "size": 5312
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3433/IB-SMART-NOTE-20261118-sn3433-one-flow-told-to-everybody.md",
+      "blob_sha": "d992c2e2efe22e4d5dabdb41c64d67d39b89878b",
+      "size": 5475
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3434/IB-SMART-NOTE-20261118-sn3434-major-is-a-number.md",
+      "blob_sha": "99e3451bee21a8a0073d6c341c4e8166c76db0cf",
+      "size": 5578
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3435/IB-SMART-NOTE-20261118-sn3435-the-gold-was-already-built.md",
+      "blob_sha": "f4f3ab07cb00995ab862f9fead09367f9931ce14",
+      "size": 5370
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3437/IB-SMART-NOTE-20261118-sn3437-wake-work-welcome.md",
+      "blob_sha": "05c3442f9639ff4439cafbf638a76fb006cc7e21",
+      "size": 5736
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3439/IB-SMART-NOTE-20261118-sn3439-never-make-them-think.md",
+      "blob_sha": "12e26588e42ed2124dbaedcf32cad3add8020556",
+      "size": 6208
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3221/IB-SMART-NOTE-20261118-sn3221-the-smart-vault-is-the-one-door.md",
+      "blob_sha": "5ed8abe02db8d7956319cf6e10cd783dc6eaf4a9",
+      "size": 7457
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3285/IB-SMART-NOTE-20261118-sn3285-the-smart-rhythm.md",
+      "blob_sha": "d23b00082ed0b138f21c5157c069f9830f07b5c0",
+      "size": 6370
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3286/IB-SMART-NOTE-20261118-sn3286-the-two-keys-boxes-within-a-box.md",
+      "blob_sha": "034ff1b3d3bece4104506ab89028c38b4160bc15",
+      "size": 5803
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3287/IB-SMART-NOTE-20261118-sn3287-implement-it-and-use-it.md",
+      "blob_sha": "87a8f1bc3779616ae220fd13d8c9aac84a3d40d3",
+      "size": 5747
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3290/IB-SMART-NOTE-20261118-sn3290-complete-the-vault-operate-it-then-write-the-manual.md",
+      "blob_sha": "52df7b162e26afa8f1ce23b7a53bad95c56478a9",
+      "size": 5324
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VERIFICATION/SN-3310/IB-SMART-NOTE-20261118-sn3310-the-gauge-is-the-live-total.md",
+      "blob_sha": "0676ae11221c5b7ce7aaf681c5fa2027c8f5b09a",
+      "size": 5951
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VISION/SN-3281/IB-SMART-NOTE-20261118-sn3281-the-elite-land-built-from-the-factorys-parts.md",
+      "blob_sha": "76a969dc0d86cb69b9f6a2127ab634be0472425d",
+      "size": 9440
     },
     {
       "path": "BRAIN/05-MEMORY/SPECS/2026/11/04/MEMBERSHIP-PORTAL-SPEC-2026-11-04.md",
