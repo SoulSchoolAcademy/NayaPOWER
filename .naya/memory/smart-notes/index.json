@@ -53178,6 +53178,39 @@
         "Numbers",
         "Gauges"
       ]
+    },
+    {
+      "smart_note_id": "SN-3099",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3099-the-chart-is-the-page",
+      "slug": "the-chart-is-the-page",
+      "title": "The Chart Is the Page",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3099/IB-SMART-NOTE-20261118-sn3099-the-chart-is-the-page.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3099/IB-SMART-NOTE-20261118-sn3099-the-chart-is-the-page.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3099/IB-SMART-NOTE-20261118-sn3099-the-chart-is-the-page.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3099-the-chart-is-the-page.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:53:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "24b0d76323843606486e18da5a18c64498063259a71f48e34a2bf2c88b967947",
+      "content_hash": "2ff8d229d1cd49059b8084e84f441dc852f6bb4b1d96ec00e050c926ea01968c",
+      "one_line": "A rebuild once came back with everything copied — wannabe buttons, a gauge that was not his gauge, numbers that were not his numbers — and the verdict was surgical: throw away everything except the chart, because the chart is good. The chart IS the page. It is built from the real parts, and every one of its 36 rows is judged against two authorities at once: what Shawn actually said, and what actually exists. Its cells are stacked and centred — the number at the top, what it is beneath, the check beneath that — so a column reads at a glance and the difference between levels is visible, not narrated. Popups lead with the nutshell, never with a repeated label. The banner above it is not text in a box; it is a trillion-dollar plaque that obeys the same design law as the chart itself. The info mark is a white 'i' in a circle, a raised jewel, identical on all 36 rows, because anyone must know at a glance: tap here and you learn. And the page closes with the start flow — three level rectangles, one massive start.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "The Chart",
+        "Comparison"
+      ]
     }
   ],
   "sequence_policy": {
@@ -53188,5 +53221,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "f3de98b478a6be6d06bf777f0c4038abf28a9f9123b87b353c944174c97bd9b6"
+  "corpus_manifest_hash": "cbc8826c8db51baf40c97dc2ad584c9bd0270ce1b0b8632bd5045c981b42c888"
 }
