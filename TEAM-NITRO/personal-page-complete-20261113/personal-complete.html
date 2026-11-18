@@ -28374,20 +28374,24 @@ document.addEventListener('click', function(e){
 })();
 </script>
 <style id="followon-3b-people-rail-20261118-css">
-/* FOLLOW-ON 3b (2026-11-18) — one line per row: ball, name, %, i, message /
-   mail / audio / video, all centred on the same horizontal line. NO CONNECT
-   in any row. Buttons harvested from the profile board's Reach them row +
+/* FOLLOW-ON 3b (2026-11-18), FIX ROUND 2 (2026-11-18) — one line per row:
+   ball, name, %, i, message / mail / audio / video, all centred on the same
+   horizontal line. NO CONNECT in any row. FIX 2 reclaims 38px for the name
+   (the eye: 9 of 13 names read as two letters + ellipsis at 1919 + 390):
+   row gap 6 to 4, card side padding 12 to 8, contact buttons 30 to 26.
+   Ball stays 40, info stays 32, % tiles stay as harvested, name stays full.
+   Buttons harvested from the profile board's Reach them row +
    the popover's actions — same glyphs, same colours (Message sapphire
    #0f52ba, Smart Mail gold #d4a017, Audio emerald #07925f, Video royal
    purple #8e24aa) — as icon-only obsidian circles after the bottom-bar
    icons: board black inside, white glyph as a real object, rim + underglow
    in the button's own deep colour, alive on hover, press sinks 0.97. */
-#pcRailList .pc-card{padding:10px 12px;}
-#pcRailList .pc-card-top{flex-wrap:nowrap;gap:6px;}
+#pcRailList .pc-card{padding:10px 8px;}
+#pcRailList .pc-card-top{flex-wrap:nowrap;gap:4px;}
 #pcRailList .pc-card-top .fc-pick-av{width:40px;height:40px;font-size:17px;flex:none;}
 #pcRailList .pc-card-top .pc-pct{flex:none;display:flex;align-items:center;}
 #pcRailList .pc-card-top .pc-info{flex:none;width:32px;height:32px;}
-#pcRailList .pc-act-btn{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;padding:0;background:linear-gradient(135deg,#07070b,#020203);border:1.5px solid var(--ac,#8e24aa);color:#fff;font-size:17px;line-height:1;text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 8px rgba(255,255,255,.35);box-shadow:0 4px 10px rgba(0,0,0,.55),0 0 10px -2px var(--ac,#8e24aa);cursor:pointer;font-family:inherit;transition:transform .18s ease,box-shadow .3s ease;}
+#pcRailList .pc-act-btn{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;padding:0;background:linear-gradient(135deg,#07070b,#020203);border:1.5px solid var(--ac,#8e24aa);color:#fff;font-size:17px;line-height:1;text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 8px rgba(255,255,255,.35);box-shadow:0 4px 10px rgba(0,0,0,.55),0 0 10px -2px var(--ac,#8e24aa);cursor:pointer;font-family:inherit;transition:transform .18s ease,box-shadow .3s ease;}
 #pcRailList .pc-act-btn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.55),0 0 18px -2px var(--ac,#8e24aa);}
 #pcRailList .pc-act-btn:active{transform:scale(.97);box-shadow:0 2px 6px rgba(0,0,0,.55),0 0 8px -2px var(--ac,#8e24aa);}
 #pcRailList .pc-act-btn:focus-visible{outline:2px solid var(--ac,#8e24aa);outline-offset:2px;}
