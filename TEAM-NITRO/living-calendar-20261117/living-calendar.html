@@ -813,6 +813,35 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .weekrow .wk{padding:2px 2px}
   .days,.weekrow{gap:2px}
 }
+@media(min-width:561px) and (max-width:633px){
+  /* CALENDAR FIX 7 (R7-561 topline) — THE TOPLINE FITS ONE ROW AT 561-633.
+     Eye (fix-5 §6, fix-6 §6): at 561/600x600 the month scrolls 44px
+     (scrollH 644) — the topline wraps to two rows (95px): the barleft/
+     barright bars don't fit one row below ~633px (barleft y 185,
+     barright y 236). My own render (work/measure-base.json, all 12
+     months at 561): the bars total 597.7px (November) to 601.8px
+     (September, the longest title) in a 545px container — over by
+     52.6-56.8px. The pills carry 9px side padding (126px across the
+     7 topline pills) and the bars carry 4px gaps, the topline a 7px gap.
+     (1) PILL PADDING, spacing only: .topline .pill padding 9px -> 4px
+     sides; the ‹ › nav pills keep 6px sides so the chevrons keep
+     breathing room (pill saving 62px). (2) GAPS, spacing only: bar
+     gaps 4px -> 2px (6 gaps, saves 12px), topline gap 7px -> 4px
+     (saves 3px). Total saved 77px — the worst month (September)
+     fits with ~20px to spare at 561.
+     No object resized, no text resized: pill min-height stays 44px,
+     monthtitle stays 17px, all pill labels unchanged. The topline
+     lands one row (44px) and the month fits 600/600 at 561-633 with
+     rows at their passed 55px and the last row whole at the fold
+     (bottom 590, 10px slack — the same picture as 635). 634-740 are
+     outside this band (their bars already fit); 635 is unchanged in
+     effect (head 173 constant, scrollH 600); 390 / 741 / 1919 are
+     outside this band and untouched. */
+  .topline{gap:4px}
+  .barleft,.barright{gap:2px}
+  .topline .pill{padding:8px 4px}
+  .barleft #prev,.barleft #next{padding:8px 6px}
+}
 @media(min-width:741px) and (max-width:855px){
   /* CALENDAR FIX 6 (R6-741 head) — THE HEAD FITS AND CENTRES. Eye
      (fix-5 §6): at 741 the plaque is x -35.2 w 635.7, the jewel x 608.5
