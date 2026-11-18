@@ -70,6 +70,7 @@
          stats button on the month view. */
       :root {
         --bg: #040407;
+        --violet: #8e24aa;
         --panel: #0a0a10;
         --ink: #f4f4f8;
         --rim: rgba(255, 255, 255, 0.09);
@@ -301,7 +302,7 @@
            circle, not a hula hoop: a sphere, lit from the top-left, dark
            at its base, the day's colour as rim + glow outside, white
            glyph as an object inside (§4 THE ICON) */
-        flex: none; width: 34px; height: 34px; border-radius: 50%;
+        position: relative; flex: none; width: 34px; height: 34px; border-radius: 50%;
         display: inline-flex; align-items: center; justify-content: center;
         color: #ffffff;
         background: radial-gradient(circle at 32% 28%, #4a5068 0%, #232838 38%, #0a0a11 68%, #050607 100%);
@@ -312,7 +313,13 @@
           inset 0 -8px 12px rgba(0,0,0,.6),
           0 5px 12px rgba(0,0,0,.5);
       }
-      .weekrow .wk-ico svg { width: 19px; height: 19px; }
+      .weekrow .wk-ico svg { width: 19px; height: 19px; filter: drop-shadow(0 2px 2px rgba(0,0,0,.7)) drop-shadow(0 0 6px rgba(255,255,255,.35)); }
+      /* CALENDAR FIX 2 (F2) — the ball, made REAL (same growth as the month
+         file; this file's own .wk-ico is the harvested base — see report). */
+      .weekrow .wk-ico::before{content:"";position:absolute;top:2px;left:3px;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.9),rgba(255,255,255,.25) 55%,transparent 75%);pointer-events:none}
+      .weekrow .wk-ico::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1.5px solid transparent;border-top-color:color-mix(in srgb,var(--dc) 70%,#ffffff);border-right-color:color-mix(in srgb,var(--dc) 22%,transparent);animation:orbitspin 90s linear infinite;pointer-events:none}
+      .weekrow>span:nth-child(even) .wk-ico::after{animation-duration:120s;animation-direction:reverse}
+      .weekrow .wk:active .wk-ico{transform:scale(.97)}
       .weekrow .wk-word { display: inline-flex; align-items: baseline; gap: 1px; }
       .weekrow .wk-l {
         /* Dark obsidian letter body, the day's colour as rim + glow —
@@ -679,7 +686,7 @@
            the top right corner, level with the eye at left */
         position: absolute; z-index: 3;
         top: 0; right: 0;
-        display: flex; flex-direction: column; align-items: center; gap: 3px;
+        display: flex; flex-direction: column; align-items: center; gap: 2px;
       }
       /* The Hz jewel — a real diamond, not a flat mark: it sits on an
          obsidian pedestal in the day's colour, wrapped in a slow ring
@@ -689,7 +696,7 @@
          takes 70s, the stone 24s, the radiance breathes over 12s */
       .hz-stage {
         position: relative; flex: none;
-        width: clamp(56px, 8vmin, 68px); height: clamp(56px, 8vmin, 68px);
+        width: clamp(48px, 6.5vmin, 56px); height: clamp(48px, 6.5vmin, 56px);
         display: flex; align-items: center; justify-content: center;
       }
       .hz-aura {
@@ -718,7 +725,7 @@
       }
       .dayjewel .gem {
         position: relative; z-index: 1;
-        width: clamp(36px, 5.6vmin, 46px); height: auto; display: block;
+        width: clamp(32px, 4.8vmin, 40px); height: auto; display: block;
         filter: drop-shadow(0 6px 10px rgba(0,0,0,.75)) drop-shadow(0 0 12px color-mix(in srgb, var(--dc, #fff) 45%, transparent));
         animation: hzspin 24s linear infinite;
         transform-origin: 50% 50%;
@@ -726,14 +733,33 @@
       @keyframes hzspin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
       .dayjewel:hover .gem { animation-duration: 12s; }
       .dayjewel:hover .hz-aura { animation-duration: 6s; }
+      /* CALENDAR FIX 2 (R3) — THE SIGNATURE PIECE: the flat drawn gem (gemSVG,
+         harvested) no longer stands alone — it is the stone in a setting now:
+         two concentric pearl rings on the pedestal face, counter-rotating
+         (60s / 90s reverse, Laws §1), each carrying a pearl bead (silver-cap
+         gradient, harvested from .os-mini-tile .cap). The rings take --dc, so
+         the piece changes colour each day with the weekday. NEW composition;
+         gem / pedestal / aura / spin are the harvested day-file mechanism. */
+      .hz-ring-a,.hz-ring-b{position:absolute;border-radius:50%;pointer-events:none}
+      .hz-ring-a{inset:3px;border:1px solid color-mix(in srgb,var(--dc,#fff) 38%,transparent);animation:hzring 60s linear infinite}
+      .hz-ring-b{inset:7px;border:1px solid color-mix(in srgb,var(--dc,#fff) 30%,transparent);animation:hzring 90s linear infinite reverse}
+      .hz-ring-a::before,.hz-ring-b::before{content:"";position:absolute;top:-3px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#ffffff 0%,#d9d9de 55%,#8a8a90 100%);box-shadow:0 1px 3px rgba(0,0,0,.6),0 0 6px color-mix(in srgb,var(--dc,#fff) 55%,transparent)}
+      @keyframes hzring{from{transform:rotate(0)}to{transform:rotate(360deg)}}
       .dayjewel .freq {
         /* The Hz text takes the DAY's colour too */
-        font-size: var(--type-small); font-weight: 800;
+        font-size: var(--type-small); font-weight: 800; line-height: 1;
         letter-spacing: 0.24em; text-indent: 0.24em;
         color: color-mix(in srgb, var(--dc, #fff) 55%, #ffffff 45%);
         text-shadow: 0 0 7px color-mix(in srgb, var(--dc, #fff) 26%, transparent);
         white-space: nowrap;
       }
+      /* CALENDAR FIX 2 (R4) — SCROLL LIGHT (day): same minimal mechanism as
+         the month file (no harvest exists — see report). Day boards light in
+         spectrum order as they enter (JS assigns --dc down the page, purple
+         first, never two the same together) and hold. */
+      .tile.lit{border-color:color-mix(in srgb,var(--dc,#fff) 65%,#ffffff 20%);box-shadow:0 0 16px color-mix(in srgb,var(--dc,#fff) 30%,transparent),0 10px 22px rgba(0,0,0,.55)}
+      .nblock.lit{border-color:color-mix(in srgb,var(--dc,#fff) 65%,#ffffff 20%);box-shadow:0 0 16px color-mix(in srgb,var(--dc,#fff) 30%,transparent),0 10px 22px rgba(0,0,0,.55)}
+
       /* ---------- Day dashboard ---------- */
       /* v18 — 635px guard: the day content can never scroll sideways.
          The real fix is the width fixes (the feed pill that ran
@@ -800,6 +826,7 @@
         animation: orbitspin 70s linear infinite;
       }
       @keyframes orbitspin { to { transform: rotate(360deg); } }
+      @keyframes orbit{to{transform:rotate(360deg)}}
       .greet-hello {
         /* Marcellus, the high-level font (Shawn 00:16Z — the certificate
            font; the Wisdom font is the noted alternative, the eye
@@ -1139,6 +1166,21 @@
         font-size: var(--type-small); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
         transition: box-shadow 0.25s, transform 0.25s;
       }
+      /* CALENDAR FIX 2026-11-18 (5) — the Smart Meet room, harvested
+         VERBATIM from the month file (blob 848620d0): the month panel's
+         working Join lands on this room — face, live timer, Mic/Camera/
+         Leave — so the day view joins its own meet instead of showing
+         a plain-text chip. .pill is the month panel's Join button. */
+.face{width:120px;height:120px;border-radius:50%;display:grid;place-items:center;font-size:56px;color:#fff;margin:0 auto 12px;position:relative;background:radial-gradient(circle at 35% 30%,#3a1a5e,#0b0714 70%);border:2px solid #8e24aa;box-shadow:0 0 30px rgba(142,36,170,.5),0 12px 28px rgba(0,0,0,.6)}
+.face::before{content:"";position:absolute;inset:-10px;border:1px dashed #8e24aa;border-radius:50%;opacity:.5;animation:orbit 60s linear infinite}
+      .meetbox{text-align:center}
+      .timer{font-size:34px;font-weight:800;color:#fff;margin:8px 0}
+      .pill{min-height:44px;background:linear-gradient(135deg,#232330 0%,#0b0b12 50%,#171722 100%);border:1.5px solid rgba(255,255,255,.85);color:#fff;padding:10px 14px;border-radius:13px;box-shadow:0 6px 16px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.6);transition:transform .18s ease,border-color .18s,box-shadow .18s}
+.pill:hover{transform:translateY(-2px);border-color:var(--violet);box-shadow:0 10px 22px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.45),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.6)}
+.pill:active{transform:translateY(0) scale(.97)}
+.pill.active{border-color:#8e24aa;box-shadow:0 0 16px #8e24aa,0 6px 16px rgba(0,0,0,.55)}
+.pill[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+      .actions{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
       .bookbtn:hover { box-shadow: 0 0 26px color-mix(in srgb, var(--dc, #fff) 50%, transparent), inset 0 1px 0 rgba(255,255,255,.2); transform: translateY(-1px); }
       .noteitem {
         padding: 12px 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -1447,7 +1489,9 @@
            or the eye (the feed pill that ran off-screen here is
            gone — this is the margin that keeps the wrapped
            headliner inside the bar) */
-        .official-headliner { margin: 0 clamp(58px, 9vmin, 72px); }
+        .official-headliner { margin: 0 clamp(58px, 9vmin, 72px); grid-template-columns: 1fr; text-align: center; min-height: 54px; }
+        .hl-left { justify-content: center; }
+        .stats-btn { justify-self: center; }
       }
       @media (max-width: 560px) {
         #app { padding: 8px; }
@@ -1487,6 +1531,7 @@
         .daystep { gap: 8px; }
         .daystep-btn { min-height: 44px; padding: 6px 14px; }
         .dayjewel .gem { width: 38px; }
+        .hz-ring-b { inset: 4px; }
         /* The headliner date holds clear of the Hz jewel at phone width:
            tighter letter-spacing keeps the date inside its own box, so
            no letter ever runs under the jewel (v15 follow-on, proven) */
@@ -1714,7 +1759,7 @@
           { id: "smartnotes", group: "record", label: "Smart Notes", color: "#07925f", icon: "note", empty: "" },
           { id: "posts", group: "record", label: "Posts", color: "#c2410c", icon: "post", empty: "No posts for this day." },
           { id: "personal", group: "worlds", label: "Personal feed", color: "#07925f", icon: "user", empty: "Nothing in your personal feed for this day. Your personal feed is private by default — only people directly connected to your personal world see it. Any feed can be set private or public; that is a setting, not a fixed rule." },
-          { id: "work", group: "worlds", label: "Work feed", color: "#d4a017", icon: "briefcase", empty: "Nothing in your work feed for this day — your work, your business, your job, all in one feed." },
+          { id: "work", group: "worlds", label: "Business feed", color: "#d4a017", icon: "briefcase", empty: "Nothing in your business feed for this day — your business, your job, all in one feed." },
           { id: "world", group: "worlds", label: "Your world", color: "#c2410c", icon: "world", empty: "Nothing in your world feed for this day. Your world feed is public by default — everybody can see it. Any feed can be set private or public; that is a setting, not a fixed rule." },
           { id: "appointments", group: "day", label: "Appointments", color: "#8e24aa", icon: "clock", empty: "" },
           { id: "journal", group: "record", label: "Journal", color: "#07925f", icon: "book", empty: "" },
@@ -1755,7 +1800,7 @@
            any feed can be set either way — a setting, not a fixed rule */
         var NOTIF_SCOPES = [
           { id: "personal", label: "Personal", color: "#07925f", note: "Private by default — only people directly connected to your personal world see it." },
-          { id: "work", label: "Work", color: "#d4a017", note: "Your work, your business, your job — one world." },
+          { id: "work", label: "Business", color: "#d4a017", note: "Your business, your job — one world." },
           { id: "world", label: "World", color: "#c2410c", note: "Public by default — everybody can see it." }
         ];
         /* Colours for sources added with the + chip — the spectrum
@@ -1802,6 +1847,32 @@
           del: function (k) { try { localStorage.removeItem(k); } catch (e) {} }
         };
         var LS_KEYS = { appts: "nayacal.appts.v1", notes: "nayacal.notes.v1", journal: "nayacal.journal.v1", lists: "nayacal.lists.v1", draft: "nayacal.journalDraft.v1" };
+        /* CALENDAR FIX 2 (DAY 5) — MONTH->DAY MEET BRIDGE: the month tile's
+           "Meeting" comes from mw.cal.bookings.v1 (month file dayBookings);
+           the day view read ONLY nayacal.appts.v1, so a meet booked in the
+           month panel never appeared in the day view. The bridge reads the
+           month store (never writes it, never copies into the day store) and
+           merges it under the day view, so any day the month advertises a
+           Meeting carries the same booked meet — with the same Join wiring.
+           Bridged rows carry fromMonth:true: no delete button (the month
+           store owns them), and saveStores() still writes only nayacal.appts.v1. */
+        var MONTH_BOOK_KEY = "mw.cal.bookings.v1";
+        function monthBookingsFor(k) {
+          var raw = [];
+          try { raw = JSON.parse(localStorage.getItem(MONTH_BOOK_KEY) || "[]") || []; } catch (e) { raw = []; }
+          return raw.filter(function (b) { return b && b.date === k && b.meet; }).map(function (b) {
+            return { time: b.time || "12:00", title: (b.who || "Appointment") + (b.what ? " — " + b.what : ""), meet: true, fromMonth: true };
+          });
+        }
+        function dayApptsFor(k) {
+          var own = (appointments[k] || []).slice();
+          var bridged = monthBookingsFor(k);
+          return own.concat(bridged).sort(function (a, b) {
+            if (a.time !== b.time) return a.time < b.time ? -1 : 1;
+            if (a.fromMonth === b.fromMonth) return 0;
+            return a.fromMonth ? 1 : -1;
+          });
+        }
         function normalizeEntries(arr) {
           /* An entry is {text, at}; a bare string (older shape) becomes
              one written at noon, so nothing already kept is dropped */
@@ -2266,7 +2337,7 @@
            only from what is really recorded for it */
         function intelHTML() {
           var k = keyOf(sel);
-          var dayAppts = (appointments[k] || []).slice().sort(function (a, b) { return a.time < b.time ? -1 : 1; });
+          var dayAppts = dayApptsFor(k);
           var dayNotes = notes[k] || [];
           var dayJournal = journal[k] || [];
           var dayList = lists[k] || [];
@@ -2306,6 +2377,7 @@
         }
 
         function openDay(d, opts) {
+          stopMeet();
           sel = d;
           /* v17 — a day step never leaves yesterday's detail panel open
              on today's screen: the notification menu closes on the walk */
@@ -2358,13 +2430,13 @@
               '<span class="hl-time" id="greetClock"></span>' +
               '<button type="button" class="stats-btn" id="statsBtn">Your Stats</button>' +
             "</div>" +
-            '<span class="dayjewel"><span class="hz-stage"><span class="hz-aura"></span><span class="hz-pedestal"></span>' + gemSVG(dc) + "</span>" +
+            '<span class="dayjewel"><span class="hz-stage"><span class="hz-aura"></span><span class="hz-pedestal"></span><span class="hz-ring-a"></span><span class="hz-ring-b"></span>' + gemSVG(dc) + "</span>" +
             '<span class="freq">' + DAY_FREQ[d.getDay()] + " Hz</span></span>";
           /* The stepper lives under the wisdom bar now, not in the
              head — the bar holds only the headliner and the jewel */
           $("daystepSlot").innerHTML = stepHTML;
           var k = keyOf(d);
-          var dayAppts = (appointments[k] || []).slice().sort(function (a, b) { return a.time < b.time ? -1 : 1; });
+          var dayAppts = dayApptsFor(k);
           var dayNotes = notes[k] || [];
 
           /* Wisdom of the day */
@@ -2538,12 +2610,25 @@
           var w = $("wxRow");
           if (w) w.outerHTML = wxRowHTML();
         }
+        var SCROLL_SPECTRUM = ["#8e24aa", "#0f52ba", "#07925f", "#d4a017", "#c2410c", "#c62828", "#a21caf"];
+        var scrollIO = null, scrollIdx = 0;
+        /* CALENDAR FIX 2 (R4) — the scroll-light driver (see CSS note). The
+           category tiles keep their own --dc where they have one; note blocks
+           take the spectrum down the page, never two the same together. */
+        function armScrollLight() {
+          if (typeof IntersectionObserver === "undefined") return;
+          if (!scrollIO) { scrollIO = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("lit"); scrollIO.unobserve(e.target); } }); }, { threshold: 0.25 }); }
+          document.querySelectorAll("#screen-day .tile, #screen-day .nblock").forEach(function (el) {
+            if (!el.style.getPropertyValue("--dc")) el.style.setProperty("--dc", SCROLL_SPECTRUM[scrollIdx++ % SCROLL_SPECTRUM.length]);
+            scrollIO.observe(el);
+          });
+        }
         function renderCategories(apptRows, tl) {
           var wrap = $("catsWrap");
           if (!wrap || !sel) return;
           var k = keyOf(sel);
           var dc = DAY_COLORS[sel.getDay()];
-          var dayAppts = appointments[k] || [];
+          var dayAppts = dayApptsFor(k);
           var dayNotes = notes[k] || [];
           var dayJournal = journal[k] || [];
           var dayList = lists[k] || [];
@@ -2577,7 +2662,7 @@
             '<div class="notif-detail hidden" id="notifDetail"></div>' +
             '<div class="cat-rows">' +
             catRow("personal", "#07925f", "user", "Personal feed", "Private by default — only people directly connected see it.", 0) +
-            catRow("work", "#d4a017", "briefcase", "Work feed", "Your work, your business, your job — one feed.", 0) +
+            catRow("work", "#d4a017", "briefcase", "Business feed", "Your business, your job — one feed.", 0) +
             catRow("world", "#c2410c", "world", "Your world", "Your world feed — public by default.", 0) +
             catRow("mail", "#d4a017", "mail", "Smart Mail", "Not connected yet.", 0) +
             catRow("messages", "#c2410c", "chat", "Messages", "Not connected yet.", 0) +
@@ -2623,6 +2708,7 @@
             var m = $("bkMeet");
             if (m && m.getAttribute("aria-pressed") !== "true") m.click();
           });
+          armScrollLight();
         }
 
         function fmtTime(t) {
@@ -2631,7 +2717,56 @@
           return h + ":" + m + " " + ap;
         }
 
+
+        /* CALENDAR FIX 2026-11-18 (5) — the meeting room, harvested from the
+           month file's openMeet/leaveMeet (blob 848620d0): the same room —
+           face, live timer, Mic/Camera/Leave, honest no-camera report —
+           rendered into the appointments door. The day's appointments carry
+           no mode, so every meet here is Video. Leave returns to the
+           appointments door. stopMeet() runs on every exit path so the
+           timer never ticks behind another screen. */
+        var meetTimer = null, meetSecs = 0, meetStream = null, micOn = true, camOn = true;
+        function stopMeet() {
+          if (meetTimer) { clearInterval(meetTimer); meetTimer = null; }
+          if (meetStream) { meetStream.getTracks().forEach(function (t) { t.stop(); }); meetStream = null; }
+        }
+        function openMeetRoom(a) {
+          if (!a) return;
+          stopMeet();
+          meetSecs = 0; micOn = true; camOn = true;
+          $("doorTitle").textContent = "Smart Meet — " + fmtTime(a.time);
+          $("doorSub").textContent = a.title + " · " + WEEKDAYS[sel.getDay()] + " · " + MONTHS[sel.getMonth()] + " " + sel.getDate() + ", " + sel.getFullYear() + " · " + fmtTime(a.time) + " · Video";
+          var body = $("doorBody");
+          body.innerHTML =
+            '<div class="panel meetbox"><div class="face" aria-hidden="true">N</div>' +
+            '<div class="timer" id="meetTimer">00:00</div>' +
+            '<p id="meetStatus">Joining the room…</p>' +
+            '<video id="meetVideo" autoplay playsinline muted style="width:100%;max-width:520px;border-radius:16px;background:#050607;border:1.5px solid rgba(255,255,255,.85);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 24px rgba(142,36,170,.35);display:none"></video>' +
+            '<div class="actions" style="justify-content:center">' +
+            '<button class="pill" id="micBtn">Mic on</button>' +
+            '<button class="pill" id="camBtn">Camera on</button>' +
+            '<button class="pill" id="leaveMeetBtn">Leave</button></div>' +
+            '<p class="none-line">Waiting room: only the booked parties can enter. No recording unless everyone consents — recording is not implemented here.</p></div>';
+          $("micBtn").addEventListener("click", function () { micOn = !micOn; if (meetStream) meetStream.getAudioTracks().forEach(function (t) { t.enabled = micOn; }); $("micBtn").textContent = micOn ? "Mic on" : "Mic off"; });
+          $("camBtn").addEventListener("click", function () { camOn = !camOn; if (meetStream) meetStream.getVideoTracks().forEach(function (t) { t.enabled = camOn; }); $("camBtn").textContent = camOn ? "Camera on" : "Camera off"; });
+          $("leaveMeetBtn").addEventListener("click", function () { leaveMeetRoom(); });
+          meetTimer = setInterval(function () { meetSecs++; var m = String(Math.floor(meetSecs / 60)).padStart(2, "0"), s = String(meetSecs % 60).padStart(2, "0"); var t = $("meetTimer"); if (t) t.textContent = m + ":" + s; }, 1000);
+          var status = $("meetStatus");
+          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (st) {
+              meetStream = st;
+              if (status) status.textContent = "Camera and mic are live — you are in the room.";
+              var v = $("meetVideo");
+              if (v) { v.srcObject = st; v.style.display = "block"; }
+            }).catch(function (e) {
+              if (status) status.textContent = "Camera/mic unavailable here (" + (e && e.name ? e.name : "unknown") + ") — you are still in the room, audio/video off. Join from a device that can grant them, or meet in person.";
+            });
+          } else if (status) status.textContent = "This browser cannot grant camera/mic here — you are still in the room. Join from a device that can, or meet in person.";
+        }
+        function leaveMeetRoom() { stopMeet(); var door = doorById("appointments"); if (door) openDoor(door); }
+
         function openDoor(door, newsScope) {
+          stopMeet();
           curDoor = door;
           var dc = DAY_COLORS[sel.getDay()];
           var bar = $("doorBar");
@@ -2646,12 +2781,12 @@
           var k = keyOf(sel);
 
           if (door.id === "appointments") {
-            var list = (appointments[k] || []).slice().sort(function (a, b) { return a.time < b.time ? -1 : 1; });
+            var list = dayApptsFor(k);
             var rows = list.length ? list.map(function (a, idx) {
               return '<div class="appt"><span class="when">' + fmtTime(a.time) + '</span>' +
                      '<span class="what">' + escapeHTML(a.title) + "</span>" +
-                     (a.meet ? '<span class="meet">Smart Meet</span>' : "") +
-                     '<button type="button" class="del" data-del="' + idx + '" aria-label="Remove ' + escapeHTML(a.title) + '">' + ICONS.x + "</button></div>";
+                     (a.meet ? '<span class="meet">Smart Meet</span><button type="button" class="pill" data-join="' + idx + '" aria-label="Join the Smart Meet at ' + fmtTime(a.time) + '">Join the meet →</button>' : "") +
+                     (a.fromMonth ? "" : '<button type="button" class="del" data-del="' + idx + '" aria-label="Remove ' + escapeHTML(a.title) + '">' + ICONS.x + "</button>") + "</div>";
             }).join("") : '<p class="none-line">Nothing booked for this day yet.</p>';
             body.innerHTML =
               '<div class="panel" role="list" aria-label="Appointments for this day">' + rows + "</div>" +
@@ -2667,9 +2802,15 @@
               var on = this.getAttribute("aria-pressed") === "true";
               this.setAttribute("aria-pressed", String(!on));
             });
+            body.querySelectorAll("[data-join]").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                var sorted = dayApptsFor(k);
+                openMeetRoom(sorted[parseInt(btn.getAttribute("data-join"), 10)]);
+              });
+            });
             body.querySelectorAll("[data-del]").forEach(function (btn) {
               btn.addEventListener("click", function () {
-                var sorted = (appointments[k] || []).slice().sort(function (a, b) { return a.time < b.time ? -1 : 1; });
+                var sorted = dayApptsFor(k);
                 var target = sorted[parseInt(btn.getAttribute("data-del"), 10)];
                 appointments[k] = (appointments[k] || []).filter(function (a) { return a !== target; });
                 saveStores();
@@ -2888,7 +3029,7 @@
         setInterval(renderNowPlaque, 1000);
         /* Amendment #3 — the plaque is the door into today */
         $("nowPlaque").addEventListener("click", function () { openDay(new Date()); });
-        $("backToMonth").addEventListener("click", function () { renderMonth(); show("screen-month"); });
+        $("backToMonth").addEventListener("click", function () { stopMeet(); renderMonth(); show("screen-month"); });
         $("backToDay").addEventListener("click", function () { if (sel) openDay(sel); });
         document.addEventListener("keydown", function (ev) {
           /* Arrow keys walk day to day while the day screen is showing
@@ -2901,7 +3042,7 @@
           }
           if (ev.key !== "Escape") return;
           if (!$("screen-door").classList.contains("hidden")) { if (sel) openDay(sel); }
-          else if (!$("screen-day").classList.contains("hidden")) { renderMonth(); show("screen-month"); }
+          else if (!$("screen-day").classList.contains("hidden")) { stopMeet(); renderMonth(); show("screen-month"); }
         });
 
         /* What was written before is kept — load it before the first render */
