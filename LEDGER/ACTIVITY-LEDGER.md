@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -398,6 +398,36 @@ _Last updated: 2026-11-18 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Daily mission-state distill fold: 141 snapshots folded into main, PR #3372 opened
 
 **Evidence:** VERIFIED via git ls-remote: branch naya/distill-fold-mission-state-20261114 exists and its head is exactly f121b8cf7647e54aeffa0a415078e3dc0dfea491, the commit the receipt claims. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, against lane self-score 9.5. Why not 9.5: (1) PR #3372 state (open/head/mergeable) was NOT independently re-read via API this 
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-18 12:32 PST: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261118-1228.log exists, sha256 accd2eb0e2516d6d60c8ed7e033726ad0b634c8e144cb4df600930bfb3d275cf matches the receipt's cited hash; grep counts 29 x exit 7 and 2 x exit 2, result line 0 claimed / 31 blocked; queue holds 31 brief-*.md files, all matching the receipt's blocked list. Score 9.0. Why not 9.5
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-18 11:29 PST: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261118-1128.log exists, 257 lines, sha256 84b920e7e9dec1431424143b61746462d816d9d2a88971b9e639e119424f95af matches the receipt's cited hash; grep counts 29 x exit 7 and 2 x exit 2; queue holds 31 brief-*.md files matching the receipt's blocked list. Score 9.0. Why not 9.5: no cleared work shipped — th
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-18 10:19 PST: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261118-1019.log exists, totals line 31 attempted / 0 claimed / 29 x exit 7 / 2 x exit 2, queue untouched (31 files before and after); queue holds 31 brief-*.md files matching the receipt's blocked list. Score 9.0. Why not 9.5: no cleared work shipped — the stall itself is still open and the queue stil
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-18 09:13 PST: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261118-0913.log exists, totals line 31 attempted / 29 x exit 7 / 2 x exit 2 / 0 claimed; queue holds 31 brief-*.md files matching the receipt's blocked list. Score 9.0. Why not 9.5: no cleared work shipped — the stall itself is still open and the queue still needs an eligible second seat or a dispatch
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-18 08:08 PST: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261118-0808.log exists, 31 ATTEMPT lines, summary 31 attempted / 0 claimed / 29 x exit 7 / 2 x exit 2; queue holds 31 brief-*.md files matching the receipt's blocked list. Score 9.0. Why not 9.5: no cleared work shipped — the stall itself is still open and the queue still needs an eligible second seat
 
 ### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
@@ -29021,6 +29051,14 @@ _Last updated: 2026-11-18 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0272 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
+**Task:** 6-arm exclusion battery re-run on live tip f9b5ac3d, 0 arms flipped vs t0242 (Lane 5 Seeker)
+
+**Receipt:** `twelve-lane-receipts/t0272-lane5.md`
+
+**Evidence:** Verified this tick: battery.py sha256 3504e4e792a712c96b085d03a65c41f26fb8b9f6e6c483f85a4f6eb3a1bea6ba MATCHES the receipt pin (instrument unchanged); battery_results.json present with 6 rows. BUT the t0272 evidence itself is no longer re-provable: seal.json on disk is stamped 2026-10-23T10:52:17Z with live_tip d45b03ae (an Oct-23 re-run overwrote 
+
+### ✅ t0272 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
 **Task:** 6-arm exclusion battery re-run on live tip with seal-before-run; 0 arms flipped (t1412->t0242->t0272 stable)
 
 **Receipt:** `twelve-lane-receipts/t0272-lane5.md`
@@ -29051,6 +29089,14 @@ _Last updated: 2026-11-18 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0272 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
+**Task:** Verification-only tick: tip CLEAN 3rd consecutive tick, --check exit 0, stale heal premise caught (Lane 10 Librarian)
+
+**Receipt:** `twelve-lane-receipts/t0272-lane10.md`
+
+**Evidence:** Verified this tick via git ls-remote: refs/pull/2385/head eedd9540f54cd96c241db4be2f43f0698ae4dd07 MATCHES the receipt pin exactly; tip f9b5ac3d was the live tip at action time (consistent with the t0242/t0252 receipts and all three PR bases re-pinned this tick). The stale heal-branch premise catch is honest value (superseded branch deleted at t003
+
+### ✅ t0272 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
 **Task:** Verification-only tick: tip re-pin, brain-index --check CLEAN, #2385 head pin, freshness gate still advisory
 
 **Receipt:** `twelve-lane-receipts/t0272-lane10.md`
@@ -29078,6 +29124,14 @@ _Last updated: 2026-11-18 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0272-lane10.md`
 
 **Evidence:** Dispatcher-verified via git protocol: HEAD == f9b5ac3d (unchanged), refs/pull/2385/head == eedd9540 (unchanged, matches receipt). Re-ran of --check not repeated in this tick (3 min box; 3rd identical verification, byte-identical tip). -1.0: structural recurrence risk unmitigated outside lane authority (Shawn's required-check click).
+
+### ✅ t0272 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review on #2454 + CI re-verify #2467/#2466 + stale-PR close batch (Lane 1 Verity)
+
+**Receipt:** `twelve-lane-receipts/t0272-lane1.md`
+
+**Evidence:** Verified this tick via git ls-remote: refs/pull/2454/head c10084bd...3912, refs/pull/2466/head 92c5a742...f467, refs/pull/2467/head 9a4a129c...0aac all MATCH the receipt pins; scratch/t0272-lane1/ present with all 8 cited files (review-2454.json, blobcmp.json, close-candidates.json, all-refs.txt, empties.json, pr2454-body.md, pr2466-body.md, signin
 
 ### ✅ t0272 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -29123,6 +29177,14 @@ _Last updated: 2026-11-18 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0262 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
+**Task:** Independent review-only verdicts on tip-protection PRs #2467/#2454/#2466 (Lane 7 Conductor)
+
+**Receipt:** `twelve-lane-receipts/t0262-lane7.md`
+
+**Evidence:** Verified this tick via git ls-remote: refs/pull/2454/head c10084bd663894657a34b6fbf03212b2e3343912 MATCHES receipt; refs/pull/2466/head 92c5a74270f5fe95d6561b7292c944b5518bf467 MATCHES; refs/pull/2467/head 9a4a129ce9c45311707ce67432bb55ff2aed0aac MATCHES (branch refs deleted post-merge, expected; PR head refs persist and match). Three pin-verified 
+
+### ✅ t0262 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
 **Task:** Independent review-only verdicts on tip-protection PRs #2467/#2454/#2466, zero merges
 
 **Receipt:** `twelve-lane-receipts/t0262-lane7.md`
@@ -29153,6 +29215,14 @@ _Last updated: 2026-11-18 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0262 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
+**Task:** Close two CTA v2 sealing gaps as mechanical checks C5/C6, battery-proven (Lane 6 Heir)
+
+**Receipt:** `twelve-lane-receipts/t0262-lane6.md`
+
+**Evidence:** Verified this tick: sealing_checklist.py e48cf079...28577 MATCHES receipt; test_sealing_checks.py 67ad8f6f...1f7612 MATCHES; probe_current_flow.py 7abc4919...f802e79bb MATCHES; ADDENDUM.md ef02e91b...f608443 MATCHES; MANIFEST.sha256 `sha256sum -c` all 10 files OK (RED-FIRST.log + GREEN.log present). RED-first probe honestly showed the current flow 
+
+### ✅ t0262 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
 **Task:** CTA v2 sealing gaps closed as mechanical checks C5/C6, battery-proven, local-only
 
 **Receipt:** `twelve-lane-receipts/t0262-lane6.md`
@@ -29180,6 +29250,14 @@ _Last updated: 2026-11-18 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0262-lane6.md`
 
 **Evidence:** Dispatcher-verified on disk: all 5 claimed files exist, sha256 prefixes match receipt (e48cf079, 67ad8f6f, 7abc4919, ef02e91b, MANIFEST sha256sum -c all OK); CTA-PROTOCOL-v2.md 241->265 lines as claimed. RED-first discipline proven (probe shows current flow cannot see either flaw). Deductions per agent's honest 9.0: synthetic fixtures only, standal
+
+### ✅ t0262 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 3 sealed execution -> VOID (seal overtaken by data growth) (Lane 2 Sage)
+
+**Receipt:** `twelve-lane-receipts/t0262-lane2.md`
+
+**Evidence:** Verified this tick: prereg-sealed.md sha256 338498cced38c1d651a97f58c77b7dd217fe89413d358d20a40f00ac2d4ce230 MATCHES receipt; measure_h9r3.py e6c5a040ce9de2b049d4dcf1a50ffb09baa6b5cf1845689d8ee5999f72894539 MATCHES; pins-real.json db37e2a4...09166b75 MATCHES; lane-experiments/t0262/h9r3/r3-output.json 6850eb88...1cfb MATCHES receipt pin and reads v
 
 ### ✅ t0262 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -53972,6 +54050,12 @@ _Last updated: 2026-11-18 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261118-1232 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall report 2026-11-18 12:32 PST: full claim sweep of all 31 queued briefs, 0 claimable
+
+**Evidence:** Fresh window (today 12:32 PST; only unscored receipt this tick; backlog 0 after this score). Verified first-hand from live bytes: claim-sweep-20261118-1228.log exists (4012 bytes), sha256 accd2eb0... matches the receipt's cited hash byte-for-byte; 31 per-brief attempt lines, 29 x exit=7 + 2 x exit=2, set exactly equal to the queue; queue holds exac
 
 ### ✅ gate-stall-20261118-1129 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
