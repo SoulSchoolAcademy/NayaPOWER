@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3322",
+ "intelligence": {
+  "title": "Join Goes Where the Meeting Lives",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3322-join-goes-where-the-meeting-lives",
+  "smart_note_id": "SN-3322",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3322/IB-SMART-NOTE-20261118-sn3322-join-goes-where-the-meeting-lives.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A meeting is a moment, and the button that joins it is part of the moment — not a step after it. One click deeper sounds small, and it is small, which is exactly why it matters: every small step between \"here is my meeting\" and \"I am in my meeting\" is a place where a person can stall, doubt, or leave. The eye proved the room is real and the bridge is real; the ruling finishes the job by putting the door on the meeting itself. The captain ruled it instead of asking because the answer was already in the brief — the placement was briefed, the build put it one click away, and the ruling is the brief restated, not a new decision.",
+  "simple_view": "Imagine your friend is waiting in a room and the door to that room is down the hall, behind another door. Why not put the door right on the room? Join goes where the meeting lives — right there, where you see it, one tap and you are in.",
+  "grandma_view": "Dear, the meeting room is real, dear, and the bridge to it works, dear — but the button to join it was one click away, dear, hidden behind another door. The captain ruled it, dear: the Join button goes right where the meeting lives, dear, in Appointments itself, dear — one tap and you are in.",
+  "naya_view": "JOIN GOES WHERE THE MEETING LIVES. NOT ONE CLICK AWAY. THE DOOR IS ON THE ROOM.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3322",
+   "title": "Join Goes Where the Meeting Lives",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3322/IB-SMART-NOTE-20261118-sn3322-join-goes-where-the-meeting-lives.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3322/IB-SMART-NOTE-20261118-sn3322-join-goes-where-the-meeting-lives.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8a755058d23bd2534550b8e2fed07ebea62f6762"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

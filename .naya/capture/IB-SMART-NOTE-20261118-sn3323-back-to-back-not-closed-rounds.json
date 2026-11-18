@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3323",
+ "intelligence": {
+  "title": "Back to Back, Not Closed Rounds",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3323-back-to-back-not-closed-rounds",
+  "smart_note_id": "SN-3323",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3323/IB-SMART-NOTE-20261118-sn3323-back-to-back-not-closed-rounds.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A closed round feels efficient — finish everything, then show it. But he only sees the end, so drift compounds for hours before his eye catches it, and then the fix is a second round, then a third. Back-to-back costs him a look at version one, and it saves him the fight at version four. And an edit that redoes the whole page is not an edit — it is a new page that happens to contain the edit, and every unasked change in it is a new thing for him to catch. Keep the page, change the edit, show it early.",
+  "simple_view": "Imagine you ask someone to fix one toy, and they rebuild your whole room — and the toy is still broken. That is what a redo does. Now imagine they fix the toy and show you right away, and you say \"a little more this way\" — that is back-to-back. Fix the one thing, show it fast.",
+  "grandma_view": "Dear, he asked us to fix one little thing, dear, and we rebuilt the whole room instead, dear — and the little thing was still wrong, dear. So now we fix just the one thing, dear, and we show him right away, dear, while it is still fresh, dear, so he can say \"a little more this way,\" dear.",
+  "naya_view": "AN EDIT DOES NOT MEAN REDO EVERYTHING. WORK BACK TO BACK — SHOW HIM VERSION ONE WHILE IT IS LIVE, AND HE DIRECTS WHILE THE WORK IS LIVE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3323",
+   "title": "Back to Back, Not Closed Rounds",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3323/IB-SMART-NOTE-20261118-sn3323-back-to-back-not-closed-rounds.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3323/IB-SMART-NOTE-20261118-sn3323-back-to-back-not-closed-rounds.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d6475d0cdd5cc2cb46848b9171354e0fd112780e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

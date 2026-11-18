@@ -57630,6 +57630,206 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "991eab049424fee830e8d1823b0881fadcfedd1516775801fd155efee1558e9c"
+    },
+    {
+      "smart_note_id": "SN-3319",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3319-prove-the-premise-before-you-hand-it-to-him",
+      "title": "Prove the Premise Before You Hand It to Him",
+      "content_hash": "214126db5c6b54ae850e14b00f6a2822bf72a4a58e3047d99f8eb2ba155ac43e",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3319/IB-SMART-NOTE-20261118-sn3319-prove-the-premise-before-you-hand-it-to-him.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "CORRECTION",
+      "topic": "CORRECTION",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 5242b04f4a0b99ee9c568bee72ab0cddf4ef2346 ('Intelligence Loop run 298: file SN-3319 prove-the-premise-before-you-hand-it-to-him') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "02390053c88fd28de32157ce2e7a0da9c43f06c65ac28f6c54e9fdba2d7f4185"
+    },
+    {
+      "smart_note_id": "SN-3320",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3320-prove-the-fold-on-the-live-page-not-on-paper",
+      "title": "Prove the Fold on the Live Page, Not on Paper",
+      "content_hash": "9b25d8a486165e2c20c9d4611ebd11adde03a2996aca299997997a76b3472ea5",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3320/IB-SMART-NOTE-20261118-sn3320-prove-the-fold-on-the-live-page-not-on-paper.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "CORRECTION",
+      "topic": "CORRECTION",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 144342cee05946b9682f0f5e36e415a2e104ad99 ('Intelligence Loop run 298: file SN-3320 prove-the-fold-on-the-live-page-not-on-paper') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "1db17746ccfeebdd89c8195ae96956ed3bcdc56829391cfed9ed90c269703b76"
+    },
+    {
+      "smart_note_id": "SN-3321",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3321-count-it-yourself",
+      "title": "Count It Yourself",
+      "content_hash": "ffbdd1320b2fc3e4f9242ac02ce1bcf8adeff39c6a6b3fe7642e80399087ff96",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3321/IB-SMART-NOTE-20261118-sn3321-count-it-yourself.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "CORRECTION",
+      "topic": "CORRECTION",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 5284d50cf4f65f59f6ade1bd21ada261b12fdfef ('Intelligence Loop run 298: file SN-3321 count-it-yourself') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "bb146c14be559ee6c3ba36971aff2034f30eba24e68dccd828d51c5c6627f8ff"
+    },
+    {
+      "smart_note_id": "SN-3322",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3322-join-goes-where-the-meeting-lives",
+      "title": "Join Goes Where the Meeting Lives",
+      "content_hash": "f0867fb5bf47f06412e6e92de3c8095ea3323e9dbdf798fd44635cbff535d532",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3322/IB-SMART-NOTE-20261118-sn3322-join-goes-where-the-meeting-lives.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 8a755058d23bd2534550b8e2fed07ebea62f6762 ('Intelligence Loop run 298: file SN-3322 join-goes-where-the-meeting-lives') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c7add292f02e6a0a97a2134de9316545307c353ebe447f4448974610264177e8"
+    },
+    {
+      "smart_note_id": "SN-3323",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3323-back-to-back-not-closed-rounds",
+      "title": "Back to Back, Not Closed Rounds",
+      "content_hash": "68099935674efc818ead42fbc9ca2f809f2312710d856292cc9b0b0db32012d1",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3323/IB-SMART-NOTE-20261118-sn3323-back-to-back-not-closed-rounds.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "CORRECTION",
+      "topic": "CORRECTION",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit d6475d0cdd5cc2cb46848b9171354e0fd112780e ('Intelligence Loop run 317: file SN-3323 back-to-back-not-closed-rounds') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "dac145a4141e41ceab8076f60d6861d1324cf6f610aa3146d2988cbe142f9b0d"
+    },
+    {
+      "smart_note_id": "SN-3324",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3324-the-captain-looks-first",
+      "title": "The Captain Looks First",
+      "content_hash": "c14354d1126d1081a56b8515a585686c5be2e1b458434784657f190aec4b5c4c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3324/IB-SMART-NOTE-20261118-sn3324-the-captain-looks-first.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "CORRECTION",
+      "topic": "CORRECTION",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 0f9e8ed228ee468b8ec21f23634a4f5e32fb1470 ('Intelligence Loop run 317: file SN-3324 the-captain-looks-first') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c4dba603d3b9972de9bad98c7390dd63e561104fea2308141971ffed98f73299"
+    },
+    {
+      "smart_note_id": "SN-3325",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3325-a-ten-not-a-minus-nine",
+      "title": "A Ten, Not a Minus Nine",
+      "content_hash": "2e26c95ba9e981f32e2bce0600daa8f3dc4c8be47b04bc5d4eedb7531864688d",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3325/IB-SMART-NOTE-20261118-sn3325-a-ten-not-a-minus-nine.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 017e099f19a5715e29c1db3ef546e0277f9ba9e0 ('Intelligence Loop run 317: file SN-3325 a-ten-not-a-minus-nine') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c7be322e25008c5813cbf1d4e6e2272782978138e9c6a0cdb1d34e442d00d8aa"
+    },
+    {
+      "smart_note_id": "SN-3326",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3326-two-icons-logo-top-left-icon-bottom-right",
+      "title": "Two Icons — Logo Top Left, Icon Bottom Right",
+      "content_hash": "84f0d9726130bc67f0e5b4852da22a291be1336304f8eb07d8dd710337d0d96a",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3326/IB-SMART-NOTE-20261118-sn3326-two-icons-logo-top-left-icon-bottom-right.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 4b08c7e32ed4a7a907307bef25df8c463b4f6d56 ('Intelligence Loop run 317: file SN-3326 two-icons-logo-top-left-icon-bottom-right') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "b148c39d45fa6e29ca9686ae0d75275cf601dbe1a16436169e5d87c980288a0b"
+    },
+    {
+      "smart_note_id": "SN-3327",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3327-the-kings-daily-report",
+      "title": "The King's Daily Report",
+      "content_hash": "16365ae21e55e41d5431c9675165f21f11e694f76f6e395760084756c1a06948",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3327/IB-SMART-NOTE-20261118-sn3327-the-kings-daily-report.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 7f3a9994465eb760873daf789b90acc24d2fc84d ('Intelligence Loop run 317: file SN-3327 the-kings-daily-report') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c59c586b04fc8791c82cc6213f149491d280cec54814a801e5dbc1b284530af2"
+    },
+    {
+      "smart_note_id": "SN-3328",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3328-hold-the-n-ball-and-land-where-he-started",
+      "title": "Hold the N Ball — and Land Where He Started",
+      "content_hash": "bc8f6fa0af664bb5e03d908f482642bb2b98e97a21b370eaac40bc99a7726b3e",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3328/IB-SMART-NOTE-20261118-sn3328-hold-the-n-ball-and-land-where-he-started.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "CORRECTION",
+      "topic": "CORRECTION",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 9a5c186edde9daab8d82d0139e17630a01028222 ('Intelligence Loop run 317: file SN-3328 hold-the-n-ball-and-land-where-he-started') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "01656ec1cf0a320409b809ddbc4ff6b820e444950ed7bfdbff4a9520385dbb0a"
     }
   ],
   "sequence_policy": {
@@ -57640,5 +57840,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "f8d215181c4c7bb38d350b4c5d4c10210a0628fe116785b5b9e2cda8f886b821"
+  "corpus_manifest_hash": "3f38c9d140d7a1182aa0f3d0e3adb5486f27aa09fb8441ee6f02546628212d02"
 }
