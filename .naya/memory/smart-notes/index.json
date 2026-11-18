@@ -58903,6 +58903,39 @@
         "Craft",
         "Factory"
       ]
+    },
+    {
+      "smart_note_id": "SN-3391",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3391-his-eye-is-the-instrument",
+      "slug": "his-eye-is-the-instrument",
+      "title": "His Eye Is the Instrument",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3391/IB-SMART-NOTE-20261118-sn3391-his-eye-is-the-instrument.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3391/IB-SMART-NOTE-20261118-sn3391-his-eye-is-the-instrument.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3391/IB-SMART-NOTE-20261118-sn3391-his-eye-is-the-instrument.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3391-his-eye-is-the-instrument.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:53:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "899a4f8911e8011e06d29bf28a098216c6580077a718a40cef902112b7801d50",
+      "content_hash": "fb21b8f33a960e9ff9a5509660319947e5c177e59f5004c0767cfc5374baa6d2",
+      "one_line": "Every defect he names is real. That is the axiom the whole refinement method stands on: his eye is not feedback to be weighed against a seat's scorecard, it is the instrument the work is measured with — and the record proves it, from the pricing page that climbed from garbage to masterpiece only when the method changed to building live under his eye, viewpoint by viewpoint. A blind score is not a score: verifiers gave the condemned page two 9s hours before he called it the worst yet. The instrument also corrects itself in public: a claimed circling orb was breathing, not rotating, and the claim was withdrawn on measurement; a clipped-money defect was cleared as a false positive before it sent fixers after a ghost. And the instrument's jurisdiction is ordered: phone first, desktop second, the full screen the stage — because that is how the world will actually meet the work. When a seat's measurement and his eye disagree, the seat re-measures; it does not argue.",
+      "topics": [
+        "Design",
+        "Lesson",
+        "Distillation",
+        "Verification",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -58913,5 +58946,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "afc0ddf74069937a699553379225c824dc1b46d99f592ad756720f0e56e2bf01"
+  "corpus_manifest_hash": "97d985915a69d8d1c71cd18b46d7942f0416b77ac414d332616408ae14c5e69b"
 }
