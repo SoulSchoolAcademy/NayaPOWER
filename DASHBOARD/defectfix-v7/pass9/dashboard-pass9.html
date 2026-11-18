@@ -4549,6 +4549,13 @@ html.os-calm
 .os-sl-gauge{flex:1 1 0;min-width:0;text-align:center}
 .os-sl-gauge-dial .tn-mini-mount{width:100%;max-width:150px;margin:0 auto} /* HERO FIX 2026-11-09 (i): the canonical mini takes the B-star's footprint. */
 .os-sl-gauge-num{font-size:20px;font-weight:900;color:#fff;line-height:1.1;font-variant-numeric:tabular-nums}
+/* GREETING-OUT FIX 2026-11-17 (§3.3b) — the unmeasured-state cell. The state
+   reads in the number's place (17px, the law's small-text floor, white);
+   the dial keeps its height so the row stays aligned. No mount, no gauge,
+   no 0 — the cell is honest about what it does not know. */
+.os-sl-state-cell{display:flex;align-items:center;justify-content:center;min-height:64px;}
+.os-sl-state-txt{font-size:17px;font-weight:800;color:#fff;line-height:1.3;text-align:center;}
+
 /* FIX 6 — METRIC STRIP + LEGEND + MOCK TOGGLE + PER-METRIC NUMBERS + PHONE */
 .os-metric-strip{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:14px 0 4px}
 .os-metric-legend{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
@@ -4991,33 +4998,34 @@ body.os-feed-open #os-feed-list{background:linear-gradient(180deg,#121214,#08080
 /* FIX 5 — FIX 7: the three buttons at the bottom. */
 #os-bottom3{position:fixed;bottom:0;left:0;right:0;z-index:200;
   display:flex;justify-content:center;align-items:center;gap:28px;
-  padding:10px 0 12px;background:linear-gradient(180deg,rgba(0,0,0,0),#000 35%);
+  padding:10px 0 20px;background:linear-gradient(180deg,rgba(0,0,0,0),#000 35%);
   transition:transform .35s ease,opacity .35s ease;}
-body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO FIX 2026-11-09 (b), FIX-4 2026-11-17: os-bottom-hidden hides the bar WHILE SCROLLING only — it returns ~1s after scroll stops (the _barT timer), visible at load and at any scroll position. */
+body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO FIX 2026-11-09 (b), RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law — supersedes FIX-4): os-bottom-hidden hides the bar WHILE SCROLLING only — it returns ONLY at the very bottom, never when scrolling stops (the _barT ~1s return is removed); visible at load, before the page has ever been scrolled down. */
 .os-b3-badge[hidden]{display:none !important;}
 .os-notif-count[hidden]{display:none !important;}
-.os-b3-badge{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;
+.os-b3-badge{position:absolute;top:2px;right:2px;min-width:20px;height:20px;padding:0 4px;
   display:inline-flex;align-items:center;justify-content:center;border-radius:999px;
-  background:#07925f;color:#04120a;font-size:12px;font-weight:900;line-height:1;
-  border:2px solid #04120a;box-shadow:0 0 12px rgba(7,146,95,.8);}
+  background:#050607;color:#ffffff;font-size:12px;font-weight:900;line-height:1;
+  border:1.5px solid var(--nc);box-shadow:0 0 10px color-mix(in srgb, var(--nc) 60%, transparent),inset 0 1px 0 rgba(255,255,255,.25);}
+.os-b3-badge.os-b3-long{top:1px;right:1px;height:18px;min-width:18px;padding:0 2px;}
 @media (max-width:768px){
-  #os-bottom3{gap:22px;padding:8px 0 10px;}
+  #os-bottom3{gap:22px;padding:8px 0 18px;}
 }
-/* ═══ FIX-3 2026-11-17 — THE FIVE TILES (Shawn 03:05Z) ═══
-   The Personal bottom bar's five tiles (+ ADD purple · MAIL blue ·
-   ACTIVITY green · WORLDS gold · ECOSYSTEM burnt orange) ride on the Dashboard
+/* ═══ FIX-3 2026-11-17 — THE SIX TILES (Shawn 03:05Z; GREETING-OUT 2026-11-17 adds CONNECT) ═══
+   The Personal bottom bar's six tiles (+ ADD purple · MAIL blue ·
+   ACTIVITY green · WORLDS gold · ECOSYSTEM burnt orange · CONNECT ruby) ride on the Dashboard
    too, so the way you move around your world is the same on every page.
    HARVESTED VERBATIM from the Personal bottom bar
    (hub-board-edit/check-hub-personal-alignment-20261116/personal-r4f2.html,
-   .notif-seg/.notif-tile L13453-13479; the five inline SVGs and the SEGS
-   order plus/mail/activity/spaces/eco): the tile construction, the tile
+   .notif-seg/.notif-tile L13453-13479; the six inline SVGs and the SEGS
+   order plus/mail/activity/spaces/eco/plus-connect): the tile construction, the tile
    size, the press scale, the count-bubble seat. ADAPTATIONS, named:
    (1) the shell stays the Dashboard's own #os-bottom3 (fixed bottom,
    z-200, os-bottom-hidden show/hide, drill-view hiding) — NOT Personal's
    .notif-bar shell — so there is ONE bar, not two stacked bars;
-   (2) the five colors are the Deep Palette deep values of the same hues
+   (2) the six colors are the Deep Palette deep values of the same hues
    (ADD #8e24aa royal purple · MAIL #0f52ba sapphire · ACTIVITY #07925f
-   deep emerald · WORLDS #d4a017 deep gold · ECOSYSTEM #c2410c) — the
+   deep emerald · WORLDS #d4a017 deep gold · ECOSYSTEM #c2410c · CONNECT #c62828 ruby) — the
    bright Personal values (#a06bff/#3fb8ff/#31cb8d/#ffbf3d) are superseded
    as values by the Deep Palette law; the hues are kept;
    (3) the hover lift+glow is Personal's own has-news shadow
@@ -5030,23 +5038,167 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
    (5) the live count stays the Dashboard's own .os-b3-badge (feed count,
    99+ cap, synced by the FIX 5 script) inside the ACTIVITY tile. The
    gold home tile retires: the Dashboard IS the home view, and the
-   five-tile form carries no home.
-   (6) RESPONSIVE FIT — five tiles are wider than three buttons, so the gap
-   tightens below 560px: 5x54 + 4x28 = 442px fits desktop, but a 390px
-   phone needs 5x54 + 4x12 = 378px, and at 400px and under the tiles
-   shrink to Personal's 46px (5x46 + 4x12 = 338px). The gap rules carry
-   the .notif-five marker class so they outrank the pass-10
+   six-tile form carries no home.
+   (6) RESPONSIVE FIT — six tiles are wider than five, so the gap
+   tightens below 560px: the tile itself stays 54px (the harvested
+   object, never resized); the seg side padding goes to 0 and the gap
+   to 4px: 6x54 + 5x4 = 344px, which fits a 390px phone (46px spare)
+   and a 360px phone (16px spare); at 400px and under the tiles shrink
+   to Personal's 46px as before (6x46 + 5x4 = 296px). Desktop: 6 segs
+   x 66px + 5x28 = 536px; the 561-768 band keeps gap 22px (6x66 + 5x22
+   = 506px, fits 561px). The gap rules carry the .notif-six marker
+   class so they outrank the pass-10
    #os-bottom3{gap:28px !important} rule at any stylesheet position. */
-.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#E8E8EC;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;}
+/* ═══ BAR-DEPTH 2026-11-17 — THE PICTURES' LOOK (Shawn 21:57Z + 21:59Z) ═══
+   His eye: the tiles were flat pretty boxes, not real objects, not the same
+   family as the gauge orbs above them — and the count hung off the corner
+   like a stuck-on bubble. His pictures (aaa_2.png, the six tiles;
+   aaa_11111.png, the round circles) are the look: DARK middle, WHITE icon,
+   the tile's colour in the rim + glow, rounded squircle, elevated, lit up.
+   THE WHITE MIDDLE IS OUT — his 20:46Z ruling is reversed by his own images
+   and words.
+   What changes, and only this: .notif-tile loses the white radial core and
+   takes obsidian (#050607, light top-left 135deg, no glow inside); the rim
+   goes 2px solid in the tile's own deep colour with an outside halo + a real
+   down-right shadow; the glyph goes WHITE as a real object; the radius went
+   16px -> 20px in this round (squircle, almost round, as in the pictures) and the
+   FIX-PASS restores Personal's 16px (see FIX-PASS above the tile rules); hover lifts
+   the whole tile and the white glyph pops. The badge (.os-b3-badge) and the
+   news dots (.os-b3-dot) move INSIDE the tile — the badge as a digit tile
+   set into the ACTIVITY tile's top-right corner (obsidian, emerald rim,
+   white digit), the dots as jewels set into their tiles' top-right corners
+   (the five dot spans move inside their .notif-tile spans; the badge was
+   already inside its tile). Size, order, colours, SVGs, press scale, hover
+   pill, gaps, fit math, fold rule and tap behaviour are UNTOUCHED. The
+   pass3 !important badge override is retuned to match, so it cannot
+   resurrect the old fill. This is the ONE bar construction every page
+   harvests byte-identical (ONE ICON SET, Shawn 22:00Z). */
+/* ═══ DOTS-DIALOG-FIX 2026-11-17 — LIT 3D JEWELS + THE DIALOG FOLD (Shawn 22:33Z ball-not-circle + 22:39Z 3D law) ═══
+   (1) THE FIVE DOTS ARE FULL 3D JEWELS. The eye saw faint 12px dark circles with a thin rim,
+   visible only at 3x zoom — empty holes, not jewels. The fix harvests the gauge/metric orb's
+   ball (.orb): three stacked radial gradients (specular crown at 34%/26%, mid sheen, deep-colour
+   body darkening to board black), a bright own-colour rim, a deep down-right drop shadow so the
+   jewel stands OUT of the tile, and a light pool behind it. The jewel was 15px (12px was
+   too small to read at 1920), seated top:3px right:3px inside the tile; the FIX-PASS
+   re-seats it at 13px (true gaps re-derived from the live boxes — see FIX-PASS), lit in its own deep
+   colour at rest — the material, not a news signal. The news signal stays gated on real counts:
+   has-news only brightens the halo and makes the dot clickable. Glow is behind, never the
+   effect itself. Press goes IN (tile + jewel shadows compress on :active), release comes OUT.
+   (2) THE BAR STAYS FOLDED BEHIND AN OPEN DIALOG. The leak was one rule, the FIX-5 (6)
+   override: body.viewport-focus #os-bottom3 forced the bar visible above every drill, beating
+   the fold and the viewport-focus hide. It is narrowed to :not(.os-bottom-hidden) and the hide
+   to .os-bottom-hidden — mid-page the bar stays folded, at the very bottom it may return.
+   (3) NITS: bottom padding grows (12px -> 20px desktop, 10px -> 18px mobile) so the tiles'
+   lower glow has room; the mobile hide control moves 82px -> 90px to keep its gap above the
+   bar. The thin tick above each tile was the tile's own hard 1px inset top-light line reading
+   detached from the near-black body; the top light is now a soft crown falloff (inset 0 2px 4px)
+   in the rest, hover and has-news stacks. The hover label pill is opacity 0 at rest and 33px
+   tall, so it is ruled out as the tick.
+   (4) THE 99+ BADGE: a 3-char count gets .os-b3-long (18px tall, seated top:2px right:2px);
+   the first geometry proof was wrong (border-box frame) and the badge overlapped the pulse by
+   0.54px. The FIX-PASS narrows it to padding 0 2px (27.1px live) and seats it top:1px right:1px:
+   3.57px clear at its live rect; the 1-2 digit badge re-seats to top:2px right:2px: 2.97px clear. */
+/* ═══ FIX-PASS 2026-11-17 — CHECKER NOT PASS, THREE FAILURES WORKED TO ZERO (same round, same branch/PR #3451) ═══
+   (1) GEOMETRY WAS WRONG: the first proof measured the dot from the tile's BORDER box; CSS positions
+   against the PADDING box, so every gap was overstated ~2px and the 99+ badge overlapped the pulse.
+   Re-derived from the LIVE boxes (Firefox getBoundingClientRect on the old build: SVG offset (14.5,14.5),
+   dot offset (34,5); badge widths measured live: 99+ 29.1px, "10" 24.07px). The jewel is 13px at
+   top:3px right:3px now — true solid-edge gaps from the LIVE boxes: Eco 3.97 / Mail 4.95 / Worlds 9.37 /
+   Activity 10.43 / Add 10.94 / Connect 10.94, all >=3px. (Firefox uses a specified 1.5px border as 1px —
+   minimal-page control — so the live padding box is 1..53 and the live dot centre is (43.5,10.5).)
+   The 99+ badge narrows to padding 0 2px (27.1px live) and seats top:1px right:1px: 3.57px clear
+   of the pulse at its live rect; the "10" badge seats top:2px right:2px: 2.97px clear.
+   (2) ORBIT RESTORED: Personal's .notif-tile::after conic comet (orb-spin-rev 60s) harvested verbatim —
+   the moving light around the circle, following the line; the static halo alone was not a moving light. 2026-11-17 CLUSTER-ALIGN: the orbit is REMOVED (eye 68f73e31 - it reads as a tick above every tile); rim-light, hover, press stay.
+   (3) PERSONAL HARVEST: the tile IS Personal blob 9a006c47 effective rules (lines 32404/32407/32408/
+   32413/32467) — radius 16, flat board-black gradient, 1.5px rim, ::before none (the sheen across the
+   middle is gone, closing the hover-law (a) caveat), rest shadow, has-news, orbit. HOVER RECONCILED:
+   Personal's hover adds an own-colour wash fill + turns the glyph its own colour — that conflicts with
+   the hover law (light around only, never glow over the icon), so the wash and the coloured glyph are
+   NOT carried over: hover keeps the board-black face, the glyph stays white, the rim brightens to solid
+   own-colour and the halo grows around the tile; a taller drop joins the hover shadow for the 3D law's
+   elevation. The visible .notif-lbl is NOT carried over: at 10.5px it would be a new §2.3 size FAIL;
+   the name stays in aria-label/title + the hover pill. The Dashboard shell (#os-bottom3, fold,
+   viewport-focus partition), the Deep Palette --nc values (Laws §3.1 supersedes Personal's bright
+   values), and the inside badge/dot seats stay — the shell, the colours and the seats are the
+   Dashboard's own, the tile is Personal's. At <=400px the tile is 46px (Personal's own), the glyph
+   drops to 21px and the jewel to 11px so the >=3px separation holds there too (Eco 4.20 live). NAMED
+   LIMIT: the mobile badge still overlaps the pulse by ~0.9px in a 46px tile (pre-existing: -1.04px
+   in the eye-passed build) — no inside seat clears it without shrinking the digit. */
+.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#ffffff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;}
 .notif-seg:active{transform:scale(.94);}
-.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%);border:1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);color:color-mix(in srgb, var(--nc) 72%, #ffffff);transition:box-shadow .3s, border-color .3s, transform .2s;}
-.notif-tile::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(155deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 42%),linear-gradient(25deg, rgba(255,255,255,0) 62%, color-mix(in srgb, var(--nc) 22%, transparent) 100%);}
-.notif-tile svg{width:25px;height:25px;filter:drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent));position:relative;}
-.notif-seg:hover .notif-tile{transform:translateY(-3px);border-color:color-mix(in srgb, var(--nc) 88%, #ffffff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);}
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07070b,#020203);border:1.5px solid color-mix(in srgb,var(--nc) 62%,rgba(255,255,255,.12));box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:#ffffff;transition:box-shadow .3s,border-color .3s,transform .2s ease,color .2s ease,background .2s ease;}
+.notif-tile::before{display:none}
+.notif-tile svg{width:25px;height:25px;color:#ffffff;filter:drop-shadow(0 2px 2px rgba(0,0,0,.7));position:relative;}
+.notif-seg:hover .notif-tile,.notif-seg:focus-visible .notif-tile{transform:translateY(-2px);border-color:var(--nc);box-shadow:0 10px 20px rgba(0,0,0,.65),0 22px 40px rgba(0,0,0,.45),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent);}
+.notif-seg:hover .notif-tile svg,.notif-seg:focus-visible .notif-tile svg{filter:drop-shadow(0 2px 2px rgba(0,0,0,.7)) drop-shadow(0 0 9px rgba(255,255,255,.8));}
 .notif-seg::after{content:attr(aria-label);position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-transform:uppercase;white-space:nowrap;line-height:1;background:linear-gradient(180deg,#1d1d26,#0b0b10);border:1.5px solid var(--nc);border-radius:999px;padding:8px 14px;box-shadow:0 8px 20px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.3);opacity:0;pointer-events:none;transition:opacity .18s, transform .18s;}
 .notif-seg:hover::after,.notif-seg:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0);}
-@media(max-width:560px){#os-bottom3.notif-five{gap:12px !important;}}
+/* 2026-11-17 - CLUSTER-ALIGN (S3): .notif-tile::after orbit ring REMOVED - the eye proved it reads as a thin pale line above every bar tile at 1919 in non-hover, hover and held states; by elimination it is the only per-tile element above the tile present at rest (the hover pill is opacity:0 at rest and one tile only; the inset top-light is not in the bytes). Hover rim-light, lift, press, jewel and badge stay verbatim. */
+@media(max-width:560px){#os-bottom3.notif-six{gap:4px !important;}#os-bottom3.notif-six .notif-seg{padding:2px 0 0;}}
 @media(max-width:400px){.notif-tile{width:46px;height:46px;}}
+/* GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control for the Dashboard
+   bar. A real object (Real Object Law; no flatness, 19:48Z): obsidian black,
+   white rim, light from the top-left, elevated, alive on hover. It sits in
+   the corner just above the bar (bottom:100px desktop, 82px at <=768px —
+   the bar is ~91px / ~74px tall); when the bar is folded (scrolling) or
+   off (their choice) it drops to the corner (bottom:12px) so it stays
+   reachable. The down chevron folds the bar down, the up chevron brings it
+   back. */
+#os-b3-hide{position:fixed;right:12px;bottom:100px;z-index:1005;width:38px;height:38px;border-radius:50%;cursor:pointer;
+  color:#fff;font-size:17px;font-weight:800;line-height:1;text-align:center;
+  background:linear-gradient(180deg,#1d1d26,#0b0b10 60%,#050607);
+  border:1.5px solid rgba(255,255,255,.65);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.6),0 0 14px rgba(255,255,255,.12);}
+#os-b3-hide:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.6),0 12px 26px rgba(0,0,0,.65),0 0 18px rgba(255,255,255,.18);}
+#os-b3-hide:active{transform:translateY(1px);}
+body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
+@media(max-width:768px){#os-b3-hide{bottom:90px;}}
+
+/* GREETING-OUT FIX 2026-11-17 (§3.6) — the notification light, bright, for
+   each tile: Personal's has-news, HARVESTED VERBATIM from the Personal
+   build as filed (commit d300db0e, blob 9a006c47, line 32413). The Fix-3
+   comment already names it as "Personal's own has-news shadow" — the rule
+   itself was never carried over. When a tile has news, its border goes
+   bright in its own colour + white and its glow deepens, like a permanent
+   hover. */
+.notif-seg.has-news .notif-tile{border-color:color-mix(in srgb,var(--nc) 88%,#ffffff);box-shadow:0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
+/* BAR-DEPTH 2026-11-17 — the notification seat sits INSIDE each tile now
+   (top-right corner of the tile's own black, never off the corner), so the
+   jewel reads as part of the object, not a bubble stuck on it. A real jewel,
+   dim when the tile has no news, bright in the tile's own colour when it
+   does. The ACTIVITY tile keeps its count badge (the live feed count)
+   instead of a dot. A dim dot is never clickable (pointer-events:none) so
+   the tile's own tap works; a lit dot opens the day view for today (the
+   notification path, §3.7). */
+.os-b3-dot{position:absolute;top:3px;right:3px;width:13px;height:13px;border-radius:50%;pointer-events:none;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 14%, transparent 32%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.12) 0%, transparent 44%),
+    radial-gradient(circle at 50% 50%, var(--nc) 0%, color-mix(in srgb, var(--nc) 62%, #000000) 58%, #050607 100%);
+  border:1.5px solid color-mix(in srgb, var(--nc) 80%, #ffffff);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.22),
+    inset 0 -3px 4px rgba(0,0,0,.6),
+    1px 2px 4px rgba(0,0,0,.8),
+    0 0 8px color-mix(in srgb, var(--nc) 45%, transparent);
+  opacity:1;transition:box-shadow .2s, border-color .2s;}
+.notif-seg.has-news .os-b3-dot{pointer-events:auto;cursor:pointer;opacity:1;
+  border-color:color-mix(in srgb, var(--nc) 70%, #ffffff);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.28),
+    inset 0 -3px 4px rgba(0,0,0,.55),
+    1px 2px 4px rgba(0,0,0,.8),
+    0 0 12px var(--nc),
+    0 0 20px color-mix(in srgb, var(--nc) 55%, transparent);}
+/* DOTS-DIALOG-FIX 2026-11-17 — PRESS GOES IN, RELEASE COMES OUT (Shawn 22:39Z 3D law):
+   the tile's shadow stack compresses while pressed and springs back on release,
+   so the object feels alive — something happening when you use it. The jewel
+   rides the tile: its cast shadow shortens the same way. */
+.notif-seg:active .notif-tile{box-shadow:0 2px 6px rgba(0,0,0,.7),0 0 10px color-mix(in srgb, var(--nc) 40%, transparent);}
+.notif-seg:active .os-b3-dot{box-shadow:inset 0 2px 3px rgba(255,255,255,.18),inset 0 -3px 4px rgba(0,0,0,.6),0 1px 2px rgba(0,0,0,.8),0 0 6px color-mix(in srgb, var(--nc) 40%, transparent);}
+@media(max-width:400px){#os-bottom3 .notif-tile svg{width:21px;height:21px;}#os-bottom3 .os-b3-dot{width:11px;height:11px;top:2px;right:2px;}}
+
 
 </style>
 <div class="os-dash" id="os-dash">
@@ -5064,20 +5216,6 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 <!-- 2026-11-07 — PASS 3 (Addenda 3+4): the hero, zoomed to fit the viewport.
      Number at the very top, gauge + orbs below it, PTS/% underneath.
      One viewpoint, nothing else in it. The wrapper is scaled by fitHero(). -->
-<!-- DASHBOARD DONE-DONE 2026-11-17 — THE HERO: time-aware greeting with the signed-in citizen's name + the Wisdom of the Day quote + the time and the date + the Ledger sync line. Placed OUTSIDE #os-hero-fit on purpose: fitHero() measures the gauge inside that wrapper, and this band must not move its math. The greeting, the quote and the clock are filled by the DONE-DONE script at the end of the file; the static text below is only the loading skeleton, never a hardcoded name or quote. -->
-<section class="os-dd-hero" id="os-dd-hero" aria-label="Good morning">
-  <div class="os-dd-orb" aria-hidden="true"><span class="os-dd-ring os-dd-r1"></span><span class="os-dd-ring os-dd-r2"></span><span class="os-dd-core">N</span></div>
-  <div class="os-dd-main">
-    <h1 class="os-dd-greet" id="os-dd-greet">Good morning.</h1>
-    <div class="os-dd-wisdom" id="os-dd-wisdom" hidden>
-      <div class="os-dd-wk">Wisdom of the Day</div>
-      <blockquote class="os-dd-quote" id="os-dd-quote"></blockquote>
-      <div class="os-dd-src" id="os-dd-src"></div>
-    </div>
-    <p class="os-dd-date"><span class="os-dd-dot" aria-hidden="true"></span><span class="os-dd-date-str" id="os-dd-date-str"></span> <span class="os-dd-time" id="os-dd-time"></span></p>
-    <p class="os-dd-ledger" id="os-dd-ledger">Syncing&hellip;</p>
-  </div>
-</section>
 <div id="os-hero-fit">
 <div class="os-score-elegant" id="os-score-elegant">
   <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-msg">Loading&hellip;</span></span></div>
@@ -5647,7 +5785,7 @@ body:not(.hero-mode) .os-ld{
 /* 2026-11-02 — Bullseye: Smart Stats. Hide smart bar in focused drill-down views. */
 body.viewport-focus #nsbBottom{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;}
 body.viewport-focus .nsb-bottom{display:none !important; visibility:hidden !important;}
-body.viewport-focus #os-bottom3{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;} /* HERO FIX 2026-11-09 (j): drill views hide the bottom bar outright, like #nsbBottom already. */
+body.viewport-focus.os-bottom-hidden #os-bottom3{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;} /* HERO FIX 2026-11-09 (j) + DOTS-DIALOG-FIX 2026-11-17: drill views hide the bottom bar outright — but ONLY while the bar is folded (os-bottom-hidden). When the page is genuinely at the very bottom the bar is not folded, and the FIX-5 show-rule below governs instead. */
 .os-constellation{
   position:relative;
   width:100%;
@@ -8808,6 +8946,8 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <div id="os-dash-funnel"></div>
 <p class="os-note" id="os-dash-links-head"><span class="os-skel-line" style="width:60%"></span></p>
 <div id="os-dash-links"><div class="os-skel"></div></div>
+
+</div>
 <!-- PASS-4 2026-11-09 — YOUR REPORTS, THE SAME STAT PRESENTATION as every
      other board (title + subtitle + stat row + nutshell + open line). The
      stat row is filled live from the spine by _renderReportsBoard (actions
@@ -8827,7 +8967,6 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <p>Newest first.</p>
 <p class="os-reports-cta">Reports room &rarr;</p>
 </a>
-</div>
 <!-- 2026-11-07 — PASS 3 (Addenda 3+4): the running feed — a news report of
      all notifications, everything going on. Below the fold, never above.
      "Open inbox" goes to the real inbox (the page's notification surface). -->
@@ -9196,7 +9335,7 @@ document.addEventListener('pointerdown',function(e){
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> App behaviour</h3>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#d9a521">🎞️</span><span class="os-setrow-main"><b>Smart Tabs drift</b><span class="os-setrow-sub">The tab ribbon glides slowly, one way &mdash; the NayaNET standard.</span></span><span class="os-switch-wrap" style="--jc:#d9a521"><button class="os-switch on" id="os-set-drift" data-os-set="drift" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">🗂️</span><span class="os-setrow-main"><b>Smart Tabs</b><span class="os-setrow-sub">Show the top tab row (Home, Dashboard, About&hellip;). Off by default on the Dashboard &mdash; the page stays clean.</span></span><span class="os-switch-wrap" style="--jc:#3fb8ff"><button class="os-switch" id="os-set-tabs" data-os-set="tabs" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
+<!-- 2026-11-17 - CLUSTER-ALIGN: the Smart Tabs switch is GONE with the pill row it controlled - the row has no pills to show. -->
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">💫</span><span class="os-setrow-main"><b>Motion &amp; glow</b><span class="os-setrow-sub">Breathing light and living motion across the app.</span></span><span class="os-switch-wrap" style="--jc:#ffbf3d"><button class="os-switch on" id="os-set-motion" data-os-set="motion" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">🔄</span><span class="os-setrow-main"><b>Auto-refresh</b><span class="os-setrow-sub">Quietly re-reads whichever board is open — wall, today, inbox, reports or dashboard — every minute.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch" id="os-set-refresh" data-os-set="refresh" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
 <div class="os-status" id="os-set-status"></div>
@@ -10353,7 +10492,7 @@ NF.register(UNIT, {
       var _slr=null;
       try{ (window._dashLinkRows||[]).forEach(function(r){ if(r.name===_sln) _slr=r; }); }catch(e){}
       if (!_slr){ try{ var _by=window._slLinkByName||{}; if(_by[_sln]) _slr=_by[_sln]; }catch(e){} }
-      if (_slr && window.openSmartLinkView){ window._smartlinkSingle=_slr; window.openSmartLinkView('nayanet.app/'+_slr.name, _slr.url||((_slr.clicks||0)+' clicks · '+(_slr.joins||0)+((_slr.joins||0)===1?' join':' joins')+' · this link only')); return; }
+      if (_slr && window.openSmartLinkView){ window._smartlinkSingle=_slr; window.openSmartLinkView('nayanet.app/'+_slr.name, _slr.url||((typeof window._osSpc==='function'?window._osSpc(_slr.clicks||0):(_slr.clicks||0))+' clicks · '+(typeof window._osSpc==='function'?window._osSpc(_slr.joins||0):(_slr.joins||0))+((_slr.joins||0)===1?' join':' joins')+' · this link only')); return; }
       showView('notes'); return;
     }
     var suf=t.closest?t.closest('[data-sl-unfile]'):null;
@@ -11393,8 +11532,8 @@ NF.register(UNIT, {
   function slOrbCell(n, label, color){ return '<div class="os-orb-cell"><span class="os-orb" style="--ac:' + color + ';width:52px;height:52px"><b style="font-size:17px">' + n + '</b></span><span class="os-orb-l">' + label + '</span></div>'; }
   function slSentence(st){
     if (!st || !st.clicks) return 'No clicks yet — share this address and every click lands here, counted.';
-    var s = st.clicks + (st.clicks === 1 ? ' click' : ' clicks') + ' so far — ' + st.week + ' of them in the last 7 days.';
-    if (st.joins) s += ' ' + st.joins + (st.joins === 1 ? ' join' : ' joins') + ' credited to this link — someone who clicked became a member.';
+    var s = (typeof window._osSpc==='function'?window._osSpc(st.clicks):(st.clicks)) + (st.clicks === 1 ? ' click' : ' clicks') + ' so far — ' + (typeof window._osSpc==='function'?window._osSpc(st.week):(st.week)) + ' of them in the last 7 days.';
+    if (st.joins) s += ' ' + (typeof window._osSpc==='function'?window._osSpc(st.joins):(st.joins)) + (st.joins === 1 ? ' join' : ' joins') + ' credited to this link — someone who clicked became a member.';
     else s += ' No joins from it yet — a join is credited the moment a visitor who clicked signs up.';
     return s;
   }
@@ -11857,7 +11996,7 @@ NF.register(UNIT, {
     else facts.push('Nothing new arrived today'+(s.lastArrival?(' — the last arrival was '+esc(humanize(s.lastArrival.from_alias))+'’s, '+relLabel(s.lastArrival.created_at)):'')+'.');
     if (s.linksOwned===null || s.links===null || s.links===undefined) facts.push('Your link counts could not be read just now.');
     else if (s.linksOwned) facts.push(s.links.clicks>0
-      ? 'Your links took '+s.links.clicks+(s.links.clicks===1?' click':' clicks')+' today'+(s.links.top?(' — '+esc(s.links.top)+' led the way'):'')+', with '+s.links.joins+(s.links.joins===1?' join':' joins')+' so far.'
+      ? 'Your links took '+(typeof window._osSpc==='function'?window._osSpc(s.links.clicks):(s.links.clicks))+(s.links.clicks===1?' click':' clicks')+' today'+(s.links.top?(' — '+esc(s.links.top)+' led the way'):'')+', with '+(typeof window._osSpc==='function'?window._osSpc(s.links.joins):(s.links.joins))+(s.links.joins===1?' join':' joins')+' so far.'
       : 'Your links are quiet today — no clicks yet.');
     if (s.invites===null || s.invites===undefined) facts.push('Your invites could not be read just now.');
     else if (s.invites.count>0) facts.push(s.invites.count+(s.invites.count===1?' invite is':' invites are')+' still waiting on them.'+(s.invites.allDry?' They are record-only for now — written down, not sent.':''));
@@ -11869,7 +12008,7 @@ NF.register(UNIT, {
     sp.push(w>0 ? w+(w===1?' conversation is':' conversations are')+' waiting for your reply. The oldest is from '+humanize(s.waiting[0].from_alias)+'.'
                 : 'Nothing is waiting on you. You are all caught up.');
     if (s.arrived!==null && s.arrived!==undefined) sp.push(s.arrived>0 ? s.arrived+(s.arrived===1?' new message':' new messages')+' arrived today.' : 'Nothing new arrived today.');
-    if (s.linksOwned && s.links) sp.push(s.links.clicks>0 ? 'Your links took '+s.links.clicks+(s.links.clicks===1?' click':' clicks')+' today, with '+s.links.joins+(s.links.joins===1?' join':' joins')+'.' : 'Your links are quiet today.');
+    if (s.linksOwned && s.links) sp.push(s.links.clicks>0 ? 'Your links took '+(typeof window._osSpc==='function'?window._osSpc(s.links.clicks):(s.links.clicks))+(s.links.clicks===1?' click':' clicks')+' today, with '+(typeof window._osSpc==='function'?window._osSpc(s.links.joins):(s.links.joins))+(s.links.joins===1?' join':' joins')+'.' : 'Your links are quiet today.');
     if (s.invites) sp.push(s.invites.count>0 ? s.invites.count+(s.invites.count===1?' invite is':' invites are')+' still waiting on them.' : 'No invites are waiting on them.');
     if (s.notes!==null && s.notes!==undefined) sp.push(s.notes>0 ? s.notes+(s.notes===1?' note was':' notes were')+' filed today.' : 'No notes were filed today.');
     if (w>0) sp.push('Answer the waiting conversations first, and the day starts clear.');
@@ -12967,7 +13106,7 @@ NF.register(UNIT, {
   loadWall();
   renderInstallState();
   bindSwitch('os-set-drift', getSet('drift'), function(on){ putSet('drift', on); if (window.osTabsDrift && osTabsDrift.setEnabled) osTabsDrift.setEnabled(on); if (window.osNavDrift && osNavDrift.setEnabled) osNavDrift.setEnabled(on); setStatus('Smart Tabs drift is '+(on?'on — the tab bars glide slowly.':'off — the tab bars sit still; they still scroll by hand.')+' Saved on this device.'); });
-  bindSwitch('os-set-tabs', getSet('tabs'), function(on){ putSet('tabs', on); applyTabsVisibility(); setStatus('Smart Tabs are '+(on?'on — the top tab row is showing.':'off — the top tab row is hidden; the page stays clean.')+' Saved on this device.'); });
+  /* 2026-11-17 - CLUSTER-ALIGN: the os-set-tabs switch is gone with its row. applyTabsVisibility stays inert (body class, no row to show). */
   bindSwitch('os-set-motion', getSet('motion'), function(on){ putSet('motion', on); applyMotion(); setStatus('Motion & glow is '+(on?'on — blocks rise in, dots breathe, cards ignite on touch.':'off — the page is stilled: no entrances, no breathing, no pulse.')+' Saved on this device.'); });
   bindSwitch('os-set-refresh', getSet('refresh'), function(on){ putSet('refresh', on); applyRefresh(); setStatus('Auto-refresh is '+(on?'on — whichever board is open (Home, Today, Inbox, Reports or Dashboard) is quietly re-read every minute.':'off — boards refresh when you open them.')+' Saved on this device.'); });
   bindSwitch('os-set-dark', legacySetting('🌙 Dark mode')!=='off', function(on){ putLegacySetting('🌙 Dark mode', on); document.body.style.filter=on?'':'brightness(1.2)'; setStatus('Deep black is '+(on?'on — the page keeps its deep-night look.':'off — the page renders brighter.')+' Saved on this device.'); });
@@ -14255,7 +14394,7 @@ NF.register(UNIT, {
         if (tc>0){
           var _rate=Math.round(tj/tc*100);
           var _color=_rate>=10?'#2fe89e':(_rate>0?'#ffbf3d':'#ff5e6c');
-          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span>&nbsp;<span>of clicks became joins</span>' + (_rate===0 ? '&nbsp;<span class="os-sl-leak">— the leak is here</span>' : '');
+          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span> <span>of clicks became joins</span>' + (_rate===0 ? ' <span class="os-sl-leak">— the leak is here</span>' : '');
         } else {
           _conv.textContent='Share your link to start the funnel';
         }
@@ -14280,7 +14419,7 @@ NF.register(UNIT, {
           var _bc=_SPEC[_ix%_SPEC.length];
           var _d=new Date(_now); _d.setDate(_d.getDate()-(29-_ix));
           var _dl=_d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-          return '<div class="os-dg-bar" style="position:absolute;bottom:0;width:'+(100/30)+'%;left:'+(_ix*100/30)+'%;height:'+_h+'%;--nc:'+_bc+';" title="'+_dl+': '+v+' clicks"></div>';
+          return '<div class="os-dg-bar" style="position:absolute;bottom:0;width:'+(100/30)+'%;left:'+(_ix*100/30)+'%;height:'+_h+'%;--nc:'+_bc+';" title="'+_dl+': '+(typeof window._osSpc==='function'?window._osSpc(v):(v))+' clicks"></div>';
         }).join('');
         /* 2026-11-01 — Shawn: X-AXIS DATES. Every bar tells you WHEN. */
         var _x=$('os-sl-graph-x');
@@ -18435,7 +18574,7 @@ window.openSmartLinkList = function(){
   var t = window._dashLinkT || {c:0, j:0};
   window._smartlinkSingle = null;
   window._smartlinkListMode = true;
-  smartlinkViewOpen('ALL SMART LINKS', rows.length + ' links · ' + (t.c||0) + ' clicks · ' + (t.j||0) + ((t.j||0)===1 ? ' join' : ' joins'));
+  smartlinkViewOpen('ALL SMART LINKS', rows.length + ' links · ' + (typeof window._osSpc==='function'?window._osSpc((t.c||0)):((t.c||0))) + ' clicks · ' + (typeof window._osSpc==='function'?window._osSpc((t.j||0)):((t.j||0))) + ((t.j||0)===1 ? ' join' : ' joins'));
 };
 document.addEventListener('click', function(e){
   var d = e.target && e.target.closest ? e.target.closest('[data-sl-drill]') : null;
@@ -18445,7 +18584,7 @@ document.addEventListener('click', function(e){
   try{ (window._dashLinkRows || []).forEach(function(r){ if (r.name === _nm) _row = r; }); }catch(_){}
   window._smartlinkSingle = _row;
   var _dest = d.getAttribute('data-sl-drill-url') || '';
-  if (!_dest && _row) _dest = _row.url || ((_row.clicks || 0) + ' clicks · ' + (_row.joins || 0) + ((_row.joins || 0)===1 ? ' join' : ' joins') + ' · this link only');
+  if (!_dest && _row) _dest = _row.url || ((typeof window._osSpc==='function'?window._osSpc((_row.clicks || 0)):((_row.clicks || 0))) + ' clicks · ' + (typeof window._osSpc==='function'?window._osSpc((_row.joins || 0)):((_row.joins || 0))) + ((_row.joins || 0)===1 ? ' join' : ' joins') + ' · this link only');
   try{ smartlinkViewOpen('nayanet.app/' + _nm, _dest); }catch(_){}
 });
 function smartlinkViewOpen(brand, dest){
@@ -18748,7 +18887,7 @@ window._closeOpenDrill = function(){
 window._osOpenDrillDirect = function(key){
   if (key==='smartlink' && typeof smartlinkViewOpen==='function'){
     try{ var _sr=(window._dashLinkRows||[]).length, _st=window._dashLinkT||{c:0,j:0}; var _sj=Number(_st.j||0);
-      smartlinkViewOpen('ALL SMART LINKS', _sr+' links \u00b7 '+Number(_st.c||0)+' clicks \u00b7 '+_sj+(_sj===1?' join':' joins')); }catch(_eSL){}
+      smartlinkViewOpen('ALL SMART LINKS', _sr+' links \u00b7 '+(typeof window._osSpc==='function'?window._osSpc(Number(_st.c||0)):(Number(_st.c||0)))+' clicks \u00b7 '+(typeof window._osSpc==='function'?window._osSpc(_sj):(_sj))+(_sj===1?' join':' joins')); }catch(_eSL){}
     return true;
   }
   var _drill = {sales:salesViewOpen, invs:invitesViewOpen, saves:savesViewOpen, likes:likesViewOpen, posts:creationsViewOpen, shares:sharesViewOpen, comments:commentsViewOpen, notes:notesViewOpen, joins:joinsViewOpen}[key];
@@ -18768,7 +18907,7 @@ function ldOpenNode(key, noFocus){
     try{
       var _sr=(window._dashLinkRows||[]).length, _st=window._dashLinkT||{c:0,j:0};
       var _sj=Number(_st.j||0);
-      smartlinkViewOpen('ALL SMART LINKS', _sr+' links · '+Number(_st.c||0)+' clicks · '+_sj+(_sj===1?' join':' joins'));
+      smartlinkViewOpen('ALL SMART LINKS', _sr+' links · '+(typeof window._osSpc==='function'?window._osSpc(Number(_st.c||0)):(Number(_st.c||0)))+' clicks · '+(typeof window._osSpc==='function'?window._osSpc(_sj):(_sj))+(_sj===1?' join':' joins'));
     }catch(_eSL){}
     return;
   }
@@ -18840,7 +18979,7 @@ function slOpenLink(name){
   }
   var bars = vals.map(function(v){
     var h=Math.max(3, Math.round(v/mx*100));
-    return '<div class="os-dg-bar" style="height:'+h+'%;--nc:#d9a521" title="'+v+' clicks"></div>';
+    return '<div class="os-dg-bar" style="height:'+h+'%;--nc:#d9a521" title="'+(typeof window._osSpc==='function'?window._osSpc(v):(v))+' clicks"></div>';
   }).join('');
   /* best day */
   var best=0, bestK='';
@@ -20068,6 +20207,14 @@ window.ldLayoutNodes = ldLayoutNodes;
      drill arrives as a ready-made attribute string (drillAttr). */
   function _boardCell(value, numTxt, lab, unit, drillAttr){
     var v = (value == null || !isFinite(value)) ? 0 : Number(value);
+    /* GREETING-OUT FIX 2026-11-17 (§3.3b, the zero rule): a non-numeric numTxt
+       is an UNMEASURED state, never a number — it renders as a state cell, not
+       a gauge. No mount (a mount would draw a 0 dial for an unmeasured value),
+       no data-value, no 0 anywhere. The state reads once, in the number's
+       place, in the system's own state words ("Not counted yet"). */
+    if (!/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(String(numTxt).trim())) {
+      return '<div class="os-sl-gauge"><div class="os-sl-gauge-dial os-pricing-mini os-sl-state-cell" ' + drillAttr + ' tabindex="0" role="button" aria-label="' + lab + ' — deeper stats"><span class="os-sl-state-txt">' + _esc(String(numTxt)) + '</span></div><div class="os-sl-gauge-lab">' + lab + '</div></div>';
+    }
     return '<div class="os-sl-gauge"><div class="os-sl-gauge-dial os-pricing-mini" ' + drillAttr + ' tabindex="0" role="button" aria-label="' + lab + ' — deeper stats"><div class="tn-mini-mount" data-share="0" data-color="#ffbf3d" data-num="' + _esc(String(numTxt)) + '" data-value="' + v + '" data-unit="' + unit + '"></div></div><div class="os-sl-gauge-num">' + _esc(String(numTxt)) + '</div><div class="os-sl-gauge-lab">' + lab + '</div></div>';
   }
   function _boardCellsHTML(holder){
@@ -20104,7 +20251,8 @@ window.ldLayoutNodes = ldLayoutNodes;
     }
     var wt = _worldTotals();
     /* ROUND 2 (5): the world board leads with the world's total link clicks — the top-link label lives once, in the sales drill header. */
-    var _wViews = _boardCell(null, '0', 'Total views', 'count', 'data-node="sales"');
+    /* GREETING-OUT FIX 2026-11-17 (§3.3b, the zero rule): views are unmeasured — the ledger records clicks/joins, never page views — so the cell shows the state "Not counted yet", never a 0. The mock path below still shows a sample number (labelled MOCK). */
+    var _wViews = _boardCell(null, 'Not counted yet', 'Total views', 'count', 'data-node="sales"');
     if (window._osMock && typeof window._osMockFor === 'function'){ var _mw = window._osMockFor('dashboard', wt.totalClicks); _wViews = _boardCell(_mw.views, _fmt(_mw.views), 'Total views', 'count', 'data-node="sales"'); }
     var _wConv = (wt.totalClicks > 0) ? (wt.totalJoins/wt.totalClicks*100) : null;
     var _wConvTxt = (_wConv === null) ? '0' : _wConv.toFixed(1)+'%';
@@ -22855,14 +23003,15 @@ var USAGE_KEY = 'naya.smartbar.usage.v1';
    bottomBar: true = the network bar shows; false = their choice, it stays off. */
 function getSettings(){
   var s = storeGet(SETTINGS_KEY, null);
-  if (!s || typeof s.speed !== 'number') s = {speed: 1, bottomBar: true};
+  if (!s || typeof s.speed !== 'number') s = {speed: 1, bottomBar: true, dashBar: true};
   s.speed = Math.max(0, Math.min(2, s.speed));
   if (typeof s.bottomBar !== 'boolean') s.bottomBar = true;
+  if (typeof s.dashBar !== 'boolean') s.dashBar = true;
   return s;
 }
 function saveSettings(s){
-  storeSet(SETTINGS_KEY, {speed: s.speed, bottomBar: s.bottomBar});
-  try { document.dispatchEvent(new CustomEvent('smartbar-settings', {detail:{speed:s.speed, bottomBar:s.bottomBar}})); } catch(e){}
+  storeSet(SETTINGS_KEY, {speed: s.speed, bottomBar: s.bottomBar, dashBar: s.dashBar});
+  try { document.dispatchEvent(new CustomEvent('smartbar-settings', {detail:{speed:s.speed, bottomBar:s.bottomBar, dashBar:s.dashBar}})); } catch(e){}
 }
 function setSpeed(v){
   var s = getSettings();
@@ -22884,6 +23033,28 @@ function applyBottomBar(){
   if (b) b.style.display = on ? '' : 'none';
   document.documentElement.classList.toggle('nsb-nobottom', !on);
 }
+/* GREETING-OUT FIX 2026-11-17 (§3.5) — the Dashboard bar has its own
+   on/off, in the same store as the network bar (same Settings popover,
+   same corner control). dashBar: true = the Dashboard bar shows (default);
+   false = their choice, it stays off. The fold on scroll
+   (body.os-bottom-hidden) is separate — it hides the bar WHILE scrolling
+   and returns only at the very bottom (RETURN-AT-BOTTOM 2026-11-17); this
+   setting hides it until they turn it back on. */
+function setDashBar(on){
+  var s = getSettings();
+  s.dashBar = !!on;
+  saveSettings(s);
+  applyDashBar();
+  return s.dashBar;
+}
+function applyDashBar(){
+  var on = getSettings().dashBar;
+  var b = document.getElementById('os-bottom3');
+  if (b) b.style.display = on ? '' : 'none';
+  document.body.classList.toggle('os-bottom-off', !on);
+  if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(e){} }
+}
+
 function slug(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') || 'tab'; }
 /* usage: {seedId: {taps, last}} — the bar learns their logic, then they shape it */
 function getUsage(){ return storeGet(USAGE_KEY, {}) || {}; }
@@ -23053,8 +23224,9 @@ window.NayaSmartBar = {
     /* ONE set — one tab per section, period. Duplicated tabs are a defect
        (a tab is a promise). 2026-11-08: the row does NOT drift (Shawn's eye —
        the snap-back was the bounce/glitch); it sits still, scrolls by hand. */
-    var tabs = sections.length ? sections : [{label: app.name||'App', target:'#top'}];
+    var tabs = sections; /* 2026-11-17 - CLUSTER-ALIGN: no fallback pill - an empty sections list renders no tabs and the row hides. */
     function renderTopSet(){
+      tRow.style.display = tabs.length ? '' : 'none'; /* 2026-11-17 - CLUSTER-ALIGN: no pills, no row. */
       tRow.innerHTML = '';
       tabs.forEach(function(s, i){
         tRow.appendChild(pill({
@@ -23494,6 +23666,20 @@ window.NayaSmartBar = {
         say('bottom', on ? 'Network bar is back on.' : 'Network bar off — your choice. Turn it back on here any time.');
       });
       setPop.appendChild(tog);
+      /* Dashboard bar on/off (GREETING-OUT FIX 2026-11-17 §3.5) — the same
+         store as the network bar, the same corner control. */
+      var dh = document.createElement('h4'); dh.textContent = 'Dashboard bar'; dh.style.fontSize = '13px';
+      dh.style.margin = '14px 0 4px'; setPop.appendChild(dh);
+      var dtog = document.createElement('button'); dtog.type = 'button'; dtog.className = 'nsb-btn';
+      dtog.style.width = '100%';
+      function showDTog(){ dtog.textContent = getSettings().dashBar ? '✓ Dashboard bar is ON — tap to turn off' : 'Dashboard bar is OFF — tap to turn on'; }
+      showDTog();
+      dtog.addEventListener('click', function(){
+        var on = setDashBar(!getSettings().dashBar);
+        showDTog();
+        say('bottom', on ? 'Dashboard bar is back on.' : 'Dashboard bar off — your choice. Turn it back on here any time.');
+      });
+      setPop.appendChild(dtog);
     }
     document.body.appendChild(setPop);
     function closeSettings(){
@@ -23531,7 +23717,10 @@ window.NayaSmartBar = {
     NayaSmartBar.getSpeed = function(){ return getSettings().speed; };
     NayaSmartBar.setBottomBar = setBottomBar;
     NayaSmartBar.bottomBarOn = function(){ return getSettings().bottomBar; };
+    NayaSmartBar.setDashBar = setDashBar;
+    NayaSmartBar.dashBarOn = function(){ return getSettings().dashBar; };
     applyBottomBar(); /* their choice, honored from the first paint */
+    applyDashBar(); /* GREETING-OUT FIX §3.5 — the Dashboard bar's choice, honored from the first paint too */
     return {
       top: top, bottom: bottom,
       destroy: function(){ top.innerHTML=''; if (bottom) bottom.innerHTML=''; }
@@ -23544,20 +23733,11 @@ window.NayaSmartBar = {
 /* SMART BAR v1.0 config — Dashboard */
 NayaSmartBar.mount({
   app: { name: "Dashboard", honesty: "proven" },
-  sections: [
-    {label:"Home", target:"#home", icon:"\u2302", color:"#d9a521"},
-    {label:"Dashboard", target:"#dashboard", icon:"\u25c9", color:"#3fb8ff"},
-    {label:"About", target:"#about", icon:"\u25ce", color:"#2fe89e"},
-    {label:"Today", target:"#today", icon:"\u2726", color:"#ffbf3d"},
-    {label:"Smart Notes", target:"#notes", icon:"\u25c6", color:"#ff9a5a"},
-    {label:"Connections", target:"#people", icon:"\u25c8", color:"#ff5e6c"},
-    {label:"Message", target:"#message", icon:"\u25c7", color:"#ffbf3d"},
-    {label:"Inbox", target:"#inbox", icon:"\u25a0", color:"#d9a521"},
-    {label:"Growth", target:"#growth", icon:"\u25b2", color:"#3fb8ff"},
-    {label:"Lists", target:"#lists", icon:"\u2630", color:"#2fe89e"},
-    {label:"Reports", target:"#reports", icon:"\u2b22", color:"#ff9a5a"},
-    {label:"Settings", target:"#settings", icon:"\u2699", color:"#ff5e6c"}
-  ],
+  /* 2026-11-17 - CLUSTER-ALIGN: the sections pill row is GONE (Shawn 23:47Z) -
+     the Smart Tabs era is over; the sidebar drawer, bottom bar and search reach
+     every destination. sections stays empty so the mount renders no pills and
+     renderTopSet hides the row. */
+  sections: [],
   network: [
     {label:"Home", url:"https://nayanet.app/", icon:"\u2302"},
     /* 2026-11-01 — Shawn: the Dashboard tab is gone from the bottom bar.
@@ -26604,22 +26784,32 @@ window._repaintOrbMinis = function(box){
   /* --- HERO FIX 2026-11-09 (a)(b): the folding bars. The top bar is hidden
      while the scroll position is inside the hero (os-hero-top — the tabs are
      gone from the hero) and folds while scrolling below it, returning on stop /
-     at the ends / on tap. FIX-4 2026-11-17: the bottom bar is VISIBLE
-     EVERYWHERE — at load and ~1s after scroll stops, at any scroll position
-     (the page-icon-bar law: it fades while scrolling, returns slowly after
-     stop, never jumping back quick). The old law (bottom only, never on
-     scroll-stop) hid it from every reader not at the page bottom. os-nav-hidden
-     still folds the legacy #nayanet-nav / .ph-bottom in parallel. --- */
+     at the ends / on tap. RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z,
+     confirmed law — supersedes FIX-4 2026-11-17): the bottom bar is visible
+     at load (before the page has ever been scrolled down) and returns ONLY
+     at the very bottom — never when scrolling stops. The _barT ~1s return
+     is removed. The old FIX-4 law (return ~1s after scroll stops, at any
+     scroll position) is gone. os-nav-hidden still folds the legacy
+     #nayanet-nav / .ph-bottom in parallel. --- */
   var _navT = null;
-  var _barT = null; /* FIX-4 2026-11-17: owns the bottom bar's return. */
+  /* RETURN-AT-BOTTOM 2026-11-17: no _barT. The bottom bar has no timed
+     return any more — once the page has been scrolled down, only the very
+     bottom brings it back. _osBarEverScrolled stays false until the first
+     scroll event below the top, so the bar is visible at load. */
+  var _osBarEverScrolled = false;
   function _osAtPageBottom(){ try{ return (window.scrollY||0) + window.innerHeight >= (document.documentElement.scrollHeight||0) - 2; }catch(e){ return false; } }
   function _osHeroBottom(){ try{ var g = document.querySelector('.os-block-gauge'); if (!g) return 0; return g.getBoundingClientRect().bottom + (window.scrollY||0); }catch(e){ return 0; } }
   function onScroll(){
     var y = window.scrollY || 0;
+    if (y > 0) _osBarEverScrolled = true;
     document.body.classList.toggle('os-hero-top', y < _osHeroBottom());
     document.body.classList.add('os-nav-hidden');
     document.body.classList.add('os-top-hidden');
-    document.body.classList.add('os-bottom-hidden');
+    /* RETURN-AT-BOTTOM 2026-11-17: the fold is decided here, every scroll
+       event — hidden once scrolled down, back ONLY at the very bottom
+       (or before the page has ever been scrolled down, i.e. at load). */
+    if (_osAtPageBottom() || !_osBarEverScrolled) document.body.classList.remove('os-bottom-hidden');
+    else document.body.classList.add('os-bottom-hidden');
     if (_navT) clearTimeout(_navT);
     _navT = setTimeout(function(){
       document.body.classList.remove('os-nav-hidden');
@@ -26634,31 +26824,28 @@ window._repaintOrbMinis = function(box){
          must not re-snap on every scroll-stop) is the robust form. */
       try{ fitHero(); }catch(_br3){}
     }, 150);
-    /* FIX-4 2026-11-17: the bottom bar returns ~1s after scroll stops, at ANY
-       scroll position — not only at the page bottom. The 150ms timer above
-       still returns the top bar fast; the bottom bar returns slowly (the
-       page-icon-bar law), and its return re-fits the hero so barH measures
-       true once the slide finishes. */
-    if (_barT) clearTimeout(_barT);
-    _barT = setTimeout(function(){
-      document.body.classList.remove('os-bottom-hidden');
-      try{ fitHero(); }catch(_br4){}
-    }, 1000);
-    if (_osAtPageBottom()) document.body.classList.remove('os-bottom-hidden');
+    /* RETURN-AT-BOTTOM 2026-11-17: no timed return any more. The 150ms
+       timer above still returns the top bar fast and re-fits the hero on
+       scroll stop; the transitionend listener below re-fits it when the
+       bar finishes sliding — so barH still measures true. The bottom bar
+       itself comes back only at the very bottom, decided at the top of
+       onScroll on every scroll event. */
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   /* PASS-8 2026-11-10 — a tap inside the hero must NOT show the bottom bar.
      The old handler showed it on ANY button tap, including the mode toggle:
      the bar slid up over the hero's own note + toggle, so the next tap aimed
      at the toggle hit the bar's middle button instead — and that button opens
-     the feed, which is the ~150px scroll-jump the eye-check caught. The bar
-     still shows on a tap once the page is scrolled past the hero (and at the
-     page bottom, as before); the re-fit applies the bar-height subtraction. */
+     the feed, which is the ~150px scroll-jump the eye-check caught.
+     RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law): a tap
+     no longer recalls the bar either — it returns ONLY at the very bottom.
+     The handler keeps its hero guard and its re-fit; the bar-show line is
+     removed. The corner control + Settings toggle still govern the bar's
+     on/off setting. */
   document.addEventListener('click', function(e){
     var b = e.target && e.target.closest ? e.target.closest('button, a') : null;
     if (!b) return;
     if (document.body.classList.contains('os-hero-top')) return;
-    document.body.classList.remove('os-bottom-hidden');
     try{ refit(); }catch(_br2){}
   });
   /* PASS-8 2026-11-10 (round 4): re-fit the hero when the bottom bar finishes
@@ -26679,7 +26866,7 @@ window._repaintOrbMinis = function(box){
     if (e.propertyName && e.propertyName !== 'transform') return;
     try{ fitHero(); }catch(_te){}
   });
-  try{ onScroll(); }catch(e){} /* init: both bars start hidden at scroll 0 */
+  try{ onScroll(); }catch(e){} /* init: the top bar starts hidden in the hero; the bottom bar starts VISIBLE at scroll 0 (RETURN-AT-BOTTOM: visible at load, before any scroll down). */
   /* --- fit wiring --- */
   function refit(){ var el = numEl(); if (el && el.querySelector('.reel')) fitNumber(el); fitHero();
     /* FIXROUND PASS-4 (D2): a resize across the 768px breakpoint changes the
@@ -28748,8 +28935,44 @@ body.os-tabs-on #os-dash{ padding-top:96px; }
 @media (max-width:700px){
   body.os-tabs-on #os-dash{ padding-top:50px; }
 }
-/* (b) FIX-4 2026-11-17: the bottom bar is visible at load and returns ~1s
-   after scroll stops, at any scroll position — never bottom-only. */
+/* GREETING-OUT FIX 2026-11-17 (§3.2a) — the top section tablist, whole at
+   635px. The 12 tabs (~961px) cannot fit a 635px row in one line, so at
+   <=768px the row WRAPS (flex-wrap) instead of scrolling off the right
+   edge: every tab whole, nothing cut off. The tabs stretch to fill each
+   row (flex:1 1 auto) so no row ends half-empty. The fade mask goes — with
+   no horizontal scroll there is nothing to fade. The wrap is inert where
+   the row is display:none (<=700px, tabs off).
+   The bar grows by one row per wrap: a tab is 36px at <=700px (min-height,
+   border-box) + 6px gap = 42px per extra row; 44px + 8px gap = 52px at
+   701-768px. Worst case 3 rows (2 extra): +84px at <=700px, +104px at
+   701-768px. The search level sits below the taller bar (margin =
+   single-row bar + extra rows + 4px gap). The search's push clears the
+   hero, so #os-dash padding-top returns to its 16px default when tabs are
+   on. At 635px the wrap is certainly 2 rows (2 x 551px lane > ~961px of
+   tabs), so the search sits up to ~42px below the bar there — the honest
+   cost of worst-case clearance, named for the eye. */
+@media (max-width:768px){
+  #nsbTop .nsb-row{flex-wrap:wrap;overflow-x:visible;overflow-y:visible;
+    -webkit-mask-image:none;mask-image:none;}
+  #nsbTop .nsb-tab{flex:1 1 auto;min-width:0;}
+  /* #smarttabs is the same tab set under its own id (CSS/JS only) — the
+     same wrap, with !important to beat its nowrap !importants. */
+  #smarttabs.nf-tabs-row{flex-wrap:wrap !important;overflow-x:visible !important;overflow-y:visible !important;}
+  #smarttabs .nf-smtab{flex:1 1 auto !important;min-width:0 !important;}
+  /* The taller bar: the search level sits below it. Single-row bar 86px at
+     <=700px (documented), 104px at 701-768px (documented desktop). Worst
+     case 3 rows: 86+84+4=174px; 104+104+4=212px. */
+  body.os-tabs-on #nsbSearchLevel{margin-top:174px !important;}
+  /* The search's push clears the hero, so the tabs-on hero padding returns
+     to its 16px default (the hero-clip fix's 50px was the clearance when
+     the search sat under the bar). */
+  body.os-tabs-on #os-dash{padding-top:16px;}
+}
+@media (min-width:701px) and (max-width:768px){
+  body.os-tabs-on #nsbSearchLevel{margin-top:212px !important;}
+}
+
+/* (b) RETURN-AT-BOTTOM 2026-11-17 (Shawn heart 20:50Z, confirmed law — supersedes FIX-4): the bottom bar is visible at load and returns ONLY at the very bottom — never when scrolling stops. */
 body.os-bottom-hidden #os-bottom3{ transform:translateY(110%) !important; opacity:0 !important; }
 /* (o) The points strip is out of the top. The data is not deleted — the same
    math lives in the derivation detail below. */
@@ -28944,22 +29167,28 @@ body.viewport-focus #viewport-back{
   }
 }
 </style>
-<!-- FIX-3 2026-11-17 — THE FIVE TILES (Shawn 03:05Z): the Personal bottom
-     bar's five tiles ride here — + ADD · MAIL · ACTIVITY · WORLDS ·
-     ECOSYSTEM — so the way you move around your world is the same on every
+<!-- FIX-3 2026-11-17 — THE SIX TILES (Shawn 03:05Z; GREETING-OUT 2026-11-17 adds CONNECT): the Personal bottom
+     bar's six tiles ride here — + ADD · MAIL · ACTIVITY · WORLDS ·
+     ECOSYSTEM · CONNECT — so the way you move around your world is the same on every
      page. ONE bar: the Dashboard's own #os-bottom3 shell (fixed bottom,
      os-bottom-hidden show/hide, drill-view hiding) carries Personal's
      tiles; the old three-button bar (mail / activity / gold home) retires.
-     The badge is the live feed count, never a hard-coded number. Deep
+     BAR-DEPTH 2026-11-17: the tiles wear the pictures' look now — dark
+     middle, white icon, colour in rim + glow (the white middle is out); the
+     badge is the live feed count, never a hard-coded number, seated inside
+     the ACTIVITY tile. Deep
      Palette: ADD purple #8e24aa · MAIL blue #0f52ba · ACTIVITY green
-     #07925f · WORLDS gold #d4a017 · ECOSYSTEM burnt orange #c2410c. -->
-<nav id="os-bottom3" class="os-bottom3 notif-five" aria-label="Dashboard">
-  <button type="button" class="notif-seg" data-b3="add" style="--nc:#8e24aa" aria-label="Add" title="Add"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button>
-  <button type="button" class="notif-seg" data-b3="mail" style="--nc:#0f52ba" aria-label="Smart Mail" title="Smart Mail"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span></button>
+     #07925f · WORLDS gold #d4a017 · ECOSYSTEM burnt orange #c2410c · CONNECT ruby #c62828. -->
+<nav id="os-bottom3" class="os-bottom3 notif-six" aria-label="Dashboard">
+  <button type="button" class="notif-seg" data-b3="add" style="--nc:#8e24aa" aria-label="Add" title="Add"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="os-b3-dot" data-b3-dot="add" aria-hidden="true"></span></span></button>
+  <button type="button" class="notif-seg" data-b3="mail" style="--nc:#0f52ba" aria-label="Smart Mail" title="Smart Mail"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="os-b3-dot" data-b3-dot="mail" aria-hidden="true"></span></span></button>
   <button type="button" class="notif-seg" data-b3="activity" style="--nc:#07925f" aria-label="Activity" title="Activity"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="os-b3-badge" id="os-b3-badge" hidden></span></span></button>
-  <button type="button" class="notif-seg" data-b3="worlds" style="--nc:#d4a017" aria-label="Worlds" title="Worlds"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span></button>
-  <button type="button" class="notif-seg" data-b3="eco" style="--nc:#c2410c" aria-label="Ecosystem" title="Ecosystem"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span></button>
+  <button type="button" class="notif-seg" data-b3="worlds" style="--nc:#d4a017" aria-label="Worlds" title="Worlds"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg><span class="os-b3-dot" data-b3-dot="worlds" aria-hidden="true"></span></span></button>
+  <button type="button" class="notif-seg" data-b3="eco" style="--nc:#c2410c" aria-label="Ecosystem" title="Ecosystem"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="os-b3-dot" data-b3-dot="eco" aria-hidden="true"></span></span></button>
+  <button type="button" class="notif-seg" data-b3="connect" style="--nc:#c62828" aria-label="Connect" title="Connect"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="os-b3-dot" data-b3-dot="connect" aria-hidden="true"></span></span></button>
 </nav>
+<!-- GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control for the Dashboard bar (the page-icon-bar law: a small corner control can hide it; Settings can turn it off; by default it sits there). A real object, not flat: obsidian, white rim, top light. The down chevron folds the bar down; the up chevron brings it back. -->
+<button type="button" id="os-b3-hide" aria-label="Hide the Dashboard bar" title="Hide the Dashboard bar">▾</button>
 <script>
 /* FIX 5 — FIX 5 + FIX 7 init. Runs at end of body; DOM is ready. */
 (function(){
@@ -28968,9 +29197,80 @@ body.viewport-focus #viewport-back{
     var n = feedCount();
     var nb = document.getElementById('os-notif-count');
     if (nb){ if (n > 0){ nb.textContent = String(n); nb.hidden = false; } else { nb.hidden = true; } }
+    if (typeof window._osSyncB3News === 'function') { try { window._osSyncB3News(); } catch(e){} }
     var ab = document.getElementById('os-b3-badge');
-    if (ab){ if (n > 0){ ab.textContent = n > 99 ? '99+' : String(n); ab.hidden = false; } else { ab.hidden = true; } }
+    if (ab){ if (n > 0){ ab.textContent = n > 99 ? '99+' : String(n); ab.classList.toggle('os-b3-long', ab.textContent.length >= 3); ab.hidden = false; } else { ab.hidden = true; } }
   }
+  /* GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control + the Dashboard
+     bar setting. The control and the Settings toggle share one setting
+     (dashBar, in the Smart Bar store): off = their choice, the bar stays
+     off until they turn it back on (here or in Settings). The fold on
+     scroll (body.os-bottom-hidden) is separate and untouched. */
+  window._osSyncB3Hide = function(){
+    var c = document.getElementById('os-b3-hide');
+    if (!c) return;
+    var on = true;
+    try { on = (window.NayaSmartBar && typeof window.NayaSmartBar.dashBarOn === 'function') ? window.NayaSmartBar.dashBarOn() : !document.body.classList.contains('os-bottom-off'); } catch(e){}
+    c.textContent = on ? '\u25be' : '\u25b4';
+    c.setAttribute('aria-label', on ? 'Hide the Dashboard bar' : 'Show the Dashboard bar');
+    c.setAttribute('title', on ? 'Hide the Dashboard bar' : 'Show the Dashboard bar');
+  };
+  var _b3hide = document.getElementById('os-b3-hide');
+  if (_b3hide) _b3hide.addEventListener('click', function(){
+    var on = true;
+    try {
+      if (window.NayaSmartBar && typeof window.NayaSmartBar.setDashBar === 'function' && typeof window.NayaSmartBar.dashBarOn === 'function') {
+        on = window.NayaSmartBar.setDashBar(!window.NayaSmartBar.dashBarOn());
+      } else { throw new Error('no store'); }
+    } catch(e){
+      /* Fallback (store unavailable): the same toggle, locally. */
+      on = document.body.classList.contains('os-bottom-off');
+      document.body.classList.toggle('os-bottom-off', !on);
+      var b = document.getElementById('os-bottom3');
+      if (b) b.style.display = on ? '' : 'none';
+    }
+    window._osSyncB3Hide();
+  });
+  try { if (window.NayaSmartBar && typeof window.NayaSmartBar.dashBarOn === 'function') { var _db0 = window.NayaSmartBar.dashBarOn(); var _b0 = document.getElementById('os-bottom3'); if (_b0) _b0.style.display = _db0 ? '' : 'none'; document.body.classList.toggle('os-bottom-off', !_db0); } } catch(e){}
+  window._osSyncB3Hide();
+
+  /* GREETING-OUT FIX 2026-11-17 (§3.6/§3.7) — the notification, bright, for
+     each tile (Personal's has-news, harvested). Only ACTIVITY has a live
+     count on this page (the feed count, the badge's source); the other five
+     tiles have no live notification source here, so they stay unlit — never
+     invented. A future source sets window._osB3Counts[k] and calls
+     window._osSyncB3News(). The lit notification is the path into the day
+     view (the captain's reading, brief §2 — never Shawn's word): the badge
+     (ACTIVITY) and any lit dot open the day view for today; the tile's own
+     tap keeps its own destination. The day view is the file's own Hub Today
+     route — NOT rooms/today, which is the Intel Today digest Shawn removed
+     from the day view. */
+  window._osB3Counts = window._osB3Counts || {};
+  window._osSyncB3News = function(){
+    var c = {activity: feedCount()};
+    ['add','mail','worlds','eco','connect'].forEach(function(k){
+      var v = window._osB3Counts[k];
+      c[k] = (typeof v === 'number' && v > 0) ? v : 0;
+    });
+    document.querySelectorAll('#os-bottom3 [data-b3]').forEach(function(seg){
+      var k = seg.getAttribute('data-b3');
+      seg.classList.toggle('has-news', (c[k] || 0) > 0);
+    });
+  };
+  var _b3badge = document.getElementById('os-b3-badge');
+  if (_b3badge) _b3badge.addEventListener('click', function(e){
+    if (e && e.stopPropagation) e.stopPropagation();
+    window.location.href = 'https://nayanet.app/#/hub/today';
+  });
+  document.querySelectorAll('#os-bottom3 .os-b3-dot').forEach(function(dot){
+    dot.addEventListener('click', function(e){
+      var seg = dot.closest ? dot.closest('[data-b3]') : null;
+      if (!seg || !seg.classList.contains('has-news')) return;
+      if (e && e.stopPropagation) e.stopPropagation();
+      window.location.href = 'https://nayanet.app/#/hub/today';
+    });
+  });
+  window._osSyncB3News();
   function openFeed(){ try{ if (typeof window._osRenderFeed === 'function') window._osRenderFeed(); }catch(e){} document.body.classList.add('os-feed-open'); syncBadges(); }
   function closeFeed(){ document.body.classList.remove('os-feed-open'); }
   window._osOpenFeed = openFeed; window._osCloseFeed = closeFeed;
@@ -29020,6 +29320,15 @@ body.viewport-focus #viewport-back{
      The synthetic click on #os-eco-plus already stopPropagation()s itself. */
   var eco = document.querySelector('[data-b3="eco"]');
   if (eco) eco.addEventListener('click', function(e){ if(e && e.stopPropagation) e.stopPropagation(); var b=document.getElementById('os-eco-plus'); if (b) b.click(); });
+  /* GREETING-OUT 2026-11-17 — the sixth tile, CONNECT, harvested from
+     Personal's bar (plus-connect, ruby #c62828, the same + glyph as ADD).
+     Personal opens its plus menu in 'connect' mode (fcTogglePlusMenu),
+     which does not exist on the Dashboard — so this tile follows the
+     Dashboard's own connect destination, the page's own "Start Here"
+     connect link (https://nayanet.app/#/hub/connect), in the same
+     location.href shape as the mail and worlds tiles. Never a dead tile. */
+  var connect = document.querySelector('[data-b3="connect"]');
+  if (connect) connect.addEventListener('click', function(){ window.location.href='https://nayanet.app/#/hub/connect'; });
   /* the badges follow the live feed render — a MutationObserver on the list,
      so any render path updates them (no wrapping of the feed renderer). */
   try{
@@ -29115,7 +29424,7 @@ body.viewport-focus #viewport-back{
    (≤480px) already reach the last row — their tall rows need no trailing
    space, so the rule stays off there. */
 @media (min-width:481px){
-  .os-smartlink-list{padding-bottom:calc(66vh - 200px);}
+  .os-smartlink-list{padding-bottom:max(110px,calc(66vh - 200px));}
 }
 /* FIXROUND2 PASS-4 (D4-R1, 2026-11-09): REGRESSION from the D4 snap above,
    phone widths only. At ≤480px each row (829px) is TALLER than the list
@@ -29347,10 +29656,11 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 .os-skel-msg{ color:#fff !important; font-size:26px !important; }
 .tn-tacho-lapline{ color:#fff !important; font-size:24px !important; text-shadow:0 1px 3px rgba(0,0,0,.9), 0 0 8px rgba(0,0,0,.8) !important; }
 
-/* (1) The one computed-gray hit on the live page: the bottom-bar badge
-   carried near-black text (#04120a) on green. White text on dark keeps the
-   green identity and passes a white-text sweep at every width. */
-.os-b3-badge{ background:#04120a !important; color:#fff !important; border:2px solid #2fe89e !important; box-shadow:0 0 12px rgba(47,232,158,.8) !important; }
+/* (1) BAR-DEPTH 2026-11-17 — the bottom-bar badge is a digit tile set INTO
+   the ACTIVITY tile (obsidian, rim in the tile's own deep emerald, white
+   digit), never a bubble off the corner. This override keeps the seat and
+   the white digit; the deep emerald replaces the old bright value. */
+.os-b3-badge{ background:#050607 !important; color:#fff !important; border:1.5px solid var(--nc) !important; box-shadow:0 0 10px color-mix(in srgb, var(--nc) 60%, transparent) !important; }
 
 /* (1) Safety net — the faint-text classes that can render as gray: full
    white, everywhere. Placeholders stay readable at .92, never gray. */
@@ -29772,57 +30082,6 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 }
 </style>
 <style>
-/* ================= DASHBOARD DONE-DONE 2026-11-17 — THE HERO =================
-   The greeting band: Good morning + Wisdom of the Day + time/date + Ledger
-   sync line. The board is the Smart Note board (board black inside, white
-   as a real object, rim in its own color — royal purple #8e24aa, joins/primary (Deep Palette) —
-   one top-left light at 135deg). ALIVE: the whole board lifts and lights up
-   on hover; dead on hover is a defect. The orb carries the orbit (two
-   rings, 120s CW / 180s CCW — ambient, alternating, never frantic).
-   No gray text anywhere — white, or the deep hues (deep gold kicker,
-   deep emerald date, deep gold time). The quote is 28px — double the 14px body font —
-   in quotation marks. Greeting, kicker, date/time colors are the Deep Palette deep
-   values (the Hub hero's bright values are superseded by his word, 2026-11-17 01:30Z); the quote size is the brief's "double font".
-   PEDESTAL (2026-11-17 01:41Z, Design Language §2/§5/§6 + Real Object Law):
-   every object in this band is a real object, never flat — board and orb
-   measured against the Smart Note board (§3 #2) and the top-left + (§3 #1);
-   inside is board black with black depth only, NO white inset top-light
-   (§6: out inside icons and buttons — the base's 315 occurrences predate
-   the law, this band follows the law); the white lives in the middle as a
-   real object with a tight edge light, never a wash; light lives outside
-   only (rim, halo, shadow down-right, one top-left source at 135deg); the
-   live dot is a bead, lit top-left, halo in deep emerald. No inputs and no
-   nested buttons exist in this band — checked, not applicable. The orbit
-   rings are flow (Naya Code §8), not objects. */
-.os-dd-hero{position:relative;display:flex;gap:24px;align-items:flex-start;margin:16px 16px 24px;padding:24px;border-radius:20px;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:1.5px solid #8e24aa;box-shadow:inset 0 -2px 4px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.5);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
-.os-dd-hero:hover{transform:translateY(-2px);border-color:#8e24aa;box-shadow:inset 0 -2px 4px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.6),0 0 32px rgba(142,36,170,.55);}
-.os-dd-hero:active{transform:scale(.97);}
-.os-dd-orb{position:relative;flex:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:1.5px solid #8e24aa;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.55),0 0 20px -2px rgba(142,36,170,.6);display:grid;place-items:center;}
-.os-dd-core{font-size:28px;font-weight:900;color:#fff;text-shadow:0 0 2px rgba(255,255,255,.9),0 1px 2px rgba(0,0,0,.8);}
-.os-dd-ring{position:absolute;border-radius:50%;border:1.5px solid transparent;pointer-events:none;}
-.os-dd-r1{inset:-10px;border-top-color:#8e24aa;border-right-color:rgba(142,36,170,.35);animation:os-dd-spin 120s linear infinite;}
-.os-dd-r2{inset:-20px;border-top-color:rgba(142,36,170,.6);border-left-color:rgba(142,36,170,.25);animation:os-dd-spin-rev 180s linear infinite;}
-@keyframes os-dd-spin{to{transform:rotate(360deg);}}
-@keyframes os-dd-spin-rev{to{transform:rotate(-360deg);}}
-.os-dd-main{flex:1;min-width:0;}
-.os-dd-greet{margin:0 0 8px;font-size:28px;line-height:1.15;font-weight:900;color:#fff;}
-.os-dd-wisdom{margin:4px 0 0;}
-.os-dd-wk{font-size:11px;letter-spacing:.24em;font-weight:800;color:#d4a017;text-transform:uppercase;}
-.os-dd-quote{margin:6px 0 4px;font-size:28px;line-height:1.4;font-weight:600;color:#fff;}
-.os-dd-src{font-size:13px;color:#fff;font-weight:600;opacity:1;} /* FIX-5 2026-11-17: 13px/400 read gray — weight 600 + opacity 1. */
-.os-dd-date{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 0;font-size:16px;color:#fff;}
-.os-dd-dot{width:10px;height:10px;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),rgba(255,255,255,0) 60%),#07925f;box-shadow:0 2px 4px rgba(0,0,0,.5),0 0 12px rgba(7,146,95,.8);animation:os-dd-breathe 4s ease-in-out infinite alternate;}
-@keyframes os-dd-breathe{from{opacity:.6;}to{opacity:1;}}
-.os-dd-time{color:#d4a017;font-variant-numeric:tabular-nums;text-shadow:0 0 18px rgba(212,160,23,.45);}
-.os-dd-date-str{color:#07925f;}
-.os-dd-ledger{margin:8px 0 0;font-size:13px;color:#fff;font-weight:600;opacity:1;} /* FIX-5 2026-11-17: 13px/400 read gray — weight 600 + opacity 1. */
-@media (max-width:900px){
-  .os-dd-hero{margin:12px 12px 16px;padding:16px;gap:16px;}
-  .os-dd-orb{width:48px;height:48px;}
-  .os-dd-core{font-size:20px;}
-  .os-dd-r1{inset:-7px;}
-  .os-dd-r2{inset:-13px;}
-}
 
 /* FIX-2 2026-11-17 (item 5) — "See every link" clickable at every scroll position.
    The fixed bottom bar (.ph-bottom, fixed bottom, z-index 200) can cover the
@@ -29833,197 +30092,15 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
    both bars. No color, no paint change. */
 [data-sl-summary-open]{scroll-margin-top:96px;scroll-margin-bottom:120px;}
 </style>
-<script>
-/* ================= DASHBOARD DONE-DONE 2026-11-17 — THE HERO =================
-   Greeting + Wisdom of the Day + time/date + Ledger sync line.
-   WISDOM — the pick logic is harvested from the Hub fix (2026-11-16,
-   SN-3014): today's Smart Note of the Day from the feed's own Smart Notes;
-   no note today, the newest earlier note carries forward, named with its
-   day; no notes at all -> no wisdom block renders — never an invented
-   quote. (Translated to this file's ES5 style; same branches, same caps,
-   same strings.) Source: the live Smart Note registry (/feed-live.json,
-   the same fetch the Hub uses) with the baked snapshot below as the
-   photograph when the fetch cannot run (proof host / offline). The bake is
-   trimmed to the fields the picker reads (title / subtitle / created).
-   NAME — the Hub's identity handoff (?name=, then this device's memory) —
-   never a hardcoded name. No name known -> greeting without a name (the
-   Hub precedent: environmental, not a defect). The R.identitySnapshot
-   branch is guarded by typeof because this page has no Hub runtime R.
-   LEDGER LINE — reads the page's own spine state (window._osSpine) and
-   funnel totals (window._dashFunnel: found / boardClicks / joined) — the
-   same numbers the stats flow from. Points only, always ("score 350 pts");
-   money appears nowhere here — the money law: money only on joins, and
-   the joins orb is the only $ carrier (r6-fixpass, 213 samples). */
-(function(){
-  var DD_BAKE = [{"title": "The Deed, the List, and the Way Around", "subtitle": "Shawn, 2026-11-16 19:44Z\u201320:51Z, seven notes: the sidebar list becomes official, the name box becomes a deed, and the night's failures become a law. **THE LIST (SN-3017 + SN-3018 + SN-3019 + SN-3021):** his corrections make the list. The reasoned proposal did its job: he corrected it \u2014 Pricing is Naya Power, so Pricing (Naya Pricing) belongs on the RIGHT, in the lower bottom, closer to the bottom ", "created": "2026-11-16T22:05:00Z"}, {"title": "One Eye, One System, On Fire", "subtitle": "Shawn, 2026-11-16 19:03Z\u201319:38Z, ten notes: the team at full fire, the eye done once, and the navigation decided once for the whole system. **THE TEAM (SN-3007 + SN-3011):** fine-tune the team \u2014 on fire 24-7, non-stop. \"Like, I want you to fine tune your team where they're on fire 24-7, non-stop. Full armies out there getting it done because you got this set up right. And it's at a perfect flow. Y", "created": "2026-11-16T22:00:00Z"}, {"title": "The Tap Is the Switch", "subtitle": "Shawn, 2026-11-16 18:47Z\u201319:02Z, ten notes from the live walk: the scorecard, the ship-gate, and the sidebar and bottom bar made to actually work. **THE SCORECARD (SN-2997):** scorecarding \u2014 the ultimate answer first. \"What you're really doing is like you're scorecarding. Figuring out what's the ultimate answer. What are you ultimately trying to do and then optimizing for that.\" Every job, round, ", "created": "2026-11-16T21:55:00Z"}, {"title": "Earn It, Don't Declare It", "subtitle": "Shawn, 2026-11-16 17:54Z\u201318:47Z, ten notes on the legal pages, the entrance, and how the machine behaves. **THE PRESENTATION (SN-2987 + SN-2989):** legal pages present as the unfolding \u2014 he makes the words perfect, Naya outputs them properly, one elevated board unfolding to the next, all the way through, for ALL legal pages; refined 17:59Z to the rhythm: three elevated boards at a time, then a but", "created": "2026-11-16T21:50:00Z"}, {"title": "Do It Right, Every Layer Great", "subtitle": "Shawn, 2026-11-16 16:55Z\u201317:53Z, ten notes on the professional standard. **THE PROMISE (SN-2977):** one page changes the world \u2014 everybody's world, on their smartphone, all their data in one place that's secure; mail, schedule, post, all operations, automated if they wish, open if they want in. The measure: land on a NayaNET page vs an average social feed \u2014 a whole different world. **THE CENTER + ", "created": "2026-11-16T21:44:00Z"}, {"title": "Right First Time, Right Away", "subtitle": "Shawn, 2026-11-16 16:01Z\u201316:50Z, ten notes on the day's work, in order. **THE COMPOSER (SN-2967):** make a post, beautiful \u2014 is it 10 out of 10? The post itself must be the most beautiful post in the network: feed chooser at the top, each post type explained in plain words, words with speak, up to nine photos as a block with the size stated plainly, preview as you type, scheduler, private/public w", "created": "2026-11-16T21:42:00Z"}, {"title": "The Page Is a Smart App", "subtitle": "Shawn, 2026-11-16 ~16:0x\u201316:2xZ, the anatomy of the smart app in ten notes. **THE MAP (SN-2960):** the page is a smart app \u2014 Personal, Business, Space, Thing, one machine, different faces, a Rubik's Cube matrix. What it has: stats, memberships, the running feed with comment and like. The anatomy answers what it has, how it functions, what works, what will be where, and why. v2 is a DRAFT for his w", "created": "2026-11-16T21:39:00Z"}, {"title": "Personal, Just Right, Done Today", "subtitle": "Shawn, 2026-11-16 15:29Z\u201316:01Z, ten notes on finishing the Personal page. **THE STANDARD (SN-2947):** the eight top buttons must be just right \u2014 perfect fit, edge to edge, no black space either side; \"slightly smaller so they fit\" (22:03Z) is superseded, it made them too small. CONNECT always green, the % white and alive like real digital output, greens toned down a notch \u2014 elegance, not rainbow ", "created": "2026-11-16T21:36:00Z"}];
-  var DD_BAKE_REF = 'registry@37c542f6f1525de29ed31e04ce7d06f01112065ad4fd48ccb17bc70d3e6f7ea7';
-  /* FIX-4 2026-11-17: strip markdown markers from the quote source — the
-     baked/live subtitles carry raw **bold** markers, which rendered literally
-     ("**THE LIST (SN-3017 + SN-30…"). Clean title, subtitle and layer 0
-     the same way before joining; collapse whitespace. */
-  function ddClean(v){
-    return String(v||'').replace(/\*+/g,'').replace(/__+/g,'').replace(/`+/g,'').replace(/\s+/g,' ').trim();
-  }
-  /* FIX-5 2026-11-17: the last sentence end (. ! ?) at or before LIM, past
-     MIN — a real sentence boundary (next char a space), never inside an
-     abbreviation (e.g. i.e. Mr. Dr. vs. etc.). -1 when there is none, so the
-     caller shows the FULL text instead of cutting mid-sentence. */
-  function ddSentenceEnd(t, lim, min){
-    var abbr=['e.g.','i.e.','Mr.','Ms.','Mrs.','Dr.','vs.','etc.'];
-    var end=-1;
-    for(var k=0;k<t.length && k<=lim;k++){
-      var ch=t[k];
-      if((ch==='.'||ch==='!'||ch==='?') && k>min && (k+1>=t.length || t[k+1]===' ')){
-        var isAb=false;
-        for(var a=0;a<abbr.length;a++){ var ab=abbr[a]; if(k+1>=ab.length && t.slice(k+1-ab.length,k+1)===ab){ isAb=true; break; } }
-        if(!isAb) end=k;
-      }
-    }
-    return end;
-  }
-  function ddPickWisdom(notes){
-    try{
-      var list=[], i, n;
-      for(i=0;i<(notes||[]).length;i++){ n=notes[i]; if(n && (n.title || n.subtitle)) list.push(n); }
-      if(!list.length) return null;
-      var dayKey=function(d){ var t=Date.parse(d||''); if(isNaN(t)) return ''; var x=new Date(t); return x.getFullYear()+'-'+(x.getMonth()+1)+'-'+x.getDate(); };
-      var today=dayKey(new Date().toISOString());
-      var dated=[];
-      for(i=0;i<list.length;i++){ var t=Date.parse(list[i].created_at || list[i].created || ''); if(!isNaN(t)) dated.push({n:list[i], t:t}); }
-      dated.sort(function(a,b){ return b.t-a.t; });
-      var todays=[];
-      for(i=0;i<dated.length;i++){ if(dayKey(dated[i].n.created_at || dated[i].n.created)===today) todays.push(dated[i]); }
-      var pick=todays[0] || dated[0];
-      if(!pick) return null;
-      var nn=pick.n;
-      var title=ddClean(nn.title);
-      var sub=ddClean(nn.subtitle);
-      var layer0=(nn.layers && nn.layers[0] && nn.layers[0].body) ? ddClean(nn.layers[0].body) : '';
-      /* FIX-5 2026-11-17: a subtitle that repeats the title (live notes quote
-         it mid-text) makes the visible quote repeat itself. Strip any repeat
-         of the title from the subtitle/layer before joining. */
-      if(title){
-        var _li=sub.toLowerCase().indexOf(title.toLowerCase());
-        if(_li!==-1){ sub=(sub.slice(0,_li)+sub.slice(_li+title.length)).replace(/\s+/g,' ').trim(); }
-        var _lj=layer0.toLowerCase().indexOf(title.toLowerCase());
-        if(_lj!==-1){ layer0=(layer0.slice(0,_lj)+layer0.slice(_lj+title.length)).replace(/\s+/g,' ').trim(); }
-      }
-      var text=title;
-      if(sub && sub!==title) text=title+' \u2014 '+sub;
-      else if(layer0 && layer0!==title) text=title+' \u2014 '+layer0;
-      var full=text; /* FIX-4 2026-11-17: the full cleaned text, kept for title/data-full below. */
-      if(text.length>220){ var _se=ddSentenceEnd(text,220,100); if(_se>100){ text=text.slice(0,_se+1); } /* FIX-5 2026-11-17: cut ONLY at a sentence end — the visible quote is a whole sentence, never a mid-list cut, and no ellipsis (it ends with its own period). No sentence end in range: show the FULL text, never cut mid-sentence. The char-limit cut is gone. */ }
-      var when=new Date(pick.t).toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-      var carried=todays.length ? 'Smart Note of the Day' : 'Daily Wisdom, carried forward \u2014 the Smart Note of the Day from '+when;
-      return {text:text, full:full, src:carried};
-    }catch(e){ return null; }
-  }
-  function ddWho(){
-    var who='';
-    try{
-      var qp=new URLSearchParams(location.search);
-      var qn=(qp.get('name') || '').trim();
-      var qa=(qp.get('alias') || '').trim().toLowerCase().replace(/[^a-z0-9]/g,'');
-      if(qa){ try{ localStorage.setItem('nayanet_smart_alias', qa); }catch(e){} }
-      if(qn){
-        who=qn.split(/\s+/)[0];
-        try{ localStorage.setItem('nayanet_smart_name', qn); }catch(e){}
-        try{ history.replaceState(null,'',location.pathname+location.hash); }catch(e){}
-      }else{
-        try{
-          var _pn=document.getElementById('pname');
-          if(_pn && _pn.textContent){ var _pw=_pn.textContent.trim().split(/\s+/)[0]; if(_pw && _pw.toLowerCase()!=='you') who=_pw; }
-        }catch(e){}
-        if(who){ try{ localStorage.setItem('nayanet_smart_name', who); }catch(e){} }
-        if(!who){
-          who=(localStorage.getItem('nayanet_smart_name') || '').trim().split(/\s+/)[0];
-        }
-        if(qa){ try{ history.replaceState(null,'',location.pathname+location.hash); }catch(e){} }
-      }
-      if(!who){
-        var Rref=(typeof R !== 'undefined') ? R : null;
-        var id=Rref && Rref.identitySnapshot && Rref.identitySnapshot();
-        if(id && id.display_name && id.display_name!=='You') who=id.display_name;
-      }
-      try{ if(who || qa) document.cookie='nayanet_returning=1; path=/; max-age=31536000; SameSite=Lax'; }catch(e){}
-    }catch(e){ /* identity unavailable - fall back to neutral greeting */ }
-    return who;
-  }
-  function ddFmt(n){
-    try{ if(typeof window._osSpc==='function') return window._osSpc(Number(n)); }catch(e){}
-    return String(Number(n));
-  }
-  function ddRenderClock(){
-    var now=new Date();
-    var hour=now.getHours();
-    var greet=hour<12 ? 'Good morning' : hour<18 ? 'Good afternoon' : 'Good evening';
-    var who=ddWho();
-    var g=document.getElementById('os-dd-greet');
-    if(g) g.textContent=greet+(who ? ', '+who : '')+'.';
-    var ds=document.getElementById('os-dd-date-str');
-    if(ds) ds.textContent=now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-    var tm=document.getElementById('os-dd-time');
-    if(tm) tm.textContent=now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit'});
-  }
-  function ddRenderWisdom(w){
-    var box=document.getElementById('os-dd-wisdom');
-    if(!box) return;
-    if(!w){ box.hidden=true; return; }
-    var q=document.getElementById('os-dd-quote');
-    var s=document.getElementById('os-dd-src');
-    if(q){ q.textContent='\u201C'+w.text+'\u201D'; if(w.full){ q.setAttribute('title', w.full); q.setAttribute('data-full', w.full); } } /* FIX-4 2026-11-17: the full quote is reachable (hover title + data-full) even when the shown text is trimmed. */
-    if(s) s.textContent=w.src;
-    box.hidden=false;
-  }
-  function ddRenderLedger(){
-    var el=document.getElementById('os-dd-ledger');
-    if(!el) return;
-    var sp=window._osSpine, f=window._dashFunnel;
-    if(!sp || sp.loading || typeof sp.score!=='number'){ el.textContent='Syncing\u2026'; return; }
-    var txt='Ledger \u00B7 '+ddFmt(sp.score)+' pts';
-    if(f && typeof f.found==='number' && typeof f.boardClicks==='number' && typeof f.joined==='number'){
-      txt+=' \u00B7 Found '+ddFmt(f.found)+' \u00B7 Board '+ddFmt(f.boardClicks);
-      if(typeof f.plan9Clicks==='number'){ txt+=' \u00B7 Plan '+ddFmt(f.plan9Clicks); }
-      txt+=' \u00B7 Joined '+ddFmt(f.joined);
-    }else{ txt+=' \u00B7 synced'; }
-    var at=sp.updatedAt || window._osHeroUpdatedAt || 0;
-    if(at){
-      var s2=Math.max(0,Math.round((Date.now()-at)/1000));
-      txt+= s2<5 ? ' \u00B7 now' : ' \u00B7 '+s2+'s ago';
-    }
-    if(el.textContent!==txt) el.textContent=txt;
-  }
-  function ddLoadWisdom(){
-    var bake=[];
-    for(var i=0;i<DD_BAKE.length;i++) bake.push({title:DD_BAKE[i].title, subtitle:DD_BAKE[i].subtitle, created:DD_BAKE[i].created});
-    ddRenderWisdom(ddPickWisdom(bake));
-    var ctl=null, timer=null;
-    try{ ctl=new AbortController(); }catch(e){}
-    if(ctl){ timer=setTimeout(function(){ try{ ctl.abort(); }catch(e){} },15000); }
-    var p=ctl ? fetch('/feed-live.json',{signal:ctl.signal}) : fetch('/feed-live.json');
-    p.then(function(r){ if(!r.ok) throw new Error('live fetch '+r.status); return r.json(); }).then(function(d){
-      if(timer) clearTimeout(timer);
-      if(!d || !Array.isArray(d.notes) || !d.notes.length) throw new Error('live feed empty');
-      ddRenderWisdom(ddPickWisdom(d.notes));
-    }).catch(function(){ /* the bake still serves - nothing breaks */ });
-  }
-  ddRenderClock();
-  ddRenderLedger();
-  ddLoadWisdom();
-  if(!window._ddClock){
-    window._ddClock=setInterval(function(){ ddRenderClock(); ddRenderLedger(); },1000);
-  }
-})();
-</script>
 <div class="os-v6-stamp">Dashboard v9 · DONE-DONE · 2026-11-17</div>
 <style id="os-fix4">
 /* ═══ FIX-4 2026-11-17 — the captain's 390px eye (04:18Z) ═══
-   (1) THE BAR IS VISIBLE EVERYWHERE: the old law hid #os-bottom3 on every
-   scroll and showed it only at the page bottom (or on a button tap), so a
-   reader anywhere else on the page had no bottom bar at all. The page-icon-bar
-   law now governs it: it fades while scrolling and returns ~1s after scroll
-   stops (the _barT timer in the folding-bars script), visible at load. The
-   os-bottom-hidden class still hides it while scrolling and in drill views.
+   (1) THE BAR FOLDS AND RETURNS ONLY AT THE BOTTOM (RETURN-AT-BOTTOM
+   2026-11-17, Shawn heart 20:50Z, confirmed law — supersedes FIX-4): the
+   bar is visible at load, folds away the moment you scroll down, and returns
+   ONLY when the scroll reaches the very bottom — never when scrolling stops
+   (the _barT ~1s return is removed) and never on a tap. The os-bottom-hidden
+   class still hides it while scrolling and in drill views.
    (2) ECOSYSTEM is burnt orange #c2410c (Deep Palette), never purple — the
    04:03Z correction; two purples side by side was the defect.
    (4a) the Smart Links drill × moves to the top-right corner, clear of the
@@ -30051,17 +30128,23 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
    (5) the left + (#os-rooms-plus) moves to 250px — clear of the N orb's
    halo ring + glow at desktop and at 390 (see the build script for the
    geometry); Fix-4's 170px still stands underneath and is overridden here.
-   (6) the five-tile bottom bar STAYS VISIBLE inside drill dialogs: the
-   viewport-focus hide is overridden and the bar is raised above the drill
-   (z-index 10002 over the drill's 10001); the Smart Links drill gets
-   bottom padding so its last row clears the bar. */
+   (6) the six-tile bottom bar STAYS VISIBLE inside drill dialogs — DOTS-DIALOG-FIX
+   2026-11-17 SUPERSEDES the mid-page case: the bar stays visible inside a drill
+   ONLY when the page is genuinely at the very bottom (the bar is not folded);
+   mid-page the bar stays folded, because the fold law is "returns ONLY at the
+   very bottom" and the eye saw the bar return behind the drill twice (Clicks
+   detail 1040, Source detail 235). The show-rule below is narrowed to
+   body.viewport-focus WITHOUT os-bottom-hidden, and the hide above is
+   narrowed to WITH os-bottom-hidden — one gate, every drill dialog, no gap.
+   The bar is still raised above the drill (z-index 10002 over the drill's
+   10001) when it shows; the Smart Links drill gets bottom padding so its
+   last row clears the bar. */
 input::placeholder,textarea::placeholder{color:#fff !important;opacity:1 !important;}
 input::-moz-placeholder,textarea::-moz-placeholder{color:#fff !important;opacity:1 !important;}
 input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#fff !important;opacity:1 !important;}
-#os-dd-src,#os-dd-ledger{color:#fff !important;opacity:1 !important;}
 .os-note{color:#fff !important;opacity:1 !important;}
 #os-rooms-plus{top:250px !important;}
-body.viewport-focus #os-bottom3{display:flex !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;transform:none !important;z-index:10002 !important;}
+body.viewport-focus:not(.os-bottom-hidden) #os-bottom3{display:flex !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;transform:none !important;z-index:10002 !important;}
 .os-smartlink-view{padding-bottom:110px !important;}
 /* FIX-5a 2026-11-17 (condition 2): the bar override is global, so the
    other nine drills get the same 110px bottom clearance as Smart Links
