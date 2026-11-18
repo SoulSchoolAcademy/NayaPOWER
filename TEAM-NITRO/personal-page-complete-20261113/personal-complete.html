@@ -3835,10 +3835,12 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
    row. The harvested auto-scroll timer only works on a scroller, and the
    chips already carry flex:0 0 auto, so none of them squeezes. */
 .smart-tabs {
-  display: flex; align-items: center; gap: 10px; flex-wrap: nowrap;
+  display: flex; align-items: center; gap: 10px;
   overflow-x: auto; scrollbar-width: none;
-  margin: 20px 0 0; padding: 12px 0 18px;
+  margin: 20px -6px 0; padding: 12px 6px 18px;
   border-bottom: 1px solid var(--line);
+  -webkit-mask-image: linear-gradient(90deg, #000, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(90deg, #000, #000 calc(100% - 28px), transparent);
 }
 .smart-tabs::-webkit-scrollbar { display: none; }
 .smart-tabs { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
@@ -4052,6 +4054,30 @@ body.mw-strip-bottom #nsbBottom{bottom:0!important}
   #pointsdisplay .os-mini-num{gap:2px;}
   #pointsdisplay .os-mini-gap{width:8px;}
 }
+</style>
+<style id="personal-phone-390-fix-20261118">
+/* PERSONAL PHONE-390 FIX 2026-11-18 - five pre-existing defects from the
+   layout-fix eye verdict section 6 (branch personal/phone-390-fix-20261118).
+   (1) Feed-card LOVE / LIKE / COMMENT: below 700px the three buttons were
+   flex:1 - three equal 100px boxes at 390, clipping COMMENT to "COM" and
+   LOVE's final E. Let them size to their labels and wrap instead.
+   (2) Feed-card footer microcopy: the two phrases abutted with zero gap at
+   390. Stack them with a gap at phone width.
+   (4) Late 4px overflow sliver: the cover image's 60s drift scales it to
+   1.05, and the scaled box pokes past the viewport at 390/635.
+   overflow:clip on #cvr keeps the drift visible inside the cover while
+   the clipped box no longer contributes to the page's scrollable overflow.
+   Any late-loading image is also capped at its container. */
+@media (max-width:700px){
+  .board-actions .board-actions-left{flex-wrap:wrap;}
+  .board-actions .board-actions-left .action{flex:0 1 auto;}
+}
+@media (max-width:480px){
+  .ib-microcopy{flex-direction:column;align-items:flex-start;gap:8px;}
+  .ib-microcopy .left,.ib-microcopy .right{text-align:left;}
+}
+#cvr{overflow:clip;}
+img{max-width:100%;}
 </style>
 </head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="r5DotGrad" cx="35%" cy="30%" r="80%"><stop offset="0%" stop-color="#ffffff"/><stop offset="45%" stop-color="#ffffff"/><stop offset="100%" stop-color="#6d28d9"/></radialGradient></defs></svg>
@@ -5170,7 +5196,7 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
      (see the CSS). The .mw-feedname buttons below stay (they activate their tab
      + scroll the feed into view in place — working doors). -->
 <section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><button type="button" id="pcSearchScope" class="pc-search-scope" aria-label="World: My World — choose a thing" title="Choose a thing">My World</button><input type="search" id="pcHubSearchInput" placeholder="Search…" aria-label="Search" autocomplete="off"></div></section><button type="button" id="pcComposerPlus" class="pc-composer-plus" aria-label="Add" title="Add"><span class="notif-tile" style="--nc:#8e24aa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></button>
-<p class="pc-tabs-cap pc-tabs-cap-yours"><span class="ph-dot" style="background:#a21caf;color:#a21caf;"></span>Your tabs — you choose what feed you want</p>
+
 <style id="pc-correction-20261116">
 /* PERSONAL CORRECTION 2026-11-16 — the round's own rules, one block. */
 /* Item 4: the Naya Notes lens button stays in the DOM (the Smart Access
@@ -5218,17 +5244,11 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 .mw-date-filter[hidden]{display:none;}
 .mw-date-filter button{flex:0 0 auto;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:2px 10px;cursor:pointer;font-family:inherit;font-weight:800;font-size:12.5px;}
 </style>
-<div class="lens-tabs" id="mwFeedTabs" role="tablist" aria-label="Feed categories" data-mw-aria="Feed categories">
-<button type="button" class="lens-tab lens-smart primo theme-purple elev-2 active" id="mwTabSmart" data-mw-tab="personal" role="tab" aria-selected="true" style="--glow:#0f52ba"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">✦</span> <b data-mw-tr="tab">Personal</b></button>
-<button type="button" class="lens-tab lens-collective primo theme-purple elev-2" id="mwTabNaya" data-mw-tab="public" role="tab" aria-selected="false" style="--glow:#d4a017"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b data-mw-tr="tab">Collective</b></button>
-<button type="button" class="lens-tab lens-world primo theme-purple elev-2" id="pcWorldTab" data-mw-tab="world" role="tab" aria-selected="false" style="--glow:#07925f"><span class="os-jewel os-jewel-sm" style="--jc:#07925f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b data-mw-tr="tab">World</b></button>
-<button type="button" class="lens-tab lens-activity primo theme-purple elev-2" id="mwTabActivity" data-mw-tab="naya" role="tab" aria-selected="false" style="--glow:#07925f" hidden><span class="os-jewel os-jewel-sm" style="--jc:#07925f">✦</span> <b data-mw-tr="tab">Naya Notes</b></button>
-<button type="button" class="lens-tab lens-world primo theme-purple elev-2" id="pcWorldsTab" role="tab" aria-selected="false" style="--glow:#a21caf"><span class="os-jewel os-jewel-sm" style="--jc:#a21caf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b>Worlds</b></button><span id="pcFavWorldTabs" role="presentation"></span>
-</div>
-<p class="os-note pc-tabs-legend" id="mwTabsLegend">Personal is yours. Collective is everybody&rsquo;s, together &mdash; the public feed <i>is</i> the collective feed. World is the world you&rsquo;re in. Worlds is all of them.</p>
+
 <!-- FIX PASS 4 (P6) — the topic Smart Tabs sit directly under the four tabs. -->
-<p class="pc-tabs-cap pc-tabs-cap-auto"><span class="ph-dot" style="background:#0f52ba;color:#0f52ba;"></span>Organized for you — the feed sorts itself by topic</p>
-<div class="smart-tabs" id="mwFeedPills" aria-label="Feed filters" data-mw-aria="Feed filters"></div>
+
+<div hidden style="display:none!important" aria-hidden="true"><button id="mwTabSmart" type="button" class="lens-tab primo" data-mw-tab="personal" hidden style="display:none!important">Personal</button><button id="mwTabNaya" type="button" class="lens-tab primo" data-mw-tab="public" hidden style="display:none!important">Collective</button><button id="mwTabActivity" type="button" class="lens-tab primo" data-mw-tab="naya" hidden style="display:none!important">Naya Notes</button><button id="pcWorldTab" type="button" class="lens-tab primo" data-mw-tab="world" hidden style="display:none!important">World</button><button id="pcWorldsTab" type="button" class="lens-tab primo" data-mw-tab="worlds" hidden style="display:none!important">Worlds</button><span id="pcFavWorldTabs"></span></div>
+<div class="smart-tabs" id="mwFeedPills" role="tablist" aria-label="Smart Tabs \u2014 filter the feed by topic" data-mw-aria="Feed filters"></div>
 <button type="button" class="mw-feedname" id="mwFeedNameSmart" data-mw-tr="feedname" style="--fc:#0f52ba">Shawn&rsquo;s Personal feed ↓</button>
 <button type="button" class="mw-feedname" id="mwFeedNameNaya" data-mw-tr="feedname" style="--fc:#d4a017" hidden>Shawn&rsquo;s Collective feed ↓</button>
 <button type="button" class="mw-feedname" id="mwFeedNameActivity" data-mw-tr="feedname" style="--fc:#07925f" hidden>Shawn&rsquo;s Naya Notes ↓</button>
@@ -20788,12 +20808,12 @@ function loadPointsBoard(_t){
            window._dashD: before the live rows land the pill keeps its loading
            glyph (…) instead of printing a false 0. */
         try{ var _pc = document.getElementById('pointscount');
-          if (_pc && window._dashD) _pc.textContent = total.toLocaleString(); }catch(_){}
+          if (_pc && window._dashD && total > 0) _pc.textContent = total.toLocaleString(); }catch(_){}
         /* ICONS-PLUS-FIX 2026-11-14 (item 1): remember the last-known
            total so the pill can paint it at first paint, before the live
            rows land — "… pts" at first paint is the same lazy pattern as
            the late motto. The live total overwrites it when it lands. */
-        try{ if (typeof total === 'number' && isFinite(total)) localStorage.setItem('naya.points.total.v1', JSON.stringify({total: total, at: Date.now()})); }catch(_){}
+        try{ if (typeof total === 'number' && isFinite(total) && total > 0) localStorage.setItem('naya.points.total.v1', JSON.stringify({total: total, at: Date.now()})); }catch(_){}
         /* #6 PROGRESS RING — to next tier */
         var ringWrap = document.getElementById('os-ring-wrap');
         if (ringWrap){
@@ -28125,7 +28145,7 @@ function pcCard(p, live){
   var init=(p.alias||'?')[0].toUpperCase();
   /* HEADER 2026-11-15 H5, FOLLOW-ON 3b 2026-11-18 — one line per row: orb +
      name + % + info + the four contact buttons (Message / Smart Mail /
-     Audio / Video), all centred on the same line. NO CONNECT in the row:
+     Audio / Video), buttons below the name line, labelled. NO CONNECT in the row:
      sending the message IS the request for connection. The motto lives
      behind the info pop-up; the pop-up still carries the four ways too. */
   var mark = '';;
@@ -28170,14 +28190,19 @@ function pcCardWithConnect(p, live){
   var pct=(typeof p.pct==='number')?p.pct:null;
   var pctHtml=(pct===null)?'':'<span class="pc-pct r4-tiles" title="'+pcTr('Match')+'">'+pcTiles(pct)+'</span>';
   var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button>';
-  var acts=[['chat','\u270e','#0f52ba','Message'],['mail','\u2709','#d4a017','Smart Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
+  /* COVER-ALIGN 2026-11-18 (Shawn ~21:28Z): the four buttons sit BELOW the
+     name line, in their own row — never beside it. Same glyphs, same colours,
+     same actions; now labelled DM / Mail / Audio / Video so each reads plain. */
+  var acts=[['chat','\u270e','#0f52ba','DM'],['mail','\u2709','#d4a017','Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
   var btns='';
   for(var i=0;i<acts.length;i++){
-    btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
+    btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'<span class="pc-act-lab">'+acts[i][3]+'</span></button>';
   }
   var at=base.lastIndexOf('</div></article>');
   if(at<0) return base;
-  return base.slice(0, at)+pctHtml+infoBtn+btns+base.slice(at);
+  /* Top line keeps ball + name + % + info together; the four buttons go in
+     their own row underneath, inside the card. */
+  return base.slice(0, at)+pctHtml+infoBtn+'</div><div class="pc-card-acts">'+btns+'</div>'+base.slice(at+6);
 }
 
 window.pcRenderRailForTab=function(tab){
@@ -28204,16 +28229,28 @@ window.pcRenderRail=function(live, standing){
 /* the rail follows the tab: mwApplyFeedTab flips aria-selected on the tab
    buttons — watch that, plus the tap itself, and re-render the rail. */
 (function(){
-  var tabs=document.getElementById('mwFeedTabs'); if(!tabs) return;
+  /* COVER-ALIGN 2026-11-18: no early return — the lens row is out by design
+     (swap) and the rail now follows #mwFeedPills; 'tabs' is unused below. */
+  var tabs=document.getElementById('mwFeedTabs');
   function activeTab(){
-    var b=tabs.querySelector('[aria-selected="true"]');
-    var k=b?b.getAttribute('data-mw-tab'):'personal';
+    /* COVER-ALIGN 2026-11-18 (swap): the rail follows the Hub smart-tabs bar
+       now — the lens row is out. pcFeedKey is the file's own pill-to-rail
+       map (smart->public, naya->naya); anything else reads the whole feed. */
+    var k='personal';
+    try{
+      var _bar=document.getElementById('mwFeedPills');
+      var _b=_bar?_bar.querySelector('.smart-tab.active'):null;
+      var _v=_b?_b.getAttribute('data-mw-pill')||'all':'all';
+      _v=_v.replace(/^topic:/,'');
+      k=window.pcFeedKey?window.pcFeedKey(_v):_v;
+    }catch(e){}
     return (k==='personal'||k==='public'||k==='naya')?k:'personal';
   }
-  tabs.addEventListener('click', function(){ setTimeout(function(){ window.pcRenderRailForTab(activeTab()); }, 0); });
-  if(window.MutationObserver){
+  var railBar=document.getElementById('mwFeedPills');
+  if(railBar){ railBar.addEventListener('click', function(){ setTimeout(function(){ window.pcRenderRailForTab(activeTab()); }, 0); }); }
+  if(window.MutationObserver && railBar){
     var mo=new MutationObserver(function(){ window.pcRenderRailForTab(activeTab()); });
-    mo.observe(tabs, {attributes:true, subtree:true, attributeFilter:['aria-selected','class']});
+    mo.observe(railBar, {childList:true, subtree:true, attributes:true, attributeFilter:['aria-selected','class']});
   }
 })();
 /* rail search: filters the active tab's people by alias or nutshell. */
@@ -29366,10 +29403,15 @@ function pcOrganizerRerender(){
      heart-first sort, localStorage persistence, keyboard nav. */
   const SPECTRUM = ['#8e24aa','#3f51b5','#0f52ba','#0e7490','#07925f','#07925f',
     '#d4a017','#d4a017','#c2410c','#c2410c','#c62828','#6d28d9'];
+  /* GEMATRIA 2026-11-18 (Shawn ~21:40Z): a tab's colour comes from the FIRST
+     LETTER of its label — same letter, same colour, always. The old hash gave
+     every topic an arbitrary colour; the code is GEMATRIA-COLOUR-CODE.md.
+     Hexes byte-for-byte from that file; 5 cyan is the deck teal #40d3bb,
+     FLAGGED unverified — verify from the fix-9 digit-5 tile before trusting it. */
   function tabColor(key) {
-    let h = 0; const s = String(key || '');
-    for (let i = 0; i < s.length; i++) h = ((h * 31) + s.charCodeAt(i)) | 0;
-    return SPECTRUM[Math.abs(h) % SPECTRUM.length];
+    var L = String(key || 'A').trim().charAt(0).toUpperCase();
+    var N = {A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1}[L] || 1;
+    return {1:'#ff5e6c',2:'#ff9a5a',3:'#ffbf3d',4:'#2fe89e',5:'#40d3bb',6:'#6675ff',7:'#a06bff'}[N];
   }
   function sortedTabs(tabs) {
     return tabs.slice().sort((a, b) =>
@@ -29427,9 +29469,9 @@ function pcOrganizerRerender(){
      clusters sharing one. The hash-based tabColor stays as the fallback
      for topic tabs; clusters always take their own colour here. */
   const CLUSTER_COLORS = {
-    'intelligent-internet': '#0f52ba', 'ai-is-hiring': '#d4a017',
-    'nayanet-naya': '#8e24aa', 'smart-notes': '#07925f',
-    'private-network': '#c62828', 'ambassador': '#c2410c'
+    'intelligent-internet': '#a06bff', 'ai-is-hiring': '#ff5e6c', /* GEMATRIA 2026-11-18: T=7 purple, A=1 red */
+    'nayanet-naya': '#ff5e6c', 'smart-notes': '#6675ff', /* N=1 red, S=6 indigo */
+    'private-network': '#a06bff', 'ambassador': '#ff5e6c' /* T=7 purple, A=1 red */
   };
   function intelClusterOf(note) {
     const hay = (((note.topics || []).join(' ')) + ' ' + (note.title || '') + ' ' + String(note.subtitle || '').slice(0, 1200)).toLowerCase();
@@ -29467,12 +29509,12 @@ function pcOrganizerRerender(){
        wall's own note-type buckets (pcNoteForStrip), so they are struck
        from the topic list below — same filter, one chip each, first. */
     const TYPE_TABS = [
-      { id: 'type-smart', label: 'Smart Notes', topic: 'Smart notes', kind: 'type', pcKey: 'topic:smart', color: '#07925f', heart: false, star: false },
-      { id: 'type-naya', label: 'Naya Notes', topic: 'Naya notes', kind: 'type', pcKey: 'topic:naya', color: '#8e24aa', heart: false, star: false },
-      { id: 'type-post', label: 'Posts', topic: 'Posts', kind: 'type', pcKey: 'topic:post', color: '#0f52ba', heart: false, star: false }
+      { id: 'type-smart', label: 'Smart Notes', topic: 'Smart notes', kind: 'type', pcKey: 'topic:smart', color: '#6675ff' /* GEMATRIA 2026-11-18: S=6 indigo */, heart: false, star: false },
+      { id: 'type-naya', label: 'Naya Notes', topic: 'Naya notes', kind: 'type', pcKey: 'topic:naya', color: '#ff5e6c' /* GEMATRIA 2026-11-18: N=1 red */, heart: false, star: false },
+      { id: 'type-post', label: 'Posts', topic: 'Posts', kind: 'type', pcKey: 'topic:post', color: '#ffbf3d' /* GEMATRIA 2026-11-18: P=3 gold */, heart: false, star: false }
     ];
     const TYPE_TOPICS = ['Smart notes', 'Naya notes', 'Posts'];
-    const sysTabs = [{ id: 'all', label: 'All', topic: null, kind: 'system', pcKey: 'all',
+    const sysTabs = [{ id: 'all', label: 'All', topic: null, kind: 'system', pcKey: 'all', color: '#ff5e6c', /* GEMATRIA 2026-11-18: A=1 red */
         heart: !!(sysOverrides['all'] && sysOverrides['all'].heart),
         star: !!(sysOverrides['all'] && sysOverrides['all'].star) }]
       .concat(INTEL_CLUSTERS.map(c => ({ id: 'cluster-' + c.slug, label: c.label, topic: null, cluster: c.slug, kind: 'system', pcKey: 'cluster:' + c.slug, heart: false, star: false })))
@@ -30199,8 +30241,14 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
   window.pcCurrentWorld=function(){ return pcCurrent(); };
   function pcApplyWorld(w){
     window.MW_SEARCH_WORLD=w.name;
+    /* PHONE-390 FIX (2026-11-18): at phone width the row is too narrow
+       for 'Search <world>...' - the scope chip beside the input already
+       names the world, so the placeholder shortens to 'Search...' there;
+       full text above phone width. */
+    var _phShort=(window.innerWidth||0)<=480;
+    var _ph=_phShort?'Search\u2026':('Search '+w.name+'\u2026');
     var inp=document.getElementById('pcHubSearchInput');
-    if(inp){ inp.setAttribute('placeholder','Search '+w.name+'\u2026'); inp.setAttribute('aria-label','Search '+w.name); }
+    if(inp){ inp.setAttribute('placeholder',_ph); inp.setAttribute('aria-label','Search '+w.name); }
     var tn=document.getElementById('tnSearchPersonalInput');
     if(tn){ tn.setAttribute('placeholder','Search '+w.name+'\u2026'); tn.setAttribute('aria-label','Search '+w.name); }
     var chip=document.getElementById('pcSearchScope');
@@ -34376,4 +34424,24 @@ if(typeof window.osShowView==='function' && !window.osShowView.__pcProfileWrappe
 }
 })();
 </script>
+<style id="personal-cover-align-20261118">
+/* COVER-ALIGN 2026-11-18 (Shawn ~21:22Z) — cover flush with the button row:
+   the row's buttons take the cover's own left/right edges (padding 0), the
+   row tucks up under the head (margin-top 12), and the head pulls further
+   into the cover (avatar + name overlapping the picture, as he asked).
+   Measured against the cover's edges at 390/635/1920 (see maker report).
+   Specificity note: the file's own desktop rules speak as
+   div[data-block="cover"] > .ph-actions-row (0,2,1) and
+   [data-block="cover"] .ph-head (0,2,0) — these selectors match them so
+   the later !important wins at every width. */
+div[data-block="cover"] > .ph-actions-row{padding-left:0!important;padding-right:0!important;margin-top:12px!important;}
+@media(max-width:760px){[data-block="cover"] .ph-head{margin-top:-102px!important;}}
+@media(min-width:761px){[data-block="cover"] .ph-head{margin-top:-195px!important;}}
+/* SIDEBAR buttons-below (Shawn ~21:28Z): the acts row under the name line.
+   Buttons keep the file's own .pc-act-btn (obsidian, own-colour rim, lift
+   on hover) + the pill shape of the file's .up-act buttons; labels in white. */
+.pc-card-acts{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px;}
+#pcRailList .pc-card-acts .pc-act-btn{width:auto;height:36px;padding:0 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;font-size:17px;flex:none;}
+#pcRailList .pc-card-acts .pc-act-btn .pc-act-lab{font-size:17px;font-weight:800;letter-spacing:.02em;color:#fff;}
+</style>
 </body></html>
