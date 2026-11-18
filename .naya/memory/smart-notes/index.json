@@ -59536,6 +59536,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3430",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3430-one-system-honestly-synced",
+      "slug": "one-system-honestly-synced",
+      "title": "One System, Honestly Synced",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3430/IB-SMART-NOTE-20261118-sn3430-one-system-honestly-synced.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3430/IB-SMART-NOTE-20261118-sn3430-one-system-honestly-synced.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3430/IB-SMART-NOTE-20261118-sn3430-one-system-honestly-synced.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3430-one-system-honestly-synced.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:31:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "25840e8b1085cc096567e4a35498cdf04aaf74cf1b2359ba037f436608d2ccb7",
+      "content_hash": "143ee08d43f896cbe6d266f254139efeabcecd80d5c3f6d2aec74d2170f7733d",
+      "one_line": "One night declared the parts a single system — and then graded the declaration honestly. The daily reports are the evolution record: what each Naya learned, did, and got wrong, kept daily, weekly, monthly, so the growth can be re-read. The notes in GitHub and the Smart Box are one flow through nine organ-nodes — SELF, LAW, ACT, KNOW, PROVE, CONNECT, VERIFY, LEARN, EVOLVE — processors, not folders. The Operation Manual was proven the only way a manual can be: a fresh agent, manual alone, put a real note on the live feed — and the proof caught the manual's own wrong key. The Factory was proven buildable-from, then corrected in the same breath: cloning is a button, not the achievement. The Box wiring failed its gate honestly — a backfill sourced from a stale local clone, 758 paths missing — and the sync verdict for the whole system was written down as what it was: not yet.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59546,5 +59579,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "5776159181747f8f965b961e3d554709f5711f1a294e2a1af5e8ef6bfab66dfb"
+  "corpus_manifest_hash": "b3fc14cdd959a81b93ec0f4e1de21810ca598ea1bbc7c3909dcb4c610715be57"
 }
