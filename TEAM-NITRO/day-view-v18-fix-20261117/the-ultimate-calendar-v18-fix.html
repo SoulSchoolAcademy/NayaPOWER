@@ -2034,6 +2034,35 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 .kh-date{font-family:Marcellus,serif;font-size:25px;color:#fff;letter-spacing:.08em;line-height:1.05;white-space:nowrap}
 .kh-week{font-family:Marcellus,serif;font-size:19px;font-weight:800;letter-spacing:.1em;color:var(--dc,#3fb8ff);white-space:nowrap}
 .kh-hz{font-size:17px;font-weight:800;color:#fff;letter-spacing:.1em;white-space:nowrap}
+
+/* ============ V6.1 — LIVE-PROBE FIXES (maker's own eye, staged v6 build, 1920px) ============
+   The probe caught three geometry errors in the v6 frame/header. All three are
+   position arithmetic, not taste — fixed here, measured again after filing.
+   (a) The frame's abs-positioned children position against the frame's PADDING
+   box (which starts INSIDE the 96px border), so the V6 offsets landed 96px too
+   far in: corner emblems and seals sat inside the content, the top seal over
+   the clock tiles, the bottom seal over "Keep reading", and the inner rim
+   floated at inset 192px instead of hugging the content edge. The correction
+   is -var(--bw)/2 - var(--em)/2 (centre the emblem ON the ring) and inset:0
+   for the rim (the padding box IS the content edge).
+   (b) The wide BACK TO MONTH pill (absolute, top-left) covered "Wedne" of the
+   weekday: the headliner grid's margin was sized for a 46px circle. Desktop
+   now gives the headliner symmetric 260px margins — the clock stays dead
+   centre, the left cell wraps to two lines (square+weekday / date pill, the
+   wrap the base flex already designed for) and clears the pill. The pill's
+   letter-spacing tightens .14em -> .06em so it ends before the grid starts.
+   (c) At <=1024px the pill goes in-flow on its own row above the headline
+   (flex column daybar) so the words show at every width with no overlap. */
+.royal-frame::after{inset:0!important}
+.royal-frame .rf-c.tl{top:calc(-var(--bw,96px)/2 - var(--em)/2)!important;left:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
+.royal-frame .rf-c.tr{top:calc(-var(--bw,96px)/2 - var(--em)/2)!important;right:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
+.royal-frame .rf-c.bl{bottom:calc(-var(--bw,96px)/2 - var(--em)/2)!important;left:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
+.royal-frame .rf-c.br{bottom:calc(-var(--bw,96px)/2 - var(--em)/2)!important;right:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
+.royal-frame .rf-seal.top{top:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
+.royal-frame .rf-seal.bottom{bottom:calc(-var(--bw,96px)/2 - var(--em)/2)!important}
+.daybar>.backbtn.eye .btw{letter-spacing:.06em!important}
+@media(min-width:1025px){.official-headliner{margin:0 260px!important}}
+@media(max-width:1024px){.daybar{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;padding:16px 18px!important}.daybar>.backbtn{position:static!important}.dayhead{width:100%!important}}
 </style>
   </head>
   <body>
