@@ -52880,6 +52880,106 @@
         "Intelligence",
         "Leaderboards"
       ]
+    },
+    {
+      "smart_note_id": "SN-3087",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3087-the-full",
+      "title": "The Full",
+      "content_hash": "ac339791efa9ccb5e0db10c4500d0f6e266df0f73e3c7c4923efc67416be5470",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3087/IB-SMART-NOTE-20261117-sn3087-the-full.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit fa11446db69ef2a783132fe20c8a29154898d8c7 ('SN-3087 The Full — distilled 10 notes to one (machine)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-17 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "dd14ee852ae2be54b82658bff4269549052ad4cf76c54506a6f1ed0ffd04214b"
+    },
+    {
+      "smart_note_id": "SN-3088",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3088-the-discipline-of-nine",
+      "title": "The Discipline of Nine",
+      "content_hash": "256b5ee124ccb361c5594d4b506c5a3a490d0e3af3cb4bc89408e4b18e30afd6",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3088/IB-SMART-NOTE-20261117-sn3088-the-discipline-of-nine.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit e9fb2f4edc80daede31360746c93047afa830793 ('SN-3088 The Discipline of Nine — distilled 10 notes to one (hand, machine failed group 2/4)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-17 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "0ac34e14e2c89794103446d5dabde9495ba3dc871bb1c5f9fb660cff378f8f07"
+    },
+    {
+      "smart_note_id": "SN-3089",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3089-prove-it-where-it-lives",
+      "title": "Prove It Where It Lives",
+      "content_hash": "93681d32fd11ec4a548b56d63854bfd0b5429b8250152f15d05d1ef05fe7b3b2",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3089/IB-SMART-NOTE-20261117-sn3089-prove-it-where-it-lives.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 03c269c580002cca8698bfc3ee8dfabc9937e9d8 ('SN-3089 Prove It Where It Lives — distilled 10 notes to one (hand, machine failed group 2/4)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-17 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "a68d51f1820086be9163287e1271c08a968d02c3523e42e6124347b4632df192"
+    },
+    {
+      "smart_note_id": "SN-3090",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3090-the-loop-that-never-idles",
+      "title": "The Loop That Never Idles",
+      "content_hash": "31dde7ab4c0eaf05f5e81c47eb677be1c5497cccd2204778af3ba5479f7d7c77",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3090/IB-SMART-NOTE-20261117-sn3090-the-loop-that-never-idles.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit e72accaf52c0668d121e3186471037ec5279a2f1 ('SN-3090 The Loop That Never Idles — distilled 2 notes to one (hand, machine failed group 2/4)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-17 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "1a65838650863b41031ec5e103bb49c1faf1182f1d46bc8eb4ae42310dd4c816"
+    },
+    {
+      "smart_note_id": "SN-3091",
+      "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3091-daily-intelligence-report-2026-11-17",
+      "title": "Daily Intelligence Report — 2026-11-17",
+      "content_hash": "f19c24744987c1fcc8c57b4693843c106db020f84bb666a509e81aadd46fa061",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/REPORT/SN-3091/IB-SMART-NOTE-20261117-sn3091-daily-intelligence-report-2026-11-17.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "REPORT",
+      "topic": "REPORT",
+      "subtopic": "",
+      "captured_at": "2026-11-17",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 480486f512ed4075820e42b2b6b1acbb52c74f37 ('SN-3091 Daily Intelligence Report 2026-11-17') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-17 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "31d9e0185c97eb7342698499f622e01749959cf2ba12c61f6de928b6b4d7afa9"
     }
   ],
   "sequence_policy": {
@@ -52890,5 +52990,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "c9634c40b238a902267e018c4ee5e5791da9926ea6139101207da9807f812db8"
+  "corpus_manifest_hash": "d071d1a10f07a60611d5db3bb92c86381c2be1f6903af75fa2ca17e1cbe25b48"
 }
