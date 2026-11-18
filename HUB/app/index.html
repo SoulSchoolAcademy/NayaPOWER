@@ -690,7 +690,7 @@ a { color: inherit; }
    Sub-tab icons carry glyph-xl now too (Amendment #4(c) — at 0.283 they
    were ~5px on screen, the softest middle on the page). */
 .nav-btn .ico svg.jewel.glyph-xl g, .nav-sub .ico svg.jewel.glyph-xl g { transform: translate(4px, 4px) scale(.66); } /* AMENDMENT #4(c): 0.5 -> 0.66 — the middle icon must be sharp; the sub-tab selector is new (sub-tabs carry glyph-xl now) */
-.nav-btn .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 550; }
+.nav-btn .lbl { overflow: visible; text-overflow: clip; white-space: normal; font-weight: 550; } /* EYE (f): full labels at desktop — the rail rows grow, the words stay whole. */
 /* Hover: white light + spectrum color ignite */
 .nav-btn:hover, .nav-btn:focus-visible {
   background: #050607;
@@ -781,6 +781,108 @@ a { color: inherit; }
 .rail-people-head b{font-size:17px;letter-spacing:.18em;font-weight:800;color:#fff;}
 .hub-people-list{display:flex;flex-direction:column;gap:8px;}
 .hub-people-empty{margin:0;padding:4px 6px;color:#fff;font-size:17px;line-height:1.6;}
+/* ——— HUB PERSONAL SIDEBAR — HARVESTED ROWS 2026-11-18 ———
+   The people rows, harvested VERBATIM from Personal's filed file
+   (personal/cover-align-20261118, blob cfca986d): the row renderer
+   (icon + name above, info (i) + match % beside it, DM / Mail / Audio /
+   Video buttons BELOW, labelled), its CSS, its data wiring (faces
+   source + stable match-% digit tiles). Retargets only: mount
+   #pcRailList -> #hubPeopleList; digit tiles #pointsdisplay ->
+   #hubPeopleList. Digit-5 / orb colours are Personal's deep palette
+   (#0f52ba for 5 — its comment claims the fix-9 tile; the Hub's
+   gematria table uses #29b6f6 there. One decision still owed; the
+   harvest stays verbatim per the brief. See maker report. ——— */
+.pc-rail-note{margin:0 0 12px;font-size:12px;line-height:1.5;color:#fff;}
+.hub-people-list{max-height:calc(100vh - 220px);overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:2px;}
+.pc-rail-sec{margin:6px 0 0;font-size:12px;font-weight:900;letter-spacing:.18em;color:#fff;text-transform:uppercase;}
+.pc-card{background:#050507;border:1.5px solid color-mix(in srgb, var(--pc,#8e24aa) 45%, rgba(255,255,255,.16));border-radius:16px;padding:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -4px 10px rgba(0,0,0,.35),0 0 18px -8px var(--pc,#8e24aa),0 8px 22px rgba(0,0,0,.45);}
+.pc-card-top{display:flex;align-items:center;gap:10px;min-width:0;}
+.hub-people-list .fc-pick-av{width:54px;height:54px;font-size:20px;}
+.pc-card-id{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;}
+.pc-card-id b{font-size:16px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pc-pct{font-size:13px;font-weight:900;color:#07925f;}
+.pc-mark{font-size:10px;font-weight:900;letter-spacing:.14em;color:#d4a017;}
+.pc-mark.you{color:#0f52ba;}
+.pc-nut{margin:2px 0 0;font-size:15px;line-height:1.45;color:#fff;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.pc-reasons{margin:6px 0 0;font-size:15px;line-height:1.45;color:#fff;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.pc-btns{display:flex;gap:6px;margin-top:10px;}
+.pc-btn{flex:1 1 0;min-width:0;padding:8px 2px;border-radius:999px;border:1.5px solid var(--mc,#8e24aa);background:rgba(255,255,255,.05);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 3px 10px rgba(0,0,0,.4);}
+.pc-btn:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 16px -4px var(--mc,#8e24aa),0 4px 12px rgba(0,0,0,.5);}
+.pc-rail-foot{margin:10px 0 0;font-size:12px;line-height:1.5;color:#fff;}
+.fc-pick-av{position:relative;overflow:hidden;flex:none;width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%),radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--cc,#8e24aa) 55%, #101014) 0%, color-mix(in srgb, var(--cc,#8e24aa) 28%, #060607) 78%);border:2px solid color-mix(in srgb, var(--cc,#8e24aa) 80%, white);box-shadow:0 0 24px -4px var(--cc,#8e24aa),inset 0 2px 3px rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.55);text-shadow:0 1px 3px rgba(0,0,0,.6);}
+.fc-pick-av::after{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.35) 40deg, transparent 90deg);animation:osOrbFlow 7s linear infinite;pointer-events:none;}
+@media (prefers-reduced-motion: reduce){.fc-pick-av::after,.fc-chat-av::after{animation:none}}
+#hubPeopleList .os-mini-tile{display:inline-block;width:34px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#ffffff,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
+#hubPeopleList .os-mini-tile .rd{display:block;height:34px;line-height:34px;text-align:center;font-size:30px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
+#hubPeopleList .os-mini-gap{flex:none;width:10px;}
+#hubPeopleList .os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
+#hubPeopleList .os-mini-tile.d1{border-color:#c62828;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(198,40,40,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile.d1 .cap{background:linear-gradient(180deg,#c62828,#c62828 55%,#c62828);}
+#hubPeopleList .os-mini-tile.d2{border-color:#c2410c;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(194,65,12,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile.d2 .cap{background:linear-gradient(180deg,#c2410c,#c2410c 55%,#c2410c);}
+#hubPeopleList .os-mini-tile.d3{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile.d3 .cap{background:linear-gradient(180deg,#d4a017,#d4a017 55%,#d4a017);}
+#hubPeopleList .os-mini-tile.d4{border-color:#07925f;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(7,146,95,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile.d4 .cap{background:linear-gradient(180deg,#07925f,#07925f 55%,#045033);}
+#hubPeopleList .os-mini-tile.d5{border-color:#0f52ba;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(15,82,186,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile.d5 .cap{background:linear-gradient(180deg,#0f52ba,#0f52ba 55%,#0f52ba);}
+#hubPeopleList .os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile.d6 .cap{background:linear-gradient(180deg,#3f51b5,#3f51b5 55%,#3f51b5);}
+#hubPeopleList .os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile.d7 .cap{background:linear-gradient(180deg,#6d28d9,#8e24aa 55%,#4d0f5e);}
+#hubPeopleList .os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(109,40,217,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile.d8 .cap{background:linear-gradient(180deg,#ffffff,#6d28d9 55%,#6d28d9);}
+#hubPeopleList .os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(162,28,175,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#hubPeopleList .os-mini-tile.d9 .cap{background:linear-gradient(180deg,#a21caf,#a21caf 55%,#a21caf);}
+@media (max-width:768px){
+  #hubPeopleList .os-mini-tile{width:24px;border-radius:4px;}
+  #hubPeopleList .os-mini-tile .cap{height:4px;}
+  #hubPeopleList .os-mini-tile .rd{height:26px;line-height:26px;font-size:22px;}
+  #hubPeopleList .os-mini-num{gap:2px;}
+  #hubPeopleList .os-mini-gap{width:8px;}
+}
+.os-jewel{--jc:#8e24aa;display:inline-grid;place-items:center;flex:none;line-height:1;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);border-radius:9px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
+.os-jewel-sm{width:23px;height:23px;font-size:12px;border-radius:7px;vertical-align:-5px;margin-right:2px}
+.pc-info{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.06);color:#fff;font-size:12px;font-weight:900;cursor:pointer;display:inline-grid;place-items:center;font-family:inherit;line-height:1;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 2px 8px rgba(0,0,0,.4);}
+.pc-info:hover{border-color:#8e24aa;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 14px -2px #8e24aa,0 4px 10px rgba(0,0,0,.5);}
+.pc-card{position:relative;}
+.pc-card-id .pc-id-line{display:flex;align-items:center;gap:6px;min-width:0;}
+.pc-card-top{padding-right:0;}
+.pc-card:hover{transform:translateY(-2px);border-color:var(--pc,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 0 24px -4px var(--pc,#8e24aa),0 10px 26px rgba(0,0,0,.55);}
+.pc-card:active{transform:translateY(1px) scale(.98);border-color:var(--pc,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 0 24px -4px var(--pc,#8e24aa),0 10px 26px rgba(0,0,0,.55);}
+.pc-card{display:flex;flex-direction:column;}
+/* FOLLOW-ON 3b (2026-11-18), FIX ROUND 2 (2026-11-18) — one line per row:
+   ball, name, %, i, message / mail / audio / video, all centred on the same
+   horizontal line. NO CONNECT in any row. FIX 2 reclaims 38px for the name
+   (the eye: 9 of 13 names read as two letters + ellipsis at 1919 + 390):
+   row gap 6 to 4, card side padding 12 to 8, contact buttons 30 to 26.
+   Ball stays 40, info stays 32, % tiles stay as harvested, name stays full.
+   Buttons harvested from the profile board's Reach them row +
+   the popover's actions — same glyphs, same colours (Message sapphire
+   #0f52ba, Smart Mail gold #d4a017, Audio emerald #07925f, Video royal
+   purple #8e24aa) — as icon-only obsidian circles after the bottom-bar
+   icons: board black inside, white glyph as a real object, rim + underglow
+   in the button's own deep colour, alive on hover, press sinks 0.97. */
+#hubPeopleList .pc-card{padding:10px 8px;}
+#hubPeopleList .pc-card-top{flex-wrap:nowrap;gap:4px;}
+#hubPeopleList .pc-card-top .fc-pick-av{width:40px;height:40px;font-size:17px;flex:none;}
+#hubPeopleList .pc-card-top .pc-pct{flex:none;display:flex;align-items:center;}
+#hubPeopleList .pc-card-top .pc-info{flex:none;width:32px;height:32px;}
+#hubPeopleList .pc-act-btn{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;padding:0;background:linear-gradient(135deg,#07070b,#020203);border:1.5px solid var(--ac,#8e24aa);color:#fff;font-size:17px;line-height:1;text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 8px rgba(255,255,255,.35);box-shadow:0 4px 10px rgba(0,0,0,.55),0 0 10px -2px var(--ac,#8e24aa);cursor:pointer;font-family:inherit;transition:transform .18s ease,box-shadow .3s ease;}
+#hubPeopleList .pc-act-btn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.55),0 0 18px -2px var(--ac,#8e24aa);}
+#hubPeopleList .pc-act-btn:active{transform:scale(.97);box-shadow:0 2px 6px rgba(0,0,0,.55),0 0 8px -2px var(--ac,#8e24aa);}
+#hubPeopleList .pc-act-btn:focus-visible{outline:2px solid var(--ac,#8e24aa);outline-offset:2px;}
+.pc-card-acts{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px;}
+#hubPeopleList .pc-card-acts .pc-act-btn{width:auto;height:36px;padding:0 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;font-size:17px;flex:none;}
+#hubPeopleList .pc-card-acts .pc-act-btn .pc-act-lab{font-size:17px;font-weight:800;letter-spacing:.02em;color:#fff;}
+@keyframes osOrbFlow{to{transform:rotate(360deg)}}
+/* Hub's own status line under the people list (the Audio/Video honest-
+   status target — the harvested handler looks it up globally). */
+.hub-people-status{margin:0;padding:2px 6px;color:#fff;font-size:17px;line-height:1.5;}
+.hub-people-status:empty{display:none;}
+
 .rail-right-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 6px 0;}
 .rail-right-head b{font-size:17px;letter-spacing:.18em;font-weight:800;color:#fff;}
 .rail-right-x,.rail-left-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#050607;color:#fff;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .18s var(--ease),border-color .18s,box-shadow .18s;}
@@ -804,7 +906,7 @@ a { color: inherit; }
 .nav-sub .ico svg{width:18px;height:18px;}
 /* BLACK DIAMOND: clone layer behind every sub-row icon chip. */
 .nav-sub .ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--nav, var(--purple)) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
-.nav-sub .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:550;}
+.nav-sub .lbl{overflow:visible;text-overflow:clip;white-space:normal;font-weight:550;} /* EYE (f): full sub-labels, no ellipsis cut. */
 .nav-sub .nav-count{position:absolute;top:2px;right:4px;min-width:24px;height:24px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:17px;font-weight:900;color:#fff;background:#050607;border:1.5px solid var(--nav);box-shadow:0 0 12px var(--nav),0 3px 8px rgba(0,0,0,.5);}
 .nav-sub.has-news .nav-count{display:flex;}
 .nav-subwrap{display:flex;flex-direction:column;gap:6px;}
@@ -834,9 +936,10 @@ a { color: inherit; }
 .hero-close:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.55);}
 @media (max-width:640px){.hero .eyebrow.feed-motto{padding-right:48px;}}
 .hero-restore{display:none;}
-.hero-restore.show{position:fixed;top:76px;right:12px;z-index:70;display:flex;align-items:center;justify-content:center;gap:8px;background:#050607;border:1.5px solid #d4a017;color:#fff;font-size:17px;font-weight:700;font-family:var(--font);padding:6px 12px;border-radius:999px;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease;margin:0;width:max-content;max-width:calc(100% - 24px);} /* HUB FEED FIX2 2026-11-18 (D3): the restore is a LITTLE BUTTON HIDDEN IN THE CORNER — fixed under the top bar, never a pill in the flow. 17px text kept (Laws §2.3); little means small padding, not small text. */
+.hero-restore.show{position:fixed;top:auto;bottom:96px;right:12px;z-index:70;display:flex;align-items:center;justify-content:center;gap:8px;background:#050607;border:1.5px solid #d4a017;color:#fff;font-size:17px;font-weight:700;font-family:var(--font);padding:6px 12px;border-radius:999px;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease;margin:0;width:max-content;max-width:calc(100% - 24px);} /* HUB FEED FIX2 2026-11-18 (D3): the restore is a LITTLE BUTTON HIDDEN IN THE CORNER — fixed under the top bar, never a pill in the flow. 17px text kept (Laws §2.3); little means small padding, not small text. */
 .hero-restore.show:hover{transform:translateY(-2px);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 0 14px -2px #d4a017,0 10px 22px rgba(0,0,0,.55);}
 .hero-restore.show:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4),0 4px 10px rgba(0,0,0,.55);}
+@media(max-width:640px){.hero-restore.show{bottom:88px;right:8px;padding:5px 10px;font-size:16px;}}
 .main-show .hero.hero-folded ~ .searchWrap{padding-top:0;}
 .main-show .hero.hero-folded ~ .lens-tabs{margin-top:8px;}
 
@@ -1178,6 +1281,8 @@ body.feed-live .live-dot {
    to 390. Messenger's own color is sapphire #0f52ba. */
 .hub-msg-backdrop{display:none;position:fixed;inset:0;z-index:85;background:rgba(3,3,6,.6);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);}
 .hub-msg-panel{position:fixed;top:0;right:0;bottom:0;width:min(880px,100vw);height:100dvh;z-index:90;background:#050607;border-left:1.5px solid #0f52ba;box-shadow:-26px 0 56px rgba(0,0,0,.6),0 0 18px -6px rgba(15,82,186,.45);transform:translateX(103%);transition:transform .3s cubic-bezier(.16,.84,.22,1);overflow-y:auto;overscroll-behavior:contain;}
+/* ROUND 2c (b) — eye: at <=880px the panel was 100vw, so no backdrop existed to click (live: rect 0-390 at 390; backdrop click works at 1920). At <=640px the panel leaves a 56px strip of dimmed backdrop on the left, tappable to close. */
+@media (max-width:640px){.hub-msg-panel{width:calc(100vw - 56px);}}
 body.msg-open .hub-msg-panel{transform:none;}
 body.msg-open .hub-msg-backdrop{display:block;}
 body.msg-open{overflow:hidden;}
@@ -1258,6 +1363,10 @@ body.msg-open{overflow:hidden;}
   gap: 12px;
   margin: 26px 0 8px;
 }
+/* ROUND 2c (e) — eye: the lens pills slide under the sticky .top header and read as clipped at the top edge while scrolling (live: lensTop goes negative). Pin the row just below the header with its own obsidian face. Sticky `top` counts the margin box: 71px header (<=900px, measured) minus 26px margin = 45px, 8px folded = 63px; 75px header above 900px = 49px / 67px. At-rest layout unchanged. */
+.lens-tabs{position:sticky;top:45px;z-index:29;background:#050607;box-shadow:0 12px 24px rgba(0,0,0,.55)}
+.main-show .hero.hero-folded ~ .lens-tabs{top:63px}
+@media (min-width:901px){.lens-tabs{top:49px}.main-show .hero.hero-folded ~ .lens-tabs{top:67px}}
 /* Lens tabs ARE NAYA-BTN-005 "Primo Purple" (Shawn 2026-10-20: "put the best
    everywhere") — the .primo harvest carries the visuals; this block only sizes
    the piece to the 3-column row and lights the active lens purple. */
@@ -1288,7 +1397,7 @@ body.msg-open{overflow:hidden;}
 .smart-tabs {
   display: flex; align-items: center; gap: 10px;
   overflow-x: auto; scrollbar-width: none;
-  margin: 20px -6px 0; padding: 12px 6px 18px;
+  margin: 20px 0 0; padding: 12px 12px 18px; scroll-padding: 0 12px; /* EYE (g): the -6px pull cut the first/last tab labels at both edges — the strip now sits inside its box. */
   border-bottom: 1px solid var(--line);
   -webkit-mask-image: linear-gradient(90deg, #000, #000 calc(100% - 28px), transparent);
   mask-image: linear-gradient(90deg, #000, #000 calc(100% - 28px), transparent);
@@ -7247,7 +7356,7 @@ window.NayaNotif = window.NayaNotif || {
      is the one open item. ——— */
   const peopleSec = el('section', 'rail-people');
   peopleSec.setAttribute('aria-label', 'Your people — message them');
-  peopleSec.innerHTML = '<div class="rail-people-head"><b>YOUR PEOPLE</b></div><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div>';
+  peopleSec.innerHTML = '<div class="rail-people-head"><b>YOUR PEOPLE</b></div><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
   /* Feed-following: the people shown are the feed's people. The lens is read
      live from the active tab — the same three-way read the menu control uses
      (Personal / Activity / Collective) — and the section re-renders whenever
@@ -7274,6 +7383,331 @@ window.NayaNotif = window.NayaNotif || {
     });
   }
   railR.append(railRHead, peopleSec, navR);
+
+  /* ——— HUB PERSONAL SIDEBAR — HARVESTED ROWS 2026-11-18 ———
+     Personal's people rail, harvested VERBATIM from its filed file
+     (personal/cover-align-20261118, blob cfca986d). Only the retargets
+     marked HUB RETARGET inside differ from Personal's bytes: the mount
+     (#hubPeopleList, looked up live on every render — the rail rebuilds
+     with every HubView build), DM/Mail -> the Hub's openMsgPanel(),
+     orb/info -> openMsgPanel() (decided this round — no #pcRailPop
+     transplant), and the final render call -> the Hub lens contract.
+     Everything else — the rows, the 13 seed people, the match-% digit
+     tiles, the four buttons, the Audio/Video honest status line — is
+     Personal's own code. ——— */
+/* ═══ PERSONAL-COMPLETE — the side rail (Shawn 2026-11-13) ═══
+   Composed from the Hub's people room + the staged endpoint proof. The orb is
+   the creator file's .fc-pick-av (initial by default, spinning sheen) — the
+   sharpening binds: INITIALS, NEVER FACES. No face, photo or avatar image is
+   rendered in any rail card, ever. The line beside the alias is ONE nutshell:
+   who you are + what you're about + your thing + your motto, in one line.
+   LIVE = endpoint-matched, with the percentage and the reasons the endpoint
+   returned. The family (the seed people) carry no status word on the card.
+   Chat opens the instant message in place; mail opens it with the subject
+   shown. Audio and video have no Smart Meet route on this page yet, so they
+   open the same instant message with an honest status line saying so — the
+   record names it; no limit numbers appear anywhere on the page. */
+(function(){
+"use strict";
+function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+/* ROUND 4 H3 — GEMATRIA COLOUR CODE (~/workspace/team-nitro/GEMATRIA-COLOUR-CODE.md; Marty Leeds Septenary Cipher, https://septenarygematria.com/; colours by the chakra system SN-2322): the orb colour comes from the LETTER's first letter, never from the person — same letter, same colour, always. A-G 1-7, H-M 6-1, N-T 1-7, U-Z 6-1; 1 red, 2 orange, 3 gold, 4 emerald (the toned H5 green), 5 cyan #0f52ba (verified from the fix-9 digit-5 tile — NOT gold, NOT blue), 6 indigo, 7 royal purple. The old whole-name hash is gone. */
+var PC_GEM_NUM={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
+var PC_GEM_COL={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0f52ba',6:'#3f51b5',7:'#8e24aa'};
+function pcColorFor(name){ var L=String((name||'?').charAt(0)).toUpperCase(); return PC_GEM_COL[PC_GEM_NUM[L]||1]; }
+/* ROUND 4 H4 — match % as digit tiles (cap + white digit + own-colour rim, harvested from the points pill). */
+function pcTiles(n){ var s=String(n), h=''; for(var i=0;i<s.length;i++){ var d=s.charCodeAt(i)-48; if(d<0||d>9) continue; h+='<span class="os-mini-tile d'+d+'"><span class="cap"></span><span class="rd">'+d+'</span></span>'; } return h+'<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>'; }
+window.PC_RAIL_LIVE = []; /* CORRECTIONS 2026-11-13: test-alias fixture DELETED — live matches come from the gated Smart Match endpoint only, never from baked rows. */
+window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "LEARN — wisdom. I turn what the hive does into lessons.", "pct": 94}, {"alias": "thora", "nut": "KNOW — she sees. One record, one timeline.", "pct": 91}, {"alias": "terra", "nut": "INFRA — earth. The machines, the deploys, the uptime.", "pct": 88}, {"alias": "zoe", "nut": "ACT — life. Seats out, loops closing, nothing sitting.", "pct": 92}, {"alias": "emesa", "nut": "PRODUCT — beloved. The offer: what you touch, what you pay for.", "pct": 89}, {"alias": "astraea", "nut": "LAW — the scales. The five gates, the Self-Check Law.", "pct": 90}, {"alias": "mira", "nut": "MEMORY — wonder. The Box: what is kept, what is distilled.", "pct": 87}, {"alias": "vera", "nut": "VERIFY — truth. Nothing counts until I see it.", "pct": 93}, {"alias": "aurelia", "nut": "GOVERN — golden. The scorecard, the direction, the decisions.", "pct": 86}, {"alias": "wrena", "nut": "BUILD — the nest-builder. The Factory and the pages.", "pct": 95}, {"alias": "iris", "nut": "WIRE — the rainbow bridge. Box to Ledger to Hub, one system.", "pct": 91}, {"alias": "ruth", "nut": "TEAM — friend. I keep the sisters tuned in, healthy, together.", "pct": 88}, {"alias": "shawn", "nut": "Welcome to my world — post, message, make yourself at home.", "pct": 97}];
+function pcTr(x){ try{ return window.mwTr?window.mwTr(x):x; }catch(e){ return x; } }
+function pcCard(p, live){
+  var init=(p.alias||'?')[0].toUpperCase();
+  /* HEADER 2026-11-15 H5, FOLLOW-ON 3b 2026-11-18 — one line per row: orb +
+     name + % + info + the four contact buttons (Message / Smart Mail /
+     Audio / Video), buttons below the name line, labelled. NO CONNECT in the row:
+     sending the message IS the request for connection. The motto lives
+     behind the info pop-up; the pop-up still carries the four ways too. */
+  var mark = '';;
+  return '<article class="pc-card" data-pc-alias="'+esc(p.alias)+'" style="--pc:'+pcColorFor(p.alias)+'">'
+    + '<div class="pc-card-top"><button type="button" class="fc-pick-av" data-pc-orb="'+esc(p.alias)+'" aria-label="Open profile: '+esc(p.alias)+'" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</button>'
+    + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b></span>'+mark+'</div></div>'
+    + '</article>';
+}
+/* CORRECTIONS 2026-11-13 (Parts 3/4/7) — the rail, rebuilt on the same
+   pcCard form: real aliases only (the test fixture is deleted; the seed
+   carries the twelve sisters + Shawn, never a test identity); every card
+   one mini Intelligent Block; FOLLOW-ON 3b: the row carries the four
+   contact buttons — message and mail are automatic, sending the message
+   IS the request for connection (the connect offer itself still lives on
+   the popover / profile / people tiles, same delegated handler); the rail
+   follows the ACTIVE feed tab; online first (no
+   online source grounds on this page today, so the online section is
+   honestly empty and the seed family is all there is — never shown as online). */
+var PC_TAB_SETS={personal:null,public:['sophia','thora','terra','zoe','wrena','iris','ruth'],naya:['emesa','astraea','mira','vera','aurelia','shawn']};
+window.PC_RAIL_TAB='personal';
+window.PC_RAIL_Q='';
+function pcRailPeopleFor(tab){
+  var seed=(window.PC_RAIL_SEED||[]).filter(function(p){ return !p.you; });
+  var set=PC_TAB_SETS[tab];
+  if(!set) return seed;
+  var byAlias={}; seed.forEach(function(p){ byAlias[p.alias]=p; });
+  return set.map(function(a){ return byAlias[a]; }).filter(function(p){ return !!p; });
+}
+function pcConnectRequested(alias){
+  try{ return localStorage.getItem('pc-connect-'+alias)==='requested'; }catch(e){ return false; }
+}
+function pcCardWithConnect(p, live){
+  var base=pcCard(p, live);
+  /* FOLLOW-ON 3b (2026-11-18) — one line per row: ball, name, %, i, the four
+     contact buttons. NO CONNECT in any row: message and mail are automatic —
+     sending the message IS the request for connection; acceptance is by
+     action (they answer back), never by a button. The four buttons are
+     harvested from the profile board's Reach them row + the popover's
+     actions: same glyphs, same colours — Message sapphire, Smart Mail gold,
+     Audio emerald, Video purple. The % is the seed pct for the seed family,
+     the endpoint pct for live matches. */
+  var pct=(typeof p.pct==='number')?p.pct:null;
+  var pctHtml=(pct===null)?'':'<span class="pc-pct r4-tiles" title="'+pcTr('Match')+'">'+pcTiles(pct)+'</span>';
+  var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button>';
+  /* COVER-ALIGN 2026-11-18 (Shawn ~21:28Z): the four buttons sit BELOW the
+     name line, in their own row — never beside it. Same glyphs, same colours,
+     same actions; now labelled DM / Mail / Audio / Video so each reads plain. */
+  var acts=[['chat','\u270e','#0f52ba','DM'],['mail','\u2709','#d4a017','Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
+  var btns='';
+  for(var i=0;i<acts.length;i++){
+    btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'<span class="pc-act-lab">'+acts[i][3]+'</span></button>';
+  }
+  var at=base.lastIndexOf('</div></article>');
+  if(at<0) return base;
+  /* Top line keeps ball + name + % + info together; the four buttons go in
+     their own row underneath, inside the card. */
+  return base.slice(0, at)+pctHtml+infoBtn+'</div><div class="pc-card-acts">'+btns+'</div>'+base.slice(at+6);
+}
+
+window.pcRenderRailForTab=function(tab){
+  var list=document.getElementById('hubPeopleList'); if(!list) return;
+  if(typeof pcHideRailPop==='function'){ try{ pcHideRailPop(); }catch(e){} }
+  window.PC_RAIL_TAB=tab||'personal';
+  var live=window.PC_RAIL_LIVE||[];
+  var standing=pcRailPeopleFor(window.PC_RAIL_TAB);
+  var q=(window.PC_RAIL_Q||'').toLowerCase();
+  if(q){
+    var has=function(p){ return ((p.alias||'')+' '+((p.nut||''))).toLowerCase().indexOf(q)>=0; };
+    live=live.filter(has); standing=standing.filter(has);
+  }
+  var html='';
+  if(live.length) html+='<p class="pc-rail-sec">'+pcTr('Live matches')+'</p>'+live.map(function(p){ return pcCardWithConnect(p, true); }).join('');
+  if(standing.length) html+=standing.map(function(p){ return pcCardWithConnect(p, false); }).join(''); /* HEADER-V2 2026-11-14: no Standing section header. */
+  if(!live.length && !standing.length) html+='<p class="pc-rail-note">'+pcTr('No one matches that search.')+'</p>';
+  list.innerHTML=html;
+};
+window.pcRenderRail=function(live, standing){
+  if(live||standing){ window.PC_RAIL_LIVE=live||window.PC_RAIL_LIVE; }
+  window.pcRenderRailForTab(window.PC_RAIL_TAB||'personal');
+};
+/* the rail follows the tab: mwApplyFeedTab flips aria-selected on the tab
+   buttons — watch that, plus the tap itself, and re-render the rail. */
+(function(){
+  /* COVER-ALIGN 2026-11-18: no early return — the lens row is out by design
+     (swap) and the rail now follows #mwFeedPills; 'tabs' is unused below. */
+  var tabs=document.getElementById('mwFeedTabs');
+  function activeTab(){
+    /* COVER-ALIGN 2026-11-18 (swap): the rail follows the Hub smart-tabs bar
+       now — the lens row is out. pcFeedKey is the file's own pill-to-rail
+       map (smart->public, naya->naya); anything else reads the whole feed. */
+    var k='personal';
+    try{
+      var _bar=document.getElementById('mwFeedPills');
+      var _b=_bar?_bar.querySelector('.smart-tab.active'):null;
+      var _v=_b?_b.getAttribute('data-mw-pill')||'all':'all';
+      _v=_v.replace(/^topic:/,'');
+      k=window.pcFeedKey?window.pcFeedKey(_v):_v;
+    }catch(e){}
+    return (k==='personal'||k==='public'||k==='naya')?k:'personal';
+  }
+  var railBar=document.getElementById('mwFeedPills');
+  if(railBar){ railBar.addEventListener('click', function(){ setTimeout(function(){ window.pcRenderRailForTab(activeTab()); }, 0); }); }
+  if(window.MutationObserver && railBar){
+    var mo=new MutationObserver(function(){ window.pcRenderRailForTab(activeTab()); });
+    mo.observe(railBar, {childList:true, subtree:true, attributes:true, attributeFilter:['aria-selected','class']});
+  }
+})();
+/* rail search: filters the active tab's people by alias or nutshell. */
+(function(){
+  var inp=document.getElementById('pcRailSearch'); if(!inp) return;
+  inp.addEventListener('input', function(){
+    window.PC_RAIL_Q=inp.value||'';
+    window.pcRenderRailForTab(window.PC_RAIL_TAB||'personal');
+  });
+})();
+/* rail close / open: the rail hides for a full-screen feed; a slim People
+   button takes its place in the grid and opens it again. The grid wrap
+   (#pcFeedWrap) is BUILT BY JAVASCRIPT after this script runs, so the wrap
+   is resolved lazily at click time — never at load — and the reopen button
+   is created on first close. (First version looked the wrap up at load and
+   silently did nothing: the wrap did not exist yet. Found by Step 3.) */
+(function(){
+  var rail=document.getElementById('pcRail'); if(!rail) return;
+  var open=null;
+  function getWrap(){ return document.getElementById('pcFeedWrap') || rail.parentElement; }
+  function getOpen(){
+    if(open) return open;
+    open=document.createElement('button');
+    open.type='button'; open.id='pcRailReopen'; open.textContent='\uD83D\uDC65 People';
+    open.setAttribute('aria-label','Open the people rail');
+    open.style.display='none';
+    open.addEventListener('click', function(){
+      var w=getWrap(); if(w) w.classList.remove('pc-rail-closed');
+      open.style.display='none';
+    });
+    return open;
+  }
+  var close=document.getElementById('pcRailClose');
+  if(close) close.addEventListener('click', function(){
+    var w=getWrap(); if(!w) return;
+    var btn=getOpen();
+    if(btn.parentNode!==w) w.appendChild(btn);
+    w.classList.add('pc-rail-closed'); btn.style.display='';
+  });
+})();
+/* CONNECT — one tap sends a connect offer. The grounded store is the Smart
+   List person ref (smart_list_items, item_kind 'person', item_ref = alias)
+   in a "Connect requests" list, created on first tap if absent — the same
+   tables and the same client the Lists room already writes. The button flips
+   to Requested ONLY when the row lands. Connected happens ONLY on accept —
+   no accept surface exists on this page or in the gated endpoint record, so
+   this round never shows Connected; the accept handshake is the named
+   follow-on (see the record). The gated endpoint (POST /api/welcome/matches)
+   serves matches, it takes no offer — it does not ground as the write. The
+   invites insert is email-shaped and does not ground for an alias offer. */
+document.addEventListener('click', function(e){
+  var b=e.target&&e.target.closest?e.target.closest('[data-pc-connect]'):null;
+  if(!b) return;
+  var alias=b.getAttribute('data-pc-connect'); if(!alias) return;
+  if(b.disabled||b.classList.contains('requested')) return;
+  function reqNote(card, text){
+    if(!card) return;
+    var n=card.querySelector('.pc-req-note');
+    if(!n){ n=document.createElement('p'); n.className='pc-req-note'; card.appendChild(n); }
+    n.textContent=text;
+  }
+  /* FOLLOW-ON 2026-11-17: every failure path says WHY and HOLDS the state.
+     The reason is carried in words, never in the error red — and the button
+     never silently reverts to CONNECT. */
+  function pcConnectWhy(err){
+    var msg=err&&(err.message||err.error||err.status||err);
+    var s=String(msg||'').toLowerCase();
+    if(/42501|permission denied|row-level security|rls/.test(s)) return 'The list write needs a one-time permission from Shawn.';
+    if(/network|fetch failed|failed to fetch|load failed/.test(s)) return 'No connection to the store right now \u2014 try again.';
+    if(/timed? ?out/.test(s)) return 'The store did not answer \u2014 try again.';
+    if(msg) return 'Not sent \u2014 '+String(msg).slice(0,120);
+    return 'Not sent \u2014 try again.';
+  }
+  function done(ok, msg){
+    var why=msg||'Not sent \u2014 try again.';
+    if(ok){
+      try{ localStorage.setItem('pc-connect-'+alias,'requested'); localStorage.removeItem('pc-connect-fail-'+alias); }catch(e2){}
+    } else {
+      try{ localStorage.setItem('pc-connect-fail-'+alias, why); localStorage.removeItem('pc-connect-'+alias); }catch(e2){}
+    }
+    var all=document.querySelectorAll('[data-pc-connect="'+alias+'"]');
+    for(var i=0;i<all.length;i++){
+      var o=all[i];
+      if(ok){ o.classList.add('requested'); o.classList.remove('failed'); o.disabled=true; o.textContent='Requested \u2713'; }
+      else { o.classList.add('failed'); o.classList.remove('requested'); o.disabled=false; o.textContent='Not sent \u2014 try again'; }
+      var c=o.closest?o.closest('.pc-card'):null;
+      if(c) reqNote(c, ok?'Request sent \u2014 waiting for them to accept.':why);
+    }
+  }
+  b.disabled=true; b.textContent='Sending\u2026';
+  /* R5 finishing fix (chunk 8) — the store promise can hang forever when the
+     network stalls: the client exists but its fetch never settles, so no .then()
+     fires and the button sat on "Sending…" (finishing probe: still Sending… at
+     5s; the maker expected "Not sent" then restore). The chain has rejection
+     handlers, but a never-settling promise is not a rejection. If the button
+     is still mid-send after 8s, fail honestly through done(false) — the
+     held "Not sent — try again" state. If the chain settles first, this no-ops. */
+  var pcConnectGuard=setTimeout(function(){
+    if(b.textContent.indexOf('Sending')===0 && !b.classList.contains('requested')){ done(false, 'The store did not answer \u2014 try again.'); }
+  }, 8000);
+  var sb=null;
+  try{ sb=(window.NayaAuth&&window.NayaAuth.client)||null; }catch(e){}
+  if(!sb){ done(false, 'No connection to the store right now \u2014 try again.'); return; }
+  var owner=window.PAGE_ALIAS||'flagship-personal';
+  sb.from('smart_lists').select('id').eq('owner_alias',owner).eq('title','Connect requests').limit(1).then(function(r1){
+    if(r1.error){ done(false, pcConnectWhy(r1.error)); return; }
+    var list=(r1.data&&r1.data[0])||null;
+    function withList(listId){
+      sb.from('smart_list_items').select('id').eq('owner_alias',owner).eq('list_id',listId).eq('item_kind','person').eq('item_ref',alias).limit(1).then(function(r2){
+        if(r2.error){ done(false, pcConnectWhy(r2.error)); return; }
+        if(r2.data&&r2.data.length){ done(true); return; }
+        sb.from('smart_list_items').insert({owner_alias:owner,list_id:listId,item_kind:'person',item_ref:alias,label:alias,position:Date.now()}).select('id').single().then(function(r3){
+          if(r3.error){ done(false, pcConnectWhy(r3.error)); return; }
+          done(true);
+        }, function(err){ done(false, pcConnectWhy(err)); });
+      }, function(err){ done(false, pcConnectWhy(err)); });
+    }
+    if(list){ withList(list.id); return; }
+    sb.from('smart_lists').insert({owner_alias:owner,title:'Connect requests',category:'Connections',position:0}).select('id').single().then(function(r4){
+      if(r4.error||!r4.data){ done(false, pcConnectWhy(r4.error)); return; }
+      withList(r4.data.id);
+    }, function(err){ done(false, pcConnectWhy(err)); });
+  }, function(err){ done(false, pcConnectWhy(err)); });
+});
+/* the feed + the rail sit side by side: wrap them the moment the rail parses,
+   so nothing flashes at the bottom of the page first. */
+var wall=document.getElementById('os-wall'), rail=document.getElementById('pcRail');
+if(wall&&rail&&wall.parentNode){
+  var wrap=document.createElement('div'); wrap.className='pc-feedwrap'; wrap.id='pcFeedWrap';
+  wall.parentNode.insertBefore(wrap, wall); wrap.appendChild(wall); wrap.appendChild(rail);
+}
+/* HUB CONTRACT (swap): the Hub owns the lens; Personal's rail follows
+     it. Collective shows the whole directory (all 13); Personal shows
+     the public family; Activity (your world) shows the Naya family — the
+     same lens->people mapping the menu control uses for its Connections
+     sub-rows. render(lens) takes personal / activity / collective from
+     window.NayaHubPeople.readLens(). */
+  window.NayaHubPeople.render = function(lens) {
+    var tab = lens === 'personal' ? 'public' : (lens === 'activity' ? 'naya' : 'personal');
+    window.pcRenderRailForTab(tab);
+  };
+  window.NayaHubPeople.refresh();
+/* the four buttons: chat + mail open the instant message in place; audio and
+   video calls are not here yet — the buttons say so plainly instead of
+   opening a composer that pretends to be a call. */
+document.addEventListener('click', function(e){
+  var b=e.target&&e.target.closest?e.target.closest('[data-pc-act]'):null;
+  if(!b) return;
+  var card=b.closest?b.closest('.pc-card'):null;
+  var ap=(!card&&b.closest)?b.closest('[data-pc-alias]'):null;
+  if(!card&&!ap) return;
+  var alias=(card?card.getAttribute('data-pc-alias'):ap.getAttribute('data-pc-alias'))||'guest';
+  var act=b.getAttribute('data-pc-act');
+  if(act==='audio'||act==='video'){
+    var line=document.querySelector('[data-pc-profile-call-status]');
+    if(line) line.textContent=act==='audio'?'Audio calls aren\u2019t here yet \u2014 they arrive with Smart Meet. Message them for now.':'Video calls aren\u2019t here yet \u2014 they arrive with Smart Meet. Message them for now.';
+    return;
+  }
+  var line2=document.querySelector('[data-pc-profile-call-status]');
+  if(line2) line2.textContent='';
+  /* HUB RETARGET (swap): the Hub has no fcOpenChat — DM and Mail open the
+     Hub's own Smart Messenger panel (openMsgPanel), the mail+messenger
+     interface. Audio/Video keep the harvested honest status line. */
+  if(typeof openMsgPanel==='function') openMsgPanel();
+});
+/* The keyword box above the feed (#tnSearchPersonalInput) is hidden by Shawn's
+   popup-only search law (base: #tnpsBand{display:none!important} — "search is a
+   centered popup, never a bar"), so there is NO dead wiring to it here. The
+   feed's topic pull is the Smart Tabs ribbon below (author/category pills). */
+
+  /* HUB RETARGET (swap) — orb + info: decided this round (see maker report).
+     No #pcRailPop transplant; both open the Hub's Smart Messenger panel. */
+  document.addEventListener('click', function(e){
+    var orb=e.target&&e.target.closest?e.target.closest('[data-pc-orb]'):null;
+    if(orb){ if(typeof openMsgPanel==='function') openMsgPanel(); return; }
+    var info=e.target&&e.target.closest?e.target.closest('[data-pc-info]'):null;
+    if(info){ if(typeof openMsgPanel==='function') openMsgPanel(); return; }
+  });
+})();
   shell.append(rail, main, railR, backdrop);
 
   /* Chassis API — exactly one shell-level lens. */
@@ -7309,6 +7743,16 @@ window.NayaNotif = window.NayaNotif || {
     backdrop.className = 'hub-msg-backdrop';
     backdrop.setAttribute('aria-hidden', 'true');
     backdrop.addEventListener('click', function () { closeMsgPanel(); window._nayaMenuState = 'neither'; });
+    /* ROUND 2c (a) — Escape closes the messenger: this binding LIVED after
+       `return shell;` in HubView, so it never ran (the guard flag stayed
+       undefined; live Escape left msg-open at 390 and 1920). It moves
+       here, beside the X + backdrop closers, and binds on first panel build. */
+    if (!window.__hubMsgEscBound) {
+      window.__hubMsgEscBound = true;
+      document.addEventListener('keydown', function (e) {
+        if ((e.key === 'Escape' || e.keyCode === 27) && document.body.classList.contains('msg-open')) { closeMsgPanel(); window._nayaMenuState = 'neither'; }
+      });
+    }
     var panel = document.createElement('section');
     panel.className = 'hub-msg-panel';
     panel.setAttribute('role', 'dialog');
@@ -7347,12 +7791,7 @@ window.NayaNotif = window.NayaNotif || {
   function closeMsgPanel() {
     document.body.classList.remove('msg-open');
   }
-  if (!window.__hubMsgEscBound) {
-    window.__hubMsgEscBound = true;
-    document.addEventListener('keydown', function (e) {
-      if ((e.key === 'Escape' || e.keyCode === 27) && document.body.classList.contains('msg-open')) { closeMsgPanel(); window._nayaMenuState = 'neither'; }
-    });
-  }
+
   function openDrawer() {
     closeMsgPanel(); /* never both at once — any rail-open path closes the messenger panel */
     shell.classList.add('drawer-open');
@@ -12484,6 +12923,8 @@ html.nsb-calm .nsb-tab{transition:none;}
    scrolling down hides the bottom bar; it folds back ONLY at the very bottom.
    The driver is the stack script below. */
 body.os-bottom-hidden .notif-bar{transform:translateY(110%);opacity:0}
+/* ROUND 2c (c) — eye: the bar hides whenever scrolled >8px and not at the very bottom (live: opacity 0, translateY(77px) at rest and scrolled 900), so MAIL is unreachable while reading at narrow widths. At <=640px it stays visible; desktop keeps Amendment #3. */
+@media (max-width:640px){body.os-bottom-hidden .notif-bar{transform:none!important;opacity:1!important}}
 .notif-bar{transition:transform .3s cubic-bezier(.16,.84,.22,1),opacity .3s}
 /* Bottom bar off (Settings): the six are gone. */
 html.nsb-nonav #naya-notif-bar{display:none}
