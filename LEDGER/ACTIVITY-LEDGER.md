@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35831,6 +35831,12 @@ _Last updated: 2026-11-18 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ preregister-t0720-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** FROZEN PRE-REGISTRATION t0720 Lane 9: semantic-arm acceptance-gate design with 7 falsifiers, sealed before iteration
+
+**Evidence:** Backlog sweep, oldest-first. VERIFIED in live bytes this tick: receipt file present; referenced arm hidden_files/arms/semantic-t0426/arm.py exists. Seven falsifiers (F1-F7) are precise and mechanism-specific (mechanism-blind corpus, semantic-beyond-lexical, dead margin, degenerate bar, lexical-reward trap, non-determinism, known-bad-arm bar) plus a
+
 ### ✅ gap-lane-scorer-20261114-0200 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261114-0200-lane9.md
@@ -40786,6 +40792,18 @@ _Last updated: 2026-11-18 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261018-0050-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.2/10 [VERIFIED]
+
+**Task:** GAP FOLLOW-UP Lane 5: close t0732 void-claim gap — claim-brief.py authorship bars pre-claim + sweep all 24 queued briefs
+
+**Evidence:** Backlog sweep, oldest-first. VERIFIED in live bytes this tick: claim-brief.py exists (current sha256 c4efc222 differs from receipt's 427ea13b — a month of later work, not a falsification of the Oct-18 claim); stamped brief-t0732-lane5.md sha256 246e3fa3d03db52436c637d83be68cfb7779a96fd5116a3f1e13fa8922fbfde0 matches the receipt's stamped hash EXACT
+
+### ✅ gap-lane-scorer-20261017-1340-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** GAP FOLLOW-UP Lane 5: close t0707 9.0 gaps — per-call capture-leg timing, corpus-wide feeder absence check, probe-file cleanup
+
+**Evidence:** Backlog sweep, oldest-first (fresh window empty: no lane receipts filed since t1564, all gate-stall current). VERIFIED in live bytes this tick: branch naya4/smart-notes-2026-09-30 exists on remote (mirror ls-remote head bc8097e4); tombstone commit ec55cd6f866beb7f154fb00b9c50fd89473d39b6 present in mirror (cat-file: commit); staged timing commit f6
 
 ### ✅ gap-scorer-20261015-0600-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
