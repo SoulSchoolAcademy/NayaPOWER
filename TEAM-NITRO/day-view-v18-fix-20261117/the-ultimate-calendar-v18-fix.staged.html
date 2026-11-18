@@ -1977,7 +1977,64 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
    faceted hex. Each jewel is a real jewel object, never a flat dot. */
 .cat.jewel-orb .cat-jewel{border-radius:50%;transform:none;background:radial-gradient(circle at 34% 26%,#ffffff 0%,var(--cc) 55%,color-mix(in srgb,var(--cc) 45%,#000000) 100%)}
 .cat.jewel-hex .cat-jewel{border-radius:3px;transform:none;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)}
-    </style>
+    
+/* ============ V6 — CALENDAR ALIGNMENT (Shawn 2026-11-18 22:04Z; day view is the page) ============ */
+/* THE KINGDOM BORDER — the portal art lives ON the border, all the way around.
+   96px desktop / 64px tablet / 32px phone; never under 24, never over 96.
+   The border is part of the interface: screens sit INSIDE it, nothing under it. */
+:root{--bw:96px}
+@media(max-width:1024px){:root{--bw:64px}}
+@media(max-width:560px){:root{--bw:32px}}
+.screen{flex:none!important;margin:var(--bw,96px) var(--bw,96px) 0!important;height:calc(100vh - 2*var(--bw,96px))!important;height:calc(100dvh - 2*var(--bw,96px))!important}
+.royal-frame{--em:max(28px,calc(var(--bw,96px)*.66));border:var(--bw,96px) solid transparent!important;border-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/portal-kings-chamber.png&ref=calendar/calendar-align-20261118&cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&t=1795040877) 30% / var(--bw,96px) / 0 stretch!important;box-shadow:none!important}
+.royal-frame::after{content:"";position:absolute;inset:var(--bw,96px);border:2px solid var(--dc,#3fb8ff);border-radius:4px;box-shadow:0 0 24px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),inset 0 0 48px rgba(5,6,7,.85);pointer-events:none}
+.royal-frame .rf-c,.royal-frame .rf-seal{position:absolute;width:var(--em);height:var(--em);border-radius:50%;object-fit:contain;background:transparent!important;border:none!important;box-shadow:0 4px 12px rgba(0,0,0,.6);animation:none!important}
+.royal-frame .rf-c.tl{top:calc(var(--bw,96px)/2 - var(--em)/2);left:calc(var(--bw,96px)/2 - var(--em)/2);transform:rotate(135deg)}
+.royal-frame .rf-c.tr{top:calc(var(--bw,96px)/2 - var(--em)/2);right:calc(var(--bw,96px)/2 - var(--em)/2);transform:rotate(225deg)}
+.royal-frame .rf-c.bl{bottom:calc(var(--bw,96px)/2 - var(--em)/2);left:calc(var(--bw,96px)/2 - var(--em)/2);transform:rotate(45deg)}
+.royal-frame .rf-c.br{bottom:calc(var(--bw,96px)/2 - var(--em)/2);right:calc(var(--bw,96px)/2 - var(--em)/2);transform:rotate(-45deg)}
+.royal-frame .rf-seal{left:calc(50% - var(--em)/2)}
+.royal-frame .rf-seal.top{top:calc(var(--bw,96px)/2 - var(--em)/2)}
+.royal-frame .rf-seal.bottom{bottom:calc(var(--bw,96px)/2 - var(--em)/2)}
+/* The crystal N rides ON the bottom border, never over any control. */
+.corner-n{right:calc(var(--bw,96px)*1.5)!important;bottom:calc(var(--bw,96px)/2 - 32px)!important;z-index:41!important}
+@media(max-width:560px){.corner-n{width:32px!important;height:32px!important;right:calc(var(--bw,96px)*1.5)!important;bottom:0!important}.corner-n img{width:22px!important;height:22px!important}}
+/* (1) DATE LINE — "November 18th 2026", weekday lit in the day's colour (computed, never hard-coded). */
+.hl-date{text-transform:none!important}
+/* (2) THE LITTLE "i" — solid day-colour rim everywhere; the middle stays black so the "i" reads. */
+.cell .jewel{border-color:var(--dc,#3fb8ff)!important;box-shadow:0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 55%,transparent),inset 0 1px 2px rgba(255,255,255,.35),inset 0 -3px 5px rgba(0,0,0,.7)!important}
+.backbtn.eye{border-color:var(--dc,#3fb8ff)!important;box-shadow:0 0 14px color-mix(in srgb,var(--dc,#3fb8ff) 55%,transparent),inset 0 1px 2px rgba(255,255,255,.35),inset 0 -3px 5px rgba(0,0,0,.7)!important}
+/* (3) BACK TO MONTH as words, beside the eye. */
+.daybar>.backbtn.eye{width:auto!important;height:46px;padding:0 18px 0 6px!important;gap:10px;display:inline-flex!important;align-items:center}
+.daybar>.backbtn.eye .jewel{width:36px!important;height:36px!important;flex:none!important}
+.daybar>.backbtn.eye .btw{font-size:17px;font-weight:800;letter-spacing:.14em;color:#fff;white-space:nowrap}
+@media(max-width:560px){.daybar>.backbtn.eye{width:46px!important;padding:0!important;gap:0}.daybar>.backbtn.eye .btw{display:none}}
+/* (4) BRAND MARKS — no glow on either; drop shadow only, never a colour glow. */
+.dlogo img,.corner-n img{filter:drop-shadow(0 4px 8px rgba(0,0,0,.7))!important}
+/* (5) SCROLLBARS in the day's colour — the page scrollbar AND the dialog scrollbar. */
+html{scrollbar-color:var(--dc,#3fb8ff) rgba(255,255,255,.12);scrollbar-width:thin}
+html::-webkit-scrollbar{width:12px}
+html::-webkit-scrollbar-track{background:rgba(255,255,255,.08)}
+html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;border:2px solid #090910}
+.smart-block .notif-detail{scrollbar-color:var(--dc,#3fb8ff) rgba(255,255,255,.16)!important}
+.smart-block .notif-detail::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff)!important}
+/* (7) BUTTONS TO THE CIRCLE-N STANDARD — Book emerald, Smart Meet purple, never the same together. */
+#tileBookBtn{--btnc:#07925f}
+#tileMeetBtn{--btnc:#8e24aa}
+.tile-book button{border:2px solid var(--btnc,#8e24aa)!important;background:linear-gradient(135deg,#232330 0%,#0b0b12 50%,#171722 100%)!important;box-shadow:0 8px 20px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--btnc,#8e24aa) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.5)!important;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease!important}
+.tile-book button:hover{transform:translateY(-3px)!important;border-color:#fff!important;box-shadow:0 14px 28px rgba(0,0,0,.65),0 0 28px color-mix(in srgb,var(--btnc,#8e24aa) 65%,transparent),inset 0 1px 0 rgba(255,255,255,.45),inset 0 -3px 6px rgba(0,0,0,.5)!important}
+.tile-book button:active{transform:scale(.97)!important}
+.tl-join{min-height:32px!important;padding:4px 12px!important;margin-left:8px}
+/* (8) DAILY QUOTES read whole — no clip anywhere on a quote; the portal frame shrinks so the chamber block fits. */
+#wisdomQuote,.wisdom-banner blockquote{overflow:visible!important;max-height:none!important}
+.sb-chamber .smart-visual{max-width:720px!important}
+/* (9)(10) THE KINGDOM HERO — the big date on the portal's threshold: digit tiles + "November 26" + lit weekday + Hz. Gold rim is the portal's own gold; the digit tiles are the harvested Dashboard tiles. */
+.king-hero{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:2;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 16px;max-width:calc(100% - 24px);padding:12px 20px;border-radius:18px;background:linear-gradient(135deg,#17171f 0%,#0a0a11 60%,#050507 100%);border:2px solid #d4a017;box-shadow:0 12px 28px rgba(0,0,0,.7),0 0 24px rgba(212,160,23,.35),inset 0 1px 0 rgba(255,255,255,.35)}
+.kh-mid{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.kh-date{font-family:Marcellus,serif;font-size:25px;color:#fff;letter-spacing:.08em;line-height:1.05;white-space:nowrap}
+.kh-week{font-family:Marcellus,serif;font-size:19px;font-weight:800;letter-spacing:.1em;color:var(--dc,#3fb8ff);white-space:nowrap}
+.kh-hz{font-size:17px;font-weight:800;color:#fff;letter-spacing:.1em;white-space:nowrap}
+</style>
   </head>
   <body>
     <div id="app">
@@ -1985,7 +2042,7 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
       <section id="screen-month" class="screen" aria-label="Month calendar">
         <header class="monthbar">
           <div class="navcluster">
-            <button type="button" class="dlogo" id="brandHome" aria-label="NayaNET — open today"><picture><source media="(max-width:560px)" srcset="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/icon-192.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=0917335d417e9326a9ebf2618ebd5c670494b0c7&amp;t=1795028670"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/icon-512.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795028670" alt="NayaNET"></picture></button>
+            <button type="button" class="dlogo" id="brandHome" aria-label="NayaNET — open today"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795040877" alt="NayaNET — the royal seal"></button>
             <button class="navbtn" id="prevMonth" aria-label="Previous month">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
             </button>
@@ -2009,12 +2066,12 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
       <section id="screen-day" class="screen hidden" aria-label="Day menu">
         <header class="daybar" id="dayBar">
           <button class="backbtn eye" id="backToMonth" aria-label="Back to month" title="Back to month">
-            <span class="jewel" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="8.8" r="1.5" fill="#ffffff"/><path d="M12 11.9v5" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" fill="none"/></svg></span>
+            <span class="jewel" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="8.8" r="1.5" fill="#ffffff"/><path d="M12 11.9v5" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" fill="none"/></svg></span><span class="btw">BACK TO MONTH</span>
           </button>
           <div class="dayhead" id="dayHead"></div>
         </header>
         <div class="day-scroll" id="dayScroll">
-          <div class="smart-block sb-chamber" id="chamberBlock"><div class="smart-visual"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/portal-kings-chamber.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&amp;t=1795028670" alt="The king&#8217;s chamber — the portal to your kingdom"></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div><div class="sb-dots"></div></div><div class="wisdom-banner smart-block" id="wisdomBanner">
+          <div class="smart-block sb-chamber" id="chamberBlock"><div class="smart-visual"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/portal-kings-chamber.png&amp;ref=calendar/calendar-align-20261118&amp;cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&amp;t=1795040877" alt="The king&#8217;s chamber — the portal to your kingdom"><div class="king-hero" id="kingHero"><span class="kh-tiles os-mini-num" id="kingHeroTiles"></span><span class="kh-mid"><span class="kh-date" id="kingHeroDate">November 26</span><span class="kh-week" id="kingHeroWeek">Wednesday</span></span><span class="kh-hz" id="kingHeroHz">741 Hz</span></div></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div><div class="sb-dots"></div></div><div class="wisdom-banner smart-block" id="wisdomBanner">
             <div class="wq-label">Wisdom of the day</div>
             <blockquote id="wisdomQuote"></blockquote>
             <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span><span class="wx-zone" id="wxZone"></span></div><div class="wq-store">NAYANET WISDOM STORE — FROM WHAT WE HAVE LEARNED</div><div id="daystepSlot"></div><div class="sb-nav"><button type="button" class="pill sb-back" data-sb="prev">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div><div class="sb-dots"></div>
@@ -2037,8 +2094,8 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
         </header>
         <div class="doorbody" id="doorBody"></div>
       </section>
-    <div class="royal-frame" aria-hidden="true"><i class="rf-c tl"></i><i class="rf-c tr"></i><i class="rf-c bl"></i><i class="rf-c br"></i></div>
-<button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795028670" alt="Naya"></button>
+    <div class="royal-frame" aria-hidden="true"><img class="rf-c tl" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795040877" alt=""><img class="rf-c tr" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795040877" alt=""><img class="rf-c bl" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795040877" alt=""><img class="rf-c br" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795040877" alt=""><img class="rf-seal top" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795040877" alt=""><img class="rf-seal bottom" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-align-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795040877" alt=""></div>
+<button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/icon-512.png&amp;ref=calendar/calendar-align-20261118&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795040877" alt="Naya"></button>
     </div>
 
     <script>
@@ -2251,6 +2308,18 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
           return raw.filter(function (b) { return b && b.date === k; }).map(function (b) {
             return { time: b.time || "12:00", title: (b.who || "Appointment") + (b.what ? " — " + b.what : ""), meet: !!b.meet, fromMonth: true };
           });
+        }
+        
+        function mergedNotesFor(k) {
+          /* V6 — ONE NOTE STORE: the day's own nayacal.notes.v1 PLUS the month
+             file's mw.cal.notes.v1. Each file writes only its own store, so the
+             two sets are disjoint; nothing is dropped, nothing is deleted, and
+             every counter and list on this page reads this one function.
+             Month notes map to the day shape {text, at} so existing renderers
+             read them unchanged. */
+          var out = (notes[k] || []).slice();
+          try { var raw = JSON.parse(localStorage.getItem("mw.cal.notes.v1") || "[]") || []; raw.forEach(function (n) { if (n && n.date === k && n.text) out.push({ text: n.text, at: null, world: n.world || "", type: n.type || "note", fromMonth: true }); }); } catch (e) {}
+          return out;
         }
         function dayApptsFor(k) {
           var own = (appointments[k] || []).slice();
@@ -2491,8 +2560,8 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
             var dow = d.getDay();
             var dc = DAY_COLORS[dow];
             var k = keyOf(d);
-            var na = (appointments[k] || []).length;
-            var nn = (notes[k] || []).length;
+            var na = dayApptsFor(k).length;
+            var nn = mergedNotesFor(k).length;
             var nj = (journal[k] || []).length;
             var dots = "";
             if (na || nn || nj) {
@@ -2735,7 +2804,7 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
         function intelHTML() {
           var k = keyOf(sel);
           var dayAppts = dayApptsFor(k);
-          var dayNotes = notes[k] || [];
+          var dayNotes = mergedNotesFor(k);
           var dayJournal = journal[k] || [];
           var dayList = lists[k] || [];
           if (!dayAppts.length && !dayNotes.length && !dayJournal.length && !dayList.length) {
@@ -2823,9 +2892,9 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
             '</div>';
           head.innerHTML =
             '<div class="official-headliner">' +
-              '<span class="hl-left"><span class="daynum-tile" aria-hidden="true">'+d.getDate()+'</span><span class="hl-weekday">' + WEEKDAYS[d.getDay()] + '</span>' +
+              '<span class="hl-left"><span class="daynum-tile" aria-hidden="true">'+d.getDate()+'</span><span class="hl-weekday" style="color:var(--dc)">' + WEEKDAYS[d.getDay()] + '</span>' +
               '<span class="hl-dot" aria-hidden="true"></span>' +
-              '<span class="os-mini-num datenum">' + digitsHTML(d.getDate()) + '</span><span class="hl-date">' + MONTHS[d.getMonth()] + " " + String(d.getFullYear()).slice(2) + "</span></span>" +
+              '<span class="hl-date">' + MONTHS[d.getMonth()] + " " + (function(n){var s=["th","st","nd","rd"],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0]);})(d.getDate()) + " " + d.getFullYear() + "</span></span>" +
               '<span class="hl-time" id="greetClock"></span>' +
               '<button type="button" class="stats-btn" id="statsBtn">Your Stats</button>' +
             "</div>" +
@@ -2835,10 +2904,17 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
           $("daystepSlot").innerHTML = stepHTML;
           var k = keyOf(d);
           var dayAppts = dayApptsFor(k);
-          var dayNotes = notes[k] || [];
+          var dayNotes = mergedNotesFor(k);
 
           /* Wisdom of the day */
           $("wisdomQuote").textContent = "\u201C" + WISDOM[d.getDay()] + "\u201D";
+            /* V6 — KINGDOM HERO fill (same viewed day d, same colour dc; never hard-coded). */
+            var __kh=$("kingHeroTiles"); if(__kh){__kh.innerHTML=digitsHTML(d.getDate());}
+            var __kd=$("kingHeroDate"); if(__kd){__kd.textContent=MONTHS[d.getMonth()]+" "+String(d.getFullYear()).slice(2);}
+            var __kw=$("kingHeroWeek"); if(__kw){__kw.textContent=WEEKDAYS[d.getDay()];__kw.style.color=dc;}
+            var __khz=$("kingHeroHz"); if(__khz){__khz.textContent=DAY_FREQ[d.getDay()]+" Hz";}
+            document.documentElement.style.setProperty("--dc", dc);
+            document.documentElement.setAttribute("data-day-theme", WEEKDAYS[d.getDay()].toLowerCase());
 
           /* The greeting + weather live in the wisdom bar now
              (rendered into #wisdomBanner above — one bar, wisdom +
@@ -2886,7 +2962,7 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
             var inHour = dayAppts.filter(function (a) { return parseInt(a.time.split(":")[0], 10) === h; });
             var jInHour = dayJournal.filter(function (j) { return hourOfEntry(j) === h; });
             var nInHour = dayNotes.filter(function (n) { return hourOfEntry(n) === h; });
-            var chips = inHour.map(function (a) { return '<span class="tl-chip">' + fmtTime(a.time) + " · " + escapeHTML(a.title) + "</span>"; })
+            var chips = inHour.map(function (a) { return '<span class="tl-chip">' + fmtTime(a.time) + " · " + escapeHTML(a.title) + "</span>" + (a.meet ? '<span class="meet" style="flex:none;font-size:var(--type-small);font-weight:800;letter-spacing:.06em;padding:5px 11px;border-radius:999px;border:1px solid var(--d3);color:#bfeaff">Meet</span><button type="button" class="pill tl-join" data-join="' + dayAppts.indexOf(a) + '" aria-label="Join the Smart Meet at ' + fmtTime(a.time) + '" style="flex:none">Join \u2192</button>' : ""); })
               .concat(jInHour.map(function (j) { return '<span class="tl-chip journal">Journal · ' + (j.at ? fmtTimeOf(j.at) : "") + " — " + escapeHTML(clipText(j.text || "", 40)) + "</span>"; }))
               .concat(nInHour.map(function (n) { return '<span class="tl-chip note">Note · ' + (n.at ? fmtTimeOf(n.at) : "") + " — " + escapeHTML(clipText(n.text || "", 40)) + "</span>"; }));
             tl += '<div class="tl-row"><span class="th">' + hlabel + '</span><span class="tline"></span><span class="te">' +
@@ -3093,7 +3169,7 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
           var k = keyOf(sel);
           var dc = DAY_COLORS[sel.getDay()];
           var dayAppts = dayApptsFor(k);
-          var dayNotes = notes[k] || [];
+          var dayNotes = mergedNotesFor(k);
           var dayJournal = journal[k] || [];
           var dayList = lists[k] || [];
           var parts = [];
@@ -3344,7 +3420,7 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
           } else if (door.id === "daily" || door.id === "reports") {
             body.innerHTML = '<div class="panel">' + intelHTML() + "</div>";
           } else if (door.id === "smartnotes") {
-            var ns = notes[k] || [];
+            var ns = mergedNotesFor(k);
             var items = ns.length ? ns.map(function (n) {
               return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + "</p></div>";
             }).join("") : '<p class="none-line">No notes for this day yet.</p>';
