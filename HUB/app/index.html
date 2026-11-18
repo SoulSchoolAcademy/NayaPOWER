@@ -1938,7 +1938,7 @@ svg.jewel { display: block; }
 @keyframes orb-spin-rev { to { transform: rotate(-360deg); } }
 @keyframes naya-breathe { from { opacity: .55; } to { opacity: 1; } }
 @media (max-width: 700px) {
-  .star-rating button { width: 30px; height: 30px; min-width: 30px; font-size: 16px; }
+  .star-rating button { width: 30px; height: 30px; min-width: 30px; font-size: 17px; }
   .star-rating { gap: 2px; padding: 4px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2045,11 +2045,6 @@ svg.jewel { display: block; }
   line-height: 1.05; letter-spacing: -.02em;
   margin: 0 0 8px; color: var(--ink); font-weight: 850;
 }
-.ib-meta {
-  display: flex; gap: 8px; flex-wrap: wrap;
-  color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .08em;
-}
-.ib-meta span { white-space: nowrap; }
 /* ——— Smart Note timestamp (Shawn 2026-10-21): every note shows WHEN it
    was entered. The hero clock's grammar at metadata scale — date in the
    system green, time in the system gold, a breathing dot, and a relative
@@ -3068,6 +3063,60 @@ button, .btn, .tab, .eco-btn, .activity-card {
 @media (prefers-reduced-motion: reduce) { .hero::before{ animation:none; transform:none; opacity:.45; } }
 .hero{ position:relative; isolation:isolate; overflow:hidden; }
 .hero > *{ position:relative; z-index:1; }
+/* POINTS PILL WITH DIGIT TILES — harvested verbatim from Personal blob
+   9a006c47 (FIX 2026-11-18, C3: .ph-points L2138-2146, #pointsdisplay
+   L3983-4017). One pill, in the hero beside the greeting — where Personal
+   places it beside the name, above the action controls. One deviation,
+   required by the design laws (§2.3, no text below 17px): .ph-points-label
+   14px → 17px, so the harvest adds zero new FAILs. Two Hub adaptations,
+   named: the pill is display-only here (no breakdown popup exists in the
+   Hub), so the R2 door comment and cursor:pointer go; the tiler +
+   first-paint read live in mainShow, after the hero is built (the hero is
+   JS-built, so Personal's static script tag cannot run). */
+/* POINTS: dynamic, glowing */
+.ph-points{display:inline-flex;align-items:center;gap:6px;
+  background:#050507; /* CORRECTIONS 2026-11-13: solid obsidian inside, gold rim stays */
+  border:2px solid #d4a017;border-radius:999px;padding:8px 18px;
+  box-shadow:0 0 20px rgba(212,160,23,.3),inset 0 1px 0 rgba(255,255,255,.2);
+  transition:all .3s;}
+.ph-points-star{color:#d4a017;font-size:26px;text-shadow:0 0 12px rgba(212,160,23,.9),0 0 26px rgba(212,160,23,.45);}
+#pointscount{font-size:18px;font-weight:800;color:#fff;min-width:30px;text-align:center;}
+.ph-points-label{font-size:17px;color:#d4a017;font-weight:600;}
+.ph-points.bump{transform:scale(1.15);box-shadow:0 0 12px rgba(212,160,23,.35);}
+#pointsdisplay.pc-restyled{padding:8px 16px 10px;}
+#pointsdisplay .pc-pill-numrow{display:flex;align-items:center;gap:6px;justify-content:center;}
+#pointsdisplay .os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
+#pointsdisplay .os-mini-tile{display:inline-block;width:34px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#ffffff,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
+#pointsdisplay .os-mini-tile .rd{display:block;height:34px;line-height:34px;text-align:center;font-size:30px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
+#pointsdisplay .os-mini-gap{flex:none;width:10px;}
+#pointsdisplay .os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
+#pointsdisplay .os-mini-tile.d1{border-color:#c62828;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(198,40,40,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d1 .cap{background:linear-gradient(180deg,#c62828,#c62828 55%,#c62828);}
+#pointsdisplay .os-mini-tile.d2{border-color:#c2410c;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(194,65,12,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d2 .cap{background:linear-gradient(180deg,#c2410c,#c2410c 55%,#c2410c);}
+#pointsdisplay .os-mini-tile.d3{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d3 .cap{background:linear-gradient(180deg,#d4a017,#d4a017 55%,#d4a017);}
+#pointsdisplay .os-mini-tile.d4{border-color:#07925f;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(7,146,95,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d4 .cap{background:linear-gradient(180deg,#07925f,#07925f 55%,#045033);}
+#pointsdisplay .os-mini-tile.d5{border-color:#0f52ba;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(15,82,186,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d5 .cap{background:linear-gradient(180deg,#0f52ba,#0f52ba 55%,#0f52ba);}
+#pointsdisplay .os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d6 .cap{background:linear-gradient(180deg,#3f51b5,#3f51b5 55%,#3f51b5);}
+#pointsdisplay .os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d7 .cap{background:linear-gradient(180deg,#6d28d9,#8e24aa 55%,#4d0f5e);}
+#pointsdisplay .os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(109,40,217,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d8 .cap{background:linear-gradient(180deg,#ffffff,#6d28d9 55%,#6d28d9);}
+#pointsdisplay .os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(162,28,175,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d9 .cap{background:linear-gradient(180deg,#a21caf,#a21caf 55%,#a21caf);}
+@media (max-width:768px){
+  #pointsdisplay .os-mini-tile{width:24px;border-radius:4px;}
+  #pointsdisplay .os-mini-tile .cap{height:4px;}
+  #pointsdisplay .os-mini-tile .rd{height:26px;line-height:26px;font-size:22px;}
+  #pointsdisplay .os-mini-num{gap:2px;}
+  #pointsdisplay .os-mini-gap{width:8px;}
+}
 </style>
 
 <style>
@@ -7176,6 +7225,14 @@ window.NayaJewels = (() => {
     hero.innerHTML =
       '<div class="eyebrow feed-motto">&ldquo;NayaNET &mdash; create, learn and grow together&rdquo;</div>' +
       '<h1>' + greet + (who ? ', ' + esc(who) : '') + '.</h1>' +
+      /* FIX 2026-11-18 (C3): the Personal points pill with digit tiles,
+         harvested verbatim from Personal blob 9a006c47 (L4996-4997) — one
+         pill, in the hero beside the greeting, where Personal places it
+         beside the name, above the action controls. Display-only here:
+         role/tabindex/data-derive are dropped (no breakdown popup exists
+         in the Hub); the number is the citizen's own total, read from the
+         same localStorage key Personal writes ('naya.points.total.v1'). */
+      '<div class="ph-points pc-restyled" id="pointsdisplay" title="Your Naya points"><span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label" data-mw-tr="pts">pts</span></span></div>' +
       (function () { var w = pickWisdomOfTheDay((window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || []); if (!w) return ''; window._nayaWisdom = w; return '<div class="hero-wisdom"><div class="wisdom-kicker">Wisdom of the Day</div><blockquote>&ldquo;' + esc(w.text) + '&rdquo;</blockquote>' + (w.full && w.full !== w.text ? '<button type="button" class="wisdom-more" aria-expanded="false">Read more</button>' : '') + '<div class="wisdom-src">' + esc(w.src) + '</div></div>'; })() +
       '<p class="hero-sub"><a class="primo theme-purple elev-2 intel-feed-link" href="/feed">Our public smart feed &mdash; connect with people of like minds &rarr;</a></p>' +
       '<p class="hero-sub hero-date"><span class="live-dot" aria-hidden="true"></span><span class="hero-date-str">' + dateStr + '</span> <span class="hero-time">' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' }) + '</span></p>';
@@ -7189,6 +7246,60 @@ window.NayaJewels = (() => {
       }, 1000);
     }
     wrap.appendChild(hero);
+    /* FIX 2026-11-18 (C3): the points pill's first-paint read + tiler,
+       harvested verbatim from Personal blob 9a006c47 (first-paint script
+       L5000; PILL RESTYLE tiler L27878-27923). They run here, after the
+       hero is built — the hero is JS-built, so Personal's static script
+       tags cannot run. The number is the citizen's own total from the
+       same localStorage key Personal writes; without it the pill keeps
+       its loading glyph (…), exactly as on Personal. */
+    try{var _pc0=JSON.parse(localStorage.getItem('naya.points.total.v1')||'null');if(_pc0&&typeof _pc0.total==='number'&&isFinite(_pc0.total)){var _el0=document.getElementById('pointscount');if(_el0)_el0.textContent=_pc0.total.toLocaleString();}}catch(e){}
+    /* PILL RESTYLE tiler (Sharpening 2): harvested from live Dashboard pass-10
+       (miniTileHTML/_osMiniNumHTML Dash 25613-25638; _osSpc Dash 25141;
+       lap dialPos Dash 23193). The points wiring still writes the total into
+       #pointscount (untouched, points-round lines); this re-presents what the
+       wiring wrote as Dashboard tiles and drives the gauge line from the same
+       total: fill = dialPos(total)/500 — the Dashboard's lap position. */
+    (function(){
+      function pcMiniTileHTML(ch){
+        if (ch === ' ' || ch === ',') return '<span class="os-mini-gap"></span>';
+        if (ch === '$') return '<span class="os-mini-tile dollar"><span class="cap"></span><span class="rd">$</span></span>';
+        if (ch === '.') return '<span class="os-mini-tile dot"><span class="cap"></span><span class="rd">.</span></span>';
+        if (ch === '%') return '<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>';
+        var d = parseInt(ch, 10);
+        if (!isFinite(d)) return '';
+        return '<span class="os-mini-tile d' + d + '"><span class="cap"></span><span class="rd">' + d + '</span></span>';
+      }
+      function pcMiniNumHTML(value){
+        if (value == null) return '—';
+        var str = String(value).trim().replace(/,/g, ' ').replace(/ +/g, ' ');
+        if (str === '' || str === '—' || str === '-') return '—';
+        if (!/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(str)) return String(value);
+        var html = '<span class="os-mini-num">';
+        for (var i = 0; i < str.length; i++) html += pcMiniTileHTML(str[i]);
+        return html + '</span>';
+      }
+      function pcTilePill(){
+        var pc = document.getElementById('pointscount');
+        if (!pc) return;
+        var raw = (pc.textContent || '').trim();
+        if (!raw || raw === '…' || raw === '—' || raw === '-') { return; }
+        var digits = raw.replace(/[^0-9]/g, '');
+        if (!digits) return;
+        if (pc._pcLastDigits === digits) return;
+        pc._pcLastDigits = digits;
+        pc.innerHTML = pcMiniNumHTML(raw);
+        var _pd = document.getElementById('pointsdisplay');
+        if (_pd) { _pd.classList.remove('bump'); void _pd.offsetWidth; _pd.classList.add('bump'); setTimeout(function(){ _pd.classList.remove('bump'); }, 350); }
+      }
+      window.pcTilePill = pcTilePill;
+      try {
+        var pc0 = document.getElementById('pointscount');
+        if (pc0) new MutationObserver(function(){ pcTilePill(); }).observe(pc0, {childList:true, characterData:true, subtree:true});
+      } catch(e){}
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pcTilePill);
+      else pcTilePill();
+    })();
     /* HUB FEED 2026-11-17 22:25Z (item 4): the "Read more" toggle — the
        banner shows the short wisdom (two sentences); a tap shows the whole
        note, a second tap folds it back to the short wisdom. While open the
@@ -7858,16 +7969,11 @@ window.NayaJewels = (() => {
        near-white silver, quotation marks kept. NO topic/category
        label renders in the card header anymore: the small dim topic
        word ("Features") floated there like random clutter, so it is
-       out of the header entirely (render-only; note data untouched).
-       The note's ID survives only as small print BELOW the pair, and
-       only when the headline had to be derived from the note's own
-       words (Viral Law: the ID is small print, never the headline). */
+       out of the header entirely (render-only; note data untouched). */
     if (subtitle) { const q = /^["“]/.test(subtitle) ? subtitle : '“' + subtitle + '”'; titleWrap.appendChild(el('div', 'ib-subtitle', esc(q))); }
-    if (headlineDerived && idStr) {
-      const meta = el('div', 'ib-meta');
-      meta.innerHTML = '<span>Note ' + esc(idStr) + '</span>';
-      titleWrap.appendChild(meta);
-    }
+    /* FIX 2026-11-18 (.ib-meta): the "Note <id>" small print is gone —
+       a machine ID string under a beautiful card (A8). The foot carries
+       the provenance now; the header carries none. */
     /* — Timestamp (Shawn 2026-10-21): when this note was entered —
        one consistent seat in the card grammar, directly under the
        headline pair, on every card that carries a derivable time. */
@@ -7889,7 +7995,7 @@ window.NayaJewels = (() => {
       String(L.name || '').toUpperCase().includes('NUTSHELL'));
     if (nutshellLayer) {
       const ns = el('div', 'ib-nutshell');
-      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(nutshellLayer.body.slice(0, 600));
+      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(nutshellLayer.body); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — the 600-char slice cut every long nutshell mid-sentence with no ellipsis and no way to expand it. */
       b.appendChild(ns);
     }
 
