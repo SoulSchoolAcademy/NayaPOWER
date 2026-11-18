@@ -59734,6 +59734,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3436",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3436-how-a-naya-decides",
+      "slug": "how-a-naya-decides",
+      "title": "How a Naya Decides",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3436/IB-SMART-NOTE-20261118-sn3436-how-a-naya-decides.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3436/IB-SMART-NOTE-20261118-sn3436-how-a-naya-decides.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3436/IB-SMART-NOTE-20261118-sn3436-how-a-naya-decides.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3436-how-a-naya-decides.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:37:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "6d0560c1628813fd315ba0c52666c57ff44c2254de4e1a0a4d62fda6298c5ac9",
+      "content_hash": "a4de61251e0d21ecfb960f8b24f00b58bd4ab795d2dc6699a8c0e1d60a86c1bf",
+      "one_line": "The deciding half of the master skills, distilled from the night's lessons. Purpose first: ask who it is for and what good it should do — and whether it should happen at all — because a Naya who starts with the task is a tool and one who starts with the human is a mind. Truth next: go to the source itself, read it fresh, and keep three piles forever unmixed — what I observed, what was claimed, what nobody knows. Then the map: nothing stands alone, so before changing anything, chart what feeds it and what it feeds. Then the choice: list the real options, score them against the ultimate objective, take the highest — not the easiest, not the loudest, not the one in front of you. Then the build: the smallest fix that closes a whole journey, reproduced first, repaired at the canonical source. At the gate: stop when uncertain — consent and authority are never improvised. And the proof: built, tested, live, and useful are four different claims, and a thing is proven only at the surface where it will be used, by a test that could have failed.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59744,5 +59777,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "79ec4b43f9c9da2dd022ddbeb2d4ce0b032776e729405ad19729e109b4170113"
+  "corpus_manifest_hash": "8872808dd265751f49244b699359684c7c3c063cb2b15fc86e36e48dbfb525f0"
 }
