@@ -412,7 +412,19 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # claim was false in bytes; F2 the EYEFOLLOW .new-account:active rule gains
 # the shadow/glow collapse (small contact shadow) so it depresses + dims +
 # collapses like every other button. Nothing else changes.
-assert welcome_sha.startswith("2e74273b"), "welcome sha is not the AGREEMENT MERGE EYE FOLLOW-ON #2 welcome sha (2026-11-18: F1 plain-load fresh-profile auto-enter choice, F2 agree buttons sink scale .94, F3 choice rims deep at rest, F4 read link clears deck-end return)"
+# AGREEMENT BUTTONS FOLLOW-ON (2026-11-18, Shawn's eye 03:37Z + 03:41Z;
+# maker round - agreement-buttons-20261118/work/edit-buttons.py): the
+# welcome sha moves 2e74273b -> 48fc853f (1,146,242 B -> 1,165,606 B,
+# +19,364 B): 1. #fpBridgeLetter reads "Read the agreement"; 2. the bridge
+# pair never wraps (white-space:nowrap, 64px floor, bridge pair only);
+# 3. the flat diamond glyph at the end of each bridge button is the
+# emblem's own diamond, harvested (NAYA_ICON.png rhombus crop, 96px PNG,
+# one shared .fp-btn-jewel class); 4. #fpBridgePick removed; 5. the
+# portrait/play area is one row (portrait -> "Naya" -> play right,
+# harvested 1fr auto 1fr flank grid); 6. the bridge layer top pad
+# 48px -> 40px. Deck, footer link, legal pages, F1-F4 untouched.
+# Walk, template, identity, unfold shas unchanged.
+assert welcome_sha.startswith("48fc853f"), "welcome sha is not the AGREEMENT BUTTONS FOLLOW-ON welcome sha (2026-11-18: 1. Read the agreement label, 2. bridge pair equal size no-wrap, 3. real emblem diamond jewel in both, 4. pick line removed, 5. hero row portrait-Naya-play, 6. logo up 8px)"
 assert unfold_sha.startswith("14bd698c"), "unfold sha is not the AGREEMENT MERGE EYE FOLLOW-ON #2 unfold sha (2026-11-18: F2 /agreement EYEFOLLOW press rules moved out of noscript + agree button sinks scale .94, 88,277 B)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
