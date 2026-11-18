@@ -314,7 +314,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 html{scroll-padding-bottom:120px}
-body{background:#050507;color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+body{background:#050607;color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
 /* --- FIX-4 2026-11-17 (brief BRIEF-SMART-MAIL-FIX4-UNIFY-20261117): the
    scroll region ends ABOVE the dock. The document is a 100dvh flex column:
    .page-scroll (cover + menu + main) is the only scroller; the Five sits
@@ -388,7 +388,7 @@ img{max-width:100%}
 
 .ph-plus{position:absolute;top:32px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);display:grid;place-items:center;font-size:24px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.55);transition:box-shadow .2s,border-color .2s,transform .2s}
 .ph-plus:hover{border-color:#a21caf;box-shadow:0 0 26px rgba(162,28,175,.65),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
-.ph-plus.left{left:24px}.ph-plus.right{right:24px}
+.ph-plus.left{left:24px}.ph-plus.right{right:24px;border-color:#a21caf}
 /* WHITE-MIDDLE §3(c): the slim top strip — flush at the top of .page-scroll, no banner, no title, no wasted space. The + buttons sit in-flow here (position:relative keeps their orbit ring anchored); their look and handlers are untouched. */
 .ph-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px 0}
 .ph-top .ph-plus{position:relative;top:auto;left:auto;right:auto}
@@ -396,7 +396,7 @@ img{max-width:100%}
 /* FIX-7 (item 2): the menu bar's background was rgba(5,5,7,.92) — lines
    scrolling under it showed through faintly (Fix-6 checker: subtitle
    straddling its bottom edge at desktop a-50, inbox line through it at
-   a-100). It is now SOLID #050507, the same near-black: the bar looks
+   a-100). It is now SOLID #050607, the same near-black: the bar looks
    identical, but nothing can show through it. The title's solid band
    covers everything below the bar. */
 
@@ -416,7 +416,7 @@ img{max-width:100%}
 .ph-main{padding:6px 24px 32px}
 /* FIX-4 (brief item 1): the fade did NOT land as a fix — its transparent
    bottom let scrolling text show through, cut mid-glyph with a hard edge.
-   The band is now SOLID opaque #050507 (the menu-bar above it is the
+   The band is now SOLID opaque #050607 (the menu-bar above it is the
    working example): nothing ever shows through it sliced. top:54px tucks
    the band 2px under the 56px sticky menu-bar so no hairline gap ever
    shows scrolling text between the two bands (FIX-7 item 2b: the old
@@ -444,8 +444,8 @@ img{max-width:100%}
 .cover-toggle{margin-top:8px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
 .smart-lists h3{margin:0;padding:16px 18px 4px;font-size:19px;font-weight:800}
-.smart-lists .list-chip{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:2px solid rgba(255,255,255,.14);background:linear-gradient(180deg,#12101a,#08080c);color:#fff;font-family:inherit;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.55),0 0 14px color-mix(in srgb,var(--ac,#8e24aa) 20%,transparent);transition:border-color .2s,box-shadow .2s,transform .2s}
-.smart-lists .list-chip:hover{border-color:var(--ac,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 20px -2px var(--ac,#8e24aa),0 14px 28px rgba(0,0,0,.6);transform:translateY(-2px)}
+.smart-lists .list-chip{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:2px solid var(--ac,#8e24aa);background:linear-gradient(135deg,#050607,#050607);color:#fff;font-family:inherit;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 14px color-mix(in srgb,var(--ac,#8e24aa) 20%,transparent);transition:border-color .2s,box-shadow .2s,transform .2s}
+.smart-lists .list-chip:hover{border-color:var(--ac,#8e24aa);box-shadow:0 0 20px -2px var(--ac,#8e24aa),0 14px 28px rgba(0,0,0,.6);transform:translateY(-2px)}
 .smart-lists .list-chip.active{border-color:var(--ac,#8e24aa);background:rgba(142,36,170,.08);box-shadow:0 0 22px -2px var(--ac,#8e24aa),0 10px 22px rgba(0,0,0,.55)}
 .smart-lists .list-chip b{font-size:17px}
 .smart-lists .list-chip span:not(.cx-ava){font-size:17px;color:#fff;display:block;margin-top:2px}
@@ -457,7 +457,7 @@ img{max-width:100%}
 .org-tabs{display:flex;gap:10px;overflow-x:auto;padding:8px 2px 8px;scrollbar-width:thin}
 .org-tabs::-webkit-scrollbar{height:6px}
 .org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
-.nf-smtab{position:relative;flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid var(--tc);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--tc) 55%,transparent),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
+.nf-smtab{position:relative;flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid var(--tc);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:17px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--tc) 55%,transparent),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
 .nf-smtab:hover,.nf-smtab:focus-visible{background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--tc) 38%,#12121a),#07070b 78%);border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 14px 32px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--tc) 42%,transparent);text-shadow:0 0 12px var(--tc)}
 .nf-smtab.active{border-color:var(--tc);background:linear-gradient(155deg,rgba(255,255,255,.20) 0%,rgba(255,255,255,0) 42%),radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--tc) 62%,#ffffff) 0%,color-mix(in srgb,var(--tc) 52%,#12121a) 45%,#07070b 78%);transform:translateY(-3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.10),0 18px 36px rgba(0,0,0,.65),0 0 24px color-mix(in srgb,var(--tc) 55%,transparent);text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 10px color-mix(in srgb,var(--tc) 70%,transparent)}
 /* EYE FOLLOW-ON 2026-11-17 — the lit pill rebuilt as a full object, harvested
@@ -492,27 +492,27 @@ img{max-width:100%}
 .messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
 .panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
 .panel:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.45);box-shadow:0 24px 48px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1),0 0 26px rgba(142,36,170,.22)}
-.panel h3{margin:0;padding:8px 18px 6px;font-size:19px;font-weight:800}
+.panel h3{font-family:Marcellus,Georgia,serif;margin:0;padding:8px 18px 6px;font-size:19px;font-weight:800}
 .panel .panel-sub{padding:0 18px 4px;font-size:17px;color:#fff}
 /* --- ORB: the EXACT Connections-room orb — .cx-stage .cx-ava, live from
    https://nayanet.app/rooms/connections. Initial by default (JS sets
    textContent = initials(name)); per-person --cc; the spin is the conic
-   sheen ::after rotating (cxsheen 7s linear infinite) — the orb flows
+   sheen ::after rotating (cxsheen 60s linear infinite) — the orb flows
    with the initials. 58px, 48px under 760px, .big 78px for the thread head. --- */
-.cx-ava{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;font-size:22px;font-weight:900;color:#fff;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 42%),radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--cc) 55%,#101014) 0%,color-mix(in srgb,var(--cc) 28%,#060607) 78%);border:2px solid var(--cc);box-shadow:0 0 24px -4px var(--cc),inset 0 2px 3px rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.55);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.cx-ava{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;font-size:22px;font-weight:900;color:#fff;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 42%),radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--cc) 55%,#050607) 0%,color-mix(in srgb,var(--cc) 28%,#050607) 78%);border:2px solid var(--cc);box-shadow:0 0 24px -4px var(--cc),inset 0 -6px 12px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.55);text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .cx-ava.big{width:78px;height:78px;font-size:30px}
-.cx-ava::after{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.35) 40deg,transparent 90deg);animation:cxsheen 7s linear infinite;pointer-events:none}
+.cx-ava::after{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.35) 40deg,transparent 90deg);animation:cxsheen 60s linear infinite;pointer-events:none}
 .cx-ava{position:relative;overflow:hidden}
 @keyframes cxsheen{to{transform:rotate(360deg)}}
-@media(max-width:760px){.cx-ava{width:48px;height:48px;font-size:16px}
+@media(max-width:760px){.cx-ava{width:48px;height:48px;font-size:17px}
 .cx-ava.big{width:64px;height:64px;font-size:24px}}
 .orb-wrap{position:relative;flex:none}
-.orb-dot{position:absolute;right:0;bottom:2px;width:12px;height:12px;border-radius:50%;background:#07925f;border:2px solid #08080c;box-shadow:0 0 10px rgba(7,146,95,.8)}
+.orb-dot{position:absolute;right:0;bottom:2px;width:12px;height:12px;border-radius:50%;background:#07925f;border:2px solid #050607;box-shadow:0 0 10px rgba(7,146,95,.8)}
 /* --- CONVERSATION / PERSON ROWS --- */
 .rows{display:flex;flex-direction:column;gap:8px;padding:2px 12px 16px}
-.row{--ac:#8e24aa;display:flex;gap:12px;align-items:center;padding:11px;border-radius:20px;border:2px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#07070b,#020203);cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -4px 12px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.06),0 12px 40px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.4);transition:all .25s;text-align:left;width:100%;color:#fff;font-family:inherit}
-.row:hover{background:linear-gradient(180deg,color-mix(in srgb,var(--ac) 24%,#07070b),color-mix(in srgb,var(--ac) 12%,#020203));border-color:var(--ac);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 14px -2px var(--ac),0 18px 56px rgba(0,0,0,.55);transform:translateY(-4px)}
-.row.active{border-color:var(--ac);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 18px -2px var(--ac),0 18px 56px rgba(0,0,0,.55)}
+.row{--ac:#8e24aa;display:flex;gap:12px;align-items:center;padding:11px;border-radius:20px;border:2px solid var(--ac);background:linear-gradient(135deg,#050607,#050607);cursor:pointer;box-shadow:inset 0 -4px 12px rgba(0,0,0,.25),0 12px 40px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.4);transition:all .25s;text-align:left;width:100%;color:#fff;font-family:inherit}
+.row:hover{background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 24%,#050607),color-mix(in srgb,var(--ac) 12%,#050607));border-color:var(--ac);box-shadow:inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 14px -2px var(--ac),0 18px 56px rgba(0,0,0,.55);transform:translateY(-4px)}
+.row.active{border-color:var(--ac);background:linear-gradient(135deg,#050607,#050607);box-shadow:inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 18px -2px var(--ac),0 18px 56px rgba(0,0,0,.55)}
 .row-body{flex:1;min-width:0}
 .row-name{font-size:17px;font-weight:800;display:flex;gap:8px;align-items:baseline}
 .row-name .match{font-size:17px;color:#fff;font-weight:800}
@@ -534,15 +534,15 @@ img{max-width:100%}
 .thread-head .who span{display:block;font-size:17px;color:#fff;margin-top:2px}
 .thread-head .who span.mail-mode{color:#fff}
 /* --- TOGGLE: Smart Mail | Instant Message, in place --- */
-.toggle{display:flex;border-radius:999px;border:1.5px solid rgba(142,36,170,.55);overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15);flex:none}
-.toggle button{padding:10px 16px;background:#0a0a0f;color:#fff;border:1.5px solid rgba(255,255,255,.35);font-size:13px;font-weight:800;cursor:pointer;transition:box-shadow .2s,border-color .2s;display:inline-flex;align-items:center;gap:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 6px 16px rgba(0,0,0,.5)}
+.toggle{display:flex;border-radius:999px;border:1.5px solid rgba(142,36,170,.55);overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5);flex:none}
+.toggle button{padding:10px 16px;background:#050607;color:#fff;border:1.5px solid var(--tc);font-size:17px;font-weight:800;cursor:pointer;transition:box-shadow .2s,border-color .2s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 16px rgba(0,0,0,.5)}
 .toggle button:hover{box-shadow:0 0 18px var(--tc,rgba(142,36,170,.5))}
 /* TOGGLE, PRO-LEVEL (brief §2): one control; the active side's OWN icon
    lights up in its own colour — mail blue, IM green. The icon IS the
    light (its own glow); there is no separate dot or light beside it.
    No gradient fill on .on: obsidian inside, light outside only. */
-.toggle button .tgl-ico{font-size:15px;line-height:1;color:#fff;transition:text-shadow .25s,color .25s}
-.toggle button.on{background:#0a0a0f;color:#fff;border-color:var(--tc);box-shadow:0 0 20px var(--tc),0 8px 20px rgba(0,0,0,.5)}
+.toggle button .tgl-ico{font-size:17px;line-height:1;color:#fff;transition:text-shadow .25s,color .25s}
+.toggle button.on{background:#050607;color:#fff;border-color:var(--tc);box-shadow:0 0 20px var(--tc),0 8px 20px rgba(0,0,0,.5)}
 .toggle button.on .tgl-ico{color:#fff;text-shadow:0 0 12px var(--tc),0 0 4px #fff}
 .toggle button[disabled]{opacity:.45;cursor:not-allowed}
 /* FIX-7 (item 1b): the Fix-6 checker proved the same linear 30px ramp
@@ -553,18 +553,16 @@ img{max-width:100%}
    (first text) still reads bright at rest: its top lands at 48px (~87%
    opacity) and its text at ~57px (100%), instead of inside the fade. */
 .thread-body{flex:1;padding:48px 18px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);mask-size:100% 100%}
-.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:17px;line-height:1.55;box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 16px rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.16);transition:transform .25s,box-shadow .25s,border-color .25s}
+.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:17px;font-weight:700;line-height:1.55;box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 16px rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.16);transition:transform .25s,box-shadow .25s,border-color .25s}
 .msg:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.65);box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),0 0 22px rgba(142,36,170,.45)}
 .msg .meta{display:block;font-size:17px;color:#fff;margin-top:6px}
 /* .msg.mine: colour FILL is gone — obsidian inside, royal-purple rim + glow outside (Code §4: colour in rims and halos, never fills). */
-.msg.mine{align-self:flex-end;background:linear-gradient(180deg,#17102a,#0a0a0f);border-color:#8e24aa;box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 26px rgba(142,36,170,.45)}
+.msg.mine{align-self:flex-end;background:linear-gradient(135deg,#050607,#050607);border-color:#8e24aa;box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 26px rgba(142,36,170,.45)}
 .msg.theirs{align-self:flex-start;background:linear-gradient(180deg,#1b1b24,#0c0c11);border-color:var(--mc,#0f52ba);box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 22px color-mix(in srgb,var(--mc,#0f52ba) 40%,transparent)}
 .msg.letter{align-self:stretch;max-width:100%;background:linear-gradient(180deg,#14141d,#0a0a0f);border:1.5px solid var(--wc,#0f52ba);box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12),0 0 22px color-mix(in srgb,var(--wc,#0f52ba) 35%,transparent)}
 .msg.letter .subject{font-weight:800;font-size:19px;margin-bottom:6px}
 .msg.letter .letter-to{font-size:17px;color:#fff;margin-bottom:8px}
-.typing{align-self:flex-start;font-size:12.5px;color:#fff;padding:6px 4px}
-
-
+.typing{align-self:flex-start;font-size:17px;color:#fff;padding:6px 4px}
 /* --- SMART NOTE card in the thread (L6 format) --- */
 
 
@@ -574,36 +572,36 @@ img{max-width:100%}
 /* --- COMPOSER with real depth --- */
 .composer{padding:14px;border-top:1px solid rgba(255,255,255,.09)}
 .composer-inner{display:flex;gap:10px;align-items:flex-end}
-.composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:17px;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.22)}
+.composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:17px;font-weight:700;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.22)}
 .composer input[type=text]:focus{border-color:#8e24aa;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 0 28px rgba(142,36,170,.5)}
 .composer input.subject{flex:0 0 180px}
 .composer input[type=text]::placeholder{color:#fff;opacity:1}
-.btn{--btn-accent:var(--room-accent,var(--magenta));display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;padding:0 22px;border-radius:var(--radius-pill);border:1px solid color-mix(in srgb,var(--btn-accent) 45%,transparent);background:linear-gradient(145deg,color-mix(in srgb,var(--btn-accent) 26%,#1a1424),color-mix(in srgb,var(--btn-accent) 10%,#0b0a10));color:var(--ink);font-size:12.5px;font-weight:800;letter-spacing:.06em;cursor:pointer;box-shadow:var(--depth-hi),0 10px 26px #000a,0 0 22px color-mix(in srgb,var(--btn-accent) 26%,transparent);transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-med) var(--ease),filter var(--dur-fast) var(--ease);white-space:nowrap;font-family:inherit}
+.btn{--btn-accent:var(--room-accent,var(--magenta));display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;padding:0 22px;border-radius:var(--radius-pill);border:1px solid color-mix(in srgb,var(--btn-accent) 45%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--btn-accent) 26%,#050607),color-mix(in srgb,var(--btn-accent) 10%,#050607));color:var(--ink);font-size:17px;font-weight:800;letter-spacing:.06em;cursor:pointer;box-shadow:var(--depth-hi),0 10px 26px #000a,0 0 22px color-mix(in srgb,var(--btn-accent) 26%,transparent);transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-med) var(--ease),filter var(--dur-fast) var(--ease);white-space:nowrap;font-family:inherit}
 .btn:hover{transform:translateY(-2px);filter:brightness(1.12);box-shadow:var(--depth-hi),0 16px 36px #000b,0 0 34px color-mix(in srgb,var(--btn-accent) 40%,transparent)}
 .btn:active{transform:translateY(0) scale(.985)}
-.btn.ghost{background:linear-gradient(180deg,#12101a,#08080c);border:1px solid color-mix(in srgb,var(--btn-accent) 45%,transparent);box-shadow:var(--depth-hi),0 10px 26px #000a,0 0 18px color-mix(in srgb,var(--btn-accent) 22%,transparent);color:var(--ink-dim)}
+.btn.ghost{background:linear-gradient(135deg,#050607,#050607);border:1px solid color-mix(in srgb,var(--btn-accent) 45%,transparent);box-shadow:var(--depth-hi),0 10px 26px #000a,0 0 18px color-mix(in srgb,var(--btn-accent) 22%,transparent);color:var(--ink-dim)}
 .btn.ghost:hover{transform:translateY(-2px);filter:brightness(1.12);border-color:color-mix(in srgb,var(--btn-accent) 65%,transparent);box-shadow:var(--depth-hi),0 16px 36px #000b,0 0 30px color-mix(in srgb,var(--btn-accent) 40%,transparent)}
 .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;filter:none}
 .thread-foot{display:flex;gap:10px;flex-wrap:wrap;padding:0 14px 14px}
-.thread-foot .btn{padding:10px 14px;font-size:13px}
+.thread-foot .btn{padding:10px 14px;font-size:17px}
 /* --- NOTIFICATION TOAST --- */
-.toast{position:fixed;top:16px;right:16px;z-index:80;width:min(360px,calc(100vw - 32px));border-radius:16px;border:1px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:0 0 30px rgba(142,36,170,.5),0 20px 44px rgba(0,0,0,.7);padding:14px 16px;cursor:pointer;display:none}
+.toast{position:fixed;top:16px;right:16px;z-index:80;width:min(360px,calc(100vw - 32px));border-radius:16px;border:1px solid rgba(142,36,170,.55);background:linear-gradient(135deg,#050607,#050607);box-shadow:0 0 30px rgba(142,36,170,.5),0 20px 44px rgba(0,0,0,.7);padding:14px 16px;cursor:pointer;display:none}
 .toast.show{display:block}
-.toast b{font-size:14.5px}
-.toast p{margin:5px 0 0;font-size:13px;color:#fff;line-height:1.45}
+.toast b{font-size:17px}
+.toast p{margin:5px 0 0;font-size:17px;color:#fff;line-height:1.45}
 .toast small{color:#fff;font-weight:700}
 /* --- INSTALL VEIL: harvested from the live identity page --- */
 .install-veil{position:fixed;inset:0;z-index:90;background:rgba(3,3,6,.82);display:none;align-items:center;justify-content:center;padding:20px}
 .install-veil.show{display:flex}
-.install-card{position:relative;width:min(420px,100%);border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1px solid rgba(142,36,170,.55);box-shadow:0 0 40px rgba(142,36,170,.45),0 30px 60px rgba(0,0,0,.8);padding:28px 24px;text-align:center}
-.install-card h2{margin:0 0 8px;font-size:22px}
-.install-card p{margin:0 0 16px;font-size:14px;line-height:1.55;color:#fff}
-.install-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#0a0a0f;color:#fff;font-size:16px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 18px rgba(0,0,0,.55),0 0 12px rgba(162,28,175,.25)}
+.install-card{position:relative;width:min(420px,100%);border-radius:20px;background:linear-gradient(135deg,#050607,#050607);border:1px solid rgba(142,36,170,.55);box-shadow:0 0 40px rgba(142,36,170,.45),0 30px 60px rgba(0,0,0,.8);padding:28px 24px;text-align:center}
+.install-card h2{font-family:Marcellus,Georgia,serif;margin:0 0 8px;font-size:25px}
+.install-card p{margin:0 0 16px;font-size:17px;font-weight:700;line-height:1.55;color:#fff}
+.install-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid #a21caf;background:#050607;color:#fff;font-size:17px;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.55),0 0 12px rgba(162,28,175,.25)}
 .install-x:hover{border-color:#a21caf;box-shadow:0 0 18px rgba(162,28,175,.55)}
-.install-manual{text-align:left;margin-top:16px;font-size:13.5px;line-height:1.6;color:#fff}
+.install-manual{text-align:left;margin-top:16px;font-size:17px;line-height:1.6;color:#fff}
 .install-manual b{color:#fff}
-.install-later{display:block;margin:14px auto 0;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(142,36,170,.55);color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;padding:8px 18px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 18px rgba(0,0,0,.5),0 0 14px rgba(142,36,170,.25);transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
-.install-later:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(180deg,color-mix(in srgb,#8e24aa 24%,#12101a),color-mix(in srgb,#8e24aa 12%,#08080c));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5);text-shadow:0 0 12px rgba(142,36,170,.8)}
+.install-later{display:block;margin:14px auto 0;background:linear-gradient(135deg,#050607,#050607);border:1px solid rgba(142,36,170,.55);color:#fff;font-size:17px;font-weight:700;cursor:pointer;padding:8px 18px;border-radius:999px;box-shadow:0 8px 18px rgba(0,0,0,.5),0 0 14px rgba(142,36,170,.25);transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
+.install-later:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(135deg,color-mix(in srgb,#8e24aa 24%,#050607),color-mix(in srgb,#8e24aa 12%,#050607));box-shadow:0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5);text-shadow:0 0 12px rgba(142,36,170,.8)}
 /* --- THE FIVE bottom bar (Unification 2026-11-17): the official bar, harvested
    verbatim from the Personal page (NayaNotif SEGS + ICONS). Hub .notif-bar /
    .notif-tile construction unchanged; the segments are the six, each with its
@@ -629,26 +627,26 @@ img{max-width:100%}
 /* TEXT-TOPIC-PILLS spot 8: the visible label under each tile — bold white, one size, whole (never clipped). At phone widths the row scrolls so the labels stay whole. */
 .notif-label{display:block;font-size:17px;font-weight:800;color:#fff;letter-spacing:.04em;line-height:1.25;white-space:nowrap;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 @keyframes notifPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
-.notif-seg.has-news .notif-tile{border-color:var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
+.notif-seg.has-news .notif-tile{border-color:var(--nc);box-shadow:inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
 /* --- WORLD FEED PANEL + NOTIFICATION CHOICE SHEET (trio's door, spec §) --- */
-.feed-panel{position:fixed;left:50%;transform:translateX(-50%) translateY(12px);bottom:104px;z-index:46;width:min(560px,calc(100vw - 24px));max-height:min(62vh,560px);overflow-y:auto;border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1.5px solid rgba(142,36,170,.55);box-shadow:0 0 40px rgba(142,36,170,.4),0 30px 60px rgba(0,0,0,.8);padding:18px 18px 14px;display:none;opacity:0;transition:opacity .25s,transform .25s}
+.feed-panel{position:fixed;left:50%;transform:translateX(-50%) translateY(12px);bottom:104px;z-index:46;width:min(560px,calc(100vw - 24px));max-height:min(62vh,560px);overflow-y:auto;border-radius:20px;background:linear-gradient(135deg,#050607,#050607);border:1.5px solid rgba(142,36,170,.55);box-shadow:0 0 40px rgba(142,36,170,.4),0 30px 60px rgba(0,0,0,.8);padding:18px 18px 14px;display:none;opacity:0;transition:opacity .25s,transform .25s}
 .feed-panel.show{display:block;opacity:1;transform:translateX(-50%) translateY(0)}
-.feed-panel h3{margin:0 0 2px;font-size:17px}
-.feed-panel .feed-sub{font-size:13px;color:#fff;margin:0 0 12px;line-height:1.5}
-.feed-panel .feed-thing{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:14px 0 6px}
-.feed-item{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:14px;border:2px solid rgba(255,255,255,.14);background:linear-gradient(180deg,#12101a,#08080c);color:#fff;font-family:inherit;cursor:pointer;margin-bottom:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.55);transition:border-color .2s,box-shadow .2s,transform .2s}
-.feed-item:hover{border-color:#8e24aa;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 20px rgba(142,36,170,.4),0 14px 28px rgba(0,0,0,.6);transform:translateY(-2px)}
-.feed-item b{font-size:14px}
-.feed-item p{margin:4px 0 0;font-size:13px;color:#fff;line-height:1.45}
-.feed-item .src{display:none;margin-top:6px;font-size:12px;color:#fff}
+.feed-panel h3{font-family:Marcellus,Georgia,serif;margin:0 0 2px;font-size:19px}
+.feed-panel .feed-sub{font-size:17px;color:#fff;margin:0 0 12px;line-height:1.5}
+.feed-panel .feed-thing{font-size:17px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:14px 0 6px}
+.feed-item{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:14px;border:2px solid rgba(142,36,170,.55);background:linear-gradient(135deg,#050607,#050607);color:#fff;font-family:inherit;cursor:pointer;margin-bottom:8px;box-shadow:0 10px 24px rgba(0,0,0,.55);transition:border-color .2s,box-shadow .2s,transform .2s}
+.feed-item:hover{border-color:#8e24aa;box-shadow:0 0 20px rgba(142,36,170,.4),0 14px 28px rgba(0,0,0,.6);transform:translateY(-2px)}
+.feed-item b{font-size:17px}
+.feed-item p{margin:4px 0 0;font-size:17px;font-weight:700;color:#fff;line-height:1.45}
+.feed-item .src{display:none;margin-top:6px;font-size:17px;color:#fff}
 .feed-item.open .src{display:block}
 .feed-panel .feed-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.feed-panel .feed-actions .btn{padding:9px 14px;font-size:12px;min-height:36px}
+.feed-panel .feed-actions .btn{padding:9px 14px;font-size:17px;min-height:36px}
 .choice-row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:11px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
 .choice-row:last-of-type{border-bottom:0}
-.choice-row span{font-size:14px;font-weight:700}
-.choice-row small{display:block;font-size:12px;color:#fff;font-weight:400;margin-top:2px}
-.choice-toggle{flex:none;width:52px;height:30px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:#0a0a0f;cursor:pointer;position:relative;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 6px 14px rgba(0,0,0,.5),0 0 10px rgba(255,255,255,.08)}
+.choice-row span{font-size:17px;font-weight:700}
+.choice-row small{display:block;font-size:17px;color:#fff;font-weight:400;margin-top:2px}
+.choice-toggle{flex:none;width:52px;height:30px;border-radius:999px;border:1.5px solid rgba(7,146,95,.55);background:#050607;cursor:pointer;position:relative;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 6px 14px rgba(0,0,0,.5),0 0 10px rgba(255,255,255,.08)}
 .choice-toggle::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.5);transition:left .2s}
 .choice-toggle[aria-pressed="true"]{border-color:#07925f;background:rgba(7,146,95,.25);box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 6px 14px rgba(0,0,0,.5),0 0 18px rgba(7,146,95,.45)}
 .choice-toggle[aria-pressed="true"]::after{left:25px;background:#07925f}
@@ -670,18 +668,18 @@ img{max-width:100%}
    mail mirrors Smart Notes: title, nutshell, key points, jewels as bullets).
    Board black inside, white as a real object, the whole board lights up
    and lifts on hover in its own world colour. --- */
-.mail-board{--wc:#0f52ba;border-radius:18px;border:1.5px solid var(--wc);background:linear-gradient(180deg,#12101a,#08080c);padding:18px 20px;box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08),0 0 22px -6px var(--wc);margin:4px 0;transition:box-shadow .25s,transform .2s,border-color .2s}
+.mail-board{--wc:#0f52ba;border-radius:18px;border:1.5px solid var(--wc);background:linear-gradient(135deg,#050607,#050607);padding:18px 20px;box-shadow:0 18px 40px rgba(0,0,0,.6),0 0 22px -6px var(--wc);margin:4px 0;transition:box-shadow .25s,transform .2s,border-color .2s}
 .mail-board:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(0,0,0,.65),0 0 34px -2px var(--wc)}
 .mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:17px;font-weight:900;letter-spacing:.08em;color:#fff;text-transform:uppercase}
-.mail-board h4{margin:10px 0 4px;font-size:25px;font-weight:800;color:#fff}
+.mail-board h4{font-family:Marcellus,Georgia,serif;margin:10px 0 4px;font-size:25px;font-weight:800;color:#fff}
 .mail-nut{margin:0 0 10px;font-size:19px;line-height:1.55;color:#fff;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 /* ALLTOPICS-FIX: KEY POINTS is white like PERSONAL MAIL (.mail-board-top) — it was the world hue, which reads bright blue in Personal. The diamond bullets keep the world hue — they are jewels, not text. */
 .mail-board h5{margin:16px 0 8px;font-size:17px;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
 .mail-points{margin:0;padding:0;list-style:none}
-.mail-points li{position:relative;font-size:17px;line-height:1.55;color:#fff;padding-left:22px;margin-bottom:6px}
+.mail-points li{position:relative;font-size:17px;font-weight:700;line-height:1.55;color:#fff;padding-left:22px;margin-bottom:6px}
 .mail-points li::before{content:'◆';position:absolute;left:0;top:0;color:var(--wc);text-shadow:0 0 8px var(--wc)}
 .mail-meta{margin:12px 0 0;font-size:17px;color:#fff}
-.mail-board .mail-unread{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:var(--wc);color:#06060a;font-size:11px;font-weight:900;letter-spacing:.04em;vertical-align:2px}
+.mail-board .mail-unread{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:var(--wc);color:#fff;font-size:17px;font-weight:900;letter-spacing:.04em;vertical-align:2px}
 /* --- ORBIT (Naya Code §8): every circle carries flow. The ring lives on
    .orb-wrap's own ::before/::after, so every orb — rows, thread head —
    orbits with no HTML change. Two satellites, slow, alternating: CW 60s,
@@ -709,7 +707,7 @@ img{max-width:100%}
 }
 @media (max-width:420px){
   .ph-main{padding:8px 12px 32px}
-  .toggle button{padding:10px 11px;font-size:12px}
+  .toggle button{padding:10px 11px;font-size:17px}
   .thread-head{flex-wrap:wrap}
   .msg{max-width:88%}
   .page-scroll{--titleEdge:108px} /* FIX-6: 2-line title edge ≈46+62 (FIX-7: 54px bar-tuck) */
@@ -748,7 +746,7 @@ img{max-width:100%}
    ~92px desktop; the feed-panel (bottom:104px) still clears it.
    (item 4) SECONDARY TEXT: every text colour in this file already computes
    to #fff — no opacity rule and no desktop-only rule dims these lines
-   (the 390 eye's 0 gray hits agree). What the desktop eye read as gray
+   (the 390 eye's 0 dim hits agree). What the desktop eye read as dim
    was the two veils: scrolling text dimmed under the sticky heading's
    fade-to-transparent band (fixed solid by item 1) and under the fixed
    dock's blur bar mid-scroll (fixed structurally by item 3). Both veils
@@ -756,15 +754,15 @@ img{max-width:100%}
    weight 600 so no eye can call them dim at any width. Disabled buttons
    keep opacity:.45 — a correct disabled affordance, out of scope.
    FIX-5 (2026-11-17): the veil theory is DEAD — the veils are gone and
-   the lead paragraph is STILL gray in all three worlds, so the dimming
+   the lead paragraph is STILL dim in all three worlds, so the dimming
    was never the veils. Full scan: no color/opacity/blend rule dims any
    of the named lines (computed #fff, effective opacity 1.0). The real
    mechanism is glyph rendering: weight 400 (.mail-nut, the search
    placeholder) and font-size:smaller ~10.8px (.nf-smtab small) under
    antialiased smoothing give ~1px strokes with no solid white core —
-   the glyphs render as gray fringe next to 800/900-weight white text.
+   the glyphs render as dim fringe next to 800/900-weight white text.
    Fixed by weight/size, not color: .mail-nut 400 -> 700, .nf-smtab
-   small -> 12px/900, search placeholder -> 600. Computed color stays
+   small -> 17px/900, search placeholder -> 600. Computed color stays
    #fff (it already was).
    (item 5) ONE-SET PRECISION: dock icon strokes (svg currentColor via
    .notif-tile color) and avatar rings (.cx-ava border) were color-mix
@@ -772,7 +770,7 @@ img{max-width:100%}
    lighter variants the 390 eye measured (#ae61c2 etc.). They are now the
    bare palette hexes (var(--nc) / var(--cc)). Glows keep their
    color-mix-with-transparent (alpha, hue preserved — the glows already
-   used the exact hexes). Dark washes (mixes with #12121a / #101014) are
+   used the exact hexes). Dark washes (mixes with #050607 / #050607) are
    shading, not lighter variants, and stand. --- */
 .panel-sub,.stub-note,.row-last,.row-nut,.msg .meta,.thread-head .who span,.mail-meta,.letter-to,.typing,.feed-sub,.choice-row small,.toast p{font-weight:600}
 /* --- FIX-3 round 2 (eye 02:59Z): dock cycle 60s/75s, dots 6px/5px -- strictly faster than the 60s/90s the eye read as ~6 min/rev; no 360s duration existed in the filed bytes. */
@@ -819,7 +817,7 @@ img{max-width:100%}
 <!-- WHITE-MIDDLE §3(c): the cover banner stood here — gone (Shawn 20:46Z). The page opens on the mail itself. The two + controls live in this slim strip, flush at the top: New message left, Install Smart Mail right. -->
 <div class="ph-top">
   <button class="ph-plus left" id="plusNew" type="button" aria-label="New message">+</button>
-  <button class="ph-plus right" id="plusInstall" type="button" aria-label="Install Smart Mail">+</button>
+  <button class="ph-plus right" id="plusInstall" type="button" aria-label="Install Smart Mail">&#11015;</button>
 </div>
 
 <!-- MENU BAR -->
@@ -1187,12 +1185,12 @@ function refreshFiveCounts(){
   Object.keys(MAIL).forEach(function(w){ MAIL[w].forEach(function(m){ if (m.unread) unread++; }); });
   var mc = document.querySelector('[data-notif="mail"] .notif-count');
   mc.textContent = unread > 9 ? '9+' : String(unread);
-  mc.style.display = unread === 0 ? 'none' : 'flex';
+  mc.style.display = 'flex'; /* SWEEP-3 Fix 13: a verified zero shows as a digit tile, never as nothing. */
   document.querySelector('[data-notif="mail"]').classList.toggle('has-news', unread > 0);
   var act = WORLD_COUNTS.personal + WORLD_COUNTS.business + WORLD_COUNTS.thing;
   var ac = document.querySelector('[data-notif="activity"] .notif-count');
   ac.textContent = act > 9 ? '9+' : String(act);
-  ac.style.display = act === 0 ? 'none' : 'flex';
+  ac.style.display = 'flex'; /* SWEEP-3 Fix 13: a verified zero shows as a digit tile, never as nothing. */
   document.querySelector('[data-notif="activity"]').classList.toggle('has-news', act > 0);
 }
 function setWorldCount(world, n){
@@ -1231,7 +1229,7 @@ var SMART_LISTS = {
     { name:'Design crew', color:'#07925f', members:['t-d1','t-d2'], note:'Ava L. · Noah B.' }
   ],
   mail: [
-    { name:'Family mail', color:'#a21caf', members:['sam','jordan'], note:'Sam V. · Jordan K.' },
+    { name:'Family mail', color:'#d4a017', members:['sam','jordan'], note:'Sam V. · Jordan K.' },
     { name:'Clients', color:'#0f52ba', members:['t-b1','t-b2'], note:'Vera K. · David L.' }
   ]
 };
@@ -1633,7 +1631,7 @@ function renderSmartLists(){
   function chips(kind, elId){
     $(elId).innerHTML = SMART_LISTS[kind].map(function(l){
       return '<button class="list-chip' + (state.listName===l.name ? ' active' : '') + '" type="button" data-list="' + esc(l.name) + '" data-kind="' + kind + '" style="--ac:' + l.color + '">' +
-        '<span class="cx-ava" style="--cc:' + l.color + ';width:40px;height:40px;font-size:15px">' + esc(l.name.charAt(0)) + '</span>' +
+        '<span class="cx-ava" style="--cc:' + l.color + ';width:40px;height:40px;font-size:17px">' + esc(l.name.charAt(0)) + '</span>' +
         '<span><b>' + esc(l.name) + '</b><span>' + esc(l.note) + '</span></span></button>';
     }).join('');
   }
@@ -1735,7 +1733,7 @@ window.__booted = true;
    Trade-off, stated plainly: at narrow widths the hero cover scrolls up
    by the offset at load (its top, with the h1 and + buttons, moves above
    the fold); the cover itself stays visible and the card clears — that
-   is the brief's own "scroll offset" shape. The gray-text weights are
+   is the brief's own "scroll offset" shape. The dim-text weights are
    untouched. */
 var fix6Scroll = document.querySelector('.page-scroll');
 var fix6Title = document.querySelector('.page-title');
@@ -1809,11 +1807,12 @@ fix8SyncDockFade();
 if (window.requestAnimationFrame) requestAnimationFrame(fix8SyncDockFade);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(fix8SyncDockFade);
 
-/* U+25C9 GUARD: no rendered text on this page may contain the literal
-   string — the Dashboard pill and every glyph here are CSS shapes, never
-   text escapes. True = clean. (The guard's own search needle and the
-   header comment naming the defect are the only occurrences in the file.) */
-window.__glyphCheck = !/\u25c9/.test(document.body.innerText);
+/* GLYPH GUARD: no rendered text on this page may contain the literal
+   fisheye glyph — the Dashboard pill and every glyph here are CSS shapes,
+   never text escapes. True = clean. The guard searches with
+   String.fromCharCode(0x25C9), so the filed bytes contain zero
+   backslash-u escapes. */
+window.__glyphCheck = !document.body.innerText.includes(String.fromCharCode(0x25C9));
 </script>
 </body>
 </html>
