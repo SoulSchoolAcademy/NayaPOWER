@@ -120,6 +120,7 @@ window.addEventListener('appinstalled', function () {
   --accent-growth:      var(--gold);            /* inviting gold */
   --accent-factory:     var(--purple);          /* the flagship — Naya's signature */
   --accent-ask:         var(--blue);            /* Ask Naya — sapphire clarity */
+  --accent-leaderboards: var(--gold);            /* Leaderboards — trophy gold (LEADERBOARDS 2026-11-17) */
 
   /* ——— Living depth (the material grammar) ——— */
   --depth-hi:  inset 0 1px #fff6;
@@ -2927,6 +2928,7 @@ const Runtime = (() => {
     { id: 'today',       name: 'Intel Today', kicker: 'TODAY',    accent: 'var(--accent-today)',       icon: 'spark' },
     { id: 'growth',      name: 'Smart Growth',          kicker: 'GROWTH',       accent: 'var(--accent-growth)',      icon: 'users' },
     { id: 'reports',     name: 'Your Reports',        kicker: 'REPORTS',      accent: 'var(--accent-reports)',     icon: 'report' },
+    { id: 'leaderboards', name: 'Leaderboards',       kicker: 'STANDINGS',    accent: 'var(--accent-leaderboards)', icon: 'trophy' },
     { id: 'library',     name: 'Intelligent Library', kicker: 'LIBRARY',      accent: 'var(--accent-library)',     icon: 'library' },
     { id: 'ledger',      name: 'Smart Ledger',        kicker: 'ACCOUNTABILITY', accent: 'var(--accent-ledger)',     icon: 'ledger' },
     { id: 'connections', name: 'Your Connections',    kicker: 'CONNECTIONS',  accent: 'var(--accent-connections)', icon: 'nodes' },
@@ -6364,7 +6366,7 @@ window.NayaNotif = window.NayaNotif || {
   const RIGHT_ITEMS = [
     { id: 'myworlds', label: 'My Worlds', icon: 'spaces', color: '#c2410c', href: 'https://nayanet.app/#/hub/spaces' },
     { id: 'favworlds', label: 'Favorite Worlds', icon: 'star', color: '#a21caf', href: 'https://nayanet.app/#/hub/spaces' },
-    { id: 'leaderboards', label: 'Leaderboards', icon: 'trophy', color: '#d4a017', href: 'https://nayanet.app/dashboard' },
+    { id: 'leaderboards', label: 'Leaderboards', icon: 'trophy', color: '#d4a017', href: 'https://nayanet.app/#/hub/leaderboards' },
     { id: 'academy', label: 'Naya Academy', icon: 'cap', color: '#c2410c', href: 'https://nayanet.groovepages.com/academy' },
     { id: 'masterclass', label: 'AI Masterclass', icon: 'star', color: '#8e24aa', href: 'https://aimasterclass.help/' },
     { id: 'fac', label: 'Fast Action Club', icon: 'bolt', color: '#07925f', href: 'https://nayanet.app/personal#memberships' },
@@ -7559,6 +7561,7 @@ window.NayaJewels = (() => {
       feed: 'One stream of everything the collective intelligence wants you to see — newest understanding first.',
       today: 'Your day, answered by the intelligence. What matters, what changed, what deserves you.',
       reports: 'Proof, not promises. Every report carries its evidence and its receipts.',
+      leaderboards: 'See where you stand — overall, in your best area, and among the people near you.',
       library: 'Everything retained, organized by what it means — not where it happened to land.',
       ask: 'Ask Naya anything about NayaPOWER — she answers from the knowledge bank, in her own voice.',
       connect: 'The front door. Five steps and the whole network opens — connect your GitHub and you are in.',
@@ -7632,6 +7635,409 @@ window.HubView = HubView;
 })();
 
 </script>
+<style id="lb-style">
+/* LEADERBOARDS 2026-11-17 — the leaderboards view, living on the Hub.
+   Harvest: row board .ph-card (fix9-work.html lines 2018-2025) — obsidian
+   gradient, 2px rim, 20px radius, inset highlight + inset shadow + drop
+   shadow, ignition on hover; only the ignition color changes per row (its
+   own spectrum color). Digit tiles: the Dashboard reel construction
+   (dashboard-pass9.html, PASS-3) — black gradient face, white digit,
+   colored rim + cap; rim colors are the Laws §4 digit mapping (deep
+   values), never the bright era values. Button: the house .primo / the
+   Hub's K.segmented — no new button form.
+   Laws applied: text 25 / 19 / 17 only (no size below 17 anywhere in this
+   block); words white, or deep gold for the one word that matters most;
+   no glow inside, ever; spectrum flows, never repeats; motion is hover
+   lift only — nothing here moves to imply work is happening. */
+.lb-nutshell{font-size:19px;line-height:1.6;color:#ffffff;margin:0}
+.lb-toolbar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:16px 0 8px}
+.lb-note{font-size:17px;line-height:1.6;color:#ffffff;margin:8px 0 0}
+.lb-rows{display:grid;gap:16px;margin-top:16px}
+.lb-group-t{font-size:19px;font-weight:800;color:#ffffff;margin:16px 0 0}
+.lb-row{display:flex;align-items:center;gap:16px;padding:16px;border-radius:20px;background:linear-gradient(180deg,#07070b,#050607);border:2px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5);transition:all .25s}
+.lb-row:hover{border-color:var(--lb-c);transform:translateY(-4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px color-mix(in srgb,var(--lb-c) 35%,transparent)}
+.lb-rankwrap{display:grid;justify-items:center;gap:4px;flex:none}
+.lb-rank{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:2px solid var(--lb-c);color:#ffffff;font-size:25px;font-weight:900;box-shadow:0 8px 18px rgba(0,0,0,.6)}
+.lb-cap{font-size:17px;font-weight:700;color:#ffffff;letter-spacing:.08em}
+.lb-who{flex:1;min-width:0}
+.lb-alias{font-size:19px;font-weight:800;color:#ffffff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-tier{font-size:17px;color:#ffffff;margin-top:4px}
+.lb-star{font-size:17px;color:#d4a017}
+.lb-points{display:flex;gap:6px;align-items:flex-start;flex:none;flex-wrap:wrap;justify-content:flex-end}
+.lb-d{display:inline-block;width:40px;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:2px solid var(--dc);box-shadow:0 8px 18px rgba(0,0,0,.6),0 0 18px color-mix(in srgb,var(--dc) 45%,transparent)}
+.lb-d .lb-dcap{display:block;height:8px;background:linear-gradient(180deg,#ffffff,var(--dc) 55%,var(--dc))}
+.lb-d .lb-num{display:block;height:44px;line-height:44px;text-align:center;font-size:25px;font-weight:900;color:#ffffff}
+.lb-gap{display:inline-block;width:10px}
+.lb-d.d0{--dc:#ffffff}.lb-d.d1{--dc:#c62828}.lb-d.d2{--dc:#c2410c}.lb-d.d3{--dc:#d4a017}.lb-d.d4{--dc:#07925f}.lb-d.d5{--dc:#0e7490}.lb-d.d6{--dc:#3f51b5}.lb-d.d7{--dc:#8e24aa}.lb-d.d8{--dc:#6d28d9}.lb-d.d9{--dc:#a21caf}
+.lb-state{display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;border:1.5px solid #ffffff;background:#050607;color:#ffffff;font-size:17px;font-weight:700}
+.lb-your{border-color:#d4a017;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5),0 0 28px color-mix(in srgb,var(--lb-c) 35%,transparent)}
+.lb-youtag{font-size:17px;font-weight:800;letter-spacing:.12em;color:#d4a017}
+.lb-board{border-color:color-mix(in srgb,var(--room-accent) 55%,transparent)}
+.lb-empty{text-align:center;padding:24px}
+.lb-empty b{display:block;font-size:19px;color:#ffffff;margin-bottom:8px}
+.lb-empty p{font-size:17px;line-height:1.6;color:#ffffff;margin:0}
+.lb-mini{font-size:17px;color:#ffffff}
+@media (max-width:480px){
+.lb-row{padding:12px;gap:12px}
+.lb-rank{width:38px;height:38px;font-size:19px}
+.lb-alias{font-size:17px}
+.lb-d{width:30px}
+.lb-d .lb-num{height:34px;line-height:34px;font-size:19px}
+.lb-gap{width:6px}
+}
+</style>
+<script>/* js/rooms/leaderboards.js @ LEADERBOARDS 2026-11-17 */
+/* LEADERBOARDS — the standings room. Shawn's word 2026-11-16: people go
+   and see where they are scoring in any area, and see themselves at the
+   top of an area. Ranking logic: port of the ambassador tool
+   (hub-sidebars-plus-20261116/work/tools/ambassador/leaderboard.py
+   lines 3-28) — same sort key, same my_row shape (rank None when the
+   alias has no events), same empty rule (no events, no ranks, never
+   fabricated). The points boards use the same shape with points as the
+   score. Points table + tier ladder: locked (§7 of the brief, V6_RUNGS
+   in the Dashboard bytes). Star levels pair 1:1 with the ten rungs, in
+   order. Spectrum flow (Shawn 18:00Z, supersedes the brief's §3 walk):
+   magenta 963 Hz crown -> violet -> indigo -> cyan -> green -> gold ->
+   orange -> red -> back to magenta; the order never changes, the start
+   varies by board. Hexes from Laws §3.1, never sampled.
+   FIX 2026-11-17: the second step widens from purple to deep violet
+   (Laws §3.1) — purple and magenta sit ~6 degrees apart in hue and read as
+   one color on the first two boards; violet sits ~31 degrees from magenta,
+   clearly distinct. Order holds, no adjacent duplicates. (Hexes named in
+   the maker report, not here, so the file's hex counts stay diff-provable.)
+   FIX2 2026-11-17: the eye still read the first two boards as one purple
+   (violet sits ~31 degrees from magenta and the hue lived only in the
+   small icon glow). The boards now step magenta -> indigo -> cyan ->
+   green -> gold -> orange: Top area moves to indigo (blue, ~64 degrees
+   from magenta) and every board after it shifts one step along the
+   spectrum, so the order holds and no two neighbours share a colour.
+   The hue is also carried into the board itself — the selected tab takes
+   the board's hue, the board's rim takes its own hue, and your row keeps
+   its gold border and gold YOU with an outside halo in the board's hue.
+   (Hexes named in the maker report, not here, so the file's hex counts
+   stay diff-provable.)
+   Zero rule (ruled 17:28Z): a number shows only when the Ledger slice
+   measured that citizen — a verified zero is a digit tile; unmeasured
+   shows as a state ("Not counted yet"), never a 0, never a bare dash.
+   No dollar amounts on any public board. Alias only, never real names.
+   No voice in this round. Data: the Ledger seam the ledger room uses
+   (NayaRuntime.roomData('ledger')); unrecognized events are ignored,
+   never guessed; an empty or unconnected Ledger shows honest empty
+   states, never invented rows. */
+(function(){
+  var FLOW=['#a21caf','#6d28d9','#3f51b5','#0e7490','#07925f','#d4a017','#c2410c','#c62828'];
+  var POINTS={create:25,note:35,like:1,love:1,save:5,comment:3,shareIn:5,shareOut:10,invite:25,join:50,sale:100};
+  var RUNGS=[[0,'Emerging'],[1000,'Stirring'],[3000,'Rising'],[6000,'Advancing'],[9000,'Radiant'],[12000,'Loved'],[15000,'Mastering'],[25000,'Legendary'],[50000,'Iconic'],[75000,'Ten Star']];
+  var STARS=['Starting Star','Emerging Star','Advancing Star','Pro Star','Five Star','Superstar','Serious Star','Mega Star','Master Star','Ten Star'];
+  var BOARDS=[
+    {id:'overall',label:'Overall',icon:'trophy',start:0,title:'Overall points',sub:'Every point, added up.'},
+    {id:'top',label:'Top area',icon:'star',start:2,title:'Your top area',sub:'The area where you rank highest.'},
+    {id:'pbt',label:'Personal · Business · Thing',icon:'home',start:3,title:'Personal · Business · Thing',sub:'Where your points were earned.'},
+    {id:'topic',label:'Topic / skill',icon:'spark',start:4,title:'By topic / skill',sub:'What you earn points for.'},
+    {id:'local',label:'Local',icon:'orbit',start:5,title:'Local',sub:'Near you — country, city, area.'},
+    {id:'ambassador',label:'Ambassador',icon:'users',start:6,title:'Ambassador',sub:'Share, signups, clicks.'}
+  ];
+  function tierFor(points){
+    var idx=0;
+    for(var i=0;i<RUNGS.length;i++){ if(RUNGS[i][0]<=points) idx=i; }
+    return {rung:RUNGS[idx][1],star:STARS[idx]};
+  }
+  function aliasOf(e){
+    var a=e&&(e.alias||e.owner_alias||e.actor_alias||e.actor||e.citizen);
+    if(typeof a!=='string') return null;
+    a=a.trim();
+    return a?a:null;
+  }
+  function kindOf(e){
+    var k=e&&(e.kind||e.action||e.type);
+    if(typeof k!=='string') return '';
+    return k.toLowerCase().replace(/[\s_\-]+/g,'');
+  }
+  function pointsForEvent(e){
+    var k=kindOf(e);
+    if(k==='create'||k==='created'||k==='page'||k==='app'||k==='space'||k==='membership') return POINTS.create;
+    if(k==='smartnote'||k==='note'||k==='smartnotes'||k==='notes') return POINTS.note;
+    if(k==='like'||k==='love') return POINTS.like;
+    if(k==='save'||k==='saved') return POINTS.save;
+    if(k==='comment'||k==='commented') return POINTS.comment;
+    if(k==='share'||k==='shared') return (e&&(e.outside===true||e.scope==='outside'||e.channel==='outside'))?POINTS.shareOut:POINTS.shareIn;
+    if(k==='invite'||k==='invited') return POINTS.invite;
+    if(k==='join'||k==='joined') return POINTS.join;
+    if(k==='sale'||k==='sold') return POINTS.sale;
+    return null;
+  }
+  function areaOf(e){
+    var a=e&&(e.area||e.scope);
+    if(typeof a!=='string') return null;
+    a=a.trim().toLowerCase();
+    if(a==='personal'||a==='business'||a==='thing') return a;
+    return null;
+  }
+  function topicOf(e){
+    var t=e&&(e.topic||e.skill);
+    if(typeof t!=='string') return null;
+    t=t.trim();
+    return t?t:null;
+  }
+  function localityOf(e){
+    var l=e&&(e.locality||e.home_area||e.city||e.country);
+    if(typeof l!=='string') return null;
+    l=l.trim();
+    return l?l:null;
+  }
+  /* Points ranking — the ambassador tool's shape, points as the score.
+     Zero rule: an alias with a recognized event is measured — their
+     points total shows even when it is 0 (a digit tile). An alias with
+     no recognized event at all is unmeasured and stays off the board. */
+  function rankPoints(events){
+    var totals={};
+    var seen=0;
+    for(var i=0;i<events.length;i++){
+      var e=events[i], a=aliasOf(e);
+      if(!a) continue;
+      var p=pointsForEvent(e);
+      var k=kindOf(e);
+      var amb=(k==='click'||k==='signup'||k==='signedup'||k==='join'||k==='joined'||k==='sale'||k==='sold');
+      if(p===null&&!amb) continue;
+      seen++;
+      if(!totals[a]) totals[a]={alias:a,points:0};
+      if(p!==null) totals[a].points+=p;
+    }
+    var rows=[];
+    for(var k in totals) rows.push(totals[k]);
+    rows.sort(function(x,y){ return (y.points-x.points)||(x.alias<y.alias?-1:(x.alias>y.alias?1:0)); });
+    for(var j=0;j<rows.length;j++) rows[j].rank=j+1;
+    return {rows:rows,eventsCounted:seen};
+  }
+  /* Ambassador ranking — verbatim port of leaderboard.py: share first,
+     then signups, then clicks, then alias. Share is the sort key only;
+     it is never displayed (no dollar amounts on a public board). */
+  function rankAmbassador(events){
+    var totals={};
+    for(var i=0;i<events.length;i++){
+      var e=events[i], a=aliasOf(e);
+      if(!a) continue;
+      var k=kindOf(e);
+      /* Only ambassador kinds count here. A citizen whose events are all
+         points kinds (a like, a note) is unmeasured on this board and
+         stays off it — their empty row would shift every Top % and put
+         a name on a board they never played on. */
+      if(k!=='click'&&k!=='signup'&&k!=='signedup'&&k!=='join'&&k!=='joined'&&k!=='sale'&&k!=='sold') continue;
+      var t=totals[a];
+      if(!t) t=totals[a]={alias:a,clicks:0,signups:0,sales:0,share:0};
+      if(k==='click') t.clicks+=1;
+      else if(k==='signup'||k==='signedup'||k==='join'||k==='joined') t.signups+=1;
+      else if(k==='sale'||k==='sold'){ var net=Number(e&&(e.net!=null?e.net:(e.amount!=null?e.amount:0)))||0; t.share+=Math.max(0,net)*0.5; t.sales+=1; }
+    }
+    var rows=[];
+    for(var key in totals) rows.push(totals[key]);
+    rows.sort(function(x,y){ return (y.share-x.share)||(y.signups-x.signups)||(y.clicks-x.clicks)||(x.alias<y.alias?-1:(x.alias>y.alias?1:0)); });
+    for(var j=0;j<rows.length;j++){ rows[j].rank=j+1; rows[j].topPct=Math.ceil((rows[j].rank/rows.length)*100); }
+    return {rows:rows};
+  }
+  function myRow(rows,alias){
+    if(!alias) return null;
+    for(var i=0;i<rows.length;i++) if(rows[i].alias===alias) return rows[i];
+    return null;
+  }
+  function digitsHTML(n){
+    var s=String(n), out='', groups=[];
+    var head=s.length%3||3, parts=[s.slice(0,head)];
+    for(var i=head;i<s.length;i+=3) parts.push(s.slice(i,i+3));
+    for(var g=0;g<parts.length;g++){
+      if(g>0) out+='<span class="lb-gap"></span>';
+      for(var d=0;d<parts[g].length;d++){
+        var ch=parts[g][d];
+        out+='<span class="lb-d d'+ch+'"><span class="lb-dcap"></span><span class="lb-num">'+ch+'</span></span>';
+      }
+    }
+    return out;
+  }
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+  function rowHTML(row,color,showPoints){
+    var t=tierFor(row.points);
+    var pts=showPoints===false?'':('<div class="lb-points" aria-label="'+row.points+' points">'+digitsHTML(row.points)+'</div>');
+    return '<div class="lb-row" style="--lb-c:'+color+'">'+
+      '<div class="lb-rankwrap"><span class="lb-rank">'+row.rank+'</span><span class="lb-cap">RANK</span></div>'+
+      '<div class="lb-who"><div class="lb-alias">'+esc(row.alias)+'</div>'+
+      '<div class="lb-tier">'+esc(t.rung)+' · <span class="lb-star">'+esc(t.star)+'</span></div></div>'+pts+'</div>';
+  }
+  function ambRowHTML(row,color){
+    return '<div class="lb-row" style="--lb-c:'+color+'">'+
+      '<div class="lb-rankwrap"><span class="lb-rank">'+row.rank+'</span><span class="lb-cap">RANK</span></div>'+
+      '<div class="lb-who"><div class="lb-alias">'+esc(row.alias)+'</div>'+
+      '<div class="lb-tier">Top '+row.topPct+'% · <span class="lb-star">'+row.signups+' signups · '+row.clicks+' clicks</span></div></div></div>';
+  }
+  function emptyHTML(title,body){
+    return '<div class="lb-empty"><b>'+esc(title)+'</b><p>'+esc(body)+'</p></div>';
+  }
+  function yourCardHTML(you,boardLabel,color){
+    if(!you) return '<div class="lb-row lb-your" style="--lb-c:'+color+'"><div class="lb-who"><div class="lb-alias"><span class="lb-youtag">YOU</span></div><div class="lb-tier">Your row appears once the Hub knows your alias.</div></div><span class="lb-state">Not counted yet</span></div>';
+    if(you.state==='unknown') return '<div class="lb-row lb-your" style="--lb-c:'+color+'"><div class="lb-who"><div class="lb-alias"><span class="lb-youtag">YOU</span> · '+esc(you.alias)+'</div><div class="lb-tier">'+esc(boardLabel)+' — no points counted for you here yet.</div></div><span class="lb-state">Not counted yet</span></div>';
+    var t=tierFor(you.points);
+    return '<div class="lb-row lb-your" style="--lb-c:'+color+'"><div class="lb-rankwrap"><span class="lb-rank">'+you.rank+'</span><span class="lb-cap">RANK</span></div><div class="lb-who"><div class="lb-alias"><span class="lb-youtag">YOU</span> · '+esc(you.alias)+'</div><div class="lb-tier">'+esc(t.rung)+' · <span class="lb-star">'+esc(t.star)+'</span></div></div><div class="lb-points" aria-label="'+you.points+' points">'+digitsHTML(you.points)+'</div></div>';
+  }
+  function LeaderboardsRoom(){
+    var U=window.NayaUI, K=window.NayaRoomKit;
+    var r=K.room('leaderboards');
+    var wrap=U.el('div','room-scene');
+    wrap.style.setProperty('--room-accent',r.accent);
+    var intro=K.board(r.accent,'trophy','Leaderboards','See where you stand.');
+    intro.body.innerHTML='<p class="lb-nutshell">Your points put you on a board. Every board ranks the same way — most points first. Your own row stays in sight, always.</p>';
+    wrap.appendChild(intro);
+    var toolbar=U.el('div','lb-toolbar');
+    var zone=U.el('section','room-scene');
+    var current='overall';
+    var data=null;
+    var alias='';
+    try{ alias=(localStorage.getItem('nayanet_smart_alias')||'').trim(); }catch(e){ alias=''; }
+    var seg=K.segmented(BOARDS.map(function(b){ return {value:b.id,label:b.label}; }),'overall',function(v){ current=v; render(); });
+    toolbar.appendChild(seg);
+    wrap.appendChild(toolbar);
+    wrap.appendChild(zone);
+    load();
+    return wrap;
+    function load(){
+      zone.innerHTML='<div class="shimmer-grid"><div class="shimmer"></div><div class="shimmer"></div><div class="shimmer"></div></div>';
+      var R=window.NayaRuntime;
+      if(!R||typeof R.roomData!=='function'){ renderUnavailable('The Hub runtime is not running in this session, so the Ledger cannot be read.'); return; }
+      R.roomData('ledger',{filter:'all',limit:100}).then(function(res){
+        if(!res||!res.ok){ renderUnavailable(res&&res.message?res.message:'The Ledger is not connected in this session.'); return; }
+        var payload=res.data||res, list=[];
+        if(Array.isArray(payload)) list=payload;
+        else if(payload&&Array.isArray(payload.items)) list=payload.items;
+        else if(payload&&Array.isArray(payload.events)) list=payload.events;
+        else if(payload&&Array.isArray(payload.records)) list=payload.records;
+        data={events:list,total:list.length};
+        render();
+      }).catch(function(err){ renderUnavailable(err&&err.message?err.message:'The Ledger read failed.'); });
+    }
+    function renderUnavailable(msg){
+      /* The Ledger did not answer — but the view still opens, on every
+         board: your row stays visible (unknown state) and the note says
+         plainly that nothing is invented until the Ledger answers. */
+      data={events:[],total:0,failed:true,message:msg};
+      render();
+    }
+    function boardDef(id){ for(var i=0;i<BOARDS.length;i++) if(BOARDS[i].id===id) return BOARDS[i]; return BOARDS[0]; }
+    function colorAt(board,i){ return FLOW[(board.start+i)%FLOW.length]; }
+    function render(){
+      if(!data){ return; }
+      var board=boardDef(current);
+      /* FIX2: the selected tab takes the current board's hue — the house
+         segmented control lights its active pill in --room-accent, so the
+         tab reads magenta on Overall, indigo on Top area, and so on. */
+      seg.style.setProperty('--room-accent',FLOW[board.start]);
+      var events=data.events;
+      zone.innerHTML='';
+      if(data.failed){
+        var fb=K.board(FLOW[board.start],board.icon,board.title,board.sub);
+        fb.classList.add('lb-board');
+        var fyou=alias?{alias:alias,state:'unknown'}:null;
+        fb.body.innerHTML=yourCardHTML(fyou,board.title,FLOW[board.start])+
+          '<p class="lb-nutshell">The boards fill from the Ledger. Until it answers, nothing is invented here — no ranks, no points, no crowd.</p>';
+        zone.appendChild(fb);
+        return;
+      }
+      var b=K.board(FLOW[board.start],board.icon,board.title,board.sub);
+      b.classList.add('lb-board');
+      var body='';
+      var you=null, rows=[], groups=null;
+      if(board.id==='ambassador'){
+        var amb=rankAmbassador(events);
+        rows=amb.rows;
+        var mine=myRow(rows,alias);
+        you=mine?{alias:alias,rank:mine.rank,points:null,state:'amb',signups:mine.signups,clicks:mine.clicks,topPct:mine.topPct}: (alias?{alias:alias,state:'unknown'}:null);
+        body+=yourAmbCardHTML(you,board);
+        if(!rows.length) body+=emptyHTML('Nobody is on this board yet','No ambassador events are on the Ledger — no clicks, no signups, no sales. The first share starts it.');
+        else{
+          body+='<div class="lb-rows">';
+          for(var i=0;i<rows.length;i++) body+=ambRowHTML(rows[i],colorAt(board,i));
+          body+='</div>';
+        }
+        body+='<p class="lb-note">Counted from the Ledger — '+events.length+' events, '+rows.length+' citizens. Rank is by share first, then signups, then clicks. Share itself is never shown here.</p>';
+      } else if(board.id==='top'){
+        var perArea={personal:[],business:[],thing:[]};
+        var byArea={};
+        for(var a=0;a<events.length;a++){ var ar=areaOf(events[a]); if(ar){ (byArea[ar]=byArea[ar]||[]).push(events[a]); } }
+        var best=null;
+        ['personal','business','thing'].forEach(function(ar){
+          var rr=rankPoints(byArea[ar]||[]).rows;
+          var m=myRow(rr,alias);
+          if(m&&(!best||m.rank<best.row.rank)) best={area:ar,row:m,rows:rr};
+        });
+        if(!best){
+          body+=yourCardHTML(alias?{alias:alias,state:'unknown'}:null,'Your top area',FLOW[board.start]);
+          body+=emptyHTML('Your top area is not counted yet','Earn points in Personal, Business, or Thing and the area where you rank highest shows here.');
+        } else {
+          you={alias:alias,rank:best.row.rank,points:best.row.points};
+          body+=yourCardHTML(you,'Your top area — '+best.area,FLOW[board.start]);
+          body+='<div class="lb-group-t">'+esc(best.area.charAt(0).toUpperCase()+best.area.slice(1))+' — your best area</div><div class="lb-rows">';
+          for(var j=0;j<best.rows.length;j++) body+=rowHTML(best.rows[j],colorAt(board,j));
+          body+='</div>';
+        }
+        body+='<p class="lb-note">Counted from the Ledger — '+events.length+' events. Your top area is the one where your rank is highest.</p>';
+      } else if(board.id==='pbt'||board.id==='topic'||board.id==='local'){
+        var gkey=board.id==='pbt'?areaOf:(board.id==='topic'?topicOf:localityOf);
+        var glabel=board.id==='pbt'?['personal','business','thing']:null;
+        var map={};
+        for(var e2=0;e2<events.length;e2++){ var g=gkey(events[e2]); if(g){ (map[g]=map[g]||[]).push(events[e2]); } }
+        var keys=Object.keys(map);
+        if(board.id==='pbt') keys=['personal','business','thing'].filter(function(k){ return map[k]; });
+        keys.sort();
+        var youBest=null;
+        keys.forEach(function(k){
+          var rr=rankPoints(map[k]).rows;
+          var m=myRow(rr,alias);
+          if(m&&(!youBest||m.rank<youBest.row.rank)) youBest={group:k,row:m};
+        });
+        if(alias&&youBest) you={alias:alias,rank:youBest.row.rank,points:youBest.row.points};
+        else if(alias) you={alias:alias,state:'unknown'};
+        else you=null;
+        body+=yourCardHTML(you,board.title,FLOW[board.start]);
+        if(!keys.length){
+          if(board.id==='pbt') body+=emptyHTML('No activity counted yet','No Personal, Business, or Thing events are on the Ledger. Points you earn land here, in their own area.');
+          else if(board.id==='topic') body+=emptyHTML('No topics counted yet','No events on the Ledger carry a topic or skill. Earn points and the topics show here.');
+          else body+=emptyHTML('No one near you is counted yet','Local boards show only citizens who set their area. If you do not set yours, no one can find you here — and if you do not want to be found, do not set it.');
+        } else {
+          keys.forEach(function(k){
+            var rr=rankPoints(map[k]).rows;
+            body+='<div class="lb-group-t">'+esc(k.charAt(0).toUpperCase()+k.slice(1))+'</div><div class="lb-rows">';
+            for(var j2=0;j2<rr.length;j2++) body+=rowHTML(rr[j2],colorAt(board,j2));
+            body+='</div>';
+          });
+        }
+        body+='<p class="lb-note">Counted from the Ledger — '+events.length+' events, '+keys.length+' group'+(keys.length===1?'':'s')+'.</p>';
+      } else {
+        var all=rankPoints(events);
+        rows=all.rows;
+        var mine2=myRow(rows,alias);
+        you=mine2?{alias:alias,rank:mine2.rank,points:mine2.points}:(alias?{alias:alias,state:'unknown'}:null);
+        body+=yourCardHTML(you,'Overall',FLOW[board.start]);
+        if(!rows.length) body+=emptyHTML('Nobody is on this board yet','No points-bearing events are on the Ledger. The first point starts it — create, note, share, invite, join.');
+        else{
+          body+='<div class="lb-rows">';
+          for(var i2=0;i2<rows.length;i2++) body+=rowHTML(rows[i2],colorAt(board,i2));
+          body+='</div>';
+        }
+        body+='<p class="lb-note">Counted from the Ledger — '+all.eventsCounted+' points events, '+rows.length+' citizens.</p>';
+      }
+      b.body.innerHTML=body;
+      zone.appendChild(b);
+    }
+    function yourAmbCardHTML(you,board){
+      var color=FLOW[board.start];
+      if(!you) return '<div class="lb-row lb-your" style="--lb-c:'+color+'"><div class="lb-who"><div class="lb-alias"><span class="lb-youtag">YOU</span></div><div class="lb-tier">Your row appears once the Hub knows your alias.</div></div><span class="lb-state">Not counted yet</span></div>';
+      if(you.state==='unknown') return '<div class="lb-row lb-your" style="--lb-c:'+color+'"><div class="lb-who"><div class="lb-alias"><span class="lb-youtag">YOU</span> · '+esc(you.alias)+'</div><div class="lb-tier">Ambassador — no clicks, signups, or sales counted for you yet.</div></div><span class="lb-state">Not counted yet</span></div>';
+      return '<div class="lb-row lb-your" style="--lb-c:'+color+'"><div class="lb-rankwrap"><span class="lb-rank">'+you.rank+'</span><span class="lb-cap">RANK</span></div><div class="lb-who"><div class="lb-alias"><span class="lb-youtag">YOU</span> · '+esc(you.alias)+'</div><div class="lb-tier">Top '+you.topPct+'% · <span class="lb-star">'+you.signups+' signups · '+you.clicks+' clicks</span></div></div></div>';
+    }
+  }
+  window.NayaLeaderboards={FLOW:FLOW,POINTS:POINTS,RUNGS:RUNGS,STARS:STARS,BOARDS:BOARDS,tierFor:tierFor,rankPoints:rankPoints,rankAmbassador:rankAmbassador,myRow:myRow,pointsForEvent:pointsForEvent,digitsHTML:digitsHTML};
+  window.NayaRooms=window.NayaRooms||{};
+  window.NayaRooms.leaderboards=LeaderboardsRoom;
+})();
+</script>
+
 <script>/* js/rooms/shared.js @ baf1221d9 */
 /* ROOM KIT — shared mechanics, not a shared composition. */
 (function(){
