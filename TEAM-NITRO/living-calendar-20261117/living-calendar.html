@@ -629,7 +629,22 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
      (c) the 28px i-jewel covered the dayname end ("SUN · 96") — the
      dayname (~95px) cannot clear a 28px jewel in a 92px cell, so it is
      hidden here exactly as at <=740px (its weekday duplicates the
-     weekrow above the column). */
+     weekrow above the column).
+     CALENDAR FIX 4 (R5-741) — the jewel then covered the VIEW pill on
+     all 30 tiles (overlap 28x16.6px, pill reads "V" — eye 08:50Z).
+     Root cause MEASURED IN LIVE RENDER on the staged round-3 bytes:
+     the topline WRAPS at 741 (barleft 337.8 + barright 376.6 = 714.4px
+     in 708.4px, short by 6px), so it costs 102px instead of 45px and
+     crushes the rows to 47px — in a 47px tile a 28px bottom-anchored
+     jewel and a 22px top-anchored pill cannot both fit (22+28 > 47).
+     The bars' 8px gaps cost 24px; cutting them to 4px in the 561-860
+     range (see below) saves 24px, the topline fits one row (45px),
+     rows rise to 58.4px and the overlap falls to 28x5.2px — the SAME
+     bottom-edge kiss the eye passed at 800/855, letters whole. The
+     jewel stays 28px, the pill stays 22px, the dayname stays hidden.
+     A 64px row floor was rejected: it forces a ~28px scroll at 800/855
+     too (their vertical geometry is identical to 741's once the
+     topline fits), which the brief forbids breaking. */
   .tile{padding:5px 2px 4px;min-height:0}
   .tilerow{gap:2px;flex-wrap:nowrap}
   .viewbtn{min-height:22px;font-size:9px;padding:2px 6px;letter-spacing:.04em}
@@ -638,6 +653,16 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .daynum .os-mini-tile .rd{height:clamp(20px,2.8vw,42.7px);line-height:clamp(20px,2.8vw,42.7px);font-size:clamp(18px,2.52vw,38.4px)}
   .daynum .os-mini-num{gap:2px}
   .tilewisdom,.chiplane,.minitext,.more,.spark,.dayname{display:none}
+}
+@media(min-width:561px) and (max-width:860px){
+  /* CALENDAR FIX 4 (R5-741 + R5-635) — TOPLINE FITS ONE ROW: the bars
+     carry 8px gaps (24px across the two bars); at 741 the bars total
+     714.4px in 708.4px, so the topline wraps to two rows (102px) and
+     crushes the grid; at 635 the same wrap costs 95px. Cutting the bar
+     gaps to 4px saves 24px — the topline fits one row (45px at 741,
+     44px at 635) with 6px+ to spare. No object changes size: the pills,
+     the month title, the balls and the plaque are untouched. */
+  .barleft,.barright{gap:4px}
 }
 @media(max-width:740px){
   .shell{height:100dvh;padding:8px 8px 9px;gap:8px}
@@ -695,20 +720,55 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .daynum .os-mini-tile .cap{height:3.2px}
   .daynum .os-mini-tile .rd{height:19px;line-height:19px;font-size:17px}
 }
-@media(max-width:740px){
-  /* CALENDAR FIX 3 (R5-390 + item 5) — PHONE SHELL SCROLLS, ROWS HOLD 74px:
-     at phone widths the header stack (~486px at 390, eye-measured) leaves
-     the 5-row grid short of its minimum, so rows overlapped ~23px at
-     390x600 and the grid collapsed to height 0 at 390x400 with no scroll
-     to reach it. The shell now grows past the viewport (min-height
-     100dvh) and the page scrolls — the grid keeps full 74px rows and
-     the last row is reachable at every phone height. The 74px rows are
-     also what clears the i-jewel from the VIEW pill at 390x800: pill
-     bottom 45.2px, jewel top 50px — +4.8px of daylight on all 30 tiles
-     (the jewel stays 20x20, untouched). At 390x800 the page scrolls
-     ~68px; at 635x800 it still fits with no scroll. */
+@media(max-width:560px){
+  /* CALENDAR FIX 4 (R5-635 re-scope) — the 74px row floor + shell scroll
+     now apply ONLY here (<=560px), where the narrow-tile geometry needs
+     them: at 390 the stacked tile's pill and jewel share one narrow
+     column, so the rows must hold 74px. 390 is UNCHANGED: at 390x800
+     the page scrolls ~68px (accepted by the eye as the price of the
+     clearance) and the last row is reachable at 390x600/400.
+     CORRECTED CLEARANCE (eye 08:50Z, rendered): the VIEW pill is 17px
+     tall in render, not 16px — the pill/jewel gap is +1.47px typical
+     (worst -0.53px on day 18, a sub-pixel touch, invisible; the pill
+     reads whole). The old figure (4.8px of daylight) does not reproduce
+     and is corrected here, not the geometry. */
   .shell{height:auto;min-height:100dvh}
   .days{grid-auto-rows:minmax(74px,1fr)}
+}
+@media(min-width:561px) and (max-width:740px){
+  /* CALENDAR FIX 4 (R5-635 re-scope) — the 74px floor was a 390-driven
+     rule applied blindly to all <=740px widths; at 635 it scrolled
+     635x600 by 134px against a round-2 fit. At 561-740px the jewel
+     clears the pill HORIZONTALLY (15.6px at 635 — that is what protects
+     it there), so the rows need only hold the tile's own content. The
+     shell stays 100dvh and the rows flex (minmax(0,1fr)); the tile
+     takes the row (min-height:0, the band's proven pattern — the <=740
+     rule's 74px tile floor is overridden here); the digits take the
+     harvested phone size (19px tiles / 17px font, the <=560 rule
+     verbatim — the desktop clamp floor of 24px forced the stacked tile
+     to 57.1px of content, taller than the ~47px rows the viewport
+     allows at 635x600); the weekrow cells drop min-height 68->60px
+     (the balls stay 34px, the words stay 17px). Measured in render:
+     rows land ~58.6px at 635x600 against 49.2px of content — the page
+     fits with no scroll, the pill reads whole, the jewel clears. */
+  .shell{height:100dvh}
+  .days{grid-auto-rows:minmax(0,1fr)}
+  .tile{min-height:0}
+  .daynum .os-mini-num{gap:2px}
+  .daynum .os-mini-tile{width:19px;border-radius:4px}
+  .daynum .os-mini-tile .cap{height:3.2px}
+  .daynum .os-mini-tile .rd{height:19px;line-height:19px;font-size:17px}
+  .weekrow .wk{min-height:60px}
+}
+@media(min-width:561px) and (max-width:740px) and (max-height:609px){
+  /* CALENDAR FIX 4 (R5-635 re-scope) — SHORT HEIGHTS in the same range:
+     below ~610px of viewport height the flex rows would crush below the
+     tile's own content (49.2px), so the shell scrolls here instead and
+     the rows hold a 49px floor (the content height, not 74px — the
+     jewel clears horizontally here, so no 74px floor is needed). The
+     last row stays reachable by scrolling, exactly as at 390. */
+  .shell{height:auto;min-height:100dvh}
+  .days{grid-auto-rows:minmax(49px,1fr)}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 </style></head>

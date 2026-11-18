@@ -2771,6 +2771,15 @@
         function openMeetRoom(a) {
           if (!a) return;
           stopMeet();
+          /* CALENDAR FIX 4 (DAY5) — SHOW THE ROOM: openMeetRoom rendered
+             into #doorBody but never un-hid #screen-door, so the tile
+             Join opened a room nobody could see (the timer ticking in a
+             hidden screen, Mic/Camera/Leave 0x0 — eye 08:50Z). The door
+             Join worked only because openDoor had already shown the
+             screen. Showing the screen here covers both Join paths —
+             the only two callers of openMeetRoom are the two Join
+             buttons — and Leave still returns to the appointments door. */
+          show("screen-door");
           meetSecs = 0; micOn = true; camOn = true;
           $("doorTitle").textContent = "Smart Meet — " + fmtTime(a.time);
           $("doorSub").textContent = a.title + " · " + WEEKDAYS[sel.getDay()] + " · " + MONTHS[sel.getMonth()] + " " + sel.getDate() + ", " + sel.getFullYear() + " · " + fmtTime(a.time) + " · Video";
