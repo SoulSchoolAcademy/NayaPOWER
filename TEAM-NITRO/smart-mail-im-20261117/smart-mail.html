@@ -1167,7 +1167,7 @@ window.NayaNotif = window.NayaNotif || {
       });
       bar.appendChild(row); document.body.appendChild(bar);
       document.body.classList.add('has-notif');
-      window.addEventListener('storage', function () { self.refresh(); });
+      window.addEventListener('storage', function () { self.refresh(); if (typeof refreshFiveCounts === 'function') refreshFiveCounts(); }); /* EYE FOLLOW-ON FIX 2026-11-18 (defect 3): Personal's refresh() rewrites the badges from its own store — mail from nayanet.notif.mail (0 after any MAIL tap, 0 by default) and activity from ActivityLog, which is not on this page (0) — so a cross-tab storage write blanked BOTH white-digit badges with no re-assert (two-tab probe: tab B lost MAIL 6 and ACTIVITY 4 the moment tab A tapped MAIL, and got them back on its next nav click). This page's counts live in MAIL/WORLD_COUNTS; re-assert them after every cross-tab refresh, the same BAR-FIX re-assert the four tile handlers already do. */
       this.refresh();
       this.syncStack();
       if (!window.__nayaNotifStackBound) { window.__nayaNotifStackBound = true; window.addEventListener('resize', function () { self.syncStack(); }); }
@@ -1694,6 +1694,102 @@ function __syncMailBarFold(){
   if (typeof setTimeout === 'function') setTimeout(function(){ var sc2 = document.querySelector('.page-scroll'); if (sc2) __mailBootTop = sc2.scrollTop; __mailFoldArmed = true; __syncMailBarFold(); }, 600);
   else { __mailFoldArmed = true; }
   __syncMailBarFold();
+})();
+/* EYE FOLLOW-ON FIX 2026-11-18 (defect 1) — the scroll bridge. The fold
+   rule itself was never broken: wheel over the thread folds on the first
+   tick (checker and this round both proved it live), and the fold wiring is
+   byte-identical to the bar-fit build whose fold PASSED at 635/390. What was
+   broken is scroll DELIVERY: the page has no document scroller (body is
+   overflow:hidden, .page-scroll is the only scroller — FIX-4: "window
+   scrolling is gone by construction"), so a scroll that reaches the document
+   instead of .page-scroll moves NOTHING and fires NO scroll event, and the
+   fold never engages. Proven no-ops on the base: window.scrollTo/scrollBy,
+   documentElement.scrollTop sets, keyboard PageDown/End/Space with focus on
+   the body, wheel over fixed chrome (the bar itself), and scrollIntoView on
+   the bar — all read as identical geometry, exactly the cloud eye's
+   observation. The bridge routes those three inputs to .page-scroll, the
+   scroller they were meant for (the FIX-4 comment already claims wheel /
+   keyboard / scrollIntoView all drive .page-scroll — this makes it true);
+   a wheel or key over a real scroller is left to the native path. The fold
+   rule is unchanged (position-based, returns only at the very bottom); the
+   bridge only makes the page MOVE so the rule can see the scroll. */
+(function __mailScrollBridge(){
+  function pageScroller(){ return document.querySelector('.page-scroll'); }
+  function canScroll(el, dy){
+    if (!el || el.scrollHeight <= el.clientHeight + 1) return false;
+    return dy > 0 ? el.scrollTop < el.scrollHeight - el.clientHeight - 1 : el.scrollTop > 1;
+  }
+  function chainCanScroll(target, dy){
+    var n = target;
+    while (n) {
+      if (n.nodeType === 1 && canScroll(n, dy)) return true;
+      n = n.parentElement || n.parentNode;
+    }
+    return false;
+  }
+  function wheelDelta(ev, s){
+    var d = ev.deltaY;
+    if (ev.deltaMode === 1) d = d * 16;
+    else if (ev.deltaMode === 2) d = d * (s ? s.clientHeight : 800);
+    return d;
+  }
+  /* (a) wheel over fixed chrome (the bar, a panel, a drawer) — no scrollable
+     ancestor, so the native wheel does nothing; drive .page-scroll instead. */
+  document.addEventListener('wheel', function(ev){
+    if (!ev.deltaY) return;
+    if (chainCanScroll(ev.target, ev.deltaY)) return;
+    var s = pageScroller(); if (!s) return;
+    s.scrollTop += wheelDelta(ev, s);
+  }, {capture:true, passive:true});
+  /* (b) keyboard scrolling when the focused element's chain cannot scroll
+     that way (focus on the body at boot is the common case) — native
+     keyboard scrolling targets the document, which never scrolls here;
+     drive .page-scroll instead. Typing and focused controls are never
+     hijacked: inputs/textareas/selects return early, and Space on a focused
+     button still activates the button. */
+  document.addEventListener('keydown', function(ev){
+    var t = ev.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
+    var s = pageScroller(); if (!s) return;
+    var dy = null, jump = null;
+    if (ev.key === 'PageDown') dy = Math.round(s.clientHeight * 0.9);
+    else if (ev.key === 'PageUp') dy = -Math.round(s.clientHeight * 0.9);
+    else if (ev.key === 'End') jump = s.scrollHeight;
+    else if (ev.key === 'Home') jump = 0;
+    else if (ev.key === 'ArrowDown') dy = 40;
+    else if (ev.key === 'ArrowUp') dy = -40;
+    else if (ev.key === ' ' || ev.key === 'Spacebar') {
+      if (t && t !== document.body && t !== document.documentElement) return;
+      dy = ev.shiftKey ? -Math.round(s.clientHeight * 0.9) : Math.round(s.clientHeight * 0.9);
+    }
+    else return;
+    if (jump !== null) { if (chainCanScroll(t, jump > s.scrollTop ? 1 : -1)) return; s.scrollTop = jump; ev.preventDefault(); return; }
+    if (chainCanScroll(t, dy)) return;
+    s.scrollTop += dy; ev.preventDefault();
+  }, true);
+  /* (c) window.scrollTo / scrollBy / scroll — the standard "scroll the page"
+     call. The document has no scroll room on this page, so route the call to
+     .page-scroll; if the layout ever gains a document scroller, the native
+     call runs untouched. No page code calls these (verified); the bridge is
+     for the eye, the harness, and any caller that scrolls the window. */
+  function docCanScroll(){ var de = document.documentElement; return de.scrollHeight > de.clientHeight + 1; }
+  var __origScrollTo = window.scrollTo.bind(window);
+  var __origScrollBy = window.scrollBy.bind(window);
+  function __scrollTopArg(a, b){
+    if (a && typeof a === 'object') return { top: (typeof a.top === 'number' ? a.top : 0), behavior: a.behavior };
+    return { top: (typeof b === 'number' ? b : (typeof a === 'number' ? a : 0)), behavior: undefined };
+  }
+  window.scrollTo = function(a, b){
+    var o = __scrollTopArg(a, b), s = pageScroller();
+    if (s && !docCanScroll()) { if (o.behavior === 'smooth') s.scrollTo({top:o.top, behavior:'smooth'}); else s.scrollTop = o.top; return; }
+    return __origScrollTo.apply(window, arguments);
+  };
+  window.scrollBy = function(a, b){
+    var o = __scrollTopArg(a, b), s = pageScroller();
+    if (s && !docCanScroll()) { if (o.behavior === 'smooth') s.scrollTo({top:s.scrollTop + o.top, behavior:'smooth'}); else s.scrollTop += o.top; return; }
+    return __origScrollBy.apply(window, arguments);
+  };
+  window.scroll = window.scrollTo;
 })();
 $('feedCloseBtn').addEventListener('click', closeFeed);
 $('feedChoiceBtn').addEventListener('click', openChoice);
