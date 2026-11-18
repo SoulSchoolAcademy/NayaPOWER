@@ -766,6 +766,21 @@ a { color: inherit; }
      untouched: under its own backdrop the top bar stays put. */
   .shell.rail-right-open .top{z-index:70;}
 .rail.right .nav{margin-top:18px;display:flex;flex-direction:column;gap:8px;}
+/* ——— HUB PERSONAL SIDEBAR 2026-11-18 — the swap (Shawn 21:29Z): Personal's
+   sidebar with the instant messaging system moves into the Hub, as the Hub's
+   right-hand people rail in the feed view. This block is only the section
+   SHELL + mount, in the Hub's own rail language (head treatment mirrors
+   .rail-right-head b exactly). The people ROWS — icon + name, info (i) +
+   match % beside it, DM / Mail / Audio / Video buttons BELOW — arrive
+   verbatim from the Personal round's filed file
+   (personal/cover-align-20261118); their styles ride with that harvest.
+   Nothing is invented here. Until the harvest lands, the honest empty
+   state below shows. ——— */
+.rail-people{margin:18px 0 0;display:flex;flex-direction:column;gap:8px;}
+.rail-people-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 6px 0;}
+.rail-people-head b{font-size:17px;letter-spacing:.18em;font-weight:800;color:#fff;}
+.hub-people-list{display:flex;flex-direction:column;gap:8px;}
+.hub-people-empty{margin:0;padding:4px 6px;color:#fff;font-size:17px;line-height:1.6;}
 .rail-right-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 6px 0;}
 .rail-right-head b{font-size:17px;letter-spacing:.18em;font-weight:800;color:#fff;}
 .rail-right-x,.rail-left-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#050607;color:#fff;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .18s var(--ease),border-color .18s,box-shadow .18s;}
@@ -1082,7 +1097,7 @@ body.feed-live .live-dot {
   50% { opacity: .5; transform: scale(.8); box-shadow: 0 0 4px #8e24aa; }
 }
 .hero-time { color: #d4a017; font-variant-numeric: tabular-nums; text-shadow: 0 0 18px rgba(212,160,23,.45); } /* gold — syncs with Collective/Spaces (Shawn 2026-10-20) */
-.hero-date-str { color: #ffffff; /* white — the date line is the date, white (§2.5); the gold clock beside it is the hero's own object */ }
+.hero-date-str { color: #2fe89e; text-shadow: 0 0 18px rgba(47,232,158,.45); /* GREEN LIVING DATE (Shawn 2026-11-18 ~21:40Z): the date glows bright green, alive — restored from his screenshot. §2.5 white is superseded here by his newer word; the gold clock beside it stays gold. */ }
 .hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; font-weight: 900; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.85), 0 0 30px color-mix(in srgb, var(--room-accent, #8e24aa) 35%, transparent); }
 .hero-sub { font-size: 19px; line-height: 1.55; color: #F2F2F6; font-weight: 600; max-width: 760px; margin: 0 0 10px; }
 /* Intel Today (2026-11-12): the Hub is the public blog. Gold wordmark
@@ -1456,7 +1471,7 @@ body.msg-open{overflow:hidden;}
   content: ""; position: absolute; left: 10px; top: 18px; bottom: 18px; width: 4px;
   border-radius: 4px;
   background: linear-gradient(135deg, var(--tone), color-mix(in srgb, var(--tone) 70%, #fff 12%), var(--tone));
-  box-shadow: 0 0 28px color-mix(in srgb, var(--tone) 55%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--tone) 55%, transparent);
   pointer-events: none;
 }
 .intel-board::after {
@@ -1719,11 +1734,11 @@ body.msg-open{overflow:hidden;}
 .intel-board:hover {
   transform: translateY(-6px);
 }
-.intel-board.tone-gold:hover { box-shadow: 0 30px 70px #000c, 0 0 60px #d4a01755; }
-.intel-board.tone-red:hover { box-shadow: 0 30px 70px #000c, 0 0 60px #c6282855; }
-.intel-board.tone-purple:hover { box-shadow: 0 30px 70px #000c, 0 0 60px #8e24aa55; }
-.intel-board.tone-blue:hover { box-shadow: 0 30px 70px #000c, 0 0 60px #0f52ba55; }
-.intel-board.tone-green:hover { box-shadow: 0 30px 70px #000c, 0 0 60px #07925f55; }
+.intel-board.tone-gold:hover { box-shadow: 0 30px 70px #000c, 0 0 20px -4px #d4a01766; }
+.intel-board.tone-red:hover { box-shadow: 0 30px 70px #000c, 0 0 20px -4px #c6282866; }
+.intel-board.tone-purple:hover { box-shadow: 0 30px 70px #000c, 0 0 20px -4px #8e24aa66; }
+.intel-board.tone-blue:hover { box-shadow: 0 30px 70px #000c, 0 0 20px -4px #0f52ba66; }
+.intel-board.tone-green:hover { box-shadow: 0 30px 70px #000c, 0 0 20px -4px #07925f66; }
 
 /* ——— Theme-colored block borders (from deployed original) ——— */
 .intel-board.tone-gold { border-color: color-mix(in srgb, #d4a017 60%, transparent); box-shadow: 0 24px 60px #000b; }
@@ -1834,7 +1849,7 @@ body.msg-open{overflow:hidden;}
 /* 23:32Z emblem law: a facet of light on the orb's top-left, like a cut gem —
    the orb is a real jewel, not a flat shaded circle. */
 .star-rating button::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(135deg, rgba(255,255,255,.32) 0%, rgba(255,255,255,0) 38%); pointer-events: none; }
-.star-rating button:hover { transform: translateY(-2px); border-color: #d4a017; color: #d4a017; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(212,160,23,.4); }
+.star-rating button:hover { transform: translateY(-2px); border-color: #8e24aa; color: #ffffff; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
 .star-rating button:active { transform: translateY(1px) scale(.92); box-shadow: inset 0 1px rgba(255,255,255,.2), inset 0 -2px 4px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.6); }
 .star-rating button.on {
   color: #d4a017; border-color: #d4a017;
@@ -1843,18 +1858,18 @@ body.msg-open{overflow:hidden;}
   text-shadow: 0 1px 2px rgba(0,0,0,.45);
   animation: orbbreathe 4.4s ease-in-out infinite alternate;
 }
-.star-rating button:focus-visible { outline: 2px solid #d4a017; outline-offset: 2px; }
+.star-rating button:focus-visible { outline: 2px solid #8e24aa; outline-offset: 2px; }
 /* INTELLIGENCE track: the same obsidian ball, a blue star (23:21Z). */
 .star-rating-intel { border-color: #0f52ba88; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(15,82,186,.3); }
 .star-rating-intel button { border-color: #0f52ba88; color: #0f52ba66; }
-.star-rating-intel button:hover { border-color: #0f52ba; color: #60a5fa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.4); }
+.star-rating-intel button:hover { border-color: #8e24aa; color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
 .star-rating-intel button.on { color: #93c5fd; border-color: #0f52ba; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.45); }
-.star-rating-intel button:focus-visible { outline-color: #0f52ba; }
+.star-rating-intel button:focus-visible { outline-color: #8e24aa; }
 /* The accessible readout only — the visible per-row points text is gone (23:21Z).
    HUB FEED FIX2 2026-11-18 (D8): the per-row rank readout joins it — screen-reader
    only, never visible on the Hub. */
 .rating-num.sr-only, .rank-readout.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-@keyframes orbbreathe { from { box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 8px -2px rgba(212,160,23,.3); } to { box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 14px -2px rgba(212,160,23,.45); } } /* HUB FEED FIX2 2026-11-18 (D8): orbbreathe breathes gold now — it animates only the VALUE .on stars. */
+@keyframes orbbreathe { from { box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 8px -2px rgba(142,36,170,.3); } to { box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 14px -2px rgba(142,36,170,.45); } } /* Order 4 (Shawn ~21:46Z): orbbreathe breathes purple now — it animates only the VALUE .on stars. */
 @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 @keyframes orb-spin-rev { to { transform: rotate(-360deg); } }
 @keyframes naya-breathe { from { opacity: .55; } to { opacity: 1; } }
@@ -1870,7 +1885,7 @@ body.msg-open{overflow:hidden;}
   margin-top: 16px; padding: 18px;
   border: 2px solid rgba(255,255,255,.1); border-radius: 16px;
   background: #08080c;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 -6px 14px rgba(0,0,0,.5), 0 10px 24px rgba(0,0,0,.5), 0 0 22px rgba(142,36,170,.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 -6px 14px rgba(0,0,0,.5), 0 10px 24px rgba(0,0,0,.5), 0 0 14px -4px rgba(142,36,170,.25);
 }
 .add-intel b { display: block; font-size: 17px; letter-spacing: .12em; margin-bottom: 12px; color: var(--ink); }
 .add-intel-row { display: flex; gap: 10px; }
@@ -1916,7 +1931,7 @@ body.msg-open{overflow:hidden;}
 .add-intel input {
   flex: 1; border: 2px solid #ffffff22; border-radius: 12px;
   background: #07070a; color: #fff; padding: 12px 14px; font-size: 17px; outline: 0;
-  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 22px rgba(142,36,170,.35), 0 0 48px rgba(142,36,170,.12), 0 14px 30px rgba(0,0,0,.6);
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 14px -4px rgba(142,36,170,.35), 0 14px 30px rgba(0,0,0,.6);
   transition: border-color .18s, box-shadow .18s;
 }
 .add-intel input:focus { border-color: var(--purple); box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 18px -2px rgba(142,36,170,.55), 0 16px 34px rgba(0,0,0,.65); } /* 23:13Z amount law. */
@@ -2041,8 +2056,8 @@ body.msg-open{overflow:hidden;}
 /* The heart as a real jewel you can press; the stars as real gold. */
 .board-actions .action[data-kind="love"], .board-actions .action[data-kind="like"] { background: linear-gradient(145deg, color-mix(in srgb, var(--action-color) 32%, #050607), #050607 60%); border-color: var(--action-color); box-shadow: inset 0 1px rgba(255,255,255,.22), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 22px var(--action-color), 0 10px 24px rgba(0,0,0,.6); }
 .board-actions .action[data-kind="love"]:hover, .board-actions .action[data-kind="like"]:hover { box-shadow: inset 0 0 0 1.5px var(--action-color), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 36px var(--action-color), 0 14px 36px rgba(0,0,0,.65); }
-.star-rating { border-color: #d4a017; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 26px rgba(212,160,23,.35); }
-.star-rating button.on { background: radial-gradient(circle at 35% 30%, #ffffff, #d4a017 55%, #050607); color: #ffffff; text-shadow: 0 0 16px #d4a017; border-color: #d4a017; }
+.star-rating { border-color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(142,36,170,.35); }
+.star-rating button.on { background: radial-gradient(circle at 35% 30%, #ffffff, #8e24aa 55%, #050607); color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(255,255,255,.85); border-color: #8e24aa; }
 /* ——— END SMART NOTE FORMAT (2026-11-17) ——— */
 
 /* ——— SMART NOTE FORMAT FIX2 (2026-11-17) ———
@@ -2054,7 +2069,7 @@ body.msg-open{overflow:hidden;}
 .star-rating button { min-width: 0; flex: 1 1 0; min-height: 36px; font-size: 17px; padding: 0; }
 .star-rating::before {
   content: ""; position: absolute; inset: -6px; border-radius: 20px; padding: 2px;
-  background: conic-gradient(from var(--star-flow), rgba(212,160,23,.95) 0deg, transparent 70deg, transparent 180deg, rgba(212,160,23,.5) 230deg, transparent 300deg);
+  background: conic-gradient(from var(--star-flow), rgba(142,36,170,.95) 0deg, transparent 70deg, transparent 180deg, rgba(142,36,170,.5) 230deg, transparent 300deg);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude; pointer-events: none;
@@ -2086,36 +2101,37 @@ body.msg-open{overflow:hidden;}
    The foot is a 17px white provenance signature with a gold label. */
 .star-rating button {
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #2b2513 0%, #16130a 62%, #050607 100%);
-  border: 2px solid #d4a01788;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.35), #8e24aa 55%, #050607);
+  border: 2px solid #8e24aa88;
   box-shadow: inset 0 1px rgba(255,255,255,.30), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55);
-  color: #d4a017;
-  text-shadow: 0 1px 0 rgba(255,255,255,.35), 0 2px 6px rgba(0,0,0,.75);
+  color: rgba(255,255,255,.55);
+  text-shadow: 0 1px 0 rgba(0,0,0,.5), 0 0 6px rgba(255,255,255,.35);
 }
 .star-rating button:hover {
   transform: translateY(-2px);
-  border-color: #d4a017;
-  box-shadow: inset 0 1px rgba(255,255,255,.35), inset 0 -3px 7px rgba(0,0,0,.6), 0 9px 18px rgba(0,0,0,.6), 0 0 18px rgba(212,160,23,.28);
+  border-color: #8e24aa;
+  box-shadow: inset 0 1px rgba(255,255,255,.35), inset 0 -3px 7px rgba(0,0,0,.6), 0 9px 18px rgba(0,0,0,.6), 0 0 18px rgba(142,36,170,.28);
 }
 .star-rating button:active {
   transform: translateY(1px) scale(.92);
   box-shadow: inset 0 1px rgba(255,255,255,.25), inset 0 -2px 5px rgba(0,0,0,.65), 0 2px 6px rgba(0,0,0,.6);
 }
 .star-rating button.on {
-  /* The harvested radial-gold face stays; the orb shape, the ball shadow
-     and the layered glyph come from this round. */
-  box-shadow: inset 0 1px rgba(255,255,255,.45), inset 0 -4px 9px rgba(0,0,0,.45), 0 6px 14px rgba(0,0,0,.6), 0 0 20px rgba(212,160,23,.30);
-  text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(212,160,23,.85);
+  /* The radial-purple face stays (Order 4, Shawn ~21:46Z: deep purple balls,
+     white stars); the orb shape, the ball shadow and the layered glyph come
+     from this round. The white star pops sharp, its light behind the glyph. */
+  box-shadow: inset 0 1px rgba(255,255,255,.45), inset 0 -4px 9px rgba(0,0,0,.45), 0 6px 14px rgba(0,0,0,.6), 0 0 20px rgba(142,36,170,.30);
+  text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(255,255,255,.85);
 }
 /* HUB FEED FIX2 2026-11-18 (D8): the gold above is VALUE only — INTELLIGENCE stays
    blue. The gold rules (L2045's gold .on, L2093's gold rest, L2101's gold hover,
    L2110's gold glow) would otherwise swallow the blue track — equal specificity,
    later wins — so the blue track is re-asserted here, after all of them, with
    the blue track's own values from L1846-1851. */
-.star-rating-intel { border-color: #0f52ba; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(15,82,186,.3); }
-.star-rating-intel button { border-color: #0f52ba88; color: #0f52ba66; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.14), #07070b 62%, #050607 100%); }
-.star-rating-intel button:hover { border-color: #0f52ba; color: #60a5fa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.4); }
-.star-rating-intel button.on { background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.16), #07070b 62%, #050607 100%); color: #93c5fd; text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(15,82,186,.85); border-color: #0f52ba; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.45); }
+.star-rating-intel { border-color: rgba(255,255,255,.6); box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(255,255,255,.25); }
+.star-rating-intel button { border-color: #8e24aa88; color: rgba(142,36,170,.55); background: radial-gradient(circle at 35% 30%, #ffffff, #c8ccd6 55%, #7a7e88 100%); text-shadow: 0 1px 0 rgba(0,0,0,.18); }
+.star-rating-intel button:hover { border-color: #8e24aa; color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
+.star-rating-intel button.on { background: radial-gradient(circle at 35% 30%, #ffffff, #c8ccd6 55%, #7a7e88 100%); color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 0 14px rgba(142,36,170,.55); border-color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.45); }
 @media (min-width: 701px) {
   /* Desktop: true circles, one size, no stretch. Phones keep the FIX2
      flex rule (<=700px) so ten orbs still fit 390px. */
@@ -4529,7 +4545,7 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
       '.sh-nutshell{font-size:19px !important;line-height:1.55}',
       '.intel-board{opacity:.84;background:#050607 !important;border:2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%) !important;border-radius:20px;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}',
       '.intel-board.rv-lit{opacity:1;box-shadow:0 28px 64px #000000c0,0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8e24aa)}',
-      '.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8e24aa) !important}',
+      '.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:0 28px 64px #000000c0,0 0 20px -4px color-mix(in srgb, var(--tone) 35%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8e24aa) !important}',
       '.intel-board.rv-lit .ib-layer{box-shadow:0 14px 30px #00000090,0 0 34px -8px var(--lc)}',
       '.intel-board.rv-lit .ib-nutshell{box-shadow:0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent),0 0 34px -8px #ffffff !important}',
       '@media (max-width:640px){.intel-board{border-radius:20px !important}}'
@@ -6279,14 +6295,20 @@ function HubView(params) {
      Per-tab spectrum color, 💜/⭐ priority markers, ⋯ menu per pill
      (Edit / Heart / Star / Remove), ＋Add with editor dialog,
      heart-first sort, localStorage persistence, keyboard nav. */
-  /* Spectrum Flow (18:00Z): magenta → purple → indigo → cyan → green → gold → orange → red → magenta.
-     The 9th step closes the cycle on magenta, so the array carries it twice by design — no two ADJACENT entries share a color. */
-  const SPECTRUM = ['#a21caf','#8e24aa','#3f51b5','#0e7490','#07925f','#d4a017',
-    '#c2410c','#c62828','#a21caf'];
+  /* GEMATRIA COLOUR RULE (Shawn 2026-11-18 ~21:40Z; SN-2914 + GEMATRIA-COLOUR-CODE.md):
+     every smart tab takes its colour from the FIRST LETTER of its topic —
+     same letter, same colour, always. The old hash-of-the-whole-key spectrum
+     is gone: it is what made the tabs come out purple, purple, purple,
+     yellow, orange. 1 red #ff5e6c · 2 orange #ff9a5a · 3 gold #ffbf3d ·
+     4 emerald #2fe89e · 5 cyan #29b6f6 (verified byte-for-byte from the
+     fix-9 digit-5 tile, pricing-round10-fix9.html:925, .ct-reel.d5 — the
+     deck teal #40d3bb is the nearest system cyan, not the tile hex; see
+     maker report) · 6 indigo #6675ff · 7 royal purple #a06bff. */
+  const GEMATRIA_NUM = { A:1, B:2, C:3, D:4, E:5, F:6, G:7, H:6, I:5, J:4, K:3, L:2, M:1, N:1, O:2, P:3, Q:4, R:5, S:6, T:7, U:6, V:5, W:4, X:3, Y:2, Z:1 };
+  const GEMATRIA_COLOR = { 1:'#ff5e6c', 2:'#ff9a5a', 3:'#ffbf3d', 4:'#2fe89e', 5:'#29b6f6', 6:'#6675ff', 7:'#a06bff' };
   function tabColor(key) {
-    let h = 0; const s = String(key || '');
-    for (let i = 0; i < s.length; i++) h = ((h * 31) + s.charCodeAt(i)) | 0;
-    return SPECTRUM[Math.abs(h) % SPECTRUM.length];
+    const first = String(key || '').trim().charAt(0).toUpperCase();
+    return GEMATRIA_COLOR[GEMATRIA_NUM[first] || 7];
   }
   function sortedTabs(tabs) {
     return tabs.slice().sort((a, b) =>
@@ -7156,7 +7178,7 @@ window.NayaNotif = window.NayaNotif || {
      Naya Academy); Intro Report (we don't use it). HOME lives once — top of
      the left as Hub + top of both + menus — NOT on the right. */
   const railR = el('aside', 'rail right');
-  railR.setAttribute('aria-label', 'Your worlds and NayaNET');
+  railR.setAttribute('aria-label', 'Your people, worlds and NayaNET');
   const railRHead = el('div', 'rail-right-head');
   railRHead.innerHTML = '<b>YOUR WORLDS &amp; NAYANET</b>';
   const railRX = el('button', 'rail-right-x', '\u00d7');
@@ -7215,7 +7237,43 @@ window.NayaNotif = window.NayaNotif || {
        Your World are OUT of the right — they already live on the LEFT
        (rows 2–5). Nothing added here. */
   });
-  railR.append(railRHead, navR);
+  /* ——— HUB PERSONAL SIDEBAR 2026-11-18 — the swap (Shawn 21:29Z): the
+     people-to-message rail. Personal's sidebar (icon + name above, info (i)
+     + match % beside it, DM / Mail / Audio / Video buttons BELOW) is
+     harvested verbatim from the Personal round's filed file and renders
+     into #hubPeopleList — this block is only the HOME: the section shell,
+     the mount, and the feed-following wiring. Nothing is invented here.
+     Until the harvest lands, the honest empty state shows and the section
+     is the one open item. ——— */
+  const peopleSec = el('section', 'rail-people');
+  peopleSec.setAttribute('aria-label', 'Your people — message them');
+  peopleSec.innerHTML = '<div class="rail-people-head"><b>YOUR PEOPLE</b></div><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div>';
+  /* Feed-following: the people shown are the feed's people. The lens is read
+     live from the active tab — the same three-way read the menu control uses
+     (Personal / Activity / Collective) — and the section re-renders whenever
+     the feed changes. The render itself lives in the harvested Personal
+     block (window.NayaHubPeople.render when it lands); until then refresh()
+     leaves the honest empty state alone. The harvested render must look up
+     #hubPeopleList live on every call — never a stale closure — because the
+     rail rebuilds with every HubView build. */
+  window.NayaHubPeople = window.NayaHubPeople || {};
+  window.NayaHubPeople.readLens = function () {
+    var active = document.querySelector('.lens-tab.active');
+    if (active && active.classList.contains('lens-personal')) return 'personal';
+    if (active && active.classList.contains('lens-activity')) return 'activity';
+    return 'collective';
+  };
+  window.NayaHubPeople.refresh = function () {
+    if (typeof window.NayaHubPeople.render === 'function') window.NayaHubPeople.render(window.NayaHubPeople.readLens());
+  };
+  if (!window.__hubPeopleWired) {
+    window.__hubPeopleWired = true;
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('.lens-tab') : null;
+      if (t) window.NayaHubPeople.refresh();
+    });
+  }
+  railR.append(railRHead, peopleSec, navR);
   shell.append(rail, main, railR, backdrop);
 
   /* Chassis API — exactly one shell-level lens. */
@@ -12606,11 +12664,11 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
    royal purple #8e24aa · sapphire #0f52ba · emerald #07925f ·
    deep gold #d4a017 · burnt orange #c2410c · ruby #c62828. */
 .hero{transition:transform .25s cubic-bezier(.16,.84,.22,1),box-shadow .25s,background .25s,border-color .25s;}
-.hero:hover{transform:translateY(-3px);border-color:color-mix(in srgb, var(--room-accent,#8e24aa) 78%, #fff);background:linear-gradient(135deg,color-mix(in srgb, var(--room-accent,#8e24aa) 26%, transparent),color-mix(in srgb, var(--room-accent,#8e24aa) 10%, transparent)),linear-gradient(135deg, rgba(255,255,255,.09) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,.38) 100%),radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--room-accent,#8e24aa) 15%, transparent), transparent 62%),repeating-conic-gradient(from 4deg at 50% -6%, #0a0910 0 13deg, #030304 13deg 28deg, #14111a 28deg 30deg),linear-gradient(135deg,#1b1b22 0%,#08080c 60%,#030304 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -22px 38px rgba(0,0,0,.5),0 0 48px -4px color-mix(in srgb, var(--room-accent,#8e24aa) 70%, transparent),0 26px 54px rgba(0,0,0,.6);}
+.hero:hover{transform:translateY(-3px);border-color:color-mix(in srgb, var(--room-accent,#8e24aa) 78%, #fff);background:linear-gradient(135deg, rgba(255,255,255,.09) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,.38) 100%),radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--room-accent,#8e24aa) 15%, transparent), transparent 62%),repeating-conic-gradient(from 4deg at 50% -6%, #0a0910 0 13deg, #030304 13deg 28deg, #14111a 28deg 30deg),linear-gradient(135deg,#1b1b22 0%,#08080c 60%,#030304 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -22px 38px rgba(0,0,0,.5),0 0 48px -4px color-mix(in srgb, var(--room-accent,#8e24aa) 70%, transparent),0 26px 54px rgba(0,0,0,.6);}
 .ib-layer{transition:transform .25s cubic-bezier(.16,.84,.22,1),box-shadow .25s,background .25s,border-color .25s;}
-.ib-layer:hover{transform:translateY(-2px);border-color:color-mix(in srgb, var(--lc) 85%, #fff);background:linear-gradient(135deg,color-mix(in srgb, var(--lc) 30%, var(--bg-raise)),color-mix(in srgb, var(--lc) 12%, var(--bg)));box-shadow:inset 0 1px #ffffff2e,0 18px 36px rgba(0,0,0,.55),0 0 32px color-mix(in srgb, var(--lc) 45%, transparent);}
+.ib-layer:hover{transform:translateY(-2px);border-color:color-mix(in srgb, var(--lc) 85%, #fff);box-shadow:inset 0 1px #ffffff2e,0 18px 36px rgba(0,0,0,.55),0 0 16px -4px color-mix(in srgb, var(--lc) 55%, transparent);} /* RIM LIGHT ONLY: the 30%/12% layer face wash is gone. */
 .ib-layer-head{transition:transform .2s cubic-bezier(.16,.84,.22,1),background .2s;}
-.ib-layer-head:hover{transform:translateY(-1px);background:linear-gradient(135deg,color-mix(in srgb, var(--lc) 20%, transparent),transparent 85%);}
+.ib-layer-head:hover{transform:translateY(-1px);} /* RIM LIGHT ONLY: the 20% head wash is gone. */
 .ib-layer-head:hover b{color:#fff;text-shadow:0 0 14px color-mix(in srgb, var(--lc) 85%, transparent);}
 .ib-layer-head:hover .ib-dot{transform:scale(1.18);box-shadow:0 0 12px var(--lc);} /* EYE-NOTES §3.2 edge-only */
 .ib-layer-head:hover .ib-chev{color:#fff;text-shadow:0 0 12px var(--lc);}
@@ -12638,13 +12696,13 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 .intel-board:hover,.intel-board:active,.intel-board.rv-lit:hover,.intel-board.rv-lit:active{
   transform:translateY(-6px);
   border-color:color-mix(in srgb, var(--tone,#8e24aa) 85%, #fff) !important;
-  background-image:linear-gradient(135deg,color-mix(in srgb, var(--tone,#8e24aa) 30%, transparent),color-mix(in srgb, var(--tone,#8e24aa) 12%, transparent)) !important;
-  box-shadow:inset 0 1px rgba(255,255,255,.35),0 34px 72px rgba(0,0,0,.75),0 0 64px color-mix(in srgb, var(--tone,#8e24aa) 38%, transparent),0 0 0 1px rgba(255,255,255,.28),0 0 48px -4px var(--tone,#8e24aa) !important;
+  /* RIM LIGHT ONLY (Shawn 2026-11-18 ~21:44Z): no wash over the face on hover — the 30%/12% tone wash is gone; the board stays obsidian, light only around the edge. */
+  box-shadow:inset 0 1px rgba(255,255,255,.35),0 34px 72px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.28),0 0 20px -4px var(--tone,#8e24aa) !important;
 }
 .intel-board:hover .ib-nutshell,.intel-board:active .ib-nutshell{
   border-color:color-mix(in srgb, #ffffff 70%, transparent) !important;
-  background-image:linear-gradient(135deg,color-mix(in srgb, var(--tone,#8e24aa) 18%, transparent),transparent 80%) !important;
-  box-shadow:inset 0 1px rgba(255,255,255,.3),0 14px 30px rgba(0,0,0,.56),0 0 32px color-mix(in srgb, var(--tone,#8e24aa) 35%, transparent),0 0 44px -6px var(--tone,#8e24aa) !important;
+  /* RIM LIGHT ONLY: the 18% nutshell face wash is gone with the board wash. */
+  box-shadow:inset 0 1px rgba(255,255,255,.3),0 14px 30px rgba(0,0,0,.56),0 0 20px -4px var(--tone,#8e24aa) !important;
 }
 .ib-nutshell:hover,.ib-nutshell:active{
   border-color:color-mix(in srgb, #ffffff 70%, transparent) !important;
