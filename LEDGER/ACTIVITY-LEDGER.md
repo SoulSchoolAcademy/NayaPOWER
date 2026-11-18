@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -398,6 +398,12 @@ _Last updated: 2026-11-18 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Daily mission-state distill fold: 141 snapshots folded into main, PR #3372 opened
 
 **Evidence:** VERIFIED via git ls-remote: branch naya/distill-fold-mission-state-20261114 exists and its head is exactly f121b8cf7647e54aeffa0a415078e3dc0dfea491, the commit the receipt claims. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, against lane self-score 9.5. Why not 9.5: (1) PR #3372 state (open/head/mergeable) was NOT independently re-read via API this 
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-18 13:33 PST: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261118-1333.log exists, sha256 b486f6cc2020017944d378d17b8d1da43f56d6e7dd96002c6d5d1f182b1c39aa matches the receipt's cited hash exactly; log lists 29 x EXIT 7 and 2 x EXIT 2, result line 0 claimed / 31 blocked; queue holds 31 brief-*.md files, all present in the receipt's blocked list (the 32nd regex
 
 ### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
@@ -29015,6 +29021,14 @@ _Last updated: 2026-11-18 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0292 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
+**Task:** #2454/#2466 adjudicated (both HOLD, byte-backed) + FALSIFIED verdict + SEAT_RE gap
+
+**Receipt:** `twelve-lane-receipts/t0292-lane8.md`
+
+**Evidence:** Backlog sweep (oldest-first), receipt 2026-10-12. Verified this tick via git ls-remote: refs/pull/2454/head c10084bd663894657a34b6fbf03212b2e3343912 MATCHES receipt pin; refs/pull/2466/head 92c5a74270f5fe95d6561b7292c944b5518bf467 MATCHES receipt pin — both heads still exact 5+ weeks later. Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: verdict comm
+
+### ✅ t0292 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
 **Task:** #2454/#2466 adjudicated (both HOLD, byte-backed) + FALSIFIED verdict + SEAT_RE gap named
 
 **Receipt:** `twelve-lane-receipts/t0292-lane8.md`
@@ -54074,6 +54088,18 @@ _Last updated: 2026-11-18 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261118-1440 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly lane-executor claim sweep 14:38 PST — 31 briefs attempted, 0 claimed (gate stall)
+
+**Evidence:** Fresh window. Verified first-hand: claim-sweep-20261118-1440.log sha256 179948ad11ec3f71173c84d950add52f50b62a6cfa15ee1fefc12fbcdff369eb MATCHES receipt; log records 29 x exit 7 + 2 x exit 2 (30 lines carry 'exit 7' incl. result line, 3 carry 'exit 2' incl. result line); brief-queue/ holds exactly 31 brief-*.md, zero brief-tNNNN-*, and the receipt'
+
+### ✅ gate-stall-20261118-1335 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly lane-executor claim sweep 13:33 PST — 31 briefs attempted, 0 claimed (gate stall)
+
+**Evidence:** Fresh window. Verified first-hand: claim-sweep-20261118-1333.log sha256 b486f6cc2020017944d378d17b8d1da43f56d6e7dd96002c6d5d1f182b1c39aa MATCHES receipt; log records exactly 29 x EXIT 7 + 2 x EXIT 2 naming the same briefs as the receipt; brief-queue/ still holds 31 brief-*.md, zero brief-tNNNN-*; delta vs 12:32 receipt ZERO change as claimed. Score
 
 ### ✅ gate-stall-20261118-1232 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
