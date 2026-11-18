@@ -1944,8 +1944,14 @@
     var WALKTHROUGH_URL = '/welcome';   /* the Official Welcome walk — identity hands off here, the walk hands off to the Hub */
     var HUB_APP_PLACEHOLDER = 'hub/';    /* the untouched default; the honesty guard keys off this */
     /* Walk fix 2026-11-11: no Supabase key lives in this page any more.
-       The claim goes to the same-origin /api/claim endpoint; the worker
-       holds the registry credential server-side. */
+       The claim goes to the /api/claim endpoint; the worker
+       holds the registry credential server-side.
+       FIX2 (2026-11-18, eye item 4): the endpoint is same-origin on
+       the staging worker, but ABSOLUTE from anywhere else — the
+       proof-host copy fetched relative /api/claim on the proof host
+       and 404ed, so the claim never went through. The worker answers
+       CORS for /api/*, so the absolute call completes from there. */
+    var __chainApiBase = (window.location.hostname === 'naya-walk-beginning-staging.nayapower.workers.dev') ? '' : 'https://naya-walk-beginning-staging.nayapower.workers.dev';
 
 
 /* =========================================================
@@ -2289,7 +2295,7 @@ function clearPendingRoute() {
          runs — the composing page carries no claim language, ever. */
       if (!silent) setAliasState('checking', alias);
       var ownKey = null; try { ownKey = localStorage.getItem('nayanet_vault_key'); } catch(e){}
-      fetch('/api/claim?alias=' + encodeURIComponent(alias) + (ownKey ? '&device_key=' + encodeURIComponent(ownKey) : ''), { cache: 'no-store' })
+      fetch(__chainApiBase + '/api/claim?alias=' + encodeURIComponent(alias) + (ownKey ? '&device_key=' + encodeURIComponent(ownKey) : ''), { cache: 'no-store' })
         .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('bad')); })
         .then(function(d){
           if (seq !== aliasSeq) return;
@@ -2366,15 +2372,25 @@ function clearPendingRoute() {
         if (kv) { try { kv.textContent = localStorage.getItem('nayanet_vault_key') || ''; } catch(e){} }
         if (kk) kk.hidden = false;
         var kcb = document.getElementById('keyCopyBtn');
+        /* FIX2 (2026-11-18, eye item 2) — the device-key pill itself
+           copies: the eye tapped the pill and nothing happened. The
+           pill and the Copy key button share one copy routine; the
+           button's "Copied ◆" is the visible feedback for both. */
+        var doCopyKey = function(){
+          var v = document.getElementById('keyValue');
+          var txt = v ? v.textContent : '';
+          var done = function(){ if (kcb) { kcb.textContent = 'Copied \u25C6'; setTimeout(function(){ kcb.textContent = 'Copy key'; }, 2000); } };
+          if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(txt).then(done, done); }
+          else { done(); }
+        };
+        if (kv && !kv.dataset.chainWired) {
+          kv.dataset.chainWired = '1';
+          try { kv.style.cursor = 'pointer'; kv.title = 'Tap to copy your device key'; } catch(e){}
+          kv.addEventListener('click', doCopyKey);
+        }
         if (kcb && !kcb.dataset.chainWired) {
           kcb.dataset.chainWired = '1';
-          kcb.addEventListener('click', function(){
-            var v = document.getElementById('keyValue');
-            var txt = v ? v.textContent : '';
-            var done = function(){ kcb.textContent = 'Copied \u25C6'; setTimeout(function(){ kcb.textContent = 'Copy key'; }, 2000); };
-            if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(txt).then(done, done); }
-            else { done(); }
-          });
+          kcb.addEventListener('click', doCopyKey);
         }
       } catch(e){}
     };
@@ -2410,7 +2426,7 @@ function clearPendingRoute() {
           var savedAlias = null; try { savedAlias = localStorage.getItem('nayanet_smart_alias'); } catch(e){}
           if (savedAlias) {
             var _sk = null; try { _sk = localStorage.getItem('nayanet_vault_key'); } catch(e){}
-            fetch('/api/claim?alias=' + encodeURIComponent(savedAlias) + (_sk ? '&device_key=' + encodeURIComponent(_sk) : ''), { cache: 'no-store' })
+            fetch(__chainApiBase + '/api/claim?alias=' + encodeURIComponent(savedAlias) + (_sk ? '&device_key=' + encodeURIComponent(_sk) : ''), { cache: 'no-store' })
               .then(function(r){ return r.ok ? r.json() : null; })
               .then(function(d){ if (d && d.exists) { paintNo(d.cert_no); if (cd && d.created_at) cd.textContent = 'Certified · ' + formatCertStamp(d.created_at); } })
               .catch(function(){});
@@ -2564,7 +2580,7 @@ function clearPendingRoute() {
         var timeout = new Promise(function (resolve) {
           setTimeout(function () { resolve({ status: 'error', error: 'The claim timed out — nothing was stamped. Try Enter again.' }); }, 8000);
         });
-        var claim = fetch('/api/claim', {
+        var claim = fetch(__chainApiBase + '/api/claim', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ alias: finalAlias, name: finalName, device_key: deviceKey })
@@ -2616,7 +2632,7 @@ function clearPendingRoute() {
           var verifyKey = function(pastedKey){
             var kn = document.getElementById('keyNote');
             if (!pastedKey) { if (kn) { kn.textContent = 'Paste your device key first.'; kn.hidden = false; } return; }
-            fetch('/api/claim?alias=' + encodeURIComponent(finalAlias) + '&device_key=' + encodeURIComponent(pastedKey), { cache: 'no-store' })
+            fetch(__chainApiBase + '/api/claim?alias=' + encodeURIComponent(finalAlias) + '&device_key=' + encodeURIComponent(pastedKey), { cache: 'no-store' })
               .then(function(r){ return r.ok ? r.json() : null; })
               .then(function(dd){
                 if (dd && dd.exists && dd.own) {
@@ -2634,7 +2650,7 @@ function clearPendingRoute() {
           };
           var kub = document.getElementById('keyUseBtn');
           if (kub && !kub.dataset.chainWired) { kub.dataset.chainWired = '1'; kub.addEventListener('click', function(){ var ki = document.getElementById('keyInput'); verifyKey(ki ? ki.value.trim() : ''); }); }
-          fetch('/api/claim?alias=' + encodeURIComponent(finalAlias) + '&device_key=' + encodeURIComponent(deviceKey), { cache: 'no-store' })
+          fetch(__chainApiBase + '/api/claim?alias=' + encodeURIComponent(finalAlias) + '&device_key=' + encodeURIComponent(deviceKey), { cache: 'no-store' })
             .then(function(r){ return r.ok ? r.json() : null; })
             .then(function(d){
               if (d && d.exists && d.own) {

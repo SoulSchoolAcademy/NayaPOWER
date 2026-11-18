@@ -247,7 +247,7 @@ assert template_sha.startswith("61002d15"), "personal template sha is not the co
 # taken-alias note clears the moment a fresh alias comes back available
 # (setAliasState hides #hubNote on available/own/neutral). Walk + template
 # shas unchanged.
-# WALKTHROUGH-CHAIN (2026-11-18, same round) - STAGING WORKER\n# RE-EMBED: the identity sha moves a1550164 -> d8c0d583. The old\n# assert would fail the rebuild on the new identity bytes.\n# IDENTITY IS NAME *PLUS* THE DEVICE KEY: on 'taken' the row\n# is read back WITH this browser's device key and only d.own\n# grants - the name-match grant is deleted. Without the key\n# the citizen gets the key panel (paste key, Use my key, the\n# key is verified against the row); the key is also SHOWN on\n# the certified certificate so it can be carried to another\n# device. Walk, template, unfold shas unchanged.\nassert ident_sha.startswith("d8c0d583"), "identity sha is not the WALKTHROUGH-CHAIN identity sha (2026-11-18: name + device key)"
+# WALKTHROUGH-CHAIN (2026-11-18, same round) - STAGING WORKER\n# RE-EMBED: the identity sha moves a1550164 -> d8c0d583. The old\n# assert would fail the rebuild on the new identity bytes.\n# IDENTITY IS NAME *PLUS* THE DEVICE KEY: on 'taken' the row\n# is read back WITH this browser's device key and only d.own\n# grants - the name-match grant is deleted. Without the key\n# the citizen gets the key panel (paste key, Use my key, the\n# key is verified against the row); the key is also SHOWN on\n# the certified certificate so it can be carried to another\n# device. Walk, template, unfold shas unchanged.\nassert ident_sha.startswith("803e7ea8"), "identity sha is not the WALKTHROUGH-CHAIN identity sha (2026-11-18: name + device key)"
 # ENTRANCE WELCOME (2026-11-16, BRIEF-AGREEMENT-ENTRANCE-WELCOME-20261116.md):
 # the welcome sha moves 5f33d273 -> db5960eb (925,222 B -> 934,065 B,
 # +9,337 B): Item 0 — the opening-view intro block only. Shawn's 10-star
@@ -490,7 +490,7 @@ assert template_sha.startswith("61002d15"), "personal template sha is not the co
 # contain, never cropped (4:3 images in a 16:9 slot); the 'Tap
 # the picture' pill moves below the frame. Intro row + fix-4
 # untouched; F2 has no key handler in the bytes (UNVERIFIED).
-# WALKTHROUGH-CHAIN (2026-11-18, maker round -\n# walkthrough-chain-20261118/work/edit-chain.py): the welcome\n# sha moves a1b67b82 -> 1a48347f: BRIDGE FIRST - after agreeing\n# inside the stage, the hold/fallback releases go to the bridge\n# (goBridgeAfterAgree), then the bridge's own buttons go to\n# name-entry; the agreed line + the onward button show only\n# after agreeing; the plain-page agree scroll is guarded while\n# the bridge is up. Pre-agree routes untouched (?stage=bridge,\n# Back buttons, /agreement agree -> bridge).\nassert welcome_sha.startswith("1a48347f"), "welcome sha is not the WALKTHROUGH-CHAIN welcome sha (2026-11-18: bridge first after agreeing; FIX F1: fpBridgeToName emerald -> gold, no adjacent repeat)"
+# WALKTHROUGH-CHAIN (2026-11-18, maker round -\n# walkthrough-chain-20261118/work/edit-chain.py): the welcome\n# sha moves a1b67b82 -> 1a48347f: BRIDGE FIRST - after agreeing\n# inside the stage, the hold/fallback releases go to the bridge\n# (goBridgeAfterAgree), then the bridge's own buttons go to\n# name-entry; the agreed line + the onward button show only\n# after agreeing; the plain-page agree scroll is guarded while\n# the bridge is up. Pre-agree routes untouched (?stage=bridge,\n# Back buttons, /agreement agree -> bridge).\nassert welcome_sha.startswith("c8581fca"), "welcome sha is not the WALKTHROUGH-CHAIN welcome sha (2026-11-18: bridge first after agreeing; FIX F1: fpBridgeToName emerald -> gold, no adjacent repeat)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
@@ -645,7 +645,7 @@ const PROJECT_TABLE = "projects"; /* the one project record, live schema: owner_
    the ten keys, the page bodies and the renderer are untouched. */
 const ANSWER_KEYS = ["about", "into", "vision", "mission", "motto", "goal", "biz_do", "biz_offer", "biz_building", "space", "news_local", "news_global", "news_province", "news_create_anywhere"];
 
-const JSONH = { "content-type": "application/json" };
+const JSONH = { "content-type": "application/json", "access-control-allow-origin": "*", "access-control-allow-methods": "GET, POST, OPTIONS", "access-control-allow-headers": "content-type" };
 function j(obj, status) {
   return new Response(JSON.stringify(obj), { status: status || 200, headers: JSONH });
 }
@@ -930,6 +930,9 @@ export default {
   async fetch(req, env) {
     const u = new URL(req.url);
     const p = u.pathname;
+
+    // ---- FIX2 (2026-11-18, eye item 4): CORS preflight for /api/* — the identity page calls /api/claim from the proof host too (absolute API base), and a POST with Content-Type: application/json preflights. Without this the browser blocks the claim before it is sent, so the proof-host claim never goes through. ----
+    if (req.method === "OPTIONS" && p.startsWith("/api/")) { return new Response(null, { status: 204, headers: JSONH }); }
 
     // ---- same-origin claim: write name + alias, read the row back ----
     if (p === "/api/claim" && req.method === "GET") {

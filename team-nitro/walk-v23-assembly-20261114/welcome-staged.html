@@ -1567,7 +1567,7 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-choices{display:flex}
    them); one row, scrolling sideways, so all ten stay reachable. */
 html.fp-locked body.fp-stage-on.fp-intro #fpLegal{display:block;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:8px 8px calc(8px + env(safe-area-inset-bottom));box-sizing:border-box;background:linear-gradient(0deg,rgba(5,6,7,.96),rgba(5,6,7,.85) 80%,rgba(5,6,7,0));text-align:center}
 html.fp-locked body.fp-stage-on.fp-intro #fpLegal .fp-legal-kicker,html.fp-locked body.fp-stage-on.fp-intro #fpLegal .fp-legal-sub,html.fp-locked body.fp-stage-on.fp-intro #fpLegal .fp-legal-page{display:none}
-html.fp-locked body.fp-stage-on.fp-intro #fpLegal .fp-legal-links{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 20px;max-width:none;margin:0;padding:0 4px}
+html.fp-locked body.fp-stage-on.fp-intro #fpLegal .fp-legal-links{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:center;gap:2px 20px;max-width:none;margin:0;padding:0 4px}
 @keyframes fpWait{0%,100%{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone,#a06bff),0 10px 22px rgba(0,0,0,.55)}50%{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 40px -2px var(--tone,#a06bff),0 12px 26px rgba(0,0,0,.6)}}
 /* ---- views: what shows in the stage, and what does not ---- */
 body.fp-stage-on #fpAgreement .letter-controls,
@@ -1894,7 +1894,7 @@ body.fp-stage-on #fpAgreement.fp-view-bridge #fpBridge{display:block;flex:1 1 au
 .fp-intro-choice.fp-choice-lit{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone,#07925f),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
 html.fp-locked body.fp-stage-on.fp-bridge #fpLegal{display:block;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:8px 8px calc(8px + env(safe-area-inset-bottom));box-sizing:border-box;background:linear-gradient(0deg,rgba(5,6,7,.96),rgba(5,6,7,.85) 80%,rgba(5,6,7,0));text-align:center}
 html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-kicker,html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-sub,html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-page{display:none}
-html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-links{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 20px;max-width:none;margin:0;padding:0 4px}
+html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-links{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:center;gap:2px 20px;max-width:none;margin:0;padding:0 4px}
 /* ---- BRIDGE FIX (2026-11-17, BRIEF-BRIDGE-PAGE-FIX-20261117.md) ----
    Corner geos: the agreement page's own .ldot jewels — the hexagonal geo
    gem, 14px, clip-path polygon. The .ldot rule already lives on this page
@@ -1943,6 +1943,10 @@ body.fp-stage-on.fp-bridge #fpStageBarB{bottom:44px}
 @media(max-width:640px){
 body.fp-stage-on.fp-bridge #fpStageBarB{bottom:72px}
 body.fp-stage-on #fpStageBarT .fp-dots{display:none}
+/* FIX2 — the bridge's own scroll area ends 16px above the fixed legal
+   strip, so the final choices sat under it at 534 (the eye's footer
+   overlap). 72px clears the one-row strip (~53px) with room to spare. */
+body.fp-stage-on #fpAgreement.fp-view-bridge #fpBridge{padding-bottom:72px}
 }
 
 /* ==== AGREEMENT MERGE (2026-11-17, BRIEF-AGREEMENT-UPDATE-20261117.md, Shawn 22:19Z) ====
@@ -4041,6 +4045,12 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
       if(body.classList.contains('fp-stage-on')){
         try{
           if(S.view==='agree')localStorage.setItem('nayanet_fp_stage','agree');
+          /* FIX2 — the post-agree bridge persists like the agree end:
+             a render while on it (any click inside the stage calls
+             render) must NOT wipe the 'bridge-agreed' key, or the
+             restore below could never fire. A plain bridge visit
+             (__fpAgreed false) still clears, as before. */
+          else if(S.view==='bridge'&&window.__fpAgreed)localStorage.setItem('nayanet_fp_stage','bridge-agreed');
            else localStorage.removeItem('nayanet_fp_stage');
            /* EYE FOLLOW-ON F1 (2026-11-17) - the old branch saved
               'bridge' on every bridge/deck render, and the boot block
@@ -4147,11 +4157,26 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
     window.__fpAgreed=true;
     cancelAgreeExit();
     S.view='bridge';S.all=null;
+    /* WALKTHROUGH-CHAIN-FIX2 (2026-11-18, eye 22:43-22:55Z) — the
+       onward pill was unreachable on arrival: it lives in
+       #fpBridgeFinal, behind four Continue clicks, and the eye's
+       text search found nothing. After agreeing the citizen has
+       already read the agreement (deck or letter), so the post-agree
+       bridge opens with ALL FOUR groups and the final page shown —
+       the four choices and the onward pill are visible on arrival,
+       nothing to hunt for. The pre-agree bridge (enterStage) still
+       opens at group 1, untouched. */
     var bg2=q('#fpBridgeG2'),bg3=q('#fpBridgeG3'),bg4=q('#fpBridgeG4'),bf=q('#fpBridgeFinal'),bm1=q('#fpBridgeMore1'),bm2=q('#fpBridgeMore2'),bm3=q('#fpBridgeMore3'),bm4=q('#fpBridgeMore4');
-    if(bg2)bg2.hidden=true;if(bg3)bg3.hidden=true;if(bg4)bg4.hidden=true;if(bf)bf.hidden=true;if(bm1)bm1.hidden=false;if(bm2)bm2.hidden=true;if(bm3)bm3.hidden=true;if(bm4)bm4.hidden=true;
+    if(bg2)bg2.hidden=false;if(bg3)bg3.hidden=false;if(bg4)bg4.hidden=false;if(bf)bf.hidden=false;if(bm1)bm1.hidden=true;if(bm2)bm2.hidden=true;if(bm3)bm3.hidden=true;if(bm4)bm4.hidden=true;
     var ag=q('#fpBridgeAgreed');if(ag)ag.hidden=false;
     var on=q('#fpBridgeToName');if(on)on.hidden=false;
     render();
+    /* FIX2 — the agreed bridge persists across a refresh/reopen,
+       the same shape as the 'agree' restore: a citizen who agreed
+       and is still on the bridge comes back to the bridge, not to
+       the choice view. Set AFTER render(), whose save branch would
+       otherwise clear it; cleared by exitStage(). */
+    try{localStorage.setItem('nayanet_fp_stage','bridge-agreed');}catch(e){}
     var br=q('#fpBridge');if(br)br.scrollTop=0;
   }
   function exitStage(){
@@ -4170,6 +4195,10 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
        citizen agrees (or exits any other way), a refresh must NOT bounce
        them back to the agreement end. */
     try{localStorage.removeItem('nayanet_fp_stage');}catch(e){}
+    /* FIX2 — leaving the stage also clears the agreed flag, so a later
+       plain bridge visit is pre-agree again (no agreed line, no onward
+       pill, group 1). */
+    window.__fpAgreed=false;
     /* VISUAL AGREEMENT END — every exit lands on the enter-name page, so
        put the cursor in the name field, as the agree path already does. */
     setTimeout(function(){if(!body.classList.contains('fp-stage-on')){var n=document.getElementById('userName');if(n)n.focus();}},650);
@@ -4421,6 +4450,13 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
   try{
     var _fpRestoreStage=(_fpStage==='deck'||_fpStage==='letter'||_fpStage==='bridge')?null:localStorage.getItem('nayanet_fp_stage');
     if(_fpRestoreStage==='agree'){enterStage();S.view='agree';S.all=null;render();}
+    /* FIX2 — the agreed bridge restores like the agree end: the
+       citizen who agreed and refreshed (or reopened the stage)
+       lands back on the post-agree bridge — all four groups and
+       the final page shown, agreed line + onward pill visible —
+       not on the choice view. A plain bridge visit never saves
+       this key, so the pre-agree bridge is never auto-landed. */
+    else if(_fpRestoreStage==='bridge-agreed'){enterStage();S.view='bridge';S.all=null;window.__fpAgreed=true;var _rb2=q('#fpBridgeG2'),_rb3=q('#fpBridgeG3'),_rb4=q('#fpBridgeG4'),_rbf=q('#fpBridgeFinal'),_rm1=q('#fpBridgeMore1'),_rm2=q('#fpBridgeMore2'),_rm3=q('#fpBridgeMore3'),_rm4=q('#fpBridgeMore4');if(_rb2)_rb2.hidden=false;if(_rb3)_rb3.hidden=false;if(_rb4)_rb4.hidden=false;if(_rbf)_rbf.hidden=false;if(_rm1)_rm1.hidden=true;if(_rm2)_rm2.hidden=true;if(_rm3)_rm3.hidden=true;if(_rm4)_rm4.hidden=true;var _rag=q('#fpBridgeAgreed');if(_rag)_rag.hidden=false;var _ron=q('#fpBridgeToName');if(_ron)_ron.hidden=false;render();}
      /* EYE FOLLOW-ON F1 (2026-11-17) - no 'bridge' auto-restore here:
         a plain load must never auto-land on the bridge (State B).
         The choice (State A) is what the citizen enters through the
@@ -4443,7 +4479,7 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
      clobbering the restore (which runs first and sets the view). */
   try{
     var _fpAlias2=null;try{_fpAlias2=localStorage.getItem('nayanet_smart_alias');}catch(e){}
-    if(!_fpStage&&_fpRestoreStage!=='agree'&&!_fpAlias2){enterStage();}
+    if(!_fpStage&&_fpRestoreStage!=='agree'&&_fpRestoreStage!=='bridge-agreed'&&!_fpAlias2){enterStage();}
   }catch(e){}
   window.__fpStage={state:S,enter:enterStage,exit:exitStage,render:render};
 })();
