@@ -5262,6 +5262,10 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 #pcProfileView .pc-profile-connect.failed{border-color:rgba(255,255,255,0.8);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 14px rgba(0,0,0,.5);}
 #pcProfileView .pc-profile-connect.failed:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 16px -4px rgba(255,255,255,0.8),0 8px 18px rgba(0,0,0,.55);}
 .pc-card .pc-connect-btn.failed{border-color:rgba(255,255,255,0.8);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 14px rgba(0,0,0,.5);}
+/* FIXROUND 2026-11-17: the rail failed CONNECT keeps its neutral failed look
+   on hover — the profile one had this override, the rail one did not, so a
+   failed rail button took the base hover glow and lost its failed look. */
+.pc-card .pc-connect-btn.failed:hover{border-color:rgba(255,255,255,0.8);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 16px -4px rgba(255,255,255,0.8),0 8px 18px rgba(0,0,0,.55);}
 .pc-call-note{font-size:17px;color:#fff;margin:8px 0 0;}
 .pc-points-receipt{flex:0 0 100%;text-align:center;font-size:17px;color:#fff;margin:8px 0 0;}
 .pc-points-receipt:empty{display:none;}
@@ -5307,6 +5311,24 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 #pcProfileView .pc-profile-connect{position:static;font-size:17px;padding:12px 24px;border-color:#c62828;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #c62828,0 6px 14px rgba(0,0,0,.5);}
 #pcProfileView .pc-profile-connect:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 22px -2px #c62828,0 8px 18px rgba(0,0,0,.55);}
 #pcProfileView .pc-profile-connect:active{transform:scale(.97);}
+/* === CONNECTION PROFILE FIXROUND 2026-11-17 — PRESS ===
+   Checker 2026-11-17: the :active rules existed but no profile button visibly
+   sank on a normal tap — profile CONNECT reached scale(.97) only after a
+   ~1.5s hold, label Save after ~800ms, note Save never; measured again on the
+   base bytes in render (in-page sampling): CONNECT first sank at ~1300ms,
+   label Save at ~674ms, note Save was still mid-transition at 1600ms. The
+   cause is the press transition itself: the .18s spring
+   cubic-bezier(.34,1.56,.64,1) overshoots and, in paint, the sink lands
+   whole seconds late, while the hover lifts (button:hover, .ph-connect:hover)
+   hold through the press. So for exactly these three buttons the press
+   transition is a near-instant .01s ease-out with no spring, the rest transition
+   loses the spring too, and the :hover:active rules carry !important so no
+   :hover rule — including the !important rail lift — can hold the lift
+   through a press. Hover lift itself is untouched; the rail card is untouched. */
+#pcProfileView .pc-profile-connect,#pcProfileView .pc-profile-save,#pcProfileView .pc-profile-label-save{transition:transform .12s ease-out,box-shadow .3s ease;}
+#pcProfileView .pc-profile-connect:hover:active,#pcProfileView .pc-profile-connect:active{transform:scale(.97)!important;transition:transform .01s ease-out,box-shadow .18s ease!important;}
+#pcProfileView .pc-profile-save:hover:active,#pcProfileView .pc-profile-save:active{transform:scale(.97)!important;transition:transform .01s ease-out,box-shadow .18s ease!important;}
+#pcProfileView .pc-profile-label-save:hover:active,#pcProfileView .pc-profile-label-save:active{transform:scale(.97)!important;transition:transform .01s ease-out,box-shadow .18s ease!important;}
 #pcProfileView .pc-profile-connect.requested{border-color:#d4a017;color:#d4a017;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #d4a017,0 6px 14px rgba(0,0,0,.5);}
 #pcProfileView .pc-profile-label{margin-top:16px;}
 #pcProfileView .pc-profile-label-row{display:flex;gap:10px;}
@@ -5317,7 +5339,7 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 #pcProfileView .pc-req-note{font-size:17px;color:#fff;margin:12px 0 0;}
 #pcProfileView .pc-req-note:empty{display:none;}
 @media(max-width:640px){
-#pcProfileView{padding:8px 12px 120px;}
+#pcProfileView{padding:8px 12px 180px;}
 #pcProfileView .pc-profile-hero-id{gap:16px;}
 #pcProfileView .pc-profile-orb{width:96px;height:96px;font-size:40px;}
 #pcProfileView .pc-profile-ways{grid-template-columns:repeat(2,1fr);}
@@ -15455,7 +15477,7 @@ window.NayaNotif = window.NayaNotif || {
         b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
         b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
         b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
-        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>' + '<span class="notif-lbl">' + s[0].toUpperCase() + '</span>';
+        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>' + '<span class="notif-lbl">' + s[1] + '</span>';
         b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'create', b); return; } if (s[0] === 'plus-connect') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'connect', b); return; } self.tap(s[0]); });
         row.appendChild(b);
       });
@@ -33797,6 +33819,12 @@ function pcProfileLoadHistory(){
   var host=$('pcProfileHistory');
   if(!host) return;
   host.innerHTML='<p>Reading your conversations\u2026</p>';
+  /* FIXROUND 2026-11-17: the citizen's own device-kept sends render at once
+     when they exist — they must not wait ~10-15s on the slow live query
+     settling (checker latency note). The live merge below re-renders with
+     live+stub when it lands; no live-query code path is touched. */
+  var sEarly=pcProfileStubRows();
+  if(sEarly.length){ pcProfileRenderHistory(host,[],[],sEarly); }
   var sb=pcProfileSb();
   if(!sb){ var s0=pcProfileStubRows(); if(!s0.length){ pcProfileHistoryEmpty(host); return; } pcProfileRenderHistory(host,[],[],s0); return; }
   var owner=window.PAGE_ALIAS||'flagship-personal';
