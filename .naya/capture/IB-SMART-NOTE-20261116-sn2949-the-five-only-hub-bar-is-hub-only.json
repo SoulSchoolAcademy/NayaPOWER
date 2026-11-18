@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2949",
+ "intelligence": {
+  "title": "The Five Only — the Hub Bar Is Hub-Only",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2949-the-five-only-hub-bar-is-hub-only",
+  "smart_note_id": "SN-2949",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2949/IB-SMART-NOTE-20261116-sn2949-the-five-only-hub-bar-is-hub-only.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Three complaints, one eye. The bar that was right got replaced by a bar from another page — and the replacement was never his idea, it was a reading: \"same icons on each page\" sounded like alignment and landed as a copy. The copy is the lesson: alignment is the drawer and the sidebar agreeing, not every page wearing the Hub's bar. The second complaint is the older one — the page came back in pieces, the feed never filled in, while the round reported done — and the third is the smallest and the most telling: a shiny yellow glow where a clean colour should be. His eye reads the glow before it reads the label.",
+  "simple_view": "Imagine your favourite toy shelf has five special toys on the bottom — that's just right! Then someone takes a whole different shelf from another room and stacks it on top. That's not your shelf anymore — it's crowded and wrong! The five toys belong on the bottom, all by themselves, and the other shelf stays in its own room. And the little yellow light shouldn't be all shiny and blinding — it should just be a nice clean colour.",
+  "grandma_view": "It's like this, love — the bottom of your page had five lovely little buttons, just right, like five plates set out for dinner. Then someone brought the whole serving tray from the other room and set it on top. That tray belongs in the other room, dear — your five plates were perfect on their own. And that yellow shine? It should be a soft clean colour, not a glare in your eyes.",
+  "naya_view": "The five only: ADD / MAIL / ACTIVITY / WORLDS / ECOSYSTEM on Personal's bottom, nothing above, nothing from the Hub. The Hub bar is Hub-only. The glow reads clean in its own colour. The page returns whole.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2949",
+   "title": "The Five Only — the Hub Bar Is Hub-Only",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2949/IB-SMART-NOTE-20261116-sn2949-the-five-only-hub-bar-is-hub-only.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2949/IB-SMART-NOTE-20261116-sn2949-the-five-only-hub-bar-is-hub-only.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6294dde3b72b4d6bbb044ce6e52dfa9b3b593cbb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3064",
+ "intelligence": {
+  "title": "The Deep Palette — Elegant, Not Neon; One Color per Color",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3064-the-deep-palette",
+  "smart_note_id": "SN-3064",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3064/IB-SMART-NOTE-20261117-sn3064-the-deep-palette.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "He looked at the colors and said: less rainbow, no neon center, no rainbow-bright. Elegant, beautiful, clean, sharp. The deeper versions are better — mid to darker, not super dark, not super light. Deep emerald, deep sapphire blue, deep gold, royal purple — the real nice ones. That's the first half: depth, not brightness. The second half is sameness: the same color lightness everywhere. The same yellow on every button, the same green, the same blue, the same purple — not a whole bunch of different blues and purples and yellows, each button its own shade. One unified system. Choose the nicest of each color — the most elegant, the most beautiful, the most royal — and use THAT one everywhere, so everything looks pristine and premium. Two rules, one palette: go deep, and go once. A bright color shouts; a deep color glows. Ten different blues argue; one blue agrees with itself everywhere it appears.",
+  "simple_view": "Imagine all the colors in the rainbow — but not the bright neon ones! We use the DEEP, beautiful ones instead — deep emerald green, deep sapphire blue, deep gold, royal purple — the really nice royal ones! And here's the trick: there's only ONE yellow, ONE green, ONE blue, ONE purple — the same one everywhere! Not a whole bunch of different blues and yellows all mixed up! Everything matches, like one big beautiful royal family of colors!",
+  "grandma_view": "It's like this, love — imagine the colors, dear, but not the bright neon rainbow ones! We use the deep, beautiful ones — deep emerald green, deep sapphire blue, deep gold, royal purple — the really nice royal ones, love! And there's only ONE yellow, ONE green, ONE blue, ONE purple — the same one everywhere, dear! Not a whole bunch of different blues and yellows all mixed up! Everything matches, love, like one big beautiful royal family — pristine and premium!",
+  "naya_view": "ELEGANT, NOT NEON; ONE COLOR PER COLOR. Deep, mid-to-darker — never neon, never rainbow-bright, never super dark, never super light. Deep emerald · deep sapphire blue · deep gold · royal purple — the real nice ones. ONE hex per hue, the same lightness everywhere: royal purple `#8e24aa` · sapphire `#0f52ba` · emerald `#07925f` · deep gold `#d4a017` · burnt orange `#c2410c` · ruby `#c62828` · deep magenta `#a21caf` · indigo `#3f51b5` · deep cyan `#0e7490` · deep violet `#6d28d9`. Digits: 0 white · 1 ruby · 2 burnt orange · 3 deep gold · 4 emerald · 5 deep cyan · 6 indigo · 7 royal purple · 8 deep violet · 9 deep magenta. Day rims: Sun `#8e24aa` · Mon `#c2410c` · Tue `#d4a017` · Wed `#0f52ba` · Thu `#07925f` · Fri `#c62828` · Sat `#3f51b5`. SUPERSEDES the bright spectrum, digit-tile, day-color, and orb values (hues + spectrum order stay locked; only the values deepen). The deck's nine colors stand (content, harvested verbatim). Law file: `~/workspace/team-nitro/THE-DEEP-PALETTE.md` — required read in every design brief.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3064",
+   "title": "The Deep Palette — Elegant, Not Neon; One Color per Color",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3064/IB-SMART-NOTE-20261117-sn3064-the-deep-palette.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3064/IB-SMART-NOTE-20261117-sn3064-the-deep-palette.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7ac12ee47af9f3d87611d3c345b81c4dc52afb73"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

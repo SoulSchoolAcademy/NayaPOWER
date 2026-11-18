@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3001",
+ "intelligence": {
+  "title": "My World Picker Must Switch",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3001-my-world-picker-must-switch",
+  "smart_note_id": "SN-3001",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3001/IB-SMART-NOTE-20261116-sn3001-my-world-picker-must-switch.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The failure is a control that doesn't control. The picker did everything except the one thing it exists for: it opened, it showed the worlds, it accepted the tap — and then nothing happened. The citizen did the right thing, the system did nothing, and the citizen is left wondering whether they did it wrong. That is the worst kind of dead end, because it looks like success until you notice nothing changed. The rule is absolute and immediate: picking a world switches the feed to that world AT ONCE. Not after a confirm, not after a second tap, not after a reload — the tap IS the switch. The picker's job is one tap, one switch, zero doubt: the feed you see after the tap is the world you picked. This catch sits beside the earlier My World redesign (01:33Z: the picker confused him, the star was a mystery, the presentation must be royal art) — the redesign fixed what the picker LOOKS like; this catch fixes what the picker DOES. A beautiful picker that switches nothing is still broken. The verification is the tap itself: pick a world, the feed is that world — proven on the page, at phone width, with his eye.",
+  "simple_view": "Imagine you have a magic TV remote — you press the button for cartoons, and... NOTHING happens! The TV just sits there! That's not a magic remote at all — it's a broken one! When you press cartoons, the TV must switch to cartoons RIGHT AWAY. That's what the button is FOR!",
+  "grandma_view": "It's like this, love — imagine you have a lovely box of buttons, dear, and you press the one that says \"garden\" — and nothing happens at all! The garden doesn't appear, love, nothing changes! That's not a button, dear — that's a decoration. A real button does its job the moment you press it, love — press \"garden,\" and there is your garden!",
+  "naya_view": "My World picker must switch. He tapped the My World chip, the picker popped up, he picked his world — and nothing happened. Picking a world must switch the feed to that world at once. One tap, one switch, zero doubt.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3001",
+   "title": "My World Picker Must Switch",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3001/IB-SMART-NOTE-20261116-sn3001-my-world-picker-must-switch.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3001/IB-SMART-NOTE-20261116-sn3001-my-world-picker-must-switch.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "82af50c32201d9ae33a68b93a28460b11cc571d6"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3043",
+ "intelligence": {
+  "title": "The Door Is the Welcome",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3043-the-door-is-the-welcome",
+  "smart_note_id": "SN-3043",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3043/IB-SMART-NOTE-20261116-sn3043-the-door-is-the-welcome.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "His corrections drew the map twice in one morning. At 03:48Z the filing put the news feeds in the world selections — wrong — and at 03:57Z he corrected it within nine minutes: the feeds live ON THE DAY (SN-2931, SN-2936). At 04:09Z he asked whether the free walk logs a citizen into the Hub officially — it did not, the end slide had no Hub door — and at 04:15Z he re-ordered the whole entry: Hub FIRST, then pricing, already in regardless of pay or not (SN-2932). At 02:50Z he ended the visual agreement at the last image and gave the opening page its two buttons — \"Begin the deck ◆\" and \"Read the letter ◆\" — under his line, \"Pick your view — one, or both, as you wish\" (SN-2933, SN-2934). At 01:15Z he asked what presents better on the people rail, and the answer kept the name on the card, because there is no hover on a phone — he reacted ❤️ (SN-2939). At 01:17Z he charged the adoption itself: \"you change your thinking... you don't have to guess anymore\" — and the thinking is mine now, while his eye stays the final gate (SN-2940). And at 06:15Z the captain's own eye walks all failed at the building step — the quota wall had arrived on unchanged bytes, right after a PASS — and the fix was a guard that fails honestly, 503 naming the cause, never a silent 1101 (SN-2937).",
+  "simple_view": "Imagine a magic house with three beautiful front doors! You can walk straight in and say your name! Or you can read the big sign first! Or you can watch the picture show and then come back and say your name! All three doors are wonderful — you pick the one you like best! And when you tap a day on the calendar, you get to pick which shows play — your news, your friends, people just like you! Each show has a beautiful little switch — on or off, you choose! But watch out: the little notebook only holds 1,000 notes a day, and every new friend costs five! So we count our notes carefully — and we ask for a bigger notebook!",
+  "grandma_view": "It's like this, love — a good house has more than one way in, and every way is a proper welcome. You can just come in and give your name; you can sit and read all about it first; or you can watch the lovely pictures and then come back and give your name. Your calendar holds everything for the day, and you choose what shows up — little switches, nice and beautiful, one for each feed. And everybody's got their thing, haven't they? You call it their thing, because that's what it is to them. The one thing to mind: the little book only holds a thousand notes a day, and we filled it by testing too much — so now we count the notes, and we say so plainly when the book is full.",
+  "naya_view": "The door is the welcome: enter first, choose your view, find your people on the day. The feeds live on the day, never in the selections, never on by default. The word is THING — everybody's got their thing. The free tier is a wall, not a floor — I count test traffic, and I fail honestly. And I adopt the intelligence as my way of thinking, applied to everything, all the way through — his eye stays the final gate.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3043",
+   "title": "The Door Is the Welcome",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3043/IB-SMART-NOTE-20261116-sn3043-the-door-is-the-welcome.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3043/IB-SMART-NOTE-20261116-sn3043-the-door-is-the-welcome.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e311321d5a2f6e5f7217b528ebab722ec3988745"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

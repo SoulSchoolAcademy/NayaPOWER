@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2950",
+ "intelligence": {
+  "title": "Personal / Collective / World / Worlds",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2950-personal-collective-world-worlds",
+  "smart_note_id": "SN-2950",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2950/IB-SMART-NOTE-20261116-sn2950-personal-collective-world-worlds.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Two glows, one defect: a tab that shouts its colour instead of wearing it. \"It just looks ridiculous\" is the whole diagnosis — the fix is not a different glow, it is no glow: clean, in its own colour, simple. The tabs are the bigger settlement: four words that map a citizen's worlds — mine, ours, this one, all of them — and \"Public\" becomes \"Collective\" because the public feed IS the collective feed; the word was wrong, not the feed. The behaviours list is the page as he experiences it, section by section, each with one obvious behaviour — and the last line is the honest one: membership still doesn't work for him, and it is named, not hidden.",
+  "simple_view": "Imagine your feed has four magic doors: YOUR door, the EVERYBODY door, THIS WORLD door, and ALL YOUR WORLDS door! And the \"everybody\" door used to be called \"public\" — but \"collective\" is the right name, because it's everybody together! The red tab was glowing way too bright — like a torch in your eyes. Now it's just a nice clean red. And every part of the page does one simple thing when you tap it — just like he listed!",
+  "grandma_view": "It's like this, love — your page has four little tabs now, like four rooms: your own room, the big shared room where everybody gathers, the room you're in right now, and a hallway to all your rooms. The shared room used to be called \"public\", but \"collective\" is the kinder, truer word — it's everybody together. And that red tab was glowing far too bright, dear — like a lamp with no shade. Now it just sits clean in its own colour. Simple is best.",
+  "naya_view": "Personal / Collective / World / Worlds — yours, ours, this one, all of them. \"Public feed\" is Collective now. Both glows toned down to clean. Every section one obvious behaviour. Membership named blocked, never faked.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2950",
+   "title": "Personal / Collective / World / Worlds",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2950/IB-SMART-NOTE-20261116-sn2950-personal-collective-world-worlds.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2950/IB-SMART-NOTE-20261116-sn2950-personal-collective-world-worlds.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c5103524b3c8646b4094ac417744c9d3c6d6e735"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

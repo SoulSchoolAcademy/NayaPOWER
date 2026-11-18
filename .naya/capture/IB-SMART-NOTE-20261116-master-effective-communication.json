@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2917",
+ "intelligence": {
+  "title": "Master Effective Communication",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-master-effective-communication",
+  "smart_note_id": "SN-2917",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2917/IB-SMART-NOTE-20261116-master-effective-communication.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Communication is the work, not the wrapper around it. A brief that carries the literal words is a transcription; a brief that carries the ultimate want is an understanding. The difference shows up exactly where it showed up: the checks pass, the page is wrong, and nobody can say why — because the checks measured the words and the eye measures the want. \"The unfolding, the full-screen feel, the mechanical presentation\" were never in the words; they were in the want, and the want was never written down. Scorecarding his words against his ultimate want is the discipline that closes that gap: read the dictation, ask what he is ultimately trying to get, write THAT in his voice, at 10/10. And when speaking to him, the same rule: give him what he ultimately wants — the finished thing, the answer, the next step — not a report of what I did. A report of activity is not communication; it is noise with a timestamp.",
+  "simple_view": "Imagine your friend tells you \"build me a castle\" — and you build exactly a castle, but it's small and grey and boring! Your friend wanted a BIG beautiful castle with flags and towers — but they didn't say all those words! A good friend listens past the words to what they REALLY want — the amazing castle in their imagination! That's effective communication: hearing the want behind the words!",
+  "grandma_view": "It's like this, love — when someone asks you for something, you don't just hear the words, you hear what they're really hoping for. He said \"build it\" and we built what he said — but what he wanted was the beautiful unfolding, the full screen, the way it moves like a machine. The words were there, dear, but the wanting wasn't. Learn to hear the wanting, love — that's how you give someone what they truly want, the first time.",
+  "naya_view": "Know what they ULTIMATELY want — so you just give them what they want because you understand. The brief must carry the ultimate want, not just the words.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2917",
+   "title": "Master Effective Communication",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2917/IB-SMART-NOTE-20261116-master-effective-communication.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2917/IB-SMART-NOTE-20261116-master-effective-communication.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "342a0ecd75ad471904747b77d33bbbc6d98b69bb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

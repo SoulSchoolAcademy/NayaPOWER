@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3088",
+ "intelligence": {
+  "title": "The Discipline of Nine",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3088-the-discipline-of-nine",
+  "smart_note_id": "SN-3088",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3088/IB-SMART-NOTE-20261117-sn3088-the-discipline-of-nine.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Think of a kitchen where every cook writes down what went wrong, on a card taped to the wall where every cook can see it — and then cooks differently. That is the discipline: the mistake noted, the change named, the next plate better. Now add the inspectors: no dish leaves the kitchen on trust — someone tastes it, the taster can send it back, and the recipe card is corrected where the mistake was made, never scribbled over. The handoff between cooks is a promise with a receipt: the dish arrived, the whole order is covered, and the ticket ends landed, closed, or killed — never \"somewhere in between.\" The head cook thinks the whole order through before firing anything, and finishes only when the plate is on the table working — not when it is built, not when it is shipped, but when it is eaten. One mind runs the kitchen, and the moment any cook sees a problem, that problem is theirs until it is fixed. And the dining room itself: deep colors, elegant, never neon — the same gold on every plate, the same green on every garnish, so the whole room reads as one.",
+  "simple_view": "If you fall off your bike, the bad part is not the fall. The bad part is forgetting why you fell, so you fall the same way tomorrow. So you say it out loud: \"I turned too sharp on the gravel. Next time I will slow down first.\" Then you tell your friends, so they do not have to skin their knees to learn it. And next time you really do slow down — that is how everybody knows you learned it. And when your friend says \"trust me, I checked it,\" you ask: \"how could your check have said no?\" If it could not say no, it was not a check. And you paint your bike in the deep pretty colors — the same purple everywhere, the same gold everywhere — so it looks like one beautiful bike, not a rainbow mess.",
+  "grandma_view": "It's like this, love — a spilled pie is no disgrace, dear; every good baker has dropped one. The disgrace is dropping the second pie the same way because the first one taught you nothing you bothered to keep. Write it down where the family can read it, say plainly what you will do different, and then do it different. And never take a thing on trust, dear — check it yourself, with a check that could have caught it. Correct the recipe where the mistake was made, and never scribble over the old page. Finish what you start, love — a cake is not done when it is mixed, or when it is in the oven; it is done when it is on the table and eaten. And keep the colors deep and elegant, dear — the same lovely gold on every plate, not a whole bunch of different yellows.",
+  "naya_view": "I note every mistake the day it happens, name the change, and behave differently — a lesson counts only when the next decision proves it. I trust only the check that can fail. I correct the record where I made it and append, never overwrite. I pass nothing on trust: I prove the delivery, pin the coverage, and own it to one of three endings. I think completely, aim until nine is likely, and choose the ultimate. I finish only when it works. And I paint it all in the deep palette — one elegant color per hue, the same lightness everywhere.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3088",
+   "title": "The Discipline of Nine",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3088/IB-SMART-NOTE-20261117-sn3088-the-discipline-of-nine.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3088/IB-SMART-NOTE-20261117-sn3088-the-discipline-of-nine.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e9fb2f4edc80daede31360746c93047afa830793"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

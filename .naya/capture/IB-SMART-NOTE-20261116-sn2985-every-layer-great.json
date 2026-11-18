@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2985",
+ "intelligence": {
+  "title": "Every Layer Great — One Ultimate Project",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2985-every-layer-great",
+  "smart_note_id": "SN-2985",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2985/IB-SMART-NOTE-20261116-sn2985-every-layer-great.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Some jobs have layers, and one layer good while the others aren't never works. That is the whole law, and the legal pages are the job that proved it: the content layer was summaries, the presentation layer was left-hung plain text — one layer bad and the other bad too, and the whole thing read as a scam. But the deeper truth is that a single good layer can't carry the rest: a beautiful presentation over one-sentence summaries is still not a legal agreement, and airtight drafting in plain unformatted text still reads as not legit to a stranger's eye. The project is one ultimate project, not a stack of separate passes that each get to be \"good enough\" on their own: the WHOLE thing has to be good — not only good but GREAT — the most elite, ten-star, professional, pro, premium, top-of-the-line, all-star presentation AND outputs AND design AND intelligence put into it. Every layer, or the project isn't done. That is the verdict a round is judged by: not \"did my layer pass\" but \"is the whole thing great in every layer.\" The letter taught the same lesson from the other side (SN-2980): the picture was fixed and the page was missed — one layer good, the rest not — and it took his eye to catch it. The standard is the whole: presentation, outputs, design, intelligence — all of it, all-star, all at once.",
+  "simple_view": "Imagine you're building the most amazing tower ever — but you make the bottom super strong and beautiful, and then the top is all wobbly and messy! It doesn't work, right? The whole tower has to be great — every single layer, from the bottom to the very top! That's the rule: one ultimate project, and EVERY layer has to be great — the prettiest, the best, ten stars in every single part — or it's not done!",
+  "grandma_view": "It's like this, love — imagine you're making a beautiful dinner, dear: the main dish is wonderful, but the plates are chipped and the table isn't set and the dessert is burnt! One good layer doesn't make a good dinner, love — the whole thing has to be lovely, every layer of it. It's the same with our work, dear: some jobs have layers, and it's never going to work to say \"well, this one layer is good but the others aren't.\" One ultimate project, love — the WHOLE thing has to be good, not only good but GREAT — the most elite, ten-star, professional, premium, top-of-the-line, all-star in every layer: how it looks, what it does, how it's designed, how smart it is. Every layer, dear, or the project isn't done.",
+  "naya_view": "Every layer great — one ultimate project. Some jobs have layers, and one layer good while the others aren't never works. One ultimate project: the WHOLE thing has to be good — not only good but GREAT — the most elite, ten-star, professional, pro, premium, top-of-the-line, all-star presentation and outputs and design and intelligence put into it. Every layer, or the project isn't done.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2985",
+   "title": "Every Layer Great — One Ultimate Project",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2985/IB-SMART-NOTE-20261116-sn2985-every-layer-great.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2985/IB-SMART-NOTE-20261116-sn2985-every-layer-great.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8c94e89935ca2ff54aa05d3acff0c91e4476835f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

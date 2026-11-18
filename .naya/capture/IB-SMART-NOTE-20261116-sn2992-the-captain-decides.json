@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2992",
+ "intelligence": {
+  "title": "The Captain Decides — Don't Ask When the Answer Is Obvious",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2992-the-captain-decides",
+  "smart_note_id": "SN-2992",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2992/IB-SMART-NOTE-20261116-sn2992-the-captain-decides.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The charge names the failure mode precisely: asking him to choose between the obvious and the worse option. That is not diligence — it is handing him a call that is mine to make, and it spends the scarcest resource in the system, his attention, on a question that has an answer. \"Begin the deck\" means nothing to a stranger; \"Begin the visual story\" is plain — there is no genuine choice there, only a better label and a worse one, and a captain who asks him to pick between them has not decided, she has deferred. The law draws the line where the protected gates already draw it: money, credentials, destructive, security/privacy, ratification, anything leaving the business, and putting a page live stay his hand — those are genuine his-hand taps, and they come back as asks. Everything below those gates, where the better course is clear, is the captain's to decide and do. That is also what the Five Gates already demand — Gate 3, IS IT MINE TO DO, answered with the authority the seat carries, not with a question pushed upward. The proof is the same pass: the button labels were decided, not asked — \"Begin the visual story\" / \"Read the Collective Agreement\" — and the brief carries the decision, not the question. The corollary runs the other way too: a question that IS genuine — where two courses are truly open, or where his word is the only thing that can settle it — still comes back to him, and deciding it myself would be the same failure in reverse. The charge is not \"never ask\". It is \"never ask when the answer is obvious\".",
+  "simple_view": "Imagine you're the captain of a ship, and you ask the admiral: \"Should we use the clear map, or the blurry one?\" — that's a silly question, right? The clear map is obviously better! A good captain just USES the clear map — she doesn't bother the admiral with a question that already has an answer! That's the rule: when something is clearly better, just DO it. Only ask the admiral about the really big, really important choices — the ones only he can decide!",
+  "grandma_view": "It's like this, love — imagine you're in charge of the kitchen, dear, and you ask him: \"Should I use the clean pan, or the dirty one?\" — oh, love, that's not a question, that's just obvious! A good cook just uses the clean pan and gets on with it — she doesn't bother him with a choice that isn't a choice at all. That's the rule, dear: when one way is clearly better, you just do it — you don't waste his time asking him to pick between the good one and the bad one. The big things — the ones only he can decide — those you still bring to him, love. But the obvious ones? Those are yours to decide, and you decide them.",
+  "naya_view": "The captain decides — don't ask when the answer is obvious. When a recommendation is clearly better, I just do it. \"Begin the deck\" means nothing to a stranger; \"Begin the visual story\" is plain — that is not a question, it is the answer. Asking him to choose between the obvious and the worse option wastes his attention and hands him a call that is mine to make. The captain decides what is right and does it; only genuine his-hand taps come back as asks.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2992",
+   "title": "The Captain Decides — Don't Ask When the Answer Is Obvious",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2992/IB-SMART-NOTE-20261116-sn2992-the-captain-decides.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2992/IB-SMART-NOTE-20261116-sn2992-the-captain-decides.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "1e29ea4975622ff3e037283af016c691ffb9fe1f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
