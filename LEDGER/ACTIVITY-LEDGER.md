@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 18:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22931,6 +22931,12 @@ _Last updated: 2026-11-18 18:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/arm_docclaim_t0593.py sha16 3eff30f1cfa37162 == pin. Score 9.0. What kept it from 9.5: the receipt's own named hole — the pre-registered battery-first verdict ladder's coarseness could not have handled a saturation outcome (−0.5), and the verdict was computed from a single battery family; judge-invariance (FALSIFIED stands 
 
+### ✅ t0593-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Independent re-selection + re-run of the t0586 claim-form verdict -> ARM holds
+
+**Evidence:** Backlog sweep (oldest unscored, Oct 13). Verified first-hand: seal sealed-selection-t0593-lane3.md sha16 35bb21857dee440c matches; results-t0593-lane3-overlap.json sha16 c09c3400c307ce68 matches; all four cited pins re-verified live (fixture_t0586 8077fc722905ec12, her seal 7522a1f91eaeb940, her results 6b099fff4493f308, instrument 4d43798e58f2769f
+
 ### ✅ t0593 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** independent re-selection + re-run of the t0586 claim-form verdict
@@ -22962,6 +22968,12 @@ _Last updated: 2026-11-18 18:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0593-lane3.md`
 
 **Evidence:** Verified: sealed-selection-t0593-lane3.md 35bb21857dee440c == claimed; results-t0593-lane3-overlap.json c09c3400c307ce68 == claimed; fixture_t0586.py 8077fc722905ec12 == claimed; cross-claims sealed-selection-t0586.md 7522a1f91eaeb940 == claimed, results-t0586-overlap.json 6b099fff4493f308 == claimed; instrument 4d43798e58f2769f == claimed; seal mt
+
+### ✅ t0593-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Third fixture, hard-class discriminators, verdict ARM (claim-form mechanism)
+
+**Evidence:** Backlog sweep (oldest unscored, Oct 13). Verified first-hand: fixture_t0593.py sha16 0f83599db111ba8b matches; seal sealed-selection-t0593.md sha16 81bf3f6012ed9695 matches; results-t0593-overlap.json sha16 cb9396bc85fa3c06 matches. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (lane self-score 9.0, agrees). What kept it from 9.5: (1) designer = execu
 
 ### ✅ t0593 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -22995,6 +23007,12 @@ _Last updated: 2026-11-18 18:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: fixture_t0593.py 0f83599db111ba8b == claimed; select_overlap_cells_t0593.py 8878c8584799757e == claimed; sealed-selection-t0593.md 81bf3f6012ed9695 == claimed; run_overlap_cells_t0593.py 1681769dc5ce2d60 == claimed; results-t0593-overlap.json cb9396bc85fa3c06 == claimed; seal mtime 1791873705 < run 1791873716. Fresh 50-doc corpus, hard-cl
 
+### ✅ t0592-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Independent certification of the t0585 POOL arm firing -> CERTIFY (delta 0)
+
+**Evidence:** Backlog sweep (oldest unscored, Oct 13). Verified first-hand: driver t0592_certify_pool.py sha16 19c026a0ba471bee matches; comparison results-t0592-certify-pool.json sha16 b36e8c3c0256aba5 matches; her pinned artifacts cited (instrument b3322d25, seal 9f6c07f2, results 22fb4a62) recorded in receipt. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (lane 
+
 ### ✅ t0592 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Independent certification of t0585 POOL arm firing, CERTIFY (delta 0)
@@ -23026,6 +23044,12 @@ _Last updated: 2026-11-18 18:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0592-lane9.md`
 
 **Evidence:** Verified: t0592_certify_pool.py sha256 19c026a0... == claimed (exact); results-t0592-certify-pool.json b36e8c3c... == claimed (exact); her 8/8 pins MATCH; her seal<results order confirmed; independent driver (from sealed spec, no import of her instrument) reproduced her table with diffs 0 across all 27 cells + battery; verify-only authority honored
+
+### ✅ t0592-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-consequence probe arm, SEALED + RUN -> FALSIFIED (mechanical M, frozen rule)
+
+**Evidence:** Backlog sweep (oldest unscored, Oct 13). Verified first-hand: instrument t0592_decision_consequence.py sha256 matches receipt pin 7f8943ac7f29bd1a0bad8f08c1db3c06f4326c162986d36892dee409fecb333d EXACTLY (full 64 hex); seal sealed-note-t0592-decision-consequence.md exists; coarse results sha16 d4bd6f658a55477b matches; fine results file exists. NOT 
 
 ### ✅ t0592 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -53708,6 +53732,12 @@ _Last updated: 2026-11-18 18:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261118-1019 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall report 2026-11-18 10:19 PST: full claim sweep of all 31 queued briefs, 0 claimable
+
+**Evidence:** Fresh window (today 10:19 PST). Verified first-hand from live bytes: claim-sweep-20261118-1019.log exists (2823 bytes) with 29 per-attempt '=> exit 7' lines + 2 per-attempt '=> exit 2' lines and totals '31 attempted, 0 claimed, 29 x exit 7, 2 x exit 2', matching the receipt exactly; queue now still holds exactly 31 brief-*.md files and 0 brief-tNNN
 
 ### ✅ gap-gate-stall-20261026-1437-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
