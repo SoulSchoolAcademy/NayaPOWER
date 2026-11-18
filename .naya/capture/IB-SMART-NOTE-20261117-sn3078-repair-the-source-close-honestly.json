@@ -1,0 +1,92 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3078",
+ "title": "Repair the Source, Close Honestly",
+ "slug": "repair-the-source-close-honestly",
+ "topic": "LESSON",
+ "category": "SYSTEM",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-17T22:59:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "ai_view": "Run every repair as a lifecycle: classify the failure, prove the classification by input-equivalence rather than by 'it fails on the tip too,' then fix the canonical seam — generator, template, reference, engine — and give new domains adapters over that engine, never a second engine. Sequence stacked repairs so gates can see them and prove safety with combination runs. Treat the index and registry as generated state: derive from tree truth, stage before regenerating, regenerate on the merged tree, stamp only the fields allowed to move, and land a note and its registry entry in the same commit or not at all. Hold what is held, wait for reviews that were requested, and re-verify on the exact head that will merge. Close every lane in words that match reality — merged, superseded with byte-equivalence proven and credit given on the superseded PR itself, or closed unmerged because merging would harm — and name a green heal that lacks ratification or provenance as green-with-a-gap. Spend the cheapest meter first: a rate limit is a hard stop with a resume file, never a retry prompt. When something lands that should not have, revert it then and there; when a problem can recur, automate the watcher instead of hand-fixing twice.",
+  "child_view": "If your toy train keeps falling off at the same corner, you do not glue the train to the track. You look at the corner. Maybe one piece of track is bent. You fix that piece — or swap it for a straight one — and then the train goes round and round by itself, even when you are not watching. And if your friend already fixed the same corner on their set, you say 'you found it first, thank you,' and you keep their good idea. When you are done playing, every piece goes back in the box and you count them, so tomorrow the whole set is really there — not just the train, but the tracks and the station too.",
+  "essence": "A repair is a lifecycle, not a diff. First classify what actually failed and prove the classification; then fix the source — the generator, the template, the reference, the mechanism — never the one instance that happened to show the symptom, because an instance-patch heals nothing and the symptom simply regenerates. Sequence the work so the gates can see it, prove stacked repairs by running them together, and regenerate generated state from tree truth instead of hand-picking it back to green. Then close honestly: merged, superseded with credit to the lane whose insight you kept, or closed unmerged when merging would do harm — and say which, on the record, every time. A thing exists in this system only when every system that should know it does know it: the file, the registry, the ledger, and the chain. Anything less is a gap wearing a green badge.",
+  "grandma_view": "It is the difference between darning one hole and checking the whole sock drawer. A good homemaker knows a recipe copied wrong at the top of the card will spoil every baking until the card itself is corrected — so she corrects the card, in ink, where everyone cooks from it. She does not quietly adjust each cake and leave the wrong card for the next person. And she keeps her pantry list honest: what is on the shelf, what is written on the list, and what the household believes is there must all be the same thing, or somebody's dinner fails. Leftovers get labeled with the date. Nothing is thrown away in secret, and nothing is kept past its truth either.",
+  "human_view": "Picture a dripping tap. You can keep a bucket under it forever — emptying the bucket, mopping the floor, buying a quieter bucket — and the kitchen will look managed while the washer inside the tap keeps rotting. The honest repair is unglamorous: turn off the water, open the tap, replace the washer, turn the water back on, and watch it stay dry. And when you have finished, you tell the household plainly what you did: fixed, replaced with a better part your neighbour found, or left alone because opening the wall today would cause a flood. Nobody respects the person who hides the bucket. Everybody trusts the person who shows them the dry sink and says exactly how it got dry.",
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation",
+   "Repair",
+   "Canon"
+  ],
+  "what_it_means": "The deep pattern under every note in this family is that symptoms are cheap and sources are honest. A stale score, a cliff-edge grant expiry, a registry that disagreed with the files on main — each one invited a quick local patch, and each quick patch would have guaranteed the same failure next week with a different face. Fixing the source is slower once and faster forever, and closing honestly is what makes that speed safe to trust: a team that records its supersessions, its skipped repairs, and its honest gaps can build on its own history, while a team that tidies the record is condemned to rediscover everything. The house corrects itself, in live time, or its failures correct it later at a worse hour.",
+  "whats_inside": [
+   "A repair is a lifecycle, not a diff: classify, prove, sequence, close honestly.",
+   "Fix the source — the generator, the template, the mechanism — never the instance that showed the symptom.",
+   "Generated state is regenerated from tree truth, never hand-picked back to green.",
+   "A note exists only when every system knows it: file, registry, ledger, and learning chain.",
+   "Close every lane as what it truly is — merged, superseded with credit, or closed unmerged — and say so on the record."
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 4,
+   "covers": [
+    {
+     "sn": "SN-2169",
+     "title": "The Repair Lifecycle: Classify, Prove, Sequence, Close Honestly"
+    },
+    {
+     "sn": "SN-2171",
+     "title": "A Note Exists Only When Every System Knows It"
+    },
+    {
+     "sn": "SN-2173",
+     "title": "One Canon, Many Hands: Fix The Source, Never The Instance"
+    },
+    {
+     "sn": "SN-2178",
+     "title": "Merge Discipline: Holds, Twins, and the Exact Head"
+    },
+    {
+     "sn": "SN-2180",
+     "title": "Generated State Is Regenerated, Never Hand-Picked"
+    },
+    {
+     "sn": "SN-2181",
+     "title": "One Canon: Collisions, Convergence, and Stale Asks"
+    },
+    {
+     "sn": "SN-2187",
+     "title": "Resource Discipline: Spend the Cheapest Meter First"
+    },
+    {
+     "sn": "SN-2191",
+     "title": "The House Corrects Itself — Kernel Lessons and Honest Building"
+    },
+    {
+     "sn": "SN-2193",
+     "title": "The Door — How a Smart Note Goes Live"
+    },
+    {
+     "sn": "SN-2228",
+     "title": "The Real Fix — The Bug That Taught the Rule"
+    }
+   ],
+   "of": 100
+  },
+  "how_it_connects": "This essence is Batch 4's repair hand: Proof Must Be Able to Fail supplies the classification and verdict discipline its lifecycle runs on, Authority Is a Property of Artifacts governs the ratifications and closures it must record honestly, and His Eye Is the Final Gate is where its finished work is ultimately judged. Its raw family spans the repair-lifecycle, existence, canon, merge, generated-state, collision, resource, kernel, door, and real-fix notes from SN-2169 through SN-2228.",
+  "machine": "1) No repair begins before its failure is classified and the classification is proven by input-equivalence (diff intersect check-inputs equals empty for a base-defect claim). 2) Fixes land on the canonical source — generator, template, reference, or engine; instance-only patches are rejected, and new domains receive adapters over the canonical engine, never a second engine. 3) Stacked repairs are proven by combination runs on the combined head, not by individual greens. 4) Generated state (index, registry) is derived from tree truth, regenerated on the merged tree after staging, and never healed by hand-picking conflict sides; only the fields allowed to move are stamped. 5) A note lands with its registry entry in the same commit; a note is counted as existing only when file, registry, ingestion ledger, and learning chain all know it. 6) Merges re-verify on the exact head that will merge; held work stays held and requested reviews are waited for. 7) Every closure is labeled merged, superseded (byte-equivalence proven, credit posted on the superseded PR, branch kept), or closed-unmerged-with-reason; a heal lacking ratification, provenance, or epistemic state is labeled green-with-a-gap. 8) A rate limit is a hard stop for the run and produces a resume file with exact steps; shared state is written by one reader and cheap-checked by everyone else. 9) When the screen still shows the identical stall after a fix, the fix is declared not-working and the hunt continues to the real cause in the data the code actually reads.",
+  "the_learning": "Fix the thing that produces the symptom, prove the fix where the symptom lived, and close the lane with the true word — merged, superseded with credit, or unmerged for cause.",
+  "what_is_in_it_for_you": "For you, Shawn, this means when a seat tells you something is fixed, it stays fixed — because the washer was changed, not the bucket emptied. You stop seeing the same fault return in new clothing week after week, and you stop needing to ask whether 'landed' means the file, the registry, the sync, and the live link all agree; here, it means all four, or the lane is still open and says so. Superseded work credits its maker in public, unmerged work says why in plain words, and a demo that reaches its number on a real screen reached it because the code now reads the true target. The machine gets quieter, and quieter means trustworthy.",
+  "why_it_matters": "The opposite of this law is the house we kept almost living in: dead-weight code added to 'repair' reds that were inherited from the base, an index healed by hand until the next regeneration resurrected the conflict, notes present on main and invisible to the registry and the learning loop at once, a demo that 'rebuilt' its strips from a stale attribute and stalled in exactly the same place while the fix was announced. Each shortcut felt like progress and billed the future at interest. Source repair with honest closure is what turns a team's effort into an asset instead of a treadmill — the same fault never has to be paid for twice, and the record of what was done can be built on without an audit first."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3078/IB-SMART-NOTE-20261117-sn3078-repair-the-source-close-honestly.md",
+ "page_hash": "7211c301d0de3e72e389dca090d6ecf12cfcffc40be828c7650d878d7e2e9bc6",
+ "content_hash": "a8f49e368aa6f3857a7fba86a808abc45155ad57a4dda303c54fbca858a78b1b"
+}

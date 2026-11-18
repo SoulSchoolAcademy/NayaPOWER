@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2929",
+ "intelligence": {
+  "title": "The Clone Trick — Depth on Everything",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2929-the-clone-trick",
+  "smart_note_id": "SN-2929",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2929/IB-SMART-NOTE-20261116-sn2929-the-clone-trick.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The seats built flat. They knew the Real Object Law — every element a real physical object — but they did not know how to make one. Shawn's trick is the how, and it is almost embarrassingly simple: take the whole thing, clone it once, put the clone behind, move it right or left just a tad. The clone becomes the glow, the edge, the underglow; the original stays the solid body in front. The layering is the depth. One clone does it — triples are too much, quadruples way too much — because depth is a whisper, not a shout. The proof is the certificate name: round 3 fixed the typed name and the certified face stayed solid purple paint; round 4, built on the clone trick alone, made the name a trophy in both states — obsidian body, chrome edge, purple underglow behind, never the fill — and Shawn's eye said \"way better\". The charge now is general: use it often, on inputs and buttons and everything, because he wants depth on everything. His honest note stands with it: we didn't know how to do that. Now we do — and every brief carries it, so no seat builds flat again.",
+  "simple_view": "Imagine you draw a beautiful name — but it looks flat, like paper. Now draw the SAME name again, right behind it, just a tiny bit to the side, in a glowing colour — and WOW! Suddenly your name looks like it's popping right off the page, like a real shiny trophy! Just one copy behind does the magic. Two copies is too much. One is perfect!",
+  "grandma_view": "It's like this, love — if something looks flat, you don't throw it away, you give it a little shadow behind it. Copy it once, tuck the copy just behind, nudge it a smidge to the side — and suddenly it has depth, it stands up off the page like a real object. One copy does it; three is too much fuss. Simple as that, and it works on everything.",
+  "naya_view": "Clone it once, put it behind, nudge it just a tad — and flat becomes layered. One clone does it. Depth on everything, from now on, in every brief.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2929",
+   "title": "The Clone Trick — Depth on Everything",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2929/IB-SMART-NOTE-20261116-sn2929-the-clone-trick.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2929/IB-SMART-NOTE-20261116-sn2929-the-clone-trick.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "5c5ad21fc79fe552bd15b79ec8d71d183bec8c3b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

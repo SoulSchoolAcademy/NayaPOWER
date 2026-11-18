@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3056",
+ "intelligence": {
+  "title": "The Auto-Format — Ten Answers In, About + Skills Out",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3056-the-auto-format",
+  "smart_note_id": "SN-3056",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3056/IB-SMART-NOTE-20261117-sn3056-the-auto-format.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Think of the ten questions as the citizen telling their story once, in their own words — who they are, what they're into, what they're building. The auto-format is the promise that they never have to tell it twice: the moment their first page is created, that one telling pours straight into their About page and their Skills page, laid out beautifully in the unfolding and in the slideshow, automatically. They don't choose a format, they don't retype anything, they don't do a separate step. And when they want a second page, or a third, the Smart Factory does the same thing — their words in, the page out, already formatted. The intelligence is in the pouring, not in the picking.",
+  "simple_view": "Imagine you tell Naya ten things about yourself — who you are, what you love, what you're building! And POOF — your About page and your Skills page are already made, all pretty, in the unfolding AND the slideshow, all by themselves! You don't have to type it again or pick anything! And when you want another page, the Smart Factory does the same magic — your words in, a beautiful page out!",
+  "grandma_view": "It's like this, love — you tell Naya ten things about yourself when you join, dear, just once, in your own words! And then your About page and your Skills page are already done for you, love — all laid out beautifully in the unfolding and the slideshow, automatically! You never have to type it twice or pick a format, dear — it just pours straight in! And when you want more pages later, the Smart Factory does the very same thing for you!",
+  "naya_view": "Ten answers in at sign-up, About + Skills out — in the unfolding AND the slideshow, automatically, on the citizen's very first pages. No format picked, nothing typed twice. Smart Factory = more pages after the first, same auto-format. Amendment 5fa26d0f to the formats round (17beee28); walk wiring follows after it lands; Factory Phase 2 carries it into the builder.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3056",
+   "title": "The Auto-Format — Ten Answers In, About + Skills Out",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3056/IB-SMART-NOTE-20261117-sn3056-the-auto-format.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3056/IB-SMART-NOTE-20261117-sn3056-the-auto-format.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "9348e7f17dc3702200bcdbf7d4f3c383819491c3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

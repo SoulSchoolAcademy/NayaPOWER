@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3055",
+ "intelligence": {
+  "title": "The Benchmarks — Best in the World, Lessons Not Copies",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3055-the-benchmarks-best-in-the-world",
+  "smart_note_id": "SN-3055",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3055/IB-SMART-NOTE-20261117-sn3055-the-benchmarks-best-in-the-world.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Every great thing ever built started the same way: look at the best in the world, learn what makes each of them best, and then build the thing that has all of it and is still bigger than any of them. Cal.com is the best at letting booking live inside another product. Calendly is the best at making booking feel effortless. Fantastical is the best at making a calendar beautiful to look at. Sunsama is the best at helping a person plan one realistic day. Day One is the best at turning a life into a history you can search. But each of them is one piece — and the thing Shawn is building is the whole: one unified command centre where the calendar, the bookings, the tasks, the journal, the people, the goals, the timeline, and the insights are all one connected record system, not six apps that happen to share a login. The research's own recommendation says it plainly: don't build six disconnected applications; build one unified operational engine with multiple interfaces. And the differentiator is the sentence that decides whether we win: the others help you organize your time; Naya helps you make the best possible use of it — not just what's on your calendar, but whether you're doing what matters.",
+  "simple_view": "Imagine the best toy in the world — but it's actually lots of toys! One toy is the best at building, one is the best at drawing, one is the best at telling stories! And instead of picking just one, you take the best bit from EACH of them and build one SUPER toy that does everything! That's the benchmarks — we learn from the best calendar, the best booking, the best journal, and then we build one amazing command centre that's bigger than all of them!",
+  "grandma_view": "It's like this, love — imagine you're making the perfect Sunday dinner, dear! You take the best roast from one recipe, the best gravy from another, the best pudding from a third — and together they make a dinner better than any single recipe! That's the benchmarks, love — we take the best lesson from each wonderful system — Cal.com for booking, Fantastical for looking lovely, Sunsama for planning the day, Day One for keeping memories — and we build one beautiful command centre that does it all, in our own premium way!",
+  "naya_view": "Best in the world, lessons not copies: Cal.com for the booking engine, Calendly for the simple journey, Fantastical for the look, Sunsama for the day, Motion for time managing itself, Day One for the journal and history. One unified daily command centre — the day menu IS it. Both customers, personal first. Premium Naya design. The calendar is a projection, never the source of truth. The differentiator: not organizing your time — making the best possible use of it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3055",
+   "title": "The Benchmarks — Best in the World, Lessons Not Copies",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3055/IB-SMART-NOTE-20261117-sn3055-the-benchmarks-best-in-the-world.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3055/IB-SMART-NOTE-20261117-sn3055-the-benchmarks-best-in-the-world.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "03a2c61e8a96a683583862915dc3eafbd6a30400"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

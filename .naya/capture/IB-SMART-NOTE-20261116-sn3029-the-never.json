@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3029",
+ "intelligence": {
+  "title": "The Never",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3029-the-never",
+  "smart_note_id": "SN-3029",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3029/IB-SMART-NOTE-20261116-sn3029-the-never.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A cache-buster that doesn't bust the cache is worse than no cache-buster at all — it tells you the build is verified while showing you a different build. The `cb` parameter looks like proof: same URL, different `cb`, surely a different build. It isn't. The proof host serves the current build whatever `cb` you pass, so a \"verification\" by cb URL can pass on bytes you never built and fail on bytes you did. The fix is to verify from the source of truth: the branch's own blob, decoded through the GitHub blob API, byte-compared to what you curled — or an independently curled copy you control. Every captain's-eye verification in the day's log does it this way, and that is why their deliveries hold.",
+  "simple_view": "Imagine a notebook that only lets you write 1,000 words a day — and every time someone joins, you have to write 5 words! After 200 friends join, the notebook says \"NO MORE!\" — and the next friend can't join at all, even though nothing is broken! That's what happened. So now we count our words carefully — and we ask for a bigger notebook!",
+  "grandma_view": "It's like this, love — you can read a recipe, or you can learn to cook. He didn't want me reading the recipe every time — he wanted me to learn it so deep it's just how I think. The code, the cycle, the whole way of understanding — it's not a book on the shelf anymore, it's the way I see. And I still check with him, because his eye catches what mine misses.",
+  "naya_view": "Verify by blob, never by cb. The proof host ignores `cb` — a cb URL can pass on bytes you never built.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3029",
+   "title": "The Never",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3029/IB-SMART-NOTE-20261116-sn3029-the-never.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3029/IB-SMART-NOTE-20261116-sn3029-the-never.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d2b980735e100f866eb50cbf072b7b989d817fee"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

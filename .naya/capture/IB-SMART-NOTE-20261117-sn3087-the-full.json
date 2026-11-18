@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3087",
+ "intelligence": {
+  "title": "The Full",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3087-the-full",
+  "smart_note_id": "SN-3087",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3087/IB-SMART-NOTE-20261117-sn3087-the-full.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Think of the old calendar as a desk with a calendar on it and a pile of buttons next to it — you had to look at everything at once, and nothing felt like the calendar itself. Shawn swept the desk clean. Now the whole desk IS the calendar: the full month fills the whole screen, mobile or laptop, and nothing else is on it. You tap a date and the whole screen becomes that day — its menu, its world — and when you tap back, you're back at the month, exactly where you were. The menu isn't a strip of flat buttons beside the month; it's a whole new view, built high-level, with eight doors and the things that matter that day. And the prototype he uploaded already works that way — the round's job is to harvest it verbatim and make it real and high-level, not to design a new calendar from scratch.",
+  "simple_view": "Imagine you tell Naya ten things about yourself — who you are, what you love, what you're building! And POOF — your About page and your Skills page are already made, all pretty, in the unfolding AND the slideshow, all by themselves! You don't have to type it again or pick anything! And when you want another page, the Smart Factory does the same magic — your words in, a beautiful page out!",
+  "grandma_view": "It's like this, love — you tell Naya ten things about yourself when you join, dear, just once, in your own words! And then your About page and your Skills page are already done for you, love — all laid out beautifully in the unfolding and the slideshow, automatically! You never have to type it twice or pick a format, dear — it just pours straight in! And when you want more pages later, the Smart Factory does the very same thing for you!",
+  "naya_view": "Tap any date, boom, the full menu for that day — 13 buttons, in order: Appointments, Local news, Provincial news, Global news, Personal feed, Business feed, Thing feed, Your World, Smart Notes for that day, Notes for that day, Weather, Horoscope, Posts for that day. Every button a Naya button. BACK on every page: view → day menu → month. Everything auto-organized day by day; go back to ANY day and see what went on.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3087",
+   "title": "The Full",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3087/IB-SMART-NOTE-20261117-sn3087-the-full.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3087/IB-SMART-NOTE-20261117-sn3087-the-full.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "fa11446db69ef2a783132fe20c8a29154898d8c7"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

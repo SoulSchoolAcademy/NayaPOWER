@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2999",
+ "intelligence": {
+  "title": "Don't Send In What Isn't Completed",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2999-dont-send-in-what-isnt-completed",
+  "smart_note_id": "SN-2999",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2999/IB-SMART-NOTE-20261116-sn2999-dont-send-in-what-isnt-completed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The failure is sending the unfinished thing in as if it were finished — and then reporting on its defects as if they were defects in the work, when they are only defects in the incompleteness. The voice note's glitch was real, but it was the wrong thing to tell him: the text wasn't final, so the voice couldn't be final, so the glitch was a property of \"not done yet,\" not a property of the work. Telling him about it spent his attention on a problem that would vanish the moment the work was actually finished — and worse, it asked him to care about the quality of something that wasn't ready to be judged. The rule is the same shape as the whole-page rule and do-it-right-the-first-time: the thing comes to him whole, finished, and done right — or it doesn't come to him at all. Nothing half-done comes to him, from here on. That includes defect reports: a glitch in unfinished work is never surfaced as a defect, because there is nothing to defect yet — the work is still being made. The voice stays paused until the text is final; when the text is final, the voice is made, and only then is it judged.",
+  "simple_view": "Imagine you're still coloring your picture — it's only half colored! — and someone runs to show it to the teacher and says \"look, there's white spots all over it!\" But the white spots are just the parts you haven't colored YET! That's silly, right? You don't show a half-colored picture and complain about the white spots. You finish coloring FIRST — and then you show it!",
+  "grandma_view": "It's like this, love — imagine you're still baking the cake, dear, and someone takes it out of the oven half-baked and says \"look, it's all gooey inside!\" Of course it's gooey, love — it isn't finished! You don't serve a half-baked cake and complain about it, dear. You finish the baking first — and then you serve it, lovely and done.",
+  "naya_view": "Don't send in what isn't completed. We never finalized the text — so why send it in without it being completed? A defect report on unfinished work is noise, not news. Nothing half-done comes to him. The voice stays paused until the agreement text is final.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2999",
+   "title": "Don't Send In What Isn't Completed",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2999/IB-SMART-NOTE-20261116-sn2999-dont-send-in-what-isnt-completed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2999/IB-SMART-NOTE-20261116-sn2999-dont-send-in-what-isnt-completed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0e033306fa0bf3f7991e0c4b66016e5ddaafb4ff"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

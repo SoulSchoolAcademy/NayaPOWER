@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NayaNET — My World · Living Calendar</title>
+<!--
+  LIVING CALENDAR — FULL SCREEN (2026-11-17)
+  Structure + navigation harvested VERBATIM from Shawn's clickable prototype
+  ~/workspace/user/files/NayaNET-Living-Calendar-Concept.html (17,828 B,
+  md5 657796bebb5d790e7cfe69fc91730f11). Demo/sample data inside the prototype
+  is placeholder and is REPLACED here by real local records or honest empty
+  states — nothing in this file is presented as real unless it comes from a
+  record named in the code.
+  Booking logic harvested from the old calendar build
+  (branch personal/calendar-booking-meet-20261116, blob 15e0a2fc):
+  store 'mw.cal.bookings.v1', 9 hourly slots 09:00-17:00, taken slots disabled,
+  double-booking refused, survives reload. Meet room: getUserMedia on join,
+  honest outcome reporting, timer, Mic/Camera, Leave.
+  Notes store 'mw.cal.notes.v1' (this round, same pattern): {id,date,world,
+  type,rank,timeframe,text,createdAt}. Daily Intelligence Report is computed
+  from the day's own record; an empty day gets no report, none invented.
+  Weekday identity light — DNA §1 (LOCKED 2026-11-03, governs; supersedes the
+  older T1–T38 hexes where they differ): Sun #8e24aa · Mon #c2410c ·
+  Tue #d4a017 · Wed #0f52ba · Thu #07925f · Fri #c62828 · Sat #3f51b5.
+  (The Hz labels on the tiles — Sun 963 · Mon 417 · Tue 528 · Wed 741 ·
+  Thu 639 · Fri 396 · Sat 852 — are the T1–T38 frequencies, kept as labels.)
+  Category chips inside the tile (never the whole tile): Smart Notes #8E24AA ·
+  news #0F52BA · appointments #07925F · community #A21CAF · business #0E7490 ·
+  personal #F5F5FF.
+  DEEP PALETTE (2026-11-17, THE-DEEP-PALETTE.md, Shawn's word 01:30Z): the
+  bright digit-tile hexes and bright day colors are SUPERSEDED — one deep hex
+  per hue, everywhere: royal purple #8e24aa · sapphire #0f52ba · emerald
+  #07925f · deep gold #d4a017 · burnt orange #c2410c · ruby #c62828 · deep
+  magenta #a21caf · indigo #3f51b5 · deep cyan #0e7490 · deep violet #6d28d9.
+  Digits: 0 white · 1 ruby · 2 burnt orange · 3 deep gold · 4 emerald ·
+  5 deep cyan · 6 indigo · 7 royal purple · 8 deep violet · 9 deep magenta.
+  Day rims: Sun #8e24aa · Mon #c2410c · Tue #d4a017 · Wed #0f52ba ·
+  Thu #07925f · Fri #c62828 · Sat #3f51b5. Every other color on the page
+  (chips, glows, doors, orbs, the today ring) takes its hue's deep hex.
+  White stays white; black stays board black #050607. The weekday identities
+  and the spectrum order are unchanged; only the values deepened. The dark
+  obsidian-purple background tints (panel/gradient stops, inset shadows) are
+  the board's shadow family, not hue values — they stand.
+  INNER PAGES (2026-11-17, brief BRIEF-CALENDAR-INNER-PAGES-20261117.md):
+  every icon dynamic — Shawn 23:54Z: the icons were flat, bright, not real,
+  undynamic. Door glyphs were bare colored text; timeline dots, mobile dots
+  and the tile spark were flat marks; Meet buttons wore emoji. Now every
+  icon is a real 3D jewel: the Personal .mini-gem construction
+  (blob 9a006c47) holding the day file's SVG icon map (blob 3834919b,
+  verbatim paths) — obsidian circle, rim in the door's own deep color,
+  white glyph as a real object, slow orbit, hover lift + light, press
+  with the door. Door colors run the spectrum in order (no doubles, no
+  near-white). Stat numbers are Dashboard digit tiles (.os-mini-num /
+  .os-mini-tile construction harvested verbatim from the day file =
+  Dashboard Fix-5c blob aa6ca89f; rims deepened to this file's own dg
+  mapping per Laws §3.1/§13 — the day file's bright rims are superseded).
+  Panel/door/header text raised to the 17px floor where it fits; tile
+  micro-labels (dayname, chips, tile wisdom, minitext/more) and the mobile
+  VIEW 9px stay — the month grid cannot carry 17px labels and still fit
+  the viewport exactly (SN-3059 vs §2.3; Laws §13 open question C5).
+  Weather/news stay honest absences; no fake content; no second booking
+  system; Meet joins a confirmed booking only. Day view NOT rebuilt.
+  FOLLOW-ON (2026-11-18, Amendments #1 + #2): checker conditions 1-3 +
+  the black car. (1) The mini-jewel orbit ring the diff notes claimed
+  (45s) is now REALLY in the bytes: .jewel-mini::before, 45s, reversed
+  on the middle action — the notes were wrong, now they are true.
+  (2) Today no longer fills with its own colour at rest: the
+  .tile.today wash goes to opacity 0 (rim + halo still glow, brighter)
+  — obsidian inside, the day's colour only as the light AROUND the
+  board (Shawn 00:16Z); hover still ignites the whole cell, as before.
+  (3) CAT chips are jewelled: the flat glyph chars go, each chip wears
+  its category's harvested SVG icon (white, 11px) + its word; Journal
+  takes journal blue #0f52ba (the day file's journal colour) and the
+  'book' icon harvested verbatim from the day file — the last
+  near-white #f5f5ff leaves the page. The decorative star after
+  'Smart Note' and on the meet chip goes (the words carry the meaning);
+  the timeline diamond for a plain note takes emerald #07925f.
+  AMENDMENT #3 (2026-11-18, the month-view 10): day numbers ~25% bigger
+  (.daynum 20→25 / 2.1→2.6vw / 32→40 desktop, 16→20 at phone — exact
+  +25%); the weekday headers become real objects (obsidian middle, bold
+  white letters, the day's own colour as rim + glow — the standing law;
+  they were plain coloured text). Today already reads instantly here
+  (.tile.today: 2px white border + purple ring + 36px glow) — unchanged.
+  No stats button on the month view (it goes on the day bar only) and no
+  'i' buttons exist here (the tiles carry VIEW) — both named in the
+  scorecard, not invented.
+  AMENDMENT #2 — MASTER ELEVATION / THE PEDESTAL (2026-11-17, Shawn's word
+  01:41Z): every icon, button, input, board and button-within-a-button is a
+  REAL OBJECT — elevated, with depth, rim, halo in its own deep color, light
+  igniting WHOLE on hover/touch; NONE flat. Doors light whole in their own
+  color; timeline items are mini-boards in their own color; boards
+  (wisdom, insight, viewcard, stat, timeline) lift and light whole in deep
+  purple; inputs are recessed wells that ignite on focus; slots depress;
+  the VIEW button (a button inside a button) lifts in its own day color.
+  Inside stays board black — the colored inset glows are OUT of the small
+  controls (pill.active, slot.on); the white 1px top edge is the top-left
+  light source made visible, not a glow. The day cells already stood as
+  objects (follow-on item 1) and are unchanged.
+  FOLLOW-ON (2026-11-17, brief BRIEF-CALENDAR-FOLLOWON-20261117.md, on the
+  fullscreen tip blob f3a07e93): (1) pricing feel — every cell ignites WHOLE
+  in its own weekday color on hover/touch and lifts, like the pricing chart;
+  (2) Dashboard digit-tile numbers — each digit of the day number in its own
+  gematria color; (3) today glows always, brighter at rest; (4) timeline
+  journal first after the day header — the day's whole story in time order;
+  (5) B3 ruling — Search, Add (+), Naya's profile OFF the month view, so the
+  month carries only month title, prev/next/Today, world selector; (6) type
+  floor — dayname 11px, hint 14px, sub2 13px, mobile VIEW label 9px;
+  (7) weather — NOT wired: no profile-location source exists within this
+  page's reach, so the honest-absence line stands; see the maker record for
+  exactly what is needed. Nothing else moved: F1–F6, F9–F11 stand as passed.
+  SUPERSESSIONS (brief §3): (1) the 13-button day menu is REPLACED by 8 doors
+  + Book/Meet/Create + 3 featured cards — the 13-button menu is not rebuilt.
+  (2) Weekday colors STAND as each tile's rim/edge light; content shows as
+  semantic category chips inside the tile.
+  Design law: Living Obsidian, seven layers (Shadow, Body, Bevel, Rim, Jewel,
+  Label, Response). One light, top-left, 135deg. White at rest, color ignites
+  on interaction in the object's own color only. No flat buttons.
+  Honest limits, stated on the page where they apply: news archive not wired
+  (never today's news relabeled as past news); weather provider not wired;
+  bookings live in this device's calendar store (server sync not wired yet);
+  Smart Meet joins a confirmed booking only, live media leg unproven here.
+-->
+<style>
+:root{color-scheme:dark;--bg:#050607;--panel:#0a0a0f;--line:#43345b;--violet:#8e24aa;--text:#f9f7ff;--news:#0f52ba;--book:#07925f;--social:#a21caf;--biz:#0e7490;--notes:#8e24aa}
+*{box-sizing:border-box}
+html,body{margin:0;background:radial-gradient(ellipse 55% 40% at 50% 98%,#26103f 0,transparent 80%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100%;letter-spacing:.01em;font-size:17px}
+button,select,input,textarea{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.shell{height:100dvh;display:flex;flex-direction:column;padding:14px clamp(10px,2.2vw,40px) 12px;gap:9px}
+.head{display:flex;gap:12px;align-items:center;justify-content:space-between;min-height:65px}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.logo{height:56px;width:56px;flex:none;display:grid;place-items:center;font:bold 44px Georgia,serif;color:#fff;text-shadow:0 0 10px #8e24aa,0 0 26px #8e24aa;background:linear-gradient(145deg,#130723,#06030c);border:1px solid #8e24aa;border-radius:16px;box-shadow:inset 0 0 14px #351453,0 0 16px #8e24aa,0 8px 20px rgba(0,0,0,.6)}
+.brandtxt strong{font-size:clamp(22px,2.6vw,32px);letter-spacing:.02em;white-space:nowrap}
+.brandtxt div{font-size:clamp(17px,1.5vw,19px);color:#fff}
+.toptools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.pill{min-height:44px;background:linear-gradient(135deg,#232330 0%,#0b0b12 50%,#171722 100%);border:1.5px solid rgba(255,255,255,.85);color:#fff;padding:10px 14px;border-radius:13px;box-shadow:0 6px 16px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.6);transition:transform .18s ease,border-color .18s,box-shadow .18s}
+.pill:hover{transform:translateY(-2px);border-color:var(--violet);box-shadow:0 10px 22px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.45),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.6)}
+.pill:active{transform:translateY(0) scale(.97)}
+.pill.active{border-color:#8e24aa;box-shadow:0 0 16px #8e24aa,0 6px 16px rgba(0,0,0,.55)}
+.pill[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+.topline{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.monthtitle{font-size:clamp(19px,2.6vw,28px);min-width:166px;text-align:center;font-weight:800;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.eyebrow{font-size:17px;letter-spacing:.17em;text-transform:uppercase;color:#fff;font-weight:800}
+.hint{color:#fff;font-size:17px}
+.barleft,.barright{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.board{flex:1;min-height:0;border:1.5px solid rgba(255,255,255,.85);box-shadow:inset 0 0 34px #180926,0 0 32px #1f0e35,0 14px 34px rgba(0,0,0,.6);border-radius:22px;padding:10px;display:flex;flex-direction:column;background:linear-gradient(135deg,#15151f 0%,#0b0816 55%,#07050b 100%);overflow:hidden}
+.weekrow,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
+.weekrow{padding:3px 0 6px;text-align:center;font-weight:800;font-size:17px}
+.weekrow div{color:#fff}
+/* AMENDMENT #3 — each abbreviation a real object (the standing law):
+   obsidian middle, bold white letters, the day's own colour as rim +
+   glow. The headers were plain coloured text. */
+.weekrow .wk{display:flex;align-items:center;justify-content:center;min-height:34px;border-radius:10px;background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%);border:1.5px solid var(--dc);box-shadow:0 0 10px color-mix(in srgb,var(--dc) 30%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 5px 12px rgba(0,0,0,.5)}
+.days{flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
+/* ---- DAY TILE — Living Obsidian, seven layers ---- */
+.tile{--dc:#8e24aa;position:relative;text-align:left;min-height:64px;color:#fff;overflow:hidden;border-radius:16px;padding:10px 10px 8px;cursor:pointer;display:flex;flex-direction:column;
+  background:linear-gradient(135deg,#232330 0%,#0b0b12 48%,#171722 100%);
+  border:1.5px solid #6b5a80;
+  border-color:color-mix(in srgb,var(--dc) 55%,#ffffff 12%);
+  box-shadow:0 12px 28px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -4px 10px rgba(0,0,0,.65);
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.tile::before{content:"";position:absolute;left:8%;right:8%;top:0;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--dc),transparent);opacity:.75;pointer-events:none}
+/* FOLLOW-ON (1) PRICING FEEL — the whole cell ignites in its OWN weekday
+   color on hover/touch, like the pricing chart: a soft own-color wash fills
+   the tile (Naya Code §8: boards light up WHOLE on hover), the rim and the
+   glow are the day's own color — never the generic purple. */
+.tile::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .18s ease;
+  background:radial-gradient(120% 100% at 50% 0%,color-mix(in srgb,var(--dc) 38%,transparent),transparent 65%),
+  linear-gradient(135deg,color-mix(in srgb,var(--dc) 26%,transparent),transparent 60%)}
+.tile:not(.blank):hover,.tile:not(.blank):focus-visible{transform:translateY(-5px);border-color:var(--dc);
+  box-shadow:0 22px 38px rgba(0,0,0,.7),0 0 0 1.5px var(--dc),0 0 34px color-mix(in srgb,var(--dc) 65%,transparent),inset 0 1px 0 rgba(255,255,255,.32),inset 0 -4px 10px rgba(0,0,0,.6)}
+.tile:not(.blank):hover::after,.tile:not(.blank):focus-visible::after{opacity:1}
+.tile:not(.blank):hover .daynum,.tile:not(.blank):focus-visible .daynum{transform:scale(1.07)}
+.tile:not(.blank):active{transform:translateY(0) scale(.97)}
+/* FOLLOW-ON (3) TODAY GLOWS — always, by rim + halo, never by fill
+   (follow-on 2026-11-18, Shawn 00:16Z obsidian-inside law: black in the
+   middle, the day's colour only as the light AROUND the board). The wash
+   that used to sit at 0.55 at rest is off at rest; the rim glows more,
+   and hover still ignites the whole cell like every other day. */
+.tile.today{border:2px solid #fff;box-shadow:0 0 0 2px #8e24aa,0 0 36px color-mix(in srgb,var(--dc) 75%,transparent),0 0 20px rgba(142,36,170,.6),0 16px 32px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
+.tile.today::after{opacity:0}
+.tile.today:hover::after,.tile.today:focus-visible::after{opacity:1}
+.tile.sel{box-shadow:0 0 0 2px var(--dc),0 0 30px rgba(255,255,255,.25),0 18px 34px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
+.tile.blank{opacity:.22;cursor:default;box-shadow:none}
+.tile.past{opacity:.92}
+.daynum{font-size:clamp(25px,2.6vw,40px);font-weight:800;line-height:1;color:#fff;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85);display:inline-block;transition:transform .18s ease}
+/* FOLLOW-ON (2) DASHBOARD DIGIT-TILE NUMBERS — each digit of the day number
+   in its OWN gematria color, so every day has a different number-color
+   combination. Day 16 = ruby 1 + indigo 6. Day 23 = burnt orange 2 + deep gold 3.
+   The number is the tile's jewel: each digit carries its own glow.
+   DEEP PALETTE (2026-11-17): digits take their hue's deep hex — 0 white ·
+   1 ruby · 2 burnt orange · 3 deep gold · 4 emerald · 5 deep cyan ·
+   6 indigo · 7 royal purple · 8 deep violet · 9 deep magenta. */
+.daynum .dg{display:inline-block;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85),0 0 16px currentColor}
+.dg0{color:#ffffff}.dg1{color:#c62828}.dg2{color:#c2410c}.dg3{color:#d4a017}.dg4{color:#07925f}
+.dg5{color:#0e7490}.dg6{color:#3f51b5}.dg7{color:#8e24aa}.dg8{color:#6d28d9}.dg9{color:#a21caf}
+/* DASHBOARD DIGIT TILES — construction harvested VERBATIM from the day
+   file (blob 3834919b, lines 66-83) = Dashboard Fix-5c (blob aa6ca89f):
+   cap + face + rim + shadow, same sizes. Rims deepened to this file's
+   own dg mapping (Laws §3.1/§13 — the day file's bright rims #ff2a2a,
+   #ff8c00, #f5d76e, #00a86b, #29b6f6, #b388ff, #ff1493 are superseded);
+   caps unified to the harvested silver cap (metal is metal, hue lives
+   in the rim). White digit, always. */
+.os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
+.os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
+.os-mini-tile .rd{display:block;height:30px;line-height:30px;text-align:center;font-size:27px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
+.os-mini-gap{flex:none;width:10px;}
+.os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d1{border-color:#c62828;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#c62828 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d2{border-color:#c2410c;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#c2410c 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d3{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#d4a017 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d4{border-color:#07925f;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#07925f 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d5{border-color:#0e7490;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#0e7490 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#3f51b5 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#8e24aa 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#6d28d9 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
+.os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,#a21caf 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35);}
+/* FOLLOW-ON (6) TYPE FLOOR — dayname 11px (was 10px). hint 14px, sub2 13px
+   and the mobile VIEW label 9px already stand at the specified sizes. */
+.dayname{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.9;margin-top:2px}
+.chip{display:inline-flex;max-width:100%;align-items:center;gap:5px;font-size:clamp(9px,1vw,12px);color:#fff;background:#211331;border:1px solid var(--chip,#fff);border-radius:18px;padding:4px 7px;margin:4px 3px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:inset 0 0 9px rgba(0,0,0,.5)}
+.chip svg{width:11px;height:11px;flex:none}
+.chiplane{margin-top:4px;display:flex;flex-wrap:wrap}
+.dots{display:none}
+.minitext{font-size:11px;color:#fff;margin-top:6px}
+.more{font-size:11px;color:#fff;margin-top:4px}
+.spark{position:absolute;right:10px;top:9px;width:14px;height:14px;border-radius:3px;transform:rotate(45deg);
+  background:linear-gradient(135deg,color-mix(in srgb,var(--dc) 75%,#fff),var(--dc) 50%,#050607);
+  border:1px solid rgba(255,255,255,.75);box-shadow:0 0 12px var(--dc),0 2px 6px rgba(0,0,0,.6)}
+.tilerow{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.tilewisdom{font-size:11px;line-height:1.35;color:#fff;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.viewbtn{align-self:flex-start;flex:none;min-height:24px;padding:3px 9px;border-radius:9px;border:1.5px solid rgba(255,255,255,.85);background:linear-gradient(135deg,#2b2140,#0b0b12 55%,#171722);color:#fff;font-weight:800;font-size:11px;letter-spacing:.08em;box-shadow:0 4px 12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.22);transition:transform .15s,border-color .15s,box-shadow .15s}
+.viewbtn:hover,.viewbtn:focus-visible{transform:translateY(-2px);border-color:var(--dc);box-shadow:0 8px 18px rgba(0,0,0,.6),0 0 0 1px var(--dc),0 0 16px color-mix(in srgb,var(--dc) 65%,transparent),inset 0 1px 0 rgba(255,255,255,.22)}
+.viewbtn:active{transform:scale(.96)}
+.wisdomcard{border:1.5px solid rgba(255,255,255,.85);border-radius:16px;padding:14px;background:linear-gradient(135deg,#1b1426 0%,#0b0b12 60%,#120d1d 100%);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -3px 8px rgba(0,0,0,.55);margin:15px 0 0;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.wisdomcard strong{display:block;margin-bottom:5px;color:#fff}
+.wisdomcard span{font-size:17px;color:#fff}
+/* FOLLOW-ON (4) TIMELINE JOURNAL — the day's whole story in time order,
+   first after the day header. One vertical rail, each entry a real moment
+   with its own color dot (appointment emerald, note purple, post white,
+   open time green outline). Past days show their real record; future days
+   show what is booked and what is open. Nothing is invented. */
+.daytimeline{border:1.5px solid rgba(255,255,255,.85);border-radius:16px;padding:14px 16px;margin:15px 0 0;background:linear-gradient(135deg,#1b1426 0%,#0b0b12 60%,#120d1d 100%);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -3px 8px rgba(0,0,0,.55);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.daytimeline>strong{display:block;font-size:17px;letter-spacing:.14em}
+.daytimeline .tl-sub{font-size:17px;color:#fff;margin-top:3px}
+.tl-list{list-style:none;margin:12px 0 0;padding:0 0 0 20px;border-left:2px solid rgba(255,255,255,.35);display:grid;gap:14px}
+.tl-list li{position:relative;background:linear-gradient(135deg,#1e1a2c,#0b0b12 60%);border:1.5px solid color-mix(in srgb,var(--tc,#fff) 55%,#ffffff 12%);border-radius:12px;padding:10px 12px;box-shadow:0 6px 16px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -3px 6px rgba(0,0,0,.55);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.tl-list li:hover{transform:translateY(-2px);border-color:var(--tc,#fff);box-shadow:0 10px 22px rgba(0,0,0,.6),0 0 18px color-mix(in srgb,var(--tc,#fff) 55%,transparent),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.55)}
+/* THE TIMELINE JEWEL — Laws §1/§12.5: a timeline marker is a jewel,
+   never a flat dot. Faceted diamond: Personal .mini-gem.diamond
+   (blob 9a006c47) in the entry's own color. */
+.tl-dot{position:absolute;left:-27px;top:3px;width:12px;height:12px;border-radius:3px;transform:rotate(45deg);
+  background:linear-gradient(135deg,color-mix(in srgb,var(--tc,#fff) 80%,#fff),var(--tc,#fff) 45%,#050607);
+  border:1px solid rgba(255,255,255,.75);
+  box-shadow:0 0 10px var(--tc,#fff),0 2px 6px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.4)}
+.tl-time{font-weight:800;font-size:17px;letter-spacing:.04em;color:#fff}
+.tl-kind{display:inline-block;font-size:17px;font-weight:800;color:#fff;background:#0b0b12;border:1px solid var(--tc,#fff);border-radius:999px;padding:2px 8px;margin-left:8px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.18)}
+.tl-text{font-size:17px;line-height:1.45;color:#fff;margin-top:3px}
+.tl-note{font-size:17px;color:#fff;margin:12px 0 0}
+.tl-empty{font-size:17px;color:#fff;margin:12px 0 0}
+.scrim{position:fixed;inset:0;z-index:30;background:rgba(2,1,6,.72);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:16px}
+.scrim.show{display:flex}
+.panel{width:min(1100px,100%);max-height:94dvh;overflow:auto;background:radial-gradient(ellipse at 50% 0,#30164f 0,transparent 55%),linear-gradient(180deg,#160b27,#070510 80%);border:1.5px solid rgba(255,255,255,.9);border-radius:26px;box-shadow:0 0 45px rgba(142,36,170,.5),0 24px 60px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.2);padding:clamp(15px,2.1vw,26px)}
+.panelhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.panelhead h2{font-size:clamp(24px,3vw,38px);margin:5px 0;color:#fff}
+.sub{color:#fff;font-size:17px}
+.close{font-size:18px;width:44px;height:44px;border-radius:50%;flex:none}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.doors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+.door{--c:#8e24aa;position:relative;text-align:center;min-height:96px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;color:#fff;font-weight:700;border-radius:16px;padding:12px 10px;
+  background:linear-gradient(135deg,#241a33 0%,#0b0b12 50%,#171722 100%);
+  border:1.5px solid #6b5a80;border-color:color-mix(in srgb,var(--c) 60%,#ffffff 12%);
+  box-shadow:0 10px 24px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -4px 10px rgba(0,0,0,.6);
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.door::before{content:"";position:absolute;inset:-6px;border:1px dashed var(--c);border-radius:20px;opacity:.35;animation:orbit 90s linear infinite;pointer-events:none}
+.door:nth-child(even)::before{animation-direction:reverse;animation-duration:120s}
+/* AMENDMENT #2 — MASTER ELEVATION. The door is a board: on hover the WHOLE
+   board lights in its own color (::after wash, like the day cells) and its
+   halo is its own color — never the generic white glow. Inside stays board
+   black; the light lives outside. */
+.door::after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;opacity:0;transition:opacity .18s ease;background:radial-gradient(120% 100% at 50% 0%,color-mix(in srgb,var(--c) 34%,transparent),transparent 65%),linear-gradient(135deg,color-mix(in srgb,var(--c) 24%,transparent),transparent 60%)}
+.door:hover::after,.door:focus-visible::after{opacity:1}
+.door:hover,.door:focus-visible{transform:translateY(-3px);border-color:var(--c);box-shadow:0 16px 30px rgba(0,0,0,.65),0 0 0 1px var(--c),0 0 28px color-mix(in srgb,var(--c) 60%,transparent),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
+.door:active{transform:translateY(0) scale(.97)}
+/* THE JEWEL — every door icon a real 3D object (this round).
+   Construction harvested: Personal .mini-gem (blob 9a006c47) — radial
+   top-left light + tone, rim, inset top light, drop shadow + own-color
+   underglow — as a circle; the white SVG glyph inside is the day file's
+   ICONS map (blob 3834919b, verbatim paths), 28px, stroke 1.8. Slow orbit
+   (60s, alternating) around the jewel; on door hover the jewel lifts and
+   its light ignites in the door's own color; press rides the door's
+   scale(.97). Inside stays board black; the light lives outside. */
+.jewel{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;position:relative;color:#fff;
+  background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.95),transparent 30%),radial-gradient(circle at 55% 58%,var(--c,#8e24aa),#050506 86%);
+  border:1.5px solid var(--c,#8e24aa);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -5px 9px rgba(0,0,0,.5),0 8px 14px rgba(0,0,0,.55),0 0 16px color-mix(in srgb,var(--c,#8e24aa) 45%,transparent);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.jewel::before{content:"";position:absolute;inset:-7px;border:1px dashed var(--c,#8e24aa);border-radius:50%;opacity:.5;animation:orbit 60s linear infinite;pointer-events:none}
+.jewel svg{width:28px;height:28px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.8)) drop-shadow(0 0 6px rgba(255,255,255,.35))}
+.door:nth-child(even) .jewel::before{animation-direction:reverse;animation-duration:90s}
+.door:hover .jewel,.door:focus-visible .jewel{transform:translateY(-3px);border-color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -5px 9px rgba(0,0,0,.5),0 12px 20px rgba(0,0,0,.6),0 0 24px color-mix(in srgb,var(--c,#8e24aa) 70%,transparent)}
+/* THE MINI-JEWEL — the same construction at 34px (Personal .mini-gem
+   34px variant, blob 9a006c47) for the Book / Meet / Create action pills. */
+.jewel-mini{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;position:relative;color:#fff;
+  background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.95),transparent 30%),radial-gradient(circle at 55% 58%,var(--c,#8e24aa),#050506 86%);
+  border:1.5px solid var(--c,#8e24aa);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.55),0 0 12px color-mix(in srgb,var(--c,#8e24aa) 45%,transparent);
+  transition:transform .18s ease,box-shadow .18s ease}
+.jewel-mini svg{width:18px;height:18px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.8))}
+/* THE MINI-JEWEL ORBIT (follow-on, Condition 1) — the 45s ring the diff
+   notes claimed: a dashed ring in the action's own colour, travelling
+   slowly around the mini-jewel; reversed on the middle action (Meet),
+   alternating like the door jewels (Laws §1: circles have flow). */
+.jewel-mini::before{content:"";position:absolute;inset:-5px;border:1px dashed var(--c,#8e24aa);border-radius:50%;opacity:.5;animation:orbit 45s linear infinite;pointer-events:none}
+.act:nth-child(2) .jewel-mini::before{animation-direction:reverse}
+.act{display:inline-flex;align-items:center;gap:10px}
+.act:hover .jewel-mini,.act:focus-visible .jewel-mini{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.5),0 6px 12px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--c,#8e24aa) 65%,transparent)}
+.door .sub2{font-size:17px;font-weight:400;color:#fff}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.insight{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:17px 0}
+.insight article,.viewcard{border:1.5px solid rgba(255,255,255,.85);border-radius:16px;padding:14px;background:linear-gradient(135deg,#1b1426 0%,#0b0b12 60%,#120d1d 100%);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -3px 8px rgba(0,0,0,.55);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+/* AMENDMENT #2 — MASTER ELEVATION. Every board is a real object: it lifts
+   and lights WHOLE on hover — rim, halo and lift in deep purple, its own
+   color. Inside stays board black; the light lives outside. */
+.wisdomcard:hover,.insight article:hover,.viewcard:hover,.stat:hover,.daytimeline:hover{transform:translateY(-2px);border-color:#8e24aa;box-shadow:0 12px 26px rgba(0,0,0,.6),0 0 0 1px #8e24aa,0 0 24px rgba(142,36,170,.45),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 8px rgba(0,0,0,.55)}
+.insight article strong,.viewcard strong{display:block;margin-bottom:5px;color:#fff}
+.insight article span{font-size:17px;color:#fff}
+.viewcard{padding:20px;margin-top:18px;line-height:1.6;min-height:170px}
+.viewcard h3{font-size:clamp(20px,2.4vw,26px);margin:0 0 8px;color:#fff}
+.viewcard p{color:#fff}
+.timeline{display:grid;gap:6px;margin-top:10px}
+.timeline p{padding:9px;border-left:3px solid #8e24aa;background:#1a1128;margin:0;border-radius:4px;color:#fff}
+.slotbox{display:flex;flex-wrap:wrap;gap:9px;margin:13px 0}
+.slot{min-height:44px;padding:10px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.85);background:linear-gradient(135deg,#232330,#0b0b12 55%,#171722);color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.2);transition:transform .15s,border-color .15s,box-shadow .15s}
+.slot:hover{transform:translateY(-2px);border-color:var(--book);box-shadow:0 10px 20px rgba(0,0,0,.55),0 0 16px rgba(7,146,95,.4)}
+.slot.on{border-color:var(--book);box-shadow:0 0 16px rgba(7,146,95,.5)}
+.slot.taken{opacity:.45;text-decoration:line-through;cursor:not-allowed}
+.slot:active{transform:translateY(0) scale(.97)}
+.status{color:#fff;margin-top:12px}
+.err{color:#fff;font-weight:800;margin-top:10px}
+/* AMENDMENT #2 — MASTER ELEVATION. Inputs are recessed real objects: a deep
+   well with a top shadow, a bottom edge light, and an outer rim. On focus the
+   rim ignites in deep purple — the input's own color — with a halo outside.
+   Inside stays board black; no color wash inside, ever. */
+.field{width:100%;min-height:48px;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.85);background:#050508;color:#fff;box-shadow:inset 0 3px 10px rgba(0,0,0,.8),inset 0 -1px 0 rgba(255,255,255,.14),0 2px 6px rgba(0,0,0,.4);transition:border-color .18s ease,box-shadow .18s ease}
+.field:hover{border-color:#fff}
+.field:focus{border-color:#8e24aa;box-shadow:inset 0 3px 10px rgba(0,0,0,.8),inset 0 -1px 0 rgba(255,255,255,.14),0 0 0 1.5px #8e24aa,0 0 18px rgba(142,36,170,.45),0 2px 6px rgba(0,0,0,.4)}
+.field::placeholder{color:#fff;opacity:.9}
+input[type="checkbox"]{width:20px;height:20px;accent-color:#8e24aa;vertical-align:-4px;cursor:pointer}
+textarea.field{min-height:110px;resize:vertical}
+label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0 6px}
+.list{list-style:none;margin:10px 0;padding:0;display:grid;gap:8px}
+.list li{padding:12px 14px;border:1.5px solid rgba(255,255,255,.6);border-radius:12px;background:#110c1a;color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.14);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.list li:hover{transform:translateY(-2px);border-color:#8e24aa;box-shadow:0 10px 22px rgba(0,0,0,.55),0 0 16px rgba(142,36,170,.35),inset 0 1px 0 rgba(255,255,255,.18)}
+.statgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+.stat{border:1.5px solid rgba(255,255,255,.85);border-radius:16px;padding:16px;text-align:center;background:linear-gradient(135deg,#1e1a2c,#0b0b12 60%);box-shadow:0 10px 24px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.2);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.stat b{font-size:34px;display:block;color:#fff}
+.stat span{font-size:17px;color:#fff}
+.face{width:120px;height:120px;border-radius:50%;display:grid;place-items:center;font-size:56px;color:#fff;margin:0 auto 12px;position:relative;background:radial-gradient(circle at 35% 30%,#3a1a5e,#0b0714 70%);border:2px solid #8e24aa;box-shadow:0 0 30px rgba(142,36,170,.5),0 12px 28px rgba(0,0,0,.6)}
+.face::before{content:"";position:absolute;inset:-10px;border:1px dashed #8e24aa;border-radius:50%;opacity:.5;animation:orbit 60s linear infinite}
+.meetbox{text-align:center}
+.timer{font-size:34px;font-weight:800;color:#fff;margin:8px 0}
+.honest{border-left:3px solid var(--violet);background:#1a1128;border-radius:6px;padding:10px 12px;margin:12px 0;color:#fff;font-size:17px;box-shadow:0 6px 16px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.14)}
+.mobileonly{display:none}
+@media(max-width:740px){
+  .shell{height:100dvh;padding:8px 8px 9px;gap:8px}
+  .head{min-height:51px}.logo{width:39px;height:39px;font-size:33px;border-radius:12px}
+  .brand{gap:8px}.brandtxt strong{font-size:18px}.brandtxt div{font-size:17px}
+  .topline{gap:7px}.topline .pill{padding:8px 9px;font-size:17px;min-height:44px}
+  .monthtitle{min-width:110px;font-size:17px}
+  .board{min-height:0;border-radius:17px;padding:6px}
+  .days,.weekrow{gap:3px}
+  .weekrow{font-size:17px;padding:4px 0}
+  .tile{min-height:46px;padding:5px 3px;border-radius:10px;text-align:center}
+  .daynum{font-size:20px}.dayname{font-size:11px}
+  .tile.today{border-width:2px}
+  .tilewisdom{display:none}
+  .viewbtn{min-height:22px;font-size:9px;padding:2px 6px;letter-spacing:.04em}
+  .chiplane,.minitext,.spark,.more{display:none}
+  .dots{display:flex;justify-content:center;gap:2px;margin-top:6px}
+  .dot{width:7px;height:7px;border-radius:2px;transform:rotate(45deg);
+    background:linear-gradient(135deg,color-mix(in srgb,var(--dc) 70%,#fff),var(--dc) 50%,#050607);
+    border:1px solid rgba(255,255,255,.6);box-shadow:0 0 8px var(--dc)}
+  .scrim{padding:0;align-items:stretch}
+  .panel{max-height:100dvh;width:100%;border-radius:0;padding:18px 13px;border:0;box-shadow:none}
+  .doors{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .door{min-height:88px}
+  .jewel{width:48px;height:48px}
+  .jewel svg{width:24px;height:24px}
+  .insight{grid-template-columns:1fr}
+  .statgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mobileonly{display:initial}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style></head>
+<body>
+<main class="shell">
+  <header class="head">
+    <div class="brand"><div class="logo" aria-hidden="true">N</div><div class="brandtxt"><strong>NayaNET · MY WORLD</strong><div id="worldname">Your life, organized by day.</div></div></div>
+    <div class="toptools">
+      <!-- FOLLOW-ON (5) B3 RULING — Search, Add (+) and Naya's profile are OFF
+           the month view: they open non-day views and break the one-purpose
+           viewport (DNA §8). The month view carries only: month title,
+           prev/next/Today, world selector — plus the page brand and the
+           owner/visitor switch, which stay. The Search, Create and Naya
+           views remain in code with no entry point from the month view. -->
+      <button class="pill" id="role" aria-label="Switch owner or visitor view">Owner view ▾</button>
+    </div>
+  </header>
+  <section class="topline">
+    <div class="barleft">
+      <button class="pill" id="prev" aria-label="Previous month">‹</button>
+      <div class="monthtitle" id="monthname" aria-live="polite">November 2026</div>
+      <button class="pill" id="next" aria-label="Next month">›</button>
+      <button class="pill" id="today">Today</button>
+    </div>
+    <div class="barright" role="group" aria-label="World selector">
+      <button class="pill active" id="pers">Personal</button>
+      <button class="pill" id="biz">Business</button>
+      <button class="pill" id="space">Space</button>
+      <button class="pill" id="thing">Thing</button>
+    </div>
+  </section>
+  <section class="board" aria-label="Living calendar">
+    <div class="weekrow" id="weeknames"></div>
+    <div class="days" id="days"></div>
+  </section>
+</main>
+<div class="scrim" id="scrim"><section class="panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div id="panelContent"></div></section></div>
+<script>
+/* ============ STATE ============ */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const TZ=(Intl.DateTimeFormat().resolvedOptions().timeZone)||'UTC';
+const NOW=new Date();
+let year=NOW.getFullYear(), month=NOW.getMonth(), day=NOW.getDate();
+let role='owner', world='Personal';
+let screen='month', section='Dashboard', slot='', meetId='', createKind='smart';
+let lastFocus=null, pendingBookErr='';
+/* Weekday identity light — DNA §1 (LOCKED 2026-11-03, governs). */
+const WEEKDAY=[
+ {name:'Sunday',   short:'Sun', color:'#8e24aa', hz:963, label:'purple'},
+ {name:'Monday',   short:'Mon', color:'#c2410c', hz:417, label:'orange'},
+ {name:'Tuesday',  short:'Tue', color:'#d4a017', hz:528, label:'gold'},
+ {name:'Wednesday',short:'Wed', color:'#0f52ba', hz:741, label:'sapphire'},
+ {name:'Thursday', short:'Thu', color:'#07925f', hz:639, label:'green'},
+ {name:'Friday',   short:'Fri', color:'#c62828', hz:396, label:'red'},
+ {name:'Saturday', short:'Sat', color:'#3f51b5', hz:852, label:'indigo'}];
+/* Category chips inside the tile — brief §4 (never the whole tile). */
+/* CAT chips — the second element is an ICONS key, not a glyph char:
+   each chip wears its category's harvested SVG icon (white, 11px) +
+   its word. Journal is journal blue #0f52ba with the 'book' icon
+   harvested verbatim from the day file (blob 3834919b, line 1550) —
+   the last near-white #f5f5ff leaves the page with the flat glyphs. */
+const CAT={
+ Notes:['#8e24aa','note'], News:['#0f52ba','news'], Meeting:['#07925f','clock'],
+ Event:['#a21caf','calendar'], Project:['#0e7490','cube'], Journal:['#0f52ba','book'],
+ Community:['#a21caf','people'], Business:['#0e7490','briefcase'], Open:['#07925f','eye']};
+/* Fallback wisdom store — harvested VERBATIM from the old calendar build
+   (branch personal/calendar-booking-meet-20261116, blob 15e0a2fc), 7 lines. */
+const WISDOM_STORE=[
+ 'The day is yours to shape — begin with the one thing that matters most, and let the rest follow.',
+ 'Ask Naya to carry the small things, so your mind stays free for the big ones.',
+ 'A note written down is a thought kept — what you record today, you can build on tomorrow.',
+ 'Success is a habit, not a moment — small steps, taken every day, add up to a life.',
+ 'Work with the intelligence beside you, not against it — tell it what you want, and let it do the doing.',
+ 'Share what you learn — wisdom grows when it is given away.',
+ 'Rest is part of the work — a clear mind sees further than a tired one.'];
+/* ============ STORES (harvested booking store; notes store in the same pattern) ============ */
+const BOOK_KEY='mw.cal.bookings.v1';
+const NOTE_KEY='mw.cal.notes.v1';
+const BOOK_SLOTS=['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'];
+function loadBookings(){ try{ var a=JSON.parse(localStorage.getItem(BOOK_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+function saveBookings(a){ try{ localStorage.setItem(BOOK_KEY,JSON.stringify(a)); return true; }catch(e){ return false; } }
+function dayBookings(ds){ return loadBookings().filter(b=>b.date===ds).sort((x,y)=>String(x.time).localeCompare(String(y.time))); }
+function bookTimeTaken(ds,t){ return dayBookings(ds).some(b=>b.time===t); }
+function loadNotes(){ try{ var a=JSON.parse(localStorage.getItem(NOTE_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+function saveNotes(a){ try{ localStorage.setItem(NOTE_KEY,JSON.stringify(a)); return true; }catch(e){ return false; } }
+function dayNotes(ds, w){ return loadNotes().filter(n=>n.date===ds && (!w || n.world===w)); }
+function fmtTime(t){ try{ var h=+t.slice(0,2), m=t.slice(3); var ap=h>=12?'PM':'AM'; h=h%12||12; return h+':'+m+' '+ap; }catch(e){ return t; } }
+function dateKey(y,m,d){ return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0'); }
+function selKey(){ return dateKey(year,month,day); }
+function isToday(y,m,d){ return y===NOW.getFullYear()&&m===NOW.getMonth()&&d===NOW.getDate(); }
+function isFutureDs(ds){ return ds>dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate()); }
+function dlabel(y,m,d){ return new Date(y,m,d).toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'}); }
+function uid(){ return 'id'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+const TF_ORDER={Morning:0,Afternoon:1,Evening:2};
+/* FOLLOW-ON (2) — each digit of the day number in its own gematria color.
+   DEEP PALETTE (2026-11-17): 0 white · 1 ruby · 2 burnt orange · 3 deep gold ·
+   4 emerald · 5 deep cyan · 6 indigo · 7 royal purple · 8 deep violet ·
+   9 deep magenta. Day 16 = ruby 1 + indigo 6. */
+const DIGIT_CLASS=['dg0','dg1','dg2','dg3','dg4','dg5','dg6','dg7','dg8','dg9'];
+/* ICONS — harvested VERBATIM from the day view (blob 3834919b): one SVG
+   stroke icon per meaning (stroke 1.8, round caps/joins), white inside
+   the jewel. The plus is the top-left + reference object itself — two
+   strokes, nothing invented. */
+function icon(path){
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + path + '</svg>';
+}
+const ICONS={
+  clock: icon('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+  news: icon('<rect x="3.5" y="5" width="14" height="14" rx="2"/><path d="M17.5 8.5H20a.5.5 0 0 1 .5.5v8a2 2 0 0 1-2 2"/><path d="M7 9h6M7 12.5h6M7 16h4"/>'),
+  landmark: icon('<path d="M4 20h16M5 20v-8M9.5 20v-8M14.5 20v-8M19 20v-8M3 12l9-7 9 7z"/>'),
+  globe: icon('<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.3 3.6 5.2 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.2-3.6-8.5S9.6 5.8 12 3.5z"/>'),
+  user: icon('<circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.2-3.4 3.8-5 7-5s5.8 1.6 7 5"/>'),
+  briefcase: icon('<rect x="3.5" y="8" width="17" height="11" rx="2"/><path d="M9 8V6.5A2.5 2.5 0 0 1 11.5 4h1A2.5 2.5 0 0 1 15 6.5V8M3.5 13h17"/>'),
+  cube: icon('<path d="M12 3.5 20 8v8l-8 4.5L4 16V8z"/><path d="M4 8l8 4.5L20 8M12 12.5v8"/>'),
+  world: icon('<circle cx="12" cy="12" r="4.2"/><path d="M3.8 15.5c5.5 2.6 12 2.6 16.4-1.2M20.2 8.5C14.7 5.9 8.2 5.9 3.8 9.7"/>'),
+  note: icon('<path d="M6 3.5h9L19 7.5v13H6z"/><path d="M14.5 3.5v4.5H19M9 12.5h6M9 16h6"/>'),
+  book: icon('<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.7A1.7 1.7 0 0 0 5 19.7z"/><path d="M5 19.5A1.5 1.5 0 0 1 6.5 18H19M9 7.5h6"/>'),
+  eye: icon('<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'),
+  mail: icon('<rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/>'),
+  people: icon('<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.9-3 2.9-4.5 5.5-4.5s4.6 1.5 5.5 4.5"/><circle cx="17" cy="9.5" r="2.6"/><path d="M16.5 15.2c2 .3 3.4 1.7 4 4.3"/>'),
+  calendar: icon('<rect x="4" y="5.5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8 3.5v4M16 3.5v4M8 14h3M14 14h3M8 17.5h3"/>'),
+  plus: icon('<path d="M12 5v14M5 12h14"/>')
+};
+/* Digit tiles for the stat counts — miniTileHTML harvested VERBATIM from
+   the day file (blob 3834919b); the tile CSS above is the same harvest
+   with rims deepened (see the CSS note). */
+function miniTileHTML(ch){
+  if(ch===' '||ch===',') return '<span class="os-mini-gap"></span>';
+  if(ch==='$') return '<span class="os-mini-tile dollar"><span class="cap"></span><span class="rd">$</span></span>';
+  if(ch==='.') return '<span class="os-mini-tile dot"><span class="cap"></span><span class="rd">.</span></span>';
+  if(ch==='%') return '<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>';
+  var d=parseInt(ch,10);
+  if(!isFinite(d)) return '';
+  return '<span class="os-mini-tile d'+d+'"><span class="cap"></span><span class="rd">'+d+'</span></span>';
+}
+function statNum(n){ return '<span class="os-mini-num">'+String(n).split('').map(function(ch){ return miniTileHTML(ch); }).join('')+'</span>'; }
+function digitNum(d){ return String(d).split('').map(ch=>`<span class="dg ${DIGIT_CLASS[+ch]}">${ch}</span>`).join(''); }
+/* ============ DAILY WISDOM — sourced, with carry-forward ============ */
+function wisdomFor(ds){
+  /* Highest-ranked Smart Note of yesterday becomes today's wisdom (definition
+     T26). Otherwise the NayaNET wisdom store, one per day, deterministic. */
+  const parts=ds.split('-').map(Number);
+  const prev=new Date(parts[0],parts[1]-1,parts[2]-1);
+  const prevKey=dateKey(prev.getFullYear(),prev.getMonth(),prev.getDate());
+  const ranked=loadNotes().filter(n=>n.date===prevKey&&n.type==='smart'&&n.rank)
+    .sort((a,b)=>(b.rank-a.rank)||String(a.createdAt).localeCompare(String(b.createdAt)));
+  if(ranked.length) return {text:ranked[0].text, source:'Carried forward — the highest-ranked Smart Note of '+dlabel(prev.getFullYear(),prev.getMonth(),prev.getDate())};
+  const idx=Math.floor(new Date(parts[0],parts[1]-1,parts[2]).getTime()/86400000);
+  return {text:WISDOM_STORE[((idx%WISDOM_STORE.length)+WISDOM_STORE.length)%WISDOM_STORE.length], source:'NayaNET wisdom store — from what we have learned'};
+}
+/* ============ DAILY INTELLIGENCE REPORT — computed from the day's own record ============ */
+function dirFor(ds, w){
+  /* Notes filter by world; bookings carry no world field on the record
+     ({id,date,time,who,what,meet,mode}), so they cannot be world-filtered. */
+  const notes=dayNotes(ds, w), books=dayBookings(ds);
+  if(!notes.length && !books.length) return null;
+  const smart=notes.filter(n=>n.type==='smart'), naya=notes.filter(n=>n.type==='naya'), posts=notes.filter(n=>n.type==='post');
+  const top=notes.filter(n=>n.rank).sort((a,b)=>b.rank-a.rank)[0];
+  return {notes:notes.length, smart:smart.length, naya:naya.length, posts:posts.length,
+    books:books.length,
+    learned: top ? top.text : 'Nothing was recorded as learned on this day yet.'};
+}
+/* Day highlights for the tile: up to 2 category chips + count of the rest.
+   World-scoped: the world pill scopes the month, its tiles, and its stats. */
+function dayHighlights(ds){
+  const out=[];
+  const books=dayBookings(ds);
+  if(books.length) out.push('Meeting');
+  const notes=dayNotes(ds, world);
+  if(notes.some(n=>n.type==='smart')) out.push('Notes');
+  if(notes.some(n=>n.type==='naya')) out.push('Journal');
+  if(notes.some(n=>n.type==='post')) out.push(notes.some(n=>n.world==='Business')?'Business':'Community');
+  return out;
+}
+function daySummary(ds){
+  if(role==='visitor'){
+    /* Open count is never shown: with 9 known slots it would reveal the
+       booked count. Visitors see only that times are open, or fully booked. */
+    const open=BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t));
+    return open?'open times available':'fully booked';
+  }
+  const h=dayHighlights(ds), n=dayNotes(ds, world).length, b=dayBookings(ds).length;
+  const bits=[];
+  if(b) bits.push(b+(b===1?' appointment':' appointments'));
+  if(n) bits.push(n+(n===1?' note':' notes'));
+  return bits.length?bits.join(', '):'no highlighted activity';
+}
+/* ============ MONTH ============ */
+$('weeknames').innerHTML=WEEKDAY.map(w=>`<div class="wk" style="--dc:${w.color}">${w.short}</div>`).join('');
+function render(){
+  const first=new Date(year,month,1).getDay();
+  const n=new Date(year,month+1,0).getDate();
+  const total=Math.ceil((first+n)/7)*7;
+  $('monthname').textContent=new Date(year,month,1).toLocaleDateString('en-CA',{month:'long',year:'numeric'});
+  $('worldname').textContent=world+' world · '+TZ;
+  const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+  $('days').innerHTML=Array.from({length:total},(_,i)=>{
+    const d=i-first+1;
+    if(d<1||d>n) return '<div class="tile blank" aria-hidden="true"></div>';
+    const wd=WEEKDAY[new Date(year,month,d).getDay()];
+    const ds=dateKey(year,month,d);
+    /* Visitor sees availability only — never private notes, counts, or text. */
+    const h = role==='visitor'
+      ? (BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t)) ? ['Open'] : [])
+      : dayHighlights(ds);
+    const today=isToday(year,month,d), sel=(ds===selKey());
+    const past=ds<todayKey;
+    const wis=wisdomFor(ds).text;
+    return `<div class="tile ${today?'today':''} ${sel?'sel':''} ${past?'past':''}" data-day="${d}" role="button" tabindex="0" style="--dc:${wd.color}" aria-label="Open ${dlabel(year,month,d)}, ${esc(daySummary(ds))}">
+      <div class="tilerow"><span class="daynum">${digitNum(d)}</span><button type="button" class="viewbtn" data-viewday="${d}" aria-label="View ${dlabel(year,month,d)}">VIEW</button></div>
+      <div class="dayname">${wd.short} · ${wd.hz} Hz</div>
+      <div class="tilewisdom" title="${esc(wis)}">${esc(wis)}</div>
+      <div class="chiplane">${h.slice(0,2).map(x=>`<span class="chip" style="--chip:${CAT[x][0]}">${ICONS[CAT[x][1]]} ${esc(x)}</span>`).join('')||`<span class="minitext">${(role==='visitor'&&!BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t)))?'Fully booked':'Open day'}</span>`}</div>
+      ${h.length>2?`<div class="more">+${h.length-2} more</div>`:''}
+      <div class="dots">${h.slice(0,3).map(x=>`<span class="dot" style="--dc:${CAT[x][0]}"></span>`).join('')}</div>
+      ${h.length?'<span class="spark" aria-hidden="true"></span>':''}</div>`;
+  }).join('');
+  document.querySelectorAll('[data-day]').forEach(b=>{ b.onclick=()=>openDay(+b.dataset.day);
+    b.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openDay(+b.dataset.day); } }; });
+  document.querySelectorAll('[data-viewday]').forEach(b=>b.onclick=e=>{ e.stopPropagation(); openDay(+b.dataset.viewday); });
+  for(const w of ['Personal','Business','Space','Thing'])
+    $(w==='Personal'?'pers':w==='Business'?'biz':w.toLowerCase()).classList.toggle('active',world===w);
+  $('role').textContent=role==='owner'?'Owner view ▾':'Visitor view ▾';
+}
+function openDay(d){ day=d; screen='day'; section='Dashboard'; slot=''; pushRoute(); showPanel(); }
+function button(text, fn, cls){ return `<button class="${cls||'pill'}" data-op="${esc(fn)}">${text}</button>`; }
+/* FOLLOW-ON (4) TIMELINE JOURNAL — the day's whole story in time order,
+   first after the day header. Built ONLY from the day's own local record:
+   bookings by their time; notes by time frame (Morning 09:00, Afternoon
+   14:00, Evening 19:00) then created time. The timeline spans worlds — it
+   is the day's journal, all in one place — and labels each entry's world.
+   Past days show their real record; future days show what is booked and
+   what is open; today shows both. News: the archive is not wired, so the
+   timeline says so honestly instead of inventing headlines. Visitors see
+   only genuinely open times — never bookings, notes, or counts. */
+function timelineHTML(ds){
+  const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+  const past=ds<todayKey, future=isFutureDs(ds);
+  const TF_MIN={Morning:540,Afternoon:840,Evening:1140};
+  const entry=(min,time,color,kind,text)=>`<li style="--tc:${color}"><span class="tl-dot"></span><span class="tl-time">${esc(time)}</span><span class="tl-kind">${esc(kind)}</span><div class="tl-text">${esc(text)}</div></li>`;
+  if(role==='visitor'){
+    const open=past?[]:BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t));
+    const body=open.length
+      ? `<ol class="tl-list">${open.map(t=>{const h=+t.slice(0,2),m=+t.slice(3);return entry(h*60+m,fmtTime(t),'#07925f','Open time','Genuinely open — bookable with the owner.');}).join('')}</ol>`
+      : `<p class="tl-empty">${past?'This day has passed — past availability is not bookable.':'No times are open on this day.'}</p>`;
+    return `<section class="daytimeline" aria-label="Timeline for this day"><strong>THE DAY, IN ORDER</strong><div class="tl-sub">Public view — open times only. Private appointments and notes are never shown.</div>${body}</section>`;
+  }
+  const entries=[];
+  dayBookings(ds).forEach(b=>{
+    const h=+String(b.time).slice(0,2), m=+String(b.time).slice(3);
+    entries.push({min:h*60+m, html:entry(h*60+m,fmtTime(b.time),'#07925f','Appointment'+(b.meet?' · Smart Meet':''),(b.who||'Appointment')+(b.what?' — '+b.what:''))});
+  });
+  dayNotes(ds).forEach(n=>{
+    const kind=n.type==='smart'?'Smart Note':n.type==='post'?'Post':'Note';
+    const color=n.type==='smart'?'#8e24aa':'#07925f';
+    entries.push({min:TF_MIN[n.timeframe]||540, html:entry(TF_MIN[n.timeframe]||540,n.timeframe||'Morning',color,kind+' · '+n.world,n.text)});
+  });
+  entries.sort((a,b)=>a.min-b.min);
+  const sub=past?'What went on this day — from this day\u2019s own record.':future?'What is booked, and what is still open.':'Today so far, and what is still open.';
+  let body='';
+  if(entries.length) body=`<ol class="tl-list">${entries.map(e=>e.html).join('')}</ol>`;
+  else body=`<p class="tl-empty">${past?'No records for this day — nothing was recorded. Unknown is not zero, and no record is invented.':'Nothing booked or written for this day yet.'}</p>`;
+  if(!past){
+    const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t));
+    body+=open.length?`<p class="tl-note">Open times on this day: ${open.map(t=>esc(fmtTime(t))).join(', ')} — bookable.</p>`:`<p class="tl-note">Every time on this day is booked.</p>`;
+  }
+  body+=`<p class="tl-note">News for this day: the news archive is not wired yet — no headlines are shown, and today\u2019s headlines are never shown as past news.</p>`;
+  return `<section class="daytimeline" aria-label="Timeline for this day"><strong>THE DAY, IN ORDER</strong><div class="tl-sub">${esc(sub)}</div>${body}</section>`;
+}
+/* ============ DAY MENU (8 doors + Book/Meet/Create + 3 cards) ============ */
+/* DOORS — colors run the spectrum in order (Laws §3.2: purple, blue,
+   green, gold, orange, red, magenta, then the cycle turns — never two
+   same colors together). The old set had three blues, three purples and
+   a near-white #f5f5ff. Icons are keys into the harvested ICONS map —
+   one distinct glyph per door (Laws §8). */
+const DOORS=[['Dashboard','cube','#8e24aa','Daily stats'],['Personal','user','#0f52ba','My activity'],
+ ['Business','briefcase','#07925f','Work and income'],['Space / Thing','world','#d4a017','My communities'],
+ ['Local','news','#c2410c','My area'],['Provincial','landmark','#c62828','My province'],
+ ['Global','globe','#a21caf','The world'],['Notes + Smart Notes','note','#8e24aa','Notes + Smart Notes']];
+function showPanel(){
+  const publicView=role==='visitor';
+  $('scrim').classList.add('show');
+  const ds=selKey();
+  const wd=WEEKDAY[new Date(year,month,day).getDay()];
+  const future=isFutureDs(ds);
+  let html='';
+  if(screen==='day'){
+    html=`<div class="panelhead"><div><div class="eyebrow">${publicView?'Public calendar':'Inside your day'} · ${esc(world)} · ${wd.name} ${wd.hz} Hz · ${esc(TZ)}</div>
+    <h2 id="modalTitle">YOUR WORLD FOR THIS DAY — ${esc(dlabel(year,month,day))}</h2>
+    <div class="sub">${publicView?'Public events, available times, and ways to connect':'Your whole world for this date, intelligently organized'}</div>
+    <div class="sub">Weather: unavailable — no weather provider is wired yet. Nothing is shown in its place.</div></div>${button('×','close','pill close')}</div>
+    ${timelineHTML(ds)}
+    ${publicView?'':`<article class="wisdomcard"><strong>Daily Wisdom</strong><span>${esc(wisdomFor(ds).text)}</span><br><span>${esc(wisdomFor(ds).source)}</span></article>`}
+    <div class="actions">${button('‹ Previous day','prevday')}${button('Next day ›','nextday')}${button('← Back to month','close')}</div>`;
+    if(publicView){
+      html+=`<div class="doors">${[['Public Events','calendar','#a21caf','What is open to all'],['Available Times','clock','#07925f','Genuinely open slots'],['Send a Message','mail','#8e24aa','Through an authorized channel'],['About This World','eye','#0f52ba','About this world']].map(([x,i,c,s])=>`<button class="door" style="--c:${c}" data-view="${esc(x)}"><span class="jewel" aria-hidden="true">${ICONS[i]}</span>${esc(x)}<span class="sub2">${esc(s)}</span></button>`).join('')}</div>
+      <div class="insight"><article><strong>Public information only</strong><span>Visitors never see private appointments, notes, mail, or daily statistics.</span></article>
+      <article><strong>Booking</strong><span>Only genuinely open slots are displayed. Taken times are never listed — never with a name or subject.</span></article>
+      <article><strong>Stay connected</strong><span>Message the owner through an authorized channel.</span></article></div>`;
+    } else {
+      const meetBooks=dayBookings(ds).filter(b=>b.meet);
+      html+=`<div class="doors">${DOORS.map(([x,i,c,s])=>`<button class="door" style="--c:${c}" data-view="${esc(x)}"><span class="jewel" aria-hidden="true">${ICONS[i]}</span>${esc(x)}<span class="sub2">${esc(s)}</span></button>`).join('')}</div>
+      <div class="actions">${button('<span class="jewel-mini" style="--c:#07925f">'+ICONS.clock+'</span>Book','Appointments','pill act')}${button('<span class="jewel-mini" style="--c:#8e24aa">'+ICONS.people+'</span>Smart Meet','Smart Meet','pill act')}${button('<span class="jewel-mini" style="--c:#d4a017">'+ICONS.plus+'</span>Create','Create','pill act')}</div>
+      ${meetBooks.length?'':'<p class="hint">Smart Meet joins a confirmed booking — book a time with Smart Meet first.</p>'}
+      <div class="insight">
+        <article><strong>Intel Today</strong><span>${esc(intelLine(ds))}</span></article>
+        <article><strong>Daily Intelligence Report</strong><span>${esc(dirLine(ds))}</span></article>
+      </div>`;
+    }
+  } else {
+    html=viewHTML(ds, future, wd);
+  }
+  $('panelContent').innerHTML=html;
+  document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{ section=b.dataset.view; screen='view'; slot=''; pushRoute(); showPanel(); });
+  document.querySelectorAll('[data-op]').forEach(b=>b.onclick=()=>{ const op=b.dataset.op;
+    if(op==='close'){ closePanel(); return; }
+    if(op==='back'){ screen='day'; pushRoute(); showPanel(); return; }
+    if(op==='prevday'||op==='nextday'){ const d=new Date(year,month,day+(op==='prevday'?-1:1)); year=d.getFullYear(); month=d.getMonth(); day=d.getDate(); render(); pushRoute(); showPanel(); return; }
+    if(op.startsWith('slot:')){ slot=op.slice(5); showPanel(); return; }
+    if(op.startsWith('join:')){ openMeet(op.slice(5)); return; }
+    if(op.startsWith('cancel:')){ cancelBooking(op.slice(7)); return; }
+    if(op==='confirm'){ confirmBooking(); return; }
+    if(op==='saveNote'){ saveNote(); return; }
+    if(op==='sendMsg'){ sendMessage(); return; }
+    if(op==='leaveMeet'){ leaveMeet(); return; }
+    section=op; screen='view'; slot=''; pushRoute(); showPanel();
+  });
+  document.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>{ createKind=b.dataset.kind; showPanel(); });
+  document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('[data-mode]').forEach(x=>x.classList.remove('on')); b.classList.add('on'); $('mwCalMeetMode').value=b.dataset.mode; });
+  document.querySelectorAll('[data-mw-cal-slot]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('[data-mw-cal-slot]').forEach(x=>x.classList.remove('on')); b.classList.add('on'); const h=$('mwCalBookTime'); if(h) h.value=b.dataset.mwCalSlot; });
+  const mb=$('mwCalBookMeet'); if(mb) mb.onchange=()=>{ const r=$('mwCalMeetModeRow'); if(r) r.hidden=!mb.checked; };
+  const si=$('searchInput'); if(si){ si.focus(); si.oninput=()=>renderSearch(si.value); }
+  const ni=$('noteText'); if(ni) ni.focus();
+  const mh=$('modalTitle'); if(mh) mh.setAttribute('tabindex','-1'), mh.focus();
+  const be=$('mwCalBookErr'); if(be&&pendingBookErr){ be.textContent=pendingBookErr; pendingBookErr=''; }
+}
+function intelLine(ds){
+  const books=dayBookings(ds), notes=dayNotes(ds, world);
+  const bits=[];
+  if(books.length) bits.push(books.length+(books.length===1?' appointment':' appointments')+' booked');
+  if(notes.length) bits.push(notes.length+(notes.length===1?' note':' notes')+' saved');
+  if(!bits.length) bits.push('No records for this day yet');
+  bits.push('News archive not wired — no headlines shown for this date');
+  return bits.join(' · ')+'.';
+}
+function dirLine(ds){
+  if(isFutureDs(ds)) return 'This day has not happened yet — no report until the day has a record.';
+  const r=dirFor(ds, world);
+  return r? (r.notes+' notes · '+r.books+' appointments · what was learned: '+r.learned) : 'No report — no records for this day.';
+}
+function closePanel(){
+  screen='month'; $('scrim').classList.remove('show');
+  /* replaceState, not pushState: Back after closing must leave the page,
+     not reopen the day menu. */
+  if(history.state && history.state.view!=='month') history.replaceState({view:'month',year,month,day,world,role},'','');
+  render();
+  const t=document.querySelector(`[data-day="${day}"]`); if(t) t.focus();
+}
+/* ============ DESTINATION VIEWS ============ */
+function viewHead(title, ds){
+  return `<div class="panelhead"><div><div class="eyebrow">${esc(dlabel(year,month,day))} · ${esc(world)} · ${esc(TZ)}</div>
+  <h2 id="modalTitle">${esc(title)}</h2><div class="sub">Viewing this section for the selected date${role==='visitor'?' — public view only':''}</div></div>${button('×','close','pill close')}</div>
+  <div class="actions">${button('← Back to day menu','back')}${button('← Back to month','close')}${button('‹ Previous day','prevday')}${button('Next day ›','nextday')}</div>`;
+}
+function viewHTML(ds, future, wd){
+  let html=viewHead(section, ds);
+  /* World-scoped: the world pill scopes the month, the stats, and the
+     Notes view. Bookings carry no world field, so they stay unfiltered. */
+  const notes=dayNotes(ds, world), books=dayBookings(ds);
+  if(section==='Dashboard'){
+    const r=dirFor(ds, world);
+    html+=`<div class="viewcard"><h3>Daily stats — ${esc(dlabel(year,month,day))}</h3>
+    <p>Counts from this device's local record only. A past day shows what was recorded for that day — never today's numbers.</p>
+    <div class="statgrid">
+      <div class="stat">${statNum(notes.filter(n=>n.type==='smart').length)}<span>SMART NOTES</span></div>
+      <div class="stat">${statNum(books.length)}<span>APPOINTMENTS</span></div>
+      <div class="stat">${statNum(notes.length)}<span>NOTES + POSTS</span></div>
+    </div>
+    ${r?`<p><strong>What was learned:</strong> ${esc(r.learned)}</p>`:`<p class="hint">No records for this day — unknown is not zero, and no report is invented.</p>`}
+    <p class="hint">World: ${esc(world)} · Viewer: ${role==='owner'?'Owner':'Visitor (public counts only)'}.</p></div>`;
+  } else if(section==='Personal'||section==='Business'||section==='Space / Thing'){
+    const w = section==='Personal'?'Personal':section==='Business'?'Business':null;
+    const list = w? dayNotes(ds,w) : dayNotes(ds).filter(n=>n.world==='Space'||n.world==='Thing');
+    html+=`<div class="viewcard"><h3>${esc(section)} · ${esc(dlabel(year,month,day))}</h3>
+    ${list.length?`<div class="timeline">${list.slice().sort((a,b)=>(TF_ORDER[a.timeframe]-TF_ORDER[b.timeframe])||String(a.createdAt).localeCompare(String(b.createdAt))).map(n=>`<p><strong>${esc(n.timeframe||'')}</strong> · ${esc(n.type==='smart'?'Smart Note':n.type==='post'?'Post':'Note')} — ${esc(n.text)}</p>`).join('')}</div>`
+    :`<p>No records for this day in ${esc(section)}. Nothing is shown from any other day.</p>`}</div>`;
+  } else if(section==='Local'||section==='Provincial'||section==='Global'){
+    html+=`<div class="viewcard"><h3>${esc(section)} news — as of ${esc(dlabel(year,month,day))}</h3>
+    <p>No archived news for this date in this build. The news archive is not wired yet — and today's headlines are never shown as past news.</p>
+    <p class="hint">When the archive is wired, this view will show sourced, date-stamped headlines published on this day.</p></div>`;
+  } else if(section==='Notes + Smart Notes'){
+    const list=notes.slice().sort((a,b)=>(TF_ORDER[a.timeframe]-TF_ORDER[b.timeframe])||String(a.createdAt).localeCompare(String(b.createdAt)));
+    html+=`<div class="viewcard"><h3>Notes + Smart Notes · ${esc(dlabel(year,month,day))}</h3>
+    ${list.length?`<div class="timeline">${list.map(n=>`<p><strong>${esc(n.timeframe||'')}</strong> · ${esc(n.type==='smart'?'Smart Note':n.type==='post'?'Post':'Note')} · ${esc(n.world)}${n.rank?' · rank '+n.rank:''} — ${esc(n.text)}</p>`).join('')}</div>`
+    :`<p>No notes or Smart Notes recorded for this day. Notes you write are tied to their day and time frame, and the timeline orders them morning to night.</p>`}
+    <div class="actions">${button('+ Create a note','Create')}</div></div>`;
+  } else if(section==='Appointments'||section==='Available Times'){
+    html+=appointmentsHTML(ds);
+  } else if(section==='Smart Meet'){
+    html+=meetViewHTML(ds);
+  } else if(section==='Create'){
+    if(role==='visitor'){
+      html+=`<div class="viewcard"><h3>Create — owner only</h3>
+      <p>Creating notes is available to the owner only. Visitors never write into the owner's notes.</p></div>`;
+    } else {
+      html+=createHTML(ds, future);
+    }
+  } else if(section==='Public Events'){
+    html+=`<div class="viewcard"><h3>Public events — ${esc(dlabel(year,month,day))}</h3>
+    <p>No published events for this day yet.</p>
+    <p>Open times are listed under Available Times. Private appointments are never listed here, and no count of them is shown.</p>
+    <div class="actions">${button('See available times','Available Times')}</div></div>`;
+  } else if(section==='Owner only'){
+    html+=`<div class="viewcard"><h3>Owner only</h3>
+    <p>Search and creating notes are available to the owner only. Visitors see public events, genuinely open times, and ways to connect — never private notes, bookings, or search.</p>
+    <p class="hint">Switch back to Owner view to search or create.</p></div>`;
+  } else if(section==='Send a Message'){
+    html+=`<div class="viewcard"><h3>Send a message</h3>
+    <p>Messages need a verified private delivery path and an authenticated sender — that path is not wired in this build.</p>
+    <label class="flab" for="msgText">Your message</label><textarea class="field" id="msgText" placeholder="Write your message…"></textarea>
+    <div class="actions">${button('Send message','sendMsg')}</div><p class="status" id="msgStatus"></p></div>`;
+  } else if(section==='About This World'){
+    html+=`<div class="viewcard"><h3>About this world — ${esc(world)}</h3>
+    <p>This is the ${esc(world)} world of My World on NayaNET. The calendar is the door: visitors can see public events, book genuinely open times, and connect — never private notes or feeds.</p>
+    <p class="hint">Timezone for this world: ${esc(TZ)}.</p></div>`;
+  } else if(section==='Search'){
+    if(role==='visitor'){
+      html+=`<div class="viewcard"><h3>Search — owner only</h3>
+      <p>Search is available to the owner only. Visitors never search private notes or bookings.</p></div>`;
+    } else {
+    html+=`<div class="viewcard"><h3>Search your calendar</h3>
+    <p>Searches only this device's local record — your notes and bookings. Type a word, a name, or a date like 2026-11-16.</p>
+    <input class="field" id="searchInput" type="search" placeholder="Search notes and bookings…" autocomplete="off">
+    <div id="searchResults" style="margin-top:12px"></div></div>`;
+    }
+  } else if(section==='Naya'){
+    html+=`<div class="viewcard meetbox"><div class="face" aria-hidden="true">N</div>
+    <h3>Naya — your Naya</h3><p>Naya keeps your days alive, so yesterday is never lost — you go to the day and it is there.</p>
+    <p class="hint">Naya Notes are signed “Written by Naya”. This calendar is operated by Naya for you; you never operate the system yourself.</p></div>`;
+  } else {
+    html+=`<div class="viewcard"><h3>${esc(section)} · ${esc(dlabel(year,month,day))}</h3>
+    <p>This view is filtered to ${esc(world)} and the selected local day. It shows only records that belong to this date and for which the viewer has access.</p>
+    <p class="hint">No records for this day in this view.</p></div>`;
+  }
+  return html;
+}
+/* ============ BOOKING (harvested store + slots; single system, never a second one) ============ */
+function appointmentsHTML(ds){
+  /* F3: the passed-day message applies ONLY to strictly past days; today
+     and future days show the 9-slot form. The old condition
+     (future || !isFutureDs(ds)) was a tautology — always true. */
+  const todayKey=dateKey(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+  const past=ds<todayKey;
+  const books=dayBookings(ds);
+  let h=`<div class="viewcard"><h3>${role==='visitor'?'Available times':'Appointments'} — ${esc(dlabel(year,month,day))}</h3>`;
+  if(role==='visitor'){
+    /* F4(d): visitors see ONLY genuinely open slots. Taken slots are never
+       enumerated and no booked count is shown. */
+    if(past){
+      h+='<p>This day has passed — past availability is not bookable.</p>';
+    } else {
+      const open=BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t));
+      if(open.length) h+='<p>Genuinely open times on this day:</p><ul class="list">'+open.map(t=>`<li><b>${esc(fmtTime(t))}</b> — open</li>`).join('')+'</ul>';
+      else h+='<p>No times are open on this day.</p>';
+    }
+  } else if(books.length){
+    h+='<ul class="list">'+books.map(b=>{
+      return `<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'Appointment')}${b.what?' — '+esc(b.what):''}${b.meet?` <span class="chip" style="--chip:#8e24aa">${b.mode==='audio'?'Audio meet':'Video meet'}</span> <button class="pill" data-op="join:${esc(b.id)}">Join the meet →</button>`:''} <button class="pill" data-op="cancel:${esc(b.id)}">Cancel</button></li>`;
+    }).join('')+'</ul>';
+  } else h+='<p>No appointments in this calendar\u2019s record for this day.</p>';
+  if(past){
+    h+='<p class="hint">This day has passed — bookings live on today and the days ahead.</p>';
+  } else {
+    const firstFree=BOOK_SLOTS.find(t=>!bookTimeTaken(ds,t))||'';
+    /* Visitors see only genuinely open slots in the picker too — taken
+       times are omitted entirely, never shown disabled. Owners see taken
+       slots disabled, as before. */
+    const shownSlots=role==='visitor'?BOOK_SLOTS.filter(t=>!bookTimeTaken(ds,t)):BOOK_SLOTS;
+    h+=`<h3 style="margin-top:18px">Book a time on this day</h3>
+    <label class="flab">Pick a time</label><div class="slotbox">${shownSlots.map(t=>{const taken=bookTimeTaken(ds,t);
+      return `<button type="button" class="slot${taken?' taken':''}${(!taken&&t===firstFree)?' on':''}" data-mw-cal-slot="${t}"${taken?' disabled':''}>${esc(fmtTime(t))}</button>`;}).join('')}</div>
+    <input type="hidden" id="mwCalBookTime" value="${esc(firstFree)}">
+    ${firstFree?'':`<p class="hint">Every time on this day is booked.</p>`}
+    <label class="flab" for="mwCalBookWho">${role==='visitor'?'Your name':'Who are you meeting?'}</label>
+    <input class="field" type="text" id="mwCalBookWho" placeholder="${role==='visitor'?'Your name':'Their name'}" autocomplete="off">
+    <label class="flab" for="mwCalBookWhat">What is it about?</label>
+    <input class="field" type="text" id="mwCalBookWhat" placeholder="The subject of the appointment" autocomplete="off">
+    <div style="margin-top:12px"><label><input type="checkbox" id="mwCalBookMeet"> Meet with them — Smart Meet, in this calendar</label></div>
+    <div id="mwCalMeetModeRow" hidden style="margin-top:10px"><input type="hidden" id="mwCalMeetMode" value="video">
+      <button type="button" class="pill" data-mode="audio">Audio meet</button>
+      <button type="button" class="pill on" data-mode="video">Video meet</button></div>
+    <div class="actions"><button class="pill" data-op="confirm">Book this time →</button></div>
+    <p class="err" id="mwCalBookErr" role="alert"></p>
+    <p class="hint">Requested is not confirmed: a booking is confirmed only when it is saved into this calendar's store (<b>mw.cal.bookings.v1</b>). Server sync is not wired yet — bookings live on this device.</p>`;
+  }
+  return h+'</div>';
+}
+function confirmBooking(){
+  const ds=selKey();
+  const time=($('mwCalBookTime')||{}).value||'';
+  const who=($('mwCalBookWho')||{}).value.trim();
+  const what=($('mwCalBookWhat')||{}).value.trim();
+  const err=$('mwCalBookErr');
+  if(!time){ if(err) err.textContent='Pick a time first.'; return; }
+  /* F10: the "just taken" error must survive the showPanel() re-render —
+     stash it in pendingBookErr; showPanel() restores it into #mwCalBookErr. */
+  if(bookTimeTaken(ds,time)){ pendingBookErr='That time was just taken — pick another time.'; showPanel(); return; }
+  if(!who){ if(err) err.textContent='Add a name so the appointment says who it is with.'; return; }
+  const meet=!!($('mwCalBookMeet')||{}).checked;
+  const mode=(($('mwCalMeetMode')||{}).value)||'video';
+  const all=loadBookings();
+  all.push({id:uid(),date:ds,time,who,what,meet,mode});
+  if(!saveBookings(all)){ if(err) err.textContent='The booking could not be saved on this device. Nothing was confirmed.'; return; }
+  slot=time;
+  section='Appointments'; screen='view'; pushRoute(); showPanel();
+  render();
+  const card=document.querySelector('.viewcard');
+  if(card){ const p=document.createElement('p'); p.className='status';
+    p.textContent='Booked — '+fmtTime(time)+' on '+dlabel(year,month,day)+'. Saved in this device\u2019s calendar store (mw.cal.bookings.v1). Server sync is not wired yet.';
+    card.prepend(p); }
+}
+function cancelBooking(id){
+  const all=loadBookings().filter(b=>b.id!==id);
+  saveBookings(all); render(); showPanel();
+}
+/* ============ MEET (downstream of Booking, separately gated) ============ */
+let meetTimer=null, meetSecs=0, meetStream=null, micOn=true, camOn=true;
+function meetViewHTML(ds){
+  const books=dayBookings(ds).filter(b=>b.meet);
+  let h=`<div class="viewcard"><h3>Smart Meet — ${esc(dlabel(year,month,day))}</h3>`;
+  if(role==='visitor'){ h+='<p>Smart Meet is offered only to a confirmed booking\u2019s parties. Book a genuinely open time with Smart Meet to receive a meet.</p>'; }
+  else if(!books.length){ h+='<p>No confirmed Smart Meet booking on this day. Meet joins a confirmed booking only — book a time with Smart Meet first. There is no dead Join button here.</p>'; }
+  else h+='<ul class="list">'+books.map(b=>`<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'')} ${b.what?'— '+esc(b.what):''} (${b.mode==='audio'?'Audio':'Video'}) <button class="pill" data-op="join:${esc(b.id)}">Join the meet →</button></li>`).join('')+'</ul>';
+  h+='<p class="hint">Meet gates: video/audio authorization, runtime availability, waiting room, safe link, guest access, privacy. The live media leg is proven only in a browser that can grant camera and mic — this seat reports the outcome honestly instead of claiming it.</p></div>';
+  return h;
+}
+function openMeet(id){
+  const b=loadBookings().find(x=>x.id===id);
+  if(!b){ return; }
+  meetId=id; meetSecs=0; micOn=true; camOn=true;
+  const ds=selKey();
+  $('panelContent').innerHTML=viewHead('Smart Meet — '+fmtTime(b.time), ds)+
+   `<div class="viewcard meetbox"><div class="face" aria-hidden="true">N</div>
+    <h3>${esc(b.who||'Meet')} · ${esc(dlabel(year,month,day))} · ${esc(fmtTime(b.time))} · ${b.mode==='audio'?'Audio':'Video'}</h3>
+    <div class="timer" id="meetTimer">00:00</div>
+    <p id="meetStatus">Joining the room…</p>
+    <video id="meetVideo" autoplay playsinline muted style="width:100%;max-width:520px;border-radius:16px;background:#050607;border:1.5px solid rgba(255,255,255,.85);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 24px rgba(142,36,170,.35);display:none"></video>
+    <div class="actions" style="justify-content:center">
+      <button class="pill" id="micBtn">Mic on</button>
+      <button class="pill" id="camBtn">Camera on</button>
+      <button class="pill" data-op="leaveMeet">Leave</button>
+    </div>
+    <p class="hint">Waiting room: only the booked parties can enter. No recording unless everyone consents — recording is not implemented here.</p></div>`;
+  document.querySelectorAll('[data-op]').forEach(x=>x.onclick=()=>{ const op=x.dataset.op;
+    if(op==='leaveMeet'){ leaveMeet(); return; }
+    if(op==='back'){ leaveMeet(true); screen='day'; pushRoute(); showPanel(); return; }
+    if(op==='close'){ leaveMeet(true); closePanel(); return; }
+    if(op==='prevday'||op==='nextday'){ leaveMeet(true); const d=new Date(year,month,day+(op==='prevday'?-1:1)); year=d.getFullYear(); month=d.getMonth(); day=d.getDate(); render(); pushRoute(); showPanel(); return; }
+  });
+  $('micBtn').onclick=()=>{ micOn=!micOn; if(meetStream) meetStream.getAudioTracks().forEach(t=>t.enabled=micOn); $('micBtn').textContent=micOn?'Mic on':'Mic off'; };
+  $('camBtn').onclick=()=>{ camOn=!camOn; if(meetStream) meetStream.getVideoTracks().forEach(t=>t.enabled=camOn); $('camBtn').textContent=camOn?'Camera on':'Camera off'; };
+  meetTimer=setInterval(()=>{ meetSecs++; const m=String(Math.floor(meetSecs/60)).padStart(2,'0'), s=String(meetSecs%60).padStart(2,'0'); const t=$('meetTimer'); if(t) t.textContent=m+':'+s; },1000);
+  const status=$('meetStatus');
+  if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+    navigator.mediaDevices.getUserMedia({audio:true,video:b.mode!=='audio'}).then(st=>{
+      meetStream=st;
+      if(status) status.textContent='Camera and mic are live — you are in the room.';
+      const v=$('meetVideo');
+      if(v&&b.mode!=='audio'){ v.srcObject=st; v.style.display='block'; }
+    }).catch(e=>{
+      if(status) status.textContent='Camera/mic unavailable here ('+(e&&e.name?e.name:'unknown')+') — you are still in the room, audio/video off. Join from a device that can grant them, or meet in person.';
+    });
+  } else if(status) status.textContent='This browser cannot grant camera/mic here — you are still in the room. Join from a device that can, or meet in person.';
+}
+function leaveMeet(keepPanel){
+  if(meetTimer){ clearInterval(meetTimer); meetTimer=null; }
+  if(meetStream){ meetStream.getTracks().forEach(t=>t.stop()); meetStream=null; }
+  meetId='';
+  if(!keepPanel){ screen='view'; section='Smart Meet'; showPanel(); }
+}
+/* ============ CREATE ============ */
+function createHTML(ds, future){
+  const kinds=[['smart','Smart Note'],['naya','Note'],['post','Post']];
+  return `<div class="viewcard"><h3>Create — ${esc(dlabel(year,month,day))}</h3>
+  <p>Create on this day, in ${esc(world)}. A note is tied to its day and time frame; the timeline orders it morning to night.</p>
+  <div class="actions">${kinds.map(([k,l])=>`<button class="pill${createKind===k?' active':''}" data-kind="${k}">${l}</button>`).join('')}</div>
+  <label class="flab" for="noteTF">Time frame</label>
+  <select class="field" id="noteTF"><option>Morning</option><option>Afternoon</option><option>Evening</option></select>
+  ${createKind==='smart'?`<label class="flab" for="noteRank">Rank (1–5 — the highest-ranked Smart Note of the day becomes tomorrow's wisdom)</label>
+  <select class="field" id="noteRank"><option value="">No rank</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>`:''}
+  <label class="flab" for="noteText">${createKind==='smart'?'Smart Note':createKind==='post'?'Post':'Note'}</label>
+  <textarea class="field" id="noteText" placeholder="Write it in your own words…"></textarea>
+  <div class="actions"><button class="pill" data-op="saveNote">Save to this day →</button></div>
+  <p class="err" id="noteErr" role="alert"></p>
+  <p class="hint">Saved into this device's notes store (mw.cal.notes.v1), with its date, world, source and permission. Nothing is copied into the calendar by hand.</p>
+  <div class="actions"><button class="pill" data-op="Appointments">Or book a time instead →</button></div></div>`;
+}
+function saveNote(){
+  const err=$('noteErr');
+  /* F4(c): a visitor must never write into the owner's mw.cal.notes.v1 store. */
+  if(role==='visitor'){ if(err) err.textContent='Visitors cannot save notes — notes belong to the owner.'; return; }
+  const text=($('noteText')||{}).value.trim();
+  if(!text){ if(err) err.textContent='Write the note first.'; return; }
+  const tf=($('noteTF')||{}).value||'Morning';
+  const rankEl=$('noteRank');
+  const all=loadNotes();
+  all.push({id:uid(),date:selKey(),world, type:createKind, rank:rankEl?parseInt(rankEl.value||'0',10)||null:null, timeframe:tf, text, createdAt:new Date().toISOString()});
+  if(!saveNotes(all)){ if(err) err.textContent='The note could not be saved on this device.'; return; }
+  render(); section='Notes + Smart Notes'; screen='view'; pushRoute(); showPanel();
+}
+/* ============ SEARCH ============ */
+function renderSearch(q){
+  const box=$('searchResults'); if(!box) return;
+  /* F4(a): visitors never search private notes or bookings. */
+  if(role==='visitor'){ box.innerHTML='<p>Search is available to the owner only. Visitors never search private notes or bookings.</p>'; return; }
+  q=(q||'').trim().toLowerCase();
+  if(!q){ box.innerHTML='<p class="hint">Type to search your notes and bookings.</p>'; return; }
+  const hits=[];
+  loadNotes().forEach(n=>{ if(n.text.toLowerCase().includes(q)||n.date.includes(q)||n.world.toLowerCase().includes(q)) hits.push({kind:n.type==='smart'?'Smart Note':n.type==='post'?'Post':'Note', date:n.date, text:n.text}); });
+  loadBookings().forEach(b=>{ if((b.who||'').toLowerCase().includes(q)||(b.what||'').toLowerCase().includes(q)||b.date.includes(q)) hits.push({kind:'Appointment', date:b.date, text:fmtTime(b.time)+' — '+(b.who||'')+(b.what?' — '+b.what:'')}); });
+  if(!hits.length){ box.innerHTML='<p>No matches in this device\u2019s local record. Nothing is searched beyond your own record.</p>'; return; }
+  box.innerHTML='<ul class="list">'+hits.slice(0,20).map((h,i)=>`<li><b>${esc(h.date)}</b> · ${esc(h.kind)} — ${esc(h.text)} <button class="pill" data-jump="${esc(h.date)}">Open day →</button></li>`).join('')+'</ul>';
+  box.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>{ const p=b.dataset.jump.split('-').map(Number); year=p[0]; month=p[1]-1; day=p[2]; render(); openDay(day); });
+}
+function sendMessage(){
+  const st=$('msgStatus');
+  if(st) st.textContent='Not sent — messaging needs a verified private delivery path, which is not wired in this build. Nothing was sent.';
+}
+/* ============ ROUTING — Month → Day → Destination → Day → Month ============ */
+function pushRoute(){
+  const st={view:screen, year, month, day, world, role, section};
+  try{ history.pushState(st,'',''); }catch(e){}
+}
+function applyState(st){
+  if(!st) return;
+  screen=st.view||'month'; year=st.year!=null?st.year:year; month=st.month!=null?st.month:month;
+  day=st.day!=null?st.day:day; world=st.world||world; role=st.role||role; section=st.section||'Dashboard';
+  render();
+  if(screen==='month'){ $('scrim').classList.remove('show'); }
+  else showPanel();
+}
+window.addEventListener('popstate',e=>{ leaveMeet(true); applyState(e.state); });
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&screen!=='month'){
+    if(meetId){ leaveMeet(); return; }
+    if(screen==='view'){ screen='day'; pushRoute(); showPanel(); }
+    else closePanel();
+  }
+});
+/* F7 — focus trap: while the scrim dialog is shown, Tab cycles inside
+   .panel and never escapes to the background month controls. */
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Tab'||!$('scrim').classList.contains('show')) return;
+  const f=Array.from(document.querySelectorAll('.panel button,.panel input,.panel textarea,.panel select,.panel [tabindex]'))
+    .filter(el=>!el.disabled&&el.type!=='hidden'&&el.getAttribute('tabindex')!=='-1'&&!el.closest('[hidden]'));
+  if(!f.length) return;
+  const first=f[0], last=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey&&document.activeElement===last){ e.preventDefault(); first.focus(); }
+});
+$('scrim').addEventListener('click',e=>{ if(e.target===$('scrim')) closePanel(); });
+$('prev').onclick=()=>{ const d=new Date(year,month-1,1); year=d.getFullYear(); month=d.getMonth(); render(); };
+$('next').onclick=()=>{ const d=new Date(year,month+1,1); year=d.getFullYear(); month=d.getMonth(); render(); };
+$('today').onclick=()=>{ year=NOW.getFullYear(); month=NOW.getMonth(); day=NOW.getDate(); render(); };
+$('role').onclick=()=>{ role=role==='owner'?'visitor':'owner'; render(); if(screen!=='month'){ screen='day'; showPanel(); } };
+for(const w of ['Personal','Business','Space','Thing'])
+  $(w==='Personal'?'pers':w==='Business'?'biz':w.toLowerCase()).onclick=()=>{ world=w; render(); if(screen!=='month'){ screen='day'; showPanel(); } };
+/* FOLLOW-ON (5) B3 — the Search / Add / Naya handlers are gone with their
+   buttons (see the header note). Search and Create stay reachable from
+   inside a day view (Notes view, Create action); the Naya view has no entry
+   point from the month view, per the ruling. */
+render();
+try{ history.replaceState({view:'month',year,month,day,world,role},'',''); }catch(e){}
+</script></body></html>

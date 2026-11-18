@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2928",
+ "intelligence": {
+  "title": "Mirror Success",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2928-mirror-success",
+  "smart_note_id": "SN-2928",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2928/IB-SMART-NOTE-20261116-sn2928-mirror-success.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Every system re-invents itself by accident: a new page needs a long text shown, so someone designs a new way to show long text, and now there are two ways, then five, and none of them is the one that worked. Mirror success is the rule against that drift. When a tactic proves itself — beautiful, valuable, useful, innovative — it is captured and carried everywhere it fits: the unfold from the deck into the reader, the three-bar stack from Personal into the Hub, the clone trick from the name into every button and input. The test is the sense check: it has to make sense on the receiving page. But the default is reuse, not invention — harvest first, never rebuild what already works. This is the same law as cross-page learning, stated as a habit of the whole system: we mirror what succeeds, we keep applying it throughout, everything we do. A success that stays on one page is a success wasted; a success mirrored everywhere is the system getting smarter in public.",
+  "simple_view": "Imagine you find a super way to do something — like the very best way to fold a paper airplane, and it flies SO far! Do you keep it secret? No! You use it every time, and you teach all your friends, and soon everybody's planes fly far! That's mirroring success — when something works beautifully, you use it everywhere!",
+  "grandma_view": "It's like this, love — when you find a way of doing something that works beautifully, you don't go inventing a new way every time. You keep the good one and use it everywhere it fits. That's how a house stays tidy and a family stays clever — the good ideas get passed around, not left in one room.",
+  "naya_view": "When something works — beautiful, valuable, useful, innovative — capture it and mirror it everywhere it fits. Never invent a second way to do what already works. Success mirrored is the system getting smarter.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2928",
+   "title": "Mirror Success",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2928/IB-SMART-NOTE-20261116-sn2928-mirror-success.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2928/IB-SMART-NOTE-20261116-sn2928-mirror-success.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "727664b00e27e9e731bed57051a1a0e2ab0fdc6a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

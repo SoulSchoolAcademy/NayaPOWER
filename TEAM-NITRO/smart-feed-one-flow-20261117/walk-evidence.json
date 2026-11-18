@@ -1,0 +1,66 @@
+{
+  "started_utc": "2026-11-17T16:40:08Z",
+  "desktop_live_state": {
+    "ok": true,
+    "at": "2026-11-17T16:40:14.161Z",
+    "count": 200,
+    "newest": "2026-11-17T16:35:33.787388+00:00",
+    "backend": "supabase-direct",
+    "error": null
+  },
+  "desktop_provenance": "Live intelligence \u00b7 200 notes \u00b7 newest 4m ago \u00b7 backend: supabase-direct \u00b7 checked 04:40:14 PM",
+  "desktop_acc1_visible_wait_s": 0.26,
+  "desktop_acc2_visible_wait_s": 0.19,
+  "run3_insert": {
+    "post_s": 0.49,
+    "status": 201
+  },
+  "run3_card_wait_s": 9.8,
+  "run3_elapsed_s": 10.29,
+  "desktop_provenance_after_rerender": "Live intelligence \u00b7 200 notes \u00b7 newest just now \u00b7 backend: supabase-direct \u00b7 checked 04:40:43 PM",
+  "play_state": {
+    "nayaVoice": true,
+    "playSections": true,
+    "layerPlayButtons": 0,
+    "voiceButtons": 0,
+    "speechVoices": 0
+  },
+  "save_click": "clicked",
+  "save_localstorage": {
+    "saved": [
+      {
+        "id": "IB-SMART-NOTE-20261117-one-flow-acceptance-note",
+        "kind": "save",
+        "title": "The Feed Reads Live Now \u2014 \u201csmart note this\u201d Lands in Seconds",
+        "topics": [
+          "Smart Notes"
+        ],
+        "category": null,
+        "savedAt": 1794933649425
+      }
+    ]
+  },
+  "save_fresh_profile": {},
+  "phone_live_state": {
+    "ok": true,
+    "at": "2026-11-17T16:41:00.485Z",
+    "count": 200,
+    "newest": "2026-11-17T16:40:19.151257+00:00",
+    "backend": "supabase-direct",
+    "error": null
+  },
+  "phone_acc1_visible_wait_s": 0.3,
+  "run4_insert": {
+    "post_s": 1.55,
+    "status": 200
+  },
+  "run4_card_wait_s": 11.25,
+  "run4_elapsed_s": 12.8,
+  "share_click": {
+    "r": "clicked"
+  },
+  "share_link": "https://naya-proof-host.nayapower.workers.dev/#/smart-notes/ib-smart-note-20261117-one-flow-acceptan",
+  "share_link_note_title": "The Feed Reads Live Now",
+  "share_link_opens_note": true,
+  "finished_utc": "2026-11-17T16:41:23Z"
+}

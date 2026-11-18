@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2908",
+ "intelligence": {
+  "title": "Instant Legibility: If You Can't Tell What It's Saying, It Doesn't Go",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-instant-legibility",
+  "smart_note_id": "SN-2908",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2908/IB-SMART-NOTE-20261116-instant-legibility.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "\"Looks cool\" is the weakest possible reason to keep a picture, and the fastest way to fill a page with decoration that explains nothing. The test is one glance: can a stranger tell exactly what it is saying? The key says vault. Do-no-harm says the code. Old-vs-new internet says the break. Math and chain fail the test — they are abstractions that need their own words to be understood, which means the words are doing the work and the picture is just standing there. Holding them is not a loss; the files are kept, the words carry the scenes, and the door stays open for a vision that passes the test. The completeness audit is the other half of the same law: a page must say everything that matters AND nothing it cannot say clearly. Completeness without legibility is noise; legibility without completeness is a beautiful empty page.",
+  "simple_view": "Imagine you draw a picture to explain your favourite game. If your friend looks at it and says \"that's cool!\" but has no idea what game it is — the picture didn't do its job! The good pictures are the ones where your friend looks once and says \"OH! I get it!\" — a key for a safe place, a big sign that says DO NO HARM. If a picture needs a whole story just to explain the picture, we put it aside and let the words do the talking.",
+  "grandma_view": "It's like this, love — a picture in a storybook has to tell the story all by itself. The key tells you \"this is safe.\" The promise tells you \"we do no harm.\" But a picture of numbers and little cubes? Lovely to look at, dear, but nobody knows what it means without you standing there explaining it. So we set those two aside — kept safe, not thrown away — and let the words carry those pages. And we checked the whole story, front to back, to make sure nothing important was left out. That's completeness, love: everything that matters, nothing you can't understand.",
+  "naya_view": "If you can't tell exactly what it's saying in one glance, it doesn't go. And when everything that matters is in, stop — the story is complete.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2908",
+   "title": "Instant Legibility: If You Can't Tell What It's Saying, It Doesn't Go",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2908/IB-SMART-NOTE-20261116-instant-legibility.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2908/IB-SMART-NOTE-20261116-instant-legibility.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "939e7b8e1993d04fcc6f4c122afeab1af92e6c90"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

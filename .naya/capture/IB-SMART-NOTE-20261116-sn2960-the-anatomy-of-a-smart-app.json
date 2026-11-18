@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2960",
+ "intelligence": {
+  "title": "The Anatomy of a Smart App",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2960-the-anatomy-of-a-smart-app",
+  "smart_note_id": "SN-2960",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2960/IB-SMART-NOTE-20261116-sn2960-the-anatomy-of-a-smart-app.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The page is not a page — it is a smart app, and a smart app is one machine with different faces: Personal is who you are, Business is what you do, Space is what you're into, Thing is the thing itself. One core page, a Rubik's Cube matrix, morphing into its faces; the Trinity of Dashboard, Hub, and that page; the person as the atom at the centre. Until the anatomy is written, every round guesses at the shape; once it is written, every round builds to it. The anatomy is the map the seats build from — the same discipline as the Anatomy of a Smart App Page he locked in on 2026-11-11, now applied to the page itself as the citizen lives it: what it has, how it functions, what works, what will be where, and why.",
+  "simple_view": "Imagine your page is a whole little world, like a playhouse with lots of rooms! One room shows your points, one room is for your friends' posts, one room is for your special clubs. And the playhouse can change shape — sometimes it's your house, sometimes it's your shop, sometimes it's your clubhouse — but it's always the same playhouse underneath! The anatomy is the drawing that shows where every room goes.",
+  "grandma_view": "It's like this, love — your page isn't just a page, it's a whole little world of its own. It has your numbers, your clubs, and a lovely running feed where everyone shares their notes and pictures, and you can comment and like them. And the same world can be your personal one, your business one, or your club one — just a different face of the same thing. The anatomy is simply the plan that says what goes where, and why.",
+  "naya_view": "The page is a smart app: one machine, different faces — Personal, Business, Space, Thing. Stats, memberships, the running feed, comment and like. The anatomy says what it has, how it functions, what goes where, and why. v2 is a draft; the official anatomy stands until he ratifies it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2960",
+   "title": "The Anatomy of a Smart App",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2960/IB-SMART-NOTE-20261116-sn2960-the-anatomy-of-a-smart-app.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2960/IB-SMART-NOTE-20261116-sn2960-the-anatomy-of-a-smart-app.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c789f79ae33ee61a098b81d03000a8aa1c35b317"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

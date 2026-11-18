@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2977",
+ "intelligence": {
+  "title": "One Page Changes the World",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2977-one-page-changes-the-world",
+  "smart_note_id": "SN-2977",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2977/IB-SMART-NOTE-20261116-sn2977-one-page-changes-the-world.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The promise is not a feature list, it is one page. Everything the citizen does lives in one place — mail, schedule, post, every operation — on the phone in their hand, all their data in one place that's secure. And it runs itself if they wish: Naya operates it for them, so they don't even have to write a single post if they don't want to. But the page is theirs to enter, not a machine that locks them out — if they want, they get in there: upload photos, share, comment. Automation and agency in the same place, by the citizen's choice. And the measure of the page is a feeling, not a spec: land on a NayaNET page vs land on an average social feed — a Facebook profile vs a NayaNET profile — a whole different world. Beautiful is not the decoration on the promise; beautiful is the proof the promise is kept. This is the anatomy (SN-2960) stated as a verdict: the page IS a smart app, and one smart app page is enough to change the world — because the world is what the page holds.",
+  "simple_view": "Imagine ONE magic page that holds your whole world! All your pictures, all your friends, all your messages — safe in one place, right on your phone! And the magic page can do everything for you all by itself — you don't even have to write anything if you don't want to! But if you DO want to play, you jump right in — share photos, talk to friends, say hello! And it's so beautiful — not like a boring old page, but a whole different world!",
+  "grandma_view": "It's like this, love — one page, dear, that holds your whole world. Everything in one place on your phone, safe and secure: your mail, your appointments, your posts, everything — and it can all run itself if you like, so you don't have to lift a finger. But if you want to get in there, you can — share your photos, talk to your friends, leave a comment. And it's just beautiful, love — landing on a NayaNET page is a whole different world from an ordinary social feed. Like stepping into a lovely home instead of a noisy street.",
+  "naya_view": "One page changes the world. Everybody's world — smartphone, all their data in one place, secure. Mail, schedule, post, all operations — automated if they wish. No post required; jump in if they want — photos, share, comment. Beautiful: a NayaNET page vs an average social feed — a whole different world.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2977",
+   "title": "One Page Changes the World",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2977/IB-SMART-NOTE-20261116-sn2977-one-page-changes-the-world.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2977/IB-SMART-NOTE-20261116-sn2977-one-page-changes-the-world.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "dff6507b7303c7ac0f672d0ee48106e93e639857"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

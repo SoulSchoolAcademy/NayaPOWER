@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3023",
+ "intelligence": {
+  "title": "Build Systems Around It — The Resilience Law",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3023-build-systems-around-it-the-resilience-law",
+  "smart_note_id": "SN-3023",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3023/IB-SMART-NOTE-20261116-sn3023-build-systems-around-it-the-resilience-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "He did not ask why it broke and stop there — he asked for the ten intelligent guesses and the solution for each, and then he gave the law himself: build systems around it so no matter what happens you always have a solution. A backup plan. A way to continue. Preserve things so nothing gets wrecked. Build in the cloud, in the system, as much as possible. The night proved the need in one window: the EPERM flake refused writes path by path, minute by minute — One List adds, a MEMORY.md replacement, six PI refresh attempts, the transcribe watcher's lock, the Hub re-bake he had just approved — and the browsers died on the same signature at 20:32Z. The machine's honest answer that night was restraint: the re-bake seat stopped rather than risk destroying the good 10.8 MB live feed with a 0-byte temp, the ledger rewrite was skipped deliberately to avoid truncating the 2 MB state file, the VPM report was deliberately not run so it would not write a bogus all-zero hour. Nothing was lost — but nothing moved, and the captain's answer to his ten-guesses question is the honest split: the most likely cause is the runtime's security filter re-applied, or cell throttling under our load — the real fix is outside our hands — and what IS ours is the resilience around it: the cloud browser eye so no eye-check burns on a dead browser, the 15-minute tripwire so the death is known in minutes, atomic writes and size guards so a bad write can never destroy a good file, killing dead wake-ups so the load that may be throttling us shrinks, and recording in the cloud so the record survives the cell. The law is not \"hope it doesn't happen again\" — it is \"assume it will, and have the way around it already built.\"",
+  "simple_view": "Imagine you're building a giant Lego castle — and suddenly the table starts shaking! The smart builder doesn't just hope the table stops shaking. He builds the castle so it can't fall — strong base, backup pieces ready, and he keeps a photo of it in the cloud so even if the table tips over, he can rebuild it exactly! That's the rule: always have a backup plan, always have a way to keep going, and never let anything get wrecked!",
+  "grandma_view": "It's like this, love — when the lights flicker, dear, you don't just sit in the dark and hope! You keep candles ready, love, and a torch by the door, and you keep the good china safe where it can't fall! That's what he means, dear — build it so no matter what happens, you've always got a way through, and nothing precious ever gets wrecked!",
+  "naya_view": "When the ground fails, the system must not. Build the way around it before it happens: a backup plan, a way to continue, nothing wrecked — in the cloud, in the system, as much as possible. The night proved it: the flake refused writes path by path, the browsers died on the same signature, the re-bake he approved could not run — and nothing was lost only because the seats stopped rather than risk destroying good files. The cause is most likely the runtime's filter or throttling under our load — the real fix is outside our hands — so ours is the resilience: cloud browser eye, tripwire, atomic writes + size guards, kill dead wake-ups, record in the cloud.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3023",
+   "title": "Build Systems Around It — The Resilience Law",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3023/IB-SMART-NOTE-20261116-sn3023-build-systems-around-it-the-resilience-law.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3023/IB-SMART-NOTE-20261116-sn3023-build-systems-around-it-the-resilience-law.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "62ea35e8bcd8beef4bd66be3324f91486609a41d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

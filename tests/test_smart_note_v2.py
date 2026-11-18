@@ -129,9 +129,19 @@ def _max_allocated_sn_number():
 
 
 
-def test_explicit_smart_note_id_is_honored():
+def test_explicit_smart_note_id_is_honored(tmp_path):
+    # Isolated registry: the live registry owns SN-9999 since 2026-11-12
+    # (retired-test-fixture lifecycle record
+    # IB-SMART-NOTE-20261022-sn9999-live-fire-test-lifecycle), so the
+    # honored-id behavior must not depend on live registry content.
+    m = _problem_b_fresh_module(tmp_path)
+    m.REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    m.REGISTRY.write_text(json.dumps({
+        "sequence_policy": {"next_sequence": 458},
+        "entries": [],
+    }), encoding="utf-8")
     capture = {"smart_note_id": "SN-9999", "source": {"captured_at": "2026-09-30"}}
-    assert mod.allocate_smart_note_id(capture, "IB-EXPLICIT") == "SN-9999"
+    assert m.allocate_smart_note_id(capture, "IB-EXPLICIT") == "SN-9999"
 
 
 def test_explicit_smart_note_id_collision_fails_closed(tmp_path):
@@ -1575,6 +1585,31 @@ def test_retrieve_winner_without_nutshell_fails_closed(tmp_path, monkeypatch):
         assert str(exc) == "WINNER_EXPLANATION_EMPTY", str(exc)
     else:
         raise AssertionError("title-only winner must fail closed, not be admitted silently")
+
+
+def test_retrieve_accepts_bare_nutshell_heading(tmp_path, monkeypatch):
+    """New-format pages head the lesson `## Nutshell`, not `## IN A NUTSHELL`
+    (six-note format, Intelligence Loop runs 220+; 689 pages in the live
+    corpus at tip e9540a07). The retriever's nutshell pattern required the
+    three-word heading, so a title-winning new-format note failed closed with
+    WINNER_EXPLANATION_EMPTY even after registration (SN-3019 won its query
+    with score 102.3, then the explanation read found nothing). The bare
+    heading must be accepted for scoring AND explanation; a page with no
+    nutshell section at all still fails closed (B-49 test above)."""
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    (brain / "newfmt.md").write_text(
+        "# Deep tunnel maintenance protocol\n\n## Nutshell\n\ntunnel lining is inspected before every shift",
+        encoding="utf-8",
+    )
+    rp = _winner_read_registry(
+        tmp_path, _winner_read_entry("BRAIN/05-MEMORY/SMART-NOTES/newfmt.md"))
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
+    result = mod.retrieve("deep tunnel maintenance protocol")
+    assert result["retrieved"]["smart_note_id"] == "SN-W"
+    assert result["explanation"] == "tunnel lining is inspected before every shift"
 
 # --- Backfill-class migration guards (w428 deep-audit legs 192/205, fix batch gr-w440) ---
 def _backfill_fixture(tmp_path, missing_page=False):

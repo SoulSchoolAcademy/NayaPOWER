@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3041",
+ "intelligence": {
+  "title": "The Door, the Day, and the Unfolding",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3041-the-door-the-day-and-the-unfolding",
+  "smart_note_id": "SN-3041",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3041/IB-SMART-NOTE-20261116-sn3041-the-door-the-day-and-the-unfolding.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Shawn, 22:13Z (SN-2912): the collective agreement is NOT to go at the end, when you're about to give them their deeds — \"it goes on the FRONT PAGE, below the login; the logo just goes above it.\" One page, not two: \"if they want to join they just put their name in — once they put their name in, they agree, and they get a certificate of agreement.\" The front page is the record: \"hey, you agreed, it's part of our agreement, it's right on our front page, read it again.\" The signing, refined 00:14Z (SN-2919): entering their name makes it official — \"they're signing their name, or their alias, to the Collective Agreement certification; signing means following the rules; and by signing they become a member of the Society of NayaNET — a new digital civilization, a world. We call it a world.\" The door, 22:39Z (SN-2913): \"the My World button BECOMES the calendar. Click a day and boom, you're in that day's world\" — and 00:25Z (SN-2920): \"open the app and the calendar opens, today already highlighted\" — \"operate from the day, not the Hub.\" The shape, 22:03Z (SN-2911): \"our pages will be unfolds, our slideshows, we're not going to do typical web pages where they're just flat or just scroll down — do something different, treat it more like a matrix.\" And the colour law, from his eye on two Ts in two colours (SN-2914, 22:47Z): \"there has to be colour logic: the colour comes from the LETTER, same letter = same colour, always\" — T is 7, so purple; Z is 1, so red; verified against the septenary cipher and the chakra colours, his anchors checked, his E guess corrected by the same rule.",
+  "simple_view": "Imagine a magic clubhouse. The rules are on a big beautiful poster right by the front door. You write your name — and that IS saying yes! You get a certificate with your name on it, like a royal jewel. Then you open a magic calendar. You tap a day — BOOM! — you are inside that day. Everything from that day is there. And every page opens like a pop-up book, one surprise at a time!",
+  "grandma_view": "It's like this, love — when you invite someone into your home, you don't hide the house rules in the back bedroom. You put them right by the front door, beautifully written, pictures first and then the words. Joining is simple, dear: you write your name, and that IS your promise. Then instead of a confusing menu, you just have a calendar. You tap a day, and there it all is — neat as a diary page. One beautiful thing at a time, dear, never a great wall of words.",
+  "naya_view": "The agreement goes on the front page, below the login. Your name is your signature, and your signature makes you a member of a world. My World becomes the calendar — click a day and boom, you're in that day's world. And my pages unfold, one beat at a time, never flat, never a wall.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3041",
+   "title": "The Door, the Day, and the Unfolding",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3041/IB-SMART-NOTE-20261116-sn3041-the-door-the-day-and-the-unfolding.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3041/IB-SMART-NOTE-20261116-sn3041-the-door-the-day-and-the-unfolding.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "83d1f96fa7a786365117e0233829c49bcbf487f1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

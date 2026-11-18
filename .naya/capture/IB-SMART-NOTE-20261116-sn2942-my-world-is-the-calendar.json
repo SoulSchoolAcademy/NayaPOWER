@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2942",
+ "intelligence": {
+  "title": "My World Is the Calendar",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2942-my-world-is-the-calendar",
+  "smart_note_id": "SN-2942",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2942/IB-SMART-NOTE-20261116-sn2942-my-world-is-the-calendar.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The mistake would have been to polish the endless-links My World — to make the confusing thing prettier and call it done. Shawn's ruling kills that path: the shape itself goes away when the calendar is built, so this round redesigns only the picker — the doorway — and refuses to entrench what the calendar will replace. The same discipline applies to the news feeds: they are not worlds to feature; they live ON THE DAY, with a beautiful toggle, off by default. And the word matters: \"thing\", not \"space\" — your world, your space, your thing — because the citizen's language is the system's language. The round's delivery was honest about the boundary: the picker is done, the calendar is not, and the calendar is the build that follows.",
+  "simple_view": "Imagine you have a big messy drawer full of tangled strings, and someone says \"let's make the drawer prettier!\" But the real answer is: you don't need that drawer at all — you need a beautiful calendar, where every day is a little box and everything for that day lives inside it. So you fix the little door that opens the drawer, and you save the big beautiful calendar for next — you don't build a prettier mess!",
+  "grandma_view": "It's like this, love — if the cupboard is a jumble, you don't polish the jumble. You fix the little handle so it opens nicely, and you build the proper shelves next — a calendar, where every day holds everything for that day, neat and easy. And the news? It lives on the day it happened, not in the cupboard. Simple as that.",
+  "naya_view": "My World IS the calendar. Redesign the picker, don't entrench the endless links. News feeds live ON THE DAY, off by default. The word is \"thing\".",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2942",
+   "title": "My World Is the Calendar",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2942/IB-SMART-NOTE-20261116-sn2942-my-world-is-the-calendar.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2942/IB-SMART-NOTE-20261116-sn2942-my-world-is-the-calendar.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0d9e5587902cc95c81318bbf17da480a68e2e931"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

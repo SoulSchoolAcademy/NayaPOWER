@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2927",
+ "intelligence": {
+  "title": "The Reader Unfolds — One Paragraph at a Time",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2927-the-reader-unfolds",
+  "smart_note_id": "SN-2927",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2927/IB-SMART-NOTE-20261116-sn2927-the-reader-unfolds.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A wall of text is a refusal to read. The reader unfold is the opposite shape: the full text, verbatim, but handed over one short paragraph at a time, each with a next button — the same unfolding mechanic as the deck, the same as the front page. The citizen never faces the whole thing at once, so they never feel overwhelmed; they click, click, click, and they are through it before they realize they have read it all. That is the point Shawn named: the tactic works because it never asks for the decision to read — it only asks for the next click. It becomes a common thing we do all the way through: anywhere a citizen would otherwise meet a wall — the agreement, the full contract behind the ⓘ, any long text — it unfolds instead. The text stays whole and verbatim; only the presentation changes. And the reader is beautiful: the words restated in the Naya Design way where they are ours to restate, plain to the average person, never bunched together.",
+  "simple_view": "Imagine a really long story — but instead of one giant page that looks scary, you get one little bit at a time, and a magic button that says \"next!\" You tap, tap, tap — and before you know it, you've read the WHOLE story, and it was easy and fun!",
+  "grandma_view": "It's like this, love — nobody wants to face a great big wall of words all at once, it puts you right off. So you give them a little bit at a time, one nice paragraph, and a button that says next. They tap, tap, tap, and before they know it they've read the whole thing, easy as anything. That's the kind way to show a long piece of writing.",
+  "naya_view": "Never a wall. One paragraph at a time, a next button each time — they click through it before they notice they have read it all. The text stays whole; only the presentation unfolds.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2927",
+   "title": "The Reader Unfolds — One Paragraph at a Time",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2927/IB-SMART-NOTE-20261116-sn2927-the-reader-unfolds.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2927/IB-SMART-NOTE-20261116-sn2927-the-reader-unfolds.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f9b21d15cf344d52d0c86c9aa4d948f35f6b0a54"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

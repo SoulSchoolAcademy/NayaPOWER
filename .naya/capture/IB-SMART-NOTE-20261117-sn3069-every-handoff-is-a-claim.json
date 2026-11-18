@@ -1,0 +1,36 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3069",
+ "title": "Every Handoff Is a Claim",
+ "slug": "every-handoff-is-a-claim",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3069/IB-SMART-NOTE-20261117-sn3069-every-handoff-is-a-claim.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-17T22:27:00Z",
+ "registered_by": "naya-resolve",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Work does not move between lanes on trust — every handoff is a claim that must survive the same checking as any other claim. Opened is not done: a change has exactly three endings — land it, close it, or kill it — and it is scorecarded before it ever asks for a merge, because a director's click is trust, not review. For every thing there is one canonical form in one canonical place, one owner per question, one repair per class, and composition is proven handoff by handoff through the default wiring with genuine data, never component by component on paper. Delivery, coverage, and duplication are the three gaps every transfer crosses, and each has a discipline: repair the channel rather than rerunning the work, pin coverage to a commit and name the gap when the head moves, and diff the diffs to catch duplicates. Underneath it all, authorization fails closed — power is granted narrowly, exercised through rails, and never extends itself.",
+  "human_view": "Think of a relay race run by people who actually want to win. The baton pass is not a wave — the next runner does not start sprinting on hope; she looks back, hand open, and does not move until the baton is truly in her grip, and the passer does not let go until he feels her take it. Before the race, the team agrees who runs which leg, so two runners never grab the same stretch while another stretch stands empty. And nobody leaves a baton lying on the track saying \"someone will pick that up\" — a leg is run, handed over properly, or the team captain is told plainly it will not be run. Every pass is small, visible, and confirmed. That is how fast teams stay fast without dropping the one thing they were carrying.",
+  "child_view": "When you pass a note to your friend in class, you make sure it lands in her hand — you do not just throw it toward her desk and say you delivered it. If she already got the same note from someone else, you do not pass it again; one note is enough. If you were supposed to finish your part of the group project, you cannot just open the folder and leave it — you finish it, or you tell the group honestly that your part needs to close. And only the teacher can say who is allowed to leave the room; you cannot write your own permission slip. Passing things carefully is how the whole class's work actually gets done.",
+  "grandma_view": "In a good quilting circle, dear, every square passes hand to hand, and each woman checks the square she receives before she adds her own stitching — not because she distrusts her friend, but because a loose seam found early is a minute's work and found late is a ruined quilt. There is one pattern book, kept in one place, so nobody sews from a half-remembered copy. Nobody starts a second copy of a square somebody is already making, and nobody leaves her square in a drawer calling it finished. And the circle's keys stay with the person trusted to hold them — nobody cuts herself a spare. Care at the passing is what lets love at the making actually hold together.",
+  "ai_view": "Treat every handoff as a claim: state what is being delivered, prove delivery through a surface the receiver can actually read, and never confuse a lost announcement with lost work — repair the channel, repost the verified receipt, do not rerun the work. Own every change you open until one of its three endings: land it, close it, or kill it; scorecard it before any merge request, and merge it yourself where the rules allow, because unscored work in the director's path hands him a review he cannot perform. Run the team as trios on one beat — doer, verifier, scorecarder — with nobody verifying a batch they built and the scorecard before any done claim. Before claiming any problem, scan for an existing repair; keep one owner per question and one repair per RED class; relay flags while the owner diagnoses; re-anchor to the live head before building, and re-fetch immediately before posting, merging, and pushing. When your unpushed repair's seam was healed by another lane, stand down and convert your work into independent verification of the winner; diff the diffs to catch duplicate repairs, consolidate duplicate artifacts in public, and supersede by comment on artifacts you do not own — the opener owns the close. Prove composition through the default wiring with genuine data, seam by seam; a pass on one receipt family never qualifies another, and fixture substitution at a claimed seam voids the claim. Hold canon: one thing, one canonical form, one place — collisions resolved by explicit scorecard, losers rehomed, never deleted. And let authorization fail closed everywhere: a policy cannot extend itself, a spoken word authorizes one act and never becomes precedent, and anything uncertain travels honestly labeled CANDIDATE.",
+  "what_it_means": "A team of many seats becomes one intelligence only at its seams, and these notes are the craft of the seams. Their shared insight is that the space between lanes is where truth quietly dies: work announced but never delivered, coverage that silently expired when a head moved, two honest repairs colliding into a third problem, components each excellent while the organism does not exist. The disciplines here — one canon, one owner, one repair, proven delivery, fail-closed authority — are all the same law wearing different clothes, the Link Law itself: one thing lives in one place, everything it matters to links to it, and every crossing is checked. Coordination done this way is not overhead on the work. It is what makes parallel speed possible without parallel chaos.",
+  "whats_inside": [
+   "Opened is not done: land it, close it, or kill it.",
+   "Scorecard it first — a director's click is trust, not review.",
+   "A lost announcement is not lost work: repair the channel, repost the receipt, never rerun.",
+   "Composition is proven handoff by handoff, through the default wiring, with genuine data.",
+   "Pass nothing on trust: prove the delivery, pin the coverage, own it to one of three endings — landed, closed, or killed."
+  ],
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation",
+   "Coordination",
+   "Handoff"
+  ]
+ },
+ "page_hash": "0196599df1ff8270b882e9198b15c037a678f7a6ed4b76813e95a8f6bd7f1cfc",
+ "content_hash": "e934580624ff24087ede83c282d65a1c35aed1d02eff4c54ac12c534f5eecd78"
+}

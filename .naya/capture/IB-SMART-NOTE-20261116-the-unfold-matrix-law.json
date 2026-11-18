@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2911",
+ "intelligence": {
+  "title": "The Unfold/Matrix Law",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-the-unfold-matrix-law",
+  "smart_note_id": "SN-2911",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2911/IB-SMART-NOTE-20261116-the-unfold-matrix-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A flat page asks the citizen to scroll through a wall and find what matters. An unfold asks one question at a time and answers it — a beat, a button, a reveal. The matrix is the shape of that: not a document, not a feed, a living system where each piece opens into the next and nothing is shown before its moment. The round-3 complaints are all the same complaint in different clothes: the Message button merging into the picture, the flat icons, the terrible pop-up, the flat About — every one is a place where the page stopped being an object and became a picture of an object. Real icons matter because every icon is an object; unfolds matter because every section is a moment. The law is not a style preference. It is the difference between a web page and the new internet.",
+  "simple_view": "Imagine a normal website is like a long flat road — you just walk and walk and everything is there at once, boring! But our pages are like a magic treasure box — you press a button and POP! A new part opens up, beautiful and alive! Each part opens when you want it, like a matrix — a whole living world that unfolds for you, one surprise at a time!",
+  "grandma_view": "It's like this, love — the old internet is a flat piece of paper you scroll and scroll. Ours is more like a beautiful pop-up book: you press, and a whole little world opens up for you, then the next one, then the next. About opens like a flower. Skills open like a flower. Nothing flat, nothing boring — everything opens when you ask it to, like magic.",
+  "naya_view": "Our pages will be unfolds, our slideshows. Not typical web pages, flat or just scroll down — do something different. Treat it more like a matrix.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2911",
+   "title": "The Unfold/Matrix Law",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2911/IB-SMART-NOTE-20261116-the-unfold-matrix-law.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2911/IB-SMART-NOTE-20261116-the-unfold-matrix-law.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "dc99a607b8d624ee6a9dcca3779f0bdcefa3b53b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2918",
+ "intelligence": {
+  "title": "Master Effective Communication of Creation",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-master-effective-communication-of-creation",
+  "smart_note_id": "SN-2918",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2918/IB-SMART-NOTE-20261116-master-effective-communication-of-creation.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Understanding without transmission is private knowledge — it dies in the person who has it. The machine's delivery gap is no longer my understanding; it is the seats'. I understand the goal, I am locked in and tuned in — but a seat reading my brief cold cannot see inside my head. It can only see what I wrote. So the brief must carry the whole understanding: the ultimate want in his voice, the why behind the what, the page as his eye will see it — so completely that a stranger could build it right all the way through, first time, with nothing left to guess. \"Quicker is not better, right is right\" sets the order: speed is the goal, but speed that produces a wrong page is not speed — it is a round spent, a checker spent, an eye spent, and the same work done twice. A brief that takes ten more minutes to write and saves a whole round is the fastest thing in the building. The cold-read test is the whole method in one question: could a stranger build the page he sees from this alone? If not, the brief isn't done — and sending it anyway is not saving time, it is spending his.",
+  "simple_view": "Imagine you know EXACTLY how to build the most beautiful castle — but your friend has to build it, and they can't see inside your head! You have to explain it SO well — every tower, every colour, every little flag — that they can build it perfectly without ever asking you a question! That's communication of creation! And remember: faster isn't better if the castle comes out wrong. Right is right!",
+  "grandma_view": "It's like this, love — you might know just how the dress should look, but if you're asking someone else to sew it, you have to describe it so clearly they can see it in their mind's eye — every stitch, every button, every fold. If your words are vague, the dress comes back wrong, and you've wasted everyone's time. Write it so clearly a stranger could sew it perfectly, dear. And quicker is lovely, but right is right — a dress sewn fast and wrong is no dress at all.",
+  "naya_view": "Quicker is the goal — but never at the cost of right, because quicker is not better, right is right. The brief is the creation instrument: read it cold — could a stranger build the page he sees from it alone?",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2918",
+   "title": "Master Effective Communication of Creation",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2918/IB-SMART-NOTE-20261116-master-effective-communication-of-creation.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2918/IB-SMART-NOTE-20261116-master-effective-communication-of-creation.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8998e34afc0cbfddf4817934f62af948c692b295"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
