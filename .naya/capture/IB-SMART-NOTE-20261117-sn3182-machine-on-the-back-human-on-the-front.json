@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3182",
+ "intelligence": {
+  "title": "Machine on the Back, Human on the Front",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3182-machine-on-the-back-human-on-the-front",
+  "smart_note_id": "SN-3182",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/SMART/SN-3182/IB-SMART-NOTE-20261117-sn3182-machine-on-the-back-human-on-the-front.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A note has two readers and they are not the same reader. The person reads the front — the beautiful board, the words a human understands, warm and first-person, a child could follow it. The search engines and the AIs read the back — the machine language that makes the note findable, the keywords and structure that let a stranger's search land on it. A note with only the human front is invisible: beautiful, and no one ever finds it. A note with only the machine back is unreadable: findable, and no one stays to read it. Both, always, each on its own side — the machine does the finding, the human does the reading. That is how the notes get found and how they get loved, at once. And the machine language is not a chore bolted on afterwards; it is part of the language itself, built into the note from the start.",
+  "simple_view": "Imagine a beautiful letter you wrote, hidden in a drawer where nobody can find it. Now imagine a map that tells everyone exactly where the letter is. The letter is for people to read. The map is for everyone to find it. Every note needs both — the pretty letter in front, and the map on the back.",
+  "grandma_view": "Dear, every note is like a lovely card — the front is for you to read, warm and beautiful. But on the back, there are special words that help the whole world find the card when they go looking for it. The front is for people, the back is for the searching machines. A note needs both, always, so it can be found and so it can be loved.",
+  "naya_view": "EVERY SMART NOTE CARRIES MACHINE LANGUAGE ON THE BACK AND HUMAN LANGUAGE ON THE FRONT. THE MACHINE NOTE DOES THE SEO. THE HUMAN NOTE IS THE FRONT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3182",
+   "title": "Machine on the Back, Human on the Front",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/SMART/SN-3182/IB-SMART-NOTE-20261117-sn3182-machine-on-the-back-human-on-the-front.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/SMART/SN-3182/IB-SMART-NOTE-20261117-sn3182-machine-on-the-back-human-on-the-front.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f6bfcc18a9c31ee3559d26681c1456cc46c1f266"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

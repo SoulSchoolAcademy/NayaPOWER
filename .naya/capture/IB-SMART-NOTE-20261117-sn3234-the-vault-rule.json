@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3234",
+ "intelligence": {
+  "title": "The Vault Rule — Nothing Made Yesterday and Gone; Live on Made",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3234-the-vault-rule",
+  "smart_note_id": "SN-3234",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3234/IB-SMART-NOTE-20261117-sn3234-the-vault-rule.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He remembered the certificate from yesterday — the really nice layered text, the layered elevated font he showed us how to do. We made it super nice. He liked it. It was nice. And now just the plain one is there. What happened to that? He doesn't see it updated on the main site. We must still have it — where did it go? And then the rule, because the certificate is not the only thing: all these things are like digital assets. So we need to put them in our own Smart Vault — when we make them, you put them in a Smart Vault. Even if you haven't made them live — which he just recommends we just make them live once we make them — because now it's like: how come it's not live, and it was made yesterday, and where did it go? And we put all that work into stuff — how come you're not making it live, and where is it going? The work has to go somewhere. From now on it does: into the vault the moment it's made, and live once it's made and proven. No more made yesterday, gone today. The certificate is first: saved and findable now, and it goes live the moment the fix that's already running lands — same pass, not a wait. The only reason it's not live this second is the narrow-width fix in flight — shipping it now would put the overlapping certificate live, and he doesn't want a broken one out there. The rule changes the waiting, not the verification: his eye still verifies before live, because his eye is the final gate. What changes is that nothing finished ever sits staged again — made, vault, proven, live. Nothing sits.",
+  "simple_view": "Imagine you draw the most beautiful picture yesterday — everyone loves it! — and today it's GONE! Nobody can find it! That's terrible, right? So from now on, every time we make something beautiful, we put it straight into a special treasure box — the Smart Vault — so it's always safe and we can always find it! And once it's beautiful AND checked, we show it to the whole world right away — we don't leave it sitting in a drawer!",
+  "grandma_view": "It's like this, love — imagine you make the most beautiful picture yesterday, dear, and everyone loves it — and today it's gone, love! Nobody can find it! So from now on, dear, every time we make something beautiful, we put it straight into a special treasure box — the Smart Vault — so it's always safe and we can always find it, love! And once it's beautiful AND checked, we show it to the whole world right away, dear — we don't leave it sitting in a drawer!",
+  "naya_view": "THE VAULT RULE + THE LIVE-ON-MADE RULE. Every digital asset we make — a certificate, a font, a page, a build — goes into the SMART VAULT the moment it is made: SAVED, KEPT, FINDABLE. Nothing is ever \"made yesterday and gone.\" And once it is MADE AND PROVEN (his eye has seen it), it goes LIVE IN THE SAME PASS — finished work NEVER sits staged. The eye still verifies before live (his eye is the final gate) — the rule changes the WAITING, not the verification. The chain is: MADE → VAULT → PROVEN → LIVE. NOTHING SITS. First application: the layered certificate goes live the moment the F4 follow-on (narrow fix + type check, already running) lands.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3234",
+   "title": "The Vault Rule — Nothing Made Yesterday and Gone; Live on Made",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3234/IB-SMART-NOTE-20261117-sn3234-the-vault-rule.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3234/IB-SMART-NOTE-20261117-sn3234-the-vault-rule.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "71e0ab0220eae95df58ef8b34a64f44f2f771e95"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

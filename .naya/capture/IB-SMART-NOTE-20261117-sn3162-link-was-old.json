@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3162",
+ "intelligence": {
+  "title": "The Link Was Old — Timestamp Everything, Use the Vault",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3162-link-was-old",
+  "smart_note_id": "SN-3162",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3162/IB-SMART-NOTE-20261117-sn3162-link-was-old.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "\"Bytes verified\" is not the same as \"he sees the update\" — and this is the night that proved it. The staged bytes were verified right, twice over: sha256 matched, branch tip unchanged, host sends no-store. And the link was still wrong, because a link is not bytes — it is a path a returning reader walks. Without the #userName anchor he landed in the old returning gate, unchanged by design, three days old; without a fresh timestamp his browser had no reason to treat it as new. So he was told \"it's updated\" and shown a page from three days ago — and his question was the right one: \"how can you send me 'oh it's updated' and send me an old link?\" The answer is that the machine verified the file and never verified the tap. The Link Law fixes the root, not the symptom: one ledger, one CURRENT link per item, every link timestamped and blob-verified, the exact URL he will tap fetched before it is sent. The check is what he sees when he taps it — not what the file holds. And the vault is the memory of it: older vs newer, tracked, so no old link is ever silently left standing.",
+  "simple_view": "Imagine you tell your friend \"I drew you a brand-new picture!\" but you hand them the old drawing from three days ago. The new picture exists — you just gave them the wrong one! From now on, every picture gets a fresh date stamp, and we keep a list of which one is the newest, and we check the exact picture we're handing over before we give it.",
+  "grandma_view": "Dear, the new page was ready and checked — but the link sent was the old one, three days old, with no fresh date on it. From now on, every link gets a fresh timestamp, we keep a careful ledger of which link is current and which is old, and we open the exact link ourselves before we ever send it. The check is what he sees when he taps it.",
+  "naya_view": "THE LINK WAS OLD: TIMESTAMP EVERYTHING, USE THE VAULT. EVERY LINK CARRIES A FRESH TIMESTAMP — A LINK WITHOUT ONE IS STALE BY DEFINITION. LINK-LEDGER.md IS THE VAULT OF RECORD: ONE CURRENT LINK PER ITEM, THE OLD ONE MARKED SUPERSEDED, NEVER SILENTLY LEFT STANDING. NEVER ASK HIM TO APPEND ANYTHING — THE ANCHOR RIDES IN THE URL. VERIFY THE EXACT LINK HE WILL TAP, NOT JUST THE BYTES. IF IT IS NOT IN THE LEDGER AS CURRENT AND VERIFIED, IT DOES NOT GO.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3162",
+   "title": "The Link Was Old — Timestamp Everything, Use the Vault",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3162/IB-SMART-NOTE-20261117-sn3162-link-was-old.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3162/IB-SMART-NOTE-20261117-sn3162-link-was-old.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "bf66f0d7bfcd8502b74a876f0d12be40dbd6aad3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

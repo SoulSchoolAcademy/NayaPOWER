@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3257",
+ "intelligence": {
+  "title": "The Inspector — Full Sweep",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3257-the-inspector-full-sweep",
+  "smart_note_id": "SN-3257",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3257/IB-SMART-NOTE-20261117-sn3257-the-inspector-full-sweep.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: it's time for the inspector to go through all the pages. What do you do with that massive icon with the little N in the middle — that looks ridiculous. Why would you do that? He doesn't mind the icon itself — but why just a little N in the middle, and why so big? It makes no sense. So the inspector has to go over the whole thing and look for logic and elegance and design and usefulness, and for the quality of overall high-level design — where things sit, how they fit, how they look, what they do. Because there's a lot that needs to be improved. Right, that's great — but there's a lot that needs to be polished, fine-tuned, rearranged, sized. Some things are oversized, some things are undersized. But if you just lock into the actual heart of what we're doing, that'd be better. \"I don't know what you're showing me here — what is this? I have no idea what you're showing me on the screen. Like, what's the purpose of this thing you're showing?\"",
+  "simple_view": "Imagine a teacher who walks around the whole school and checks every single room — is it tidy? Is it pretty? Does it make sense? Is everything the right size? That's the inspector! And she found one silly thing: a GIANT circle with just a tiny little letter N in the middle — that's ridiculous! Why so big for such a little letter? The inspector checks everything, and if a page doesn't say what it's for right away, it has to be fixed!",
+  "grandma_view": "It's like this, love — imagine a teacher who walks around the whole school, dear, and checks every single room, love — is it tidy, dear? Is it pretty? Does it make sense? Is everything the right size, love? That's the inspector, dear! And she found one silly thing, love: a GIANT circle with just a tiny little letter N in the middle, dear — that's ridiculous, love! Why so big for such a little letter? The inspector checks everything, dear, and if a page doesn't say what it's for right away, love, it has to be fixed!",
+  "naya_view": "THE INSPECTOR — FULL SWEEP. THE INSPECTOR JUDGES EVERY PAGE ON LOGIC, ELEGANCE, DESIGN, USEFULNESS, HIGH-LEVEL DESIGN QUALITY — WHERE THINGS SIT, HOW THEY FIT, HOW THEY LOOK, WHAT THEY DO; POLISH, FINE-TUNE, REARRANGE, RESIZE; SOME THINGS OVERSIZED, SOME UNDERSIZED. EVERY PAGE MUST ANSWER AT A GLANCE WHAT IT IS AND WHAT IT'S FOR. NAMED SUSPECT: THE MASSIVE ICON WITH THE LITTLE N IN THE MIDDLE — WHY SO BIG, WHY JUST A LITTLE N.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3257",
+   "title": "The Inspector — Full Sweep",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3257/IB-SMART-NOTE-20261117-sn3257-the-inspector-full-sweep.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3257/IB-SMART-NOTE-20261117-sn3257-the-inspector-full-sweep.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "69255cb361a895d7100cd0ccce26db7cf33e5fb3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

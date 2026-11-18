@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3225",
+ "intelligence": {
+  "title": "The Pedestal — Nothing Flat, Everything a Real Object",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3225-the-pedestal",
+  "smart_note_id": "SN-3225",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3225/IB-SMART-NOTE-20261117-sn3225-the-pedestal.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He looked at the sidebar and said: these icons look like circles, and the square ones look a little flat. He was hoping for the sharp icons from the bottom bar — the ones that already look like real objects. And it's not just the sidebar: many buttons still look very flat. Try to make none of them look flat. Master the elevating — every input, every icon, every button, every button inside a button — everything real and clear, pro level, in clarity. The flow around the profile picture is pretty flat and doesn't look real; it could be enhanced in its presentation, its quality, its elegance. And then he gave the image that holds it all: you're putting their picture on a pedestal, you're putting icons on a pedestal, you're putting the boards and the buttons on a pedestal. Raised above. A higher level of quality, elegance, object. Beauty in their objectuality and their physicality. Digital assets made works of art — made to feel real, and to be useful and helpful in the operations of NayaNET. A pedestal is not decoration. It is the statement that this thing matters enough to be lifted up where you can see it properly.",
+  "simple_view": "Imagine all your favorite toys — but instead of lying flat on the floor, each one sits up on its own little pedestal, like in a museum! The picture sits up high, the icons sit up high, the buttons sit up high — everything raised up so you can see how beautiful and real they are! Nothing flat, nothing squished down — everything standing tall and proud, like a work of art!",
+  "grandma_view": "It's like this, love — imagine everything on the page sitting up on its own little pedestal, dear, like beautiful things in a shop window! The picture, the icons, the boards, the buttons — all raised up high, so you can see how real and lovely they are, love! Nothing flat, nothing dull — everything standing proud like a work of art, made to feel real and be useful, dear!",
+  "naya_view": "NOTHING FLAT, EVERYTHING A REAL OBJECT. Sidebar icons are CIRCLES — the sharp bottom-bar form, harvested verbatim, never squares by default (a square only where it genuinely fits better; never flat). The profile picture gets the PEDESTAL — elevated as a real object, rim in its own deep color, slow orbit flowing around it. MASTER ELEVATION covers every button, input, icon, board, and button-within-a-button — a button inside a button is its own object with its own elevation, never a flat mark on its parent. A FLAT ELEMENT IS A DEFECT, whatever else it does. The checker walks the page at 390px and 1920px and names every element that still reads flat; the round is not done until that list is empty.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3225",
+   "title": "The Pedestal — Nothing Flat, Everything a Real Object",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3225/IB-SMART-NOTE-20261117-sn3225-the-pedestal.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3225/IB-SMART-NOTE-20261117-sn3225-the-pedestal.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "4ab2f81dc122711004bbb1427ce580d62a77903c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

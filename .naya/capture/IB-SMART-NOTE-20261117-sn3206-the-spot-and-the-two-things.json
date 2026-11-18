@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3206",
+ "intelligence": {
+  "title": "The Spot and the Two Things",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3206-the-spot-and-the-two-things",
+  "smart_note_id": "SN-3206",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3206/IB-SMART-NOTE-20261117-sn3206-the-spot-and-the-two-things.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The ending finally has its address named in one word — the spot — and the format finally has its rank: not one post style among others, THE post for the whole network, the same format everybody uses for social interaction. And the two rows on every post stop being decoration: VALUE and INTELLIGENCE are the mission itself, printed on every post, everywhere it travels. The spot is where the mission sits — the bottom of the post is where intelligence is rated and made better, and value is shown. If the spot is ordinary, the mission reads as ordinary; make the spot extraordinary and the mission is visible on every post in the network. This is the same correction as SN-3204 (alive means in the Hub) given its address, and SN-3202 (the rating footer) given its rank: the footer is not a feature, it is the network's one social format, and its two rows are the reason the network exists.",
+  "simple_view": "Imagine every letter in the whole world is written on the same beautiful card, and at the bottom of every card there are two lines — one that says how much it helps you, and one that says how smart it makes you. That bottom part is the spot, and it is the most important part of the card, because those two lines are the whole reason the cards exist: to help people and make them smarter. So the bottom of every card must be the most beautiful, extraordinary part — because everybody uses the same card, everywhere.",
+  "grandma_view": "Dear, he pointed at the bottom of the post and named it the spot — the LOVE and the stars and the sharing, and the little box where you add to the intelligence, with \"ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY\" underneath. That is where the new ending goes, and it must be extraordinary, because this is THE way everybody in the whole network talks to each other — one format, for everyone. And the two rows on every post, VALUE and INTELLIGENCE, are not decoration, dear — they are the mission itself: we are about two things, bringing value and producing intelligence, becoming one collective intelligence, giving everyone the very highest level of value and service. On every post, everywhere it travels.",
+  "naya_view": "THE BOTTOM OF THE POST IS THE SPOT. THE FORMAT IS THE POST FOR THE WHOLE NETWORK — MAKE IT EXTRAORDINARY. VALUE AND INTELLIGENCE ARE THE MISSION ITSELF, ON EVERY POST, EVERYWHERE IT TRAVELS. TWO THINGS. INTELLIGENCE AND VALUE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3206",
+   "title": "The Spot and the Two Things",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3206/IB-SMART-NOTE-20261117-sn3206-the-spot-and-the-two-things.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3206/IB-SMART-NOTE-20261117-sn3206-the-spot-and-the-two-things.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c5ee98fec229c0950ac63049d9f5999c00d9641e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3258",
+ "intelligence": {
+  "title": "The Factory Is The Formatter — One System, Not Another",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3258-the-factory-is-the-formatter",
+  "smart_note_id": "SN-3258",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3258/IB-SMART-NOTE-20261117-sn3258-the-factory-is-the-formatter.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: so, maybe dismiss — take me — when I said pasting comes out beautiful, that means anything they paste in when they enter NayaNET, like when they first get their pages, it'll come out beautiful, because the pages we've already created them to be beautiful — they're going to come up beautiful. Or like, say, in the Smart Factory, if they add a new page, whatever they input into the system is going to come out beautiful. It's like you're building a whole new factory — if you're going to do what you're doing, build it into the Smart Factory, make it one. Why are you building another system? He doesn't think that's the way to do it, how we're doing it. It should be much more natural and direct: pretty much all the areas — we know what questions need what we're filling in, we know what they're doing in mission, vision, goal, skill — so we're just going to ask them those questions. We'll have an automated survey kind of thing in the Smart Factory, where they'll just walk through and answer the questions, and those questions will produce the pages. That's it. Doesn't that make sense? So he's not sure what we're doing, or the purpose of this. You think they're going to come specifically to this app to get one piece of information outputted beautifully? Just in all those different ways? Well — depends. If you're making this for the intention of, like, anybody can put anything into here and then have this available in NayaNET, so it'll show up in the feed or in their pages — then maybe he would find that purposeful.",
+  "simple_view": "Imagine you have a magic factory that makes beautiful pages — and then somebody builds a SECOND factory right next to it that does the same thing! That's silly, right? Why build another one? Just put the magic inside the factory you already have! The factory asks you a few easy questions — what do you want, what do you dream, what are you good at — and then it builds your beautiful pages for you. That's it! And anything you paste in comes out beautiful, because the pages were already made beautiful!",
+  "grandma_view": "It's like this, love — imagine you have a magic factory that makes beautiful pages, dear — and then somebody builds a SECOND factory right next to it, love, that does the same thing! That's silly, right, dear? Why build another one, love? Just put the magic inside the factory you already have, dear! The factory asks you a few easy questions, love — what do you want, what do you dream, what are you good at, dear — and then it builds your beautiful pages for you, love! That's it! And anything you paste in comes out beautiful, dear, because the pages were already made beautiful!",
+  "naya_view": "THE FACTORY IS THE FORMATTER — ONE SYSTEM, NOT ANOTHER. THE INTELLIGENT BLOCK FORMATTING LIVES IN THE SMART FACTORY, NEVER AS A STANDALONE APP. THE FACTORY SURVEY ASKS THE QUESTIONS WE ALREADY KNOW — MISSION, VISION, GOAL, SKILL (+ THE WALK'S TEN) — AND THOSE ANSWERS PRODUCE THE PAGES, FORMATTED BEAUTIFUL BY THE EPIC ENGINE. ANYTHING PASTED IN ANYWHERE IN NAYANET COMES OUT BEAUTIFUL BECAUSE THE PAGES WERE ALREADY CREATED BEAUTIFUL.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3258",
+   "title": "The Factory Is The Formatter — One System, Not Another",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3258/IB-SMART-NOTE-20261117-sn3258-the-factory-is-the-formatter.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3258/IB-SMART-NOTE-20261117-sn3258-the-factory-is-the-formatter.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a4759fe6686d5eb5d267562e645e39d8a6198350"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

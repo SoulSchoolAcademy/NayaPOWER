@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3238",
+ "intelligence": {
+  "title": "The One Set — Aligned Everywhere",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3238-the-one-set-aligned-everywhere",
+  "smart_note_id": "SN-3238",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3238/IB-SMART-NOTE-20261117-sn3238-the-one-set-aligned-everywhere.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He was looking at the page — the bottom bar and the rest of it — and he could see it: the colors at the bottom, the icons at the bottom, and the colors of the other ones on the page are not aligned. Some don't look as good, some are too neon, some are not the same. So we should have one set of colors — because if you just use the finest jewelry, the finest gems, the best of the best colors, the most elite parts and presentation, you don't need to do everything, you just use the best of the best: the nicest purple, the nicest gold, the nicest blue, the nicest reds, the most incredible rich teal greens and blues — the most beautiful colors there are, that exist in cars and jewels and design. And we have the official set, like nine, and they're aligned with the colors of the universe: 963 is the crown chakra, which is actually magenta; purple is actually 852 — he often refers to it as purple is the nine, because it goes into the nine, because there's a range from 852 to 963 where it becomes purple, and magenta is a kind of purple. What he's saying is: no whole bunch of different purples, no whole bunch of different greens, different blues. One set of colors that we use all the way through, with all our buttons. The search aligned with the purple on the icons — that's good, that's the example of right. But any unalignment shouldn't be there: there shouldn't be anything that's not aligned. One set of colors everywhere, none that look neon — all of them rich and valuable and elegant and jewel-like and real.",
+  "simple_view": "Imagine you have a box of the very prettiest jewels — the nicest purple jewel, the nicest gold jewel, the nicest blue jewel! — and you use those SAME jewels everywhere on your picture! Not a whole bunch of different purples — just the ONE nicest purple, everywhere! And none of the yucky neon colors — only the rich, shiny, jewel-like ones!",
+  "grandma_view": "It's like this, love — imagine you have the very finest jewels, dear — the nicest purple, the nicest gold, the nicest blue, the most beautiful colors there are, love! — and you use those SAME beautiful colors everywhere, dear, all the way through! Not a whole bunch of different purples, love — just the one nicest purple, everywhere! And nothing neon, dear — only rich and valuable and elegant and jewel-like and real, love!",
+  "naya_view": "THE ONE SET — ALIGNED EVERYWHERE. The colors at the bottom — the bottom-bar icons — and the colors of the rest of the page are NOT ALIGNED. Some are TOO NEON, some are NOT THE SAME. We have ONE SET OF COLORS, ALL THE WAY THROUGH, ON EVERY BUTTON: the finest jewelry, the finest gems, THE BEST OF THE BEST — the nicest purple, the nicest gold, the nicest blue, the nicest reds, the most incredible rich teal greens and blues, the most beautiful colors there are, in cars and jewels and design. The NINE official colors are aligned with the COLORS OF THE UNIVERSE: 963 is the CROWN CHAKRA — MAGENTA; 852 is PURPLE; purple is the nine because the 852–963 range BECOMES PURPLE; magenta is a kind of purple. NO whole bunch of different purples, greens, blues. The search aligned with the icons' purple is the EXAMPLE OF RIGHT. Any unalignment shouldn't be there — NOTHING NOT ALIGNED, NOTHING NEON, all of them RICH and VALUABLE and ELEGANT and JEWEL-LIKE and REAL.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3238",
+   "title": "The One Set — Aligned Everywhere",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3238/IB-SMART-NOTE-20261117-sn3238-the-one-set-aligned-everywhere.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3238/IB-SMART-NOTE-20261117-sn3238-the-one-set-aligned-everywhere.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "33fc4ecc916563ae9427cfeb122d814a8fa17db7"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

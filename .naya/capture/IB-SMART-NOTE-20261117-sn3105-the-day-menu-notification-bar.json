@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3105",
+ "intelligence": {
+  "title": "The Day Menu — The Notification Bar on Top, Doors Grouped by Color",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3105-the-day-menu-notification-bar",
+  "smart_note_id": "SN-3105",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3105/IB-SMART-NOTE-20261117-sn3105-the-day-menu-notification-bar.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The day menu is the front door to a day — the first thing he taps — and right now it is a mess that is hard for his brain to put in order. So he rebuilt it out loud, top to bottom. First: the action comes first, because the action is what he came to see — how many messages in the inbox, how many instant messages, how many people liked, commented, loved, took an action on his posts. The notification bar is the first thing on the page because the notifications are the number one thing. And it shows all three worlds — personal, business, space — because he lives in all three, and the action could be in any of them. Then: the doors, grouped by what they are, separated, color making sense — news together, business/personal/thing together, journal/horoscope/weather together — so a person can find their worlds at a glance instead of reading a wall of long labels stuck together. And the labels short, because \"Smart Notes for that day\" is too much text on a button and it looks weird — \"Smart Notes\", \"Posts\", \"Notes\", that's it. \"We want them to easily find their worlds and have them logically put together\" — that is the whole law of the day menu in one line, and it is the same law as the text laws: less text, more sense, everything in its right place, nothing that makes the brain work to find what it wants. The check is his own: can he find his worlds easily, at a glance, without his brain having to put the mess in order? If not, it goes back.",
+  "simple_view": "Imagine you open your day and the VERY FIRST thing you see is a shiny bar that tells you everything fun that happened — how many messages, how many likes, how many people loved your posts! And then all the doors to your worlds are sorted into neat little groups, like toys sorted into boxes — news together, fun stuff together — with short, easy names! You can find anything in one look!",
+  "grandma_view": "It's like this, love — imagine you open your day, dear, and the VERY FIRST thing you see is a lovely bar that tells you everything that happened — how many messages, how many likes, how many people loved your posts, love! And then all the doors to your worlds are sorted into neat little groups, dear, like treasures sorted into boxes — news together, fun things together — with short, easy names! You can find anything in one look, love!",
+  "naya_view": "THE DAY MENU: NOTIFICATION BAR FIRST — LIVE COUNTS OF THE ACTION ON THEIR PROFILE (INSTANT MESSENGER / SMART MAIL, INSTANT MESSAGES, SMART NOTES, NAYA NOTES, LIKES, COMMENTS, LOVES, SHARES, ACTIONS ON POSTS, APPOINTMENTS) — PERSONAL + BUSINESS + SPACE, ALL DYNAMIC, EACH CATEGORY SHOWING WHERE THE ACTION IS. THEN THE DOORS, GROUPED BY CATEGORY AND COLOR: NEWS TOGETHER; BUSINESS / PERSONAL / THING TOGETHER; JOURNAL / HOROSCOPE / WEATHER TOGETHER. APPOINTMENTS AND TIMELINE AT THE BOTTOM. LABELS SHORT — \"SMART NOTES\", \"POSTS\", \"NOTES\" — NEVER \"FOR THAT DAY\". THE COLOR MUST MAKE SENSE. PEOPLE FIND THEIR WORLDS EASILY, AT A GLANCE, LOGICALLY PUT TOGETHER — NEVER A MESS STUCK TOGETHER.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3105",
+   "title": "The Day Menu — The Notification Bar on Top, Doors Grouped by Color",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3105/IB-SMART-NOTE-20261117-sn3105-the-day-menu-notification-bar.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3105/IB-SMART-NOTE-20261117-sn3105-the-day-menu-notification-bar.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a95b5fd82d153cbcd8a79b5dfb1aaad33d781f14"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

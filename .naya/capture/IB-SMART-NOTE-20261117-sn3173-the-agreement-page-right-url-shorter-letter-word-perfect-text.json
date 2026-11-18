@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3173",
+ "intelligence": {
+  "title": "The Agreement Page — The Right URL, the Shorter Letter, the Word-Perfect Text, the Voice After",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3173-the-agreement-page-right-url-shorter-letter-word-perfect-text",
+  "smart_note_id": "SN-3173",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/AGREEMENT/SN-3173/IB-SMART-NOTE-20261117-sn3173-the-agreement-page-right-url-shorter-letter-word-perfect-text.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He opened the page he asked for and found three different failures wearing one presentation: the words were not the words he gave us, the letter went on longer than anyone will read, and the click that should have brought him there brought him somewhere else entirely. His sentence about the wrong destination — \"that's not right that's not accurate it does not go to the right places\" — is the whole lesson: a beautiful page at the wrong address is not the page. And his question about the voice — \"I wonder if you ever did the voice yet\" — is the patient version of the same lesson: the button is how they hear it, and a button with no voice behind it is a promise unkept. The order he gives is the order the work goes: the right URL first, the text word perfect on it, the letter shorter without losing the presentation, and the voice once the text is final — because the voice reads the final words, and final words cannot be recorded twice.",
+  "simple_view": "Imagine you wrote a beautiful letter, but it's so long nobody finishes it, some of the words are the old ones instead of the new ones you chose, and the door that should lead to it leads to the wrong room. First put the letter behind the right door. Then use your best words, exactly right. Then make it shorter so people can read it all the way through — but keep the whole long letter one tap away for anyone who wants it. And only then record yourself reading it out loud, because you read the final words, not the draft.",
+  "grandma_view": "Dear, the agreement page looks beautiful — but the letter is far too long, the words aren't the new ones yet, and the button takes you to the wrong place. So: the right page first, the exact words on it, the letter made shorter without losing any of its beauty (the whole thing still one tap away), and then — only once the words are final — the voice, so they can hear it read aloud.",
+  "naya_view": "THE AGREEMENT LIVES ON THE STAGING WORKER'S /AGREEMENT — NEVER THE PROOF-HOST PAGE. THE TEXT GETS UPDATED TO WORD PERFECT ON /AGREEMENT. THE LETTER GETS SHORTER WITHOUT LOSING THE PRESENTATION — THE FULL LETTER STAYS REACHABLE WHOLE, ONE TAP AWAY. THE VOICE COMES ONCE THE TEXT IS FINAL — THE BUTTON IS HOW THEY HEAR IT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3173",
+   "title": "The Agreement Page — The Right URL, the Shorter Letter, the Word-Perfect Text, the Voice After",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/AGREEMENT/SN-3173/IB-SMART-NOTE-20261117-sn3173-the-agreement-page-right-url-shorter-letter-word-perfect-text.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/AGREEMENT/SN-3173/IB-SMART-NOTE-20261117-sn3173-the-agreement-page-right-url-shorter-letter-word-perfect-text.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6850d77cb6640e27caa71020b266eafe54e2fac4"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

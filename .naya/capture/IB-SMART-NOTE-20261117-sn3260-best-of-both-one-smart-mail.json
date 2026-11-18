@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3260",
+ "intelligence": {
+  "title": "Best Of Both — One Smart Mail",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3260-best-of-both-one-smart-mail",
+  "smart_note_id": "SN-3260",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3260/IB-SMART-NOTE-20261117-sn3260-best-of-both-one-smart-mail.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: a lot of this is just not up to quality. Look at the buttons — they're flat. And every page he looks at is like a new design — it looks sort of like it but not completely like it. And he doesn't think those colors are aligned right — the F and the D, pretty sure F and D have different colors of the same color. And then the cover / no cover / full screen — he doesn't understand that. And this whole page is a Smart Mail — we already have a Smart Mail — so the other Smart Mail actually looks more elegant than this one, in a way. Some of it looks nice, like the icons sure look nice. But he thinks we need to find a happy medium between them, or maybe make the best of the best — he's not sure — but we gotta make it more elegant.",
+  "simple_view": "Imagine you have TWO toy mailboxes, and one is prettier in some ways and the other is prettier in other ways! That's silly — why have two? Let's take the very best parts of BOTH and make ONE super mailbox! And the letters F and D have to be the exact same color — not two different shades of the same color! And if a button is confusing, we make it clear or take it away. And flat buttons? No way — buttons have to pop up like real buttons you can press!",
+  "grandma_view": "It's like this, love — imagine you have TWO toy mailboxes, dear, and one is prettier in some ways and the other is prettier in other ways, love! That's silly, dear — why have two? Let's take the very best parts of BOTH, love, and make ONE super mailbox, dear! And the letters F and D have to be the exact same color, love — not two different shades of the same color, dear! And if a button is confusing, love, we make it clear or take it away, dear! And flat buttons? No way, love — buttons have to pop up like real buttons you can press, dear!",
+  "naya_view": "BEST OF BOTH — ONE SMART MAIL. TWO SMART MAIL PRESENTATIONS; THE OTHER LOOKS MORE ELEGANT IN PLACES. MAKE ONE SMART MAIL, BEST OF THE BEST. ITEMS: F AND D LETTERS ALIGNED TO THE ONE SET (NEVER TWO SHADES OF ONE HUE); THE COVER/NO-COVER/FULL-SCREEN CONTROL MADE PLAIN OR REMOVED; FLAT BUTTONS GET REAL DEPTH.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3260",
+   "title": "Best Of Both — One Smart Mail",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3260/IB-SMART-NOTE-20261117-sn3260-best-of-both-one-smart-mail.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3260/IB-SMART-NOTE-20261117-sn3260-best-of-both-one-smart-mail.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e8cc73c977d4d2b774313f2efe759317274dcbdf"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

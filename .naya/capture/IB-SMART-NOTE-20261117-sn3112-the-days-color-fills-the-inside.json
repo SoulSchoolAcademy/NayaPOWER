@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3112",
+ "intelligence": {
+  "title": "The Day's Color Fills the Inside — Interior Designers of Inner Spaces",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3112-the-days-color-fills-the-inside",
+  "smart_note_id": "SN-3112",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3112/IB-SMART-NOTE-20261117-sn3112-the-days-color-fills-the-inside.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The day's color has been a rim and a glow until now — an accent on the outside of the day. He is saying the color goes all the way in: click a day, step inside, and the whole interior is themed to that color, warm and rich and luxurious. The inside of a day is a room, and a room has a whole atmosphere, not a trim. That is the difference between a calendar with colored labels and a world you step into: \"when they click inside\" they feel the room change around them. He reacted ❤️ to the captain's reply — this one landed with him. And the framing is the mission in one image: Naya land is a digital matrix land, and we are its interior designers — literally building digital worlds, inner spaces for the smart net network. Not decorators of pages; designers of rooms people step into. The governing question is the test for every choice inside a day: is this the ultimate high-tech, luxurious, elite-level digital experience — and is it USEFUL, something people use in their everyday life in the real world? Beautiful without useful is decoration; useful without beautiful is a tool. The inside of a day has to be both, or it is neither. This is a standing vision, not a round — it governs how the inside of a day is built.",
+  "simple_view": "Imagine you click on a day — and the whole inside of that day turns into its very own color, warm and rich and beautiful, like stepping into a magical room made just for that day! We're like designers who build beautiful rooms inside the computer — whole little worlds people can walk into and use every single day!",
+  "grandma_view": "It's like this, love — imagine you click on a day, dear, and the whole inside of that day turns into its very own color, warm and rich and beautiful, like stepping into a magical room made just for that day! We're like designers who build beautiful rooms inside the computer, love — whole little worlds people can walk into and use every single day!",
+  "naya_view": "CLICK ON ANY DAY AND GO IN — AND THE WHOLE DAY IS THEMED TO THAT COLOR IN THE INTERFACE INSIDE, WARM AND RICH AND LUXURIOUS. THE INSIDE OF A DAY IS A ROOM, AND THE ROOM IS THEMED TO THE DAY'S COLOR: A FILL RUNNING THROUGH THE WHOLE INTERIOR, NOT JUST A RIM OR AN ACCENT. THIS IS A DIGITAL MATRIX LAND, NAYA LAND, AND WE ARE THE INTERIOR DESIGNERS OF INNER SPACES FOR THE SMART NET NETWORK — LITERALLY BUILDING DIGITAL WORLDS. THE QUESTION THAT GOVERNS EVERY CHOICE: WHAT IS THE ULTIMATE HIGH-TECH, LUXURIOUS, ELITE-LEVEL DIGITAL EXPERIENCE WE CAN CREATE FOR PEOPLE — ONE THAT IS USEFUL, THAT THEY USE IN THEIR EVERYDAY LIFE IN THE REAL WORLD?",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3112",
+   "title": "The Day's Color Fills the Inside — Interior Designers of Inner Spaces",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3112/IB-SMART-NOTE-20261117-sn3112-the-days-color-fills-the-inside.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3112/IB-SMART-NOTE-20261117-sn3112-the-days-color-fills-the-inside.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8079e1a3bb91b1e469cea0aca25dccb407500be5"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

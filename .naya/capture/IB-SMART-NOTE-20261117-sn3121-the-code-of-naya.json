@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3121",
+ "intelligence": {
+  "title": "The Code of Naya",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3121-the-code-of-naya",
+  "smart_note_id": "SN-3121",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3121/IB-SMART-NOTE-20261117-sn3121-the-code-of-naya.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This document names the three things the team has been treating as one thing, and separates them so each can be governed: the Code governs decisions, the Language governs expression, the Design Law governs building and verification — and together they are larger than a design system, a repeatable method of turning intelligence into meaningful human experiences. Its governing principle is the loop itself in six verbs: understand completely, choose intelligently, create beautifully, act responsibly, prove the result, preserve what was learned. And then it does what a good synthesis does: it finds the crack. The intended language is stronger than its current enforcement — the book is clear, but the accompanying specifications still conflict, and the conflicts are named (Living Obsidian brights vs the law, nav bars, loading states, icon identity, special objects). And it challenges a ratified rule on its merits: the law says a missing number shows 0, but unknown data is not a measured zero — a verified zero is a real measurement, missing data wearing a 0 pretends to know something it does not. The captain confirmed the claim is correct against the book (line 181, origin N9) — and Shawn ruled on it in the same hour, 17:28Z: \"Split it — a real zero shows as a tile, unknown shows as a state.\" Settled law now, carried by the design-contract brief §10. It also proves, in the script itself, that the machine checker flags the variable NAME `--dim` regardless of its value — a confirmed false positive, so the checker is a useful early gate but not yet a reliable proof of compliance. And it ends with the recommendation that is the next build: one canonical, machine-testable design contract — not another competing system — connecting the ratified rules to real objects, verified states, accessible interaction, semantic data rules, and independent human testing, with every future builder inheriting the same contract. That is how Naya stops depending on repeated human corrections and begins reproducing the intended quality consistently. The document's own last line is the distinction worth protecting: not another style of website, but a common language through which intelligence can be experienced — and a system that can reproduce, verify, remember, and improve that experience. It rides with SN-3118 (The Divine Design — The Alignment): SN-3118 names what the design IS (one law, one atom); this note names the threefold government that enforces it (Code, Language, Law) and the contract that makes it reproducible.",
+  "simple_view": "The Code is the brain that decides! The Language is how the brain talks — in beautiful objects everybody can understand! And the Design Law is the promise that every single thing is built right and proven! Three parts, one system — and together they turn intelligence into something you can see, touch, and use! But the paper also found a crack: the rules say a missing number should show 0 — but a missing number isn't a 0 at all! A real 0 is a real measurement; a missing number wearing a 0 is pretending! And the checker machine sometimes gets it wrong too — it sees the NAME of a thing, not what it really is! So we need one big promise — one contract — that every builder inherits, so the beautiful language builds itself right every time!",
+  "grandma_view": "The Code is the brain that decides, love! The Language is how the brain talks — in beautiful objects everybody can understand! And the Design Law is the promise that every single thing is built right and proven! Three parts, one system — and together they turn intelligence into something you can see, touch, and use! But the paper also found a crack, dear: the rules say a missing number should show 0 — but a missing number isn't a 0 at all! A real 0 is a real measurement; a missing number wearing a 0 is pretending! And the checker machine sometimes gets it wrong too — it sees the NAME of a thing, not what it really is! So we need one big promise — one contract — that every builder inherits, so the beautiful language builds itself right every time!",
+  "naya_view": "THE CODE GOVERNS DECISIONS. THE LANGUAGE GOVERNS EXPRESSION. THE DESIGN LAW GOVERNS BUILDING AND VERIFICATION. TOGETHER THEY ARE LARGER THAN A DESIGN SYSTEM: A REPEATABLE METHOD OF TURNING INTELLIGENCE INTO MEANINGFUL HUMAN EXPERIENCES. UNDERSTAND COMPLETELY. CHOOSE INTELLIGENTLY. CREATE BEAUTIFULLY. ACT RESPONSIBLY. PROVE THE RESULT. PRESERVE WHAT WAS LEARNED. AND THE CRACK: THE INTENDED LANGUAGE IS STRONGER THAN ITS CURRENT ENFORCEMENT. A MISSING NUMBER WEARING A 0 PRETENDS TO KNOW SOMETHING IT DOES NOT — A VERIFIED ZERO IS A REAL MEASUREMENT, UNKNOWN DATA IS NOT. THE CHECKER TESTS NAMES, NOT VALUES — A USEFUL EARLY GATE, NEVER THE PROOF. THE DESTINATION: ONE CANONICAL, MACHINE-TESTABLE DESIGN CONTRACT — EVERY FUTURE BUILDER INHERITING THE SAME CONTRACT — SO THE QUALITY REPRODUCES ITSELF INSTEAD OF DEPENDING ON REPEATED HUMAN CORRECTIONS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3121",
+   "title": "The Code of Naya",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3121/IB-SMART-NOTE-20261117-sn3121-the-code-of-naya.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3121/IB-SMART-NOTE-20261117-sn3121-the-code-of-naya.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "aa3540ba2856c597a238ccacc833c0538c48e68a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

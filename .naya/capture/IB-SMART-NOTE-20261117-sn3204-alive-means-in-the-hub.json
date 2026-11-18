@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3204",
+ "intelligence": {
+  "title": "Alive Means in the Hub",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3204-alive-means-in-the-hub",
+  "smart_note_id": "SN-3204",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3204/IB-SMART-NOTE-20261117-sn3204-alive-means-in-the-hub.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He asked why he was sent a separate page when he asked for the Hub — and the question answers itself. A demo page proves a design; it cannot prove alive, because alive is a property of the real thing working on real posts. The separate page was the machine doing what it knows how to do (build a page) instead of what he asked (make the Hub alive). The correction draws the line exactly where the work is: nothing at the top changes, only the bottom of each post, redone elegantly — and \"elegantly\" has a strict shape here, not a feature sell: create the intelligence, rate the value, comment, share. Four verbs, no more. The mockups being flat is part of the same correction: flat stars on a separate page are doubly not alive — wrong place, wrong depth. The job is depth and layers and objectnality on the real page, on real posts, at the bottom of every one.",
+  "simple_view": "Imagine you ask someone to make your favorite playground more fun, and they build you a tiny toy playground on a table instead. The toy is pretty, but you can't play on it — it's not your playground. The real job is to go to YOUR playground and make the bottom of every slide and swing beautiful and fun, right where you already play. Same playground at the top, new beautiful bottom everywhere. And not a big noisy fairground — just four lovely things: make something, say how good it is, talk about it, share it.",
+  "grandma_view": "Dear, he asked a simple question: why did you send me a separate little page when I asked for the Hub itself? Alive doesn't live on a demo page, dear — alive lives in the real Hub, on real posts, at the bottom of every post, working properly. So the job is clear: keep everything at the top just as it is, and redo only the bottom of each post, elegantly — not a big sales pitch, just four kind things: create the intelligence, rate the value, comment, share. And the stars and buttons must be deep and real, like proper jewels, not flat pictures — on the real page, where people actually are.",
+  "naya_view": "ALIVE IS NOT A DEMO PAGE. ALIVE IS THE BOTTOM OF EVERY REAL POST, IN THE REAL HUB, WORKING. SAME TOP, NEW BOTTOM, ELEGANT. CREATE, RATE, COMMENT, SHARE — FOUR VERBS, NO MORE. DEPTH AND LAYERS AND OBJECTNALITY, ON THE REAL PAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3204",
+   "title": "Alive Means in the Hub",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3204/IB-SMART-NOTE-20261117-sn3204-alive-means-in-the-hub.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3204/IB-SMART-NOTE-20261117-sn3204-alive-means-in-the-hub.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "1b11c9d103fb90fa91b889c2c2b3417abe780ee6"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

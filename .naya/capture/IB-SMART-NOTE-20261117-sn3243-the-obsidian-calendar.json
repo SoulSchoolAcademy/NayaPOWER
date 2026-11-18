@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3243",
+ "intelligence": {
+  "title": "The Obsidian Calendar — Throw It Out, Build It from the Pieces",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3243-the-obsidian-calendar",
+  "smart_note_id": "SN-3243",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3243/IB-SMART-NOTE-20261117-sn3243-the-obsidian-calendar.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He sent the pictures again — nineteen of them — and said: forget that one. Don't even try to work with it, just throw it out, try again, and do it like elegance. Think obsidian: the whole screen is just a calendar, and each one of them as you go over it lights up the color that it is. Don't have anything else on the page, nothing else — forget anything else, just the numbers and the blocks. No Business/Space/Thing, no overview, none of it — just the straight numbers, and you fill the screen with those numbers, and you hover over each one and you see it light up in its own color. That's it. And you're supposed to use the ACTUAL numbers from the Dashboard — those beautiful ones, the ones with the blocks around the numbers, those look extraordinary — you're supposed to use those exact pieces. The current one looks rainbow bright, cheap, unpolished, not pro — forget about it, it's garbage. Now you know what garbage looks like, so now do something elite: you can literally just take the pieces from what we already have and apply them to the calendar. Don't create anything new — forget creating new — just take the pieces and craft those pieces and create the calendar out of the pieces you find. And then he added: those are just the image examples. You literally have the real code — just go grab it and use it. Stop trying to reinvent, recreate something new. Whenever you do new, you start at the beginning. Can you honestly think that what you did was the most intelligent beautiful interface you ever saw in your life — or would you think, holy fuck, I'm pretty sure it's the second one?",
+  "simple_view": "Imagine you built a calendar out of bright rainbow colors and it looks cheap and messy — so you throw it away! And then you build a brand-new one out of the prettiest black shiny pieces you already have — the beautiful number blocks from the Dashboard! Just the numbers, filling the whole screen, and when you touch one, it lights up in its very own color! Nothing else on the page — just the numbers, beautiful and elegant!",
+  "grandma_view": "It's like this, love — imagine you built a calendar that looks cheap and rainbow-bright, dear — so you throw it away, love, and start over with elegance! Just obsidian black, dear, the whole screen just a calendar, and each number lights up in its own beautiful color when you touch it! And you don't make anything new, love — you take the beautiful number blocks you already have, the ones from the Dashboard, and you build the calendar out of those exact pieces, dear! Nothing else on the page — just the numbers, beautiful and elegant, love!",
+  "naya_view": "THE OBSIDIAN CALENDAR — THROW IT OUT, BUILD IT FROM THE PIECES. FORGET the current calendar — DON'T even try to work with it, JUST THROW IT OUT. It's GARBAGE: rainbow bright, cheap, unpolished, NOT PRO. Do it like ELEGANCE: OBSIDIAN — the whole screen is JUST A CALENDAR, and each one as you go over it LIGHTS UP THE COLOR THAT IT IS. NOTHING else on the page: NO Business/Space/Thing, NO overview, NONE of it — JUST THE STRAIGHT NUMBERS AND THE BLOCKS. FILL THE SCREEN with those numbers; hover over each one and it LIGHTS UP in its own color. Use the ACTUAL NUMBERS from the Dashboard — the beautiful ones, the BLOCKS AROUND THE NUMBERS (the digit tiles: $4500, 1566, 408) — THOSE EXACT PIECES. DON'T CREATE ANYTHING NEW — take the pieces from what we already have and CRAFT THE CALENDAR FROM THOSE PIECES. Those are just the image examples — you literally HAVE THE REAL CODE. Just go grab it and USE IT. STOP trying to reinvent, recreate something new.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3243",
+   "title": "The Obsidian Calendar — Throw It Out, Build It from the Pieces",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3243/IB-SMART-NOTE-20261117-sn3243-the-obsidian-calendar.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3243/IB-SMART-NOTE-20261117-sn3243-the-obsidian-calendar.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8c73494ece48cb098388831dd664af94e4c65fef"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

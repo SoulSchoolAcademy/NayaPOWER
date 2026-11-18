@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3232",
+ "intelligence": {
+  "title": "The Two Choices — Listen and Read, or a Visual Slideshow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3232-the-two-choices",
+  "smart_note_id": "SN-3232",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3232/IB-SMART-NOTE-20261117-sn3232-the-two-choices.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He was talking about the part where they're going to read it — the reward, if they read it. There are two choices. Listen and read — a visual voice-and-read unfold: the play button speaks it, the boards show it, unfolding down. Or a visual slideshow: the same thing, sliding sideways, one screen at a time. Those are two choices, pretty much, and they're both great. People appreciate both of them, and they can try either one. And the reason to offer both is not indecision — it makes it unique, it makes it beautiful, and it shows off right away at the beginning some of the incredible features of the app. So they're like, already — oh man, this is sick. That's what they should be thinking. It's awesome. The two choices are the demonstration: before they have read a word of the agreement, they have already seen the app do two incredible things — speak and show, unfold and slide. The choice is the showcase. And the reward is the reading itself: the agreement, read in the way they chose, in the voice they chose. A page that offers one way to read is a document. A page that offers two ways, both great, is an experience — and the experience is the product.",
+  "simple_view": "Imagine you get to a story and someone says: \"You can LISTEN to it while you watch it open up like a magic scroll — OR you can watch it like a picture show, sliding sideways!\" Two wonderful choices — and they're BOTH great! You can try either one! And right away, in the very first seconds, you see how amazing the app is — and you think, \"WOW, this is SO cool!\"",
+  "grandma_view": "It's like this, love — imagine you come to a story, dear, and someone says: \"You can listen to it while you watch it open like a magic scroll — OR you can watch it like a picture show, sliding sideways!\" Two wonderful choices, love — and they're both great! You can try either one, dear! And right away, in the very first seconds, you see how amazing it is — and you think, \"Oh my, this is wonderful!\"",
+  "naya_view": "TWO CHOICES, BOTH GREAT: (1) LISTEN AND READ — a visual voice-and-read UNFOLD (the play button speaks it, the boards show it, unfolding down); (2) a VISUAL SLIDESHOW (the same content, sliding sideways, one screen at a time). Both offered, both tryable — people appreciate both and can try either one. It makes the page UNIQUE and BEAUTIFUL, and it shows off the app's incredible features RIGHT AWAY AT THE BEGINNING — so they are already thinking \"oh man, this is sick\" — AWESOME. This is the entrance bridge's two views (visual + text), named as the reader's two choices. The choice IS the showcase: before they read a word, they have seen the app speak and show, unfold and slide. The reward is the reading itself, in the way they chose.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3232",
+   "title": "The Two Choices — Listen and Read, or a Visual Slideshow",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3232/IB-SMART-NOTE-20261117-sn3232-the-two-choices.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3232/IB-SMART-NOTE-20261117-sn3232-the-two-choices.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c58f3a445314774b90bb649e70fcd3e9b281b465"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

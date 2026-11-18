@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3107",
+ "intelligence": {
+  "title": "The Hz Diamond — A Real Spinning Jewel, Never Flat",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3107-the-hz-diamond",
+  "smart_note_id": "SN-3107",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3107/IB-SMART-NOTE-20261117-sn3107-the-hz-diamond.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The diamond is the smallest thing on the calendar — a mark next to a day's hertz — and he stopped the whole v14 round for it. Because a flat diamond is a mark, and a mark is not an object. He wants it to spin, slowly and elegantly, like a real diamond turning in the light; to change color with each day, because each day has its own frequency and its own color in the spectrum flow; to radiate light according to the day, because the frequency is light and the jewel is the frequency made visible. \"A beautiful frequency of light,\" he said — \"magical,\" \"like a real diamond, like a real jewel or jewelry.\" That is the Real Object Law applied to the tiniest element on the page, and it is the proof of the law: if the tiniest element has to be a real object, everything does. The 12-second floor on the spin is the same lesson as the orbs — alive is high-tech-computer alive, slow and elegant, never video-game fast. Folded into the running v14 build as the 16:23Z amendment; the diamond itself is not yet proven on the page at filing — the coordinator's handoff reporting it applied is still owed.",
+  "simple_view": "Imagine a tiny diamond next to each day that spins slowly like a real jewel — a magical piece of jewelry that changes color every day and sparkles with light, just like the day it belongs to! It's not a flat picture — it's a real spinning gem!",
+  "grandma_view": "It's like this, love — imagine a tiny diamond next to each day that spins slowly like a real jewel, dear — a magical piece of jewelry that changes color every day and sparkles with light, just like the day it belongs to, love! It's not a flat picture — it's a real spinning gem, dear!",
+  "naya_view": "THE DIAMOND CARRYING EACH DAY'S FREQUENCY IS A REAL OBJECT, NEVER A FLAT MARK: A BEAUTIFUL SPINNING JEWEL, A FREQUENCY OF LIGHT, MAGICAL, LIKE A REAL DIAMOND, LIKE JEWELRY — IT CHANGES COLOR EACH DAY (THE DAY'S COLOR IN THE SPECTRUM FLOW) AND RADIATES LIGHT ACCORDING TO THE DAY. SLOW ELEGANT SPIN (NEVER FASTER THAN 12S). DEPTH, LIGHT WITH VOLUME, THE DAY'S DEEP COLOR AS RIM + GLOW — THE FREQUENCY MADE VISIBLE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3107",
+   "title": "The Hz Diamond — A Real Spinning Jewel, Never Flat",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3107/IB-SMART-NOTE-20261117-sn3107-the-hz-diamond.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3107/IB-SMART-NOTE-20261117-sn3107-the-hz-diamond.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "08daaff3397f9a1e2cd7ff9ab6caa73980e00d70"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

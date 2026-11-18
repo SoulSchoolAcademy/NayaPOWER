@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3264",
+ "intelligence": {
+  "title": "No Huge Today — No Glow Over The Day",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3264-no-huge-today",
+  "smart_note_id": "SN-3264",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3264/IB-SMART-NOTE-20261117-sn3264-no-huge-today.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: so you don't need to put the huge today. He doesn't want it to light up — glowing over the day itself. Seven minutes after \"the 16th should light up more, like way more,\" he looked at the month view and took it back: no huge TODAY pill, no glow over the day itself, no cell filled with the day's color. Today is known from the weekday plaque and the header TODAY button — not from lighting the cell.",
+  "simple_view": "Imagine someone painted a GIANT glowing circle around today on the calendar — so big and bright you can't see anything else! That's too much! We don't need a huge glowing TODAY — we just need to know what day it is. The weekday name at the top and the little TODAY button tell us — nice and calm, no giant glow needed!",
+  "grandma_view": "It's like this, love — imagine someone painted a GIANT glowing circle around today on the calendar, dear — so big and bright you can't see anything else, love! That's too much, dear! We don't need a huge glowing TODAY, love — we just need to know what day it is, dear. The weekday name at the top, love, and the little TODAY button tell us, dear — nice and calm, love, no giant glow needed!",
+  "naya_view": "NO HUGE TODAY — NO GLOW OVER THE DAY. REVISES 03:47Z: NO HUGE TODAY PILL, NO GLOW OVER THE DAY ITSELF, NO CELL FILLED WITH COLOR. TODAY READS FROM THE WEEKDAY PLAQUE AND THE HEADER TODAY BUTTON, NOT FROM LIGHTING THE CELL.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3264",
+   "title": "No Huge Today — No Glow Over The Day",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3264/IB-SMART-NOTE-20261117-sn3264-no-huge-today.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3264/IB-SMART-NOTE-20261117-sn3264-no-huge-today.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "68af545f0d8c304b7cd4a9550526f9f0d37482a3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

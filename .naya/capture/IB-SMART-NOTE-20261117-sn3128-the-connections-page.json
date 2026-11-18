@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3128",
+ "intelligence": {
+  "title": "The Connections Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3128-the-connections-page",
+  "smart_note_id": "SN-3128",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3128/IB-SMART-NOTE-20261117-sn3128-the-connections-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He opened the page and did not know what it was — that is the verdict before any detail. A page whose purpose a stranger cannot read at a glance is not a page yet. The purpose is one sentence: a directory to find all your contacts quickly, and from any contact reach them — notes, message, mail, call, Smart Meet. Everything on the page serves that sentence or it goes: the pills are categories, so they sit in the center where categories belong; the search bar blocks the actual space, so it comes out; the add-field row and the bottom strip are mistakes, so they come out; the initials are good, so they stay. And the organizing is the feature the page exists to grow into: click a contact, put them in a list, save the list by category, name the group — friends, business, a project — click the group and it pulls up that list. That is auto-organize as a verb, not a label. And the standing charge rides with it: scorecard every page — why not 10, what makes it 10x better, 10 things needed.",
+  "simple_view": "The Connections page is a big address book! You find your friends super fast, tap one, and you can write them a note, send them a message, mail them, or video-call them! The five little buttons go in the middle because they are the groups. The search box was in the way, so it goes away. And you can put your friends into groups you name yourself — friends, business, a project — and tap the group to see everybody in it!",
+  "grandma_view": "The Connections page is your address book, love — you find your people fast, tap one, and you can write them a note, message them, mail them, or video-call them, dear. The five little buttons sit in the middle because they are the groups. The search box was blocking the space, so it comes out. And you can sort your people into groups you name yourself — friends, business, a project — and tap the group to see everybody in it. Just the contacts below, nice and clear.",
+  "naya_view": "THE CONNECTIONS PAGE IS A DIRECTORY TO FIND ALL YOUR CONTACTS QUICKLY. THE FIVE PILLS COME OFF THE TOP AND GO IN THE CENTER — THEY ARE CATEGORIES FOR THIS APP. THE SEARCH BAR COMES OUT — IT IS BLOCKING THE ACTUAL SPACE. THE ADD-FIELD ROW IS A MISTAKE — REMOVE IT. THE CONTACTS WITH INITIALS ARE GOOD — KEEP THEM. AUTO-ORGANIZE: CLICK A CONTACT, PUT THEM INTO A LIST, SAVE THE LIST BY CATEGORY — NAME THE GROUP, CLICK THE GROUP AND IT PULLS UP THAT LIST. THE BOTTOM STRIP IS A MISTAKE — REMOVE IT. CLICK ONE → NOTES, MESSAGE, MAIL, INSTANT MESSAGE, VIDEO/AUDIO CALL, SCHEDULE A SMART MEET. SCORECARD EVERY PAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3128",
+   "title": "The Connections Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3128/IB-SMART-NOTE-20261117-sn3128-the-connections-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3128/IB-SMART-NOTE-20261117-sn3128-the-connections-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "969a63094c4af5a1550a5d5f63bbb45f3774709b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

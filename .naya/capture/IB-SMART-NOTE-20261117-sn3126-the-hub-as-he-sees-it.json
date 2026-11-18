@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3126",
+ "intelligence": {
+  "title": "The Hub As He Sees It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3126-the-hub-as-he-sees-it",
+  "smart_note_id": "SN-3126",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3126/IB-SMART-NOTE-20261117-sn3126-the-hub-as-he-sees-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "His eye is the final gate, and this is his eye reading the Hub as a reader. The page is better — the buttons look great, the thing looks good — and these notes are what make it right. A control that sits on the wrong side of the thing it opens. A glow that floods the middle instead of lighting the edge. A caption line that explains what the tabs already say. A greeting that forgets whose morning it is. Two items sharing one icon, two sharing one color, two sharing a color side by side so the eye reads disorganization. None of these is a feature. All of them are the difference between a page that looks good and a page that reads right. The rule underneath them all is the one he states plainly: doubled-up colors close together throw his perspective off — \"why is this all disorganized?\" — and a page that throws his perspective off is not 10-star service, however good its buttons look.",
+  "simple_view": "Shawn looked at the Hub and said: good job, it looks a lot better! And then he fixed the little things — the button that opens the side goes right next to the thing it opens, the glow goes only around the edges like a pretty frame, every button gets its very own picture and its very own color, and it says \"Good morning, Shawn\" with his name in it!",
+  "grandma_view": "Shawn looked at the Hub, love, and said it looks a lot better — good job! Then he tidied the little things: the little button that opens the side sits right next to the thing it opens, the glow goes just around the edges like a pretty frame and never all over the middle, every item gets its very own picture and its very own color, and it says \"Good morning, Shawn\" with his name in it, dear. The wisdom of the day stays — just with fewer words.",
+  "naya_view": "THE SIDEBAR CONTROL SITS IMMEDIATELY LEFT OF \"LIFE WITH NAYA\" — IT PULLS UP THE RIGHT SIDEBAR. HOVER GLOW: EDGES ONLY, NEVER THE WHOLE BOARD, NEVER THE MIDDLE. THE TAB-CAPTION LINE IS REMOVED. THE GREETING IS PERSONAL — \"GOOD MORNING, SHAWN.\" EVERY SIDEBAR ITEM GETS ITS OWN ICON AND ITS OWN COLOR, IN FLOW ORDER, NEVER ADJACENT DUPLICATES. \"WHAT'S IN IT FOR YOU\" ≠ \"HOW IT APPLIES\". HUMAN / CHILD / GRANDMA EACH THEIR OWN COLOR AND GLYPH. SETTINGS GOES UNDERNEATH PRICING. WISDOM OF THE DAY STAYS. THE PUBLIC-FEED PILL STAYS. OVERALL GOOD JOB — IT DOES LOOK A LOT BETTER.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3126",
+   "title": "The Hub As He Sees It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3126/IB-SMART-NOTE-20261117-sn3126-the-hub-as-he-sees-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3126/IB-SMART-NOTE-20261117-sn3126-the-hub-as-he-sees-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "40f848874332ee008cbbc88f89d11ddac32e7112"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

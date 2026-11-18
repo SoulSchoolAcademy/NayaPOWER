@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3249",
+ "intelligence": {
+  "title": "The Day Menu — Jewel Day Icon, White Name, No Gray, Doors Use the Space, Spectrum Flow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3249-the-day-menu-jewel-icon",
+  "smart_note_id": "SN-3249",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3249/IB-SMART-NOTE-20261117-sn3249-the-day-menu-jewel-icon.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He looked at the day menu and said: maybe we can have some kind of beautiful icon — like an icon for Monday, Monday is 417 Hertz, a beautiful something, a beautiful icon for the Monday. But even with that, the gray text doesn't look good — there's too many different colors, so it clashes. If anything, maybe make the inside of Monday white and the outside glow orange — that might have been better — and no gray text underneath, and an icon that has some kind of orange in it, maybe that looks like a jewel. But he's not even sure about this whole presentation — he had a picture different in his head. I think we could do something better than just an icon with a text and the whole bar is now black space. Can we do something extraordinary? If we have that much space, you might as well do something awesome — utilize it. Why just do a big button like that? I guess it's okay — but look at the news: different news green together is not like that, it shouldn't be like that, the color is off, you broke the flow on that. And it's not 10 out of 10 — I think you can do a lot better.",
+  "simple_view": "Imagine the top of the day menu has a beautiful shiny jewel for the day — Monday's jewel is orange because Monday is 417! And the word \"Monday\" is white inside, with orange glowing around the outside — and NO gray words underneath, because gray looks yucky next to all the pretty colors! And the doors aren't big empty black bars — each door is like a little window that shows you a peek of what's inside! And the colors go in a rainbow line, one after another — never two greens next to each other!",
+  "grandma_view": "It's like this, love — imagine the top of the day menu, dear, has a beautiful shiny jewel for the day — Monday's jewel is orange, love, because Monday is 417! And the word \"Monday\" is white inside, dear, with orange glowing around the outside — and NO gray words underneath, love, because gray looks yucky next to all the pretty colors! And the doors aren't big empty black bars, dear — each door is like a little window that shows you a peek of what's inside! And the colors go in a rainbow line, love, one after another — never two greens next to each other, dear!",
+  "naya_view": "THE DAY MENU — JEWEL DAY ICON, WHITE NAME, NO GRAY, DOORS USE THE SPACE, SPECTRUM FLOW. THE DAY HEADER CARRIES A BEAUTIFUL JEWEL ICON FOR THE DAY — MONDAY IS 417 HZ, ORANGE IN IT. THE DAY NAME IS WHITE INSIDE WITH THE DAY'S COLOR GLOWING OUTSIDE IT; NO GRAY TEXT UNDERNEATH — TOO MANY COLORS CLASH. THE 13 DOORS ARE NOT BIG EMPTY BLACK BARS WITH AN ICON + TEXT — USE THE SPACE EXTRAORDINARILY: EACH DOOR IS A REAL OBJECT THAT CARRIES A LIVE GLIMPSE OF WHAT'S INSIDE IT — THE NEXT APPOINTMENT, THE TOP HEADLINE, THE COUNT — SO THE BAR IS A WINDOW INTO THE DAY, NOT BLANK BLACK SPACE. THE DOOR COLORS FOLLOW THE SPECTRUM FLOW IN ORDER — NEVER THE SAME COLOR TWICE IN A ROW. LOCAL NEWS AND PROVINCIAL NEWS BOTH GREEN BROKE THE FLOW. IT'S NOT 10 OUT OF 10 — YOU CAN DO A LOT BETTER.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3249",
+   "title": "The Day Menu — Jewel Day Icon, White Name, No Gray, Doors Use the Space, Spectrum Flow",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3249/IB-SMART-NOTE-20261117-sn3249-the-day-menu-jewel-icon.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3249/IB-SMART-NOTE-20261117-sn3249-the-day-menu-jewel-icon.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a51cfb2a0efb69d6fa6996488232aa4a307d219c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

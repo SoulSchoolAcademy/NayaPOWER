@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3136",
+ "intelligence": {
+  "title": "The Smart Note Format — The Official Language",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3136-the-smart-note-format",
+  "smart_note_id": "SN-3136",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3136/IB-SMART-NOTE-20261117-sn3136-the-smart-note-format.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Until now every Smart Note carried the same seven sections by habit, and the habit was never the law — it was just the shape we used. He has now made it law, and the law is simpler than the habit: the nutshell is the headline, lit up with light, and it IS the human note — so the human note is cut, because the same thing was being said twice. The child and the grandma stay, because they are the two ways the knowledge reaches anyone. The Naya section goes from the front — the network does not show it — and the machine note takes its place on the back end, where it does the SEO, so every smart note is found. Then What It Means, because a note that does not say what is in it for you is a note nobody uses. And the color flow is not decoration: silver, magenta, purple, indigo, cyan, emerald, gold, orange, red, back to magenta — each section themed different on the outside, so the eye rests between sections and the text can be taken in. That is why the boards work: the format does the work of reading. And the unfold is a thing — the format fits the page it is on, three fit, three, click next; two fit, two — so the same note reads beautifully anywhere it lands.",
+  "simple_view": "Now every smart note looks the same — in a good way! First comes the nutshell, all lit up and shiny like silver! Then the child note, then the grandma note! And each part is a different beautiful color, so your eyes can rest and read it easily! And if you add a picture, it sits right at the bottom, big and wide, or at the top if you want — or both! And you can save it and share it with your friends!",
+  "grandma_view": "Now every smart note looks the same, love — in a good way! First comes the nutshell, dear, all lit up and shiny like silver! Then the child note, then the grandma note! And each part is a different beautiful color, so your eyes can rest and read it easily! And if you add a picture, it sits right at the bottom, big and wide, or at the top if you want — or both! And you can save it and share it with your friends!",
+  "naya_view": "EVERY SMART NOTE OUTPUTS IN THE SAME FORMAT: BLOCK 1 IS THE NUTSHELL — THE HEADLINE, LIT UP WITH LIGHT. THEN THE CHILD NOTE, THEN THE GRANDMA NOTE. THE NUTSHELL IS THE HUMAN NOTE, SO THE HUMAN NOTE IS CUT; THERE IS NO NAYA NOTE SECTION IN THE NETWORK. ON THE BACK END, THE MACHINE NOTE DOES THE SEO — EVERY SMART NOTE IS SEARCH-ENGINE-OPTIMIZED. THEN WHAT IT MEANS — WHAT'S IN IT FOR YOU, HOW IT APPLIES, HOW IT CONNECTS. THE COLOR FLOW: SILVER → MAGENTA → PURPLE → INDIGO → CYAN → EMERALD GREEN → GOLD → ORANGE → RED → BACK TO MAGENTA. NAYA NOTES ARE THE WAY NAYA WRITES. IN FEEDS AND PAGES, THE UNFOLD + THE AUTO-FORMATTING OF INTELLIGENT COMMUNICATION. THIS IS THE OFFICIAL LANGUAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3136",
+   "title": "The Smart Note Format — The Official Language",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3136/IB-SMART-NOTE-20261117-sn3136-the-smart-note-format.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3136/IB-SMART-NOTE-20261117-sn3136-the-smart-note-format.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0f8d456811fdab4cbfe3aaea2630bf99f447936b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

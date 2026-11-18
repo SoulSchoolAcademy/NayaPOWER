@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3266",
+ "intelligence": {
+  "title": "Numbers Way Too Big + Common Language Throughout",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3266-numbers-way-too-big-common-language",
+  "smart_note_id": "SN-3266",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3266/IB-SMART-NOTE-20261117-sn3266-numbers-way-too-big-common-language.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: now the numbers are way too big. You know to make them small. And then you should have the common language speaking throughout. Like, use the high-quality stuff that I just shared with you — even those numbers are good — but you didn't follow that along, you didn't put that quality into the buttons or the labels, right, of the days. Two charges: the tiles stay, because they're good — but small, never dominating the cell; and the quality he just shared — the PTS / % / MONEY button quality — goes into the buttons AND the weekday labels. The one common language speaking throughout the whole page.",
+  "simple_view": "Imagine the numbers on the calendar are SO big they take over the whole little box — like a giant wearing tiny shoes! That's too much! The numbers are good — we love them — but they have to be SMALL, so they fit nicely in their box! And the magic button quality — clean, bright, premium — has to go EVERYWHERE: on the buttons AND on the names of the days! One beautiful language, speaking all through the whole page!",
+  "grandma_view": "It's like this, love — imagine the numbers on the calendar are SO big, dear, they take over the whole little box, love — like a giant wearing tiny shoes, dear! That's too much, love! The numbers are good, dear — we love them — but they have to be SMALL, love, so they fit nicely in their box, dear! And the magic button quality, love — clean, bright, premium, dear — has to go EVERYWHERE, love: on the buttons AND on the names of the days, dear! One beautiful language, love, speaking all through the whole page!",
+  "naya_view": "NUMBERS WAY TOO BIG + COMMON LANGUAGE THROUGHOUT. THE DASHBOARD DIGIT TILES STAY — THEY'RE GOOD — BUT SMALL IN THE MONTH CELLS, NEVER DOMINATING THE CELL. AND THE PTS / % / MONEY QUALITY GOES INTO THE BUTTONS AND THE WEEKDAY LABELS — THE ONE COMMON LANGUAGE SPEAKING THROUGHOUT THE WHOLE PAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3266",
+   "title": "Numbers Way Too Big + Common Language Throughout",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3266/IB-SMART-NOTE-20261117-sn3266-numbers-way-too-big-common-language.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3266/IB-SMART-NOTE-20261117-sn3266-numbers-way-too-big-common-language.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "88059d5b1bcb692f37c8fa8ebed403a8150a6144"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

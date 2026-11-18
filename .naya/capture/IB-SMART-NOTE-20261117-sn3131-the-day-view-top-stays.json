@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3131",
+ "intelligence": {
+  "title": "The Day View — Top Stays, Rest Goes",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3131-the-day-view-top-stays",
+  "smart_note_id": "SN-3131",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3131/IB-SMART-NOTE-20261117-sn3131-the-day-view-top-stays.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The top of the day view is right — he said so, item by item: the frequency jewel, the name, the day, the time, the eye that takes you back to the month. All great. What failed is everything underneath: boxes with text, then buttons, all disorganized — an organization system that does not look organized, and none of it useful. Even the wisdom board, which is not so bad, was wrecked by one line written underneath it. The lesson is the cut: keep what he liked, exactly as it is, and throw the rest away — do not tidy the pile, rebuild it as categories, laid out beautifully, the extraordinary version. That is the bar he set with \"this is wow missed!!!\" — the wow was the miss, and the rebuild is where it lands.",
+  "simple_view": "The top of your day is beautiful — the shiny 528, your name, today, the time, and the little eye that takes you back to the month! But everything underneath was just a messy pile of buttons, all jumbled up! So we keep the beautiful top, exactly as it is, and throw the messy pile away — and build it again, neat and tidy, in little groups, so it looks extraordinary!",
+  "grandma_view": "The top of your day, love, is beautiful — the 528, your name, the day, the time, and the little eye back to the month. But everything underneath was just a messy pile of buttons, dear, all jumbled up and not useful at all. So we keep the beautiful top exactly as it is, and throw the messy pile away — and build it again, neat and tidy, in little groups, so it looks extraordinary.",
+  "naya_view": "THE TOP STAYS — THE 528 HZ JEWEL, THE NAME, THE DAY, THE TIME 2026, THE EYE BACK TO MONTH, THE WISDOM QUOTE BOARD ALONE. THE STORE LINE UNDER THE QUOTE GOES — IT WRECKED THE BOARD. EVERYTHING BELOW THE WISDOM BOARD GOES — THROWN AWAY, STARTED AGAIN, EXTRAORDINARY IN PRESENTATION, ORGANIZED IN CATEGORIES, LAID OUT BEAUTIFULLY. BUTTONS + ICONS + BLANK SPACE IS NOT PRO. THIS IS WOW MISSED — THE REBUILD IS WHERE THE WOW LANDS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3131",
+   "title": "The Day View — Top Stays, Rest Goes",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3131/IB-SMART-NOTE-20261117-sn3131-the-day-view-top-stays.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3131/IB-SMART-NOTE-20261117-sn3131-the-day-view-top-stays.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ce65178582611c5f6f0caf12960b2166a85b42bb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

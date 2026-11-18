@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3145",
+ "intelligence": {
+  "title": "The Morning Orbit Icons Are the Standard",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3145-morning-orbit-icons",
+  "smart_note_id": "SN-3145",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3145/IB-SMART-NOTE-20261117-sn3145-morning-orbit-icons.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The icons are the most-touched thing on every page, and his eye kept coming back to them all day. The morning's orbit was the first treatment he called beautiful, and now he has named it the standard by pointing at it twice. Clear, prominent, easy to understand: those are the three tests, and the circle flowing around the icon is what passes them — the icon looks like it is moving, alive, without shouting. A standard named by his eye ends the day's churn over which icons: every seat builds to these, everywhere the flow belongs, and nothing else is offered as the alternative.",
+  "simple_view": "The icons with the little circle going round them — like they're moving! — those are the ones. They're clear and pretty and easy to understand. Those are our icons now.",
+  "grandma_view": "The icons with the little circle going round them, dear — like they're moving! — those are the ones. They're clear and pretty and easy to understand. Those are our icons now.",
+  "naya_view": "THE MORNING ORBIT ICONS ARE THE STANDARD: THE SLOW CIRCLE FLOWING AROUND THE ICON, CLEAR, PROMINENT, EASY TO UNDERSTAND — EVERYWHERE THE FLOW BELONGS, ON EVERY PAGE, BYTE-IDENTICAL. HIS EYE NAMED THEM; HIS EYE JUDGES THEM AFTER THEY LAND.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3145",
+   "title": "The Morning Orbit Icons Are the Standard",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3145/IB-SMART-NOTE-20261117-sn3145-morning-orbit-icons.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3145/IB-SMART-NOTE-20261117-sn3145-morning-orbit-icons.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "99628c982b93c2ced4ac50ab540e993424d9ec4c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

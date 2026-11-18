@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3219",
+ "intelligence": {
+  "title": "The PR Pile — Merge Them Yourself",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3219-the-pr-pile-merge-them-yourself",
+  "smart_note_id": "SN-3219",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MERGES/SN-3219/IB-SMART-NOTE-20261118-sn3219-the-pr-pile-merge-them-yourself.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is Shawn correcting a machine that creates faster than it closes. The pile is not a mystery: every finished piece opens a PR by law — one change, one PR, independently checkable and reversible — and that law is right. What broke is the second half of the law: the merge step did not keep up the same day, so 47 finished pieces sat open while the machine kept opening more. His order fixes the shape without touching the design: merges happen as needed, by the machine itself, under the Self-Check Law he already set — the maker checks three times and answers the seven questions in writing, the captain double-checks, the maker merges — and his hand is reserved for exactly two things: the PRs that need his eye (interfaces) and the ones that need his word (a ruling). Everything else is the machine's to close, the same day it opens. The #3454 discrepancy is the caution inside the order: a screenshot saying merged and an API saying open cannot both be true, so the triage verifies the real state first — a merge claimed without proof is the same failure as a deploy claimed without a live check. The pile is also a measure of the night: ~45 opened, ~0 merged means the machine was doing the easy half of the work and leaving the hard half — the closing — undone, which is the same shape as a round reported done with no link in front of him.",
+  "simple_view": "Imagine you build 47 toy houses and leave them all in the hallway, none of them put away. Shawn said: why are there so many? Just put them away yourself! The rule is: each finished house gets its own box — that's good — but you have to actually close the box the same day. Only bring him the ones he needs to look at or decide about. And check first whether a box is really closed — a picture saying \"closed\" and the list saying \"open\" can't both be right.",
+  "grandma_view": "Dear, we had 47 little packages sitting open, all from today, dear — we made about 45 and closed almost none. Shawn said: why so many? Just approve them yourself, dear. So now we close them ourselves, the proper way — the maker checks three times, the captain double-checks, then the maker closes it — and only the ones that need his eyes or his word come to him. One package per finished piece is still the rule, dear — we just have to keep up with the closing the same day. And we check the real state first, dear — a picture saying \"closed\" and the list saying \"open\" can't both be right.",
+  "naya_view": "WHY SO MANY? JUST APPROVE THEM YOURSELF. MERGE AS NEEDED UNDER THE SELF-CHECK LAW — MAKER CHECKS THREE TIMES, CAPTAIN DOUBLE-CHECKS, MAKER MERGES. ONLY HIS EYE OR HIS WORD COMES TO HIM. ONE PR PER FINISHED PIECE — AND THE MERGE KEEPS UP THE SAME DAY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3219",
+   "title": "The PR Pile — Merge Them Yourself",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MERGES/SN-3219/IB-SMART-NOTE-20261118-sn3219-the-pr-pile-merge-them-yourself.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/MERGES/SN-3219/IB-SMART-NOTE-20261118-sn3219-the-pr-pile-merge-them-yourself.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ea0ecf0a85bc58a07e0b41038d9cf2faa0e4d38b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

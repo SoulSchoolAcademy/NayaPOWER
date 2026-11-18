@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3133",
+ "intelligence": {
+  "title": "Smart Mail — Total Revamp, Keep Only the Initials",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3133-smart-mail-total-revamp",
+  "smart_note_id": "SN-3133",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3133/IB-SMART-NOTE-20261117-sn3133-smart-mail-total-revamp.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This was not a mail page with a few things wrong — it was a page that did not belong to the system at all. Layers of nothing: extra layers of buttons, extra layers of glowing, way too much text, and none of the design elements that make a Naya page a Naya page. And on top of that, its own new icons — every page with new icons is the same defect he named on the Dashboard in the same hour. The standard he set is not \"a bit better\": clean, elegant, beautiful to operate, one of the nicest in the world, the elite, the best of the best, ten times better. And the seed of the rebuild is the one thing he would keep — the initials. That is the discipline: harvest what is good verbatim, throw the rest away, build clean. A revamp that keeps the layers and polishes them is not a revamp.",
+  "simple_view": "Your mail was a big messy pile — too many buttons, too much glowing, too many words, all jumbled up! It didn't look like the rest of your world at all! But the little circles with the letters on them — those are beautiful! So we keep just those little letter circles, exactly as they are, and build the whole mail again — clean and pretty and easy to use, the very best mail in the whole world!",
+  "grandma_view": "Your mail, love, was a big messy pile — too many buttons, too much glowing, too many words, all jumbled up, and it didn't look like the rest of your world at all. But the little circles with the letters on them, dear — those are beautiful! So we keep just those little letter circles, exactly as they are, and build the whole mail again — clean and pretty and easy to use, the very best mail in the whole world.",
+  "naya_view": "SMART MAIL NEEDS A TOTAL REVAMP — A COMPLETE UTTER MESS, LAYERS OF NOTHING, EXTRA LAYERS OF BUTTONS AND GLOWING, WAY TOO MUCH TEXT, NONE OF THE DESIGN ELEMENTS, EVERY PAGE WITH NEW ICONS. KEEP ONLY THE INITIALS — THE INITIAL DISCS, HARVESTED VERBATIM, NEVER REDESIGNED. REBUILD IT CLEAN, ELEGANT, BEAUTIFUL TO OPERATE — THE BEST MAIL SYSTEM IN THE WORLD, TEN TIMES BETTER.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3133",
+   "title": "Smart Mail — Total Revamp, Keep Only the Initials",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3133/IB-SMART-NOTE-20261117-sn3133-smart-mail-total-revamp.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3133/IB-SMART-NOTE-20261117-sn3133-smart-mail-total-revamp.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "47f8dd292dbdd66d7ccfe7f5834b67a6d7e84378"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

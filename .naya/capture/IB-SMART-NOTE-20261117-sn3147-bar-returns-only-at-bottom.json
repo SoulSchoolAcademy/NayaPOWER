@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3147",
+ "intelligence": {
+  "title": "The Bar Returns Only at the Very Bottom",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3147-bar-returns-only-at-bottom",
+  "smart_note_id": "SN-3147",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3147/IB-SMART-NOTE-20261117-sn3147-bar-returns-only-at-bottom.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The 19:24Z rule was a guess at the timing — a second after scrolling stops — and it was wrong in a way that matters: a bar that pops back while you are still reading is a bar that interrupts you. His correction is cleaner and stricter: the bar is gone the moment you scroll down, and it comes back only when you have reached the very bottom — the one moment you are done reading and ready to go somewhere else. That is the fold doing its job: the interface hides while you are in the content and returns only when you are finished with it. And because it is the same on every page, the citizen learns it once and trusts it everywhere.",
+  "simple_view": "When you scroll down, the little bar at the bottom hides away — and it only comes back when you get all the way to the very bottom. Not before! That way it never gets in your way while you're reading.",
+  "grandma_view": "When you scroll down, dear, the little bar at the bottom hides away — and it only comes back when you get all the way to the very bottom. Not before! That way it never gets in your way while you're reading.",
+  "naya_view": "THE BAR FOLDS AWAY THE MOMENT YOU SCROLL DOWN, AND IT ONLY COMES BACK WHEN YOU REACH THE VERY BOTTOM — NOT WHEN YOU STOP SCROLLING. SAME ON EVERY PAGE, PERSONAL AND BUSINESS INCLUDED. CONFIRMED LAW, 20:50Z.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3147",
+   "title": "The Bar Returns Only at the Very Bottom",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3147/IB-SMART-NOTE-20261117-sn3147-bar-returns-only-at-bottom.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3147/IB-SMART-NOTE-20261117-sn3147-bar-returns-only-at-bottom.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "2c31de73ed13c03e822a1d05d30b66fa63eeab59"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

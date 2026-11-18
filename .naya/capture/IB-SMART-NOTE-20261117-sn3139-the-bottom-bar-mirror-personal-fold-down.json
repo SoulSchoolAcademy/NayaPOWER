@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3139",
+ "intelligence": {
+  "title": "The Bottom Bar — Mirror Personal, Fold Down, White in the Middle, Calendar for the Day",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3139-the-bottom-bar-mirror-personal-fold-down",
+  "smart_note_id": "SN-3139",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3139/IB-SMART-NOTE-20261117-sn3139-the-bottom-bar-mirror-personal-fold-down.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Four laws, one bar. First — one bar, everywhere: the plus on the right and left and the old icons are not a different bar, they are Personal's bar, mirrored — the same six tiles, same glyphs, same colors, same order, on every page. Second — it gets out of the way: when you scroll, it folds down, and he likes it that way — the page is for reading, the bar waits until you stop. Third — the light lives inside the icon: the notification lights up, but with white in the middle where the icon is, so it pops more — and it stays bright, it comes on bright like that, for each of them. One icon that lights up, never an icon beside its own light. Fourth — the bar is the door to the day: tap any tile and you go to the Calendar, actually inside, for that day — for each of these — and there you see your stats, and you see your notifications. The day is the unit, and the bottom bar is how you get there. Note honestly: the greeting-out round had already made the Dashboard bar byte-identical to Personal's, and the captain's eye confirmed the six tiles at 1920 — so the \"mirror Personal\" part may already be satisfied in the staged build. The new, unbuilt parts are the fold-down, the white-center notification, and the tap-to-Calendar-for-the-day. The loop records the teaching; the captain adjudicates what the staged bytes already satisfy.",
+  "simple_view": "The bar at the bottom — the buttons you tap all the time — should look exactly like the one on your Personal page, on every page! And when you scroll down, it folds away so you can read. And when you have a message, the little light on the button shines bright with white right in the middle, so it pops! And when you tap a button, it takes you right into your Calendar for today — and there you can see all your numbers and all your messages!",
+  "grandma_view": "The bar at the bottom, love — the buttons you tap all the time — should look exactly like the one on your Personal page, on every page! And when you scroll down, it folds away so you can read, dear. And when you have a message, the little light on the button shines bright with white right in the middle, so it pops! And when you tap a button, it takes you right into your Calendar for today — and there you can see all your numbers and all your messages!",
+  "naya_view": "THE BOTTOM BAR MIRRORS PERSONAL. IT FOLDS DOWN WHEN YOU SCROLL. THE NOTIFICATION LIGHTS UP WITH WHITE IN THE MIDDLE WHERE THE ICON IS — IT POPS MORE — AND IT STAYS BRIGHT. FOR EACH OF THEM. CLICK IT AND YOU GO TO THE CALENDAR, ACTUALLY INSIDE, FOR THAT DAY — FOR EACH OF THESE — AND THERE YOU SEE YOUR STATS, AND YOU SEE YOUR NOTIFICATIONS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3139",
+   "title": "The Bottom Bar — Mirror Personal, Fold Down, White in the Middle, Calendar for the Day",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3139/IB-SMART-NOTE-20261117-sn3139-the-bottom-bar-mirror-personal-fold-down.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3139/IB-SMART-NOTE-20261117-sn3139-the-bottom-bar-mirror-personal-fold-down.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a19412f3d2464a72464441806c15b2eb3132c033"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

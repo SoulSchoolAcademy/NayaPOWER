@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3267",
+ "intelligence": {
+  "title": "The Text Laws — White First, 25/19/17, Nothing Flat",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3267-the-text-laws",
+  "smart_note_id": "SN-3267",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3267/IB-SMART-NOTE-20261117-sn3267-the-text-laws.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He was looking at the day view and seeing the same failures for the third time in a day: gray wisdom, dead boards, a flat diamond, gray timeline times with a yellow dot, two purples together. And he said the thing that matters most — \"you guys always break the rules\" — not as a complaint but as the diagnosis: the rules were never locked in one place a designer reads first. So he locked them in, out loud, in one dictation: the color ranking, the sizes, the date, the jewel, the four blocks, the model. White is number one against obsidian because nothing reads better on black. Gray is flat and boring — \"who wants a gray day?\" — and it stays out. The sizes settled in the speaking itself — 24 floated, then 25; 18 floated, then 19 — and he closed it: \"headlines 25, sub-headlines 19, small text is 17, official.\" And the model for all of it is already on the page: the wisdom board, \"just because you can doesn't mean you should — ask first if it's right,\" looks amazing — \"why can't all the fonts look like that?\" That is the signature: every word on obsidian written the way the wisdom board is written. The scorecard he ordered in the same breath is how the law gets enforced — the day view scored 4/10 against it, and the rebuild is judged by it, not by whether the parts tick.",
+  "simple_view": "Imagine a page where every word is bright white on black, like stars in the night sky — so easy to read! The big words are BIG, the little words are little, and nothing is gray and sleepy. Every board lights up when you touch it, like magic, and the little dots are shiny jewels, not boring yellow spots. That's how Naya's pages should look — bright, alive, and beautiful!",
+  "grandma_view": "It's like this, love — imagine a page where every word is bright white on black, dear, so clear you can read it from across the room! The big words are big, the little words are little, and nothing is dull and gray, love. Every board lights up when you touch it, and the little dots are pretty jewels, dear. That's how Naya's pages should feel — bright, alive, and beautiful, love.",
+  "naya_view": "TEXT LAWS, OFFICIAL (2026-11-17 15:13Z): WISDOM WHITE, IN QUOTES. BOARDS ELEVATED, LIGHTING UP WHOLE, DYNAMIC, NUMBERS REAL. TEXT COLOR RANK — WHITE #1, THEN GOLD, PURPLE, GREEN, BLUE SOMETIMES; ALMOST NO GRAYS, ALMOST NO REDS, NO ORANGE, MOST PINKS OUT — TEXT, NOT BOARDS. DATE LINE = DATE ONLY, STRAIGHT WHITE WITH BLACK BORDER, DYNAMIC, PROMINENT, SHARP. NOTHING FLAT — NOT TEXT, NOT ICONS, NOT BOARDS; THE DIAMOND IS A REAL FACETED JEWEL. FOUR GLIMPSE BLOCKS BRIGHTER WHITE AT REST, FOUR DIFFERENT COLORS ON HOVER. SIGNATURE TEXT = THE WISDOM BOARD TREATMENT. TIMELINE TIMES DYNAMIC AND WHITE; BULLET POINTS ARE JEWELS, NEVER A YELLOW DOT; EVERY BOARD HAS A BEAUTIFUL ICON. TYPE SCALE OFFICIAL: HEADLINES 25, SUB-HEADLINES 19, SMALL TEXT 17, ALL THE WAY THROUGH. NEVER TWO PURPLES TOGETHER. DAY-MENU COUNT 13 STANDS (15/16 WAS A MUSING). SCORECARD: WHY NOT A 10 / 10X BETTER / 10 MISSING / 10 WORLD-CLASS / 10 UX-10X / 10 VISUAL AWE-INSPIRING.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3267",
+   "title": "The Text Laws — White First, 25/19/17, Nothing Flat",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3267/IB-SMART-NOTE-20261117-sn3267-the-text-laws.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3267/IB-SMART-NOTE-20261117-sn3267-the-text-laws.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "71e64ccb929ab89934c5bbf460e6643a5e3b569f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

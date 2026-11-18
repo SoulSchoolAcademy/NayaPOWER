@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3163",
+ "intelligence": {
+  "title": "The Main URL Law — Done Means Live, Like Auto-Save",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3163-the-main-url-law",
+  "smart_note_id": "SN-3163",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3163/IB-SMART-NOTE-20261117-sn3163-the-main-url-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He asked the question that answers itself: \"where are they all?\" — and the answer was that nobody knew, because finished work was scattered across practice URLs nobody tracks. A practice URL is a check, not a home: the moment a thing is done it has to live where he looks, the main URL, the way auto-save means the file is saved without a second thought. The inventory is the catch-up for the scattering — 48 URLs, listed once, so he can point at the newest — and the law is the prevention: from here, done means in the system and live on the main URL, and nothing finished sits on a practice URL. The agreement update is the first test of it: legal pages, new unfold, optimized text — on the main URL, not another practice URL.",
+  "simple_view": "Imagine you finish your homework but leave it on a different desk every day — then nobody can find it! From now on, finished homework always goes in the same place, the main desk, so it's always there when you need it. And we made a list of all the desks, so we know which one is the newest.",
+  "grandma_view": "Dear, when the work is done it should be live on the main page, always there, like auto-save — not scattered across practice links nobody can keep track of. We made one list of all the practice links so he can tell us which is newest, and from now on finished work lives on the main URL.",
+  "naya_view": "THE MAIN URL LAW: DONE MEANS LIVE, LIKE AUTO-SAVE. WHEN WORK IS DONE, IT GOES IN THE SYSTEM AND IT GOES LIVE ON THE MAIN URL — ALWAYS LIVE, ALWAYS THERE, ALWAYS HAVE IT. PRACTICE URLS ARE FOR CHECKING BEFORE A THING IS DONE, NEVER FOR KEEPING THE FINISHED THING. NOTHING FINISHED SITS ON A PRACTICE URL. THE VAULT IS THE RECORD OF WHAT IS LIVE, WHAT IS NEWEST, WHAT IS RIGHT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3163",
+   "title": "The Main URL Law — Done Means Live, Like Auto-Save",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3163/IB-SMART-NOTE-20261117-sn3163-the-main-url-law.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3163/IB-SMART-NOTE-20261117-sn3163-the-main-url-law.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "9e606fe6dfc37b96f431619eefee5a273b99bfd4"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

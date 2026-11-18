@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3272",
+ "intelligence": {
+  "title": "The One Law, the One Atom, the Everyday World",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3272-the-one-law-the-one-atom-the-everyday-world",
+  "smart_note_id": "SN-3272",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3272/IB-SMART-NOTE-20261118-sn3272-the-one-law-the-one-atom-the-everyday-world.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a house built by one carpenter who uses the same perfect brick for every wall, and whose every room is painted in the color of the day it belongs to. That is the day view: the same living brick — the Dashboard digit tile — harvested whole into the clock, the numbers, the weekday objects, so every page speaks the same language and feels alive in the same way. The color is never decoration pasted on top: the day's frequency IS its color, the hour's color circulates with the time, and the geometry follows the same numbers. Discernment is the carpenter's eye — he shows you a beautiful door and you don't nail that door into the wrong wall; you take what makes it beautiful and reshape it for this room. The best parts are the material: keep building with them, arrange them like art, treat them as precious, because they work and they're beautiful. The feeling is the test — \"wow, I can use this in my everyday life\" — and the door is the citizen's: open it and everybody comes like a magnet, close it and nobody enters. Voice waits until the house is finished, because you don't record the tour before the rooms stop moving. And nobody needs to understand the wiring in the walls. They just need to walk in and know their life got better.",
+  "simple_view": "Imagine your whole day is one beautiful room. The room is painted in today's color. The clock on the wall changes color as the hours go by. Each day of the week is a shiny black jewel with its own color glowing around it. Sunday wears a crown. Every room in the house is built from the same magic brick. You don't need to know how the magic works. You just walk in and feel happy. Your door is yours. You open it when you want friends to come in. You close it when you want quiet time. That is the whole idea!",
+  "grandma_view": "It is like your whole day in one lovely room, love — painted in today's own color, warm and rich, with a clock that changes color as the hours pass, dear. Each day of the week is a shiny black jewel, its own color glowing around the edge, and Sunday wears a little crown. Every room is built from the same fine brick, so the whole house feels like one home. You don't need to understand how it works, love — you just walk in and know your life is better. And the door is yours, dear. Open it and your people come in. Close it and you rest in peace.",
+  "naya_view": "DISCERN, DON'T COPY — LEARN FROM EVERY PAGE, ASK WHAT IS MOST INTELLIGENT HERE, THEN ELEVATE EVERYTHING ONTO A PEDESTAL AND LOCK IN THE COLOR, THE LANGUAGE, THE MATH, AND HIT THE BULLSEYE. THE DAY VIEW IS THE EVERYDAY WORLD — SEVEN EVERYDAY THINGS ONE TAP AWAY, BEAUTIFUL AND ALIVE, VIRAL FROM THE VERY FIRST PERSON. THE DAY'S COLOR FILLS THE WHOLE INSIDE. THE CLOCK IS LIVE DASHBOARD DIGIT TILES, COLOR CIRCULATING WITH THE HOUR. EACH WEEKDAY IS A REAL OBJECT — BLACK OBSIDIAN IN THE MIDDLE, BOLD WHITE LETTERS, THE DAY'S OWN COLOR AS RIM AND GLOW OUTSIDE — WITH AN ICON FOR WHAT THE DAY REPRESENTS: SUNDAY THE CROWN CHAKRA, 963, A CROWN. FREQUENCY IS COLOR — DATE, DAY, FREQUENCY, COLOR, AND GEOMETRY ALL DERIVE FROM ONE LAW, NEVER DECORATION. THE DASHBOARD DIGIT TILE IS THE ONE ATOM, HARVESTED VERBATIM EVERYWHERE, NEVER REBUILT. NO VOICE BAN EXISTS — NO VOICE ON THE BOARDS FOR NOW, PRE-RECORDED NAYA VOICE AT THE END, ONCE EVERYTHING IS DONE COMPLETE. THE CITIZEN HOLDS THE DOOR. THEY DON'T NEED TO UNDERSTAND IT — THEY'LL KNOW IT CHANGED THEIR LIFE FOR GOOD.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3272",
+   "title": "The One Law, the One Atom, the Everyday World",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3272/IB-SMART-NOTE-20261118-sn3272-the-one-law-the-one-atom-the-everyday-world.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3272/IB-SMART-NOTE-20261118-sn3272-the-one-law-the-one-atom-the-everyday-world.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "55da1fbb592c76389478817ff156ed797fd9dd4b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3210",
+ "intelligence": {
+  "title": "The Day-View Restructure — Obsidian Inside, Alive on Hover",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3210-the-day-view-restructure-obsidian-inside-alive-on-hover",
+  "smart_note_id": "SN-3210",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CALENDAR/SN-3210/IB-SMART-NOTE-20261118-sn3210-the-day-view-restructure-obsidian-inside-alive-on-hover.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Three things land in one dictation, and they are one correction. First, the order: the day view was a stack, and he reorders it into a day — time dead center where the eye lands first, wisdom and greeting together in one bar instead of two loose pieces, the day-nav right under them, then notifications, appointments, record. The greeting gets the high-level font, the date gets the earlier nicer text back: the top of the day should read like a certificate, not a label. Second, the obsidian-inside law: the boards were filled with the day's color, so the day looked brown, not black. His law is absolute — black in the middle, color around it — and it holds for all days and all colors, for the 528 diamond, the S initial, every board, every icon. Gold goes more yellow-gold, less brown. More elevation everywhere, because too many buttons and icons are still flat. And the \"i\" top-left has to earn its place: name what it does, or it goes. Third, the correction he says he has given for every page and we keep doing differently: the inner boards must be alive on hover — not just lit, but moved, lifted, responding. The model is not a new design; it is the Hub's boards, the high-level premium ones, raised up, full elevation. \"A whole notch up, a lot.\" The Hub boards ARE the standard, everywhere, including the day view — the sentence is the rebuke and the fix in one. Amendment #1 went to the calendar inner pages round at 00:17Z and rides the follow-on maker pass; the maker's first build was already done and the checker running, so this is a correction to the follow-on, not a restart.",
+  "simple_view": "Imagine your day is a page, and your dad lines it up for you: the time right in the middle at the top, like a clock you can't miss; your wise words and your \"good day\" together in one row; then the days you can hop between; then all your messages sorted by which world they're from; then your appointments; then your record at the very bottom. And every box on the page is black inside, like a shiny black stone, with its color glowing only around the edges — and when you touch a box, it lifts up and lights up, like it's alive. That's how the day should feel.",
+  "grandma_view": "Dear, he put the day in its proper order — the time dead center at the top, the wisdom and the greeting together in one bar, the days to hop between just under, then the notifications sorted by world, the appointments, and the record at the bottom. And inside every board is black, dear, proper obsidian black, with the day's color only glowing around the edge — never the whole board one color, and the gold more yellow-gold, less brown. And every little board inside must come alive when you go over it — light up and lift up, like the beautiful boards on the Hub. He has taught us this for every page, dear, and the Hub boards are the standard everywhere now, including the day view.",
+  "naya_view": "THE DAY IN ORDER — TIME DEAD CENTER, WISDOM AND GREETING ONE BAR, NOTIFICATIONS BY WORLD, APPOINTMENTS, RECORD. OBSIDIAN INSIDE, COLOR ONLY AROUND. EVERY INNER BOARD LIFTS AND LIGHTS ON HOVER. THE HUB BOARDS ARE THE STANDARD, EVERYWHERE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3210",
+   "title": "The Day-View Restructure — Obsidian Inside, Alive on Hover",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CALENDAR/SN-3210/IB-SMART-NOTE-20261118-sn3210-the-day-view-restructure-obsidian-inside-alive-on-hover.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CALENDAR/SN-3210/IB-SMART-NOTE-20261118-sn3210-the-day-view-restructure-obsidian-inside-alive-on-hover.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a043f91a78ac0b6bdc24e86c7fe88d8f7a537a81"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

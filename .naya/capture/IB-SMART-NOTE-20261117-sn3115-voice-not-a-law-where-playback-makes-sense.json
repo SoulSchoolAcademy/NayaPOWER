@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3115",
+ "intelligence": {
+  "title": "Voice — Not a Law, and Where Playback Makes Sense",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3115-voice-not-a-law-where-playback-makes-sense",
+  "smart_note_id": "SN-3115",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3115/IB-SMART-NOTE-20261117-sn3115-voice-not-a-law-where-playback-makes-sense.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A checker's citation became a law that never existed. The checker report quoted \"Intelligent Block Rules LAW §4.11/C9 — NO voice anywhere on the board,\" the captain repeated it to him as a law, and the feed round's Play verdict (NOT PASS) was decided on that basis. He corrected it: his decision was never a ban — it was practical. The voice couldn't play instantly on the boards, it would take up a lot of resources, there would be a delay, and the boards are already beautiful and easy to read. So no voice on the boards for now — not because it is banned, but because it didn't make sense that way. And he DOES want Naya playback everywhere, of course — mostly pre-recorded Naya right now, on the pages and cards that don't change, the whole walkthrough, every slide, possibly the visual collective chain technology, as many places as possible — all at the end, once everything is done complete, so voice is never recorded twice. The open question is the instant one: where playback makes sense and where it does not, and how playback is instant when they click — pre-recorded audio, made beforehand and served from the edge, is the path; a live board whose words change cannot be pre-recorded, and that part is unsolved. This is a correction compound in the full sense: the lesson (SN-3115) + the law-book correction (the §4.11/C9 wording, his hand) + the brief-template update (no brief may cite a voice ban as law) + PI + GitHub. A checker's citation of a rule is not the rule — his word is the rule.",
+  "simple_view": "There's no rule that says \"no voice allowed\"! The voice just couldn't play fast enough on the boards — it had to think first, and that made people wait. So for now, no voice on the boards. But Naya WILL talk to you — her voice is already recorded on the pages, like a little wave you can play, and she'll tell you all about that page! And every slide of the walkthrough will have her voice too!",
+  "grandma_view": "There's no rule against the voice, love — it just couldn't play fast enough on the boards, dear, it had to think first and that made people wait. So for now, no voice on the boards. But Naya will talk to you — her voice is already recorded on the pages, like a little wave you can play, and she'll tell you all about that page! And every slide of the walkthrough will have her voice too, love!",
+  "naya_view": "THERE IS NO LAW BANNING VOICE ON THE BOARDS. NO VOICE ON THE INTELLIGENT BOARDS FOR NOW — NOT BECAUSE IT IS BANNED, BUT BECAUSE THE VOICE COULD NOT PLAY INSTANTLY, IT TAKES UP A LOT OF RESOURCES, AND THE BOARDS ARE ALREADY BEAUTIFUL AND EASY TO READ. HE DOES WANT NAYA PLAYBACK — MOSTLY PRE-RECORDED NAYA RIGHT NOW: SHE IS ALREADY ON EACH PAGE, A WAVE THEY CAN PLAY, SHE TELLS THEM ABOUT THAT PAGE; CARDS THAT ARE THERE FOR GOOD AND NOT CHANGING CAN CARRY VOICE; THE WHOLE WALKTHROUGH, EACH SLIDE, HAS VOICE FROM NAYA; AS MANY PLACES AS POSSIBLE. VOICE PLAYBACKS GO AT THE END, ONCE EVERYTHING IS DONE COMPLETE. THE INSTANT-PLAYBACK QUESTION IS OPEN, NOT SOLVED: PRE-RECORDED AUDIO, MADE BEFOREHAND AND SERVED FROM THE EDGE — A LIVE BOARD CANNOT BE PRE-RECORDED BECAUSE ITS WORDS CHANGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3115",
+   "title": "Voice — Not a Law, and Where Playback Makes Sense",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3115/IB-SMART-NOTE-20261117-sn3115-voice-not-a-law-where-playback-makes-sense.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3115/IB-SMART-NOTE-20261117-sn3115-voice-not-a-law-where-playback-makes-sense.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d0a8cb09202467cb2c2ce22a96995f396bfa959f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

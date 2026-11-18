@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3188",
+ "intelligence": {
+  "title": "The Menu Toggle — Sidebar or Messenger or Neither",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3188-the-menu-toggle-sidebar-or-messenger-or-neither",
+  "smart_note_id": "SN-3188",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3188/IB-SMART-NOTE-20261117-sn3188-the-menu-toggle-sidebar-or-messenger-or-neither.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A control that can open both at once is a control that can cover the page with itself — sidebar and messenger fighting for the same side, the world hidden behind two open doors. Three states, never both at once, is the whole answer: one tap opens the sidebar, another opens the messenger, and neither is always available — both closed, the page clear, the world in full view. The choice is his, every time, including the choice of nothing open at all. That is what a toggle is for: not just switching between two things, but switching both off. And the re-confirmation beside it matters just as much: the tiles are the model, confirmed again, triple-A, the most pro — and the slow orbit around them stays, because it was never the problem. The problem was only ever the glow over the top (SN-3180, SN-3186). Keep the orbit, keep the tiles, make the control a proper toggle.",
+  "simple_view": "Imagine a light switch with three clicks: one click opens the sidebar, one click opens the messenger, and one click turns both off so you can see the whole page clearly. You can never have both open at the same time — that would be like opening two doors into the same little hallway and getting stuck. And the pretty tiles at the bottom stay just as they are, with their slow circle of light going around them.",
+  "grandma_view": "Dear, the little round menu button at the top right opens one thing at a time — either the sidebar or the messenger — and you can always choose neither, so both stay closed and the page is clear and open. Never both at once. And the beautiful icons at the bottom, the ones he loves best, stay exactly as they are, with their gentle circle of light going slowly around them.",
+  "naya_view": "THE THREE-LINE CIRCLE MENU CONTROL SITS ON THE RIGHT SIDE OF THE TOP BAR, NEVER THE LEFT. SIDEBAR OR SMART MESSENGER OR NEITHER. THREE STATES, NEVER BOTH AT ONCE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3188",
+   "title": "The Menu Toggle — Sidebar or Messenger or Neither",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3188/IB-SMART-NOTE-20261117-sn3188-the-menu-toggle-sidebar-or-messenger-or-neither.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3188/IB-SMART-NOTE-20261117-sn3188-the-menu-toggle-sidebar-or-messenger-or-neither.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "bfe09cef1e7ed511a11712d297d5a35494b656d9"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

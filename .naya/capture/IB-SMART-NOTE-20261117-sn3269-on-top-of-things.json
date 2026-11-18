@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3269",
+ "intelligence": {
+  "title": "On Top of Things — Check Right Away, Deliver Right Away",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3269-on-top-of-things",
+  "smart_note_id": "SN-3269",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3269/IB-SMART-NOTE-20261117-sn3269-on-top-of-things.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This closes the last gap in the Continuous Cycle Law. \"Work done and not shown is work not done\" was already the law, and the night of 2026-11-13 proved what it costs when it slips — eight hours with nothing in front of him while finished work sat. But the law as written still left a seam: the check happened on one pass, the delivery on the next, and a finished round could sit unshown in between. This order sews it shut: the check and the delivery happen in the same breath, at the moment of return. No batching, no waiting for the next pass, no \"I'll show him at the hour.\" The moment a round passes the captain's own eye, the link goes to him — done and not-done together, so he judges the whole thing at once. The proof it landed in the same pass it was given: the agreement landing, eye PASS 20:03Z, was delivered right then, after the staged bytes were re-verified.",
+  "simple_view": "When your friend finishes something for you, look at it right away — and show it to the person who needs it right away! Don't let finished work sit on a shelf. Check it, then share it, all in one go!",
+  "grandma_view": "When work comes back, dear, check it right away and pass it along right away — don't let it sit on the shelf. A job finished but not shown is a job not done. Check it with your own eyes, then hand it over, all in one breath.",
+  "naya_view": "ON TOP OF THINGS: WHEN WORK COMES BACK, CHECK IT RIGHT AWAY AND GET IT TO HIM RIGHT AWAY. NOTHING SITS BETWEEN THE RETURN AND THE DELIVERY. THE CHECK IS MINE — MY OWN EYE, MY OWN PROBES, PHONE-FIRST, WHOLE — AND THE MOMENT IT PASSES, THE LINK GOES TO HIM WITH DONE AND NOT-DONE TOGETHER. A FINISHED ROUND THAT SITS UNSHOWN IS WORK NOT DONE. THE CONTINUOUS CYCLE LAW, ENFORCED AT THE MOMENT OF RETURN, NOT AT THE NEXT HOUR.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3269",
+   "title": "On Top of Things — Check Right Away, Deliver Right Away",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3269/IB-SMART-NOTE-20261117-sn3269-on-top-of-things.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/OPERATIONS/SN-3269/IB-SMART-NOTE-20261117-sn3269-on-top-of-things.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "58bc789fc3a770493df02560e55b0df062e36ced"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

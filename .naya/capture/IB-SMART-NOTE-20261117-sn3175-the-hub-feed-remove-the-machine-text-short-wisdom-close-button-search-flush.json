@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3175",
+ "intelligence": {
+  "title": "The Hub Feed — Remove the Machine Text, Short Wisdom, Close Button, Search Flush",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3175-the-hub-feed-remove-the-machine-text-short-wisdom-close-button-search-flush",
+  "smart_note_id": "SN-3175",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3175/IB-SMART-NOTE-20261117-sn3175-the-hub-feed-remove-the-machine-text-short-wisdom-close-button-search-flush.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He opened the Hub feed and read it the way a person reads it — and what he saw was the machine talking about itself. A line of backend telemetry sitting under the feed pills, a globe stuck on the edge of a card, a wisdom board filled by a long test note nobody wrote as wisdom. None of it is the feed; all of it is the machine leaking onto the page. His list is a cleanup in the truest sense: take the machine's words off the page he sees, take the decoration off the box, and let the wisdom be what wisdom is — a couple of sentences, nice and short, that a person can take in at a glance. And the close button is the same instinct in a control: when he is done with the wisdom, it folds away and the search rises to meet the feed buttons — no gap, no dead space, nothing left standing between him and the feed. The page he sees should show him his world, not the machine's diary.",
+  "simple_view": "Imagine your bedroom wall has a beautiful picture on it — but someone stuck a label on it that says how the wall was built, and a big ball is glued to the edge of the frame, and a very long note is taped over the picture. Take the label off. Take the ball off. Put a short, lovely little note there instead — just two sentences. And if you want the picture gone for a while, there's a tiny button in the corner that folds it away, and everything else slides up neatly to fill the space. Now the wall shows the picture, not the labels.",
+  "grandma_view": "Dear, the Hub feed had the machine's own words printed right on it — numbers and backend talk nobody needs to see — and a purple globe stuck on the edge of the box, and a wisdom board filled with a long test note. So we take the machine words off entirely, take the globe off, and let the wisdom be just a couple of short sentences. There's a little close button in the corner of the banner, and when you tap it the search bar rises right up to sit neatly beside the feed buttons. Clean and simple, the way it should be.",
+  "naya_view": "NO MACHINE TEXT ON THE PAGE HE SEES. THE WISDOM OF THE DAY IS A COUPLE OF SENTENCES, NICE AND SHORT — NEVER THE BIG LONG THING. THE WISDOM BANNER GETS A LITTLE CLOSE BUTTON IN ITS BOTTOM-RIGHT CORNER; WHEN IT CLOSES, THE SEARCH BAR GOES ALL THE WAY TO THE TOP AND SITS FLUSH WITH THE FEED BUTTONS. THE PURPLE GLOBE OVER THE BOX GOES.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3175",
+   "title": "The Hub Feed — Remove the Machine Text, Short Wisdom, Close Button, Search Flush",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3175/IB-SMART-NOTE-20261117-sn3175-the-hub-feed-remove-the-machine-text-short-wisdom-close-button-search-flush.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/HUB/SN-3175/IB-SMART-NOTE-20261117-sn3175-the-hub-feed-remove-the-machine-text-short-wisdom-close-button-search-flush.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "252fe264e25e005e6d2cd686998cf7599ba94014"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

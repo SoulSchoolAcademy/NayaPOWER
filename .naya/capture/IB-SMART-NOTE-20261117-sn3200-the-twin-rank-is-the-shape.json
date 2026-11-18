@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3200",
+ "intelligence": {
+  "title": "The Twin Rank Is the Shape",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3200-the-twin-rank-is-the-shape",
+  "smart_note_id": "SN-3200",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3200/IB-SMART-NOTE-20261117-sn3200-the-twin-rank-is-the-shape.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "One row could never say both — a note can be worth a fortune and not very smart, or brilliant and worth nothing, and a single number hides which. Two rows say both: VALUE in gold, INTELLIGENCE in emerald, each out of ten, each with its crowd average and rank count beside it — and every block carries its two prices everywhere it travels. That is the ending the format deserves: the worth and the wisdom, side by side, ranked by the people who read it. And the guards matter as much as the shape: no LIKE, because the stars ARE the scale — a LIKE button next to a ten-star scale is a weaker duplicate of the scale itself, and the Value Table's like/love = 1 is LOVE minting 1, not a button. No points from ranks, because nobody farms stars into money — the rank is pure signal, standing and leaderboards, and it pays only on his hand. The twin rank is the shape because it says everything the block is worth, in two rows, with nothing left over and nothing duplicated.",
+  "simple_view": "Imagine every smart note gets two rows of gold and green stars — one row says how much it is worth, the other row says how smart it is. You tap a star to say what you think, your star lights up, and you can see what everybody else thought too. One row could never tell you both things — so there are two rows, gold for worth, green for smart. And there is no extra like button, because the stars already do that job. The stars don't give you money — they just show how good the note is.",
+  "grandma_view": "Dear, at the bottom of every note there are now two rows of stars — the gold row says what the note is worth, the green row says how clever it is. You tap one star in each row to say what you think, your star lights up, and beside it you can see what everyone else thought, on average. No extra like button — the stars are the scale. And the stars don't pay out money; they simply show how good a note is, and where it stands. The note carries its two prices with it wherever it goes.",
+  "naya_view": "TWO ROWS OF TEN STARS — VALUE IN GOLD, INTELLIGENCE IN EMERALD. ONE TAP RANKS. YOUR RANK LIGHTS UP, CROWD AVERAGE + RANK COUNT BESIDE IT. EVERY BLOCK CARRIES ITS TWO PRICES EVERYWHERE IT TRAVELS. STARS ARE THE SCALE. NO LIKE. RANKS MINT NO POINTS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3200",
+   "title": "The Twin Rank Is the Shape",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3200/IB-SMART-NOTE-20261117-sn3200-the-twin-rank-is-the-shape.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3200/IB-SMART-NOTE-20261117-sn3200-the-twin-rank-is-the-shape.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "123a532696823e886d268720b67a63074201574f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

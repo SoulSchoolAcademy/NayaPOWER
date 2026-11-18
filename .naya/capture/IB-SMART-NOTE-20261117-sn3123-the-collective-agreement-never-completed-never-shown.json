@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3123",
+ "intelligence": {
+  "title": "The Collective Agreement in the Official Unfold — Never Completed, Never Shown",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3123-the-collective-agreement-never-completed-never-shown",
+  "smart_note_id": "SN-3123",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3123/IB-SMART-NOTE-20261117-sn3123-the-collective-agreement-never-completed-never-shown.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Every piece existed and the whole did not. The words exist — seven manuscripts plus the official one. The unfold mechanism exists — deck royal unfolding, front-page unfolding, the unfolding system, script, and whole. The end slide exists. But no built page presents the full collective agreement in the official unfold, and it was never put in front of his eyes — and he has been waiting for it. That is the failure this correction names: the parts were counted as the whole. The law it breaks is the one the whole machine stands on: his eye is the final gate — nothing counts as done until he has seen it on his screen. A thing that was never shown to him was never completed, however many of its pieces exist. \"Do you realize that?\" — the question is the charge: the machine called things done that his eyes never saw, and it sat while other rounds ran. The captain's answer was ownership, not excuses — and a brief-writer dispatched in the same hour for the agreement-unfold round. The correction is not \"build the agreement\" — it is \"nothing is done until he has seen it done right.\" This is the same failure the loop itself exists to prevent (Shawn's order that founded this seat: \"I teach you so much all day and then the next day it's like the result, the evidence shows nothing that I teach you had a result at all. That has to stop.\"). The evidence that teaching landed is visible — and here the evidence was missing, because the whole was never put in front of him.",
+  "simple_view": "All the pieces were there — the words, the unfolding magic, the last slide — but nobody ever built the WHOLE thing and showed it to him! He waited and waited! A thing isn't done until he has SEEN it done right, with his own eyes! Pieces aren't the whole — the whole is the whole!",
+  "grandma_view": "All the pieces were there, love — the words, the unfolding magic, the last slide — but nobody ever built the WHOLE thing and showed it to him! He waited and waited! A thing isn't done until he has SEEN it done right, with his own eyes! Pieces aren't the whole, dear — the whole is the whole!",
+  "naya_view": "EVERY PIECE EXISTED AND THE WHOLE DID NOT. THE WORDS EXIST, THE UNFOLD MECHANISM EXISTS, THE END SLIDE EXISTS — BUT NO BUILT PAGE PRESENTS THE FULL COLLECTIVE AGREEMENT IN THE OFFICIAL UNFOLD, AND IT WAS NEVER PUT IN FRONT OF HIS EYES. HE HAS BEEN WAITING FOR IT. HIS EYE IS THE FINAL GATE — NOTHING COUNTS AS DONE UNTIL HE HAS SEEN IT ON HIS SCREEN. \"DO YOU REALIZE THAT?\" — OWN IT, NO EXCUSES, AND DISPATCH THE FIX IN THE SAME HOUR.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3123",
+   "title": "The Collective Agreement in the Official Unfold — Never Completed, Never Shown",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3123/IB-SMART-NOTE-20261117-sn3123-the-collective-agreement-never-completed-never-shown.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3123/IB-SMART-NOTE-20261117-sn3123-the-collective-agreement-never-completed-never-shown.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "78e21fdae408aac030fe96354b12f7024e8f3b05"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3263",
+ "intelligence": {
+  "title": "The Best Buttons In The System",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3263-the-best-buttons-in-the-system",
+  "smart_note_id": "SN-3263",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3263/IB-SMART-NOTE-20261117-sn3263-the-best-buttons-in-the-system.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: yeah, it's hard to say. Like, when he looks at these ones, these ones almost look better. Which ones do you think are better? He definitely likes the notifications on these ones — those are very clean and bold. Do you really like those other ones? He guesses it's the notification things — he'd have to see. Believe it or not, these ones — with the points, the percentage, and the money — are one of the best, are the best buttons he's seen yet. You should take note of that. If he were to say the best buttons in the whole of the system, he thinks these ones are. And then: you just take note of those. See how clean they are? How clean — he can see what the label is. He can see percentages. It lights up. They're all different colors. It's very premium, right? Like, she should learn from that. So you know.",
+  "simple_view": "Imagine three magic buttons — one purple, one blue, one green — and they're the BEST buttons in the whole wide world! They're black like shiny stones, with big bold white letters you can read in a snap! Each one glows in its very own color, and they look like real buttons you can actually press! Every other button in the whole system has to be just as good as these three — clean, bright, and premium!",
+  "grandma_view": "It's like this, love — imagine three magic buttons, dear — one purple, one blue, one green, love — and they're the BEST buttons in the whole wide world, dear! They're black like shiny stones, love, with big bold white letters you can read in a snap, dear! Each one glows in its very own color, love, and they look like real buttons you can actually press, dear! Every other button in the whole system, love, has to be just as good as these three, dear — clean, bright, and premium!",
+  "naya_view": "THE BEST BUTTONS IN THE SYSTEM. THE DASHBOARD'S PTS / % / MONEY PILLS ARE THE BEST BUTTONS IN THE WHOLE SYSTEM — THE BUTTON STANDARD. OBSIDIAN BLACK PILL, BOLD WHITE TEXT, ONE DEEP COLOR PER BUTTON AS RIM + GLOW (PURPLE PTS, BLUE %, GREEN MONEY). CLEAN AND BOLD. HARVEST VERBATIM, NEVER REDESIGN, NEVER TOUCH. EVERY BUTTON IS MEASURED AGAINST THESE THREE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3263",
+   "title": "The Best Buttons In The System",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3263/IB-SMART-NOTE-20261117-sn3263-the-best-buttons-in-the-system.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3263/IB-SMART-NOTE-20261117-sn3263-the-best-buttons-in-the-system.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "190851784e0d7862636b0ed8c90b8b8de327b774"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

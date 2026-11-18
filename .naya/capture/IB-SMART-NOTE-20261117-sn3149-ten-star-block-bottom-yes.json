@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3149",
+ "intelligence": {
+  "title": "The Ten-Star Block Bottom — His Yes",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3149-ten-star-block-bottom-yes",
+  "smart_note_id": "SN-3149",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3149/IB-SMART-NOTE-20261117-sn3149-ten-star-block-bottom-yes.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The question he asked twice — love and like both standing, or one choice point? — is answered by his yes: one row, no dropdown, and the stars are the scale. That is the push-button-simple answer: the feed shows everything at a glance, one row, and the thing you touch to say what a post meant is the ten stars — the house number, in gold, in a circle, with the slow flow around them, lighting up to the one you touch. The heart stays as the Love jewel because love is a jewel, not a number on a scale. Three ways to say the same thing would have been clutter; one row with the stars as the scale is the elegant block he asked for.",
+  "simple_view": "At the bottom of a note, there's one pretty row — ten shiny gold stars in a circle! You tap one and all the stars up to it light up. And the heart stays, because love is a jewel. No hiding things in a little menu!",
+  "grandma_view": "At the bottom of a note, dear, there's one pretty row — ten shiny gold stars in a circle! You tap one and all the stars up to it light up. And the heart stays, because love is a jewel. No hiding things in a little menu!",
+  "naya_view": "THE TEN-STAR BLOCK BOTTOM: ONE ROW, NO DROPDOWN. TEN GOLD STARS IN A CIRCLE WITH THE SLOW FLOW — TOUCH ONE AND EVERY STAR UP TO IT LIGHTS UP. THE HEART STAYS AS THE LOVE JEWEL. THE STARS ARE THE SCALE. HIS YES, 20:49Z.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3149",
+   "title": "The Ten-Star Block Bottom — His Yes",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3149/IB-SMART-NOTE-20261117-sn3149-ten-star-block-bottom-yes.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3149/IB-SMART-NOTE-20261117-sn3149-ten-star-block-bottom-yes.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "be8a51f2f9c2c657b1115a75d320b8201232bdc9"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

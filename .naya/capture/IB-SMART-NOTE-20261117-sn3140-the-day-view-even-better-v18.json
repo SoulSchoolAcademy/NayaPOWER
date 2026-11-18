@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3140",
+ "intelligence": {
+  "title": "The Day View, Even Better — v18",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3140-the-day-view-even-better-v18",
+  "smart_note_id": "SN-3140",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3140/IB-SMART-NOTE-20261117-sn3140-the-day-view-even-better-v18.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is a scorecard, not a rebuild — and the difference matters. He starts with what is good and he names it precisely: the initial looks amazing, the color of it, the good evening, the color flow in the back, the Tuesday in gold. All of that stays. Then he names what is wrong with the same precision. The Intel Today line — \"Intel Today — the daily digest of NayaNET's smart notes\" — is copied exactly, and it is not accurate. Exact copy of a wrong line is still wrong, and a wrong line on the page teaches the citizen the wrong thing about the system. So it goes — and its going answers the question open since 16:32Z, which sentence on the day-view card shouldn't be there. The header is just the greeting and the initial because that is all a header needs to be; the tagline and the public-feed line are noise on a page that already knows who it is for. The diamond is a jewel that disappears into digital nothingness — a real object does not disappear, so make it a real faceted diamond, solid and visible. And the time tiles: the time looks good, but the numbers in the blocks almost touch each other. The fix is not a new design — it is a harvest. Take the EXACT digit tiles we already had, from the Fix-5c Dashboard, because those ones were good and represented good. Use what works, never make it new. The captain's eye on v17 (browser task 9c41e3de, 19:22–19:25Z) reads the same way: the top stays, the wisdom board stands alone, the five categories read, the journal survived the reload, 1920 is clean — and it goes back for his changes, plus the 635px horizontal scrollbar and the back-to-month chevron that must be an eye. The 390 live render is still unproven.",
+  "simple_view": "Shawn looked at the calendar page and said: it's good, and we can make it even better! The line that says \"Intel Today\" is not true, so it has to go. The top should just say \"Good evening\" and show the pretty letter S. The diamond should look like a REAL diamond — shiny and solid, not disappearing! And the numbers for the time should be the same beautiful number blocks from the Dashboard, the ones that were already so good — the numbers fit perfectly and never touch each other!",
+  "grandma_view": "Shawn looked at the calendar page, love, and said: it's good, and we can make it even better! The line that says \"Intel Today\" is not true, dear, so it has to go. The top should just say \"Good evening\" and show the pretty letter S. The diamond should look like a REAL diamond — shiny and solid, not disappearing! And the numbers for the time should be the same beautiful number blocks from the Dashboard, the ones that were already so good — the numbers fit perfectly and never touch each other!",
+  "naya_view": "THE DAY VIEW, EVEN BETTER — v18. INTEL TODAY OUT — IT IS NOT ACCURATE, AND IT IS THE SENTENCE THAT SHOULDN'T BE THERE. THE HEADER IS JUST THE GREETING + THE INITIAL. THE DIAMOND MUST LOOK LIKE A REAL DIAMOND. THE TIME TILES ARE THE DASHBOARD'S DIGIT TILES, VERBATIM — SHARPER, MORE REAL, SO THEY REALLY POP. THE NUMBERS FIT PERFECT, THE PERFECT SIZE, NEVER TOUCHING — TAKE THE EXACT ONES WE ALREADY HAD (FIX-5c, BLOB aa6ca89f). KEEP: THE INITIAL, THE GREETING, THE COLOR FLOW, THE TUESDAY IN GOLD.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3140",
+   "title": "The Day View, Even Better — v18",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3140/IB-SMART-NOTE-20261117-sn3140-the-day-view-even-better-v18.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3140/IB-SMART-NOTE-20261117-sn3140-the-day-view-even-better-v18.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "298d8c7d3300f6caf88f52b46b729b43bff22470"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

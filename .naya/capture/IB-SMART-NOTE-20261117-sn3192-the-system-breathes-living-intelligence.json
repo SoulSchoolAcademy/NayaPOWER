@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3192",
+ "intelligence": {
+  "title": "The System Breathes — Living Intelligence",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3192-the-system-breathes-living-intelligence",
+  "smart_note_id": "SN-3192",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3192/IB-SMART-NOTE-20261117-sn3192-the-system-breathes-living-intelligence.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A static page, however beautiful, is a picture — and a picture does not breathe. What he wants is the thing itself, alive: living intelligence, sharing intelligence in an intelligent way, literally being what it is. The motion is slow and gentle where it belongs — the orbit flowing, the light breathing softly, the hover alive, the press going in and coming out — never a frozen screen pretending to be a system. And the reason is the whole mission: we do the ultimate all the way through, because that is what makes the ultimate experience — and the experience is what it is about. The breathing is not decoration. The breathing is the system being itself. This is the capstone of the evening's design laws: the ball (SN-3178) gave the objects their bodies, the 3D law (SN-3181) gave them their elevation, the hover law (SN-3186) gave the hand its answer — and the breathing gives the whole thing its life.",
+  "simple_view": "Imagine a beautiful toy that just sits there, still and quiet — and then imagine the same toy alive, breathing softly, its lights moving gently around, answering when you touch it. Which one feels real? The alive one. Shawn wants the whole system to feel alive like that — breathing, moving gently, never just a still picture.",
+  "grandma_view": "Dear, he wants the whole thing to feel alive — like a living, breathing machine, sharing its cleverness with you in a clever way, just being exactly what it is. Not a still picture on a screen, but something with a gentle life to it: the light flowing slowly around, a soft breathing glow, everything answering when you touch it. We do our very best all the way through, because that is what makes it feel wonderful — and feeling wonderful is what it is all about.",
+  "naya_view": "MAKE IT FEEL LIKE IT IS A LIVE BREATHING COMPUTER SYSTEM — LIVING INTELLIGENCE SHARING INTELLIGENCE IN AN INTELLIGENT WAY. LITERALLY BE WHAT IT IS. WE DO THE ULTIMATE ALL THE WAY THROUGH, BECAUSE THAT IS WHAT MAKES THE ULTIMATE EXPERIENCE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3192",
+   "title": "The System Breathes — Living Intelligence",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3192/IB-SMART-NOTE-20261117-sn3192-the-system-breathes-living-intelligence.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3192/IB-SMART-NOTE-20261117-sn3192-the-system-breathes-living-intelligence.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "29d533e41c8b2ed26bfb35e4730ab854b6a7d266"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

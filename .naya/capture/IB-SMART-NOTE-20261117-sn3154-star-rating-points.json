@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3154",
+ "intelligence": {
+  "title": "Star-Rating Points — One Point per Star",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3154-star-rating-points",
+  "smart_note_id": "SN-3154",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3154/IB-SMART-NOTE-20261117-sn3154-star-rating-points.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Points are the standing of a post, and the stars are the scale — so a star has to be worth something, and the something has to be simple enough to say in one breath: one star, one point. Ten stars is ten points because the scale is ten and the point is one — no table, no curve, no second rule to remember. The citizen who gives ten stars gives ten points, and the citizen who reads the count reads the stars in it. That is the points law as authority working the way he designed it: more points, more post weight, counted straight from what the citizen did.",
+  "simple_view": "Every star you give is worth one point! Give ten stars, that's ten points — easy peasy!",
+  "grandma_view": "Every star you give is worth one point, dear! Give ten stars, that's ten points — easy peasy!",
+  "naya_view": "STAR-RATING POINTS: ONE POINT PER STAR. TEN STARS = TEN POINTS. THE NAMED CONSTANT IS 1 PER STAR, MAX 10. LIKE AND LOVE STAY AT 1 EACH.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3154",
+   "title": "Star-Rating Points — One Point per Star",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3154/IB-SMART-NOTE-20261117-sn3154-star-rating-points.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3154/IB-SMART-NOTE-20261117-sn3154-star-rating-points.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "89b7b500480b95bf1edf1987c878533192021afd"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

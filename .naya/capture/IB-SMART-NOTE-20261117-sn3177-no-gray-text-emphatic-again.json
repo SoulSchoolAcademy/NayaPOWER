@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3177",
+ "intelligence": {
+  "title": "No Gray Text — Emphatic, Again",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3177-no-gray-text-emphatic-again",
+  "smart_note_id": "SN-3177",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3177/IB-SMART-NOTE-20261117-sn3177-no-gray-text-emphatic-again.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Gray text on obsidian is the one thing that makes the most beautiful part of the Hub read as tired instead of lit. White is the law because white is what makes every word readable, every board alive, every page his. A single gray survivor is not a small miss — it is the page disobeying him in plain sight, on the part he loves most. And the emphasis matters as much as the rule: he already asked once, and the gray stayed. When an ask has to be repeated, the repeat is the lesson — the first ask was not heard hard enough, so the second one has to be carried as law, not as preference. The checker exists for exactly this: grep, name every one, leave none standing.",
+  "simple_view": "Imagine you asked for all the words on your prettiest page to be bright white — and someone still wrote some of them in dull gray. You would ask again, louder. White words shine. Gray words hide. Every word has to be white, or it goes.",
+  "grandma_view": "Dear, he asked for the words to be white — bright and clear, like fresh snow — and some of them were still gray. So he asked again, firmly: every word white, or layered white, or it goes. Not one gray word left standing, anywhere on the page.",
+  "naya_view": "EVERY WORD WHITE OR LAYERED WHITE AT 25/19/17, OR IT GOES. ZERO GRAY SURVIVORS. THE CHECKER GREPS AND NAMES EVERY ONE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3177",
+   "title": "No Gray Text — Emphatic, Again",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3177/IB-SMART-NOTE-20261117-sn3177-no-gray-text-emphatic-again.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3177/IB-SMART-NOTE-20261117-sn3177-no-gray-text-emphatic-again.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b8fb5918c64c32a9c6073281b49e2378f18b1c29"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3274",
+ "intelligence": {
+  "title": "Follow the Word, Keep the Good",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3274-follow-the-word-keep-the-good",
+  "smart_note_id": "SN-3274",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3274/IB-SMART-NOTE-20261118-sn3274-follow-the-word-keep-the-good.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a builder handed a finished drawing and asking the owner to draw it again — that is the failure at the heart of this group, and everything else follows from refusing it. When Shawn already gave the word, the work is to follow it and build it; asking again spends his attention and leaves the page unedited, which is exactly how the bridge came back. The same discipline governs the pages themselves: a scorecard keeps the good and changes the wrong, it does not rebuild. So the day view keeps its praised top verbatim and throws away the pile below it; the Dashboard keeps its instrument and loses the greeting that ripped it; Smart Mail keeps only its initials and is rebuilt clean, ten times better; the certificate keeps its current treatment and never shows the outdated one. An exact copy of a wrong line is still wrong — the Intel Today line goes because it is not accurate, however exactly it was copied — and a good thing already built is never remade: the time tiles are the Dashboard's digit tiles verbatim, the diamond becomes a real faceted diamond instead of a glow that disappears, and the bottom bar is Personal's bar, not a new bar per page. The format is what makes all of it readable: one official language for every Smart Note, the nutshell as the human note, the machine note on the back doing the SEO, the color flow breaking the text so the eye can take it in, the block's bottom rising warmer and more luxurious without adding a single thing. And the Hub buttons settle the argument about what \"real\" means — not a paragraph in the laws, but buttons he has seen, sharp and moving and deep, the standard every future button is judged against.",
+  "simple_view": "When he already told us what to do, we just do it. We do not ask him again. We keep the good parts exactly as they are. We throw away the messy parts. Then we build it again, beautiful and real. Every note looks the same, in a good way. Every button looks the same, too. And when you tap, you go right to your day!",
+  "grandma_view": "When he already told us what to do, love, we just do it — we do not ask him again, dear. We keep the good parts exactly as they are, and throw away the messy parts. Then we build it again, beautiful and real, in the same language every time, so every note and every button feels like home. And when you tap, love, you go right to your day, where your numbers and your messages are waiting.",
+  "naya_view": "FOLLOW THE WORD ALREADY GIVEN — DECIDED THINGS ARE BUILT, NOT RE-ASKED. KEEP WHAT HE PRAISED VERBATIM — THE TOP, THE INITIALS, THE GREETING, THE TUESDAY IN GOLD. THROW AWAY WHAT FAILED — THE PILE, THE GREETING BOARD, THE LAYERS, THE INACCURATE LINE, THE OUTDATED CERTIFICATE. HARVEST WHAT WAS ALREADY GOOD — THE DASHBOARD DIGIT TILES, THE MICHEAL CERTIFICATE, PERSONAL'S SIX-TILE BAR. MAKE IT A REAL OBJECT — THE DIAMOND FACETED AND SOLID, THE HUB BUTTONS SHARP, MOVING, LAYERED, DEEP. ONE OFFICIAL LANGUAGE FOR EVERY NOTE — NUTSHELL LIT UP, CHILD, GRANDMA, WHAT IT MEANS — AND ONE BOTTOM BAR THAT OPENS THE CALENDAR FOR THE DAY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3274",
+   "title": "Follow the Word, Keep the Good",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3274/IB-SMART-NOTE-20261118-sn3274-follow-the-word-keep-the-good.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3274/IB-SMART-NOTE-20261118-sn3274-follow-the-word-keep-the-good.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "11576d8779fd236b3582cbcfdbc45750c4a62501"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

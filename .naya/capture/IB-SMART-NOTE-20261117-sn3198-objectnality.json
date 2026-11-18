@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3198",
+ "intelligence": {
+  "title": "Objectnality",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3198-objectnality",
+  "smart_note_id": "SN-3198",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3198/IB-SMART-NOTE-20261117-sn3198-objectnality.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Objectnality is the word for everything he has been teaching all evening — the ball not the circle, the 3D object, the real jewel, the tile you could pick up — given a name at last. It is the one test that settles every design question: could you pick it up? Does it feel like it exists in the physical world? If it reads as a picture of an object instead of the object itself, it is not done — however beautiful, however much glow, however many effects. And the little things are the hugest difference: the depth, the layers, the rim light, the press — each small, each decisive. Objectnality is the bar, and the bar is the object. This is the Real Object Law with his own word on it now — the law he has been teaching since 2026-11-01, named by him tonight.",
+  "simple_view": "Imagine a toy that looks like a real apple — you could pick it up, you could feel it, it feels like it exists in the real world. Now imagine a flat drawing of an apple — pretty, but you can't pick it up, it isn't real. Shawn has a word for how real a thing feels: objectnality. The more it feels like you could touch it and pick it up, the better. A drawing is not done. A real thing is.",
+  "grandma_view": "Dear, he has given us a wonderful new word: objectnality. It means how much a thing feels like a real object you could reach out and touch — with depth and layers, like something that truly exists in the world. The more of it, the better. If it only looks like a picture of an object, it isn't finished. All the little things — the depth, the layers, the light around the edge — make the hugest difference.",
+  "naya_view": "OBJECTNALITY: THE MORE DEPTH AND LAYERS, THE MORE IT FEELS LIKE A REAL OBJECT YOU COULD TOUCH, LIKE IT EXISTS IN THE PHYSICAL WORLD — THE BETTER. COULD YOU PICK IT UP? IF IT READS AS A PICTURE OF AN OBJECT INSTEAD OF THE OBJECT ITSELF, IT IS NOT DONE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3198",
+   "title": "Objectnality",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3198/IB-SMART-NOTE-20261117-sn3198-objectnality.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3198/IB-SMART-NOTE-20261117-sn3198-objectnality.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6b072bbee9ea071786d7293e3cc87d3611b3134b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

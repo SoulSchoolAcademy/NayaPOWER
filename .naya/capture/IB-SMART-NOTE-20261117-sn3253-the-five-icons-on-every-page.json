@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3253",
+ "intelligence": {
+  "title": "The Five Icons — On Every Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3253-the-five-icons-on-every-page",
+  "smart_note_id": "SN-3253",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3253/IB-SMART-NOTE-20261117-sn3253-the-five-icons-on-every-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: and he could see at the bottom the icons — like the five icons that are on the Personal page. Need to be now on the Dashboard as well? The captain answered: yes — they should. The five are the way you move around your world, and the Dashboard is your world too — the same bar on every page, not just Personal. It's going into the Dashboard round that's already running — the same five, harvested from Personal, at the bottom of the Dashboard, one bar not two. And he agreed. And in the same pass he pointed at the Dashboard's icons and asked: do you see how the ones on this page look nicer than the ones on the page you did? The captain said yes — the ones on this page are the real ones, with the depth and the light right. The ones on the calendar were copies made from looking at them, so they lost exactly that. That's why the fix that's running now says harvest them exactly from the Dashboard — not remade, not close, the same.",
+  "simple_view": "Imagine your Personal page has five beautiful buttons at the bottom — a purple plus, a blue mail, a green activity, a gold worlds, and a purple ecosystem! They help you move around your world! Now let's put those SAME five buttons on the Dashboard too — the real ones, not copies! So you can move around your world from every page — one bar, not two bars stacked on top of each other!",
+  "grandma_view": "It's like this, love — imagine your Personal page, dear, has five beautiful buttons at the bottom — a purple plus, a blue mail, a green activity, a gold worlds, and a purple ecosystem! They help you move around your world, love! Now let's put those SAME five buttons on the Dashboard too, dear — the real ones, not copies! So you can move around your world from every page, love — one bar, not two bars stacked on top of each other!",
+  "naya_view": "THE FIVE ICONS — ON EVERY PAGE. THE FIVE BOTTOM-BAR ICONS FROM THE PERSONAL PAGE — + ADD PURPLE · MAIL BLUE · ACTIVITY GREEN · WORLDS GOLD · ECOSYSTEM PURPLE — BELONG ON THE DASHBOARD TOO — THE SAME FIVE, THE SAME WAY TO MOVE AROUND YOUR WORLD ON EVERY PAGE, ONE BAR, NOT TWO STACKED BARS. THE FIVE ARE THE WAY YOU MOVE AROUND YOUR WORLD, AND THE DASHBOARD IS YOUR WORLD TOO. HARVESTED FROM PERSONAL — NOT REMADE, NOT CLOSE, THE SAME. THE ONES ON THIS PAGE ARE THE REAL ONES, WITH THE DEPTH AND THE LIGHT RIGHT; THE COPIES MADE FROM LOOKING AT THEM LOST EXACTLY THAT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3253",
+   "title": "The Five Icons — On Every Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3253/IB-SMART-NOTE-20261117-sn3253-the-five-icons-on-every-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3253/IB-SMART-NOTE-20261117-sn3253-the-five-icons-on-every-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "40021652e2592b482508dee959f7066dbc7539c2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

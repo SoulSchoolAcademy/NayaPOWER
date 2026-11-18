@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3186",
+ "intelligence": {
+  "title": "Hover: Light Around, Never Glow Over — The Moving Light Comes Back",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3186-hover-light-around-the-moving-light-comes-back",
+  "smart_note_id": "SN-3186",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3186/IB-SMART-NOTE-20261117-sn3186-hover-light-around-the-moving-light-comes-back.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Hover is the moment the page answers his hand — and right now it answers with a glow poured over the icon, washing out the very thing he came to touch. The light belongs on the rim, travelling around the circle, following the line perfectly — the moving orbit he remembers and liked, now still. A light that moves around the object says the object is alive; a glow in the middle says the object is covered. The tiles are otherwise perfect — the hover is the one thing left to fix, and the fix is to put the light back where it was: around, moving, never in the middle. This is the same law as the glow-over ruling (SN-3180) applied to the hand: around, never over — and on hover, the around-light moves.",
+  "simple_view": "Imagine a ring of light running around a jewel, like a little train going around a track — round and round, following the line perfectly. Now imagine someone shines a big flashlight right on top of the jewel instead, so you can't see it anymore. Shawn wants the little train around the jewel, not the flashlight on top. And the train should move again, like it used to.",
+  "grandma_view": "Dear, when you rest your hand over one of those beautiful little tiles, the light should dance around the edge of it — a lovely flow of light going round the circle, like it used to. Not a glow poured over the top of it, not a glow in the middle covering it up. Around the edge, moving gently, following the line. The tiles themselves are perfect — just let the light travel around them again.",
+  "naya_view": "WHEN I HOVER OVER THEM I DON'T WANT IT TO GLOW OVER THE ICON, JUST AROUND IT. A NICE FLOW OF LIGHT THAT FLOWS AROUND IT, FOLLOWING THE LINE PERFECTLY. START THE MOVING AGAIN, AND GET RID OF THE GLOW IN THE MIDDLE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3186",
+   "title": "Hover: Light Around, Never Glow Over — The Moving Light Comes Back",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3186/IB-SMART-NOTE-20261117-sn3186-hover-light-around-the-moving-light-comes-back.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3186/IB-SMART-NOTE-20261117-sn3186-hover-light-around-the-moving-light-comes-back.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "58160d3d1b625f8e1590897ff27dc33b8abb5c74"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

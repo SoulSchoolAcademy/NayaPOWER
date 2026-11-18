@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3141",
+ "intelligence": {
+  "title": "Color Separation — Adjacent Steps Must Read as Different Colors",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3141-color-separation",
+  "smart_note_id": "SN-3141",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3141/IB-SMART-NOTE-20261117-sn3141-color-separation.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "His eye and the captain's eye found the same fault independently, minutes apart. The captain's-eye walk of the staged Hub (browser task 9a549b46, 19:41–19:51Z) pixel-sampled the right sidebar: My Worlds ~#a21caf deep magenta, Favorite Worlds ~#8e24aa purple-magenta — adjacent purples — and the same fault again at the bottom of the list (White Paper ~#a21caf, Pricing ~#8e24aa) and in the left sidebar (Hub magenta / Dashboard purple; Smart Factory magenta / Smart Growth purple). The hex values differ between the purple neighbors, but the eye reads them as the same color twice in a row, which breaks the feed's own rule in SN-3062, \"Spectrum flow (never the same color twice in a row).\" The same fault sits in the Leaderboards boards — Overall and Top area both read purple/magenta (eye flagged it 19:41–19:46Z, fix round dispatched 19:46Z) — so this is not one list's problem. The spectrum flow is judged by the eye, not by the hex table: two hexes that differ on paper and read as one color on the screen are the same color, as far as the person looking is concerned — and the person looking is the only judge that counts.",
+  "simple_view": "You know the colors on the sides, like a rainbow? The top one and the one under it look the same — both purple! You have to make them different enough that you can tell them apart just by looking. If you can't tell, the colors are wrong!",
+  "grandma_view": "You know the colors on the sides, love, like a rainbow? The top one and the one under it look the same — both purple, dear! You have to make them different enough that you can tell them apart just by looking. If you can't tell, the colors are wrong!",
+  "naya_view": "COLOR SEPARATION — ADJACENT STEPS MUST READ AS DIFFERENT COLORS. MY WORLDS MAGENTA, FAVORITE WORLDS PURPLE — HE CAN'T TELL THEM APART. IF THE EYE READS TWO NEIGHBORS AS THE SAME COLOR, THE FLOW IS BROKEN — WIDEN THE STEP UNTIL THEY READ AS DIFFERENT. THE EYE IS THE TEST, NOT THE HEX.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3141",
+   "title": "Color Separation — Adjacent Steps Must Read as Different Colors",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3141/IB-SMART-NOTE-20261117-sn3141-color-separation.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3141/IB-SMART-NOTE-20261117-sn3141-color-separation.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "cd09e5a73b81c38668ac648273413445865ab23e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

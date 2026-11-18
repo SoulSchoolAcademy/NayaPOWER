@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3212",
+ "intelligence": {
+  "title": "The Dashboard Is the Day's Introduction — Stats Behind a Top Button, Day-Synced",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3212-dashboard-is-the-days-introduction",
+  "smart_note_id": "SN-3212",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DASHBOARD/SN-3212/IB-SMART-NOTE-20261118-sn3212-dashboard-is-the-days-introduction.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This settles what the Dashboard IS, which settles what it is not: it is the introduction to the day, not the stats themselves. Everything he lists for the landing — appointments from the calendar, all the day areas, news, the personal and business feed, weather, time, date — is the day, presented whole, before any number appears. The stats are a room behind a door at the very top, and the door is day-synced: the stats you see are always the stats of the day you are standing on, and moving a day back moves the stats back with you. That is the day-sync, and he calls it essential — a stats view that shows today's numbers while you are looking at yesterday is a lie by a day. The grounding is his own settled word: stats = Dashboard (2026-11-12: \"my stats or dashboard either are same thing\"; 2026-11-16: your world is the calendar, the calendar goes into your stats / Smart Stats, which is what the current Dashboard is). The name is the one open thread, and the scorecard is honest about why: Your Stats wins because it is plain and it is yours — a stranger knows it instantly — while Smart Stats doubles Smart Score and says how not whose, Daily Stats reads like a report, Today's Stats is wrong the moment you go back a day, Stats is bare and cold, and Our Stats muddies whose the stats are. Two watch-outs ride with it: the stats page today is titled \"Smart Score Dashboard\", so the button name and the landing page's title must agree or the door lies about the room; and the standing law (2026-10-31) still holds — ONE epic universal reporting component, live time, hourly/day/month/year views, day-color-coded. The sequencing is set: the Dashboard-intro stats button rides the next Dashboard round (after the cluster eye passes); the calendar inner-page stats button rides the calendar inner pages round via amendment #3 (00:41Z). Nothing ships to him until the eye passes on each.",
+  "simple_view": "Imagine you open your Dashboard and it's like the front page of your day — what's happening today, the news, the weather, the time, everything about your day, all in one place. And if you want the numbers — how you're doing — there's a button right at the very top. You tap it, and you see the numbers for THAT day. Go back to yesterday, you see yesterday's numbers. Simple! We're still picking the button's name — \"Your Stats\" is the favorite, because the numbers are yours.",
+  "grandma_view": "Dear, the Dashboard is the hello to your day — your appointments, the news, the weather, the time and the date, everything about today, all in one place when you land. The numbers live behind a button at the very top, dear — tap it and you see how you're doing for that day, and if you go back a day, you see that day's numbers, always the right day. We're still choosing the button's name — \"Your Stats\" is the favorite, because they are your numbers, plain and simple.",
+  "naya_view": "THE DASHBOARD IS THE DAY'S INTRODUCTION — THE DAY, IN FULL, BEFORE ANY NUMBER. THE STATS LIVE BEHIND A BUTTON AT THE VERY TOP. DAY-SYNC IS ESSENTIAL: WHATEVER DAY YOU ARE ON, THE STATS SHOWN ARE THAT DAY'S. THE NAME IS HIS TO RULE — YOUR STATS IS THE 9/10 PICK.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3212",
+   "title": "The Dashboard Is the Day's Introduction — Stats Behind a Top Button, Day-Synced",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DASHBOARD/SN-3212/IB-SMART-NOTE-20261118-sn3212-dashboard-is-the-days-introduction.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DASHBOARD/SN-3212/IB-SMART-NOTE-20261118-sn3212-dashboard-is-the-days-introduction.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "469b4d56fb4cfc0d297dc3e58fc972389a24a8b8"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

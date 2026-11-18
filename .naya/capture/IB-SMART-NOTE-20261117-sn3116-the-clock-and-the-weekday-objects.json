@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3116",
+ "intelligence": {
+  "title": "The Clock and the Weekday Objects",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3116-the-clock-and-the-weekday-objects",
+  "smart_note_id": "SN-3116",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3116/IB-SMART-NOTE-20261117-sn3116-the-clock-and-the-weekday-objects.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Three laws in one look at the month view. First, no object ever covers a word: the diamond in the headliner pill overlays into the button and covers part of \"Tuesday\" — a real object never sits on top of letters, so it gets repositioned until no letter is covered. Second, the clock stops being one color and becomes live tiles: Dashboard digit tiles, dynamic, the numbers the show, the color circulating with the hour — 9 magenta, 10 red, 2 orange — the time just the time, no GMT-8, separated a little from the date, AM/PM in the same tile blocks. Why should the clock be one color? It shouldn't. Third, the weekday row stops being words with little diamonds above them and becomes real objects: black obsidian in the middle, bold white letters, the day's own color lighting up on the outside as rim + glow — the PTS/%/MONEY anatomy, the best buttons in the system, applied to Sun through Sat. And the headliner weekday stays white: he first says you'd want Tuesday to be gold, then revises in the same breath — how it is is actually nice, leave it, the white-on-gold contrast is good. The revision is the decision. This ruling is about the month view headliner he was looking at; the day-screen headliner's day-colored weekday (SN-3109/3110) is not what he was looking at and is not changed by this dictation. The honest tension to keep: the v14 checker passed the weekday row on render (Sun–Sat, straight words, diamond above each, nothing clipped) — his eye says it does not look good at all, it is just not pleasing. The checker's fit-pass and his eye disagree; his eye is ground truth, and the row gets rebuilt as objects.",
+  "simple_view": "Look — the sparkly diamond is covering up part of the word \"Tuesday\"! No object should ever cover a word. And the clock is going to be made of live number blocks that change color with the hour — 9 is magenta, 10 is red, 2 is orange — the numbers are the show! And the days of the week become real shiny objects — black in the middle, white letters, each day's color glowing around the outside, just like our best buttons!",
+  "grandma_view": "Look, love — the sparkly diamond is covering up part of the word \"Tuesday\"! No object should ever cover a word, dear. And the clock is going to be made of live number blocks that change color with the hour — 9 is magenta, 10 is red, 2 is orange — the numbers are the show! And the days of the week become real shiny objects — black in the middle, white letters, each day's color glowing around the outside, just like our best buttons!",
+  "naya_view": "NO OBJECT EVER COVERS A WORD — REPOSITION THE DIAMOND SO NO LETTER IS COVERED. NO GMT-8 — THE TIME IS JUST THE TIME. THE CLOCK IS LIVE TILES THAT CHANGE COLOR WITH THE HOUR: DASHBOARD DIGIT TILES, LIVE, DYNAMIC, THE NUMBERS ARE THE SHOW — 9 MAGENTA, 10 RED, 2 ORANGE — THE TIME SEPARATED A LITTLE FROM THE DATE, AM/PM IN THE SAME TILE BLOCKS. THE WEEKDAY ROW BECOMES REAL OBJECTS: BLACK OBSIDIAN IN THE MIDDLE, BOLD WHITE LETTERS, THE DAY'S OWN COLOR LIGHTING UP ON THE OUTSIDE AS RIM + GLOW — THE BEST BUTTONS ANATOMY. THE LITTLE DIAMONDS GO, THE UNDERLINE GOES. THE HEADLINER WEEKDAY STAYS WHITE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3116",
+   "title": "The Clock and the Weekday Objects",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3116/IB-SMART-NOTE-20261117-sn3116-the-clock-and-the-weekday-objects.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3116/IB-SMART-NOTE-20261117-sn3116-the-clock-and-the-weekday-objects.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "da119764317afb3e3065dc98def2f2399c73675d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

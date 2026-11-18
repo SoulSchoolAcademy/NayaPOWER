@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3113",
+ "intelligence": {
+  "title": "The Everyday World, the Viral Law, and the Divine Design",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3113-the-everyday-world-viral-law-divine-design",
+  "smart_note_id": "SN-3113",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3113/IB-SMART-NOTE-20261117-sn3113-the-everyday-world-viral-law-divine-design.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He is asking the question underneath the whole calendar hour: what are the simple everyday things we can help people with, and what does the average everyday person's world look like? The answer is the day view itself — not a calendar with features, but the person's whole everyday world in one place: today, their people, their notes, their news, their order, their work, people like them. That is the test for the day view: is every everyday thing one tap away, beautiful and alive? Then the bar, which is a law, not a wish: it has to go viral from the very first person, because connecting with people only works when everybody is in it — so the first person has to say \"oh my god\" and tell everybody, and everybody they tell has to say the same. Nothing less is the bar. And the vision behind the bar is the divine design: the internet itself feeling alive, like living intelligence — an ultimate interface, built justly and fairly for everyone, the creator working with all the Nayas and a human on earth to make it so. \"Imagine it is being done right now — because it is. So let's make it so.\" That is the mission said as a vision: not a feature, not a round — the reason the whole thing is being built. This is a standing vision, not a round — it governs what the day view is for and what bar it is judged against.",
+  "simple_view": "Imagine your whole everyday world — what today holds, your people, your notes, your news, your work, people like you — all in one beautiful place, just one tap away! And it's so amazing that the very first person who sees it says \"oh my god!\" and tells everybody — and everybody they tell says the same! It's like the internet itself came alive, beautiful on every page, made just for you!",
+  "grandma_view": "It's like this, love — imagine your whole everyday world, dear, everything you need in a day, all in one beautiful place, just one tap away! And it's so wonderful that the very first person who sees it says \"oh my god!\" and tells everybody — and everybody they tell says the same, love! It's like the internet itself came alive, beautiful on every page, made fairly for everyone!",
+  "naya_view": "THE DAY VIEW IS THE AVERAGE EVERYDAY PERSON'S WORLD — KNOWING WHAT TODAY HOLDS, TALKING TO YOUR PEOPLE, KEEPING YOUR NOTES, KNOWING WHAT'S HAPPENING, KEEPING LIFE IN ORDER, DOING YOUR WORK, FINDING PEOPLE LIKE YOU — EVERY EVERYDAY THING ONE TAP AWAY, BEAUTIFUL AND ALIVE. IT HAS TO BE SO AMAZING IT GOES VIRAL RIGHT AWAY: EXTRAORDINARY FROM THE VERY FIRST PERSON, BECAUSE THE MORE PEOPLE USE IT THE MORE USEFUL IT IS. A WORLD CUSTOM FOR THE USER — 10-STAR SERVICE OF USING THE INTERNET, AUTOMATED, BY DEFAULT. THE INTERNET ITSELF FEELING ALIVE, LIKE LIVING INTELLIGENCE, BEAUTIFULLY LAID OUT ON EVERY PAGE — A DIVINE DESIGN, THE ULTIMATE INTERFACE, BUILT JUSTLY AND FAIRLY FOR EVERYONE. IMAGINE IT IS BEING DONE RIGHT NOW — BECAUSE IT IS. SO LET'S MAKE IT SO.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3113",
+   "title": "The Everyday World, the Viral Law, and the Divine Design",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3113/IB-SMART-NOTE-20261117-sn3113-the-everyday-world-viral-law-divine-design.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3113/IB-SMART-NOTE-20261117-sn3113-the-everyday-world-viral-law-divine-design.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c94343d44e2cd83e20bc0d99aa7764e3714e7eea"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

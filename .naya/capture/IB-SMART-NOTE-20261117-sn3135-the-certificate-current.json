@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3135",
+ "intelligence": {
+  "title": "The Certificate — Current, Not Outdated",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3135-the-certificate-current",
+  "smart_note_id": "SN-3135",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3135/IB-SMART-NOTE-20261117-sn3135-the-certificate-current.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A certificate is a deed — the proof that you signed the agreement and the world is yours. Showing an old certificate on the page is not a small staleness; it shows a deed that is not the deed, and he named it twice in one breath: not relevant, outdated, and not updated. The current treatment was already done — the name raised and glowing on the black obsidian, in white light, elegant and beautiful — so there is nothing to invent. The fix is a harvest: take the Micheal certificate's treatment verbatim and put it where the old one stands. Never rebuild a deed from scratch when the real one already exists.",
+  "simple_view": "Your certificate is like a special golden ticket that says the world is yours! But the page was showing an old ticket — not the new beautiful one! The new one has your name raised up high, glowing beautifully on shiny black stone, in white light — so elegant! We have to show the new one, exactly as it is, never the old one!",
+  "grandma_view": "Your certificate, love, is like a special deed that says the world is yours! But the page was showing an old one — not the new beautiful one, dear! The new one has your name raised up high, glowing beautifully on shiny black stone, in white light — so elegant! We have to show the new one, exactly as it is, never the old one!",
+  "naya_view": "THE /FREE CERTIFICATE PAGE MUST SHOW THE CURRENT CERTIFICATE, NEVER AN OUTDATED ONE. THE CURRENT TREATMENT, ALREADY DONE: THE NAME ELEVATED, RAISED, BEAUTIFUL, ALMOST GLOWING, ON BLACK OBSIDIAN, THE NAME IN WHITE LIGHT — ELEGANT AND BEAUTIFUL. THE REFERENCE IS THE MICHEAL CERTIFICATE, Nº 000204. THE NAME BOX IS THE DEED — ELEVATED OBSIDIAN PLAQUE, PURPLE UNDERGLOW, THE TYPED NAME AS THE SIGNATURE, SEAL STAMPS ON ENTRY; ONE TREATMENT IN ALL THREE PLACES. HARVEST VERBATIM FROM THE MICHEAL CERTIFICATE, NEVER REBUILT FROM SCRATCH.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3135",
+   "title": "The Certificate — Current, Not Outdated",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3135/IB-SMART-NOTE-20261117-sn3135-the-certificate-current.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3135/IB-SMART-NOTE-20261117-sn3135-the-certificate-current.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "87e91fc3a5f35b0cccd99c4171c4b098c7b85b18"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

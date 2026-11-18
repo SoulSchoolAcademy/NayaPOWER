@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3124",
+ "intelligence": {
+  "title": "The Agreement Unfold Becomes the Template",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3124-the-agreement-unfold-becomes-the-template",
+  "smart_note_id": "SN-3124",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3124/IB-SMART-NOTE-20261117-sn3124-the-agreement-unfold-becomes-the-template.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the sequence that turns the correction into the template. First the rule, stated as plainly as it can be: once it's completed, it's not completed — I've not seen any evidence it was completed. Completion without evidence shown to him is not completion. Then the build: take that formatting — that exact structure and coding — and create the About page and Skills page in Personal, and the Smart Hub, and all the other pages, so they are done right. Not a look-alike, not a fresh version — that exact formatting, harvested verbatim. And the reason it matters is the signup flow: when people sign up and answer about themselves, THAT page gets filled out with their answers; their skills get shown, output into a beautiful image board they can change out — the same presentation, but with their own image. The agreement unfold is not one page; it is the way every personal page is made. And the sequence is set, so the rounds do not collide: the agreement unfold is proven first, evidence shown to him, and only then does its exact formatting become About and Skills everywhere. The Personal round's presentation build waits for the proven unfold and harvests its exact structure; the data-source side — the answers feeding the pages — proceeds now. Waiting is not stopping: the data moves while the presentation waits for its template. That is the discipline: prove the one, then clone the proven one. It rides with SN-3123 (never completed, never shown): SN-3123 names the failure — the whole was never built and never shown; this note names the repair — prove the one, then make everything from it.",
+  "simple_view": "\"Once it's completed, it's not completed — I haven't seen any proof!\" So FIRST we prove the agreement unfold — show it to him, all done right! THEN we take that exact same beautiful formatting and make About and Skills everywhere from it — Personal, the Hub, all the pages! When people sign up and answer about themselves, their page fills up with their answers, and their skills become a beautiful picture board they can swap — same presentation, their very own picture!",
+  "grandma_view": "\"Once it's completed, it's not completed — I haven't seen any proof!\" So FIRST we prove the agreement unfold, love — show it to him, all done right! THEN we take that exact same beautiful formatting and make About and Skills everywhere from it — Personal, the Hub, all the pages! When people sign up and answer about themselves, their page fills up with their answers, dear, and their skills become a beautiful picture board they can swap — same presentation, their very own picture!",
+  "naya_view": "ONCE IT'S COMPLETED, IT'S NOT COMPLETED — I'VE NOT SEEN ANY EVIDENCE IT WAS COMPLETED. COMPLETION WITHOUT EVIDENCE SHOWN TO HIM IS NOT COMPLETION. PROVE THE AGREEMENT UNFOLD FIRST — EVIDENCE SHOWN TO HIM. THEN TAKE THAT FORMATTING — THAT EXACT STRUCTURE AND CODING — AND CREATE THE ABOUT PAGE AND SKILLS PAGE IN PERSONAL, AND THE SMART HUB, AND ALL THE OTHER PAGES. WHEN PEOPLE SIGN UP AND ANSWER ABOUT THEMSELVES, THAT PAGE GETS FILLED OUT WITH THEIR ANSWERS; THEIR SKILLS GET SHOWN, OUTPUT INTO A BEAUTIFUL IMAGE BOARD THEY CAN CHANGE OUT — THE SAME PRESENTATION, BUT WITH THEIR OWN IMAGE. PROVE THE ONE, THEN CLONE THE PROVEN ONE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3124",
+   "title": "The Agreement Unfold Becomes the Template",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3124/IB-SMART-NOTE-20261117-sn3124-the-agreement-unfold-becomes-the-template.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3124/IB-SMART-NOTE-20261117-sn3124-the-agreement-unfold-becomes-the-template.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "10015aafc4fab136122e966aba6399920307fcb1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

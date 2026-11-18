@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3205",
+ "intelligence": {
+  "title": "The Emblem Is the North Star for All Art",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3205-the-emblem-is-the-north-star-for-all-art",
+  "smart_note_id": "SN-3205",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3205/IB-SMART-NOTE-20261117-sn3205-the-emblem-is-the-north-star-for-all-art.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the first time the quality bar has a picture instead of a paragraph. Every law before it said \"real object\" in words — the Real Object Law, the 3D law, objectnality — and the mockups still came back flat, because words leave room. The emblem leaves none: a purple diamond jewel in a silver winged crown frame, faceted, real materials, real light with volume, real depth. Hold any icon next to it and the verdict is instant — does it look just real like that, or does it look like a picture OF a jewel? The captain's honest 6/10 is the point of the note, not an embarrassment in it: the machine scored its own art against the emblem and found flat shaded circles and pills. A 6 that knows it is a 6 can climb; a 6 that calls itself a 10 cannot. The bar is now a thing you can see, not a thing you can argue with — and it applies to everything, every icon, every button, every star, every diamond, everywhere, from now on. Nothing low-level survives a comparison with the emblem.",
+  "simple_view": "Imagine the most beautiful jewel you have ever seen — a purple diamond, shiny and faceted, sitting in a silver crown with wings. Now imagine every little button and star and icon on the page has to look just as real as that jewel — not a drawing of a jewel, but the jewel itself, something you could pick up. My drawings only scored six out of ten next to it — they were flat pictures of jewels, not real jewels. So now the jewel is the teacher: everything we make has to look just as real as that. Nothing low-level, nothing flat.",
+  "grandma_view": "Dear, he gave us the picture to judge everything by — a beautiful purple diamond jewel in a silver crown with wings, real jewelry, shining with real light and real depth. Every icon, every button, every star, every diamond on the page must be made to that quality, so the whole thing looks just real like that. My own little drawings only scored about six out of ten next to it — flat shaded circles and pills, pictures of objects rather than the objects themselves. But knowing the honest score is how we climb: the jewel is the North Star now, and nothing low-level gets past it.",
+  "naya_view": "THE EMBLEM IS THE NORTH STAR FOR ALL ART. EVERY ICON, EVERY BUTTON, EVERY STAR, EVERY DIAMOND — REAL JEWELRY, FACETED, REAL MATERIALS, REAL LIGHT WITH VOLUME, REAL DEPTH. MY MOCKUP ART IS 6/10 AGAINST ITS 10/10 — PICTURES OF OBJECTS, NOT OBJECTS. NOTHING LOW-LEVEL. THE BAR IS THE EMBLEM.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3205",
+   "title": "The Emblem Is the North Star for All Art",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3205/IB-SMART-NOTE-20261117-sn3205-the-emblem-is-the-north-star-for-all-art.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3205/IB-SMART-NOTE-20261117-sn3205-the-emblem-is-the-north-star-for-all-art.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6ffc820d1bfbf62162f4ef83d09e5f6d087048df"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

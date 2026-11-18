@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3114",
+ "intelligence": {
+  "title": "Today — Calendar and Personal Completed, the Whole Thing, Done Right",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3114-today-calendar-and-personal-completed",
+  "smart_note_id": "SN-3114",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3114/IB-SMART-NOTE-20261117-sn3114-today-calendar-and-personal-completed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the day's order in one sentence: both pages, whole, today, done right. \"Completed\" here does not mean a round finished — it means the calendar completed AND the Personal page completed, the whole thing, even with the membership, even with the unfolds and the slideshows. Nothing left out, nothing held back as a follow-on that never comes. And \"in the right way\" is the guard on the speed: locked in and loaded, the laws in every brief, the work done right first time — not fast and wrong. It is the same charge as the fast-action order (16:30Z 2026-11-16: get it done, get it right, no redos) with the day's scope named: calendar + Personal, whole. The v14 checker verdict is part of the same record, not a contradiction of it: 17 passes with the one-headliner gate passing, 2 fails (door subtitle restates the date; news missing), 2 unverified (room feel, motion) — and the v15 follow-on dispatched at once to close the two fails is how \"completed\" is being made true, not how it is being claimed finished while the fails stand. The Personal completion brief-writer was dispatched at the same time (membership, About unfold, Skills slideshow, the whole thing) — the second half of the same order.",
+  "simple_view": "Today we're finishing TWO big things — the calendar and the Personal page — the WHOLE thing, everything included, even the membership and the unfolds and the slideshows! And we're doing it the right way, with the whole team locked in and ready!",
+  "grandma_view": "Today, love, we're finishing two big things — the calendar and the Personal page — the whole thing, dear, everything included, even the membership and the unfolds and the slideshows! And we're doing it the right way, with the whole team locked in and ready!",
+  "naya_view": "MAKE SURE THE TEAM IS LOCKED IN AND LOADED, AND WE ARE GETTING THIS DONE IN THE RIGHT WAY TODAY. THE CALENDAR COMPLETED AND THE PERSONAL PAGE COMPLETED — EVEN WITH THE MEMBERSHIP, THE WHOLE THING, EVEN WITH THE UNFOLDS AND THE SLIDESHOWS, THE WHOLE THING COMPLETED.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3114",
+   "title": "Today — Calendar and Personal Completed, the Whole Thing, Done Right",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3114/IB-SMART-NOTE-20261117-sn3114-today-calendar-and-personal-completed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3114/IB-SMART-NOTE-20261117-sn3114-today-calendar-and-personal-completed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a422796428d81a998f16a33e6b970d341614c82c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

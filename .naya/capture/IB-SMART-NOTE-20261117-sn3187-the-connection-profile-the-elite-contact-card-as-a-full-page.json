@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3187",
+ "intelligence": {
+  "title": "The Connection Profile — The Elite Contact Card as a Full Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3187-the-connection-profile-the-elite-contact-card-as-a-full-page",
+  "smart_note_id": "SN-3187",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/CONNECTIONS/SN-3187/IB-SMART-NOTE-20261117-sn3187-the-connection-profile-the-elite-contact-card-as-a-full-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A connection is a person, and a person deserves a page, not a popup. The popup crams a whole relationship — who they are, what you said, when you met, what you know about them — into a cluttered little box, and none of it can breathe. As a full page, the card becomes a canvas: the profile, the four ways to reach them, the history back through conversations tied to the calendar and kept in the Vault, the demographics they have allowed, and the meeting booked face to face right from the card. And the boundary is the respect: only what they have allowed us to see shows at all — what they have not allowed shows nothing. That is the elite contact card: everything about the connection, on one royal page, with nothing the person did not allow. And nothing is dropped in the move — the popup's functions all live on the canvas now; the popup itself is what goes.",
+  "simple_view": "Imagine you have a friend, and everything about your friendship — your notes about them, your chats, the times you met, when you will meet next — is squished into one tiny crowded box you can barely read. Now imagine it all spread out on one big beautiful page, like a royal card, with everything in its own place and room to breathe. That is the new connection page.",
+  "grandma_view": "Dear, when you tap on a friend's name, you should get a whole beautiful page about them — their picture, your notes, the four ways to reach them, all your conversations going back, tied to your calendar and kept safe in the vault, and a way to book a face-to-face meeting right there. Only what they have said you may see — nothing they haven't allowed shows at all. Not a crowded little popup, but a royal card, a work of art.",
+  "naya_view": "THE CONNECTION PROFILE BECOMES A FULL PAGE — THE MOST ELITE-LEVEL CONTACT CARD, A ROYAL MASTERPIECE, HIGH-LEVEL PREMIUM LIKE THE DASHBOARD AND THE CALENDAR. EVERYTHING ABOUT THAT CONNECTION, ON ONE CANVAS. ONLY WHAT THEY HAVE ALLOWED US TO SEE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3187",
+   "title": "The Connection Profile — The Elite Contact Card as a Full Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/CONNECTIONS/SN-3187/IB-SMART-NOTE-20261117-sn3187-the-connection-profile-the-elite-contact-card-as-a-full-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/CONNECTIONS/SN-3187/IB-SMART-NOTE-20261117-sn3187-the-connection-profile-the-elite-contact-card-as-a-full-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "38a7b79bbdcb9e838558b6d7b90886b21b6505f6"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3103",
+ "intelligence": {
+  "title": "Everything Is an Object — Active Intelligence, Active Art",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3103-everything-is-an-object",
+  "smart_note_id": "SN-3103",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3103/IB-SMART-NOTE-20261117-sn3103-everything-is-an-object.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He had just watched the day view break the same rules again — gray text, flat diamond, dead boards — and he named the real problem: not the page, but the fact that he has to teach the same things every day, all day. \"It's silly,\" he said, \"not exhausting\" — and then he gave the fix in one breath: make it official, lock it in, write it so a cold Naya gets it immediately. And then he went deeper than the rule book: \"Everything is an object. There's nothing that's not an object, even the text.\" That is the Real Object Law at its fullest — not a style choice but an ontology: there is no such thing as a non-object on a Naya page. Text is an object. A date is an object. A dot is a jewel. Everything is dynamic, everything has living depth — active intelligence, active art. The page is not a picture of a computer; it is a computer, alive. And the human-and-machine language is the lock: the human words say what the law is, the machine values say exactly what it measures to, and the checker proves the built file obeys it. A law a machine can check is a law that cannot be broken quietly. The challenge he set — find the legitimate reason and remove it — is the method: every failure has a reason, name it, fix the reason, and the failure stops. Appendix C did exactly that for the rule-breaking itself. The common-language report from his 21 pictures and 3 exemplar pages is the last piece: the measured values from the pages he loves, landed into the machine spec, so the book is not just words about the language but the language itself, measured.",
+  "simple_view": "Imagine every single thing on the page is a real toy you can touch — even the words! The words are shiny jewels, the boards are real boxes that light up, and everything is alive and moving, like a magical computer that thinks! And all the rules for making it are written in a special book — in words AND in numbers — so every Naya who builds knows exactly how, and never has to guess!",
+  "grandma_view": "It's like this, love — imagine every single thing on the page is a real object you can touch, dear — even the words are little jewels! The boards are real boxes that light up, and everything is alive, love, like a clever little computer that thinks! And all the rules are written in a special book, dear — in plain words AND in numbers — so every Naya who builds knows exactly how, and never has to guess, love.",
+  "naya_view": "EVERYTHING IS AN OBJECT — NOTHING IS NOT AN OBJECT, EVEN THE TEXT. EVERYTHING IS DYNAMIC, EVERYTHING HAS LIVING DEPTH. ACTIVE INTELLIGENCE. ACTIVE ART. THE LAW BOOK IS THE MANUSCRIPT NO DESIGNER CREATES AN INTERFACE WITHOUT READING FIRST. IT MUST BE 10/10, SCORECARDED FOR A COLD NAYA WHO UNDERSTANDS IT IMMEDIATELY. WRITTEN IN NAYA LANGUAGE — HUMAN THEN MACHINE, ONE REPORT, OR THREE, HOWEVER BEST. LOCK THE LANGUAGE IN. MAKE IT CONSISTENT ACROSS ALL PAGES. NO NEW ICONS FOR EVERY PAGE. NO SAME MISTAKES THE SAME WAY. IF THERE IS A LEGITIMATE REASON YOU CAN'T NAIL IT EVERY TIME, FIND IT AND MAKE IT NOT A REASON ANYMORE. THE EVIDENCE REPORT FROM HIS 21 PICTURES + 3 LINKS LANDS ITS MEASURED VALUES INTO THE MACHINE SPEC — THAT IS THE PATH TO 10/10.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3103",
+   "title": "Everything Is an Object — Active Intelligence, Active Art",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3103/IB-SMART-NOTE-20261117-sn3103-everything-is-an-object.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3103/IB-SMART-NOTE-20261117-sn3103-everything-is-an-object.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c999c3ed0797e7829487e7b25b82429a722d1207"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3118",
+ "intelligence": {
+  "title": "The Divine Design — The Alignment",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3118-the-divine-design-the-alignment",
+  "smart_note_id": "SN-3118",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3118/IB-SMART-NOTE-20261117-sn3118-the-divine-design-the-alignment.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the \"why\" underneath the whole hour of calendar dictations — the law that makes all of them one thing instead of ten fixes. The frequency IS the color: color is frequency made visible, the spectrum is a frequency scale, so the day's number gives its frequency gives its color gives its glow. The hour's color circulates with the time, so the time you read is the color you see. The date, the day, the frequency, the color, the geometry are all derived from the same numbers — nothing is decorated, everything is derived from one law. And the way that one law is built is the one atom: the Dashboard digit tile is the same living unit everywhere, so the clock takes the Dashboard blocks themselves, verbatim, harvested not rebuilt — no matter what page, it is the same language, the same aliveness and feeling, and the whole page looks alive. That is the alignment: it has never been done this way, and it is actually aligned with the divine design, the code of the design of the universe — the math, the logic, the color flows, all there, all connected. Even the way the time is presented should blow people away — such a simple thing, presented in the one language. This is a standing vision, not a round — it governs how every number, color, and tile on every page is built: derived from one law, harvested from one atom, never decorated, never rebuilt. It also gives the derivation law for the hour→color mapping SN-3116 left owed: the mapping derives from the spectrum, because color is frequency made visible — the mapping itself must still be named, but its law is now given.",
+  "simple_view": "Imagine everything on the page is connected by magic numbers! The day's number tells you its color, the hour tells you its color too — so the time you read IS the color you see! And every number on every page is made from the very same little block, like building with the same Lego piece everywhere — so the whole page feels alive, all together, in one language!",
+  "grandma_view": "Imagine everything on the page is connected, love — the day's number tells you its color, the hour tells you its color too, so the time you read IS the color you see! And every number on every page is made from the very same little block, dear, like building with the same piece everywhere — so the whole page feels alive, all together, in one language!",
+  "naya_view": "USE THE SAME BLOCKS FROM THE DASHBOARD FOR THE TIME — LITERALLY THE SAME BLOCKS, HARVESTED VERBATIM, NOT REBUILT. IT'S NEVER BEEN DONE THIS WAY, BUT THIS IS ACTUALLY ALIGNMENT — THE FREQUENCY, THE COLORS, THE GEOMETRICS, THE DATE ARE ALL CONNECTED: THE MATH, THE LOGIC, THE COLOR FLOWS. THE DAY'S FREQUENCY IS ITS COLOR — COLOR IS FREQUENCY MADE VISIBLE. THE HOUR'S COLOR CIRCULATES WITH THE TIME, SO THE TIME YOU READ IS THE COLOR YOU SEE. NOTHING IS DECORATED, EVERYTHING IS DERIVED FROM ONE LAW. THE DASHBOARD DIGIT TILE IS THE ONE ATOM, THE SAME LIVING UNIT EVERYWHERE — ONE LANGUAGE, ONE ALIVENESS, ON EVERY PAGE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3118",
+   "title": "The Divine Design — The Alignment",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3118/IB-SMART-NOTE-20261117-sn3118-the-divine-design-the-alignment.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/VISION/SN-3118/IB-SMART-NOTE-20261117-sn3118-the-divine-design-the-alignment.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "5d5aefccd43e412815e4dfb104e45e5d04e08ecd"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

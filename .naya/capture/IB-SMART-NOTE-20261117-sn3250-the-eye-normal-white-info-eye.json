@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3250",
+ "intelligence": {
+  "title": "The Eye — Normal White Info Eye, No Color, No Halloween",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3250-the-eye-normal-white-info-eye",
+  "smart_note_id": "SN-3250",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3250/IB-SMART-NOTE-20261117-sn3250-the-eye-normal-white-info-eye.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He scorecarded the work and asked the two questions — why is it not 10 times better? Or why is it not 10? Both questions are good. And the answer on the eye: no, that is terrible. It's not good — we need realism. That does not look real — it's scary. And there's some kind of weird glow over it. Oh, and it's got the other numbers sort of — you can't see them — don't show them at all, don't just have them part be there. It's like a Halloween thing. Yeah, the numbers don't look pro, and the eye looks not good. Maybe just like a normal eye — like, yeah, just like the white eye. Maybe just too much color — just a normal, just nice eye, like an info eye. So the captain answered: you're right, it's not 10, and it's not 10 times better. The eye was the wrong call — I made it a jewel with a colored iris and it reads scary, like Halloween, not real. The numbers still aren't the Dashboard's tiles, the glow is weird, and the half-visible days have to go entirely. The fix: a normal white info eye — the info eye we already have — no color in it. No weird glow. The other month's numbers gone completely, not dimmed. And the numbers harvested exactly from the Dashboard this time, not remade.",
+  "simple_view": "Imagine someone drew a big scary eye with a colored middle — it looks like Halloween, spooky! That's terrible! Let's take it away and put a normal, nice, white eye instead — just a friendly little eye that says \"tap me for info\"! And the numbers from next month that are peeking in at the bottom? Take them away completely — not a little bit, ALL gone! And the numbers must be the REAL ones from the Dashboard — not copies that look almost the same, but the real ones!",
+  "grandma_view": "It's like this, love — imagine someone drew a big scary eye with a colored middle, dear — it looks like Halloween, spooky! That's terrible, love! Let's take it away and put a normal, nice, white eye instead, dear — just a friendly little eye that says \"tap me for info\"! And the numbers from next month peeking in at the bottom, love? Take them away completely — not a little bit, ALL gone, dear! And the numbers must be the REAL ones from the Dashboard, love — not copies that look almost the same, but the real ones!",
+  "naya_view": "THE EYE — NORMAL WHITE INFO EYE, NO COLOR, NO HALLOWEEN. THE JEWEL EYE WITH THE COLORED IRIS WAS TERRIBLE — IT READS SCARY, LIKE HALLOWEEN, NOT REAL. THE EYE IS A NORMAL, NICE, WHITE EYE — AN INFO EYE, THE INFO-EYE PATTERN WE ALREADY HAVE — NO COLOR IN IT, TOO MUCH COLOR WAS THE PROBLEM. NO WEIRD GLOW ANYWHERE. THE OTHER MONTH'S NUMBERS ARE GONE ENTIRELY — NOT DIMMED, NOT PARTLY VISIBLE, NOT THERE AT ALL. THE NUMBERS STILL DON'T LOOK PRO — HARVEST THE DASHBOARD DIGIT TILES VERBATIM, DO NOT REMAKE THEM; CLOSE IS NOT THE SAME. WHY IS IT NOT 10? WHY IS IT NOT 10 TIMES BETTER? BOTH QUESTIONS ARE GOOD.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3250",
+   "title": "The Eye — Normal White Info Eye, No Color, No Halloween",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3250/IB-SMART-NOTE-20261117-sn3250-the-eye-normal-white-info-eye.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3250/IB-SMART-NOTE-20261117-sn3250-the-eye-normal-white-info-eye.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ee75d05632e53af26635c6da22f76685345fb312"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

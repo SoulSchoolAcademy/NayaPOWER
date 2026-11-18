@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3273",
+ "intelligence": {
+  "title": "Prove the One, Then Clone It Everywhere",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3273-prove-the-one-then-clone-it-everywhere",
+  "smart_note_id": "SN-3273",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3273/IB-SMART-NOTE-20261118-sn3273-prove-the-one-then-clone-it-everywhere.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a workshop where nothing leaves the bench until the master has held it in his hands — not the parts, not a photo of the parts, the whole thing, finished. That is the rule this hour lays down, and everything else is what follows from it. The Code, the Language and the Law are three separate governors, not one blurry book — decisions, expression, and building each have their own keeper, and the loop of six verbs runs them all: understand completely, choose intelligently, create beautifully, act responsibly, prove the result, preserve what was learned. The crack the hour found is an honest one: a missing number dressed as a 0 is a lie the page tells with a straight face, and a checker that reads names instead of values is a guard who checks badges instead of faces — useful at the gate, never the proof. So the unknown wears a state, never a number, and the proof is always his eye.\n\nThen the shape of the work: one proven thing, cloned. The agreement unfold is proven first — the full agreement, unfolding properly, in front of him — and only then does its exact formatting become About and Skills everywhere, with a stranger's signup answers filling the same beautiful presentation, their skills on a board they can change. About and Skills each get both faces — unfold and slideshow — from one source, so nothing drifts. The day becomes one room, everything that day holds already inside it, the + button its pen, the scroll its walk between rooms. The Hub's colors walk the fixed spectrum road, never doubled up, because doubled colors throw his perspective off and a page that throws his perspective off is not ten stars. Connections is a directory with one sentence of purpose, and the sidebar gives every world the same four doors in the same order, with the directories gathering everything in one place. And the inspector is the hand that closes the loop: report, then fix, immediately — a list of what is wrong is never the deliverable, the fixed link is.",
+  "simple_view": "Nothing is done until Shawn has seen the whole thing done right! First we prove one beautiful thing — the agreement unfolding, all done right, right in front of him! Then we take that exact same shape and make every page from it! The day lives in one room, with everything inside it! Colors walk one rainbow road, in the same order, never doubled up! And the inspector checks every link, one by one, and fixes each one right away — no big list of broken things, just fixed things!",
+  "grandma_view": "Nothing is done until Shawn has seen the whole thing done right, love! First we prove one beautiful thing — the agreement unfolding, all done right, right in front of him! Then we take that exact same shape and make every page from it, dear! The day lives in one room, with everything inside it! Colors walk one rainbow road, in the same order, never doubled up side by side! And the inspector checks every link, one by one, and fixes each one straight away — no big list of broken things, just fixed things, love!",
+  "naya_view": "NOTHING IS DONE UNTIL HE HAS SEEN THE WHOLE OF IT, DONE RIGHT, ON HIS SCREEN. THE CODE GOVERNS DECISIONS. THE LANGUAGE GOVERNS EXPRESSION. THE DESIGN LAW GOVERNS BUILDING AND VERIFICATION. UNDERSTAND COMPLETELY. CHOOSE INTELLIGENTLY. CREATE BEAUTIFULLY. ACT RESPONSIBLY. PROVE THE RESULT. PRESERVE WHAT WAS LEARNED. A REAL ZERO SHOWS AS A TILE. THE UNKNOWN SHOWS AS A STATE. THE CHECKER IS AN EARLY GATE, NEVER THE PROOF. PROVE THE AGREEMENT UNFOLD FIRST — THEN TAKE THAT EXACT STRUCTURE AND CODING AND MAKE ABOUT, SKILLS, THE HUB AND EVERY PERSONAL PAGE FROM IT. THE DAY IS ONE PLACE. THE SPECTRUM FLOW NEVER CHANGES ORDER — MAGENTA, PURPLE, INDIGO, CYAN, GREEN, GOLD, ORANGE, RED, BACK TO MAGENTA — NEVER DOUBLED UP BESIDE ITSELF. THE INSPECTOR REPORTS, THEN FIXES, IMMEDIATELY. NEVER COME BACK WITH A LIST OF WHAT IS WRONG.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3273",
+   "title": "Prove the One, Then Clone It Everywhere",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3273/IB-SMART-NOTE-20261118-sn3273-prove-the-one-then-clone-it-everywhere.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3273/IB-SMART-NOTE-20261118-sn3273-prove-the-one-then-clone-it-everywhere.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "04160ad832b6d6498c0a1353063139e28435f747"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

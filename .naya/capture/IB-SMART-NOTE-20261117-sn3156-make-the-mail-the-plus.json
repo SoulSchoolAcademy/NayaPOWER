@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3156",
+ "intelligence": {
+  "title": "\"Make the Mail the Plus\" — Confirmed",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3156-make-the-mail-the-plus",
+  "smart_note_id": "SN-3156",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3156/IB-SMART-NOTE-20261117-sn3156-make-the-mail-the-plus.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A guess left open becomes a wrong button: if the reading had been wrong, the mail page would have shipped a control he never asked for. His 👍 turns the reading into his word, and the \"+\" is now the compose control by his decision, not by a seat's interpretation. A clean \"+\" is the push-button-simple answer to composing mail — one mark, one tap, no label, no banner — and it matches the mail page he asked for: flush to the top, no wasted space, extraordinary presentation, optimized for the page.",
+  "simple_view": "The mail button is a big clean plus sign now — one tap and you write a new letter! He said yes to the plus!",
+  "grandma_view": "The mail button is a big clean plus sign now, dear — one tap and you write a new letter! He said yes to the plus!",
+  "naya_view": "\"MAKE THE MAIL THE PLUS\" — CONFIRMED 21:05Z. THE COMPOSE CONTROL IS A CLEAN \"+\". ONE MARK, ONE TAP, NO LABEL, NO BANNER. HIS WORD, NOT A SEAT'S READING.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3156",
+   "title": "\"Make the Mail the Plus\" — Confirmed",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3156/IB-SMART-NOTE-20261117-sn3156-make-the-mail-the-plus.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DECISION/SN-3156/IB-SMART-NOTE-20261117-sn3156-make-the-mail-the-plus.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d1bf5614615f2ab819d26ddbdfedd778bb260b64"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

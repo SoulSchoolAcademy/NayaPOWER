@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3155",
+ "intelligence": {
+  "title": "Which Is Most Beautiful + What the Emblem Says",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3155-which-is-most-beautiful",
+  "smart_note_id": "SN-3155",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3155/IB-SMART-NOTE-20261117-sn3155-which-is-most-beautiful.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He asked what it says, not what it is — because an emblem is not a logo, it is a voice. What this one says is \"this is for real\": a crowned jewel with wings reads like something from a vault, not a screen, and a seal on a deed reads official, precious, yours. That is the feeling the official areas have to carry, and it is why the render matters: the sharper crown, the more real wings, the more light in the diamond — that is what makes the eye say \"wow, that looks for real.\" Keep the same quality is the whole instruction: wherever the emblem goes, it must look as real as the original, or it stops saying what it says.",
+  "simple_view": "Which one is the prettiest? The second one! The crown is sharper and the diamond sparkles more. And what does it say? It says: this is for real! Like a real jewel from a treasure chest, with wings!",
+  "grandma_view": "Which one is the prettiest, dear? The second one! The crown is sharper and the diamond sparkles more. And what does it say? It says: this is for real! Like a real jewel from a treasure chest, with wings!",
+  "naya_view": "WHICH IS MOST BEAUTIFUL? THE SECOND RENDER — NAYA_ICON.PNG — THE CROWN SHARPER, THE WINGS MORE REAL, THE DIAMOND MORE LIGHT. WHAT DOES IT SAY? THIS IS FOR REAL — A CROWNED JEWEL WITH WINGS, LIKE SOMETHING FROM A VAULT, NOT A SCREEN. A SEAL ON A DEED. OFFICIAL, PRECIOUS, YOURS. PUT IT ON THE CORNER ON AN ANGLE, KEEP THE SAME QUALITY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3155",
+   "title": "Which Is Most Beautiful + What the Emblem Says",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3155/IB-SMART-NOTE-20261117-sn3155-which-is-most-beautiful.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/DESIGN/SN-3155/IB-SMART-NOTE-20261117-sn3155-which-is-most-beautiful.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "08f053ba0f09cf3d0561d2e38bdf133d835e4763"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

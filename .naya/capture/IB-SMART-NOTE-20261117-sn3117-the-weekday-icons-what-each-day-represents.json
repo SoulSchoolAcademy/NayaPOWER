@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3117",
+ "intelligence": {
+  "title": "The Weekday Icons — What Each Day Represents",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3117-the-weekday-icons-what-each-day-represents",
+  "smart_note_id": "SN-3117",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3117/IB-SMART-NOTE-20261117-sn3117-the-weekday-icons-what-each-day-represents.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The weekday objects were already going to be real objects — obsidian in the middle, the day's color glowing around the outside (SN-3116). He is adding the second half of what makes an object feel real: an effect so it presents a lot better, and an icon that is unique to the day and means something. Sunday is the crown chakra, 963 — a crown. The icon is not decoration; it is what the day represents, made visible. That is the difference between seven matching buttons and seven objects that each mean something: the crown tells you what Sunday is before you read the letters. And the method is his: think of what the day represents first, then make the icon that is relevant to it — the meaning comes before the mark. He made the mock himself, quick, to show the shape — \"you can probably do something even better\" — which is the same discernment he asked for all hour: take the shape, make it better, don't paste it. The other six days' meanings are open work, not guessed: he named Sunday only, and the team must think through what Monday through Saturday represent before drawing their icons. A guessed icon would be decoration; a thought-through one is the day's meaning.",
+  "simple_view": "Each day gets its very own special picture! Sunday is the crown chakra — so it gets a beautiful crown! Every day gets a picture that shows what that day means — you can tell what the day is just by looking at its picture!",
+  "grandma_view": "Each day gets its very own special picture, love! Sunday is the crown chakra — so it gets a beautiful crown! Every day gets a picture that shows what that day means, dear — you can tell what the day is just by looking at its picture!",
+  "naya_view": "GIVE EACH WEEKDAY OBJECT AN EFFECT SO IT PRESENTS A LOT BETTER — AND A MATCHING BEAUTIFUL ICON, UNIQUE FOR THE DAY, SUITABLE FOR WHAT THE DAY REPRESENTS. SUNDAY IS THE CROWN CHAKRA, 963 — SO MAYBE A CROWN. THINK OF WHAT THE DAY REPRESENTS FIRST, THEN MAKE THE ICON THAT IS RELEVANT TO IT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3117",
+   "title": "The Weekday Icons — What Each Day Represents",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3117/IB-SMART-NOTE-20261117-sn3117-the-weekday-icons-what-each-day-represents.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3117/IB-SMART-NOTE-20261117-sn3117-the-weekday-icons-what-each-day-represents.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0aade0a6c15bc2d00c59b1902672a5bf1ecdc2cc"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

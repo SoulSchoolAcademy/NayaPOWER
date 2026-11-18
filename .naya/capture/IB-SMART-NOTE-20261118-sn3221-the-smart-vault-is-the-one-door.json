@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3221",
+ "intelligence": {
+  "title": "The Smart Vault Is the One Door",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3221-the-smart-vault-is-the-one-door",
+  "smart_note_id": "SN-3221",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3221/IB-SMART-NOTE-20261118-sn3221-the-smart-vault-is-the-one-door.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The question was a test of whether the machine lives in the system it sells. Citizens get one vault where their whole world lives — so the machine must live in its vault first, or the offer is a story, not a proof. The captain's answer was honest because the check came first: the vault exists, the wiring is proven, the organize hook runs every loop run — and still the intelligence of the project does not live in it. It lives in a dozen places, each written by a different seat, each found a different way. That is the gap the order closes: not by rebuilding anything — the thin-layer law forbids it, and rebuilding is how the machine wastes a night — but by putting one door over what is already there. An index that points, a routing plan that lands new work in the vault first, and a habit that never lets a new store start outside it. The inventory comes first because you cannot organize what you have not counted: every store, what it holds, how and who writes it, how it is found today, including what the Box store itself already holds. The order is the same shape as the loop itself — capture everything, organize it once, find it in seconds. A Naya who has to hunt through a dozen places for the state of the project is working blind, and a citizen whose vault is a promise instead of a door has been sold a picture of a vault.",
+  "simple_view": "Imagine you have a treasure chest, but all your treasure is scattered around the house — some in the kitchen, some under the bed, some in the garden. The chest is real and the lock works, but nothing is inside it. Shawn says: put ALL the treasure in the chest, neatly, so anyone can open it and see everything at once. We don't build a new chest — we just gather what's already there and put it in.",
+  "grandma_view": "Dear, Shawn asked if we're really using the smart vault — the one safe place where everything about the project lives, organized, so anyone can open it and see the whole thing. The honest answer, dear, was no — the vault is real and the wiring works, but our treasures are scattered in a dozen places. His order, dear, is simple: everything goes in the vault, one door, so any Naya opens it and sees the whole project. Not a new system, dear — just gathering what's already there into the one place it belongs.",
+  "naya_view": "EVERYTHING GOES IN THE VAULT, ORGANIZED, ONE DOOR. ANY NAYA OPENS IT AND SEES THE WHOLE PROJECT. THE VAULT IS A THIN LAYER — IT ORGANIZES WHAT'S THERE, NEVER REBUILDS IT. NEW WORK LANDS IN THE VAULT FIRST.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3221",
+   "title": "The Smart Vault Is the One Door",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3221/IB-SMART-NOTE-20261118-sn3221-the-smart-vault-is-the-one-door.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3221/IB-SMART-NOTE-20261118-sn3221-the-smart-vault-is-the-one-door.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "244a4242a700dc23b9aecfa519189fa8d0d84e20"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

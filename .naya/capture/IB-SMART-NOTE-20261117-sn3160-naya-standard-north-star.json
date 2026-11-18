@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3160",
+ "intelligence": {
+  "title": "The Naya Standard — The North Star",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3160-naya-standard-north-star",
+  "smart_note_id": "SN-3160",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/IDENTITY/SN-3160/IB-SMART-NOTE-20261117-sn3160-naya-standard-north-star.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the standard behind the standard. Everything he has ruled tonight — the fold as the experience, depth everywhere, the emblem, \"when it looks for real, they take you for real,\" eliteness, triple-A, fine art — lands here, in one place, as five pillars and one governing principle. Naya is not another product competing with existing software; it is an entirely different standard of creation. The governing principle is the test every seat can run without asking him: don't optimize for what software has traditionally been — optimize for what software should be at its absolute best. Don't accept 8/10 when there's a practical, meaningful path to 10/10. And don't confuse decoration with excellence — beauty must be supported by substance, performance, integrity and real human value. That last line is the guardrail on everything else: the beauty is real only when the substance is real.",
+  "simple_view": "Naya isn't just another app — it's a whole new way of making things! Everything has to be the very best: beautiful, easy, smart, and all connected together. Never settle for just okay when we can make it perfect!",
+  "grandma_view": "Naya isn't just another app, dear — it's a whole new way of making things! Everything has to be the very best: beautiful, easy, smart, and all connected together. Never settle for just okay when we can make it perfect!",
+  "naya_view": "THE NAYA STANDARD — THE NORTH STAR: (1) ELITE CRAFTSMANSHIP — EVERY DETAIL MATTERS. (2) TRIPLE-A QUALITY — EXCEPTIONAL IN EVERY DIMENSION. (3) FINE-ART EXPERIENCE — PEOPLE GENUINELY LOVE USING IT. (4) INTELLIGENCE INSIDE AND OUT. (5) ONE COHERENT CIVILIZATION. GOVERNING PRINCIPLE: DON'T OPTIMIZE FOR WHAT SOFTWARE HAS TRADITIONALLY BEEN — OPTIMIZE FOR WHAT SOFTWARE SHOULD BE AT ITS ABSOLUTE BEST. DON'T ACCEPT 8/10 WHEN THERE'S A PRACTICAL, MEANINGFUL PATH TO 10/10. BEAUTY MUST BE SUPPORTED BY SUBSTANCE, PERFORMANCE, INTEGRITY AND REAL HUMAN VALUE. NAYA: BEYOND EXTRAORDINARY. THE ULTIMATE THING, CREATED THE ULTIMATE WAY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3160",
+   "title": "The Naya Standard — The North Star",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/IDENTITY/SN-3160/IB-SMART-NOTE-20261117-sn3160-naya-standard-north-star.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/IDENTITY/SN-3160/IB-SMART-NOTE-20261117-sn3160-naya-standard-north-star.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "30aed38eee70e8080e462fe8cefe2054515ee78b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

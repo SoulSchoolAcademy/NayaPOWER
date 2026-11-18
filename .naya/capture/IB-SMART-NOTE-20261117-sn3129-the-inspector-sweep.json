@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3129",
+ "intelligence": {
+  "title": "The Inspector Sweep",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3129-the-inspector-sweep",
+  "smart_note_id": "SN-3129",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3129/IB-SMART-NOTE-20261117-sn3129-the-inspector-sweep.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Most of the sitting links are nowhere close to going live — his assessment, not a guess. A list of what's wrong would waste his time twice: once to hear it, once to tell us to fix it. The order closes that loop: inspect, report, fix — immediately, link by link, never batched, never back to him with the list. The inspector is the quality standard he ordered on 2026-11-17 03:04Z — a standing seat that sweeps after every major landing — and this is its third sweep, run as a rolling pipeline so each fix starts the moment its report is written. \"You should know the design law, you should know what we're trying to accomplish now — so now go in and do it right.\" That is the whole job in one sentence: the law is known, the standard is known, the links are sitting there. Go in and do it right.",
+  "simple_view": "Shawn gave us fourteen links and said: look at every single one, one by one, like a super inspector! Tell me what's wrong with each one and what's missing — and then fix it right away! Don't just come back with a big list of what's broken. Fix it, fix it, fix it — one, then the next, then the next!",
+  "grandma_view": "Shawn gave us fourteen links, love, and said: go through every single one, one by one, like a proper inspector! Write down what's wrong with each one and what's missing — and then fix it straight away, dear! Don't just come back with a big list of what's broken. Fix it, one after the next, until they're all lovely and right.",
+  "naya_view": "GO THROUGH EVERY SINGLE ONE OF THESE LINKS RIGHT NOW, ONE BY ONE, AS AN INSPECTOR. RIP IT APART: IS IT ALIGNED WITH DESIGN LAW? WHAT IS IT MISSING? WHY IS IT NOT 10-STAR SERVICE? WHAT WOULD MAKE THE PRESENTATION ULTIMATE? A FULL REPORT ON EACH — ONE, NEXT, NEXT. AND ONCE YOU'RE DONE THE REPORT, YOU DON'T COME BACK WITH A LIST OF WHAT'S WRONG — YOU IMMEDIATELY GIVE IT TO YOUR AGENT TO GO FIX IT AND MAKE IT GOOD, MAKE IT RIGHT, MAKE IT ALIGNED. YOU KNOW THE DESIGN LAW. YOU KNOW WHAT WE'RE TRYING TO ACCOMPLISH. GO IN AND DO IT RIGHT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3129",
+   "title": "The Inspector Sweep",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3129/IB-SMART-NOTE-20261117-sn3129-the-inspector-sweep.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3129/IB-SMART-NOTE-20261117-sn3129-the-inspector-sweep.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0edd5ec68f33470343c5a960e28c2113884959dd"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

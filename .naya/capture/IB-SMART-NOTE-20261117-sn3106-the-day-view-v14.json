@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3106",
+ "intelligence": {
+  "title": "The Day View v14 — The Greeting in the Top Bar, Big Number Blocks",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3106-the-day-view-v14",
+  "smart_note_id": "SN-3106",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3106/IB-SMART-NOTE-20261117-sn3106-the-day-view-v14.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "v13 fixed the dead numbers, but he looked at the card and saw two things still wrong: the greeting reads as a label, and the notifications still read as buttons with numbers in them. The wisdom at the top, he said, looks better — that part is working. But a good morning has to feel like a good morning. The Hub's does: big bold white letters, a serif quote above, a gold line under it, the date in green and the time in gold, a deep board with soft light from the top. He took the picture himself so the feeling could be matched exactly — warmth is not a word, it is a picture. And the numbers: not pills, not buttons — big blocks, the name above and the big Dashboard number below, personal, work, world, with a plus the same size as the rest so a fourth can join whenever he wants. Three or four, whatever he wants — the count is dynamic. And then the charge that outlives the day view: think like a master interface artist. The page is a canvas. A work of art that is functional, usable, beautiful, useful. That is the standard every page is judged by now — not \"does it work\" but \"is it a work of art that works.\" The v14 coordinator was dispatched 16:20Z on `the-ultimate-calendar` (from v13), the amendment carrying the Hub picture warmth + the Hz diamond went in 16:23Z; builder result and verification still owed at filing, the eye is his look at the card.",
+  "simple_view": "Imagine your day page says good morning to you like a big warm hug — huge friendly letters at the top, right next to your picture! And the numbers are big beautiful blocks, like building blocks, with the name on top and a giant number underneath — personal, work, world — and a plus block the same size so you can add more whenever you want! The whole page is a work of art, like a painting you can use!",
+  "grandma_view": "It's like this, love — imagine your day page greets you in the morning like a warm hug, dear, with big friendly letters right at the top beside your picture! And the numbers are big beautiful blocks, love, with the name on top and a great big number underneath — personal, work, world — and a plus block just the same size so you can add another whenever you like, dear. The whole page is a work of art, love — beautiful and useful at once!",
+  "naya_view": "THE GREETING AND THE TIME LIVE IN THE TOP BAR WITH THE DATE. HIS INITIAL — OR HIS PICTURE — AS A REAL OBJECT BESIDE THEM. THE GREETING CARRIES THE HUB'S WARM, INVITING GOOD-MORNING FEELING — THE HUB'S OWN GREETING IS THE REFERENCE, MATCHED EXACTLY. THE NOTIFICATION PILLS BECOME BIG BLOCKS ACROSS THE TOP: THE WORLD'S NAME ABOVE, THE BIG DASHBOARD DIGIT-TILE NUMBER BELOW, ONE BLOCK PER WORLD; THE + BLOCK IS THE SAME SIZE AND ADDS ANOTHER SOURCE, SO THE COUNT OF BLOCKS IS DYNAMIC. THE CITY NAME READS IN PROPER CASE. A PAGE IS A CANVAS — FUNCTIONAL, USABLE, BEAUTIFUL, USEFUL ART, NOT BUTTONS WITH NUMBERS IN THEM. THINK LIKE A MASTER INTERFACE ARTIST.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3106",
+   "title": "The Day View v14 — The Greeting in the Top Bar, Big Number Blocks",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3106/IB-SMART-NOTE-20261117-sn3106-the-day-view-v14.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3106/IB-SMART-NOTE-20261117-sn3106-the-day-view-v14.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c4b633751f70f8c2f863e7dae3de7b25400f8d25"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

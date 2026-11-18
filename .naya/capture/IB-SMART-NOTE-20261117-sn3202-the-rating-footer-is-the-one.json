@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3202",
+ "intelligence": {
+  "title": "The Rating Footer Is the One",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3202-the-rating-footer-is-the-one",
+  "smart_note_id": "SN-3202",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3202/IB-SMART-NOTE-20261117-sn3202-the-rating-footer-is-the-one.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The evening's format pass kept proposing endings and his eye kept judging them — the mockup at 23:16Z, the revision at 23:20Z — and then he showed the one he wants: a picture, already beautiful, that only needs to be made alive. That is the difference between this ruling and the ones before it. He is not asking for a new design. He is pointing at a finished picture and saying: make THIS move. The picture already has the two panels, the two rows, the diamond, the five actions, the quoted lines. What it does not have is life — the filling, the 3D icons, the press, the breathing, the orbit. So the build is not a design job; it is an animation job on a design he already approved. And the colors are his picture's colors, not the Twin Rank's — purple for VALUE, blue for INTELLIGENCE — because the picture is the authority until his word says otherwise. The captain flagged the swap (one word) so the choice stays his, not the builder's.",
+  "simple_view": "Imagine someone shows you a beautiful picture of a toy and says: this one — make it real, make it move, make every little piece a real thing you can touch. So you don't draw a new toy. You take their picture and bring it to life: the stars fill up, the icons pop out like real jewels, everything breathes and presses in and out. The colors stay exactly like the picture — purple stars for how much it's worth, blue stars for how smart it is. That is the one.",
+  "grandma_view": "Dear, he sent a picture of the ending he likes and said: this one is quite nice — can you make it active and alive, every icon a real little jewel, so it feels truly alive? So we build that very picture, living: purple stars for the value, blue stars for the cleverness, a diamond in the middle, and five good ways to make the intelligence better underneath. Nothing flat, everything pressing in and out, breathing gently. The colors stay as he showed them — purple and blue — unless he says one word to change them.",
+  "naya_view": "THE RATING FOOTER IS THE ONE. MAKE HIS PICTURE ACTIVE AND ALIVE — STARS FILLING, EVERY ICON A REAL 3D OBJECT, PRESS IN AND OUT, BREATHING + ORBIT. VALUE PURPLE, INTELLIGENCE BLUE — AS SHOWN, NOT THE TWIN RANK'S GOLD/EMERALD. LOVE IS THE PURPLE JEWEL HEART, NO LIKE, RANKS ARE PURE SIGNAL, NO POINTS TEXT, DICTATION MIC IN THE COMPOSER.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3202",
+   "title": "The Rating Footer Is the One",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3202/IB-SMART-NOTE-20261117-sn3202-the-rating-footer-is-the-one.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/INTELLIGENT/SN-3202/IB-SMART-NOTE-20261117-sn3202-the-rating-footer-is-the-one.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e0e69235b71e3f9a51ee41e52261fc907081384e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

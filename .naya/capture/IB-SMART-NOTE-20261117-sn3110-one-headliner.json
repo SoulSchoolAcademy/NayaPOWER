@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3110",
+ "intelligence": {
+  "title": "One Headliner — Say It Once, Say It Elite",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3110-one-headliner",
+  "smart_note_id": "SN-3110",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3110/IB-SMART-NOTE-20261117-sn3110-one-headliner.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Full screen is where the page tells the truth: at full width, the date appears twice — once in the header, once again somewhere on the card — and the repetition is the first thing the eye catches. He is not asking for a smaller font or a moved label. He is asking for one headliner: one official statement of the date and the time, right across the top, aligned with each day, absolutely incredible. And the rule behind it is the writing rule for the whole system: use the least words to say the most. The message matters more than the decoration — \"it's most important that they get the message and they understand.\" Repetition does not reinforce the message; it dilutes it. Saying \"November 18\" twice does not make the date clearer; it makes the page noisier. Elegant, beautiful, rich, luxury, high tech — those are the qualities of the one headliner, not of two headliners saying the same thing. One thing said once, said elite, beats the same thing said twice. The round/amendment carrying this is owed at filing — the dictation arrived during the loop run and is recorded here first.",
+  "simple_view": "Imagine the top of the page says the date once — big, beautiful, and clear — and never says it again! One special headline, right across the top, that tells you everything in just a few words! No saying the same thing twice — just one beautiful line that says it perfectly!",
+  "grandma_view": "It's like this, love — imagine the top of the page says the date once, dear — big, beautiful, and clear — and never says it again! One special headline, love, right across the top, that tells you everything in just a few words! No saying the same thing twice — just one beautiful line that says it perfectly, dear!",
+  "naya_view": "ONE HEADLINER — ONE OFFICIAL ONE, ABSOLUTELY INCREDIBLE — SHOWCASING THE DATE AND THE TIME RIGHT ACROSS THE TOP, ALIGNED WITH EACH DAY. THE DATE IS SAID ONCE, NEVER TWICE. LEAST WORDS TO SAY THE MOST — THE MOST IMPORTANT THING IS THEY GET THE MESSAGE AND UNDERSTAND IT AT A GLANCE. CREATIVE, ELEGANT, BEAUTIFUL, RICH LUXURY, HIGH TECH. NO REPETITIVENESS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3110",
+   "title": "One Headliner — Say It Once, Say It Elite",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3110/IB-SMART-NOTE-20261117-sn3110-one-headliner.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3110/IB-SMART-NOTE-20261117-sn3110-one-headliner.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6a33d52a714b456e99c2a7712c4dbfcf76b9e0e6"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

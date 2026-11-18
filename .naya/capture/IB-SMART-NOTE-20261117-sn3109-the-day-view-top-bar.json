@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3109",
+ "intelligence": {
+  "title": "The Day View Top Bar — Straight Words, Day-Colored Time, Less Glow, Each Day a Mini Hub",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3109-the-day-view-top-bar",
+  "smart_note_id": "SN-3109",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3109/IB-SMART-NOTE-20261117-sn3109-the-day-view-top-bar.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He looked at the v14 card and saw a layout trying to do too much: the weekday written down a column, a clock across, glow everywhere, and a sentence that shouldn't be there. His fix is subtraction and elevation at once. The weekday stands on its own as straight words — raised, in the day's color, the light and glow embedded in the letters, the same elements as the buttons but without the button. \"No buttons, just straight words.\" The month row stops fighting the fit problem with full names and uses abbreviations — Sun through Sat — with the same treatment, maybe a nice icon; the longest word, Wednesday, is the problem, and the abbreviation is the answer. The time stops being gold and takes the day's color, because the color belongs to the day, not to a metal. And the glow — \"I think you overdo it on the glow\" — gets dialed back across the whole card: rich and elegant, less glow. Glow is a spice, not the dish; when everything glows, nothing does. And then the vision that makes it all cohere: each day is a mini Hub. The day view aligns with the Hub — same language, same warmth — so logging in feels like \"oh wow,\" and people feel they are in a wisdom network where things are done in a wise way. The day view is not a calendar page; it is a small Hub, one per day. The v14 round carries this as a further amendment; builder result and verification still owed at filing.",
+  "simple_view": "Imagine each day is its own little Hub — a tiny warm world of its own! The day's name stands all by itself in beautiful raised letters, glowing in the day's very own color — no button, just words! The little month row says Sun, Mon, Tue, Wed, Thu, Fri, Sat so they all fit! And the time is the day's color too, not gold — and everything glows just a little, rich and elegant, not too much!",
+  "grandma_view": "It's like this, love — imagine each day is its own little Hub, dear, a tiny warm world of its own! The day's name stands all by itself in beautiful raised letters, love, glowing in the day's very own color — no button, just words! The little month row says Sun, Mon, Tue, Wed, Thu, Fri, Sat so they all fit, dear! And the time is the day's color too, not gold — and everything glows just a little, rich and elegant, not too much, love!",
+  "naya_view": "THE HZ UNIT (DIAMOND + HZ TEXT) SITS IN THE TOP RIGHT CORNER; THE BACK ARROW IN THE TOP LEFT; THE S DISC WITH ITS ORBIT RING IS VERTICALLY CENTERED WITH THE \"GOOD MORNING, SHAWN.\" LINE. THE WEEKDAY WORD STANDS ON ITS OWN — NO BUTTON, NO PILL: RAISED STRAIGHT WORDS, WRITTEN OUT IN THE DAY'S COLOR, THE LIGHT AND GLOW EMBEDDED IN THE LETTERS. THE MONTH ROW USES ABBREVIATIONS — SUN, MON, TUE, WED, THU, FRI, SAT — THE SAME STRAIGHT-WORD TREATMENT, MAYBE A NICE ICON, SO EVERY NAME FITS. THE TIME TAKES THE DAY'S COLOR, NOT GOLD. THE GLOW IS DIALED BACK ACROSS THE WHOLE CARD — RICH AND ELEGANT, LESS GLOW. EACH DAY IS A MINI HUB — THE DAY VIEW SPEAKS THE HUB'S LANGUAGE AND CARRIES ITS WARMTH, SO LOGGING IN FEELS LIKE \"OH WOW\"; WE ARE A WISDOM NETWORK, AND PEOPLE DO THINGS IN A WISE WAY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3109",
+   "title": "The Day View Top Bar — Straight Words, Day-Colored Time, Less Glow, Each Day a Mini Hub",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3109/IB-SMART-NOTE-20261117-sn3109-the-day-view-top-bar.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3109/IB-SMART-NOTE-20261117-sn3109-the-day-view-top-bar.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7355b942ae7a6a14ab7d97eb9a54d494a9abe74d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

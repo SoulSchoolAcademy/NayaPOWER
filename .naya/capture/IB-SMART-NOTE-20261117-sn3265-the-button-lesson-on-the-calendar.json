@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3265",
+ "intelligence": {
+  "title": "The Button Lesson On The Calendar",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3265-the-button-lesson-on-the-calendar",
+  "smart_note_id": "SN-3265",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3265/IB-SMART-NOTE-20261117-sn3265-the-button-lesson-on-the-calendar.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He said: and then, if you would take this learning — a lesson from the buttons I just showed you — and have that for, like, the Sunday, Monday, Tuesday, and even for the boards — that quality and aliveness and clarity, that would be a lot better. And then maybe if you did that for the November the 26th, the today, and the back and forth, they don't look too bad. And: I do like the eye better now, where you have it color matched too. Glow — that looks much better. The button lesson is the application of the best-buttons standard (SN-3098, prov) to the calendar: the same quality, aliveness, and clarity, on every control the calendar shows.",
+  "simple_view": "Imagine the three magic buttons — purple, blue, green — are the teachers, and now they get to teach the calendar! The weekday names — Sunday, Monday, Tuesday — learn to be just as clean and bright! The boards learn too! And November the 26th, and the TODAY button, and the back-and-forth arrows — they all learn the magic button lesson! And the little eye? It's already perfect now — it matches its color and glows just right — so we keep it EXACTLY as it is!",
+  "grandma_view": "It's like this, love — imagine the three magic buttons, dear — purple, blue, green, love — are the teachers, dear, and now they get to teach the calendar, love! The weekday names, dear — Sunday, Monday, Tuesday, love — learn to be just as clean and bright, dear! The boards learn too, love! And November the 26th, dear, and the TODAY button, love, and the back-and-forth arrows, dear — they all learn the magic button lesson, love! And the little eye, dear? It's already perfect now, love — it matches its color and glows just right, dear — so we keep it EXACTLY as it is!",
+  "naya_view": "THE BUTTON LESSON ON THE CALENDAR. THE PTS / % / MONEY BUTTON QUALITY — CLEAN, READABLE LABEL, LIGHTS UP, EACH ITS OWN COLOR, PREMIUM — GOES ON THE WEEKDAY PLAQUES, THE BOARDS, THE NOVEMBER 2026 HEADER, THE TODAY BUTTON, AND THE BACK/FORWARD ARROWS. THE COLOR-MATCHED EYE WITH ITS GLOW IS APPROVED, KEEP IT EXACTLY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3265",
+   "title": "The Button Lesson On The Calendar",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3265/IB-SMART-NOTE-20261117-sn3265-the-button-lesson-on-the-calendar.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3265/IB-SMART-NOTE-20261117-sn3265-the-button-lesson-on-the-calendar.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7ec22b94522c896a43e84e7c2cf9be2bf8af79df"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
