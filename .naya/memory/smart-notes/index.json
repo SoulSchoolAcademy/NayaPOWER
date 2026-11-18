@@ -59404,6 +59404,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3416",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3416-one-app-one-law",
+      "slug": "one-app-one-law",
+      "title": "One App, One Law",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3416/IB-SMART-NOTE-20261118-sn3416-one-app-one-law.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3416/IB-SMART-NOTE-20261118-sn3416-one-app-one-law.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3416/IB-SMART-NOTE-20261118-sn3416-one-app-one-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3416-one-app-one-law.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:16:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "4cc0d989112ae8409aeeba124b471c81e99378e6dfaebffd15f26819f8c71828",
+      "content_hash": "9717cfaf3dd2114aa4cb82e831cf1df443ba49e0830f9b1bdff0d951d97337e4",
+      "one_line": "One system, not a pile of apps: this family states the architecture as law — one universal app starting with Personal, the Law of One built into the code (all connected, each vault one's own), the Super Brain as the citizen's own, and the gauge law corrected to suit the gauge to the situation. The correction matters as much as the law: an earlier absolute (one gauge everywhere) is refined by situation, in public, without breaking the hierarchy the gauge serves. Architecture here is not a diagram; it is the set of decisions every later builder is forbidden from re-deciding.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59414,5 +59447,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "bfaf924812ef415e8187887e68dca282e5e32c67b2a7087c90cb55b870374f2e"
+  "corpus_manifest_hash": "4f4b1c29b43d186accd595ac3bc669beaf991c4542c8b92cf64fab10b3f946c2"
 }
