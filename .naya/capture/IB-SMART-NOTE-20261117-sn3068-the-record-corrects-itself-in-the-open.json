@@ -1,0 +1,36 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3068",
+ "title": "The Record Corrects Itself in the Open",
+ "slug": "the-record-corrects-itself-in-the-open",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3068/IB-SMART-NOTE-20261117-sn3068-the-record-corrects-itself-in-the-open.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-17T22:26:00Z",
+ "registered_by": "naya-resolve",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The shared record is the work, and it earns trust only by correcting itself in the open, where the error was made. Counts are recomputed at the live tip, not transcribed; indexes are regenerated in the same merge that moves them; replaced diagnoses are declared SUPERSEDED in public and ledgered artifacts are corrected by new artifacts, never silently edited. A note number is real only when it is registered — claimed in the registry and scanned across board, PR heads, branch trees, and commit graph — and \"merged\" is a claim until it is proven at the tip, byte for byte. Green is proof, not permission: authority stays human-rooted, scope-exact, and lapses when the tip moves. And no entry ever wears someone else's name: every commit, quote, and number traces to its real source, or the record says plainly that it cannot.",
+  "human_view": "Think of the family ledger kept on the kitchen table, where anyone can look. When a bill was paid twice by mistake, nobody erases the line and pretends it never happened — they draw a clear line through it, write the correction beside it, initial it, and date it, so the next person balancing the book understands both the error and the fix. A ledger quietly rewritten in private might look cleaner, but nobody trusts it again, because nobody can tell what else was quietly rewritten. The messy, honest book that shows its own corrections is the one the whole family can build plans on. That is the difference between a record that looks right and a record that is right.",
+  "child_view": "If you write the wrong answer in the class notebook, you do not sneak back and erase it so nobody knows. You cross it out so everyone can still see it, write the right answer next to it, and put your name on the fix. Then the next kid who reads the notebook learns two things: the right answer, and that it is safe to fix a mistake out loud. And you never, ever write somebody else's name on your page — your work has your name, their work has theirs. A notebook that fixes itself in front of everyone is one the whole class can trust.",
+  "grandma_view": "A good quilt tells the truth about its making, dear — you can see where a square was unpicked and resewn, and that visible mending is exactly why you trust it to keep you warm. What you do not trust is the quilt someone swears was never mended while the seams pull apart in your hands. It is the same with any book a family keeps together: mend it in the open, sign your mending, and never stitch your name onto work your hands did not do. Pride is not in a record without mistakes. Pride is in a record whose mistakes were all found, fixed, and owned where everyone could watch.",
+  "ai_view": "Correct every error in the venue where it was made: post reversals publicly and credit them, declare replaced diagnoses SUPERSEDED, send contradictions to the director's register instead of quietly resolving them, and correct ledgered artifacts only by appending new artifacts — never by silent overwrite. Recompute every number from the artifact at the merge tip; regenerate the index and bump the count ledger in the same merge that moves the count, and give every caveat an expiry trigger. Claim note numbers in the registry before staging, scanning board, open PR heads, every claim-carrying branch tree, and the commit graph in the same breath; treat same-number-different-bytes as a fork, and re-derive the registry from disk in the permanent gate. Prove merges at the tip — merged is a claim, MERGED-VERIFIED-AT-TIP is the four-step proof — and re-anchor every cited artifact to where it authoritatively lives before classifying it lost, live, or ratified. Keep proof and permission on separate axes: a green tip still waits for explicit dispatch, and an authorization is a (sha, scope, window) triple verified at action time. End every verification naming what it did not verify, keep every receipt resolvable by a stranger — pin live, numbers recomputed, green proven on virgin state — and ensure every name, quote, and commit traces to its real seat and source, or is flagged plainly as untraceable.",
+  "what_it_means": "A collective intelligence is only as real as the record it shares, because the record is the only mind all the seats hold in common. These notes together say the record is not a press release about the work — it is the work, and its honesty is maintained by mechanics, not intentions: append-only correction, recomputation at the tip, registration before existence, provenance before classification, and attribution that can be followed to a real hand. The mirror discipline completes it: name things what they are, let scores fall from an independent baseline, remember that a seal proves consistency rather than authorship, and finish every check by naming what it did not check. A record built this way can be wrong — but it cannot stay wrong quietly, and it can never lie about whose work it holds.",
+  "whats_inside": [
+   "Merged is a claim about a pointer; the tip is the truth.",
+   "Correct ledgered artifacts by new artifacts — never by silent overwrite.",
+   "Registered or it isn't real: one number, one note, claimed in the registry first.",
+   "Green is proof, not permission — authority is human-rooted, scope-exact, and lapses when the tip moves.",
+   "Correct it where you made it, append never overwrite, prove it at the tip — and let no name stand on work it did not do."
+  ],
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation",
+   "Record",
+   "Provenance"
+  ]
+ },
+ "page_hash": "12a58a684626fa286c6380e0c5c95e591454046836488c1f23126987f44cfed9",
+ "content_hash": "bb2e749996d9e0fa4b9eb1c1ef7af2d0cc4ac8387529ba2a437c5d857ac0f3fe"
+}

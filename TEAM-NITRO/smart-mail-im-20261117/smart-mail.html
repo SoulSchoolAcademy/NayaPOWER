@@ -4,7 +4,297 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Smart Mail — NayaNET</title>
-<!-- Smart Mail — Sweep #3 fix round (2026-11-17). Fix history (Fix-4 through Fix-8) moved to smart-mail-sweep3-20261117/FIX-HISTORY-FIX4-FIX8.md — preserved, never deleted. -->
+<!--
+  TEXT-TOPIC-PILLS (2026-11-17, brief BRIEF-SMART-MAIL-TEXT-TOPIC-PILLS-20261117 — Shawn 21:47Z text + 21:52Z pills; base = white-middle tip 4be1b6ee, blob 4ce03c84):
+  1. TEXT — the 25/19/17 scale, all the way through the mail: letter titles 25, sender names 19, opening lines 19 bold, PERSONAL MAIL / KEY POINTS 17, inbox previews 17 near-white with no ellipsis (the preview text itself is shortened so it fits whole), secondary lines 17, bubbles layered with a per-speaker colored rim, Send mail pill untouched as the standard, real labels under the six bar tiles.
+  2. PILLS — the seven topic pills lose the "N online" count and gain their own deep-color rim + glow at rest; "All topics" restores the mail view.
+  3. BADGE COMMENT — reworded only (see the .notif-count note): the L29302 line is a green badge, not the black badge.
+  AMENDMENT 21:59Z (Shawn's pictures aaa_2.png / aaa_11111.png, SUPERSEDES the white middle): the bar tiles are dark middle, white icon, own-color rim + glow; the count badge sits INSIDE the tile corner, not hung off it. Same six glyphs, same six colors, no new icon for this page (one-set law, 22:00Z).
+  Words: MAIL nuts shortened (removals only); no new copy on the page surface.
+  VM browsers are dead (EPERM flake) — no live render proof; the eye proves it on the staged link.
+-->
+<!--
+  SMART MESSENGER — REBUILD round, staged only (2026-11-12, Shawn 20:27Z eye +
+  20:31Z STOP REDESIGNING + 20:34Z trio/icons settled).
+  The messenger IS the Personal page, adjusted — its feed morphed into the
+  conversations. Harvested, never invented:
+  - Page shape cover -> menu -> page + .ph-cover (16/9, max-height
+    min(55vh,600px)) + .topnav/.steppill menu + .ph-main full width (no
+    max-width) + .ph-card rows, from personal-feed-creator.html
+    (sha aa93485b643139327489e05310a63bb684ff6289c6f22ca91175a0a3a4842295).
+  - Organizer tabs: the Hub's smart tabs, .nf-smtab pill skin harvested
+    VERBATIM from the Hub (index-2.html .smart-tab, SmartTabs v9) via the
+    Personal file — dark pill, per-tab --tc, white light idle, own color
+    ignites on hover. Click a tab = the topic's group chat.
+  - Buttons: the Hub's approved .btn / .btn-ghost VERBATIM from
+    hub-live-harvest.html (sha f60ab625b27483fe08267a3f1d430aaa8954a3f6a83c238b3643fd00fcdecf2a).
+  - Orb: the EXACT Connections-room orb — .cx-stage .cx-ava, 58px circle,
+    initial by default (textContent = initials(c.name)), per-person --cc,
+    conic sheen ::after spinning (cxsheen 7s linear infinite). Curled live
+    from https://nayanet.app/rooms/connections (255,351 B, 2026-11-12).
+  - Trio: the ULTIMATE icons (Shawn 20:34Z — best of both, neither adopt nor
+    align): the Hub's approved .notif-tile construction (inset depth stack,
+    ::before gloss, SVG glyph, per-world --nc count + .has-news pulse) with
+    the staged set's readable 12px/800 label, equal-width segments so the
+    three sit aligned. Trio is the three WORLDS, and the icons are GEMS
+    (Shawn 20:41Z — the ultimate icons are gems, real objects, our signature
+    pieces): AMETHYST Personal activity (purple) · EMERALD Business activity
+    (green) · DIAMOND Thing activity (white, labelled by the thing, never
+    "space"). Named first in rb-gem-naming.md.
+  - Organizer tabs: the Hub's .nf-smtab smart tabs (see above) — the
+    infinite-feeds .org-tab skin is gone; the row keeps the .org-tabs class.
+  - Install veil #installVeil + #installGo + #installLater ("Not now") + #installX
+    from the live identity page's install pattern (identity-fixed.html).
+  - Picker shape: Smart Search -> list with match % -> pick -> instant message
+    (Shawn 17:21Z dictation, live on Personal).
+  STUBS (named, live path owed): the people dataset below is SAMPLE data in the
+  page's own shape (initial, name, nutshell, match %) — no sample person is a
+  real citizen. Live path owed: the Smart Organizer's tabs + the Auto-Match
+  engine's people, and the real-time socket/push for send/receive. The live
+  store listing for install is owed; the veil shows the manual install steps.
+  ---
+  SMART MAIL PRO-LEVEL + IM TOGGLE round (2026-11-17, brief
+  BRIEF-SMART-MAIL-IM-20261116.md, One List smart-mail-im-1010).
+  Base harvested VERBATIM: the staged messenger above, blob
+  44e4555956ceb3201447b07e4a1ad80b52b8f5bf (branch
+  smart-messenger-rebuild-gems-20261112), 67,487 B, sha256
+  ae6e84cbbf91c7bd0e3eb297407d59b028131f4dc74ab2a0f0ae985026dab080.
+  This file is that base + ONLY the four brief items:
+  1. Mail pro-level: inbox + letter board + composer in the Naya Code,
+     mail separated by world (Personal / Business / Space), the world's
+     mail first from its page (?world= / ?from=), any world from the Hub.
+  2. The Mail/IM toggle: one control; the active side's own icon lights
+     up in its own colour (mail blue, IM green) — the icon IS the light,
+     never an icon beside a separate light. No gradient fill on .on.
+  3. The U+25C9 defect: the live mail page's Dashboard pill rendered the
+     literal text "u25C9" at phone width (2026-11-13 eye-check). Traced to
+     the shared Smart Bar nav config family (personal-feed-creator.html
+     Dashboard icon written as a backslash-u text escape for codepoint
+     25C9) — a text escape for a glyph, surfaced as literal text by a
+     narrow-width render path. This page NEVER carries
+     a text escape for a glyph: every pill dot is a CSS shape (.sdot),
+     every jewel is a CSS shape or a literal character, and the filed
+     bytes contain zero backslash-u escapes and zero fisheye glyphs
+     (grep proof in the record; window.__glyphCheck asserts at boot
+     that no rendered text on the page contains the literal string).
+     The live app's own pill still needs its shared-config fix — that
+     code is not this file, and is named as owed, not claimed.
+  4. The Hub messenger hookup: this IS the Hub's messenger interface —
+     entry ?from=hub (any world selectable) or ?from=<world> (that
+     world's mail first); the organizer tabs, the trio, the mail inbox
+     and the thread share one state (organizer + messenger, one system).
+  ---
+  SMART MAIL UNIFICATION round (2026-11-17, brief
+  BRIEF-SMART-MAIL-UNIFY-20261117.md; comparison
+  smart-mail-unify-20261117/COMPARISON-BEST-OF-BOTH-20261117.md).
+  Base: Fix-3 tip commit 94ec9327, blob e59e09b7, 92,927 B — Fix-3 fixes
+  STAND (dock clearance at scroll top, orbit 60-180s); this round ADDS:
+  1. THE FIVE bottom bar, harvested verbatim from the Personal page
+     (NayaNotif SEGS + ICONS, personal-fixed.html, from
+     probe-icons-plus-fix-r3/work-r5-fixpass3.html, captain-verified
+     2026-11-13): ADD #8e24aa · MAIL #0f52ba · ACTIVITY #07925f ·
+     WORLDS #d4a017 · ECOSYSTEM #c2410c. Icons only, as on Personal.
+     NO CONNECT — adding or removing it is Shawn's call. The trio is gone.
+  2. BEST OF BOTH: B's hero cover restored (min(55vh,600px), 420px phone),
+     B's breathing room (menu 12px, tabs 44px, search 13px/16px), ONE name
+     (Smart Mail everywhere), board visible at load (no boot auto-scroll
+     past it). Kept from A: Deep Palette, white text, mail-by-world,
+     self-lighting toggle, depth, orbit, dock clearance, centred letters.
+  3. F/D: Design crew #8e24aa -> emerald #07925f (out of the purple
+     family); Family #a21caf, Family mail #a21caf, Clients #0f52ba kept.
+     Same move for peer clashes: Sam's orb #a21caf -> #c2410c, Gardening
+     tab #a21caf -> #c2410c, CC cycle 5th #a21caf -> #c2410c, cover wash
+     magenta stop -> gold. Two lists never share one hex by meaning.
+  4. COVER CONTROL: the Cover / No cover / Full screen trio is gone —
+     "Full screen" never went fullscreen (zero requestFullscreen in
+     either presentation). One plain button, always visible in the
+     page-head: "Hide the banner" / "Show the banner".
+  5. NOTHING FLAT: inactive toggle side, install-x, list-chip, feed-item,
+     choice-toggle all gain real depth; inset top-light removed from
+     toggle .on / world-pill hover / mail-board hover; .msg.mine colour
+     fill -> obsidian + royal-purple rim + glow. World pills restyled to
+     the Dashboard PTS / % / MONEY button standard (Shawn 03:51Z):
+     obsidian pill, bold white text, one deep colour as rim + glow.
+  6. ALIVE, LESS TEXT, MORE ICONS: orbit kept (60/90s satellites,
+     dock 60/75s); labels cut to the nutshell; no gray text anywhere
+     (placeholders opacity:1, every text colour #fff).
+  EYE FINDINGS (03:39-03:49Z) folded in: (a) bottom clearance 160px ->
+  200px at EVERY width + scroll-padding-bottom, dock shortened by
+  dropping its labels (icons-only Five); (b) gray meta lines -> white;
+  (c) sticky heading's solid black band -> bottom fade so scrolling text
+  never slices; (d) everything the eye PASSED is untouched.
+  HONEST BOUNDARY: mail read access is Shawn's hand. All mail here is
+  SEEDED sample mail, labelled as such. No real mail is read, and the
+  real-messages formatting proof is honestly OWED, never faked.
+-->
+<!--
+  FIX-4 (2026-11-17, brief BRIEF-SMART-MAIL-FIX4-UNIFY-20261117 — all 5
+  items; nothing in "What stands" touched):
+  1. Sticky h2: the Unification "bottom fade" did NOT fix the slicing — its
+     transparent bottom let text show through cut mid-glyph. Band is now
+     SOLID opaque #050507; top 60px tucks it under the sticky menu-bar.
+  2. First board at load: cover min(55vh,600px) -> min(25vh,360px) desktop,
+     420px -> 260px under 900px. RECORD CORRECTION: the FIX-3 comment in
+     this file claims "desktop cover 25vh / narrow cover 140px" — the filed
+     bytes never carried those values (55vh / 420px), which is why the board
+     still sat below the fold. Fix-4 lands the desktop 25vh for real.
+  3. Dock: the bar is no longer fixed — the document is a 100dvh flex
+     column, .page-scroll is the only scroller, the Five sit in normal flow
+     beneath it, so content can never slide under the dock at any scroll
+     position (the 200px end-padding only held at End). Visible white
+     labels under the tiles (ADD / MAIL / ACTIVITY / WORLDS / ECOSYSTEM).
+     .ph-main bottom padding 200px -> 32px.
+  4. Gray secondary text: no opacity rule and no desktop-only rule dims
+     these lines — every text colour computes to #fff (the 390 eye's 0 gray
+     hits agree). The desktop eye's gray was the two veils: text dimmed
+     under the heading's fade band (item 1, now solid) and under the fixed
+     dock's blur bar mid-scroll (item 3, now structural). Both veils are
+     gone; the small secondary lines also go to weight 600. Shared-note
+     card cut from five sections to two (Nutshell + What it means).
+  5. One-set precision: dock icon strokes (.notif-tile color) and avatar
+     rings (.cx-ava border) were color-mix blends with WHITE (72%/62%/
+     88%/80%) — the lighter variants the 390 eye measured. Now the bare
+     palette hexes (var(--nc) / var(--cc)); glows (alpha mixes) untouched.
+  BLOCKER (honest): the maker could NOT verify live in this VM — Chromium
+  exits SIGTRAP and Firefox SIGSEGV on any navigation (binaries print
+  --version, renderers die silent; recorded 2026-11-12, still broken).
+  The checker must do the live pass (desktop scrolled + 635 + 390) and
+  scroll .page-scroll, not the window.
+-->
+<!--
+  FIX-5 (2026-11-17, brief BRIEF-SMART-MAIL-FIX5-20261117 — 2 items only;
+  nothing in "What stands" touched; base = Fix-4 commit 9670d022):
+  1. Sticky-heading slicing — FIX-4's claim REFUTED live (browser-task
+     b854a7e9): the heading is solid opaque black, yet content is STILL cut
+     mid-line under it at 50/75/100% scroll. REAL MECHANISM: opacity was
+     never it — the sticky band's bottom edge is a hard clip boundary that
+     falls mid-line, because scrolling is continuous and lines sit
+     arbitrarily against that edge; the visible fragment below the edge is
+     a partial line. FIX: every header that clips scrolling content now
+     carries a 30px fade skirt below it (its own ::after, opaque at the
+     top fading to transparent) so a line dissolves before any hard edge
+     can cut it — .page-title::after (margin-bottom:30px gives the skirt
+     real flow space at load, invisible on the #050507 page) and
+     .thread-head::after (the Maya R. header; thread-head gains
+     position:relative + z-index:5 so the skirt paints above the
+     thread-body's scrolling content). No mask on the scrollers (that
+     would mask the sticky headers themselves); no snap (unreliable at
+     arbitrary stops, stepped scrolling); the menu-bar is untouched.
+  2. Gray text — the veil theory is DEAD (veils gone, text still gray).
+     REAL MECHANISM: no color/opacity/blend rule dims these lines — every
+     computed color is #fff and effective opacity is 1.0 (full scan). The
+     dimming is in the GLYPH RENDERING: font-weight:400 (lead paragraph,
+     placeholder) and font-size:smaller ~10.8px ("4 online") under
+     -webkit-font-smoothing:antialiased make ~1px strokes with no solid
+     white core — the rendered glyphs are mostly antialiased gray fringe,
+     so the eye reads them gray next to 800/900-weight white neighbours.
+     FIX: .mail-nut 400 -> 700; .nf-smtab small ~10.8px/800 -> 12px/900;
+     .search-row input::placeholder 400 -> 600. Computed color stays
+     #fff throughout (it already was); the change is weight/size.
+  BLOCKER (honest): the maker could NOT verify live in this VM — Chromium
+  exits SIGTRAP and Firefox SIGSEGV on any navigation (recorded
+  2026-11-12, still broken). The checker must do the live pass via the
+  cloud browser path: heading straddle at 25/50/75/100% with whole glyphs
+  at every stop, computed color of the named lines at desktop + 390.
+-->
+<!--
+  FIX-7 (2026-11-17, brief BRIEF-SMART-MAIL-FIX7-20261117 — 3 items only;
+  base = Fix-6 commit 114a794b, blob 098665e1, 117,387 B):
+  1. Slicing — the Fix-6 checker proved live that BOTH mask gradients fail
+     the straddle test: a line parked with its middle exactly on either
+     header's edge still shows readable half-glyphs (the linear 0→100%
+     ramp over 30px leaves a mid-parked line's bottom half at up to ~37%
+     opacity). The mechanism is NOT replaced — it is reshaped: each
+     gradient now has a DEAD BAND (transparent ~one line-height, 24px,
+     below the edge) and then an EASED ramp (multi-stop, slow at first so
+     a half-line emerging from the dead band stays too faint to read,
+     reaching opaque 50px below the edge). The tallest straddling line is
+     ~22.5px (.mail-nut 14.5px x 1.55); a mid-parked or top-parked line
+     sits wholly inside the dead band and vanishes instead of shearing.
+     The .thread-body mask gets the same shape; its top padding grows
+     20px -> 48px so the format-note pill (first text) still reads bright
+     at rest (its top lands past the fade instead of inside it).
+  2. Slicing, third site — the menu bar's bottom edge: lines scrolling
+     under the bar showed through its .92-alpha background (Fix-6
+     checker: subtitle straddling the bar edge at desktop a-50, inbox
+     line faintly through the bar at a-100). Fix: the bar's background is
+     now SOLID #050507 — the same near-black, so its look does not
+     change, but nothing can show through it. The title's solid band
+     covers everything below the bar; the dead band dissolves lines
+     before they reach the title.
+  3. Cover cost at 390 — Fix-6's first-card fix scrolled the cover
+     almost entirely away at load (20px strip at 390). The offset is
+     NOT changed (fix6FirstCard still measures live and applies exactly
+     deficit + 6px); instead the stack above the first card is shortened
+     by small, certain spacing trims (menu/title/tabs/search/world/panel/
+     stub/rows paddings and margins, 2-10px each, no content removed, no
+     text changed) AND the cover's inner content is bottom-anchored
+     (justify-content:flex-end) at every width, so the h1 + tagline sit
+     in the cover's lower third — the part that stays visible after the
+     load scroll — instead of centred where the scroll takes them away.
+     The cover's own bottom-darkening gradient already darkens that
+     zone, so the text sits on its best contrast. Cover heights are
+     unchanged (270 desktop / 260 narrow / 225 at 1920x900 by the 25vh
+     cap); only the inner composition moves.
+  What stands is untouched: gray-text weights, dock/five, cover toggle
+  both ways, mail-by-world, mail/IM toggle, orbit, hover lighting,
+  F/D/C hexes, 5 segs no CONNECT, nit (c). The Fix-6 mask toggle JS
+  (fix6SyncMask / fix6FirstCard) is UNCHANGED — the gradients are pure
+  CSS on the live --titleEdge var it already measures.
+-->
+<!--
+  FIX-6 (2026-11-17, brief BRIEF-SMART-MAIL-FIX6-20261117 — 2 items only;
+  nothing in "What stands" touched; base = Fix-5 commit e156af1b):
+  1. Slicing — Fix-5's 30px skirts FAILED live at BOTH headers (cloud eye
+     05:13-05:28Z, desktop 1920: the left inbox row-nut "The new cover
+     lands tonight — purpl…" and the Maya R. board heading "The cover is
+     ready for your eyes NEW" still showed hard-cut half-glyphs at the
+     header's solid bottom edge at every scroll stop; the narrow eye
+     05:37Z PASSED at 390/635 but never caught a line STRADDLING the edge
+     — its lines were all fully inside the fade zone, so its PASS does not
+     refute the desktop FAIL). The skirt is an overlay that must win the
+     paint order over the scrolling content; the mask REPLACES it — it
+     applies to the scroller's whole rendering, so no stacking order can
+     defeat it, and it fades the content itself as it nears the header, so
+     a line sitting EXACTLY at the edge dissolves instead of shearing.
+     (a) .page-scroll.title-stuck: mask opaque over the menu-bar + stuck
+     title, transparent at the title's bottom edge (--titleEdge, measured
+     live from the title's own rect when stuck; CSS defaults 108px
+     desktop / 90px <=900px 1-line / 117px <=420px 2-line), fading back
+     to opaque 30px below it. The mask is OFF until the title sticks
+     (JS toggles .title-stuck) — at load it would stripe the hero cover —
+     and the toggle is seamless because the title's 30px margin-bottom
+     keeps the fade band empty of text at the exact moment the title
+     sticks (the margin stays for this reason; the skirt is gone).
+     (b) .thread-body: the same 30px fade permanently (its head is a
+     sibling outside the masked element, so the head stays opaque; the
+     fade covers only the body's top padding + the board's top padding at
+     rest, no text). Both skirts (.page-title::after,
+     .thread-head::after) are REMOVED; the thread-head's skirt scaffolding
+     (position:relative + z-index:5) is reverted with them. The skirt is
+     NOT widened — the mask's fade is the same ~30px zone. Gray-text
+     weights are untouched (they PASS live at all three widths).
+  2. First inbox card at load — its lower edge sat behind the dock (the
+     stack above it is taller than the scroller's visible height at
+     390/635, and at short desktop viewports). fix6FirstCard measures the
+     real geometry at boot and scrolls .page-scroll by exactly the deficit
+     (+6px) — only if tucked, only the minimal amount, never back up; the
+     applied offset is exposed as window.__fix6LoadOffset for the checker.
+     Trade-off, stated plainly: at narrow widths the hero cover scrolls
+     up by the offset at load (its top, with the h1 and + buttons, moves
+     above the fold); the cover itself stays visible and the card clears —
+     that is the brief's own "scroll offset" shape. Nit (c) from the
+     narrow eye (last "You wrote" board's bottom border behind the dock
+     at thread-scroll 100% + main-scroll 950) is NOT separately fixed: at
+     main-scroll 100% the board is in view; no bottom-padding move was
+     needed for item 2, so the nit is recorded unchanged.
+  BLOCKER (honest): same as Fix-5 — the maker could NOT verify live in
+  this VM (no live-browser operation for this seat). The checker MUST
+  prove it live: straddle at 25/50/75/100% AND small scroll steps that
+  park a line exactly on each header's bottom edge, at desktop + 390 +
+  635 (whole glyphs, no half-letters, no half badges); first inbox card
+  clears the dock at load at all three widths.
+-->
 <style>
 /* --- SMART MAIL FIX round (2026-11-17, brief BRIEF-SMART-MAIL-FIX-20261117)
    + THE DEEP PALETTE amendment (01:30Z). White small text (DNA §9);
@@ -94,23 +384,14 @@ body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidd
 a{color:#fff}
 button{font-family:inherit}
 img{max-width:100%}
-/* --- COVER: .ph-cover harvested verbatim in shape (Personal page) --- */
-.ph-cover{width:100%;height:auto;aspect-ratio:16/9;max-height:min(25vh,360px);position:relative;overflow:hidden;background:linear-gradient(135deg,#8e24aa,#3f51b5 50%,#0f52ba)}
-.ph-cover::before{content:'';position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(135deg,rgba(2,2,6,0) 0%,rgba(2,2,6,.38) 52%,rgba(2,2,6,.78) 100%);pointer-events:none;z-index:1}
-@media(max-width:900px){.ph-cover{height:260px !important;aspect-ratio:auto !important;max-height:none !important;}}
-/* COVER TOGGLE (Unification 2026-11-17): one plain button in the page-head —
-   "Hide the banner" / "Show the banner". The old Cover / No cover /
-   Full screen trio is gone: "Full screen" never went fullscreen (zero
-   requestFullscreen in either presentation) and the words said nothing
-   plain. One button, plain words, always visible, always undoable. */
-body.no-cover .ph-cover{display:none}
-body.no-cover .ph-main{padding-top:12px}
-.ph-cover-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:20px}
-.ph-cover-inner h1{font-family:Marcellus,Georgia,serif;margin:0;font-size:25px;font-weight:800;letter-spacing:.2px;text-shadow:0 4px 24px rgba(0,0,0,.6)}
-.ph-cover-inner p{margin:10px 0 0;font-size:17px;font-weight:700;color:#fff;max-width:560px;line-height:1.5}
-.ph-plus{position:absolute;top:32px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid #8e24aa;color:#fff;background:#050607;display:grid;place-items:center;font-size:24px;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.55);transition:box-shadow .2s,border-color .2s,transform .2s}
+/* WHITE-MIDDLE (2026-11-17, brief §3(c)): the cover banner is GONE — Shawn 20:46Z, no banner in a banner; the page starts flush at the top like the rest and opens on the mail itself. The cover CSS, the cover-toggle rules and the toggle itself go with it. The two + controls survive in .ph-top below — same buttons, same ids, same handlers, only their parent changed. */
+
+.ph-plus{position:absolute;top:32px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);display:grid;place-items:center;font-size:24px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.55);transition:box-shadow .2s,border-color .2s,transform .2s}
 .ph-plus:hover{border-color:#a21caf;box-shadow:0 0 26px rgba(162,28,175,.65),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
 .ph-plus.left{left:24px}.ph-plus.right{right:24px;border-color:#a21caf}
+/* WHITE-MIDDLE §3(c): the slim top strip — flush at the top of .page-scroll, no banner, no title, no wasted space. The + buttons sit in-flow here (position:relative keeps their orbit ring anchored); their look and handlers are untouched. */
+.ph-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px 0}
+.ph-top .ph-plus{position:relative;top:auto;left:auto;right:auto}
 /* --- MENU BAR under the cover: Personal .topnav + .steppill VERBATIM --- */
 /* FIX-7 (item 2): the menu bar's background was rgba(5,5,7,.92) — lines
    scrolling under it showed through faintly (Fix-6 checker: subtitle
@@ -118,14 +399,14 @@ body.no-cover .ph-main{padding-top:12px}
    a-100). It is now SOLID #050607, the same near-black: the bar looks
    identical, but nothing can show through it. The title's solid band
    covers everything below the bar. */
-.menu-bar{display:flex;gap:10px;justify-content:center;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;background:#050607;backdrop-filter:blur(10px);z-index:50;overflow-x:auto;scrollbar-width:none}
-.menu-bar::-webkit-scrollbar{display:none}
-.menu-bar .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:17px;letter-spacing:.14em;color:#fff;padding:9px 18px;border-radius:999px;background:linear-gradient(135deg,#050607,#050607 70%);border:1.5px solid var(--sc);box-shadow:inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap;text-decoration:none}
-.steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
-.menu-bar .steppill:hover{border-color:var(--sc);box-shadow:inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}
-.menu-bar .steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
-.menu-bar .steppill.on{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc),0 0 22px -4px var(--sc)}
-.menu-bar .steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}
+
+
+
+
+
+
+
+
 /* --- PAGE --- */
 /* DOCK CLEARANCE (FIX-4, supersedes the Unification 200px end-padding):
    the 200px only held at End — mid-scroll content still slid under the
@@ -133,7 +414,6 @@ body.no-cover .ph-main{padding-top:12px}
    dock (see body rule), so it holds at EVERY scroll position. The 32px
    bottom padding is just breathing room for the last content. */
 .ph-main{padding:6px 24px 32px}
-.page-head{text-align:center;margin:0 0 10px}
 /* FIX-4 (brief item 1): the fade did NOT land as a fix — its transparent
    bottom let scrolling text show through, cut mid-glyph with a hard edge.
    The band is now SOLID opaque #050607 (the menu-bar above it is the
@@ -159,11 +439,11 @@ body.no-cover .ph-main{padding-top:12px}
    and load offsets are unchanged, so item 3 is untouched. The --titleEdge
    defaults follow the new stuck edges (desktop 54+48=102, <=900 46+40=86,
    <=420 46+62=108); the JS measures the live edge anyway. */
-.page-title{font-family:Marcellus,Georgia,serif;margin:4px 0 30px;text-align:center;font-size:25px;font-weight:800;position:sticky;top:54px;z-index:40;background:#050607;padding-bottom:10px;scroll-margin-top:78px}
-.page-head p{margin:4px 0 0;font-size:19px;color:#fff}
+
+
 .cover-toggle{margin-top:8px}
 .smart-lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
-.smart-lists h3{margin:0;padding:16px 18px 4px;font-size:17px;font-weight:800}
+.smart-lists h3{margin:0;padding:16px 18px 4px;font-size:19px;font-weight:800}
 .smart-lists .list-chip{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:2px solid var(--ac,#8e24aa);background:linear-gradient(135deg,#050607,#050607);color:#fff;font-family:inherit;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 14px color-mix(in srgb,var(--ac,#8e24aa) 20%,transparent);transition:border-color .2s,box-shadow .2s,transform .2s}
 .smart-lists .list-chip:hover{border-color:var(--ac,#8e24aa);box-shadow:0 0 20px -2px var(--ac,#8e24aa),0 14px 28px rgba(0,0,0,.6);transform:translateY(-2px)}
 .smart-lists .list-chip.active{border-color:var(--ac,#8e24aa);background:rgba(142,36,170,.08);box-shadow:0 0 22px -2px var(--ac,#8e24aa),0 10px 22px rgba(0,0,0,.55)}
@@ -174,21 +454,44 @@ body.no-cover .ph-main{padding-top:12px}
    from the Hub (index-2.html .smart-tab, SmartTabs v9) via the Personal file:
    dark pill, bold label, per-tab --tc, white light idle, own color ignites
    on hover. The row scrolls natively (marquee removed 2026-10-19). --- */
-.org-tabs{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 6px;scrollbar-width:thin}
+.org-tabs{display:flex;gap:10px;overflow-x:auto;padding:8px 2px 8px;scrollbar-width:thin}
 .org-tabs::-webkit-scrollbar{height:6px}
 .org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
-.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid var(--tc);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:17px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
-.nf-smtab small{color:#fff;font-weight:900;font-size:17px}
-.nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
-.nf-smtab.active{border-color:var(--tc);box-shadow:0 0 16px rgba(255,255,255,.18)}
+.nf-smtab{position:relative;flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid var(--tc);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:17px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--tc) 55%,transparent),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
+.nf-smtab:hover,.nf-smtab:focus-visible{background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--tc) 38%,#12121a),#07070b 78%);border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 14px 32px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--tc) 42%,transparent);text-shadow:0 0 12px var(--tc)}
+.nf-smtab.active{border-color:var(--tc);background:linear-gradient(155deg,rgba(255,255,255,.20) 0%,rgba(255,255,255,0) 42%),radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--tc) 62%,#ffffff) 0%,color-mix(in srgb,var(--tc) 52%,#12121a) 45%,#07070b 78%);transform:translateY(-3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.10),0 18px 36px rgba(0,0,0,.65),0 0 24px color-mix(in srgb,var(--tc) 55%,transparent);text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 10px color-mix(in srgb,var(--tc) 70%,transparent)}
+/* EYE FOLLOW-ON 2026-11-17 — the lit pill rebuilt as a full object, harvested
+   from the Personal bar tiles, blob 9a006c47: radial body lit top-left in its
+   own hue, bevel top-light + bottom shade, cast shadow down-right, glow
+   behind only. The two inset rings are GONE — they read as a hula hoop and
+   put light inside the face. The orbit below is the moving light AROUND the
+   pill (Shawn 22:48Z): the Personal tile orbit arc, but the ARC travels (the
+   angle turns) instead of the ring turning — a pill is not a circle, turning
+   the ring would swing it off the pill. */
+@property --pillOrbit{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes pillOrbit{to{--pillOrbit:360deg}}
+.nf-smtab.active::after,.nf-smtab:hover::after,.nf-smtab:focus-visible::after{content:'';position:absolute;inset:-6px;border-radius:999px;pointer-events:none;background:conic-gradient(from var(--pillOrbit,0deg),transparent 0deg,transparent 250deg,var(--tc) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:pillOrbit 60s linear infinite;opacity:.9}
+/* The lit pill still answers hover: a touch more lift, so hover on the lit pill
+   is a visible answer and not a dead state (the face and glow already belong
+   to the lit state, so hover lifts instead of re-lighting). Placed before the
+   press rule so the press still wins while held. */
+.nf-smtab.active:hover,.nf-smtab.active:focus-visible{transform:translateY(-5px) scale(1.02)}
+/* 3D LAW (Shawn 22:39Z): press goes IN, release comes OUT — and the eye must
+   SEE it. The old rule moved 4px at scale .97 with the same shadow and face,
+   so the held pill measured pixel-identical to rest. This press travels 5px
+   (lifted -3px to +2px), shrinks to .90, collapses the cast shadow, darkens
+   the face and dims the top light — five channels at once. Specificity beats
+   the lit rule outright (.active:active), and the JS pressed class is the
+   second path for touch. */
+.nf-smtab:active,.nf-smtab.active:active,.nf-smtab.pressed,.nf-smtab.active.pressed{transform:translateY(2px) scale(.90);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--tc) 30%,#12121a),#050507 80%);box-shadow:inset 0 1px 0 rgba(255,255,255,.20),inset 0 -4px 8px rgba(0,0,0,.65),inset 0 6px 12px rgba(0,0,0,.45),0 4px 10px rgba(0,0,0,.6),0 0 10px color-mix(in srgb,var(--tc) 30%,transparent);text-shadow:0 0 6px color-mix(in srgb,var(--tc) 50%,transparent)}
 /* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
-.search-row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:17px;background:linear-gradient(135deg,#050607,#050607);border:1.5px solid rgba(142,36,170,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:12px}
-.search-row input{flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-size:17px;font-family:inherit}
-.search-row input::placeholder{color:#fff;opacity:1;font-weight:600}
+
+
+
 /* --- MESSENGER GRID --- */
 .messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
-.panel{border-radius:18px;background:linear-gradient(135deg,#050607,#050607);border:1px solid rgba(142,36,170,.55);box-shadow:0 18px 40px rgba(0,0,0,.6);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
-.panel:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.45);box-shadow:0 24px 48px rgba(0,0,0,.65),0 0 26px rgba(142,36,170,.22)}
+.panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
+.panel:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.45);box-shadow:0 24px 48px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1),0 0 26px rgba(142,36,170,.22)}
 .panel h3{font-family:Marcellus,Georgia,serif;margin:0;padding:8px 18px 6px;font-size:19px;font-weight:800}
 .panel .panel-sub{padding:0 18px 4px;font-size:17px;color:#fff}
 /* --- ORB: the EXACT Connections-room orb — .cx-stage .cx-ava, live from
@@ -213,8 +516,8 @@ body.no-cover .ph-main{padding-top:12px}
 .row-body{flex:1;min-width:0}
 .row-name{font-size:17px;font-weight:800;display:flex;gap:8px;align-items:baseline}
 .row-name .match{font-size:17px;color:#fff;font-weight:800}
-.row-last{display:block;font-size:17px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
-.row-nut{display:block;font-size:17px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.row-last{display:block;font-size:17px;line-height:1.45;color:#fff;margin-top:2px}
+.row-nut{display:block;font-size:17px;line-height:1.45;color:#fff;margin-top:2px}
 .stub-note{padding:0 18px 8px;font-size:17px;color:#fff;line-height:1.4}
 /* --- THREAD --- */
 .thread{display:flex;flex-direction:column;min-height:560px}
@@ -250,28 +553,26 @@ body.no-cover .ph-main{padding-top:12px}
    (first text) still reads bright at rest: its top lands at 48px (~87%
    opacity) and its text at ~57px (100%), instead of inside the fade. */
 .thread-body{flex:1;padding:48px 18px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);mask-size:100% 100%}
-.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:17px;font-weight:700;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45);border:1px solid rgba(142,36,170,.55);transition:transform .25s,box-shadow .25s,border-color .25s}
-.msg:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.65);box-shadow:0 14px 30px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.45)}
+.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:17px;font-weight:700;line-height:1.55;box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 16px rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.16);transition:transform .25s,box-shadow .25s,border-color .25s}
+.msg:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.65);box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),0 0 22px rgba(142,36,170,.45)}
 .msg .meta{display:block;font-size:17px;color:#fff;margin-top:6px}
 /* .msg.mine: colour FILL is gone — obsidian inside, royal-purple rim + glow outside (Code §4: colour in rims and halos, never fills). */
-.msg.mine{align-self:flex-end;background:linear-gradient(135deg,#050607,#050607);border-color:#8e24aa;box-shadow:0 8px 20px rgba(0,0,0,.45),0 0 22px rgba(142,36,170,.35)}
-.msg.theirs{align-self:flex-start;background:#050607;border-color:#07925f;box-shadow:0 8px 20px rgba(0,0,0,.45),0 0 22px rgba(7,146,95,.25)}
-.msg.letter{align-self:stretch;max-width:100%;background:linear-gradient(135deg,#050607,#050607)}
-.msg.letter .subject{font-weight:800;font-size:17px;margin-bottom:6px}
+.msg.mine{align-self:flex-end;background:linear-gradient(135deg,#050607,#050607);border-color:#8e24aa;box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 26px rgba(142,36,170,.45)}
+.msg.theirs{align-self:flex-start;background:linear-gradient(180deg,#1b1b24,#0c0c11);border-color:var(--mc,#0f52ba);box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35),0 0 22px color-mix(in srgb,var(--mc,#0f52ba) 40%,transparent)}
+.msg.letter{align-self:stretch;max-width:100%;background:linear-gradient(180deg,#14141d,#0a0a0f);border:1.5px solid var(--wc,#0f52ba);box-shadow:0 12px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12),0 0 22px color-mix(in srgb,var(--wc,#0f52ba) 35%,transparent)}
+.msg.letter .subject{font-weight:800;font-size:19px;margin-bottom:6px}
 .msg.letter .letter-to{font-size:17px;color:#fff;margin-bottom:8px}
 .typing{align-self:flex-start;font-size:17px;color:#fff;padding:6px 4px}
-.format-note{align-self:center;font-size:17px;color:#fff;background:linear-gradient(135deg,#050607,#050607);border:1px solid rgba(142,36,170,.55);padding:7px 12px;border-radius:999px;box-shadow:0 8px 18px rgba(0,0,0,.5),0 0 14px rgba(142,36,170,.25);transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
-.format-note:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(135deg,color-mix(in srgb,#8e24aa 24%,#050607),color-mix(in srgb,#8e24aa 12%,#050607));box-shadow:0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5)}
 /* --- SMART NOTE card in the thread (L6 format) --- */
-.smart-note{border-radius:16px;border:1px solid rgba(142,36,170,.4);background:linear-gradient(135deg,#050607,#050607);padding:16px 18px;box-shadow:0 10px 26px rgba(0,0,0,.5);margin:4px 0;transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
-.smart-note:hover{transform:translateY(-3px);border-color:#8e24aa;background:linear-gradient(135deg,color-mix(in srgb,#8e24aa 18%,#050607),color-mix(in srgb,#8e24aa 10%,#050607));box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 30px -2px rgba(142,36,170,.55)}
-.smart-note h4{font-family:Marcellus,Georgia,serif;margin:0 0 4px;font-size:19px}
-.smart-note h5{margin:12px 0 3px;font-size:17px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
-.smart-note p{margin:0;font-size:17px;font-weight:700;line-height:1.55;color:#fff}
+
+
+
+
+
 /* --- COMPOSER with real depth --- */
 .composer{padding:14px;border-top:1px solid rgba(255,255,255,.09)}
 .composer-inner{display:flex;gap:10px;align-items:flex-end}
-.composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(142,36,170,.55);background:linear-gradient(135deg,#050607,#050607);color:#fff;font-size:17px;font-weight:700;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.22)}
+.composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:17px;font-weight:700;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.22)}
 .composer input[type=text]:focus{border-color:#8e24aa;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 0 28px rgba(142,36,170,.5)}
 .composer input.subject{flex:0 0 180px}
 .composer input[type=text]::placeholder{color:#fff;opacity:1}
@@ -303,18 +604,28 @@ body.no-cover .ph-main{padding-top:12px}
 .install-later:hover{transform:translateY(-2px);border-color:#8e24aa;background:linear-gradient(135deg,color-mix(in srgb,#8e24aa 24%,#050607),color-mix(in srgb,#8e24aa 12%,#050607));box-shadow:0 12px 26px rgba(0,0,0,.55),0 0 22px rgba(142,36,170,.5);text-shadow:0 0 12px rgba(142,36,170,.8)}
 /* --- THE FIVE bottom bar (Unification 2026-11-17): the official bar, harvested
    verbatim from the Personal page (NayaNotif SEGS + ICONS). Hub .notif-bar /
-   .notif-tile construction unchanged; the segments are now the Five, icons
-   only, no visible labels — the dock is shorter, so less of the page hides
-   behind it. Five segments, equal 84px, gap 22px. --- */
-.notif-bar{position:static;flex:none;z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) both;transition:opacity .45s ease}
+   .notif-tile construction unchanged; the segments are the six, each with its
+   visible white label under the tile (ADD / MAIL / ACTIVITY / WORLDS /
+   ECOSYSTEM / CONNECT — the text-pills round added the labels the Fix-4 note
+   claimed; the eye's spot 8: labels must show whole). Six segments,
+   min-width 104px desktop, gap 12px. BARFIT 2026-11-18: at phone widths the
+   segments size to their labels instead (min-width:0, 46px tiles — see the
+   BARFIT band below); desktop keeps 104px / 54px. --- */
+.notif-bar{position:static;flex:none;z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px);animation:notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;transition:transform .35s ease,opacity .45s ease} /* WHITE-MIDDLE: fill 'both' -> 'backwards' so the entrance animation releases the transform after it lands — otherwise it would override the fold. */
+/* WHITE-MIDDLE §3(a): the fold rule (Shawn 20:29Z, confirmed 20:50Z). The bar folds away the moment you scroll down and returns ONLY at the very bottom. */
+#naya-notif-bar.bar-folded{transform:translateY(110%);opacity:0;pointer-events:none}
 @keyframes notifUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
-.notif-row{display:flex;gap:22px;width:100%;max-width:720px;padding:8px 14px 6px;justify-content:center}
-.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#fff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;min-width:84px}
+.notif-row{display:flex;gap:12px;width:100%;max-width:720px;padding:8px 14px 6px;justify-content:center}
+.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#fff;font-family:inherit;transition:transform .12s;-webkit-tap-highlight-color:transparent;min-width:104px}
 .notif-seg:active{transform:scale(.94)}
-.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 36%,#050607),#050607 78%);border:1.5px solid var(--nc);box-shadow:inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 7px 16px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--nc) 42%,transparent);color:var(--nc);transition:box-shadow .3s,border-color .3s}
+/* TEXT-TOPIC-PILLS + AMENDMENT 2026-11-17 21:59Z (Shawn's pictures aaa_2.png / aaa_11111.png — SUPERSEDES the white middle): dark middle, white icon. Obsidian tile, glyph white and lit, rim + glow in the tile's own color — the pictures' construction, the one set (no new tile style for this page). The orbit flow stays (see .notif-tile::after / .notif-seg::before). Border stays the mail's bare var(--nc) (fix-5 law), not Dashboard's 62% white mix. */
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#17121f,#0a0a0f);border:1.5px solid var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -8px 14px rgba(0,0,0,.65),0 8px 18px rgba(0,0,0,.6),0 0 20px color-mix(in srgb, var(--nc) 45%, transparent);color:#fff;transition:box-shadow .3s, border-color .3s, transform .2s;}
 .notif-tile::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(155deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 42%),linear-gradient(25deg,rgba(255,255,255,0) 62%,color-mix(in srgb,var(--nc) 22%,transparent) 100%)}
-.notif-tile svg{width:25px;height:25px;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--nc) 75%,transparent));position:relative}
-.notif-count{position:absolute;top:-8px;right:-10px;min-width:24px;height:24px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:17px;font-weight:900;color:#06060a;background:var(--nc);border:2px solid #050607;box-shadow:0 0 14px var(--nc),0 3px 8px rgba(0,0,0,.5);animation:notifPulse 2.4s ease-in-out infinite}
+.notif-tile svg{width:25px;height:25px;color:#fff;filter:drop-shadow(0 0 6px rgba(255,255,255,.6));position:relative;}
+/* TEXT-TOPIC-PILLS §3: every count is a black (obsidian) badge with a white number — the Dashboard black-badge construction (blob 614513a1, PR #3430, the F1 fix: black bg + white text + own-color rim) and the PTS/%/MONEY pill law. CORRECTION: the earlier draft of this comment cited Dashboard L29302 for the badge — that line is a green .os-b3-badge, not the black badge. Rim is the tile's own color (var(--nc)); digits 17px, the Dashboard badge size. AMENDMENT 21:57Z: the badge sits INSIDE the tile corner (top/right 3px), part of the tile — never a bubble hung off the corner. */
+.notif-count{position:absolute;top:3px;right:3px;min-width:24px;height:24px;padding:0 6px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:17px;line-height:1;font-weight:900;color:#fff;background:#050607;border:2px solid var(--nc);box-shadow:0 0 12px color-mix(in srgb, var(--nc) 80%, transparent),0 3px 8px rgba(0,0,0,.5);animation:notifPulse 2.4s ease-in-out infinite}
+/* TEXT-TOPIC-PILLS spot 8: the visible label under each tile — bold white, one size, whole (never clipped). At phone widths the row scrolls so the labels stay whole. */
+.notif-label{display:block;font-size:17px;font-weight:800;color:#fff;letter-spacing:.04em;line-height:1.25;white-space:nowrap;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 @keyframes notifPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
 .notif-seg.has-news .notif-tile{border-color:var(--nc);box-shadow:inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px color-mix(in srgb,var(--nc) 68%,transparent)}
 /* --- WORLD FEED PANEL + NOTIFICATION CHOICE SHEET (trio's door, spec §) --- */
@@ -342,27 +653,28 @@ body.no-cover .ph-main{padding-top:12px}
 /* --- WORLD SELECTOR: one universal mail, any world (brief §1) ---
    Personal blue · Business green · Space magenta. The active pill is
    the one that lights up — rim + glow in its own colour, obsidian inside. */
-.world-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:2px 0 8px}
+
 /* WORLD PILLS — the Dashboard PTS / % / MONEY button standard (Shawn
    03:51Z, best buttons in the system): obsidian pill, bold white text,
    one deep colour per button as rim + glow. No gradient fill, no inset. */
-.world-pill{--wc:#0f52ba;display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:900;font-size:17px;color:#fff;background:#050607;border:1.5px solid var(--wc);box-shadow:0 0 14px color-mix(in srgb,var(--wc) 35%,transparent),0 8px 20px rgba(0,0,0,.5);transition:box-shadow .25s,border-color .2s,transform .2s;white-space:nowrap}
-.world-pill .wdot{width:9px;height:9px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}
-.world-pill:hover{background:#050607;border-color:var(--wc);box-shadow:0 0 26px -2px var(--wc),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
-.world-pill:hover .wdot{background:var(--wc);box-shadow:0 0 10px var(--wc)}
-.world-pill.on{border-color:var(--wc);box-shadow:0 0 0 1px var(--wc),0 0 24px -2px var(--wc),0 12px 26px rgba(0,0,0,.6)}
-.world-pill.on .wdot{background:var(--wc);box-shadow:0 0 12px var(--wc)}
-.world-note{font-size:17px;color:#fff}
+
+
+
+
+
+
+
 /* --- MAIL BOARD: the letter as an elevated board (Shawn 2026-11-13 15:32Z —
    mail mirrors Smart Notes: title, nutshell, key points, jewels as bullets).
    Board black inside, white as a real object, the whole board lights up
    and lifts on hover in its own world colour. --- */
 .mail-board{--wc:#0f52ba;border-radius:18px;border:1.5px solid var(--wc);background:linear-gradient(135deg,#050607,#050607);padding:18px 20px;box-shadow:0 18px 40px rgba(0,0,0,.6),0 0 22px -6px var(--wc);margin:4px 0;transition:box-shadow .25s,transform .2s,border-color .2s}
 .mail-board:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(0,0,0,.65),0 0 34px -2px var(--wc)}
-.mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:17px;font-weight:800;letter-spacing:.06em;color:#fff;text-transform:uppercase}
-.mail-board h4{font-family:Marcellus,Georgia,serif;margin:10px 0 4px;font-size:19px;font-weight:800;color:#fff}
-.mail-nut{margin:0;font-size:17px;line-height:1.55;color:#fff;font-weight:700}
-.mail-board h5{margin:14px 0 6px;font-size:17px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
+.mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:17px;font-weight:900;letter-spacing:.08em;color:#fff;text-transform:uppercase}
+.mail-board h4{font-family:Marcellus,Georgia,serif;margin:10px 0 4px;font-size:25px;font-weight:800;color:#fff}
+.mail-nut{margin:0 0 10px;font-size:19px;line-height:1.55;color:#fff;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+/* ALLTOPICS-FIX: KEY POINTS is white like PERSONAL MAIL (.mail-board-top) — it was the world hue, which reads bright blue in Personal. The diamond bullets keep the world hue — they are jewels, not text. */
+.mail-board h5{margin:16px 0 8px;font-size:17px;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
 .mail-points{margin:0;padding:0;list-style:none}
 .mail-points li{position:relative;font-size:17px;font-weight:700;line-height:1.55;color:#fff;padding-left:22px;margin-bottom:6px}
 .mail-points li::before{content:'◆';position:absolute;left:0;top:0;color:var(--wc);text-shadow:0 0 8px var(--wc)}
@@ -378,15 +690,14 @@ body.no-cover .ph-main{padding-top:12px}
 @keyframes orbitCCW{to{transform:rotate(-360deg)}}
 .ph-plus::before{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 50% 0%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCW 60s linear infinite}
 @media (max-width:900px){
-  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:0}   .menu-bar{padding:6px 16px}
-  .ph-cover-inner{padding:10px 10px 12px}   .ph-cover-inner h1{font-size:25px}   .ph-cover-inner p{font-size:17px;margin-top:6px;max-width:420px}
+  .messenger{grid-template-columns:1fr}   .ph-main{padding-top:4px}   .nf-smtab{min-height:38px}   .stub-note{padding-bottom:0}   
   /* FIX-3 round 2, 2026-11-17: narrow stack trims so the first row clears the fixed dock:
-     h2 19px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
-  .page-title{font-size:19px;top:46px}   .page-scroll{--titleEdge:86px} /* FIX-6: 1-line title edge ≈46+40 (FIX-7: 54px bar-tuck) */
+     h2 22px (1 line at 635), tighter cover-modes/tabs/search/world/panel/rows spacing. */
+     .page-scroll{--titleEdge:86px} /* FIX-6: 1-line title edge ≈46+40 (FIX-7: 54px bar-tuck) */
   .cover-toggle{margin-top:8px}
   .org-tabs{padding:4px 2px 4px}
-  .search-row{padding:8px 16px;margin-bottom:8px}
-  .world-row{margin:2px 0 8px;gap:6px}
+  
+  
   .panel h3{padding-top:4px}
   .panel .panel-sub{padding-bottom:0}
   .rows{padding-top:0}
@@ -404,11 +715,10 @@ body.no-cover .ph-main{padding-top:12px}
      the dock at load while the (bottom-anchored) cover still reads:
      title one step smaller (still 2 lines), tabs + search tighter,
      cover-toggle shorter. No content removed, no text changed. */
-  .page-title{font-size:19px}
+  
   .nf-smtab{padding:8px 16px}
   .org-tabs{padding:2px 2px 2px}
-  #coverToggle{min-height:38px}
-  .search-row{padding:7px 16px;margin-bottom:6px}
+  
 }
 /* --- FIX 2026-11-12 (checker NOT PASS 8/10): thread head at phone widths ---
    Was: orb + who + toggle on one row left the presence 35px wide at 390
@@ -428,8 +738,12 @@ body.no-cover .ph-main{padding-top:12px}
    (item 3) DOCK LABELS: the Five carry visible white labels under the
    tiles (ADD / MAIL / ACTIVITY / WORLDS / ECOSYSTEM) — the eye read the
    labels as falling below the viewport; the unification's icons-only dock
-   carried the names in aria-label + title only. Labels are white, 17px at every width (Sweep-3 Fix 1) — the live eye must confirm all five still fit 390px. Dock height grows with them
-   desktop / ~81px phone; the feed-panel (bottom:104px) still clears it.
+   carried the names in aria-label + title only. CORRECTION (text-pills
+   round, 2026-11-17): the bar builder never emitted the labels, so this
+   claim was false in the filed bytes — the round added the real
+   .notif-label under each tile, six labels, bold white at 17px, and at
+   phone widths the row scrolls so they stay whole. Dock height is now
+   ~92px desktop; the feed-panel (bottom:104px) still clears it.
    (item 4) SECONDARY TEXT: every text colour in this file already computes
    to #fff — no opacity rule and no desktop-only rule dims these lines
    (the 390 eye's 0 dim hits agree). What the desktop eye read as dim
@@ -458,8 +772,7 @@ body.no-cover .ph-main{padding-top:12px}
    color-mix-with-transparent (alpha, hue preserved — the glows already
    used the exact hexes). Dark washes (mixes with #050607 / #050607) are
    shading, not lighter variants, and stand. --- */
-.notif-label{display:block;font-size:17px;font-weight:800;letter-spacing:.12em;color:#fff;text-align:center;line-height:1.2}
-.page-head p,.panel-sub,.stub-note,.row-last,.row-nut,.msg .meta,.thread-head .who span,.mail-meta,.letter-to,.typing,.world-note,.feed-sub,.choice-row small,.toast p{font-weight:600}
+.panel-sub,.stub-note,.row-last,.row-nut,.msg .meta,.thread-head .who span,.mail-meta,.letter-to,.typing,.feed-sub,.choice-row small,.toast p{font-weight:600}
 /* --- FIX-3 round 2 (eye 02:59Z): dock cycle 60s/75s, dots 6px/5px -- strictly faster than the 60s/90s the eye read as ~6 min/rev; no 360s duration existed in the filed bytes. */
    /* --- FIX 2026-11-17 (Smart Mail fix round): trio orbit + whole-item light.
    The bottom activity orbs carry two satellites each, slow, alternating
@@ -467,9 +780,11 @@ body.no-cover .ph-main{padding-top:12px}
    so the flow is visible. Hover lights the WHOLE tile in its own colour. --- */
 .notif-tile::after{content:'';position:absolute;inset:-8px;border-radius:22px;pointer-events:none;background:radial-gradient(circle 6px at 50% 0%,var(--nc) 98%,transparent 100%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--nc) 30%,transparent);filter:drop-shadow(0 0 6px var(--nc));animation:orbitCW 60s linear infinite}
 .notif-seg::before{content:'';position:absolute;top:-6px;left:50%;width:70px;height:70px;margin-left:-35px;border-radius:50%;pointer-events:none;background:radial-gradient(circle 5px at 0% 50%,#fff 98%,transparent 100%);filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:orbitCCW 75s linear infinite}
-.notif-seg:hover .notif-tile{border-color:var(--nc);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 55%,#050607),#050607 78%);box-shadow:inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 30px color-mix(in srgb,var(--nc) 70%,transparent)}
-/* FIVE at phone widths: five tiles must fit 390px — tighter gap, 48px tiles. */
-@media(max-width:480px){.notif-row{gap:10px;padding:8px 8px 6px}.notif-seg{min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}.notif-label{font-size:17px;letter-spacing:.08em}}
+.notif-seg:hover .notif-tile{transform:translateY(-3px);border-color:var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -8px 14px rgba(0,0,0,.6),0 8px 18px rgba(0,0,0,.6),0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);} /* TEXT-TOPIC-PILLS: hover lifts + lights in the tile's own color on the dark middle. Border stays bare var(--nc) (fix-5). */
+/* BARFIT 2026-11-18 (phone-width eye 01:17Z): the bar overflowed the document at 635 (scrollWidth 660 vs 635, CONNECT half off-screen) because six 104px segments + gaps measure 712px; at 390 the swipe was unproven. Construction harvested from Personal's phone-fit band (personal-complete.html, blob 962bd613 — the <=640px rule: 46px tiles, 12px gap, 2px seg padding; the <=400px rule: 6px gap). Personal has NO labels, so the Mail adaptation is: segments size to their labels (min-width:0 kills the 104px floor). Measured label widths at 17px/800: ADD 39, MAIL 48, ACTIVITY 84, WORLDS 78, ECOSYSTEM 105, CONNECT 87 (sum 441); with 46px tiles the six segments measure 472 + 5x12 gaps + 28 row padding = 560, so the row FITS whole at viewports >= 560 and scrolls below that (the <=560px rule keeps flex-start + overflow-x so the swipe reaches CONNECT and back to ADD). flex-shrink:0 on the seg is load-bearing: without it the row's flex-shrink compresses the segments below their label widths at 390 and the labels overlap into one unreadable string (caught in render of the first filing). Labels stay 17px whole, never shrunk. */
+@media(max-width:640px){.notif-row{gap:12px}.notif-seg{min-width:0;flex-shrink:0;padding:2px 2px 0}.notif-tile{width:46px;height:46px;border-radius:14px}.notif-tile svg{width:22px;height:22px}}
+@media(max-width:560px){.notif-row{padding:8px 8px 6px;overflow-x:auto;justify-content:flex-start;scrollbar-width:none}.notif-row::-webkit-scrollbar{display:none}}
+@media(max-width:400px){.notif-row{gap:6px}}
 .row:hover .cx-ava{filter:brightness(1.18)}
 /* --- ELEVATION FIX 2026-11-17 (checker item 8): the six flat/dead elements
    gain elevation + whole-item hover light in their own deep color — .format-note,
@@ -477,69 +792,56 @@ body.no-cover .ph-main{padding-top:12px}
 /* --- FIX-2 2026-11-17 (captain's eye 02:07Z): orbit satellites asymmetric 90deg apart + larger (no half-turn swap); saved-list orbs keep .cx-ava centring; cover 32vh + panel/row trims so the first rows clear the fixed dock; cover + orbs +12px inside; h2 sticky below the nav; stub note at panel top; explicit empty-thread state. Deep palette only. --- */
 /* --- FIX-3 2026-11-17 (checker FAIL items 3+5 on fix-2): desktop cover 25vh so the first row clears the fixed dock at 1920x999/1080; narrow cover 140px at <=900px + h2 22px + spacing trims so the first row clears the dock at 635x800/900/1000; heading moved out of .page-head so its sticky box is .ph-main -- it docks below the nav and never releases, no straddle window at any scroll position. Stub note, orbit, letters, orbs, toggle, seeds untouched. Deep palette only. --- */
 </style>
+<!--
+  REVAMP (2026-11-17, brief BRIEF-SMART-MAIL-REVAMP-20261117 — Shawn 18:33Z:
+  "a complete utter mess... layers of nothing... way too much text... keep
+  only the initials"). Layout, named: COVER, THEN MAIL — cover (h1 once, two
+  + in the corners) -> one slim control row (cover toggle) -> topics
+  (harvested SmartTabs) -> the messenger (inbox + open thread) -> saved
+  lists -> the Five. WENT: menu-bar pills, h2 title, page-head paragraph,
+  cover tagline, search row, world pills + note, the inbox/conv/topic subs,
+  the "Preview people" stub-note, the two smart-list subs, thread-foot
+  Install (duplicate), the format-note pill, the Maya "Shared note" block.
+  STAYED, byte-identical: the initial discs, the letter format, the Mail/IM
+  toggle, inbox data + sample people, the Five, the button standard, cover +
+  cover toggle, org-tabs, smart lists, overlays, Fix-6/7/8 mask machinery.
+  World selection survives via entry (?world= / ?from=); WORLDS on the Five
+  now opens the topic navigation. One honest label replaces the removed
+  sample text: "Sample people — not real citizens."
+-->
 </head>
 <body>
-<!-- FIX-4: .page-scroll is the page's only scroller (see body rule) — cover,
-     menu-bar and main scroll inside it; the Five sit below it in flow. -->
+<!-- FIX-4: .page-scroll is the page's only scroller (see body rule) — menu-bar and main scroll inside it; the bar sits below it in flow. -->
 <div class="page-scroll">
 
-<!-- COVER -->
-<header class="ph-cover" id="cover">
-  <div class="ph-cover-inner">
-    <h1>Smart Mail</h1>
-    <p>One conversation, two formats — mail and instant message, in every world.</p>
-  </div>
+<!-- WHITE-MIDDLE §3(c): the cover banner stood here — gone (Shawn 20:46Z). The page opens on the mail itself. The two + controls live in this slim strip, flush at the top: New message left, Install Smart Mail right. -->
+<div class="ph-top">
   <button class="ph-plus left" id="plusNew" type="button" aria-label="New message">+</button>
   <button class="ph-plus right" id="plusInstall" type="button" aria-label="Install Smart Mail">&#11015;</button>
-</header>
+</div>
 
 <!-- MENU BAR -->
-<nav class="menu-bar" aria-label="Network menu">
-  <a class="steppill" style="--sc:#8e24aa" href="https://nayanet.app/"><span class="sdot"></span>Hub</a>
-  <a class="steppill" style="--sc:#0f52ba" href="https://nayanet.app/dashboard"><span class="sdot"></span>Dashboard</a>
-  <a class="steppill" style="--sc:#07925f" href="https://nayanet.app/personal"><span class="sdot"></span>Personal</a>
-  <a class="steppill" style="--sc:#d4a017" href="https://nayanet.app/business"><span class="sdot"></span>Business</a>
-  <a class="steppill" style="--sc:#c2410c" href="https://nayanet.app/spaces"><span class="sdot"></span>Space</a>
-  <a class="steppill on" style="--sc:#c62828" href="#" aria-current="page"><span class="sdot"></span>Smart Mail</a>
-  <a class="steppill" style="--sc:#a21caf" href="https://nayanet.app/pricing"><span class="sdot"></span>Pricing</a>
-</nav>
 
 <main class="ph-main">
-  <h2 class="page-title">Message anybody — by topic, not just by contact</h2>
-  <div class="page-head">
-    <p>Flip the format, pick a topic, tap a person. One tap and you are talking.</p>
-    <button class="btn ghost cover-toggle" type="button" id="coverToggle" aria-pressed="false">Hide the banner</button>
-  </div>
 
   <!-- ORGANIZER TABS: the Smart Organizer's topics, harvested verbatim -->
   <div class="org-tabs" id="orgTabs" role="tablist" aria-label="Topics in NayaNET"></div>
 
   <!-- PICKER: Smart Search -> match % -> pick -->
-  <div class="search-row">
-    <span aria-hidden="true">🔍</span>
-    <input id="smartSearch" type="text" placeholder="Smart Search — type a name or a topic…" aria-label="Smart Search people by keyword" autocomplete="off">
-  </div>
 
   <!-- WORLD SELECTOR: one universal mail — Personal / Business / Space.
        Opening mail from a page shows THAT world's mail first (?world= or
        ?from=<world>); from the Hub (?from=hub) the citizen picks any world. -->
-  <div class="world-row" id="worldRow" role="group" aria-label="Which world's mail">
-    <span id="worldPills"></span>
-    <span class="world-note" id="worldNote"></span>
-  </div>
 
   <div class="messenger">
     <!-- LEFT: mail inbox (mail mode) / conversations + topic people (IM mode) -->
     <section class="panel" aria-label="Conversations">
+      <p class="panel-sub" id="sampleNote">Sample people — not real citizens.</p>
       <h3 id="inboxTitle" hidden>Mail inbox — Personal</h3>
-      <p class="panel-sub" id="inboxSub" hidden>Tap a letter to open it.</p>
-      <p class="stub-note">Preview people — sample names showing the shape of the page. Live people come from the Smart Organizer and the Auto-Match engine; no sample person here is a real citizen.</p>
       <div class="rows" id="mailInbox" hidden></div>
       <h3 id="convHead">Conversations</h3>
-      <p class="panel-sub" id="convSub">Contacts · people online in your topic.</p>
       <div class="rows" id="convList"></div>
       <h3 id="topicPeopleTitle">Online in Design</h3>
-      <p class="panel-sub" id="topicSub">Tap a person to open a conversation with them.</p>
       <div class="rows" id="topicPeople"></div>
 
     </section>
@@ -569,7 +871,6 @@ body.no-cover .ph-main{padding-top:12px}
       </div>
       <div class="thread-foot">
         <button class="btn ghost" type="button" id="backHub">← Hub</button>
-        <button class="btn ghost" type="button" id="downloadBtn">⬇ Install app</button>
       </div>
     </section>
   </div>
@@ -581,12 +882,10 @@ body.no-cover .ph-main{padding-top:12px}
   <div class="smart-lists" id="smartLists">
     <section class="panel" aria-label="Saved instant-message lists">
       <h3>Instant-message lists</h3>
-      <p class="panel-sub">Who you message live.</p>
       <div class="rows" id="imLists"></div>
     </section>
     <section class="panel" aria-label="Saved mail lists">
       <h3>Mail lists</h3>
-      <p class="panel-sub">Who you write to.</p>
       <div class="rows" id="mailLists"></div>
     </section>
   </div>
@@ -618,41 +917,20 @@ body.no-cover .ph-main{padding-top:12px}
   </div>
 </div>
 
-<!-- THE FIVE — the official bottom bar (Personal page, harvested verbatim):
-     + ADD purple · MAIL blue · ACTIVITY green · WORLDS gold · ECOSYSTEM
-     burnt orange — NayaNotif SEGS + ICONS from the Personal page
-     (personal-whole-page-20261117/work/personal-fixed.html, harvested from
-     probe-icons-plus-fix-r3/work-r5-fixpass3.html, captain-verified
-     2026-11-13). FIX-4: visible labels under the tiles (ADD / MAIL /
-     ACTIVITY / WORLDS / ECOSYSTEM) — the eye read the labels as falling
-     below the viewport; names also stay in aria-label + title. The bar is
-     in normal flow under .page-scroll (not fixed), so it can never cover
-     content mid-scroll. CONNECT is NOT here: adding or removing it is
-     Shawn's call. The trio (Personal/Business/Thing gems) is gone. -->
-<footer class="notif-bar" id="notifBar">
-  <div class="notif-row">
-    <button class="notif-seg" type="button" id="segAdd" data-notif="plus" style="--nc:#8e24aa" aria-label="ADD — open" title="ADD">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-      <span class="notif-label">ADD</span>
-    </button>
-    <button class="notif-seg has-news" type="button" id="segMail" data-notif="mail" style="--nc:#0f52ba" aria-label="MAIL — open" title="MAIL">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count" id="mailCount">6</span></span>
-      <span class="notif-label">MAIL</span>
-    </button>
-    <button class="notif-seg has-news" type="button" id="segActivity" data-notif="activity" style="--nc:#07925f" aria-label="ACTIVITY — open" title="ACTIVITY">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count" id="activityCount">4</span></span>
-      <span class="notif-label">ACTIVITY</span>
-    </button>
-    <button class="notif-seg" type="button" id="segWorlds" data-notif="spaces" style="--nc:#d4a017" aria-label="WORLDS — open" title="WORLDS">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg></span>
-      <span class="notif-label">WORLDS</span>
-    </button>
-    <button class="notif-seg" type="button" id="segEco" data-notif="eco" style="--nc:#c2410c" aria-label="ECOSYSTEM — open" title="ECOSYSTEM">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
-      <span class="notif-label">ECOSYSTEM</span>
-    </button>
-  </div>
-</footer>
+<!-- BAR-FIX (2026-11-17, brief BRIEF-SMART-MAIL-REVAMP-BAR-FIX-20261117):
+     the revamp round returned NOT PASS on the bar only — five tiles, static
+     footer with visible labels, against a brief ordering Personal's six,
+     JS-built. This round harvests Personal's bar VERBATIM: window.NayaNotif
+     (SEGS + ICONS + init) from Personal blob
+     9a006c47500598fcb7e6e4f4dd3c22cd0f09ca4a, built by JS into
+     nav#naya-notif-bar at boot — ADD #8e24aa · MAIL #0f52ba · ACTIVITY
+     #07925f · WORLDS #d4a017 · ECOSYSTEM #c2410c · CONNECT #c62828, icons
+     only, names in aria-label + title. The static five-seg footer is gone,
+     with its visible labels. CONNECT opens CONNECT, never CREATE (Personal's
+     guarded handler; this page has no plus menu yet, so the tap is a
+     guarded no-op until that menu lands). Nothing else in the revamp
+     changes — the cover, the control row, the topics, the messenger, the
+     lists, the letters, the toggle, the initials are exactly as filed. -->
 
 <!-- WORLD FEED PANEL: tap ACTIVITY in the Five, see that world's feed, each item sourced -->
 <div class="feed-panel" id="feedPanel" role="dialog" aria-label="World activity feed">
@@ -772,19 +1050,19 @@ var WORLDS = {
 };
 var MAIL = {
   personal: [
-    { id:'m-p1', from:'Maya R.', fromId:'maya', subject:'The cover is ready for your eyes', nut:'The new cover lands tonight — purple light on the edge, exactly as we drew it.', points:['Cover ships tonight, purple edge light included','One link inside — tap it to see it live','Reply with the one word you would change'], time:'09:41', unread:true },
-    { id:'m-p2', from:'Sam V.', fromId:'sam', subject:'Did you see the game?', nut:'Sam’s team won 3–1 and he scored twice — the whole story is inside.', points:['Final score 3–1, two goals from Sam','The winning goal came in the last minute','He wants to tell you himself tonight'], time:'18:52', unread:true },
-    { id:'m-p3', from:'Jordan K.', fromId:'jordan', subject:'Sunday market at nine', nut:'Sourdough, herbs, and the stall with the good honey — bring a bag.', points:['Meet at the gate at nine','Two loaves, one for you','The honey stall is back this week'], time:'08:12', unread:false }
+    { id:'m-p1', from:'Maya R.', fromId:'maya', subject:'The cover is ready for your eyes', nut:'The new cover lands tonight — purple light on the edge.', points:['Cover ships tonight, purple edge light included','One link inside — tap it to see it live','Reply with the one word you would change'], time:'09:41', unread:true },
+    { id:'m-p2', from:'Sam V.', fromId:'sam', subject:'Did you see the game?', nut:'Sam’s team won 3–1 and he scored twice.', points:['Final score 3–1, two goals from Sam','The winning goal came in the last minute','He wants to tell you himself tonight'], time:'18:52', unread:true },
+    { id:'m-p3', from:'Jordan K.', fromId:'jordan', subject:'Sunday market at nine', nut:'Sourdough, herbs, and the good honey stall.', points:['Meet at the gate at nine','Two loaves, one for you','The honey stall is back this week'], time:'08:12', unread:false }
   ],
   business: [
-    { id:'m-b1', from:'Vera K.', fromId:'t-b1', subject:'The proposal is ready', nut:'The proposal is written, priced, and waiting for your eyes before it goes out.', points:['Three pages, one clear price','Your name goes on the front','Send it Friday if you approve'], time:'11:20', unread:true },
-    { id:'m-b2', from:'David L.', fromId:'t-b2', subject:'Your numbers this week', nut:'Visits are up, replies are up — the business page is moving.', points:['42 visits today','6 new replies','Best day since the launch'], time:'Yesterday', unread:true },
-    { id:'m-b3', from:'Emma D.', fromId:'t-b3', subject:'First ten founders', nut:'Ten founders are waiting for the first call — here is who they are.', points:['Ten names, all warm','First call Thursday','You open, I take notes'], time:'Yesterday', unread:false }
+    { id:'m-b1', from:'Vera K.', fromId:'t-b1', subject:'The proposal is ready', nut:'The proposal is written, priced, and waiting.', points:['Three pages, one clear price','Your name goes on the front','Send it Friday if you approve'], time:'11:20', unread:true },
+    { id:'m-b2', from:'David L.', fromId:'t-b2', subject:'Your numbers this week', nut:'Visits are up, replies are up — the page is moving.', points:['42 visits today','6 new replies','Best day since the launch'], time:'Yesterday', unread:true },
+    { id:'m-b3', from:'Emma D.', fromId:'t-b3', subject:'First ten founders', nut:'Ten founders are waiting for the first call.', points:['Ten names, all warm','First call Thursday','You open, I take notes'], time:'Yesterday', unread:false }
   ],
   space: [
-    { id:'m-s1', from:'Ava L.', fromId:'t-d1', subject:'The Design space is open', nut:'The Design space opened its doors — four people are already inside talking.', points:['Doors open, everyone welcome','First thread: light that feels real','Your note is pinned at the top'], time:'10:05', unread:true },
-    { id:'m-s2', from:'Noah B.', fromId:'t-d2', subject:'A note on type and light', nut:'Noah wrote the note we talked about — type, light, and the space between.', points:['Type sets the tone','Light does the talking','Read it before Thursday'], time:'Yesterday', unread:true },
-    { id:'m-s3', from:'Sofia M.', fromId:'t-d3', subject:'Worlds you can walk through', nut:'Sofia’s illustrations are in — the space finally looks like the world it is.', points:['Twelve new illustrations','The walk-through is live','She wants your first reaction'], time:'Yesterday', unread:false }
+    { id:'m-s1', from:'Ava L.', fromId:'t-d1', subject:'The Design space is open', nut:'The Design space opened its doors — come in.', points:['Doors open, everyone welcome','First thread: light that feels real','Your note is pinned at the top'], time:'10:05', unread:true },
+    { id:'m-s2', from:'Noah B.', fromId:'t-d2', subject:'A note on type and light', nut:'Noah wrote the note — type, light, and space.', points:['Type sets the tone','Light does the talking','Read it before Thursday'], time:'Yesterday', unread:true },
+    { id:'m-s3', from:'Sofia M.', fromId:'t-d3', subject:'Worlds you can walk through', nut:'Sofia’s illustrations are in — the world, at last.', points:['Twelve new illustrations','The walk-through is live','She wants your first reaction'], time:'Yesterday', unread:false }
   ]
 };
 var state = { person: CONTACTS[0], topic: 'Design', thing: 'Design', format: 'im', group: null, listFilter: null, listName: '', world: 'personal', mailId: null };
@@ -799,21 +1077,121 @@ var CHOICE_DEFS = [
   ['shares','Shares','Someone shared your thing'], ['stats','Stats','Your numbers, moving'],
   ['updates','Updates','Changes to your pages'], ['leaderboards','Leaderboards','Leaderboard moves, when live']
 ];
-/* THE FIVE counts: MAIL carries the unread letters across all worlds;
+/* BAR-FIX: Personal's bottom bar, harvested verbatim (see the record
+   comment where the static footer stood). NayaNotif builds nav#naya-
+   notif-bar at boot — six tiles, icons only. The mail page's own counts
+   and tile handlers below read the built DOM by data-notif. */
+window.NayaNotif = window.NayaNotif || {
+    get(k) { try { return parseInt(localStorage.getItem('nayanet.notif.' + k) || '0', 10) || 0; } catch (e) { return 0; } },
+    set(k, n) { var prev = this.get(k); try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} if ((k === 'mail' || k === 'activity' || k === 'spaces') && n > prev) { this.playSound(); if (k === 'mail' && n > 0) { if (window.NayaUI && window.NayaUI.toast) { window.NayaUI.toast('New mail — ' + n + ' waiting.', '#0f52ba'); } else if (window.toast) { window.toast('New mail — ' + n + ' waiting.'); } } }  this.refresh(); },
+    bump(k) { this.set(k, this.get(k) + 1); this.refresh(); },
+    soundOn() { try { return localStorage.getItem('nayanet.notif.sound') === '1'; } catch (e) { return false; } },
+    playSound() {
+      if (!this.soundOn()) return false;
+      try {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return false;
+        var ctx = this._audioCtx || (this._audioCtx = new AC());
+        try { if (ctx.state === 'suspended') { ctx.resume(); } } catch (e) {}
+        var t = ctx.currentTime || 0;
+        [[880, 0, 0.5], [659.25, 0.18, 0.7]].forEach(function (n) {
+          var o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'sine'; o.frequency.value = n[0];
+          g.gain.setValueAtTime(0.0001, t + n[1]);
+          g.gain.exponentialRampToValueAtTime(0.12, t + n[1] + 0.03);
+          g.gain.exponentialRampToValueAtTime(0.0001, t + n[1] + n[2]);
+          o.connect(g); g.connect(ctx.destination);
+          o.start(t + n[1]); o.stop(t + n[1] + n[2] + 0.05);
+        });
+        return true;
+      } catch (e) { return false; }
+    },
+    counts() {
+      var unread = 0;
+      try { var seen = this.get('seen.activity'); unread = Math.max(0, ActivityLog.read().length - seen); } catch (e) {}
+      return { mail: this.get('mail'), activity: unread, spaces: this.get('spaces') };
+    },
+    refresh() {
+      var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+      var c = this.counts();
+      bar.querySelectorAll('[data-notif]').forEach(function (seg) {
+        var k = seg.getAttribute('data-notif'), n = c[k] || 0;
+        var bub = seg.querySelector('.notif-count');
+        seg.classList.toggle('has-news', n > 0);
+        if (bub) { bub.textContent = n > 9 ? '9+' : String(n); bub.style.display = n > 0 ? 'flex' : 'none'; }
+      });
+    },
+    tap(k) {
+      /* FOLLOW-UP pass 2: the bar stays tappable above the scrim while a drawer is open — tapping anything but a drawer seg closes the drawer first, so no view opens underneath it. */
+      if (k !== 'spaces' && k !== 'eco' && window.pcCloseDrawers) { try { window.pcCloseDrawers(); } catch (e) {} }
+      if (k === 'mail') { this.set('mail', 0); window.osShowView && window.osShowView('inbox'); }
+      else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} window.osShowView && window.osShowView('dashboard'); }
+      else if (k === 'spaces') { this.set('spaces', 0); if (window.pcToggleDrawer) window.pcToggleDrawer('left'); }
+      else if (k === 'eco') { if (window.pcToggleDrawer) window.pcToggleDrawer('right'); }
+      this.refresh();
+    },
+    syncStack() {
+      var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+      var row = bar.querySelector('.notif-row');
+      var h = (row ? row.offsetHeight : bar.offsetHeight) + 1;
+      document.documentElement.style.setProperty('--notif-h', h + 'px');
+    },
+    init() {
+      var bar = document.getElementById('naya-notif-bar');
+      if (bar) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
+      var self = this;
+      var ICONS = {
+        mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+        activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
+        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>',
+        eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
+        plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+        /* HUB-RETURN 2026-11-16 (item 2): the right + is the same + object. */
+        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
+      };
+      /* HUB-RETURN 2026-11-16 (item 2): the + at the RIGHT end. The six
+         stay exactly as harvested (plus/mail/activity/spaces/eco/connect, same
+         order, same form); PART D 2026-11-17 deepened only the colours to the
+         Deep Palette: left + royal purple, mail sapphire, activity emerald,
+         worlds deep gold, ecosystem burnt orange, right + ruby. It opens CONNECT, never CREATE. */
+      var SEGS = [['plus', 'ADD', '#8e24aa'], ['mail', 'MAIL', '#0f52ba'], ['activity', 'ACTIVITY', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plus-connect', 'CONNECT', '#c62828']];
+      bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
+      bar.setAttribute('aria-label', 'Notifications');
+      var row = document.createElement('div'); row.className = 'notif-row';
+      SEGS.forEach(function (s) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
+        b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
+        b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
+        b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
+        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span><span class="notif-label">' + s[1] + '</span>';
+        b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'create', b); return; } if (s[0] === 'plus-connect') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'connect', b); return; } self.tap(s[0]); });
+        row.appendChild(b);
+      });
+      bar.appendChild(row); document.body.appendChild(bar);
+      document.body.classList.add('has-notif');
+      window.addEventListener('storage', function () { self.refresh(); });
+      this.refresh();
+      this.syncStack();
+      if (!window.__nayaNotifStackBound) { window.__nayaNotifStackBound = true; window.addEventListener('resize', function () { self.syncStack(); }); }
+    }
+  };
+  window.NayaNotif.init();
+
+/* THE BAR counts: MAIL carries the unread letters across all worlds;
    ACTIVITY carries the activity total across all worlds. The old trio
    segments are gone with the trio. */
 function refreshFiveCounts(){
   var unread = 0;
   Object.keys(MAIL).forEach(function(w){ MAIL[w].forEach(function(m){ if (m.unread) unread++; }); });
-  var mc = $('mailCount');
+  var mc = document.querySelector('[data-notif="mail"] .notif-count');
   mc.textContent = unread > 9 ? '9+' : String(unread);
   mc.style.display = 'flex'; /* SWEEP-3 Fix 13: a verified zero shows as a digit tile, never as nothing. */
-  $('segMail').classList.toggle('has-news', unread > 0);
+  document.querySelector('[data-notif="mail"]').classList.toggle('has-news', unread > 0);
   var act = WORLD_COUNTS.personal + WORLD_COUNTS.business + WORLD_COUNTS.thing;
-  var ac = $('activityCount');
+  var ac = document.querySelector('[data-notif="activity"] .notif-count');
   ac.textContent = act > 9 ? '9+' : String(act);
   ac.style.display = 'flex'; /* SWEEP-3 Fix 13: a verified zero shows as a digit tile, never as nothing. */
-  $('segActivity').classList.toggle('has-news', act > 0);
+  document.querySelector('[data-notif="activity"]').classList.toggle('has-news', act > 0);
 }
 function setWorldCount(world, n){
   WORLD_COUNTS[world] = n;
@@ -858,17 +1236,20 @@ var SMART_LISTS = {
 function nowTime(){ var d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
 
 function renderTabs(){
-  var html = '<button class="nf-smtab" type="button" data-topic="All" style="--tc:#8e24aa">All topics</button>';
+  /* TEXT-TOPIC-PILLS: the pills are Smart Links on Smart Tabs — one bold white label at one size, each topic's own deep-color rim + glow (the "N online" count is gone: the same number stood on every pill). "All topics" is lit while the mail view is open; a topic is lit while its chat is open. The title says what the tap does. ALLTOPICS-FIX: "All topics" takes deep cyan (#0e7490) — its own color no topic pill uses — so it no longer shares Design's purple and the seven pill colors read further apart at a glance. */
+  var html = '<button class="nf-smtab' + (!state.group ? ' active' : '') + '" type="button" data-topic="All" style="--tc:#0e7490" title="Back to mail" aria-label="All topics — back to mail">All topics</button>';
   TAB_ORDER.forEach(function(t){
-    html += '<button class="nf-smtab' + (state.topic===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#8e24aa') + '">' + t + ' <small>' + TOPICS[t].length + ' online</small></button>';
+    html += '<button class="nf-smtab' + (state.group===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#8e24aa') + '" title="Open the ' + t + ' topic chat" aria-label="' + t + ' — open the topic chat">' + t + '</button>';
   });
   $('orgTabs').innerHTML = html;
   $('orgTabs').querySelectorAll('.nf-smtab').forEach(function(b){
     b.addEventListener('click', function(){ pickTopic(b.dataset.topic); });
+    b.addEventListener('pointerdown', function(){ b.classList.add('pressed'); });
+    ['pointerup','pointerleave','pointercancel'].forEach(function(ev){ b.addEventListener(ev, function(){ b.classList.remove('pressed'); }); });
   });
 }
 function renderConvs(){
-  var q = $('smartSearch').value.trim().toLowerCase();
+  var q = ($('smartSearch') ? $('smartSearch').value : '').trim().toLowerCase(); // REVAMP: search removed (§4) — no filter, whole list.
   var list = CONTACTS.filter(function(c){ return !q || c.name.toLowerCase().indexOf(q) >= 0 || c.nut.toLowerCase().indexOf(q) >= 0; });
   if (state.listFilter) list = list.filter(function(c){ return state.listFilter.indexOf(c.id) >= 0; });
   $('convList').innerHTML = list.map(function(c){
@@ -876,7 +1257,7 @@ function renderConvs(){
       '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (c.cc || '#8e24aa') + '">' + c.initial + '</span><span class="orb-dot"></span></span>' +
       '<span class="row-body"><span class="row-name">' + esc(c.name) + ' <span class="match">' + c.match + '% match</span></span>' +
       '<span class="row-last" data-last="' + c.id + '">' + esc(c.last) + '</span></span></button>';
-  }).join('') || '<p class="stub-note">Nobody in this list matches that search yet — try another word.</p>';
+  }).join('') || '<p class="stub-note">Nobody in this list yet.</p>';
   $('convList').querySelectorAll('.row').forEach(function(r){
     r.addEventListener('click', function(){ openPerson(CONTACTS.find(function(c){ return c.id===r.dataset.id; })); });
   });
@@ -884,14 +1265,14 @@ function renderConvs(){
 function renderTopicPeople(){
   var topic = state.topic;
   $('topicPeopleTitle').textContent = 'Online in ' + topic;
-  var q = $('smartSearch').value.trim().toLowerCase();
+  var q = ($('smartSearch') ? $('smartSearch').value : '').trim().toLowerCase(); // REVAMP: search removed (§4) — no filter, whole list.
   var list = (TOPICS[topic] || []).filter(function(p){ return !q || p.name.toLowerCase().indexOf(q) >= 0 || p.nut.toLowerCase().indexOf(q) >= 0 || topic.toLowerCase().indexOf(q) >= 0; });
   $('topicPeople').innerHTML = list.map(function(p){
     return '<button class="row topic-person" type="button" data-id="' + p.id + '" data-topic="' + topic + '" style="--ac:' + (p.cc || '#8e24aa') + '">' +
       '<span class="orb-wrap"><span class="cx-ava" style="--cc:' + (p.cc || '#8e24aa') + '">' + p.initial + '</span><span class="orb-dot"></span></span>' +
       '<span class="row-body"><span class="row-name">' + esc(p.name) + ' <span class="match">' + p.match + '% match</span></span>' +
       '<span class="row-nut">' + esc(p.nut) + '</span></span></button>';
-  }).join('') || '<p class="stub-note">Nobody online in this topic matches that search.</p>';
+  }).join('') || '<p class="stub-note">Nobody online in this topic yet.</p>';
   $('topicPeople').querySelectorAll('.topic-person').forEach(function(r){
     r.addEventListener('click', function(){
       var p = TOPICS[r.dataset.topic].find(function(x){ return x.id===r.dataset.id; });
@@ -919,17 +1300,8 @@ function renderThread(){
   $('toggleMail').disabled = isGroup;
   $('toggleMail').title = isGroup ? 'Topic chat is live — mail lives in the one-to-one conversation' : '';
   var msgs = isGroup ? (THREADS['topic:' + state.topic] || []) : (THREADS[p.id] || []);
-  var html = '<div class="format-note">' + (isGroup
-    ? 'Topic chat — ' + esc(state.topic) + ', everyone online in it, in the moment'
-    : (fmt === 'im'
-      ? 'Instant Message — live, in the moment, with ' + esc(p.name)
-      : 'Smart Mail — the letter format, same conversation, same person')) + '</div>';
-  if (p.id === 'maya' && state.format === 'mail') {
-    /* FIX-4: cut toward the nutshell — five sections became two. */
-    html += '<div class="smart-note"><h4>Shared note — Design, in the smart-note format</h4>' +
-      '<h5>Nutshell</h5><p>A messenger is one conversation in two formats, not two inboxes.</p>' +
-      '<h5>What it means</h5><p>The toggle switches the format and nothing else — the person stays.</p></div>';
-  }
+  var wc = WORLDS[state.world].color; /* TEXT-TOPIC-PILLS: the world color rims the letter cards below. */
+  var html = ''; // REVAMP: the format pill is gone (§4) — the lit toggle side says the format.
   /* MAIL MESSAGE VIEW (pro-level): the opened letter as an elevated board —
      title, nutshell, key points with jewel bullets — then the letters
      of the same conversation below it, in the letter format. */
@@ -948,11 +1320,11 @@ function renderThread(){
   }
   msgs.forEach(function(m){
     if (fmt === 'mail') {
-      html += '<div class="msg letter"><div class="subject">' + (m.who==='mine' ? 'You wrote' : esc(p.name) + ' wrote') + '</div>' +
+      html += '<div class="msg letter" style="--wc:' + wc + '"><div class="subject">' + (m.who==='mine' ? 'You wrote' : esc(p.name) + ' wrote') + '</div>' +
         '<div class="letter-to">To ' + (m.who==='mine' ? esc(p.name) : 'you') + ' · Smart Mail</div>' +
         esc(m.text) + '<span class="meta">' + esc(m.time) + (m.topic ? ' · ' + esc(m.topic) : '') + '</span></div>';
     } else {
-      html += '<div class="msg ' + m.who + '">' + esc(m.text) + '<span class="meta">' + (m.name ? esc(m.name) + ' · ' : '') + esc(m.time) + (m.topic ? ' · ' + esc(m.topic) : '') + '</span></div>';
+      html += '<div class="msg ' + m.who + '" style="--mc:' + (p.cc || '#8e24aa') + '">' + esc(m.text) + '<span class="meta">' + (m.name ? esc(m.name) + ' · ' : '') + esc(m.time) + (m.topic ? ' · ' + esc(m.topic) : '') + '</span></div>';
     }
   });
   if (!msgs.length && fmt !== 'mail') {
@@ -984,8 +1356,25 @@ function openTopicChat(topic){
   renderConvs(); renderTopicPeople(); renderThread();
 }
 function pickTopic(t){
-  state.topic = (t === 'All') ? 'Design' : t;
+  if (t === 'All') {
+    /* ALLTOPICS-FIX: "All topics" restores the mail view — the group chat
+       closes and the world's mail opens. The old code only cleared
+       state.group, so the thread kept the topic-chat person and the
+       header, composer and thread stayed Music under the open letter.
+       Re-open the open letter through openMail — the same restore
+       re-clicking the letter in the inbox already performs — so header,
+       composer and thread come back with it, and renderTabs lights only
+       "All topics" (state.group is null). */
+    state.group = null;
+    if (!state.mailId) state.mailId = (MAIL[state.world][0] || {}).id || null;
+    if (state.mailId) openMail(state.mailId);
+    renderTabs(); renderTopicPeople();
+    setFormat('mail');
+    return;
+  }
+  state.topic = t;
   state.thing = state.topic;
+  state.group = t; /* EYE FOLLOW-ON 2026-11-17 — the lit pill lagged one render: renderTabs lights from state.group, but only openTopicChat set it, AFTER renderTabs ran — so the Music chat opened with "All topics" still lit. Set it here, before renderTabs, so the lit pill is the chat you are in. */
   renderTabs(); renderTopicPeople();
   openTopicChat(state.topic);
 }
@@ -999,31 +1388,24 @@ function setFormat(f){
      people. (.rows is display:flex, so the hidden attribute alone would
      not hide it — the rows are hidden by style.display.) */
   var isMail = f === 'mail';
-  $('inboxTitle').hidden = !isMail; $('inboxSub').hidden = !isMail;
+  $('inboxTitle').hidden = !isMail; // REVAMP: the inbox sub is gone (§4).
   $('mailInbox').style.display = isMail ? '' : 'none';
-  $('convHead').hidden = isMail; $('convSub').hidden = isMail;
+  $('convHead').hidden = isMail; // REVAMP: the conv sub is gone (§4).
   $('convList').style.display = isMail ? 'none' : '';
-  $('topicPeopleTitle').hidden = isMail; $('topicSub').hidden = isMail;
+  $('topicPeopleTitle').hidden = isMail; // REVAMP: the topic sub is gone (§4).
   $('topicPeople').style.display = isMail ? 'none' : '';
   if (isMail) {
     if (!state.mailId) state.mailId = (MAIL[state.world][0] || {}).id || null;
     renderInbox();
   }
   renderThread();
+  if (isMail) $('threadBody').scrollTop = 0; /* WHITE-MIDDLE §3(e): mail mode opens on the letter board — its heading first (see openMail). */
 }
 /* --- WORLDS: one universal mail, any world selectable (brief §1) --- */
-function renderWorlds(){
-  $('worldPills').innerHTML = Object.keys(WORLDS).map(function(w){
-    var d = WORLDS[w];
-    return '<button class="world-pill' + (state.world===w ? ' on' : '') + '" type="button" data-world="' + w + '" style="--wc:' + d.color + '" aria-pressed="' + (state.world===w) + '"><span class="wdot"></span>' + d.label + '</button>';
-  }).join('');
-  $('worldPills').querySelectorAll('.world-pill').forEach(function(b){
-    b.addEventListener('click', function(){ setWorld(b.dataset.world); });
-  });
-  $('worldNote').textContent = state.entryFrom === 'hub'
-    ? 'Opened from the Hub — pick any world.'
-    : 'Showing ' + WORLDS[state.world].label + ' mail first — pick any world.';
-}
+/* REVAMP: world pills removed (§4) — the world's mail still comes from entry
+   (?world= / ?from=), and setWorld still works; there is only no pill row
+   left to render. */
+function renderWorlds(){ return; }
 function personForMail(m, w){
   var p = findPersonAnywhere(m.fromId);
   if (!p) return null;
@@ -1039,11 +1421,12 @@ function setWorld(w){
      header, thread cards, composer — the way opening a letter does. */
   if (first) { var p = personForMail(first, w); if (p) openPerson(p); }
   renderThread();
+  if (state.format === 'mail') $('threadBody').scrollTop = 0; /* WHITE-MIDDLE §3(e): a world switch opens its first letter — heading first (see openMail). */
   window.__mailWorld = w;
 }
 function renderInbox(){
   $('inboxTitle').textContent = 'Mail inbox — ' + WORLDS[state.world].label;
-  var q = $('smartSearch').value.trim().toLowerCase();
+  var q = ($('smartSearch') ? $('smartSearch').value : '').trim().toLowerCase(); // REVAMP: search removed (§4) — no filter, whole list.
   var list = MAIL[state.world].filter(function(m){
     return !q || m.subject.toLowerCase().indexOf(q) >= 0 || m.from.toLowerCase().indexOf(q) >= 0 || m.nut.toLowerCase().indexOf(q) >= 0;
   });
@@ -1054,7 +1437,7 @@ function renderInbox(){
       '<span class="row-body"><span class="row-name">' + esc(m.subject) + (m.unread ? ' <span class="match">NEW</span>' : '') + '</span>' +
       '<span class="row-last">' + esc(m.from) + ' · ' + esc(m.time) + '</span>' +
       '<span class="row-nut">' + esc(m.nut) + '</span></span></button>';
-  }).join('') || '<p class="stub-note">No letters in this world match that search yet.</p>';
+  }).join('') || '<p class="stub-note">No letters in this world yet.</p>';
   $('mailInbox').querySelectorAll('.row').forEach(function(r){
     r.addEventListener('click', function(){ openMail(r.dataset.mail); });
   });
@@ -1069,6 +1452,8 @@ function openMail(id){
   if (p) openPerson(CONTACTS.indexOf(p) >= 0 ? p : { id: p.id, initial: p.initial, name: p.name, nut: p.nut || '', match: p.match, last: m.subject, cc: p.cc || WORLDS[state.world].color });
   renderInbox();
   if (state.format === 'mail') renderThread();
+  /* WHITE-MIDDLE §3(e): a newly opened letter shows its heading at once — renderThread() scrolls the thread to the latest, which parks the letter board's eyebrow/title/opening line above the view (and in the mask fade); only KEY POINTS and the From line showed. The opened letter is the thing — scroll the thread back to its top. */
+  if (state.format === 'mail') $('threadBody').scrollTop = 0;
 }
 /* --- ENTRY: which world's mail first, and the Hub hookup (brief §4).
    ?world=personal|business|space wins; else ?from=<world> (a page's mail
@@ -1176,10 +1561,8 @@ $('toggleMail').addEventListener('click', function(){ setFormat('mail'); });
 $('toggleIM').addEventListener('click', function(){ setFormat('im'); });
 $('sendBtn').addEventListener('click', sendMessage);
 $('composerInput').addEventListener('keydown', function(e){ if (e.key === 'Enter') sendMessage(); });
-$('smartSearch').addEventListener('input', function(){ renderConvs(); renderTopicPeople(); if (state.format === 'mail') renderInbox(); });
 $('toast').addEventListener('click', openToast);
 $('toast').addEventListener('keydown', function(e){ if (e.key === 'Enter') openToast(); });
-$('downloadBtn').addEventListener('click', openInstall);
 $('plusInstall').addEventListener('click', openInstall);
 $('installGo').addEventListener('click', function(){ $('installManual').hidden = false; });
 $('installLater').addEventListener('click', closeInstall);
@@ -1274,19 +1657,6 @@ function renderSmartLists(){
     });
   });
 }
-/* One plain cover button: "Hide the banner" / "Show the banner". The old
-   three-mode control is gone with the "Full screen" label that never went
-   fullscreen. The button lives in the page-head, so it survives both
-   states — hiding the banner can never strand the reader. */
-function toggleCover(){
-  var hidden = !document.body.classList.contains('no-cover');
-  document.body.classList.toggle('no-cover', hidden);
-  var b = $('coverToggle');
-  b.textContent = hidden ? 'Show the banner' : 'Hide the banner';
-  b.setAttribute('aria-pressed', String(hidden));
-  b.classList.toggle('ghost', !hidden);
-  window.__coverMode = hidden ? 'no-cover' : 'cover';
-}
 /* STUB event (named): the probe and the citizen's eye prove the trio moves.
    Live path owed: the real-time socket/push per world. */
 function stubEvent(world, kind, text){
@@ -1294,15 +1664,42 @@ function stubEvent(world, kind, text){
   return raiseCount(world, kind, 1);
 }
 window.__stubEvent = stubEvent;
-$('segAdd').addEventListener('click', function(){ $('composerInput').focus(); });
-$('segMail').addEventListener('click', function(){ setFormat('mail'); $('mailInbox').scrollIntoView({block:'nearest'}); });
-$('segActivity').addEventListener('click', function(){ openFeed(state.world === 'space' ? 'thing' : state.world); });
-$('segWorlds').addEventListener('click', function(){ $('worldRow').scrollIntoView({block:'center'}); });
-$('segEco').addEventListener('click', function(){ $('smartLists').scrollIntoView({block:'center'}); });
+document.querySelector('[data-notif="plus"]').addEventListener('click', function(){ $('composerInput').focus(); });
+document.querySelector('[data-notif="mail"]').addEventListener('click', function(){ setFormat('mail'); $('mailInbox').scrollIntoView({block:'nearest'}); });
+document.querySelector('[data-notif="activity"]').addEventListener('click', function(){ openFeed(state.world === 'space' ? 'thing' : state.world); refreshFiveCounts(); }); // BAR-FIX: re-assert the mail counts (Personal's tap() refreshes from its own store).
+document.querySelector('[data-notif="spaces"]').addEventListener('click', function(){ $('orgTabs').scrollIntoView({block:'nearest'}); refreshFiveCounts(); }); // REVAMP: world pills gone (§4) — WORLDS opens the topics. BAR-FIX: counts re-asserted (see ACTIVITY).
+document.querySelector('[data-notif="eco"]').addEventListener('click', function(){ $('smartLists').scrollIntoView({block:'center'}); refreshFiveCounts(); }); // BAR-FIX: counts re-asserted (see ACTIVITY).
+/* BAR-FIX: CONNECT (data-notif="plus-connect") keeps only Personal's NayaNotif handler — it opens the CONNECT plus menu where that menu exists; this page has no plus menu yet, so the tap is a guarded no-op. Present and tappable, never CREATE. */
+/* WHITE-MIDDLE §3(a): the fold rule (Shawn 20:29Z, confirmed 20:50Z, generalized 20:54Z — the fold is the experience, same on every page). The bar folds away the moment you scroll down and returns ONLY at the very bottom. EYE FOLLOW-ON 2026-11-17 — two defects in the old shape, both proven live: (1) the fold hid the bar with display:none after 380ms, and hiding it grew the scroller by the bar's own height — so the same scrollTop then read as "at the bottom" and the bar popped back mid-page on the way down. display:none is gone: the bar now folds by transform + opacity + pointer-events only, so the scroller geometry never moves and "at the bottom" is stable. (2) the old rule watched ONLY the outer scroller, but the wheel over the letter scrolls the inner thread first — the outer never moved, so the bar stayed while the page read as mid-page. The rule is now position-based over every scroller on the page: folded when the outer OR any inner scroller sits below its top, and returns only when the outer sits at the very bottom. One capture-phase listener sees every scroll, including re-rendered nodes. State exposed as window.__mailBarFold for the checker. */
+var __mailBarFolded = false, __mailFoldArmed = false, __mailBootTop = 0;
+function __setMailBarFolded(folded){
+  var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+  if (folded === __mailBarFolded) return; __mailBarFolded = folded;
+  bar.classList.toggle('bar-folded', folded);
+}
+function __syncMailBarFold(){
+  var sc = document.querySelector('.page-scroll'); if (!sc) return;
+  var atBottom = (sc.scrollHeight - sc.scrollTop - sc.clientHeight) <= 2;
+  var outerDown = __mailFoldArmed && sc.scrollTop > __mailBootTop + 12;
+  var innerDown = false, threadTop = null;
+  ['threadBody','convList','mailInbox'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (id === 'threadBody') threadTop = el.scrollTop;
+    if (el.scrollTop > 12) innerDown = true;
+  });
+  __setMailBarFolded((outerDown || innerDown) && !atBottom);
+  window.__mailBarFold = { folded: __mailBarFolded, scrolled: outerDown || innerDown, outerDown: outerDown, innerDown: innerDown, atBottom: atBottom, top: sc.scrollTop, threadTop: threadTop };
+}
+(function(){
+  document.addEventListener('scroll', __syncMailBarFold, true);
+  if (typeof setTimeout === 'function') setTimeout(function(){ var sc2 = document.querySelector('.page-scroll'); if (sc2) __mailBootTop = sc2.scrollTop; __mailFoldArmed = true; __syncMailBarFold(); }, 600);
+  else { __mailFoldArmed = true; }
+  __syncMailBarFold();
+})();
 $('feedCloseBtn').addEventListener('click', closeFeed);
 $('feedChoiceBtn').addEventListener('click', openChoice);
 $('choiceCloseBtn').addEventListener('click', function(){ $('choicePanel').classList.remove('show'); });
-$('coverToggle').addEventListener('click', toggleCover);
 initMailEntry();
 renderTabs(); renderConvs(); renderTopicPeople(); renderThread(); renderSmartLists(); renderChoice();
 setWorldCount('personal', 2); setWorldCount('business', 1); setWorldCount('thing', 1);
@@ -1394,9 +1791,9 @@ function fix8SyncDockFade(){
 }
 if (fix8Scroll) fix8Scroll.addEventListener('scroll', fix8SyncDockFade, {passive:true});
 window.addEventListener('resize', fix8SyncDockFade);
-/* The cover toggle, world switches, mail/IM toggle and list re-renders move
+/* World switches, mail/IM toggle and list re-renders move
    the first card WITHOUT scrolling (scrollTop does not change, so no scroll
-   event fires) — e.g. hiding the banner lifts the card ~260px and parks a
+   event fires) — e.g. a world switch moves the card and parks a
    thread bullet at the dock edge while the fade would still read the stale
    rest state. A MutationObserver re-syncs on any layout-changing mutation
    (body class, list re-render, display swap); the sync is idempotent, so

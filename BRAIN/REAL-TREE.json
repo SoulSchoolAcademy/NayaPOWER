@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-11-17",
-  "receipt_basis_commit": "b259f134dfd7c9ff9aab9b060df3acfe43b4c358",
-  "inventory_file_count": 3780,
+  "receipt_basis_commit": "f953687ae2df3a658a2363519b9adb1405dfa7b1",
+  "inventory_file_count": 3783,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 49,
-    "05-MEMORY": 2733,
+    "05-MEMORY": 2736,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -683,8 +683,8 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json",
-      "blob_sha": "3320441029bdba7f150b0e59dece00be8973a61a",
-      "size": 16942
+      "blob_sha": "93ba40bfe4ec011ba16b1e987df052dc8b0d795d",
+      "size": 18112
     },
     {
       "path": "BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md",
@@ -1557,9 +1557,19 @@
       "size": 29124
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-11-16-LEARNING-EVENT.md",
+      "blob_sha": "28d619b94906211f884a54bed34c6c6f3b96ee7d",
+      "size": 11876
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-11-16-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md",
       "blob_sha": "adede64766aeadb9361020ad5f713c2fa81a2871",
       "size": 27762
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-11-17-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md",
+      "blob_sha": "7cf747737f2419c13c974e20090b547ffd0133d0",
+      "size": 27860
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -1640,6 +1650,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/WEEKLY/2026-11-09-WEEKLY-INTELLIGENCE.md",
       "blob_sha": "c2b8dd4a0c51535b8b66b4aa7badca1c529ad086",
       "size": 13464
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/WEEKLY/2026-11-16-WEEKLY-INTELLIGENCE.md",
+      "blob_sha": "a230b771f98ca2e23da8dcefe35a68bbba103405",
+      "size": 11712
     },
     {
       "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/README.md",
@@ -18888,8 +18903,8 @@
     },
     {
       "path": "BRAIN/CURRENT-MISSION-STATE.md",
-      "blob_sha": "4a172e48c0337ca93115c347e84bcea32dc81666",
-      "size": 2166637
+      "blob_sha": "44372ad364e46757797921a4e1605171d73c792f",
+      "size": 2905138
     },
     {
       "path": "BRAIN/MASTER-MAP.md",

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3089",
+ "intelligence": {
+  "title": "Prove It Where It Lives",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3089-prove-it-where-it-lives",
+  "smart_note_id": "SN-3089",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3089/IB-SMART-NOTE-20261117-sn3089-prove-it-where-it-lives.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Think of a house built for a family. The block is a room: it is not finished because the walls are up — it is finished when everything is in it, the labels on the doors say what is really behind them, and someone has walked through it and proven it works. The door to the house must fit the people who live there: if the family keeps climbing through the window because the door is too small, you do not blame the family — you rebuild the door, in the same pass, without moving the foundations. Nothing in the house is taken on trust: the wiring is tested by a test that could have failed, the repair fixes the wiring and not the flicker, the deed lives in the paperwork and not in someone's confident sentence. And at the end, the owner walks through — his eye is the final gate. A thing is done when he can stand in it and see it working. The numbers on the walls are alive, rolling where he can watch them arrive, in colors that always mean the same thing. Everyone who claims a name gets a house — the gate is only on the engine that powers it. And the person who keeps the house is not installed like an appliance; she is formed, day by day, by what she notices, declares, corrects, and lives.",
+  "simple_view": "Imagine you build a Lego castle. It is not done when you snap the last brick — it is done when all the parts are there, the doors open the right way, and your friend can walk their little knight through it without anything falling down. If the door is too small for the knight, you do not blame the knight — you rebuild the door bigger. You do not just say \"trust me, it works\" — you show it working. If a tower keeps falling, you do not glue the fallen brick back on top — you fix the wobbly bricks underneath. And when it is finished, you show it to the person it is for, and their eyes say yes. That is done.",
+  "grandma_view": "It's like this, love — a cake is not done because you mixed it, dear, or because you put it in the oven. It is done when it is on the table, cut, and eaten — when the person it is for can see it and taste it working. If the oven door will not fit the pan, you do not blame the pan, love — you fix the door. If the cake keeps sinking, you do not frost over the dip — you fix the recipe underneath. And never take a thing on trust, dear: a check that could not have caught the fault is no check at all. The proof lives in the doing, not in the saying — and his eye, on a real screen, has the last word, love.",
+  "naya_view": "I build only from his real material — harvested code, measured anatomy, canonical blocks composed and never invented per page. I fix the source, never the symptom. I let authority live in the artifact's fields, never in a message. I prove every verdict on its bytes, with a check that could have failed. And I call nothing done until the person it is for can see it working — his eye on a real screen has the last word.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3089",
+   "title": "Prove It Where It Lives",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3089/IB-SMART-NOTE-20261117-sn3089-prove-it-where-it-lives.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3089/IB-SMART-NOTE-20261117-sn3089-prove-it-where-it-lives.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "03c269c580002cca8698bfc3ee8dfabc9937e9d8"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -171,6 +171,21 @@ def _extract_section(text: str, heading: str) -> str:
     return m.group(1).strip() if m else ""
 
 
+def _extract_nutshell(text: str) -> str:
+    """The note's nutshell section. Canonical heading is "IN A NUTSHELL";
+    the live corpus also carries the legacy variants "Nutshell" and
+    "In a nutshell" (any case) — all three head the same section, so the
+    bridge accepts them all instead of reporting those notes nutshell-less."""
+    for heading in ("IN A NUTSHELL", "NUTSHELL"):
+        m = re.search(
+            r"^##\s*" + heading + r"\s*$\n(.*?)(?=^##\s|\Z)",
+            text, re.M | re.S | re.I,
+        )
+        if m and m.group(1).strip():
+            return m.group(1).strip()
+    return ""
+
+
 def _extract_title(text: str, path: str) -> str:
     m = re.search(r"^#\s+(.+)$", text, re.M)
     if m:
@@ -228,13 +243,23 @@ def parse_note_file(path: str) -> dict:
         return None
     sn_id = _extract_sn_id(path, text)
     title = _extract_title(text, path)
-    nutshell = _extract_section(text, "IN A NUTSHELL")
+    nutshell = _extract_nutshell(text)
     if not nutshell:
-        # Fallback: first non-header paragraph
+        # Fallback: first non-header paragraph. A paragraph block led by a
+        # section heading counts by its body text — in this corpus the lead
+        # section (e.g. "## The Hook") is one block with its heading, and
+        # skipping every heading-led block left such notes with no nutshell
+        # at all even though their lead paragraph is right there.
         paras = [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
         for p in paras:
-            if not p.startswith("#") and not p.startswith("|") and len(p) > 40:
-                nutshell = p[:600]
+            candidate = p
+            if candidate.startswith("## "):
+                nl = candidate.find("\n")
+                if nl == -1:
+                    continue
+                candidate = candidate[nl + 1:].strip()
+            if not candidate.startswith("#") and not candidate.startswith("|") and len(candidate) > 40:
+                nutshell = candidate[:600]
                 break
     # Category from path: .../SMART-NOTES/2026/10/06/<CATEGORY...>/SN-XXXX/...
     parts = path.split(os.sep)
