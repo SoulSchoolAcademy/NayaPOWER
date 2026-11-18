@@ -58830,6 +58830,46 @@
         "note": "published directly as a BRAIN projection in commit 0c698fd1c26d7520ad1ffc7dcf15b3256472f457 ('Continuous Distillation Resolve seat 2026-11-18: SN-3378 The Mail Key Never Moved') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "085c75d342e564b4cc515a912947865e6d99f1c93fee567716db3452d7fc55fe"
+    },
+    {
+      "smart_note_id": "SN-3379",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3379-factory-first-one-click-build",
+      "title": "SN-3379 — The Factory's First Real One-Click Build",
+      "content_hash": "1aa3ca52c0f6c974beb10cf4e15ed9d7d9611b5e79b27620ab2377b3b24f6e85",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3379/IB-SMART-NOTE-20261118-sn3379-factory-first-one-click-build.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit d9ccf7e75443e6766024e53941dd8dc9e6ee3130 ('Continuous Distillation Resolve seat 2026-11-18: SN-3379 The Factory's First Real One-Click Build') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "826cc5009914d469f62086f02468fa16032bff06b97a5264751c2742a9bea130"
+    },
+    {
+      "smart_note_id": "SN-3382",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3382-decide-declare-become",
+      "title": "SN-3382 — Decide, Declare, Become: Treat It Like Your Baby",
+      "content_hash": "91f78a773438e92540d8ef160f346b05ec7e9edd2bea6bb19defb5596f96a865",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3382/IB-SMART-NOTE-20261118-sn3382-decide-declare-become.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 436ea127df07095d98af895cf87e4a77725a62af ('Continuous Distillation Resolve seat 2026-11-18: SN-3382 Decide, Declare, Become') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "7b8ffb0e6c8d28cc435961851ac11bf521ba0e43cb624f9a39287c8c093a4f75"
     }
   ],
   "sequence_policy": {
@@ -58840,5 +58880,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "58c0dd9970570cb32abd7b3bf66cc36d643fb61051663f9b0d21db5a2e01a721"
+  "corpus_manifest_hash": "bae3f0bbf7bc58e515be8521e6332f284dbe211db34f946821e2c13d299956c0"
 }
