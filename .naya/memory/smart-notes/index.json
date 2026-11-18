@@ -53079,6 +53079,39 @@
         "Truth",
         "Convergence"
       ]
+    },
+    {
+      "smart_note_id": "SN-3096",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3096-everything-is-a-real-object",
+      "slug": "everything-is-a-real-object",
+      "title": "Everything Is a Real Object",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3096/IB-SMART-NOTE-20261118-sn3096-everything-is-a-real-object.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3096/IB-SMART-NOTE-20261118-sn3096-everything-is-a-real-object.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3096/IB-SMART-NOTE-20261118-sn3096-everything-is-a-real-object.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3096-everything-is-a-real-object.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:50:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "d4decc16dd2039b0dd9e7bb7f62c867bf99f17b6025d4cddcf5adbfd2a0c9c6a",
+      "content_hash": "90e12ce6786edacb3aeceabde6faa64ee2f1c66b0029e7135f15f2b1191fc95a",
+      "one_line": "Everything in NayaNET is a real physical object — not a flat shape with effects, not a diagram, not a picture of a thing. One light source, top-left, falls on real materials: obsidian glass, brushed metal, light with volume. Real shadows mean objects sit ON the page and carry mass; depth is layering, not glow — premium is never 'colour, colour, glow.' Every position is calculated by formula, never eyeballed, because the formula is what makes a hundred screens agree. Design here is a language, not a taste: its vocabulary is the harvested parts — board, jewel, pill, orb, gauge, number, tab, bar — each with a fixed meaning, and its grammar is the laws that say how the words combine. A viewport built in this language is one screen, one idea, everything alive, every object a door you touch and it opens.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Design Law",
+        "Real Objects"
+      ]
     }
   ],
   "sequence_policy": {
@@ -53089,5 +53122,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "a6e44b221e514b60b188446c5efbd69f1442ef441354e94b54e5bd9dad1a02a8"
+  "corpus_manifest_hash": "9e1dee54c0b27bca33f2c4507bbf11dbe79d6f823709d837891849fd2fbe3580"
 }
