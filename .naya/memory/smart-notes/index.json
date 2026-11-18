@@ -59206,6 +59206,39 @@
         "Method",
         "Proof"
       ]
+    },
+    {
+      "smart_note_id": "SN-3410",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3410-synced-is-not-live",
+      "slug": "synced-is-not-live",
+      "title": "Synced Is Not Live",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3410/IB-SMART-NOTE-20261118-sn3410-synced-is-not-live.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3410/IB-SMART-NOTE-20261118-sn3410-synced-is-not-live.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3410/IB-SMART-NOTE-20261118-sn3410-synced-is-not-live.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3410-synced-is-not-live.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:10:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "eeb6c8be2f9b02340cef9245ddd4ca85387116223553099ad87d5990a8f7b378",
+      "content_hash": "f7aa70292c463023dedcac80193f7c9fd2ef21941758b5fab3c5d9eaad5773c3",
+      "one_line": "A sync that reports success and a feed that still shows the deleted card are two different facts, and only the second one is the truth a visitor meets. This family proves the pattern three ways: the feed builder never tombstoned a deleted note's card, so ghosts outlived their sources; a zero sync beside a live note was timing, not failure; and a stuck note was unblocked by state surgery once the real cause — two keys disagreeing — was named. The law that falls out: every state word (synced, filed, registered) is a claim about a store, never about the surface. The surface is checked on the surface, in its own bytes, after the lag window has honestly passed.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59216,5 +59249,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "295303b36f5979ab55d10fea0d2268893d85aad0ee3d0409ce2a9d33729c75f7"
+  "corpus_manifest_hash": "cbbbd4de9770a2ffcaf3a860ce5ea81ecbd062f859c55b96882d2647ae96fc73"
 }

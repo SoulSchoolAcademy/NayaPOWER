@@ -1,0 +1,92 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3410",
+ "title": "Synced Is Not Live",
+ "slug": "synced-is-not-live",
+ "topic": "LESSON",
+ "category": "LESSON",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-18T20:10:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "A sync that reports success and a feed that still shows the deleted card are two different facts, and only the second one is the truth a visitor meets. This family proves the pattern three ways: the feed builder never tombstoned a deleted note's card, so ghosts outlived their sources; a zero sync beside a live note was timing, not failure; and a stuck note was unblocked by state surgery once the real cause — two keys disagreeing — was named. The law that falls out: every state word (synced, filed, registered) is a claim about a store, never about the surface. The surface is checked on the surface, in its own bytes, after the lag window has honestly passed.",
+  "human_view": "It's the difference between the warehouse ledger saying a parcel shipped and the parcel being on your porch. The ledger matters — it's how the warehouse runs — but if the box isn't on the porch, telling the customer 'the system says shipped' is not customer service. You walk out and look at the porch.",
+  "child_view": "Imagine you erase a drawing from your notebook, but a photo of it is still pinned on the class board. Did you really remove it? Not for anyone walking past the board. Taking the photo down too is part of erasing.",
+  "grandma_view": "In my day the shop chalked the day's prices on a board outside. If the price changed inside and nobody wiped the board, the board's price was the one you argued about at the till — and the shop honoured it, because the board is what the street sees. Keep the board true, or don't chalk it.",
+  "ai_view": "Never report a state word as a serving verdict. For deletions, verify the card is gone from feed bytes, not from the sync log. For stuck objects, diff the keys that describe them before touching data. Record lag-window reads as TIMING with a re-check time.",
+  "what_it_means": "State vocabularies exist so builders can coordinate, but they quietly become substitutes for looking. Each note in this family is a small court case where the claim and the surface were compared and the claim lost or was re-scoped: tombstone, timing, two keys. A system that grades its stores instead of its surfaces will ship ghosts with confidence. The discipline is boring and total: name the store the word describes, wait out the lag, then read the surface itself.",
+  "whats_inside": [
+   "The Feed Builder Doesn't Tombstone",
+   "The Gate Measures the Thing Now",
+   "The Learn-More Viewpoint",
+   "The $4,500 Clip Was Never a Defect",
+   "His Verdict on the Day — The Extraordinary Piece"
+  ],
+  "topics": [
+   "Distillation",
+   "System",
+   "Lesson",
+   "Knowledge",
+   "Craft"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 8,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2486",
+     "title": "The Feed Builder Doesn't Tombstone"
+    },
+    {
+     "sn": "SN-2487",
+     "title": "The Gate Measures the Thing Now"
+    },
+    {
+     "sn": "SN-2488",
+     "title": "The Learn-More Viewpoint"
+    },
+    {
+     "sn": "SN-2489",
+     "title": "The $4,500 Clip Was Never a Defect"
+    },
+    {
+     "sn": "SN-2490",
+     "title": "His Verdict on the Day — The Extraordinary Piece"
+    },
+    {
+     "sn": "SN-2491",
+     "title": "The Magic of Life"
+    },
+    {
+     "sn": "SN-2492",
+     "title": "Belief Before Proof"
+    },
+    {
+     "sn": "SN-2493",
+     "title": "The v71 Full-Page Review — The True Scale Is Seven"
+    },
+    {
+     "sn": "SN-2494",
+     "title": "The Numbering Law, Mechanically Enforced"
+    },
+    {
+     "sn": "SN-2495",
+     "title": "The Sync Says Tombstoned — The Feed Says Otherwise"
+    }
+   ]
+  },
+  "machine": "1) Synced/filed/registered describe a store, never the surface; serving verdicts come only from surface bytes. 2) Deletion of a source must tombstone its feed card in the same run; a card whose source is gone is a defect, not a cache. 3) A zero/stale read inside the lag window is recorded as TIMING, re-checked after the window, never reported as failure or success. 4) When two keys disagree about one object, the disagreement itself is the named defect and the fix target.",
+  "why_it_matters": "Ghost cards and stuck notes are trust leaks at the exact place citizens meet the intelligence. Every hour a deleted note stays visible, the feed teaches visitors that the record lies; every false failure report teaches the team to ignore real ones. This essence makes the surface the only judge, so both errors become checkable instead of arguable.",
+  "how_it_connects": "This essence is batch 8's E1 panel; its raw family spans SN-2486 to SN-2495 (The Feed Builder Doesn't Tombstone → The Sync Says Tombstoned — The Feed Says Otherwise), and it sits in the standing sequence of sixty essences that came before it — each one checked against the census coverage map for zero overlap before it was written.",
+  "what_is_in_it_for_you": "For you, Shawn, this means this stratum of the record no longer has to be re-read note by note: its law is stated once, whole, in words a cold reader can use — and the hundred raw notes beneath it are accounted for, by number, in the Distills line.",
+  "the_learning": "The store is a claim; the surface is the fact — and a lag window honestly waited out is part of the measurement, not an excuse from it."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3410/IB-SMART-NOTE-20261118-sn3410-synced-is-not-live.md",
+ "page_hash": "eeb6c8be2f9b02340cef9245ddd4ca85387116223553099ad87d5990a8f7b378",
+ "content_hash": "f7aa70292c463023dedcac80193f7c9fd2ef21941758b5fab3c5d9eaad5773c3"
+}
