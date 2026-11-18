@@ -4086,7 +4086,7 @@ body.fc-open{overflow:hidden;}
 .fc-pick-match{text-align:right;flex:none;}
 .fc-pick-match b{display:block;font-size:16px;color:#07925f;}
 .fc-pick-match i{font-style:normal;font-size:11px;color:#fff;}
-.fc-chat{position:fixed;right:16px;bottom:calc(var(--notif-h,78px) + 12px);width:min(380px,calc(100vw - 32px));z-index:1700;background:radial-gradient(130% 140% at 30% 0%, #1b1b26, #07070b 78%);border:1.5px solid rgba(255,255,255,.2);border-radius:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -8px 16px rgba(0,0,0,.45),0 18px 44px rgba(0,0,0,.65),0 0 24px -6px rgba(15,82,186,.4);padding:14px;display:flex;flex-direction:column;gap:10px;max-height:calc(100vh - 140px);}
+.fc-chat{position:fixed;right:16px;bottom:calc(var(--smartbar-h, 0px) + var(--notif-h,78px) + 16px);width:min(380px,calc(100vw - 32px));z-index:1700;background:radial-gradient(130% 140% at 30% 0%, #1b1b26, #07070b 78%);border:1.5px solid rgba(255,255,255,.2);border-radius:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -8px 16px rgba(0,0,0,.45),0 18px 44px rgba(0,0,0,.65),0 0 24px -6px rgba(15,82,186,.4);padding:14px;display:flex;flex-direction:column;gap:10px;max-height:calc(100vh - 140px);}
 .fc-chat[hidden]{display:none;}
 .fc-chat-head{display:flex;align-items:center;gap:10px;}
 /* FIX-20261112-B: the chat avatar is the same Connections orb as the picker (message-blue
@@ -5232,6 +5232,108 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 </aside>
 <div id="pcRailPopBack" hidden></div>
 <div id="pcRailPop" class="ph-intro-board" role="dialog" aria-modal="true" aria-label="About" hidden></div>
+<style id="pc-profile-fullpage-20261117">
+/* === CONNECTION PROFILE — FULL PAGE 2026-11-17 ===
+   The person popover becomes a full page on the Personal page: same chrome
+   (cover, action pills, bottom bar), the middle morphs into their page.
+   Harvested: .ph-card (+ --ac rim), .fc-pick-av (orb), .os-jewel,
+   .pc-btn (four ways), .ph-connect (doors), .os-mini-tile (match digits).
+   Text 25 / 19 / 17, white. Spectrum walk, never the same colour twice. */
+#pcProfileView[hidden]{display:none;}
+#pcFeedWrap[hidden]{display:none;}
+#pcProfileView{max-width:1320px;margin:0 auto;padding:8px 16px 180px;}
+#pcProfileView .pc-profile-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 16px;}
+/* === CONNECTION PROFILE FOLLOW-ON 2026-11-17 ===
+   Wide card, portrait medallion, one-tile Match, held failure states,
+   press that sinks and springs, bar labels, clearance above the bar. */
+@media(min-width:1024px){
+#pcProfileView{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
+#pcProfileView .pc-profile-top{grid-column:1/-1;margin:8px 0 0;}
+#pcProfileView .pc-profile-board[data-pc-board="0"]{grid-column:1/-1;}
+}
+#pcProfileView .pc-profile-portrait{position:relative;flex:none;width:152px;height:152px;display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:0 0 28px -6px var(--cc,#8e24aa),0 10px 24px rgba(0,0,0,.55);}
+#pcProfileView .pc-profile-portrait::before{content:'';position:absolute;top:-8px;right:-8px;bottom:-8px;left:-8px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--cc,#8e24aa) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orb-spin 120s linear infinite;opacity:.9;pointer-events:none;}
+@media (prefers-reduced-motion: reduce){#pcProfileView .pc-profile-portrait::before{animation:none}}
+#pcProfileView .pc-match-one{width:auto!important;padding:0 16px;}
+#pcProfileView .pc-match-one .rd{font-size:20px;white-space:nowrap;}
+#pcProfileView .pc-profile-call{font-size:17px;color:#fff;margin:12px 0 0;}
+#pcProfileView .pc-profile-call:empty{display:none;}
+#pcProfileView .pc-hist-dev{font-size:17px;color:#fff;}
+#pcProfileView .pc-profile-connect.failed{border-color:rgba(255,255,255,0.8);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 14px rgba(0,0,0,.5);}
+#pcProfileView .pc-profile-connect.failed:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 16px -4px rgba(255,255,255,0.8),0 8px 18px rgba(0,0,0,.55);}
+.pc-card .pc-connect-btn.failed{border-color:rgba(255,255,255,0.8);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 14px rgba(0,0,0,.5);}
+.pc-call-note{font-size:17px;color:#fff;margin:8px 0 0;}
+.pc-points-receipt{flex:0 0 100%;text-align:center;font-size:17px;color:#fff;margin:8px 0 0;}
+.pc-points-receipt:empty{display:none;}
+#pcProfileView .pc-btn,#pcProfileView .pc-profile-connect,#pcProfileView .pc-hist-day,#pcProfileView .pc-profile-world,#pcProfileView .pc-profile-save,#pcProfileView .pc-profile-label-save,#pcProfileView .pc-profile-back{transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease;}
+#pcProfileView .pc-profile-save:active,#pcProfileView .pc-profile-label-save:active,#pcProfileView .pc-profile-back:active,#pcProfileView .pc-profile-world:active{transform:scale(.97);}
+@media(max-width:640px){#pcProfileView .pc-profile-portrait{width:120px;height:120px;}#pcProfileView .pc-profile-portrait .pc-profile-orb{width:104px;height:104px;font-size:44px;}}
+
+#pcProfileView .pc-profile-crumb{font-size:17px;font-weight:800;letter-spacing:.18em;color:#fff;}
+#pcProfileView .pc-profile-back{font-size:17px;padding:12px 24px;}
+#pcProfileView .ph-card{border-color:color-mix(in srgb, var(--ac,#8e24aa) 65%, #fff 20%);}
+#pcProfileView .ph-card h3{font-size:19px;}
+#pcProfileView .ph-card p{font-size:17px;}
+#pcProfileView .pc-profile-hero-id{display:flex;gap:24px;align-items:center;}
+#pcProfileView .pc-profile-orb{width:136px;height:136px;font-size:52px;flex:none;font-family:Marcellus,Georgia,serif;text-shadow:0 1px 0 rgba(255,255,255,.5),0 2px 10px rgba(0,0,0,.55);}
+#pcProfileView .pc-profile-name{font-family:Marcellus,Georgia,serif;font-size:25px;line-height:1.2;color:#fff;margin:0 0 8px;}
+#pcProfileView .pc-profile-nut{font-size:19px;line-height:1.5;color:#fff;margin:0;}
+#pcProfileView .pc-profile-ways{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+#pcProfileView .pc-profile-ways .pc-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:88px;padding:14px 6px;font-size:17px;background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 0 16px -4px var(--mc,#8e24aa),0 6px 14px rgba(0,0,0,.5);}
+#pcProfileView .pc-profile-ways .pc-btn:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px -2px var(--mc,#8e24aa),0 8px 18px rgba(0,0,0,.55);}
+#pcProfileView .pc-profile-ways .pc-btn:active{transform:scale(.97);}
+#pcProfileView .pc-profile-cap{font-size:17px;font-weight:800;letter-spacing:.14em;color:#fff;margin:0 0 12px;}
+#pcProfileView .pc-profile-note-input{width:100%;box-sizing:border-box;background:linear-gradient(180deg,#17171f,#0a0a10);border:1.5px solid rgba(255,255,255,.35);border-radius:16px;color:#fff;font:inherit;font-size:17px;line-height:1.6;padding:14px 16px;min-height:120px;resize:vertical;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 6px 14px rgba(0,0,0,.4);}
+#pcProfileView .pc-profile-note-input:focus{outline:none;border-color:var(--ac,#8e24aa);box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 0 16px -4px var(--ac,#8e24aa),0 4px 12px rgba(0,0,0,.4);}
+#pcProfileView .pc-profile-note-input::placeholder{color:#fff;opacity:1;}
+#pcProfileView .pc-profile-save{font-size:17px;padding:12px 28px;margin-top:12px;}
+#pcProfileView .pc-profile-status{font-size:17px;color:#fff;margin:10px 0 0;}
+#pcProfileView .pc-profile-status:empty{display:none;}
+#pcProfileView .pc-hist-row{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+#pcProfileView .pc-hist-row:last-child{border-bottom:0;}
+#pcProfileView .pc-hist-av{flex:none;width:40px;height:40px;font-size:17px;}
+#pcProfileView .pc-hist-main{flex:1;min-width:0;}
+#pcProfileView .pc-hist-who{font-size:17px;font-weight:800;color:#fff;}
+#pcProfileView .pc-hist-body{font-size:17px;line-height:1.6;color:#fff;margin:4px 0 0;overflow-wrap:break-word;}
+#pcProfileView .pc-hist-day{flex:none;font-size:17px;font-weight:800;color:#fff;background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 14px;cursor:pointer;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 12px rgba(0,0,0,.4);}
+#pcProfileView .pc-hist-day:hover{border-color:var(--ac,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px var(--ac,#8e24aa),0 6px 14px rgba(0,0,0,.5);}
+#pcProfileView .pc-hist-day:active{transform:scale(.97);}
+#pcProfileView .pc-fact-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+#pcProfileView .pc-fact-row:last-child{border-bottom:0;}
+#pcProfileView .pc-fact-lab{flex:1;font-size:17px;color:#fff;}
+#pcProfileView .pc-fact-val{font-size:17px;font-weight:800;color:#fff;}
+#pcProfileView .pc-profile-world{font-size:17px;padding:12px 24px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
+#pcProfileView .pc-profile-connect-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+#pcProfileView .pc-profile-connect{position:static;font-size:17px;padding:12px 24px;border-color:#c62828;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #c62828,0 6px 14px rgba(0,0,0,.5);}
+#pcProfileView .pc-profile-connect:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 22px -2px #c62828,0 8px 18px rgba(0,0,0,.55);}
+#pcProfileView .pc-profile-connect:active{transform:scale(.97);}
+#pcProfileView .pc-profile-connect.requested{border-color:#d4a017;color:#d4a017;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #d4a017,0 6px 14px rgba(0,0,0,.5);}
+#pcProfileView .pc-profile-label{margin-top:16px;}
+#pcProfileView .pc-profile-label-row{display:flex;gap:10px;}
+#pcProfileView .pc-profile-label-input{flex:1;min-width:0;height:52px;background:linear-gradient(180deg,#17171f,#0a0a10);border:1.5px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;font:inherit;font-size:17px;padding:0 18px;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 6px 14px rgba(0,0,0,.4);}
+#pcProfileView .pc-profile-label-input:focus{outline:none;border-color:var(--ac,#8e24aa);box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 0 16px -4px var(--ac,#8e24aa),0 4px 12px rgba(0,0,0,.4);}
+#pcProfileView .pc-profile-label-input::placeholder{color:#fff;opacity:1;}
+#pcProfileView .pc-profile-label-save{font-size:17px;padding:12px 24px;margin-top:0;}
+#pcProfileView .pc-req-note{font-size:17px;color:#fff;margin:12px 0 0;}
+#pcProfileView .pc-req-note:empty{display:none;}
+@media(max-width:640px){
+#pcProfileView{padding:8px 12px 120px;}
+#pcProfileView .pc-profile-hero-id{gap:16px;}
+#pcProfileView .pc-profile-orb{width:96px;height:96px;font-size:40px;}
+#pcProfileView .pc-profile-ways{grid-template-columns:repeat(2,1fr);}
+#pcProfileView .pc-profile-top{flex-wrap:wrap;}
+}
+</style>
+<section id="pcProfileView" aria-label="Connection profile" hidden>
+<div class="pc-profile-top"><button type="button" class="ph-connect pc-profile-back" data-pc-profile-back>← Back to Connections</button><span class="pc-profile-crumb">CONNECTION</span></div>
+<div class="ph-card pc-profile-board" data-pc-board="0" style="--ac:#8e24aa"><div class="pc-profile-hero-id"><span class="pc-profile-portrait" id="pcProfilePortrait"><span class="fc-pick-av pc-profile-orb" id="pcProfileOrb" style="--cc:#8e24aa">S</span></span><div><h2 class="pc-profile-name" id="pcProfileName"></h2><p class="pc-profile-nut" id="pcProfileNut"></p></div></div></div>
+<div class="ph-card pc-profile-board" data-pc-board="1" style="--ac:#0f52ba"><h3><span class="os-jewel os-jewel-h" style="--jc:#0f52ba">✦</span> Reach them</h3><div class="pc-profile-ways"><button type="button" class="pc-btn" data-pc-act="chat" style="--mc:#0f52ba"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba">✎</span> Message</button><button type="button" class="pc-btn" data-pc-act="mail" style="--mc:#d4a017"><span class="os-jewel os-jewel-sm" style="--jc:#d4a017">✉</span> Smart Mail</button><button type="button" class="pc-btn" data-pc-act="audio" style="--mc:#07925f"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">♪</span> Audio</button><button type="button" class="pc-btn" data-pc-act="video" style="--mc:#8e24aa"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">▶</span> Video</button></div><p>One conversation — Message pops it up here, Smart Mail lands it in their inbox.</p><p class="pc-profile-call" data-pc-profile-call-status></p></div>
+<div class="ph-card pc-profile-board" data-pc-board="2" style="--ac:#07925f"><h3><span class="os-jewel os-jewel-h" style="--jc:#07925f">✦</span> My notes about them</h3><p>Notes about them, in your words. Only you see these.</p><label class="pc-profile-cap" for="pcProfileNoteInput">WRITE IT DOWN</label><textarea class="pc-profile-note-input" id="pcProfileNoteInput" rows="4" placeholder="Notes about them — only you see these."></textarea><button type="button" class="ph-connect pc-profile-save" data-pc-profile-note-save>Save note</button><p class="pc-profile-status" data-pc-profile-note-status></p></div>
+<div class="ph-card pc-profile-board" data-pc-board="3" style="--ac:#d4a017"><h3><span class="os-jewel os-jewel-h" style="--jc:#d4a017">✦</span> Our history</h3><p>Only your own conversations, from your vault. Mail and messages are never read.</p><div id="pcProfileHistory"></div></div>
+<div class="ph-card pc-profile-board" data-pc-board="4" style="--ac:#c2410c"><h3><span class="os-jewel os-jewel-h" style="--jc:#c2410c">✦</span> What we know</h3><p>Only what they have shared.</p><div id="pcProfileFacts"></div></div>
+<div class="ph-card pc-profile-board" data-pc-board="5" style="--ac:#c62828"><h3><span class="os-jewel os-jewel-h" style="--jc:#c62828">✦</span> Smart Meet — face to face</h3><p>Meet them face to face — book it like an appointment, with the calendar.</p><div class="ph-actions"><a class="ph-connect pc-profile-world" id="pcProfileMeetDoor" href="https://nayanet.app/#/hub/connections" target="_blank" rel="noopener"><span class="os-jewel os-jewel-sm" style="--jc:#c62828">▶</span> Book a time — Smart Meet</a></div></div>
+<div class="ph-card pc-profile-board" data-pc-board="6" style="--ac:#a21caf"><h3><span class="os-jewel os-jewel-h" style="--jc:#a21caf">✦</span> Connect + label</h3><div class="pc-profile-connect-row"><button type="button" class="pc-connect-btn pc-profile-connect" data-pc-connect=""><span class="os-jewel os-jewel-sm" style="--jc:#c62828">+</span> CONNECT</button></div><p class="pc-req-note" data-pc-profile-note hidden></p><div class="pc-profile-label"><p class="pc-profile-cap">LABEL THIS CONNECTION</p><div class="pc-profile-label-row"><input class="pc-profile-label-input" id="pcProfileLabelInput" data-pc-profile-label-input type="text" maxlength="40" placeholder="Family, work, close friend…"><button type="button" class="ph-connect pc-profile-label-save" data-pc-profile-label-save>Save</button></div><p class="pc-profile-status" data-pc-profile-label-status></p></div></div>
+</section>
 <script>
 /* ═══ PERSONAL PULSE BRIDGE — 2026-10-31 · scorecard rework ═══
    Feeds the transplanted living-intelligence engine (next script) with THIS
@@ -9776,10 +9878,21 @@ function wallCard(j, iso, pid, idx){
     function fcStubSend(){
       window.__fcStubSent=window.__fcStubSent||[];
       window.__fcStubSent.push({to:opts.to, from:opts.from, subject:opts.subject, body:opts.body, at:new Date().toISOString(), stub:true});
-      fcDoneOnce(null);
+      /* FOLLOW-ON 2026-11-17: a send the live store refused is kept on this
+         device — the citizen's own sent message, so it can appear in their
+         history instead of vanishing on reload. Live smart_mail stays the
+         first source; this is the floor beneath it. */
+      try{
+        var kept=JSON.parse(localStorage.getItem('pc-stub-sent-v1')||'[]');
+        if(!Array.isArray(kept)) kept=[];
+        kept.push({to:opts.to, from:opts.from, subject:opts.subject, body:opts.body, at:new Date().toISOString(), stub:true});
+        while(kept.length>100) kept.shift();
+        localStorage.setItem('pc-stub-sent-v1', JSON.stringify(kept));
+      }catch(e2){}
+      fcDoneOnce(null, {stub:true});
     }
     var fcSettled=false, fcTimer=null;
-    function fcDoneOnce(err){ if(fcSettled) return; fcSettled=true; if(fcTimer){ try{clearTimeout(fcTimer);}catch(e){} } done(err); }
+    function fcDoneOnce(err, info){ if(fcSettled) return; fcSettled=true; if(fcTimer){ try{clearTimeout(fcTimer);}catch(e){} } done(err, info); }
     /* ADOPT-2 (2026-11-12 ~20:20Z): the live insert can HANG — its promise never settles
        when the session cannot reach Supabase (run3 + run4-390: status sat on "Sending…",
        stubSent 0 — the stub only fired on an error RESOLUTION, and a hung promise has
@@ -13018,6 +13131,7 @@ function wallCard(j, iso, pid, idx){
     var sm = document.getElementById('os-smart-meet-link'); if (sm) sm.href = dest;
     var bt = document.getElementById('os-book-time-door'); if (bt) bt.href = dest;
     var tile = document.getElementById('os-src-door-booking'); if (tile) tile.href = dest;
+    var pd = document.getElementById('pcProfileMeetDoor'); if (pd) pd.href = dest;
     var days = document.querySelectorAll('.os-book-day-link');
     for (var di=0; di<days.length; di++){ days[di].href = dest; }
     if (!slug){
@@ -13795,7 +13909,7 @@ function wallCard(j, iso, pid, idx){
 .notif-seg {
   position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
   padding: 2px 6px 0; cursor: pointer; background: none; border: none;
-  color: #ffffff; font-family: inherit; transition: transform .12s;
+  color: #ffffff; font-family: inherit; transition: transform .22s cubic-bezier(.34,1.56,.64,1);
   -webkit-tap-highlight-color: transparent;
 }
 .notif-seg:active { transform: scale(.94); }
@@ -13811,7 +13925,7 @@ function wallCard(j, iso, pid, idx){
     0 7px 16px rgba(0,0,0,.6),
     0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);
   color: color-mix(in srgb, var(--nc) 72%, #ffffff);
-  transition: box-shadow .3s, border-color .3s;
+  transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, border-color .3s;
 }
 .notif-tile::before {
   content: ""; position: absolute; inset: 0; border-radius: 16px; pointer-events: none;
@@ -15360,7 +15474,7 @@ window.NayaNotif = window.NayaNotif || {
         b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
         b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
         b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
-        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>';
+        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>' + '<span class="notif-lbl">' + s[0].toUpperCase() + '</span>';
         b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'create', b); return; } if (s[0] === 'plus-connect') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(null, 'connect', b); return; } self.tap(s[0]); });
         row.appendChild(b);
       });
@@ -27524,10 +27638,17 @@ if(csend) csend.addEventListener('click', function(){
   if(!fromName) fromName='Guest';
   if(st) st.textContent='Sending…';
   if(typeof window.fcSendMail!=='function'){ if(st) st.textContent='Connection unavailable — message not sent.'; return; }
-  window.fcSendMail({to:chatTo.alias, from:slug(fromName), subject:subj, body:body}, function(err){
+  window.fcSendMail({to:chatTo.alias, from:slug(fromName), subject:subj, body:body}, function(err, info){
     if(err){ if(st) st.textContent=(window.mwTr?window.mwTr('Send failed: '):'Send failed: ')+err; return; }
     if(bd) bd.value='';
-    if(st) st.textContent='Sent — it is in '+chatTo.name+'’s Smart Mail inbox.';
+    /* FOLLOW-ON 2026-11-17: the confirmation names the mode actually used,
+       and never claims a live inbox landing for a device-kept send. */
+    var stub=info&&info.stub;
+    var txt=isMail
+      ? (stub?'Sent \u2014 saved on this device. The live send needs a one-time permission from Shawn.':'Sent \u2014 it is in '+chatTo.name+'\u2019s Smart Mail inbox.')
+      : (stub?'Sent as an instant message. Saved on this device \u2014 the live send needs a one-time permission from Shawn.':'Sent as an instant message.');
+    if(st) st.textContent=txt;
+    if(window.pcProfileRefreshHistory) window.pcProfileRefreshHistory(chatTo.alias);
     var th=$('fcChatThread');
     if(th){ var d=document.createElement('div'); d.className='fc-chat-msg'; d.textContent=body; th.appendChild(d); }
   });
@@ -27692,7 +27813,7 @@ function pcCard(p, live){
      there too (the pop-up's actions). */
   var mark = '';;
   return '<article class="pc-card" data-pc-alias="'+esc(p.alias)+'" style="--pc:'+pcColorFor(p.alias)+'">'
-    + '<div class="pc-card-top"><button type="button" class="fc-pick-av" data-pc-orb="'+esc(p.alias)+'" aria-label="Message '+esc(p.alias)+'" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</button>'
+    + '<div class="pc-card-top"><button type="button" class="fc-pick-av" data-pc-orb="'+esc(p.alias)+'" aria-label="Open profile: '+esc(p.alias)+'" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</button>'
     + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b></span>'+mark+'</div></div>'
     + '</article>';
 }
@@ -27720,18 +27841,21 @@ function pcConnectRequested(alias){
 function pcCardWithConnect(p, live){
   var base=pcCard(p, live);
   var req=pcConnectRequested(p.alias);
+  var fail=null;
+  try{ fail=localStorage.getItem('pc-connect-fail-'+p.alias); }catch(e){}
   /* R5 Part 5 (amended) — CONNECT + the GREEN ACTIVE NUMBER beside it, on every
      card: the seed pct for the seed family, the endpoint pct for live matches. */
   var pct=(typeof p.pct==='number')?p.pct:null;
   var pctHtml=(pct===null)?'':'<span class="pc-pct r4-tiles" title="'+pcTr('Match')+'">'+pcTiles(pct)+'</span>';
-  var btn='<button type="button" class="pc-connect-btn'+(req?' requested':'')+'" data-pc-connect="'+esc(p.alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested \u2713':'CONNECT')+'</button>';
-  var note=req?'<p class="pc-req-note">Request sent \u2014 waiting for them to accept.</p>':'';
+  var btn='<button type="button" class="pc-connect-btn'+(req?' requested':(fail?' failed':''))+'" data-pc-connect="'+esc(p.alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested \u2713':(fail?'Not sent \u2014 try again':'CONNECT'))+'</button>';
+  var note=req?'<p class="pc-req-note">Request sent \u2014 waiting for them to accept.</p>':(fail?'<p class="pc-req-note">'+esc(fail)+'</p>':'');
   var at=base.indexOf('</article>');
   if(at<0) return base;
   var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button>';
   var row='<div class="pc-connect-row">'+pctHtml+infoBtn+btn+'</div>'; /* HEADER-V2 2026-11-14: the info sits beside the %, top-right, fixed — long names cannot move it. */
   return base.slice(0, at)+row+note+base.slice(at);
 }
+
 window.pcRenderRailForTab=function(tab){
   var list=document.getElementById('pcRailList'); if(!list) return;
   if(typeof pcHideRailPop==='function'){ try{ pcHideRailPop(); }catch(e){} }
@@ -27827,16 +27951,32 @@ document.addEventListener('click', function(e){
     if(!n){ n=document.createElement('p'); n.className='pc-req-note'; card.appendChild(n); }
     n.textContent=text;
   }
+  /* FOLLOW-ON 2026-11-17: every failure path says WHY and HOLDS the state.
+     The reason is carried in words, never in the error red — and the button
+     never silently reverts to CONNECT. */
+  function pcConnectWhy(err){
+    var msg=err&&(err.message||err.error||err.status||err);
+    var s=String(msg||'').toLowerCase();
+    if(/42501|permission denied|row-level security|rls/.test(s)) return 'The list write needs a one-time permission from Shawn.';
+    if(/network|fetch failed|failed to fetch|load failed/.test(s)) return 'No connection to the store right now \u2014 try again.';
+    if(/timed? ?out/.test(s)) return 'The store did not answer \u2014 try again.';
+    if(msg) return 'Not sent \u2014 '+String(msg).slice(0,120);
+    return 'Not sent \u2014 try again.';
+  }
   function done(ok, msg){
-    b.disabled=false;
+    var why=msg||'Not sent \u2014 try again.';
     if(ok){
-      b.classList.add('requested'); b.textContent='Requested \u2713';
-      try{ localStorage.setItem('pc-connect-'+alias,'requested'); }catch(e2){}
-      reqNote(b.closest('.pc-card'), 'Request sent \u2014 waiting for them to accept.');
+      try{ localStorage.setItem('pc-connect-'+alias,'requested'); localStorage.removeItem('pc-connect-fail-'+alias); }catch(e2){}
     } else {
-      b.textContent='Not sent \u2014 try again';
-      reqNote(b.closest('.pc-card'), msg||'Could not send right now.');
-      setTimeout(function(){ if(!b.classList.contains('requested')) b.textContent='CONNECT'; }, 3000);
+      try{ localStorage.setItem('pc-connect-fail-'+alias, why); localStorage.removeItem('pc-connect-'+alias); }catch(e2){}
+    }
+    var all=document.querySelectorAll('[data-pc-connect="'+alias+'"]');
+    for(var i=0;i<all.length;i++){
+      var o=all[i];
+      if(ok){ o.classList.add('requested'); o.classList.remove('failed'); o.disabled=true; o.textContent='Requested \u2713'; }
+      else { o.classList.add('failed'); o.classList.remove('requested'); o.disabled=false; o.textContent='Not sent \u2014 try again'; }
+      var c=o.closest?o.closest('.pc-card'):null;
+      if(c) reqNote(c, ok?'Request sent \u2014 waiting for them to accept.':why);
     }
   }
   b.disabled=true; b.textContent='Sending\u2026';
@@ -27846,34 +27986,33 @@ document.addEventListener('click', function(e){
      5s; the maker expected "Not sent" then restore). The chain has rejection
      handlers, but a never-settling promise is not a rejection. If the button
      is still mid-send after 8s, fail honestly through done(false) — the
-     existing "Not sent — try again" + 3s restore to CONNECT. If the chain
-     settles first, this no-ops. */
+     held "Not sent — try again" state. If the chain settles first, this no-ops. */
   var pcConnectGuard=setTimeout(function(){
-    if(b.textContent.indexOf('Sending')===0 && !b.classList.contains('requested')){ done(false, 'Could not send right now.'); }
+    if(b.textContent.indexOf('Sending')===0 && !b.classList.contains('requested')){ done(false, 'The store did not answer \u2014 try again.'); }
   }, 8000);
   var sb=null;
   try{ sb=(window.NayaAuth&&window.NayaAuth.client)||null; }catch(e){}
-  if(!sb){ done(false, 'No connection to the store right now.'); return; }
+  if(!sb){ done(false, 'No connection to the store right now \u2014 try again.'); return; }
   var owner=window.PAGE_ALIAS||'flagship-personal';
   sb.from('smart_lists').select('id').eq('owner_alias',owner).eq('title','Connect requests').limit(1).then(function(r1){
-    if(r1.error){ done(false, 'Could not send right now.'); return; }
+    if(r1.error){ done(false, pcConnectWhy(r1.error)); return; }
     var list=(r1.data&&r1.data[0])||null;
     function withList(listId){
       sb.from('smart_list_items').select('id').eq('owner_alias',owner).eq('list_id',listId).eq('item_kind','person').eq('item_ref',alias).limit(1).then(function(r2){
-        if(r2.error){ done(false, 'Could not send right now.'); return; }
+        if(r2.error){ done(false, pcConnectWhy(r2.error)); return; }
         if(r2.data&&r2.data.length){ done(true); return; }
         sb.from('smart_list_items').insert({owner_alias:owner,list_id:listId,item_kind:'person',item_ref:alias,label:alias,position:Date.now()}).select('id').single().then(function(r3){
-          if(r3.error){ done(false, 'Could not send right now.'); return; }
+          if(r3.error){ done(false, pcConnectWhy(r3.error)); return; }
           done(true);
-        }, function(){ done(false, 'Could not send right now.'); });
-      }, function(){ done(false, 'Could not send right now.'); });
+        }, function(err){ done(false, pcConnectWhy(err)); });
+      }, function(err){ done(false, pcConnectWhy(err)); });
     }
     if(list){ withList(list.id); return; }
     sb.from('smart_lists').insert({owner_alias:owner,title:'Connect requests',category:'Connections',position:0}).select('id').single().then(function(r4){
-      if(r4.error||!r4.data){ done(false, 'Could not send right now.'); return; }
+      if(r4.error||!r4.data){ done(false, pcConnectWhy(r4.error)); return; }
       withList(r4.data.id);
-    }, function(){ done(false, 'Could not send right now.'); });
-  }, function(){ done(false, 'Could not send right now.'); });
+    }, function(err){ done(false, pcConnectWhy(err)); });
+  }, function(err){ done(false, pcConnectWhy(err)); });
 });
 /* the feed + the rail sit side by side: wrap them the moment the rail parses,
    so nothing flashes at the bottom of the page first. */
@@ -27884,7 +28023,8 @@ if(wall&&rail&&wall.parentNode){
 }
 window.pcRenderRail();
 /* the four buttons: chat + mail open the instant message in place; audio and
-   video open it too, with the honest status — no Smart Meet route exists yet. */
+   video calls are not here yet — the buttons say so plainly instead of
+   opening a composer that pretends to be a call. */
 document.addEventListener('click', function(e){
   var b=e.target&&e.target.closest?e.target.closest('[data-pc-act]'):null;
   if(!b) return;
@@ -27893,12 +28033,15 @@ document.addEventListener('click', function(e){
   if(!card&&!ap) return;
   var alias=(card?card.getAttribute('data-pc-alias'):ap.getAttribute('data-pc-alias'))||'guest';
   var act=b.getAttribute('data-pc-act');
+  if(act==='audio'||act==='video'){
+    var line=document.querySelector('[data-pc-profile-call-status]');
+    if(line) line.textContent=act==='audio'?'Audio calls aren\u2019t here yet \u2014 they arrive with Smart Meet. Message them for now.':'Video calls aren\u2019t here yet \u2014 they arrive with Smart Meet. Message them for now.';
+    return;
+  }
+  var line2=document.querySelector('[data-pc-profile-call-status]');
+  if(line2) line2.textContent='';
   if(typeof window.fcOpenChat!=='function') return;
   window.fcOpenChat({name:alias, alias:alias, kind:'person', mode:(act==='mail'?'mail':'chat')});
-  if(act==='audio'||act==='video'){
-    var st=document.getElementById('fcChatStatus');
-    if(st) st.textContent=pcTr(act==='audio'?'Audio calls arrive with Smart Meet — for now, message them here.':'Video calls arrive with Smart Meet — for now, message them here.');
-  }
 });
 /* The keyword box above the feed (#tnSearchPersonalInput) is hidden by Shawn's
    popup-only search law (base: #tnpsBand{display:none!important} — "search is a
@@ -27914,7 +28057,8 @@ document.addEventListener('click', function(e){
    leaves it room; cards lift + light on hover like the pricing page. */
 .pc-card{position:relative;}
 .pc-card-top{padding-right:0;}
-.pc-card:hover,.pc-card:active{transform:translateY(-2px);border-color:var(--pc,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 0 24px -4px var(--pc,#8e24aa),0 10px 26px rgba(0,0,0,.55);}
+.pc-card:hover{transform:translateY(-2px);border-color:var(--pc,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 0 24px -4px var(--pc,#8e24aa),0 10px 26px rgba(0,0,0,.55);}
+.pc-card:active{transform:translateY(1px) scale(.98);border-color:var(--pc,#8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 0 24px -4px var(--pc,#8e24aa),0 10px 26px rgba(0,0,0,.55);}
 /* FIX PASS 4 (Shawn's eye 2026-11-15) — P1/P4: the name + line sit beside the photo, so CONNECT
    leaves the top-right overlay and flows under the name line, in the person's own colour;
    the card is a column: name line, CONNECT row, action buttons, request note. */
@@ -28640,7 +28784,7 @@ window.__mwTranslate={translateSegments:translateSegments, sentencesOf:sentences
 /* --- Part 1 — header recomposition: picture + points under it, intro board beside it, row below --- */
 .ph-head{align-items:flex-start;}
 .ph-idcol{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto;}
-.ph-pointsrow{display:flex;justify-content:center;}
+.ph-pointsrow{display:flex;justify-content:center;flex-wrap:wrap;}
 .ph-intro-board{flex:1;min-width:0;background:#050507;border:1.5px solid rgba(255,255,255,.85);border-radius:20px;padding:18px 20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 0 18px -4px rgba(255,255,255,.45),0 8px 22px rgba(0,0,0,.5);}
 .ph-intro-board .ph-intro-name{font-size:24px;font-weight:900;color:#fff;}
 .ph-intro-board .ph-intro-motto{margin:10px 0 0;font-size:17px;font-weight:700;line-height:1.5;color:#fff;}
@@ -29292,7 +29436,7 @@ function pcWatchPopConnect(pop){
   if(!btn||!note||!window.MutationObserver) return;
   pcPopObs=new MutationObserver(function(){
     if(btn.classList.contains('requested')){ note.hidden=false; note.textContent='Request sent — waiting for them to accept.'; }
-    else if((btn.textContent||'').indexOf('Not sent')===0){ note.hidden=false; note.textContent='Could not send right now.'; }
+    else if((btn.textContent||'').indexOf('Not sent')===0){ note.hidden=false; var f=null; try{ f=localStorage.getItem('pc-connect-fail-'+btn.getAttribute('data-pc-connect')); }catch(e){} note.textContent=f||'Not sent \u2014 try again.'; }
     else { note.hidden=true; note.textContent=''; }
   });
   pcPopObs.observe(btn,{attributes:true,attributeFilter:['class'],childList:true,characterData:true,subtree:true});
@@ -29322,21 +29466,13 @@ document.addEventListener('click', function(e){
   var orb=e.target&&e.target.closest?e.target.closest('[data-pc-orb]'):null;
   if(orb){
     var op=pcRailPerson(orb.getAttribute('data-pc-orb'));
-    if(op){
-      pcShowRailPop(pcPersonPopHTML(op));
-      var opop=document.getElementById('pcRailPop');
-      if(opop) pcWatchPopConnect(opop);
-    }
+    if(op && window.pcOpenProfile) window.pcOpenProfile(op.alias);
     return;
   }
   var info=e.target&&e.target.closest?e.target.closest('[data-pc-info]'):null;
   if(info){
     var p=pcRailPerson(info.getAttribute('data-pc-info'));
-    if(p){
-      pcShowRailPop(pcPersonPopHTML(p));
-      var pop=document.getElementById('pcRailPop');
-      if(pop) pcWatchPopConnect(pop);
-    }
+    if(p && window.pcOpenProfile) window.pcOpenProfile(p.alias);
     return;
   }
   if(e.target&&e.target.closest&&(e.target.closest('[data-pc-pop-close]')||e.target.closest('#pcRailPopBack'))){ pcHideRailPop(); return; }
@@ -33548,6 +33684,349 @@ input::placeholder,textarea::placeholder{color:#fff!important;opacity:1!importan
   var dg=$('pcAddLinkDialog'); if(dg) dg.addEventListener('click', function(e){ if(e.target===dg) closeDlg(); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDlg(); });
   render();
+})();
+</script>
+<script id="pc-profile-fullpage-20261117-js">
+/* === CONNECTION PROFILE — FULL PAGE 2026-11-17 ===
+   Click a person in the Connections list and you are on THEIR page — a full
+   page, not the little popover. The popover's functions all moved here:
+   Message / Smart Mail / Audio / Video (the page's own data-pc-act handler),
+   CONNECT (the page's own data-pc-connect handler), Visit their world (the
+   popover's View profile door), LABEL + Save (same store key pc-label-*).
+   Notes save to the citizen's own Smart Notes vault when the live save
+   answers, else on this device with an honest receipt (the page's own
+   FIX-20261112-F pattern). History reads the citizen's own Smart Mail
+   threads — nothing is read that the citizen has not allowed. */
+(function(){
+'use strict';
+var WALK=['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf'];
+var GEM_NUM={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
+var GEM_COL={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0f52ba',6:'#3f51b5',7:'#8e24aa'};
+function $(id){ return document.getElementById(id); }
+function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+function pcProfileColorFor(name){ var L=String((name||'?').charAt(0)).toUpperCase(); return GEM_COL[GEM_NUM[L]||1]; }
+function pcProfileTiles(n){ var s=String(n), h=''; for(var i=0;i<s.length;i++){ var d=s.charCodeAt(i)-48; if(d<0||d>9) continue; h+='<span class="os-mini-tile d'+d+'"><span class="cap"></span><span class="rd">'+d+'</span></span>'; } return h+'<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>'; }
+function pcProfileLabelGet(alias){ try{ return localStorage.getItem('pc-label-'+alias)||''; }catch(e){ return ''; } }
+function pcProfileLabelSet(alias,v){ try{ if(v) localStorage.setItem('pc-label-'+alias,v); else localStorage.removeItem('pc-label-'+alias); return true; }catch(e){ return false; } }
+function pcProfileNoteDeviceGet(alias){ try{ return localStorage.getItem('pc-profile-note-'+alias)||''; }catch(e){ return ''; } }
+function pcProfileNoteDeviceSet(alias,v){ try{ if(v) localStorage.setItem('pc-profile-note-'+alias,v); else localStorage.removeItem('pc-profile-note-'+alias); }catch(e){} }
+function pcProfileSb(){ try{ if(window.NayaAuth&&window.NayaAuth.client) return window.NayaAuth.client; }catch(e){} try{ if(typeof getSb==='function') return getSb(); }catch(e){} return null; }
+function pcProfilePerson(alias){
+  try{ if(typeof pcRailPerson==='function'){ var p=pcRailPerson(alias); if(p) return p; } }catch(e){}
+  var seed=window.PC_RAIL_SEED||[];
+  for(var i=0;i<seed.length;i++){ if(seed[i].alias===alias) return seed[i]; }
+  return null;
+}
+var pcProfileAlias='';
+function pcProfileWalk(personColor){
+  var start=0;
+  for(var i=0;i<WALK.length;i++){ if(WALK[i]===personColor){ start=i; break; } }
+  var boards=document.querySelectorAll('#pcProfileView [data-pc-board]');
+  for(var j=0;j<boards.length;j++){
+    var c=WALK[(start+j)%WALK.length];
+    boards[j].style.setProperty('--ac',c);
+    var jw=boards[j].querySelector('h3 .os-jewel');
+    if(jw) jw.style.setProperty('--jc',c);
+  }
+  var door=document.querySelector('#pcProfileView [data-pc-board="5"] a.pc-profile-world .os-jewel');
+  if(door) door.style.setProperty('--jc',WALK[(start+5)%WALK.length]);
+}
+function pcProfileSyncConnect(){
+  var b=document.querySelector('#pcProfileView [data-pc-connect]');
+  var note=document.querySelector('[data-pc-profile-note]');
+  if(!b) return;
+  var req=false, fail=null;
+  try{ req=localStorage.getItem('pc-connect-'+pcProfileAlias)==='requested'; fail=localStorage.getItem('pc-connect-fail-'+pcProfileAlias); }catch(e){}
+  b.classList.toggle('requested', !!req);
+  b.classList.toggle('failed', !!(!req&&fail));
+  b.disabled=!!req;
+  /* FOLLOW-ON 2026-11-17: the failed state holds its reason in words, on a
+     neutral rim — never the error red, so hover and failure never read alike. */
+  if(req){ b.textContent='Requested \u2713'; if(note){ note.hidden=false; note.textContent='Request sent \u2014 waiting for them to accept.'; } }
+  else if(fail){ b.textContent='Not sent \u2014 try again'; if(note){ note.hidden=false; note.textContent=fail; } }
+  else { b.innerHTML='<span class="os-jewel os-jewel-sm" style="--jc:#c62828">+</span> CONNECT'; if(note){ note.hidden=true; note.textContent=''; } }
+}
+var pcProfileConnectObs=null;
+function pcProfileWatchConnect(){
+  if(pcProfileConnectObs){ try{ pcProfileConnectObs.disconnect(); }catch(e){} pcProfileConnectObs=null; }
+  var b=document.querySelector('#pcProfileView [data-pc-connect]');
+  var note=document.querySelector('[data-pc-profile-note]');
+  if(!b||!note||!window.MutationObserver) return;
+  pcProfileConnectObs=new MutationObserver(function(){
+    if(b.classList.contains('requested')){ note.hidden=false; note.textContent='Request sent \u2014 waiting for them to accept.'; }
+    else if((b.textContent||'').indexOf('Not sent')===0){ note.hidden=false; var f=null; try{ f=localStorage.getItem('pc-connect-fail-'+pcProfileAlias); }catch(e){} note.textContent=f||'Not sent \u2014 try again.'; }
+    else { note.hidden=true; note.textContent=''; }
+  });
+  pcProfileConnectObs.observe(b,{attributes:true,attributeFilter:['class'],childList:true,characterData:true,subtree:true});
+}
+function pcProfileLoadNote(){
+  var inp=$('pcProfileNoteInput'), st=document.querySelector('[data-pc-profile-note-status]');
+  if(!inp) return;
+  inp.value=pcProfileNoteDeviceGet(pcProfileAlias);
+  if(st) st.textContent='';
+  var sb=pcProfileSb();
+  if(!sb) return;
+  var owner=window.PAGE_ALIAS||'flagship-personal';
+  sb.from('smart_notes').select('content,created_at').eq('owner_alias',owner).order('created_at',{ascending:false}).limit(500).then(function(res){
+    if(res.error||!res.data) return;
+    for(var i=0;i<res.data.length;i++){
+      var j=null;
+      try{ j=JSON.parse(res.data[i].content||''); }catch(e){}
+      if(j&&j.k==='person-note'&&j.alias===pcProfileAlias&&typeof j.b==='string'){ inp.value=j.b; return; }
+    }
+  }, function(){});
+}
+function pcProfileSaveNote(){
+  var inp=$('pcProfileNoteInput'), st=document.querySelector('[data-pc-profile-note-status]');
+  if(!inp) return;
+  var text=inp.value.trim();
+  var sb=pcProfileSb();
+  function device(){
+    pcProfileNoteDeviceSet(pcProfileAlias,text);
+    if(st) st.textContent=text?'Note saved \u2713 \u2014 on this device. The vault needs a one-time permission from Shawn.':'Note removed.';
+  }
+  if(!text){ pcProfileNoteDeviceSet(pcProfileAlias,''); if(st) st.textContent='Note removed.'; return; }
+  if(!sb){ device(); return; }
+  var owner=window.PAGE_ALIAS||'flagship-personal';
+  var payload={k:'person-note',alias:pcProfileAlias,b:text};
+  var guard=setTimeout(device,8000);
+  sb.from('smart_notes').insert({owner_alias:owner,content:JSON.stringify(payload)}).then(function(res){
+    clearTimeout(guard);
+    if(res.error){ device(); return; }
+    pcProfileNoteDeviceSet(pcProfileAlias,'');
+    if(st) st.textContent='Note saved \u2713 \u2014 kept in your Smart Vault.';
+  }, function(){ clearTimeout(guard); device(); });
+}
+function pcProfileSlug(s){ return String(s||'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
+function pcProfileMySlugs(){
+  var owner=window.PAGE_ALIAS||'flagship-personal';
+  var list=[owner,'guest'];
+  try{ var dn=localStorage.getItem('os.displayName')||''; var sg=pcProfileSlug(dn); if(sg&&list.indexOf(sg)<0) list.push(sg); }catch(e){}
+  /* FOLLOW-ON 2026-11-17: mirror the send path. When no display name is
+     stored, a send falls back to the author input — so the outgoing read
+     must carry that slug too, or a live-sent message stays invisible. */
+  try{ var dn2=localStorage.getItem('os.displayName')||''; if(!dn2){ var ai=document.getElementById('os-post-author'); if(ai&&ai.value){ var sg2=pcProfileSlug(ai.value); if(sg2&&list.indexOf(sg2)<0) list.push(sg2); } } }catch(e2){}
+  return list;
+}
+function pcProfileDayLabel(iso){
+  try{ var d=new Date(iso); if(isNaN(d.getTime())) return ''; return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }catch(e){ return ''; }
+}
+function pcProfileHistoryEmpty(host){
+  host.innerHTML='<p>No conversations with them yet \u2014 write the first one.</p><div class="ph-actions"><button type="button" class="ph-connect pc-profile-save" data-pc-act="chat">Message them</button></div>';
+}
+/* FOLLOW-ON 2026-11-17: the citizen's own messages that the live send
+   could not place (kept on this device by the send path) read back as
+   history rows — real messages they sent, never invented rows. The live
+   threads stay the first source; these ride beside them, marked. */
+function pcProfileStubRows(){
+  var out=[];
+  try{
+    var kept=JSON.parse(localStorage.getItem('pc-stub-sent-v1')||'[]');
+    if(!Array.isArray(kept)) return out;
+    kept.forEach(function(m){
+      if(m&&m.to===pcProfileAlias&&typeof m.body==='string'&&m.body){
+        out.push({who:(m.from||'guest'),body:m.body,at:(m.at||new Date().toISOString()),dev:true});
+      }
+    });
+  }catch(e){}
+  return out;
+}
+function pcProfileRenderHistory(host,threads,msgs,extra){
+  var slugs=pcProfileMySlugs();
+  var byThread={};
+  (msgs||[]).forEach(function(m){ (byThread[m.thread_id]=byThread[m.thread_id]||[]).push(m); });
+  var rows=[];
+  threads.forEach(function(t){
+    var list=byThread[t.id]||[];
+    if(list.length){
+      list.forEach(function(m){ rows.push({who:m.from_alias,body:m.body,at:m.created_at,dev:false}); });
+    } else if(t.preview){
+      rows.push({who:t.from_alias,body:t.preview,at:t.created_at,dev:false});
+    }
+  });
+  (extra||[]).forEach(function(r){ rows.push(r); });
+  rows=rows.filter(function(r){ return r.who===pcProfileAlias||slugs.indexOf(r.who)>=0; });
+  rows.sort(function(a,b){ return new Date(b.at)-new Date(a.at); });
+  rows=rows.slice(0,30);
+  if(!rows.length){ pcProfileHistoryEmpty(host); return; }
+  var h='';
+  rows.forEach(function(r){
+    var mine=(slugs.indexOf(r.who)>=0);
+    var name=mine?'You':pcProfileAlias;
+    var init=String(name||'?').charAt(0).toUpperCase();
+    var col=pcProfileColorFor(name);
+    var day=String(r.at||'').slice(0,10);
+    h+='<div class="pc-hist-row"><span class="fc-pick-av pc-hist-av" style="--cc:'+col+'">'+esc(init)+'</span><div class="pc-hist-main"><span class="pc-hist-who">'+esc(name)+'</span>'+(r.dev?' <span class="pc-hist-dev">\u00b7 on this device</span>':'')+'<p class="pc-hist-body">'+esc(r.body||'')+'</p></div>'+(day?'<button type="button" class="pc-hist-day" data-pc-day="'+esc(day)+'">'+esc(pcProfileDayLabel(r.at))+'</button>':'')+'</div>';
+  });
+  host.innerHTML=h;
+}
+function pcProfileLoadHistory(){
+  var host=$('pcProfileHistory');
+  if(!host) return;
+  host.innerHTML='<p>Reading your conversations\u2026</p>';
+  var sb=pcProfileSb();
+  if(!sb){ var s0=pcProfileStubRows(); if(!s0.length){ pcProfileHistoryEmpty(host); return; } pcProfileRenderHistory(host,[],[],s0); return; }
+  var owner=window.PAGE_ALIAS||'flagship-personal';
+  var alias=pcProfileAlias;
+  function threads(q){
+    return q.then(function(res){ return (res.error||!res.data)?[]:res.data; }, function(){ return []; });
+  }
+  var incoming=threads(sb.from('smart_mail_threads').select('id,subject,from_alias,to_alias,preview,created_at').eq('to_alias',owner).eq('from_alias',alias).order('created_at',{ascending:false}).limit(30));
+  var outgoing=threads(sb.from('smart_mail_threads').select('id,subject,from_alias,to_alias,preview,created_at').eq('to_alias',alias).in('from_alias',pcProfileMySlugs()).order('created_at',{ascending:false}).limit(30));
+  Promise.all([incoming,outgoing]).then(function(parts){
+    var all=(parts[0]||[]).concat(parts[1]||[]);
+    all.sort(function(a,b){ return new Date(b.created_at)-new Date(a.created_at); });
+    all=all.slice(0,30);
+    if(!all.length){ var s0=pcProfileStubRows(); if(!s0.length){ pcProfileHistoryEmpty(host); return; } pcProfileRenderHistory(host,[],[],s0); return; }
+    var ids=all.map(function(t){ return t.id; });
+    threads(sb.from('smart_mail_messages').select('id,thread_id,from_alias,body,created_at').in('thread_id',ids).order('created_at',{ascending:true})).then(function(msgs){
+      pcProfileRenderHistory(host,all,msgs||[],pcProfileStubRows());
+    });
+  });
+}
+function pcProfileRenderFacts(p){
+  var host=$('pcProfileFacts');
+  if(!host) return;
+  var label=pcProfileLabelGet(p.alias);
+  var h='';
+  if(typeof p.pct==='number') h+='<div class="pc-fact-row"><span class="pc-fact-lab">Match</span><span class="pc-fact-val"><span class="pc-pct r4-tiles"><span class="os-mini-tile pc-match-one"><span class="cap"></span><span class="rd">'+esc(String(p.pct))+'%</span></span></span></span></div>';
+  if(label) h+='<div class="pc-fact-row"><span class="pc-fact-lab">Label</span><span class="pc-fact-val">'+esc(label)+'</span></div>';
+  h+='<div class="pc-fact-row"><span class="pc-fact-lab">Their world</span><a class="ph-connect pc-profile-world" href="https://'+esc(p.alias)+'.nayanet.app/" target="_blank" rel="noopener"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">\u25c9</span> Visit their world</a></div>';
+  host.innerHTML=h;
+}
+function pcOpenProfile(alias){
+  /* FOLLOW-ON 2026-11-17: the person is resolved seed-direct, every time.
+     An unknown alias closes instead of showing a stale hero — one writer,
+     one seed, no drift between visits. */
+  var p=pcProfilePerson(alias);
+  if(!p){ pcCloseProfile(); return; }
+  pcProfileAlias=p.alias;
+  var view=$('pcProfileView');
+  if(!view) return;
+  var col=pcProfileColorFor(p.alias);
+  var orb=$('pcProfileOrb');
+  if(orb){ orb.textContent=String(p.alias||'?').charAt(0).toUpperCase(); orb.style.setProperty('--cc',col); }
+  var port=$('pcProfilePortrait'); if(port) port.style.setProperty('--cc',col);
+  var nm=$('pcProfileName'); if(nm) nm.textContent=p.alias||'';
+  var nut=$('pcProfileNut'); if(nut) nut.textContent=p.nut||'';
+  view.setAttribute('data-pc-alias',p.alias);
+  var cb=document.querySelector('#pcProfileView [data-pc-connect]');
+  if(cb) cb.setAttribute('data-pc-connect',p.alias);
+  var li=$('pcProfileLabelInput'); if(li) li.value=pcProfileLabelGet(p.alias);
+  var ls=document.querySelector('[data-pc-profile-label-status]'); if(ls) ls.textContent='';
+  var cs=document.querySelector('[data-pc-profile-call-status]');
+  if(cs) cs.textContent='';
+  /* FOLLOW-ON 2026-11-17: the Smart Meet door never lands on a bare /book
+     again — the owner's booking slug, or the connections hub as the floor. */
+  var md=$('pcProfileMeetDoor');
+  if(md){ var bs=window.__osBookingSlug; md.href=bs?('https://nayanet.app/book?book='+encodeURIComponent(bs)):'https://nayanet.app/#/hub/connections'; }
+  pcProfileWalk(col);
+  pcProfileSyncConnect();
+  pcProfileWatchConnect();
+  pcProfileRenderFacts(p);
+  pcProfileLoadNote();
+  pcProfileLoadHistory();
+  var wrap=$('pcFeedWrap');
+  if(wrap) wrap.hidden=true;
+  if(typeof pcHideRailPop==='function'){ try{ pcHideRailPop(); }catch(e){} }
+  view.hidden=false;
+  try{ window.scrollTo(0,0); }catch(e){}
+}
+function pcCloseProfile(){
+  var view=$('pcProfileView');
+  if(view) view.hidden=true;
+  var wrap=$('pcFeedWrap');
+  if(wrap){ wrap.hidden=false; }
+  if(pcProfileConnectObs){ try{ pcProfileConnectObs.disconnect(); }catch(e){} pcProfileConnectObs=null; }
+  try{ var rail=$('pcRail'); if(rail) rail.scrollIntoView({behavior:'smooth',block:'nearest'}); }catch(e){}
+}
+window.pcOpenProfile=pcOpenProfile;
+window.pcCloseProfile=pcCloseProfile;
+document.addEventListener('click', function(e){
+  if(!e.target||!e.target.closest) return;
+  var back=e.target.closest('[data-pc-profile-back]');
+  if(back){ pcCloseProfile(); return; }
+  var day=e.target.closest('[data-pc-day]');
+  if(day){
+    var ds=day.getAttribute('data-pc-day');
+    pcCloseProfile();
+    try{ if(window.osShowView) window.osShowView('myworld'); }catch(err){}
+    try{ if(window.mwOpenDay) window.mwOpenDay(ds); }catch(err2){}
+    return;
+  }
+  var lb=e.target.closest('[data-pc-profile-label-save]');
+  if(lb){
+    var inp=$('pcProfileLabelInput');
+    var v=inp?inp.value.trim():'';
+    pcProfileLabelSet(pcProfileAlias,v);
+    var st=document.querySelector('[data-pc-profile-label-status]');
+    if(st) st.textContent=v?('Label saved \u2713 \u2014 \u201c'+v+'\u201d'):('Label removed.');
+    pcProfileRenderFacts(pcProfilePerson(pcProfileAlias)||{alias:pcProfileAlias});
+    return;
+  }
+  var ns=e.target.closest('[data-pc-profile-note-save]');
+  if(ns){ pcProfileSaveNote(); return; }
+});
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){ var view=$('pcProfileView'); if(view&&!view.hidden) pcCloseProfile(); }
+  if(e.key!=='Enter') return;
+  var inp=e.target&&e.target.closest?e.target.closest('[data-pc-profile-label-input]'):null;
+  if(!inp) return;
+  e.preventDefault();
+  var b=document.querySelector('[data-pc-profile-label-save]');
+  if(b) b.click();
+});
+/* FOLLOW-ON 2026-11-17: any points movement says what it was for.
+   The pill is watched; the first numeric paint is the baseline, never
+   receipted. A move is explained by the spine rows that grew (link clicks,
+   posts, notes, saves, invites, joins) — a message earns no points under
+   the page's own value table, so it is never claimed as one. */
+function pcSpineSnap(){
+  var s=window._osSpine||{};
+  var snap={};
+  ['posts','notes','saves','invitesSent','inviteJoins','clicks','sales','likes','comments','shares'].forEach(function(k){ snap[k]=+s[k]||0; });
+  return snap;
+}
+function pcPointsWatch(){
+  var pill=document.getElementById('pointscount');
+  if(!pill) return;
+  var base=null, prev=null, lastSnap=pcSpineSnap();
+  function digits(el){ var m=String(el.textContent||'').replace(/[^0-9]/g,''); return m?parseInt(m,10):null; }
+  function check(){
+    var n=digits(pill);
+    if(n===null) return;
+    if(base===null){ base=n; prev=n; return; }
+    if(n===prev) return;
+    var d=n-prev; prev=n;
+    var snap=pcSpineSnap(), parts=[];
+    var labels={clicks:'link clicks',posts:'posts',notes:'notes',saves:'saves',invitesSent:'invites sent',inviteJoins:'joins from invites',sales:'sales',likes:'likes',comments:'comments',shares:'shares'};
+    Object.keys(labels).forEach(function(k){
+      var g=snap[k]-lastSnap[k];
+      if(g>0) parts.push(g+' '+labels[k]);
+    });
+    lastSnap=snap;
+    var why=parts.length?parts.join(', '):'tap the pill to see the math';
+    var row=document.querySelector('.ph-pointsrow');
+    var r=document.getElementById('pcPointsReceipt');
+    if(!r){ r=document.createElement('p'); r.id='pcPointsReceipt'; r.className='pc-points-receipt'; if(row) row.appendChild(r); }
+    if(r) r.textContent='Points '+(d>0?'+':'')+d+' \u2014 '+why+'.';
+  }
+  var ob=new MutationObserver(check);
+  ob.observe(pill, {childList:true, characterData:true, subtree:true});
+  setTimeout(check, 800);
+}
+window.pcProfileRefreshHistory=function(alias){
+  if(alias!==pcProfileAlias) return;
+  var host=document.getElementById('pcProfileHistory');
+  if(!host) return;
+  pcProfileLoadHistory();
+};
+pcPointsWatch();
+if(typeof window.osShowView==='function' && !window.osShowView.__pcProfileWrapped){
+  var _osShowView=window.osShowView;
+  window.osShowView=function(){ var view=$('pcProfileView'); if(view&&!view.hidden) pcCloseProfile(); return _osShowView.apply(this,arguments); };
+  window.osShowView.__pcProfileWrapped=true;
+}
 })();
 </script>
 </body></html>
