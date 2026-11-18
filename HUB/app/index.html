@@ -408,7 +408,7 @@ a { color: inherit; }
      the inset 1px highlight are gone; the icons sit clean on the page. */
   box-shadow: 0 -10px 34px rgba(0,0,0,.6);
   padding-bottom: env(safe-area-inset-bottom, 0px);
-  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) both;
+  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;
   transition: opacity .45s ease;
 }
 .notif-bar.nsb-trio-faded{opacity:0;pointer-events:none;}
@@ -916,7 +916,7 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
    larger (the × is a glyph at 22px); all words are white. At phone
    width the motto clears the top-corner × (right padding, text shifts
    left inside its centered box) so the × never sits on the words. */
-.hero-close{position:absolute;right:16px;top:16px;width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:50%;background:#050607;border:1.5px solid var(--room-accent,#8e24aa);color:#fff;font-size:22px;line-height:1;font-weight:700;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;z-index:2;}
+.hero > .hero-close{position:absolute;right:16px;top:16px;width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:50%;background:#050607;border:1.5px solid var(--room-accent,#8e24aa);color:#fff;font-size:22px;line-height:1;font-weight:700;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;z-index:2;}
 .hero-close:hover{transform:translateY(-2px);border-color:#fff;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 14px -2px var(--room-accent,#8e24aa),0 10px 22px rgba(0,0,0,.55);}
 .hero-close:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.55);}
 @media (max-width:640px){.hero .eyebrow.feed-motto{padding-right:48px;}}
@@ -1247,6 +1247,29 @@ svg.jewel { display: block; }
   background: rgba(3, 3, 6, .6);
   -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
 }
+/* ——— Smart Messenger panel (HUB FEED FIX 2026-11-18) ———
+   The menu's messenger choice opens a panel IN the Hub viewpoint: functions
+   pop in and close away, never navigate away (Premium Design Algorithm /
+   Anatomy §4). The panel hosts the file's own MailRoom() whole — real
+   messages via the governed runtime, honest empty states, no invented
+   inbox. Construction mirrors the mobile drawer (.drawer-backdrop +
+   .shell.drawer-open .rail.left): fixed right sheet, translated off-screen
+   at rest, slides in on body.msg-open. Top-level rules (not inside the
+   900px drawer media query) so the panel opens at every width, 1919 down
+   to 390. Messenger's own color is sapphire #0f52ba. */
+.hub-msg-backdrop{display:none;position:fixed;inset:0;z-index:85;background:rgba(3,3,6,.6);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);}
+.hub-msg-panel{position:fixed;top:0;right:0;bottom:0;width:min(880px,100vw);height:100dvh;z-index:90;background:#050607;border-left:1.5px solid #0f52ba;box-shadow:-26px 0 56px rgba(0,0,0,.6),0 0 18px -6px rgba(15,82,186,.45);transform:translateX(103%);transition:transform .3s cubic-bezier(.16,.84,.22,1);overflow-y:auto;overscroll-behavior:contain;}
+body.msg-open .hub-msg-panel{transform:none;}
+body.msg-open .hub-msg-backdrop{display:block;}
+body.msg-open{overflow:hidden;}
+.hub-msg-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;background:#050607;border-bottom:1px solid rgba(255,255,255,.1);}
+.hub-msg-title{color:#fff;font-size:19px;font-weight:700;font-family:var(--font);}
+.hub-msg-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#050607;color:#fff;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5);transition:transform .18s ease,border-color .18s,box-shadow .18s;}
+.hub-msg-x:hover{border-color:#0f52ba;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 16px rgba(15,82,186,.55),0 8px 16px rgba(0,0,0,.5);transform:translateY(-2px);}
+.hub-msg-x:active{transform:translateY(2px) scale(.96);}
+.hub-msg-x:focus-visible{outline:2px solid #0f52ba;outline-offset:2px;}
+.hub-msg-body{padding:20px;}
+
 @media (max-width: 900px) {
   .shell { display: block; }
   .rail.left {
@@ -5987,14 +6010,15 @@ function HubView(params) {
      harvested from the top-left + reference. HUB FEED 2026-11-17 22:25Z
      (item 8, Shawn: the menu control moves to the RIGHT side of the top
      bar — not on the left): it is appended at the far right end of the top
-     bar now, and a tap offers two choices — open the sidebar, or open the
-     smart messenger — instead of toggling the rail directly. The right rail
+     bar now, and a tap offers three choices — open the sidebar, open the
+     smart messenger in a panel, or neither — instead of toggling the rail
+     directly. The right rail
      keeps its own dedicated opener (railBtn). Never a + button. */
   const menuBtn = el('button', 'rail-toggle', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>');
-  menuBtn.setAttribute('aria-label', 'Menu — sidebar or smart messenger');
+  menuBtn.setAttribute('aria-label', 'Menu — sidebar, smart messenger, or neither');
   menuBtn.setAttribute('data-hub-menu-btn', '1');
   menuBtn.setAttribute('aria-expanded', 'false');
-  menuBtn.setAttribute('title', 'Menu — sidebar or smart messenger');
+  menuBtn.setAttribute('title', 'Menu — sidebar, smart messenger, or neither');
   menuBtn.addEventListener('click', () => {
     /* HUB FEED 2026-11-17 22:25Z (item 8): the menu control lives on the
        RIGHT now, and a tap offers two choices — open the sidebar, or open
@@ -6020,11 +6044,19 @@ function HubView(params) {
       menu.querySelectorAll('[data-hub-menu]').forEach(function (it) {
         it.addEventListener('click', function () {
           menu.hidden = true;
-          /* 23:00Z three-state toggle: the messenger is a room, not a drawer — choosing it closes the sidebar FIRST, then navigates. */
-          if (it.getAttribute('data-hub-menu') !== 'sidebar') { var mApi = window.NayaChassis || {}; if (mApi.closeDrawer) mApi.closeDrawer(); window._nayaMenuState = 'messenger'; window.location.href = 'https://nayanet.app/rooms/mail'; return; }
+          /* HUB FEED FIX 2026-11-18: three choices, never both at once —
+             Sidebar opens the left rail (OPEN, not toggle); Smart Messenger
+             opens a messenger PANEL in this viewpoint (the file's own
+             MailRoom, rendered whole — never a navigation away); Neither
+             closes both. The 23:00Z navigate-to-mail branch is gone: the
+             router treats mail as EXTERNAL, so a router hop would leave the
+             Hub exactly like the old location.href did. */
+          var choice = it.getAttribute('data-hub-menu');
+          if (choice === 'neither') { var nApi = window.NayaChassis || {}; if (nApi.closeDrawer) nApi.closeDrawer(); closeMsgPanel(); window._nayaMenuState = 'neither'; return; }
+          if (choice === 'messenger') { var mApi = window.NayaChassis || {}; if (mApi.closeDrawer) mApi.closeDrawer(); window._nayaMenuState = 'messenger'; openMsgPanel(); return; }
           /* Open sidebar — the live build's openDrawer, resolved through
              NayaChassis (re-published on every HubView build, never a stale
-             closure). A tap while the sidebar stands open closes it. When
+             closure). A tap while the sidebar stands open leaves it open — OPEN, not toggle (HUB FEED FIX 2026-11-18). When
              it opens, the people related to the current feed topic show
              automatically on the side: the lens is read live from the
              active tab, and the matching Connections sub-row opens —
@@ -6035,8 +6067,8 @@ function HubView(params) {
           var api = window.NayaChassis || {};
           var shellEl = document.querySelector('.shell');
           var leftOpen = shellEl && (shellEl.classList.contains('drawer-open') || (window.innerWidth >= 1440 && !shellEl.classList.contains('rail-collapsed')));
-          if (leftOpen) { if (api.closeDrawer) api.closeDrawer(); window._nayaMenuState = 'neither'; return; }
-          if (api.openDrawer) api.openDrawer();
+          closeMsgPanel(); /* never both at once — the messenger panel closes when the rail opens */
+          if (!leftOpen && api.openDrawer) api.openDrawer(); /* OPEN, not toggle: an open rail stays open */
           window._nayaMenuState = 'sidebar';
           var active = document.querySelector('.lens-tab.active');
           var lens = active && active.classList.contains('lens-personal') ? 'personal' : (active && active.classList.contains('lens-activity') ? 'activity' : 'collective');
@@ -6937,7 +6969,68 @@ window.NayaNotif = window.NayaNotif || {
   return shell;
 
   /* ——— internals ——— */
+
+  /* ——— Smart Messenger panel (HUB FEED FIX 2026-11-18) ———
+     The menu's messenger choice opens a panel IN the Hub viewpoint:
+     functions pop in and close away, never navigate away (Premium Design
+     Algorithm / Anatomy §4). The panel hosts the file's own MailRoom()
+     whole — real messages via the governed runtime, honest empty states,
+     no invented inbox. One closer (closeMsgPanel) for the ×, the backdrop
+     and Escape, mirroring Amendment #3's one-place-keeps-it-true shape.
+     The callers set window._nayaMenuState ('messenger' while open,
+     'neither' when it closes); the panel only moves. */
+  function ensureMsgPanel() {
+    if (window.__hubMsgPanel) return window.__hubMsgPanel;
+    var backdrop = document.createElement('div');
+    backdrop.className = 'hub-msg-backdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+    backdrop.addEventListener('click', function () { closeMsgPanel(); window._nayaMenuState = 'neither'; });
+    var panel = document.createElement('section');
+    panel.className = 'hub-msg-panel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-label', 'Smart Messenger');
+    var head = document.createElement('div');
+    head.className = 'hub-msg-head';
+    var title = document.createElement('span');
+    title.className = 'hub-msg-title';
+    title.textContent = 'Smart Messenger';
+    var x = document.createElement('button');
+    x.type = 'button';
+    x.className = 'hub-msg-x';
+    x.setAttribute('aria-label', 'Close smart messenger');
+    x.textContent = '\u00d7';
+    x.addEventListener('click', function () { closeMsgPanel(); window._nayaMenuState = 'neither'; });
+    head.appendChild(title); head.appendChild(x); panel.appendChild(head);
+    var bodyEl = document.createElement('div');
+    bodyEl.className = 'hub-msg-body';
+    var room = null;
+    try { if (window.NayaRooms && window.NayaRooms.mail) room = window.NayaRooms.mail(); } catch (e) { room = null; }
+    if (room) bodyEl.appendChild(room);
+    else bodyEl.innerHTML = '<div class="empty-instrument"><strong>Smart Messenger is not available in this view.</strong><p>The messaging room could not be built here.</p></div>';
+    panel.appendChild(bodyEl);
+    document.body.appendChild(backdrop);
+    document.body.appendChild(panel);
+    window.__hubMsgPanel = panel;
+    window.__hubMsgBackdrop = backdrop;
+    return panel;
+  }
+  function openMsgPanel() {
+    var panel = ensureMsgPanel();
+    document.body.classList.add('msg-open');
+    var x = panel.querySelector('.hub-msg-x');
+    if (x) x.focus();
+  }
+  function closeMsgPanel() {
+    document.body.classList.remove('msg-open');
+  }
+  if (!window.__hubMsgEscBound) {
+    window.__hubMsgEscBound = true;
+    document.addEventListener('keydown', function (e) {
+      if ((e.key === 'Escape' || e.keyCode === 27) && document.body.classList.contains('msg-open')) { closeMsgPanel(); window._nayaMenuState = 'neither'; }
+    });
+  }
   function openDrawer() {
+    closeMsgPanel(); /* never both at once — any rail-open path closes the messenger panel */
     shell.classList.add('drawer-open');
     /* 1440 fix (checker drawer note): at desktop widths the drawer-open rule
        lives only in the mobile media query, and rail-collapsed (the default)
@@ -6971,7 +7064,7 @@ window.NayaNotif = window.NayaNotif || {
   function syncMenuBtn() {
     const leftOpen = shell.classList.contains('drawer-open') || (window.innerWidth >= 1440 && !shell.classList.contains('rail-collapsed'));
     menuBtn.setAttribute('aria-expanded', leftOpen ? 'true' : 'false');
-    menuBtn.setAttribute('aria-label', leftOpen ? 'Hide sidebar' : 'Menu — sidebar or smart messenger');
+    menuBtn.setAttribute('aria-label', leftOpen ? 'Hide sidebar' : 'Menu — sidebar, smart messenger, or neither');
   }
   /* EYE-NOTES-FIX 2026-11-17 §3.2: ONE place keeps the control true. The
      panel closes five ways — the control, the panel's X, the backdrop,
@@ -12457,6 +12550,7 @@ window.NayaSmartBar = {
 <div id="hubMenuChoices" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Menu">
 <div class="fc-plusitem" role="menuitem" data-hub-menu="sidebar" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><span class="hub-menu-label">Open sidebar</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-menu="messenger" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="hub-menu-label">Open smart messenger</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-menu="neither" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M6.5 6.5l11 11"/></svg></span><span class="hub-menu-label">Neither</span></div>
 </div>
 </body>
 </html>
