@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3303",
+ "intelligence": {
+  "title": "The Rating Footer — Don't Forget It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3303-the-rating-footer-dont-forget-it",
+  "smart_note_id": "SN-3303",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3303/IB-SMART-NOTE-20261118-sn3303-the-rating-footer-dont-forget-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A footer that was never finished is a promise the page makes and does not keep: \"Finished Means Working\" says the work is done — and the footer itself is the proof that it is not. The rating is the intelligence rating itself: LOVE / LIKE / SHARE, VALUE and INTELLIGENCE scored in stars, and then MAKE THIS INTELLIGENCE BETTER — Add Evidence, Build On This, Ask A Question, Report An Outcome, Contribute Intelligence. That is the loop closing on every post: the reader rates what they read, and the rating makes the intelligence better. Unfinished, the loop never closes — the intelligence is served but never scored, never built on, never reported back. And \"I hadn't mentioned it in a long time\" is itself the lesson: a thing unmentioned is a thing forgotten — the loop's job is to remember it, so the footer is not forgotten again. The color ruling is still owed (VALUE gold + INTELLIGENCE blue, his pick, 9/10) — a ruling owed is a ruling recorded, not a ruling made.",
+  "simple_view": "Imagine you build a beautiful tower, and right at the bottom there's a little sign that says \"Finished Means Working!\" — but the sign was never finished! That's silly, right? And the sign is supposed to let everyone say whether they LOVE it or LIKE it, and give it stars — 9 out of 10 for how useful it is, 10 out of 10 for how smart it is — and then tell you how to make it even better! Shawn says: don't forget the sign. Finish it!",
+  "grandma_view": "Dear, Shawn says the little rating footer at the bottom of the Hub was never finished, dear — and he hadn't mentioned it in ever so long. It says \"Finished Means Working\", dear — LOVE, LIKE, SHARE — and you rate the intelligence with stars, 9 out of 10 for value and 10 out of 10 for intelligence. And then you can make it better, dear — add evidence, build on it, ask a question, report what happened, contribute your own intelligence. It's a lovely thing, dear — it just needs finishing.",
+  "naya_view": "THE RATING FOOTER — DON'T FORGET IT. FINISHED MEANS WORKING. LOVE / LIKE / SHARE. RATE THE INTELLIGENCE — VALUE, INTELLIGENCE. MAKE THIS INTELLIGENCE BETTER. THE LOOP CLOSES ON EVERY POST.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3303",
+   "title": "The Rating Footer — Don't Forget It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3303/IB-SMART-NOTE-20261118-sn3303-the-rating-footer-dont-forget-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3303/IB-SMART-NOTE-20261118-sn3303-the-rating-footer-dont-forget-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3313",
+ "intelligence": {
+  "title": "The Agreement Buttons — Read the Agreement, Same Size, One Real Diamond",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3313-the-agreement-buttons-read-the-agreement",
+  "smart_note_id": "SN-3313",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3313/IB-SMART-NOTE-20261118-sn3313-the-agreement-buttons-read-the-agreement.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He looked at the page himself and liked it — \"it looks really good,\" \"it was good,\" nothing terrible to change. That is the eye passing the page and then doing what his eye always does: finding the one small thing that would make it ten-star. The two buttons are nearly even, nearly the same size, nearly right — and \"nearly\" is the gap. The green button says \"Read the Collective Agreement\" under a heading that already says \"The Collective Agreement,\" so the words repeat and the line wraps, pushing the diamond onto a line of its own. Shorten it to \"Read the agreement\" and the repetition goes, the wrap goes, the button fits on one line. Make both buttons the same size and the pair reads as one choice, not two guesses. And the diamond — put a nicer icon in, a real faceted diamond jewel, the emblem's diamond, the same jewel in both buttons, so the pair matches all the way down to the gem. Simple, or ten-star if the captain can think of a ten-star way. That last clause is the standing rule in his voice: do it simply, or do it at ten stars — never in between.",
+  "simple_view": "Imagine two buttons side by side, like two doors. One door's sign is too long, so it wraps around and looks messy. Shawn says: shorten the sign — it already says \"Collective Agreement\" at the top, so the button only needs to say \"Read the agreement.\" Make both doors the same size, so they look like a pair. And put the same shiny diamond jewel on both — a real one, like a gem — so they match perfectly. Simple, or the very best way you can think of.",
+  "grandma_view": "Dear, Shawn looked at the page himself, dear, and he liked it — it was good, dear. Just the two little buttons, dear: the green one says too much, so shorten it to \"Read the agreement,\" dear, and it will fit on one line. Make both buttons the same size, dear, and put the same pretty diamond jewel on both — a real sparkling one, dear — so they match. Simple, dear, or the very best way you can think of.",
+  "naya_view": "READ THE AGREEMENT. SAME SIZE. ONE REAL DIAMOND JEWEL IN BOTH. SIMPLE, OR TEN-STAR.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3313",
+   "title": "The Agreement Buttons — Read the Agreement, Same Size, One Real Diamond",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3313/IB-SMART-NOTE-20261118-sn3313-the-agreement-buttons-read-the-agreement.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3313/IB-SMART-NOTE-20261118-sn3313-the-agreement-buttons-read-the-agreement.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

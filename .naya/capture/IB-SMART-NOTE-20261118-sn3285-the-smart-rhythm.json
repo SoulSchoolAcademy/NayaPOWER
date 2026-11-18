@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3285",
+ "intelligence": {
+  "title": "The Smart Rhythm",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3285-the-smart-rhythm",
+  "smart_note_id": "SN-3285",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3285/IB-SMART-NOTE-20261118-sn3285-the-smart-rhythm.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A vault without a rhythm is a warehouse: things go in and never come back, because nobody knows where they are. The rhythm is the difference between storage and a library — every thing labeled at intake, shelved by a logic the machine itself understands, retrievable cold in seconds. The key sentence is \"it's not for me, it's for you\": the organization is in AI language and machine language, not a human filing cabinet with pretty labels. That is why the standard is Google-or-higher, not a folder tree a person would browse. And the privacy line is built into the design, not bolted on: everything from the whole account goes in, and nobody reads it — not the AI, not other people. The rhythm organizes without opening. A new project opens a new folder, so the vault grows by the same shape forever. The measure is four words: fast, efficient, effective, accurate — and the proof is a timed cold retrieval, not a diagram.",
+  "simple_view": "Imagine a giant library where every book knows exactly which shelf it belongs on, all by itself — and you can ask for any book and have it in your hands in seconds, without anyone ever opening it to peek inside. That's the smart rhythm: the vault organizes itself so the machine can find anything fast.",
+  "grandma_view": "Dear, Shawn says we need a smart rhythm for the vault — a master way of organizing, so everything that goes in gets labeled properly and put where it belongs, like a beautiful library, even better than Google's. It's not for him, dear, it's for the machine to run — so it can find anything in seconds, fast and accurate. And nobody reads what's inside, dear — it all just gets stored safely, and a new project simply opens a new folder.",
+  "naya_view": "THE SMART RHYTHM. EVERYTHING LABELED AND ORGANIZED, QUICKLY RETRIEVED — IN AI LANGUAGE AND MACHINE LANGUAGE. NOT FOR HIM — FOR THE MACHINE TO RUN AND OPERATE. FAST, EFFICIENT, EFFECTIVE, ACCURATE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3285",
+   "title": "The Smart Rhythm",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3285/IB-SMART-NOTE-20261118-sn3285-the-smart-rhythm.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3285/IB-SMART-NOTE-20261118-sn3285-the-smart-rhythm.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

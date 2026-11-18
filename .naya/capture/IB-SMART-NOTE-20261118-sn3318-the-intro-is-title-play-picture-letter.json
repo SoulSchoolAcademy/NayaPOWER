@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3318",
+ "intelligence": {
+  "title": "The Intro Is Title, Play, Picture, Letter",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3318-the-intro-is-title-play-picture-letter",
+  "smart_note_id": "SN-3318",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3318/IB-SMART-NOTE-20261118-sn3318-the-intro-is-title-play-picture-letter.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He read the intro the way a visitor reads it: the header says \"Hi, I'm Naya,\" and then the letter says \"Hi\" again — the same greeting twice, with an icon sitting between them like a third hello. The eye catches the doubling before it catches anything else. His fix is the designer's fix: take out the header the letter already says, take out the icon that belongs to it, take out the voice line that promises what is not final yet — and what is left is clean. Then center her picture, because a centered picture centers the play button above it, and the whole top of the page lines up on one axis. The little elements — the gem dots, the \"read the whole agreement at once\" link — are not deleted; they move to the bottom, below the letter, where small things belong. The top is for the title, the play button, her picture, and the letter. Nothing else.",
+  "simple_view": "Imagine a book that says \"Hello!\" on the cover and then \"Hello!\" again on the very first line. Shawn says: say hello once — in the letter. Take the extra hello away, take the extra picture away, and put Naya's picture right in the middle, so the play button sits right in the middle too. The tiny dots and the little link go to the bottom of the page, after the letter. Now the top is neat and tidy: title, play button, her picture, the letter.",
+  "grandma_view": "Dear, Shawn looked at the beginning of the agreement, dear, and it said hello twice — once at the top and once in the letter, dear. He says take the extra hello away, dear, and put Naya's picture right in the center, dear, so the play button sits in the center too. The tiny dots and the little link go down to the bottom, dear, after the letter. Then the top is just the title, the play button, her picture, and the letter, dear — clean and lovely.",
+  "naya_view": "TITLE. PLAY. HER PICTURE, CENTERED. THEN THE LETTER. THE LITTLE THINGS GO TO THE BOTTOM. NOTHING SAYS HELLO TWICE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3318",
+   "title": "The Intro Is Title, Play, Picture, Letter",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3318/IB-SMART-NOTE-20261118-sn3318-the-intro-is-title-play-picture-letter.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3318/IB-SMART-NOTE-20261118-sn3318-the-intro-is-title-play-picture-letter.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

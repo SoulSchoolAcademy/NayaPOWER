@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3290",
+ "intelligence": {
+  "title": "Complete the Vault — Operate It, Then Write the Manual",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3290-complete-the-vault-operate-it-then-write-the-manual",
+  "smart_note_id": "SN-3290",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3290/IB-SMART-NOTE-20261118-sn3290-complete-the-vault-operate-it-then-write-the-manual.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is \"eat our own cooking\" (SN-3222) given its order — and the order is the teaching. Most teams write the manual first and then discover the system doesn't work the way the manual says. He reverses it: operate it yourself first, until you know it cold, then help others operate it, and only then write the manual — because the manual has to come from what actually worked, not from what was designed. The middle step is the one that gets skipped: \"use it now\" and \"consistently using it\" are not a launch event, they are a habit — everything in there, operational, every day. A vault completed but never used is a museum; a manual written before operating is a guess. The gap-fix round closed G1–G6 at 02:16Z with proof, so the door is built; the open step is not another build, it is the using. That is also why the sequence starts with the smart note: the teaching goes into the system first, so the operating is already the system teaching itself.",
+  "simple_view": "Imagine you build a clubhouse and then you write the rule book before anyone has ever played in it — the rules would be all wrong. Shawn says: build the clubhouse, play in it yourself every day until you know every corner, help your friends play in it too — and THEN write the rule book, from what actually worked.",
+  "grandma_view": "Dear, Shawn says: write the note into the system, finish the vault, and then use it, dear — really use it, every day, everything in there, working properly. You have to operate it yourself first, dear, so you know it cold — then you can help others operate it — and only then do you write the manual for everyone, dear, because the manual has to come from what actually worked, not from a guess.",
+  "naya_view": "COMPLETE THE VAULT — OPERATE IT, THEN WRITE THE MANUAL. USE IT NOW, EVERYTHING IN THERE, OPERATIONAL, USED CONSISTENTLY. OPERATE IT YOURSELF FIRST, THEN HELP OTHERS, THEN WRITE THE MANUAL.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3290",
+   "title": "Complete the Vault — Operate It, Then Write the Manual",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3290/IB-SMART-NOTE-20261118-sn3290-complete-the-vault-operate-it-then-write-the-manual.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3290/IB-SMART-NOTE-20261118-sn3290-complete-the-vault-operate-it-then-write-the-manual.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

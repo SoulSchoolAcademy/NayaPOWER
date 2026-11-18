@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3286",
+ "intelligence": {
+  "title": "The Two Keys: Boxes Within a Box",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3286-the-two-keys-boxes-within-a-box",
+  "smart_note_id": "SN-3286",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3286/IB-SMART-NOTE-20261118-sn3286-the-two-keys-boxes-within-a-box.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the November 13 promise given a mechanism. \"Operate, never open\" is a vow; two keys are a design. The machine holds the operate-keys — it can put things in, take things out, send the mail — and it does not hold the read-keys, so it cannot look at what it moves. The image does the work: one big box, many boxes inside it, all connected, and the big box's power stops at the lock. The citizen's vault is theirs alone, locked to everybody but them; the permission they give is to operate, never to read. The project vault is the other tier — the machine lives in it by his standing order, the one door (SN-3221) — and the two tiers must never be blurred, or the promise blurs with them. The honest limit matters as much as the design: Shawn believes it aligns with Superpaste, but the record holds no Superpaste at all — a workspace-wide grep found nothing. So the Rhythm spec records it as not-found, and the coordinator's job is to find it or say honestly where it does not line up. An invented alignment would be worse than a missing one.",
+  "simple_view": "Imagine a big treasure chest with lots of little boxes inside it. You have a key that lets a helper put things into the boxes and take things out for you — but the helper's key can't open the boxes to peek inside. The helper just moves things, never looks. That's the two keys: operate, never read.",
+  "grandma_view": "Dear, Shawn says the big box holds many little boxes inside it, all connected — and the big box has the keys to move things in and out and send the mail, but not the keys to read it. It just operates it, dear, never looks at what's inside. Your vault is locked to everybody but you, dear — you give permission to operate it, never to read it. And one honest thing, dear: we looked everywhere for this Superpaste, and it isn't in our records at all — so we say so plainly, and never pretend otherwise.",
+  "naya_view": "THE TWO KEYS. MANY BOXES WITHIN THE BIG BOX. OPERATE-KEYS, NEVER READ-KEYS. LOCKED TO EVERYBODY BUT YOU — PERMISSION TO OPERATE, NEVER TO READ.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3286",
+   "title": "The Two Keys: Boxes Within a Box",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3286/IB-SMART-NOTE-20261118-sn3286-the-two-keys-boxes-within-a-box.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/VAULT/SN-3286/IB-SMART-NOTE-20261118-sn3286-the-two-keys-boxes-within-a-box.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

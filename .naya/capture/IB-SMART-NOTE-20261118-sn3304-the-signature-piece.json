@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3304",
+ "intelligence": {
+  "title": "The Signature Piece",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3304-the-signature-piece",
+  "smart_note_id": "SN-3304",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3304/IB-SMART-NOTE-20261118-sn3304-the-signature-piece.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "The diamond failed because it could not be made real — so the answer is not a better diamond, it is a better idea. A signature piece is not a decoration: ball effects, circle effects, circles within circles, jewelry, artistic pearl flow — a masterpiece that changes color each day and spins, flows, shines the color of the day. It is the calendar's own emblem, the way the purple diamond jewel is the emblem of NayaNET: the thing the eye remembers, the thing that makes the day feel like a day. Each day has its own color, and the piece wears it — so the calendar is not a grid of dates but a living thing that knows what day it is. Much better than the diamond is the standard — not a little better, much better — because the signature piece is what the eye carries away.",
+  "simple_view": "Imagine the very coolest thing you could put on a calendar — not just a little diamond, but beautiful balls and circles inside circles, like jewelry, like pearls flowing in the water! And every day it changes to a different color — the color of THAT day — and it spins and flows and shines. That's the signature piece, the most special thing on the whole calendar, much better than a plain old diamond!",
+  "grandma_view": "Dear, Shawn has the loveliest idea, dear — instead of a little diamond, something truly special: beautiful balls and circles within circles, like jewelry, like pearls flowing so gracefully. And every day it changes color, dear — the color of that very day — spinning and flowing and shining. A real signature masterpiece, dear, much better than the diamond ever was.",
+  "naya_view": "THE SIGNATURE PIECE. BALL EFFECTS, CIRCLE EFFECTS, CIRCLES WITHIN CIRCLES, JEWELRY, ARTISTIC PEARL FLOW. A MASTERPIECE THAT CHANGES COLOR EACH DAY — SPINS, FLOWS, SHINES THE COLOR OF THE DAY. MUCH BETTER THAN THE DIAMOND.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3304",
+   "title": "The Signature Piece",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3304/IB-SMART-NOTE-20261118-sn3304-the-signature-piece.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3304/IB-SMART-NOTE-20261118-sn3304-the-signature-piece.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

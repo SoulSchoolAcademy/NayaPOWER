@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3307",
+ "intelligence": {
+  "title": "People Use What They Can See",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3307-people-use-what-they-can-see",
+  "smart_note_id": "SN-3307",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3307/IB-SMART-NOTE-20261118-sn3307-people-use-what-they-can-see.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "A list of names with percentages is a directory, not a connection. The moment the row carries its four buttons — message, mail, audio, video — it stops being a list and becomes a door: one tap and you are talking to the person. He saw that the rows were off-centered and the controls were missing, and then he answered his own question the way only the person who will use it can: people do not discover what is hidden. They discover what is shown. \"Oh wow, I can just message them. So simple.\" — that is the whole product in one sentence. The button does not add a feature; it reveals one that was already there. Every capability we hide behind a menu or a guess is a capability nobody uses, and a capability nobody uses might as well not exist.",
+  "simple_view": "Imagine a classroom where you can talk to anyone — but there's no button to do it, so nobody knows they can. Shawn says: put the buttons right there in the row, where you can see them — message, mail, audio, video. Then you look at the row and think, \"Oh wow, I can just message them. So simple!\" If you can't see it, you can't use it. The button is what turns a list of names into a real connection.",
+  "grandma_view": "Dear, Shawn looked at the rows of people and said the buttons should be right there where you can see them, dear — message, mail, audio, video, all in a neat line. Because if people can't see that they can just message someone, they won't know they can, dear. But when the button is right there, they think, \"Oh wow, I can just message them. So simple!\" That's the whole thing, dear — you have to show people what they can do, or they never do it.",
+  "naya_view": "PEOPLE USE WHAT THEY CAN SEE. A CAPABILITY NOBODY SEES IS A CAPABILITY NOBODY USES. THE VISIBLE BUTTON TURNS A LIST OF NAMES INTO A CONNECTION.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3307",
+   "title": "People Use What They Can See",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3307/IB-SMART-NOTE-20261118-sn3307-people-use-what-they-can-see.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3307/IB-SMART-NOTE-20261118-sn3307-people-use-what-they-can-see.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

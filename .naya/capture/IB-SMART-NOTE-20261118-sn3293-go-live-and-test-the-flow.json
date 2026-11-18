@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3293",
+ "intelligence": {
+  "title": "Go Live + Test the Flow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3293-go-live-and-test-the-flow",
+  "smart_note_id": "SN-3293",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/GO/SN-3293/IB-SMART-NOTE-20261118-sn3293-go-live-and-test-the-flow.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Live is not a ceremony; it is the only way the current state becomes visible. A page kept in staging while the live domain shows yesterday is a system that cannot be judged — and a walkthrough whose \"get back in\" does not land in the real Hub is a front door that opens onto a wall. So the order is two halves, and the second half is the one that usually gets dropped: put it live, then test the flow end to end. Not a spot check — the whole flow, every button to the right place, and anything that doesn't work gets noted and fixed and made right. The verification rule is the proof standard in one line: a deploy is verified only by a fresh fetch of nayanet.app — not by a staging link, not by a build log, not by bytes that were pushed somewhere. The front page goes first because his eye already approved the staging; the Hub follows after its eye passes, because a Hub that hasn't passed its eye is not the current state — it is a wish.",
+  "simple_view": "Imagine you build a beautiful front door for your clubhouse, but it's still sitting in the workshop while the old broken door is on the house. Shawn says: put the new door on the house where everyone can see it — and then walk through the whole clubhouse yourself, opening every door, pressing every button, to make sure they all go to the right rooms. Anything that doesn't work, you write it down, fix it, and make it right.",
+  "grandma_view": "Dear, Shawn says the new front page is good now, dear — so put it live on the main domain where everyone can see it, and update the Hub with today's Hub. The pages we're keeping should be live, dear, so we can see what's really going on. And then walk the whole way through yourself, dear — press every button, make sure they all go to the right place, and anything that doesn't work, you note it and fix it and make it right.",
+  "naya_view": "GO LIVE + TEST THE FLOW. THE FRONT PAGE LIVE ON THE MAIN DOMAIN. THE HUB UPDATED WITH TODAY'S HUB. GET BACK IN LANDS IN THE REAL HUB. EVERY BUTTON TO THE RIGHT PLACE — ANYTHING THAT DOESN'T, NOTE IT, FIX IT, MAKE IT RIGHT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3293",
+   "title": "Go Live + Test the Flow",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/GO/SN-3293/IB-SMART-NOTE-20261118-sn3293-go-live-and-test-the-flow.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/GO/SN-3293/IB-SMART-NOTE-20261118-sn3293-go-live-and-test-the-flow.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

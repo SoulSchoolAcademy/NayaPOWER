@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3280",
+ "intelligence": {
+  "title": "Treasure the Art — Vault It Alive",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3280-treasure-the-art-vault-it-alive",
+  "smart_note_id": "SN-3280",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3280/IB-SMART-NOTE-20261118-sn3280-treasure-the-art-vault-it-alive.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of an artist's studio where nothing precious is ever left on the floor overnight. The moment a painting is finished, it is named, hung on the wall where it can be found, and put on show — not boxed away in a back room, not forgotten on a shelf. That is the vault: not a store cupboard, but a living gallery. The agreement page is the first painting in it — play button at the top so you can listen, her picture and her name so you know whose voice it is, an orb of light around the button and sharp geometry in the corners so it feels real in your hands, and two ways to take it in, spoken or shown, because a stranger should think \"this is sick\" in the first seconds. The type on it is Marcellus, the same lettering the walk already wore, kept because it was beautiful, not replaced because it was easier. The colors are jewels, one set, the same on every button and every page, so the whole house reads as one house. Personal is finished first, whole, and then it gives birth to all the rest — Business, Space, Thing, every citizen's world — the same way one good day, held whole in its cockpit, gives birth to the week. Treasure the art, vault it alive, and the many follow from the one.",
+  "simple_view": "Imagine you make a beautiful picture. It is hard work. You put it in a special treasure box right away. You write its name on the box. You put the box where you can find it. The box is alive, not asleep. Your picture stays safe. And one good picture can grow into many more!",
+  "grandma_view": "It is like the best dresser in the house, love — the one where every precious thing has its place, its name on a little card, and nothing good is ever lost at the back of a drawer. You do not make the jam and leave the jars on the counter, dear — you label them the moment they are sealed, and put them where everyone can reach them. The agreement page is like the front of the house, love — the play button at the top so you can listen, her picture and her name so you know who is speaking, clean and bright, nothing crowding it. One set of colours runs through the whole house, the nicest of each, like the good china kept together. Finish the one room properly, dear, and the rest of the house follows from it — one good day at a time.",
+  "naya_view": "Vault everything the moment it is made — certificate, font, page, build — labeled, inventoried, organized, and active; all four verbs, or it is not vaulted. Implement during creation: no made-then-vaulted gap. Once his eye has proven it, put it live in the same pass — the eye still verifies before live, the rule changes the waiting, not the verification. Build the agreement page to the harvested look and feel: play button dead center at the top, her picture, her name, clean; glowing orb around the play button, geometric things in the corners, sharp and real; offer both choices on the bridge page, listen-and-read unfold or visual slideshow, neither pushed, neither hidden. Keep the type Marcellus, harvested from the live walk — re-derive from the old bytes and compare the look, not just the behavior. Align the whole page to the one set of deep jewel colors — one purple, one green, one blue, no neon — and check the bottom bar against the rest of the page at once. Finish Personal whole first — calendar, About, Skills, membership — then clone it into Business, Space, Thing, and citizens' pages. Make the day the unit: the day view shows the report, Intel Today, notes, smart notes, news on three levels, and action in three worlds, all for that day.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3280",
+   "title": "Treasure the Art — Vault It Alive",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3280/IB-SMART-NOTE-20261118-sn3280-treasure-the-art-vault-it-alive.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3280/IB-SMART-NOTE-20261118-sn3280-treasure-the-art-vault-it-alive.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

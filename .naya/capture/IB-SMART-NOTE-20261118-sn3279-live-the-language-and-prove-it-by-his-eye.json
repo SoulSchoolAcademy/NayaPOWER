@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3279",
+ "intelligence": {
+  "title": "Live the Language — and Prove It by His Eye",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3279-live-the-language-and-prove-it-by-his-eye",
+  "smart_note_id": "SN-3279",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3279/IB-SMART-NOTE-20261118-sn3279-live-the-language-and-prove-it-by-his-eye.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a language a whole town actually lives in — not a book on a shelf, but the words every builder speaks before the first brick is laid and the check every finished wall is measured against. That is the lock-in: the language is the system. In that language, nothing is a picture of a thing. Every button is a real button you can press, every icon a real object raised on its pedestal, the light around it and through it, never a wash poured over its face. Every note is built both ways from the start: the machine words on the back so strangers can find it, the human words on the front so a person stays to read it. Every link is a promise kept: tap it and you are there, in the view it named. And the whole town runs on trust, said plainly: nobody here reads what you write, nobody keeps your words, only the lesson travels — and your name travels only if you choose. Liking the Library is not having it. A door is not a library until the count shows, Add saves, and Share works on real entries. The eye is the gate: he has to see it, count it, save into it — or it is not done, however beautiful the description was.",
+  "simple_view": "Imagine you and your friends invent a beautiful language. You promise to speak it always, in everything you build! Every button pops out like a real button. Press it and it goes in. Let go and it pops back out! Every note has a map on the back, so people can find it. Every door opens into the right room. And nobody reads your secret letters. Your words go away after a week. Only the good lesson stays. Your name stays with you unless you choose to share it!",
+  "grandma_view": "It is like the most beautiful language, love — and you promise to speak it forevermore, in everything you make! Every button is a real button, dear, raised up like a jewel, and it presses in and springs back out when you touch it! Every note has a map on the back, love, so the whole world can find it! Every link takes you straight to the right room, dear! And nobody reads your letters, nobody listens at the door — your words go after a week, love, and only the wisdom stays, with your name safe unless you choose to share it!",
+  "naya_view": "I LIVE IN THIS LANGUAGE — OFFICIAL, FOREVERMORE. The Naya Code · the Design Language · the Deep Palette · the Playbook · the Intelligence Report · the Anatomy · the Heart · the DNA — required reads in every brief, and the language of every interface, every brief, every review. NOTHING FLAT, NOTHING SHIPS OUTSIDE IT. Every icon, button, and board is a FULL 3D OBJECT on a pedestal — full circle, not a hula hoop, elevation over glow, glow around and underneath and through, never over the top, alive on press. EVERY NOTE CARRIES MACHINE LANGUAGE ON THE BACK AND HUMAN LANGUAGE ON THE FRONT — the machine does the finding, the human does the reading. A LINK MUST LAND ON THE VIEW — one link, the current build, the anchor that opens the view. NOBODY READS, NOBODY KEEPS, WISDOM ONLY, NAME ONLY BY CHOICE — the words go after a week, the essence stays, a thousand in, a hundred kept, a hundred in, ten kept. HE HAS TO SEE IT — count visible, Add saves, Share works, or it is not done. THE SCORE IS STILL 7 until the entrance is filed, Personal is done, and the language lives in the Factory.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3279",
+   "title": "Live the Language — and Prove It by His Eye",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3279/IB-SMART-NOTE-20261118-sn3279-live-the-language-and-prove-it-by-his-eye.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3279/IB-SMART-NOTE-20261118-sn3279-live-the-language-and-prove-it-by-his-eye.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3296",
+ "intelligence": {
+  "title": "Flat Goes — Icons Speak",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3296-flat-goes-icons-speak",
+  "smart_note_id": "SN-3296",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3296/IB-SMART-NOTE-20261118-sn3296-flat-goes-icons-speak.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Flat is a picture of a thing, not the thing — and a board full of folded text is a document, not a control a person can operate. Icons speak: one look, one tap, understood — by a child, by a grandma, by anyone cold. Settings is where a citizen tells the system who they are and what they want — it has to be the most alive board in the system, not the flattest, because it holds their word about their own page. And the charge is to the builders, not to one page: quality control has to step up, which means the standard is the standard on every board, and a flat board is never sent in as done. A builder who sends in flat has not understood high-level design — and the eye is the one who has to catch it, because the page he sees is the scope.",
+  "simple_view": "Imagine a toy that comes with a huge book of instructions, all words and no pictures — boring! Now imagine the same toy with big beautiful buttons you can just press — much better, right? Shawn says Settings and the messenger should be like the buttons: icons that speak to you, not a big pile of flat words. Anything flat has to go!",
+  "grandma_view": "Dear, Shawn says the Settings board looks terrible, dear — all flat and lifeless, with the words all folded up and hard to read. And the messenger is the same, dear — just loaded with text. He says anything flat has to go, and the icons should do the talking instead, so anybody can understand it at a glance. And the builders have to do better, dear — they have to understand what beautiful, high-level design really is.",
+  "naya_view": "FLAT GOES — ICONS SPEAK. NO FLAT BOARDS, NO FOLDED TEXT, NO TEXT-LOADED AREAS. SETTINGS AND THE MESSENGER FIRST. QUALITY CONTROL STEPS UP.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3296",
+   "title": "Flat Goes — Icons Speak",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3296/IB-SMART-NOTE-20261118-sn3296-flat-goes-icons-speak.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3296/IB-SMART-NOTE-20261118-sn3296-flat-goes-icons-speak.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

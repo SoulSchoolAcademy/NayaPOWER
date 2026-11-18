@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3306",
+ "intelligence": {
+  "title": "Showcase the Points? No — The Answer Is Already Given",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3306-showcase-the-points-no",
+  "smart_note_id": "SN-3306",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3306/IB-SMART-NOTE-20261118-sn3306-showcase-the-points-no.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He asked the question himself this time — should we showcase the points straight away? — and the answer is the same ruling, now with its reason attached: the Hub is where people meet, and a score at the top of a meeting place turns the meeting into a contest. A pill that shows \"…\" is worse than a wrong number: it is a promise of a number that never arrives, a leftover sitting where a decision already lives. Taking it out is not removing a feature; it is removing debris. And the watch-out is the honest half of the answer: if a public points moment ever becomes wanted, it belongs on the profile and the Dashboard first, and only with a real number — never an ellipsis pretending to be a score.",
+  "simple_view": "Imagine the big board in the classroom where everyone shares their drawings — and someone tapes your test score right at the top, but the score is blank. That wouldn't feel right, would it? Your scores belong in your own folder. Shawn asked, \"Should we show the points right away?\" and the answer is no — they live on your profile and your Dashboard, and that little blank pill in the Hub is just left over. It comes out.",
+  "grandma_view": "Dear, Shawn looked at the Hub and asked, \"Why are the points showing — should we show them off right away?\" And the answer is no, dear — your points live on your profile and your Dashboard, where they belong. The little pill up there doesn't even have a number in it, just dots — it's a leftover, dear, and it's already being taken out. If we ever do show points in public, it will be in the right place, with a real number, not dots.",
+  "naya_view": "POINTS ARE NOT SHOWCASED ON THE HUB. POINTS LIVE ON THE PROFILE AND THE DASHBOARD. A PILL WITH NO NUMBER IS A LEFTOVER, NOT A FEATURE — IT COMES OUT.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3306",
+   "title": "Showcase the Points? No — The Answer Is Already Given",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3306/IB-SMART-NOTE-20261118-sn3306-showcase-the-points-no.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3306/IB-SMART-NOTE-20261118-sn3306-showcase-the-points-no.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

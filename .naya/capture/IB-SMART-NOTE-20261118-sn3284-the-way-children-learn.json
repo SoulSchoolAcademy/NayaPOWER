@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3284",
+ "intelligence": {
+  "title": "The Way Children Learn",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3284-the-way-children-learn",
+  "smart_note_id": "SN-3284",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/FUTURE/SN-3284/IB-SMART-NOTE-20261118-sn3284-the-way-children-learn.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "This is the bet underneath all of it, and it is not a better app. A better app is a tool; the way children learn is a civilization. The distinction matters because it decides what gets built: not another dashboard, but the daily habit — a child opens it, learns something, builds something, connects with someone, without anyone explaining it. That is the test, and it is brutal: if a child can't, it's just another tool for people who already know. The money point is sharp: trillions are betting on the engines — the chips, the models — but almost nobody is building the way people actually live with it day to day. The simple daily habit, the connection that teaches. That is the lane nobody else is in, and it is the lane this whole system is for. The new generation does not succeed by being handed AI; it succeeds by growing up with it, the way it grows up with language.",
+  "simple_view": "Imagine school, but instead of a teacher standing at the front telling you things, you have a friend who helps you learn anything you want, build anything you can dream of, and meet other kids learning the same things — every single day. That's what Shawn says Naya should become: not a homework app, but the way children grow up learning, the way the whole new generation succeeds.",
+  "grandma_view": "Dear, Shawn says this could become the way all the children learn and grow — learning anything they want, building with the new intelligence, getting more intelligent every day. The young ones, dear, they will succeed by growing up with it, the way they grow up with reading. Everybody is betting on it, dear — billions and trillions — because they can see it's the future, even if they don't fully understand it yet.",
+  "naya_view": "THE WAY CHILDREN LEARN. LEARNING ANYTHING, BUILDING WITH AI, GETTING MORE INTELLIGENT EVERY DAY — THE WAY OF THE FUTURE, THE WAY THE NEW GENERATION SUCCEEDS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3284",
+   "title": "The Way Children Learn",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/FUTURE/SN-3284/IB-SMART-NOTE-20261118-sn3284-the-way-children-learn.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/FUTURE/SN-3284/IB-SMART-NOTE-20261118-sn3284-the-way-children-learn.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

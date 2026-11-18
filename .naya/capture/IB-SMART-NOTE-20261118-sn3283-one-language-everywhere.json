@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3283",
+ "intelligence": {
+  "title": "One Language, Everywhere",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3283-one-language-everywhere",
+  "smart_note_id": "SN-3283",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3283/IB-SMART-NOTE-20261118-sn3283-one-language-everywhere.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "Think of a house where every room was built by a different builder from a different drawing — the doors don't match, the light switches are in different places, and nothing feels like the same home. That is what the pages had become. Shawn's answer, given across the whole night, was not eight separate fixes but one language: the words on every page written white first, in the same three sizes; the buttons all learning from the three best buttons on the Dashboard; the motion calm and intelligent like a real computer, not bouncy like a game; and every page scored honestly, ten things loved and ten things not, before anything is called done. When he corrected himself — today should light up, then no, no glow over the day — the correction itself became part of the language, because a system that learns from its corrections is the system.",
+  "simple_view": "Imagine every room in your house speaks the same beautiful language! The words are bright white on black, like stars. The big words are big. The little words are little. Nothing is gray and sleepy. The buttons are the three magic buttons — purple, blue, green — and every other button learns from them! The pages move like a smart computer, calm and smooth. Not like a silly video game! And we keep a list. Ten things we love. Ten things we do not love. We fix every single one!",
+  "grandma_view": "It is like a house where every room finally matches, love — the same bright white words on the black, dear, the same three sizes, the same beautiful buttons everywhere you look. The purple one, the blue one, the green one — they teach all the others how to be, love. The house moves gently, dear, like a clever machine at work, never like a noisy game. And before anything is called done, we sit down together and make an honest list, love — ten things we love, ten things we do not — and we fix every one, dear. One house, one language, all done properly.",
+  "naya_view": "ONE LANGUAGE, EVERYWHERE. WHITE FIRST — HEADLINES 25, SUB-HEADLINES 19, SMALL TEXT 17 — NO GRAY IN TEXT, NOTHING FLAT ANYWHERE. THE PTS / % / MONEY PILLS ARE THE BUTTON STANDARD — OBSIDIAN PILL, BOLD WHITE TEXT, ONE DEEP COLOR EACH AS RIM + GLOW — AND THAT QUALITY TRAVELS TO EVERY PLAQUE, BOARD, HEADER, BUTTON, AND ARROW. ALIVE LIKE A HIGH-TECH COMPUTER, NOT A VIDEO GAME — INTELLIGENT, ELEGANT, SYSTEM ALIVE, LESS TEXT, MORE ICONS. SCORE IT 10 LOVE / 10 DON'T LOVE; HIS EYE IS THE FINAL GATE; WRITE THE CORRECTION DOWN THE MOMENT HE MAKES IT; THE MACHINE CHECKER ENFORCES THE LAW.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3283",
+   "title": "One Language, Everywhere",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3283/IB-SMART-NOTE-20261118-sn3283-one-language-everywhere.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3283/IB-SMART-NOTE-20261118-sn3283-one-language-everywhere.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

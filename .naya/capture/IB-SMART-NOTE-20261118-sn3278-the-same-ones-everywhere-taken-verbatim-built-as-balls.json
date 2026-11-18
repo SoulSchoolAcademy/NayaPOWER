@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3278",
+ "intelligence": {
+  "title": "The Same Ones, Everywhere — Taken Verbatim, Built as Balls",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3278-the-same-ones-everywhere-taken-verbatim-built-as-balls",
+  "smart_note_id": "SN-3278",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3278/IB-SMART-NOTE-20261118-sn3278-the-same-ones-everywhere-taken-verbatim-built-as-balls.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-18. No runtime provenance invented.",
+  "ingested_at": "2026-11-18",
+  "essence": "",
+  "human_view": "He had to say it again and again in one evening because each correction fixed one layer and the habit underneath survived. First the set: every page making new icons turns one world into ten styles, so the law is one set, one sidebar, one look — the same ones, everywhere. Then the shape: he told us circles and showed us circles, and the Hub shipped squares with the glow right and the center wrong, so the row is pinned down layer by layer — square button outside, round circle inside, label beside, glow flowing around. Then the entrance: two pages both claiming to be the agreement door, so they merge into one — the page that looks right keeps the play button, the page that chooses right gives it the two buttons underneath. Then the feed: the machine's own diary printed under the pills, a globe stuck on a box, a test note filling the wisdom board — all of it off, because the page he sees must show him his world, not the machine. And through it all the craft test is the ball: not \"how much glow,\" but \"does it feel like something you could pick up?\" White text, because gray on obsidian reads as tired on the part he loves most. Real space at zoom, because his eye leans in and a pair that melts together under his looking is not quality. One system, one gesture, one set — taken verbatim, the first time, so he never has to say it a fourth time.",
+  "simple_view": "Imagine every room in your house had different light switches. You would never know how to turn the lights on! So every room gets the same switches. That is the rule. When someone shows you a perfect round cookie cutter, you make round cookies, not square ones. The frame is square. The button inside is round. The name sits beside it, so you can read it. A ball is better than a flat drawing. A ball is round all the way around. You can hold it in your hand. Words must be bright white, never dull gray. And when you zoom in close, the shapes must stay clear and separate, like friends standing apart. One front door, not two. The pretty door gets the handle. Everything fits on one screen. Short wisdom, just two sentences. Clean and simple, the way it should be.",
+  "grandma_view": "Dear, he showed us the round icons and said make them circles — but on the Hub they came out as squares. The glow around the edge is lovely, but the middle is the wrong shape. From now on, the same icons on every page, the same sidebar, the same look and feel — not different styles, the same ones, dear. Each row is a square button with the round icon inside it, raised up and shining, and the name written beside it where you can see it. The agreement gets one front door, not two — the lovely page stays, the two buttons go underneath the play button, and everything fits on one screen. The words are bright white, never gray. And a ball, love — round and deep and real, like a jewel you could hold — never a flat drawing with extra sparkle on top.",
+  "naya_view": "ONE ICON SET, ONE SIDEBAR, ONE LOOK — EVERY PAGE. TAKE THE OBJECT HE SHOWS VERBATIM — NEVER MAKE SOMETHING NEW WHEN HE SHOWED YOU THE THING. THE SIDEBAR ROW IS A SQUARE BUTTON HOLDING THE ROUND ICON INSIDE IT, WITH THE LABEL BESIDE IT. THE AGREEMENT IS ONE PAGE: ROOT AS THE BASE, TWO BUTTONS UNDERNEATH THE PLAY BUTTON, EVERYTHING ON ONE SCREEN. NO MACHINE TEXT ON THE PAGE HE SEES. THE MENU CONTROL GOES TO THE RIGHT — SIDEBAR OR MESSENGER, PEOPLE ALREADY ON THE SIDE. EVERY WORD WHITE OR LAYERED WHITE AT 25/19/17 — ZERO GRAY SURVIVORS. A BALL, NOT A CIRCLE, NOT A HULA HOOP. CRISP AND SEPARATE AT ANY ZOOM, WITH REAL SPACE BETWEEN THEM.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3278",
+   "title": "The Same Ones, Everywhere — Taken Verbatim, Built as Balls",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3278/IB-SMART-NOTE-20261118-sn3278-the-same-ones-everywhere-taken-verbatim-built-as-balls.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-18 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3278/IB-SMART-NOTE-20261118-sn3278-the-same-ones-everywhere-taken-verbatim-built-as-balls.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
