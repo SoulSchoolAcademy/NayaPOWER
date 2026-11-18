@@ -53244,6 +53244,39 @@
         "Colour",
         "Refinement"
       ]
+    },
+    {
+      "smart_note_id": "SN-3101",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3101-the-money-chain-is-wired",
+      "slug": "the-money-chain-is-wired",
+      "title": "The Money Chain Is Wired",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3101/IB-SMART-NOTE-20261118-sn3101-the-money-chain-is-wired.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3101/IB-SMART-NOTE-20261118-sn3101-the-money-chain-is-wired.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3101/IB-SMART-NOTE-20261118-sn3101-the-money-chain-is-wired.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3101-the-money-chain-is-wired.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:55:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "bd54089aa9bc01c7e734482f0199f28b852cea813a78cb2ca70ef180285f2de5",
+      "content_hash": "b6b9f43a063c60401a9f65bdbce6f6c889b29c8f5298ef0b8fa6bd75ee86a4c9",
+      "one_line": "The money system is deliberately simple, and every part of it is wired. The ladder is his word and changes by his word: worlds at 1 / 10 / 100 / unlimited, notes at 10 / 100 / 1,000, memberships at Power 10, Pro 100, Max unlimited — and when his eye changes a rung, the record changes with it and says so. Ambassadors, not affiliates: everyone is hired, and you keep half of what it makes because you're the user — the Smart Ledger, the collective chain itself, is included at every level because transparency is not a tier. PayPal IS the billing system: one button opens one template of nine choices — three levels by three periods — nine days free, charge on day ten, no other machinery. Every hop is a Smart Link: the click is tracked to the person and the package, the return lands on a thank-you link, and the counts surface in the Dashboard. The thank-you address is an account setting, set once, not a per-plan field. And the words are the brand — Naya spelled Naya, Ambassadors, Smart Access — because a wrong word at the money door costs the trust the whole chain just earned.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Money",
+        "Smart Links"
+      ]
     }
   ],
   "sequence_policy": {
@@ -53254,5 +53287,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "00debbd64b1bd56d1e90784886c2e172d3b553bcca9c7320f7cb014d0cee59ba"
+  "corpus_manifest_hash": "bcd78c139615d0fef0914c7024a783e8048695972b987ad9dc101904185b168f"
 }
