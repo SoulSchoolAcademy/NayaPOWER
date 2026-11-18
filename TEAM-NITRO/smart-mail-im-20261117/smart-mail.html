@@ -454,12 +454,36 @@ img{max-width:100%}
    from the Hub (index-2.html .smart-tab, SmartTabs v9) via the Personal file:
    dark pill, bold label, per-tab --tc, white light idle, own color ignites
    on hover. The row scrolls natively (marquee removed 2026-10-19). --- */
-.org-tabs{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 6px;scrollbar-width:thin}
+.org-tabs{display:flex;gap:10px;overflow-x:auto;padding:8px 2px 8px;scrollbar-width:thin}
 .org-tabs::-webkit-scrollbar{height:6px}
 .org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
-.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid var(--tc);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--tc) 55%,transparent),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
-.nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
-.nf-smtab.active{border-color:var(--tc);background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));box-shadow:0 0 20px color-mix(in srgb,var(--tc) 65%,transparent),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
+.nf-smtab{position:relative;flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid var(--tc);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 16px color-mix(in srgb,var(--tc) 55%,transparent),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
+.nf-smtab:hover,.nf-smtab:focus-visible{background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--tc) 38%,#12121a),#07070b 78%);border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.07),0 14px 32px rgba(0,0,0,.6),0 0 17px color-mix(in srgb,var(--tc) 42%,transparent);text-shadow:0 0 12px var(--tc)}
+.nf-smtab.active{border-color:var(--tc);background:linear-gradient(155deg,rgba(255,255,255,.20) 0%,rgba(255,255,255,0) 42%),radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--tc) 62%,#ffffff) 0%,color-mix(in srgb,var(--tc) 52%,#12121a) 45%,#07070b 78%);transform:translateY(-3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.10),0 18px 36px rgba(0,0,0,.65),0 0 24px color-mix(in srgb,var(--tc) 55%,transparent);text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 10px color-mix(in srgb,var(--tc) 70%,transparent)}
+/* EYE FOLLOW-ON 2026-11-17 — the lit pill rebuilt as a full object, harvested
+   from the Personal bar tiles, blob 9a006c47: radial body lit top-left in its
+   own hue, bevel top-light + bottom shade, cast shadow down-right, glow
+   behind only. The two inset rings are GONE — they read as a hula hoop and
+   put light inside the face. The orbit below is the moving light AROUND the
+   pill (Shawn 22:48Z): the Personal tile orbit arc, but the ARC travels (the
+   angle turns) instead of the ring turning — a pill is not a circle, turning
+   the ring would swing it off the pill. */
+@property --pillOrbit{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes pillOrbit{to{--pillOrbit:360deg}}
+.nf-smtab.active::after,.nf-smtab:hover::after,.nf-smtab:focus-visible::after{content:'';position:absolute;inset:-6px;border-radius:999px;pointer-events:none;background:conic-gradient(from var(--pillOrbit,0deg),transparent 0deg,transparent 250deg,var(--tc) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:pillOrbit 60s linear infinite;opacity:.9}
+/* The lit pill still answers hover: a touch more lift, so hover on the lit pill
+   is a visible answer and not a dead state (the face and glow already belong
+   to the lit state, so hover lifts instead of re-lighting). Placed before the
+   press rule so the press still wins while held. */
+.nf-smtab.active:hover,.nf-smtab.active:focus-visible{transform:translateY(-5px) scale(1.02)}
+/* 3D LAW (Shawn 22:39Z): press goes IN, release comes OUT — and the eye must
+   SEE it. The old rule moved 4px at scale .97 with the same shadow and face,
+   so the held pill measured pixel-identical to rest. This press travels 5px
+   (lifted -3px to +2px), shrinks to .90, collapses the cast shadow, darkens
+   the face and dims the top light — five channels at once. Specificity beats
+   the lit rule outright (.active:active), and the JS pressed class is the
+   second path for touch. */
+.nf-smtab:active,.nf-smtab.active:active,.nf-smtab.pressed,.nf-smtab.active.pressed{transform:translateY(2px) scale(.90);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--tc) 30%,#12121a),#050507 80%);box-shadow:inset 0 1px 0 rgba(255,255,255,.20),inset 0 -4px 8px rgba(0,0,0,.65),inset 0 6px 12px rgba(0,0,0,.45),0 4px 10px rgba(0,0,0,.6),0 0 10px color-mix(in srgb,var(--tc) 30%,transparent);text-shadow:0 0 6px color-mix(in srgb,var(--tc) 50%,transparent)}
 /* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
 
 
@@ -649,7 +673,8 @@ img{max-width:100%}
 .mail-board-top{display:flex;justify-content:space-between;gap:10px;font-size:17px;font-weight:900;letter-spacing:.08em;color:#fff;text-transform:uppercase}
 .mail-board h4{margin:10px 0 4px;font-size:25px;font-weight:800;color:#fff}
 .mail-nut{margin:0 0 10px;font-size:19px;line-height:1.55;color:#fff;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.6)}
-.mail-board h5{margin:16px 0 8px;font-size:17px;color:var(--wc);font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+/* ALLTOPICS-FIX: KEY POINTS is white like PERSONAL MAIL (.mail-board-top) — it was the world hue, which reads bright blue in Personal. The diamond bullets keep the world hue — they are jewels, not text. */
+.mail-board h5{margin:16px 0 8px;font-size:17px;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
 .mail-points{margin:0;padding:0;list-style:none}
 .mail-points li{position:relative;font-size:17px;line-height:1.55;color:#fff;padding-left:22px;margin-bottom:6px}
 .mail-points li::before{content:'◆';position:absolute;left:0;top:0;color:var(--wc);text-shadow:0 0 8px var(--wc)}
@@ -1209,14 +1234,16 @@ var SMART_LISTS = {
 function nowTime(){ var d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
 
 function renderTabs(){
-  /* TEXT-TOPIC-PILLS: the pills are Smart Links on Smart Tabs — one bold white label at one size, each topic's own deep-color rim + glow (the "N online" count is gone: the same number stood on every pill). "All topics" is lit while the mail view is open; a topic is lit while its chat is open. The title says what the tap does. */
-  var html = '<button class="nf-smtab' + (!state.group ? ' active' : '') + '" type="button" data-topic="All" style="--tc:#8e24aa" title="Back to mail" aria-label="All topics — back to mail">All topics</button>';
+  /* TEXT-TOPIC-PILLS: the pills are Smart Links on Smart Tabs — one bold white label at one size, each topic's own deep-color rim + glow (the "N online" count is gone: the same number stood on every pill). "All topics" is lit while the mail view is open; a topic is lit while its chat is open. The title says what the tap does. ALLTOPICS-FIX: "All topics" takes deep cyan (#0e7490) — its own color no topic pill uses — so it no longer shares Design's purple and the seven pill colors read further apart at a glance. */
+  var html = '<button class="nf-smtab' + (!state.group ? ' active' : '') + '" type="button" data-topic="All" style="--tc:#0e7490" title="Back to mail" aria-label="All topics — back to mail">All topics</button>';
   TAB_ORDER.forEach(function(t){
     html += '<button class="nf-smtab' + (state.group===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#8e24aa') + '" title="Open the ' + t + ' topic chat" aria-label="' + t + ' — open the topic chat">' + t + '</button>';
   });
   $('orgTabs').innerHTML = html;
   $('orgTabs').querySelectorAll('.nf-smtab').forEach(function(b){
     b.addEventListener('click', function(){ pickTopic(b.dataset.topic); });
+    b.addEventListener('pointerdown', function(){ b.classList.add('pressed'); });
+    ['pointerup','pointerleave','pointercancel'].forEach(function(ev){ b.addEventListener(ev, function(){ b.classList.remove('pressed'); }); });
   });
 }
 function renderConvs(){
@@ -1328,14 +1355,24 @@ function openTopicChat(topic){
 }
 function pickTopic(t){
   if (t === 'All') {
-    /* TEXT-TOPIC-PILLS: "All topics" restores the mail view — the group chat closes and the world's mail opens. */
+    /* ALLTOPICS-FIX: "All topics" restores the mail view — the group chat
+       closes and the world's mail opens. The old code only cleared
+       state.group, so the thread kept the topic-chat person and the
+       header, composer and thread stayed Music under the open letter.
+       Re-open the open letter through openMail — the same restore
+       re-clicking the letter in the inbox already performs — so header,
+       composer and thread come back with it, and renderTabs lights only
+       "All topics" (state.group is null). */
     state.group = null;
+    if (!state.mailId) state.mailId = (MAIL[state.world][0] || {}).id || null;
+    if (state.mailId) openMail(state.mailId);
     renderTabs(); renderTopicPeople();
     setFormat('mail');
     return;
   }
   state.topic = t;
   state.thing = state.topic;
+  state.group = t; /* EYE FOLLOW-ON 2026-11-17 — the lit pill lagged one render: renderTabs lights from state.group, but only openTopicChat set it, AFTER renderTabs ran — so the Music chat opened with "All topics" still lit. Set it here, before renderTabs, so the lit pill is the chat you are in. */
   renderTabs(); renderTopicPeople();
   openTopicChat(state.topic);
 }
@@ -1631,32 +1668,29 @@ document.querySelector('[data-notif="activity"]').addEventListener('click', func
 document.querySelector('[data-notif="spaces"]').addEventListener('click', function(){ $('orgTabs').scrollIntoView({block:'nearest'}); refreshFiveCounts(); }); // REVAMP: world pills gone (§4) — WORLDS opens the topics. BAR-FIX: counts re-asserted (see ACTIVITY).
 document.querySelector('[data-notif="eco"]').addEventListener('click', function(){ $('smartLists').scrollIntoView({block:'center'}); refreshFiveCounts(); }); // BAR-FIX: counts re-asserted (see ACTIVITY).
 /* BAR-FIX: CONNECT (data-notif="plus-connect") keeps only Personal's NayaNotif handler — it opens the CONNECT plus menu where that menu exists; this page has no plus menu yet, so the tap is a guarded no-op. Present and tappable, never CREATE. */
-/* WHITE-MIDDLE §3(a): the fold rule (Shawn 20:29Z, confirmed 20:50Z, generalized 20:54Z — the fold is the experience, same on every page). The bar folds away the moment you scroll down and returns ONLY at the very bottom. The scroller is .page-scroll (body never scrolls). Visible at load and whenever the scroll sits at the very bottom; folded everywhere between. The bar is in-flow below .page-scroll (flex:1), so display:none after the slide lets the mail grow into the freed space; showing restores it first, then the slide runs. The latch records the settled scroll position at arming (600ms) as its baseline and only latches 12px below it — so the fix-6 boot nudge never folds the bar at load, whatever its size. State exposed as window.__mailBarFold for the checker. */
-var __mailBarFolded = false, __mailBarTimer = null, __mailScrolled = false, __mailFoldArmed = false, __mailBootTop = 0;
+/* WHITE-MIDDLE §3(a): the fold rule (Shawn 20:29Z, confirmed 20:50Z, generalized 20:54Z — the fold is the experience, same on every page). The bar folds away the moment you scroll down and returns ONLY at the very bottom. EYE FOLLOW-ON 2026-11-17 — two defects in the old shape, both proven live: (1) the fold hid the bar with display:none after 380ms, and hiding it grew the scroller by the bar's own height — so the same scrollTop then read as "at the bottom" and the bar popped back mid-page on the way down. display:none is gone: the bar now folds by transform + opacity + pointer-events only, so the scroller geometry never moves and "at the bottom" is stable. (2) the old rule watched ONLY the outer scroller, but the wheel over the letter scrolls the inner thread first — the outer never moved, so the bar stayed while the page read as mid-page. The rule is now position-based over every scroller on the page: folded when the outer OR any inner scroller sits below its top, and returns only when the outer sits at the very bottom. One capture-phase listener sees every scroll, including re-rendered nodes. State exposed as window.__mailBarFold for the checker. */
+var __mailBarFolded = false, __mailFoldArmed = false, __mailBootTop = 0;
 function __setMailBarFolded(folded){
   var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
   if (folded === __mailBarFolded) return; __mailBarFolded = folded;
-  if (typeof clearTimeout === 'function') clearTimeout(__mailBarTimer);
-  if (folded) {
-    bar.classList.add('bar-folded');
-    if (typeof setTimeout === 'function') __mailBarTimer = setTimeout(function(){ if (__mailBarFolded) bar.style.display = 'none'; }, 380);
-    else bar.style.display = 'none';
-  } else {
-    bar.style.display = '';
-    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(function(){ bar.classList.remove('bar-folded'); });
-    else bar.classList.remove('bar-folded');
-  }
+  bar.classList.toggle('bar-folded', folded);
 }
 function __syncMailBarFold(){
   var sc = document.querySelector('.page-scroll'); if (!sc) return;
-  if (__mailFoldArmed && sc.scrollTop > __mailBootTop + 12) __mailScrolled = true;
   var atBottom = (sc.scrollHeight - sc.scrollTop - sc.clientHeight) <= 2;
-  __setMailBarFolded(__mailScrolled && !atBottom);
-  window.__mailBarFold = { folded: __mailBarFolded, scrolled: __mailScrolled, atBottom: atBottom, top: sc.scrollTop };
+  var outerDown = __mailFoldArmed && sc.scrollTop > __mailBootTop + 12;
+  var innerDown = false, threadTop = null;
+  ['threadBody','convList','mailInbox'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (id === 'threadBody') threadTop = el.scrollTop;
+    if (el.scrollTop > 12) innerDown = true;
+  });
+  __setMailBarFolded((outerDown || innerDown) && !atBottom);
+  window.__mailBarFold = { folded: __mailBarFolded, scrolled: outerDown || innerDown, outerDown: outerDown, innerDown: innerDown, atBottom: atBottom, top: sc.scrollTop, threadTop: threadTop };
 }
 (function(){
-  var sc = document.querySelector('.page-scroll'); if (!sc) return;
-  sc.addEventListener('scroll', __syncMailBarFold, {passive:true});
+  document.addEventListener('scroll', __syncMailBarFold, true);
   if (typeof setTimeout === 'function') setTimeout(function(){ var sc2 = document.querySelector('.page-scroll'); if (sc2) __mailBootTop = sc2.scrollTop; __mailFoldArmed = true; __syncMailBarFold(); }, 600);
   else { __mailFoldArmed = true; }
   __syncMailBarFold();
