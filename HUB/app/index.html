@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Smart Feed — NayaNET</title>
+<title>The Hub — NayaNET</title>
 <meta name="description" content="Smart Feed — NayaNET. Each note a highlight clip: learn anything in about a minute, found by search, read by humans.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nayanet.app/hub">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Smart Feed — NayaNET">
+<meta property="og:title" content="The Hub — NayaNET">
 <meta property="og:description" content="Smart Feed — NayaNET. Each note a highlight clip: learn anything in about a minute, found by search, read by humans.">
 <meta property="og:url" content="https://nayanet.app/hub">
 <meta property="og:site_name" content="NayaNET">
 <meta property="og:image" content="https://nayanet.app/images/intel-today-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Smart Feed — NayaNET">
+<meta name="twitter:title" content="The Hub — NayaNET">
 <meta name="twitter:description" content="Smart Feed — NayaNET. Each note a highlight clip: learn anything in about a minute, found by search, read by humans.">
 <meta name="twitter:image" content="https://nayanet.app/images/intel-today-cover.png">
 <meta name="theme-color" content="#050507">
@@ -56,7 +56,7 @@ window.addEventListener('appinstalled', function () {
 .intel-item{display:flex;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:12px 14px;box-shadow:0 0 12px rgba(255,255,255,.12),0 2px 8px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.15);animation:intelSlideIn .35s ease-out}
 @keyframes intelSlideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 .intel-avatar{--av:36px;--av-hue:#8e24aa;--soul:#8e24aa;width:var(--av);height:var(--av);border-radius:50%;flex:none;display:inline-grid;place-items:center;font-size:calc(var(--av) * .38);font-weight:800;color:#F8F7FB;position:relative;border:1.5px solid #F8F7FB;background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.9) 0%,rgba(255,255,255,.25) 14%,transparent 32%),radial-gradient(circle at 50% 50%,var(--av-hue,var(--soul)) 0%,#040406 100%);box-shadow:inset 0 2px 4px rgba(255,255,255,.4),inset 0 -6px 12px rgba(0,0,0,.6),0 0 24px var(--av-hue,var(--soul)),0 12px 28px rgba(0,0,0,.6)}
-.intel-avatar::before{content:'';position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 270deg,var(--av-hue,var(--soul)) 320deg,rgba(255,255,255,.95) 348deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orbSpin 4s linear infinite;opacity:.9;pointer-events:none}
+.intel-avatar::before{content:'';position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 270deg,var(--av-hue,var(--soul)) 320deg,rgba(255,255,255,.95) 348deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:orbSpin 120s linear infinite;opacity:.9;pointer-events:none}
 @keyframes orbSpin{to{transform:rotate(360deg)}}
 .intel-body{flex:1;min-width:0}
 .intel-text{display:block;color:#fff;font-size:15px;line-height:1.5;margin-bottom:6px}
@@ -141,7 +141,7 @@ window.addEventListener('appinstalled', function () {
   --fs-hero: clamp(38px, 5.4vw, 60px);
   --fs-title: 23px;
   --fs-head: 17px;
-  --fs-body: 16px;
+  --fs-body: 17px;
   --fs-small: 13px;
   --fs-micro: 11.5px;
 
@@ -984,6 +984,7 @@ svg.jewel { display: block; }
   color: var(--room-accent, var(--purple)); margin-bottom: 10px;
 }
 .room-head h2 { font-size: 27px; margin: 0 0 8px; letter-spacing: -0.01em; }
+.room-head .room-greet { font-size: 17px; color: #fff; font-weight: 700; }
 .room-head p { font-size: 15.5px; color: var(--muted); line-height: 1.6; max-width: 760px; margin: 0; }
 .room-body { padding: 18px 0 8px; }
 
@@ -5324,7 +5325,7 @@ window.BoardActions = (() => {
   }
 
   function addIntel(boardId) {
-    const userNameNow = (function(){ try { return localStorage.getItem('nayanet_smart_name') || 'Shawn'; } catch(e){ return 'Shawn'; } })();
+    const userNameNow = (function(){ try { return localStorage.getItem('nayanet_smart_name') || 'You'; } catch(e){ return 'You'; } })();
     const wrap = el('div', 'add-intel');
     /* FIX2: the comment box starts folded and unfolds below the note when
        COMMENT is tapped (see bottomActions) — the fold is the experience. */
@@ -6114,9 +6115,17 @@ function HubView(params) {
   } else {
     const head = el('div', 'room-head');
     head.style.setProperty('--room-accent', room.accent);
+    // The Hub greets the remembered name on every route, not only the feed
+    // hero (Sweep #3, OWN-6): the hoist remembers the name at boot, so the
+    // room head speaks it too. No name claimed: no greeting line at all.
+    let roomWho = '';
+    try { roomWho = (localStorage.getItem('nayanet_smart_name') || '').trim().split(/\s+/)[0]; } catch (e) {}
+    const roomHour = new Date().getHours();
+    const roomGreet = roomHour < 12 ? 'Good morning' : roomHour < 18 ? 'Good afternoon' : 'Good evening';
     head.innerHTML =
       '<div class="kicker">' + esc(room.kicker) + '</div>' +
       '<h2>' + esc(room.name) + '</h2>' +
+      (roomWho ? '<p class="room-greet">' + roomGreet + ', ' + esc(roomWho) + '.</p>' : '') +
       '<p>' + esc(roomDesc(room.id)) + '</p>';
     outlet.appendChild(head);
     if (room.id !== 'settings') outlet.appendChild(searchWrap);
@@ -6965,11 +6974,11 @@ window.NayaJewels = (() => {
       if (qn) {
         who = qn.split(/\s+/)[0];
         try { localStorage.setItem('nayanet_smart_name', qn); } catch {}
-        try { history.replaceState(null, '', location.pathname + location.hash); } catch {}
+        try { qp.delete('name'); qp.delete('userName'); qp.delete('alias'); var rest = qp.toString(); history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash); } catch {}
       } else {
         who = (localStorage.getItem('nayanet_smart_name') || '').trim().split(/\s+/)[0];
         if (qa) {
-          try { history.replaceState(null, '', location.pathname + location.hash); } catch {}
+          try { qp.delete('name'); qp.delete('userName'); qp.delete('alias'); var rest = qp.toString(); history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash); } catch {}
         }
       }
       if (!who) {
@@ -7922,7 +7931,7 @@ window.NayaJewels = (() => {
           /* Fallback: inline minimal actions if BoardActions missing */
           const fb = document.createElement('div');
           fb.className = 'board-bottom-actions';
-          fb.innerHTML = '<span style="color:#fff;font-size:17px">Actions loading…</span>'; /* NUTSHELL-CLIP FIX: white, 17px, always. */
+          fb.innerHTML = '<span style="color:#fff;font-size:17px">Actions not connected yet</span>'; /* NUTSHELL-CLIP FIX: white, 17px, always. */
           b.appendChild(fb);
         }
       } catch (e) {
@@ -9393,7 +9402,7 @@ function SettingsRoom(){
     return row;
   }
   function applyTextSize(){
-    const s=pref('nayanet.pref.text_size','16');
+    const s=pref('nayanet.pref.text_size','17');
     try{document.documentElement.style.setProperty('--fs-body',s+'px');}catch(e){}
   }
   applyTextSize();
@@ -9428,7 +9437,7 @@ function SettingsRoom(){
     function render(){
       const name=ls('nayanet_smart_name');
       const alias=ls('nayanet_smart_alias');
-      ident.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">'+
+      ident.body.innerHTML='<p style="color:var(--ink-dim);font-size:17px;line-height:1.7;max-width:680px">'+
         (name?('The Hub greets you as <strong style="color:#fff">'+esc(name)+'</strong>. Your comments and activity carry this name on this device.')
             :'No name is claimed on this device yet. Your name is claimed once — at the <a href="https://nayanet.app/identity.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">identity page</a>, when you first enter the Hub — and the Hub greets you by it from there.')+
         '</p>';
@@ -9458,12 +9467,12 @@ function SettingsRoom(){
       ident.body.appendChild(ob);
       /* Identity is read-only here (Shawn 2026-10-21): a name is claimed once, at the identity page — never entered or edited in Settings. */
       const wb=document.createElement('button');wb.textContent=name?'Back to the Welcome screen':'Log in — enter through the Welcome screen';
-      wb.style.cssText='display:block;margin-top:18px;background:none;border:1.5px solid rgba(255,255,255,.35);color:#fff;font-size:14px;font-weight:600;padding:11px 22px;border-radius:999px;cursor:pointer';
+      wb.style.cssText='display:block;margin-top:18px;background:none;border:1.5px solid rgba(255,255,255,.35);color:#fff;font-size:17px;font-weight:600;padding:11px 22px;border-radius:999px;cursor:pointer';
       wb.addEventListener('click',function(){location.href='https://nayanet.nayapower.workers.dev/';});
       ident.body.appendChild(wb);
       if(name||alias){
         const out=document.createElement('button');out.textContent='Log out of this device';
-        out.style.cssText='display:block;margin-top:16px;background:none;border:1.5px solid rgba(198,40,40,.55);color:#c62828;font-size:14px;font-weight:600;padding:11px 22px;border-radius:999px;cursor:pointer';
+        out.style.cssText='display:block;margin-top:16px;background:none;border:1.5px solid rgba(198,40,40,.55);color:#fff;font-size:17px;font-weight:600;padding:11px 22px;border-radius:999px;cursor:pointer';
         let armed=false;
         out.addEventListener('click',function(){
           if(!armed){armed=true;out.textContent='Tap again to log out — this device forgets your name, your personal app, and your GitHub connection';return;}
@@ -9620,9 +9629,9 @@ function SettingsRoom(){
         '<div style="'+ROW_STYLE+'"><span style="'+LBL_STYLE+'">Theme</span><span style="'+VAL_STYLE+'">Obsidian</span></div>'+
         '<p style="'+MUTED_STYLE+';margin-top:10px">Obsidian is the Hub\u2019s look. Light surfaces are not offered — the design law forbids them.</p>'+
         '<div style="color:var(--ink-dim);font-size:15px;margin-top:16px">Text size:</div></div>';
-      const cur=pref('nayanet.pref.text_size','16');
+      const cur=pref('nayanet.pref.text_size','17');
       const row=document.createElement('div');row.style.cssText='margin-top:10px';
-      row.appendChild(seg([{label:'14',value:'14'},{label:'16',value:'16'},{label:'20',value:'20'}],cur,function(v){setPref('nayanet.pref.text_size',v);applyTextSize();render();}));
+      row.appendChild(seg([{label:'17',value:'17'},{label:'19',value:'19'},{label:'25',value:'25'}],cur,function(v){setPref('nayanet.pref.text_size',v);applyTextSize();render();}));
       appear.body.appendChild(row);
     }
     render();
@@ -9898,7 +9907,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
      No name in the query: re-set the cookie when a name is already stored.
      First-time visitors (no stored name, no query) are unchanged: no write,
      no cookie. The name stays on the citizen's own device; nothing is sent
-     anywhere. The mainShow() copy below is left untouched. */
+     anywhere. The mainShow() copy below is harmonized with this scrub (identity params only, Sweep #3 OWN-9). */
   (function identityHandoffAtBoot() {
     try {
       var qp = new URLSearchParams(location.search);
