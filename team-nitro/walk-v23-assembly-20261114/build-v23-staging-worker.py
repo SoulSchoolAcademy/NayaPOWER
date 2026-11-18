@@ -478,7 +478,19 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # (Smart Show: full screen, one visual per block, 16:9, click to
 # unfold, always go back); 390 tip overflow + legal-row clip fixed;
 # the intro N seal fills the 1919 void. Intro row + fix-4 untouched.
-assert welcome_sha.startswith("018d488a"), "welcome sha is not the AGREEMENT FLOW-END welcome sha (2026-11-18: N hold, Smart Block, portrait, play)"
+# AGREEMENT FLOW-END FIX1 (2026-11-18, maker round -
+# agreement-flow-end-fix1-20261118/work/edit-fix1.py): the welcome
+# sha moves 018d488a -> d367efe1: the N hold is BULLETPROOFED (render()
+# no longer hides a shown hold; visible 3s fill ring; agree
+# scroll guarded; deck beat 9 shows its visual, then the hold);
+# play reads aloud for real (svg[hidden] fix; voice warm-up +
+# pick + no-start watchdog); the letter goes full-screen (the
+# two 640px!important caps now say max-width:none; nutshell gets
+# the bounded scroll so no line slices mid-glyph); visuals are
+# contain, never cropped (4:3 images in a 16:9 slot); the 'Tap
+# the picture' pill moves below the frame. Intro row + fix-4
+# untouched; F2 has no key handler in the bytes (UNVERIFIED).
+assert welcome_sha.startswith("d367efe1"), "welcome sha is not the AGREEMENT FLOW-END FIX1 welcome sha (2026-11-18: N hold bulletproofed, play reads aloud, letter full-screen)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
@@ -494,7 +506,13 @@ assert welcome_sha.startswith("018d488a"), "welcome sha is not the AGREEMENT FLO
 # full-width showcase, every beat one viewport-tall Smart Block
 # (talk, then its visual alone at 16:9), click to unfold, always go
 # back. Welcome, walk, template, identity shas unchanged.
-assert unfold_sha.startswith("fb0ab19b"), "unfold sha is not the AGREEMENT FLOW-END unfold sha (2026-11-18: Smart Show, full screen, one visual per block)"
+# AGREEMENT FLOW-END FIX1 (2026-11-18, same round): the unfold sha
+# moves fb0ab19b -> c295061a: Play controls speech ONLY now (same
+# distilled-script player as the intro, stop/pause/play) - it no
+# longer advances the deck; the deck advances via Keep reading.
+# Gentle scroll-snap on the deck (proximity) toward one block
+# per viewport. Welcome, walk, template, identity shas unchanged.
+assert unfold_sha.startswith("c295061a"), "unfold sha is not the AGREEMENT FLOW-END FIX1 unfold sha (2026-11-18: Play is speech-only, scroll-snap)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
 # work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b
