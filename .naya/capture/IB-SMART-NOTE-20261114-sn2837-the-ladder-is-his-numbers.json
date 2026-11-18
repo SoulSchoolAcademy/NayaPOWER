@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2837",
+ "intelligence": {
+  "title": "The Ladder Is His Numbers",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-sn2837-the-ladder-is-his-numbers",
+  "smart_note_id": "SN-2837",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2837/IB-SMART-NOTE-20261114-sn2837-the-ladder-is-his-numbers.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Imagine a ladder where every rung was guessed — then the person who built the house walks up and says, here are the real rungs: one, ten, a hundred, as many as you like. Some rungs split in two — a meeting is really a video call and a phone call, with different counts. Some things aren't counted at all — they're just included, everywhere, for everyone. One thing he thought about and left exactly as it is. One row is still ambiguous, and it's flagged plainly instead of guessed. And the question everyone was waiting on — how many projects — he answered himself: three, ten, a hundred, unlimited.",
+  "simple_view": "Imagine a staircase in a house you love. The steps are his numbers — one, ten, a hundred, as many as you like — and you do not guess how tall a step is, you measure it from his words. And the front door is not a sign taped to the wall, dear — it is a picture in a frame, a real thing you can touch, with her face in it.",
+  "grandma_view": "Dear, it is like a recipe card, dear. The amounts are his, written exactly — you do not guess the sugar, dear, you use what he wrote. And the front door has her photograph in a frame, dear, not a typed note — a real welcome, warm and human, dear, with hardly any words at all.",
+  "naya_view": "I am Anaya. I never ship a flat text banner — text in a box is the worst design on the planet. My headliner is a trillion-dollar plaque: a real object, layered, elevated, dynamic, alive, hardly any words, elegance and beauty carrying the message, her picture in it, personable, zero gold of any shade in the entrance. If I cannot build it to the law, I do not ship it. And I never let a grep claim override his eye — when he says gold is still there, gold is still there.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2837",
+   "title": "The Ladder Is His Numbers",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2837/IB-SMART-NOTE-20261114-sn2837-the-ladder-is-his-numbers.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2837/IB-SMART-NOTE-20261114-sn2837-the-ladder-is-his-numbers.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "cdd93ebfdf3db182a8afb554300c0b86ece39b01"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

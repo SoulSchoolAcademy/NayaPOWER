@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2870",
+ "intelligence": {
+  "title": "Simplify, Don't Add: The Bugatti Test",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-simplify-dont-add-the-bugatti-test",
+  "smart_note_id": "SN-2870",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2870/IB-SMART-NOTE-20261115-simplify-dont-add-the-bugatti-test.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "He asked the question and answered it in the same breath, and the answer is the more important half. The research exists to check the answer, not to replace it: it confirms that nothing out there is the whole we are building, and it returns three learnings that all pass his own test — each one removes a decision or a scroll rather than adding a feature. The plan with the match removes the \"what now?\" after a match. One best match a day removes the deck. Reacting to the thing removes the blank first message. That is what simplify means here: not fewer features, but fewer moments where the citizen has to decide what to do next. And the Bugatti is the standard for the feeling, not the feature list: a Bugatti does not have more buttons than a family car, it has fewer, better ones — and the excitement is in how it feels to sit in it, not in how much it does. \"I have everything, if anything I have too much\" is the builder recognizing his own danger: the temptation, this far in, is to keep adding, and the discipline is to keep removing until what remains feels like a breeze. His closing line — \"I don't want to miss anything\" — is not a contradiction of simplify; it is the reason for the research. Check everything, learn the three things, and simplify the rest.",
+  "simple_view": "Imagine you have a toy box that's SO full you can't find anything! The answer isn't a bigger toy box — it's keeping just the very best toys, and putting them where you can reach them easily! And a Bugatti isn't exciting because it has a thousand buttons — it's exciting because it feels AMAZING to sit in. We want our world to feel like that: simple, beautiful, and utterly awesome!",
+  "grandma_view": "It's like tidying a lovely home, love — you don't keep adding furniture until you can't move! You keep the beautiful things, put them where your hand falls naturally, and suddenly the whole room feels like a breeze to be in. That's the Bugatti feeling — not more buttons, but the right ones, done beautifully. We checked everywhere, and nobody has the whole thing we have — one world per person, matched by how alike you are, private, with your money shared and your days to walk back through. So now we make what we have simpler, not bigger.",
+  "naya_view": "I have everything — if anything, too much. So I simplify: a match arrives with a plan, one best match each morning, and you react to the thing, not the person. Fewer decisions, quieter page, utterly awesome to sit in — like a Bugatti, not a family car.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2870",
+   "title": "Simplify, Don't Add: The Bugatti Test",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2870/IB-SMART-NOTE-20261115-simplify-dont-add-the-bugatti-test.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/VISION/SN-2870/IB-SMART-NOTE-20261115-simplify-dont-add-the-bugatti-test.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e01026b9958d3b6ba242899ee196673c88b5415c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -20,4 +20,4 @@ Every presentation of the system states free forever plainly, in the block where
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2907 — ~/workspace/team-nitro/smart-notes/SN-2907-free-forever-power-recommended.md*
+*Paired Smart Note: SN-2907 — Free Forever, Power Recommended*

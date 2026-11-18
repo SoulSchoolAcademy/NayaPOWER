@@ -20,4 +20,4 @@ Use "Naya Code" everywhere; "NIA Code" 0× in the unfolding and in every new not
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2906 — ~/workspace/team-nitro/smart-notes/SN-2906-the-naya-code-not-the-nia-code.md*
+*Paired Smart Note: SN-2906 — The Naya Code, Not the NIA Code*

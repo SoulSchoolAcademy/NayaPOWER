@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2938",
+ "intelligence": {
+  "title": "Both Presentations — the Citizen Picks",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2938-both-presentations-the-citizen-picks",
+  "smart_note_id": "SN-2938",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2938/IB-SMART-NOTE-20261116-sn2938-both-presentations-the-citizen-picks.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The old instinct was to pick one presentation and argue for it. Shawn's ruling is the opposite: offer both and let the citizen choose. An unfold suits the reader who wants the story beat by beat; a visual presentation suits the one who wants to see it. Neither locks the other out, and the citizen who wants both gets both. The two rounds prove the pattern transfers: the same choice row, the same deck harvest, the same not-a-defect rule, from About to Skills with nothing re-argued. The lesson is about who decides: not the designer, not the seat — the citizen, at the moment they open the thing.",
+  "simple_view": "Imagine you have a story to tell. Some friends want to hear it one little bit at a time — click, next bit, click, next bit. Other friends want to SEE it in big beautiful pictures. So why choose? You give them a little row of buttons and say: pick how YOU want to hear it! Unfold, pictures, or both!",
+  "grandma_view": "It's like this, love — some people like to read a story step by step, and some like to look at the pictures. You don't force one on everybody. You just ask, nice and simple: how would you like it told? And whichever they pick, that's the one they get. Everybody's happy, nobody's forced.",
+  "naya_view": "Offer both presentations — unfold or visual, one, the other, or both — and let the citizen pick. Neither locks the other out.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2938",
+   "title": "Both Presentations — the Citizen Picks",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2938/IB-SMART-NOTE-20261116-sn2938-both-presentations-the-citizen-picks.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2938/IB-SMART-NOTE-20261116-sn2938-both-presentations-the-citizen-picks.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "1d56f436385e850ce71b84dd7560fa3b723804eb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

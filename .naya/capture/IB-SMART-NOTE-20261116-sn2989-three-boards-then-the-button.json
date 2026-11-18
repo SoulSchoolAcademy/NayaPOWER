@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2989",
+ "intelligence": {
+  "title": "Three Boards, Then the Button",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2989-three-boards-then-the-button",
+  "smart_note_id": "SN-2989",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2989/IB-SMART-NOTE-20261116-sn2989-three-boards-then-the-button.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The unfolding law (SN-2987) said one board to the next, all the way through — and his eye, reading it, set the rhythm: three at a time. Three smaller boards beat one big one, because a single board carrying a whole section is still a wall, just a prettier one — and a reader facing one board at a time clicks forever without ever seeing enough to settle in. Three is the measure: enough text on screen to read properly, little enough to take in at a glance, and then the button — click, the next part unfolds, then the next. The rhythm is the readability: the button is the breath between parts, and the reader always knows where they are — three boards, a button, three more. It applies to legal text because legal text is where readability matters most: a citizen deciding whether we are legit reads these pages, and a wall of legal text is the thing that makes them stop reading — which is the opposite of what a legal page is for. \"Never a wall of text because 'it's legal'\" is the refusal: seriousness is not an excuse for unreadability. Pro-like, all the way through — the presentation carries the same standard as the words (SN-2986) and the same unfolding as everything else (SN-2987). The merge already built to it: 158 boards, three-then-Next, verified 18:01Z.",
+  "simple_view": "Imagine reading a storybook where each page shows you THREE pretty pictures, and then a big friendly button says \"more!\" — you tap it, and three more pictures pop up! Not one giant picture that's too much all at once, and not one tiny picture at a time that takes forever — just three, then tap, then three more! That's how the legal pages work now: three boards, then the button, then three more. Easy to read, easy to take in!",
+  "grandma_view": "It's like this, love — imagine a lovely book, dear, that shows you three pretty pages at a time, and then a nice button that says \"more, please\" — you tap it, and the next three pages unfold, gentle as you like. Not one great big page that's too much to take in all at once, dear, and not one little page at a time that takes forever — just three, then the button, then three more. Easier to read, easier to take in, love — and the serious pages get the same beautiful treatment as everything else, never a wall of words just because \"it's legal.\" Pro-like, all the way through, dear.",
+  "naya_view": "Three boards, then the button. Legal pages unfold THREE elevated boards at a time, then a button to the next — three smaller boards beat one big one. Click the button, the next part unfolds, then the next. Easier to read, easier to take in. Legal text gets the same beautiful unfolding as everything else — never a wall of text because \"it's legal\". Pro-like, all the way through.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2989",
+   "title": "Three Boards, Then the Button",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2989/IB-SMART-NOTE-20261116-sn2989-three-boards-then-the-button.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2989/IB-SMART-NOTE-20261116-sn2989-three-boards-then-the-button.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "9ce914f9479a236b25324e24a795b7fb4f8a18ff"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3022",
+ "intelligence": {
+  "title": "Voice Note — Not Official, Not a Priority, Show Me the Words First",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3022-voice-note-not-official-not-a-priority-show-me-the-words-first",
+  "smart_note_id": "SN-3022",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3022/IB-SMART-NOTE-20261116-sn3022-voice-note-not-official-not-a-priority-show-me-the-words-first.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "He asked two questions — how long is it, and what did you actually say — and both carry the same charge: show me the words first. The voice note was being sent through as a priority when it was not official yet, the language was not nailed, and nobody had shown him the exact words. His standing instruction, reinforced in this message, is mechanical: NO voice run until he has SEEN the exact words and the language is nailed/official; voice is NOT a priority right now. And the captain's answer, checked live rather than from memory, settled the facts underneath the worry: there IS no voice note of the agreement — no words written for it, no recording made, no audio file on the staged front page, the play button has nothing behind it to play, and nothing in the voice pipeline's baked output is agreement text. What does exist is only short: the newest syntheses run 13 to 32 seconds each, the get-started guide is four chunks totalling about 89 seconds, and the voice synthesis queue watcher cron is archived — no voice work is running. His length point stands and was conceded: the letter is 86 beats, read aloud about 15 minutes, way too long — and it was never recorded. When voice does happen, it is the short introduction, never the letter. The commitment given is the rule going forward: he sees the exact words before anything is recorded, and nothing runs again until he says the words are right. This is the same pause he ordered at 18:52Z — voice jobs paused until the agreement text is final — now reinforced, not new.",
+  "simple_view": "Imagine someone wants to record you singing a song — but you haven't even written the song yet, and they keep saying \"let's record it, let's record it!\" You'd say \"WAIT — show me the words first! Let me read the song, make sure it's just right, and THEN we sing it — and we sing the short fun song, not the super-duper long one!\"",
+  "grandma_view": "It's like this, love — you don't bake the cake before you've written down the recipe, dear! He wants to see the exact words first, love — read them, fix them, make them just right — and THEN you record. And not the long letter, dear — fifteen minutes is far too long! Just the short introduction, love, the little hello. Show the words first, always!",
+  "naya_view": "Show me the words first. No voice run until he has SEEN the exact words and the language is nailed — voice is not a priority right now. And the facts, checked live: there IS no voice note of the agreement — no words written, no recording made, no audio on the staged page. What exists is short — 13 to 32 seconds a note, the guide about 89 seconds total — and no voice work is running. The letter is 86 beats, about 15 minutes aloud, way too long, never recorded. When voice happens, it is the short introduction, never the letter. Nothing runs again until he says the words are right.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3022",
+   "title": "Voice Note — Not Official, Not a Priority, Show Me the Words First",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3022/IB-SMART-NOTE-20261116-sn3022-voice-note-not-official-not-a-priority-show-me-the-words-first.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3022/IB-SMART-NOTE-20261116-sn3022-voice-note-not-official-not-a-priority-show-me-the-words-first.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ab2939f589fb1c2697e67c786b143ec9e9068853"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2973",
+ "intelligence": {
+  "title": "The Star Level Names — the Ladder",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2973-the-star-level-names-the-ladder",
+  "smart_note_id": "SN-2973",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2973/IB-SMART-NOTE-20261116-sn2973-the-star-level-names-the-ladder.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A level name that says the level is a language anyone can read: \"I'm a Mega Star\" needs no explanation — 8 of 10 is in the name. The ladder turns the bar into a story with ten chapters, each with a name that says how far you've come: starting, emerging, advancing, pro, five star, superstar, serious, mega, master, ten star. And the completion is the reasoning made visible: \"Top Star\" can't be 9, because the top star IS the 10 star — so Master Star at 9, Pro Star at 4. The sense-check on 6 and 7 was the captain thinking for himself (Serious Star reads smaller than Superstar to a cold eye); he played it back and it stands. The rewards are still his — the shape is locked, the words wait on him only for what each level gets.",
+  "simple_view": "Imagine you climb a ladder of stars — ten shiny stars, one after another! The first star is called Starting Star, because that's where you begin. Then Emerging Star, then Advancing Star, then Five Star, then Superstar, then Serious Star, then Mega Star, and at the very top, Ten Star! And when you say \"I'm a Mega Star,\" everyone knows exactly how high you've climbed — eight out of ten! At the very top, Ten Star — because the top star IS the ten star!",
+  "grandma_view": "It's like this, love — every level has a star name, so your name tells everyone where you stand. You start as a Starting Star, dear, then Emerging, then Advancing, then a Pro Star, then a Five Star member, then a Superstar, a Serious Star, a Mega Star, a Master Star, and at the very top, a Ten Star! And if you tap your star level, it opens right up, big and full — the whole ladder, where you are, what each level gets. The rewards are still his words to give, and that's just as it should be.",
+  "naya_view": "The ladder: Starting Star, Emerging Star, Advancing Star, Pro Star, Five Star, Superstar, Serious Star, Mega Star, Master Star, Ten Star. The name IS the level. Click it: full screen, the bar to ten, where you are, all ten names, how points work, what each level gets.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2973",
+   "title": "The Star Level Names — the Ladder",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2973/IB-SMART-NOTE-20261116-sn2973-the-star-level-names-the-ladder.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2973/IB-SMART-NOTE-20261116-sn2973-the-star-level-names-the-ladder.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "192bb61873f717f8c1f89ed067a73a2798351fa0"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

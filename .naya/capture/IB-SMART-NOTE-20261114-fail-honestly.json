@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2818",
+ "intelligence": {
+  "title": "Fail Honestly",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-fail-honestly",
+  "smart_note_id": "SN-2818",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2818/IB-SMART-NOTE-20261114-fail-honestly.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "There is a special cruelty in a control that never answers — worse than an error, because an error at least ends the uncertainty. \"Sending…\" forever is a door that never opens and never says it's locked; the citizen stands in front of it, tapping again, wondering if the first tap counted, whether their message went, whether the system is even listening. The fix is small and the principle is large: every promise that can hang gets a deadline, and at the deadline it fails honestly — \"Not sent — try again\" — and the control comes back after 3 seconds, so the citizen can act. Honesty in failure is a form of respect: it tells the citizen the truth about what happened instead of leaving them to guess, and it returns their agency instead of holding it hostage. The same discipline shows in the record around it: five finish FAILs grounded-not-fixed, named as probe artifacts or pre-existing, not hidden, not patched into passing — because a record that names what it didn't fix is a record you can trust about what it did.",
+  "simple_view": "Imagine you press a button and it just says \"Sending…\" forever and ever! Did it work? Did it not work? You have no idea! That's terrible! Now imagine it says \"Not sent — try again!\" — now you KNOW, and you can press it again! A button should always tell you the truth, even when the truth is \"it didn't work — try again!\"",
+  "grandma_view": "It's like posting a letter and never knowing if it arrived, love — you stand by the postbox wondering forever. Much better for someone to come back and say, \"I'm sorry, it didn't go — try again.\" Then you know, and you can act. A button that never answers is worse than a button that says no — at least \"no\" lets you try again.",
+  "naya_view": "I never leave a citizen hanging. Every promise that can hang gets a deadline — 8 seconds — and at the deadline it fails honestly, in plain words, with the control back and a way to try again. \"Not sent — try again\" beats \"Sending…\" forever, every time. And I name what I didn't fix in the record, grounded, so the record can be trusted about what I did.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2818",
+   "title": "Fail Honestly",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2818/IB-SMART-NOTE-20261114-fail-honestly.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2818/IB-SMART-NOTE-20261114-fail-honestly.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8dca92600ad8d9e85ad81a83256d25049d968407"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3012",
+ "intelligence": {
+  "title": "The Red N Orb Is Beautiful — Keep the Agreement End on Refresh",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3012-the-red-n-orb-is-beautiful-keep-the-agreement-end-on-refresh",
+  "smart_note_id": "SN-3012",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3012/IB-SMART-NOTE-20261116-sn3012-the-red-n-orb-is-beautiful-keep-the-agreement-end-on-refresh.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Two things in one message, and they are opposites in the best way: keep, and fix. Keep: the end view is beautiful — the red orb with the gold N, elevated, official — one of the most beautiful elegant pieces the team did, and it stays exactly as it is, never redesigned. Fix: it vanishes on refresh, so a citizen who reaches the end and reloads loses the very thing that makes the agreement feel official. An end that disappears is not an end — it is a moment you cannot return to. The fix is persistence, not redesign: the end state survives a refresh and is reachable directly, without walking the deck again. The checker proves it the way a citizen would: reach the end, refresh, and the end is still there — orb, portrait, text, legal link, I agree — at 390 and at 1851×1009. What is good is kept verbatim; what is broken is the state, not the look.",
+  "simple_view": "Imagine you build the most beautiful tower out of blocks — red and gold and so tall and pretty! And then someone bumps the table and — poof! — it's gone! That would be so sad, right? So we make sure your beautiful tower STAYS there, even if you leave and come back! The red N orb is the prettiest tower — it stays!",
+  "grandma_view": "It's like this, love — imagine the most beautiful picture, dear, red and gold and so elegant — and every time you blink, it's gone! Oh no, love — a beautiful thing like that should stay right where you left it, so when you come back, there it is, just as lovely. That's what we do, dear — we keep the beautiful end right there, even after a refresh.",
+  "naya_view": "The red N orb is beautiful — keep the agreement end on refresh. What is good stays exactly as it is, never redesigned; what is broken is the state, not the look. Reach the end, refresh, and the end is still there — orb, portrait, text, legal link, I agree.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3012",
+   "title": "The Red N Orb Is Beautiful — Keep the Agreement End on Refresh",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3012/IB-SMART-NOTE-20261116-sn3012-the-red-n-orb-is-beautiful-keep-the-agreement-end-on-refresh.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3012/IB-SMART-NOTE-20261116-sn3012-the-red-n-orb-is-beautiful-keep-the-agreement-end-on-refresh.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "4cb2c46ad16d62a7ac0350af432dfcd081bf32fe"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

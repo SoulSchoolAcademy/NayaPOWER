@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2812",
+ "intelligence": {
+  "title": "Ambassador Means Representative",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-ambassador-means-representative",
+  "smart_note_id": "SN-2812",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2812/IB-SMART-NOTE-20261114-ambassador-means-representative.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "A title without a meaning is an empty uniform — the citizen wears it, and the first person who asks \"what does that mean?\" finds nothing underneath. \"Ambassador\" could mean a salesperson with a fancier name, a recruiter with a badge, a fan with a title. Shawn's definition closes every one of those readings at once: a representative. You represent NayaNET to the world — and you are part of it: part of the community, part of the kingdom, part of the world. The second sentence is the one that does the real work, because it makes the title a belonging instead of a job description. You don't work FOR the civilization from outside it; you are part of the civilization, and representing it is what being part of it looks like. That is why the definition belongs in the deed itself, in Step 6, where the citizen signs: the moment they accept the title, they accept the meaning, and the meaning is what makes them proud to carry it instead of embarrassed to explain it.",
+  "simple_view": "Imagine you're an ambassador for your whole school! That doesn't mean you sell things — it means you REPRESENT your school to the world! You're part of it — part of your class, part of your school, part of your whole world! And you tell everybody how wonderful it is, because it's yours!",
+  "grandma_view": "It's like being an ambassador for your country, love — you represent your people to the world, and you're part of them too. Not a salesperson, not a stranger selling something — a representative. Part of the community, part of the kingdom, part of the world. That's a title you can carry with pride.",
+  "naya_view": "I define the title the moment I give it: an ambassador is a representative — you represent NayaNET to the world. And you're part of it: part of the community, part of the kingdom, part of the world. The digital civilization of NayaNET. The meaning lives in the deed, where the citizen signs — so the title is never an empty uniform.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2812",
+   "title": "Ambassador Means Representative",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2812/IB-SMART-NOTE-20261114-ambassador-means-representative.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2812/IB-SMART-NOTE-20261114-ambassador-means-representative.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f205a792ebe7c9528a5ad0ea56b8d2a9844b6a2c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

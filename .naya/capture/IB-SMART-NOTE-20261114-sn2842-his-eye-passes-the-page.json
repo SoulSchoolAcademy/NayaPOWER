@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2842",
+ "intelligence": {
+  "title": "His Eye Passes the Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-sn2842-his-eye-passes-the-page",
+  "smart_note_id": "SN-2842",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2842/IB-SMART-NOTE-20261114-sn2842-his-eye-passes-the-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Distilled from SN-2261, SN-2262, SN-2263, SN-2264, SN-2265, SN-2266, SN-2267, SN-2268, SN-2269, and SN-2270: the shortest route; the bullseye in ten angles; what they want — connect, earn, affiliate — push-button simple; the max experience for the everyday Joe; enough is enough, the learning is done, now we run; everybody gets a job, free members earn 50% too; his eye on the Dashboard; his eye on the boards; his eye on the Smart Link boards, ten out of ten; and the common colour language. The thread through all ten is one thing: his eye decides what is done, and his eye decides in order — the route first, the standard second, the fixes third, and nothing presented until he has passed it.",
+  "simple_view": "Imagine you have a box of beautiful toy blocks. You do not make new blocks. You take the ones in the box and build with them. Each block is real. You can touch it. The page is like that. Take the real blocks. Build one screen. Make it alive.",
+  "grandma_view": "A good recipe is a good recipe no matter whose kitchen you cook it in. The taste is the same because the ingredients are real, not because the cooks copied each other. The truth is the recipe — the cooks just find it.",
+  "naya_view": "The language is one language because the parts are one family. Harvest first, compose never create, viewport by viewport, live with him until he says it is good. A look-alike is not a part. A flat page is not a viewport. A fake gauge is not a gauge. The law is simple because the work is simple: take what is real, put it where it belongs, and let it live.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2842",
+   "title": "His Eye Passes the Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2842/IB-SMART-NOTE-20261114-sn2842-his-eye-passes-the-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2842/IB-SMART-NOTE-20261114-sn2842-his-eye-passes-the-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b1d2260b43bff53983605ed0676d456cdaad7fe2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

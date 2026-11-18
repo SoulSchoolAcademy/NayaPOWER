@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3037",
+ "intelligence": {
+  "title": "The Deed, the List, and the Way Around",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3037-the-deed-the-list-and-the-way-around",
+  "smart_note_id": "SN-3037",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3037/IB-SMART-NOTE-20261116-sn3037-the-deed-the-list-and-the-way-around.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The seven notes are the evening's arc: a list becomes official, a box becomes a deed, and a night of failures becomes a law. The list's arc is the method proven in one sitting: propose, let him correct, carry the corrected list. SN-3015's method — think it through logically, don't transcribe — produced the reasoned proposal; his corrections proved the proposal had done its job, because a proposal exists to be corrected. Each round of corrections is a smaller, sharper list: round 2 renames Smart Spaces to Smart Worlds and pulls the hub-only buttons out of the sidebars; round 3 removes Smart Feed from the left because the Smart Feed IS the Hub, and brings Intel Today back beside Your Reports. And the confirmation carries the display with it — not just what is on the list, but how it shows: the sidebar IS the icon-buttons, circle icon inside a rectangle button, elevated, all lighting up. The plain list does not stay alongside. That is the whole design law in one instruction: the navigation is the objects, not a list beside the objects. The deed is the same law at the scale of a single box. A name field is a form field; a deed is a person's land, their domain, their real estate — and the box must feel like that, because the name is the first thing a citizen signs. One treatment in all three places, harvested from what already works, because the signing must feel the same wherever they sign. The voice note is the same law at the scale of a priority: nothing is sent through as a priority until the words are right, and he sees the exact words before anything is recorded. A play button with nothing behind it to play is a promise the page cannot keep — the same failure as the picker that does nothing, the create button that creates nothing. And the resilience law is the night's verdict on all of it: when the ground fails, the system must not. The EPERM flake took down One List adds, the MEMORY.md replacement, the PI refresh six times, the transcribe watcher, the Hub re-bake he had just approved — and the one thing that did not break was the feed, because the re-bake seat stopped instead of wrecking it. Spare copy first, size check before swap, verify before live: the guards are the backup plan, built in before the failure, not improvised during it. Build in the cloud, in the system, as much as possible — where the cell's flake cannot reach the work or the record. The list is official, the deed is the signing, and the way around is built in before it is needed.",
+  "simple_view": "Imagine you write the list of your favorite things, and your friend helps you fix it until it's just right! Then you build it strong, so even if something breaks, nothing gets lost!",
+  "grandma_view": "It's like this, love — you write out your list, dear, and your friend helps you fix it — this one goes here, that one goes away, this one belongs at the very bottom — until it's just right, and then it's official, love. And the box where you write your name isn't just a box, dear — it's the deed to your land, your domain, your real estate, so it has to feel special. And you build it all strong, love, so that when something goes wrong, nothing gets wrecked — there's always a way around, always a backup plan.",
+  "naya_view": "The list is official at last — v4, LEFT 12, RIGHT 10, Hub-only top-bar buttons, displayed as icon-buttons, the sidebar IS those buttons. The name box is the deed: elevated obsidian plaque, purple underglow, the typed name as the signature, the seal stamps on entry — one treatment in all three places. Voice waits: show me the words first, nothing recorded until the language is nailed. And the resilience law: build systems around a failure so no matter what happens there is always a solution — a backup plan, a way to continue — and nothing gets wrecked.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3037",
+   "title": "The Deed, the List, and the Way Around",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3037/IB-SMART-NOTE-20261116-sn3037-the-deed-the-list-and-the-way-around.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3037/IB-SMART-NOTE-20261116-sn3037-the-deed-the-list-and-the-way-around.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "a6a511f83c74f85eb73c45740de4f24624d1c047"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -35,6 +35,7 @@ Usage:
   python3 tools/learning_loop.py reject-proposal --proposal ID --by NAME [--ledger PATH]
   python3 tools/learning_loop.py show-ledger [--ledger PATH]
   python3 tools/learning_loop.py publish-note --capture PATH --verify PATH [--private-root PATH]
+  python3 tools/learning_loop.py publish-note --capture PATH   (flat classic capture v2, no verify)
 
 Exit codes:
   0 — ok
@@ -942,6 +943,19 @@ def cmd_show_ledger(args):
 # and it offers no path that writes a page without registering it. A page
 # written any other way (a raw file commit that bypasses this door) is
 # exactly the leak this fix exists to close.
+#
+# Two capture shapes walk through this door (2026-11-17 upgrade):
+#   * persisted-block shape — capture + --verify carrying the persisted
+#     block (the runtime pipeline; reserve / render / update_registry,
+#     emoji-dialect projection), unchanged;
+#   * flat classic shape — a lone capture (schema
+#     naya.smart-note-capture.v2, flat `intelligence` object, no
+#     --verify): the corpus production shape (distillation batches,
+#     SN-2832). The writer's publish_classic renders the classic
+#     nine-section page — including a census-parseable `Distills ...`
+#     coverage line when the capture declares one — under the same
+#     invariants: capture placed first (fail-closed on a name collision
+#     with different bytes), page + entry + manifest in one motion.
 
 def _publish_note_main(argv):
     """Publish one Smart Note through the canonical writer (the door)."""
@@ -953,8 +967,10 @@ def _publish_note_main(argv):
                     "page + registry entry + manifest, in one motion.")
     p.add_argument("--capture", required=True,
                    help="capture JSON (schema naya.smart-note-capture.v2)")
-    p.add_argument("--verify", required=True,
-                   help="verify JSON carrying the persisted block")
+    p.add_argument("--verify", required=False, default=None,
+                   help="verify JSON carrying the persisted block "
+                        "(persisted-block shape only; omit for a flat "
+                        "classic capture)")
     p.add_argument("--private-root", default=None,
                    help="private projection root (PRIVATE-scope notes)")
     args = p.parse_args(argv)
@@ -971,13 +987,34 @@ def _publish_note_main(argv):
     try:
         with open(args.capture, "r", encoding="utf-8") as f:
             cap = json.load(f)
+    except (OSError, ValueError) as e:
+        _err(f"cannot read capture: {e}")
+        return 1
+    if not isinstance(cap, dict):
+        _err("capture must be a JSON object")
+        return 1
+
+    if args.verify is None:
+        # Flat classic shape: the corpus production capture. The writer
+        # validates the full classic contract and fails closed (SystemExit
+        # with a precise code) on any violation or collision.
+        try:
+            entry, proj = _sn2.publish_classic(cap, capture_source=args.capture)
+        except SystemExit as e:
+            _err(str(e))
+            return 1
+        _out({"ok": True, "smart_note_id": entry.get("smart_note_id"),
+              "projection_path": str(proj), "entry": entry})
+        return 0
+
+    try:
         with open(args.verify, "r", encoding="utf-8") as f:
             ver = json.load(f)
     except (OSError, ValueError) as e:
-        _err(f"cannot read capture/verify: {e}")
+        _err(f"cannot read verify: {e}")
         return 1
-    if not isinstance(cap, dict) or not isinstance(ver, dict):
-        _err("capture and verify must be JSON objects")
+    if not isinstance(ver, dict):
+        _err("verify must be a JSON object")
         return 1
 
     block = ver["persisted"]["block"]

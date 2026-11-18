@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2809",
+ "intelligence": {
+  "title": "The Agreement v2 — No Repeats, The Skeptic, The Pay Ladder, The Protection",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-the-agreement-v2-no-repeats-the-skeptic-the-protection",
+  "smart_note_id": "SN-2809",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2809/IB-SMART-NOTE-20261114-the-agreement-v2-no-repeats-the-skeptic-the-protection.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "A promise that repeats itself is a promise that doubts itself — and a citizen reading the same line twice, once in the agreement and once on the pricing page, feels the repetition as padding, not emphasis. So the Bugatti line leaves the agreement and stays where it belongs, and the agreement says each thing once, in order, and then stops. The skeptic step is the braver move: most promises pretend the fear doesn't exist, which is exactly what makes a cold reader suspicious. This one names it — \"we know what you're thinking\" — and answers it with logic instead of reassurance: free to join, nothing to buy in, you earn only when real people join and pay for something real. The bar is the test: 100% of cold readers finish and say \"okay, that makes sense\" — not 90%, not most, all of them, or the step isn't finished. And the protection is the part that makes the promise keepable: everybody has a point value, new people wait 30 days while legitimacy is verified, and the reserve-the-right clause says the quiet truth out loud — if we don't get paid, you don't get paid — because a promise that hides its own condition is a promise waiting to break. The discipline underneath: never claim the impossible, never invite a challenge. Say what is true, and let the truth be enough.",
+  "simple_view": "Imagine you write a promise, and you say the same thing twice — that's silly! Say it once, nicely, and move on! And imagine someone worries, \"Is this a trick?\" — you don't hide from that! You say, \"I know what you're thinking — here's why it's not a trick!\" And you protect everybody: new friends wait a little while before their first treat, so we know they're real friends. Fair for everyone!",
+  "grandma_view": "It's like writing a proper letter, love — you say each thing once, clearly, and you don't repeat yourself. And if someone's worried it's a trick, you look them in the eye and answer it honestly: nothing to buy, nothing to lose, you only earn when real people join for something real. And you protect the house: new folks wait thirty days while we make sure everything's proper, and everybody has a good name to keep. Fair, honest, and kind.",
+  "naya_view": "I write the agreement so it never repeats itself — each thing said once, the Bugatti line living on the pricing page where the citizen sees it there. I answer the skeptic head-on: \"we know what you're thinking... here's the logic\" — free to join, nothing to buy in, earn only when real people join and pay for something real. I show the pay ladder and the protection plainly, and I hold the bar: 100% of cold readers finish and say \"okay, that makes sense.\" I never claim the impossible, and I never invite a challenge.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2809",
+   "title": "The Agreement v2 — No Repeats, The Skeptic, The Pay Ladder, The Protection",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2809/IB-SMART-NOTE-20261114-the-agreement-v2-no-repeats-the-skeptic-the-protection.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2809/IB-SMART-NOTE-20261114-the-agreement-v2-no-repeats-the-skeptic-the-protection.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8185f115d1c7d40bbcb0d4d0e91f2f33cb70a7f0"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

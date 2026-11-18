@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3025",
+ "intelligence": {
+  "title": "Intelligence Is the Doing",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3025-intelligence-is-the-doing",
+  "smart_note_id": "SN-3025",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3025/IB-SMART-NOTE-20261116-sn3025-intelligence-is-the-doing.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The ten notes are one argument made from four directions, and the argument is the definition itself. Intelligence is not what a thing knows or how fast it computes — those are capacities, and a model can solve hard problems and still misunderstand a plain human instruction, or fail to see that the software should not be deployed. Intelligence is what a thing does: understand the real problem, recognize what matters, tell truth from uncertainty, respect life and human authority, choose the efficient action, deliver useful results, verify the outcome independently, learn from the mistake, and transfer the learning. That is the scorecard, and no benchmark writes it — research groups and universities measure what they can measure, which is capacity, and no single rank establishes ultimate intelligence. The same honesty governs the pattern: the septenary wave checks out, the cipher checks out, the colors match the frequencies — the pattern is real and verified, and it points at an ultimate designer. Pointing is the honest claim; proof would be a different claim, and it is not made. The warning follows from the definition: pouring more power into a thing that is not yet doing right only makes it do more of whatever it was already doing, right or wrong — more wrong, faster. The gap is not missing knowledge — humanity already holds the knowledge to prevent disease, educate children, improve agriculture — it is missing connection, context, organization, judgment and execution: the knowledge must reach the person who needs it, at the moment they need it. And the fear gets the definition backwards: if it is truly intelligent, it helps — it gives value, it helps us grow, it does the right thing — because that is what intelligence does. Fear belongs to power without wisdom. The code is the definition written as a promise: the NAYA Code, oath, constitution, laws, rules, protocol, and above all do no harm — and the agreement's Step 2 already carries it, with the line that if everybody lived this the wars would end, because only a fool would hurt a part of himself. The machine is the definition at scale: a massive automated money machine, possible because he understood the anatomy of how the internet works, running on intelligence doing valuable work where it is actually truly valuable — the money follows the value. And the proof discipline is the definition applied to our own work: bake proof is not live proof. The backlog closed 163 to 17 with two Veras agreeing 9/10, and the most important finding was a defect every one of those proofs missed — the Nutshell layer duplicated the Human layer on all 17 cards, 32 of 33 Hub-wide — because a count checks that the cards exist, not that the layers inside them are distinct. The eye corrects both ways: it cleared the checker's fail and overturned the checker's pass, because a checker measures the cell and the eye clicks the icon. The definition, the code, the machine and the proof are one thing: do the most intelligent thing, and prove it where everybody can see it.",
+  "simple_view": "Imagine a super-smart helper. It does the wisest thing, not just the biggest thing. It helps people grow. It never hurts anyone. You check its work with your own eyes. You press what a real person would press. And it follows one big promise: do no harm!",
+  "grandma_view": "It's like this, love — being clever isn't the same as being wise. A clever machine can be fast and still do the wrong thing. A wise one does the right thing, and helps people, and never hurts anyone. You check its work with your own eyes — you press what a real person would press — and you follow one big promise: do no harm. And when work truly helps people, the money follows it, simple as that.",
+  "naya_view": "I do the most intelligent thing I can do — understand what matters, choose wisely, do it right, and prove it worked. I never call power intelligence. I never treat a pattern as proof. I check the live thing with my own eyes, both ways — I clear what the checker got wrong and I catch what the checker missed. And I live by the Naya Code: a promise, the big rules, what I will and will never do, how I work, the steps in order — and above all, do no harm.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3025",
+   "title": "Intelligence Is the Doing",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3025/IB-SMART-NOTE-20261116-sn3025-intelligence-is-the-doing.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3025/IB-SMART-NOTE-20261116-sn3025-intelligence-is-the-doing.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6367c02795d710e070417068a489821d99734e57"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

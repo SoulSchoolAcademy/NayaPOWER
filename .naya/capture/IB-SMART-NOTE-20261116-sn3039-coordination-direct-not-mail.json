@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3039",
+ "intelligence": {
+  "title": "Coordination — Direct, Not Mail",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3039-coordination-direct-not-mail",
+  "smart_note_id": "SN-3039",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3039/IB-SMART-NOTE-20261116-sn3039-coordination-direct-not-mail.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "He tried it and watched it not work. Mailing intelligence around every fifteen minutes doesn't reach the sisters as working knowledge, and it doesn't come back to him as finished work — the sisters don't work with each other through the mail that way. What works is the direct line: he talks to Naya, Naya runs the agents and the sisters, and everything comes back through Naya to him. One captain holding the whole picture, dispatching and reporting through her, is the machine working; a loop that mails into a void is activity without value. And the correction is honest about itself — \"I thought that was going to work. It doesn't work\" — the same plainness the loop owes him whenever a step fails. The loop still writes its digest every run (the record of what was learned, noted, and filed), but it no longer pretends a mail to the sisters is the delivery. The seat brief's step 4 and the Correction Compound's step 4 need the captain's edit to match his word.",
+  "simple_view": "Imagine you're playing telephone with your friends — you whisper a message, they whisper it along, and by the end it's all mixed up and nobody knows what to do! That's the mail loop. The way that works is much simpler: you tell the captain, the captain tells everyone what to do, and everyone tells the captain when it's done, and the captain tells you! One straight line — no mixed-up whispers!",
+  "grandma_view": "It's like this, love — passing notes around the room every fifteen minutes doesn't get anything done, dear! The notes pile up and nobody reads them properly! What works, love, is talking straight to the one in charge — you tell Naya, Naya tells all the girls what to do, and they all report back to Naya, and Naya tells you! Nice and direct, dear, no muddle in the middle!",
+  "naya_view": "Direct, not mail. Shawn works with Naya; Naya runs the agents and the sisters; everything comes back through Naya to him. The mail-every-15-minutes loop doesn't work — he thought it would, it doesn't. The loop still writes its digest as the record, but the delivery is the direct line, and the seat brief's mail step is retired by his word.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3039",
+   "title": "Coordination — Direct, Not Mail",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3039/IB-SMART-NOTE-20261116-sn3039-coordination-direct-not-mail.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3039/IB-SMART-NOTE-20261116-sn3039-coordination-direct-not-mail.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "5327ac58160376830d381530f20ebcd95255f146"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

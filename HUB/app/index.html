@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Smart Feed — NayaNET</title>
+<title>The Hub — NayaNET</title>
 <meta name="description" content="Smart Feed — NayaNET. Each note a highlight clip: learn anything in about a minute, found by search, read by humans.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nayanet.app/hub">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Smart Feed — NayaNET">
+<meta property="og:title" content="The Hub — NayaNET">
 <meta property="og:description" content="Smart Feed — NayaNET. Each note a highlight clip: learn anything in about a minute, found by search, read by humans.">
 <meta property="og:url" content="https://nayanet.app/hub">
 <meta property="og:site_name" content="NayaNET">
 <meta property="og:image" content="https://nayanet.app/images/intel-today-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Smart Feed — NayaNET">
+<meta name="twitter:title" content="The Hub — NayaNET">
 <meta name="twitter:description" content="Smart Feed — NayaNET. Each note a highlight clip: learn anything in about a minute, found by search, read by humans.">
 <meta name="twitter:image" content="https://nayanet.app/images/intel-today-cover.png">
 <meta name="theme-color" content="#050507">
@@ -85,7 +85,6 @@ window.addEventListener('appinstalled', function () {
   --ink-dim:   #F5F7FB;  /* (primary text, dimmed contexts — use --muted below it) */
   --muted:     #FFFFFF;  /* BLACK DIAMOND 2026-11-16: no dim text — secondary text is white too. */
   --muted-2:   #FFFFFF;
-  --faint:     #c9c3ce;
   --line:      #ffffff18;
   --line-soft: #ffffff0d;
 
@@ -142,7 +141,7 @@ window.addEventListener('appinstalled', function () {
   --fs-hero: 25px;
   --fs-title: 23px;
   --fs-head: 17px;
-  --fs-body: 16px;
+  --fs-body: 17px;
   --fs-small: 13px;
   --fs-micro: 11.5px;
 
@@ -395,6 +394,7 @@ a { color: inherit; }
    (2) The Hub-only rules are NOT carried over: the eco-bottombar rider
    (no such element here), the .toast-stack/.main padding, and the
    .corner-plus block. */
+/* SWEEP-3 F9: the row centres on the viewport by design — recorded, not moved. */
 .notif-bar {
   position: fixed; left: 0; right: 0; bottom: var(--smartbar-h, 0px); z-index: 45;
   display: flex; justify-content: center;
@@ -417,6 +417,7 @@ a { color: inherit; }
   -webkit-tap-highlight-color: transparent;
 }
 .notif-seg:active { transform: scale(.94); }
+/* SWEEP-3 F8: no gloss layer in the bytes — flat board black plus rim plus glow. Whether the rim-light IS the gloss is Shawn's eye call; do not invent a swoosh. */
 .notif-tile {
   position: relative; z-index: 0; width: 54px; height: 54px; border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
@@ -456,10 +457,12 @@ a { color: inherit; }
    18:58Z): the five's 54px tiles + 34px gaps measure 594px at desktop (fits
    every desktop width) but overflow below 640px. Tiles drop to 46px below
    640px (Personal's own 400px tile size), so the row measures 378px at
-   401-640px and 344px at <=400px — six tiles on ONE line at 390 (344 <= 390),
-   nothing cut off, nothing wrapped. Measured, not guessed. */
+   401-640px and 312px at <=400px — six tiles on ONE line at 390 (312 <= 390)
+   and at 320 (312 <= 320), nothing cut off, nothing wrapped. SWEEP-3 F4:
+   gap 8px -> 4px and row side padding 14px -> 8px below 400px. Measured,
+   not guessed. */
 @media (max-width:640px){ .notif-row{gap:10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 2px 0;} }
-@media (max-width:400px){ .notif-row{gap:8px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 0 0;} }
+@media (max-width:400px){ .notif-row{gap:4px;padding:12px 8px 10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 0 0;} }
 /* THE LINE (Personal correction, harvested): the page-wide button shadow's
    inset top line is restated away on the seg itself. */
 .notif-seg{box-shadow: inset 0 -2px 8px rgba(0,0,0,.25), 0 6px 20px rgba(0,0,0,.4)!important;}
@@ -475,17 +478,6 @@ a { color: inherit; }
 .fc-plusitem .fc-pi-ico svg{width:19px;height:19px;filter:drop-shadow(0 0 3px rgba(255,255,255,.5));}
 /* BLACK DIAMOND: clone layer behind every + menu icon chip. */
 .fc-plusitem .fc-pi-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--mc, #8e24aa) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
-/* The eco dock rides above the notifications bar — but ONLY when the bar is
-   actually in the DOM (body.has-notif is set by NayaNotif.init). Without the
-   bar, the dock sits at bottom: 0 (its base rule) and can never float over a
-   gap. (Shawn 2026-10-21: dock hovered mid-feed when the bar was absent.)
-   DOUBLE-BAR STACK CURE (2026-11-06): the offset is the bar's MEASURED
-   height (--notif-h, set by NayaNotif.syncStack) minus a 2px overlap, so the
-   dock sits flush on the bar with no gap and no hairline. The old hardcoded
-   94px assumed a 98px bar (with labels); the bar ships label-less at 79px,
-   so the dock floated 15px above it and the feed showed through the gap. */
-/* SHELL BARS 2026-11-13: fallback follows the five height (76px — the five row: 54px tile + 12px + 10px padding); syncStack measures the live row — the fallback is pre-init only. */
-body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(safe-area-inset-bottom, 0px)); }
 .toast-stack { bottom: calc(102px + env(safe-area-inset-bottom, 0px)); }
 .main { padding-bottom: 150px; }
 @media (max-width: 640px) {
@@ -1689,16 +1681,7 @@ body.feed-live .live-dot {
 .intel-board.tone-blue { border-color: color-mix(in srgb, #0f52ba 60%, transparent); box-shadow: 0 24px 60px #000b; }
 .intel-board.tone-green { border-color: color-mix(in srgb, #07925f 60%, transparent); box-shadow: 0 24px 60px #000b; }
 
-/* ——— Microcopy trust signals (from deployed original) ——— */
-.ib-microcopy {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-top: 16px; padding-top: 12px;
-  border-top: 1px solid rgba(255,255,255,.08);
-  font-size: 17px; letter-spacing: .14em; color: var(--muted);
-  font-weight: 700;
-}
-.ib-microcopy .left { text-align: left; }
-.ib-microcopy .right { text-align: right; }
+/* NUTSHELL-CLIP FIX (2026-11-17): the footer-lines block is removed — its CSS goes with it. */
 
 /* ——— Premium jewel elements (reports-grade DOM jewels) ——— */
 .pj-jewel {
@@ -1893,18 +1876,117 @@ body.feed-live .live-dot {
 }
 /* Per-layer colors — Design Law v2 §2.3: one color, one job. */
 .ib-layer.layer-white      { --lc: var(--ink); }         /* the words */
-.ib-layer.layer-magenta    { --lc: var(--magenta); }     /* human significance */
+.ib-layer.layer-magenta    { --lc: var(--magenta); }     /* Child Note — second in the flow from silver */
 .ib-layer.layer-sapphire   { --lc: var(--sapphire); }    /* calm clarity / knowledge */
 .ib-layer.layer-emerald    { --lc: var(--emerald); }     /* alive and well */
-.ib-layer.layer-purple     { --lc: var(--purple); }      /* Naya's signature */
-.ib-layer.layer-indigo     { --lc: var(--indigo); }      /* comprehension */
+.ib-layer.layer-purple     { --lc: var(--purple); }      /* purple layers (fallback only — Grandma renders gold via layerColorFor, FIX2) */
+.ib-layer.layer-indigo     { --lc: var(--indigo); }      /* What It Means — fourth in the flow from silver */
 .ib-layer.layer-lime       { --lc: var(--lime); }        /* learning / growth */
-.ib-layer.layer-gold       { --lc: var(--gold); }        /* value — the extraordinary */
+.ib-layer.layer-gold       { --lc: var(--gold); }        /* value — the extraordinary · Grandma Note, third in the flow from silver (FIX2, warm gold) */
 .ib-layer.layer-orange     { --lc: var(--orange); }      /* action */
 .ib-layer.layer-teal       { --lc: var(--teal); }        /* connection / flow */
 .ib-layer.layer-yellow     { --lc: var(--yellow); }      /* attention / signal */
 .ib-layer.layer-richorange { --lc: var(--rich-orange); } /* transition / momentum */
 .ib-layer.layer-red        { --lc: var(--red); }         /* the alarm */
+/* ——— SMART NOTE FORMAT (2026-11-17) ———
+   Images: 16:9, aligned. The bottom, warmer: counts as digit tiles on the
+   objects, stars as real gold, the heart as a real jewel. No new buttons,
+   no new text, no new rows — depth and glow from the objects themselves. */
+.ib-feature { margin: 16px 0 4px; border: 2px solid rgba(255,255,255,.16); border-radius: 18px; overflow: hidden; background: #050607; box-shadow: inset 0 1px rgba(255,255,255,.12), 0 14px 30px rgba(0,0,0,.55), 0 0 24px rgba(255,255,255,.08); }
+.ib-feature img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.ib-imggrid { display: grid; gap: 8px; margin: 16px 0 4px; }
+.ib-imggrid.cols-1 { grid-template-columns: 1fr; }
+.ib-imggrid.cols-2 { grid-template-columns: 1fr 1fr; }
+.ib-imggrid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.ib-img { border: 2px solid rgba(255,255,255,.14); border-radius: 14px; overflow: hidden; background: #050607; box-shadow: inset 0 1px rgba(255,255,255,.1), 0 10px 22px rgba(0,0,0,.5); }
+.ib-img img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.ib-unfold-next { display: block; margin: 24px auto 8px; }
+/* The bottom, warmer: the count rides ON the object as a digit tile —
+   obsidian tile, rim in the button's own color, white digit (a measured
+   count is a real zero; an unrated star row still shows its state). */
+.action-count { background: #050607; border: 2px solid var(--action-color, #8e24aa); border-radius: 8px; box-shadow: 0 0 14px rgba(0,0,0,.6), 0 0 12px var(--action-color, #8e24aa); color: #ffffff; }
+/* The heart as a real jewel you can press; the stars as real gold. */
+.board-actions .action[data-kind="love"], .board-actions .action[data-kind="like"] { background: linear-gradient(145deg, color-mix(in srgb, var(--action-color) 32%, #050607), #050607 60%); border-color: var(--action-color); box-shadow: inset 0 1px rgba(255,255,255,.22), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 22px var(--action-color), 0 10px 24px rgba(0,0,0,.6); }
+.board-actions .action[data-kind="love"]:hover, .board-actions .action[data-kind="like"]:hover { box-shadow: inset 0 0 0 1.5px var(--action-color), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 36px var(--action-color), 0 14px 36px rgba(0,0,0,.65); }
+.star-rating { border-color: #d4a017; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 26px rgba(212,160,23,.35); }
+.star-rating button.on { background: radial-gradient(circle at 35% 30%, #ffffff, #d4a017 55%, #050607); color: #ffffff; text-shadow: 0 0 16px #d4a017; border-color: #d4a017; }
+/* ——— END SMART NOTE FORMAT (2026-11-17) ——— */
+
+/* ——— SMART NOTE FORMAT FIX2 (2026-11-17) ———
+   Ten small gold star jewels in one row, ringed by the slow flow; the
+   comment box unfolds below the note. New text is 17px or larger (Laws
+   2.3); text stays white or gold (Laws 2.2). */
+@property --star-flow { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+.star-rating { position: relative; gap: 3px; padding: 5px; }
+.star-rating button { min-width: 0; flex: 1 1 0; min-height: 36px; font-size: 17px; padding: 0; }
+.star-rating::before {
+  content: ""; position: absolute; inset: -6px; border-radius: 20px; padding: 2px;
+  background: conic-gradient(from var(--star-flow), rgba(212,160,23,.95) 0deg, transparent 70deg, transparent 180deg, rgba(212,160,23,.5) 230deg, transparent 300deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude; pointer-events: none;
+  animation: starFlow 120s linear infinite;
+}
+@keyframes starFlow { to { --star-flow: 360deg; } }
+.add-intel.unfolding { animation: intelUnfold .45s cubic-bezier(.16,.84,.22,1); }
+@keyframes intelUnfold { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .star-rating::before { animation: none; }
+  .add-intel.unfolding { animation: none; }
+}
+/* ——— END SMART NOTE FORMAT FIX2 ——— */
+
+/* ——— SMART NOTE NUTSHELL-CLIP FIX (2026-11-17) ———
+   THE BETTER PRESENTATION, under the 3D LAW (Shawn 22:39Z) and the glow
+   law (22:37Z: glow AROUND/BEHIND, never OVER the top).
+   Stars as full 3D gold orbs — round obsidian balls with a gold rim,
+   sphere shading (light top-left), inset top-light, deep shadow
+   down-right: a ton of elevation, coming out of the page, not a flat
+   square and not a hula hoop. Hover lifts the orb; press goes IN
+   (scale .92) and release comes OUT — alive, something happening. The
+   lit star keeps the harvested radial-gold face (below). The slow flow
+   ring AROUND the row (FIX2 ::before) stays — glow behind, never the
+   effect itself. The glyph stays crisp and separate from its rim at any
+   zoom: 17px star inside a 40px orb, real space around it.
+   The LOVE heart is a faceted ruby jewel (see the JS): 20px, drop
+   shadows for depth, inside the primo pill that already presses.
+   The foot is a 17px white provenance signature with a gold label. */
+.star-rating button {
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #2b2513 0%, #16130a 62%, #050607 100%);
+  border: 2px solid #d4a01788;
+  box-shadow: inset 0 1px rgba(255,255,255,.30), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55);
+  color: #d4a017;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35), 0 2px 6px rgba(0,0,0,.75);
+}
+.star-rating button:hover {
+  transform: translateY(-2px);
+  border-color: #d4a017;
+  box-shadow: inset 0 1px rgba(255,255,255,.35), inset 0 -3px 7px rgba(0,0,0,.6), 0 9px 18px rgba(0,0,0,.6), 0 0 18px rgba(212,160,23,.28);
+}
+.star-rating button:active {
+  transform: translateY(1px) scale(.92);
+  box-shadow: inset 0 1px rgba(255,255,255,.25), inset 0 -2px 5px rgba(0,0,0,.65), 0 2px 6px rgba(0,0,0,.6);
+}
+.star-rating button.on {
+  /* The harvested radial-gold face stays; the orb shape, the ball shadow
+     and the layered glyph come from this round. */
+  box-shadow: inset 0 1px rgba(255,255,255,.45), inset 0 -4px 9px rgba(0,0,0,.45), 0 6px 14px rgba(0,0,0,.6), 0 0 20px rgba(212,160,23,.30);
+  text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(212,160,23,.85);
+}
+@media (min-width: 701px) {
+  /* Desktop: true circles, one size, no stretch. Phones keep the FIX2
+     flex rule (<=700px) so ten orbs still fit 390px. */
+  .star-rating button { width: 40px; height: 40px; flex: 0 0 auto; }
+}
+.love-heart { display: inline-flex; width: 20px; height: 20px; vertical-align: -4px; margin-right: 2px; }
+.love-heart svg {
+  width: 20px; height: 20px; display: block;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(198,40,40,.45));
+}
+.ib-foot .ib-foot-label { color: #d4a017; font-weight: 800; letter-spacing: .04em; }
+.ib-foot .ib-foot-dot { color: #d4a017; padding: 0 8px; }
+/* ——— END SMART NOTE NUTSHELL-CLIP FIX ——— */
 
 .ib-layer-head {
   width: 100%; appearance: none; background: none; border: 0; cursor: pointer;
@@ -2877,7 +2959,6 @@ button, .btn, .tab, .eco-btn, .activity-card {
 /* ASK STACK CURE (2026-10-22): jewel 71 + notif 98 + dock, composed */
 body:has(.naya-ask-room) .notif-bar{bottom:calc(71px + var(--smartbar-h, 0px) + env(safe-area-inset-bottom,0px))}
 body:has(.naya-ask-room) #nsbBottom{bottom:calc(71px + env(safe-area-inset-bottom,0px))}
-body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + var(--notif-h, 76px) - 2px + env(safe-area-inset-bottom,0px))}
 @media (max-width:760px){
   body:has(.naya-ask-room) .side-topics.side-right{bottom:calc(312px + env(safe-area-inset-bottom,0px))}
   body:has(.naya-ask-room) .side-topics.side-left{bottom:calc(382px + env(safe-area-inset-bottom,0px))}
@@ -2887,13 +2968,11 @@ body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + var(--notif-h, 76px) 
 <style>
 /* ASK READING CURE (2026-10-22 round 4): the shell's bottom bars yield to her answer */
 body:has(.naya-ask-room) .notif-bar{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
-body:has(.naya-ask-room) .eco-bottombar{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
 body:has(.naya-ask-room) #nsbBottom{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
 body.ask-reading:has(.naya-ask-room) .notif-bar{transform:translateY(calc(100% + 90px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
-body.ask-reading:has(.naya-ask-room) .eco-bottombar{transform:translateY(calc(100% + 200px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
 body.ask-reading:has(.naya-ask-room) #nsbBottom{transform:translateY(calc(100% + 200px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
 @media (prefers-reduced-motion: reduce){
-  body:has(.naya-ask-room) .notif-bar,body:has(.naya-ask-room) .eco-bottombar,body:has(.naya-ask-room) #nsbBottom{transition:none}
+  body:has(.naya-ask-room) .notif-bar,body:has(.naya-ask-room) #nsbBottom{transition:none}
 }
 </style>
 </head>
@@ -2901,6 +2980,13 @@ body.ask-reading:has(.naya-ask-room) #nsbBottom{transform:translateY(calc(100% +
 
 
 <div id="app" aria-live="polite"></div>
+<!-- SWEEP-3 F10 — STATIC FALLBACK FOR THE BOTTOM BAR (2026-11-17): the six
+     tiles, static, in the same order and colors NayaNotif builds. If the
+     bar script below never runs, this bar is still here and every tile
+     still navigates (plain links to the same destinations tap() uses).
+     When the script runs, NayaNotif.init() removes this node and builds
+     the live bar (counts, menus, fold) in its place — no visual change. -->
+<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></a></div></nav>
 <noscript>
   <div style="min-height:100vh;display:grid;place-items:center;text-align:center;padding:40px;
               background:#050507;color:#f8f7fb;font-family:Inter,system-ui,sans-serif">
@@ -4048,6 +4134,65 @@ window.NayaContent = {
    The baked NOTES array and /feed-live.json stay as the honest
    fallback only — the re-bake is irrelevant to cards from here on.
    ═══════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════
+   SMART NOTE FORMAT — Machine Note is the SEO back end (2026-11-17).
+   What the machine note does today: it is the machine's record of the
+   note — a short provenance line (e.g. "Checker timed run C1, desktop,
+   chat entry."). It never rendered on the front (intelBoard skips machine
+   layers) and did nothing else. From here it works the SEO back end:
+   every note gets note.seo {title, description, keywords, datePublished,
+   url}, the page publishes a JSON-LD ItemList of Articles for the newest
+   notes, and the meta description + Open Graph tags follow the newest
+   note — so every smart note is search-engine-optimized by the machine
+   note. The machine note itself is never shown as a front section.
+   ═══════════════════════════════════════════════════════════════════ */
+function nayaNoteSeo(note){
+  note = note || {};
+  var title = String(note.title || '').trim();
+  var nut = '';
+  try { var nl = (note.layers || []).filter(function(L){ return /NUTSHELL/i.test(String(L.name || '')); })[0]; nut = nl ? String(nl.body || '') : ''; } catch(e){}
+  if (!nut) nut = String(note.subtitle || '');
+  var firstSentence = function(t){ var c = String(t||'').replace(/\s+/g,' ').trim(); if (!c) return ''; var m = c.match(/^[^.!?]+[.!?]/); return (m ? m[0] : c.slice(0, 160)).trim(); };
+  if (!title) title = firstSentence(nut) || 'Smart Note';
+  var mach = String(note.machine || note.machine_note || '').trim();
+  var desc = mach || firstSentence(nut);
+  if (desc.length > 160) { var cut = desc.slice(0, 157); var sp = cut.lastIndexOf(' '); desc = (sp > 80 ? cut.slice(0, sp) : cut).replace(/[,;:\u2014\u2013-]+$/, '').trim() + '\u2026'; }
+  var kw = [];
+  (note.topics || []).forEach(function(t){ var w = String(t||'').trim(); if (w) kw.push(w); });
+  String(title).replace(/[^A-Za-z0-9 ]/g,' ').split(/\s+/).forEach(function(w){ if (w.length > 3 && kw.indexOf(w) === -1 && kw.length < 10) kw.push(w); });
+  var url = null;
+  var snm = String(note.id || '').match(/sn(\d+)/i);
+  if (snm) url = 'https://nayanet.app/s/sn' + snm[1];
+  else if (String(note.id || '')) url = 'https://nayanet.app/hub#/smart-notes/' + String(note.id).toLowerCase();
+  return { title: title, description: desc, keywords: kw.join(', '), datePublished: note.created_at || note.created || '', url: url };
+}
+function applyNoteSeo(notes){
+  notes = Array.isArray(notes) ? notes : [];
+  try {
+    notes.forEach(function(n){ if (n) n.seo = nayaNoteSeo(n); });
+    var newest = notes[0] || null;
+    var head = document.head || document.documentElement;
+    var old = document.getElementById('naya-note-seo');
+    if (old) old.remove();
+    var items = notes.slice(0, 10).map(function(n, i){
+      var s = n.seo || nayaNoteSeo(n);
+      return { '@type': 'Article', position: i + 1, headline: s.title, description: s.description, keywords: s.keywords, datePublished: s.datePublished || undefined, author: { '@type': 'Organization', name: 'NayaNET' }, url: s.url || undefined };
+    });
+    var ld = document.createElement('script');
+    ld.type = 'application/ld+json'; ld.id = 'naya-note-seo';
+    ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'ItemList', name: 'NayaNET Smart Feed', itemListElement: items });
+    head.appendChild(ld);
+    if (newest && newest.seo) {
+      var md = document.querySelector('meta[name="description"]');
+      if (md) md.setAttribute('content', newest.seo.description || md.getAttribute('content'));
+      var ogt = document.querySelector('meta[property="og:title"]');
+      if (ogt) ogt.setAttribute('content', newest.seo.title + ' — NayaNET Smart Feed');
+      var ogd = document.querySelector('meta[property="og:description"]');
+      if (ogd) ogd.setAttribute('content', newest.seo.description || ogd.getAttribute('content'));
+    }
+    window.NayaNoteSeo = nayaNoteSeo; window.NayaApplyNoteSeo = applyNoteSeo;
+  } catch(e){ /* SEO never breaks the feed */ }
+}
 window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s' };
 (function(){
   if (typeof window === 'undefined' || typeof fetch !== 'function') return;
@@ -4081,44 +4226,77 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
     Object.keys(out).forEach(function(k){ out[k] = out[k].trim(); });
     return out;
   }
+  /* SMART NOTE FORMAT (2026-11-17): pull markdown images out of a note body
+     into the note's 16:9 image set. Returns { images: [{src}], text }.
+     Images are 16:9, bottom by default; feature top / both is the citizen's
+     choice at upload (note.imageLayout). No images is beautiful too. */
+  function extractNoteImages(mdText){
+    var images = [];
+    var text = String(mdText || '').replace(/!\[[^\]]*\]\(([^)\s]+)[^)]*\)/g, function(m, src){
+      if (src && images.length < 9) images.push({ src: src });
+      return '';
+    });
+    return { images: images, text: text };
+  }
   function hubRowToNote(r){
     var layers = [];
+    /* SMART NOTE FORMAT (2026-11-17): the front reads IN A NUTSHELL (silver,
+       lit) -> Child (magenta) -> Grandma (gold, warm — FIX2) -> What It Means (indigo).
+       The human-note and naya-note sections are cut — the nutshell IS the
+       human note, and "Naya Note" is the way Naya writes, not a section.
+       What is in it for you and how it applies fold INTO What It Means, so
+       no words are lost. The machine record is not a layer: it rides on the
+       note as note.machine and works the SEO back end (see nayaNoteSeo). */
+    var meansBody = String(r.what_it_means || '').trim();
+    if (String(r.whats_in_it_for_you || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**What\u2019s In It For You**\n\n' + String(r.whats_in_it_for_you).trim();
+    if (String(r.how_it_applies || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**How It Applies**\n\n' + String(r.how_it_applies).trim();
     [['IN A NUTSHELL','IN A NUTSHELL','white','primary',r.nutshell],
-     ['Human Note','HUMAN NOTE','magenta','primary',r.human_note],
-     ['Child Note','CHILD NOTE','sapphire','primary',r.child_note],
-     ['Grandma Note','GRANDMA NOTE','emerald','primary',r.grandma_note],
-     ['Naya Note','NAYA NOTE','purple','primary',r.naya_note],
-     ['What It Means','WHAT IT MEANS','indigo','deeper',r.what_it_means],
-     ['What\u2019s In It For You','WHAT\u2019S IN IT FOR YOU','gold','deeper',r.whats_in_it_for_you],
-     ['How It Applies','HOW IT APPLIES','orange','deeper',r.how_it_applies],
-     ['Machine Record','MACHINE RECORD','sapphire','deeper',r.machine_note]
+     ['Child Note','CHILD NOTE','magenta','primary',r.child_note],
+     ['Grandma Note','GRANDMA NOTE','gold','primary',r.grandma_note],
+     ['What It Means','WHAT IT MEANS','indigo','deeper',meansBody]
     ].forEach(function(spec){ var l = layer(spec[0],spec[1],spec[2],spec[3],spec[4]); if (l) layers.push(l); });
     return {
       id: r.ib_id, title: r.title || '', subtitle: firstSentence(r.nutshell),
       created: r.created_at || r.note_created || '', created_at: r.created_at || r.note_created || '',
       topics: ['Smart Notes'], topic: 'Smart Notes', category: 'Smart Note',
       tone: toneFor(r.ib_id), icon: 'note', kind: 'smart-note', personal: false,
+      machine: r.machine_note || '', images: [], imageLayout: 'bottom',
       github_path: r.github_path || '', layers: layers
     };
   }
   function nnRowToNote(r){
-    var sec = sectionsFromMd(r.body || '');
+    /* SMART NOTE FORMAT (2026-11-17): markdown images in the body become the
+       note's 16:9 image set (bottom by default — see intelBoard); they are
+       stripped from the text so they never print as literal markup. */
+    var imgFound = extractNoteImages(r.body || '');
+    var bodyNoImg = imgFound.text;
+    var sec = sectionsFromMd(bodyNoImg);
     var nut = sec['IN A NUTSHELL'] || '';
-    if (!nut) { var paras = String(r.body||'').split(/\n\s*\n/); nut = clean(paras.join(' ')).slice(0, 600); }
+    if (!nut) { var paras = String(bodyNoImg||'').split(/\n\s*\n/); nut = clean(paras.join(' ')).slice(0, 600); }
+    var meansBody = String(sec['WHAT IT MEANS'] || '').trim();
+    if (String(sec['WHAT\u2019S IN IT FOR YOU'] || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**What\u2019s In It For You**\n\n' + String(sec['WHAT\u2019S IN IT FOR YOU']).trim();
+    if (String(sec['HOW IT APPLIES'] || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**How It Applies**\n\n' + String(sec['HOW IT APPLIES']).trim();
+    if (String(sec['THE MESSAGE, WORD FOR WORD'] || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**The Message, Word For Word**\n\n' + String(sec['THE MESSAGE, WORD FOR WORD']).trim();
     var layers = [];
+    /* FIX2: a Naya Note body that carries Child/Grandma sections renders
+       them as real layers — the converter used to drop them, so composer
+       notes could never show the full format. Empty sections still drop
+       here; the renderer guarantee below derives them honestly. */
+    var childBody = String(sec['CHILD NOTE'] || '').trim();
+    var grandmaBody = String(sec['GRANDMA NOTE'] || '').trim();
     [['In A Nutshell','IN A NUTSHELL','white','primary',nut],
-     ['What It Means','WHAT IT MEANS','indigo','deeper',sec['WHAT IT MEANS']],
-     ['What\u2019s In It For You','WHAT\u2019S IN IT FOR YOU','gold','deeper',sec['WHAT\u2019S IN IT FOR YOU']],
-     ['How It Applies','HOW IT APPLIES','orange','deeper',sec['HOW IT APPLIES']],
-     ['The Message, Word For Word','THE MESSAGE, WORD FOR WORD','sapphire','deeper',sec['THE MESSAGE, WORD FOR WORD']]
+     ['Child Note','CHILD NOTE','magenta','primary',childBody],
+     ['Grandma Note','GRANDMA NOTE','gold','primary',grandmaBody],
+     ['What It Means','WHAT IT MEANS','indigo','deeper',meansBody]
     ].forEach(function(spec){ var l = layer(spec[0],spec[1],spec[2],spec[3],spec[4]); if (l) layers.push(l); });
-    if (!layers.length) layers.push(layer('In A Nutshell','IN A NUTSHELL','white','primary',clean(r.body||'').slice(0,600)));
+    if (!layers.length) layers.push(layer('In A Nutshell','IN A NUTSHELL','white','primary',clean(bodyNoImg||'').slice(0,600)));
     return {
-      id: 'nn-' + r.id, title: r.title || firstSentence(r.body || '') || 'A note from Naya',
-      subtitle: firstSentence(nut || r.body || ''),
+      id: 'nn-' + r.id, title: r.title || firstSentence(bodyNoImg || '') || 'A note from Naya',
+      subtitle: firstSentence(nut || bodyNoImg || ''),
       created: r.created_at || '', created_at: r.created_at || '',
       topics: ['Naya Notes'], topic: 'Naya Notes', category: 'Smart Note',
-      tone: toneFor(r.id), icon: 'note', kind: 'naya-note', personal: false, layers: layers
+      tone: toneFor(r.id), icon: 'note', kind: 'naya-note', personal: false,
+      machine: '', images: imgFound.images, imageLayout: 'bottom', layers: layers
     };
   }
   function headers(){ return { 'apikey': CFG.key, 'Authorization': 'Bearer ' + CFG.key }; }
@@ -4166,6 +4344,7 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
       notes.sort(function(a,b){ return Date.parse(b.created_at||b.created||'') - Date.parse(a.created_at||a.created||''); });
       notes = notes.slice(0, 200);
       window.NayaFeedIntelligence = { notes: notes, ref: 'live-supabase' };
+      try { applyNoteSeo(notes); } catch(e){}
       var newestMs = notes.length ? Date.parse(notes[0].created_at || notes[0].created || '') : 0;
       var newestKey = notes.length ? (notes[0].id + '|' + notes[0].created_at) : '';
       window.NayaLiveFeed = { ok:true, at:new Date().toISOString(), count:notes.length, newest:notes.length?notes[0].created_at:null, backend:'supabase-direct', error:null };
@@ -4180,6 +4359,9 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
       return window.NayaLiveFeed;
     });
   }
+  /* Snapshot SEO: the baked notes get their machine-note SEO now; the live
+     re-point refreshes it (see fetchLive). */
+  try { applyNoteSeo((window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || []); } catch(e){}
   fetchLive();
   setInterval(fetchLive, 15000);
 })();
@@ -4443,8 +4625,8 @@ function layerColorFor(name) {
   const n = String(name || '').toUpperCase();
   if (n.includes('NUTSHELL')) return '#ffffff';
   if (n.includes('HUMAN NOTE')) return '#a21caf';
-  if (n.includes('CHILD')) return '#8e24aa';
-  if (n.includes('GRANDMA')) return '#3f51b5';
+  if (n.includes('CHILD')) return '#a21caf'; /* FORMAT: Child is magenta — second in the flow from silver */
+  if (n.includes('GRANDMA')) return '#d4a017'; /* FORMAT FIX2: Grandma is deep gold — warm, third in the flow from silver. Measured 2026-11-17: gold hue 43.5 deg, delta-hue 108.8 deg / delta-E 134.0 vs Child magenta #a21caf (hue 294.7 deg); the old purple #8e24aa sat delta-hue 7.2 deg / delta-E 7.6 from Child — the same purple at rest, which the eye rightly failed. Harvested from Laws 3.1, never invented. */
   if (n.includes('NAYA NOTE')) return '#0f52ba';
   if (n.includes('MACHINE')) return '#07925f';
   if (n.includes('WHAT IT MEANS')) return '#0e7490'; // N-7: cyan — MACHINE keeps green
@@ -4715,6 +4897,15 @@ const ActivityLog = (() => {
 })();
 
 window.BoardActions = (() => {
+  /* TEN-STAR POINTS (Shawn's ruling 21:01Z, 2026-11-17): ONE point per
+     star — ten stars is ten points. ONE named constant; set it here and
+     nowhere else. STAR_POINTS_PER_STAR = 1, STAR_RATING_MAX = 10. */
+  const STAR_POINTS_PER_STAR = 1;
+  const STAR_RATING_MAX = 10;
+  function starRatingPoints(stars) {
+    var n = Math.max(0, Math.min(STAR_RATING_MAX, stars || 0));
+    return n * STAR_POINTS_PER_STAR;
+  }
   const STORE_KEY = 'nayanet-board-actions-v1';
   const read = () => { try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { return {}; } };
   const write = s => { try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch {} };
@@ -4932,7 +5123,8 @@ window.BoardActions = (() => {
         }
         /* Sync to Smart List area (naya.smartlist) — the entry is a
            canonical reference: the note's real id and title, its topics,
-           and a category the user files it under (picker, on save). */
+           and a category the user files it under (picker, on favorite —
+           FIX2: Save is a plain save and files under its first topic). */
         try {
           const slKey = 'naya.smartlist';
           const sl = JSON.parse(localStorage.getItem(slKey) || '{}');
@@ -4943,7 +5135,11 @@ window.BoardActions = (() => {
               sl.saved.push({ id: entryId, kind, title: (note && note.title) || title, topics: (note && note.topics) || [], category: null, savedAt: Date.now() });
             }
             localStorage.setItem(slKey, JSON.stringify(sl));
-            openCategoryPicker(b, entryId, kind);
+            /* FIX2: Save is a plain save — one action, no category picker.
+               The entry files under its first topic in Smart Lists (the
+               lists room files each entry under its picked category, else
+               its first topic). The picker stays for Favorite only. */
+            if (kind === 'favorite') openCategoryPicker(b, entryId, kind);
           } else {
             sl.saved = sl.saved.filter(x => !(x.id === entryId && x.kind === kind));
             localStorage.setItem(slKey, JSON.stringify(sl));
@@ -5047,8 +5243,21 @@ window.BoardActions = (() => {
     const right = el('div', 'board-actions-right');
 
     if (!isPersonal) {
-    for (const [label, kind, aria] of [['\u2764\uFE0F LOVE', 'love', 'Love this intelligence'], ['\uD83D\uDC4D LIKE', 'like', 'Like this intelligence']]) {
+    /* FIX2: the heart stays as the Love jewel — Like is gone. The stars
+       ARE the scale (no separate Like), per the ten-star block bottom. */
+    for (const [label, kind, aria] of [['\u2764\uFE0F LOVE', 'love', 'Love this intelligence']]) {
       const b = btn(label, kind, aria);
+      /* NUTSHELL-CLIP FIX (2026-11-17) — THE BETTER PRESENTATION (3D LAW):
+         the heart is a real ruby jewel, not the flat platform emoji: an
+         inline SVG heart with a radial ruby gradient (white top-light at
+         35%/30%, ruby #c62828, deep ruby #7a0e18) — a faceted jewel you
+         can press, inside the same primo pill (which already lifts on
+         hover and presses in on tap). The heart path is harvested
+         verbatim from this file's own activity-log heart. The gradient id
+         is per-card (boardId), so ten cards never share one id. The count
+         badge (digit tile) is appended after, untouched. */
+      var loveGradId = 'loveHeart-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-');
+      b.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="' + loveGradId + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#e5484d"/><stop offset="75%" stop-color="#c62828"/><stop offset="100%" stop-color="#7a0e18"/></radialGradient></defs><path fill="url(#' + loveGradId + ')" d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span><span> LOVE</span>';
       const key = boardId + ':' + kind;
       const countKey = boardId + ':' + kind + ':count';
       /* Count badge — dynamic, device-local */
@@ -5101,14 +5310,17 @@ window.BoardActions = (() => {
 
     /* Rating: collective only (not personal — it's private) */
     if (!isPersonal) {
+    /* FIX2: TEN gold stars, not five — one row of small gold jewels in a
+       circle with the slow flow around them (see .star-rating CSS).
+       Touching a star lights every star up to it. */
     const stars = el('div', 'star-rating');
     stars.setAttribute('role', 'group');
-    stars.setAttribute('aria-label', 'Rate this intelligence from one to five stars');
+    stars.setAttribute('aria-label', 'Rate this intelligence from one to ten stars');
     const rated = store[boardId + ':rate'] || 0;
     /* Numeric rating display — dynamic */
-    const ratingNum = el('span', 'rating-num', rated > 0 ? rated + '/5' : '—');
+    const ratingNum = el('span', 'rating-num', rated > 0 ? rated + '/10' : '—');
     ratingNum.setAttribute('aria-live', 'polite');
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= STAR_RATING_MAX; i++) {
       const sb = document.createElement('button');
       sb.type = 'button'; sb.textContent = '\u2605';
       sb.setAttribute('aria-label', i + ' star' + (i > 1 ? 's' : ''));
@@ -5125,12 +5337,16 @@ window.BoardActions = (() => {
             x.classList.add('pulse');
           }
         });
-        ratingNum.textContent = i + '/5';
+        /* One point per star (STAR_POINTS_PER_STAR) — recorded beside
+           the rating on this device, one place, one constant. */
+        var pts = starRatingPoints(i);
+        try { var ss = read(); ss[boardId + ':rate:points'] = pts; write(ss); } catch (e) {}
+        ratingNum.textContent = i + '/10';
         if (typeof ActivityLog !== 'undefined') {
-          ActivityLog.log('rate', 'Rated "' + title + '" ' + i + ' of 5 stars', 'star', '#d4a017',
+          ActivityLog.log('rate', 'Rated "' + title + '" ' + i + ' of 10 stars', 'star', '#d4a017',
             '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>');
         }
-        toast('INTELLIGENCE RATED', i + ' of 5 stars recorded on this device. Rating is feedback, not truth.', '#d4a017');
+        toast('INTELLIGENCE RATED', i + ' of 10 stars — ' + pts + ' points (1 per star) recorded on this device. Rating is feedback, not truth.', '#d4a017');
       });
       stars.appendChild(sb);
     }
@@ -5168,13 +5384,35 @@ window.BoardActions = (() => {
       right.appendChild(share);
     }
 
+    /* FIX2: the comment box unfolds below the note. COMMENT is its own
+       button; it opens and closes the panel that already lives under
+       this row (addIntel) — nothing new is invented, the fold is the
+       experience. */
+    const commentBtn = btn('\uD83D\uDCAC COMMENT', 'comment', 'Show or hide the comment box');
+    commentBtn.setAttribute('aria-expanded', 'false');
+    commentBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const board = commentBtn.closest('.intel-board, .board, [data-board]');
+      const panel = board ? board.querySelector('.add-intel') : null;
+      if (!panel) return;
+      const willOpen = panel.hidden;
+      panel.hidden = !willOpen;
+      panel.classList.toggle('unfolding', willOpen);
+      commentBtn.classList.toggle('on', willOpen);
+      commentBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+    right.appendChild(commentBtn);
+
     wrap.append(left, center, right);
     return wrap;
   }
 
   function addIntel(boardId) {
-    const userNameNow = (function(){ try { return localStorage.getItem('nayanet_smart_name') || 'Shawn'; } catch(e){ return 'Shawn'; } })();
+    const userNameNow = (function(){ try { return localStorage.getItem('nayanet_smart_name') || 'You'; } catch(e){ return 'You'; } })();
     const wrap = el('div', 'add-intel');
+    /* FIX2: the comment box starts folded and unfolds below the note when
+       COMMENT is tapped (see bottomActions) — the fold is the experience. */
+    wrap.hidden = true;
     const b = el('b', '', 'ADD TO THE INTELLIGENCE');
     const row = el('div', 'add-intel-row');
     const input = document.createElement('input');
@@ -5962,9 +6200,17 @@ function HubView(params) {
   } else {
     const head = el('div', 'room-head');
     head.style.setProperty('--room-accent', room.accent);
+    // The Hub greets the remembered name on every route, not only the feed
+    // hero (Sweep #3, OWN-6): the hoist remembers the name at boot, so the
+    // room head speaks it too. No name claimed: no greeting line at all.
+    let roomWho = '';
+    try { roomWho = (localStorage.getItem('nayanet_smart_name') || '').trim().split(/\s+/)[0]; } catch (e) {}
+    const roomHour = new Date().getHours();
+    const roomGreet = roomHour < 12 ? 'Good morning' : roomHour < 18 ? 'Good afternoon' : 'Good evening';
     head.innerHTML =
       '<div class="kicker">' + esc(room.kicker) + '</div>' +
       '<h2>' + esc(room.name) + '</h2>' +
+      (roomWho ? '<p class="room-greet">' + roomGreet + ', ' + esc(roomWho) + '.</p>' : '') +
       '<p>' + esc(roomDesc(room.id)) + '</p>';
     outlet.appendChild(head);
     if (room.id !== 'settings') outlet.appendChild(searchWrap);
@@ -5989,7 +6235,9 @@ function HubView(params) {
   main.append(top, lensSlot, outlet);
 
   /* ONE-BOTTOM-BAR (2026-11-11): the 12-icon eco-bottombar builder lived here.
-     Replaced by the one bottom bar component (static HTML before </body>).
+     Replaced by the one bottom bar component. SWEEP-3 F10 (2026-11-17): the
+     static fallback nav now sits right after #app (before the scripts, so
+     init() below can replace it at boot); the dead eco-dock CSS is gone (F7).
      The notifications bar below it is untouched — the component stacks above it. */
 
   /* ——— THE FIVE bottom bar: NayaNotif (HUB SIDEBARS+PLUS 2026-11-16) ———
@@ -6062,19 +6310,25 @@ window.NayaNotif = window.NayaNotif || {
     },
     init() {
       var bar = document.getElementById('naya-notif-bar');
-      if (bar) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
+      if (bar && !bar.hasAttribute('data-static')) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
+      if (bar) bar.remove(); /* SWEEP-3 F10: the static fallback (after #app) is replaced by the live bar — same six tiles, same colors; counts, menus and fold come with it. */
       var self = this;
       var ICONS = {
         mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
         activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
-        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>',
+        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg>',
         eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
         plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
       };
-      /* SIXTH seg: plusR (CONNECT) reuses the plus SVG — the two + buttons are
-     distinguished by position and menu (different jobs, never mixed up).
+      /* SIXTH seg: plusR (CONNECT) reuses the plus SVG — REVERTED 2026-11-17
+     19:31Z (captain's ruling, his word governs): CONNECT IS "+" — red plus,
+     on every page. The colour is the differentiator; the chain-link glyph
+     from sweep-3 F1 is not merged and is gone. One-icon law: the Hub bar
+     matches the Personal bar again. F2 stands: spaces (WORLDS) is a globe
+     now — the same globe geometry the Create-world menu item already
+     carries — never the house again (a house means HOME).
      FIX-4 (Deep Palette, DNA §1): rims run the spectrum, one color each —
-     left + royal purple, mail sapphire, activity emerald, home deep gold,
+     left + royal purple, mail sapphire, activity emerald, worlds deep gold,
      grid burnt orange, right + ruby. Never the same twice in a row. */
   var SEGS = [['plus', 'ADD', '#8e24aa'], ['mail', 'MAIL', '#0f52ba'], ['activity', 'ACTIVITY', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plusR', 'CONNECT', '#c62828']];
       bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
@@ -6149,12 +6403,178 @@ window.NayaNotif = window.NayaNotif || {
     if (mh > window.innerHeight - 16) { menu.style.maxHeight = (window.innerHeight - 16) + 'px'; menu.style.overflowY = 'auto'; }
     else { menu.style.maxHeight = ''; menu.style.overflowY = ''; }
   };
+
+  /* ——— HUB SMART NOTE COMPOSER (FORMAT FIX2, 2026-11-17) ———
+     The + CREATE "Smart note" item opens this composer ON the staged Hub —
+     the flow never leaves the page for the live personal page. It writes
+     the note in the full Smart Note format (title, nutshell, Child,
+     Grandma, What It Means) and drafts it on this device. It NEVER posts:
+     posting a Smart Note needs Shawn's one-time permission — that gate is
+     HIS hand, named plainly in the composer itself, and the draft lives
+     under its own key (nayanet.hub.composer.draft.v1), never touching any
+     other draft. The draft body is kept in the same markdown shape the
+     feed parses (## IN A NUTSHELL / ## CHILD NOTE / ## GRANDMA NOTE /
+     ## WHAT IT MEANS), so when the gate opens it files as-is and renders
+     the full format. Pattern harvested from the share dialog above
+     (fixed overlay + box + Close). */
+  window.NayaHubComposer = (function () {
+    var DRAFT_KEY = 'nayanet.hub.composer.draft.v1';
+    var overlay = null, formBox = null, gateBox = null;
+    var fields = {};
+    var GATE_TEXT = "Posting needs Shawn's one-time permission. This note is drafted on this device — it is NOT posted, and nothing leaves this page until he gives that permission.";
+    function readDraft() { try { return JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null'); } catch (e) { return null; } }
+    function writeDraft(d) { try { localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); } catch (e) {} }
+    function mkField(label, key, placeholder, rows) {
+      var wrap = document.createElement('label');
+      wrap.style.cssText = 'display:block;margin:0 0 14px;font-size:17px;font-weight:700;color:#ffffff;';
+      wrap.textContent = label;
+      var input = rows ? document.createElement('textarea') : document.createElement('input');
+      if (!rows) input.type = 'text';
+      if (rows) input.rows = rows;
+      input.placeholder = placeholder;
+      input.setAttribute('aria-label', label);
+      input.style.cssText = 'display:block;width:100%;box-sizing:border-box;margin-top:8px;background:#050607;border:2px solid rgba(255,255,255,.22);border-radius:12px;color:#ffffff;font-size:17px;line-height:1.6;padding:12px 14px;outline:0;';
+      wrap.appendChild(input);
+      fields[key] = input;
+      return wrap;
+    }
+    function mkBtn(label, primary) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      b.style.cssText = 'border:0;border-radius:999px;padding:12px 22px;font-size:17px;font-weight:700;cursor:pointer;' +
+        (primary ? 'background:#8e24aa;color:#fff;' : 'background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);');
+      return b;
+    }
+    function draftBody(d) {
+      return '# ' + (d.title || 'Untitled Smart Note') + '\n\n## IN A NUTSHELL\n' + (d.nutshell || '') +
+        '\n\n## CHILD NOTE\n' + (d.child || '') + '\n\n## GRANDMA NOTE\n' + (d.grandma || '') +
+        '\n\n## WHAT IT MEANS\n' + (d.means || '');
+    }
+    function showForm() {
+      formBox.style.display = 'block';
+      gateBox.style.display = 'none';
+    }
+    function showGate(d) {
+      formBox.style.display = 'none';
+      gateBox.style.display = 'block';
+      var t = gateBox.querySelector('[data-gate-title]');
+      if (t) t.textContent = d.title || 'Untitled Smart Note';
+    }
+    function post() {
+      var d = {
+        title: (fields.title.value || '').trim(),
+        nutshell: (fields.nutshell.value || '').trim(),
+        child: (fields.child.value || '').trim(),
+        grandma: (fields.grandma.value || '').trim(),
+        means: (fields.means.value || '').trim()
+      };
+      if (!d.title || !d.nutshell) {
+        toast('WRITE IT FIRST', 'A title and a nutshell make the note — write those two, then post.', '#d4a017');
+        if (!d.title) fields.title.focus();
+        else fields.nutshell.focus();
+        return;
+      }
+      d.body = draftBody(d);
+      d.status = 'draft-awaiting-permission';
+      d.savedAt = new Date().toISOString();
+      writeDraft(d);
+      showGate(d);
+    }
+    function build() {
+      overlay = document.createElement('div');
+      overlay.id = 'naya-hub-composer';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-label', 'Write a Smart Note');
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.72);padding:20px;overflow-y:auto;';
+      var box = document.createElement('div');
+      box.style.cssText = 'width:min(560px,94vw);max-height:88vh;overflow-y:auto;background:#050607;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px;color:#fff;box-shadow:0 28px 64px rgba(0,0,0,.6);';
+      formBox = document.createElement('div');
+      var head = document.createElement('div');
+      head.textContent = 'Write a Smart Note';
+      head.style.cssText = 'font-size:25px;font-weight:800;margin-bottom:6px;color:#ffffff;';
+      var gateNote = document.createElement('div');
+      gateNote.textContent = GATE_TEXT;
+      gateNote.style.cssText = 'font-size:17px;line-height:1.6;color:#ffffff;border:2px solid #d4a017;border-radius:12px;padding:12px 14px;margin-bottom:18px;background:#050607;';
+      formBox.appendChild(head);
+      formBox.appendChild(gateNote);
+      formBox.appendChild(mkField('Title', 'title', 'What is this intelligence called?', 0));
+      formBox.appendChild(mkField('In a nutshell', 'nutshell', 'The whole idea in a few sentences.', 3));
+      formBox.appendChild(mkField('Child — so a child understands it', 'child', 'Say it simply, like you would to a child.', 3));
+      formBox.appendChild(mkField('Grandma — so a grandma understands it', 'grandma', 'Say it warmly, like you would to a grandma.', 3));
+      formBox.appendChild(mkField('What it means', 'means', 'What does it mean — for the reader, in their life?', 3));
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;';
+      var postBtn = mkBtn('Post this Smart Note', true);
+      postBtn.addEventListener('click', post);
+      var closeBtn = mkBtn('Close', false);
+      closeBtn.addEventListener('click', close);
+      row.appendChild(postBtn);
+      row.appendChild(closeBtn);
+      formBox.appendChild(row);
+      gateBox = document.createElement('div');
+      gateBox.style.display = 'none';
+      var gHead = document.createElement('div');
+      gHead.textContent = 'Draft saved — not posted';
+      gHead.style.cssText = 'font-size:25px;font-weight:800;margin-bottom:6px;color:#ffffff;';
+      var gTitle = document.createElement('div');
+      gTitle.setAttribute('data-gate-title', '');
+      gTitle.style.cssText = 'font-size:17px;font-weight:700;color:#ffffff;margin-bottom:12px;';
+      var gBody = document.createElement('div');
+      gBody.textContent = 'Your note is drafted on this device in the full Smart Note format. ' + GATE_TEXT;
+      gBody.style.cssText = 'font-size:17px;line-height:1.6;color:#ffffff;border:2px solid #d4a017;border-radius:12px;padding:12px 14px;margin-bottom:18px;background:#050607;';
+      var gRow = document.createElement('div');
+      gRow.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;';
+      var editBtn = mkBtn('Keep editing', true);
+      editBtn.addEventListener('click', showForm);
+      var gCloseBtn = mkBtn('Close', false);
+      gCloseBtn.addEventListener('click', close);
+      gRow.appendChild(editBtn);
+      gRow.appendChild(gCloseBtn);
+      gateBox.appendChild(gHead);
+      gateBox.appendChild(gTitle);
+      gateBox.appendChild(gBody);
+      gateBox.appendChild(gRow);
+      box.appendChild(formBox);
+      box.appendChild(gateBox);
+      overlay.appendChild(box);
+      overlay.addEventListener('click', function (ev) { if (ev.target === overlay) close(); });
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape' && overlay.style.display !== 'none') close();
+      });
+      document.body.appendChild(overlay);
+    }
+    function open() {
+      if (!overlay) build();
+      var d = readDraft();
+      if (d) {
+        fields.title.value = d.title || ''; fields.nutshell.value = d.nutshell || '';
+        fields.child.value = d.child || ''; fields.grandma.value = d.grandma || '';
+        fields.means.value = d.means || '';
+        if (d.status === 'draft-awaiting-permission') showGate(d);
+        else showForm();
+      } else {
+        showForm();
+      }
+      overlay.style.display = 'flex';
+    }
+    function close() { if (overlay) overlay.style.display = 'none'; }
+    return { open: open, close: close };
+  })();
+
   if (!window.__hubPlusBound) {
     window.__hubPlusBound = true;
     document.addEventListener('click', function (e) {
       if (!e.target || !e.target.closest) return;
       var it = e.target.closest('[data-hub-plus]');
       if (it) {
+        /* FIX2: "Smart note" opens the on-page composer — the flow stays
+           on the staged Hub and never leaves for the live personal page. */
+        if (it.getAttribute('data-hub-composer') === 'smart-note') {
+          window.hubClosePlusMenus();
+          if (window.NayaHubComposer) window.NayaHubComposer.open();
+          return;
+        }
         var href = it.getAttribute('data-hub-href');
         window.hubClosePlusMenus();
         if (href) location.href = href;
@@ -6639,11 +7059,11 @@ window.NayaJewels = (() => {
       if (qn) {
         who = qn.split(/\s+/)[0];
         try { localStorage.setItem('nayanet_smart_name', qn); } catch {}
-        try { history.replaceState(null, '', location.pathname + location.hash); } catch {}
+        try { qp.delete('name'); qp.delete('userName'); qp.delete('alias'); var rest = qp.toString(); history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash); } catch {}
       } else {
         who = (localStorage.getItem('nayanet_smart_name') || '').trim().split(/\s+/)[0];
         if (qa) {
-          try { history.replaceState(null, '', location.pathname + location.hash); } catch {}
+          try { qp.delete('name'); qp.delete('userName'); qp.delete('alias'); var rest = qp.toString(); history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash); } catch {}
         }
       }
       if (!who) {
@@ -6753,21 +7173,20 @@ window.NayaJewels = (() => {
       const TONES = ['magenta', 'purple', 'blue', 'green', 'gold', 'orange', 'red'];
       let h = 0;
       for (const ch of idStr) h = ((h * 31) + ch.charCodeAt(0)) >>> 0;
+      /* SMART NOTE FORMAT (2026-11-17): the front is the nutshell only here —
+         the human-note and naya-note sections are cut (see hubRowToNote).
+         The machine record is not a layer: it rides on the note as
+         note.machine and works the SEO back end (see nayaNoteSeo). */
       const layers = [{ name: 'In A Nutshell', key: 'IN A NUTSHELL', color: 'white', tier: 'primary', body: nutshell }];
-      if (c.human) layers.push({ name: 'What It Says', key: 'WHAT IT SAYS', color: 'purple', tier: 'deeper', body: String(c.human) });
-      if (c.naya) layers.push({ name: 'What Naya Hears', key: 'WHAT NAYA HEARS', color: 'teal', tier: 'deeper', body: String(c.naya) });
       const mach = c.machine_note || c.machine;
-      if (mach) {
-        let mbody = mach;
-        if (typeof mbody !== 'string') { try { mbody = JSON.stringify(mbody, null, 2); } catch (e) { mbody = String(mbody); } }
-        layers.push({ name: 'Machine Record', key: 'MACHINE RECORD', color: 'sapphire', tier: 'deeper', body: mbody });
-      }
+      const machineText = (typeof mach === 'string') ? mach : (mach ? JSON.stringify(mach) : '');
       const topics = Array.isArray(c.topics) ? c.topics.filter(t => t) : [];
       return {
         id: idStr, title: nutshell, subtitle: String(c.summary || ''),
         created: c.created_at || '', created_at: c.created_at || '',
         tone: TONES[h % TONES.length], icon: 'note', kind: 'smart-note',
         personal: false, topics: topics, topic: topics[0] || '',
+        machine: machineText, images: Array.isArray(c.images) ? c.images : [], imageLayout: c.imageLayout || 'bottom',
         truth_state: String(c.truth_state || ''), layers: layers
       };
     }
@@ -6817,17 +7236,48 @@ window.NayaJewels = (() => {
          feed (1,100 boards, one forEach). Same boards, same order, same
          final DOM — only the pacing changes. A generation token stops a
          stale fill when the room re-renders. */
+      /* SMART NOTE FORMAT — the unfold fits the page (2026-11-17): three
+         notes where three fit, two where two fit; the next page unfolds on
+         click (adapted from the agreement unfold — hidden beats revealed by
+         one button, never a half-shown board). The page size follows the
+         viewport (3 at desktop widths, 2 below 1024px); the shown count
+         survives re-renders of the same list, and resets when the list
+         itself changes (a newer note arrives). */
+      const nfPageSize = (typeof window !== 'undefined' && window.innerWidth >= 1024) ? 3 : 2;
+      const nfKey = list.length + '|' + (list[0] ? String(list[0].id || '') : '');
+      let nfShown = (feedEl._nfKey === nfKey && feedEl._nfShown) ? feedEl._nfShown : nfPageSize;
+      nfShown = Math.max(nfPageSize, Math.min(nfShown, list.length));
+      feedEl._nfKey = nfKey; feedEl._nfShown = nfShown;
+      const nfBtn = () => {
+        const b = el('button', 'primo ib-unfold-next', 'Keep reading \u25C6');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Show the next notes');
+        b.addEventListener('click', () => {
+          const first = feedEl._nfShown;
+          feedEl._nfShown = Math.min(feedEl._nfShown + nfPageSize, list.length);
+          const end = feedEl._nfShown;
+          for (let i = first; i < end; i++) feedEl.appendChild(intelBoard(list[i], i, stream));
+          if (window.NayaJewels) window.NayaJewels.enhanceBullets(feedEl);
+          const nb = feedEl.querySelector('.ib-unfold-next');
+          if (nb) nb.remove();
+          if (feedEl._nfShown < list.length) feedEl.appendChild(nfBtn());
+          const firstNew = feedEl.children[first] || null;
+          if (firstNew && firstNew.scrollIntoView) { try { firstNew.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {} }
+        });
+        return b;
+      };
       const RV_CHUNK = 24;
       const rvGen = (feedEl._rvGen = (feedEl._rvGen || 0) + 1);
       let rvIdx = 0;
       feedEl.setAttribute('aria-busy', 'true');
       const rvStep = () => {
         if (feedEl._rvGen !== rvGen || !feedEl.isConnected) return;
-        const end = Math.min(rvIdx + RV_CHUNK, list.length);
+        const end = Math.min(rvIdx + RV_CHUNK, nfShown);
         for (; rvIdx < end; rvIdx++) feedEl.appendChild(intelBoard(list[rvIdx], rvIdx, stream));
-        if (rvIdx < list.length) { setTimeout(rvStep, 0); return; }
+        if (rvIdx < nfShown) { setTimeout(rvStep, 0); return; }
         feedEl.setAttribute('aria-busy', 'false');
         if (window.NayaJewels) window.NayaJewels.enhanceBullets(feedEl);
+        if (nfShown < list.length) feedEl.appendChild(nfBtn());
       };
       rvStep();
     }
@@ -7145,6 +7595,44 @@ window.NayaJewels = (() => {
   /* Matches the deployed original: blockTop (jewel+title+meta / truth+actions),
      nutshell, layers (jewel+name+state), actions bar, provenance foot,
      add-intel. Nothing removed, nothing flattened. */
+  /* ——— SMART NOTE FORMAT — images (§3.5) ———
+     note.images is the note's image set (array of URLs or {src} objects,
+     at most 9 — one feature + an 8-cell grid is the widest beautiful grid).
+     note.imageLayout is the citizen's choice at upload: 'bottom' (default),
+     'top' (feature leads), or 'both' (first top, rest bottom). Multiple
+     images render as one feature top + a grid bottom: 2 cols up to 4,
+     3 cols above that. Every image is 16:9, object-fit cover, aligned. */
+  function noteImages(note) {
+    const raw = (note && Array.isArray(note.images)) ? note.images : [];
+    const out = [];
+    raw.forEach(function (im) {
+      if (out.length >= 9) return;
+      const src = String((im && typeof im === 'object' ? im.src : im) || '').trim();
+      if (src) out.push({ src: src });
+    });
+    return out;
+  }
+  function featureImageEl(im, note) {
+    const wrap = el('div', 'ib-feature');
+    const img = document.createElement('img');
+    img.src = im.src; img.alt = String(note.title || 'Smart Note image');
+    img.loading = 'lazy'; img.decoding = 'async';
+    wrap.appendChild(img);
+    return wrap;
+  }
+  function imageGridEl(list, note) {
+    const cols = list.length <= 1 ? 1 : (list.length <= 4 ? 2 : 3);
+    const grid = el('div', 'ib-imggrid cols-' + cols);
+    list.forEach(function (im) {
+      const cell = el('div', 'ib-img');
+      const img = document.createElement('img');
+      img.src = im.src; img.alt = '';
+      img.loading = 'lazy'; img.decoding = 'async';
+      cell.appendChild(img);
+      grid.appendChild(cell);
+    });
+    return grid;
+  }
   function intelBoard(note, idx, stream) {
     const b = el('article', 'intel-board tone-' + (note.tone || 'purple'));
     b.setAttribute('aria-label', 'Smart Note ' + (note.id || 'untitled'));
@@ -7266,12 +7754,31 @@ window.NayaJewels = (() => {
     }
     b.appendChild(top);
 
+    /* — Images, feature-top (§3.5): the first image leads when the citizen
+       chose top/both; the rest (or all, by default) sit below the message. — */
+    const ibImgs = noteImages(note);
+    const ibLayout = (note.imageLayout === 'top' || note.imageLayout === 'both') ? note.imageLayout : 'bottom';
+    if (ibImgs.length && ibLayout !== 'bottom') b.appendChild(featureImageEl(ibImgs[0], note));
+
     /* — Nutshell: extracted from the "In A Nutshell" layer — */
     const nutshellLayer = (note.layers || []).find(L =>
       String(L.name || '').toUpperCase().includes('NUTSHELL'));
+    /* FIX2: a note with no Nutshell layer still opens with IN A NUTSHELL —
+       its "What it is" layer IS its nutshell, in its own words. It moves
+       up into the nutshell slot (never copied) so the format's first
+       section is present on every card. */
+    var nutSourceLayer = null;
+    if (!nutshellLayer) {
+      nutSourceLayer = (note.layers || []).find(L =>
+        /WHAT IT IS/i.test(String(L.name || ''))) || null;
+    }
     if (nutshellLayer) {
       const ns = el('div', 'ib-nutshell');
-      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(nutshellLayer.body.slice(0, 600));
+      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(nutshellLayer.body); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — the 600-char slice cut every long nutshell mid-sentence with no ellipsis and no way to expand it. */
+      b.appendChild(ns);
+    } else if (nutSourceLayer) {
+      const ns = el('div', 'ib-nutshell');
+      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(String(nutSourceLayer.body || '')); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — same cut, same fix. */
       b.appendChild(ns);
     }
 
@@ -7292,8 +7799,13 @@ window.NayaJewels = (() => {
     const isMeansLayer = (L) => /WHAT IT MEANS/i.test(String(L.name || '').toUpperCase());
     let goldLayer = null, connectLayer = null, redLayer = null;
     const otherLayers = [];
+    /* SMART NOTE FORMAT (2026-11-17): the cut sections never render, whatever
+       the data carries — the human-note section (and its governed-runtime
+       name, What It Says) and the naya-note section (What Naya Hears). The
+       nutshell IS the human note; "Naya Note" is the way Naya writes. */
+    const isCutLayer = (L) => /human note|what it says|naya note|what naya hears/i.test(String(L.name || ''));
     (note.layers || []).forEach(L => {
-      if (L === nutshellLayer || isMachineLayer(L)) return; // v5.1: no machine note anymore
+      if (L === nutshellLayer || L === nutSourceLayer || isMachineLayer(L) || isCutLayer(L)) return; // v5.1: no machine note anymore; format: no cut sections (FIX2: the nutshell-source layer moved up already)
       if (isGoldLayer(L) && !goldLayer) { goldLayer = L; return; }
       if (isConnectLayer(L) && !connectLayer) { connectLayer = L; return; }
       if (isRedLayer(L) && !redLayer) { redLayer = L; return; }
@@ -7311,24 +7823,134 @@ window.NayaJewels = (() => {
       }
       goldEntry = Object.assign({}, goldLayer, { body: goldBody });
     }
-    const orderedLayers = otherLayers.slice();
+    /* SMART NOTE FORMAT (2026-11-17): the front order is Child -> Grandma ->
+       What It Means (after the nutshell, rendered above). The rank sort
+       enforces it; gold/red still fold in after What It Means, as before. */
+    const rankOf = (L) => {
+      const n = String(L.name || '').toUpperCase();
+      if (n.includes('CHILD')) return 0;
+      if (n.includes('GRANDMA')) return 1;
+      if (n.includes('WHAT IT MEANS')) return 2;
+      return 3;
+    };
+    const orderedLayers = otherLayers.slice().sort((a, b) => rankOf(a) - rankOf(b));
     const anchor = orderedLayers.findIndex(isMeansLayer);
     const insertAt = anchor === -1 ? orderedLayers.length : anchor + 1;
     const afterMeans = [];
     if (goldEntry) afterMeans.push(goldEntry);
     if (redLayer) afterMeans.push(redLayer);
     orderedLayers.splice(insertAt, 0, ...afterMeans);
+    /* ——— SMART NOTE FORMAT FIX2 (2026-11-17): the format holds on EVERY
+       card — IN A NUTSHELL -> Child -> Grandma -> What It Means. A section
+       missing from the data is derived from the note's OWN words, never
+       invented: Child = first sentence of the nutshell-source; Grandma =
+       first unused sentence of the nutshell-source — What It Means'
+       first sentence counts as already used (Means prints it), and no
+       other sentence of the means-source is taken either, or Grandma
+       would print again inside What It Means below; What It Means =
+       the means-source body, else an honest stub. A sentence already
+       used by another derived layer is never repeated — that layer
+       then says plainly it was not written.
+       Real layers always win; derived layers sort by the same rank. ——— */
+    var fmtFirstSentence = function (t) {
+      var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
+      if (!c) return '';
+      var mm = c.match(/^[^.!?]+[.!?]/);
+      return (mm ? mm[0] : c.slice(0, 140)).trim();
+    };
+    var fmtFindLayer = function (re) {
+      for (var fi = 0; fi < orderedLayers.length; fi++) {
+        if (re.test(String(orderedLayers[fi].name || '').toUpperCase())) return orderedLayers[fi];
+      }
+      return null;
+    };
+    var fmtNutText = nutshellLayer ? String(nutshellLayer.body || '')
+      : (nutSourceLayer ? String(nutSourceLayer.body || '') : String(note.subtitle || ''));
+    var fmtMeansReal = fmtFindLayer(/WHAT IT MEANS/);
+    var fmtWhy = fmtFindLayer(/WHY IT MATTERS/);
+    var fmtMeansText = fmtMeansReal ? String(fmtMeansReal.body || '')
+      : (fmtWhy ? String(fmtWhy.body || '') : '');
+    var fmtSentences = function (t) {
+      /* Sentences of a text, in order. The first entry is exactly
+         fmtFirstSentence(t): the same cleaning, the same 140-char
+         fallback for a fragment with no terminator. */
+      var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
+      if (!c) return [];
+      var fmtOut = [];
+      var fmtRest = c;
+      var fmtMm;
+      while ((fmtMm = fmtRest.match(/^[^.!?]+[.!?]/))) {
+        fmtOut.push(fmtMm[0].trim());
+        fmtRest = fmtRest.slice(fmtMm[0].length).trim();
+        if (!fmtRest) break;
+      }
+      if (fmtRest) fmtOut.push(fmtRest.slice(0, 140).trim());
+      return fmtOut.filter(Boolean);
+    };
+    var fmtUsed = {};
+    var fmtTake = function (texts) {
+      /* First UNUSED sentence across the texts, in order — scanning
+         every sentence of each text, not just its first. A sentence
+         already used by another layer (derived or printed) is skipped. */
+      for (var ti = 0; ti < texts.length; ti++) {
+        var fmtSs = fmtSentences(texts[ti]);
+        for (var fmtSi = 0; fmtSi < fmtSs.length; fmtSi++) {
+          if (fmtSs[fmtSi] && !fmtUsed[fmtSs[fmtSi]]) { fmtUsed[fmtSs[fmtSi]] = 1; return fmtSs[fmtSi]; }
+        }
+      }
+      return '';
+    };
+    if (!fmtFindLayer(/CHILD/)) {
+      var fmtChildBody = fmtTake([fmtNutText]);
+      var fmtChildLayer = { name: 'Child Note', key: 'CHILD NOTE', tier: 'primary', body: fmtChildBody || 'No Child layer was written for this note.' };
+      fmtChildLayer.color = 'magenta';
+      orderedLayers.push(fmtChildLayer);
+    }
+    if (!fmtFindLayer(/GRANDMA/)) {
+      /* GRANDMA-REPEAT FIX (2026-11-17): What It Means prints its own
+         first sentence, so that sentence counts as already used before
+         Grandma is derived — Grandma never takes it, and never takes
+         any other sentence of the means-source either: a sentence taken
+         from it would print again inside What It Means directly below,
+         the same doubling-up one section down. Grandma falls through
+         to the nutshell's next unused sentence — its second sentence
+         when Child took the first — or the honest stub when the
+         nutshell has no unused sentence left. Nothing is invented:
+         every Grandma line is still the note's own words. */
+      var fmtMeansFirst = fmtFirstSentence(fmtMeansText);
+      if (fmtMeansFirst) fmtUsed[fmtMeansFirst] = 1;
+      var fmtGrandmaBody = fmtTake([fmtNutText]);
+      var fmtGrandmaLayer = { name: 'Grandma Note', key: 'GRANDMA NOTE', tier: 'primary', body: fmtGrandmaBody || 'No Grandma layer was written for this note.' };
+      fmtGrandmaLayer.color = 'gold';
+      orderedLayers.push(fmtGrandmaLayer);
+    }
+    if (!fmtMeansReal) {
+      /* The means-source layer ("Why it matters") is carried AS What It
+         Means — it moves, never copies, so its body never prints twice. */
+      if (fmtWhy) {
+        var fmtWhyIdx = orderedLayers.indexOf(fmtWhy);
+        if (fmtWhyIdx > -1) orderedLayers.splice(fmtWhyIdx, 1);
+      }
+      var fmtMeansLayer = { name: 'What It Means', key: 'WHAT IT MEANS', tier: 'primary', body: fmtMeansText || 'No meaning was written for this note.' };
+      fmtMeansLayer.color = 'indigo';
+      orderedLayers.push(fmtMeansLayer);
+    }
+    orderedLayers.sort(function (a, b) { return rankOf(a) - rankOf(b); });
     orderedLayers.forEach(L => {
       const layer = el('div', 'ib-layer layer-' + L.color + (L.tier === 'deeper' ? ' is-deeper' : ''));
       layer.style.setProperty('--lc', layerColorFor(L.name)); // v5: layer light = its jewel colour
       const lh = el('button', 'ib-layer-head');
-      lh.setAttribute('aria-expanded', L.tier === 'primary' ? 'true' : 'false');
+      /* FIX2: What It Means stands expanded on first read — the final
+         section is visible, never hidden behind a collapsed control. The
+         head still toggles, so a reader can fold it away. */
+      const fmtOpen = (L.tier === 'primary') || isMeansLayer(L);
+      lh.setAttribute('aria-expanded', fmtOpen ? 'true' : 'false');
       lh.innerHTML =
         layerJewel(L.name, layerColorFor(L.name)) +
         '<b>' + esc(L.name) + '</b>';
       const lb = el('div', 'ib-layer-body');
       lb.innerHTML = md(L.body);
-      if (L.tier !== 'primary') lb.hidden = true;
+      if (!fmtOpen) lb.hidden = true;
       else lh.classList.add('open');
       lh.addEventListener('click', (e) => {
         const open = lb.hidden;
@@ -7341,11 +7963,43 @@ window.NayaJewels = (() => {
     });
     b.appendChild(layers);
 
+    /* — Images, bottom grid (§3.5): 16:9, aligned; one feature top + grid
+       below when both; no images = no container, never a hole. — */
+    const ibRest = ibLayout === 'bottom' ? ibImgs : ibImgs.slice(1);
+    if (ibRest.length) b.appendChild(imageGridEl(ibRest, note));
+
     /* — Provenance foot — */
+    /* — Provenance foot — NUTSHELL-CLIP FIX (2026-11-17): the old line
+       printed the raw machine ID in 12.5px with word-break:break-all — a
+       machine-looking string under a beautiful card. The new line is
+       a signature, not a serial number: gold "Smart Note" label, the
+       note's own date in human words, "from your Smart Feed". The date is
+       dynamic per note (created/created_at, else the YYYYMMDD inside the
+       id, else omitted) — never a machine string. */
+    var footDateStr = '';
+    (function () {
+      var footD = note.created_at || note.created || '';
+      var footParsed = footD ? new Date(footD) : null;
+      if (footParsed && !isNaN(footParsed.getTime())) {
+        footDateStr = footParsed.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+      } else {
+        var footDm = String(note.id || '').match(/(20\d\d)(\d\d)(\d\d)/);
+        if (footDm) {
+          var footD2 = new Date(+footDm[1], +footDm[2] - 1, +footDm[3]);
+          if (!isNaN(footD2.getTime())) footDateStr = footD2.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+      }
+    })();
+    var footParts = [];
+    footParts.push(note.kind === 'official'
+      ? '<span class="ib-foot-label">Official NayaNET Guide</span>'
+      : '<span class="ib-foot-label">Smart Note</span>');
+    if (footDateStr) footParts.push('<span>' + esc(footDateStr) + '</span>');
+    footParts.push(note.kind === 'official'
+      ? '<span>from the Intelligent Library</span>'
+      : '<span>from your Smart Feed</span>');
     const foot = el('div', 'ib-foot');
-    foot.innerHTML = note.kind === 'official'
-      ? '<span>Official NayaNET Guide \u00B7 from the Intelligent Library</span>'
-      : '<span>Smart Note ' + esc(note.id || '') + ' \u00B7 from your Smart Feed</span>';
+    foot.innerHTML = footParts.join('<span class="ib-foot-dot">\u00B7</span>');
     b.appendChild(foot);
 
     /* — Social actions: top-right + bottom bar + add intel (direct, no queue) — */
@@ -7370,11 +8024,9 @@ window.NayaJewels = (() => {
         console.error('Board action error:', e.message);
       }
     }
-    /* Microcopy trust signals (from deployed original) */
-    const micro = el('div', 'ib-microcopy');
-    micro.innerHTML = '<span class="left">ONE INTELLIGENCE &middot; MANY VIEWS &middot; ONE IDENTITY</span>' +
-      '<span class="right">TRUST: SOURCE / INTERPRETATION SEPARATED</span>';
-    b.appendChild(micro);
+    /* NUTSHELL-CLIP FIX (2026-11-17): the two footer lines are removed —
+       they were random text that did not need to be there. The block is
+       gone entirely (element and CSS), not hidden. */
 
     return b;
   }
@@ -8836,7 +9488,7 @@ function SettingsRoom(){
     return row;
   }
   function applyTextSize(){
-    const s=pref('nayanet.pref.text_size','16');
+    const s=pref('nayanet.pref.text_size','17');
     try{document.documentElement.style.setProperty('--fs-body',s+'px');}catch(e){}
   }
   applyTextSize();
@@ -9065,7 +9717,7 @@ function SettingsRoom(){
         '<div style="color:var(--ink-dim);font-size:17px;margin-top:16px">Text size:</div></div>';
       const cur=pref('nayanet.pref.text_size','16');
       const row=document.createElement('div');row.style.cssText='margin-top:10px';
-      row.appendChild(seg([{label:'14',value:'14'},{label:'16',value:'16'},{label:'20',value:'20'}],cur,function(v){setPref('nayanet.pref.text_size',v);applyTextSize();render();}));
+      row.appendChild(seg([{label:'17',value:'17'},{label:'19',value:'19'},{label:'25',value:'25'}],cur,function(v){setPref('nayanet.pref.text_size',v);applyTextSize();render();}));
       appear.body.appendChild(row);
     }
     render();
@@ -9329,6 +9981,42 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   if (pendingRoute) { try { sessionStorage.removeItem('nayanet_pending_route'); } catch (e) {} }
   if (!location.hash) { location.hash = '#/hub'; }
   if (defaultedHash && noteSlug) { location.hash = '#/smart-notes/' + noteSlug; }
+
+  /* Identity handoff, hoisted to boot (2026-11-17, session hoist Half A).
+     The handoff used to live only in mainShow() (feed hero), so it never
+     ran on any other route, and it read only ?name= while the live gate
+     submits ?userName=. It now runs here, on EVERY route, before
+     Router.render(). Name present (?name= or ?userName=, + ?alias= as
+     before): persist it on this device and set the returning cookie, then
+     scrub only the identity params out of the query (other params such as
+     ?cluster= / ?installation_id= / ?n= are kept, and the hash is kept).
+     No name in the query: re-set the cookie when a name is already stored.
+     First-time visitors (no stored name, no query) are unchanged: no write,
+     no cookie. The name stays on the citizen's own device; nothing is sent
+     anywhere. The mainShow() copy below is harmonized with this scrub (identity params only, Sweep #3 OWN-9). */
+  (function identityHandoffAtBoot() {
+    try {
+      var qp = new URLSearchParams(location.search);
+      var qn = (qp.get('name') || qp.get('userName') || '').trim();
+      var qa = (qp.get('alias') || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (qa) { try { localStorage.setItem('nayanet_smart_alias', qa); } catch (e) {} }
+      if (qn) {
+        try { localStorage.setItem('nayanet_smart_name', qn); } catch (e) {}
+        try { document.cookie = 'nayanet_returning=1; path=/; max-age=31536000; SameSite=Lax'; } catch (e) {}
+      } else {
+        var stored = '';
+        try { stored = (localStorage.getItem('nayanet_smart_name') || '').trim(); } catch (e) {}
+        if (stored || qa) { try { document.cookie = 'nayanet_returning=1; path=/; max-age=31536000; SameSite=Lax'; } catch (e) {} }
+      }
+      if (qn || qa) {
+        try {
+          qp.delete('name'); qp.delete('userName'); qp.delete('alias');
+          var rest = qp.toString();
+          history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash);
+        } catch (e) {}
+      }
+    } catch (e) { /* identity unavailable — first-time visitors and fallbacks unchanged */ }
+  })();
 
   Router.render();
 
@@ -10831,7 +11519,6 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 .rail-toggle::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 120s linear infinite;}
 .eco-plus::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 90s linear infinite;}
 .rooms-plus::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 150s linear infinite;}
-.eco-bb-ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--eco,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--eco,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 60s linear infinite;}
 .fc-plusitem .fc-pi-ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--mc,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--mc,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 180s linear infinite;}
 .nav-btn .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--nav,var(--purple)) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 96s linear infinite;}
 .nav-sub .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--nav,var(--purple)) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 72s linear infinite;}
@@ -11673,18 +12360,19 @@ window.NayaSmartBar = {
 <!-- HUB SIDEBARS+PLUS 2026-11-16 (item 4): the two + menus. LEFT + = CREATE
      (what you make), RIGHT + = CONNECT (who you reach) — different jobs,
      never the same menu. Chrome harvested from the Personal correction's
-     .fc-plusmenu (blob 3328238b); items in brief order, most-used first. -->
+     .fc-plusmenu (blob 3328238b); items in brief order, most-used first.
+     SWEEP-3 F5: Home lives in CREATE only; one purple per menu, every item
+     a deep spectrum color. -->
 <div id="hubPlusCreate" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Create">
 <div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal" style="--mc:#e8e8ec"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-href="https://nayanet.app/personal" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-composer="smart-note" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
 </div>
 <div id="hubPlusConnect" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Connect">
-<div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="message" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span data-mw-tr="pm">Message</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="mail" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg></span><span data-mw-tr="pm">Mail</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="world" data-hub-href="https://nayanet.app/rooms/spaces" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span><span data-mw-tr="pm">Create world</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="world" data-hub-href="https://nayanet.app/rooms/spaces" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span><span data-mw-tr="pm">Create world</span></div>
 </div>
 </body>
 </html>

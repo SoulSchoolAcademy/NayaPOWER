@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3002",
+ "intelligence": {
+  "title": "Restore What Was Good — Don't Iterate On It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3002-restore-what-was-good-dont-iterate-on-it",
+  "smart_note_id": "SN-3002",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3002/IB-SMART-NOTE-20261116-sn3002-restore-what-was-good-dont-iterate-on-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The pattern is iteration on a good thing until it stops being good. A round is asked to change one thing, and in the course of changing it, it rebuilds something that was already right — and the rebuild is worse. His eye catches it every time, because his eye holds the good version: \"the one that you did the other day\" — the five at the bottom, with the plus button purple with white in the middle — \"that's better.\" The charge names the habit, not just the case: \"which you do that often.\" The correction is not a redesign and not an improvement — it is a restoration. The five go back on both pages, verbatim from the correction build that had them right; the nine area icons go in the sidebars in logical order, each carrying its area's count (SN-3000 Sidebar Icons Light As You Scroll). Restoration is harvested byte for byte — the working version is the source, and the round's job is to put it back, not to make a new one that looks like it. That is the harvest law applied to a regression: use what works, and when you broke what worked, the fix is to put back what worked. The rule also governs the round's scope: if a round's change makes the page worse in his eye, the round's job is to put back what worked — the restoration IS the round, not an extra.",
+  "simple_view": "Imagine you built a beautiful tower out of blocks — and then someone comes along, knocks it down, and builds a different tower that's all wobbly! That's not better! The right thing to do is to put YOUR tower back, exactly the way it was — block by block, just like before. You don't build a new wobbly tower. You put back the good one!",
+  "grandma_view": "It's like this, love — imagine you made a lovely dinner, dear, and someone comes and takes it away and serves something that isn't nearly as nice. Oh, love — you don't try to make the new dish better! You put the lovely dinner back on the table, just the way it was! When something was good, dear, you restore it — you don't fiddle with it.",
+  "naya_view": "Restore what was good — don't iterate on it. You got rid of what was good, which you do that often, and then you put something else in that wasn't good. When his eye says something was better before, I restore the good version verbatim — I do not improve on it, redesign it, or put something else in. The five go back on both pages; the nine go in the sidebars in logical order.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3002",
+   "title": "Restore What Was Good — Don't Iterate On It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3002/IB-SMART-NOTE-20261116-sn3002-restore-what-was-good-dont-iterate-on-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3002/IB-SMART-NOTE-20261116-sn3002-restore-what-was-good-dont-iterate-on-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e6996ab77eb59233db4f15d479ffb7b821dcb1ea"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

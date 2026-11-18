@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2912",
+ "intelligence": {
+  "title": "The Name Is the Agreement",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-the-name-is-the-agreement",
+  "smart_note_id": "SN-2912",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2912/IB-SMART-NOTE-20261116-the-name-is-the-agreement.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "An agreement hidden at the end of a journey is a trap; an agreement on the front page is a promise. The move is not about placement — it is about what the system is saying about itself. \"This is what we are, this is what we're not, this is how it works\" — said straight up, right at the start, to anybody checking us out — is the opposite of fine print. And the name is the masterstroke: no checkbox, no second step, no separate page. You put your name in, you agree, you get a certificate of agreement. The act of joining IS the act of agreeing, which means the agreement can never be skipped, faked, or forgotten — it is the door itself. The legal footer completes the same logic: a platform that showcases its legal pages instead of burying them is saying \"we're totally legit\" in the only way that counts — by showing the whole deal.",
+  "simple_view": "Imagine a clubhouse with the rules written on a big beautiful poster right by the front door — with pictures first, then the words! You don't have to read every word, but they're right there for anyone to see. And to join, you just write your name — writing your name IS saying \"yes, I agree!\" And you get a special certificate with your name on it! At the bottom of the poster are all the grown-up rule pages, so everyone knows this clubhouse is totally legit!",
+  "grandma_view": "It's like this, love — when you invite someone into your home, you don't hide the house rules in the back bedroom! You put them right by the front door, beautifully written, pictures first and then the words, so everyone can see what kind of house this is. And joining is simple, dear: you write your name, and that IS your promise. Two ways to say yes — click the button, or just write your name. And all the proper legal pages sit at the bottom, plain as day, so anyone checking knows we're totally legit.",
+  "naya_view": "The agreement goes on the front page, below the login. Start with the visual, go into the text. Put your name in — you agree — and you get a certificate of agreement.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2912",
+   "title": "The Name Is the Agreement",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2912/IB-SMART-NOTE-20261116-the-name-is-the-agreement.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/VISION/SN-2912/IB-SMART-NOTE-20261116-the-name-is-the-agreement.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "d69bce73c78d1fa0c45455675b47cc923a23a119"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,5 +1,5 @@
 {
- "_note": "Applicability rules (Naya Beta, KNOW lane, 2026-10-11). Area codes are the 12 Team Naya areas. Keys are matched verbatim against entry topic/subtopic; keyword rules are lowercase substring matches over the entry's keyword haystack and are ADDITIVE to taxonomy rules. Thumb rule: subtopic > topic > keywords.",
+ "_note": "Applicability rules (Naya Beta, KNOW lane, 2026-10-11). Area codes are the 12 Team Naya areas. Keys are matched verbatim against entry topic/subtopic; keyword rules are lowercase substring matches over the entry's keyword haystack and are ADDITIVE to taxonomy rules. Thumb rule: subtopic > topic > keywords. 2026-11-17 taxonomy completion (Resolve, corpus-gate pass): topic rules added for the filing-era taxonomy (DESIGN/LESSON/VISION/DISTILLATION/LAW/DOCTRINE/TEAM/SMART_NOTE/LEARNING/VERIFICATION/WISDOM/ESSENCE/ONBOARDING/REPORT + spelling-variant mirrors), each derived from the entries' own declared topics. The generic SYSTEM topic is deliberately left unmapped: it is the filing loop's default bucket and carries no area signal — its entries stay needs_review for the KNOW/SN judgment-tagging pass rather than being blanket-tagged.",
  "area_contexts": {
   "ACT": [
    "dispatch"
@@ -502,6 +502,67 @@
   "VISION/SELF-OPTIMIZATION": [
    "DECISION",
    "HUMAN_VALUE"
+  ],
+  "DESIGN": [
+   "BLOCKS"
+  ],
+  "LESSON": [
+   "LEARN"
+  ],
+  "LEARNING": [
+   "LEARN"
+  ],
+  "VISION": [
+   "HUMAN_VALUE"
+  ],
+  "THE-VISION": [
+   "HUMAN_VALUE"
+  ],
+  "DISTILLATION": [
+   "KNOW",
+   "LEARN"
+  ],
+  "ESSENCE": [
+   "KNOW",
+   "LEARN"
+  ],
+  "WISDOM": [
+   "LEARN",
+   "KNOW"
+  ],
+  "LAW": [
+   "LAW"
+  ],
+  "DOCTRINE": [
+   "LAW",
+   "KNOW"
+  ],
+  "TEAM": [
+   "TEAM"
+  ],
+  "SMART_NOTE": [
+   "LEARN",
+   "KNOW"
+  ],
+  "SMART-NOTES": [
+   "LEARN",
+   "KNOW"
+  ],
+  "SYSTEM_INTELLIGENCE": [
+   "KNOW"
+  ],
+  "System — Intelligence": [
+   "KNOW"
+  ],
+  "VERIFICATION": [
+   "VERIFY"
+  ],
+  "ONBOARDING": [
+   "TEAM",
+   "HUMAN_VALUE"
+  ],
+  "REPORT": [
+   "KNOW"
   ]
  }
 }

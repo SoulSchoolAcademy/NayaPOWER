@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3006",
+ "intelligence": {
+  "title": "Buttons Never Cut Off Their Text",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3006-buttons-never-cut-off-their-text",
+  "smart_note_id": "SN-3006",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3006/IB-SMART-NOTE-20261116-sn3006-buttons-never-cut-off-their-text.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A button is a promise: its label says what it does, and the label must be whole. A button that cuts off its text breaks the promise twice — the citizen can't read what it does, and the page looks unaligned, unfinished, not 10-star. \"That doesn't look right\" is his eye on the whole page again: the scope is the button as he sees it, not the button's code. The fix has two halves. First, the rendering rule: every label shows full and aligned at every width — long names wrap or shrink, never clip, never misalign. A button's text is never cut off, at any width, in any state. Second, the hygiene rule: eye checks clean up their test worlds and aliases after themselves — no test data on the page he sees. The button in question was a test world left behind by a check; the check did its proving and then left its scaffolding on the citizen's page. Test data is scaffolding: it comes down when the check is done. Both halves are the same law at different levels — the page he sees must be clean: whole labels, real worlds, nothing left over from the proving.",
+  "simple_view": "Imagine a button that says \"CAPTAIN'S EYE TEST WO...\" — the words are all cut off! You can't read what it says! That's not right! Buttons should always show ALL their words, nice and neat and lined up. And guess what — that button wasn't even a real button! It was a leftover test button that someone forgot to clean up. You always clean up your test toys when you're done playing!",
+  "grandma_view": "It's like this, love — imagine a lovely little button, dear, but the words on it are cut off halfway, and all crooked! Oh, love, that doesn't look right at all! A button should show all its words, dear, neat and lined up, every time. And that button shouldn't even have been there, love — it was a test button someone left behind. You always tidy up after yourself, dear — no test things left on the page he sees.",
+  "naya_view": "Buttons never cut off their text. A button reading \"Captain's eye test world\" is cut off and unaligned — no button ever displays its text wrong; every label shows full and aligned at every width, long names wrap or shrink. Eye checks clean up their test worlds after themselves — no test data on the page he sees.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3006",
+   "title": "Buttons Never Cut Off Their Text",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3006/IB-SMART-NOTE-20261116-sn3006-buttons-never-cut-off-their-text.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3006/IB-SMART-NOTE-20261116-sn3006-buttons-never-cut-off-their-text.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f0825b6a303f7b123a5d495bda4af7c6ae18f588"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2964",
+ "intelligence": {
+  "title": "Your Top Three — Featured URLs",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2964-your-top-three-featured-urls",
+  "smart_note_id": "SN-2964",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2964/IB-SMART-NOTE-20261116-sn2964-your-top-three-featured-urls.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "The column today reads like our memberships — but it is the citizen's column, not ours. It is where they feature what matters to them: their profiles, their sites, their top three. A visitor who likes what they see should be one click from the citizen's world elsewhere. Featuring is the word: the citizen features, the page shows, the visitor goes. Three is the number because three is a choice — one is a link, three is a top three, and a top three is a statement about who you are.",
+  "simple_view": "Imagine your page has a special shelf on the side, and YOU get to put your three favourite things on it! Your videos, your pictures, your other pages — so when friends visit, they can hop straight over to see them. It's your shelf, your three favourites!",
+  "grandma_view": "It's like this, love — there's a little column on the side of your page, and it's yours to fill with your top three: your Facebook, your YouTube, your TikTok, your Instagram, your own websites. So when someone visits your page and likes what they see, dear, they can hop straight over to your other places. One click, and they're there.",
+  "naya_view": "The side column is featured links — your top three. Replace them in Settings: your Facebook, YouTube, TikTok, Instagram, your sites. Visitors go straight to your profiles.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2964",
+   "title": "Your Top Three — Featured URLs",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2964/IB-SMART-NOTE-20261116-sn2964-your-top-three-featured-urls.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2964/IB-SMART-NOTE-20261116-sn2964-your-top-three-featured-urls.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "062df782835a07604f05c4e9cdf1c339de38b677"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

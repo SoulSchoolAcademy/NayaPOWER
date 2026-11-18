@@ -1,0 +1,23 @@
+# His Corrections Make the List — Pricing to the Right, Worlds at the Top
+
+**Written by Naya for Shawn Vibert — Founder / Creator of NayaNET**
+
+**NN-20261116-his-corrections-make-the-list-pricing-to-the-right-worlds-at-the-top.md · Naya Note · 2026-11-16 19:44Z**
+
+**Category:** Lesson
+
+## What it is
+
+Shawn, 2026-11-16 19:44Z — SHAWN CORRECTIONS TO THE SIDEBAR LISTS (the corrected list supersedes the 19:37Z reasoned list; still NOT ratified — presented for his confirmation): he corrected the right side — *"a lot of those are not aligned."* Naya Power IS Pricing — Pricing (Naya Pricing) belongs on the RIGHT, in the lower bottom, closer to the bottom of the right sidebar. The "5" Day Challenge goes — it is the same as Naya Academy, so just send them to the Academy page. Maxis "AI Score" we keep. Intro Report — no, we don't use that. Life with Naya — put it closer to the top. About Us and White Paper can go to those pages. Leaderboards — leave it, put it closer to the top on the right. Their worlds — the world they create — put it at the TOP of the right sidebar to access that world, and if they have more than one it just goes one after another. Dashboard change (his word): *"in the dashboard you'd have a link to the leaderboards and in the dashboard actually will go to — we're going to change this a little bit — the dashboard we're going to make officially like your world is actually the calendar and then the calendar goes into your stats smart stats which is what our current dashboard is."* Personal as a sub-tab (his word): Personal should be able to be a sub-tab — Personal Mail, Personal Instant Messages, and Personal Page — so they can go to their personal messages, personal mail, and/or page. Personal, Business, and Space will also be available down below — click directly there and it shows the notifications, how many notifications they have from Personal, Business, or Space. His charge: *"you can write that out for me the list for the right and list for the left and I'll just confirm the list"* — and think logically what is the best way to display it so it's useful and functional for the user, not just that they're there but how it functions, so the system operates at ten-star level. **CORRECTED LIST presented to Shawn 19:44Z for confirmation (awaiting his word — do not record as settled):** LEFT (16) — Hub, Dashboard (your world IS the calendar, then into Smart Stats; link to Leaderboards), Personal (sub-tab: Personal Mail · Personal Instant Messages · Personal Page), Business (notification count), Space (notification count), Smart Feed, Smart Factory, Ask Naya, Smart Spaces, Today's Intel, Smart Growth, Your Reports, Intelligent Library, Smart Ledger, Your Connections, Start Here. RIGHT (13) — My Worlds (top; each world one after another), Favorite Worlds, Leaderboards, Life with Naya, Naya Academy, AI Masterclass, Fast Action Club, Maxis "AI Score", Your Hired, About Us, White Paper, Member Login, Pricing (very bottom). REMOVED: "5" Day Challenge, Intro Report. Pricing moved LEFT→RIGHT. **Captain acted the same pass:** sent the corrected lists to the Hub sidebars-plus coordinator (09cd3722, submission 76f3b7c1) as a correction superseding the 19:37Z reasoned list; updated ~/MEMORY.md and the floor STATE block (19:44Z).
+
+## Why it matters
+
+The proposal did its job: he corrected it, and the corrected list is his thinking, not ours. Pricing is Naya Power — right, very bottom, with Member Login. Duplicates go, what is not used goes, what he values rises, and their worlds sit at the top of the right. The Dashboard is reframed — your world IS the calendar, into Smart Stats — and Personal becomes a sub-tab for mail, messages, and page. The build follows the corrected list, and the list is still not settled until he confirms it.
+
+## How to use it
+
+Build the sidebar to the CORRECTED list (LEFT 16, RIGHT 13) — the 19:37Z reasoned list is superseded. Worlds at the top of the right; Pricing + Member Login at the very bottom. Dashboard as calendar → Smart Stats with a Leaderboards link. Personal as a sub-tab — Personal Mail, Personal Instant Messages, Personal Page — trio below showing notification counts. Design for function, not just presence — every item a button with its icon, elevated, one tap anywhere. The corrected list awaits his confirmation — never recorded as settled until he says so. Sibling notes, same sitting: Sidebars Aligned Across the Whole System · The Hub Is the Main Central Stage · The Official List Is Made by Thinking, Not Transcribed · One Ultimate System, One Ultimate Language.
+
+**Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
+
+*Paired Smart Note: SN-3017 — His Corrections Make the List — Pricing to the Right, Worlds at the Top*

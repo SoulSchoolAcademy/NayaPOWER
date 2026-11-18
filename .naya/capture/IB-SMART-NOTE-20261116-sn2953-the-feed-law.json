@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2953",
+ "intelligence": {
+  "title": "The Feed Law",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2953-the-feed-law",
+  "smart_note_id": "SN-2953",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2953/IB-SMART-NOTE-20261116-sn2953-the-feed-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Three things is a law, not a list. A feed that holds anything else — a fourth kind of card, a banner, a stray control — is not a feed with an extra, it is a feed that broke its own law. The note lives where the work is: a Naya Note on a shared feed is seen by the team it is shared with, because the feed is the work's place. A project is not a fourth thing and not a separate concept — a business can be a project, a thing can be a project, a project can be its own feed, because a project IS a world you add, and a world's feed is a feed. And the one row is the discipline: kinds first (All / Smart Notes / Naya Notes / Posts), then topics, one row, never two — two rows is how the \"All\" filter became a second control and the glow became a defect.",
+  "simple_view": "Imagine your feed is a special box that holds exactly THREE kinds of treasures: Naya's notes, smart notes, and posts! Nothing else fits in the box — if it's not one of those three, it doesn't go in! And a project? A project is just a world you add — like adding a new room to your house, and that room has its own feed box! And the little filter buttons sit in ONE neat row: first the kinds (All, Smart Notes, Naya Notes, Posts), then the topics. One row, nice and tidy!",
+  "grandma_view": "It's like this, love — your feed is a tidy little shelf that holds exactly three things: Naya's notes, smart notes, and posts. Nothing else goes on that shelf — if it's not one of those three, it lives somewhere else. And a project? A project is just a world you add, dear — like adding a new room to the house, and that room has its own shelf. The little filter buttons sit in one neat row: first the kinds, then the subjects. One row, nice and tidy, never two rows cluttering things up.",
+  "naya_view": "A feed is three things: Naya Notes, Smart Notes, posts. Nothing else. A project is a world you add. One filter row: kinds first, then topics. The note lives where the work is.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2953",
+   "title": "The Feed Law",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2953/IB-SMART-NOTE-20261116-sn2953-the-feed-law.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LAW/SN-2953/IB-SMART-NOTE-20261116-sn2953-the-feed-law.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c455af4ad430d27affc5c0b5353f299200d8f68a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

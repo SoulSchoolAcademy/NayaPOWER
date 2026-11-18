@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3058",
+ "intelligence": {
+  "title": "The Calendar Cells — The Screenshot Is the Model",
+  "intelligent_block_id": "IB-SMART-NOTE-20261117-sn3058-the-calendar-cells",
+  "smart_note_id": "SN-3058",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3058/IB-SMART-NOTE-20261117-sn3058-the-calendar-cells.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "Think of each day as a little black jewel on the month — a black square in the middle, its rim lit up in that day's own color, so the whole month glows in the colors of the week. Inside the jewel: the number, big; the wisdom of that day, the quote; and a button that says VIEW. Tap the jewel or tap VIEW and the whole screen becomes that day — your daily cockpit, everything going on in your world for that day, the menu to click through it all. And the calendar runs both ways: backwards, to any day you ever lived, and forwards — someone comes to your calendar and books an appointment with you in a day that hasn't happened yet. Each day even hums at its own frequency — Monday 417, Tuesday 528, all the way round to Sunday 963 — shown in the day view. And the weather shows only when we actually know where they live; when we don't know, nothing is invented. A day you can't see the weather for is honest; a day with invented weather is a lie.",
+  "simple_view": "Imagine the month is a box of glowing jewels — each day a shiny BLACK square with its edges lit up in its own color! Inside each one: the big number, a wise little quote, and a button that says VIEW! You tap it and BOOM — the whole screen becomes that day, like the cockpit of a spaceship, with everything going on in your world! And you can go BACK to any day, or FORWARD — someone can even come and book a time with you! Each day has its own special hum — Monday goes 417! And the weather only shows if we really know where you live — never made up!",
+  "grandma_view": "It's like this, love — imagine the month as a tray of beautiful black jewels, dear, each one lit around the edges in its own color! Inside each jewel: the number, big and clear, a lovely wise quote for that day, and a button that says VIEW! You tap it and the whole screen becomes that day, love — your daily cockpit, everything going on in your world for that day! And you can go back to any day, dear, or forward — someone can come and book an appointment with you! Each day has its own frequency, love — Monday 417, Tuesday 528, right round to Sunday 963! And the weather only shows when we know where you live, dear — never invented, never made up!",
+  "naya_view": "The screenshot IS the model: seven columns; each day a BLACK square, rim LIT in the day's color; inside — the NUMBER, the WISDOM (the quote), a VIEW button. Click the cell or VIEW → that day opens full screen. Both ways: BACK to any day, FORWARD to book. Each day has a FREQUENCY (Mon 417 · Tue 528 · Wed 741 · Thu 639 · Fri 396 · Sat 852 · Sun 963 Hz), shown in the day view. WEATHER only when we know where they live — never invented. The day view is the DAILY COCKPIT. Mobile: number + View always, wisdom where it fits.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3058",
+   "title": "The Calendar Cells — The Screenshot Is the Model",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3058/IB-SMART-NOTE-20261117-sn3058-the-calendar-cells.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3058/IB-SMART-NOTE-20261117-sn3058-the-calendar-cells.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7b1a4675e8c73929a876a14a07839bb8065210fb"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

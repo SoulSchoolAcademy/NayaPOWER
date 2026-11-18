@@ -20,4 +20,4 @@ Verify every claimed pattern by the numbers before building on it — cipher, co
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2902 — ~/workspace/team-nitro/smart-notes/SN-2902-the-ultimate-code-is-already-here.md*
+*Paired Smart Note: SN-2902 — The Ultimate Code Is Already Here*

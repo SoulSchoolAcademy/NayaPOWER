@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3021",
+ "intelligence": {
+  "title": "Sidebar Round Three Confirmed — The Official List v4, and the Display Is the Icons",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn3021-sidebar-round-three-confirmed-official-list-v4-display",
+  "smart_note_id": "SN-3021",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3021/IB-SMART-NOTE-20261116-sn3021-sidebar-round-three-confirmed-official-list-v4-display.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "This is the moment the list stops being a negotiation and becomes the law — and it happened in one message, in two parts. First the confirmation: \"I think that's right now.\" Three rounds of propose-correct-correct-the-correction, and his yes lands on the round-3 playback — LEFT 12, RIGHT 10, Hub-only top-bar buttons — which is now OFFICIAL v4, sent to the coordinator the same minute as submission 31ca493e, superseding the 19:44Z lists and the v3 playback. Second, in the same breath, the display instruction — and it is not a tweak, it is the presentation law for the whole sidebar: the beautiful circle icons go INTO the sidebars as BUTTONS, the circle icon inside a rectangle button; the buttons are high-level, high-tech, elevated, all lighting up; the sidebar IS those icon-buttons, and the plain list does not stay alongside. The bottom-bar icons live in the side tabs. The Hub gets the Personal bottom bar — six tiles, the two + at the ends, the four in between. REMOVE the Smart Bars flowing at the top and bottom. Get everything aligned. The Settings URL/label customization from round 2 stands. And the captain's sense-check, given before the yes and blessed by his 👍 after it, names the three watch items that ride with v4: one trio name must win everywhere (Space, Thing, Your World have all appeared); Your Reports is the one item whose contents were never named; Intel Today has two doors now and must be the SAME Intel Today behind both, not two versions. The bookkeeping is honest about what is still open: the MEMORY.md v4 replacement was scripted but the write failed on the EPERM flake — MEMORY.md still carries the 19:44Z text, the coordinator HAS v4 so the build is covered, and the replacement retries when the flake clears. The list is official; the record catches up.",
+  "simple_view": "Imagine you draw the map of your treehouse THREE times — and the third time your best friend looks at it and says \"YES! That's exactly right now!\" — and then they say \"and let's make every door a big shiny button with the picture on it, not just a list of words!\" So the map becomes official AND beautiful — buttons you can press, all lighting up, everything lined up neat!",
+  "grandma_view": "It's like this, love — you rearrange the sitting room three times, dear, and the third time he walks in and says \"I think that's right now!\" — that's the one, love, it's official! And then he says \"let's put the beautiful round pictures INSIDE the buttons, dear — not a plain list beside them, the buttons ARE the list!\" Everything lit up, everything lined up, love — and the little bars flowing across the top and bottom? Take them away, dear, we don't need them anymore!",
+  "naya_view": "\"It's official now.\" Three rounds, one yes — v4 is the law: LEFT 12, RIGHT 10, Hub-only top-bar buttons, sent to the coordinator the same minute. And the display is the icons: circle icon inside a rectangle button, high-level, high-tech, elevated, all lighting up — the sidebar IS the icon-buttons, no plain list beside them. Smart Bars off, top and bottom. The Hub gets the six-tile bottom bar. Three watch items ride with it: one trio name must win; Your Reports' contents unnamed; Intel Today the SAME behind both doors. MEMORY.md still carries the old text — the replacement retries when the flake clears.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3021",
+   "title": "Sidebar Round Three Confirmed — The Official List v4, and the Display Is the Icons",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3021/IB-SMART-NOTE-20261116-sn3021-sidebar-round-three-confirmed-official-list-v4-display.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-3021/IB-SMART-NOTE-20261116-sn3021-sidebar-round-three-confirmed-official-list-v4-display.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "05ed8e871fe181f62de005624a9d88b3dfd0564e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2943",
+ "intelligence": {
+  "title": "Sharing Chat — the Name Is the Idea",
+  "intelligent_block_id": "IB-SMART-NOTE-20261116-sn2943-sharing-chat-the-name-is-the-idea",
+  "smart_note_id": "SN-2943",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2943/IB-SMART-NOTE-20261116-sn2943-sharing-chat-the-name-is-the-idea.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-17. No runtime provenance invented.",
+  "ingested_at": "2026-11-17",
+  "essence": "",
+  "human_view": "A misheard name is not a typo — it is a lost idea. \"Sharon chat\" means nothing; \"Sharing Chat\" means the whole thing: the origin of NayaNET is people sharing and chatting on any topic, in a private network, organized by topic into one feed. The correction matters because the name carries the design: if the system is Sharing Chat, then every feed is a topic people share and chat on, every community is a topic, and the private network is the point — not the app around it. Shawn caught it the same day and corrected it in plain words, and the record was fixed the same pass, in MEMORY.md and in the daily log, so the wrong name never hardens into history.",
+  "simple_view": "Imagine someone tells you the name of a game, and you hear it wrong — you write down \"Sharon\" instead of \"Sharing\"! But \"Sharing\" is the whole game: everybody shares things and chats about them, all about the same topic, all together. If you get the name wrong, you lose the game! So you fix it right away, and you remember: sharing and chatting is what people do.",
+  "grandma_view": "It's like this, love — if you write down a name wrong, the story that goes with it goes wrong too. \"Sharing Chat\" tells you everything: people sharing, people chatting, all about one thing they love, in their own private little world. \"Sharon\" tells you nothing at all. So when he said the right name, we fixed it straight away, in both places, so nobody forgets it again.",
+  "naya_view": "Sharing Chat — share and chat on any topic, like your own little Facebook on any topic, everybody talking about that topic in a private network. The name is the idea.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2943",
+   "title": "Sharing Chat — the Name Is the Idea",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2943/IB-SMART-NOTE-20261116-sn2943-sharing-chat-the-name-is-the-idea.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-17 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/16/LESSON/SN-2943/IB-SMART-NOTE-20261116-sn2943-sharing-chat-the-name-is-the-idea.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "2277ccfb7c6108b10abf882ecb4b37a3c6f2cb2b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
