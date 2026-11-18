@@ -5320,15 +5320,24 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
    cause is the press transition itself: the .18s spring
    cubic-bezier(.34,1.56,.64,1) overshoots and, in paint, the sink lands
    whole seconds late, while the hover lifts (button:hover, .ph-connect:hover)
-   hold through the press. So for exactly these three buttons the press
-   transition is a near-instant .01s ease-out with no spring, the rest transition
-   loses the spring too, and the :hover:active rules carry !important so no
-   :hover rule — including the !important rail lift — can hold the lift
-   through a press. Hover lift itself is untouched; the rail card is untouched. */
-#pcProfileView .pc-profile-connect,#pcProfileView .pc-profile-save,#pcProfileView .pc-profile-label-save{transition:transform .12s ease-out,box-shadow .3s ease;}
-#pcProfileView .pc-profile-connect:hover:active,#pcProfileView .pc-profile-connect:active{transform:scale(.97)!important;transition:transform .01s ease-out,box-shadow .18s ease!important;}
-#pcProfileView .pc-profile-save:hover:active,#pcProfileView .pc-profile-save:active{transform:scale(.97)!important;transition:transform .01s ease-out,box-shadow .18s ease!important;}
-#pcProfileView .pc-profile-label-save:hover:active,#pcProfileView .pc-profile-label-save:active{transform:scale(.97)!important;transition:transform .01s ease-out,box-shadow .18s ease!important;}
+   hold through the press. A near-instant .01s press transition still failed
+   in render, and the reason was measured, not guessed: in this VM's headless
+   Firefox the refresh driver ticks only every ~350ms to ~1.5s (rAF fired
+   twice in 1700ms in one run), and a transitioned transform advances ONLY on
+   those ticks — so even a 10ms transition read as unsunk for 600ms to never,
+   while :active was true throughout and the :active rule was provably in
+   effect. So for exactly these three buttons the transform is not
+   transitioned at all: the sink flips to scale(.97) at the style recalc
+   itself, and springs back the same way on release — no tick needed either
+   direction. The :hover:active rules carry !important so no :hover rule —
+   including the !important rail lift — can hold the lift through a press.
+   Trade-off, stated plainly: the hover lift on these three buttons snaps
+   instead of gliding (box-shadow still eases); the rail card and every other
+   button keep their transitions. */
+#pcProfileView .pc-profile-connect,#pcProfileView .pc-profile-save,#pcProfileView .pc-profile-label-save{transition:box-shadow .3s ease!important;}
+#pcProfileView .pc-profile-connect:hover:active,#pcProfileView .pc-profile-connect:active{transform:scale(.97)!important;transition:box-shadow .18s ease!important;}
+#pcProfileView .pc-profile-save:hover:active,#pcProfileView .pc-profile-save:active{transform:scale(.97)!important;transition:box-shadow .18s ease!important;}
+#pcProfileView .pc-profile-label-save:hover:active,#pcProfileView .pc-profile-label-save:active{transform:scale(.97)!important;transition:box-shadow .18s ease!important;}
 #pcProfileView .pc-profile-connect.requested{border-color:#d4a017;color:#d4a017;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #d4a017,0 6px 14px rgba(0,0,0,.5);}
 #pcProfileView .pc-profile-label{margin-top:16px;}
 #pcProfileView .pc-profile-label-row{display:flex;gap:10px;}
