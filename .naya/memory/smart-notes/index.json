@@ -58710,6 +58710,46 @@
         "note": "published directly as a BRAIN projection in commit 6b8343fdfb690b1a8269a382419b0499f99d6675 ('Intelligence Loop run 326: SN-3372 The Ultimate Border - Exact Specs (Shawn voice call ~19:19Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "4dbce08f43c6214d2f37a73280dbda011751f33a2446bc88793d62b03a7d1ebf"
+    },
+    {
+      "smart_note_id": "SN-3373",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3373-the-spine-is-the-system",
+      "title": "SN-3373 — The Spine Is the System",
+      "content_hash": "bf6bc0fb94eef1b68568fb886fbc5dca655d083162317d63310a0d7f318fcdef",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3373/IB-SMART-NOTE-20261118-sn3373-the-spine-is-the-system.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 499c58894340c54ed2ae39ed6432b24d76f069b1 ('Continuous Distillation Resolve seat 2026-11-18: SN-3373 The Spine Is the System') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c796c93e42e90c4c33569d6fa556d2c085deae9b8999345efef728c595211d58"
+    },
+    {
+      "smart_note_id": "SN-3374",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3374-parallel-quality-in-every-lane",
+      "title": "SN-3374 — Parallel, Not One at a Time, Quality in Every Lane",
+      "content_hash": "48c4704056251e9b011d2a24af95799ea68790b2a2221ecc3fa616f011bf76d9",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3374/IB-SMART-NOTE-20261118-sn3374-parallel-quality-in-every-lane.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 939481adaed0772e2beb9a627c961a78b7e759da ('Continuous Distillation Resolve seat 2026-11-18: SN-3374 Parallel, Not One at a Time, Quality in Every Lane') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-18 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "2eeb0557ebb85ffabec3081d8a5b4ade07af610e12dab34f07d6d82f792be9c6"
     }
   ],
   "sequence_policy": {
@@ -58720,5 +58760,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "43b9552c42d0360d3dbbb14e3f41f02adea4daf7b9df90e6c62bdf2993a2843c"
+  "corpus_manifest_hash": "b051d59cd7bcd5fb18aab0c548b4ce6457bb0972b191e173aa6cb4ad3dbd5216"
 }
