@@ -247,7 +247,7 @@ assert template_sha.startswith("61002d15"), "personal template sha is not the co
 # taken-alias note clears the moment a fresh alias comes back available
 # (setAliasState hides #hubNote on available/own/neutral). Walk + template
 # shas unchanged.
-assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENTATION identity sha (2026-11-17: certified lean 0.88fr at 600-640px)"
+# WALKTHROUGH-CHAIN (2026-11-18, same round) - STAGING WORKER\n# RE-EMBED: the identity sha moves a1550164 -> d8c0d583. The old\n# assert would fail the rebuild on the new identity bytes.\n# IDENTITY IS NAME *PLUS* THE DEVICE KEY: on 'taken' the row\n# is read back WITH this browser's device key and only d.own\n# grants - the name-match grant is deleted. Without the key\n# the citizen gets the key panel (paste key, Use my key, the\n# key is verified against the row); the key is also SHOWN on\n# the certified certificate so it can be carried to another\n# device. Walk, template, unfold shas unchanged.\nassert ident_sha.startswith("d8c0d583"), "identity sha is not the WALKTHROUGH-CHAIN identity sha (2026-11-18: name + device key)"
 # ENTRANCE WELCOME (2026-11-16, BRIEF-AGREEMENT-ENTRANCE-WELCOME-20261116.md):
 # the welcome sha moves 5f33d273 -> db5960eb (925,222 B -> 934,065 B,
 # +9,337 B): Item 0 — the opening-view intro block only. Shawn's 10-star
@@ -490,7 +490,7 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # contain, never cropped (4:3 images in a 16:9 slot); the 'Tap
 # the picture' pill moves below the frame. Intro row + fix-4
 # untouched; F2 has no key handler in the bytes (UNVERIFIED).
-assert welcome_sha.startswith("d367efe1"), "welcome sha is not the AGREEMENT FLOW-END FIX1 welcome sha (2026-11-18: N hold bulletproofed, play reads aloud, letter full-screen)"
+# WALKTHROUGH-CHAIN (2026-11-18, maker round -\n# walkthrough-chain-20261118/work/edit-chain.py): the welcome\n# sha moves d367efe1 -> a1b67b82: BRIDGE FIRST - after agreeing\n# inside the stage, the hold/fallback releases go to the bridge\n# (goBridgeAfterAgree), then the bridge's own buttons go to\n# name-entry; the agreed line + the onward button show only\n# after agreeing; the plain-page agree scroll is guarded while\n# the bridge is up. Pre-agree routes untouched (?stage=bridge,\n# Back buttons, /agreement agree -> bridge).\nassert welcome_sha.startswith("a1b67b82"), "welcome sha is not the WALKTHROUGH-CHAIN welcome sha (2026-11-18: bridge first after agreeing)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
