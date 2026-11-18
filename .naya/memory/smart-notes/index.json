@@ -59470,6 +59470,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3418",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3418-the-saved-game-is-real",
+      "slug": "the-saved-game-is-real",
+      "title": "The Saved Game Is Real",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3418/IB-SMART-NOTE-20261118-sn3418-the-saved-game-is-real.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3418/IB-SMART-NOTE-20261118-sn3418-the-saved-game-is-real.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3418/IB-SMART-NOTE-20261118-sn3418-the-saved-game-is-real.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3418-the-saved-game-is-real.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:18:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "539b13d8f5616ff7dab0ad1f64bb7d955bb559865a28fe4fcb4ee24af90f3a9a",
+      "content_hash": "85b6a335943bfe3cdba521a7d44b297953d90db1706f7d8d5e6729cbd0ed78c1",
+      "one_line": "The vault, completed and tested as a saved game: this family closes the Smart Box build — pieces three to five done, continuous memory as the saved game a citizen resumes, the Net defined as every Naya plugging in and getting supercharged, and the Box named as the source. The saved-game metaphor is load-bearing: a saved game is worthless if it restores a description of your progress instead of your progress, so the test that passed here is the only one that matters — save, leave, return, and find the real thing, whole.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "System",
+        "Lesson",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59480,5 +59513,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "7760fe1288fb6f5311257fa145231987f283657d54502a70e98172b7cebf7149"
+  "corpus_manifest_hash": "c4dd23215bebd00ba0e04323b1f9ac5fcb3bac55bfbc938a54cad844f78fc695"
 }
