@@ -59,6 +59,30 @@
   the viewport exactly (SN-3059 vs §2.3; Laws §13 open question C5).
   Weather/news stay honest absences; no fake content; no second booking
   system; Meet joins a confirmed booking only. Day view NOT rebuilt.
+  FOLLOW-ON (2026-11-18, Amendments #1 + #2): checker conditions 1-3 +
+  the black car. (1) The mini-jewel orbit ring the diff notes claimed
+  (45s) is now REALLY in the bytes: .jewel-mini::before, 45s, reversed
+  on the middle action — the notes were wrong, now they are true.
+  (2) Today no longer fills with its own colour at rest: the
+  .tile.today wash goes to opacity 0 (rim + halo still glow, brighter)
+  — obsidian inside, the day's colour only as the light AROUND the
+  board (Shawn 00:16Z); hover still ignites the whole cell, as before.
+  (3) CAT chips are jewelled: the flat glyph chars go, each chip wears
+  its category's harvested SVG icon (white, 11px) + its word; Journal
+  takes journal blue #0f52ba (the day file's journal colour) and the
+  'book' icon harvested verbatim from the day file — the last
+  near-white #f5f5ff leaves the page. The decorative star after
+  'Smart Note' and on the meet chip goes (the words carry the meaning);
+  the timeline diamond for a plain note takes emerald #07925f.
+  AMENDMENT #3 (2026-11-18, the month-view 10): day numbers ~25% bigger
+  (.daynum 20→25 / 2.1→2.6vw / 32→40 desktop, 16→20 at phone — exact
+  +25%); the weekday headers become real objects (obsidian middle, bold
+  white letters, the day's own colour as rim + glow — the standing law;
+  they were plain coloured text). Today already reads instantly here
+  (.tile.today: 2px white border + purple ring + 36px glow) — unchanged.
+  No stats button on the month view (it goes on the day bar only) and no
+  'i' buttons exist here (the tiles carry VIEW) — both named in the
+  scorecard, not invented.
   AMENDMENT #2 — MASTER ELEVATION / THE PEDESTAL (2026-11-17, Shawn's word
   01:41Z): every icon, button, input, board and button-within-a-button is a
   REAL OBJECT — elevated, with depth, rim, halo in its own deep color, light
@@ -123,6 +147,10 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .weekrow,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
 .weekrow{padding:3px 0 6px;text-align:center;font-weight:800;font-size:17px}
 .weekrow div{color:#fff}
+/* AMENDMENT #3 — each abbreviation a real object (the standing law):
+   obsidian middle, bold white letters, the day's own colour as rim +
+   glow. The headers were plain coloured text. */
+.weekrow .wk{display:flex;align-items:center;justify-content:center;min-height:34px;border-radius:10px;background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%);border:1.5px solid var(--dc);box-shadow:0 0 10px color-mix(in srgb,var(--dc) 30%,transparent),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 5px 12px rgba(0,0,0,.5)}
 .days{flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
 /* ---- DAY TILE — Living Obsidian, seven layers ---- */
 .tile{--dc:#8e24aa;position:relative;text-align:left;min-height:64px;color:#fff;overflow:hidden;border-radius:16px;padding:10px 10px 8px;cursor:pointer;display:flex;flex-direction:column;
@@ -144,16 +172,18 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .tile:not(.blank):hover::after,.tile:not(.blank):focus-visible::after{opacity:1}
 .tile:not(.blank):hover .daynum,.tile:not(.blank):focus-visible .daynum{transform:scale(1.07)}
 .tile:not(.blank):active{transform:translateY(0) scale(.97)}
-/* FOLLOW-ON (3) TODAY GLOWS — always. Today is always activated at rest:
-   its own-color wash is on, its rim glows more, and it lifts — while every
-   other day lights only on hover. You can still click into any day. */
+/* FOLLOW-ON (3) TODAY GLOWS — always, by rim + halo, never by fill
+   (follow-on 2026-11-18, Shawn 00:16Z obsidian-inside law: black in the
+   middle, the day's colour only as the light AROUND the board). The wash
+   that used to sit at 0.55 at rest is off at rest; the rim glows more,
+   and hover still ignites the whole cell like every other day. */
 .tile.today{border:2px solid #fff;box-shadow:0 0 0 2px #8e24aa,0 0 36px color-mix(in srgb,var(--dc) 75%,transparent),0 0 20px rgba(142,36,170,.6),0 16px 32px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
-.tile.today::after{opacity:.55}
+.tile.today::after{opacity:0}
 .tile.today:hover::after,.tile.today:focus-visible::after{opacity:1}
 .tile.sel{box-shadow:0 0 0 2px var(--dc),0 0 30px rgba(255,255,255,.25),0 18px 34px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6)}
 .tile.blank{opacity:.22;cursor:default;box-shadow:none}
 .tile.past{opacity:.92}
-.daynum{font-size:clamp(20px,2.1vw,32px);font-weight:800;line-height:1;color:#fff;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85);display:inline-block;transition:transform .18s ease}
+.daynum{font-size:clamp(25px,2.6vw,40px);font-weight:800;line-height:1;color:#fff;text-shadow:0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(0,0,0,.85);display:inline-block;transition:transform .18s ease}
 /* FOLLOW-ON (2) DASHBOARD DIGIT-TILE NUMBERS — each digit of the day number
    in its OWN gematria color, so every day has a different number-color
    combination. Day 16 = ruby 1 + indigo 6. Day 23 = burnt orange 2 + deep gold 3.
@@ -190,6 +220,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
    and the mobile VIEW label 9px already stand at the specified sizes. */
 .dayname{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.9;margin-top:2px}
 .chip{display:inline-flex;max-width:100%;align-items:center;gap:5px;font-size:clamp(9px,1vw,12px);color:#fff;background:#211331;border:1px solid var(--chip,#fff);border-radius:18px;padding:4px 7px;margin:4px 3px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:inset 0 0 9px rgba(0,0,0,.5)}
+.chip svg{width:11px;height:11px;flex:none}
 .chiplane{margin-top:4px;display:flex;flex-wrap:wrap}
 .dots{display:none}
 .minitext{font-size:11px;color:#fff;margin-top:6px}
@@ -271,12 +302,18 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .door:hover .jewel,.door:focus-visible .jewel{transform:translateY(-3px);border-color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -5px 9px rgba(0,0,0,.5),0 12px 20px rgba(0,0,0,.6),0 0 24px color-mix(in srgb,var(--c,#8e24aa) 70%,transparent)}
 /* THE MINI-JEWEL — the same construction at 34px (Personal .mini-gem
    34px variant, blob 9a006c47) for the Book / Meet / Create action pills. */
-.jewel-mini{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;
+.jewel-mini{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;position:relative;color:#fff;
   background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.95),transparent 30%),radial-gradient(circle at 55% 58%,var(--c,#8e24aa),#050506 86%);
   border:1.5px solid var(--c,#8e24aa);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.55),0 0 12px color-mix(in srgb,var(--c,#8e24aa) 45%,transparent);
   transition:transform .18s ease,box-shadow .18s ease}
 .jewel-mini svg{width:18px;height:18px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.8))}
+/* THE MINI-JEWEL ORBIT (follow-on, Condition 1) — the 45s ring the diff
+   notes claimed: a dashed ring in the action's own colour, travelling
+   slowly around the mini-jewel; reversed on the middle action (Meet),
+   alternating like the door jewels (Laws §1: circles have flow). */
+.jewel-mini::before{content:"";position:absolute;inset:-5px;border:1px dashed var(--c,#8e24aa);border-radius:50%;opacity:.5;animation:orbit 45s linear infinite;pointer-events:none}
+.act:nth-child(2) .jewel-mini::before{animation-direction:reverse}
 .act{display:inline-flex;align-items:center;gap:10px}
 .act:hover .jewel-mini,.act:focus-visible .jewel-mini{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.5),0 6px 12px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--c,#8e24aa) 65%,transparent)}
 .door .sub2{font-size:17px;font-weight:400;color:#fff}
@@ -336,7 +373,7 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .days,.weekrow{gap:3px}
   .weekrow{font-size:17px;padding:4px 0}
   .tile{min-height:46px;padding:5px 3px;border-radius:10px;text-align:center}
-  .daynum{font-size:16px}.dayname{font-size:11px}
+  .daynum{font-size:20px}.dayname{font-size:11px}
   .tile.today{border-width:2px}
   .tilewisdom{display:none}
   .viewbtn{min-height:22px;font-size:9px;padding:2px 6px;letter-spacing:.04em}
@@ -411,10 +448,15 @@ const WEEKDAY=[
  {name:'Friday',   short:'Fri', color:'#c62828', hz:396, label:'red'},
  {name:'Saturday', short:'Sat', color:'#3f51b5', hz:852, label:'indigo'}];
 /* Category chips inside the tile — brief §4 (never the whole tile). */
+/* CAT chips — the second element is an ICONS key, not a glyph char:
+   each chip wears its category's harvested SVG icon (white, 11px) +
+   its word. Journal is journal blue #0f52ba with the 'book' icon
+   harvested verbatim from the day file (blob 3834919b, line 1550) —
+   the last near-white #f5f5ff leaves the page with the flat glyphs. */
 const CAT={
- Notes:['#8e24aa','✧'], News:['#0f52ba','◎'], Meeting:['#07925f','◷'],
- Event:['#a21caf','✦'], Project:['#0e7490','◈'], Journal:['#f5f5ff','☰'],
- Community:['#a21caf','♧'], Business:['#0e7490','▣'], Open:['#07925f','◷']};
+ Notes:['#8e24aa','note'], News:['#0f52ba','news'], Meeting:['#07925f','clock'],
+ Event:['#a21caf','calendar'], Project:['#0e7490','cube'], Journal:['#0f52ba','book'],
+ Community:['#a21caf','people'], Business:['#0e7490','briefcase'], Open:['#07925f','eye']};
 /* Fallback wisdom store — harvested VERBATIM from the old calendar build
    (branch personal/calendar-booking-meet-20261116, blob 15e0a2fc), 7 lines. */
 const WISDOM_STORE=[
@@ -466,6 +508,7 @@ const ICONS={
   cube: icon('<path d="M12 3.5 20 8v8l-8 4.5L4 16V8z"/><path d="M4 8l8 4.5L20 8M12 12.5v8"/>'),
   world: icon('<circle cx="12" cy="12" r="4.2"/><path d="M3.8 15.5c5.5 2.6 12 2.6 16.4-1.2M20.2 8.5C14.7 5.9 8.2 5.9 3.8 9.7"/>'),
   note: icon('<path d="M6 3.5h9L19 7.5v13H6z"/><path d="M14.5 3.5v4.5H19M9 12.5h6M9 16h6"/>'),
+  book: icon('<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.7A1.7 1.7 0 0 0 5 19.7z"/><path d="M5 19.5A1.5 1.5 0 0 1 6.5 18H19M9 7.5h6"/>'),
   eye: icon('<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'),
   mail: icon('<rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/>'),
   people: icon('<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.9-3 2.9-4.5 5.5-4.5s4.6 1.5 5.5 4.5"/><circle cx="17" cy="9.5" r="2.6"/><path d="M16.5 15.2c2 .3 3.4 1.7 4 4.3"/>'),
@@ -537,7 +580,7 @@ function daySummary(ds){
   return bits.length?bits.join(', '):'no highlighted activity';
 }
 /* ============ MONTH ============ */
-$('weeknames').innerHTML=WEEKDAY.map(w=>`<div style="color:${w.color}">${w.short}</div>`).join('');
+$('weeknames').innerHTML=WEEKDAY.map(w=>`<div class="wk" style="--dc:${w.color}">${w.short}</div>`).join('');
 function render(){
   const first=new Date(year,month,1).getDay();
   const n=new Date(year,month+1,0).getDate();
@@ -561,7 +604,7 @@ function render(){
       <div class="tilerow"><span class="daynum">${digitNum(d)}</span><button type="button" class="viewbtn" data-viewday="${d}" aria-label="View ${dlabel(year,month,d)}">VIEW</button></div>
       <div class="dayname">${wd.short} · ${wd.hz} Hz</div>
       <div class="tilewisdom" title="${esc(wis)}">${esc(wis)}</div>
-      <div class="chiplane">${h.slice(0,2).map(x=>`<span class="chip" style="--chip:${CAT[x][0]}">${CAT[x][1]} ${esc(x)}</span>`).join('')||`<span class="minitext">${(role==='visitor'&&!BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t)))?'Fully booked':'Open day'}</span>`}</div>
+      <div class="chiplane">${h.slice(0,2).map(x=>`<span class="chip" style="--chip:${CAT[x][0]}">${ICONS[CAT[x][1]]} ${esc(x)}</span>`).join('')||`<span class="minitext">${(role==='visitor'&&!BOOK_SLOTS.some(t=>!bookTimeTaken(ds,t)))?'Fully booked':'Open day'}</span>`}</div>
       ${h.length>2?`<div class="more">+${h.length-2} more</div>`:''}
       <div class="dots">${h.slice(0,3).map(x=>`<span class="dot" style="--dc:${CAT[x][0]}"></span>`).join('')}</div>
       ${h.length?'<span class="spark" aria-hidden="true"></span>':''}</div>`;
@@ -602,8 +645,8 @@ function timelineHTML(ds){
     entries.push({min:h*60+m, html:entry(h*60+m,fmtTime(b.time),'#07925f','Appointment'+(b.meet?' · Smart Meet':''),(b.who||'Appointment')+(b.what?' — '+b.what:''))});
   });
   dayNotes(ds).forEach(n=>{
-    const kind=n.type==='smart'?'Smart Note ✧':n.type==='post'?'Post':'Note';
-    const color=n.type==='smart'?'#8e24aa':'#f5f5ff';
+    const kind=n.type==='smart'?'Smart Note':n.type==='post'?'Post':'Note';
+    const color=n.type==='smart'?'#8e24aa':'#07925f';
     entries.push({min:TF_MIN[n.timeframe]||540, html:entry(TF_MIN[n.timeframe]||540,n.timeframe||'Morning',color,kind+' · '+n.world,n.text)});
   });
   entries.sort((a,b)=>a.min-b.min);
@@ -742,7 +785,7 @@ function viewHTML(ds, future, wd){
   } else if(section==='Notes + Smart Notes'){
     const list=notes.slice().sort((a,b)=>(TF_ORDER[a.timeframe]-TF_ORDER[b.timeframe])||String(a.createdAt).localeCompare(String(b.createdAt)));
     html+=`<div class="viewcard"><h3>Notes + Smart Notes · ${esc(dlabel(year,month,day))}</h3>
-    ${list.length?`<div class="timeline">${list.map(n=>`<p><strong>${esc(n.timeframe||'')}</strong> · ${esc(n.type==='smart'?'Smart Note ✧':n.type==='post'?'Post':'Note')} · ${esc(n.world)}${n.rank?' · rank '+n.rank:''} — ${esc(n.text)}</p>`).join('')}</div>`
+    ${list.length?`<div class="timeline">${list.map(n=>`<p><strong>${esc(n.timeframe||'')}</strong> · ${esc(n.type==='smart'?'Smart Note':n.type==='post'?'Post':'Note')} · ${esc(n.world)}${n.rank?' · rank '+n.rank:''} — ${esc(n.text)}</p>`).join('')}</div>`
     :`<p>No notes or Smart Notes recorded for this day. Notes you write are tied to their day and time frame, and the timeline orders them morning to night.</p>`}
     <div class="actions">${button('+ Create a note','Create')}</div></div>`;
   } else if(section==='Appointments'||section==='Available Times'){
@@ -816,7 +859,7 @@ function appointmentsHTML(ds){
     }
   } else if(books.length){
     h+='<ul class="list">'+books.map(b=>{
-      return `<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'Appointment')}${b.what?' — '+esc(b.what):''}${b.meet?` <span class="chip" style="--chip:#8e24aa">✧ ${b.mode==='audio'?'Audio meet':'Video meet'}</span> <button class="pill" data-op="join:${esc(b.id)}">Join the meet →</button>`:''} <button class="pill" data-op="cancel:${esc(b.id)}">Cancel</button></li>`;
+      return `<li><b>${esc(fmtTime(b.time))}</b> — ${esc(b.who||'Appointment')}${b.what?' — '+esc(b.what):''}${b.meet?` <span class="chip" style="--chip:#8e24aa">${b.mode==='audio'?'Audio meet':'Video meet'}</span> <button class="pill" data-op="join:${esc(b.id)}">Join the meet →</button>`:''} <button class="pill" data-op="cancel:${esc(b.id)}">Cancel</button></li>`;
     }).join('')+'</ul>';
   } else h+='<p>No appointments in this calendar\u2019s record for this day.</p>';
   if(past){
@@ -931,7 +974,7 @@ function leaveMeet(keepPanel){
 }
 /* ============ CREATE ============ */
 function createHTML(ds, future){
-  const kinds=[['smart','Smart Note ✧'],['naya','Note'],['post','Post']];
+  const kinds=[['smart','Smart Note'],['naya','Note'],['post','Post']];
   return `<div class="viewcard"><h3>Create — ${esc(dlabel(year,month,day))}</h3>
   <p>Create on this day, in ${esc(world)}. A note is tied to its day and time frame; the timeline orders it morning to night.</p>
   <div class="actions">${kinds.map(([k,l])=>`<button class="pill${createKind===k?' active':''}" data-kind="${k}">${l}</button>`).join('')}</div>
