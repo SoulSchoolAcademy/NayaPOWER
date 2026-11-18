@@ -813,6 +813,59 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .weekrow .wk{padding:2px 2px}
   .days,.weekrow{gap:2px}
 }
+@media(min-width:741px) and (max-width:855px){
+  /* CALENDAR FIX 6 (R6-741 head) — THE HEAD FITS AND CENTRES. Eye
+     (fix-5 §6): at 741 the plaque is x -35.2 w 635.7, the jewel x 608.5
+     w 83.9, pair off -41.9px; the jewel sits ON the "Owner view" pill
+     (covers the "O", pill reads "wner view") and "741 Hz" sits half
+     behind the pill's left edge. My own render (work/measure6.py):
+     .head is grid 1fr auto 1fr resolving to '0px 600.641px 83.7656px'
+     — brand track 0px (brand min-width:0), toptools track 83.8px (the
+     pill's min-content, wrapped two lines), so the auto column gets
+     600.6px for a 727.6px pair, overflowing 63.5px each side. WORSE
+     THAN THE EYE NAMED: the brand (317.5px) overflows its 0px track
+     and the opaque plaque paints OVER it — at 741/800/855 the brand
+     is 100% INVISIBLE; at 1000 the pair is centred but the brand is
+     still half eaten. One row cannot hold brand (317) + pair (727.6)
+     + pill (137) in 708px.
+     (1) HEAD TWO ROWS, PAIR ON ITS OWN ROW: .head becomes flex-wrap;
+     .nowcenter{order:-1;flex:1 1 100%} takes its own full-width row,
+     plaque BESIDE the jewel (one row, 67px — the jewel beside the
+     plaque is the design's intent). Pair centres on the viewport:
+     off 0.0px at 741/800/855, plaque whole, jewel clear of the pill
+     (the pill is on the row below). The fix-5 two-row nowcenter
+     (118px) was rejected: +51px more head, scrolls 741x600.
+     (2) BRAND ROW: brand + Owner view pill share the second row
+     (space-between). The brand takes the HARVESTED <=740px sizes
+     verbatim (logo 39px, strong 18px, div 17px — the sizes the eye
+     already passes at 635/390). Head is 118px (67 + 4 + 47).
+     (3) PLAQUE SLIMMING (~20px, spacing only): padding 18px -> 10px
+     sides, gap 10px -> 8px. Plaque 635.7 -> 615.7, pair 727.6 -> 707.6,
+     ~9px margins at 741; longest date (Wednesday September 30)
+     plaque 617.7, pair ~709.6 vs the 725px container. No object
+     resized, no text resized: date stays 19px Marcellus in-band,
+     time tiles stay 20px/19px, jewel stays 48px stage / 17px freq.
+     (4) SPACING REFIT so the +50px head still fits 741x600 with rows
+     at their passed 58.4px (rows must NOT shrink: the VIEW/jewel kiss
+     is 5.2px at 58.4 and the letters clear by ~4px — shrinking rows
+     eats the letters): shell padding 14/28 -> 8/10px, shell gaps
+     9 -> 6px, board padding 10 -> 6px, weekrow padding 3/6 -> 0,
+     weekrow cells 6/5 -> 2/2px. All spacing-only, all inside this
+     band only. Rows land 59.2px (slack stretches them; the kiss
+     lightens to 4.4px typical / 6.4px on day 18 — letters whole).
+     390 / 635 / 1919 are outside this band and untouched. 856+
+     is unchanged (pre-existing, same root cause — carried, see the
+     maker report). */
+  .head{display:flex;flex-wrap:wrap;row-gap:4px;justify-content:space-between}
+  .nowcenter{order:-1;flex:1 1 100%;justify-content:center;flex-wrap:nowrap}
+  .nowplaque{padding:6px 10px;gap:8px}
+  .brand{gap:8px}.logo{width:39px;height:39px;font-size:33px;border-radius:12px}
+  .brandtxt strong{font-size:18px}.brandtxt div{font-size:17px}
+  .shell{padding:8px 8px 10px;gap:6px}
+  .board{padding:6px}
+  .weekrow{padding:0}
+  .weekrow .wk{padding:2px 2px}
+}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 </style></head>
 <body>
