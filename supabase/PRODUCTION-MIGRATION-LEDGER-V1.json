@@ -1766,6 +1766,15 @@
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
+      "version": "20261113024459",
+      "name": "ledger_entries_baseline_v1",
+      "path": "supabase/migrations/20261113024459_ledger_entries_baseline_v1.sql",
+      "sha256": "deb8b2e29e6bc203e95bb48fecc1974b6ee6fdcdb5209767e68bdb6667030423",
+      "statement_count": 5,
+      "bytes": 5968,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
       "version": "20261113024500",
       "name": "ledger_trigger_work_items_done_proven_v1",
       "path": "supabase/migrations/20261113024500_ledger_trigger_work_items_done_proven_v1.sql",
