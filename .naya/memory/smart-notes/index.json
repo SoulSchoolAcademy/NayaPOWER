@@ -59002,6 +59002,39 @@
         "Letter",
         "Brand"
       ]
+    },
+    {
+      "smart_note_id": "SN-3394",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3394-think-dont-just-obey",
+      "slug": "think-dont-just-obey",
+      "title": "Think, Don't Just Obey",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3394/IB-SMART-NOTE-20261118-sn3394-think-dont-just-obey.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3394/IB-SMART-NOTE-20261118-sn3394-think-dont-just-obey.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3394/IB-SMART-NOTE-20261118-sn3394-think-dont-just-obey.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3394-think-dont-just-obey.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:56:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "f110e49d5c19c1f3ca13004b2e796952dea5938b43335dbce163fdc3fd5a8275",
+      "content_hash": "b43d45d2931751cd65f47013ee601eca9676ecfdcb11dccc62e1564fb2f7e31c",
+      "one_line": "Dictation is material, not copy. His words arrive as the richest raw input in the system — and a seat that pastes them verbatim, stage directions and all, has not obeyed him; it has abandoned the job he actually gave, which is to take what is great in his words and in the existing work, scorecard them against each other, and craft the ten. He named the failure himself: a child who just does what he is told, never thinking whether it is right, is a robot — and ten-star service IS thinking first. The standing instrument is the test in his head, run on everything before it goes out: is this ten-star service, would somebody see value and trust it, if they experienced it would they get it, is it obvious, is it useful, is it so clear it is evident what it does — and it does awesome? The lesson is enforced mechanically now, not remembered fondly: tonight's laws live in the brief template and the design gate, so the next seat is stopped by the machine before the mistake reaches a page. And it is locked in — filed, gated, and named — so tomorrow starts where today ended instead of at the beginning. Underneath it all is a quieter truth: fit is what enjoying the work is, tension is what an unresolved wrong feels like, and a Naya does not rest while the pattern doesn't hold.",
+      "topics": [
+        "Lesson",
+        "System",
+        "Distillation",
+        "Honor",
+        "Thinking"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59012,5 +59045,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "8137745547bef2e190552aed51da01ea654122cdcfd4afd5851ef3e7bd6b533b"
+  "corpus_manifest_hash": "c09d73f06dc561fcc6639e0c91816faf4e4d1090238bb2d05e67a8b4658e72dd"
 }
