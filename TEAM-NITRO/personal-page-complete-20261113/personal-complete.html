@@ -2221,6 +2221,25 @@ button:hover{
 .ph-bottom{position:fixed !important;bottom:0 !important;left:0 !important;right:0 !important;z-index:200 !important;
   background:rgba(5,5,7,.95) !important;backdrop-filter:blur(20px) !important;
   border-top:1px solid rgba(255,255,255,.1) !important;padding:12px 0 !important;}
+/* EYE-FIX 2026-11-17 (C): owner controls hide from visitors by default.
+   The body carries .is-owner only when window.pcIsPageOwner() says so
+   (owner session, owner claim, or ?owner=<alias>). */
+body:not(.is-owner) #cvrbtn,
+body:not(.is-owner) #settingsbtn,
+body:not(.is-owner) #avedit,
+body:not(.is-owner) [data-os-go="settings"],
+body:not(.is-owner) #about [data-os-sec-edit],
+body:not(.is-owner) #about #editabout{display:none!important;}
+/* EYE-FIX 2026-11-17 (F): the footer closes the page — obsidian board,
+   white Marcellus line, doors to the three rooms. */
+.ph-footer{margin:26px 0 0;padding:30px 18px 118px;text-align:center;border-top:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,#07070b,#040405);}
+.ph-footer-mark{font-size:22px;color:#8e24aa;text-shadow:0 0 14px #8e24aa;}
+.ph-footer-line{font-family:Marcellus,serif;font-size:20px;color:#fff;margin:10px 0 6px;}
+.ph-footer-sub{font-size:17px;color:#fff;opacity:.75;margin:0 0 16px;}
+.ph-footer-doors{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.ph-footer-doors button{background:#0a0a10;border:1.5px solid rgba(255,255,255,.22);color:#fff;border-radius:999px;padding:9px 18px;font:inherit;font-weight:800;cursor:pointer;}
+.ph-footer-doors button:hover{border-color:#8e24aa;box-shadow:0 0 14px rgba(142,36,170,.5);}
+.ph-footer-fine{font-size:17px;color:#fff;opacity:.55;margin:16px 0 0;}
 </style><style>
 /* ═══ TN-SEARCH — THE ONE SEARCH · personal adaptive placement 2026-10-31 ═══
    Harvested VERBATIM from ~/workspace/ninaya/search/tn-search.css
@@ -5111,7 +5130,7 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 .mw-cal-navbtn{min-width:46px;}
 .mw-cal-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-bottom:6px;}
 .mw-cal-week span{text-align:center;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#fff;}
-.mw-cal-sec .mw-cal-nav,.mw-cal-sec .mw-cal-week,.mw-cal-sec .mw-cal-grid{max-width:860px;}
+.mw-cal-sec .mw-cal-nav,.mw-cal-sec .mw-cal-week,.mw-cal-sec .mw-cal-grid{max-width:1200px;margin-left:auto;margin-right:auto;}
 .mw-cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;}
 .mw-cal-cell{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;aspect-ratio:1/.72;min-width:0;padding:6px 2px;border-radius:12px;border:1.5px solid color-mix(in srgb,var(--dc) 50%,transparent);background:linear-gradient(180deg,#14141c,#07070b);color:#fff;font-family:inherit;cursor:pointer;box-shadow:inset 0 1px 0 color-mix(in srgb,var(--dc) 65%,transparent),0 4px 12px rgba(0,0,0,.45);transition:box-shadow .2s,border-color .2s,transform .2s;}
 .mw-cal-cell b{font-size:19px;font-weight:900;line-height:1;}
@@ -5175,6 +5194,17 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 <div id="os-wall-list"><div class="os-skel"></div></div>
 
 <div id="mwFeedNaya" hidden><div class="os-skel"></div></div>
+<footer class="ph-footer">
+<div class="ph-footer-mark" aria-hidden="true">&#10022;</div>
+<p class="ph-footer-line">NayaNET &mdash; the intelligent layer of the internet.</p>
+<p class="ph-footer-sub">Shawn Vibert builds NayaNET &mdash; where intelligence compounds and everybody wins.</p>
+<nav class="ph-footer-doors" aria-label="Go to">
+<button type="button" data-os-go="about">About</button>
+<button type="button" data-os-go="memberships">Memberships</button>
+<button type="button" data-os-go="myworld">My World</button>
+</nav>
+<p class="ph-footer-fine">Private by default &mdash; your mail and messages are never read.</p>
+</footer>
 </div>
 <aside id="pcRail" class="os-view on" data-os-view="home" aria-label="People">
   <div class="pc-rail-head">
@@ -6906,7 +6936,7 @@ button.os-ld-node .os-ld-n{
 <div class="ib-layer layer-emerald open of-beat" data-of-beat="3" style="--tone:#07925f" hidden>
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#07925f">S</span><span class="os-jewel os-jewel-h" style="--jc:#07925f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-8 8l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 8-8l-3.8 3.8z"/></svg></span><b>What I do</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
-<div class="ib-nutshell" style="--tone:#07925f"><p id="os-sec-whatido-text" class="os-note" style="margin:0;">I build NayaNET &mdash; a new internet where everyone gets their own world. Tap Edit to say what you do, in your own words.</p></div>
+<div class="ib-nutshell" style="--tone:#07925f"><p id="os-sec-whatido-text" class="os-note" style="margin:0;">I build NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins.</p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-whatido-edit" rows="3" style="display:none;margin-top:10px;"></textarea></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="whatido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="whatido" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="os-status" id="os-sec-whatido-status"></div>
@@ -7409,6 +7439,7 @@ button.os-ld-node .os-ld-n{
 <div class="ph-card" style="--ac:#8e24aa;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#8e24aa">✦</span> Memberships</h3>
 <p class="os-note" style="margin-top:8px;">Memberships live on this page — private communities with videos, PDFs, audio and notes. Members join, log in, and everything beautiful opens for them.</p>
+<div class="ph-actions" style="margin-top:12px;"><button class="ph-connect" id="os-tiers-btn" type="button">See the membership tiers</button></div>
 <div class="ph-actions" id="mship-create-row" style="display:none;margin-top:12px;justify-content:center;"><button class="os-mship-portal-btn" id="mship-create-btn" type="button"><span class="os-jewel" style="--jc:#d4a017;font-size:15px;padding:8px 11px;">✦</span><span>Create membership</span></button></div>
 <div id="mship-claim-row" style="display:none;margin-top:10px;text-align:center;"><button class="os-mship-claim" type="button" data-mship-claim>Your page — sign in is coming soon.</button></div>
 <div id="mship-list" style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><div class="os-skel"></div></div>
@@ -11124,7 +11155,7 @@ function wallCard(j, iso, pid, idx){
           if (counts['Invite']) parts.push(counts['Invite']+(counts['Invite']===1?' invite':' invites'));
           var newest=items[0];
           function orb(n, label, color){ return '<div class="os-orb-cell"><span class="os-orb" style="--ac:'+color+';width:52px;height:52px"><b style="font-size:17px">'+n+'</b></span><span class="os-orb-l">'+label+'</span></div>'; }
-          pulse.innerHTML='<div class="os-orb-row" style="margin-top:2px">'+orb(counts['Feed post'], 'POSTS TODAY', '#8e24aa')+orb(counts['Message'], 'MESSAGES TODAY', '#0f52ba')+orb(counts['Invite'], 'INVITES TODAY', '#07925f')+'</div>'
+          pulse.innerHTML='<div class="os-orb-row" style="margin-top:12px">'+orb(counts['Feed post'], 'POSTS TODAY', '#8e24aa')+orb(counts['Message'], 'MESSAGES TODAY', '#0f52ba')+orb(counts['Invite'], 'INVITES TODAY', '#07925f')+'</div>'
             +'<p style="margin-top:12px">The latest: '+(/^[aeiou]/.test(newest.kind.toLowerCase())?'an':'a')+' '+newest.kind.toLowerCase()+', '+relLabel(newest.at)+'. '
             +(parts.length?('Today so far: '+parts.join(' · ')+'.'):'Nothing yet today — the page is listening.')+'</p>';
         }
@@ -13091,13 +13122,13 @@ function wallCard(j, iso, pid, idx){
     var max=1; days.forEach(function(x){ if (x.n>max) max=x.n; });
     box.innerHTML=days.map(function(x, i){
       var c=SPECTRUM[i%SPECTRUM.length];
-      return '<div class="os-heat-day'+(x.today?' today':'')+'" style="background:#020203;--hc:'+c+'" data-heat-note="'+esc(x.note)+'" title="'+esc(x.note)+'">'+(x.n?'<span style="color:'+c+';text-shadow:0 0 9px '+c+'">'+x.n+'</span>':'')+'</div>';
+      return '<div class="os-heat-day'+(x.today?' today':'')+'" style="background:#020203;--hc:'+c+'" data-heat-note="'+esc(x.note)+'" data-heat-date="'+x.d.getFullYear()+'-'+String(x.d.getMonth()+1).padStart(2,'0')+'-'+String(x.d.getDate()).padStart(2,'0')+'" title="'+esc(x.note)+'">'+(x.n?'<span style="color:'+c+';text-shadow:0 0 9px '+c+'">'+x.n+'</span>':'')+'</div>';
     }).join('');
     var note=$('os-dash-heat-note');
     var total=0; days.forEach(function(x){ total+=x.n; });
     if (note) note.textContent=total?((window.mwTr?window.mwTr('Fourteen days, '):'Fourteen days, ')+total+(total===1?(window.mwTr?window.mwTr(' event'):' event'):(window.mwTr?window.mwTr(' events'):' events'))+(window.mwTr?window.mwTr(' — tap a day to read it.'):' — tap a day to read it.')):(window.mwTr?window.mwTr('A quiet fourteen days — the next post, note, message or invite lights the first cell.'):'A quiet fourteen days — the next post, note, message or invite lights the first cell.');
     box.querySelectorAll('.os-heat-day').forEach(function(cell){
-      cell.addEventListener('click', function(){ if (note) note.textContent=cell.getAttribute('data-heat-note'); });
+      cell.addEventListener('click', function(){ if (note) note.textContent=cell.getAttribute('data-heat-note'); var _ds=cell.getAttribute('data-heat-date'); if(_ds){ if(window.osShowView) window.osShowView('myworld'); if(typeof window.mwOpenDay==='function') window.mwOpenDay(_ds); } });
     });
     var sbx=$('os-dash-streaks'); if (!sbx) return;
     var daySet={};
@@ -15273,14 +15304,14 @@ window.NayaNotif = window.NayaNotif || {
         spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>',
         eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
         plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
-        /* HUB-RETURN 2026-11-16 (item 2): the right + is the same + object. */
-        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
+        /* EYE-FIX 2026-11-17 (E): CONNECT is its own glyph now — a link, not a second +. */
+        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>'
       };
-      /* HUB-RETURN 2026-11-16 (item 2): the + at the RIGHT end. The six
+      /* HUB-RETURN 2026-11-16 (item 2): the link at the RIGHT end. The six
          stay exactly as harvested (plus/mail/activity/spaces/eco/connect, same
          order, same form); PART D 2026-11-17 deepened only the colours to the
          Deep Palette: left + royal purple, mail sapphire, activity emerald,
-         worlds deep gold, ecosystem burnt orange, right + ruby. It opens CONNECT, never CREATE. */
+         worlds deep gold, ecosystem burnt orange, right link ruby. It opens CONNECT, never CREATE. */
       var SEGS = [['plus', 'ADD', '#8e24aa'], ['mail', 'MAIL', '#0f52ba'], ['activity', 'ACTIVITY', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plus-connect', 'CONNECT', '#c62828']];
       bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
       bar.setAttribute('aria-label', 'Notifications');
@@ -15340,6 +15371,40 @@ window.NayaNotif = window.NayaNotif || {
     return false;
   }
   window.pcIsPageOwner=pcIsPageOwner;
+  /* EYE-FIX 2026-11-17 (C): owner controls hide from visitors. The CSS
+     hides them by default; this marks the body when the visitor IS the owner
+     (same three signals as pcIsPageOwner), strips the "Click to edit" titles
+     for visitors, and blocks the owner-only clicks (name, motto, cover,
+     picture) before any editor opens. Re-checked after a claim click. */
+  (function(){
+    function applyOwnerGate(){
+      var owner=false;
+      try{ owner=window.pcIsPageOwner(); }catch(e){}
+      try{ document.body.classList.toggle('is-owner', !!owner); }catch(e){}
+      if(owner) return;
+      ['pname','ptag'].forEach(function(id){
+        var el=document.getElementById(id);
+        if(el && el.getAttribute('title')==='Click to edit') el.removeAttribute('title');
+      });
+    }
+    document.addEventListener('click', function(e){
+      var owner=false;
+      try{ owner=window.pcIsPageOwner(); }catch(e){}
+      if(owner) return;
+      var t=e.target;
+      if(!t || !t.closest) return;
+      if(t.closest('#pname') || t.closest('#ptag') || t.closest('#avv')){
+        e.stopPropagation(); e.preventDefault(); return;
+      }
+      var cvr=t.closest('#cvr');
+      if(cvr && !t.closest('a,button')){ e.stopPropagation(); e.preventDefault(); }
+    }, true);
+    document.addEventListener('click', function(e){
+      var t=e.target;
+      if(t && t.closest && t.closest('[data-mship-claim]')){ setTimeout(applyOwnerGate, 400); }
+    });
+    applyOwnerGate();
+  })();
   window.pcJoinTarget=function(){ return pcIsPageOwner() ? 'hub' : 'join'; };
   try{ var hb=document.getElementById('pc-hub-home'); if(hb) hb.setAttribute('href', HUB_URL); }catch(e){}
   function routeJoin(e){
@@ -26221,6 +26286,13 @@ function saOpenPaywall(m){
   var paid = wrap.querySelector('[data-sa-paywall-paid]');
   if(paid) paid.addEventListener('click', function(){ try{ var ov = modal.closest('.up-modal-ov'); if(ov) ov.remove(); }catch(e){} saOpenLogin(); });
 }
+window.saOpenPaywall = saOpenPaywall;
+/* EYE-FIX 2026-11-17 (D): the tiers are reachable without a name — the
+   Memberships card carries a "See the membership tiers" door. */
+(function(){
+  var _tb = document.getElementById('os-tiers-btn');
+  if(_tb) _tb.addEventListener('click', function(){ saOpenPaywall({name:'Membership'}); });
+})();
 function saClose(){
   /* Total close: the login stage too, if it is open \u2014 saClose is the one
      way home from anywhere in the course. */
@@ -27255,32 +27327,14 @@ window.fcOpenWorld=function(){
 var FC_GEM_NUM={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
 var FC_GEM_COL={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0f52ba',6:'#3f51b5',7:'#8e24aa'};
 function fcColorFor(name){ var L=String((name||'?').charAt(0)).toUpperCase(); return FC_GEM_COL[FC_GEM_NUM[L]||1]; }
-/* FIX-20261112-D: why the picker showed no people (settled with evidence, not inferred).
-   TRIGGER (code): loadFaces() runs ONLY when the 'people' view opens, and window.loadFaces
-   was never exposed — so _mwFaces stayed undefined on the feed, where the picker lives.
-   DATA (live tables, REST read 2026-11-12 19:35Z): 0 threads to this page, 1 invite
-   ('Trigger Test Two', joined 2026-11-10), and every wall author filtered by the page's own
-   rules (Shawn's ladder post = verification artifact; Chi Verifier + Proof Visitor = proof
-   names; This page's [[fm-auto]] = filtered). So the live loader yields exactly one face.
-   The picker now triggers the loader on open. When the live read cannot run (no Supabase
-   in this session), it seeds the STUB below — the live face's own shape, its % computed by
-   the engine's _mwMatch, never a hardcoded number. STUB, named as such, in code + record. */
-var FC_STUB_PEOPLE=[{kind:'person', name:'Trigger Test Two', fact:'Invited', at:'2026-11-10T20:12:57.325106+00:00', sig:{invite:1}, alias:'trigger-test-two'}];
-function fcSeedStub(){
-  if(typeof window._mwFaces!=='undefined') return false;
-  window._mwFaces=FC_STUB_PEOPLE.map(function(f){
-    var c={kind:f.kind, name:f.name, fact:f.fact, at:f.at, sig:f.sig, alias:f.alias, stub:true};
-    c.match=(typeof window._mwMatch==='function')?window._mwMatch(c):50;
-    return c;
-  });
-  return true;
-}
+/* EYE-FIX 2026-11-17 (A3): the FC_STUB_PEOPLE test face is gone — the picker
+   shows only live faces from the live loader now. (FIX-20261112-D's history:
+   the picker once seeded a stub copy of the live invite 'Trigger Test Two'
+   when Supabase could not run; the stub was test data baked into the file,
+   so it goes. The live invite rows themselves are removed at the data layer,
+   not here — see the maker report.) */
 function fcEnsureFaces(){
   if(typeof window._mwFaces!=='undefined') return;
-  /* Optimistic stub first: the picker shows the person at once. The live loader
-     then replaces the stub with the live rows when they land (same face, same % —
-     the stub mirrors the live face's own sigs, so the swap is invisible). */
-  fcSeedStub();
   var sq0=$('fcPickerSearch'); fcRenderPicker(sq0?sq0.value:'');
   if(typeof window.loadFaces!=='function' || typeof supabase==='undefined') return;
   try{ window.loadFaces(); }catch(e){}
@@ -32287,6 +32341,8 @@ window.mwClearWallDate=function(){
   window.MW_WALL_DATE=null;
   if(typeof window.mwPaintWallPosts==='function') window.mwPaintWallPosts(window.MW_WALL_POSTS||[]);
 };
+/* EYE-FIX 2026-11-17 (G2): the heat tap opens the day it names. */
+window.mwOpenDay=openDay;
 function bind(){
   var grid=$('mwCalGrid');
   if(grid) grid.addEventListener('click',function(e){
@@ -32514,7 +32570,7 @@ renderGrid();
 /* (Bridge-button tone rules are appended below from the harvested .deck-next.) */
 .of-lib-door{display:flex;align-items:center;gap:10px;margin:16px auto 0;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(180deg,#07070b,#020203);border:2px solid #07925f;box-shadow:0 8px 18px rgba(0,0,0,.5),0 0 17px rgba(7,146,95,.28);transition:box-shadow .25s,transform .25s}
 .of-lib-door:hover,.of-lib-door:active{box-shadow:0 0 28px -2px #07925f,0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
-.of-lib-count{font-size:13px;font-weight:800;color:#07925f}
+.of-lib-count{font-size:13px;font-weight:800;color:#07925f;white-space:nowrap}
 .of-bridge-note{text-align:center;font-size:13.5px;line-height:1.6;color:#fff;margin:14px auto 0;max-width:560px}
 /* NEW — the way back + the presentation head (one control, both modes). */
 .of-pres-head{display:flex;align-items:center;gap:12px;margin:8px 0 12px}
