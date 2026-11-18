@@ -2008,7 +2008,11 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
 .fp-legal-link:active{transform:scale(.97);filter:brightness(.7);transition:transform .07s ease,filter .07s ease}
 .fp-stage-exit:active{transform:scale(.96);filter:brightness(.7);transition:transform .07s ease,filter .07s ease}
 .fp-enter-deal:active{filter:brightness(.7)}
-.new-account:active{filter:brightness(.75)}
+/* FIX-PASS (2026-11-18, checker F2 deviation): .new-account's hover
+   glow (0 0 28px rgba(255,255,255,.45)) was NOT collapsed while held.
+   It now collapses to the small contact shadow like every other
+   button; the earlier scale(.97) rule still depresses it. */
+.new-account:active{filter:brightness(.75);box-shadow:0 2px 6px rgba(0,0,0,.6),0 0 6px rgba(255,255,255,.12);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
 #fpZoomClose:active{transform:scale(.94);filter:brightness(.75)}
 .letter-beat.tone-purple .letter-next{--tone:#8e24aa}
 .letter-beat.tone-emerald .letter-next{--tone:#07925f}
@@ -2018,6 +2022,17 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
 #fpLegal #legal-cookies .deck-next{--tone:#07925f}
 #fpLegal #legal-accessibility .deck-next{--tone:#8e24aa}
 #fpLegal #legal-disclaimer .deck-next{--tone:#07925f}
+/* FIX-PASS (2026-11-18, checker F3 NOT PASS): the two "I agree" end
+   buttons (#letterPageAgree, #dealAgreeBtn, class p3-enter
+   deal-agree-btn) still carried the BRIGHT emerald rim/glow from the
+   rule at offset 568141 (border #2fe89e, glow rgba(47,232,158,...));
+   no --tone ever touched them and the EYEFOLLOW block mentioned
+   deal-agree-btn 0 times. This rule is the SAME selector, later in
+   the cascade, so it wins at equal specificity: border and glow go
+   DEEP emerald #07925f (Laws SS3.1, one deep hex per hue). Rest state
+   only - while held, the higher-specificity :active rule
+   (#fpAgreement .p3-enter:active) still collapses the glow. */
+#fpAgreement .deal-agree-btn, #fpLegal .deal-agree-btn{border:1.5px solid #07925f;box-shadow:0 0 34px rgba(7,146,95,.55),0 0 60px rgba(7,146,95,.25),inset 0 1.5px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.85)}
 /* F5 (eye follow-on) is carried by the harvested D3 above, not by
    head padding: the head shrink-wraps to the title (482px), so padding
    would narrow the text column D3 was measured in and risks wrapping

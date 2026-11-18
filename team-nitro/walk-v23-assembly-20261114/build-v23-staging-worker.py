@@ -402,7 +402,17 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # The unfold sha moves faea2190 -> 87fa3fa4 (85,679 B -> 87,076 B, +1,397 B):
 # the /agreement play control gets a base transition so its press/release
 # animates instead of snapping (part 2); the rest is the merged unfold bytes.
-assert welcome_sha.startswith("c8f0df54"), "welcome sha is not the AGREEMENT MERGE EYE FOLLOW-ON welcome sha (2026-11-17: F1 clean-choice first load, F2 visible press-in, F3 deep rims, F4 twelve legal unfolds, F5/D3 emblem clearance, D1-D4 carried from fix2)"
+# AGREEMENT MERGE EYE FOLLOW-ON FIX PASS (2026-11-18, checker NOT PASS on
+# F3 + F2 deviation; maker round — agreement-merge-eye-followon-20261117/
+# work/edit-fixpass.py): the welcome sha moves c8f0df54 -> fdad3dc2
+# (1,140,854 B -> 1,142,141 B, +1,287 B): F3 one button-scoped rule, same
+# selector as the bright rule but later in the cascade (inside the EYEFOLLOW
+# block), deepening the two "I agree" end buttons' border/glow to deep
+# emerald #07925f / rgba(7,146,95,...) — the prior "'I agree' x3 -> #07925f"
+# claim was false in bytes; F2 the EYEFOLLOW .new-account:active rule gains
+# the shadow/glow collapse (small contact shadow) so it depresses + dims +
+# collapses like every other button. Nothing else changes.
+assert welcome_sha.startswith("fdad3dc2"), "welcome sha is not the AGREEMENT MERGE EYE FOLLOW-ON FIX-PASS welcome sha (2026-11-18: F3 two I-agree buttons deep #07925f, F2 .new-account press glow collapse)"
 assert unfold_sha.startswith("87fa3fa4"), "unfold sha is not the AGREEMENT MERGE EYE FOLLOW-ON unfold sha (2026-11-17: /agreement play-button press transition, 87,076 B)"
 # WALK END SHARE PLUS FIX (2026-11-16, MAKER-BRIEF-WALK-END-SHARE-PLUS-FIX-20261116.md; checker NOT PASS 18:50Z):
 # the welcome sha moved 62f691b4 -> ee348e7c (919,910 B -> 921,988 B,
