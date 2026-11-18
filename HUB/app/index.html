@@ -819,7 +819,7 @@ a { color: inherit; }
 .hero-close:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.55);}
 @media (max-width:640px){.hero .eyebrow.feed-motto{padding-right:48px;}}
 .hero-restore{display:none;}
-.hero-restore.show{display:flex;align-items:center;justify-content:center;gap:8px;background:#050607;border:1.5px solid #d4a017;color:#fff;font-size:17px;font-weight:700;font-family:var(--font);padding:8px 18px;border-radius:999px;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease;margin:10px auto 2px;width:max-content;max-width:calc(100% - 32px);}
+.hero-restore.show{position:fixed;top:76px;right:12px;z-index:70;display:flex;align-items:center;justify-content:center;gap:8px;background:#050607;border:1.5px solid #d4a017;color:#fff;font-size:17px;font-weight:700;font-family:var(--font);padding:6px 12px;border-radius:999px;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease;margin:0;width:max-content;max-width:calc(100% - 24px);} /* HUB FEED FIX2 2026-11-18 (D3): the restore is a LITTLE BUTTON HIDDEN IN THE CORNER — fixed under the top bar, never a pill in the flow. 17px text kept (Laws §2.3); little means small padding, not small text. */
 .hero-restore.show:hover{transform:translateY(-2px);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 0 14px -2px #d4a017,0 10px 22px rgba(0,0,0,.55);}
 .hero-restore.show:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4),0 4px 10px rgba(0,0,0,.55);}
 .main-show .hero.hero-folded ~ .searchWrap{padding-top:0;}
@@ -1810,11 +1810,13 @@ body.msg-open{overflow:hidden;}
 .action[data-kind="favorite"] { --action-color: #d4a017; }
 .action[data-kind="save"] { --action-color: #0f52ba; }
 .action[data-kind="love"] { --action-color: #8e24aa; }
+.action[data-kind="like"] { --action-color: #c62828; } /* HUB FEED FIX2 2026-11-18 (D8): LIKE is ruby — likes are red. */
 /* Share Intel: light silver, not pink (Shawn 2026-10-20) */
 .action[data-kind="share-intel"] { --action-color: #C7CEDC; }
 .action[data-kind="naya-voice"] { --action-color: #8e24aa; }
 .action[data-kind="add-intel"] { --action-color: #8e24aa; }
 .action[data-kind="love"].on { border-color: #c62828; background: linear-gradient(135deg,#391019,#09090d); }
+.action[data-kind="like"].on { border-color: #c62828; background: linear-gradient(135deg,#391019,#09090d); } /* HUB FEED FIX2 2026-11-18 (D8): LIKE lights ruby when on, like LOVE. */
 .star-rating {
   display: inline-flex; gap: 4px; align-items: center; padding: 6px;
   border: 2px solid #d4a01788; border-radius: 14px; background: #0b0a0e;
@@ -1822,9 +1824,9 @@ body.msg-open{overflow:hidden;}
 }
 .star-rating button {
   width: 40px; height: 40px; flex: 0 0 auto; min-width: 0; position: relative;
-  border: 2px solid #8e24aa88; border-radius: 50%;
+  border: 2px solid #d4a01788; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.14), #07070b 62%, #050607 100%);
-  color: #8e24aa66; font-size: 20px; line-height: 1; cursor: pointer;
+  color: #d4a01766; font-size: 20px; line-height: 1; cursor: pointer;
   box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55);
   text-shadow: 0 1px 0 rgba(255,255,255,.35), 0 2px 6px rgba(0,0,0,.75);
   transition: transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s, color .18s, border-color .18s;
@@ -1832,25 +1834,27 @@ body.msg-open{overflow:hidden;}
 /* 23:32Z emblem law: a facet of light on the orb's top-left, like a cut gem —
    the orb is a real jewel, not a flat shaded circle. */
 .star-rating button::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(135deg, rgba(255,255,255,.32) 0%, rgba(255,255,255,0) 38%); pointer-events: none; }
-.star-rating button:hover { transform: translateY(-2px); border-color: #8e24aa; color: #c084fc; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
+.star-rating button:hover { transform: translateY(-2px); border-color: #d4a017; color: #d4a017; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(212,160,23,.4); }
 .star-rating button:active { transform: translateY(1px) scale(.92); box-shadow: inset 0 1px rgba(255,255,255,.2), inset 0 -2px 4px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.6); }
 .star-rating button.on {
-  color: #d8b4fe; border-color: #8e24aa;
+  color: #d4a017; border-color: #d4a017;
   background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.16), #07070b 62%, #050607 100%);
-  box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.45);
+  box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(212,160,23,.45);
   text-shadow: 0 1px 2px rgba(0,0,0,.45);
   animation: orbbreathe 4.4s ease-in-out infinite alternate;
 }
-.star-rating button:focus-visible { outline: 2px solid #8e24aa; outline-offset: 2px; }
+.star-rating button:focus-visible { outline: 2px solid #d4a017; outline-offset: 2px; }
 /* INTELLIGENCE track: the same obsidian ball, a blue star (23:21Z). */
 .star-rating-intel { border-color: #0f52ba88; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(15,82,186,.3); }
 .star-rating-intel button { border-color: #0f52ba88; color: #0f52ba66; }
 .star-rating-intel button:hover { border-color: #0f52ba; color: #60a5fa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.4); }
 .star-rating-intel button.on { color: #93c5fd; border-color: #0f52ba; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.45); }
 .star-rating-intel button:focus-visible { outline-color: #0f52ba; }
-/* The accessible readout only — the visible per-row points text is gone (23:21Z). */
-.rating-num.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-@keyframes orbbreathe { from { box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 8px -2px rgba(142,36,170,.3); } to { box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 14px -2px rgba(142,36,170,.45); } }
+/* The accessible readout only — the visible per-row points text is gone (23:21Z).
+   HUB FEED FIX2 2026-11-18 (D8): the per-row rank readout joins it — screen-reader
+   only, never visible on the Hub. */
+.rating-num.sr-only, .rank-readout.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@keyframes orbbreathe { from { box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 8px -2px rgba(212,160,23,.3); } to { box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 14px -2px rgba(212,160,23,.45); } } /* HUB FEED FIX2 2026-11-18 (D8): orbbreathe breathes gold now — it animates only the VALUE .on stars. */
 @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 @keyframes orb-spin-rev { to { transform: rotate(-360deg); } }
 @keyframes naya-breathe { from { opacity: .55; } to { opacity: 1; } }
@@ -1878,7 +1882,7 @@ body.msg-open{overflow:hidden;}
 .rate-diamond svg { width: 26px; height: 26px; display: block; filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(142,36,170,.4)); }
 .rank-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
 .rank-label { font-size: 17px; font-weight: 800; letter-spacing: .1em; color: #fff; min-width: 132px; }
-.rank-row.rank-value .rank-label { color: #c084fc; }
+.rank-row.rank-value .rank-label { color: #d4a017; } /* HUB FEED FIX2 2026-11-18 (D8): the VALUE label is gold. */
 .rank-row.rank-intel .rank-label { color: #60a5fa; }
 .rank-row .star-rating { flex: 1; min-width: 0; }
 .rank-readout { font-size: 17px; font-weight: 800; color: #fff; white-space: nowrap; }
@@ -1887,8 +1891,11 @@ body.msg-open{overflow:hidden;}
 /* ——— MAKE THIS INTELLIGENCE BETTER (23:21Z) ——— */
 .add-intel-prompt { font-size: 17px; color: #fff; margin-bottom: 12px; }
 .add-intel-types { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
-.intel-type { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 17px; letter-spacing: .06em; color: #fff; padding: 12px 18px; border-radius: 999px; background: linear-gradient(135deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 38%), radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--tc) 22%, #12121a), #07070b 78%); /* 23:32Z emblem law: a facet of light across the top-left. */ border: 1.5px solid color-mix(in srgb, var(--tc) 62%, rgba(255,255,255,.12)); box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -4px 10px rgba(0,0,0,.65), 0 6px 16px rgba(0,0,0,.55), 0 0 10px -2px color-mix(in srgb, var(--tc) 35%, transparent); transition: transform .2s cubic-bezier(.16,.84,.22,1), box-shadow .2s, border-color .2s; }
-.intel-type-dot { width: 12px; height: 12px; flex: none; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.5), var(--tc) 55%, #050607); border: 1px solid var(--tc); box-shadow: 0 2px 4px rgba(0,0,0,.6); }
+.intel-type { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 17px; letter-spacing: .06em; color: #fff; padding: 12px 18px; border-radius: 999px; background: linear-gradient(135deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 38%), radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--tc) 22%, #12121a), #07070b 78%); /* 23:32Z emblem law: a facet of light across the top-left. */ border: 2px solid color-mix(in srgb, var(--tc) 62%, rgba(255,255,255,.12)); box-shadow: inset 0 2px 3px rgba(255,255,255,.28), inset 0 -6px 12px rgba(0,0,0,.7), 0 8px 20px rgba(0,0,0,.6), 0 0 14px -2px color-mix(in srgb, var(--tc) 45%, transparent); transition: transform .2s cubic-bezier(.16,.84,.22,1), box-shadow .2s, border-color .2s; } /* HUB FEED FIX2 2026-11-18 (D8): the pill body is deeper — thicker rim, stronger top light, deeper bottom shadow, more lift — a real object, not a flat pill. */
+.intel-type-dot { position: relative; width: 16px; height: 16px; flex: none; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.65), var(--tc) 45%, #050607 92%); border: 1.5px solid var(--tc); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 6px rgba(0,0,0,.7), 0 3px 8px rgba(0,0,0,.6), 0 0 10px -2px var(--tc); } /* HUB FEED FIX2 2026-11-18 (D8): the dot is a real jewel ball now — obsidian sphere in the type's own color, top-left light, stacked shadows — not a flat disc. */
+/* 23:32Z emblem law, harvested from the star balls (L1834): a facet of light on the jewel's top-left. */
+.intel-type-dot::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(135deg, rgba(255,255,255,.32) 0%, rgba(255,255,255,0) 38%); pointer-events: none; }
+.intel-type.on .intel-type-dot { animation: jewel-breathe 5s ease-in-out infinite; } /* the chosen jewel breathes — jewel-breathe, harvested from the welcome portal jewel (L2644). */
 .intel-type:hover { transform: translateY(-2px); border-color: var(--tc); box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -4px 10px rgba(0,0,0,.65), 0 8px 20px rgba(0,0,0,.55), 0 0 14px -2px color-mix(in srgb, var(--tc) 50%, transparent); }
 .intel-type:active { transform: translateY(2px) scale(.96); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -2px 6px rgba(0,0,0,.7), 0 3px 8px rgba(0,0,0,.6); }
 .intel-type.on { border-color: var(--tc); box-shadow: inset 0 0 0 1.5px var(--tc), inset 0 2px 5px rgba(255,255,255,.28), inset 0 -4px 10px rgba(0,0,0,.65), 0 0 14px -2px color-mix(in srgb, var(--tc) 55%, transparent), 0 8px 20px rgba(0,0,0,.55); }
@@ -2100,6 +2107,15 @@ body.msg-open{overflow:hidden;}
   box-shadow: inset 0 1px rgba(255,255,255,.45), inset 0 -4px 9px rgba(0,0,0,.45), 0 6px 14px rgba(0,0,0,.6), 0 0 20px rgba(212,160,23,.30);
   text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(212,160,23,.85);
 }
+/* HUB FEED FIX2 2026-11-18 (D8): the gold above is VALUE only — INTELLIGENCE stays
+   blue. The gold rules (L2045's gold .on, L2093's gold rest, L2101's gold hover,
+   L2110's gold glow) would otherwise swallow the blue track — equal specificity,
+   later wins — so the blue track is re-asserted here, after all of them, with
+   the blue track's own values from L1846-1851. */
+.star-rating-intel { border-color: #0f52ba; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(15,82,186,.3); }
+.star-rating-intel button { border-color: #0f52ba88; color: #0f52ba66; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.14), #07070b 62%, #050607 100%); }
+.star-rating-intel button:hover { border-color: #0f52ba; color: #60a5fa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.4); }
+.star-rating-intel button.on { background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.16), #07070b 62%, #050607 100%); color: #93c5fd; text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(15,82,186,.85); border-color: #0f52ba; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.45); }
 @media (min-width: 701px) {
   /* Desktop: true circles, one size, no stretch. Phones keep the FIX2
      flex rule (<=700px) so ten orbs still fit 390px. */
@@ -3080,60 +3096,6 @@ button, .btn, .tab, .eco-btn, .activity-card {
 @media (prefers-reduced-motion: reduce) { .hero::before{ animation:none; transform:none; opacity:.45; } }
 .hero{ position:relative; isolation:isolate; overflow:hidden; }
 .hero > *{ position:relative; z-index:1; }
-/* POINTS PILL WITH DIGIT TILES — harvested verbatim from Personal blob
-   9a006c47 (FIX 2026-11-18, C3: .ph-points L2138-2146, #pointsdisplay
-   L3983-4017). One pill, in the hero beside the greeting — where Personal
-   places it beside the name, above the action controls. One deviation,
-   required by the design laws (§2.3, no text below 17px): .ph-points-label
-   14px → 17px, so the harvest adds zero new FAILs. Two Hub adaptations,
-   named: the pill is display-only here (no breakdown popup exists in the
-   Hub), so the R2 door comment and cursor:pointer go; the tiler +
-   first-paint read live in mainShow, after the hero is built (the hero is
-   JS-built, so Personal's static script tag cannot run). */
-/* POINTS: dynamic, glowing */
-.ph-points{display:inline-flex;align-items:center;gap:6px;
-  background:#050507; /* CORRECTIONS 2026-11-13: solid obsidian inside, gold rim stays */
-  border:2px solid #d4a017;border-radius:999px;padding:8px 18px;
-  box-shadow:0 0 20px rgba(212,160,23,.3),inset 0 1px 0 rgba(255,255,255,.2);
-  transition:all .3s;}
-.ph-points-star{color:#d4a017;font-size:26px;text-shadow:0 0 12px rgba(212,160,23,.9),0 0 26px rgba(212,160,23,.45);}
-#pointscount{font-size:18px;font-weight:800;color:#fff;min-width:30px;text-align:center;}
-.ph-points-label{font-size:17px;color:#d4a017;font-weight:600;}
-.ph-points.bump{transform:scale(1.15);box-shadow:0 0 12px rgba(212,160,23,.35);}
-#pointsdisplay.pc-restyled{padding:8px 16px 10px;}
-#pointsdisplay .pc-pill-numrow{display:flex;align-items:center;gap:6px;justify-content:center;}
-#pointsdisplay .os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
-#pointsdisplay .os-mini-tile{display:inline-block;width:34px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#ffffff,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
-#pointsdisplay .os-mini-tile .rd{display:block;height:34px;line-height:34px;text-align:center;font-size:30px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
-#pointsdisplay .os-mini-gap{flex:none;width:10px;}
-#pointsdisplay .os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
-#pointsdisplay .os-mini-tile.d1{border-color:#c62828;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(198,40,40,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile.d1 .cap{background:linear-gradient(180deg,#c62828,#c62828 55%,#c62828);}
-#pointsdisplay .os-mini-tile.d2{border-color:#c2410c;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(194,65,12,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile.d2 .cap{background:linear-gradient(180deg,#c2410c,#c2410c 55%,#c2410c);}
-#pointsdisplay .os-mini-tile.d3{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(212,160,23,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile.d3 .cap{background:linear-gradient(180deg,#d4a017,#d4a017 55%,#d4a017);}
-#pointsdisplay .os-mini-tile.d4{border-color:#07925f;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(7,146,95,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile.d4 .cap{background:linear-gradient(180deg,#07925f,#07925f 55%,#045033);}
-#pointsdisplay .os-mini-tile.d5{border-color:#0f52ba;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(15,82,186,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile.d5 .cap{background:linear-gradient(180deg,#0f52ba,#0f52ba 55%,#0f52ba);}
-#pointsdisplay .os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile.d6 .cap{background:linear-gradient(180deg,#3f51b5,#3f51b5 55%,#3f51b5);}
-#pointsdisplay .os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile.d7 .cap{background:linear-gradient(180deg,#6d28d9,#8e24aa 55%,#4d0f5e);}
-#pointsdisplay .os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(109,40,217,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile.d8 .cap{background:linear-gradient(180deg,#ffffff,#6d28d9 55%,#6d28d9);}
-#pointsdisplay .os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(162,28,175,.5),inset 0 1px 0 rgba(255,255,255,.35);}
-#pointsdisplay .os-mini-tile.d9 .cap{background:linear-gradient(180deg,#a21caf,#a21caf 55%,#a21caf);}
-@media (max-width:768px){
-  #pointsdisplay .os-mini-tile{width:24px;border-radius:4px;}
-  #pointsdisplay .os-mini-tile .cap{height:4px;}
-  #pointsdisplay .os-mini-tile .rd{height:26px;line-height:26px;font-size:22px;}
-  #pointsdisplay .os-mini-num{gap:2px;}
-  #pointsdisplay .os-mini-gap{width:8px;}
-}
 </style>
 
 <style>
@@ -5085,15 +5047,10 @@ const ActivityLog = (() => {
 })();
 
 window.BoardActions = (() => {
-  /* TEN-STAR POINTS (Shawn's ruling 21:01Z, 2026-11-17): ONE point per
-     star — ten stars is ten points. ONE named constant; set it here and
-     nowhere else. STAR_POINTS_PER_STAR = 1, STAR_RATING_MAX = 10. */
-  const STAR_POINTS_PER_STAR = 1;
-  const STAR_RATING_MAX = 10;
-  function starRatingPoints(stars) {
-    var n = Math.max(0, Math.min(STAR_RATING_MAX, stars || 0));
-    return n * STAR_POINTS_PER_STAR;
-  }
+  /* HUB FEED FIX2 2026-11-18 (D8): the ten-star points machinery is gone
+     with the dead FIX2 stars block that was its only caller — rating mints
+     no points; points live on the profile and the Dashboard. No dead
+     machinery for a removed block. */
   const STORE_KEY = 'nayanet-board-actions-v1';
   const read = () => { try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { return {}; } };
   const write = s => { try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch {} };
@@ -5433,9 +5390,12 @@ window.BoardActions = (() => {
     const right = el('div', 'board-actions-right');
 
     if (!isPersonal) {
-    /* FIX2: the heart stays as the Love jewel — Like is gone. The stars
-       ARE the scale (no separate Like), per the ten-star block bottom. */
-    for (const [label, kind, aria] of [['\u2764\uFE0F LOVE', 'love', 'Love this intelligence']]) {
+    /* HUB FEED FIX2 2026-11-18 (D8): LIKE is back, beside LOVE — the
+       2026-11-17 "Like is gone" note is superseded by this round. LIKE is a
+       ruby thumb jewel (the standard thumb_up glyph, the same ruby gradient
+       as the LOVE heart); LOVE keeps its ruby heart. Both toggle
+       device-locally, with their own count badge. */
+    for (const [label, kind, aria] of [['\u2764\uFE0F LOVE', 'love', 'Love this intelligence'], ['LIKE', 'like', 'Like this intelligence']]) {
       const b = btn(label, kind, aria);
       /* NUTSHELL-CLIP FIX (2026-11-17) — THE BETTER PRESENTATION (3D LAW):
          the heart is a real ruby jewel, not the flat platform emoji: an
@@ -5446,8 +5406,12 @@ window.BoardActions = (() => {
          verbatim from this file's own activity-log heart. The gradient id
          is per-card (boardId), so ten cards never share one id. The count
          badge (digit tile) is appended after, untouched. */
-      var loveGradId = 'loveHeart-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-');
-      b.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="' + loveGradId + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#e5484d"/><stop offset="75%" stop-color="#c62828"/><stop offset="100%" stop-color="#7a0e18"/></radialGradient></defs><path fill="url(#' + loveGradId + ')" d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span><span> LOVE</span>';
+      var loveGradId = (kind === 'like' ? 'likeThumb-' : 'loveHeart-') + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-');
+      if (kind === 'like') {
+        b.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="' + loveGradId + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#e5484d"/><stop offset="75%" stop-color="#c62828"/><stop offset="100%" stop-color="#7a0e18"/></radialGradient></defs><path fill="url(#' + loveGradId + ')" d="M2 21h4V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg></span><span> LIKE</span>';
+      } else {
+        b.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="' + loveGradId + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#e5484d"/><stop offset="75%" stop-color="#c62828"/><stop offset="100%" stop-color="#7a0e18"/></radialGradient></defs><path fill="url(#' + loveGradId + ')" d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span><span> LOVE</span>';
+      }
       const key = boardId + ':' + kind;
       const countKey = boardId + ':' + kind + ':count';
       /* Count badge — dynamic, device-local */
@@ -5470,10 +5434,10 @@ window.BoardActions = (() => {
           const ipath = '<path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/>';
           const entry = {
             type: kind,
-            headline: 'Loved "' + title + '"',
+            headline: (kind === 'like' ? 'Liked "' : 'Loved "') + title + '"',
             narrative: 'This intelligence resonated deeply. It is now part of your signal.',
             meta: 'you · just now',
-            color: '#8e24aa',
+            color: kind === 'like' ? '#c62828' : '#8e24aa',
             iconPath: ipath, ts: Date.now()
           };
           const items = ActivityLog.read(); items.unshift(entry);
@@ -5487,58 +5451,38 @@ window.BoardActions = (() => {
           board.classList.add('flash');
         }
         toast('INTELLIGENCE STATE CHANGED', kind.toUpperCase() + ' is now ' + (next ? 'ACTIVE' : 'REMOVED') + ' on this device.',
-          '#8e24aa');
+          kind === 'like' ? '#c62828' : '#8e24aa');
       });
       left.appendChild(b);
     }
     } /* end if(!isPersonal) for love */
 
-    /* RATE THE INTELLIGENCE (renovation 23:21Z — the Rating Footer): two rows of
-       ten obsidian star balls — VALUE purple, INTELLIGENCE blue (his image's
-       colors, not gold/emerald). One tap ranks; your rank lights up, the crowd
-       average and rank count sit beside it. Ranks are pure signal: they set a
-       block's standing and feed the leaderboards, they mint no points — no
-       points text anywhere. The SAVE button takes the center column; the stars
-       live in the RATE section below the react row. */
+    /* RATE THE INTELLIGENCE (renovation 23:21Z — the Rating Footer; HUB FEED
+       FIX2 2026-11-18 (D8): VALUE gold, INTELLIGENCE blue — the ruling. Two
+       rows of ten obsidian star balls. One tap ranks; your rank lights up, the
+       crowd average and rank count sit beside it. Ranks are pure signal: they
+       set a block's standing and feed the leaderboards, they mint no points —
+       no points text anywhere. The SAVE button takes the center column; the
+       stars live in the RATE section below the react row. */
     var rateSec = null;
     if (!isPersonal) {
-    /* FIX2: TEN gold stars, not five — one row of small gold jewels in a
-       circle with the slow flow around them (see .star-rating CSS).
-       Touching a star lights every star up to it. */
-    const stars = el('div', 'star-rating');
-    stars.setAttribute('role', 'group');
-    stars.setAttribute('aria-label', 'Rate this intelligence from one to ten stars');
-    const rated = store[boardId + ':rate'] || 0;
-    /* Numeric rating display — dynamic */
-    const ratingNum = el('span', 'rating-num', rated > 0 ? rated + '/10' : '—');
-    ratingNum.setAttribute('aria-live', 'polite');
-    for (let i = 1; i <= STAR_RATING_MAX; i++) {
-      const sb = document.createElement('button');
-      sb.type = 'button'; sb.textContent = '\u2605';
-      sb.setAttribute('aria-label', i + ' star' + (i > 1 ? 's' : ''));
-      if (i <= rated) sb.classList.add('on');
-      sb.addEventListener('click', e => {
+    /* HUB FEED FIX2 2026-11-18 (D8 precondition): the FIX2 stars block above
+       was dead — its for loop never closed and saveEnd was never defined, so
+       the whole Hub script failed to parse. It is replaced by #3471's
+       saveEnd block, harvested verbatim (PR #3471 filed bytes L5394-5407);
+       the single rating row lives in rankRow() below, as #3471 built it. */
+      /* The ending SAVE performs the same save toggle as the top-actions SAVE:
+         it clicks the board's real SAVE button, so there is one source of truth. */
+      const saveEnd = btn('SAVE', 'save', 'Save this intelligence');
+      if (store[boardId + ':save']) { saveEnd.classList.add('on'); saveEnd.setAttribute('aria-pressed', 'true'); }
+      saveEnd.addEventListener('click', e => {
         e.stopPropagation();
-        const s = read(); s[boardId + ':rate'] = i; write(s);
-        [...stars.children].forEach((x, n) => {
-          if (x.classList.contains('rating-num')) return;
-          x.classList.toggle('on', n < i);
-          if (n < i) {
-            x.classList.remove('pulse');
-            void x.offsetWidth; /* restart animation */
-            x.classList.add('pulse');
-          }
-        });
-        /* One point per star (STAR_POINTS_PER_STAR) — recorded beside
-           the rating on this device, one place, one constant. */
-        var pts = starRatingPoints(i);
-        try { var ss = read(); ss[boardId + ':rate:points'] = pts; write(ss); } catch (e) {}
-        ratingNum.textContent = i + '/10';
-        if (typeof ActivityLog !== 'undefined') {
-          ActivityLog.log('rate', 'Rated "' + title + '" ' + i + ' of 10 stars', 'star', '#d4a017',
-            '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>');
-        }
-        toast('INTELLIGENCE RATED', i + ' of 10 stars — ' + pts + ' points (1 per star) recorded on this device. Rating is feedback, not truth.', '#d4a017');
+        const board = wrap.closest('.intel-board');
+        const top = board && board.querySelector('.action[data-kind="save"]');
+        if (top) top.click();
+        const s2 = read();
+        saveEnd.classList.toggle('on', !!s2[boardId + ':save']);
+        saveEnd.setAttribute('aria-pressed', String(!!s2[boardId + ':save']));
       });
       center.appendChild(saveEnd);
       /* One row of ten star balls for one track. */
@@ -5555,7 +5499,7 @@ window.BoardActions = (() => {
         const crowdAvg = note && (isValue ? (note.avgValue || note.avg_value) : (note.avgIntel || note.avg_intel));
         const crowdCount = note && (note.rankCount || note.rank_count);
         const crowdTxt = crowdAvg ? Number(crowdAvg).toFixed(1) + ' / 10' : null;
-        const readout = el('span', 'rank-readout', (rated > 0 ? rated : (crowdTxt || '—')) + ' / 10' + (crowdCount ? ' · ' + crowdCount + ' ranks' : ''));
+        const readout = el('span', 'rank-readout sr-only', (rated > 0 ? rated : (crowdTxt || '—')) + ' / 10' + (crowdCount ? ' · ' + crowdCount + ' ranks' : '')); /* HUB FEED FIX2 2026-11-18 (D8): the per-row readout is screen-reader-only — points live on the profile and Dashboard, not on the Hub. It still updates on every rank (L5576), for assistive tech. */
         readout.setAttribute('aria-live', 'polite');
         for (let i = 1; i <= 10; i++) {
           const sb = document.createElement('button');
@@ -5576,10 +5520,10 @@ window.BoardActions = (() => {
             readout.textContent = i + ' / 10' + (crowdCount ? ' · ' + crowdCount + ' ranks' : '');
             updateSignal();
             if (typeof ActivityLog !== 'undefined') {
-              ActivityLog.log('rate', 'Ranked "' + title + '" ' + (isValue ? 'VALUE' : 'INTELLIGENCE') + ' ' + i + ' of 10', 'star', isValue ? '#8e24aa' : '#0f52ba',
+              ActivityLog.log('rate', 'Ranked "' + title + '" ' + (isValue ? 'VALUE' : 'INTELLIGENCE') + ' ' + i + ' of 10', 'star', isValue ? '#d4a017' : '#0f52ba',
                 '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>');
             }
-            toast((isValue ? 'VALUE' : 'INTELLIGENCE') + ' RANKED', i + ' of 10 stars recorded on this device. Ranks are signal.', isValue ? '#8e24aa' : '#0f52ba');
+            toast((isValue ? 'VALUE' : 'INTELLIGENCE') + ' RANKED', i + ' of 10 stars recorded on this device. Ranks are signal.', isValue ? '#d4a017' : '#0f52ba');
           });
           stars.appendChild(sb);
         }
@@ -5668,6 +5612,37 @@ window.BoardActions = (() => {
        COMMENT is tapped (see bottomActions) — the fold is the experience. */
     wrap.hidden = true;
     const b = el('b', '', 'ADD TO THE INTELLIGENCE');
+    /* HUB FEED FIX2 2026-11-18 (D8): the five MAKE THIS INTELLIGENCE BETTER
+       pills, restored verbatim from PR #3471's filed bytes (L5513-5537) — they
+       were lost from main's lineage, so addIntel referenced prompt / types /
+       chosenType / TYPE_BY_ID that did not exist. The heading stays main's
+       newer 'ADD TO THE INTELLIGENCE'; the prompt, the five types, their
+       colors, and the radio-group behavior are #3471's, byte for byte. */
+    const prompt = el('div', 'add-intel-prompt', 'What did you learn, improve, prove, or put into action?');
+    const types = el('div', 'add-intel-types');
+    const TYPE_DEFS = [
+      ['ADD EVIDENCE', 'evidence', '#d4a017'],
+      ['BUILD ON THIS', 'build', '#07925f'],
+      ['ASK A QUESTION', 'question', '#0f52ba'],
+      ['REPORT AN OUTCOME', 'outcome', '#8e24aa'],
+      ['CONTRIBUTE INTELLIGENCE', 'contribute', '#0e7490'],
+    ];
+    const TYPE_BY_ID = {};
+    TYPE_DEFS.forEach(function (d) { TYPE_BY_ID[d[1]] = d; });
+    var chosenType = null;
+    TYPE_DEFS.forEach(function (def) {
+      const tb = document.createElement('button');
+      tb.type = 'button'; tb.className = 'intel-type';
+      tb.style.setProperty('--tc', def[2]);
+      tb.innerHTML = '<span class="intel-type-dot" aria-hidden="true"></span>' + def[0];
+      tb.setAttribute('aria-pressed', 'false');
+      tb.addEventListener('click', function () {
+        chosenType = (chosenType === def[1]) ? null : def[1];
+        types.querySelectorAll('.intel-type').forEach(function (x) { const on = (x === tb && !!chosenType); x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
+        input.focus();
+      });
+      types.appendChild(tb);
+    });
     const row = el('div', 'add-intel-row');
     const input = document.createElement('input');
     input.type = 'text';
@@ -6145,8 +6120,8 @@ function HubView(params) {
      bar — not on the left): it is appended at the far right end of the top
      bar now, and a tap offers three choices — open the sidebar, open the
      smart messenger in a panel, or neither — instead of toggling the rail
-     directly. The right rail
-     keeps its own dedicated opener (railBtn). Never a + button. */
+     directly. The right rail opens from the bottom-bar ECOSYSTEM tile.
+     Never a + button. */
   const menuBtn = el('button', 'rail-toggle', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>');
   menuBtn.setAttribute('aria-label', 'Menu — sidebar, smart messenger, or neither');
   menuBtn.setAttribute('data-hub-menu-btn', '1');
@@ -6158,9 +6133,8 @@ function HubView(params) {
        the smart messenger — in the same harvested .fc-plusmenu chrome as
        the two + menus. The old direct toggle (FIX-5 left drawer, item-B
        right-rail reopen, desktop rail collapse) is REPLACED by this menu:
-       the right rail keeps its own dedicated opener (railBtn, immediately
-       left of Life with Naya) and the bottom-bar ECOSYSTEM tile still
-       opens it too, so no reopen path is lost. 23:00Z: the menu is a
+       the bottom-bar ECOSYSTEM tile still opens the right rail, so no
+       reopen path is lost. 23:00Z: the menu is a
        THREE-STATE TOGGLE — Sidebar | Smart Messenger | Neither, never both
        at once (state in window._nayaMenuState). */
     var menu = document.getElementById('hubMenuChoices');
@@ -6250,33 +6224,10 @@ function HubView(params) {
   // The marketing "ecosystem destinations" menu is gone — this is the logged-in
   // app, not the marketing site.
   top.append(askBtn, title);
-  /* EYE-NOTES 2026-11-17 §3.1 (Shawn 18:00Z): the control that pulls up the
-     right sidebar sits immediately LEFT of "Life with Naya" at the top right.
-     It is the same three-line hamburger object as the left menu control
-     (harvested verbatim), but this one is DEDICATED to the right rail — the
-     left menu control stays where it is: its target is the LEFT nav (below
-     desktop it opens the left drawer; at desktop it collapses the left rail),
-     and moving it would have failed the acceptance (at the default desktop
-     state a tap collapses the left rail instead of opening the right one).
-     Toggle: open rail → close; collapsed/hidden rail → open; docked visible
-     rail → collapse (closeRightRail collapses a docked rail). */
-  const railBtn = el('button', 'rail-toggle rail-toggle-right', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>');
-  railBtn.type = 'button'; /* EYE-NOTES fix: typeless buttons are a latent submit risk (the Personal builder sets it explicitly) */
-  railBtn.setAttribute('aria-label', 'Open right sidebar');
-  railBtn.setAttribute('aria-expanded', window.innerWidth >= 1440 ? 'true' : 'false'); /* EYE-NOTES fix: docked visible at desktop, hidden below */
-  railBtn.setAttribute('title', 'Right sidebar — your worlds and NayaNET');
-  railBtn.addEventListener('click', () => {
-    const open = shell.classList.contains('rail-right-open');
-    const collapsed = shell.classList.contains('rail-right-collapsed');
-    if (open) { closeRightRail(); }
-    else if (collapsed) { openRightRail(); }
-    /* EYE-NOTES fix (verify-probe catch): no state class means docked
-       VISIBLE at desktop, but HIDDEN off-canvas below desktop — so the
-       first tap closes at desktop and OPENS on phone. */
-    else if (window.innerWidth >= 1440) { closeRightRail(); }
-    else { openRightRail(); }
-    syncRailBtn(); /* EYE-NOTES-FIX §3.2: one sync for every close path */
-  });
+  /* HUB FEED FIX2 2026-11-18 (D5): ONE menu control, far-right. The second
+     hamburger (railBtn, EYE-NOTES §3.1) is REMOVED — two identical three-line
+     controls in one top bar is a duplicate. The right rail still opens from
+     the bottom-bar ECOSYSTEM tile, so no reopen path is lost. */
 
   /* HUB ICONS FIX 2026-11-16 (item 6): the top-right + is gone — the right
      corner belongs to Life with Naya now. The right sidebar opens from
@@ -6289,7 +6240,7 @@ function HubView(params) {
   pcBtn.setAttribute('aria-label', 'Open NayaNET Powercast');
   pcBtn.setAttribute('title', 'NayaNET Powercast — learn all about Naya Power');
   ecoWrap.append(pcBtn);
-  top.append(ecoWrap, railBtn, lwnBtn, menuBtn); /* HUB FEED 2026-11-17 22:25Z (item 8): the menu control sits at the RIGHT end of the top bar now — not on the left */
+  top.append(ecoWrap, lwnBtn, menuBtn); /* HUB FEED 2026-11-17 22:25Z (item 8) + FIX2 2026-11-18 (D5): the menu control sits at the RIGHT end of the top bar now — not on the left — and it is the ONLY menu control. */
 
   /* Ask Naya — chassis-level retrieval. One clean search box, no subtext. */
   const searchWrap = el('section', 'searchWrap');
@@ -6396,7 +6347,7 @@ function HubView(params) {
   }
   function smartTabStrip(lensNotes, allNotes) {
     const seen = [];
-    lensNotes.forEach(n => (n.topics || []).forEach(t => { if (!seen.includes(t)) seen.push(t); }));
+    allNotes.forEach(n => (n.topics || []).forEach(t => { if (!seen.includes(t)) seen.push(t); }));
     /* Canonical system-tab order: the onboarding journey. Unknown topics keep first-appearance order after. */
     const CANON = ['Start Here', 'The Intelligence', 'Your Tools', 'Smart Connect', 'The Ecosystem'];
     seen.sort((a, b) => {
@@ -7371,7 +7322,7 @@ window.NayaNotif = window.NayaNotif || {
      X-close left it reading stale (it never said 'Hide sidebar' while the
      drawer stood open, and after an X-close it still read open). Every
      closer runs through openDrawer() / closeDrawer(), so syncing there
-     covers all five — the same shape as syncRailBtn() for the right. The
+     covers all five. The
      drawer panel itself covers the three-bars while open (FIX-5, known) —
      so while the drawer stands open its X is the closer, and the
      three-bars reopens it from closed; what this fix guarantees is that
@@ -7381,17 +7332,8 @@ window.NayaNotif = window.NayaNotif || {
     menuBtn.setAttribute('aria-expanded', leftOpen ? 'true' : 'false');
     menuBtn.setAttribute('aria-label', leftOpen ? 'Hide sidebar' : 'Menu — sidebar, smart messenger, or neither');
   }
-  /* EYE-NOTES-FIX 2026-11-17 §3.2: ONE place keeps the control true. The
-     panel closes five ways — the control, the panel's X, the backdrop,
-     Escape, a rail link — and only the control's own handler updated its
-     label and state, so an X-close left it reading "Close right sidebar" /
-     expanded while the panel was closed. Every closer runs through
-     openRightRail() / closeRightRail(), so syncing there covers all five. */
-  function syncRailBtn() {
-    const nowOpen = shell.classList.contains('rail-right-open') || (!shell.classList.contains('rail-right-collapsed') && window.innerWidth >= 1440);
-    railBtn.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
-    railBtn.setAttribute('aria-label', nowOpen ? 'Close right sidebar' : 'Open right sidebar');
-  }
+  /* HUB FEED FIX2 2026-11-18 (D5): syncRailBtn is gone with railBtn — there
+     is no second control left to keep true. */
   function openRightRail() {
     /* FIX 2026-11-16 (item B): at desktop, opening the right drawer over a
        docked left rail remembers it — closing the drawer restores the
@@ -7403,7 +7345,6 @@ window.NayaNotif = window.NayaNotif || {
     document.body.classList.add('rail-right-open');
     const f = navR.querySelector('.nav-btn');
     if (f) f.focus();
-    syncRailBtn();
   }
   function closeRightRail() {
     /* FIX 2026-11-16 (item B): a desktop drawer opened over a docked left
@@ -7418,7 +7359,6 @@ window.NayaNotif = window.NayaNotif || {
       shell.classList.remove('rail-collapsed');
       document.body.classList.remove('rail-right-open');
       syncMenuBtn(); /* AMENDMENT #3: closing the right drawer restores the LEFT docked — the old write marked the menu closed while the left stood open */
-      syncRailBtn();
       return;
     }
     rightDrawerLeftDocked = false;
@@ -7428,7 +7368,6 @@ window.NayaNotif = window.NayaNotif || {
        ECOSYSTEM tile). Below desktop this class is inert. */
     shell.classList.add('rail-right-collapsed');
     document.body.classList.remove('rail-right-open');
-    syncRailBtn();
   }
   function ensureGlobalKeys() {
     if (window.__nayaChassisKeys) return;
@@ -7619,7 +7558,10 @@ window.NayaJewels = (() => {
          role/tabindex/data-derive are dropped (no breakdown popup exists
          in the Hub); the number is the citizen's own total, read from the
          same localStorage key Personal writes ('naya.points.total.v1'). */
-      '<div class="ph-points pc-restyled" id="pointsdisplay" title="Your Naya points"><span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label" data-mw-tr="pts">pts</span></span></div>' +
+      /* HUB FEED FIX2 2026-11-18 (D4): the points pill is OUT of the banner —
+         points live on the profile and the Dashboard, never on the Hub. The pill
+         div, its first-paint read, its tiler, and its CSS are removed together;
+         no dead machinery for a removed block. */
       /* AMENDMENT 2026-11-18 (A, Shawn 00:47Z): the banner simplified to
          exactly four elements — motto, greeting, date + live time
          UNDERNEATH the greeting, the share-value line. The Wisdom of the
@@ -7638,60 +7580,6 @@ window.NayaJewels = (() => {
       }, 1000);
     }
     wrap.appendChild(hero);
-    /* FIX 2026-11-18 (C3): the points pill's first-paint read + tiler,
-       harvested verbatim from Personal blob 9a006c47 (first-paint script
-       L5000; PILL RESTYLE tiler L27878-27923). They run here, after the
-       hero is built — the hero is JS-built, so Personal's static script
-       tags cannot run. The number is the citizen's own total from the
-       same localStorage key Personal writes; without it the pill keeps
-       its loading glyph (…), exactly as on Personal. */
-    try{var _pc0=JSON.parse(localStorage.getItem('naya.points.total.v1')||'null');if(_pc0&&typeof _pc0.total==='number'&&isFinite(_pc0.total)){var _el0=document.getElementById('pointscount');if(_el0)_el0.textContent=_pc0.total.toLocaleString();}}catch(e){}
-    /* PILL RESTYLE tiler (Sharpening 2): harvested from live Dashboard pass-10
-       (miniTileHTML/_osMiniNumHTML Dash 25613-25638; _osSpc Dash 25141;
-       lap dialPos Dash 23193). The points wiring still writes the total into
-       #pointscount (untouched, points-round lines); this re-presents what the
-       wiring wrote as Dashboard tiles and drives the gauge line from the same
-       total: fill = dialPos(total)/500 — the Dashboard's lap position. */
-    (function(){
-      function pcMiniTileHTML(ch){
-        if (ch === ' ' || ch === ',') return '<span class="os-mini-gap"></span>';
-        if (ch === '$') return '<span class="os-mini-tile dollar"><span class="cap"></span><span class="rd">$</span></span>';
-        if (ch === '.') return '<span class="os-mini-tile dot"><span class="cap"></span><span class="rd">.</span></span>';
-        if (ch === '%') return '<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>';
-        var d = parseInt(ch, 10);
-        if (!isFinite(d)) return '';
-        return '<span class="os-mini-tile d' + d + '"><span class="cap"></span><span class="rd">' + d + '</span></span>';
-      }
-      function pcMiniNumHTML(value){
-        if (value == null) return '—';
-        var str = String(value).trim().replace(/,/g, ' ').replace(/ +/g, ' ');
-        if (str === '' || str === '—' || str === '-') return '—';
-        if (!/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(str)) return String(value);
-        var html = '<span class="os-mini-num">';
-        for (var i = 0; i < str.length; i++) html += pcMiniTileHTML(str[i]);
-        return html + '</span>';
-      }
-      function pcTilePill(){
-        var pc = document.getElementById('pointscount');
-        if (!pc) return;
-        var raw = (pc.textContent || '').trim();
-        if (!raw || raw === '…' || raw === '—' || raw === '-') { return; }
-        var digits = raw.replace(/[^0-9]/g, '');
-        if (!digits) return;
-        if (pc._pcLastDigits === digits) return;
-        pc._pcLastDigits = digits;
-        pc.innerHTML = pcMiniNumHTML(raw);
-        var _pd = document.getElementById('pointsdisplay');
-        if (_pd) { _pd.classList.remove('bump'); void _pd.offsetWidth; _pd.classList.add('bump'); setTimeout(function(){ _pd.classList.remove('bump'); }, 350); }
-      }
-      window.pcTilePill = pcTilePill;
-      try {
-        var pc0 = document.getElementById('pointscount');
-        if (pc0) new MutationObserver(function(){ pcTilePill(); }).observe(pc0, {childList:true, characterData:true, subtree:true});
-      } catch(e){}
-      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pcTilePill);
-      else pcTilePill();
-    })();
     /* AMENDMENT 2026-11-18 (A): the "Read more" toggle and the wisdom
        trim go with the wisdom block — no dead machinery for a removed
        block. */
@@ -7707,7 +7595,7 @@ window.NayaJewels = (() => {
        never as visible text), then the categories (the Smart Tabs ribbon),
        then the feed. The fold is the hero itself collapsing to zero
        height — no new chrome, no new button, nothing invented. It folds
-       on first scroll down, or 15s after arrival, whichever comes first;
+       on first scroll down, or 30s after arrival, whichever comes first;
        it folds back when you scroll back to the very top, so the greeting
        is never stranded. The state lives for the page lifetime only
        (window, not storage) — a fresh load logs in and greets again. */
@@ -7722,6 +7610,16 @@ window.NayaJewels = (() => {
         h.style.maxHeight = '0px';
         h.setAttribute('aria-hidden', 'true');
         setFolded(true);
+        /* HUB FEED FIX2 2026-11-18 (D3): the restore shows after ANY fold —
+           timer, scroll, or ×. foldEl is the one choke point for all three;
+           before this, only the × handler showed it, so an auto-folded
+           banner left no way back. unfoldEl already hides it again.
+           The button rides on the element being folded (h), NOT on the
+           closed-over hero: mainShow can build twice before load, so the
+           30s timer's foldEl closes over the FIRST build's hero while it
+           folds the CURRENT one — the old hero._nayaRestoreBtn pointed at
+           a detached button and the visible restore never showed. */
+        if (h._nayaRestoreBtn) h._nayaRestoreBtn.classList.add('show');
       }
       function unfoldEl(h) {
         if (!h || !h.classList.contains('hero-folded')) return;
@@ -7730,7 +7628,7 @@ window.NayaJewels = (() => {
         h.style.maxHeight = h.scrollHeight + 'px';
         h.setAttribute('aria-hidden', 'false');
         setFolded(false);
-        if (hero._nayaRestoreBtn) hero._nayaRestoreBtn.classList.remove('show'); /* AMENDMENT 2026-11-18 (B): the banner is back, so the way back goes away */
+        if (h._nayaRestoreBtn) h._nayaRestoreBtn.classList.remove('show'); /* HUB FEED FIX2 2026-11-18 (D3): same stale-closure fix as foldEl — the element being unfolded is h, not the closed-over hero. */ /* AMENDMENT 2026-11-18 (B): the banner is back, so the way back goes away */
         setTimeout(function () { if (!h.classList.contains('hero-folded')) h.style.maxHeight = ''; }, 650);
       }
       if (getFolded() || window._nayaWelcomeClosed) {
@@ -7744,7 +7642,7 @@ window.NayaJewels = (() => {
         window._nayaWelcomeTimer = setTimeout(function () {
           var h = document.querySelector('.main-show .hero');
           if (h) foldEl(h);
-        }, 15000);
+        }, 30000);
       }
       if (!window._nayaWelcomeFold) {
         window._nayaWelcomeFold = true;
@@ -7755,21 +7653,22 @@ window.NayaJewels = (() => {
           else if (window.scrollY <= 8) unfoldEl(h);
         }, { passive: true });
       }
-      /* AMENDMENT 2026-11-18 (B): the way back. A banner closed with its
-         × stays closed for the page lifetime — so there must be an obvious
-         way to bring it back, or the citizen is stranded with no greeting.
-         The restore pill lives in the flow between the search bar and the
-         lens tabs (the search stays flush at the top, hugging the top
-         bar) and shows ONLY while the banner is closed; one tap clears
-         the close, unfolds the banner, and hides the pill again. It is
-         appended after the search bar below (a fresh mainShow build
-         re-creates it, and a build that starts closed shows it at once).
-         Its class rides the .hero-restore rules — the Read-more pill's
-         own obsidian-pill language, renamed. */
+      /* AMENDMENT 2026-11-18 (B) + HUB FEED FIX2 2026-11-18 (D3): the way
+         back. A banner closed with its × stays closed for the page lifetime
+         — so there must be an obvious way to bring it back, or the citizen
+         is stranded with no greeting. The restore is a LITTLE BUTTON HIDDEN
+         IN THE CORNER — fixed at the top right, just under the top bar —
+         and shows ONLY while the banner is closed; one tap clears the
+         close, unfolds the banner, and hides the button again. It is
+         appended below (a fresh mainShow build re-creates it, and a build
+         that starts closed shows it at once); position:fixed takes it out
+         of the flow, so the search stays flush at the top. Its class rides
+         the .hero-restore rules — the Read-more pill's own obsidian-pill
+         language, renamed. */
       var restoreBtn = document.createElement('button');
       restoreBtn.type = 'button'; restoreBtn.className = 'hero-restore';
       restoreBtn.setAttribute('aria-label', 'Show the welcome banner again');
-      restoreBtn.innerHTML = '&uarr; Show welcome banner';
+      restoreBtn.innerHTML = '&uarr; Welcome';
       restoreBtn.addEventListener('click', function () {
         window._nayaWelcomeClosed = false;
         restoreBtn.classList.remove('show');
@@ -7805,14 +7704,14 @@ window.NayaJewels = (() => {
 
     /* — Search sits immediately above the lens tabs, full width — */
     if (searchWrap) wrap.appendChild(searchWrap);
-    /* AMENDMENT 2026-11-18 (B): the restore pill rides in the flow
-       between the search bar and the lens tabs — the search stays flush
-       at the top. A fresh build that starts closed (the × was tapped in
-       an earlier build this page lifetime) shows it at once, so the way
-       back survives a re-render. */
+    /* AMENDMENT 2026-11-18 (B) + HUB FEED FIX2 2026-11-18 (D3): the restore
+       button rides FIXED in the top-right corner — it is appended here so a
+       fresh build that starts closed (the × was tapped in an earlier build
+       this page lifetime) shows it at once, so the way back survives a
+       re-render; position:fixed keeps it out of the flow either way. */
     if (hero._nayaRestoreBtn) {
       wrap.appendChild(hero._nayaRestoreBtn);
-      if (window._nayaWelcomeClosed) hero._nayaRestoreBtn.classList.add('show');
+      if (window._nayaWelcomeClosed || window._nayaWelcomeFolded) hero._nayaRestoreBtn.classList.add('show');
     }
 
     /* — Lens: three compact buttons in one row, real navigation — */
@@ -7913,15 +7812,17 @@ window.NayaJewels = (() => {
       }
       if (stream === 'activity') { feedEl.appendChild(activityStream(content)); return; }
       const lensNotes = stream === 'personal' ? notes.filter(n => n.personal) : notes;
-      /* Smart Tabs: the strip is generated from this lens's notes, so a
-         re-baked snapshot with new notes/topics automatically grows tabs. */
+      /* Smart Tabs (HUB FEED FIX2 2026-11-18, D2): the strip is generated
+         from the FULL stream — live notes plus the baked snapshot — so every
+         named tab is present in every lens; a lens holding none of a tab's
+         notes shows the tab with an empty state naming the full-stream count. */
       /* Intel Today (2026-11-12): a ?cluster=<slug> arrival opens that
          category tab — the cluster pages link here. */
       try {
         const cq = (new URLSearchParams(location.search).get('cluster') || '').trim().toLowerCase().replace(/[^a-z0-9-]/g, '');
         if (cq && INTEL_CLUSTERS.some(c => c.slug === cq)) activeSmartTab = 'cluster-' + cq;
       } catch (e) {}
-      const tabbed = smartTabStrip(lensNotes, notes);
+      const tabbed = smartTabStrip(lensNotes, notes.concat(snapshotNotes));
       wrap.insertBefore(tabbed.bar, feedEl);
       const active = tabbed.tabs.find(t => t.id === activeSmartTab) || tabbed.tabs[0];
       const list = active.cluster ? lensNotes.filter(n => intelClusterOf(n) === active.cluster) : active.topic ? lensNotes.filter(n => (n.topics || []).includes(active.topic)) : lensNotes;
@@ -12642,21 +12543,27 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
    lifts via .primo:hover (translateY(-2px)); the jewel rule above is
    the missing hover response the checker named. */
 
-/* ——— (2) ORBIT — one slow orb circling each touched circle ———
-   One mechanism for all nine: a faint static ring OUTSIDE the circle
-   (inset:-6px, own color at 35%) with a white-cored orb dot travelling
-   around it. The dot moves by background-position — the element itself
+/* ——— (2) ORBIT — one slow light flowing around each touched circle ———
+   Two mechanisms, one language. The plus buttons and lens jewels keep the
+   faint static ring (inset:-6px, own color at 35%) with a white-cored orb
+   dot travelling around it by background-position — the element itself
    never rotates, so the + glyphs on .eco-plus/.rooms-plus (rendered by
    their ::after in .top) stay upright: a rotating '+' would read as '×'.
-   The ::after interior is transparent: no glow or wash inside, ever. */
+   The SIDEBAR icons (.nav-btn/.nav-sub) and the menu control carry the
+   brighter flow instead: a conic-gradient light arc (own color → white →
+   transparent) on a masked ring, rotated by orb-spin — the Dashboard's
+   BTN-026 mechanism, harvested verbatim (Dashboard main L1578-1582), at
+   the Hub's own slow ambient speeds (96s CCW / 72s CW, Laws §1). The arc
+   is bright enough to SEE travelling; the dot was not. The ::after
+   interior is transparent: no glow or wash inside, ever. */
 @keyframes naya-orbit-dot-cw{0%{background-position:50% 0}12.5%{background-position:100% 0}25%{background-position:100% 50%}37.5%{background-position:100% 100%}50%{background-position:50% 100%}62.5%{background-position:0 100%}75%{background-position:0 50%}87.5%{background-position:0 0}100%{background-position:50% 0}}
 @keyframes naya-orbit-dot-ccw{0%{background-position:50% 0}12.5%{background-position:0 0}25%{background-position:0 50%}37.5%{background-position:0 100%}50%{background-position:50% 100%}62.5%{background-position:100% 100%}75%{background-position:100% 50%}87.5%{background-position:100% 0}100%{background-position:50% 0}}
 .rail-toggle::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,#a06bff 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;padding:2px;animation:orb-spin 120s linear infinite, naya-breathe 6s ease-in-out infinite alternate;}
 .eco-plus::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 90s linear infinite;}
 .rooms-plus::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 150s linear infinite;}
 .fc-plusitem .fc-pi-ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--mc,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--mc,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 180s linear infinite;}
-.nav-btn .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--nav,var(--purple)) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 96s linear infinite;}
-.nav-sub .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--nav,var(--purple)) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-cw 72s linear infinite;}
+.nav-btn .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nav,var(--purple)) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;padding:2px;animation:orb-spin-rev 96s linear infinite;}
+.nav-sub .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nav,var(--purple)) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;padding:2px;animation:orb-spin 72s linear infinite;}
 .lens-tab .tab-jewel::after{content:'';position:absolute;inset:-4px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--jc,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--jc,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 132s linear infinite;}
 /* NOTE on tab-jewel: inset:-4px (not -6px) — the jewel sits inside
    .primo, which has overflow:hidden; -4px keeps the whole ring inside
