@@ -7472,6 +7472,14 @@ button.os-ld-node .os-ld-n{
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13.5A8 8 0 0 1 10.5 4 8 8 0 1 0 20 13.5z"/></svg></span><span class="os-setrow-main"><b data-mw-tr="set">Deep black</b><span class="os-setrow-sub" data-mw-tr="set">This app&rsquo;s deep-black theme.</span></span><span class="os-switch-wrap" style="--jc:#3fb8ff"><button class="os-switch on" id="os-set-dark" data-os-set="dark" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="os-setrow-main"><b data-mw-tr="set">Notifications</b><span class="os-setrow-sub" data-mw-tr="set">Kept on this device &mdash; nothing is sent yet.</span></span><span class="os-switch-wrap" style="--jc:#ffbf3d"><button class="os-switch on" id="os-set-notif" data-os-set="notifications" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 </div>
+<div class="ph-card pc-dm-card os-own-only" style="--ac:#8e24aa;" id="pc-demo-card">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#8e24aa">✦</span> About you</h3>
+<p class="pc-dm-why">We ask so the system can match you with like minds — people like you, near you, into what you&rsquo;re into. That&rsquo;s the whole reason.</p>
+<p class="pc-dm-top">These are examples — click EDIT and make it your own. Click the eye for more information.</p>
+<p class="pc-dm-styles">A &middot; Warm &amp; Plain — B &middot; Bold &amp; Short — C &middot; Full &amp; Visionary</p>
+<div id="pc-demo-body"></div>
+<p class="pc-dm-status" id="pc-demo-status"></p>
+</div>
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> <span data-mw-tr="set">App behaviour</span></h3>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 5v14M16 5v14M3 10h5M3 14h5M16 10h5M16 14h5"/></svg></span><span class="os-setrow-main"><b data-mw-tr="set">Smart Tabs drift</b><span class="os-setrow-sub" data-mw-tr="set">The tab ribbon glides slowly, one way &mdash; the NayaNET standard.</span></span><span class="os-switch-wrap" style="--jc:#a06bff"><button class="os-switch on" id="os-set-drift" data-os-set="drift" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
@@ -7567,6 +7575,221 @@ button.os-ld-node .os-ld-n{
 <button class="ph-connect" id="os-install-btn" type="button" data-mw-tr="set">Install this app</button>
 </div>
 </div></div>
+<script>
+/* FOLLOW-ON 3 AMEND (2026-11-18) — the demographics menu ("About you").
+   Shawn's eye (02:20Z): the top-corner settings control opens a beautiful
+   menu that asks all the demographics questions. The settings view had
+   Smart Bar, Default feed tab, Bottom bar auto-fold, cover membership
+   buttons — and NO demographics questions. That is the gap this fills.
+   WHERE IT LIVES: a section inside the existing settings view (this card),
+   not a second dialog — the gear already opens settings, and settings is
+   the ONE place to change the page (Anatomy §2.8). One menu, one flow.
+   THE QUESTIONS: the Nov 5 onboarding canon (MEMORY.md), in the citizen's
+   own words — age (exact, or in your own words), male or female, age
+   range, where you live, nationality / where you're from, ethnicity, main
+   language, what you're into (interests, hobbies). Nothing invented.
+   THE FORMAT: harvested from the walk (WALK-QUESTIONS-SPEC-20261112):
+   multiple choice with Naya's own example answers in three styles
+   (A Warm & Plain, B Bold & Short, C Full & Visionary), each editable in
+   place, an eye per choice saying what it is / why it matters / how it
+   connects / what's in it for you, plus a Full Custom choice — an empty
+   box they type, dictate, or paste into. The eye on Full Custom says the
+   three ways, one-two-three. An untouched example is never an answer —
+   only a tap or an edit counts (the walk's own rule).
+   THE WHY, on the menu itself: the answers feed auto-match — "We ask so
+   the system can match you with like minds." Location is "asked for
+   matching and never shared" — said in plain words, on the question.
+   THE STORE: the walk's own key, localStorage 'naya_welcome_right_v1'
+   (shape {alias, answers, topics, reveal, pageNames} — the walk's SKEY),
+   answers.{age, gender, age_range, location, nationality, ethnicity,
+   language, interests}. No shared demographics store existed in this
+   file before this round: the walk's ten answer keys are the matrix
+   fields (about/into/vision/mission/motto/goal/biz_do/biz_offer/
+   biz_building/space) with no demographics in them, and this page never
+   read the walk's key at all — so the answers land in the walk's own
+   answers object, where the Box path already looks, and pre-fill reads
+   the same key back. Existing alias/topics/reveal/pageNames are kept
+   untouched on every save. */
+(function(){
+  var DM_SKEY='naya_welcome_right_v1';
+  var EYE_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+  var DM_Q=[
+    {key:'age', label:'Your age', q:'How old are you — in your own words?', sub:'Exact, or in your own words — young child, teen girl, adult, grandma, whatever fits you.', qc:'#8e24aa', choices:[
+      {t:"I'm an adult.", eye:"What it is — your age in your own words. Why it matters — the system matches you with people at your stage of life. How it connects — age is one of the match signals. What's in it for you — people who get where you are."},
+      {t:'34', eye:"What it is — your exact age. Why it matters — an exact age matches more precisely. How it connects — age is one of the match signals. What's in it for you — people your age, doing what you do."},
+      {t:"I'm 34 — old enough to know what matters, young enough to keep building.", eye:"What it is — your age with a little of you in it. Why it matters — how you say it tells the system who you are. How it connects — age is one of the match signals. What's in it for you — matches that feel like you."}]},
+    {key:'gender', label:'Male or female', q:'Are you male or female?', sub:'', qc:'#0f52ba', choices:[
+      {t:"I'm female.", eye:"What it is — you, as you say you are. Why it matters — the system matches you with people like you. How it connects — this is one of the match signals. What's in it for you — people who see you as you are."},
+      {t:"I'm male.", eye:"What it is — you, as you say you are. Why it matters — the system matches you with people like you. How it connects — this is one of the match signals. What's in it for you — people who see you as you are."},
+      {t:'Female — she/her.', eye:"What it is — how you like to be known. Why it matters — the right words mean the right matches. How it connects — this is one of the match signals. What's in it for you — people who get you right, first time."}]},
+    {key:'age_range', label:'Your age range', q:'Which age range are you in?', sub:'', qc:'#07925f', choices:[
+      {t:'Young — under 25', eye:"What it is — your stage of life, roughly. Why it matters — people near your age share your moment. How it connects — range is one of the match signals. What's in it for you — people living what you're living."},
+      {t:'25 to 44', eye:"What it is — your stage of life, roughly. Why it matters — people near your age share your moment. How it connects — range is one of the match signals. What's in it for you — people living what you're living."},
+      {t:'45 and up', eye:"What it is — your stage of life, roughly. Why it matters — people near your age share your moment. How it connects — range is one of the match signals. What's in it for you — people living what you're living."}]},
+    {key:'location', label:'Where you live', q:'Where do you live?', sub:'Asked for matching and never shared — nobody sees where you live.', qc:'#d4a017', choices:[
+      {t:'I live in Toronto, Canada.', eye:"What it is — the place you call home. Why it matters — nearby people can meet, share, and build together. How it connects — place is one of the match signals. What's in it for you — people near you, on your wavelength. Never shared — only the match sees the match, never the place."},
+      {t:'Toronto', eye:"What it is — the place you call home, short. Why it matters — nearby people can meet, share, and build together. How it connects — place is one of the match signals. What's in it for you — people near you, on your wavelength. Never shared — only the match sees the match, never the place."},
+      {t:'Toronto, Canada — and I love it here.', eye:"What it is — home, with a little of you in it. Why it matters — nearby people can meet, share, and build together. How it connects — place is one of the match signals. What's in it for you — people near you, on your wavelength. Never shared — only the match sees the match, never the place."}]},
+    {key:'nationality', label:"Where you're from", q:"What's your nationality — where are you from?", sub:'', qc:'#c2410c', choices:[
+      {t:"I'm Canadian.", eye:"What it is — where you're from. Why it matters — people from your place share your story. How it connects — origin is one of the match signals. What's in it for you — people who know where you come from."},
+      {t:'Canadian', eye:"What it is — where you're from, short. Why it matters — people from your place share your story. How it connects — origin is one of the match signals. What's in it for you — people who know where you come from."},
+      {t:"I'm Canadian, born and raised in Toronto.", eye:"What it is — where you're from, with the story. Why it matters — people from your place share your story. How it connects — origin is one of the match signals. What's in it for you — people who know where you come from."}]},
+    {key:'ethnicity', label:'Your background', q:'What is your ethnicity — your background?', sub:'', qc:'#c62828', choices:[
+      {t:"I'm Black.", eye:"What it is — your background, in your words. Why it matters — people who share your background understand you fastest. How it connects — background is one of the match signals. What's in it for you — people who see you fully."},
+      {t:'Black', eye:"What it is — your background, short. Why it matters — people who share your background understand you fastest. How it connects — background is one of the match signals. What's in it for you — people who see you fully."},
+      {t:"I'm Black — Caribbean roots, Canadian raised.", eye:"What it is — your background, with the story. Why it matters — people who share your background understand you fastest. How it connects — background is one of the match signals. What's in it for you — people who see you fully."}]},
+    {key:'language', label:'Your main language', q:'What is your main language?', sub:'', qc:'#a21caf', choices:[
+      {t:'English', eye:"What it is — the language you think in. Why it matters — you talk best in your own language. How it connects — language is one of the match signals. What's in it for you — people you can really talk with."},
+      {t:'I speak English.', eye:"What it is — the language you think in. Why it matters — you talk best in your own language. How it connects — language is one of the match signals. What's in it for you — people you can really talk with."},
+      {t:"English — and I'm learning Spanish.", eye:"What it is — your language, and where you're headed. Why it matters — you talk best in your own language. How it connects — language is one of the match signals. What's in it for you — people you can really talk with."}]},
+    {key:'interests', label:"What you're into", q:"What are you into — your interests and hobbies?", sub:'', qc:'#3f51b5', choices:[
+      {t:'Music, walking, and learning new things.', eye:"What it is — the things you love. Why it matters — shared loves are the fastest match there is. How it connects — interests are one of the match signals. What's in it for you — people into your thing, ready to talk about it."},
+      {t:'Music and long walks.', eye:"What it is — the things you love, short. Why it matters — shared loves are the fastest match there is. How it connects — interests are one of the match signals. What's in it for you — people into your thing, ready to talk about it."},
+      {t:"I'm into music, long walks, and building things that help people — that's my thing.", eye:"What it is — the things you love, with your heart in it. Why it matters — shared loves are the fastest match there is. How it connects — interests are one of the match signals. What's in it for you — people into your thing, ready to talk about it."}]}
+  ];
+  function dmLoad(){ try{ var s=JSON.parse(localStorage.getItem(DM_SKEY)||'null'); return (s&&typeof s==='object')?s:{}; }catch(e){ return {}; } }
+  function dmGet(key){ var s=dmLoad(); return (s.answers&&typeof s.answers[key]==='string')?s.answers[key]:''; }
+  function dmSet(key, val){
+    var s=dmLoad(); s.answers=s.answers||{};
+    if(val) s.answers[key]=val; else delete s.answers[key];
+    try{ localStorage.setItem(DM_SKEY, JSON.stringify(s)); }catch(e){}
+    dmMark();
+  }
+  function dmCount(){ var n=0; DM_Q.forEach(function(q){ if(dmGet(q.key)) n++; }); return n; }
+  function dmMark(){
+    var body=document.getElementById('pc-demo-body'); if(!body) return;
+    DM_Q.forEach(function(q){
+      var v=dmGet(q.key);
+      var matched=false;
+      var choices=body.querySelectorAll('[data-pc-dm-key="'+q.key+'"].pc-dm-choice');
+      choices.forEach(function(r){ var ta=r.querySelector('textarea'); if(v&&ta&&ta.value===v) matched=true; });
+      choices.forEach(function(r){ var ta=r.querySelector('textarea'); r.classList.toggle('selected', !!(v&&ta&&ta.value===v)); });
+      var cu=body.querySelector('[data-pc-dm-key="'+q.key+'"].pc-dm-custom');
+      if(cu) cu.classList.toggle('selected', !!(v&&!matched));
+    });
+    var st=document.getElementById('pc-demo-status');
+    if(st){ var n=dmCount(); st.textContent=(n===0)?'Nothing answered yet — pick an example, or write your own.':(n+' of 8 answered — saved on this device.'); }
+  }
+  function el(tag, cls, text){ var d=document.createElement(tag); if(cls) d.className=cls; if(text!=null) d.textContent=text; return d; }
+  function dmCustomEye(q){ return 'Full custom — say it your way. Three ways: one, copy it in from your AI — share it with your AI, let it write it for you, copy it in. Two, dictate — speak, and it writes what you say. Three, take one of the examples above and make it your own.'; }
+  function dmRender(){
+    var body=document.getElementById('pc-demo-body'); if(!body) return;
+    body.innerHTML='';
+    DM_Q.forEach(function(q, qi){
+      var wrap=el('div','pc-dm-q'); wrap.style.setProperty('--qc', q.qc);
+      var head=el('div','pc-dm-qhead');
+      head.appendChild(el('span','pc-dm-letter', String(qi+1)));
+      head.appendChild(el('span','pc-dm-qtitle', q.label));
+      wrap.appendChild(head);
+      wrap.appendChild(el('p','pc-dm-qtext', q.q));
+      if(q.sub) wrap.appendChild(el('p','pc-dm-qsub', q.sub));
+      q.choices.forEach(function(ch, ci){
+        var row=el('div','pc-dm-choice'); row.setAttribute('data-pc-dm-key', q.key);
+        row.style.setProperty('--qc', q.qc);
+        var top=el('div','pc-dm-choice-top');
+        top.appendChild(el('span','pc-dm-cletter', 'ABC'[ci]));
+        var ta=el('textarea','pc-dm-choice-text'); ta.value=ch.t; ta.readOnly=true; ta.rows=2; ta.setAttribute('aria-label', q.label+' — example '+'ABC'[ci]);
+        top.appendChild(ta);
+        var eb=el('button','pc-dm-edit','EDIT'); eb.type='button'; eb.setAttribute('aria-label','Edit choice '+'ABC'[ci]);
+        top.appendChild(eb);
+        var yb=el('button','pc-dm-eye'); yb.type='button'; yb.innerHTML=EYE_SVG; yb.setAttribute('aria-label','About choice '+'ABC'[ci]);
+        top.appendChild(yb);
+        row.appendChild(top);
+        var note=el('div','pc-dm-eye-note', ch.eye); note.hidden=true;
+        row.appendChild(note);
+        wrap.appendChild(row);
+      });
+      var cu=el('div','pc-dm-custom'); cu.setAttribute('data-pc-dm-key', q.key);
+      cu.style.setProperty('--qc', q.qc);
+      var cq=el('p','pc-dm-custom-q','Full Custom — click here for full custom.');
+      var yb2=el('button','pc-dm-eye'); yb2.type='button'; yb2.innerHTML=EYE_SVG; yb2.setAttribute('aria-label','How to answer in your own words');
+      cq.appendChild(yb2);
+      cu.appendChild(cq);
+      var ct=el('textarea','pc-dm-custom-text'); ct.rows=2; ct.placeholder='Type it in your own words…'; ct.setAttribute('aria-label', q.label+' — your own words');
+      cu.appendChild(ct);
+      var cn=el('div','pc-dm-eye-note', dmCustomEye(q)); cn.hidden=true;
+      cu.appendChild(cn);
+      wrap.appendChild(cu);
+      body.appendChild(wrap);
+    });
+  }
+  function dmFill(){
+    var body=document.getElementById('pc-demo-body'); if(!body) return;
+    DM_Q.forEach(function(q){
+      var v=dmGet(q.key);
+      var matched=false;
+      var rows=body.querySelectorAll('[data-pc-dm-key="'+q.key+'"].pc-dm-choice');
+      rows.forEach(function(r, i){
+        var ta=r.querySelector('textarea');
+        if(ta&&document.activeElement!==ta) ta.value=q.choices[i].t;
+        if(ta&&ta.value===v) matched=true;
+      });
+      var cu=body.querySelector('[data-pc-dm-key="'+q.key+'"].pc-dm-custom textarea');
+      if(cu&&document.activeElement!==cu) cu.value=matched?'':v;
+    });
+    dmMark();
+  }
+  var body0=document.getElementById('pc-demo-body');
+  if(body0){
+    dmRender();
+    dmFill();
+    body0.addEventListener('click', function(e){
+      var t=e.target&&e.target.closest?e.target.closest('button,textarea,.pc-dm-choice'):null;
+      if(!t) return;
+      var eye=e.target.closest?e.target.closest('.pc-dm-eye'):null;
+      if(eye){
+        var note=eye.parentElement?eye.parentElement.parentElement.querySelector('.pc-dm-eye-note'):null;
+        var wasHidden=note?note.hidden:true;
+        body0.querySelectorAll('.pc-dm-eye-note').forEach(function(n){ n.hidden=true; });
+        if(note) note.hidden=!wasHidden;
+        return;
+      }
+      var eb=e.target.closest?e.target.closest('.pc-dm-edit'):null;
+      if(eb){
+        var row=eb.closest('.pc-dm-choice'); if(!row) return;
+        var ta=row.querySelector('textarea'); if(!ta) return;
+        ta.readOnly=false; ta.focus();
+        try{ ta.setSelectionRange(ta.value.length, ta.value.length); }catch(e2){}
+        return;
+      }
+      var row=e.target.closest?e.target.closest('.pc-dm-choice'):null;
+      if(row){
+        var ta2=row.querySelector('textarea'); if(!ta2||!ta2.readOnly) return;
+        dmSet(row.getAttribute('data-pc-dm-key'), ta2.value);
+      }
+    });
+    body0.addEventListener('focusout', function(e){
+      var ta=e.target&&e.target.closest?e.target.closest('.pc-dm-choice-text'):null;
+      if(!ta||ta.readOnly) return;
+      ta.readOnly=true;
+      var row=ta.closest('.pc-dm-choice'); if(!row) return;
+      var v=ta.value.trim();
+      if(!v){ ta.value=''; dmSet(row.getAttribute('data-pc-dm-key'), ''); return; }
+      ta.value=v; dmSet(row.getAttribute('data-pc-dm-key'), v);
+    });
+    body0.addEventListener('keydown', function(e){
+      if(e.key!=='Enter'||e.shiftKey) return;
+      var ta=e.target&&e.target.closest?e.target.closest('.pc-dm-choice-text'):null;
+      if(!ta||ta.readOnly) return;
+      e.preventDefault(); ta.blur();
+    });
+    body0.addEventListener('input', function(e){
+      var ct=e.target&&e.target.closest?e.target.closest('.pc-dm-custom-text'):null;
+      if(!ct) return;
+      var cu=ct.closest('.pc-dm-custom'); if(!cu) return;
+      dmSet(cu.getAttribute('data-pc-dm-key'), ct.value.trim());
+    });
+  }
+  /* Re-fill when the gear opens settings — the answers are already in the
+     DOM from load, and this re-reads the store in case another tab changed
+     it while settings was closed. */
+  document.addEventListener('click', function(e){
+    var g=e.target&&e.target.closest?e.target.closest('[data-os-go="settings"]'):null;
+    if(g) setTimeout(dmFill, 50);
+  });
+  window.pcDemo={Q:DM_Q, SKEY:DM_SKEY, get:dmGet, set:dmSet, fill:dmFill, render:dmRender, mark:dmMark};
+})();
+</script>
 <script>
 /* NayaFunction: smart-tabs v1.1.4
    What: Scrolling ribbon of favorite pages/apps/URLs — add, edit, remove, persist.
@@ -32813,6 +33036,48 @@ if(document.readyState==='loading'){
 .pc-points-receipt{flex:0 0 100%;text-align:left;font-size:17px;color:#fff;margin:8px 0 0;}
 .pc-points-receipt:empty{display:none;}
 .ph-head > .ph-actions-row{grid-column:2!important;grid-row:2!important;align-self:center!important;margin-top:0!important;}
+</style>
+<style id="personal-layout-fix-20261118-demographics-css">
+/* FOLLOW-ON 3 AMEND (2026-11-18) — the demographics menu. A section inside
+   the settings view (the gear opens settings; settings is the ONE place to
+   change the page — Anatomy §2.8), built on the existing .os-setrow rows and
+   the walk's choice format (WALK-QUESTIONS-SPEC-20261112): A/B/C examples,
+   each editable in place, an eye per choice, plus Full Custom. Text follows
+   the laws (§2.3: 25 / 19 / 17; §2.2: white only — the question's own deep
+   color lives in the rim and the jewel, never in the words). One deep color
+   per question, in spectrum order (§3.2), never the same twice in a row. */
+.pc-dm-card h3{font-size:25px;}
+.pc-dm-why{font-size:19px;color:#fff;line-height:1.5;margin:0 0 12px;}
+.pc-dm-styles{font-size:17px;color:#fff;line-height:1.5;margin:0 0 12px;}
+.pc-dm-top{font-size:17px;color:#fff;line-height:1.5;margin:0 0 4px;}
+.pc-dm-status{font-size:17px;color:#fff;line-height:1.5;margin:12px 0 0;}
+.pc-dm-q{margin:20px 0 0;}
+.pc-dm-qhead{display:flex;align-items:center;gap:12px;}
+.pc-dm-letter{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--qc);background:#050607;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;box-shadow:inset 0 1px rgba(255,255,255,.25),0 0 14px var(--qc),0 6px 16px rgba(0,0,0,.5);}
+.pc-dm-qtitle{font-size:19px;font-weight:800;color:#fff;line-height:1.3;}
+.pc-dm-qtext{font-size:17px;color:#fff;line-height:1.5;margin:10px 0 0;}
+.pc-dm-qsub{font-size:17px;color:#fff;line-height:1.5;margin:6px 0 0;}
+.pc-dm-choice{margin:10px 0 0;padding:14px;border-radius:18px;border:1.5px solid var(--qc);background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);box-shadow:inset 0 1px rgba(255,255,255,.15),inset 0 -2px 4px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.5);cursor:pointer;transition:transform .18s,box-shadow .22s,border-color .2s;}
+.pc-dm-choice:hover{transform:translateY(-2px);box-shadow:inset 0 1px rgba(255,255,255,.2),inset 0 -2px 4px rgba(0,0,0,.5),0 0 24px var(--qc),0 12px 28px rgba(0,0,0,.6);}
+.pc-dm-choice:active{transform:scale(.97);}
+.pc-dm-choice.selected{box-shadow:inset 0 1px rgba(255,255,255,.2),inset 0 -2px 4px rgba(0,0,0,.5),0 0 0 2px var(--qc),0 0 28px var(--qc),0 12px 28px rgba(0,0,0,.6);}
+.pc-dm-choice-top{display:flex;gap:10px;align-items:flex-start;}
+.pc-dm-cletter{flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--qc);background:#050607;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;margin-top:2px;}
+.pc-dm-choice-text{flex:1;min-width:0;font-size:17px;color:#fff;background:transparent;border:0;font-family:inherit;line-height:1.5;padding:6px 8px;resize:none;}
+.pc-dm-choice-text[readonly]{cursor:default;}
+.pc-dm-choice-text:not([readonly]){background:rgba(255,255,255,.06);border-radius:8px;outline:1.5px solid var(--qc);}
+.pc-dm-edit{flex:0 0 auto;align-self:flex-start;margin-top:2px;padding:10px 16px;border-radius:999px;border:1.5px solid var(--qc);background:linear-gradient(180deg,#2c2c40,#12121c 80%);color:#fff;font-size:17px;font-weight:800;letter-spacing:.08em;cursor:pointer;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),0 4px 12px rgba(0,0,0,.55),0 0 12px var(--qc);transition:transform .18s,box-shadow .18s;}
+.pc-dm-edit:hover{transform:translateY(-1px);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),0 6px 16px rgba(0,0,0,.6),0 0 26px var(--qc);}
+.pc-dm-eye{flex:0 0 auto;align-self:flex-start;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--qc);background:#050607;color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.25),0 0 14px var(--qc),0 6px 16px rgba(0,0,0,.5);transition:transform .18s,box-shadow .18s;margin-top:2px;}
+.pc-dm-eye:hover{transform:translateY(-1px);box-shadow:inset 0 1px rgba(255,255,255,.35),0 0 26px var(--qc),0 8px 18px rgba(0,0,0,.6);}
+.pc-dm-eye svg{width:22px;height:22px;display:block;}
+.pc-dm-eye-note{font-size:17px;color:#fff;line-height:1.55;margin:10px 0 0;padding:12px 14px;border-radius:14px;border:1.5px solid var(--qc);background:#050607;}
+.pc-dm-eye-note[hidden]{display:none;}
+.pc-dm-custom{margin:12px 0 0;}
+.pc-dm-custom-q{font-size:17px;color:#fff;line-height:1.5;margin:0 0 8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.pc-dm-custom-text{width:100%;min-height:64px;font-size:17px;color:#fff;background:rgba(255,255,255,.06);border:1.5px solid var(--qc);border-radius:14px;padding:12px;font-family:inherit;line-height:1.5;box-sizing:border-box;}
+.pc-dm-custom-text:focus{outline:1.5px solid var(--qc);}
+.pc-dm-custom.selected .pc-dm-custom-text{box-shadow:0 0 0 2px var(--qc),0 0 28px var(--qc);}
 </style>
 <style id="followon-3b-people-rail-20261118-css">
 /* FOLLOW-ON 3b (2026-11-18), FIX ROUND 2 (2026-11-18) — one line per row:
