@@ -59338,6 +59338,39 @@
         "Lesson",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3414",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3414-done-immediately-then-next",
+      "slug": "done-immediately-then-next",
+      "title": "Done Immediately, Then Next",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3414/IB-SMART-NOTE-20261118-sn3414-done-immediately-then-next.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3414/IB-SMART-NOTE-20261118-sn3414-done-immediately-then-next.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3414/IB-SMART-NOTE-20261118-sn3414-done-immediately-then-next.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3414-done-immediately-then-next.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:14:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "5d22d1b8e43a46d75e6bfafad564b6778b2ddadd54eb1a0a531277e778d83e15",
+      "content_hash": "6711181f66bcb76cc85c29e1301d065332bf3654adc0d8b63e544083ac62a7ea",
+      "one_line": "The working method of this family is three words: boom, boom, boom — done immediately, then next, then next, no send-and-wait. Around that pace sit its disciplines: the sync claim that turned out right once edge lag was waited out, the pains-first top-ten (their pains, not our value), Naya Notes as a habit with three outputs, and Naya taking the note for the citizen. Pace without the disciplines is just hurry; the disciplines without pace are minutes of meetings. Together they describe a seat that finishes small true things in sequence and lets the sequence compound.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59348,5 +59381,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "a9638afdc9ed2cb8933feae5c91c1f9d068bd27995526dc7b56c9c04153f103f"
+  "corpus_manifest_hash": "a70cfb6cbc16cd0eb69c992e784ef35f34ab8fb807650e855bdf46f164da7694"
 }

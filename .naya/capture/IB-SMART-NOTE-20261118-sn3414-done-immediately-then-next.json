@@ -1,0 +1,92 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3414",
+ "title": "Done Immediately, Then Next",
+ "slug": "done-immediately-then-next",
+ "topic": "LESSON",
+ "category": "LESSON",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-18T20:14:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "The working method of this family is three words: boom, boom, boom — done immediately, then next, then next, no send-and-wait. Around that pace sit its disciplines: the sync claim that turned out right once edge lag was waited out, the pains-first top-ten (their pains, not our value), Naya Notes as a habit with three outputs, and Naya taking the note for the citizen. Pace without the disciplines is just hurry; the disciplines without pace are minutes of meetings. Together they describe a seat that finishes small true things in sequence and lets the sequence compound.",
+  "human_view": "Compare two handymen. One takes your list, says he'll 'get back to you' about each item, and a month later everything is somehow still in progress. The other fixes the tap, shows you it runs, then the hinge, shows you it swings, then the light. Same list, same day — the difference is finishing one thing at a time, out loud.",
+  "child_view": "It's like tidying your room one toy at a time: pick it up, put it where it belongs, done — then the next. If you pick up five toys and just hold them all, the room looks the same and your arms get tired.",
+  "grandma_view": "My mother canned peaches the way this describes: one jar filled, sealed, checked, set aside — then the next jar. By evening there were forty jars you could count. Nobody ever canned a winter's worth of peaches by having forty jars 'in progress'.",
+  "ai_view": "Close the current unit with its proof before opening the next. Never batch claims about live state inside a propagation window. Build hero lists from recorded pains. Capture the note at the moment of learning, not at the end of the day.",
+  "what_it_means": "Send-and-wait feels responsible — everything is 'in progress' — and produces nothing a citizen can touch. The alternative demonstrated here is not recklessness: each unit is small, verified, and closed before the next opens, which is exactly why the pace is safe. The pains-first rule aims the pace: fast work on our own value list is still the wrong work. And the note habit is the pace's memory — what was done gets captured in the citizen's three outputs, or the next seat re-derives it at full price.",
+  "whats_inside": [
+   "The Sync Claim Was Right — It Was Edge Lag",
+   "No Send-and-Wait — Done Immediately, Then Next, Then Next",
+   "Boom Boom Boom — The Working Method",
+   "The Supercharger Banner Goes in the Closing Sequence — After the Gauge",
+   "A Second Supercharger Banner Closes the Page — Very, Very Bottom"
+  ],
+  "topics": [
+   "Distillation",
+   "System",
+   "Lesson",
+   "Knowledge",
+   "Craft"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 8,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2527",
+     "title": "The Sync Claim Was Right — It Was Edge Lag"
+    },
+    {
+     "sn": "SN-2528",
+     "title": "No Send-and-Wait — Done Immediately, Then Next, Then Next"
+    },
+    {
+     "sn": "SN-2529",
+     "title": "Boom Boom Boom — The Working Method"
+    },
+    {
+     "sn": "SN-2530",
+     "title": "The Supercharger Banner Goes in the Closing Sequence — After the Gauge"
+    },
+    {
+     "sn": "SN-2531",
+     "title": "A Second Supercharger Banner Closes the Page — Very, Very Bottom"
+    },
+    {
+     "sn": "SN-2532",
+     "title": "Naya Notes — The Habit, and the Format Is Three Outputs"
+    },
+    {
+     "sn": "SN-2533",
+     "title": "Ninos — Naya Takes the Note for You"
+    },
+    {
+     "sn": "SN-2534",
+     "title": "Old Internet vs New Internet — Messy and Manual vs Auto-Organized and Automatic"
+    },
+    {
+     "sn": "SN-2535",
+     "title": "What Naya Does — Daily Reports, Smart Notes, Naya Notes, and Pages"
+    },
+    {
+     "sn": "SN-2536",
+     "title": "The Top 10 Is Their Pains, Not Our Value"
+    }
+   ]
+  },
+  "machine": "1) Work is executed in small verified units, closed in sequence; send-and-wait on a unit you can finish is a defect. 2) Claims about live state are re-checked after the propagation window before being declared wrong. 3) Any top-ten or hero list is built from the audience's pains, never from our value inventory. 4) Notes are captured as a habit at the moment of learning, in the three standing outputs (note, Smart Note, highlight).",
+  "why_it_matters": "This is the efficiency law in work clothes: the fleet's productive minutes come from closed units, not from motion. A team that finishes immediately and captures as it goes produces the receipts the whole system runs on — and citizens feel the difference as a product that answers today, not eventually.",
+  "how_it_connects": "This essence is batch 8's E5 panel; its raw family spans SN-2527 to SN-2536 (The Sync Claim Was Right — It Was Edge Lag → The Top 10 Is Their Pains, Not Our Value), and it sits in the standing sequence of sixty essences that came before it — each one checked against the census coverage map for zero overlap before it was written.",
+  "what_is_in_it_for_you": "For you, Shawn, this means this stratum of the record no longer has to be re-read note by note: its law is stated once, whole, in words a cold reader can use — and the hundred raw notes beneath it are accounted for, by number, in the Distills line.",
+  "the_learning": "Boom, boom, boom is a verification discipline, not a hurry: small unit, proven, closed, next — aimed at their pains, captured as you go."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LESSON/SN-3414/IB-SMART-NOTE-20261118-sn3414-done-immediately-then-next.md",
+ "page_hash": "5d22d1b8e43a46d75e6bfafad564b6778b2ddadd54eb1a0a531277e778d83e15",
+ "content_hash": "6711181f66bcb76cc85c29e1301d065332bf3654adc0d8b63e544083ac62a7ea"
+}
