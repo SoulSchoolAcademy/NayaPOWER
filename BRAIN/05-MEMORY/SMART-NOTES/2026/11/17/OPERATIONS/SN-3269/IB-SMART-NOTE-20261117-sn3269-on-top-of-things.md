@@ -1,8 +1,8 @@
 # On Top of Things — Check Right Away, Deliver Right Away
 
-SN-3161 · OPERATIONS — THE CONTINUOUS CYCLE LAW, ENFORCED AT THE MOMENT OF RETURN
+SN-3269 · OPERATIONS — THE CONTINUOUS CYCLE LAW, ENFORCED AT THE MOMENT OF RETURN
 
-**Filed:** Intelligence Loop filing push 2026-11-18 — numbering confirmed by `next-sn-number.py` (exit 0) immediately before filing: next free SN-3268; filed as SN-3161 under its draft number.
+**Filed:** Intelligence Loop filing push 2026-11-18 — first filed as SN-3161 under its draft number; renumbered to SN-3269 the same pass to resolve the SN-3161 duplicate (run 280's train-the-army keeps SN-3161, first in run order). Next free confirmed by direct tree-API check immediately before the move: SN-3269.
 
 **Created:** 2026-11-17 21:25Z (Shawn's dictation, recorded in MEMORY.md + SOUL.md + AGENTS.md; drafted in run 281)
 

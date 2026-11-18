@@ -28,4 +28,4 @@ When a seat returns work: check it right away — your own eye, your own probes,
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-3161 — On Top of Things — Check Right Away, Deliver Right Away*
+*Paired Smart Note: SN-3269 — On Top of Things — Check Right Away, Deliver Right Away*
