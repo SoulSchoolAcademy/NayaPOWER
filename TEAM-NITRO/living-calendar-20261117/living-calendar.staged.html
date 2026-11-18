@@ -1543,10 +1543,10 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
 @media(max-width:740px){.phl{grid-template-columns:1fr;justify-items:center;text-align:center;gap:8px}.phl-left{justify-content:center}.phl-time .sigpiece{width:44px;height:44px}}
 
 /* ============ V4 — FIX ROUND (checker GOES BACK on v3 + eye blockers, 2026-11-18) ============ */
-/* GRAY SUBLINES — every subline under the panel's Notifications doors,
+/* MUTED SUBLINES — every subline under the panel's Notifications doors,
    Appointments rows and Record rows is explicit layered white: pure #fff
    with the black depth layer, so it reads bright white beside the bold
-   labels instead of muted gray. (No gray hex exists in the code — the
+   labels instead of muted. (No muted hex exists in the code — the
    sublines were flat regular-weight white with no depth layer; the layer
    is the fix.) */
 .door .sub2,.sub,.daytimeline .tl-sub,.tl-text,.tl-note,.tl-empty,.recrow .rl span,.list li,.hint,.pwx,.viewcard p,.pcat-essence,.cat-row .lr-g,.nb-sub,.nd-sub,.nd-src,.cat-essence,.tl-row .te,.tile-appt-row .tt,.tile-empty,.intel-line{color:#fff;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)}
@@ -1554,7 +1554,7 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
 <body>
 <main class="shell">
   <header class="head">
-    <div class="brand"><button type="button" class="logo" id="brandHome" aria-label="NayaNET — open today"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795026670" alt="NayaNET"></button><div class="brandtxt"><strong>NayaNET · MY WORLD</strong><div id="worldname">Your life, organized by day.</div></div></div>
+    <div class="brand"><button type="button" class="logo" id="brandHome" aria-label="NayaNET — open today"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/NAYA_ICON.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795026793" alt="NayaNET"></button><div class="brandtxt"><strong>NayaNET · MY WORLD</strong><div id="worldname">Your life, organized by day.</div></div></div>
     <div class="nowcenter" id="nowCenter">
     <button type="button" class="nowplaque" id="nowPlaque" aria-label="Today's date and your local time — tap to open today">
       <span class="live-dot" id="nowDot" style="--sc:#d4a017"></span>
@@ -1593,7 +1593,7 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   </section>
 </main>
 <div class="royal-frame" aria-hidden="true"><i class="rf-c tl"></i><i class="rf-c tr"></i><i class="rf-c bl"></i><i class="rf-c br"></i></div>
-<button type="button" class="corner-n" id="cornerN" aria-label="Naya — open today"><picture><source media="(max-width:560px)" srcset="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/icon-192.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=0917335d417e9326a9ebf2618ebd5c670494b0c7&amp;t=1795026670"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/icon-512.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795026670" alt="Naya"></picture></button>
+<button type="button" class="corner-n" id="cornerN" aria-label="Naya — open today"><picture><source media="(max-width:560px)" srcset="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/icon-192.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=0917335d417e9326a9ebf2618ebd5c670494b0c7&amp;t=1795026793"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/icon-512.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795026793" alt="Naya"></picture></button>
 <div class="scrim" id="scrim"><section class="panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div id="panelContent"></div></section></div>
 <script>
 /* ============ STATE ============ */
@@ -1968,7 +1968,7 @@ function dayScreenHTML(ds, wd, publicView, future){
     +'<button class="pill close pclose" data-op="close" aria-label="Close">×</button></header>';
   if(!publicView){
     const w=wisdomFor(ds);
-    html+='<div class="smart-block sb-chamber" style="--dc:'+dc+'"><div class="smart-visual"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/portal-kings-chamber.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&amp;t=1795026670" alt="The king&#8217;s chamber — the portal to your kingdom"></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:'+dc+'">Keep reading ◆</button></div><div class="sb-dots"></div></div>';
+    html+='<div class="smart-block sb-chamber" style="--dc:'+dc+'"><div class="smart-visual"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/living-calendar-20261117/portal-kings-chamber.png&amp;ref=calendar/calendar-day-restore-20261118&amp;cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&amp;t=1795026793" alt="The king&#8217;s chamber — the portal to your kingdom"></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:'+dc+'">Keep reading ◆</button></div><div class="sb-dots"></div></div>';
     html+='<div class="pwisdom smart-block" style="--dc:'+dc+'"><div class="pwq-label">Wisdom of the day</div><blockquote>“'+esc(w.text)+'”</blockquote><div class="pgreet-row"><span class="pgreet-layout"><span class="pavatar" aria-hidden="true">S</span><span class="pgreet-hello">'+greetFor()+', Shawn.</span></span></div><div class="wq-store">NAYANET WISDOM STORE — FROM WHAT WE HAVE LEARNED</div><div class="pdaystep"><button type="button" class="pdaystep-btn" data-op="prevday" aria-label="Previous day, '+NAMES[prev.getDay()]+'">‹ '+ABBR[prev.getDay()]+'</button><button type="button" class="pdaystep-btn" data-op="nextday" aria-label="Next day, '+NAMES[next.getDay()]+'">'+ABBR[next.getDay()]+' ›</button></div><div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:'+dc+'">Keep reading ◆</button></div><div class="sb-dots"></div></div>';
   }
 
