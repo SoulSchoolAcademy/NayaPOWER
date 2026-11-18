@@ -903,25 +903,27 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 /* EYE-NOTES 2026-11-17 §3.3: .lens-legend rule removed with its element. */
 /* BLACK DIAMOND: clone layer behind every lens-tab jewel. */
 .lens-tab .tab-jewel::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--jc, #8e24aa) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
-/* Hero Wisdom of the Day. */
-.hero-wisdom{margin:6px 0 12px;max-width:760px;}
-.hero-wisdom .wisdom-kicker{font-size:11px;letter-spacing:.24em;font-weight:800;color:#d4a017;text-transform:uppercase;}
-.hero-wisdom blockquote{margin:6px 0 4px;font-size:28px;line-height:1.45;font-weight:800;color:#ffffff;text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 26px rgba(255,255,255,.16);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;} /* EYE-NOTES §3.10: wisdom trimmed to least words — presentation clamp, live text untouched */
-.hero-wisdom .wisdom-src{font-size:13px;color:#ffffff;}
-/* HUB FEED 2026-11-17 22:25Z (items 5+6): the close button is a little
-   obsidian circle in the wisdom banner's bottom-right corner (white ×,
-   rim in the hero's own color, lifts on hover); the Read more pill is an
-   obsidian pill in wisdom gold; while the banner is folded the search
-   sits flush at the top and the lens tabs sit flush under it (the 22px +
-   26px dead space is gone). Text here is 17px or larger (the × is a
-   glyph at 22px); all words are white. */
-.hero-close{position:absolute;right:16px;bottom:16px;width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:50%;background:#050607;border:1.5px solid var(--room-accent,#8e24aa);color:#fff;font-size:22px;line-height:1;font-weight:700;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;z-index:2;}
+/* AMENDMENT 2026-11-18 (A+B, Shawn 00:47Z): the banner is simplified —
+   the Wisdom of the Day block (label, long quote, 'Smart Note of the
+   Day' label, Read more pill) is OUT; its rules go with it. The close
+   button is a little obsidian circle in the banner's TOP corner now
+   (white ×, rim in the hero's own color, lifts on hover) — the 22:25Z
+   bottom-right placement is superseded. The restore pill below wears
+   the Read-more pill's own obsidian-pill language (gold rim, 17px white
+   bold text, press in/out) — the banner's own language, renamed, not a
+   new invention. While the banner is folded the search sits flush at
+   the top and the lens tabs sit flush under it. Text here is 17px or
+   larger (the × is a glyph at 22px); all words are white. At phone
+   width the motto clears the top-corner × (right padding, text shifts
+   left inside its centered box) so the × never sits on the words. */
+.hero-close{position:absolute;right:16px;top:16px;width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:50%;background:#050607;border:1.5px solid var(--room-accent,#8e24aa);color:#fff;font-size:22px;line-height:1;font-weight:700;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;z-index:2;}
 .hero-close:hover{transform:translateY(-2px);border-color:#fff;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 14px -2px var(--room-accent,#8e24aa),0 10px 22px rgba(0,0,0,.55);}
 .hero-close:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.55);}
-.wisdom-more{display:inline-flex;align-items:center;background:#050607;border:1.5px solid #d4a017;color:#fff;font-size:17px;font-weight:700;font-family:var(--font);padding:8px 18px;border-radius:999px;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease;margin:4px 0 8px;}
-.wisdom-more:hover{transform:translateY(-2px);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 0 14px -2px #d4a017,0 10px 22px rgba(0,0,0,.55);}
-.wisdom-more:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4),0 4px 10px rgba(0,0,0,.55);}
-.hero-wisdom.wisdom-open blockquote{display:block;-webkit-line-clamp:unset;overflow:visible;}
+@media (max-width:640px){.hero .eyebrow.feed-motto{padding-right:48px;}}
+.hero-restore{display:none;}
+.hero-restore.show{display:flex;align-items:center;justify-content:center;gap:8px;background:#050607;border:1.5px solid #d4a017;color:#fff;font-size:17px;font-weight:700;font-family:var(--font);padding:8px 18px;border-radius:999px;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease;margin:10px auto 2px;width:max-content;max-width:calc(100% - 32px);}
+.hero-restore.show:hover{transform:translateY(-2px);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 0 14px -2px #d4a017,0 10px 22px rgba(0,0,0,.55);}
+.hero-restore.show:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4),0 4px 10px rgba(0,0,0,.55);}
 .main-show .hero.hero-folded ~ .searchWrap{padding-top:0;}
 .main-show .hero.hero-folded ~ .lens-tabs{margin-top:8px;}
 
@@ -1141,8 +1143,10 @@ svg.jewel { display: block; }
 /* Main Show hero */
 .hero { padding: 30px 0 6px; }
 /* AMENDMENT #3 2026-11-17 20:29Z (the Hub welcome folds away): on login the
-   Hub greets you — good-afternoon banner with the time and the quote of the
-   day — then folds up and hides away. The hero itself collapses to zero
+   Hub greets you — good-afternoon banner with the time — then folds up
+   and hides away. (AMENDMENT 2026-11-18: the quote of the day is out of
+   the banner; it lives in the feed as feed content.) The hero itself
+   collapses to zero
    height (max-height + opacity + padding, one transition); nothing else is
    added, no new chrome, no new button. Underneath it sits flush: search at
    the top, then Collective / Personal / Activity, then the categories, then
@@ -6413,6 +6417,22 @@ function HubView(params) {
     add.addEventListener('click', ev => { ev.stopPropagation(); openTabEditor(null, true, add); });
     bar.appendChild(add);
     bar.scrollLeft = 0; /* FIX 2026-11-16 (item A): "All" fully in view at rest, after interactions, after reload. */
+    /* AMENDMENT 2026-11-18 (D, Shawn 00:47Z): the tabs must scroll for a
+       mouse too. The overflow rule was already there (overflow-x:auto,
+       L1344) and touch/trackpad swipe already worked — but a desktop
+       wheel scrolls the PAGE vertically, so the row read as static and
+       clipped. A wheel over the strip now moves it sideways (deltaY →
+       scrollLeft), but only while the strip still has room to move that
+       way; at either end the page scrolls as normal. The fade edge and
+       the hidden scrollbar stay — the wheel is what desktop was missing. */
+    bar.addEventListener('wheel', function (ev) {
+      if (!ev.deltaY) return;
+      var max = bar.scrollWidth - bar.clientWidth;
+      if (max <= 0) return;
+      if ((ev.deltaY > 0 && bar.scrollLeft >= max) || (ev.deltaY < 0 && bar.scrollLeft <= 0)) return;
+      ev.preventDefault();
+      bar.scrollLeft = Math.max(0, Math.min(max, bar.scrollLeft + ev.deltaY));
+    }, { passive: false });
     return { bar, tabs };
   }
 
@@ -7125,59 +7145,18 @@ window.NayaJewels = (() => {
 })();
 
 
-  /* ——— Wisdom of the Day (HUB FIX 2026-11-16, 19:35Z) ———
-     Daily Wisdom, same source as My World's Daily Wisdom (Personal T25/T26):
-     the day's Smart Note of the Day from the feed's own Smart Notes; no note
-     today, the newest earlier note carries forward, named with its day. No
-     notes at all → null, and the hero renders no wisdom block — never an
-     invented quote. */
-  /* HUB FEED 2026-11-17 22:25Z (item 4): the wisdom board holds a SHORT
-     wisdom — two sentences max. firstTwoSentences takes the first two
-     sentence-ends (. ! ?) of a note's text, whole words only; a note with
-     no sentence-end falls through whole. The long live note is never
-     rewritten at source — only this presentation is capped. */
-  function firstTwoSentences(s) {
-    var out = '', seen = 0, i = 0;
-    while (i < s.length && seen < 2) {
-      var ch = s[i];
-      out += ch;
-      if ((ch === '.' || ch === '!' || ch === '?') && (i + 1 >= s.length || /\s/.test(s[i + 1]))) seen++;
-      i++;
-    }
-    return out.trim();
-  }
-  function pickWisdomOfTheDay(notes) {
-    try {
-      const list = (notes || []).filter(n => n && (n.title || n.subtitle));
-      if (!list.length) return null;
-      const dayKey = d => { const t = Date.parse(d || ''); if (isNaN(t)) return ''; const x = new Date(t); return x.getFullYear() + '-' + (x.getMonth() + 1) + '-' + x.getDate(); };
-      const today = dayKey(new Date().toISOString());
-      const dated = list.map(n => ({ n, t: Date.parse(n.created_at || n.created || '') })).filter(x => !isNaN(x.t));
-      dated.sort((a, b) => b.t - a.t);
-      const todays = dated.filter(x => dayKey(x.n.created_at || x.n.created) === today);
-      const pick = todays[0] || dated[0];
-      if (!pick) return null;
-      const n = pick.n;
-      const title = String(n.title || '').trim();
-      const sub = String(n.subtitle || '').trim();
-      const layer0 = (n.layers && n.layers[0] && n.layers[0].body) ? String(n.layers[0].body).replace(/\*+/g, '').trim() : '';
-      let full = title;
-      if (sub && sub !== title) full = title + ' — ' + sub;
-      else if (layer0 && layer0 !== title) full = title + ' — ' + layer0;
-      /* HUB FEED 2026-11-17 22:25Z (item 4): the display text is the first
-         TWO sentences of the note, whole words only, capped at 220
-         characters — a long note can never fill the board again. The full
-         text rides along for the "Read more" toggle and is never shown
-         unasked. The live note itself ("Checker v3 Note") is live test
-         data and is NOT deleted here — it rides the probe cleanup. */
-      let text = firstTwoSentences(full);
-      if (!text) text = full;
-      if (text.length > 220) text = text.slice(0, 217).trimEnd() + '…';
-      const when = new Date(pick.t).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-      const carried = todays.length ? 'Smart Note of the Day' : 'Daily Wisdom, carried forward — the Smart Note of the Day from ' + when;
-      return { text, full, src: carried };
-    } catch (e) { return null; }
-  }
+  /* AMENDMENT 2026-11-18 (A+C, Shawn 00:47Z): the Wisdom of the Day
+     block is OUT of the banner — the label, the long quote, the 'Smart
+     Note of the Day' label, the two-sentence / 220-char cap
+     (firstTwoSentences) and the daily pick (pickWisdomOfTheDay) all go
+     with it; no dead cap code drives a removed block. The wisdom lives
+     in the feed as feed content: the day's Smart Note is a feed note and
+     renders as a feed card, newest first, so as new notes land the top
+     of the feed changes — one after the next, the circulation he saw
+     (Twin Rank 4:41, One Screen Complete 4:46) is the feed itself. No
+     slide / carousel / timer mechanism exists in these bytes — the two
+     screenshots differ because each staged load re-picks from live
+     notes; nothing here advances a slide, so nothing is rebuilt. */
 
   /* ═══ THE MAIN SHOW — hero, full-width lens, layered intelligence boards ═══ */
   function mainShow(rm, content, stream, searchWrap, provenanceEl) {
@@ -7233,9 +7212,14 @@ window.NayaJewels = (() => {
          in the Hub); the number is the citizen's own total, read from the
          same localStorage key Personal writes ('naya.points.total.v1'). */
       '<div class="ph-points pc-restyled" id="pointsdisplay" title="Your Naya points"><span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label" data-mw-tr="pts">pts</span></span></div>' +
-      (function () { var w = pickWisdomOfTheDay((window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || []); if (!w) return ''; window._nayaWisdom = w; return '<div class="hero-wisdom"><div class="wisdom-kicker">Wisdom of the Day</div><blockquote>&ldquo;' + esc(w.text) + '&rdquo;</blockquote>' + (w.full && w.full !== w.text ? '<button type="button" class="wisdom-more" aria-expanded="false">Read more</button>' : '') + '<div class="wisdom-src">' + esc(w.src) + '</div></div>'; })() +
-      '<p class="hero-sub"><a class="primo theme-purple elev-2 intel-feed-link" href="/feed">Our public smart feed &mdash; connect with people of like minds &rarr;</a></p>' +
-      '<p class="hero-sub hero-date"><span class="live-dot" aria-hidden="true"></span><span class="hero-date-str">' + dateStr + '</span> <span class="hero-time">' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' }) + '</span></p>';
+      /* AMENDMENT 2026-11-18 (A, Shawn 00:47Z): the banner simplified to
+         exactly four elements — motto, greeting, date + live time
+         UNDERNEATH the greeting, the share-value line. The Wisdom of the
+         Day block and the public-feed pill are OUT; the share-value line
+         replaces the pill. The points pill (FIX C3) stays, beside the
+         greeting, where Personal places it beside the name. */
+      '<p class="hero-sub hero-date"><span class="live-dot" aria-hidden="true"></span><span class="hero-date-str">' + dateStr + '</span> <span class="hero-time">' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' }) + '</span></p>' +
+      '<p class="hero-sub">We share value and intelligence and connect you with like minds.</p>';
     /* The clock is alive (Shawn 2026-10-20): ticking seconds + breathing dot —
        the whole app feels like active intelligence. One global interval. */
     if (!window._nayaClock) {
@@ -7300,60 +7284,25 @@ window.NayaJewels = (() => {
       if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pcTilePill);
       else pcTilePill();
     })();
-    /* HUB FEED 2026-11-17 22:25Z (item 4): the "Read more" toggle — the
-       banner shows the short wisdom (two sentences); a tap shows the whole
-       note, a second tap folds it back to the short wisdom. While open the
-       3-line clamp lifts (wisdom-open); the trim below never runs on an
-       open banner (it only runs at build). */
-    (function () {
-      var more = hero.querySelector('.wisdom-more'); if (!more) return;
-      var w = window._nayaWisdom; if (!w || !w.full) return;
-      var box = hero.querySelector('.hero-wisdom'); var bq = hero.querySelector('.hero-wisdom blockquote'); if (!box || !bq) return;
-      more.addEventListener('click', function () {
-        var open = box.classList.toggle('wisdom-open');
-        bq.textContent = open ? '\u201c' + w.full + '\u201d' : '\u201c' + w.text + '\u201d';
-        more.textContent = open ? 'Show less' : 'Read more';
-        more.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    })();
-    (function(){ /* EYE-NOTES-FIX §3.6: the 3-line clamp cut the quote mid-word
-      ("…the pag…"). The live text is never rewritten at source — only this
-      presentation is trimmed: while the blockquote still overflows, drop
-      its last word and close with an ellipsis, so the quote always ends
-      whole. The clamp stays three lines; the guard stops at one word. The
-      trim runs on the next frame and again after a second (the hero may
-      not be laid out yet when it is built) and is idempotent. */
-      var bq = hero.querySelector('blockquote'); if (!bq) return;
-      function trim() {
-        if (hero.classList.contains('hero-folded')) return; /* AMENDMENT #3: never trim while folded — the blockquote measures zero high folded, and the guard would eat the quote word by word; the unfold path re-runs the trim */
-        var words = bq.textContent.replace(/[\u201c\u201d]/g, '').trim().split(/\s+/);
-        var guard = 40;
-        while (bq.scrollHeight > bq.clientHeight && words.length > 1 && guard-- > 0) {
-          words.pop();
-          bq.textContent = '\u201c' + words.join(' ') + ' \u2026\u201d';
-        }
-      }
-      if (window.requestAnimationFrame) window.requestAnimationFrame(trim);
-      setTimeout(trim, 1000);
-      hero._nayaTrimWisdom = trim; /* AMENDMENT #3: the unfold path re-runs the trim, so the quote still ends whole after a fold */
-    })();
+    /* AMENDMENT 2026-11-18 (A): the "Read more" toggle and the wisdom
+       trim go with the wisdom block — no dead machinery for a removed
+       block. */
 
     /* AMENDMENT #3 2026-11-17 20:29Z — THE HUB WELCOME FOLDS AWAY. On login
-       the Hub greets you (good-afternoon banner with the time and the quote
-       of the day), then folds up and hides away — the best interface is the
-       one that folds up and hides away. Underneath it sits flush: search at
-       the top, then Collective / Personal / Activity (the explainer text
-       below them is gone — the caption went out in EYE-NOTES §3.3 and the
-       tab sub-lines live only in aria-label/title, never as visible text),
-       then the categories (the Smart Tabs ribbon), then the feed. The fold
-       is the hero itself collapsing to zero height — no new chrome, no new
-       button, nothing invented. It folds on first scroll down, or 15s after
-       arrival, whichever comes first; it folds back when you scroll back to
-       the very top, so the greeting is never stranded. The state lives for
-       the page lifetime only (window, not storage) — a fresh load logs in
-       and greets again. The Wisdom trim never runs while folded (it would
-       measure a zero-high blockquote and eat the quote); the unfold path
-       re-runs it. */
+       the Hub greets you (good-afternoon banner with the time), then folds
+       up and hides away — the best interface is the one that folds up and
+       hides away. (AMENDMENT 2026-11-18: the quote of the day is out of
+       the banner; the wisdom trim went with it.) Underneath it sits flush:
+       search at the top, then Collective / Personal / Activity (the
+       explainer text below them is gone — the caption went out in
+       EYE-NOTES §3.3 and the tab sub-lines live only in aria-label/title,
+       never as visible text), then the categories (the Smart Tabs ribbon),
+       then the feed. The fold is the hero itself collapsing to zero
+       height — no new chrome, no new button, nothing invented. It folds
+       on first scroll down, or 15s after arrival, whichever comes first;
+       it folds back when you scroll back to the very top, so the greeting
+       is never stranded. The state lives for the page lifetime only
+       (window, not storage) — a fresh load logs in and greets again. */
     (function () {
       function getFolded() { return !!window._nayaWelcomeFolded; }
       function setFolded(v) { window._nayaWelcomeFolded = !!v; }
@@ -7373,7 +7322,7 @@ window.NayaJewels = (() => {
         h.style.maxHeight = h.scrollHeight + 'px';
         h.setAttribute('aria-hidden', 'false');
         setFolded(false);
-        if (h._nayaTrimWisdom) h._nayaTrimWisdom();
+        if (hero._nayaRestoreBtn) hero._nayaRestoreBtn.classList.remove('show'); /* AMENDMENT 2026-11-18 (B): the banner is back, so the way back goes away */
         setTimeout(function () { if (!h.classList.contains('hero-folded')) h.style.maxHeight = ''; }, 650);
       }
       if (getFolded() || window._nayaWelcomeClosed) {
@@ -7398,21 +7347,45 @@ window.NayaJewels = (() => {
           else if (window.scrollY <= 8) unfoldEl(h);
         }, { passive: true });
       }
-      /* HUB FEED 2026-11-17 22:25Z (item 5): the little close button in
-         the wisdom banner's bottom-right corner — tapping it closes the
-         banner (the same fold as the scroll fold) and it STAYS closed for
-         the page lifetime: the scroll-to-top unfold respects the close,
-         so a closed banner never pops back open. */
+      /* AMENDMENT 2026-11-18 (B): the way back. A banner closed with its
+         × stays closed for the page lifetime — so there must be an obvious
+         way to bring it back, or the citizen is stranded with no greeting.
+         The restore pill lives in the flow between the search bar and the
+         lens tabs (the search stays flush at the top, hugging the top
+         bar) and shows ONLY while the banner is closed; one tap clears
+         the close, unfolds the banner, and hides the pill again. It is
+         appended after the search bar below (a fresh mainShow build
+         re-creates it, and a build that starts closed shows it at once).
+         Its class rides the .hero-restore rules — the Read-more pill's
+         own obsidian-pill language, renamed. */
+      var restoreBtn = document.createElement('button');
+      restoreBtn.type = 'button'; restoreBtn.className = 'hero-restore';
+      restoreBtn.setAttribute('aria-label', 'Show the welcome banner again');
+      restoreBtn.innerHTML = '&uarr; Show welcome banner';
+      restoreBtn.addEventListener('click', function () {
+        window._nayaWelcomeClosed = false;
+        restoreBtn.classList.remove('show');
+        unfoldEl(hero);
+      });
+      hero._nayaRestoreBtn = restoreBtn;
+      /* AMENDMENT 2026-11-18 (B, Shawn 00:47Z): the little close button
+         moves to the banner's TOP corner — his newest word supersedes the
+         22:25Z bottom-right placement. Tapping it closes the banner (the
+         same fold as the scroll fold) and it STAYS closed for the page
+         lifetime: the scroll-to-top unfold respects the close, so a closed
+         banner never pops back open — and the restore pill above appears,
+         so the way back is always obvious. */
       (function () {
         if (hero.querySelector('.hero-close')) return;
         var btn = document.createElement('button');
         btn.type = 'button'; btn.className = 'hero-close';
-        btn.setAttribute('aria-label', 'Close wisdom banner');
+        btn.setAttribute('aria-label', 'Close welcome banner');
         btn.title = 'Close';
         btn.innerHTML = '&times;';
         btn.addEventListener('click', function () {
           window._nayaWelcomeClosed = true;
           foldEl(hero);
+          restoreBtn.classList.add('show');
         });
         hero.appendChild(btn);
       })();
@@ -7424,6 +7397,15 @@ window.NayaJewels = (() => {
 
     /* — Search sits immediately above the lens tabs, full width — */
     if (searchWrap) wrap.appendChild(searchWrap);
+    /* AMENDMENT 2026-11-18 (B): the restore pill rides in the flow
+       between the search bar and the lens tabs — the search stays flush
+       at the top. A fresh build that starts closed (the × was tapped in
+       an earlier build this page lifetime) shows it at once, so the way
+       back survives a re-render. */
+    if (hero._nayaRestoreBtn) {
+      wrap.appendChild(hero._nayaRestoreBtn);
+      if (window._nayaWelcomeClosed) hero._nayaRestoreBtn.classList.add('show');
+    }
 
     /* — Lens: three compact buttons in one row, real navigation — */
     const lens = el('nav', 'lens-tabs');
