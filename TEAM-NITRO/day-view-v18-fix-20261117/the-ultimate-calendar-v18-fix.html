@@ -1604,6 +1604,99 @@
       @media (prefers-reduced-motion: reduce) {
         * { animation: none !important; transition: none !important; }
       }
+    
+/* THE SIGNATURE PIECE (Shawn, 2026-11-18 15:17Z — replaces the Hz jewel
+   and its text, same spot, both files): circles within circles, pearl
+   flow, the day's colour. A real physical object — obsidian glass disc,
+   brushed-metal ring, a pearl sphere in the day's colour with a top-left
+   specular highlight, two slow pearl-bead orbits (60s / 90s reverse), a
+   slow sheen across the pearl. The colour IS the frequency: no Hz text
+   on or beside it, ever. --dc is the day's colour (Laws §3.3), set live. */
+.sigpiece{position:relative;flex:none;width:56px;height:56px;border-radius:50%;
+  background:radial-gradient(circle at 34% 26%,#2c3044 0%,#13131f 52%,#050607 100%);
+  border:2px solid color-mix(in srgb,var(--dc,#fff) 78%,#ffffff 22%);
+  box-shadow:0 8px 16px rgba(0,0,0,.65),0 0 14px color-mix(in srgb,var(--dc,#fff) 28%,transparent),inset 0 2px 3px rgba(255,255,255,.4),inset 0 -8px 12px rgba(0,0,0,.7)}
+.sp-metal{position:absolute;inset:7px;border-radius:50%;
+  /* Seamless wrap: 0% and 100% are the SAME silver, so no hard seam
+     where the conic closes (the 3x read caught a diagonal crack);
+     fine repeating stripes over the top read as brushed metal. */
+  background:
+   repeating-conic-gradient(from 0deg,rgba(255,255,255,.07) 0deg 1deg,transparent 1deg 3deg),
+   conic-gradient(from 210deg,#b9bdc6 0%,#e8e8ec 12%,#9a9ea8 28%,#4a4e5a 45%,#c8ccd6 62%,#7a7e88 80%,#e8e8ec 92%,#b9bdc6 100%);
+  box-shadow:inset 0 1px 2px rgba(255,255,255,.75),inset 0 -2px 4px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.6)}
+.sp-pearl{position:absolute;inset:14px;border-radius:50%;overflow:hidden;
+  background:radial-gradient(circle at 35% 30%,#ffffff 0%,color-mix(in srgb,var(--dc,#fff) 55%,#ffffff) 32%,var(--dc,#fff) 62%,color-mix(in srgb,var(--dc,#fff) 45%,#000000) 100%);
+  box-shadow:inset 0 -4px 8px rgba(0,0,0,.45),inset 0 3px 6px rgba(255,255,255,.5),0 4px 10px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--dc,#fff) 45%,transparent);
+  animation:sigbreathe 12s ease-in-out infinite alternate}
+.sp-pearl::before{content:"";position:absolute;top:5px;left:7px;width:12px;height:8px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,.95),rgba(255,255,255,0) 70%);transform:rotate(-20deg)}
+.sp-pearl::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.22) 50%,transparent 58%);transform:translateX(-130%);animation:sigsheen 7s ease-in-out infinite}
+.sp-ring-a,.sp-ring-b{position:absolute;border-radius:50%;pointer-events:none}
+.sp-ring-a{inset:-6px;border:1.5px solid color-mix(in srgb,var(--dc,#fff) 45%,transparent);animation:sigorbit 60s linear infinite}
+.sp-ring-b{inset:-11px;border:1.5px solid color-mix(in srgb,var(--dc,#fff) 32%,transparent);animation:sigorbit 90s linear infinite reverse}
+.sp-ring-a::before,.sp-ring-b::before{content:"";position:absolute;top:-4px;left:50%;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#ffffff 0%,#d9d9de 55%,#8a8a90 100%);box-shadow:0 1px 3px rgba(0,0,0,.6),0 0 6px color-mix(in srgb,var(--dc,#fff) 55%,transparent)}
+@keyframes sigorbit{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes sigbreathe{from{opacity:.92}to{opacity:1}}
+@keyframes sigsheen{0%,55%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
+/* Panel daybar: time tiles at the day file's own phone sizes; the piece
+   beside the time; the close pill absolute top-right like the day file's
+   jewel corner, the headliner margins clearing both sides. */
+.phl-time{display:inline-flex;align-items:center;gap:10px;justify-self:center}
+.phl-time .os-mini-tile{width:20px;border-radius:4px}
+.phl-time .os-mini-tile .cap{height:4px}
+.phl-time .os-mini-tile .rd{height:22px;line-height:22px;font-size:19px}
+.phl-time .os-mini-tile.letter .rd{font-size:17px}
+.phl-time .os-mini-gap{width:6px}
+.phl-time .clock-colon{font-size:17px}
+.pdaybar .pclose{position:absolute;top:clamp(14px,2.2vmin,22px);right:clamp(12px,2vmin,22px);z-index:3}
+#panelContent .pcat{margin-top:16px}
+#panelContent .pdaystep{margin-top:14px}
+#panelContent .pwisdom{margin-top:14px}
+.pwisdom .pgreet-row{padding-right:0}
+/* Record rows: the day file's cat-row language, in the panel's own form. */
+.recrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;margin-top:10px;background:linear-gradient(135deg,#1b1426 0%,#0b0b12 60%,#120d1d 100%);border:1.5px solid color-mix(in srgb,var(--c) 55%,transparent);border-radius:16px;padding:14px 16px;color:#fff;cursor:pointer;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.recrow:hover{transform:translateY(-3px);border-color:var(--c);box-shadow:0 16px 30px rgba(0,0,0,.65),0 0 28px color-mix(in srgb,var(--c) 60%,transparent),inset 0 1px 0 rgba(255,255,255,.3)}
+.recrow:active{transform:scale(.97)}
+.recrow .rj{width:15px;height:15px;border-radius:3px;flex:none;transform:rotate(45deg);background:linear-gradient(135deg,#ffffff 0%,var(--c) 42%,color-mix(in srgb,var(--c) 45%,#000000) 100%);border:1px solid rgba(255,255,255,.9);box-shadow:0 0 14px var(--c),inset 0 1px 2px rgba(255,255,255,.9),0 3px 6px rgba(0,0,0,.6)}
+.recrow .rl{display:flex;flex-direction:column;gap:2px;min-width:0}
+.recrow .rl b{font-size:17px}
+.recrow .rl span{font-size:17px;line-height:1.45}
+.recrow .rc{margin-left:auto;font-size:25px;flex:none}
+/* Weather honesty, one line, no pile. */
+.pwx{margin:12px 2px 0;font-size:17px;color:#fff}
+@media(max-width:560px){
+  .phl{grid-template-columns:1fr;justify-items:center;text-align:center;gap:8px}
+  .phl-left{justify-content:center}
+  .phl-time .os-mini-tile{width:18px}
+  .phl-time .os-mini-tile .rd{height:20px;line-height:20px;font-size:17px}
+  .phl-time .sigpiece{width:44px;height:44px}
+}
+/* THE CRYSTAL N (Shawn, 2026-11-18 15:23Z): the icon, bottom-right corner
+   of the page. A real object, never a flat picture — the crystal N mounted
+   in an obsidian jewel mount, silver-purple rim, real shadow, alive on
+   hover (lift + light, press 0.97). 512 where large, 192 where small. */
+.corner-n{position:fixed;right:16px;bottom:16px;z-index:20;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;cursor:pointer;padding:0;
+ background:radial-gradient(circle at 34% 26%,#2c3044 0%,#13131f 52%,#050607 100%);
+ border:2px solid color-mix(in srgb,#8e24aa 70%,#ffffff 30%);
+ box-shadow:0 10px 24px rgba(0,0,0,.65),0 0 18px rgba(142,36,170,.45),inset 0 2px 3px rgba(255,255,255,.4),inset 0 -8px 12px rgba(0,0,0,.7);
+ transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.corner-n img{width:46px;height:46px;object-fit:contain;display:block;filter:drop-shadow(0 4px 8px rgba(0,0,0,.7)) drop-shadow(0 0 10px rgba(142,36,170,.5))}
+.corner-n:hover{transform:translateY(-3px);border-color:#ffffff;box-shadow:0 16px 30px rgba(0,0,0,.7),0 0 28px rgba(142,36,170,.65),inset 0 2px 3px rgba(255,255,255,.45),inset 0 -8px 12px rgba(0,0,0,.7)}
+.corner-n:active{transform:scale(.97)}
+@media(max-width:560px){.corner-n{width:48px;height:48px;right:12px;bottom:12px}.corner-n img{width:34px;height:34px}}
+
+.daybar .sigpiece{position:absolute;top:0;right:0;z-index:3}
+
+/* HERO RAYS — the Hub hero's radiance, in the day's colour (see month file) */
+.wisdom-banner{position:relative;overflow:hidden}
+.wisdom-banner::before{content:"";position:absolute;inset:0;pointer-events:none;
+ background:
+  radial-gradient(120% 90% at 50% -10%,color-mix(in srgb,var(--dc,#8e24aa) 22%,transparent),transparent 60%),
+  repeating-conic-gradient(from 180deg at 50% -12%,color-mix(in srgb,var(--dc,#8e24aa) 9%,transparent) 0deg 3deg,transparent 3deg 10deg)}
+.wisdom-banner>*{position:relative;z-index:1}
+.dlogo{width:44px;height:44px;flex:none;border-radius:12px;display:grid;place-items:center;cursor:pointer;padding:0;background:linear-gradient(145deg,#130723,#06030c);border:1px solid #8e24aa;box-shadow:inset 0 0 14px #351453,0 0 16px #8e24aa,0 8px 20px rgba(0,0,0,.6);transition:transform .18s ease,box-shadow .18s ease}
+.dlogo img{width:100%;height:100%;object-fit:contain;display:block}
+.dlogo:hover{transform:translateY(-2px);box-shadow:inset 0 0 14px #351453,0 0 24px #8e24aa,0 12px 26px rgba(0,0,0,.6)}
+.dlogo:active{transform:scale(.97)}
     </style>
   </head>
   <body>
@@ -1612,6 +1705,7 @@
       <section id="screen-month" class="screen" aria-label="Month calendar">
         <header class="monthbar">
           <div class="navcluster">
+            <button type="button" class="dlogo" id="brandHome" aria-label="NayaNET — open today"><img src="NAYA_ICON.png" alt="NayaNET"></button>
             <button class="navbtn" id="prevMonth" aria-label="Previous month">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
             </button>
@@ -1664,6 +1758,7 @@
         </header>
         <div class="doorbody" id="doorBody"></div>
       </section>
+    <button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><picture><source media="(max-width:560px)" srcset="icon-192.png"><img src="icon-512.png" alt="Naya"></picture></button>
     </div>
 
     <script>
@@ -2452,8 +2547,7 @@
               '<span class="hl-time" id="greetClock"></span>' +
               '<button type="button" class="stats-btn" id="statsBtn">Your Stats</button>' +
             "</div>" +
-            '<span class="dayjewel"><span class="hz-stage"><span class="hz-aura"></span><span class="hz-pedestal"></span><span class="hz-ring-a"></span><span class="hz-ring-b"></span>' + gemSVG(dc) + "</span>" +
-            '<span class="freq">' + DAY_FREQ[d.getDay()] + " Hz</span></span>";
+            '<span class="sigpiece" style="--dc:' + dc + '" role="img" aria-label="' + WEEKDAYS[d.getDay()] + '"><span class="sp-ring-a"></span><span class="sp-ring-b"></span><span class="sp-metal"></span><span class="sp-pearl"></span></span>';
           /* The stepper lives under the wisdom bar now, not in the
              head — the bar holds only the headliner and the jewel */
           $("daystepSlot").innerHTML = stepHTML;
@@ -3077,6 +3171,8 @@
         /* Amendment #3 — the plaque is the door into today */
         $("nowPlaque").addEventListener("click", function () { openDay(new Date()); });
         $("backToMonth").addEventListener("click", function () { stopMeet(); renderMonth(); show("screen-month"); });
+        $("brandHome").addEventListener("click", function () { openDay(new Date()); });
+        $("cornerN").addEventListener("click", function () { stopMeet(); renderMonth(); show("screen-month"); });
         $("backToDay").addEventListener("click", function () { if (sel) openDay(sel); });
         document.addEventListener("keydown", function (ev) {
           /* Arrow keys walk day to day while the day screen is showing
