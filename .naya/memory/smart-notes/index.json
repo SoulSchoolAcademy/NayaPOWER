@@ -59305,6 +59305,39 @@
         "Lesson",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3413",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3413-labels-must-explain-the-number",
+      "slug": "labels-must-explain-the-number",
+      "title": "Labels Must Explain the Number",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3413/IB-SMART-NOTE-20261118-sn3413-labels-must-explain-the-number.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3413/IB-SMART-NOTE-20261118-sn3413-labels-must-explain-the-number.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3413/IB-SMART-NOTE-20261118-sn3413-labels-must-explain-the-number.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3413-labels-must-explain-the-number.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T20:13:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "0c8ae1c8c564f3477d05958c79f9d852c3249e8f212750976cc22703c0c319db",
+      "content_hash": "f079cac4a630872dfdd6194136f540b5143749359837c56787925adc90d1b800",
+      "one_line": "A board that needs a manual has already failed: its label must explain its number, its design must be one design, and its sequence must follow the colour flow without exception. This family is the board-law stratum — ten-is-full-width, jewels under the start button, labels that say what the number means, notifications where the eye expects them, the Boards page defined by purpose and three sections, and two-things-headliner-first ordering. Each rule sounds small; together they are the difference between a page a stranger reads in one pass and a page a stranger studies and abandons.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "System",
+        "Lesson",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59315,5 +59348,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "70c40a7577aabbe8745436f40e40f1c20096bf924351c74d35de58ff36753f00"
+  "corpus_manifest_hash": "a9638afdc9ed2cb8933feae5c91c1f9d068bd27995526dc7b56c9c04153f103f"
 }
