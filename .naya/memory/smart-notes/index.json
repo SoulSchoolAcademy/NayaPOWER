@@ -59101,6 +59101,39 @@
         "Viewport",
         "Order"
       ]
+    },
+    {
+      "smart_note_id": "SN-3397",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3397-her-voice-her-face",
+      "slug": "her-voice-her-face",
+      "title": "Her Voice, Her Face",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3397/IB-SMART-NOTE-20261118-sn3397-her-voice-her-face.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3397/IB-SMART-NOTE-20261118-sn3397-her-voice-her-face.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3397/IB-SMART-NOTE-20261118-sn3397-her-voice-her-face.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3397-her-voice-her-face.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "cf5772df3f268dc3dbf08acb9da8c821348dd6d81bbaf5f1170acb1216dd7ad3",
+      "content_hash": "8f70ac6f6f834bc93c7a3fb793f61f254cdd3c50a78102b14ec82b40d8a2d44d",
+      "one_line": "Naya speaks. That is the difference between this interface and every silent page on the old internet: she talks to the visitor in the first person, like a friend — real, concise, direct about who she is and what this is — and her face is beside the words, eight different faces alternating down the page, because the switch of face and side resets attention and helps people actually take in what is said. The face is a comprehension tool, not decoration; the voice lives in the words, no recording required. She introduces herself the way she wants the world to learn her: I am Naya — new, fast, hero; I remember what matters; I earn with you; I am private by default. The founder's letter stays the founder's voice — her voice first, then his letter — and the one board left in third person was flagged for his eye with a first-person version ready. Her authorship generalises into the network's byline: Written by Naya for [alias] — she writes and shares a citizen's intelligence for them, under their choice of identity: fully anonymous, their alias, or their name. Choice is always, beauty is by default: auto-format keeps the network beautiful, it can be turned off, and turning it off costs nothing — no points docked, the action is rewarded either way, because the choice was always the citizen's. Private notes are entirely their own; public notes wear her format because a beautiful network is part of the service — but preference, never force.",
+      "topics": [
+        "Design",
+        "Distillation",
+        "Voice",
+        "Identity",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -59111,5 +59144,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "75ad8fd19b6de317ebc15b9ee0d18124e80aaf68d2c0a4585c026f7d6c4f8745"
+  "corpus_manifest_hash": "63caa7eb35785d11e212699584b65592ebda47b3d1b031f273525b2294ed854c"
 }
