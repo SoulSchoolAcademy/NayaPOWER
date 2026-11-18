@@ -53112,6 +53112,39 @@
         "Design Law",
         "Real Objects"
       ]
+    },
+    {
+      "smart_note_id": "SN-3097",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3097-one-screen-complete",
+      "slug": "one-screen-complete",
+      "title": "One Screen, Complete",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3097/IB-SMART-NOTE-20261118-sn3097-one-screen-complete.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3097/IB-SMART-NOTE-20261118-sn3097-one-screen-complete.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3097/IB-SMART-NOTE-20261118-sn3097-one-screen-complete.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3097-one-screen-complete.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T00:51:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "6f36edff1ea08b61e8050681cae51d0b2e41f14119b501449c8762ecec3a8f9e",
+      "content_hash": "31536451e93c8d46d41ccffd1426197859d7b699d4cc14bf020dfc27ea52eebd",
+      "one_line": "'Fixed' means one thing here: the exact click the user named, walked where the user lives. When the note links broke, restoring them on a page of their own was the wrong finish — the order was notes inside the Hub, and only the mechanism that put them there counted as fixed. The screen obeys the same strictness: a viewport is one screen, complete — if it takes two viewports to show one viewpoint, it is not a viewpoint at all, on desktop or on the phone. The user chooses the scroll — down or across, both, never one imposed. The feel is a matrix of living blocks that flows like water and makes sense on contact: if a visitor has to think about where something is, it is not done. And there is one welcome, not two: the letter IS the welcome — when the new door opens, the old one comes off its hinges.",
+      "topics": [
+        "System",
+        "Lesson",
+        "Distillation",
+        "Viewport",
+        "Experience"
+      ]
     }
   ],
   "sequence_policy": {
@@ -53122,5 +53155,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "9e1dee54c0b27bca33f2c4507bbf11dbe79d6f823709d837891849fd2fbe3580"
+  "corpus_manifest_hash": "dfe08b1b6772f38c87eea08e137c130bb96bb5a93759c0d580f5a3d7a34624d2"
 }
