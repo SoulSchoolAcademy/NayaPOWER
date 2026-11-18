@@ -770,6 +770,49 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .shell{height:auto;min-height:100dvh}
   .days{grid-auto-rows:minmax(49px,1fr)}
 }
+@media(min-width:561px) and (max-width:740px){
+  /* CALENDAR FIX 5 (R5-635 two-digit) — THE HEAD NO LONGER DEPENDS ON THE
+     CLOCK. Eye 10:12-10:45Z: at 635x600 the month fits at 9:30 (plaque
+     543.8px, jewel beside it, head 126px, scrollH 600) and scrolls 32px
+     at 10:30 (one extra hour digit wraps the jewel below the plaque,
+     head 177px, scrollH 632) — the fit held by a 1.7px margin. My own
+     render (work/measure5.py): plaque content ~555px at two-digit hours
+     vs ~522px at single-digit; jewel 67.3px + 8px gap; container 619px.
+     The tile itself is 53px of content (tilerow 45 + padding 5 + border
+     3), so rows cannot shrink below ~53.5px — the fit comes from
+     spacing, never from the tile.
+     (1) CONSTANT TWO-ROW NOWCENTER: the plaque takes its own row
+     (flex 1 1 100%) and the jewel sits centred on its own row below it,
+     at every hour and every width in the band. nowCenter is 118px
+     (49 + 2 + 67) always; head is 173px always. No wrap lottery.
+     (2) PLAQUE SLIMMING (~25px, spacing only): padding 6px -> 2px
+     sides, gap 6px -> 4px, date letter-spacing .02em -> 0, the clock's
+     inter-part gap 8px -> 4px. The plaque's content (~530px worst
+     two-digit hour, ~539px on the longest date, Wednesday September 30)
+     fits its row even at 561px (545px) and never wraps internally, so
+     the head stays 173px at 561 too. No object resized, no text
+     resized: the date stays 17px Marcellus, the time tiles stay 20px /
+     19px, the jewel stays 48px stage / 17px freq.
+     (3) SPACING REFIT so the constant head fits 635x600 with rows at
+     their 53.5px content height: shell padding/gaps, head gap, board
+     padding, weekrow padding/cell padding, days/weekrow gaps — all
+     inside this band only. Content total at 635x600 lands ~590px
+     against the 600px viewport (~10px slack, absorbed by the rows
+     stretching to 55px). 390 / 741 / 1919 are outside this band and
+     untouched. 561/600x600 still scroll (their topline wraps to 95px —
+     pre-existing, unbriefed, untouched) but now by the SAME 44px at
+     both hours: the clock changes nothing in the band any more. */
+  .nowcenter{flex-wrap:wrap;row-gap:2px}
+  .nowplaque{flex:1 1 100%;padding:5px 2px;gap:4px}
+  .now-date{letter-spacing:0}
+  #nowTime .os-mini-gap{width:4px}
+  .shell{padding:6px 8px 7px;gap:6px}
+  .head{gap:8px}
+  .board{padding:2px 4px}
+  .weekrow{padding:0}
+  .weekrow .wk{padding:2px 2px}
+  .days,.weekrow{gap:2px}
+}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 </style></head>
 <body>
