@@ -443,18 +443,14 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .daynum .os-mini-tile .rd{height:clamp(26.7px,2.8vw,42.7px);line-height:clamp(26.7px,2.8vw,42.7px);font-size:clamp(24px,2.52vw,38.4px)}
 /* FOLLOW-ON (6) TYPE FLOOR — dayname 11px (was 10px). hint 14px, sub2 13px
    and the mobile VIEW label 9px already stand at the specified sizes. */
-.dayname{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.9;margin-top:2px}
 .chip{display:inline-flex;max-width:100%;align-items:center;gap:5px;font-size:clamp(9px,1vw,12px);color:#fff;background:#211331;border:1px solid var(--chip,#fff);border-radius:18px;padding:4px 7px;margin:4px 3px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:inset 0 0 9px rgba(0,0,0,.5)}
 .chip svg{width:11px;height:11px;flex:none}
 .chiplane{margin-top:4px;display:flex;flex-wrap:wrap}
 .dots{display:none}
-.minitext{font-size:11px;color:#fff;margin-top:6px}
-.more{font-size:11px;color:#fff;margin-top:4px}
 .spark{position:absolute;right:10px;top:9px;width:14px;height:14px;border-radius:3px;transform:rotate(45deg);
   background:linear-gradient(135deg,color-mix(in srgb,var(--dc) 75%,#fff),var(--dc) 50%,#050607);
   border:1px solid rgba(255,255,255,.75);box-shadow:0 0 12px var(--dc),0 2px 6px rgba(0,0,0,.6)}
 .tilerow{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
-.tilewisdom{font-size:11px;line-height:1.35;color:#fff;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* CALENDAR FIX 2026-11-18 (3) — the 'i' button on every day: a pearl/diamond
    circle with a white 'i', black middle (Laws §8). Construction harvested
    VERBATIM from the day file's .cell .jewel (blob e11cfd83); only the size
@@ -698,7 +694,6 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   .days,.weekrow{gap:3px}
   .weekrow{font-size:17px;padding:4px 0}
   .tile{min-height:74px;padding:2px 3px 3px;border-radius:10px;text-align:center}
-  .dayname{font-size:11px}
   .tile.today{border-width:2px}
   .tilewisdom{display:none}
   .viewbtn{min-height:16px;font-size:9px;padding:1px 6px;letter-spacing:.04em}
@@ -1513,6 +1508,39 @@ label.flab{display:block;color:#fff;font-size:17px;font-weight:700;margin:14px 0
   box-shadow:0 0 45px rgba(142,36,170,.5),0 24px 60px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.2);
   padding:clamp(15px,2.1vw,26px)}
 @media(max-width:740px){.meet-pop .meet-card{width:90%;max-height:90dvh}}
+
+/* ============ V3 — FIX ROUND (checker GOES BACK on v2, 2026-11-18) ============ */
+/* THE PINNED BLOCK INDICATOR (from the pricing study: the pricing page's
+   12 dots scroll out of view once you advance the letter — these do not.
+   They ride the block's own nav cluster, pinned above the nav row on every
+   screen, the current lit in the day's color, tappable to jump to that
+   block. The count is the LIVE block count — split blocks count too — so
+   the number of dots is the number of screens (5 to 9 by file and width). */
+.sb-dots{position:absolute;left:50%;transform:translateX(-50%);bottom:76px;display:flex;gap:8px;align-items:center;justify-content:center;z-index:2}
+.sb-dots button{width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(255,255,255,.85);background:#0b0b12;cursor:pointer;padding:0;transition:transform .18s ease,background .18s ease,box-shadow .18s ease}
+.sb-dots button:hover{transform:scale(1.25)}
+.sb-dots button.lit{background:var(--dc,#3fb8ff);border-color:#fff;box-shadow:0 0 10px var(--dc,#3fb8ff);transform:scale(1.25)}
+@media(max-width:560px){.sb-dots{gap:6px;bottom:72px}.sb-dots button{width:10px;height:10px}}
+/* ONE-LINE GLIMPSE AT PHONE WIDTH (rule 5, per-width format — the v2
+   record fix, extended to every day-file row: at ≤740px the glimpse reads
+   one line so six rows fit one screen; the row still opens its door, where
+   the whole text lives). */
+@media(max-width:740px){.cat-rows .lr-g{-webkit-line-clamp:1}}
+/* COMPACT NOTIFICATION CARDS AT PHONE WIDTH (rule 5: at ≤410px the three
+   scope cards tighten — padding, gap, pill, head — so the cards block fits
+   one screen at 390; the name, the sub and the state pill all stay). */
+@media(max-width:410px){
+  .nblock{min-height:0;padding:8px 12px;gap:6px}
+  .nblock .state-pill{min-height:32px;padding:4px 14px}
+  .notif-head{font-size:19px;gap:8px;margin-bottom:10px}
+  .addsrc-pill{padding:4px 12px;min-height:32px;font-size:17px}
+}
+
+/* THE 635 BAND (checker §2.19): at 561–740px the daybar's three-column
+   headliner is too narrow — "Wednesday" runs over the clock tiles (18x22px
+   measured). The day file already stacks its headliner in this band; the
+   panel now does the same: date above, time below, both centred. */
+@media(max-width:740px){.phl{grid-template-columns:1fr;justify-items:center;text-align:center;gap:8px}.phl-left{justify-content:center}.phl-time .sigpiece{width:44px;height:44px}}
 </style></head>
 <body>
 <main class="shell">
@@ -1931,8 +1959,8 @@ function dayScreenHTML(ds, wd, publicView, future){
     +'<button class="pill close pclose" data-op="close" aria-label="Close">×</button></header>';
   if(!publicView){
     const w=wisdomFor(ds);
-    html+='<div class="smart-block sb-chamber" style="--dc:'+dc+'"><div class="smart-visual"><img src="portal-kings-chamber.png" alt="The king&#8217;s chamber — the portal to your kingdom"></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:'+dc+'">Keep reading ◆</button></div></div>';
-    html+='<div class="pwisdom smart-block" style="--dc:'+dc+'"><div class="pwq-label">Wisdom of the day</div><blockquote>“'+esc(w.text)+'”</blockquote><div class="pgreet-row"><span class="pgreet-layout"><span class="pavatar" aria-hidden="true">S</span><span class="pgreet-hello">'+greetFor()+', Shawn.</span></span></div><div class="wq-store">NAYANET WISDOM STORE — FROM WHAT WE HAVE LEARNED</div><div class="pdaystep"><button type="button" class="pdaystep-btn" data-op="prevday" aria-label="Previous day, '+NAMES[prev.getDay()]+'">‹ '+ABBR[prev.getDay()]+'</button><button type="button" class="pdaystep-btn" data-op="nextday" aria-label="Next day, '+NAMES[next.getDay()]+'">'+ABBR[next.getDay()]+' ›</button></div><div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:'+dc+'">Keep reading ◆</button></div></div>';
+    html+='<div class="smart-block sb-chamber" style="--dc:'+dc+'"><div class="smart-visual"><img src="portal-kings-chamber.png" alt="The king&#8217;s chamber — the portal to your kingdom"></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:'+dc+'">Keep reading ◆</button></div><div class="sb-dots"></div></div>';
+    html+='<div class="pwisdom smart-block" style="--dc:'+dc+'"><div class="pwq-label">Wisdom of the day</div><blockquote>“'+esc(w.text)+'”</blockquote><div class="pgreet-row"><span class="pgreet-layout"><span class="pavatar" aria-hidden="true">S</span><span class="pgreet-hello">'+greetFor()+', Shawn.</span></span></div><div class="wq-store">NAYANET WISDOM STORE — FROM WHAT WE HAVE LEARNED</div><div class="pdaystep"><button type="button" class="pdaystep-btn" data-op="prevday" aria-label="Previous day, '+NAMES[prev.getDay()]+'">‹ '+ABBR[prev.getDay()]+'</button><button type="button" class="pdaystep-btn" data-op="nextday" aria-label="Next day, '+NAMES[next.getDay()]+'">'+ABBR[next.getDay()]+' ›</button></div><div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:'+dc+'">Keep reading ◆</button></div><div class="sb-dots"></div></div>';
   }
 
   const books=dayBookings(ds), notesAll=dayNotes(ds);
@@ -1944,26 +1972,52 @@ function dayScreenHTML(ds, wd, publicView, future){
       <article><strong>Stay connected</strong><span>Message the owner through an authorized channel.</span></article></div>`;
     return html;
   }
+  { /* V3 SPLIT (rule 3, checker §3): at ≤740px the 8 doors + weather do
+       not fit one screen — the section splits 4 + 4 doors, the weather
+       riding the second half. At wide widths it stays one block. */
+    var _doorArr=DOORS.map(([x,i,c,s])=>`<button class="door" style="--c:${c}" data-view="${esc(x)}"><span class="jewel" aria-hidden="true">${ICONS[i]}</span>${esc(x)}<span class="sub2">${esc(s+' · '+doorGlimpse(x,ds,books,notesAll))}</span></button>`);
+    var _notifHead='<section class="pcat smart-block" style="--cc:#a21caf"><div class="pcat-head"><span class="pcat-jewel"></span><h2 class="pcat-title">Notifications</h2></div><p class="pcat-essence">By world — tap a world and see its notifications and where each came from.</p>';
+    var _notifHead2='<section class="pcat smart-block" style="--cc:#a21caf"><div class="pcat-head"><span class="pcat-jewel"></span><h2 class="pcat-title">Notifications</h2></div><p class="pcat-essence">Doors five to eight — the rest of the worlds, plus the weather line.</p>';
+    if(window.innerWidth<=740){
+      html+=_notifHead+'<div class="doors">'+_doorArr.slice(0,4).join('')+'</div>'+'<div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:#a21caf">Keep reading ◆</button></div>'+'<div class="sb-dots"></div></section>';
+      html+=_notifHead2+'<div class="doors">'+_doorArr.slice(4).join('')+'</div><p class="pwx">Weather — not connected yet. Nothing is shown in its place.</p>'+'<div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:#a21caf">Keep reading ◆</button></div>'+'<div class="sb-dots"></div></section>';
+    } else {
   html+='<section class="pcat smart-block" style="--cc:#a21caf"><div class="pcat-head"><span class="pcat-jewel"></span><h2 class="pcat-title">Notifications</h2></div><p class="pcat-essence">By world — tap a world and see its notifications and where each came from.</p>'
     +`<div class="doors">${DOORS.map(([x,i,c,s])=>`<button class="door" style="--c:${c}" data-view="${esc(x)}"><span class="jewel" aria-hidden="true">${ICONS[i]}</span>${esc(x)}<span class="sub2">${esc(s+' · '+doorGlimpse(x,ds,books,notesAll))}</span></button>`).join('')}</div>`
-    +'<p class="pwx">Weather — not connected yet. Nothing is shown in its place.</p><div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:#a21caf">Keep reading ◆</button></div></section>';
+    +'<p class="pwx">Weather — not connected yet. Nothing is shown in its place.</p><div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:#a21caf">Keep reading ◆</button></div><div class="sb-dots"></div></section>';
+    }
+  }
   const meetBooks=books.filter(b=>b.meet);
   { /* Smart Flow: Appointments always renders as its own block */
     const apptList=books.length
       ? '<ul class="list">'+books.map(b=>'<li><b>'+esc(fmtTime(b.time))+'</b> — '+esc(b.who||'Appointment')+(b.what?' — '+esc(b.what):'')+(b.meet?' <span class="chip" style="--chip:#8e24aa">'+(b.mode==='audio'?'Audio meet':'Video meet')+'</span> <button class="pill" data-op="join:'+esc(b.id)+'">Join the meet →</button>':'')+'</li>').join('')+'</ul>'
       : '<p>Nothing booked yet — the day is open.</p>';
+    if(window.innerWidth<=410){
+      /* V3 SPLIT (rule 3, checker §3): at ≤410px the actions wrap to two
+         rows and the H3 wraps — the section splits: the booked list +
+         timeline first, the Book / Smart Meet / Create actions + hint
+         second. At wide widths it stays one block. */
+      html+='<section class="pcat smart-block" style="--cc:#8e24aa"><div class="pcat-head"><span class="pcat-jewel"></span><h2 class="pcat-title">Appointments</h2></div><p class="pcat-essence">Book a time, join your meet, see the day in order.</p>'
+        +'<div class="viewcard"><h3>Appointments — '+esc(dlabel(year,month,day))+'</h3>'+apptList+timelineHTML(ds)
+        +'</div>' + '<div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:#8e24aa">Keep reading ◆</button></div>' + '<div class="sb-dots"></div></section>';
+      html+='<section class="pcat smart-block" style="--cc:#8e24aa"><div class="pcat-head"><span class="pcat-jewel"></span><h2 class="pcat-title">Appointments</h2></div><p class="pcat-essence">Book, meet, create — the actions for this day.</p>'
+        +'<div class="viewcard">' + '<div class="actions">'+button('<span class="jewel-mini" style="--c:#07925f">'+ICONS.clock+'</span>Book','Appointments','pill act')+button('<span class="jewel-mini" style="--c:#8e24aa">'+ICONS.people+'</span>Smart Meet','Smart Meet','pill act')+button('<span class="jewel-mini" style="--c:#d4a017">'+ICONS.plus+'</span>Create','Create','pill act')+'</div>'
+        +(meetBooks.length?'':'<p class="hint">Smart Meet joins a confirmed booking — book a time with Smart Meet first.</p>')
+        +'</div>' + '<div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:#8e24aa">Keep reading ◆</button></div>' + '<div class="sb-dots"></div></section>';
+    } else {
     html+='<section class="pcat smart-block" style="--cc:#8e24aa"><div class="pcat-head"><span class="pcat-jewel"></span><h2 class="pcat-title">Appointments</h2></div><p class="pcat-essence">Book a time, join your meet, see the day in order.</p>'
       +'<div class="viewcard"><h3>Appointments — '+esc(dlabel(year,month,day))+'</h3>'+apptList+timelineHTML(ds)
       +'<div class="actions">'+button('<span class="jewel-mini" style="--c:#07925f">'+ICONS.clock+'</span>Book','Appointments','pill act')+button('<span class="jewel-mini" style="--c:#8e24aa">'+ICONS.people+'</span>Smart Meet','Smart Meet','pill act')+button('<span class="jewel-mini" style="--c:#d4a017">'+ICONS.plus+'</span>Create','Create','pill act')+'</div>'
       +(meetBooks.length?'':'<p class="hint">Smart Meet joins a confirmed booking — book a time with Smart Meet first.</p>')
-      +'<div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:#8e24aa">Keep reading ◆</button></div></section>';
+      +'<div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-op="nextblock" style="--tone:#8e24aa">Keep reading ◆</button></div><div class="sb-dots"></div></section>';
+    }
   }
   { /* Smart Flow: The Record always renders as its own block */
     html+='<section class="pcat smart-block" style="--cc:#3f51b5"><div class="pcat-head"><span class="pcat-jewel"></span><h2 class="pcat-title">The Record</h2></div><p class="pcat-essence">The day, written down.</p><div class="pcat-rows">'
       +recRow('Daily Intelligence','#3f51b5','Dashboard',intelLine(ds))
       +recRow('Journal','#07925f','Create','Write today down — it saves to this day.')
       +recRow('Notes + Smart Notes','#d4a017','Notes + Smart Notes',notesAll.length?notesAll.length+(notesAll.length===1?' note':' notes')+' for this day.':'No notes for this day yet.')
-      +'<div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="pill sb-home" data-op="close">Back to month ◆</button></div></section>';
+      +'<div class="sb-nav"><button type="button" class="pill sb-back" data-op="prevblock">‹ Back</button><button type="button" class="pill sb-home" data-op="close">Back to month ◆</button></div><div class="sb-dots"></div></section>';
   }
   return html;
 }
@@ -1980,6 +2034,7 @@ function panelShow(i){
   panelBlock=Math.max(0,Math.min(i,blocks.length-1));
   blocks.forEach(function(b,idx){ var on=idx===panelBlock; b.classList.toggle('on',on); if(on){ b.classList.remove('smart-pop'); void b.offsetWidth; b.classList.add('smart-pop'); } });
   var pn=document.querySelector('.panel'); if(pn) pn.scrollTop=0;
+  panelDots();
 }
 /* THE MEET ROOM POP-UP (16:12Z rule 1): the room renders into #meetPop —
    an 85% overlay over the day view (90% small) — not into #panelContent.
@@ -1992,6 +2047,32 @@ function meetPopEl(){
     mp.addEventListener('click',function(ev){ if(ev.target===mp) leaveMeet(); });
     document.getElementById('scrim').appendChild(mp); }
   return mp;
+}
+/* V3: the pinned block indicator — one dot per Smart Block, the
+   current lit in the day's color, tappable to jump. Rebuilt from the live
+   block list every time, so split blocks count too. */
+function panelDots(){
+  var blocks=panelBlocks(); if(!blocks.length) return;
+  blocks.forEach(function(b){
+    var el=b.querySelector('.sb-dots'); if(!el) return;
+    if(el.childElementCount!==blocks.length){
+      el.innerHTML='';
+      for(var i=0;i<blocks.length;i++){ var d=document.createElement('button'); d.type='button'; d.setAttribute('aria-label','Go to block '+(i+1)+' of '+blocks.length); d.setAttribute('data-dot',i); el.appendChild(d); }
+    }
+    Array.prototype.forEach.call(el.children,function(d,i){ d.classList.toggle('lit', i===panelBlock); });
+  });
+}
+var _panelSplitMode=null;
+function _panelSplit(){ return window.innerWidth<=410 ? 's' : window.innerWidth<=740 ? 'm' : 'w'; }
+if(!window.__panelSplitResize){
+  window.__panelSplitResize=true;
+  window.addEventListener('resize', function(){
+    if(_panelSplitMode===null) return;
+    if(_panelSplit()===_panelSplitMode) return;
+    _panelSplitMode=_panelSplit();
+    var pn=document.querySelector('.panel');
+    if(pn && pn.classList.contains('flow')) showPanel();
+  });
 }
 function showPanel(){
   const publicView=role==='visitor';
@@ -2011,7 +2092,7 @@ function showPanel(){
   /* Smart Flow: the day view is the flow (one Smart Block at a time, no
      scroll); every other screen keeps the v1 scroll. */
   document.querySelector('.panel').classList.toggle('flow', screen==='day' && !publicView);
-  if(screen==='day' && !publicView) panelShow(panelBlock);
+  if(screen==='day' && !publicView){ _panelSplitMode=_panelSplit(); panelShow(panelBlock); }
   document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{ section=b.dataset.view; screen='view'; slot=''; pushRoute(); showPanel(); });
   document.querySelectorAll('[data-op]').forEach(b=>b.onclick=()=>{ const op=b.dataset.op;
     if(op==='close'){ closePanel(); return; }
@@ -2028,6 +2109,8 @@ function showPanel(){
     if(op==='leaveMeet'){ leaveMeet(); return; }
     section=op; screen='view'; slot=''; pushRoute(); showPanel();
   });
+  /* V3: the pinned block indicator is tappable — one tap jumps to that block. */
+  document.querySelectorAll('[data-dot]').forEach(b=>b.onclick=()=>{ panelShow(parseInt(b.dataset.dot,10)); });
   document.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>{ createKind=b.dataset.kind; showPanel(); });
   document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('[data-mode]').forEach(x=>x.classList.remove('on')); b.classList.add('on'); $('mwCalMeetMode').value=b.dataset.mode; });
   document.querySelectorAll('[data-mw-cal-slot]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('[data-mw-cal-slot]').forEach(x=>x.classList.remove('on')); b.classList.add('on'); const h=$('mwCalBookTime'); if(h) h.value=b.dataset.mwCalSlot; });

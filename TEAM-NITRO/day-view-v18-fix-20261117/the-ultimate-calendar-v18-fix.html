@@ -1855,6 +1855,33 @@
   box-shadow:0 0 45px rgba(142,36,170,.5),0 24px 60px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.2);
   padding:clamp(15px,2.1vw,26px)}
 @media(max-width:740px){.meet-pop .meet-card{width:90%;max-height:90dvh}}
+
+/* ============ V3 — FIX ROUND (checker GOES BACK on v2, 2026-11-18) ============ */
+/* THE PINNED BLOCK INDICATOR (from the pricing study: the pricing page's
+   12 dots scroll out of view once you advance the letter — these do not.
+   They ride the block's own nav cluster, pinned above the nav row on every
+   screen, the current lit in the day's color, tappable to jump to that
+   block. The count is the LIVE block count — split blocks count too — so
+   the number of dots is the number of screens (5 to 9 by file and width). */
+.sb-dots{position:absolute;left:50%;transform:translateX(-50%);bottom:76px;display:flex;gap:8px;align-items:center;justify-content:center;z-index:2}
+.sb-dots button{width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(255,255,255,.85);background:#0b0b12;cursor:pointer;padding:0;transition:transform .18s ease,background .18s ease,box-shadow .18s ease}
+.sb-dots button:hover{transform:scale(1.25)}
+.sb-dots button.lit{background:var(--dc,#3fb8ff);border-color:#fff;box-shadow:0 0 10px var(--dc,#3fb8ff);transform:scale(1.25)}
+@media(max-width:560px){.sb-dots{gap:6px;bottom:72px}.sb-dots button{width:10px;height:10px}}
+/* ONE-LINE GLIMPSE AT PHONE WIDTH (rule 5, per-width format — the v2
+   record fix, extended to every day-file row: at ≤740px the glimpse reads
+   one line so six rows fit one screen; the row still opens its door, where
+   the whole text lives). */
+@media(max-width:740px){.cat-rows .lr-g{-webkit-line-clamp:1}}
+/* COMPACT NOTIFICATION CARDS AT PHONE WIDTH (rule 5: at ≤410px the three
+   scope cards tighten — padding, gap, pill, head — so the cards block fits
+   one screen at 390; the name, the sub and the state pill all stay). */
+@media(max-width:410px){
+  .nblock{min-height:0;padding:8px 12px;gap:6px}
+  .nblock .state-pill{min-height:32px;padding:4px 14px}
+  .notif-head{font-size:19px;gap:8px;margin-bottom:10px}
+  .addsrc-pill{padding:4px 12px;min-height:32px;font-size:17px}
+}
     </style>
   </head>
   <body>
@@ -1892,10 +1919,10 @@
           <div class="dayhead" id="dayHead"></div>
         </header>
         <div class="day-scroll" id="dayScroll">
-          <div class="smart-block sb-chamber" id="chamberBlock"><div class="smart-visual"><img src="portal-kings-chamber.png" alt="The king&#8217;s chamber — the portal to your kingdom"></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div></div><div class="wisdom-banner smart-block" id="wisdomBanner">
+          <div class="smart-block sb-chamber" id="chamberBlock"><div class="smart-visual"><img src="portal-kings-chamber.png" alt="The king&#8217;s chamber — the portal to your kingdom"></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div><div class="sb-dots"></div></div><div class="wisdom-banner smart-block" id="wisdomBanner">
             <div class="wq-label">Wisdom of the day</div>
             <blockquote id="wisdomQuote"></blockquote>
-            <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span><span class="wx-zone" id="wxZone"></span></div><div class="wq-store">NAYANET WISDOM STORE — FROM WHAT WE HAVE LEARNED</div><div id="daystepSlot"></div><div class="sb-nav"><button type="button" class="pill sb-back" data-sb="prev">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div>
+            <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span><span class="wx-zone" id="wxZone"></span></div><div class="wq-store">NAYANET WISDOM STORE — FROM WHAT WE HAVE LEARNED</div><div id="daystepSlot"></div><div class="sb-nav"><button type="button" class="pill sb-back" data-sb="prev">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div><div class="sb-dots"></div>
           </div>
           <div id="catsWrap"></div>
         </div>
@@ -2017,7 +2044,7 @@
         var CATS = [
           { id: "notifications", label: "Notifications", color: "#a21caf", essence: "By world — tap a world and see its notifications and where each came from." },
           { id: "appointments", label: "Appointments", color: "#8e24aa", essence: "Book a time, meet, and the day's timeline — 6 AM to 9 PM." },
-          { id: "record", label: "The record", color: "#3f51b5", essence: "The day, written down." }
+          { id: "record", label: "The Record", color: "#3f51b5", essence: "The day, written down." }
         ];
         var DOORS = [
           { id: "daily", group: "record", label: "Daily Intelligence", color: "#3f51b5", icon: "spark", empty: "" },
@@ -2823,7 +2850,7 @@
         function doorById(id) {
           return DOORS.filter(function (d) { return d.id === id; })[0];
         }
-        function catSection(cat, inner, foldKey) {
+        function catSection(cat, inner, foldKey, headNote) {
           /* foldKey: the section starts folded (hidden) until its button
              unfolds it — the agreement's [hidden] beats, same mechanism */
           var folded = false; /* Smart Flow: every block renders; the viewer shows one at a time — the fold state is dormant */
@@ -2831,7 +2858,7 @@
             (foldKey ? ' data-unfold-sec="' + foldKey + '"' : '') + (folded ? ' hidden' : '') + '>' +
             '<div class="cat-head"><span class="cat-jewel" aria-hidden="true"></span>' +
             '<h2 class="cat-title">' + cat.label + '</h2></div>' +
-            '<p class="cat-essence">' + cat.essence + '</p>' + inner + '</section>';
+            '<p class="cat-essence">' + (headNote || cat.essence) + '</p>' + inner + '<div class="sb-dots"></div></section>';
         }
         function unfoldButton(key) {
           /* The agreement's button, verbatim in shape: "Keep reading ◆"
@@ -2924,18 +2951,48 @@
             if (on) { x.classList.remove("smart-pop"); void x.offsetWidth; x.classList.add("smart-pop"); }
           });
           var sc = $("dayScroll"); if (sc) sc.scrollTop = 0;
+          dayDots();
         }
-        function dayNav(idx) {
+        function dayNav(tone, isLast) {
           /* The block's nav row: ‹ Back, then Keep reading ◆ (or Back to
-             month ◆ on the last block). Tones are the sections' own colours. */
-          var tones = { 2: "#a21caf", 3: "#8e24aa" };
+             month ◆ on the last block). The tone is the section's own
+             colour; isLast marks the final block — the count is no longer
+             fixed at 5, so "last" is a property of the call, not the index. */
           var back = '<button type="button" class="pill sb-back" data-sb="prev">‹ Back</button>';
-          var next = idx < 4
-            ? '<button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:' + (tones[idx] || "#3fb8ff") + '">Keep reading ◆</button>'
-            : '<button type="button" class="pill sb-home" data-sb="home">Back to month ◆</button>';
+          var next = isLast
+            ? '<button type="button" class="pill sb-home" data-sb="home">Back to month ◆</button>'
+            : '<button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:' + tone + '">Keep reading ◆</button>';
           return '<div class="sb-nav">' + back + next + '</div>';
         }
+        /* V3: the pinned block indicator — one dot per Smart Block, the
+           current lit in the day's color, tappable to jump. Rebuilt from
+           the live block list every time, so split blocks count too. */
+        function dayDots() {
+          var blocks = dayBlocks(); if (!blocks.length) return;
+          blocks.forEach(function (b) {
+            var el = b.querySelector(".sb-dots"); if (!el) return;
+            if (el.childElementCount !== blocks.length) {
+              el.innerHTML = "";
+              for (var i = 0; i < blocks.length; i++) { var d = document.createElement("button"); d.type = "button"; d.setAttribute("aria-label", "Go to block " + (i + 1) + " of " + blocks.length); d.setAttribute("data-dot", i); el.appendChild(d); }
+            }
+            Array.prototype.forEach.call(el.children, function (d, i) { d.classList.toggle("lit", i === dayBlock); });
+          });
+        }
+        var _daySplitMode = null;
+        function _daySplit() { return window.innerWidth <= 740 ? "m" : "w"; }
+        if (!window.__daySplitResize) {
+          window.__daySplitResize = true;
+          window.addEventListener("resize", function () {
+            if (_daySplitMode === null || !lastApptRows) return;
+            if (_daySplit() === _daySplitMode) return;
+            _daySplitMode = _daySplit();
+            renderCategories(lastApptRows, lastTl);
+            renderNotifBar(); renderNotifDetail();
+            dayShow(Math.min(dayBlock, dayBlocks().length - 1));
+          });
+        }
         function renderCategories(apptRows, tl) {
+          _daySplitMode = _daySplit();
           var wrap = $("catsWrap");
           if (!wrap || !sel) return;
           var k = keyOf(sel);
@@ -2955,11 +3012,17 @@
              appointments tile takes purple (the appointments door's
              colour, the section's own); the timeline takes indigo, the
              next colour after that */
-          var dayInner =
-            '<div class="dash-grid">' +
+          /* V3 SPLIT (rule 3): the appointments tile and the timeline tile
+             are separate Smart Blocks — the tile fits everywhere, the
+             timeline splits 8 + 8 hourly rows (6 AM–1 PM / 2 PM–9 PM) at
+             ≤740px. Inside a .cat section each tile already spans all 12
+             columns of the dash-grid, so a solo tile is full-width. */
+          var apptsTile =
             '<div class="tile tile-appts" style="--dc:' + dc + ';--tc:#8e24aa"><h3><span class="dotc" style="--tc:#8e24aa"></span>Appointments</h3>' + apptRows +
-              '<div class="tile-book"><button type="button" id="tileBookBtn">Book a time</button> <button type="button" id="tileMeetBtn">Smart Meet</button></div></div>' +
-            '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><h3><span class="dotc" style="--tc:#3f51b5"></span>Timeline · 6 AM – 9 PM</h3>' + tl + "</div></div>";
+              '<div class="tile-book"><button type="button" id="tileBookBtn">Book a time</button> <button type="button" id="tileMeetBtn">Smart Meet</button></div></div>';
+          var timelineTile = function (t, label) {
+            return '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><h3><span class="dotc" style="--tc:#3f51b5"></span>Timeline · ' + label + '</h3>' + t + '</div>';
+          };
           /* NOTIFICATIONS — the notification cards live here (their menu
              opens below them, inside this section): tap a world and see
              that world's notifications and where each came from. Then
@@ -2969,22 +3032,26 @@
              doors live here now (Amendment #1: no "everyday life"
              section — it goes); the 15 doors all remain. Row colours
              are the rows' own, unchanged from where they stood */
-          var notifInner =
+          var notifCards =
             '<div class="notif-bar" id="notifBar" aria-label="Notifications"></div>' +
-            '<div class="notif-detail hidden" id="notifDetail"></div>' +
-            '<div class="cat-rows">' +
+            '<div class="notif-detail hidden" id="notifDetail"></div>';
+          var notifRowsA = '<div class="cat-rows">' +
             catRow("personal", "#07925f", "user", "Personal feed", "Private by default — only people directly connected see it.", 0) +
             catRow("work", "#d4a017", "briefcase", "Business feed", "Your business, your job — one feed.", 0) +
             catRow("world", "#c2410c", "world", "Your world", "Your world feed — public by default.", 0) +
             catRow("mail", "#d4a017", "mail", "Smart Mail", "Not connected yet.", 0) +
             catRow("messages", "#c2410c", "chat", "Messages", "Not connected yet.", 0) +
             catRow("connections", "#a21caf", "people", "Connections", "Not connected yet.", 0) +
+            "</div>";
+          var notifRowsB = '<div class="cat-rows">' +
             catRow("news", "#0e7490", "news", "Local news", "Not connected yet.", 0, ' data-news-scope="local"') +
             catRow("news", "#07925f", "news", "Provincial news", "Not connected yet.", 0, ' data-news-scope="provincial"') +
             catRow("news", "#d4a017", "news", "Global news", "Not connected yet.", 0, ' data-news-scope="global"') +
             wxRowHTML() +
             catRow("horoscope", "#c62828", "star", "Horoscope", "Not connected yet.", 0) +
             "</div>";
+          /* notifInner is kept whole: anything else reading it sees the full section. */
+          var notifInner = notifCards + notifRowsA + notifRowsB;
           /* THE RECORD — the day, written down. Indigo · cyan · green ·
              gold · orange · red, flowing, no doubles. Smart Lists rides
              here now (it is a record of the day, kept in order) */
@@ -3002,10 +3069,22 @@
              shows at a time — the next thing to unfold — and once spent
              it is gone (the agreement's button hides itself the same
              way). A fresh day opens folded again (openDay resets) */
+          /* V3 SPLITS (rule 3, checker §3): notifications in three — the
+             cards, rows 1–6, rows 7–11; appointments in two (tile /
+             timeline), the timeline in two more at ≤740px; the record
+             stands. Each part is its own Smart Block with its own nav. */
+          var _narrow740 = window.innerWidth <= 740;
+          var _tlRows = tl.split(/(?=<div class="tl-row">)/).filter(function (s) { return s; });
           wrap.innerHTML =
-            catSection(CATS[0], notifInner + dayNav(2)) +
-            catSection(CATS[1], dayInner + dayNav(3), "appointments") +
-            catSection(CATS[2], recordInner + dayNav(4), "record");
+            catSection(CATS[0], notifCards + dayNav("#a21caf", false), null, "Tap a world — see its notifications.") +
+            catSection(CATS[0], notifRowsA + dayNav("#a21caf", false), null, "Rows one to six — the worlds, the mail, the messages.") +
+            catSection(CATS[0], notifRowsB + dayNav("#a21caf", false), null, "Rows seven to eleven — the news, the weather, the horoscope.") +
+            catSection(CATS[1], '<div class="dash-grid">' + apptsTile + '</div>' + dayNav("#8e24aa", false), "appointments") +
+            (_narrow740
+              ? catSection(CATS[1], '<div class="dash-grid">' + timelineTile(_tlRows.slice(0, 8).join(""), "6 AM – 1 PM") + '</div>' + dayNav("#3f51b5", false), null, "The timeline, first half — 6 AM to 1 PM.") +
+                catSection(CATS[1], '<div class="dash-grid">' + timelineTile(_tlRows.slice(8).join(""), "2 PM – 9 PM") + '</div>' + dayNav("#3f51b5", false), null, "The timeline, second half — 2 PM to 9 PM.")
+              : catSection(CATS[1], '<div class="dash-grid">' + timelineTile(tl, "6 AM – 9 PM") + '</div>' + dayNav("#3f51b5", false), null, "The timeline — 6 AM to 9 PM, in order.")) +
+            catSection(CATS[2], recordInner + dayNav("#3f51b5", true), "record");
           var tbb = $("tileBookBtn");
           if (tbb) tbb.addEventListener("click", function () {
             var door = doorById("appointments");
@@ -3303,6 +3382,8 @@
         $("dayScroll").addEventListener("click", function (ev) {
           var sb = ev.target.closest("[data-sb]");
           if (sb) dayShow(sb.getAttribute("data-sb"));
+          var dt = ev.target.closest("[data-dot]");
+          if (dt) dayShow(parseInt(dt.getAttribute("data-dot"), 10));
         });
         /* The swipe — one gesture walks day to day at phone width, the
            way walking through doors feels. A horizontal swipe longer
