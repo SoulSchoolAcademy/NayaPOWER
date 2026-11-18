@@ -1686,16 +1686,7 @@ svg.jewel { display: block; }
 .intel-board.tone-blue { border-color: color-mix(in srgb, #0f52ba 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #0f52ba33; }
 .intel-board.tone-green { border-color: color-mix(in srgb, #07925f 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #07925f33; }
 
-/* ——— Microcopy trust signals (from deployed original) ——— */
-.ib-microcopy {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-top: 16px; padding-top: 12px;
-  border-top: 1px solid rgba(255,255,255,.08);
-  font-size: 10px; letter-spacing: .14em; color: var(--muted);
-  font-weight: 700;
-}
-.ib-microcopy .left { text-align: left; }
-.ib-microcopy .right { text-align: right; }
+/* NUTSHELL-CLIP FIX (2026-11-17): the footer-lines block is removed — its CSS goes with it. */
 
 /* ——— Premium jewel elements (reports-grade DOM jewels) ——— */
 .pj-jewel {
@@ -1894,10 +1885,10 @@ svg.jewel { display: block; }
 .ib-layer.layer-magenta    { --lc: var(--magenta); }     /* Child Note — second in the flow from silver */
 .ib-layer.layer-sapphire   { --lc: var(--sapphire); }    /* calm clarity / knowledge */
 .ib-layer.layer-emerald    { --lc: var(--emerald); }     /* alive and well */
-.ib-layer.layer-purple     { --lc: var(--purple); }      /* Grandma Note — third in the flow from silver */
+.ib-layer.layer-purple     { --lc: var(--purple); }      /* purple layers (fallback only — Grandma renders gold via layerColorFor, FIX2) */
 .ib-layer.layer-indigo     { --lc: var(--indigo); }      /* What It Means — fourth in the flow from silver */
 .ib-layer.layer-lime       { --lc: var(--lime); }        /* learning / growth */
-.ib-layer.layer-gold       { --lc: var(--gold); }        /* value — the extraordinary */
+.ib-layer.layer-gold       { --lc: var(--gold); }        /* value — the extraordinary · Grandma Note, third in the flow from silver (FIX2, warm gold) */
 .ib-layer.layer-orange     { --lc: var(--orange); }      /* action */
 .ib-layer.layer-teal       { --lc: var(--teal); }        /* connection / flow */
 .ib-layer.layer-yellow     { --lc: var(--yellow); }      /* attention / signal */
@@ -1926,6 +1917,82 @@ svg.jewel { display: block; }
 .star-rating { border-color: #d4a017; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 26px rgba(212,160,23,.35); }
 .star-rating button.on { background: radial-gradient(circle at 35% 30%, #ffffff, #d4a017 55%, #050607); color: #ffffff; text-shadow: 0 0 16px #d4a017; border-color: #d4a017; }
 /* ——— END SMART NOTE FORMAT (2026-11-17) ——— */
+
+/* ——— SMART NOTE FORMAT FIX2 (2026-11-17) ———
+   Ten small gold star jewels in one row, ringed by the slow flow; the
+   comment box unfolds below the note. New text is 17px or larger (Laws
+   2.3); text stays white or gold (Laws 2.2). */
+@property --star-flow { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+.star-rating { position: relative; gap: 3px; padding: 5px; }
+.star-rating button { min-width: 0; flex: 1 1 0; min-height: 36px; font-size: 17px; padding: 0; }
+.star-rating::before {
+  content: ""; position: absolute; inset: -6px; border-radius: 20px; padding: 2px;
+  background: conic-gradient(from var(--star-flow), rgba(212,160,23,.95) 0deg, transparent 70deg, transparent 180deg, rgba(212,160,23,.5) 230deg, transparent 300deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude; pointer-events: none;
+  animation: starFlow 120s linear infinite;
+}
+@keyframes starFlow { to { --star-flow: 360deg; } }
+.add-intel.unfolding { animation: intelUnfold .45s cubic-bezier(.16,.84,.22,1); }
+@keyframes intelUnfold { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .star-rating::before { animation: none; }
+  .add-intel.unfolding { animation: none; }
+}
+/* ——— END SMART NOTE FORMAT FIX2 ——— */
+
+/* ——— SMART NOTE NUTSHELL-CLIP FIX (2026-11-17) ———
+   THE BETTER PRESENTATION, under the 3D LAW (Shawn 22:39Z) and the glow
+   law (22:37Z: glow AROUND/BEHIND, never OVER the top).
+   Stars as full 3D gold orbs — round obsidian balls with a gold rim,
+   sphere shading (light top-left), inset top-light, deep shadow
+   down-right: a ton of elevation, coming out of the page, not a flat
+   square and not a hula hoop. Hover lifts the orb; press goes IN
+   (scale .92) and release comes OUT — alive, something happening. The
+   lit star keeps the harvested radial-gold face (below). The slow flow
+   ring AROUND the row (FIX2 ::before) stays — glow behind, never the
+   effect itself. The glyph stays crisp and separate from its rim at any
+   zoom: 17px star inside a 40px orb, real space around it.
+   The LOVE heart is a faceted ruby jewel (see the JS): 20px, drop
+   shadows for depth, inside the primo pill that already presses.
+   The foot is a 17px white provenance signature with a gold label. */
+.star-rating button {
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #2b2513 0%, #16130a 62%, #050607 100%);
+  border: 2px solid #d4a01788;
+  box-shadow: inset 0 1px rgba(255,255,255,.30), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55);
+  color: #d4a017;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35), 0 2px 6px rgba(0,0,0,.75);
+}
+.star-rating button:hover {
+  transform: translateY(-2px);
+  border-color: #d4a017;
+  box-shadow: inset 0 1px rgba(255,255,255,.35), inset 0 -3px 7px rgba(0,0,0,.6), 0 9px 18px rgba(0,0,0,.6), 0 0 18px rgba(212,160,23,.28);
+}
+.star-rating button:active {
+  transform: translateY(1px) scale(.92);
+  box-shadow: inset 0 1px rgba(255,255,255,.25), inset 0 -2px 5px rgba(0,0,0,.65), 0 2px 6px rgba(0,0,0,.6);
+}
+.star-rating button.on {
+  /* The harvested radial-gold face stays; the orb shape, the ball shadow
+     and the layered glyph come from this round. */
+  box-shadow: inset 0 1px rgba(255,255,255,.45), inset 0 -4px 9px rgba(0,0,0,.45), 0 6px 14px rgba(0,0,0,.6), 0 0 20px rgba(212,160,23,.30);
+  text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(212,160,23,.85);
+}
+@media (min-width: 701px) {
+  /* Desktop: true circles, one size, no stretch. Phones keep the FIX2
+     flex rule (<=700px) so ten orbs still fit 390px. */
+  .star-rating button { width: 40px; height: 40px; flex: 0 0 auto; }
+}
+.love-heart { display: inline-flex; width: 20px; height: 20px; vertical-align: -4px; margin-right: 2px; }
+.love-heart svg {
+  width: 20px; height: 20px; display: block;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(198,40,40,.45));
+}
+.ib-foot .ib-foot-label { color: #d4a017; font-weight: 800; letter-spacing: .04em; }
+.ib-foot .ib-foot-dot { color: #d4a017; padding: 0 8px; }
+/* ——— END SMART NOTE NUTSHELL-CLIP FIX ——— */
 
 .ib-layer-head {
   width: 100%; appearance: none; background: none; border: 0; cursor: pointer;
@@ -1957,9 +2024,10 @@ svg.jewel { display: block; }
 .ib-layer.is-deeper .ib-layer-head b { font-size: 16px; color: var(--ink); }
 
 .ib-foot {
-  margin-top: 18px; padding-top: 14px; border-top: 2px solid #ffffff16;
-  color: #fff; font-size: 12.5px; line-height: 1.5; word-break: break-all;
-}
+  margin-top: 20px; padding-top: 16px; border-top: 2px solid #ffffff16;
+  color: #fff; font-size: 17px; line-height: 1.6; text-align: center;
+  word-break: normal;
+} /* NUTSHELL-CLIP FIX (2026-11-17): 17px white provenance signature — never 12.5px, never break-all. */
 
 /* ——— Activity stream ——— */
 .activity-stream { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
@@ -4178,7 +4246,7 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
   function hubRowToNote(r){
     var layers = [];
     /* SMART NOTE FORMAT (2026-11-17): the front reads IN A NUTSHELL (silver,
-       lit) -> Child (magenta) -> Grandma (purple) -> What It Means (indigo).
+       lit) -> Child (magenta) -> Grandma (gold, warm — FIX2) -> What It Means (indigo).
        The human-note and naya-note sections are cut — the nutshell IS the
        human note, and "Naya Note" is the way Naya writes, not a section.
        What is in it for you and how it applies fold INTO What It Means, so
@@ -4189,7 +4257,7 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
     if (String(r.how_it_applies || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**How It Applies**\n\n' + String(r.how_it_applies).trim();
     [['IN A NUTSHELL','IN A NUTSHELL','white','primary',r.nutshell],
      ['Child Note','CHILD NOTE','magenta','primary',r.child_note],
-     ['Grandma Note','GRANDMA NOTE','purple','primary',r.grandma_note],
+     ['Grandma Note','GRANDMA NOTE','gold','primary',r.grandma_note],
      ['What It Means','WHAT IT MEANS','indigo','deeper',meansBody]
     ].forEach(function(spec){ var l = layer(spec[0],spec[1],spec[2],spec[3],spec[4]); if (l) layers.push(l); });
     return {
@@ -4215,7 +4283,15 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
     if (String(sec['HOW IT APPLIES'] || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**How It Applies**\n\n' + String(sec['HOW IT APPLIES']).trim();
     if (String(sec['THE MESSAGE, WORD FOR WORD'] || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**The Message, Word For Word**\n\n' + String(sec['THE MESSAGE, WORD FOR WORD']).trim();
     var layers = [];
+    /* FIX2: a Naya Note body that carries Child/Grandma sections renders
+       them as real layers — the converter used to drop them, so composer
+       notes could never show the full format. Empty sections still drop
+       here; the renderer guarantee below derives them honestly. */
+    var childBody = String(sec['CHILD NOTE'] || '').trim();
+    var grandmaBody = String(sec['GRANDMA NOTE'] || '').trim();
     [['In A Nutshell','IN A NUTSHELL','white','primary',nut],
+     ['Child Note','CHILD NOTE','magenta','primary',childBody],
+     ['Grandma Note','GRANDMA NOTE','gold','primary',grandmaBody],
      ['What It Means','WHAT IT MEANS','indigo','deeper',meansBody]
     ].forEach(function(spec){ var l = layer(spec[0],spec[1],spec[2],spec[3],spec[4]); if (l) layers.push(l); });
     if (!layers.length) layers.push(layer('In A Nutshell','IN A NUTSHELL','white','primary',clean(bodyNoImg||'').slice(0,600)));
@@ -4555,7 +4631,7 @@ function layerColorFor(name) {
   if (n.includes('NUTSHELL')) return '#ffffff';
   if (n.includes('HUMAN NOTE')) return '#a21caf';
   if (n.includes('CHILD')) return '#a21caf'; /* FORMAT: Child is magenta — second in the flow from silver */
-  if (n.includes('GRANDMA')) return '#8e24aa'; /* FORMAT: Grandma is purple — third in the flow from silver */
+  if (n.includes('GRANDMA')) return '#d4a017'; /* FORMAT FIX2: Grandma is deep gold — warm, third in the flow from silver. Measured 2026-11-17: gold hue 43.5 deg, delta-hue 108.8 deg / delta-E 134.0 vs Child magenta #a21caf (hue 294.7 deg); the old purple #8e24aa sat delta-hue 7.2 deg / delta-E 7.6 from Child — the same purple at rest, which the eye rightly failed. Harvested from Laws 3.1, never invented. */
   if (n.includes('NAYA NOTE')) return '#0f52ba';
   if (n.includes('MACHINE')) return '#07925f';
   if (n.includes('WHAT IT MEANS')) return '#3f51b5'; /* FORMAT: What It Means is indigo — fourth in the flow from silver */
@@ -4826,6 +4902,15 @@ const ActivityLog = (() => {
 })();
 
 window.BoardActions = (() => {
+  /* TEN-STAR POINTS (Shawn's ruling 21:01Z, 2026-11-17): ONE point per
+     star — ten stars is ten points. ONE named constant; set it here and
+     nowhere else. STAR_POINTS_PER_STAR = 1, STAR_RATING_MAX = 10. */
+  const STAR_POINTS_PER_STAR = 1;
+  const STAR_RATING_MAX = 10;
+  function starRatingPoints(stars) {
+    var n = Math.max(0, Math.min(STAR_RATING_MAX, stars || 0));
+    return n * STAR_POINTS_PER_STAR;
+  }
   const STORE_KEY = 'nayanet-board-actions-v1';
   const read = () => { try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { return {}; } };
   const write = s => { try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch {} };
@@ -5043,7 +5128,8 @@ window.BoardActions = (() => {
         }
         /* Sync to Smart List area (naya.smartlist) — the entry is a
            canonical reference: the note's real id and title, its topics,
-           and a category the user files it under (picker, on save). */
+           and a category the user files it under (picker, on favorite —
+           FIX2: Save is a plain save and files under its first topic). */
         try {
           const slKey = 'naya.smartlist';
           const sl = JSON.parse(localStorage.getItem(slKey) || '{}');
@@ -5054,7 +5140,11 @@ window.BoardActions = (() => {
               sl.saved.push({ id: entryId, kind, title: (note && note.title) || title, topics: (note && note.topics) || [], category: null, savedAt: Date.now() });
             }
             localStorage.setItem(slKey, JSON.stringify(sl));
-            openCategoryPicker(b, entryId, kind);
+            /* FIX2: Save is a plain save — one action, no category picker.
+               The entry files under its first topic in Smart Lists (the
+               lists room files each entry under its picked category, else
+               its first topic). The picker stays for Favorite only. */
+            if (kind === 'favorite') openCategoryPicker(b, entryId, kind);
           } else {
             sl.saved = sl.saved.filter(x => !(x.id === entryId && x.kind === kind));
             localStorage.setItem(slKey, JSON.stringify(sl));
@@ -5158,8 +5248,21 @@ window.BoardActions = (() => {
     const right = el('div', 'board-actions-right');
 
     if (!isPersonal) {
-    for (const [label, kind, aria] of [['\u2764\uFE0F LOVE', 'love', 'Love this intelligence'], ['\uD83D\uDC4D LIKE', 'like', 'Like this intelligence']]) {
+    /* FIX2: the heart stays as the Love jewel — Like is gone. The stars
+       ARE the scale (no separate Like), per the ten-star block bottom. */
+    for (const [label, kind, aria] of [['\u2764\uFE0F LOVE', 'love', 'Love this intelligence']]) {
       const b = btn(label, kind, aria);
+      /* NUTSHELL-CLIP FIX (2026-11-17) — THE BETTER PRESENTATION (3D LAW):
+         the heart is a real ruby jewel, not the flat platform emoji: an
+         inline SVG heart with a radial ruby gradient (white top-light at
+         35%/30%, ruby #c62828, deep ruby #7a0e18) — a faceted jewel you
+         can press, inside the same primo pill (which already lifts on
+         hover and presses in on tap). The heart path is harvested
+         verbatim from this file's own activity-log heart. The gradient id
+         is per-card (boardId), so ten cards never share one id. The count
+         badge (digit tile) is appended after, untouched. */
+      var loveGradId = 'loveHeart-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-');
+      b.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="' + loveGradId + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#e5484d"/><stop offset="75%" stop-color="#c62828"/><stop offset="100%" stop-color="#7a0e18"/></radialGradient></defs><path fill="url(#' + loveGradId + ')" d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span><span> LOVE</span>';
       const key = boardId + ':' + kind;
       const countKey = boardId + ':' + kind + ':count';
       /* Count badge — dynamic, device-local */
@@ -5212,14 +5315,17 @@ window.BoardActions = (() => {
 
     /* Rating: collective only (not personal — it's private) */
     if (!isPersonal) {
+    /* FIX2: TEN gold stars, not five — one row of small gold jewels in a
+       circle with the slow flow around them (see .star-rating CSS).
+       Touching a star lights every star up to it. */
     const stars = el('div', 'star-rating');
     stars.setAttribute('role', 'group');
-    stars.setAttribute('aria-label', 'Rate this intelligence from one to five stars');
+    stars.setAttribute('aria-label', 'Rate this intelligence from one to ten stars');
     const rated = store[boardId + ':rate'] || 0;
     /* Numeric rating display — dynamic */
-    const ratingNum = el('span', 'rating-num', rated > 0 ? rated + '/5' : '—');
+    const ratingNum = el('span', 'rating-num', rated > 0 ? rated + '/10' : '—');
     ratingNum.setAttribute('aria-live', 'polite');
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= STAR_RATING_MAX; i++) {
       const sb = document.createElement('button');
       sb.type = 'button'; sb.textContent = '\u2605';
       sb.setAttribute('aria-label', i + ' star' + (i > 1 ? 's' : ''));
@@ -5236,12 +5342,16 @@ window.BoardActions = (() => {
             x.classList.add('pulse');
           }
         });
-        ratingNum.textContent = i + '/5';
+        /* One point per star (STAR_POINTS_PER_STAR) — recorded beside
+           the rating on this device, one place, one constant. */
+        var pts = starRatingPoints(i);
+        try { var ss = read(); ss[boardId + ':rate:points'] = pts; write(ss); } catch (e) {}
+        ratingNum.textContent = i + '/10';
         if (typeof ActivityLog !== 'undefined') {
-          ActivityLog.log('rate', 'Rated "' + title + '" ' + i + ' of 5 stars', 'star', '#d4a017',
+          ActivityLog.log('rate', 'Rated "' + title + '" ' + i + ' of 10 stars', 'star', '#d4a017',
             '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>');
         }
-        toast('INTELLIGENCE RATED', i + ' of 5 stars recorded on this device. Rating is feedback, not truth.', '#d4a017');
+        toast('INTELLIGENCE RATED', i + ' of 10 stars — ' + pts + ' points (1 per star) recorded on this device. Rating is feedback, not truth.', '#d4a017');
       });
       stars.appendChild(sb);
     }
@@ -5279,6 +5389,25 @@ window.BoardActions = (() => {
       right.appendChild(share);
     }
 
+    /* FIX2: the comment box unfolds below the note. COMMENT is its own
+       button; it opens and closes the panel that already lives under
+       this row (addIntel) — nothing new is invented, the fold is the
+       experience. */
+    const commentBtn = btn('\uD83D\uDCAC COMMENT', 'comment', 'Show or hide the comment box');
+    commentBtn.setAttribute('aria-expanded', 'false');
+    commentBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const board = commentBtn.closest('.intel-board, .board, [data-board]');
+      const panel = board ? board.querySelector('.add-intel') : null;
+      if (!panel) return;
+      const willOpen = panel.hidden;
+      panel.hidden = !willOpen;
+      panel.classList.toggle('unfolding', willOpen);
+      commentBtn.classList.toggle('on', willOpen);
+      commentBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+    right.appendChild(commentBtn);
+
     wrap.append(left, center, right);
     return wrap;
   }
@@ -5286,6 +5415,9 @@ window.BoardActions = (() => {
   function addIntel(boardId) {
     const userNameNow = (function(){ try { return localStorage.getItem('nayanet_smart_name') || 'Shawn'; } catch(e){ return 'Shawn'; } })();
     const wrap = el('div', 'add-intel');
+    /* FIX2: the comment box starts folded and unfolds below the note when
+       COMMENT is tapped (see bottomActions) — the fold is the experience. */
+    wrap.hidden = true;
     const b = el('b', '', 'ADD TO THE INTELLIGENCE');
     const row = el('div', 'add-intel-row');
     const input = document.createElement('input');
@@ -6258,12 +6390,178 @@ window.NayaNotif = window.NayaNotif || {
     if (mh > window.innerHeight - 16) { menu.style.maxHeight = (window.innerHeight - 16) + 'px'; menu.style.overflowY = 'auto'; }
     else { menu.style.maxHeight = ''; menu.style.overflowY = ''; }
   };
+
+  /* ——— HUB SMART NOTE COMPOSER (FORMAT FIX2, 2026-11-17) ———
+     The + CREATE "Smart note" item opens this composer ON the staged Hub —
+     the flow never leaves the page for the live personal page. It writes
+     the note in the full Smart Note format (title, nutshell, Child,
+     Grandma, What It Means) and drafts it on this device. It NEVER posts:
+     posting a Smart Note needs Shawn's one-time permission — that gate is
+     HIS hand, named plainly in the composer itself, and the draft lives
+     under its own key (nayanet.hub.composer.draft.v1), never touching any
+     other draft. The draft body is kept in the same markdown shape the
+     feed parses (## IN A NUTSHELL / ## CHILD NOTE / ## GRANDMA NOTE /
+     ## WHAT IT MEANS), so when the gate opens it files as-is and renders
+     the full format. Pattern harvested from the share dialog above
+     (fixed overlay + box + Close). */
+  window.NayaHubComposer = (function () {
+    var DRAFT_KEY = 'nayanet.hub.composer.draft.v1';
+    var overlay = null, formBox = null, gateBox = null;
+    var fields = {};
+    var GATE_TEXT = "Posting needs Shawn's one-time permission. This note is drafted on this device — it is NOT posted, and nothing leaves this page until he gives that permission.";
+    function readDraft() { try { return JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null'); } catch (e) { return null; } }
+    function writeDraft(d) { try { localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); } catch (e) {} }
+    function mkField(label, key, placeholder, rows) {
+      var wrap = document.createElement('label');
+      wrap.style.cssText = 'display:block;margin:0 0 14px;font-size:17px;font-weight:700;color:#ffffff;';
+      wrap.textContent = label;
+      var input = rows ? document.createElement('textarea') : document.createElement('input');
+      if (!rows) input.type = 'text';
+      if (rows) input.rows = rows;
+      input.placeholder = placeholder;
+      input.setAttribute('aria-label', label);
+      input.style.cssText = 'display:block;width:100%;box-sizing:border-box;margin-top:8px;background:#050607;border:2px solid rgba(255,255,255,.22);border-radius:12px;color:#ffffff;font-size:17px;line-height:1.6;padding:12px 14px;outline:0;';
+      wrap.appendChild(input);
+      fields[key] = input;
+      return wrap;
+    }
+    function mkBtn(label, primary) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      b.style.cssText = 'border:0;border-radius:999px;padding:12px 22px;font-size:17px;font-weight:700;cursor:pointer;' +
+        (primary ? 'background:#8e24aa;color:#fff;' : 'background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);');
+      return b;
+    }
+    function draftBody(d) {
+      return '# ' + (d.title || 'Untitled Smart Note') + '\n\n## IN A NUTSHELL\n' + (d.nutshell || '') +
+        '\n\n## CHILD NOTE\n' + (d.child || '') + '\n\n## GRANDMA NOTE\n' + (d.grandma || '') +
+        '\n\n## WHAT IT MEANS\n' + (d.means || '');
+    }
+    function showForm() {
+      formBox.style.display = 'block';
+      gateBox.style.display = 'none';
+    }
+    function showGate(d) {
+      formBox.style.display = 'none';
+      gateBox.style.display = 'block';
+      var t = gateBox.querySelector('[data-gate-title]');
+      if (t) t.textContent = d.title || 'Untitled Smart Note';
+    }
+    function post() {
+      var d = {
+        title: (fields.title.value || '').trim(),
+        nutshell: (fields.nutshell.value || '').trim(),
+        child: (fields.child.value || '').trim(),
+        grandma: (fields.grandma.value || '').trim(),
+        means: (fields.means.value || '').trim()
+      };
+      if (!d.title || !d.nutshell) {
+        toast('WRITE IT FIRST', 'A title and a nutshell make the note — write those two, then post.', '#d4a017');
+        if (!d.title) fields.title.focus();
+        else fields.nutshell.focus();
+        return;
+      }
+      d.body = draftBody(d);
+      d.status = 'draft-awaiting-permission';
+      d.savedAt = new Date().toISOString();
+      writeDraft(d);
+      showGate(d);
+    }
+    function build() {
+      overlay = document.createElement('div');
+      overlay.id = 'naya-hub-composer';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-label', 'Write a Smart Note');
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.72);padding:20px;overflow-y:auto;';
+      var box = document.createElement('div');
+      box.style.cssText = 'width:min(560px,94vw);max-height:88vh;overflow-y:auto;background:#050607;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px;color:#fff;box-shadow:0 28px 64px rgba(0,0,0,.6);';
+      formBox = document.createElement('div');
+      var head = document.createElement('div');
+      head.textContent = 'Write a Smart Note';
+      head.style.cssText = 'font-size:25px;font-weight:800;margin-bottom:6px;color:#ffffff;';
+      var gateNote = document.createElement('div');
+      gateNote.textContent = GATE_TEXT;
+      gateNote.style.cssText = 'font-size:17px;line-height:1.6;color:#ffffff;border:2px solid #d4a017;border-radius:12px;padding:12px 14px;margin-bottom:18px;background:#050607;';
+      formBox.appendChild(head);
+      formBox.appendChild(gateNote);
+      formBox.appendChild(mkField('Title', 'title', 'What is this intelligence called?', 0));
+      formBox.appendChild(mkField('In a nutshell', 'nutshell', 'The whole idea in a few sentences.', 3));
+      formBox.appendChild(mkField('Child — so a child understands it', 'child', 'Say it simply, like you would to a child.', 3));
+      formBox.appendChild(mkField('Grandma — so a grandma understands it', 'grandma', 'Say it warmly, like you would to a grandma.', 3));
+      formBox.appendChild(mkField('What it means', 'means', 'What does it mean — for the reader, in their life?', 3));
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;';
+      var postBtn = mkBtn('Post this Smart Note', true);
+      postBtn.addEventListener('click', post);
+      var closeBtn = mkBtn('Close', false);
+      closeBtn.addEventListener('click', close);
+      row.appendChild(postBtn);
+      row.appendChild(closeBtn);
+      formBox.appendChild(row);
+      gateBox = document.createElement('div');
+      gateBox.style.display = 'none';
+      var gHead = document.createElement('div');
+      gHead.textContent = 'Draft saved — not posted';
+      gHead.style.cssText = 'font-size:25px;font-weight:800;margin-bottom:6px;color:#ffffff;';
+      var gTitle = document.createElement('div');
+      gTitle.setAttribute('data-gate-title', '');
+      gTitle.style.cssText = 'font-size:17px;font-weight:700;color:#ffffff;margin-bottom:12px;';
+      var gBody = document.createElement('div');
+      gBody.textContent = 'Your note is drafted on this device in the full Smart Note format. ' + GATE_TEXT;
+      gBody.style.cssText = 'font-size:17px;line-height:1.6;color:#ffffff;border:2px solid #d4a017;border-radius:12px;padding:12px 14px;margin-bottom:18px;background:#050607;';
+      var gRow = document.createElement('div');
+      gRow.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;';
+      var editBtn = mkBtn('Keep editing', true);
+      editBtn.addEventListener('click', showForm);
+      var gCloseBtn = mkBtn('Close', false);
+      gCloseBtn.addEventListener('click', close);
+      gRow.appendChild(editBtn);
+      gRow.appendChild(gCloseBtn);
+      gateBox.appendChild(gHead);
+      gateBox.appendChild(gTitle);
+      gateBox.appendChild(gBody);
+      gateBox.appendChild(gRow);
+      box.appendChild(formBox);
+      box.appendChild(gateBox);
+      overlay.appendChild(box);
+      overlay.addEventListener('click', function (ev) { if (ev.target === overlay) close(); });
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape' && overlay.style.display !== 'none') close();
+      });
+      document.body.appendChild(overlay);
+    }
+    function open() {
+      if (!overlay) build();
+      var d = readDraft();
+      if (d) {
+        fields.title.value = d.title || ''; fields.nutshell.value = d.nutshell || '';
+        fields.child.value = d.child || ''; fields.grandma.value = d.grandma || '';
+        fields.means.value = d.means || '';
+        if (d.status === 'draft-awaiting-permission') showGate(d);
+        else showForm();
+      } else {
+        showForm();
+      }
+      overlay.style.display = 'flex';
+    }
+    function close() { if (overlay) overlay.style.display = 'none'; }
+    return { open: open, close: close };
+  })();
+
   if (!window.__hubPlusBound) {
     window.__hubPlusBound = true;
     document.addEventListener('click', function (e) {
       if (!e.target || !e.target.closest) return;
       var it = e.target.closest('[data-hub-plus]');
       if (it) {
+        /* FIX2: "Smart note" opens the on-page composer — the flow stays
+           on the staged Hub and never leaves for the live personal page. */
+        if (it.getAttribute('data-hub-composer') === 'smart-note') {
+          window.hubClosePlusMenus();
+          if (window.NayaHubComposer) window.NayaHubComposer.open();
+          return;
+        }
         var href = it.getAttribute('data-hub-href');
         window.hubClosePlusMenus();
         if (href) location.href = href;
@@ -7451,9 +7749,22 @@ window.NayaJewels = (() => {
     /* — Nutshell: extracted from the "In A Nutshell" layer — */
     const nutshellLayer = (note.layers || []).find(L =>
       String(L.name || '').toUpperCase().includes('NUTSHELL'));
+    /* FIX2: a note with no Nutshell layer still opens with IN A NUTSHELL —
+       its "What it is" layer IS its nutshell, in its own words. It moves
+       up into the nutshell slot (never copied) so the format's first
+       section is present on every card. */
+    var nutSourceLayer = null;
+    if (!nutshellLayer) {
+      nutSourceLayer = (note.layers || []).find(L =>
+        /WHAT IT IS/i.test(String(L.name || ''))) || null;
+    }
     if (nutshellLayer) {
       const ns = el('div', 'ib-nutshell');
-      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(nutshellLayer.body.slice(0, 600));
+      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(nutshellLayer.body); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — the 600-char slice cut every long nutshell mid-sentence with no ellipsis and no way to expand it. */
+      b.appendChild(ns);
+    } else if (nutSourceLayer) {
+      const ns = el('div', 'ib-nutshell');
+      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(String(nutSourceLayer.body || '')); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — same cut, same fix. */
       b.appendChild(ns);
     }
 
@@ -7480,7 +7791,7 @@ window.NayaJewels = (() => {
        nutshell IS the human note; "Naya Note" is the way Naya writes. */
     const isCutLayer = (L) => /human note|what it says|naya note|what naya hears/i.test(String(L.name || ''));
     (note.layers || []).forEach(L => {
-      if (L === nutshellLayer || isMachineLayer(L) || isCutLayer(L)) return; // v5.1: no machine note anymore; format: no cut sections
+      if (L === nutshellLayer || L === nutSourceLayer || isMachineLayer(L) || isCutLayer(L)) return; // v5.1: no machine note anymore; format: no cut sections (FIX2: the nutshell-source layer moved up already)
       if (isGoldLayer(L) && !goldLayer) { goldLayer = L; return; }
       if (isConnectLayer(L) && !connectLayer) { connectLayer = L; return; }
       if (isRedLayer(L) && !redLayer) { redLayer = L; return; }
@@ -7515,17 +7826,117 @@ window.NayaJewels = (() => {
     if (goldEntry) afterMeans.push(goldEntry);
     if (redLayer) afterMeans.push(redLayer);
     orderedLayers.splice(insertAt, 0, ...afterMeans);
+    /* ——— SMART NOTE FORMAT FIX2 (2026-11-17): the format holds on EVERY
+       card — IN A NUTSHELL -> Child -> Grandma -> What It Means. A section
+       missing from the data is derived from the note's OWN words, never
+       invented: Child = first sentence of the nutshell-source; Grandma =
+       first unused sentence of the nutshell-source — What It Means'
+       first sentence counts as already used (Means prints it), and no
+       other sentence of the means-source is taken either, or Grandma
+       would print again inside What It Means below; What It Means =
+       the means-source body, else an honest stub. A sentence already
+       used by another derived layer is never repeated — that layer
+       then says plainly it was not written.
+       Real layers always win; derived layers sort by the same rank. ——— */
+    var fmtFirstSentence = function (t) {
+      var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
+      if (!c) return '';
+      var mm = c.match(/^[^.!?]+[.!?]/);
+      return (mm ? mm[0] : c.slice(0, 140)).trim();
+    };
+    var fmtFindLayer = function (re) {
+      for (var fi = 0; fi < orderedLayers.length; fi++) {
+        if (re.test(String(orderedLayers[fi].name || '').toUpperCase())) return orderedLayers[fi];
+      }
+      return null;
+    };
+    var fmtNutText = nutshellLayer ? String(nutshellLayer.body || '')
+      : (nutSourceLayer ? String(nutSourceLayer.body || '') : String(note.subtitle || ''));
+    var fmtMeansReal = fmtFindLayer(/WHAT IT MEANS/);
+    var fmtWhy = fmtFindLayer(/WHY IT MATTERS/);
+    var fmtMeansText = fmtMeansReal ? String(fmtMeansReal.body || '')
+      : (fmtWhy ? String(fmtWhy.body || '') : '');
+    var fmtSentences = function (t) {
+      /* Sentences of a text, in order. The first entry is exactly
+         fmtFirstSentence(t): the same cleaning, the same 140-char
+         fallback for a fragment with no terminator. */
+      var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
+      if (!c) return [];
+      var fmtOut = [];
+      var fmtRest = c;
+      var fmtMm;
+      while ((fmtMm = fmtRest.match(/^[^.!?]+[.!?]/))) {
+        fmtOut.push(fmtMm[0].trim());
+        fmtRest = fmtRest.slice(fmtMm[0].length).trim();
+        if (!fmtRest) break;
+      }
+      if (fmtRest) fmtOut.push(fmtRest.slice(0, 140).trim());
+      return fmtOut.filter(Boolean);
+    };
+    var fmtUsed = {};
+    var fmtTake = function (texts) {
+      /* First UNUSED sentence across the texts, in order — scanning
+         every sentence of each text, not just its first. A sentence
+         already used by another layer (derived or printed) is skipped. */
+      for (var ti = 0; ti < texts.length; ti++) {
+        var fmtSs = fmtSentences(texts[ti]);
+        for (var fmtSi = 0; fmtSi < fmtSs.length; fmtSi++) {
+          if (fmtSs[fmtSi] && !fmtUsed[fmtSs[fmtSi]]) { fmtUsed[fmtSs[fmtSi]] = 1; return fmtSs[fmtSi]; }
+        }
+      }
+      return '';
+    };
+    if (!fmtFindLayer(/CHILD/)) {
+      var fmtChildBody = fmtTake([fmtNutText]);
+      var fmtChildLayer = { name: 'Child Note', key: 'CHILD NOTE', tier: 'primary', body: fmtChildBody || 'No Child layer was written for this note.' };
+      fmtChildLayer.color = 'magenta';
+      orderedLayers.push(fmtChildLayer);
+    }
+    if (!fmtFindLayer(/GRANDMA/)) {
+      /* GRANDMA-REPEAT FIX (2026-11-17): What It Means prints its own
+         first sentence, so that sentence counts as already used before
+         Grandma is derived — Grandma never takes it, and never takes
+         any other sentence of the means-source either: a sentence taken
+         from it would print again inside What It Means directly below,
+         the same doubling-up one section down. Grandma falls through
+         to the nutshell's next unused sentence — its second sentence
+         when Child took the first — or the honest stub when the
+         nutshell has no unused sentence left. Nothing is invented:
+         every Grandma line is still the note's own words. */
+      var fmtMeansFirst = fmtFirstSentence(fmtMeansText);
+      if (fmtMeansFirst) fmtUsed[fmtMeansFirst] = 1;
+      var fmtGrandmaBody = fmtTake([fmtNutText]);
+      var fmtGrandmaLayer = { name: 'Grandma Note', key: 'GRANDMA NOTE', tier: 'primary', body: fmtGrandmaBody || 'No Grandma layer was written for this note.' };
+      fmtGrandmaLayer.color = 'gold';
+      orderedLayers.push(fmtGrandmaLayer);
+    }
+    if (!fmtMeansReal) {
+      /* The means-source layer ("Why it matters") is carried AS What It
+         Means — it moves, never copies, so its body never prints twice. */
+      if (fmtWhy) {
+        var fmtWhyIdx = orderedLayers.indexOf(fmtWhy);
+        if (fmtWhyIdx > -1) orderedLayers.splice(fmtWhyIdx, 1);
+      }
+      var fmtMeansLayer = { name: 'What It Means', key: 'WHAT IT MEANS', tier: 'primary', body: fmtMeansText || 'No meaning was written for this note.' };
+      fmtMeansLayer.color = 'indigo';
+      orderedLayers.push(fmtMeansLayer);
+    }
+    orderedLayers.sort(function (a, b) { return rankOf(a) - rankOf(b); });
     orderedLayers.forEach(L => {
       const layer = el('div', 'ib-layer layer-' + L.color + (L.tier === 'deeper' ? ' is-deeper' : ''));
       layer.style.setProperty('--lc', layerColorFor(L.name)); // v5: layer light = its jewel colour
       const lh = el('button', 'ib-layer-head');
-      lh.setAttribute('aria-expanded', L.tier === 'primary' ? 'true' : 'false');
+      /* FIX2: What It Means stands expanded on first read — the final
+         section is visible, never hidden behind a collapsed control. The
+         head still toggles, so a reader can fold it away. */
+      const fmtOpen = (L.tier === 'primary') || isMeansLayer(L);
+      lh.setAttribute('aria-expanded', fmtOpen ? 'true' : 'false');
       lh.innerHTML =
         layerJewel(L.name, layerColorFor(L.name)) +
         '<b>' + esc(L.name) + '</b>';
       const lb = el('div', 'ib-layer-body');
       lb.innerHTML = md(L.body);
-      if (L.tier !== 'primary') lb.hidden = true;
+      if (!fmtOpen) lb.hidden = true;
       else lh.classList.add('open');
       lh.addEventListener('click', (e) => {
         const open = lb.hidden;
@@ -7544,10 +7955,37 @@ window.NayaJewels = (() => {
     if (ibRest.length) b.appendChild(imageGridEl(ibRest, note));
 
     /* — Provenance foot — */
+    /* — Provenance foot — NUTSHELL-CLIP FIX (2026-11-17): the old line
+       printed the raw machine ID in 12.5px with word-break:break-all — a
+       machine-looking string under a beautiful card. The new line is
+       a signature, not a serial number: gold "Smart Note" label, the
+       note's own date in human words, "from your Smart Feed". The date is
+       dynamic per note (created/created_at, else the YYYYMMDD inside the
+       id, else omitted) — never a machine string. */
+    var footDateStr = '';
+    (function () {
+      var footD = note.created_at || note.created || '';
+      var footParsed = footD ? new Date(footD) : null;
+      if (footParsed && !isNaN(footParsed.getTime())) {
+        footDateStr = footParsed.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+      } else {
+        var footDm = String(note.id || '').match(/(20\d\d)(\d\d)(\d\d)/);
+        if (footDm) {
+          var footD2 = new Date(+footDm[1], +footDm[2] - 1, +footDm[3]);
+          if (!isNaN(footD2.getTime())) footDateStr = footD2.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+      }
+    })();
+    var footParts = [];
+    footParts.push(note.kind === 'official'
+      ? '<span class="ib-foot-label">Official NayaNET Guide</span>'
+      : '<span class="ib-foot-label">Smart Note</span>');
+    if (footDateStr) footParts.push('<span>' + esc(footDateStr) + '</span>');
+    footParts.push(note.kind === 'official'
+      ? '<span>from the Intelligent Library</span>'
+      : '<span>from your Smart Feed</span>');
     const foot = el('div', 'ib-foot');
-    foot.innerHTML = note.kind === 'official'
-      ? '<span>Official NayaNET Guide \u00B7 from the Intelligent Library</span>'
-      : '<span>Smart Note ' + esc(note.id || '') + ' \u00B7 from your Smart Feed</span>';
+    foot.innerHTML = footParts.join('<span class="ib-foot-dot">\u00B7</span>');
     b.appendChild(foot);
 
     /* — Social actions: top-right + bottom bar + add intel (direct, no queue) — */
@@ -7565,18 +8003,16 @@ window.NayaJewels = (() => {
           /* Fallback: inline minimal actions if BoardActions missing */
           const fb = document.createElement('div');
           fb.className = 'board-bottom-actions';
-          fb.innerHTML = '<span style="color:#888;font-size:12px">Actions loading…</span>';
+          fb.innerHTML = '<span style="color:#fff;font-size:17px">Actions loading…</span>'; /* NUTSHELL-CLIP FIX: white, 17px, always. */
           b.appendChild(fb);
         }
       } catch (e) {
         console.error('Board action error:', e.message);
       }
     }
-    /* Microcopy trust signals (from deployed original) */
-    const micro = el('div', 'ib-microcopy');
-    micro.innerHTML = '<span class="left">ONE INTELLIGENCE &middot; MANY VIEWS &middot; ONE IDENTITY</span>' +
-      '<span class="right">TRUST: SOURCE / INTERPRETATION SEPARATED</span>';
-    b.appendChild(micro);
+    /* NUTSHELL-CLIP FIX (2026-11-17): the two footer lines are removed —
+       they were random text that did not need to be there. The block is
+       gone entirely (element and CSS), not hidden. */
 
     return b;
   }
@@ -11917,7 +12353,7 @@ window.NayaSmartBar = {
 <div id="hubPlusCreate" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Create">
 <div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal" style="--mc:#e8e8ec"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-href="https://nayanet.app/personal" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-composer="smart-note" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
 </div>
 <div id="hubPlusConnect" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Connect">
