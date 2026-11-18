@@ -15524,6 +15524,48 @@ window.NayaNotif = window.NayaNotif || {
     return false;
   }
   window.pcIsPageOwner=pcIsPageOwner;
+  /* FOLLOW-ON 3 (owner greeting): the hero greeting branches on the
+     DEFAULT only, never on a deliberate choice. The baked default
+     (line 5043) is the visitor line; the owner line is the captain's
+     verbatim line below (104 chars as measured — the brief said 108;
+     the string is verbatim, and 104 is inside the motto board's 140-char
+     build). No stored tag: owner sees the owner line, visitor the
+     visitor line. A stored tag that IS a visitor default (old or new)
+     means the owner never chose their words — the owner sees the owner
+     line instead, and the stored value updates so it sticks. A stored
+     tag that is anything else is the owner's own words: kept verbatim,
+     for owner and visitor alike. The owner line itself is a system
+     default too, so a visitor on this browser still reads the visitor
+     line (the stored owner line is never overwritten for them). No
+     os-vis-only / os-own-only spans inside #ptag: the edit flow
+     replaces the div wholesale and would destroy them. Runs from
+     applyOwnerGate (on load and after a claim) and from mwApplyLang
+     (after the language pass). */
+  var PC_TAG_VISITOR='Welcome to my world \u2014 make a post on my feed, send a message, make yourself at home.';
+  var PC_TAG_VISITOR_OLD='My living corner of NayaNET \u2014 post on my wall, send a message, make yourself at home';
+  var PC_TAG_OWNER='This is my world \u2014 I share what I learn here. Post on my feed, send me a message, make yourself at home.';
+  window.pcSyncTagline=function(){
+    try{
+      var el=document.getElementById('ptag'); if(!el) return;
+      var owner=false; try{ owner=!!(window.pcIsPageOwner && window.pcIsPageOwner()); }catch(e){}
+      var stored=null; try{ stored=localStorage.getItem('naya.tag'); }catch(e){}
+      var isDefault=(stored===PC_TAG_VISITOR || stored===PC_TAG_VISITOR_OLD || stored===PC_TAG_OWNER);
+      if(owner){
+        if(!stored || isDefault){
+          try{ localStorage.setItem('naya.tag', PC_TAG_OWNER); }catch(e){}
+          el.textContent=PC_TAG_OWNER;
+        } else {
+          el.textContent=stored;
+        }
+      } else {
+        if(!stored || isDefault){
+          el.textContent=PC_TAG_VISITOR;
+        } else {
+          el.textContent=stored;
+        }
+      }
+    }catch(e){}
+  };
   /* EYE-FIX 2026-11-17 (C): owner controls hide from visitors. The CSS
      hides them by default; this marks the body when the visitor IS the owner
      (same three signals as pcIsPageOwner), strips the "Click to edit" titles
@@ -15540,6 +15582,11 @@ window.NayaNotif = window.NayaNotif || {
          after an in-page claim. The jewel rebuilder normalizes the ✦
          from text. */
       try{ var _jb=document.getElementById('joinbtn'); if(_jb){ _jb.textContent='✦ '+(owner?'Go to the Hub':'Join NayaNET'); } }catch(e){}
+      /* FOLLOW-ON 3 (owner greeting): the hero greeting follows the owner
+         gate — on load and after an in-page claim (the claim click
+         re-runs this gate 400ms later). The language pass carries the
+         same sync; this keeps it live when the gate flips. */
+      try{ if(window.pcSyncTagline) window.pcSyncTagline(); }catch(e){}
       var avv=document.getElementById('avv');
       if(owner){
         /* VISITOR-GATE-FIX 2026-11-17 (a): a claim restores the picture control. */
@@ -25026,6 +25073,11 @@ function mwApplyLang(){
     window.mwPaintWallPosts(_pub?(window.MW_PUBLIC_POSTS||[]):(window.MW_WALL_POSTS||[]));
   }catch(e){} }
   try{ document.dispatchEvent(new CustomEvent('mw-lang-changed')); }catch(e){}
+  /* FOLLOW-ON 3 (owner greeting): the greeting follows the owner gate
+     after the language pass too — the pass never touches #ptag itself,
+     but it re-renders the surfaces around it, so the greeting is
+     re-synced here like the Join label is re-synced above. */
+  try{ if(window.pcSyncTagline) window.pcSyncTagline(); }catch(e){}
 }
 /* ---------- settings binding ---------- */
 function mwSyncSwitch(id,on){
