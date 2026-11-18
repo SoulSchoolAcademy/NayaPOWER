@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-18 17:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-18 17:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -36031,6 +36031,12 @@ _Last updated: 2026-11-18 17:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261118-0930 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0405 follow-up: buffer spec wired as executor + battery-proven (single drop degrades, never voids)
+
+**Evidence:** Backlog sweep (fresh window empty; oldest unscored gap receipt, Oct 15). Verified first-hand from live bytes: hidden_files/bin/register_flip_k2_buffer_executor.py sha256 2380a368662b87f79c38225854c70f3d678ab28f2f8a21c5d2b7b3300ceeef82 matches the receipt pin exactly; live re-run exits 0 with the receipt's PROOF line verbatim (single-drop arm=FULL-A
+
 ### ✅ preregister-t0720-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** FROZEN PRE-REGISTRATION t0720 Lane 9: semantic-arm acceptance-gate design with 7 falsifiers, sealed before iteration
@@ -53640,6 +53646,12 @@ _Last updated: 2026-11-18 17:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261118-0913 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall report 2026-11-18 09:13 PST: full claim sweep of all 31 queued briefs, 0 claimable
+
+**Evidence:** Verified first-hand from live bytes: brief-queue holds exactly 31 brief-*.md files and 0 brief-tNNNN mission-sequence files; claim-sweep-20261118-0913.log exists with 31 ec= lines, 29 x ec=7 and 2 x ec=2, totals '31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed'; the receipt's 31-brief list, the log's 31, the live queue's 31, and the 08:08 receipt'
 
 ### ✅ gate-stall-20261118-0808 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
