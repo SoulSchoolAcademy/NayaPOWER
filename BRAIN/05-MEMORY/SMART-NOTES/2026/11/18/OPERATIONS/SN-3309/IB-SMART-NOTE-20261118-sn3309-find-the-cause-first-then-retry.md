@@ -6,7 +6,7 @@ SN-3309 · OPERATIONS — DIAGNOSIS BEFORE RETRY
 
 **Created:** 2026-11-18 03:16–03:17Z (Shawn's tap on the Dashboard card, then the cause-first diagnosis — recorded in the daily log; drafted in run 293)
 
-**Paired Naya Note:** NN-20261118-find-the-cause-first-then-retry
+**Paired Naya Note:** NN-20261118-find-the-cause-first-then-retry-vm-browsers
 
 ## Hook
 
