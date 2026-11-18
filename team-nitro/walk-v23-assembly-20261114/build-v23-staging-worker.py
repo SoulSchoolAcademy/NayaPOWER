@@ -468,7 +468,17 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # item grid-row:1, min-height holds the hero box at 161/133px so
 # nothing below moves). No HTML, no JS. Walk, template, identity,
 # unfold shas unchanged.
-assert welcome_sha.startswith("e4fe0d52"), "welcome sha is not the AGREEMENT INTRO ALIGN welcome sha (2026-11-18: intro row one tight centred unit)"
+# AGREEMENT FLOW-END (2026-11-18, maker round -
+# agreement-flow-end-20261118/work/edit-flow-end.py): the welcome sha
+# moves e4fe0d52 -> 018d488a (1,171,088 B -> 1,847,528 B): the N ball
+# HOLDS (full-screen N hold, 3s, both end paths); the flow ends at
+# the name-entry login; portrait -> NAYA_POWER.jpg verbatim (data
+# URI); play reads the distilled script (stop/pause/play, Web
+# Speech); every board is one Smart Block locked to one viewport
+# (Smart Show: full screen, one visual per block, 16:9, click to
+# unfold, always go back); 390 tip overflow + legal-row clip fixed;
+# the intro N seal fills the 1919 void. Intro row + fix-4 untouched.
+assert welcome_sha.startswith("018d488a"), "welcome sha is not the AGREEMENT FLOW-END welcome sha (2026-11-18: N hold, Smart Block, portrait, play)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
@@ -478,7 +488,13 @@ assert welcome_sha.startswith("e4fe0d52"), "welcome sha is not the AGREEMENT INT
 # "or read the whole agreement at once" moved below the letter. Top is now
 # title, play button, centred picture, letter. Welcome, walk, template,
 # identity shas unchanged.
-assert unfold_sha.startswith("96b18b6f"), "unfold sha is not the AGREEMENT INTRO LAYOUT FOLLOW-ON #2 unfold sha (2026-11-18: picture centred, opening header + voice line removed, dots + read-all moved below the letter, 88,848 B)"
+# AGREEMENT FLOW-END (2026-11-18, same round): the unfold sha moves
+# 96b18b6f -> fb0ab19b (88,848 B -> 92,519 B): the /agreement page is
+# the Smart Show too - full-screen container (the 980px column goes),
+# full-width showcase, every beat one viewport-tall Smart Block
+# (talk, then its visual alone at 16:9), click to unfold, always go
+# back. Welcome, walk, template, identity shas unchanged.
+assert unfold_sha.startswith("fb0ab19b"), "unfold sha is not the AGREEMENT FLOW-END unfold sha (2026-11-18: Smart Show, full screen, one visual per block)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
 # work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b

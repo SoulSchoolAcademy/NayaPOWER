@@ -40,7 +40,7 @@ button{font-family:inherit}
 .p3-enter:hover,.p3-enter:active{border-color:#8e24aa;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #8e24aa,0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
 /* HARVESTED — the unfold container + jewel palette vars (walk line 776). */
 .p3-deal-unfold{--ink:#f4f2f7;--bg:#050607;--bg-raise:#121019;--muted:#9a97a8;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--purple:#8e24aa;--sapphire:#0f52ba;--emerald:#07925f;--gold:#d4a017;--magenta:#a21caf;--red:#c62828;--orange:#c2410c;--yellow:#d4a017;--lime:#d4a017;--indigo:#3f51b5;--teal:#0e7490;--rich-orange:#c2410c;--radius-md:18px;--radius-lg:26px;--radius-pill:999px;--ease:cubic-bezier(.22,1,.36,1);--depth-hi:inset 0 1px #fff8,0 24px 60px #000b;--depth-drop:0 16px 40px #000a}
-.p3-deal-unfold{position:relative;border:1.5px solid rgba(255,255,255,.32);border-radius:22px;padding:28px 18px 30px;margin:0 auto;max-width:980px;box-shadow:0 18px 40px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.14)}
+.p3-deal-unfold{position:relative;border:1.5px solid rgba(255,255,255,.32);border-radius:22px;padding:28px 18px 30px;margin:0 auto;max-width:none;box-shadow:0 18px 40px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.14)}
 /* HARVESTED — deck title + step label. */
 .deal-title{font-family:Marcellus,Georgia,serif;font-size:30px;line-height:1.2;color:#fff;text-align:center;margin:6px 0 4px;padding:0 64px}
 @media(max-width:480px){.deal-title{font-size:25px;padding:0 60px}.deal-top-who{font-size:20px}}
@@ -188,7 +188,7 @@ button{font-family:inherit}
    16:9 (1672x941), not 4:3, and the frame fits the image as it is;
    width:100% + height:auto + object-fit:contain shows the whole picture,
    never cropped, with no letterbox bars. */
-.lb-showcase{margin:18px auto 4px;max-width:min(640px,100%);box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#8e24aa) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#8e24aa) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+.lb-showcase{margin:18px auto 4px;max-width:none;box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#8e24aa) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#8e24aa) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
 .lb-showcase img{display:block;width:100%;height:auto;object-fit:contain;border-radius:12px;background:#05060a}
 .lb-showcase:hover{box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#8e24aa) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
 @media(max-width:480px){.lb-showcase{padding:8px;border-radius:18px;margin-top:14px}}
@@ -294,6 +294,28 @@ a.deck-next{text-decoration:none;text-align:center}
    scale(.94) + dim + shadow collapse, springing back on release. */
 #dealAgreeBtn:active{transform:translateY(1px) scale(.94);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.6);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
 </style>
+
+<style id="fpFlowEnd">
+/* ============ FLOW-END (2026-11-18) — Smart Block ============
+   Same law as the welcome file. THIS page is the stacked view Shawn
+   screenshotted at 16:13Z: the narrow column (980px) and the 640px
+   showcase are gone — the container and the showcase are full screen
+   now (see the edits above); this block carries the phases.
+   Every Smart Block is exactly one viewport tall, its content
+   centred in it. The talk text is capped so a long beat never
+   overflows its viewport — it scrolls inside its own panel instead
+   (the cap is load-bearing: blocktop + capped text + foot + buttons
+   always fit 100svh). */
+.letter-beat.fp-smart-talk .lb-showcase{display:none}
+.letter-beat.fp-smart-visual .ib-blocktop, .letter-beat.fp-smart-visual .ib-nutshell, .letter-beat.fp-smart-visual .ib-foot{display:none}
+.letter-beat.fp-smart-talk{display:flex;flex-direction:column;justify-content:center;min-height:100svh;min-height:100dvh}
+.letter-beat.fp-smart-talk .ib-nutshell{max-height:max(160px,calc(100svh - 480px));overflow-y:auto}
+.letter-beat.fp-smart-talk .deck-next, .letter-beat.fp-smart-visual .deck-next{align-self:center}
+.letter-beat.fp-smart-visual{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100svh;min-height:100dvh;gap:18px}
+.letter-beat.fp-smart-visual .lb-showcase{display:block;width:min(100%,calc((100svh - 160px) * 16 / 9));aspect-ratio:16/9;max-height:calc(100svh - 160px);margin:0 auto}
+.letter-beat.fp-smart-visual .lb-showcase img{width:100%;height:100%;object-fit:cover;aspect-ratio:auto}
+.letter-beat .deck-back{margin-top:12px}
+</style>
 </head>
 <body>
 <main class="p3-deal-unfold" id="deckUnfold" style="margin-top:24px;margin-bottom:48px">
@@ -303,7 +325,7 @@ a.deck-next{text-decoration:none;text-align:center}
 <div class="play-wrap">
 <button class="play-btn" id="playBtn" type="button" aria-label="Play — read the agreement with Naya"><span class="play-tri" aria-hidden="true">&#9654;</span><span class="play-name">NAYA</span><span class="play-orbit" aria-hidden="true"></span></button>
 </div>
-<div id="deckBody">
+<div id="deckBody" data-smart-block="deck">
 <article class="intel-board letter-beat" data-beat="1" style="--tone:#8e24aa"><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"></div><div class="ib-nutshell"><p>Hi, I&#x27;m Naya.</p><p>Everybody&#x27;s talking about artificial intelligence.</p><p>They say AI is going to take people&#x27;s jobs, replace businesses, and change the world.</p><p>Well, I have a question.</p><p><strong>What if AI could do something even more extraordinary?</strong></p><p>What if, instead of taking opportunities away from people, AI helped create opportunities for everybody?</p></div><figure class="lb-showcase"><img src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/welcome-0.jpg&ref=agreement/unfold-20261117&cb=c73c473f0208db966607976c0bd4680638f7e734" alt="The old internet — a woman drowning in tabs, notifications, and noise"></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; The Collective Agreement</div><button class="p3-enter letter-next deck-next" type="button" data-beat="1">Keep reading &#9670;</button></article>
 <article class="intel-board letter-beat" data-beat="2" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">THE OPENING</span><h2 class="ib-title">What if it could help you learn faster</h2></div></div></div><div class="ib-nutshell"><p>What if it could help you learn faster, create things you never thought possible, build your own business, connect with the right people, and earn income by helping other people?</p><p>And what if we organized the whole thing so intelligently that everyone could benefit?</p><p>You benefit.</p><p>The people you help benefit.</p><p>The businesses benefit.</p><p>The community benefits.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; The Collective Agreement</div><button class="p3-enter letter-next deck-next" type="button" data-beat="2">Keep reading &#9670;</button></article>
 <article class="intel-board letter-beat" data-beat="3" style="--tone:#0e7490" hidden><div class="ib-blocktop"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">THE OPENING</span><h2 class="ib-title">And the more genuine value we create together</h2></div></div></div><div class="ib-nutshell"><p>And the more genuine value we create together, the stronger the whole network becomes.</p><p>Wouldn&#x27;t that make sense?</p><p>Well, that&#x27;s what we&#x27;re building.</p><p><strong>It&#x27;s called NayaNET.</strong></p><p>It&#x27;s the best Christmas gift ever — a whole new world, and it&#x27;s already waiting for you.</p><p>Now, before I invite you in, let me spell it out for you.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; The Collective Agreement</div><button class="p3-enter letter-next deck-next" type="button" data-beat="3">Keep reading &#9670;</button></article>
@@ -393,6 +415,7 @@ a.deck-next{text-decoration:none;text-align:center}
     if (!b) return;
     b.hidden = false;
     b.classList.add('reveal');
+    b.classList.add('fp-smart-talk');b.classList.remove('fp-smart-visual');
     if (dots[n]) dots[n].classList.add('on');
     glowFor(b);
   }
@@ -400,7 +423,7 @@ a.deck-next{text-decoration:none;text-align:center}
     if (!b) return;
     var r = b.getBoundingClientRect();
     if (r.bottom > window.innerHeight || r.top < 0) {
-      b.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest', inline: 'nearest' });
+      b.scrollIntoView({ behavior: scrollBehavior(), block: 'start', inline: 'nearest' });
     }
   }
   function finish(){
@@ -410,6 +433,15 @@ a.deck-next{text-decoration:none;text-align:center}
     var btn = b.querySelector('.deck-next[data-beat]');
     if (!btn) return;
     btn.addEventListener('click', function(){
+      /* SMART BLOCK (2026-11-18) — one visual per block: a beat with a
+         showcase is TWO Smart Blocks. The first tap shows the visual
+         alone (16:9, locked to the viewport); the next tap moves on. */
+      if (b.querySelector('.lb-showcase') && !b.classList.contains('fp-smart-visual')) {
+        b.classList.add('fp-smart-visual');
+        b.classList.remove('fp-smart-talk');
+        ensureBeatVisible(b);
+        return;
+      }
       var cur = i + 1;
       if (cur < beats.length) {
         show(cur);
@@ -421,7 +453,7 @@ a.deck-next{text-decoration:none;text-align:center}
     });
   });
   all.addEventListener('click', function(){
-    for (var n = 1; n < beats.length; n++) show(n);
+    for (var n = 1; n < beats.length; n++) { show(n); beats[n].classList.remove('fp-smart-talk'); beats[n].classList.remove('fp-smart-visual'); }
     beats.forEach(function(b){
       var btn = b.querySelector('.deck-next[data-beat]');
       if (btn) btn.hidden = true;
@@ -431,6 +463,41 @@ a.deck-next{text-decoration:none;text-align:center}
     ensureBeatVisible(beats[beats.length - 1]);
   });
   glowFor(beats[0]);
+  /* SMART BLOCK (2026-11-18) — always go back: every beat carries a
+     ‹ Back button beside its Keep reading. It steps back one Smart
+     Block: visual -> talk on the same beat, else the previous beat
+     (its visual if it has a showcase, else its talk). */
+  beats.forEach(function(b, i){
+    var next = b.querySelector('.deck-next[data-beat]');
+    if (!next || b.querySelector('.deck-back')) return;
+    var back = document.createElement('button');
+    back.className = 'p3-enter letter-next deck-next deck-back';
+    back.type = 'button';
+    back.textContent = '\u2039 Back \u25C6';
+    if (i === 0) back.hidden = true;
+    back.addEventListener('click', function(){
+      if (b.classList.contains('fp-smart-visual')) {
+        b.classList.remove('fp-smart-visual');
+        b.classList.add('fp-smart-talk');
+        ensureBeatVisible(b);
+        return;
+      }
+      if (i <= 0) return;
+      var prev = beats[i - 1];
+      prev.hidden = false;
+      prev.classList.add('reveal');
+      if (prev.querySelector('.lb-showcase')) {
+        prev.classList.add('fp-smart-visual');
+        prev.classList.remove('fp-smart-talk');
+      } else {
+        prev.classList.add('fp-smart-talk');
+        prev.classList.remove('fp-smart-visual');
+      }
+      ensureBeatVisible(prev);
+    });
+    next.parentNode.insertBefore(back, next.nextSibling);
+  });
+  beats[0].classList.add('fp-smart-talk');
   /* HARVESTED — Hub light-up: blocks light as they scroll into view (threshold .12). */
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('.intel-board').forEach(function(c){ c.classList.add('rv-lit'); });
@@ -457,7 +524,7 @@ a.deck-next{text-decoration:none;text-align:center}
     var last = visible[visible.length - 1];
     var next = last && last.querySelector('.deck-next[data-beat]');
     if (next) { next.click(); }
-    else if (last) { last.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    else if (last) { last.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 })();
 /* HARVESTED — the built visual agreement end's agree handler
