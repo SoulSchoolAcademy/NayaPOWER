@@ -412,8 +412,22 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # claim was false in bytes; F2 the EYEFOLLOW .new-account:active rule gains
 # the shadow/glow collapse (small contact shadow) so it depresses + dims +
 # collapses like every other button. Nothing else changes.
-assert welcome_sha.startswith("fdad3dc2"), "welcome sha is not the AGREEMENT MERGE EYE FOLLOW-ON FIX-PASS welcome sha (2026-11-18: F3 two I-agree buttons deep #07925f, F2 .new-account press glow collapse)"
-assert unfold_sha.startswith("87fa3fa4"), "unfold sha is not the AGREEMENT MERGE EYE FOLLOW-ON unfold sha (2026-11-17: /agreement play-button press transition, 87,076 B)"
+assert welcome_sha.startswith("2e74273b"), "welcome sha is not the AGREEMENT MERGE EYE FOLLOW-ON #2 welcome sha (2026-11-18: F1 plain-load fresh-profile auto-enter choice, F2 agree buttons sink scale .94, F3 choice rims deep at rest, F4 read link clears deck-end return)"
+assert unfold_sha.startswith("14bd698c"), "unfold sha is not the AGREEMENT MERGE EYE FOLLOW-ON #2 unfold sha (2026-11-18: F2 /agreement EYEFOLLOW press rules moved out of noscript + agree button sinks scale .94, 88,277 B)"
+# AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
+# F1-F4; maker round - agreement-merge-followon2-20261118/
+# work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b
+# (1,142,141 B -> 1,146,242 B, +4,101 B): F1 plain-load fresh-profile
+# auto-enter of the choice view (the boot never called enterStage());
+# F2 new #fpAgreement #dealAgreeBtn/#letterPageAgree :active rule (2,1,0)
+# sinking to scale .94; F3 rest-only rule collapsing the 24px choice-pill
+# glow to a 6px deep rim; F4 the login read link clears
+# __fpDeckEndReturn so it opens the choice, never deck 9/9. The unfold
+# sha moves 87fa3fa4 -> 14bd698c (87,076 B -> 88,277 B, +1,201 B): F2 the
+# /agreement EYEFOLLOW press rules move out of the noscript wrapper into
+# a live style block (they were dead with JS on) + a #dealAgreeBtn:active
+# rule (1,1,0) sinking to scale .94. Walk, template, identity shas
+# unchanged.
 # WALK END SHARE PLUS FIX (2026-11-16, MAKER-BRIEF-WALK-END-SHARE-PLUS-FIX-20261116.md; checker NOT PASS 18:50Z):
 # the welcome sha moved 62f691b4 -> ee348e7c (919,910 B -> 921,988 B,
 # +2,078 B): H8 — the intro legal links keep their natural one-line width

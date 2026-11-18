@@ -2033,6 +2033,34 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
    only - while held, the higher-specificity :active rule
    (#fpAgreement .p3-enter:active) still collapses the glow. */
 #fpAgreement .deal-agree-btn, #fpLegal .deal-agree-btn{border:1.5px solid #07925f;box-shadow:0 0 34px rgba(7,146,95,.55),0 0 60px rgba(7,146,95,.25),inset 0 1.5px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.85)}
+/* EYE FOLLOW-ON #2 F2 (2026-11-18): the two "I agree" buttons must
+   sink while held LIKE THE PLAY, scale .94. The EYEFOLLOW
+   `#fpAgreement .p3-enter:active` (1,2,0) at 678236 is live (the
+   choice pill's :active was probe-proven working) but presses only
+   to scale .97. This rule is HIGHER specificity (2,1,0) - two IDs +
+   :active - so it beats the combined hover/active lift rule (1,2,0)
+   at 558483/603913 AND the EYEFOLLOW :active rule (1,2,0) outright,
+   at any file order; it also sits later in the file. Depress
+   translateY(1px) + scale(.94) + dim + shadow collapse, springing
+   back on release via the base .25s transitions. */
+#fpAgreement #dealAgreeBtn:active,#fpAgreement #letterPageAgree:active{transform:translateY(1px) scale(.94);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.6);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
+/* EYE FOLLOW-ON #2 F3 (2026-11-18): the choice rims must read DEEP
+   at rest, not bright halos. The border hexes were already deep
+   (#8e24aa / #07925f, verified in paint); the GLOW was the problem:
+   the `.fp-intro-choice` base rule @638742 carries a 24px-blur rest
+   glow (0 0 24px -4px var(--tone), 0 10px 22px drop). This rest-only
+   rule - :not(:hover):not(:active), specificity (1,2,0) - collapses
+   the glow on the two named pills in both their mount points
+   (#fpChoiceDeck / #fpChoiceLetter in the choice view,
+   #fpBridgeDeck / #fpBridgeLetter in the bridge-final view) to a
+   thin deep rim: 0 0 6px 0 var(--tone) + a softened 0 4px 10px drop.
+   The 2px deep rim stays. Hover ignition is untouched (the :not()
+   fails while hovered, so the 38px hover rule @639636 still governs)
+   and the EYEFOLLOW :active rule still governs while held. The
+   bridge Continue buttons (#fpBridgeMore1-4) do NOT share this rule
+   (their rim comes from the `.p3-enter` base, #a06bff @557473), so
+   they are NOT redesigned here. */
+#fpChoiceDeck:not(:hover):not(:active),#fpChoiceLetter:not(:hover):not(:active),#fpBridgeDeck:not(:hover):not(:active),#fpBridgeLetter:not(:hover):not(:active){box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 6px 0 var(--tone,#a06bff),0 4px 10px rgba(0,0,0,.55)}
 /* F5 (eye follow-on) is carried by the harvested D3 above, not by
    head padding: the head shrink-wraps to the title (482px), so padding
    would narrow the text column D3 was measured in and risks wrapping
@@ -3644,8 +3672,10 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
     closeZoom();
     body.classList.add('fp-stage-on');
     /* SHARE PLUS — back from the deck end: Enter NayaNET exits to the
-       enter-name page; re-entering the agreement lands back at 9/9, so
-       the other button is one tap away. */
+       enter-name page. (EYE FOLLOW-ON #2 F4, 2026-11-18: the login's read
+       link clears this flag first, so re-entering lands on the choice
+       view, not 9/9; "Begin the visual story" still resumes via
+       goResume.) */
     if(window.__fpDeckEndReturn){window.__fpDeckEndReturn=false;S.view='deck';S.deck=deckBeats.length-1;}
     else{S.view=(_t==='bridge')?'bridge':'intro';var bg2=q('#fpBridgeG2'),bg3=q('#fpBridgeG3'),bg4=q('#fpBridgeG4'),bf=q('#fpBridgeFinal'),bm1=q('#fpBridgeMore1'),bm2=q('#fpBridgeMore2'),bm3=q('#fpBridgeMore3'),bm4=q('#fpBridgeMore4');if(bg2)bg2.hidden=true;if(bg3)bg3.hidden=true;if(bg4)bg4.hidden=true;if(bf)bf.hidden=true;if(bm1)bm1.hidden=false;if(bm2)bm2.hidden=true;if(bm3)bm3.hidden=true;if(bm4)bm4.hidden=true;}
     S.all=null;S.legalId=null;
@@ -3753,7 +3783,15 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
     else if(action==='unall'){S.all=null;render();}
   });
   exitBtn.addEventListener('click',function(){cancelAgreeExit();exitStage();});
-  if(enterBtn)enterBtn.addEventListener('click',function(){enterStage();});
+  /* EYE FOLLOW-ON #2 F4 (2026-11-18): the login's "Read the collective
+   agreement" link must open the CHOICE view, never resume the deck.
+   Deck-end "Enter NayaNET" sets window.__fpDeckEndReturn=true, and
+   enterStage() re-entered at deck 9/9 while the flag stood (the eye
+   proved it twice). The explicit read-link action clears the flag
+   first, so enterStage() lands on the intro (choice). goResume
+   ("Begin the visual story") still resumes where left off - that is
+   its stated job - and the deck-end exit itself is untouched. */
+  if(enterBtn)enterBtn.addEventListener('click',function(){window.__fpDeckEndReturn=false;enterStage();});
   /* BRIDGE PRESENTATION (2026-11-17) — deep link from the walk's end slide:
      ?stage=deck opens the visual story, ?stage=letter opens the read-it-all
      letter page, ?stage=bridge opens the bridge. Plain relative links, so
@@ -3898,6 +3936,24 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
         The choice (State A) is what the citizen enters through the
         login's 'Read the collective agreement' button, and
         ?stage=bridge still opens the bridge by design. */
+  }catch(e){}
+    /* EYE FOLLOW-ON #2 F1 (2026-11-18) - plain load, fresh profile:
+     nothing in the boot ever entered the stage, so a fresh profile
+     (no saved stage, no saved alias) landed on the login entrance
+     and the choice view only appeared after clicking "Read the
+     collective agreement" (eye 2026-11-18; live probe: stageOn
+     false, login visible, alias null). The ?stage= hook and the
+     'agree' restore above were the only entries that existed. Now
+     a plain load with no stage in the URL, no saved 'agree', and no
+     saved citizen alias enters the stage (the choice view)
+     directly. A returning citizen (nayanet_smart_alias saved) is
+     NOT auto-entered - the login keeps its jump-back-in, exactly as
+     before. ?stage=deck|letter|bridge and the mid-signing 'agree'
+     restore are untouched: the guard below keeps this call from
+     clobbering the restore (which runs first and sets the view). */
+  try{
+    var _fpAlias2=null;try{_fpAlias2=localStorage.getItem('nayanet_smart_alias');}catch(e){}
+    if(!_fpStage&&_fpRestoreStage!=='agree'&&!_fpAlias2){enterStage();}
   }catch(e){}
   window.__fpStage={state:S,enter:enterStage,exit:exitStage,render:render};
 })();
