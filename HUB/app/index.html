@@ -14095,10 +14095,10 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
    there is no lane beside the open drawer, so both pills hide until the
    rail closes. */
 .shell.rail-right-open .hero-restore.show { right: 312px; }
-.shell.rail-right-open #os-b3-hide { right: 312px; }
+.shell.rail-right-open #os-b3-hide { right: 304px; } /* ROUND 7 2026-11-19 (item 2a): 8px right -- the 44px circle sat 12px off the note frame's right border (1552) and read as sitting ON its silver border/diamond ornament. At 304px it stands 20px clear of the border, 19px clear of the rail cards (1635), its right edge 4px off the rail container edge. */
 @media (min-width: 1440px) {
   .hero-restore.show { right: 312px; }
-  #os-b3-hide { right: 312px; }
+  #os-b3-hide { right: 304px; } /* ROUND 7 (item 2a): same 8px shift at desktop-docked widths. */
   .shell.rail-right-collapsed .hero-restore.show { right: 12px; }
   .shell.rail-right-collapsed #os-b3-hide { right: 12px; }
 }
@@ -14116,8 +14116,54 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
    slow 16s breathe — the orb itself, never a second dot (the dot is gone
    from .brand-mark::after above). Visible within one glance, never faster
    than 12s. */
-@keyframes brand-orb-breathe { from { opacity: .55; box-shadow: 0 0 0 rgba(142,36,170,0); } to { opacity: 1; box-shadow: 0 0 18px rgba(142,36,170,.55), 0 0 32px rgba(142,36,170,.25); } }
-@media (prefers-reduced-motion: reduce) { .brand-mark::after { animation: none; } }
+@keyframes brand-orb-breathe { from { opacity: .45; box-shadow: 0 0 0 rgba(142,36,170,0); } to { opacity: 1; box-shadow: 0 0 32px rgba(142,36,170,.8), 0 0 64px rgba(142,36,170,.4); } } /* ROUND 7 2026-11-19 (item 3): the ring halo is bigger now -- the old 18/32px halo did not read in enlarged captures. The orb's own light breathes too (brand-orb-glow on the logo, ROUND 7 CSS below); the two run the same 16s, in phase. */
+@media (prefers-reduced-motion: reduce) { .brand-mark::after { animation: none; } .brand-mark img { animation: none; } }
+
+/* ——— FOLLOW-ON ROUND 7 20261119 — captain's eye, four items ——— */
+/* (1) THE FIVE BUTTONS ARE WHOLE: the 26px override (ROUND 5, L14080) DOES
+   match -- but a generic touch-target rule floors every <button> at
+   min-width/min-height 44px, and min-* beats width/height (CDP matched-styles
+   proved it; computed was 44x44). The row was 5x44+4x8 = 252px in a 240px
+   card content box, so the 5th button's right edge sat at 1896 -- exactly the
+   list content edge, flush under the 10px scrollbar track -- and its right arc
+   read sliced. This override clears the floor: min-width/min-height 26px on
+   the same (1,2,0) selector, later in the file, so it wins over the generic
+   button rule. Row back to 5x26+4x8 = 162px; the 5th button's right edge lands
+   at 1806, 88px clear of the card's right edge (1894) and the track. */
+#hubPeopleList .pc-card-acts .pc-act-btn { width: 26px; height: 26px; min-width: 26px; min-height: 26px; padding: 0; border-radius: 50%; display: grid; place-items: center; gap: 0; }
+/* (2b) THE WELCOME PILL CLEARS THE BAR: measured bar-up at the very bottom,
+   the fixed bar's top is y=955.6 and the pill (bottom:96px) ran y 940..984 --
+   its lower 28px sat on the bar. bottom:144px puts the pill at y 892..936,
+   19.6px clear of the bar top (and clear of the shorter phone bar too).
+   Unscoped on purpose: the same (0,2,0) selector, later in the file, beats
+   both the desktop bottom:96px and the phone bottom:88px rules. */
+.hero-restore.show { bottom: 144px; }
+/* (2a) THE HIDE-BAR CIRCLE CLEARS THE PILL AND THE FRAME: bar-up the circle
+   was bottom:146px (y 890..934), 6px under the raised pill -- it now rides at
+   bottom:200px (y 836..880), a 12px gap to the pill top. The :not() selector
+   matches only while the bar is UP, so the bar-hidden bottom:12px rule still
+   drops the circle to the corner when the bar folds away. Same specificity as
+   the phone bottom:120px rule, later in the file, so it wins there too. */
+body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide { bottom: 200px; }
+/* (3) THE ORB ITSELF BREATHES: the visible orb is the static NAYA logo PNG --
+   its starburst core is baked into the image (that is the load-time starburst,
+   not an animation), so the ring breathe alone never moved the core and
+   enlarged captures came out identical. The mark's own light now breathes: a
+   slow drop-shadow pulse hugging the logo silhouette -- outside only, the
+   logo pixels never change -- on the same 16s as the ring, in phase, so
+   captures 8s apart differ visibly. Never faster than 12s. */
+.brand-mark img { animation: brand-orb-glow 16s ease-in-out infinite alternate; }
+@keyframes brand-orb-glow { from { filter: drop-shadow(0 0 2px rgba(255,176,66,.20)); } to { filter: drop-shadow(0 0 16px rgba(255,176,66,.60)) drop-shadow(0 0 32px rgba(142,36,170,.35)); } }
+/* (4) SN-3615 -- NO CODE CHANGE. The note is not in this file (0 occurrences
+   of 3615): it is live-only via Supabase hub_smart_notes, and its live row
+   (captured from the page's own REST read) has what_it_means:"", 
+   whats_in_it_for_you:"", how_it_applies:"", child_note:"", grandma_note:"" --
+   only nutshell/human_note populated. The render path is correct: it shows the
+   honest stubs because the data has no layers. The layers are an open DATA
+   item -- write them at the GitHub source
+   (BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3615/...) and re-sync.
+   No live row carries the full set: 0/200 have whats_in_it_for_you or
+   how_it_applies; 53/200 have what_it_means. No layer text invented here. */
 </style>
 </body>
 </html>
