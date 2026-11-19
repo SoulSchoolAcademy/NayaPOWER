@@ -30,6 +30,7 @@ are stored as complete_<alias> keys, test aliases only.
 """
 import hashlib
 import json
+import os
 import re
 import sys
 _OUT = sys.stdout
@@ -71,7 +72,8 @@ print(f"walk {len(walk_raw)} B sha {walk_sha}")
 print(f"identity {len(ident_raw)} B sha {ident_sha}")
 print(f"welcome {len(welcome_raw)} B sha {welcome_sha}")
 print(f"personal-template {len(template_raw)} B sha {template_sha}")
-unfold_raw = open(UNFOLD, "rb").read()
+unfold_raw = (os.environ["UNFOLD_RAW"].encode("utf-8") if "UNFOLD_RAW" in os.environ
+               else open(UNFOLD, "rb").read())
 unfold_sha = hashlib.sha256(unfold_raw).hexdigest()
 print(f"unfold {len(unfold_raw)} B sha {unfold_sha}")
 # Walk sha reconciled 2026-11-13 (sisters' Personal pages, step 1): the file in
@@ -531,7 +533,7 @@ assert ident_sha.startswith("3279dc35"), "identity sha is not the WALKTHROUGH-CH
 # Watchdog mechanics unchanged (warm-up, pick, assignment, clear
 # on start/end/error). Welcome, walk, template, identity shas
 # unchanged. Divider (.ib-foot-logo) untouched - the eye's call.
-assert unfold_sha.startswith("3252948e"), "unfold sha is not the WALKTHROUGH-CHAIN-FIX3 unfold sha (2026-11-19: agree carries bridge-agreed + nayanet_fp_agreed across the navigation to ?stage=bridge)"
+assert unfold_sha.startswith("e21f08d0"), "unfold sha is not the WALKTHROUGH-CHAIN-FIX7 unfold sha (2026-11-19: frame rebuild F1-F11, staged only)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
 # work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b
