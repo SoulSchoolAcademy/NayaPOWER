@@ -25,7 +25,8 @@
   1. Cover + title say Messenger; menu pill Messenger active; page reads
      feed -> conversations. Default format is Instant Message (messenger-first);
      ?format=mail still wins, and flipping to Mail shows that world's mail first.
-  2. Audio call + Video call buttons in the conversation (thread-foot), each
+  2. Audio call + Video call buttons in the conversation (thread-head, top-right,
+     every width — FOLLOW-ON-5 ruling 9), each
      its own deep colour — working stub behind them, named as a stub; the live
      Smart Meet path is owed, never a dead click.
   3. Install veil retitled Messenger.
@@ -75,6 +76,33 @@ FOLLOW-ON-4 2026-11-19 (Messenger lane, parallel push — Shawn's settled Messen
    mail is a different implementation from any repo file — build starts from live);
    the double Messenger / empty Smart Messenger panel (neither exists in this file:
    openMsgPanel 0, msgPanel 0, 'Quiet here' 0 — both live in the Personal/Hub file).
+  FOLLOW-ON-5 2026-11-19 (this file, branch smart-messenger-followon5-20261119):
+  the four FO4 gaps + Shawn's ~13:59-14:03 MST walk rulings. (1) Dock labels 17px
+  at EVERY width — two rows of three at <=640px (FO4 proof: 17px cannot fit one
+  row at 390, fits two rows; seg (326-16)/3 = 103px, worst overhang ~6.5px < 8px
+  gap). (2) Voice note is a REAL <audio> element — 0.75s 8kHz 16-bit mono 440Hz
+  sine WAV generated in memory as a data URI (~16KB, no network); three speed
+  pills set audio.playbackRate 1x/1.5x/2x; the timer board is gone. (3) Search
+  aligned: searchWrap horizontal padding = ph-main at every breakpoint
+  (24/24/12); the >=1700px 44px rule is deleted. (4) rooms-plus is a 48px circle
+  with a 26px + at <=900px, like the right plus. (5) Topic pills carry the label
+  ONLY — no 'online' (Hub smartTabStrip renders label only, blob 5d3f9a7e;
+  the count lives in title). (6) Pill glow around the back, not over the top:
+  active/hover glow is an under-glow (offset down) + rim, never a halo over
+  the face. (7) Same auto-organization buttons everywhere: the pills take the
+  Hub .smart-tab rest state VERBATIM (rim + glow in the tab's own --tc at rest,
+  Hub FIX-5a). (8) Top-right plus is OUT — the SM/IM toggle lives in the top
+  bar's top-right corner and nothing else; the ecosystem menu stays reachable
+  from the bottom-bar ECOSYSTEM tile. (9) Audio + video stay top-right of the
+  Messenger feed at every width where row 1 holds them; at <=420px row 1 is
+  274px against ~328px of orb + name + jewels, so the jewels ride their own
+  row, RIGHT-ALIGNED (the 390 render proved row 1 clips the video jewel and
+  stretches the panel to 372px). (10) ADD is a COMPOSE button: its
+  choices are the scopes Personal / Business / Worlds. (11) The contact card
+  is rebuilt INTO the frame: an in-flow card inside the thread panel, never a
+  floating pop-up; all numbers as digit tiles; Smart Mail / Instant Message /
+  Smart Meet / Call each its own colour. NOT changed: the 'Seen' word beside
+  the reader's face orb stays (Shawn's call); everything FO4 passed stands.
 -->
 <style>
 /* TOKENS — Hub :root + Deep Palette (Design Laws §3.1) */
@@ -151,10 +179,17 @@ body.no-cover .ph-main{padding-top:12px}
 .org-tabs{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 4px;scrollbar-width:thin}
 .org-tabs::-webkit-scrollbar{height:6px}
 .org-tabs::-webkit-scrollbar-thumb{background:rgba(142,36,170,.5);border-radius:3px}
-.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:17px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 0 18px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.6);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
-.nf-smtab small{color:#fff;font-weight:900;font-size:17px}
-.nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 10px -1px var(--tc),0 0 0 2px var(--tc) inset,0 14px 32px rgba(0,0,0,.6);text-shadow:0 0 12px var(--tc)}
-.nf-smtab.active{border-color:var(--tc);box-shadow:0 0 16px var(--tc),0 0 0 1px var(--tc),inset 0 1px rgba(255,255,255,.15),0 10px 26px rgba(0,0,0,.6)}
+/* FOLLOW-ON-5 (rulings 6+7): the SAME auto-organization buttons as the Hub.
+   Rest state is the Hub .smart-tab rule VERBATIM (Hub blob 5d3f9a7e, lines
+   1429-1438, FIX-5a: each tab wears its cluster colour AT REST — rim + glow
+   in --tc). Messenger keeps its own 10px padding + 44px min-height. The pill
+   carries the label ONLY (no <small> count — the count lives in title).
+   Glow sits AROUND THE BACK, never over the top (ruling 6): hover/active
+   glow is an under-glow offset DOWN (0 12px 28px -4px) + rim + inset rim —
+   no uniform halo over the face, no text-shadow wash over the word. */
+.nf-smtab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;cursor:pointer;user-select:none;border:2px solid color-mix(in srgb,var(--tc) 68%,rgba(255,255,255,.35));background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-weight:900;font-size:17px;letter-spacing:.03em;white-space:nowrap;min-height:44px;box-shadow:0 0 18px color-mix(in srgb,var(--tc) 45%,transparent),inset 0 1px rgba(255,255,255,.18),inset 0 0 0 1px color-mix(in srgb,var(--tc) 30%,transparent);transition:box-shadow .25s,border-color .2s,text-shadow .25s,transform .18s}
+.nf-smtab:hover,.nf-smtab:focus-visible{background:color-mix(in srgb,var(--tc) 26%,rgba(0,0,0,.55));border-color:var(--tc);outline:none;transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.35),0 0 0 2px var(--tc) inset,0 12px 26px -4px var(--tc),0 14px 32px rgba(0,0,0,.6)}
+.nf-smtab.active{border-color:var(--tc);box-shadow:0 0 0 1px var(--tc),inset 0 1px rgba(255,255,255,.15),0 12px 28px -4px var(--tc),0 10px 26px rgba(0,0,0,.6)}
 /* FOLLOW-ON-4: Smart Tabs strip — restored (stripped 2026-11-18). The strip sits
    above the rail; click a tab and the rail shows that topic's contact list. */
 .org-tabs{display:flex;gap:10px;overflow-x:auto;padding:10px 0 6px;scrollbar-width:none}
@@ -212,14 +247,18 @@ body.no-cover .ph-main{padding-top:12px}
 .person-info-btn{width:28px;height:28px;flex:0 0 28px;border-radius:50%;border:1.5px solid #fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);color:#fff;font-size:17px;font-weight:800;font-style:italic;cursor:pointer;display:inline-grid;place-items:center;box-shadow:inset 0 1px rgba(255,255,255,.25),0 0 12px rgba(255,255,255,.2),0 4px 10px rgba(0,0,0,.5);transition:transform .2s,box-shadow .2s}
 .person-info-btn:hover{transform:translateY(-2px) scale(1.06);box-shadow:inset 0 1px rgba(255,255,255,.3),0 0 20px rgba(142,36,170,.6),0 8px 16px rgba(0,0,0,.55)}
 .person-info-btn:active{transform:scale(.97)}
-.person-card-veil{position:fixed;inset:var(--bw,96px);z-index:60;display:none;align-items:center;justify-content:center;background:rgba(2,2,6,.72)}
-.person-card-veil.show{display:flex}
-.person-card{position:relative;width:min(640px,calc(100% - 32px));border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:2px solid var(--pc,#8e24aa);padding:28px 24px 24px;text-align:center;box-shadow:0 0 40px color-mix(in srgb,var(--pc,#8e24aa) 45%,transparent),0 30px 60px rgba(0,0,0,.8)}
+/* FOLLOW-ON-5 (ruling 11): the contact card is rebuilt INTO the frame — an
+   in-flow card inside the thread panel, between the head and the body. No
+   floating pop-up, no veil over the page. */
+.person-card-veil{position:static;display:none;border-bottom:1px solid rgba(255,255,255,.09);background:linear-gradient(180deg,#17102a,#08080c);padding:20px 18px}
+.person-card-veil.show{display:block}
+.person-card{position:relative;width:min(640px,calc(100% - 32px));margin:0 auto;border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:2px solid var(--pc,#8e24aa);padding:28px 24px 24px;text-align:center;box-shadow:0 0 40px color-mix(in srgb,var(--pc,#8e24aa) 45%,transparent),0 30px 60px rgba(0,0,0,.8)}
 .person-card h3{margin:14px 0 4px;font-size:25px}
 .person-card .person-card-nut{margin:0 0 14px;font-size:17px;line-height:1.55;color:#fff}
 .person-card-rows{text-align:left;font-size:17px;line-height:1.6;color:#fff}
 .person-card-actions{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
-.person-card{max-height:calc(100dvh - 40px);overflow-y:auto}
+/* FOLLOW-ON-5: numbers on the card are digit tiles, never plain text (Laws §4) — the Match % and the member count wear the card's own colour. */
+.person-card-rows .match{display:inline-flex;align-items:center;padding:2px 8px;border-radius:8px;border:1.5px solid var(--pc,#8e24aa);background:linear-gradient(180deg,#12101a,#08080c);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 10px color-mix(in srgb,var(--pc,#8e24aa) 45%,transparent);white-space:nowrap;font-weight:800}
 .person-card-notes-label{display:block;text-align:left;font-size:17px;font-weight:800;color:#fff;margin:16px 0 6px}
 .person-card-notes{width:100%;min-height:64px;resize:vertical;border-radius:14px;border:1.5px solid var(--pc,#8e24aa);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:17px;font-family:inherit;line-height:1.5;padding:12px 14px;box-sizing:border-box}
 .person-card-notes::placeholder{color:#fff;opacity:1}
@@ -234,6 +273,13 @@ body.no-cover .ph-main{padding-top:12px}
 .toggle button.on{background:#0a0a0f;color:#fff;border-color:var(--tc);box-shadow:0 0 20px var(--tc),0 8px 20px rgba(0,0,0,.5)}
 .toggle button.on .tgl-ico{color:#fff;text-shadow:0 0 12px var(--tc),0 0 4px #fff}
 .toggle button[disabled]{opacity:.45;cursor:not-allowed}
+/* FOLLOW-ON-5 (ruling 8): the SM/IM toggle lives in the top bar's top-right
+   corner — the top-right plus is OUT. At <=900px the toggle rides icon-only
+   (envelope / chat bubble) so the bar still fits; at <=640px the bar wraps
+   and the toggle takes its own full-width row with its words back. The format
+   is still named in the thread presence line at every width. */
+@media (max-width:900px){.top .toggle .tgl-word{display:none}.top .toggle button{padding:10px 12px}}
+@media (max-width:640px){.top{flex-wrap:wrap}.top .toggle{flex:1 1 100%;justify-content:center}.top .toggle .tgl-word{display:inline}.top .toggle button{flex:1;padding:10px 12px}}
 /* FIX-7: thread-body mask — 24px dead band + eased ramp to opaque 50px below the head; top padding 48px so the format-note pill reads bright at rest. */
 .thread-body{flex:1;padding:48px 18px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);mask-size:100% 100%}
 .msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:17px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);transition:transform .25s,box-shadow .25s,border-color .25s}
@@ -255,8 +301,14 @@ body.no-cover .ph-main{padding-top:12px}
 .voice-note.playing .voice-wave i{animation:voicePulse .7s ease-in-out infinite alternate}
 @keyframes voicePulse{from{transform:scaleY(.6);opacity:.55}to{transform:scaleY(1);opacity:1}}
 .voice-dur{font-size:17px;font-weight:800;color:#fff}
-.voice-speed{min-width:52px;padding:8px 12px;border-radius:999px;border:1.5px solid #8e24aa;background:#0a0a0f;color:#fff;font-size:17px;font-weight:800;cursor:pointer}
-.voice-speed:hover{box-shadow:0 0 18px rgba(142,36,170,.5)}
+.voice-speed{min-width:52px;padding:8px 12px;border-radius:999px;border:1.5px solid var(--sc,#8e24aa);background:#0a0a0f;color:#fff;font-size:17px;font-weight:800;cursor:pointer}
+.voice-speed:hover{box-shadow:0 0 18px var(--sc,#8e24aa)}
+/* FOLLOW-ON-5: the voice note is a real <audio> element (own controls) + three
+   speed pills, each its own spectrum colour (1x purple, 1.5x sapphire, 2x
+   emerald); the lit pill lights in its own colour. */
+.voice-audio{flex:1 1 200px;min-width:180px;height:40px}
+.voice-speeds{display:flex;gap:8px;flex:0 0 auto}
+.voice-speed.on{border-color:var(--sc,#8e24aa);box-shadow:0 0 18px var(--sc,#8e24aa)}
 /* .msg.mine: colour FILL is gone — obsidian inside, royal-purple rim + glow outside. */
 .msg.mine{align-self:flex-end;background:linear-gradient(180deg,#17102a,#0a0a0f);border-color:#8e24aa;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12),0 0 22px rgba(142,36,170,.35)}
 .msg.theirs{align-self:flex-start;background:linear-gradient(180deg,#1b1b24,#0c0c11)}
@@ -400,8 +452,17 @@ body.no-cover .ph-main{padding-top:12px}
   .top .primo.lwn-btn.lwn-btn{display:none}
   .toggle button{padding:10px 11px;font-size:17px}
   .thread-head{flex-wrap:wrap}
-  /* FOLLOW-ON-2: at ≤420px the call-jewels (106px) sat on row 1 and squeezed .who to ~76px, so "Maya R." truncated to "Ma..." (checker §5b). The jewels move to row 2 (full width; the toggle takes row 3), leaving row 1 = orb + name + info button (~196px for the name). Info button untouched, name stays 19px (Laws §2.3 floor 17). Nothing changes above 420px. */
-  .thread-head .call-jewels{flex:1 1 100%;justify-content:flex-start}
+  /* FOLLOW-ON-5 (ruling 9), CORRECTED after the 390 render: the jewels stay
+     top-right of the feed at every width where row 1 holds them — but at
+     <=420px row 1 is 274px and orb (64) + name (144) + jewels (106) need
+     ~328px, so row 1 CLIPS the video jewel (measured: jewels 295..401, video
+     353..401 past the 390 edge) and stretches the panel to 372px, which also
+     pushes the contact card's close button over the frame. The FOLLOW-ON-2
+     cure stands, RIGHT-ALIGNED: at <=420px the jewels take their own row,
+     right-aligned under the name — still top-right, still in the same spot,
+     both fully visible and tappable. (The toggle leaving the head did NOT free
+     row-1 room: at <=420px the toggle already rode row 3.) */
+  .thread-head .call-jewels{flex:1 1 100%;justify-content:flex-end}
   .msg{max-width:88%}
   .page-scroll{--titleEdge:108px}
   .page-title{font-size:19px}
@@ -413,29 +474,35 @@ body.no-cover .ph-main{padding-top:12px}
 /* Thread head at phone widths: row 1 = orb + name + presence; row 2 = toggle full width, buttons split evenly. 1440 untouched. */
 @media (max-width:640px){
   .thread-head{flex-wrap:wrap;row-gap:6px;padding:10px 14px}
+  .thread-head .call-jewels{margin-left:auto} /* FOLLOW-ON-5: when the jewels wrap to row 2 (421-640px) they sit right-aligned, like the <=420px row. On row 1 this is a no-op — the growing .who already pushes them right. */
   .thread-head .who{flex:1 1 0;min-width:0}
   .thread-head .who b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .thread-head .who span{font-size:17px}
   .thread-head .toggle{flex:1 1 100%}
   .thread-head .toggle button{flex:1;padding:8px 10px}
 }
-/* FIX-4/5: dock labels visible white (11px, 10px under 480px — tile labels, see Laws §13 open question); small secondary lines weight 600 so no eye can call them dim.
+/* FIX-4/5: dock labels visible white; small secondary lines weight 600 so no eye can call them dim.
    FOLLOW-ON-4: Shawn's ruling — labels at a comfortable reading size, 17px governs.
-   At >=641px the row has room (6x54px tiles + 5x22px gaps), so labels read 17px.
-   At 390 the six 48px tiles + gaps already fill the 326px box (6x50+5x2+4=314),
-   so 17px cannot fit there without a bar redesign — phone labels stay 11px/10px,
-   ruling owed for the phone bar, not silently broken here. */
-.notif-label{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;text-align:center;line-height:1.2}
-@media(min-width:641px){.notif-label{font-size:17px;letter-spacing:.08em}}
+   FOLLOW-ON-5: 17px at EVERY width — two rows of three at <=640px. FO4's proof:
+   one row cannot fit 17px at 390 (labels total 422-466px vs a 326px box), but two
+   rows do: seg (326-16)/3 = 103px, worst overhang (ECOSYSTEM ~116px) ~6.5px per
+   side < the 8px gap. Letter-spacing 0 at every width (the .12em desktop pair
+   overlapped ~3.5px). The 11px/10px rules are gone — Laws §2.3, 0 FAIL. */
+.notif-label{display:block;font-size:17px;font-weight:800;letter-spacing:0;color:#fff;text-align:center;line-height:1.2}
 .page-head p,.panel-sub,.stub-note,.row-last,.row-nut,.msg .meta,.thread-head .who span,.mail-meta,.letter-to,.typing,.world-note,.feed-sub,.choice-row small,.toast p{font-weight:600}
 /* Dock orbit: tile ::after CW 60s in the orb's own colour; seg ::before CCW 75s white. Hover lights the WHOLE tile in its own colour. */
 .notif-tile::after{content:'';position:absolute;inset:-8px;border-radius:22px;pointer-events:none;background:radial-gradient(circle 6px at 50% 0%,var(--nc) 98%,transparent 100%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--nc) 30%,transparent);filter:drop-shadow(0 0 6px var(--nc));animation:orbitCW 60s linear infinite}
 /* FOLLOW-ON: the seg::before white orbiting dot is REMOVED — its 70px orbit swept the dot across the label row (eye: a white sparkle touched the first letter of each label). The tile's own-colour orbit (.notif-tile::after, CW 60s) remains, so every tile keeps its flow. */
 .notif-seg:hover .notif-tile{border-color:var(--nc);background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 55%,#12121a),#07070b 78%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 30px color-mix(in srgb,var(--nc) 70%,transparent)}
-@media(max-width:640px){.notif-row{gap:8px;padding:8px 12px 6px}/* ULTIMATE: six tiles — gap 10px summed over 390, and the 70px orbit rings overhang the edge segs by ~9px; gap 8 + 12px side padding absorbs both. ICONS: compact row now runs to 640px — at 534px the desktop row sums 614px (6x84+5x22) and cuts ADD/CONNECT; compact is 6x52+5x8+24=376px. */.notif-seg{min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}.notif-label{font-size:10px;letter-spacing:.08em}}
-/* FOLLOW-ON: at ≤560px the frame narrows the content box to 326px (390 − 2×32), so the bar row tightens to fit INSIDE the frame at 390: 6×50 + 5×2 + 4 = 314px. Tiles stay 48px (the 16px ball's geometry was proved for 48px tiles; a 40px tile would put the ball on the glyph ink). The tile orbit ring tightens with it. */
-@media(max-width:560px){.notif-row{gap:1px;padding:8px 0 6px}.notif-seg{padding:2px 0 0}.notif-label{letter-spacing:0}.notif-tile::after{inset:-4px}}
-/* FOLLOW-ON 2026-11-19 (probe v2): scrollWidth was still 330 > 326 — the ECOSYSTEM label ink overhangs ~14px per side, so the row needs gap 1px and no horizontal padding (scrollWidth ≈ 321). Tile and label sizes untouched. */
+@media(max-width:640px){.notif-row{flex-wrap:wrap;gap:8px;padding:8px 12px 6px}/* FOLLOW-ON-5: TWO ROWS OF THREE at <=640px — the bar grows to ~170px tall so the
+   17px labels fit (see the FIX-4/5 note); each seg is (100%-16px)/3, so the worst
+   label overhang still clears the 8px gap. ULTIMATE: the 70px orbit rings overhang
+   the edge segs by ~9px; gap 8 + 12px side padding absorbs both. ICONS: compact row
+   now runs to 640px — at 534px the desktop row sums 614px (6x84+5x22) and cuts
+   ADD/CONNECT; compact is 6x52+5x8+24=376px. */.notif-seg{flex:0 0 calc((100% - 16px)/3);min-width:0;padding:2px 2px 0}.notif-tile{width:48px;height:48px;border-radius:14px}.notif-tile svg{width:22px;height:22px}}
+/* FOLLOW-ON: at ≤560px the frame narrows the content box to 326px (390 − 2×32). Tiles stay 48px (the 16px ball's geometry was proved for 48px tiles; a 40px tile would put the ball on the glyph ink). The tile orbit ring tightens with it.
+   FOLLOW-ON-5: the two-row bar (see the <=640px rule) keeps gap 8px + 12px side padding here too — the single-row 1px-gap squeeze is gone with the single row. */
+@media(max-width:560px){.notif-row{gap:8px;padding:8px 12px 6px}.notif-seg{padding:2px 0 0}.notif-tile::after{inset:-4px}}
 .row:hover .cx-ava{filter:brightness(1.18)}
 
 /* --- ULTIMATE 2026-11-18: HUB FRAME, harvested verbatim from the Hub live bytes
@@ -505,17 +572,23 @@ svg.jewel{display:block}
   .top .eco-plus::after{content:'+';font-size:30px;font-weight:200;color:#fff;line-height:1}
 }
 @media (max-width:900px){
-  .rooms-plus{display:grid}
+  /* FOLLOW-ON-5: the left plus is a 48px circle with a 26px + at every width,
+     like the right plus — the 761-900px rounded-square band is gone. (At
+     <=760px the later rule hides the svg for the ::after '+' text; that rule
+     still wins there.) */
+  .rooms-plus{display:grid;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%)}
+  .rooms-plus svg{width:26px;height:26px}
   .rail-toggle{display:none}
   .top{padding:11px 24px;gap:10px}
-  .searchWrap{padding:16px 12px 0}
+  .searchWrap{padding:16px 24px 0} /* FOLLOW-ON-5: 24px = ph-main at <=900px (was 12px, 12px off) */
 }
 @media (min-width:1700px){
-  .top{padding-left:24px;padding-right:24px}.searchWrap{padding-left:44px;padding-right:44px}
+  .top{padding-left:24px;padding-right:24px}
+  /* FOLLOW-ON-5: the 44px searchWrap rule is DELETED — ph-main is 24px here, so searchWrap stays 24px (was 20px off at >=1700px). */
 }
 /* --- ULTIMATE: the center morph — contact rail + thread, one system. --- */
 .msg-layout{display:flex;gap:18px;align-items:flex-start}
-.msg-layout .thread{flex:1 1 auto;min-width:0}
+.msg-layout .thread{flex:1 1 auto;min-width:0;max-width:100%} /* FOLLOW-ON-5: the panel never exceeds its column — the real <audio> element's 300px preferred width stretched it to 372px at 390 (measured), pushing Send + the video jewel + the card close under the frame. */
 .contact-rail{flex:0 0 92px;position:sticky;top:16px;display:flex;flex-direction:column;gap:14px;align-items:center;padding:16px 4px 0;max-height:calc(100dvh - 300px);overflow-y:auto;scrollbar-width:none}
 .contact-rail::-webkit-scrollbar{display:none}
 .rail-orb{background:transparent;border:0;padding:0;cursor:pointer;border-radius:50%;transition:transform .25s,filter .25s}
@@ -552,7 +625,11 @@ body.rail-collapsed .contact-rail{display:none}
   <a class="primo theme-purple elev-2 lwn-btn" href="https://lifewithnaya.nayapower.workers.dev/" aria-label="Watch the Life with Naya presentation" title="Life with Naya — the full presentation">Life with Naya</a>
   <button class="top-bell" type="button" id="topBellBtn" aria-label="Notifications" title="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
   <div class="top-spacer" aria-hidden="true"></div>
-  <div style="position:relative;display:flex;"><button class="eco-plus" type="button" id="ecoPlus" aria-label="NayaNET ecosystem menu" aria-haspopup="true" aria-expanded="false" title="NayaNET ecosystem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><nav class="eco-menu" id="ecoMenu" aria-label="NayaNET ecosystem destinations"><div class="eco-head">NAYANET ECOSYSTEM</div><a href="https://hmclibrary.groovemember.net/home" target="_blank" rel="noopener" aria-label="HOME (opens in new tab)" style="--eco:#ed42c4"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-1)" filter="url(#jewel-eco-1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></g></svg></span><span class="lbl">HOME</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://humanmaximuscodex.groovesell.com/checkout/08fba2cbd6488ef4d2cc82b52d361dab" target="_blank" rel="noopener" aria-label="NAYA POWER (opens in new tab)" style="--eco:#8a5cff"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-2" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-2-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-2)" filter="url(#jewel-eco-2-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-2)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></g></svg></span><span class="lbl">NAYA POWER</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://nayanet.groovepages.com/aboutus" target="_blank" rel="noopener" aria-label="ABOUT US (opens in new tab)" style="--eco:#3ca8ff"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-3" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-3-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-3)" filter="url(#jewel-eco-3-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-3)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.8.4 5 2.6 5 5.5"/></g></svg></span><span class="lbl">ABOUT US</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://getpaid.takeyourpowerback.xyz/" target="_blank" rel="noopener" aria-label="YOUR HIRED (opens in new tab)" style="--eco:#35e39b"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-4" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-4-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-4)" filter="url(#jewel-eco-4-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-4)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></g></svg></span><span class="lbl">YOUR HIRED</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://nayanet.groovepages.com/whitepaper" target="_blank" rel="noopener" aria-label="WHITE PAPER (opens in new tab)" style="--eco:#ffea00"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-5" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-5-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-5)" filter="url(#jewel-eco-5-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-5)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></g></svg></span><span class="lbl">WHITE PAPER</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://nayanet.groovepages.com/academy" target="_blank" rel="noopener" aria-label="NAYA ACADEMY (opens in new tab)" style="--eco:#ff8c42"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-6" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-6-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-6)" filter="url(#jewel-eco-6-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-6)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L2 9l10 5 10-5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v5"/></g></svg></span><span class="lbl">NAYA ACADEMY</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://nayanet.groovepages.com/academy" target="_blank" rel="noopener" aria-label="&quot;5&quot; DAY CHALLENGE (opens in new tab)" style="--eco:#ff5e6c"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-7" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-7-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-7)" filter="url(#jewel-eco-7-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-7)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 5H4a3 3 0 003 5M16 5h4a3 3 0 01-3 5"/><path d="M12 13v4M8 20h8M10 17h4"/></g></svg></span><span class="lbl">"5" DAY CHALLENGE</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://app.nayanet.technology/" target="_blank" rel="noopener" aria-label="MAXIS &quot;AI SCORE&quot; (opens in new tab)" style="--eco:#ed42c4"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-8" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-8-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-8)" filter="url(#jewel-eco-8-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-8)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 1116 0"/><path d="M12 14l4-5"/><path d="M4 18h16"/></g></svg></span><span class="lbl">MAXIS "AI SCORE"</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://aimasterclass.help/" target="_blank" rel="noopener" aria-label="AI MASTERCLASS (opens in new tab)" style="--eco:#8a5cff"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-9" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-9-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-9)" filter="url(#jewel-eco-9-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-9)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></g></svg></span><span class="lbl">AI MASTERCLASS</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://notebook.google.com/notebook/153122ce-965d-4bcd-a574-9e5511119474/artifact/d08f82fe-8696-4139-a708-b19eac5adf09?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" rel="noopener" aria-label="INTRO REPORT (opens in new tab)" style="--eco:#3ca8ff"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-10" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-10-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-10)" filter="url(#jewel-eco-10-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-10)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></g></svg></span><span class="lbl">INTRO REPORT</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://lifewithnaya.nayapower.workers.dev/" target="_blank" rel="noopener" aria-label="LIFE WITH NAYA (opens in new tab)" style="--eco:#35e39b"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-11" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-11-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-11)" filter="url(#jewel-eco-11-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-11)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></g></svg></span><span class="lbl">LIFE WITH NAYA</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://hmclibrary.groovemember.net/login" target="_blank" rel="noopener" aria-label="MEMBER LOGIN (opens in new tab)" style="--eco:#ffea00"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-12" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-12-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-12)" filter="url(#jewel-eco-12-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-12)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="14" r="4.5"/><path d="M11 11l8-8M17 5l2.5 2.5M14 8l2 2"/></g></svg></span><span class="lbl">MEMBER LOGIN</span><span class="ext" aria-hidden="true">↗</span></a></nav></div>
+    <div class="toggle" role="group" aria-label="Message format">
+      <button type="button" id="toggleMail" aria-label="Smart Mail" aria-pressed="false" style="--tc:#0f52ba"><span class="tgl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="tgl-word">Smart Mail</span></button>
+      <button type="button" id="toggleIM" aria-label="Instant Message" class="on" aria-pressed="true" style="--tc:#07925f"><span class="tgl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span class="tgl-word">Instant Message</span></button>
+    </div>
+  <nav class="eco-menu" id="ecoMenu" aria-label="NayaNET ecosystem destinations"><div class="eco-head">NAYANET ECOSYSTEM</div><a href="https://hmclibrary.groovemember.net/home" target="_blank" rel="noopener" aria-label="HOME (opens in new tab)" style="--eco:#ed42c4"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-1)" filter="url(#jewel-eco-1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></g></svg></span><span class="lbl">HOME</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://humanmaximuscodex.groovesell.com/checkout/08fba2cbd6488ef4d2cc82b52d361dab" target="_blank" rel="noopener" aria-label="NAYA POWER (opens in new tab)" style="--eco:#8a5cff"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-2" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-2-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-2)" filter="url(#jewel-eco-2-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-2)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></g></svg></span><span class="lbl">NAYA POWER</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://nayanet.groovepages.com/aboutus" target="_blank" rel="noopener" aria-label="ABOUT US (opens in new tab)" style="--eco:#3ca8ff"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-3" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-3-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-3)" filter="url(#jewel-eco-3-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-3)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.8.4 5 2.6 5 5.5"/></g></svg></span><span class="lbl">ABOUT US</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://getpaid.takeyourpowerback.xyz/" target="_blank" rel="noopener" aria-label="YOUR HIRED (opens in new tab)" style="--eco:#35e39b"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-4" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-4-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-4)" filter="url(#jewel-eco-4-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-4)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></g></svg></span><span class="lbl">YOUR HIRED</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://nayanet.groovepages.com/whitepaper" target="_blank" rel="noopener" aria-label="WHITE PAPER (opens in new tab)" style="--eco:#ffea00"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-5" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-5-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-5)" filter="url(#jewel-eco-5-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-5)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></g></svg></span><span class="lbl">WHITE PAPER</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://nayanet.groovepages.com/academy" target="_blank" rel="noopener" aria-label="NAYA ACADEMY (opens in new tab)" style="--eco:#ff8c42"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-6" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-6-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-6)" filter="url(#jewel-eco-6-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-6)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L2 9l10 5 10-5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v5"/></g></svg></span><span class="lbl">NAYA ACADEMY</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://nayanet.groovepages.com/academy" target="_blank" rel="noopener" aria-label="&quot;5&quot; DAY CHALLENGE (opens in new tab)" style="--eco:#ff5e6c"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-7" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-7-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-7)" filter="url(#jewel-eco-7-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-7)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 5H4a3 3 0 003 5M16 5h4a3 3 0 01-3 5"/><path d="M12 13v4M8 20h8M10 17h4"/></g></svg></span><span class="lbl">"5" DAY CHALLENGE</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://app.nayanet.technology/" target="_blank" rel="noopener" aria-label="MAXIS &quot;AI SCORE&quot; (opens in new tab)" style="--eco:#ed42c4"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-8" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-8-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-8)" filter="url(#jewel-eco-8-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-8)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 1116 0"/><path d="M12 14l4-5"/><path d="M4 18h16"/></g></svg></span><span class="lbl">MAXIS "AI SCORE"</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://aimasterclass.help/" target="_blank" rel="noopener" aria-label="AI MASTERCLASS (opens in new tab)" style="--eco:#8a5cff"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-9" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-9-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-9)" filter="url(#jewel-eco-9-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-9)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></g></svg></span><span class="lbl">AI MASTERCLASS</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://notebook.google.com/notebook/153122ce-965d-4bcd-a574-9e5511119474/artifact/d08f82fe-8696-4139-a708-b19eac5adf09?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" rel="noopener" aria-label="INTRO REPORT (opens in new tab)" style="--eco:#3ca8ff"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-10" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-10-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-10)" filter="url(#jewel-eco-10-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-10)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></g></svg></span><span class="lbl">INTRO REPORT</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://lifewithnaya.nayapower.workers.dev/" target="_blank" rel="noopener" aria-label="LIFE WITH NAYA (opens in new tab)" style="--eco:#35e39b"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-11" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-11-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-11)" filter="url(#jewel-eco-11-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-11)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></g></svg></span><span class="lbl">LIFE WITH NAYA</span><span class="ext" aria-hidden="true">↗</span></a><a href="https://hmclibrary.groovemember.net/login" target="_blank" rel="noopener" aria-label="MEMBER LOGIN (opens in new tab)" style="--eco:#ffea00"><span class="eco-ico"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-eco-12" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-eco-12-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-eco-12)" filter="url(#jewel-eco-12-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-eco-12)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="14" r="4.5"/><path d="M11 11l8-8M17 5l2.5 2.5M14 8l2 2"/></g></svg></span><span class="lbl">MEMBER LOGIN</span><span class="ext" aria-hidden="true">↗</span></a></nav>
 </header>
 <section class="searchWrap"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel-search" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel-search-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel-search)" filter="url(#jewel-search-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel-search)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(6,6) scale(0.5)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><input type="search" id="chassisSearch" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"></div></section>
 <main class="ph-main">
@@ -567,11 +644,26 @@ body.rail-collapsed .contact-rail{display:none}
           <span id="threadPresence">Online now · Instant Message</span>
         </div>
         <div class="call-jewels"><button class="call-jewel" type="button" id="audioBtn" style="--jc:#07925f" aria-label="Audio call" title="Audio call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><button class="call-jewel" type="button" id="videoBtn" style="--jc:#0f52ba" aria-label="Video call" title="Video call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg></button></div>
-        <div class="toggle" role="group" aria-label="Message format">
-          <button type="button" id="toggleMail" aria-pressed="false" style="--tc:#0f52ba"><span class="tgl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>Smart Mail</button>
-          <button type="button" id="toggleIM" class="on" aria-pressed="true" style="--tc:#07925f"><span class="tgl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span>Instant Message</button>
-        </div>
       </div>
+
+<!-- FOLLOW-ON-5: CONTACT CARD — rebuilt INTO the frame (ruling 11): the card lives inside the thread panel, between the head and the body — never a floating pop-up. Opens from the info button beside the person's name. -->
+<div class="person-card-veil" id="personCardVeil">
+  <div class="person-card" id="personCard" role="dialog" aria-label="Contact card">
+    <button class="install-x" id="personCardClose" type="button" aria-label="Close contact card">×</button>
+    <span class="intel-avatar" id="personCardAvatar" style="--av:96px">M</span>
+    <h3 id="personCardName">Maya R.</h3>
+    <p class="person-card-nut" id="personCardNut"></p>
+    <div class="person-card-rows" id="personCardRows"></div>
+    <label class="person-card-notes-label" for="personCardNotes">Notes on them</label>
+    <textarea class="person-card-notes" id="personCardNotes" rows="2" placeholder="Make notes on them — kept here, on this card." aria-label="Notes on this person"></textarea>
+    <div class="person-card-actions">
+      <button class="btn ghost" type="button" id="personCardMail" style="--btn-accent:#0f52ba">Smart Mail</button>
+      <button class="btn ghost" type="button" id="personCardIM" style="--btn-accent:#07925f">Instant Message</button>
+      <button class="btn ghost" type="button" id="personCardMeet" style="--btn-accent:#d4a017">Smart Meet</button>
+      <button class="btn ghost" type="button" id="personCardCall" style="--btn-accent:#c62828">Call</button>
+    </div>
+  </div>
+</div>
 
       <div class="thread-body" id="threadBody"></div>
 
@@ -616,7 +708,7 @@ body.rail-collapsed .contact-rail{display:none}
      burnt orange · PEOPLE CONNECT ruby red (composed — no connect glyph exists in either set to harvest). Tiles are the Personal set's construction: black tile, thin coloured rim, thin white glyph, white capital label. -->
 <footer class="notif-bar" id="notifBar">
   <div class="notif-row">
-    <button class="notif-seg" type="button" id="segAdd" data-notif="plus" style="--nc:#8e24aa" aria-label="ADD — install Messenger" title="ADD">
+    <button class="notif-seg" type="button" id="segAdd" data-notif="plus" style="--nc:#8e24aa" aria-label="ADD — compose a new message" title="ADD">
       <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
       <span class="notif-label">ADD</span>
     </button>
@@ -654,6 +746,20 @@ body.rail-collapsed .contact-rail{display:none}
   </div>
 </div>
 
+<!-- FOLLOW-ON-5: COMPOSE — ADD is a compose button (ruling 10): create another message / add another instant message. Its choices are the scopes Personal / Business / Worlds — NOT Mail / Activity / Worlds. Worlds rides the Space world (the worlds scope). -->
+<div class="feed-panel" id="composePanel" role="dialog" aria-label="Compose a new message">
+  <h3>New message</h3>
+  <p class="feed-sub">Pick where this message lives — then write it below.</p>
+  <div class="feed-actions" id="composeScopes">
+    <button class="btn" type="button" data-scope="personal" style="--btn-accent:#0f52ba">Personal</button>
+    <button class="btn" type="button" data-scope="business" style="--btn-accent:#07925f">Business</button>
+    <button class="btn" type="button" data-scope="space" style="--btn-accent:#d4a017">Worlds</button>
+  </div>
+  <div class="feed-actions">
+    <button class="btn ghost" type="button" id="composeCloseBtn">Close</button>
+  </div>
+</div>
+
 <!-- NOTIFICATION CHOICE SHEET: the citizen picks what they get notified on -->
 <div class="feed-panel" id="choicePanel" role="dialog" aria-label="Choose your notifications">
   <h3>Notifications</h3>
@@ -664,24 +770,6 @@ body.rail-collapsed .contact-rail{display:none}
   </div>
 </div>
 
-<!-- FOLLOW-ON: CONTACT CARD — opens from the info button beside the person's name in the thread head; the same info as on their profile. The veil sits inside the kingdom frame (inset var(--bw)). -->
-<div class="person-card-veil" id="personCardVeil">
-  <div class="person-card" id="personCard" role="dialog" aria-label="Contact card">
-    <button class="install-x" id="personCardClose" type="button" aria-label="Close contact card">×</button>
-    <span class="intel-avatar" id="personCardAvatar" style="--av:96px">M</span>
-    <h3 id="personCardName">Maya R.</h3>
-    <p class="person-card-nut" id="personCardNut"></p>
-    <div class="person-card-rows" id="personCardRows"></div>
-    <label class="person-card-notes-label" for="personCardNotes">Notes on them</label>
-    <textarea class="person-card-notes" id="personCardNotes" rows="2" placeholder="Make notes on them — kept here, on this card." aria-label="Notes on this person"></textarea>
-    <div class="person-card-actions">
-      <button class="btn ghost" type="button" id="personCardMail">Smart Mail</button>
-      <button class="btn ghost" type="button" id="personCardIM">Instant Message</button>
-      <button class="btn ghost" type="button" id="personCardMeet">Smart Meet</button>
-      <button class="btn ghost" type="button" id="personCardCall">Call</button>
-    </div>
-  </div>
-</div>
 
 <script>
 /* STUB DATASET — sample people in the page's own shape (initial, name,
@@ -749,7 +837,7 @@ var THREADS = {
     {who:'theirs', text:'That cover is beautiful — can you send the link?', time:'09:41'},
     {who:'mine', text:'Of course — sending it now. It is the one from last night.', time:'09:43'},
     {who:'theirs', text:'Got it. The purple light on the edge is perfect.', time:'09:44'},
-    {who:'theirs', kind:'voice', dur:'0:42', secs:42, time:'09:46'}
+    {who:'theirs', kind:'voice', dur:'0:01', secs:1, time:'09:46'} /* FOLLOW-ON-5: the playable sample is the 0.75s generated tone, so the shown length is its real length. */
   ],
   jordan: [
     {who:'theirs', text:'Sunday market at nine — bring the sourdough.', time:'08:12'},
@@ -865,9 +953,14 @@ function nowTime(){ var d=new Date(); return String(d.getHours()).padStart(2,'0'
 
 function renderTabs(){
   if (!$('orgTabs')) return; /* STRIP 2026-11-18: tabs gone; topic switching awaits the top bar. */
-  var html = '<button class="nf-smtab' + (state.tab === 'All' ? ' active' : '') + '" type="button" data-topic="All" style="--tc:#6d28d9">All topics</button>';
+  /* FOLLOW-ON-5 (rulings 5+7): the pill carries the LABEL ONLY — just Design,
+     Music, Cooking, Fitness, Gardening, Travel, Business. No "online" on the
+     pill; the count lives in title (Hub smartTabStrip renders label only,
+     blob 5d3f9a7e, and its sub-lines live only in title/aria-label). The All
+     tab reads "All", like the Hub's. */
+  var html = '<button class="nf-smtab' + (state.tab === 'All' ? ' active' : '') + '" type="button" data-topic="All" style="--tc:#6d28d9" title="The full list — everyone">All</button>';
   TAB_ORDER.forEach(function(t){
-    html += '<button class="nf-smtab' + (state.tab===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#8e24aa') + '">' + t + ' <small>' + TOPICS[t].length + ' online</small></button>';
+    html += '<button class="nf-smtab' + (state.tab===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '" style="--tc:' + (TOPIC_COLORS[t] || '#8e24aa') + '" title="' + t + ' — ' + TOPICS[t].length + ' online">' + t + '</button>';
   });
   $('orgTabs').innerHTML = html;
   $('orgTabs').querySelectorAll('.nf-smtab').forEach(function(b){
@@ -1027,29 +1120,39 @@ function openTopicChat(topic){
   ];
   renderConvs(); renderTopicPeople(); renderThread(); renderContactRail();
 }
-/* FOLLOW-ON-4: voice-note board + timed playback. No audio file exists yet — the
-   timer IS the player: play runs the waveform and counts the duration down, and the
-   speed pill multiplies the rate (1x -> 1.5x -> 2x). Real recording + Smart Meet
-   audio path still owed; nothing here pretends to play sound. */
+/* FOLLOW-ON-5: the voice note is REAL AUDIO. The sample is generated in memory
+   at load — 0.75s, 8000 Hz, 16-bit mono, 440 Hz sine with a fade-out, as a WAV
+   data URI (~16 KB, no network, no external asset). The board renders a real
+   <audio controls> element; the three speed pills set audio.playbackRate
+   (1x purple / 1.5x sapphire / 2x emerald, spectrum order). The FO4 timer
+   board (voiceTick / fmtClock / VOICE_SPEEDS) is gone — nothing here counts
+   down, the element plays. A live recording path is still owed. */
+function voiceWavURI(){
+  var sr = 8000, n = Math.floor(sr * 0.75), bytes = 44 + n * 2;
+  var buf = new ArrayBuffer(bytes), v = new DataView(buf);
+  function str(off, s){ for (var i = 0; i < s.length; i++) v.setUint8(off + i, s.charCodeAt(i)); }
+  str(0, 'RIFF'); v.setUint32(4, bytes - 8, true); str(8, 'WAVE'); str(12, 'fmt ');
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  str(36, 'data'); v.setUint32(40, n * 2, true);
+  for (var i = 0; i < n; i++){ var t = i / sr; var smp = Math.sin(2 * Math.PI * 440 * t) * 0.5 * (1 - i / n); v.setInt16(44 + i * 2, Math.round(smp * 32767), true); }
+  var bin = '', u8 = new Uint8Array(buf);
+  for (var j = 0; j < u8.length; j += 8192){ bin += String.fromCharCode.apply(null, u8.subarray(j, j + 8192)); }
+  return 'data:audio/wav;base64,' + btoa(bin);
+}
+var VN_SRC = voiceWavURI();
 function voiceBoard(m, p){
   var bars = [10,18,26,14,22,30,16,24,12,28,20,8,26,18,30,14,22,10,28,16,24,12,20,26];
   var w = bars.map(function(h){ return '<i style="--h:' + h + 'px"></i>'; }).join('');
-  return '<div class="msg theirs voice-note" data-secs="' + (m.secs || 42) + '" data-rate="1" data-playing="0" data-elapsed="0">' +
-    '<button class="voice-play" type="button" aria-label="Play voice note from ' + esc(p.name) + '">\u25b6</button>' +
+  return '<div class="msg theirs voice-note">' +
     '<span class="voice-wave" aria-hidden="true">' + w + '</span>' +
-    '<span class="voice-dur">' + esc(m.dur || '0:42') + '</span>' +
-    '<button class="voice-speed" type="button" aria-label="Voice speed">1\u00d7</button>' +
+    '<audio class="voice-audio" controls preload="metadata" src="' + VN_SRC + '" aria-label="Voice note from ' + esc(p.name) + '"></audio>' +
+    '<span class="voice-dur">' + esc(m.dur || '0:01') + '</span>' +
+    '<span class="voice-speeds" role="group" aria-label="Voice speed">' +
+    '<button class="voice-speed on" type="button" data-rate="1" style="--sc:#8e24aa" aria-label="Voice speed 1 times">1\u00d7</button>' +
+    '<button class="voice-speed" type="button" data-rate="1.5" style="--sc:#0f52ba" aria-label="Voice speed 1.5 times">1.5\u00d7</button>' +
+    '<button class="voice-speed" type="button" data-rate="2" style="--sc:#07925f" aria-label="Voice speed 2 times">2\u00d7</button></span>' +
     '<span class="meta">' + esc(p.name) + ' \u00b7 ' + esc(m.time) + ' \u00b7 Voice note</span></div>';
-}
-function fmtClock(s){ s = Math.max(0, Math.round(s)); return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0'); }
-function voiceTick(board){
-  if (!document.contains(board)) { if (board.__vt) { clearInterval(board.__vt); board.__vt = null; } return; }
-  var rate = parseFloat(board.dataset.rate || '1');
-  var el = parseFloat(board.dataset.elapsed || '0') + 0.1 * rate;
-  var secs = parseFloat(board.dataset.secs || '42');
-  if (el >= secs) { el = 0; board.dataset.playing = '0'; board.classList.remove('playing'); var pb = board.querySelector('.voice-play'); if (pb) pb.textContent = '\u25b6'; if (board.__vt) { clearInterval(board.__vt); board.__vt = null; } }
-  board.dataset.elapsed = String(el);
-  var d = board.querySelector('.voice-dur'); if (d) d.textContent = fmtClock(secs - el);
 }
 function pickTopic(t){
   state.tab = t;
@@ -1265,14 +1368,24 @@ $('toggleMail').addEventListener('click', function(){ setFormat('mail'); });
 $('toggleIM').addEventListener('click', function(){ setFormat('im'); });
 $('sendBtn').addEventListener('click', sendMessage);
 $('composerInput').addEventListener('keydown', function(e){ if (e.key === 'Enter') sendMessage(); });
-  /* FOLLOW-ON-4: voice-note controls — speed cycles 1x / 1.5x / 2x; play runs the timer. */
-  var VOICE_SPEEDS = [1, 1.5, 2];
+  /* FOLLOW-ON-5: voice-note controls — the three speed pills set the REAL
+     audio element's playbackRate (1x / 1.5x / 2x, each its own colour); the
+     waveform lights while the audio plays. No timer anywhere. */
   $('threadBody').addEventListener('click', function(e){
     if (!e.target.closest) return;
     var sp = e.target.closest('.voice-speed');
-    if (sp) { var b = sp.closest('.voice-note'); if (!b) return; var i = VOICE_SPEEDS.indexOf(parseFloat(b.dataset.rate || '1')); var n = VOICE_SPEEDS[(i + 1) % VOICE_SPEEDS.length]; b.dataset.rate = String(n); sp.textContent = (n === 1 ? '1\u00d7' : n + '\u00d7'); return; }
-    var pl = e.target.closest('.voice-play');
-    if (pl) { var bd = pl.closest('.voice-note'); if (!bd) return; if (bd.dataset.playing === '1') { bd.dataset.playing = '0'; bd.classList.remove('playing'); pl.textContent = '\u25b6'; if (bd.__vt) { clearInterval(bd.__vt); bd.__vt = null; } } else { bd.dataset.playing = '1'; bd.classList.add('playing'); pl.textContent = '\u275a\u275a'; bd.__vt = setInterval(function(){ voiceTick(bd); }, 100); } }
+    if (sp) {
+      var b = sp.closest('.voice-note'); if (!b) return;
+      var au = b.querySelector('.voice-audio'); if (!au) return;
+      au.playbackRate = parseFloat(sp.dataset.rate || '1');
+      b.querySelectorAll('.voice-speed').forEach(function(x){ x.classList.toggle('on', x === sp); });
+    }
+  });
+  ['play', 'pause', 'ended'].forEach(function(ev){
+    $('threadBody').addEventListener(ev, function(e){
+      var b = e.target.closest ? e.target.closest('.voice-note') : null;
+      if (b) b.classList.toggle('playing', ev === 'play');
+    }, true);
   });
 $('chassisSearch').addEventListener('input', function(){ renderContactRail(); if (state.format === 'mail') renderInbox(); });
 $('toast').addEventListener('click', openToast);
@@ -1287,7 +1400,7 @@ if ($('backHub')) $('backHub').addEventListener('click', function(){ window.loca
 $('audioBtn').addEventListener('click', function(){ startCall('audio'); });
 $('videoBtn').addEventListener('click', function(){ startCall('video'); });
 /* --- THE SIX (Personal bottom bar, Set A official, Shawn's six-square set):
-   ADD opens the install veil · MAIL opens mail · ACTIVITY opens this
+   ADD composes a new message (FOLLOW-ON-5 ruling 10) · MAIL opens mail · ACTIVITY opens this
    world's activity feed · WORLDS cycles the mail world (Personal →
    Business → Space, in mail mode) · ECOSYSTEM opens the Hub ecosystem
    menu · CONNECT shows the contacts rail + focuses search. --- */
@@ -1411,10 +1524,10 @@ function openTopicPerson(p, topic){
 }
 function toggleEcoMenu(forceClose){
   var m = $('ecoMenu'), b = $('ecoPlus');
-  if (!m || !b) return;
+  if (!m) return;
   var open = forceClose ? false : !m.classList.contains('open');
   m.classList.toggle('open', open);
-  b.setAttribute('aria-expanded', String(open));
+  if (b) b.setAttribute('aria-expanded', String(open));
 }
 function cycleMailWorld(){
   var keys = ['personal', 'business', 'space'];
@@ -1424,14 +1537,15 @@ function cycleMailWorld(){
 }
 /* Top bar wiring — the Hub's own behaviour, mapped onto this page:
    rooms-plus goes to the Hub (the rooms live there); rail-toggle hides /
-   shows the contacts rail, exactly like the Hub's rail toggle; eco-plus
-   opens the ecosystem menu, closed by outside click or Escape. */
+   shows the contacts rail, exactly like the Hub's rail toggle. FOLLOW-ON-5:
+   the top-right holds the SM/IM toggle ONLY (ruling 8); the ecosystem menu
+   opens from the bottom-bar ECOSYSTEM tile, closed by outside click or Escape. */
 $('roomsPlus').addEventListener('click', function(){ window.location.href = 'https://nayanet.app/'; });
 $('railToggle').addEventListener('click', function(){
   var collapsed = document.body.classList.toggle('rail-collapsed');
   $('railToggle').setAttribute('aria-label', collapsed ? 'Show the contacts rail' : 'Hide the contacts rail');
 });
-$('ecoPlus').addEventListener('click', function(e){ e.stopPropagation(); toggleEcoMenu(); });
+/* FOLLOW-ON-5: the top-right eco-plus button is OUT (ruling 8) — no listener. The ecosystem menu is opened from the bottom-bar ECOSYSTEM tile (segEco) only. */
 document.addEventListener('click', function(e){ var m = $('ecoMenu'); if (m && m.classList.contains('open') && !m.contains(e.target)) toggleEcoMenu(true); });
 document.addEventListener('keydown', function(e){ if (e.key === 'Escape') toggleEcoMenu(true); });
 /* ULTIMATE: cover-toggle removed with the banner — no button, no function. */
@@ -1442,7 +1556,26 @@ function stubEvent(world, kind, text){
   return raiseCount(world, kind, 1);
 }
 window.__stubEvent = stubEvent;
-$('segAdd').addEventListener('click', function(){ openInstall(); });
+/* FOLLOW-ON-5: ADD is a COMPOSE button — create another message / add another instant message. Scopes Personal / Business / Worlds (Worlds = the Space world). The install veil stays in the file, reached from the install buttons, not from ADD. */
+function openCompose(){ $('choicePanel').classList.remove('show'); $('feedPanel').classList.remove('show'); $('composePanel').classList.add('show'); }
+function closeCompose(){ var c = $('composePanel'); if (c) c.classList.remove('show'); }
+function composeScope(scope){
+  closeCompose();
+  setFormat('im');
+  setWorld(scope);
+  var label = scope === 'personal' ? 'Personal' : scope === 'business' ? 'Business' : 'Worlds';
+  $('toastKind').textContent = 'New message — ' + label;
+  $('toastTitle').textContent = label + ' · ' + state.topic;
+  $('toastText').textContent = 'Write your message below — it goes out as an instant message in ' + label + '.';
+  $('toast').classList.add('show');
+  window.__toastFor = state.person ? state.person.id : null;
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(function(){ $('toast').classList.remove('show'); }, 8000);
+  var ci = $('composerInput'); if (ci) ci.focus();
+}
+$('segAdd').addEventListener('click', function(){ openCompose(); });
+document.querySelectorAll('#composeScopes .btn').forEach(function(b){ b.addEventListener('click', function(){ composeScope(b.dataset.scope); }); });
+$('composeCloseBtn').addEventListener('click', closeCompose);
 $('segMail').addEventListener('click', function(){ setFormat('mail'); $('composerInput').focus(); });
 $('segActivity').addEventListener('click', function(){ openFeed(state.world === 'space' ? 'thing' : state.world); });
 $('segWorlds').addEventListener('click', function(){ cycleMailWorld(); });
@@ -1578,13 +1711,13 @@ function openPersonCard(){
   $('personCardNut').textContent = isGroup ? 'Topic chat — everyone online in it, in the moment.' : (p ? (p.nut || '') : '');
   var rows = '';
   if (!isGroup && p){
-    if (p.match) rows += '<div><b>Match</b> · ' + p.match + '%</div>';
+    if (p.match) rows += '<div><b>Match</b> · <span class="match">' + p.match + '%</span></div>';
     if (p.last) rows += '<div><b>Last</b> · ' + esc(p.last) + '</div>';
     rows += '<div><b>World</b> · ' + esc(WORLDS[state.world].label) + '</div>';
-    if (p.match) rows += '<div><b>Matched in</b> · ' + esc(state.topic) + ' · ' + p.match + '%</div>';
+    if (p.match) rows += '<div><b>Matched in</b> · ' + esc(state.topic) + ' · <span class="match">' + p.match + '%</span></div>';
     rows += '<div><b>Connection</b> · ' + esc(WORLDS[state.world].label) + ' · ' + esc(state.topic) + '</div>';
   } else if (isGroup && p){
-    rows += '<div><b>Members</b> · ' + (p.members||[]).length + ' online</div>';
+    rows += '<div><b>Members</b> · <span class="match">' + (p.members||[]).length + '</span> online</div>';
   }
   $('personCardRows').innerHTML = rows;
   var _pn = $('personCardNotes'); if (_pn) _pn.value = (p && p.notes) || '';
@@ -1605,7 +1738,7 @@ $('personCardCall').addEventListener('click', function(){ closePersonCard(); sta
    across opens; topic people are rebuilt fresh per open — their notes do not
    persist until the live store lands, same as every other live path here). */
 $('personCardNotes').addEventListener('input', function(){ if (state.person) state.person.notes = this.value; });
-document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closePersonCard(); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { closePersonCard(); closeCompose(); } });
 /* U+25C9 GUARD: no rendered text on this page may contain the literal
    string — every pill dot is a CSS shape (.sdot), every jewel is a CSS shape
    or a literal character. True = clean. */
