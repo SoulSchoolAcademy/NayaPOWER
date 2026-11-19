@@ -533,7 +533,7 @@ assert ident_sha.startswith("3279dc35"), "identity sha is not the WALKTHROUGH-CH
 # Watchdog mechanics unchanged (warm-up, pick, assignment, clear
 # on start/end/error). Welcome, walk, template, identity shas
 # unchanged. Divider (.ib-foot-logo) untouched - the eye's call.
-assert unfold_sha.startswith("11130770"), "unfold sha is not the WALKTHROUGH-CHAIN-FIX8 unfold sha (2026-11-19: frame behind the stage, header out, FIX8-owned navigation, media frame waiting on the captioned video, revealed notes scroll into the reading window, staged only)"
+assert unfold_sha.startswith("ab8da1fa"), "unfold sha is not the WALKTHROUGH-CHAIN-FIX9 unfold sha (2026-11-19: seal on every frame, Back on the final frame, jewel dots navigate, frame-1 words visible at load, staged only)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
 # work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b
