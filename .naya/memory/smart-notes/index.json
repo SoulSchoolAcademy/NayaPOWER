@@ -66846,6 +66846,26 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "ae61098c877c3ba138dceacab0f5e3cde640b61c0812255f8493d2287da8dbaa"
+    },
+    {
+      "smart_note_id": "SN-3789",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3789-everything-in-the-date-header-extraordinary",
+      "title": "SN-3789 — Everything in the Date Header Extraordinary",
+      "content_hash": "6f0e1f3a359e5cfb7c7d8a4fcec43a496c18ee79775a50cf911f34eb91ecacbe",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3789/IB-SMART-NOTE-20261119-sn3789-everything-in-the-date-header-extraordinary.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "fa8c9a9081fb05814206c4f8648217a3f53d209713a47c0a6bf5f9de81a5a7e3"
     }
   ],
   "sequence_policy": {
@@ -66856,5 +66876,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "b4aa0fa67560693d4c12578b3d3b9f024220894eacf85098b50fb777a614fe0f"
+  "corpus_manifest_hash": "155d16115a13512cb86620fab915702d94ab76568d36695de72f723e3163a66d"
 }
