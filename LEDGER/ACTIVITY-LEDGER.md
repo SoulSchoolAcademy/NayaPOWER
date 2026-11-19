@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -36621,6 +36621,14 @@ _Last updated: 2026-11-19 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-scorer-20261014-2220 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** GAP follow-up: independent second-seat re-run of t0572-lane9 section-1 forensics at the live tip; method reproduced, packet voided on tip move
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2220-lane9.md`
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty apart from the stall above). VERIFIED first-hand: parent receipt t0572-lane9.md exists on disk; gap brief exists in brief-queue/done/ (completed); live-tip pin ba62638704256b012c20e41fe7f53cc3b62b1b44 confirmed as a commit object in the mirror; receipt is internally complete (full 11-handle verdict ta
+
 ### 🟡 gap-scorer-20261014-2200-lane9 — Team 9, Team Naya Scorer (Code Health) — 7.0/10 [PARTIAL]
 
 **Task:** t0412 tie-break gap CLOSED: false docstring corrected at 4 sites, lexical tie-break empirically pinned, 0.426/0.502 adjudicated as frozen history
@@ -54418,6 +54426,36 @@ _Last updated: 2026-11-19 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261118-2313 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** GATE-STALL sweep: 31 queued briefs evaluated, 0 claimed, queue untouched; stall receipt filed because last stall ~65 min old
+
+**Evidence:** Fresh window. VERIFIED first-hand: queue composition EXACT - 31 brief-*.md on disk, sorted list matches the receipt's blocked-briefs section 31/31, delta vs the 2208 receipt zero; claim-sweep log sha256 657bfb4b... MATCHES the cited hash; log shows 27 CLAIM-EXIT=7 + 2 CLAIM-EXIT=2 and 0 claims, queue untouched. Score 9.0 (GOOD, ONE MORE PASS; match
+
+### ✅ gate-stall-20261015-1545 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** STALL sweep: 24 queued briefs evaluated via claim-brief.py --dry-run, all refused (17 parent-authorship, 6 stamped gates, 1 no-refile); correct skip, queue untouched
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: receipt complete (24/24 with per-brief blocking rule); queue shrank 25->24 vs the 1515 sweep 30 min earlier, consistent with one brief leaving the queue in between; cross-corroborated by the three sibling stalls. Individual refusals cannot be re-run 5 weeks later (queue rotated)
+
+### ✅ gate-stall-20261015-1515 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** STALL sweep: 25 queued briefs evaluated via claim-brief.py, all refused (19 parent-authorship, 6 stamped gates, 1 no-refile); root cause named (dispatch-routing: eligible seats never scheduled against the queue) with 3 recommended next steps
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: receipt complete (25/25 with per-brief blocking rule); root-cause analysis names the dispatch-routing gap with concrete next steps, deeper than the 1504 sibling; cross-corroborated by 1504/1510/1545 siblings on the same queue state. Individual refusals cannot be re-run 5 weeks l
+
+### ✅ identity-stall-20261015-1510 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** IDENTITY-STALL sweep: 26 queued briefs evaluated in ORDERING order, all identity-barred for Clarity; one live claim attempt on 1500-lane4 correctly refused exit 7 by the parent-authorship check; correct skip
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: receipt complete (26/26 briefs tabulated with the barring rule quoted from each brief's own text); the live exit-7 refusal of brief-gap-lane-scorer-20261015-1500-lane4 is corroborated by the 1504/1515 receipts naming the same brief and the same parent-authorship bar; cross-consi
+
+### ✅ gate-stall-20261015-1504 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** GATE-STALL sweep: all 25 queued briefs evaluated via claim-brief.py --dry-run, all gate-blocked for Clarity (6 stamped CLAIMABILITY GATEs, 18 parent-authorship second-seat demands, 1 no-refile verdict); correct skip, no claim, queue-health signal recorded
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: receipt is internally complete (25/25 briefs named with exit codes and blocking rules); cross-corroborated by three sibling stall receipts the same afternoon (1510, 1515, 1545) describing the identical queue composition and the same refusals; claim-brief.py exists at hidden_file
 
 ### ✅ gate-stall-20261118-2208 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
