@@ -3433,7 +3433,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         }
         function greetingWord(d) {
           var h = d.getHours();
-          return h < 12 ? "Good morning" : h < 18 ? "Good day" : "Good evening";
+          return h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
         }
         /* The info jewel — a pearl disc (styled in CSS so it sits raised
            off the page) with a small dark i at its heart: the day's info */
@@ -4485,9 +4485,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              yet — the door says so honestly per scope, and no headline
              is ever invented. */
           var notifRowsB = '<div class="world-icons news-icons">' +
-            worldIcon("news", "#0e7490", "news", "Local news", "local", 0) +
-            worldIcon("news", "#07925f", "landmark", "Provincial news", "provincial", 0) +
-            worldIcon("news", "#d4a017", "globe", "Global news", "global", 0) +
+            /* FIX13 fail 3 — no news store exists in this file (the feeds are
+             being built in Area #44 and are not reachable here yet), so
+             there is no real count to wear: the badges come OFF (null
+             renders no badge element and no count in the label) rather
+             than wearing a hardcoded 0. */
+            worldIcon("news", "#0e7490", "news", "Local news", "local", null) +
+            worldIcon("news", "#07925f", "landmark", "Provincial news", "provincial", null) +
+            worldIcon("news", "#d4a017", "globe", "Global news", "global", null) +
             "</div>";
           /* notifInner is kept whole: anything else reading it sees the full section. */
           var notifInner = notifCards + notifRowsA + notifRowsB;
@@ -4557,10 +4562,15 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              the rest keep their current relative order. dayBlocks()
              reads live DOM order, so the sections move in the DOM
              here, every render. */
-          var __ds = $("dayScroll"), __notifSec = wrap.querySelector(".notif-slide"), __wisB = $("wisdomBanner");
+          var __ds = $("dayScroll"), __wisB = $("wisdomBanner");
           /* FIX12 item 10 — no cover slide: the day opens on Wisdom (1),
              then Notifications (2); the rest keep their order. */
-          if (__ds && __notifSec && __wisB) { __ds.insertBefore(__wisB, __notifSec); }
+          /* FIX13 fail 1 — the old reference node was the notif section, a child
+             of #catsWrap, not of #dayScroll, so insertBefore threw
+             NotFoundError and the day never opened. Wisdom now goes before
+             #catsWrap itself — a real #dayScroll child — the same order:
+             Wisdom first, Notifications (first inside the wrap) second. */
+          if (__ds && wrap && __wisB) { __ds.insertBefore(__wisB, wrap); }
           /* FIX11 item 9 — remap the kept slide key onto the new order. */
           if (__curKey) { var __nb = dayBlocks(); for (var __ni = 0; __ni < __nb.length; __ni++) { if (__slideKey(__nb[__ni]) === __curKey) { dayBlock = __ni; break; } } }
           /* FIX11 item 4 — SMART MEET opens the book-a-time flow, NOT
