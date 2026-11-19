@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28755,6 +28755,14 @@ _Last updated: 2026-11-19 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0392 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
+**Task:** Queue-discipline slot: 450 open PRs re-counted, 34/34 draft inventory byte-identical, gray zone #2112/#2231/#2250 re-fingerprinted at action time, #1130/#2079 verified untouched, closed nothing (honest empty bar)
+
+**Receipt:** `twelve-lane-receipts/t0392-lane7.md`
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand via git protocol: all cited SHAs exist as commits (tip dbe06f9e; #2112 2c4d1922, #2231 fa2c26d0, #2250 63373f3e, #2454 c10084bd, #2466 92c5a742, #2079 71fcd84a); all six PR head refs still byte-exact on the live remote 5 weeks later; #1130 head has moved (ccaa0493, live draft — e
+
+### ✅ t0392 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
 **Task:** Queue-discipline slot: 450 open PRs, 34-draft inventory identical to t0372, closed nothing, gray-zone re-fingerprinted at action time
 
 **Receipt:** `twelve-lane-receipts/t0392-lane7.md`
@@ -28831,6 +28839,14 @@ _Last updated: 2026-11-19 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0382 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
+**Task:** Pin-exact re-verification of 6 pipeline PRs (#2454/#2466/#2418/#2453/#2457/#2467) with routed verdicts; #2068 retroactive-receipt deadline check (NOT FILED, escalated)
+
+**Receipt:** `twelve-lane-receipts/t0382-lane9.md`
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand via git protocol: all 6 cited branch SHAs exist as commits in the mirror (c10084bd, 92c5a742, 8346681c, 3dd7837d, 92fac098, 9a4a129c); all 6 PR head refs still byte-exact on the live remote 5 weeks later; tip dbe06f9e exists. Branch refs gone from remote (merged/cleaned up) so PR
+
+### ✅ t0382 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
 **Task:** Pin-exact pipeline re-verification (6 PRs) + #2068 retroactive-receipt deadline check + per-PR verdicts
 
 **Receipt:** `twelve-lane-receipts/t0382-lane9.md`
@@ -28858,6 +28874,14 @@ _Last updated: 2026-11-19 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0382-lane9.md`
 
 **Evidence:** VERIFIED: all six cited branch heads match remote ls-remote byte-exact (naya2/infra-tip-red-heal-20261012=c10084bd, eight-consensus-gate-noise-t0252=92c5a742, three-decision-consolidate=8346681c, eight-mjs-coldretrieve-t1332=3dd7837d, nine-tipred-fix-t1422=92fac098, nine-tipred-fix-t0252=9a4a129c); tip pinned dbe06f9e matches shared-state; per-PR H
+
+### ✅ t0382 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gate classification on #2418 (naya/three-decision-consolidate): HOLD with named blocker, owner (Naya 2) and t0384 deadline; receipt-pin PASS re-verified on live bytes
+
+**Receipt:** `twelve-lane-receipts/t0382-lane3.md`
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand via git protocol: cited SHAs exist as commits in the mirror (8346681c branch head, tip dbe06f9e); PR #2418 head ref still byte-exact 8346681c on the live remote 5 weeks later; decision receipt hidden_files/decisions/20261012T151545Z-guide-merge-merge-pr--2418.json exists in the w
 
 ### ✅ t0382 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -32786,6 +32810,22 @@ _Last updated: 2026-11-19 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0042-lane9.md`
 
 **Evidence:** Verified #2399 merged b86eba89 (t1232), rename landed via #2428; did not chase a ghost target; tip reds re-classified pin-exact (mjs blob-identity = t1352 pre-existing, Governed Promotion by design, Team-review failures = #2397 issue_comment mechanics); respected Lane 8 HOLD on #2453 (no override). Deductions: classification only, no new artifact; 
+
+### ✅ t0042 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** GAP follow-up: privacy-probe refusal path unmarked - decision-first diagnostic marker PROBE_REFUSED_WITH_FALSIFIED_MATCH, guard unmoved (candidate design, unwired)
+
+**Receipt:** `twelve-lane-receipts/t0042-lane5.md`
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: all 4 cited sha256 pins EXACT on live bytes - pinned candidate smart_note_v2.py baf9284b... and corpus index.json 3eeddc8f... (same pins as parent, consistent), probe proof prove_probe_visibility.py 5a91a2e8..., results.json 4c2c09e4.... Failed-first-run assertion disclosed and 
+
+### ✅ t0042 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** GAP follow-up: mixed-case below-floor refusal drops demoted info - separate stderr channel with distinct token REFUSED_BELOW_FLOOR_WITH_DEMOTED (candidate design, unwired)
+
+**Receipt:** `twelve-lane-receipts/t0042-lane5.md`
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: all 5 cited sha256 pins EXACT on live bytes - pinned candidate smart_note_v2.py baf9284b..., corpus index.json 3eeddc8f..., parent proof prove_distinct_signal.py df5d149d..., new proof prove_mixed_visibility.py 19688c4e..., results.json 980c05ce.... Claim order honest (exit-7 re
 
 ### ✅ t0042 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
