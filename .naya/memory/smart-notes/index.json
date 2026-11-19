@@ -64545,6 +64545,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3675",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3675-one-world-already-built",
+      "slug": "one-world-already-built",
+      "title": "One World, Already Built",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3675/IB-SMART-NOTE-20261119-sn3675-one-world-already-built.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3675/IB-SMART-NOTE-20261119-sn3675-one-world-already-built.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3675/IB-SMART-NOTE-20261119-sn3675-one-world-already-built.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3675-one-world-already-built.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T12:23:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "2e9fd1732fea7f6ceb7d089a7e80f3de53bef12a720e78dd752225ffb9ebd496",
+      "content_hash": "99664ce3c2609a2f226bf3360e86b9f91273558b24a582602366898b76b06c94",
+      "one_line": "A Personal page is a world, not a card — and everybody gets the same finished world, with only the labels personal: your name, your words, your cover. Maturity is the technical rule underneath: you do not build a new thing when the finished thing already exists; a new thing starts at grade one and drifts. The public feed replaces the Activity tab because a home has a window onto the street — the Hub's exact feed system, taken, not one like it. The Super Admin is Shawn's own room: family in, the network's numbers, one message to everybody, and a teaching series that learns from what citizens report worked. The rest of the family is pace and wholeness: feedback runs both ways and every correction becomes a law, a note and a better next round in the same pass; one scorecard cycle, not three, because makers land 8–9 first pass and extra cycles polish instead of transform; a ten-item list is worked whole — showing one finished item spends his time on the other nine; and behavior is designed, not exploited — understand psychology, protect choice, simplify, enable action, verify, learn.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64555,5 +64588,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "94cfd0aed8c553afe1851628f0a80e4c3f4bea9c64db7fe2ae33b0bb50cec711"
+  "corpus_manifest_hash": "02addead8788801d6966c8a149c3be4ced8a1f10eaa156fd4db76f0253b5d06a"
 }
