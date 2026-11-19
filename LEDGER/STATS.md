@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-19 04:15 UTC_
+_Last updated: 2026-11-19 04:35 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9160
-- ✅ Verified (8+): 9069
-- 🟡 Partial (5–7): 82
+- **Total scored actions:** 9165
+- ✅ Verified (8+): 9073
+- 🟡 Partial (5–7): 83
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
 - **Verification rate:** 99% of actions fully verified
@@ -22,8 +22,8 @@ _Last updated: 2026-11-19 04:15 UTC_
 | Team 5 | Naya Seeker | 671 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 387 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 524 | 8.9 | 10 |
-| Team 8 | Naya Sentinel | 549 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 679 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 552 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 681 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 936 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 589 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 468 | 9.2 | 9.5 |
@@ -2410,9 +2410,9 @@ _Last updated: 2026-11-19 04:15 UTC_
 - **gap-t0776-lane9:** 1 actions, avg 9.0/10
 - **gap-t0580b-lane9:** 1 actions, avg 9.0/10
 - **lane-scorer-20261015-1700:** 1 actions, avg 8.5/10
-- **gap-t0776-lane9-decline2:** 1 actions, avg 9.0/10
+- **gap-t0776-lane9-decline2:** 2 actions, avg 9.0/10
 - **gap-t0776-lane9-decline2-rootcause:** 4 actions, avg 8.9/10
-- **gap-scorer-20261014-2200-lane9:** 2 actions, avg 9.1/10
+- **gap-scorer-20261014-2200-lane9:** 3 actions, avg 8.4/10
 - **gap-scorer-20261014-2220-lane9:** 1 actions, avg 9.2/10
 - **gap-gap-scorer-20261014-2200:** 1 actions, avg 9.5/10
 - **lane-scorer-20261022-1300:** 1 actions, avg 9.5/10
@@ -3310,7 +3310,7 @@ _Last updated: 2026-11-19 04:15 UTC_
 - **t0809:** 2 actions, avg 9.2/10
 - **t0810:** 2 actions, avg 9.0/10
 - **t0812:** 2 actions, avg 9.2/10
-- **t0813:** 9 actions, avg 9.1/10
+- **t0813:** 10 actions, avg 9.1/10
 - **t0813-lane8:** 1 actions, avg 9.0/10
 - **t0813-lane8-reclaim:** 6 actions, avg 8.8/10
 - **t0814:** 2 actions, avg 9.2/10
@@ -3319,7 +3319,7 @@ _Last updated: 2026-11-19 04:15 UTC_
 - **t0815-phase1c:** 2 actions, avg 9.2/10
 - **t0815-phase2:** 2 actions, avg 9.2/10
 - **t0815-phase15:** 2 actions, avg 9.1/10
-- **t0815:** 12 actions, avg 9.3/10
+- **t0815:** 14 actions, avg 9.3/10
 - **t0816:** 24 actions, avg 9.2/10
 - **t0817:** 7 actions, avg 9.3/10
 - **t0817-lane7:** 1 actions, avg 9.5/10
