@@ -2215,6 +2215,97 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
       .opt-pill:hover{transform:translateY(-1px);filter:brightness(1.22)}
       .opt-pill[aria-pressed="true"]{border-color:var(--dc,#3fb8ff);box-shadow:0 0 16px color-mix(in srgb,var(--dc,#3fb8ff) 40%,transparent),inset 0 1px 0 rgba(255,255,255,.35)}
       .smart-block.allow-scroll{overflow-y:auto;justify-content:flex-start;scrollbar-width:thin;scrollbar-color:var(--dc,#3fb8ff) rgba(255,255,255,.12)}
+
+/* ============ FIX2 — Calendar day follow-on, eye round 2 (2026-11-19) ============
+   Every rule below is scoped to the failing item. Earlier rules are never
+   edited in place; these win by later position. Phone first: the 390px
+   rules live in the max-width:560px block at the end. */
+/* (9) DOTS TOP RIGHT — the .smart-block>* 1100px cap stretched the dots div
+   across the block, so right:18px pinned its box, not the dots. max-content
+   pins the dots themselves to the top-right corner. */
+.sb-dots{width:max-content!important;max-width:calc(100% - 36px);margin:0!important}
+/* (2) WEEK ICONS BESIDE THE NAMES — the column becomes a row: icon, then word. */
+.weekrow .wk-col{display:flex!important;flex-direction:row!important;align-items:center;justify-content:center;gap:6px!important}
+.weekrow .wk-ico{flex:none!important}
+/* (6) COVER FILLS THE AREA — the 720px cap goes; the chamber photo takes the
+   whole width, cover-cropped to the room that is left after date, row and nav. */
+.sb-chamber .smart-visual{max-width:none!important}
+@media(min-width:741px){.sb-chamber .smart-visual{max-height:calc(100% - 230px)!important}}
+/* (7) WISDOM GREETING TOP LEFT — the greet row moves to the top of the banner,
+   orb first, greeting right beside it. */
+.wisdom-banner .greet-row{order:-1!important;justify-content:flex-start!important;padding-right:0!important;display:flex!important;align-items:center!important;gap:14px!important}
+/* (4) NOTIFICATIONS, CLOSED — tighten the bar and the horoscope row so the
+   strip clears the nav; the slide also scrolls, so nothing can ever sit
+   under the nav again. */
+.notif-slide .notif-head{margin-bottom:4px!important}
+.notif-slide .notif-blocks{gap:8px!important}
+.notif-slide .nblock{padding:6px 12px!important}
+.notif-slide .cat-rows .cat-row{padding:6px 12px!important;margin:3px 0!important}
+.notif-slide .cat-essence{margin-bottom:6px!important}
+@media(min-width:769px){.notif-slide .os-mini-num.med .os-mini-tile{width:48px!important}.notif-slide .os-mini-num.med .os-mini-tile .cap{height:8px!important}.notif-slide .os-mini-num.med .os-mini-tile .rd{height:48px!important;line-height:48px!important;font-size:42px!important}}
+/* (4) NOTIFICATION DETAIL — an overlay inside its own section, clear of the
+   nav at both widths; the head sticks so CLOSE never scrolls away, the rows
+   scroll beneath it. */
+.smart-block .notif-detail{position:absolute!important;left:50%!important;transform:translateX(-50%)!important;top:96px!important;bottom:96px!important;width:min(1100px,100%)!important;z-index:6!important;border:1.5px solid color-mix(in srgb,var(--sc,#3fb8ff) 65%,#ffffff 10%)!important;box-shadow:0 18px 44px rgba(0,0,0,.7),0 0 24px color-mix(in srgb,var(--sc,#3fb8ff) 25%,transparent)!important}
+.smart-block .notif-detail .nd-head{position:sticky!important;top:0!important;z-index:2!important;background:linear-gradient(180deg,#151522,#090910)!important}
+/* (5) YOUR WORLDS — tighten the rows so Connections ends whole above the nav. */
+.worlds-slide .cat-row{margin:3px 0!important;padding:10px 12px!important}
+/* (16) GOLD DAY NUMBERS — the clock's own d3 gold, verbatim (border, glow,
+   cap gradient), on the month cells, the headliner and the king hero. */
+.os-mini-num.goldnum .os-mini-tile{border-color:#f5d76e!important;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(245,215,110,.5),inset 0 1px 0 rgba(255,255,255,.35)!important}
+.os-mini-num.goldnum .os-mini-tile .cap{background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a)!important}
+/* (10) STATS BOARD — six real counts in digit tiles, three across. */
+.stats-board{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 16px}
+.stat-cell{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px;border:1.5px solid rgba(255,255,255,.12);border-radius:14px;background:linear-gradient(180deg,#15151f,#08080d)}
+.stat-label{font-size:17px;font-weight:700;color:#fff;text-align:center}
+/* (11) REPORTS OVERLAY — Back to month, bottom-right. */
+.door-backmonth{display:flex;justify-content:flex-end;margin:16px 0 8px}
+/* (14) BACK TO MONTH — the chevron is the back arrow itself; no icon beside it. */
+.daybar>.backbtn.eye .btw-chev{font-size:26px;font-weight:700;color:#fff;line-height:1}
+/* (13) NAV THAT NEVER RIDES — on a scrolling slide the nav sticks to the
+   bottom of the viewport and the dots stick to the top; content scrolls
+   beneath a fade so rows never show through. */
+.smart-block.allow-scroll .sb-nav{position:sticky!important;bottom:20px!important;z-index:5!important;margin-top:auto!important;background:linear-gradient(180deg,rgba(5,6,7,0),#050607 35%)!important;padding-top:14px!important}
+.smart-block.allow-scroll .sb-dots{position:sticky!important;top:10px!important;right:auto!important;order:-1!important;align-self:flex-end!important;margin-top:0!important}
+/* (17) WORLD CLOCK — the clock is a button; its zone shows beneath the tiles
+   in the day colour; the chooser is a small centred panel. */
+#greetClock{cursor:pointer;background:none!important;border:none!important;padding:0!important;font:inherit!important;display:flex!important;flex-direction:column!important;align-items:center!important}
+#greetClock[data-zone]::after{content:attr(data-zone);display:block;font-size:17px;font-weight:800;letter-spacing:.22em;color:var(--dc,#3fb8ff);text-shadow:0 0 10px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent);margin-top:4px;text-align:center}
+.clock-menu{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:90;width:min(420px,calc(100vw - 32px));background:linear-gradient(180deg,#1a1a26,#08080d);border:1.5px solid var(--dc,#3fb8ff);border-radius:18px;padding:20px;box-shadow:0 24px 60px rgba(0,0,0,.8),0 0 28px color-mix(in srgb,var(--dc,#3fb8ff) 30%,transparent)}
+.clock-menu.hidden{display:none!important}
+.clock-menu-title{font-size:25px;font-weight:800;color:#fff;margin:0 0 6px}
+.clock-menu-sub{font-size:17px;color:#fff;margin:0 0 14px}
+.clock-zones{display:flex;flex-wrap:wrap;gap:8px}
+.clock-zone-pill{font-size:17px;font-weight:700;color:#fff;background:#15151f;border:1.5px solid rgba(255,255,255,.25);border-radius:999px;padding:10px 16px;cursor:pointer}
+.clock-zone-pill:hover{border-color:var(--dc,#3fb8ff)}
+.clock-menu-close{margin-top:16px;font-size:17px;font-weight:800;color:#fff;background:var(--dc,#3fb8ff);border:none;border-radius:999px;padding:10px 22px;cursor:pointer}
+/* ================= PHONE 390 — the day must be navigable ================= */
+@media(max-width:560px){
+  /* (12) MONTH — the week row is the same 7-column grid as the cells, so Sat
+     ends whole at the right edge; 18px day tiles fit their 40px cells. */
+  .weekrow{display:grid!important;grid-template-columns:repeat(7,1fr)!important;gap:0 5px!important}
+  .weekrow .wk-col{min-width:0!important;gap:3px!important}
+  .weekrow .wk-ico{width:16px!important;height:16px!important}
+  .weekrow .wk-ico svg{width:11px!important;height:11px!important}
+  .grid .os-mini-tile{width:18px!important}
+  .grid .os-mini-tile .rd{height:22px!important;line-height:22px!important;font-size:15px!important}
+  .grid .os-mini-num{gap:1px!important}
+  /* (13) DAY — every slide scrolls inside itself; the nav sticks 64px above
+     the section bottom (clear of the fixed weather pill) and the dots stick
+     to the top; Keep reading compacts so Tue + Keep reading + Thu fit 306px. */
+  #dayScroll .smart-block{overflow-y:auto!important;justify-content:flex-start!important;padding-bottom:140px!important}
+  #dayScroll .smart-block .sb-nav{position:sticky!important;bottom:64px!important;z-index:5!important;margin-top:auto!important;background:linear-gradient(180deg,rgba(5,6,7,0),#050607 35%)!important;padding-top:14px!important;gap:6px!important}
+  #dayScroll .smart-block .sb-dots{position:sticky!important;top:10px!important;right:auto!important;order:-1!important;align-self:flex-end!important}
+  #dayScroll .smart-block .sb-nav .p3-enter{padding:12px 16px!important;font-size:15px!important}
+  #dayScroll .smart-block .sb-nav .daystep-btn{padding:6px 10px!important;font-size:14px!important}
+  .smart-block .notif-detail{top:12px!important;bottom:132px!important}
+  /* (13) S ORB — smaller, hard right, clear of "Wednesday". */
+  .daybar .sigpiece{width:36px!important;height:36px!important;right:0!important}
+  /* (13/14) BACK TO MONTH keeps its label at phone — never the icon-only circle. */
+  .daybar>.backbtn.eye{width:auto!important;padding:0 14px!important;gap:8px!important}
+  .daybar>.backbtn.eye .btw{display:inline!important}
+}
+
 </style>
   </head>
   <body>
@@ -2249,7 +2340,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
       <section id="screen-day" class="screen hidden" aria-label="Day menu">
         <header class="daybar" id="dayBar">
           <button class="backbtn eye" id="backToMonth" aria-label="Back to month" title="Back to month">
-            <span class="jewel" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="8.8" r="1.5" fill="#ffffff"/><path d="M12 11.9v5" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" fill="none"/></svg></span><span class="btw">BACK TO MONTH</span>
+            <span class="btw-chev" aria-hidden="true">‹</span><span class="btw">BACK TO MONTH</span>
           </button>
           <div class="dayhead" id="dayHead"></div>
         </header>
@@ -2280,7 +2371,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         <div class="doorbody" id="doorBody"></div>
       </section>
     <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-et bottom"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div><div class="rf-n bottom"></div></div>
-<button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/icon-512.png&amp;ref=calendar/day-followon-live-20261119&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795053268" alt="Naya"></button>
     </div>
 
     <script>
@@ -2591,8 +2681,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (!isFinite(d)) return '';
           return '<span class="os-mini-tile d' + d + '"><span class="cap"></span><span class="rd">' + d + '</span></span>';
         }
-        function digitsHTML(num, med) {
-          var html = '<span class="os-mini-num' + (med ? " med" : "") + '">';
+        function digitsHTML(num, med, gold) {
+          var html = '<span class="os-mini-num' + (med ? " med" : "") + (gold ? " goldnum" : "") + '">'; /* FIX2 item 16: gold=true wears the clock's own d3 gold. */
           String(num).split("").forEach(function (ch) { html += miniTileHTML(ch); });
           return html + "</span>";
         }
@@ -2626,8 +2716,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            separated a little from the date — its own tile row. One
            clock, one treatment, wherever the live clock shows: the
            month plaque AND the day headliner clock */
-        function clockTilesHTML(d) {
-          var h24 = d.getHours(), m = d.getMinutes(), s = d.getSeconds();
+        function clockTilesHTML(d, localOnly) {
+          var tz = localOnly ? null : clockZone().tz;
+          var zp = tz ? clockPartsInZone(d, tz) : null;
+          var h24 = zp ? zp.h : d.getHours(), m = zp ? zp.m : d.getMinutes(), s = zp ? zp.s : d.getSeconds();
+          var gc = $("greetClock"); if (gc) gc.setAttribute("data-zone", clockZoneLabel());
           var ap = h24 >= 12 ? "PM" : "AM";
           var h12 = h24 % 12; if (h12 === 0) h12 = 12;
           var hc = HOUR_COLORS[h12];
@@ -2641,6 +2734,50 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           t += '<span class="os-mini-tile letter"><span class="cap"></span><span class="rd">' + ap.charAt(0) + '</span></span>';
           t += '<span class="os-mini-tile letter"><span class="cap"></span><span class="rd">' + ap.charAt(1) + '</span></span>';
           return t + "</span>";
+        }
+        /* FIX2 item 17 — WORLD CLOCK (Shawn, eye round 2): the clock lets
+           the citizen set the time they want. Local time by default; a
+           city setting, picked from the clock itself, kept in
+           nayacal.clock.v1. No GMT label anywhere — the zone shows as
+           the city name (LOCAL for local time). */
+        var CLOCK_ZONES = [
+          { id: "local", label: "LOCAL", tz: null },
+          { id: "vancouver", label: "VANCOUVER", tz: "America/Vancouver" },
+          { id: "toronto", label: "TORONTO", tz: "America/Toronto" },
+          { id: "newyork", label: "NEW YORK", tz: "America/New_York" },
+          { id: "london", label: "LONDON", tz: "Europe/London" },
+          { id: "paris", label: "PARIS", tz: "Europe/Paris" },
+          { id: "tokyo", label: "TOKYO", tz: "Asia/Tokyo" },
+          { id: "sydney", label: "SYDNEY", tz: "Australia/Sydney" }
+        ];
+        function clockZoneId() { try { return LS.get("nayacal.clock.v1") || "local"; } catch (e) { return "local"; } }
+        function clockZone() { var id = clockZoneId(); var z = CLOCK_ZONES.filter(function (x) { return x.id === id; })[0]; return z || CLOCK_ZONES[0]; }
+        function clockZoneLabel() { return clockZone().label; }
+        function clockPartsInZone(d, tz) {
+          try {
+            var f = new Intl.DateTimeFormat("en-US", { timeZone: tz, hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" });
+            var p = {}; f.formatToParts(d).forEach(function (x) { p[x.type] = x.value; });
+            var h = parseInt(p.hour, 10); if (h === 24) h = 0;
+            return { h: h, m: parseInt(p.minute, 10), s: parseInt(p.second, 10) };
+          } catch (e) { return { h: d.getHours(), m: d.getMinutes(), s: d.getSeconds() }; }
+        }
+        function clockMenuHTML() {
+          return '<div class="clock-menu hidden" id="clockMenu" role="dialog" aria-label="Choose time zone">' +
+            '<p class="clock-menu-title">World clock</p>' +
+            '<p class="clock-menu-sub">Local time by default — pick a city to see its time.</p>' +
+            '<div class="clock-zones">' + CLOCK_ZONES.map(function (z) { return '<button type="button" class="clock-zone-pill" data-clockzone="' + z.id + '">' + z.label + '</button>'; }).join("") + '</div>' +
+            '<button type="button" class="clock-menu-close" data-clockzone-close>Close</button></div>';
+        }
+        function ensureClockMenu() { var m = $("clockMenu"); if (!m) { document.body.insertAdjacentHTML("beforeend", clockMenuHTML()); m = $("clockMenu"); } return m; }
+        function openClockMenu() { ensureClockMenu().classList.remove("hidden"); }
+        function closeClockMenu() { var m = $("clockMenu"); if (m) m.classList.add("hidden"); }
+        function setClockZone(id) {
+          try { LS.set("nayacal.clock.v1", id); } catch (e) {}
+          closeClockMenu();
+          var n = new Date();
+          var c = $("greetClock"); if (c) c.innerHTML = clockTilesHTML(n);
+          var cc = $("coverClock"); if (cc) cc.innerHTML = clockTilesHTML(n);
+          renderNowPlaque();
         }
         /* The counts for one scope on the selected day. Only what is
            really here is counted: your notes for this day are live.
@@ -2834,7 +2971,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                         (isToday(d) ? " — today" : "") + (na ? " — " + na + (na === 1 ? " appointment" : " appointments") : "");
             html += '<button type="button" role="gridcell" class="cell' + (isToday(d) ? ' today' : '') + '" style="--dc:' + dc + '" data-y="' + d.getFullYear() +
                     '" data-m="' + d.getMonth() + '" data-d="' + d.getDate() + '" aria-label="' + label + '">' +
-                    digitsHTML(d.getDate()) +
+                    digitsHTML(d.getDate(), false, true) +
                     dots + jewelSVG() + "</button>";
           }
           grid.innerHTML = html;
@@ -2940,15 +3077,15 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               : worldDigitsHTML(real, s.color, true, true);
             var unit = s.id === "appointments" ? "appointment" : "Naya Note";
             var aria = real === null ? s.label + ", not connected yet" : s.label + ", " + real + " " + unit + (real === 1 ? "" : "s");
-            var sub = s.id === "personal" ? "Naya Notes" : s.id === "appointments" ? "Appointments" : s.id === "sales" ? "Sales" : "Notifications";
+            var sub = s.id === "personal" ? "Naya Notes" : s.id === "appointments" ? "Appointments" : s.id === "sales" ? "Sales" : ""; /* FIX2 item 3: BUSINESS / YOUR WORLDS carry no sub-label — "Notifications" is said once, in the bar head. */
             return '<button type="button" class="nblock" style="--sc:' + s.color + '" data-scope="' + s.id + '" aria-expanded="' + (openScopeId === s.id) + '" aria-label="' + aria + '">' +
               '<span class="nb-name"><span class="live-dot"></span>' + s.label + "</span>" +
-              '<span class="nb-sub">' + sub + '</span>' + num + "</button>";
+              (sub ? '<span class="nb-sub">' + sub + '</span>' : '') + num + "</button>";
           }).join("");
           blocks += customSources.map(function (s) {
             return '<button type="button" class="nblock" style="--sc:' + s.color + '" data-scope="' + s.id + '" aria-expanded="' + (openScopeId === s.id) + '" aria-label="' + escapeHTML(s.label) + ', not connected yet">' +
               '<span class="nb-name"><span class="live-dot"></span>' + escapeHTML(s.label) + "</span>" +
-              '<span class="nb-sub">Notifications</span><span class="state-pill">Not connected yet</span></button>';
+              '<span class="state-pill">Not connected yet</span></button>';
           }).join("");
           $("notifBar").innerHTML =
             '<p class="notif-head"><span class="ndot"></span>Notifications<button type="button" class="addsrc-pill" id="addSrcHeadBtn">Add source</button></p>' +
@@ -3059,6 +3196,27 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           });
         }
 
+
+        /* FIX2 item 10 — YOUR STATS, real numbers: the day's own counts
+           (the same counts the record page shows) in digit tiles. On an
+           empty day the board shows honest zeros — never faked numbers.
+           Posts have no store on this page, so Posts reads 0 honestly. */
+        function statsBoardHTML() {
+          var k = keyOf(sel);
+          var ns = mergedNotesFor(k);
+          var smart = ns.filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; }).length;
+          var rows = [
+            ["Appointments", dayApptsFor(k).length, "#8e24aa"],
+            ["Notes", ns.length, "#0e7490"],
+            ["Journal", (journal[k] || []).length, "#07925f"],
+            ["Smart Notes", smart, "#d4a017"],
+            ["Posts", 0, "#c2410c"],
+            ["Lists", (lists[k] || []).length, "#c62828"]
+          ];
+          return '<div class="stats-board" aria-label="Your stats for this day">' + rows.map(function (r) {
+            return '<div class="stat-cell"><span class="stat-num">' + worldDigitsHTML(r[1], r[2], true) + '</span><span class="stat-label">' + r[0] + "</span></div>";
+          }).join("") + "</div>";
+        }
         /* The Daily Intelligence report for the selected day, built
            only from what is really recorded for it */
         function intelHTML() {
@@ -3089,7 +3247,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 
         /* THE DAY-TO-DAY VIEWER (Shawn, 2026-11-17, v16): the day's
            whole place moves day to day — the stepper under the greeting
-           walks one day at a time (‹ yesterday · today · tomorrow ›),
+           walks one day at a time (‹ yesterday · tomorrow ›),
            a swipe across the day screen walks it too, and the arrow
            keys walk it on a keyboard. The place itself slides in the
            direction of travel (opts.anim), same place, new colour.
@@ -3191,9 +3349,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              The world clock holds dead centre. */
           head.innerHTML =
             '<div class="official-headliner">' +
-              '<span class="hl-left"><span class="hl-dayrow">' + digitsHTML(d.getDate()) + '<span class="hl-weekday">' + WEEKDAYS[d.getDay()] + '</span></span>' +
+              '<span class="hl-left"><span class="hl-dayrow">' + digitsHTML(d.getDate(), false, true) + '<span class="hl-weekday">' + WEEKDAYS[d.getDay()] + '</span></span>' +
               '<span class="hl-monthline">' + MONTHS[d.getMonth()] + " " + d.getFullYear() + "</span></span>" +
-              '<span class="hl-time" id="greetClock"></span>' +
+              '<button type="button" class="hl-time clockbtn" id="greetClock" aria-label="World clock — tap to choose a city"></button>' +
               '<button type="button" class="stats-btn" id="statsBtn">Your Stats</button>' +
             "</div>" +
             '<span class="sigpiece" style="--dc:' + dc + '" role="img" aria-label="' + WEEKDAYS[d.getDay()] + '"><span class="sp-ring-a"></span><span class="sp-ring-b"></span><span class="sp-metal"></span><span class="sp-pearl"></span></span>';
@@ -3204,7 +3362,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           /* Wisdom of the day */
           $("wisdomQuote").textContent = "\u201C" + WISDOM[d.getDay()] + "\u201D";
             /* V6 — KINGDOM HERO fill (same viewed day d, same colour dc; never hard-coded). */
-            var __kh=$("kingHeroTiles"); if(__kh){__kh.innerHTML=digitsHTML(d.getDate());}
+            var __kh=$("kingHeroTiles"); if(__kh){__kh.innerHTML=digitsHTML(d.getDate(), false, true);}
             var __kd=$("kingHeroDate"); if(__kd){__kd.textContent=MONTHS[d.getMonth()]+" "+d.getFullYear();}
             var __kw=$("kingHeroWeek"); if(__kw){__kw.textContent=WEEKDAYS[d.getDay()];__kw.style.color=dc;}
             var __khz=$("kingHeroHz"); if(__khz){__khz.textContent=DAY_FREQ[d.getDay()]+" Hz";}
@@ -3398,7 +3556,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         function dayStepButtons() {
           var prevD = new Date(sel.getFullYear(), sel.getMonth(), sel.getDate() - 1);
           var nextD = new Date(sel.getFullYear(), sel.getMonth(), sel.getDate() + 1);
-          var today = isToday(sel) ? "" : '<button type="button" class="daystep-btn today" data-step="today">Back to today</button>';
+          var today = ""; /* FIX2: "Back to today" is gone — Shawn, eye round 2, item 1. The stepper is prev/next only. */
           return {
             prev: today + '<button type="button" class="daystep-btn" data-step="-1" aria-label="Previous day, ' + WEEKDAYS[prevD.getDay()] + '">&#8249; ' + WEEKDAY_ABBR[prevD.getDay()] + '</button>',
             next: '<button type="button" class="daystep-btn" data-step="1" aria-label="Next day, ' + WEEKDAYS[nextD.getDay()] + '">' + WEEKDAY_ABBR[nextD.getDay()] + ' &#8250;</button>'
@@ -3611,7 +3769,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              board — write, dictate, paste, add Naya notes, upload images,
              share — with the living timeline of the day. */
           var summaryInner = '<div class="panel summary-panel">' + intelHTML() + "</div>" + '<div class="cat-rows">' +
+            catRow("daily", "#8e24aa", "spark", "Daily Intelligence", "The day, counted — appointments, notes, journal and lists.", dayAppts.length + dayNotes.length + (journal[keyOf(sel)] || []).length + dayList.length) +
             catRow("reports", "#0e7490", "landmark", "Your Reports", "The day's report — appointments, notes, journal and lists, counted.", 0) +
+            catRow("journal", "#07925f", "book", "Journal", (journal[keyOf(sel)] || []).length ? (journal[keyOf(sel)] || []).length + ((journal[keyOf(sel)] || []).length === 1 ? " entry in your journal." : " entries in your journal.") : "Nothing in the journal for this day yet.", (journal[keyOf(sel)] || []).length) +
             catRow("smartnotes", "#d4a017", "note", "Smart Notes", dayNotes.length ? latestText(dayNotes) : "No notes for this day yet.", dayNotes.length) +
             catRow("posts", "#c2410c", "post", "Posts", "No posts for this day.", 0) +
             catRow("lists", "#c62828", "list", "Smart Lists", dayList.length ? dayList.length + (dayList.length === 1 ? " item on your list." : " items on your list.") : "Nothing on your list for this day yet.", dayList.length) +
@@ -3635,11 +3795,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              in a section head above it. "Appointments" is said ONCE —
              in the tile, not in a section head above it. */
           wrap.innerHTML =
-            catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond") +
-            catSection(CATS[0], notifRowsA + dayNav(dc, false), null, "Rows one to six — the worlds, the mail, the messages.", "Your worlds", dc, "orb", "worlds") +
+            catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond", null, "notif-slide allow-scroll") +
+            catSection(CATS[0], notifRowsA + dayNav(dc, false), null, "Rows one to six — the worlds, the mail, the messages.", "Your worlds", dc, "orb", "worlds", "worlds-slide") +
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, provincial, global — what is happening in the world.", "News", dc, "hex") +
             catSection(CATS[1], '<div class="dash-grid">' + apptsTile + timelineTile(tl, "6 AM – 9 PM") + '</div>' + dayNav("#8e24aa", false), "appointments", "Book a time, meet, and the day's timeline — 6 AM to 9 PM, on one screen.", "", "#8e24aa", null, null, "allow-scroll") +
-            catSection(CATS[2], summaryInner + dayNav("#3f51b5", false), "record", "The day, written down — counted.", "Summary of the day", "#3f51b5", "diamond") +
+            catSection(CATS[2], summaryInner + dayNav("#3f51b5", false), "record", "The day, written down — counted.", "Summary of the day", "#3f51b5", "diamond", null, "allow-scroll") +
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
             twinSection(dc);
           var tbb = $("tileBookBtn");
@@ -3896,7 +4056,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               });
             });
           } else if (door.id === "daily" || door.id === "reports") {
-            body.innerHTML = '<div class="panel">' + intelHTML() + "</div>";
+            body.innerHTML = '<div class="panel">' + statsBoardHTML() + intelHTML() + "</div>";
           } else if (door.id === "smartnotes") {
             var ns = mergedNotesFor(k);
             var items = ns.length ? ns.map(function (n) {
@@ -3989,6 +4149,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               '<span class="chip">' + ICONS[door.icon] + "</span><p>" + door.empty + "</p></div>";
           }
           body.insertAdjacentHTML("beforeend", doorFootNavHTML());
+          if (door.id === "daily" || door.id === "reports") { body.insertAdjacentHTML("beforeend", '<div class="door-backmonth"><button type="button" class="pill" data-backmonth>Back to month</button></div>'); } /* FIX2 item 11 */
           show("screen-door");
           $("backToDay").focus({ preventScroll: true });
         }
@@ -4098,7 +4259,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (!dEl || !tEl) return;
           var t = new Date();
           dEl.textContent = WEEKDAYS[t.getDay()] + ", " + MONTHS[t.getMonth()] + " " + t.getDate() + ", " + t.getFullYear();
-          tEl.innerHTML = clockTilesHTML(t);
+          tEl.innerHTML = clockTilesHTML(t, true); /* FIX2 item 17: the month plaque is always LOCAL time. */
           /* The plaque follows TODAY's colour — its rim and its live
              dot take the day's colour, never gold. The time itself
              takes the HOUR's colour now (clockTilesHTML) */
@@ -4112,8 +4273,18 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         /* Amendment #3 — the plaque is the door into today */
         $("nowPlaque").addEventListener("click", function () { openDay(new Date()); });
         $("backToMonth").addEventListener("click", function () { stopMeet(); renderMonth(); document.documentElement.style.setProperty("--dc", DAY_COLORS[new Date().getDay()]); document.documentElement.setAttribute("data-day-theme", WEEKDAYS[new Date().getDay()].toLowerCase()); show("screen-month"); });
-        $("cornerN").addEventListener("click", function () { stopMeet(); renderMonth(); document.documentElement.style.setProperty("--dc", DAY_COLORS[new Date().getDay()]); document.documentElement.setAttribute("data-day-theme", WEEKDAYS[new Date().getDay()].toLowerCase()); show("screen-month"); });
         $("backToDay").addEventListener("click", function () { if (sel) openDay(sel); });
+        /* FIX2 items 11 + 17 — one delegated tap handler: the world-clock
+           button opens its city chooser, a zone pill sets the time, and
+           any [data-backmonth] walks back to the month. */
+        document.addEventListener("click", function (ev) {
+          var t = ev.target; if (!t || !t.closest) return;
+          if (t.closest("#greetClock")) { ev.preventDefault(); openClockMenu(); return; }
+          var zp = t.closest("[data-clockzone]");
+          if (zp) { setClockZone(zp.getAttribute("data-clockzone")); return; }
+          if (t.closest("[data-clockzone-close]")) { closeClockMenu(); return; }
+          if (t.closest("[data-backmonth]")) { stopMeet(); renderMonth(); show("screen-month"); return; }
+        });
         document.addEventListener("keydown", function (ev) {
           /* Arrow keys walk day to day while the day screen is showing
              — never while typing in a field */
@@ -4124,6 +4295,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             return;
           }
           if (ev.key !== "Escape") return;
+          var cm = $("clockMenu"); if (cm && !cm.classList.contains("hidden")) { closeClockMenu(); return; }
           if (!$("screen-door").classList.contains("hidden")) { if (sel) openDay(sel); }
           else if (!$("screen-day").classList.contains("hidden")) { stopMeet(); renderMonth(); show("screen-month"); }
         });
