@@ -166,7 +166,7 @@ print(f"unfold {len(unfold_raw)} B sha {unfold_sha}")
 # 045af4e0005c04c6387601d491334d589b40dc23, the filed blob, verified
 # byte-identical from the proof host before the line was written.
 # Items 2 & 3 are LANDED, not pending.)
-assert walk_sha.startswith("4b5f9264"), "walk sha is not the BRIDGE PRESENTATION walk sha (2026-11-17: Full Custom eye inline-flex, quotes off 18 headings, names-step crests hidden, end-slide VISUAL/READ)"
+assert walk_sha.startswith("b6befc33"), "walk sha is not the WALKTHROUGH-CHAIN-FIX6 walk sha (2026-11-19: /welcome LOAD verifies ownership via /api/claim first — taken + not-own bounces to identity before the questionnaire renders; own/available/failed proceed)"
 assert template_sha.startswith("61002d15"), "personal template sha is not the composed template sha (live Personal v9 992ab18c + hero fix + rooms-plus fix)"
 # IDENTITY CERTIFICATE ROUND (2026-11-15, BRIEF-IDENTITY-CERTIFICATE-20261115.md):
 # the identity sha moved 55fdffa8 -> e9398f75 (gold live name 86px, date truly
@@ -247,14 +247,13 @@ assert template_sha.startswith("61002d15"), "personal template sha is not the co
 # taken-alias note clears the moment a fresh alias comes back available
 # (setAliasState hides #hubNote on available/own/neutral). Walk + template
 # shas unchanged.
-# WALKTHROUGH-CHAIN (2026-11-18, same round) - STAGING WORKER\n# RE-EMBED: the identity sha moves a1550164 -> d8c0d583. The old\n# assert would fail the rebuild on the new identity bytes.\n# IDENTITY IS NAME *PLUS* THE DEVICE KEY: on 'taken' the row\n# is read back WITH this browser's device key and only d.own\n# grants - the name-match grant is deleted. Without the key\n# the citizen gets the key panel (paste key, Use my key, the\n# key is verified against the row); the key is also SHOWN on\n# the certified certificate so it can be carried to another\n# device. Walk, template, unfold shas unchanged.\n# WALKTHROUGH-CHAIN-FIX5 (2026-11-19, captain's eye 04:53-05:02Z): the identity sha
-# moves 85b42447 -> 6f805eba (397,978 B -> 400,253 B, +2,275 B): ENTER resolves
-# the availability verdict FIRST (FIX5 gate in activateAndRedirect) — a taken
-# alias shows the flag + the device-key panel on ENTER itself, before any
-# localStorage write or claim POST; own/available fall through to the claim
-# below, and a failed or timed-out verdict falls through too. Walk, welcome,
-# template, unfold shas unchanged.
-assert ident_sha.startswith("6f805eba"), "identity sha is not the WALKTHROUGH-CHAIN-FIX5 identity sha (2026-11-19: ENTER resolves the availability verdict first — taken shows the flag + key panel before any claim; the claim POST stays the authority for own/available)"
+# WALKTHROUGH-CHAIN (2026-11-18, same round) - STAGING WORKER\n# RE-EMBED: the identity sha moves a1550164 -> d8c0d583. The old\n# assert would fail the rebuild on the new identity bytes.\n# IDENTITY IS NAME *PLUS* THE DEVICE KEY: on 'taken' the row\n# is read back WITH this browser's device key and only d.own\n# grants - the name-match grant is deleted. Without the key\n# the citizen gets the key panel (paste key, Use my key, the\n# key is verified against the row); the key is also SHOWN on\n# the certified certificate so it can be carried to another\n# device. Walk, template, unfold shas unchanged.\n# WALKTHROUGH-CHAIN-FIX6 (2026-11-19): the identity sha
+# moves 6f805eba -> 3279dc35 (400,253 B -> 401,040 B, +787 B): a ?alias=
+# arriving in the URL runs the LIVE availability check on load — a taken
+# alias shows the flag + the device-key panel on arrival (the walk's
+# FIX6 bounce lands on it); own certifies, available arms ENTER. The
+# FIX5 ENTER gate is untouched. Walk sha moves with this round.
+assert ident_sha.startswith("3279dc35"), "identity sha is not the WALKTHROUGH-CHAIN-FIX6 identity sha (2026-11-19: a ?alias= arriving in the URL runs the LIVE availability check on load — taken shows the flag + key panel; the FIX5 ENTER gate is untouched)"
 # ENTRANCE WELCOME (2026-11-16, BRIEF-AGREEMENT-ENTRANCE-WELCOME-20261116.md):
 # the welcome sha moves 5f33d273 -> db5960eb (925,222 B -> 934,065 B,
 # +9,337 B): Item 0 — the opening-view intro block only. Shawn's 10-star
@@ -1009,6 +1008,22 @@ export default {
       const alias = cleanAlias(b.alias);
       const name = String(b.name || alias || "").trim().slice(0, 80);
       if (!alias) return j({ ok: false, error: "alias required" }, 400);
+      /* FIX6 (2026-11-19) — verify device_key BEFORE any write: the
+         walk's completion used to write the project, Box, and pages
+         keyed by alias alone, so a fresh device completing the walk
+         as a taken alias overwrote that citizen's stored world. The
+         walk already sends device_key (cred() carries it from
+         nayanet_vault_key); harvest sbGetRow, the same row lookup GET
+         /api/claim uses. A row whose device_key is set refuses any
+         completion whose key is missing or mismatched (409 taken, no
+         writes). A row with no device_key set (legacy, pre-key claim)
+         is NOT refused here — the same rule POST /api/claim uses for
+         its 409 — and no claim row at all proceeds as today; both are
+         carried observations, not a redesign of the claim flow. */
+      const dk6 = String(b.device_key || "").slice(0, 64);
+      const claimRow6 = await sbGetRow(alias);
+      if (claimRow6 && claimRow6.device_key && (!dk6 || dk6 !== claimRow6.device_key))
+        return j({ ok: false, error: "taken" }, 409);
       /* Answers: only the known keys (ten questions + four news), word for word,
          trimmed. A skipped question arrives with no key at all and is stored
          as nothing — the Box never invents an answer. */

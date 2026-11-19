@@ -2614,6 +2614,19 @@ function clearPendingRoute() {
       restoreAlias = null;
     }
     if (restoreAlias) checkAliasAvailability(restoreAlias, true);
+    /* FIX6 (2026-11-19) — a ?alias= arriving in the URL is a claim
+       being attempted, not a silent restore: the walk bounces a
+       non-owner here with the pair in the URL, and a plain redirect
+       alone would land composing with an empty field and no flag —
+       the load check above only ever ran for the SAVED alias, silent.
+       So run the LIVE (non-silent) check on the passed alias: taken
+       shows the flag + the key panel (setAliasState('taken') unhides
+       both), own certifies, available arms ENTER. It runs after the
+       silent restore, so its higher aliasSeq wins the race. */
+    if (passedAlias) {
+      var pa6 = passedAlias.toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (pa6) { aliasInput.value = pa6; checkAliasAvailability(pa6); }
+    }
 
 
     /* Live system clock — mission-control time, ticking every second. */
