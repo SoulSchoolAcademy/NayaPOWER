@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-19T03:52:15Z",
-  "tip": "f739a621e8ff0f4d12351e0ce48040d2831c4cdf",
+  "generated_at": "2026-11-19T09:49:20Z",
+  "tip": "2c062287656953a220c735e9dd6c608246e030c2",
   "prs": [
     {
       "number": 3453,
@@ -41,12 +41,12 @@
     },
     {
       "number": 3486,
-      "title": "Cold retrieve: complete collision-repair round 2 registry leg (SN-3549..SN-3553 to SN-3555..SN-3559)",
-      "tier": "C",
+      "title": "Cold retrieve: drop 5 dangling SN-3549..SN-3553 registry entries (deletion-only)",
+      "tier": "B",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, completeness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "d662af14e98e48b22a00afc55c79e85efbfeec0a"
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "02781826dbc413b10eb3cb46c5db9af372835dc9"
     },
     {
       "number": 3487,
@@ -58,13 +58,13 @@
       "head": "93f20d5bc6a7f8be21b1c11c354c06a500d69413"
     },
     {
-      "number": 3488,
-      "title": "Truth cure: register SN-3560..SN-3589 (30 notes)",
-      "tier": "C",
+      "number": 3489,
+      "title": "w3523 re-scan (cure): trigger re-bound 444 ahead at e8f2ac97; w3535 4/4 attribution closed",
+      "tier": "B",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "a094872813bf7fbf8b726fe4871f22a346a1d569"
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "652de56c5f629b7089e62c8aad303ff569b300e2"
     }
   ]
 }
