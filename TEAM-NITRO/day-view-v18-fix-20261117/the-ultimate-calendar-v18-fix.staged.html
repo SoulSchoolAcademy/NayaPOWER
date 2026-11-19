@@ -2338,6 +2338,27 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   .dash-grid{margin-bottom:80px!important}
   .ink-timeline{margin-bottom:80px!important}
   .twin-out{margin-bottom:80px!important}
+  .dayteach{margin-bottom:24px!important}
+  /* FIX5 — (1) the fixed weather pill moves to the viewport foot on phone
+     (bottom:0): the chamber nav keeps its fix-4 absolute foot position and
+     its centres tap through. The primary shape (lift the nav to the sticky
+     line) was measured live and fails — Change cover sits 38.1px under the
+     lifted nav at rest and at max scroll, and the chamber block never
+     scrolls (scrollHeight == clientHeight), so it can never scroll clear;
+     reclaiming the gaps above the cover-row breaks the 8px dots gap, so the
+     lift cannot satisfy the dots gap and the 15px clearance together.
+     Moving the pill down clears the nav by 8px; the pill must also rise
+     above the royal frame (frame z-index:40, pill was 30 — at bottom:0 the
+     frame's bottom band sliced the pill's label), so z-index:50. Desktop is
+     untouched (max-width:740px). (2) the dots vs .cat-essence kiss: the essence gains
+     24px of top air on phone so its first line clears the sticky dots at
+     rest (notif, appointments), and the News slide gains 64px of trailing
+     space so its essence scrolls clear of the dots at max scroll. */
+  @media(max-width:740px){.wx-bottomleft{bottom:0!important;z-index:50!important}}
+  @media(max-width:560px){
+  .cat-essence{margin-top:24px!important}
+  .smart-block[aria-label="News"] .cat-rows{margin-bottom:144px!important}
+  }
 </style>
   </head>
   <body>
