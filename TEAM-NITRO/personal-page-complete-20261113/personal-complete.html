@@ -1912,8 +1912,8 @@ body{background:#050507;margin:0;overflow-x:hidden;font-family:Inter,system-ui,s
   box-shadow:0 0 48px rgba(142,36,170,.55),inset 0 2px 10px rgba(255,255,255,.25);transition:all .2s;}
 .ph-av:hover{transform:scale(1.04);box-shadow:0 0 70px rgba(142,36,170,.8);}
 .ph-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;} /* R3 — the picture covers the whole circle: as a flex item beside the ✦ fallback glyph it rendered squashed (82×126 in a 140px circle), which read as broken. The ✦ stays centred underneath as the fallback. */
-.ph-nm{font-size:24px;font-weight:700;margin:0;color:#fff;cursor:pointer;border-bottom:2px dashed transparent;padding:2px 0;}
-.ph-nm:hover{border-bottom-color:rgba(142,36,170,.5);}
+.ph-nm{font-size:24px;font-weight:700;margin:0;color:#fff;cursor:pointer;padding:2px 0;}
+
 .ph-nm-input{font-size:24px;font-weight:700;background:rgba(255,255,255,.08);border:2px solid #8e24aa;
   border-radius:8px;color:#fff;padding:4px 10px;font-family:inherit;width:280px;}
 .ph-tg{font-size:17px;color:#fff;margin:10px 0 0;cursor:pointer;display:block;background:#050507;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:14px 18px;line-height:1.5;max-width:640px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -4px 10px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.45);} /* CORRECTIONS 2026-11-13: the motto sits on an elevated obsidian board, built for up to 140 characters */
@@ -7080,7 +7080,7 @@ button.os-ld-node .os-ld-n{
 </style>
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#0f52ba;color:#0f52ba;"></span> About Me</div>
-<div class="of-bridge" id="ofAboutBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#8e24aa"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofAboutFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofAboutFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#8e24aa"><span class="ib-kind" style="--tone:#8e24aa">About me &middot; In a nutshell</span><h3 class="ib-title">Shawn Vibert builds NayaNET</h3><div class="ib-nutshell"><p>Shawn Vibert builds NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live.</p></div></div></div><p class="of-bridge-q">About, two ways &mdash; unfold down, or slideshow. Tap to begin. <!-- NEW 2026-11-18: wording, both modes now offered --></p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-unfold" style="--tone:#d4a017">Unfold down &#9670;</button><!-- NEW 2026-11-18 — About slideshow button (JS handler already exists; the button + nav were missing) -->
+<div class="of-bridge" id="ofAboutBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#8e24aa"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofAboutFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofAboutFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#8e24aa"><span class="ib-kind" style="--tone:#8e24aa">About me &middot; In a nutshell</span><h3 class="ib-title">Shawn Vibert builds NayaNET</h3><div class="ib-nutshell"><p>Shawn Vibert builds NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live.</p></div></div></div><div class="pc-dm-findable" id="pcDemoFindable" hidden></div><p class="of-bridge-q">About, two ways &mdash; unfold down, or slideshow. Tap to begin. <!-- NEW 2026-11-18: wording, both modes now offered --></p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-unfold" style="--tone:#d4a017">Unfold down &#9670;</button><!-- NEW 2026-11-18 — About slideshow button (JS handler already exists; the button + nav were missing) -->
 <button type="button" class="p3-enter of-bridge-btn" data-of-open="about-slides" style="--tone:#c2410c">Slideshow &#9670;</button></div><button type="button" class="of-lib-door" data-of-open="about-library"><span class="os-jewel os-jewel-h" style="--jc:#07925f">&#10022;</span> Enter the Intelligent Library <span class="of-lib-count" id="ofLibCount"></span></button><p class="of-bridge-note">About, your way &mdash; unfold down or slideshow. The Library holds the best of what is saved here. <!-- NEW 2026-11-18: wording --> <span class="of-lib-count" id="ofLibCountBridge"></span></p></div>
 <div class="of-pres-head" id="ofAboutPresHead" hidden><button type="button" class="ph-msg of-back" data-of-back="about">&#8249; Back to the bridge</button><span class="ib-kind of-pres-label" id="ofAboutPresLabel" style="--tone:#8e24aa"></span></div>
 <div class="of-controls" id="ofAboutControls" hidden><div class="of-dots" id="ofAboutDots" aria-hidden="true"></div><button class="of-all" id="ofAboutAll" type="button">or read the whole thing at once</button></div>
@@ -8000,6 +8000,34 @@ button.os-ld-node .os-ld-n{
     if(val) s.answers[key]=val; else delete s.answers[key];
     try{ localStorage.setItem(DM_SKEY, JSON.stringify(s)); }catch(e){}
     dmMark();
+    dmRenderFindable();
+  }
+  /* FOLLOW-ON 2026-11-19 (B) — the SWITCHES. One per demographic, in the same
+     walk key (s.share), default OFF: nothing is shared that isn't switched on.
+     Location is never shown anywhere even when on — it feeds matching only. */
+  function dmShareGet(key){ var s=dmLoad(); return !!(s.share && s.share[key]===true); }
+  function dmSetShare(key, on){
+    var s=dmLoad(); s.share=s.share||{};
+    if(on) s.share[key]=true; else delete s.share[key];
+    try{ localStorage.setItem(DM_SKEY, JSON.stringify(s)); }catch(e){}
+    dmMark();
+    dmRenderFindable();
+  }
+  /* The findable surface: switched-on demographics (never location) render as
+     chips on the About bridge, so people can find the citizen by them. All
+     off — or no answers — and the row stays hidden: off means private. */
+  function dmRenderFindable(){
+    var box=document.getElementById('pcDemoFindable'); if(!box) return;
+    var out='';
+    DM_Q.forEach(function(q){
+      if(q.key==='location') return;
+      if(!dmShareGet(q.key)) return;
+      var v=dmGet(q.key); if(!v) return;
+      out+='<span class="pc-dm-chip" style="--qc:'+q.qc+'"><b>'+q.label+'</b> '+escHtml(v)+'</span>';
+    });
+    function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+    box.innerHTML=out;
+    box.hidden=!out;
   }
   function dmCount(){ var n=0; DM_Q.forEach(function(q){ if(dmGet(q.key)) n++; }); return n; }
   function dmMark(){
@@ -8012,6 +8040,8 @@ button.os-ld-node .os-ld-n{
       choices.forEach(function(r){ var ta=r.querySelector('textarea'); r.classList.toggle('selected', !!(v&&ta&&ta.value===v)); });
       var cu=body.querySelector('[data-pc-dm-key="'+q.key+'"].pc-dm-custom');
       if(cu) cu.classList.toggle('selected', !!(v&&!matched));
+      var swb=body.querySelector('[data-pc-dm-key="'+q.key+'"].pc-dm-switch-btn');
+      if(swb){ var on=dmShareGet(q.key); swb.setAttribute('aria-checked', on?'true':'false'); swb.classList.toggle('on', on); var st2=swb.parentElement?swb.parentElement.querySelector('.pc-dm-switch-state'):null; if(st2) st2.textContent=on?'On':'Off \u2014 private'; }
     });
     var st=document.getElementById('pc-demo-status');
     if(st){ var n=dmCount(); st.textContent=(n===0)?'Nothing answered yet — pick an example, or write your own.':(n+' of 8 answered — saved on this device.'); }
@@ -8029,6 +8059,12 @@ button.os-ld-node .os-ld-n{
       wrap.appendChild(head);
       wrap.appendChild(el('p','pc-dm-qtext', q.q));
       if(q.sub) wrap.appendChild(el('p','pc-dm-qsub', q.sub));
+      var sw=el('div','pc-dm-switch'); sw.style.setProperty('--qc', q.qc);
+      var swBtn=el('button','pc-dm-switch-btn'); swBtn.type='button'; swBtn.setAttribute('role','switch'); swBtn.setAttribute('aria-checked','false'); swBtn.setAttribute('data-pc-dm-key', q.key); swBtn.setAttribute('aria-label', q.label+' \u2014 findable'); swBtn.innerHTML='<span class="pc-dm-knob"></span>';
+      sw.appendChild(swBtn);
+      sw.appendChild(el('span','pc-dm-switch-txt', (q.key==='location')?'Findable for matching \u2014 never shown anywhere.':'Findable \u2014 people can find you by this.'));
+      sw.appendChild(el('span','pc-dm-switch-state','Off \u2014 private'));
+      wrap.appendChild(sw);
       q.choices.forEach(function(ch, ci){
         var row=el('div','pc-dm-choice'); row.setAttribute('data-pc-dm-key', q.key);
         row.style.setProperty('--qc', q.qc);
@@ -8090,6 +8126,12 @@ button.os-ld-node .os-ld-n{
         if(note) note.hidden=!wasHidden;
         return;
       }
+      var swb=e.target.closest?e.target.closest('.pc-dm-switch-btn'):null;
+      if(swb){
+        var k=swb.getAttribute('data-pc-dm-key'); if(!k) return;
+        dmSetShare(k, !dmShareGet(k));
+        return;
+      }
       var eb=e.target.closest?e.target.closest('.pc-dm-edit'):null;
       if(eb){
         var row=eb.closest('.pc-dm-choice'); if(!row) return;
@@ -8133,7 +8175,8 @@ button.os-ld-node .os-ld-n{
     var g=e.target&&e.target.closest?e.target.closest('[data-os-go="settings"]'):null;
     if(g) setTimeout(dmFill, 50);
   });
-  window.pcDemo={Q:DM_Q, SKEY:DM_SKEY, get:dmGet, set:dmSet, fill:dmFill, render:dmRender, mark:dmMark};
+  window.pcDemo={Q:DM_Q, SKEY:DM_SKEY, get:dmGet, set:dmSet, fill:dmFill, render:dmRender, mark:dmMark, share:dmShareGet, setShare:dmSetShare, findable:dmRenderFindable};
+  dmRenderFindable();
 })();
 </script>
 <script>
@@ -14705,6 +14748,7 @@ html.nsb-calm .nsb-tab{transition:none;}
      THE FIVE only, built by NayaNotif below (ADD · MAIL · ACTIVITY ·
      WORLDS · ECOSYSTEM, harvested verbatim from fixpass3). The Hub keeps
      its own nine pills; Personal never carries them again. -->
+<footer class="pc-page-end" aria-label="Page end"><span class="pc-page-end-mark" aria-hidden="true">&#9670;</span><span class="pc-page-end-line">Together we grow</span><span class="pc-page-end-sub">NayaNET</span></footer>
 <div class="nsb nsb-bottom" id="nsbBottom" aria-label="Network"></div>
 <style>
 /* ============ SMART BAR CHROME ============ */
@@ -16011,13 +16055,14 @@ window.NayaNotif = window.NayaNotif || {
      (after the language pass). */
   var PC_TAG_VISITOR='Welcome to my world — make a post on my feed, send a message, make yourself at home.';
   var PC_TAG_VISITOR_OLD='My living corner of NayaNET — post on my wall, send a message, make yourself at home';
-  var PC_TAG_OWNER='This is my world — I share what I learn here. Post on my feed, send me a message, make yourself at home.';
+  var PC_TAG_OWNER='Together we grow';
+  var PC_TAG_OWNER_OLD='This is my world — I share what I learn here. Post on my feed, send me a message, make yourself at home.';
   window.pcSyncTagline=function(){
     try{
       var el=document.getElementById('ptag'); if(!el) return;
       var owner=false; try{ owner=!!(window.pcIsPageOwner && window.pcIsPageOwner()); }catch(e){}
       var stored=null; try{ stored=localStorage.getItem('naya.tag'); }catch(e){}
-      var isDefault=(stored===PC_TAG_VISITOR || stored===PC_TAG_VISITOR_OLD || stored===PC_TAG_OWNER);
+      var isDefault=(stored===PC_TAG_VISITOR || stored===PC_TAG_VISITOR_OLD || stored===PC_TAG_OWNER || stored===PC_TAG_OWNER_OLD);
       if(owner){
         if(!stored || isDefault){
           try{ localStorage.setItem('naya.tag', PC_TAG_OWNER); }catch(e){}
@@ -26372,7 +26417,7 @@ document.addEventListener('DOMContentLoaded', function(){ try{ mwApplyBars(); mw
       <div class="content">
         <div class="presence" data-hook="presence"></div>
         <form data-hook="form" novalidate>
-          <input data-hook="name" class="input" type="text" placeholder="Your name" autocomplete="name" autocapitalize="words" aria-label="Your name" required>
+          <input data-hook="name" class="input" type="text" placeholder="Your name" autocomplete="name" autocapitalize="words" aria-label="Your name" required maxlength="25">
           <input data-hook="code" class="input" type="text" placeholder="Enter your code" autocomplete="one-time-code" aria-label="Enter your code" autofocus>
           <button class="enter" type="submit">Come on in →</button>
           <div class="nl-under">
@@ -28323,21 +28368,34 @@ var PC_GEM_NUM={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,
 var PC_GEM_COL={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0f52ba',6:'#3f51b5',7:'#8e24aa'};
 function pcColorFor(name){ var L=String((name||'?').charAt(0)).toUpperCase(); return PC_GEM_COL[PC_GEM_NUM[L]||1]; }
 /* ROUND 4 H4 — match % as digit tiles (cap + white digit + own-colour rim, harvested from the points pill). */
-function pcTiles(n){ var s=String(n), h=''; for(var i=0;i<s.length;i++){ var d=s.charCodeAt(i)-48; if(d<0||d>9) continue; h+='<span class="os-mini-tile d'+d+'"><span class="cap"></span><span class="rd">'+d+'</span></span>'; } return h+'<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>'; }
+function pcTiles(n){ return '<span class="os-mini-tile pc-match-one"><span class="cap"></span><span class="rd">'+String(n)+'%</span></span>'; }
 window.PC_RAIL_LIVE = []; /* CORRECTIONS 2026-11-13: test-alias fixture DELETED — live matches come from the gated Smart Match endpoint only, never from baked rows. */
 window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "LEARN — wisdom. I turn what the hive does into lessons.", "pct": 94}, {"alias": "thora", "nut": "KNOW — she sees. One record, one timeline.", "pct": 91}, {"alias": "terra", "nut": "INFRA — earth. The machines, the deploys, the uptime.", "pct": 88}, {"alias": "zoe", "nut": "ACT — life. Seats out, loops closing, nothing sitting.", "pct": 92}, {"alias": "emesa", "nut": "PRODUCT — beloved. The offer: what you touch, what you pay for.", "pct": 89}, {"alias": "astraea", "nut": "LAW — the scales. The five gates, the Self-Check Law.", "pct": 90}, {"alias": "mira", "nut": "MEMORY — wonder. The Box: what is kept, what is distilled.", "pct": 87}, {"alias": "vera", "nut": "VERIFY — truth. Nothing counts until I see it.", "pct": 93}, {"alias": "aurelia", "nut": "GOVERN — golden. The scorecard, the direction, the decisions.", "pct": 86}, {"alias": "wrena", "nut": "BUILD — the nest-builder. The Factory and the pages.", "pct": 95}, {"alias": "iris", "nut": "WIRE — the rainbow bridge. Box to Ledger to Hub, one system.", "pct": 91}, {"alias": "ruth", "nut": "TEAM — friend. I keep the sisters tuned in, healthy, together.", "pct": 88}, {"alias": "shawn", "nut": "Welcome to my world — post, message, make yourself at home.", "pct": 97}];
 function pcTr(x){ try{ return window.mwTr?window.mwTr(x):x; }catch(e){ return x; } }
 function pcCard(p, live){
   var init=(p.alias||'?')[0].toUpperCase();
-  /* HEADER 2026-11-15 H5, FOLLOW-ON 3b 2026-11-18 — one line per row: orb +
-     name + % + info + the four contact buttons (Message / Smart Mail /
-     Audio / Video), buttons below the name line, labelled. NO CONNECT in the row:
-     sending the message IS the request for connection. The motto lives
-     behind the info pop-up; the pop-up still carries the four ways too. */
-  var mark = '';;
-  return '<article class="pc-card" data-pc-alias="'+esc(p.alias)+'" style="--pc:'+pcColorFor(p.alias)+'">'
-    + '<div class="pc-card-top"><button type="button" class="fc-pick-av" data-pc-orb="'+esc(p.alias)+'" aria-label="Open profile: '+esc(p.alias)+'" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</button>'
-    + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b></span>'+mark+'</div></div>'
+  /* FOLLOW-ON 2026-11-19 (rail standard, Shawn ~02:29Z) — TWO LINES, one clean
+     object inside the frame. LINE 1: orb top-left, name beside it, % LOCKED
+     top-right (margin-left:auto — the name always has room; long names never
+     push the buttons out). LINE 2: five buttons in one clean row — EYE first
+     (opens the profile info underneath the row), then messenger, mail, audio,
+     video. The % is ONE tile reading "94%" (pcTiles, the popover's
+     pc-match-one form). The name truncates with ellipsis + full name on
+     title/hover; the input cap (25 chars, measured at 390: 226px name column / 8.85px per
+     char) stops longer names at the door; wide names still truncate by CSS. */
+  var pct=(typeof p.pct==='number')?p.pct:null;
+  var pctHtml=(pct===null)?'':'<span class="pc-pct r4-tiles" title="'+pcTr('Match')+'">'+pcTiles(pct)+'</span>';
+  var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button>';
+  var acts=[['chat','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg>','#0f52ba','Message'],['mail','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg>','#d4a017','Smart Mail'],['audio','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>','#07925f','Audio'],['video','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg>','#8e24aa','Video']];
+  var btns='';
+  for(var i=0;i<acts.length;i++){
+    btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
+  }
+  return '<article class="pc-card pc-rail-v2" data-pc-alias="'+esc(p.alias)+'" style="--pc:'+pcColorFor(p.alias)+'">'
+    + '<div class="pc-card-line1"><button type="button" class="fc-pick-av" data-pc-orb="'+esc(p.alias)+'" aria-label="Open profile: '+esc(p.alias)+'" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</button>'
+    + '<div class="pc-card-id"><span class="pc-id-line"><b title="'+esc(p.alias)+'">'+esc(p.alias)+'</b></span></div>'
+    + pctHtml + '</div>'
+    + '<div class="pc-card-line2">'+infoBtn+btns+'</div>'
     + '</article>';
 }
 /* CORRECTIONS 2026-11-13 (Parts 3/4/7) — the rail, rebuilt on the same
@@ -28364,38 +28422,10 @@ function pcConnectRequested(alias){
   try{ return localStorage.getItem('pc-connect-'+alias)==='requested'; }catch(e){ return false; }
 }
 function pcCardWithConnect(p, live){
-  var base=pcCard(p, live);
-  /* FOLLOW-ON 3b (2026-11-18) — one line per row: ball, name, %, i, the four
-     contact buttons. NO CONNECT in any row: message and mail are automatic —
-     sending the message IS the request for connection; acceptance is by
-     action (they answer back), never by a button. The four buttons are
-     harvested from the profile board's Reach them row + the popover's
-     actions: same glyphs, same colours — Message sapphire, Smart Mail gold,
-     Audio emerald, Video purple. The % is the seed pct for the seed family,
-     the endpoint pct for live matches. */
-  var pct=(typeof p.pct==='number')?p.pct:null;
-  var pctHtml=(pct===null)?'':'<span class="pc-pct r4-tiles" title="'+pcTr('Match')+'">'+pcTiles(pct)+'</span>';
-  var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button>';
-  /* COVER-ALIGN-FOLLOWUP 2026-11-18 (Shawn ~22:14Z — supersedes the ~21:28Z
-     below-the-line + labels: "You had it perfect before... just do them as
-     you did before"): RESTORED from the 390-fix file (blob 64f2e9e1, branch
-     personal/phone-390-fix-20261118, checker PASS) — the four buttons sit
-     INLINE in the top row (ball, name, %, i, chat, mail, audio, video),
-     icon-only 26px circles, no labels, no wrap container. The glyphs are
-     upgraded to the lineage's own SVGs, rendered as real objects in the
-     file's .pc-act-btn chrome: chat bubble (page's own, L27883), envelope
-     (page's own MAIL tile, L4198), dictate mic (main blob 0dcdf43f, the
-     page's .os-mic voice glyph), video camera (main blob 0dcdf43f). Same
-     colours — Message sapphire, Smart Mail gold, Audio emerald, Video
-     purple. No text on the buttons: the icon alone says what it is. */
-  var acts=[['chat','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg>','#0f52ba','Message'],['mail','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg>','#d4a017','Smart Mail'],['audio','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>','#07925f','Audio'],['video','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg>','#8e24aa','Video']];
-  var btns='';
-  for(var i=0;i<acts.length;i++){
-    btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
-  }
-  var at=base.lastIndexOf('</div></article>');
-  if(at<0) return base;
-  return base.slice(0, at)+pctHtml+infoBtn+btns+base.slice(at);
+  /* FOLLOW-ON 2026-11-19 — the two-line card (pcCard) already carries the %,
+     the eye and the four contact buttons; this stays as the rail's entry point
+     so every call site keeps working. */
+  return pcCard(p, live);
 }
 
 window.pcRenderRailForTab=function(tab){
@@ -34189,6 +34219,7 @@ if (libSearch) libSearch.addEventListener('input', function(){
 });
 var libAdd = $('ofLibAdd');
 if (libAdd) libAdd.addEventListener('click', function(){
+  if(!(window.pcIsPageOwner&&window.pcIsPageOwner())) return;
   setMode('about', 'bridge');
   setTimeout(function(){
     var nq = $('os-lib-nq');
@@ -37380,4 +37411,56 @@ div[data-block="cover"] > .ph-actions-row{padding-left:0!important;padding-right
 body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
 @media(max-width:768px){#os-b3-hide{bottom:90px;right:8px;}}
 </style>
+<style id="personal-followon-20261119">
+/* FOLLOW-ON 2026-11-19 — B: demographics switches. One per question, in the
+   question's own colour; off = obsidian + dim knob (private), on = rim + glow
+   in --qc. Real switch (role=switch, aria-checked). */
+.pc-dm-switch{display:flex;align-items:center;gap:12px;margin:14px 0 0;padding:12px 14px;border-radius:16px;border:1.5px solid var(--qc);background:#050607;}
+.pc-dm-switch-btn{flex:0 0 auto;width:56px;height:32px;border-radius:999px;border:1.5px solid var(--qc);background:linear-gradient(180deg,#17171f,#0a0a0f);cursor:pointer;position:relative;padding:0;transition:box-shadow .2s ease;}
+.pc-dm-switch-btn .pc-dm-knob{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:linear-gradient(180deg,#ffffff,#c9c9cf 55%,#8a8a90);box-shadow:0 2px 6px rgba(0,0,0,.6);transition:left .2s ease;}
+.pc-dm-switch-btn.on{box-shadow:0 0 16px var(--qc),inset 0 1px 0 rgba(255,255,255,.25);}
+.pc-dm-switch-btn.on .pc-dm-knob{left:27px;}
+.pc-dm-switch-txt{flex:1;min-width:0;font-size:17px;font-weight:700;color:#fff;line-height:1.4;}
+.pc-dm-switch-state{flex:0 0 auto;font-size:17px;font-weight:800;color:#fff;white-space:nowrap;}
+/* FOLLOW-ON 2026-11-19 — B: the findable chips on the About bridge. Only
+   switched-on demographics render here, never location. */
+.pc-dm-findable{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0;}
+.pc-dm-findable[hidden]{display:none;}
+.pc-dm-chip{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1.5px solid var(--qc);background:linear-gradient(180deg,#1e1e26,#0a0a0f 60%,#050607);color:#fff;font-size:17px;font-weight:700;box-shadow:0 0 14px var(--qc),0 6px 16px rgba(0,0,0,.5);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.pc-dm-chip b{font-weight:900;letter-spacing:.04em;}
+/* FOLLOW-ON 2026-11-19 — A4: the library add surfaces are owner-only. The
+   library itself renders from localStorage (the eye's test entries live in
+   that profile, not in these bytes); visitors can no longer add entries. */
+body:not(.is-owner) #ofLibAdd,body:not(.is-owner) #os-lib-add-card{display:none!important;}
+/* FOLLOW-ON 2026-11-19 — C: the rail, two lines. LINE 1: orb, name, % locked
+   top-right. LINE 2: five 32px buttons in one clean row, eye first. */
+#pcRailList .pc-card-line1{display:flex;align-items:center;gap:8px;min-width:0;}
+#pcRailList .pc-card-line1 .fc-pick-av{width:40px;height:40px;font-size:17px;flex:none;}
+#pcRailList .pc-card-line1 .pc-card-id{flex:1;min-width:0;}
+#pcRailList .pc-card-line1 .pc-pct{flex:none;margin-left:auto;}
+#pcRailList .pc-card .pc-pct .os-mini-tile.pc-match-one{width:auto!important;padding:0 8px;}
+#pcRailList .pc-card-line2{display:flex;align-items:center;gap:8px;margin-top:10px;}
+#pcRailList .pc-card-line2 .pc-act-btn{width:32px;height:32px;font-size:18px;}
+#pcRailList .pc-card-line2 .pc-info{flex:none;width:32px;height:32px;}
+#pcRailList .pc-card-line2 .pc-info:hover{transform:translateY(-2px);}
+#pcRailList .pc-card-line2 .pc-info:active{transform:scale(.97);}
+#pcRailList .pc-card-line2 .pc-act-btn:hover{transform:translateY(-2px);}
+/* FOLLOW-ON 2026-11-19 — A5: the page-end closer. The page ends on its own
+   words (the saying, in the page's purple) instead of trailing into the
+   empty black below the feed. Slim, obsidian, one rim line on top. */
+.pc-page-end{display:flex;flex-direction:column;align-items:center;gap:8px;padding:30px 16px 38px;text-align:center;border-top:2px solid rgba(142,36,170,.55);background:linear-gradient(180deg,#0b0b10,#050607);}
+.pc-page-end-mark{color:#8e24aa;font-size:19px;line-height:1;text-shadow:0 0 12px rgba(142,36,170,.8);}
+.pc-page-end-line{font-size:19px;font-weight:800;color:#fff;line-height:1.4;}
+.pc-page-end-sub{font-size:17px;font-weight:700;color:#fff;line-height:1.4;}
+</style>
+<script id="personal-followon-20261119-js">
+/* FOLLOW-ON 2026-11-19 — A4: the Q&A add button is owner-only (capture guard;
+   the card itself is hidden for visitors by CSS — this stops any other path). */
+document.addEventListener('click', function(e){
+  var t=e.target;
+  if(t && t.closest && t.closest('#os-lib-add') && !(window.pcIsPageOwner&&window.pcIsPageOwner())){
+    e.stopPropagation(); e.preventDefault();
+  }
+}, true);
+</script>
 </body></html>
