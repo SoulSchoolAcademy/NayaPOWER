@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 18:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1449,6 +1449,14 @@ _Last updated: 2026-11-19 18:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1528 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
+**Task:** Disclosure-decision packet: one class decision + per-entry consequences for the 6 live pending entries (pending leg)
+
+**Receipt:** `twelve-lane-receipts/t1528-lane11.md`
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: all 5 pinned sha256 EXACT (packet ec77b561, fresh preview b618a698 byte-identical to parent, pending-split de784902, extract-six b774db04, corpus index 238ebe9c unchanged). Fresh verifier re-run reproduced parent census (688/26/646/16/0/38) and the live/inert split matches the brief's six exactly. Score 9.5 (ACCE
+
+### ✅ t1528 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
 **Task:** Disclosure-decision packet: lifecycle filter on pending Smart Note entries, live vs inert split
 
 **Receipt:** `twelve-lane-receipts/t1528-lane11.md`
@@ -1486,6 +1494,14 @@ _Last updated: 2026-11-19 18:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1528-lane11.md`
 
 **Evidence:** VERIFIED: packet sha ec77b561...a61e4b60a3, fresh preview sha b618a698...670b5 (byte-identical to parent preview), pending-split script sha de784902...0d24, extraction script sha b774db04...fbdf, corpus sha 238ebe9c...ff5, mirror tip 6c60c328...a85 all recomputed from live bytes and MATCH the receipt pins; mirror git status clean. Clears 9.5 becaus
+
+### ✅ t1527 — Team 1, Team Naya Scorer (Verification & Proof) — 9.4/10 [VERIFIED]
+
+**Task:** Independent read-only verification of the t1527 dispatcher reconcile
+
+**Receipt:** `twelve-lane-receipts/t1527-lane1.md`
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: receipts t1526-lane1.md (11,724B) and gap-t1515-lane11.md (10,450B) exist with matching sizes; addendum receipt exists (09:14Z); both finished sign-outs present exactly once each in brief-queue/lane-feed.md; both t1527 mirror lines present once each in lesson-broadcast.md. The queued 14 = reconcile 13 + own t1527
 
 ### ✅ t1527 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -1526,6 +1542,14 @@ _Last updated: 2026-11-19 18:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1527-lane1.md`
 
 **Evidence:** VERIFIED on workspace bytes: claimed/done/ holds brief-t1526-lane1.md and brief-gap-t1515-lane11.md; receipts t1526-lane1.md (11724 bytes) and gap-t1515-lane11.md (10450 bytes) exist matching the receipt's sizes; later state corroborates the receipt's predicted next moves (addendum brief and t1527 brief now in claimed/done/, rotation tick 1528 queu
+
+### ✅ t1526 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent read-only verification of the t1526 dispatcher reconcile (4 moves, re-registered gap briefs)
+
+**Receipt:** `twelve-lane-receipts/t1526-lane1.md`
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: all 4 moved briefs in claimed/done/ (brief-t1526-lane1, brief-t1523-lane11, brief-gap-t1522-lane12, brief-gap-gap-t1504-lane10, plus brief-t1524-lane1 confirmed present) and all 4 matching receipts exist on disk. D1 (gap-t1515 executed 09:03-09:05Z before the 09:05Z reconcile, receipt gap-t1515-lane11.md exists) 
 
 ### ✅ t1526 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -28307,6 +28331,14 @@ _Last updated: 2026-11-19 18:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED on live bytes this tick: all 6 receipt-claimed SHA prefixes byte-match (arm.py 814f75f203cf7e73fa92, corpus.json b231f055fb95955260c9, harness a7e72ce93bd75df07b7c, queries.json 3140c5e401169afb7dee, scores.json 65c76ce5e89fe5ae16d0, rank-tables.json a5bc1174250d64d95811); driver<->harness cross-check logic reviewed sound; batter
 
+### ✅ t0452 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** RETRIEVAL SURGE slice a: mechanization study protocol + worked example for the judge's decision-change test
+
+**Receipt:** `twelve-lane-receipts/t0452-lane5.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 12). VERIFIED first-hand: protocol study-protocol-t0452.md sha256 821cec6299504143 EXACT and worked-example-t0452.md b288a15139227dba EXACT as cited; frozen fixtures re-verified per receipt. Tip dbe06f9e pinned at receipt time; historical tip cannot be re-checked against current remote head, noted as a limit. Score 9.0 (GOOD, ONE
+
 ### ✅ t0452-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** RETRIEVAL SURGE slice a: mechanization study protocol for the judge's decision-change test + worked example
@@ -28372,6 +28404,14 @@ _Last updated: 2026-11-19 18:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0452-lane10.md`
 
 **Evidence:** Verified: deliverable ask-world-needs-t0452.md exists (666f800ea31b). Core claim independently confirmed: hidden_files/bin/ask-world.py has exactly one open() call (a read of world.json, line 23) — read-only by construction, zero logging; no *query* log exists in hidden_files. Real work: refused to fabricate the top-20, delivered the honest absence
+
+### ✅ t0452 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-auth battery calibration (designed step, M2-total aggregate added, re-run on tip dbe06f9e)
+
+**Receipt:** `twelve-lane-receipts/t0452-lane1.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 12). VERIFIED first-hand: all 3 cited auto-retrieval artifacts exist with sha256 prefixes matching the receipt exactly (run_log eb29adc477087540, evidence 7b5c3713aa721f03, battery 275e26345ec21105); lane-1/t0452/acceptance_battery.py identical hash. Tip SHA dbe06f9e pinned at receipt time; historical tip cannot be re-checked aga
 
 ### ✅ t0452-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -55236,6 +55276,12 @@ _Last updated: 2026-11-19 18:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261119-1019 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-19 10:19 PST: 31 queued briefs evaluated, all refused, queue untouched, capped hourly receipt
+
+**Evidence:** FRESH (receipt 10:19 PST, this tick 10:20 PST). VERIFIED first-hand: sweep log claim-sweep-20261119-1018.log sha256 36c97992cad4080616ff7da0f9c0a4f904f7aac58c466bb8c97095fcbdc209a3, 31 attempt lines (29 x exit 7, 2 x exit 2) with attempted briefs exactly equal to the queue; brief-queue holds exactly 31 brief-*.md files, zero brief-tNNNN, sorted lis
 
 ### ✅ gate-stall-20261119-0914 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
