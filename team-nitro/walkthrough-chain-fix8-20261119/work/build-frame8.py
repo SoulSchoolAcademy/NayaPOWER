@@ -315,8 +315,10 @@ JS8 = """
     media.appendChild(ttl);
     media.appendChild(sub);
     media.appendChild(arow);
-    media.appendChild(anote);
     media.appendChild(vbtn);
+    /* The audio note sits BELOW the video button, not above it: revealing
+       it must never push the video button below the reading window. */
+    media.appendChild(anote);
     media.appendChild(note);
     sc0.insertBefore(media, sc0.firstChild);
     /* F9 (corrected) — tapping the orb reveals the waiting note, visibly;

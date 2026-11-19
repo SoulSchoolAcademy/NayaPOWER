@@ -2,7 +2,7 @@
 """FIX8 stage (2026-11-19): file the fix-8 build in branch
 walkthrough/chain-fix8-20261119 from the fix-7 tip 3c621b7d, one commit:
 walk (unchanged), identity (unchanged), the new worker, the edited
-builder (asserts -> 2062739e welcome + 43f5e4e1 unfold), the new unfold
+builder (asserts -> 2062739e welcome + 0a68a283 unfold), the new unfold
 (in-memory bytes, never on disk), the edited welcome (F6: no-alias
 auto-enter removed), the mp3 (filed commit 1, UNWIRED as of commit 5 —
 F9 correction), and the fix-8 work scripts + brief. Then blob
@@ -29,16 +29,15 @@ WORK = "/home/hatch/workspace/team-nitro/walkthrough-chain-fix8-20261119/work"
 BRANCH = "walkthrough/chain-fix8-20261119"
 PARENT_BRANCH = "walkthrough/chain-fix7-20261119"
 PARENT = "3c621b7d2cc3eca539ed99d5625ca58c4599ef68"
-# Fifth staging commit: the fourth fix-8 commit (396cf2b2) is already
-# on this branch. Commit 5 is the F9 CORRECTION (~14:50 MST, Shawn's
-# own words, superseding the F9 send): do NOT wire the mp3 — Shawn has
-# NOT given the audio yet, he cuts it from his video. Both media
-# buttons wait on HIS captioned video file; nothing is substituted.
-# The page is rebuilt with the audio unwired (no <audio> element, no
-# mp3 string anywhere in the built bytes — the transform guard fails
-# the build if one appears). The mp3 stays filed from commit 1 but is
-# unwired. This run files commit 5 on top of commit 4.
-TIP1 = "396cf2b2493550f84ebfbdcd5c140ee6e530a7e5"
+# Sixth staging commit: the fifth fix-8 commit (e2c9cbb9) is already
+# on this branch. Commit 6 is the render-read fix on top of the F9
+# correction: the revealed audio note sat ABOVE the video button and
+# pushed it half below the media frame's reading window. The note now
+# sits BELOW the video button, so revealing it never moves the video
+# button. Nothing else changes: both media buttons still wait on
+# Shawn's captioned video file; nothing is wired. This run files
+# commit 6 on top of commit 5.
+TIP1 = "e2c9cbb9c71bea785c7036effbb640b1effb167d"
 WALK_LOCAL = "/home/hatch/workspace/team-nitro/walk-v23-assembly-20261114/walk-beginning-fixed.html"
 MP3_LOCAL = "/home/hatch/workspace/your_files/agreement-naya-voice.mp3"
 MP3_SHA = "62bf05e68a036e86b5aa3280c16b9dd810dda711abf1fd34612cda10b2b9261a"
@@ -82,7 +81,7 @@ def main():
     assert st.sha(new_unfold) == bf.UNFOLD_SHA, "unfold moved"
     assert st.sha(mp3) == MP3_SHA, "mp3 moved"
     assert len(mp3) == 5976421, "mp3 size moved"
-    assert b'assert unfold_sha.startswith("43f5e4e1")' in builder, "builder unfold assert not moved"
+    assert b'assert unfold_sha.startswith("0a68a283")' in builder, "builder unfold assert not moved"
     assert b'assert welcome_sha.startswith("2062739e")' in builder, "builder welcome assert not moved"
     assert b'UNFOLD_RAW' in builder, "builder missing UNFOLD_RAW"
     assert b"stay on the entrance" in new_welcome, "welcome F6 edit missing"
@@ -104,7 +103,7 @@ def main():
     print("parent (fix7 tip):", PARENT, flush=True)
     _, ref8 = st.gh("GET", "/repos/%s/git/refs/heads/%s" % (st.REPO, BRANCH))
     assert ref8["object"]["sha"] == TIP1, "fix8 tip moved: %s" % ref8["object"]["sha"]
-    print("fix8 tip (commit 4):", TIP1, flush=True)
+    print("fix8 tip (commit 5):", TIP1, flush=True)
     _, commit = st.gh("GET", "/repos/%s/git/commits/%s" % (st.REPO, TIP1))
     base_tree = commit["tree"]["sha"]
     print("base tree:", base_tree, flush=True)
@@ -181,14 +180,14 @@ def main():
         "welcome: fresh visitors stay on the entrance (no-alias "
         "auto-enter removed; Enter / ?stage= / restores untouched). No "
         "Welcome button or pill introduced anywhere.\n\n"
-        "Unfold 117,636 B (sha e21f08d0) -> 131,028 B (sha 43f5e4e1). "
+        "Unfold 117,636 B (sha e21f08d0) -> 131,175 B (sha 0a68a283). "
         "Welcome 1,859,867 B (sha d79793c0) -> 1,861,272 B (sha 2062739e). "
         "Walk 4,361,146 B sha b6befc33; identity 401,040 B sha 3279dc35; "
         "worker sha %s (built twice, identical; embeds verified: WALK "
-        "b6befc33, IDENTITY 3279dc35, WELCOME 2062739e, UNFOLD 43f5e4e1, "
+        "b6befc33, IDENTITY 3279dc35, WELCOME 2062739e, UNFOLD 0a68a283, "
         "TEMPLATE 61002d15). The mp3 stays filed from commit 1\n"
         "(5,976,421 B, sha256 62bf05e6, 12m27s) but is UNWIRED as of\n"
-        "commit 5 — both media buttons wait on Shawn's captioned video.\n\n"
+        "commit 5 — both media buttons wait on Shawn's captioned video; commit 6 moves the revealed audio note below the video button so it never covers it.\n\n"
         "Staged: %s/ - routes curl-verified byte-identical by sha256 after the PUT. "
         "NO PR, NO MERGE — the checker and the captain come after this seat. "
         "Nothing live." % (worker_sha[:8], st.STAGING))
