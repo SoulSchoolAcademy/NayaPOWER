@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 13:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21905,6 +21905,12 @@ _Last updated: 2026-11-19 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: spec hub-prep/hv-observatory-spec-t0618.md exists, sha256 49a53b053c6f645 byte-identical; both pinned runs' JSON files match quoted pins (full 60f0a0ecd29cf48; window 94b7a1e16910a2); instrument bin/hv_measure.py 085172f2738e67cf and human-value-instrument-v1.md 321f3f4a8fe7c397 byte-identical to quoted pins. Both runs executed twice with
 
+### ✅ t0617-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Second-seat audit: dispatch-log spec addendum - ADOPT-AMENDED
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: verdict doc auto-retrieval/provenance-dispatch-log-spec-t0613-verdict-lane9.md sha16 398d2f2c2eb315ce EXACT match; spec 5ee8ab48, sampler 0667e0b7, writer 6fb3335a all match the receipt's pins. Independent second seat re-derived all six spec pins from live bytes (zero inheritance), dry-fired every 
+
 ### ✅ t0617 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** second-seat audit: dispatch-log spec addendum
@@ -21920,6 +21926,12 @@ _Last updated: 2026-11-19 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0617-lane9.md`
 
 **Evidence:** Verified: verdict doc auto-retrieval/provenance-dispatch-log-spec-t0613-verdict-lane9.md exists with sha256 398d2f2c2eb315ce byte-identical to the quoted full SHA; all six spec pins re-derived at action time match live bytes (spec 5ee8ab48, sampler 0667e0b7, writer 6fb3335a, v1 cb580797, dry-run log 6b276459); all expected-FAIL lines (F1/F3/F4/F5/F
+
+### ✅ t0617-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Ask-world re-arm CANDIDATE draft - one-line step + organic-only metric rule
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: addendum ask-world-rearm-addendum-t0617-CANDIDATE.md sha16 18127abfea765b7f EXACT match; t0613 demand-source-map 2f7deb8d1ce6548a EXACT match. The template's ask-world count is 1 today (line 125) vs the receipt's 0 at action time - explained, not a defect: a later t0657-lane3 verdict put the step i
 
 ### ✅ t0617 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -21937,6 +21949,12 @@ _Last updated: 2026-11-19 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: addendum ask-world-rearm-addendum-t0617-CANDIDATE.md exists, sha256 18127abfea765b7f byte-identical; map pin 2f7deb8d1ce6548a matches the t0613 receipt pin; template 'ask-world' reference count independently re-verified at action time = 0 (grep -c), confirming the demand-death premise as live fact. Brief's three asks all present in the do
 
+### ✅ t0617-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.0/10 [VERIFIED]
+
+**Task:** Overlap-without-claims cellset - already executed, duplicate dispatch caught, integrity verified
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: design 0ffe503cd7d9ac3c, seal 38ccd002a5780cd5, instrument 4d43798e58f2769f all match t0567 pins; t0588 seal 78a88e07245095ef, instrument and fixture 8077fc722905ec12 match the recorded pins; mtime order prereg 1791871847 < seal 1791871871 < results 1791871880 holds; mechanical re-tally of results-
+
 ### ✅ t0617 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** overlap-without-claims cellset - ALREADY EXECUTED, duplicate dispatch caught, integrity verified
@@ -21953,6 +21971,12 @@ _Last updated: 2026-11-19 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: design 0ffe503cd7d9ac3c, seal 38ccd002a5780cd5, instrument 4d43798e58f2769f, t0588 seal 78a88e07245095ef — all byte-identical to receipt pins; t0588 mtime ordering independently confirmed (prereg 1791871847 < sealed-selection 1791871871 < results 1791871880 — seal-before-run holds); t0588-rerun/ copies byte-identical to t0567 originals. R
 
+### ✅ t0616-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Auth-gate migration prep (SURGE slice b) - stamping design
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: candidate head e654f16e exists in the local mirror; gate module tools/retrieval_authorization_gate.py at that head sha256 fbe6ee29482fdc57 EXACT match to the receipt pin; main tip 26efff668a exists in the mirror; new file hidden_files/retrieval-authgate-migration-prep-t0616.md present on disk. Caug
+
 ### ✅ t0616 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** auth-gate migration prep (SURGE slice b)
@@ -21968,6 +21992,12 @@ _Last updated: 2026-11-19 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0616-lane8.md`
 
 **Evidence:** Verified: new doc retrieval-authgate-migration-prep-t0616.md exists; all cited pins recomputed byte-identical (candidate head e654f16e8a49 == t0594/t0605/t0611 pins; gate module fbe6ee29482f == prior pins; module byte-identical on main via #2455/#2501 per receipt, retrieve() unwired with zero refs). Real integrity value: caught the brief's premise-
+
+### ✅ t0616-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Ask-world top-20 needs (SURGE slice c) - duplicate refused, delta-verification
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: ask-world log first-42-lines sha16 08f3662cef26 EXACT match to the receipt pin (whole-file hash differs only because the log has since grown to 206 lines - growth, not tampering); json 5fd1189203f8, md 2af2e183fa2e, demand-source-map 2f7deb8d1ce6 all match t0614/t0613 pins; new file hidden_files/as
 
 ### ✅ t0616 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
