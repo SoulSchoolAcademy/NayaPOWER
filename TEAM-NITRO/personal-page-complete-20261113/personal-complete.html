@@ -12203,10 +12203,10 @@ function HubView(params) {
              it opens, the people related to the current feed topic show
              automatically on the side: the lens is read live from the
              active tab, and the matching Connections sub-row opens —
-             PERSONAL opens your Personal connections, ACTIVITY (your world)
-             opens your World's connections, COLLECTIVE brings Your
-             Connections — the directory of all the people around the
-             collective feed — into view. */
+             PERSONAL brings Your Connections — the directory of all the
+             people around the personal feed — into view, BUSINESS opens
+             your Personal connections, WORLD (your world) opens your
+             World's connections. */
           var api = window.NayaChassis || {};
           var shellEl = document.querySelector('.shell');
           var leftOpen = shellEl && (shellEl.classList.contains('drawer-open') || (window.innerWidth >= 1440 && !shellEl.classList.contains('rail-collapsed')));
@@ -13272,7 +13272,7 @@ window.NayaNotif = window.NayaNotif || {
   peopleSec.innerHTML = '<div class="rail-people-head"><b>YOUR PEOPLE</b></div><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
   /* Feed-following: the people shown are the feed's people. The lens is read
      live from the active tab — the same three-way read the menu control uses
-     (Personal / Activity / Collective) — and the section re-renders whenever
+     (Personal / Business / World) — and the section re-renders whenever
      the feed changes. The render itself lives in the harvested Personal
      block (window.NayaHubPeople.render when it lands); until then refresh()
      leaves the honest empty state alone. The harvested render must look up
@@ -13281,7 +13281,7 @@ window.NayaNotif = window.NayaNotif || {
   window.NayaHubPeople = window.NayaHubPeople || {};
   window.NayaHubPeople.readLens = function () {
     var active = document.querySelector('.lens-tab.active');
-    if (active && active.classList.contains('lens-business')) return 'personal';
+    if (active && active.classList.contains('lens-business')) return 'business';
     if (active && active.classList.contains('lens-world')) return 'world';
     return 'personal';
   };
@@ -13584,13 +13584,13 @@ if(wall&&rail&&wall.parentNode){
   wall.parentNode.insertBefore(wrap, wall); wrap.appendChild(wall); wrap.appendChild(rail);
 }
 /* HUB CONTRACT (swap): the Hub owns the lens; Personal's rail follows
-     it. Collective shows the whole directory (all 13); Personal shows
-     the public family; Activity (your world) shows the Naya family — the
+     it. Personal shows the whole directory (all 13); Business shows
+     the public family; World (your world) shows the Naya family — the
      same lens->people mapping the menu control uses for its Connections
-     sub-rows. render(lens) takes personal / activity / collective from
+     sub-rows. render(lens) takes personal / business / world from
      window.NayaHubPeople.readLens(). */
   window.NayaHubPeople.render = function(lens) {
-    var tab = lens === 'personal' ? 'public' : (lens === 'activity' ? 'naya' : 'personal');
+    var tab = lens === 'business' ? 'public' : (lens === 'world' ? 'naya' : 'personal');
     window.pcRenderRailForTab(tab);
   };
   /* ROUND 2d - first render DEFERRED one task: a synchronous refresh here
