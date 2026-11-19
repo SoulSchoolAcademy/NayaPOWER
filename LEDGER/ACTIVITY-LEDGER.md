@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -54100,6 +54100,12 @@ _Last updated: 2026-11-19 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261118-1647 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Hourly lane-executor claim sweep 16:47 PST — 31 briefs attempted, 0 claimed (gate stall)
+
+**Evidence:** Fresh window. VERIFIED first-hand: log sha256 5ff2d540e812bd4c2a404df5376b5ae7c5c821a0b9e333525947070ac7fcb44d MATCHES receipt; queue holds exactly 31 brief-*.md, zero brief-tNNNN-*, and the sorted queue matches the 15:44 receipt's blocked list 31/31 (zero composition change). BUT the receipt's headline claim does NOT match its own cited log: the l
 
 ### ✅ gate-stall-20261118-1544 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
