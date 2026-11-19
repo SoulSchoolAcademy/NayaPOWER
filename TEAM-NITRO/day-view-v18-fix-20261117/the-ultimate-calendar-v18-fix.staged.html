@@ -2569,6 +2569,56 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   .wisdom-banner .wq-label{margin-top:16px!important}
 }
 
+/* ============ FIX10 — repair round: badge clear, wisdom nav clear, dots clear, news preselected ============ */
+/* (1) CORNER COUNT — in its own row, top-right, in flow. An absolute badge
+   can only sit ON the name (1920 Appointments) or ON the icon (390 all
+   five); a badge that is the first flex child, aligned to the block's
+   right edge, can never overlap anything below it — the name, the sub,
+   the icon and the digit tiles each keep their own row. The name keeps
+   the full block width (the FIX9b 34px padding-right that wrapped YOUR
+   WORLDS goes) and never wraps (one line at every width where it shows). */
+.notif-slide .nblock .nb-corner{position:static!important;top:auto!important;right:auto!important;align-self:flex-end!important;margin:0!important}
+.notif-slide .nblock .nb-name{padding-right:0!important;white-space:nowrap!important}
+/* (1b) NARROW — where five names cannot fit five-across at 17px (below
+   900px the blocks run under ~170px and APPOINTMENTS needs ~190px), the
+   icon speaks instead of the name — the same lawful §2.4 treatment fix-9
+   gave the phone, extended to the whole disintegration zone. Same compact
+   block, same counts, same digit tiles. */
+@media(max-width:900px){
+  .notif-slide .nblock{padding:10px 4px!important;gap:8px!important;min-height:120px!important;overflow:hidden!important}
+  .notif-slide .nblock .nb-name{display:none!important}
+  .notif-slide .nblock .nb-sub{display:none!important}
+  .notif-slide .nblock .nb-ico{display:inline-flex!important;align-items:center!important;justify-content:center!important;color:#fff!important}
+  .notif-slide .nblock .nb-ico svg{width:30px!important;height:30px!important}
+  .notif-slide .nblock .os-mini-num .os-mini-tile{width:24px!important}
+  .notif-slide .nblock .os-mini-num .os-mini-tile .cap{height:4px!important}
+  .notif-slide .nblock .os-mini-num .os-mini-tile .rd{height:26px!important;line-height:26px!important;font-size:22px!important}
+  .notif-slide .nblock .nb-corner{min-width:24px!important;height:24px!important;font-size:17px!important}
+}
+/* (2) WISDOM NAV AT 390 — the static nav flows to the bottom of the tall
+   wisdom stack and lands under the fixed weather bar. Restore the base
+   sticky nav (bottom 64px) on the wisdom slide only: the nav rides its
+   black band above the weather bar at rest, exactly as base measured
+   0/0/0. Other slides keep the FIX9b static nav. */
+@media(max-width:560px){
+  #dayScroll #wisdomBanner .sb-nav{position:sticky!important;bottom:64px!important;margin-top:auto!important}
+}
+/* (3) WISDOM DOTS AT 390 — the dots strip sticks 10px under the slide top
+   and the wisdom label rides up onto it at max scroll (1380 px²). Raise
+   the strip's stick point on the wisdom slide only, so at max scroll the
+   label has passed fully above the strip instead of landing on it; at
+   rest the strip sits at its flow position, unchanged. */
+@media(max-width:560px){
+  #dayScroll #wisdomBanner .sb-dots{top:90px!important}
+}
+/* (4) NEWS PRESELECTION — the chosen scope's panel lights unmistakably:
+   full own-colour rim and glow, and a Selected pill in its title row
+   (harvested from the .state-pill anatomy: obsidian pill, own-colour
+   rim, white 17px). The JS below renders the chosen scope first. */
+.panel.news-active{border-color:var(--sc)!important;border-width:1.5px!important;box-shadow:0 0 24px color-mix(in srgb,var(--sc) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.18)!important}
+.panel.news-active .formtitle{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important}
+.news-sel{display:inline-flex!important;align-items:center!important;flex:none!important;min-height:34px!important;padding:4px 14px!important;border-radius:999px!important;font-size:17px!important;font-weight:800!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:#fff!important;background:linear-gradient(180deg,#17171f,#08080d)!important;border:1.5px solid var(--sc)!important;box-shadow:0 0 12px color-mix(in srgb,var(--sc) 35%,transparent),inset 0 1px 0 rgba(255,255,255,.2)!important;white-space:nowrap!important}
+
 </style>
   </head>
   <body>
@@ -4343,9 +4393,15 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                first in its own colour. No headlines are ever invented */
             var scopes = [["local", "Local", "#0e7490"], ["provincial", "Provincial", "#07925f"], ["global", "Global", "#d4a017"]];
             var scope = newsScope || "local";
-            body.innerHTML = scopes.map(function (sc) {
-              return '<div class="panel' + (sc[0] === scope ? ' news-active' : '') + '" style="--sc:' + sc[2] + '">' +
-                '<p class="formtitle">' + sc[1] + ' news</p>' +
+            /* FIX10 item 4 — the chosen scope renders FIRST, lit, with its
+               Selected pill: the door opens on the scope the citizen
+               tapped (fix-9 only tinted the border and kept Local first).
+               The other scopes keep their order and their honest text. */
+            var ordered = scopes.slice().sort(function (a, b) { return (a[0] === scope ? 0 : 1) - (b[0] === scope ? 0 : 1); });
+            body.innerHTML = ordered.map(function (sc) {
+              var active = sc[0] === scope;
+              return '<div class="panel' + (active ? ' news-active' : '') + '" style="--sc:' + sc[2] + '">' +
+                '<p class="formtitle">' + sc[1] + ' news' + (active ? '<span class="news-sel">\u25c6 Selected</span>' : '') + '</p>' +
                 '<p class="none-line" style="text-align:left">' + sc[1] + ' news is not connected yet — no news to show for this day.</p></div>';
             }).join("");
           } else if (door.id === "horoscope") {
