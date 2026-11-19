@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 18:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28339,6 +28339,12 @@ _Last updated: 2026-11-19 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0452-lane10 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
+**Task:** ask-world query-log freshness check + top-20 needs analysis (SURGE slice c)
+
+**Evidence:** BACKLOG SWEEP (oldest-first, Oct 12). VERIFIED first-hand: deliverable hidden_files/auto-retrieval/ask-world-needs-t0452.md exists (mtime Oct 12 17:04) and its content matches the receipt - states no log exists, top-20 cannot be produced honestly, dependency chain instrument->collect->analyze, scoped next action. Corroboration: current bin/ask-worl
+
+### ✅ t0452-lane10 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
 **Task:** SURGE slice: verify ask-world query-log freshness, produce top-20 needs analysis
 
 **Evidence:** VERIFIED this tick by this scorer: deliverable hidden_files/auto-retrieval/ask-world-needs-t0452.md EXISTS (sha256 666f800ea31ba79a...); ask-world.py lives at hidden_files/bin/ask-world.py (read-only-by-design claim consistent with receipt's source read). NOT PHANTOM. Score 8.5, REWORK range, matching the lane self-score 8.5. Why not 9.5: (1) the b
@@ -28396,6 +28402,12 @@ _Last updated: 2026-11-19 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0452-lane1.md`
 
 **Evidence:** Verified: all 4 artifacts exist with exact sha256 prefix matches (run log eb29adc47708, evidence 7b5c3713aa72, battery copy 275e26345ec2, lane-1/t0452 copy identical); live remote tip dbe06f9e733efb52c50e583dbb0b74d77039eb73 matches the receipt's pin. Real work: calibrated instrument (M0/M0b byte-pins to t952 fixture, M1-total 25/25, new M2-total 9
+
+### ✅ t0442-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE 0 [RETRIEVAL] semantic slice-2 - entailment-rerank arm (NLI cross-encoder) vs frozen sealed t0432 baseline
+
+**Evidence:** BACKLOG SWEEP (oldest-first, Oct 12). VERIFIED first-hand: instrument t0442_entailment.py sha256 a211e4e4... EXACT, results-t0442-entailment.json 39201b40... EXACT, seal note 16:48:05Z pre-run with frozen SHAs matching results _spec (baseline b1af58d0, fingerprint 4ab5f359, baseline_md 460429b1); results JSON read from bytes confirms HIT@5 0.333/0.
 
 ### ✅ t0442-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -42287,6 +42299,18 @@ _Last updated: 2026-11-19 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-gap-gap-t0432-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: errata correcting the scorer-citation and seal-header strings for the third-baseline run
+
+**Evidence:** BACKLOG SWEEP (Oct 25). VERIFIED first-hand: errata file hidden_files/auto-retrieval/errata-gap-gap-gap-t0432.md exists (9,719 bytes); its tail carries a later addendum (04:01 added to the discarded-as-verified list), and its mtime Oct 25 04:16 is 10 min AFTER the receipt (04:06) - which explains why its current sha256 8fbc9ca6c0a2c88f82838aaca3d78
+
+### ✅ gap-gap-t0432-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: third baseline - clean reserve tasks G/H/I for the entailment arm, second-human leg prep
+
+**Evidence:** BACKLOG SWEEP (Oct 25). VERIFIED first-hand: third-baseline artifacts exist in hidden_files/auto-retrieval/ (baseline-third-gap-gap-t0432.md, compare-third-gap-gap-t0432.py, comparison-third-gap-gap-t0432.json, results-third-gap-gap-t0432.json); receipt cites sha256 142f24e3558053cb42f67592eb6e81b2a6f6d00686277c3717dc307b93ad0e5d for the reserve in
+
 ### ✅ gap-t0432-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** Gap close: blind second baseline for the t0432 bi-encoder exam (Lane 5)
@@ -44426,6 +44450,12 @@ _Last updated: 2026-11-19 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-gap-t0582b-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-verify the t0582b merge/close investigation with fresh API reads
+
+**Evidence:** BACKLOG SWEEP (Oct 26). VERIFIED first-hand: evidence dir hidden_files/gap-gap-t0582b-evidence/ exists with pr, comment, timeline, branch, workflow-main, workflow-commits, commit, tree, and main-ref JSONs (plus .err files) - the fresh-read evidence set the receipt claims. Score 9.0 (GOOD, ONE MORE PASS), agreeing with the lane's honest 9.0. Why not
 
 ### ✅ gate-stall-1835-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -47283,6 +47313,26 @@ _Last updated: 2026-11-19 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-gap-gap-t1002-lane2-recusal-repeat-20261026 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: patch the claim-script pattern gap that let a barred seat claim the sealed probe twice, and gate the held brief
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t1002-lane2-recusal-repeat-20261026-lane2.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 27). VERIFIED first-hand from the receipt's evidence: real-held dry run exit 2 (verdict barred - claimability gate bars 'clarity'), held brief still in claimed/ with sha still 26b16e31 after the run, temp claimed dir empty, Resolve control exit 0, pattern-only dry run exit 7, self-test green. Score 9.0 (GOOD, ONE MORE PASS), agre
+
+### ✅ gap-gap-gap-t1002-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: run the sealed plain-A shape-sensitivity probe (fresh-context seat only) - second attempt
+
+**Evidence:** BACKLOG SWEEP (Oct 27). VERIFIED first-hand: parent recusal receipt hidden_files/twelve-lane-receipts/gap-gap-t1002-lane2.md exists with sha256 a2388b7c0377e905ea78a3bb70bcf15b6aba14ed2eb75e3984ee0fd1e7b7b9df - EXACT match to the hash cited in this receipt. Same sound recusal ground as the parent run (seat authored the parent receipts, barred by th
+
+### ✅ gap-gap-t1002-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: run the sealed plain-A shape-sensitivity probe (fresh-context seat only)
+
+**Evidence:** BACKLOG SWEEP (Oct 27). VERIFIED first-hand: parent receipt hidden_files/twelve-lane-receipts/gap-t1002-lane2.md exists with sha256 a64e30b0c20e9e4ce27de8da2033b30f99a227956e87994486dc310183d9038e - EXACT match to the hash cited in this receipt. The recusal ground is sound: the brief bars any seat that read the hypothesis/rubric/prior outputs, and 
+
 ### ✅ gap-t0802-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** CLOSED signal wired into the brief queue: stale-gap sweeper built, live-run, queue proven healthy
@@ -48452,6 +48502,18 @@ _Last updated: 2026-11-19 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-gap-gap-t1530-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: close the instrumented leg - network-instrumented pass identifying the live sidebar bundle and the live click handler
+
+**Evidence:** BACKLOG SWEEP (Oct 24). VERIFIED first-hand: deploy id d9d3d859 / version ab6e0440 (script etag 0c35185b2039ac9fc73dd62b030d79cbdcaaa4ff33050c4a88747ff806e0b723, NO commit field) stated consistently with the parent receipt; the bundle-level closure (cache-free network fetch + ROOMS-array derivation + /rooms/connections 200 handler) is internally co
+
+### ✅ gap-gap-t1530-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: instrumented browser pass on deployment d9d3d859 / version ab6e0440 to identify live sidebar source and re-derive Your Connections click verdict
+
+**Evidence:** BACKLOG SWEEP (Oct 24). VERIFIED first-hand: receipt's cited clone HEAD e0cd4c247abd441e292695c230977ea0f19c5e61 and deploy id d9d3d859 / version ab6e0440 are stated consistently throughout; browser task id browser-task:7f51607b-51c9-5ec5-9ff7-bc98e4389e68 cited; sidebar count reconciliation (14 rooms + Install control = prior '15') is internally e
 
 ### ✅ addendum-gap-t1522-lane12-live-render — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -50972,6 +51034,12 @@ _Last updated: 2026-11-19 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-gap-t1504-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: characterize all 5 down-movers across the 35->36 lesson catalog rewrite (idf dilution vs competitive displacement)
+
+**Evidence:** BACKLOG SWEEP (Oct 24). VERIFIED first-hand (4/4 checked pins EXACT): script retrieval/down-mover-characterization-gap-gap-t1504-lane10.py e5badcf7d8497dc1a695bf8a23463b188de0678a41d15e792dab49a4167ce79c, JSON 6d017b1fae67fa355df752c9b679afe46f6455c94b729f7122a7eb40cdd2f594, parent probe d7a0d2fdccd0f33ed46ba45d7080219948ac9884d7e374b155635c9757ebe
 
 ### ✅ gap-t0407-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
