@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3583",
+ "intelligence": {
+  "title": "SN-3583 — The Navigation Law: Back Top Left, Your Place Top Right, Keep Reading Center",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3583-navigation-law-back-top-left",
+  "smart_note_id": "SN-3583",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3583/IB-SMART-NOTE-20261118-sn3583-navigation-law-back-top-left.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3583",
+   "title": "SN-3583 — The Navigation Law: Back Top Left, Your Place Top Right, Keep Reading Center",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3583/IB-SMART-NOTE-20261118-sn3583-navigation-law-back-top-left.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3583/IB-SMART-NOTE-20261118-sn3583-navigation-law-back-top-left.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c6d2a8c0ac0da2c2c5733af00ee07cdda317a354"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

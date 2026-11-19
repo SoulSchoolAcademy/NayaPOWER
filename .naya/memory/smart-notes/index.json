@@ -62306,6 +62306,606 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "380dac1a099579dff4eeef771ed0aace29acb6ed947e8994dd9c9db6f6972adc"
+    },
+    {
+      "smart_note_id": "SN-3560",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3560-walkthrough-purpose-restated",
+      "title": "SN-3560 — The Walkthrough Purpose: Sign Up, Sign In, Your Own Pages Working",
+      "content_hash": "da509df827a43561c9ed27c0f8aa42aa2b0eea264ad03766aa815343c985ed51",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3560/IB-SMART-NOTE-20261118-sn3560-walkthrough-purpose-restated.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 422a68b6f9f6a10925601ad8da55ba1758a2b5ff ('Intelligence Loop run 338: SN-3560 The Walkthrough Purpose — Sign Up, Sign In, Your Own Pages Working (Shawn restatement ~00:36-00:42Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "48f1503bd62b6a926408bf6611817e5ae36114996e1ef07599ad27a7280802c2"
+    },
+    {
+      "smart_note_id": "SN-3561",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3561-calendar-month-switching-broken",
+      "title": "SN-3561 — The Month Must Change When You Tap It",
+      "content_hash": "444699b7e7a3470efec94f0f5ed0b7b6e784304d6a079536e3b6d41e759ef376",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3561/IB-SMART-NOTE-20261118-sn3561-calendar-month-switching-broken.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 59c1aabc4278f86bede86e06320cd24d3320dc5f ('Intelligence Loop run 338: SN-3561 The Month Must Change When You Tap It (Shawn feedback ~00:36-00:42Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "e52f0ea0153ebf7cfd712890115c73615252ddc7f5067ccf51e8bd6cb9c855ec"
+    },
+    {
+      "smart_note_id": "SN-3562",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3562-calendar-world-clock-date-top",
+      "title": "SN-3562 — The World Clock and the Date Across the Top",
+      "content_hash": "e0200625605345f2bd79839dc5e548201b5a8862d4715c2d4af79cda16bb46b3",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3562/IB-SMART-NOTE-20261118-sn3562-calendar-world-clock-date-top.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 0fabb354713aa74596b731b09a48e8db5abba6ef ('Intelligence Loop run 338: SN-3562 The World Clock and the Date Across the Top (Shawn teaching ~00:36-00:42Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "b63d153bc73acddbc42c7081f4ea8a0dde3c99905cfec2584a622cc65a51a1fb"
+    },
+    {
+      "smart_note_id": "SN-3563",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3563-calendar-weekday-icons-room",
+      "title": "SN-3563 — Weekday Icons Beside the Days, With Room to Move Up",
+      "content_hash": "fe1b66fe414c56e05342a64cb2ddabc4df7aaff8bd03631113ed61db8b0e616b",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3563/IB-SMART-NOTE-20261118-sn3563-calendar-weekday-icons-room.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 77b52985522ca837e57a25022fb2b383f954c271 ('Intelligence Loop run 338: SN-3563 Weekday Icons Beside the Days, With Room to Move Up (Shawn teaching ~23:49Z + ~00:36Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "3d552b96c557f7f13d98429f78dbebb68999655ca22b2b79888caf860b9425e3"
+    },
+    {
+      "smart_note_id": "SN-3564",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3564-calendar-stray-icon-back-arrow-goes",
+      "title": "SN-3564 — The Stray Icon by the Back Arrow Goes; Today Lit White Stays",
+      "content_hash": "3ecc038087a6894ac09f949abd15c5f031e06ed201971a48f2c691cbc27c20a9",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3564/IB-SMART-NOTE-20261118-sn3564-calendar-stray-icon-back-arrow-goes.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 975201777cf9a804646b898b53c17e4b48f63994 ('Intelligence Loop run 338: SN-3564 The Stray Icon by the Back Arrow Goes; Today Lit White Stays (Shawn teaching ~00:36-00:42Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "fe65ff6980294c43161ae405053588a5df8755cb99b1a2a458c4b159b1e7fd9e"
+    },
+    {
+      "smart_note_id": "SN-3565",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3565-calendar-stats-inside-every-page",
+      "title": "SN-3565 — Stats Inside Every Page",
+      "content_hash": "b5302d56cba430747d2fc05432fe710cbd6e2d1f2ec54a61707842da7793c553",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3565/IB-SMART-NOTE-20261118-sn3565-calendar-stats-inside-every-page.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 5de735342dd9e2e4b01c7a67efe8392128eabf92 ('Intelligence Loop run 338: SN-3565 Stats Inside Every Page (Shawn teaching ~00:36-00:42Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "eea7e2e51d3ec0abd384132b8a6eaec5a932629c8fcec620dc869021035bbe49"
+    },
+    {
+      "smart_note_id": "SN-3566",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3566-calendar-each-day-replaceable-image",
+      "title": "SN-3566 — Each Day Gets a Replaceable Image",
+      "content_hash": "aed131ea26814acc419936a4951be4b13e3f3b697f4a564128320993d56ccaad",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3566/IB-SMART-NOTE-20261118-sn3566-calendar-each-day-replaceable-image.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 8d45a0e8158d4183363cd9d5f503f32b1b3631f3 ('Intelligence Loop run 338: SN-3566 Each Day Gets a Replaceable Image (Shawn teaching ~00:36-00:42Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "9f30e27c8197b2875ef25a44088a241beda132e09e70ed7c7bd4736f13e27993"
+    },
+    {
+      "smart_note_id": "SN-3567",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3567-day-view-date-block-three-days",
+      "title": "SN-3567 — Everything's Gotta Be Accurate and Truth: The Date Block Mixes Three Days",
+      "content_hash": "82b67c041eb1ca21e00ff690c7e7e713fcf2846cdaa43aa2478533fc6197aa9b",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3567/IB-SMART-NOTE-20261118-sn3567-day-view-date-block-three-days.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit fd853253251ebba28065ffa6d63b8c34dac93656 ('Intelligence Loop run 338: SN-3567 Everything's Gotta Be Accurate and Truth — The Date Block Mixes Three Days (Shawn agreement ~00:36-00:42Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "1bbaa121e85fed926e19097ccf6aa34ab58a29eb7eac8a143affff5569d88537"
+    },
+    {
+      "smart_note_id": "SN-3568",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3568-dashboard-readiness-view",
+      "title": "SN-3568 — The Dashboard Is Ready to Put Live: Double-Check Readiness, Hook Up the Stats",
+      "content_hash": "e52c4ec00321ff36dc6ca6ea78a4b9a7f02f2c3dc247590273dea7dc8f94f6a3",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3568/IB-SMART-NOTE-20261118-sn3568-dashboard-readiness-view.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit babf8d4fecd9dc01403d021eec8a3f242264ecc9 ('Intelligence Loop run 338: SN-3568 The Dashboard Is Ready to Put Live — Double-Check Readiness, Hook Up the Stats (Shawn readiness view ~00:36-00:42Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "a7640196547e5effa0cb0fb40306c3c0f09ddb56b21e8bd00d586da38df63a6c"
+    },
+    {
+      "smart_note_id": "SN-3569",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3569-calendar-wisdom-page-layout",
+      "title": "SN-3569 — The Wisdom Page: Wisdom of the Day Centred, Good Day Top Right",
+      "content_hash": "ff47966aa7c55e9f378ae1d05ba119005b15b1fbd51587677b0a01616ea3a0e2",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3569/IB-SMART-NOTE-20261118-sn3569-calendar-wisdom-page-layout.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 252857d152a22e53966755eb8b3bc952de1d93be ('Intelligence Loop run 338: SN-3569 The Wisdom Page — Wisdom of the Day Centred, Good Day Top Right (Shawn teaching ~00:44-00:52Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "8aea7dca3be353e3ea7e6c374f5b76487398943814cc397ae0d5d7eb18f7ceb9"
+    },
+    {
+      "smart_note_id": "SN-3570",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3570-calendar-day-view-top-banner",
+      "title": "SN-3570 — The Day-View Top Banner: The Number Lives in the Tiles",
+      "content_hash": "6753e2d0bc255ff980ee0d10ee7b112811430a77d77260dffe684f724c299d68",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3570/IB-SMART-NOTE-20261118-sn3570-calendar-day-view-top-banner.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 04245475d0d82fab86d514ac97821623f087062e ('Intelligence Loop run 338: SN-3570 The Day-View Top Banner — The Number Lives in the Tiles (Shawn teaching ~00:44-00:52Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "dfe40391856d1c9934fc5718463fc7be779ea6b4404f80b7d4d01cd76c195289"
+    },
+    {
+      "smart_note_id": "SN-3571",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3571-what-each-day-means",
+      "title": "SN-3571 — What Each Day Means: Meaning, Affirmation, and a Link",
+      "content_hash": "ecab6fbbdf9dc9fe57656713086b3b4313620a5b24b5bba1b9ef0bcf07a15469",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3571/IB-SMART-NOTE-20261118-sn3571-what-each-day-means.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 08b85b05643067709c83609784d5d26780a3c33b ('Intelligence Loop run 338: SN-3571 What Each Day Means — Meaning, Affirmation, and a Link (Shawn main chat ~00:55Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "287cf99faa5b3b0281276f499bb3d864a1b665144095d38a4d8588950f7ba0d3"
+    },
+    {
+      "smart_note_id": "SN-3572",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3572-daily-prayers-too",
+      "title": "SN-3572 — Daily Prayers Too: So It Reaches Everybody",
+      "content_hash": "c6f765878608521ef365ed1e06b556e3a988e39d0fc8efe8780d1545598ff591",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3572/IB-SMART-NOTE-20261118-sn3572-daily-prayers-too.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 9a4dd1459a7d11ddf0c164b13ec4c0db1f037e47 ('Intelligence Loop run 338: SN-3572 Daily Prayers Too — So It Reaches Everybody (Shawn main chat ~00:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "becda1bb82d33b2f97b796592651d1c0e8863a05ebace4c96acd741b0c87e59b"
+    },
+    {
+      "smart_note_id": "SN-3573",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3573-lead-with-wisdom-activation-choice",
+      "title": "SN-3573 — Lead with Wisdom: Choose What to Activate, or None at All",
+      "content_hash": "56d00af606c741e5f66aec5446981ef8120d7461519f29399213f51baba724b0",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3573/IB-SMART-NOTE-20261118-sn3573-lead-with-wisdom-activation-choice.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 0b2127fe135f884712c57cd50fecfedbe31a5eb3 ('Intelligence Loop run 338: SN-3573 Lead with Wisdom — Choose What to Activate, or None at All (Shawn main chat ~00:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "951b8e02eaa7220654520edc1ac8cf97af83a7e81f8cdeedcb2b982d1e956569"
+    },
+    {
+      "smart_note_id": "SN-3574",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3574-appointments-once-timeline-scheduler",
+      "title": "SN-3574 — Appointments Written Once: Timeline and Scheduler on One Screen",
+      "content_hash": "4e189a700fae02a01f5754712180433424f4127a29ad2323c7d2736b1593ad91",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3574/IB-SMART-NOTE-20261118-sn3574-appointments-once-timeline-scheduler.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 70c7e36dbe280c5c2b9c9625cbb16e95db1cd791 ('Intelligence Loop run 340: SN-3574 Appointments Written Once: Timeline and Scheduler on One Screen (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "6e5c57b7bf33204b6777462ab5434bed5f4ee75382484d49eb0bff51b792b192"
+    },
+    {
+      "smart_note_id": "SN-3575",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3575-bar-is-official-his-eye",
+      "title": "SN-3575 — The Bar Is Official — His Eye Said So",
+      "content_hash": "6176b2b86adbf585133d295c8c37ed792f656e57ad448680449d75b950a15deb",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3575/IB-SMART-NOTE-20261118-sn3575-bar-is-official-his-eye.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 442c65fccddb944ba6b53bcf21ddc6f3e805f5a0 ('Intelligence Loop run 340: SN-3575 The Bar Is Official — His Eye Said So (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c6980e482e7d6295885a24786e587dd863c5868eed557ec9b0c6bef29a839356"
+    },
+    {
+      "smart_note_id": "SN-3576",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3576-calendar-never-stops",
+      "title": "SN-3576 — The Calendar Never Stops",
+      "content_hash": "c6c4e63d7a3b3385b273c9bdb33303ebcacd446a007523d0c79e2261a50a6759",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3576/IB-SMART-NOTE-20261118-sn3576-calendar-never-stops.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit e225a854795c6c61a6955e5eabcf08ccf043348d ('Intelligence Loop run 340: SN-3576 The Calendar Never Stops (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "6e1118ecdd9d575f1b14873752c563a6e0e3ade17c591757d9ea999d4d081c26"
+    },
+    {
+      "smart_note_id": "SN-3577",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3577-day-before-day-after-every-page",
+      "title": "SN-3577 — Day Before and Day After, on Every Page",
+      "content_hash": "d3b143dc262c5d18a62bc4fd4e510ed6d79d3524e999fdcdaea7922e45b2123a",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3577/IB-SMART-NOTE-20261118-sn3577-day-before-day-after-every-page.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 7188c3a10b954e3f9925330e5148818d66d87519 ('Intelligence Loop run 340: SN-3577 Day Before and Day After, on Every Page (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "aed831091d834d59d018c63b42badcc1000ae589e0aa39178bb3fc331d37b3e4"
+    },
+    {
+      "smart_note_id": "SN-3578",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3578-every-day-new-colour",
+      "title": "SN-3578 — Every Day a New Colour",
+      "content_hash": "f833d5c0357fc4c30c0843609e9f8a37a8ec58f92ec48cd74c186569c7909ecd",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3578/IB-SMART-NOTE-20261118-sn3578-every-day-new-colour.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 4730d6303e061d87473f17bbeb815a619c8cbebc ('Intelligence Loop run 340: SN-3578 Every Day a New Colour (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "f6c144f3a6977e194c3fc69c39a815dcd5bfded73a0b5961574f3969f0637fac"
+    },
+    {
+      "smart_note_id": "SN-3579",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3579-feature-notifications-big-blocks",
+      "title": "SN-3579 — Feature Notifications: Big Blocks, Personal, Business, World, and the Total",
+      "content_hash": "366129eb896d949c000cdad17bc8fd3487903c56628df20e97e32beaf9a20d8d",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3579/IB-SMART-NOTE-20261118-sn3579-feature-notifications-big-blocks.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 8b60862c211b5edad6b59b7656327a2f554f02bc ('Intelligence Loop run 340: SN-3579 Feature Notifications: Big Blocks, Personal, Business, World, and the Total (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "9f929c2d9bd6e0473c7d67407a1c3a6d3f2140c70ef890aa59df870b6fdfa819"
+    },
+    {
+      "smart_note_id": "SN-3580",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3580-four-main-stats-notifications",
+      "title": "SN-3580 — Four Main Stats in the Notifications: Sales, Personal, Business, Space",
+      "content_hash": "595f0c7d91a82d7f9dbc6b7eb566cacb12afa7506641d7770be8883fc1c16f45",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3580/IB-SMART-NOTE-20261118-sn3580-four-main-stats-notifications.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit ad035d3ae0b0c86e59c6e5d0a76b8ce13462fb81 ('Intelligence Loop run 340: SN-3580 Four Main Stats in the Notifications: Sales, Personal, Business, Space (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "eb3c05504530c65e4d07ba513a80bc584150133a36d90ec4abedbc6f4c5291a0"
+    },
+    {
+      "smart_note_id": "SN-3581",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3581-journal-spot-missing",
+      "title": "SN-3581 — The Journal Spot Was Missing, and Should Have Been Written",
+      "content_hash": "fb2003a27d33b57ee59c94c17ec2411cb774c0594db9183cb032f338176d4243",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3581/IB-SMART-NOTE-20261118-sn3581-journal-spot-missing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit e273f9938e71020a29b7164d8dfa6903161d979e ('Intelligence Loop run 340: SN-3581 The Journal Spot Was Missing, and Should Have Been Written (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "5a7ac4bdf7363844e11590635c3429ed14c39504d10c9624abda2bb211c8684d"
+    },
+    {
+      "smart_note_id": "SN-3582",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3582-journal-spot-missing",
+      "title": "SN-3582 — The Journal Spot Was Missing, and Should Have Been Written",
+      "content_hash": "b90638b3902ea4d4cbc3f3f508ef42b754b7226858ae106d32c497f25d997929",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3582/IB-SMART-NOTE-20261118-sn3582-journal-spot-missing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 252849fe2dc975b75c1f3bfb8a72c965caafba0c ('Intelligence Loop run 340: SN-3582 The Journal Spot Was Missing, and Should Have Been Written (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "a386e1858fb0e8fe2e7f8b515ba11c47c1c2de787fe4c6e647dba78782f827d3"
+    },
+    {
+      "smart_note_id": "SN-3583",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3583-navigation-law-back-top-left",
+      "title": "SN-3583 — The Navigation Law: Back Top Left, Your Place Top Right, Keep Reading Center",
+      "content_hash": "493aa8a89b04b0c821dc407d835a9dfb14883829c73dd5acef2083ed63b962f8",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3583/IB-SMART-NOTE-20261118-sn3583-navigation-law-back-top-left.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit c6d2a8c0ac0da2c2c5733af00ee07cdda317a354 ('Intelligence Loop run 340: SN-3583 The Navigation Law: Back Top Left, Your Place Top Right, Keep Reading Center (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "f7b16b092f9a51c8d25d316b109d14424e8ee18d4858558ea73cf59d7cc8de63"
+    },
+    {
+      "smart_note_id": "SN-3584",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3584-news-stands-alone",
+      "title": "SN-3584 — News Stands Alone: Local, Province, Global",
+      "content_hash": "d8bf38fec21bbbea55b9998b7e5c4ff76f9f81d9869a6991d7b11690c28d189c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3584/IB-SMART-NOTE-20261118-sn3584-news-stands-alone.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit adb96031b37b32244dab47306877db21a26ea106 ('Intelligence Loop run 340: SN-3584 News Stands Alone: Local, Province, Global (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "dfac039fd91e21b77d025223a2dbd817de486a8e5116491c1e8f8a5f18348c4f"
+    },
+    {
+      "smart_note_id": "SN-3585",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3585-not-a-single-edit-done",
+      "title": "SN-3585 — Not a Single Edit Done",
+      "content_hash": "9ce40fb2e2681580d571b66e19d7aa399292c143d9ced0d43b46be28e64b1534",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3585/IB-SMART-NOTE-20261118-sn3585-not-a-single-edit-done.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 93d8cb135c2159037b9f36bcb80d60ce0095e3d0 ('Intelligence Loop run 340: SN-3585 Not a Single Edit Done (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "426062faf898f0f11788d63879645cd831a10f8edfcd6017d2c0d363f6f66f05"
+    },
+    {
+      "smart_note_id": "SN-3586",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3586-notification-center-big-numbers",
+      "title": "SN-3586 — The Notification Center: Big Numbers, Bigger Blocks, Every Area Listed",
+      "content_hash": "47e0528b8a275a139b4e8aa2dbba656aebc20dd221cc6de5e2864653050804be",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3586/IB-SMART-NOTE-20261118-sn3586-notification-center-big-numbers.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 22db162bd7e8945b378fbc22d6e4b600502a22e6 ('Intelligence Loop run 340: SN-3586 The Notification Center: Big Numbers, Bigger Blocks, Every Area Listed (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ac2514435d7e987423126bcaadd79aa316b80bf1e02eddf773ea1c8d747c351f"
+    },
+    {
+      "smart_note_id": "SN-3587",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3587-notification-dropdowns-three",
+      "title": "SN-3587 — Three Dropdowns to Check the Notifications",
+      "content_hash": "2a7458a855a4bc93b4ca3867a476c889dd83ff920858195fda69d2dd254b2ead",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3587/IB-SMART-NOTE-20261118-sn3587-notification-dropdowns-three.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit c0550c77605bf4ab529137d5a51657cbb6d8826a ('Intelligence Loop run 340: SN-3587 Three Dropdowns to Check the Notifications (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ba4ae280e4ff146fc819061a2ef003f58a4953a6939e13ce60c64d87b8f4909b"
+    },
+    {
+      "smart_note_id": "SN-3588",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3588-notification-sources-locked-in",
+      "title": "SN-3588 — Lock In the Notification Sources: New Intel, Daily Report",
+      "content_hash": "cc6688a4b99da6d4ab233d1a3daa661469d6111c7fdb62a7914f640eb818a59a",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3588/IB-SMART-NOTE-20261118-sn3588-notification-sources-locked-in.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit fcb426c46f70e189a85214c3e8ddc48eb14f72d0 ('Intelligence Loop run 340: SN-3588 Lock In the Notification Sources: New Intel, Daily Report (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "93e221242084a411e1562ff8268512e4fa4c66b9b2aacaa34eccb96114adaa68"
+    },
+    {
+      "smart_note_id": "SN-3589",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3589-notification-sources-nine",
+      "title": "SN-3589 — Where Notifications Come From: The Nine, For Sure",
+      "content_hash": "d748a92627ec090b0d851807709e558a88a0f38c25117c58023af6b72828ec04",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/LAW/SN-3589/IB-SMART-NOTE-20261118-sn3589-notification-sources-nine.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 0b1d062d69e1c251623d1b90ee5ac238a5da88a6 ('Intelligence Loop run 340: SN-3589 Where Notifications Come From: The Nine, For Sure (Shawn, calendar walk / notifications dictation 2026-11-18 ~01:05-01:56Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "104d03727a64927d6f9a331ac404bff3cf6b473078adb69974ec15b6e3207d34"
     }
   ],
   "sequence_policy": {
@@ -62316,5 +62916,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "c915086e5379266b956429692abcbf73fc8f162105ea87f08bc9c3a73d40dad5"
+  "corpus_manifest_hash": "55ea8c30deebc23444f500cfc7e9accb5685c7a5ad103fd3c4f269aa666e3960"
 }
