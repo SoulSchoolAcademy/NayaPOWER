@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+"""FIX4 law check (2026-11-19): base-vs-new with check-design-laws.py's own
+rules. Base blobs are the fix3 filed blobs (welcome c66e2fa2 / identity
+ee6a99ae), fetched via the git blob API and checked IN MEMORY — no disk
+writes (EPERM flake live). Also runs the checker CLI on the new identity
+file for the canonical count. Welcome is unchanged in this round; it is
+checked anyway so the delta is proven, not assumed.
+"""
+import base64, hashlib, importlib.util, json, subprocess, sys
+
+REPO = "SoulSchoolAcademy/NayaPOWER"
+GH = "/home/hatch/workspace/team-nitro/gh-direct.py"
+WELCOME_LOCAL = "/home/hatch/workspace/team-nitro/walk-v23-assembly-20261114/welcome-staged.html"
+IDENT_LOCAL = "/home/hatch/workspace/team-nitro/walk-v23-assembly-20261114/identity-fixed.html"
+CHECKER = "/home/hatch/workspace/team-nitro/check-design-laws.py"
+BASES = {
+    "welcome": "c66e2fa20d2e82a9d10e7eac2d2f11f6a156768f",
+    "identity": "ee6a99aeb4a56262f978ff7685b7b5d343a6fede",
+}
+
+spec = importlib.util.spec_from_file_location("lawcheck", CHECKER)
+law = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(law)
+
+
+def gh_blob(sha):
+    r = subprocess.run([sys.executable, GH, "GET",
+                        "/repos/%s/git/blobs/%s" % (REPO, sha)],
+                       capture_output=True, timeout=120)
+    out = r.stdout.decode("utf-8", "replace")
+    payload = out.split("\n", 1)[1]
+    d = json.loads(payload)
+    raw = base64.b64decode("".join(d["content"].split()))
+    print("blob %s: %d B sha %s" % (sha[:8], len(raw), hashlib.sha256(raw).hexdigest()[:12]), flush=True)
+    return raw
+
+
+def check_text(text, label):
+    fails, warns = [], []
+    for i, line in enumerate(text.splitlines(), 1):
+        for rx in law.GRAY_RES:
+            if rx.search(line):
+                fails.append("%s:%d: GRAY: %s" % (label, i, line.strip()[:120]))
+                break
+    for m in law.FONTSIZE_RE.finditer(text):
+        vals = [float(v) for v in m.groups() if v is not None]
+        if vals and min(vals) < 17:
+            fails.append("%s:%d: SIZE: %s" % (label, text[:m.start()].count("\n") + 1, m.group(0)))
+    for m in law.COLOR_DECL_RE.finditer(text):
+        val = m.group(1).strip().lower()
+        if val.startswith("var("):
+            continue
+        val = val.split()[0].rstrip(";")
+        if val in law.FORBIDDEN_TEXT:
+            fails.append("%s:%d: TEXT-COLOR: %s" % (label, text[:m.start()].count("\n") + 1, m.group(0).strip()[:120]))
+        elif val not in law.ALLOWED_TEXT and not val.startswith("#"):
+            warns.append("%s:%d: TEXT-COLOR?: %s" % (label, text[:m.start()].count("\n") + 1, m.group(0).strip()[:120]))
+    if ":hover" not in text:
+        warns.append("%s: NO-HOVER" % label)
+    return fails, warns
+
+
+def norm(fails):
+    return sorted(f.split(": ", 1)[1] if ": " in f else f for f in fails)
+
+
+def run(base_bytes, path_new, label):
+    base = base_bytes.decode("utf-8", errors="replace")
+    new = open(path_new, encoding="utf-8", errors="replace").read()
+    bf, bw = check_text(base, label + "-base")
+    nf, nw = check_text(new, label + "-new")
+    bset, nset = norm(bf), norm(nf)
+    added = [x for x in nset if x not in bset]
+    removed = [x for x in bset if x not in nset]
+    print("%s: base %d FAIL / %d WARN -> new %d FAIL / %d WARN" % (label, len(bf), len(bw), len(nf), len(nw)))
+    print("%s: added: %s" % (label, added[:10]))
+    print("%s: removed: %s" % (label, removed[:10]))
+    assert not added, "%s has NEW law violations: %s" % (label, added[:5])
+    return len(bf), len(nf)
+
+
+run(gh_blob(BASES["welcome"]), WELCOME_LOCAL, "welcome")
+run(gh_blob(BASES["identity"]), IDENT_LOCAL, "identity")
+for label, path in (("welcome", WELCOME_LOCAL), ("identity", IDENT_LOCAL)):
+    r = subprocess.run([sys.executable, CHECKER, path], capture_output=True, timeout=300)
+    out = (r.stdout + r.stderr).decode("utf-8", "replace")
+    print("CLI %s: rc=%d %s" % (label, r.returncode, out.strip().splitlines()[-3:]))
+print("LAW CHECK DONE: zero new violations")

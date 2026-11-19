@@ -1369,6 +1369,15 @@
       .install-card { padding: 32px 22px 26px; }
       .bottom-system-bar { font-size: 0.64rem; letter-spacing: 0.06em; padding: 0 10px; }
     }
+    /* FIX4 (2026-11-19, fix3 checker item 1) — the stale status is hidden
+       while certified at ALL widths, not only ≤640px: the fix3c hide rule
+       inside the media query above is max-width:640px only, so on the
+       desktop certified certificate "Available — it's yours to claim."
+       still printed across the member sentence (fix3-live-E-copy-1920.png,
+       Nº 000842). Same rule, same selector, lifted out of the media query;
+       the composing state is untouched (not .is-certified), and no other
+       certified rule sets display on .alias-status, so nothing else changes. */
+    .cert-plaque.is-certified .alias-status { display: none; }
     @media (prefers-reduced-motion: reduce) {
       .naya-btn, .activate-btn, .install-x, .im-row, .brand-mark, .alias-field-wrapper { transition: none; }
       .naya-btn:hover, .activate-btn:hover, .im-row:hover, .brand-logo-group:hover .brand-mark { transform: none; }
