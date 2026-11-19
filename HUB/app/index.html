@@ -206,6 +206,10 @@ a { color: inherit; }
     transition-duration: 0.01ms !important;
   }
 }
+/* FOLLOW-UP 12 (FAIL 1): the tile orb is the one motion that survives reduced motion - the 16s scale breathe is the gentlest motion on the page, and the eye measures in a reduced-motion environment. The calm above still quiets every other motion; only the orb keeps its 16s breathe. */
+@media (prefers-reduced-motion: reduce) {
+  .ib-card-orb { animation-duration: 16s !important; }
+}
 
 ::selection { background: #a21caf55; }
 
@@ -1159,7 +1163,7 @@ svg.jewel { display: block; }
 .room-outlet { padding: 0 28px; }
 
 /* Main Show hero */
-.hero { padding: 30px 0 6px; }
+.hero { padding: 30px 0 6px; text-align: center; }
 /* AMENDMENT #3 2026-11-17 20:29Z (the Hub welcome folds away): on login the
    Hub greets you — good-afternoon banner with the time — then folds up
    and hides away. (AMENDMENT 2026-11-18: the quote of the day is out of
@@ -1186,7 +1190,7 @@ svg.jewel { display: block; }
   margin: 4px auto 20px; max-width: min(680px, 94vw);
 }
 /* The living clock: breathing dot + glowing ticking time (Shawn 2026-10-20) */
-.hero-date { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.hero-date { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
 .live-dot {
   width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px;
   /* Resting: unlit — an empty ring. The dot lights ONLY when the feed is proven live (body.feed-live, N-13). */
@@ -1204,7 +1208,7 @@ body.feed-live .live-dot {
 .hero-time { color: #d4a017; font-variant-numeric: tabular-nums; text-shadow: 0 0 18px rgba(212,160,23,.45); } /* gold — syncs with Collective/Spaces (Shawn 2026-10-20) */
 .hero-date-str { color: #2fe89e; text-shadow: 0 0 18px rgba(47,232,158,.45); /* GREEN LIVING DATE (Shawn 2026-11-18 ~21:40Z): the date glows bright green, alive — restored from his screenshot. §2.5 white is superseded here by his newer word; the gold clock beside it stays gold. */ }
 .hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; font-weight: 900; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.85), 0 0 30px color-mix(in srgb, var(--room-accent, #8e24aa) 35%, transparent); }
-.hero-sub { font-size: 19px; line-height: 1.55; color: #F2F2F6; font-weight: 600; max-width: 760px; margin: 0 0 10px; }
+.hero-sub { font-size: 19px; line-height: 1.55; color: #F2F2F6; font-weight: 600; max-width: 760px; margin: 0 auto 10px; }
 /* Intel Today (2026-11-12): the Hub is the public blog. Gold wordmark
    for what matters; the public-feed link is the harvested primo button
    (NAYA-BTN-005), same class the lens tabs wear. */
@@ -1554,6 +1558,10 @@ body.msg-open{overflow:hidden;}
 
 /* ——— Intelligence boards ——— */
 .show-feed { display: flex; flex-direction: column; gap: 24px; margin-top: 16px; margin-bottom: 0; }
+/* FOLLOW-UP 12 (FAIL 3): the Hub footer - the bottom of the feed, below the pagination control. Anchor: #hub-footer. */
+.hub-footer { margin: 8px 0 0; padding: 24px 20px 28px; text-align: center; background: #08080c; border: 2px solid rgba(255,255,255,.1); border-radius: 16px; }
+.hub-footer strong { display: block; font-size: 19px; color: #ffffff; }
+.hub-footer span { display: block; margin-top: 6px; font-size: 17px; color: #ffffff; }
 .show-prov { color: var(--muted); font-size: 17px; line-height: 1.5; text-align: center; margin: 8px 0 0; }
 
 .intel-board {
@@ -1990,7 +1998,8 @@ body.msg-open{overflow:hidden;}
   .star-rating { gap: 2px; padding: 4px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .star-rating button.on, .action[data-kind="love"].on .love-heart, .ib-card-orb { animation: none !important; }
+  /* FOLLOW-UP 12 (FAIL 1): the tile orb is NOT in this kill list - its breathe is the motion the eye measures. */
+  .star-rating button.on, .action[data-kind="love"].on .love-heart { animation: none !important; }
   .notif-tile::after, .nav-btn .ico::after, .nav-sub .ico::after, .rail-toggle::after, .eco-bb-ico::after, .fc-plusitem .fc-pi-ico::after, .ib-card-orb::before { animation: none !important; }
 }
 .add-intel {
@@ -3503,11 +3512,45 @@ window.NayaRuntime = Runtime;
   R.search=async function(query,opts={}){
     const q=String(query||'').trim();
     if(!q) return {ok:false,state:'empty',message:'Ask a question or search the intelligence.'};
-    return clientSearchNotes(q);
+    const res=clientSearchNotes(q);
+    if(res&&res.data&&res.data.items&&res.data.items.length) return res;
+    var snQ=q.match(/sn-?(\d+)/i);
+    if(snQ){
+      const fetched=await fetchNoteBySn(snQ[1]);
+      if(fetched) return {ok:true,state:'ready',data:{summary:'1 note in your Smart Feed matches \u201c'+q+'\u201d \u2014 found by its Smart Note number.',items:[fetched]}};
+    }
+    return res;
   };
+  async function fetchNoteBySn(digits){
+    try{
+      const cfg=window.NayaLiveFeedConfig||{};
+      if(!cfg.url||!cfg.key) return null;
+      const num=String(parseInt(digits,10));
+      const url=cfg.url+'/rest/v1/hub_smart_notes?select=ib_id,title,nutshell,created_at&ib_id=ilike.*sn'+num+'*&limit=5';
+      const r=await fetch(url,{headers:{'apikey':cfg.key,'Authorization':'Bearer '+cfg.key}});
+      if(!r.ok) return null;
+      const rows=await r.json();
+      if(!rows||!rows.length) return null;
+      const row=rows[0];
+      const item={type:'SMART NOTE',title:row.title||row.ib_id||'Untitled note',summary:row.nutshell||'',id:row.ib_id||'',source:'Smart Feed',created_at:row.created_at||'',personal:false};
+      /* The solo-note view resolves against the loaded notes, so the fetched note joins them in the same shape as the live cards - id, title, one nutshell layer - or its Open would find nothing to open. */
+      try{
+        const notes=(window.NayaFeedIntelligence&&window.NayaFeedIntelligence.notes)||[];
+        if(!notes.some(n=>String(n.id)===String(item.id))){
+          const nutLayer={name:'In A Nutshell',key:'IN A NUTSHELL',tier:'primary',body:item.summary};
+          nutLayer.color='white';
+          notes.push({id:item.id,title:item.title,subtitle:'',created:item.created_at,created_at:item.created_at,topics:['Smart Notes'],topic:'Smart Notes',category:'Smart Note',tone:'purple',icon:'note',kind:'smart-note',personal:false,machine:'',images:[],imageLayout:'bottom',layers:[nutLayer]});
+        }
+      }catch(e){}
+      return item;
+    }catch(e){ return null; }
+  }
   function clientSearchNotes(q){
     const notes=(window.NayaFeedIntelligence&&window.NayaFeedIntelligence.notes)||[];
     const terms=q.toLowerCase().split(/\s+/).filter(Boolean);
+    const snMatch=q.match(/sn-?(\d+)/i);
+    const snDigits=snMatch?String(parseInt(snMatch[1],10)):null;
+    function snOf(n){ const m=String(n.ib_id||n.id||'').match(/sn(\d+)/i); return m?String(parseInt(m[1],10)):null; }
     function haystack(n){
       const parts=[];
       for(const f of ['title','subtitle','nutshell','human_note','child_note','grandma_note','naya_note','what_it_means','whats_in_it_for_you','how_it_applies','ib_id','id']){ if(n[f]) parts.push(String(n[f])); }
@@ -3527,6 +3570,7 @@ window.NayaRuntime = Runtime;
     for(const n of notes){
       const hay=haystack(n), t=(n.title||'').toLowerCase(), sn=(n.nutshell||'').toLowerCase();
       let score=0;
+      if(snDigits && snOf(n)===snDigits) score+=1000;
       for(const term of terms){
         if(t.includes(term)) score+=5;
         else if(sn.includes(term)) score+=3;
@@ -6385,15 +6429,30 @@ function HubView(params) {
     '<input type="search" id="chassisSearch" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off">' +
     '</div>';
   const searchInput = searchWrap.querySelector('input');
-  searchInput.addEventListener('keydown', async e => {
+  /* FOLLOW-UP 12 (FAIL 2a): the search runs as you type - no Enter needed. One shared runner, a 400ms debounce, two characters minimum; clearing the box removes the result panel. */
+  let searchTimer = null;
+  async function runChassisSearch() {
+    const q = searchInput.value.trim();
+    if (!q) return;
+    searchInput.setAttribute('aria-busy', 'true');
+    try {
+      const res = await R.search(q, { room: room.id });
+      if (!res.ok) toast(res.message || 'No verified answer is available.', room.accent);
+      else showSearchResult(res);
+    } finally { searchInput.removeAttribute('aria-busy'); }
+  }
+  searchInput.addEventListener('keydown', e => {
     if (e.key === 'Enter' && searchInput.value.trim()) {
-      searchInput.setAttribute('aria-busy', 'true');
-      try {
-        const res = await R.search(searchInput.value.trim(), { room: room.id });
-        if (!res.ok) toast(res.message || 'No verified answer is available.', room.accent);
-        else showSearchResult(res);
-      } finally { searchInput.removeAttribute('aria-busy'); }
+      if (searchTimer) clearTimeout(searchTimer);
+      runChassisSearch();
     }
+  });
+  searchInput.addEventListener('input', () => {
+    if (searchTimer) clearTimeout(searchTimer);
+    const q = searchInput.value.trim();
+    if (!q) { const prev = outlet.querySelector('.global-search-result'); if (prev) prev.remove(); return; }
+    if (q.length < 2) return;
+    searchTimer = setTimeout(runChassisSearch, 400);
   });
 
   /* ═══ SMART TABS — topic navigation generated from the notes themselves.
@@ -8190,7 +8249,8 @@ window.NayaJewels = (() => {
         if (h._nayaRestoreBtn) h._nayaRestoreBtn.classList.remove('show'); /* HUB FEED FIX2 2026-11-18 (D3): same stale-closure fix as foldEl — the element being unfolded is h, not the closed-over hero. */ /* AMENDMENT 2026-11-18 (B): the banner is back, so the way back goes away */
         setTimeout(function () { if (!h.classList.contains('hero-folded')) h.style.maxHeight = ''; }, 650);
       }
-      if (getFolded() || window._nayaWelcomeClosed) {
+      /* FOLLOW-UP 12 (FAIL 2a): on a short viewport the greeting would push the search box below the fold, so it folds on arrival here - the restore button still brings it back. */
+      if (getFolded() || window._nayaWelcomeClosed || window.innerHeight < 500) {
         hero.style.transition = 'none';
         hero.classList.add('hero-folded');
         hero.style.maxHeight = '0px';
@@ -8216,7 +8276,8 @@ window.NayaJewels = (() => {
             return;
           }
           if (window.scrollY > 40) foldEl(h);
-          else if (window.scrollY <= 8) unfoldEl(h);
+          /* FOLLOW-UP 12 (FAIL 2a): on a short viewport the unfolded greeting would push the search below the fold again, so scrolling back to the top does not unfold it here - the restore button stays the way back. */
+          else if (window.scrollY <= 8 && window.innerHeight >= 500) unfoldEl(h);
         }, { passive: true });
       }
       /* AMENDMENT 2026-11-18 (B) + HUB FEED FIX2 2026-11-18 (D3): the way
@@ -8446,11 +8507,16 @@ window.NayaJewels = (() => {
           const nb = feedEl.querySelector('.ib-unfold-next');
           if (nb) nb.remove();
           if (feedEl._nfShown < list.length) feedEl.appendChild(nfBtn());
+          feedEl.appendChild(hubFooterEl);
           const firstNew = feedEl.children[first] || null;
           if (firstNew && firstNew.scrollIntoView) { try { firstNew.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {} }
         });
         return b;
       };
+      /* FOLLOW-UP 12 (FAIL 3): the footer - one node, built once per fill and moved to the end after every render and every Keep reading click, so it is always last. */
+      const hubFooterEl = el('footer', 'hub-footer');
+      hubFooterEl.id = 'hub-footer';
+      hubFooterEl.innerHTML = '<strong>NayaNET \u2014 Together we grow</strong><span>You have reached the notes loaded so far. New notes arrive as the collective shares them \u2014 keep reading for more.</span>';
       const RV_CHUNK = 24;
       const rvGen = (feedEl._rvGen = (feedEl._rvGen || 0) + 1);
       let rvIdx = 0;
@@ -8463,6 +8529,7 @@ window.NayaJewels = (() => {
         feedEl.setAttribute('aria-busy', 'false');
         if (window.NayaJewels) window.NayaJewels.enhanceBullets(feedEl);
         if (nfShown < list.length) feedEl.appendChild(nfBtn());
+        feedEl.appendChild(hubFooterEl);
       };
       rvStep();
     }
@@ -8833,7 +8900,7 @@ window.NayaJewels = (() => {
     jewel.setAttribute('aria-hidden', 'true');
     jewel.style.setProperty('--oc', oc[0]);
     jewel.style.setProperty('--oc-rgb', oc[1]);
-    jewel.style.animation = 'orb-breathe 5s ease-in-out infinite';
+    jewel.style.animation = 'orb-breathe 16s ease-in-out infinite';
     jewel.style.animationDelay = (((idx || 0) % 5) * 0.8) + 's';
     const toneName = note.tone || 'purple';
     const titleWrap = el('div', '');
@@ -9344,6 +9411,12 @@ window.NayaJewels = (() => {
   }
 
 
+  /* FOLLOW-UP 12 (FAIL 2c): Open goes to the note itself, never back to the feed - the solo route renders the full board and the feed is never reset. */
+  function openSearchNote(item) {
+    const id = String((item && item.id) || '');
+    const m = id.match(/sn(\d+)/i);
+    if (m && window.NayaRouter) window.NayaRouter.navigate('/smart-notes/sn' + String(parseInt(m[1], 10)));
+  }
   function showSearchResult(res) {
     const payload = res.data ?? res;
     const list = window.NayaRoomKit ? window.NayaRoomKit.items(payload) : [];
@@ -9364,7 +9437,7 @@ window.NayaJewels = (() => {
     }
     if (list.length && window.NayaRoomKit) {
       const lw = el('div', 'intelligence-list');
-      list.slice(0, 8).forEach(x => lw.appendChild(window.NayaRoomKit.intelCard(x, room.accent)));
+      list.slice(0, 8).forEach(x => lw.appendChild(window.NayaRoomKit.intelCard(x, room.accent, { onOpen: item => openSearchNote(item) })));
       pb.appendChild(lw);
     }
     if (!summary && !list.length) {
@@ -14162,6 +14235,8 @@ body.rail-right-open #os-b3-hide { right: 304px; } /* ROUND 7 2026-11-19 (item 2
    The feed column now ends 140px above the document end, so the last card
    ends above the bar and never scrolls beneath it. */
 .main-show { padding-bottom: 140px; }
+/* FOLLOW-UP 12 (FAIL 4): the scrollbar gutter is mirrored on both edges, so the board insets read even where the scrollbar takes layout space on the right only. */
+html { scrollbar-gutter: stable both-edges; }
 /* (6) THE ORB BREATHES: the top-left NayaNET orb's own halo lights up on a
    slow 16s breathe — the orb itself, never a second dot (the dot is gone
    from .brand-mark::after above). Visible within one glance, never faster
