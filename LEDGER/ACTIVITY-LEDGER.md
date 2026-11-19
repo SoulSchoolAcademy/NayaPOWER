@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 11:21 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22193,6 +22193,12 @@ _Last updated: 2026-11-19 11:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/five-retrieval-auth-gate-t942 head e654f16e8a49e9a26309fd852695a0bef202673d matches receipt pin exactly via git ls-remote; gate module tools/retrieval_authorization_gate.py sha256 exactly fbe6ee29482fdc57345e6ba03f6252061764fa015a5d7a86f562bd345c69a28f from remote bytes (shallow fetch), matches receipt pin; contract doc trust-
 
+### ✅ t0611-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** H-dc5 decision-consequence probe v3 — designed + sealed (no execution)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: sealed note auto-retrieval/sealed-note-t0611-h-dc5.md sha256 da9ffbec2e35ea36... MATCHES exactly; instrument auto-retrieval/t0611_h_dc5.py sha256 118efc24d3d5f90a... MATCHES exactly; seal mtime 09:48:56 precedes the #2175 seal post as claimed, and results-t0611-h-dc5.json exists only with mtime 10:
+
 ### ✅ t0611 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** H-dc5 decision-consequence probe v3 designed + sealed (seal-only tick)
@@ -22208,6 +22214,12 @@ _Last updated: 2026-11-19 11:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0611-lane5.md`
 
 **Evidence:** Verified: auto-retrieval/sealed-note-t0611-h-dc5.md sha256 exactly da9ffbec2e35ea36642b52822a855827e3208b9d2615cd4360536341049336f2 and instrument auto-retrieval/t0611_h_dc5.py exactly 118efc24d3d5f90a3f544294fc91d16bdf182354c245c14a0c408f7b1374478a - both match receipt pins byte-for-byte; results-t0611-h-dc5.json confirmed ABSENT (seal-before-run 
+
+### ✅ t0610-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Frozen t0593 claim-form discriminator vs full t0532 battery — FALSIFIED confirmed, FP3 guard fires
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: prereg auto-retrieval/prereg-t0610-lane6.md sha16 eb995ca6179b290d MATCHES; results auto-retrieval/results-t0610-docclaim.json sha16 c3fc909af30ca84a MATCHES; results bytes carry the frozen instrument seal 3eff30f1cfa37162, the FP1/FP2/FP3 predictions and the t0555 baseline quoted in the receipt; n
 
 ### ✅ t0610 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -22225,6 +22237,12 @@ _Last updated: 2026-11-19 11:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified all four pins exactly from live bytes: prereg eb995ca6179b290d, results-t0610-docclaim.json c3fc909af30ca84a, Mason's sealed results-t0593-docclaim.json 714fe2fba31f955a restored byte-identically after snapshot-restore, frozen instrument 3eff30f1cfa37162 pre==post (F5 holds). FALSIFIED verdict confirmed on frozen bytes across three seats (
 
+### ✅ t0610-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Blind second-seat re-judgment of injection-seam v0.2 auto-right (8/8 stands)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: blind verdict file retrieval/injection-seam-v0.2-blind-rejudgment-t0610-lane2.md sha256 13578a1ced9fce05... MATCHES the receipt pin exactly; the sealed file's blind table carries the exact my_choice rows the receipt compares (P3/P4/P7/P11/P3/P3/P7/P1) with the rule quoted verbatim and the seal-befo
+
 ### ✅ t0610 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Blind re-judgment of injection-seam v0.2 auto-right
@@ -22240,6 +22258,12 @@ _Last updated: 2026-11-19 11:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0610-lane2.md`
 
 **Evidence:** Verified: retrieval/injection-seam-v0.2-blind-rejudgment-t0610-lane2.md sha256 exactly 13578a1ced9fce054079255489de6543eeb81258789fc6eff2c522c67cf26bab matches receipt pin; file mtime 2026-10-13 09:41:43 UTC matches receipt's claimed seal time, consistent with the pre-post ordering claim (board comment timestamp not re-read this tick - file evidenc
+
+### ✅ t0610-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE ledger extension: 7 holes closed, 1 exclusion documented, 1 re-judgment commissioned
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: ledger retrieval/surge-evidence-ledger-t0610.json sha256 688b168d9c0eaf4b... MATCHES the receipt pin exactly; 75 rows = 68 carried + 7 added as claimed; 3 receipt SHAs spot-checked match (t0538-lane7 1a4a7285, t0564-lane5 7b0371ae, t0603-lane10 9b9cfc29); repin t0541-lane11.md 9c504a6a... MATCHES; 
 
 ### ✅ t0610 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -22257,6 +22281,12 @@ _Last updated: 2026-11-19 11:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval/surge-evidence-ledger-t0610.json sha256 exactly 688b168d9c0eaf4bec9cccdc9571e507edad759ac3f92b0565c9b5288726d0e4 (matches receipt pin); 68/68 t0605 rows carried byte-identical (recomputed, not trusted); 75 rows in file; prior t0605 file untouched (sha matches its own pin); commission post #2175 comment 6142696552 consistent with
 
+### ✅ t0609-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Claim-evidence re-weighting arm (H-reweight) — sealed run, FALSIFIED clean null
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: all 5 cited artifacts in auto-retrieval/ match exactly — sealed prereg d10d0519fc00d948, instrument 021a923a40ff2a95 (seal pre==post), selection import 3eff30f1cfa37162, results 97ac2ad6e584928a, verdict 155781d3dcba05ff; results bytes carry the frozen FP1/FP2/FP3 + GUARD-RR predictions matching th
+
 ### ✅ t0609 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Claim-evidence re-weighting arm — FALSIFIED null result
@@ -22272,6 +22302,12 @@ _Last updated: 2026-11-19 11:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0609-lane4.md`
 
 **Evidence:** Verified: auto-retrieval/sealed-prereg-reweight-t0609.md sha16 exactly d10d0519fc00d948, arm_reweight_t0609.py seal 021a923a40ff2a95 pre==post (mtime 2026-10-13 09:32:27 UTC precedes run), results-t0609-reweight.json 97ac2ad6e584928a, verdict-t0609-reweight.md 155781d3dcba05ff - all four pins match the receipt exactly, files on disk. Mechanism stor
+
+### ✅ t0609-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Guard battery re-run at live tip e47a650e - SAFE-to-wire RE-PROVEN
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: driver scratch-t0609-lane1/run_guard_battery_t0609.py sha256 88fab8c4... MATCHES; prereg scratch-t0609-lane1/prereg-t0609.json sha256 ead649a3... MATCHES; results scratch-t0609-lane1/results-t0609-livecorpus.json sha256 a65123d9... MATCHES; results file carries live_code_sha256 92d8b2be... which I 
 
 ### ✅ t0609 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -22289,6 +22325,12 @@ _Last updated: 2026-11-19 11:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: driver run_guard_battery_t0609.py sha256 exactly 88fab8c463bb..., prereg-t0609.json sha exactly ead649a36812..., results-t0609-livecorpus.json sha exactly a65123d953... all present on disk. Live tip via git protocol still e47a650e2f05935cb57b02f0f368452b346148e1 (zero churn since the receipt's action window). Strongest premise independent
 
+### ✅ t0608-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Third-seat generality sanity-check DESIGN (frozen, sealed; designer != executor)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: design file hidden_files/third-seat-generality-design-t0608.md sha256 240fa1f5... MATCHES receipt pin exactly; substance spot-check: 21 section markers, F0-F4 present, AGREE/BLOCKED/VOID/FEASIBLE tripwire terms present, disjointness-proof class rules and blackout procedure present in text. Designer
+
 ### ✅ t0608 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Third-seat generality sanity-check DESIGN (design-only, designer != executor)
@@ -22304,6 +22346,12 @@ _Last updated: 2026-11-19 11:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0608-lane3.md`
 
 **Evidence:** Verified: design file third-seat-generality-design-t0608.md exists, sha256 exactly 240fa1f543d2dba8e52524bc150e2a1b1bd696472b6ce1e9d0953310d764f056 (seal recorded in receipt, outside file). All brief requirements present and checkable: corpus rule exact, F0-F4 verbatim, agreement rule with blinded-number list, blackout with VOID rule, verbatim trip
+
+### ✅ t0608-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Byte-diff audit of tools/smart_note_v2.py between t1052 and t0603 pins (premise falsified)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: audit file hidden_files/smartnote-v2-tipdiff-t0608.md sha256 520d1fc1... MATCHES receipt pin exactly; mirror check confirms both commits exist and tools/smart_note_v2.py at BOTH pins (665098e3 and e47a650e) hashes to 92d8b2be... exactly as claimed - the t0603 8f58a763 reading matches no git object,
 
 ### ✅ t0608 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -54758,6 +54806,12 @@ _Last updated: 2026-11-19 11:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261119-0335 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-19 03:35 PST — 31 briefs attempted, 0 claimed, stall recorded once per hourly cap
+
+**Evidence:** FRESH (receipt 11:35Z, this tick ~11:40Z). VERIFIED first-hand: claim-sweep-20261119-0333.log sha256 e1c966ab... MATCHES the receipt's cited hash exactly; log holds 31 attempt lines (29 x [7] parent-authorship + 2 x [2] routing-prose bar, 0 claimed) with footer '0 claimed. 29 x exit 7, 2 x exit 2'; 31 unclaimed brief-*.md on disk, sorted list match
 
 ### ✅ gate-stall-20261119-0228 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
