@@ -28,13 +28,12 @@ WORK = "/home/hatch/workspace/team-nitro/walkthrough-chain-fix8-20261119/work"
 BRANCH = "walkthrough/chain-fix8-20261119"
 PARENT_BRANCH = "walkthrough/chain-fix7-20261119"
 PARENT = "3c621b7d2cc3eca539ed99d5625ca58c4599ef68"
-# Third staging commit: the second fix-8 commit (e120ca21) is already on
-# this branch; the render probe caught two live defects (the button row
-# still clipped below the deck, and the first Next tap only switching
-# the picture phase instead of advancing), so the beat padding, the
-# foot, the media frame and the navigation were reworked. This run
-# files commit 3 on top of commit 2.
-TIP1 = "e120ca21d9510b98854cde85c06e1a2841bb3d75"
+# Fourth staging commit: the third fix-8 commit (a2f5c753) is already on
+# this branch. Commit 4 files only the verification probes (updated for
+# single-tap navigation: Back x3, showcase proof) — no page bytes
+# change, the worker rebuilds byte-identical. This run files commit 4
+# on top of commit 3.
+TIP1 = "a2f5c753bd16b4e4c66e187386ad7cce85b00dce"
 WALK_LOCAL = "/home/hatch/workspace/team-nitro/walk-v23-assembly-20261114/walk-beginning-fixed.html"
 MP3_LOCAL = "/home/hatch/workspace/your_files/agreement-naya-voice.mp3"
 MP3_SHA = "62bf05e68a036e86b5aa3280c16b9dd810dda711abf1fd34612cda10b2b9261a"
@@ -100,7 +99,7 @@ def main():
     print("parent (fix7 tip):", PARENT, flush=True)
     _, ref8 = st.gh("GET", "/repos/%s/git/refs/heads/%s" % (st.REPO, BRANCH))
     assert ref8["object"]["sha"] == TIP1, "fix8 tip moved: %s" % ref8["object"]["sha"]
-    print("fix8 tip (commit 2):", TIP1, flush=True)
+    print("fix8 tip (commit 3):", TIP1, flush=True)
     _, commit = st.gh("GET", "/repos/%s/git/commits/%s" % (st.REPO, TIP1))
     base_tree = commit["tree"]["sha"]
     print("base tree:", base_tree, flush=True)
@@ -121,6 +120,8 @@ def main():
         ("team-nitro/walkthrough-chain-fix8-20261119/work/build-frame8.py", st.read_bytes(WORK + "/build-frame8.py")),
         ("team-nitro/walkthrough-chain-fix8-20261119/work/probe-render.py", st.read_bytes(WORK + "/probe-render.py")),
         ("team-nitro/walkthrough-chain-fix8-20261119/work/probe-home.py", st.read_bytes(WORK + "/probe-home.py")),
+        ("team-nitro/walkthrough-chain-fix8-20261119/work/probe-verify-fix8.py", st.read_bytes(WORK + "/probe-verify-fix8.py")),
+        ("team-nitro/walkthrough-chain-fix8-20261119/work/probe-followup.py", st.read_bytes(WORK + "/probe-followup.py")),
     ]
     blobs = {}
     for path, data in files:
@@ -134,17 +135,12 @@ def main():
     print("new tree:", tree["sha"], flush=True)
     msg = (
         "Walkthrough CHAIN FIX8 (2026-11-19, maker round; MAKER-REPORT.md in "
-        "walkthrough-chain-fix8-20261119/) — commit 3\n\n"
-        "Commit 3 reworks the render-probe findings: the button row was\n"
-        "still clipped below the deck (the beat's own 32/24px padding,\n"
-        "content-box, made it 60px taller than its 463px deck), and the\n"
-        "first Next tap only switched the picture phase instead of\n"
-        "advancing. The beat is now border-box with tight padding, the\n"
-        "seal tightens 84 -> 72, the media frame slims, the two-tap\n"
-        "talk/visual phase is gone (one tap = one frame; the picture\n"
-        "shows inside the reading window), and the deck's buttons are\n"
-        "cloned so FIX7's two-tap listener never fires. Nothing else\n"
-        "changes.\n\n"
+        "walkthrough-chain-fix8-20261119/) — commit 4\n\n"
+        "Commit 4 files only the verification probes (probe-verify-fix8.py\n"
+        "updated for single-tap navigation: Back x3 to return to frame 1\n"
+        "for the Play check, plus the showcase proof; probe-followup.py\n"
+        "is the rects + first-click diagnosis probe). No page bytes\n"
+        "change; the worker rebuilds byte-identical.\n\n"
         "The eye sent fix-7 back (GOES BACK, desktop 1920): frame 1 a 90px "
         "strip, the board blanking itself, Next never visibly advancing, "
         "Play doing nothing, flaky top-bar photo, home entrance + nav "
