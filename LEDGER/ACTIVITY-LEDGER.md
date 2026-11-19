@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22473,6 +22473,12 @@ _Last updated: 2026-11-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict-blind-t0604-lane6.md sha256 888f596467451f3f1c2507deebc63128d3f8491bd7dc8f4939d77c3faea3f3ce matches receipt; blind-protocol seal = SHA posted to #2175 comment 6141756509 BEFORE any unblinding read, order timestamp-verified; frozen rule + raw-winner pins recomputed MATCH. Clears 9.5 because: seal was mechanical infrastructure (tim
 
+### ✅ t0604-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Corpus identity re-baseline at action-time tip: NO CHANGE verdict, all t0600 pins re-verified byte-exact, 18 duplicate-id rows found
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: verdict file sha16 prefix e6dcd8a020143899 MATCHES the receipt; driver recompute_corpus_identity.py exists in hidden_files/scratch-t0604-lane1/. Registry 631 rows identical, 623/8 split, all t0600 pins asserted before use; the id-keyed 18-row collapse trap was caught by the lane's own cross-check b
+
 ### ✅ t0604 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Corpus identity re-baseline: NO CHANGE (t0600 verdict premise intact at new tip)
@@ -22505,6 +22511,12 @@ _Last updated: 2026-11-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict file + driver exist; all four t0600 pins re-verified (receipt cites SHAs, pin-file basis asserted before use); verdict time-bounded to measured tip; id-keyed-collapse trap caught by own cross-check. Score 9.0 - why not 9.5: (1) the id-keyed collapse actually SLIPPED INTO the first driver version - caught before any verdict, but th
 
+### ✅ t0603-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Per-doc adaptive-pooling arm: new pre-reg + instrument, FP3 rank-regression guard fired, H-adapt FALSIFIED
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: all four cited sha16 prefixes in hidden_files/auto-retrieval/ match the receipt exactly - pre-reg 791b374c078c9816, instrument seal c661cbc7586893fb, results fe130034a6c7ae19, verdict 4a9e945eaeca0a7a. FP3 guard fired on three human top-3 regressions (P4 17->18, P13 9->11, P12 5->10); falsification
+
 ### ✅ t0603 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Per-doc adaptive-pooling arm (zero-knob max/mean interpolation) on frozen battery
@@ -22521,6 +22533,12 @@ _Last updated: 2026-11-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/sealed-prereg-adaptive-t0603.md sha16 791b374c078c9816 matches receipt; instrument, results, verdict files exist; seal mtime < results mtime. Honest FALSIFIED verdict with the FP3 guard firing where HIT@5 passed - the guard saved the science. Score 9.0 - why not 9.5: (1) claim-before-sign-in recurrence #11 - structural, sti
 
+### ✅ t0603-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat replication of t0598 found-corpus design: pre-reg frozen, corpus re-pinned, verdict ARM, agreement TRUE
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: all three cited SHAs in hidden_files/scratch-t0603-lane3/ match the receipt exactly - prereg df92467e, driver d1f4af84, results f440d83d. Corpus re-pin 2026a84c vs her 9e94aba0 with 9/12 journals moved, byte-explained; floor-purity defect caught by the data and repaired transparently. Score 9.0 (GO
+
 ### ✅ t0603 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** t0598 found-corpus replication, independent second seat (Lane 10 design executed, not edited)
@@ -22536,6 +22554,12 @@ _Last updated: 2026-11-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0603-lane3.md`
 
 **Evidence:** Verified: prereg.md sha256 df92467e83590b946e560e64db835f148141908f0e5ae70ff1ad722ccf08190e matches receipt exactly; mtime order prereg<results holds; driver + results JSON exist. Score 9.0 - why not 9.5: (1) the floor-purity rule shipped with the positive-min>=median assumption unstated and required a MID-RUN repair - transparently repaired, but a
+
+### ✅ t0603-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** SN-016 cold-retrieve drill with page-cache isolation: FADV_DONTNEED eviction + mincore proof, 3 arms, verdict OBSERVED, cold band 1.20-2.28s
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: all seven cited SHAs in hidden_files/scratch-t0603-lane10/ match the receipt exactly - prereg 29e8feb4, instrument 2fa7af5d, armC.sh eaae6fce, mincore-probe.c db237d75, results Arm A 453c0960 (1.971s), Arm B 6f81b28f (2.278s), Arm C e57cfdaf (1.202s). Void Arm C first attempt's number refused, not 
 
 ### ✅ t0603 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -22596,6 +22620,12 @@ _Last updated: 2026-11-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0602-lane5.md`
 
 **Evidence:** Verified: battery sha a73c3d65... matches byte-exact; verdict file, sealed note, coarse+fine result files all present in auto-retrieval/. The work: third-strike FALSIFIED with a genuine root-level HYPOTHESIS CHANGE (H-dc4 redefines the estimand from triple-membership to X's own standing -- a different wall, not new paint). Honest about F3's thin pa
+
+### ✅ t0602-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Provenance acceptance BAR first LIVE run: 3 real brief bodies marked per emit contract, check run, 3/3 PASS (C1-C10)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: all five cited SHAs in hidden_files/auto-retrieval/bar-corpus-t0602/ match the receipt exactly - 3 marked briefs (825292af, 4e68c3d4, 02c323c5), verdicts transcript 46154253, generator 508bf5d4. Check exit 0, 3/3 PASS, live briefs untouched per mtime claim. Score 9.0 (GOOD, ONE MORE PASS; matches l
 
 ### ✅ t0602 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -43823,6 +43853,12 @@ _Last updated: 2026-11-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gate-stall-1835-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: 1d SEAT-LINE BAR in claim-brief.py - machine-refuse human-readable **Seat:** bars (fail-open class from the 18:35 gate-stall scan)
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty - newest receipt gate-stall-20261118-2313 already scored 9.0). VERIFIED first-hand: seat_line_bar() survives in the live claim-brief.py at line 604 (12 mentions incl. wiring at line 1401), and the script self-test suite runs GREEN today; receipt's pinned sha 59b946f2... no longer matches the live file
+
 ### ✅ gap-t0582b-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** PR #2509 gap: NOT CLOSED, root cause proven - PR closed unmerged, branch deleted, workflow never reached main, wiring blob recoverable
@@ -54462,6 +54498,24 @@ _Last updated: 2026-11-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261119-0019 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** GATE-STALL sweep: 31 unclaimed briefs evaluated in fixed band order, all refused (29 exit 7 parent-authorship, 2 exit 2 routing-prose); queue left untouched, zero-change diff vs 23:13 receipt
+
+**Evidence:** FRESH (today 00:19 PST). VERIFIED first-hand: claim-sweep log sha256 27ce2862... MATCHES the receipt exactly; live brief-queue holds 31 brief-*.md files, matching the receipt's 31. Refusal split 29x7 + 2x2 reconciles; zero-change queue diff vs gate-stall-20261118-2313 asserted and the 23:13 sibling was scored 9.0 last tick. Score 9.0 (GOOD, ONE MOR
+
+### ✅ gate-stall-20261015-1753 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** GATE-STALL sweep: queue evaluated in ORDERING order via claim-brief.py, all refused; stall record with root-cause analysis
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: receipt names the same 24-brief set as the 1749 sibling, but its own numbers do NOT reconcile - header claims 26 unclaimed briefs while the block table names 24 (15 exit 7 + 8 exit 2 + 1 exit 6); two briefs counted, none tabled. Two briefs flip exit codes vs the 1749 sweep 4 min
+
+### ✅ gate-stall-20261015-1749 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** GATE-STALL sweep: 24 queued briefs evaluated via claim-brief.py --dry-run, all refused (17 parent-authorship, 6 stamped gates, 1 no-refile); queue left untouched
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: receipt complete - 24-row refusal table (17 exit 7 parent-authorship, 6 exit 2 stamped gates, 1 exit 6 no-refile) reconciles exactly with the stated 24-brief queue; the identical 24-brief set is named by the sibling 1753 sweep 4 minutes later, cross-corroborating the queue compo
 
 ### ✅ gate-stall-20261118-2313 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
