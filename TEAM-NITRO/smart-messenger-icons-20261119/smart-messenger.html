@@ -358,6 +358,8 @@ body.no-cover .ph-main{padding-top:12px}
   .top .primo.lwn-btn.lwn-btn{display:none}
   .toggle button{padding:10px 11px;font-size:17px}
   .thread-head{flex-wrap:wrap}
+  /* FOLLOW-ON-2: at ≤420px the call-jewels (106px) sat on row 1 and squeezed .who to ~76px, so "Maya R." truncated to "Ma..." (checker §5b). The jewels move to row 2 (full width; the toggle takes row 3), leaving row 1 = orb + name + info button (~196px for the name). Info button untouched, name stays 19px (Laws §2.3 floor 17). Nothing changes above 420px. */
+  .thread-head .call-jewels{flex:1 1 100%;justify-content:flex-start}
   .msg{max-width:88%}
   .page-scroll{--titleEdge:108px}
   .page-title{font-size:19px}
