@@ -4079,7 +4079,7 @@ body.mw-strip-bottom #nsbBottom{bottom:0!important}
 #cvr{overflow:clip;}
 img{max-width:100%;}
 </style>
-</head><body>
+</head><body class="os-bottom-hidden">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="r5DotGrad" cx="35%" cy="30%" r="80%"><stop offset="0%" stop-color="#ffffff"/><stop offset="45%" stop-color="#ffffff"/><stop offset="100%" stop-color="#6d28d9"/></radialGradient></defs></svg>
 <!-- SMART-BAR-SYSTEM v1.0: top mount -->
 <!-- ROUND 6 (2026-11-12, Shawn 03:43Z): the top Smart Bar is gone from this page — the cover is the top now, and the bottom bar stays. The search level stands alone below: it is the popup search's container (open-on-purpose, never a bar), and the below-cover search row drives its machinery through the bridge. -->
@@ -14321,7 +14321,7 @@ function wallCard(j, iso, pid, idx){
     inset 1px 0 0 rgba(255,255,255,.07),
     0 7px 16px rgba(0,0,0,.6),
     0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);
-  color: color-mix(in srgb, var(--nc) 72%, #ffffff);
+  color: #ffffff;
   transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, border-color .3s;
 }
 .notif-tile::before {
@@ -14329,13 +14329,10 @@ function wallCard(j, iso, pid, idx){
   background: linear-gradient(155deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 42%),
               linear-gradient(25deg, rgba(255,255,255,0) 62%, color-mix(in srgb, var(--nc) 22%, transparent) 100%);
 }
-.notif-tile svg { width: 25px; height: 25px; filter: drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent)); position: relative; }
-.notif-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; color: #fff; }
-.notif-count { position: absolute; top: -8px; right: -10px; min-width: 24px; height: 24px; padding: 0 6px;
-  display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
-  font-size: 12px; font-weight: 900; color: #06060a; background: var(--nc);
-  border: 2px solid #05050a;
-  box-shadow: 0 0 14px var(--nc), 0 3px 8px rgba(0,0,0,.5); animation: notifPulse 2.4s ease-in-out infinite; }
+.notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 2px 2px rgba(0,0,0,.7)); position: relative; }
+.notif-seg:hover .notif-tile svg { filter: drop-shadow(0 3px 3px rgba(0,0,0,.95)) drop-shadow(0 0 8px var(--nc)) drop-shadow(0 0 3px rgba(255,255,255,.9)); transform: scale(1.06); }
+#naya-notif-bar .notif-lbl{display:block !important;font-size:17px !important;font-weight:700 !important;letter-spacing:.08em !important;color:#ffffff !important;text-shadow:0 1px 3px rgba(0,0,0,.9) !important;white-space:nowrap !important;line-height:1.2 !important;}
+.notif-count { position: absolute; top: 5px; right: 5px; min-width: 26px; height: 26px; padding: 0 5px; display: none; align-items: center; justify-content: center; border-radius: 50%; z-index: 2; font-size: 12px; font-weight: 900; color: #fff; background: radial-gradient(circle at 35% 28%, #3a3a46 0%, #050607 72%); border: 1.5px solid var(--nc); box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 12px color-mix(in srgb, var(--nc) 55%, transparent), 0 3px 8px rgba(0,0,0,.5); }
 @keyframes notifPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.13); } }
 .notif-seg.has-news .notif-tile {
   border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
@@ -15726,17 +15723,91 @@ window.NayaSmartBar = {
   window.addEventListener('load', syncSmartbarH);
   window.addEventListener('resize', syncSmartbarH);
   document.addEventListener('smartbar-settings', syncSmartbarH);
-  /* Fold on scroll (the 2026-11-07 fold-away law): scrolling hides the
-     five; ~1s after scrolling stops they fold back. Never folds at
-     the very top of the page. */
+  /* FIX2 2026-11-19 (bar set three, Edit 6) — SHOW ONCE, harvested from
+     Dashboard follow-on 2 (blob e91ad3ca): the bar is NOT sticky. Body starts
+     os-bottom-hidden; the bar pops up ONCE, calmly, after the reader has
+     stopped at the very bottom for a full second, then holds. When the reader
+     leaves the bottom, an AUTOMATICALLY shown bar folds again and re-arms; a
+     bar the reader summoned (corner control) holds. The old 2026-11-07
+     fold-away (hide past 120px, return ~1s after ANY scroll stop) is gone.
+     syncSmartbarH still runs on scroll settle. Adaptations, named: no
+     fitHero/_osHeroBottom on Personal (no gauge); _osB3BarOff falls back to
+     the os-bottom-off class (no NayaSmartBar.dashBarOn here). */
+  window._osB3ShownOnce = false;
+  window._osB3AutoShown = false;
+  var _osBarBottomTimer = null;
+  function _osB3BarOff(){ try { if (window.NayaSmartBar && typeof window.NayaSmartBar.dashBarOn === 'function') return !window.NayaSmartBar.dashBarOn(); } catch(e){} return document.body.classList.contains('os-bottom-off'); }
+  function _osB3ArmTimer(){
+    if (window._osB3ShownOnce) return;
+    if (_osBarBottomTimer) clearTimeout(_osBarBottomTimer);
+    if (!_osAtPageBottom() || _osB3BarOff()) return;
+    _osBarBottomTimer = setTimeout(function(){
+      if (window._osB3ShownOnce) return;
+      if (!_osAtPageBottom() || _osB3BarOff()) return;
+      document.body.classList.remove('os-bottom-hidden');
+      window._osB3ShownOnce = true;
+      window._osB3AutoShown = true;
+      if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(_sb){} }
+    }, 1000);
+  }
+  function _osAtPageBottom(){ try{ return (window.scrollY||0) + window.innerHeight >= (document.documentElement.scrollHeight||0) - 2; }catch(e){ return false; } }
   var settle = null;
   function onScroll(){
-    if (window.scrollY > 120) { document.body.classList.add('os-bottom-hidden'); }
+    _osB3ArmTimer();
+    if (window._osB3AutoShown && !_osAtPageBottom() && !document.body.classList.contains('os-bottom-hidden')) { document.body.classList.add('os-bottom-hidden'); window._osB3ShownOnce = false; window._osB3AutoShown = false; if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(_sb2){} } }
+    if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(_sb){} }
     if (settle) { clearTimeout(settle); }
-    settle = setTimeout(function(){ document.body.classList.remove('os-bottom-hidden'); syncSmartbarH(); }, 1000);
+    settle = setTimeout(function(){ syncSmartbarH(); }, 1000);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   syncSmartbarH();
+  try { _osB3ArmTimer(); } catch(_be){}
+  /* FIX2 corner control #os-b3-hide + _osSyncB3Hide, harvested from Dashboard
+     follow-on 2 (blob e91ad3ca) — Personal had none (count 0). Adaptations,
+     named: bar id os-bottom3 -> naya-notif-bar; aria-labels say "bottom bar"
+     not "Dashboard bar"; NayaSmartBar.setDashBar absent here, so the toggle
+     falls back to the os-bottom-off class + bar display (the Dashboard's own
+     fallback branch, verbatim). */
+  window._osSyncB3Hide = function(){
+    var c = document.getElementById('os-b3-hide');
+    if (!c) return;
+    var on = true;
+    try { on = (window.NayaSmartBar && typeof window.NayaSmartBar.dashBarOn === 'function') ? window.NayaSmartBar.dashBarOn() : !document.body.classList.contains('os-bottom-off'); } catch(e){}
+    var folded = document.body.classList.contains('os-bottom-hidden');
+    var visible = on && !folded;
+    c.textContent = visible ? '\u25be' : '\u25b4';
+    c.setAttribute('aria-label', visible ? 'Hide the bottom bar' : 'Show the bottom bar');
+    c.setAttribute('title', visible ? 'Hide the bottom bar' : 'Show the bottom bar');
+  };
+  (function(){
+    if (document.getElementById('os-b3-hide')) return;
+    var c = document.createElement('button');
+    c.type = 'button'; c.id = 'os-b3-hide';
+    c.setAttribute('aria-label', 'Hide the bottom bar');
+    c.title = 'Hide the bottom bar';
+    c.textContent = '\u25be';
+    (document.body || document.documentElement).appendChild(c);
+    c.addEventListener('click', function(){
+      try {
+        var _folded = document.body.classList.contains('os-bottom-hidden');
+        var _on = (window.NayaSmartBar && typeof window.NayaSmartBar.dashBarOn === 'function') ? window.NayaSmartBar.dashBarOn() : !document.body.classList.contains('os-bottom-off');
+        if (_on && _folded) { document.body.classList.remove('os-bottom-hidden'); window._osB3ShownOnce = true; window._osB3AutoShown = false; window._osSyncB3Hide(); return; }
+      } catch(_fe){}
+      var on = true;
+      try {
+        if (window.NayaSmartBar && typeof window.NayaSmartBar.setDashBar === 'function' && typeof window.NayaSmartBar.dashBarOn === 'function') {
+          on = window.NayaSmartBar.setDashBar(!window.NayaSmartBar.dashBarOn());
+        } else { throw new Error('no store'); }
+      } catch(e){
+        on = document.body.classList.contains('os-bottom-off');
+        document.body.classList.toggle('os-bottom-off', !on);
+        var b = document.getElementById('naya-notif-bar');
+        if (b) b.style.display = on ? '' : 'none';
+      }
+      window._osSyncB3Hide();
+    });
+  })();
+  try { window._osSyncB3Hide(); } catch(_bs){}
 })();
 </script>
 <style>
@@ -15851,11 +15922,11 @@ window.NayaNotif = window.NayaNotif || {
       var ICONS = {
         mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
         activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
-        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>',
+        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg>',
         eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
         plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
         /* HUB-RETURN 2026-11-16 (item 2): the right + is the same + object. */
-        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
+        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg>'
       };
       /* HUB-RETURN 2026-11-16 (item 2): the + at the RIGHT end. The six
          stay exactly as harvested (plus/mail/activity/spaces/eco/connect, same
@@ -37269,5 +37340,44 @@ div[data-block="cover"] > .ph-actions-row{padding-left:0!important;padding-right
 .ph-avwrap{grid-column:1!important;grid-row:2!important;justify-self:center!important;align-self:center!important;}
 #phIntroBoard{grid-column:1!important;grid-row:3!important;align-self:stretch!important;justify-self:stretch!important;flex:none!important;width:100%!important;max-width:100%!important;margin:0!important;}
 }
+</style>
+<style id="personal-fix2-20261119">
+/* FIX2-1 (item 1) — the "Up Welcome" pill was position:fixed at top:76/right:12
+   and floated over the People rail's top row whenever a rail row scrolled
+   under it (pill x 1792-1908 vs rail buttons x 1774-1887 at 1920; same at
+   390/635). It is now position:sticky inside its own mount (the feed wrap it
+   is appended to), right-aligned by margin-left:auto: it can never leave the
+   feed column, so it can never cover a rail button at any width. Same pill. */
+.hero-restore.show{position:sticky;top:76px;right:auto;left:auto;z-index:70;margin-left:auto;}
+/* FIX2-2 (item 2) — an empty video slot is a 16:9 black void (21 slots, 0 with
+   media). Hide the frame until media is attached; the paste affordance
+   (.of-media-paste, a sibling) stays, and when a video is pasted ofMediaShow
+   fills the frame so :has re-matches and the frame appears. No poster is
+   invented — no thumbnail asset exists for these beats. */
+.of-media-frame:not(:has(iframe,img,audio,video)){display:none;}
+/* FIX2-4 (item 4) — #pcHubFeedMount is inserted as a grid item of
+   #pcComposerBar (row 1, 392px tall: unfolded hero + lens + invite), and grid
+   stretch made the searchRow and the My-World scope button 392px tall (empty
+   black board / oval); the align() script then stamped 392px as inline height
+   onto #pcRailSearch + #pcRailClose (the two right ovals). The mount takes
+   its own full-width row: row 1 returns to scope + search + plus (~64px, the
+   H1 intent) and the rail tools stop getting 392px stamped. */
+#pcComposerBar #pcHubFeedMount{grid-column:1/-1;min-width:0;}
+/* FIX2-5b (Edit 5, glyph-only at phone widths — Dashboard follow-on 2, id adapted) */
+@media (max-width:640px){ #naya-notif-bar .notif-lbl{display:none !important;} }
+/* FIX2-6c (Edit 6, clearance — Dashboard follow-on 2 §4, id adapted) */
+#naya-notif-bar{padding-bottom:calc(20px + env(safe-area-inset-bottom, 0px)) !important;}
+/* FIX2-6d (Edit 6, corner control — Dashboard follow-on 2, harvested; bottom
+   100px -> 112px: Personal's bar with 17px labels is ~106px tall, not the
+   Dashboard's ~91px, so the control rides 6px clear of the taller bar.) */
+#os-b3-hide{position:fixed;right:12px;bottom:112px;z-index:1005;width:38px;height:38px;border-radius:50%;cursor:pointer;
+  color:#fff;font-size:17px;font-weight:800;line-height:1;text-align:center;
+  background:linear-gradient(180deg,#1d1d26,#0b0b10 60%,#050607);
+  border:1.5px solid rgba(255,255,255,.65);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.6),0 0 14px rgba(255,255,255,.12);}
+#os-b3-hide:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.6),0 12px 26px rgba(0,0,0,.65),0 0 18px rgba(255,255,255,.18);}
+#os-b3-hide:active{transform:translateY(1px);}
+body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
+@media(max-width:768px){#os-b3-hide{bottom:90px;right:8px;}}
 </style>
 </body></html>
