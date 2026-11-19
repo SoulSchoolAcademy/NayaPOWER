@@ -14884,7 +14884,7 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
         if (tc>0){
           var _rate=Math.round(tj/tc*100);
           var _color=_rate>=10?'#2fe89e':(_rate>0?'#ffbf3d':'#ff5e6c');
-          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span> <span>of clicks became joins</span>' + (_rate===0 ? ' <span class="os-sl-leak">— the leak is here</span>' : '');
+          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span>&nbsp;<span>of clicks became joins</span>' + (_rate===0 ? '&nbsp;<span class="os-sl-leak">— the leak is here</span>' : '');
         } else {
           _conv.textContent='Share your link to start the funnel';
         }
@@ -31250,4 +31250,63 @@ body{padding-bottom:170px !important;}
   }, true);
 })();
 </script>
+<style id="os-followup13-20261119">
+/* FOLLOW-UP 13 2026-11-19 — Shawn's Dashboard walk rulings (~14:04–14:08 MST)
+   + the follow-up 12 eye's nit. One block, appended last so it wins ties.
+   (1) SETTINGS CLEAR OF THE X. Measured: the right-rail head (title + X)
+   lands ~121px from document-top (follow-on 2 section 3), so the X spans
+   ~123-159px at scroll 0; the gear at top:84 (rule 10) ran to 124px — 3px
+   INTO the X — and the panel it opens, live-anchored to the gear's right
+   edge, hung across the X's band. The gear moves to top:72 (bottom 112:
+   9px clear of the X above, 8px clear of the eco-plus at 24-64 when the
+   rail is collapsed). The panel is pinned top:124 (gear bottom 112 + 12,
+   the handler's own formula) and right:64 — 14px left of the X's left edge
+   — and the importants beat the handler's inline re-anchor, which would
+   put it back over the X whenever the page is scrolled. Items stay inside
+   the panel (width:100%) and the panel stays inside the frame (max-width).
+   Phones keep their own gear/panel tops (max-width:700px rules untouched).
+   (2) ONE GAUGE SIZE. Measured root cause: rule (9) (.os-sl-gauge{flex:0 0
+   auto}) sizes every gauge cell to its content, and the dial mount is
+   width:100% of the cell (cap 150px) — so the joins dial (narrow "1" cell)
+   rendered small while the clicks dial (wide "1 735" cell) rendered
+   full-size (walk shots 2 and 3). The dial box is now one fixed size for
+   every cell — 150px wide (the file's own cap, line 4879 — harvested, not
+   invented), the mount at the same 150px — so every mini gauge renders
+   150x156 whatever its number. The hero gauge is the one big gauge and is
+   untouched; the hero orbs already measure a uniform 120px in the bytes.
+   Phones keep their own 120px cap. The state cell ("Not counted yet") has
+   no mount, so its dial box is pinned to the same 150x156 and its label
+   takes the number's place (49px = 8 + 33 + 8) so it lines up with its
+   siblings — that is fix (4) for this row.
+   (3) NUMBERS GET ROOM TO BREATHE. The number groups in a gauges row were
+   separated by the row's 10px gap — barely more than the 3px gap inside a
+   number — so "1 735 1 0 0.1%" read as one continuous run of tiles (shot 3),
+   and long labels ("REVENUE / 1 000 VIEWS") overflowed their narrow cells
+   and touched their neighbours (shot 2). The row gap grows to 24px — one
+   number clearly ends before the next begins — and the dial-to-number and
+   number-to-label gaps become 8px. (The 4th-cell 22px tile shrink is
+   phone-only, max-width:480px — deliberate, untouched.)
+   (4) WHOLE-PAGE ALIGNMENT. The rows above are the alignment: every gauge
+   one size, every number group separated, every label on one line with its
+   siblings. Nothing else moves — the preserve table in the maker report
+   re-measures every follow-up 12 pass. */
+@media (min-width:701px){
+  #page-settings{top:72px !important;right:24px !important;}
+  #settings-panel{top:124px !important;right:64px !important;max-width:calc(100vw - 32px) !important;box-sizing:border-box !important;overflow:hidden !important;}
+  #settings-panel button{width:100% !important;box-sizing:border-box !important;}
+}
+@media (min-width:561px){
+  .os-sl-gauge-dial{width:150px !important;margin-left:auto !important;margin-right:auto !important;}
+  .os-sl-gauge-dial .tn-mini-mount{width:150px !important;max-width:150px !important;}
+  .os-sl-gauge-dial.os-sl-state-cell{height:156px !important;min-height:156px !important;}
+  .os-sl-gauge-dial.os-sl-state-cell + .os-sl-gauge-lab{margin-top:49px !important;}
+}
+@media (max-width:560px){
+  .os-sl-gauge-dial{width:120px !important;margin-left:auto !important;margin-right:auto !important;}
+  .os-sl-gauge-dial .tn-mini-mount{width:120px !important;max-width:120px !important;}
+}
+.os-sl-gauges{gap:24px !important;}
+.os-sl-gauge-num{margin-top:8px !important;}
+.os-sl-gauge-lab{margin-top:8px !important;}
+</style>
 </body></html>
