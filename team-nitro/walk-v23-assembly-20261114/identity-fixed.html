@@ -2635,7 +2635,7 @@ function clearPendingRoute() {
     setInterval(tickClock, 1000);
 
 
-    window.activateAndRedirect = function() {
+    window.activateAndRedirect = function(verdictChecked) {
       var finalAlias = aliasInput.value.toLowerCase().replace(/[^a-z0-9]/g, '');
       /* FIX3 (2026-11-19, eye item 4a) — the display name is computed
          LIVE here, at ENTER time, from the claimed alias and its
@@ -2671,6 +2671,42 @@ function clearPendingRoute() {
         var st = document.getElementById('aliasStatus');
         if (st) { st.setAttribute('data-state', 'neutral'); st.textContent = 'Enter alias to continue.'; }
         try { aliasInput.focus(); } catch(e){}
+        return;
+      }
+      /* FIX5 (2026-11-19, captain's eye 04:53-05:02Z) — ENTER resolves
+         the availability verdict FIRST, before any claim is attempted.
+         The typing check is debounced 300ms and ENTER never consulted
+         it, so a fast ENTER claimed blind: the taken flag and the
+         device-key prompt depend on a check that may still be pending
+         or may never have run. The verdict GET below is the same
+         endpoint the typing check uses, read with this browser's key
+         if it has one. Taken (exists, not own) shows the flag + the
+         key panel here and returns — no localStorage write, no claim
+         POST, nothing to restore. Own or available falls through to
+         the claim below (the POST stays the authority); a failed or
+         timed-out verdict (4s) falls through too, so ENTER can never
+         hang on this read. */
+      if (!verdictChecked) {
+        var gateKey = null; try { gateKey = localStorage.getItem('nayanet_vault_key'); } catch(e){}
+        var gateDone = false;
+        var gateTimer = null;
+        var gateGo = function(){ if (gateDone) return; gateDone = true; if (gateTimer) clearTimeout(gateTimer); window.activateAndRedirect(true); };
+        gateTimer = setTimeout(gateGo, 4000);
+        fetch(__chainApiBase + '/api/claim?alias=' + encodeURIComponent(finalAlias) + (gateKey ? '&device_key=' + encodeURIComponent(gateKey) : ''), { cache: 'no-store' })
+          .then(function(r){ return r.ok ? r.json() : null; })
+          .then(function(d){
+            if (gateDone) return;
+            if (d && d.exists && !d.own) {
+              gateDone = true; if (gateTimer) clearTimeout(gateTimer);
+              setAliasState('taken', finalAlias);
+              var gn = document.getElementById('hubNote');
+              if (gn) { gn.textContent = 'That alias is already claimed. If it is yours, use your device key below — a name alone never opens it.'; gn.classList.add('taken-note'); gn.hidden = false; try { gn.scrollIntoView({block:'nearest'}); } catch(e){} }
+              var gk = document.getElementById('keyPanel'); if (gk) gk.hidden = false;
+              return;
+            }
+            gateGo();
+          })
+          .catch(function(){ gateGo(); });
         return;
       }
       /* Device-local identity store. This remembers the profile on

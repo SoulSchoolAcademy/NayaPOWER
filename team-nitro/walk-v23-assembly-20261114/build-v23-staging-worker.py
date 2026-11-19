@@ -247,13 +247,14 @@ assert template_sha.startswith("61002d15"), "personal template sha is not the co
 # taken-alias note clears the moment a fresh alias comes back available
 # (setAliasState hides #hubNote on available/own/neutral). Walk + template
 # shas unchanged.
-# WALKTHROUGH-CHAIN (2026-11-18, same round) - STAGING WORKER\n# RE-EMBED: the identity sha moves a1550164 -> d8c0d583. The old\n# assert would fail the rebuild on the new identity bytes.\n# IDENTITY IS NAME *PLUS* THE DEVICE KEY: on 'taken' the row\n# is read back WITH this browser's device key and only d.own\n# grants - the name-match grant is deleted. Without the key\n# the citizen gets the key panel (paste key, Use my key, the\n# key is verified against the row); the key is also SHOWN on\n# the certified certificate so it can be carried to another\n# device. Walk, template, unfold shas unchanged.\n# WALKTHROUGH-CHAIN-FIX4 (2026-11-19, fix3 checker item 1): the identity sha
-# moves 88c19001 -> 85b42447 (397,308 B -> 397,978 B, +670 B): one rule only —
-# the stale certified status is hidden at ALL widths, not only ≤640px, so the
-# desktop certified certificate no longer prints "Available — it's yours to
-# claim." across the member sentence. Walk, welcome, template, unfold shas
-# unchanged.
-assert ident_sha.startswith("85b42447"), "identity sha is not the WALKTHROUGH-CHAIN-FIX4 identity sha (2026-11-19: stale certified status hidden at all widths — the fix3c hide rule lifted out of the max-width:640px media query, same selector; composing state untouched)"
+# WALKTHROUGH-CHAIN (2026-11-18, same round) - STAGING WORKER\n# RE-EMBED: the identity sha moves a1550164 -> d8c0d583. The old\n# assert would fail the rebuild on the new identity bytes.\n# IDENTITY IS NAME *PLUS* THE DEVICE KEY: on 'taken' the row\n# is read back WITH this browser's device key and only d.own\n# grants - the name-match grant is deleted. Without the key\n# the citizen gets the key panel (paste key, Use my key, the\n# key is verified against the row); the key is also SHOWN on\n# the certified certificate so it can be carried to another\n# device. Walk, template, unfold shas unchanged.\n# WALKTHROUGH-CHAIN-FIX5 (2026-11-19, captain's eye 04:53-05:02Z): the identity sha
+# moves 85b42447 -> 6f805eba (397,978 B -> 400,253 B, +2,275 B): ENTER resolves
+# the availability verdict FIRST (FIX5 gate in activateAndRedirect) — a taken
+# alias shows the flag + the device-key panel on ENTER itself, before any
+# localStorage write or claim POST; own/available fall through to the claim
+# below, and a failed or timed-out verdict falls through too. Walk, welcome,
+# template, unfold shas unchanged.
+assert ident_sha.startswith("6f805eba"), "identity sha is not the WALKTHROUGH-CHAIN-FIX5 identity sha (2026-11-19: ENTER resolves the availability verdict first — taken shows the flag + key panel before any claim; the claim POST stays the authority for own/available)"
 # ENTRANCE WELCOME (2026-11-16, BRIEF-AGREEMENT-ENTRANCE-WELCOME-20261116.md):
 # the welcome sha moves 5f33d273 -> db5960eb (925,222 B -> 934,065 B,
 # +9,337 B): Item 0 — the opening-view intro block only. Shawn's 10-star
