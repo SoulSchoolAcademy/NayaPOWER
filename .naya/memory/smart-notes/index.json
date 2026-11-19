@@ -64743,6 +64743,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3681",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3681-fail-honestly-prove-it-in-writing",
+      "slug": "fail-honestly-prove-it-in-writing",
+      "title": "Fail Honestly, Prove It in Writing",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3681/IB-SMART-NOTE-20261119-sn3681-fail-honestly-prove-it-in-writing.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3681/IB-SMART-NOTE-20261119-sn3681-fail-honestly-prove-it-in-writing.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3681/IB-SMART-NOTE-20261119-sn3681-fail-honestly-prove-it-in-writing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3681-fail-honestly-prove-it-in-writing.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T12:29:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "4476ad43675a44887c322e4219793ff83c72dca026ff80dbae626e349493868b",
+      "content_hash": "f67e83e5c753eb6431c4fa0a0bdaedb9ffa96419df14f06702c5ffdeae2c3a5d",
+      "one_line": "Plain words carry the deed: the little eyes beside hard words explain what they ultimately mean — the land is the domain, the building is the smart app, your world is your online presence, interconnected. The unfold is read, click, read — never forced, one button opens all, each block taking its spectrum color. The engine exists and the walk doesn't use it yet: the translation engine is proven, the walk has zero language detection — the gap is wiring, and it is recorded and queued, not jammed into a build mid-flight. The hook: they say AI is taking jobs — what if AI created income for everybody? The overhaul takes the pricing page's full-page unfold and the Intelligent Block's best, because the agreement must sell by how it unfolds. Then the proof discipline closes the batch: fail honestly — a control that never settles is the worst failure; an 8-second guard that fails in plain words with the control back is the shape of the rule. A proof that isn't recorded doesn't count — the finisher re-proves everything itself. Intake proven, batch not shippable: a wide-margin GO on the pool and an honest FAIL on the batch, in the same record, superseding any 'round done' reading. And underneath: the value is people feeling compelled by how much value there is — and the real power is knowledge of oneself, connected to everything, in one system where everyone wins.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64753,5 +64786,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "68fdccd094575fae7ee887371db7cd9be26166a8505312e1ffec16da38926185"
+  "corpus_manifest_hash": "6ebaa6b3ec44f6824b69494773280ed2284309f6ec77d2ed4c430eb6d4ee8bdd"
 }
