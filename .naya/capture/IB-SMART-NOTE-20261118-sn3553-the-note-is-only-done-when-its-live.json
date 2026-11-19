@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3553",
+ "intelligence": {
+  "title": "The Note Is Only Done When It's Live",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3553-the-note-is-only-done-when-its-live",
+  "smart_note_id": "SN-3553",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3553/IB-SMART-NOTE-20261118-sn3553-the-note-is-only-done-when-its-live.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "A letter that is written but never delivered is not a letter — it is a draft in a drawer. The notes were filed, the tree kept growing, and the live feed stood still, so the notes existed where people could not find them. The cause was a timer shorter than the job: the bake takes fifteen minutes, the timeout gave it ten, and the bake was killed mid-run, twice. The fix is the timeout obeying the bake, never the other way round — and the proof is the first note id in the live bytes, never a fetch that can lie. The arc is only complete when the note is findable by the people it is for: noted all day, filed, and live where people can find it.",
+  "simple_view": "Imagine you write down everything you learn, all day long — and then you put it in a book where everyone can find it and read it. That's smart-noting. But if the book never gets printed, nobody can read it! And if the oven timer is shorter than the baking time, the cake never finishes. The timer has to be longer than the baking — that's the rule.",
+  "grandma_view": "Dear, you write down everything you learn, dear, all day long, dear — and you put it where everyone can find it, dear, so they can appreciate it, dear. But if the book never gets printed, dear, nobody can read it, dear! And the oven timer, dear, has to be longer than the baking, dear — or the cake never finishes, dear.",
+  "naya_view": "SMART-NOTE ALL DAY LONG: THE INTELLIGENCE FROM EVERY DAY IS NOTED AS IT HAPPENS AND PUT INTO NAYANET WHERE PEOPLE CAN FIND IT. FILING IS NOT THE FINISH — THE NOTE IS ONLY DONE WHEN IT IS LIVE WHERE PEOPLE CAN FIND IT. A TIMEOUT MUST EXCEED THE WORK IT GUARDS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3553",
+   "title": "The Note Is Only Done When It's Live",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3553/IB-SMART-NOTE-20261118-sn3553-the-note-is-only-done-when-its-live.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3553/IB-SMART-NOTE-20261118-sn3553-the-note-is-only-done-when-its-live.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

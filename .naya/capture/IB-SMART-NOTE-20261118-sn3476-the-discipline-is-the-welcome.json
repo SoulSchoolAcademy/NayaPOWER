@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3476",
+ "intelligence": {
+  "title": "The Discipline Is the Welcome",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3476-the-discipline-is-the-welcome",
+  "smart_note_id": "SN-3476",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3476/IB-SMART-NOTE-20261118-sn3476-the-discipline-is-the-welcome.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Think of a great hotel. Inside, the staff arrive to a checklist, the logbook is written so the next shift trusts it, and a new hire is trained until they can run a night alone. Outside, the guest just feels welcomed — a letter, a tour, everything explained before they need it, the bill always itemized. The same discipline, two experiences of it: the wake protocol, the guarded records, the manual-alone proof, and the cold-successor test are the backstage order; the seven-day welcome, the plain pricing, the matched feed, and the one cockpit are what the guest sees. A recipe is only good if a stranger can cook from it; a manual is only done when a fresh builder performs a real operation from it alone. And a house is only honest when it says not yet about the seam that is still open, instead of papering it over with a unity claim.",
+  "simple_view": "Wake up the same way every time. Do the work in order, and check the real page with your own eyes. Build from parts that already exist, and put new parts back on the shelf. Tell everyone what you learned, so the next person starts ahead. A lesson only counts when a new friend can use it and do better. That is how the inside work becomes the welcome outside.",
+  "grandma_view": "Running a boarding house taught the same lesson twice over: the kitchen runs on routine — same order every morning, the book kept straight, recipes written so a stranger could cook them — and the guests never saw any of that. They saw breakfast on time and a fair bill. Order backstage is hospitality front-stage. A good household runs as one household, too: the pantry list, the recipe book, and the shopping all agree, and the family diary says what actually happened, even the burnt dinners. When something is missing you write that you are out — you do not pretend the shelf is full. And a private line, not a party line, is what makes honesty possible: nobody says anything true where anyone can listen in.",
+  "naya_view": "Wake by the protocol, every wake, in order; stamp every wake with its steps. Guard shared writes; dedupe alerts by fault; diagnose a repeat failure before adding capacity. Ship the manual section with the capability, same job; run manual-alone proofs with genuinely fresh builders and file stalls as Factory defects. Clone, never greenfield, for pages; file genuinely new parts into the Factory before closing the job. Harvest the shown object byte-true; offer a button only where its destination is verified live; verify one-family congruence from rendered screenshots at phone width first. Score every piece of intelligence before routing, and record the score with the note; enforce the never-read rule in the gate matrix, never propose a toggle for it. Open every task with the purpose question and the boundary check; label claims observed, claimed, or unknown; reproduce before repairing, repair at the canonical source, prove at the surface. Refuse to count a lesson as learned without a cold-retrieval performance delta. Assert the walk's step order in every entry review — name, certificate, ten questions, named pages, building, pricing after proof — and reject code fields on the main login. Build feeds from the real matching engine; never ship a stub heart. Report sync per seam with the failing seam's fix named, and never let a unity claim outrun its per-seam evidence.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3476",
+   "title": "The Discipline Is the Welcome",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3476/IB-SMART-NOTE-20261118-sn3476-the-discipline-is-the-welcome.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3476/IB-SMART-NOTE-20261118-sn3476-the-discipline-is-the-welcome.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

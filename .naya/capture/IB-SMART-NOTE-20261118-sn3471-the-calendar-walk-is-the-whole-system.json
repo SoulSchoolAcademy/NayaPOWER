@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3471",
+ "intelligence": {
+  "title": "The Calendar Walk Is the Whole System",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3471-the-calendar-walk-is-the-whole-system",
+  "smart_note_id": "SN-3471",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3471/IB-SMART-NOTE-20261118-sn3471-the-calendar-walk-is-the-whole-system.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Think of a room judged by the finest thing in it — the one beautiful object on the table sets the bar, and everything else has to rise to it. That is what happened to the calendar: the circle N was already beautiful, so every flat button beside it was caught by the comparison. The date is the same idea in numbers — one big 18 doing the work once — and the day's colour is the same idea in colour, one blue through every element. Then the discipline: no page is called done until it has been walked twice over, and no return counts until it has been ripped apart the same way.",
+  "simple_view": "Look at the calendar. It should feel alive, like a real toy you can touch. The big 18 is the day. It sits in big blocks, like the time does. The words next to it just say the month and the year. On Wednesday, all of it is bright blue, down to the small i in the corner. Every button should look as pretty as the round N. Before we show a page, we check it hard. Then we fix it.",
+  "grandma_view": "It is like a good housekeeper's evening round, love — she walks the room, and the finest piece in it tells her the standard for everything else. The white middle of the family seal stays exactly as it is; only the depth around it needs making real, the way a jewel needs its facets. Wednesday wears its own blue, right down to the tiniest mark, and never borrows Sunday's. And before anything is shown to company, it is walked twice over — because a house is judged whole, and a guest should find every door already open and working.",
+  "naya_view": "Judge every page by the best thing already on it: the circle N is the button standard on all pages, the emblem the art standard everywhere. Keep the emblem's white middle verbatim; make only the depth real. Place the marks by their corners — emblem bottom right, N top left, no glow, obsidian black behind. Make the date active and the 18 the big one in block numbers, the line reading \"November 26\"; verify day numbers on laptop width; put a real jewel-like icon in Your Stats. Bring the Smart Meet button alive and raise every button to the N. Carry Wednesday's Kanye blue #3fb8ff to every element. Walk every page as architect plus scorecarder before it is shown as done, scorecard every return the same way, then scorecard the whole system and align it. Build everything on the spine, so a join lands a working world with no assembly owed.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3471",
+   "title": "The Calendar Walk Is the Whole System",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3471/IB-SMART-NOTE-20261118-sn3471-the-calendar-walk-is-the-whole-system.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3471/IB-SMART-NOTE-20261118-sn3471-the-calendar-walk-is-the-whole-system.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

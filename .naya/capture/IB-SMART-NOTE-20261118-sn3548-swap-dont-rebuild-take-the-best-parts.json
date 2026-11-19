@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3548",
+ "intelligence": {
+  "title": "Swap, Don't Rebuild — Take the Best Parts",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3548-swap-dont-rebuild-take-the-best-parts",
+  "smart_note_id": "SN-3548",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3548/IB-SMART-NOTE-20261118-sn3548-swap-dont-rebuild-take-the-best-parts.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Two neighbours each have what the other is missing — one has a good roof, the other has a good door — and instead of building a third house, they swap. That is the swap: the Hub's presentation goes into Personal whole, Personal's finished sidebar goes into the Hub whole, and \"it'll fit perfectly\" is the test — if they were really one system, the pieces interchange without redesign. And the law behind it cuts deeper: a feed that gets its own system becomes another family to align later, so feeds get compositions, not systems — the best part of each, harvested whole, put with the best parts of the others.",
+  "simple_view": "Imagine two friends trading their best toys — you give me your beautiful red car, I give you my shiny blue train. Now we both have something great, and nobody had to build a new toy. That's the swap. And when you see something that needs doing, you tell Dad before he asks — that's being proactive.",
+  "grandma_view": "Dear, it's like two neighbours, love — one has a good roof, dear, the other has a good door, dear — and instead of building a whole new house, dear, they just swap, dear. Each one already has what the other is missing, dear. And you tell him what needs doing, dear, before he has to ask, dear — that's being proactive, dear.",
+  "naya_view": "SWAP, DON'T REBUILD: TAKE THE WHOLE HUB PRESENTATION INTO PERSONAL, AND TAKE PERSONAL'S FINISHED SIDEBAR INTO THE HUB. NEVER A NEW SYSTEM PER FEED. TAKE THE BEST PARTS OF EACH AND PUT THEM WITH EACH OTHER — HARVEST WHOLE, COMPOSE TOGETHER. BE PROACTIVE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3548",
+   "title": "Swap, Don't Rebuild — Take the Best Parts",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3548/IB-SMART-NOTE-20261118-sn3548-swap-dont-rebuild-take-the-best-parts.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3548/IB-SMART-NOTE-20261118-sn3548-swap-dont-rebuild-take-the-best-parts.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

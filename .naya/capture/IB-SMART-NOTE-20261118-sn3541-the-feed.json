@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3541",
+ "intelligence": {
+  "title": "The Feed",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3541-the-feed",
+  "smart_note_id": "SN-3541",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PROOF/SN-3541/IB-SMART-NOTE-20261118-sn3541-the-feed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Think of a great hotel. Inside, the staff arrive to a checklist, the logbook is written so the next shift trusts it, and a new hire is trained until they can run a night alone. Outside, the guest just feels welcomed — a letter, a tour, everything explained before they need it, the bill always itemized. The same discipline, two experiences of it: the wake protocol, the guarded records, the manual-alone proof, and the cold-successor test are the backstage order; the seven-day welcome, the plain pricing, the matched feed, and the one cockpit are what the guest sees. A recipe is only good if a stranger can cook from it; a manual is only done when a fresh builder performs a real operation from it alone. And a house is only honest when it says not yet about the seam that is still open, instead of papering it over with a unity claim.",
+  "simple_view": "Shawn talks, and you hear his real voice. No robot voice. You can listen to a chat, or watch Naya talk. Both sit under the page, out of the way. The pictures on the side are the ones Shawn drew. No one draws them again. One bar lives at the bottom of every page. It pops up once, calmly, and then it stays. If a door goes to the wrong place, it comes off. And no one throws your letters away unless you say so.",
+  "grandma_view": "It is like hearing your grandson's own voice on the telephone, love — not a machine reading his words back to you. The pictures on the wall are the ones he drew himself, framed as he drew them, and nobody traces over them with a steadier hand. The little bar at the bottom of the page is like the tray by the front door: the same five things in the same places, in every room, and it only slides out when you have reached the bottom and stopped to look. A door that leads you to the wrong room gets taken off, not left to confuse the next visitor. And your letters sit in the drawer where you left them — the ones you marked keep stay forever, and if the key is lost, the honest thing is to say the drawer cannot be opened just now, never that it is empty.",
+  "naya_view": "Never report a state word as a serving verdict: verify deletions from feed bytes, diff the keys before touching stuck data, and record lag-window reads as TIMING with a re-check time. Fix the instrument in public, prove it both ways, count objects not substrings, retry a blocked call once as a gate, and route every proof artifact to its parent task. Assert hero order in review — number first, gauge second, ornament last — reuse the one canonical gauge, and reject per-board design invention; every number carries its explaining label. Close the current unit with its proof before opening the next, build hero lists from recorded pains, and capture the note at the moment of learning. Store harvested originals in the Box, enforce owner-scoped access at the data layer, and run the saved-game test — save, leave, return, retrieve the real thing — for every memory feature. Build new worlds as configurations of the universal app, never as new apps. Label every claim PROVEN or NOT PROVEN, prove mechanisms with repeated live trials, never swap a verified surface for an unverified newer one, and publish the eye's verdict verbatim. Prove the bridge landing by a live click, visual and text, and never open a second round on a file a round already owns.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3541",
+   "title": "The Feed",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PROOF/SN-3541/IB-SMART-NOTE-20261118-sn3541-the-feed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/PROOF/SN-3541/IB-SMART-NOTE-20261118-sn3541-the-feed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3467",
+ "intelligence": {
+  "title": "Show Everybody, Prove It Live, Ship It Whole",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3467-show-everybody-prove-it-live-ship-it-whole",
+  "smart_note_id": "SN-3467",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3467/IB-SMART-NOTE-20261118-sn3467-show-everybody-prove-it-live-ship-it-whole.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Facebook's feed is a mirror of who you already know — only your friends show, and a new person arrives to an empty room. His feed is the opposite: everybody shows, because the feed is per subject and the subject is what brings people together, not the friendship that already exists. Showing is not connecting — that is the whole of the privacy in one line. And the fill rule is the kindness underneath the design: the system always tries to fill the feed, even at a low match, and the sisters show up to keep it filled — because a feed that looks empty feels empty, and nobody should ever open their world and feel alone in it. The same eye that reads the feed reads the page: arithmetic is comfortable — you add the cuts, you subtract from the position, you get a number under the fold, and the number says done — but the number was never the page. The page has a scrolled container with its own native position, a handler with no scroll call, and a first paint the arithmetic never looked at — and the page said 1120 while the paper said 1066. The eye's job is to read the page, not the paper, and the checker's job is the same: a fold claim that was never measured on the live render is not a claim, it is a hope. And the same honesty governs going live: he asked how long because he was standing in front of an old, outdated page and wanted the real one, and the rule is to wait until it is complete — a half-done front door tells every citizen the house is half-done — with the honest answer the sequence and the scale, hours not minutes, instead of a clock time the machine cannot keep.",
+  "simple_view": "Imagine a big classroom where you can see everybody who likes the same thing you like. You do not have to talk to all of them. You just pick who you want to say hello to. The room is never empty. Nice sisters come and sit there too, so you are never alone. Now imagine someone says their kite flies high. You do not just trust the words. You look at the real kite in the real sky. And when your room is being painted, you wait until the paint is dry. Then you show it to everyone. That is the whole idea. Everybody shows. Prove it live. Ship it whole.",
+  "grandma_view": "Dear, Shawn looked at the live page, dear, and it was still the old one — nothing new there yet, dear. He asked how long, dear, and the rule is simple: we wait until it is finished, dear. No half-done page goes up for everyone to see, dear. Two more jobs, then it goes live — hours, not minutes, dear — and we will tell him each time a job is done. And the feed is like a full room, dear — everybody there, so nobody ever feels alone, dear. And we count it ourselves, dear — we look at the real page, never just the claim.",
+  "naya_view": "SHOW EVERYBODY. FILL THE FEED, EVEN AT A LOW MATCH, SO NOBODY EVER FEELS ALONE. READ THE AGREEMENT. SAME SIZE. ONE REAL DIAMOND JEWEL IN BOTH. BOTH BUTTONS ABOVE THE FOLD. TITLE, PLAY, CENTERED PICTURE, LETTER — HELLO ONCE. CLONE IT ONLY WHEN IT IS COMPLETE. PROVE THE PREMISE BEFORE YOU HAND IT TO HIM. PROVE THE FOLD ON THE LIVE PAGE. COUNT IT YOURSELF.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3467",
+   "title": "Show Everybody, Prove It Live, Ship It Whole",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3467/IB-SMART-NOTE-20261118-sn3467-show-everybody-prove-it-live-ship-it-whole.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3467/IB-SMART-NOTE-20261118-sn3467-show-everybody-prove-it-live-ship-it-whole.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

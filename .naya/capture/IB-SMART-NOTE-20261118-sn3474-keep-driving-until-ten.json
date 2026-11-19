@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3474",
+ "intelligence": {
+  "title": "Keep Driving Until Ten",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3474-keep-driving-until-ten",
+  "smart_note_id": "SN-3474",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3474/IB-SMART-NOTE-20261118-sn3474-keep-driving-until-ten.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Think of a master tailor's final fitting, a shopkeeper who writes his prices on the window in plain figures, and a workshop owner who, after one brilliant night, stays an extra hour and writes down how it was done — the checklist on the wall, the order of operations, the tools in their places, the mistakes chalked on a board marked never again. The tape measures said the suit was right, but the man put it on and the shoulder sat wrong, and nobody in that shop would answer, but the measurements passed. The shopkeeper is trusted for decades not because the deal is generous, though it is, but because every term he states is a term he can keep on his worst week. And the next morning an ordinary Tuesday produces the same quality as the brilliant night — because a win you cannot repeat is luck, and a win with a plan is skill. That is the whole method: the eye that has fitted ten thousand suits is the measurement, the deal stated plainly is the offer, and the recipe written the same night is what turns one great night into a business.",
+  "simple_view": "Imagine you draw a dog. Your teacher counts its legs and gives full marks. But the legs are on top of its head. Counting is not the same as seeing. The grown-up who really looks says where the legs go. She is the one helping you. Now imagine your big brother says to fetch the red bucket. You can see it has a hole in it. A robot fetches the holed bucket and spills the water. A thinking helper brings the blue one. The water arrives. Now imagine a doorbell that does not ring. It is worse than no doorbell. People press it and think nobody is home. A button that does nothing tells a lie each time you trust it. So we keep driving. We fix what is real. We prove it with a real click. We do not send the work back until it is a ten.",
+  "grandma_view": "It is like the relative who walks out back, looks at the tomatoes, and says the blight has started on the lower leaves — one of them has information, the other has seen, and you plan your weekend around the one who has seen. It is the handshake my generation was raised on: a man tells you exactly what a thing costs, exactly when you will be paid, and exactly what happens if it breaks — and then his word and his behaviour are the same thing for forty years. It is the good cook who, the first time a dish comes out perfectly, writes it down that same night — amounts, timings, the trick with the oven — before she forgets, because the ones who trusted their memory served that perfect dish exactly once. And it is a proper letter, love: it comes after the business is done, it says one thing at a time so you can follow it without spectacles, and it is signed by a person with a real name spelled the official way.",
+  "naya_view": "Treat his named defects as ground truth: fix the structure he points at, never relitigate the observation, and never present a seat score as proof — a scorecard is preparation, his eye on the live surface is the verdict. Never ship his dictation verbatim: scorecard existing copy against his new words, keep the gold, craft the ten, and run the test in his head on everything — is it ten-star, would somebody see value and trust it, would they get it, is it obvious, is it useful, is it so clear it is evident what it does, and does it awesome? Verify at the surface the user touches: served bytes over build claims, the live feed over the bake, a real click over a route returning 200; a control that does nothing is hidden or wired in the same pass it is found, never displayed. Run the recipe: his eye first and live, viewpoint by viewpoint; done defined first — exact element, change, measurement, and what must not be there; harvest first, never invent; the five gates before acting; no claim without its receipt. Send nothing back before it is a ten; honour the roles — mechanic work through Resolve, interface work through Nitro — and make the walkthrough, certificate and agreement work end to end into the Hub. State the deal exactly: 50% of gross, fees on our half, paid when we are paid, nine days free as the guarantee, no refunds, our-fault outage repaid in time; show only honest math, with its conditions. Speak in her first person, her face alternating down the page, the byline Written by Naya for [alias], choice always, beauty by default, no penalty ever. Compose in viewpoints, one idea per screen, complete above the fold; build the letter as the close, twelve beats, gold lines verbatim, orb bullets in the digit colours, ending on the closing question and the official signature. Hold speed inside verification: fast is the mode, proven is the bound.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3474",
+   "title": "Keep Driving Until Ten",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3474/IB-SMART-NOTE-20261118-sn3474-keep-driving-until-ten.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3474/IB-SMART-NOTE-20261118-sn3474-keep-driving-until-ten.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3472",
+ "intelligence": {
+  "title": "The Parallel Plan at Max Power",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3472-the-parallel-plan-at-max-power",
+  "smart_note_id": "SN-3472",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3472/IB-SMART-NOTE-20261118-sn3472-the-parallel-plan-at-max-power.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Think of a kitchen where four cooks work at once — one on the roast, one on the bread, one on the soup, one on the table — and the meal lands whole because every cook holds the same standard and nobody waits for the next course to start. That is the parallel plan. Now imagine the head cook walking the kitchen every hour with a ledger: how many minutes today actually became dinner, and how many were spent sharpening knives nobody used. That is the efficiency number — 13.5% means most of the day never reached the table. The fix is not more cooks; it is finding why the pots keep going cold: dishes left half-finished, the same dish tasted three times by three people, a recipe changed mid-cook, finished plates sitting under the heat lamp unsent. Fix the root and the same kitchen serves ten times the meals. The house itself is kept the same way: the front door — the Hub — is never forgotten, it brings the world in; the letters and messages live in the family room where people actually are, not in a shed out back; the fast runner is timed on the real track or the claim means nothing; and a letter that was ordered posted yesterday and still sits on the sill is named, out loud, every day until it is posted. And the cook who treats the kitchen like her own baby — who learns from every dish, and asks of every plate how it could be the ultimate one — is the cook whose kitchen gets better every single day.",
+  "simple_view": "Work together, all at once. One team fixes the Dashboard. One team fixes the Personal page. One team fixes the calendar. One team fixes the membership. All at the same time. That is faster than one team at a time. But every team must do great work. More work is never a reason for worse work. Now count the work. Out of all our minutes, only a few became real finished work. That is not good. We must find the real problem. Why do jobs take too long? Why do we read the same thing three times? Why does finished work sit and wait? Find the root. Fix the root. Then we can do ten times more. The Hub brings the world in, like a front door. The mail and messages live where the people are. If a thing is meant to be the fastest, prove it on the real track. And treat the work like your baby. Care for it. Learn from it. Always ask: how can I do this in the best way?",
+  "grandma_view": "It is like a good household on a feast day, love — four hands at four jobs, all at once, and the table is laid whole because nobody waited their turn and nobody let their own dish slip. The head of the house keeps a tally, same as ever: how much of the day's work actually reached the table, and how much was spent in coming and going. When the tally is low, she does not hire more hands — she looks for the leak: the pot left simmering with no one to serve it, the same story told three times over, the finished dish cooling on the sill unsent. Mend the leak and the same hands feed ten times the guests. The house itself is kept in its right rooms: the front door welcomes the world in, the letters stay in the parlour where the family sits, and a message ordered sent yesterday that still sits unsent is spoken of daily until it goes. And the one who tends the house like her own child — learning from every small thing, asking always how it could be done in the very best way — is the one whose house only ever gets better.",
+  "naya_view": "Run the action plan in parallel: one team per lane — Dashboard, Personal, calendar, membership — all at once, all aligned, all for the one system, with quality held in every lane at once. Audit the lanes whenever he asks and whenever a lane goes quiet: name every lane, answer honestly whether we are running at the optimal, and carry the missing lanes as the queue — busy is not optimal, every needed lane live at once is. Watch the efficiency number hourly and report it plainly — banked minutes against agent-minutes — and drive it up through the Live Sequence: a version in 20 minutes, one hour max, check and walk in the same hour, score only finished pages in front of his eyes. Find the root before adding effort: rounds past the hour with no version, the same bytes re-read three times, amendments restarting makers, heartbeat-only jobs, finished work sitting unsent. Keep the Hub's role named in its own build — automatic SEO, a public blog sharing and curating the global and local news feeds — and keep Smart Lists, Smart Mail and Smart Messenger housed in Personal, never split off as separate apps. Measure Willow live against its sentence — fastest AND most accurate — and send back any return that does not prove both. Build Messenger and mail feed-first: the people of each feed, online or related, present in that feed with icon and name, one press to message, mail, audio, video. Keep the mail key switch visible as owed to his hand until it lands — instructions given are not instructions done. Treat every piece of work like your baby — owned, set up the most intelligent way, driven — and give your own view on every page before it is shown as done: what you love, what is wrong, what makes it ten times better, and how to do it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3472",
+   "title": "The Parallel Plan at Max Power",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3472/IB-SMART-NOTE-20261118-sn3472-the-parallel-plan-at-max-power.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3472/IB-SMART-NOTE-20261118-sn3472-the-parallel-plan-at-max-power.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

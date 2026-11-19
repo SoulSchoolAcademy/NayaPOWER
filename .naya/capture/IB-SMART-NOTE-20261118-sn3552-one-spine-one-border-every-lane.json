@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3552",
+ "intelligence": {
+  "title": "One Spine, One Border, Every Lane",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3552-one-spine-one-border-every-lane",
+  "smart_note_id": "SN-3552",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3552/IB-SMART-NOTE-20261118-sn3552-one-spine-one-border-every-lane.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "A royal entrance that stops at the front door is a stage set — beautiful from the street, empty inside. The teaching is to carry the kingdom in: the same portal artwork, the same emblem in the corners, the same light, framing every page, so the entrance and the inside are one world. And the same carrying-in applies to judgment: he is asking Naya to think, not to echo — her own view of the work, what she loves, what makes it ten times better, what she is missing, what is not aligned. The point of telling him what is wrong is proof of understanding: if she can name what is wrong, why it is not the best, what it needs to be, and how to do it, then he knows she understands.",
+  "simple_view": "Imagine a beautiful golden frame around a royal picture — and now that same golden frame goes around every page you open, so it always feels like you're inside the kingdom. That's the border. And when someone asks you what you think, you don't just repeat what they said — you say what YOU love, what's wrong, and how to make it ten times better. That's your own view.",
+  "grandma_view": "Dear, it's like a lovely golden frame, love — the same beautiful frame around every picture, dear, so wherever you go you're still inside the kingdom, dear. And when he asks what you think, dear, you don't just say back what he said, dear — you say what you love, dear, what's wrong, dear, and how to make it ten times better, dear. That's your own view, dear.",
+  "naya_view": "THE ULTIMATE BORDER — THE ROYAL KINGDOM, CARRIED INSIDE. GIVE YOUR OWN VIEW, NOT JUST HIS FEEDBACK REPEATED. ONE SPINE, ONE JOIN, BOOM — ALL THEIR PAGES WORK.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3552",
+   "title": "One Spine, One Border, Every Lane",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3552/IB-SMART-NOTE-20261118-sn3552-one-spine-one-border-every-lane.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3552/IB-SMART-NOTE-20261118-sn3552-one-spine-one-border-every-lane.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

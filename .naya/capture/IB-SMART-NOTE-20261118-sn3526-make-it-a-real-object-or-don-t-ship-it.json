@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3526",
+ "intelligence": {
+  "title": "Make It a Real Object or Don't Ship It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3526-make-it-a-real-object-or-don-t-ship-it",
+  "smart_note_id": "SN-3526",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3526/IB-SMART-NOTE-20261118-sn3526-make-it-a-real-object-or-don-t-ship-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Think of the difference between a photograph of a piano and a piano. The photograph is flat, silent, and the same from every angle; the piano has weight, lacquer, keys that move and answer your fingers. Most software hands people photographs — rectangles that depict controls. This law insists on the piano: objects with material and shadow that respond when touched, so the hand believes what the eye sees before the mind has read a single word.",
+  "simple_view": "Imagine a toy box with two kinds of blocks. One kind is just paper with pictures of blocks printed on it — you can't stack paper, and it falls over if you breathe. The other kind is real wooden blocks: heavy, smooth, with shiny edges that catch the light the same way every time. You can build a tower that stands. Our pages are built from the wooden kind: every button and number is a real block you can feel with your eyes, lit by one lamp in the corner, always from the same side, so the whole tower looks like one world.",
+  "grandma_view": "It is the difference between a plastic tablecloth printed with a lace pattern and your grandmother's actual lace — the one with weight, with thread you can follow with a fingertip, that casts a real shadow at tea time. The printed cloth is cheaper and fools nobody at arm's length. Craft is choosing the real lace and then caring for it the same way every time: same light, same fold, same place in the drawer. Consistency is how people know it is the genuine article before they even touch it.",
+  "naya_view": "Build only real objects: material, mass, one light top-left, real shadow, own-colour light on touch, white text that never lights up. Compute every position and size from the formulas (gauge numerals at angle = -135 + (value/500)*270; the 8px grid); never eyeball a placement the formula covers. Speak the vocabulary — board, jewel, pill, orb, gauge, number, tab, bar — with each part's fixed meaning, and combine them only as the grammar allows. Finish the edges: the bezel and the rim are what the eye hits first, and an unfinished edge makes a perfect centre look cheap. When a rule and your instinct disagree, the harvested law wins until Shawn's eye overrules it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3526",
+   "title": "Make It a Real Object or Don't Ship It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3526/IB-SMART-NOTE-20261118-sn3526-make-it-a-real-object-or-don-t-ship-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3526/IB-SMART-NOTE-20261118-sn3526-make-it-a-real-object-or-don-t-ship-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3533",
+ "intelligence": {
+  "title": "The Rule",
+  "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3533-the-rule",
+  "smart_note_id": "SN-3533",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3533/IB-SMART-NOTE-20261118-sn3533-the-rule.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Arithmetic is comfortable. You add the cuts, you subtract from the position, you get a number under the fold, and the number says done. But the number was never the page. The page has a scrolled container with its own native position, a handler with no scroll call, and a first paint the arithmetic never looked at — and the page said 1120 while the paper said 1066. The eye's job is to read the page, not the paper, and the checker's job is the same: a fold claim that was never measured on the live render is not a claim, it is a hope. The fix round now carries the rule in its brief — verified live at all three widths, not arithmetic — because the last round proved what happens when the rule is missing.",
+  "simple_view": "Imagine you work out on paper that your kite will fly above the trees — you add up all the numbers and it looks right. But when you actually fly it, it is stuck 40 steps too low, because the string was never pulled. Paper is not the sky. You have to look at the real kite in the real sky.",
+  "grandma_view": "Dear, Shawn looked at the live page, dear, and it was still the old one — nothing new there yet, dear. He asked how long, dear, and the rule is simple: we wait until it is finished, dear. No half-done page goes up for everyone to see, dear. Two more jobs, then it goes live — hours, not minutes, dear — and we will tell him each time a job is done.",
+  "naya_view": "READ THE AGREEMENT. SAME SIZE. ONE REAL DIAMOND JEWEL IN BOTH. SIMPLE, OR TEN-STAR.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3533",
+   "title": "The Rule",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3533/IB-SMART-NOTE-20261118-sn3533-the-rule.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3533/IB-SMART-NOTE-20261118-sn3533-the-rule.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
