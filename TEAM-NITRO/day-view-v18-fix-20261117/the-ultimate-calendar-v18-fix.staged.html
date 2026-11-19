@@ -2824,6 +2824,64 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 .tile-appt-row{position:relative!important}
 .mc-cancel{flex:none!important;font-size:17px!important;font-weight:800!important;color:#fff!important;background:linear-gradient(180deg,#2a1214,#120607)!important;border:1.5px solid #c62828!important;border-radius:999px!important;padding:6px 12px!important;cursor:pointer!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 14px rgba(0,0,0,.5)!important}
 .mc-cancel:hover{filter:brightness(1.25)!important}
+
+/* ============ FIX14 — calendar day follow-on, 390 day view (2026-11-19) ============ */
+/* (1) THE 390 DEFECT — reproduced on the fix-13 bytes: the Wisdom quote
+   stayed 48px at 390 (FIX12 item 7, the desktop sweet-spot scale), so its
+   box ran 54px past the viewport and the banner clipped it; the day
+   header's one-column headliner kept 92/58px side margins against a
+   309px nowrap monthline, so November lost its N at the left and the
+   2026/Hz tiles ran past the right, while the vertically-centred orb
+   sat on the monthline and the clock; the Weather pill wrapped to two
+   lines and its bottom rim sat on the viewport edge, cut. All
+   phone-only, all below: 48px at 1920 is untouched and reads beautifully.
+   Round 2 (maker's own 390 re-read): the day-teach's last lines sat
+   under the floating Change cover, and the banner's own content ran
+   46px past its box — so the slide is tightened to fit, and Change
+   cover flows below the wisdom slide only, where it can never cover
+   text. */
+@media(max-width:560px){
+  /* HEADER — the orb anchors to the daybar's top-right corner (the
+     dayhead stops being its positioned parent), beside Back to Month
+     and clear of every headliner row; the vestigial clearance margins
+     go, so the one-column headliner takes the full width and the 309px
+     monthline fits whole on one line; the wrap is freed too, so the
+     longest months (September, December) wrap to a second line instead
+     of clipping — the FIX9e intent the line-2700 nowrap overrode.
+     Back to Month keeps its label (FIX3 item 15, deliberate) and its
+     own row. */
+  .dayhead{position:static!important}
+  .daybar .sigpiece{top:14px!important;right:14px!important;transform:none!important}
+  .official-headliner{margin:0 16px!important}
+  .hl-center .hl-monthline{white-space:normal!important}
+  /* WISDOM — the FIX12 desktop scale steps back to the pre-FIX12
+     proportions at phone width only, so the whole slide reads at 390:
+     quote 48→32 (the certificate script size), label 25→17, greeting
+     28→25, S orb 88→58, day-teach 19→17. Then the stack is tightened
+     to fit the slide's 468px box: label on one line, quote and
+     day-teach line-height down, the margins around them in. */
+  #wisdomBanner blockquote{font-size:32px!important;line-height:1.25!important}
+  #wisdomBanner .wq-label{font-size:17px!important;margin-bottom:8px!important;letter-spacing:.18em!important;text-indent:.18em!important}
+  #wisdomBanner .greet-hello{font-size:25px!important}
+  #wisdomBanner .avatar-jewel{width:58px!important;height:58px!important;font-size:25px!important}
+  #wisdomBanner .greet-layout{gap:8px!important}
+  #wisdomBanner .dayteach{font-size:17px!important;line-height:1.35!important;margin-top:8px!important;margin-bottom:8px!important}
+  #wisdomBanner .wq-store{margin-top:8px!important}
+  #wisdomBanner .greet-row{margin-bottom:8px!important}
+  /* CHANGE COVER — on the wisdom slide only, the floating pill (which
+     sat over the day-teach's last lines at 390) flows below the slide
+     instead, and the deck scrolls so it is reachable; every other
+     slide keeps the floating pill exactly as it was. */
+  #dayScroll:has(#wisdomBanner.on){overflow-y:auto!important}
+  #dayScroll:has(#wisdomBanner.on) #wisdomBanner{flex:none!important}
+  #dayScroll:has(#wisdomBanner.on)>.cover-change{position:static!important;order:10!important;align-self:flex-end!important;flex:none!important;margin:12px 16px 0 auto!important}
+  /* WEATHER — one line and fully visible: tighter tracking and padding
+     so "Weather · Enter your city" fits its slot on one line, 44px
+     tall, its bottom rim 4px clear of the viewport edge instead of
+     cut by it. */
+  .wx-bottomleft{bottom:4px!important}
+  .wx-bottomleft .wx-btn{height:44px!important;padding:0 14px!important;letter-spacing:.02em!important;white-space:nowrap!important}
+}
 </style>
   </head>
   <body>
@@ -4468,12 +4526,21 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           }
           function worldCount(scopeId) { var r = scopeRealCount(scopeId); return r === null ? 0 : r; }
           var notifRowsA = '<div class="world-icons">' +
+            /* FIX14 item 2 — no real count source exists in this file for
+               these five (scopeRealCount returns null for work/worlds;
+               mail/messages/connections are literal 0 and their doors
+               say "not connected yet — no number to show"), so the badges
+               come OFF (null renders no badge element and no count in
+               the label), exactly as FIX13 did for news. Personal keeps
+               worldCount("personal") — a real count, the length of the
+               day's own notes store (mergedNotesFor), 0 only when the
+               day truly has no notes. */
             worldIcon("personal", "#07925f", "user", "Personal feed", null, worldCount("personal"), "Your private world.") +
-            worldIcon("work", "#0f52ba", "briefcase", "Business feed", null, worldCount("work"), "Your work world.") +
-            worldIcon("world", "#8e24aa", "world", "Your world", null, worldCount("worlds"), "Worlds you belong to.") +
-            worldIcon("mail", "#d4a017", "mail", "Smart Mail", null, 0, "Mail that waits for you.") +
-            worldIcon("messages", "#c2410c", "chat", "Messages", null, 0, "Talk right now.") +
-            worldIcon("connections", "#a21caf", "people", "Connections", null, 0, "Your people.") +
+            worldIcon("work", "#0f52ba", "briefcase", "Business feed", null, null, "Your work world.") +
+            worldIcon("world", "#8e24aa", "world", "Your world", null, null, "Worlds you belong to.") +
+            worldIcon("mail", "#d4a017", "mail", "Smart Mail", null, null, "Mail that waits for you.") +
+            worldIcon("messages", "#c2410c", "chat", "Messages", null, null, "Talk right now.") +
+            worldIcon("connections", "#a21caf", "people", "Connections", null, null, "Your people.") +
             "</div>";
           /* NEWS ONLY (§8): local, provincial, global. Weather lives in
              the bottom-left bar; horoscope has its own space (its door,
