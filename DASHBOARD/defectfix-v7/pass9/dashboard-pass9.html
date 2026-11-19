@@ -12014,7 +12014,7 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
       a.clicks += (+r.clicks || 0); a.joins += (+r.joins || 0);
       if (Date.now() - new Date(r.day).getTime() < 7 * 864e5) a.week += (+r.clicks || 0);
     });
-    if (!links.length){ host.innerHTML = '<p class="os-note">No Smart Link yet — claim your name below and it lives here, with every click counted.</p>'; return; }
+    if (!links.length){ host.innerHTML = '<p class="os-note">No Smart Link yet — claim your smart link below and it lives here, with every click counted.</p>'; return; }
     /* PASS-3 2026-11-09 (c): ONE summary — the total of all my links (number + gauge + real stats). The per-link orb rows are gone; every link lives in the drill. */
     /* PASS-10 2026-11-10 — ONE TRUE LINK COUNT. This well summed EVERY link
        (measured live: 14 links, 4 907 clicks) while the Smart Links board
@@ -12141,7 +12141,7 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
         loadSmartLink();
       } else if (!out.body) {
         if (slVerdictState === 'free') st.textContent = 'Claiming isn’t open yet, so nothing was saved — but nayanet.app/' + n + ' checked out free, and this form is where you’ll claim it the moment claiming opens.';
-        else st.textContent = 'Claiming isn’t open yet, so nothing was saved. This form is where you’ll claim your name the moment claiming opens.';
+        else st.textContent = 'Claiming isn’t open yet, so nothing was saved. This form is where you’ll claim your smart link the moment claiming opens.';
       } else {
         var reason = (out.body && out.body.error) ? String(out.body.error) : '';
         var plain = '';
@@ -12215,7 +12215,7 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
 
       } else if (!out.body) {
         if (dlVerdictState === 'free') st.textContent = 'Claiming isn’t open yet, so nothing was saved — but nayanet.app/' + n + ' checked out free, and this form is where you’ll claim it the moment claiming opens.';
-        else st.textContent = 'Claiming isn’t open yet, so nothing was saved. This form is where you’ll claim your name the moment claiming opens.';
+        else st.textContent = 'Claiming isn’t open yet, so nothing was saved. This form is where you’ll claim your smart link the moment claiming opens.';
       } else {
         var reason = (out.body && out.body.error) ? String(out.body.error) : '';
         var plain = '';
@@ -14941,7 +14941,7 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
         '<div class="os-sl-empty-icon">🔗</div>'+
         '<div class="os-sl-empty-t">Your first link is waiting</div>'+
         '<div class="os-sl-empty-s">Claim a name, share it anywhere, watch every click count here.</div>'+
-        '<button class="ph-connect" type="button" data-sl-empty-cta="1">Claim your link →</button></div>';
+        '<button class="ph-connect" type="button" data-sl-empty-cta="1">Claim your smart link →</button></div>';
       return;
     }
     /* PASS-3 2026-11-09 (c): ONE summary card at rest — the total of all links (number + gauge + real stats). The per-link rows live in the drill (openSmartLinkList), all with the same presentation. */
@@ -31122,6 +31122,81 @@ body{padding-bottom:170px !important;}
     mo.observe(document.body, {childList:true, subtree:true});
     setTimeout(function(){ try{ mo.disconnect(); }catch(e){} }, 30000);
   }catch(e){}
+})();
+</script>
+<style id="os-followup10-20261119">
+/* ═══ FOLLOW-UP 10 2026-11-19 — defect 5 properly + the morning rulings ═══
+   (5) Every board "Open the stats" now opens the staged stats view — the
+   Smart Link stats view already in this file (clicks gauge, conversion,
+   revenue, joins, Day/Week/Month/All, Gauge/Bars/Donut/Big Number).
+   Link boards open their own link; page boards open their own page
+   (clicks + joins, summed from the same link rows the boards already
+   use); the world board keeps the follow-up 9 door (dashboard view,
+   hero gauge). Nothing leaves this staged build on any board button.
+   (X) The stats-view X is restored to the top centre, verbatim as first
+   built (top:24px, left:50%, translateX(-50%)). The later top-right
+   moves were the regression. Top centre clears both plus buttons, so
+   the follow-up 9 clearance need is met a better way. */
+#os-smartlink-view .os-smartlink-x{left:50% !important;right:auto !important;top:24px !important;transform:translateX(-50%) !important;z-index:10003 !important;pointer-events:auto !important;}
+#os-smartlink-view .os-smartlink-x:hover{transform:translateX(-50%) !important;}
+</style>
+<script id="os-followup10-20261119">
+/* FOLLOW-UP 10 2026-11-19 — (5) staged stats doors, properly.
+   The board buttons are rendered at runtime by renderBoards, so this is
+   one delegated listener on the document (capture): it catches every
+   board "Open the stats" button whatever order the boards render in.
+   The live href stays on the anchor only as the address the button is
+   ABOUT (the slug is read from it) — no click can navigate away: a
+   staged stats view opens instead, with that board's own numbers.
+   - link boards: the link's own row from _dashLinkRows (the same row
+     the Smart Links drill already opens), or honest zeros if no row.
+   - page boards (Personal / Business / Space): the page's own clicks +
+     joins, summed from the same link rows the boards already use (the
+     PASS-10 rule, verbatim) — a page with no links pointing at it
+     shows honest zeros, never the all-links total, never invented.
+   - world board (Dashboard): left alone — the follow-up 9 door already
+     shows the dashboard view and scrolls to the hero gauge.
+   The stats view itself is the one already in this file
+   (openSmartLinkView / #os-smartlink-view): clicks gauge, conversion,
+   revenue, joins, HOUR/DAY/WEEK/MONTH/ALL, Gauge/Bars/Donut/Big
+   Number. Its X (top centre, restored above) closes it through
+   smartlinkViewClose, back to the boards view as it was. */
+(function(){
+  if(window.__osFollowup10Bound) return; window.__osFollowup10Bound=true;
+  function fmt(n){ try{ if(typeof window._osSpc==='function') return window._osSpc(n); }catch(e){} return String(n); }
+  function openBoardStats(kind, slug, href){
+    if(typeof window.openSmartLinkView!=='function') return false;
+    var rows=[]; try{ rows=window._dashLinkRows||[]; }catch(e){}
+    var dest='';
+    if(kind==='link'){
+      var row=null;
+      try{ rows.forEach(function(r){ if(r && r.name===slug) row=r; }); }catch(e){}
+      if(!row){ try{ var by=window._slLinkByName||{}; if(by[slug]) row=by[slug]; }catch(e){} }
+      if(!row) row={id:'link:'+slug, name:slug, clicks:0, joins:0, url:href};
+      try{ window._smartlinkSingle=row; }catch(e){}
+      dest = row.url || (fmt(row.clicks||0)+' clicks \u00B7 '+fmt(row.joins||0)+' joins \u00B7 this link only');
+      try{ window.openSmartLinkView('nayanet.app/'+slug, dest); }catch(e){ return false; }
+      return true;
+    }
+    var pc=0, pj=0;
+    rows.forEach(function(r){ var u=String((r&&r.url)||''); if(u.indexOf('/'+slug)!==-1){ pc+=Number(r.clicks||0); pj+=Number(r.joins||0); } });
+    try{ window._smartlinkSingle={id:'page:'+slug, name:slug, clicks:pc, joins:pj, url:href}; }catch(e){}
+    dest = fmt(pc)+' clicks \u00B7 '+fmt(pj)+' joins \u00B7 this page only';
+    try{ window.openSmartLinkView('nayanet.app/'+slug, dest); }catch(e){ return false; }
+    return true;
+  }
+  document.addEventListener('click', function(e){
+    var a=e.target && e.target.closest ? e.target.closest('a.os-wb-btn') : null;
+    if(!a) return;
+    if((a.textContent||'').trim()!=='Open the stats') return;
+    var href=a.getAttribute('href')||'';
+    if(href==='#dashboard-stats') return;
+    if(href.indexOf('https://nayanet.app/')!==0) return;
+    var slug=href.slice('https://nayanet.app/'.length).split(/[?#]/)[0];
+    if(!slug) return;
+    var kind=(slug==='personal'||slug==='business'||slug==='space') ? 'page' : 'link';
+    if(openBoardStats(kind, slug, href)){ if(e.preventDefault) e.preventDefault(); }
+  }, true);
 })();
 </script>
 </body></html>
