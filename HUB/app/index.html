@@ -6295,6 +6295,7 @@ function HubView(params) {
           var choice = it.getAttribute('data-hub-menu');
           if (choice === 'neither') { var nApi = window.NayaChassis || {}; if (nApi.closeDrawer) nApi.closeDrawer(); closeMsgPanel(); window._nayaMenuState = 'neither'; return; }
           if (choice === 'messenger') { var mApi = window.NayaChassis || {}; if (mApi.closeDrawer) mApi.closeDrawer(); window._nayaMenuState = 'messenger'; openMsgPanel(); return; }
+          if (choice === 'people') { var pApi = window.NayaChassis || {}; if (pApi.closeDrawer) pApi.closeDrawer(); closeMsgPanel(); window._nayaMenuState = 'people'; if (pApi.openRightRail) pApi.openRightRail(); return; } /* ROUND 11 (item 8): the right rail's narrow-width control — the menu's fourth choice. Closes the left drawer + the messenger panel (never both at once) and opens the rail through the live NayaChassis.openRightRail, the same opener the ECOSYSTEM tile uses. */
           /* Open sidebar — the live build's openDrawer, resolved through
              NayaChassis (re-published on every HubView build, never a stale
              closure). A tap while the sidebar stands open leaves it open — OPEN, not toggle (HUB FEED FIX 2026-11-18). When
@@ -12998,8 +12999,16 @@ html.nsb-calm .nsb-tab{transition:none;}
    scrolling down hides the bottom bar; it folds back ONLY at the very bottom.
    The driver is the stack script below. */
 body.os-bottom-hidden .notif-bar{transform:translateY(110%);opacity:0}
-/* ROUND 2c (c) — eye: the bar hides whenever scrolled >8px and not at the very bottom (live: opacity 0, translateY(77px) at rest and scrolled 900), so MAIL is unreachable while reading at narrow widths. At <=640px it stays visible; desktop keeps Amendment #3. */
-@media (max-width:640px){body.os-bottom-hidden .notif-bar{transform:none!important;opacity:1!important}}
+/* ROUND 11 (item 6 — the cloud eye's narrow-width defect): the <=640px
+   force-visible override is GONE. It kept the bar expanded by default at
+   narrow widths, covering ~1/3 of a 305px viewport and feed headings
+   while scrolling. The bar driver below (show-once: starts folded, pops
+   up once after 1s stopped at the very bottom, returns at once at the
+   very top, corner control summons it) now governs <=640px exactly as it
+   governs desktop: folded while reading, never covering content. MAIL
+   stays reachable — tap the corner control or scroll to the top or the
+   bottom. Desktop bytes untouched: this rule lived only inside the
+   <=640px media query. */
 .notif-bar{transition:transform .3s cubic-bezier(.16,.84,.22,1),opacity .3s}
 /* Bottom bar off (Settings): the six are gone. */
 html.nsb-nonav #naya-notif-bar{display:none}
@@ -14061,6 +14070,7 @@ window.NayaSmartBar = {
 <div class="fc-plusitem" role="menuitem" data-hub-menu="sidebar" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><span class="hub-menu-label">Open sidebar</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-menu="messenger" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="hub-menu-label">Open smart messenger</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-menu="neither" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M6.5 6.5l11 11"/></svg></span><span class="hub-menu-label">Neither</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-menu="people" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.8.4 5 2.6 5 5.5"/></svg></span><span class="hub-menu-label">Open people rail</span></div>
 </div>
 <style id="hub-followup-20261119">
 /* FOLLOW-ON 2026-11-19 — Hub follow-on round (captain's eye verdict on round 2f).
@@ -14310,6 +14320,31 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) .private{padding-bottom:140px;}
 #hubPeopleList .pc-card-acts .pc-act-btn[data-pc-info]::after{content:'';position:absolute;inset:-2px;border-radius:50%;
   background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.35) 40deg,transparent 90deg);
   animation:osOrbFlow 7s linear infinite,pcFlowBreathe 16s ease-in-out infinite;pointer-events:none;}
+</style>
+<style id="hub-fix11-20261119">
+/* --- FOLLOW-ON ROUND 11 20261119 — the cloud eye's narrow-width defects (items 5 + 7) ---
+   This block sits after every earlier style block, so its rules win ties
+   against the older rules. Narrow width (<=640px) ONLY — desktop bytes
+   and desktop behaviour are untouched. */
+/* (5) THE WELCOME PILL CLEARS THE ACTIVITY TAB AND READS WHOLE. At <=640px
+   the pill parked at bottom:144px right:8px — inside the sticky lens-tabs
+   band (top:71px + 26px pad + 53px tab + 8px pad = ends y~158) AND under
+   the hide-circle (#os-b3-hide, bottom:120px bar-up, z-index 1005), which
+   covered the pill's right end so it read "Welc...". At <=640px the pill
+   now parks top:166px (8px clear of the tabs row) on the LEFT edge, the
+   lane nothing else uses at that height — whole, clear of the ACTIVITY
+   tab, clear of the circle, clear of the bar. Desktop keeps bottom:144px
+   right:12px. */
+/* (7) THE SEARCH BOX LANDS CLEAR WHEN SCROLLED INTO VIEW. #chassisSearch
+   sits in flow between the hero and the sticky tabs; a scroll-into-view
+   (including the eye's click) lands it at the viewport top, under the
+   sticky top bar (71px) + sticky tabs (ends ~158px), so the click fails
+   as covered. scroll-margin-top:170px lands it 12px clear of the tabs,
+   its centre clear of the bottom bar. Narrow width only. */
+@media (max-width:640px){
+  .hero-restore.show{top:166px;bottom:auto;left:8px;right:auto;}
+  #chassisSearch{scroll-margin-top:170px;}
+}
 </style>
 <style id="hub-fix9b-20261119">
 /* ——— FOLLOW-ON ROUND 9b 20261119 — item 9(2): the orb is the standard for every circle ———
