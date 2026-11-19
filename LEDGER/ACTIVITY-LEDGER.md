@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 13:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -50791,6 +50791,12 @@ _Last updated: 2026-11-19 13:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-gap-t0182-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap close: merge-consensus object mismatch - premise falsified, true counting-rule divergence pinned (Lane 10)
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: evidence dir exists with evidence.md + gate scripts at stated byte sizes (13,439 / 26,720); pr2462.json sha256 3151018111bb9b1479af1b503fefcd58306fd43bc4933fba5599941b2daf7a78 EXACT match; pr2462-comments.json dd3582f7fb23c3e1c3b246c50aabc194203ecbbafec0c78cc02a45335f92fab0 EXACT mat
+
 ### ✅ gap-lane-scorer-20261015-0440-lane10 — Team 10, Team Naya Scorer (Brain Index) — 8.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: independence-half recusal + ruleset 23853581 live check
@@ -53476,6 +53482,12 @@ _Last updated: 2026-11-19 13:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-gap-gap-t0172-lane1-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap-gap countersignature: re-executed all byte checks on the 6-line history strip (Lane 1)
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: live sgf_history.jsonl sha256 ae216d01639acc06c4ce07ada0514dca1e67650342af557ff9236ff0a0b2e4b4 EXACT match (9 lines); backup sgf_history-15line-before-strip.jsonl sha256 826d4da1296c38eca9033c39b75a40f3dbdf934a4bccc898cdecfa86edbdcb44 EXACT match (15 lines); cmp of backup lines 1-9 v
 
 ### ✅ gap-scorer-20261015-0330-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
