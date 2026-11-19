@@ -14340,7 +14340,7 @@ function wallCard(j, iso, pid, idx){
      the inset 1px highlight are gone; the icons sit clean on the page. */
   box-shadow: 0 -10px 34px rgba(0,0,0,.6);
   padding-bottom: env(safe-area-inset-bottom, 0px);
-  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) both;
+  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;
   transition: opacity .45s ease;
 }
 .notif-bar.nsb-trio-faded{opacity:0;pointer-events:none;}
@@ -37401,7 +37401,7 @@ div[data-block="cover"] > .ph-actions-row{padding-left:0!important;padding-right
 /* FIX2-6d (Edit 6, corner control — Dashboard follow-on 2, harvested; bottom
    100px -> 112px: Personal's bar with 17px labels is ~106px tall, not the
    Dashboard's ~91px, so the control rides 6px clear of the taller bar.) */
-#os-b3-hide{position:fixed;right:12px;bottom:112px;z-index:1005;width:38px;height:38px;border-radius:50%;cursor:pointer;
+#os-b3-hide{position:fixed;right:12px;bottom:136px;z-index:1005;width:38px;height:38px;border-radius:50%;cursor:pointer;
   color:#fff;font-size:17px;font-weight:800;line-height:1;text-align:center;
   background:linear-gradient(180deg,#1d1d26,#0b0b10 60%,#050607);
   border:1.5px solid rgba(255,255,255,.65);
@@ -37409,7 +37409,7 @@ div[data-block="cover"] > .ph-actions-row{padding-left:0!important;padding-right
 #os-b3-hide:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.6),0 12px 26px rgba(0,0,0,.65),0 0 18px rgba(255,255,255,.18);}
 #os-b3-hide:active{transform:translateY(1px);}
 body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
-@media(max-width:768px){#os-b3-hide{bottom:90px;right:8px;}}
+@media(max-width:768px){#os-b3-hide{bottom:102px;right:8px;}}
 </style>
 <style id="personal-followon-20261119">
 /* FOLLOW-ON 2026-11-19 — B: demographics switches. One per question, in the
