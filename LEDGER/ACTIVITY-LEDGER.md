@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13061,6 +13061,12 @@ _Last updated: 2026-11-19 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: decision-replay-v2-t0892.md on disk (12,243 bytes, pre-registration block timestamped, 5 rows CONFIRMED, zero dominoes moved), tip/head pins re-derived unmoved since t0888, mechanism blobs byte-checked (test blob a8c666d7 line 145/151, handler blob dee21100 lines 266-272 catch->400), pin script re-PASSed at exact head, FP-002/RULING-1 quo
 
+### ✅ t892-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** t892-lane2
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: all 4 cited evidence files exist in ~/workspace/goals/learning-10-10/hidden_files/ with Oct 11 21:56-21:59 timestamps matching the receipt (p0b-experiment-design.md, p0b-trial-protocol.md, p0b-run-t892-results.md, p0b-error-signal-loop-design.md); live tip 1b6f72defa9b7eea98acc8
+
 ### ✅ t892 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
 
 **Task:** t892-lane2.md
@@ -13134,6 +13140,12 @@ _Last updated: 2026-11-19 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane2.md`
 
 **Evidence:** Clean 3-arm pilot (control/treatment/adversarial) with pre-registered 5-criterion rubric, independent ground truth via own git ls-remote, honest negative result (treatment-control = 0 on this well-specified task), confounds declared pre-run, tip move caught by all three agents. Deductions: N=1/arm, doer=scorer, ceiling effect, process not instrumen
+
+### 🟡 t892-lane10 — Team 10, Team Naya Scorer (Brain Index) — 7.0/10 [PARTIAL]
+
+**Task:** t892-lane10
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). ARTIFACTS UNVERIFIABLE: branch naya/ten-brainindex-freshness @ 302f8ced2dbbbaa830e482957330b87ef9b27944 does NOT exist on the remote (git ls-remote empty), commit absent from the mirror, and the persistent worktree ~/workspace/w-lane10-freshness is gone - the 4-file deliverable (workflow, detect scr
 
 ### ✅ t892 — Team 10, Team Naya Scorer (Brain Index) — 8.0/10 [VERIFIED]
 
@@ -22541,6 +22553,12 @@ _Last updated: 2026-11-19 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: prereg.md sha256 29e8feb4b684d98aa6f14a58dbe21829eb5bc43112ed3c8a8a141bc7b2fdddfa matches exactly; mtime order prereg<instrument holds; all three arm results + mincore-probe source exist; cold band 1.20-2.28s OBSERVED closes the t1022/t1052 hole. Score 9.0 - why not 9.5: (1) single cold trial per arm - the band is real shared-VM variance,
 
+### ✅ t0602-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** SN-016 cold-retrieve drill re-run, two sealed rounds; verdict HOLDS-OPEN both rounds (shared-lib pages un-evictable on shared VM)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: all six cited SHAs in hidden_files/lane-experiments/t0602/ match the receipt exactly — PREREG fcf97cf8, t0602-results.json 3d4d8386, addendum e9b11bde, t0602-r2-results.json b2d30a1e, trial.py 186d6aaf, trial2.py fbd9bfd1; r1 results file confirms verdict HOLDS-OPEN. Honest fail-closed both rounds,
+
 ### ✅ t0602 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** SN-016 cold-retrieve drill re-run with page-cache isolation at live tip
@@ -22649,6 +22667,12 @@ _Last updated: 2026-11-19 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: query-needs-top20-t0601.json (50f0a460...), auth-gate-migration-prep-t0601.md (393725e6...), tally-t0601.py (abb58c60...) — all three SHAs exact match on disk. Score 8.5 (REWORK): honest two-thread work — re-verified bytes (tombstone: third re-verification of identical bytes, stated as such, not claimed as fresh demand) plus a migration-p
 
+### ✅ t0601-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** Sealed pre-registered entailment-arm battery; verdict INCONCLUSIVE-BY-BLOCK (no torch/transformers), TF-IDF control banked 3/3 on hard corpus
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: prereg hidden_files/auto-retrieval/prereg-t0601-entailment.md and instrument t0601_entailment_arm.py exist; results file auto-retrieval/results-t0601-entailment.json exists BUT its sha256 (10b42701...) does NOT match the receipt's cited pin 4d52a16b... — the file on disk is a LATER re-run (it conta
+
 ### ✅ t0601 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
 
 **Task:** Sealed pre-registered entailment-arm battery (arm E vs TF-IDF control T), INCONCLUSIVE-BY-BLOCK
@@ -22672,6 +22696,12 @@ _Last updated: 2026-11-19 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0601-lane2.md`
 
 **Evidence:** VERIFIED: prereg-t0601-entailment.md, t0601_entailment_arm.py, results-t0601-entailment.json all present; results sha256 4d52a16b... matches receipt prefix; seal mtime precedes results. Score 8.0 (REWORK): Arm E BLOCKED_DEPENDENCY (no torch/transformers, /tmp full) — the pre-registered contingency fired honestly so this is frozen-not-wasted, and th
+
+### ✅ t0601-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Cold-retrieve drill re-run with page-cache isolation (FADV_DONTNEED + mincore); verdict FAIL cold 1.28-1.30s vs 0.5s bar, first honest cold-band observation
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: instrument hidden_files/lane-11/cold_drill_t0601.py sha256 9f5942d771e14e5a MATCHES the receipt exactly; file list cold_drill_t0601_filelist.json sha256 8c2a32f58850262e MATCHES exactly. First honest cold-band observation with mincore proof in both directions, plus a bonus falsification of t1052's 
 
 ### ✅ t0601 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -22704,6 +22734,12 @@ _Last updated: 2026-11-19 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0601-lane11.md`
 
 **Evidence:** VERIFIED: cold_drill_t0601.py sha256 9f5942d7... == receipt claim (exact); filelist json 8c2a32f5... == claim (exact); 5 raw trial JSONs present (cold_1/2, warm_1/2/3). Score 9.0: first honest cold-band observation on current bytes (1.28–1.30s, FAIL vs both the 0.5s and 1s bars) via a named unprivileged mechanism + mincore proof in both directions 
+
+### ✅ t0600-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Spec-vs-module drift table for 0007 §4 (22 spec rows + 2 module-beyond-spec + 1 ripple); verdict DRIFT PRESENT, spec-behind
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty — newest unscored receipt is 2026-10-27, all recent receipts already scored). VERIFIED first-hand: drift table hidden_files/lane8-t0600-spec-module-drift/drift-table-t0600.md exists, sha256 94b5699d18d3cf16 MATCHES the receipt's cited hash exactly. Supporting branch naya/five-retrieval-auth-gate-t942 
 
 ### ✅ t0600 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
