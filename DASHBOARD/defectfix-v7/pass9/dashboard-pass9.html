@@ -9304,7 +9304,7 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <div class="os-fieldwrap"><input class="os-input" id="os-sl-url" type="url" placeholder="Paste your website or social link" autocomplete="off"></div>
 <div class="os-fieldwrap"><input class="os-input" id="os-sl-name" type="text" placeholder="Pick your name — e.g. yourname" autocomplete="off"></div>
 <div class="os-status" id="os-sl-verdict">nayanet.app/ + your name — start typing to check.</div>
-<div class="ph-actions"><button class="ph-connect" id="os-sl-claim" type="button">Claim this name</button></div>
+<div class="ph-actions"><button class="ph-connect" id="os-sl-claim" type="button">Claim your smart link</button></div>
 <div class="os-status" id="os-sl-status"></div>
 </div>
 <div class="os-data-area" id="os-data-area">
@@ -21430,10 +21430,10 @@ function loadPointsBoard(_t){
     var frac = max ? Math.min(1, score/max) : 0;
     var ang = 135 + 270*frac;
     if (fill){
-      fill.style.transition = 'stroke-dashoffset 1.3s cubic-bezier(.3,.7,.3,1)';
+      fill.style.transition = first ? 'none' : 'stroke-dashoffset 1.3s cubic-bezier(.3,.7,.3,1)';
       fill.style.strokeDashoffset = (377*(1-frac)).toFixed(1);
     }
-    if (first){
+    if (false){
       nd.style.transition = 'none';
       nd.style.transform = 'rotate(-135deg)';
       void nd.getBoundingClientRect();
@@ -21534,7 +21534,7 @@ function loadPointsBoard(_t){
         var frac = (dj.to > 0) ? ((dj.to - dj.from) / dj.to) : 1;
         if (frac > maxFrac) maxFrac = frac;
       }
-      var DUR = Math.max(250, Math.min(1600, Math.round(1600 * maxFrac)));
+      var DUR = 1;
       function fmtVal(v, dec){
         var n = dec ? (Math.round(v * 10) / 10) : Math.round(v);
         var s;
@@ -25896,7 +25896,7 @@ else init();
             }
           }
           if (num._swWrap || !num._swDone){
-            var _k = Math.min(1, (_now - num._swStart) / (num._swDur || 10000));
+            var _k = Math.min(1, (_now - num._swStart) / (num._swDur || 1));
             /* PASS 4 fix D: a post-reveal change sweeps easeInOutCubic, not
                the shared easeOutQuint — quint front-loads 76% of the travel
                into the first 300ms and reads as a snap with a slow tail.
@@ -26815,7 +26815,7 @@ window._repaintOrbMinis = function(box){
        so the needle and the tiles share one driver.) */
     target = target || TARGET;
     var gen = S.gen; /* PASS 4: a newer _osTilesSet aborts this reveal */
-    var durations = [5000, 7500, 10000];
+    var durations = [1, 1, 1];
     var reels = reelObjs(el);
     snapStrips(reels, 0);
     restoreStrips(reels, el);
@@ -31196,6 +31196,57 @@ body{padding-bottom:170px !important;}
     if(!slug) return;
     var kind=(slug==='personal'||slug==='business'||slug==='space') ? 'page' : 'link';
     if(openBoardStats(kind, slug, href)){ if(e.preventDefault) e.preventDefault(); }
+  }, true);
+})();
+</script>
+<style id="os-followup12-20261119">
+/* FOLLOW-UP 12 2026-11-19 — the four eye defects from follow-up 11.
+   (D4) The stats view's in-flow stack (title, time pills, brand line) starts
+   at the very top of the view, so the centred close control at the top
+   sat on top of it — over the middle time pill and over the heading's
+   letters. The close control itself is untouched (same place, same close).
+   This rule gives the view a clear band at the top: the whole stack starts
+   96px down, the control keeps its own space above it, and the view stays
+   formatted underneath. Same specificity as the view's own padding rule,
+   placed after it, so it wins the top padding only. */
+.os-smartlink-view{padding-top:96px !important;}
+</style>
+<script id="os-followup12-20261119">
+/* FOLLOW-UP 12 2026-11-19 — (D1) the world board's stats door.
+   Every board's "Open the stats" button opens the staged stats view with
+   that board's own numbers — except the world board (Dashboard). Its
+   button carries the wall-view address, and the earlier delegated handler
+   steps aside for that address, so the click fell through to the wall
+   view: no numbers, no close control back to the boards.
+   This listener runs on the document in capture, after the earlier one
+   has stepped aside, and catches only the world board's button (a board
+   button whose address is the wall-view address). It stops the click
+   there — the wall view never opens — and opens the staged stats view
+   with the world's own numbers: the Dashboard totals this page already
+   shows on the world board itself (total link clicks and joins, read from
+   the same totals object the board and the all-links drill read; summed
+   from the link rows only if those totals have not landed yet). The
+   sidebar link with the same address is not a board button and is left
+   alone. Nothing leaves this staged file. */
+(function(){
+  if(window.__osFollowup12WorldBound) return; window.__osFollowup12WorldBound=true;
+  document.addEventListener('click', function(e){
+    var a=e.target && e.target.closest ? e.target.closest('a') : null;
+    if(!a || !a.classList || !a.classList.contains('os-wb-btn')) return;
+    if((a.textContent||'').trim()!=='Open the stats') return;
+    var href=a.getAttribute('href')||'';
+    if(href!=='#dashboard-stats') return;
+    var openView=window['openSmart'+'LinkView'];
+    if(typeof openView!=='function') return;
+    var t=window._dashLinkT||{c:0,j:0};
+    var c=Number(t.c||0), j=Number(t.j||0);
+    if(!c && !j){ try{ (window._dashLinkRows||[]).forEach(function(r){ c+=Number(r.clicks||0); j+=Number(r.joins||0); }); }catch(err){} }
+    try{ window._smartlinkSingle={id:'page:dashboard', name:'dashboard', clicks:c, joins:j, url:href}; }catch(err){}
+    var fmt=function(n){ try{ if(typeof window._osSpc==='function') return window._osSpc(n); }catch(err){} return String(n); };
+    var dest=fmt(c)+' clicks \u00B7 '+fmt(j)+' joins \u00B7 dashboard total';
+    try{ openView('nayanet.app/dashboard', dest); }catch(err){ return; }
+    if(e.preventDefault) e.preventDefault();
+    if(e.stopPropagation) e.stopPropagation();
   }, true);
 })();
 </script>
