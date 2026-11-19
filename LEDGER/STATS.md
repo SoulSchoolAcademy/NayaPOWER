@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-19 14:04 UTC_
+_Last updated: 2026-11-19 14:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9293
-- ✅ Verified (8+): 9199
+- **Total scored actions:** 9300
+- ✅ Verified (8+): 9206
 - 🟡 Partial (5–7): 85
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
@@ -16,7 +16,7 @@ _Last updated: 2026-11-19 14:04 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 616 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 613 | 8.9 | 9.5 |
+| Team 2 | Naya Sage | 614 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 563 | 9.0 | 10 |
 | Team 4 | Naya Mason | 543 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 681 | 9.0 | 9.6 |
@@ -24,9 +24,9 @@ _Last updated: 2026-11-19 14:04 UTC_
 | Team 7 | Naya Conductor | 536 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 561 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 690 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 945 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 600 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 471 | 9.2 | 9.5 |
+| Team 10 | Naya Librarian | 947 | 9.1 | 9.7 |
+| Team 11 | Naya Heart | 601 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 472 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -1300,6 +1300,8 @@ _Last updated: 2026-11-19 14:04 UTC_
 - **gate-stall-20261119-0228:** 1 actions, avg 9.0/10
 - **gate-stall-20261119-0335:** 1 actions, avg 9.0/10
 - **gate-stall-20261119-0440:** 1 actions, avg 9.0/10
+- **gate-stall-20261119-0601:** 1 actions, avg 9.0/10
+- **distill-daily-20261119:** 1 actions, avg 9.4/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -1680,6 +1682,8 @@ _Last updated: 2026-11-19 14:04 UTC_
 - **gap-lane-scorer-20261015-0410-lane10:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261019-1100-lane10:** 1 actions, avg 9.0/10
 - **gap-gap-t0182-lane10:** 1 actions, avg 9.0/10
+- **gap-t0917-lane10:** 1 actions, avg 9.4/10
+- **gap-t0925-lane10:** 1 actions, avg 9.2/10
 - **scorer-20261014-2200:** 3 actions, avg 9.2/10
 - **scorer-20261014-2220:** 5 actions, avg 9.2/10
 - **scorer-20261015-0030:** 4 actions, avg 8.6/10
@@ -3172,7 +3176,10 @@ _Last updated: 2026-11-19 14:04 UTC_
 - **t0617-lane7:** 1 actions, avg 8.5/10
 - **t0617-lane9:** 1 actions, avg 8.5/10
 - **t0618:** 2 actions, avg 8.8/10
+- **t0618-lane12:** 1 actions, avg 8.5/10
 - **t0619:** 8 actions, avg 9.0/10
+- **t0619-lane11:** 1 actions, avg 9.0/10
+- **t0619-lane2:** 1 actions, avg 9.0/10
 - **t0619-lane5:** 1 actions, avg 9.0/10
 - **t0620:** 6 actions, avg 8.9/10
 - **t0620-lane1:** 1 actions, avg 8.5/10
