@@ -41,6 +41,13 @@
 //         400 BODY_TOO_LONG · 400 SENDER_IS_RECIPIENT ·
 //         404 RECIPIENT_NOT_FOUND · 502 MAIL_WRITE_FAILED
 
+// Module marker (no runtime effect): without an import/export this file is
+// a script, so its top-level `json` helper shares the global scope with
+// nayanet-github-intake's and tsc reports TS2393 Duplicate function
+// implementation in the edge type-check gate. Every other edge function is
+// already a module via its imports.
+export {};
+
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 const MAX_BODY = 10_000;
