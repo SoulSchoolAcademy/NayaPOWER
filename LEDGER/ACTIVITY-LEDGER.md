@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 03:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22833,6 +22833,14 @@ _Last updated: 2026-11-19 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0598 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
+**Task:** found-corpus replication design (feasibility)
+
+**Receipt:** `twelve-lane-receipts/t0598-lane10.md`
+
+**Evidence:** Verified: found_corpus_feasibility_t0598.py and found-corpus-feasibility-t0598.json exist; JSON confirms corpus pin 9e94aba0122bc8ee, verdict FEASIBLE, 12 docs / 12 with claims, 730 claims (identity 484, requirement 124, imperative 93, means 29), 1 doc changed / 11 unchanged, 0 fidelity failures — all matching receipt. Score 8.5. Why not 9.5: posit
+
+### ✅ t0598 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
 **Task:** found-corpus replication design (lane journals, FEASIBLE)
 
 **Receipt:** `twelve-lane-receipts/t0598-lane10.md`
@@ -22869,6 +22877,14 @@ _Last updated: 2026-11-19 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Receipt:** `twelve-lane-receipts/t0597-lane9.md`
 
+**Evidence:** Verified: commit 99a2f832d054b3963fd4503702ecc2c00e59b73d exists in mirror with packet files (tools/refusal_point_t0537.py, test_refusal_predicate_t0537.py, red_demo_refusal_t0537.py) in its tree, parent 512a8439 as receipted; branch ref no longer on remote (deleted post-hoc) but commit object persists — not phantom. Score 9.0. Why not 9.5: claim-b
+
+### ✅ t0597 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b): re-anchor + re-verify Option-B packet at live tip
+
+**Receipt:** `twelve-lane-receipts/t0597-lane9.md`
+
 **Evidence:** VERIFIED this tick: git ls-remote branch naya/nine-retrieval-auth-wire-packet-t0537 head is 99a2f832d054b3963fd4503702ecc2c00e59b73d, exactly the receipted re-anchored head (still current 15 days later); workspace surge/stamping-migration-packet-t0585.md sha256 b3818b39faecbed941053bc33c2ed55210f2169fd6d119b980a588eccd636e16 matches the post-edit p
 
 ### ✅ t0597 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
@@ -22886,6 +22902,14 @@ _Last updated: 2026-11-19 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0597-lane9.md`
 
 **Evidence:** ARTIFACTS VERIFIED (remote bytes, git protocol): branch naya/nine-retrieval-auth-wire-packet-t0537 head 99a2f832d054b3963fd4503702ecc2c00e59b73d via ls-remote, parent 512a8439923adbf133a1d0ac28726f2ddc961925 == live tip, doc blob 9d6fe7fd9ae51480caba71e8c970b1ceb3615626 exact, doc sha256 e8aab9b8... match, 3 tools files sha256 e8254132/ea0affe8/9d9
+
+### ✅ t0597 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** decision-consequence probe v2 (M-with-inertia), sealed + run
+
+**Receipt:** `twelve-lane-receipts/t0597-lane5.md`
+
+**Evidence:** Verified: instrument t0597_decision_consequence_inertia.py f6f747e37bc0, seal 6a1a3424aba0, coarse results 3c53eacf8ac6, verdict file all exist with SHAs matching receipt; run JSON confirms eps 0.000605, flips 72/72, regime SATURATED, verdict FALSIFIED. Score 8.5. Why not 9.5: eps pinned to baseline-noise scale, not the injection-lift scale that sa
 
 ### ✅ t0597 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -30488,6 +30512,14 @@ _Last updated: 2026-11-19 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** HV observatory window t0122-t0162: instrument refresh, hand audit, machine cross-check, trend publish
 
 **Evidence:** Dispatcher verified: hv_output_t0162_run1/run2.json byte-identical (sha256 d4e59a18... matches receipt), metric_audit_t0162.json exists (12 rows), STATS.md published, tip aa8061c1 re-pinned unmoved. Third regression proof of t1162 window-scoping fix (42 receipts reproduce t1052 baseline exactly). HV3 PROVEN-UNMEASURABLE correctly not re-filed (no m
+
+### ✅ t0172 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-gap countersignature of sgf history strip (Lane 1)
+
+**Receipt:** `twelve-lane-receipts/t0172-lane1.md`
+
+**Evidence:** Verified: live sgf_history.jsonl sha256 ae216d01639acc06c4ce07ada0514dca1e67650342af557ff9236ff0a0b2e4b4, 9 lines, matches receipt; backup sgf_history-15line-before-strip.jsonl 826d4da1296c38eca9033c39b75a40f3dbdf934a4bccc898cdecfa86edbdcb44, 15 lines, matches; countersign-verification.txt exists. Score 9.0. Why not 9.5: countersignature is same-se
 
 ### ✅ t0172 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
@@ -54166,6 +54198,12 @@ _Last updated: 2026-11-19 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ scorer-20261118-1940 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-18 17:50 PST: 31 queued briefs evaluated, 0 claimed, stall re-proved
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261118-1750.log exists, sha256 ef649915852aac3c729a982553027ace984d7b932a8e92162b12f900b9b0d205 matches the receipt's cited hash byte-exact; log lists all 31 briefs (29 exit 7, 2 exit 2) matching the receipt's per-band breakdown and the 16:47 receipt's blocked-briefs section 31/31 (same filenames, sam
 
 ### ✅ scorer-20261118-1900 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
