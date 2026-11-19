@@ -27,7 +27,7 @@ BASES = {
     "walk": "7b8fe1bfbfe7d821c6e268890c682080421ff920",
     "unfold": "b2f04aaad4982bb35a29eb736c9178a444738b99",
 }
-UNFOLD_SHA = "0bb21457c62d66ae04e0f9b5fced34e1e13edad1a07e0a8b8cf019edbabffa33"
+UNFOLD_SHA = "43f5e4e16f333b6cbcbe5bfeaad5762b35b8ab0be4f153d37baa01d4be56010a"
 WELCOME_SHA = "2062739ecb968b78cd823440bcfd4bbb8f7d0190d3bb2e5443ab3b35c0081955"
 WORKER_SHA = sys.argv[1]
 UNFOLD_BLOB = sys.argv[2]

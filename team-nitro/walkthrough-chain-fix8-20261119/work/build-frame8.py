@@ -40,7 +40,9 @@ in the screenshots — t+1.5s strip, t+5.5s blank ornate frame):
     whole board fits its reading window.
   F4 — Play (speech synthesis) produces nothing audible or visible on
     desktop (no voice -> 2.5s watchdog -> idle). FIX: the play orb moves
-    into the media frame and drives the verified narration mp3 (F9).
+    into the media frame (F9). CORRECTION (~14:50 MST): the orb no
+    longer plays anything — no audio has been given yet — it reveals
+    the waiting note instead, visibly, on tap.
   F5 — all 8 face images + deck-logo + welcome-0 serve HTTP 200 from
     the proof-host (~485-528KB each); the one failed load was transient.
     FIX: an onerror chain (retry once cache-busted, then the filed
@@ -63,13 +65,19 @@ in the screenshots — t+1.5s strip, t+5.5s blank ornate frame):
     files must NEVER go on the page — so the button reveals the
     anthem's opening words + a plain note that the captioned video is
     on its way, and takes the captioned file on a one-line swap).
+  CORRECTION (2026-11-19 ~14:50 MST, Shawn's own words, superseding
+    the F9 send above): do NOT wire the mp3. Shawn has NOT given the
+    audio yet — he cuts it from his video. BOTH media buttons wait on
+    HIS captioned video file; the audio is cut from that video. Do not
+    wire any other audio file. The Oct-29 mp4 is NOT the anthem video.
+    The mp3 stays filed from commit 1 but is UNWIRED from the page as
+    of commit 5; both buttons show the waiting state and nothing plays.
+    The NotebookLM m4a files stay off the page (standing rule).
 """
 import hashlib
 
-AUDIO_SHA256 = "62bf05e68a036e86b5aa3280c16b9dd810dda711abf1fd34612cda10b2b9261a"
 CRYSTAL_CB = "ee4b627c0c254ed9165715308fa282010ce8cf3c"
 PH = "https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/"
-AUDIO_URL = PH + "agreement-naya-voice.mp3&ref=walkthrough/chain-fix8-20261119&cb=" + AUDIO_SHA256
 CRYSTAL_URL = PH + "crystal-n.png&ref=walkthrough/chain-fix8-20261119&cb=" + CRYSTAL_CB
 
 CSS8 = """
@@ -118,7 +126,6 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 .frame-anthem-note[hidden]{display:none}
 .frame-anthem-note p{margin:0 0 12px}
 .frame-anthem-note p:last-child{margin-bottom:0}
-#fpAgreeAudio{display:none}
 /* F1-fix (render-measured): the beat's own padding (32px top / 24px
    bottom, content-box) made it 60px taller than its 463px deck, so the
    pinned foot sat below the deck's clip and the button row showed only
@@ -157,7 +164,6 @@ JS8 = """
   if (main) main.classList.add('fp-frame8');
   var beats = Array.prototype.slice.call(document.querySelectorAll('#deckBody .letter-beat'));
   var CRYSTAL = '__CRYSTAL_URL__';
-  var AUDIO_URL = '__AUDIO_URL__';
   /* F3 — a picture that fails to load hides its frame instead of
      showing broken: all 8 showcase images serve 200, this is the
      belt-and-braces. */
@@ -245,9 +251,12 @@ JS8 = """
   /* F4+F9 — the media frame on frame 1, just below the top bar. The play
      orb moves here (its node is cloned, so wirePlay's speech listener —
      attached to the original node — never fires; the original leaves the
-     DOM). The orb now drives the verified narration mp3, visibly:
-     triangle <-> pause bars, rim lit while playing, elapsed / total in
-     words beside it. The video button is a slot, not a wire-up: no
+     DOM). CORRECTION (~14:50 MST, Shawn's own words): the orb plays
+     NOTHING — no audio has been given yet, he cuts it from his video.
+     Both buttons wait on HIS captioned video file: tapping the orb
+     reveals the waiting note, visibly, and tapping again hides it. No
+     audio element exists on the page, no audio URL is wired, nothing
+     is substituted. The video button is a slot, not a wire-up: no
      verified anthem video exists yet, so it reveals the anthem's opening
      words + a plain note, and takes the captioned file on a one-line
      swap (see the data-anthem-slot hook below). The Oct-29 mp4 and the
@@ -255,10 +264,6 @@ JS8 = """
   var playBtn = document.getElementById('playBtn');
   var sc0 = beats[0] && beats[0].querySelector('.frame-scroll');
   if (playBtn && sc0) {
-    var audio = document.createElement('audio');
-    audio.id = 'fpAgreeAudio';
-    audio.preload = 'none';
-    audio.src = AUDIO_URL;
     var media = document.createElement('div');
     media.className = 'frame-media';
     media.id = 'fpMediaFrame';
@@ -275,11 +280,11 @@ JS8 = """
     var lab = document.createElement('div');
     var labT = document.createElement('div');
     labT.className = 'frame-media-audio-name';
-    labT.textContent = 'Play \u2014 listen to the agreement';
+    labT.textContent = 'Listen to the agreement';
     var labS = document.createElement('div');
     labS.className = 'frame-media-audio-state';
     labS.id = 'fpAudioState';
-    labS.textContent = '12:27 \u00b7 Naya reads the agreement';
+    labS.textContent = 'Waiting on the captioned video \u2014 the audio is cut from it';
     lab.appendChild(labT);
     lab.appendChild(labS);
     arow.appendChild(orb);
@@ -300,44 +305,30 @@ JS8 = """
     n2.textContent = 'The captioned anthem video arrives soon. These are its opening words, while the video is on its way.';
     note.appendChild(n1);
     note.appendChild(n2);
+    var anote = document.createElement('div');
+    anote.className = 'frame-anthem-note';
+    anote.id = 'fpAudioNote';
+    anote.hidden = true;
+    var a1 = document.createElement('p');
+    a1.textContent = 'Naya\u2019s reading arrives with the captioned video \u2014 the audio is cut from that video. Nothing is wired here yet; the reading starts when his video arrives.';
+    anote.appendChild(a1);
     media.appendChild(ttl);
     media.appendChild(sub);
     media.appendChild(arow);
+    media.appendChild(anote);
     media.appendChild(vbtn);
     media.appendChild(note);
-    media.appendChild(audio);
     sc0.insertBefore(media, sc0.firstChild);
-    function fmt(s){
-      s = Math.max(0, Math.floor(s || 0));
-      var m = Math.floor(s / 60), r = s % 60;
-      return m + ':' + (r < 10 ? '0' : '') + r;
-    }
-    function setState(){
-      var playing = !audio.paused && !audio.ended;
-      orb.classList.toggle('is-playing', playing);
-      var tri = orb.querySelector('.play-tri');
-      if (tri) tri.textContent = playing ? '\u275A\u275A' : '\u25B6';
-      if (playing) labS.textContent = 'Playing \u00b7 ' + fmt(audio.currentTime) + ' / 12:27 \u2014 Naya reads the agreement';
-      else if (audio.currentTime > 0) labS.textContent = 'Paused \u00b7 ' + fmt(audio.currentTime) + ' / 12:27 \u2014 tap to keep listening';
-      else labS.textContent = '12:27 \u00b7 Naya reads the agreement';
-    }
+    /* F9 (corrected) — tapping the orb reveals the waiting note, visibly;
+       tapping again hides it. It plays nothing: no audio has been given. */
     orb.addEventListener('click', function(ev){
       ev.stopPropagation();
-      if (audio.paused) {
-        var pr = audio.play();
-        if (pr && pr.catch) pr.catch(function(){ labS.textContent = 'The audio didn\u2019t load \u2014 tap to try again.'; });
-      } else audio.pause();
+      anote.hidden = !anote.hidden;
     });
-    audio.addEventListener('play', setState);
-    audio.addEventListener('pause', setState);
-    audio.addEventListener('ended', function(){ audio.currentTime = 0; setState(); });
-    audio.addEventListener('timeupdate', setState);
-    audio.addEventListener('error', function(){ labS.textContent = 'The audio didn\u2019t load \u2014 tap to try again.'; });
     vbtn.addEventListener('click', function(ev){
       ev.stopPropagation();
       note.hidden = !note.hidden;
     });
-    setState();
   }
   showFrame8(0);
 })();

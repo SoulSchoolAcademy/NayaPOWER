@@ -2,11 +2,12 @@
 """FIX8 stage (2026-11-19): file the fix-8 build in branch
 walkthrough/chain-fix8-20261119 from the fix-7 tip 3c621b7d, one commit:
 walk (unchanged), identity (unchanged), the new worker, the edited
-builder (asserts -> 2062739e welcome + 0bb21457 unfold), the new unfold
+builder (asserts -> 2062739e welcome + 43f5e4e1 unfold), the new unfold
 (in-memory bytes, never on disk), the edited welcome (F6: no-alias
-auto-enter removed), the narration mp3 (F9, filed), and the fix-8 work
-scripts + brief. Then blob read-back, PUT the worker, and verify the 7
-staging routes + the mp3 on the proof host. Usage:
+auto-enter removed), the mp3 (filed commit 1, UNWIRED as of commit 5 —
+F9 correction), and the fix-8 work scripts + brief. Then blob
+read-back, PUT the worker, and verify the 7 staging routes + the mp3
+on the proof host. Usage:
 python3 stage-fix8.py <worker_sha>
 
 Route expectations: / -> welcome (new), /agreement -> unfold (new),
@@ -28,12 +29,16 @@ WORK = "/home/hatch/workspace/team-nitro/walkthrough-chain-fix8-20261119/work"
 BRANCH = "walkthrough/chain-fix8-20261119"
 PARENT_BRANCH = "walkthrough/chain-fix7-20261119"
 PARENT = "3c621b7d2cc3eca539ed99d5625ca58c4599ef68"
-# Fourth staging commit: the third fix-8 commit (a2f5c753) is already on
-# this branch. Commit 4 files only the verification probes (updated for
-# single-tap navigation: Back x3, showcase proof) — no page bytes
-# change, the worker rebuilds byte-identical. This run files commit 4
-# on top of commit 3.
-TIP1 = "a2f5c753bd16b4e4c66e187386ad7cce85b00dce"
+# Fifth staging commit: the fourth fix-8 commit (396cf2b2) is already
+# on this branch. Commit 5 is the F9 CORRECTION (~14:50 MST, Shawn's
+# own words, superseding the F9 send): do NOT wire the mp3 — Shawn has
+# NOT given the audio yet, he cuts it from his video. Both media
+# buttons wait on HIS captioned video file; nothing is substituted.
+# The page is rebuilt with the audio unwired (no <audio> element, no
+# mp3 string anywhere in the built bytes — the transform guard fails
+# the build if one appears). The mp3 stays filed from commit 1 but is
+# unwired. This run files commit 5 on top of commit 4.
+TIP1 = "396cf2b2493550f84ebfbdcd5c140ee6e530a7e5"
 WALK_LOCAL = "/home/hatch/workspace/team-nitro/walk-v23-assembly-20261114/walk-beginning-fixed.html"
 MP3_LOCAL = "/home/hatch/workspace/your_files/agreement-naya-voice.mp3"
 MP3_SHA = "62bf05e68a036e86b5aa3280c16b9dd810dda711abf1fd34612cda10b2b9261a"
@@ -77,7 +82,7 @@ def main():
     assert st.sha(new_unfold) == bf.UNFOLD_SHA, "unfold moved"
     assert st.sha(mp3) == MP3_SHA, "mp3 moved"
     assert len(mp3) == 5976421, "mp3 size moved"
-    assert b'assert unfold_sha.startswith("0bb21457")' in builder, "builder unfold assert not moved"
+    assert b'assert unfold_sha.startswith("43f5e4e1")' in builder, "builder unfold assert not moved"
     assert b'assert welcome_sha.startswith("2062739e")' in builder, "builder welcome assert not moved"
     assert b'UNFOLD_RAW' in builder, "builder missing UNFOLD_RAW"
     assert b"stay on the entrance" in new_welcome, "welcome F6 edit missing"
@@ -99,7 +104,7 @@ def main():
     print("parent (fix7 tip):", PARENT, flush=True)
     _, ref8 = st.gh("GET", "/repos/%s/git/refs/heads/%s" % (st.REPO, BRANCH))
     assert ref8["object"]["sha"] == TIP1, "fix8 tip moved: %s" % ref8["object"]["sha"]
-    print("fix8 tip (commit 3):", TIP1, flush=True)
+    print("fix8 tip (commit 4):", TIP1, flush=True)
     _, commit = st.gh("GET", "/repos/%s/git/commits/%s" % (st.REPO, TIP1))
     base_tree = commit["tree"]["sha"]
     print("base tree:", base_tree, flush=True)
@@ -135,12 +140,17 @@ def main():
     print("new tree:", tree["sha"], flush=True)
     msg = (
         "Walkthrough CHAIN FIX8 (2026-11-19, maker round; MAKER-REPORT.md in "
-        "walkthrough-chain-fix8-20261119/) — commit 4\n\n"
-        "Commit 4 files only the verification probes (probe-verify-fix8.py\n"
-        "updated for single-tap navigation: Back x3 to return to frame 1\n"
-        "for the Play check, plus the showcase proof; probe-followup.py\n"
-        "is the rects + first-click diagnosis probe). No page bytes\n"
-        "change; the worker rebuilds byte-identical.\n\n"
+        "walkthrough-chain-fix8-20261119/) — commit 5\n\n"
+        "Commit 5 is the F9 CORRECTION (Shawn's own words, ~14:50 MST,\n"
+        "superseding the F9 send): do NOT wire the mp3 — Shawn has NOT\n"
+        "given the audio yet, he cuts it from his video. Both media\n"
+        "buttons wait on HIS captioned video file; the audio is cut from\n"
+        "that video. The media frame is rebuilt with the audio unwired:\n"
+        "no <audio> element, no mp3 string anywhere in the built bytes\n"
+        "(the transform guard fails the build if one appears); tapping\n"
+        "the orb reveals the waiting note, visibly. Nothing is\n"
+        "substituted; the Oct-29 mp4 and the NotebookLM m4a files stay\n"
+        "off the page. The mp3 stays filed from commit 1, unwired.\n\n"
         "The eye sent fix-7 back (GOES BACK, desktop 1920): frame 1 a 90px "
         "strip, the board blanking itself, Next never visibly advancing, "
         "Play doing nothing, flaky top-bar photo, home entrance + nav "
@@ -156,25 +166,29 @@ def main():
         "and nav on load.\n\n"
         "Fix (shell only; beats' words untouched): frame layer behind "
         "the stage (z 0); page header out on every frame (top bar carries "
-        "the headline), dots + foot-links slim, seal 120->84; FIX8 owns "
-        "navigation with its own per-beat talk/visual phase, one "
-        "kr.click() per Next, Back present-but-disabled on frame 1, "
+        "the headline), dots + foot-links slim, seal 120->84 (72 as of "
+        "commit 3); FIX8 owns navigation — one tap = one frame, the "
+        "picture shows inside the reading window, one kr.click() per "
+        "Next, Back present-but-disabled on frame 1, "
         "I-agree moved into the pinned foot row; top-bar faces gain an "
         "onerror chain (retry, then the filed crystal N); the play orb "
-        "moves into the media frame on frame 1 and drives the verified "
-        "narration mp3 (AUDIO on top, VIDEO slot below — the slot reveals "
-        "the anthem's opening words until the captioned video arrives; "
-        "the Oct-29 mp4 and the NotebookLM m4a files are never wired); "
+        "moves into the media frame on frame 1 (AUDIO on top, VIDEO slot "
+        "below — the slot reveals the anthem's opening words until the "
+        "captioned video arrives; the Oct-29 mp4 and the NotebookLM m4a "
+        "files are never wired; as of commit 5 the audio is unwired too "
+        "— both buttons wait on Shawn's captioned video file, nothing "
+        "substituted); "
         "welcome: fresh visitors stay on the entrance (no-alias "
         "auto-enter removed; Enter / ?stage= / restores untouched). No "
         "Welcome button or pill introduced anywhere.\n\n"
-        "Unfold 117,636 B (sha e21f08d0) -> 131,955 B (sha 0bb21457). "
+        "Unfold 117,636 B (sha e21f08d0) -> 131,028 B (sha 43f5e4e1). "
         "Welcome 1,859,867 B (sha d79793c0) -> 1,861,272 B (sha 2062739e). "
         "Walk 4,361,146 B sha b6befc33; identity 401,040 B sha 3279dc35; "
         "worker sha %s (built twice, identical; embeds verified: WALK "
-        "b6befc33, IDENTITY 3279dc35, WELCOME 2062739e, UNFOLD 0bb21457, "
-        "TEMPLATE 61002d15). Narration mp3 filed: 5,976,421 B, sha256 "
-        "62bf05e6, 12m27s.\n\n"
+        "b6befc33, IDENTITY 3279dc35, WELCOME 2062739e, UNFOLD 43f5e4e1, "
+        "TEMPLATE 61002d15). The mp3 stays filed from commit 1\n"
+        "(5,976,421 B, sha256 62bf05e6, 12m27s) but is UNWIRED as of\n"
+        "commit 5 — both media buttons wait on Shawn's captioned video.\n\n"
         "Staged: %s/ - routes curl-verified byte-identical by sha256 after the PUT. "
         "NO PR, NO MERGE — the checker and the captain come after this seat. "
         "Nothing live." % (worker_sha[:8], st.STAGING))

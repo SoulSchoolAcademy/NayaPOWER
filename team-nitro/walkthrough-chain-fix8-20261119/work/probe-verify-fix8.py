@@ -2,9 +2,10 @@
 """FIX8 render verification (python playwright): staged /agreement + /
 at 1920x999 via the h1 forwarder proxy. Proves F1-F9 on the live staged
 bytes: frame 1 whole, no blanking over 10s, Next/Keep reading moving
-frame by frame, Back present, Play/audio playing, video slot, faces
-loaded, home entrance + nav visible. No sign-in, no submit, no agree —
-navigation clicks only (Next/Keep reading/Back/video-note toggle)."""
+frame by frame, Back present, both media buttons waiting with nothing
+wired (F9 corrected: no audio element, no mp3 string anywhere), video
+slot, faces loaded, home entrance + nav visible. No sign-in, no submit,
+no agree — navigation clicks only (Next/Keep reading/Back/note toggles)."""
 import json
 from playwright.sync_api import sync_playwright
 
@@ -23,7 +24,6 @@ AGREE_JS = r"""
   const sc = cb ? cb.querySelector('.frame-scroll') : null;
   const face = cb ? cb.querySelector('.frame-face') : null;
   const media = q('#fpMediaFrame');
-  const audio = q('#fpAgreeAudio');
   return {
     cur, beatsTotal: beats.length,
     mainClass: (q('main.p3-deal-unfold') || {}).className,
@@ -38,9 +38,12 @@ AGREE_JS = r"""
     firstPara: cb ? (cb.querySelector('.ib-nutshell p') || {}).textContent : null,
     media: media ? {rect: r(media), audioBtn: (() => { const b = q('#playBtn'); return b ? {rect: r(b), label: b.getAttribute('aria-label')} : null; })(),
       state: (q('#fpAudioState') || {}).textContent,
+      audioNoteHidden: (q('#fpAudioNote') || {}).hidden,
+      audioNote: (q('#fpAudioNote') || {}).textContent,
       videoBtn: (() => { const b = q('#fpAnthemVideoBtn'); return b ? {rect: r(b), slot: b.getAttribute('data-anthem-slot')} : null; })(),
       noteHidden: (q('#fpAnthemNote') || {}).hidden} : null,
-    audio: audio ? {src: audio.src.slice(0, 110), paused: audio.paused, time: Math.round(audio.currentTime * 10) / 10, dur: Math.round(audio.duration || 0)} : null,
+    audioEl: !!document.querySelector('audio'),
+    pageHasMp3: document.documentElement.outerHTML.includes('agreement-naya-voice') || document.documentElement.outerHTML.includes('62bf05e6'),
     dots: r(q('#deckControls')),
     footLinks: r(q('.foot-links')),
     frameZ: (() => { const f = q('.naya-frame'); return f ? getComputedStyle(f).zIndex : null; })(),
@@ -121,17 +124,20 @@ with sync_playwright() as p:
     print("SHOWCASE frame1: " + str(pg.evaluate("() => { const im = document.querySelector('#deckBody .letter-beat.frame-now .lb-showcase img'); return im ? {complete: im.complete, nw: im.naturalWidth, alt: im.alt.slice(0,60)} : null; }")))
     pg.evaluate("() => { const sc = document.querySelector('#deckBody .letter-beat.frame-now .frame-scroll'); if (sc) sc.scrollTop = 0; }")
     pg.wait_for_timeout(400)
-    # F4/F9: click the audio orb, wait, check playing state + time advancing
-    pg.click("#playBtn")
-    pg.wait_for_timeout(3000)
+    # F4/F9 (corrected): NO audio is wired — the orb reveals the waiting
+    # note, visibly. Assert no <audio> element exists and no mp3 string
+    # appears anywhere in the page.
     s = pg.evaluate(AGREE_JS)
-    print("AFTER Play click: audio=%s state=%r" % (s["audio"], (s["media"] or {}).get("state")))
-    pg.screenshot(path=OUT + "verify-agree-playing.png")
-    pg.wait_for_timeout(2000)
-    s2 = pg.evaluate(AGREE_JS)
-    print("AUDIO +2s: time=%s paused=%s" % ((s2["audio"] or {}).get("time"), (s2["audio"] or {}).get("paused")))
-    pg.click("#playBtn")  # pause again
+    print("BEFORE Play click: audioEl=%s pageHasMp3=%s state=%r" % (s["audioEl"], s["pageHasMp3"], (s["media"] or {}).get("state")))
+    pg.click("#playBtn")
     pg.wait_for_timeout(500)
+    s = pg.evaluate(AGREE_JS)
+    print("AFTER Play click: audioNoteHidden=%s note=%r" % ((s["media"] or {}).get("audioNoteHidden"), ((s["media"] or {}).get("audioNote") or "")[:120]))
+    pg.screenshot(path=OUT + "verify-agree-audio-waiting.png")
+    pg.click("#playBtn")  # hide again
+    pg.wait_for_timeout(500)
+    s = pg.evaluate(AGREE_JS)
+    print("AFTER Play click #2: audioNoteHidden=%s" % ((s["media"] or {}).get("audioNoteHidden")))
     # F9 video slot toggle
     pg.click("#fpAnthemVideoBtn")
     pg.wait_for_timeout(500)

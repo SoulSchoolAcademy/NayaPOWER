@@ -35,8 +35,8 @@ WALK_LOCAL = "/home/hatch/workspace/team-nitro/walk-v23-assembly-20261114/walk-b
 WALK_SHA = "b6befc332d65dd26d01649edd09810e9f83284a73a10a6af30f6691f5f118773"
 IDENT_SHA = "3279dc3572337e5e971369a3742effcaac7f6e5b059192ddaa6e689f0f92886c"
 WELCOME_SHA = "2062739ecb968b78cd823440bcfd4bbb8f7d0190d3bb2e5443ab3b35c0081955"
-UNFOLD_SHA = "0bb21457c62d66ae04e0f9b5fced34e1e13edad1a07e0a8b8cf019edbabffa33"
-UNFOLD_BYTES = 131955
+UNFOLD_SHA = "43f5e4e16f333b6cbcbe5bfeaad5762b35b8ab0be4f153d37baa01d4be56010a"
+UNFOLD_BYTES = 131028
 
 
 def run_pipeline():
@@ -81,7 +81,7 @@ def run_builder8(new_welcome, welcome_sha, ident_sha, unfold_sha, unfold_bytes):
         print("builder run %d: worker %d B sha=%s" % (n + 1, len(r.stdout), st.sha(r.stdout)[:12]), flush=True)
     assert workers[0] == workers[1], "worker build not deterministic"
     w = workers[0]
-    for marker in (b"fpFrame8", b"fpFrame7", b"fpMediaFrame", b"fpAgreeAudio",
+    for marker in (b"fpFrame8", b"fpFrame7", b"fpMediaFrame",
                    b"stay on the entrance",
                    b"FIX6 (2026-11-19", b"gateDone6", b"claimRow6", b"dk6",
                    b"verdictChecked", b"FIX5 (2026-11-19", b"checkAliasAvailability"):
@@ -117,7 +117,7 @@ def main():
     assert st.sha(new_ident) == IDENT_SHA, "identity moved: %s" % st.sha(new_ident)
     assert st.sha(new_welcome) == WELCOME_SHA, "welcome moved: %s" % st.sha(new_welcome)
     assert st.sha(new_unfold) == UNFOLD_SHA, "unfold moved"
-    assert b'assert unfold_sha.startswith("0bb21457")' in builder, "builder unfold assert not moved"
+    assert b'assert unfold_sha.startswith("43f5e4e1")' in builder, "builder unfold assert not moved"
     assert b'assert welcome_sha.startswith("2062739e")' in builder, "builder welcome assert not moved"
     assert b'UNFOLD_RAW' in builder, "builder missing UNFOLD_RAW"
     assert b"stay on the entrance" in new_welcome, "welcome F6 edit missing"

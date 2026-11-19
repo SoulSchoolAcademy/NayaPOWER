@@ -5,11 +5,13 @@
    2. Verify sha e21f08d0.
    3. Apply the FIX8 insertions (frame CSS8 + JS8) taken verbatim from
       build-frame8.py's CSS8/JS8 strings (literal UTF-8 — no \u collapsing
-      needed; only the __AUDIO_URL__ / __CRYSTAL_URL__ placeholders).
+      needed; only the __CRYSTAL_URL__ placeholder).
    4. Guards: fix-7 present, fix-8 absent, content needles intact, beat /
       article counts unchanged, no 'Welcome' button/pill introduced
       (F8 — the word Welcome must not appear in any added button label).
-   5. node --check every script block. stdout carries ONLY the bytes. */
+   5. node --check every script block. stdout carries ONLY the bytes.
+   CORRECTION (commit 5, ~14:50 MST): no audio is wired at all — the
+   mp3 must not appear in the built page (see the F9 guard below). */
 const fs = require('fs');
 const crypto = require('crypto');
 const { spawnSync } = require('child_process');
@@ -44,13 +46,11 @@ function pyStr(name) {
   if (!m) { console.error('no ' + name + ' in ' + PY); process.exit(1); }
   return m[1];
 }
-const audioUrl = 'https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/agreement-naya-voice.mp3&ref=walkthrough/chain-fix8-20261119&cb=62bf05e68a036e86b5aa3280c16b9dd810dda711abf1fd34612cda10b2b9261a';
 const crystalUrl = 'https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/crystal-n.png&ref=walkthrough/chain-fix8-20261119&cb=ee4b627c0c254ed9165715308fa282010ce8cf3c';
 let CSS = pyStr('CSS8');
 let JS = pyStr('JS8')
-  .replace(/__AUDIO_URL__/g, audioUrl)
   .replace(/__CRYSTAL_URL__/g, crystalUrl);
-if (JS.includes('__AUDIO_URL__') || JS.includes('__CRYSTAL_URL__')) { console.error('placeholder left unreplaced'); process.exit(1); }
+if (JS.includes('__CRYSTAL_URL__')) { console.error('placeholder left unreplaced'); process.exit(1); }
 if (CSS.includes('__')) { console.error('CSS placeholder left'); process.exit(1); }
 
 let text = base;
@@ -61,7 +61,7 @@ text = text.replace('</body>', JS + '\n</body>');
 const out = Buffer.from(text, 'utf8');
 for (const needle of ["Hi, I&#x27;m Naya.", 'What if it could help you learn faster',
   'I agree — show me my world', 'dealAgreeBtn', 'wireDeck', 'wirePlay', 'wireAgree',
-  'fpFrame7', 'fpFrame8', 'fpMediaFrame', 'fpAgreeAudio', 'fpAnthemVideoBtn']) {
+  'fpFrame7', 'fpFrame8', 'fpMediaFrame', 'fpAnthemVideoBtn']) {
   if (!text.includes(needle)) { console.error('content lost: ' + needle); process.exit(1); }
 }
 const count = (s, n) => s.split(n).length - 1;
@@ -71,8 +71,12 @@ if (count(text, '<article') !== count(base, '<article')) { console.error('articl
 // a button whose label carries the word Welcome.
 const added = CSS + JS;
 if (/Welcome/i.test(added)) { console.error('F8 VIOLATION: added blocks mention Welcome'); process.exit(1); }
-// F9: the wrong files must never be wired.
-if (/Inside_the_NayaNET|b60233efb19466a0356330778ce38d5363d38cc77ca87435a64187d4c20eef19/.test(text)) {
+// F9: the wrong files must never be wired. The mp3 is not wired either
+// (correction ~14:50 MST: Shawn has NOT given the audio yet — the audio
+// is cut from his captioned video, which has not arrived; nothing is
+// substituted). Any reference to the mp3, the Oct-29 mp4, or the
+// NotebookLM m4a files fails the build.
+if (/Inside_the_NayaNET|b60233efb19466a0356330778ce38d5363d38cc77ca87435a64187d4c20eef19|agreement-naya-voice|62bf05e6|<audio/.test(text)) {
   console.error('F9 VIOLATION: forbidden media referenced'); process.exit(1);
 }
 const newSha = sha(out);
