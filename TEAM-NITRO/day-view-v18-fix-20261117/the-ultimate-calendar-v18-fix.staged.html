@@ -2406,6 +2406,36 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   .smart-block[aria-label="Journal"] .ink-timeline{margin-bottom:168px!important;flex:none!important}
   .wx-bottomleft:has(.wx-note){max-width:calc(100vw - var(--bw,96px) - 16px)!important;padding-bottom:2px!important}
   }
+  /* FIX7 — (1) the slide header's first line clears the sticky dots strip on
+     phone: the dots' opaque band sits at y340-362 (dots y346-356 + the 6px
+     fix-6 shadow band) while the header's first line starts at y346, so the
+     strip crosses the line on Summary / Twin / Journal / Your worlds
+     (measured first-line overlap 1504 / 960 / 376 / 1433 px2 at rest; the
+     eye's session read 931 / 636 / 314 / 48). The dots never move — their y
+     stays 346 and the band is the fix-6 backing. The header gains its own
+     clear band instead: +24px top margin on .cat-head, phone only. The
+     first line lands at y370, 8px clear of the band bottom in every session
+     (header top = band top + 6 by construction: dots 10px tall, sticky top
+     10px, shadow 6px — so +24 lands exactly 8px clear). The essence rides
+     down with the header and stays clear; 700/1920 untouched.
+     (2)+(3) the doorbar overflows on phone/tablet: back + chip + title div
+     + .door-where need ~614px in a 310px bar, so the title div squeezes to
+     its min-content (153.8px — the title wraps, the sub wraps to 4 lines
+     with the middle dot alone on its own line) and the nowrap .door-where
+     spills past the viewport (+259.7px on the record door, +213.2px on the
+     personal door — only "DA" / "PE" visible at the edge). At <=740px the
+     bar wraps into rows: back + chip on row one, the title div full-width
+     on row two (title one line, sub two lines, the dot rides with WEDNESDAY
+     by construction), .door-where full-width on row three, wrapping allowed
+     so long labels read whole inside the viewport. 1920 untouched. */
+  @media(max-width:560px){
+  .cat-head{margin-top:24px!important}
+  }
+  @media(max-width:740px){
+  .doorbar{flex-wrap:wrap!important}
+  .doorbar>div{flex:1 1 100%!important;order:3!important;min-width:0!important}
+  .door-where{margin-left:0!important;flex:1 1 100%!important;order:4!important;white-space:normal!important}
+  }
 </style>
   </head>
   <body>
