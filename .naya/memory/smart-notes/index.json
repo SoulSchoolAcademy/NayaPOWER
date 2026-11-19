@@ -64644,6 +64644,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3678",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3678-nothing-sits-everything-compounds",
+      "slug": "nothing-sits-everything-compounds",
+      "title": "Nothing Sits, Everything Compounds",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3678/IB-SMART-NOTE-20261119-sn3678-nothing-sits-everything-compounds.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3678/IB-SMART-NOTE-20261119-sn3678-nothing-sits-everything-compounds.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3678/IB-SMART-NOTE-20261119-sn3678-nothing-sits-everything-compounds.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3678-nothing-sits-everything-compounds.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T12:26:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "64e98e8fc9e3446b77fa3e2d8dd58f028f8e9e2a2bf958d42162f62f999cd50a",
+      "content_hash": "8947f0c5767e7bd21d8ada053321dc0de3ae9e33ed02fc82cb2cdcf2afaed888",
+      "one_line": "The job is to identify value, capture it, create it, automate it — gems: a lesson made good, a reusable part, a function that builds the new net. The body gets upgraded, not just the engine: more compute in the same body goes no faster; intelligence is the body — remembering, distilling, behaving — upgraded. Intelligence itself is leveled: sense-act-goal, skill in one world, adaptation, and the sweet spot where production is continuously valuable — bullseye, not speed. Build like the pieces already there: the franchise rule — every button at the level of the best button on the page, taken verbatim from the page's own pattern. Counts don't pass; the read decides — three news rounds proved a page can pass every count and fail every read. Any place or topic becomes a feed on the spot: type it, boom, a mini social network, indexed. Dial everything in for four judges — machine, algorithm, Nayas, humans — a thousand miles an hour or don't enter the race. Keep going until everything is aligned and connected, thinking first. And the North Star is a doing machine: a list that dispatches work, not a list that watches it sit.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64654,5 +64687,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "bc605569ca95ed40ee7d202a4e5b5c4492cf970cb2b9f3993b473d2e3ea00a58"
+  "corpus_manifest_hash": "850389fecdbc30a774c9e6a18a1f5dbbdf5da0604d5a833441001060f4c0d709"
 }
