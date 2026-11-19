@@ -2619,6 +2619,89 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 .panel.news-active .formtitle{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important}
 .news-sel{display:inline-flex!important;align-items:center!important;flex:none!important;min-height:34px!important;padding:4px 14px!important;border-radius:999px!important;font-size:17px!important;font-weight:800!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:#fff!important;background:linear-gradient(180deg,#17171f,#08080d)!important;border:1.5px solid var(--sc)!important;box-shadow:0 0 12px color-mix(in srgb,var(--sc) 35%,transparent),inset 0 1px 0 rgba(255,255,255,.2)!important;white-space:nowrap!important}
 
+/* ============ FIX11 — calendar day follow-on, 19 items (2026-11-19) ============ */
+/* (1)(5)(16)(17) THE NAV NEVER COVERS CONTENT — the slide is a flex column
+   of the viewport; its content rides in .sb-scroll (JS wraps every slide's
+   content children once, item 12: the same path every day), and the dots +
+   nav are flex-none footers in the black band below it. At rest the nav
+   sits just above the frame edge, clear of every row and circle, on every
+   slide, at every width. The sticky/absolute navs that overlaid the 10 AM
+   row, the summary rows and the world circles are gone — every earlier
+   sticky/absolute nav rule is overridden here, later position, including
+   the wisdom and chamber specials. */
+#dayScroll .smart-block{overflow:hidden!important;padding-bottom:0!important;justify-content:flex-start!important}
+#dayScroll .smart-block .sb-scroll{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;display:flex!important;flex-direction:column!important;justify-content:safe center!important;width:100%!important;max-width:1100px!important;margin-left:auto!important;margin-right:auto!important}
+#dayScroll .smart-block .sb-scroll>*{max-width:1100px!important;width:100%!important;margin-left:auto!important;margin-right:auto!important}
+#dayScroll .smart-block .sb-nav{position:static!important;left:auto!important;right:auto!important;transform:none!important;bottom:auto!important;top:auto!important;margin:8px auto 0!important;flex:none!important;background:none!important;padding-top:8px!important;order:2!important;z-index:2!important}
+#dayScroll .smart-block .sb-dots{position:static!important;left:auto!important;right:auto!important;transform:none!important;bottom:auto!important;top:auto!important;margin:10px auto 0!important;flex:none!important;order:1!important;z-index:2!important;background:none!important;box-shadow:none!important}
+#dayScroll #wisdomBanner .sb-nav{position:static!important;bottom:auto!important;top:auto!important;margin:8px auto 0!important;flex:none!important;background:none!important;padding-top:8px!important;order:2!important}
+#dayScroll #chamberBlock .sb-nav{position:static!important;bottom:auto!important;top:auto!important;margin:8px auto 0!important;flex:none!important;background:none!important;padding-top:8px!important;order:2!important}
+#dayScroll #wisdomBanner .sb-dots{position:static!important;bottom:auto!important;top:auto!important;margin:10px auto 0!important;flex:none!important;order:1!important;background:none!important;box-shadow:none!important}
+#dayScroll #chamberBlock .sb-dots{position:static!important;bottom:auto!important;top:auto!important;margin:10px auto 0!important;flex:none!important;order:1!important;background:none!important;box-shadow:none!important}
+@media(max-height:480px){#dayScroll .smart-block{overflow:hidden!important}}
+@media(max-width:560px){
+  #dayScroll .smart-block .sb-nav{bottom:auto!important;gap:6px!important}
+  #dayScroll .smart-block .sb-dots{top:auto!important}
+  .hl-center .hl-monthline{white-space:normal!important}
+  /* (18) JOURNAL — the empty-state line reads in full at rest: the 168px
+     trailing margin that pushed it under the old nav is gone (the footer
+     nav never overlays now); the timeline keeps its height (flex:none,
+     the fix-6 cure for the zero-height squeeze). */
+  .smart-block[aria-label="Journal"] .ink-timeline{margin-bottom:24px!important;flex:none!important}
+}
+/* (2) THE TIMELINE AS REAL BOOKABLE SLOTS — every hour is an obsidian
+   slot-object (rim in the day colour, jewel bullet, white hour, alive on
+   hover, presses in on tap). A booked hour shows its real booking; an
+   open hour says so honestly. Never just times with diamonds. */
+.tl-slot{display:flex!important;align-items:center!important;gap:12px!important;width:100%!important;text-align:left!important;padding:10px 12px!important;margin:0 0 8px!important;border-radius:14px!important;background:linear-gradient(180deg,#15151f,#08080d)!important;border:1.5px solid color-mix(in srgb,var(--dc,#3fb8ff) 55%,transparent)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 6px 14px rgba(0,0,0,.5),0 0 10px color-mix(in srgb,var(--dc,#3fb8ff) 18%,transparent)!important;cursor:pointer!important;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease!important}
+.tl-slot:hover{transform:translateY(-2px)!important;filter:brightness(1.22)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 20px rgba(0,0,0,.55),0 0 20px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent)!important}
+.tl-slot:active{transform:scale(.97)!important}
+.tl-slot .tl-hour{flex:none!important;font-size:19px!important;font-weight:800!important;color:#fff!important;min-width:74px!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important}
+.tl-slot .tl-jewel{flex:none!important;width:12px!important;height:12px!important;transform:rotate(45deg)!important;border-radius:2px!important;background:linear-gradient(135deg,#ffffff 0%,var(--dc,#3fb8ff) 55%,color-mix(in srgb,var(--dc,#3fb8ff) 50%,#000000) 100%)!important;box-shadow:0 0 8px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent)!important}
+.tl-slot .tl-state{flex:1 1 auto!important;min-width:0!important;display:flex!important;align-items:center!important;gap:8px!important;flex-wrap:wrap!important}
+.tl-slot .tl-open{font-size:17px!important;font-weight:700!important;color:#fff!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important}
+.tl-slot.tl-booked{border-color:var(--dc,#3fb8ff)!important}
+/* (7) THE SUMMARY — five big labeled icons, one column, in his order.
+   Each row is a real object: a 72px obsidian disc in its own colour
+   (the world-ico anatomy, harvested) beside a white 19px label. */
+.sum-list{display:flex!important;flex-direction:column!important;gap:16px!important;margin-top:16px!important}
+.sum-row{align-items:center!important;min-height:88px!important;padding:12px 16px!important}
+.sum-row .sum-chip{flex:none!important;width:72px!important;height:72px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;background:radial-gradient(circle at 34% 26%,#2c3044 0%,#13131f 52%,#050607 100%)!important;border:2px solid var(--c,#fff)!important;color:#fff!important;box-shadow:0 10px 22px rgba(0,0,0,.6),0 0 18px color-mix(in srgb,var(--c,#fff) 30%,transparent),inset 0 2px 3px rgba(255,255,255,.4),inset 0 -8px 12px rgba(0,0,0,.6)!important}
+.sum-row .sum-chip svg{width:44%!important;height:44%!important}
+.sum-row .lr-l{font-size:19px!important}
+/* (10) NAYA NOTES + SMART NOTES — to the emblem standard. The kind labels
+   are white, 19px, bold, letterspaced, lit in their own colour's glow
+   (never coloured text, laws §2.2). The note blocks are real obsidian
+   objects: 2px rim in their own colour, layered shadow, inset top light,
+   alive on hover. The Make/Save buttons are the circle-N pill standard
+   (harvested .pill anatomy): 2px rim, deep shade, underglow, lift on
+   hover, press to .97. */
+.twinblock .twin-note{border:2px solid color-mix(in srgb,var(--nc,#fff) 80%,transparent)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -4px 8px rgba(0,0,0,.5),0 0 20px color-mix(in srgb,var(--nc,#fff) 35%,transparent),0 10px 22px rgba(0,0,0,.6)!important;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease!important}
+.twinblock .twin-note:hover{transform:translateY(-2px)!important;filter:brightness(1.22)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -4px 8px rgba(0,0,0,.5),0 0 32px color-mix(in srgb,var(--nc,#fff) 55%,transparent),0 14px 28px rgba(0,0,0,.65)!important}
+.twinblock .twin-note:active{transform:scale(.97)!important}
+.twinblock .tn-kind{color:#fff!important;font-size:19px!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,var(--nc,#fff) 55%,transparent)!important}
+.twinblock .twin-out{grid-template-columns:1fr!important}
+.twinblock .bookbtn{border:2px solid color-mix(in srgb,var(--dc,#8e24aa) 75%,#ffffff 25%)!important;background:linear-gradient(135deg,#232330 0%,#0b0b12 55%,#050507 100%)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 16px color-mix(in srgb,var(--dc,#8e24aa) 35%,transparent),0 8px 18px rgba(0,0,0,.6)!important}
+.twinblock .bookbtn:hover{transform:translateY(-2px)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 28px color-mix(in srgb,var(--dc,#8e24aa) 55%,transparent),0 12px 24px rgba(0,0,0,.65)!important}
+.twinblock .bookbtn:active{transform:scale(.97)!important}
+.twinblock .ink-input{border:1.5px solid color-mix(in srgb,var(--dc,#3fb8ff) 60%,transparent)!important;box-shadow:inset 0 2px 8px rgba(0,0,0,.6),0 0 14px color-mix(in srgb,var(--dc,#3fb8ff) 20%,transparent)!important}
+.twinblock .ink-input:focus{outline:none!important;border-color:var(--dc,#3fb8ff)!important;box-shadow:inset 0 2px 8px rgba(0,0,0,.6),0 0 22px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent)!important}
+/* (13) WEEKDAY LABEL ↔ ICON GAP — a marginal increase only: 6px → 8px
+   on the week row, 3px → 8px at phone. Nothing else moves. */
+.weekrow>span{gap:8px!important}
+@media(max-width:560px){.weekrow .wk-col{gap:8px!important}}
+/* (14) HEADER — November and Thursday in the certificate script face
+   (Great Vibes, harvested from the wisdom quote — the same treatment as
+   a citizen's name on the certificates). The 19 keeps its dashboard
+   digit tiles (dayDigitsHTML, fix-8). The time sits in its own button,
+   centred, directly under November 2026. 2026 stays exactly as it was. */
+.hl-script{font-family:"Great Vibes","Marcellus",cursive!important;font-size:32px!important;line-height:1!important;letter-spacing:0!important;text-transform:none!important;color:#fff!important;text-shadow:0 -1px 0 rgba(255,255,255,.28),0 2px 3px rgba(0,0,0,.85),0 0 14px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent)!important}
+.hl-center{display:flex!important;flex-direction:column!important;align-items:center!important;gap:2px!important;justify-self:center!important;min-width:0!important}
+.hl-center .hl-monthline{white-space:nowrap!important}
+/* (19) WORLD + NEWS ICON COUNTS — the real count as a badge, harvested
+   from slide 1's .nb-corner: obsidian pill, own-colour rim, white 17px.
+   The orbit jewel stays — it is the icon's motion, not its count. */
+.world-ico .world-badge{position:absolute!important;top:-8px!important;right:-8px!important;min-width:30px!important;height:30px!important;padding:0 7px!important;border-radius:999px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-size:17px!important;font-weight:900!important;color:#fff!important;background:linear-gradient(180deg,#17171f,#08080d)!important;border:1.5px solid var(--c,#fff)!important;box-shadow:0 0 10px color-mix(in srgb,var(--c,#fff) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.3)!important;z-index:2!important}
 </style>
   </head>
   <body>
@@ -2813,7 +2896,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           { id: "record", label: "The Record", color: "#3f51b5", essence: "The day, written down." }
         ];
         var DOORS = [
-          { id: "daily", group: "record", label: "Daily Intelligence", color: "#3f51b5", icon: "spark", empty: "" },
+          { id: "daily", group: "record", label: "Intel Today", color: "#3f51b5", icon: "spark", empty: "" },
           { id: "reports", group: "record", label: "Your Reports", color: "#0e7490", icon: "landmark", empty: "" },
           { id: "smartnotes", group: "record", label: "Smart Notes", color: "#07925f", icon: "note", empty: "" },
           { id: "posts", group: "record", label: "Posts", color: "#c2410c", icon: "post", empty: "No posts for this day." },
@@ -3641,8 +3724,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             var chips = inHour.map(function (a) { return '<span class="tl-chip">' + fmtTime(a.time) + " · " + escapeHTML(a.title) + "</span>" + (a.meet ? '<span class="meet" style="flex:none;font-size:var(--type-small);font-weight:800;letter-spacing:.06em;padding:5px 11px;border-radius:999px;border:1px solid var(--d3);color:#bfeaff">Meet</span><button type="button" class="pill tl-join" data-join="' + dayAppts.indexOf(a) + '" aria-label="Join the Smart Meet at ' + fmtTime(a.time) + '" style="flex:none">Join \u2192</button>' : ""); })
               .concat(jInHour.map(function (j) { return '<span class="tl-chip journal">Journal · ' + (j.at ? fmtTimeOf(j.at) : "") + " — " + escapeHTML(clipText(j.text || "", 40)) + "</span>"; }))
               .concat(nInHour.map(function (n) { return '<span class="tl-chip note">Note · ' + (n.at ? fmtTimeOf(n.at) : "") + " — " + escapeHTML(clipText(n.text || "", 40)) + "</span>"; }));
-            tl += '<div class="tl-row"><span class="th">' + hlabel + '</span><span class="tline"></span><span class="te">' +
-              chips.join(" ") + "</span></div>";
+            /* FIX11 item 2 — the timeline is a real bookable surface:
+               every hour is a slot, not a time with a diamond. A booked
+               hour shows its real booking (never invented); an open hour
+               says so honestly. Tapping a slot opens the book-a-time
+               flow for that hour (openBookFor, wired once below). */
+            tl += '<div class="tl-slot' + (inHour.length ? ' tl-booked' : '') + '" role="button" tabindex="0" data-slot="' + String(h).padStart(2, "0") + ':00" aria-label="Book ' + hlabel + (inHour.length ? ' — ' + inHour.length + ' booked' : ' — open') + '">' +
+              '<span class="tl-hour">' + hlabel + '</span><span class="tl-jewel" aria-hidden="true"></span><span class="tl-state">' +
+              (chips.join(" ") || '<span class="tl-open">Open — tap to book</span>') + "</span></div>";
           }
           return tl;
         }
@@ -3694,12 +3783,19 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              tiles, white with the day's glow (the 2026-11-17 ruling — the
              weekday stays white; the old inline day-colour style is gone).
              The world clock holds dead centre. */
+          /* FIX11 item 14 — November in the certificate script face
+             (Great Vibes, harvested from the wisdom quote); the time in
+             its own button, centred, directly under November 2026; on
+             the left, sort of centred, "Thursday the 19th" — Thursday
+             in the same script, the 19 in dashboard digit tiles with
+             the day's colour around the edge (dayDigitsHTML, fix-8 —
+             the 19 on the day itself). 2026 stays exactly as it was. */
           head.innerHTML =
             '<div class="official-headliner">' +
-              '<span class="hl-left"><span class="hl-dayrow">' + digitsHTML(d.getDate(), false, true) + '<span class="hl-weekday">' + WEEKDAYS[d.getDay()] + '</span></span>' +
-              '<span class="hl-monthline">' + MONTHS[d.getMonth()] + " " + d.getFullYear() + " \u00b7 <span style=\"white-space:nowrap\">" + DAY_FREQ[d.getDay()] + " Hz</span></span></span>" +
+              '<span class="hl-left"><span class="hl-dayrow"><span class="hl-script">' + WEEKDAYS[d.getDay()] + '</span>' + dayDigitsHTML(d.getDate(), dc) + '</span></span>' +
+              '<span class="hl-center"><span class="hl-monthline"><span class="hl-script">' + MONTHS[d.getMonth()] + '</span> ' + d.getFullYear() + " \u00b7 <span style=\"white-space:nowrap\">" + DAY_FREQ[d.getDay()] + " Hz</span></span>" +
               '<span class="hl-timewrap"><button type="button" class="hl-time" id="greetClock" aria-label="World clock — tap to choose a time zone"></button>' +
-              '<button type="button" class="clock-tool" id="clockToolBtn" aria-label="Change the time">' + ICONS.clock + '</button></span>' +
+              '<button type="button" class="clock-tool" id="clockToolBtn" aria-label="Change the time">' + ICONS.clock + '</button></span></span>' +
               '<button type="button" class="stats-btn" id="statsBtn">Your Stats</button>' +
             "</div>" +
             '<span class="sigpiece" style="--dc:' + dc + '" role="img" aria-label="' + WEEKDAYS[d.getDay()] + '"><span class="sp-ring-a"></span><span class="sp-ring-b"></span><span class="sp-metal"></span><span class="sp-pearl"></span></span>';
@@ -3723,7 +3819,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                emerald crystal, verbatim — and the chamber image on
                the other six days until he sends their defaults. */
             var __ci=$("coverImg");
-            if(__ci){var __cv=LS.get("nayacal.cover.v1"); if(__cv&&__cv.src){__ci.src=__cv.src;} else if(d.getDay()===4){__ci.src=COVER_THURSDAY;} else {__ci.src=COVER_CHAMBER;}}
+            /* FIX11 item 15 — the cover is keyed by DAY: Thursday's upload
+               stays on Thursday, Friday's on Friday, no bleed. */
+            if(__ci){var __cv=LS.get("nayacal.cover.v1." + keyOf(d)); if(__cv&&__cv.src){__ci.src=__cv.src;} else if(d.getDay()===4){__ci.src=COVER_THURSDAY;} else {__ci.src=COVER_CHAMBER;}}
 
           /* The greeting + weather live in the wisdom bar now
              (rendered into #wisdomBanner above — one bar, wisdom +
@@ -3764,7 +3862,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             if (cf) cf.addEventListener("change", function () {
               var file = cf.files && cf.files[0]; if (!file) return;
               var r = new FileReader();
-              r.onload = function () { var ci = $("coverImg"); if (ci) ci.src = r.result; try { LS.set("nayacal.cover.v1", { src: r.result }); } catch (e) {} };
+              r.onload = function () { var ci = $("coverImg"); if (ci) ci.src = r.result; try { LS.set("nayacal.cover.v1." + keyOf(sel), { src: r.result }); } catch (e) {} }; /* FIX11 item 15 — saved to this day only */
               r.readAsDataURL(file);
             });
           }
@@ -3833,6 +3931,16 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             (count ? '<span class="badge">' + count + '</span>' : '') +
             '<span class="lr-chev" aria-hidden="true">›</span></button>';
         }
+        /* FIX11 item 7 — a summary icon: the big labeled icon row. A
+           door opens its door; a goto jumps to its twin slide. */
+        function sumRow(doorId, color, iconName, label, glimpse, count, gotoLabel) {
+          return '<button type="button" class="cat-row sum-row" style="--c:' + color + '"' + (doorId ? ' data-door="' + doorId + '"' : '') + (gotoLabel ? ' data-goto="' + gotoLabel + '"' : '') + '>' +
+            '<span class="chip sum-chip">' + ICONS[iconName] + '</span>' +
+            '<span class="lr-l">' + label + '</span>' +
+            '<span class="lr-g">' + escapeHTML(glimpse) + '</span>' +
+            (count ? '<span class="badge">' + count + '</span>' : '') +
+            '<span class="lr-chev" aria-hidden="true">›</span></button>';
+        }
         /* v18 — same word-safe cut as clipText (inlined: this
            function sits outside clipText's scope, so the three
            lines are carried here rather than called) */
@@ -3892,7 +4000,47 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             if (on) { x.classList.remove("smart-pop"); void x.offsetWidth; x.classList.add("smart-pop"); }
           });
           var sc = $("dayScroll"); if (sc) sc.scrollTop = 0;
+          frameSlides();
+          syncWx();
           dayDots();
+        }
+        /* FIX11 — slide framing + slide jumps + weather gating, shared
+           by every slide, every day (item 12: the same concept follows
+           through for all days — these run on the same render path no
+           matter which day is on screen). */
+        function __slideKey(el) { return el.id || ((el.getAttribute("aria-label") || "") + "|" + (el.className || "").replace(/\b(on|smart-pop)\b/g, "").replace(/\s+/g, " ").trim()); }
+        function frameSlides() {
+          dayBlocks().forEach(function (blk) {
+            var has = false;
+            Array.prototype.forEach.call(blk.children, function (c) { if (c.classList && c.classList.contains("sb-scroll")) has = true; });
+            if (has) return;
+            var wrap = document.createElement("div");
+            wrap.className = "sb-scroll";
+            var kids = [];
+            Array.prototype.forEach.call(blk.childNodes, function (n) { kids.push(n); });
+            kids.forEach(function (n) {
+              if (n.nodeType === 1 && n.classList && (n.classList.contains("sb-nav") || n.classList.contains("sb-dots") || n.classList.contains("slide-back"))) return;
+              wrap.appendChild(n);
+            });
+            blk.insertBefore(wrap, blk.firstChild);
+          });
+        }
+        function gotoSlideByLabel(label) {
+          var blocks = dayBlocks();
+          for (var i = 0; i < blocks.length; i++) {
+            if (blocks[i].getAttribute("aria-label") === label) { dayShow(i); return true; }
+          }
+          return false;
+        }
+        /* FIX11 item 6 — the weather entry lives on the wisdom slide
+           only (bottom-left, as dictated): the fixed pill hides on
+           every other slide, so it can never cover a row or an icon. */
+        function syncWx() {
+          var wx = $("wxBottomLeft");
+          if (!wx) return;
+          var blocks = dayBlocks();
+          var cur = blocks[dayBlock];
+          wx.style.display = (cur && cur.id === "wisdomBanner") ? "" : "none";
         }
         /* THE NAV ROW (live dictation §5 — the law for every room):
            Back lives TOP LEFT (the bar's own back control — the small
@@ -4031,22 +4179,45 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         /* §11 — the frame itself: one input in, both notes out. It
            lives inside the day page, in the day's colour, with depth,
            like everything else. */
-        function twinSection(dc) {
-          return '<section class="cat smart-block twinblock" style="--cc:' + dc + '" aria-label="One input, two notes">' +
+        /* FIX11 items 9+10 — ONE INPUT, TWO NOTES, as TWO slides: 8 Naya
+           Notes (the input lives here, with the Naya note for you) and
+           9 Smart Notes (the Smart note for the world, from the same
+           words). One input, one Make — the Make on either slide reads
+           the same input and fills both notes; Save (slide 8) saves
+           both. Labels in the design language, buttons and blocks as
+           real obsidian objects (FIX11 CSS). */
+        function twinSections(dc) {
+          var naya =
+            '<section class="cat smart-block twinblock" style="--cc:' + dc + '" aria-label="Naya Notes">' +
             '<button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>' +
-            '<div class="cat-head"><span class="cat-jewel" aria-hidden="true"></span><h2 class="cat-title">One input, two notes</h2></div>' +
-            '<p class="cat-essence">Write it once — a Naya note for you, a Smart note for the world.</p>' +
+            '<div class="cat-head"><span class="cat-jewel" aria-hidden="true"></span><h2 class="cat-title">Naya Notes</h2></div>' +
+            '<p class="cat-essence">Write it once — a Naya note for you.</p>' +
             '<textarea class="ink-input" id="twinInput" placeholder="Enter anything once…" aria-label="Write anything once" maxlength="1000"></textarea>' +
-            '<div class="frow" style="margin-top:10px"><button type="button" class="bookbtn" id="twinMakeBtn">Make both notes</button>' +
+            '<div class="frow" style="margin-top:10px"><button type="button" class="bookbtn twin-make">Make both notes</button>' +
             '<button type="button" class="bookbtn" id="twinSaveBtn" hidden>Save both</button></div>' +
-            '<div class="twin-out" id="twinOut" hidden>' +
+            '<div class="twin-out" id="twinOutNaya" hidden>' +
             '<div class="twin-note" style="--nc:' + dc + '"><p class="tn-kind">Naya note — for you</p><div id="twinNaya"></div></div>' +
+            '</div>' + dayNav(dc, false) + '<div class="sb-dots"></div></section>';
+          var smart =
+            '<section class="cat smart-block twinblock" style="--cc:#d4a017" aria-label="Smart Notes">' +
+            '<button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>' +
+            '<div class="cat-head"><span class="cat-jewel" aria-hidden="true"></span><h2 class="cat-title">Smart Notes</h2></div>' +
+            '<p class="cat-essence">The same words, said simplest — a Smart note for the world.</p>' +
+            '<div class="frow" style="margin-top:10px"><button type="button" class="bookbtn twin-make">Make both notes</button>' +
+            '<button type="button" class="bookbtn" data-goto="Naya Notes">Write it once &#8594;</button></div>' +
+            '<div class="twin-out" id="twinOutSmart" hidden>' +
             '<div class="twin-note" style="--nc:#d4a017"><p class="tn-kind">Smart note — for the world</p><div id="twinSmart"></div></div>' +
             '</div>' + dayNav(dc, true) + '<div class="sb-dots"></div></section>';
+          return naya + smart;
         }
 
         function renderCategories(apptRows, tl) {
           _daySplitMode = _daySplit();
+          /* FIX11 item 9 — the deck is reordered below; keep the citizen
+             on the SAME slide across the rebuild (its key, not its old
+             index, which now means a different slide). */
+          var __curKey = null;
+          try { var __cb0 = dayBlocks(); if (__cb0[dayBlock]) __curKey = __slideKey(__cb0[dayBlock]); } catch (e) {}
           var wrap = $("catsWrap");
           if (!wrap || !sel) return;
           var k = keyOf(sel);
@@ -4099,16 +4270,21 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              opens the door, and every door renders for sel, the day
              on screen. Glyphs are harvested from ICONS — one distinct
              glyph per icon, never the same shape in two colours. */
-          function worldIcon(doorId, color, iconName, label, scope) {
-            return '<button type="button" class="world-ico" style="--c:' + color + '" data-door="' + doorId + '"' + (scope ? ' data-news-scope="' + scope + '"' : '') + ' aria-label="' + label + ' — see this day">' + ICONS[iconName] + "</button>";
+          /* FIX11 item 19 — every world/news icon wears its real count
+             as a badge, like slide 1's "0" badges (0 where empty, never
+             invented): the tiny white dot was only the orbit jewel, not
+             a count. The icons stay label-free, his word. */
+          function worldIcon(doorId, color, iconName, label, scope, count) {
+            return '<button type="button" class="world-ico" style="--c:' + color + '" data-door="' + doorId + '"' + (scope ? ' data-news-scope="' + scope + '"' : '') + ' aria-label="' + label + ' — see this day' + (typeof count === "number" ? ', ' + count : '') + '">' + ICONS[iconName] + (typeof count === "number" ? '<span class="world-badge" aria-hidden="true">' + count + '</span>' : '') + "</button>";
           }
+          function worldCount(scopeId) { var r = scopeRealCount(scopeId); return r === null ? 0 : r; }
           var notifRowsA = '<div class="world-icons">' +
-            worldIcon("personal", "#07925f", "user", "Personal feed") +
-            worldIcon("work", "#0f52ba", "briefcase", "Business feed") +
-            worldIcon("world", "#8e24aa", "world", "Your world") +
-            worldIcon("mail", "#d4a017", "mail", "Smart Mail") +
-            worldIcon("messages", "#c2410c", "chat", "Messages") +
-            worldIcon("connections", "#a21caf", "people", "Connections") +
+            worldIcon("personal", "#07925f", "user", "Personal feed", null, worldCount("personal")) +
+            worldIcon("work", "#0f52ba", "briefcase", "Business feed", null, worldCount("work")) +
+            worldIcon("world", "#8e24aa", "world", "Your world", null, worldCount("worlds")) +
+            worldIcon("mail", "#d4a017", "mail", "Smart Mail", null, 0) +
+            worldIcon("messages", "#c2410c", "chat", "Messages", null, 0) +
+            worldIcon("connections", "#a21caf", "people", "Connections", null, 0) +
             "</div>";
           /* NEWS ONLY (§8): local, provincial, global. Weather lives in
              the bottom-left bar; horoscope has its own space (its door,
@@ -4120,9 +4296,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              yet — the door says so honestly per scope, and no headline
              is ever invented. */
           var notifRowsB = '<div class="world-icons news-icons">' +
-            worldIcon("news", "#0e7490", "news", "Local news", "local") +
-            worldIcon("news", "#07925f", "landmark", "Provincial news", "provincial") +
-            worldIcon("news", "#d4a017", "globe", "Global news", "global") +
+            worldIcon("news", "#0e7490", "news", "Local news", "local", 0) +
+            worldIcon("news", "#07925f", "landmark", "Provincial news", "provincial", 0) +
+            worldIcon("news", "#d4a017", "globe", "Global news", "global", 0) +
             "</div>";
           /* notifInner is kept whole: anything else reading it sees the full section. */
           var notifInner = notifCards + notifRowsA + notifRowsB;
@@ -4133,13 +4309,21 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              is the day written down and counted; the journal is its own
              board — write, dictate, paste, add Naya notes, upload images,
              share — with the living timeline of the day. */
-          var summaryInner = '<div class="panel summary-panel">' + intelHTML() + "</div>" + '<div class="cat-rows">' +
-            catRow("daily", "#3f51b5", "spark", "Daily Intelligence", "The day, counted — appointments, notes, journal and lists.", 0) +
-            catRow("journal", "#07925f", "book", "Journal", dayJournal.length ? dayJournal.length + (dayJournal.length === 1 ? " entry written for this day." : " entries written for this day.") : "Nothing written for this day yet.", dayJournal.length) +
-            catRow("reports", "#0e7490", "landmark", "Your Reports", "The day's report — appointments, notes, journal and lists, counted.", 0) +
-            catRow("smartnotes", "#d4a017", "note", "Smart Notes", dayNotes.length ? latestText(dayNotes) : "No notes for this day yet.", dayNotes.length) +
-            catRow("posts", "#c2410c", "post", "Posts", "No posts for this day.", 0) +
-            catRow("lists", "#c62828", "list", "Smart Lists", dayList.length ? dayList.length + (dayList.length === 1 ? " item on your list." : " items on your list.") : "Nothing on your list for this day yet.", dayList.length) +
+          /* FIX11 item 7 — the summary is five big labeled icons, in
+             his order: Your Journal, Your Reports, Intel Today, Smart
+             Notes, Nine Notes. NO Posts, NO Smart Lists. Each opens
+             that day's entry (doors for journal/reports/Intel Today;
+             the twin slides for the two notes). FIX11 item 8 — the
+             journal BOARD lives only on its own slide; the summary
+             carries only the icon that opens it. */
+          var nayaNotes = dayNotes.filter(function (n) { return (n.text || "").indexOf("Naya note — ") === 0; });
+          var smartNotes = dayNotes.filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; });
+          var summaryInner = '<div class="panel summary-panel">' + intelHTML() + "</div>" + '<div class="sum-list">' +
+            sumRow("journal", "#07925f", "book", "Your Journal", dayJournal.length ? dayJournal.length + (dayJournal.length === 1 ? " entry written for this day." : " entries written for this day.") : "Nothing written for this day yet.", dayJournal.length, null) +
+            sumRow("reports", "#0e7490", "landmark", "Your Reports", "The day's report — appointments, notes, journal and lists, counted.", 0, null) +
+            sumRow("daily", "#3f51b5", "spark", "Intel Today", "The day, counted — appointments, notes, journal and lists.", 0, null) +
+            sumRow(null, "#d4a017", "note", "Smart Notes", smartNotes.length ? latestText(smartNotes) : "No notes for this day yet.", smartNotes.length, "Smart Notes") +
+            sumRow(null, "#c2410c", "star", "Nine Notes", nayaNotes.length ? latestText(nayaNotes) : "No Naya notes for this day yet.", nayaNotes.length, "Naya Notes") +
             "</div>";
           var journalInner = journalBoardHTML();
           /* THE UNFOLD (Shawn 00:19Z — the agreement's unfold is the
@@ -4164,14 +4348,21 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              survive a day step. */
           var __staleNotif = document.querySelector("#dayScroll > .notif-slide");
           if (__staleNotif) __staleNotif.remove();
+          /* FIX11 item 9 — the deck in his order: 1 Notifications ·
+             2 Wisdom of the Day · 3 Cover · 4 Journal · 5 Your Worlds ·
+             6 News · 7 Appointments · 8 Naya Notes · 9 Smart Notes.
+             (Wisdom + Cover are the static blocks, moved into place
+             below.) The summary/record slide's slot was NOT named — it
+             is not guessed: it keeps its place directly after
+             Appointments, where it stands today. */
           wrap.innerHTML =
             catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond", null, "notif-slide allow-scroll") +
+            catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
             catSection(CATS[0], notifRowsA + dayNav(dc, false), null, "", "", dc, "orb", "worlds", "worlds-slide") +
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "", "", dc, "hex", null, "news-slide") +
             catSection(CATS[1], '<div class="dash-grid">' + apptsTile + timelineTile(tl, "6 AM – 9 PM") + '</div>' + dayNav("#8e24aa", false), "appointments", "Book a time, meet, and the day's timeline — 6 AM to 9 PM, on one screen.", "", "#8e24aa", null, null, "allow-scroll") +
             catSection(CATS[2], summaryInner + dayNav("#3f51b5", false), "record", "The day, written down — counted.", "Summary of the day", "#3f51b5", "diamond", null, "allow-scroll") +
-            catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
-            twinSection(dc);
+            twinSections(dc);
           /* FIX9 item 12 — NOTIFICATIONS FIRST (dot 0, the opening
              view), wisdom second, chamber next as the day's home;
              the rest keep their current relative order. dayBlocks()
@@ -4179,10 +4370,17 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              here, every render. */
           var __ds = $("dayScroll"), __notifSec = wrap.querySelector(".notif-slide"), __wisB = $("wisdomBanner"), __chB = $("chamberBlock");
           if (__ds && __notifSec && __wisB && __chB) { __ds.insertBefore(__notifSec, __chB); __ds.insertBefore(__wisB, __chB); }
+          /* FIX11 item 9 — remap the kept slide key onto the new order. */
+          if (__curKey) { var __nb = dayBlocks(); for (var __ni = 0; __ni < __nb.length; __ni++) { if (__slideKey(__nb[__ni]) === __curKey) { dayBlock = __ni; break; } } }
+          /* FIX11 item 4 — SMART MEET opens the book-a-time flow, NOT
+             the timeline: the door opens on the book form (item 3, first
+             in the door) with the Smart Meet toggle ON and the title
+             focused. BOOK A TIME opens the same flow with the time
+             focused. The timeline sits below the form, never the landing. */
           var tbb = $("tileBookBtn");
           if (tbb) tbb.addEventListener("click", function () {
             var door = doorById("appointments");
-            if (door) openDoor(door);
+            if (door) { openDoor(door); var bt = $("bkTime"); if (bt) bt.focus({ preventScroll: true }); }
           });
           var tmb = $("tileMeetBtn");
           if (tmb) tmb.addEventListener("click", function () {
@@ -4190,7 +4388,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             if (!door) return;
             openDoor(door);
             var m = $("bkMeet");
-            if (m && m.getAttribute("aria-pressed") !== "true") m.click();
+            if (m) m.setAttribute("aria-pressed", "true");
+            var ti = $("bkTitle"); if (ti) ti.focus({ preventScroll: true });
           });
           /* CALENDAR FIX 3 (DAY5) — JOIN IN APPOINTMENTS ITSELF: the tile
              row's Join buttons (see openDay) are wired here beside the
@@ -4230,16 +4429,21 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           }
           /* One input, two notes (§11): make them, then save them — the
              Naya note to the citizen, the Smart note to the world */
-          var tm = $("twinMakeBtn");
-          if (tm) tm.addEventListener("click", function () {
-            var v = $("twinInput").value.trim();
-            if (!v) return;
+          /* FIX11 items 9+10 — one Make on either twin slide reads the
+             same input and fills BOTH notes; empty input walks back to
+             the Naya Notes slide and focuses the input. */
+          var __twinMake = function () {
+            var inp = $("twinInput");
+            var v = inp ? inp.value.trim() : "";
+            if (!v) { gotoSlideByLabel("Naya Notes"); var i2 = $("twinInput"); if (i2) i2.focus(); return; }
             var out = twinNotes(v);
-            $("twinNaya").innerHTML = out.naya;
-            $("twinSmart").innerHTML = out.smart;
-            $("twinOut").hidden = false;
-            $("twinSaveBtn").hidden = false;
-          });
+            var tn = $("twinNaya"); if (tn) tn.innerHTML = out.naya;
+            var ts2 = $("twinSmart"); if (ts2) ts2.innerHTML = out.smart;
+            var o1 = $("twinOutNaya"); if (o1) o1.hidden = false;
+            var o2 = $("twinOutSmart"); if (o2) o2.hidden = false;
+            var sb = $("twinSaveBtn"); if (sb) sb.hidden = false;
+          };
+          wrap.querySelectorAll(".twin-make").forEach(function (b) { b.addEventListener("click", __twinMake); });
           var ts = $("twinSaveBtn");
           if (ts) ts.addEventListener("click", function () {
             var v = $("twinInput").value.trim();
@@ -4348,9 +4552,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                      (a.meet ? '<span class="meet">Smart Meet</span><button type="button" class="pill" data-join="' + idx + '" aria-label="Join the Smart Meet at ' + fmtTime(a.time) + '">Join the meet →</button>' : "") +
                      (a.fromMonth ? "" : '<button type="button" class="del" data-del="' + idx + '" aria-label="Remove ' + escapeHTML(a.title) + '">' + ICONS.x + "</button>") + "</div>";
             }).join("") : '<p class="none-line">Nothing booked for this day yet.</p>';
+            /* FIX11 item 3 — BOOK A TIME opens with the time control
+               at the top: the book form rides FIRST in the door (the
+               time input first in its row, the harvested picker —
+               no new time system), the list and timeline below it. */
             body.innerHTML =
-              '<div class="panel" role="list" aria-label="Appointments for this day">' + rows + "</div>" +
-              '<div class="panel"><p class="formtitle">Timeline · 6 AM – 9 PM</p>' + timelineHTML(k) + "</div>" +
               '<form class="panel" id="bookForm">' +
                 '<p class="formtitle">Book a time</p>' +
                 '<div class="frow">' +
@@ -4358,7 +4564,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                   '<input type="text" id="bkTitle" placeholder="What is it?" aria-label="Appointment title" maxlength="80" />' +
                   '<button type="button" class="meettoggle" id="bkMeet" aria-pressed="false">Smart Meet</button>' +
                   '<button type="submit" class="bookbtn">Book</button>' +
-                "</div></form>";
+                "</div></form>" +
+              '<div class="panel" role="list" aria-label="Appointments for this day">' + rows + "</div>" +
+              '<div class="panel"><p class="formtitle">Timeline · 6 AM – 9 PM</p>' + timelineHTML(k) + "</div>";
             $("bkMeet").addEventListener("click", function () {
               var on = this.getAttribute("aria-pressed") === "true";
               this.setAttribute("aria-pressed", String(!on));
@@ -4565,6 +4773,10 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              by the #dayScroll listener below (it catches the wisdom banner's
              and the chamber's navs too — the cats' navs bubble up through
              #catsWrap). */
+          /* FIX11 item 7 — a summary icon can jump to a slide instead
+             of a door (the two notes live on their twin slides). */
+          var go = ev.target.closest("[data-goto]");
+          if (go) { gotoSlideByLabel(go.getAttribute("data-goto")); return; }
           var btn = ev.target.closest("[data-door]");
           if (!btn) return;
           var door = DOORS.filter(function (d) { return d.id === btn.dataset.door; })[0];
@@ -4601,6 +4813,30 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var kp = ev.target.closest("[data-keep]");
           if (kp && sel) openDay(sel);
         });
+        /* FIX11 item 2 — a timeline slot opens the book-a-time flow for
+           that hour. Wired once on the document (the timeline is
+           re-rendered every day): a tap on a booked slot's Join button
+           keeps its own room — everything else on the slot books it. */
+        function openBookFor(timeHHMM) {
+          var door = doorById("appointments");
+          if (!door) return;
+          openDoor(door);
+          var bt = $("bkTime");
+          if (bt) { bt.value = timeHHMM; bt.focus({ preventScroll: true }); }
+        }
+        if (!window.__tlSlotWired) {
+          window.__tlSlotWired = true;
+          document.addEventListener("click", function (ev) {
+            if (ev.target.closest("[data-join]")) return;
+            var s = ev.target.closest(".tl-slot");
+            if (s) openBookFor(s.getAttribute("data-slot"));
+          });
+          document.addEventListener("keydown", function (ev) {
+            if ((ev.key !== "Enter" && ev.key !== " ") || !ev.target.classList || !ev.target.classList.contains("tl-slot")) return;
+            ev.preventDefault();
+            openBookFor(ev.target.getAttribute("data-slot"));
+          });
+        }
         /* The swipe — one gesture walks day to day at phone width, the
            way walking through doors feels. A horizontal swipe longer
            than 60px with little vertical drift moves the day; a swipe
