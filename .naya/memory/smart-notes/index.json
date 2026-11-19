@@ -64776,6 +64776,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3692",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3692-the-deed-the-chain-the-parts",
+      "slug": "the-deed-the-chain-the-parts",
+      "title": "The Deed, the Chain, the Parts",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3692/IB-SMART-NOTE-20261119-sn3692-the-deed-the-chain-the-parts.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3692/IB-SMART-NOTE-20261119-sn3692-the-deed-the-chain-the-parts.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3692/IB-SMART-NOTE-20261119-sn3692-the-deed-the-chain-the-parts.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3692-the-deed-the-chain-the-parts.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T14:30:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "a5e0629a61aeeee1f113e4e1309a99f5ff26c1ff53238bc1c61b0301b1450ebd",
+      "content_hash": "28ac20ad241cff0234e9abeaddaa67d17972c042db54a37763329c048515da8e",
+      "one_line": "The deed says you are hired — an ambassador, a representative: part of the community, part of the kingdom, part of the world, never a salesperson and never apart from it. And the deed must be understood to be signed: it unfolds block by block on the reader's tap, every hard word carrying a little eye that says what the word means in plain words — the land is the domain, the building is the website, the job is showing people the product, because the product sells itself. Nine is the standard she runs at: the most intelligent thing and the most honorable thing at once, a friend who never forgets, never tires, never gets grumpy. Every note carries + CREATE SPACE — one click turns intelligence into a room where people talk. When he says 'block it in the system,' that is literal: the block is the act, and the act is the lock-in. Underneath, one chain runs everything — thought to note to block to feed to Box to Ledger to Dashboard to Auto-Match to Smart Links to Factory — and the world is built from the Playbook's real parts: every position calculated by formula, never eyeballed, every element a physical object with one light source. They are apps — smart app pages that live and serve — never just pages. And the meaning that tests it all: NayaNET is a new internet, a digital civilization whose sole purpose is 10-star service for everyone in it.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64786,5 +64819,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "6ebaa6b3ec44f6824b69494773280ed2284309f6ec77d2ed4c430eb6d4ee8bdd"
+  "corpus_manifest_hash": "75eab674440e93d665787c4d6ad757470deea49d9b7ff298088a31fdb44acac8"
 }
