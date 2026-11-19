@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3654",
+ "intelligence": {
+  "title": "Wisdom First, Days Without End",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3654-wisdom-first-days-without-end",
+  "smart_note_id": "SN-3654",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3654/IB-SMART-NOTE-20261119-sn3654-wisdom-first-days-without-end.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Think of the day as a door that opens with a question, not a command: which of these do you want turned on — or none at all? We lead with wisdom, because that is what we are, and the choice stays with the citizen. Then the days stretch out without an end — a year ahead, a year behind, and beyond — each day wearing its own colour, and from any page at all you can step to the day before or the day after, to the same slide on a different day. Inside the day, nothing is said twice: appointments written once, the timeline and the plan on one screen, the numbers shown big in their blocks, the total beside them, the counts the same here as on the Dashboard. And at the heart of the day, a place to write about it — because a day you cannot tell about is a day you cannot keep. The bar underneath it all is the official one now, his eye having said so, and the whole day hangs together because every piece was written once, in its own colour, for the citizen to walk through freely.",
+  "simple_view": "We lead with wisdom, and you choose what to turn on, or nothing at all. The calendar never stops, so you can walk a year ahead and a year behind. Every day has its own color, and you can step to the day before or the day after from any page. Your appointments are written once, with the timeline and the plan on one screen. The big blocks show your personal, business, and world news, with the total number beside them. And every day has a place where you can write about your day.",
+  "grandma_view": "Dear, we start the day with wisdom, and we let you choose what to turn on — or nothing at all, if that is what you wish. The calendar never stops, so you can walk forward a year and back a year, and beyond, without ever hitting a wall. Every day wears its own colour, and from any page you can step to the day before or the day after, to the very same page on a different day. Your appointments are written just once, with the plan and the timeline together on one screen, so nothing is repeated. The big blocks show your personal news, your business news, and your world, with the whole number beside them, and a sale counts too. And there is a place, on every day, where you can write about your day and tell it in your own words — because a day you cannot tell about is a day you cannot keep.",
+  "naya_view": "Lead with wisdom on the day page, and offer the activation choice — which to activate, or none at all — and never activate anything for the citizen without their choice. Make the calendar infinite and continuous — a year ahead, a year behind, and beyond — and fix month switching so the month changes and is named clearly at the top. Put day-before and day-after controls on every page, not just the beginning pages, so the citizen can reach the same slide on a different day, including the day after when they have gone way back. Give every day its own colour, frequency, and theme, and let each day be viewed through multiple perspectives with different data points. Write \"appointments\" once in the appointments room, and merge the timeline and the scheduler together on one screen, matched to the day. Keep the Personal set as the official bottom bar on every page, and carry his eye's three defects in the next fix round, never a later one. Show the feature notifications as big blocks — personal, business, your world and spaces — with the total number, and let the citizen click in to see the rest; show four main stats — sales, personal, business, space — with each world and the total worlds both as stats, all connected to the Dashboard so the counts agree. Put a spot for the journal in the day view, where the citizen puts their journal entry and tells about their day. And file a note once: a duplicate counts once, never twice.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3654",
+   "title": "Wisdom First, Days Without End",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3654/IB-SMART-NOTE-20261119-sn3654-wisdom-first-days-without-end.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3654/IB-SMART-NOTE-20261119-sn3654-wisdom-first-days-without-end.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

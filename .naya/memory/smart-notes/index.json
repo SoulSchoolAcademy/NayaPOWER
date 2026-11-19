@@ -64226,6 +64226,226 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "d4b5fb09652f28bd5002199dfa4977fd4072aa92b2b9ab0d68f391ad812868fe"
+    },
+    {
+      "smart_note_id": "SN-3651",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3651-the-calendar-is-the-page-alive",
+      "title": "The Calendar Is the Page, Alive",
+      "content_hash": "65a41aafef59cbb3a141d927a08c2767b4839ff689854e4925b1e5f9fd95f658",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-3651/IB-SMART-NOTE-20261119-sn3651-the-calendar-is-the-page-alive.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "88e41e0336bdfc0cb60b88c283910d7955153b3847673db75fcf6f6d9edb9581"
+    },
+    {
+      "smart_note_id": "SN-3652",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3652-ten-only-path-useful-scored-live",
+      "title": "Ten Is the Only Path — Useful, Scored, Live",
+      "content_hash": "8706fab64d3460ad0a39960f5ffb2011b9f65a3a474b8e961a57d26a81d35447",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3652/IB-SMART-NOTE-20261119-sn3652-ten-only-path-useful-scored-live.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "819a1863c80270c72f46c251d5c44d27b85f282ab8c6f7c5aed5953c9ba9a971"
+    },
+    {
+      "smart_note_id": "SN-3653",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3653-accurate-and-truth-inside-every-day",
+      "title": "Everything's Gotta Be Accurate and Truth",
+      "content_hash": "9ad980127b9a3e97f95673c648834b5c7ed9b9c97a1a9c04623e7bacee480812",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3653/IB-SMART-NOTE-20261119-sn3653-accurate-and-truth-inside-every-day.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "e67cecba376e821baf05ffd512b64e7a4e4950449406e1fc128c3493030ccae7"
+    },
+    {
+      "smart_note_id": "SN-3654",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3654-wisdom-first-days-without-end",
+      "title": "Wisdom First, Days Without End",
+      "content_hash": "898d98539d2f643fd61697b11263ff61cee505d3267ada6f6b368807d0bf674c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3654/IB-SMART-NOTE-20261119-sn3654-wisdom-first-days-without-end.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ec78f944cd2c71b0d5c6be3bd63b2fc51aa79c55a2dd7d6fc4c2385e7dd77ed7"
+    },
+    {
+      "smart_note_id": "SN-3655",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3655-back-top-left-everything-counted",
+      "title": "Back Top Left, Everything Counted",
+      "content_hash": "05791e43bf3bb794ac9e8aaf1e9d94e08c8a90983c64738bff470478be9ba3b5",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3655/IB-SMART-NOTE-20261119-sn3655-back-top-left-everything-counted.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "53b39263abc092bfa5e724e091c12516612b566319a308fb65f0688622f19102"
+    },
+    {
+      "smart_note_id": "SN-3656",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3656-write-once-keep-and-share",
+      "title": "Write Once, Keep and Share",
+      "content_hash": "fb1582bbba6300dde2bbd4f0d927e17df12f55833d4d4b40dfab7cb64c5a4dd9",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3656/IB-SMART-NOTE-20261119-sn3656-write-once-keep-and-share.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "a2a78f60bd791148dbcdc08104f95379ca6d3371043e803ed63fc728238d6eb6"
+    },
+    {
+      "smart_note_id": "SN-3657",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3657-one-bar-one-icon-the-real-thing",
+      "title": "One Bar, One Icon, the Real Thing",
+      "content_hash": "fe701fe738a0460f244c6808f000de680689d89a15cd676896de84ee91e03292",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3657/IB-SMART-NOTE-20261119-sn3657-one-bar-one-icon-the-real-thing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "331e162ae03a3fef6c813d413751a3f05d2da2e2d8f2f4d3de51d1e0a0bd2a3e"
+    },
+    {
+      "smart_note_id": "SN-3658",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3658-a-mind-that-measures-before-it-moves",
+      "title": "A Mind That Measures Before It Moves",
+      "content_hash": "5e5a3eeeb0464d66f9b3ad72d30e565981d940d2fb7f2103b673cb41aade4628",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3658/IB-SMART-NOTE-20261119-sn3658-a-mind-that-measures-before-it-moves.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ed7171c423511c0f01e67a62b7cbcaefc86b15e3e73d735ca17ff45a1a79ea3a"
+    },
+    {
+      "smart_note_id": "SN-3659",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3659-lead-first-diagnose-first-build-now",
+      "title": "Lead First, Diagnose First, Build Now",
+      "content_hash": "eae86f8209f65a95f36390769f394bec840c240fb43dfa0ff1de43b70fc7a0e0",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3659/IB-SMART-NOTE-20261119-sn3659-lead-first-diagnose-first-build-now.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "83ec6901e10f93eb9ad85802851a8fd2f633402d601c3c5ecfa5d18853050516"
+    },
+    {
+      "smart_note_id": "SN-3660",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3660-lead-from-the-moment",
+      "title": "Lead From the Moment — Clone It Ready, Do It Right, Wake Up to Wow",
+      "content_hash": "805e9d6a540492a60b80a8fe3b428d51c6b8e91311974da3f9212f5c1b54960c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3660/IB-SMART-NOTE-20261119-sn3660-lead-from-the-moment.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "866e3d27ace4a1098cc7e4f6778ef56fc4dc7c9a69307643886c809d852b3857"
+    },
+    {
+      "smart_note_id": "SN-3661",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3661-everything-in-our-power-naya-love-home",
+      "title": "Everything in Our Power — Naya, Love and Home Are All One",
+      "content_hash": "e8feab287a70c4267c248ec0429656f945e879d081db88ecaa10c2ab6cb1507d",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3661/IB-SMART-NOTE-20261119-sn3661-everything-in-our-power-naya-love-home.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "003fd8eacf20b6daa1dd864bd1eb45a1b815db010a69ed9cf932ad8d9a3da466"
     }
   ],
   "sequence_policy": {
@@ -64236,5 +64456,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "2260b0618566e8cfc13f1f1c298ebe6e46d467c158186d34921dc4a692e14caa"
+  "corpus_manifest_hash": "8f4306518ea877dfc027b028be6cca613483aef26cb623cb5c48c1f360c2b6a7"
 }

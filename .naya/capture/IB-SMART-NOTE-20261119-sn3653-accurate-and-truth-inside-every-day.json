@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3653",
+ "intelligence": {
+  "title": "Everything's Gotta Be Accurate and Truth",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3653-accurate-and-truth-inside-every-day",
+  "smart_note_id": "SN-3653",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3653/IB-SMART-NOTE-20261119-sn3653-accurate-and-truth-inside-every-day.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Think of a diary that gets the date wrong — the page says Tuesday, the number says the 17th, the year says next year — and you stop trusting anything in it, because a diary that cannot tell you what day it is cannot tell you anything. That is the date block: one block mixing three days, and the fix is not a polish, it is the floor — one date, the right date, everywhere, in every tile and line. The same eye that catches the wrong date also tidies the room: the stray icon by the back arrow goes, because the frame now holds the icons; today lit white stays, because it is right. The weekday row gets room to breathe, with icons beside the names and space to move up, never cut off. Each day gets its own image — their cover photo by default, replaceable with any photo they upload — the date in the right corner, the cover filling the whole area, and you just keep reading: this is their calendar, this is the beginning of their day. Inside every page, their stats are there with them, because the person is the atom at the centre. The wisdom leads, centred at the top, and the greeting sits top right, like it does in the Hub. And every day means something — a meaning, an affirmation, a link to explore it — and daily prayers too, offered, never pushed, so the day reaches everybody, right where they are.",
+  "simple_view": "Imagine your diary gets the date wrong — it says Tuesday, but the number says 17, and the year says next year! That is not right! Everything has to be accurate and true — one date, the right date, everywhere! And every day gets its own beautiful picture — your very own cover photo, and you can change it to any photo you like! The wisdom of the day sits right in the middle at the top, and \"Good day\" sits in the corner, nice and beautiful! And every day means something special — and there is a little prayer too, if you want it, so the day reaches everybody!",
+  "grandma_view": "It's like this, love — imagine your diary gets the date wrong, dear — it says Tuesday, but the number says 17, and the year says next year! That just won't do, dear — everything's gotta be accurate and truth, love, one date, the right date, everywhere! And every day gets its own beautiful picture, dear — your very own cover photo, and you can change it to any photo you like, dear! The wisdom of the day sits right in the middle at the top, love, and \"Good day\" sits in the corner, nice and beautiful, dear! And every day means something special, dear — and there's a little prayer too, love, if you'd like it, so the day reaches everybody, dear!",
+  "naya_view": "EVERYTHING'S GOTTA BE ACCURATE AND TRUTH. ONE DATE, THE RIGHT DATE, EVERYWHERE — IN THE MONTH GRID, IN THE HERO, IN THE DAY-VIEW DATE BLOCK, IN EVERY TILE AND LINE. THE NUMBER LIVES IN THE TILES ONLY — NEVER REPEATED IN THE BANNER LINE. THE STRAY ICON BY THE BACK ARROW GOES; TODAY LIT WHITE STAYS. WEEKDAY ICONS BESIDE THE DAY NAMES, SPACING BETWEEN ICON AND WORD, ROOM TO MOVE UP — NEVER CUT OFF. EACH DAY GETS A BEAUTIFUL IMAGE — BY DEFAULT THE CITIZEN'S OWN COVER PHOTO, REPLACEABLE WITH ANY PHOTO THEY UPLOAD. INSIDE EVERY PAGE, YOUR STATS ARE THERE. WISDOM CENTRED ON TOP, THE GREETING TOP RIGHT LIKE THE HUB. EVERY DAY HAS A MEANING AND AN AFFIRMATION — AND A LINK, SO THEY CAN SEE IT. DAILY PRAYERS TOO — OFFERED, NEVER PUSHED — SO IT REACHES EVERYBODY.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3653",
+   "title": "Everything's Gotta Be Accurate and Truth",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3653/IB-SMART-NOTE-20261119-sn3653-accurate-and-truth-inside-every-day.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3653/IB-SMART-NOTE-20261119-sn3653-accurate-and-truth-inside-every-day.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

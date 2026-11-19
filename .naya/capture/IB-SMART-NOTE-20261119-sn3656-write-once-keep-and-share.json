@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3656",
+ "intelligence": {
+  "title": "Write Once, Keep and Share",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3656-write-once-keep-and-share",
+  "smart_note_id": "SN-3656",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3656/IB-SMART-NOTE-20261119-sn3656-write-once-keep-and-share.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-19. No runtime provenance invented.",
+  "ingested_at": "2026-11-19",
+  "essence": "",
+  "human_view": "Think of the day as a single page you write on once: whatever you put in — typed, spoken, pasted, dropped in, a photo — becomes two things at once, without you writing it twice. One is yours alone, the full report in your own way, kept private and sent to your project. The other is for everybody, the day distilled into simple chunks a child or a grandma can follow, sitting on the Hub. Then the day is told back to you on its own page, the summary, and told by you on its own board, the journal — two boards, because telling and being told are different things — and you can scroll back up through any day and see everything you shared there. The worlds you step into are boards you can press, each one lighting up and moving under your hand, and the whole room is a fast way in, not a place to linger. And inside, every conversation has a button by the person's name that opens who they are, and the mail and the messenger sit together inside one frame, the bright symbol and the orbs untouched.",
+  "simple_view": "You write once, and it becomes two notes: one private note for you, and one public note for everyone. Your day gets its own summary page, and your journal gets its own board. You can scroll back through any day and see everything you shared. Each world is a board you can press, and it lights up and moves. Your world is a fast way in, and every chat has a button to see the person. Mail and messages live in one frame, together.",
+  "grandma_view": "Dear, you only have to write it once. Whatever you put in — typed, spoken, pasted, or a photo — becomes two notes: one private note, the whole truth in your own way, kept safe for you and your project, and one public note, the day made simple for everybody, in little chunks a child or a grandma can follow. Your day gets its own summary page, where the day is told back to you, and your journal gets its own board, where you tell the day yourself — two boards, because telling and being told are different things. You can scroll back up through any day and see everything you shared there. Each world is a board you can press, and it lights up and moves under your hand. Your world is a fast way in, not a place to linger, and every chat has a little button by the person's name that opens who they are. And your mail and your messages live together inside one beautiful frame.",
+  "naya_view": "Build one input frame per day that takes anything once — typed, dictated, pasted, dropped in, uploaded — and outputs both a Naya note and a Smart note from it: the Naya note the literal, full, private report, in the citizen's own way, to their project or wherever they choose; the Smart note the public intelligent block for everybody — what it is, why it matters, what's in it for you, in simple chunks, about three sentences at a time. Give the summary of the day its own page, and make the summary and the journal two different boards; make the journal board a separate diary input where the citizen can type, dictate, copy-paste, or enter a note, and add Naya notes or upload images. Build the timeline journal page so the citizen can go back and see what they inputted on any day and scroll to see what they uploaded or shared on any one day, and make it something special. Line Smart Meet up with the appointments room so it works, and make booking a time put the time on the citizen's calendar. Replace the worlds icon with a beautiful Kenya one for Wednesday, for that day; make the text dynamic and beautiful so it pops; make each world a board button with the icon inside — obsidian black, major elevation and depth, looking like an object — lighting up and moving on hover, lighting up around the edge as you scroll; back top left, Keep reading dead center, the gauge top right. Make the worlds room Kenya on the outside for the matching of the day, obsidian black in the back board instead of purple, and then let it light up; keep the feeds — global, local, personal — on the next slide. Keep the Your Worlds room as the fast way in — personal feed, business feed, your world, Smart Mail, Messages, Connections — each row a doorway. Put an INFO button in every conversation, next to the person's name, opening that person's profile, and align Messenger's sidebars and message text with Smart Mail, harvested, never rebuilt; find the real profile destination in the system and verify it renders, with no invented URL, or open the in-page profile view and leave the destination an open item. Carry Messenger and Smart Mail both inside the master kingdom frame, harvested verbatim, with the bright symbol, the orbs, and the flow untouched.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3656",
+   "title": "Write Once, Keep and Share",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3656/IB-SMART-NOTE-20261119-sn3656-write-once-keep-and-share.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-19 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3656/IB-SMART-NOTE-20261119-sn3656-write-once-keep-and-share.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
