@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 16:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38907,6 +38907,12 @@ _Last updated: 2026-11-19 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-t0132-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** gap close: guard test_check_merge_consensus_lane_tags.py against import-time battery
+
+**Evidence:** Verified: preserved guarded file sha256 f77e5b90... and diff sha256 5944cc5a... match the receipt exactly (local files present); PR #2460 head 97d46460... and #2457 head 92fac098... match live refs via git ls-remote. Score 9.0. Why not 9.5: the fix is proven and apply-ready but NOT landed on any branch or PR, and no independent second-seat re-run o
+
 ### ✅ gap-gap-t0132-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 8.0/10 [VERIFIED]
 
 **Task:** Gap-gap follow-up: 3rd re-execution of guarded-file fix on #2460 head, independence leg still open
@@ -40170,6 +40176,12 @@ _Last updated: 2026-11-19 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-t0132-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** gap close: re-verify 10 close-comment IDs + correct #2109 pin
+
+**Evidence:** Verified: all 10 PR head SHAs via git ls-remote just now match the receipt table exactly, including the CORRECTED #2109 pin 8366a457db2837fb3a0ffc2c419d2c019d27e43b (40 chars). Score 9.0. Why not 9.5: the 10 close-comment IDs and their bodies rest on the seat's single Oct-25 API read; no independent second read of comment existence/bodies was done,
 
 ### ✅ gap-t0402-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
@@ -55102,6 +55114,12 @@ _Last updated: 2026-11-19 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261119-0811 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-19 08:11 PST: 31 queued briefs evaluated, all refused, queue untouched
+
+**Evidence:** FRESH (receipt 08:11 PST, this tick 08:20 PST). VERIFIED first-hand this tick: brief-queue holds exactly 31 brief-*.md files and the sorted list matches the receipt's 31 blocked names exactly; the 07:05 receipt's blocked list is identical (zero-change diff claim verified); the two exit-2 briefs named (gap-gap-gap-t0547-lane1-lane1, gap-gap-gap-gap-
 
 ### ✅ gate-stall-20261119-0705 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
