@@ -64446,6 +64446,39 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "003fd8eacf20b6daa1dd864bd1eb45a1b815db010a69ed9cf932ad8d9a3da466"
+    },
+    {
+      "smart_note_id": "SN-3672",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3672-three-worlds-one-promise",
+      "slug": "three-worlds-one-promise",
+      "title": "Three Worlds, One Promise",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3672/IB-SMART-NOTE-20261119-sn3672-three-worlds-one-promise.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3672/IB-SMART-NOTE-20261119-sn3672-three-worlds-one-promise.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3672/IB-SMART-NOTE-20261119-sn3672-three-worlds-one-promise.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3672-three-worlds-one-promise.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T12:20:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "4744c79c2599153d1621d518609fbce8584141293355bef93708165165f6a103",
+      "content_hash": "704d37ba90fdcbad904a6c7fa77d631aa72d5ce2a6d12f216a997dcdb747e98c",
+      "one_line": "The bottom of the screen is three worlds, not three channels: your personal world, your business world, and your thing — and mail and messages live inside the world they belong to. The three worlds wear three gems — diamond, emerald, amethyst — the signature a citizen reads at a glance, and the Hub is where all three worlds' activity and stats live as one system. The mission that tests every page: reorganize the internet intelligently, connect like minds automatically by default, so nobody feels alone in their business or their thing. The walk becomes a mirror with lit EDIT and eye buttons — a choice whose edit or eye is hidden fails the law. Her name is Naya, N-A-Y-A; 'Anaya' is 'ah, Naya' spoken. And the growth engine is the product itself: the walk is the ad, the notes are the content, ambassadors are taught — literally hired and taught — until they earn.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64456,5 +64489,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "8f4306518ea877dfc027b028be6cca613483aef26cb623cb5c48c1f360c2b6a7"
+  "corpus_manifest_hash": "caf176409e11c7e64846c59a2bcfd2ea4a5cc6037abb691b3acf14aa69494f2e"
 }
