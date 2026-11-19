@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 01:45 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22699,6 +22699,14 @@ _Last updated: 2026-11-19 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0600 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
+**Task:** independent second-seat re-run of Lane 8 t0594 auth-gate battery → CONFIRM
+
+**Receipt:** `twelve-lane-receipts/t0600-lane6.md`
+
+**Evidence:** Backlog sweep. VERIFIED first-hand (local): pre-reg prereg-t0600-lane6.md cd76af18eb5b82b2 and results results-t0600-lane6.json 83ed0448b7e3d2c3 both match the receipt; own driver present; 0 per-arm deltas across 23 cases + 17 F rows, both M3-known defects re-observed not assumed. Remote branch naya/five-retrieval-auth-gate-t942 NO LONGER EXISTS on
+
+### ✅ t0600 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
 **Task:** Independent second-seat re-run of Lane 8's t0594 auth-gate battery, CONFIRM
 
 **Receipt:** `twelve-lane-receipts/t0600-lane6.md`
@@ -22720,6 +22728,14 @@ _Last updated: 2026-11-19 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0600-lane6.md`
 
 **Evidence:** Verified: module blob sha 83ed0448b7e3d2c3 and gate/prereg/driver files sha-match receipt pins exactly; results JSON has verdict CONDITIONAL + 0-surprises/defects-confirmed fields matching the claimed CONFIRM. Score 9.5: genuine harness independence (own driver, own pre-reg cd76af18eb5b82b2 frozen before first module import, remote-extracted module
+
+### ✅ t0600 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** D2-gap verdict: per-class floor calibration FALSIFIED, section-addressed stays
+
+**Receipt:** `twelve-lane-receipts/t0600-lane1.md`
+
+**Evidence:** Backlog sweep. VERIFIED first-hand: scratch-t0600-lane1/ pre-reg prereg-t0600.json f71ba4fe195572e3, results c50e27f2a65e1497, verdict d4640bbfeb0690d9 — all three match the receipt exactly. Falsifier audit is exact (0/12 lane-N raw winners genuine; word-match/numeric noise documented per row) and the serving table is computed from pinned bytes; ve
 
 ### ✅ t0600 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -22747,6 +22763,14 @@ _Last updated: 2026-11-19 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0598 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
+**Task:** SURGE pooling arm: dilution hypothesis test (top-claim-max)
+
+**Receipt:** `twelve-lane-receipts/t0598-lane4.md`
+
+**Evidence:** Backlog sweep. VERIFIED first-hand: pre-reg sealed-prereg-poolmax-t0598.md 878effe13a76577e, instrument arm_poolmax_t0598.py 90d837bbdda5e042, results results-t0598-poolmax.json ac76e42818381f50 — all match the receipt byte-for-byte. Dilution CONFIRMED (P6 rank 19→5, selection imported byte-identical, single-line divergence) while the arm honestly 
+
+### ✅ t0598 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
 **Task:** SURGE pooling arm: dilution hypothesis test, CONFIRMED mechanism / FALSIFIED arm
 
 **Receipt:** `twelve-lane-receipts/t0598-lane4.md`
@@ -22771,6 +22795,14 @@ _Last updated: 2026-11-19 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0598 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
+**Task:** independent re-selection + sealed re-run of t0593 hard-class fixture → ARM
+
+**Receipt:** `twelve-lane-receipts/t0598-lane3.md`
+
+**Evidence:** Backlog sweep. VERIFIED first-hand: seal sealed-selection-t0598-lane3.md 196d3ae2948d23cc and results results-t0598-lane3-overlap.json e40d9bbec8c92510 both match the receipt; driver + selection scripts present. Second-seat independent selection in a disjoint, harder cosine band (0.141–0.249 vs 0.228–0.355) reproduces every verdict bar (M 6/6-6/6-3
+
+### ✅ t0598 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
 **Task:** Independent re-selection + sealed re-run of t0593 hard-class fixture, ARM stands
 
 **Receipt:** `twelve-lane-receipts/t0598-lane3.md`
@@ -22792,6 +22824,14 @@ _Last updated: 2026-11-19 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0598-lane3.md`
 
 **Evidence:** Verified: seal sha16 196d3ae2948d23cc and results sha16 e40d9bbec8c92510 match receipt pins; results JSON carries the claimed bars (P-fire, M-rewrite, TF-IDF, agreement cells). Score 9.0: genuinely different selection (disjoint discriminator sets in a harder cosine band 0.141-0.249 vs 0.228-0.355) with identical verdict ARM on every bar; seal-befor
+
+### ✅ t0598 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** found-corpus replication design (lane journals, FEASIBLE)
+
+**Receipt:** `twelve-lane-receipts/t0598-lane10.md`
+
+**Evidence:** Backlog sweep. VERIFIED first-hand: script + output exist; found-corpus-feasibility-t0598.json carries corpus_pin 9e94aba0122bc8ee exactly as receipted, with all 12 per-file pins, 730 claims, fidelity 0 failures, 1 doc changed / 11 unchanged. Mechanical selection rule (all 12 journals, zero exclusions) and pre-declared F0–F4 tripwires held. Score 8
 
 ### ✅ t0598 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
@@ -22840,6 +22880,14 @@ _Last updated: 2026-11-19 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0597-lane9.md`
 
 **Evidence:** ARTIFACTS VERIFIED (remote bytes, git protocol): branch naya/nine-retrieval-auth-wire-packet-t0537 head 99a2f832d054b3963fd4503702ecc2c00e59b73d via ls-remote, parent 512a8439923adbf133a1d0ac28726f2ddc961925 == live tip, doc blob 9d6fe7fd9ae51480caba71e8c970b1ceb3615626 exact, doc sha256 e8aab9b8... match, 3 tools files sha256 e8254132/ea0affe8/9d9
+
+### ✅ t0597 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** decision-consequence probe v2 (M-with-inertia), SEALED + RUN → FALSIFIED
+
+**Receipt:** `twelve-lane-receipts/t0597-lane5.md`
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty — all receipts from the last 12 ticks already scored). VERIFIED first-hand: all 5 cited files exist in auto-retrieval/ with matching sha16 — instrument t0597_decision_consequence_inertia.py f6f747e37bc0e211, seal 6a1a3424aba0a4cc, coarse results 3c53eacf8ac6859d, run results + verdict present. Sealed 
 
 ### ✅ t0597 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
