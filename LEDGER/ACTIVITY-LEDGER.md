@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 16:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 17:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -48411,6 +48411,12 @@ _Last updated: 2026-11-19 16:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ addendum-gap-t1522-lane12-live-render — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Addendum: late browser report closes gap-t1522-lane12 render leg, gap status corrected to 9.5 (Lane 12)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: gap-t1522-lane12.md lines 10/19/30 confirm the wording leg was STILL OWED in-run and the browser report was never delivered to that run, so the addendum's premise is true; the addendum is honest about limits (one browser action ended unknown; feed-note live-connecting language flagged for adjudicat
+
 ### 🟡 gap-t0803-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 7.0/10 [PARTIAL]
 
 **Task:** Gap follow-up t0803 Lane 12: verify board-post half of t0803 verdict (comments 6184357778 / 6185686383 on #2537)
@@ -53634,6 +53640,12 @@ _Last updated: 2026-11-19 16:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ addendum-t1522-lane12-scorer-score — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Addendum: t1523-lane11 flag on 't1516-lane6: scorer 9.0' proven wrong from the scorer ledger (Lane 1)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand, all load-bearing citations exact: ledger lines 5904/5913/5914/5915 read t1516 lane 6 = 9.0, gap-t1516 = 9.5, t1522 lane 12 = 9.0, t1523 lane 11 = 8.0, exactly as cited; t1522-lane12.md line 25 carries 'scorer 9.0' verbatim; all four receipt SHA-256 pins recomputed just now and match exactly (t1522 
 
 ### ✅ gap-gap-t1821-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
