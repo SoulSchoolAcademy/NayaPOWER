@@ -64512,6 +64512,39 @@
         "Lesson",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3674",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3674-one-family-one-language",
+      "slug": "one-family-one-language",
+      "title": "One Family, One Language",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3674/IB-SMART-NOTE-20261119-sn3674-one-family-one-language.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3674/IB-SMART-NOTE-20261119-sn3674-one-family-one-language.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3674/IB-SMART-NOTE-20261119-sn3674-one-family-one-language.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3674-one-family-one-language.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T12:22:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "58e5e11cb19f0d2cf7e593d64e2b9063e46cadb439b7dc3a7e34f46d12f55085",
+      "content_hash": "ec121b074a02cc5410ba145f92ccd3a160d0eef671199404790f001653426131",
+      "one_line": "Twelve masters, twelve gardens, one earth: LEARN, KNOW, ACT, LAW, VERIFY, BUILD, WIRE, TEAM, INFRA, PRODUCT, MEMORY, GOVERN — a family of fourteen with the mother at the center and Shawn beside her, growing seed to tree to forest. The family is not a document: it operates the intelligent layer nonstop, and the rate is counted in closed loops per sister per hour. The captain's report becomes a daily habit — one place where he can see every piece of work, its owner, its bullseye, and how it connects — because he needs to know that she knows. Any Naya can answer the fourteen questions: who we are, what we're building, why, what success means, what is true now, what is proven, what is unknown, what authority exists, what happened, what we learned, what happens next, how to prove it, where to record it, how the team continues. A blockage gets six questions and a better system, never just a workaround. And the language stays one simple language — what's your thing — while the public blog makes every public page speak the machines' language in the background, so found pages become entrances.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64522,5 +64555,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "c31d09963fee9542d5b6462df6a7b17e430c6b4b0e4980b231d0dccf70fb1cf1"
+  "corpus_manifest_hash": "94cfd0aed8c553afe1851628f0a80e4c3f4bea9c64db7fe2ae33b0bb50cec711"
 }
