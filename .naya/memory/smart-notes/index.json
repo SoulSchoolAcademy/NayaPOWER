@@ -64479,6 +64479,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3673",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3673-show-the-current-page",
+      "slug": "show-the-current-page",
+      "title": "Show the Current Page",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3673/IB-SMART-NOTE-20261119-sn3673-show-the-current-page.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3673/IB-SMART-NOTE-20261119-sn3673-show-the-current-page.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3673/IB-SMART-NOTE-20261119-sn3673-show-the-current-page.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3673-show-the-current-page.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T12:21:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "53103151a0c4c8530e18186eb91aa4277ff6268df4cfb5786d14b3236258cf03",
+      "content_hash": "93cb3b2e1493c7a534bdf2a2b06294516e361acde8247c007a288ae3c878c0be",
+      "one_line": "The design sells itself: by the end of the walk the citizen has shared their vision, goal and mission inside the highest design the team can make — the full meal deal, a supercharger on their own AI, everybody wins. The walk's voice is memos in five beats, spoken like a friend, over examples that are real. Underneath sits the trust architecture: there is no AI inside the network reading everything; your data sits in your own vault — the Smart Box made concrete — and mail and messages are not kept, not read, not sold. Joining means signing that promise: the Collective Agreement, conversations tidying away on your chosen cycle, anything saved locked in your Box. And the showing laws that guard it all: a staged link shown to Shawn is the current page, updated and aligned, or it is not shown; a round is finished completely — all edits, aligned, verified — or it does not reach him; the second person on a shared browser must get their own walk, not the first person's certificate.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "System",
+        "Lesson",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64489,5 +64522,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "caf176409e11c7e64846c59a2bcfd2ea4a5cc6037abb691b3acf14aa69494f2e"
+  "corpus_manifest_hash": "c31d09963fee9542d5b6462df6a7b17e430c6b4b0e4980b231d0dccf70fb1cf1"
 }
