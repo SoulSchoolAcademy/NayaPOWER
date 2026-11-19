@@ -30941,7 +30941,8 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) .dash-shell .rail.left{padding-b
   var rx=document.querySelector('.dash-shell .rail-right-x');
   if(rx) rx.addEventListener('click', function(){ if(_dashIsDesktop()){ document.body.classList.add('dash-rail-right-collapsed'); document.body.classList.remove('dash-rail-right-open'); _dashSyncPlus(); } else { _dashCloseRightRail(); } });
   var sr=document.querySelector('.dash-shell .rail.right [data-right="settings"]');
-  if(sr) sr.addEventListener('click', function(e){ if(e&&e.stopPropagation) e.stopPropagation(); _dashCloseRightRail(); var g=document.getElementById('page-settings'); if(g) g.click(); });
+  /* FOLLOW-ON 8 2026-11-19 - the gear click only toggles the one-button dropdown (#settings-panel L4086-4088); the captain's eye proved that toggling is not Settings (panel open/closed/open over three clicks, main content unchanged, URL unchanged). Harvest the real path instead: the panel button's own handler (L19623-19624) closes the panel and calls window.osShowView('settings'). The rail close is the x handler's desktop idiom (L30942), because _dashCloseRightRail() no-ops at desktop when the rail was never opened as a drawer (L10945: wasOpen false, docked false). No gear click anymore; nothing else changes. */
+  if(sr) sr.addEventListener('click', function(e){ if(e&&e.stopPropagation) e.stopPropagation(); if(_dashIsDesktop()){ document.body.classList.add('dash-rail-right-collapsed'); document.body.classList.remove('dash-rail-right-open'); _dashSyncPlus(); } else { _dashCloseRightRail(); } var sp=document.getElementById('settings-panel'); if(sp) sp.classList.remove('open'); if(typeof window.osShowView==='function') window.osShowView('settings'); });
 })();
 </script>
 </body></html>
