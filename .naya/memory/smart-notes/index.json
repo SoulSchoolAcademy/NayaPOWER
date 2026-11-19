@@ -64842,6 +64842,39 @@
         "Lesson",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3694",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3694-the-living-surface-checked-by-eye",
+      "slug": "the-living-surface-checked-by-eye",
+      "title": "The Living Surface, Checked by Eye",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3694/IB-SMART-NOTE-20261119-sn3694-the-living-surface-checked-by-eye.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3694/IB-SMART-NOTE-20261119-sn3694-the-living-surface-checked-by-eye.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3694/IB-SMART-NOTE-20261119-sn3694-the-living-surface-checked-by-eye.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3694-the-living-surface-checked-by-eye.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T14:32:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "d76b57dea9d7d1939298558eca78b7cbeeacf271903bbb9de98de49b18016c54",
+      "content_hash": "fa8c3b6e05615f4c68cadb104bbb76d12547961a8992d07b5b2d9e91892f7b93",
+      "one_line": "The surface lives — and the eye, not the mechanism, is its judge. The guard lesson came first: four collisions in one night taught that the number is the identity, checked at the moment it is given, not minutes before — a memory sixteen minutes old is not the tree, and first-filed keeps the number. Then the share: the keys to a new digital world told as one story across every page, a powercast in ten scenes, the show reacting to the visitor. She runs at Nine — the smartest and the kindest at once. The jump rail carries only the pills that matter most, made from the buttons that already exist, obsidian with the icon lit, fitting the middle of the page — stop making new buttons. The agreement gets one play button for the whole thing, placed with the header: press once, she reads it through. The icons are decided: the bottom bar is the five — Create, Mail, Activity, Home, Ecosystem — and the trio is the world switcher, every icon at the quality of the PTS pills. Interfaces morph: tabs, buttons and icons rename and re-point from page settings, and the libraries of icons and covers live in the Factory. The calendar is alive: click a date, see the whole day; the system organizes your notes into a timeline you can zoom. And the discipline that governs all of it: a mechanism pass is not the visible fact — bytes exact can still fail the eye, 4 of 6, and the round is NOT WHOLE until the eye passes it. We are a wisdom system, filled with wisdom, by wise ones. Covers keep the photo's own shape, never a forced crop, with a drag-to-frame editor and a cover library.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "System",
+        "Lesson",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64852,5 +64885,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "94d59f9120e67c9279ea946e03f3cf64fa5b0aa288dd539ec535d070b92e9113"
+  "corpus_manifest_hash": "08cff567ed1b2f115371a53d77c654b67ad23925cb6a69d2617858b8a663aa33"
 }
