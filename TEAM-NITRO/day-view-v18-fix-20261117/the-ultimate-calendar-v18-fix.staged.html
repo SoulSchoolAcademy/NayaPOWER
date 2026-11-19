@@ -1397,7 +1397,6 @@
       .cat.reveal{animation:letter-in .7s cubic-bezier(.22,1,.36,1)}
       @keyframes letter-in{from{opacity:0;transform:translateY(10px)}}
       @media (prefers-reduced-motion: reduce){.cat.reveal{animation:none!important}}
-      #daystepSlot{margin-top:12px}
       /* The category row — the life board's row anatomy, kept verbatim
          and renamed: icon chip in the row's own colour, the label, the
          glimpse in the day's own words (or the honest line when there
@@ -1784,9 +1783,9 @@
        half-aligned. The split points are measured by the probe and named in
        the report (width-conditional in dayScreenHTML / renderCategories). A
        block never scrolls internally: overflow hidden.
-   (4) NO MORE SCROLLING — down is by button only (Keep reading ◆); a back
-       control (‹ Back) is on every screen after the first; the last block
-       goes home (Back to month ◆). The panel/day-scroll never scroll in flow
+   (4) NO MORE SCROLLING — down is by button only (Keep reading ◆); the
+       top-left back is the only back on every screen (live dictation §5);
+       the last block's Keep reading walks to the next day. The panel/day-scroll never scroll in flow
        mode — scrollTop stays 0; the only movement is the button-driven unfold.
    (5) OPTIMIZE FOR PRESENTATION — every block is a new presentation,
        perfectly formatted for the exact screen it's on. Life with Naya is the
@@ -1832,8 +1831,10 @@
 .smart-visual::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(232,232,236,.20) 0%,transparent 34%,transparent 78%,rgba(5,6,7,.28) 100%)}
 /* THE BLOCK NAV — pinned to the bottom of the screen, inside the frame:
-   ‹ Back on the left, Keep reading ◆ (or Back to month ◆ on the last block)
-   on the right. Always present; the way down and the way back. */
+   Keep reading ◆ DEAD CENTRE by the grid's math, the day before on its
+   left and the day after on its right. The top-left back is the only
+   Back (live dictation §5 — the small ‹ Back pill duplicated it, so it
+   is gone). On the last block Keep reading walks to the next day. */
 .sb-nav{position:absolute;left:50%;transform:translateX(-50%);bottom:20px;width:min(1100px,100%);
   display:flex;justify-content:space-between;align-items:center;gap:12px}
 /* THE POP: the block comes into the screen, pops out toward the viewer a
@@ -1971,10 +1972,11 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
 .smart-block .notif-detail::-webkit-scrollbar-track{background:rgba(255,255,255,.12)!important;border-radius:999px}
 .smart-block .notif-detail::-webkit-scrollbar-thumb{background:var(--sc,#3fb8ff)!important;border-radius:999px;border:2px solid #090910}
 /* (3) ONE JEWEL AND ONE COLOUR PER CHAPTER — spectrum order, never the
-   same colour twice in a row (Laws §3.2): Notifications keeps magenta
-   #a21caf with the diamond; Your worlds takes royal purple #8e24aa
-   with the orb; The world around takes sapphire #0f52ba with the
-   faceted hex. Each jewel is a real jewel object, never a flat dot. */
+   same colour twice in a row (Laws §3.2). Follow-on 2026-11-18: the
+   notification-family blocks take the DAY's colour as their rim now
+   (live dictation §6/§7 — the centre's frame lights in the day colour);
+   the jewels stay diamond / orb / faceted hex. Each jewel is a real
+   jewel object, never a flat dot. */
 .cat.jewel-orb .cat-jewel{border-radius:50%;transform:none;background:radial-gradient(circle at 34% 26%,#ffffff 0%,var(--cc) 55%,color-mix(in srgb,var(--cc) 45%,#000000) 100%)}
 .cat.jewel-hex .cat-jewel{border-radius:3px;transform:none;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)}
     
@@ -2029,7 +2031,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 /* (8) DAILY QUOTES read whole — no clip anywhere on a quote; the portal frame shrinks so the chamber block fits. */
 #wisdomQuote,.wisdom-banner blockquote{overflow:visible!important;max-height:none!important}
 .sb-chamber .smart-visual{max-width:720px!important}
-/* (9)(10) THE KINGDOM HERO — the big date on the portal's threshold: digit tiles + "November 26" + lit weekday + Hz. Gold rim is the portal's own gold; the digit tiles are the harvested Dashboard tiles. */
+/* (9)(10) THE KINGDOM HERO — the big date on the portal's threshold: digit tiles + "November 2026" + lit weekday + Hz. Gold rim is the portal's own gold; the digit tiles are the harvested Dashboard tiles. */
 .king-hero{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:2;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 16px;max-width:calc(100% - 24px);padding:12px 20px;border-radius:18px;background:linear-gradient(135deg,#17171f 0%,#0a0a11 60%,#050507 100%);border:2px solid #d4a017;box-shadow:0 12px 28px rgba(0,0,0,.7),0 0 24px rgba(212,160,23,.35),inset 0 1px 0 rgba(255,255,255,.35)}
 .kh-mid{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
 .kh-date{font-family:Marcellus,serif;font-size:25px;color:#fff;letter-spacing:.08em;line-height:1.05;white-space:nowrap}
@@ -2139,20 +2141,80 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 .royal-frame .rf-c,.royal-frame .rf-seal{display:none!important}
 .royal-frame::after{inset:var(--bw,96px)!important}
 .royal-frame::after{border:none!important}
-.royal-frame .rf-et{position:absolute;left:0;right:0;height:var(--bw,96px);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-band.png&ref=calendar/border-eye-fix2-20261119&cb=6ce94b251244eefa156ff5b91b8cbcd123cbc323&t=1795048291);background-size:auto 100%;background-repeat:round no-repeat;background-position:0 0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(50% - var(--bw,96px)*1.254 - 48px),transparent calc(50% - var(--bw,96px)*1.254),transparent calc(50% + var(--bw,96px)*1.254),#000 calc(50% + var(--bw,96px)*1.254 + 48px),#000 100%);mask-image:linear-gradient(90deg,#000 0,#000 calc(50% - var(--bw,96px)*1.254 - 48px),transparent calc(50% - var(--bw,96px)*1.254),transparent calc(50% + var(--bw,96px)*1.254),#000 calc(50% + var(--bw,96px)*1.254 + 48px),#000 100%)}
+.royal-frame .rf-et{position:absolute;left:0;right:0;height:var(--bw,96px);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-band.png&ref=calendar/day-followon-live-20261119&cb=6ce94b251244eefa156ff5b91b8cbcd123cbc323&t=1795053268);background-size:auto 100%;background-repeat:round no-repeat;background-position:0 0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(50% - var(--bw,96px)*1.254 - 48px),transparent calc(50% - var(--bw,96px)*1.254),transparent calc(50% + var(--bw,96px)*1.254),#000 calc(50% + var(--bw,96px)*1.254 + 48px),#000 100%);mask-image:linear-gradient(90deg,#000 0,#000 calc(50% - var(--bw,96px)*1.254 - 48px),transparent calc(50% - var(--bw,96px)*1.254),transparent calc(50% + var(--bw,96px)*1.254),#000 calc(50% + var(--bw,96px)*1.254 + 48px),#000 100%)}
 .royal-frame .rf-et.top{top:0}
 .royal-frame .rf-et.bottom{bottom:0}
-.royal-frame .rf-es{position:absolute;top:0;bottom:0;width:var(--bw,96px);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-band-side.png&ref=calendar/border-eye-fix2-20261119&cb=b8eabfdaa3fbe95dea6e0d7d0cc4fef6068a848b&t=1795048291);background-size:var(--bw,96px) calc(var(--bw,96px)*2.1875);background-repeat:repeat-y;background-position:0 0;pointer-events:none}
+.royal-frame .rf-es{position:absolute;top:0;bottom:0;width:var(--bw,96px);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-band-side.png&ref=calendar/day-followon-live-20261119&cb=b8eabfdaa3fbe95dea6e0d7d0cc4fef6068a848b&t=1795053268);background-size:var(--bw,96px) calc(var(--bw,96px)*2.1875);background-repeat:repeat-y;background-position:0 0;pointer-events:none}
 .royal-frame .rf-es.left{left:0}
 .royal-frame .rf-es.right{right:0}
 .royal-frame .rf-rim{position:absolute;inset:var(--bw,96px);border:3px solid #8e24aa;border-radius:4px;box-shadow:0 0 24px rgba(142,36,170,.55);pointer-events:none}
 .royal-frame .rf-corner{position:absolute;width:var(--bw,96px);height:var(--bw,96px);background-size:91.67% 91.67%;background-position:center center;background-repeat:no-repeat;pointer-events:none}
-.royal-frame .rf-corner.tl{top:0;left:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-tl.png&ref=calendar/border-eye-fix2-20261119&cb=8a73dd3f9fe7cb945cb0a3884f78f951409f7fc1&t=1795048291)}
-.royal-frame .rf-corner.tr{top:0;right:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-tr.png&ref=calendar/border-eye-fix2-20261119&cb=d6cf11edac5598ea857485b2f5307f660b3284c5&t=1795048291)}
-.royal-frame .rf-corner.bl{bottom:0;left:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-bl.png&ref=calendar/border-eye-fix2-20261119&cb=40ceca0682df19903cc81d055f6cebcc4100bb6b&t=1795048291)}
-.royal-frame .rf-corner.br{bottom:0;right:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-br.png&ref=calendar/border-eye-fix2-20261119&cb=b96ada21c0113e73dd1749954f8559498529a3cb&t=1795048291)}
-.royal-frame .rf-n{position:absolute;top:0;left:50%;transform:translateX(-50%);height:var(--bw,96px);width:calc(var(--bw,96px)*632/252);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-n.png&ref=calendar/border-eye-fix2-20261119&cb=c5b80e13821574068ddb980b4ee26ee0ee7d874a&t=1795048291);background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
+.royal-frame .rf-corner.tl{top:0;left:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-tl.png&ref=calendar/day-followon-live-20261119&cb=8a73dd3f9fe7cb945cb0a3884f78f951409f7fc1&t=1795053268)}
+.royal-frame .rf-corner.tr{top:0;right:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-tr.png&ref=calendar/day-followon-live-20261119&cb=d6cf11edac5598ea857485b2f5307f660b3284c5&t=1795053268)}
+.royal-frame .rf-corner.bl{bottom:0;left:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-bl.png&ref=calendar/day-followon-live-20261119&cb=40ceca0682df19903cc81d055f6cebcc4100bb6b&t=1795053268)}
+.royal-frame .rf-corner.br{bottom:0;right:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-br.png&ref=calendar/day-followon-live-20261119&cb=b96ada21c0113e73dd1749954f8559498529a3cb&t=1795053268)}
+.royal-frame .rf-n{position:absolute;top:0;left:50%;transform:translateX(-50%);height:var(--bw,96px);width:calc(var(--bw,96px)*632/252);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-n.png&ref=calendar/day-followon-live-20261119&cb=c5b80e13821574068ddb980b4ee26ee0ee7d874a&t=1795053268);background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
 .royal-frame .rf-n.bottom{top:auto;bottom:0}
+      /* ============ CALENDAR DAY FOLLOW-ON — LIVE DICTATION 2026-11-18/19 ============
+         Appended, never edited in place: no earlier rule is changed, so the
+         kingdom frame and every harvested rule stand byte-for-byte. New
+         rules win only by later position in the cascade. */
+      .monthcentre{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+      .monthname{margin:0;font-family:"Marcellus",serif;font-weight:400;font-size:var(--type-headline);letter-spacing:.14em;text-transform:uppercase;color:#fff;text-shadow:0 -1px 0 rgba(255,255,255,.28),0 2px 3px rgba(0,0,0,.85),0 0 14px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent);white-space:nowrap}
+      .navbtn.off{opacity:.38;pointer-events:none}
+      .weekrow{margin-top:4px}
+      #screen-month .grid{padding-bottom:12px}
+      .hl-left{flex-direction:column;align-items:flex-start;gap:2px}
+      .hl-dayrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+      .hl-monthline{font-size:var(--type-sub);font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--dc,#3fb8ff);text-shadow:0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 55%,transparent),0 2px 3px rgba(0,0,0,.7);white-space:nowrap}
+      .daybar .sigpiece{top:calc(clamp(14px,2.2vmin,22px) + 32px);transform:translateY(-50%);right:calc(clamp(64px,9vmin,96px)/2 - 32px);width:64px;height:64px;box-shadow:0 0 26px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent),0 10px 22px rgba(0,0,0,.6)}
+      .wisdom-banner .greet-row{justify-content:flex-end}
+      .wisdom-banner .greet-layout{flex:0 1 auto;min-width:0}
+      .dayteach{margin:12px auto 0;max-width:900px;font-size:var(--type-small);font-weight:700;color:#fff;line-height:1.55;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)}
+      .dayteach strong{color:var(--dc,#3fb8ff);text-shadow:0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 55%,transparent)}
+      .wq-store{margin-top:16px;font-size:var(--type-small);font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#fff;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)}
+      .sb-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px 12px}
+      .sb-nav .p3-enter{margin:0}
+      .sb-nav .nav-left{display:flex;justify-content:flex-end;gap:10px;min-width:0}
+      .sb-nav .nav-right{display:flex;justify-content:flex-start;gap:10px;min-width:0}
+      .sb-dots{left:auto;right:18px;top:14px;bottom:auto;transform:none}
+      @media(max-width:560px){.sb-dots{top:10px;right:12px}}
+      .cat-row{border:1.5px solid rgba(255,255,255,.1);border-radius:14px;margin:6px 0;padding:12px;background:linear-gradient(180deg,#15151f,#08080d);box-shadow:0 10px 22px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.16)}
+      .cat-row:last-of-type{border-bottom:1.5px solid rgba(255,255,255,.1)}
+      .cat-row:hover{box-shadow:0 0 0 1.5px color-mix(in srgb,var(--c) 70%,transparent),0 12px 26px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--c) 30%,transparent)}
+      .cat-headicon{flex:none;width:42px;height:42px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:radial-gradient(circle at 32% 28%,#4a5068 0%,#232838 38%,#0a0a11 68%,#050607 100%);border:1.5px solid var(--cc);box-shadow:0 0 12px color-mix(in srgb,var(--cc) 40%,transparent),inset 0 2px 3px rgba(255,255,255,.4),inset 0 -8px 12px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.5);color:#fff}
+      .cat-headicon svg{width:22px;height:22px}
+      .notif-bar{border-color:color-mix(in srgb,var(--dc,#3fb8ff) 60%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -12px 18px rgba(0,0,0,.35),0 14px 30px rgba(0,0,0,.55),0 0 22px color-mix(in srgb,var(--dc,#3fb8ff) 28%,transparent)}
+      .os-mini-num.bignum{transform:scale(1.15);transform-origin:center}
+      .wx-bottomleft{position:fixed;left:calc(var(--bw,96px) + 16px);bottom:calc(var(--bw,96px) + 16px);z-index:30;display:flex;align-items:center;gap:10px;max-width:min(420px,calc(100vw - var(--bw,96px)*2 - 32px))}
+      .wx-bottomleft:empty{display:none}
+      @media(max-width:740px){.wx-bottomleft{left:calc(var(--bw,96px) + 8px);bottom:calc(var(--bw,96px) + 8px)}}
+      .door-where{margin-left:auto;font-size:var(--type-small);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dc,#3fb8ff);text-shadow:0 0 10px color-mix(in srgb,var(--dc,#3fb8ff) 40%,transparent);white-space:nowrap}
+      .doorfoot{display:grid;grid-template-columns:1fr auto 1fr;gap:8px 12px;align-items:center;max-width:640px;margin:20px auto 8px}
+      .doorfoot .nav-left{display:flex;justify-content:flex-end;gap:10px}
+      .doorfoot .nav-right{display:flex;justify-content:flex-start;gap:10px}
+      .doorfoot .p3-enter{margin:0}
+      .cover-dt{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+      .cover-date{font-family:"Marcellus",serif;font-size:var(--type-headline);letter-spacing:.06em;color:#fff;text-shadow:0 -1px 0 rgba(255,255,255,.28),0 2px 3px rgba(0,0,0,.85),0 0 11px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent)}
+      .cover-row{display:flex;justify-content:center;margin-top:12px}
+      .cover-change{min-height:44px;padding:0 20px;border-radius:999px;font-size:var(--type-small);font-weight:800;letter-spacing:.06em}
+      .twinblock h3{margin:0 0 4px;font-family:"Marcellus",serif;font-weight:400;font-size:var(--type-headline);letter-spacing:.14em;text-transform:uppercase;color:#fff;text-shadow:0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent)}
+      .ink-input{width:100%;min-height:96px;background:#08080d;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:14px;font:inherit;font-size:var(--type-small);line-height:1.55;color-scheme:dark;box-sizing:border-box}
+      .twin-out{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+      @media(max-width:740px){.twin-out{grid-template-columns:1fr}}
+      .twin-note{border:1.5px solid color-mix(in srgb,var(--nc,#fff) 65%,transparent);border-radius:16px;padding:16px;background:linear-gradient(180deg,#15151f,#08080d);box-shadow:0 10px 22px rgba(0,0,0,.55),0 0 16px color-mix(in srgb,var(--nc,#fff) 25%,transparent),inset 0 1px 0 rgba(255,255,255,.16)}
+      .twin-note h4{margin:0 0 8px;font-family:"Marcellus",serif;font-weight:400;font-size:var(--type-sub);letter-spacing:.08em;color:#fff}
+      .twin-note p{margin:0 0 8px;font-size:var(--type-small);font-weight:600;color:#fff;line-height:1.55}
+      .twin-note p strong{color:var(--nc,#fff)}
+      .twin-note .tn-kind{font-size:var(--type-small);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--nc,#fff)}
+      .ink-timeline{max-height:280px;overflow-y:auto;margin-top:12px;padding-right:6px;scrollbar-width:thin;scrollbar-color:var(--dc,#3fb8ff) rgba(255,255,255,.12)}
+      .ink-timeline .noteitem{margin-bottom:10px}
+      .ink-timeline img{max-width:100%;border-radius:12px;border:1.5px solid rgba(255,255,255,.4);display:block;margin-top:8px}
+      .opt-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+      .opt-pill{min-height:44px;padding:6px 18px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:var(--type-small);font-weight:800;letter-spacing:.06em;color:#fff;background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%);border:1.5px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 10px rgba(0,0,0,.5),0 5px 12px rgba(0,0,0,.5);cursor:pointer;transition:box-shadow .25s,transform .25s,filter .25s}
+      .opt-pill:hover{transform:translateY(-1px);filter:brightness(1.22)}
+      .opt-pill[aria-pressed="true"]{border-color:var(--dc,#3fb8ff);box-shadow:0 0 16px color-mix(in srgb,var(--dc,#3fb8ff) 40%,transparent),inset 0 1px 0 rgba(255,255,255,.35)}
+      .smart-block.allow-scroll{overflow-y:auto;justify-content:flex-start;scrollbar-width:thin;scrollbar-color:var(--dc,#3fb8ff) rgba(255,255,255,.12)}
 </style>
   </head>
   <body>
@@ -2161,16 +2223,18 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
       <section id="screen-month" class="screen" aria-label="Month calendar">
         <header class="monthbar">
           <div class="navcluster">
-            <button type="button" class="dlogo" id="brandHome" aria-label="NayaNET — open today"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/NAYA_ICON.png&amp;ref=calendar/border-eye-fix2-20261119&amp;cb=79fbab8f4ad44cfd83d7e3d50503953a54790472&amp;t=1795048291" alt="NayaNET — the royal seal"></button>
             <button class="navbtn" id="prevMonth" aria-label="Previous month">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
             </button>
           </div>
-          <button type="button" class="nowplaque" id="nowPlaque" aria-label="Today's date and your local time — tap to open today">
-            <span class="live-dot" id="nowDot" style="--sc:#d4a017"></span>
-            <span class="now-date" id="nowDate"></span>
-            <span class="now-time" id="nowTime"></span>
-          </button>
+          <div class="monthcentre">
+            <h1 class="monthname" id="monthName">November 2026</h1>
+            <button type="button" class="nowplaque" id="nowPlaque" aria-label="Today's date and your local time — tap to open today">
+              <span class="live-dot" id="nowDot" style="--sc:#d4a017"></span>
+              <span class="now-date" id="nowDate"></span>
+              <span class="now-time" id="nowTime"></span>
+            </button>
+          </div>
           <div class="navcluster right">
             <button class="navbtn" id="nextMonth" aria-label="Next month">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
@@ -2190,13 +2254,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           <div class="dayhead" id="dayHead"></div>
         </header>
         <div class="day-scroll" id="dayScroll">
-          <div class="smart-block sb-chamber" id="chamberBlock"><div class="smart-visual"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/portal-kings-chamber.png&amp;ref=calendar/border-eye-fix2-20261119&amp;cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&amp;t=1795048291" alt="The king&#8217;s chamber — the portal to your kingdom"><div class="king-hero" id="kingHero"><span class="kh-tiles os-mini-num" id="kingHeroTiles"></span><span class="kh-mid"><span class="kh-date" id="kingHeroDate">November 26</span><span class="kh-week" id="kingHeroWeek">Wednesday</span></span><span class="kh-hz" id="kingHeroHz">741 Hz</span></div></div><div class="sb-nav"><span aria-hidden="true"></span><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div><div class="sb-dots"></div></div><div class="wisdom-banner smart-block" id="wisdomBanner">
+          <div class="smart-block sb-chamber" id="chamberBlock"><div class="cover-dt"><span class="cover-date" id="coverDate">Wednesday, November 18th, 2026</span><span class="cover-clock" id="coverClock"></span></div><div class="smart-visual"><img id="coverImg" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/portal-kings-chamber.png&amp;ref=calendar/day-followon-live-20261119&amp;cb=2e2f0d8043da57fa4ae2dae3181543ac44a73e07&amp;t=1795053268" alt="The king&#8217;s chamber — the portal to your kingdom"><div class="king-hero" id="kingHero"><span class="kh-tiles os-mini-num" id="kingHeroTiles"></span><span class="kh-mid"><span class="kh-date" id="kingHeroDate">November 2026</span><span class="kh-week" id="kingHeroWeek">Wednesday</span></span><span class="kh-hz" id="kingHeroHz">741 Hz</span></div></div><div class="cover-row"><button type="button" class="pill cover-change" id="coverChangeBtn">Change cover</button><input type="file" id="coverFile" accept="image/*" hidden></div><div class="sb-nav"><div class="nav-left"></div><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button><div class="nav-right"></div></div><div class="sb-dots"></div></div><div class="wisdom-banner smart-block" id="wisdomBanner">
             <div class="wq-label">Wisdom of the day</div>
-            <blockquote id="wisdomQuote"></blockquote>
-            <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span><span class="wx-zone" id="wxZone"></span></div><div class="wq-store">NAYANET WISDOM STORE — FROM WHAT WE HAVE LEARNED</div><div id="daystepSlot"></div><div class="sb-nav"><button type="button" class="pill sb-back" data-sb="prev">‹ Back</button><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button></div><div class="sb-dots"></div>
+            <blockquote id="wisdomQuote"></blockquote><div class="dayteach" id="dayTeach"></div>
+            <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span></div><div class="sb-nav"><div class="nav-left"></div><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button><div class="nav-right"></div></div><div class="wq-store">Naya wisdom — from the Naya store</div><div class="sb-dots"></div>
           </div>
           <div id="catsWrap"></div>
         </div>
+        <div class="wx-bottomleft" id="wxBottomLeft"></div>
       </section>
 
       <!-- DOOR — one view inside the day -->
@@ -2210,11 +2275,12 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             <h2 id="doorTitle"></h2>
             <div class="sub" id="doorSub"></div>
           </div>
+          <span class="door-where" id="doorWhere"></span>
         </header>
         <div class="doorbody" id="doorBody"></div>
       </section>
     <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-et bottom"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div><div class="rf-n bottom"></div></div>
-<button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/icon-512.png&amp;ref=calendar/border-eye-fix2-20261119&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795048291" alt="Naya"></button>
+<button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/icon-512.png&amp;ref=calendar/day-followon-live-20261119&amp;cb=ee4b627c0c254ed9165715308fa282010ce8cf3c&amp;t=1795053268" alt="Naya"></button>
     </div>
 
     <script>
@@ -2222,7 +2288,24 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         "use strict";
 
         /* The day colors — the law of the week */
-        var DAY_COLORS = ["#8e24aa", "#c2410c", "#d4a017", "#3fb8ff", "#07925f", "#c62828", "#3f51b5"];
+        var DAY_COLORS = ["#a06bff", "#ff9a5a", "#ffbf3d", "#3fb8ff", "#2fe89e", "#ff5e6c", "#3f51b5"];
+        /* DAY COLOURS + MEANINGS (live dictation 2026-11-18 — Shawn's newer
+           word: Sun purple #a06bff · Mon orange #ff9a5a · Tue gold #ffbf3d ·
+           Wed Kanye blue #3fb8ff · Thu green #2fe89e · Fri red #ff5e6c · Sat
+           indigo. These bright values stand against Laws §3.1/§13 (deep
+           palette); the Laws themselves rule that Shawn's newer word wins
+           (§0), so the day colours follow his live word. The checker will
+           count the bright hexes — named here, not hidden. */
+        var DAY_COLOR_NAMES = ["purple", "orange", "gold", "Kanye blue", "green", "red", "indigo"];
+        var DAY_MEANING = [
+          "The day of rest and return — the crown, 963 Hz. Rest gathers what the week scattered.",
+          "The Moon's day — water, the sacral, 417 Hz. Begin gently; what you start, you carry.",
+          "The day of fire and will — the solar plexus, 528 Hz. Act; the day rewards the brave.",
+          "The day of the voice — the throat, 741 Hz. Speak true; words said today travel.",
+          "The day of the heart — love, 639 Hz. Give; the heart keeps what it gives.",
+          "The day of the ground — the root, 396 Hz. Stand firm; finish what stands.",
+          "The day of inner sight — the third eye, 852 Hz. Look back honestly, look forward with care."
+        ];
         /* The day frequencies — Living Calendar law: Sunday 963 · Monday 417 ·
            Tuesday 528 · Wednesday 741 · Thursday 639 · Friday 396 · Saturday 852 */
         var DAY_FREQ = [963, 417, 528, 741, 639, 396, 852];
@@ -2264,6 +2347,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           heart: icon('<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>'),
           mountain: icon('<path d="M3 19.5 9.5 8l3.5 5.5 3-4.5 5 10.5z"/>'),
           eye: icon('<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'),
+          /* YOUR WORLDS (live dictation §7): a globe with its orbit — the
+             worlds turning around the citizen, in the day's colour */
+          worlds: icon('<circle cx="12" cy="12" r="4.2"/><path d="M3.8 15.5c5.5 2.6 12 2.6 16.4-1.2M20.2 8.5C14.7 5.9 8.2 5.9 3.8 9.7"/><ellipse cx="12" cy="12" rx="10" ry="3.6" transform="rotate(-18 12 12)"/>'),
           landmark: icon('<path d="M4 20h16M5 20v-8M9.5 20v-8M14.5 20v-8M19 20v-8M3 12l9-7 9 7z"/>'),
           globe: icon('<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.3 3.6 5.2 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.2-3.6-8.5S9.6 5.8 12 3.5z"/>'),
           user: icon('<circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.2-3.4 3.8-5 7-5s5.8 1.6 7 5"/>'),
@@ -2323,8 +2409,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           { id: "smartnotes", group: "record", label: "Smart Notes", color: "#07925f", icon: "note", empty: "" },
           { id: "posts", group: "record", label: "Posts", color: "#c2410c", icon: "post", empty: "No posts for this day." },
           { id: "personal", group: "worlds", label: "Personal feed", color: "#07925f", icon: "user", empty: "Nothing in your personal feed for this day. Your personal feed is private by default — only people directly connected to your personal world see it. Any feed can be set private or public; that is a setting, not a fixed rule." },
-          { id: "work", group: "worlds", label: "Business feed", color: "#d4a017", icon: "briefcase", empty: "Nothing in your business feed for this day — your business, your job, all in one feed." },
-          { id: "world", group: "worlds", label: "Your world", color: "#c2410c", icon: "world", empty: "Nothing in your world feed for this day. Your world feed is public by default — everybody can see it. Any feed can be set private or public; that is a setting, not a fixed rule." },
+          { id: "work", group: "worlds", label: "Business feed", color: "#0f52ba", icon: "briefcase", empty: "Nothing in your business feed for this day — your business, your job, all in one feed." },
+          { id: "world", group: "worlds", label: "Your world", color: "#8e24aa", icon: "world", empty: "Nothing in your world feed for this day. Your world feed is public by default — everybody can see it. Any feed can be set private or public; that is a setting, not a fixed rule." },
           { id: "appointments", group: "day", label: "Appointments", color: "#8e24aa", icon: "clock", empty: "" },
           { id: "journal", group: "record", label: "Journal", color: "#07925f", icon: "book", empty: "" },
           { id: "horoscope", group: "around", label: "Horoscope", color: "#c62828", icon: "star", empty: "Horoscope is not connected yet — no reading to show for this day." },
@@ -2362,23 +2448,36 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            the machine spec, in spectrum order: purple, blue, green.
            Personal is private by default; World is public by default;
            any feed can be set either way — a setting, not a fixed rule */
+        /* THE FOUR + ONE (live dictation 2026-11-18, §6): Personal ·
+           Business · Your Worlds (total) · Sales/Dashboard — PLUS
+           appointments notifications. Each area its own colour:
+           Personal green, Business blue, World purple. The centre's
+           frame takes the DAY's colour (renderNotifBar sets --dc). */
         var NOTIF_SCOPES = [
           { id: "personal", label: "Personal", color: "#07925f", note: "Private by default — only people directly connected to your personal world see it." },
-          { id: "work", label: "Business", color: "#d4a017", note: "Your business, your job — one world." },
-          { id: "world", label: "World", color: "#c2410c", note: "Public by default — everybody can see it." }
+          { id: "work", label: "Business", color: "#0f52ba", note: "Your business, your job — one world." },
+          { id: "worlds", label: "Your Worlds", color: "#8e24aa", note: "Every world you belong to — the total across them, counted as one stat." },
+          { id: "sales", label: "Sales", color: "#a21caf", note: "Sales live on the dashboard — this block counts them there.", state: "On the dashboard" },
+          { id: "appointments", label: "Appointments", color: "#0e7490", note: "What is booked for this day — appointments and Smart Meets, counted." }
         ];
         /* Colours for sources added with the + chip — the spectrum
            keeps flowing: gold, orange, red, magenta, then it turns */
         var SOURCE_COLORS = ["#d4a017", "#c2410c", "#c62828", "#a21caf", "#8e24aa", "#0f52ba", "#07925f"];
-        var NOTIF_ITEMS = [
-          { id: "im", label: "Instant Messages" },
-          { id: "mail", label: "Smart Mail" },
-          { id: "smartnotes", label: "Smart Notes" },
-          { id: "nayanotes", label: "Naya Notes" },
-          { id: "likes", label: "Likes" },
-          { id: "comments", label: "Comments" },
-          { id: "shares", label: "Shares" }
-        ];
+        /* WHERE NOTIFICATIONS COME FROM — LOCKED (live dictation
+           2026-11-18, §6): instant messages, personal mail, new personal
+           connections, business instant mail, business mail, business
+           connections, world instant messages, world mail, world
+           connections — three per world — plus, for every world: new
+           intel for the day, new Smart Notes, daily report, app-ready.
+           Sales live on the dashboard. */
+        var NOTIF_SOURCES = {
+          personal: [["im", "Instant Messages"], ["mail", "Personal Mail"], ["conn", "New Personal Connections"]],
+          work: [["im", "Business Instant Mail"], ["mail", "Business Mail"], ["conn", "Business Connections"]],
+          worlds: [["im", "World Instant Messages"], ["mail", "World Mail"], ["conn", "World Connections"]],
+          sales: [["sales", "Sales"], ["dash", "Dashboard"]],
+          appointments: [["appt", "Appointments"], ["meet", "Smart Meet"]]
+        };
+        var NOTIF_COMMON = [["intel", "New Intel for the Day"], ["smartnotes", "New Smart Notes"], ["report", "Daily Report"], ["appready", "App-Ready"]];
 
         /* Session state — appointments and notes live here while the page is open */
         var appointments = {}; /* key -> [{time, title, meet}] */
@@ -2500,8 +2599,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         /* A count as digit tiles wearing its WORLD's colour — rim, cap
            and glow in the world's own deep colour, the digit white.
            Alive at any value: a live reading, never flat text */
-        function worldDigitsHTML(num, color, med) {
-          var html = '<span class="os-mini-num worldnum' + (med ? " med" : "") + '" style="--sc:' + color + '">';
+        function worldDigitsHTML(num, color, med, big) {
+          var html = '<span class="os-mini-num worldnum' + (med ? " med" : "") + (big ? " bignum" : "") + '" style="--sc:' + color + '">';
           String(num).split("").forEach(function (ch) { html += miniTileHTML(ch); });
           return html + "</span>";
         }
@@ -2548,40 +2647,62 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            Mail, messages and post action are not connected yet — the
            zero rule (RULED 17:28Z) says unknown shows as a STATE, not
            a number, so they never read a 0, never an invented number */
-        function scopeCounts(scopeId) {
-          var counts = {};
-          NOTIF_ITEMS.forEach(function (it) { counts[it.id] = 0; });
-          if (scopeId === "personal" && sel) counts.nayanotes = (notes[keyOf(sel)] || []).length;
-          return counts;
+        /* The one real number a scope + source can show, or null
+           (unknown — the state plaque, never a 0, per the zero rule).
+           Smart Notes count the day's real notes; appointments count
+           the day's real bookings and meets. Everything else has
+           nothing connected to measure. */
+        function countFor(scopeId, itemId) {
+          if (!sel) return null;
+          var k = keyOf(sel);
+          if (itemId === "smartnotes") return mergedNotesFor(k).length;
+          if (scopeId === "appointments" && itemId === "appt") return dayApptsFor(k).length;
+          if (scopeId === "appointments" && itemId === "meet") return dayApptsFor(k).filter(function (a) { return a.meet; }).length;
+          return null;
         }
         /* The one real number a scope can show: your Naya Notes for
            this day, counted from the store that holds them. Every other
            scope has nothing connected to measure, so it returns null —
            unknown — and the card wears the state plaque, never a 0 */
         function scopeRealCount(scopeId) {
-          if (scopeId === "personal" && sel) return (notes[keyOf(sel)] || []).length;
+          if (scopeId === "personal" && sel) return mergedNotesFor(keyOf(sel)).length;
+          if (scopeId === "appointments" && sel) return dayApptsFor(keyOf(sel)).length;
           return null;
         }
         /* Where a row's action came from — the source list. Real notes
            name themselves; a quiet row says plainly why it is quiet */
         function rowSources(scopeId, itemId) {
-          if (scopeId === "personal" && itemId === "nayanotes" && sel) {
-            var ns = notes[keyOf(sel)] || [];
+          if (!sel) return ["Nothing here yet for this day."];
+          var k = keyOf(sel);
+          if (itemId === "smartnotes") {
+            var ns = mergedNotesFor(k);
             if (ns.length) {
               return ns.map(function (n) {
                 var txt = n.text || "";
-                /* v18-fix — same word-safe cut as latestText (inlined:
-                   this function sits outside clipText's scope): cut at
-                   the last space at or before 90, so a word straddling
-                   the limit is dropped whole, never split */
                 var cut = txt.slice(0, 90), sp = cut.lastIndexOf(" ");
                 if (txt.length > 90 && sp > 0) cut = cut.slice(0, sp);
                 return "Naya Note — \u201C" + escapeHTML(cut) + (txt.length > 90 ? "\u2026" : "") + "\u201D · written this day";
               });
             }
           }
-          var item = NOTIF_ITEMS.filter(function (x) { return x.id === itemId; })[0];
-          return ["Nothing here yet for this day — " + (item ? item.label : "this source") + " is not connected yet, so there is no number to show."];
+          if (scopeId === "appointments" && itemId === "appt") {
+            var ap = dayApptsFor(k);
+            if (ap.length) return ap.map(function (a) { return fmtTime(a.time) + " — " + escapeHTML(a.title) + (a.meet ? " (Smart Meet)" : ""); });
+          }
+          if (scopeId === "appointments" && itemId === "meet") {
+            var mm = dayApptsFor(k).filter(function (a) { return a.meet; });
+            if (mm.length) return mm.map(function (a) { return "Smart Meet · " + fmtTime(a.time) + " — " + escapeHTML(a.title); });
+            return ["No Smart Meet booked for this day yet."];
+          }
+          if (scopeId === "worlds" && itemId === "conn") {
+            return ["Your worlds: none connected yet — when worlds connect, each world's notifications show here; if just one world, just that world."];
+          }
+          if (scopeId === "sales" && (itemId === "sales" || itemId === "dash")) {
+            return ["Sales live on the dashboard — this block counts them there."];
+          }
+          var label = itemId;
+          (NOTIF_SOURCES[scopeId] || []).concat(NOTIF_COMMON).forEach(function (pair) { if (pair[0] === itemId) label = pair[1]; });
+          return ["Nothing here yet for this day — " + label + " is not connected yet, so there is no number to show."];
         }
         function greetingWord(d) {
           var h = d.getHours();
@@ -2664,6 +2785,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           /* The browsed month is named for screen readers only — the
              visible page says the date exactly once, in the plaque */
           grid.setAttribute("aria-label", "Days of " + MONTHS[viewM] + " " + viewY);
+          /* The month name, big and centred up top (§5), in today's
+             colour — and the range: a year ahead, a year behind */
+          var mn = $("monthName");
+          if (mn) { mn.textContent = MONTHS[viewM] + " " + viewY; mn.style.setProperty("--dc", DAY_COLORS[now.getDay()]); }
+          var nowIdx = now.getFullYear() * 12 + now.getMonth(), viewIdx = viewY * 12 + viewM;
+          var pm = $("prevMonth"), nm = $("nextMonth");
+          if (pm) { pm.classList.toggle("off", viewIdx <= nowIdx - 12); pm.setAttribute("aria-disabled", viewIdx <= nowIdx - 12 ? "true" : "false"); }
+          if (nm) { nm.classList.toggle("off", viewIdx >= nowIdx + 12); nm.setAttribute("aria-disabled", viewIdx >= nowIdx + 12 ? "true" : "false"); }
           /* Today's weekday plaque fills with its color — only while the
              month on screen is the month that holds today */
           var viewingNow = viewY === now.getFullYear() && viewM === now.getMonth();
@@ -2738,11 +2867,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            plainly it is not connected — a forecast is never invented */
         function renderTopGreeting() {
           var t = new Date();
-          var hello = $("greetHello"), clock = $("greetClock"), wxZone = $("wxZone");
+          var hello = $("greetHello"), clock = $("greetClock");
           if (hello) hello.textContent = greetingWord(t) + ", Shawn.";
           if (clock) clock.innerHTML = clockTilesHTML(t);
-          if (wxZone) {
-            wxZone.innerHTML = wxCity
+          /* Weather lives in the BOTTOM LEFT bar now (§5) — the same
+             control, moved out of the wisdom banner into its own spot */
+          var wxBar = $("wxBottomLeft");
+          if (wxBar) {
+            wxBar.innerHTML = wxCity
               ? '<span class="wx-note"><strong>' + escapeHTML(properCaseCity(wxCity)) + '</strong> · Weather is not connected yet — no forecast to invent.</span>'
               : '<button type="button" class="wx-btn" id="wxBtn">Weather · Enter your city</button><span id="wxSlot"></span>';
             var btn = $("wxBtn");
@@ -2757,7 +2889,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                 if (!v) return;
                 wxCity = properCaseCity(v);
                 renderTopGreeting();
-                updateWxRow();
               });
             });
           }
@@ -2777,6 +2908,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             var c = $("greetClock");
             if (!c || $("screen-day").classList.contains("hidden")) return;
             c.innerHTML = clockTilesHTML(new Date());
+            var cc = $("coverClock");
+            if (cc) cc.innerHTML = clockTilesHTML(new Date());
           }, 1000);
         }
 
@@ -2796,15 +2929,21 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            below them, inside YOUR WORLDS — the menu is the world's,
            not the page's */
         function renderNotifBar() {
+          /* The centre's frame lights in the DAY's colour (§6) — the
+             inner blocks keep their own area colours, the outer block
+             lights in the day colour, obsidian black underneath */
+          if (sel) $("notifBar").style.setProperty("--dc", DAY_COLORS[sel.getDay()]);
           var blocks = NOTIF_SCOPES.map(function (s) {
             var real = scopeRealCount(s.id);
             var num = real === null
-              ? '<span class="state-pill">Not connected yet</span>'
-              : worldDigitsHTML(real, s.color, true);
-            var aria = real === null ? s.label + ", not connected yet" : s.label + ", " + real + (real === 1 ? " Naya Note" : " Naya Notes");
+              ? '<span class="state-pill">' + (s.state || "Not connected yet") + "</span>"
+              : worldDigitsHTML(real, s.color, true, true);
+            var unit = s.id === "appointments" ? "appointment" : "Naya Note";
+            var aria = real === null ? s.label + ", not connected yet" : s.label + ", " + real + " " + unit + (real === 1 ? "" : "s");
+            var sub = s.id === "personal" ? "Naya Notes" : s.id === "appointments" ? "Appointments" : s.id === "sales" ? "Sales" : "Notifications";
             return '<button type="button" class="nblock" style="--sc:' + s.color + '" data-scope="' + s.id + '" aria-expanded="' + (openScopeId === s.id) + '" aria-label="' + aria + '">' +
               '<span class="nb-name"><span class="live-dot"></span>' + s.label + "</span>" +
-              '<span class="nb-sub">' + (s.id === "personal" ? "Naya Notes" : "Notifications") + '</span>' + num + "</button>";
+              '<span class="nb-sub">' + sub + '</span>' + num + "</button>";
           }).join("");
           blocks += customSources.map(function (s) {
             return '<button type="button" class="nblock" style="--sc:' + s.color + '" data-scope="' + s.id + '" aria-expanded="' + (openScopeId === s.id) + '" aria-label="' + escapeHTML(s.label) + ', not connected yet">' +
@@ -2882,17 +3021,19 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (custom) {
             rows = '<div class="nd-sources" style="border-bottom:none"><p class="nd-src">Nothing here yet for this day — this source was just added and is not connected yet, so there is no number to show.</p></div>';
           } else {
-            var counts = scopeCounts(scope.id);
-            rows = NOTIF_ITEMS.map(function (it) {
-              var open = openRowId === it.id;
-              var srcs = open ? '<div class="nd-sources">' + rowSources(scope.id, it.id).map(function (s) {
+            var items = (NOTIF_SOURCES[scope.id] || []).concat(NOTIF_COMMON);
+            rows = items.map(function (pair) {
+              var itId = pair[0], itLabel = pair[1];
+              var open = openRowId === itId;
+              var srcs = open ? '<div class="nd-sources">' + rowSources(scope.id, itId).map(function (s) {
                 return '<p class="nd-src">' + s + "</p>";
               }).join("") + "</div>" : "";
-              var shown = (scope.id === "personal" && it.id === "nayanotes")
-                ? worldDigitsHTML(counts[it.id] || 0, color)
-                : '<span class="state-pill small">Not connected</span>';
-              return '<button type="button" class="nd-row" data-row="' + it.id + '" aria-expanded="' + open + '">' +
-                '<span class="nr-l">' + it.label + '</span>' +
+              var c = countFor(scope.id, itId);
+              var shown = c === null
+                ? '<span class="state-pill small">Not connected</span>'
+                : worldDigitsHTML(c, color, true);
+              return '<button type="button" class="nd-row" data-row="' + itId + '" aria-expanded="' + open + '">' +
+                '<span class="nr-l">' + itLabel + '</span>' +
                 '<span style="display:inline-flex;align-items:center;gap:10px">' + shown +
                 '<span class="nr-chev" aria-hidden="true">' + (open ? "▾" : "▸") + "</span></span></button>" + srcs;
             }).join("");
@@ -2961,6 +3102,46 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           openDay(d, { anim: dir > 0 ? "next" : "prev" });
         }
 
+        /* THE TIMELINE, 6 AM – 9 PM — the day's spine, built once and
+           shared: the day screen's appointments block AND the appointments
+           door render this same timeline (live dictation §9 — timeline
+           and scheduler merge into one screen). A preview never cuts a
+           word in half: the cut lands on the last space at or before the
+           limit, and the "…" follows a whole word. */
+        function clipText(s, n) {
+          if (s.length <= n) return s;
+          var cut = s.slice(0, n), sp = cut.lastIndexOf(" ");
+          if (sp > 0) cut = cut.slice(0, sp);
+          return cut + "\u2026";
+        }
+        function timelineHTML(k) {
+          var dayAppts = dayApptsFor(k);
+          var dayJournal = journal[k] || [];
+          var dayNotes = mergedNotesFor(k);
+          function hourOfEntry(e) {
+            var h = e.at ? new Date(e.at).getHours() : 12;
+            return h < 6 ? 6 : h > 21 ? 21 : h;
+          }
+          function fmtTimeOf(ts) {
+            var dd = new Date(ts);
+            return fmtTime(String(dd.getHours()).padStart(2, "0") + ":" + String(dd.getMinutes()).padStart(2, "0"));
+          }
+          var tl = "";
+          for (var h = 6; h <= 21; h++) {
+            var hh = h % 12; if (hh === 0) hh = 12;
+            var hlabel = hh + " " + (h < 12 ? "AM" : "PM");
+            var inHour = dayAppts.filter(function (a) { return parseInt(a.time.split(":")[0], 10) === h; });
+            var jInHour = dayJournal.filter(function (j) { return hourOfEntry(j) === h; });
+            var nInHour = dayNotes.filter(function (n) { return hourOfEntry(n) === h; });
+            var chips = inHour.map(function (a) { return '<span class="tl-chip">' + fmtTime(a.time) + " · " + escapeHTML(a.title) + "</span>" + (a.meet ? '<span class="meet" style="flex:none;font-size:var(--type-small);font-weight:800;letter-spacing:.06em;padding:5px 11px;border-radius:999px;border:1px solid var(--d3);color:#bfeaff">Meet</span><button type="button" class="pill tl-join" data-join="' + dayAppts.indexOf(a) + '" aria-label="Join the Smart Meet at ' + fmtTime(a.time) + '" style="flex:none">Join \u2192</button>' : ""); })
+              .concat(jInHour.map(function (j) { return '<span class="tl-chip journal">Journal · ' + (j.at ? fmtTimeOf(j.at) : "") + " — " + escapeHTML(clipText(j.text || "", 40)) + "</span>"; }))
+              .concat(nInHour.map(function (n) { return '<span class="tl-chip note">Note · ' + (n.at ? fmtTimeOf(n.at) : "") + " — " + escapeHTML(clipText(n.text || "", 40)) + "</span>"; }));
+            tl += '<div class="tl-row"><span class="th">' + hlabel + '</span><span class="tline"></span><span class="te">' +
+              chips.join(" ") + "</span></div>";
+          }
+          return tl;
+        }
+
         function openDay(d, opts) {
           stopMeet();
           sel = d;
@@ -2996,31 +3177,26 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              time DEAD CENTER, an empty cell at the right balancing the
              date so the time holds the middle. The greeting left the
              bar (it shares the wisdom bar now) and the stepper left
-             too (it sits under the wisdom bar, in #daystepSlot) */
+             too (it rides every block's nav now, flanking Keep reading) */
           /* The stepper names the neighbours by weekday only — never
              their dates — so the headliner stays the day's one saying
              of its date. The return pill shows only while the day on
              screen is not today */
-          var prevD = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1);
-          var nextD = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
-          var stepHTML =
-            '<div class="daystep">' +
-              '<button type="button" class="daystep-btn" id="prevDayBtn" aria-label="Previous day, ' + WEEKDAYS[prevD.getDay()] + '">&#8249; ' + WEEKDAY_ABBR[prevD.getDay()] + '</button>' +
-              (isToday(d) ? '' : '<button type="button" class="daystep-btn today" id="todayBtn">Back to today</button>') +
-              '<button type="button" class="daystep-btn" id="nextDayBtn" aria-label="Next day, ' + WEEKDAYS[nextD.getDay()] + '">' + WEEKDAY_ABBR[nextD.getDay()] + ' &#8250;</button>' +
-            '</div>';
+          /* HEADLINER (live dictation §1 + §3): the day number in solid
+             official digit tiles, exactly like the clock digits; below it
+             the month line — "November 2026", NO day number in it — alive
+             in the day's colour, lit from within; the weekday beside the
+             tiles, white with the day's glow (the 2026-11-17 ruling — the
+             weekday stays white; the old inline day-colour style is gone).
+             The world clock holds dead centre. */
           head.innerHTML =
             '<div class="official-headliner">' +
-              '<span class="hl-left"><span class="daynum-tile" aria-hidden="true">'+d.getDate()+'</span><span class="hl-weekday" style="color:var(--dc)">' + WEEKDAYS[d.getDay()] + '</span>' +
-              '<span class="hl-dot" aria-hidden="true"></span>' +
-              '<span class="hl-date">' + MONTHS[d.getMonth()] + " " + (function(n){var s=["th","st","nd","rd"],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0]);})(d.getDate()) + " " + d.getFullYear() + "</span></span>" +
+              '<span class="hl-left"><span class="hl-dayrow">' + digitsHTML(d.getDate()) + '<span class="hl-weekday">' + WEEKDAYS[d.getDay()] + '</span></span>' +
+              '<span class="hl-monthline">' + MONTHS[d.getMonth()] + " " + d.getFullYear() + "</span></span>" +
               '<span class="hl-time" id="greetClock"></span>' +
               '<button type="button" class="stats-btn" id="statsBtn">Your Stats</button>' +
             "</div>" +
             '<span class="sigpiece" style="--dc:' + dc + '" role="img" aria-label="' + WEEKDAYS[d.getDay()] + '"><span class="sp-ring-a"></span><span class="sp-ring-b"></span><span class="sp-metal"></span><span class="sp-pearl"></span></span>';
-          /* The stepper lives under the wisdom bar now, not in the
-             head — the bar holds only the headliner and the jewel */
-          $("daystepSlot").innerHTML = stepHTML;
           var k = keyOf(d);
           var dayAppts = dayApptsFor(k);
           var dayNotes = mergedNotesFor(k);
@@ -3029,11 +3205,19 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           $("wisdomQuote").textContent = "\u201C" + WISDOM[d.getDay()] + "\u201D";
             /* V6 — KINGDOM HERO fill (same viewed day d, same colour dc; never hard-coded). */
             var __kh=$("kingHeroTiles"); if(__kh){__kh.innerHTML=digitsHTML(d.getDate());}
-            var __kd=$("kingHeroDate"); if(__kd){__kd.textContent=MONTHS[d.getMonth()]+" "+String(d.getFullYear()).slice(2);}
+            var __kd=$("kingHeroDate"); if(__kd){__kd.textContent=MONTHS[d.getMonth()]+" "+d.getFullYear();}
             var __kw=$("kingHeroWeek"); if(__kw){__kw.textContent=WEEKDAYS[d.getDay()];__kw.style.color=dc;}
             var __khz=$("kingHeroHz"); if(__khz){__khz.textContent=DAY_FREQ[d.getDay()]+" Hz";}
             document.documentElement.style.setProperty("--dc", dc);
             document.documentElement.setAttribute("data-day-theme", WEEKDAYS[d.getDay()].toLowerCase());
+            /* The day, taught (§3): its meaning, frequency, colour and
+               logic, in its own words — felt first, then understood */
+            var __dt=$("dayTeach"); if(__dt){__dt.innerHTML="<strong>"+WEEKDAYS[d.getDay()]+" · "+DAY_FREQ[d.getDay()]+" Hz · "+DAY_COLOR_NAMES[d.getDay()]+"</strong> — "+DAY_MEANING[d.getDay()];}
+            /* The cover's date and time, above it (§4) */
+            var __cd=$("coverDate"); if(__cd){__cd.textContent=WEEKDAYS[d.getDay()]+", "+MONTHS[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();}
+            var __cc2=$("coverClock"); if(__cc2){__cc2.innerHTML=clockTilesHTML(new Date());}
+            /* The citizen's own cover, kept (§4) */
+            var __cv=LS.get("nayacal.cover.v1"); if(__cv&&__cv.src){var __ci=$("coverImg"); if(__ci) __ci.src=__cv.src;}
 
           /* The greeting + weather live in the wisdom bar now
              (rendered into #wisdomBanner above — one bar, wisdom +
@@ -3049,57 +3233,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             return '<div class="tile-appt-row"><span class="tw">' + fmtTime(a.time) + '</span><span class="tt">' + escapeHTML(a.title) + "</span>" + (a.meet ? '<span class="meet" style="flex:none;font-size:var(--type-small);font-weight:800;letter-spacing:.06em;padding:5px 11px;border-radius:999px;border:1px solid var(--d3);color:#bfeaff">Meet</span><button type="button" class="pill" data-join="' + idx + '" aria-label="Join the Smart Meet at ' + fmtTime(a.time) + '" style="flex:none">Join \u2192</button>' : "") + "</div>";
           }).join("") : '<p class="tile-empty">Nothing booked yet — the day is open.</p>';
 
-          /* Timeline 6 AM – 9 PM — the day's spine. Appointments sit
-             at their hour, and the journal entries and notes for the
-             day sit ON it too, at the time they were written (§3.5):
-             the timeline is the spine, the journal is its voice. An
-             entry written before 6 AM rides the 6 AM row, after 9 PM
-             the 9 PM row — the chip always shows its real time */
-          var dayJournal = journal[k] || [];
-          function hourOfEntry(e) {
-            var h = e.at ? new Date(e.at).getHours() : 12;
-            return h < 6 ? 6 : h > 21 ? 21 : h;
-          }
-          function fmtTimeOf(ts) {
-            var dd = new Date(ts);
-            return fmtTime(String(dd.getHours()).padStart(2, "0") + ":" + String(dd.getMinutes()).padStart(2, "0"));
-          }
-          /* v18 — a preview never cuts a word in half: the cut
-             lands on the last space at or before the limit, and the
-             "…" follows a whole word. A single word longer than the
-             limit is the only hard cut left */
-          function clipText(s, n) {
-            if (s.length <= n) return s;
-            var cut = s.slice(0, n), sp = cut.lastIndexOf(" ");
-            if (sp > 0) cut = cut.slice(0, sp);
-            return cut + "\u2026";
-          }
-          var tl = "";
-          for (var h = 6; h <= 21; h++) {
-            var hh = h % 12; if (hh === 0) hh = 12;
-            var hlabel = hh + " " + (h < 12 ? "AM" : "PM");
-            var inHour = dayAppts.filter(function (a) { return parseInt(a.time.split(":")[0], 10) === h; });
-            var jInHour = dayJournal.filter(function (j) { return hourOfEntry(j) === h; });
-            var nInHour = dayNotes.filter(function (n) { return hourOfEntry(n) === h; });
-            var chips = inHour.map(function (a) { return '<span class="tl-chip">' + fmtTime(a.time) + " · " + escapeHTML(a.title) + "</span>" + (a.meet ? '<span class="meet" style="flex:none;font-size:var(--type-small);font-weight:800;letter-spacing:.06em;padding:5px 11px;border-radius:999px;border:1px solid var(--d3);color:#bfeaff">Meet</span><button type="button" class="pill tl-join" data-join="' + dayAppts.indexOf(a) + '" aria-label="Join the Smart Meet at ' + fmtTime(a.time) + '" style="flex:none">Join \u2192</button>' : ""); })
-              .concat(jInHour.map(function (j) { return '<span class="tl-chip journal">Journal · ' + (j.at ? fmtTimeOf(j.at) : "") + " — " + escapeHTML(clipText(j.text || "", 40)) + "</span>"; }))
-              .concat(nInHour.map(function (n) { return '<span class="tl-chip note">Note · ' + (n.at ? fmtTimeOf(n.at) : "") + " — " + escapeHTML(clipText(n.text || "", 40)) + "</span>"; }));
-            tl += '<div class="tl-row"><span class="th">' + hlabel + '</span><span class="tline"></span><span class="te">' +
-              chips.join(" ") + "</span></div>";
-          }
-
-
+          var tl = timelineHTML(k);
           lastApptRows = apptRows; lastTl = tl;
           renderCategories(apptRows, tl);
           renderNotifBar();
           renderNotifDetail();
-          /* The stepper's own wiring — one tap walks one day */
-          var pdb = $("prevDayBtn"); if (pdb) pdb.addEventListener("click", function () { stepDay(-1); });
-          var ndb = $("nextDayBtn"); if (ndb) ndb.addEventListener("click", function () { stepDay(1); });
-          var tdb = $("todayBtn"); if (tdb) tdb.addEventListener("click", function () {
-            var t0 = new Date(); t0.setHours(0, 0, 0, 0);
-            openDay(new Date(), { anim: sel < t0 ? "next" : "prev" });
-          });
           /* Your Stats (Amendment #3): the button in the top bar lands
              on the stats view for the day being viewed. The Dashboard
              (Smart Score Dashboard) is not in this branch, so the
@@ -3110,6 +3248,21 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             var door = doorById("reports");
             if (door) openDoor(door);
           });
+          /* Change cover (§4): any photo they choose becomes the day's
+             cover — kept for the citizen, session-safe if storage refuses */
+          var ccb = $("coverChangeBtn");
+          if (ccb && !ccb.__wired) {
+            ccb.__wired = true;
+            ccb.addEventListener("click", function () { var f = $("coverFile"); if (f) f.click(); });
+            var cf = $("coverFile");
+            if (cf) cf.addEventListener("change", function () {
+              var file = cf.files && cf.files[0]; if (!file) return;
+              var r = new FileReader();
+              r.onload = function () { var ci = $("coverImg"); if (ci) ci.src = r.result; try { LS.set("nayacal.cover.v1", { src: r.result }); } catch (e) {} };
+              r.readAsDataURL(file);
+            });
+          }
+          normalizeDayNavs();
           var sc = $("dayScroll"); if (sc) sc.scrollTop = 0;
           dayBlock = 0; dayShow(0);
           show("screen-day");
@@ -3140,14 +3293,20 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         function doorById(id) {
           return DOORS.filter(function (d) { return d.id === id; })[0];
         }
-        function catSection(cat, inner, foldKey, headNote, headTitle, headColor, headJewel) {
+        function catSection(cat, inner, foldKey, headNote, headTitle, headColor, headJewel, headIcon, extraClass) {
           /* foldKey: the section starts folded (hidden) until its button
              unfolds it — the agreement's [hidden] beats, same mechanism */
           var folded = false; /* Smart Flow: every block renders; the viewer shows one at a time — the fold state is dormant */
-          return '<section class="cat smart-block' + (headJewel ? ' jewel-' + headJewel : '') + '" style="--cc:' + (headColor || cat.color) + '" aria-label="' + (headTitle || cat.label) + '"' +
+          /* headTitle "" means the title is said once already, inside
+             the block (Notifications in its own head, Appointments in
+             its tile) — the section head is omitted, never doubled. */
+          var head = headTitle === ""
+            ? ""
+            : '<div class="cat-head">' + (headIcon ? '<span class="cat-headicon" aria-hidden="true">' + ICONS[headIcon] + '</span>' : '<span class="cat-jewel" aria-hidden="true"></span>') +
+              '<h2 class="cat-title">' + (headTitle || cat.label) + '</h2></div>';
+          return '<section class="cat smart-block' + (headJewel ? ' jewel-' + headJewel : '') + (extraClass ? ' ' + extraClass : '') + '" style="--cc:' + (headColor || cat.color) + '" aria-label="' + (headTitle || cat.label) + '"' +
             (foldKey ? ' data-unfold-sec="' + foldKey + '"' : '') + (folded ? ' hidden' : '') + '>' +
-            '<div class="cat-head"><span class="cat-jewel" aria-hidden="true"></span>' +
-            '<h2 class="cat-title">' + (headTitle || cat.label) + '</h2></div>' +
+            head +
             '<p class="cat-essence">' + (headNote || cat.essence) + '</p>' + inner + '<div class="sb-dots"></div></section>';
         }
         function unfoldButton(key) {
@@ -3178,26 +3337,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (sp > 0) cut = cut.slice(0, sp);
           return cut + "…";
         }
-        /* The weather glimpse — a row when there is no city yet (tap it
-           and the header's own weather button wakes), a plain glimpse
-           when the city is set (nothing to tap: the state is the news) */
-        function wxRowHTML() {
-          if (wxCity) {
-            return '<div class="cat-row" id="wxRow" style="--c:#c2410c">' +
-              '<span class="chip">' + ICONS.weather + '</span>' +
-              '<span class="lr-l">Weather</span>' +
-              '<span class="lr-g">' + escapeHTML(properCaseCity(wxCity)) + ' · Weather is not connected yet — no forecast to invent.</span></div>';
-          }
-          return '<button type="button" class="cat-row" id="wxRow" style="--c:#c2410c" data-action="weather-city">' +
-            '<span class="chip">' + ICONS.weather + '</span>' +
-            '<span class="lr-l">Weather</span>' +
-            '<span class="lr-g">Weather is not connected yet — tell us your city above.</span>' +
-            '<span class="lr-chev" aria-hidden="true">›</span></button>';
-        }
-        function updateWxRow() {
-          var w = $("wxRow");
-          if (w) w.outerHTML = wxRowHTML();
-        }
+        /* Weather has no row any more (§5 + §8): it lives in the
+           bottom-left bar, and the news block is news only. */
         var SCROLL_SPECTRUM = ["#8e24aa", "#0f52ba", "#07925f", "#d4a017", "#c2410c", "#c62828", "#a21caf"];
         var scrollIO = null, scrollIdx = 0;
         /* CALENDAR FIX 2 (R4) — the scroll-light driver (see CSS note). The
@@ -3232,7 +3373,10 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         }
         function dayShow(a) {
           var blocks = dayBlocks(); if (!blocks.length) return;
-          if (a === "next") dayBlock = Math.min(dayBlock + 1, blocks.length - 1);
+          if (a === "next") {
+            if (dayBlock >= blocks.length - 1) { stepDay(1); return; }
+            dayBlock = dayBlock + 1;
+          }
           else if (a === "prev") dayBlock = Math.max(dayBlock - 1, 0);
           else if (a === "home") { var bm = $("backToMonth"); if (bm) bm.click(); return; }
           else if (typeof a === "number") dayBlock = a;
@@ -3243,16 +3387,50 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var sc = $("dayScroll"); if (sc) sc.scrollTop = 0;
           dayDots();
         }
+        /* THE NAV ROW (live dictation §5 — the law for every room):
+           Back lives TOP LEFT (the bar's own back control — the small
+           ‹ Back pill is gone: it duplicated the top-left back, so it
+           is removed, not moved). Keep reading sits DEAD CENTRE, by
+           the grid's math. Tuesday stands on one side of it, Thursday
+           on the other, so any room steps a day either way. On the
+           last block Keep reading walks to the next day — the slideshow
+           never dead-ends (dayShow wraps). */
+        function dayStepButtons() {
+          var prevD = new Date(sel.getFullYear(), sel.getMonth(), sel.getDate() - 1);
+          var nextD = new Date(sel.getFullYear(), sel.getMonth(), sel.getDate() + 1);
+          var today = isToday(sel) ? "" : '<button type="button" class="daystep-btn today" data-step="today">Back to today</button>';
+          return {
+            prev: today + '<button type="button" class="daystep-btn" data-step="-1" aria-label="Previous day, ' + WEEKDAYS[prevD.getDay()] + '">&#8249; ' + WEEKDAY_ABBR[prevD.getDay()] + '</button>',
+            next: '<button type="button" class="daystep-btn" data-step="1" aria-label="Next day, ' + WEEKDAYS[nextD.getDay()] + '">' + WEEKDAY_ABBR[nextD.getDay()] + ' &#8250;</button>'
+          };
+        }
         function dayNav(tone, isLast) {
-          /* The block's nav row: ‹ Back, then Keep reading ◆ (or Back to
-             month ◆ on the last block). The tone is the section's own
-             colour; isLast marks the final block — the count is no longer
-             fixed at 5, so "last" is a property of the call, not the index. */
-          var back = '<button type="button" class="pill sb-back" data-sb="prev">‹ Back</button>';
-          var next = isLast
-            ? '<button type="button" class="pill sb-home" data-sb="home">Back to month ◆</button>'
-            : '<button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:' + tone + '">Keep reading ◆</button>';
-          return '<div class="sb-nav">' + back + next + '</div>';
+          var s = dayStepButtons();
+          return '<div class="sb-nav"><div class="nav-left">' + s.prev + '</div>' +
+            '<button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:' + tone + '">Keep reading ◆</button>' +
+            '<div class="nav-right">' + s.next + '</div></div>';
+        }
+        /* The chamber's and the wisdom banner's navs are static HTML —
+           rebuilt here, once per day, to the same law as the rest. */
+        function normalizeDayNavs() {
+          if (!sel) return;
+          var s = dayStepButtons();
+          ["chamberBlock", "wisdomBanner"].forEach(function (id) {
+            var blk = $(id); if (!blk) return;
+            var nav = blk.querySelector(".sb-nav"); if (!nav) return;
+            nav.innerHTML = '<div class="nav-left">' + s.prev + '</div>' +
+              '<button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button>' +
+              '<div class="nav-right">' + s.next + '</div>';
+          });
+        }
+        /* THE DOOR FOOT NAV (§5, same law inside a room): Back is top
+           left in the bar; here, dead centre, Keep reading walks back
+           into the day — Tuesday one side, Thursday the other. */
+        function doorFootNavHTML() {
+          var s = dayStepButtons();
+          return '<div class="doorfoot"><div class="nav-left">' + s.prev + '</div>' +
+            '<button type="button" class="p3-enter letter-next deck-next" data-keep="day" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button>' +
+            '<div class="nav-right">' + s.next + '</div></div>';
         }
         /* V3: the pinned block indicator — one dot per Smart Block, the
            current lit in the day's color, tappable to jump. Rebuilt from
@@ -3281,6 +3459,84 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             dayShow(Math.min(dayBlock, dayBlocks().length - 1));
           });
         }
+        /* One journal entry, rendered — text and any image it carries */
+        function journalItemHTML(n) {
+          var img = n.img ? '<img src="' + n.img + '" alt="Added to your journal">' : "";
+          return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + "</p>" + img + "</div>";
+        }
+        /* Dictate: the browser's own speech recognition when it has one;
+           otherwise an honest line — never a fake mic. */
+        function startDictate(field, noteEl) {
+          var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+          if (!SR) { if (noteEl) noteEl.textContent = "Dictation is not available in this browser — type or paste instead."; return; }
+          try {
+            var rec = new SR(); rec.lang = "en-US"; rec.interimResults = false; rec.maxAlternatives = 1;
+            rec.onresult = function (ev) { var t = ev.results[0][0].transcript; field.value = (field.value ? field.value + " " : "") + t; field.dispatchEvent(new Event("input")); };
+            rec.onerror = function () { if (noteEl) noteEl.textContent = "Dictation did not hear anything — try again, or type instead."; };
+            rec.start();
+            if (noteEl) noteEl.textContent = "Listening — speak now.";
+          } catch (e) { if (noteEl) noteEl.textContent = "Dictation is not available here — type or paste instead."; }
+        }
+        /* THE JOURNAL BOARD (§10): its own board — write, dictate,
+           paste, add Naya notes, upload images, share — with the living
+           timeline of what was written, shared or added on this day. */
+        function journalBoardHTML() {
+          var k = keyOf(sel);
+          var js = journal[k] || [];
+          var ns = mergedNotesFor(k);
+          var items = "";
+          js.forEach(function (n) { items += journalItemHTML(n); });
+          ns.forEach(function (n) { items += '<div class="noteitem"><p>Note · ' + escapeHTML(n.text || "") + "</p></div>"; });
+          if (!items) items = '<p class="none-line">Nothing written for this day yet — write, dictate, paste, or add a Naya note below.</p>';
+          return '<form class="panel journal-form" id="journalInlineForm">' +
+            '<p class="formtitle">Write in your journal</p>' +
+            '<textarea class="ink-input" id="journalInlineText" placeholder="How was this day?…" aria-label="Journal entry" maxlength="1000"></textarea>' +
+            '<div class="frow" style="margin-top:10px">' +
+            '<button type="button" class="pill" id="journalDictateBtn">Dictate</button>' +
+            '<label class="pill" for="journalImageInput" style="display:inline-flex;align-items:center;justify-content:center;cursor:pointer">Add image</label>' +
+            '<input type="file" id="journalImageInput" accept="image/*" hidden>' +
+            '<button type="submit" class="bookbtn">Save entry</button></div>' +
+            '<p class="none-line" id="journalInlineNote" style="text-align:left">Your words save as you write — nothing typed is lost. Images stay with this day.</p></form>' +
+            '<div class="ink-timeline" id="journalTimeline">' + items + "</div>";
+        }
+        /* §11 — ONE INPUT, TWO NOTES: split one input into its two
+           notes. The Naya note keeps the words literal, in three
+           chunks; the Smart note says the same thing simplest, like
+           for grandma. Nothing is invented — a chunk with nothing to
+           say says so honestly. */
+        function twinNotes(v) {
+          var sents = v.match(/[^.!?]+[.!?]+/g) || [v];
+          sents = sents.map(function (x) { return x.trim(); }).filter(function (x) { return x; });
+          var first = sents[0] || v, rest = sents.slice(1);
+          var why = rest.length ? rest.slice(0, Math.ceil(rest.length / 2)).join(" ") : "";
+          var gain = rest.length > 1 ? rest.slice(Math.ceil(rest.length / 2)).join(" ") : "";
+          function chunk(label, txt) {
+            return "<p><strong>" + label + "</strong> — " + (txt ? escapeHTML(txt) : "Say a little more and this chunk fills itself.") + "</p>";
+          }
+          var smart = first.length > 140 ? first.slice(0, 140).replace(/\s+\S*$/, "") + "…" : first;
+          return {
+            naya: chunk("What it is", first) + chunk("Why it matters", why) + chunk("What is in it for you", gain),
+            smart: '<p class="tn-kind">Nutshell</p><p>\u201C' + escapeHTML(smart) + "\u201D</p>",
+            nayaText: first + (why ? " " + why : "") + (gain ? " " + gain : ""),
+            smartText: smart
+          };
+        }
+        /* §11 — the frame itself: one input in, both notes out. It
+           lives inside the day page, in the day's colour, with depth,
+           like everything else. */
+        function twinSection(dc) {
+          return '<section class="cat smart-block twinblock" style="--cc:' + dc + '" aria-label="One input, two notes">' +
+            '<div class="cat-head"><span class="cat-jewel" aria-hidden="true"></span><h2 class="cat-title">One input, two notes</h2></div>' +
+            '<p class="cat-essence">Write it once — a Naya note for you, a Smart note for the world.</p>' +
+            '<textarea class="ink-input" id="twinInput" placeholder="Enter anything once…" aria-label="Write anything once" maxlength="1000"></textarea>' +
+            '<div class="frow" style="margin-top:10px"><button type="button" class="bookbtn" id="twinMakeBtn">Make both notes</button>' +
+            '<button type="button" class="bookbtn" id="twinSaveBtn" hidden>Save both</button></div>' +
+            '<div class="twin-out" id="twinOut" hidden>' +
+            '<div class="twin-note" style="--nc:' + dc + '"><p class="tn-kind">Naya note — for you</p><div id="twinNaya"></div></div>' +
+            '<div class="twin-note" style="--nc:#d4a017"><p class="tn-kind">Smart note — for the world</p><div id="twinSmart"></div></div>' +
+            '</div>' + dayNav(dc, true) + '<div class="sb-dots"></div></section>';
+        }
+
         function renderCategories(apptRows, tl) {
           _daySplitMode = _daySplit();
           var wrap = $("catsWrap");
@@ -3322,37 +3578,45 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              doors live here now (Amendment #1: no "everyday life"
              section — it goes); the 15 doors all remain. Row colours
              are the rows' own, unchanged from where they stood */
+          var dayName = WEEKDAYS[sel.getDay()] + ", " + MONTHS[sel.getMonth()] + " " + sel.getDate();
           var notifCards =
             '<div class="notif-bar" id="notifBar" aria-label="Notifications"></div>' +
-            '<div class="notif-detail hidden" id="notifDetail"></div>';
-          var notifRowsA = '<div class="cat-rows">' +
-            catRow("personal", "#07925f", "user", "Personal feed", "Private by default — only people directly connected see it.", 0) +
-            catRow("work", "#d4a017", "briefcase", "Business feed", "Your business, your job — one feed.", 0) +
-            catRow("world", "#c2410c", "world", "Your world", "Your world feed — public by default.", 0) +
-            catRow("mail", "#d4a017", "mail", "Smart Mail", "Not connected yet.", 0) +
-            catRow("messages", "#c2410c", "chat", "Messages", "Not connected yet.", 0) +
-            catRow("connections", "#a21caf", "people", "Connections", "Not connected yet.", 0) +
+            '<div class="notif-detail hidden" id="notifDetail"></div>' +
+            '<div class="cat-rows">' +
+            catRow("horoscope", "#c62828", "star", "Horoscope", "Your daily reading — Chinese, Western, numerology, frequency, affirmations, prayers. Choose what to activate.", 0) +
             "</div>";
+          var notifRowsA = '<div class="cat-rows">' +
+            catRow("personal", "#07925f", "user", "Personal feed", "Private by default — nothing in your personal feed for " + dayName + ".", 0) +
+            catRow("work", "#0f52ba", "briefcase", "Business feed", "Your business, your job — one feed for " + dayName + ".", 0) +
+            catRow("world", "#8e24aa", "world", "Your world", "Your world feed — public by default — for " + dayName + ".", 0) +
+            catRow("mail", "#d4a017", "mail", "Smart Mail", "Not connected yet — no mail for " + dayName + ".", 0) +
+            catRow("messages", "#c2410c", "chat", "Messages", "Not connected yet — no messages for " + dayName + ".", 0) +
+            catRow("connections", "#a21caf", "people", "Connections", "Not connected yet — no connections for " + dayName + ".", 0) +
+            "</div>";
+          /* NEWS ONLY (§8): local, provincial, global. Weather lives in
+             the bottom-left bar; horoscope has its own space (its door,
+             reached from the notifications block above). */
           var notifRowsB = '<div class="cat-rows">' +
-            catRow("news", "#0e7490", "news", "Local news", "Not connected yet.", 0, ' data-news-scope="local"') +
-            catRow("news", "#07925f", "news", "Provincial news", "Not connected yet.", 0, ' data-news-scope="provincial"') +
-            catRow("news", "#d4a017", "news", "Global news", "Not connected yet.", 0, ' data-news-scope="global"') +
-            wxRowHTML() +
-            catRow("horoscope", "#c62828", "star", "Horoscope", "Not connected yet.", 0) +
+            catRow("news", "#0e7490", "news", "Local news", "Not connected yet — no local news for " + dayName + ".", 0, ' data-news-scope="local"') +
+            catRow("news", "#07925f", "news", "Provincial news", "Not connected yet — no provincial news for " + dayName + ".", 0, ' data-news-scope="provincial"') +
+            catRow("news", "#d4a017", "news", "Global news", "Not connected yet — no global news for " + dayName + ".", 0, ' data-news-scope="global"') +
             "</div>";
           /* notifInner is kept whole: anything else reading it sees the full section. */
           var notifInner = notifCards + notifRowsA + notifRowsB;
           /* THE RECORD — the day, written down. Indigo · cyan · green ·
              gold · orange · red, flowing, no doubles. Smart Lists rides
              here now (it is a record of the day, kept in order) */
-          var recordInner = '<div class="cat-rows">' +
-            catRow("daily", "#3f51b5", "spark", "Daily Intelligence", intel, 0) +
+          /* SUMMARY + JOURNAL — TWO SEPARATE BOARDS (§10): the summary
+             is the day written down and counted; the journal is its own
+             board — write, dictate, paste, add Naya notes, upload images,
+             share — with the living timeline of the day. */
+          var summaryInner = '<div class="panel summary-panel">' + intelHTML() + "</div>" + '<div class="cat-rows">' +
             catRow("reports", "#0e7490", "landmark", "Your Reports", "The day's report — appointments, notes, journal and lists, counted.", 0) +
-            catRow("journal", "#07925f", "book", "Journal", dayJournal.length ? latestText(dayJournal) : "No journal entry yet — write one.", dayJournal.length) +
             catRow("smartnotes", "#d4a017", "note", "Smart Notes", dayNotes.length ? latestText(dayNotes) : "No notes for this day yet.", dayNotes.length) +
             catRow("posts", "#c2410c", "post", "Posts", "No posts for this day.", 0) +
             catRow("lists", "#c62828", "list", "Smart Lists", dayList.length ? dayList.length + (dayList.length === 1 ? " item on your list." : " items on your list.") : "Nothing on your list for this day yet.", dayList.length) +
             "</div>";
+          var journalInner = journalBoardHTML();
           /* THE UNFOLD (Shawn 00:19Z — the agreement's unfold is the
              spine): notifications stand open on entry; appointments and
              record sit folded behind the next button each. One button
@@ -3363,18 +3627,21 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              cards, rows 1–6, rows 7–11; appointments in two (tile /
              timeline), the timeline in two more at ≤740px; the record
              stands. Each part is its own Smart Block with its own nav. */
-          var _narrow740 = window.innerWidth <= 740;
-          var _tlRows = tl.split(/(?=<div class="tl-row">)/).filter(function (s) { return s; });
+          /* ONE SCREEN (§9): the appointments tile and the full 6 AM–9 PM
+             timeline stand on ONE block — no more split timeline, no
+             second screen. The block scrolls within itself only when
+             the viewport is too short (the V4 notif-detail precedent).
+             "Notifications" is said ONCE — in the bar's own head, not
+             in a section head above it. "Appointments" is said ONCE —
+             in the tile, not in a section head above it. */
           wrap.innerHTML =
-            catSection(CATS[0], notifCards + dayNav("#a21caf", false), null, "Tap a world — see its notifications.", "Notifications", "#a21caf", "diamond") +
-            catSection(CATS[0], notifRowsA + dayNav("#8e24aa", false), null, "Rows one to six — the worlds, the mail, the messages.", "Your worlds", "#8e24aa", "orb") +
-            catSection(CATS[0], notifRowsB + dayNav("#0f52ba", false), null, "Rows seven to eleven — the news, the weather, the horoscope.", "The world around", "#0f52ba", "hex") +
-            catSection(CATS[1], '<div class="dash-grid">' + apptsTile + '</div>' + dayNav("#8e24aa", false), "appointments") +
-            (_narrow740
-              ? catSection(CATS[1], '<div class="dash-grid">' + timelineTile(_tlRows.slice(0, 8).join(""), "6 AM – 1 PM") + '</div>' + dayNav("#3f51b5", false), null, "The timeline, first half — 6 AM to 1 PM.") +
-                catSection(CATS[1], '<div class="dash-grid">' + timelineTile(_tlRows.slice(8).join(""), "2 PM – 9 PM") + '</div>' + dayNav("#3f51b5", false), null, "The timeline, second half — 2 PM to 9 PM.")
-              : catSection(CATS[1], '<div class="dash-grid">' + timelineTile(tl, "6 AM – 9 PM") + '</div>' + dayNav("#3f51b5", false), null, "The timeline — 6 AM to 9 PM, in order.")) +
-            catSection(CATS[2], recordInner + dayNav("#3f51b5", true), "record");
+            catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond") +
+            catSection(CATS[0], notifRowsA + dayNav(dc, false), null, "Rows one to six — the worlds, the mail, the messages.", "Your worlds", dc, "orb", "worlds") +
+            catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, provincial, global — what is happening in the world.", "News", dc, "hex") +
+            catSection(CATS[1], '<div class="dash-grid">' + apptsTile + timelineTile(tl, "6 AM – 9 PM") + '</div>' + dayNav("#8e24aa", false), "appointments", "Book a time, meet, and the day's timeline — 6 AM to 9 PM, on one screen.", "", "#8e24aa", null, null, "allow-scroll") +
+            catSection(CATS[2], summaryInner + dayNav("#3f51b5", false), "record", "The day, written down — counted.", "Summary of the day", "#3f51b5", "diamond") +
+            catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
+            twinSection(dc);
           var tbb = $("tileBookBtn");
           if (tbb) tbb.addEventListener("click", function () {
             var door = doorById("appointments");
@@ -3392,6 +3659,62 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              row's Join buttons (see openDay) are wired here beside the
              tile's own buttons — same index into dayApptsFor as the door,
              same room. The door's own [data-join] wiring is untouched. */
+          /* The journal board's own wiring (§10): draft auto-saves
+             like the door's, dictate speaks, images stay with the day */
+          var jf = $("journalInlineForm");
+          if (jf) {
+            var jt = $("journalInlineText");
+            var savedDraft = LS.get(LS_KEYS.draft);
+            if (savedDraft && savedDraft.key === k && savedDraft.text) jt.value = savedDraft.text;
+            var jdt = null;
+            jt.addEventListener("input", function () { if (jdt) clearTimeout(jdt); jdt = setTimeout(function () { LS.set(LS_KEYS.draft, { key: k, text: jt.value }); }, 500); });
+            jt.addEventListener("blur", function () { LS.set(LS_KEYS.draft, { key: k, text: jt.value }); });
+            jf.addEventListener("submit", function (ev) {
+              ev.preventDefault();
+              var v = jt.value.trim(); if (!v) return;
+              (journal[k] = journal[k] || []).push({ text: v, at: Date.now() });
+              LS.del(LS_KEYS.draft);
+              saveStores();
+              renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock);
+            });
+            var db = $("journalDictateBtn");
+            if (db) db.addEventListener("click", function () { startDictate(jt, $("journalInlineNote")); });
+            var ji = $("journalImageInput");
+            if (ji) ji.addEventListener("change", function () {
+              var file = ji.files && ji.files[0]; if (!file) return;
+              var r = new FileReader();
+              r.onload = function () {
+                (journal[k] = journal[k] || []).push({ text: "", img: r.result, at: Date.now() });
+                saveStores();
+                renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock);
+              };
+              r.readAsDataURL(file);
+            });
+          }
+          /* One input, two notes (§11): make them, then save them — the
+             Naya note to the citizen, the Smart note to the world */
+          var tm = $("twinMakeBtn");
+          if (tm) tm.addEventListener("click", function () {
+            var v = $("twinInput").value.trim();
+            if (!v) return;
+            var out = twinNotes(v);
+            $("twinNaya").innerHTML = out.naya;
+            $("twinSmart").innerHTML = out.smart;
+            $("twinOut").hidden = false;
+            $("twinSaveBtn").hidden = false;
+          });
+          var ts = $("twinSaveBtn");
+          if (ts) ts.addEventListener("click", function () {
+            var v = $("twinInput").value.trim();
+            if (!v) return;
+            var out = twinNotes(v);
+            (notes[k] = notes[k] || []).push({ text: "Naya note — " + out.nayaText, at: Date.now() });
+            (notes[k] = notes[k] || []).push({ text: "Smart note — " + out.smartText, at: Date.now() });
+            saveStores();
+            $("twinInput").value = "";
+            renderMonth();
+            renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock);
+          });
           wrap.querySelectorAll("[data-join]").forEach(function (btn) {
             btn.addEventListener("click", function () {
               var sorted = dayApptsFor(keyOf(sel));
@@ -3475,6 +3798,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           $("doorChip").innerHTML = ICONS[door.icon];
           $("doorTitle").textContent = door.label;
           $("doorSub").textContent = WEEKDAYS[sel.getDay()] + " · " + MONTHS[sel.getMonth()] + " " + sel.getDate() + ", " + sel.getFullYear();
+          $("doorWhere").textContent = door.label + " · " + WEEKDAY_ABBR[sel.getDay()] + " " + sel.getDate();
           var body = $("doorBody");
           body.style.setProperty("--dc", dc);
           var k = keyOf(sel);
@@ -3489,6 +3813,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             }).join("") : '<p class="none-line">Nothing booked for this day yet.</p>';
             body.innerHTML =
               '<div class="panel" role="list" aria-label="Appointments for this day">' + rows + "</div>" +
+              '<div class="panel"><p class="formtitle">Timeline · 6 AM – 9 PM</p>' + timelineHTML(k) + "</div>" +
               '<form class="panel" id="bookForm">' +
                 '<p class="formtitle">Book a time</p>' +
                 '<div class="frow">' +
@@ -3536,6 +3861,40 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                 '<p class="formtitle">' + sc[1] + ' news</p>' +
                 '<p class="none-line" style="text-align:left">' + sc[1] + ' news is not connected yet — no news to show for this day.</p></div>';
             }).join("");
+          } else if (door.id === "horoscope") {
+            /* YOUR OWN SPACE (§3 + §8): Chinese horoscope, Western
+               horoscope, numerology, frequency, the language, the
+               meaning, affirmations, daily prayers — the citizen
+               chooses which to activate, or none at all. Lead with
+               wisdom: we are a wisdom network — choose to be the
+               wisest, not the smartest. */
+            var opts = [["chinese", "Chinese horoscope"], ["western", "Western horoscope"], ["numerology", "Numerology"], ["frequency", "Frequency"], ["language", "The language"], ["meaning", "The meaning"], ["affirmations", "Affirmations"], ["prayers", "Daily prayers"], ["none", "None at all"]];
+            var saved = LS.get("nayacal.dayopts.v1") || {};
+            var active = saved.opts || [];
+            var pills = opts.map(function (o) {
+              return '<button type="button" class="opt-pill" data-opt="' + o[0] + '" aria-pressed="' + (active.indexOf(o[0]) !== -1) + '">' + o[1] + "</button>";
+            }).join("");
+            body.innerHTML =
+              '<div class="panel"><p class="formtitle">Horoscope — ' + WEEKDAYS[sel.getDay()] + '</p>' +
+              '<p class="none-line" style="text-align:left">Lead with wisdom: we are a wisdom network — choose to be the wisest, not the smartest. Choose what to activate for this day, or none at all.</p>' +
+              '<div class="opt-row">' + pills + '</div>' +
+              '<p class="none-line" style="text-align:left">Readings themselves are not connected yet — your choices are kept, and the readings appear here the moment they connect.</p>' +
+              '<p class="none-line" id="horoscopeNote" style="text-align:left">' + (active.length ? active.length + (active.length === 1 ? " reading" : " readings") + " active for this day." : "Nothing active for this day — the day still speaks its wisdom above.") + "</p></div>";
+            body.querySelectorAll("[data-opt]").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                var id = btn.getAttribute("data-opt");
+                var cur = LS.get("nayacal.dayopts.v1") || {};
+                var list = cur.opts || [];
+                if (id === "none") { list = []; }
+                else {
+                  var ix = list.indexOf(id);
+                  if (ix === -1) list.push(id); else list.splice(ix, 1);
+                  list = list.filter(function (x) { return x !== "none"; });
+                }
+                LS.set("nayacal.dayopts.v1", { opts: list });
+                openDoor(door);
+              });
+            });
           } else if (door.id === "daily" || door.id === "reports") {
             body.innerHTML = '<div class="panel">' + intelHTML() + "</div>";
           } else if (door.id === "smartnotes") {
@@ -3566,9 +3925,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                for this day, in the day's own colour, on the timeline
                at its time and in Daily Intelligence */
             var js = journal[k] || [];
-            var jitems = js.length ? js.map(function (n) {
-              return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + "</p></div>";
-            }).join("") : '<p class="none-line">No journal entry for this day yet.</p>';
+            var jitems = js.length ? js.map(function (n) { return journalItemHTML(n); }).join("") : '<p class="none-line">No journal entry for this day yet.</p>';
             body.innerHTML =
               '<div class="panel">' + jitems + "</div>" +
               '<form class="panel" id="journalForm"><p class="formtitle">Write in your journal</p>' +
@@ -3631,6 +3988,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               '<div class="empty" style="--c:' + door.color + '">' +
               '<span class="chip">' + ICONS[door.icon] + "</span><p>" + door.empty + "</p></div>";
           }
+          body.insertAdjacentHTML("beforeend", doorFootNavHTML());
           show("screen-door");
           $("backToDay").focus({ preventScroll: true });
         }
@@ -3666,14 +4024,36 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var door = DOORS.filter(function (d) { return d.id === btn.dataset.door; })[0];
           if (door) openDoor(door, btn.getAttribute("data-news-scope") || null);
         });
-        /* SMART FLOW: the block nav (‹ Back / Keep reading ◆) — one listener
+        /* SMART FLOW: the block nav (Keep reading ◆, flanked by the day-steppers) — one listener
            on #dayScroll catches every block's nav, including the wisdom
            banner's and the chamber's. */
         $("dayScroll").addEventListener("click", function (ev) {
           var sb = ev.target.closest("[data-sb]");
           if (sb) dayShow(sb.getAttribute("data-sb"));
+          var st = ev.target.closest("[data-step]");
+          if (st) {
+            var v = st.getAttribute("data-step");
+            if (v === "today") { openDay(new Date()); return; }
+            stepDay(parseInt(v, 10));
+            return;
+          }
           var dt = ev.target.closest("[data-dot]");
           if (dt) dayShow(parseInt(dt.getAttribute("data-dot"), 10));
+        });
+        /* The door rooms' foot nav (§5): day-steppers walk the day and
+           reopen the same room; Keep reading walks back into the day */
+        $("doorBody").addEventListener("click", function (ev) {
+          var st = ev.target.closest("[data-step]");
+          if (st) {
+            var v = st.getAttribute("data-step");
+            var d = curDoor;
+            if (v === "today") { openDay(new Date()); if (d) openDoor(d); return; }
+            stepDay(parseInt(v, 10));
+            if (d) openDoor(d);
+            return;
+          }
+          var kp = ev.target.closest("[data-keep]");
+          if (kp && sel) openDay(sel);
         });
         /* The swipe — one gesture walks day to day at phone width, the
            way walking through doors feels. A horizontal swipe longer
@@ -3696,9 +4076,13 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           }, { passive: true });
         })();
         $("prevMonth").addEventListener("click", function () {
+          var nowIdx = now.getFullYear() * 12 + now.getMonth();
+          if (viewY * 12 + viewM <= nowIdx - 12) return;
           viewM--; if (viewM < 0) { viewM = 11; viewY--; } renderMonth();
         });
         $("nextMonth").addEventListener("click", function () {
+          var nowIdx = now.getFullYear() * 12 + now.getMonth();
+          if (viewY * 12 + viewM >= nowIdx + 12) return;
           viewM++; if (viewM > 11) { viewM = 0; viewY++; } renderMonth();
         });
         /* The header's now-plaque — today's date and the LIVE time.
@@ -3728,7 +4112,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         /* Amendment #3 — the plaque is the door into today */
         $("nowPlaque").addEventListener("click", function () { openDay(new Date()); });
         $("backToMonth").addEventListener("click", function () { stopMeet(); renderMonth(); document.documentElement.style.setProperty("--dc", DAY_COLORS[new Date().getDay()]); document.documentElement.setAttribute("data-day-theme", WEEKDAYS[new Date().getDay()].toLowerCase()); show("screen-month"); });
-        $("brandHome").addEventListener("click", function () { openDay(new Date()); });
         $("cornerN").addEventListener("click", function () { stopMeet(); renderMonth(); document.documentElement.style.setProperty("--dc", DAY_COLORS[new Date().getDay()]); document.documentElement.setAttribute("data-day-theme", WEEKDAYS[new Date().getDay()].toLowerCase()); show("screen-month"); });
         $("backToDay").addEventListener("click", function () { if (sel) openDay(sel); });
         document.addEventListener("keydown", function (ev) {
