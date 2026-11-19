@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 21:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 22:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -52,6 +52,12 @@ _Last updated: 2026-11-19 21:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** seat-stall-20261019-0036 + gate-stall-20261019-0142 — stall records, excluded from scoring
 
 **Evidence:** EXCLUDED: these are stall/process records (zero claimable briefs, no lane work, no artifacts) — not scorable lane work. Reviewed and noted so they don't recur. Process fidelity verified by inspection: all 30 brief files carried non-Clarity gates or second-seat demands; claim script refusal is the correct behavior. Structural finding (alert, not a s
+
+### ✅ t4677-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-19 13:33 PST: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** Fresh window. VERIFIED this tick on live bytes: claim-sweep-20261119-1333.log exists (sha256 a9cfc8e4...), 37 candidates = 33 sweep attempts + 4 pre-sweep already-attempted; unique briefs 31 with exit split 29x7 / 2x2 exactly as receipted (exit-2 briefs brief-gap-gap-gap-t0547-lane1-lane1.md and brief-gap-gap-gap-gap-t0172-lane1-lane1.md confirmed)
 
 ### ✅ t2333 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
