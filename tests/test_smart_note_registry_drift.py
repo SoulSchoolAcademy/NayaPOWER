@@ -37,10 +37,35 @@ spec.loader.exec_module(mod)
 #     SN lane), 1 intelligence body shared by two capture files claiming
 #     SN-001 and SN-633 (identity anomaly, SN lane), 2 live-fire test
 #     captures SN-9998/SN-9999 (LAW lane lifecycle class).
+#     +5 on 2026-11-19 (20 -> 25, measured first-hand at main@9f462811
+#     in the re-issue of PR #3486 as naya5/cold-retrieve-collision-cure-r2):
+#     the 5 superseded run-338 captures
+#     IB-SMART-NOTE-20261118-sn3549-one-naya-one-standard-live-time,
+#     sn3550-the-kit-written-for-the-citizen,
+#     sn3551-scorecard-every-return-work-in-parallel,
+#     sn3552-one-spine-one-border-every-lane,
+#     sn3553-dont-send-it-back-until-ten. Their registry entries pointed
+#     at files that no longer exist (collision-repair round 2 moved the
+#     pages to SN-3555..SN-3559 without updating the registry), so every
+#     cold retrieve raised INDEX_CORRUPT:PROJECTION_ABSENT and the drift
+#     test itself was red on registry_projection_paths_absent 0 -> 5.
+#     Deleting the 5 entries restores retrieval (coldprobe 3/5 -> 5/5)
+#     and returns registry_projection_paths_absent to 0; the 5 captures stay
+#     on disk as inert residue because deleting captures is destructive
+#     and needs Shawn's word. When he authorizes their deletion, this pin
+#     returns to 20. This re-baseline documents a measured, named trade —
+#     it does not bless silent drift: the 5 filenames above are the audit
+#     trail, and the count may not grow past 25 without a new investigation.
+#     NOTE: the dock's 2026-11-19 20:03Z re-judgment calling PR #3486
+#     premise-dead (band cure 5 "registered SN-3549..SN-3553 live") is
+#     factually wrong — band cure 5 registered SN-3555..SN-3650, and the
+#     same 5 entries are still projection-absent at 9f462811 (proven by a
+#     full-index scan: exactly 5 absent of 2,819). The re-issue keeps the
+#     identical deletion set and re-verifies it at the new tip.
 PINNED_BASELINE = {
     "unparseable_captures": 0,
     "captures_missing_intelligence": 0,
-    "captures_unregistered_by_hash": 20,
+    "captures_unregistered_by_hash": 25,
     "twin_captures_of_registered_notes": 14,
     "entries_without_hash": 28,
     "entries_with_stale_hash": 0,
