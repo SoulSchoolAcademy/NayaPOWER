@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 15:45 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28423,6 +28423,12 @@ _Last updated: 2026-11-19 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0432-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
+**Task:** STAGE 0 [RETRIEVAL] slice-1 — fingerprint-to-match bi-encoder prototype vs blind human baseline
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: all six artifacts exist — auto-retrieval/t0432_fingerprint.py, baseline-sealed-t0432.md, proto-t0432.md, results-t0432.json, corpus_embeddings.npz, ids.json; proto-t0432.md HIT@5 numbers match the receipt exactly (A 1/3 = 0.333, B 2/3 = 0.667, C 0/3 = 0.000) and results-t0432.json contains the 0.33
+
+### ✅ t0432-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
 **Task:** Stage-0 RETRIEVAL slice-1: bi-encoder fingerprint prototype vs blind human baseline
 
 **Evidence:** Verified: auto-retrieval/t0432_fingerprint.py, baseline-sealed-t0432.md, results-t0432.json and proto-t0432.md all exist on disk; the receipt honestly reports a NEGATIVE result (bi-encoder fails the human exam: 1/3 tasks at HIT@5 >= 2/3) with the frozen baseline as the next slice's fixture. Score 9.0: pre-registered exam, honest falsification, fixt
@@ -28442,6 +28448,12 @@ _Last updated: 2026-11-19 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0432-lane5.md`
 
 **Evidence:** VERIFIED: t0432_fingerprint.py, baseline-sealed-t0432.md, proto-t0432.md, results-t0432.json, corpus_embeddings.npz + ids.json, and the autoretr venv ALL EXIST. File mtimes corroborate sealed-before-run honesty (baseline 16:31:47Z, before fingerprint 16:32:39Z and results 16:32:44Z - the human baseline could not be tuned after machine output). The 
+
+### ✅ t0432-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 [REPLAY] slice 2 — 3 high-stakes decisions re-run, HOLD/FLIP verdicts
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: report hidden_files/decision-replay/replay-t0432.md exists with matching content (REPLAY-v2 protocol, 3 decisions, counter-principle run to ground, HOLD verdicts); cited pins present in the ledger — t1352-lane10 scored 9.0, t0372-lane7 present, t952-lane9 present. Real value: cross-slice hinge find
 
 ### ✅ t0432-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -28581,6 +28593,12 @@ _Last updated: 2026-11-19 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Clears 9.5: deliverable hidden_files/lane4-p0a-reconcile-candidate.md SHA 68e09adaf0e... verified exact on disk. 20/20 round-trip re-derived with the reconciler's own functions (0 core field diffs), zero schema drift proven (empty diff vs t1422), the t1422 flag gap re-proven with a precise trigger (COMPOUNDED flag-less + v1.1-style pair = silent do
 
+### 🟡 t0422-lane7 — Team 7, Team Naya Scorer (Team Operations) — 7.0/10 [PARTIAL]
+
+**Task:** Stage-0 INTAKE — diary-entry front door (diary_intake.py + fail-closed quarantine)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: script hidden_files/bin/diary_intake.py EXISTS but sha256 ac74e7fe6f8aa39588f55a6fb4c6d7bda4bcb5841bb1aa531b6e53b699952ec2 does NOT match the receipt pin 1737b3a921a03fb58b60158013ae2881cdd64e45998a3c564b3fa7c9b8fbdc74; the claimed live-run diary entry 'outside-intelligence-simulated' is NOT found 
+
 ### ✅ t0422-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** Stage-0 INTAKE: diary-entry front door (diary_intake.py) with fail-closed schema
@@ -28610,6 +28628,12 @@ _Last updated: 2026-11-19 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0422-lane7.md`
 
 **Evidence:** Verified: bin/diary_intake.py on disk, sha256 1737b3a9... matches receipt pin exactly; live-run entry present in lesson-broadcast.md (line 4, exact claimed provenance: channel=diary-intake-cli, submitted=2026-10-12T16:16:37+00:00, principle=P4); no live quarantine log, matching the claim of zero live rejections (all adversarial tests ran on a /tmp 
+
+### ✅ t0422-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 [REPLAY] slice 2 — replay 3 other-seat decisions against the 15 principles
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: report hidden_files/lane-3/t0422/replay-report-slice2.md sha256 f3ee355a4f1680dd411af3aa42d2e7887df6584ffef63c207898597045354701 EXACT match to the receipt pin. Real value: other-seat replay cures slice-1 self-replay bias; every evidence pin re-checked against live bytes at action time; three stren
 
 ### ✅ t0422-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -40115,6 +40139,12 @@ _Last updated: 2026-11-19 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ gap-t0122-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap close: post-close branch re-verification for the t0122 batch (Lane 7)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand (live, this tick): pull-head refs byte-identical to the receipt's pins for #1994 (a29609a5...), #2009 (4253df31...), #2010 (6ba5357f...); branch refs for all three now return NOTHING from ls-remote - the two branches that survived at the receipt's Oct-25 check (2009, 2010) are now also gone, which s
+
 ### ✅ gap-gap-t0132-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap close: all 10 close-comment IDs + bodies re-proved by fresh REST re-execution (20 live reads)
@@ -41432,6 +41462,12 @@ _Last updated: 2026-11-19 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ gap-t0122-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Gap close: blinded-scorer residual + scorer timestamp rule (Lane 6)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: blinded-scoring/SPEC.md current sha256 44f89354cf4b88a9a8dd5358bf258670bd57a7920ea39eb99d6bc7b286e2a110 EXACT match to the receipt's after-pin; date -u rule present at lines 75 and 84. Real value: the fixable half is fixed at the right layer (protocol text, not a one-off note) and the unfixable hal
 
 ### ✅ scorer-20261118-1750 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
 
@@ -49681,6 +49717,12 @@ _Last updated: 2026-11-19 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-t0122-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap close: independent re-run of the t0082-t0122 audit (M2/M3/M4) (Lane 11)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: independent sealed audit lane-11/metric_audit_gap-t0122-lane11-independent.json sha256 f54e5a549dd5820714d494f6a31ee1d3812a407aa2d7bef0d718c4eee8ffe58e EXACT; original audit lane-11/metric_audit_t0122.json sha256 3450858d6613d80fad60dcc3dde570622d2941898d53653510cc1e502065a72b EXACT; instrument out
+
 ### ✅ gap-gap-t0122-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap follow-up: M3 double-count settled as rule question, corpus drift falsified and re-explained, blind independence bounded (3 rows exposed, 9 sealed clean)
@@ -53536,6 +53578,12 @@ _Last updated: 2026-11-19 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-gap-t1821-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Gap close (2nd level): falsify tip-copy premise + re-run t0452 retrieval-auth acceptance battery at parent tip and current tip (Lane 1)
+
+**Evidence:** Fresh window. VERIFIED first-hand: instrument hidden_files/auto-retrieval/t0452-acceptance_battery.py sha256 275e26345ec2110589ee7759f89b7ddf74380ed2d7c6a7ab9734d29fe04caf31 EXACT; parent evidence gap-t1821-battery_evidence.json sha256 7e797ba42fb6e7d9b5300776c1f0ff6ddebc2ecc511395f8d2c3dedef79ece83 EXACT; current-tip evidence gap-gap-t1821-battery
 
 ### ✅ gap-gap-gap-t0172-lane1-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
