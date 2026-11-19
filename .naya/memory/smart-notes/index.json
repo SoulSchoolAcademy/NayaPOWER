@@ -64710,6 +64710,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3680",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3680-the-deed-before-the-price",
+      "slug": "the-deed-before-the-price",
+      "title": "The Deed Before the Price",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3680/IB-SMART-NOTE-20261119-sn3680-the-deed-before-the-price.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3680/IB-SMART-NOTE-20261119-sn3680-the-deed-before-the-price.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3680/IB-SMART-NOTE-20261119-sn3680-the-deed-before-the-price.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3680-the-deed-before-the-price.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T12:28:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "8f7eb99744be569f049af40e96ddb337ce1380b0148cba5704007eab581484d9",
+      "content_hash": "ea401510b324e736a9d6f1061cc1b9394574cdae3d8c296dec1b71c69d49f5c5",
+      "one_line": "Don't wait for me: below the protected gates, fix it, make it right, and report the fix, the reason, and what was done — in that order. Talk to me like a human: plain words, no jargon, no scores, no gate language in his messages. A 10 is a 10 because it's checked — all the way through — not because anybody says it is; and when stuck, scorecard it: ten loves, ten don't-loves, ten-times-better, solutions, plan. What NayaNET ultimately is, in simple words: not a new AI — the mother brain all AIs plug into, a supercharger; their internet, where success is automated and nobody's mail is read or kept. The walk end that dropped the ball gets rebuilt as one unfolding page: agreement first — sign the promise — then the world reveal, then hired, then the package last; the deed is its own step before pricing, never on the pricing page. The job is real: officially an ambassador, a representative of the kingdom — not employment, no salary, no guarantee; fifty percent of revenue from people who join through your link, paid when we're paid, protected by three layers: the daily cap ladder ($300 rising to $700), the thirty-day clearing hold, and reputation points.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64720,5 +64753,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "455fbed1b10dbf84d537137fe1a0055b3b05239f875c97a960bdd1370f6de2e4"
+  "corpus_manifest_hash": "68fdccd094575fae7ee887371db7cd9be26166a8505312e1ffec16da38926185"
 }
