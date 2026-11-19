@@ -2261,6 +2261,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    cap gradient), on the month cells, the headliner and the king hero. */
 .os-mini-num.goldnum .os-mini-tile{border-color:#f5d76e!important;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(245,215,110,.5),inset 0 1px 0 rgba(255,255,255,.35)!important}
 .os-mini-num.goldnum .os-mini-tile .cap{background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a)!important}
+/* (16b) DAY-COLOURED DATE NUMBERS (fix-8, Shawn 2026-11-19 live): the month
+   grid's date tiles take their weekday's DAY colour — Sun purple, Mon
+   orange, Tue gold, Wed blue, Thu green, Fri red, Sat indigo — the same
+   tile system as goldnum/worldnum (same depth, same rim light, same glow),
+   only the colour changes; the digit stays white. The headliner and king
+   hero keep goldnum; the clock (clocknum) is untouched. */
+.os-mini-num.daynum .os-mini-tile{border-color:var(--dc)!important;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px color-mix(in srgb,var(--dc) 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35)!important}
+.os-mini-num.daynum .os-mini-tile .cap{background:linear-gradient(180deg,#ffffff 0%,var(--dc) 55%,color-mix(in srgb,var(--dc) 45%,#000000) 100%)!important}
 /* (10) STATS BOARD — six real counts in digit tiles, three across. */
 .stats-board{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 16px}
 .stat-cell{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px;border:1.5px solid rgba(255,255,255,.12);border-radius:14px;background:linear-gradient(180deg,#15151f,#08080d)}
@@ -2824,6 +2832,17 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           String(num).split("").forEach(function (ch) { html += miniTileHTML(ch); });
           return html + "</span>";
         }
+        /* FIX-8 — DAY-COLOURED DATE NUMBERS (Shawn, 2026-11-19 live): the
+           month grid's date tiles take their weekday's DAY colour (Sun
+           purple, Mon orange, Tue gold, Wed blue, Thu green, Fri red, Sat
+           indigo), never all gold. Same tile system as worldDigitsHTML,
+           only the colour changes; the digit stays white. The headliner
+           and king hero keep goldnum; the clock is untouched. */
+        function dayDigitsHTML(num, color) {
+          var html = '<span class="os-mini-num daynum" style="--dc:' + color + '">';
+          String(num).split("").forEach(function (ch) { html += miniTileHTML(ch); });
+          return html + "</span>";
+        }
         /* THE CLOCK'S COLOUR (Shawn, 2026-11-17 — the divine design):
            the hour's colour IS its frequency made visible — the colour
            of the hour's FIRST digit under the digit law (laws §4: a
@@ -3101,7 +3120,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                         (isToday(d) ? " — today" : "") + (na ? " — " + na + (na === 1 ? " appointment" : " appointments") : "");
             html += '<button type="button" role="gridcell" class="cell' + (isToday(d) ? ' today' : '') + '" style="--dc:' + dc + '" data-y="' + d.getFullYear() +
                     '" data-m="' + d.getMonth() + '" data-d="' + d.getDate() + '" aria-label="' + label + '">' +
-                    digitsHTML(d.getDate(), false, true) +
+                    dayDigitsHTML(d.getDate(), dc) +
                     dots + jewelSVG() + "</button>";
           }
           grid.innerHTML = html;
