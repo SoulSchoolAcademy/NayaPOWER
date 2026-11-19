@@ -60,6 +60,7 @@
   delivery · the mail auto-delete machine (queued behind the access fix) ·
   the Ultimate Border (Shawn 19:19Z, portal frame — new direction, no artwork
   asset in hand; follow-on, not invented here). ICONS ROUND 2026-11-19 (Personal set official per captain's redirect ~00:18Z — scorecard Set A 7/10 vs Set B 4/10; globe only from Hub fix-#2; CONNECT people glyph composed, no connect glyph exists to harvest; bell corrected — Personal DOES carry the feather bell glyph, the alignment note claiming otherwise was wrong on the bytes). FIXUP 2026-11-19 (checker conditions, staged only): ball 18px at top:1px;right:1px — the checker's 20px/top:2 geometry does not clear at compact, re-proved by vertex-distance computation (MAIL centreline 7.45px < r10; no 20px ball clears compact by the ink test, even flush); 18px/1px clears both sizes. Powercasts emoji replaced by the Hub fix-#2 white headphone SVG verbatim (blob 84e02035, line 6238, D1: white headphone glyph, no dim emoji).
+  FRAME ROUND 2026-11-19 (this file, branch messenger-mail-frame-20261119): kingdom frame (master-frame.png, slice 300 round — the calendar border precedent, verbatim technique); MAIL / Smart Mail taps go to the real Smart Mail (https://nayanet.app/rooms/mail); the six bottom-bar glyphs are white in the centre (#ffffff, tiles keep their own colours); INFO button beside the person's name opens the in-page profile view fed by that person's data (no per-person profile URL exists in the system — open item); sidebar + message text aligned with Smart Mail's live presentation (list 340px, panes gap 24px, rows gap 14px / padding 18px, rail gap 10px, bubbles radius 18px / line-height 1.75 — harvested from the live Smart Mail bytes; sub-17 sizes NOT copied, Laws §2.3 floor holds). Smart Mail side of the frame BLOCKED: its source file cannot be located with certainty (see MAKER-REPORT.md). Staged only.
 -->
 <style>
 /* TOKENS — Hub :root + Deep Palette (Design Laws §3.1) */
@@ -138,7 +139,7 @@ body.no-cover .ph-main{padding-top:12px}
 .search-row input{flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-size:17px;font-family:inherit}
 .search-row input::placeholder{color:#fff;opacity:1;font-weight:600}
 /* --- MESSENGER GRID --- */
-.messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
+.messenger{display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:start}
 .panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
 .panel:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.45);box-shadow:0 24px 48px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1),0 0 26px rgba(142,36,170,.22)}
 .panel h3{margin:0;padding:4px 18px 6px;font-size:19px;font-weight:800}
@@ -158,7 +159,7 @@ body.no-cover .ph-main{padding-top:12px}
 .orb-dot{position:absolute;right:0;bottom:2px;width:12px;height:12px;border-radius:3px;transform:rotate(45deg);background:radial-gradient(circle at 35% 30%,#bff5dc 0%,#07925f 55%,#04603f 100%);border:1.5px solid rgba(255,255,255,.85);box-shadow:0 0 10px rgba(7,146,95,.9),0 0 4px rgba(255,255,255,.5)}
 /* --- CONVERSATION / PERSON ROWS --- */
 .rows{display:flex;flex-direction:column;gap:8px;padding:2px 12px 16px}
-.row{--ac:#8e24aa;display:flex;gap:12px;align-items:center;padding:11px;border-radius:20px;border:2px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#07070b,#020203);cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -4px 12px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.06),0 12px 40px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.4);transition:all .25s;text-align:left;width:100%;color:#fff;font-family:inherit}
+.row{--ac:#8e24aa;display:flex;gap:14px;align-items:center;padding:18px 18px 18px 16px;border-radius:18px;border:2px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#07070b,#020203);cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -4px 12px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.06),0 12px 40px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.4);transition:all .25s;text-align:left;width:100%;color:#fff;font-family:inherit}
 .row:hover{background:linear-gradient(180deg,color-mix(in srgb,var(--ac) 24%,#07070b),color-mix(in srgb,var(--ac) 12%,#020203));border-color:var(--ac);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 14px -2px var(--ac),0 18px 56px rgba(0,0,0,.55);transform:translateY(-4px)}
 .row.active{border-color:var(--ac);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -4px 12px rgba(0,0,0,.2),0 0 0 1px var(--ac),0 0 18px -2px var(--ac),0 18px 56px rgba(0,0,0,.55)}
 .row-body{flex:1;min-width:0}
@@ -189,7 +190,7 @@ body.no-cover .ph-main{padding-top:12px}
 .toggle button[disabled]{opacity:.45;cursor:not-allowed}
 /* FIX-7: thread-body mask — 24px dead band + eased ramp to opaque 50px below the head; top padding 48px so the format-note pill reads bright at rest. */
 .thread-body{flex:1;padding:48px 18px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);-webkit-mask-size:100% 100%;mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 24px,rgba(0,0,0,.06) 30px,rgba(0,0,0,.18) 36px,rgba(0,0,0,.45) 42px,rgba(0,0,0,.80) 47px,#000 50px,#000 100%);mask-size:100% 100%}
-.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:17px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);transition:transform .25s,box-shadow .25s,border-color .25s}
+.msg{max-width:78%;padding:13px 16px;border-radius:18px;font-size:17px;line-height:1.75;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);transition:transform .25s,box-shadow .25s,border-color .25s}
 .msg:hover{transform:translateY(-2px);border-color:rgba(142,36,170,.65);box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),0 0 22px rgba(142,36,170,.45)}
 .msg .meta{display:block;font-size:17px;color:#fff;margin-top:6px}
 /* .msg.mine: colour FILL is gone — obsidian inside, royal-purple rim + glow outside. */
@@ -437,7 +438,7 @@ svg.jewel{display:block}
 /* --- ULTIMATE: the center morph — contact rail + thread, one system. --- */
 .msg-layout{display:flex;gap:18px;align-items:flex-start}
 .msg-layout .thread{flex:1 1 auto;min-width:0}
-.contact-rail{flex:0 0 92px;position:sticky;top:16px;display:flex;flex-direction:column;gap:14px;align-items:center;padding:16px 4px 0;max-height:calc(100dvh - 300px);overflow-y:auto;scrollbar-width:none}
+.contact-rail{flex:0 0 92px;position:sticky;top:16px;display:flex;flex-direction:column;gap:10px;align-items:center;padding:16px 4px 0;max-height:calc(100dvh - 300px);overflow-y:auto;scrollbar-width:none}
 .contact-rail::-webkit-scrollbar{display:none}
 .rail-orb{background:transparent;border:0;padding:0;cursor:pointer;border-radius:50%;transition:transform .25s,filter .25s}
 .rail-orb:hover{transform:translateY(-2px)}
@@ -459,9 +460,53 @@ body.rail-collapsed .contact-rail{display:none}
   .msg-layout{flex-direction:column}
   .contact-rail{flex:0 0 auto;position:static;flex-direction:row;max-height:none;width:100%;overflow-x:auto;overflow-y:hidden;padding:8px 2px 12px;justify-content:flex-start}
 }
+
+/* ============ KINGDOM FRAME — MASTER FRAME (Shawn 2026-11-18 ~23:18Z; SN-3544: Mail and Messenger inside the frame) ============
+   The frame IS master-frame.png, harvested verbatim (sha 865357f6…, 1672x941):
+   obsidian black, winged diamond seals in the four corners, winged crystal N
+   centre top and centre bottom, thin purple rim light, no pink wash.
+   Technique verbatim from the calendar border redesign (build-border.py):
+   border-image, slice 300, `round` — corners hold the seals whole; the
+   top/bottom strips tile the centre pattern (the extension rule: repeat the
+   centre metal pattern as needed, top and bottom stay the frame). `round`
+   rescales to a whole number of tiles, so an ODD count puts one N dead centre:
+   5 tiles at 1920, 3 at 390; tablet slice 340 (top/bottom only) tiles 3 at 635.
+   The sides repeat the same way for any viewport height — the stage stays one
+   continuous piece at any scroll length. The frame is a fixed overlay,
+   pointer-events none; the page sits inside it on body padding (--bw:
+   96px desktop / 64px tablet / 32px phone). Obsidian first; purple = rim
+   light + accent only, never a wash. */
+:root{--bw:96px}
+.royal-frame{position:fixed;inset:0;z-index:60;pointer-events:none;border:var(--bw,96px) solid transparent;border-image:url(master-frame.png) 300 / var(--bw,96px) / 0 round!important}
+body{padding:var(--bw,96px)}
+@media(max-width:1024px){:root{--bw:64px}.royal-frame{border-image-slice:340 300 340 300!important}}
+@media(max-width:560px){:root{--bw:32px}.royal-frame{border-image-slice:300!important}}
+/* ============ INFO BUTTON + PROFILE VIEW (Shawn 2026-11-19, follow-on item 4) ============
+   One INFO jewel beside the person's name in the conversation head. The jewel
+   is the family's eye: an obsidian circle, white "i" as a real object, rim +
+   glow in the person's own colour (--ic, set from the open person's --cc).
+   Tapping it opens the in-page profile view (feed-panel construction, the
+   page's own dialog): big orb, name, their line, match digit tile, presence,
+   last message — the same info as their profile page, fed by that person's
+   data. No per-person profile URL exists in the system to link to (the live
+   Connections room carries no profile links; the profile view lives inside
+   the Personal page file) — the live profile URL is an open item. */
+.who-name-row{display:flex;align-items:center;gap:10px}
+.who-name-row b{flex:1;min-width:0}
+.info-jewel{--ic:#8e24aa;flex:0 0 auto;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--ic);background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);color:#fff;font-family:inherit;font-size:20px;font-weight:900;cursor:pointer;display:grid;place-items:center;box-shadow:inset 0 1px rgba(255,255,255,.25),0 0 14px color-mix(in srgb,var(--ic) 45%,transparent),0 6px 14px rgba(0,0,0,.5);transition:transform .2s,box-shadow .2s}
+.info-jewel:hover{transform:translateY(-2px);box-shadow:inset 0 1px rgba(255,255,255,.3),0 0 26px color-mix(in srgb,var(--ic) 70%,transparent),0 10px 22px rgba(0,0,0,.6)}
+.info-jewel:active{transform:scale(.97)}
+.profile-view{display:flex;flex-direction:column;align-items:center;text-align:center}
+.profile-view h3{margin:12px 0 2px;font-size:25px}
+.profile-view .feed-sub{margin:0 0 4px}
+.profile-rows{width:100%;margin:12px 0;display:flex;flex-direction:column;gap:8px}
+.profile-row{display:flex;justify-content:space-between;gap:12px;font-size:17px;font-weight:700;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,#12101a,#08080c);text-align:left}
+.profile-row span:last-child{text-align:right}
+.profile-row .match{display:inline-flex;align-items:center;padding:2px 8px;border-radius:8px;border:1.5px solid var(--ac,#8e24aa);background:linear-gradient(180deg,#12101a,#08080c);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 10px color-mix(in srgb,var(--ac,#8e24aa) 45%,transparent);white-space:nowrap}
 </style>
 </head>
 <body>
+<div class="royal-frame" aria-hidden="true"></div>
 <!-- FIX-4: .page-scroll is the page's only scroller — cover, menu-bar and main scroll inside it; the Five sit below it in flow. -->
 <div class="page-scroll">
 
@@ -481,7 +526,7 @@ body.rail-collapsed .contact-rail{display:none}
       <div class="thread-head">
         <div class="orb-wrap"><div class="cx-ava big" id="threadOrb" style="--cc:#8e24aa">M</div><span class="orb-dot" id="threadDot"></span></div>
         <div class="who">
-          <b id="threadName">Maya R.</b>
+          <div class="who-name-row"><b id="threadName">Maya R.</b><button class="info-jewel" type="button" id="infoBtn" aria-label="About this person — open profile" title="About this person">i</button></div>
           <span id="threadPresence">Online now · Instant Message</span>
         </div>
         <div class="call-jewels"><button class="call-jewel" type="button" id="audioBtn" style="--jc:#07925f" aria-label="Audio call" title="Audio call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><button class="call-jewel" type="button" id="videoBtn" style="--jc:#0f52ba" aria-label="Video call" title="Video call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg></button></div>
@@ -535,27 +580,27 @@ body.rail-collapsed .contact-rail{display:none}
 <footer class="notif-bar" id="notifBar">
   <div class="notif-row">
     <button class="notif-seg" type="button" id="segAdd" data-notif="plus" style="--nc:#8e24aa" aria-label="ADD — install Messenger" title="ADD">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
       <span class="notif-label">ADD</span>
     </button>
     <button class="notif-seg has-news" type="button" id="segMail" data-notif="mail" style="--nc:#0f52ba" aria-label="MAIL — open" title="MAIL">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count" id="mailCount">6</span></span>
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count" id="mailCount">6</span></span>
       <span class="notif-label">MAIL</span>
     </button>
     <button class="notif-seg has-news" type="button" id="segActivity" data-notif="activity" style="--nc:#07925f" aria-label="ACTIVITY — open" title="ACTIVITY">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count" id="activityCount">4</span></span>
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count" id="activityCount">4</span></span>
       <span class="notif-label">ACTIVITY</span>
     </button>
     <button class="notif-seg" type="button" id="segWorlds" data-notif="spaces" style="--nc:#d4a017" aria-label="WORLDS — open" title="WORLDS">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span>
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span>
       <span class="notif-label">WORLDS</span>
     </button>
     <button class="notif-seg" type="button" id="segEco" data-notif="eco" style="--nc:#c2410c" aria-label="ECOSYSTEM — open" title="ECOSYSTEM">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
       <span class="notif-label">ECOSYSTEM</span>
     </button>
     <button class="notif-seg" type="button" id="segConnect" data-notif="connect" style="--nc:#c62828" aria-label="CONNECT — show contacts" title="CONNECT">
-      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3.1"/><path d="M2.8 19.5c0-3.2 2.6-5.5 5.7-5.5s5.7 2.3 5.7 5.5"/><circle cx="16.8" cy="9" r="2.5"/><path d="M15.8 14.6c2.6.3 4.7 2.4 4.7 4.9"/></svg></span>
+      <span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3.1"/><path d="M2.8 19.5c0-3.2 2.6-5.5 5.7-5.5s5.7 2.3 5.7 5.5"/><circle cx="16.8" cy="9" r="2.5"/><path d="M15.8 14.6c2.6.3 4.7 2.4 4.7 4.9"/></svg></span>
       <span class="notif-label">CONNECT</span>
     </button>
   </div>
@@ -581,6 +626,24 @@ body.rail-collapsed .contact-rail{display:none}
     <button class="btn ghost" type="button" id="choiceCloseBtn">Done</button>
   </div>
 </div>
+<!-- PROFILE VIEW (in-page): the person's profile — same info as their profile page (orb, name, their line, match, presence, last message), fed by the open person's data. No per-person profile URL exists in the system — the live profile URL is an open item. -->
+<div class="feed-panel" id="profilePanel" role="dialog" aria-label="About this person">
+  <div class="profile-view">
+    <div class="orb-wrap"><div class="cx-ava big" id="profileOrb" style="--cc:#8e24aa">M</div><span class="orb-dot" id="profileDot"></span></div>
+    <h3 id="profileName">Maya R.</h3>
+    <p class="feed-sub" id="profileNut"></p>
+    <div class="profile-rows">
+      <div class="profile-row" id="profileMatchRow"><span>Match</span><span class="match" id="profileMatch">94%</span></div>
+      <div class="profile-row"><span>Presence</span><span id="profilePresence"></span></div>
+      <div class="profile-row" id="profileLastRow"><span>Last message</span><span id="profileLast"></span></div>
+    </div>
+    <div class="feed-actions">
+      <button class="btn" type="button" id="profileMessageBtn">Message</button>
+      <button class="btn ghost" type="button" id="profileCloseBtn">Close</button>
+    </div>
+  </div>
+</div>
+
 
 <script>
 /* STUB DATASET — sample people in the page's own shape (initial, name,
@@ -911,6 +974,7 @@ function openPerson(p){
   syncMailToPerson();
   if (!THREADS[p.id]) THREADS[p.id] = [];
   renderConvs(); renderTopicPeople(); renderThread(); renderContactRail();
+  var __ib = $('infoBtn'); if (__ib) __ib.style.setProperty('--ic', p.cc || '#8e24aa');
 }
 function openTopicChat(topic){
   var members = TOPICS[topic] || [];
@@ -1129,7 +1193,7 @@ function startCall(kind){
   clearTimeout(window.__toastTimer);
   window.__toastTimer = setTimeout(function(){ $('toast').classList.remove('show'); }, 8000);
 }
-$('toggleMail').addEventListener('click', function(){ setFormat('mail'); });
+$('toggleMail').addEventListener('click', function(){ window.location.href = 'https://nayanet.app/rooms/mail'; });
 $('toggleIM').addEventListener('click', function(){ setFormat('im'); });
 $('sendBtn').addEventListener('click', sendMessage);
 $('composerInput').addEventListener('keydown', function(e){ if (e.key === 'Enter') sendMessage(); });
@@ -1300,8 +1364,30 @@ function stubEvent(world, kind, text){
   return raiseCount(world, kind, 1);
 }
 window.__stubEvent = stubEvent;
+/* --- INFO / PROFILE VIEW (frame round item 4): the open person's profile, fed by their data. --- */
+function openProfile(){
+  var p = state.person; if (!p) return;
+  $('profileOrb').textContent = p.initial || (p.name || '?').charAt(0);
+  $('profileOrb').style.setProperty('--cc', p.cc || '#8e24aa');
+  $('profileName').textContent = p.name;
+  $('profileNut').textContent = p.nut || '';
+  $('profileMatchRow').hidden = (p.match == null);
+  if (p.match != null) {
+    $('profileMatch').textContent = p.match + '%';
+    $('profileMatch').style.setProperty('--ac', p.cc || '#8e24aa');
+  }
+  $('profilePresence').textContent = ($('threadPresence') && $('threadPresence').textContent) || '';
+  $('profileLastRow').hidden = !p.last;
+  $('profileLast').textContent = p.last || '';
+  $('profilePanel').classList.add('show');
+  window.__profileFor = p.id;
+}
+function closeProfile(){ $('profilePanel').classList.remove('show'); }
+$('infoBtn').addEventListener('click', openProfile);
+$('profileCloseBtn').addEventListener('click', closeProfile);
+$('profileMessageBtn').addEventListener('click', function(){ closeProfile(); var c = $('composerInput'); if (c) c.focus(); });
 $('segAdd').addEventListener('click', function(){ openInstall(); });
-$('segMail').addEventListener('click', function(){ setFormat('mail'); $('composerInput').focus(); });
+$('segMail').addEventListener('click', function(){ window.location.href = 'https://nayanet.app/rooms/mail'; });
 $('segActivity').addEventListener('click', function(){ openFeed(state.world === 'space' ? 'thing' : state.world); });
 $('segWorlds').addEventListener('click', function(){ cycleMailWorld(); });
 $('segEco').addEventListener('click', function(e){ e.stopPropagation(); toggleEcoMenu(); });
