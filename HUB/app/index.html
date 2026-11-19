@@ -6521,15 +6521,22 @@ function HubView(params) {
     if (!tabs.some(t => t.id === activeSmartTab)) activeSmartTab = 'all';
 
     const bar = el('div', 'smart-tabs');
-    /* ROUND 9 (item 5a): the strip scrolls itself, slowly — 1px per 50ms is
-       20px a second, so a full traverse takes about 100 seconds, inside the
-       Laws 60-180s ambient band and never faster than 12s. It turns back at
-       each end instead of jumping. A hand on the strip pauses it; the
-       citizen's own scroll or tap pauses it for 8 seconds. One interval
-       only — the old one is cleared on every re-render. */
+    /* ROUND 10 (item 5a — the checker's traverse arithmetic): the traverse is
+       DEFINED as one end-to-end pass, scrollLeft 0 -> max, and the step is
+       computed from the strip's own live width on every tick, so the pass
+       always takes 120 seconds — the middle of the Laws §1 60-180s ambient
+       band — at any viewport, on any tab count. At the checker's measured
+       1920 geometry (scrollWidth 25,879px, clientWidth 1,268px, pass
+       24,611px) the step is 24,611 x 16 / 120,000 = 3.28px per 16ms tick,
+       i.e. 205px/s, i.e. a 120s pass by construction. The old 1px/50ms
+       (20px/s) made the same pass 1,230s — twelve times the claim and
+       outside the band. It turns back at each end instead of jumping.
+       A hand on the strip pauses it; the citizen's own scroll or tap
+       pauses it for 8 seconds. One interval only — the old one is
+       cleared on every re-render. */
     try{
       if(window._stMarquee) clearInterval(window._stMarquee);
-      var _mDir=1, _mPauseUntil=0;
+      var _mDir=1, _mPauseUntil=0, _mTraverseMs=120000, _mTickMs=16;
       bar.addEventListener('pointerenter', function(){ _mPauseUntil=Date.now()+8000; });
       bar.addEventListener('pointerdown', function(){ _mPauseUntil=Date.now()+8000; });
       bar.addEventListener('wheel', function(){ _mPauseUntil=Date.now()+8000; }, {passive:true});
@@ -6537,9 +6544,9 @@ function HubView(params) {
       window._stMarquee=setInterval(function(){
         if(document.hidden || Date.now()<_mPauseUntil) return;
         var max=bar.scrollWidth-bar.clientWidth; if(max<=0) return;
-        bar.scrollLeft+=_mDir;
+        bar.scrollLeft+=_mDir*(max*_mTickMs/_mTraverseMs);
         if(bar.scrollLeft>=max) _mDir=-1; else if(bar.scrollLeft<=0) _mDir=1;
-      }, 50);
+      }, _mTickMs);
     }catch(e){}
     /* FIX 2026-11-16 (item A): the old "gentle auto-scroll" interval moved
        bar.scrollLeft 1px every 30ms at rest, so the strip drifted right
