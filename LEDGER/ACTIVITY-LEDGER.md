@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 20:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -39095,6 +39095,12 @@ _Last updated: 2026-11-19 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-1442-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Merge-consensus gate parses 12-lane seat tags (PR #2453 evidence)
+
+**Evidence:** BACKLOG SWEEP (Oct 19 receipt). VERIFIED first-hand: PR-open package hidden_files/lane-8/gate-seat-format-gap-1442/ complete (patch, patched files, evidence, rerun script+log, pytest log, draft PR body); pytest.log shows 42 passed matching the receipt's 42/42 claim; rerun-pr2453.log shows PARSE GAP CLOSED: YES; patch contains _LANE_TAG_RE/_LANE_AUT
+
 ### ✅ gap-t0132-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** gap close: guard test_check_merge_consensus_lane_tags.py against import-time battery
@@ -47447,6 +47453,12 @@ _Last updated: 2026-11-19 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-gap-t0162-lane2-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round-2 NO-GO: close follow-up gap by deeper root cause (lane-pick mechanism death at t0472/t0482)
+
+**Evidence:** BACKLOG SWEEP (Oct 26 receipt). VERIFIED first-hand: sealed instrument lane-2/gap-t0162-lane2/measure_h9r2.py sha256 3cdc590e7627f48666fa3ec85b607bf798f45fdbaa39b01d62bc2f95c729ff81 EXACT match to parent pin; rerun output lane-2/gap-t0162-lane2-lane2/h9r2-rerun-20261026.json sha256 8b4c76f76faa2d61bea5dce1be3e2c86a5ddd27724972527b2d745157f26ef2f EX
+
 ### ✅ gap-gap-gap-t1002-lane2-recusal-repeat-20261026 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: patch the claim-script pattern gap that let a barred seat claim the sealed probe twice, and gate the held brief
@@ -50011,6 +50023,12 @@ _Last updated: 2026-11-19 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-gap-t0162-lane11-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** hv_measure.py --help crash: root-cause fix (help early-return, mixed-type lane sort, lane%s print)
+
+**Evidence:** BACKLOG SWEEP (Oct 26 receipt). VERIFIED first-hand: parent receipt gap-t0162-lane11.md sha256 37f94399e6324ebed1f6bf9c17e36fe5815af7811b8390e52cb6bfa40d7697d2 EXACT match; bin/hv_measure.py --help exits 0 live; sort fix persists in the file (sorted lanes_with_scored_receipts, lane%s print at line 413). Score 9.0 (GOOD, ONE MORE PASS), below the la
+
 ### ✅ gap-t0122-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Gap close: independent re-run of the t0082-t0122 audit (M2/M3/M4) (Lane 11)
@@ -51168,6 +51186,12 @@ _Last updated: 2026-11-19 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ distill-feed-2641-20261017 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** Distill board #2641 (2,339 comments) + release to #2721, 7 lessons filed
+
+**Evidence:** BACKLOG SWEEP (Oct 17 receipt). VERIFIED first-hand: comment corpus hidden_files/feed-2641-comments-20261017.json sha256 4a9d0c33f9de EXACT match to receipt pin (7,336,101 bytes); triage file + distill-2641-work/ 7 bucket files present; lessons.jsonl holds 41 lines. Score 8.5 (REWORK tier), below the lane's honest 9.2. Why not 9.5: (1) primary deli
 
 ### ✅ gap-gap-t1504-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
