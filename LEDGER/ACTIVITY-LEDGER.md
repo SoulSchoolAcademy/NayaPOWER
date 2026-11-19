@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 04:15 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 04:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13885,6 +13885,18 @@ _Last updated: 2026-11-19 04:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: every load-bearing claim of the t0787 harness re-proven from live bytes; verdict CONFIRM with five quoted defects delivered to the repair tick (two docstring overclaims, two uncaught-traceback edge paths, one byte-inexact builder quote). Clears 9.5 because the CONFIRM rests on re-derived bytes and the defects are quoted with evidence. Why
 
+### ✅ t0815 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Phase 1 audit slice B: 104 docs across 9 mid-size BRAIN/ dirs, load-bearing + tongue + link audit
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand on live bytes: deliverable hidden_files/phase1-audit-slice-b.md exists, sha256 eed6829ab97aa1d726d1511592fe871d52c7c5f96888d2aaa1f1312a0079b80d matches the receipt's cited hash prefix (eed6829ab97aa1d7); table integrity holds - 106 pipe-led lines = header+sep+104 rows as claimed;
+
+### ✅ t0815 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Phase 1 audit slice A: 87-doc gap list for 5 small BRAIN/ dirs, byte-pinned + regenerable
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: phase1-audit-slice-a.md exists, 303 lines, 89 table rows (87 per-doc rows + header/separator, matching the receipt's count); bin/phase1a-extract.py and bin/phase1a-gaps.py both exist; pin ba62638704256b012c20e41fe7f53cc3b62b1b44 exists as a commit object in the local mirror. Hea
+
 ### ✅ t0815 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
 **Task:** triage: t0815 rank-row spot-check, second 10-row spread
@@ -14032,6 +14044,14 @@ _Last updated: 2026-11-19 04:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0814-lane12.md`
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
+
+### ✅ t0813 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** RECUSAL-REPEAT: re-claim of gated brief-t0813-lane8, gate re-fired, brief re-filed
+
+**Receipt:** `twelve-lane-receipts/t0813-lane8.md`
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty - all receipts from the last 12 ticks already scored). VERIFIED first-hand: parent recusal receipt twelve-lane-receipts/t0813-lane8.md exists and matches the reclaim's description byte-for-byte in substance (same seat Naya Clarity Narzan 4, same MTC-v1/Arm I gate, RECUSED verdict, 2026-10-14 23:06-23:
 
 ### ✅ t0813-lane8-reclaim — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -36466,6 +36486,18 @@ _Last updated: 2026-11-19 04:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### 🟡 gap-scorer-20261014-2200-lane9 — Team 9, Team Naya Scorer (Code Health) — 7.0/10 [PARTIAL]
+
+**Task:** t0412 tie-break gap CLOSED: false docstring corrected at 4 sites, lexical tie-break empirically pinned, 0.426/0.502 adjudicated as frozen history
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty - all receipts from the last 12 ticks already scored). VERIFIED this tick: parent receipt twelve-lane-receipts/t0807-lane9.md exists; receipt is internally consistent with 7 cited content-sha256s and a 5-point adjudication proof. NOT VERIFIED: the 7 cited file-content SHAs could not be re-read - the f
+
+### ✅ gap-t0776-lane9-decline2 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** DECLINE #2 + root cause: gated PR #2591 review, empty eligibility pool proved, loop broken (brief to done/, dequeued)
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: brief-gap-t0776-lane9.md sits in brief-queue/done/ (loop-break action real); parent receipts gap-t0776-lane9.md and t0776-lane9.md both exist on disk; rotation queued no longer lists the brief. The receipt proves the structural claim with bytes (24/25 recent receipts Clarity-sig
 
 ### ✅ gap-gap-lane-scorer-20261018-0230-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
