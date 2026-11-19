@@ -7495,7 +7495,7 @@ function pcCardWithConnect(p, live){
   if(at<0) return base;
   /* ROUND 5 2026-11-19 (checker item 2): top line keeps ball + name + % locked
      top-right; line 2 is FIVE icon-only 26px circles in ONE row — EYE first,
-     then DM, Mail, Audio, Video — 5x26 + 4x8 = 162px, inside the 251px card (rail 300 - rail pad 28 - list pad-right 2 - card pad 16 - card border 3), 89px spare. */
+     then DM, Mail, Audio, Video — 5x26 + 4x8 = 162px, inside the 241px card content box (card clientWidth 257 - padding 16; the 251px figure omitted the 10px scrollbar lane), 79px spare. */
   return base.slice(0, at)+pctHtml+'</div><div class="pc-card-acts">'+btns+'</div>'+base.slice(at+6);
 }
 
@@ -7860,6 +7860,7 @@ document.addEventListener('click', function(e){
     if (window.innerWidth >= 1440 && !shell.classList.contains('rail-collapsed')) rightDrawerLeftDocked = true;
     shell.classList.add('rail-right-open');
     shell.classList.remove('rail-right-collapsed');
+    document.body.classList.remove('rail-right-collapsed'); /* ROUND 8: the body mirrors the shell's collapsed state -- #os-b3-hide is a direct child of <body>, so only a body class can govern it. */
     document.body.classList.add('rail-right-open');
     const f = navR.querySelector('.nav-btn');
     if (f) f.focus();
@@ -7874,6 +7875,7 @@ document.addEventListener('click', function(e){
       rightDrawerLeftDocked = false;
       shell.classList.remove('rail-right-open');
       shell.classList.remove('rail-right-collapsed');
+      document.body.classList.remove('rail-right-collapsed'); /* ROUND 8: body mirrors shell (see D). */
       shell.classList.remove('rail-collapsed');
       document.body.classList.remove('rail-right-open');
       syncMenuBtn(); /* AMENDMENT #3: closing the right drawer restores the LEFT docked — the old write marked the menu closed while the left stood open */
@@ -7885,6 +7887,7 @@ document.addEventListener('click', function(e){
        visible — closing it collapses it (reopen from the bottom-bar
        ECOSYSTEM tile). Below desktop this class is inert. */
     shell.classList.add('rail-right-collapsed');
+    document.body.classList.add('rail-right-collapsed'); /* ROUND 8: the body mirrors the shell's collapsed state -- this is the class the circle's right:12px rule matches on (see B). */
     document.body.classList.remove('rail-right-open');
   }
   function ensureGlobalKeys() {
@@ -14073,7 +14076,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
    govern .pc-card-acts .pc-act-btn, so five labelled pills needed ~450px and
    wrapped at every width. This override restores the harvested 26px circular
    form (L873) inside the acts row and locks the row to nowrap: 5x26 + 4x8 gap
-   = 162px, inside the 251px card (rail 300 - rail pad 28 - list pad-right 2 - card pad 16 - card border 3), 89px spare; the scrollbar lane is reserved outside the cards, so the track never overlays the row.
+   = 162px, inside the 241px card content box (card clientWidth 257 - padding 16; the 251px figure omitted the 10px scrollbar lane: list offsetWidth 271 - clientWidth 261), 79px spare; the scrollbar lane is reserved outside the cards, so the track never overlays the row.
    Labels are gone from the markup; each name lives on in aria-label + title.
    The .pc-act-lab rule stays, now unused — do not delete what was not asked. */
 #hubPeopleList .pc-card-acts { flex-wrap: nowrap; }
@@ -14095,16 +14098,16 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
    there is no lane beside the open drawer, so both pills hide until the
    rail closes. */
 .shell.rail-right-open .hero-restore.show { right: 312px; }
-.shell.rail-right-open #os-b3-hide { right: 304px; } /* ROUND 7 2026-11-19 (item 2a): 8px right -- the 44px circle sat 12px off the note frame's right border (1552) and read as sitting ON its silver border/diamond ornament. At 304px it stands 20px clear of the border, 19px clear of the rail cards (1635), its right edge 4px off the rail container edge. */
+body.rail-right-open #os-b3-hide { right: 304px; } /* ROUND 7 2026-11-19 (item 2a): 8px right -- the 44px circle sat 12px off the note frame's right border (1552) and read as sitting ON its silver border/diamond ornament. At 304px it stands 20px clear of the border, 19px clear of the rail cards (1635), its right edge 4px off the rail container edge. */
 @media (min-width: 1440px) {
   .hero-restore.show { right: 312px; }
   #os-b3-hide { right: 304px; } /* ROUND 7 (item 2a): same 8px shift at desktop-docked widths. */
   .shell.rail-right-collapsed .hero-restore.show { right: 12px; }
-  .shell.rail-right-collapsed #os-b3-hide { right: 12px; }
+  body.rail-right-collapsed #os-b3-hide { right: 12px; }
 }
 @media (max-width: 640px) {
   .shell.rail-right-open .hero-restore.show { display: none; }
-  .shell.rail-right-open #os-b3-hide { display: none; }
+  body.rail-right-open #os-b3-hide { display: none; }
 }
 /* (4d) THE BOTTOM BAR RESERVES ITS SPACE: the fixed notif-bar (~124px tall:
    20px bar pad + 12px row pad + 2px seg pad + 54px tile + 6px gap + ~20px
@@ -14154,8 +14157,9 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide { bottom: 200px; }
    captures 8s apart differ visibly. Never faster than 12s. */
 .brand-mark img { animation: brand-orb-glow 16s ease-in-out infinite alternate; }
 @keyframes brand-orb-glow { from { filter: drop-shadow(0 0 2px rgba(255,176,66,.20)); } to { filter: drop-shadow(0 0 16px rgba(255,176,66,.60)) drop-shadow(0 0 32px rgba(142,36,170,.35)); } }
-/* (4) SN-3615 -- NO CODE CHANGE. The note is not in this file (0 occurrences
-   of 3615): it is live-only via Supabase hub_smart_notes, and its live row
+/* (4) SN-3615 -- NO CODE CHANGE. The note is not in this file as data
+   (the number appears in this comment only, naming the note): it is
+   live-only via Supabase hub_smart_notes, and its live row
    (captured from the page's own REST read) has what_it_means:"", 
    whats_in_it_for_you:"", how_it_applies:"", child_note:"", grandma_note:"" --
    only nutshell/human_note populated. The render path is correct: it shows the
@@ -14164,6 +14168,25 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide { bottom: 200px; }
    (BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3615/...) and re-sync.
    No live row carries the full set: 0/200 have whats_in_it_for_you or
    how_it_applies; 53/200 have what_it_means. No layer text invented here. */
+
+/* ——— FOLLOW-ON ROUND 8 20261119 — the selector, not the value ——— */
+/* ROOT CAUSE (fix-7 checker verdict, GOES BACK): #os-b3-hide is a direct
+   child of <body> (BUTTON#os-b3-hide -> BODY -> HTML); it is NOT inside
+   .shell. The pill IS inside .shell, so its .shell-scoped rules work. Every
+   .shell-scoped circle rule could therefore never match -- L14098 (open
+   shift), L14103 (collapsed), L14107 (phone hide) were all dead, and round 7
+   edited only their VALUES (312->304). A value change on a dead rule is not
+   a fix. This round re-scopes the SELECTORS to the body classes the JS
+   already toggles: openRightRail adds rail-right-open to document.body and
+   closeRightRail removes it, so body.rail-right-open governs the 304px shift
+   and the <=640px hide. For the collapsed state closeRightRail only wrote
+   rail-right-collapsed to the shell, so it now also writes it to the body
+   (and openRightRail clears it from the body) -- the body.rail-right-collapsed
+   rule at >=1440px then beats the unscoped 304px docked rule by specificity.
+   No dead .shell-scoped circle rule remains. Values unchanged: open 304px,
+   collapsed 12px, phone drawer-open hidden. Measured live in render:
+   1920 collapsed -> circle right 12px; 1200 drawer-open -> right 304px,
+   clear of the people cards; 390 drawer-open -> display none. */
 </style>
 </body>
 </html>
