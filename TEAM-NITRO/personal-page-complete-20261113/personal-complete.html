@@ -33449,6 +33449,14 @@ renderGrid();
 @media(max-width:640px){.of-bridge-top{flex-direction:column;align-items:center}}
 .of-face{width:240px;height:240px;flex:0 0 auto;border-radius:50%;position:relative;display:grid;place-items:center;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:2px solid color-mix(in srgb, var(--tone,#8e24aa) 70%, #fff 10%);box-shadow:0 0 22px color-mix(in srgb, var(--tone,#8e24aa) 55%, transparent),0 8px 20px rgba(0,0,0,.6)}
 .of-face-img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;border:0;box-shadow:none}
+/* FOLLOW-ON FIX 2 (2026-11-19, 390): the [hidden] cure — syncFace() hides
+   this img when there is no photo (the monogram stands in), but the
+   display:block above beats the UA [hidden] rule, so a src-less img stayed
+   visible and its alt text ("Shawn Vibert") rendered across the top of the
+   orb, its first letter clipped by the rim — seen on About AND Skills at
+   390. This rule makes hidden mean hidden; with a photo, syncFace clears
+   hidden and the img shows as before. */
+.of-face-img[hidden]{display:none}
 .of-face-mono{font-size:64px;font-weight:800;color:#fff}
 @media(max-width:480px){.of-face{width:168px;height:168px}.of-face-mono{font-size:44px}}
 .of-bridge-q{text-align:center;font-size:16px;font-weight:800;color:#fff;margin:20px 0 12px}
@@ -37398,9 +37406,20 @@ div[data-block="cover"] > .ph-actions-row{padding-left:0!important;padding-right
 @media (max-width:640px){ #naya-notif-bar .notif-lbl{display:none !important;} }
 /* FIX2-6c (Edit 6, clearance — Dashboard follow-on 2 §4, id adapted) */
 #naya-notif-bar{padding-bottom:calc(20px + env(safe-area-inset-bottom, 0px)) !important;}
-/* FIX2-6d (Edit 6, corner control — Dashboard follow-on 2, harvested; bottom
-   100px -> 112px: Personal's bar with 17px labels is ~106px tall, not the
-   Dashboard's ~91px, so the control rides 6px clear of the taller bar.) */
+/* FIX2-6d (Edit 6, corner control — Dashboard follow-on 2, harvested.
+   Desktop: bottom 136px when the bar is up, 12px when it is hidden — the
+   control rides 12px clear of the bar / of the viewport bottom.
+   FOLLOW-ON FIX 2 (2026-11-19, 390): at <=768px the control NO LONGER parks
+   at the viewport bottom — the 2x4 hero button grid fills the viewport
+   bottom at phone widths, so bottom:12px sat ON "Go to the Hub" (its "b"
+   hidden behind the control, seen in three screenshots) and bottom:102px
+   sat ON "Skills" when the bar was up. It now parks beside the hero face
+   orb in BOTH bar states: bottom:calc(100vh - 480px) pins its bottom edge
+   to viewport y 480, so the 38px control sits at y 442-480, centred on the
+   orb (orb y 400-524, centre 462) — clear of the points pill above (ends
+   y 376), the name below (starts y 546) and the button grid (starts y 645),
+   at every phone height, owner and visitor alike; it never jumps between
+   states. (Replaces the stale 112px note that used to sit here.) */
 #os-b3-hide{position:fixed;right:12px;bottom:136px;z-index:1005;width:38px;height:38px;border-radius:50%;cursor:pointer;
   color:#fff;font-size:17px;font-weight:800;line-height:1;text-align:center;
   background:linear-gradient(180deg,#1d1d26,#0b0b10 60%,#050607);
@@ -37409,7 +37428,8 @@ div[data-block="cover"] > .ph-actions-row{padding-left:0!important;padding-right
 #os-b3-hide:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.6),0 12px 26px rgba(0,0,0,.65),0 0 18px rgba(255,255,255,.18);}
 #os-b3-hide:active{transform:translateY(1px);}
 body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
-@media(max-width:768px){#os-b3-hide{bottom:102px;right:8px;}}
+@media(max-width:768px){#os-b3-hide{bottom:calc(100vh - 480px);right:8px;}
+body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:calc(100vh - 480px);}}
 </style>
 <style id="personal-followon-20261119">
 /* FOLLOW-ON 2026-11-19 — B: demographics switches. One per question, in the
