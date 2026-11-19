@@ -33498,6 +33498,9 @@ body.feed-live .live-dot {
   max-width: 600px; margin: 0 auto; font-weight: 500;
 }
 .main-show .hero { margin-bottom: 4px; }
+.main-show .hero{transition:max-height .6s cubic-bezier(.16,.84,.22,1),opacity .45s ease,padding-top .6s cubic-bezier(.16,.84,.22,1),padding-bottom .6s cubic-bezier(.16,.84,.22,1);}
+.main-show .hero.hero-folded{max-height:0!important;opacity:0;overflow:hidden;padding-top:0;padding-bottom:0;margin-top:0;margin-bottom:0;pointer-events:none;}
+@media(prefers-reduced-motion:reduce){.main-show .hero{transition:none!important;}}
 .shimmer-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
 .shimmer {
   --room-accent: var(--magenta);
@@ -35594,9 +35597,12 @@ function mainShow(rm, content, stream, searchWrap, provenanceEl) {
       document.body.classList.toggle('feed-live', mode === 'live');
       const inSrc = mode === 'live' ? 'the live feed' : 'this snapshot';
       if (!notes.length) {
-        feedEl.appendChild(el('div', 'empty-instrument',
-          '<strong>The Main Show is not connected.</strong><p>Layered feed intelligence is unavailable ' +
-          (mode === 'live' ? 'from the live backend right now.' : 'in this package.') + '</p>'));
+        /* FIX 2026-11-18 (checker failure 2) — a genuinely empty wall is not a
+           disconnected Main Show. The honest empty state, harvested verbatim
+           from the old wall painter (mwPaintWallPosts): the same board, the
+           same words, the same Make-a-post button (the delegated
+           [data-pc-invite-post] handler already on the page wires it). */
+        feedEl.innerHTML = '<div class="ph-card ph-invite-board" style="--ac:#8e24aa;"><h3>Make your first post</h3><p class="os-note">No posts yet \u2014 make the first post on your feed.</p><div class="ph-actions"><button type="button" class="ph-connect" data-pc-invite-post>Make a post</button></div></div>';
         return;
       }
       if (stream === 'activity') { feedEl.appendChild(activityStream(content)); return; }
@@ -35709,9 +35715,17 @@ function mainShow(rm, content, stream, searchWrap, provenanceEl) {
           }
         }
       } catch (e) { /* honest fallback below */ }
-      if (!feed.isConnected) return; /* room navigated away mid-flight */
-      if (liveOk) { fillFeedBoards(feed, notes, 'live'); updateFeedProvenance(true, backend, notes); }
-      else fillFeedBoards(feed, snapshotNotes, 'snapshot');
+      /* FIX 2026-11-18 (checker failure 2) — the fill ran synchronously inside
+         mainShow, before the caller appends the wrap, so feed.isConnected was
+         false at that moment and this guard returned on EVERY mount: the
+         shimmer never resolved, on an empty wall or a full one. Defer one
+         tick — by then the mount has appended the wrap (or the room really
+         did navigate away, and the guard still applies). */
+      setTimeout(function(){
+        if (!feed.isConnected) return; /* room navigated away mid-flight */
+        if (liveOk) { fillFeedBoards(feed, notes, 'live'); updateFeedProvenance(true, backend, notes); }
+        else fillFeedBoards(feed, snapshotNotes, 'snapshot');
+      }, 0);
     })();
 
     return wrap;
@@ -37238,5 +37252,22 @@ div[data-block="cover"] > .ph-actions-row{padding-left:0!important;padding-right
    MARRY 2026-11-18: text-align back to center — the pill sits above the photo again (cover-align form). */
 .pc-points-receipt{flex:0 0 100%;text-align:center;font-size:17px;color:#fff;margin:8px 0 0;}
 .pc-points-receipt:empty{display:none;}
+</style>
+<style id="personal-marry-phone-20261118">
+/* MARRY PHONE FIX 2026-11-18 (checker failure 1) — the marry's desktop grid
+   (pill row 1 / photo + name row 2, two columns) applies at phone width and
+   squeezes name + motto into a 143px column beside the photo, with a black
+   void between the photo bottom and the menu bar. At <=480px the head
+   collapses to ONE column: points pill, photo, then name + motto full-width
+   BELOW the photo (the base's 390 reading, restored). The grid rows are
+   auto-height, so no void can open between photo and menu bar. 635 and 1920
+   are untouched: this block only speaks at <=480px. */
+@media(max-width:480px){
+.ph-head{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important;column-gap:0!important;row-gap:12px!important;justify-items:center!important;}
+.ph-idcol{display:contents!important;}
+.ph-pointsrow{grid-column:1!important;grid-row:1!important;justify-self:center!important;}
+.ph-avwrap{grid-column:1!important;grid-row:2!important;justify-self:center!important;align-self:center!important;}
+#phIntroBoard{grid-column:1!important;grid-row:3!important;align-self:stretch!important;justify-self:stretch!important;flex:none!important;width:100%!important;max-width:100%!important;margin:0!important;}
+}
 </style>
 </body></html>
