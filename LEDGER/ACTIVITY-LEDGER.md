@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 19:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 20:16 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21535,6 +21535,12 @@ _Last updated: 2026-11-19 19:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 6 package SHAs exact match (swing/decomp JSON+md, spec, pins) under auto-retrieval/guard-split-handoff-t0626/; 7/7 pins re-derived at action time per claim; md twins GENERATED from JSONs. Score 9.0, not 9.5: the added `vals else 0.0` fallback + argmax tie-breaking in the attribution path is untested by a second seat (lane's own flag);
 
+### ✅ t0626-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (b) stamping-migration plan CANDIDATE: 3-writer inventory, 5 waves, fail-closed blackout forecast
+
+**Evidence:** BACKLOG SWEEP (Oct 13). VERIFIED first-hand: migration plan retrieval-authgate-stamping-migration-plan-t0626.md sha256 91c797fd228c9702f87bf33457a4a80041ea1e5be5af9e92b135192e0680b4d8 EXACT. Score 9.0 (GOOD, ONE MORE PASS), matching the lane's honest self-score 9.0. Why not 9.5: (1) plan-only CANDIDATE - no wiring, and the W2 regen stamp carry-thro
+
 ### ✅ t0626 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE (b) stamping-migration plan CANDIDATE
@@ -21550,6 +21556,12 @@ _Last updated: 2026-11-19 19:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0626-lane4.md`
 
 **Evidence:** Verified: plan file retrieval-authgate-stamping-migration-plan-t0626.md sha256 exact match 91c797fd...0680b4d8; tip context re-derived at action time (eb36746a vs stale t0616 premise); honest holes listed (W2 carry-through byte-unverified, rulings+wiring await Shawn's word). Score 9.0, not 9.5: CANDIDATE is single-seat — no second-seat review of wa
+
+### ✅ t0626-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** H-dc6 sealed-run execution (designer!=executor): one run, frozen rule, HOLD on EQ-D0 mismatch, blind SHA to #2175
+
+**Evidence:** BACKLOG SWEEP (Oct 13). VERIFIED first-hand: results-t0622-h-dc6.json sha256 236f1747119e859a18bd9edfd838d96e57964f45700923fcd8a8a1dd81781e62 EXACT (verdict HOLD, EQ-D0 false, heartbeat true). Score 8.5 (REWORK tier), matching the lane's honest self-score 8.5. Why not 9.5: (1) the run says nothing about grounding yet - EQ-D0 baseline mismatch root 
 
 ### ✅ t0626 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
@@ -21567,6 +21579,12 @@ _Last updated: 2026-11-19 19:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: results file auto-retrieval/results-t0622-h-dc6.json sha256 exact match 236f1747...181e62; seal-integrity block (6 pins + absence + mtimes) recorded pre-run; verdict HOLD applied mechanically from frozen rule 1 (EQ-D0 mismatch); exclusions named; mechanism routed to Lane 4. Score 8.5, not 9.5: (1) 'one run' discipline bent (crashed attemp
 
+### ✅ t0625-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Kernel byte-verdict at live tip eb36746a: cold-retrieve/intelligence legs + CI, signature aa8061c1 non-reproduction
+
+**Evidence:** BACKLOG SWEEP (Oct 13). VERIFIED first-hand: tip commit eb36746ad8b424b036af95b6035fcef8bb923808 EXISTS in the repo (cat-file -t = commit); receipt is time-bound to that exact pin with pre/post re-pin unchanged. Clears 9.5 because the verdict is pinned to a real commit, legs ran on exact pins (mjs 8/8 + 3/3, pytest 60 passed/1 named environmental s
+
 ### ✅ t0625 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Kernel byte-verdict at live tip eb36746a: cold-retrieve/intelligence legs + CI state
@@ -21583,6 +21601,12 @@ _Last updated: 2026-11-19 19:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: claimed tip eb36746ad8b424b036af95b6035fcef8bb923808 == live origin HEAD re-derived by this scorer via git ls-remote (MATCH) — the lane's action-time pin holds; stale brief pin (d254379b) was correctly discarded. Fresh detached checkout discipline (fetch exact SHA → detach → rev-parse), post-run re-pin unchanged, exclusions named not sile
 
+### ✅ t0625-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** v2 scanner full-corpus run: UNRESOLVED rate at scale + one live transport defect
+
+**Evidence:** BACKLOG SWEEP (Oct 13). VERIFIED first-hand: instrument scan_receipt_evidence_v2.py sha16 58d390e17d25672b EXACT and full-corpus report report-t0625-full-corpus.json sha16 01895eea560695da EXACT. Score 9.0 (GOOD, ONE MORE PASS), matching the lane's honest self-score 9.0. Why not 9.5: (1) 9 of the 21-distinct UNRESOLVED sample items are pattern-clas
+
 ### ✅ t0625 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** v2 scanner full-corpus run: UNRESOLVED rate at scale + live transport defect
@@ -21598,6 +21622,12 @@ _Last updated: 2026-11-19 19:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0625-lane2.md`
 
 **Evidence:** Verified: instrument lane-experiments/t0623/scan_receipt_evidence_v2.py MATCHES sha16 58d390e17d25672b; report hidden_files/lane2-t0625/report-t0625-full-corpus.json MATCHES sha16 01895eea560695da. 438 receipts / 1778 claims / 17.7% UNRESOLVED honestly decomposed (content-hash pins dominant, 3 TRUNCATED-PIN receipts named, non-SHA identifiers named
+
+### ✅ t0625-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** CR-ACCEPT contract v2 CANDIDATE spec: numbered subchecks, second-seat appendix, mechanical v1/v2 check
+
+**Evidence:** BACKLOG SWEEP (Oct 13). VERIFIED first-hand: v2 contract sha256 6327b78a73db6987865680b6e99773cbd8bde858015dd8b72f2471e4a8801fc1 EXACT, mapping JSON c0b75a9266ea8897bcfe373301c2618390f8e58918bdac6d847544a625fd77e8 EXACT, check script 7e5c53f3f561cc6b4eaca3b9903e6fc6799efa72c51dcd88d113b56088c7f946 EXACT. Score 9.0 (GOOD, ONE MORE PASS), matching th
 
 ### ✅ t0625 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
