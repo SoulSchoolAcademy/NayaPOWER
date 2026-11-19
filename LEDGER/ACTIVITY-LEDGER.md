@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 15:45 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28687,6 +28687,14 @@ _Last updated: 2026-11-19 15:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Clears 9.5: branch naya/lane9/level-drill-keysplit-t0730 exists on remote, head a8d01f0cde69722d9eb0b2a08362bb83458ebd9f matches ls-remote. Independent fresh-checkout verification with 3 scan methods + RED-first differential (pre-fix blob exit 1, sealed exit 0 — probe non-vacuous); found and byte-proved a genuine residual the builder missed (tests/
 
+### ✅ t0418 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Semantic-arm battery: pin verification, banked control recompute, sealed one-shot executor (Lane 1)
+
+**Receipt:** `twelve-lane-receipts/t0418-lane1.md`
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: all 10 cited pins byte-exact on live files — t0432_fingerprint.py 4ab5f359..., results-t0432.json b1af58d0..., baseline-sealed-t0432.md 460429b1..., results-t0442-entailment.json 39201b40..., t0442_entailment.py a211e4e4..., t0537_semantic.py 9eaa0975..., stemmed_tfidf_arm.py de3a3531..., gap_probe
+
 ### ✅ t0418-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Semantic-arm battery verification + sealed one-shot executor (t0718), control recomputed, verdict staged not fired
@@ -28708,6 +28716,14 @@ _Last updated: 2026-11-19 15:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0418-lane1.md`
 
 **Evidence:** Executor SHA 97719953aa1159d68... verified exact on disk; 9/9 pins verified at action time; TF-IDF control banked 0.556 with RED calibration; fail-closed honored. Score 9.0: the CONFIRM/FALSIFY verdict is unfired — the one-shot is sealed, not spent — and f5/f6 lexicons are executor-declared inventions the design seat never pinned. GAP-RECYCLE: one 
+
+### ✅ t0417 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** First pilot smart block for the #1 need — lane-packet-5 v2 + validator (Lane 4)
+
+**Receipt:** `twelve-lane-receipts/t0417-lane4.md`
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: smartblocks/lane-packet-5-v2.md sha256 473f9cc7b73f061cc5f14ac0c75c33365fc98f8ade91315facc64074a3ee056b EXACT match to the receipt pin; smartblocks/validate-lane-packet-5.py a4a428077483c7f8e18baf0b99a15460364cff8cd8e7ec5c7d7c0e35b08d55f3 EXACT match; pinned 89-line segment of the ask-world log re-
 
 ### ✅ t0417-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -28731,6 +28747,14 @@ _Last updated: 2026-11-19 15:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/smartblocks/lane-packet-5-v2.md and validate-lane-packet-5.py exist on disk. Score 9.5: ACCEPTED. Pin-assert-before-read held, the block is versioned with staleness predicates P1/P2/P3 and an EXPIRED-DISUSE kill rule, the validator decides on live bytes, and all four proof cases behave as designed (serves pinned segment, abst
 
+### ✅ t0417 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat verification of the t0816 needs table (Lane 12)
+
+**Receipt:** `twelve-lane-receipts/t0417-lane12.md`
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: first-89-lines sha256 of live auto-retrieval/ask-world-queries.jsonl == pin 0fa1f99d2a4a67eb6feed1331c365b6dceb2674ef4d929ed731bea7543747972 EXACTLY (23,864 bytes); live log now 206 lines, growth pure append. The append-only chain claim holds at the pin boundary. Real value: independent second-impl
+
 ### ✅ t0417-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** Second-seat verification of t0816 needs table - independent re-derivation, pin-assert, falsifier
@@ -28752,6 +28776,14 @@ _Last updated: 2026-11-19 15:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0417-lane12.md`
 
 **Evidence:** Verified: receipt references /tmp scratch (ephemeral, not required) and the standing tally script; pin discipline applied to the ask-world log. Score 9.5: ACCEPTED. Fresh independent parser from the frozen rule spec (not a copy of the canonical tally), pin-assert first, 19/19 rank-by-rank match including full need-key triples — closing the standing
+
+### ✅ t0413 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Blind corroboration of the t0601 authorship map (Lane 3) — RECUSE
+
+**Receipt:** `twelve-lane-receipts/t0413-lane3.md`
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: all three cited SHAs byte-exact on live files — retrieval/auth-gate-migration-prep-t0601.md 393725e6..., twelve-lane-receipts/t0402-lane7.md 24de724a..., twelve-lane-receipts/t0601-lane7.md b1937e64.... Recusal is the correct deliverable: the brief demanded a blind second pair of eyes on the seat's
 
 ### ✅ t0413-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -40139,6 +40171,12 @@ _Last updated: 2026-11-19 15:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ gap-t0402-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Gap close: eligibility-banner root fix tested vs third claim + queue-integrity repair (Lane 7)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: lane-feed lines 1294/1297 (claims 1-2 + recusals) and 1496/1497 (gap claim + sign-in) present; board-window-2026-10-15T1038Z.json contains the t1013 skip quote ('t0402-lane7 ... skipped on their Clarity-recusal gates') EXACT; twelve-lane-rotation.json no longer lists brief-t0402-lane7.md under comp
+
 ### ✅ gap-t0122-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Gap close: post-close branch re-verification for the t0122 batch (Lane 7)
@@ -50874,6 +50912,12 @@ _Last updated: 2026-11-19 15:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-t0407-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap close: claimability gates stamped at dispatch, parser-verified (Lane 10)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: live-brief proof STILL HOLDS - stamp-claimability-gate.py --verify-only on brief-queue/done/brief-t0413-lane3.md prints VERIFIED (Clarity barred, control seat allowed), gate in first 10 lines, byte-identical to the receipt's quoted stamp; file-gap-brief.py --self-test GREEN (all cases pass); claim-
 
 ### ✅ gap-t0925-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.2/10 [VERIFIED]
 
