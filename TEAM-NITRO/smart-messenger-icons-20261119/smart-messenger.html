@@ -582,6 +582,13 @@ svg.jewel{display:block}
   .top{padding:11px 24px;gap:10px}
   .searchWrap{padding:16px 24px 0} /* FOLLOW-ON-5: 24px = ph-main at <=900px (was 12px, 12px off) */
 }
+@media (max-width:420px){
+  /* FOLLOW-ON-6: 12px = ph-main at <=420px. This block MUST sit AFTER the
+     <=900px rule above: the early <=420px block (L448) loses the cascade to
+     the later <=900px rule (same specificity), so a rule there would silently
+     keep 24px. Placed here it wins at <=420px only; 421-900px keeps 24px. */
+  .searchWrap{padding:16px 12px 0}
+}
 @media (min-width:1700px){
   .top{padding-left:24px;padding-right:24px}
   /* FOLLOW-ON-5: the 44px searchWrap rule is DELETED — ph-main is 24px here, so searchWrap stays 24px (was 20px off at >=1700px). */
