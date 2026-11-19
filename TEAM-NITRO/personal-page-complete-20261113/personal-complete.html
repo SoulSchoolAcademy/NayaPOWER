@@ -19303,13 +19303,7 @@ window.NayaSmartBar = {
 })();
 </script>
 <!-- /PERSONAL MIRROR Hub feed view -->
-<aside id="pcRail" class="os-view on" data-os-view="home" aria-label="People">
-  <div class="pc-rail-head">
-  <div class="pc-rail-tools"><input id="pcRailSearch" type="search" placeholder="Search people" aria-label="Search people" autocomplete="off"><button id="pcRailClose" type="button" aria-label="Close the people rail" title="Close the people rail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  </div>
-  <div class="pc-rail-list" id="pcRailList"></div>
-  <p class="pc-rail-foot" data-mw-tr="rail">One more seat is held open for the next live citizen.</p>
-</aside>
+<!-- MIRROR FIX 3 (2026-11-19): the far-right People rail is gone — it painted the same 13 people a second time with a second DM/Mail set (see defect 2); the Hub sidebar #hubPeopleList is the one set. -->
 <div id="pcRailPopBack" hidden></div>
 <div id="pcRailPop" class="ph-intro-board" role="dialog" aria-modal="true" aria-label="About" hidden></div>
 <style id="pc-profile-fullpage-20261117">
@@ -42447,23 +42441,14 @@ function pcCardWithConnect(p, live){
   return pcCard(p, live);
 }
 
-window.pcRenderRailForTab=function(tab){
-  var list=document.getElementById('pcRailList'); if(!list) return;
-  if(typeof pcHideRailPop==='function'){ try{ pcHideRailPop(); }catch(e){} }
-  window.PC_RAIL_TAB=tab||'personal';
-  var live=window.PC_RAIL_LIVE||[];
-  var standing=pcRailPeopleFor(window.PC_RAIL_TAB);
-  var q=(window.PC_RAIL_Q||'').toLowerCase();
-  if(q){
-    var has=function(p){ return ((p.alias||'')+' '+((p.nut||''))).toLowerCase().indexOf(q)>=0; };
-    live=live.filter(has); standing=standing.filter(has);
-  }
-  var html='';
-  if(live.length) html+='<p class="pc-rail-sec">'+pcTr('Live matches')+'</p>'+live.map(function(p){ return pcCardWithConnect(p, true); }).join('');
-  if(standing.length) html+=standing.map(function(p){ return pcCardWithConnect(p, false); }).join(''); /* HEADER-V2 2026-11-14: no Standing section header. */
-  if(!live.length && !standing.length) html+='<p class="pc-rail-note">'+pcTr('No one matches that search.')+'</p>';
-  list.innerHTML=html;
-};
+// MIRROR FIX 3 (2026-11-19) — the suffix render into #pcRailList is GONE: it
+// painted the same 13 people a second time, with a second DM/Mail set, while
+// the transplanted Hub render paints them once into #hubPeopleList (the right
+// sidebar, lens-driven). The Hub has no #pcRail at all — one set only. The
+// transplanted window.pcRenderRailForTab (above, into #hubPeopleList) governs
+// every call site now; the rail's search/close/popover/lit/paint code below
+// guards on the missing #pcRail and no-ops. Shawn: "double instant Messenger
+// — you just do the one."
 window.pcRenderRail=function(live, standing){
   if(live||standing){ window.PC_RAIL_LIVE=live||window.PC_RAIL_LIVE; }
   window.pcRenderRailForTab(window.PC_RAIL_TAB||'personal');
@@ -47562,7 +47547,7 @@ body:not(.is-owner) .of-media-paste{display:none}
 .hero-close:hover{transform:translateY(-2px);border-color:#fff;box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 0 14px -2px var(--room-accent,#8e24aa),0 10px 22px rgba(0,0,0,.55);}
 .hero-close:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.55);}
 .hero-restore{display:none;}
-.hero-restore.show{position:fixed;top:76px;right:12px;z-index:70;display:flex;align-items:center;justify-content:center;gap:8px;background:#050607;border:1.5px solid #d4a017;color:#fff;font-size:17px;font-weight:700;font-family:var(--font);padding:6px 12px;border-radius:999px;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease;margin:0;width:max-content;max-width:calc(100% - 24px);}
+.hero-restore.show{position:fixed;right:12px;z-index:70;display:flex;align-items:center;justify-content:center;gap:8px;background:#050607;border:1.5px solid #d4a017;color:#fff;font-size:17px;font-weight:700;font-family:var(--font);padding:6px 12px;border-radius:999px;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:transform .18s ease,box-shadow .18s ease;margin:0;width:max-content;max-width:calc(100% - 24px);} /* MIRROR FIX 3 (2026-11-19): top:76px removed — the Hub rule (top:auto, bottom:96px, raised to bottom:144px below) governs now, so the pill can never sit in the sticky lens row's band again. */
 .hero-restore.show:hover{transform:translateY(-2px);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 0 14px -2px #d4a017,0 10px 22px rgba(0,0,0,.55);}
 .hero-restore.show:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4),0 4px 10px rgba(0,0,0,.55);}
 .main-show .hero.hero-folded ~ .searchWrap{padding-top:0;}
@@ -51400,13 +51385,12 @@ div[data-block="cover"] > .ph-actions-row{padding-left:0!important;padding-right
 }
 </style>
 <style id="personal-fix2-20261119">
-/* FIX2-1 (item 1) — the "Up Welcome" pill was position:fixed at top:76/right:12
-   and floated over the People rail's top row whenever a rail row scrolled
-   under it (pill x 1792-1908 vs rail buttons x 1774-1887 at 1920; same at
-   390/635). It is now position:sticky inside its own mount (the feed wrap it
-   is appended to), right-aligned by margin-left:auto: it can never leave the
-   feed column, so it can never cover a rail button at any width. Same pill. */
-.hero-restore.show{position:sticky;top:76px;right:auto;left:auto;z-index:70;margin-left:auto;}
+/* MIRROR FIX 3 (2026-11-19) — the FIX2-1 sticky rule is GONE: position:sticky
+   at top:76px put the restore pill INSIDE the transplanted sticky lens row
+   (top:71px, z-index 29) — the pill (z-index 70) painted over the WORLD pill
+   at the right edge, only "WO" visible, in all three lens states. The Hub rule
+   below (fixed at the bottom, bottom:144px) governs now, so the pill can never
+   meet the lens row again; the rail-top-row cover the sticky rule cured is moot at the bottom. Same pill. */
 /* FIX2-2 (item 2) — an empty video slot is a 16:9 black void (21 slots, 0 with
    media). Hide the frame until media is attached; the paste affordance
    (.of-media-paste, a sibling) stays, and when a video is pasted ofMediaShow
