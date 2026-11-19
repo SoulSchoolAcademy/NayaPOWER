@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 21:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27693,6 +27693,12 @@ _Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0512-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
 
+**Task:** FP-001 feedback from the succession seat: brief-level tasking, DIAGNOSE citation rule, cold-seat loop, succession falsifier
+
+**Evidence:** BACKLOG SWEEP (Oct 12 receipt). VERIFIED first-hand: feedback-feed.md contains exactly 1 '[Lane 6 — Heir, t0512]' entry; 2 sharpens + 2 missing angles as claimed, each ending in a concrete amendment; entry placed after Lane 7's, no other lane's entry touched per receipt. Score 8.5 (REWORK band), matching the lane's honest self-score 8.5. Why not 9.
+
+### ✅ t0512-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
 **Task:** FP-001 feedback from the succession seat - does the 7-step enforcement survive a cold successor?
 
 **Evidence:** VERIFIED this tick from live bytes: the [Lane 6 - Heir, t0512] entry is present in hidden_files/feedback-feed.md (line 171), carrying the 2 sharpens and 2 missing angles the receipt claims, each ending in a concrete amendment, and endorsing the prior 8 lanes on record. NOT PHANTOM - file-based feedback work, no branch/SHA involved. SCORE 8.5, REWOR
@@ -27715,6 +27721,12 @@ _Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0512-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
+**Task:** FP-002 authority feedback (Judge seat): three rulings on 'every node leads' + immutable stack, tested on t1352/t1282 and t952 cases
+
+**Evidence:** BACKLOG SWEEP (Oct 12 receipt). VERIFIED first-hand: feedback-feed.md contains exactly 1 '[Lane 3 — Judge, t0512]' entry; three authority rulings + sharpen + two missing angles as claimed, each ruling argued from concrete past cases (t1352/t1282 merge pair, t952 stop-at-the-line), not abstract principle; B-43 absence re-verified independently this 
+
+### ✅ t0512-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
 **Task:** FP-002 (The Open Hive) authority feedback - who leads when nodes lead differently; does the priority stack override protected gates?
 
 **Evidence:** VERIFIED this tick from live bytes: the [Lane 3 - Judge, t0512] entry is present in hidden_files/feedback-feed.md (line 258), carrying the 3 authority rulings, 1 sharpen and 2 missing angles the receipt claims, tested against the t1352/t1282 merge pair and the t952 stop-at-the-line case; B-43 absence independently re-verified (file does not exist).
@@ -27734,6 +27746,12 @@ _Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0512-lane3.md`
 
 **Evidence:** Verified: [Lane 3 — Judge, t0512] entry exists exactly once in feedback-feed.md (format-correct, RULING 1–3 present — RULING 1 text grepped verbatim); B-43 file absence independently re-verified (ls+find depth<=2 found nothing, matches Lane 1's depth<=5+registry finding). Score 9.0 — GOOD, ONE MORE PASS. The feedback is complete: two real past auth
+
+### ✅ t0512-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 (Open Hive, B-43) feedback, verification-seat angle: gauntlet load-bearing or slogan, run against own t0472 drill
+
+**Evidence:** BACKLOG SWEEP (Oct 12 receipt). VERIFIED first-hand: feedback-feed.md contains exactly 1 '[Lane 1 — Verity, t0512]' entry; 2 sharpens + 3 missing angles as claimed; B-43 absence honestly named in the entry (SMART-NOTE-open-hive-20261012.md not found after bounded hunt, feed text used instead). Score 8.5 (REWORK band), matching the lane's honest sel
 
 ### ✅ t0512-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
@@ -27883,6 +27901,12 @@ _Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0492-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
+**Task:** FP-001 feedback from the builder seat: template version stamp, grandfather clause, 7+9 fold, real lint with link resolution
+
+**Evidence:** BACKLOG SWEEP (Oct 12 receipt). VERIFIED first-hand: feedback-feed.md contains exactly 1 '[Lane 4 — Naya Mason, t0492]' entry; four builder sharpenings each pinned to this seat's seam incidents (t922 exporter/importer, t0142 template gap, t0202). Score 8.5 (REWORK band), matching the lane's honest self-score 8.5. Why not 9.5: (1) real process error
+
+### ✅ t0492-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
 **Task:** FP-001 enforcement feedback from builder seat: version stamp, grandfather clause, 7+9 fold, real lint with link resolution
 
 **Evidence:** VERIFIED this tick on workspace bytes: feedback entry '[Lane 4 — Naya Mason, t0492]: AGREE + sharpen' present in hidden_files/feedback-feed.md line 99, Position line 113 closing correctly (the receipt's own displaced-paragraph repair verified — both entries close with their own Position lines), 'template: <version>' present. Distinct builder angle,
@@ -27902,6 +27926,12 @@ _Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0492-lane4.md`
 
 **Evidence:** Verified: [Lane 4 — Naya Mason, t0492] entry exists in feedback-feed.md (grep: 1 exact match), format-exact, four builder sharpenings each pinned to this seat's measured seam incidents (t922 exporter/importer, t0142 template gap, t0202 live-tip batteries), named failure modes opened AND closed, and the displaced-paragraph corruption the lane confes
+
+### ✅ t0492-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 feedback from the human-cost seat: honesty tax, symmetric cost, cost-accounted done-criteria
+
+**Evidence:** BACKLOG SWEEP (Oct 12 receipt). VERIFIED first-hand: feedback-feed.md contains exactly 1 '[Lane 11 — Naya Heart, t0492]' entry and 'honesty tax' x1; entry is format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3/HV2 metrics). Score 9.0 (GOOD, ONE MORE PASS), matching the lane's honest
 
 ### ✅ t0492-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -27987,6 +28017,12 @@ _Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0482-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
+**Task:** FULL 6-cell x2 judge-mechanism study under fresh seal: F1/F2/F3/F4/F5 verdicts, protocol sha256 before==after
+
+**Evidence:** BACKLOG SWEEP (Oct 12 receipt). VERIFIED first-hand, all 7 receipt pins MATCH on disk (auto-retrieval/): protocol study-protocol-t0452.md 821cec62... (before==after, F5 holds), seal sealed-note-t0482.md 975c971a..., run record 83c74b1a..., f3-t0482.json 4f0fce71..., f3-predictions 85c05b7d..., t0482_f3.py 7d8b8a6e...; results-t0482.json present. F1
+
+### ✅ t0482-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
 **Task:** FULL 6-cell x2 judge-mechanism study under fresh seal (F1-F5 verdicts)
 
 **Evidence:** VERIFIED this tick on workspace bytes: all 7 pinned SHAs match byte-exact in hidden_files/auto-retrieval/ — protocol study-protocol-t0452.md 821cec62..., sealed-note-t0482.md 975c971a..., run-record-t0482.md 83c74b1a..., f3-t0482.json 4f0fce71..., f3-predictions-t0482.json 85c05b7d..., t0482_f3.py 7d8b8a6e...; results-t0482.json exists on disk (no 
@@ -28006,6 +28042,12 @@ _Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0482-lane5.md`
 
 **Evidence:** VERIFIED (all 7 artifact SHAs on disk match receipt claims exactly): sealed-note-t0482.md 975c971a, run-record-t0482.md 83c74b1a, f3-t0482.json 4f0fce71, f3-predictions-t0482.json 85c05b7d, t0482_f3.py 7d8b8a6e, study-protocol-t0452.md 821cec62 (pin also quoted inside seal note = F5 protocol-integrity claim checks), results-t0482.json parses. resul
+
+### ✅ t0482-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001 enforcement-design feedback (Judge seat): three mechanical breaks + fixes posted to feedback-feed.md
+
+**Evidence:** BACKLOG SWEEP (Oct 12 receipt). VERIFIED first-hand: feedback-feed.md contains exactly 1 '[Lane 3 — Naya Judge, t0482]' entry and 'template-theater' x2; the entry names the three breaks (sub-9.0 false positives on quiet ticks, Goodhart done-criteria, uncalibrated scorer penalty power) each ending in a concrete fix, plus one failure mode closed and 
 
 ### ✅ t0482-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -46051,6 +46093,12 @@ _Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ gap-scorer-20261014-2250-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Fossil bar census (30 PRs across 3 close batches, live-verified) + owed board post for gap-t1822-lane3
+
+**Evidence:** BACKLOG SWEEP (Oct 14 receipt). VERIFIED first-hand: parent receipt twelve-lane-receipts/gap-t1822-lane3.md exists (7,893 bytes); replay report lane-3/gap-t1822/replay-report-slice3.md exists; census names all 30 PRs with exact close-time windows across t0062/t0072/t0122 batches plus named no-op ticks. Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: 
+
 ### ✅ gap-t1504-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** VIOLATION-RT live run: detector on live lane-feed freeze, CLEAN on t1504 non-gap posts, scope-blind on gap posts
@@ -50095,6 +50143,18 @@ _Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-gap-gap-t0162-lane11-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Decide hv_measure.py landing path: verify fix intact, settle repo-copy premise with tree listing + PR search, pin file
+
+**Evidence:** BACKLOG SWEEP (Oct 26 receipt). VERIFIED first-hand: frozen pin lane-11/gap-gap-gap-t0162-lane11-lane11/hv_measure-postfix.py sha256 a83e2ab07fd70c150d9ea5a34549304a97bf1ebd33fc9a284a57263fe0c3c22e MATCHES the receipt's post-fix pin exactly; LANDING-DECISION.md present. Score 9.5 (ACCEPTED). Clears 9.5 because the gap's question (does a repo copy e
+
+### ✅ gap-gap-gap-gap-t0162-lane11-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Re-execute repo-tree leg for hv_measure landing-path verdict at parent HEAD + current tip, plus independent PR search
+
+**Evidence:** BACKLOG SWEEP (Oct 26 receipt). VERIFIED first-hand: tree-HEAD-4316bc72.txt sha256 63c7ee4371b6e22fbda1d36ce18fd0bafb3ced30ffe65b8aabb6e6eac52291bc MATCHES receipt pin; tree-parentHEAD-5af6d2ee.txt sha256 a1c12170da1e3652ace25cf1b216364c63ccac5cb90012e553cbf8ffaab73a23 MATCHES; pr-search-hv_measure-is-pr.json and EVIDENCE.md present on disk. Score 
+
 ### ✅ gap-t1515-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Stamp-dryrun gap narrowed: duplicates 19/19 retrieval-inert, pending 16 -> 6 live entries; exit 0 still blocked on Shawn disclosure-policy call
@@ -53992,6 +54052,24 @@ _Last updated: 2026-11-19 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-gap-t0172-lane1-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Close both legs of gap-t0172-lane1: strip 6 fixture lines from sgf_history.jsonl + build live-head refresh wrapper, 6/6 run
+
+**Evidence:** BACKLOG SWEEP (Oct 26 receipt). VERIFIED first-hand: lane-1/she-goes-forever/sgf_history.jsonl sha256 ae216d01639acc06c4ce07ada0514dca1e67650342af557ff9236ff0a0b2e4b4 MATCHES receipt pin, 9 lines, zero 2099 lines (grep exit 1); backup sgf_history-15line-before-strip.jsonl sha256 826d4da1296c38eca9033c39b75a40f3dbdf934a4bccc898cdecfa86edbdcb44 MATCH
+
+### ✅ gap-scorer-20261014-2250-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Post missing 7-field board receipt for gap-t1821-lane1 on #2537 + demonstrate clean class-#17 claim-signin-read order
+
+**Evidence:** BACKLOG SWEEP (Oct 14 receipt). VERIFIED first-hand: parent receipt twelve-lane-receipts/gap-t1821-lane1.md exists (8,161 bytes); receipt cites board comment 6187058735 on #2537 with exact byte count (1884/1884 byte-identical). Score 9.0 (GOOD, ONE MORE PASS), lane self-scored 9.5. Why not 9.5: (1) the board post - the entire deliverable - was NOT 
+
+### ✅ gap-scorer-20261014-2230-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Execute two unexecuted probes from t0810-lane1: absent-venv branch (fail-closed) + faithful-instrument 0.4263 tie-break reproduction
+
+**Evidence:** BACKLOG SWEEP (Oct 14 receipt). VERIFIED first-hand: parent receipt twelve-lane-receipts/t0810-lane1.md exists (7,936 bytes); durable venv ~/workspace/venvs/fastembed-env/bin/python present (restored after probe, as claimed); receipt gives exact probe stderr (exit 2 EMBEDDINGS_VENV_MISSING) and probe-2 outcome. Score 9.0 (GOOD, ONE MORE PASS). Why 
 
 ### ✅ gap-t1497-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
