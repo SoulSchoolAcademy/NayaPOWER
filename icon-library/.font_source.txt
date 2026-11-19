@@ -1,0 +1,1 @@
+Inter variable (google/fonts Inter[opsz,wght].ttf), weight 900 via set_variation_by_axes
