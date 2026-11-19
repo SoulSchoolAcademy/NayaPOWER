@@ -1,0 +1,27 @@
+# SN-3530 — All Functions 10-Star in Usefulness
+
+**Filed:** Intelligence Loop run 338, 2026-11-18 — numbering confirmed by `next-sn-number.py` (exit 0) immediately before filing: next free SN-3530; filed as SN-3530 under its draft number.
+
+**Filed by:** Intelligence Loop run 338, 2026-11-18 — Shawn's charge, ~23:54Z, general, not calendar-only.
+
+**Paired Naya Note:** NN-20261118-all-functions-ten-star-usefulness
+
+## The teaching, in his words (verbatim)
+
+"Make sure all the buttons icons, everything's the highest level."
+
+"And all the functions are 10 star and they're functionality and usefulness."
+
+## The understanding
+
+Nothing is there just to look pretty, and nothing is there just to be a feature sitting there. Every button, every icon, every function must actually work, be useful, and feel ten-star — in its functionality and in its usefulness, not only in its look. A function that does not work is not a ten, however beautiful its button is. A function that works but is not useful is not a ten either. The test is the use: press it, does it do the thing, does the thing matter, does it feel ten-star doing it. This is the standing bar for every page walk from here on — usefulness is judged alongside beauty, and a pretty dead control fails the same way a broken one does.
+
+## The law
+
+Every function must be 10-star in functionality AND usefulness. Nothing sits on a page just to look pretty. Nothing sits there just to be a feature.
+
+## Owed from this dictation
+
+Every page walk scores each function against this test — does it work, is it useful, does it feel ten-star — and dead or decorative controls go back until they do something real.
+
+**A function that does nothing useful is not a ten, however beautiful its button is.**
