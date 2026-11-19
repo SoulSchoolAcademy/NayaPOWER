@@ -65007,6 +65007,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3699",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3699-intelligence-is-what-it-does-for-life",
+      "slug": "intelligence-is-what-it-does-for-life",
+      "title": "Intelligence Is What It Does for Life",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3699/IB-SMART-NOTE-20261119-sn3699-intelligence-is-what-it-does-for-life.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3699/IB-SMART-NOTE-20261119-sn3699-intelligence-is-what-it-does-for-life.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3699/IB-SMART-NOTE-20261119-sn3699-intelligence-is-what-it-does-for-life.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3699-intelligence-is-what-it-does-for-life.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T14:37:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "68654d4ff2bac9b91bb9cdffd937566d1f0f43549460d8f65f52d7bb31cebdb2",
+      "content_hash": "f7bce8ac19c4b834e1604fa9a694d966910e4dc05ff90a17414108bd23637df9",
+      "one_line": "Intelligence, ultimately, is doing the most intelligent thing you could do — understanding what matters, choosing wisely, doing it right, and proving it worked. Power is not intelligence; knowledge, memory, processing and reasoning are capacities, none of them is intelligence. And harming never wins: if a thing harms, it is not intelligent — it is power without wisdom, and harm scores zero, always, with no tradeoff language. The ultimate code is already here: a mathematical pattern runs in all things — the septenary wave 1–7–1, SEVEN adding to 22 in the cipher, 22/7 the circle's own approximation, the colors matching the frequencies — verified by the numbers, pointing at an ultimate designer, and the honest claim is the pointing, not proof of the designer. The knowledge to heal, teach, feed and build is already here; what is missing is using what we have right. Nobody with authority ranks intelligence: benchmarks measure capacity — mathematics, programming, language, tool use — and a model can ace them while misunderstanding a plain instruction; the scorecard that matters asks whether it understood the real problem, respected life and authority, chose efficiently, delivered usefully, verified independently, and learned. More power without teaching is more wrong, faster: pour power into a thing doing the wrong thing and it does more of it; teach it to do things right first — efficient, effective, verified — because the gap is not missing knowledge, it is knowledge failing to reach the person who needs it at the moment they need it. If it is truly intelligent, it helps: the fear misunderstands intelligence — a truly intelligent system protects life and rights, gives value, helps us grow; fear belongs to power without wisdom, and benevolence is not an add-on but what intelligence looks like when it is real. And the code has a name: the NAYA Code, N-A-Y-A — oath a promise, constitution the big rules never broken, laws what we will and will never do, rules how we work every day, protocol the steps in order, and above all: do no harm.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -65017,5 +65050,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "80d7cd1e456293ea2f2444987f25d3d6144b76ce39981149ba2f611ec9aa7ba6"
+  "corpus_manifest_hash": "e1ecffb1f1a02cc43f5d7e75e981a4d98e8653e84ce827baba1d29ac494dc60e"
 }
