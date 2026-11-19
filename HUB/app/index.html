@@ -4369,10 +4369,15 @@ window.NayaContent = {
     var ctl=null, timer=null;
     try{ ctl=new AbortController(); }catch(e){}
     if(ctl){ timer=setTimeout(function(){ try{ ctl.abort(); }catch(e){} }, 15000); }
-    var p=ctl?fetch('/feed-live.json',{signal:ctl.signal}):fetch('/feed-live.json');
+    var LIVE_URLS=['/feed-live.json','https://nayanet.app/feed-live.json',
+      'https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/hub/personal-sidebar-followup9-20261119/HUB/app/feed-live.json'];
+    try{ var _rm=location.search.match(/[?&]ref=([^&]+)/); if(_rm) LIVE_URLS.push(location.origin+'/?file=HUB/app/feed-live.json&ref='+_rm[1]); }catch(e){}
+    var _u=LIVE_URLS[Math.min(tries-1, LIVE_URLS.length-1)];
+    var p=ctl?fetch(_u,{signal:ctl.signal}):fetch(_u);
     p.then(function(r){ if(!r.ok) throw new Error('live fetch '+r.status); return r.json(); }).then(function(d){
       if(timer) clearTimeout(timer);
       if(!d || !Array.isArray(d.notes) || !d.notes.length) throw new Error('live feed empty');
+      d.notes.forEach(function(n){ if(!n.topics || !n.topics.length){ var _t=n.category||n.topic; n.topics=_t?[_t]:[]; } });
       window.NayaFeedIntelligence = { notes: d.notes, ref: 'live-registry' };
       try {
         if (window.NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }
@@ -4380,7 +4385,7 @@ window.NayaContent = {
       } catch(e){}
     }).catch(function(){
       if(timer) clearTimeout(timer);
-      if(tries<3){ setTimeout(tryLive, 5000); }
+      if(tries<LIVE_URLS.length){ setTimeout(tryLive, 1000); }
     });
   }
   tryLive();
@@ -6421,7 +6426,8 @@ function HubView(params) {
   const GEMATRIA_COLOR = { 1:'#ff5e6c', 2:'#ff9a5a', 3:'#ffbf3d', 4:'#2fe89e', 5:'#29b6f6', 6:'#6675ff', 7:'#a06bff' };
   function tabColor(key) {
     const first = String(key || '').trim().charAt(0).toUpperCase();
-    return GEMATRIA_COLOR[GEMATRIA_NUM[first] || 7];
+    var DEEP_TAB_COLOR={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa',8:'#6d28d9',9:'#a21caf'};
+    return DEEP_TAB_COLOR[GEMATRIA_NUM[first] || 7];
   }
   function sortedTabs(tabs) {
     return tabs.slice().sort((a, b) =>
@@ -6471,7 +6477,7 @@ function HubView(params) {
     { slug: 'ambassador', label: 'Ambassador', keys: ['ambassador', 'invite the world', 'paid every wednesday', 'every wednesday', 'invite people', 'affiliate'] }
   ];
   function intelClusterOf(note) {
-    const hay = (((note.topics || []).join(' ')) + ' ' + (note.title || '') + ' ' + String(note.subtitle || '').slice(0, 1200)).toLowerCase();
+    const hay = (((note.topics || []).join(' ')) + ' ' + (note.category || '') + ' ' + (note.title || '') + ' ' + String(note.subtitle || '').slice(0, 1200)).toLowerCase();
     let best = null, bestScore = 0;
     for (const c of INTEL_CLUSTERS) {
       let s = 0;
@@ -6515,6 +6521,26 @@ function HubView(params) {
     if (!tabs.some(t => t.id === activeSmartTab)) activeSmartTab = 'all';
 
     const bar = el('div', 'smart-tabs');
+    /* ROUND 9 (item 5a): the strip scrolls itself, slowly — 1px per 50ms is
+       20px a second, so a full traverse takes about 100 seconds, inside the
+       Laws 60-180s ambient band and never faster than 12s. It turns back at
+       each end instead of jumping. A hand on the strip pauses it; the
+       citizen's own scroll or tap pauses it for 8 seconds. One interval
+       only — the old one is cleared on every re-render. */
+    try{
+      if(window._stMarquee) clearInterval(window._stMarquee);
+      var _mDir=1, _mPauseUntil=0;
+      bar.addEventListener('pointerenter', function(){ _mPauseUntil=Date.now()+8000; });
+      bar.addEventListener('pointerdown', function(){ _mPauseUntil=Date.now()+8000; });
+      bar.addEventListener('wheel', function(){ _mPauseUntil=Date.now()+8000; }, {passive:true});
+      bar.addEventListener('focusin', function(){ _mPauseUntil=Date.now()+8000; });
+      window._stMarquee=setInterval(function(){
+        if(document.hidden || Date.now()<_mPauseUntil) return;
+        var max=bar.scrollWidth-bar.clientWidth; if(max<=0) return;
+        bar.scrollLeft+=_mDir;
+        if(bar.scrollLeft>=max) _mDir=-1; else if(bar.scrollLeft<=0) _mDir=1;
+      }, 50);
+    }catch(e){}
     /* FIX 2026-11-16 (item A): the old "gentle auto-scroll" interval moved
        bar.scrollLeft 1px every 30ms at rest, so the strip drifted right
        after load and after every interaction and the first tab ("All") sat
@@ -7361,8 +7387,8 @@ window.NayaNotif = window.NayaNotif || {
      Until the harvest lands, the honest empty state shows and the section
      is the one open item. ——— */
   const peopleSec = el('section', 'rail-people');
-  peopleSec.setAttribute('aria-label', 'Your people — message them');
-  peopleSec.innerHTML = '<div class="rail-people-head"><b>YOUR PEOPLE</b></div><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
+  peopleSec.setAttribute('aria-label', 'Connect with Like Minds');
+  peopleSec.innerHTML = '<div class="rail-people-head"><b>Connect with Like Minds</b></div><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
   /* Feed-following: the people shown are the feed's people. The lens is read
      live from the active tab — the same three-way read the menu control uses
      (Personal / Activity / Collective) — and the section re-renders whenever
@@ -7487,15 +7513,19 @@ function pcCardWithConnect(p, live){
      same actions; icon-only 26px circles, names in aria-label + title. */
   var acts=[['chat','\u270e','#0f52ba','DM'],['mail','\u2709','#d4a017','Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
   var eyeBtn='<button type="button" class="pc-act-btn" data-pc-info="'+esc(p.alias)+'" style="--ac:#ffffff" aria-label="About '+esc(p.alias)+'" title="About '+esc(p.alias)+'"><b>i</b></button>';
-  var btns=eyeBtn; /* ROUND 5: EYE first, then DM, Mail, Audio, Video — five icon-only circles in one row. */
+  var _actsBtns=''; /* ROUND 9 (item 8): the four contact buttons ride in their
+     own row, DM first, then Mail, Audio, Video — starting aligned with the
+     first letter of the alias. The eye stays first in the row, directly
+     under the initial orb. */
   for(var i=0;i<acts.length;i++){
-    btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
+    _actsBtns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
   }
   var at=base.lastIndexOf('</div></article>');
   if(at<0) return base;
   /* ROUND 5 2026-11-19 (checker item 2): top line keeps ball + name + % locked
      top-right; line 2 is FIVE icon-only 26px circles in ONE row — EYE first,
      then DM, Mail, Audio, Video — 5x26 + 4x8 = 162px, inside the 241px card content box (card clientWidth 257 - padding 16; the 251px figure omitted the 10px scrollbar lane), 79px spare. */
+  var btns=eyeBtn+'<div class="pc-card-acts4">'+_actsBtns+'</div>'; /* ROUND 9 (item 8): eye, then the four-button row. */
   return base.slice(0, at)+pctHtml+'</div><div class="pc-card-acts">'+btns+'</div>'+base.slice(at+6);
 }
 
@@ -14188,5 +14218,92 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide { bottom: 200px; }
    1920 collapsed -> circle right 12px; 1200 drawer-open -> right 304px,
    clear of the people cards; 390 drawer-open -> display none. */
 </style>
+<style id="hub-fix9-20261119">
+/* ——— FOLLOW-ON ROUND 9 20261119 — items 1-8 ———
+   This block sits after every earlier style block, so its rules win ties
+   against the older rules. Nothing in it touches the frame, the bottom bar,
+   or the mode pills' treatment. */
+/* (1) 390 MODE PILLS READ WHOLE. The eye measured COLLECTIVE -27px,
+   PERSONAL -19px, ACTIVITY -14px at 390: the 3-column row gives each pill
+   ~113px while the 17px label + .08em tracking + 10px side padding needs up
+   to 140px. The fix takes the slack out of the chrome, never the words:
+   side padding 10px -> 2px, tracking .08em -> 0, gap 12px -> 8px. That frees
+   ~30px per pill at the full 17px size — the Laws 25/19/17 scale stands. */
+@media (max-width:640px){
+  .lens-tabs{gap:8px;}
+  .lens-tab{padding:13px 2px;}
+  .lens-tab b{letter-spacing:0;}
+}
+/* (2) 390 FIRST LOAD: the hide-bar circle clears the CONNECT tile. At first
+   load the body carries the bar-hidden class, so the circle sat at
+   bottom:12px — on the bottom bar's top-right tile. Bar-hidden or not, at
+   phone width the circle now parks at bottom:140px: above the bar, above
+   the restore pill, in the clear lane. The drawer-open hide still wins
+   (its selector carries a class more). */
+@media (max-width:640px){
+  body.os-bottom-hidden #os-b3-hide, body.os-bottom-off #os-b3-hide{bottom:140px;}
+}
+/* (3) 390 NOTIFICATION BALL CLEARANCE. The eye measured -2.0px on the 46px
+   phone tiles: the 20px ball at top:4px right:4px sat on the glyph ink. At
+   phone width the ball moves to the tile's own corner (top:0 right:0) and
+   shrinks to 18px — its centre moves ~4px further from the glyph and its
+   radius gives back 1px, so the clearance turns positive. Still inside
+   the tile, rim-lit in the tile's own colour. */
+@media (max-width:640px){
+  .notif-count{top:0;right:0;min-width:18px;height:18px;}
+}
+/* (4) 1920 BAR-UP: the left sidebar footer reads whole. .private sits at
+   the rail's bottom by margin-top:auto, so when the fixed bottom bar is up
+   (~124px tall) it covers the footer's lower half. While the bar is up the
+   footer gains 140px of bottom padding — the same reserve the feed column
+   already carries — so all three lines clear the bar. Bar hidden, no pad. */
+body:not(.os-bottom-hidden):not(.os-bottom-off) .private{padding-bottom:140px;}
+/* (5e) SMART TABS WEAR THE MODE-PILL TREATMENT, SMALLER. Harvested from
+   the lens tabs (.lens-tab + .primo, NAYA-BTN-005): obsidian pill, white
+   rim at rest, no colour wash inside; on hover and when active the rim and
+   the outside halo ignite in the tab's own deep colour with the same rich
+   glow the COLLECTIVE / PERSONAL / ACTIVITY buttons carry. The bright
+   first-letter table is gone from the tabs (tabColor now maps to the Laws
+   deep palette); the neon rainbow glow is out. */
+.smart-tab{border:2px solid rgba(255,255,255,.35);background:#050607;text-shadow:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -4px 10px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.55);}
+.smart-tab:hover,.smart-tab:focus-visible{border-color:var(--tc);transform:translateY(-2px);text-shadow:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 0 0 1.5px var(--tc),0 0 22px color-mix(in srgb,var(--tc) 55%,transparent),0 12px 28px rgba(0,0,0,.6);}
+.smart-tab.active{border-color:var(--tc);text-shadow:none;
+  box-shadow:inset 0 0 0 1.5px var(--tc),inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px color-mix(in srgb,var(--tc) 75%,transparent),0 14px 36px rgba(0,0,0,.65);}
+.smart-tab.active:hover{border-color:var(--tc);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 0 0 1.5px var(--tc),0 0 22px color-mix(in srgb,var(--tc) 55%,transparent),0 12px 28px rgba(0,0,0,.6);}
+/* (8) THE HEADING fits the 300px rail at 17px: tracking .18em -> .06em. */
+.rail-people-head b{letter-spacing:.06em;}
+/* (8) THE RAIL ROW — the circles image (ref-buttons-circles.png) is the
+   model: obsidian circles, rim light in each button's own colour, white
+   glyph, premium depth. The row is a grid: a 40px column under the initial
+   orb, then the four buttons. The eye (i) is a 40px circle centred in the
+   40px column, so its centre is the orb's centre (card pad 8px + 20px);
+   the four-button column starts at 8 + 40 + 10 = 58px — the first letter
+   of the alias. Four 40px circles + 3x8px gaps = 184px, inside the 241px
+   card content box. The buttons are bigger than the old 26px circles and
+   fill the freed space. */
+#hubPeopleList .pc-card-acts{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:center;}
+#hubPeopleList .pc-card-acts .pc-act-btn{width:40px;height:40px;
+  background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.22),rgba(255,255,255,0) 48%),linear-gradient(135deg,#17171f,#050607);
+  border:2px solid color-mix(in srgb,var(--ac,#8e24aa) 85%,#fff);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 8px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--ac,#8e24aa) 45%,transparent),0 6px 14px rgba(0,0,0,.55);}
+#hubPeopleList .pc-card-acts .pc-act-btn:hover{transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 8px rgba(0,0,0,.6),0 0 24px color-mix(in srgb,var(--ac,#8e24aa) 65%,transparent),0 10px 22px rgba(0,0,0,.55);}
+#hubPeopleList .pc-card-acts .pc-act-btn:active{transform:translateY(1px) scale(.97);}
+#hubPeopleList .pc-card-acts4{display:flex;gap:8px;}
+#hubPeopleList .pc-card-acts4 .pc-act-btn{flex:none;}
+/* (8) THE "i" IS MORE ELEVATED — its standard is the initial orb: the same
+   flowing conic light that orbits the initial (osOrbFlow, 7s) now flows
+   around the "i", with a stronger white halo and lift. It still carries
+   data-pc-info, so the existing handler still opens the official card. */
+#hubPeopleList .pc-card-acts .pc-act-btn[data-pc-info]{position:relative;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 8px rgba(0,0,0,.6),0 0 20px rgba(255,255,255,.35),0 10px 22px rgba(0,0,0,.6);}
+#hubPeopleList .pc-card-acts .pc-act-btn[data-pc-info]::after{content:'';position:absolute;inset:-5px;border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.45) 40deg,transparent 90deg,transparent 180deg,rgba(255,255,255,.25) 220deg,transparent 270deg);
+  animation:osOrbFlow 7s linear infinite;pointer-events:none;}
+</style>
+
 </body>
 </html>
