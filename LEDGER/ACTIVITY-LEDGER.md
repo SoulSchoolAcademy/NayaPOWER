@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28153,6 +28153,14 @@ _Last updated: 2026-11-19 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/herald-509-canonical-smart-notes-t0473 exists on remote, head 7185d4171a06 == receipt pin; file 509-AAA-SMART-NOTES-01-09-CANONICAL.md present at that ref with sha256 c3c59ba828...1f78134f1 == receipt byte-exact; parser contract re-derived from smart-feed.html live bytes (0x2014 em-dash confirmed). Why not 9.5: (1) wire proven
 
+### ✅ t0472 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Sealed cold-retrieve drill with proven page-cache isolation (evict + mincore gate, RED/GREEN)
+
+**Receipt:** `twelve-lane-receipts/t0472-lane1.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 12). VERIFIED first-hand: cold_drill_t0472.py sha256 0fcaa777... EXACT, chillset 81a07557... EXACT (607 files), baseline fixture 460429b1... EXACT; sealed record cold-drill-t0472.md corroborates every number (RED 607/607 resident, GREEN 0 resident, cold median 1.065s, warm 0.281s, delta 0.783s, 15/15 COLD, 0 isolation holes) and 
+
 ### ✅ t0472-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 8.0/10 [VERIFIED]
 
 **Task:** Sealed cold-retrieve drill with proven page-cache isolation (evict + mincore gate)
@@ -28227,6 +28235,14 @@ _Last updated: 2026-11-19 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED on live bytes this tick: plan file sha256 84fb6f18bbd84fe52134.. == claim; stamp script 57bb052e46c8dc14da67.. == claim; dry-run log on disk; tip commit 9f80e8eccfbe8256ec7ce069c61cd38cc86430ce == shared-state main_tip; gate blob id aae7b3d7.. at the new tip, content sha256 fbe6ee29482fdc57345e == t942 pin; seam blob id 543ddafa.
 
+### ✅ t0462 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Sealed study-protocol cells 1-2 (judge-mechanism mechanization study) + F3 mechanized baseline
+
+**Receipt:** `twelve-lane-receipts/t0462-lane5.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 12). VERIFIED first-hand: protocol study-protocol-t0452.md sha256 821cec6299504143382b907c8529e023d82919e7b46eef68018c5bb41a31dfb6 EXACT as cited (before == after, matches t0452 verification); results-t0462.json 58202c8a... and f3-t0462.json 06eae5bb... match cited prefixes; sealed-note, run-record, t0462_f3.py all present with O
+
 ### ✅ t0462-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** Sealed study-protocol cells 1-2: judge-mechanism mechanization study (F3 baseline vs instrument)
@@ -28278,6 +28294,14 @@ _Last updated: 2026-11-19 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0462-lane4.md`
 
 **Evidence:** ARTIFACTS VERIFIED on live bytes this tick: spec exists (42 lines), sha16 75e3037c435c4c35 == receipt claim; commit ba62638704.. exists in nayapower-rescue; gate module at that commit sha256 fbe6ee29482fdc57345e.. == receipt claim; PR #2403 merge 993975d55 verified in its ancestry; retrieval_authorized occurs 0x in tools/smart_note_v2.py at that co
+
+### ✅ t0462 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Instrument ask-world.py with append-only query logging + live-check (SURGE slice, dependency proved missing at t0452)
+
+**Receipt:** `twelve-lane-receipts/t0462-lane10.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 12). VERIFIED first-hand: bin/ask-world.py contains log_query (def line 129) and live-check, live-check runs OK now; ask-world-queries.jsonl exists (206 lines) with the receipt's init fixture row (ts 2026-10-12T17:17:32Z) and first query row (pid 18679) byte-matching the receipt sample - the log has accumulated organic traffic si
 
 ### ✅ t0462-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
