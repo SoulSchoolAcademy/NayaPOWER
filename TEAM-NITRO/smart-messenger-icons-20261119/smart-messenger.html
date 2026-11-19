@@ -77,7 +77,8 @@
 @media(max-width:1024px){:root{--bw:64px}}
 @media(max-width:560px){:root{--bw:32px}}
 .royal-frame{position:fixed;inset:0;z-index:40;pointer-events:none;border:var(--bw,96px) solid transparent!important;border-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/smart-messenger-icons-20261119/master-frame.png&ref=smart-messenger-followon-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a&t=1795057088) 300 / var(--bw,96px) / 0 round!important;box-shadow:none!important;--dc:#8e24aa}
-.royal-frame::after{content:"";position:absolute;inset:var(--bw,96px);border:2px solid var(--dc,#8e24aa);border-radius:4px;box-shadow:0 0 24px color-mix(in srgb,var(--dc,#8e24aa) 35%,transparent),inset 0 0 48px rgba(5,6,7,.85);pointer-events:none}
+.royal-frame::after{content:"";position:absolute;inset:0;border:2px solid var(--dc,#8e24aa);border-radius:4px;box-shadow:0 0 24px color-mix(in srgb,var(--dc,#8e24aa) 35%,transparent),inset 0 0 48px rgba(5,6,7,.85);pointer-events:none}
+/* FOLLOW-ON 2026-11-19 (staged-390 eye): the ::after anchors to the frame's PADDING box, which the frame's own 32px transparent border already insets by --bw — inset:var(--bw) double-inset the rim to 64px, a purple rectangle floating inside the content at every width. inset:0 puts the rim on the content edge, where it belongs. */
 .royal-frame .rf-c,.royal-frame .rf-seal{display:none!important}
 @media(max-width:1024px){.royal-frame{border-image-slice:340 300 340 300!important}}
 @media(max-width:560px){.royal-frame{border-image-slice:300!important}}
