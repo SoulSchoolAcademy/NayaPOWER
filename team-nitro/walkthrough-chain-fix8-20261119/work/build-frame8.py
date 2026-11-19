@@ -23,9 +23,21 @@ in the screenshots — t+1.5s strip, t+5.5s blank ornate frame):
     handler keys the advance off the beat's fp-smart-visual class, which
     wireDeck never clears on advance, so the second click stays; and the
     Next button double-clicks kr on a 140ms timer. FIX: FIX8 owns
-    navigation with its own per-beat phase model (talk/visual), one
-    kr.click() per Next, stopPropagation so FIX7's delegated handler
-    never double-handles.
+    navigation — one tap = one frame, every time. The two-tap
+    talk/visual phase is gone (the first tap used to show the picture
+    alone, the second to move on — and the picture landed below the
+    fold, so the eye never saw it). The picture now shows inside the
+    frame's own reading window, below the words. FIX8 also clones the
+    deck's Keep-reading / Back buttons, because FIX7's direct listener
+    on the original nodes is the two-tap itself — the clone answers
+    only to FIX8. One kr.click() per Next, stopPropagation so FIX7's
+    delegated handler never double-handles.
+  F1 (second pass, render-measured 2026-11-19 ~22:15Z) — the foot still
+    sat below the deck's clip: the beat's own padding (32px top / 24px
+    bottom, content-box) made it 60px taller than its 463px deck, so
+    the button row showed only its top arcs. FIX: border-box + tight
+    padding on the beat, seal 84 -> 72, media frame slimmed so the
+    whole board fits its reading window.
   F4 — Play (speech synthesis) produces nothing audible or visible on
     desktop (no voice -> 2.5s watchdog -> idle). FIX: the play orb moves
     into the media frame and drives the verified narration mp3 (F9).
@@ -107,6 +119,28 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 .frame-anthem-note p{margin:0 0 12px}
 .frame-anthem-note p:last-child{margin-bottom:0}
 #fpAgreeAudio{display:none}
+/* F1-fix (render-measured): the beat's own padding (32px top / 24px
+   bottom, content-box) made it 60px taller than its 463px deck, so the
+   pinned foot sat below the deck's clip and the button row showed only
+   its top arcs. Border-box + tight padding puts the whole foot inside
+   the deck; the seal tightens 84 -> 72 and the top bar closes up. */
+.letter-beat.frame-now{padding:10px 24px 8px!important;box-sizing:border-box!important}
+.frame-topbar{margin-bottom:8px!important}
+.frame-foot{gap:6px!important;padding-top:4px!important}
+.frame-red-n{width:72px!important;height:72px!important}
+.frame-red-n .deal-seal-mark{font-size:32px!important}
+/* F9: the media frame slims so the whole board (title + Play + Watch
+   the anthem) fits its reading window without scrolling. */
+.frame-media{padding:12px 16px!important;margin-bottom:12px!important}
+.frame-media-title{margin-bottom:4px!important}
+.frame-media-sub{margin-bottom:10px!important}
+.frame-media .play-btn{width:60px!important;height:60px!important}
+.frame-media .frame-video-btn{margin-top:10px!important}
+/* F3-fix: one tap = one frame. The talk/visual two-tap is gone — a beat
+   with a picture shows it inside its own reading window, below the
+   words, so nothing needs a second tap to be seen. */
+.letter-beat.fp-smart-talk .lb-showcase{display:block!important;margin:14px auto 4px!important;width:min(100%,560px)!important}
+.letter-beat.fp-smart-talk .lb-showcase img{width:100%!important;height:auto!important}
 </style>
 """
 
@@ -124,7 +158,16 @@ JS8 = """
   var beats = Array.prototype.slice.call(document.querySelectorAll('#deckBody .letter-beat'));
   var CRYSTAL = '__CRYSTAL_URL__';
   var AUDIO_URL = '__AUDIO_URL__';
-  function hasShowcase(b){ return !!b.querySelector('.lb-showcase'); }
+  /* F3 — a picture that fails to load hides its frame instead of
+     showing broken: all 8 showcase images serve 200, this is the
+     belt-and-braces. */
+  beats.forEach(function(b){
+    var sh = b.querySelector('.lb-showcase img');
+    if (sh) sh.addEventListener('error', function(){
+      var f = sh.closest('.lb-showcase');
+      if (f) f.style.display = 'none';
+    });
+  });
   /* F5 — a top-bar picture never shows broken: retry once cache-busted,
      then the filed crystal N (a real asset, always served). */
   beats.forEach(function(b){
@@ -137,12 +180,6 @@ JS8 = """
       else if (n === 1) { img.setAttribute('data-fx8fb', '2'); img.src = CRYSTAL; }
     });
   });
-  /* F3 — FIX8 owns the frame. One phase per beat (talk/visual), tracked
-     here — never read back off the deck's fp-smart-visual class, which
-     wireDeck leaves set after an advance (that stale read is why the
-     second Next click stayed on frame 1). stopPropagation keeps FIX7's
-     delegated deckBody handler from double-handling the same click. */
-  var phase = beats.map(function(){ return 'talk'; });
   function showFrame8(n){
     if (n < 0) n = 0;
     if (n > beats.length - 1) n = beats.length - 1;
@@ -156,24 +193,28 @@ JS8 = """
     var sc = beats[n] ? beats[n].querySelector('.frame-scroll') : null;
     if (sc) sc.scrollTop = 0;
   }
+  /* F3 — FIX8 owns the frame: one tap = one frame, every time. The
+     deck's own Keep-reading / Back buttons carry FIX7's two-tap
+     listener on the original nodes (first tap shows the picture alone,
+     second moves on — and the picture landed below the fold, so the
+     eye never saw it). Cloning drops that listener: the clone answers
+     only to FIX8. stopPropagation keeps FIX7's delegated deckBody
+     handler from double-handling the same click. */
   beats.forEach(function(b, i){
     var row = b.querySelector('.frame-btnrow');
     if (!row) return;
     var kr = row.querySelector('.deck-next:not(.deck-back):not(.frame-next)');
     var back = row.querySelector('.deck-back');
     var nx = row.querySelector('.frame-next');
+    if (kr) { var kr2 = kr.cloneNode(true); kr.parentNode.replaceChild(kr2, kr); kr = kr2; }
+    if (back) { var back2 = back.cloneNode(true); back.parentNode.replaceChild(back2, back); back = back2; }
     if (kr) kr.addEventListener('click', function(ev){
       ev.stopPropagation();
-      if (hasShowcase(b) && phase[i] === 'talk') { phase[i] = 'visual'; return; }
-      phase[i] = 'talk';
       showFrame8(i + 1);
     });
     if (back) back.addEventListener('click', function(ev){
       ev.stopPropagation();
-      if (phase[i] === 'visual') { phase[i] = 'talk'; return; }
       showFrame8(i - 1);
-      var p = beats[i - 1];
-      if (p) phase[i - 1] = hasShowcase(p) ? 'visual' : 'talk';
     });
     /* F3 — the Next button clicks Keep reading ONCE. FIX7's 140ms second
        click is gone (its listener dies with the cloned node). */

@@ -14,6 +14,13 @@ through the UNFOLD_RAW env var. The welcome is the edited local file
 (F6: no-alias auto-enter removed). Walk / identity unchanged (fix-7
 shas). Does NOT rely on st.WELCOME_SHA (fix-7 value) — the new welcome
 sha is passed explicitly.
+
+ENV LIMIT (2026-11-19, commit 3): the fix-8 unfold crossed 131,072 B
+(MAX_ARG_STRLEN — a single env value over that cannot be exec'd), so
+UNFOLD_RAW can no longer carry it. The bytes now go to the builder's
+native UNFOLD file path via node (node writes land in flake windows;
+python writes EPERM), sha-verified after the write, and the builder
+reads its file path. The builder itself is untouched.
 """
 import importlib.util, json, os, subprocess, sys
 
@@ -23,12 +30,13 @@ st = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(st)
 
 WORK = "/home/hatch/workspace/team-nitro/walkthrough-chain-fix8-20261119/work"
+UNFOLD_FILE = "/home/hatch/workspace/team-nitro/agreement-unfold-fix-20261117/agreement-unfold-fixed.html"
 WALK_LOCAL = "/home/hatch/workspace/team-nitro/walk-v23-assembly-20261114/walk-beginning-fixed.html"
 WALK_SHA = "b6befc332d65dd26d01649edd09810e9f83284a73a10a6af30f6691f5f118773"
 IDENT_SHA = "3279dc3572337e5e971369a3742effcaac7f6e5b059192ddaa6e689f0f92886c"
 WELCOME_SHA = "2062739ecb968b78cd823440bcfd4bbb8f7d0190d3bb2e5443ab3b35c0081955"
-UNFOLD_SHA = "c787a41217c1f5d5a245eec75af101f4aba62c4dcbd23d910e5886a47ac025e6"
-UNFOLD_BYTES = 130161
+UNFOLD_SHA = "0bb21457c62d66ae04e0f9b5fced34e1e13edad1a07e0a8b8cf019edbabffa33"
+UNFOLD_BYTES = 131955
 
 
 def run_pipeline():
@@ -43,11 +51,26 @@ def run_pipeline():
     return fix8
 
 
+def write_unfold_file(unfold_bytes):
+    """Hand the unfold to the builder through its native UNFOLD file
+    path (see the ENV LIMIT note above). Node writes the bytes from
+    stdin; the write is sha-verified on read-back before any build."""
+    r = subprocess.run(["node", "-e",
+        "const fs=require('fs');const d=[];"
+        "process.stdin.on('data',c=>d.push(c));"
+        "process.stdin.on('end',()=>{fs.writeFileSync(process.argv[1],Buffer.concat(d));});",
+        UNFOLD_FILE], input=unfold_bytes, capture_output=True, timeout=120)
+    assert r.returncode == 0, "node unfold write failed: %s" % r.stderr.decode("utf-8", "replace")[-400:]
+    back = st.read_bytes(UNFOLD_FILE)
+    assert st.sha(back) == st.sha(unfold_bytes), "unfold file write mismatch"
+    print("unfold file written via node: %d B sha %s" % (len(back), st.sha(back)[:12]), flush=True)
+
+
 def run_builder8(new_welcome, welcome_sha, ident_sha, unfold_sha, unfold_bytes):
+    write_unfold_file(unfold_bytes)
     workers = []
     for n in range(2):
         env = dict(os.environ)
-        env["UNFOLD_RAW"] = unfold_bytes.decode("utf-8")
         r = subprocess.run([sys.executable, st.BUILDER, "--stdout", "--welcome-stdin"],
                            input=new_welcome, capture_output=True, timeout=300, env=env)
         assert r.returncode == 0, "builder failed: %s" % r.stderr.decode("utf-8", "replace")[-800:]
@@ -94,7 +117,7 @@ def main():
     assert st.sha(new_ident) == IDENT_SHA, "identity moved: %s" % st.sha(new_ident)
     assert st.sha(new_welcome) == WELCOME_SHA, "welcome moved: %s" % st.sha(new_welcome)
     assert st.sha(new_unfold) == UNFOLD_SHA, "unfold moved"
-    assert b'assert unfold_sha.startswith("c787a412")' in builder, "builder unfold assert not moved"
+    assert b'assert unfold_sha.startswith("0bb21457")' in builder, "builder unfold assert not moved"
     assert b'assert welcome_sha.startswith("2062739e")' in builder, "builder welcome assert not moved"
     assert b'UNFOLD_RAW' in builder, "builder missing UNFOLD_RAW"
     assert b"stay on the entrance" in new_welcome, "welcome F6 edit missing"
