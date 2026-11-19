@@ -2527,6 +2527,48 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 .world-ico:active{transform:scale(.97)!important}
 @media(max-width:560px){.world-icons{gap:14px!important;margin-top:16px!important}}
 
+
+/* ============ FIX9b — corrections from the maker's own render probe ============ */
+/* Back is a pill, never a full-width bar: .smart-block>* sets width:100%. */
+.slide-back{width:auto!important;max-width:none!important;white-space:nowrap!important}
+/* Wisdom: the greeting STACKS — S orb above, "Good morning, Shawn" below,
+   both dead centre, so every element measures centreX = slide centreX. */
+.wisdom-banner .greet-layout{display:flex!important;flex-direction:column!important;align-items:center!important;gap:12px!important}
+/* Cover: fill the section by flex, not by %-height (the % resolved short
+   and left a band above the image). */
+.sb-chamber .smart-visual{flex:1 1 auto!important;height:auto!important;min-height:0!important}
+/* Corner count must never sit on the block name. */
+.notif-slide .nblock .nb-name{padding-right:34px!important;letter-spacing:.06em!important}
+/* Phone: the day nav flows AFTER the content (static), so it can never
+   overlap a block at 390 — the slide scrolls, the nav rides at the end,
+   just above the bottom frame. */
+@media(max-width:560px){
+  #dayScroll .smart-block .sb-nav{position:static!important;bottom:auto!important;margin-top:16px!important}
+  #dayScroll .smart-block{padding-bottom:24px!important}
+  .notif-slide{padding-left:8px!important;padding-right:8px!important}
+  .notif-slide .notif-bar{padding:8px!important}
+  #dayScroll #chamberBlock .sb-nav{position:static!important;bottom:auto!important;margin-top:16px!important}
+}
+
+
+
+/* ============ FIX9e — lawful phone legibility (§2.3 17px floor, §2.4 icons) ============ */
+/* The icon is hidden at desktop (the 17px name speaks); at phone the name
+   and sub hide and the icon speaks — same block, same order, same counts. */
+.notif-slide .nblock .nb-ico{display:none!important}
+@media(max-width:560px){
+  .notif-slide .nblock{overflow:hidden!important}
+  .notif-slide .nblock .nb-name{display:none!important}
+  .notif-slide .nblock .nb-sub{display:none!important}
+  .notif-slide .nblock .nb-ico{display:inline-flex!important;align-items:center!important;justify-content:center!important;color:#fff!important}
+  .notif-slide .nblock .nb-ico svg{width:30px!important;height:30px!important}
+  /* Monthline wraps at 17px (never smaller): "NOVEMBER 2026 ·" / "639 HZ". */
+  .hl-monthline{white-space:normal!important}
+  /* The dots strip sits flush on the wisdom label at phone (0px gap reads
+     as an overlap) — give the label air. */
+  .wisdom-banner .wq-label{margin-top:16px!important}
+}
+
 </style>
   </head>
   <body>
@@ -2566,7 +2608,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           <div class="dayhead" id="dayHead"></div>
         </header>
         <div class="day-scroll" id="dayScroll">
-          <div class="smart-block sb-chamber" id="chamberBlock"><div class="smart-visual"><button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button><button type="button" class="pill cover-change" id="coverChangeBtn">Change cover</button><input type="file" id="coverFile" accept="image/*" hidden><img id="coverImg" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/thursday-cover-crystal.jpg&amp;ref=calendar/day-followon-fix9-20261119&amp;cb=0f978acbf1f1dacd57faa87bb29fd50aa84b2f7e&amp;t=1795103339" alt="Thursday's cover — emerald crystal"></div><div class="sb-nav"><div class="nav-left"></div><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button><div class="nav-right"></div></div><div class="sb-dots"></div></div><div class="wisdom-banner smart-block" id="wisdomBanner"><button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>
+          <div class="smart-block sb-chamber" id="chamberBlock"><div class="smart-visual"><button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button><button type="button" class="pill cover-change" id="coverChangeBtn">Change cover</button><input type="file" id="coverFile" accept="image/*" hidden><img id="coverImg" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/thursday-cover-crystal.jpg&amp;ref=calendar/day-followon-fix9-20261119&amp;cb=0f978acbf1f1dacd57faa87bb29fd50aa84b2f7e&amp;t=1795103339" alt="Thursday's cover — emerald crystal"></div><div class="sb-nav"><div class="nav-left"></div><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button><div class="nav-right"></div></div><div class="sb-dots"></div></div><div class="wisdom-banner smart-block" id="wisdomBanner"><button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>
             <div class="wq-label">Wisdom of the day</div>
             <blockquote id="wisdomQuote"></blockquote><div class="dayteach" id="dayTeach"></div>
             <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span></div><div class="sb-nav"><div class="nav-left"></div><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button><div class="nav-right"></div></div><div class="wq-store">Naya wisdom — from the Naya store</div><div class="sb-dots"></div>
@@ -2777,6 +2819,12 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           { id: "sales", label: "Sales", color: "#a21caf", note: "Sales live on the dashboard — this block counts them there.", state: "On the dashboard" },
           { id: "appointments", label: "Appointments", color: "#0e7490", note: "What is booked for this day — appointments and Smart Meets, counted." }
         ];
+        /* FIX9e — the five scopes' icons (§2.4: speak in icons). At phone
+           width the 17px names cannot fit five-across, so the icon speaks
+           and the name stays in the aria-label and at desktop. Sales takes
+           the ledger-book glyph — the file has no sales/tag glyph, and
+           sales live on the dashboard ledger. */
+        var SCOPE_ICONS = { personal: ICONS.user, work: ICONS.briefcase, worlds: ICONS.worlds, sales: ICONS.book, appointments: ICONS.calendar };
         /* Colours for sources added with the + chip — the spectrum
            keeps flowing: gold, orange, red, magenta, then it turns */
         var SOURCE_COLORS = ["#d4a017", "#c2410c", "#c62828", "#a21caf", "#8e24aa", "#0f52ba", "#07925f"];
@@ -3318,13 +3366,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             var unit = s.id === "appointments" ? "appointment" : "notification";
             var aria = s.label + ", " + count + " " + unit + (count === 1 ? "" : "s");
             var sub = s.id === "personal" ? "Naya Notes" : s.id === "appointments" ? "Appointments" : s.id === "sales" ? "Sales" : "";
-            return '<button type="button" class="nblock" style="--sc:' + s.color + '" data-scope="' + s.id + '" aria-expanded="' + (openScopeId === s.id) + '" aria-label="' + aria + '">' +
+            return '<button type="button" class="nblock" style="--sc:' + s.color + ';--dc:' + (sel ? DAY_COLORS[sel.getDay()] : '#3fb8ff') + '" data-scope="' + s.id + '" aria-expanded="' + (openScopeId === s.id) + '" aria-label="' + aria + '">' +
               '<span class="nb-corner" aria-hidden="true">' + count + "</span>" +
               '<span class="nb-name"><span class="live-dot"></span>' + s.label + "</span>" +
+              '<span class="nb-ico" aria-hidden="true">' + SCOPE_ICONS[s.id] + "</span>" +
               (sub ? '<span class="nb-sub">' + sub + "</span>" : "") + num + "</button>";
           }).join("");
           blocks += customSources.map(function (s) {
-            return '<button type="button" class="nblock" style="--sc:' + s.color + '" data-scope="' + s.id + '" aria-expanded="' + (openScopeId === s.id) + '" aria-label="' + escapeHTML(s.label) + ', not connected yet">' +
+            return '<button type="button" class="nblock" style="--sc:' + s.color + ';--dc:' + (sel ? DAY_COLORS[sel.getDay()] : '#3fb8ff') + '" data-scope="' + s.id + '" aria-expanded="' + (openScopeId === s.id) + '" aria-label="' + escapeHTML(s.label) + ', not connected yet">' +
               '<span class="nb-name"><span class="live-dot"></span>' + escapeHTML(s.label) + "</span>" +
               '<span class="state-pill">Not connected yet</span></button>';
           }).join("");
@@ -3598,7 +3647,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           head.innerHTML =
             '<div class="official-headliner">' +
               '<span class="hl-left"><span class="hl-dayrow">' + digitsHTML(d.getDate(), false, true) + '<span class="hl-weekday">' + WEEKDAYS[d.getDay()] + '</span></span>' +
-              '<span class="hl-monthline">' + MONTHS[d.getMonth()] + " " + d.getFullYear() + " \u00b7 " + DAY_FREQ[d.getDay()] + " Hz</span></span>" +
+              '<span class="hl-monthline">' + MONTHS[d.getMonth()] + " " + d.getFullYear() + " \u00b7 <span style=\"white-space:nowrap\">" + DAY_FREQ[d.getDay()] + " Hz</span></span></span>" +
               '<span class="hl-timewrap"><button type="button" class="hl-time" id="greetClock" aria-label="World clock — tap to choose a time zone"></button>' +
               '<button type="button" class="clock-tool" id="clockToolBtn" aria-label="Change the time">' + ICONS.clock + '</button></span>' +
               '<button type="button" class="stats-btn" id="statsBtn">Your Stats</button>' +
