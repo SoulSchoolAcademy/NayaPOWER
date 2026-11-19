@@ -64677,6 +64677,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3679",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3679-done-means-given",
+      "slug": "done-means-given",
+      "title": "Done Means Given",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3679/IB-SMART-NOTE-20261119-sn3679-done-means-given.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3679/IB-SMART-NOTE-20261119-sn3679-done-means-given.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3679/IB-SMART-NOTE-20261119-sn3679-done-means-given.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3679-done-means-given.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T12:27:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "1b3e67c0adee23bf0d02c223f44d98eedd4cd2d233043ba4932657e5836befb2",
+      "content_hash": "c114e4c47e8e291ee7ec3b75220c12bee7f813d812a9a28cfeb71dd57d9d6561",
+      "one_line": "Treat it like your world — your civilization, your home, your baby, your hive — and honor it: the most intelligent, incredible experience people have, everything done for them, everybody wins at fifty percent, apps in minutes. The mission restated as command: the user has success interacting with me and with anything I build; nothing is a waste; time, energy, money and people are precious; think first, hit the bullseye the highest percentage of time — and his honest assessment rides with it: ultra inefficient where we should be ultra efficient, so get there. Full-spec the max performance system from every angle, start now: bottlenecks named with evidence, fixes owned. The entry dial gets its colors — white, not gray; profiles separated and alive; the rainbow flow repeating — and every Jump back in lands on that citizen's real Personal page, generated for them, never the shared Hub. Finish Personal first, then clone. 'Not reproducible' is never 'cannot appear' — a probe that cannot reach the data cannot certify absence, and the banner was real. A render without the board write is not a render. Ground the base before assembling: a repair that drops a praised feature is a regression. And measure the pool first — when the intake is too thin for the rule, no composer patch closes the math; the honest verdict is NO-GO with the questions carried up, undecided.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64687,5 +64720,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "850389fecdbc30a774c9e6a18a1f5dbbdf5da0604d5a833441001060f4c0d709"
+  "corpus_manifest_hash": "455fbed1b10dbf84d537137fe1a0055b3b05239f875c97a960bdd1370f6de2e4"
 }
