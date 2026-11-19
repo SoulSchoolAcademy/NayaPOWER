@@ -4527,7 +4527,13 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
      clobbering the restore (which runs first and sets the view). */
   try{
     var _fpAlias2=null;try{_fpAlias2=localStorage.getItem('nayanet_smart_alias');}catch(e){}
-    if(!_fpStage&&_fpRestoreStage!=='agree'&&_fpRestoreStage!=='bridge-agreed'&&!_fpAlias2){enterStage();}
+    /* FIX8 (2026-11-19, F6) — a fresh visitor STAYS on the entrance: the
+       no-alias auto-enter used to jump a first-time visitor straight into
+       the stage (agreement bridge), so the entrance (name field, Enter,
+       Jump back in) and the top nav never showed. The stage still opens
+       from Enter, from ?stage=, and from the agree / bridge-agree
+       restores above — those paths are untouched. */
+    if(!_fpStage&&_fpRestoreStage!=='agree'&&_fpRestoreStage!=='bridge-agreed'&&!_fpAlias2){/* stay on the entrance */}
   }catch(e){}
   window.__fpStage={state:S,enter:enterStage,exit:exitStage,render:render};
 })();

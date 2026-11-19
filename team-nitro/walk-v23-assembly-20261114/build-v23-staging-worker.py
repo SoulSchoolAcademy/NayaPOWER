@@ -498,7 +498,7 @@ assert ident_sha.startswith("3279dc35"), "identity sha is not the WALKTHROUGH-CH
 # contain, never cropped (4:3 images in a 16:9 slot); the 'Tap
 # the picture' pill moves below the frame. Intro row + fix-4
 # untouched; F2 has no key handler in the bytes (UNVERIFIED).
-# WALKTHROUGH-CHAIN (2026-11-18, maker round -\n# walkthrough-chain-20261118/work/edit-chain.py): the welcome\n# sha moves a1b67b82 -> 1a48347f: BRIDGE FIRST - after agreeing\n# inside the stage, the hold/fallback releases go to the bridge\n# (goBridgeAfterAgree), then the bridge's own buttons go to\n# name-entry; the agreed line + the onward button show only\n# after agreeing; the plain-page agree scroll is guarded while\n# the bridge is up. Pre-agree routes untouched (?stage=bridge,\n# Back buttons, /agreement agree -> bridge).\nassert welcome_sha.startswith("d79793c0"), "welcome sha is not the WALKTHROUGH-CHAIN-FIX3 welcome sha (2026-11-19: agreed state persists via nayanet_fp_agreed, gold pill goes direct to name entry, bridge strip nowrap, boot restore guarded against ?stage=deck/letter hijack)"
+# WALKTHROUGH-CHAIN (2026-11-18, maker round -\n# walkthrough-chain-20261118/work/edit-chain.py): the welcome\n# sha moves a1b67b82 -> 1a48347f: BRIDGE FIRST - after agreeing\n# inside the stage, the hold/fallback releases go to the bridge\n# (goBridgeAfterAgree), then the bridge's own buttons go to\n# name-entry; the agreed line + the onward button show only\n# after agreeing; the plain-page agree scroll is guarded while\n# the bridge is up. Pre-agree routes untouched (?stage=bridge,\n# Back buttons, /agreement agree -> bridge).\nassert welcome_sha.startswith("2062739e"), "welcome sha is not the WALKTHROUGH-CHAIN-FIX8 welcome sha (2026-11-19: F6 fresh visitors stay on the entrance — the no-alias auto-enter is gone, the stage opens from Enter / ?stage= / restore)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
@@ -533,7 +533,7 @@ assert ident_sha.startswith("3279dc35"), "identity sha is not the WALKTHROUGH-CH
 # Watchdog mechanics unchanged (warm-up, pick, assignment, clear
 # on start/end/error). Welcome, walk, template, identity shas
 # unchanged. Divider (.ib-foot-logo) untouched - the eye's call.
-assert unfold_sha.startswith("e21f08d0"), "unfold sha is not the WALKTHROUGH-CHAIN-FIX7 unfold sha (2026-11-19: frame rebuild F1-F11, staged only)"
+assert unfold_sha.startswith("6ad602d3"), "unfold sha is not the WALKTHROUGH-CHAIN-FIX8 unfold sha (2026-11-19: frame behind the stage, header out, FIX8-owned navigation, media frame with verified narration, staged only)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
 # work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b
