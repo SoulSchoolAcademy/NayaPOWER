@@ -64941,6 +64941,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3697",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3697-every-page-unfolds-every-claim-is-scored",
+      "slug": "every-page-unfolds-every-claim-is-scored",
+      "title": "Every Page Unfolds, Every Claim Is Scored",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3697/IB-SMART-NOTE-20261119-sn3697-every-page-unfolds-every-claim-is-scored.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3697/IB-SMART-NOTE-20261119-sn3697-every-page-unfolds-every-claim-is-scored.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3697/IB-SMART-NOTE-20261119-sn3697-every-page-unfolds-every-claim-is-scored.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3697-every-page-unfolds-every-claim-is-scored.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T14:35:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "6dffec0892c0c4be0d4c371fc6356cc67b40b55b1f80667441adb239c2e3bf31",
+      "content_hash": "0d36208c6b5cd7a422796b36f0dc226d19dec5c0b1db821a8b06f829a5e779cc",
+      "one_line": "One ultimate ten, in Naya's voice, saying what it ultimately is — an intelligent chain, not a blockchain — with the page ordered by his eye and the laws locked into the machine; and the bullets are orbs, our own living orbs circling, because a bullet nobody recognises is decoration without meaning. Never judge a page you have not looked at yourself: the master box holds the whole foundation — the oath, the five gates, the laws, the mission, the permission model — so every Naya tunes in to the same foundation, and 'major' is a number, not a feeling: five of his questions rated 0, 1 or 2, added, minus one, on the −9 to +9 scale, and the score decides. Never build an app when you can strengthen the system: the honest grade was 6/10, up from 4/10, and the close came from a master manual proven by a fresh agent performing from it alone, one master per world keeping their world clean, all reporting to one leader. Score the whole: 10/10 is the director's definition of done — the diligence of going through every level, mathematically sound from multiple perspectives — and beautiful is not 10/10, because beauty is not proof; hunt the holes in the beautiful things first, and let nothing flat, vague or silent pass. The code leg is the door: a membership build can measure 8/10 with the Vault Dial perfect and the paywall exact — and still NOT DONE, because the member cannot get in; the login-code leg is the product. No rearrangement cures a look: every count can pass while three eyes still read the signing photo wrong — a different photograph, not a different layout, is the fix. Every page unfolds — screen by screen, click by click, extraordinary to experience and understand — and the unfolding player takes the concept inside, into profiles and skills and About, but the words must be his exact words, studied against what the product actually is, before any image is made: text first, visuals after. And copy the chart, never invent a format: match how the pricing chart FEELS — alive, dynamic, high-tech — every number a real object, each digit its own tile.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "System",
+        "Lesson",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64951,5 +64984,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "070fab6fbd53d0f9dfd922ff9b32a8f22405bb68fcab5bc86bd5a6d01be43f8a"
+  "corpus_manifest_hash": "e594f5a395af658d42bdb01a069618f2c2799f5a26fce7f7c50844bfa74f7f03"
 }
