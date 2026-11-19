@@ -51206,7 +51206,7 @@ function pcOpenProfile(alias){
   if(wrap) wrap.hidden=true;
   if(typeof pcHideRailPop==='function'){ try{ pcHideRailPop(); }catch(e){} }
   view.hidden=false;
-  try{ window.scrollTo(0,0); }catch(e){}
+  try{ view.scrollIntoView(); }catch(e){}
 }
 function pcCloseProfile(){
   var view=$('pcProfileView');
