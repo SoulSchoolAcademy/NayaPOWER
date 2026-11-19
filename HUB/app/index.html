@@ -1946,14 +1946,14 @@ body.msg-open{overflow:hidden;}
 .action[data-kind="like"].on { border-color: #c62828; background: linear-gradient(135deg,#391019,#09090d); } /* HUB FEED FIX2 2026-11-18 (D8): LIKE lights ruby when on, like LOVE. */
 .star-rating {
   display: inline-flex; gap: 4px; align-items: center; padding: 6px;
-  border: 2px solid #d4a01788; border-radius: 14px; background: #0b0a0e;
+  border: 2px solid #8e24aa88; border-radius: 14px; background: #0b0a0e;
   box-shadow: 0 8px 18px #0008;
 }
 .star-rating button {
-  width: 40px; height: 40px; flex: 0 0 auto; min-width: 0; position: relative;
-  border: 2px solid #d4a01788; border-radius: 50%;
+  width: 46px; height: 46px; flex: 0 0 auto; min-width: 0; position: relative;
+  border: 2px solid #8e24aa88; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.14), #07070b 62%, #050607 100%);
-  color: #d4a01766; font-size: 20px; line-height: 1; cursor: pointer;
+  color: #8e24aa66; font-size: 24px; line-height: 1; cursor: pointer;
   box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55);
   text-shadow: 0 1px 0 rgba(255,255,255,.35), 0 2px 6px rgba(0,0,0,.75);
   transition: transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s, color .18s, border-color .18s;
@@ -1964,18 +1964,18 @@ body.msg-open{overflow:hidden;}
 .star-rating button:hover { transform: translateY(-2px); border-color: #8e24aa; color: #ffffff; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
 .star-rating button:active { transform: translateY(1px) scale(.92); box-shadow: inset 0 1px rgba(255,255,255,.2), inset 0 -2px 4px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.6); }
 .star-rating button.on {
-  color: #d4a017; border-color: #d4a017;
+  color: #8e24aa; border-color: #8e24aa;
   background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.16), #07070b 62%, #050607 100%);
-  box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(212,160,23,.45);
+  box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.45);
   text-shadow: 0 1px 2px rgba(0,0,0,.45);
   animation: orbbreathe 4.4s ease-in-out infinite alternate;
 }
 .star-rating button:focus-visible { outline: 2px solid #8e24aa; outline-offset: 2px; }
 /* INTELLIGENCE track: the same obsidian ball, a blue star (23:21Z). */
 .star-rating-intel { border-color: #0f52ba88; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(15,82,186,.3); }
-.star-rating-intel button { border-color: #0f52ba88; color: #0f52ba66; }
+.star-rating-intel button { border-color: rgba(255,255,255,.85); color: #0f52ba; background: radial-gradient(circle at 35% 30%, #ffffff, #e9e9ee 55%, #c6c9d2 100%); text-shadow: 0 1px 2px rgba(0,0,0,.25); } /* ROUND 11 (item 11): INTELLIGENCE balls are WHITE — the blue star pops on the white. */
 .star-rating-intel button:hover { border-color: #8e24aa; color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
-.star-rating-intel button.on { color: #93c5fd; border-color: #0f52ba; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.45); }
+.star-rating-intel button.on { color: #0f52ba; border-color: #0f52ba; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.45); }
 .star-rating-intel button:focus-visible { outline-color: #8e24aa; }
 /* The accessible readout only — the visible per-row points text is gone (23:21Z).
    HUB FEED FIX2 2026-11-18 (D8): the per-row rank readout joins it — screen-reader
@@ -2004,7 +2004,7 @@ body.msg-open{overflow:hidden;}
 /* ——— The Rating Footer (renovation 23:21Z) ——— */
 .rate-section { grid-column: 1 / -1; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
 .rate-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.rate-head b { font-size: 17px; letter-spacing: .12em; color: #fff; }
+.rate-head b { font-size: 17px; letter-spacing: .12em; color: #fff; animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 11 (item 12): RATE THE INTELLIGENCE is living text. */
 .rate-diamond { display: inline-flex; width: 26px; height: 26px; flex: none; }
 .rate-diamond svg { width: 26px; height: 26px; display: block; filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(142,36,170,.4)); }
 .rank-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
@@ -2012,7 +2012,7 @@ body.msg-open{overflow:hidden;}
 .rank-row.rank-value .rank-label { color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 12px rgba(142,36,170,.55); animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 2f (item 4): VALUE is purple — the word is lit in its row's colour, alive. */
 .rank-row.rank-intel .rank-label { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 12px rgba(255,255,255,.35); animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 2f (item 4): INTELLIGENCE is white — lit in its row's colour, alive. */
 .rank-row .star-rating { flex: 1; min-width: 0; }
-.rank-readout { font-size: 17px; font-weight: 800; color: #fff; white-space: nowrap; }
+.rank-readout { font-size: 17px; font-weight: 800; color: #fff; white-space: nowrap; animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 11 (item 12): the 10 / 10 readout is living text — it breathes with its label. */
 /* ——— MAKE THIS INTELLIGENCE BETTER (23:21Z) ——— */
 .add-intel-prompt { font-size: 17px; color: #fff; margin-bottom: 12px; }
 .add-intel-types { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
@@ -5687,7 +5687,8 @@ window.BoardActions = (() => {
 
     /* Share only on collective feed — not personal/activity (Shawn 2026-10-03) */
     const showShare = !lens || lens === 'collective';
-    const share = showShare ? btn('\uFF0B SHARE INTEL', 'share-intel', 'Share this intelligence') : null;
+    const share = showShare ? btn('SHARE INTEL', 'share-intel', 'Share this intelligence') : null;
+    if (share) share.innerHTML = '<span class="act-jewel" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9" stroke-width="1.5"/><path d="M12 8v8M8 12h8"/></svg></span><span>SHARE INTEL</span>'; /* ROUND 11 (item 12): the plus is a real object — a jewel circle with a plus — not a flat text glyph. SHARE stays in the right corner. */
     if (share) share.addEventListener('click', e => {
       e.stopPropagation();
       // Use note-specific share URL for beautiful OG preview (not generic Hub URL)
@@ -5719,7 +5720,8 @@ window.BoardActions = (() => {
        button; it opens and closes the panel that already lives under
        this row (addIntel) — nothing new is invented, the fold is the
        experience. */
-    const commentBtn = btn('\uD83D\uDCAC COMMENT', 'comment', 'Show or hide the comment box');
+    const commentBtn = btn('COMMENT', 'comment', 'Show or hide the comment box');
+    commentBtn.innerHTML = '<span class="act-jewel" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1.1L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span>COMMENT</span>'; /* ROUND 11 (item 12): the comment icon is a real object — a speech-bubble jewel — not a flat emoji. */
     commentBtn.setAttribute('aria-expanded', 'false');
     commentBtn.addEventListener('click', e => {
       e.stopPropagation();
@@ -5732,7 +5734,7 @@ window.BoardActions = (() => {
       commentBtn.classList.toggle('on', willOpen);
       commentBtn.setAttribute('aria-expanded', String(willOpen));
     });
-    right.appendChild(commentBtn);
+    center.appendChild(commentBtn); commentBtn.classList.add('comment-go'); /* ROUND 11 (item 12): COMMENT dead center, lit GREEN — green means go. */
 
     wrap.append(left, center, right);
     if (rateSec) wrap.appendChild(rateSec);
@@ -5745,14 +5747,14 @@ window.BoardActions = (() => {
     /* FIX2: the comment box starts folded and unfolds below the note when
        COMMENT is tapped (see bottomActions) — the fold is the experience. */
     wrap.hidden = true;
-    const b = el('b', '', 'ADD TO THE INTELLIGENCE');
+    /* ROUND 11 (item 12): the comment-area heading GOES. */
     /* HUB FEED FIX2 2026-11-18 (D8): the five MAKE THIS INTELLIGENCE BETTER
        pills, restored verbatim from PR #3471's filed bytes (L5513-5537) — they
        were lost from main's lineage, so addIntel referenced prompt / types /
        chosenType / TYPE_BY_ID that did not exist. The heading stays main's
        newer 'ADD TO THE INTELLIGENCE'; the prompt, the five types, their
        colors, and the radio-group behavior are #3471's, byte for byte. */
-    const prompt = el('div', 'add-intel-prompt', 'What did you learn, improve, prove, or put into action?');
+    const prompt = el('div', 'add-intel-quote', '\u201CWhat did you learn, improve, prove, or put into action?\u201D'); /* ROUND 11 (item 12): the prompt words distill into an elevated statement block at the bottom — never plain small text. */
     const types = el('div', 'add-intel-types');
     const TYPE_DEFS = [
       ['ADD EVIDENCE', 'evidence', '#d4a017'],
@@ -5878,7 +5880,7 @@ window.BoardActions = (() => {
     input.addEventListener('keydown', e => { if (e.key === 'Enter') addBtn.click(); });
     row.append(input, micBtn, addBtn);
     const sourceLine = el('div', 'add-intel-source', 'Every contribution can connect to its source and outcome.');
-    wrap.append(b, prompt, types, row, listWrap, sourceLine);
+    wrap.append(row, types, listWrap, sourceLine, prompt); /* ROUND 11 (item 12): the comment entry goes FIRST at the very top; the action chips sit BELOW as recommendations; the statement block closes the area at the bottom. */
     renderList();
     return wrap;
   }
@@ -5886,6 +5888,14 @@ window.BoardActions = (() => {
   function enhance(board, boardId, title) {
     if (!board || board.dataset.actionsEnhanced) return;
     board.dataset.actionsEnhanced = '1';
+    /* ROUND 11 (item 14): as you scroll the feed, each board lights up around
+       the edge in the FULL colour spectrum — the sidebar sequence, in order,
+       cycling — never white/purple alternating. The colour is assigned in
+       render order, so the feed reads as one flowing spectrum. */
+    var _sp11 = ['#a21caf', '#8e24aa', '#0f52ba', '#07925f', '#d4a017', '#c2410c', '#c62828', '#a21caf', '#8e24aa', '#0f52ba', '#07925f'];
+    window._nayaSpectrumIdx = window._nayaSpectrumIdx || 0;
+    board.style.setProperty('--spectrum', _sp11[window._nayaSpectrumIdx++ % _sp11.length]);
+    board.setAttribute('data-lit', '1');
     const id = boardId || ('board-' + Math.random().toString(36).slice(2, 8));
     const head = board.querySelector('.board-head') || board.querySelector('.ib-head') || board.querySelector('.ib-blocktop');
     if (head) {
@@ -6014,11 +6024,11 @@ function HubView(params) {
   ];
   var HUB_AREAS = [
     { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#a21caf', href: 'https://nayanet.app/hub',       countKey: 'activity', glyphCls: 'glyph-xl' },
-    { id: 'dashboard', label: 'Dashboard',     icon: 'report', color: '#07925f', href: 'https://nayanet.app/dashboard', countKey: null, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): green — violet sat next to Hub magenta and read as the same color; 'report' bars replace the 'gauge' arc, which read as @ */
-    { id: 'personal',  label: 'Personal',      icon: 'heart', color: '#3f51b5', href: 'https://nayanet.app/personal',  countKey: null, subtab: true, subs: PERSONAL_SUBS, glyphCls: 'glyph-xl' },
-    { id: 'business',  label: 'Business / Work', icon: 'brief', color: '#d4a017', href: 'https://nayanet.app/business',  countKey: null, subtab: true, subs: WORK_SUBS, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): gold — blue sat next to Personal blue and read as the same color */
-    { id: 'space',     label: 'Your World',    icon: 'spaces', color: '#07925f', href: 'https://nayanet.app/space',     countKey: 'spaces', subtab: true, subs: WORLD_SUBS, glyphCls: 'glyph-xl' }, /* EYE-NOTES-FIX §3.5: glyph-xl — the cube read as a globe at 0.283 scale */
-    { id: 'smartworlds', label: 'Smart Worlds', icon: 'doors', color: '#d4a017', href: 'https://nayanet.app/#/hub/spaces', countKey: null, glyphCls: 'glyph-xl' } /* EYE-NOTES §3.8: gold, flow step 6 (was magenta — broke the consecutive flow; base value, not a recolor) — EYE-NOTES-FIX §3.5: glyph-xl, the door read as a globe at 0.283 scale */
+    { id: 'dashboard', label: 'Dashboard',     icon: 'report', color: '#8e24aa', href: 'https://nayanet.app/dashboard', countKey: null, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): green — violet sat next to Hub magenta and read as the same color; 'report' bars replace the 'gauge' arc, which read as @ */
+    { id: 'personal',  label: 'Personal',      icon: 'heart', color: '#0f52ba', href: 'https://nayanet.app/personal',  countKey: null, subtab: true, subs: PERSONAL_SUBS, glyphCls: 'glyph-xl' },
+    { id: 'business',  label: 'Business / Work', icon: 'brief', color: '#07925f', href: 'https://nayanet.app/business',  countKey: null, subtab: true, subs: WORK_SUBS, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): gold — blue sat next to Personal blue and read as the same color */
+    { id: 'space',     label: 'Your World',    icon: 'spaces', color: '#d4a017', href: 'https://nayanet.app/space',     countKey: 'spaces', subtab: true, subs: WORLD_SUBS, glyphCls: 'glyph-xl' }, /* EYE-NOTES-FIX §3.5: glyph-xl — the cube read as a globe at 0.283 scale */
+    { id: 'smartworlds', label: 'Smart Worlds', icon: 'doors', color: '#c2410c', href: 'https://nayanet.app/#/hub/spaces', countKey: null, glyphCls: 'glyph-xl' } /* EYE-NOTES §3.8: gold, flow step 6 (was magenta — broke the consecutive flow; base value, not a recolor) — EYE-NOTES-FIX §3.5: glyph-xl, the door read as a globe at 0.283 scale */
   ];
   /* A world with sub-tabs (v4 Personal; AMENDMENT #1 2026-11-17: Business / Work
      and Your World too): it expands into its Page · Mail · DMs · Connections —
@@ -6145,7 +6155,8 @@ function HubView(params) {
      EYE-NOTES-FIX §3.5: Your Reports wears 'ledger' (the record book) so
      Dashboard can wear 'report' (bars); Smart Growth wears 'check' (a join
      confirmed) — the 'gauge' arc and the 'users' heads both read as @. */
-  const SIDEBAR_FLOW_7_11 = { today: '#0f52ba', reports: '#c62828', growth: '#6d28d9', library: '#3f51b5', connections: '#0e7490' }; /* AMENDMENT #3: rows 7–11 now — the Factory's magenta step leaves with it; red → violet is a widened step, the order kept. HUB FEED 2026-11-17 (A4 eye): Today is sapphire now — orange sat next to Reports red. */
+  /* ROUND 11 (item 10): the sidebar sequence, same start both sides — Hub magenta -> Dashboard purple -> Personal blue -> Business green -> Your World gold -> Smart Worlds orange -> Intel Today red -> Your Reports magenta -> Smart Growth purple -> Intelligent Library blue -> Connections green. */
+  const SIDEBAR_FLOW_7_11 = { today: '#c62828', reports: '#a21caf', growth: '#8e24aa', library: '#0f52ba', connections: '#07925f' }; /* AMENDMENT #3: rows 7–11 now — the Factory's magenta step leaves with it; red → violet is a widened step, the order kept. HUB FEED 2026-11-17 (A4 eye): Today is sapphire now — orange sat next to Reports red. */
   const SIDEBAR_ICON_7_11 = { today: 'feed', reports: 'ledger', growth: 'check' };
   ['today', 'reports', 'growth', 'library', 'connections'] /* AMENDMENT #3: Smart Factory leaves the left — it leads the RIGHT rail now */
     .map(id => R.ROOMS.find(r => r.id === id)).filter(Boolean).forEach(r => {
@@ -8230,28 +8241,7 @@ window.NayaJewels = (() => {
          of the flow, so the search stays flush at the top. Its class rides
          the .hero-restore rules — the Read-more pill's own obsidian-pill
          language, renamed. */
-      var restoreBtn = document.createElement('button');
-      restoreBtn.type = 'button'; restoreBtn.className = 'hero-restore';
-      restoreBtn.setAttribute('aria-label', 'Show the welcome banner again');
-      restoreBtn.innerHTML = '&uarr; Welcome';
-      restoreBtn.addEventListener('click', function () {
-        window._nayaWelcomeClosed = false;
-        restoreBtn.classList.remove('show');
-        /* ROUND 6 2026-11-19 (defect 3): the button only unfolded the banner
-           — it never moved the viewport, so scrolled down at SN-3645 nothing
-           visibly changed (and the next scroll re-folded it). The way back
-           returns the viewport to the top, where the banner lives: unfold the
-           live hero, then scroll the window to 0. _nayaWelcomeReturning holds
-           the scroll listener off the fold while the viewport travels, so the
-           banner is not re-folded mid-flight; the listener clears the guard
-           at the top, and a 2s fallback clears it if the scroll is cut short. */
-        var h = document.querySelector('.main-show .hero') || hero;
-        unfoldEl(h);
-        window._nayaWelcomeReturning = true;
-        setTimeout(function () { window._nayaWelcomeReturning = false; }, 2000);
-        try { window.scrollTo({ top: 0, behavior: (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth') }); } catch (e) { window.scrollTo(0, 0); }
-      });
-      hero._nayaRestoreBtn = restoreBtn;
+      /* ROUND 11 (item 14): the "\u2191 Welcome" restore pill GOES — the stray Welcome control is removed, so it can never overlap the ACTIVITY pill or truncate at 534 (item 20). The banner still folds and unfolds; the way back is the scroll-to-top unfold, which never needed the pill. */
       /* AMENDMENT 2026-11-18 (B, Shawn 00:47Z): the little close button
          moves to the banner's TOP corner — his newest word supersedes the
          22:25Z bottom-right placement. Tapping it closes the banner (the
@@ -8268,8 +8258,7 @@ window.NayaJewels = (() => {
         btn.innerHTML = '&times;';
         btn.addEventListener('click', function () {
           window._nayaWelcomeClosed = true;
-          foldEl(hero);
-          restoreBtn.classList.add('show');
+          foldEl(hero); /* ROUND 11 (item 14): the restore pill is gone — closing the banner no longer summons it. */
         });
         hero.appendChild(btn);
       })();
@@ -8281,15 +8270,7 @@ window.NayaJewels = (() => {
 
     /* — Search sits immediately above the lens tabs, full width — */
     if (searchWrap) wrap.appendChild(searchWrap);
-    /* AMENDMENT 2026-11-18 (B) + HUB FEED FIX2 2026-11-18 (D3): the restore
-       button rides FIXED in the top-right corner — it is appended here so a
-       fresh build that starts closed (the × was tapped in an earlier build
-       this page lifetime) shows it at once, so the way back survives a
-       re-render; position:fixed keeps it out of the flow either way. */
-    if (hero._nayaRestoreBtn) {
-      wrap.appendChild(hero._nayaRestoreBtn);
-      if (window._nayaWelcomeClosed || window._nayaWelcomeFolded) hero._nayaRestoreBtn.classList.add('show');
-    }
+    /* ROUND 11 (item 14): the restore-pill append is gone with the pill. */
 
     /* — Lens: three compact buttons in one row, real navigation — */
     const lens = el('nav', 'lens-tabs');
@@ -13139,6 +13120,26 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 .nav-btn .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nav,var(--purple)) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;padding:2px;animation:orb-spin-rev 96s linear infinite;}
 .nav-sub .ico::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--nav,var(--purple)) 35%, transparent);background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nav,var(--purple)) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;padding:2px;animation:orb-spin 72s linear infinite;}
 .lens-tab .tab-jewel::after{content:'';position:absolute;inset:-4px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, var(--jc,#a06bff) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--jc,#a06bff) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 132s linear infinite;}
+/* ROUND 11 (items 10/12/13/14/22) — SLOW CIRCLE + COMMENT-GREEN + QUOTE + SPECTRUM RIM.
+   The slow-circle ring is harvested verbatim from this file's own sidebar
+   orbit (.nav-btn .ico::after, L13139: conic arc + mask ring + orb-spin) —
+   same pattern, same 120s ambient speed (Laws §1 60–180s), alternating
+   direction. The arc lives OUTSIDE only; the inside stays board black. */
+.ib-layer{position:relative;}
+.ib-layer::after{content:'';position:absolute;inset:-4px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid rgba(142,36,170,.35);background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,#8e24aa 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;padding:2px;animation:orb-spin-rev 120s linear infinite;}
+.rank-row .star-rating{position:relative;--orbit:#8e24aa;}
+.rank-row.rank-intel .star-rating{--orbit:#0f52ba;}
+.rank-row .star-rating::after{content:'';position:absolute;inset:-7px;z-index:1;border-radius:18px;pointer-events:none;border:1px solid rgba(142,36,170,.35);background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--orbit) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;padding:2px;animation:orb-spin 120s linear infinite;}
+.rank-row.rank-intel .star-rating::after{animation:orb-spin-rev 120s linear infinite;}
+@media (prefers-reduced-motion: reduce){.ib-layer::after,.rank-row .star-rating::after{animation:none!important;}}
+.board-actions-center .comment-go{border-color:#07925f;box-shadow:inset 0 1px rgba(255,255,255,.3),inset 0 -3px 7px rgba(0,0,0,.6),0 8px 16px rgba(0,0,0,.55),0 0 16px -2px rgba(7,146,95,.55);}
+.act-jewel{display:inline-flex;vertical-align:-4px;margin-right:6px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(255,255,255,.35));}
+.add-intel-quote{margin-top:14px;padding:16px 18px;border-radius:14px;background:#0b0a0e;border:1px solid rgba(255,255,255,.16);border-left:3px solid #d4a017;font-family:Marcellus,serif;font-size:19px;line-height:1.45;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.1),inset 0 -6px 14px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.5);}
+.add-intel-types .intel-type{padding:10px 16px;}
+.intel-board[data-lit="1"]{outline:2px solid var(--spectrum,#a21caf);outline-offset:3px;}
+.hub-msg-panel{max-height:calc(100vh - 40px);display:flex;flex-direction:column;}
+.hub-msg-panel .hub-msg-body{overflow-y:auto;max-height:calc(100vh - 180px);}
+@media(max-width:640px){.searchWrap{position:relative;z-index:60;}}
 /* NOTE on tab-jewel: inset:-4px (not -6px) — the jewel sits inside
    .primo, which has overflow:hidden; -4px keeps the whole ring inside
    the tab's 13px/10px padding. */
