@@ -30919,4 +30919,27 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) .dash-shell .rail.left{padding-b
   #page-settings{ top:14px !important; }
 }
 </style>
+<script id="os-followup6-20261119">
+/* FOLLOW-ON 6 2026-11-19 - re-bind the two late-parsed controls ONLY.
+   Root cause (checker-verified in bytes): the plain <script id="os-script">
+   at L10574 runs at parse time; the closers IIFE (L10951-10980) queries
+   .rail-right-x at L10954 and [data-right="settings"] at L10976, but the
+   right x HTML is at L29729 and the Settings-row button at L29741 - both
+   AFTER the script - so both queries returned null and the if() guards
+   silently skipped the bindings. The left x (HTML L5005, before the script)
+   did bind, exactly as the byte order predicts. This block sits after ALL
+   rail HTML (just before </body>), so both controls exist when it runs.
+   Scoped to ONLY these two controls, handler bodies harvested verbatim
+   from L10955 (x) and L10976 (Settings row). A re-run of the whole closers
+   IIFE would double-bind the left x, expanders, eco-plus and rail links
+   that already bound at parse time - FORBIDDEN, not done. Guard flag so
+   the block can never bind twice. No CSS, no hrefs, no other control. */
+(function(){
+  if(window.__osFollowup6Bound) return; window.__osFollowup6Bound=true;
+  var rx=document.querySelector('.dash-shell .rail-right-x');
+  if(rx) rx.addEventListener('click', function(){ if(_dashIsDesktop()){ document.body.classList.add('dash-rail-right-collapsed'); document.body.classList.remove('dash-rail-right-open'); _dashSyncPlus(); } else { _dashCloseRightRail(); } });
+  var sr=document.querySelector('.dash-shell .rail.right [data-right="settings"]');
+  if(sr) sr.addEventListener('click', function(e){ if(e&&e.stopPropagation) e.stopPropagation(); _dashCloseRightRail(); var g=document.getElementById('page-settings'); if(g) g.click(); });
+})();
+</script>
 </body></html>
