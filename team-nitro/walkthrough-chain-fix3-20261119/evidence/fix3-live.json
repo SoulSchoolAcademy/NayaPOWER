@@ -1,0 +1,3836 @@
+{
+ "A_after_agree_534": {
+  "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+  "view": "bridge",
+  "bridgeVisible": true,
+  "groups": {
+   "#fpBridgeG1": true,
+   "#fpBridgeG2": true,
+   "#fpBridgeG3": true,
+   "#fpBridgeG4": true,
+   "#fpBridgeFinal": true
+  },
+  "more": {
+   "#fpBridgeMore1": false,
+   "#fpBridgeMore2": false,
+   "#fpBridgeMore3": false,
+   "#fpBridgeMore4": false
+  },
+  "agreedVisible": true,
+  "onwardVisible": true,
+  "onwardText": "Continue \u2014 enter your name",
+  "lsStage": "bridge-agreed",
+  "lsAgreed": "1",
+  "legalH": 55,
+  "linkKids": [
+   {
+    "t": "Terms of Service",
+    "w": 129.8,
+    "h": 38
+   },
+   {
+    "t": "Privacy Policy",
+    "w": 113,
+    "h": 38
+   },
+   {
+    "t": "Cookie Policy",
+    "w": 109.7,
+    "h": 38
+   },
+   {
+    "t": "Refund Policy",
+    "w": 112.2,
+    "h": 38
+   },
+   {
+    "t": "Acceptable Use",
+    "w": 123,
+    "h": 38
+   },
+   {
+    "t": "Community Guidelines",
+    "w": 171.8,
+    "h": 38
+   },
+   {
+    "t": "Copyright / DMCA",
+    "w": 139.3,
+    "h": 38
+   },
+   {
+    "t": "Ambassador Terms",
+    "w": 147.6,
+    "h": 38
+   },
+   {
+    "t": "Membership & Billing",
+    "w": 163.6,
+    "h": 38
+   },
+   {
+    "t": "Young Citizens",
+    "w": 119.1,
+    "h": 38
+   },
+   {
+    "t": "Accessibility",
+    "w": 104.1,
+    "h": 38
+   },
+   {
+    "t": "Disclaimer",
+    "w": 92.9,
+    "h": 38
+   }
+  ],
+  "voices": 0
+ },
+ "A_reload_534": {
+  "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+  "view": "bridge",
+  "bridgeVisible": true,
+  "groups": {
+   "#fpBridgeG1": true,
+   "#fpBridgeG2": true,
+   "#fpBridgeG3": true,
+   "#fpBridgeG4": true,
+   "#fpBridgeFinal": true
+  },
+  "more": {
+   "#fpBridgeMore1": false,
+   "#fpBridgeMore2": false,
+   "#fpBridgeMore3": false,
+   "#fpBridgeMore4": false
+  },
+  "agreedVisible": true,
+  "onwardVisible": true,
+  "onwardText": "Continue \u2014 enter your name",
+  "lsStage": "bridge-agreed",
+  "lsAgreed": "1",
+  "legalH": 55,
+  "linkKids": [
+   {
+    "t": "Terms of Service",
+    "w": 129.8,
+    "h": 38
+   },
+   {
+    "t": "Privacy Policy",
+    "w": 113,
+    "h": 38
+   },
+   {
+    "t": "Cookie Policy",
+    "w": 109.7,
+    "h": 38
+   },
+   {
+    "t": "Refund Policy",
+    "w": 112.2,
+    "h": 38
+   },
+   {
+    "t": "Acceptable Use",
+    "w": 123,
+    "h": 38
+   },
+   {
+    "t": "Community Guidelines",
+    "w": 171.8,
+    "h": 38
+   },
+   {
+    "t": "Copyright / DMCA",
+    "w": 139.3,
+    "h": 38
+   },
+   {
+    "t": "Ambassador Terms",
+    "w": 147.6,
+    "h": 38
+   },
+   {
+    "t": "Membership & Billing",
+    "w": 163.6,
+    "h": 38
+   },
+   {
+    "t": "Young Citizens",
+    "w": 119.1,
+    "h": 38
+   },
+   {
+    "t": "Accessibility",
+    "w": 104.1,
+    "h": 38
+   },
+   {
+    "t": "Disclaimer",
+    "w": 92.9,
+    "h": 38
+   }
+  ],
+  "voices": 0
+ },
+ "A_onward_visible": true,
+ "A_after_onward": {
+  "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+  "stageOn": false,
+  "userNameVisible": true,
+  "userNameFocused": true,
+  "entryFormHidden": false,
+  "returningHidden": true,
+  "jump": {
+   "t": "Jump back in \u2192",
+   "vis": false,
+   "scrollW": 0,
+   "clientW": 0,
+   "truncated": false
+  },
+  "jumpRect": {
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0
+  },
+  "headings": [
+   {
+    "t": "The Collective Agreement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The Royal Unfolding",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The Collective Intelligence Network",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "NayaNET is a world of connected intelligence.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Naya Power is the plug.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Your private brain + a shared community library.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "One brain for every AI.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How collective chain technology works.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Wisdom compounds.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The work, done for you. And you\u2019re hired.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Your world begins here.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The Collective Agreement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What is Naya?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How does it work?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Why does it matter?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The Collective Agreement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What\u2019s the agreement about?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "You\u2019re hired \u2014 what that means",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Imagine 50%, every day",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "A smarter, better internet",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Why should I agree to it?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The Agreement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Plain text",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Terms of Service",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Terms of Service",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Acceptance of Terms",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Eligibility and Registration",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Free Membership and Optional Services",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Personal, Business, and Space Worlds",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Your Content and Intellectual Property",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Privacy and Collective Intelligence",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Artificial Intelligence and Automation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Community Conduct",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Payments and Ambassador Participation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "You are hired: the plain numbers",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Our promise to you",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Account Suspension and Termination",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Disclaimer of Warranties",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Limitation of Liability",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Changes to the Services or Terms",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Governing Law and Disputes",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Privacy Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Privacy Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Our Privacy Commitment",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Information We Collect",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What we never collect",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Aliases, not real names",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Location: never asked for, never revealed",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Why We Use Information",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Private Intelligence and the Smart Vault",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "AI Processing and Connected Services",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Communications",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "When We Share Information",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cookies and Similar Technologies",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Retention and Deletion",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Security",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "International Processing",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Your Privacy Rights",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Children and Young People",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Changes to This Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact and Complaints",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cookie Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cookie Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Overview",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What Are Cookies?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The only two kinds we use",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Categories of Technologies",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Your Choices",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Third-Party Technologies",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cookie Inventory",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Refund & Cancellation Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Refund & Cancellation Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Our Approach",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Free Trials",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "General Refund Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cancellation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How to ask",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Service Failures",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Incorrect or Unauthorized Charges",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Refund Processing",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Digital and Physical Products",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No fine print that contradicts this page",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Acceptable Use Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Acceptable Use Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Purpose",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What you may do",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Lawful and Authorized Use",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No harm to people",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No scams, no lies",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No spam, no flooding",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Security and System Integrity",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Responsible AI Use",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Information and Privacy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Fraud, Referrals, and Manipulation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Intellectual Property",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Enforcement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How to report something harmful",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Community Guidelines",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Community Guidelines",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Respect Every Person",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Do No Harm",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Be Real",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Help each other",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Share Wisdom Responsibly",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Protect Privacy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Build Healthy Communities",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Keep Promotions Honest",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Support Young Citizens",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Resolve Problems Constructively",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What good looks like",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Our Collective Standard",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Copyright & Intellectual Property Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Copyright & Intellectual Property Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Respect for Creators",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Ownership of Member Content",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What you may share",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What you may not share",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "NayaNET Intellectual Property",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Reporting Copyright Infringement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "United States DMCA Notices",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Responses and Counter-Notifications",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Canadian Copyright Procedures",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Repeat Infringement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Misuse of the Complaint Process",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Ambassador Program Terms",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Ambassador Program Terms",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Welcome to the Ambassador Program",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Nature of the Relationship",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What this is not",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Eligibility",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Smart Links and Referral Attribution",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How Commissions Are Earned",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Pending, Approved, and Paid Earnings",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Payment Timing and Limits",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The record",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Refunds, Reversals, and Fraud",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Honest Promotion",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Required Disclosure",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Electronic Marketing",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Independent Responsibilities",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Suspension and Termination",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Program Changes",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No Income Guarantee",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Membership & Billing Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Membership & Billing Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Membership Overview",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Membership Plans",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Quarterly and yearly: pay less per month",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Paid Subscriptions",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Free Trials",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Payment Processing",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Automatic Renewal",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cancellation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Plan Changes",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Ambassadors: you earn when someone joins through y",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "NayaPOWER Connections",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Taxes and Invoices",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Billing Errors and Refunds",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Service Availability",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Changes to Pricing and Terms",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Young Citizens & Family Safety Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Young Citizens & Family Safety Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Our Commitment",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Age Requirements",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The age question, and why we ask it",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Parental and Guardian Involvement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Privacy by Default",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What we never collect from children",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Artificial Intelligence and Learning",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Communication and Community Safety",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Children connect automatically, and we never look",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Commercial Activity and Earnings",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Data Retention and Rights",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Deletion by default, for children too",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What happens when a Young Citizen turns 13",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Reporting a Concern",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Family Participation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Accessibility Statement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Accessibility Statement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "We build for everyone",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The standard we aim for",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What that means, in plain words",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What we have done",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What we are still doing",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How to tell us when something does not work for yo",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How this fits with the rest of NayaNET",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Disclaimer",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Disclaimer",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What NayaNET is",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What NayaNET is not",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Naya is an AI, not a human",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Naya is not a professional adviser",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Use your own judgment for decisions that matter",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What Naya shows you can be wrong",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The system protects itself",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No promise of a particular result",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Remove this account?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   }
+  ],
+  "portal": {
+   "x": 53.399993896484375,
+   "y": 232.39999389648438,
+   "width": 427.20001220703125,
+   "height": 427.20001220703125,
+   "top": 232.39999389648438,
+   "right": 480.6000061035156,
+   "bottom": 659.6000061035156,
+   "left": 53.399993896484375
+  },
+  "others": []
+ },
+ "B_deck_with_agreed_key": {
+  "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=deck",
+  "view": "deck",
+  "bridgeVisible": false,
+  "groups": {
+   "#fpBridgeG1": false,
+   "#fpBridgeG2": false,
+   "#fpBridgeG3": false,
+   "#fpBridgeG4": false,
+   "#fpBridgeFinal": false
+  },
+  "more": {
+   "#fpBridgeMore1": false,
+   "#fpBridgeMore2": false,
+   "#fpBridgeMore3": false,
+   "#fpBridgeMore4": false
+  },
+  "agreedVisible": false,
+  "onwardVisible": false,
+  "onwardText": "Continue \u2014 enter your name",
+  "lsStage": null,
+  "lsAgreed": null,
+  "legalH": 0,
+  "linkKids": [
+   {
+    "t": "Terms of Service",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Privacy Policy",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cookie Policy",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Refund Policy",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Acceptable Use",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Community Guidelines",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Copyright / DMCA",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Ambassador Terms",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Membership & Billing",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Young Citizens",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Accessibility",
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Disclaimer",
+    "w": 0,
+    "h": 0
+   }
+  ],
+  "voices": 0
+ },
+ "B_bridge_with_agreed_key": {
+  "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+  "view": "bridge",
+  "bridgeVisible": true,
+  "groups": {
+   "#fpBridgeG1": true,
+   "#fpBridgeG2": false,
+   "#fpBridgeG3": false,
+   "#fpBridgeG4": false,
+   "#fpBridgeFinal": false
+  },
+  "more": {
+   "#fpBridgeMore1": true,
+   "#fpBridgeMore2": false,
+   "#fpBridgeMore3": false,
+   "#fpBridgeMore4": false
+  },
+  "agreedVisible": false,
+  "onwardVisible": false,
+  "onwardText": "Continue \u2014 enter your name",
+  "lsStage": null,
+  "lsAgreed": null,
+  "legalH": 55,
+  "linkKids": [
+   {
+    "t": "Terms of Service",
+    "w": 129.8,
+    "h": 38
+   },
+   {
+    "t": "Privacy Policy",
+    "w": 113,
+    "h": 38
+   },
+   {
+    "t": "Cookie Policy",
+    "w": 109.7,
+    "h": 38
+   },
+   {
+    "t": "Refund Policy",
+    "w": 112.2,
+    "h": 38
+   },
+   {
+    "t": "Acceptable Use",
+    "w": 123,
+    "h": 38
+   },
+   {
+    "t": "Community Guidelines",
+    "w": 171.8,
+    "h": 38
+   },
+   {
+    "t": "Copyright / DMCA",
+    "w": 139.3,
+    "h": 38
+   },
+   {
+    "t": "Ambassador Terms",
+    "w": 147.6,
+    "h": 38
+   },
+   {
+    "t": "Membership & Billing",
+    "w": 163.6,
+    "h": 38
+   },
+   {
+    "t": "Young Citizens",
+    "w": 119.1,
+    "h": 38
+   },
+   {
+    "t": "Accessibility",
+    "w": 104.1,
+    "h": 38
+   },
+   {
+    "t": "Disclaimer",
+    "w": 92.9,
+    "h": 38
+   }
+  ],
+  "voices": 0
+ },
+ "C_bridge_footer_390": {
+  "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+  "view": "bridge",
+  "bridgeVisible": true,
+  "groups": {
+   "#fpBridgeG1": true,
+   "#fpBridgeG2": false,
+   "#fpBridgeG3": false,
+   "#fpBridgeG4": false,
+   "#fpBridgeFinal": false
+  },
+  "more": {
+   "#fpBridgeMore1": true,
+   "#fpBridgeMore2": false,
+   "#fpBridgeMore3": false,
+   "#fpBridgeMore4": false
+  },
+  "agreedVisible": false,
+  "onwardVisible": false,
+  "onwardText": "Continue \u2014 enter your name",
+  "lsStage": null,
+  "lsAgreed": null,
+  "legalH": 55,
+  "linkKids": [
+   {
+    "t": "Terms of Service",
+    "w": 129.8,
+    "h": 38
+   },
+   {
+    "t": "Privacy Policy",
+    "w": 113,
+    "h": 38
+   },
+   {
+    "t": "Cookie Policy",
+    "w": 109.7,
+    "h": 38
+   },
+   {
+    "t": "Refund Policy",
+    "w": 112.2,
+    "h": 38
+   },
+   {
+    "t": "Acceptable Use",
+    "w": 123,
+    "h": 38
+   },
+   {
+    "t": "Community Guidelines",
+    "w": 171.8,
+    "h": 38
+   },
+   {
+    "t": "Copyright / DMCA",
+    "w": 139.3,
+    "h": 38
+   },
+   {
+    "t": "Ambassador Terms",
+    "w": 147.6,
+    "h": 38
+   },
+   {
+    "t": "Membership & Billing",
+    "w": 163.6,
+    "h": 38
+   },
+   {
+    "t": "Young Citizens",
+    "w": 119.1,
+    "h": 38
+   },
+   {
+    "t": "Accessibility",
+    "w": 104.1,
+    "h": 38
+   },
+   {
+    "t": "Disclaimer",
+    "w": 92.9,
+    "h": 38
+   }
+  ],
+  "voices": 0
+ },
+ "C_bridge_footer_534": {
+  "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+  "view": "bridge",
+  "bridgeVisible": true,
+  "groups": {
+   "#fpBridgeG1": true,
+   "#fpBridgeG2": false,
+   "#fpBridgeG3": false,
+   "#fpBridgeG4": false,
+   "#fpBridgeFinal": false
+  },
+  "more": {
+   "#fpBridgeMore1": true,
+   "#fpBridgeMore2": false,
+   "#fpBridgeMore3": false,
+   "#fpBridgeMore4": false
+  },
+  "agreedVisible": false,
+  "onwardVisible": false,
+  "onwardText": "Continue \u2014 enter your name",
+  "lsStage": null,
+  "lsAgreed": null,
+  "legalH": 55,
+  "linkKids": [
+   {
+    "t": "Terms of Service",
+    "w": 129.8,
+    "h": 38
+   },
+   {
+    "t": "Privacy Policy",
+    "w": 113,
+    "h": 38
+   },
+   {
+    "t": "Cookie Policy",
+    "w": 109.7,
+    "h": 38
+   },
+   {
+    "t": "Refund Policy",
+    "w": 112.2,
+    "h": 38
+   },
+   {
+    "t": "Acceptable Use",
+    "w": 123,
+    "h": 38
+   },
+   {
+    "t": "Community Guidelines",
+    "w": 171.8,
+    "h": 38
+   },
+   {
+    "t": "Copyright / DMCA",
+    "w": 139.3,
+    "h": 38
+   },
+   {
+    "t": "Ambassador Terms",
+    "w": 147.6,
+    "h": 38
+   },
+   {
+    "t": "Membership & Billing",
+    "w": 163.6,
+    "h": 38
+   },
+   {
+    "t": "Young Citizens",
+    "w": 119.1,
+    "h": 38
+   },
+   {
+    "t": "Accessibility",
+    "w": 104.1,
+    "h": 38
+   },
+   {
+    "t": "Disclaimer",
+    "w": 92.9,
+    "h": 38
+   }
+  ],
+  "voices": 0
+ },
+ "D_login_returning_534": {
+  "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/",
+  "stageOn": true,
+  "userNameVisible": true,
+  "userNameFocused": true,
+  "entryFormHidden": false,
+  "returningHidden": true,
+  "jump": {
+   "t": "Jump back in \u2192",
+   "vis": false,
+   "scrollW": 0,
+   "clientW": 0,
+   "truncated": false
+  },
+  "jumpRect": {
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0
+  },
+  "headings": [
+   {
+    "t": "The Collective Agreement",
+    "x": 30,
+    "y": 201,
+    "w": 474,
+    "h": 31
+   },
+   {
+    "t": "The Royal Unfolding",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The Collective Intelligence Network",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "NayaNET is a world of connected intelligence.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Naya Power is the plug.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Your private brain + a shared community library.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "One brain for every AI.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How collective chain technology works.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Wisdom compounds.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The work, done for you. And you\u2019re hired.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Your world begins here.",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The Collective Agreement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What is Naya?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How does it work?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Why does it matter?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The Collective Agreement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What\u2019s the agreement about?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "You\u2019re hired \u2014 what that means",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Imagine 50%, every day",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "A smarter, better internet",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Why should I agree to it?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The Agreement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Plain text",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Terms of Service",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Terms of Service",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Acceptance of Terms",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Eligibility and Registration",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Free Membership and Optional Services",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Personal, Business, and Space Worlds",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Your Content and Intellectual Property",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Privacy and Collective Intelligence",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Artificial Intelligence and Automation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Community Conduct",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Payments and Ambassador Participation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "You are hired: the plain numbers",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Our promise to you",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Account Suspension and Termination",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Disclaimer of Warranties",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Limitation of Liability",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Changes to the Services or Terms",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Governing Law and Disputes",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Privacy Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Privacy Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Our Privacy Commitment",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Information We Collect",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What we never collect",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Aliases, not real names",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Location: never asked for, never revealed",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Why We Use Information",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Private Intelligence and the Smart Vault",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "AI Processing and Connected Services",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Communications",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "When We Share Information",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cookies and Similar Technologies",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Retention and Deletion",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Security",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "International Processing",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Your Privacy Rights",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Children and Young People",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Changes to This Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact and Complaints",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cookie Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cookie Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Overview",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What Are Cookies?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The only two kinds we use",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Categories of Technologies",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Your Choices",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Third-Party Technologies",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cookie Inventory",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Refund & Cancellation Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Refund & Cancellation Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Our Approach",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Free Trials",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "General Refund Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cancellation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How to ask",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Service Failures",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Incorrect or Unauthorized Charges",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Refund Processing",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Digital and Physical Products",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No fine print that contradicts this page",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Acceptable Use Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Acceptable Use Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Purpose",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What you may do",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Lawful and Authorized Use",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No harm to people",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No scams, no lies",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No spam, no flooding",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Security and System Integrity",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Responsible AI Use",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Information and Privacy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Fraud, Referrals, and Manipulation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Intellectual Property",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Enforcement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How to report something harmful",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Community Guidelines",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Community Guidelines",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Respect Every Person",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Do No Harm",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Be Real",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Help each other",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Share Wisdom Responsibly",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Protect Privacy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Build Healthy Communities",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Keep Promotions Honest",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Support Young Citizens",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Resolve Problems Constructively",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What good looks like",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Our Collective Standard",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Copyright & Intellectual Property Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Copyright & Intellectual Property Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Respect for Creators",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Ownership of Member Content",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What you may share",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What you may not share",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "NayaNET Intellectual Property",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Reporting Copyright Infringement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "United States DMCA Notices",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Responses and Counter-Notifications",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Canadian Copyright Procedures",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Repeat Infringement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Misuse of the Complaint Process",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Ambassador Program Terms",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Ambassador Program Terms",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Welcome to the Ambassador Program",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Nature of the Relationship",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What this is not",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Eligibility",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Smart Links and Referral Attribution",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How Commissions Are Earned",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Pending, Approved, and Paid Earnings",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Payment Timing and Limits",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The record",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Refunds, Reversals, and Fraud",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Honest Promotion",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Required Disclosure",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Electronic Marketing",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Independent Responsibilities",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Suspension and Termination",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Program Changes",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No Income Guarantee",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Membership & Billing Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Membership & Billing Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Membership Overview",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Membership Plans",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Quarterly and yearly: pay less per month",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Paid Subscriptions",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Free Trials",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Payment Processing",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Automatic Renewal",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Cancellation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Plan Changes",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Ambassadors: you earn when someone joins through y",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "NayaPOWER Connections",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Taxes and Invoices",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Billing Errors and Refunds",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Service Availability",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Changes to Pricing and Terms",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Young Citizens & Family Safety Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Young Citizens & Family Safety Policy",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Our Commitment",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Age Requirements",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The age question, and why we ask it",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Parental and Guardian Involvement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Privacy by Default",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What we never collect from children",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Artificial Intelligence and Learning",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Communication and Community Safety",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Children connect automatically, and we never look",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Commercial Activity and Earnings",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Data Retention and Rights",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Deletion by default, for children too",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What happens when a Young Citizen turns 13",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Reporting a Concern",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Family Participation",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Contact",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Accessibility Statement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Accessibility Statement",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "We build for everyone",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The standard we aim for",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What that means, in plain words",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What we have done",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What we are still doing",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How to tell us when something does not work for yo",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "How this fits with the rest of NayaNET",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Disclaimer",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Disclaimer",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What NayaNET is",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What NayaNET is not",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Naya is an AI, not a human",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Naya is not a professional adviser",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Use your own judgment for decisions that matter",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "What Naya shows you can be wrong",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "The system protects itself",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "No promise of a particular result",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Remove this account?",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   }
+  ],
+  "portal": {
+   "x": 53.399993896484375,
+   "y": 232.39999389648438,
+   "width": 427.20001220703125,
+   "height": 427.20001220703125,
+   "top": 232.39999389648438,
+   "right": 480.6000061035156,
+   "bottom": 659.6000061035156,
+   "left": 53.399993896484375
+  },
+  "others": []
+ },
+ "D_audio": {
+  "voices": 0,
+  "speaking": false,
+  "pending": true
+ },
+ "E_taken_jordantest": {
+  "url": "https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/walk-v23-assembly-20261114/identity-fixed.html&ref=walkthrough/chain-fix3-20261119&cb=63217489bd0e31662f1a516177da4f52ac2dd6c4&t=1795054391",
+  "vw": 1920,
+  "vh": 999,
+  "aliasValue": "jordantest",
+  "statusText": "already claimed",
+  "statusState": "taken",
+  "noteHidden": false,
+  "noteText": "That alias is already claimed. If it is yours, use your device key below \u2014 a name alone never opens it.",
+  "keyPanelHidden": false,
+  "keyPanelVisible": true,
+  "enterBtn": {
+   "t": "ENTER",
+   "cls": "activate-btn dim",
+   "vis": true
+  },
+  "heroText": "Jordantest",
+  "heroHidden": false,
+  "certNo": "Certificate N\u00ba",
+  "keyValueText": "",
+  "keyValueVisible": false,
+  "keyCopyText": "Copy key",
+  "keyCopyVisible": false,
+  "certKeyHidden": true,
+  "crests": [
+   {
+    "cls": "corner-crest cm-tl",
+    "x": -7,
+    "y": 116,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-tr",
+    "x": 1771,
+    "y": 116,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-bl",
+    "x": -7,
+    "y": 793,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-br",
+    "x": 1771,
+    "y": 793,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   }
+  ],
+  "lsName": null,
+  "lsAlias": null
+ },
+ "E_hero_echo_nova": {
+  "url": "https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/walk-v23-assembly-20261114/identity-fixed.html&ref=walkthrough/chain-fix3-20261119&cb=63217489bd0e31662f1a516177da4f52ac2dd6c4&t=1795054391",
+  "vw": 1920,
+  "vh": 999,
+  "aliasValue": "nova eye test",
+  "statusText": "already claimed",
+  "statusState": "taken",
+  "noteHidden": false,
+  "noteText": "That alias is already claimed. If it is yours, use your device key below \u2014 a name alone never opens it.",
+  "keyPanelHidden": false,
+  "keyPanelVisible": true,
+  "enterBtn": {
+   "t": "ENTER",
+   "cls": "activate-btn dim",
+   "vis": true
+  },
+  "heroText": "Nova Eye Test",
+  "heroHidden": false,
+  "certNo": "Certificate N\u00ba",
+  "keyValueText": "",
+  "keyValueVisible": false,
+  "keyCopyText": "Copy key",
+  "keyCopyVisible": false,
+  "certKeyHidden": true,
+  "crests": [
+   {
+    "cls": "corner-crest cm-tl",
+    "x": -7,
+    "y": 116,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-tr",
+    "x": 1771,
+    "y": 116,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-bl",
+    "x": -7,
+    "y": 793,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-br",
+    "x": 1771,
+    "y": 793,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   }
+  ],
+  "lsName": null,
+  "lsAlias": null
+ },
+ "E_available_fix3livecheck": {
+  "url": "https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/walk-v23-assembly-20261114/identity-fixed.html&ref=walkthrough/chain-fix3-20261119&cb=63217489bd0e31662f1a516177da4f52ac2dd6c4&t=1795054391&name=Jordan%20Test",
+  "vw": 1920,
+  "vh": 999,
+  "aliasValue": "fix3livecheck",
+  "statusText": "Available \u2014 it's yours to claim.",
+  "statusState": "available",
+  "noteHidden": true,
+  "noteText": "One step left: set HUB_APP_URL in this page to your Intelligent Hub address, then this button takes you straight in.",
+  "keyPanelHidden": true,
+  "keyPanelVisible": false,
+  "enterBtn": {
+   "t": "ENTER",
+   "cls": "activate-btn armed",
+   "vis": true
+  },
+  "heroText": "Fix3livecheck",
+  "heroHidden": false,
+  "certNo": "Certificate N\u00ba",
+  "keyValueText": "",
+  "keyValueVisible": false,
+  "keyCopyText": "Copy key",
+  "keyCopyVisible": false,
+  "certKeyHidden": true,
+  "crests": [
+   {
+    "cls": "corner-crest cm-tl",
+    "x": -7,
+    "y": 116,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-tr",
+    "x": 1771,
+    "y": 116,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-bl",
+    "x": -7,
+    "y": 793,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-br",
+    "x": 1771,
+    "y": 793,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   }
+  ],
+  "lsName": null,
+  "lsAlias": null
+ },
+ "E_after_claim": {
+  "url": "https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/walk-v23-assembly-20261114/identity-fixed.html&ref=walkthrough/chain-fix3-20261119&cb=63217489bd0e31662f1a516177da4f52ac2dd6c4&t=1795054391&name=Jordan%20Test",
+  "vw": 1920,
+  "vh": 999,
+  "aliasValue": "fix3livecheck",
+  "statusText": "Available \u2014 it's yours to claim.",
+  "statusState": "available",
+  "noteHidden": true,
+  "noteText": "One step left: set HUB_APP_URL in this page to your Intelligent Hub address, then this button takes you straight in.",
+  "keyPanelHidden": true,
+  "keyPanelVisible": false,
+  "enterBtn": {
+   "t": "ENTER",
+   "cls": "activate-btn armed",
+   "vis": true
+  },
+  "heroText": "Fix3livecheck",
+  "heroHidden": false,
+  "certNo": "Certificate N\u00ba\u00a0000842",
+  "keyValueText": "nayanet_key_72vumj4m82e",
+  "keyValueVisible": true,
+  "keyCopyText": "Copy key",
+  "keyCopyVisible": true,
+  "certKeyHidden": false,
+  "crests": [
+   {
+    "cls": "corner-crest cm-tl",
+    "x": -7,
+    "y": 116,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-tr",
+    "x": 1771,
+    "y": 116,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-bl",
+    "x": -7,
+    "y": 793,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-br",
+    "x": 1771,
+    "y": 793,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   }
+  ],
+  "lsName": "Fix3livecheck",
+  "lsAlias": "fix3livecheck"
+ },
+ "E_copy_pill_found": true,
+ "E_copy_after_pill_tap": {
+  "url": "https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/walk-v23-assembly-20261114/identity-fixed.html&ref=walkthrough/chain-fix3-20261119&cb=63217489bd0e31662f1a516177da4f52ac2dd6c4&t=1795054391&name=Jordan%20Test",
+  "vw": 1920,
+  "vh": 999,
+  "aliasValue": "fix3livecheck",
+  "statusText": "Available \u2014 it's yours to claim.",
+  "statusState": "available",
+  "noteHidden": true,
+  "noteText": "One step left: set HUB_APP_URL in this page to your Intelligent Hub address, then this button takes you straight in.",
+  "keyPanelHidden": true,
+  "keyPanelVisible": false,
+  "enterBtn": {
+   "t": "ENTER",
+   "cls": "activate-btn armed",
+   "vis": true
+  },
+  "heroText": "Fix3livecheck",
+  "heroHidden": false,
+  "certNo": "Certificate N\u00ba\u00a0000842",
+  "keyValueText": "Copied \u25c6",
+  "keyValueVisible": true,
+  "keyCopyText": "Copied \u25c6",
+  "keyCopyVisible": true,
+  "certKeyHidden": false,
+  "crests": [
+   {
+    "cls": "corner-crest cm-tl",
+    "x": -7,
+    "y": 116,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-tr",
+    "x": 1771,
+    "y": 116,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-bl",
+    "x": -7,
+    "y": 793,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   },
+   {
+    "cls": "corner-crest cm-br",
+    "x": 1771,
+    "y": 793,
+    "w": 156,
+    "h": 149,
+    "clipped": true
+   }
+  ],
+  "lsName": "Fix3livecheck",
+  "lsAlias": "fix3livecheck"
+ },
+ "E_copy_clipboard": "nayanet_key_72vumj4m82e",
+ "E_cert_534_arrival": {
+  "url": "https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/walk-v23-assembly-20261114/identity-fixed.html&ref=walkthrough/chain-fix3-20261119&cb=63217489bd0e31662f1a516177da4f52ac2dd6c4&t=1795054391",
+  "vw": 534,
+  "vh": 900,
+  "aliasValue": "",
+  "statusText": "",
+  "statusState": "neutral",
+  "noteHidden": true,
+  "noteText": "One step left: set HUB_APP_URL in this page to your Intelligent Hub address, then this button takes you straight in.",
+  "keyPanelHidden": true,
+  "keyPanelVisible": false,
+  "enterBtn": {
+   "t": "ENTER",
+   "cls": "activate-btn",
+   "vis": true
+  },
+  "heroText": "",
+  "heroHidden": true,
+  "certNo": "Certificate N\u00ba",
+  "keyValueText": "",
+  "keyValueVisible": false,
+  "keyCopyText": "Copy key",
+  "keyCopyVisible": false,
+  "certKeyHidden": true,
+  "crests": [
+   {
+    "cls": "corner-crest cm-tl",
+    "x": 5,
+    "y": 111,
+    "w": 75,
+    "h": 75,
+    "clipped": false
+   },
+   {
+    "cls": "corner-crest cm-tr",
+    "x": 453,
+    "y": 111,
+    "w": 75,
+    "h": 75,
+    "clipped": false
+   },
+   {
+    "cls": "corner-crest cm-bl",
+    "x": 5,
+    "y": 733,
+    "w": 75,
+    "h": 75,
+    "clipped": false
+   },
+   {
+    "cls": "corner-crest cm-br",
+    "x": 453,
+    "y": 733,
+    "w": 75,
+    "h": 75,
+    "clipped": false
+   }
+  ],
+  "lsName": null,
+  "lsAlias": null
+ }
+}

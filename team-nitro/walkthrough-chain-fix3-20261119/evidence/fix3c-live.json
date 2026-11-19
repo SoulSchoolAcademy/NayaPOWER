@@ -1,0 +1,221 @@
+{
+ "A_certified_534": {
+  "vw": 534,
+  "vh": 900,
+  "certNo": "000846",
+  "heroText": "Fix3certc",
+  "statusVisible": false,
+  "statusText": "Available \u2014 it's yours to claim.",
+  "keyValueVisible": true,
+  "lsName": "Fix3certc",
+  "plaque": {
+   "y": 98,
+   "bottom": 850,
+   "h": 752
+  },
+  "faceH": 750,
+  "switchRect": {
+   "y": 796,
+   "bottom": 829,
+   "insidePlaque": true
+  },
+  "leaves": [
+   {
+    "t": "Certificate of Collective Agreement",
+    "cls": "cert-title",
+    "x": 94,
+    "y": 245,
+    "w": 346,
+    "h": 17
+   },
+   {
+    "t": "This certifies that",
+    "cls": "cert-certifies",
+    "x": 205,
+    "y": 268,
+    "w": 123,
+    "h": 20
+   },
+   {
+    "t": "Fix3certc",
+    "cls": "cert-name name-settle",
+    "x": 156,
+    "y": 307,
+    "w": 221,
+    "h": 53
+   },
+   {
+    "t": "has signed the Collective Agreement",
+    "cls": "cert-member-signed",
+    "x": 25,
+    "y": 366,
+    "w": 484,
+    "h": 23
+   },
+   {
+    "t": "and is now a member of the Society of NayaNET \u2014 a new digita",
+    "cls": "cert-member-join",
+    "x": 25,
+    "y": 389,
+    "w": 484,
+    "h": 46
+   },
+   {
+    "t": "Smart Link",
+    "cls": "id-box-label",
+    "x": 216,
+    "y": 451,
+    "w": 103,
+    "h": 16
+   },
+   {
+    "t": "fix3certc.nayanet.app",
+    "cls": "id-box-value ignited",
+    "x": 178,
+    "y": 470,
+    "w": 177,
+    "h": 22
+   },
+   {
+    "t": "Secure Smart Mail ID",
+    "cls": "id-box-label",
+    "x": 168,
+    "y": 512,
+    "w": 199,
+    "h": 16
+   },
+   {
+    "t": "fix3certc",
+    "cls": "id-box-value",
+    "x": 231,
+    "y": 531,
+    "w": 72,
+    "h": 22
+   },
+   {
+    "t": "000846",
+    "cls": "",
+    "x": 293,
+    "y": 567,
+    "w": 51,
+    "h": 16
+   },
+   {
+    "t": "\u00b7",
+    "cls": "regalia-dot",
+    "x": 355,
+    "y": 561,
+    "w": 5,
+    "h": 23
+   },
+   {
+    "t": "Certified \u00b7 November 19, 2026 \u00b7 03:03",
+    "cls": "cert-date",
+    "x": 111,
+    "y": 590,
+    "w": 312,
+    "h": 17
+   },
+   {
+    "t": "Your device key",
+    "cls": "id-box-label",
+    "x": 192,
+    "y": 621,
+    "w": 149,
+    "h": 16
+   },
+   {
+    "t": "nayanet_key_6wfx1bwtffh",
+    "cls": "id-box-value key-value",
+    "x": 136,
+    "y": 646,
+    "w": 261,
+    "h": 37
+   },
+   {
+    "t": "Copy key",
+    "cls": "key-copy",
+    "x": 203,
+    "y": 697,
+    "w": 129,
+    "h": 40
+   },
+   {
+    "t": "ENTER",
+    "cls": "ab-title",
+    "x": 221,
+    "y": 754,
+    "w": 91,
+    "h": 25
+   },
+   {
+    "t": "Pick a different alias",
+    "cls": "cert-more cert-switch",
+    "x": 157,
+    "y": 796,
+    "w": 221,
+    "h": 33
+   }
+  ],
+  "overlaps": []
+ },
+ "A_crests_1920": [
+  {
+   "cls": "corner-crest cm-tl",
+   "x": 5,
+   "right": 161,
+   "clipped": false
+  },
+  {
+   "cls": "corner-crest cm-tr",
+   "x": 1759,
+   "right": 1915,
+   "clipped": false
+  },
+  {
+   "cls": "corner-crest cm-bl",
+   "x": 5,
+   "right": 161,
+   "clipped": false
+  },
+  {
+   "cls": "corner-crest cm-br",
+   "x": 1759,
+   "right": 1915,
+   "clipped": false
+  }
+ ],
+ "B_returning_534": {
+  "returningHidden": false,
+  "entryFormHidden": true,
+  "stageOn": false,
+  "jump": {
+   "t": "Jump back in \u2192",
+   "vis": true,
+   "scrollW": 212,
+   "clientW": 212,
+   "truncated": false,
+   "rect": {
+    "x": 160,
+    "y": 393,
+    "w": 214,
+    "h": 41
+   }
+  },
+  "others": [
+   {
+    "t": "Jump back in as Walker Test \u2192",
+    "vis": true,
+    "scrollW": 225,
+    "clientW": 225,
+    "truncated": false,
+    "rect": {
+     "x": 136,
+     "y": 506,
+     "w": 227,
+     "h": 31
+    }
+   }
+  ]
+ }
+}

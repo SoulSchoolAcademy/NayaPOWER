@@ -1,0 +1,441 @@
+{
+ "A_crests_1920": [
+  {
+   "cls": "corner-crest cm-tl",
+   "x": 5,
+   "y": 128,
+   "w": 156,
+   "h": 149,
+   "right": 161,
+   "bottom": 276,
+   "clipped": false
+  },
+  {
+   "cls": "corner-crest cm-tr",
+   "x": 1759,
+   "y": 128,
+   "w": 156,
+   "h": 149,
+   "right": 1915,
+   "bottom": 276,
+   "clipped": false
+  },
+  {
+   "cls": "corner-crest cm-bl",
+   "x": 5,
+   "y": 781,
+   "w": 156,
+   "h": 149,
+   "right": 161,
+   "bottom": 929,
+   "clipped": false
+  },
+  {
+   "cls": "corner-crest cm-br",
+   "x": 1759,
+   "y": 781,
+   "w": 156,
+   "h": 149,
+   "right": 1915,
+   "bottom": 929,
+   "clipped": false
+  }
+ ],
+ "A_crests_534": [
+  {
+   "cls": "corner-crest cm-tl",
+   "x": 5,
+   "y": 111,
+   "w": 75,
+   "h": 75,
+   "right": 81,
+   "bottom": 187,
+   "clipped": false
+  },
+  {
+   "cls": "corner-crest cm-tr",
+   "x": 453,
+   "y": 111,
+   "w": 75,
+   "h": 75,
+   "right": 529,
+   "bottom": 187,
+   "clipped": false
+  },
+  {
+   "cls": "corner-crest cm-bl",
+   "x": 5,
+   "y": 733,
+   "w": 75,
+   "h": 75,
+   "right": 81,
+   "bottom": 809,
+   "clipped": false
+  },
+  {
+   "cls": "corner-crest cm-br",
+   "x": 453,
+   "y": 733,
+   "w": 75,
+   "h": 75,
+   "right": 529,
+   "bottom": 809,
+   "clipped": false
+  }
+ ],
+ "B_returning_800ms": {
+  "t": 1795055650991,
+  "returningHidden": true,
+  "entryFormHidden": false,
+  "jump": {
+   "t": "Jump back in \u2192",
+   "vis": false,
+   "scrollW": 0,
+   "clientW": 0,
+   "truncated": false,
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   }
+  },
+  "others": [],
+  "stageOn": true
+ },
+ "B_returning_3300ms": {
+  "t": 1795055657076,
+  "returningHidden": true,
+  "entryFormHidden": false,
+  "jump": {
+   "t": "Jump back in \u2192",
+   "vis": false,
+   "scrollW": 0,
+   "clientW": 0,
+   "truncated": false,
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   }
+  },
+  "others": [],
+  "stageOn": true
+ },
+ "C_available": {
+  "vw": 534,
+  "vh": 900,
+  "certNo": null,
+  "heroText": "Fix3cert534",
+  "keyValueText": "",
+  "keyValueVisible": false,
+  "lsName": null,
+  "leaves": [
+   {
+    "t": "Certificate of Collective Agreement",
+    "cls": "cert-title",
+    "x": 94,
+    "y": 201,
+    "w": 346,
+    "h": 17
+   },
+   {
+    "t": "This certifies that",
+    "cls": "cert-certifies",
+    "x": 205,
+    "y": 218,
+    "w": 123,
+    "h": 20
+   },
+   {
+    "t": "Fix3cert534",
+    "cls": "cert-name",
+    "x": 19,
+    "y": 247,
+    "w": 496,
+    "h": 53
+   },
+   {
+    "t": "has signed the Collective Agreement",
+    "cls": "cert-member-signed",
+    "x": 46,
+    "y": 372,
+    "w": 443,
+    "h": 17
+   },
+   {
+    "t": "and is now a member of the Society of NayaNET \u2014 a new digita",
+    "cls": "cert-member-join",
+    "x": 46,
+    "y": 389,
+    "w": 443,
+    "h": 17
+   },
+   {
+    "t": "Available \u2014 it's yours to claim.",
+    "cls": "alias-status",
+    "x": 163,
+    "y": 409,
+    "w": 209,
+    "h": 22
+   },
+   {
+    "t": "Smart Link",
+    "cls": "id-box-label",
+    "x": 216,
+    "y": 436,
+    "w": 103,
+    "h": 16
+   },
+   {
+    "t": "fix3cert534.nayanet.app",
+    "cls": "id-box-value ignited",
+    "x": 175,
+    "y": 455,
+    "w": 184,
+    "h": 20
+   },
+   {
+    "t": "Secure Smart Mail ID",
+    "cls": "id-box-label",
+    "x": 168,
+    "y": 484,
+    "w": 199,
+    "h": 16
+   },
+   {
+    "t": "fix3cert534",
+    "cls": "id-box-value",
+    "x": 224,
+    "y": 503,
+    "w": 85,
+    "h": 20
+   },
+   {
+    "t": "ENTER",
+    "cls": "ab-title",
+    "x": 221,
+    "y": 545,
+    "w": 91,
+    "h": 25
+   },
+   {
+    "t": "i",
+    "cls": "cert-info",
+    "x": 476,
+    "y": 625,
+    "w": 20,
+    "h": 20
+   },
+   {
+    "t": "One person. One route. Forever.",
+    "cls": "cert-claim",
+    "x": 148,
+    "y": 647,
+    "w": 239,
+    "h": 20
+   },
+   {
+    "t": "Your alias is your Smart Link, your Smart Mail, your identit",
+    "cls": "cert-benefit",
+    "x": 60,
+    "y": 669,
+    "w": 414,
+    "h": 19
+   },
+   {
+    "t": "Your name is never shared \u2014 private by default.",
+    "cls": "cert-privacy",
+    "x": 118,
+    "y": 690,
+    "w": 298,
+    "h": 18
+   },
+   {
+    "t": "Why this matters",
+    "cls": "cert-more",
+    "x": 175,
+    "y": 710,
+    "w": 183,
+    "h": 33
+   }
+  ],
+  "overlaps": []
+ },
+ "C_certified_534": {
+  "vw": 534,
+  "vh": 900,
+  "certNo": null,
+  "heroText": "Fix3cert534",
+  "keyValueText": "nayanet_key_2fw1c4fobik",
+  "keyValueVisible": true,
+  "lsName": "Fix3cert534",
+  "leaves": [
+   {
+    "t": "Certificate of Collective Agreement",
+    "cls": "cert-title",
+    "x": 94,
+    "y": 273,
+    "w": 346,
+    "h": 17
+   },
+   {
+    "t": "This certifies that",
+    "cls": "cert-certifies",
+    "x": 205,
+    "y": 296,
+    "w": 123,
+    "h": 20
+   },
+   {
+    "t": "Fix3cert534",
+    "cls": "cert-name name-settle",
+    "x": 127,
+    "y": 307,
+    "w": 280,
+    "h": 53
+   },
+   {
+    "t": "has signed the Collective Agreement",
+    "cls": "cert-member-signed",
+    "x": 25,
+    "y": 366,
+    "w": 484,
+    "h": 23
+   },
+   {
+    "t": "and is now a member of the Society of NayaNET \u2014 a new digita",
+    "cls": "cert-member-join",
+    "x": 25,
+    "y": 389,
+    "w": 484,
+    "h": 46
+   },
+   {
+    "t": "Available \u2014 it's yours to claim.",
+    "cls": "alias-status",
+    "x": 163,
+    "y": 402,
+    "w": 209,
+    "h": 22
+   },
+   {
+    "t": "Smart Link",
+    "cls": "id-box-label",
+    "x": 216,
+    "y": 432,
+    "w": 103,
+    "h": 16
+   },
+   {
+    "t": "fix3cert534.nayanet.app",
+    "cls": "id-box-value ignited",
+    "x": 168,
+    "y": 451,
+    "w": 197,
+    "h": 22
+   },
+   {
+    "t": "Secure Smart Mail ID",
+    "cls": "id-box-label",
+    "x": 168,
+    "y": 493,
+    "w": 199,
+    "h": 16
+   },
+   {
+    "t": "fix3cert534",
+    "cls": "id-box-value",
+    "x": 221,
+    "y": 512,
+    "w": 92,
+    "h": 22
+   },
+   {
+    "t": "000843",
+    "cls": "",
+    "x": 293,
+    "y": 550,
+    "w": 51,
+    "h": 16
+   },
+   {
+    "t": "\u00b7",
+    "cls": "regalia-dot",
+    "x": 355,
+    "y": 544,
+    "w": 5,
+    "h": 23
+   },
+   {
+    "t": "Certified \u00b7 November 19, 2026 \u00b7 02:34",
+    "cls": "cert-date",
+    "x": 111,
+    "y": 573,
+    "w": 312,
+    "h": 17
+   },
+   {
+    "t": "Your device key",
+    "cls": "id-box-label",
+    "x": 192,
+    "y": 604,
+    "w": 149,
+    "h": 16
+   },
+   {
+    "t": "nayanet_key_2fw1c4fobik",
+    "cls": "id-box-value key-value",
+    "x": 136,
+    "y": 629,
+    "w": 261,
+    "h": 37
+   },
+   {
+    "t": "Copy key",
+    "cls": "key-copy",
+    "x": 203,
+    "y": 684,
+    "w": 129,
+    "h": 46
+   },
+   {
+    "t": "ENTER",
+    "cls": "ab-title",
+    "x": 221,
+    "y": 749,
+    "w": 91,
+    "h": 25
+   },
+   {
+    "t": "Pick a different alias",
+    "cls": "cert-more cert-switch",
+    "x": 157,
+    "y": 794,
+    "w": 221,
+    "h": 33
+   }
+  ],
+  "overlaps": [
+   {
+    "a": "This certifies that",
+    "b": "Fix3cert534",
+    "ox": 123,
+    "oy": 9
+   },
+   {
+    "a": "and is now a member of the Society of NayaNET \u2014 a new digita",
+    "b": "Available \u2014 it's yours to claim.",
+    "ox": 209,
+    "oy": 22
+   },
+   {
+    "a": "and is now a member of the Society of NayaNET \u2014 a new digita",
+    "b": "Smart Link",
+    "ox": 103,
+    "oy": 3
+   }
+  ]
+ }
+}
