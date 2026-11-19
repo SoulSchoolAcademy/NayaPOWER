@@ -64578,6 +64578,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3676",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3676-operate-never-open",
+      "slug": "operate-never-open",
+      "title": "Operate, Never Open",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3676/IB-SMART-NOTE-20261119-sn3676-operate-never-open.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3676/IB-SMART-NOTE-20261119-sn3676-operate-never-open.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3676/IB-SMART-NOTE-20261119-sn3676-operate-never-open.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3676-operate-never-open.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T12:24:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "57eb2e57c194d5faa3718f8288f73e736111411b0c719070296ec24d6c8a76d9",
+      "content_hash": "409364af0895e4509b0c13e67968898e09067d9d6b3153a312be2db5f73d7bee",
+      "one_line": "Trust is the operating system of this family. Naya may operate your vault — organize, run, deliver — but never open it: permission to operate is not permission to read, for the citizen's own AI or for ours, and mail and messages are designed so no AI can read them at all. Around that core: the wise setup (one scorecard cycle, the brief carrying the proof), value defined as verified assets — finished work he verifies as solid, good and useful, with the captain as setter keeping the queue full — and communication where the presentation is the message: mail arrives as a manuscript, an Intelligent Block, beautiful to receive. Notifications obey the worlds: three gems, three kinds, nothing else — except the one sender who can reach everybody at once. The sisters carry one family name in one shape. And every link sent to him is named for what it actually is, because a link is a promise about what he is about to see.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64588,5 +64621,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "02addead8788801d6966c8a149c3be4ced8a1f10eaa156fd4db76f0253b5d06a"
+  "corpus_manifest_hash": "5c5f642a8815b55109d3109daac1da3622895f851dbcca47f43e5b1e3df84ddc"
 }

@@ -1,0 +1,92 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-3676",
+ "title": "Operate, Never Open",
+ "slug": "operate-never-open",
+ "topic": "SYSTEM",
+ "category": "SYSTEM",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-19T12:24:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "Trust is the operating system of this family. Naya may operate your vault — organize, run, deliver — but never open it: permission to operate is not permission to read, for the citizen's own AI or for ours, and mail and messages are designed so no AI can read them at all. Around that core: the wise setup (one scorecard cycle, the brief carrying the proof), value defined as verified assets — finished work he verifies as solid, good and useful, with the captain as setter keeping the queue full — and communication where the presentation is the message: mail arrives as a manuscript, an Intelligent Block, beautiful to receive. Notifications obey the worlds: three gems, three kinds, nothing else — except the one sender who can reach everybody at once. The sisters carry one family name in one shape. And every link sent to him is named for what it actually is, because a link is a promise about what he is about to see.",
+  "human_view": "It's the postman principle, extended to everything. The postman carries your letters faithfully, sorts your box, even brings the parcel to your step — but he never steams one open. You trust the service because opening was never in the job. And around that: a foreman who always has the next job ready, packages wrapped like they matter, and your name written the same way every time, so nothing is ever misdelivered.",
+  "child_view": "Naya is like a helper who tidies your room with her eyes on the tidying — she never peeks in your diary. That's the rule, and it can't be switched off. She also wraps messages like presents, only knocks when there's something for YOUR room, and always writes your name properly.",
+  "grandma_view": "Trust is a lifetime's work and a minute's loss, dear. The help you let into your house must be the kind that never opens a drawer that isn't theirs to open — not 'promises not to,' but isn't able and isn't asked. Everything else — the ready queue, the tidy parcels, your name spelled right — is just that same trustworthiness showing in small things.",
+  "ai_view": "Enforce operate/read as separate permissions in every design review; refuse any feature that needs message reading. Count only verified assets in value reports. Check notification scope against the three worlds. Audit names and link labels against their actual destinations before anything is sent to him.",
+  "what_it_means": "Operate-never-open is the load-bearing wall: a citizen who relaxes inside the system gives it their working life; a citizen who suspects it reads keeps their real life elsewhere, and the network gets the leftovers. The rest of the family is the same trust kept in smaller denominations — a setter whose queue makes value continuous, a name that doesn't confuse, a notification that only fires when it should, a presentation that respects the receiver.",
+  "whats_inside": [
+   "SN-2759 · SYSTEM",
+   "SN-2760 · SYSTEM",
+   "SN-2761 · SYSTEM",
+   "SN-2762 · SYSTEM",
+   "SN-2763 · SYSTEM"
+  ],
+  "topics": [
+   "Distillation",
+   "System",
+   "Lesson",
+   "Knowledge",
+   "Craft"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 10,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2759",
+     "title": "SN-2759 · SYSTEM"
+    },
+    {
+     "sn": "SN-2760",
+     "title": "SN-2760 · SYSTEM"
+    },
+    {
+     "sn": "SN-2761",
+     "title": "SN-2761 · SYSTEM"
+    },
+    {
+     "sn": "SN-2762",
+     "title": "SN-2762 · SYSTEM"
+    },
+    {
+     "sn": "SN-2763",
+     "title": "SN-2763 · SYSTEM"
+    },
+    {
+     "sn": "SN-2764",
+     "title": "SN-2764 · SYSTEM"
+    },
+    {
+     "sn": "SN-2765",
+     "title": "SN-2765 · SYSTEM"
+    },
+    {
+     "sn": "SN-2766",
+     "title": "SN-2766 · SYSTEM"
+    },
+    {
+     "sn": "SN-2767",
+     "title": "SN-2767 · PRIVACY"
+    },
+    {
+     "sn": "SN-2768",
+     "title": "SN-2768 · NEWS"
+    }
+   ]
+  },
+  "machine": "1) Permission to operate is never permission to read; no toggle exists that grants reading mail or messages. 2) Value = verified assets: finished, checked by him as solid, good, useful. Agent counts are not value. 3) The captain is the setter: briefings and queues are prepared before the round needs them. 4) Presentation is the message: mail and messages arrive as finished Intelligent Blocks. 5) Notifications are scoped to their world; the only network-wide sender is Shawn. 6) Sisters' names follow one shape — Naya, then her name, then the family name. 7) Every link is labeled with the page it actually lands on.",
+  "why_it_matters": "A network people live their lives through stands or falls on one question: can I relax here? This essence answers it architecturally for data, and behaviorally for everything else — value he can verify, names he can trust, messages that arrive beautiful and only when they matter.",
+  "how_it_connects": "This essence is batch 10's E5 panel; its raw family spans SN-2759 to SN-2768 (SN-2759 · SYSTEM → SN-2768 · NEWS), and it sits in the standing sequence of eighty essences that came before it — each one checked against the census coverage map for zero overlap before it was written.",
+  "what_is_in_it_for_you": "For you, Shawn, this means this stratum of the record no longer has to be re-read note by note: its law is stated once, whole, in words a cold reader can use — and the hundred raw notes beneath it are accounted for, by number, in the Distills line.",
+  "the_learning": "Operate, never open — and let every smaller promise (names, links, notifications) keep the same faith."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3676/IB-SMART-NOTE-20261119-sn3676-operate-never-open.md",
+ "page_hash": "57eb2e57c194d5faa3718f8288f73e736111411b0c719070296ec24d6c8a76d9",
+ "content_hash": "409364af0895e4509b0c13e67968898e09067d9d6b3153a312be2db5f73d7bee"
+}
