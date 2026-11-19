@@ -477,14 +477,14 @@ body.rail-collapsed .contact-rail{display:none}
    96px desktop / 64px tablet / 32px phone). Obsidian first; purple = rim
    light + accent only, never a wash. */
 :root{--bw:96px}
-.royal-frame{position:fixed;inset:0;z-index:60;pointer-events:none;border:var(--bw,96px) solid transparent;border-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/smart-messenger-icons-20261119/master-frame.png&ref=messenger-mail-frame-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a&t=1795054982) 300 / var(--bw,96px) / 0 round!important}
+.royal-frame{position:fixed;inset:0;z-index:60;pointer-events:none;border:var(--bw,96px) solid transparent;border-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/smart-messenger-icons-20261119/master-frame.png&ref=messenger-mail-frame-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a&t=1795055112) 300 / var(--bw,96px) / 0 round!important}
 body{padding:var(--bw,96px)}
 @media(max-width:1024px){:root{--bw:64px}.royal-frame{border-image-slice:340 300 340 300!important}}
 @media(max-width:560px){:root{--bw:32px}.royal-frame{border-image-slice:300!important}}
 /* --- PHONE CONSEQUENCE FIXES (frame round, own consequences — measured base vs new at 390): the 32px frame narrows the bar and the thread head.
-   (a) The six dock labels kiss by 1-3px at 390 (base gaps 9-10px, frame gaps -1/-3px) — tracking .12em -> .04em at <=560px only (size untouched, 11px stands per §13).
+   (a) The six dock labels kiss by 1-3px at 390 (base gaps 9-10px, frame gaps -1/-3px) — tracking .12em -> 0 at <=560px only (size untouched, 11px stands per §13). At .04em the last pair still touched by 1px; 0 clears every pair.
    (b) The name truncates with the info jewel beside it (base name 138px whole, frame name 38px) — at <=640px the thread-head .who does not shrink and the toggle shares row 2 with the call jewels, so row 1 is orb + name + info and the name reads whole. --- */
-@media(max-width:560px){.notif-label{letter-spacing:.04em}}
+@media(max-width:560px){.notif-label{letter-spacing:0}}
 @media(max-width:640px){.thread-head .who{flex:1 0 auto}.thread-head .toggle{flex:1 1 auto}}
 /* ============ INFO BUTTON + PROFILE VIEW (Shawn 2026-11-19, follow-on item 4) ============
    One INFO jewel beside the person's name in the conversation head. The jewel
