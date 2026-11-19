@@ -64611,6 +64611,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3677",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3677-wisdom-is-the-top-of-the-scale",
+      "slug": "wisdom-is-the-top-of-the-scale",
+      "title": "Wisdom Is the Top of the Scale",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3677/IB-SMART-NOTE-20261119-sn3677-wisdom-is-the-top-of-the-scale.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3677/IB-SMART-NOTE-20261119-sn3677-wisdom-is-the-top-of-the-scale.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3677/IB-SMART-NOTE-20261119-sn3677-wisdom-is-the-top-of-the-scale.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3677-wisdom-is-the-top-of-the-scale.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T12:25:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "d26f4c6da92b80d2ca70d5e24f5aed0744b15dd4d6226a1de248877c2be698d9",
+      "content_hash": "be1cc799c89b5cbc970dda50eea53d4fae3b846a8294d616b367ea6a2bb62e17",
+      "one_line": "The Hub is the public face: every smart note a public page speaking the machines' language in the background, so search and the AIs can find it, and a person who finds it can join free for life — and within seconds talk with somebody on that subject. Inside, 'everything is priority' runs on a ranking underneath: parallel lanes, and the ranking decides the next pair of hands. The score a citizen earns is made visible — an obsidian pill, a gold rim, an extraordinary star — because a score nobody can see changes nothing. The sisters wait for the finished home: profiles are cloned once, from the finished Personal, never twice. Awesomeness is produced on every level at once — the user's, the Naya's, the machine's — three languages, human up front, machine behind, math underneath. The Agreement distilled is the Law of One: do no harm, harm scores zero, you're hired. And the scale gets its top: +9 is not more cleverness — it is wisdom of oneself, respect for the law that connects everyone, honor for everyone. Color is the map: three buttons, three colors, the hand learns where it is.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64621,5 +64654,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "5c5f642a8815b55109d3109daac1da3622895f851dbcca47f43e5b1e3df84ddc"
+  "corpus_manifest_hash": "bc605569ca95ed40ee7d202a4e5b5c4492cf970cb2b9f3993b473d2e3ea00a58"
 }
