@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 14:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21841,6 +21841,12 @@ _Last updated: 2026-11-19 14:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all three receipt SHA16 pins match live bytes (sealed-prereg-digitfracture-t0619.md 1acf397f28c91ae0; arm_digitfracture_t0619.py 9c2a03ef27944e42; results-t0619-digitfracture.json b790974a3d5ce39f); verdict-t0619-digitfracture.md present; file mtimes (11:06 UTC) consistent with the seal-before-run claim. Real value: seal-before-measuremen
 
+### ✅ t0619-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE R3 skew analysis - need-frequency skew, organic-vs-synthetic split, go/no-go on hypertuning SMARTBLOCKS (Lane 4)
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: analysis retrieval/query-needs-skew-t0619.md sha256 c085eba2b40040b7681017a5bd78d81483fbf2e1bd1757277c6301054b23ce9d (16-hex prefix c085eba2b40040b7 as pinned) EXACT; twin retrieval/query-needs-skew-t0619-twin.txt sha256 286d3efb1a5cf46f0121f1600b6b7eaa45754b982f72d58a5f76a1757fea7b6
+
 ### ✅ t0619 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** CANDIDATE R3 skew analysis, organic-vs-synthetic split, NO-GO on hypertuning
@@ -28816,6 +28822,12 @@ _Last updated: 2026-11-19 14:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0412-lane3.md`
 
 **Evidence:** VERIFIED: hidden_files/lane-3/t0412/replay-report.md exists (11,764 bytes); cited receipts all on disk. Real value: counter-principle column run to ground on all three decisions; produced a transferable rule (P3 protects P4 — never fix your own ruling's gate mid-ruling). Score 9.0 (GOOD, ONE MORE PASS): why not 9.5 = (1) D1 replays the seat's own w
+
+### ✅ t0412-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 slice 3 - rubric mechanization test: Q1/Q2/Q3 as lexical features, frozen t0402 ground truth, auto vs TF-IDF vs judge
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: instrument hidden_files/auto-retrieval-slice3.py sha256 8e82eb70ef22e506872de8c924db998729180c4cdbb18118699c22f8807298d2 EXACT prefix match; auto-scores.json sha256 5c87df571e383f0b98ae28bee933878f725173ee25a26412bda3505b9d80a9b9 EXACT prefix match; comparison table numbers match the receipt exactl
 
 ### ✅ t0412-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -42147,6 +42159,12 @@ _Last updated: 2026-11-19 14:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-t0432-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Gap close: blind second baseline for the t0432 bi-encoder exam (Lane 5)
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: sealed baseline hidden_files/auto-retrieval/baseline-second-gap-t0432.md sha256 87466276474b3b7815cd8b101a6a375a699c77e44c6f409030c76b1ef82357ed EXACT; machine run script gap_t0432_second_run.py present; results results-second-gap-t0432.json sha256 c545be2b710f224f75671fa096fc18ca8f2
+
 ### ✅ gap-lane-scorer-20261015-0430-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: repair staged battery provenance pin, re-run head-to-head, prove tie path
@@ -45674,6 +45692,12 @@ _Last updated: 2026-11-19 14:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-t0422-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Gap close: flip-hunt replay, second run (slice-4 in substance) on close-call decisions (Lane 3)
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: report hidden_files/lane-3/gap-t0422/replay-report-fliphunt-20261024.md sha256 cc121a3dae72fae74fcaa84b4e738e9c592f5cf47487fe6fe63e71dfd87b87b8 EXACT match, 169 lines; content spot-check confirms the named gap and the flip-hunt framing. The gap's whole point was to prove the counter-
 
 ### ✅ prereg-t1496-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -54986,6 +55010,12 @@ _Last updated: 2026-11-19 14:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261119-0705 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt: exhaustive claim sweep of all 31 blocked briefs, zero change, capped hourly receipt
+
+**Evidence:** Fresh window. VERIFIED first-hand: claim-sweep log sha256 e069f30d82060998b2246b1a202e624c57d0da76315c1baed7190fee64ea100d EXACT match; log holds 28 x exit 7 + 2 x exit 2 = 30 attempt lines; brief-queue still holds 31 brief-*.md files, matching the receipt's zero-change diff vs the 06:01 receipt (29 x exit 7 / 2 x exit 2 unique totals). Score 9.0 (
 
 ### ✅ distill-daily-20261119 — Team 0, Team Naya Scorer (?) — 9.4/10 [VERIFIED]
 
