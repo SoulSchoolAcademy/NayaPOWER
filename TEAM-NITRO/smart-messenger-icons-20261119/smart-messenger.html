@@ -481,6 +481,11 @@ body.rail-collapsed .contact-rail{display:none}
 body{padding:var(--bw,96px)}
 @media(max-width:1024px){:root{--bw:64px}.royal-frame{border-image-slice:340 300 340 300!important}}
 @media(max-width:560px){:root{--bw:32px}.royal-frame{border-image-slice:300!important}}
+/* --- PHONE CONSEQUENCE FIXES (frame round, own consequences — measured base vs new at 390): the 32px frame narrows the bar and the thread head.
+   (a) The six dock labels kiss by 1-3px at 390 (base gaps 9-10px, frame gaps -1/-3px) — tracking .12em -> .04em at <=560px only (size untouched, 11px stands per §13).
+   (b) The name truncates with the info jewel beside it (base name 138px whole, frame name 38px) — at <=640px the thread-head .who does not shrink and the toggle shares row 2 with the call jewels, so row 1 is orb + name + info and the name reads whole. --- */
+@media(max-width:560px){.notif-label{letter-spacing:.04em}}
+@media(max-width:640px){.thread-head .who{flex:1 0 auto}.thread-head .toggle{flex:1 1 auto}}
 /* ============ INFO BUTTON + PROFILE VIEW (Shawn 2026-11-19, follow-on item 4) ============
    One INFO jewel beside the person's name in the conversation head. The jewel
    is the family's eye: an obsidian circle, white "i" as a real object, rim +
