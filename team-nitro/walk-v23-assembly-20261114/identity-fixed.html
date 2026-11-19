@@ -1309,6 +1309,38 @@
       .identity-pro-card::before { inset: 9px; }
       .identity-face { padding: 22px 18px 34px; }
       .cert-plaque.is-certified .identity-face { grid-template-rows: 0.74fr auto 1.26fr; }
+      /* FIX3c (2026-11-19, eye item 7, live probe fix3b-live-C) — the CERTIFIED
+         document at 534 overflows its 706px face by ~41px and the grid's
+         align-items:center splits the foot's overflow equally up and down, so
+         the foot spills UP into the center row: the stale "Available — it's
+         yours to claim." status prints across the member sentence's second
+         line (22px), the Smart Link label catches its last 3px, the name
+         tucks 9px under "This certifies that", and the switch pill straddles
+         the plaque's bottom edge. Nothing is removed that matters; the room
+         is funded, in the file's own way:
+         (a) the card grows: the 36px padding-bottom under the card (line 1470)
+         and 8px of the back-row padding are released while certified, so the
+         face grows 708 -> ~752px;
+         (b) the head gives 10px (face padding-top 22->12) + 10px (head
+         padding-top 26->16) so the name clears "This certifies that";
+         (c) the stale status line is hidden while certified — on a claimed
+         certificate "Available — it's yours to claim." is wrong text as well
+         as the collision — which frees 30px in the foot;
+         (d) the foot aligns to the TOP of its track (align-self:start) so an
+         over-full foot spills downward only, never up into the member lines;
+         (e) the foot trims 20px (Copy pill, ENTER, regalia, switch margins).
+         Desktop and the composing state are untouched: every rule below is
+         certified + max-width:640px only. */
+      .activation-stage:has(.cert-plaque.is-certified) { padding-bottom: 0; }
+      .activation-stage:has(.cert-plaque.is-certified) .cert-back-row { padding: 6px 14px; }
+      .cert-plaque.is-certified .identity-face { padding-top: 12px; }
+      .cert-plaque.is-certified .face-head { padding-top: 16px; }
+      .cert-plaque.is-certified .alias-status { display: none; }
+      .cert-plaque.is-certified .face-foot { align-self: start; }
+      .cert-plaque.is-certified .key-copy { padding: 7px 22px; margin-top: 6px; }
+      .cert-plaque.is-certified #enterBtn { min-height: 52px; }
+      .cert-plaque.is-certified .cert-regalia { margin-top: 0; }
+      .cert-plaque.is-certified .cert-more.cert-switch { margin-top: 2px; }
       .face-head { padding-top: 26px; }
       .cert-seal { width: 94px; height: 94px; }
       .cert-no { font-size: 0.68rem; letter-spacing: 0.20em; text-indent: 0; }
