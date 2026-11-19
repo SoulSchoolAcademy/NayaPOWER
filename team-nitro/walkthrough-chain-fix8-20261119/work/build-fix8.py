@@ -27,8 +27,8 @@ WALK_LOCAL = "/home/hatch/workspace/team-nitro/walk-v23-assembly-20261114/walk-b
 WALK_SHA = "b6befc332d65dd26d01649edd09810e9f83284a73a10a6af30f6691f5f118773"
 IDENT_SHA = "3279dc3572337e5e971369a3742effcaac7f6e5b059192ddaa6e689f0f92886c"
 WELCOME_SHA = "2062739ecb968b78cd823440bcfd4bbb8f7d0190d3bb2e5443ab3b35c0081955"
-UNFOLD_SHA = "6ad602d3f006a1d0fe6d2babaa6530d2ef7a4b26b6fa2a860804822d4451426f"
-UNFOLD_BYTES = 130145
+UNFOLD_SHA = "c787a41217c1f5d5a245eec75af101f4aba62c4dcbd23d910e5886a47ac025e6"
+UNFOLD_BYTES = 130161
 
 
 def run_pipeline():
@@ -94,7 +94,7 @@ def main():
     assert st.sha(new_ident) == IDENT_SHA, "identity moved: %s" % st.sha(new_ident)
     assert st.sha(new_welcome) == WELCOME_SHA, "welcome moved: %s" % st.sha(new_welcome)
     assert st.sha(new_unfold) == UNFOLD_SHA, "unfold moved"
-    assert b'assert unfold_sha.startswith("6ad602d3")' in builder, "builder unfold assert not moved"
+    assert b'assert unfold_sha.startswith("c787a412")' in builder, "builder unfold assert not moved"
     assert b'assert welcome_sha.startswith("2062739e")' in builder, "builder welcome assert not moved"
     assert b'UNFOLD_RAW' in builder, "builder missing UNFOLD_RAW"
     assert b"stay on the entrance" in new_welcome, "welcome F6 edit missing"
