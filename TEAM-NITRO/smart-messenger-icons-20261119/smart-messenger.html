@@ -1405,12 +1405,35 @@ function fix6FirstCard(){
   window.__fix6LoadOffset = Math.round(fix6Applied);
   window.__fix6FirstCard = {cardBottom: Math.round(card.getBoundingClientRect().bottom), fold: Math.round(sc.getBoundingClientRect().bottom), applied: Math.round(fix6Applied)};
 }
+/* --- FOLLOW-ON-3: thread-head load offset at ≤420px (live geometry, never eyeballed).
+   At 390 the wrapped rail (7 rows, 440px) pushes the 223px thread head to y 639..862,
+   while the 100dvh column's scroll window ends at the static bar (fold 732) — rows 2–3
+   (call-jewels 731..779, toggle 785..851) sit below the fold, clipped by .page-scroll,
+   under the bar's opaque band, so they are invisible and untappable at landing although
+   the bar itself is position:static and innocent. No head-local CSS can reclaim the
+   130px shortfall (see MAKER-REPORT.md §2: max ~34px without banned touches, 127px even
+   with search removed and the head crushed to zero padding — still 3px short; row 1 cannot
+   hold the jewels, 309 > 274, and would still leave the toggle covered). Same cure as
+   FIX-6's first-card offset above: nudge .page-scroll just enough that the head bottom
+   clears the fold. The head must clear the FIX-8 dock-fade gradient too (max 50px above
+   the fold, read live from --dockFade, 50 when unset) — clearing only the fold leaves the
+   toggle's second label line half-dimmed at landing. ≤420px only; no CSS, no rule, no
+   banned element touched; the §5b cure stands. --- */
+function fixFo3Head(){
+  if (!window.matchMedia || !window.matchMedia('(max-width:420px)').matches) return;
+  var sc = document.querySelector('.page-scroll');
+  var head = document.querySelector('.thread-head');
+  if (!sc || !head) return;
+  var fade = parseFloat(getComputedStyle(sc).getPropertyValue('--dockFade')) || 50;
+  var need = head.getBoundingClientRect().bottom - (sc.getBoundingClientRect().bottom - fade) + 6;
+  if (need > 0) { sc.scrollTop += need; window.__fo3HeadOffset = Math.round((window.__fo3HeadOffset || 0) + need); }
+}
 if (fix6Scroll) fix6Scroll.addEventListener('scroll', fix6SyncMask, {passive:true});
 window.addEventListener('resize', fix6SyncMask);
 fix6SyncMask();
-fix6FirstCard();
-if (window.requestAnimationFrame) requestAnimationFrame(function(){ fix6SyncMask(); fix6FirstCard(); });
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fix6SyncMask(); fix6FirstCard(); });
+fix6FirstCard(); fixFo3Head();
+if (window.requestAnimationFrame) requestAnimationFrame(function(){ fix6SyncMask(); fix6FirstCard(); fixFo3Head(); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fix6SyncMask(); fix6FirstCard(); fixFo3Head(); });
 /* --- FIX-8: dock-edge dissolve sync. Only JS can read the first card's live
    rest position; the CSS rules above only describe the gradient shape.
    A MutationObserver re-syncs after layout-changing toggles (cover/world/
