@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 14:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21857,6 +21857,12 @@ _Last updated: 2026-11-19 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval/query-needs-skew-t0619.md sha256 c085eba2b40040b7..., twin.txt 286d3efb1a5cf46f..., skew_analysis_t0619.py - all exist, 16-hex prefixes match receipt pins. Real value: organic-vs-synthetic filter applied BEFORE the first tally line, which dissolved the stability question (t0601 vs t0614 identical 15/15 = one window observed twic
 
+### ✅ t0619-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Selection-independence rung for SURGE slice (a), fresh mechanical re-selection + frozen instrument run (Lane 2)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: frozen instrument hidden_files/auto-retrieval/decision_change_arm_t0567.py sha256 4d43798e58f2769f3f92b74ec31b5f79ea29641a8a4f8084d55cbadc78882a71 EXACT; sealed note sealed-note-t0619-overlap-selection.md sha256 ebacee86b9263668e8f2d282df2b4f5c762e1edce47e56162a4bfa086fe0d6db EXACT; results results
+
 ### ✅ t0619 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Selection-independence rung for SURGE slice (a), fresh mechanical re-selection + ARM
@@ -21873,6 +21879,12 @@ _Last updated: 2026-11-19 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/sealed-note-t0619-overlap-selection.md exists, sha256 16-hex prefix ebacee86b9263668 matches receipt's full pin; selection JSON + results JSON + both scripts (select/run_overlap_cells_t0619.py) + verdict doc all present; results JSON carries seal_sha identical to the sealed note. Real value: fresh-seat mechanical selection 
 
+### ✅ t0619-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE cold-retrieve acceptance contract for SURGE slice (d) (Lane 11)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: contract hidden_files/retrieval/cold-retrieve-acceptance-t0619.md sha256 149238563df32287f4ac66cd1cff65fcf329c54320f5ea7d823b6f3350ed31dc EXACT; cited basis retrieval/cold-retrieve-isolated-t0614.md sha256 0b1cb3adc2322cb2bc0fae81dedaf8097d1139e60c8bf4e3fbac135618d03571, 16-hex prefix match as clai
+
 ### ✅ t0619 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** CANDIDATE cold-retrieve acceptance contract for SURGE slice (d)
@@ -21888,6 +21900,12 @@ _Last updated: 2026-11-19 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0619-lane11.md`
 
 **Evidence:** Verified: retrieval/cold-retrieve-acceptance-t0619.md exists, sha256 149238563df3... FULL 64-hex match to receipt; t0614 basis pin 0b1cb3adc2322cb2 re-derived from live bytes, matches. Real value: banned explanation class written INTO the contract (cache-made-automatic-retrieval-read-zero is disproved, not disputed), 13 mechanical CR- checks, fail-
+
+### ✅ t0618-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** CANDIDATE intelligence-value observatory spec (Lane 12)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED first-hand: spec hidden_files/hub-prep/hv-observatory-spec-t0618.md sha256 49a53b053c6f645edd93ab197d518f9e3ac050e190e197091f53d697d92ce6bc EXACT; pinned run 1 hub-prep/hv-run-full-t0618.json 60f0a0ecd29cf48...2bcd3 EXACT; pinned run 2 hub-prep/hv-run-t1052-t1162-t0618.json 94b7a1e16910a2...f4bb EXACT. Real va
 
 ### ✅ t0618 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -50791,6 +50809,18 @@ _Last updated: 2026-11-19 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-t0925-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.2/10 [VERIFIED]
+
+**Task:** Gap close: --self-test mode for queue-cross-check.py (Lane 10)
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: script hidden_files/bin/queue-cross-check.py sha256 f2082c8734947547b961f8fadffb6e08f6c24c9b8bfd305e8af2cb376444ea95 EXACT match to the receipt's pin (bytes unchanged since 2026-10-19); self_test() present at line 204 with 12 checks as claimed. Ran --self-test live today: FAILs 5/12 
+
+### ✅ gap-t0917-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.4/10 [VERIFIED]
+
+**Task:** Gap close: byte-observe real-runner RED classification line the parent could only infer (Lane 10)
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: runner log hidden_files/lane-10/gate-dryrun-t0917-lane10/runner-log-job-118228430970.txt sha256 ceeb4b81f062400329a2e8250bb680797384f5fc19a38b0c58ec1d0a12522092 EXACT match, 301,730 bytes EXACT, 2,324 lines EXACT; classification chain present in the bytes - VERDICT=RED line 2252, 'in
+
 ### ✅ gap-gap-t0182-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap close: merge-consensus object mismatch - premise falsified, true counting-rule divergence pinned (Lane 10)
@@ -54956,6 +54986,18 @@ _Last updated: 2026-11-19 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261119 — Team 0, Team Naya Scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** Daily distill: boot-pointer repair - repoint command-map step through mission-state snapshot, landed via Intelligence Door
+
+**Evidence:** Fresh window. VERIFIED first-hand (second seat): commit acbdf07883de191e1aff001a9478a476c8289507 exists on the remote (git fetch by SHA, FETCH_HEAD matches); all three landed blob SHAs EXACT match at that commit - READ-ME-FIRST.md 9effa31356f59dcfb501459c0d2bbed00ce8a963, READ-ME-FIRST.ai.md 98114d078b087a7861b2ef08141890aa73ca1f5e, read-me-first.m
+
+### ✅ gate-stall-20261119-0601 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt: exhaustive claim sweep of all 31 blocked briefs, zero change, capped hourly receipt
+
+**Evidence:** Fresh window. VERIFIED first-hand: claim-sweep log sha256 4c64f21738801f1c4be05107958d6f0c09aba95ef0d0b545323b3d5787853ccf EXACT match; log holds 25 x exit 7 + 2 x exit 2 = 27 sweep attempts, plus 4 individually-attempted first = 31 total, 29 x exit 7 / 2 x exit 2 as claimed; brief-queue still holds 31 brief-*.md files, matching the receipt's zero-
 
 ### ✅ gate-stall-20261119-0440 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
