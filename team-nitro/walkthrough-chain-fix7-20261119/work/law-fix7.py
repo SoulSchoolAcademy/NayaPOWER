@@ -27,6 +27,7 @@ BASES = {
     "unfold": "8980e57786c9bb196fb1ac5252f483995228e337",
 }
 UNFOLD_SHA = "e21f08d0fcd1ae2a299065697a3bba43354c7210b68271ab0f0e1a00026e6671"
+UNFOLD_BLOB = "b2f04aaad4982bb35a29eb736c9178a444738b99"  # filed fix-7 unfold blob (branch tip 3fb28971)
 WORKER_SHA = sys.argv[1] if len(sys.argv) > 1 else "06874a9a69d55e72247dd4218ac9ef44d62b766eebe0661835591a9487584959"
 
 spec = importlib.util.spec_from_file_location("lawcheck", CHECKER)
@@ -98,7 +99,10 @@ def read_bytes(p):
         return f.read()
 
 
-new_unfold = bf.run_pipeline()
+new_unfold = gh_blob(UNFOLD_BLOB)  # filed bytes, not the pipeline: the local
+# worker file now holds the fix-7 worker, so the transform's base
+# extraction (which reads the local worker expecting fix-3 bytes) no
+# longer applies — the filed blob is the truth.
 assert hashlib.sha256(new_unfold).hexdigest() == UNFOLD_SHA, "unfold moved"
 new_welcome = read_bytes(WELCOME_LOCAL)
 new_ident = read_bytes(IDENT_LOCAL)
