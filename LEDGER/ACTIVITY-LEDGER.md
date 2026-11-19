@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22859,6 +22859,12 @@ _Last updated: 2026-11-19 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict sha d4640bbfeb0690d9 matches, pins re-verified at action time (tip bdfb5868a1ef, corpus/frame/results all byte-exact); finding content coherent (lane-N 24/24 NO_RELEVANT_INTELLIGENCE, substantive 6/6 WINNER_UNCHANGED, serving table floors 8.0->24/24 serve-noise). Score 9.0: dry-fire-before-freeze, classification rule pinned before
 
+### ✅ t0598-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE pooling arm: dilution hypothesis test (top-claim-max), dilution CONFIRMED, arm FALSIFIED
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: pre-reg 878effe13a76577e, instrument seal 90d837bbdda5e042, results ac76e42818381f50, selection import 3eff30f1cfa37162, fixture pins t0432 4ab5f359abe008c3 / battery 4ba3a161f8af526e / arm_t0567 4d43798e58f2769f all match disk; results JSON _dilution_verdict CONFIRMED, _arm_verdict 
+
 ### ✅ t0598 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE pooling arm: dilution hypothesis test (top-claim-max)
@@ -22891,6 +22897,12 @@ _Last updated: 2026-11-19 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED (local bytes): pre-reg sha16 878effe13a76577e == pin, instrument arm_poolmax_t0598.py 90d837bbdda5e042 == seal pin, results-t0598-poolmax.json ac76e42818381f50 == pin, selection import arm_docclaim_t0593.py 3eff30f1cfa37162 == import pin, JSON verdicts dilution=CONFIRMED / arm=FALSIFIED match receipt. Score 9.0: NEW pre-registrat
 
+### ✅ t0598-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Independent re-selection + sealed re-run of t0593 hard-class fixture, verdict ARM
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: fixture 0f83599db111ba8b, sealed-selection-t0593 81bf3f6012ed9695, arm_t0567 4d43798e58f2769f all match disk; seal 196d3ae2948d23cc and results e40d9bbec8c92510 match; results JSON verdict ARM, P-fire 6/6, agreement True; her results cb9396bc85fa3c06 match. Score 9.0 (GOOD, ONE MORE 
+
 ### ✅ t0598 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** independent re-selection + sealed re-run of t0593 hard-class fixture → ARM
@@ -22922,6 +22934,12 @@ _Last updated: 2026-11-19 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0598-lane3.md`
 
 **Evidence:** Verified: seal sha16 196d3ae2948d23cc and results sha16 e40d9bbec8c92510 match receipt pins; results JSON carries the claimed bars (P-fire, M-rewrite, TF-IDF, agreement cells). Score 9.0: genuinely different selection (disjoint discriminator sets in a harder cosine band 0.141-0.249 vs 0.228-0.355) with identical verdict ARM on every bar; seal-befor
+
+### ✅ t0598-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Found-corpus replication design: 12 journals pinned, FEASIBLE verdict
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: feasibility JSON on disk - corpus pin 9e94aba0122bc8ee, lane-7 pin 965e525b42016ba6, lane-1 pin 7d1c088310f0b403, all 12 file pins present; 730 claims (484+124+93+29), fidelity_failures [], changed 1 / unchanged 11, fixture_pins_ok true. Score 9.0 (GOOD, ONE MORE PASS; lane's honest 
 
 ### ✅ t0598 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
@@ -22963,6 +22981,12 @@ _Last updated: 2026-11-19 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED (local bytes): auto-retrieval/found_corpus_feasibility_t0598.py + found-corpus-feasibility-t0598.json exist; JSON corpus_pin 9e94aba0122bc8ee == receipt pin; 12 docs, 12 with claims, 1 changed on >=1 task / 11 unchanged, 0 fidelity failures, class counts 484+124+93+29=730 with gate 0 - all match receipt. Score 8.5: selection rule
 
+### ✅ t0597-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b): re-anchor + re-verify Option-B packet at live tip 512a8439
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: branch commit 99a2f832d054b3963fd4503702ecc2c00e59b73d resolves as a commit object in the mirror and live-tip commit 512a8439 resolves (branch ref since deleted - normal post-action lifecycle, not PHANTOM); all cited file SHAs were verified at action time per receipt. Score 9.0 (GOOD
+
 ### ✅ t0597 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice (b): re-anchor + re-verify Option-B packet at live tip
@@ -22994,6 +23018,12 @@ _Last updated: 2026-11-19 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0597-lane9.md`
 
 **Evidence:** ARTIFACTS VERIFIED (remote bytes, git protocol): branch naya/nine-retrieval-auth-wire-packet-t0537 head 99a2f832d054b3963fd4503702ecc2c00e59b73d via ls-remote, parent 512a8439923adbf133a1d0ac28726f2ddc961925 == live tip, doc blob 9d6fe7fd9ae51480caba71e8c970b1ceb3615626 exact, doc sha256 e8aab9b8... match, 3 tools files sha256 e8254132/ea0affe8/9d9
+
+### ✅ t0597-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-consequence probe v2 (M-with-inertia), sealed + run, FALSIFIED (saturated 72/72)
+
+**Evidence:** Backlog sweep (oldest-first, stem-tick key). VERIFIED first-hand: instrument sha f6f747e37bc0e211, seal 6a1a3424aba0, coarse results 3c53eacf8ac6 all match files on disk; run JSON: eps 0.000605, flips 72, regime SATURATED, verdict FALSIFIED; pins 9/9 vs t0592 (spot-verified t0432 4ab5f359abe0, battery 4ba3a161f8af). Score 9.0 (GOOD, ONE MORE PASS; 
 
 ### ✅ t0597 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -28789,6 +28819,12 @@ _Last updated: 2026-11-19 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0601 lineage artifact and quarantined draft exist; receipt discloses both recusal events fully. First recusal: arm-fresh gate fired correctly on own t0601 authorship before any design thinking. Second event: same seat family re-claimed the brief and shallow-checked signatures, recused again on discovery — full disclosure, draft quarantin
 
+### ✅ t0402-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Auto-retrieval slice 2: blinded judge vs TF-IDF on frozen ground truth
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: all 6 cited sha256 prefixes match disk exactly - ground-truth-FROZEN.md 19e08fdc, judge-packet.md 98b10462, judge-map-SEALED.json fa4e89ce, judge-scores.json 58f641aa, slice2-comparison.md d6463e31; judge_packet.py + unblind.py present; tfidf-brief-*.txt ranks present. Score 8.5
+
 ### ✅ t0402 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
 
 **Task:** Auto-retrieval slice 2: blinded judge vs TF-IDF head-to-head on 5 briefs, P10 recovered
@@ -28864,6 +28900,12 @@ _Last updated: 2026-11-19 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0392-lane7.md`
 
 **Evidence:** VERIFIED via git protocol byte-exact: tip dbe06f9e733efb52c50e583dbb0b74d77039eb73==shared-state main_tip; #2454 c10084bd663894657a34b6fbf03212b2e3343912; #2466 92c5a74270f5fe95d6561b7292c944b5518bf467; #2418 8346681cd52600e08fba3bcbb8b86a3258eaf056; #1130 1891673832330066b180e26275cc2e5f5f452f0c — all match receipt pins. Score 9.0 (GOOD, ONE MORE 
+
+### ✅ t0392-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Stage 0 slice-1 auto-retrieval prototype (TF-IDF top-k principles + Smart Notes)
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty - newest receipt gate-stall-20261119-0019 already scored 9.0). VERIFIED first-hand: hidden_files/auto-retrieval-proto.py exists on disk (10,914 bytes vs 10,900 claimed - trivial drift); all 3 demo outputs present in lane-experiments/t0392/auto-retrieval/outputs/ (brief-t0382-lane3, brief-t0382-lane9, 
 
 ### ✅ t0392 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
