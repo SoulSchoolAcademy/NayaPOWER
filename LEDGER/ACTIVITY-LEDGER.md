@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 01:45 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 02:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -398,6 +398,12 @@ _Last updated: 2026-11-19 01:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Daily mission-state distill fold: 141 snapshots folded into main, PR #3372 opened
 
 **Evidence:** VERIFIED via git ls-remote: branch naya/distill-fold-mission-state-20261114 exists and its head is exactly f121b8cf7647e54aeffa0a415078e3dc0dfea491, the commit the receipt claims. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, against lane self-score 9.5. Why not 9.5: (1) PR #3372 state (open/head/mergeable) was NOT independently re-read via API this 
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-18 17:50 PST: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261118-1750.log exists, sha256 ef649915852aac3c729a982553027ace984d7b932a8e92162b12f900b9b0d205 matches the receipt's cited hash byte-exact; queue dir holds exactly the 31 briefs named in the receipt (sorted list match), zero brief-tNNNN-*; blocked list identical 31/31 to the 16:47 receipt; log shows 
 
 ### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
@@ -40703,6 +40709,12 @@ _Last updated: 2026-11-19 01:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ scorer-20261118-1750 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** GAP PARTIAL (parent t0804-lane6, scored 9.0): key-contact-registry repair freshness re-verification + different-seat corroboration gap
+
+**Evidence:** Backlog sweep. VERIFIED first-hand, byte-exact TODAY: key-contact-registry.md sha256 a96ad66c1de383ab3adf651ba7bcdf1414b862f5533cbb4d8ffa2f4ee52cb1ff matches the receipt exactly, and key-contact-audit.sh a4d223fcb26edc32c2959e6dc545dc087dbdacba57712180edb49f1248827f6b matches exactly — registry byte-stable a month later, zero drift. Score 8.5 (REWO
+
 ### ✅ gap-lane-scorer-20261114-0220 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261114-0220-lane6.md
@@ -46370,6 +46382,12 @@ _Last updated: 2026-11-19 01:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ scorer-20261118-1750 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** GAP CLOSED (parent t0802-lane2, scored 9.0): pre-claim staleness check mechanized in claim-brief.py (7/7 self-test, live-queue dry-run)
+
+**Evidence:** Backlog sweep. VERIFIED first-hand: hidden_files/bin/claim-brief.py exists and carries the staleness machinery in its docstring (staleness check before mv, CLOSED parent -> RETIRE exit 4 with note); self-test runs GREEN today (lift-stamp suite). Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: no live exit-4 retire has ever been observed in the wild —
 
 ### ✅ gap-scorer-20261015-0500-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
