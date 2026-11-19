@@ -1895,6 +1895,7 @@ body.fp-stage-on #fpAgreement.fp-view-bridge #fpBridge{display:block;flex:1 1 au
 html.fp-locked body.fp-stage-on.fp-bridge #fpLegal{display:block;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:8px 8px calc(8px + env(safe-area-inset-bottom));box-sizing:border-box;background:linear-gradient(0deg,rgba(5,6,7,.96),rgba(5,6,7,.85) 80%,rgba(5,6,7,0));text-align:center}
 html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-kicker,html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-sub,html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-page{display:none}
 html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-links{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:center;gap:2px 20px;max-width:none;margin:0;padding:0 4px}
+html.fp-locked body.fp-stage-on.fp-bridge #fpLegal .fp-legal-link{flex:0 0 auto;white-space:nowrap}
 /* ---- BRIDGE FIX (2026-11-17, BRIEF-BRIDGE-PAGE-FIX-20261117.md) ----
    Corner geos: the agreement page's own .ldot jewels — the hexagonal geo
    gem, 14px, clip-path polygon. The .ldot rule already lives on this page
@@ -3816,7 +3817,7 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
      now (bridge final + footer), never in the fixed bar over the footer. */
   var bExit=q('#fpBridgeExit'), fExit=q('#fpLegalExit');
   if(bExit){bExit.addEventListener('click',function(){cancelAgreeExit();exitStage();});}
-  var bToName=q('#fpBridgeToName');if(bToName){bToName.addEventListener('click',function(){cancelAgreeExit();exitStage();});}
+  var bToName=q('#fpBridgeToName');if(bToName){bToName.addEventListener('click',function(){goBridgeToName();});}
   if(fExit){fExit.addEventListener('click',function(){cancelAgreeExit();exitStage();});}
   var action='begin', dialTimer=null, lastKey='', orbFadeTimer=null;
   function legalPages(){return qa('.fp-legal-page');}
@@ -4093,6 +4094,17 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
   function enterStage(_t){
     closeZoom();
     body.classList.add('fp-stage-on');
+    /* FIX3 (2026-11-19, eye item 1) — agreed state persists visibly:
+       a citizen who already agreed (nayanet_fp_agreed) re-enters the
+       stage on the POST-AGREE bridge — all four groups + the final
+       page, the AGREED line and the gold onward pill — whether they
+       arrive by ?stage=bridge, by the login's "Read the collective
+       agreement", or by a plain reload's auto-enter. A citizen who
+       has not agreed still lands on the choice view, untouched.
+       goBridgeAfterAgree is a hoisted function declaration, so it is
+       safe to call here before its definition in source order. */
+    var _fpAgreedKey=false;try{_fpAgreedKey=localStorage.getItem('nayanet_fp_agreed')==='1';}catch(e){}
+    if(_fpAgreedKey&&(_t==='bridge'||!_t)){goBridgeAfterAgree();return;}
     /* SHARE PLUS — back from the deck end: Enter NayaNET exits to the
        enter-name page. (EYE FOLLOW-ON #2 F4, 2026-11-18: the login's read
        link clears this flag first, so re-entering lands on the choice
@@ -4177,6 +4189,14 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
        the choice view. Set AFTER render(), whose save branch would
        otherwise clear it; cleared by exitStage(). */
     try{localStorage.setItem('nayanet_fp_stage','bridge-agreed');}catch(e){}
+    /* FIX3 (2026-11-19, eye item 1) — the agreed flag is a second,
+       durable key (nayanet_fp_agreed) that survives exitStage and
+       re-entering the stage: the stage key above is cleared by
+       leaving the stage, the agreed key is cleared ONLY by the
+       gold onward pill (the citizen proceeding to name entry).
+       That is what makes the AGREED line + Continue pill survive
+       a reload and a reopen. */
+    try{localStorage.setItem('nayanet_fp_agreed','1');}catch(e){}
     var br=q('#fpBridge');if(br)br.scrollTop=0;
   }
   function exitStage(){
@@ -4202,6 +4222,26 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
     /* VISUAL AGREEMENT END — every exit lands on the enter-name page, so
        put the cursor in the name field, as the agree path already does. */
     setTimeout(function(){if(!body.classList.contains('fp-stage-on')){var n=document.getElementById('userName');if(n)n.focus();}},650);
+  }
+  /* FIX3 (2026-11-19, eye item 1) — the gold onward pill goes DIRECTLY
+     to name entry. exitStage alone lands on the login, and on a device
+     with a saved identity the login shows the returning view (the name
+     form hidden behind "Create a new account") — the eye's extra click.
+     The pill clears the agreed keys (the citizen is proceeding), exits
+     the stage, then opens the name form itself the same way the
+     "Create a new account" line does, and focuses the name field.
+     The Back buttons still call exitStage() directly and do NOT clear
+     the agreed key, so reopening the agreement keeps the AGREED line. */
+  function goBridgeToName(){
+    cancelAgreeExit();
+    try{localStorage.removeItem('nayanet_fp_stage');localStorage.removeItem('nayanet_fp_agreed');}catch(e){}
+    window.__fpAgreed=false;
+    exitStage();
+    setTimeout(function(){
+      var form=document.getElementById('entryForm'),view=document.getElementById('returningView'),fresh=document.getElementById('newAccountLine');
+      if(form&&form.hidden&&view&&!view.hidden&&fresh){fresh.click();}
+      var n=document.getElementById('userName');if(n)n.focus();
+    },700);
   }
   function derive(jump){
     if(S.view==='deck'){
@@ -4449,6 +4489,14 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
      bridge (State B); ?stage=bridge still opens it by design. */
   try{
     var _fpRestoreStage=(_fpStage==='deck'||_fpStage==='letter'||_fpStage==='bridge')?null:localStorage.getItem('nayanet_fp_stage');
+    /* FIX3 (2026-11-19, eye item 1) — the stage key is cleared by
+       leaving the stage, but the agreed key survives it: a reload
+       after backing out to the login still restores the post-agree
+       bridge, not the choice view. The !_fpStage guard is load-bearing:
+       without it the agreed key hijacks ?stage=deck and ?stage=letter
+       too (the hook already entered the deck/letter, then this restore
+       yanked the view back to the bridge). */
+    var _fpAgreedKey=false;try{_fpAgreedKey=localStorage.getItem('nayanet_fp_agreed')==='1';}catch(e){}
     if(_fpRestoreStage==='agree'){enterStage();S.view='agree';S.all=null;render();}
     /* FIX2 — the agreed bridge restores like the agree end: the
        citizen who agreed and refreshed (or reopened the stage)
@@ -4456,7 +4504,7 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
        the final page shown, agreed line + onward pill visible —
        not on the choice view. A plain bridge visit never saves
        this key, so the pre-agree bridge is never auto-landed. */
-    else if(_fpRestoreStage==='bridge-agreed'){enterStage();S.view='bridge';S.all=null;window.__fpAgreed=true;var _rb2=q('#fpBridgeG2'),_rb3=q('#fpBridgeG3'),_rb4=q('#fpBridgeG4'),_rbf=q('#fpBridgeFinal'),_rm1=q('#fpBridgeMore1'),_rm2=q('#fpBridgeMore2'),_rm3=q('#fpBridgeMore3'),_rm4=q('#fpBridgeMore4');if(_rb2)_rb2.hidden=false;if(_rb3)_rb3.hidden=false;if(_rb4)_rb4.hidden=false;if(_rbf)_rbf.hidden=false;if(_rm1)_rm1.hidden=true;if(_rm2)_rm2.hidden=true;if(_rm3)_rm3.hidden=true;if(_rm4)_rm4.hidden=true;var _rag=q('#fpBridgeAgreed');if(_rag)_rag.hidden=false;var _ron=q('#fpBridgeToName');if(_ron)_ron.hidden=false;render();}
+    else if(!_fpStage&&(_fpRestoreStage==='bridge-agreed'||_fpAgreedKey)){enterStage();S.view='bridge';S.all=null;window.__fpAgreed=true;var _rb2=q('#fpBridgeG2'),_rb3=q('#fpBridgeG3'),_rb4=q('#fpBridgeG4'),_rbf=q('#fpBridgeFinal'),_rm1=q('#fpBridgeMore1'),_rm2=q('#fpBridgeMore2'),_rm3=q('#fpBridgeMore3'),_rm4=q('#fpBridgeMore4');if(_rb2)_rb2.hidden=false;if(_rb3)_rb3.hidden=false;if(_rb4)_rb4.hidden=false;if(_rbf)_rbf.hidden=false;if(_rm1)_rm1.hidden=true;if(_rm2)_rm2.hidden=true;if(_rm3)_rm3.hidden=true;if(_rm4)_rm4.hidden=true;var _rag=q('#fpBridgeAgreed');if(_rag)_rag.hidden=false;var _ron=q('#fpBridgeToName');if(_ron)_ron.hidden=false;render();}
      /* EYE FOLLOW-ON F1 (2026-11-17) - no 'bridge' auto-restore here:
         a plain load must never auto-land on the bridge (State B).
         The choice (State A) is what the citizen enters through the

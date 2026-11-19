@@ -583,6 +583,12 @@ a.deck-next{text-decoration:none;text-align:center}
     setTimeout(function(){ // AGREEMENT MERGE (2026-11-17): the agree button returns to the bridge
     // on this worker - the proof-host welcome-staged.html is never a
     // destination (BRIEF-AGREEMENT-UPDATE-20261117.md).
+    /* FIX3 (2026-11-19, eye item 1) — the agree carries its state
+       with it: without these keys the welcome boot lands ?stage=bridge
+       on the PRE-agree bridge (group 1, no AGREED line, no onward
+       pill), which is exactly what the eye saw. Same origin, same
+       localStorage, so the keys ride the navigation. */
+    try{localStorage.setItem('nayanet_fp_stage','bridge-agreed');localStorage.setItem('nayanet_fp_agreed','1');}catch(e){}
     window.location.href = "/?stage=bridge"; }, 1200);
   });
   var amb = document.getElementById('ambChoice');
