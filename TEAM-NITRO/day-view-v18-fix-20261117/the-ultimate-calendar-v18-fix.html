@@ -1986,7 +1986,7 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
 @media(max-width:1024px){:root{--bw:64px}}
 @media(max-width:560px){:root{--bw:32px}}
 .screen{flex:none!important;margin:var(--bw,96px) var(--bw,96px) 0!important;height:calc(100vh - 2*var(--bw,96px))!important;height:calc(100dvh - 2*var(--bw,96px))!important}
-.royal-frame{border:var(--bw,96px) solid transparent!important;border-image:url(master-frame.png) 300 / var(--bw,96px) / 0 round!important;box-shadow:none!important}
+.royal-frame{border:0!important;border-image:none!important;box-shadow:none!important}
 .royal-frame::after{content:"";position:absolute;inset:var(--bw,96px);border:2px solid var(--dc,#3fb8ff);border-radius:4px;box-shadow:0 0 24px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),inset 0 0 48px rgba(5,6,7,.85);pointer-events:none}
 .royal-frame .rf-c,.royal-frame .rf-seal{position:absolute;width:var(--em);height:var(--em);border-radius:50%;object-fit:contain;background:transparent!important;border:none!important;box-shadow:0 4px 12px rgba(0,0,0,.6);animation:none!important}
 .royal-frame .rf-c.tl{top:calc(var(--bw,96px)/2 - var(--em)/2);left:calc(var(--bw,96px)/2 - var(--em)/2);transform:rotate(135deg)}
@@ -1996,9 +1996,10 @@ html[data-day-theme="wednesday"] .tile .ijewel,html[data-day-theme="wednesday"] 
 .royal-frame .rf-seal{left:calc(50% - var(--em)/2)}
 .royal-frame .rf-seal.top{top:calc(var(--bw,96px)/2 - var(--em)/2)}
 .royal-frame .rf-seal.bottom{bottom:calc(var(--bw,96px)/2 - var(--em)/2)}
-/* The crystal N rides ON the bottom border, never over any control. */
-.corner-n{right:calc(var(--bw,96px)*1.5)!important;bottom:calc(var(--bw,96px)/2 - 32px)!important;z-index:41!important}
-@media(max-width:560px){.corner-n{width:32px!important;height:32px!important;right:calc(var(--bw,96px)*1.5)!important;bottom:0!important}.corner-n img{width:22px!important;height:22px!important}}
+/* The crystal N sits INSIDE the interface now, off the frame (eye fix 3) —
+   16px inside the screen's bottom-right corner, so all four corner seals stay whole. */
+.corner-n{right:calc(var(--bw,96px) + 16px)!important;bottom:calc(var(--bw,96px) + 16px)!important;z-index:41!important}
+@media(max-width:560px){.corner-n{width:32px!important;height:32px!important;right:calc(var(--bw,96px) + 12px)!important;bottom:calc(var(--bw,96px) + 12px)!important}.corner-n img{width:22px!important;height:22px!important}}
 /* (1) DATE LINE — "November 18th 2026", weekday lit in the day's colour (computed, never hard-coded). */
 .hl-date{text-transform:none!important}
 /* (2) THE LITTLE "i" — solid day-colour rim everywhere; the middle stays black so the "i" reads. */
@@ -2082,26 +2083,52 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 @media(max-width:1024px){.royal-frame .rf-c.tl{top:-53px!important;left:-53px!important}.royal-frame .rf-c.tr{top:-53px!important;right:-53px!important}.royal-frame .rf-c.bl{bottom:-53px!important;left:-53px!important}.royal-frame .rf-c.br{bottom:-53px!important;right:-53px!important}.royal-frame .rf-seal.top{top:-53px!important}.royal-frame .rf-seal.bottom{bottom:-53px!important}}
 @media(max-width:560px){.royal-frame .rf-c.tl{top:-30px!important;left:-30px!important}.royal-frame .rf-c.tr{top:-30px!important;right:-30px!important}.royal-frame .rf-c.bl{bottom:-30px!important;left:-30px!important}.royal-frame .rf-c.br{bottom:-30px!important;right:-30px!important}.royal-frame .rf-seal.top{top:-30px!important}.royal-frame .rf-seal.bottom{bottom:-30px!important}}
 
-/* ============ BORDER REDESIGN — MASTER FRAME (Shawn 2026-11-18 ~23:18Z; "use this one") ============
-   The frame IS master-frame.png, harvested verbatim (sha 865357f6…, 1672x941):
-   obsidian black, winged diamond seals in the four corners, winged crystal N
-   centre top and centre bottom, thin purple rim light, no pink wash.
-   border-image, slice 300: the corners hold the seals whole; the top/bottom
-   strips tile the centre pattern with `round` — the extension rule (repeat the
-   centre metal pattern as needed, top and bottom stay the frame). `round`
-   rescales to a whole number of tiles, so an ODD count puts one N dead centre:
-   5 tiles at 1920, 3 at 390. At 635 the count would fall to 2, so the tablet
-   slice is 340 (top/bottom only), which tiles 3. The sides repeat the same way
-   for any viewport height — the stage stays one continuous piece at any scroll
-   length. The six v6.2 corner/seal <img> elements are GONE from the markup
-   (the frame carries its own seals — nothing pasted on). Their old positioning
-   rules match nothing now and are left as history; .rf-c/.rf-seal are hidden
-   here as a guard. The v6.2 inner rim (::after, day colour, inward fade) is
-   kept verbatim. The v6.2 portal border-image wash is REMOVED at its source
-   (line 1989), not overridden — the pink ruling kills it outright. */
+/* ============ BORDER EYE-FIX (captain's cloud-browser eye, 2026-11-18 23:42-23:48Z; GOES BACK x4) ============
+   WHY DIVS, NOT border-image: measured, no single slice fits. The corner seals need a ~300px corner
+   (bright bbox x13-299 y0-291); the ornate top band is only ~157px deep (rows y160+ are black outside
+   the N); the side bands are ornate only in an outer ~115px strip plus the mid-side star. Slice 300
+   therefore rendered ~70px of ornament + ~26px of black mat on top, ~37px + ~59px of mat on the sides
+   — exactly the "thin filigree strip, rest plain black mat" the eye saw. And border-image tiles the
+   centre N with the pattern, so the N repeated 5x at desktop. The fix rebuilds the frame as
+   architecture inside the one fixed .royal-frame (still position:fixed inset:0, pointer-events:none):
+   four corner divs (300x300 crops of the master's own seals), four edge divs (the master's own dense
+   top-band metal, y0-~159, x150-500 — NO N in it — sides the same tile rotated 90deg), one purple rim
+   line, and ONE winged crystal N dead centre top + ONE dead centre bottom (crop of the master's own N:
+   wings x536-1135, ring + drop diamond y0-235, +16px margin; a wide brightness window first
+   caught band scrollwork, not wings — corrected by the N-only rows y170-235 (ring/drop x652-1016) and
+   a visual read of the asset itself). Band/side tiles repeat with `round` (whole tiles only — the
+   extension rule: middle repeats, top and bottom stay the frame). The tile's left/right edges fade to
+   black over 16px so the cut through the scrollwork joints invisibly on black; the
+   crops themselves are the master's pixels, never redrawn. The motif now renders at 160->96 scale
+   (~0.60) instead of 300->96 (~0.32): roughly twice the presence. ITEM 5 (frame quality, Shawn
+   ~23:52Z — "increase the quality clarity, the resolution whatever it is to its max level"): every
+   element renders at the largest scale the 96px band allows from this source — band motif 0.60
+   (redesign 0.32, 1.9x sharper), N ~0.40 (redesign 0.32, ~1.25x sharper, ~76px -> 96px tall), corner seals
+   0.32 (unchanged — the seal core IS ~300px in the source, so 300->96 is already its physical max;
+   no higher-res source exists). Assets are lossless PNG (zero compression loss), served bytes verified
+   = filed bytes; N and corners render at exact computed sizes (no second resampling pass), band
+   `round` rescales tiles by ~3% at desktop. The eye still judges sharpness on the render. The purple rim (#8e24aa, 2px) runs
+   the frame's inner edge with a soft glow — rim light only, never a wash; the v6.2 day-colour ::after
+   rim is kept, its inset restored to var(--bw) so it still sits at the content edge now the border
+   (and its padding-box offset) is gone. Border widths stay even by construction: every band/corner/N
+   is exactly var(--bw,96px) thick — 96 desktop / 64 tablet / 32 phone. The six v6.2 imgs stay gone;
+   their old positioning rules match nothing and are left as history. */
 .royal-frame .rf-c,.royal-frame .rf-seal{display:none!important}
-@media(max-width:1024px){.royal-frame{border-image-slice:340 300 340 300!important}}
-@media(max-width:560px){.royal-frame{border-image-slice:300!important}}
+.royal-frame::after{inset:var(--bw,96px)!important}
+.royal-frame .rf-et{position:absolute;left:var(--bw,96px);right:var(--bw,96px);height:var(--bw,96px);background-image:url(master-frame-band.png);background-size:auto 100%;background-repeat:round no-repeat;background-position:0 0;pointer-events:none}
+.royal-frame .rf-et.top{top:0}
+.royal-frame .rf-et.bottom{bottom:0}
+.royal-frame .rf-es{position:absolute;top:var(--bw,96px);bottom:var(--bw,96px);width:var(--bw,96px);background-image:url(master-frame-band-side.png);background-size:100% auto;background-repeat:no-repeat round;background-position:0 0;pointer-events:none}
+.royal-frame .rf-es.left{left:0}
+.royal-frame .rf-es.right{right:0}
+.royal-frame .rf-rim{position:absolute;inset:calc(var(--bw,96px) - 3px);border:2px solid #8e24aa;border-radius:4px;box-shadow:0 0 16px rgba(142,36,170,.45);pointer-events:none}
+.royal-frame .rf-corner{position:absolute;width:var(--bw,96px);height:var(--bw,96px);background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
+.royal-frame .rf-corner.tl{top:0;left:0;background-image:url(master-frame-corner-tl.png)}
+.royal-frame .rf-corner.tr{top:0;right:0;background-image:url(master-frame-corner-tr.png)}
+.royal-frame .rf-corner.bl{bottom:0;left:0;background-image:url(master-frame-corner-bl.png)}
+.royal-frame .rf-corner.br{bottom:0;right:0;background-image:url(master-frame-corner-br.png)}
+.royal-frame .rf-n{position:absolute;top:0;left:50%;transform:translateX(-50%);height:var(--bw,96px);width:calc(var(--bw,96px)*632/252);background-image:url(master-frame-n.png);background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
+.royal-frame .rf-n.bottom{top:auto;bottom:0}
 </style>
   </head>
   <body>
@@ -2162,7 +2189,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         </header>
         <div class="doorbody" id="doorBody"></div>
       </section>
-    <div class="royal-frame" aria-hidden="true"></div>
+    <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-et bottom"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div><div class="rf-n bottom"></div></div>
 <button type="button" class="corner-n" id="cornerN" aria-label="Naya — back to month"><img src="icon-512.png" alt="Naya"></button>
     </div>
 
