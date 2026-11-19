@@ -1,0 +1,70 @@
+{
+  "schema": "naya.queue-contract/1",
+  "generated_at": "2026-11-19T03:52:15Z",
+  "tip": "f739a621e8ff0f4d12351e0ce48040d2831c4cdf",
+  "prs": [
+    {
+      "number": 3453,
+      "title": "Agreement merge (2026-11-17): one choice screen at the root, READ -> /agreement, login exits in-flow",
+      "tier": "B",
+      "action": "MERGE-NOW",
+      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "8f822c768938b7a58d705a4a3908fa4dc78d5a63"
+    },
+    {
+      "number": 3466,
+      "title": "Connection profile fix round (2026-11-17): bar labels, phone padding, press, rail failed hover, stub history",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "a5c12676590bb44a2059d439cabcf67168ad5b84"
+    },
+    {
+      "number": 3468,
+      "title": "Walk end/entrance welcome 20261116",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author updates the branch onto current main \u2014 its only red(s) (delivery-gate) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
+      "owner": "author lane",
+      "head": "e34c2bf84822c94da362584df8ed54599e9b3dcd"
+    },
+    {
+      "number": 3477,
+      "title": "Smart Mail eye follow-on FIX: fold engages at 1919, badges hold, CONNECT whole at 635",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "3516785287b74d11f61034462093d9bb281037a1"
+    },
+    {
+      "number": 3486,
+      "title": "Cold retrieve: complete collision-repair round 2 registry leg (SN-3549..SN-3553 to SN-3555..SN-3559)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, completeness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "d662af14e98e48b22a00afc55c79e85efbfeec0a"
+    },
+    {
+      "number": 3487,
+      "title": "docs(brain): learning event 2026-11-18",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "93f20d5bc6a7f8be21b1c11c354c06a500d69413"
+    },
+    {
+      "number": 3488,
+      "title": "Truth cure: register SN-3560..SN-3589 (30 notes)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "a094872813bf7fbf8b726fe4871f22a346a1d569"
+    }
+  ]
+}
