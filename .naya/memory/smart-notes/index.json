@@ -65040,6 +65040,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3700",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3700-free-forever-kept-beautiful",
+      "slug": "free-forever-kept-beautiful",
+      "title": "Free Forever, Kept Beautiful",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3700/IB-SMART-NOTE-20261119-sn3700-free-forever-kept-beautiful.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3700/IB-SMART-NOTE-20261119-sn3700-free-forever-kept-beautiful.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3700/IB-SMART-NOTE-20261119-sn3700-free-forever-kept-beautiful.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3700-free-forever-kept-beautiful.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T14:38:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "e671dc8ec032aa31ee710538f7b41f73c3119d1ed728cf2e3771c9e8bbf91e1f",
+      "content_hash": "5ea95c0c9c2756f40aea960dd45dae3bfb2b2a4067d59893ab69d168af8a90c5",
+      "one_line": "Free forever, Power recommended — said plainly and placed where it will be read: you belong even if you join for free, free forever for everyone, like joining a social network; and if you want your AI plugged into your network, your Hub, your world, operating it for you, that is Naya Power, way more powerful, and we recommend it. Instant legibility governs the pictures: if you can't tell what it's saying, it doesn't go — two scenes kept their words and lost their images, held not deleted, because a beautiful picture that doesn't communicate is a cost, not an asset. Keep what we had: when the new thing replaced the beautiful thing instead of adding images to it, the correction was total — what he had was beautiful, the unfolding with the buttons was a signature piece, and creating a whole new system unasked destroys the asset it meant to improve. Think first — primo, not literal: don't just do what he said; think whether it's right, whether that's how you make it look primo, top end, top of the line — and help each other understand how we operate, so each can help the other help them. Our pages are unfolds and slideshows, a matrix — not typical flat web pages you just scroll down. The name is the agreement: the Collective Agreement goes on the FRONT PAGE, below the login, logo above — visual presentation first, then the words, not required reading but the web presentation of what we are — 'if you agree, click I agree' — one page, not two. The calendar is the door: the My World button BECOMES the calendar; click a day and boom — that day's dashboard, feed, news, notes, events, posts; the whole system runs by calendar, and a visitor clicking your My World gets the calendar too. Colour has logic: the colour comes from the letter — same letter, same colour, always — the septenary code, T is 7 so purple, Z is 1 so red, every letter one number, every number one colour. The unfolding is the page: it must fit, almost full screen, beautifully presented — massive and stuck fails his eye even when the probes pass. And the children: reformatting the internet so children around the world collaborate and learn together, their AIs tied in, safe and secure in a beautiful place run on the law of one — everyone hired, everyone educated, everyone given a way to operate the internet they couldn't before.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -65050,5 +65083,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "e1ecffb1f1a02cc43f5d7e75e981a4d98e8653e84ce827baba1d29ac494dc60e"
+  "corpus_manifest_hash": "cac5a7f1f2ed4632be7d40c938bba9c937e5d8b07e75860cb689ebce17869409"
 }
