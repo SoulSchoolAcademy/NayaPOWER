@@ -376,13 +376,13 @@ a { color: inherit; }
 .notif-seg:nth-child(even) .notif-tile::after{animation:naya-orbit-dot-ccw 150s linear infinite;}
 .notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 2px 2px rgba(0,0,0,.7)); position: relative; transition: transform .22s, filter .22s; } /* MODEL: dark-only — the white glows in the middle are gone (22:48Z). */
 .notif-lbl { display: block; font-size: 17px; font-weight: 700; letter-spacing: .08em; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.9); white-space: nowrap; line-height: 1.2; } /* FOLLOW-ON 2026-11-19 (item 3): labels read — 17px bold white, harvested from the Dashboard follow-on (os-followup2-20261119). The 10.5px label was unreadable at 1920 and is gone. */
-.notif-count { position: absolute; top: 5px; right: 5px; min-width: 26px; height: 26px; padding: 0 5px; /* FOLLOW-ON 2026-11-19 (item 3): the ball is 26px with 12px numerals, inset top-right INSIDE the tile, rim-lit in the tile's colour — the Dashboard standard. */
+.notif-count { position: absolute; top: 4px; right: 4px; min-width: 20px; height: 20px; padding: 0 2px; /* FOLLOW-ON 2026-11-19 (item 3): the ball is 20px with 11px numerals, inset top-right INSIDE the tile, rim-lit in the tile's colour — the Dashboard standard, sized down (ROUND 6) so it clears the glyph: the 26px ball covered the pulse line's rising edge, and its 1.7x landing flare left the tile. */
   display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
-  font-size: 12px; font-weight: 900; color: #fff; background: radial-gradient(130% 140% at 30% 18%, rgba(255,255,255,.22), #07070b 78%);
+  font-size: 11px; font-weight: 900; color: #fff; background: radial-gradient(130% 140% at 30% 18%, rgba(255,255,255,.22), #07070b 78%);
   border: 1.5px solid var(--nc);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 12px color-mix(in srgb, var(--nc) 55%, transparent), 0 3px 8px rgba(0,0,0,.5); } /* 23:11Z notification ball: black obsidian ball, white number, inside the tile, lit around in the tile's own color. */
 @keyframes notifLand { 0% { border-color:#fff; box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 8px 18px rgba(0,0,0,.6), 0 0 0 1px #fff, 0 0 34px #fff, 0 0 50px color-mix(in srgb, var(--nc) 90%, transparent); } 100% { border-color: color-mix(in srgb, var(--nc) 88%, #ffffff); box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 0 0 1px color-mix(in srgb, var(--nc) 30%, transparent), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); } }
-@keyframes notifCountLand { 0% { transform: scale(1.7); } 100% { transform: scale(1); } }
+@keyframes notifCountLand { 0% { transform: scale(1.15); } 100% { transform: scale(1); } } /* ROUND 6 2026-11-19 (defect 5): the 1.7x flare put the 26px ball half outside the tile's top edge — the straddle the eye saw. A 1.15x pop stays inside the tile and still reads as a landing. */
 .notif-seg.just-landed .notif-tile { animation: notifLand 1.4s ease-out 1; }
 .notif-seg.just-landed .notif-count { animation: notifCountLand .9s ease-out 1; } /* EYE-NOTES-FIX §3.3(d): the light-up is a once-off — bright and obvious when a notification lands, then it settles to the steady has-news glow. It never blinks forever. */
 .notif-seg.has-news .notif-tile {
@@ -624,13 +624,15 @@ a { color: inherit; }
 
 .brand { display: flex; align-items: center; gap: 12px; padding: 2px 8px 0; }
 .brand img { width: 44px; height: 44px; border-radius: 50%; display: block; background: var(--bg-raise); border: 2px solid rgba(255,255,255,.2); box-shadow: 0 0 16px rgba(142,36,170,.3); }
-/* FIX-5a 2026-11-17 (amendment 1): the NayaNET mark carries the approved
-   travelling-dot orbit — the same object as the neighbouring hamburger's
-   .rail-toggle::after (ring + white-core dot, 9px tile), alternating
-   counter-clockwise at 150s against the hamburger's clockwise 120s.
-   An <img> cannot carry ::after, so the orbit lives on the wrapper span. */
+/* ——— The top-left NayaNET orb: the ORB breathes (ROUND 6 2026-11-19, defect 6).
+   The travelling-dot orbit is gone from this mark: the dot read as a separate
+   light beside the orb (Design Laws §8 — one lit icon, never an icon beside
+   its own separate light), and at 150s per revolution it was invisible across
+   a 5s look. The orb itself now lights up on a slow 16s breathe — its own
+   halo ring brightening and dimming, never faster than 12s. The hamburger
+   keeps its own orbit; this change touches the brand mark only. */
 .brand-mark{position:relative;flex:none;width:44px;height:44px;border-radius:50%;display:block;}
-.brand-mark::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,#a06bff 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 150s linear infinite;}
+.brand-mark::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:inherit;pointer-events:none;border:1px solid color-mix(in srgb, #a06bff 35%, transparent);animation:brand-orb-breathe 16s ease-in-out infinite alternate;}
 .brand b { display: block; font-size: 17px; letter-spacing: .14em; }
 .brand small { display: block; font-size: 17px; letter-spacing: .22em; color: var(--muted); margin-top: 3px; }
 
@@ -793,7 +795,7 @@ a { color: inherit; }
    gematria table uses #29b6f6 there. One decision still owed; the
    harvest stays verbatim per the brief. See maker report. ——— */
 .pc-rail-note{margin:0 0 12px;font-size:12px;line-height:1.5;color:#fff;}
-.hub-people-list{max-height:calc(100vh - 220px);overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:2px;}
+.hub-people-list{max-height:calc(100vh - 220px);overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;display:flex;flex-direction:column;gap:10px;padding-right:2px;}
 .pc-rail-sec{margin:6px 0 0;font-size:12px;font-weight:900;letter-spacing:.18em;color:#fff;text-transform:uppercase;}
 .pc-card{background:#050507;border:1.5px solid color-mix(in srgb, var(--pc,#8e24aa) 45%, rgba(255,255,255,.16));border-radius:16px;padding:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -4px 10px rgba(0,0,0,.35),0 0 18px -8px var(--pc,#8e24aa),0 8px 22px rgba(0,0,0,.45);}
 .pc-card-top{display:flex;align-items:center;gap:10px;min-width:0;}
@@ -941,7 +943,7 @@ a { color: inherit; }
 .hero-restore.show:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.4),0 4px 10px rgba(0,0,0,.55);}
 @media(max-width:640px){.hero-restore.show{bottom:88px;right:8px;padding:5px 10px;font-size:17px;}}
 .main-show .hero.hero-folded ~ .searchWrap{padding-top:0;}
-.main-show .hero.hero-folded ~ .lens-tabs{margin-top:8px;}
+.main-show .hero.hero-folded ~ .lens-tabs{padding-top:8px;}
 
 /* ——— Living-depth jewel icons ———
    Naya 4's elite orb: halo + core + rim + highlight, rendered by Icons.icon().
@@ -1361,12 +1363,13 @@ body.msg-open{overflow:hidden;}
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  margin: 26px 0 8px;
+  margin: 0;
+  padding: 26px 0 8px;
 }
-/* ROUND 2c (e) — eye: the lens pills slide under the sticky .top header and read as clipped at the top edge while scrolling (live: lensTop goes negative). Pin the row just below the header with its own obsidian face. Sticky `top` counts the margin box: 71px header (<=900px, measured) minus 26px margin = 45px, 8px folded = 63px; 75px header above 900px = 49px / 67px. At-rest layout unchanged. */
-.lens-tabs{position:sticky;top:45px;z-index:29;background:#050607;box-shadow:0 12px 24px rgba(0,0,0,.55)}
-.main-show .hero.hero-folded ~ .lens-tabs{top:63px}
-@media (min-width:901px){.lens-tabs{top:49px}.main-show .hero.hero-folded ~ .lens-tabs{top:67px}}
+/* ROUND 2c (e) + ROUND 6 2026-11-19 (defect 4c) — eye: the lens pills slide under the sticky .top header and read as clipped at the top edge while scrolling (live: lensTop goes negative). Pin the row just below the header with its own obsidian face. ROUND 6: the 26px top margin was transparent — a note title scrolling underneath showed through the margin band, sliced mid-glyph by the bar's top edge. The margin is now padding, so the obsidian background covers the whole sticky box: sticky `top` is the header height itself, 71px (<=900px, measured) / 75px above 900px, folded the same (the 8px is padding-top now, inside the box). At-rest layout unchanged — the pills sit where they sat. */
+.lens-tabs{position:sticky;top:71px;z-index:29;background:#050607;box-shadow:0 12px 24px rgba(0,0,0,.55)}
+.main-show .hero.hero-folded ~ .lens-tabs{top:71px}
+@media (min-width:901px){.lens-tabs{top:75px}.main-show .hero.hero-folded ~ .lens-tabs{top:75px}}
 /* Lens tabs ARE NAYA-BTN-005 "Primo Purple" (Shawn 2026-10-20: "put the best
    everywhere") — the .primo harvest carries the visuals; this block only sizes
    the piece to the 3-column row and lights the active lens purple. */
@@ -7492,7 +7495,7 @@ function pcCardWithConnect(p, live){
   if(at<0) return base;
   /* ROUND 5 2026-11-19 (checker item 2): top line keeps ball + name + % locked
      top-right; line 2 is FIVE icon-only 26px circles in ONE row — EYE first,
-     then DM, Mail, Audio, Video — 5x26 + 4x8 = 162px, inside the 256px card. */
+     then DM, Mail, Audio, Video — 5x26 + 4x8 = 162px, inside the 251px card (rail 300 - rail pad 28 - list pad-right 2 - card pad 16 - card border 3), 89px spare. */
   return base.slice(0, at)+pctHtml+'</div><div class="pc-card-acts">'+btns+'</div>'+base.slice(at+6);
 }
 
@@ -8164,6 +8167,13 @@ window.NayaJewels = (() => {
         window.addEventListener('scroll', function () {
           var h = document.querySelector('.main-show .hero');
           if (!h) return;
+          /* ROUND 6 2026-11-19 (defect 3): while the restore button is
+             returning the viewport to the top, do not re-fold mid-flight —
+             the guard clears when the top is reached. */
+          if (window._nayaWelcomeReturning) {
+            if (window.scrollY <= 8) { window._nayaWelcomeReturning = false; unfoldEl(h); }
+            return;
+          }
           if (window.scrollY > 40) foldEl(h);
           else if (window.scrollY <= 8) unfoldEl(h);
         }, { passive: true });
@@ -8187,7 +8197,19 @@ window.NayaJewels = (() => {
       restoreBtn.addEventListener('click', function () {
         window._nayaWelcomeClosed = false;
         restoreBtn.classList.remove('show');
-        unfoldEl(hero);
+        /* ROUND 6 2026-11-19 (defect 3): the button only unfolded the banner
+           — it never moved the viewport, so scrolled down at SN-3645 nothing
+           visibly changed (and the next scroll re-folded it). The way back
+           returns the viewport to the top, where the banner lives: unfold the
+           live hero, then scroll the window to 0. _nayaWelcomeReturning holds
+           the scroll listener off the fold while the viewport travels, so the
+           banner is not re-folded mid-flight; the listener clears the guard
+           at the top, and a 2s fallback clears it if the scroll is cut short. */
+        var h = document.querySelector('.main-show .hero') || hero;
+        unfoldEl(h);
+        window._nayaWelcomeReturning = true;
+        setTimeout(function () { window._nayaWelcomeReturning = false; }, 2000);
+        try { window.scrollTo({ top: 0, behavior: (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth') }); } catch (e) { window.scrollTo(0, 0); }
       });
       hero._nayaRestoreBtn = restoreBtn;
       /* AMENDMENT 2026-11-18 (B, Shawn 00:47Z): the little close button
@@ -14051,12 +14073,51 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
    govern .pc-card-acts .pc-act-btn, so five labelled pills needed ~450px and
    wrapped at every width. This override restores the harvested 26px circular
    form (L873) inside the acts row and locks the row to nowrap: 5x26 + 4x8 gap
-   = 162px, inside the 256px card (rail 300 - rail pad 28 - card pad 16).
+   = 162px, inside the 251px card (rail 300 - rail pad 28 - list pad-right 2 - card pad 16 - card border 3), 89px spare; the scrollbar lane is reserved outside the cards, so the track never overlays the row.
    Labels are gone from the markup; each name lives on in aria-label + title.
    The .pc-act-lab rule stays, now unused — do not delete what was not asked. */
 #hubPeopleList .pc-card-acts { flex-wrap: nowrap; }
 #hubPeopleList .pc-card-acts .pc-act-btn { width: 26px; height: 26px; padding: 0; border-radius: 50%; display: grid; place-items: center; gap: 0; }
 #hubPeopleList .pc-card-acts .pc-act-lab { display: none; }
+
+/* ——— FOLLOW-ON ROUND 6 20261119 — captain's eye, six defects ——— */
+/* (2) FRAME FITS THE NOTE: the frame is content-height only — height:max-content
+   defeats any stretch from a flex/grid ancestor, align-self:start keeps it from
+   stretching as an item, rows are auto and packed at the top, so no extra height
+   can pool in the middle row as a void below the VALUE / INTELLIGENCE ratings.
+   The frame extends to fit the note and shrinks to it — never a void. */
+.ib-frame { height: max-content; align-self: start; grid-template-rows: auto auto auto; align-content: start; }
+/* (4a/4b) FLOATING PILLS LIVE IN A CLEAR LANE: the restore pill and the
+   hide-bottom-bar control are fixed at right:12px — inside the 300px right
+   rail, over its rows. While the rail is open they shift left of it
+   (right:312px); at desktop the rail is docked, so the shift is the default
+   there and lifts only when the rail is collapsed. On a phone-width screen
+   there is no lane beside the open drawer, so both pills hide until the
+   rail closes. */
+.shell.rail-right-open .hero-restore.show { right: 312px; }
+.shell.rail-right-open #os-b3-hide { right: 312px; }
+@media (min-width: 1440px) {
+  .hero-restore.show { right: 312px; }
+  #os-b3-hide { right: 312px; }
+  .shell.rail-right-collapsed .hero-restore.show { right: 12px; }
+  .shell.rail-right-collapsed #os-b3-hide { right: 12px; }
+}
+@media (max-width: 640px) {
+  .shell.rail-right-open .hero-restore.show { display: none; }
+  .shell.rail-right-open #os-b3-hide { display: none; }
+}
+/* (4d) THE BOTTOM BAR RESERVES ITS SPACE: the fixed notif-bar (~124px tall:
+   20px bar pad + 12px row pad + 2px seg pad + 54px tile + 6px gap + ~20px
+   label + 10px row pad) used to cover whatever card scrolled beneath it.
+   The feed column now ends 140px above the document end, so the last card
+   ends above the bar and never scrolls beneath it. */
+.main-show { padding-bottom: 140px; }
+/* (6) THE ORB BREATHES: the top-left NayaNET orb's own halo lights up on a
+   slow 16s breathe — the orb itself, never a second dot (the dot is gone
+   from .brand-mark::after above). Visible within one glance, never faster
+   than 12s. */
+@keyframes brand-orb-breathe { from { opacity: .55; box-shadow: 0 0 0 rgba(142,36,170,0); } to { opacity: 1; box-shadow: 0 0 18px rgba(142,36,170,.55), 0 0 32px rgba(142,36,170,.25); } }
+@media (prefers-reduced-motion: reduce) { .brand-mark::after { animation: none; } }
 </style>
 </body>
 </html>
