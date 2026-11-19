@@ -2359,6 +2359,53 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   .cat-essence{margin-top:24px!important}
   .smart-block[aria-label="News"] .cat-rows{margin-bottom:144px!important}
   }
+  /* FIX6 — (1) the weather city-entry form is pinned inside the viewport:
+     when the form is open the trigger button hides (its job is done — the
+     form is open) so the form takes the whole foot bar; the flex chain
+     (slot, form, input) gets min-width:0 so the input shrinks below its
+     20ch size instead of pushing Set off-screen. Font-robust: the input
+     width is the bar width minus the Set button, never a ch width — proven
+     live at 20px input font (ch 11.4) as well as 17px. The open form stays
+     one row (48px) at the foot, clear of the nav. (2) TOKYO zone math:
+     DIAGNOSED, NOT A DEFECT — no code change (maker report: the VM runs
+     UTC, so local 10:29 UTC + 9h = 19:29 JST is the TRUE Tokyo time; the
+     Intl cross-check is exact to the second for TOKYO, LONDON and
+     NEW YORK). (3) the 700px cover-row clearance (3.0px, real): the
+     chamber nav drops from bottom:20px to bottom:4px in the 561–740 band
+     only — clearance 19px, the nav still 20.8px clear of the pill.
+     (4a) the sticky dots strip gets an opaque backing on phone
+     (solid #050607 plus a 6px shadow band above and below, so a whole
+     text line is occluded — the dots' own y never moves). Phone-scoped
+     on purpose: at 700px the dots already overlap the cover date by 6px
+     (pre-existing, base-identical) and the band would black out the
+     date's "18" — the band stays off that width; the 700 dots/date kiss
+     is carried as an open observation, not fixed here. (4b) the Journal slide's trailing line: the eye read
+     it as "hides behind the nav, -67px" and the fix as trailing space. The
+     real mechanism is worse: .ink-timeline is a shrinkable flex item
+     (flex 0 1 auto) in the over-full slide column, so it is squeezed to
+     ZERO height - its content (the "Nothing written" line AND every saved
+     entry) exists in the DOM but renders ZERO pixels, clipped by its own
+     overflow. Trailing space alone fixes the rect, not the reading. So
+     the fix is two parts: flex:none so the timeline keeps its height
+     (the line and saved entries actually render), plus the 168px
+     margin-bottom so the rendered line clears the nav (measured live:
+     line renders, clearance +104px). (4c) the post-set weather
+     note widens to the foot (max-width 342px at 390, phone) so the label
+     is always two lines, with 2px of bottom room — it clears the nav by
+     3px instead of overlapping it by 20.5px. (4d)(4e) carried: wisdom dots
+     rest y403–413 (sticky natural position, settles to 355 on scroll) and
+     nav y 723–726 (3px session variance) — cosmetic, no fix. */
+  .wx-bottomleft:has(#wxForm) #wxBtn{display:none!important}
+  .wx-bottomleft:has(#wxForm) #wxSlot{flex:1 1 0!important;min-width:0!important;display:flex!important}
+  .wx-bottomleft:has(#wxForm) .wx-form{width:100%!important;max-width:100%!important;min-width:0!important}
+  .wx-bottomleft:has(#wxForm) .wx-form input{flex:1 1 0!important;min-width:0!important}
+  .wx-bottomleft:has(#wxForm) .wx-form button{flex:none!important}
+  @media(min-width:561px) and (max-width:740px){#dayScroll #chamberBlock .sb-nav{bottom:4px!important}}
+  @media(max-width:560px){
+  .sb-dots{background:#050607!important;box-shadow:0 -6px 0 0 #050607,0 6px 0 0 #050607!important}
+  .smart-block[aria-label="Journal"] .ink-timeline{margin-bottom:168px!important;flex:none!important}
+  .wx-bottomleft:has(.wx-note){max-width:calc(100vw - var(--bw,96px) - 16px)!important;padding-bottom:2px!important}
+  }
 </style>
   </head>
   <body>
