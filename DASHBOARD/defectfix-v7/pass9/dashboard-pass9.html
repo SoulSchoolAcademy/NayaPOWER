@@ -4069,7 +4069,7 @@ body.dash-drawer-open .dash-shell .rail-left-x {display: grid;}
 .dash-shell .nav-sub .ico{border-radius:50%;}
 .dash-shell .nav-sub .lbl{font-weight:700;}
 </style>
-</head><body>
+</head><body class="os-bottom-hidden">
 <!-- 2026-11-01 — Shawn: HERO MODE ON. The constellation layout is correct.
      Fixed the exit paths so you are never trapped. -->
 <!-- 2026-11-01 — Viewport Optimization Law: tiny back button restores full view -->
@@ -15275,10 +15275,26 @@ var LD_NODES = [
 /* PASS 1 v6 follow-up (2026-11-05) — LD_NODES/LD_VALUES are IIFE-scoped,
    so window.LD_NODES was [] and _worldTotals' top[] was always empty:
    every board fell back to 0/0. Expose them; the boards read window. */
-/* FOLLOW-UP 2026-11-18 (§9): an empty orb shows the way in — the action that
-   fills it, in plain words. The number stays live (never faked); the invitation
-   is an extra line under the label, shown only while the live value is 0. */
+/* FOLLOW-UP 2026-11-18 (§9) + FOLLOW-ON 2026-11-19 (§1): an empty orb shows
+   the way in. The number stays live (never faked). The invitation is a GLYPH
+   under the label — the 10px caption did not read at 1920, so no text is shown
+   at rest (no §2.3 violation); the words live on in the aria-label. */
 var LD_EMPTY_INVITE = {sales:'Share a link', joins:'Invite someone', notes:'Write a note', invs:'Invite someone', posts:'Create something', shares:'Share something', comments:'Say something', likes:'Like something', saves:'Save something'};
+/* FOLLOW-ON 2026-11-19 (§1): one glyph per action, feather-style stroke icons
+   in the tile stroke language (24 viewBox, round caps/joins); the plus is
+   harvested verbatim from the bar's ADD tile. */
+var LD_EMPTY_ICON = {
+  sales:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="M7 8l5-5 5 5"/><path d="M5 12v8h14v-8"/></svg>',
+  joins:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg>',
+  notes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>',
+  invs:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg>',
+  posts:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+  shares:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="M7 8l5-5 5 5"/><path d="M5 12v8h14v-8"/></svg>',
+  comments:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>',
+  likes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  saves:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>',
+  _default:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
+};
 window.LD_NODES = LD_NODES; window.LD_VALUES = LD_VALUES;
 /* 2026-11-02 — Shawn: DEMO MODE early detection */
 window._demoMode = (function(){
@@ -21710,7 +21726,7 @@ function loadPointsBoard(_t){
         '<span class="os-ld-gear" aria-hidden="true"></span>'+
         badge + trend +
         '<span class="os-ld-n" data-nn="'+node.key+'" data-full="'+pts+'" data-pct="'+(_od ? _od.pct : '')+'">'+displayNum+'</span>'+
-        '<span class="os-ld-lbl">'+_lbl+'<span class="os-ld-unit">'+(_od ? _od.unit : (_isCount ? 'COUNT' : 'PTS'))+'</span></span>'+(_invite?'<span class="os-ld-invite">'+_invite+'</span>':'')+spark+'</button>'; /* 2026-11-02 — Shawn: proper label, well designed. v7.1 FIX 1b: the unit rides under the name. */
+        '<span class="os-ld-lbl">'+_lbl+'<span class="os-ld-unit">'+(_od ? _od.unit : (_isCount ? 'COUNT' : 'PTS'))+'</span></span>'+(_isEmptyOrb?'<span class="os-ld-invite-ico">'+(LD_EMPTY_ICON[node.key]||LD_EMPTY_ICON._default)+'</span>':'')+spark+'</button>'; /* 2026-11-02 — Shawn: proper label, well designed. v7.1 FIX 1b: the unit rides under the name. */
     });
     box.innerHTML = html;
     /* PASS-12 2026-11-11 (6): every orb number counts up slowly to its
@@ -23535,7 +23551,7 @@ function applyDashBar(){
      whatever the setting said. The fold rule itself is untouched: the
      next scroll event re-folds mid-page; only the very bottom returns it. */
   /* 2026-11-18 DOORS-OUT (§2): the bar is NOT sticky and never force-shows at boot — it appears once, calmly, when the reader has stopped at the very bottom for a second (see onScroll). An explicit ON from the Settings toggle shows it at once and marks it shown. */
-  if (on && window._osB3UserToggle) { document.body.classList.remove('os-bottom-hidden'); window._osB3ShownOnce = true; }
+  if (on && window._osB3UserToggle) { document.body.classList.remove('os-bottom-hidden'); window._osB3ShownOnce = true; window._osB3AutoShown = false; }
   document.body.classList.toggle('os-bottom-off', !on);
   if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(e){} }
 }
@@ -27289,6 +27305,7 @@ window._repaintOrbMinis = function(box){
       if (!_osAtPageBottom() || _osB3BarOff()) return;
       document.body.classList.remove('os-bottom-hidden');
       window._osB3ShownOnce = true;
+      window._osB3AutoShown = true;
       if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(_sb){} }
     }, 1000);
   }
@@ -27302,6 +27319,12 @@ window._repaintOrbMinis = function(box){
     document.body.classList.add('os-top-hidden');
     /* DOORS-OUT 2026-11-18 (Shawn ~20:24Z): the bar is NOT sticky. It stays hidden until the reader has stopped at the very bottom for a full second — one calm appearance, then it holds. It never pops back up over and over: once shown, this code never hides it again. (Supersedes RETURN-AT-BOTTOM 2026-11-17.) */
     _osB3ArmTimer();
+    /* FOLLOW-ON 2026-11-19 (§2): the bar is never sticky. When the reader leaves
+       the bottom, an AUTOMATICALLY shown bar folds again (and re-arms for the
+       next bottom visit) — so it never covers content while reading, and the
+       left rail's footer is visible again at the top. A bar the reader summoned
+       themselves (corner control / Settings ON) holds: that was their tap. */
+    if (window._osB3AutoShown && !_osAtPageBottom() && !document.body.classList.contains('os-bottom-hidden')) { document.body.classList.add('os-bottom-hidden'); window._osB3ShownOnce = false; window._osB3AutoShown = false; if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(_sb2){} } }
     /* 2026-11-18 CLUSTER-FOLLOWON (§3): the chevron tracks the fold. */
     if (typeof window._osSyncB3Hide === 'function') { try { window._osSyncB3Hide(); } catch(_sb){} }
     if (_navT) clearTimeout(_navT);
@@ -29772,7 +29795,7 @@ body.viewport-focus #viewport-back{
 /* NEUTRALISER — the Dashboard's own !important seg shadow (bar-depth work) would sit under every Hub tile; the Hub's tiles carry their own shadow, so the seg shadow goes, scoped to this bar only. */
 #os-bottom3 .notif-seg{box-shadow:none !important;}
 </style>
-<nav id="os-bottom3" class="os-bottom3 notif-six notif-bar" aria-label="Dashboard"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></a></div></nav>
+<nav id="os-bottom3" class="os-bottom3 notif-six notif-bar" aria-label="Dashboard"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
 <!-- GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control for the Dashboard bar (the page-icon-bar law: a small corner control can hide it; Settings can turn it off; by default it sits there). A real object, not flat: obsidian, white rim, top light. The down chevron folds the bar down; the up chevron brings it back. -->
 <button type="button" id="os-b3-hide" aria-label="Hide the Dashboard bar" title="Hide the Dashboard bar">▾</button>
 <script>
@@ -29816,7 +29839,7 @@ body.viewport-focus #viewport-back{
     try {
       var _folded = document.body.classList.contains('os-bottom-hidden');
       var _on = (window.NayaSmartBar && typeof window.NayaSmartBar.dashBarOn === 'function') ? window.NayaSmartBar.dashBarOn() : !document.body.classList.contains('os-bottom-off');
-      if (_on && _folded) { document.body.classList.remove('os-bottom-hidden'); window._osB3ShownOnce = true; window._osSyncB3Hide(); return; }
+      if (_on && _folded) { document.body.classList.remove('os-bottom-hidden'); window._osB3ShownOnce = true; window._osB3AutoShown = false; window._osSyncB3Hide(); return; }
     } catch(_fe){}
     var on = true;
     try {
@@ -30784,8 +30807,29 @@ body.os-tabs-on #os-rooms-plus, body.os-tabs-on #os-eco-plus{z-index:1001 !impor
   body.dash-drawer-open #os-rooms-plus{left:calc(min(300px,84vw) - 24px) !important;top:60px !important;}
   body.dash-rail-right-open #os-eco-plus{right:calc(min(300px,84vw) - 24px) !important;top:60px !important;}
 }
-/* (§9) THE EMPTY-ORB INVITATION — plain words under the label, white, lit in
-   the orb's own colour. The live number above it is untouched. */
-.os-ld-node .os-ld-invite{display:block !important;position:relative !important;z-index:1 !important;margin-top:3px !important;font-size:10px !important;font-weight:700 !important;letter-spacing:.04em !important;color:#ffffff !important;text-shadow:0 1px 3px rgba(0,0,0,.9), 0 0 10px var(--nc) !important;white-space:nowrap !important;}
+/* FOLLOW-ON 2026-11-19 (§1): the (§9) 10px caption rule is REMOVED — nothing
+   emits .os-ld-invite any more, and the 10px text did not read at 1920. The
+   invite is icon-only now (.os-ld-invite-ico, follow-on block below). */
+</style>
+
+<style id="os-followup2-20261119">
+/* FOLLOW-ON 2026-11-19 — Dashboard follow-on round 2 (captain's eye verdict on round 1).
+   Four defects; this block holds the new CSS. It sits last in the document so
+   its rules win ties against the older bar/rail rules. */
+/* (§1) THE EMPTY-ORB INVITE IS ICON-ONLY — a glyph under the label, white as a real object, lit in the orb's own colour (the tile-glyph law, §4). No text at rest, no §2.3 violation. */
+.os-ld-node .os-ld-invite-ico{display:block !important;position:relative !important;z-index:1 !important;margin-top:4px !important;width:22px !important;height:22px !important;color:#ffffff !important;filter:drop-shadow(0 0 6px var(--nc)) drop-shadow(0 2px 2px rgba(0,0,0,.7)) !important;}
+.os-ld-node .os-ld-invite-ico svg{width:22px !important;height:22px !important;display:block !important;}
+/* (§3) THE RIGHT RAIL HEADER CLEARS THE PAGE-TOP BAND — the top bar sits 104px tall at document-top (hero-clip fix) while the rail starts below the search level, so the header rode under the bar. The rail's top padding grows 18px -> 56px (header lands ~121px from document-top, ~17px clear of the bar) and the head pins inside its own rail so it can never scroll out of view. */
+.dash-shell .rail.right{padding:56px 14px 18px !important;}
+.dash-shell .rail.right .rail-right-head{position:sticky !important;top:0 !important;z-index:5 !important;background:#12151d !important;padding-bottom:8px !important;}
+/* (§4) THE OFFICIAL BAR, WITH LABELS — labels under the tiles, white 17px (§2.3: the law wins over Personal's 10.5px — the eye proved 10px does not read at 1920). The row gap tightens 40px -> 24px at desktop so six labelled segs fit the 640px row; at phone widths the 17px labels cannot fit six-across, so they hide and the bar falls back to glyph-only + hover pill (the current phone behaviour). */
+#os-bottom3 .notif-lbl{display:block !important;font-size:17px !important;font-weight:700 !important;letter-spacing:.08em !important;color:#ffffff !important;text-shadow:0 1px 3px rgba(0,0,0,.9) !important;white-space:nowrap !important;line-height:1.2 !important;}
+@media (min-width:641px){ #os-bottom3 .notif-row{gap:24px !important;} }
+@media (max-width:640px){ #os-bottom3 .notif-lbl{display:none !important;} }
+/* (§4) THE BAR SITS FULLY INSIDE THE VIEWPORT — the shell adaptation zeroed the bottom padding (safe-area 0 on desktop), so the tiles' lower borders rode the viewport edge. Real clearance returns: 20px + the safe-area inset. */
+#os-bottom3.notif-bar{padding-bottom:calc(20px + env(safe-area-inset-bottom, 0px)) !important;}
+/* (§4) THE CORNER CONTROL RIDES ABOVE THE TALLER BAR — the bar grows by the label row (~34px), so the hide control moves up to match (bar ~134px + 12px gap); folded/off it stays at the bottom corner (the :not() scope keeps those rules untouched). */
+body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide{bottom:146px !important;}
+@media (max-width:768px){ body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide{bottom:120px !important;} }
 </style>
 </body></html>
