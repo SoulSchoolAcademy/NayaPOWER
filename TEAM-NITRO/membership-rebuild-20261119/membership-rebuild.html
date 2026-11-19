@@ -21446,6 +21446,7 @@ var SA_COURSE_IMG = 'https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NI
 var SA_CODE_TTL_MS = 10 * 60 * 1000; /* a sent code fades in ten minutes */
 var saCur = null;            /* current membership object */
 var saLessonIdx = {fac:0, academy:0};
+var saLessonOpen = false; /* FIX-1 2026-11-19: a lesson is open — saShowView('lessons') keeps the feed hidden while true; saShowToc() clears it on the way back to the chooser. */
 var saLevel = 'toc';         /* 'toc' = course presentation | 'section' = section page */
 var saSection = 'videos';    /* 'videos' | 'audios' | 'lessons' */
 var saPcIdx = 0, saPcShowAll = false;
@@ -21504,6 +21505,7 @@ function saClose(){
   saStopTheatre();
   try{ if(saAudio) saAudio.pause(); }catch(e){}
   saCourseMode(false);
+  saLessonOpen = false; /* FIX-1: total close clears the open-lesson state. */
   saCur = null;
   if(window.osShowView) window.osShowView('home');
 }
@@ -21753,6 +21755,7 @@ function saRenderChooser(){
 }
 function saShowToc(){
   if(!saCur) return;
+  saLessonOpen = false; /* FIX-1: back at the chooser — the next Lessons section shows the feed list again. */
   saLevel = 'toc';
   var toc = sa$('saToc'); if(toc) toc.hidden = false;
   var head = sa$('saSectionHead'); if(head) head.hidden = true;
@@ -21782,7 +21785,8 @@ function saShowView(v){
   sa$('saPanePodcasts').hidden = (saSection!=='audios');
   sa$('saPaneLesson').hidden = (saSection!=='lessons');
   var feedCard = sa$('saFeedCard');
-  if(feedCard) feedCard.hidden = (saSection!=='lessons');
+  /* FIX-1: while a lesson is open the feed stays hidden — the open paths set saLessonOpen, saShowToc() clears it. */
+  if(feedCard) feedCard.hidden = (saSection!=='lessons') || saLessonOpen;
   var course = sa$('saCourse');
   if(course) course.scrollIntoView({block:'start'});
 }
@@ -21830,8 +21834,8 @@ function saLessonNav(i, max){
 function saRenderLesson(){
   var pane = sa$('saPaneLesson'); if(!pane || !saCur) return;
   /* REBUILD 2026-11-19: one lesson, one frame — the full lessons feed list below
-     the open lesson is hidden while the lesson is open (saShowView('lessons')
-     shows it again at section level). No scrolling down the page to reach it. */
+     the open lesson is hidden while the lesson is open (FIX-1: saShowView keeps it
+     hidden while saLessonOpen is true; saShowToc clears it at the chooser). No scrolling down to reach it. */
   var _fc = sa$('saFeedCard'); if(_fc) _fc.hidden = true;
   var html = '';
   if(saCur.slug==='fac'){
@@ -22180,9 +22184,9 @@ function saWire(){
     if(t.hasAttribute('data-sa-toc-back')){ saShowToc(); return; }
     if(t.hasAttribute('data-sa-toc')){ saShowView(t.getAttribute('data-sa-toc')); return; }
     if(t.hasAttribute('data-sa-pc-full')){ saPcFullscreen(); return; }
-    if(t.hasAttribute('data-sa-read')){ var ri = +t.getAttribute('data-sa-read'); saLessonIdx.fac = ri; saRenderLesson(); saShowView('lessons'); var pane = sa$('saPaneLesson'); if(pane) pane.scrollIntoView({block:'start'}); return; }
-    if(t.hasAttribute('data-sa-choose-lesson')){ var li = +t.getAttribute('data-sa-choose-lesson'); if(saCur.slug==='fac'){ saLessonIdx.fac = li; } else if(saCur.slug==='academy'){ saLessonIdx.academy = li; } saRenderLesson(); saShowView('lessons'); var paneL = sa$('saPaneLesson'); if(paneL) paneL.scrollIntoView({block:'start'}); return; }
-    if(t.hasAttribute('data-sa-next')){ var ni = +t.getAttribute('data-sa-next'); var nx = Math.min(SA_FAC.length-1, ni+1); saLessonIdx.fac = nx; saRenderLesson(); saShowView('lessons'); var pane2 = sa$('saPaneLesson'); if(pane2) pane2.scrollIntoView({block:'start'}); return; }
+    if(t.hasAttribute('data-sa-read')){ var ri = +t.getAttribute('data-sa-read'); saLessonIdx.fac = ri; saLessonOpen = true; saRenderLesson(); saShowView('lessons'); var pane = sa$('saPaneLesson'); if(pane) pane.scrollIntoView({block:'start'}); return; }
+    if(t.hasAttribute('data-sa-choose-lesson')){ var li = +t.getAttribute('data-sa-choose-lesson'); if(saCur.slug==='fac'){ saLessonIdx.fac = li; } else if(saCur.slug==='academy'){ saLessonIdx.academy = li; } saLessonOpen = true; saRenderLesson(); saShowView('lessons'); var paneL = sa$('saPaneLesson'); if(paneL) paneL.scrollIntoView({block:'start'}); return; }
+    if(t.hasAttribute('data-sa-next')){ var ni = +t.getAttribute('data-sa-next'); var nx = Math.min(SA_FAC.length-1, ni+1); saLessonIdx.fac = nx; saLessonOpen = true; saRenderLesson(); saShowView('lessons'); var pane2 = sa$('saPaneLesson'); if(pane2) pane2.scrollIntoView({block:'start'}); return; }
     if(t.hasAttribute('data-sa-nextvid')){ var nvi = +t.getAttribute('data-sa-nextvid'); var nxv = Math.min(SA_ACADEMY.length-1, nvi+1); saTheatreOpenVideo(nxv, 'academy'); return; }
     if(t.hasAttribute('data-sa-cover') || t.hasAttribute('data-sa-watch')){ var wi = +(t.getAttribute('data-sa-cover') || t.getAttribute('data-sa-watch')); saTheatreOpenVideo(wi, 'academy'); return; }
     if(t.hasAttribute('data-sa-cover-ch') || t.hasAttribute('data-sa-watch-ch')){ var ci = +(t.getAttribute('data-sa-cover-ch') || t.getAttribute('data-sa-watch-ch')); saTheatreOpenVideo(ci, 'channel'); return; }
@@ -22234,11 +22238,13 @@ function saSameUrl(a, b){
 }
 function saNextLesson(){
   if(!saCur) return;
+  saLessonOpen = true; /* FIX-1: the next lesson opens — the feed stays hidden. */
   if(saCur.slug==='fac'){ saLessonIdx.fac = Math.min(SA_FAC.length-1, saLessonIdx.fac+1); saRenderLesson(); saShowView('lessons'); }
   else if(saCur.slug==='academy'){ saLessonIdx.academy = Math.min(SA_ACADEMY.length-1, saLessonIdx.academy+1); saRenderLesson(); saShowView('lessons'); }
 }
 function saStepLesson(d){
   if(!saCur) return;
+  saLessonOpen = true; /* FIX-1: stepping inside an open lesson — the feed stays hidden. */
   if(saCur.slug==='fac'){
     saLessonIdx.fac = Math.max(0, Math.min(SA_FAC.length-1, saLessonIdx.fac+d));
     saRenderLesson();
