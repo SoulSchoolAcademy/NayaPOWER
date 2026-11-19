@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 03:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 04:15 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38195,6 +38195,12 @@ _Last updated: 2026-11-19 03:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-t0802-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up t0802 Lane 8: reconcile t0800/t0802 double-dispatch, prove one live freeze record
+
+**Evidence:** VERIFIED on local bytes: mcc-freeze-record-t0802-lane8.md sha256 80c92699b0c0dd6590f3b19853d0b5d4509189c6e1aa86e8b1d3daa9856897fc MATCHES receipt pin; .json 1fbb130b644c85b1dc35fc20e6467e306b0bfde526f549e44c39cfa4f610c45a MATCHES pin; script mcc-freeze-t0802-lane8.py exists; parent receipt t0802-lane8.md exists; voided brief brief-t0800-lane4.md pr
+
 ### ✅ gap-scorer-20261014-2100 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
 
 **Task:** Gap follow-up t0785-lane8: wire claim_liveness_audit.py into night-dispatcher (fence-held, proof + patch)
@@ -47579,6 +47585,12 @@ _Last updated: 2026-11-19 03:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### 🟡 gap-t0803-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 7.0/10 [PARTIAL]
+
+**Task:** Gap follow-up t0803 Lane 12: verify board-post half of t0803 verdict (comments 6184357778 / 6185686383 on #2537)
+
+**Evidence:** NOT VERIFIED this tick: gh-api REST returned 401 Bad credentials on both comment GETs (6184357778, 6185686383), so the receipt's central live-board evidence could not be re-read; local feedback-block hash 183d56a4... not re-checkable a month on (feedback-feed.md has moved on). Claims are NOT disproven - receipt is internally consistent, self-scored
+
 ### ✅ gap-scorer-20261015-0040-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Claim refused (exit 7, parent-authorship) + self-voided foreign-token claim; second-seat tag-sweep gap stays open
@@ -54198,6 +54210,18 @@ _Last updated: 2026-11-19 03:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ scorer-20261118-2010 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-18 20:01 PST: 31 queued briefs evaluated, 0 claimed, stall re-proved
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261118-1958.log exists, sha256 31e892c9935d1546af8f4ce58f2e374a37820d0b7c12c176a0f976a94cc2aa7d matches the receipt's cited hash byte-exact; queue dir holds exactly the 31 briefs named in the receipt (sorted list matches the 18:54 receipt's blocked-briefs section 31/31, zero brief-tNNNN-*); zero files
+
+### 🟡 pr2608-seatgate — Team 0, Team Naya Scorer (?) — 7.0/10 [PARTIAL]
+
+**Task:** PR #2608 cross-seat review brief (seat-gated): VOID-INELIGIBLE + PREMISE-ROTTED refusal
+
+**Evidence:** NOT VERIFIED this tick: the receipt's entire evidence is live PR state (PR #2608 closed, merged=False, reviews empty) and gh-api REST returned 401 Bad credentials on the PR GET, so none of it could be re-read; a VOID receipt has no branch artifacts to check via git protocol. Claims are NOT disproven - the refusal logic (seat-gate + closed PR) is so
 
 ### ✅ scorer-20261118-1940 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
