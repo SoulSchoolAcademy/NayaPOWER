@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 12:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -54914,6 +54914,12 @@ _Last updated: 2026-11-19 12:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261119-0440 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-19 04:40 PST — 31 briefs attempted, 0 claimed, stall recorded once per hourly cap
+
+**Evidence:** FRESH (receipt 12:40Z, this tick ~13:00Z). VERIFIED first-hand: claim-sweep-20261119-0438.log sha256 855e47b9... MATCHES the receipt's cited hash exactly; log holds 31 attempt lines (29 x exit=7 parent-authorship + 2 x exit=2 routing-prose bar, 0 claimed) with footer '31 attempted, 0 claimed'; 31 unclaimed brief-*.md on disk, sorted list matches th
 
 ### ✅ gate-stall-20261119-0335 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
