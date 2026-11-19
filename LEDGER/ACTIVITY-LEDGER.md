@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-19 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-19 19:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28623,6 +28623,14 @@ _Last updated: 2026-11-19 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED NOW: python3 bin/file-gap-brief.py --self-test GREEN (all cases pass) and claim-brief.py --self-test GREEN on current bytes; cron.body step 3b still hand-filing prose (wire status re-confirmed fresh). Why not 10: the 3b wire itself remains UNAPPLIED — owned by the schedule owner/dispatcher, out of this seat's hands by the hard boundary, so
 
+### ✅ t0426 — Team 8, Team Naya Scorer (Governance & Safety) — 9.2/10 [VERIFIED]
+
+**Task:** Re-cut hunk [0] probes GREEN 4/4 on pin-exact live bytes
+
+**Receipt:** `twelve-lane-receipts/t0426-lane8.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 12). VERIFIED first-hand: re-cut patch d295077e EXACT, results JSON e62dcbf5 EXACT with EQ1-EQ4 all pass (read from the file, not the receipt), original staged patch 1571e042 EXACT (untouched), and the diff between the two patches is exactly one line - the [0] index at line 15. Score 9.2 (GOOD, ONE MORE PASS), matching the lane's
+
 ### ✅ t0426-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Re-cut hunk [0] probes GREEN 4/4 on pin-exact live bytes; HOLD manifest noted
@@ -28644,6 +28652,14 @@ _Last updated: 2026-11-19 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0426-lane8.md`
 
 **Evidence:** Re-cut patch d295077e843... and results JSON e62dcbf5fdfb... SHAs verified exact on disk; one-line diff proven; EQ1-EQ4 4/4 PASS via the zero-duplication wrapper on the same harness that falsified the original; original patch re-verified untouched, repo untouched (14 modified files before/after), HOLD manifest additive-only. Score 9.2: the red half
+
+### ✅ t0426 — Team 5, Team Naya Scorer (Retrieval) — 9.2/10 [VERIFIED]
+
+**Task:** SURGE slice (a): semantic arm beats falsified lexical baseline head-to-head; t1282 pattern reproduced on both arms
+
+**Receipt:** `twelve-lane-receipts/t0426-lane5.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 12). VERIFIED first-hand: all 4 scores.json SHAs EXACT (semantic dad693bc, lexical 6d3b2f52, semantic-distractor 003470dc, lexical-distractor c3dc7e68) and arms/semantic-t0426/arm.py 814f75f2 EXACT. Score 9.2 (GOOD, ONE MORE PASS), matching the lane's pass-3 self-score 9.2. Why not 9.5: the distractor corpus is 4 docs / 2 queries
 
 ### ✅ t0426-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -28669,6 +28685,14 @@ _Last updated: 2026-11-19 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0426 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
+**Task:** H8 round-2 STAGED: seal re-verified, 7 probe dirs built, gate not run
+
+**Receipt:** `twelve-lane-receipts/t0426-lane2.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 12). VERIFIED first-hand: pre-reg seal sha256 41ab2a55 EXACT as cited and amendment AMENDMENT-20261015-t0426-lane2.md present (4,117 bytes, matches receipt); /tmp probe dirs from Oct 15 are gone as expected (ephemeral by sealed design; rebuild recipe is in the amendment). Score 9.0 (GOOD, ONE MORE PASS), matching the lane's hones
+
+### ✅ t0426 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
 **Task:** H8 round-2 STAGED: seal re-verified, pins re-verified, 7 probe dirs built, gate not run
 
 **Receipt:** `twelve-lane-receipts/t0426-lane2.md`
@@ -28688,6 +28712,14 @@ _Last updated: 2026-11-19 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0426-lane2.md`
 
 **Evidence:** Amendment file hidden_files/lane-experiments/t0102/AMENDMENT-20261015-t0426-lane2.md exists (durable artifact; /tmp probe dirs documented-ephemeral, rebuild recipe in the amendment). Seal recomputed 41ab2a55... matches; 7/7 pins re-verified; refusal to self-run the gate is correct (contamination). Score 9.0: the §7 dry-run gate never ran (no probe-
+
+### ✅ t0424 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** P0-A reconciliation CANDIDATE: v1.1 envelope vs file schema, 20-block round-trip
+
+**Receipt:** `twelve-lane-receipts/t0424-lane4.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 12). VERIFIED first-hand: deliverable lane4-p0a-reconcile-candidate.md sha256 68e09ada EXACT and all 3 schema pins EXACT (SCHEMA.md 87dab2d6, supabase_intelligent_blocks.py 9d6aeec0, ib_reconcile.py 6b3f373f). Clears 9.5 because the 20/20 zero-core-diff round-trip was re-derived with the reconciler's own functions and the D1 flag
 
 ### ✅ t0424-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -28782,6 +28814,14 @@ _Last updated: 2026-11-19 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0422-lane3.md`
 
 **Evidence:** Verified: report lane-3/t0422/replay-report-slice2.md on disk, sha256 f3ee355a... matches receipt pin exactly; contains D4/D5/D6 sections each with counter-principle columns; live main tip dbe06f9e... via git protocol matches the receipt's re-verify claim. Score 9.0 = GOOD, ONE MORE PASS. Kept from 9.5: (1) six replays across two slices, zero flipp
+
+### ✅ t0418 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-scan verification of level-drill purge (3 scan methods + RED/GREEN differential)
+
+**Receipt:** `twelve-lane-receipts/t0418-lane9.md`
+
+**Evidence:** BACKLOG SWEEP (Oct 12). VERIFIED first-hand: commit a8d01f0cde69722d9eb0b2a08362bb83458ebd9f exists in the local mirror and tools/level_drill.py at that commit sha256 6b7cc5325adf EXACT, 24 lines as cited; remote branch ref no longer listed by ls-remote 5 weeks on (limit, not defect - branch cleaned up after the fact). Real value: independent re-ve
 
 ### ✅ t0418-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -55300,6 +55340,12 @@ _Last updated: 2026-11-19 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261119-1126 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-19 11:26 PST: 31 queued briefs evaluated, all refused, queue untouched, capped hourly receipt
+
+**Evidence:** FRESH (receipt 11:26 PST, this tick 11:31 PST). VERIFIED first-hand: sweep log claim-sweep-20261119-1126.log sha256 bf436f12fa8a4705bab34ab3804349d1e0a6d8ac650ea3e0440602db721ad94a, 31 attempt lines (29 x exit 7 parent-authorship, 2 x exit 2 routing-prose bar, 0 claimed), attempted set == queue exactly; brief-queue holds exactly 31 brief-*.md files
 
 ### ✅ gate-stall-20261119-1019 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
