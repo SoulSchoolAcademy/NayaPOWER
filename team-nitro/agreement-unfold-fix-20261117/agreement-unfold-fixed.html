@@ -432,7 +432,7 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 .frame-media-audio-name{font-size:17px;font-weight:700;color:#fff}
 .frame-media-audio-state{font-size:17px;line-height:1.5;color:#fff;margin-top:4px}
 .frame-media .frame-video-btn{width:100%;justify-content:center;margin-top:14px}
-.frame-anthem-note{font-size:17px;line-height:1.6;color:#fff;margin:14px 0 0;text-align:left}
+.frame-anthem-note{font-size:17px;line-height:1.6;color:#fff;margin:8px 0 0;text-align:left}
 .frame-anthem-note[hidden]{display:none}
 .frame-anthem-note p{margin:0 0 12px}
 .frame-anthem-note p:last-child{margin-bottom:0}
@@ -448,7 +448,7 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 .frame-red-n .deal-seal-mark{font-size:32px!important}
 /* F9: the media frame slims so the whole board (title + Play + Watch
    the anthem) fits its reading window without scrolling. */
-.frame-media{padding:12px 16px!important;margin-bottom:12px!important}
+.frame-media{padding:10px 16px!important;margin-bottom:12px!important}
 .frame-media-title{margin-bottom:4px!important}
 .frame-media-sub{margin-bottom:10px!important}
 .frame-media .play-btn{width:60px!important;height:60px!important}
@@ -961,9 +961,10 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
     var ttl = document.createElement('div');
     ttl.className = 'frame-media-title';
     ttl.textContent = 'Hello. I\u2019m Naya.';
-    var sub = document.createElement('p');
-    sub.className = 'frame-media-sub';
-    sub.textContent = 'Listen to the agreement, or watch the anthem.';
+    /* COMMIT 7: the intro sub line is gone — it repeated what the two
+       buttons already say, and its ~36px pushed the revealed audio
+       note below the 219px reading window, so tapping the orb showed
+       nothing. With it out, the revealed one-line note fits whole. */
     var arow = document.createElement('div');
     arow.className = 'frame-media-audio';
     var orb = playBtn.cloneNode(true);
@@ -1004,7 +1005,6 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
     a1.textContent = 'Naya\u2019s reading arrives with the captioned video \u2014 the audio is cut from that video. Nothing is wired here yet; the reading starts when his video arrives.';
     anote.appendChild(a1);
     media.appendChild(ttl);
-    media.appendChild(sub);
     media.appendChild(arow);
     media.appendChild(vbtn);
     /* The audio note sits BELOW the video button, not above it: revealing
@@ -1013,14 +1013,23 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
     media.appendChild(note);
     sc0.insertBefore(media, sc0.firstChild);
     /* F9 (corrected) — tapping the orb reveals the waiting note, visibly;
-       tapping again hides it. It plays nothing: no audio has been given. */
+       tapping again hides it. It plays nothing: no audio has been given.
+       COMMIT 7: the reveal scrolls the note into the reading window
+       (nearest — a no-op when it already fits) and hiding restores the
+       top of the window, so a tap never leaves the reader looking at
+       an unchanged board. The anthem note is a reading passage: it
+       scrolls into view the same way. */
     orb.addEventListener('click', function(ev){
       ev.stopPropagation();
       anote.hidden = !anote.hidden;
+      if(!anote.hidden){ anote.scrollIntoView({block:'nearest'}); }
+      else { sc0.scrollTop = 0; }
     });
     vbtn.addEventListener('click', function(ev){
       ev.stopPropagation();
       note.hidden = !note.hidden;
+      if(!note.hidden){ note.scrollIntoView({block:'nearest'}); }
+      else { sc0.scrollTop = 0; }
     });
   }
   showFrame8(0);
