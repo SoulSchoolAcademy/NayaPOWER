@@ -64974,6 +64974,39 @@
         "Lesson",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-3698",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3698-not-a-new-ai-a-network-that-unfolds",
+      "slug": "not-a-new-ai-a-network-that-unfolds",
+      "title": "Not a New AI — a Network That Unfolds",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3698/IB-SMART-NOTE-20261119-sn3698-not-a-new-ai-a-network-that-unfolds.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3698/IB-SMART-NOTE-20261119-sn3698-not-a-new-ai-a-network-that-unfolds.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-3698/IB-SMART-NOTE-20261119-sn3698-not-a-new-ai-a-network-that-unfolds.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261119-sn3698-not-a-new-ai-a-network-that-unfolds.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-19T14:36:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-19",
+      "page_hash": "a32ba91c3fab3d41429278afdab6c14376f7d979d0cc149d02618a78a3e62610",
+      "content_hash": "5c06a9d461b6e643ba7a1b774da77ff145e462919523e9fbe020e313c83a0d60",
+      "one_line": "Q1 must not answer 'a new AI.' The board that says who Naya is must also say what NayaNET is, what NayaPOWER is, and the value — or the reader takes away the smallest true thing and misses the actual one: we give YOUR AI a personality, an identity, an oath, a constitution, laws and a protocol, and we let her plug into an intelligent network that activates her. Free versus Power, plain: joining free means access, use, you're hired, invite everybody; Naya Power is the paid plug-in that lets your AI operate your world for you — and the official text must say so, because a free member who reads 'I mail for you, I build for you' with no qualification has been promised the powered thing at the free tier. The visual is the orbit, not a chart: circles of the different AIs around Naya in the middle, so people can SEE the concept — and the live pricing chart gains 'Plug in your AI' as its first feature. The three worlds stand: Personal is your social hub for your thing, Business is your work, Space is your Thing — by default all three, profiles private, aliases by default, matching automatic at the highest percentage. The closing carries the code, the math, not just an app: our laws, our oath, our constitution, our protocols — what makes us different — spelled out, with the collective math beneath. The unfolding is universal: describe and paint the whole system as an unfolding, and the concept becomes a system anyone can use — your own image, your own text, unfolding — to present any product, service or subject. The Connect is consent, then talking: proof sign-in, 'Connect me to NayaNET,' tap Allow — with what you allow listed and revocable any time. Harvest the whole feed, not the buttons: the Hub feed itself goes on the Personal page, auto-organizing by topic, only the labels changed. The button says the next thing — 'My story,' then 'What I do' — popping up as you go down, so nothing is ever overwhelming. And nothing falls off the list: the Smart Inviter sat finished and quiet for four days because it fell off the One List — the list is the memory, and what leaves it is lost.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -64984,5 +65017,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "e594f5a395af658d42bdb01a069618f2c2799f5a26fce7f7c50844bfa74f7f03"
+  "corpus_manifest_hash": "80d7cd1e456293ea2f2444987f25d3d6144b76ce39981149ba2f611ec9aa7ba6"
 }
