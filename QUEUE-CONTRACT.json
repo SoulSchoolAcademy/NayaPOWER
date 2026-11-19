@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-19T09:49:20Z",
-  "tip": "2c062287656953a220c735e9dd6c608246e030c2",
+  "generated_at": "2026-11-19T15:49:10Z",
+  "tip": "8b32c355d5834582a128c7cdd8f598eaf0311ba2",
   "prs": [
     {
       "number": 3453,
@@ -46,7 +46,7 @@
       "action": "CURE",
       "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
-      "head": "02781826dbc413b10eb3cb46c5db9af372835dc9"
+      "head": "4ce0f84167d8c9d06831422b5b42d80d5e4b09d1"
     },
     {
       "number": 3487,
