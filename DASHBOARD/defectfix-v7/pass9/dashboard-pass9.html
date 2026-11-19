@@ -31309,4 +31309,38 @@ body{padding-bottom:170px !important;}
 .os-sl-gauge-num{margin-top:8px !important;}
 .os-sl-gauge-lab{margin-top:8px !important;}
 </style>
+<style id="os-followup14-20261119">
+/* FOLLOW-UP 14 2026-11-19 - the f13 checker's two measured fails, corrected
+   against the REAL boxes (f13 checker report section 4, measured on render
+   at 1920).
+   (1) GEAR CLEAR OF THE X. The X is really x 1870-1906, y 58-94 (sticky);
+   f13 top:72 put the gear (40px, right:24 -> x 1856-1896) at y 72-112,
+   overlapping the X 26x22px. The eco-plus is 48px: rail collapsed it sits
+   top:24 right:24 -> x 1848-1896, y 24-72; rail expanded it sits top:60
+   right:276 -> x 1596-1644, y 60-108. The panel is pinned top:124 right:64
+   -> x 1686-1856, y 124-174 (f13, passing, untouched). The gear moves to
+   top:104 right:16 -> x 1864-1904, y 104-144: 10px below the X, 32px below
+   the collapsed eco-plus, 220px right of the expanded eco-plus, 8px right
+   of the panel's right edge. right:16 is the gear's own base inset; top:104
+   is on the 8px grid. The gear's position:fixed is still broken by a
+   transformed ancestor (pre-existing, f13 section 4) so it scrolls away; at
+   scroll 0 it is clear, scrolled it is off-screen and the X is clear. The
+   panel pin and the gear handler are untouched.
+   (2) STATE-CELL LABEL. f13's 49px used the tile content height (33px) and
+   ignored the global .os-sl-gauge-num min-height:67px. Mounted label line
+   = dial top + 150 + 8 + 67 + 8 = +233; the state dial is 156 tall, so the
+   state label needs margin-top:77px (233-156), not 49px. At phone widths
+   both dials are 209px, so the state label needs 209+8+67+8-209 = 83px
+   there. The state dial stays pinned 156px at desktop (fix 2 passes as
+   filed); nothing else in the f13 block moves. */
+@media (min-width:701px){
+  #page-settings{top:104px !important;right:16px !important;}
+}
+@media (min-width:561px){
+  .os-sl-gauge-dial.os-sl-state-cell + .os-sl-gauge-lab{margin-top:77px !important;}
+}
+@media (max-width:560px){
+  .os-sl-gauge-dial.os-sl-state-cell + .os-sl-gauge-lab{margin-top:83px !important;}
+}
+</style>
 </body></html>
