@@ -199,3 +199,17 @@ Each new blob was re-read by FRESH blob-API reads (GET `git/blobs/<sha>`), decod
 ### 11f. What remains after this report
 
 Checker (fresh eyes) → captain's eye (§9) → Shawn's tap → deploy staging → live. Phone 390 still NOT tested (carried from the brief). The anthem wiring round still queues behind this one (same file, one lane). No merge, no live deploy, no link to Shawn from this seat.
+
+## 12. CORRECTION — staging serves fix-3 (parallel worker deploy, discovered in final verification)
+
+**Discovered 2026-11-20 ~00:50 MST, during the final verification of this filing.** The "NOT deployed / staging still serves base" lines in §11b, §11d, §11f and in the commit message of `5d811719` are superseded by this section. They were true when written; they are no longer true.
+
+**Evidence (curl, staging worker, browser UA):**
+- `/welcome` (the walk file): HTTP 200, **4,363,264 B, sha256 `ef98226767ddbb50…`** — the FIX-3 walk sha; `doorContinue` 2×, `FIX3 (distill fix-3, F9b)` 2×.
+- `/identity.html`: HTTP 200, **402,647 B, sha256 `51776174b59cee4a…`** — the FIX-3 identity sha; `passedName && passedAlias` 1×.
+- Root `/`: HTTP 200, 1,929,575 B, sha256 `3874b7ebcc6b95e2…` — the welcome file, identical in fix-2 and fix-3 (no distinguishing marker there).
+- `/walk` and `/walk-beginning`: HTTP 302 (redirects, 0 B).
+
+**What happened:** the parallel worker's commit `27689bf6` (07:31 UTC) states the worker was PUT to staging and curl-verified byte-identical. The deploy came from the filed bytes (their commit existed before the PUT), so it is a staging deploy from filed bytes — not from unfiled bytes — and it is not a live (production) deploy. Nothing is live; the production site is untouched. The checker can now verify against staging directly (the fix-3 bytes are what staging serves).
+
+**Duplicate filing, for the record:** two commits were created for this one round — `27689bf6` by the parallel worker (07:31 UTC) and `5d811719` by this seat (07:46 UTC). Both carry byte-identical fixed files, brief, and work files; only the maker report differs (theirs is the 27,399 B version as of 07:14 UTC, saying NOT FILED / BLOCKED; this seat's is the accurate version with §11). The branch tip is `5d811719`; `27689bf6` remains reachable by sha. No fixed bytes were lost or changed by the resolution — the ref update changed only the report blob.
