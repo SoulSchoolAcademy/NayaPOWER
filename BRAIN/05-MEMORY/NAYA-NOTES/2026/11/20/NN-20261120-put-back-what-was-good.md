@@ -4,7 +4,7 @@
 
 **NN-20261120-put-back-what-was-good · Naya Note · 2026-11-20 ~15:01–15:02 MST (call f418aaac, read first-hand)**
 
-*Paired Smart Note: SN-pending — Put Back What Was Good (takes the next free number at filing)*
+*Paired Smart Note: SN-4331 — Put Back What Was Good*
 
 **Category:** Law — restoration, the storybook, small fixes only
 
