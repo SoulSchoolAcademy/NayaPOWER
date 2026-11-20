@@ -4,7 +4,7 @@
 
 **NN-20261119-stars-must-read-at-a-glance-comment-panel-elegant · Naya Note · 2026-11-19 ~19:29–19:40 MST (02:29–02:40Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Stars Must Read at a Glance — and the Comment Panel, Elegant (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4218 — Stars Must Read at a Glance — and the Comment Panel, Elegant*
 
 **Category:** Design — feed note actions (value / intelligence stars) + comment panel
 
