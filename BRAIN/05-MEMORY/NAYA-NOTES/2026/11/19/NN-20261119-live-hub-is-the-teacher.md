@@ -4,7 +4,7 @@
 
 **NN-20261119-live-hub-is-the-teacher · Naya Note · 2026-11-19 evening (2026-11-20 ~03:30Z)**
 
-*Paired Smart Note: SN-pending — The Live Hub Is the Teacher (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4228 — The Live Hub Is the Teacher*
 
 **Category:** Design — learn the lighting from the page that already has it
 
