@@ -4,7 +4,7 @@
 
 **NN-20261120-pictures-and-audio-inside-the-file · Naya Note · 2026-11-20 ~15:38–15:46 MST**
 
-*Paired Smart Note: SN-pending — The Pictures and the Audio Live Inside the File (takes the next free number at filing)*
+*Paired Smart Note: SN-4342 — The Pictures and the Audio Live Inside the File*
 
 **Category:** Law — one HTML file from a worker: relative assets 404, so pictures and audio must be embedded
 
