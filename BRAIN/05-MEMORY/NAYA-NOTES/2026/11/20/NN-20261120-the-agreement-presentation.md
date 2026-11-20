@@ -4,7 +4,7 @@
 
 **NN-20261120-the-agreement-presentation · Naya Note · 2026-11-20 ~11:08–11:22 MST (18:08–18:22Z)**
 
-*Paired Smart Note: SN-pending — The Agreement Presentation (takes the next free number at filing)*
+*Paired Smart Note: SN-4280 — The Agreement Presentation — Frame It Like the Calendar*
 
 **Category:** Decisions — how the official agreement presents, his framing order and presentation spec
 
