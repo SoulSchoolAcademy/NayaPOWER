@@ -4,7 +4,7 @@
 
 **NN-20261120-the-certificate-way · Naya Note · 2026-11-20 ~13:10–13:30 MST (call f8351b5a, second call)**
 
-*Paired Smart Note: SN-pending — The Certificate Way — The Old Way Bar and the Ask Naya Font (takes the next free number at filing)*
+*Paired Smart Note: SN-4297 — The Certificate Way — The Old Way Bar and the Ask Naya Font*
 
 **Category:** Decisions — the agreement presentation, the bar, the font, reuse
 
