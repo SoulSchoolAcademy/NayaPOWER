@@ -4,7 +4,7 @@
 
 **NN-20261119-academy-page-recreated-in-our-own-code · Naya Note · 2026-11-19 ~20:41 MST (03:41Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — The Academy Page, Recreated in Our Own Code (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4225 — The Academy Page, Recreated in Our Own Code*
 
 **Category:** Design — take his page verbatim, put it on our own ground
 
