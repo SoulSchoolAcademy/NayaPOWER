@@ -69604,6 +69604,38 @@
         "Attention",
         "Daily Intelligence Report"
       ]
+    },
+    {
+      "smart_note_id": "SN-4036",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4036-your-business-online-today",
+      "slug": "your-business-online-today",
+      "title": "Your Business Online Today",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4036/IB-SMART-NOTE-20261120-sn4036-your-business-online-today.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4036/IB-SMART-NOTE-20261120-sn4036-your-business-online-today.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4036/IB-SMART-NOTE-20261120-sn4036-your-business-online-today.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4036-your-business-online-today.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:05:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "0de691d7fbd31032b9a8444d2fc75da604ff3f2afd161e83aedd7afcaaf9e704",
+      "content_hash": "b631648374040130aa6c059b4457d7a7015581436cee2a75bb7c8ed4f898fc42",
+      "one_line": "Your business online today. Not someday.",
+      "topics": [
+        "Business",
+        "Citizen",
+        "Creation",
+        "Smart Factory"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69614,5 +69646,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "b18812112c65c3692aad76ed7d291db4d7ed4ba0b206dba420eade205fa427bd"
+  "corpus_manifest_hash": "31b08eedb6a7cc8e0c122b99f629d29609fdf1df76ab3876287f2d159ab265fc"
 }
