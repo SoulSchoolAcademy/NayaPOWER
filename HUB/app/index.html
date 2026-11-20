@@ -6956,11 +6956,15 @@ window.NayaNotif = window.NayaNotif || {
       /* FOLLOW-UP 16: the Hub's own pages stay on the staged host - the
          router renders the room in-page on staged (E1) and goes external
          on live, so one line serves both. ECOSYSTEM is the Hub itself:
-         it goes to the Hub feed, a real destination, never a dead end. */
+         it opens the right rail — Your Worlds & NayaNET, the ecosystem view. */
       if (k === 'mail') { this.set('mail', 0); if (window.NayaRouter) window.NayaRouter.navigate('/hub/mail'); else location.hash = '#/hub/mail'; }
       else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed-activity'); else location.hash = '#/hub/feed-activity'; }
       else if (k === 'spaces') { this.set('spaces', 0); if (window.NayaRouter) window.NayaRouter.navigate('/hub/spaces'); else location.hash = '#/hub/spaces'; }
-      else if (k === 'eco') { if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; }
+      /* FOLLOW-UP 17: ECOSYSTEM opens the ecosystem — the right rail,
+         "Your Worlds & NayaNET" (openRightRail, the panel the followup15
+         eye saw from ECOSYSTEM). It never points at Home again. The
+         router fallback is only for a build with no Chassis. */
+      else if (k === 'eco') { if (window.NayaChassis && window.NayaChassis.openRightRail) window.NayaChassis.openRightRail(); else if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; }
       this.refresh();
     },
     syncStack() {
@@ -8001,6 +8005,22 @@ document.addEventListener('click', function(e){
      them, Mail -> mail to them. The seed (alias, nut, pct) is the person's
      record; the panel chrome is the Hub's own messenger panel; the Reach
      row reuses the rail's own buttons, so its delegated handlers work. */
+  /* FOLLOW-UP 17 — ROOT CAUSE (captain's eye, followup16 GOES BACK):
+     the rail's person panels never appeared because pcPersonPanelHtml
+     called pcColorFor() and esc(), which live ONLY inside the harvested
+     rail IIFE (PC_GEM_NUM / PC_GEM_COL / pcColorFor / esc are IIFE-local,
+     base lines ~7571-7917). openMsgPanel lives OUTSIDE that IIFE, so the
+     call threw ReferenceError AFTER the title was set but BEFORE
+     body.classList.add('msg-open') — the title changed in hidden markup
+     and nothing ever appeared, while CONNECT > Message (no-arg) skipped
+     the person branch and opened fine. These HubView-level definitions
+     carry the same values, harvested verbatim from the IIFE, under
+     distinct names, so the person branch can never throw on scope again.
+     The IIFE's own helpers are untouched. */
+  var PC_GEM_NUM_17={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
+  var PC_GEM_COL_17={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa'};
+  function pcColorFor17(name){ var L=String((name||'?').charAt(0)).toUpperCase(); return PC_GEM_COL_17[PC_GEM_NUM_17[L]||1]; }
+  function pcEsc17(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
   function pcPersonByAlias(a){
     var seed=window.PC_RAIL_SEED||[];
     for(var i=0;i<seed.length;i++){ if(seed[i] && seed[i].alias===a) return seed[i]; }
@@ -8009,48 +8029,69 @@ document.addEventListener('click', function(e){
   function pcPersonPanelHtml(p, purpose){
     var name=p.alias.charAt(0).toUpperCase()+p.alias.slice(1);
     var init=p.alias.charAt(0).toUpperCase();
-    var nutParts=String(p.nut||'').split('\u2014');
+    var nutParts=String(p.nut||'').split('—');
     var domain=(nutParts[0]||'').trim();
-    var about=(nutParts.slice(1).join('\u2014')||'').trim();
-    var head='<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"><span class="fc-pick-av" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</span><span style="font-size:19px;font-weight:700;color:#ffffff;">'+esc(name)+'</span><span class="pc-pct-one" style="--pc:'+pcColorFor(p.alias)+'">'+p.pct+'%</span></div>';
+    var about=(nutParts.slice(1).join('—')||'').trim();
+    var head='<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"><span class="fc-pick-av" style="--cc:'+pcColorFor17(p.alias)+'">'+pcEsc17(init)+'</span><span style="font-size:19px;font-weight:700;color:#ffffff;">'+pcEsc17(name)+'</span><span class="pc-pct-one" style="--pc:'+pcColorFor17(p.alias)+'">'+p.pct+'%</span></div>';
     if(purpose==='about'){
-      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">'+(domain?'<b>'+esc(domain)+'</b> \u2014 ':'')+esc(about||p.nut||'')+'</div>';
+      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">'+(domain?'<b>'+pcEsc17(domain)+'</b> — ':'')+pcEsc17(about||p.nut||'')+'</div>';
     }
     if(purpose==='dm'){
-      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">Direct message with '+esc(name)+'.</div>';
+      /* FOLLOW-UP 17 — a REAL DM to this person, not the generic room: the
+         person's own header, a conversation surface named for them, and a
+         composer addressed to them. The thread is an honest empty state
+         (nothing invented); drafting is real (type in the box); sending
+         stays a governed runtime action — the Send button says so, the
+         same pattern MailRoom uses ("Draft response · runtime required").
+         The generic MailRoom stays hidden under a DM. What is still owed
+         is the runtime send bridge (the queued messenger-fix round). */
+      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">Direct message with '+pcEsc17(name)+'.</div>'
+        +'<div class="empty-instrument" style="margin-top:16px;"><strong>No messages with '+pcEsc17(name)+' yet.</strong><p>The conversation with '+pcEsc17(name)+' starts here — nothing is invented to fill it.</p></div>'
+        +'<div style="margin-top:16px;"><textarea aria-label="Message '+pcEsc17(name)+'" placeholder="Message '+pcEsc17(name)+'…" rows="3" style="width:100%;background:#050607;color:#ffffff;border:1.5px solid #0f52ba;border-radius:12px;padding:12px;font-size:17px;line-height:1.6;"></textarea></div>'
+        +'<div class="action-row" style="margin-top:12px;"><button class="btn btn-ghost mini" type="button" disabled><span>Send · runtime required</span></button></div>';
     }
     if(purpose==='mail'){
-      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">Smart Mail to '+esc(name)+'.</div>';
+      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">Smart Mail to '+pcEsc17(name)+'.</div><div style="margin-top:8px;font-size:17px;color:#ffffff;">To: <b>'+pcEsc17(name)+'</b></div>';
     }
-    var acts=[['chat','\u270e','#0f52ba','DM'],['mail','\u2709','#d4a017','Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
+    var acts=[['chat','✎','#0f52ba','DM'],['mail','✉','#d4a017','Mail'],['audio','♪','#07925f','Audio'],['video','▶','#8e24aa','Video']];
     var btns='';
     for(var i=0;i<acts.length;i++){
-      btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
+      btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+pcEsc17(p.alias)+'" title="'+acts[i][3]+' '+pcEsc17(p.alias)+'">'+acts[i][1]+'</button>';
     }
-    var eye='<button type="button" class="pc-act-btn" data-pc-info="'+esc(p.alias)+'" style="--ac:#ffffff" aria-label="About '+esc(p.alias)+'" title="About '+esc(p.alias)+'"><b>i</b></button>';
-    return '<div data-pc-alias="'+esc(p.alias)+'">'+head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;margin-bottom:12px;">'+(domain?'<b>'+esc(domain)+'</b> \u2014 ':'')+esc(about||p.nut||'')+'</div><div class="pc-card-acts">'+eye+'<div class="pc-card-acts4">'+btns+'</div></div></div>';
+    var eye='<button type="button" class="pc-act-btn" data-pc-info="'+pcEsc17(p.alias)+'" style="--ac:#ffffff" aria-label="About '+pcEsc17(p.alias)+'" title="About '+pcEsc17(p.alias)+'"><b>i</b></button>';
+    return '<div data-pc-alias="'+pcEsc17(p.alias)+'">'+head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;margin-bottom:12px;">'+(domain?'<b>'+pcEsc17(domain)+'</b> — ':'')+pcEsc17(about||p.nut||'')+'</div><div class="pc-card-acts">'+eye+'<div class="pc-card-acts4">'+btns+'</div></div></div>';
   }
   function openMsgPanel(person, purpose) {
     var panel = ensureMsgPanel();
-    var title = panel.querySelector('.hub-msg-title');
-    var personEl = panel.querySelector('.hub-msg-person');
-    var bodyEl = panel.querySelector('.hub-msg-body');
-    var p = person ? pcPersonByAlias(person) : null;
-    if (p) {
-      var nm = p.alias.charAt(0).toUpperCase() + p.alias.slice(1);
-      var label = purpose === 'about' ? ('About ' + nm) : purpose === 'dm' ? ('DM \u2014 ' + nm) : purpose === 'mail' ? ('Mail to ' + nm) : (nm + ' \u2014 Profile');
-      if (title) title.textContent = label;
-      panel.setAttribute('aria-label', label);
-      if (personEl) { personEl.innerHTML = pcPersonPanelHtml(p, purpose || 'profile'); personEl.style.display = 'block'; }
-      /* Profile and About are the person's own view - the mail room stays
-         hidden under them. DM and Mail keep the room below the person. */
-      if (bodyEl) bodyEl.style.display = (purpose === 'profile' || purpose === 'about') ? 'none' : '';
-    } else {
-      if (title) title.textContent = 'Smart Messenger';
-      panel.setAttribute('aria-label', 'Smart Messenger');
-      if (personEl) { personEl.innerHTML = ''; personEl.style.display = 'none'; }
-      if (bodyEl) bodyEl.style.display = '';
-    }
+    /* FOLLOW-UP 17: OPEN FIRST — the panel must appear even if the person
+       content below throws. In followup16 the content call threw and the
+       class-add after it never ran, so the title changed in hidden markup
+       and nothing appeared. The class is added BEFORE any content work,
+       the content work is guarded, and the class is re-asserted after —
+       so a content error can never again hide the panel. This is the same
+       visible-open call CONNECT > Message reaches (no-arg path below). */
+    document.body.classList.add('msg-open');
+    try {
+      var title = panel.querySelector('.hub-msg-title');
+      var personEl = panel.querySelector('.hub-msg-person');
+      var bodyEl = panel.querySelector('.hub-msg-body');
+      var p = person ? pcPersonByAlias(person) : null;
+      if (p) {
+        var nm = p.alias.charAt(0).toUpperCase() + p.alias.slice(1);
+        var label = purpose === 'about' ? ('About ' + nm) : purpose === 'dm' ? ('DM — ' + nm) : purpose === 'mail' ? ('Mail to ' + nm) : (nm + ' — Profile');
+        if (title) title.textContent = label;
+        panel.setAttribute('aria-label', label);
+        if (personEl) { personEl.innerHTML = pcPersonPanelHtml(p, purpose || 'profile'); personEl.style.display = 'block'; }
+        /* Profile, About and DM are the person's own view — the mail room
+           stays hidden under them. Mail keeps the room below the person. */
+        if (bodyEl) bodyEl.style.display = (purpose === 'mail') ? '' : 'none';
+      } else {
+        if (title) title.textContent = 'Smart Messenger';
+        panel.setAttribute('aria-label', 'Smart Messenger');
+        if (personEl) { personEl.innerHTML = ''; personEl.style.display = 'none'; }
+        if (bodyEl) bodyEl.style.display = '';
+      }
+    } catch (err) { /* the panel is already open (above); a content error must never hide it */ }
     document.body.classList.add('msg-open');
     var x = panel.querySelector('.hub-msg-x');
     if (x) x.focus();
@@ -14389,9 +14430,9 @@ window.NayaSmartBar = {
      a deep spectrum color. -->
 <div id="hubPlusCreate" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Create">
 <div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal#home" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-composer="smart-note" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal#home" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
 </div>
 <div id="hubPlusConnect" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Connect">
 <div class="fc-plusitem" role="menuitem" data-hub-plus="message" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span data-mw-tr="pm">Message</span></div>
