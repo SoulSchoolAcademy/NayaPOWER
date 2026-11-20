@@ -1,0 +1,513 @@
+{
+  "log": [
+    {
+      "step": "E0 fresh load: one bar, no stale",
+      "ok": true,
+      "detail": {
+        "bars": [
+          {
+            "id": "os-bottom3",
+            "disp": "flex",
+            "vis": true,
+            "x": 0,
+            "y": 980,
+            "w": 1920,
+            "h": 100
+          }
+        ],
+        "stale": false,
+        "visCount": 1,
+        "tiles": [
+          [
+            "0ADD",
+            "#8e24aa"
+          ],
+          [
+            "0MAIL",
+            "#0f52ba"
+          ],
+          [
+            "0ACTIVITY",
+            "#07925f"
+          ],
+          [
+            "0WORLDS",
+            "#d4a017"
+          ],
+          [
+            "0ECOSYSTEM",
+            "#c2410c"
+          ],
+          [
+            "0CONNECT",
+            "#c62828"
+          ]
+        ],
+        "scrollW": 1920
+      }
+    },
+    {
+      "step": "E1 course + Day1 lesson: one bar",
+      "ok": true,
+      "detail": {
+        "panes": {
+          "lesson": true,
+          "audios": false,
+          "videos": false
+        },
+        "lessonOpen": true,
+        "roomsPlus": "none",
+        "feedAdd": "none",
+        "bars": [
+          {
+            "id": "os-bottom3",
+            "disp": "flex",
+            "vis": true,
+            "x": 0,
+            "y": 980,
+            "w": 1920,
+            "h": 100
+          }
+        ]
+      }
+    },
+    {
+      "step": "E2a F3 theatre opens (Videos Watch)",
+      "ok": true,
+      "detail": {
+        "title": "\ud83d\udd31 BECOME / COMPOUND! Day #5, Lesson #of 5  \"Naya POWER Academy.\" \ud83d\udd31"
+      }
+    },
+    {
+      "step": "E2b F3 theatre opens 2nd time, same title",
+      "ok": true,
+      "detail": {
+        "title": "\ud83d\udd31 BECOME / COMPOUND! Day #5, Lesson #of 5  \"Naya POWER Academy.\" \ud83d\udd31"
+      }
+    },
+    {
+      "step": "E3a Audios play",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "audio": {
+          "paused": false,
+          "t": 0.53,
+          "rs": 4,
+          "err": 3
+        },
+        "deck": "ON AIR"
+      }
+    },
+    {
+      "step": "E3b bare pause: audio paused, ON AIR stays (documented)",
+      "ok": true,
+      "detail": {
+        "audio": {
+          "paused": true,
+          "t": 3.09,
+          "rs": 4,
+          "err": 3
+        },
+        "deck": "ON AIR"
+      }
+    },
+    {
+      "step": "E3c F1 resume re-lights ON AIR, deck live",
+      "ok": true,
+      "detail": {
+        "audio": {
+          "paused": false,
+          "t": 4.69,
+          "rs": 4,
+          "err": 3
+        },
+        "deck": "ON AIR",
+        "deckLive": null,
+        "errors": [
+          "ReferenceError: updateDock is not defined"
+        ]
+      }
+    },
+    {
+      "step": "E4a F2 Space pauses in Audios",
+      "ok": true,
+      "detail": {
+        "audio": {
+          "paused": true,
+          "t": 11.89,
+          "rs": 4,
+          "err": 3
+        }
+      }
+    },
+    {
+      "step": "E4b F2 Space resumes in Audios",
+      "ok": true,
+      "detail": {
+        "audio": {
+          "paused": false,
+          "t": 13.67,
+          "rs": 4,
+          "err": 3
+        },
+        "deck": "ON AIR"
+      }
+    },
+    {
+      "step": "E4c F2 Space NO resume at course home",
+      "ok": true,
+      "detail": {
+        "audio": {
+          "paused": true,
+          "t": 17.87,
+          "rs": 4,
+          "err": 3
+        },
+        "panes": {
+          "lesson": false,
+          "audios": false,
+          "videos": false
+        }
+      }
+    },
+    {
+      "step": "E4d F2 Space NO resume after course closed",
+      "ok": true,
+      "detail": {
+        "audio": {
+          "paused": true,
+          "t": 17.87,
+          "rs": 4,
+          "err": 3
+        },
+        "courseVis": false
+      }
+    },
+    {
+      "step": "E5-5a-lessons-tab audio stops",
+      "ok": true,
+      "detail": {
+        "pausedAfter": true,
+        "latS": 0.2,
+        "deck": "READY",
+        "visCount": 1,
+        "stale": false
+      }
+    },
+    {
+      "step": "E5-5b-videos-tab audio stops",
+      "ok": true,
+      "detail": {
+        "pausedAfter": true,
+        "latS": 0.07,
+        "deck": "READY",
+        "visCount": 1,
+        "stale": false
+      }
+    },
+    {
+      "step": "E5-5c-chooser audio stops",
+      "ok": true,
+      "detail": {
+        "pausedAfter": true,
+        "latS": 0.12,
+        "deck": "READY",
+        "visCount": 1,
+        "stale": false
+      }
+    },
+    {
+      "step": "E5-5d-add-tile audio stops",
+      "ok": true,
+      "detail": {
+        "pausedAfter": true,
+        "latS": 0.19,
+        "deck": "READY",
+        "visCount": 1,
+        "stale": false
+      }
+    },
+    {
+      "step": "E5-5e-browser-back audio stops",
+      "ok": true,
+      "detail": {
+        "pausedAfter": true,
+        "latS": 0.23,
+        "deck": "READY",
+        "visCount": 1,
+        "stale": false
+      }
+    },
+    {
+      "step": "E5-5f-back-button audio stops",
+      "ok": true,
+      "detail": {
+        "pausedAfter": true,
+        "latS": 0.08,
+        "deck": "READY",
+        "visCount": 1,
+        "stale": false
+      }
+    },
+    {
+      "step": "E6a lesson via chooser: ADD-only + one bar",
+      "ok": true,
+      "detail": {
+        "lessonOpen": true,
+        "roomsPlus": "none",
+        "feedAdd": "none"
+      }
+    },
+    {
+      "step": "E6b lesson via Open Lessons: ADD-only + one bar",
+      "ok": true,
+      "detail": {
+        "lessonOpen": true
+      }
+    },
+    {
+      "step": "E6c lesson via Next lesson Day2: ADD-only + one bar",
+      "ok": true,
+      "detail": {
+        "h3": {
+          "text": "\ud83d\udd31 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. \ud83d\udd31",
+          "sw": 1636,
+          "cw": 1636,
+          "h": 25,
+          "ws": "normal"
+        }
+      }
+    },
+    {
+      "step": "E6d lesson closed: full bar returns + one bar",
+      "ok": true,
+      "detail": {
+        "lessonOpen": false,
+        "roomsPlus": "grid"
+      }
+    },
+    {
+      "step": "E7a bottom-bar tile hrefs",
+      "ok": true,
+      "detail": {
+        "tiles": [
+          {
+            "lbl": "0ADD",
+            "nc": "#8e24aa",
+            "href": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/membership-rebuild-20261119/membership-rebuild.html&ref=membership/rebuild-fix8-20261119&cb=b13c17104a188e3b53bbbe77483fd4805afc29f2#os-post-body"
+          },
+          {
+            "lbl": "0MAIL",
+            "nc": "#0f52ba",
+            "href": "https://nayanet.app/rooms/mail"
+          },
+          {
+            "lbl": "0ACTIVITY",
+            "nc": "#07925f",
+            "href": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/membership-rebuild-20261119/membership-rebuild.html&ref=membership/rebuild-fix8-20261119&cb=b13c17104a188e3b53bbbe77483fd4805afc29f2#/hub/feed-activity"
+          },
+          {
+            "lbl": "0WORLDS",
+            "nc": "#d4a017",
+            "href": "https://nayanet.app/space"
+          },
+          {
+            "lbl": "0ECOSYSTEM",
+            "nc": "#c2410c",
+            "href": "https://nayanet.app/#/hub"
+          },
+          {
+            "lbl": "0CONNECT",
+            "nc": "#c62828",
+            "href": "https://nayanet.app/rooms/connections"
+          }
+        ]
+      }
+    },
+    {
+      "step": "E7b tile MAIL tap lands",
+      "ok": true,
+      "detail": {
+        "url": "https://nayanet.app/rooms/mail",
+        "title": "Smart Mail \u2014 NayaNET"
+      }
+    },
+    {
+      "step": "E7b tile ACTIVITY tap lands",
+      "ok": true,
+      "detail": {
+        "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/membership-rebuild-20261119/membership-rebuild.html&ref=membership/rebuild-fix8-20261119&cb=b13c17104a188e3b53bbbe77483fd4805afc29f2#/hub/feed-activity",
+        "title": "Shawn Vibert"
+      }
+    },
+    {
+      "step": "E7b tile WORLDS tap lands",
+      "ok": true,
+      "detail": {
+        "url": "https://nayanet.app/space",
+        "title": "Our Community"
+      }
+    },
+    {
+      "step": "E7b tile ECOSYSTEM tap lands",
+      "ok": true,
+      "detail": {
+        "url": "https://nayanet.app/#/hub",
+        "title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states"
+      }
+    },
+    {
+      "step": "E7b tile CONNECT tap lands",
+      "ok": true,
+      "detail": {
+        "url": "https://nayanet.app/rooms/connections",
+        "title": "Your Connections"
+      }
+    },
+    {
+      "step": "P0 phone fresh load: one bar, no overflow",
+      "ok": true,
+      "detail": {
+        "scrollW": 390,
+        "bars": [
+          {
+            "id": "os-bottom3",
+            "disp": "flex",
+            "vis": true,
+            "x": 0,
+            "y": 752,
+            "w": 390,
+            "h": 92
+          }
+        ],
+        "stale": false
+      }
+    },
+    {
+      "step": "P1 phone joined + Day1 lesson: one bar",
+      "ok": true,
+      "detail": {
+        "panes": {
+          "lesson": true,
+          "audios": false,
+          "videos": false
+        },
+        "scrollW": 390,
+        "lessonOpen": true,
+        "roomsPlus": "none",
+        "feedAdd": "none"
+      }
+    },
+    {
+      "step": "P1b D2 h3 wraps fully at 390",
+      "ok": true,
+      "detail": {
+        "h3": {
+          "text": "\ud83d\udd31 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya POWER Academy.\ud83d\udd31",
+          "sw": 266,
+          "cw": 266,
+          "h": 99,
+          "ws": "normal"
+        }
+      }
+    },
+    {
+      "step": "P1c D2 clipped strings NOT in page DOM",
+      "ok": true,
+      "detail": {
+        "hasNayaNETCreate": false,
+        "hasGrEllipsis": false,
+        "iframe": {
+          "x": 63,
+          "y": 349,
+          "w": 264,
+          "h": 148,
+          "contentDocNull": true,
+          "src": "https://www.youtube-nocookie.com/embed/ZRIfvxCsYWY?rel=0"
+        },
+        "efpTitleArea": "IFRAME"
+      }
+    },
+    {
+      "step": "P2a phone Audios play",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "audio": {
+          "paused": false,
+          "t": 1.67,
+          "rs": 4,
+          "err": 3
+        },
+        "deck": "ON AIR"
+      }
+    },
+    {
+      "step": "P2b phone Audios stop",
+      "ok": true,
+      "detail": {
+        "audio": {
+          "paused": true,
+          "t": 6.89,
+          "rs": 4,
+          "err": 3
+        },
+        "deck": "ON AIR"
+      }
+    },
+    {
+      "step": "P3 phone Videos Watch -> theatre",
+      "ok": true,
+      "detail": {
+        "title": "\ud83d\udd31 BECOME / COMPOUND! Day #5, Lesson #of 5  \"Naya POWER Academy.\" \ud83d\udd31",
+        "scrollW": 390
+      }
+    },
+    {
+      "step": "P4 phone lesson ADD-only bar + one bar",
+      "ok": true,
+      "detail": {
+        "lessonOpen": true,
+        "roomsPlus": "none",
+        "feedAdd": "none",
+        "bars": [
+          {
+            "id": "os-bottom3",
+            "disp": "flex",
+            "vis": true,
+            "x": 0,
+            "y": 752,
+            "w": 390,
+            "h": 92
+          }
+        ],
+        "scrollW": 390
+      }
+    },
+    {
+      "step": "P5 phone six-tile bar, no overflow",
+      "ok": true,
+      "detail": {
+        "scrollW": 390,
+        "bars": [
+          {
+            "id": "os-bottom3",
+            "disp": "flex",
+            "vis": true,
+            "x": 0,
+            "y": 752,
+            "w": 390,
+            "h": 92
+          }
+        ]
+      }
+    }
+  ],
+  "pageErrors": [
+    "A network error occurred.",
+    "updateDock is not defined",
+    "updateDock is not defined",
+    "A network error occurred."
+  ]
+}
