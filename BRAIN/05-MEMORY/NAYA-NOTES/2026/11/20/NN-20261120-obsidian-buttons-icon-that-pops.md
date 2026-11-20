@@ -4,7 +4,7 @@
 
 **NN-20261120-obsidian-buttons-icon-that-pops · Naya Note · 2026-11-20 ~14:23–14:52 MST (call 4f055989)**
 
-*Paired Smart Note: SN-pending — Obsidian Buttons With an Icon That Pops (takes the next free number at filing)*
+*Paired Smart Note: SN-4327 — Obsidian Buttons With an Icon That Pops*
 
 **Category:** Design — the bottom buttons, one pro family
 
