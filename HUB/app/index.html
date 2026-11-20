@@ -1190,7 +1190,7 @@ svg.jewel { display: block; }
   margin: 4px auto 20px; max-width: min(680px, 94vw);
 }
 /* The living clock: breathing dot + glowing ticking time (Shawn 2026-10-20) */
-.hero-date { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.hero-date { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; position: relative; width: fit-content; margin: 0 auto 10px; padding: 10px 20px; background: #050607; border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,.6), 0 0 24px rgba(255,255,255,.12); } /* SNB-FIX1E item 4: the date/time is a live instrument on its obsidian plaque (Laws §2.1 treatment #10: chrome-thin trim + underglow). The 1s tick + 120s orbit (SNB-FIX1E block) make it read alive. */
 .live-dot {
   width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px;
   /* Resting: unlit — an empty ring. The dot lights ONLY when the feed is proven live (body.feed-live, N-13). */
@@ -1206,7 +1206,7 @@ body.feed-live .live-dot {
   50% { opacity: .5; transform: scale(.8); box-shadow: 0 0 4px #8e24aa; }
 }
 .hero-time { color: #d4a017; font-variant-numeric: tabular-nums; text-shadow: 0 0 18px rgba(212,160,23,.45); } /* gold — syncs with Collective/Spaces (Shawn 2026-10-20) */
-.hero-date-str { color: #2fe89e; text-shadow: 0 0 18px rgba(47,232,158,.45); /* GREEN LIVING DATE (Shawn 2026-11-18 ~21:40Z): the date glows bright green, alive — restored from his screenshot. §2.5 white is superseded here by his newer word; the gold clock beside it stays gold. */ }
+.hero-date-str { color: #07925f; text-shadow: 0 0 18px rgba(7,146,95,.45); /* SNB-FIX1E item 2 (Shawn 2026-11-20): the date is DEEP emerald #07925f — the locked deep hex from the machine json, never sampled; the bright pre-deepening value is gone. The gold clock beside it stays gold. */ }
 .hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; font-weight: 900; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.85), 0 0 30px color-mix(in srgb, var(--room-accent, #8e24aa) 35%, transparent); }
 .hero-sub { font-size: 19px; line-height: 1.55; color: #F2F2F6; font-weight: 600; max-width: 760px; margin: 0 auto 10px; }
 /* Intel Today (2026-11-12): the Hub is the public blog. Gold wordmark
@@ -2003,7 +2003,7 @@ body.msg-open{overflow:hidden;}
   .notif-tile::after, .nav-btn .ico::after, .nav-sub .ico::after, .rail-toggle::after, .eco-bb-ico::after, .fc-plusitem .fc-pi-ico::after, .ib-card-orb::before { animation: none !important; }
 }
 .add-intel {
-  margin-top: 16px; padding: 18px;
+  margin-top: 16px; padding: 24px 18px; /* SNB-FIX1E item 9: breathing room from the bar edge — 24px top/bottom (was 18px); sides stay 18px so the upper-bound row still fits (effective side breathing ~25px with the centred row). */
   border: 2px solid rgba(255,255,255,.1); border-radius: 16px;
   background: #08080c;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 -6px 14px rgba(0,0,0,.5), 0 10px 24px rgba(0,0,0,.5), 0 0 14px -4px rgba(142,36,170,.25);
@@ -2119,7 +2119,7 @@ body.msg-open{overflow:hidden;}
   font-variant-numeric: tabular-nums;
 }
 .ib-stamp .live-dot { width: 7px; height: 7px; flex: 0 0 7px; }
-.ib-stamp-date { color: #ffffff; text-shadow: 0 0 14px rgba(255,255,255,.28); }
+.ib-stamp-date { color: #07925f; text-shadow: 0 0 14px rgba(7,146,95,.45); } /* SNB-FIX1E item 2: the board date line is GREEN like before (common-language report §1 image 16: date green, time gold) — it was white; the time stays gold #d4a017. */
 .ib-stamp-time { color: #d4a017; text-shadow: 0 0 14px rgba(212,160,23,.45); }
 .ib-stamp-rel { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,.28); }
 @media (prefers-reduced-motion: reduce) {
@@ -2169,17 +2169,17 @@ body.msg-open{overflow:hidden;}
 .intel-board .add-intel { margin-left: auto; margin-right: auto; max-width: 600px; }
 .intel-board .add-intel-row input[type="text"] { border: 2px solid #ffffff; box-shadow: 0 0 0 1px rgba(255,255,255,.5), 0 0 18px rgba(255,255,255,.45); }
 .intel-board .add-intel-row input[type="text"]:hover, .intel-board .add-intel-row input[type="text"]:focus { border-color: #8e24aa; box-shadow: 0 0 0 2px #8e24aa, 0 0 24px rgba(142,36,170,.65); outline: none; }
-.intel-board .add-intel-types { display: flex; gap: 8px; }
+.intel-board .add-intel-types { display: flex; gap: 16px; } /* SNB-FIX1E item 9: real gaps between the pills (was 8px — they slid into each other). Upper-bound row 1152px vs panel inner 1167px = 15px margin, so the fix-1d natural-width fit still closes. */
 .intel-board .add-intel-types .intel-type { flex: 1 1 0; justify-content: center; }
 
 /* ——— SNB-FIX1C 2026-11-20 (captain's cloud-browser eye walk 11:29–11:39 MST — render requirements) ——— */
 /* Item 2 — headline orb: the orbit dot on .ib-card-orb::before runs at 120s (odd boards) / 150s (even boards, L13760), so a 20s wait moves a tiny dot 48–60° and five minutes is ~2 full turns — it reads as still. 60s keeps the Laws §1 ambient band (60–180s) and moves the dot 120° in a 20s wait. Direction alternation untouched (animation-name not set here); the ::after light pool untouched. */
 .intel-board .ib-card-orb::before { animation-duration: 60s !important; }
-/* Item 3a — ADD input: the box itself is LIT WHITE at rest and PURPLE on focus (a background treatment, not just border/glow — the eye's order). Legibility rides with the background: dark obsidian text + dark placeholder on white; white text + white placeholder on purple. §4 TENSION, named plainly: Design Laws §4 says inside = board black, no glow inside ever. This one field is the eye-ordered exception — Shawn's newer word (via the eye) governs (§0: his newer word wins); the rest of the board stays board black. The mic button beside the field stays obsidian; the ADD INTEL submit button stays obsidian with white text (the button standard). */
-.intel-board .add-intel-row input[type="text"] { background: linear-gradient(135deg, #ffffff 0%, #ececf2 100%); color: #050607; transition: border-color .18s, box-shadow .18s, background .18s, color .18s; }
-.intel-board .add-intel-row input[type="text"]::placeholder { color: rgba(5,6,7,.55); }
+/* SNB-FIX1E item 8 — SUPERSEDES Item 3a (Shawn's eye 2026-11-20 ~14:12 MST): the comment box is OBSIDIAN BLACK inside (#050607), white text, in EVERY state — no white inside, no pink inside. The light lives OUTSIDE: white at rest, purple on click/focus. The old white-rest / purple-focus BACKGROUNDS are gone; the §4 exception they carried is superseded by his eye, just now. */
+.intel-board .add-intel-row input[type="text"] { background: #050607; color: #ffffff; border-color: rgba(255,255,255,.75); box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 18px rgba(255,255,255,.45), 0 0 42px rgba(255,255,255,.18), 0 14px 30px rgba(0,0,0,.6); transition: border-color .18s, box-shadow .18s, background .18s, color .18s; } /* SNB-FIX1E item 8: obsidian inside, white text, WHITE light outside at rest. */
+.intel-board .add-intel-row input[type="text"]::placeholder { color: #ffffff; } /* SNB-FIX1E item 8: white placeholder on obsidian (the dark-on-white placeholder goes with the white background). */
 .intel-board .add-intel-row input[type="text"]:hover { border-color: #ffffff; box-shadow: 0 0 0 1px rgba(255,255,255,.6), 0 0 18px rgba(255,255,255,.5); }
-.intel-board .add-intel-row input[type="text"]:focus { background: linear-gradient(135deg, #8e24aa 0%, #8e24aa 55%, #4a0a5e 100%); color: #ffffff; border-color: #ffffff; box-shadow: 0 0 0 2px #ffffff, 0 0 24px rgba(142,36,170,.8); outline: none; }
+.intel-board .add-intel-row input[type="text"]:focus { background: #050607; color: #ffffff; border-color: #8e24aa; box-shadow: 0 0 0 2px rgba(142,36,170,.6), 0 0 24px rgba(142,36,170,.8), 0 0 48px rgba(142,36,170,.4); outline: none; } /* SNB-FIX1E item 8: obsidian inside on click/focus too — the PURPLE light moves outside. */
 .intel-board .add-intel-row input[type="text"]:focus::placeholder { color: rgba(255,255,255,.75); }
 /* Item 3b — four buttons, one line, desktop: the panel was max-width 600px while the four pills need ~896px at 17px (dot 16 + gap 8 + padding 36 + labels at 17px/800/.06em: ADD EVIDENCE ~198, BUILD ON THIS ~210, ASK A QUESTION ~221, REPORT AN OUTCOME ~267, + 3×8px gaps). 600px forced flex to shrink the pills and REPORT's text wrapped inside its button. Panel 1024px fits the board's desktop content width (~1147px at 1919: shell 264+1fr+300, board padding 32×2, frame sides 48×2, frame-body padding 24×2) with headroom; nowrap + tighter side padding (12px, was 18px) hold the line. Text stays 17px — never shrunk; labels unchanged. At 390px the four need ~896px against ~230px of content width, so they wrap by design (base flex-wrap:wrap below 701px) — desktop-only fix, named not claimed. */
 .intel-board .add-intel { max-width: 1024px; }
@@ -2256,6 +2256,37 @@ body.msg-open{overflow:hidden;}
    the Top-Left + (hover = lift + rim brightens + halo). */
 .intel-board .rank-value .star-rating button:hover { transform: translateY(-2px) scale(1.14); opacity: 1; filter: none; border-color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 20px rgba(142,36,170,.95), 0 0 42px rgba(142,36,170,.45); }
 .intel-board .rank-intel .star-rating button:hover { transform: translateY(-2px) scale(1.14); opacity: 1; filter: none; border-color: #ffffff; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 20px rgba(255,255,255,.9), 0 0 42px rgba(255,255,255,.4); }
+/* ——— SNB-FIX1E 2026-11-20 (Shawn's eye ~14:10–14:14 MST on the fix-1d staged page) ——— */
+/* Item 4 — THE DATE PLAQUE, ALIVE. The banner clock already ticks (1s interval,
+   .hero-time with seconds) but reads dead: flat text on the open page. The date
+   line now sits on its own obsidian plaque (Laws §2.1 treatment #10: white text
+   on an obsidian plaque with chrome-thin trim and its own underglow — date green
+   #07925f + time gold #d4a017 per item 2), and a slow arc of light travels around
+   the plaque: border-top white + border-right gold on the ::after, rotating on
+   the file's own orb-spin at 120s (Laws §1 ambient band 60–180s, never faster
+   than 12s). Wrapped in no-preference so the file's reduced-motion kill stands.
+   The seconds themselves still advance on the 1s interval — the plaque + orbit
+   is what makes the ticking READ as a live instrument. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-date::after { content: ""; position: absolute; inset: -5px; border-radius: 999px; border: 1.5px solid transparent; border-top-color: rgba(255,255,255,.9); border-right-color: rgba(212,160,23,.55); pointer-events: none; animation: orb-spin 120s linear infinite; }
+}
+/* Item 5 — RATE DEAD CENTER. Root cause, measured: the rank rows were already
+   centred (.rank-row justify-content: center, L2397) but the RATE HEAD was not
+   — .rate-head is a plain left-aligned flex row (L2015/L2157, no justify), so
+   the pearl + "RATE THE INTELLIGENCE" started at the frame-body's left edge
+   while the rows sat centred: the unit read off-center by ~386px (head content
+   ~278px wide in a 1051px frame body). And the rows themselves centred as a
+   GROUP, not on the stars: the label flank (168px) is wider than the readout
+   flank (~70px), so the stars sat ~49px right of frame centre. Fix: centre the
+   head, and give the readout the label's 168px min-width (text-align left) so
+   the flanks are symmetric — the stars' centre then IS the frame centre
+   (chain audit: frame body 1051, rate row 840, margin 211, offset 0). */
+.intel-board .rate-head { justify-content: center; }
+@media (min-width: 701px) {
+  .intel-board .rank-label { min-width: 168px; }
+  .intel-board .rank-readout { min-width: 168px; text-align: left; }
+}
+
 
 
 
@@ -6215,11 +6246,11 @@ function HubView(params) {
   ];
   var HUB_AREAS = [
     { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#a21caf', href: 'https://nayanet.app/hub',       countKey: 'activity', glyphCls: 'glyph-xl' },
-    { id: 'dashboard', label: 'Dashboard',     icon: 'report', color: '#07925f', href: 'https://nayanet.app/dashboard', countKey: null, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): green — violet sat next to Hub magenta and read as the same color; 'report' bars replace the 'gauge' arc, which read as @ */
-    { id: 'personal',  label: 'Personal',      icon: 'heart', color: '#3f51b5', href: 'https://nayanet.app/personal',  countKey: null, subtab: true, subs: PERSONAL_SUBS, glyphCls: 'glyph-xl' },
-    { id: 'business',  label: 'Business / Work', icon: 'brief', color: '#d4a017', href: 'https://nayanet.app/business',  countKey: null, subtab: true, subs: WORK_SUBS, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): gold — blue sat next to Personal blue and read as the same color */
-    { id: 'space',     label: 'Your World',    icon: 'spaces', color: '#07925f', href: 'https://nayanet.app/space',     countKey: 'spaces', subtab: true, subs: WORLD_SUBS, glyphCls: 'glyph-xl' }, /* EYE-NOTES-FIX §3.5: glyph-xl — the cube read as a globe at 0.283 scale */
-    { id: 'smartworlds', label: 'Smart Worlds', icon: 'doors', color: '#d4a017', href: 'https://nayanet.app/#/hub/spaces', countKey: null, glyphCls: 'glyph-xl' } /* EYE-NOTES §3.8: gold, flow step 6 (was magenta — broke the consecutive flow; base value, not a recolor) — EYE-NOTES-FIX §3.5: glyph-xl, the door read as a globe at 0.283 scale */
+    { id: 'dashboard', label: 'Dashboard',     icon: 'report', color: '#8e24aa', href: 'https://nayanet.app/dashboard', countKey: null, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): purple per Shawn's chakra order 2026-11-20 (supersedes the A4 eye's green, chosen then because violet sat next to Hub magenta and read as the same color); 'report' bars replace the 'gauge' arc, which read as @ */
+    { id: 'personal',  label: 'Personal',      icon: 'heart', color: '#0f52ba', href: 'https://nayanet.app/personal',  countKey: null, subtab: true, subs: PERSONAL_SUBS, glyphCls: 'glyph-xl' },
+    { id: 'business',  label: 'Business / Work', icon: 'brief', color: '#07925f', href: 'https://nayanet.app/business',  countKey: null, subtab: true, subs: WORK_SUBS, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): green per Shawn's chakra order 2026-11-20 (supersedes the A4 eye's gold, chosen then because blue sat next to Personal blue and read as the same color) */
+    { id: 'space',     label: 'Your World',    icon: 'spaces', color: '#d4a017', href: 'https://nayanet.app/space',     countKey: 'spaces', subtab: true, subs: WORLD_SUBS, glyphCls: 'glyph-xl' }, /* EYE-NOTES-FIX §3.5: glyph-xl — the cube read as a globe at 0.283 scale */
+    { id: 'smartworlds', label: 'Smart Worlds', icon: 'doors', color: '#c2410c', href: 'https://nayanet.app/#/hub/spaces', countKey: null, glyphCls: 'glyph-xl' } /* EYE-NOTES §3.8: orange per Shawn's chakra order 2026-11-20, flow step 6 (supersedes gold; was magenta — broke the consecutive flow; base value, not a recolor) — EYE-NOTES-FIX §3.5: glyph-xl, the door read as a globe at 0.283 scale */
   ];
   /* A world with sub-tabs (v4 Personal; AMENDMENT #1 2026-11-17: Business / Work
      and Your World too): it expands into its Page · Mail · DMs · Connections —
@@ -6346,7 +6377,7 @@ function HubView(params) {
      EYE-NOTES-FIX §3.5: Your Reports wears 'ledger' (the record book) so
      Dashboard can wear 'report' (bars); Smart Growth wears 'check' (a join
      confirmed) — the 'gauge' arc and the 'users' heads both read as @. */
-  const SIDEBAR_FLOW_7_11 = { today: '#0f52ba', reports: '#c62828', growth: '#6d28d9', library: '#3f51b5', connections: '#0e7490' }; /* AMENDMENT #3: rows 7–11 now — the Factory's magenta step leaves with it; red → violet is a widened step, the order kept. HUB FEED 2026-11-17 (A4 eye): Today is sapphire now — orange sat next to Reports red. */
+  const SIDEBAR_FLOW_7_11 = { today: '#c62828', reports: '#a21caf', growth: '#8e24aa', library: '#0f52ba', connections: '#07925f' }; /* SNB-FIX1E item 10 (Shawn's chakra order 2026-11-20, top to bottom): Intel Today red, Your Reports crown magenta, Smart Growth purple, Intelligent Library blue, Your Connections green. Repeats are non-adjacent (magenta 1st+8th, purple 2nd+9th, blue 3rd+10th, green 4th+11th) so the never-same-twice flow holds. */ /* AMENDMENT #3: rows 7–11 now — the Factory's magenta step leaves with it; red → violet is a widened step, the order kept. HUB FEED 2026-11-17 (A4 eye): Today is sapphire now — orange sat next to Reports red. */
   const SIDEBAR_ICON_7_11 = { today: 'feed', reports: 'ledger', growth: 'check' };
   ['today', 'reports', 'growth', 'library', 'connections'] /* AMENDMENT #3: Smart Factory leaves the left — it leads the RIGHT rail now */
     .map(id => R.ROOMS.find(r => r.id === id)).filter(Boolean).forEach(r => {
@@ -6494,9 +6525,9 @@ function HubView(params) {
              router treats mail as EXTERNAL, so a router hop would leave the
              Hub exactly like the old location.href did. */
           var choice = it.getAttribute('data-hub-menu');
-          if (choice === 'neither') { var nApi = window.NayaChassis || {}; if (nApi.closeDrawer) nApi.closeDrawer(); closeMsgPanel(); window._nayaMenuState = 'neither'; return; }
-          if (choice === 'messenger') { var mApi = window.NayaChassis || {}; if (mApi.closeDrawer) mApi.closeDrawer(); window._nayaMenuState = 'messenger'; openMsgPanel(); return; }
-          if (choice === 'people') { var pApi = window.NayaChassis || {}; if (pApi.closeDrawer) pApi.closeDrawer(); closeMsgPanel(); window._nayaMenuState = 'people'; if (pApi.openRightRail) pApi.openRightRail(); return; } /* ROUND 11 (item 8): the right rail's narrow-width control — the menu's fourth choice. Closes the left drawer + the messenger panel (never both at once) and opens the rail through the live NayaChassis.openRightRail, the same opener the ECOSYSTEM tile uses. */
+          if (choice === 'neither') { var nApi = window.NayaChassis || {}; if (nApi.closeDrawer) nApi.closeDrawer(); (window.NayaChassis.closeMsgPanel || closeMsgPanel)(); window._nayaMenuState = 'neither'; return; }
+          if (choice === 'messenger') { var mApi = window.NayaChassis || {}; if (mApi.closeDrawer) mApi.closeDrawer(); window._nayaMenuState = 'messenger'; (window.NayaChassis.openMsgPanel || openMsgPanel)(); return; }
+          if (choice === 'people') { var pApi = window.NayaChassis || {}; if (pApi.closeDrawer) pApi.closeDrawer(); (window.NayaChassis.closeMsgPanel || closeMsgPanel)(); window._nayaMenuState = 'people'; if (pApi.openRightRail) pApi.openRightRail(); return; } /* ROUND 11 (item 8): the right rail's narrow-width control — the menu's fourth choice. Closes the left drawer + the messenger panel (never both at once) and opens the rail through the live NayaChassis.openRightRail, the same opener the ECOSYSTEM tile uses. */
           /* Open sidebar — the live build's openDrawer, resolved through
              NayaChassis (re-published on every HubView build, never a stale
              closure). A tap while the sidebar stands open leaves it open — OPEN, not toggle (HUB FEED FIX 2026-11-18). When
@@ -8050,6 +8081,8 @@ document.addEventListener('click', function(e){
   window.NayaChassis.openDrawer = openDrawer; /* HUB FEED 2026-11-17 22:25Z (item 8): the menu's "Open sidebar" choice resolves the LIVE build's opener through the Chassis, never a stale closure */
   window.NayaChassis.openRightRail = openRightRail;
   window.NayaChassis.closeRightRail = closeRightRail;
+  if (typeof closeMsgPanel === 'function') window.NayaChassis.closeMsgPanel = closeMsgPanel; /* SNB-FIX1E item 12: publish the msg closers live — the menu's once-bound handlers resolve them at tap time instead of calling the first build's detached closures. typeof-guarded: out of scope here, nothing is published. */
+  if (typeof openMsgPanel === 'function') window.NayaChassis.openMsgPanel = openMsgPanel; /* SNB-FIX1E item 12: same, for the Messenger choice. */
 
   /* FOLLOW-UP 18 — THE RETURN TRAP (captain's eye, followup17 GOES BACK):
      these two maps sat AFTER `return shell;` (base lines 8020-8021), so
@@ -8277,15 +8310,17 @@ document.addEventListener('click', function(e){
        docked left rail remembers it — closing the drawer restores the
        on-load layout (both sidebars docked). Below desktop the left is a
        drawer of its own and the flag stays false, so nothing changes there. */
-    if (window.innerWidth >= 1440 && !shell.classList.contains('rail-collapsed')) rightDrawerLeftDocked = true;
-    shell.classList.add('rail-right-open');
-    shell.classList.remove('rail-right-collapsed');
+    var sh = document.querySelector('.shell') || shell; /* SNB-FIX1E item 12: resolve the shell LIVE on every open — the chassis closers can belong to a replaced build (same failure the Escape fix names at L8318); the X always closes the live rail, the open must open the live one. */
+    if (window.innerWidth >= 1440 && !sh.classList.contains('rail-collapsed')) rightDrawerLeftDocked = true;
+    sh.classList.add('rail-right-open');
+    sh.classList.remove('rail-right-collapsed');
     document.body.classList.remove('rail-right-collapsed'); /* ROUND 8: the body mirrors the shell's collapsed state -- #os-b3-hide is a direct child of <body>, so only a body class can govern it. */
     document.body.classList.add('rail-right-open');
     const f = navR.querySelector('.nav-btn');
     if (f) f.focus();
   }
   function closeRightRail() {
+    var sh = document.querySelector('.shell') || shell; /* SNB-FIX1E item 12: live shell, same as openRightRail — the closer must close the shell that is in the document, not the one the build closed over. */
     /* FIX 2026-11-16 (item B): a desktop drawer opened over a docked left
        rail closes back to the on-load layout — both sidebars docked — so
        the page never sits with zero sidebars after a drawer round-trip.
@@ -8293,20 +8328,20 @@ document.addEventListener('click', function(e){
        rail collapses and reopens from the menu control / ECOSYSTEM tile. */
     if (rightDrawerLeftDocked && window.innerWidth >= 1440) {
       rightDrawerLeftDocked = false;
-      shell.classList.remove('rail-right-open');
-      shell.classList.remove('rail-right-collapsed');
+      sh.classList.remove('rail-right-open');
+      sh.classList.remove('rail-right-collapsed');
       document.body.classList.remove('rail-right-collapsed'); /* ROUND 8: body mirrors shell (see D). */
-      shell.classList.remove('rail-collapsed');
+      sh.classList.remove('rail-collapsed');
       document.body.classList.remove('rail-right-open');
       syncMenuBtn(); /* AMENDMENT #3: closing the right drawer restores the LEFT docked — the old write marked the menu closed while the left stood open */
       return;
     }
     rightDrawerLeftDocked = false;
-    shell.classList.remove('rail-right-open');
+    sh.classList.remove('rail-right-open');
     /* HUB ICONS FIX 2026-11-16 (item 8): at desktop the right rail is docked
        visible — closing it collapses it (reopen from the bottom-bar
        ECOSYSTEM tile). Below desktop this class is inert. */
-    shell.classList.add('rail-right-collapsed');
+    sh.classList.add('rail-right-collapsed');
     document.body.classList.add('rail-right-collapsed'); /* ROUND 8: the body mirrors the shell's collapsed state -- this is the class the circle's right:12px rule matches on (see B). */
     document.body.classList.remove('rail-right-open');
   }
@@ -9082,8 +9117,8 @@ window.NayaJewels = (() => {
     }
     const d = new Date(ms), n = new Date();
     const dd = Math.round((new Date(n.getFullYear(), n.getMonth(), n.getDate()) - new Date(d.getFullYear(), d.getMonth(), d.getDate())) / 86400000);
-    if (dd <= 0) return 'today';
-    if (dd === 1) return 'yesterday';
+    if (dd <= 0) return ''; /* SNB-FIX1E item 3: no relative tag — the date line is the date and nothing else (Laws §2.5). */
+    if (dd === 1) return ''; /* SNB-FIX1E item 3: 'yesterday' makes no sense — show the real date (the absolute stamp beside it already carries it). */
     return '';
   }
   function noteStamp(note) {
@@ -9301,7 +9336,7 @@ window.NayaJewels = (() => {
       var c = String(t || '').trim();
       if (!c) return '';
       var out = []; var rest = c; var mm;
-      while (out.length < (max || 4) && (mm = rest.match(/^[^.!?]+[.!?]/))) { out.push(mm[0].trim()); rest = rest.slice(mm[0].length).trim(); }
+      while (out.length < (max || 4)) { if (out.length > 0) rest = rest.replace(/^(?:\s*(?:…|\.\.\.|\.))+\s*/, '').trim(); /* SNB-FIX1E item 1: skip a leading ellipsis/terminator run BETWEEN sentences — bodies carry ".." / "..." mid-text, and without this the sentence regex cannot match a remainder starting with a terminator, the loop exits early, and the fallback below pushes the whole remainder uncapped (sn2876: 8 sentences, sn2875: 6). Only between sentences: a leading "…" at the very start of the body is kept, per the fix-1d ruling. */ if (!rest) break; mm = rest.match(/^[^.!?]+[.!?]/); if (!mm) break; out.push(mm[0].trim()); rest = rest.slice(mm[0].length).trim(); }
       if (out.length < (max || 4) && rest) { out.push(rest); rest = ''; } /* SNB-FIX1D item 5: the remainder is consumed here — clear rest, or the line below appends a spurious trailing ellipsis after complete text. */
       var s = out.join(' ');
       if (rest) s += ' \u2026';
@@ -14749,7 +14784,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
 /* (3) EACH BOARD LIGHTS UP: rim only, just enough glow, nothing over the board. */
 .ib-frame { box-shadow: inset 0 1px 0 rgba(255,255,255,.10), inset 0 0 0 1.5px rgba(142,36,170,.35), 0 18px 44px rgba(0,0,0,.65), 0 0 24px -4px rgba(142,36,170,.35); transition: box-shadow .3s ease, transform .3s ease; }
 .ib-frame:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 0 0 1.5px rgba(142,36,170,.85), 0 18px 44px rgba(0,0,0,.65), 0 0 32px -2px rgba(142,36,170,.55); }
-.ib-frame-body { padding: 20px 28px 28px; } /* ROUND 9b (item 9): in a tad, up a tad — sides 24->28, top 24->20, bottom 24->28. The frame itself is untouched. */
+.ib-frame-body { padding: 20px 28px 20px; } /* SNB-FIX1E item 7: seating symmetric — top = bottom = 20 (was 20/28, 8px off-square, the last measurable misalignment after ROUND 9b did Live List item 3). Sides stay 28. The frame itself is untouched. */
 /* (5) DYNAMIC HEIGHT — REPEATABLE SIDE PATTERN, harvested from the master itself:
    the side tiles are the master's own left/right edge strips (rows 347-506),
    cropped from PNG 865357f6, so the sides repeat to ANY height while the
