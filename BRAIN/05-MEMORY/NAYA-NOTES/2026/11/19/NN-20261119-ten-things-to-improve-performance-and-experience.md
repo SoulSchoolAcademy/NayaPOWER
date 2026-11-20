@@ -4,7 +4,7 @@
 
 **NN-20261119-ten-things-to-improve-performance-and-experience · Naya Note · 2026-11-19 ~21:30–21:45 MST (~04:30–04:45Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Ten Things to Improve Performance and Experience (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4240 — Ten Things to Improve Performance and Experience*
 
 **Category:** Law — the performance standard, committed
 
