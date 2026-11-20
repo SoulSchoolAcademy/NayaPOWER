@@ -4,7 +4,7 @@
 
 **NN-20261120-live-first-then-judge-it · Naya Note · 2026-11-20 ~15:38–15:46 MST**
 
-*Paired Smart Note: SN-pending — Make It Live, Then Judge It (takes the next free number at filing)*
+*Paired Smart Note: SN-4338 — Make It Live, Then Judge It*
 
 **Category:** Law — the live-first habit; the live version is the best he has seen
 
