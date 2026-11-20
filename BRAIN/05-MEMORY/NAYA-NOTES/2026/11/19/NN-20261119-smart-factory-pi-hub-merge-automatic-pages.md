@@ -4,7 +4,7 @@
 
 **NN-20261119-smart-factory-pi-hub-merge-automatic-pages · Naya Note · 2026-11-19 ~21:05 MST (04:05Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Smart Factory + Project Intelligence + Smart Hub Merge: Automatic Pages (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4235 — Smart Factory + Project Intelligence + Smart Hub Merge: Automatic Pages*
 
 **Category:** Vision — the system builds the world from the input
 
