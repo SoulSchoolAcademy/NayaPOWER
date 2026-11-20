@@ -4,7 +4,7 @@
 
 **NN-20261120-one-button-enter · Naya Note · 2026-11-20 ~12:07–13:03 MST (call 8e0932a8)**
 
-*Paired Smart Note: SN-pending — One Button — ENTER (takes the next free number at filing)*
+*Paired Smart Note: SN-4291 — One Button — ENTER*
 
 **Category:** Decisions — the agreement presentation, the cover, the chrome
 
