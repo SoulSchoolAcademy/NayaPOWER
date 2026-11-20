@@ -71813,7 +71813,7 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "d7a4d863cd6581e455e666758d7e63c228263295dcd2a6fb63055ca661870f96"
+      "page_hash": "013d856787611964a88487cdc98cb66e7273f6e4acf2a9728668d41c5b301f1f"
     },
     {
       "smart_note_id": "SN-4291",
@@ -72164,5 +72164,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "ae098740f4b3fb5a910c3a6cf8aad0995d1f3961f14429d256bfbbb36aaa047e"
+  "corpus_manifest_hash": "d300feac0c32774f65074ad851e131b15e1eb0093198d5bef13cf1caacd84ba6"
 }
