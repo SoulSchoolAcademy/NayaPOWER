@@ -3026,6 +3026,52 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   #wisdomBanner .wq-store{margin-top:0!important;line-height:1.1!important}
 }
 
+/* ============ FIX17 — calendar day follow-on, Change cover clear at 390 (2026-11-20) ============ */
+/* ROOT CAUSE (measured on the fix-16 bytes, Firefox + Chromium, 390 and 1920):
+   The "Change cover" pill is ONE element, a child of #dayScroll, floating
+   over the deck on every slide. Its base rule pins it bottom:84px — at 390
+   that is y696-736 (Firefox fallback) / y701-736 (Chromium fonts), right
+   where slides put content: on Appointments it covers the "Smart Meet"
+   pill (678-737 / 673-726, no scroll path, sbScroll 359/359), on Summary
+   (Chromium fonts) it covers the "Your Journal" door (693-791), and on
+   wisdom its static-flow form lands at 778-818 (5-line days) / 811-851 /
+   830-870 (6-line days) half-hidden behind the fixed weather pill
+   (804-840) on 6 of 7 days in the fallback state. At 1920 it sits at the
+   right (x1635, y795-835) clear of everything — no collision in any 1920
+   leg, so this block is phone-only (max-width:560px) and desktop is
+   untouched. THE FIX moves the floating pill to the ONE band measured
+   empty on every floating slide in BOTH font states: the gap between the
+   dots row and the slide title. Dots end y342 (Firefox) / y337 (Chromium);
+   the lowest title top is y404 (Firefox) / y400 (Chromium); the Back pill
+   ends x156. top:40px puts the pill at y352-392 (Firefox, 40 tall) /
+   y348-383 (Chromium, 35 tall) — 10-11px clear of the dots above, 12-21px
+   clear of the titles below, 19px clear in x of Back. Full per-slide
+   element dumps (dump17.py, both browsers) confirm the band holds no
+   element on Notifications, Journal, News, Appointments, Summary, Naya
+   Notes or Smart Notes. Worlds keeps its own static-flow form (768-808,
+   1px above the rim, whole) — its :has() rule outranks this one, so it is
+   not touched. WISDOM has no free band: the orb fills the top (y312-352),
+   the hello/label/quote fill the middle, and the nav-to-weather gap varies
+   by day from 90px (day 17) to 5px (day 21) — no fixed spot fits all 7
+   days, so the pill is hidden on the wisdom slide at <=560px only, as the
+   brief sanctions. It stays visible and clear on the other 8 slides at
+   phone width and on every slide at desktop, so the cover-change function
+   is never more than one swipe away. No wording, color, font size, nav
+   clearance, or other geometry changes. */
+/* (1) FLOATING PILL — top of the deck at phone width, same spot on every
+   slide. Same selector as the base floating rule (line 2715), later in
+   the file, so it wins; the wisdom/worlds :has() rules outrank it and
+   keep their own forms. */
+@media(max-width:560px){
+  #dayScroll>.cover-change{top:40px!important;bottom:auto!important}
+  /* (2) WISDOM — no free band on this slide (see above), so the pill is
+     hidden here at phone width only. Same specificity as the wisdom
+     static-flow rule, later in the file, so display:none wins. The
+     #dayScroll overflow + #wisdomBanner flex rules from that block are
+     separate rules and are untouched. */
+  #dayScroll:has(#wisdomBanner.on)>.cover-change{display:none!important}
+}
+
 </style>
   </head>
   <body>
