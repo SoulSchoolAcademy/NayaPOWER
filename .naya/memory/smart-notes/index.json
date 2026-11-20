@@ -69380,6 +69380,38 @@
         "Trust",
         "Value"
       ]
+    },
+    {
+      "smart_note_id": "SN-3959",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn3959-connected-everyone-gets-more-powerful",
+      "slug": "connected-everyone-gets-more-powerful",
+      "title": "Connected, Everyone Gets More Powerful",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3959/IB-SMART-NOTE-20261120-sn3959-connected-everyone-gets-more-powerful.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3959/IB-SMART-NOTE-20261120-sn3959-connected-everyone-gets-more-powerful.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3959/IB-SMART-NOTE-20261120-sn3959-connected-everyone-gets-more-powerful.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn3959-connected-everyone-gets-more-powerful.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T00:35:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "6327a167ce1e789486267147bef514e6a473a09907c063484f5c039d70d4f3ba",
+      "content_hash": "d7b38293d738b7fdb24b82b2d37237bbcc76083f73f96304cbd4cbe81e9aa420",
+      "one_line": "Plug in. Get more powerful. Get paid.",
+      "topics": [
+        "Naya",
+        "Ambassadors",
+        "Network",
+        "Value"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69390,5 +69422,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "120d84f3ee1b2049808cb698625366837ce4a8ed106a6cd1f90f71f46c46360f"
+  "corpus_manifest_hash": "4d8e04bf4afbc8007947320bc96550deea9d85bda0fe411ca761f3431b5cbab4"
 }
