@@ -4,7 +4,7 @@
 
 **NN-20261120-the-smart-note-board-edits · Naya Note · 2026-11-20 ~09:44–09:55 MST (16:44–16:55Z)**
 
-*Paired Smart Note: SN-pending — The Official Smart Note Board — Nutshell, Format, and Alive (takes the next free number after SN-4276 files — SN-4276 is reserved for the ultimate-algorithm pair, held from run 417; confirmed by `next-sn-number.py` in run 419: highest in use SN-4275, next free SN-4276)*
+*Paired Smart Note: SN-4277 — The Official Smart Note Board — Nutshell, Format, and Alive*
 
 **Category:** Design — the smart-note board on the Hub, edited live against a screenshot
 
