@@ -69572,6 +69572,38 @@
         "Smart Vault",
         "Notes"
       ]
+    },
+    {
+      "smart_note_id": "SN-4035",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4035-wake-up-to-what-matters",
+      "slug": "wake-up-to-what-matters",
+      "title": "Wake Up to What Matters",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4035/IB-SMART-NOTE-20261120-sn4035-wake-up-to-what-matters.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4035/IB-SMART-NOTE-20261120-sn4035-wake-up-to-what-matters.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4035/IB-SMART-NOTE-20261120-sn4035-wake-up-to-what-matters.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4035-wake-up-to-what-matters.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:05:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "0874957b69b4800d8c6428426cd2246bc853b41a616ff6154d89d57d6146676a",
+      "content_hash": "a719686d9463572d1fa4b4f382ad8849cc4c2bb9281b08d7acaa1f4ac99dbb8a",
+      "one_line": "Wake up to what matters.",
+      "topics": [
+        "Reports",
+        "Citizen",
+        "Attention",
+        "Daily Intelligence Report"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69582,5 +69614,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "fb8215f03ad98ff802d4c03f09cc6834a090270852f24fa1945b6d9325c7e12c"
+  "corpus_manifest_hash": "b18812112c65c3692aad76ed7d291db4d7ed4ba0b206dba420eade205fa427bd"
 }
