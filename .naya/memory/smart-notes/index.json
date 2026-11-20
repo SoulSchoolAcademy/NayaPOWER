@@ -71784,6 +71784,126 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "f6ecda030a2994901ab02704fc05be9592a14af448728d18d9a7fd1704351fbb"
+    },
+    {
+      "smart_note_id": "SN-4285",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4285-the-literal-player-goes-in-the-frame",
+      "title": "SN-4285 — The Literal Player Goes In the Frame",
+      "content_hash": "28f38071608eff0ac9e1c40bd7b1af419a4a7c898f9839e935dc7975a746a88b",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4285/IB-SMART-NOTE-20261120-sn4285-the-literal-player-goes-in-the-frame.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "dcf1a789ee94baffe3f9cb17d1b0b268322c7272cd183093d22ba755368a9ca3"
+    },
+    {
+      "smart_note_id": "SN-4286",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4286-pull-the-real-buttons",
+      "title": "SN-4286 — Pull the Real Buttons — Flat Buttons Fail",
+      "content_hash": "e331dc1e577fb4b64c8f1ee42d52d934e5a46ee0431644146c29e922a6195e0b",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4286/IB-SMART-NOTE-20261120-sn4286-pull-the-real-buttons.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "3a43a8ab13d4ac36dadb54609d8b5eadaf4f630a5708da31058199e5d1ff2648"
+    },
+    {
+      "smart_note_id": "SN-4287",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4287-the-presentation-has-no-bars",
+      "title": "SN-4287 — The Presentation Has No Bars",
+      "content_hash": "ce5ddaf5b4eb1e0a56c23d45c4cac6644f33dd59f03815316bb92a92a16f5080",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4287/IB-SMART-NOTE-20261120-sn4287-the-presentation-has-no-bars.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "b635c2199960fed3d33f3751e19c944f865ac897255270e037e5db47be173f3b"
+    },
+    {
+      "smart_note_id": "SN-4288",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4288-part-two-merge-the-best-of-both",
+      "title": "SN-4288 — Part Two — Merge the Best of Both",
+      "content_hash": "14183cd06945f61b13ce631831fd0635dbf0a5cb307919011753dc514d9b8ede",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4288/IB-SMART-NOTE-20261120-sn4288-part-two-merge-the-best-of-both.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "7da51aa63386993ae3d95e551bc4d1436b0c941e630cfd9751e0413ce8c0b46a"
+    },
+    {
+      "smart_note_id": "SN-4289",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4289-the-living-board-inside-the-frame",
+      "title": "SN-4289 — The Living Board Inside the Frame — One Module, Used Twice",
+      "content_hash": "0ee0a30480d775c4a75df30cd743eed42e698af8809b2ae3491156abcb5b3760",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4289/IB-SMART-NOTE-20261120-sn4289-the-living-board-inside-the-frame.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "a6b5877b9e872cc08a702dded2da58bcf8cb24fb3e232e6bb0bba0338aa2dcc9"
+    },
+    {
+      "smart_note_id": "SN-4290",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4290-the-n-stays-the-red-n-goes-into-the-player",
+      "title": "SN-4290 — The N Stays — The Red N Goes Into the Player",
+      "content_hash": "560df515d0f6f6ca49790f16408666e3f95f97b4e268a53135a66164d98711da",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4290/IB-SMART-NOTE-20261120-sn4290-the-n-stays-the-red-n-goes-into-the-player.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "d7a4d863cd6581e455e666758d7e63c228263295dcd2a6fb63055ca661870f96"
     }
   ],
   "sequence_policy": {
@@ -71794,5 +71914,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "43b7dbc6e7cf3f7f07864ec195831e99bc8a673a4429cbba8b757250a158b81b"
+  "corpus_manifest_hash": "f81dc51182c8c331b5ced452d10e976bc18000e6870c95c9c80a00c93606b872"
 }
