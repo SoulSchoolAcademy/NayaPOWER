@@ -4,7 +4,7 @@
 
 **NN-20261120-part-two-merge-the-best-of-both · Naya Note · 2026-11-20 ~12:15 MST**
 
-*Paired Smart Note: SN-pending — Part Two — Merge the Best of Both (takes the next free number at filing)*
+*Paired Smart Note: SN-4288 — Part Two — Merge the Best of Both*
 
 **Category:** Decisions — the agreement presentation, Part Two, the merge
 
