@@ -69924,6 +69924,38 @@
         "Scorecard",
         "Judgment"
       ]
+    },
+    {
+      "smart_note_id": "SN-4106",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4106-the-correction-is-the-asset",
+      "slug": "the-correction-is-the-asset",
+      "title": "The Correction Is the Asset",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4106/IB-SMART-NOTE-20261120-sn4106-the-correction-is-the-asset.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4106/IB-SMART-NOTE-20261120-sn4106-the-correction-is-the-asset.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4106/IB-SMART-NOTE-20261120-sn4106-the-correction-is-the-asset.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4106-the-correction-is-the-asset.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:20:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "4e375cdff0607659a63af46d2b2a5e94f09b99747759f333487c55732a43393a",
+      "content_hash": "ab4aaf4c1bd76e566d3460b4a26b08047787cfae5bb943b48475426f228c73dd",
+      "one_line": "The correction is the asset.",
+      "topics": [
+        "Correction",
+        "Mechanic",
+        "Learning",
+        "Honesty"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69934,5 +69966,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "bb9df3a3b5fbc859cd13c61543ce6c865079723cd928b5e3a633da40271fff1d"
+  "corpus_manifest_hash": "8bd48824f31a7eea210dda0e13465db89ae6b198170ad441598c1696fa7bc07f"
 }
