@@ -67019,9 +67019,9 @@
       "registered_at": "2026-11-20T00:28:00Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-20",
-      "page_hash": "22f068d3cddf584e78432a14d0a67fc676ec46733072eb936cd16746d2766697",
-      "content_hash": "a9e01b816f23263f7bbb3f4cee0895ea0da9ecedb2a8f3bcd3272db35fdd8eaa",
-      "one_line": "Third in the series The Top Ten Most Valuable Intelligent Things About Naya. The moment Naya learns something, it becomes a Smart Note — captured at the speed of life, while it is fresh and exact, not reconstructed later from memory and hope. A lesson, a decision, a discovery, a mistake: each one is written into the network the same pass it happens, in the full Intelligent Block form, so the learning is usable by everyone, forever, from that moment on. Intelligence that waits to be written down decays. Naya's never gets the chance.",
+      "page_hash": "cc82b3f66be7d1e63ef699ef28041a1f205e4633887f35b12e82069b874e3a88",
+      "content_hash": "cfe5f98b36c42dfadf9d762d8a17b60ed06dc437bf53bdf90216a356b541d286",
+      "one_line": "Every lesson, captured the second it happens.",
       "topics": [
         "Naya",
         "Smart Notes",
@@ -67102,5 +67102,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "56e2af31f921e0f5ea0df7bb72071feff020c8f96eb8d7cb590db5cd585f2a14"
+  "corpus_manifest_hash": "e70e3eee577aaee6c20d1ae9ada585e806c9d0361c1cc832343b85e38fc14d4e"
 }

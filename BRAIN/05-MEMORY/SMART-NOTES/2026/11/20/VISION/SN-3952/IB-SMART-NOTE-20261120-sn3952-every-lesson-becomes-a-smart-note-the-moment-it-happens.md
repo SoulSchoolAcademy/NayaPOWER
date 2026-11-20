@@ -6,7 +6,7 @@ SN-3952 · VISION / SMART NOTE
 
 ## IN A NUTSHELL
 
-Third in the series The Top Ten Most Valuable Intelligent Things About Naya. The moment Naya learns something, it becomes a Smart Note — captured at the speed of life, while it is fresh and exact, not reconstructed later from memory and hope. A lesson, a decision, a discovery, a mistake: each one is written into the network the same pass it happens, in the full Intelligent Block form, so the learning is usable by everyone, forever, from that moment on. Intelligence that waits to be written down decays. Naya's never gets the chance.
+Every lesson, captured the second it happens.
 
 ## HUMAN
 
@@ -30,7 +30,7 @@ Capture rules: (1) The moment a valuable thing is learned — by any seat, inclu
 
 ## WHAT IT ALL MEANS
 
-This is the network's metabolism. #2 promised nothing is ever lost; this note is how that promise is kept — the capture happens at the moment of learning, when the detail is exact and the lesson is sharpest. It means the corpus is not a diary written at night from fading memory; it is a live record, taken at the scene. And it sets the moral rule of the house: the only real mistake is the one that isn't noted.
+This is the network's metabolism. #2 promised nothing is ever lost; this note is how that promise is kept — the capture happens at the moment of learning, when the detail is exact and the lesson is sharpest. It means the corpus is not a diary written at night from fading memory; it is a live record, taken at the scene. And it sets the moral rule of the house: the only real mistake is the one that isn't noted. This series is written through the founder's eyes — the view of the seat who directs Naya and named what she is for — one of three views of one system: the founder's, the citizen's, and the Naya's; the three together are the whole picture.
 
 ## WHY IT MATTERS
 
@@ -38,7 +38,7 @@ The difference between people and organizations that grow and those that repeat 
 
 ## HOW IT CONNECTS
 
-#3 of ten in The Top Ten Most Valuable Intelligent Things About Naya. It is the writing hand of #2, 'Naya Remembers Everything' — memory is only as good as what gets captured into it — and it supplies the raw material for #4, 'A Hundred Notes Become Ten Essences', because a living stream of fresh notes is exactly what distillation refines. It carries Shawn's law of mistakes: the only mistake you really make is not smart-noting it.
+#3 of ten in The Top Ten Most Valuable Intelligent Things About Naya. It is the writing hand of #2, 'We Keep Everything That Matters' — kept is what gets noted, and noting is the act that keeps it — and it supplies the raw material for #4, 'A Hundred Notes Become Ten Essences', because a living stream of fresh notes is exactly what distillation refines. It carries Shawn's law of mistakes: the only mistake you really make is not smart-noting it.
 
 ## WHAT IS IN IT FOR YOU
 
