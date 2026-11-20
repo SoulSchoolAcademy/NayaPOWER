@@ -2141,14 +2141,16 @@ body.msg-open{overflow:hidden;}
 .intel-board .ib-layers { margin-top: -4px; padding-left: 4px; padding-right: 4px; }
 .intel-board .ib-layer { transition: transform .3s ease, box-shadow .3s ease; }
 .intel-board .ib-layer:hover { box-shadow: 0 18px 38px #000000a0, 0 0 24px -4px color-mix(in srgb, var(--lc) 55%, transparent); transform: translateY(-2px); }
-.intel-board .ib-layer-body, .intel-board .ib-nutshell { text-shadow: 0 0 12px rgba(255,255,255,.30), 0 1px 2px rgba(0,0,0,.8); }
+.intel-board .ib-layer-body, .intel-board .ib-nutshell { text-shadow: 0 0 6px rgba(255,255,255,.80), 0 0 16px rgba(255,255,255,.45), 0 0 32px rgba(255,255,255,.22), 0 1px 2px rgba(0,0,0,.8); }
+/* SNB-FIX1C item 1 (eye GOES BACK #2): the .30/12px halo was too weak to read — a wide-blur low-alpha shadow spreads to near-invisible. The shadow now sits on the <p>/<ul>/<li> themselves (not just the wrapper): a tight 6px layer at .80 alpha so the halo reads, plus 16px/.45 and 32px/.22 outer layers. White stays white; headings untouched. */
+.intel-board .ib-layer-body p, .intel-board .ib-layer-body ul, .intel-board .ib-layer-body li, .intel-board .ib-nutshell p { text-shadow: 0 0 6px rgba(255,255,255,.80), 0 0 16px rgba(255,255,255,.45), 0 0 32px rgba(255,255,255,.22), 0 1px 2px rgba(0,0,0,.8); }
 /* Item 8 — headline + date lit up, living light */
 .intel-board .ib-head, .intel-board .board-head { text-shadow: 0 0 14px rgba(255,255,255,.45), 0 1px 2px rgba(0,0,0,.8); }
 .intel-board .ib-title { animation: snGlowPulse 7s ease-in-out infinite; }
 /* Item 10 — slow light flowing around every circle on the board */
 .intel-board .layer-jewel-wrap, .intel-board .rate-pearl, .intel-board .intel-avatar { position: relative; }
 .intel-board .layer-jewel-wrap { display: inline-block; }
-.intel-board .layer-jewel-wrap::after, .intel-board .rate-pearl::after, .intel-board .intel-avatar::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg 250deg, var(--lc, #ffffff) 295deg, transparent 330deg); -webkit-mask: radial-gradient(circle, transparent 86%, #000 90%); mask: radial-gradient(circle, transparent 86%, #000 90%); animation: snFlow 60s linear infinite; pointer-events: none; }
+.intel-board .layer-jewel-wrap::after, .intel-board .rate-pearl::after, .intel-board .intel-avatar::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg 200deg, rgba(255,255,255,.90) 245deg, var(--lc, #ffffff) 290deg, rgba(255,255,255,.90) 320deg, transparent 360deg), conic-gradient(rgba(255,255,255,.14) 0deg, rgba(255,255,255,.14) 360deg); -webkit-mask: radial-gradient(closest-side, transparent 80%, #000 88%); mask: radial-gradient(closest-side, transparent 80%, #000 88%); animation: snFlow 60s linear infinite; pointer-events: none; } /* SNB-FIX1C item 2: mask geometry fixed (was farthest-corner — band outside the box, ring invisible) + 75° bright arc over a faint full ring, same 60s flow. Hosts are rendered visible elements: layer jewels beside every layer head, the RATE pearl, contribution avatars when present. */
 /* Item 4 — rating: white pearl orb + star balls twice as big; rated lit bright, unrated dim */
 .intel-board .rate-pearl { width: 46px; height: 46px; display: inline-grid; place-items: center; flex: none; filter: drop-shadow(0 0 10px rgba(255,255,255,.55)); }
 .intel-board .rate-pearl svg { width: 46px; height: 46px; display: block; }
@@ -2169,6 +2171,23 @@ body.msg-open{overflow:hidden;}
 .intel-board .add-intel-row input[type="text"]:hover, .intel-board .add-intel-row input[type="text"]:focus { border-color: #8e24aa; box-shadow: 0 0 0 2px #8e24aa, 0 0 24px rgba(142,36,170,.65); outline: none; }
 .intel-board .add-intel-types { display: flex; gap: 8px; }
 .intel-board .add-intel-types .intel-type { flex: 1 1 0; justify-content: center; }
+
+/* ——— SNB-FIX1C 2026-11-20 (captain's cloud-browser eye walk 11:29–11:39 MST — render requirements) ——— */
+/* Item 2 — headline orb: the orbit dot on .ib-card-orb::before runs at 120s (odd boards) / 150s (even boards, L13760), so a 20s wait moves a tiny dot 48–60° and five minutes is ~2 full turns — it reads as still. 60s keeps the Laws §1 ambient band (60–180s) and moves the dot 120° in a 20s wait. Direction alternation untouched (animation-name not set here); the ::after light pool untouched. */
+.intel-board .ib-card-orb::before { animation-duration: 60s !important; }
+/* Item 3a — ADD input: the box itself is LIT WHITE at rest and PURPLE on focus (a background treatment, not just border/glow — the eye's order). Legibility rides with the background: dark obsidian text + dark placeholder on white; white text + white placeholder on purple. §4 TENSION, named plainly: Design Laws §4 says inside = board black, no glow inside ever. This one field is the eye-ordered exception — Shawn's newer word (via the eye) governs (§0: his newer word wins); the rest of the board stays board black. The mic button beside the field stays obsidian; the ADD INTEL submit button stays obsidian with white text (the button standard). */
+.intel-board .add-intel-row input[type="text"] { background: linear-gradient(135deg, #ffffff 0%, #ececf2 100%); color: #050607; transition: border-color .18s, box-shadow .18s, background .18s, color .18s; }
+.intel-board .add-intel-row input[type="text"]::placeholder { color: rgba(5,6,7,.55); }
+.intel-board .add-intel-row input[type="text"]:hover { border-color: #ffffff; box-shadow: 0 0 0 1px rgba(255,255,255,.6), 0 0 18px rgba(255,255,255,.5); }
+.intel-board .add-intel-row input[type="text"]:focus { background: linear-gradient(135deg, #8e24aa 0%, #8e24aa 55%, #4a0a5e 100%); color: #ffffff; border-color: #ffffff; box-shadow: 0 0 0 2px #ffffff, 0 0 24px rgba(142,36,170,.8); outline: none; }
+.intel-board .add-intel-row input[type="text"]:focus::placeholder { color: rgba(255,255,255,.75); }
+/* Item 3b — four buttons, one line, desktop: the panel was max-width 600px while the four pills need ~896px at 17px (dot 16 + gap 8 + padding 36 + labels at 17px/800/.06em: ADD EVIDENCE ~198, BUILD ON THIS ~210, ASK A QUESTION ~221, REPORT AN OUTCOME ~267, + 3×8px gaps). 600px forced flex to shrink the pills and REPORT's text wrapped inside its button. Panel 1024px fits the board's desktop content width (~1147px at 1919: shell 264+1fr+300, board padding 32×2, frame sides 48×2, frame-body padding 24×2) with headroom; nowrap + tighter side padding (12px, was 18px) hold the line. Text stays 17px — never shrunk; labels unchanged. At 390px the four need ~896px against ~230px of content width, so they wrap by design (base flex-wrap:wrap below 701px) — desktop-only fix, named not claimed. */
+.intel-board .add-intel { max-width: 1024px; }
+@media (min-width: 701px) {
+  .intel-board .add-intel-types { flex-wrap: nowrap; }
+  .intel-board .add-intel-types .intel-type { white-space: nowrap; padding: 12px 12px; }
+}
+
 
 .ib-layer {
   --lc: var(--ink);
