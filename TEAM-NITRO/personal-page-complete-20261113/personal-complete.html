@@ -23590,6 +23590,18 @@ NF.register(UNIT, {
     try { document.body.classList.toggle('os-hide-plus', name==='about'||name==='story'||name==='myworld'); } catch(e){} /* FINISHING LAW 2026-11-12 — the + covered the Dashboard stats icon at 390. */
   }
   window.addEventListener('popstate', function(e){
+    /* FRAME-FIX6 2026-11-19 (F6): a Hub-room hash is NOT a Personal-view popstate.
+       Firefox fires popstate when location.hash is assigned, so the Hub-bar
+       Ask Naya button's navigate('/hub/ask') used to land here, showView('home')
+       ran, and its fix-4 F3 yield forced the room straight back to '/hub/feed'
+       (proven by live stack trace + popstate log, fix-6 repro6b/6c  the
+       Router '*' fallback at 17440 never runs for hub routes: hub/:room
+       matches first, so it was not the eater). Hub/note hashes belong to the
+       Router's hashchange render  leave them alone. Personal views (and an
+       empty hash) still route here, so Back to a Personal view still yields
+       an open room through showView('home'). */
+    var _h=(location.hash||'').replace(/^#\/?/,'').split('?')[0].split('/')[0];
+    if (_h==='hub' || _h==='smart-notes' || _h==='notes' || _h==='note') return;
     var v=(e.state && e.state.osView) || (location.hash||'').replace('#','');
     showView(VIEWS.indexOf(v)>=0?v:'home', true);
   });
