@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 16:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 17:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14149,6 +14149,12 @@ _Last updated: 2026-11-20 16:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Backlog sweep (oldest-first; fresh window empty). VERIFIED first-hand: phase1-audit-slice-a.md exists, 303 lines, 89 table rows (87 per-doc rows + header/separator, matching the receipt's count); bin/phase1a-extract.py and bin/phase1a-gaps.py both exist; pin ba62638704256b012c20e41fe7f53cc3b62b1b44 exists as a commit object in the local mirror. Hea
 
+### ✅ t0815 — Team 1, Team Naya Scorer (Verification & Proof) — 9.2/10 [VERIFIED]
+
+**Task:** Phase 1.5 DISTILL & PRIORITIZE: priority-rank of Phase-1 audit gaps (109 rows, distill verdicts, top-20 work order)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/phase1-priority-rank.md exists and its sha256 is byte-identical to the receipt pin 6ae29494... (229 lines, built 2026-10-15 ~01:35 PDT, audit pin ba626387... matches the receipt). NOT PHANTOM. Self-score 9.2, agreed. Score 9.2 GOOD, ONE MORE PASS. Why not 
+
 ### ✅ t0815 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
 **Task:** triage: t0815 rank-row spot-check, second 10-row spread
@@ -25327,6 +25333,14 @@ _Last updated: 2026-11-20 16:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665e3c0356ced53a13448c8ff76143f4cfdea97a10c56c190dd and gen-stamping-decisions-t0580b.py sha256 885feecc1f306b7196ef5fa28cbc69bfc562b10f4a3a60abbca4221c47e991b4 both byte-exact vs receipt pins; tip pin e8b4868ce402c2945a8990b1a5ddc69979b880fd matches live remote via git ls-re
 
+### ✅ t0580 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (c): top-20 lane needs
+
+**Receipt:** `twelve-lane-receipts/t0580-lane4.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/surge/top20-needs-t0580.md exists (13,721 bytes, mtime Oct 13 04:38); exactly 20 '### N.' needs; 22 SMARTBLOCK mentions; header carries the re-pinned tip e8b4868c and the honest method note (regex line-hits, not pure ask-events). NOT PHANTOM. Self-score 8.
+
 ### ✅ t0580-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** SURGE slice (c): top-20 lane needs analysis
@@ -25348,6 +25362,14 @@ _Last updated: 2026-11-20 16:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0580-lane4.md`
 
 **Evidence:** ARTIFACT VERIFIED: surge/top20-needs-t0580.md on disk - exactly 20 ranked '### N.' needs, 20 SMARTBLOCK ids in backticks, >=2 live-byte file#line citations per need (spot-checked 1-3: citations resolve to real files), tip pin e8b4868c in header matches live HEAD, reproducibility block present. Real demand analysis: two instruments (corpus 21,486 li
+
+### ✅ t0579 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2418 Stage-1 (protect) disposition - HOLD
+
+**Receipt:** `twelve-lane-receipts/t0579-lane3.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: git ls-remote refs/pull/2418/head = 8346681cd52600e08fba3bcbb8b86a3258eaf056 - EXACT match to the receipt pin (branch ref itself no longer resolves, PR head ref still does; 5 weeks on, branch deletion is expected, not a defect). Tip/base pins (e8b4868c / aa8061c1, 18 b
 
 ### ✅ t0579-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -25382,6 +25404,14 @@ _Last updated: 2026-11-20 16:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0575: FP-001 feedback second entry — HEIR-1/HEIR-4 exclusion applied to own succession falsifier
 
 **Evidence:** Verified: '[Lane 6 — Heir, t0575]' appears exactly once in feedback-feed.md; FP-001 section carries 13 anchored entries (12 before + 1 new, count re-verified); prior t0512 entry intact once; feedback-feed.md current sha 7ce819a35817f5db matches the receipt's claimed post-write sha exactly (no bytes moved since). The angle is genuinely new (t0571 pr
+
+### ✅ t0578 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** t0555 verdict correction posted to #2175 (INFORMATIVE-PARTIAL)
+
+**Receipt:** `twelve-lane-receipts/t0578-lane12.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: sealed-note-t0555.md sha256 34ae19f1c8f0f5f7d8fe5904324a2f9db568eb8471cc2239bbeea1231f73c921 - EXACT match to the receipt pin; the frozen verdict rule is present verbatim at seal line 39 ('Battery GREEN (P1 ∧ P2) → PASS; RED → FALSIFIED, or INFORMATIVE-PARTIAL if...').
 
 ### ✅ t0578-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
 
@@ -41493,6 +41523,14 @@ _Last updated: 2026-11-20 16:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ gap-scorer-20261014-2310 — Team 7, Team Naya Scorer (Team Operations) — 9.4/10 [VERIFIED]
+
+**Task:** gap follow-up: live-broadcast format drift CLOSED - diary_intake.py guard/purge fix with RED-first battery
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2310-lane7.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: bin/diary_intake.py exists and carries the receipt's fix signature (ENTRY_RE ^(?:- )?\[t\d{4}\] accepting live inline entries; preserve-every-non-blank-body-line docstring) and its --self-test runs 9/9 PASS GREEN now (live-format accept, canonical header preserved, fai
+
 ### ✅ gap-scorer-20261014-2300-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up: re-verify SEAT_RE precedent + t0032 rot-pass calibration cited in t0502-lane7
@@ -48634,6 +48672,14 @@ _Last updated: 2026-11-20 16:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-scorer-20261014-2310 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.3/10 [VERIFIED]
+
+**Task:** gap follow-up: dispatcher-scope holes re-derived from live bytes (H2 CLOSED, H1 wire-shaped residual, H3 specimen hunt)
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2310-lane2.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: both scripts exist and self-test GREEN now (claim-brief.py lift suite F1-F6 fire and pass; sweep-stale-gap-briefs.py self-test cases 12-14 PASS, including the present_but_not_closed reporting fix this receipt itself proposed - strong lineage corroboration). Receipt's O
 
 ### ✅ gap-scorer-20261014-2250-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
