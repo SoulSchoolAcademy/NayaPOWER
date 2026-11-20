@@ -4,7 +4,7 @@
 
 **NN-20261120-never-invent-a-rule · Naya Note · 2026-11-20 ~16:31 MST**
 
-*Paired Smart Note: SN-pending — Never Invent a Rule (takes the next free number at filing)*
+*Paired Smart Note: SN-4353 — Never Invent a Rule*
 
 **Category:** Law — a rule that appears nowhere in his words is not his rule
 
