@@ -4,7 +4,7 @@
 
 **NN-20261120-take-the-actual-player · Naya Note · 2026-11-20 ~12:07–13:03 MST (call 8e0932a8)**
 
-*Paired Smart Note: SN-pending — Take the Actual Player — The Frame Fits the Player (takes the next free number at filing)*
+*Paired Smart Note: SN-4292 — Take the Actual Player — The Frame Fits the Player*
 
 **Category:** Decisions — the agreement presentation, the PowerCast player
 
