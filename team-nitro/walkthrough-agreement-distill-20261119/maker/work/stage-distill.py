@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-"""AGREEMENT-DISTILL stage (2026-11-19): file the distill build in NEW branch
-walkthrough/agreement-distill-20261119 from the v5 tip 83ff20f6, one commit:
-walk (unchanged), identity (unchanged), the new worker, the edited builder
-(asserts -> distill unfold + welcome shas), the new welcome (37 boards),
-the new unfold (37 boards, frame system + progress pill), the mp3
-(unchanged, UNWIRED), and the distill work scripts + brief. Then blob
-read-back, PUT the worker, and verify the 7 staging routes + the unfold
-on the proof host. Fully in-memory (EPERM flake: no disk writes at all —
-the worker, unfold and welcome come from build-mem.py).
+"""AGREEMENT-DISTILL stage, fix-2 (2026-11-19): file the button-destination
+wiring as a new commit on walkthrough/agreement-distill-20261119, on top of
+the fix-1 tip 7c5c89ec (parent chain verified). No page bytes change in this
+commit — the transform guards + this script + the report are the new files;
+the worker is rebuilt in-memory (deterministic, identical sha) and re-PUT,
+and the 7 staging routes + the proof-host unfold are re-verified by sha256.
+Fully in-memory (EPERM flake: no disk writes at all — the worker, unfold
+and welcome come from build-mem.py).
 
 Route expectations: / -> welcome (distill), /agreement -> unfold (distill),
 /welcome -> walk, /identity.html -> identity,
@@ -82,13 +81,13 @@ def main():
     pstatus = int(pout.split("\n", 1)[0].split()[1]) if pout.startswith("HTTP") else -1
     assert pstatus == 200, "distill branch missing (HTTP %s) — run-1 commit expected" % pstatus
     tip1 = json.loads(pout.split("\n", 1)[1])["object"]["sha"]
-    assert tip1 == "4ed1fbbeeebf5db6d7ecadc78c1d2342be283327", "distill branch tip moved: %s" % tip1
-    print("distill branch tip (run-1 commit):", tip1, flush=True)
+    assert tip1 == "7c5c89ec3abd4c8b2b5616dc25ece114847c4ac2", "distill branch tip moved: %s" % tip1
+    print("distill branch tip (fix-1 commit):", tip1, flush=True)
     _, tip1c = st.gh("GET", "/repos/%s/git/commits/%s" % (st.REPO, tip1))
-    assert tip1c["parents"][0]["sha"] == PARENT, "run-1 commit is not on the v5 tip"
+    assert tip1c["parents"][0]["sha"] == "4ed1fbbeeebf5db6d7ecadc78c1d2342be283327", "fix-1 commit is not on the run-1 commit"
     _, commit = st.gh("GET", "/repos/%s/git/commits/%s" % (st.REPO, tip1))
     base_tree = commit["tree"]["sha"]
-    print("base tree (run-1):", base_tree, flush=True)
+    print("base tree (fix-1):", base_tree, flush=True)
     brief = st.read_bytes("/home/hatch/workspace/team-nitro/walkthrough-agreement-distill-20261119/AGREEMENT-DISTILL-BRIEF.md")
     files = [
         ("team-nitro/walk-v23-assembly-20261114/walk-beginning-fixed.html", new_walk),
@@ -118,17 +117,21 @@ def main():
                      "tree": [{"path": p, "mode": "100644", "type": "blob", "sha": s} for p, s in blobs.items()]})
     print("new tree:", tree["sha"], flush=True)
     msg = (
-        "Walkthrough AGREEMENT DISTILL v1 fix-1 (2026-11-19, maker round; "
+        "Walkthrough AGREEMENT DISTILL v1 fix-2 (2026-11-19, maker round; "
         "MAKER-REPORT.md in walkthrough-agreement-distill-20261119/maker/)\\n\\n"
-        "On top of the distill v1 commit: the deck view's progress indicator "
-        "is fixed for 37 boards. The 9-dot strip saturated at board 9, so "
-        "the deck now shows the count-agnostic jewel (N / 37 + bar), same as "
-        "the letter — one measuring thing per view. The deck-end button said "
-        "'Read the full agreement' (the one 'full/whole' label left); it goes "
-        "to the same distilled unfold as the intro button, so it now says "
-        "'Read the Collective Agreement', same words, same destination. The "
-        "stale hardcoded jewel text '1 / 86' is '1 / 37'. Nothing else moves: "
-        "unfold sha 760b8ea0 unchanged; welcome %d B (sha %s).\\n\\n"
+        "On top of the fix-1 commit: the button-destination standing order "
+        "(Shawn 20:14 MST). Every button in the three presentations was "
+        "audited in code and lands on a current, relevant page — Back, Keep "
+        "reading, Next, the buttons into the presentations, and the final "
+        "I-agree (full table in MAKER-REPORT.md). The transform now carries "
+        "destination guards, so a lost destination fails the build: 36 "
+        "Keep-reading buttons on the unfold, the I-agree bridge destination, "
+        "the media block, the three /agreement buttons (four navigation "
+        "sites), and the stage agree/exit/resume functions. No button "
+        "destination needed changing. NO PAGE BYTES CHANGED in this commit: "
+        "unfold sha 760b8ea0 and welcome sha d9577f61 are identical to "
+        "fix-1, so the worker sha is identical too; the changed files are "
+        "the transform guards, this stage script, and the report.\\n\\n"
         "Unfold %d B (sha %s); welcome %d B (sha %s). Walk 4,361,146 B "
         "sha b6befc33; identity 401,040 B sha 3279dc35; worker sha %s "
         "(built twice in-memory, identical; embeds verified). The mp3 stays filed "
@@ -137,8 +140,7 @@ def main():
         "wiring rides a separate round.\\n\\n"
         "Staged: %s/ - routes curl-verified byte-identical by sha256 after the PUT. "
         "NO PR, NO MERGE — the checker and the captain come after this seat. "
-        "Nothing live." % (len(new_welcome), welcome_sha[:8],
-                            len(new_unfold), unfold_sha[:8], len(new_welcome), welcome_sha[:8],
+        "Nothing live." % (len(new_unfold), unfold_sha[:8], len(new_welcome), welcome_sha[:8],
                             worker_sha[:8], st.STAGING))
     now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     _, cm = st.gh("POST", "/repos/%s/git/commits" % st.REPO,

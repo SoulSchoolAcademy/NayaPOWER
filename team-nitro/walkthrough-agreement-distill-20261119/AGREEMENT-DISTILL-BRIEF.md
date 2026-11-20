@@ -30,6 +30,9 @@ The agreement is written as if Naya is their friend — warm, first-person, welc
 ## Picture boards — the visuals lead (Shawn, 2026-11-19 ~19:54 MST — SUPERSEDES the 19:52 alternation)
 Write the TEXT FOR THE VISUALS: the visuals tell the story, the text is written to the pictures, not the other way round. The presentation is visual-led: roughly 27 image boards and 10 text boards. The pictures have to tell the story — use the visual deck's existing pictures (harvest them, don't rebuild), each picture carrying its board's feeling while the text carries the promise. Image boards carry a line or two written FOR that picture; text boards carry 3–5 sentences and the promises. The zoomed-in framing (one board filling the screen) is what makes the count weightless — keep the measuring thing (progress indicator) so they can see where they are, but never let the count feel heavy. Captain's call on the exact split and sequencing, judged as a real masterpiece.
 
+## Buttons — destinations double-checked (standing order, Shawn, 2026-11-19 ~20:14 MST — now law in AGENTS.md)
+Every eye walk and checker double-checks where the buttons go. The checker must click through the buttons on the agreement frame — including the one button into the presentation — and verify each one lands on the right page: current and relevant, not stale, not a dead end, not the wrong place. A page passes only when its buttons go where they should. Carry this into the checker's verdict: a button that lands wrong is a FAIL, however clean the frame looks.
+
 ## Scope — one lane, one round
 - Base: the v5 frame round's staged bytes (branch `walkthrough/agreement-frame-20261119`, tip `83ff20f6`) — harvest the frame, replace the boards. If the frame round's checker has not yet reported, this round supersedes it: do not run two rounds on this file.
 - File/routes: the walkthrough staging worker, `/agreement` text unfold AND the visual deck, same frame treatment for both.

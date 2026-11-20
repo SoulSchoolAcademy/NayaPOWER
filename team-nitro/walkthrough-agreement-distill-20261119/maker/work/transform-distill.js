@@ -294,6 +294,14 @@ function buildUnfold(base, H) {
   // Content guards.
   for (const n of ['dealAgreeBtn', 'dealSeal', 'I agree — show me my world', 'wireDeck', 'wireFrame7', 'wireFrame8', 'wireFrame9', 'fpMediaFrame', 'af-prog', 'wireProgDistill'])
     if (!text.includes(n)) fail('unfold content lost: ' + n);
+  // BUTTON DESTINATIONS (Shawn 20:14 MST, standing order): every button
+  // lands on the right page. Boards 1-36 carry Keep reading; board 37
+  // carries I-agree -> bridge. A lost destination fails the build.
+  const krCount = (text.match(/class="p3-enter letter-next deck-next"[^>]*data-beat="[0-9]+"/g) || []).length;
+  if (krCount !== 36) fail('unfold Keep-reading count is not 36: ' + krCount);
+  for (const n of ['/?stage=bridge', 'fpAudioState', 'fpAnthemVideoBtn', 'fpAudioNote', 'fpAnthemNote'])
+    if (!text.includes(n)) fail('unfold destination lost: ' + n);
+  if (text.includes('Read the full agreement')) fail('unfold full-agreement label present');
   return text;
 }
 
@@ -381,6 +389,14 @@ function buildWelcome(base, H) {
   // Content guards.
   for (const n of ['fpChoiceDeck', 'fpChoiceLetter', 'enterStage', 'deckBeats', 'dealAgreeBtn', 'dealSeal', 'fpStageJewelNum'])
     if (!text.includes(n)) fail('welcome content lost: ' + n);
+  // BUTTON DESTINATIONS (Shawn 20:14 MST, standing order): every button
+  // lands on the right page. The three "read" buttons go to /agreement;
+  // the stage's agree path is agreeFromLetterPage -> agree view -> the
+  // real agree button; exits land on the login; Back lands on the bridge.
+  for (const n of ["window.location.href='/agreement'", 'goBridgeAfterAgree', 'agreeFromLetterPage', 'exitStage', 'goResume', 'goBridgeToName', 'enterLetterPage'])
+    if (!text.includes(n)) fail('welcome destination lost: ' + n);
+  if ((text.match(/window\.location\.href='\/agreement'/g) || []).length < 3) fail('welcome /agreement destinations are not 3 (nextBtn2, choice, bridge)');
+  if (text.includes('Read the full agreement')) fail('welcome full-agreement label present');
   return text;
 }
 
