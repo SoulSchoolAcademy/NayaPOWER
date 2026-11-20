@@ -4,7 +4,7 @@
 
 **NN-20261120-is-my-memory-optimal · Naya Note · 2026-11-20 ~16:04 MST**
 
-*Paired Smart Note: SN-pending — Is My Memory Optimal? (takes the next free number at filing)*
+*Paired Smart Note: SN-4344 — Is My Memory Optimal?*
 
 **Category:** Law — the memory distills like the notes: slim core up front, raw detail behind
 
