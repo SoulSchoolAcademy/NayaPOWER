@@ -72,6 +72,29 @@ GEOM_JS = r"""
 }
 """
 
+SLIDE_JS = r"""
+() => {
+  const q = (s) => document.querySelector(s);
+  const r = (el) => { if (!el) return null; const b = el.getBoundingClientRect(); const cs = getComputedStyle(el);
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height), display: cs.display}; };
+  const beats = [...document.querySelectorAll('#deckBody .letter-beat')];
+  const vis = beats.filter(b => b.offsetParent !== null && b.getBoundingClientRect().height > 100);
+  const first = vis[0];
+  const show = first ? first.querySelector('.lb-showcase img') : null;
+  const btns = first ? [...first.querySelectorAll('button')].map(x => x.textContent.trim()) : [];
+  return {
+    deckOn: document.body.classList.contains('af-deck-on'),
+    deckFrame: !!q('.af-deck-frame'),
+    dots: [...document.querySelectorAll('#deckDots .ldot')].length,
+    tallBeats: vis.length,
+    firstTitle: first ? (first.querySelector('.ib-title')||{}).textContent : null,
+    firstRect: r(first),
+    showcaseRect: show ? r(show) : null,
+    btns,
+  };
+}
+"""
+
 DECK_JS = r"""
 () => {
   const q = (s) => document.querySelector(s);
@@ -133,7 +156,7 @@ with sync_playwright() as p:
     s2 = pg.evaluate(GEOM_JS)
     print("AF-D2 board2: cur=%s title=%s sealCount=%s" % (s2["cur"], s2["title"], s2["sealCount"]))
     shot(pg, "af-f2-desktop.png")
-    for _ in range(21):
+    for _ in range(22):
         pg.click("#deckBody .letter-beat.frame-now .frame-btnrow .frame-next")
         pg.wait_for_timeout(150)
     s3 = pg.evaluate(GEOM_JS); show("AF desktop final board", s3)
@@ -151,6 +174,10 @@ with sync_playwright() as p:
     pg.wait_for_timeout(2500)
     d = pg.evaluate(DECK_JS); show("AF desktop deck", d)
     shot(pg, "af-deck-desktop.png")
+    pg.click("text=THE OVERVIEW")
+    pg.wait_for_timeout(1200)
+    s = pg.evaluate(SLIDE_JS); show("AF desktop deck slide", s)
+    shot(pg, "af-deck-slide-desktop.png")
     pg.close()
     # ---- MOBILE 390: unfold ----
     pg = b.new_page(viewport={"width": 390, "height": 844})
@@ -172,6 +199,10 @@ with sync_playwright() as p:
     pg.wait_for_timeout(2500)
     d = pg.evaluate(DECK_JS); show("AF mobile deck", d)
     shot(pg, "af-deck-mobile.png")
+    pg.click("text=THE OVERVIEW")
+    pg.wait_for_timeout(1200)
+    s = pg.evaluate(SLIDE_JS); show("AF mobile deck slide", s)
+    shot(pg, "af-deck-slide-mobile.png")
     pg.close()
     b.close()
 print("PROBE DONE")
