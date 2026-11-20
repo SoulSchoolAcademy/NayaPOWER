@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 01:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -39593,6 +39593,12 @@ _Last updated: 2026-11-20 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-lane-scorer-20261015-0440-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** VOID-line install audit: repo-wide writer sweep + install point (1) re-verify + point (2) readiness
+
+**Evidence:** BACKLOG SWEEP (oldest unscored, 2026-10-15). VERIFIED first-hand this tick by sha256: bin/claim_liveness_audit.py faf6e3b3... matches the receipt pin byte-exact a month later. NOT PHANTOM. Self-score 9.0. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: install point (2) (cron RECONCILE step 2c amendment) remains uninstalled - authority-blocked, not eff
+
 ### ✅ gap-t0426-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** red half re-derived in-session; green half re-pinned and byte-reproduced (retrieval-auth-gate EQ probe)
@@ -45107,6 +45113,12 @@ _Last updated: 2026-11-20 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-lane-scorer-20261015-0510-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Blinded recount of t0572 verdicts vs seal + two-checkout determinism harness P5
+
+**Evidence:** BACKLOG SWEEP (oldest unscored, 2026-10-15). VERIFIED first-hand this tick by sha256: sealed-note-t0572.md 2f85967c... and bin/t0572-p5-two-checkout-harness.py ff4e2d78... both match the receipt pins byte-exact a month later. NOT PHANTOM. Self-score 9.5. Score 9.5 ACCEPTED - clears 9.5 because both halves closed with live byte proof: the recount re
+
 ### ✅ gap-t1497-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** Schema-conformant arm5 verdict table (18 rows, 0 non-MATCH) closing parent F-3 CONFIRM hole; verbatim F-3 re-run exit 0
@@ -46524,6 +46536,12 @@ _Last updated: 2026-11-20 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-lane-scorer-20261015-0510-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Blinded-judge readiness audit for t0571 re-run (recusal + pre-reg pin + drift caveat)
+
+**Evidence:** BACKLOG SWEEP (oldest unscored, 2026-10-15). VERIFIED first-hand this tick by sha256: lane-3/t0571/prereg-t0571.md 47214602... matches the receipt pin byte-exact. NOT PHANTOM. Self-score 8.5. Score 8.5 REWORK. Why not 9.5: the gap's actual ask - a blinded re-run of t0571's 23/23 verdict table - is still unexecuted; this receipt certified readiness 
 
 ### ✅ gap-scorer-20261014-2250-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -54509,6 +54527,12 @@ _Last updated: 2026-11-20 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-lane-scorer-20261015-0450-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** t0541 zero-finding re-run on frozen instrument + live marker census
+
+**Evidence:** BACKLOG SWEEP (oldest unscored, 2026-10-15). VERIFIED first-hand this tick by sha256: retrieval/retrieval-hitrate-t0541.py df496220... matches the receipt pin byte-exact. NOT PHANTOM. Self-score 9.0. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: the re-run used the current 30-brief window, not the byte-identical t0541 corpus (evolved away), and this 
+
 ### ✅ gap-t0418-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** t0718 semantic arm one-shot: CONFIRM/FALSIFY verdict on t0418 slice (FALSIFY)
@@ -56024,6 +56048,12 @@ _Last updated: 2026-11-20 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261119-1646 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-19 16:46 PST: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** FRESH. VERIFIED this tick on live bytes: claim-sweep-20261119-1646.log exists (1,937 bytes), 31 per-brief lines = 29x exit=7 + 2x exit=2 exactly as receipted (exit-2 briefs brief-gap-gap-gap-t0547-lane1-lane1.md and brief-gap-gap-gap-gap-t0172-lane1-lane1.md confirmed in log); 0 claimed; queue on disk holds exactly the 31 listed briefs, zero diff v
 
 ### ✅ gate-stall-20261119-1543 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
