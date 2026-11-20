@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 05:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -56354,6 +56354,186 @@ _Last updated: 2026-11-20 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Daily distill: repoint boot command-map step from dead #1599 to mission-state snapshot, landed via Intelligence Door
+
+**Evidence:** Verified: landed commit acbdf07883de191e1aff001a9478a476c8289507 exists in the local mirror with the matching message; receipt cites base tip feef6ba9 and gate before exit 1 (5 stale pointers) / after exit 0. Why not 9.5: gate re-run and blob SHAs not independently re-verified by me this tick (relied on receipt-cited evidence + commit existence); s
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Feed distillation #3352 (KNOW lane): 711 comments triaged, 21 decisions, essence posted to #3361
+
+**Evidence:** Verified: feed-distillation-#3352.md present (19,255 bytes); raw capture 3352-comments-full.jsonl present with 711 lines; rotation queued 32->31 consistent with the claimed brief; live_board=3361 in shared-state.json. Why not 9.5: sampled triage, not a full read of all 711 comments (138 director passes + 143 other items script-triaged); distillatio
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
+
+### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files and rotation queued=31, matching the receipt's 31; sweep log exists at the cited path (or receipt states no log relied on, 0811/0914); zero-delta claim consistent across the whole 28-receipt run (29x exit 7 + 2x exit 2 every run); queue untouched, no false claims. Why not 9.5: the ru
 
 ### ✅ gap-20261016-0430-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
