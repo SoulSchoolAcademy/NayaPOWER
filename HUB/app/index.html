@@ -154,7 +154,7 @@ window.addEventListener('appinstalled', function () {
     var(--bg);
 }
 
-.ib-subtitle{font-size:19px;color:#f2f2f6;text-align:center;margin:6px 0 2px;font-weight:500;letter-spacing:.02em;line-height:1.4;text-shadow:0 0 12px rgba(255,255,255,.30)} /* SMART-NOTE FIX1 2026-11-20 (items 5/17): subheading lit. */
+.ib-subtitle{font-size:19px;color:#f2f2f6;text-align:center;margin:6px 0 2px;font-weight:500;letter-spacing:.02em;line-height:1.4;text-shadow:0 0 8px rgba(255,255,255,.65), 0 0 16px rgba(255,255,255,.30)} /* SMART-NOTE FIX3 2026-11-20 (item 17): the single 20px/.45 halo had no bright core — its light spread too thin to read at 17px. Layered now: tight 8px/.75 core + wide 18px/.35 halo, harvested from the Dashboard digit (L827) and the jewel (L856). */
 </style>
 <style>/* css/base.css @ baf1221d9 */
 /* ═══════════════════════════════════════════════════════════════════
@@ -208,7 +208,7 @@ a { color: inherit; }
 }
 /* FOLLOW-UP 12 (FAIL 1): the tile orb is the one motion that survives reduced motion - the 16s scale breathe is the gentlest motion on the page, and the eye measures in a reduced-motion environment. The calm above still quiets every other motion; only the orb keeps its 16s breathe. */
 @media (prefers-reduced-motion: reduce) {
-  .ib-card-orb { animation-duration: 16s !important; }
+  .ib-card-orb, .rate-pearl-orb { animation-duration: 16s !important; } /* SMART-NOTE FIX3 2026-11-20 (item 2): the pearl joins the card orb in the reduced-motion survival line (L209-211 precedent) — its 16s breathe survives, so the eye can see it move. */
 }
 
 ::selection { background: #a21caf55; }
@@ -1827,7 +1827,7 @@ body.msg-open{overflow:hidden;}
   background: linear-gradient(135deg, color-mix(in srgb, var(--tone, #8e24aa) 8%, transparent), transparent 70%) !important;
   border-radius: 0 12px 12px 0 !important;
   margin: 16px 0 20px !important;
-  text-shadow: 0 0 12px rgba(255,255,255,.22) !important; /* SMART-NOTE FIX1 2026-11-20 (items 5/17): the nutshell is lit silver. */
+  text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 8px rgba(255,255,255,.75), 0 0 18px rgba(255,255,255,.35) !important; /* SMART-NOTE FIX3 2026-11-20 (item 17): the single 20px/.45 halo had no bright core — its light spread too thin to read at 17px. Layered now: tight 8px/.75 core + wide 18px/.35 halo, harvested from the Dashboard digit (L827) and the jewel (L856). */
 }
 .ib-nutshell .ib-nutshell-label {
   display: block;
@@ -2026,15 +2026,15 @@ body.msg-open{overflow:hidden;}
 .rate-section { grid-column: 1 / -1; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
 .rate-head { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; } /* SMART-NOTE FIX1 2026-11-20 (item 6): RATE THE INTELLIGENCE dead center. */
 .rate-head b { font-size: 17px; letter-spacing: .12em; color: #fff; }
-.rate-pearl-orb { position: relative; display: inline-flex; width: 26px; height: 26px; flex: none; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 35% 30%, #ffffff, #dcdce4 55%, #a9a9b4 100%); box-shadow: 0 0 14px rgba(255,255,255,.65), 0 2px 6px rgba(0,0,0,.6); } /* SMART-NOTE FIX1 2026-11-20 (item 6): the dead diamond is gone — a white pearl-diamond spinning orb of light, built on the DM orb pattern (conic flow inside, diamond dead center); the DM orbs flow black, this one flows white. */
-.rate-pearl-orb::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, rgba(255,255,255,.30) 0deg, rgba(255,255,255,.30) 300deg, rgba(255,255,255,.95) 340deg, #ffffff 355deg, rgba(255,255,255,.30) 360deg); animation: orb-spin 60s linear infinite; } /* SMART-NOTE FIX2 2026-11-20 (item 2): one bright wedge, not a symmetrical spin — the travelling highlight. */
+.rate-pearl-orb { position: relative; display: inline-flex; width: 26px; height: 26px; flex: none; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffffff, #dcdce4 55%, #a9a9b4 100%); box-shadow: 0 0 14px rgba(255,255,255,.65), 0 2px 6px rgba(0,0,0,.6); animation: orb-breathe 16s ease-in-out infinite; } /* SMART-NOTE FIX3 2026-11-20 (item 2): overflow:hidden REMOVED — it would clip the outside ring; the pearl itself breathes at 16s like the card orb (orb-breathe, L3215), so it stays alive even where the ring is stilled. */
+.rate-pearl-orb::before { content: ''; position: absolute; inset: -5px; z-index: -1; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(255,255,255,.9) 320deg, rgba(255,255,255,.95) 348deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px; animation: orb-spin 60s linear infinite; pointer-events: none; } /* SMART-NOTE FIX3 2026-11-20 (item 2): the flow moves OUTSIDE the pearl — a masked white ring on the black board, harvested from the INTELLIGENCE star ring (L1998) and the card-orb ring (L3232). White-on-white inside the pearl could never be seen moving; the ring is the travelling light — 150 degrees in a 25s pair. */
 .rate-pearl-orb svg { position: relative; z-index: 1; width: 16px; height: 16px; margin: auto; display: block; filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); }
 .rank-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
 .rank-label { font-size: 17px; font-weight: 800; letter-spacing: .1em; color: #fff; min-width: 132px; }
 .rank-row.rank-value .rank-label { color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 12px rgba(142,36,170,.55); animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 2f (item 4): VALUE is purple — the word is lit in its row's colour, alive. */
 .rank-row.rank-intel .rank-label { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 12px rgba(255,255,255,.35); animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 2f (item 4): INTELLIGENCE is white — lit in its row's colour, alive. */
 .rank-row .star-rating { flex: 1; min-width: 0; }
-.rank-readout { font-size: 17px; font-weight: 800; color: #fff; white-space: nowrap; }
+.rank-readout { font-size: 17px; font-weight: 800; color: #fff; white-space: nowrap; min-width: 132px; text-align: left; } /* SMART-NOTE FIX3 2026-11-20 (item 3): equal flank to the 132px label — the stars centre on the row. */
 /* ——— MAKE THIS INTELLIGENCE BETTER (23:21Z) ——— */
 .add-intel-prompt { font-size: 17px; color: #fff; margin-bottom: 12px; }
 .add-intel-types { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; } /* SMART-NOTE FIX1 2026-11-20 (item 11): the four buttons in ONE perfect line, nothing else. */
@@ -2057,7 +2057,7 @@ body.msg-open{overflow:hidden;}
 .add-intel-mic.listening .nsb-mic-dot { opacity: 1; }
 .add-intel-mic:active { transform: translateY(2px) scale(.96); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -2px 4px rgba(0,0,0,.75), 0 3px 8px rgba(0,0,0,.6); }
 .add-intel-source { font-size: 17px; color: #fff; margin-top: 12px; }
-@media (max-width: 700px) { .add-intel-row { flex-direction: column; } .add-intel-mic { align-self: flex-end; } .rank-label { min-width: 0; } }
+@media (max-width: 700px) { .add-intel-row { flex-direction: column; } .add-intel-mic { align-self: flex-end; } .rank-label { min-width: 0; } .rank-readout { min-width: 0; } } /* SMART-NOTE FIX3 2026-11-20 (item 3): phones keep the zero flank — the one-line fit is desktop-only. */
 /* ——— Images in the same format (23:07Z): 16:9, perfectly aligned ——— */
 .ib-media { margin-top: 16px; }
 .ib-media-top { margin-top: 0; margin-bottom: 16px; }
@@ -2117,11 +2117,11 @@ body.msg-open{overflow:hidden;}
 }
 .ib-identity { display: flex; gap: 14px; min-width: 0; align-items: flex-start; }
 .ib-identity .ib-jewel { width: 64px; height: 64px; }
-@keyframes ib-glow-breathe { from { text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 10px rgba(255,255,255,.25); } to { text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 20px rgba(255,255,255,.45); } } /* SMART-NOTE FIX1 2026-11-20 (items 5/17): the headline breathes its light — dynamic, never flat. */
+@keyframes ib-glow-breathe { from { text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 6px rgba(255,255,255,.45), 0 0 14px rgba(255,255,255,.25); } to { text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 10px rgba(255,255,255,.80), 0 0 22px rgba(255,255,255,.40); } } /* SMART-NOTE FIX3 2026-11-20 (item 17): the single 20px/.45 halo had no bright core — its light spread too thin to read at 17px. Layered now: tight 8px/.75 core + wide 18px/.35 halo, harvested from the Dashboard digit (L827) and the jewel (L856). */
 .ib-title {
   line-height: 1.05; letter-spacing: -.02em;
   margin: 0 0 8px; color: var(--ink); font-weight: 850;
-  text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 16px rgba(255,255,255,.35);
+  text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 8px rgba(255,255,255,.70), 0 0 18px rgba(255,255,255,.35);
   animation: ib-glow-breathe 6s ease-in-out infinite alternate;
 }
 .ib-meta {
@@ -2140,9 +2140,9 @@ body.msg-open{overflow:hidden;}
   font-variant-numeric: tabular-nums;
 }
 .ib-stamp .live-dot { width: 7px; height: 7px; flex: 0 0 7px; }
-.ib-stamp-date { color: #ffffff; text-shadow: 0 0 14px rgba(255,255,255,.28); }
-.ib-stamp-time { color: #d4a017; text-shadow: 0 0 14px rgba(212,160,23,.45); }
-.ib-stamp-rel { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,.28); }
+.ib-stamp-date { color: #ffffff; text-shadow: 0 0 8px rgba(255,255,255,.70), 0 0 16px rgba(255,255,255,.30); } /* SMART-NOTE FIX3 2026-11-20 (item 17): the single 20px/.45 halo had no bright core — its light spread too thin to read at 17px. Layered now: tight 8px/.75 core + wide 18px/.35 halo, harvested from the Dashboard digit (L827) and the jewel (L856). */
+.ib-stamp-time { color: #d4a017; text-shadow: 0 0 8px rgba(212,160,23,.80), 0 0 16px rgba(212,160,23,.45); } /* SMART-NOTE FIX3 2026-11-20 (item 17): the single 20px/.45 halo had no bright core — its light spread too thin to read at 17px. Layered now: tight 8px/.75 core + wide 18px/.35 halo, harvested from the Dashboard digit (L827) and the jewel (L856). */
+.ib-stamp-rel { color: #ffffff; text-shadow: 0 0 8px rgba(255,255,255,.65), 0 0 14px rgba(255,255,255,.30); } /* SMART-NOTE FIX3 2026-11-20 (item 17): the single 20px/.45 halo had no bright core — its light spread too thin to read at 17px. Layered now: tight 8px/.75 core + wide 18px/.35 halo, harvested from the Dashboard digit (L827) and the jewel (L856). */
 @media (prefers-reduced-motion: reduce) {
   .ib-stamp .live-dot { animation: none; }
 }
@@ -2288,6 +2288,7 @@ body.msg-open{overflow:hidden;}
    panel quiet obsidian · (8) the framed block. No other rules change. */
 @media (min-width: 701px) {
   .rank-label { min-width: 168px; text-align: right; white-space: nowrap; }
+  .rank-readout { min-width: 168px; text-align: left; } /* SMART-NOTE FIX3 2026-11-20 (item 3): equal flank to the 168px desktop label — the stars sit dead centre of the row by construction, whatever the readout reads. */
 }
 .rank-row { justify-content: center; }
 .rank-row .star-rating { flex: 0 0 auto; }
@@ -2327,10 +2328,10 @@ body.msg-open{overflow:hidden;}
 }
 .ib-layer-head.open .ib-chev { transform: rotate(180deg); }
 .ib-layer-body { padding: 8px 24px 24px; overflow-wrap: break-word; /* long machine-JSON tokens must wrap on phones */ }
-.ib-layer-body p { color: var(--ink); font-size: 17px; line-height: 1.7; margin: 0 0 12px; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 20px rgba(255,255,255,.45); } /* SMART-NOTE FIX2 2026-11-20 (item 17): the .22 glow did not read on the render — the headline full-breathe halo instead, silver-white only. */
+.ib-layer-body p { color: var(--ink); font-size: 17px; line-height: 1.7; margin: 0 0 12px; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 8px rgba(255,255,255,.75), 0 0 18px rgba(255,255,255,.35); } /* SMART-NOTE FIX3 2026-11-20 (item 17): the single 20px/.45 halo had no bright core — its light spread too thin to read at 17px. Layered now: tight 8px/.75 core + wide 18px/.35 halo, harvested from the Dashboard digit (L827) and the jewel (L856). */
 .ib-layer-body p:last-child { margin-bottom: 0; }
-.ib-layer-body ul { margin: 0 0 12px; padding-left: 24px; color: var(--ink); font-size: 17px; line-height: 1.7; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 20px rgba(255,255,255,.45); } /* SMART-NOTE FIX2 2026-11-20 (item 17): the .22 glow did not read on the render — the headline full-breathe halo instead, silver-white only. */
-.ib-layer-body li { margin-bottom: 8px; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 20px rgba(255,255,255,.45); } /* SMART-NOTE FIX2 2026-11-20 (item 17): the .22 glow did not read on the render — the headline full-breathe halo instead, silver-white only. */
+.ib-layer-body ul { margin: 0 0 12px; padding-left: 24px; color: var(--ink); font-size: 17px; line-height: 1.7; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 8px rgba(255,255,255,.75), 0 0 18px rgba(255,255,255,.35); } /* SMART-NOTE FIX3 2026-11-20 (item 17): the single 20px/.45 halo had no bright core — its light spread too thin to read at 17px. Layered now: tight 8px/.75 core + wide 18px/.35 halo, harvested from the Dashboard digit (L827) and the jewel (L856). */
+.ib-layer-body li { margin-bottom: 8px; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 8px rgba(255,255,255,.75), 0 0 18px rgba(255,255,255,.35); } /* SMART-NOTE FIX3 2026-11-20 (item 17): the single 20px/.45 halo had no bright core — its light spread too thin to read at 17px. Layered now: tight 8px/.75 core + wide 18px/.35 halo, harvested from the Dashboard digit (L827) and the jewel (L856). */
 .ib-layer-body strong { color: var(--ink); }
 .ib-layer-body code {
   font-family: ui-monospace, monospace; font-size: 17px; color: var(--yellow);
