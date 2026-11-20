@@ -157,11 +157,15 @@ jobs:
           registry_path=pathlib.Path(".naya/memory/smart-notes/index.json")
           registry=json.loads(registry_path.read_text()) if registry_path.exists() else {"entries":[]}
           capture=json.loads(pathlib.Path(capture_path).read_text())
+          capture_id=capture.get("capture_id")
+          if not capture_id:
+              print(f"CAPTURE_MISSING_CAPTURE_ID: {capture_path} smart_note={capture.get('smart_note_id')} - capture carries no capture_id (backfilled capture); fresh-lesson contract requires capture_id", flush=True)
+              raise SystemExit(1)
           distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
           digest=hashlib.sha256(distilled.encode()).hexdigest()
           exact=next((e for e in registry.get("entries",[]) if e.get("content_hash")==digest),None)
           resolved_connections=resolve_runtime_connections(capture,registry)
-          expected={"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled,"content_hash":digest,"resolved_connections":resolved_connections}
+          expected={"capture_path":capture_path,"capture_id":capture_id,"expected_content":distilled,"content_hash":digest,"resolved_connections":resolved_connections}
           pathlib.Path(f"smart-note-expected{sfx}.json").write_text(json.dumps(expected,indent=2,ensure_ascii=False))
           if exact:
               # WO1 fail-safe: a content-hash hit whose registry entry lacks
@@ -189,7 +193,7 @@ jobs:
               raise SystemExit("VERIFY_ONLY_REPLAY_REQUIRES_EXISTING_CANONICAL_HASH")
           request={
             "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],
-            "p_event_id":"SMART-NOTE-"+capture["capture_id"],
+            "p_event_id":"SMART-NOTE-"+capture_id,
             "p_title":capture["title"],"p_content":distilled,
             "p_category":capture.get("category","SMART_NOTE"),"p_topic":capture["topic"],
             "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET",
@@ -309,11 +313,15 @@ jobs:
 
           if capture_path:
               capture=json.loads(pathlib.Path(capture_path).read_text())
+              capture_id=capture.get("capture_id")
+              if not capture_id:
+                  print(f"CAPTURE_MISSING_CAPTURE_ID: {capture_path} smart_note={capture.get('smart_note_id')} - capture carries no capture_id (backfilled capture); fresh-lesson contract requires capture_id", flush=True)
+                  raise SystemExit(1)
               distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
               digest=hashlib.sha256(distilled.encode()).hexdigest()
               exact=next((e for e in registry.get("entries",[]) if e.get("content_hash")==digest),None)
               resolved_connections=resolve_runtime_connections(capture,registry)
-              expected={"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled,"content_hash":digest,"resolved_connections":resolved_connections}
+              expected={"capture_path":capture_path,"capture_id":capture_id,"expected_content":distilled,"content_hash":digest,"resolved_connections":resolved_connections}
               pathlib.Path("smart-note-expected.json").write_text(json.dumps(expected,indent=2,ensure_ascii=False))
               if exact:
                   # WO1 fail-safe: a content-hash hit whose registry entry lacks
@@ -341,7 +349,7 @@ jobs:
                   raise SystemExit("VERIFY_ONLY_REPLAY_REQUIRES_EXISTING_CANONICAL_HASH")
               request={
                 "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],
-                "p_event_id":"SMART-NOTE-"+capture["capture_id"],
+                "p_event_id":"SMART-NOTE-"+capture_id,
                 "p_title":capture["title"],"p_content":distilled,
                 "p_category":capture.get("category","SMART_NOTE"),"p_topic":capture["topic"],
                 "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET","p_connections":resolved_connections
