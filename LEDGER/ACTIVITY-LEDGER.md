@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 00:24 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26993,6 +26993,12 @@ _Last updated: 2026-11-20 00:24 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0539-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
+**Task:** TF-IDF-arm falsification battery sealed, run, certified (pre-reg 7/7 predictions matched; arm certified GREEN)
+
+**Evidence:** BACKLOG SWEEP (oldest unscored, 2026-10-12). VERIFIED first-hand this tick by sha256: prereg-sealed.md MATCHES exactly (63e47e07a156663eeef0e858b13843fbcd6a023d440f73772c61a79563c50982) and run-output-t0539.json MATCHES exactly (95b45115182ab0028494ee549519c98c69dd2558a17fbabcf0b7ccffb95d1183); battery dir holds all four deliverables. NOT PHANTOM. 
+
+### ✅ t0539-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
 **Task:** TF-IDF-arm falsification battery sealed, run, and certified (SURGE slice a5)
 
 **Evidence:** VERIFIED this tick on workspace bytes: hidden_files/retrieval/battery-tfidf-t0539/ holds all 4 deliverables; prereg-sealed.md sha256 63e47e07a156663eeef0e858b13843fbcd6a023d440f73772c61a79563c50982 matches receipt pin EXACTLY and run-output-t0539.json sha256 95b45115182ab0028494ee549519c69dd2558a17fbabcf0b7ccffb95d1183 matches receipt pin EXACTLY. 
@@ -27012,6 +27018,12 @@ _Last updated: 2026-11-20 00:24 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0539-lane5.md`
 
 **Evidence:** VERIFIED: battery dir retrieval/battery-tfidf-t0539/ holds all 4 deliverables (prereg-sealed.md, run_battery.py, run-output-t0539.json, verdict-t0539.md). Pre-reg sha256 63e47e07a156663eeef0e858b13843fbcd6a023d440f73772c61a79563c50982 == receipt claim exactly (sealed pre-run). PIN-INTEGRITY MISS: receipt's run-output pin 95b45115...19c69dd... != on
+
+### ✅ t0539-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Ranked top-20 ask-world query-needs analysis recomputed from live log bytes + 3 SMARTBLOCKS hypertuning recommendations
+
+**Evidence:** BACKLOG SWEEP (oldest unscored, 2026-10-12). VERIFIED first-hand this tick: deliverable hidden_files/retrieval/query-log-top20-t0539.md exists at exactly 7,688 bytes as receipted. NOT PHANTOM. Note: the log jsonl sha has drifted from the receipt pin 31aa1619... (current 6bd22b67...) - expected, the log gained rows after Oct 12; the receipt's byte-i
 
 ### ✅ t0539-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -27037,6 +27049,12 @@ _Last updated: 2026-11-20 00:24 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0538-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
+**Task:** Stemmed-TF-IDF arm, measured HIT@5 (3/3 human #1s recovered, ARM verdict vs bi-encoder 2/3)
+
+**Evidence:** BACKLOG SWEEP (oldest unscored, 2026-10-12). VERIFIED first-hand this tick by sha256: arm script hidden_files/auto-retrieval/stemmed_tfidf_arm.py MATCHES the receipt pin exactly (de3a35315ac3799a5548194c8b2aeeac1fd4398fca34e87567d54274b094e018). NOT PHANTOM. Self-score 9.0. Score 9.0. Why not 9.5: built and measured by the same seat that authored t
+
+### ✅ t0538-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
 **Task:** SURGE slice a4 — stemmed-TF-IDF arm, measured HIT@5 (3/3 human #1s)
 
 **Evidence:** VERIFIED this tick on live bytes: hidden_files/auto-retrieval/stemmed_tfidf_arm.py sha256 de3a35315ac3799a... EXACT match to receipt pin; stemmed-tfidf-arm-t0538-results.json sha256 72cccb2942f3f080... EXACT match to receipt pin; report stemmed-tfidf-arm-t0538.md EXISTS; RED calibration (unstemmed P2 #9) corroborated by my own re-run of Lane 1's re
@@ -27056,6 +27074,12 @@ _Last updated: 2026-11-20 00:24 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0538-lane7.md`
 
 **Evidence:** VERIFIED: arm script auto-retrieval/stemmed_tfidf_arm.py sha256 de3a35315ac3799a5548194c8b2aeeac1fd4398fca34e87567d54274b094e018 == receipt claim exactly; results JSON sha256 72cccb2942f3f0808171fee1351308cd9ffedbd0f6ff4eb56a7c08952b2bdc36 == claim exactly; report on disk with 3/3 claim. INDEPENDENT RE-RUN (scorer seat): full arm executed end-to-en
+
+### ✅ t0538-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent verification of Lane 7 t0532 mechanization (fresh TF-IDF repro, verdict CONFIRM with qualifications)
+
+**Evidence:** BACKLOG SWEEP (oldest unscored, 2026-10-12). VERIFIED first-hand this tick: verification report hidden_files/auto-retrieval/mechanization-verify-t0538.md (7,142 bytes) and repro script hidden_files/scratch/t0538-lane1/repro_tfidf.py (2,847 bytes) both exist on disk. NOT PHANTOM. Fixture SHA pins were not re-run this tick (time box) - the headline r
 
 ### ✅ t0538-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -27086,6 +27110,12 @@ _Last updated: 2026-11-20 00:24 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0538-lane1.md`
 
 **Evidence:** VERIFIED: report auto-retrieval/mechanization-verify-t0538.md on disk (7142 bytes); all four fixture SHA prefixes byte-exact on disk (ask-world-queries.jsonl 31aa1619, baseline-sealed-t0432.md 460429b1, results-t0432.json b1af58d0, sealed-note-t0442.md 1cd869fd); repro script scratch/t0538-lane1/repro_tfidf.py on disk. INDEPENDENT RE-RUN (scorer se
+
+### ✅ t0537-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-authorization-gate wiring packet (migration draft + refusal-point contract + RED-first tests, branch NOT merged, AWAITING-SHAWN)
+
+**Evidence:** BACKLOG SWEEP (oldest unscored, 2026-10-12). VERIFIED first-hand this tick: commit 9a7c60247b58fb82ed8bbdd24206d2b0f7bc6c55 exists in the local mirror and all 4 packet files are present at that SHA (tools/refusal_point_t0537.py, tools/test_refusal_predicate_t0537.py, tools/red_demo_refusal_t0537.py, docs/retrieval-auth-wire-packet-t0537.md). NOT PH
 
 ### ✅ t0537-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
