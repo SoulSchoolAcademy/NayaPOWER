@@ -4,7 +4,7 @@
 
 **NN-20261119-button-destinations-double-checked · Naya Note · 2026-11-19 ~20:14 MST (03:14Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Button Destinations Double-Checked (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4220 — Button Destinations Double-Checked*
 
 **Category:** Law — a standing check on every eye walk and checker
 
