@@ -1,0 +1,18 @@
+# Calendar day-view fix-18 — captain's eye, laws check (own run)
+# Date: 2026-11-20 ~16:35Z. Script: ~/workspace/team-nitro/check-design-laws.py
+# Base: brief/fix17-base.html (sha256 1f798b65… = fix-17 blob f4c05109)
+# Fixed: maker/proof/fixed-fix18.html (sha256 52ff950f… = filed blob f7b14ce7)
+
+## Own run (stdout, no file redirect — redirects landed 0 bytes in the flake window)
+- Base:  PASS — no machine-checkable violation (28 warning(s)). 0 FAIL.
+- Fixed: PASS — no machine-checkable violation (28 warning(s)). 0 FAIL.
+- Normalized diff (WARN lines with filename + line number stripped):
+  EMPTY — warning texts identical on both sides. Delta 0.
+- Note: the fixed file's warnings sit 42 lines lower (fix-18 block = 41 lines
+  + newline = 42), matching the maker/checker accounting exactly.
+
+## Result
+Laws delta 0, independently confirmed by this seat. Full WARN text is already
+filed in the round record (maker/proof/laws-base18.txt + laws-fixed18.txt,
+6,365 B + 6,393 B, in the 335-file record commit 70a142cb); these summary
+files are the eye's own run record, not a re-filing of the logs.

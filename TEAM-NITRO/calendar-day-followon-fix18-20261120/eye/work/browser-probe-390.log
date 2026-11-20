@@ -1,0 +1,47 @@
+# Calendar day-view fix-18 — captain's eye, phone-390 leg: browser probe log
+# Date: 2026-11-20 ~16:30Z (VM clock UTC). Staged blob f7b14ce7.
+# All commands run by the eye seat (f5cd2e54). No browser ever reached a page.
+
+## Probe 1 — Firefox launch (Playwright, viewport 390x844, about:blank)
+- Attempt 1: output tail showed only the close/cleanup sequence; no "alive" print.
+  (Ambiguous — re-tested rather than trusted.)
+- Attempt 2 (clean re-test): FAILED TO LAUNCH.
+  playwright Error: BrowserType.launch: Failed to launch the browser process.
+  <launched> pid=187880
+  [pid=187880][err] *** You are running in headless mode.
+  [pid=187880] <process did exit: exitCode=null, signal=SIGSEGV>
+  Result: Firefox DEAD — SIGSEGV on launch.
+
+## Probe 2 — Chromium launch (Playwright, --no-sandbox, viewport 390x844, about:blank)
+- FAILED TO LAUNCH.
+  playwright Error: BrowserType.launch: Target page, context or browser has been closed
+  Browser logs: <launching> .../chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell ...
+  Result: Chromium DEAD — browser closed on launch.
+
+## Probe 3 — localhost forwarder for Chromium (h1-proxy-forwarder.py, 127.0.0.1:18080)
+- Started with nohup; two PIDs briefly matched the grep, then both gone.
+- ss showed NOTHING listening on 18080; curl --proxy http://127.0.0.1:18080
+  https://example.com returned 000 twice ("probe2 failed").
+- Forwarder log (eye/work/forwarder-eye.log) is 0 bytes — the process died
+  without output.
+  Result: forwarder DEAD — no listener, no log.
+
+## Probe 4 — staged-link fetch (curl, browser User-Agent, 2 attempts)
+- Attempt 1 (to /tmp/eye18-staged.html): HTTP 200, curl -w size_download 3479B —
+  file landed 0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 (empty).
+- Attempt 2 (to eye/work/staged-eye.html): HTTP 200, size_download 3488B —
+  file landed 0 bytes, same empty sha256.
+  Result: staged bytes NOT independently verified by this seat — the downloads
+  landed 0 bytes in the active EPERM/flake window. The checker's staged
+  verification (CHECKER-REPORT.md §1: HTTP 200, 413,386 B, sha256 52ff950f…
+  = filed blob) stands as the checker's evidence, not the eye's.
+
+## Environment note (same window)
+- Node writeFileSync EPERM on eye/work/laws-eye-*.txt (0-byte landings);
+  python redirect writes also landed 0 bytes. The flake hits python AND node
+  writes in this window; file-tool writes land.
+- Conclusion: BOTH VM browsers dead in this window (Firefox SIGSEGV,
+  Chromium closed on launch), forwarder dead, staged fetch flaking 0-byte.
+  The 390 leg is BLOCKED ON ENVIRONMENT, not on the page. Per the captain's
+  instruction: stop, report the block plainly, do not claim the checker's
+  390 leg, do not guess.
