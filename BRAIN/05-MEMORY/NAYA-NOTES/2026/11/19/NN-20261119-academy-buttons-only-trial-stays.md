@@ -4,7 +4,7 @@
 
 **NN-20261119-academy-buttons-only-trial-stays · Naya Note · 2026-11-19 ~21:02 MST (04:02Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Academy Buttons: Only Start Your Free Trial Stays (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4231 — Academy Buttons: Only Start Your Free Trial Stays*
 
 **Category:** Design — one button, one way in
 
