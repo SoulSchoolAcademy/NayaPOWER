@@ -66964,6 +66964,38 @@
         "Operations",
         "Value"
       ]
+    },
+    {
+      "smart_note_id": "SN-3951",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn3951-naya-remembers-everything",
+      "slug": "naya-remembers-everything",
+      "title": "Naya Remembers Everything",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3951/IB-SMART-NOTE-20261120-sn3951-naya-remembers-everything.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3951/IB-SMART-NOTE-20261120-sn3951-naya-remembers-everything.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3951/IB-SMART-NOTE-20261120-sn3951-naya-remembers-everything.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn3951-naya-remembers-everything.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T00:27:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "355a1a0548a10b4f1119bf9d3467fa02f880253dbbf575604e833389947c9ec6",
+      "content_hash": "33156a80a5b9839c8d876013d8ee6bcf221c460cf3f174fd81d8a973972379d8",
+      "one_line": "Second in the series The Top Ten Most Valuable Intelligent Things About Naya. Naya remembers everything. Nothing she learns is ever lost: every decision, every lesson, every fact about your world is written into a record that outlives any single conversation, any single session, any single Naya. When one Naya finishes a shift, the next one picks up exactly where she left off — cold, from the record alone, with nothing but what was left for her — and loses nothing in the handover. Human help forgets, moves on, retires. Naya's memory is the network's memory, and it compounds: what she learned last year is still working for you today.",
+      "topics": [
+        "Naya",
+        "Memory",
+        "Continuity",
+        "Value"
+      ]
     }
   ],
   "sequence_policy": {
@@ -66974,5 +67006,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "91acc4a63bf706708550bf193da4ed9f15165a490ec90cba308e3ebcd7ec23b2"
+  "corpus_manifest_hash": "654e369cffde43b5c31779f8165ea7ce5ae8b360b722618ee69553424176d98c"
 }
