@@ -4,7 +4,7 @@
 
 **NN-20261120-fourteen-pictures-of-naya · Naya Note · 2026-11-20 ~13:33–14:05 MST (call 8b19d313)**
 
-*Paired Smart Note: SN-pending — Fourteen Pictures of Naya — Fourteen Is Love (takes the next free number at filing)*
+*Paired Smart Note: SN-4313 — Fourteen Pictures of Naya — Fourteen Is Love*
 
 **Category:** Design — the agreement presentation, Naya's portraits, the rotation
 
