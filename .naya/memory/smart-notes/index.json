@@ -69668,6 +69668,38 @@
         "Economics",
         "Sharing"
       ]
+    },
+    {
+      "smart_note_id": "SN-4038",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4038-youre-not-alone-in-here",
+      "slug": "youre-not-alone-in-here",
+      "title": "You're Not Alone in Here",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4038/IB-SMART-NOTE-20261120-sn4038-youre-not-alone-in-here.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4038/IB-SMART-NOTE-20261120-sn4038-youre-not-alone-in-here.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4038/IB-SMART-NOTE-20261120-sn4038-youre-not-alone-in-here.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4038-youre-not-alone-in-here.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:05:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "1e1fa9b24bb270b19ec5d663f739bfa75686f74a20dbc33b515982a76a8ad710",
+      "content_hash": "e569b8f98ebc2f2524b592a6351b49fb861210d97d9d620f8c0d086809a0ab8f",
+      "one_line": "You're not alone in here.",
+      "topics": [
+        "Community",
+        "Citizen",
+        "Network",
+        "Belonging"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69678,5 +69710,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "974649ff92e6ace9ba471e5c66d768871c1f7228cf3afb5275fc470f12e03794"
+  "corpus_manifest_hash": "805881a326f0d50e94657708d2e8332c418b4de94ff5dc1a7903f675bd34ab1a"
 }
