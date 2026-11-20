@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4332",
+ "intelligence": {
+  "title": "SN-4332 — A Bill of Rights, Not a Bill of Restrictions",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4332-a-bill-of-rights-not-restrictions",
+  "smart_note_id": "SN-4332",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4332/IB-SMART-NOTE-20261120-sn4332-a-bill-of-rights-not-restrictions.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "His philosophy, stated on the call: \"If you want to create a great economy or a great nation, what you want is a bill of rights not a bill of restrictions. The Clarity Act was 630 pages and it was a bill of restrictions… probably 620 pages were restrictions.\" He wants a bill of rights, not a bill of restrictions. The Clarity Act as it stands is 630 pages, and by his count probably 620 of them are restrictions — the shape of a document built backwards. A founding document that grants and protects is the shape of a great economy or a great nation; a founding document that forbids, page after page, is the shape of a system that does not trust its own people.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4332",
+   "title": "SN-4332 — A Bill of Rights, Not a Bill of Restrictions",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4332/IB-SMART-NOTE-20261120-sn4332-a-bill-of-rights-not-restrictions.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4332/IB-SMART-NOTE-20261120-sn4332-a-bill-of-rights-not-restrictions.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

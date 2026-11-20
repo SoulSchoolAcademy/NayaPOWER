@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4329",
+ "intelligence": {
+  "title": "SN-4329 — Did You Actually Do the Optimizations?",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4329-did-you-actually-do-the-optimizations",
+  "smart_note_id": "SN-4329",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4329/IB-SMART-NOTE-20261120-sn4329-did-you-actually-do-the-optimizations.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "\"Did you actually do the optimizations?\" His question, answered honestly with a fresh meter reading: 22% used, 7.8B left — against 21% at 13:53Z, about one point in about an hour, consistent with ~100M tokens an hour. His feeling is right: the burn feels like ~100M an hour because it is. VERIFIED DONE: AGENTS-ULTIMATE.md (11,040 B, 09:25) + THE-OFFICIAL-PARTS.md (10,720 B, 09:37); slim briefs per the Layered Context Law (maker ~5K, checker ~3K, eye ~2K); diff-based checkers (the fix-1e checker read 65/−30 lines); whole-list rounds (fix-1e, 12 items, one round). VERIFIED NOT DONE: the captain's own wake still loads the FULL ~/MEMORY.md (897,681 B) + ~/AGENTS.md (249,069 B) — ~288K tokens before any work, the biggest burn slice, and the distilled file existing does not stop the injection (a system change, not a file edit); eyes still took dozens of screenshots (85 in one Round 2 eye) against the 12 rule; loops still run on the clock (PI refresh 15 min, VPM hourly); the Dashboard token pie (ordered 09:10) is still not built on the Dashboard (chat widgets only). The optimizations slowed the burn; they did not stop it.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4329",
+   "title": "SN-4329 — Did You Actually Do the Optimizations?",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4329/IB-SMART-NOTE-20261120-sn4329-did-you-actually-do-the-optimizations.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4329/IB-SMART-NOTE-20261120-sn4329-did-you-actually-do-the-optimizations.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

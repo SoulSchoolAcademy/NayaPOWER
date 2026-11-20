@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4330",
+ "intelligence": {
+  "title": "SN-4330 — His Eye Is the Check",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4330-his-eye-is-the-check",
+  "smart_note_id": "SN-4330",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4330/IB-SMART-NOTE-20261120-sn4330-his-eye-is-the-check.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "His challenge first: \"What are you reviewing in the hub? Why are you reviewing it again? But it's not completed, so if you're wasting time and tokens to take screenshots of the hub when it's not completed, what's the point of that?\" Then his ruling: \"Well, it used to be setting them if you're spending that much tokens to have them check you should just have me check.\" **Agent eye-checks (screenshot walks) STOP — Shawn checks the pages himself.** Bring the staged link to him and he judges. Both fix-1e eye windows were CLOSED on his order (b4f45ede mobile leg + 992beea9 desktop leg). The same applies to the agreement build when it lands: no eye walk, straight to him. No agent eye walk unless he asks for one. This ruling SUPERSEDES the 12-screenshot cap and the agent eye walks. His reason, in his words: the checker and eye seats never propose anything — \"They never say, hey, we should do this. We should do that.\" — they verify what is there instead of thinking ahead with him. And the standing check rule from the same call: **ALWAYS BOTH** — every check covers mobile AND desktop, always both; no mobile-only or desktop-only check ever again.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4330",
+   "title": "SN-4330 — His Eye Is the Check",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4330/IB-SMART-NOTE-20261120-sn4330-his-eye-is-the-check.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4330/IB-SMART-NOTE-20261120-sn4330-his-eye-is-the-check.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
