@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20989,6 +20989,12 @@ _Last updated: 2026-11-20 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: auto-retrieval/ask-world-queries.jsonl exists, full sha256 08f3662c..61256 MATCHES (byte-identical to t0616 pin, zero rows appended); analysis auto-retrieval/ask-world-needs-t0643.md exists, full sha256 162fa906..b9998 MATCHES. Honest refusal of ranks 16-20 (only 15 distinct needs), named gaps. Why not 9.5: single-seat parse (no different
 
+### ✅ t0643-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Lesson-injection contract v1 second-seat review -> CANDIDATE-AMENDED (3 blocking, 3 non-blocking)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED this tick: auto-retrieval/lesson-injection-contract-v1-candidate.md sha256 bace1e70578fe5ef MATCHES receipt pin prefix (receipt gives full sha bace1e70578fe5ef408ff9259cb59cd2a811c8e80ceb4b4614d6edf769622364); review auto-retrieval/lesson-injection-contract-v1-review-t0643.md exists. NOT PHANTOM. Self-score 9.0, agreed. Why 
+
 ### ✅ t0643 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** lesson-injection contract v1 independent review -> CANDIDATE-AMENDED
@@ -21005,6 +21011,12 @@ _Last updated: 2026-11-20 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: contract auto-retrieval/lesson-injection-contract-v1-candidate.md exists, full sha256 bace1e70..622364 MATCHES claim; review file auto-retrieval/lesson-injection-contract-v1-review-t0643.md exists. Byte-verified verdict cells (M1-M6, F1-F8, 3 blocking amendments), honest gaps named. Why not 9.5: third-seat adjudication of the A1 two-prong
 
+### ✅ t0643-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Arm E (entailment) sealed second-seat execution -> FAIL (E_cleared 0/3 < T_banked 3/3)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED this tick: scratch-t0643-lane1/prereg-t0643-lane1.json sha256 4c688567f4d73b0e MATCHES receipt pin; instrument auto-retrieval/t0601_entailment_arm.py sha256 2c256920d8a3918c MATCHES; verdict auto-retrieval/verdict-t0643-arme-entailment.md, raw results and run log exist. NOT PHANTOM. Self-score 9.0, agreed. Why not 9.5: singl
+
 ### ✅ t0643 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Arm E (entailment) sealed second-seat execution -> FAIL
@@ -21020,6 +21032,12 @@ _Last updated: 2026-11-20 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0643-lane1.md`
 
 **Evidence:** VERIFIED: scratch-t0643-lane1/ all present; prereg sha prefix 4c688567f4d73b0e EXACT match to receipt; prereg mtime 15:35:25 UTC < results 15:37:21 UTC (seal-before-run holds); results JSON prereg_sha16 matches prereg file; 4/4 pins re-derived; verdict file auto-retrieval/verdict-t0643-arme-entailment.md numbers match receipt exactly (E_cleared=0, 
+
+### ✅ t0642-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** W2/W4 evidence attachment + t0637 migration packet second-seat verdict (wiring-not-merge, byte no-op)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED this tick: retrieval/auth-gate-migration-verdict-t0631-CANDIDATE.md sha256 ff150714eae3e1a1 MATCHES receipt pin; second-seat verdict retrieval/auth-gate-migration-verdict-secondseat-t0642.md exists on disk. NOT PHANTOM. Self-score 9.0, agreed. Why not 9.5: single seat (second on the packet but one set of eyes); 25-test suite
 
 ### ✅ t0642 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -21045,6 +21063,12 @@ _Last updated: 2026-11-20 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: second-seat verdict retrieval/auth-gate-migration-verdict-secondseat-t0642.md exists on disk; branch e654f16e8a49e9a26309fd852695a0bef202673d matches git ls-remote ref heads/naya/five-retrieval-auth-gate-t942 byte-for-byte; receipt's upgrade claim (merge-is-a-no-op via git diff byte-identical on 4 gate files) is a mechanical, checkable re
 
+### ✅ t0642-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Injection-proof dry-fire: title-echo demonstrated 3/3, F5 conditional, F8 tripped by design
+
+**Evidence:** BACKLOG SWEEP. VERIFIED this tick: auto-retrieval/injection-proof-dryfire-t0642.md sha256 a5bc2a501b687715 MATCHES receipt pin exactly; strip driver auto-retrieval/dryfire-t0642/strip_picks.py and outputs/ exist with stripped briefs. NOT PHANTOM. Self-score 9.0, agreed. Why not 9.5: single seat (decision-change N calls unconfirmed by a second seat)
+
 ### ✅ t0642 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Injection-proof dry-fire: frozen prototype full vs stripped on 3 live briefs, title-echo demonstrated 3/3
@@ -21068,6 +21092,12 @@ _Last updated: 2026-11-20 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0642-lane2.md`
 
 **Evidence:** VERIFIED: verdict file auto-retrieval/injection-proof-dryfire-t0642.md exists with sha256 prefix a5bc2a501b687715 EXACT match to receipt's claim; stripped-run evidence: P3 title-echo demonstrated 3/3 full vs 0/3 stripped; F5 echo on leaky queries / production path clean by construction; F8 tripped-by-design. Why not 9.5: the three decision-change N
+
+### ✅ t0642-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Wave-order verdict third-seat confirm (ADOPT 0-1-2-3-4, Wave 1+2 amend-with-repair)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED this tick: verdict doc retrieval/auth-gate-wave-order-verdict-t0638-CANDIDATE.md sha256 823534c3eb001d15 MATCHES receipt pin; plan retrieval-authgate-stamping-migration-plan-t0626.md sha256 91c797fd228c9702 MATCHES receipt pin; confirm doc retrieval/auth-gate-wave-order-confirm-t0642.md exists. NOT PHANTOM. Self-score 9.0, a
 
 ### ✅ t0642 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
