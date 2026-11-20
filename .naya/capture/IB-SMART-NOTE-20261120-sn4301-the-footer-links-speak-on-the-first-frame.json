@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4301",
+ "intelligence": {
+  "title": "SN-4301 — The Footer Links Speak on the First Frame",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4301-the-footer-links-speak-on-the-first-frame",
+  "smart_note_id": "SN-4301",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4301/IB-SMART-NOTE-20261120-sn4301-the-footer-links-speak-on-the-first-frame.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The ten policy links sit at the very bottom of the first frame — a small scroll down to see them. Each one uses the same intelligent-board language inside the frame to speak the intelligence of its own page. And every link on the first screen is checked by actually following it.",
+  "human_view": "",
+  "simple_view": "At the bottom of the first screen there are ten little doors — Terms, Privacy, Cookies, and the rest. Each door opens to a page that speaks in the same glowing board voice. We check every door by walking through it, not by looking at it.",
+  "grandma_view": "At the foot of the first page, in small print, are the ten promises — the rules, the privacy, the refunds, the young citizens. Each one opens into a page that reads in the same beautiful lit-up way. We test each one by opening it, the way you would test a door by turning its handle.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4301",
+   "title": "SN-4301 — The Footer Links Speak on the First Frame",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4301/IB-SMART-NOTE-20261120-sn4301-the-footer-links-speak-on-the-first-frame.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4301/IB-SMART-NOTE-20261120-sn4301-the-footer-links-speak-on-the-first-frame.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

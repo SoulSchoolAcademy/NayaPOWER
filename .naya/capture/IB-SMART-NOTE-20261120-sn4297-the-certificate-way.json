@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4297",
+ "intelligence": {
+  "title": "SN-4297 — The Certificate Way — The Old Way Bar and the Ask Naya Font",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4297-the-certificate-way",
+  "smart_note_id": "SN-4297",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4297/IB-SMART-NOTE-20261120-sn4297-the-certificate-way.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Two things he already has are the standard, and both are reused exactly, not redesigned. First, the Old Way bar — the black bar with the crystal N orb top-left, \"NAYANET\" under it, \"The Old Way\" glowing white dead centre, her circular photo top-right with \"NAYA\" — reuse that bar exactly. The logo and her face must be big enough to actually see, NAYA sits BESIDE her picture, not underneath, less glow in the middle, lit up, elegant and pro, like the headliner of a real live show. The certificate is the second reference: its picture-lights-up feel and edge light and shimmer are the standard for the frame and the buttons. Second, the font: the Ask Naya answer text is the best font he has seen — use that exact font for the presentation text. The gold text goes; all beautiful lit-up writing, like a manuscript. \"What we have is good. You just gotta reuse it\" — fonts included.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4297",
+   "title": "SN-4297 — The Certificate Way — The Old Way Bar and the Ask Naya Font",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4297/IB-SMART-NOTE-20261120-sn4297-the-certificate-way.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4297/IB-SMART-NOTE-20261120-sn4297-the-certificate-way.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

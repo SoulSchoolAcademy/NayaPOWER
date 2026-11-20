@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4307",
+ "intelligence": {
+  "title": "SN-4307 — Ask Naya's Font Is the Manuscript Font",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4307-ask-nayas-font-is-the-manuscript-font",
+  "smart_note_id": "SN-4307",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4307/IB-SMART-NOTE-20261120-sn4307-ask-nayas-font-is-the-manuscript-font.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The best font he has seen anywhere in the system is Ask Naya's answer text. That is the font for the storybook writing. The gold text goes; in its place, all beautiful lit-up writing, like a manuscript. What we have is good — reuse it, do not invent a new font.",
+  "human_view": "",
+  "simple_view": "The words should look like writing in a beautiful old book — bright, clear, and glowing softly. No gold letters. The font Ask Naya uses is the prettiest one, so we use that same one everywhere in the story.",
+  "grandma_view": "Imagine opening a lovely illuminated manuscript — the words glow on the page and are easy to read. That is how the story should feel. We already have that beautiful lettering in Ask Naya; we simply use it again.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4307",
+   "title": "SN-4307 — Ask Naya's Font Is the Manuscript Font",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4307/IB-SMART-NOTE-20261120-sn4307-ask-nayas-font-is-the-manuscript-font.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4307/IB-SMART-NOTE-20261120-sn4307-ask-nayas-font-is-the-manuscript-font.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

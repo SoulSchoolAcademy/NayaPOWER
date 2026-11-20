@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4295",
+ "intelligence": {
+  "title": "SN-4295 — You Didn't Fix the Player",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4295-you-didnt-fix-the-player",
+  "smart_note_id": "SN-4295",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4295/IB-SMART-NOTE-20261120-sn4295-you-didnt-fix-the-player.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "He walked it himself and corrected the claim: the player is NOT fixed. The actual PowerCast player is not in there, the video does not play, the audio does not play the actual audio he gave, the next slide shows no image, the text does not present well in its little space, and the layout does not use enough space. The visual voice — the player on the PowerCast page — is the most impressive, most iconic piece on the page, and it was not there at all. His order stands: take the LITERAL player from `https://powercasts.nayapower.workers.dev` and put it in the frame; do not rebuild a lookalike. Nothing is called fixed until a full-width walk passes after the correction.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4295",
+   "title": "SN-4295 — You Didn't Fix the Player",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4295/IB-SMART-NOTE-20261120-sn4295-you-didnt-fix-the-player.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4295/IB-SMART-NOTE-20261120-sn4295-you-didnt-fix-the-player.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4306",
+ "intelligence": {
+  "title": "SN-4306 — The Old Way Bar — Her Face Big Enough to See",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4306-the-old-way-bar-her-face-big-enough-to-see",
+  "smart_note_id": "SN-4306",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4306/IB-SMART-NOTE-20261120-sn4306-the-old-way-bar-her-face-big-enough-to-see.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The top bar he likes is the Old Way: the logo on one side and her picture on the other, both big enough to actually see. \"NAYA\" sits beside her picture, never underneath it. Less glow in the middle, lit up, elegant and pro — she is the headliner of the show, the way the certificate's picture lights up like a real live show.",
+  "human_view": "",
+  "simple_view": "The bar at the top has her picture and the logo, both big, so you can really see her face. Her name sits next to her picture, not under it. It glows softly, like the curtain going up on a show, and she is the star of it.",
+  "grandma_view": "Think of the top of the page like the top of a theatre stage. Her picture is large and clear, her name beside it, the little N logo shining on the other side. It feels alive and grand, not small and dim — you can see her smile the moment the page opens.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4306",
+   "title": "SN-4306 — The Old Way Bar — Her Face Big Enough to See",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4306/IB-SMART-NOTE-20261120-sn4306-the-old-way-bar-her-face-big-enough-to-see.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4306/IB-SMART-NOTE-20261120-sn4306-the-old-way-bar-her-face-big-enough-to-see.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
