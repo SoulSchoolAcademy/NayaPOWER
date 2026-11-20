@@ -3539,7 +3539,7 @@ window.NayaRuntime = Runtime;
         if(!notes.some(n=>String(n.id)===String(item.id))){
           const nutLayer={name:'In A Nutshell',key:'IN A NUTSHELL',tier:'primary',body:item.summary};
           nutLayer.color='white';
-          notes.push({id:item.id,title:item.title,subtitle:'',created:item.created_at,created_at:item.created_at,topics:['Smart Notes'],topic:'Smart Notes',category:'Smart Note',tone:'purple',icon:'note',kind:'smart-note',personal:false,machine:'',images:[],imageLayout:'bottom',layers:[nutLayer]});
+          notes.push({id:item.id,title:item.title,subtitle:'',created:item.created_at,created_at:item.created_at,topics:['Smart Notes'],topic:'Smart Notes',category:'Smart Note',tone:'purple',icon:'note',kind:'smart-note',personal:false,machine:'',images:[],imageLayout:'bottom',layers:[nutLayer],__soloFetched:true});
         }
       }catch(e){}
       return item;
@@ -4422,6 +4422,11 @@ window.NayaContent = {
       if(timer) clearTimeout(timer);
       if(!d || !Array.isArray(d.notes) || !d.notes.length) throw new Error('live feed empty');
       d.notes.forEach(function(n){ if(!n.topics || !n.topics.length){ var _t=n.category||n.topic; n.topics=_t?[_t]:[]; } });
+      /* FOLLOW-UP 13 (item 1): keep solo-fetched notes across the registry swap (see fetchLive). */
+      try {
+        var _oldLive = (window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || [];
+        _oldLive.forEach(function(n){ if (n && n.__soloFetched && !d.notes.some(function(x){ return x && x.id === n.id; })) d.notes.push(n); });
+      } catch (e) {}
       window.NayaFeedIntelligence = { notes: d.notes, ref: 'live-registry' };
       try {
         if (window.NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }
@@ -4604,6 +4609,30 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
       github_path: r.github_path || '', layers: layers
     };
   }
+  /* FOLLOW-UP 13 (item 1): the solo-note fetch. The solo route used to read only
+     the loaded notes, so a note outside the live 200-slice hung on "Opening your
+     note…" forever — the live test recognised only 'live-registry' while the
+     Supabase loader sets 'live-supabase', and the 15s poll wiped any note the
+     search had fetched. The solo view now fetches its own note by SN number with
+     the same converter the feed uses, so the board it renders is the feed's board,
+     whole. 15s abort; resolves {note,error} — never rejects, never hangs. */
+  window.NayaFetchSoloNote = function(slug){
+    var m = String(slug || '').match(/sn-?(\d+)/i);
+    if (!m) return Promise.resolve({ note: null, error: false });
+    var num = String(parseInt(m[1], 10));
+    var ctl = null, timer = null;
+    try { ctl = new AbortController(); } catch (e) {}
+    if (ctl) { timer = setTimeout(function(){ try { ctl.abort(); } catch (e) {} }, 15000); }
+    var q = '/rest/v1/hub_smart_notes?select=id,ib_id,title,nutshell,human_note,child_note,grandma_note,naya_note,machine_note,what_it_means,whats_in_it_for_you,how_it_applies,source,author,github_path,created_at,note_created&ib_id=ilike.*sn' + num + '*&limit=5';
+    var p = ctl ? fetch(CFG.url + q, { signal: ctl.signal, headers: headers() }) : fetch(CFG.url + q, { headers: headers() });
+    return p.then(function(r){ if (!r.ok) throw new Error('solo fetch ' + r.status); return r.json(); }).then(function(rows){
+      if (timer) clearTimeout(timer);
+      if (!rows || !rows.length) return { note: null, error: false };
+      var note = hubRowToNote(rows[0]);
+      note.__soloFetched = true;
+      return { note: note, error: false };
+    }).catch(function(){ if (timer) clearTimeout(timer); return { note: null, error: true }; });
+  };
   function nnRowToNote(r){
     /* SMART NOTE FORMAT (2026-11-17): markdown images in the body become the
        note's 16:9 image set (bottom by default — see intelBoard); they are
@@ -4683,6 +4712,13 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
       notes = notes.filter(function(n){ if (seen[n.id]) return false; seen[n.id]=1; return true; });
       notes.sort(function(a,b){ return Date.parse(b.created_at||b.created||'') - Date.parse(a.created_at||a.created||''); });
       notes = notes.slice(0, 200);
+      /* FOLLOW-UP 13 (item 1): a solo-fetched note survives the 15s poll — the poll
+         replaces the whole list, and without this it wiped the note the search had
+         just fetched, dropping an open solo board back to "Opening your note…". */
+      try {
+        var _oldNotes = (window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || [];
+        _oldNotes.forEach(function(n){ if (n && n.__soloFetched && !notes.some(function(x){ return x && x.id === n.id; })) notes.push(n); });
+      } catch (e) {}
       window.NayaFeedIntelligence = { notes: notes, ref: 'live-supabase' };
       try { applyNoteSeo(notes); } catch(e){}
       var newestMs = notes.length ? Date.parse(notes[0].created_at || notes[0].created || '') : 0;
@@ -7596,6 +7632,26 @@ function pcCardWithConnect(p, live){
   return base.slice(0, at)+pctHtml+'</div><div class="pc-card-acts">'+btns+'</div>'+base.slice(at+6);
 }
 
+ function pcCatOf(p){ var m=String((p&&p.nut)||'').match(/^([A-Z]+) — /); return m?m[1]:null; }
+ function pcRenderCatChips(cats, active){
+   var list=document.getElementById('hubPeopleList'); if(!list||!list.parentNode) return;
+   var box=document.getElementById('pcCatChips');
+   if(!box){ box=document.createElement('div'); box.id='pcCatChips'; box.className='pc-cat-chips'; list.parentNode.insertBefore(box, list); }
+   var firstByCat={};
+   (window.PC_RAIL_LIVE||[]).concat(window.PC_RAIL_SEED||[]).forEach(function(p){ var c=pcCatOf(p); if(c && !firstByCat[c]) firstByCat[c]=p.alias; });
+   box.innerHTML='';
+   cats.forEach(function(c){
+     var b=document.createElement('button');
+     b.type='button'; b.className='pc-cat-chip'+(c===active?' active':'');
+     b.textContent=c;
+     var col='#8e24aa';
+     try { if(c!=='All' && typeof pcColorFor==='function' && firstByCat[c]) col=pcColorFor(firstByCat[c]); } catch(e){}
+     b.style.setProperty('--cc', col);
+     b.setAttribute('aria-pressed', c===active?'true':'false');
+     b.addEventListener('click', function(){ window.PC_RAIL_CAT=c; window.pcRenderRailForTab(window.PC_RAIL_TAB||'personal'); });
+     box.appendChild(b);
+   });
+ }
 window.pcRenderRailForTab=function(tab){
   var list=document.getElementById('hubPeopleList'); if(!list) return;
   if(typeof pcHideRailPop==='function'){ try{ pcHideRailPop(); }catch(e){} }
@@ -7607,6 +7663,18 @@ window.pcRenderRailForTab=function(tab){
     var has=function(p){ return ((p.alias||'')+' '+((p.nut||''))).toLowerCase().indexOf(q)>=0; };
     live=live.filter(has); standing=standing.filter(has);
   }
+  /* FOLLOW-UP 13 (item 15): contacts auto-categorize like the feed — the category
+     is the lane word the contact already carries before " — " in their nut
+     (LEARN, KNOW, …); a nut with no lane word has no category and shows under
+     All. Chips auto-create from the contacts on screen; click one and the rail
+     shows only that category. */
+  var cat=window.PC_RAIL_CAT||'All';
+  var cats=['All'];
+  live.concat(standing).forEach(function(p){ var c=pcCatOf(p); if(c && cats.indexOf(c)<0) cats.push(c); });
+  if(cats.indexOf(cat)<0){ cat='All'; window.PC_RAIL_CAT='All'; }
+  live=live.filter(function(p){ return cat==='All' || pcCatOf(p)===cat; });
+  standing=standing.filter(function(p){ return cat==='All' || pcCatOf(p)===cat; });
+  pcRenderCatChips(cats, cat);
   var html='';
   if(live.length) html+='<p class="pc-rail-sec">'+pcTr('Live matches')+'</p>'+live.map(function(p){ return pcCardWithConnect(p, true); }).join('');
   if(standing.length) html+=standing.map(function(p){ return pcCardWithConnect(p, false); }).join(''); /* HEADER-V2 2026-11-14: no Standing section header. */
@@ -9362,29 +9430,72 @@ window.NayaJewels = (() => {
     back.setAttribute('aria-label', 'Back to Hub feed');
     back.style.cssText = 'display:inline-block;margin:18px 0 16px;padding:9px 16px;border:1px solid #ffffff2e;border-radius:999px;color:#fff;text-decoration:none;font-size:17px;';
     wrap.appendChild(back);
-    var live = window.NayaFeedIntelligence && window.NayaFeedIntelligence.ref === 'live-registry';
+    /* FOLLOW-UP 13 (item 1): the solo route fetches its own note. The old code only
+       searched the loaded notes: a note outside the live 200-slice showed
+       "Opening your note…" forever, because the live test recognised only
+       'live-registry' while the Supabase loader sets 'live-supabase' — and the 15s
+       poll wiped any note the search had fetched. A failed fetch shows the error +
+       retry below, never a silent hang. A slug with no SN number and no landed feed
+       still waits for the feed, as before — its hashchange re-renders this view. */
+    var live = window.NayaFeedIntelligence && (window.NayaFeedIntelligence.ref === 'live-registry' || window.NayaFeedIntelligence.ref === 'live-supabase');
     var note = findNoteBySlug(slug);
     if (note) {
       document.title = (note.title || ('Smart Note ' + String(slug).toUpperCase())) + ' — NayaNET';
       wrap.appendChild(intelBoard(note, 0, 'collective'));
-    } else if (!live) {
-      // The live feed hasn't landed yet — it arrives shortly and its
-      // hashchange re-renders this view. Never flash "not found" for a
-      // note that is simply still loading.
-      document.title = 'Smart Note ' + String(slug).toUpperCase() + ' — NayaNET';
-      var loading = el('div', 'note-loading');
-      loading.style.cssText = 'padding:28px 0;color:var(--muted);font-size:17px;';
+      return wrap;
+    }
+    var loading = el('div', 'note-loading');
+    loading.style.cssText = 'padding:28px 0;color:var(--muted);font-size:17px;';
+    loading.textContent = 'Opening your note\u2026';
+    document.title = 'Smart Note ' + String(slug).toUpperCase() + ' — NayaNET';
+    var hasSn = /sn-?\d+/i.test(String(slug || ''));
+    if (!hasSn && !live) { wrap.appendChild(loading); return wrap; }
+    fillSolo();
+    return wrap;
+    function fillSolo(){
+      if (loading.parentNode !== wrap) wrap.appendChild(loading);
       loading.textContent = 'Opening your note\u2026';
-      wrap.appendChild(loading);
-    } else {
+      var fetchSolo = window.NayaFetchSoloNote;
+      if (typeof fetchSolo !== 'function') { showMissing('fetch'); return; }
+      if (!hasSn) { showMissing('gone'); return; }
+      fetchSolo(slug).then(function(res){
+        if (!wrap.isConnected) return;
+        var fetched = res && res.note;
+        if (fetched) {
+          document.title = (fetched.title || ('Smart Note ' + String(slug).toUpperCase())) + ' — NayaNET';
+          try {
+            var notes = (window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || [];
+            if (!notes.some(function(n){ return String(n.id) === String(fetched.id); })) notes.push(fetched);
+          } catch (e) {}
+          if (loading.parentNode === wrap) wrap.replaceChild(intelBoard(fetched, 0, 'collective'), loading);
+        } else { showMissing(res && res.error ? 'fetch' : 'gone'); }
+      });
+    }
+    function showMissing(kind){
+      if (!wrap.isConnected) return;
       document.title = 'Note not found — NayaNET';
       var missing = el('div', 'room-head');
-      missing.innerHTML = '<div class="kicker">SMART NOTE</div>' +
-        '<h2>That note isn\u2019t here.</h2>' +
-        '<p>We couldn\u2019t find Smart Note ' + esc(String(slug)) + ' in the Hub feed. It may have been retired — head back to the Hub and keep exploring.</p>';
-      wrap.appendChild(missing);
+      if (kind === 'fetch') {
+        missing.innerHTML = '<div class="kicker">SMART NOTE</div>' +
+          '<h2>That note couldn\u2019t open.</h2>' +
+          '<p>We couldn\u2019t reach Smart Note ' + esc(String(slug)) + ' just now. Check your connection and try again — your place is kept.</p>';
+      } else {
+        missing.innerHTML = '<div class="kicker">SMART NOTE</div>' +
+          '<h2>That note isn\u2019t here.</h2>' +
+          '<p>We couldn\u2019t find Smart Note ' + esc(String(slug)) + ' in the Hub feed. It may have been retired — head back to the Hub and keep exploring.</p>';
+      }
+      var retry = el('button', 'note-retry');
+      retry.type = 'button';
+      retry.textContent = 'Try again';
+      retry.style.cssText = 'display:inline-block;margin:16px 0;padding:9px 16px;border:1px solid #ffffff2e;border-radius:999px;color:#fff;background:#050607;font-size:17px;cursor:pointer;';
+      retry.addEventListener('click', function(){
+        if (missing.parentNode === wrap) wrap.replaceChild(loading, missing);
+        if (retry.parentNode) retry.parentNode.removeChild(retry);
+        fillSolo();
+      });
+      if (loading.parentNode === wrap) wrap.replaceChild(missing, loading); else wrap.appendChild(missing);
+      wrap.appendChild(retry);
     }
-    return wrap;
   }
 
 
@@ -14078,6 +14189,11 @@ window.NayaSmartBar = {
       if (!_hubAtBottom() || _hubBarOff()) return;
       document.body.classList.remove('os-bottom-hidden');
       _hubBarShownOnce = true; _hubBarAutoShown = true; _hubBarUserHidden = false;
+      /* FOLLOW-UP 13 (item 7): the left rail is its own scrollport — its footer
+         sits below the fold, half-cut by the bar. When the bar pops at the very
+         bottom, bring the rail's own bottom into view so all three footer lines
+         read clear of the bar. The rail stays where the reader leaves it. */
+      try { var _railL = document.querySelector('.rail.left'); if (_railL) _railL.scrollTo({ top: _railL.scrollHeight, behavior: 'auto' }); } catch (e) {}
       if (typeof _hubSyncB3Hide === 'function') { try { _hubSyncB3Hide(); } catch (e) {} }
     }, 1000);
   }
@@ -14310,6 +14426,18 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide { bottom: 200px; }
    1920 collapsed -> circle right 12px; 1200 drawer-open -> right 304px,
    clear of the people cards; 390 drawer-open -> display none. */
 </style>
+<style id="hub-followup13-20261119">
+/* ——— FOLLOW-UP 13 20261119 — item 15: contacts auto-categorize like the feed.
+   Chips auto-create from the lane word each contact already carries in their
+   nut; click one and the rail shows only that category. Treatment harvested
+   from the Smart Tabs (.smart-tab): obsidian pill, white rim at rest, rim +
+   outside halo in the chip's own colour when active. 17px white text. */
+.pc-cat-chips{display:flex;flex-wrap:wrap;gap:8px;padding:2px 0 12px;}
+.pc-cat-chip{border:1.5px solid rgba(255,255,255,.9);background:#050607;color:#fff;font-size:17px;font-family:inherit;padding:8px 14px;border-radius:999px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.5);}
+.pc-cat-chip:hover{transform:translateY(-1px);}
+.pc-cat-chip:active{transform:scale(.97);}
+.pc-cat-chip.active{border-color:var(--cc,#8e24aa);box-shadow:0 0 16px var(--cc,#8e24aa),0 8px 16px rgba(0,0,0,.5);}
+</style>
 <style id="hub-fix9-20261119">
 /* ——— FOLLOW-ON ROUND 9 20261119 — items 1-8 ———
    This block sits after every earlier style block, so its rules win ties
@@ -14322,7 +14450,7 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide { bottom: 200px; }
    side padding 10px -> 2px, tracking .08em -> 0, gap 12px -> 8px. That frees
    ~30px per pill at the full 17px size — the Laws 25/19/17 scale stands. */
 @media (max-width:640px){
-  .lens-tabs{gap:8px;}
+  .lens-tabs{gap:4px;margin-left:-24px;margin-right:-24px;}
   .lens-tab{padding:13px 2px;}
   .lens-tab b{letter-spacing:0;}
 }
@@ -14344,11 +14472,13 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide { bottom: 200px; }
 @media (max-width:640px){
   .notif-count{top:0;right:0;min-width:18px;height:18px;}
 }
-/* (4) 1920 BAR-UP: the left sidebar footer reads whole. .private sits at
-   the rail's bottom by margin-top:auto, so when the fixed bottom bar is up
-   (~124px tall) it covers the footer's lower half. While the bar is up the
-   footer gains 140px of bottom padding — the same reserve the feed column
-   already carries — so all three lines clear the bar. Bar hidden, no pad. */
+ /* (4) 1920 BAR-UP: the left sidebar footer reads whole. .private sits at the
+    rail's bottom (sticky rail, own scrollport) below the fold, so when the fixed
+    bottom bar is up (~124px tall) it covers the footer's lines. FOLLOW-UP 13:
+    the 140px bottom padding below does NOT lift the text — the text sits at the
+    top of the block — it only lengthens the rail's scroll room, which the
+    auto-scroll in the bar script needs to bring the footer into view. Bar
+    hidden, no pad. */
 body:not(.os-bottom-hidden):not(.os-bottom-off) .private{padding-bottom:140px;}
 /* (5e) SMART TABS WEAR THE MODE-PILL TREATMENT, SMALLER. Harvested from
    the lens tabs (.lens-tab + .primo, NAYA-BTN-005): obsidian pill, white
