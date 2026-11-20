@@ -51076,9 +51076,35 @@ function refreshHubFeed(){
   mountHubFeed(_hubFeedStream);
 }
 window.NayaHubFeed = { mount: mountHubFeed, refresh: refreshHubFeed, setNotes: function(notes){ window.NayaFeedIntelligence = window.NayaFeedIntelligence || {}; window.NayaFeedIntelligence.notes = notes||[]; } };
-/* Safety net: if wall data already landed before this script ran, mount on DOM ready. */
-if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', function(){ if(!_hubFeedMounted) refreshHubFeed(); }); }
-else { if(!_hubFeedMounted) refreshHubFeed(); }
+/* FRAME-FIX5 2026-11-19 (Back-button half-load): the feed has exactly one
+    paint path (loadWall -> mwPaintWallPosts -> NayaHubFeed.refresh -> mount),
+    and loadWall's renderer retry is bounded (20 x 150ms): if a slow parse
+    (or a late Supabase bundle) burns the budget before the renderer exists,
+    the wall never paints, MW_WALL_LOADED stays false, refreshHubFeed keeps
+    returning early ("data still in flight"), the Hub feed never mounts, and
+    nothing in the session ever retries -- the 15s live watcher only nudges,
+    the 60s refresh is off by default, and the page listens for pageshow 0x.
+    The staged host serves Cache-Control: no-store, so a browser Back is a
+    full reload, not a bfcache restore; a restore is still possible where a
+    browser page-caches despite no-store. Recover on BOTH paths: after parse
+    (DOMContentLoaded) and on a bfcache restore (pageshow with persisted=true),
+    if the Hub feed mount is missing/empty, re-run loadWall (the painter hook
+    re-mounts when the read lands) and refresh (mounts at once if the data
+    already landed). On a normal load the mount is already there, so this is
+    a no-op: no extra fetch, no double mount, no behaviour change. */
+ function recoverFeedAfterBack(){
+   try{
+     var mount=document.getElementById('pcHubFeedMount');
+     var mounted=!!(mount && mount.children && mount.children.length);
+     if(mounted) return;
+     if(!window.MW_WALL_LOADED && typeof window.osLoadWall==='function'){ try{ window.osLoadWall(); }catch(e){} }
+     refreshHubFeed();
+   }catch(e){}
+ }
+ /* Safety net: if wall data already landed before this script ran, mount on DOM ready. */
+ if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', function(){ recoverFeedAfterBack(); if(!_hubFeedMounted) refreshHubFeed(); }); }
+ else { recoverFeedAfterBack(); if(!_hubFeedMounted) refreshHubFeed(); }
+ window.addEventListener('pageshow', function(e){ try{ if(e && e.persisted) recoverFeedAfterBack(); }catch(err){} });
 })();
 
 </script>
