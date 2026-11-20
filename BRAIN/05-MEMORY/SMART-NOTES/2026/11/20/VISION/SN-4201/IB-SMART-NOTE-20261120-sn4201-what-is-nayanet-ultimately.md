@@ -35,3 +35,23 @@ Ask your Naya for what you want — a note, a page, a world, an introduction. Sh
 ## WHAT IS IN IT FOR YOU
 
 You get a world that works for you, people like you to grow with, and a share of everything the network earns together — because when we get paid, you get paid.
+
+## MACHINE
+
+NayaNET is a new internet where wise helpers called Nayas do the work for you, and everyone you meet there helps everyone grow. Value: your time back, people like you, and a share of everything the network earns together.
+
+type=Smart Note; subject=What is NayaNET, ultimately?; about=NayaNET, the new internet; value=time back, like minds, a share of what the network earns; audience=everyone, in plain words; author=naya_nitro; language=en; created=2026-11-20
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What is NayaNET, ultimately?",
+  "description": "NayaNET is a new internet where wise helpers called Nayas do the work for you, and everyone you meet there helps everyone grow.",
+  "about": {"@type": "Thing", "name": "NayaNET", "description": "A new internet: a private network of personal worlds, run by wise helpers called Nayas, where humans and AIs build, learn, connect, and earn together."},
+  "keywords": "NayaNET, new internet, Naya, wise helpers, personal worlds, private network, learn fast",
+  "author": {"@type": "Organization", "name": "NayaNET"},
+  "inLanguage": "en",
+  "datePublished": "2026-11-20"
+}
+```
