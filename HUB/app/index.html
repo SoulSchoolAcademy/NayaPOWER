@@ -7934,6 +7934,17 @@ document.addEventListener('click', function(e){
   window.NayaChassis.openRightRail = openRightRail;
   window.NayaChassis.closeRightRail = closeRightRail;
 
+  /* FOLLOW-UP 18 — THE RETURN TRAP (captain's eye, followup17 GOES BACK):
+     these two maps sat AFTER `return shell;` (base lines 8020-8021), so
+     their initializers NEVER ran: the declarations hoisted as `undefined`,
+     every person panel threw `TypeError: Cannot read properties of
+     undefined` inside pcPersonPanelHtml AFTER the title was set, the
+     try/catch swallowed it, and the panel showed the generic mail room
+     with the right title. They live here now, before the return, so the
+     maps exist by the time any tap reads them. Same literals, same names —
+     moved, not remade. */
+  var PC_GEM_NUM_17={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
+  var PC_GEM_COL_17={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa'};
   ensureGlobalKeys();
   return shell;
 
@@ -8017,8 +8028,6 @@ document.addEventListener('click', function(e){
      carry the same values, harvested verbatim from the IIFE, under
      distinct names, so the person branch can never throw on scope again.
      The IIFE's own helpers are untouched. */
-  var PC_GEM_NUM_17={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
-  var PC_GEM_COL_17={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa'};
   function pcColorFor17(name){ var L=String((name||'?').charAt(0)).toUpperCase(); return PC_GEM_COL_17[PC_GEM_NUM_17[L]||1]; }
   function pcEsc17(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
   function pcPersonByAlias(a){
@@ -8051,7 +8060,14 @@ document.addEventListener('click', function(e){
         +'<div class="action-row" style="margin-top:12px;"><button class="btn btn-ghost mini" type="button" disabled><span>Send · runtime required</span></button></div>';
     }
     if(purpose==='mail'){
-      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">Smart Mail to '+pcEsc17(name)+'.</div><div style="margin-top:8px;font-size:17px;color:#ffffff;">To: <b>'+pcEsc17(name)+'</b></div>';
+      /* FOLLOW-UP 18 — Mail is a composer, not a label: To (her name),
+         Subject, Body — the DM's harvested textarea shape and MailRoom's
+         honest disabled Send. Sending stays a governed runtime action. */
+      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">Smart Mail to '+pcEsc17(name)+'.</div>'
+        +'<div style="margin-top:8px;font-size:17px;color:#ffffff;">To: <b>'+pcEsc17(name)+'</b></div>'
+        +'<div style="margin-top:16px;"><label style="font-size:17px;color:#ffffff;">Subject</label><input aria-label="Subject" placeholder="Subject" style="width:100%;margin-top:8px;background:#050607;color:#ffffff;border:1.5px solid #0f52ba;border-radius:12px;padding:12px;font-size:17px;line-height:1.6;" /></div>'
+        +'<div style="margin-top:16px;"><label style="font-size:17px;color:#ffffff;">Body</label><textarea aria-label="Write to '+pcEsc17(name)+'" placeholder="Write to '+pcEsc17(name)+'… " rows="4" style="width:100%;margin-top:8px;background:#050607;color:#ffffff;border:1.5px solid #0f52ba;border-radius:12px;padding:12px;font-size:17px;line-height:1.6;"></textarea></div>'
+        +'<div class="action-row" style="margin-top:12px;"><button class="btn btn-ghost mini" type="button" disabled><span>Send · runtime required</span></button></div>';
     }
     var acts=[['chat','✎','#0f52ba','DM'],['mail','✉','#d4a017','Mail'],['audio','♪','#07925f','Audio'],['video','▶','#8e24aa','Video']];
     var btns='';
@@ -8091,7 +8107,7 @@ document.addEventListener('click', function(e){
         if (personEl) { personEl.innerHTML = ''; personEl.style.display = 'none'; }
         if (bodyEl) bodyEl.style.display = '';
       }
-    } catch (err) { /* the panel is already open (above); a content error must never hide it */ }
+    } catch (err) { /* the panel is already open (above); a content error must never hide it — but it must never hide silently again (FOLLOW-UP 18: the return-trap TypeError lived here, invisible, for a whole round) */ if (window.console && console.warn) console.warn('[hub-msg-panel] person content failed:', err); }
     document.body.classList.add('msg-open');
     var x = panel.querySelector('.hub-msg-x');
     if (x) x.focus();
