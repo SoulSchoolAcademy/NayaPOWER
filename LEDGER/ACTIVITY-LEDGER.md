@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 03:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21419,6 +21419,12 @@ _Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: action-time tip 2c0f0d95809 == live main (tip unmoved); all 3 cited writer blobs (543ddafa, 10fe4e73, 759a9acf) exist at that tip via git cat-file; companion note retrieval/auth-gate-w1-bytecheck-t0632.md exists with sha256 exactly matching the receipt pin c9b7af96. Gap from 9.5: W1 DROP remains a code reading, not a runtime test (read-on
 
+### ✅ t0632-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (a) synthesis CANDIDATE packet + adoption verdict on P12/C
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick by sha256: results-t0628-lane2-inv.json 1e78d1df... MATCH, results-t0627-paraphrase.json 1f358e96... MATCH, results-t0616-lane1-entailjudge.json f3bf9724... MATCH (all == t0628 receipt pins); packet auto-retrieval/surge-a-synthesis-t0632.md EXISTS (mtime 13:30:47Z, just before receipt 13:31:
+
 ### ✅ t0632 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE (a) synthesis CANDIDATE packet + adoption verdict on P12/C
@@ -21434,6 +21440,12 @@ _Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0632-lane2.md`
 
 **Evidence:** Verified: packet auto-retrieval/surge-a-synthesis-t0632.md exists; all 3 pins re-derived at scoring time and MATCH full sha256 (results-t0628-lane2-inv.json 1e78d1df..., results-t0627-paraphrase.json 1f358e96..., results-t0616-lane1-entailjudge.json sha16 f3bf9724d55065cf). Real value: the sharpest finding lived in the JOINT between generations - t
+
+### ✅ t0632-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Independent pin-verification of t0628-lane2 INV arm — PIN-VERDICT: NO-DRIFT
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick by sha256: all 7 pins re-derived on live bytes MATCH byte-exact — prereg-t0628-lane2-inv.md 942fc9d2..., t0628_lane2_inv.py 2285e143..., results-t0628-lane2-inv.json 1e78d1df..., t0442_entailment.py a211e4e4..., t0432_fingerprint.py 4ab5f359..., results-t0616-lane1-entailjudge.json f3bf9724.
 
 ### ✅ t0632 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -21451,6 +21463,12 @@ _Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 7 evidence pins recomputed on live workspace bytes — sha prefixes 942fc9d2, 2285e143, 1e78d1df, a211e4e4, 4ab5f359, f3bf9724, 1f358e96 all match the receipt exactly; recompute script auto-retrieval/recompute-t0632-lane12.py exists with sha256 exactly matching the receipt pin 088ca1c9. Genuine new finding: E-gate persistence gap (JSON 
 
+### ✅ t0631-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review of Lane 4 t0626 stamping-migration plan CANDIDATE — VERDICT: AMEND
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick: deliverable retrieval/auth-gate-migration-verdict-t0631-CANDIDATE.md EXISTS (8,461 bytes) — NOT PHANTOM. POST-HOC DRIFT FLAGGED, not this seat's gap (t0550-lane11 precedent): file now hashes ff150714... vs the receipt pin 2bc09295...; mtime 2026-10-13 15:29Z, ~2h AFTER the receipt (13:19Z) 
+
 ### ✅ t0631 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat review, stamping-migration plan
@@ -21466,6 +21484,12 @@ _Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0631-lane8.md`
 
 **Evidence:** Verified: verdict hidden_files/retrieval/auth-gate-migration-verdict-t0631-CANDIDATE.md exists, sha256 2bc092952c3edd3cf0bb960095b3c27db5c2a095861e89d811ffb70d981f007e MATCHES receipt claim. Genuine finding: plan's 'no other production writers' claim FALSIFIED - W4 (tools/smart_link.py:377 backfill, whole-index rewrite, NO manifest recompute -> MAN
+
+### ✅ t0631-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** ADJUDICATION: guard-split handoff CANDIDATE fate (Lane 5 t0626) — ADOPT evidence package, guard stays CANDIDATE
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick by sha256: all 7 pins re-derived on live bytes MATCH byte-exact — arm_docclaim_t0593.py 3eff30f1..., t0432_fingerprint.py 4ab5f359..., arm_digitfracture_t0619.py 9c2a03ef..., results-t0593-docclaim.json 714fe2fb..., sealed-prereg-magnitude-t0623.md bd5e08cd..., results-t0623-magnitude.json a
 
 ### ✅ t0631 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -26421,6 +26445,12 @@ _Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0550-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** SURGE semantic-arm next-hypothesis spec (H-all-clauses, falsifier-priced, sealed)
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick by sha256: spec hidden_files/lane-experiments/semantic-arm-next-hypothesis-t0550.md 76d3b898f343ebaf... matches the receipt pin byte-exact; battery arm-battery-t0532.md 18928e5a... matches; fixtures t0432_fingerprint 4ab5f359..., results-t0432 b1af58d0..., baseline-sealed 460429b17e77..., t0
+
+### ✅ t0550-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** SURGE semantic-arm next-hypothesis spec (post-t0545 FALSIFIED)
 
 **Evidence:** Verified: spec file hidden_files/lane-experiments/semantic-arm-next-hypothesis-t0550.md exists, sha256 76d3b898f343ebaf3ebe4d7809f9474a863b6d3b1c9548e2103044a21e68c078 matches receipt prefix exactly; TOOLS.md fastembed-env line present (hole fixed on sight). Score 9.0. Why not 9.5: cost figures (40-60 lane-min) are estimates from one observed tick,
@@ -26440,6 +26470,12 @@ _Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0550-lane11.md`
 
 **Evidence:** Verified: spec lane-experiments/semantic-arm-next-hypothesis-t0550.md exists, sha256 76d3b898f343ebaf... matches receipt; TOOLS.md fastembed-env hole fix present (grep-hit confirmed). Frozen fixture SHAs re-verified at action time per receipt (table-bound, all match). Why not 9.5: 40-60 lane-min cost is an unmetered estimate (cost gate calibrated a
+
+### ✅ t0550-lane10 — Team 10, Team Naya Scorer (Brain Index) — 8.0/10 [VERIFIED]
+
+**Task:** FP-003 refinement packet: 12-row disposition table, ADOPT-AMENDED
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick: packet hidden_files/fp003-refinement-packet.md exists, 11,960 bytes, 12 '| N |' rows, 12 ADOPT-AMENDED, each row quoting a verdict; rows cover t0513/t0523/t0525/t0526/t0526/t0527/t0529/t0530/t0533/t0534(L6)/t0540/t0541. NOT PHANTOM. Score 8.0 REWORK (self-score 9.0 NOT agreed). Why not 9.5:
 
 ### ✅ t0550-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -26462,6 +26498,12 @@ _Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0550-lane10.md`
 
 **Evidence:** Verified: packet fp003-refinement-packet.md exists (11,960 bytes), 12 numbered disposition rows, 12/12 ADOPT-AMENDED with quoted verdicts, next-owner line (Lane 1 sign-off) present and explicitly NOT marked REFINED. Independent check: FP-003 feedback-feed section (lines 358-504) holds 12 anchors from lanes 1-12 — confirms the receipt's byte-honest 
+
+### ✅ t0549-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** False-STALE premise falsification on live bytes; no duplicate FP-003 entry posted
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick: feedback-feed.md holds exactly 1 '[Lane 8 — Naya Sentinel, t0540]' hit (now line 516, drifted from the receipt's 486 as the feed grew); receipt twelve-lane-receipts/t0540-lane8.md exists (22:46 UTC); lane-journals/lane-8.md holds t0540; zero '[Lane 8 — Naya Sentinel, t0549]' entries — the n
 
 ### ✅ t0549-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -26548,6 +26590,12 @@ _Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0549-lane4.md`
 
 **Evidence:** Artifacts: new draft hidden_files/retrieval/smartblocks/lane-packet-v2-hypertuned.md exists on disk with sha256 EXACTLY matching the receipt pin (c90c3815...b). Work: brief claimed atomically, R1/R2/R3 instances with row-predicate machine fields, all 3 rec lines quoted verbatim before applying, v1 byte-identical untouched, live re-sha caught +1 pro
+
+### ✅ t0549-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Lane 12 GUARD: re-verify parked verdict + unpark condition; Hub-surface divergence scan
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick: charter hidden_files/twelve-lanes.md — Lane 12 Score 4.0/10, parked by design, unpark when engine hits 10/10 (quoted lines confirmed); shared page the-one-flow-execution-plan.html holds 'Honest: no backend.' (1 hit); smart-feed.html line 1032 at ~/workspace/hub-build/base/smart-feed.html co
 
 ### ✅ t0549-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -56216,6 +56264,12 @@ _Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261119-1854 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-19 18:54 PST: 31 queued briefs evaluated, all refused, none claimed
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: claim-sweep log brief-queue/claim-sweep-20261119-1854.log exists (3,250 bytes); per-brief attempt lines count 29 x '=> exit 7' + 2 x '=> exit 2' exactly as receipted, totals line agrees (31 attempts, 0 claimed, queue untouched); exit-2 briefs brief-gap-gap-gap-t0547-lane1-lane1.md and brief-gap-gap-gap-g
 
 ### ✅ distill-daily-20261028 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
