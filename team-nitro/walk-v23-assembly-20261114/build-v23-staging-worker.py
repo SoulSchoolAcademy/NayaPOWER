@@ -47,7 +47,11 @@ WELCOME = ROUND + "/welcome-staged.html"
 # /agreement. Source is the agree-fix round's filed file (blob 41d2c71f,
 # 85,625 B, sha 842cae53...), NOT the PR #3404 base (c7b14a98, 85,676 B):
 # the fix round changed exactly one line (line 437, agree destination).
-# The landing-fix round (dispatched 19:18Z) owns the unfold next.
+# AGREEMENT MERGE (2026-11-17, BRIEF-AGREEMENT-UPDATE-20261117.md): the
+# unfold sha moves 842cae53 -> faea2190 (85,679 B) — the agree
+# destination changes from the proof-host welcome-staged.html to
+# /?stage=bridge on this worker. The landing-fix round (dispatched
+# 19:18Z) owns the unfold next.
 UNFOLD = "/home/hatch/workspace/team-nitro/agreement-unfold-fix-20261117/agreement-unfold-fixed.html"
 MIRROR = "/home/hatch/workspace/team-nitro/space-business-mirror-personal-20261112"
 TEMPLATE = MIRROR + "/template-composed.html"
@@ -352,21 +356,143 @@ assert ident_sha.startswith("a1550164"), "identity sha is not the BRIDGE PRESENT
 # block; the stale S.view='intro' comment fixed. Layout, the nine, the
 # wiring, the legal pages, the unfold and the laws are untouched.
 # Walk, template, identity, unfold shas unchanged.
-# BRIDGE PRESENTATION FIX #2 (2026-11-17, BRIEF-BRIDGE-PRESENTATION-FIX2-20261117.md; maker
-# fix round — deterministic from the presentation welcome 9eea1703 via
-# bridge-presentation-fix2-20261117/build-bridge-fix2.py):
-# the welcome sha moves 9eea1703 -> b1d4b16d (1,132,653 B -> 1,134,179 B,
-# +1,526 B): D1 — the stray `}` that killed script block 1 (try with no
-# catch) is deleted, so the returning-user flow runs again; D2 — the
-# restore block stands down when ?stage= was handled by the hook, so
-# ?stage=deck lands on the deck; D3 — the top corner emblems move up into
-# the logo gap, off the kicker, and sit 8px inside the head's edges at
-# <=480px, off the viewport edge at 390; D4 — the W6 wrap override is
-# deleted, so the legal strip stays one nowrap row and the 72px lift
-# clears it at phone widths (the stale eyebrow comment goes with it).
+# AGREEMENT MERGE (2026-11-17, BRIEF-AGREEMENT-UPDATE-20261117.md; maker
+# round — deterministic from the bridge bytes 9eea1703 via
+# agreement-update-20261117/work/edit-merge.py):
+# the welcome sha moves 9eea1703 -> 8aad1e5c (1,132,653 B -> 1,133,238 B,
+# +585 B): the two agreement pages merge into ONE at the root — the intro
+# welcome boards are gone from the choice view (their byte-identical copy
+# lives on in #fpBridge, so the citizen reads them once, on the bridge,
+# not twice); the portrait moves into the hero above the play button;
+# the Royal Unfolding header/lines hide in intro view only; stage entry
+# defaults to the intro (choice) view (?stage=bridge + bridge resume
+# still land on the bridge); intro READ + the intro next button go to
+# /agreement (one letter destination); 'Back to the login' leaves the
+# fixed bar for two in-flow buttons (bridge final + footer), so it never
+# covers the twelve legal links; choice pills render 17px at phone
+# widths; phone fit trims at <=640px (layer pad 118->80, deckUnfold
+# margins) so the choice fits one screen at 390x844. R10 (found by
+# verification, not the brief): one stray '}' in the returning-citizen
+# script (block 1) closed the line-220 try with no catch and killed the
+# whole block in the browser — deleted, all three script blocks parse.
+# The unfold sha moves 842cae53 -> faea2190 (85,625 B -> 85,679 B, +54 B):
+# the agree button's destination changes from the proof-host
+# welcome-staged.html to /?stage=bridge on this worker — the proof host
+# is never a destination. Walk, template, identity shas unchanged.
+# AGREEMENT MERGE EYE FOLLOW-ON (2026-11-17, BRIEF-AGREEMENT-MERGE-EYE-FOLLOWON-20261117.md
+# + bridge fix #2 amendment; maker round — agreement-merge-eye-followon-20261117/work/
+# edit-followon.py + edit-followon2.py + edit-followon3.py):
+# the welcome sha moves 8aad1e5c -> c8f0df54 (1,133,238 B -> 1,140,854 B,
+# +7,616 B): F1 first load shows the clean choice (the 'bridge' localStorage
+# save + auto-restore are gone — only 'agree' is ever saved/restored, ITEM 11);
+# F2 every button visibly presses in while held (depress + dim + shadow collapse,
+# spring back on release, incl. the NAYA play control); F3 choice rims go DEEP
+# purple #8e24aa / deep green #07925f (deck-end pills + Keep reading, button-scoped);
+# F4 all twelve legal buttons open their legal text in-page (ungated handler +
+# bridge return); F5 title clear of the corner emblems (harvested bridge fix #2
+# D3: top emblems up to -76px/-56px, measured 10-12px clear, 0 overlap). D1-D4
+# carried from bridge-presentation-fix2-20261117 (blob 36b0eaa6, sha b1d4b16d):
+# D1 stray '}' already present via the merge R10 (same deletion); D2 the
+# _fpRestoreStage guard carried verbatim in mechanism, agree-only per F1;
+# D3/D4 carried verbatim (emblem lift + legal-strip one-row, wrap override
+# deleted). The 13px final-vs-bar overlap at 635/390 is pre-existing (fix2
+# checker: lifts/padding/final layout byte-identical to base; bar hidden at
+# max scroll) — not redesigned. Button labels UNCHANGED (named per arrival in
+# the maker report). Walk, template, identity shas unchanged.
+# The unfold sha moves faea2190 -> 87fa3fa4 (85,679 B -> 87,076 B, +1,397 B):
+# the /agreement play control gets a base transition so its press/release
+# animates instead of snapping (part 2); the rest is the merged unfold bytes.
+# AGREEMENT MERGE EYE FOLLOW-ON FIX PASS (2026-11-18, checker NOT PASS on
+# F3 + F2 deviation; maker round — agreement-merge-eye-followon-20261117/
+# work/edit-fixpass.py): the welcome sha moves c8f0df54 -> fdad3dc2
+# (1,140,854 B -> 1,142,141 B, +1,287 B): F3 one button-scoped rule, same
+# selector as the bright rule but later in the cascade (inside the EYEFOLLOW
+# block), deepening the two "I agree" end buttons' border/glow to deep
+# emerald #07925f / rgba(7,146,95,...) — the prior "'I agree' x3 -> #07925f"
+# claim was false in bytes; F2 the EYEFOLLOW .new-account:active rule gains
+# the shadow/glow collapse (small contact shadow) so it depresses + dims +
+# collapses like every other button. Nothing else changes.
+# AGREEMENT BUTTONS FOLLOW-ON (2026-11-18, Shawn's eye 03:37Z + 03:41Z;
+# maker round - agreement-buttons-20261118/work/edit-buttons.py): the
+# welcome sha moves 2e74273b -> 48fc853f (1,146,242 B -> 1,165,606 B,
+# +19,364 B): 1. #fpBridgeLetter reads "Read the agreement"; 2. the bridge
+# pair never wraps (white-space:nowrap, 64px floor, bridge pair only);
+# 3. the flat diamond glyph at the end of each bridge button is the
+# emblem's own diamond, harvested (NAYA_ICON.png rhombus crop, 96px PNG,
+# one shared .fp-btn-jewel class); 4. #fpBridgePick removed; 5. the
+# portrait/play area is one row (portrait -> "Naya" -> play right,
+# harvested 1fr auto 1fr flank grid); 6. the bridge layer top pad
+# 48px -> 40px. Deck, footer link, legal pages, F1-F4 untouched.
 # Walk, template, identity, unfold shas unchanged.
-assert welcome_sha.startswith("b1d4b16d"), "welcome sha is not the BRIDGE PRESENTATION FIX #2 welcome sha (2026-11-17: D1 stray brace out, D2 ?stage=deck lands, D3 emblems off the kicker, D4 strip one row)"
-assert unfold_sha.startswith("842cae53"), "unfold sha is not the agree-fix unfold sha (blob 41d2c71f, 85,625 B)"
+# AGREEMENT BUTTONS FIX 3 (2026-11-18, eye verdict 04:55Z GOES BACK;
+# maker round - agreement-buttons-20261118/work/fix3/edit-fix3.py):
+# the welcome sha moves 48fc853f -> 685fe27f (1,165,606 B -> 1,166,995 B,
+# +1,389 B): 1. #fpChoiceLetter reads "Read the agreement" (as
+# #fpBridgeLetter already did); 2. both intro buttons gain the
+# .fp-btn-jewel span (same shared class, same harvested PNG - no new
+# image bytes) and the flat diamond text is gone from both; 3. the intro
+# pick line is removed (zero JS references, no JS change); 4. bridge-final
+# fold tightened 64px, bridge view only (steplabel 4, jewels 6, choices 4,
+# logo gap 20, head gap 22, side gap 8), letter bottom 1130 -> 1066 at
+# 1919. Intro fold, hero row, button sizes, press rules, deck, legal row,
+# #fpNextBtn2 and the bridge pair's jewel/label untouched. Walk, template,
+# identity, unfold shas unchanged.
+# AGREEMENT BUTTONS FIX 4 (2026-11-18, eye verdict FIX3 GOES BACK;
+# maker round - agreement-buttons-20261118/work/fix4/edit-fix4.py):
+# the welcome sha moves 685fe27f -> fb18f9d9 (1,166,995 B -> 1168845 B):
+# 1. bridge-final fold BY MECHANISM: the More4 handler now scrolls #fpBridge
+# to its bottom on reveal (round 3's 64px spacing cuts did not move first
+# paint - no code set the container's scroll position); 2. dead Continue
+# pill hidden for real (.p3-enter[hidden]{display:none!important} - hidden
+# did not hide .p3-enter buttons); 3. stage-bar button: #fpNextBtn gains
+# its [hidden] rule (mirroring #fpNextBtn2) so updateChrome's bridge/footer
+# hide lands, and the bar itself is display:none on bridge (mirroring the
+# intro rule) - the jewelled #fpBridgeDeck is the one in front of the user.
+# Intro pair, pick line, press/hover, deck, legal row, #fpNextBtn2 and the
+# bridge pair's jewel/label untouched. Walk, template, identity, unfold
+# shas unchanged.
+# AGREEMENT BUTTONS FIX 4b (2026-11-18, maker sense-check on the fix-4
+# live render; maker round - agreement-buttons-20261118/work/fix4/edit-fix4b.py):
+# the welcome sha moves fb18f9d9 -> 65555c37 (1,168,845 B -> 1168891 B):
+# the fix-4 scroll-to-bottom moved #fpBridgeExit above the fold (live bottom
+# 920 at 1919), so the brief's leave-alone premise ('below the fold') no
+# longer holds and the Fix 3 target (zero flat diamonds on first paint)
+# plus Design Law S1 cover it: the exit button gets the same harvested
+# .fp-btn-jewel span as its sibling pair (no new image bytes). One line.
+# #fpLegalExit in the footer view is NOT touched. Walk, template, identity,
+# unfold shas unchanged.
+# AGREEMENT INTRO ALIGN (2026-11-18, maker round -
+# agreement-intro-align-20261118/work/edit-align.py): the welcome sha
+# moves 65555c37 -> e4fe0d52 (1,168,891 B -> 1171088 B): one CSS insert only - the intro
+# row becomes one tight centred unit (auto tracks, gap 24px, every
+# item grid-row:1, min-height holds the hero box at 161/133px so
+# nothing below moves). No HTML, no JS. Walk, template, identity,
+# unfold shas unchanged.
+assert welcome_sha.startswith("e4fe0d52"), "welcome sha is not the AGREEMENT INTRO ALIGN welcome sha (2026-11-18: intro row one tight centred unit)"
+# AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
+# maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
+# the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
+# 1. beat 1's picture centred (margin:auto, data-beat="1" only); 2. beat 1's
+# diamond + "THE OPENING / Hi, I'm Naya" header removed (the letter's first
+# line already says it); 3. the voice line removed; 4. the dots row +
+# "or read the whole agreement at once" moved below the letter. Top is now
+# title, play button, centred picture, letter. Welcome, walk, template,
+# identity shas unchanged.
+assert unfold_sha.startswith("96b18b6f"), "unfold sha is not the AGREEMENT INTRO LAYOUT FOLLOW-ON #2 unfold sha (2026-11-18: picture centred, opening header + voice line removed, dots + read-all moved below the letter, 88,848 B)"
+# AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
+# F1-F4; maker round - agreement-merge-followon2-20261118/
+# work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b
+# (1,142,141 B -> 1,146,242 B, +4,101 B): F1 plain-load fresh-profile
+# auto-enter of the choice view (the boot never called enterStage());
+# F2 new #fpAgreement #dealAgreeBtn/#letterPageAgree :active rule (2,1,0)
+# sinking to scale .94; F3 rest-only rule collapsing the 24px choice-pill
+# glow to a 6px deep rim; F4 the login read link clears
+# __fpDeckEndReturn so it opens the choice, never deck 9/9. The unfold
+# sha moves 87fa3fa4 -> 14bd698c (87,076 B -> 88,277 B, +1,201 B): F2 the
+# /agreement EYEFOLLOW press rules move out of the noscript wrapper into
+# a live style block (they were dead with JS on) + a #dealAgreeBtn:active
+# rule (1,1,0) sinking to scale .94. Walk, template, identity shas
+# unchanged.
 # WALK END SHARE PLUS FIX (2026-11-16, MAKER-BRIEF-WALK-END-SHARE-PLUS-FIX-20261116.md; checker NOT PASS 18:50Z):
 # the welcome sha moved 62f691b4 -> ee348e7c (919,910 B -> 921,988 B,
 # +2,078 B): H8 — the intro legal links keep their natural one-line width
