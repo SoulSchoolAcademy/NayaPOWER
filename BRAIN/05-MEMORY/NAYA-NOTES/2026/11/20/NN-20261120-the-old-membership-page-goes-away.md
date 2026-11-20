@@ -4,7 +4,7 @@
 
 **NN-20261120-the-old-membership-page-goes-away · Naya Note · 2026-11-20 ~13:33–14:05 MST (call 8b19d313)**
 
-*Paired Smart Note: SN-pending — The Old Membership Page Goes Away (takes the next free number at filing)*
+*Paired Smart Note: SN-4316 — The Old Membership Page Goes Away*
 
 **Category:** Corrections — membership, the current system
 
