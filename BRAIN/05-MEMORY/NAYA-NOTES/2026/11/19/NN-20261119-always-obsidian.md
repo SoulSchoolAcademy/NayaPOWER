@@ -4,7 +4,7 @@
 
 **NN-20261119-always-obsidian · Naya Note · 2026-11-19 ~19:23 MST (02:23Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Always Obsidian (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4211 — Always Obsidian*
 
 **Category:** Law — Standing rule, the brand (what anything made or shared for him looks like)
 
