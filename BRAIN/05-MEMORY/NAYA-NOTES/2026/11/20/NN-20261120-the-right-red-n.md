@@ -4,7 +4,7 @@
 
 **NN-20261120-the-right-red-n · Naya Note · 2026-11-20 ~13:33–14:05 MST (call 8b19d313)**
 
-*Paired Smart Note: SN-pending — The Right Red N — Big, Glowing, Alive (takes the next free number at filing)*
+*Paired Smart Note: SN-4310 — The Right Red N — Big, Glowing, Alive*
 
 **Category:** Corrections — the agreement presentation, the red N
 
