@@ -4,7 +4,7 @@
 
 **NN-20261120-one-module-three-ways · Naya Note · 2026-11-20 ~12:07–13:03 MST (call 8e0932a8)**
 
-*Paired Smart Note: SN-pending — One Module, Three Ways — The Presentation Is a Free Lesson (takes the next free number at filing)*
+*Paired Smart Note: SN-4294 — One Module, Three Ways — The Presentation Is a Free Lesson*
 
 **Category:** Decisions — the agreement presentation, membership blocks, the certificate
 
