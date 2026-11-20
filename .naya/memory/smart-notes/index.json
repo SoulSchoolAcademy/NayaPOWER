@@ -66866,6 +66866,39 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "fa8c9a9081fb05814206c4f8648217a3f53d209713a47c0a6bf5f9de81a5a7e3"
+    },
+    {
+      "smart_note_id": "SN-3380",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3380-front-door-works-on-staging",
+      "slug": "front-door-works-on-staging",
+      "title": "The Front Door Works on Staging; Live Is Untouched",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3380/IB-SMART-NOTE-20261118-sn3380-front-door-works-on-staging.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3380/IB-SMART-NOTE-20261118-sn3380-front-door-works-on-staging.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DECISION/SN-3380/IB-SMART-NOTE-20261118-sn3380-front-door-works-on-staging.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3380-front-door-works-on-staging.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:44:59Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "1992eeaa54835547c7955f258763d0f2d57263c0d10aed700d05e550658dfefd",
+      "content_hash": "f9e9c70c40d3cf4e21b65abc1574e7dc0a6991dc421d8de1e559d8bbcc818733",
+      "one_line": "The door works on staging; live is untouched until his tap. On 2026-11-18 the front-door lane checker-passed the staged Hub door hop by hop — a fresh visitor sees the gate, the name carries gate to identity to Hub, a returning citizen skips the gate and goes straight in, Escape closes the Messenger — and nothing live was changed: no PUT, no merge, no deploy.",
+      "topics": [
+        "Hub",
+        "Serving",
+        "Identity",
+        "Staging",
+        "Decision"
+      ]
     }
   ],
   "sequence_policy": {
@@ -66876,5 +66909,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "155d16115a13512cb86620fab915702d94ab76568d36695de72f723e3163a66d"
+  "corpus_manifest_hash": "32d30ecd19c581835588c616e877c5ae400270ad367be5b73ebd5f261bcfd04f"
 }
