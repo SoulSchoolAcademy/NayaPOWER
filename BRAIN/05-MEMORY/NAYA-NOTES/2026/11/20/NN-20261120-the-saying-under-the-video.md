@@ -4,7 +4,7 @@
 
 **NN-20261120-the-saying-under-the-video · Naya Note · 2026-11-20 ~15:38–15:46 MST**
 
-*Paired Smart Note: SN-pending — The Saying Under the Video (takes the next free number at filing)*
+*Paired Smart Note: SN-4343 — The Saying Under the Video*
 
 **Category:** Design — the saying, centered under the video; the cover laid out
 
