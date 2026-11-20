@@ -4,7 +4,7 @@
 
 **NN-20261120-put-it-live-at-nayanet-app-agreement · Naya Note · 2026-11-20 ~15:19–15:21 MST**
 
-*Paired Smart Note: SN-pending — Put It Live at nayanet.app/agreement (takes the next free number at filing)*
+*Paired Smart Note: SN-4333 — Put It Live at nayanet.app/agreement*
 
 **Category:** Law — the go-live order; the address itself was the bug
 
