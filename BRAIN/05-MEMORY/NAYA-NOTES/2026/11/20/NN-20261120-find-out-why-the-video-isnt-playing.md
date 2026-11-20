@@ -4,7 +4,7 @@
 
 **NN-20261120-find-out-why-the-video-isnt-playing · Naya Note · 2026-11-20 ~14:29 MST (main chat, read first-hand)**
 
-*Paired Smart Note: SN-pending — Find Out Why the Video Isn't Playing (takes the next free number at filing)*
+*Paired Smart Note: SN-4321 — Find Out Why the Video Isn't Playing*
 
 **Category:** Corrections — the agreement presentation, the video, the images
 
