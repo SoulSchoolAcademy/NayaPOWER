@@ -4,7 +4,7 @@
 
 **NN-20261119-academy-buttons-to-pricing-page · Naya Note · 2026-11-19 ~20:32 MST (03:32Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Academy Buttons to the Pricing Page (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4224 — Academy Buttons to the Pricing Page*
 
 **Category:** Design — where a page's buttons take the citizen
 
