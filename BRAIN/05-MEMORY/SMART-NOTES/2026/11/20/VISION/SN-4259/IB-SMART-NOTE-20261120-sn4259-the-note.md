@@ -4,6 +4,8 @@ SN-4259 · VISION / SMART NOTE
 
 **Created:** 2026-11-20 15:14Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 Share it.
@@ -12,7 +14,7 @@ Share it.
 
 You're not alone in here.
 
-Across 10 notes, the thread is: note, never, dear.
+Across 10 notes, the thread is: the citizen authors the memory, the system proves it with receipts, and finished beats started.
 
 ## Human
 
