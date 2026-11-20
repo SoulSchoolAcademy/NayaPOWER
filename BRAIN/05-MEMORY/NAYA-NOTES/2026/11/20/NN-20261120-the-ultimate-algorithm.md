@@ -4,7 +4,7 @@
 
 **NN-20261120-the-ultimate-algorithm · Naya Note · 2026-11-20 ~09:06 MST (16:06Z)**
 
-*Paired Smart Note: SN-pending — The Ultimate Algorithm — Spend Smart and Produce Smart (next free SN-4276, confirmed by `next-sn-number.py` in run 418; highest in use SN-4275)*
+*Paired Smart Note: SN-4276 — The Ultimate Algorithm — Spend Smart and Produce Smart*
 
 **Category:** Decisions — the token-spend question, continued live
 
