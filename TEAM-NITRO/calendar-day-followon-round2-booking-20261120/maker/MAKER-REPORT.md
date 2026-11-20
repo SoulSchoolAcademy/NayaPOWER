@@ -265,13 +265,20 @@ the checker/eye. A 10 needs the taps.
     (the brief, filed under the fix-17 naming pattern)
   - `TEAM-NITRO/calendar-day-followon-round2-booking-20261120/maker/MAKER-REPORT.md`
     (this report)
-- **Expected staged link:**
-  `https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/the-ultimate-calendar-v18-fix.staged.html&ref=calendar/day-followon-round2-booking-20261120&cb=<new blob>`
-- **Verification (by read-back, in memory):** tip, parent, blob, size, sha256, and the
-  staged link serving the filed blob byte-identical — recorded in the filing log
-  (`maker/proof/file-round2.log`, written by the filer to the tool output; the log
-  file itself could not be written to disk in the flake window — the verification
-  lines are in the parent agent's handoff).
+- **Filed and verified (amended after read-back):**
+  - Branch `calendar/day-followon-round2-booking-20261120`, tip
+    `8cac82475d360f7fa36c39675e3d296e0c61a6cc` (report commit; chain:
+    tip → brief `0670141ea1b890761f202edaffd3cfd93423b873` → HTML
+    `dc9d9f2a15599aa0f639ef0f21e22f31cbca5b66` → parent `ffd220c7`).
+  - HTML blob `04e79488a8acda56ff3b7a5e55737341f525dae9`, 431,254 B, sha256
+    `3e9f0ecefaa1945e58455ccdef4ea773f5760e7712ef30b4448859f05cac0fdf` —
+    read back from the blob API: size-ok, sha-ok.
+  - Brief blob `68d9f6448bfad2bfe7459cf682269bcce9de139b`; report blob
+    `f49fe05f6d6d99e98a5046dccbf2219c9afe3798` (this report, as filed).
+  - Staged link serves the filed blob byte-identical — verified 3× by curl:
+    431,254 B, sha256 `3e9f0ece…`, match True every time.
+- **Staged link:**
+  `https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/the-ultimate-calendar-v18-fix.staged.html&ref=calendar/day-followon-round2-booking-20261120&cb=04e79488a8acda56ff3b7a5e55737341f525dae9`
 
 ## §7 — What the checker / eye must do next
 
