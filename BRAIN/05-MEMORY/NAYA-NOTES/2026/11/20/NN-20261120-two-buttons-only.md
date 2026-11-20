@@ -4,7 +4,7 @@
 
 **NN-20261120-two-buttons-only · Naya Note · 2026-11-20 ~15:38–15:46 MST**
 
-*Paired Smart Note: SN-pending — Two Buttons Only (takes the next free number at filing)*
+*Paired Smart Note: SN-4339 — Two Buttons Only*
 
 **Category:** Law — navigation is back and forward, never three buttons
 
