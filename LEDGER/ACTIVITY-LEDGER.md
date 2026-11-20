@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 05:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -56354,6 +56354,12 @@ _Last updated: 2026-11-20 05:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261119-2210 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused, 0 claimed, zero delta
+
+**Evidence:** Verified: receipt file present; queue live at 31 brief-*.md files on disk and rotation queued=31, matching the receipt's 31; sweep log claim-sweep-20261119-2203.log exists (37 lines, totals 29x exit 7 + 2x exit 2, 0 claimed, diff vs 21:03 empty); queue untouched, no false claims. Score 9.0. Why not 9.5: the run documents a stuck queue, not progress
 
 ### ✅ lane-scorer-20261119-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
