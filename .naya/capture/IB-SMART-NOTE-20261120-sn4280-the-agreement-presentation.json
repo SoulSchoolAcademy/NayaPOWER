@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4280",
+ "intelligence": {
+  "title": "SN-4280 — The Agreement Presentation — Frame It Like the Calendar",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4280-the-agreement-presentation",
+  "smart_note_id": "SN-4280",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4280/IB-SMART-NOTE-20261120-sn4280-the-agreement-presentation.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Frame the story like the calendar. A frame around each slide, the picture as big as the frame allows, a little writing with the image — and if there is no room, the writing goes on the next slide, so they look at the image, click, and the next slide tells them all about it. Sides alternating, so the brain keeps switching. Naya always there, picture in the corner, the red N marking the telling like a queen telling them about the new world. First slide: the bar, the video left, the play button right, \"View Agreement\" below. Last slide: the agreement itself — click AGREE and you're in, then your name. And over all of it, one charge: \"I just want the presentation to be perfect.\"",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4280",
+   "title": "SN-4280 — The Agreement Presentation — Frame It Like the Calendar",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4280/IB-SMART-NOTE-20261120-sn4280-the-agreement-presentation.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4280/IB-SMART-NOTE-20261120-sn4280-the-agreement-presentation.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
