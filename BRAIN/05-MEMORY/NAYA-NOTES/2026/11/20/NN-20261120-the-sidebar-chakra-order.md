@@ -4,7 +4,7 @@
 
 **NN-20261120-the-sidebar-chakra-order · Naya Note · 2026-11-20 ~14:07–14:21 MST (call 3033fdbe)**
 
-*Paired Smart Note: SN-pending — The Sidebar Chakra Order (takes the next free number at filing)*
+*Paired Smart Note: SN-4318 — The Sidebar Chakra Order*
 
 **Category:** Law — the sidebar, the chakra colour order
 
