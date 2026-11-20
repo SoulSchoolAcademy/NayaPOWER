@@ -4,7 +4,7 @@
 
 **NN-20261120-legal-bar-small-and-clean · Naya Note · 2026-11-20 ~15:24 MST**
 
-*Paired Smart Note: SN-pending — The Legal Bar, Small and Clean (takes the next free number at filing)*
+*Paired Smart Note: SN-4336 — The Legal Bar, Small and Clean*
 
 **Category:** Design — the refinement of SN-4328
 
