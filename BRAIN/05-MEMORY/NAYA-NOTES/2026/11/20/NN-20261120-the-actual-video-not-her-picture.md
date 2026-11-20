@@ -4,7 +4,7 @@
 
 **NN-20261120-the-actual-video-not-her-picture · Naya Note · 2026-11-20 ~13:33–14:05 MST (call 8b19d313)**
 
-*Paired Smart Note: SN-pending — The Actual Video, Not Her Picture (takes the next free number at filing)*
+*Paired Smart Note: SN-4309 — The Actual Video, Not Her Picture*
 
 **Category:** Corrections — the agreement presentation, the player, the video, the images
 
