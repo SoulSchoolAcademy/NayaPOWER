@@ -4,7 +4,7 @@
 
 **NN-20261119-two-codexes · Naya Note · 2026-11-19 ~21:30–21:45 MST (~04:30–04:45Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — The Two Codexes (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4241 — The Two Codexes*
 
 **Category:** Vision — the two codexes, human and digital
 
