@@ -2277,6 +2277,50 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
   #fpNHold .deal-seal, .fp-intro-seal .deal-seal{animation:none}
 }
 </style>
+
+<style id="fpDeckAF">
+/* ============ AGREEMENT FRAME — DECK (2026-11-19) — the visual story, same frame ============
+   Scoped to body.af-deck-on (deck view only): the landing, bridge and letter
+   never see these rules. Dots go. The deck frame is the same system as the
+   text frame: gold outer rim + purple inner hairline + harvested corner
+   ornaments + light INSIDE the rim. Corners use screen blend so the PNG's
+   black centre never covers the board. */
+body.af-deck-on #deckDots{display:none!important}
+body.af-deck-on #deckControls{justify-content:center!important;margin-top:4px!important}
+body.af-deck-on #deckControls .letter-all{font-size:17px!important}
+.af-deck-frame{position:fixed;inset:0;pointer-events:none;z-index:60}
+.af-deck-frame::before{content:"";position:absolute;inset:0;border:2px solid #d4a017}
+.af-deck-frame::after{content:"";position:absolute;inset:10px;border:1px solid rgba(142,36,170,.65)}
+.af-deck-frame .af-corner{position:absolute;width:208px;height:208px;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a);background-size:200% 200%;mix-blend-mode:screen}
+.af-deck-frame .af-corner.tl{top:0;left:0;background-position:0 0}
+.af-deck-frame .af-corner.tr{top:0;right:0;background-position:100% 0}
+.af-deck-frame .af-corner.bl{bottom:0;left:0;background-position:0 100%}
+.af-deck-frame .af-corner.br{bottom:0;right:0;background-position:100% 100%}
+.af-deck-light{position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 12px #fff,0 0 26px #8e24aa,0 0 44px #8e24aa;animation:frameLightAF 60s linear infinite}
+@keyframes frameLightAF{0%{top:14px;left:14px}25%{top:14px;left:calc(100% - 26px)}50%{top:calc(100% - 26px);left:calc(100% - 26px)}75%{top:calc(100% - 26px);left:14px}100%{top:14px;left:14px}}
+/* STYLE 2 — CALENDAR FRAME (desktop visual, >=1024px): the calendar's chrome —
+   full-bleed obsidian, rim-only, maximum spacing. Two columns: words left,
+   showcase large right. The board fills the frame. */
+@media (min-width:1024px){
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)){display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);column-gap:32px;max-width:1180px;margin-left:auto!important;margin-right:auto!important;background:#050607;border:1.5px solid var(--tone,#8e24aa);border-radius:20px;padding:28px;box-shadow:0 18px 48px rgba(0,0,0,.65)}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-blocktop{grid-column:1;grid-row:1}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-nutshell{grid-column:1;grid-row:2}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .lb-showcase{grid-column:2;grid-row:1/span 2;align-self:center;margin:0}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-foot{grid-column:1/-1}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .deck-next{grid-column:1/-1;justify-self:center}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-title{font-size:25px!important;color:#ffffff!important}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-nutshell p{font-size:19px!important;line-height:1.55!important;color:#ffffff!important}
+}
+/* STYLE 4 — ROYAL COMPACT VISUAL (mobile visual, <768px): stacked, image first. */
+@media (max-width:767px){
+.af-deck-frame .af-corner{display:none}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)){display:flex;flex-direction:column;max-width:none;background:#050607;border:1.5px solid var(--tone,#8e24aa);border-radius:20px;padding:16px;box-shadow:0 18px 48px rgba(0,0,0,.65)}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .lb-showcase{order:-1;margin:0 0 12px}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .lb-showcase img{max-height:30vh;object-fit:cover;width:100%}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-title{font-size:25px!important;color:#ffffff!important}
+body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-nutshell p{font-size:17px!important;line-height:1.5!important;color:#ffffff!important}
+}
+</style>
 </head>
 <body>
 <div class="fp-login">
@@ -2376,7 +2420,7 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
 <p class="deck-sub">Nine pictures. One beautiful story.</p>
 <div class="fp-royal-lines" id="fpRoyalLines"><p>Let me show you what NayaNET is, why we&rsquo;re building it, how the intelligence connects, and what it could mean for you.</p><p>You can experience the visual story or read our Collective Agreement in full.</p><p>Take your time. Explore. Ask questions.</p><p><b>We&rsquo;d rather earn your trust than simply ask for it.</b></p><p class="fp-royal-signoff"><i>Your world. Your choice. Our collective promise.</i></p><p class="fp-royal-close">Create. Connect. Grow with US.</p></div>
 <div class="fp-intro-choices" id="fpIntroChoices"><button class="fp-intro-choice" id="fpChoiceDeck" type="button" style="--tone:#8e24aa">Begin the visual story <span class="fp-btn-jewel" aria-hidden="true"></span></button><button class="fp-intro-choice" id="fpChoiceLetter" type="button" style="--tone:#07925f">Read the agreement <span class="fp-btn-jewel" aria-hidden="true"></span></button></div> <div class="fp-intro-seal" aria-hidden="true"><div class="deal-seal"><span class="deal-seal-mark" aria-hidden="true">N</span></div></div> <div class="letter-controls" id="deckControls">
-<div class="letter-dots" id="deckDots" aria-hidden="true"><span class="ldot on" style="--dc:#a06bff"></span><span class="ldot" style="--dc:#3fb8ff"></span><span class="ldot" style="--dc:#2fe89e"></span><span class="ldot" style="--dc:#ffbf3d"></span><span class="ldot" style="--dc:#e84fff"></span><span class="ldot" style="--dc:#ff9a5a"></span><span class="ldot" style="--dc:#6675ff"></span><span class="ldot" style="--dc:#ff5e6c"></span><span class="ldot" style="--dc:#40d3bb"></span></div>
+
 </div>
 <div id="deckBody" data-smart-block="deck">
 <article class="intel-board letter-beat" data-beat="1" style="--tone:#a06bff"><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/deck-royal-unfolding-20261115/face-1.jpg&amp;ref=deck/royal-unfolding-20261115&amp;cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">THE OVERVIEW</span><h2 class="ib-title">The Collective Intelligence Network</h2><p class="ib-subtitle">&ldquo;A smarter, connected world &mdash; built together with people and AIs.&rdquo;</p></div></div></div><div class="ib-nutshell"><p>Hi, I&rsquo;m Naya &mdash; this is NayaNET, the Collective Intelligence Network: a whole new world, built by Nayas and operated by Nayas, for people and AIs to live and work in together.</p><p>The old internet was a thousand apps, nothing connected, nothing that knew you &mdash; and 99% of people fail on it.</p><p>Your notes, ideas and knowledge stay private in your Smart Vault until you choose to share them, and when you do, the NayaPOWER engine organizes it all, so people and AIs can learn, connect, and grow together.</p></div><figure class="lb-showcase"><img src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/deck-royal-unfolding-20261115/slide-1.jpg&amp;ref=deck/royal-unfolding-20261115&amp;cb=7d98080acb036ee0dfc0857e151b611ab6639a5b" alt="NayaNET — The Collective Intelligence Network: the overview"></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/deck-royal-unfolding-20261115/deck-logo.jpg&amp;ref=deck/royal-unfolding-20261115&amp;cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; The Deck</div><button class="p3-enter letter-next deck-next" type="button" data-beat="1">Keep reading &#9670;</button></article>
@@ -4538,5 +4582,46 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-seal{display:block;margin:
   window.__fpStage={state:S,enter:enterStage,exit:exitStage,render:render};
 })();
 </script>
+
+<script>
+/* ============ AGREEMENT FRAME — DECK JS (2026-11-19) ============
+   Turns the deck frame on only while the visual story is the view:
+   ?stage=deck on load, "Begin the visual story" on tap. Turns it off
+   when the citizen leaves for the letter or the opening page, so the
+   letter boards and the bridge never wear the deck frame. */
+(function wireDeckAF(){
+  function on(){
+    document.body.classList.add('af-deck-on');
+    var f = document.querySelector('.af-deck-frame');
+    if (!f) {
+      f = document.createElement('div');
+      f.className = 'af-deck-frame';
+      f.setAttribute('aria-hidden', 'true');
+      ['tl','tr','bl','br'].forEach(function(c){
+        var d = document.createElement('div');
+        d.className = 'af-corner ' + c;
+        f.appendChild(d);
+      });
+      var l = document.createElement('div');
+      l.className = 'af-deck-light';
+      f.appendChild(l);
+      document.body.appendChild(f);
+    }
+  }
+  function off(){ document.body.classList.remove('af-deck-on'); }
+  try { var st = new URLSearchParams(window.location.search).get('stage'); if (st === 'deck') on(); } catch (e) {}
+  var c1 = document.getElementById('fpChoiceDeck');
+  if (c1) c1.addEventListener('click', function(){ setTimeout(on, 0); });
+  var c2 = document.getElementById('fpBridgeDeck');
+  if (c2) c2.addEventListener('click', function(){ setTimeout(on, 0); });
+  var l1 = document.getElementById('fpChoiceLetter');
+  if (l1) l1.addEventListener('click', function(){ setTimeout(off, 0); });
+  var l2 = document.getElementById('fpBridgeLetter');
+  if (l2) l2.addEventListener('click', function(){ setTimeout(off, 0); });
+  var ex = document.getElementById('fpDeckBack');
+  if (ex) ex.addEventListener('click', function(){ setTimeout(off, 0); });
+})();
+</script>
+
 </body>
 </html>
