@@ -4,7 +4,7 @@
 
 **NN-20261120-fix-it-where-you-know-the-problem · Naya Note · 2026-11-20 ~14:21 MST (call 3033fdbe)**
 
-*Paired Smart Note: SN-pending — Fix It Where You Know the Problem (takes the next free number at filing)*
+*Paired Smart Note: SN-4320 — Fix It Where You Know the Problem*
 
 **Category:** Decisions — the merges, who does what
 
