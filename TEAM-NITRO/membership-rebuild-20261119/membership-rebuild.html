@@ -22477,8 +22477,8 @@ var SA_COURSE_IMG = 'https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NI
 var SA_CODE_TTL_MS = 10 * 60 * 1000; /* a sent code fades in ten minutes */
 var saCur = null;            /* current membership object */
 var saLessonIdx = {fac:0, academy:0};
-var saLessonOpen = false;
-var saPendingLesson = null; /* FIX-4 (item 2): a chooser-card pick's Day 1, waiting for entry - set by the capture handler, consumed once by saEnterCourse (it survives the login door), cleared when the door is abandoned or the pick never enters (paid). */ /* FIX-1 2026-11-19: a lesson is open — saShowView('lessons') keeps the feed hidden while true; saShowToc() clears it on the way back to the chooser. */
+var saPendingLesson = null; /* FIX-4 (item 2): a chooser-card pick's Day 1, waiting for entry - set by the capture handler, consumed once by saEnterCourse (it survives the login door), cleared when the door is abandoned or the pick never enters (paid). */
+var saLessonOpen = false; /* FIX-1 2026-11-19: a lesson is open — saShowView('lessons') keeps the feed hidden while true; saShowToc() clears it on the way back to the chooser. */
 var saLevel = 'toc';         /* 'toc' = course presentation | 'section' = section page */
 var saSection = 'videos';    /* 'videos' | 'audios' | 'lessons' */
 var saPcIdx = 0, saPcShowAll = false;
