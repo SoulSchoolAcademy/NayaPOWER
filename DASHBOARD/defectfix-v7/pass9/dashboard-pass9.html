@@ -4085,6 +4085,10 @@ body.dash-drawer-open .dash-shell .rail-left-x {display: grid;}
 <!-- 2026-11-01 — Shawn: SETTINGS PANEL. View options. PASS-11 (1): fullscreen / hero mode are gone — one view only. -->
 <div id="settings-panel">
   <button data-action="nav">☰ Show navigation</button>
+  <button type="button" data-set-card="0">Preferences</button>
+  <button type="button" data-set-card="1">App behaviour</button>
+  <button type="button" data-set-card="2">Identity</button>
+  <button type="button" data-set-card="3">Install as app</button>
 </div>
 <!-- SMART-BAR-SYSTEM v1.0: top mount -->
 <div class="nsb-topstack" id="nsbTopstack">
@@ -5578,7 +5582,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
      One viewpoint, nothing else in it. The wrapper is scaled by fitHero(). -->
 <div id="os-hero-fit">
 <div class="os-score-elegant" id="os-score-elegant">
-  <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile">7</span><span class="os-skel-tile">0</span><span class="os-skel-tile">%</span></span></div>
+  <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile">4</span><span class="os-skel-tile">4</span><span class="os-skel-tile">%</span></span></div>
   <div class="os-se-cap" id="os-se-cap">TOTAL SCORE</div>
   <div class="os-hero-updated" id="os-hero-updated"></div>
   <div class="platter big"></div>
@@ -20668,7 +20672,7 @@ window.ldLayoutNodes = ldLayoutNodes;
            honest skeleton. */
         var _c = (typeof window._featuredCenter === 'function') ? window._featuredCenter(v.center) : v.center;
         if (typeof window._osTilesSet === 'function'){ window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : ((typeof _c === 'number' && isFinite(_c)) ? _c : null)); }
-        else if ((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) || !(typeof v.center === 'number' && isFinite(v.center))) bigVal.innerHTML = '<span class="os-skel-tile">7</span><span class="os-skel-tile">0</span><span class="os-skel-tile">%</span>';
+        else if ((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) || !(typeof v.center === 'number' && isFinite(v.center))) bigVal.innerHTML = '<span class="os-skel-tile">4</span><span class="os-skel-tile">4</span><span class="os-skel-tile">%</span>';
         else bigVal.textContent = _fmt(v.center);
       }
       /* HERO CLEANUP 2026-11-14 (Part 3): the caption under the tiles
@@ -21880,7 +21884,7 @@ function loadPointsBoard(_t){
                168px white em-dash for the whole ledger load. Loading or
                stale: re-assert the skeleton (the dark loading face). Loaded:
                the spaced number is the only text ever written. */
-            if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="os-skel-tile">7</span><span class="os-skel-tile">0</span><span class="os-skel-tile">%</span>';
+            if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="os-skel-tile">4</span><span class="os-skel-tile">4</span><span class="os-skel-tile">%</span>';
             else bigVal.textContent = window._osSpc(Math.round(displayTotal));
           }
         }
@@ -22094,7 +22098,7 @@ function loadPointsBoard(_t){
             /* PASS 3: the big number is the tile number now (the $ tile follows the mode inside _osTilesSet). */
             if (typeof window._osTilesSet === 'function'){ var _c3 = (typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total); window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : ((typeof _c3 === 'number' && isFinite(_c3)) ? _c3 : null)); }
             /* FIX PASS 4 (fail 10): no bare "—" — skeleton while loading, the spaced number when loaded. */
-            else if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="os-skel-tile">7</span><span class="os-skel-tile">0</span><span class="os-skel-tile">%</span>';
+            else if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="os-skel-tile">4</span><span class="os-skel-tile">4</span><span class="os-skel-tile">%</span>';
             else bigVal.textContent = window._osSpc(((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)));
           }
           /* PASS 1 v7 (2026-11-05) — a PTS/% flip re-reads the live ledger; the derivation under the number re-renders with it. */
@@ -27055,7 +27059,7 @@ window._repaintOrbMinis = function(box){
       S.target = null; S.revealed = false; S.start = null; S.reels = [];
       TARGET = 0;
       el.classList.remove('landed');
-      el.innerHTML = '<span class="os-skel-tile">7</span><span class="os-skel-tile">0</span><span class="os-skel-tile">%</span>';
+      el.innerHTML = '<span class="os-skel-tile">4</span><span class="os-skel-tile">4</span><span class="os-skel-tile">%</span>';
       return;
     }
     value = Math.round(value);
@@ -29821,7 +29825,7 @@ body.viewport-focus #viewport-back{
 /* NEUTRALISER — the Dashboard's own !important seg shadow (bar-depth work) would sit under every Hub tile; the Hub's tiles carry their own shadow, so the seg shadow goes, scoped to this bar only. */
 #os-bottom3 .notif-seg{box-shadow:none !important;}
 </style>
-<nav id="os-bottom3" class="os-bottom3 notif-six notif-bar" aria-label="Dashboard"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/connections" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3.1"/><path d="M2.8 19.5c0-3.2 2.6-5.5 5.7-5.5s5.7 2.3 5.7 5.5"/><circle cx="16.8" cy="9" r="2.5"/><path d="M15.8 14.6c2.6.3 4.7 2.4 4.7 4.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
+<nav id="os-bottom3" class="os-bottom3 notif-six notif-bar" aria-label="Dashboard"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="personal" style="--nc:#0f52ba" href="https://nayanet.app/personal" aria-label="PERSONAL — open" title="PERSONAL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">PERSONAL</span></a><a class="notif-seg" data-notif="business" style="--nc:#07925f" href="https://nayanet.app/business" aria-label="BUSINESS — open" title="BUSINESS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">BUSINESS</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="ecosystem" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/connections" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3.1"/><path d="M2.8 19.5c0-3.2 2.6-5.5 5.7-5.5s5.7 2.3 5.7 5.5"/><circle cx="16.8" cy="9" r="2.5"/><path d="M15.8 14.6c2.6.3 4.7 2.4 4.7 4.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
 <!-- GREETING-OUT FIX 2026-11-17 (§3.5) — the corner control for the Dashboard bar (the page-icon-bar law: a small corner control can hide it; Settings can turn it off; by default it sits there). A real object, not flat: obsidian, white rim, top light. The down chevron folds the bar down; the up chevron brings it back. -->
 <button type="button" id="os-b3-hide" aria-label="Hide the Dashboard bar" title="Hide the Dashboard bar">▾</button>
 <script>
@@ -31343,4 +31347,80 @@ body{padding-bottom:170px !important;}
   .os-sl-gauge-dial.os-sl-state-cell + .os-sl-gauge-lab{margin-top:83px !important;}
 }
 </style>
+<style id="os-followup15-20261119">
+/* FOLLOW-UP 15 2026-11-19 - Shawn's live call ~18:37 MST ("get them all three moving").
+   (1) GEAR PASS-THROUGH, CURED BY GEOMETRY. f14 proved the gear clear at scroll
+   0/1200/2400, but the f14 checker measured overlap at scroll 11-86: the gear is
+   position:absolute (PASS-1 v4 - deliberate, so a fixed gear never covers content
+   at rest), so it scrolls up through the sticky X's band (X x1870-1906, y58-94).
+   Any gear in the X's x-range passes through. The cure moves the gear OUT of the
+   X's x-range: right:64 -> x1816-1856, 14px left of the X's left edge (1870), at
+   EVERY scroll position - the x-ranges are disjoint, so no scroll offset can
+   overlap them. top stays 104 (10px below the X at scroll 0, 32px below the
+   collapsed eco-plus at y24-72). The gear still scrolls away (v4 preserved).
+   CHECKER: 9-point elementFromPoint probe at the new box (x1816-1856, y104-144)
+   + scroll sweep 0-200 in 10px steps - zero overlap at EVERY step.
+   (2) PANEL FOLLOWS THE GEAR. top:156 = gear bottom (144) + 12 - the gear
+   handler's own formula (sp.style.top = gear.bottom+12), so the pin and the
+   handler now AGREE instead of fighting (f13 pin 124 vs handler 156). right:64
+   unchanged (handler: innerWidth - gear.right = 64). Panel y156-206, x1686-1856:
+   62px below the X, 12px below the gear, clear of both eco-plus positions.
+   Containment restated from the f13 pin. The tabs-on clear lane grows 64 -> 112px:
+   the gear's left edge is now 1816, so pills must end by 1808.
+   (3) SETTINGS IN FRAME. #settings and its cards get scroll-margin-top:120px so
+   showView('settings') lands the section clear of the sticky top bar.
+   (4) DRILL GAUGES, ONE SIZE. f13 pinned .os-sl-gauge-dial to 150px, but the drill
+   gauge (.os-drill-gauge) is a different class at width:70% of its container -
+   relative, so it renders at different sizes in different drills. It now takes
+   the same harvested canonical size: 150px desktop, 120px phone. Same weight,
+   same materials - the f13 numbers, verbatim.
+   (5) BOTTOM BAR, NEW KEYS. The activity/mail/eco selectors below are re-issued
+   for the renamed segs (business/ecosystem); the old ones are dead but stay in
+   the file, untouched. */
+@media (min-width:701px){
+  #page-settings{top:104px !important;right:64px !important;}
+  #settings-panel{top:156px !important;right:64px !important;max-width:calc(100vw - 32px) !important;box-sizing:border-box !important;overflow:hidden !important;}
+  body.os-tabs-on #nsbTop .nsb-row{padding-right:112px !important;}
+}
+#settings{scroll-margin-top:120px !important;}
+#settings .ph-card{scroll-margin-top:120px !important;}
+@media (min-width:561px){
+  .os-drill-gauge{width:150px !important;}
+  .os-drill-gauge .tn-mini-mount{width:150px !important;max-width:150px !important;}
+}
+@media (max-width:560px){
+  .os-drill-gauge{width:120px !important;}
+  .os-drill-gauge .tn-mini-mount{width:120px !important;max-width:120px !important;}
+}
+#os-bottom3 [data-notif="business"] .notif-tile svg{width:22px !important;height:22px !important;}
+#os-bottom3 [data-notif="plus"] .notif-tile::after,
+#os-bottom3 [data-notif="business"] .notif-tile::after,
+#os-bottom3 [data-notif="ecosystem"] .notif-tile::after{display:none !important;}
+</style>
+<script id="os-followup15-20261119">
+/* FOLLOW-UP 15 - settings-panel card jumps. The four new panel buttons
+   (Preferences / App behaviour / Identity / Install as app) close the panel,
+   open the settings view through its own harvested path (osShowView), then
+   bring the matching card into the frame. Card order is the DOM order of
+   #settings .ph-card: 0 Preferences, 1 App behaviour, 2 Identity,
+   3 Install as app. */
+(function(){
+  var panel=document.getElementById('settings-panel');
+  if(!panel) return;
+  panel.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('[data-set-card]'):null;
+    if(!b) return;
+    var i=parseInt(b.getAttribute('data-set-card'),10);
+    panel.classList.remove('open');
+    try{ if(typeof window.osShowView==='function') window.osShowView('settings'); }catch(_){}
+    setTimeout(function(){
+      try{
+        var cards=document.querySelectorAll('#settings .ph-card');
+        var c=cards&&cards[i];
+        if(c&&c.scrollIntoView) c.scrollIntoView({behavior:'smooth',block:'start'});
+      }catch(_){}
+    },650);
+  });
+})();
+</script>
 </body></html>
