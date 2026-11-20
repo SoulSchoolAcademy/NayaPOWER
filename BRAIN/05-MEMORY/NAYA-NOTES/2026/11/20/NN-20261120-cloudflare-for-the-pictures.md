@@ -4,7 +4,7 @@
 
 **NN-20261120-cloudflare-for-the-pictures · Naya Note · 2026-11-20 ~15:24–15:27 MST**
 
-*Paired Smart Note: SN-pending — Cloudflare for the Pictures (takes the next free number at filing)*
+*Paired Smart Note: SN-4337 — Cloudflare for the Pictures*
 
 **Category:** Decision — his question, answered with a verified split
 
