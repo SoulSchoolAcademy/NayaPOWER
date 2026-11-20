@@ -4,7 +4,7 @@
 
 **NN-20261120-the-official-agreement-front-to-end · Naya Note · 2026-11-20 ~11:09–11:12 MST (18:09–18:12Z)**
 
-*Paired Smart Note: SN-pending — The Official Agreement, Front to End (takes the next free number at filing)*
+*Paired Smart Note: SN-4281 — The Official Agreement, Front to End — One to Twenty-Seven, No Doubles*
 
 **Category:** Decisions — the official Collective Agreement, the numbered set assembled front to end
 
