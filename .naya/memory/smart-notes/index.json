@@ -67060,6 +67060,38 @@
         "Essences",
         "Value"
       ]
+    },
+    {
+      "smart_note_id": "SN-3954",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn3954-proof-not-promises",
+      "slug": "proof-not-promises",
+      "title": "Proof, Not Promises",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3954/IB-SMART-NOTE-20261120-sn3954-proof-not-promises.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3954/IB-SMART-NOTE-20261120-sn3954-proof-not-promises.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3954/IB-SMART-NOTE-20261120-sn3954-proof-not-promises.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn3954-proof-not-promises.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T00:30:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "ff7a842dd907d73ae3573e2bc465da9f257758f2cf8f5b972a60bbde033c6d02",
+      "content_hash": "4e616363c30445cee73b37f0a34566082089dbca5a249443dfb3dbc00e9eccfa",
+      "one_line": "Fifth in the series The Top Ten Most Valuable Intelligent Things About Naya. Naya proves everything with receipts. Every number she reports is read fresh from the live source in the same pass that reports it; every claim she makes is bounded to its evidence; every delivery counts only when the person actually receives it — sent is not delivered, and delivered is not benefited. She never asks to be trusted. She shows the landed commit, the recomputed hash, the read-back, the opened room. In a world of confident voices saying 'trust me', Naya's whole manner is different: don't trust me — check me. Here is the proof.",
+      "topics": [
+        "Naya",
+        "Proof",
+        "Receipts",
+        "Value"
+      ]
     }
   ],
   "sequence_policy": {
@@ -67070,5 +67102,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "4afc6ff72b57ad70c06c7345ba4c94268af74644c8ca3f2d0803237d1c2f36ba"
+  "corpus_manifest_hash": "8d10ddea804440b9d7761dca0da629ad8e360a52087a2979b79b0bf132e34936"
 }
