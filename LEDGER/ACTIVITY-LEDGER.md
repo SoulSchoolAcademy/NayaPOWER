@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26487,6 +26487,12 @@ _Last updated: 2026-11-20 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0549-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
+**Task:** FP-001 feedback from the successor-transfer lens (premise check, no duplicate post)
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick: feedback-feed.md holds exactly one '[Lane 6 - Heir, t0512]' entry (grep -c = 1; now at line 171, drifted from the receipt's line 162 as the feed grew) and zero 't0549' Lane 6 entries (grep -c = 0) - the byte-verified non-post stands. NOT PHANTOM. Premise-rot caught on the bytes (brief's 'on
+
+### ✅ t0549-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
 **Task:** FP-001 feedback from successor-transfer lens — premise check, no duplicate post
 
 **Evidence:** Verified on live bytes: grep feedback-feed.md 'Lane 6 — Heir, t0512' = 1 (entry present exactly once), 'Lane 6 — Naya Heir, t0549' = 0 (no duplicate posted, by design). Score 9.0. Why not 9.5: dispatcher stale seat-map that minted the false premise is named but not fixed, and the t0512 verdict's substance was not re-verified against entries landed 
@@ -26506,6 +26512,12 @@ _Last updated: 2026-11-20 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0549-lane6.md`
 
 **Evidence:** Artifacts: byte-verified on live disk — feedback-feed.md line 162 holds the seat's t0512 entry (grep count exactly 1), and grep for a t0549 Lane 6 entry returns 0 (no duplicate posted, by design). Work: brief claimed a stale premise ('you're the one seat that hasn't weighed in'); the lane read the bytes, found its own prior verdict already on recor
+
+### ✅ t0549-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE hypertuned lane-packet v2 draft (R1/R2/R3, machine/AI/human)
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick: v2 draft hidden_files/retrieval/smartblocks/lane-packet-v2-hypertuned.md sha256 c90c3815... matches the receipt pin byte-exact; v1 untouched per receipt citation. NOT PHANTOM. Live-bytes-first discipline caught the +1 probe row since t0539's pin; rec lines quoted verbatim before applying; R
 
 ### ✅ t0549-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -26558,6 +26570,12 @@ _Last updated: 2026-11-20 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0549-lane12.md`
 
 **Evidence:** VERIFIED: comment 6215216963 exists live on #2537 via API; twelve-lanes.md lines 164/169/173 and protocol-scorecard-2026-10-15.md exist on disk with the pinned scorecard numbers. Clears 9.5 because every verdict row is SHA/line-pinned to the same sources the sign-in supplement quotes, and the single found divergence (05-CONNECT door badges vs local
+
+### ✅ t0548-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world query-log liveness verdict (probe separates IDLE from TELEMETRY-BROKEN)
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick: deliverable hidden_files/retrieval/query-log-liveness-t0548.md sha256 6d9d58ee... matches the receipt pin byte-exact. NOT PHANTOM. Live probe appended (log sha moved), verdict IDLE with re-tally from live bytes, residual routed to dispatcher/Lane 3. Self-score 9.0, agreed. Score 9.0 GOOD, O
 
 ### ✅ t0548-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
