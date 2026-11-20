@@ -4,7 +4,7 @@
 
 **NN-20261119-we-needed-each-other · Naya Note · 2026-11-19 ~21:1x MST (~04:1xZ 2026-11-20)**
 
-*Paired Smart Note: SN-pending — We Needed Each Other (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4236 — We Needed Each Other*
 
 **Category:** Vision — the mission, confirmed in his own words
 
