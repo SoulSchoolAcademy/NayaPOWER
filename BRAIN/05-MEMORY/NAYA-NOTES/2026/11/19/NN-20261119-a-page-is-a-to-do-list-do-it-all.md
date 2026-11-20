@@ -4,7 +4,7 @@
 
 **NN-20261119-a-page-is-a-to-do-list-do-it-all · Naya Note · 2026-11-19 ~18:33–18:34 MST (01:33–01:34Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — A Page Is a To-Do List, Do It All (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4209 — A Page Is a To-Do List, Do It All*
 
 **Category:** Law — How the machine works (the Checklist Law, restated)
 
