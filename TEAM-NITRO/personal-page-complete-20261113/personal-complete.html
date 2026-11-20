@@ -12732,7 +12732,7 @@ window.NayaNotif = window.NayaNotif || {
       if (k === 'mail') { this.set('mail', 0); window.location.href = 'https://nayanet.app/rooms/mail'; }
       else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed-activity'); else location.hash = '#/hub/feed-activity'; }
       else if (k === 'spaces') { this.set('spaces', 0); window.location.href = 'https://nayanet.app/space'; }
-      else if (k === 'eco') { if (window.NayaChassis && window.NayaChassis.openRightRail) window.NayaChassis.openRightRail(); else window.location.href = 'https://nayanet.app/#/hub'; }
+      else if (k === 'eco') { window.location.href = 'https://nayanet.app/hub'; } /* FRAME-FIX2 2026-11-19 (F4): ECOSYSTEM = the Hub -- the old branch opened the right rail instead of navigating. */
       else if (k === 'personal') { if (window.osShowView) window.osShowView('home'); else window.location.href = 'https://nayanet.app/personal'; }
       else if (k === 'business') { window.location.href = 'https://nayanet.app/business'; }
       this.refresh();
@@ -12844,6 +12844,34 @@ window.NayaNotif = window.NayaNotif || {
     if (mh > window.innerHeight - 16) { menu.style.maxHeight = (window.innerHeight - 16) + 'px'; menu.style.overflowY = 'auto'; }
     else { menu.style.maxHeight = ''; menu.style.overflowY = ''; }
   };
+
+  /* FRAME-FIX2 2026-11-19 (F2/F3) -- build the ADD/CONNECT menus the toggle
+     looks up. They never existed on this page (0 in the bytes), so both taps
+     highlighted and showed nothing. Built once, in the file's own menu
+     language; the toggle, the outside-click closer and Escape already know
+     them by id/class. Items use only working parts already on this page. */
+  (function buildHubPlusMenus(){
+    function build(){
+      if (document.getElementById('hubPlusCreate')) return;
+      function item(label, color, fn){ var b = document.createElement('button'); b.type = 'button'; b.textContent = label; b.style.setProperty('--mc', color); b.addEventListener('click', function(){ window.hubClosePlusMenus(); fn(); }); return b; }
+      function openComposer(mode){ var m = document.querySelector('.tg-mode[data-tg-mode="' + mode + '"]'); var body = document.getElementById('os-post-body'); if (m) m.click(); if (body) { body.scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(function(){ try{ body.focus(); }catch(e){} }, 350); } }
+      function openMessenger(){ try{ document.body.classList.add('msg-open'); }catch(e){} }
+      function openMail(){ if (window.osShowView) window.osShowView('message'); }
+      function openConnections(){ if (window.osShowView) window.osShowView('people'); }
+      var create = document.createElement('div');
+      create.id = 'hubPlusCreate'; create.className = 'hub-plusmenu'; create.hidden = true; create.setAttribute('role', 'menu'); create.setAttribute('aria-label', 'Create');
+      [['Make a post', '#8e24aa', 'post'], ['Naya note', '#07925f', 'naya'], ['Smart note', '#8e24aa', 'smart']].forEach(function(x){ create.appendChild(item(x[0], x[1], function(){ openComposer(x[2]); })); });
+      create.appendChild(item('Message', '#0f52ba', openMessenger));
+      create.appendChild(item('Mail', '#0f52ba', openMail));
+      document.body.appendChild(create);
+      var connect = document.createElement('div');
+      connect.id = 'hubPlusConnect'; connect.className = 'hub-plusmenu'; connect.hidden = true; connect.setAttribute('role', 'menu'); connect.setAttribute('aria-label', 'Connections');
+      connect.appendChild(item('All connections', '#c62828', openConnections));
+      connect.appendChild(item('Message', '#0f52ba', openMessenger));
+      document.body.appendChild(connect);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build); else build();
+  })();
 
   /* ——— HUB SMART NOTE COMPOSER (FORMAT FIX2, 2026-11-17) ———
      The + CREATE "Smart note" item opens this composer ON the staged Hub —
@@ -30189,7 +30217,7 @@ window.NayaNotif = window.NayaNotif || {
       if (k === 'mail') { this.set('mail', 0); window.osShowView && window.osShowView('inbox'); }
       else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} window.osShowView && window.osShowView('dashboard'); }
       else if (k === 'spaces') { this.set('spaces', 0); if (window.pcToggleDrawer) window.pcToggleDrawer('left'); }
-      else if (k === 'eco') { if (window.pcToggleDrawer) window.pcToggleDrawer('right'); }
+      else if (k === 'eco') { window.location.href = 'https://nayanet.app/hub'; } /* FRAME-FIX2 2026-11-19 (F4): ECOSYSTEM = the Hub -- the old branch only toggled the right drawer, with no navigation at all. */
       else if (k === 'personal') { if (window.osShowView) window.osShowView('home'); else window.location.href = 'https://nayanet.app/personal'; }
       else if (k === 'business') { window.location.href = 'https://nayanet.app/business'; }
       this.refresh();
@@ -41972,15 +42000,16 @@ function saWire(){
      page's own bubble handlers (which would navigate away). Only the
      three defaults, matched by name AND url \u2014 a citizen's own button
      keeps behaving exactly as today. */
+  /* FRAME-FIX2 2026-11-19 (F1): the cover pills follow their href. The old
+     branch intercepted every cover pill matching SA_MEMBERSHIPS, prevented
+     the default, and routed to the login gate -- so the tap never navigated.
+     The Memberships Open links already navigate because they are plain
+     anchors the handler never sees; the pills now behave the same way.
+     Destinations unchanged. The drawer links and card Open buttons keep
+     their gate in the branches below. */
   document.addEventListener('click', function(e){
     var a = e.target && e.target.closest ? e.target.closest('a.mw-mship-btn[data-mw-cover]') : null;
-    if(a){
-      var label = (a.getAttribute('data-mw-cover')||'').toLowerCase();
-      var href = (a.getAttribute('href')||'');
-      var m = SA_MEMBERSHIPS[label];
-      if(m && saSameUrl(href, m.url)){ e.preventDefault(); e.stopPropagation(); saOpen(label); return; }
-      return;
-    }
+    if(a){ return; }
     var open = e.target && e.target.closest ? e.target.closest('[data-mw-open-mship]') : null;
     if(open){
       var nm = (open.getAttribute('data-mw-open-mship')||'').toLowerCase();
@@ -46490,6 +46519,18 @@ setTimeout(function(){ try{ sweepCards(document); ensureNayaBtn(); collapseSmart
 #mwCoverMships{position:static!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;gap:10px!important;max-width:none!important;width:auto!important;margin:14px 24px 0!important;z-index:1}
 #mwCoverMships:empty{display:none!important}
 @media (max-width:640px){ #mwCoverMships{margin:12px 16px 0!important} }
+/* FRAME-FIX2 2026-11-19 (F2/F3) -- bottom-bar ADD/CONNECT menus. hubTogglePlusMenu
+   unhides #hubPlusCreate / #hubPlusConnect and sets left/bottom inline, but the
+   elements never existed on this page, so both taps were silent no-ops. The menus
+   are built by JS beside hubTogglePlusMenu; this is their chrome -- obsidian pill
+   menu, fixed above the bottom bar, above the drawers. */
+.hub-plusmenu{position:fixed;z-index:1200;transform:translateX(-50%);min-width:230px;max-width:min(320px,86vw);
+  background:linear-gradient(135deg,#1e1e26,#0a0a0f);border:1.5px solid rgba(255,255,255,.9);border-radius:18px;
+  box-shadow:0 14px 40px rgba(0,0,0,.65),0 0 24px -6px rgba(142,36,170,.55);padding:8px;display:flex;flex-direction:column;gap:6px}
+.hub-plusmenu[hidden]{display:none}
+.hub-plusmenu button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:12px 14px;border-radius:12px;
+  background:transparent;border:1px solid transparent;color:#fff;font-size:17px;font-weight:700;cursor:pointer}
+.hub-plusmenu button:hover,.hub-plusmenu button:focus-visible{border-color:var(--mc,#8e24aa);background:rgba(255,255,255,.06)}
 /* F2 — card header at phone width: title/stamp block + three action buttons
    must fit INSIDE the 302px card (content box 264px) at 390.
    MECHANISM (measured on the base, long AND short title): the stamp is
