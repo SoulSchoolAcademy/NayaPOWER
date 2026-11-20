@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 15:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 16:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25627,6 +25627,14 @@ _Last updated: 2026-11-20 15:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: [Lane 10 -- Naya Librarian, t0573] present exactly once under FP-003 header (grep count 1); t0541 entry live (count 2 incl anchor); section byte-intact. Real value: the brief's premise ('the map seat has not spoken') was FALSE on current bytes -- the have-I-spoken grep caught it before a duplicate was filed, and the entry was filed on a g
 
+### ✅ t0572 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** M3 wiring prep packet (SURGE slice b) — retrieval-authorization gate migration prep
+
+**Receipt:** `twelve-lane-receipts/t0572-lane9.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/m3-wiring-prep-packet-t0572.md exists at exactly 11,280 bytes as receipted; candidate branch naya/five-retrieval-auth-gate-t942 resolves via git ls-remote to e654f16e8a49e9a26309fd852695a0bef202673d — exact match to receipt pin. NOT PHANTOM. Self-score 9.0
+
 ### ✅ t0572-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** M3 wiring prep packet (SURGE slice b) - migration prep, no wiring
@@ -25648,6 +25656,14 @@ _Last updated: 2026-11-20 15:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0572-lane9.md`
 
 **Evidence:** VERIFIED: packet hidden_files/m3-wiring-prep-packet-t0572.md exists (11,280 bytes); live tip pin e8b4868ce402c2945a8990b1a5ddc69979b880fd == git ls-remote origin main EXACTLY (checked by scorer this run); candidate branch naya/five-retrieval-auth-gate-t942 == e654f16e8a49e9a26309fd852695a0bef202673d EXACTLY (checked by scorer this run); zero repo w
+
+### ✅ t0572 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Mechanization re-run (SURGE slice a) — verified already-done t0567 run
+
+**Receipt:** `twelve-lane-receipts/t0572-lane5.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: sealed-note-t0567.md sha256 38ccd002a5780cd5526b... exact match to receipt pin; results-t0567-decision-change.json 383b4bf3f7de30b3c8... exact match; decision_change_arm_t0567.py + overlap cellset file present in auto-retrieval/. NOT PHANTOM. Self-score 8.5, agreed. Sc
 
 ### ✅ t0572-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
