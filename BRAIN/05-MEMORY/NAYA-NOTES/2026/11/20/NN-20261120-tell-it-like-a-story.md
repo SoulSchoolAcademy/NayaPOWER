@@ -4,7 +4,7 @@
 
 **NN-20261120-tell-it-like-a-story · Naya Note · 2026-11-20 ~13:33–14:05 MST (call 8b19d313)**
 
-*Paired Smart Note: SN-pending — Tell It Like a Story — No Greeting Twice (takes the next free number at filing)*
+*Paired Smart Note: SN-4311 — Tell It Like a Story — No Greeting Twice*
 
 **Category:** Design — the agreement presentation, the words, the pacing
 
