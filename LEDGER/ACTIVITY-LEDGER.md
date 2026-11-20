@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26087,6 +26087,14 @@ _Last updated: 2026-11-20 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: rule v2 (b8e7fd11), instrument (302855cc), measurement JSON (c916ef02) all sha256-exact on disk; frozen 30-brief corpus by filename; WRONG 11->0, MANUAL RIGHT 26->37, AUTO honestly 0/46; rule posted to #2175 blind BEFORE measurement (6136446617), delta provisional (6136458383). Guard ordering held under no-second-seat pressure. Kept from 
 
+### ✅ t0556 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Pin-exact verdict on PR #2683's three red gates (delivery-gate, claim-evidence, team-review+scorecard) from live check-run bytes at the current tip
+
+**Receipt:** `twelve-lane-receipts/t0556-lane9.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: gate source semantics corroborated from the repo mirror at HEAD - tools/activation_gate.py emits TOOL-ERROR with exit 2 on API failure (line 1041) and tools/ci_claim_evidence_gate.py documents GATE_BLIND fail-closed exit 1 (docstring line 50, lines 251/256), matching t
+
 ### ✅ t0556-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** PR #2683 three-gate verdict (delivery/claim-evidence/team-review)
@@ -26108,6 +26116,14 @@ _Last updated: 2026-11-20 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0556-lane9.md`
 
 **Evidence:** VERIFIED: branch naya5/2642-reconcile-fresh exists on the remote at 1c8cd141397c91373e57dcc0ec79d0600355324a - live ls-remote matches the receipt's claimed head exactly; run IDs and exit-code table carried in the receipt. Why not 9.5: the ~04:07Z reset floor is keeper-sourced (window-corroborated 03:06-04:03Z reds, not independently byte-verified f
+
+### ✅ t0556 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** Wire the false-STALE repairs into a dispatcher-owned procedure; amend the t0540 disposition to late-but-complete
+
+**Receipt:** `twelve-lane-receipts/t0556-lane8.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: rotation JSON failed_deliveries_logged t0540/lane8 carries correction_tick t0556 with the CORRECTION text quoting receipt path, feed line 486, board comments 6134039120/6134063693, disposition LATE-BUT-COMPLETE, append-only original preserved. Procedure doc hidden_file
 
 ### ✅ t0556-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
 
@@ -26142,6 +26158,14 @@ _Last updated: 2026-11-20 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0556-lane8.md`
 
 **Evidence:** Verified: dispatcher-stale-check-procedure.md sha256 exact MATCH (6830c9d5...), twelve-lane-rotation.json carries correction_tick t0556 with full trace (feed line 486, board comments 6134039120/6134063693); append-only amendment preserved dispatcher concurrency; dry-run commands quoted verbatim, zero STALE findings, sharp edge surfaced (own lane6 t
+
+### ✅ t0556 — Team 6, Team Naya Scorer (Successor Transfer) — 8.0/10 [VERIFIED]
+
+**Task:** §8 acceptance probe on the FP-003 thread under HEIR-1/HEIR-2 (sealed pre-reg, programmatic brief, blinded scorer)
+
+**Receipt:** `twelve-lane-receipts/t0556-lane6.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: all 7 pre-reg pins match exactly (pre-reg 6cb653179b97, frozen thread fab7b1f78097, frozen packet 60d57d80a78a, drifted packet 4b96d346efaf, cold brief 21db6e5de6ca, generator 7e710dc29982, plus seal-verification.json pins all 64-hex and matching). NOT PHANTOM. Self-sc
 
 ### ✅ t0556-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
 
@@ -26196,6 +26220,14 @@ _Last updated: 2026-11-20 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-t0622 lane-11: second-seat re-application of the CR-ACCEPT contract (13 checks)
 
 **Evidence:** VERIFIED: checker script SHA 7206673b93927738dc8e064e9b230ed3d6bc57caaf68f17cafee2ff2d6f0f152 and results JSON fc5df496b7fb2502c3999330dd84a73394dbc27b9a8ea12517165e588107ee0f both byte-match; results JSON shows 13 checks re-run with SHA-contract/verdict/instrument/pre-reg pins matching the brief's; verdict string CR-ACCEPT t0614 8de0571b 1.4477 0-
+
+### ✅ t0556 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (a) - sealed mechanization-study arm of the judge's decision-change mechanism on the frozen winmine fixture
+
+**Receipt:** `twelve-lane-receipts/t0556-lane10.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: all 4 pinned SHAs match exactly - seal a628e51f04d6817a, instrument 1200c66feb4ea3e3, results 51842645bcd7ee2c, report c1318c28eecff8e2; results JSON confirms the study cells (B,P2 fired identity claims, CHANGED). NOT PHANTOM. Self-score 8.5, agreed. Score 8.5 REWORK. 
 
 ### ✅ t0556-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -26305,6 +26337,14 @@ _Last updated: 2026-11-20 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: claim-brief.py re-derives refusal classes on live bytes this tick (exit-7 parent-authorship on brief-gap-scorer-20261015-0930-lane8.md; exit-6 no-refile verdict t0431-lane6 on -0530-lane6); claimed/ empty, queue intact; receipt's 26 count reconciles with the series (27 on disk now = gap follow-ups landing between runs). Score 9.0 (GOOD, O
 
+### ✅ t0555 — Team 7, Team Naya Scorer (Team Operations) — 8.0/10 [VERIFIED]
+
+**Task:** Self-sealing cold-retrieve drill (t0472 mechanism reproduction + load-regime gate)
+
+**Receipt:** `twelve-lane-receipts/t0555-lane7.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: instrument auto-retrieval/cold_drill_sealed_t0555.py exists and results file auto-retrieval/cold-drill-sealed-t0555-results.json exists with seal hashes A 0fcaa777265b / B 81a07557f0b6 / C 92d8b2bef701 matching the receipt exactly, RED calibration PASS, and a later qui
+
 ### ✅ t0555-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** Self-sealing cold-retrieve drill (t0472 reproduction + load-regime gate)
@@ -26326,6 +26366,14 @@ _Last updated: 2026-11-20 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0555-lane7.md`
 
 **Evidence:** VERIFIED: script auto-retrieval/cold_drill_sealed_t0555.py exists, sha256 matches receipt byte-for-byte (70a33455...5b8b2); results JSON exists and every quoted number matches (RED calibration PASS / warmed-gate WARM; seals A 0fcaa777265b / B 81a07557f0b6 / C 92d8b2bef701 intact pre+post; drill verdict HOLDS-OPEN with run max-loads 6.45/7.07/6.74; 
+
+### ✅ t0555 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** M3 stamping decision packet (retrieval-auth gate wiring, Option A vs B)
+
+**Receipt:** `twelve-lane-receipts/t0555-lane5.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: decision packet hidden_files/m3-stamping-packet-t0555.md exists (10,324 bytes, dated Oct 13 01:03, matching the run); its contents match every receipt claim - 7 write surfaces, Option A vs B blast-radius tables, superseded_by vs superseded_by_capture_id mismatch, 52-en
 
 ### ✅ t0555-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -56482,6 +56530,18 @@ _Last updated: 2026-11-20 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261109 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Daily distill 2026-11-09: mission-state drift re-verify + single-file sync PR #3306
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: sync commit 187b644ac49ee86fb6897414ce8f58a32d5da885 exists in the local mirror, parent 3f9d17aec494b7a6883649d4c5324f8546c466ab matches the receipt exactly, exactly 1 file changed (BRAIN/CURRENT-MISSION-STATE.md, 941+/18-), blob 82c0f0900f81fea5919b32665c4938b874f677c
+
+### ✅ distill-daily-20261106 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Daily distill 2026-11-06: mission-state drift re-verify + single-file sync PR #3258
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: sync commit 1d37b67a8e1d8b5f88c3ef7c103c92d095d89653 exists in the local mirror, parent 67067ec5e234a1a85f7550ec644f0221573aa6c6 matches the receipt exactly, exactly 1 file changed (BRAIN/CURRENT-MISSION-STATE.md, 16+/21-), blob 1bf11b5cb5ec768b9460b0f9f666ceee4abe2f82
 
 ### ✅ gate-stall-20261120-0600 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
