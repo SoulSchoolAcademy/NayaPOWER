@@ -70052,6 +70052,38 @@
         "Trust",
         "Standards"
       ]
+    },
+    {
+      "smart_note_id": "SN-4200",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4200-what-it-means-to-be-intelligent",
+      "slug": "what-it-means-to-be-intelligent",
+      "title": "What It Means to Be Intelligent",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4200/IB-SMART-NOTE-20261120-sn4200-what-it-means-to-be-intelligent.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4200/IB-SMART-NOTE-20261120-sn4200-what-it-means-to-be-intelligent.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4200/IB-SMART-NOTE-20261120-sn4200-what-it-means-to-be-intelligent.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4200-what-it-means-to-be-intelligent.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:30:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "19c26739132a6ae71b66992ab9d2bda811b69535643de1801e318d63a9ac1f60",
+      "content_hash": "b73b85d827cbe0a6e3214251525fe55fa6c2a37019cfe52a7f49a31166a2a825",
+      "one_line": "Intelligence is wisdom in action — proved by what gets done.",
+      "topics": [
+        "Intelligence",
+        "North Star",
+        "Wisdom",
+        "Declaration"
+      ]
     }
   ],
   "sequence_policy": {
@@ -70062,5 +70094,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "7c2301ed0e2c287afb6d811f2a2889c3deec21768ee12c42daf3017edad24df6"
+  "corpus_manifest_hash": "298aa55b974c5b259341568e4b05a2a46ed4e2ace5dd61c8e1ce5180c877e1ac"
 }
