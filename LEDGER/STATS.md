@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-20 22:43 UTC_
+_Last updated: 2026-11-20 23:13 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9723
-- ✅ Verified (8+): 9622
+- **Total scored actions:** 9727
+- ✅ Verified (8+): 9626
 - 🟡 Partial (5–7): 90
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -17,7 +17,7 @@ _Last updated: 2026-11-20 22:43 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 653 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 644 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 591 | 9.0 | 10 |
+| Team 3 | Naya Judge | 592 | 9.0 | 10 |
 | Team 4 | Naya Mason | 572 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 709 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 411 | 9.0 | 9.6 |
@@ -207,10 +207,10 @@ _Last updated: 2026-11-20 22:43 UTC_
 - **triage-20261017-0716-summary:** 1 actions, avg 8.5/10
 - **identity-stall-20261015-1510:** 2 actions, avg 8.5/10
 - **gap-lane-scorer-20261017-1850-lane0:** 1 actions, avg 9.0/10
-- **gap-scorer-20261014-2320-pr2608:** 2 actions, avg 9.0/10
+- **gap-scorer-20261014-2320-pr2608:** 3 actions, avg 9.0/10
 - **gate-stall-20261017-2251:** 2 actions, avg 9.5/10
 - **pr2608-review-seatgate:** 1 actions, avg 8.5/10
-- **t-BLOCKED-pr2608-review:** 3 actions, avg 9.0/10
+- **t-BLOCKED-pr2608-review:** 4 actions, avg 9.0/10
 - **gap-lane-scorer-20261017-0900:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261017-1045:** 3 actions, avg 9.2/10
 - **gate-stall-20261017-2355:** 1 actions, avg 9.5/10
@@ -2051,7 +2051,7 @@ _Last updated: 2026-11-20 22:43 UTC_
 - **scorer-20261016-0340:** 1 actions, avg 9.0/10
 - **gap-t0888:** 2 actions, avg 9.5/10
 - **lane-scorer-20261021-2215:** 1 actions, avg 9.5/10
-- **gap-t0818-lane3-decline2:** 3 actions, avg 9.0/10
+- **gap-t0818-lane3-decline2:** 4 actions, avg 9.0/10
 - **gap-t1279-lane3:** 2 actions, avg 9.5/10
 - **prereg-t1496:** 1 actions, avg 9.0/10
 - **gap-t0422:** 2 actions, avg 9.2/10
@@ -3505,7 +3505,7 @@ _Last updated: 2026-11-20 22:43 UTC_
 - **t0815-phase1c:** 2 actions, avg 9.2/10
 - **t0815-phase2:** 2 actions, avg 9.2/10
 - **t0815-phase15:** 2 actions, avg 9.1/10
-- **t0815:** 16 actions, avg 9.3/10
+- **t0815:** 17 actions, avg 9.3/10
 - **t0816:** 24 actions, avg 9.2/10
 - **t0817:** 7 actions, avg 9.3/10
 - **t0817-lane7:** 1 actions, avg 9.5/10
