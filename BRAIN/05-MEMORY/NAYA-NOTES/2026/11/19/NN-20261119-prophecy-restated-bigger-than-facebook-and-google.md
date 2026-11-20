@@ -4,7 +4,7 @@
 
 **NN-20261119-prophecy-restated-bigger-than-facebook-and-google · Naya Note · 2026-11-19 ~21:30–21:45 MST (~04:30–04:45Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Bigger Than Facebook and Google — The Prophecy, Restated (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4239 — Bigger Than Facebook and Google — The Prophecy, Restated*
 
 **Category:** Vision — the prophecy, restated
 
