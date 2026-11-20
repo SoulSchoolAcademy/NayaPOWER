@@ -7550,9 +7550,9 @@ window.NayaNotif = window.NayaNotif || {
 (function(){
 "use strict";
 function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
-/* ROUND 4 H3 — GEMATRIA COLOUR CODE (~/workspace/team-nitro/GEMATRIA-COLOUR-CODE.md; Marty Leeds Septenary Cipher, https://septenarygematria.com/; colours by the chakra system SN-2322): the orb colour comes from the LETTER's first letter, never from the person — same letter, same colour, always. A-G 1-7, H-M 6-1, N-T 1-7, U-Z 6-1; 1 red, 2 orange, 3 gold, 4 emerald (the toned H5 green), 5 cyan #0f52ba (verified from the fix-9 digit-5 tile — NOT gold, NOT blue), 6 indigo, 7 royal purple. The old whole-name hash is gone. */
+/* ROUND 4 H3 — GEMATRIA COLOUR CODE (~/workspace/team-nitro/GEMATRIA-COLOUR-CODE.md; Marty Leeds Septenary Cipher, https://septenarygematria.com/; colours by the chakra system SN-2322): the orb colour comes from the LETTER's first letter, never from the person — same letter, same colour, always. A-G 1-7, H-M 6-1, N-T 1-7, U-Z 6-1; 1 red, 2 orange, 3 gold, 4 emerald (the toned H5 green), 5 cyan #0e7490 (deep cyan, Laws §3.1 — harvested from this file's DEEP_TAB_COLOR / .lb-d.d5; the old #0f52ba is sapphire blue, not cyan), 6 indigo, 7 royal purple. The old whole-name hash is gone. */
 var PC_GEM_NUM={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
-var PC_GEM_COL={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0f52ba',6:'#3f51b5',7:'#8e24aa'};
+var PC_GEM_COL={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa'};
 function pcColorFor(name){ var L=String((name||'?').charAt(0)).toUpperCase(); return PC_GEM_COL[PC_GEM_NUM[L]||1]; }
 /* ROUND 4 H4 — match % as digit tiles (cap + white digit + own-colour rim, harvested from the points pill). */
 function pcTiles(n){ var s=String(n), h=''; for(var i=0;i<s.length;i++){ var d=s.charCodeAt(i)-48; if(d<0||d>9) continue; h+='<span class="os-mini-tile d'+d+'"><span class="cap"></span><span class="rd">'+d+'</span></span>'; } return h+'<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>'; }
@@ -7643,6 +7643,11 @@ window.pcRenderRailForTab=function(tab){
     var has=function(p){ return ((p.alias||'')+' '+((p.nut||''))).toLowerCase().indexOf(q)>=0; };
     live=live.filter(has); standing=standing.filter(has);
   }
+  /* FOLLOW-UP 15 (Shawn 19:01-19:02 MST): the rail sorts highest % to
+     lowest, automatically, on every render. Search filters the sorted
+     list; clearing restores it. Stable: ties keep their current relative
+     order (thora/iris 91, terra/ruth 88); the seed is untouched. */
+  standing=standing.map(function(p,i){ return {p:p,i:i}; }).sort(function(a,b){ var d=(b.p.pct||0)-(a.p.pct||0); return d!==0?d:(a.i-b.i); }).map(function(x){ return x.p; });
   /* FOLLOW-UP 14 (Shawn 19:01 MST): the category chips are gone — search only.
      The name search above (window.PC_RAIL_Q, alias + nutshell) is the only
      filter on this rail now. */
