@@ -4,7 +4,7 @@
 
 **NN-20261120-the-red-n-lives-with-the-text · Naya Note · 2026-11-20 ~16:12 MST and ~16:23 MST**
 
-*Paired Smart Note: SN-pending — The Red N Lives With the Text (takes the next free number at filing)*
+*Paired Smart Note: SN-4346 — The Red N Lives With the Text*
 
 **Category:** Design — the red N belongs only where the text is, centered, with breathing room
 
