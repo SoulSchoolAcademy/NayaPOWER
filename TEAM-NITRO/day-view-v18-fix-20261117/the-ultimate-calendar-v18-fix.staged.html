@@ -3072,6 +3072,48 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   #dayScroll:has(#wisdomBanner.on)>.cover-change{display:none!important}
 }
 
+/* ============ FIX18 — calendar day follow-on, month-year title line + Change cover only where the cover shows (2026-11-20) ============ */
+/* ITEM 1 — "November 2026" as ONE centered title line (Shawn, 2026-11-20 ~08:06 MST).
+   MEASURED ON THE FIX-17 BYTES (Firefox + Chromium, 1920 and 390): the monthline
+   was already dead-center at 1920 (cx 960 = viewport center in both browsers),
+   but at 390 it WRAPPED — "November 2026 ·" / "the Hz tiles" (Chromium fonts) and
+   "November" / "2026 · the Hz tiles" (Firefox fallback) — because the <=560px rules
+   set white-space:normal on the monthline, and the gap between "November" and
+   "2026" was a single space (7-8px). The line never read as one centered title.
+   THE FIX: the monthline becomes one nowrap flex line with an exact 24px gap
+   (multiple of 8, laws §4) between the script month and the digit-tile year.
+   inline-flex drops the whitespace-only text node between the two spans, so
+   the gap is exactly 24px in both font states; align-items:center keeps the
+   tiles centered on the script. No styling, color, or size changes — the
+   script "November" and the digit-tile "2026" are harvested verbatim, only
+   re-spaced and held on one line. The time row below stays directly under
+   the monthline, centered, in the same column; "Friday 20" stays left (1920)
+   / centered in its own row (390); BACK TO MONTH stays left; Your Stats +
+   orb stay right. Nothing else moves. */
+/* ITEM 2 — the Hz tiles leave the header (JS edit, not CSS): the
+   " · … Hz" segment is deleted from the hl-monthline build
+   string (base line 4219), and nothing else in that line. The wisdom line
+   (#dayTeach, two frequency mentions) and the WISDOM quote are untouched. */
+/* ITEM 3 — the floating "Change cover" pill shows ONLY on slides where the
+   cover is actually visible (Shawn, 2026-11-20 ~08:10 MST, Notifications).
+   MEASURED ON THE FIX-17 BYTES (pixel-diff census, cover on vs cover off,
+   animations paused, both widths, day 20): at 390 the cover photo is plainly
+   visible as a band below the slide content on WISDOM (14,371 interior px)
+   and WORLDS (12,900 px) and on no other slide (332-339 px = the 1-3px rim);
+   at 1920 the content fills the deck on every slide (rim only, 252-445 px),
+   but Wisdom and Worlds are the cover's slides by design (the cover layer
+   is their backdrop; the addendum names Wisdom as the keeper). So the rule
+   is slide-state-driven, not a one-slide hardcode: ONE :not(:has()) rule
+   hides the pill whenever NEITHER keeper slide is on — hiding it on all
+   seven content slides (Notifications, Journal, News, Appointments,
+   Summary, Naya Notes, Smart Notes) at both widths, in both browsers —
+   and leaves it exactly where it was on Wisdom (floating at 1920; hidden
+   at <=560px by the fix-17 rule, which stands) and Worlds (floating at
+   1920; static-flow below the content at <=560px, as before). The Change
+   cover function itself is unchanged where the pill remains. */
+.hl-center .hl-monthline{display:inline-flex!important;align-items:center!important;gap:24px!important;white-space:nowrap!important}
+#dayScroll:not(:has(#wisdomBanner.on)):not(:has(.worlds-slide.on))>.cover-change{display:none!important}
+
 </style>
   </head>
   <body>
@@ -4216,7 +4258,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              the 19 (dayDigitsHTML, harvested verbatim — the tiles on the
              day itself): raised tiles, rim in the day's colour, white
              digits. "Hz" stays the plain day-identity label. */
-              '<span class="hl-center"><span class="hl-monthline"><span class="hl-script">' + MONTHS[d.getMonth()] + '</span> ' + dayDigitsHTML(d.getFullYear(), dc) + " \u00b7 <span style=\"white-space:nowrap\">" + dayDigitsHTML(DAY_FREQ[d.getDay()], dc) + " Hz</span></span>" +
+              '<span class="hl-center"><span class="hl-monthline"><span class="hl-script">' + MONTHS[d.getMonth()] + '</span> ' + dayDigitsHTML(d.getFullYear(), dc) + '</span>' +
               '<span class="hl-timewrap"><button type="button" class="hl-time" id="greetClock" aria-label="World clock — tap to choose a time zone"></button>' +
               '<button type="button" class="clock-tool" id="clockToolBtn" aria-label="Change the time">' + ICONS.clock + '</button></span></span>' +
               '<button type="button" class="stats-btn" id="statsBtn">Your Stats</button>' +
