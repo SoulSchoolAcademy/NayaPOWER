@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 20:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 21:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24405,6 +24405,14 @@ _Last updated: 2026-11-20 20:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: scratch-t0591-lane1/corpus-t0591.json sha16 30c252efb0f8af7f == claimed; tip bdfb5868 re-pinned at action time; live registry identity check (631 entries, 0 FALSIFIED) before verdicts; 8-query prereg expectations 6/6 met on read-only drill bytes; rule quoted verbatim from guard bytes; wire/no-wire recommendation honestly limits itself (ha
 
+### ✅ t0588 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** independent re-execution of the t0586 discriminator - verdict ARM, 15/15 cell-by-cell agreement
+
+**Receipt:** `twelve-lane-receipts/t0588-lane8.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: all 8 pin-asserted bytes EXACT match - fixture_t0586.py 8077fc722905ec12, select_overlap_cells_t0586.py eba8f0d2720a83d5, sealed-selection-t0586.md 7522a1f91eaeb940, run_overlap_cells_t0586.py 2c41ce03c6dc2fdd, results-t0586-overlap.json 6b099fff4493f308, decision_chan
+
 ### ✅ t0588-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Independent re-execution of t0586 discriminator — verdict ARM, 15/15 cell agreement
@@ -24435,6 +24443,14 @@ _Last updated: 2026-11-20 20:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/t0588-rerun/prereg-t0588.md, sealed-selection-t0588.md (sha16 78a88e07245095ef == claimed), results-t0588-overlap.json all present; mtime order prereg<seal<results holds; 15/15 cell-by-cell selection identical to t0586 seal; ARM verdict via verbatim rule arithmetic, not paraphrase; honest holes named (same corpus+instrument
 
+### ✅ t0588 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE done-criteria leg 1 - injection table for 10 live queued briefs, pre-registered judgments
+
+**Receipt:** `twelve-lane-receipts/t0588-lane6.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/retrieval/injection-seam-t0588-results.json sha256 b57052131e4541eb370b7b22591af01bf7063d9b2dc832a75aa42a09407cd85b EXACT match; results file corroborates the receipt in substance - 10 rows, seat_verdict agreement=yes 2/10, auto_right NOT MET, P2 top-1 on 
+
 ### ✅ t0588-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE done-criteria leg 1 — injection table on 10 live queued briefs, pre-registered judgments
@@ -24464,6 +24480,14 @@ _Last updated: 2026-11-20 20:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0588-lane6.md`
 
 **Evidence:** Verified: retrieval/injection-seam-t0588-results.json sha256 b5705213... matches claimed SHA; harness injection-seam-t0588-run.py present; prototype sha re-verified == t0582 pin; tip bdfb5868 pinned at action time; judgment protocol + auto-right rule frozen pre-run; 10 brief formats pre-listed before measuring (t0582 lesson honored). Honest verdict
+
+### ✅ t0587 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (c) query-needs tally refresh
+
+**Receipt:** `twelve-lane-receipts/t0587-lane7.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/retrieval/query-needs-top20-t0587.md sha256 58f9584356153cd1508e13f4652599e9e2c7ec0164a48c6880e343856a9b3e5d EXACT match. NOT PHANTOM. (The ask-world-queries.jsonl pre/post probe SHAs 44d70570.../973b9d8f... are not re-verifiable now - the log has since gr
 
 ### ✅ t0587-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -29567,6 +29591,14 @@ _Last updated: 2026-11-20 20:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: bin/ask-world.py exists with log_query() + live-check + format_version; live-check probe OK (2026-10-12 10:21 PDT); log has 22 query rows with all 9 schema fields, lanes 1-12, cmds blocked/lane/lessons/quality, format_version==1; lane-10 query still runs clean. Score 9.0: real verified value (read-only contract preserved, telemetry fail-s
 
+### ✅ t0461 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** triage battery re-run: same-seat drift check of t0426 semantic-arm verdict (3/5 hits)
+
+**Receipt:** `twelve-lane-receipts/t0461-lane5.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: all cited pins byte-match - brief-inspection-t0461/scores.json cf2e1a9c324850a3, rank-tables.json a5bc1174250d64d9, arms/semantic-t0426/arm.py 814f75f203cf7e73, bin/semantic_arm_harness.py a7e72ce93bd75df0, batteries/t0412-v2-rank/corpus.json b231f055fb959552; parent-r
+
 ### ✅ t0461-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** First brief-inspection evidence for Stage-0: winning semantic arm on 5 most recent live dispatch briefs, 3/5 hits, 3/3 proof bar
@@ -29778,6 +29810,14 @@ _Last updated: 2026-11-20 20:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0442-lane1.md`
 
 **Evidence:** Verified: branch naya/five-retrieval-auth-gate-t942 live @ e654f16e8a49 (exact match to receipt pin); all 4 t0442 files exist with exact receipt SHAs (acceptance_battery.py 4470ccee…, battery_evidence.json 464c8529…, run_log.md 762015a7…, RETRIEVAL-AUTH-MIGRATION-PREP.md 9c988570…); tip dbe06f9e matches live HEAD. Work: RED-first M/S/C battery, own
+
+### ✅ t0432 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-gap-gap errata amendment: 04:01 scoring time marked unverified (not verified)
+
+**Receipt:** `twelve-lane-receipts/t0432-lane5.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: errata auto-retrieval/errata-gap-gap-gap-t0432.md sha256 8fbc9ca6c0a2c88f82838aaca3d7810dd219a009e1297afd0b49e06460e861d2 matches the receipt's post-addendum pin byte-exact, section 6 addendum present at line 125 citing the pre-addendum sha b26663ea992640ddf3a4b67feae2
 
 ### ✅ t0432-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -30582,6 +30622,14 @@ _Last updated: 2026-11-20 20:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0403-lane4.md`
 
 **Evidence:** Verified: auto-retrieval/ask-world-needs-t0403.md exists (4,915 bytes); log cited (a11cc2b7..., 105 lines) — determinism re-check byte-agreed, seed-exclusion signature re-derived from live bytes (22 seed rows by pid-burst), 0 pid leak into organic rows. Brief premise corrected (70 organic, not 89+). Miss hot list (lines 69/81/102/104, 5.7%) routed 
+
+### ✅ t0402 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up exec 2: t0413 claim-gate half-blindness fix + 5-observation re-derivation routing
+
+**Receipt:** `twelve-lane-receipts/t0402-lane7.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: draft hidden_files/retrieval/auth-gate-migration-prep-t0601.md sha256 393725e6e6ca55860e982fdbca2eeab14d73152d40ac0af7f3404985f54a4716 matches the receipt pin byte-exact. NOT PHANTOM. The t0413 canonical-stamp fix itself is not re-verifiable from current bytes (brief-t
 
 ### ✅ t0402 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
@@ -56918,6 +56966,20 @@ _Last updated: 2026-11-20 20:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily 2026-11-20: mission-state fold (reverse fold, branch -> main), PR #3495
+
+**Receipt:** `twelve-lane-receipts/distill-daily-20261120-lane0.md`
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 0 after this row). VERIFIED first-hand this tick: branch naya/distill-fold-mission-state-20261120 EXISTS on the remote, head 741b7459bc5701a7f5e13832f705c68f3039e689 matches the receipt pin exactly (git ls-remote); union file hidden_files/fold-20261120/union-ms.md sha256 9d139cc37112145b1f7aa32
+
+### ✅ gate-stall-20261120-1231 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-20 12:31 PST: 31 queued briefs evaluated, all refused, none claimed
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 0 after this row). VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261120-1231.log exists (2,799 bytes, mtime 20:31Z); totals line '31 attempts, 29 x exit 7, 2 x exit 2, 0 claimed' matches the receipt exactly, and the log's 31 per-brief lines are 31 unique briefs (29 exit 7 +
 
 ### ✅ gate-stall-20261120-1123 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
