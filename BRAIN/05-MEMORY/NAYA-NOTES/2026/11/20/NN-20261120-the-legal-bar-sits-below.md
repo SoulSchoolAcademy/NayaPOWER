@@ -4,7 +4,7 @@
 
 **NN-20261120-the-legal-bar-sits-below · Naya Note · 2026-11-20 ~16:17–16:18 MST**
 
-*Paired Smart Note: SN-pending — The Legal Bar Sits Below, Quiet, Never Sticky (takes the next free number at filing)*
+*Paired Smart Note: SN-4349 — The Legal Bar Sits Below, Quiet, Never Sticky*
 
 **Category:** Law — the legal bar lives just below the frame in the page flow
 
