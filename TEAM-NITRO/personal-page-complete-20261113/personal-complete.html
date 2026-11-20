@@ -6000,6 +6000,8 @@ a { color: inherit; }
 #hubPeopleList .pc-act-btn:active{transform:scale(.97);box-shadow:0 2px 6px rgba(0,0,0,.55),0 0 8px -2px var(--ac,#8e24aa);}
 #hubPeopleList .pc-act-btn:focus-visible{outline:2px solid var(--ac,#8e24aa);outline-offset:2px;}
 .pc-card-acts{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px;}
+#hubPeopleList .pc-card-acts4{display:flex;gap:8px;}
+#hubPeopleList .pc-card-acts4 .pc-act-btn{flex:none;}
 #hubPeopleList .pc-card-acts .pc-act-btn{width:auto;height:36px;padding:0 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;font-size:17px;flex:none;}
 #hubPeopleList .pc-card-acts .pc-act-btn .pc-act-lab{font-size:17px;font-weight:800;letter-spacing:.02em;color:#fff;}
 @keyframes osOrbFlow{to{transform:rotate(360deg)}}
@@ -13413,7 +13415,7 @@ function pcCard(p, live){
    follows the ACTIVE feed tab; online first (no
    online source grounds on this page today, so the online section is
    honestly empty and the seed family is all there is — never shown as online). */
-var PC_TAB_SETS={personal:null,public:['sophia','thora','terra','zoe','wrena','iris','ruth'],naya:['emesa','astraea','mira','vera','aurelia','shawn']};
+var PC_TAB_SETS={personal:null,public:['sophia','thora','terra','zoe','wrena','iris','ruth'],naya:['emesa','astraea','mira','vera','aurelia','shawn'],business:['sophia','thora','terra','zoe','wrena','iris','ruth'],world:['emesa','astraea','mira','vera','aurelia','shawn']}; /* ROUND 1 (2026-11-20, Shawn 09:38 MST — topic-driven DM): the feed lens IS the rail tab — business and world have their own sets, so the rail shows the people of the feed's current topic and changes when it changes. MOCK partition for now (no citizens yet): business takes the public list, world takes the naya list, harvested verbatim from the seed family; real citizens replace them through this same mechanism, no rebuild. */
 window.PC_RAIL_TAB='personal';
 window.PC_RAIL_Q='';
 function pcRailPeopleFor(tab){
@@ -13447,15 +13449,19 @@ function pcCardWithConnect(p, live){
      same actions; icon-only 26px circles, names in aria-label + title. */
   var acts=[['chat','\u270e','#0f52ba','DM'],['mail','\u2709','#d4a017','Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
   var eyeBtn='<button type="button" class="pc-act-btn" data-pc-info="'+esc(p.alias)+'" style="--ac:#ffffff" aria-label="About '+esc(p.alias)+'" title="About '+esc(p.alias)+'"><b>i</b></button>';
-  var btns=eyeBtn; /* ROUND 5: EYE first, then DM, Mail, Audio, Video — five icon-only circles in one row. */
+  var _actsBtns=''; /* ROUND 9 (item 8): the four contact buttons ride in their
+     own row, DM first, then Mail, Audio, Video — starting aligned with the
+     first letter of the alias. The eye stays first in the row, directly
+     under the initial orb. */
   for(var i=0;i<acts.length;i++){
-    btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
+    _actsBtns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
   }
   var at=base.lastIndexOf('</div></article>');
   if(at<0) return base;
   /* ROUND 5 2026-11-19 (checker item 2): top line keeps ball + name + % locked
      top-right; line 2 is FIVE icon-only 26px circles in ONE row — EYE first,
      then DM, Mail, Audio, Video — 5x26 + 4x8 = 162px, inside the 241px card content box (card clientWidth 257 - padding 16; the 251px figure omitted the 10px scrollbar lane), 79px spare. */
+  var btns=eyeBtn+'<div class="pc-card-acts4">'+_actsBtns+'</div>'; /* ROUND 9 (item 8): eye, then the four-button row. */
   return base.slice(0, at)+pctHtml+'</div><div class="pc-card-acts">'+btns+'</div>'+base.slice(at+6);
 }
 
@@ -13465,11 +13471,32 @@ window.pcRenderRailForTab=function(tab){
   window.PC_RAIL_TAB=tab||'personal';
   var live=window.PC_RAIL_LIVE||[];
   var standing=pcRailPeopleFor(window.PC_RAIL_TAB);
+  /* FOLLOW-UP 16: the match is the alias, or a WORD of the nutshell
+     starting with the query. The old match ran the query across the whole
+     "alias + nutshell" string, so searching "ruth" also matched vera -
+     her nutshell reads "VERIFY - truth. Nothing counts until I see it."
+     and "ruth" sits inside "truth". */
   var q=(window.PC_RAIL_Q||'').toLowerCase();
   if(q){
-    var has=function(p){ return ((p.alias||'')+' '+((p.nut||''))).toLowerCase().indexOf(q)>=0; };
+    var has=function(p){
+      var al=(p.alias||'').toLowerCase();
+      if(al.indexOf(q)>=0) return true;
+      var words=((p.nut||'').toLowerCase()).split(/[^a-z0-9]+/);
+      for(var wi=0;wi<words.length;wi++){ if(words[wi] && words[wi].indexOf(q)===0) return true; }
+      return false;
+    };
     live=live.filter(has); standing=standing.filter(has);
   }
+  /* FOLLOW-UP 15 (Shawn 19:01-19:02 MST): the rail sorts highest % to
+     lowest, automatically, on every render. Search filters the sorted
+     list; clearing restores it. Stable: ties keep their current relative
+     order (thora/iris 91, terra/ruth 88); the seed is untouched. */
+  standing=standing.map(function(p,i){ return {p:p,i:i}; }).sort(function(a,b){ var d=(b.p.pct||0)-(a.p.pct||0); return d!==0?d:(a.i-b.i); }).map(function(x){ return x.p; });
+  /* FOLLOW-UP 14 (Shawn 19:01 MST): the category chips are gone — search only.
+     The name search above (window.PC_RAIL_Q, alias, or a nutshell word starting with the query) is the only
+     filter on this rail now. */
+  var _pcSearch=document.getElementById('pcRailSearch');
+  if(_pcSearch && _pcSearch.value!==(window.PC_RAIL_Q||'')) _pcSearch.value=window.PC_RAIL_Q||'';
   var html='';
   if(live.length) html+='<p class="pc-rail-sec">'+pcTr('Live matches')+'</p>'+live.map(function(p){ return pcCardWithConnect(p, true); }).join('');
   if(standing.length) html+=standing.map(function(p){ return pcCardWithConnect(p, false); }).join(''); /* HEADER-V2 2026-11-14: no Standing section header. */
@@ -13498,7 +13525,7 @@ window.pcRenderRail=function(live, standing){
       _v=_v.replace(/^topic:/,'');
       k=window.pcFeedKey?window.pcFeedKey(_v):_v;
     }catch(e){}
-    return (k==='personal'||k==='public'||k==='naya')?k:'personal';
+    return (k==='personal'||k==='public'||k==='naya'||k==='business'||k==='world')?k:'personal';
   }
   var railBar=document.getElementById('mwFeedPills');
   if(railBar){ railBar.addEventListener('click', function(){ setTimeout(function(){ window.pcRenderRailForTab(activeTab()); }, 0); }); }
@@ -13507,14 +13534,23 @@ window.pcRenderRail=function(live, standing){
     mo.observe(railBar, {childList:true, subtree:true, attributes:true, attributeFilter:['aria-selected','class']});
   }
 })();
-/* rail search: filters the active tab's people by alias or nutshell. */
-(function(){
-  var inp=document.getElementById('pcRailSearch'); if(!inp) return;
-  inp.addEventListener('input', function(){
-    window.PC_RAIL_Q=inp.value||'';
+/* rail search: filters the active tab's people by alias, or by a nutshell word starting with the query.
+   FOLLOW-UP 14: the old wiring bound directly to #pcRailSearch at build time
+   — but this block runs while HubView is still building (railR not appended,
+   shell not in the document; see ROUND 2d below), so getElementById returned
+   null and the listener never bound — and no field existed at all. The field
+   now lives in the rail shell above; the listener is delegated on the document
+   so it works whenever the field exists and survives every rail rebuild, and
+   it binds once (guarded) no matter how many times HubView rebuilds. */
+if(!window.__pcRailSearchWired){
+  window.__pcRailSearchWired=true;
+  document.addEventListener('input', function(e){
+    var t=e&&e.target; if(!t||t.id!=='pcRailSearch') return;
+    window.PC_RAIL_Q=t.value||'';
     window.pcRenderRailForTab(window.PC_RAIL_TAB||'personal');
   });
-})();
+}
+
 /* rail close / open: the rail hides for a full-screen feed; a slim People
    button takes its place in the grid and opens it again. The grid wrap
    (#pcFeedWrap) is BUILT BY JAVASCRIPT after this script runs, so the wrap
@@ -13658,7 +13694,7 @@ document.addEventListener('click', function(e){
      sub-rows. render(lens) takes personal / business / world from
      window.NayaHubPeople.readLens(). */
   window.NayaHubPeople.render = function(lens) {
-    var tab = lens === 'business' ? 'public' : (lens === 'world' ? 'naya' : 'personal');
+    var tab = (lens === 'business' || lens === 'world') ? lens : 'personal'; /* ROUND 1: the lens is the rail tab — business/world read their own PC_TAB_SETS sets now. */
     window.pcRenderRailForTab(tab);
   };
   /* ROUND 2d - first render DEFERRED one task: a synchronous refresh here
@@ -40145,9 +40181,7 @@ function mwInit(){
       mwOpenPageDashboard(t.getAttribute('data-mw-stat'));
     } else if(t.hasAttribute('data-mw-tab')){
       mwPut('feedtab', t.getAttribute('data-mw-tab')); mwApplyFeedTab();
-    } else if(t.hasAttribute('data-mw-open-mship')){
-      if(window.osShowView) window.osShowView('memberships');
-    } else if(t.id==='mwMailAll'){
+    } else if(t.hasAttribute('data-mw-open-mship')){ var _mh=t.getAttribute&&t.getAttribute('href'); if(_mh && _mh.indexOf('http')===0){ return; } /* ROUND 1 (7b, eye 2026-11-20): a real external link (Naya Academy, AI Masterclass) navigates — the memberships delegation is for membership cards, not for links. First tap used to route to the memberships view and only scroll. */ if(window.osShowView) window.osShowView('memberships'); } else if(t.id==='mwMailAll'){
       mwMailTo(mwMailNames(false));
     } else if(t.id==='mwMailSel'){
       mwMailTo(mwMailNames(true));
@@ -42704,28 +42738,15 @@ window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "LEARN — wisdom. I turn what
 function pcTr(x){ try{ return window.mwTr?window.mwTr(x):x; }catch(e){ return x; } }
 function pcCard(p, live){
   var init=(p.alias||'?')[0].toUpperCase();
-  /* FOLLOW-ON 2026-11-19 (rail standard, Shawn ~02:29Z) — TWO LINES, one clean
-     object inside the frame. LINE 1: orb top-left, name beside it, % LOCKED
-     top-right (margin-left:auto — the name always has room; long names never
-     push the buttons out). LINE 2: five buttons in one clean row — EYE first
-     (opens the profile info underneath the row), then messenger, mail, audio,
-     video. The % is ONE tile reading "94%" (pcTiles, the popover's
-     pc-match-one form). The name truncates with ellipsis + full name on
-     title/hover; the input cap (25 chars, measured at 390: 226px name column / 8.85px per
-     char) stops longer names at the door; wide names still truncate by CSS. */
-  var pct=(typeof p.pct==='number')?p.pct:null;
-  var pctHtml=(pct===null)?'':'<span class="pc-pct r4-tiles" title="'+pcTr('Match')+'">'+pcTiles(pct)+'</span>';
-  var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'"><span class="os-jewel os-jewel-sm eye-jewel" style="--jc:#ffffff" aria-hidden="true">i</span></button>';
-  var acts=[['chat','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg>','#0f52ba','Message'],['mail','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg>','#d4a017','Smart Mail'],['audio','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>','#07925f','Audio'],['video','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg>','#8e24aa','Video']];
-  var btns='';
-  for(var i=0;i<acts.length;i++){
-    btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
-  }
-  return '<article class="pc-card pc-rail-v2" data-pc-alias="'+esc(p.alias)+'" style="--pc:'+pcColorFor(p.alias)+'">'
-    + '<div class="pc-card-line1"><button type="button" class="fc-pick-av" data-pc-orb="'+esc(p.alias)+'" aria-label="Open profile: '+esc(p.alias)+'" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</button>'
-    + '<div class="pc-card-id"><span class="pc-id-line"><b title="'+esc(p.alias)+'">'+esc(p.alias)+'</b></span></div>'
-    + pctHtml + '</div>'
-    + '<div class="pc-card-line2">'+infoBtn+btns+'</div>'
+  /* HEADER 2026-11-15 H5, FOLLOW-ON 3b 2026-11-18 — one line per row: orb +
+     name + % + info + the four contact buttons (Message / Smart Mail /
+     Audio / Video), buttons below the name line, labelled. NO CONNECT in the row:
+     sending the message IS the request for connection. The motto lives
+     behind the info pop-up; the pop-up still carries the four ways too. */
+  var mark = '';;
+  return '<article class="pc-card" data-pc-alias="'+esc(p.alias)+'" style="--pc:'+pcColorFor(p.alias)+'">'
+    + '<div class="pc-card-top"><button type="button" class="fc-pick-av" data-pc-orb="'+esc(p.alias)+'" aria-label="Open profile: '+esc(p.alias)+'" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</button>'
+    + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b></span>'+mark+'</div></div>'
     + '</article>';
 }
 /* CORRECTIONS 2026-11-13 (Parts 3/4/7) — the rail, rebuilt on the same
@@ -42738,7 +42759,7 @@ function pcCard(p, live){
    follows the ACTIVE feed tab; online first (no
    online source grounds on this page today, so the online section is
    honestly empty and the seed family is all there is — never shown as online). */
-var PC_TAB_SETS={personal:null,public:['sophia','thora','terra','zoe','wrena','iris','ruth'],naya:['emesa','astraea','mira','vera','aurelia','shawn']};
+var PC_TAB_SETS={personal:null,public:['sophia','thora','terra','zoe','wrena','iris','ruth'],naya:['emesa','astraea','mira','vera','aurelia','shawn'],business:['sophia','thora','terra','zoe','wrena','iris','ruth'],world:['emesa','astraea','mira','vera','aurelia','shawn']}; /* ROUND 1 (2026-11-20, Shawn 09:38 MST — topic-driven DM): the feed lens IS the rail tab — business and world have their own sets, so the rail shows the people of the feed's current topic and changes when it changes. MOCK partition for now (no citizens yet): business takes the public list, world takes the naya list, harvested verbatim from the seed family; real citizens replace them through this same mechanism, no rebuild. */
 window.PC_RAIL_TAB='personal';
 window.PC_RAIL_Q='';
 function pcRailPeopleFor(tab){
@@ -42752,10 +42773,40 @@ function pcConnectRequested(alias){
   try{ return localStorage.getItem('pc-connect-'+alias)==='requested'; }catch(e){ return false; }
 }
 function pcCardWithConnect(p, live){
-  /* FOLLOW-ON 2026-11-19 — the two-line card (pcCard) already carries the %,
-     the eye and the four contact buttons; this stays as the rail's entry point
-     so every call site keeps working. */
-  return pcCard(p, live);
+  var base=pcCard(p, live);
+  /* FOLLOW-ON 3b (2026-11-18) — one line per row: ball, name, %, i, the four
+     contact buttons. NO CONNECT in any row: message and mail are automatic —
+     sending the message IS the request for connection; acceptance is by
+     action (they answer back), never by a button. The four buttons are
+     harvested from the profile board's Reach them row + the popover's
+     actions: same glyphs, same colours — Message sapphire, Smart Mail gold,
+     Audio emerald, Video purple. The % is the seed pct for the seed family,
+     the endpoint pct for live matches. */
+  var pct=(typeof p.pct==='number')?p.pct:null;
+  var pctHtml=(pct===null)?'':'<span class="pc-pct-one" title="'+pcTr('Match')+'" style="--pc:'+pcColorFor(p.alias)+'">'+pct+'%</span>'; /* FOLLOW-ON 2026-11-19 (item b): one percentage number in one tile — the three separate digit tiles read as three boxes ("9" "4" "%"), never as 94%. pcTiles() is now unused in the rail; it stays, record-only. */
+  /* ROUND 5 2026-11-19 (checker item 2): the eye leaves line 1 — it is the FIRST
+     button of line 2, a .pc-act-btn like the other four: icon-only 26px circle,
+     white rim (the eye is white, Design Laws §8). It keeps data-pc-info, so the
+     existing delegated info handler still opens its target; Part 4 is BLOCKED. */
+  /* ROUND 5 2026-11-19 (checker item 2): the five buttons sit BELOW the
+     name line, in their own row — never beside it. Same glyphs, same colours,
+     same actions; icon-only 26px circles, names in aria-label + title. */
+  var acts=[['chat','\u270e','#0f52ba','DM'],['mail','\u2709','#d4a017','Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
+  var eyeBtn='<button type="button" class="pc-act-btn" data-pc-info="'+esc(p.alias)+'" style="--ac:#ffffff" aria-label="About '+esc(p.alias)+'" title="About '+esc(p.alias)+'"><b>i</b></button>';
+  var _actsBtns=''; /* ROUND 9 (item 8): the four contact buttons ride in their
+     own row, DM first, then Mail, Audio, Video — starting aligned with the
+     first letter of the alias. The eye stays first in the row, directly
+     under the initial orb. */
+  for(var i=0;i<acts.length;i++){
+    _actsBtns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
+  }
+  var at=base.lastIndexOf('</div></article>');
+  if(at<0) return base;
+  /* ROUND 5 2026-11-19 (checker item 2): top line keeps ball + name + % locked
+     top-right; line 2 is FIVE icon-only 26px circles in ONE row — EYE first,
+     then DM, Mail, Audio, Video — 5x26 + 4x8 = 162px, inside the 241px card content box (card clientWidth 257 - padding 16; the 251px figure omitted the 10px scrollbar lane), 79px spare. */
+  var btns=eyeBtn+'<div class="pc-card-acts4">'+_actsBtns+'</div>'; /* ROUND 9 (item 8): eye, then the four-button row. */
+  return base.slice(0, at)+pctHtml+'</div><div class="pc-card-acts">'+btns+'</div>'+base.slice(at+6);
 }
 
 // MIRROR FIX 3 (2026-11-19) — the suffix render into #pcRailList is GONE: it
@@ -42788,7 +42839,7 @@ window.pcRenderRail=function(live, standing){
       _v=_v.replace(/^topic:/,'');
       k=window.pcFeedKey?window.pcFeedKey(_v):_v;
     }catch(e){}
-    return (k==='personal'||k==='public'||k==='naya')?k:'personal';
+    return (k==='personal'||k==='public'||k==='naya'||k==='business'||k==='world')?k:'personal';
   }
   var railBar=document.getElementById('mwFeedPills');
   if(railBar){ railBar.addEventListener('click', function(){ setTimeout(function(){ window.pcRenderRailForTab(activeTab()); }, 0); }); }
@@ -42797,14 +42848,23 @@ window.pcRenderRail=function(live, standing){
     mo.observe(railBar, {childList:true, subtree:true, attributes:true, attributeFilter:['aria-selected','class']});
   }
 })();
-/* rail search: filters the active tab's people by alias or nutshell. */
-(function(){
-  var inp=document.getElementById('pcRailSearch'); if(!inp) return;
-  inp.addEventListener('input', function(){
-    window.PC_RAIL_Q=inp.value||'';
+/* rail search: filters the active tab's people by alias, or by a nutshell word starting with the query.
+   FOLLOW-UP 14: the old wiring bound directly to #pcRailSearch at build time
+   — but this block runs while HubView is still building (railR not appended,
+   shell not in the document; see ROUND 2d below), so getElementById returned
+   null and the listener never bound — and no field existed at all. The field
+   now lives in the rail shell above; the listener is delegated on the document
+   so it works whenever the field exists and survives every rail rebuild, and
+   it binds once (guarded) no matter how many times HubView rebuilds. */
+if(!window.__pcRailSearchWired){
+  window.__pcRailSearchWired=true;
+  document.addEventListener('input', function(e){
+    var t=e&&e.target; if(!t||t.id!=='pcRailSearch') return;
+    window.PC_RAIL_Q=t.value||'';
     window.pcRenderRailForTab(window.PC_RAIL_TAB||'personal');
   });
-})();
+}
+
 /* rail close / open: the rail hides for a full-screen feed; a slim People
    button takes its place in the grid and opens it again. The grid wrap
    (#pcFeedWrap) is BUILT BY JAVASCRIPT after this script runs, so the wrap
