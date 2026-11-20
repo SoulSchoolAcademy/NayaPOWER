@@ -4,7 +4,7 @@
 
 **NN-20261119-prove-every-route-not-just-the-canonical-one · Naya Note · 2026-11-19 ~17:22 MST (00:22Z 2026-11-20)**
 
-*Paired Smart Note: SN-3897 — Prove Every Route, Not Just the Canonical One*
+*Paired Smart Note: SN-3959 — Prove Every Route, Not Just the Canonical One*
 
 **Category:** Verification — Proof
 
