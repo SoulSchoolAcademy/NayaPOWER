@@ -69284,6 +69284,38 @@
         "Scorecard",
         "Value"
       ]
+    },
+    {
+      "smart_note_id": "SN-3956",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn3956-your-whole-day-distilled-every-morning",
+      "slug": "your-whole-day-distilled-every-morning",
+      "title": "Your Whole Day, Distilled Every Morning",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3956/IB-SMART-NOTE-20261120-sn3956-your-whole-day-distilled-every-morning.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3956/IB-SMART-NOTE-20261120-sn3956-your-whole-day-distilled-every-morning.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3956/IB-SMART-NOTE-20261120-sn3956-your-whole-day-distilled-every-morning.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn3956-your-whole-day-distilled-every-morning.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T00:32:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "ce82220f680677156759d3c1e4484381a47d265c1e7963590d82f166f6fb925e",
+      "content_hash": "1f45b39e8b432f96bf96a7e4819bd69a5b08711055ae962a20a490b636834b35",
+      "one_line": "Your whole day, distilled. Every morning. Never skipped.",
+      "topics": [
+        "Naya",
+        "Reports",
+        "Daily Intelligence Report",
+        "Value"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69294,5 +69326,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "6d1e9ce48e8fffdd46f3328749e1c9037abf98f27496fcf2ee66194cb82fe1d9"
+  "corpus_manifest_hash": "b1db1983dedf5c68ddd299c3921f7ae40565f385b091b57a128a5f3ea2d7dd16"
 }

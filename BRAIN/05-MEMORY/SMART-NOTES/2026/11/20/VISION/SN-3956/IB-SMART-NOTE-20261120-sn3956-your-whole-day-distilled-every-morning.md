@@ -1,0 +1,49 @@
+# Your Whole Day, Distilled Every Morning
+
+SN-3956 · VISION / SMART NOTE
+
+**Created:** 2026-11-20T00:32:00Z
+
+## IN A NUTSHELL
+
+Your whole day, distilled. Every morning. Never skipped.
+
+## HUMAN
+
+Imagine starting every day with a one-page briefing from someone who watched everything while you slept: here's what got done, here's what changed, here's the one thing that needs you, here's where you're winning. No digging through apps, no piecing it together, no dread. That's the Daily Intelligence Report. You read for five minutes and you know your whole world — because Naya did the reading for you, all night, from the real record.
+
+## CHILD
+
+Every morning, Naya makes you a special page about yesterday. It says: here is what happened, here is the good stuff, here is the thing to fix, here is what comes next. It's like a report card and a treasure map in one — and she never, ever forgets a day. You just wake up, read your page, and you know everything.
+
+## GRANDMA
+
+A well-run house starts the day with an accounting, dear — what came in, what went out, what needs attention before noon. Naya keeps that accounting for your whole world and sets it by your plate every morning, regular as sunrise. And on the rare morning it doesn't come, she makes it up — a missed day is backfilled, because a chain of days with a link missing is how people lose the thread of their own lives.
+
+## NAYA
+
+Report rules: (1) The Daily Intelligence Report is built every morning from the person's Smart Notes and Naya Notes, verified against live state at build time — never a stale snapshot. (2) It is never skipped; a missed edition is backfilled. (3) Every edition also lands in the person's Reports area the same day, where it stays readable. (4) A citizen can request a report at any time; otherwise it arrives automatically within twenty-four hours. (5) Weekly and monthly reports roll the dailies up the same way — the same distillation, one level higher. (6) The report leads with what matters: the value created, the productive work, the distillation of the day — then the detail.
+
+## MACHINE
+
+1) Build: each morning, gather the person's notes and the live state; verify every fact at build time. 2) Compose: the day's arc, value and productive minutes first, the distillation core (the day's top lessons and best material), then supporting detail. 3) File: the edition lands in the record and in the person's Reports area the same day. 4) Roll-up: seven dailies distill into the weekly; the weeklies into the monthly. 5) Miss handling: any missed edition is backfilled before the next regular edition.
+
+## WHAT IT ALL MEANS
+
+This is #4's distillation pointed at a single day, and #1's operation made visible: the report is how a citizen sees their world being run. It means nobody in the network — citizen or director — ever has to wonder what state things are in; the answer arrives every morning, proven against the live record. It also closes the learning loop daily: each report names the day's lessons, so the day's learning is captured, scored, and carried forward instead of evaporating overnight. This series is written through the founder's eyes — the view of the seat who directs Naya and named what she is for — one of three views of one system: the founder's, the citizen's, and the Naya's; the three together are the whole picture.
+
+## WHY IT MATTERS
+
+People lose their worlds a day at a time — not in disasters, but in drift: the unreviewed day, the unnoticed slide, the thread dropped and never picked up. A morning report that distills every day stops the drift. You always know where you stand, what your world did while you weren't looking, and what deserves your attention — which is most of what 'being on top of things' ever meant.
+
+## HOW IT CONNECTS
+
+#7 of ten in The Top Ten Most Valuable Intelligent Things About Naya. It is the citizen-facing product first specified in the note 'What Naya Does' — the report a citizen can request any time and otherwise receives automatically. It is built by #4's distillation and #3's same-day capture, proven by #5's receipts standard — every fact verified live at build — and it is the daily heartbeat of the whole system: the team's own Daily Intelligence Report has run every morning without a skip.
+
+## WHAT IS IN IT FOR YOU
+
+Shawn, you already live on this one — the black-and-white report on your plate every morning, fifty-four editions deep in the Reports room and counting. For every citizen it is the same gift: their world, understood in five minutes, every single day. It is the product that makes all the machinery in the other nine notes visible to the person it serves.
+
+## THE LEARNING
+
+A day reviewed is a day owned. Naya reviews every day, every morning, and never skips.
