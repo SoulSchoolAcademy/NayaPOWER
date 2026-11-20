@@ -51170,6 +51170,39 @@ function pcProfileRenderFacts(p){
   h+='<div class="pc-fact-row"><span class="pc-fact-lab">Their world</span><a class="ph-connect pc-profile-world" href="https://'+esc(p.alias)+'.nayanet.app/" target="_blank" rel="noopener"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">\u25c9</span> Visit their world</a></div>';
   host.innerHTML=h;
 }
+/* CONNECTION-PROFILE FIX-2 2026-11-19: the landing is a race, not a
+   position. The scroll itself (scrollY > 40) folds the hero above the view
+   (.main-show .hero, max-height .6s), so the view's offsetTop drops after
+   scrollIntoView already ran -- 152px on this build, ~700px on the live
+   render -- and the Back button strands above the viewport whenever the
+   browser's scroll anchoring does not rescue the jump (real mouse clicks).
+   Re-assert the landing while the layout above is still moving: only when
+   the view's offsetTop changed since the last check AND the Back button is
+   above the viewport, and stop the moment the reader scrolls down
+   themselves, so a reader is never yanked back. */
+function pcProfileLand(view){
+  if(!view) return;
+  var back=null;
+  try{ back=view.querySelector('[data-pc-profile-back]'); }catch(e){}
+  var lastTop=null, lastY=null, checks=0;
+  function tick(){
+    if(!view||view.hidden) return;
+    var y=window.scrollY||0;
+    if(lastY!==null && y>lastY) return; /* reader scrolled down -- theirs now */
+    lastY=y;
+    var top=null;
+    try{ top=view.offsetTop; }catch(e){ return; }
+    if(lastTop!==null && top!==lastTop){
+      var btop=null;
+      try{ if(back) btop=back.getBoundingClientRect().top; }catch(e){}
+      if(btop!==null && btop<0){ try{ view.scrollIntoView(); }catch(e){} lastY=window.scrollY||0; }
+    }
+    lastTop=top;
+    checks++;
+    if(checks<12){ setTimeout(tick,150); }
+  }
+  setTimeout(tick,150);
+}
 function pcOpenProfile(alias){
   /* FOLLOW-ON 2026-11-17: the person is resolved seed-direct, every time.
      An unknown alias closes instead of showing a stale hero — one writer,
@@ -51207,6 +51240,7 @@ function pcOpenProfile(alias){
   if(typeof pcHideRailPop==='function'){ try{ pcHideRailPop(); }catch(e){} }
   view.hidden=false;
   try{ view.scrollIntoView(); }catch(e){}
+  pcProfileLand(view);
 }
 function pcCloseProfile(){
   var view=$('pcProfileView');
