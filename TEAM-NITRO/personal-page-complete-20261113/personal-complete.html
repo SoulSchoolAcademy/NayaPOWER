@@ -23164,7 +23164,7 @@ NF.register(UNIT, {
     d.addEventListener('click',function(e){ if(e.target===d || (e.target.closest && e.target.closest('[data-ph-flow-x]'))) phCloseAvatarDlg(); });
   })();
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ phCloseAvatarDlg(); } });
-  cvr.addEventListener('click',function(e){if(e.target.closest&&(e.target.closest('#cvrbtn')||e.target.closest('#settingsbtn')))return;cvrin.click();}); /* ONE ROUND S1: the gear never opens the photo picker (the old id check missed clicks landing on the gear's svg). */
+  cvr.addEventListener('click',function(e){if(e.target.closest&&(e.target.closest('#cvrbtn')||e.target.closest('#settingsbtn')||e.target.closest('a,button')))return;cvrin.click();}); /* FRAME-FIX3 2026-11-19 (F1/F2): a tap on a link or button inside the cover  the membership pills  must never open the photo picker. The picker opening on the same gesture swallowed the pill's navigation, so the Academy/Masterclass pills did nothing while the identical sidebar link (outside #cvr) worked. The guard already exempted the two cover buttons; every link/button is now exempt. Destinations unchanged. */
   cvrin.addEventListener('change',function(e){var f=e.target.files&&e.target.files[0];if(!f)return;
     var r=new FileReader();r.onload=function(ev){var i=cvr.querySelector('img');if(!i){i=document.createElement('img');cvr.insertBefore(i,cvr.firstChild);}i.src=ev.target.result;i.setAttribute('data-smart-cover','custom');};r.readAsDataURL(f);});
   var avv=document.getElementById('avv'),avin=document.getElementById('avin');
@@ -30293,7 +30293,7 @@ window.NayaNotif = window.NayaNotif || {
    nayanet.app/joinus, the owner's ambassador Smart Link. */
 (function(){
   'use strict';
-  var HUB_URL='https://nayanet.app/#/hub';
+  var HUB_URL='https://nayanet.app/hub#/hub'; /* FRAME-FIX3 2026-11-19 (F3): the eye proved #/hub lands on the signed-out entrance; the ECOSYSTEM tile lands on the Hub at hub#/hub  the owner 'Go to the Hub' path (routeJoin) and the drawer Hub door (window.NAYA_HUB_URL) now use the same Hub URL. */
   window.NAYA_HUB_URL=HUB_URL;
   var PAGE_ALIAS=(typeof window!=='undefined' && window.PAGE_ALIAS) ? window.PAGE_ALIAS : 'flagship-personal';
   function lsGet(k){ try{ return window.localStorage.getItem(k); }catch(e){ return null; } }
