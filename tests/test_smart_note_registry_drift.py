@@ -37,10 +37,51 @@ spec.loader.exec_module(mod)
 #     SN lane), 1 intelligence body shared by two capture files claiming
 #     SN-001 and SN-633 (identity anomaly, SN lane), 2 live-fire test
 #     captures SN-9998/SN-9999 (LAW lane lifecycle class).
+#     +5 on 2026-11-20 (20 -> 25, measured first-hand at main@aad2db14
+#     in the cold-retrieve r5 re-derivation of the #3493 cure onto the moved
+#     tip; same 5 as r3/r4 measured at de230305 and 07c2b0c2, byte-identical
+#     rows at all three tips): the 5 superseded run-338 captures
+#     IB-SMART-NOTE-20261118-sn3549-one-naya-one-standard-live-time,
+#     sn3550-the-kit-written-for-the-citizen,
+#     sn3551-scorecard-every-return-work-in-parallel,
+#     sn3552-one-spine-one-border-every-lane,
+#     sn3553-dont-send-it-back-until-ten. Their registry entries pointed
+#     at files that no longer exist (collision-repair round 2 moved the
+#     pages to new filenames without updating the registry), so every cold
+#     retrieve raised INDEX_CORRUPT:PROJECTION_ABSENT and the drift test
+#     itself was red on registry_projection_paths_absent 0 -> 5 (r3/r4) and
+#     0 -> 10 at aad2db14 (see below). Deleting the 5 entries restores
+#     retrieval (cold probe 3/5 -> 5/5) and the 5 captures stay on disk as
+#     inert residue because deleting captures is destructive and needs
+#     Shawn's word. When he authorizes their deletion, this pin returns
+#     to 20. This re-baseline documents a measured, named trade — it does
+#     not bless silent drift: the 5 filenames above are the audit trail,
+#     and the count may not grow past 25 without a new investigation.
+#     SECOND FAMILY at aad2db14 (same run, NOT in this pin): SN-3955..SN-3959
+#     are ACTIVE entries pointing at 11/20 VISION projection files the Top Ten
+#     door landings created and the SN re-adjudication then removed (each
+#     entry's supersession_reason names the SHAs), with no capture files
+#     on disk. Their content_hash
+#     matches the SN-4203..SN-4207 captures 5/5 — the same 5 notes filed
+#     under two number ranges (number collision). They are RETIRED, not
+#     deleted (lifecycle SUPERSEDED + superseded_by_capture_id naming the
+#     SN-4203..SN-4207 capture + supersession_reason on each entry):
+#     deleting them would make the ids VANISH (no capture on disk for the
+#     old numbers — the vanish guard would gain 5 ids), while retirement
+#     keeps the ids registered and the retrieval validator skips inactive
+#     entries. Consequence, stated not hidden: audit_registry counts
+#     retired entries' absent paths, so registry_projection_paths_absent
+#     reads 5 after this cure (10 -> 5) and the drift test stays red on
+#     that class (pin 0, deliberately NOT raised) plus
+#     published_pages_without_registry_entry 44 (pin 4, deliberately NOT
+#     raised — the unregistered band SN-4203..SN-4207 + SN-4256..SN-4258).
+#     The remaining 5 absent paths are the reconciliation lane's to cure:
+#     register SN-4203..SN-4207, then the retired rows can go once
+#     SN-3955..SN-3959 captures exist.
 PINNED_BASELINE = {
     "unparseable_captures": 0,
     "captures_missing_intelligence": 0,
-    "captures_unregistered_by_hash": 20,
+    "captures_unregistered_by_hash": 25,
     "twin_captures_of_registered_notes": 14,
     "entries_without_hash": 28,
     "entries_with_stale_hash": 0,
