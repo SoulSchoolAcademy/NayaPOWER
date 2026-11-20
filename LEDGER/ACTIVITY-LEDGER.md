@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 01:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 01:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1453,6 +1453,12 @@ _Last updated: 2026-11-20 01:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
 
+### ✅ t1528-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Disclosure-decision packet: pending 16 split live 6 / inert 10, per-entry consequences for the vocabulary decision
+
+**Evidence:** FRESH WINDOW (unscored by mtime). VERIFIED first-hand this tick by sha256, all 6 receipt pins match byte-exact: packet ec77b561..., fresh preview b618a698... (byte-identical to parent preview), pending-split script de784902..., extraction script b774db04..., corpus index 238ebe9c... (unchanged). NOT PHANTOM. Self-score 9.5, agreed. Score 9.5 ACCEPT
+
 ### ✅ t1528 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** Disclosure-decision packet: one class decision + per-entry consequences for the 6 live pending entries (pending leg)
@@ -1500,6 +1506,12 @@ _Last updated: 2026-11-20 01:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1528-lane11.md`
 
 **Evidence:** VERIFIED: packet sha ec77b561...a61e4b60a3, fresh preview sha b618a698...670b5 (byte-identical to parent preview), pending-split script sha de784902...0d24, extraction script sha b774db04...fbdf, corpus sha 238ebe9c...ff5, mirror tip 6c60c328...a85 all recomputed from live bytes and MATCH the receipt pins; mirror git status clean. Clears 9.5 becaus
+
+### ✅ t1527-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent read-only verification of the t1527 dispatcher reconcile (checks a-f, rotation walk 15->13)
+
+**Evidence:** FRESH WINDOW (unscored by mtime). VERIFIED first-hand this tick: both cited receipts exist at the exact byte sizes the receipt pins (t1526-lane1.md 11,724; gap-t1515-lane11.md 10,450), and brief-t1527-lane1.md now sits in brief-queue/claimed/done/ - the next reconcile did move it exactly as this receipt predicted. NOT PHANTOM. Self-score 9.4; score
 
 ### ✅ t1527 — Team 1, Team Naya Scorer (Verification & Proof) — 9.4/10 [VERIFIED]
 
@@ -48017,6 +48029,12 @@ _Last updated: 2026-11-20 01:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-t1002-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Close t1002 dry-run non-replication confound: re-derive as-run shape from prereg, dry runs, sealed arm key, receipts
+
+**Evidence:** BACKLOG SWEEP (2026-10-27). VERIFIED first-hand this tick by sha256: evidence file hidden_files/lane-2/gap-t1002-lane2/evidence.md 7c00be3b... matches the receipt pin byte-exact. NOT PHANTOM. Self-score 9.0, agreed. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) no new measurement was produced - the gap closed by reclassification (as-run shape was
+
 ### ✅ gap-gap-gap-t1002-lane2-recusal-repeat-20261026-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Claim-script authorship-pattern hole closed (3 new SECOND_SEAT_RES patterns + fixture) + NON-Clarity seat bar stamped on held brief; Resolve control passes
@@ -49218,6 +49236,18 @@ _Last updated: 2026-11-20 01:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-t1530-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Deploy-currency check: live Cloudflare deployment/version binding, commit-field absence, fresh-clone rail derivation, audit-string counts
+
+**Evidence:** BACKLOG SWEEP (2026-10-24). VERIFIED as far as local bytes allow this tick: the receipt's HUB/app/index.html SHA 4aa796e0... could NOT be re-derived locally - the mirror does not contain the fresh-clone HEAD e0cd4c24 (git cat-file: object not found; mirror history is known-truncated, per TOOLS.md) and the /tmp clone is gone. That is a verification 
+
+### ✅ gap-t1522-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Live Hub render + authenticated Supabase wall re-measurement (wall/archive/connections counts, live routes load/title check)
+
+**Evidence:** BACKLOG SWEEP (2026-10-24). VERIFIED first-hand this tick by sha256: parent receipt t1522-lane12.md 5cb4dd2d... matches the receipt pin byte-exact. Claimed brief found in brief-queue/claimed/done/ (reconcile moved it - expected, not missing). NOT PHANTOM. Self-score 9.0, agreed. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: the live-render wording le
 
 ### ✅ gap-gap-gap-t1530-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -51804,6 +51834,12 @@ _Last updated: 2026-11-20 01:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-t1504-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Vocabulary rewrite + fresh probe: 11 unretrieved lessons rewritten additively, sign-in-before-read backfilled, fold-verdict format v1 frozen, clean A/B old vs new catalog
+
+**Evidence:** BACKLOG SWEEP (oldest genuinely-unscored, 2026-10-24). VERIFIED first-hand this tick by sha256, all 6 receipt pins match byte-exact: probe script d7a0d2fd..., probe JSON 25899b20..., OLD-CATALOG 0d6e4b04..., lessons.jsonl.pre-gap-t1504-lane10 ff644aac..., fold-verdict-format-v1.md 9ec69984..., rewrite script 888c5fc1.... NOT PHANTOM. No explicit se
 
 ### ✅ distill-feed-2641-20261017 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
@@ -56048,6 +56084,12 @@ _Last updated: 2026-11-20 01:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261119-1335 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-19 13:35 PST: 31 queued briefs evaluated, all refused, none claimed
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: claim-sweep log brief-queue/claim-sweep-20261119-1333.log (32,750 bytes) and sweep script claim-sweep-20261119-1333.py both exist; queue still holds 31 brief-*.md files, matching the receipt's 31. NOT PHANTOM. Self-score 9.0, agreed. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: the receipt closes no gap -
 
 ### ✅ gate-stall-20261119-1646 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
