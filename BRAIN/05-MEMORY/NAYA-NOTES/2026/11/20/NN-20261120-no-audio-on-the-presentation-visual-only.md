@@ -4,7 +4,7 @@
 
 **NN-20261120-no-audio-on-the-presentation-visual-only · Naya Note · 2026-11-20 ~16:41 MST**
 
-*Paired Smart Note: SN-pending — No Audio on the Presentation — Visual Only (takes the next free number at filing)*
+*Paired Smart Note: SN-4355 — No Audio on the Presentation — Visual Only*
 
 **Category:** Law — the presentation stays visual; the audio question is decided
 
