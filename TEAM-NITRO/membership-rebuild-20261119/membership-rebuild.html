@@ -4819,7 +4819,7 @@ html.os-calm
 <div id="saCourse" class="ph-card sa-sheet" hidden>
 <div class="sa-head"><span class="os-jewel os-jewel-h" id="saCourseJewel" style="--jc:#a06bff">✦</span><div class="sa-head-txt"><h2 id="saCourseTitle">The course</h2><p class="os-note" id="saCourseSub" style="margin:0;"></p></div><button class="ph-connect sa-x" type="button" data-sa-close aria-label="Back to my world">← Back</button></div>
 <div class="ph-card sa-course-hero" id="saCoverCard"><div class="sa-cover sa-thumb sa-feature" id="saFeatureCover" role="img" aria-label="Membership feature cover"><span class="sa-cover-play">✦</span></div><div class="sa-feature-head"><span class="sa-cover-day" id="saFeatureDay"></span><span class="sa-cover-title" id="saFeatureTitle"></span></div><div class="ph-sec-t"><span class="ph-dot" id="saCoverDot" style="background:#a06bff;color:#a06bff;"></span> <span id="saCoverHead">Welcome in</span></div><p class="os-note" id="saCoverText" style="margin:0;"></p><div class="ph-actions" style="margin-top:14px;"><a class="ph-connect" id="saHeroJoin" href="https://nayanet.app/joinus" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">✦ Join NayaNET</a><button type="button" class="ph-connect" id="saHeroInvite">💌 Invite — I earn 50%</button></div><p class="os-note" id="saHeroInviteNote" style="margin:6px 0 0;"></p></div>
-<div class="sa-courses" id="saCoursePick" aria-label="Choose your course"><a class="ph-card sa-course-pick" data-mw-open-mship="Naya Academy" href="https://nayanet.groovepages.com/academy" style="--mc:#a06bff"><span class="sa-course-pick-gem">✦</span><b>Naya Academy</b><span>5 day videos</span></a><a class="ph-card sa-course-pick" data-mw-open-mship="Fast Action Club" href="#memberships" style="--mc:#2fe89e"><span class="sa-course-pick-gem">✦</span><b>Fast Action Club</b><span>9 lessons</span></a><a class="ph-card sa-course-pick" data-mw-open-mship="AI Masterclass" href="https://aimasterclass.help/" style="--mc:#3fb8ff"><span class="sa-course-pick-gem">✦</span><b>AI Masterclass</b><span>Lessons coming</span></a></div>
+<div class="sa-courses" id="saCoursePick" aria-label="Choose your course"><button type="button" class="sa-pick-head" id="saCoursePickHead" data-sa-pick-head><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span>Choose your course</button><a class="ph-card sa-course-pick" data-mw-open-mship="Naya Academy" href="https://nayanet.groovepages.com/academy" style="--mc:#a06bff"><span class="sa-course-pick-gem">✦</span><b>Naya Academy</b><span>5 day videos</span></a><a class="ph-card sa-course-pick" data-mw-open-mship="Fast Action Club" href="#memberships" style="--mc:#2fe89e"><span class="sa-course-pick-gem">✦</span><b>Fast Action Club</b><span>9 lessons</span></a><a class="ph-card sa-course-pick" data-mw-open-mship="AI Masterclass" href="https://aimasterclass.help/" style="--mc:#3fb8ff"><span class="sa-course-pick-gem">✦</span><b>AI Masterclass</b><span>Lessons coming</span></a></div>
 <div id="saToc"></div>
 <div class="ph-card sa-banner" id="saSectionHead" hidden><h3 id="saSectionTitle"></h3><p class="os-note" id="saSectionNote" style="margin:0;"></p><div class="ph-actions" style="margin-top:12px;"><button type="button" class="ph-connect" data-sa-toc-back>← Back to the course</button><a class="ph-connect" id="saSectionJoin" href="https://nayanet.app/joinus" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">✦ Join NayaNET</a></div></div>
 <div class="sa-pane" id="saPaneVideo" hidden></div>
@@ -20539,6 +20539,9 @@ setTimeout(function(){
 /* F7 — .sa-login-back is retired: the pill is gone; the back icon in the top bar replaces it. Rule kept (dead) for the follow-up cleanup. */
 .sa-login-back{position:absolute;left:16px;bottom:76px;z-index:5;}
 body.sa-login-open .ph-plus-wrap,body.sa-login-open .nsb-search-fab,body.sa-login-open #nsbBottom,body.sa-login-open #os-rooms-plus,body.sa-login-open #os-eco-plus{display:none!important;}
+/* FIX-3 2026-11-19 (fail 2): exactly ONE add control in lesson view \u2014 the bottom-bar ADD tile survives. While a lesson is open (body.sa-lesson-open, set in saShowView / saShowToc / saClose) the top-left room-navigation "+" and the feed-filters "+ Add" pill hide. Outside lesson view both return, untouched. */
+body.sa-lesson-open #os-rooms-plus{display:none!important;}
+body.sa-lesson-open #mwFeedPills .add-tab{display:none!important;}
 /* MEMBERSHIP ROUND 5 — the player: full screen, not a dialog. Video fills
    the screen once tapped, with Next; audio fills the screen with the voice
    + the thumbnail. The video keeps its 16:9 shape: .sa-sixteen already
@@ -20830,6 +20833,8 @@ function mwBuildFeedPills(){
 }
 function mwSetFeedPill(key){
   if(key==='__add'){
+    /* FIX-3 2026-11-19 (fail 5): in a course the composer is hidden (saSetPersonalFeed), so the old scroll+focus landed on nothing \u2014 the pill was dead. Route through the one staged compose action; it closes the course if one is open and opens the page's own composer. The old scroll+focus stays as the fallback when the membership script has not run. */
+    if(typeof window.saOpenCompose==='function'){ window.saOpenCompose(); return; }
     var c=$('os-post-body'); if(c){ c.scrollIntoView({block:'center'}); try{ c.focus(); }catch(e){} }
     return;
   }
@@ -22520,12 +22525,13 @@ function saOpen(name){
     try{ window.open(SA_PRICING_URL, '_blank', 'noopener'); }catch(e){}
     return;
   }
-  if(m.access==='free'){
-    /* Free steps straight in \u2014 there is nothing to protect, so there is
-       no gate to stand in front of. */
-    saEnterCourse();
-    return;
-  }
+  /* FIX-3 2026-11-19 (fail 1): free means no payment, NOT no gate. The Anatomy
+     (section 4) is explicit — "FREE still means they enter — just their
+     info in" — and the login door IS the info-in step: name + any code steps
+     in. The old free straight-in was the hole the eye walked through: the whole
+     membership was reachable with no login at all. Members and free now share
+     one path below: a recorded join steps straight in; everyone else meets
+     the door. */
   if(saHasJoined(m.slug)){ saEnterCourse(); return; }
   saOpenLogin();
 }
@@ -22541,6 +22547,7 @@ function saClose(){
   var _nb3 = sa$('naya-notif-bar'); if(_nb3) _nb3.style.display = ''; /* FIX-2b: the notif trio returns on total close. */
   var _pk3 = sa$('saCoursePick'); if(_pk3) _pk3.style.display = ''; /* FIX-2c: the course cards return on total close. */
   saLessonOpen = false; /* FIX-1: total close clears the open-lesson state. */
+  try{ document.body.classList.remove('sa-lesson-open'); }catch(e){} /* FIX-3 (fail 2). */
   saCur = null;
   if(window.osShowView) window.osShowView('home');
 }
@@ -22790,7 +22797,8 @@ function saRenderChooser(){
 }
 function saShowToc(){
   if(!saCur) return;
-  saLessonOpen = false; /* FIX-1: back at the chooser — the next Lessons section shows the feed list again. */
+  saLessonOpen = false; /* FIX-1: back at the chooser \u2014 the next Lessons section shows the feed list again. */
+  try{ document.body.classList.remove('sa-lesson-open'); }catch(e){} /* FIX-3 (fail 2): the chooser is not a lesson \u2014 both add controls return. */
   var _bb2 = sa$('os-bottom3'); if(_bb2) _bb2.style.display = ''; /* FIX-2: the bottom bar returns with the chooser. */
   var _cc2 = sa$('saCoverCard'); if(_cc2) _cc2.hidden = false; /* FIX-2b: the hero returns with the chooser. */
   var _nb2 = sa$('naya-notif-bar'); if(_nb2) _nb2.style.display = ''; /* FIX-2b: the notif trio returns with the chooser. */
@@ -22832,6 +22840,9 @@ function saGoLessons(){
 function saShowView(v){
   if(!saCur) return;
   saSection = (v==='audios') ? 'audios' : (v==='lessons' ? 'lessons' : 'videos');
+  /* FIX-3 2026-11-19 (fails 2 + 6): leaving the lessons section closes the open-lesson state \u2014 a stale saLessonOpen made the Lessons feed tab show the list instead of the lesson. The body class hides the two non-canonical add controls while a lesson is open. */
+  if(saSection!=='lessons') saLessonOpen = false;
+  try{ document.body.classList.toggle('sa-lesson-open', saSection==='lessons' && saLessonOpen); }catch(e){}
   saLevel = 'section';
   saMarkFeedTab(saSection);
   var toc = sa$('saToc'); if(toc) toc.hidden = true;
@@ -23140,6 +23151,19 @@ function saOnEnter(name){
   saCloseLogin();
   saEnterCourse();
 }
+/* FIX-3 2026-11-19 (fails 4 + 5): the ONE staged compose action. The bottom-bar ADD tile and the feed-filters "+ Add" pill both land here. It stays staged and lands right: if a course is open it closes (the Personal feed + the page's own "Make a post" composer return with it), then the composer scrolls into view and takes focus. It never navigates anywhere \u2014 never to live nayanet.app. Exposed on window so the feed-filters pill (a separate script block) resolves it the way this file already exposes its cross-script helpers. */
+function saOpenCompose(){
+  if(saCur) saClose();
+  var c = sa$('os-post-body');
+  if(c){ try{ c.scrollIntoView({block:'center'}); }catch(e){} try{ c.focus(); }catch(e){} }
+}
+window.saOpenCompose = saOpenCompose;
+document.addEventListener('click', function(e){
+  var add = e.target && e.target.closest ? e.target.closest('[data-notif="plus"]') : null;
+  if(!add) return;
+  e.preventDefault(); e.stopPropagation();
+  saOpenCompose();
+}, true);
 function saHeroInvite(){
   var note = sa$('saHeroInviteNote');
   var linkEl = sa$('os-inv-link');
@@ -23191,6 +23215,17 @@ function saWire(){
   if(tht) tht.addEventListener('click', function(e){ saPcHandleClick(e); });
   var hi = sa$('saHeroInvite');
   if(hi) hi.addEventListener('click', saHeroInvite);
+  /* FIX-3 2026-11-19 (fail 1): the Academy cover image + its center \u2726 sparkle
+     open the login door. The cover is the front door of the membership \u2014 a tap
+     on it steps in (name + any code) instead of sitting there as a still. A
+     citizen who already stepped in (join recorded) keeps the cover as a still:
+     the door must not replay for someone already inside. */
+  var fc = sa$('saFeatureCover');
+  if(fc) fc.addEventListener('click', function(e){
+    if(saHasJoined('academy')) return;
+    e.preventDefault(); e.stopPropagation();
+    saOpen('naya academy');
+  });
   var sb = sa$('saBackBtn');
   if(sb) sb.addEventListener('click', saClose);
   /* Escape: theatre first, then the login, then the course. */
@@ -23229,7 +23264,8 @@ function saWire(){
     if(!t) return;
     e.preventDefault(); e.stopPropagation();
     var v = t.getAttribute('data-sa-view');
-    if(v==='lessons') saGoLessons(); else if(v) saShowView(v);
+    /* FIX-3 2026-11-19 (fail 6): the feed-tab Lessons door ALWAYS opens the Day 1 lesson, from ANY tab state. saGoLessons toggles (lesson open -> the list) \u2014 that is the IN-LESSON tab's job, not this door's. Masterclass has no lessons: the honest empty section stands. */
+    if(v==='lessons'){ if(saLessonCount()===0){ saShowView('lessons'); } else { saOpenLesson(0); } } else if(v) saShowView(v);
   }, true);
   /* My World becomes Our Lessons in the course: the button returns to the
      course presentation instead of leaving for the My World view. */
@@ -23247,12 +23283,13 @@ function saWire(){
   /* The course feed: one delegated listener for everything in #saCourse. */
   var course = sa$('saCourse');
   if(course) course.addEventListener('click', function(e){
-    var t = e.target && e.target.closest ? e.target.closest('[data-sa-toc],[data-sa-toc-back],[data-sa-read],[data-sa-next],[data-sa-watch],[data-sa-watch-ch],[data-sa-nextvid],[data-sa-cover],[data-sa-cover-ch],[data-sa-prev-lesson],[data-sa-next-lesson],[data-sa-pc-play],[data-sa-pc-full],[data-sa-close],[data-sa-choose-lesson]') : null;
+    var t = e.target && e.target.closest ? e.target.closest('[data-sa-toc],[data-sa-toc-back],[data-sa-read],[data-sa-next],[data-sa-watch],[data-sa-watch-ch],[data-sa-nextvid],[data-sa-cover],[data-sa-cover-ch],[data-sa-prev-lesson],[data-sa-next-lesson],[data-sa-pc-play],[data-sa-pc-full],[data-sa-close],[data-sa-choose-lesson],[data-sa-pick-head]') : null;
     if(!t){
       /* ROUND 5 FIX: audio controls share one handler with the theatre. */
       saPcHandleClick(e);
       return;
     }
+    if(t.hasAttribute('data-sa-pick-head')){ saShowToc(); return; } /* FIX-3 (fail 3): the chooser heading opens the chooser \u2014 it never switches course. */
     if(t.hasAttribute('data-sa-close')){ saClose(); return; }
     if(t.hasAttribute('data-sa-toc-back')){ saShowToc(); return; }
     if(t.hasAttribute('data-sa-toc')){ var _tv = t.getAttribute('data-sa-toc'); if(_tv==='lessons'){ saGoLessons(); } else { saShowView(_tv); } return; }
@@ -23557,6 +23594,10 @@ try{ saPcInit(); saWire(); }catch(e){ try{ console.warn('[sa]', e); }catch(_){} 
 .sa-toc-lines .sa-cover-title{font-size:19px;}
 .sa-toc-day{margin:14px 0 0;font-size:17px;font-weight:800;letter-spacing:2px;color:#fff;}
 .sa-courses{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 0;}
+/* FIX-3 2026-11-19 (fail 3): "Choose your course" is a real heading now \u2014 white 25px, its own full-width row above the cards, never an aria-label alone. It is a BUTTON, not a card: a tap on it opens the chooser and never switches course. */
+.sa-pick-head{grid-column:1/-1;display:flex;align-items:center;gap:10px;background:none;border:0;padding:8px 4px;cursor:pointer;font:inherit;font-size:25px;font-weight:600;color:#fff;text-align:left;transition:transform .3s ease;}
+.sa-pick-head:hover{transform:translateY(-2px);}
+.sa-pick-head:hover .os-jewel{box-shadow:0 0 18px #a06bff;}
 @media (max-width:640px){.sa-courses{grid-template-columns:1fr;}}
 .sa-course-pick{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;text-decoration:none;padding:20px 12px;cursor:pointer;--mc:#a06bff;border:1.5px solid var(--mc);box-shadow:0 10px 28px rgba(0,0,0,.55),0 0 20px -4px var(--mc);transition:transform .3s ease,box-shadow .3s ease;}
 .sa-course-pick:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.6),0 0 28px -2px var(--mc);}
@@ -23565,5 +23606,5 @@ try{ saPcInit(); saWire(); }catch(e){ try{ console.warn('[sa]', e); }catch(_){} 
 .sa-course-pick span:last-child{font-size:17px;color:#fff;}
 .sa-lesson-tabs{margin:0 0 16px;}
 </style>
-<nav id="os-bottom3" class="os-bottom3 notif-six notif-bar" aria-label="Dashboard"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/connections" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3.1"/><path d="M2.8 19.5c0-3.2 2.6-5.5 5.7-5.5s5.7 2.3 5.7 5.5"/><circle cx="16.8" cy="9" r="2.5"/><path d="M15.8 14.6c2.6.3 4.7 2.4 4.7 4.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
+<nav id="os-bottom3" class="os-bottom3 notif-six notif-bar" aria-label="Dashboard"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="#os-post-body" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/connections" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3.1"/><path d="M2.8 19.5c0-3.2 2.6-5.5 5.7-5.5s5.7 2.3 5.7 5.5"/><circle cx="16.8" cy="9" r="2.5"/><path d="M15.8 14.6c2.6.3 4.7 2.4 4.7 4.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
 </body></html>
