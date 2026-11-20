@@ -4,7 +4,7 @@
 
 **NN-20261120-getting-this-done-right · Naya Note · 2026-11-20 ~15:24 MST**
 
-*Paired Smart Note: SN-pending — Getting This Done Right (takes the next free number at filing)*
+*Paired Smart Note: SN-4335 — Getting This Done Right*
 
 **Category:** Vision — his priority, stated plainly
 
