@@ -23,6 +23,13 @@
 // and routing into the brain intake is the named follow-up; this function
 // never pretends to have stored or routed what it only received.
 
+// Module marker (no runtime effect): without an import/export this file is
+// a script, so its top-level `json` helper shares the global scope with
+// nayanet-smart-mail's and tsc reports TS2393 Duplicate function
+// implementation in the edge type-check gate. Every other edge function is
+// already a module via its imports.
+export {};
+
 const cors = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":

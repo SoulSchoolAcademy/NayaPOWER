@@ -22,7 +22,15 @@ const source = readFileSync(
   new URL("../supabase/functions/nayanet-github-intake/index.ts", import.meta.url),
   "utf8"
 );
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ""));
+// The handler is a module now (see the `export {};` marker in index.ts) but
+// the VM sandbox loads it as a script, so drop the marker here — same
+// preprocessing idea as the import strip below. The marker itself is still
+// type-checked by the edge type-check gate on the real file.
+const code = stripTypeScriptTypes(
+  source
+    .replace(/^import .*;\r?\n/gm, "")
+    .replace(/^export \{\};?\r?\n/m, ""),
+);
 
 const SECRET = "whsec_test_secret_not_a_real_one";
 const DELIVERY = "72d3162e-0000-4000-8000-000000000000";
