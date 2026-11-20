@@ -66899,6 +66899,39 @@
         "Staging",
         "Decision"
       ]
+    },
+    {
+      "smart_note_id": "SN-3381",
+      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3381-calendar-v5-goes-back",
+      "slug": "calendar-v5-goes-back",
+      "title": "Calendar v5 Goes Back on the Date",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3381/IB-SMART-NOTE-20261118-sn3381-calendar-v5-goes-back.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3381/IB-SMART-NOTE-20261118-sn3381-calendar-v5-goes-back.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/CORRECTION/SN-3381/IB-SMART-NOTE-20261118-sn3381-calendar-v5-goes-back.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261118-sn3381-calendar-v5-goes-back.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "CORRECTION",
+      "topic": "CORRECTION",
+      "captured_at": "2026-11-18",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-18T19:45:32Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-18",
+      "page_hash": "719c9d0d01d1971ed8ff5e99bb1173565a1036da26b390d0e004d8dca6ffbd96",
+      "content_hash": "d5408d99f735675c4d34358805bea4437a75bbd5b7a04ce447888dbb46a24f86",
+      "one_line": "Wrong date, purple i, invisible Back — it goes back. The calendar v5 eye walked the page live on 2026-11-18 and sent it back on eight counts, the first of them fatal on its own: the date line says NOVEMBER 26 for both November 18 and November 20, and Wednesday sits flat white instead of lit in its blue. Bytes clean is not a pass — the render is the pass.",
+      "topics": [
+        "Calendar",
+        "Design",
+        "Correction",
+        "Interface",
+        "Verification"
+      ]
     }
   ],
   "sequence_policy": {
@@ -66909,5 +66942,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "32d30ecd19c581835588c616e877c5ae400270ad367be5b73ebd5f261bcfd04f"
+  "corpus_manifest_hash": "2e376770a7e6fd1c928af685286835cde989ad6c03007d1c7e0023a063ab35e3"
 }
