@@ -4,7 +4,7 @@
 
 **NN-20261119-the-anatomy-of-a-smart-note · Naya Note · 2026-11-19 ~19:04–19:10 MST (02:04–02:10Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — The Anatomy of a Smart Note (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4213 — The Anatomy of a Smart Note*
 
 **Category:** Design — Smart Note anatomy (the format itself, the rule set)
 
