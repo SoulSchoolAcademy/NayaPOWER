@@ -69796,6 +69796,38 @@
         "Record",
         "Handoff"
       ]
+    },
+    {
+      "smart_note_id": "SN-4102",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4102-finished-beats-started",
+      "slug": "finished-beats-started",
+      "title": "Finished Beats Started",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4102/IB-SMART-NOTE-20261120-sn4102-finished-beats-started.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4102/IB-SMART-NOTE-20261120-sn4102-finished-beats-started.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4102/IB-SMART-NOTE-20261120-sn4102-finished-beats-started.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4102-finished-beats-started.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:20:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "09302edfd73ee6cc8902f08dd62737ac9b83c6a516d03a2ebd93e6ee40872608",
+      "content_hash": "af98ff70075717fe21b6e989ea146358185edec7c1787e5abccfd6d9da7d3ab7",
+      "one_line": "One thing finished beats ten things started.",
+      "topics": [
+        "Finishing",
+        "Mechanic",
+        "Execution",
+        "Discipline"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69806,5 +69838,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "3e5c92a95c151e4ddeb93616a965a86585f0b700d3a894196fa57c2c0ece06e2"
+  "corpus_manifest_hash": "cda918eaecb321d5aee16a677da7f4890bbfe29ef4b21d6cdd32d818aa27d91e"
 }
