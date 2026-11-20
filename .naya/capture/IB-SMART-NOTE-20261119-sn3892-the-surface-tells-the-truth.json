@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3892",
+ "intelligence": {
+  "title": "The Surface Tells the Truth",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3892-the-surface-tells-the-truth",
+  "smart_note_id": "SN-3892",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3892/IB-SMART-NOTE-20261119-sn3892-the-surface-tells-the-truth.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of the whole system as a house where every door does what its sign says. \"Open the stats\" opens the real stats page — not some old room that hasn't been updated in months. The numbers on the board are real counts of real people: how many came, how many stayed and connected. The X at the top takes you back home, and the room you return to is still tidy. The Dashboard stops calling a smart link a name, because a name is who you are and a link is what the system tracks. When a card pops up to show you a person, it isn't a tiny little box anymore — it's a full framed presentation, everything about that person and everything you can do with them, all in one place. And when Shawn is sitting there live, the work happens now, not at noon — the schedule is a guide, not a gate. The notes follow the same honesty: the short one is the essence, the long one is the full story, and Naya reads them both — that's how she knows.",
+  "simple_view": "Imagine every button does exactly what it says! Press \"open the stats\" and — BOOM — the real stats page opens! The numbers are real: how many people came, and how many stayed! The little X at the top takes you back home! And a smart note is short and sweet, while a Naya note tells the whole story!",
+  "grandma_view": "It's like this, love — imagine every button does exactly what it says, dear! Press \"open the stats\" and the real stats page opens, love — not some old page from months ago! The numbers are real people, dear — how many came, and how many stayed and connected! And the little X at the top, love — it takes you straight back home, and everything is still neat when you get there! A smart note is short and sweet, dear, and a Naya note tells the whole story — and Naya reads them all, love, that's how she knows!",
+  "naya_view": "Business boards: stats are clicks to the page and joins, real counts, never invented. \"Open the stats\" opens the actual stats page for that business or that space — the live clicks/gauge view — never the old un-updated page; same rule for both. Stats view: X at the top center, click returns to the previous screen, view stays formatted on return — restore it exactly where it was. Dashboard: \"claim your smart link\", never \"claim your name\"; default stats clicks and sales to NayaNet, Business boards clicks and joins. Messenger plus: aligned with the current, opens the sidebar tab or the instant message, then moves over. Info card: full framed and extraordinary — notes, instant messages and mail, match data (percentage, areas, connection, relevance), message / mail / Smart Meet / call, all from the card — never a small little pop-up. Pop-up law, universal: everything that pops up fits INTO the frame, optimized to the viewport. Live law: a live, doable-now item is never parked for a schedule slot — run it now. Note shapes: smart note = essence, nutshell at the top (the human level), child, grandma, five areas, three to four sentences a section; Naya note = the full report, same format, however many sentences it takes; Naya notes are the DEFAULT; she reads them — that is how she knows.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3892",
+   "title": "The Surface Tells the Truth",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3892/IB-SMART-NOTE-20261119-sn3892-the-surface-tells-the-truth.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3892/IB-SMART-NOTE-20261119-sn3892-the-surface-tells-the-truth.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

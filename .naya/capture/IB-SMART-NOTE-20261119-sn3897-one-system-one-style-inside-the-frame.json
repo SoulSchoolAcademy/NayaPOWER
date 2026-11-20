@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3897",
+ "intelligence": {
+  "title": "One System, One Style, Inside the Frame",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3897-one-system-one-style-inside-the-frame",
+  "smart_note_id": "SN-3897",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3897/IB-SMART-NOTE-20261119-sn3897-one-system-one-style-inside-the-frame.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of a house where every light switch is in the same place in every room — you never have to hunt for it, your hand just knows. That is what this group builds: the same buttons, in the same places, doing the same jobs, in the Hub, in the Messenger, in the mail. The plus button is not a mystery — it writes a new message. Your friend's card is not a little box floating in the middle of nowhere — it sits inside the frame like a proper portrait, with everything about them and everything you can do with them in one place. Settings sit in the corner where nothing else needs to be, clear of the way out. The calendar wears the day's own colour, the first thing you see is where your action is, and your worlds are six big pictures you tap to enter. The feed sorts itself like a kind friend tidying your papers into neat piles. And the shop itself is beautiful enough to sell itself — while your diary stays locked in your own box, unread by anyone. A house is not ready because the kitchen is perfect; it is ready when the front door opens.",
+  "simple_view": "Imagine every button is in the same place on every page! The same buttons do the same jobs everywhere you go! Your mail button and your chat button are one little switch! The big plus button makes a new message, not a new friend! Your friend's card sits inside the frame, never floating in the middle! Settings sits in the top corner, clear of everything else! The design sells itself, and your diary stays locked in your own box! If a door won't open, the house is not ready, even if the kitchen is perfect!",
+  "grandma_view": "It's like this, love — imagine every switch in the house is in the same place in every room, dear, so your hand just knows where to reach! The same buttons do the same jobs everywhere, love, and the big plus button writes a new message — nothing mysterious about it! Your friend's card is a proper portrait inside the frame, dear, not a little box floating in the middle of nowhere! Settings sit in the corner, clear of everything, love, and never in the way of the door! The feed sorts itself like a kind friend tidying your papers, dear, and your diary stays locked in your own box, unread by anyone! And a house is not ready because the kitchen is perfect, love — it is ready when the front door opens!",
+  "naya_view": "One auto-organization button set, identical in the Hub, the Messenger and Smart Mail. The top-right corner holds only the Smart Mail / Instant Messenger toggle; audio and video sit top-right of the feed, always in the same spot. ADD is compose — Personal / Business / Worlds, never Mail / Activity / Worlds. The contact card fits INTO the frame, dynamic throughout, four actions in four colours, same system language. Settings top-right, clear of everything; panel items inside the panel, inside the frame. Day-page numbers wear their weekday colour; date and time said once; cover full; orb centered and extraordinary; notifications first, wisdom second; Your Worlds six icons, day-filtered; news three icons with real feeds behind them; never invent a forecast, never invent news. The feed auto-categorizes on entry, All plus category, tabs scrolling across the top. The walk is the ad; the vault is the promise — operate, never open. The deed unfolds on tap, every hard word with an eye. And the door leg is tested before any membership build is scored — if the member cannot get in, the build is NOT DONE at any score.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3897",
+   "title": "One System, One Style, Inside the Frame",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3897/IB-SMART-NOTE-20261119-sn3897-one-system-one-style-inside-the-frame.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3897/IB-SMART-NOTE-20261119-sn3897-one-system-one-style-inside-the-frame.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

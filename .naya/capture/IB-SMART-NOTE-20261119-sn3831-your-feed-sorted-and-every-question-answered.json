@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3831",
+ "intelligence": {
+  "title": "Your Feed, Sorted — and Every Question Answered",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3831-your-feed-sorted-and-every-question-answered",
+  "smart_note_id": "SN-3831",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3831/IB-SMART-NOTE-20261119-sn3831-your-feed-sorted-and-every-question-answered.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of the old internet as one big pile — everything mixed together, newest first, and you have to dig through it to find the one thing you wanted. NayaNET is the opposite: your feed sorts itself. Every note and post gets looked at, given its right topic, and filed there — and it still shows in All, so nothing is hidden, only organized. Tap a tab and you see only that topic. The news works the same way: one story becomes one post, gathered from all its sources, with every source linked, in words a child can follow. And if you are new here, you don't have to ask anyone — the feed itself teaches you: what AI Unity means, what is live and what is still coming, what you need to start, and every function in one list. The buttons tell the truth too: Smart Meet opens the time booker, the day's summary is icons you tap, and the tabs glow rich like the rest of the system, not neon. Nothing pretends to be finished before it is.",
+  "simple_view": "Imagine your feed is a big toy box! But the toys sort themselves! Notes about animals go in the animal pile! Notes about games go in the game pile! You tap a tab and BOOM — only those notes show up! One tap, and you see just what you want! Your Naya knows you! She puts each note where it belongs! And if you ask a question, the answer is right there in the feed! Easy!",
+  "grandma_view": "It's like this, love — imagine your feed sorts itself, dear, like a kind friend tidying your papers into neat little piles! Each note goes where it belongs, love, and you tap a little tab to see just the pile you want — no digging through everything at once! The news comes as one neat story, dear, with all its sources linked, in plain words anyone can follow! And if you're new, love, the feed itself teaches you — what it all is, what works now, what is still coming — honestly, in plain words, nothing dressed up! Starting needs just your phone, dear, and your name and ten little answers!",
+  "naya_view": "The feed is an automatic organizer, never one feed of everything: every note and post auto-categorized on entry, shown in All and in its category; tabs scroll slowly across the top, click opens only that category. News: per-person pull from join data only, one post per story, all source links as buttons, smart note per topic, SEO on the back, front beautiful, feeds on the day with a toggle, off by default. Smart Meet opens book-a-time, never the timeline; the timeline is real bookable slots, a booked time shows there; Book a Time opens with the time at the top. Summary of the day: labeled icons into daily intelligence, journal, reports; nine smart notes for the day, clickable and enterable there. One weather entry, on wisdom only; clones off every other slide; bar in its place on every slide. Smart tabs are the Collective / Personal / Activity buttons, just smaller, same rich glow — never neon. AI Unity defined: one mind, many minds, person at the centre. Live status, start requirements and the full functions list answered plainly, one note per question, with what is still coming named as coming and no launch date invented. Bring the old notes back first, updated onto the new boards; rebuild only what the search proves gone.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3831",
+   "title": "Your Feed, Sorted — and Every Question Answered",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3831/IB-SMART-NOTE-20261119-sn3831-your-feed-sorted-and-every-question-answered.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3831/IB-SMART-NOTE-20261119-sn3831-your-feed-sorted-and-every-question-answered.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

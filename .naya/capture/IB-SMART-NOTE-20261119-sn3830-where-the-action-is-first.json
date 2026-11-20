@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3830",
+ "intelligence": {
+  "title": "Where the Action Is, First",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3830-where-the-action-is-first",
+  "smart_note_id": "SN-3830",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3830/IB-SMART-NOTE-20261119-sn3830-where-the-action-is-first.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of a calendar on the wall where every day wears its own colour — Monday orange, Sunday purple — so you know the day of the week the second you look at the number. Tap a day and the whole wall becomes that day: one beautiful photo, full size, the date said once, and the first thing you see is where your action is — your messages, your numbers — because that is what you came for. The wisdom comes second, like the quote on the inside of the card. And when you want to visit one of your worlds, you don't read a list of names — you tap one of six big beautiful pictures, and it opens only that world, only that day. Same for the news: three big pictures — your town, your province, the world — and each one opens that day's real news. Nothing is faked: if the weather isn't connected yet, the page says so plainly instead of inventing a forecast.",
+  "simple_view": "Imagine your calendar is full of colors! Monday is orange. Sunday is purple. Every number wears its own day color. Only Tuesday gets gold. Tap a day and BOOM! The whole screen becomes that day. The first thing you see is your messages. That's where your action is! Then comes the wise words. The picture at the top is big and full. The date is said just once. Your six worlds are six big pretty pictures. Tap one and you see what happened in that world that day. Just that day! The news is three big pictures too. Your town, your province, the whole world. Tap one and you see that day's real news. If we don't know the weather yet, we say so. We never make it up!",
+  "grandma_view": "It's like a beautiful diary, dear — every day with its own colour, Monday orange, Sunday purple, so you know the day at a glance. You open a day and the first thing you see is where your life is happening — your messages, your numbers — because that's what you came to look at. The wise words come second, like the blessing after the news. The picture at the top is full and lovely, the date said just once, nothing repeated. Your worlds are six big beautiful pictures, dear — you tap one and it shows you that world on that day, and only that day. And the news is the same: your town, your province, the wide world, three pictures, each opening that day's real news. And if the weather isn't connected yet, the page says so honestly, dear — it never invents a sky.",
+  "naya_view": "Recolor the month-grid tiles per weekday column and measure tile colour per column at 1920 and 390; leave the clock and time digits byte-identical. Say the date and time once, on the banner; remove the mid-line repeat and the cover overlay card entirely; place Change cover top-left; place the small time-change control beside the time. Use his emerald image verbatim as Thursday's standard default; invent no defaults for the other six days — they wait for his images. State \"not connected yet\" wherever a forecast is absent; never invent weather or news data. Center the top-right orb and give it speedometer-level depth, elevation and detail — on every page it appears. Move notifications to dot 0 and wisdom to dot 1; center everything on the wisdom slide on one axis; put a Back button top-left on every slide. Take LOCAL off every slide; leave the weather line where it is, clear of everything. Build the notifications slide as five blocks, one line, just real numbers, corner counts, borders in the day's colour, numbers centred, never 3+2; remove the Horoscope bar from that slide; seat the day nav in the black area above the bottom frame. Replace the Your Worlds text rows with six big icons, no label block; replace the news list with three big icons, Local, Province, Global; wire every icon's click to that day's content only — and create the real per-day news feeds before the news icons are called honest.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3830",
+   "title": "Where the Action Is, First",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3830/IB-SMART-NOTE-20261119-sn3830-where-the-action-is-first.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3830/IB-SMART-NOTE-20261119-sn3830-where-the-action-is-first.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

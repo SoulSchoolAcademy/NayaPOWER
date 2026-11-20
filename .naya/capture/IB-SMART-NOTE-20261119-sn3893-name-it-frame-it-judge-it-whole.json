@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3893",
+ "intelligence": {
+  "title": "Name It, Frame It, Judge It Whole",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3893-name-it-frame-it-judge-it-whole",
+  "smart_note_id": "SN-3893",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3893/IB-SMART-NOTE-20261119-sn3893-name-it-frame-it-judge-it-whole.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of it like three kinds of letter. A smart note is a letter pinned to the town noticeboard — everyone can read it, and the search engines can find it. A Naya note is a letter in a sealed envelope — private, shared only with the people you choose. And a post is a third thing — a note you stick on the fridge, in your own words or Naya's, funny or serious, with a picture or without. All three arrive in the same beautiful presentation: each part in its own colour, each part standing up at its own height, so you can skim it in seconds and still get it. The frame around them comes in two sizes now — a wide one for the laptop, a tall one for the phone — and the crown stays on both. Naya herself wears the emblem as her necklace, exactly like the icon, and she moves — never a still photo, because he'd rather have her looking real. The calendar's date header is the same story: the 19 looked beautiful in its little raised tiles, so 2026 and the 639 get the same treatment — same letters, same lift, nothing plain left beside the beautiful. And before any of it moves, the one rule underneath: stop, think, check the destination first — then run as fast as you can.",
+  "simple_view": "Imagine three kinds of notes! A smart note is shared with everyone! A Naya note is private, just for your team! A post is a third thing, fun and free! Every note looks beautiful, section by section! Each part has a new color and stands up tall! The frame comes in two sizes, laptop and phone! The crown stays on top and bottom, always! Naya's necklace is exactly like her shiny icon! And her face always moves, never a still photo! The calendar numbers all match, big and beautiful! And before you do anything, stop and think first! Is it right? Then go, go, go, as fast as you can!",
+  "grandma_view": "It's like this, love — there are three kinds of notes now, dear, and each one has its own place! A smart note is shared with the whole world, love — pinned up where everyone can find it! A Naya note is private, dear — just for your team, unless you choose to share it! And a post is a third thing, love — your own words, or Naya's words, however you like them! They all come beautifully presented, dear — each part in its own colour, each part standing up tall, so you can skim it in seconds and still get it! The frame comes in two sizes now, love — wide for the laptop, tall for the phone — and the crown stays on both! Naya wears the emblem as her necklace, dear, exactly like the icon — and she moves, love, never a still photo! The calendar numbers all match now, dear — big, beautiful, and raised like real little objects! And before anything moves, love, we stop and think — is it right, is it truly needed, is it mine to do, is now the time, can I prove it? Then we go, dear, at full speed!",
+  "naya_view": "Three kinds of note, never confused: smart note public and search-optimized; Naya note private by default, public only by the citizen's choice; post a third thing — same intelligent block and framing, headline, hook, in a nutshell, in Naya's words or the citizen's direct words, any tone they ask. Hook is a post word — news blocks keep HEADLINE → IN A NUTSHELL → STORY, never \"hook.\" Every note renders section by section, new color and new elevation per section. Two frames, one feel: laptop frame and mobile 9:16 frame, crown top and bottom, outside longer not wider. The necklace is the emblem exactly — icon above the connect, logo below, winged silver crown, purple diamond centre, crystal N on the chain — and no new look activates on a re-send alone, only on his confirmation. Never ship Naya as a still photo: the avatar moves, or the previous animated one comes back; a failed generation is never repeated; lip-sync is not what the system does — motion is loops, never claim lip movement until his ear and eye prove it. The date header uses one lettering throughout — 2026 and 639 in the 19's own digit-tile lettering — every tile raised with elevation, rim and depth, never flat text. Run the five gates before every consequential action: Is it right? Is it what they truly need? Is it mine to do? Is now the time? Can I prove it? All yes, act fully; any no, stop, say why, propose the wise path.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3893",
+   "title": "Name It, Frame It, Judge It Whole",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3893/IB-SMART-NOTE-20261119-sn3893-name-it-frame-it-judge-it-whole.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3893/IB-SMART-NOTE-20261119-sn3893-name-it-frame-it-judge-it-whole.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

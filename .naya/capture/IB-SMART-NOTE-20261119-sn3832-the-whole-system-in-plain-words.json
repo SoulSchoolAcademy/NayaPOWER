@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3832",
+ "intelligence": {
+  "title": "The Whole System, in Plain Words",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3832-the-whole-system-in-plain-words",
+  "smart_note_id": "SN-3832",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3832/IB-SMART-NOTE-20261119-sn3832-the-whole-system-in-plain-words.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Imagine you walk into a house where everything has its place and every door has its name on it. The Box is the cupboard where your things live. The Lists are how you look at them — one shelf for people, one for places, one for notes. The Vault is the one locked door, and only you hold the key. Your Dashboard is your own room — your day, your numbers, what needs you today. The Hub is the big hall where everybody is. Points are like standing in the room: the more good you have done, the heavier your words land — but standing is not money, and money only moves when someone joins, half to you, when the system is paid. The Ledger writes everything down in order, and the Stats turn it into pictures you can read at a glance. You meet people face to face inside your own world, and soon you will book them in one tap. You speak your language, and anyone on earth can read you in theirs. And one person holds the keys — Shawn — while written laws, the five gates, decide every action below him. If something is still being built, this group says so plainly, in the same breath as the promise.",
+  "simple_view": "Imagine a house with lots of rooms! Your Box is the cupboard where your toys live! Your Lists are how you look at them — one shelf for friends, one for places! Your Vault is the one locked door, and only YOU have the key! Your Dashboard is YOUR room — your day, your numbers! The Hub is the big hall where EVERYBODY is! Points are like gold stars — the more you help, the bigger your voice! But stars are NOT money! Money only comes when a new friend joins! Easy!",
+  "grandma_view": "It's like this, love — think of a lovely house, dear, where everything has its place! Your Box is the cupboard where all your things live, love! Your Lists are just how you look at them — one shelf for your people, one for your places, one for your notes, dear! Your Vault is the one locked door, and only you hold the key, love! Your Dashboard is your own room — your day, your numbers, what needs you today, dear! The Hub is the big hall where everybody is! Points are your standing, love — the more good you do, the more your words count — but they are never money, dear, and money only moves when someone joins!",
+  "naya_view": "Smart bars: tabs from what the citizen does and cares about, tap to see only that topic; contacts as smart links on tabs, notes landing on their tab; auto-categorization being built now (Hub fix-9), fixed labels today, never claimed working. Points are authority, never money; money is joins only, citizens earn half, paid when NayaNET is paid; clicks and views are never money; $ only on joins. Box is the store, Lists are the view, Vault is the one locked door; unsaved fades after a week by default, saved stays for good. Dashboard is yours, Hub is everybody's; private stays in the Vault, never on the stage. Ledger is the data — intelligent blocks in order, not a blockchain — Stats are the picture; both live in the Dashboard. Smart Meet is member-to-member video and audio on your own page; booking is your view plus their view, book as person, business or space; full flow rides after membership, named as coming. Pages translate, citizens build in any language; engine exists, walk does not use it yet, translation does NOT work today. One system, private by default, no ads, no sold data, you earn half — not another Facebook. One director, Shawn, super-admin his alone, protected gates his hand; five gates decide every action; laws written down, no board or committee invented. Bring the old notes back first, updated onto the new boards; massive distillation only if the search proves them gone.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3832",
+   "title": "The Whole System, in Plain Words",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3832/IB-SMART-NOTE-20261119-sn3832-the-whole-system-in-plain-words.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3832/IB-SMART-NOTE-20261119-sn3832-the-whole-system-in-plain-words.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3836",
+ "intelligence": {
+  "title": "Frame Everything — Then Make Each Frame Perfect",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3836-frame-everything-then-make-each-frame-perfect",
+  "smart_note_id": "SN-3836",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3836/IB-SMART-NOTE-20261119-sn3836-frame-everything-then-make-each-frame-perfect.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of the agreement as a long letter with pictures scattered around it at random — you could not read it, and you could not tell where it began or ended. Shawn took the letter and put it into frames: one thought per frame, a button to the next, and the first frame is Naya herself saying hello, with play as the first choice so you hear her before you read anything. The same frame goes over the whole presentation — the slideshow, About, Skills, everything — with the same top bar every time, so your thumb never has to relearn the journey. In the messenger, one switch flips your instant chat into a letter, the search box sits right next to your friends, and a tap on a tab jumps you straight to that group of friends. And through it all, one honest discipline: the membership login is one permission from done, and that permission is his — so nobody rebuilds a finished flow while it waits on a tap.",
+  "simple_view": "Imagine every story comes in its own little picture frame! The agreement is a story, so it gets frames too. First you hear Naya say hello! Then you tap a button to see the next frame! In the messenger, one switch flips your chat into a letter! And the search box sits right next to your friends! Tap a tab, and there are your friends, ready to chat!",
+  "grandma_view": "It's like this, love — imagine every story comes in its own lovely frame, dear, one thought at a time, with a button to take you to the next! The agreement starts with Naya herself saying hello, love, and you press play to hear her before you read a word! And in the messenger, dear, one little switch turns your quick chat into a proper letter, and your friends are right there beside the search box, love, one tap away!",
+  "naya_view": "Name the one step left and wait on his tap — never rebuild a finished flow. Hunt a remembered glitch until it is found; never re-send on hope. Frame everything first, then optimize each frame: top icons out, each thing in its own frame, button to the next frame, every unfold framed. First frame: the collective agreement, play first, Naya introducing herself — \"hi I'm Naya, part of joining this world\" — red N piece on the first frame, placement his, never guessed. Frame spec: Naya top-left with a new picture each frame, dots across the top, headline centred, nice icon right, no time/date, no Your Stats; content fits below; back / keep reading / next same every time; everything plays in the frame. Slideshow takes the frame. Messenger: toggle instant message ↔ Smart Mail in one click; moves over beside what they are doing; plus opens the sidebar tab or the instant message, then moves over; search aligned with contacts; Smart Tabs in the messenger jump to the contact list. PowerCast as a messenger button is his open question — the toggle is the proposal, not the decision.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3836",
+   "title": "Frame Everything — Then Make Each Frame Perfect",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3836/IB-SMART-NOTE-20261119-sn3836-frame-everything-then-make-each-frame-perfect.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3836/IB-SMART-NOTE-20261119-sn3836-frame-everything-then-make-each-frame-perfect.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

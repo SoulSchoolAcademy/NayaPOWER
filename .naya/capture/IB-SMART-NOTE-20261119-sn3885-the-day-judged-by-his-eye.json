@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3885",
+ "intelligence": {
+  "title": "The Day, Judged by His Eye",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3885-the-day-judged-by-his-eye",
+  "smart_note_id": "SN-3885",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3885/IB-SMART-NOTE-20261119-sn3885-the-day-judged-by-his-eye.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of the day page as a house he walked through room by room, pointing at what was wrong. In the first room, the calendar, every date number was painted gold — he said no, each day wears its own colour, Monday orange, Sunday purple, the way the headers already did. In the next room, the day page, the date and time were written twice and the cover photo was a skinny strip — he said say it once, show the photo whole, like a cover photo should be. The city box works — type your city and it saves — but the forecast isn't there yet, and the page says so honestly instead of faking a forecast. The little ball in the corner is crooked and plain, and since it shows up every single day, it has to be the most beautiful thing on the page, not the least finished. Then he rearranged the order: notifications first, because that's where your action is, and wisdom second, because that's where the day is understood. And the last two rooms got the same treatment — your worlds and your news aren't lists of text anymore, they're big beautiful icons you tap, and tapping one shows you that world, that day, nothing else.",
+  "simple_view": "Imagine your whole screen is just the calendar! Tap a day and BOOM — the whole screen becomes that day! The numbers wear their own day's colour — Monday orange, Sunday purple! Notifications come first, because that is where the action is! Five big blocks in one line, just the numbers, nothing else! Six big icons are your worlds — tap one and see that world, that day! Three big icons are the news — local, province, global! Wisdom comes second, centered and beautiful, with a way back! Say it once, show it whole, and never make anything up!",
+  "grandma_view": "It's like this, love — he went through the whole day page with his own eyes, dear, slide by slide, and fixed everything that wasn't right! The little numbers on the calendar each wear their own day's colour now, love — Monday orange, Sunday purple, just like the days themselves! The date and time are said just once, dear, and the big photo shows whole and beautiful, like a proper cover! The city you type in saves, love, and if the weather can't show yet, the page says so honestly — it never makes one up! The little ball in the corner gets centered and made truly beautiful, dear, because you see it every single day! And your worlds and your news are just big lovely icons now, love — tap one and see that world, that day, nothing else!",
+  "naya_view": "The month-grid date numbers carry their weekday's colour — Sun purple, Mon orange, Tue gold, Wed blue, Thu green, Fri red, Sat indigo — never all gold; the clock-gold law governs the day-page banner number only, and the clock stays byte-identical. The day page says the date and time once, on the banner; the cover is full, the citizen's own by default, changeable per day, Change cover top-left; no LOCAL under the time, a small time-change control beside it. Thursday's standard default cover is his emerald image, verbatim; the other six weekdays wait for his images — never invented. The city entry saves; the forecast says \"not connected yet\" until a provider is his call. The top-right orb is centered, then made extraordinary — depth, elevation, detail, speedometer-level — everywhere it appears. Notifications is the first slide, dot zero; wisdom second, everything centered, Back top-left on every slide. Five notification blocks, one line, just the numbers — real counts, zero where empty — corner counts, aligned, borders in the DAY's colour, never three-plus-two. Your Worlds is six big icons, no list, no label, no heading; News is three big icons, Local, Province, Global; every icon click is day-filtered, and the news feeds behind them are built and wired real — never invented. LOCAL off every slide; the weather line stays where it is; nothing blocks or overlaps anything.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3885",
+   "title": "The Day, Judged by His Eye",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3885/IB-SMART-NOTE-20261119-sn3885-the-day-judged-by-his-eye.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3885/IB-SMART-NOTE-20261119-sn3885-the-day-judged-by-his-eye.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

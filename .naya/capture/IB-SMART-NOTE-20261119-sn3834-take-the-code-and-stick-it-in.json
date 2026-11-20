@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-3834",
+ "intelligence": {
+  "title": "Take the Code and Stick It In",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3834-take-the-code-and-stick-it-in",
+  "smart_note_id": "SN-3834",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3834/IB-SMART-NOTE-20261119-sn3834-take-the-code-and-stick-it-in.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of it like this: if I ask you to move my whole house to a new street, I don't want a house that looks a bit like mine — I want MY house, every brick, moved whole, with only the name on the door changed. That is Personal and the Hub. The top is the name on the door — your cover, your menus — and everything below is the same house, the same rooms, the same shelves. And the shelves sort themselves: your people sit in their categories, your feeds in theirs, and you tap once and there it is — no digging through a pile. The colours have to tell the truth too: magenta has to look magenta when you glance at it, purple has to look purple, or the map lies to you. About and Skills get the same treatment — not a new look invented for them, but the exact beautiful presentation we already have, filled in with your real words. And when I show him the work, I show him everything at once, as one set, and while he is looking at it I am already fixing what he points at — then the whole set goes back to him, fresh.",
+  "simple_view": "Take the real page and put it right there! Don't make one that looks a bit like it. That is not the same thing at all. Your world goes on top, and the whole Hub lives below it. Everything sorts itself into little piles, so you can find it in one tap. Magenta must look magenta, and purple must look purple. About has four big buttons, and Videos never asks you to upload. And every link must land right where it says it will!",
+  "grandma_view": "It's like this, love — if you ask me to copy your whole house, dear, I don't build one that looks a bit like it, I move YOUR house, brick by brick, love, and I only change the name on the door! Your world goes on top, dear, and everything below is the same house you already love! And everything sorts itself, love — your people in their little groups, your reading in its little piles — one tap and there it is, no digging at all! The colours must tell the truth too, dear — magenta must look magenta, purple must look purple, clear as day at a glance! And when I show him the work, love, I show him everything together, all at once, and I fix things while he is still looking!",
+  "naya_view": "Personal is the Hub's code, literally — relabel three pills only (Personal / Business / World); the top (feature cover + menus + search + standard menu bar) is the only seam. About and Skills take the exact presentation code — agreement unfold, pricing slideshow — optimized for the person, content filled in as him, no placeholders; feature without the look is a failure. Auto-organization is universal: content, feeds, contacts — categorized, findable by search or one click, never a pile, never all-at-once. Magenta after Skills is a true magenta, Invite a proper purple, prominent contrast at a glance — eye-proven, never name-proven. About: About / Photos / Videos / Socials; scroll unfolds, click slideshows; Videos link-only, no uploads. Socials: icons to the site, stats honest (our clicks counted, platform notifications only where sent, never invented); three cover buttons re-mappable in Settings, defaults stay. Reviews circulate as a full set — staged where staged is latest, live where live is latest — edit while he reviews, re-send the whole edited set. Multi-view links carry the view hash (#memberships); verify by opening — it must land on the view it names.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-3834",
+   "title": "Take the Code and Stick It In",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3834/IB-SMART-NOTE-20261119-sn3834-take-the-code-and-stick-it-in.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/SYSTEM/SN-3834/IB-SMART-NOTE-20261119-sn3834-take-the-code-and-stick-it-in.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
