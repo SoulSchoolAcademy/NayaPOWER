@@ -1558,6 +1558,8 @@ html{scroll-padding-top:48px}
 <h1 class="p3-question">Welcome starts with your certificate.</h1>
 <p class="p3-note" id="doorNote2">This walk opens after your certificate. In the live walk, this door takes you back to the certificate page.</p>
 <a class="p3-enter" href="/identity.html" style="text-decoration:none">Get your certificate ◆</a>
+<button type="button" class="p3-enter" id="doorContinue" style="font-family:inherit">Continue to the walk ◆</button>
+<div class="deal-seal frame-red-n"><span class="deal-seal-mark" aria-hidden="true">N</span></div>
 </main>
 </section>
 
@@ -1714,7 +1716,7 @@ function showDoor(){
   window.__walkStep = -1;
 }
 
-function showStatus(el, text){ if (el._t) clearTimeout(el._t); el.textContent = text; el.hidden = false; el._t = setTimeout(function(){ el.hidden = true; el._t = null; }, 5000); }
+function showStatus(el, text){ if (el._t) clearTimeout(el._t); el.textContent = text; el.hidden = false; el._t = setTimeout(function(){if(document.getElementById('step-door')&&!document.getElementById('step-door').hidden)return; el.hidden = true; el._t = null; }, 5000); }
 function hideStatus(el){ if (el._t){ clearTimeout(el._t); el._t = null; } el.hidden = true; }
 
 /* --- per-step wiring: the preview script, scoped to one step --- */
@@ -1970,7 +1972,7 @@ function wireNames(sec){
   enterBtn.addEventListener('click', function(){
     refresh(); save();
     if (!bIn.value.trim() || !sIn.value.trim()) showNote('Tip: name your business and space — or leave them and we\'ll set sensible defaults.');
-    setTimeout(function(){ showStep(15); completeWalk(); }, 350);
+    setTimeout(function(){if(document.getElementById('step-door')&&!document.getElementById('step-door').hidden)return; showStep(15); completeWalk(); }, 350);
   });
 }
 
@@ -2580,6 +2582,8 @@ function landOnHired(){
      own / available proceed; a failed or 4s-timed-out verdict proceeds
      too — the walk never hangs here, the server leg is the backstop. */
   var proceed = function(){
+  /* FIX3 (distill fix-3, F9b) — the door is the gate: while #step-door is visible, NOTHING advances the walk. Only the user's own action on the door (the certificate link or the explicit continue) dismisses it, never a timer. */
+  if (document.getElementById('step-door') && !document.getElementById('step-door').hidden) return;
   if (!ID.alias) { showDoor(); return; }
   /* F3 2026-11-15 — Back from a card must land ON the end slide, not on
      the agreement letter: #endRest starts hidden in the markup and only
@@ -2596,9 +2600,11 @@ function landOnHired(){
   for (var i = 0; i < 14; i++){ if (!S.answers[KEYS[i]]){ first = i; break; } }
   showStep(first);
   };
+  /* FIX3 (distill fix-3, F9b) — the door's explicit continue: a certified citizen dismisses the door by tapping Continue; the door hides, then proceed() opens the walk. No alias, no continue — the walk opens after the certificate. */
+  (function(){ var c = document.getElementById('doorContinue'); if (!c) return; if (!ID.alias) { c.hidden = true; return; } c.addEventListener('click', function(){ var d = document.getElementById('step-door'); if (d) d.hidden = true; proceed(); }); })();
   if (!ID.alias) { proceed(); return; }
   var gateDone6 = false;
-  var gateTimer6 = setTimeout(function(){ if (!gateDone6) { gateDone6 = true; proceed(); } }, 4000);
+  var gateTimer6 = setTimeout(function(){ if (document.getElementById('step-door') && !document.getElementById('step-door').hidden) return; if (!gateDone6) { gateDone6 = true; proceed(); } }, 4000);
   var dk6 = ''; try { dk6 = localStorage.getItem('nayanet_vault_key') || ''; } catch(e){}
   fetch('/api/claim?alias=' + encodeURIComponent(ID.alias) + (dk6 ? '&device_key=' + encodeURIComponent(dk6) : ''), { cache: 'no-store' })
     .then(function(r){ return r.ok ? r.json() : null; })
@@ -2615,5 +2621,7 @@ function landOnHired(){
 })();
 </script>
 
+<script>/* FIX2 F9: the door certificate link carries the claimed name+alias so the return shows the completed certificate */
+(function(){try{var p=new URLSearchParams(location.search);var n=p.get("name")||sessionStorage.getItem("nayanet_user_name")||"";var a=p.get("alias")||sessionStorage.getItem("nayanet_smart_alias")||"";if(!n&&!a)return;var links=document.querySelectorAll('#step-door a[href="/identity.html"]');for(var i=0;i<links.length;i++){links[i].href="/identity.html?name="+encodeURIComponent(n)+"&alias="+encodeURIComponent(a);}}catch(e){}})();</script>
 </body>
 </html>

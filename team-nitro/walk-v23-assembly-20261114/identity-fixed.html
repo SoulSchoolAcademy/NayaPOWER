@@ -1840,6 +1840,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="apple-mobile-web-app-title" content="NayaNET" />
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<style id="fpFixDistill2">
+.deal-seal{width:120px;height:120px;border-radius:46% 54% 51% 49%/48% 45% 55% 52%;border:2px solid rgba(255,140,150,.4);background:radial-gradient(circle at 34% 28%,#b02538,#7d1220 45%,#4d0a14 78%,#38060f);box-shadow:0 10px 30px rgba(0,0,0,.55),inset 0 2px 8px rgba(255,255,255,.25)}.deal-seal-mark{font-family:Marcellus,Georgia,serif;font-size:54px;font-weight:700;line-height:120px;text-align:center;display:block;color:#f5c96b;text-shadow:0 0 12px rgba(245,201,107,.8)}
+.deal-seal{margin:14px auto 0}
+</style>
 </head>
 <body>
   <header class="top-system-bar">
@@ -1880,7 +1884,8 @@
         <div class="face-zone face-center">
         <div class="cert-name" id="displayName" hidden></div>
         <div class="alias-field-wrapper">
-          <input type="text" id="aliasInput" class="alias-field-input" placeholder="Enter alias" autocomplete="off" oninput="updateSmartCredentials()" />
+          <div class="deal-seal frame-red-n"><span class="deal-seal-mark" aria-hidden="true">N</span></div>
+<input type="text" id="aliasInput" class="alias-field-input" placeholder="Enter alias" autocomplete="off" oninput="updateSmartCredentials()" />
         </div>
         <p class="cert-member"><span class="cert-member-signed">has signed the Collective Agreement</span><span class="cert-member-join">and is now a member of the Society of NayaNET — a new digital civilization, a world.</span></p>
         </div>
@@ -2077,6 +2082,8 @@ function clearPendingRoute() {
     var savedName = null, savedAlias = null;
     try { savedName = localStorage.getItem('nayanet_smart_name'); savedAlias = localStorage.getItem('nayanet_smart_alias'); } catch(e){}
     const rawName = passedName || savedName || '';
+/* FIX2 F9(a) — the certificate prints the name from the URL: pre-fill the alias input and paint the composing name line. */
+try{var _fxAlias=urlParams.get('alias')||passedName||'';var _fxIn=document.querySelector('input[placeholder*="lias"]')||document.querySelector('input');if(_fxIn&&_fxAlias&&!_fxIn.value)_fxIn.value=_fxAlias;var _fxName=document.querySelector('[data-cert-name]')||document.querySelector('.cert-name');if(_fxName&&_fxAlias)_fxName.textContent=_fxAlias;}catch(e){}
     /* FIX3 (2026-11-19, eye item 4a) — the walk passes name+alias
        PAIRED (?name=..&alias=..), but identity only ever read ?name=
        into the load-time rawName and used it for EVERY claim on the
@@ -2218,6 +2225,8 @@ function clearPendingRoute() {
     }
 
     updateSmartCredentials();
+    /* FIX3 (distill fix-3, F9a) — paired identity from the walk: name+alias together ARE the user's identity (the rule currentDisplayName already trusts). Pre-fill the alias field with the paired alias and paint the hero with the paired name, AFTER the load-time paint and AFTER the FIX3 clear. Un-paired: never pre-paint — the clear stands. */
+    try{ if (passedName && passedAlias) { if (aliasInput) aliasInput.value = passedAlias; paintHeroName(passedName); } }catch(e){}
 
     /* ROUND 2 F8 — the way out of a certified document. A stored name must
        NEVER lock the field: this returns the page to composing — field open

@@ -168,7 +168,12 @@ print(f"unfold {len(unfold_raw)} B sha {unfold_sha}")
 # 045af4e0005c04c6387601d491334d589b40dc23, the filed blob, verified
 # byte-identical from the proof host before the line was written.
 # Items 2 & 3 are LANDED, not pending.)
-assert walk_sha.startswith("0f05b3f9"), "walk sha is not the AGREEMENT-DISTILL-FIX walk sha (2026-11-19: eye fail 5e — boot paints the door at once so /welcome never sits blank black through the 4s claim gate; the gate itself is untouched)"
+# AGREEMENT-DISTILL-FIX3 (2026-11-19/20): the walk sha moves 0f05b3f9 -> ef982267
+# (4,361,369 B -> 4,363,264 B, +1,895 B): F9b — the door is the gate: proceed()
+# guarded while #step-door is visible, the 4s claim-gate timer guarded itself,
+# and the door gains its explicit continue (Continue to the walk ◆, hidden
+# without a certificate). Fix-2 (+852 B) carried inside; walk unchanged else.
+assert walk_sha.startswith("ef982267"), "walk sha is not the AGREEMENT-DISTILL-FIX3 walk sha (2026-11-20: F9b door guard — proceed() + claim-gate timer hold while the door is visible; explicit continue dismisses it)"
 assert template_sha.startswith("61002d15"), "personal template sha is not the composed template sha (live Personal v9 992ab18c + hero fix + rooms-plus fix)"
 # IDENTITY CERTIFICATE ROUND (2026-11-15, BRIEF-IDENTITY-CERTIFICATE-20261115.md):
 # the identity sha moved 55fdffa8 -> e9398f75 (gold live name 86px, date truly
@@ -255,7 +260,11 @@ assert template_sha.startswith("61002d15"), "personal template sha is not the co
 # alias shows the flag + the device-key panel on arrival (the walk's
 # FIX6 bounce lands on it); own certifies, available arms ENTER. The
 # FIX5 ENTER gate is untouched. Walk sha moves with this round.
-assert ident_sha.startswith("3279dc35"), "identity sha is not the WALKTHROUGH-CHAIN-FIX6 identity sha (2026-11-19: a ?alias= arriving in the URL runs the LIVE availability check on load — taken shows the flag + key panel; the FIX5 ENTER gate is untouched)"
+# AGREEMENT-DISTILL-FIX3 (2026-11-19/20): the identity sha moves 3279dc35 -> 51776174
+# (401,040 B -> 402,647 B, +1,607 B): F9a — paired ?name=/?alias= pre-fills the
+# alias field and paints the hero (paintHeroName) AFTER the load-time paint and
+# the FIX3 clear; un-paired, never-pre-paint stands. Fix-2 (+1,126 B) carried.
+assert ident_sha.startswith("51776174"), "identity sha is not the AGREEMENT-DISTILL-FIX3 identity sha (2026-11-20: F9a paired pre-fill + hero paint after load paint)"
 # ENTRANCE WELCOME (2026-11-16, BRIEF-AGREEMENT-ENTRANCE-WELCOME-20261116.md):
 # the welcome sha moves 5f33d273 -> db5960eb (925,222 B -> 934,065 B,
 # +9,337 B): Item 0 — the opening-view intro block only. Shawn's 10-star
@@ -498,7 +507,10 @@ assert ident_sha.startswith("3279dc35"), "identity sha is not the WALKTHROUGH-CH
 # contain, never cropped (4:3 images in a 16:9 slot); the 'Tap
 # the picture' pill moves below the frame. Intro row + fix-4
 # untouched; F2 has no key handler in the bytes (UNVERIFIED).
-# WALKTHROUGH-CHAIN (2026-11-18, maker round -\n# walkthrough-chain-20261118/work/edit-chain.py): the welcome\n# sha moves a1b67b82 -> 1a48347f: BRIDGE FIRST - after agreeing\n# inside the stage, the hold/fallback releases go to the bridge\n# (goBridgeAfterAgree), then the bridge's own buttons go to\n# name-entry; the agreed line + the onward button show only\n# after agreeing; the plain-page agree scroll is guarded while\n# the bridge is up. Pre-agree routes untouched (?stage=bridge,\n# Back buttons, /agreement agree -> bridge).\nassert welcome_sha.startswith("c3c750b7"), "welcome sha is not the AGREEMENT-DISTILL-FIX welcome sha (2026-11-19: eye GOES BACK — one tap per board, showcase in talk, no subtitles, hero to /agreement, hold before identity, name-entry survives reload, letter jewel, stage Back, faces top-right, image retry/fallback)"
+# WALKTHROUGH-CHAIN (2026-11-18, maker round -\n# walkthrough-chain-20261118/work/edit-chain.py): the welcome\n# sha moves a1b67b82 -> 1a48347f: BRIDGE FIRST - after agreeing\n# inside the stage, the hold/fallback releases go to the bridge\n# (goBridgeAfterAgree), then the bridge's own buttons go to\n# name-entry; the agreed line + the onward button show only\n# after agreeing; the plain-page agree scroll is guarded while\n# the bridge is up. Pre-agree routes untouched (?stage=bridge,\n# Back buttons, /agreement agree -> bridge).\n# AGREEMENT-DISTILL-FIX3 (2026-11-19/20): the welcome sha moves c3c750b7 -> 3874b7eb
+# (1,913,241 B -> 1,929,575 B, +16,334 B): fix-2 bytes carried forward unchanged
+# — welcome is untouched by fix-3 (F9 lives in walk + identity only).
+assert welcome_sha.startswith("3874b7eb"), "welcome sha is not the AGREEMENT-DISTILL-FIX3 welcome sha (2026-11-20: fix-2 bytes carried forward; welcome unchanged in fix-3)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
@@ -533,7 +545,10 @@ assert ident_sha.startswith("3279dc35"), "identity sha is not the WALKTHROUGH-CH
 # Watchdog mechanics unchanged (warm-up, pick, assignment, clear
 # on start/end/error). Welcome, walk, template, identity shas
 # unchanged. Divider (.ib-foot-logo) untouched - the eye's call.
-assert unfold_sha.startswith("5fe1a3ec"), "unfold sha is not the AGREEMENT-DISTILL-FIX unfold sha (2026-11-19: eye GOES BACK — one board at a time via the outranking hide rule, ?stage= redirect, board text fixes, audio-note wording in plain words)"
+# AGREEMENT-DISTILL-FIX3 (2026-11-19/20): the unfold sha moves 5fe1a3ec -> 50876fff
+# (141,781 B -> 142,120 B, +339 B): fix-2 bytes carried forward unchanged —
+# unfold is untouched by fix-3 (F9 lives in walk + identity only).
+assert unfold_sha.startswith("50876fff"), "unfold sha is not the AGREEMENT-DISTILL-FIX3 unfold sha (2026-11-20: fix-2 bytes carried forward; unfold unchanged in fix-3)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
 # work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b
