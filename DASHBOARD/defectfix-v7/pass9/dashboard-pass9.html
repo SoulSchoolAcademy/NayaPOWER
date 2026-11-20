@@ -31404,14 +31404,24 @@ body{padding-bottom:170px !important;}
    bring the matching card into the frame. Card order is the DOM order of
    #settings .ph-card: 0 Preferences, 1 App behaviour, 2 Identity,
    3 Install as app.
-   RACE NOTE (2026-11-20 probe): a single smooth scrollIntoView at 650ms
-   landed the card at the top on quiet runs (y108-120) but stopped short on
-   busy runs (y798-854) - the showView smooth scroll and this scroll raced
-   over a shifting layout (views hiding, hero painting). The jump below is
-   therefore INSTANT (an instant scrollTo cancels an in-flight smooth scroll
-   deterministically instead of queueing behind it) and RE-ASSERTED at
-   1400ms: if the card is not at the top then, it is jumped again. 120 is
-   the section/card scroll-margin, so the card lands exactly in-frame. */
+   RACE NOTE (2026-11-20 probe + 2026-11-19 checker): a single smooth
+   scrollIntoView at 650ms landed the card at the top on quiet runs
+   (y108-120) but stopped short on busy runs (y798-854) - the showView
+   smooth scroll and this scroll raced over a shifting layout (views
+   hiding, hero painting). v2 made the jump INSTANT (an instant scrollTo
+   cancels an in-flight smooth scroll deterministically instead of
+   queueing behind it) and RE-ASSERTED it once at 1400ms - but the
+   checker still caught Identity landing below the fold 1 run in 6
+   (top 1091, bottom 1394; scrollY ~4529 vs ~5450), and the successful
+   Identity landings never hit the 100-140 band (157-169 every time):
+   one timed re-assert can pass transiently while the layout is still
+   shifting, then a late shift moves the card with nothing left to
+   correct it. So the jump now POLLS (settle, below): every 100ms it
+   checks the card's LIVE rect and jumps again whenever it is out of
+   band, until it is in band on TWO consecutive polls or 4500ms after
+   the click. 120 is the section/card scroll-margin, so the card lands
+   exactly in-frame. A wheel/touch scroll by the citizen cancels the
+   poll - their hand wins over the machine. */
 (function(){
   var panel=document.getElementById('settings-panel');
   if(!panel) return;
@@ -31433,14 +31443,36 @@ body{padding-bottom:170px !important;}
       return t>=100&&t<=140;
     }catch(_){ return true; }
   }
+  /* POLL UNTIL IN BAND. settle() ticks every POLL_MS: if the card is in
+     band (100-140) it counts toward STABLE_NEEDED consecutive in-band
+     polls; if it is out of band it jumps again from the LIVE rect, so a
+     layout shift that moves the card is corrected on the next tick
+     instead of being frozen in by a single timed check. It stops when
+     stable, when the citizen scrolls (isCancelled), or at the deadline -
+     and takes one final jump at the deadline if still out of band. */
+  var POLL_MS=100,DEADLINE_MS=4500,STABLE_NEEDED=2;
+  function settle(i,startedAt,isCancelled,stop){
+    var stable=0;
+    (function tick(){
+      if(isCancelled()){ stop(); return; }
+      if(settled(i)){ stable++; if(stable>=STABLE_NEEDED){ stop(); return; } }
+      else{ stable=0; jump(i); }
+      if(Date.now()-startedAt<DEADLINE_MS){ setTimeout(tick,POLL_MS); }
+      else{ if(!settled(i)) jump(i); stop(); }
+    })();
+  }
   panel.addEventListener('click',function(e){
     var b=e.target&&e.target.closest?e.target.closest('[data-set-card]'):null;
     if(!b) return;
     var i=parseInt(b.getAttribute('data-set-card'),10);
     panel.classList.remove('open');
     try{ if(typeof window.osShowView==='function') window.osShowView('settings'); }catch(_){}
-    setTimeout(function(){ jump(i); },650);
-    setTimeout(function(){ if(!settled(i)) jump(i); },1400);
+    var cancel=false;
+    function onUserScroll(){ cancel=true; }
+    window.addEventListener('wheel',onUserScroll,{passive:true});
+    window.addEventListener('touchmove',onUserScroll,{passive:true});
+    function stopPoll(){ window.removeEventListener('wheel',onUserScroll,{passive:true}); window.removeEventListener('touchmove',onUserScroll,{passive:true}); }
+    setTimeout(function(){ jump(i); settle(i,Date.now(),function(){ return cancel; },stopPoll); },650);
   });
 })();
 </script>
