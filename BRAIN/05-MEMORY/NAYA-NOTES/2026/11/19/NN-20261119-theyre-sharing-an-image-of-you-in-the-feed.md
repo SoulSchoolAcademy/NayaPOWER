@@ -4,7 +4,7 @@
 
 **NN-20261119-theyre-sharing-an-image-of-you-in-the-feed · Naya Note · 2026-11-19 ~18:47 MST (01:47Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — The New Look Spreads When Citizens Share It (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4210 — The New Look Spreads When Citizens Share It*
 
 **Category:** Vision — how the world meets Naya (the new look, spreading in the feed)
 
