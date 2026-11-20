@@ -266,10 +266,11 @@ the checker/eye. A 10 needs the taps.
   - `TEAM-NITRO/calendar-day-followon-round2-booking-20261120/maker/MAKER-REPORT.md`
     (this report)
 - **Filed and verified (amended after read-back):**
-  - Branch `calendar/day-followon-round2-booking-20261120`, tip
-    `8cac82475d360f7fa36c39675e3d296e0c61a6cc` (report commit; chain:
-    tip → brief `0670141ea1b890761f202edaffd3cfd93423b873` → HTML
-    `dc9d9f2a15599aa0f639ef0f21e22f31cbca5b66` → parent `ffd220c7`).
+  - Branch `calendar/day-followon-round2-booking-20261120`. Filing identity (stable):
+    HTML commit `dc9d9f2a15599aa0f639ef0f21e22f31cbca5b66`, parent `ffd220c7`,
+    followed by the brief commit `0670141ea1b890761f202edaffd3cfd93423b873` and
+    report commits. The branch tip moves when this report is amended — read the
+    tip from the branch, not from this line.
   - HTML blob `04e79488a8acda56ff3b7a5e55737341f525dae9`, 431,254 B, sha256
     `3e9f0ecefaa1945e58455ccdef4ea773f5760e7712ef30b4448859f05cac0fdf` —
     read back from the blob API: size-ok, sha-ok.
