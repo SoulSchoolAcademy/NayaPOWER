@@ -4,7 +4,7 @@
 
 **NN-20261119-membership-structure-system-completed · Naya Note · 2026-11-19 ~20:33 MST (03:33Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Membership Structure System Completed (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4229 — Membership Structure System Completed*
 
 **Category:** Vision — finishing the system so the work can go in
 
