@@ -4,7 +4,7 @@
 
 **NN-20261119-academy-button-simplification · Naya Note · 2026-11-19 ~20:47 MST (03:47Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Academy Button Simplification (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4223 — Academy Button Simplification*
 
 **Category:** Design — fewer buttons, one clear way in
 
