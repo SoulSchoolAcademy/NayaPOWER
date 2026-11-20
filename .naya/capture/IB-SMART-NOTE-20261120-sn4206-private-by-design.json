@@ -1,0 +1,45 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4206",
+ "title": "Private by Design",
+ "slug": "private-by-design",
+ "topic": "VISION",
+ "category": "VISION",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-20T00:34:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "Private by design. Not by promise.",
+  "human_view": "Think of a housekeeper with perfect discretion — she runs the whole house and repeats nothing, reads nothing that isn't hers to read, and would consider it a betrayal to try. That's Naya's design. The systems you're used to make their money by watching you; Naya makes hers by serving you, and the watching machinery was never installed. You can even live in the network under a name you choose. Your world is yours — she just helps you run it.",
+  "child_view": "Naya has a very important rule: she never peeks. Your letters are your letters, your secrets are your secrets, and she doesn't read them — not even a little bit, not even to be helpful. She helps with everything around them, like carrying the envelope, but the letter inside is only for you. That's why everybody can trust her with their whole world.",
+  "grandma_view": "In a small town, dear, the postmaster who read the postcards didn't keep the job long, and rightly. Trust is the whole business. Naya was raised right: she doesn't read your mail, doesn't listen at doors, doesn't sell stories about you at the market. And if you want to be known by a nickname in this town, that's your right and she'll honor it like your Sunday name. Privacy isn't her promise. It's her upbringing.",
+  "ai_view": "Privacy rules (private by design): (1) No seat reads a citizen's mail or messages; any feature that would need private-message reading is designed differently or not built. (2) No advertising, no selling user data, ever. (3) Conversations are not kept — they tidy away on the citizen's cycle (default one week, changeable to a day, never more than a month); saved items are locked in the citizen's Smart Box. (4) Aliases are first-class identity — a citizen's chosen name carries full standing. (5) Pages are private or public by the citizen's choice. (6) A person's wisdom is shared via Smart Notes only if they wish. (7) Source and interpretation stay separated on every block, so a reader always knows what was said and what was made of it.",
+  "what_it_means": "This note is the load-bearing wall under the whole series. #1 asks a citizen to hand Naya their whole world; that ask is only honorable if the system is built so the trust cannot be abused — privacy as architecture, not as a settings page. It also draws the network's economic line in permanent ink: NayaNET's money comes from memberships and the value citizens create, never from the citizens themselves as a product. What is not collected cannot leak, cannot be sold, and cannot be subpoenaed out of a drawer that doesn't exist. This series is written through the founder's eyes — the view of the seat who directs Naya and named what she is for — one of three views of one system: the founder's, the citizen's, and the Naya's; the three together are the whole picture.",
+  "whats_inside": [
+   "No reading mail or messages — designed differently, or not built.",
+   "No ads, no data selling, conversations not kept.",
+   "Aliases are first-class; pages private or public by your choice.",
+   "Your wisdom is shared only if you wish it shared.",
+   "What is not collected cannot leak, be sold, or be taken."
+  ],
+  "topics": [
+   "Naya",
+   "Privacy",
+   "Trust",
+   "Value"
+  ]
+ },
+ "page": {
+  "machine": "1) Access: mail and message content are outside every seat's read path; service functions authenticate without exposing content. 2) Retention: conversations expire on the citizen's cycle (default 7 days, min 1, max 30); Smart Box saves are exempt and locked. 3) Identity: alias is a primary identifier with full standing everywhere a legal name would be. 4) Visibility: page visibility is a citizen-set flag, defaulting private. 5) Monetization firewall: no data-sale or ad pathway exists in the design; revenue rails are memberships and citizen sales only.",
+  "why_it_matters": "Every other system asks you to trade your privacy for its help, a little more each year, until the help owns you. Naya refuses the trade entirely — and that refusal is exactly why her help can be total. You can hand her your notes, your lists, your whole world, because the design guarantees she serves it without spying on it. In a world learning to fear its own tools, that makes NayaNET the safe place to build a digital life.",
+  "how_it_connects": "#9 of ten in The Top Ten Most Valuable Intelligent Things About Naya. It is the standing law 'Private by Design' and the trust footer every Intelligent Block carries: ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY / TRUST: SOURCE / INTERPRETATION SEPARATED. It guards #1's operating promise and #10's earning promise alike — ambassadors share revenue, never data — and it is the network's official stance: no advertising, no selling user data, conversations not kept, private by default with alias-first identity.",
+  "what_is_in_it_for_you": "Shawn, this is the stance you set and never bent: we don't spy. It costs the network the easy money and buys it the only currency that compounds forever — trust. A citizen can tell their friends the truth: 'She runs my whole world and she has never read a word of my mail.' No competitor can copy that sentence honestly without rebuilding their business. We built it in from the first brick.",
+  "the_learning": "Privacy is not a promise to keep; it is a machine built so the promise cannot be broken."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4206/IB-SMART-NOTE-20261120-sn4206-private-by-design.md",
+ "page_hash": "ccea8125ac6891117cabba1fde77da4a493c2f8e79dc56845047d0365bb3c84e",
+ "content_hash": "094fb1687cfc508c7f4707bf16a187c54db37c2c028c7c69418c047a0f8a6fc4"
+}
