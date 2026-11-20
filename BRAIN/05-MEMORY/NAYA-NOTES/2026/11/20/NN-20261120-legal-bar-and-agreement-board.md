@@ -4,7 +4,7 @@
 
 **NN-20261120-legal-bar-and-agreement-board · Naya Note · 2026-11-20 ~14:23–14:52 MST (call 4f055989)**
 
-*Paired Smart Note: SN-pending — The Legal Bar and the Agreement Board (takes the next free number at filing)*
+*Paired Smart Note: SN-4328 — The Legal Bar and the Agreement Board*
 
 **Category:** Design — the legal links, framed below; the agreement, read on the board
 
