@@ -4,7 +4,7 @@
 
 **NN-20261120-you-didnt-fix-the-player · Naya Note · 2026-11-20 ~13:10–13:30 MST (call f8351b5a, second call)**
 
-*Paired Smart Note: SN-pending — You Didn't Fix the Player (takes the next free number at filing)*
+*Paired Smart Note: SN-4295 — You Didn't Fix the Player*
 
 **Category:** Corrections — the agreement presentation, the player, proof
 
