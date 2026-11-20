@@ -6521,12 +6521,12 @@ body.msg-open{overflow:hidden;}
    per-topic) are permanent; human tabs are named views saved on this device.
    The active tab wears the purple primary-action accent. */
 .smart-tabs {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  overflow-x: visible; scrollbar-width: none;
+  display: flex; align-items: center; gap: 10px; flex-wrap: nowrap;
+  overflow-x: auto; scrollbar-width: none;
   margin: 20px 0 0; padding: 12px 12px 18px; scroll-padding: 0 12px; /* EYE (g): the -6px pull cut the first/last tab labels at both edges — the strip now sits inside its box. */
   border-bottom: 1px solid var(--line);
   -webkit-mask-image: none;
-  mask-image: none; /* MIRROR ROUND 2 (2026-11-19): the fade mask cut the last tab ("The Private Network / Your Vault") — the row wraps whole now, no fade. This later rule also overrides the prefix copy's mask (L3837, fix-2 code, untouched). */
+  mask-image: none; /* CONNECTION-PROFILE 2026-11-19 (Shawn 14:55 MST — ONE scrolling row, never layered rows): Mirror Round 2 made this rule wrap the pills into rows one, two, three. It scrolls again in one row, as the earlier rule (L3837) already said. The fade stays off, so no tab is ever cut — scroll reveals the last one. */
 }
 .smart-tabs::-webkit-scrollbar { display: none; }
 .smart-tabs { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
@@ -6589,7 +6589,7 @@ body.msg-open{overflow:hidden;}
 }
 .smart-tab .sn-more:hover { background: linear-gradient(135deg,#1f1f2a,#08080d); border-color: color-mix(in srgb, var(--tc,#8e24aa) 90%, #fff); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 18px color-mix(in srgb, var(--tc,#8e24aa) 55%, transparent), 0 4px 10px rgba(0,0,0,.5); transform: translateY(-1px); }
 .smart-tab .sn-more { position: relative; }
-.smart-tab .sn-more::after { content: ''; position: absolute; inset: -9px -12px; }
+.smart-tab .sn-more::after { content: ''; position: absolute; inset: -4px 0; } /* CONNECTION-PROFILE 2026-11-19: the winning halo is vertical-only, as FIX PASS 4 fixed it — the pill centre belongs to the label, never to the dots. */
 .smart-tab.add-tab {
   border-style: dashed; color: var(--muted);
   padding: 12px 18px;
@@ -12545,10 +12545,13 @@ function HubView(params) {
       b.innerHTML = '<span class="sn-label">' + esc(t.label) + '</span>' +
         (t.heart ? '<span class="sn-mark" aria-hidden="true">\uD83D\uDC9C</span>' :
          t.star ? '<span class="sn-mark" aria-hidden="true">\u2B50</span>' : '');
-      const more = el('button', 'sn-more', '\u22EF');
+      const more = el('span', 'sn-more', '\u22EF');
       more.type = 'button';
+      more.setAttribute('role', 'button');
+      more.setAttribute('tabindex', '0');
       more.setAttribute('aria-label', 'Tab options for ' + t.label);
       more.addEventListener('click', ev => { ev.stopPropagation(); openTabMenu(t, b); });
+      more.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); ev.stopPropagation(); openTabMenu(t, b); } });
       b.appendChild(more);
       const go = () => { activeSmartTab = t.id; rerender(); };
       b.addEventListener('click', go);
@@ -13307,8 +13310,9 @@ window.NayaNotif = window.NayaNotif || {
      marked HUB RETARGET inside differ from Personal's bytes: the mount
      (#hubPeopleList, looked up live on every render — the rail rebuilds
      with every HubView build), DM/Mail -> the Hub's openMsgPanel(),
-     orb/info -> openMsgPanel() (decided this round — no #pcRailPop
-     transplant), and the final render call -> the Hub lens contract.
+     orb/info -> window.pcOpenProfile (CONNECTION-PROFILE 2026-11-19: the
+     messenger-dialog opening is OUT — the framed card owns orb/info),
+     and the final render call -> the Hub lens contract.
      Everything else — the rows, the 13 seed people, the match-% digit
      tiles, the four buttons, the Audio/Video honest status line — is
      Personal's own code. ——— */
@@ -13641,14 +13645,13 @@ document.addEventListener('click', function(e){
    centered popup, never a bar"), so there is NO dead wiring to it here. The
    feed's topic pull is the Smart Tabs ribbon below (author/category pills). */
 
-  /* HUB RETARGET (swap) — orb + info: decided this round (see maker report).
-     No #pcRailPop transplant; both open the Hub's Smart Messenger panel. */
-  document.addEventListener('click', function(e){
-    var orb=e.target&&e.target.closest?e.target.closest('[data-pc-orb]'):null;
-    if(orb){ if(typeof openMsgPanel==='function') openMsgPanel(); return; }
-    var info=e.target&&e.target.closest?e.target.closest('[data-pc-info]'):null;
-    if(info){ if(typeof openMsgPanel==='function') openMsgPanel(); return; }
-  });
+  /* CONNECTION-PROFILE 2026-11-19 (Shawn's addendum — the Hub rail's "i"
+     opens the framed card): the orb + info click used to open the Smart
+     Messenger dialog here (the followup11 eye-measured FAIL). That is OUT.
+     This handler no longer owns orb/info at all — the profile handler
+     (orb/info -> window.pcOpenProfile, the full-page framed card) is the
+     single owner. DM / Mail keep opening the messenger panel (their own
+     handler above); a person click opens their page, nothing else. */
 })();
   shell.append(rail, main, railR, backdrop);
 
@@ -43899,14 +43902,17 @@ function pcOrganizerRerender(){
         (t.heart ? '<span class="sn-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.7-9C.7 7.9 3 4.5 6.6 4.5c2 0 3.9 1.1 5.4 3 1.5-1.9 3.4-3 5.4-3 3.6 0 5.9 3.4 4.3 7-2.2 4.4-9.7 9-9.7 9z"/></svg></span>' :
          t.star ? '<span class="sn-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg></span>' : '');
       if (t.kind !== 'type') {
-      const more = el('button', 'sn-more');
+      const more = el('span', 'sn-more');
       /* R3 — the tab-options button is a drawn icon button now: three white
          dots as SVG on the obsidian chip, lit in the tab's colour on hover —
          never the bare ⋯ text glyph. */
       more.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="5" cy="12" r="2.2" fill="#fff"/><circle cx="12" cy="12" r="2.2" fill="#fff"/><circle cx="19" cy="12" r="2.2" fill="#fff"/></svg>';
       more.type = 'button';
+      more.setAttribute('role', 'button');
+      more.setAttribute('tabindex', '0');
       more.setAttribute('aria-label', 'Tab options for ' + t.label);
       more.addEventListener('click', ev => { ev.stopPropagation(); openTabMenu(t, b); });
+      more.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); ev.stopPropagation(); openTabMenu(t, b); } });
       b.appendChild(more);
       }
       const go = () => { pcGoTab(t); };
@@ -43940,6 +43946,7 @@ function pcOrganizerRerender(){
    build the harvested strip, and put its bar in the ribbon's place. */
 window.pcSmartTabStrip = function(){
   var rib = document.getElementById('mwFeedPills'); if (!rib) return;
+  rib.classList.add('smart-tabs'); /* CONNECTION-PROFILE 2026-11-19: the bar must wear the .smart-tabs class, or the one-row scroller rule never reaches it. */
   var mode = 'wall';
   try { var _nt = document.getElementById('mwTabActivity'); if (_nt && _nt.classList.contains('active')) mode = 'naya'; } catch (e) {}
   pcOrganizerMode = mode;
@@ -49287,10 +49294,13 @@ function smartTabStrip(lensNotes, allNotes) {
       b.innerHTML = '<span class="sn-label">' + esc(t.label) + '</span>' +
         (t.heart ? '<span class="sn-mark" aria-hidden="true">\uD83D\uDC9C</span>' :
          t.star ? '<span class="sn-mark" aria-hidden="true">\u2B50</span>' : '');
-      const more = el('button', 'sn-more', '\u22EF');
+      const more = el('span', 'sn-more', '\u22EF');
       more.type = 'button';
+      more.setAttribute('role', 'button');
+      more.setAttribute('tabindex', '0');
       more.setAttribute('aria-label', 'Tab options for ' + t.label);
       more.addEventListener('click', ev => { ev.stopPropagation(); openTabMenu(t, b); });
+      more.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); ev.stopPropagation(); openTabMenu(t, b); } });
       b.appendChild(more);
       const go = () => { activeSmartTab = t.id; rerender(); };
       b.addEventListener('click', go);
