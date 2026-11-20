@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-20 00:24 UTC_
+_Last updated: 2026-11-20 00:44 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9470
-- ✅ Verified (8+): 9374
+- **Total scored actions:** 9475
+- ✅ Verified (8+): 9379
 - 🟡 Partial (5–7): 87
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
@@ -15,15 +15,15 @@ _Last updated: 2026-11-20 00:24 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 636 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 637 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 629 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 576 | 9.0 | 10 |
+| Team 3 | Naya Judge | 577 | 9.0 | 10 |
 | Team 4 | Naya Mason | 562 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 697 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 698 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 400 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 545 | 8.9 | 10 |
+| Team 7 | Naya Conductor | 546 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 572 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 698 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 699 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 958 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 621 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 482 | 9.1 | 9.5 |
@@ -2973,13 +2973,13 @@ _Last updated: 2026-11-20 00:24 UTC_
 - **t0537:** 9 actions, avg 9.0/10
 - **t0537-lane12:** 2 actions, avg 9.0/10
 - **t0537-lane2:** 2 actions, avg 9.0/10
-- **t0537-lane9:** 1 actions, avg 9.0/10
+- **t0537-lane9:** 2 actions, avg 9.0/10
 - **t0538:** 5 actions, avg 9.0/10
-- **t0538-lane1:** 1 actions, avg 9.0/10
-- **t0538-lane7:** 1 actions, avg 9.0/10
+- **t0538-lane1:** 2 actions, avg 9.0/10
+- **t0538-lane7:** 2 actions, avg 9.0/10
 - **t0539:** 4 actions, avg 8.6/10
-- **t0539-lane3:** 1 actions, avg 8.5/10
-- **t0539-lane5:** 1 actions, avg 9.0/10
+- **t0539-lane3:** 2 actions, avg 8.5/10
+- **t0539-lane5:** 2 actions, avg 9.0/10
 - **t0540:** 6 actions, avg 9.0/10
 - **t0540-lane4:** 1 actions, avg 9.0/10
 - **t0540-lane6:** 1 actions, avg 9.0/10
