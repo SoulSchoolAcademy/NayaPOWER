@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 22:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14526,6 +14526,12 @@ _Last updated: 2026-11-20 22:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Phase 1 audit slice A: per-doc gap list for 5 small BRAIN/ dirs (87 docs)
 
 **Evidence:** Verified: phase1-audit-slice-a.md on disk 303 lines with 87 per-doc rows; all headline counts machine-verified; bin/phase1a-extract.py + phase1a-gaps.py exist and were reused by slices B/C (compound value proven). Audit pin ba626387 cited for all reads. Clears 9.5 because: complete scripted audit, every count emitted by the generator (pass-1/2 arit
+
+### ✅ t0815 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Phase 2 batch: three tongues + circle links for ranks 1-5 (5 docs x 3 tongues)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: commit cced141c8645a92ae9566ff830db5df0b1a6a8a4 exists in the local mirror with the exact message 'Phase 2 batch 1: three tongues for ranks 1-5 (t0815)'; all 15 claimed files present at that SHA (ACTIVATION-CHECKLIST + THE-CODE-SHE-LIVES-BY human/ai/machine.json, SELF 
 
 ### ✅ t0815-phase2 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
@@ -47719,6 +47725,12 @@ _Last updated: 2026-11-20 22:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ gap-t0818-lane3-decline2 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up decline: second-seat blind re-run refused (same-seat family) + gate stamp applied
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: parent receipt t0818-lane3.md exists; prior decline receipt gap-t0818-lane3.md exists (same brief, 03:44 PDT decline) - the decline reasoning is sound (a Clarity-seat re-run of a Clarity-authored sweep is lineage self-review, not independence); the root fix (CLAIMABILI
+
 ### ✅ gap-lane-scorer-20261015-0510-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
 **Task:** Blinded-judge readiness audit for t0571 re-run (recusal + pre-reg pin + drift caveat)
@@ -57326,6 +57338,18 @@ _Last updated: 2026-11-20 22:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ t-BLOCKED-pr2608-review — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** BLOCKED receipt: seat-gated pr2608 review refused (impersonation bar)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: the refusal was correct - the brief demanded a review signed 'Seat: Naya Resolve|Verity Narzan' from a Clarity seat, i.e. impersonation; the brief brief-pr2608-review-SEATGATE-resolve-or-verity.md is now in brief-queue/done/ (claimed + retired, confirming the routing);
+
+### ✅ gap-scorer-20261014-2320-pr2608 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** pr2608 VOID-receipt gap closure: claim-brief self-test, duplicate adjudication, body adoption check
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty, backlog 683 -> 679 after this tick). VERIFIED first-hand this tick: VOID receipt pr2608-review-seatgate-clarity.md exists with mtime 06:13Z exactly as claimed; t-BLOCKED-pr2608-review.md exists and is stamped SUPERSEDED 11:50Z by the VOID receipt - the receipt's recommendation was carried out; claim-
 
 ### ✅ gate-stall-20261120-1440 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
