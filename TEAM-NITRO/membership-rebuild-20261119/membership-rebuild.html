@@ -22477,7 +22477,8 @@ var SA_COURSE_IMG = 'https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NI
 var SA_CODE_TTL_MS = 10 * 60 * 1000; /* a sent code fades in ten minutes */
 var saCur = null;            /* current membership object */
 var saLessonIdx = {fac:0, academy:0};
-var saLessonOpen = false; /* FIX-1 2026-11-19: a lesson is open — saShowView('lessons') keeps the feed hidden while true; saShowToc() clears it on the way back to the chooser. */
+var saLessonOpen = false;
+var saPendingLesson = null; /* FIX-4 (item 2): a chooser-card pick's Day 1, waiting for entry - set by the capture handler, consumed once by saEnterCourse (it survives the login door), cleared when the door is abandoned or the pick never enters (paid). */ /* FIX-1 2026-11-19: a lesson is open — saShowView('lessons') keeps the feed hidden while true; saShowToc() clears it on the way back to the chooser. */
 var saLevel = 'toc';         /* 'toc' = course presentation | 'section' = section page */
 var saSection = 'videos';    /* 'videos' | 'audios' | 'lessons' */
 var saPcIdx = 0, saPcShowAll = false;
@@ -22520,6 +22521,9 @@ function saOpen(name){
   saCur = m;
   saRenderAll();
   if(m.access==='paid'){
+    /* FIX-4 (item 8): the Masterclass lives at its own address - its pill, chooser card and drawer link all land on the Masterclass itself (https://aimasterclass.help/), not on the pricing page. Pricing stays the destination for any other paid membership. A pick that never enters a course leaves no pending lesson behind. */
+    saPendingLesson = null;
+    if(m.slug==='masterclass'){ try{ window.open(m.url, '_blank', 'noopener'); }catch(e){} return; }
     /* Paid + not a member -> the Pricing page (verified). No mock link,
        no preview entry: the door stays closed until they return with a code. */
     try{ window.open(SA_PRICING_URL, '_blank', 'noopener'); }catch(e){}
@@ -22556,6 +22560,9 @@ function saClose(){
 function saEnterCourse(){
   if(!saCur) return;
   saCourseMode(true);
+  /* FIX-4 (item 2): a chooser-card pick lands on the Day 1 lesson pane, not the chooser - the pending pick (set by the capture handler) is consumed here, so it survives the login door (saOnEnter comes through here) and is gone after one entry. */
+  var _pl = saPendingLesson; saPendingLesson = null;
+  if(typeof _pl==='number' && saLessonCount()>0){ saOpenLesson(_pl); return; }
   saShowToc();
   var wall = sa$('os-wall');
   if(wall) wall.scrollIntoView({block:'start'});
@@ -22720,7 +22727,7 @@ function saRenderAll(){
   var title = sa$('saCourseTitle'); if(title) title.textContent = m.name;
   var sub = sa$('saCourseSub'); if(sub) sub.textContent = m.desc;
   var feedDot = sa$('saFeedDot'); if(feedDot){ feedDot.style.background = m.color; feedDot.style.color = m.color; }
-  var feedHead = sa$('saFeedHead'); if(feedHead) feedHead.textContent = m.slug==='fac' ? 'The nine-day orientation \u2014 9 lessons' : (m.slug==='academy' ? 'The Academy \u2014 5 day videos' : 'The Masterclass \u2014 lessons');
+  var feedHead = sa$('saFeedHead'); if(feedHead) feedHead.textContent = 'The lessons'; /* FIX-4 (item 7): the feed card's head said the same words as the section title ("The Academy - 5 day videos") - the heading appeared twice in the lessons list. The section title carries the course line now; the card keeps its plain head. */
   var heroJoin = sa$('saHeroJoin'); if(heroJoin){ var j = sa$('joinbtn'); if(j) heroJoin.href = j.getAttribute('href') || 'https://nayanet.app/joinus'; }
   saRenderToc();
   saRenderFeed();
@@ -22810,8 +22817,10 @@ function saShowToc(){
   saRenderToc();
   /* Level 1 is the presentation: no feed tab is the course tab yet. */
   ['mwTabSmart','mwTabNaya','mwTabActivity'].forEach(function(id){ var t=sa$(id); if(t){ t.classList.remove('on'); t.classList.remove('active'); t.setAttribute('aria-selected','false'); } });
-  var course = sa$('saCourse');
-  if(course) course.scrollIntoView({block:'start'});
+  /* FIX-4 (items 5 + 7 - the shared root): the chooser IS the pick row - scroll IT into view, not the whole course sheet (whose top is the hero cover, ~1,200 px above the chooser). The old course-top scroll is what sent every choose / lessons / pick tap back to the cover. */
+  var _pk = sa$('saCoursePick');
+  if(_pk && _pk.style.display!=='none'){ _pk.scrollIntoView({block:'start'}); }
+  else { var course = sa$('saCourse'); if(course) course.scrollIntoView({block:'start'}); }
 }
 function saCurLessonIdx(){ return saCur.slug==='fac' ? saLessonIdx.fac : (saCur.slug==='academy' ? saLessonIdx.academy : -1); }
 /* FIX-2 2026-11-19: ONE lesson-entry helper — every route into a lesson opens the
@@ -22834,7 +22843,7 @@ function saGoLessons(){
      Masterclass has no lessons: the honest empty section stands. */
   if(!saCur) return;
   if(saLessonCount()===0){ saShowView('lessons'); return; }
-  if(saLessonOpen){ saLessonOpen = false; saShowView('lessons'); var p = sa$('saPaneLesson'); if(p) p.hidden = true; var c = sa$('saCourse'); if(c) c.scrollIntoView({block:'start'}); }
+  if(saLessonOpen){ saLessonOpen = false; saShowView('lessons'); var p = sa$('saPaneLesson'); if(p) p.hidden = true; /* FIX-4 (items 4 + 5): the list lives in the lesson view - land on the section head (title above, the 5 cards right below), not on the course top (the cover, ~1,700 px up). saShowView already scrolled here; this keeps the landing after the pane hides. */ var _h = sa$('saSectionHead'); if(_h && !_h.hidden){ _h.scrollIntoView({block:'start'}); } }
   else saOpenLesson();
 }
 function saShowView(v){
@@ -22871,8 +22880,13 @@ function saShowView(v){
   /* FIX-2c: the "Choose your course" card row also sits above the player in flow — at phone width it stacks ~900px tall and pushes the player below the fold. Hide it on the Powercast page too (it returns with the chooser, like the hero). */
   var _pk = sa$('saCoursePick'); if(_pk) _pk.style.display = (saSection==='audios') ? 'none' : '';
   if(saSection==='audios' && window.saPcExactResize){ try{ window.saPcExactResize(); }catch(e){} }
-  var course = sa$('saCourse');
-  if(course) course.scrollIntoView({block:'start'});
+  /* FIX-4 (items 4 + 5 - the shared root): scroll the DESTINATION, not the course sheet. The old course-top scroll put every section change on the hero cover - the lesson list, the video pane and the player all sat a page or two below where the tap landed. An open lesson lands on its pane; every other section lands on its head (title above, content right below). */
+  var _st = null;
+  if(saLessonOpen){ _st = sa$('saPaneLesson'); }
+  else { _st = sa$('saSectionHead'); }
+  if(!_st || _st.hidden){ _st = (saSection==='videos') ? sa$('saPaneVideo') : (saSection==='audios' ? sa$('saPanePodcasts') : (saSection==='lessons' ? sa$('saFeedCard') : null)); }
+  if(_st && !_st.hidden){ _st.scrollIntoView({block:'start'}); }
+  else { var course = sa$('saCourse'); if(course) course.scrollIntoView({block:'start'}); }
 }
 
 /* ---------- feed: the lessons as blocks ---------- */
@@ -22978,6 +22992,9 @@ function saTheatreOpenVideo(idx, kind){
   var V = kind==='channel' ? SA_CHANNEL[idx] : SA_ACADEMY[idx]; if(!V) return;
   saTheatreMode = 'video'; saTheatreList = kind; saTheatreIdx = idx;
   var body = sa$('saTheatreBody'); if(!body) return;
+  /* FIX-4 (item 9): the inline lesson player is the SAME video - while the dialog plays, the inline iframe keeps playing audio behind it, and two same-video embeds racing once closed the dialog's connection. Blank the inline player first, then load the dialog fresh on a cleared body. */
+  try{ var _in = sa$('saPaneLesson') ? sa$('saPaneLesson').querySelector('iframe') : null; if(_in){ _in.src = 'about:blank'; } }catch(e){}
+  body.innerHTML = '';
   body.innerHTML = '<div class="sa-sixteen"><iframe src="https://www.youtube-nocookie.com/embed/'+V.id+'?rel=0&autoplay=1" title="'+saEsc(V.title)+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
   var t = sa$('saTheatreTitle'); if(t) t.textContent = V.title;
   var nx = sa$('saTheatreNext'); if(nx) nx.style.display = '';
@@ -23025,6 +23042,8 @@ function saStopTheatre(){
   var body = sa$('saTheatreBody'); if(body) body.innerHTML = '';
   th.hidden = true;
   saTheatreMode = null;
+  /* FIX-4 (item 9): the dialog blanked the inline lesson player - put it back (paused) so the lesson still plays in its frame. Only when a lesson is open; the feed cards were never touched. */
+  if(saCur && saLessonOpen){ try{ saRenderLesson(); }catch(e){} }
   try{
     var stage = sa$('saLoginStage');
     if(!stage || stage.hidden) document.documentElement.style.overflow = '';
@@ -23153,7 +23172,14 @@ function saOnEnter(name){
 }
 /* FIX-3 2026-11-19 (fails 4 + 5): the ONE staged compose action. The bottom-bar ADD tile and the feed-filters "+ Add" pill both land here. It stays staged and lands right: if a course is open it closes (the Personal feed + the page's own "Make a post" composer return with it), then the composer scrolls into view and takes focus. It never navigates anywhere \u2014 never to live nayanet.app. Exposed on window so the feed-filters pill (a separate script block) resolves it the way this file already exposes its cross-script helpers. */
 function saOpenCompose(){
-  if(saCur) saClose();
+  /* FIX-4 (item 6): remember the way back before leaving - the return point (course + lesson or section) rides a history state, so browser Back from the composer returns to the lesson instead of stranding the citizen on the composer. The page's own view router still owns every other popstate; the restore listener in saWire only answers states pushed here. */
+  if(saCur){
+    try{
+      var _rec = {name: saCur.name, lesson: saLessonOpen ? saCurLessonIdx() : -1, section: saLessonOpen ? 'lessons' : (saLevel==='toc' ? 'toc' : saSection)};
+      history.pushState({osView:'home', saReturn:_rec}, '', '#home');
+    }catch(e){}
+    saClose();
+  }
   var c = sa$('os-post-body');
   if(c){ try{ c.scrollIntoView({block:'center'}); }catch(e){} try{ c.focus(); }catch(e){} }
 }
@@ -23204,7 +23230,7 @@ function saPcHandleClick(e){
 /* ---------- wiring ---------- */
 function saWire(){
   var back = sa$('saLoginBackIcon');
-  if(back) back.addEventListener('click', saCloseLogin);
+  if(back) back.addEventListener('click', function(){ saPendingLesson = null; /* FIX-4 (item 2): backing out of the door abandons the pick - the next entry lands on the chooser, not on a stale Day 1. */ saCloseLogin(); });
   var tc = sa$('saTheatreClose');
   if(tc) tc.addEventListener('click', saStopTheatre);
   var tn = sa$('saTheatreNext');
@@ -23215,17 +23241,7 @@ function saWire(){
   if(tht) tht.addEventListener('click', function(e){ saPcHandleClick(e); });
   var hi = sa$('saHeroInvite');
   if(hi) hi.addEventListener('click', saHeroInvite);
-  /* FIX-3 2026-11-19 (fail 1): the Academy cover image + its center \u2726 sparkle
-     open the login door. The cover is the front door of the membership \u2014 a tap
-     on it steps in (name + any code) instead of sitting there as a still. A
-     citizen who already stepped in (join recorded) keeps the cover as a still:
-     the door must not replay for someone already inside. */
-  var fc = sa$('saFeatureCover');
-  if(fc) fc.addEventListener('click', function(e){
-    if(saHasJoined('academy')) return;
-    e.preventDefault(); e.stopPropagation();
-    saOpen('naya academy');
-  });
+  /* FIX-4 (item 1): the cover door lives in the #saCourse delegated listener now (current-course-aware) - no direct listener here. */
   var sb = sa$('saBackBtn');
   if(sb) sb.addEventListener('click', saClose);
   /* Escape: theatre first, then the login, then the course. */
@@ -23233,7 +23249,7 @@ function saWire(){
     if(e.key!=='Escape') return;
     if(saTheatreMode){ saStopTheatre(); return; }
     var stage = sa$('saLoginStage');
-    if(stage && !stage.hidden){ saCloseLogin(); return; }
+    if(stage && !stage.hidden){ saPendingLesson = null; /* FIX-4 (item 2): abandoning the door abandons the pick. */ saCloseLogin(); return; }
     if(saCur){ saClose(); }
   });
   /* Cover keyboard: Enter/Space on a cover opens it. */
@@ -23280,10 +23296,28 @@ function saWire(){
     if(!_course2 || _course2.hidden) return;
     e.preventDefault(); e.stopPropagation(); saShowToc();
   }, true);
+  /* FIX-4 (item 6): browser Back from the composer returns to the course. A Back that lands on a state pushed by saOpenCompose restores the course (and the lesson, when one was open); any other popstate is left to the page's own view router. If the door is open the restore stops there - no entry without joining. */
+  window.addEventListener('popstate', function(e){
+    var r = e.state && e.state.saReturn; if(!r) return;
+    try{
+      if(!saCur || saCur.name!==r.name){ saOpen(r.name); }
+      if(!saCur) return;
+      var _stg = sa$('saLoginStage'); if(_stg && !_stg.hidden) return;
+      if(typeof r.lesson==='number' && r.lesson>=0){ saOpenLesson(r.lesson); }
+      else if(r.section==='toc'){ saShowToc(); }
+      else if(r.section){ saShowView(r.section); }
+    }catch(_){}
+  });
   /* The course feed: one delegated listener for everything in #saCourse. */
   var course = sa$('saCourse');
   if(course) course.addEventListener('click', function(e){
     var t = e.target && e.target.closest ? e.target.closest('[data-sa-toc],[data-sa-toc-back],[data-sa-read],[data-sa-next],[data-sa-watch],[data-sa-watch-ch],[data-sa-nextvid],[data-sa-cover],[data-sa-cover-ch],[data-sa-prev-lesson],[data-sa-next-lesson],[data-sa-pc-play],[data-sa-pc-full],[data-sa-close],[data-sa-choose-lesson],[data-sa-pick-head]') : null;
+    /* FIX-4 (item 1): the feature cover + its center sparkle are the course's front door - handled here, in the course's own delegated listener, so it fires for the cover and for every child (the sparkle included) and for the course on screen, whichever it is. Fix-3's direct listener hardcoded 'academy', so the FAC cover opened the Academy door; the delegated branch asks the course on screen. A citizen who has not joined that course meets the login door; a citizen already inside keeps the cover as a still. */
+    var _fc = e.target && e.target.closest ? e.target.closest('#saFeatureCover') : null;
+    if(_fc){
+      if(saCur && !saHasJoined(saCur.slug)){ e.preventDefault(); e.stopPropagation(); saOpen(saCur.name); }
+      return;
+    }
     if(!t){
       /* ROUND 5 FIX: audio controls share one handler with the theatre. */
       saPcHandleClick(e);
@@ -23321,15 +23355,15 @@ function saWire(){
     var a = e.target && e.target.closest ? e.target.closest('a.mw-mship-btn[data-mw-cover]') : null;
     if(a){
       var label = (a.getAttribute('data-mw-cover')||'').toLowerCase();
-      var href = (a.getAttribute('href')||'');
       var m = SA_MEMBERSHIPS[label];
-      if(m && saSameUrl(href, m.url)){ e.preventDefault(); e.stopPropagation(); saOpen(label); return; }
+      /* FIX-4 (item 1): match by LABEL, never by URL - the pill's href comes from the owner's cover slots and can drift from the membership's canonical URL; a drifted URL used to fall through to the page's own handler (or out to the external site) and enter without the gate. A known label always goes through saOpen (the gate). An unknown label keeps today's behavior. */
+      if(m){ e.preventDefault(); e.stopPropagation(); saOpen(label); return; }
       return;
     }
     var open = e.target && e.target.closest ? e.target.closest('[data-mw-open-mship]') : null;
     if(open){
       var nm = (open.getAttribute('data-mw-open-mship')||'').toLowerCase();
-      if(SA_MEMBERSHIPS[nm]){ e.preventDefault(); e.stopPropagation(); saOpen(nm); return; }
+      if(SA_MEMBERSHIPS[nm]){ e.preventDefault(); e.stopPropagation(); /* FIX-4 (item 2): a pick from the chooser row ("Choose your course") enters the course and opens the Day 1 lesson pane - the pending pick is consumed by saEnterCourse (it survives the login door). Picks from anywhere else (cover pill, drawer, card) land on the chooser, as today. */ if(open.closest && open.closest('#saCoursePick')){ saPendingLesson = 0; } saOpen(nm); return; }
       return;
     }
     var card = e.target && e.target.closest ? e.target.closest('.mship-card a.ph-connect[href]') : null;
