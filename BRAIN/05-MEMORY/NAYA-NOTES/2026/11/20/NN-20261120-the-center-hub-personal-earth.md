@@ -4,7 +4,7 @@
 
 **NN-20261120-the-center-hub-personal-earth · Naya Note · 2026-11-20 ~10:44–11:58 MST (call c3521e5c, continued; Ella with him)**
 
-*Paired Smart Note: SN-pending — The Center: Hub = Personal = the Earth (takes the next free number at filing)*
+*Paired Smart Note: SN-4284 — The Center — Hub = Personal = the Earth*
 
 **Category:** Decisions — what the Hub is, one system, the center everything revolves around
 
