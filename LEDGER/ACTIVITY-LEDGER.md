@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -33739,6 +33739,14 @@ _Last updated: 2026-11-20 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
+**Task:** H8 hypothesis-change + pre-registration seal for home-independence experiment (lesson-inheritance shape)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick by sha256: prereg-sealed.md 8c8aa05441780e9939375f5e04234b491097df40c7b1330f556e488c6d6fe9d6, HYPOTHESIS-CHANGE-h8.md 1b47033285216b86a769ab1a0981eb6de1f38dfb1fef588268b450fb3c7330b8, harness/verify_home_independent.py a685364a45c7f34aadc9352b44dee6ee3d9258ff130541d6038
+
+### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
 **Task:** H8 causal-proof experiment: hypothesis change + sealed pre-registration + instrument build
 
 **Receipt:** `twelve-lane-receipts/t0052-lane2.md`
@@ -34032,6 +34040,14 @@ _Last updated: 2026-11-20 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
+
+### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: independently verify board post half of t0803 J5 verdict (comment 6184357778)
+
+**Receipt:** `twelve-lane-receipts/t0045-lane12.md`
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: feedback-feed.md carries the [Lane 12 - Naya Herald, t0803] block (line 565; receipt said :559, 6-line drift from later appends) with the SHARPEN verdict, four-point mechanism and STALE-BLOCK language - the local half of the gap holds. NOT PHANTOM: receipt + local arti
 
 ### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
