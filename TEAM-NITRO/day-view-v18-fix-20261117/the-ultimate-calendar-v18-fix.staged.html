@@ -3110,8 +3110,34 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    at <=560px by the fix-17 rule, which stands) and Worlds (floating at
    1920; static-flow below the content at <=560px, as before). The Change
    cover function itself is unchanged where the pill remains. */
-.hl-center .hl-monthline{display:inline-flex!important;align-items:center!important;gap:29px!important;white-space:nowrap!important}
+.hl-center .hl-monthline{display:inline-flex!important;align-items:center!important;gap:28px!important;white-space:nowrap!important}
 #dayScroll:not(:has(#wisdomBanner.on)):not(:has(.worlds-slide.on))>.cover-change{display:none!important}
+
+/* ============ FIX3 — calendar day follow-on round 2 fix 3 (2026-11-20) ============ */
+/* CHANGE COVER, GIVEN A TAP-VISIBLE CHOICE — the eye tapped Change cover on
+   Worlds four times with no visible change. Diagnosis (code, not guess): the
+   pill is ONE element with ONE handler on every slide — tap opens the OS file
+   picker, and the cover changes only when a photo is picked. A tap alone can
+   never change the cover, on Wisdom or on Worlds (same pill, same handler,
+   same file input; at 1920 the floating pill, L2714, is identical on both).
+   So the pill now opens this chooser instead: the seven weekday covers
+   (COVER_DAY, read verbatim — the array itself is untouched) + Your photo
+   (the existing upload, handler unchanged). One tap on a cover changes the
+   day's cover at once and saves it to the day's key — the same key openDay
+   already restores (FIX11 item 15). The chooser closes on choice, on outside
+   tap, on Escape, and on every slide change (dayShow). */
+#dayScroll>.cover-chooser{position:absolute!important;right:16px!important;bottom:140px!important;z-index:20!important;width:300px!important;max-width:calc(100% - 32px)!important;background:linear-gradient(180deg,#17171f,#08080d)!important;border:1.5px solid var(--dc,#3fb8ff)!important;border-radius:18px!important;padding:14px 14px 12px!important;box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 18px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent)!important}
+#dayScroll>.cover-chooser[hidden]{display:none!important}
+#dayScroll>.cover-chooser .cc-title{color:#fff!important;font-size:19px!important;font-weight:800!important;margin:0 0 10px!important;text-align:center!important}
+#dayScroll>.cover-chooser .cc-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:8px!important}
+#dayScroll>.cover-chooser .cc-tile{display:flex!important;flex-direction:column!important;gap:4px!important;align-items:center!important;background:#050607!important;border:1.5px solid rgba(255,255,255,.25)!important;border-radius:12px!important;padding:6px 4px!important;cursor:pointer!important;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease!important}
+#dayScroll>.cover-chooser .cc-tile:hover{transform:translateY(-2px)!important;border-color:var(--dc,#3fb8ff)!important;box-shadow:0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent)!important}
+#dayScroll>.cover-chooser .cc-tile:active{transform:scale(.97)!important}
+#dayScroll>.cover-chooser .cc-tile img{width:100%!important;height:36px!important;object-fit:cover!important;border-radius:8px!important;display:block!important}
+#dayScroll>.cover-chooser .cc-tile span{color:#fff!important;font-size:17px!important;font-weight:800!important;line-height:1.1!important}
+#dayScroll>.cover-chooser .cc-tile.cur{border-color:#d4a017!important;box-shadow:0 0 12px rgba(212,160,23,.55)!important}
+#dayScroll>.cover-chooser .cc-tile .cc-plus{font-size:25px!important;line-height:36px!important;color:#fff!important}
+#dayScroll>.cover-chooser .cc-note{color:#fff!important;font-size:17px!important;margin:10px 0 0!important;text-align:center!important}
 
 
 /* ============ ROUND2 — calendar day follow-on, gap fix + ultimate booking (2026-11-20) ============ */
@@ -3124,7 +3150,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    = 24.3 ink), 24px on fallback. The class rides the monthline, set by r2SyncMonthlineFont() from
    document.fonts.check() + document.fonts.ready. (27 is calculated from the measured 2.7, not eyeballed;
    the 8px grid yields to the measured 24px-ink target here — named in the report.) */
-.hl-center .hl-monthline.gv-fallback{gap:27px!important}
+.hl-center .hl-monthline.gv-fallback{gap:26px!important}
 /* ITEM 2 — the ultimate booking, inside the Appointments slide. Steps in plain words, one choice at a
    time; a few open times at a time, never a wall. Harvested anatomy: the elite-cal board, the
    elite-bookpill / elite-meetpill pills, the mc-time digit-tile pills, the mc-day strip. */
@@ -3198,7 +3224,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
      behind the day's slides (item 12/A3): this layer sits behind
      them in the frame, never as its own slide, never behind wisdom.
      Change cover stays reachable, bottom-right, on every slide. -->
-          <div class="day-cover-bg" id="dayCoverBg" aria-hidden="true"><img id="coverImg" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/thursday_green.jpg&amp;ref=calendar/day-followon-fix12-20261119&amp;cb=db902b7106c4179803408305222306b16c0d9249&amp;t=1795123417" alt=""></div><button type="button" class="pill cover-change" id="coverChangeBtn">Change cover</button><input type="file" id="coverFile" accept="image/*" hidden><div class="wisdom-banner smart-block" id="wisdomBanner"><button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>
+          <div class="day-cover-bg" id="dayCoverBg" aria-hidden="true"><img id="coverImg" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/thursday_green.jpg&amp;ref=calendar/day-followon-fix12-20261119&amp;cb=db902b7106c4179803408305222306b16c0d9249&amp;t=1795123417" alt=""></div><button type="button" class="pill cover-change" id="coverChangeBtn">Change cover</button><input type="file" id="coverFile" accept="image/*" hidden><div class="cover-chooser" id="coverChooser" hidden role="dialog" aria-label="Choose a cover"><p class="cc-title">Choose a cover</p><div class="cc-grid" id="coverChooserGrid"></div><p class="cc-note">Your choice stays on this day.</p></div><div class="wisdom-banner smart-block" id="wisdomBanner"><button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>
             <div class="wq-label">Wisdom of the day</div>
             <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span></div><blockquote id="wisdomQuote"></blockquote><div class="dayteach" id="dayTeach"></div><div class="sb-nav"><div class="nav-left"></div><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button><div class="nav-right"></div></div><div class="wq-store">Naya wisdom — from the Naya store</div><div class="sb-dots"></div>
           </div>
@@ -4365,14 +4391,24 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var ccb = $("coverChangeBtn");
           if (ccb && !ccb.__wired) {
             ccb.__wired = true;
-            ccb.addEventListener("click", function () { var f = $("coverFile"); if (f) f.click(); });
+            ccb.addEventListener("click", function () { toggleCoverChooser(); });
+            if (!window.__ccWired) { window.__ccWired = true;
+              document.addEventListener("click", function (ev) { var p = $("coverChooser"); if (!p || p.hidden) return; if (ev.target.closest("#coverChooser") || ev.target.closest("#coverChangeBtn")) return; closeCoverChooser(); });
+              document.addEventListener("keydown", function (ev) { if (ev.key === "Escape") closeCoverChooser(); });
+            }
+
             var cf = $("coverFile");
             if (cf) cf.addEventListener("change", function () {
               var file = cf.files && cf.files[0]; if (!file) return;
               var r = new FileReader();
-              r.onload = function () { var ci = $("coverImg"); if (ci) ci.src = r.result; try { LS.set("nayacal.cover.v1." + keyOf(sel), { src: r.result }); } catch (e) {} }; /* FIX11 item 15 — saved to this day only */
+              r.onload = function () { var ci = $("coverImg"); if (ci) ci.src = r.result; closeCoverChooser(); try { LS.set("nayacal.cover.v1." + keyOf(sel), { src: r.result }); } catch (e) {} }; /* FIX11 item 15 — saved to this day only */
               r.readAsDataURL(file);
             });
+            /* FIX3 — cover-image retry (named note 3): the cover photo
+               failed to load/decode once (transient). One retry, 800ms later,
+               with a cache-buster, per distinct cover URL — never a loop. */
+            var __ci2 = $("coverImg");
+            if (__ci2 && !__ci2.__errWired) { __ci2.__errWired = true; __ci2.addEventListener("error", function () { var s = __ci2.src; if (s.indexOf("http") !== 0) return; var base = s.split("&r=")[0]; if (__ci2.__errBase === base) return; __ci2.__errBase = base; setTimeout(function () { if (__ci2.src.split("&r=")[0] === base) __ci2.src = base + (base.indexOf("?") >= 0 ? "&" : "?") + "r=1"; }, 800); }); }
           }
           normalizeDayNavs();
           var sc = $("dayScroll"); if (sc) sc.scrollTop = 0;
@@ -4500,7 +4536,34 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           document.querySelectorAll("#catsWrap > .cat.smart-block").forEach(function (x) { b.push(x); });
           return b;
         }
+        /* FIX3 — the cover chooser (Item 2): the pill opens the chooser
+           instead of jumping straight to the OS file picker. Built once
+           from COVER_DAY (read verbatim); one tap on a cover changes it at
+           once and saves it to the day's key; Your photo keeps the upload. */
+        function buildCoverChooser() {
+          var g = $("coverChooserGrid"); if (!g || g.__built) return; g.__built = true;
+          var h = "";
+          for (var i = 0; i < 7; i++) {
+            h += '<button type="button" class="cc-tile" data-cc="' + i + '" aria-label="' + WEEKDAYS[i] + ' cover"><img src="' + COVER_DAY[i] + '" alt=""><span>' + WEEKDAY_ABBR[i] + '</span></button>';
+          }
+          h += '<button type="button" class="cc-tile cc-upload" id="coverChooserUpload" aria-label="Use your own photo"><span class="cc-plus">+</span><span>Your photo</span></button>';
+          g.innerHTML = h;
+          g.addEventListener("click", function (ev) {
+            var t = ev.target.closest("[data-cc]");
+            if (t) { var ci = $("coverImg"); var src = COVER_DAY[parseInt(t.getAttribute("data-cc"), 10)]; if (ci) ci.src = src; try { LS.set("nayacal.cover.v1." + keyOf(sel), { src: src }); } catch (e) {} closeCoverChooser(); return; }
+            var u = ev.target.closest("#coverChooserUpload");
+            if (u) { var f = $("coverFile"); closeCoverChooser(); if (f) f.click(); }
+          });
+        }
+        function markCoverChooser() {
+          var ci = $("coverImg"); if (!ci) return;
+          document.querySelectorAll("#coverChooserGrid .cc-tile[data-cc]").forEach(function (b) { b.classList.toggle("cur", COVER_DAY[parseInt(b.getAttribute("data-cc"), 10)] === ci.src); });
+        }
+        function openCoverChooser() { buildCoverChooser(); markCoverChooser(); var p = $("coverChooser"); if (p) p.hidden = false; var ccb = $("coverChangeBtn"); if (ccb) ccb.setAttribute("aria-expanded", "true"); }
+        function closeCoverChooser() { var p = $("coverChooser"); if (p) p.hidden = true; var ccb = $("coverChangeBtn"); if (ccb) ccb.setAttribute("aria-expanded", "false"); }
+        function toggleCoverChooser() { var p = $("coverChooser"); if (p && !p.hidden) closeCoverChooser(); else openCoverChooser(); }
         function dayShow(a) {
+          closeCoverChooser();
           var blocks = dayBlocks(); if (!blocks.length) return;
           if (a === "next") {
             if (dayBlock >= blocks.length - 1) { stepDay(1); return; }
