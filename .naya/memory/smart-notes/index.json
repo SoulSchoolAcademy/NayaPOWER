@@ -69252,6 +69252,38 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "1eed9c77afdc7592629eb90dfa01cf083eae10eee0e772edc9d2e6529bc736fa"
+    },
+    {
+      "smart_note_id": "SN-3955",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn3955-decisions-by-scorecard-never-by-guess",
+      "slug": "decisions-by-scorecard-never-by-guess",
+      "title": "Decisions by Scorecard, Never by Guess",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3955/IB-SMART-NOTE-20261120-sn3955-decisions-by-scorecard-never-by-guess.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3955/IB-SMART-NOTE-20261120-sn3955-decisions-by-scorecard-never-by-guess.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3955/IB-SMART-NOTE-20261120-sn3955-decisions-by-scorecard-never-by-guess.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn3955-decisions-by-scorecard-never-by-guess.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T00:31:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "ab2e842f429d2a29feff2deb8f1a9a36b370f7ebec7baaf08d50db6b28e8f354",
+      "content_hash": "3a7bb0baef8dee6fa5c7a20e6700925fb1a4b9f1127894732a29ba05419f755c",
+      "one_line": "She doesn't guess. She scores.",
+      "topics": [
+        "Naya",
+        "Decisions",
+        "Scorecard",
+        "Value"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69262,5 +69294,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "a7b16228b9abeea48a03388a9f711cfd8cc8d792915ac7704ff878a440d46bd3"
+  "corpus_manifest_hash": "6d1e9ce48e8fffdd46f3328749e1c9037abf98f27496fcf2ee66194cb82fe1d9"
 }
