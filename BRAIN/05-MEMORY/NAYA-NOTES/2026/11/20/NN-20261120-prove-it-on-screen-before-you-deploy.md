@@ -4,7 +4,7 @@
 
 **NN-20261120-prove-it-on-screen-before-you-deploy · Naya Note · 2026-11-20 ~16:21 MST**
 
-*Paired Smart Note: SN-pending — Prove It on Screen Before You Deploy (takes the next free number at filing)*
+*Paired Smart Note: SN-4350 — Prove It on Screen Before You Deploy*
 
 **Category:** Law — a source-verified build is not a screen-proven build
 
