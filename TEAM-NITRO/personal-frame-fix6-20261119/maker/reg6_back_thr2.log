@@ -1,0 +1,9 @@
+throttled domcontentloaded in 7.6s
+modal dismissed: True
+[THROTTLED-FRESH] controls=770 markers={'quote': True, 'tabs-personal': True, 'empty-state': True, 'ask-naya': True, 'profile-name': True}
+tapped WORLDS via locator (120s timeout)
+landed on space
+modal dismissed after back: True
+[THROTTLED-AFTER-BACK] controls=739 markers={'quote': True, 'tabs-personal': True, 'empty-state': True, 'ask-naya': True, 'profile-name': True}
+[THROTTLED-AFTER-BACK-15s] controls=768 markers={'quote': True, 'tabs-personal': True, 'empty-state': True, 'ask-naya': True, 'profile-name': True}
+SUMMARY throttled fresh=770 after-back=739 after-15s=768

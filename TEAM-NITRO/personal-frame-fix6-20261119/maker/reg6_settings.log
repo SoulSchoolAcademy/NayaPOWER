@@ -1,0 +1,12 @@
+modal dismissed: True
+settingsbtn count: 1
+gear clicked via locator
+after gear hash: settings
+tab6 count: 1
+tab6 clicked via locator
+home-hub link count: 2
+link click failed: Locator.click: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("a[href='https://nayanet.app/hub#/hub']").first
+    - locator resolved to <a id="pc-hub-home" class="pc-hub-home" href="https
+did not land on hub; url= https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&re

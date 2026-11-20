@@ -1,0 +1,16 @@
+modal dismissed: True
+[CHROMIUM-FRESH] controls=900 markers={'quote': True, 'tabs-personal': True, 'empty-state': True, 'ask-naya': True, 'profile-name': True}
+hub askBtn count: 1
+ask box: {'x': 332, 'y': 743.5, 'width': 184, 'height': 47}
+@ask+2s hash=/hub/ask room=1 title=Ask Naya — NayaNET
+@ask+5s hash=/hub/ask room=1 title=Ask Naya — NayaNET
+@ask+10s hash=/hub/ask room=1 title=Ask Naya — NayaNET
+tapped PERSONAL tab [0]
+after PERSONAL: room=0 hash=/hub/feed
+WORLDS count: 1
+tapped WORLDS
+landed on space
+modal dismissed after back: True
+[CHROMIUM-AFTER-BACK] controls=899 markers={'quote': True, 'tabs-personal': True, 'empty-state': True, 'ask-naya': True, 'profile-name': True}
+[CHROMIUM-AFTER-BACK-15s] controls=899 markers={'quote': True, 'tabs-personal': True, 'empty-state': True, 'ask-naya': True, 'profile-name': True}
+SUMMARY chromium fresh=900 after-back=899 after-15s=899

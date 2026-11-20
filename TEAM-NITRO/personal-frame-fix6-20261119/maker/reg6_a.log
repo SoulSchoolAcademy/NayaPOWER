@@ -1,0 +1,22 @@
+modal dismissed: True
+ask button count: 1
+Ask Naya tap 1: clicking center (424, 766)
+@tap1+2s hash=/hub/ask room=1 title=Ask Naya — NayaNET
+@tap1+5s hash=/hub/ask room=1 title=Ask Naya — NayaNET
+@tap1+10s hash=/hub/ask room=1 title=Ask Naya — NayaNET
+Ask Naya tap 2: no box: Locator.bounding_box: Error: strict mode violation: get_by_role("button", name="Ask Naya") resolved to 3 elements:
+    1
+@tap2+5s hash=/hub/ask room=1
+PERSONAL matches: 1
+  tab [0] box={'x': 728.4833374023438, 'y': 957.5999755859375, 'width': 100.4000244140625, 'height': 20.4000244140625}
+tapped PERSONAL tab [0]
+after PERSONAL: room=0 hash=/hub/feed
+connections button count: 5
+Connections profile button: no box: Locator.bounding_box: Error: strict mode violation: get_by_role("button", name="Connections") resolved to 5 elements:
+  
+after Connections hash: /hub/feed
+after scroll + 15s hash: /hub/feed
+settingsbtn count: 1
+Settings gear #settingsbtn: clicking center (1700, -766)
+after gear hash: /hub/feed
+tab6 count: 0

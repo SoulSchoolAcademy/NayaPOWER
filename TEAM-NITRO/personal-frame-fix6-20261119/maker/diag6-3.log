@@ -1,0 +1,182 @@
+===== Router definition lines 10880-11060 =====
+10880:   b.innerHTML = `
+10881:     <div class="board-head">
+10882:       <div class="board-icon">${Icons.icon(icon)}</div>
+10883:       <div><div class="board-title">${title}</div>${sub ? `<div class="board-sub">${sub}</div>` : ''}</div>
+10884:     </div>
+10885:     <div class="board-body"></div>`;
+10886:   b.body = b.querySelector('.board-body');
+10887:   /* Social intelligence actions â top-right + bottom bar + add intel. */
+10888:   (window.__boardEnhanceQueue = window.__boardEnhanceQueue || []).push({
+10889:     board: b,
+10890:     id: 'board-' + String(title).toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40),
+10891:     title: title,
+10892:   });
+10893:   return b;
+10894: }
+10895: 
+10896: function StatePanel({ accent, icon, title, body, actions = [] }) {
+10897:   const p = el('div', 'state-panel');
+10898:   p.style.setProperty('--room-accent', accent);
+10899:   p.innerHTML = `
+10900:     <div class="state-icon">${Icons.icon(icon)}</div>
+10901:     <h3>${title}</h3><p>${body}</p>
+10902:     <div class="state-actions"></div>`;
+10903:   const wrap = p.querySelector('.state-actions');
+10904:   actions.forEach(a => {
+10905:     const btn = el('button', 'btn' + (a.ghost ? ' btn-ghost' : ''));
+10906:     btn.style.setProperty('--btn-accent', accent);
+10907:     btn.innerHTML = `${a.icon ? Icons.icon(a.icon) : ''}<span>${a.label}</span>`;
+10908:     btn.addEventListener('click', a.onClick);
+10909:     wrap.appendChild(btn);
+10910:   });
+10911:   return p;
+10912: }
+10913: 
+10914: function DoorCard(door, onConnect) {
+10915:   const d = el('article', 'door');
+10916:   d.style.setProperty('--door-accent', door.accent);
+10917:   const statusLabel = { live: 'LIVE', contract: 'CONTRACT' }[door.status];
+10918:   d.innerHTML = `
+10919:     <div class="door-top">
+10920:       <div class="door-icon">${Icons.icon(door.icon)}</div>
+10921:       <div><div class="door-name">${door.name}</div><div class="door-for">${door.for}</div></div>
+10922:     </div>
+10923:     <div class="door-desc">${door.desc}</div>
+10924:     <div class="door-foot">
+10925:       <span class="pill ${door.status}"><span class="dot"></span>${statusLabel}</span>
+10926:     </div>`;
+10927:   const foot = d.querySelector('.door-foot');
+10928:   if (door.status === 'live') {
+10929:     const s = el('span', 'state-badge', 'IN USE');
+10930:     s.style.setProperty('--room-accent', door.accent);
+10931:     foot.appendChild(s);
+10932:   } else {
+10933:     const btn = el('button', 'btn btn-ghost');
+10934:     btn.style.setProperty('--btn-accent', door.accent);
+10935:     btn.innerHTML = `${Icons.icon('arrow')}<span>Contract</span>`;
+10936:     btn.setAttribute('aria-label', `${door.name}: view contract state`);
+10937:     btn.addEventListener('click', () => onConnect(door));
+10938:     foot.appendChild(btn);
+10939:   }
+10940:   return d;
+10941: }
+10942: 
+10943: function Pill(status) {
+10944:   const label = { live: 'LIVE', ready: 'READY', soon: 'SOON', specialized: 'SPECIALIZED' }[status] || status.toUpperCase();
+10945:   return `<span class="pill ${status}"><span class="dot"></span>${label}</span>`;
+10946: }
+10947: 
+10948: /* âââ Toast âââ
+10949:    Two call conventions live in this file â honor both (P2 fix2, 2026-11-11):
+10950:    (message, accent, ms)            â accent is a color/var, ms a number
+10951:    (message, subtext, accentColor)  â subtext is a sentence, accent a color
+10952:    The old signature (message, accent, ms) treated the subtext as the accent
+10953:    and the color as ms, so setTimeout got NaN â 0 and every 3-arg toast
+10954:    vanished instantly (diag11: 'LINK COPIED' already class 'out' at 8ms).
+10955:    The subtext now renders as a second line; ms is always a real number. */
+10956: function toast(message, second, third, fourth) {
+10957:   function isColor(v) {
+10958:     return typeof v === 'string' && (/^#[0-9a-f]{3,8}$/i.test(v.trim()) ||
+10959:       /^var\(--[^)]+\)$/.test(v.trim()) ||
+10960:       /^(gold|silver|white|black|red|green|blue|purple|magenta|teal|emerald)$/i.test(v.trim()));
+10961:   }
+10962:   let text = null, accent = 'var(--magenta)', ms = 4200;
+10963:   if (isColor(second)) { accent = second; if (typeof third === 'number') ms = third; }
+10964:   else {
+10965:     if (second != null) text = second;
+10966:     if (typeof third === 'string') accent = third;
+10967:     else if (typeof third === 'number') ms = third;
+10968:     if (typeof fourth === 'number') ms = fourth;
+10969:   }
+10970:   if (!(ms > 0)) ms = 4200;
+10971:   let stack = document.querySelector('.toast-stack');
+10972:   if (!stack) { stack = el('div', 'toast-stack'); document.body.appendChild(stack); }
+10973:   const t = el('div', 'toast', text ? `<span>${message}</span><small>${text}</small>` : `<span>${message}</span>`);
+10974:   if (text) {
+10975:     t.style.flexDirection = 'column'; t.style.alignItems = 'flex-start'; t.style.gap = '2px';
+10976:     const s = t.querySelector('small');
+10977:     if (s) { s.style.fontWeight = '400'; s.style.opacity = '.85'; }
+10978:   }
+10979:   t.style.setProperty('--toast-accent', accent);
+10980:   stack.appendChild(t);
+10981:   setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 350); }, ms);
+10982: }
+10983: 
+10984: window.NayaUI = { Icons, el, Board, StatePanel, DoorCard, Pill, toast };
+10985: 
+10986: </script>
+10987: <script>/* js/router.js @ baf1221d9 */
+10988: /* âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+10989:    ROUTER â hash routes. WELCOME â IDENTITY â INTELLIGENT HUB.
+10990:    #/welcome Â· #/identity Â· #/hub Â· #/hub/:room Â· #/smart-notes/:slug
+10991:    (Smart Notes open IN the Hub â Shawn's ruling, 2026-11-07.)
+10992:    âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+10993: 
+10994: const Router = (() => {
+10995:   const routes = {};
+10996:   let current = null;
+10997: 
+10998:   function parse() {
+10999:     const h = location.hash.replace(/^#\/?/, '');
+11000:     const [path] = h.split('?');
+11001:     const segs = path.split('/').filter(Boolean);
+11002:     return segs;
+11003:   }
+11004: 
+11005:   function navigate(path) {
+11006:     if (location.hash === '#' + path) render();
+11007:     else location.hash = '#' + path;
+11008:   }
+11009: 
+11010:   function on(pattern, handler) { routes[pattern] = handler; }
+11011: 
+11012:   function render() {
+11013:     const segs = parse();
+11014:     const outlet = document.getElementById('app');
+11015:     outlet.innerHTML = '';
+11016:     let key = segs.join('/');
+11017:     let handler = routes[key];
+11018:     let params = {};
+11019:     if (!handler) {
+11020:       // try parametric: hub/note/:id (legacy card href â Chi receipt
+11021:       // comment 6800881349) opens the SOLO note, never the full feed;
+11022:       // hub/:room, smart-notes/:slug (also notes/:slug, note/:slug)
+11023:       if (segs[0] === 'hub' && segs[1] === 'note' && segs[2]) {
+11024:         handler = routes['smart-notes/:slug'];
+11025:         params = { slug: segs[2] };
+11026:         key = 'smart-notes/:slug';
+11027:       } else if (segs[0] === 'hub' && segs[1]) {
+11028:         handler = routes['hub/:room'];
+11029:         params = { room: segs[1] };
+11030:         key = 'hub/:room';
+11031:       } else if ((segs[0] === 'smart-notes' || segs[0] === 'notes' || segs[0] === 'note') && segs[1]) {
+11032:         handler = routes['smart-notes/:slug'];
+11033:         params = { slug: segs[1] };
+11034:         key = 'smart-notes/:slug';
+11035:       }
+11036:     }
+11037:     if (!handler) handler = routes['*'];
+11038:     current = key;
+11039:     const view = handler(params) || document.createElement('div');
+11040:     outlet.appendChild(view);
+11041:     const main = outlet.querySelector('.main');
+11042:     if (main) { main.setAttribute('tabindex', '-1'); }
+11043:     window.scrollTo(0, 0);
+11044:   }
+11045: 
+11046:   window.addEventListener('hashchange', render);
+11047: 
+11048:   return { on, navigate, render, parse };
+11049: })();
+11050: 
+11051: window.NayaRouter = Router;
+11052: 
+11053: </script>
+11054: <script>
+11055: 
+11056: /* âââ Activity Log: GitHub-style timeline of what's happening now âââ */
+11057: const ActivityLog = (() => {
+11058:   const KEY = 'naya.activity';
+11059:   const MAX = 50;
+11060:   function read() {

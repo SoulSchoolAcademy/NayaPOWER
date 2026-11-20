@@ -1,0 +1,36 @@
+--- hashchange listeners ---
+10285: if (/^#\/(hub|smart-notes|notes|note)(\/|$)/.test(location.hash)) window.dispatchEvent(new HashChangeEvent('hashchange'));
+10321: feed and re-renders the room (same hashchange nudge the override
+10525: /* FRAME-FIX4 2026-11-19 (F4): only nudge a Hub/note route. A synthetic hashchange while the hash names a Personal view ('#people', '#home', ...) - or is empty after Personal boot strips it - made the router's '*' fallback rewrite the hash to '#/hub' and empty the outlet. The live state still update
+10526: if (/^#\/(hub|smart-notes|notes|note)(\/|$)/.test(location.hash)) window.dispatchEvent(new HashChangeEvent('hashchange'));
+11046: window.addEventListener('hashchange', render);
+12134: window.addEventListener('hashchange', function () { setTimeout(function () { window.NayaHubSpy.update(); }, 60); });
+15231: // hashchange re-renders this view. Never flash "not found" for a
+17439: /* FRAME-FIX4 2026-11-19 (F4): '*' must not hijack Personal-view hashes. A Personal view ('#people', '#home', '#about', ...) is not a Hub route, so the old fallback rewrote it to '#/hub' on any re-render (boot arrival, or a synthetic hashchange). Personal views keep their hash; 'home'/empty re-rende
+17510: window.addEventListener('hashchange', function () {
+18455: window.addEventListener('hashchange', function(){ resetAll(); setTimeout(scanInitial, 60); });
+23576: the #app outlet is not one, and pushState fires no hashchange, so the
+31430: ROUND 6 REFRESH 2026-11-12 â intelBoard, layerColorFor and esc replaced verbatim from the live Hub (nayanet.app/hub, 5,527,464 B, sha 97a2a656, fetched 04:34Z Nov 12, after the second-row fix went live). What changed on the Hub since the harvest: v5.1 HOOK (60-char subtitle) + title links (sn-only
+--- ask occurrences (hub/ask, room ask, ask room) ---
+8370: body:has(.naya-ask-room) .notif-bar{bottom:calc(71px + var(--smartbar-h, 0px) + env(safe-area-inset-bottom,0px))}
+8371: body:has(.naya-ask-room) #nsbBottom{bottom:calc(71px + env(safe-area-inset-bottom,0px))}
+8373: body:has(.naya-ask-room) .side-topics.side-right{bottom:calc(312px + env(safe-area-inset-bottom,0px))}
+8374: body:has(.naya-ask-room) .side-topics.side-left{bottom:calc(382px + env(safe-area-inset-bottom,0px))}
+8379: body:has(.naya-ask-room) .notif-bar{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
+8380: body:has(.naya-ask-room) #nsbBottom{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
+8381: body.ask-reading:has(.naya-ask-room) .notif-bar{transform:translateY(calc(100% + 90px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
+8382: body.ask-reading:has(.naya-ask-room) #nsbBottom{transform:translateY(calc(100% + 200px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
+8384: body:has(.naya-ask-room) .notif-bar,body:has(.naya-ask-room) #nsbBottom{transition:none}
+9206: { id: 'ask',         name: 'Ask Naya',            kicker: 'ASK',          accent: 'var(--accent-ask)',         icon: 'mic' },
+9282: if (roomId === 'connect' || roomId === 'ask') return 'ready';
+12254: askBtn.addEventListener('click', () => { if (window.NayaRouter) window.NayaRouter.navigate('/hub/ask'); else location.hash = '#/hub/ask'; });
+12622: } else if (room.id === 'connect' || room.id === 'ask') {
+16774: '<div class="board-h sh-board" style="--bc:#0f52ba;cursor:pointer;max-width:640px;margin:64px auto 48px;" onclick="location.hash=\'#/hub/ask\'">' +
+16777: '<button class="bh-btn" type="button" onclick="event.stopPropagation();location.hash=\'#/hub/ask\'">Ask</button>' +
+16910: var FRAG = "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&di
+16911: var SCRIPTS = ["\n\"use strict\";\n/* ================= THE BANK â distilled, real content =================\n   Grammars: definition | comparison | process | principles            */\n/* ============ NAYA'S VOICE â series stand-in recordings ============\n   Real audio. The aperture reads the l
+23579: try{ if (name==='home' && window.NayaRouter && window.NayaRouter.parse) { var _segs=window.NayaRouter.parse(); var _roomOpen=(_segs[0]==='hub' && _segs[1] && _segs[1]!=='feed') || !!document.querySelector('.naya-ask-room'); if (_roomOpen) { window.NayaRouter.navigate('/hub/feed'); _roomYield=true; }
+40756: {label:'ASK NAYA', href:'https://nayahubpreviewasknaya.nayapower.workers.dev/#/hub/ask', color:'#0f52ba', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 2px #0f52ba66);"
+--- HubView room dispatch: search "room ===" / "room ===" ---
+11845: const activeRoom = params.room || 'feed';
+17432: if (EXTERNAL_ROOMS[params.room]) { goExternal(params.room); return document.createElement('div'); }

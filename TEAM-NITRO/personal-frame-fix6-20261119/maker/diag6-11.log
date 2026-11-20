@@ -1,0 +1,151 @@
+12600:     return { bar, tabs };
+12601:   }
+12602: 
+12603:   /* Shell lens slot â owned by the room, positioned by the chassis. */
+12604:   const lensSlot = el('div', 'shell-lens');
+12605:   lensSlot.hidden = true;
+12606: 
+12607:   /* Room outlet â the feed room IS the Main Show: hero, full-width search,
+12608:      full-width lens, layered intelligence boards. Other rooms render their
+12609:      head + search + renderer. Start Here is a pure onboarding funnel: no
+12610:      redundant room header (the hero says it once) and no search box â the
+12611:      shared searchWrap node simply isn't appended here, so global search
+12612:      keeps working everywhere else untouched. */
+12613:   const outlet = el('div', 'room-outlet');
+12614:   outlet.setAttribute('data-spy-area', 'room:' + room.id);
+12615:   if (params.note) {
+12616:     // A Smart Note opened inside the Hub (clean /smart-notes/<slug> URL or
+12617:     // #/smart-notes/<slug>): the shell above stays exactly as home â the
+12618:     // note renders alone in the outlet, in Hub board language.
+12619:     outlet.appendChild(noteView(params.note));
+12620:   } else if (room.id === 'feed') {
+12621:     outlet.appendChild(mainShow(room, C, feedStream || 'personal', searchWrap));
+12622:   } else if (room.id === 'connect' || room.id === 'ask') {
+12623:     // Start Here: hero + four steps only. No head, no search.
+12624:     // Ask Naya: her page, mounted whole. No head, no search.
+12625:   } else {
+12626:     const head = el('div', 'room-head');
+12627:     head.style.setProperty('--room-accent', room.accent);
+12628:     // The Hub greets the remembered name on every route, not only the feed
+12629:     // hero (Sweep #3, OWN-6): the hoist remembers the name at boot, so the
+12630:     // room head speaks it too. No name claimed: no greeting line at all.
+12631:     let roomWho = '';
+12632:     try { roomWho = (localStorage.getItem('nayanet_smart_name') || '').trim().split(/\s+/)[0]; } catch (e) {}
+12633:     const roomHour = new Date().getHours();
+12634:     const roomGreet = roomHour < 12 ? 'Good morning' : roomHour < 18 ? 'Good afternoon' : 'Good evening';
+12635:     head.innerHTML =
+12636:       '<div class="kicker">' + esc(room.kicker) + '</div>' +
+12637:       '<h2>' + esc(room.name) + '</h2>' +
+12638:       (roomWho ? '<p class="room-greet">' + roomGreet + ', ' + esc(roomWho) + '.</p>' : '') +
+12639:       '<p>' + esc(roomDesc(room.id)) + '</p>';
+12640:     outlet.appendChild(head);
+12641:     if (room.id !== 'settings') outlet.appendChild(searchWrap);
+12642:   }
+12643:   const body = el('div', 'room-body');
+12644:   body.style.setProperty('--room-accent', room.accent);
+12645:   body.setAttribute('aria-live', 'polite');
+12646:   const renderer = window.NayaRooms && window.NayaRooms[room.id];
+12647:   // The feed's renderer IS mainShow above â never double-render it.
+12648:   if (room.id !== 'feed') {
+12649:     if (renderer) {
+12650:       try { body.appendChild(renderer()); }
+12651:       catch (err) { body.appendChild(roomError(room, err)); }
+12652:     } else body.appendChild(notVerified(room));
+12653:   }
+12654:   outlet.appendChild(body);
+12655: 
+12656:   // The document title always names the room you're actually in.
+12657:   // (A note view sets its own title inside noteView â leave it alone.)
+12658:   if (!params.note) document.title = room.name + ' â NayaNET';
+12659: 
+12660:   main.append(top, lensSlot, outlet);
+12661: 
+12662:   /* ONE-BOTTOM-BAR (2026-11-11): the 12-icon eco-bottombar builder lived here.
+12663:      Replaced by the one bottom bar component. SWEEP-3 F10 (2026-11-17): the
+12664:      static fallback nav now sits right after #app (before the scripts, so
+12665:      init() below can replace it at boot); the dead eco-dock CSS is gone (F7).
+12666:      The notifications bar below it is untouched â the component stacks above it. */
+12667: 
+12668:   /* âââ THE SIX bottom bar: NayaNotif (HUB SIDEBARS+PLUS 2026-11-16) âââ
+12669:      Harvested from the Personal correction build (branch
+12670:      personal/correction-20261116, blob 3328238b, staged sha fd84bb81):
+12671:      SEGS + ICONS + get/set/bump/sound/counts/refresh/syncStack/init
+12672:      VERBATIM. TWO Hub adaptations, named: (1) tap() uses the Hub's own
+12673:      live-proven destinations (H1 settled law Â§4 â Mail -> rooms/mail,
+12674:      Activity -> the /hub/feed-activity lens, Spaces -> nayanet.app/space,
+12675:      ECOSYSTEM -> nayanet.app/#/hub, the Apps destination, because the Hub
+12676:      has no drawers; Personal's osShowView/pcToggleDrawer do not exist
+12677:      here). (2) A SIXTH seg, plus-connect (CONNECT), rides beside the five
+12678:      (Shawn 18:58Z â the extra + is the RIGHT +). Icons only â the names
+12679:      live in aria-label + title. */
+12680: window.NayaNotif = window.NayaNotif || {
+12681:     get(k) { try { return parseInt(localStorage.getItem('nayanet.notif.' + k) || '0', 10) || 0; } catch (e) { return 0; } },
+12682: [LONG 447B]     set(k, n) { var prev = this.get(k); try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} if ((k === 'mail' || k === 'activity' || k === 'spaces') && n > prev) { this.playSou
+12683:     bump(k) { this.set(k, this.get(k) + 1); this.refresh(); },
+12684:     soundOn() { try { return localStorage.getItem('nayanet.notif.sound') === '1'; } catch (e) { return false; } },
+12685:     playSound() {
+12686:       if (!this.soundOn()) return false;
+12687:       try {
+12688:         var AC = window.AudioContext || window.webkitAudioContext;
+12689:         if (!AC) return false;
+12690:         var ctx = this._audioCtx || (this._audioCtx = new AC());
+12691:         try { if (ctx.state === 'suspended') { ctx.resume(); } } catch (e) {}
+12692:         var t = ctx.currentTime || 0;
+12693:         [[880, 0, 0.5], [659.25, 0.18, 0.7]].forEach(function (n) {
+12694:           var o = ctx.createOscillator(), g = ctx.createGain();
+12695:           o.type = 'sine'; o.frequency.value = n[0];
+12696:           g.gain.setValueAtTime(0.0001, t + n[1]);
+12697:           g.gain.exponentialRampToValueAtTime(0.12, t + n[1] + 0.03);
+12698:           g.gain.exponentialRampToValueAtTime(0.0001, t + n[1] + n[2]);
+12699:           o.connect(g); g.connect(ctx.destination);
+12700:           o.start(t + n[1]); o.stop(t + n[1] + n[2] + 0.05);
+12701:         });
+12702:         return true;
+12703:       } catch (e) { return false; }
+12704:     },
+12705:     counts() {
+12706:       var unread = 0;
+12707:       try { var seen = this.get('seen.activity'); unread = Math.max(0, ActivityLog.read().length - seen); } catch (e) {}
+12708:       return { mail: this.get('mail'), activity: unread, spaces: this.get('spaces') };
+12709:     },
+12710:     refresh() {
+12711:       var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+12712:       var c = this.counts();
+12713:       var prev = this._prevCounts || {};
+12714:       bar.querySelectorAll('[data-notif]').forEach(function (seg) {
+12715:         var k = seg.getAttribute('data-notif'), n = c[k] || 0;
+12716:         var bub = seg.querySelector('.notif-count');
+12717:         seg.classList.toggle('has-news', n > 0);
+12718:         if (bub) { bub.textContent = n > 9 ? '9+' : String(n); bub.style.display = n > 0 ? 'flex' : 'none'; }
+12719:         /* EYE-NOTES-FIX Â§3.3(d): a channel going 0 -> unread flares once â
+12720:            the tile lights up bright and obvious, then settles to the steady
+12721:            glow. The first refresh never flares (pre-existing unread on load
+12722:            is not a landing: prev has no entry for it yet). */
+12723:         if (n > 0 && prev[k] === 0 && !seg.classList.contains('just-landed')) {
+12724:           seg.classList.add('just-landed');
+12725:           setTimeout(function () { seg.classList.remove('just-landed'); }, 1500);
+12726:         }
+12727:       });
+12728:       this._prevCounts = Object.assign({}, c);
+12729:     },
+12730:     tap(k) {
+12731:       /* HUB adaptation â the Hub's live-proven destinations (see header).
+12732:          The count for that channel clears on tap, as before. No drawers
+12733:          on the Hub, so the drawer preamble is dropped. */
+12734:       if (k === 'mail') { this.set('mail', 0); window.location.href = 'https://nayanet.app/rooms/mail'; }
+12735:       else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed-activity'); else location.hash = '#/hub/feed-activity'; }
+12736:       else if (k === 'spaces') { this.set('spaces', 0); window.location.href = 'https://nayanet.app/space'; }
+12737:       else if (k === 'eco') { window.location.href = 'https://nayanet.app/hub'; } /* FRAME-FIX2 2026-11-19 (F4): ECOSYSTEM = the Hub -- the old branch opened the right rail instead of navigating. */
+12738:       else if (k === 'personal') { if (window.osShowView) window.osShowView('home'); else window.location.href = 'https://nayanet.app/personal'; }
+12739:       else if (k === 'business') { window.location.href = 'https://nayanet.app/business'; }
+12740:       this.refresh();
+12741:     },
+12742:     syncStack() {
+12743:       var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+12744:       var row = bar.querySelector('.notif-row');
+12745:       var h = (row ? row.offsetHeight : bar.offsetHeight) + 1;
+12746:       document.documentElement.style.setProperty('--notif-h', h + 'px');
+12747:     },
+12748:     init() {
+12749:       var bar = document.getElementById('naya-notif-bar');
+12750:       if (bar && !bar.hasAttribute('data-static')) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }

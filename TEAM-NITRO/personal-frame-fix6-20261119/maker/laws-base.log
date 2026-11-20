@@ -1,0 +1,1026 @@
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1546: GRAY (§2.2 no gray text): .naya-note-time{font-size:11.5px;color:#fff;margin-top:6px} /* FIX-8c: was var(--ink-faint) dim gray — dim metadata, now
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3711: GRAY (§2.2 no gray text): .os-mship-claim{background:none;border:none;color:#fff;font-size:12px;font-family:inherit;text-decoration:underline;curs
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4093: GRAY (§2.2 no gray text): room's .cx-ava orb (initial by default, spinning sheen) at picker size. Flat gray is gone. */
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4760: GRAY (§2.2 no gray text): .os-mw-row .os-mw-su{display:block;font-size:12px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} 
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4761: GRAY (§2.2 no gray text): .os-mw-row .os-mw-tm{flex:none;font-size:12px;color:#fff} /* FIX-8c: was dim gray — dim metadata, now near-white */
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4957: GRAY (§2.2 no gray text): WHITE, never gray (his word); the counted numerals are white lit in
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:10261: GRAY (§2.2 no gray text): const NOTES = [{"id":"IB-SMART-NOTE-20261115-no-rearrangement-cures-a-look","title":"No Rearrangement Cures a Look","cre
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19519: GRAY (§2.2 no gray text): .os-wb-id span{ display:block; font-size:12.5px; color:#fff; margin-top:2px; } /* FIX-8d: was dim gray — dim score-card 
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19520: GRAY (§2.2 no gray text): .os-wb-kind{ margin-left:auto; flex:none; font-size:10px; font-weight:800; letter-spacing:.16em; color:#fff; } /* FIX-8d
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19523: GRAY (§2.2 no gray text): .os-wb-nums i{ display:block; font-style:normal; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19529: GRAY (§2.2 no gray text): .os-wb-open a{ color:#fff; font-size:12.5px; text-decoration:none; } /* FIX-8d: was dim gray — the fourth dim rule of th
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31742: GRAY (§2.2 no gray text): label renders in the card header anymore: the small grey topic
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47132: GRAY (§2.2 no gray text): colour on focus. White text, never gray. */
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47624: GRAY (§2.2 no gray text): only. NO gray text anywhere this round touches. This block sits LAST in
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:51145: GRAY (§2.2 no gray text): /* ITEM 7 — small gray text reads WHITE. Placeholders white everywhere
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:51154: GRAY (§2.2 no gray text): /* FIX-7b (2026-11-17, whole-page fix round, commit 3): no gray text — every
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:112: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:144: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:148: SIZE (§2.3 below 17px): font-size: 15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:159: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:160: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:161: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:164: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:179: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:186: SIZE (§2.3 below 17px): font-size: 15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:188: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:190: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:196: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:203: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:220: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:222: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:234: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:243: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:250: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:253: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:259: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:327: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:370: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:394: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:401: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:408: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:409: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:416: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:423: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:424: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:428: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:431: SIZE (§2.3 below 17px): font-size: 16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:433: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:434: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:435: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:440: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:441: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:448: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:450: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:454: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:456: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:499: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:515: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:520: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:521: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:522: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:530: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:534: SIZE (§2.3 below 17px): font-size: 15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:612: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:633: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:664: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:759: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:761: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:797: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:808: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:841: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:865: SIZE (§2.3 below 17px): font-size: 15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:877: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:917: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:921: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:922: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:923: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:924: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:925: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:942: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1000: SIZE (§2.3 below 17px): font-size: 10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1053: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1061: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1093: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1145: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1146: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1148: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1150: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1152: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1153: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1154: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1155: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1157: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1163: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1198: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1264: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1268: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1271: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1295: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1298: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1299: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1306: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1311: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1320: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1325: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1331: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1333: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1334: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1335: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1337: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1340: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1344: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1345: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1357: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1360: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1363: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1372: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1376: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1380: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1383: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1384: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1386: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1387: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1398: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1399: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1401: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1403: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1409: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1411: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1426: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1427: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1432: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1433: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1444: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1445: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1448: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1450: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1451: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1452: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1459: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1461: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1462: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1479: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1480: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1489: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1492: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1501: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1509: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1515: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1516: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1521: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1522: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1529: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1531: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1533: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1534: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1539: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1544: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1546: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1553: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1559: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1562: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1566: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1579: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1580: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1595: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1602: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1613: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1614: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1616: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1626: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1627: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1630: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1637: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1638: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1643: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1644: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1648: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1654: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1665: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1671: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1672: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1675: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1676: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1681: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1689: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1690: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1696: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1705: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1708: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1719: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1722: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1725: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1730: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1742: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1747: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1749: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1751: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1758: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1761: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1765: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1772: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1774: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1779: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1790: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1796: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1802: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1803: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1805: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1809: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1810: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1819: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1820: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1825: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1832: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1858: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1862: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1863: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1874: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1883: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1887: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1888: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1903: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1921: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1928: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1935: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1955: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1960: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1969: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1971: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1982: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1986: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2002: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2035: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2054: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2058: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2059: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2062: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2095: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2097: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2145: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2326: SIZE (§2.3 below 17px): font-size: 16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2430: SIZE (§2.3 below 17px): font-size: 13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2444: SIZE (§2.3 below 17px): font-size: 16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2482: SIZE (§2.3 below 17px): font-size: 10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2503: SIZE (§2.3 below 17px): font-size: 13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2512: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2535: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2543: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2544: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2546: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2548: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2552: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2556: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2559: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2561: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2562: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2566: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2571: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2571: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2660: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2666: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2689: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2703: SIZE (§2.3 below 17px): font-size: 15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2705: SIZE (§2.3 below 17px): font-size: 16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2712: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2719: SIZE (§2.3 below 17px): font-size: 10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2732: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2737: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2744: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2757: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2762: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2767: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2783: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2807: SIZE (§2.3 below 17px): font-size: 10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2822: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2833: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2836: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2837: SIZE (§2.3 below 17px): font-size: 13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2841: SIZE (§2.3 below 17px): font-size: 13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2847: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2853: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2870: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2874: SIZE (§2.3 below 17px): font-size: 15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2885: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2903: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2905: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2907: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2917: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2925: SIZE (§2.3 below 17px): font-size: 15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2965: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3035: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3075: SIZE (§2.3 below 17px): font-size: 16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3109: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3123: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3149: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3211: SIZE (§2.3 below 17px): font-size: 10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3250: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3308: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3314: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3330: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3371: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3379: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3395: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3449: SIZE (§2.3 below 17px): font-size: 16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3461: SIZE (§2.3 below 17px): font-size: 16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3468: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3473: SIZE (§2.3 below 17px): font-size: 16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3478: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3644: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3676: SIZE (§2.3 below 17px): font-size: 16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3692: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3693: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3709: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3711: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3720: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3722: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3723: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3725: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3726: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3727: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3755: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3777: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3811: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3871: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3882: SIZE (§2.3 below 17px): font-size: 14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3908: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3949: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3950: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3952: SIZE (§2.3 below 17px): font-size: 15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3954: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3960: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3975: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3990: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3994: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3999: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4004: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4007: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4011: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4097: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4107: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4110: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4111: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4113: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4114: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4120: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4124: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4125: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4126: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4128: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4129: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4143: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4145: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4222: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4261: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4262: SIZE (§2.3 below 17px): font-size:14.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4272: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4278: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4279: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4281: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4285: SIZE (§2.3 below 17px): font-size:14.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4288: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4291: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4292: SIZE (§2.3 below 17px): font-size:15.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4293: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4294: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4312: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4314: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4315: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4321: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4323: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4325: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4351: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4361: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4362: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4363: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4366: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4367: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4371: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4395: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4425: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4443: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4453: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4456: SIZE (§2.3 below 17px): font-size:14.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4457: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4499: SIZE (§2.3 below 17px): font-size:15.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4500: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4515: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4526: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4528: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4530: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4531: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4532: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4534: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4537: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4542: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4544: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4549: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4561: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4562: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4608: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4616: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4622: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4623: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4624: SIZE (§2.3 below 17px): font-size:9.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4626: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4630: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4689: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4691: SIZE (§2.3 below 17px): font-size:14.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4709: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4728: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4755: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4759: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4760: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4761: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4763: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4764: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4773: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4774: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4775: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4780: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4781: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4782: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4787: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4788: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4791: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4792: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4793: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4794: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4795: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4797: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4807: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4849: SIZE (§2.3 below 17px): font-size:16.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4853: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4854: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4855: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4902: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4909: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4910: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4914: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4924: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4925: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4926: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4939: SIZE (§2.3 below 17px): font-size:15.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4940: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4943: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4950: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4961: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4979: SIZE (§2.3 below 17px): font-size:8.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4985: SIZE (§2.3 below 17px): font-size:9.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:4987: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5136: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5504: SIZE (§2.3 below 17px): font-size: 11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5534: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5920: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5922: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5928: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5929: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5931: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5932: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5934: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5936: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5937: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5972: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:5973: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:6028: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:6042: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:6346: SIZE (§2.3 below 17px): font-size: 15.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:17197: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19519: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19520: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19523: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19529: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19541: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19544: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19545: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19548: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19557: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19561: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19586: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19587: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19588: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19588: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19588: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19589: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19600: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19644: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19701: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19823: SIZE (§2.3 below 17px): font-size:9.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19832: SIZE (§2.3 below 17px): font-size:7px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19844: SIZE (§2.3 below 17px): font-size:7px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19848: SIZE (§2.3 below 17px): font-size:7px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19871: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19901: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19912: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19938: SIZE (§2.3 below 17px): font-size:9.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19946: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19958: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:19997: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20008: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20068: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20081: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20082: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20122: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20144: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20146: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20205: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20244: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20305: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20310: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20384: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20405: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20424: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20428: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20448: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20468: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20488: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20508: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20528: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20548: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20567: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20569: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20588: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20589: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20590: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20592: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20593: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20594: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20595: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20602: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20605: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20653: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20665: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20676: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20718: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20721: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20722: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20725: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:21101: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:21110: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:21123: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:21124: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:21890: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22575: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22584: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22604: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22615: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22618: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22622: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22624: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22629: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22633: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22637: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:22639: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:23037: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:23301: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:25241: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:25245: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:25249: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:25503: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:25999: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:26193: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:26278: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:26672: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:27294: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28487: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28506: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28533: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28556: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28594: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28598: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28607: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28674: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28775: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28777: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28779: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28800: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28826: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28832: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28833: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28843: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28865: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28877: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28878: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28882: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28890: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28915: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28980: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28991: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:28992: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29068: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29090: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29123: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29127: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29135: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29157: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29159: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29187: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29189: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29191: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29212: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29236: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29258: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29270: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29271: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29275: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29283: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29308: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29326: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29327: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:29889: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30705: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30938: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30947: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30950: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30955: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30959: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30968: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30970: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30973: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30976: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30979: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30985: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:30990: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31006: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31008: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31009: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31012: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31015: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31018: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31021: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31034: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31036: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31142: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31387: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31402: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31421: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31422: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31424: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31885: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:31987: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:32793: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:32852: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:34168: SIZE (§2.3 below 17px): font-size:8px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35321: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35334: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35367: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35588: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35590: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35607: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35610: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35611: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35612: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35613: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35614: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35615: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35616: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35624: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35627: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35687: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35689: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35706: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35709: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:35718: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:36569: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:36593: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:36594: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:36597: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:36607: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:36649: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:36650: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:36658: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:36666: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:36669: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42566: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42568: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42574: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42601: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42608: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42609: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42610: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42612: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42617: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42618: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42619: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42621: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42622: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42624: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42626: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42975: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42978: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42981: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42984: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42989: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:42999: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43001: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43020: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43166: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43169: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43171: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43173: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43174: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43176: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43178: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43180: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43181: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43183: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43184: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43185: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43186: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43187: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43314: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43316: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43319: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43320: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43326: SIZE (§2.3 below 17px): font-size:10.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43717: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43723: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43747: SIZE (§2.3 below 17px): font-size: 16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43762: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43767: SIZE (§2.3 below 17px): font-size: 15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43769: SIZE (§2.3 below 17px): font-size: 12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43772: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43778: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43787: SIZE (§2.3 below 17px): font-size: 13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43797: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43803: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:43814: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44404: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44405: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44429: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44433: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44434: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44441: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44454: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44661: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44681: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44698: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:44705: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45052: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45122: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45454: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45455: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45481: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45487: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45488: SIZE (§2.3 below 17px): font-size:11.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45490: SIZE (§2.3 below 17px): font-size:9px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45496: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45498: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45506: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45508: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45509: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45512: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45513: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45518: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45522: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45524: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45525: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45767: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45792: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45794: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45812: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:45813: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:46102: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:46915: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:46918: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:46984: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47085: SIZE (§2.3 below 17px): font-size:10px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47134: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47136: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47140: SIZE (§2.3 below 17px): font-size:12px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47584: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47585: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47590: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47591: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47628: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47732: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47742: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47751: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47752: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47777: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47780: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47782: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47783: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47788: SIZE (§2.3 below 17px): font-size:13px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47809: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:47811: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:48396: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:51183: SIZE (§2.3 below 17px): font-size:15px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:51185: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:51188: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:51190: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:51197: SIZE (§2.3 below 17px): font-size:11px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:51203: SIZE (§2.3 below 17px): font-size:14px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:51212: SIZE (§2.3 below 17px): font-size:16px
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:411: TEXT-COLOR (§2.2 red/orange/magenta as text): color: #c62828
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1447: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:1859: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:2536: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#a21caf
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3696: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:3977: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20782: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#a21caf
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:20812: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#a21caf
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:21564: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#a21caf
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:21838: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c2410c
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:21848: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:21910: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#a21caf
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:21920: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#a21caf
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:32998: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+FAIL personal-frame-fix6-20261119/maker/personal-complete-base5.html:40584: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:1618: TEXT-COLOR? (§2.2 check by eye): color:transparent
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:4396: TEXT-COLOR? (§2.2 check by eye): color:transparent
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:4852: TEXT-COLOR? (§2.2 check by eye): color:transparent
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:7340: TEXT-COLOR? (§2.2 check by eye): color: rgba(255,255,255,.55)
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:7364: TEXT-COLOR? (§2.2 check by eye): color: rgba(142,36,170,.55)
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:7939: TEXT-COLOR? (§2.2 check by eye): color: transparent
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:10261: TEXT-COLOR? (§2.2 check by eye): COLOR:** the spectrum advances as blocks open
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:10414: TEXT-COLOR? (§2.2 check by eye): color:color, tier:tier, body:body
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11070: TEXT-COLOR? (§2.2 check by eye): color: color || '#8e24aa', iconPath: iconPath || null, ts: Date.now()
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11282: TEXT-COLOR? (§2.2 check by eye): color: TOPIC_SPECTRUM[spTopic] || '#a21caf',
+              privacy: 'public',
+              memberIds: [],
+             
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11500: TEXT-COLOR? (§2.2 check by eye): color: kind === 'like' ? '#c62828' : '#8e24aa',
+            iconPath: ipath, ts: Date.now()
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11901: TEXT-COLOR? (§2.2 check by eye): color: '#0e7490', href: 'https://nayanet.app/personal'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11902: TEXT-COLOR? (§2.2 check by eye): color: '#07925f', href: 'https://nayanet.app/rooms/mail', countKey: 'mail'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11903: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', href: 'https://nayanet.app/rooms/mail'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11904: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c', href: 'https://nayanet.app/rooms/connections'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11907: TEXT-COLOR? (§2.2 check by eye): color: '#07925f', href: 'https://nayanet.app/business'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11908: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', href: 'https://nayanet.app/rooms/mail'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11909: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c', href: 'https://nayanet.app/rooms/mail'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11910: TEXT-COLOR? (§2.2 check by eye): color: '#c62828', href: 'https://nayanet.app/rooms/connections'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11913: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', href: 'https://nayanet.app/space'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11914: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c', href: 'https://nayanet.app/rooms/mail'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11915: TEXT-COLOR? (§2.2 check by eye): color: '#c62828', href: 'https://nayanet.app/rooms/mail'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11916: TEXT-COLOR? (§2.2 check by eye): color: '#6d28d9', href: 'https://nayanet.app/rooms/connections'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11919: TEXT-COLOR? (§2.2 check by eye): color: '#a21caf', href: 'https://nayanet.app/hub',       countKey: 'activity', glyphCls: 'glyph-xl'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11920: TEXT-COLOR? (§2.2 check by eye): color: '#07925f', href: 'https://nayanet.app/dashboard', countKey: null, glyphCls: 'glyph-xl'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11921: TEXT-COLOR? (§2.2 check by eye): color: '#3f51b5', href: 'https://nayanet.app/personal',  countKey: null, subtab: true, subs: PERSONAL_SUBS, glyphCls: 'g
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11922: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', href: 'https://nayanet.app/business',  countKey: null, subtab: true, subs: WORK_SUBS, glyphCls: 'glyph
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11923: TEXT-COLOR? (§2.2 check by eye): color: '#07925f', href: 'https://nayanet.app/space',     countKey: 'spaces', subtab: true, subs: WORLD_SUBS, glyphCls: '
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:11924: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', href: 'https://nayanet.app/#/hub/spaces', countKey: null, glyphCls: 'glyph-xl'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:13271: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c', href: 'https://nayanet.app/#/hub/spaces'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:13272: TEXT-COLOR? (§2.2 check by eye): color: '#a21caf', href: 'https://nayanet.app/#/hub/spaces'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:13273: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', href: 'https://nayanet.app/#/hub/leaderboards'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:13274: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c', href: 'https://nayanet.groovepages.com/academy'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:13275: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa', href: 'https://aimasterclass.help/'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:13276: TEXT-COLOR? (§2.2 check by eye): color: '#07925f', href: 'https://nayanet.app/personal#memberships'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:13277: TEXT-COLOR? (§2.2 check by eye): color: '#a21caf', href: 'https://app.nayanet.technology/'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:13278: TEXT-COLOR? (§2.2 check by eye): color: '#0f52ba', href: 'https://nayanet.groovepages.com/aboutus'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:13279: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', href: 'https://nayanet.groovepages.com/whitepaper'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:13280: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', href: 'https://naya-model-pricing.nayapower.workers.dev/'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14289: TEXT-COLOR? (§2.2 check by eye): color: 'white', tier: 'primary', body: nutshell
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14536: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa', priority: 'high',
+        iconPath: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M1
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14540: TEXT-COLOR? (§2.2 check by eye): color: '#3f51b5',
+        iconPath: '<path d="M12 3c-4 0-7 3-7 7 0 2 1 3.5 2 5v3h10v-3c1-1.5 2-3 2-5 0-4-3-7-7-7z"/><pat
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14544: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+        iconPath: '<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14548: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+        iconPath: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><pa
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14552: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+        iconPath: '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14556: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+        iconPath: '<path d="M6 3h12v18l-6-4-6 4z"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14560: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c',
+        iconPath: '<path d="M14 7a4 4 0 105.6 5.6L22 10l-2-2-2.4 2.4A4 4 0 0014 7z"/><path d="M14 7L4 
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14564: TEXT-COLOR? (§2.2 check by eye): color: '#c62828', priority: 'high',
+        iconPath: '<path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14568: TEXT-COLOR? (§2.2 check by eye): color: '#a21caf',
+        iconPath: '<circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18"
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14573: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa', priority: 'high',
+        iconPath: '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><circle cx="12" 
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14577: TEXT-COLOR? (§2.2 check by eye): color: '#3f51b5',
+        iconPath: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 8v4l2.5 2.5"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14581: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+        iconPath: '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M9 14l2 2 4-4"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14585: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+        iconPath: '<path d="M7 11v9H4v-9h3zm2 9h9c1 0 1.8-.8 1.9-1.8l1-7c.1-1-.7-1.9-1.8-1.9H14l.5-3.5
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14589: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+        iconPath: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14593: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+        iconPath: '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v3h16v-3"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:14597: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c', priority: 'high',
+        iconPath: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 019 9h-9z"/><
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:16590: TEXT-COLOR? (§2.2 check by eye): color:rgba(248,247,251,.75)
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:16911: TEXT-COLOR? (§2.2 check by eye): color:\"cyan\", grammar:\"definition\",\n  question:\"\",\n  sources:[
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:18768: TEXT-COLOR? (§2.2 check by eye): color: s.color || SPECTRUM[i % SPECTRUM.length]
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:18890: TEXT-COLOR? (§2.2 check by eye): color:n.color||SPECTRUM[i%SPECTRUM.length]
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:22468: TEXT-COLOR? (§2.2 check by eye): color: one accent hex for this mount (Law 9 token) — every tab ignites
+       in it instead of the per-tab spectrum. One
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:23453: TEXT-COLOR? (§2.2 check by eye): color:'#3a3a46')+'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:24263: TEXT-COLOR? (§2.2 check by eye): color:baSpec['General'],privacy:'public',memberIds:[],custom:true,created:Date.now(),pinnedNote:
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:25990: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', glyph:'✎', name:p.j.a||'Guest', html:'<h3>Feed post by '+esc(p.j.a||'Guest')+'</h3><p>'+esc(p.j.b||'')+
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:25991: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', glyph:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="ro
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:25992: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', glyph:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="ro
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:25999: TEXT-COLOR? (§2.2 check by eye): color:'+i.color+'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:26193: TEXT-COLOR? (§2.2 check by eye): color:'+c+'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:27294: TEXT-COLOR? (§2.2 check by eye): color:'+c+'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:27634: TEXT-COLOR? (§2.2 check by eye): color:null, quiet:'The next post, note, message or invite lights the first bar.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:27635: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', quiet:'The next feed post lights the first bar.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:27636: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c', quiet:'The first Smart Note lights the first bar.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:27637: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', quiet:'The next message lights the first bar.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:27638: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', quiet:'The next invite lights the first bar.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:28014: TEXT-COLOR? (§2.2 check by eye): color:'+c+'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:29572: TEXT-COLOR? (§2.2 check by eye): color: s.color || SPECTRUM[i % SPECTRUM.length]
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:29690: TEXT-COLOR? (§2.2 check by eye): color:n.color||SPECTRUM[i%SPECTRUM.length]
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32113: TEXT-COLOR? (§2.2 check by eye): color: TOPIC_SPECTRUM[spTopic] || '#a21caf',
+              privacy: 'public',
+              memberIds: [],
+             
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32236: TEXT-COLOR? (§2.2 check by eye): color: isLove ? '#c62828' : '#0f52ba',
+            iconPath: ipath, ts: Date.now()
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32428: TEXT-COLOR? (§2.2 check by eye): color:'white', tier:'primary', body: j.b || ''
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32429: TEXT-COLOR? (§2.2 check by eye): color:'magenta', tier:'primary', body: j.raw
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32431: TEXT-COLOR? (§2.2 check by eye): color:'sapphire', tier:'primary', body: angles[0].b || angles[0]
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32432: TEXT-COLOR? (§2.2 check by eye): color:'emerald', tier:'primary', body: angles[1].b || angles[1]
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32434: TEXT-COLOR? (§2.2 check by eye): color:'purple', tier:'primary', body:'When this comes up: remember ' + themes.slice(0,2).join(' and ') + '.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32435: TEXT-COLOR? (§2.2 check by eye): color:'forest', tier:'deeper', body:'THEMES: ' + themes.join(', ').toUpperCase()
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32437: TEXT-COLOR? (§2.2 check by eye): color:'white', tier:'primary', body: j.b || ''
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32635: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa',
+      perks: ['AI Masterclass included', 'More smart apps + notes', 'Priority Naya intelligence'],
+   
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32638: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', hot: true,
+      perks: ['Create MEMBERSHIPS on your pages', 'Everything in Power', 'AI Masterclass in
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:32641: TEXT-COLOR? (§2.2 check by eye): color: '#a21caf',
+      perks: ['Create MEMBERSHIPS on your pages', 'Everything in Pro', 'Highest limits everywhere'],
+ 
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:34511: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', lang:'constellation', jewel:'\u2605', value:100
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:34512: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', lang:'bloom',         map:'j',           jewel:'\u25CB', value:50
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:34513: TEXT-COLOR? (§2.2 check by eye): color:'#3f51b5', lang:'constellation', tkey:'noteTimes', jewel:'\u2726', value:35
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:34514: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', lang:'joinpulse',     tkey:'invTimes',  jewel:'\u25B2', value:25
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:34515: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', lang:'daybars',       tkey:'postTimes', jewel:'\u25C6', value:25
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:34516: TEXT-COLOR? (§2.2 check by eye): color:'#d4a017', lang:'funnel',        jewel:'\u21C4', value:15
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:34517: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c', lang:'wave',          jewel:'\u270E', value:5
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:34518: TEXT-COLOR? (§2.2 check by eye): color:'#c62828', lang:'pulsebars',     jewel:'\u2665', value:1
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:34519: TEXT-COLOR? (§2.2 check by eye): color:'#6d28d9', lang:'constellation', tkey:'saveTimes', jewel:'\u2606', value:5
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:35269: TEXT-COLOR? (§2.2 check by eye): color: nd.color
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:35623: TEXT-COLOR? (§2.2 check by eye): color:' + color + '
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:35717: TEXT-COLOR? (§2.2 check by eye): color:' + c + '
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:35781: TEXT-COLOR? (§2.2 check by eye): color:'+dcol+'">'+arrow+' '+Math.abs(delta)+(window.mwTr?window.mwTr('% vs last'):'% vs last')+'</span></div></span></di
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:35867: TEXT-COLOR? (§2.2 check by eye): color:'+trendColor+'">'+trendText+'</span></div>'+
+    '<svg class="os-trend-svg" viewBox="0 0 100 100" preserveAspectRa
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:35889: TEXT-COLOR? (§2.2 check by eye): color:'+bc+'">'+pct+'%</span></div>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:36348: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', icon:'⌂', href:'https://nayanet.app/personal', what:'Your home page — who you are, what you stand for, 
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:36349: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', icon:'▤', href:'https://nayanet.app/business', what:'Your business page — what you offer, your products
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:36350: TEXT-COLOR? (§2.2 check by eye): color:'#d4a017', icon:'△', href:'https://nayanet.app/space', what:'Your gathering place — the room your people meet in.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:36351: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', icon:'♡', href:null, what:'Your private community — members, content, and connection.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:36719: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa',go:'dashboard',stat:'gauge',main:true,what:'Your world, live \u2014 your numbers, your score, your gauge
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:36720: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c',go:'today',stat:'notes',what:'The latest real activity in this app \u2014 newest first, live.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:36721: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba',go:'home',stat:'posts',what:'Your home page \u2014 who you are, what you stand for, your links.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:36722: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c',go:'https://nayanet.app/business',stat:'invites',what:'Your business page \u2014 what you offer, your pr
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:36723: TEXT-COLOR? (§2.2 check by eye): color:'#07925f',go:'people',stat:'people',what:'Every face is real: they posted, messaged, or were invited here.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:36724: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf',go:'about',stat:'notes',what:'Your story \u2014 motto, story, what you do, goals, purpose.'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:37105: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', url:'https://nayanet.groovepages.com/academy', desc:'Naya Academy — learn NayaNET, step by step, in you
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:37106: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', url:'https://aimasterclass.help/', desc:'The AI Masterclass — how to work with AI at full power, the Na
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:37107: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', url:'#memberships', desc:'Fast Action Club (AI Naya Mastery) — the Fast Action Success Plan with NayaNE
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:40748: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:40749: TEXT-COLOR? (§2.2 check by eye): color:'#6d28d9', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:40750: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:40751: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:40752: TEXT-COLOR? (§2.2 check by eye): color:'#ffffff', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:40753: TEXT-COLOR? (§2.2 check by eye): color:'#3f51b5', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:40754: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:40755: TEXT-COLOR? (§2.2 check by eye): color:'#c62828', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:40756: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:41213: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', url:'https://nayanet.groovepages.com/academy',
+    desc:'Naya Academy — learn NayaNET, step by step, in
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:41216: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', url:'https://aimasterclass.help/', /* WHOLE-PAGE 2026-11-17 item 10 — members: the "Step in" gate, like
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:41219: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', url:'#memberships',
+    desc:'Fast Action Club (AI Naya Mastery) \u2014 the Fast Action Success Plan wi
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:41610: TEXT-COLOR? (§2.2 check by eye): color:'+saCur.color+'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:41654: TEXT-COLOR? (§2.2 check by eye): color:'+saCur.color+'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:41673: TEXT-COLOR? (§2.2 check by eye): color:'+saCur.color+'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:42351: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', privacy:'public',
+      memberIds:[], custom:true, created:Date.now()
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:44030: TEXT-COLOR? (§2.2 check by eye): color: '#6675ff' /* GEMATRIA 2026-11-18: S=6 indigo */, heart: false, star: false
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:44031: TEXT-COLOR? (§2.2 check by eye): color: '#ff5e6c' /* GEMATRIA 2026-11-18: N=1 red */, heart: false, star: false
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:44032: TEXT-COLOR? (§2.2 check by eye): color: '#ffbf3d' /* GEMATRIA 2026-11-18: P=3 gold */, heart: false, star: false
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:44035: TEXT-COLOR? (§2.2 check by eye): color: '#ff5e6c', /* GEMATRIA 2026-11-18: A=1 red */
+        heart: !!(sysOverrides['all'] && sysOverrides['all'].heart)
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:44500: TEXT-COLOR? (§2.2 check by eye): color:color-mix(in srgb, var(--nc) 72%, #ffffff)
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:45631: TEXT-COLOR? (§2.2 check by eye): color:m?m[1].trim():'#07925f'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:47432: TEXT-COLOR? (§2.2 check by eye): color:'+TYPE_COLORS[tp]+'">'+esc(TYPE_NAMES[tp])+'</span>'+esc(noteTitle(p))+'</li>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:48655: TEXT-COLOR? (§2.2 check by eye): color:color, tier:tier, body:body
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:49006: TEXT-COLOR? (§2.2 check by eye): color: TOPIC_SPECTRUM[spTopic] || '#a21caf',
+              privacy: 'public',
+              memberIds: [],
+             
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:49210: TEXT-COLOR? (§2.2 check by eye): color: kind === 'like' ? '#c62828' : '#8e24aa',
+            iconPath: ipath, ts: Date.now()
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50005: TEXT-COLOR? (§2.2 check by eye): color: 'white', tier: 'primary', body: nutshell
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50262: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa', priority: 'high',
+        iconPath: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M1
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50266: TEXT-COLOR? (§2.2 check by eye): color: '#3f51b5',
+        iconPath: '<path d="M12 3c-4 0-7 3-7 7 0 2 1 3.5 2 5v3h10v-3c1-1.5 2-3 2-5 0-4-3-7-7-7z"/><pat
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50270: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+        iconPath: '<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50274: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+        iconPath: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><pa
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50278: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+        iconPath: '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50282: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+        iconPath: '<path d="M6 3h12v18l-6-4-6 4z"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50286: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c',
+        iconPath: '<path d="M14 7a4 4 0 105.6 5.6L22 10l-2-2-2.4 2.4A4 4 0 0014 7z"/><path d="M14 7L4 
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50290: TEXT-COLOR? (§2.2 check by eye): color: '#c62828', priority: 'high',
+        iconPath: '<path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50294: TEXT-COLOR? (§2.2 check by eye): color: '#a21caf',
+        iconPath: '<circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18"
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50299: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa', priority: 'high',
+        iconPath: '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><circle cx="12" 
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50303: TEXT-COLOR? (§2.2 check by eye): color: '#3f51b5',
+        iconPath: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 8v4l2.5 2.5"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50307: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+        iconPath: '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M9 14l2 2 4-4"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50311: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+        iconPath: '<path d="M7 11v9H4v-9h3zm2 9h9c1 0 1.8-.8 1.9-1.8l1-7c.1-1-.7-1.9-1.8-1.9H14l.5-3.5
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50315: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+        iconPath: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50319: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+        iconPath: '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v3h16v-3"/>'
+WARN personal-frame-fix6-20261119/maker/personal-complete-base5.html:50323: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c', priority: 'high',
+        iconPath: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 019 9h-9z"/><
+810 violation(s), 160 warning(s) — fix the FAILs, do not ship.

@@ -1,0 +1,750 @@
+12,16c12,16
+< FAIL personal-frame-fix6-20261119/maker/FILE:31742: GRAY (§2.2 no gray text): label renders in the card header anymore: the small grey topic
+< FAIL personal-frame-fix6-20261119/maker/FILE:47132: GRAY (§2.2 no gray text): colour on focus. White text, never gray. */
+< FAIL personal-frame-fix6-20261119/maker/FILE:47624: GRAY (§2.2 no gray text): only. NO gray text anywhere this round touches. This block sits LAST in
+< FAIL personal-frame-fix6-20261119/maker/FILE:51145: GRAY (§2.2 no gray text): /* ITEM 7 — small gray text reads WHITE. Placeholders white everywhere
+< FAIL personal-frame-fix6-20261119/maker/FILE:51154: GRAY (§2.2 no gray text): /* FIX-7b (2026-11-17, whole-page fix round, commit 3): no gray text — every
+---
+> FAIL personal-frame-fix6-20261119/maker/FILE:31754: GRAY (§2.2 no gray text): label renders in the card header anymore: the small grey topic
+> FAIL personal-frame-fix6-20261119/maker/FILE:47144: GRAY (§2.2 no gray text): colour on focus. White text, never gray. */
+> FAIL personal-frame-fix6-20261119/maker/FILE:47636: GRAY (§2.2 no gray text): only. NO gray text anywhere this round touches. This block sits LAST in
+> FAIL personal-frame-fix6-20261119/maker/FILE:51157: GRAY (§2.2 no gray text): /* ITEM 7 — small gray text reads WHITE. Placeholders white everywhere
+> FAIL personal-frame-fix6-20261119/maker/FILE:51166: GRAY (§2.2 no gray text): /* FIX-7b (2026-11-17, whole-page fix round, commit 3): no gray text — every
+557,622c557,619
+< FAIL personal-frame-fix6-20261119/maker/FILE:25241: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:25245: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:25249: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:25503: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:25999: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:26193: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:26278: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:26672: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:27294: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28487: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28506: SIZE (§2.3 below 17px): font-size:11.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28533: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28556: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28594: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28598: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28607: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28674: SIZE (§2.3 below 17px): font-size: 12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28775: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28777: SIZE (§2.3 below 17px): font-size:12.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28779: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28800: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28826: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28832: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28833: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28843: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28865: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28877: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28878: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28882: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28890: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28915: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28980: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28991: SIZE (§2.3 below 17px): font-size:12.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:28992: SIZE (§2.3 below 17px): font-size:13.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29068: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29090: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29123: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29127: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29135: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29157: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29159: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29187: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29189: SIZE (§2.3 below 17px): font-size:12.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29191: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29212: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29236: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29258: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29270: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29271: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29275: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29283: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29308: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29326: SIZE (§2.3 below 17px): font-size:12.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29327: SIZE (§2.3 below 17px): font-size:13.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:29889: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30705: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30938: SIZE (§2.3 below 17px): font-size:10px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30947: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30950: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30955: SIZE (§2.3 below 17px): font-size:13.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30959: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30968: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30970: SIZE (§2.3 below 17px): font-size:10px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30973: SIZE (§2.3 below 17px): font-size:10px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30976: SIZE (§2.3 below 17px): font-size:12.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:30979: SIZE (§2.3 below 17px): font-size:11.5px
+---
+> FAIL personal-frame-fix6-20261119/maker/FILE:25253: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:25257: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:25261: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:25515: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:26011: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:26205: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:26290: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:26684: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:27306: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28499: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28518: SIZE (§2.3 below 17px): font-size:11.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28545: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28568: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28606: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28610: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28619: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28686: SIZE (§2.3 below 17px): font-size: 12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28787: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28789: SIZE (§2.3 below 17px): font-size:12.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28791: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28812: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28838: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28844: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28845: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28855: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28877: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28889: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28890: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28894: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28902: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28927: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:28992: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29003: SIZE (§2.3 below 17px): font-size:12.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29004: SIZE (§2.3 below 17px): font-size:13.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29080: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29102: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29135: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29139: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29147: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29169: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29171: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29199: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29201: SIZE (§2.3 below 17px): font-size:12.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29203: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29224: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29248: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29270: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29282: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29283: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29287: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29295: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29320: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29338: SIZE (§2.3 below 17px): font-size:12.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29339: SIZE (§2.3 below 17px): font-size:13.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:29901: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:30717: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:30950: SIZE (§2.3 below 17px): font-size:10px
+> FAIL personal-frame-fix6-20261119/maker/FILE:30959: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:30962: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:30967: SIZE (§2.3 below 17px): font-size:13.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:30971: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:30980: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:30982: SIZE (§2.3 below 17px): font-size:10px
+624,687c621,681
+< FAIL personal-frame-fix6-20261119/maker/FILE:30990: SIZE (§2.3 below 17px): font-size:12.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31006: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31008: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31009: SIZE (§2.3 below 17px): font-size:13.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31012: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31015: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31018: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31021: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31034: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31036: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31142: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31387: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31402: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31421: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31422: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31424: SIZE (§2.3 below 17px): font-size:12.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31885: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:31987: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:32793: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:32852: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:34168: SIZE (§2.3 below 17px): font-size:8px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35321: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35334: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35367: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35588: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35590: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35607: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35610: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35611: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35612: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35613: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35614: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35615: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35616: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35624: SIZE (§2.3 below 17px): font-size:10px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35627: SIZE (§2.3 below 17px): font-size:10px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35687: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35689: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35706: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35709: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:35718: SIZE (§2.3 below 17px): font-size:10px
+< FAIL personal-frame-fix6-20261119/maker/FILE:36569: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:36593: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:36594: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:36597: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:36607: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:36649: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:36650: SIZE (§2.3 below 17px): font-size:12.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:36658: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:36666: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:36669: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42566: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42568: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42574: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42601: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42608: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42609: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42610: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42612: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42617: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42618: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42619: SIZE (§2.3 below 17px): font-size:10px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42621: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42622: SIZE (§2.3 below 17px): font-size:15px
+---
+> FAIL personal-frame-fix6-20261119/maker/FILE:30988: SIZE (§2.3 below 17px): font-size:12.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:30991: SIZE (§2.3 below 17px): font-size:11.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:30997: SIZE (§2.3 below 17px): font-size:10px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31002: SIZE (§2.3 below 17px): font-size:12.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31018: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31020: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31021: SIZE (§2.3 below 17px): font-size:13.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31024: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31027: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31030: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31033: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31046: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31048: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31154: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31399: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31414: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31433: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31434: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31436: SIZE (§2.3 below 17px): font-size:12.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31897: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:31999: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:32805: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:32864: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:34180: SIZE (§2.3 below 17px): font-size:8px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35333: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35346: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35379: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35600: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35602: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35619: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35622: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35623: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35624: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35625: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35626: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35627: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35628: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35636: SIZE (§2.3 below 17px): font-size:10px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35639: SIZE (§2.3 below 17px): font-size:10px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35699: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35701: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35718: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35721: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:35730: SIZE (§2.3 below 17px): font-size:10px
+> FAIL personal-frame-fix6-20261119/maker/FILE:36581: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:36605: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:36606: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:36609: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:36619: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:36661: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:36662: SIZE (§2.3 below 17px): font-size:12.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:36670: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:36678: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:36681: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42578: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42580: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42586: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42613: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42620: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42621: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42622: SIZE (§2.3 below 17px): font-size:12px
+689,695c683,693
+< FAIL personal-frame-fix6-20261119/maker/FILE:42626: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42975: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42978: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42981: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42984: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42989: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:42999: SIZE (§2.3 below 17px): font-size:13px
+---
+> FAIL personal-frame-fix6-20261119/maker/FILE:42629: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42630: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42631: SIZE (§2.3 below 17px): font-size:10px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42633: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42634: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42636: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42638: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42987: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42990: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42993: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:42996: SIZE (§2.3 below 17px): font-size:15px
+697,715c695,711
+< FAIL personal-frame-fix6-20261119/maker/FILE:43020: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43166: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43169: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43171: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43173: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43174: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43176: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43178: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43180: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43181: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43183: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43184: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43185: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43186: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43187: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43314: SIZE (§2.3 below 17px): font-size:10.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43316: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43319: SIZE (§2.3 below 17px): font-size:10px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43320: SIZE (§2.3 below 17px): font-size:10px
+---
+> FAIL personal-frame-fix6-20261119/maker/FILE:43011: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43013: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43032: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43178: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43181: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43183: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43185: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43186: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43188: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43190: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43192: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43193: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43195: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43196: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43197: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43198: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43199: SIZE (§2.3 below 17px): font-size:13px
+717,754c713,749
+< FAIL personal-frame-fix6-20261119/maker/FILE:43717: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43723: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43747: SIZE (§2.3 below 17px): font-size: 16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43762: SIZE (§2.3 below 17px): font-size: 13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43767: SIZE (§2.3 below 17px): font-size: 15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43769: SIZE (§2.3 below 17px): font-size: 12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43772: SIZE (§2.3 below 17px): font-size: 13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43778: SIZE (§2.3 below 17px): font-size: 13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43787: SIZE (§2.3 below 17px): font-size: 13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43797: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43803: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:43814: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44404: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44405: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44429: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44433: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44434: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44441: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44454: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44661: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44681: SIZE (§2.3 below 17px): font-size:12.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44698: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:44705: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45052: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45122: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45454: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45455: SIZE (§2.3 below 17px): font-size:11.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45481: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45487: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45488: SIZE (§2.3 below 17px): font-size:11.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45490: SIZE (§2.3 below 17px): font-size:9px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45496: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45498: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45506: SIZE (§2.3 below 17px): font-size:13.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45508: SIZE (§2.3 below 17px): font-size:10px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45509: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45512: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45513: SIZE (§2.3 below 17px): font-size:11px
+---
+> FAIL personal-frame-fix6-20261119/maker/FILE:43328: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43331: SIZE (§2.3 below 17px): font-size:10px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43332: SIZE (§2.3 below 17px): font-size:10px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43338: SIZE (§2.3 below 17px): font-size:10.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43729: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43735: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43759: SIZE (§2.3 below 17px): font-size: 16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43774: SIZE (§2.3 below 17px): font-size: 13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43779: SIZE (§2.3 below 17px): font-size: 15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43781: SIZE (§2.3 below 17px): font-size: 12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43784: SIZE (§2.3 below 17px): font-size: 13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43790: SIZE (§2.3 below 17px): font-size: 13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43799: SIZE (§2.3 below 17px): font-size: 13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43809: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43815: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:43826: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44416: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44417: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44441: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44445: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44446: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44453: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44466: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44673: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44693: SIZE (§2.3 below 17px): font-size:12.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44710: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:44717: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45064: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45134: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45466: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45467: SIZE (§2.3 below 17px): font-size:11.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45493: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45499: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45500: SIZE (§2.3 below 17px): font-size:11.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45502: SIZE (§2.3 below 17px): font-size:9px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45508: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45510: SIZE (§2.3 below 17px): font-size:15px
+756,757c751,753
+< FAIL personal-frame-fix6-20261119/maker/FILE:45522: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45524: SIZE (§2.3 below 17px): font-size:14px
+---
+> FAIL personal-frame-fix6-20261119/maker/FILE:45520: SIZE (§2.3 below 17px): font-size:10px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45521: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45524: SIZE (§2.3 below 17px): font-size:15px
+759,795c755,795
+< FAIL personal-frame-fix6-20261119/maker/FILE:45767: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45792: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45794: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45812: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:45813: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:46102: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:46915: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:46918: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:46984: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47085: SIZE (§2.3 below 17px): font-size:10px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47134: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47136: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47140: SIZE (§2.3 below 17px): font-size:12px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47584: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47585: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47590: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47591: SIZE (§2.3 below 17px): font-size:13.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47628: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47732: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47742: SIZE (§2.3 below 17px): font-size:12.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47751: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47752: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47777: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47780: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47782: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47783: SIZE (§2.3 below 17px): font-size:13.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47788: SIZE (§2.3 below 17px): font-size:13px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47809: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:47811: SIZE (§2.3 below 17px): font-size:13.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:48396: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:51183: SIZE (§2.3 below 17px): font-size:15px
+< FAIL personal-frame-fix6-20261119/maker/FILE:51185: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:51188: SIZE (§2.3 below 17px): font-size:16px
+< FAIL personal-frame-fix6-20261119/maker/FILE:51190: SIZE (§2.3 below 17px): font-size:13.5px
+< FAIL personal-frame-fix6-20261119/maker/FILE:51197: SIZE (§2.3 below 17px): font-size:11px
+< FAIL personal-frame-fix6-20261119/maker/FILE:51203: SIZE (§2.3 below 17px): font-size:14px
+< FAIL personal-frame-fix6-20261119/maker/FILE:51212: SIZE (§2.3 below 17px): font-size:16px
+---
+> FAIL personal-frame-fix6-20261119/maker/FILE:45530: SIZE (§2.3 below 17px): font-size:13.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45534: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45536: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45537: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45779: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45804: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45806: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45824: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:45825: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:46114: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:46927: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:46930: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:46996: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47097: SIZE (§2.3 below 17px): font-size:10px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47146: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47148: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47152: SIZE (§2.3 below 17px): font-size:12px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47596: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47597: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47602: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47603: SIZE (§2.3 below 17px): font-size:13.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47640: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47744: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47754: SIZE (§2.3 below 17px): font-size:12.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47763: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47764: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47789: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47792: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47794: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47795: SIZE (§2.3 below 17px): font-size:13.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47800: SIZE (§2.3 below 17px): font-size:13px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47821: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:47823: SIZE (§2.3 below 17px): font-size:13.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:48408: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:51195: SIZE (§2.3 below 17px): font-size:15px
+> FAIL personal-frame-fix6-20261119/maker/FILE:51197: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:51200: SIZE (§2.3 below 17px): font-size:16px
+> FAIL personal-frame-fix6-20261119/maker/FILE:51202: SIZE (§2.3 below 17px): font-size:13.5px
+> FAIL personal-frame-fix6-20261119/maker/FILE:51209: SIZE (§2.3 below 17px): font-size:11px
+> FAIL personal-frame-fix6-20261119/maker/FILE:51215: SIZE (§2.3 below 17px): font-size:14px
+> FAIL personal-frame-fix6-20261119/maker/FILE:51224: SIZE (§2.3 below 17px): font-size:16px
+809,810c809,810
+< FAIL personal-frame-fix6-20261119/maker/FILE:32998: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+< FAIL personal-frame-fix6-20261119/maker/FILE:40584: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+---
+> FAIL personal-frame-fix6-20261119/maker/FILE:33010: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+> FAIL personal-frame-fix6-20261119/maker/FILE:40596: TEXT-COLOR (§2.2 red/orange/magenta as text): color:#c62828
+894,909c894,909
+< WARN personal-frame-fix6-20261119/maker/FILE:24263: TEXT-COLOR? (§2.2 check by eye): color:baSpec['General'],privacy:'public',memberIds:[],custom:true,created:Date.now(),pinnedNote:
+< WARN personal-frame-fix6-20261119/maker/FILE:25990: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', glyph:'✎', name:p.j.a||'Guest', html:'<h3>Feed post by '+esc(p.j.a||'Guest')+'</h3><p>'+esc(p.j.b||'')+
+< WARN personal-frame-fix6-20261119/maker/FILE:25991: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', glyph:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="ro
+< WARN personal-frame-fix6-20261119/maker/FILE:25992: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', glyph:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="ro
+< WARN personal-frame-fix6-20261119/maker/FILE:25999: TEXT-COLOR? (§2.2 check by eye): color:'+i.color+'
+< WARN personal-frame-fix6-20261119/maker/FILE:26193: TEXT-COLOR? (§2.2 check by eye): color:'+c+'
+< WARN personal-frame-fix6-20261119/maker/FILE:27294: TEXT-COLOR? (§2.2 check by eye): color:'+c+'
+< WARN personal-frame-fix6-20261119/maker/FILE:27634: TEXT-COLOR? (§2.2 check by eye): color:null, quiet:'The next post, note, message or invite lights the first bar.'
+< WARN personal-frame-fix6-20261119/maker/FILE:27635: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', quiet:'The next feed post lights the first bar.'
+< WARN personal-frame-fix6-20261119/maker/FILE:27636: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c', quiet:'The first Smart Note lights the first bar.'
+< WARN personal-frame-fix6-20261119/maker/FILE:27637: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', quiet:'The next message lights the first bar.'
+< WARN personal-frame-fix6-20261119/maker/FILE:27638: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', quiet:'The next invite lights the first bar.'
+< WARN personal-frame-fix6-20261119/maker/FILE:28014: TEXT-COLOR? (§2.2 check by eye): color:'+c+'
+< WARN personal-frame-fix6-20261119/maker/FILE:29572: TEXT-COLOR? (§2.2 check by eye): color: s.color || SPECTRUM[i % SPECTRUM.length]
+< WARN personal-frame-fix6-20261119/maker/FILE:29690: TEXT-COLOR? (§2.2 check by eye): color:n.color||SPECTRUM[i%SPECTRUM.length]
+< WARN personal-frame-fix6-20261119/maker/FILE:32113: TEXT-COLOR? (§2.2 check by eye): color: TOPIC_SPECTRUM[spTopic] || '#a21caf',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:24275: TEXT-COLOR? (§2.2 check by eye): color:baSpec['General'],privacy:'public',memberIds:[],custom:true,created:Date.now(),pinnedNote:
+> WARN personal-frame-fix6-20261119/maker/FILE:26002: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', glyph:'✎', name:p.j.a||'Guest', html:'<h3>Feed post by '+esc(p.j.a||'Guest')+'</h3><p>'+esc(p.j.b||'')+
+> WARN personal-frame-fix6-20261119/maker/FILE:26003: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', glyph:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="ro
+> WARN personal-frame-fix6-20261119/maker/FILE:26004: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', glyph:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="ro
+> WARN personal-frame-fix6-20261119/maker/FILE:26011: TEXT-COLOR? (§2.2 check by eye): color:'+i.color+'
+> WARN personal-frame-fix6-20261119/maker/FILE:26205: TEXT-COLOR? (§2.2 check by eye): color:'+c+'
+> WARN personal-frame-fix6-20261119/maker/FILE:27306: TEXT-COLOR? (§2.2 check by eye): color:'+c+'
+> WARN personal-frame-fix6-20261119/maker/FILE:27646: TEXT-COLOR? (§2.2 check by eye): color:null, quiet:'The next post, note, message or invite lights the first bar.'
+> WARN personal-frame-fix6-20261119/maker/FILE:27647: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', quiet:'The next feed post lights the first bar.'
+> WARN personal-frame-fix6-20261119/maker/FILE:27648: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c', quiet:'The first Smart Note lights the first bar.'
+> WARN personal-frame-fix6-20261119/maker/FILE:27649: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', quiet:'The next message lights the first bar.'
+> WARN personal-frame-fix6-20261119/maker/FILE:27650: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', quiet:'The next invite lights the first bar.'
+> WARN personal-frame-fix6-20261119/maker/FILE:28026: TEXT-COLOR? (§2.2 check by eye): color:'+c+'
+> WARN personal-frame-fix6-20261119/maker/FILE:29584: TEXT-COLOR? (§2.2 check by eye): color: s.color || SPECTRUM[i % SPECTRUM.length]
+> WARN personal-frame-fix6-20261119/maker/FILE:29702: TEXT-COLOR? (§2.2 check by eye): color:n.color||SPECTRUM[i%SPECTRUM.length]
+> WARN personal-frame-fix6-20261119/maker/FILE:32125: TEXT-COLOR? (§2.2 check by eye): color: TOPIC_SPECTRUM[spTopic] || '#a21caf',
+913c913
+< WARN personal-frame-fix6-20261119/maker/FILE:32236: TEXT-COLOR? (§2.2 check by eye): color: isLove ? '#c62828' : '#0f52ba',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:32248: TEXT-COLOR? (§2.2 check by eye): color: isLove ? '#c62828' : '#0f52ba',
+915,922c915,922
+< WARN personal-frame-fix6-20261119/maker/FILE:32428: TEXT-COLOR? (§2.2 check by eye): color:'white', tier:'primary', body: j.b || ''
+< WARN personal-frame-fix6-20261119/maker/FILE:32429: TEXT-COLOR? (§2.2 check by eye): color:'magenta', tier:'primary', body: j.raw
+< WARN personal-frame-fix6-20261119/maker/FILE:32431: TEXT-COLOR? (§2.2 check by eye): color:'sapphire', tier:'primary', body: angles[0].b || angles[0]
+< WARN personal-frame-fix6-20261119/maker/FILE:32432: TEXT-COLOR? (§2.2 check by eye): color:'emerald', tier:'primary', body: angles[1].b || angles[1]
+< WARN personal-frame-fix6-20261119/maker/FILE:32434: TEXT-COLOR? (§2.2 check by eye): color:'purple', tier:'primary', body:'When this comes up: remember ' + themes.slice(0,2).join(' and ') + '.'
+< WARN personal-frame-fix6-20261119/maker/FILE:32435: TEXT-COLOR? (§2.2 check by eye): color:'forest', tier:'deeper', body:'THEMES: ' + themes.join(', ').toUpperCase()
+< WARN personal-frame-fix6-20261119/maker/FILE:32437: TEXT-COLOR? (§2.2 check by eye): color:'white', tier:'primary', body: j.b || ''
+< WARN personal-frame-fix6-20261119/maker/FILE:32635: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:32440: TEXT-COLOR? (§2.2 check by eye): color:'white', tier:'primary', body: j.b || ''
+> WARN personal-frame-fix6-20261119/maker/FILE:32441: TEXT-COLOR? (§2.2 check by eye): color:'magenta', tier:'primary', body: j.raw
+> WARN personal-frame-fix6-20261119/maker/FILE:32443: TEXT-COLOR? (§2.2 check by eye): color:'sapphire', tier:'primary', body: angles[0].b || angles[0]
+> WARN personal-frame-fix6-20261119/maker/FILE:32444: TEXT-COLOR? (§2.2 check by eye): color:'emerald', tier:'primary', body: angles[1].b || angles[1]
+> WARN personal-frame-fix6-20261119/maker/FILE:32446: TEXT-COLOR? (§2.2 check by eye): color:'purple', tier:'primary', body:'When this comes up: remember ' + themes.slice(0,2).join(' and ') + '.'
+> WARN personal-frame-fix6-20261119/maker/FILE:32447: TEXT-COLOR? (§2.2 check by eye): color:'forest', tier:'deeper', body:'THEMES: ' + themes.join(', ').toUpperCase()
+> WARN personal-frame-fix6-20261119/maker/FILE:32449: TEXT-COLOR? (§2.2 check by eye): color:'white', tier:'primary', body: j.b || ''
+> WARN personal-frame-fix6-20261119/maker/FILE:32647: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa',
+925c925
+< WARN personal-frame-fix6-20261119/maker/FILE:32638: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', hot: true,
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:32650: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017', hot: true,
+927c927
+< WARN personal-frame-fix6-20261119/maker/FILE:32641: TEXT-COLOR? (§2.2 check by eye): color: '#a21caf',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:32653: TEXT-COLOR? (§2.2 check by eye): color: '#a21caf',
+930,943c930,943
+< WARN personal-frame-fix6-20261119/maker/FILE:34511: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', lang:'constellation', jewel:'\u2605', value:100
+< WARN personal-frame-fix6-20261119/maker/FILE:34512: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', lang:'bloom',         map:'j',           jewel:'\u25CB', value:50
+< WARN personal-frame-fix6-20261119/maker/FILE:34513: TEXT-COLOR? (§2.2 check by eye): color:'#3f51b5', lang:'constellation', tkey:'noteTimes', jewel:'\u2726', value:35
+< WARN personal-frame-fix6-20261119/maker/FILE:34514: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', lang:'joinpulse',     tkey:'invTimes',  jewel:'\u25B2', value:25
+< WARN personal-frame-fix6-20261119/maker/FILE:34515: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', lang:'daybars',       tkey:'postTimes', jewel:'\u25C6', value:25
+< WARN personal-frame-fix6-20261119/maker/FILE:34516: TEXT-COLOR? (§2.2 check by eye): color:'#d4a017', lang:'funnel',        jewel:'\u21C4', value:15
+< WARN personal-frame-fix6-20261119/maker/FILE:34517: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c', lang:'wave',          jewel:'\u270E', value:5
+< WARN personal-frame-fix6-20261119/maker/FILE:34518: TEXT-COLOR? (§2.2 check by eye): color:'#c62828', lang:'pulsebars',     jewel:'\u2665', value:1
+< WARN personal-frame-fix6-20261119/maker/FILE:34519: TEXT-COLOR? (§2.2 check by eye): color:'#6d28d9', lang:'constellation', tkey:'saveTimes', jewel:'\u2606', value:5
+< WARN personal-frame-fix6-20261119/maker/FILE:35269: TEXT-COLOR? (§2.2 check by eye): color: nd.color
+< WARN personal-frame-fix6-20261119/maker/FILE:35623: TEXT-COLOR? (§2.2 check by eye): color:' + color + '
+< WARN personal-frame-fix6-20261119/maker/FILE:35717: TEXT-COLOR? (§2.2 check by eye): color:' + c + '
+< WARN personal-frame-fix6-20261119/maker/FILE:35781: TEXT-COLOR? (§2.2 check by eye): color:'+dcol+'">'+arrow+' '+Math.abs(delta)+(window.mwTr?window.mwTr('% vs last'):'% vs last')+'</span></div></span></di
+< WARN personal-frame-fix6-20261119/maker/FILE:35867: TEXT-COLOR? (§2.2 check by eye): color:'+trendColor+'">'+trendText+'</span></div>'+
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:34523: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', lang:'constellation', jewel:'\u2605', value:100
+> WARN personal-frame-fix6-20261119/maker/FILE:34524: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', lang:'bloom',         map:'j',           jewel:'\u25CB', value:50
+> WARN personal-frame-fix6-20261119/maker/FILE:34525: TEXT-COLOR? (§2.2 check by eye): color:'#3f51b5', lang:'constellation', tkey:'noteTimes', jewel:'\u2726', value:35
+> WARN personal-frame-fix6-20261119/maker/FILE:34526: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', lang:'joinpulse',     tkey:'invTimes',  jewel:'\u25B2', value:25
+> WARN personal-frame-fix6-20261119/maker/FILE:34527: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', lang:'daybars',       tkey:'postTimes', jewel:'\u25C6', value:25
+> WARN personal-frame-fix6-20261119/maker/FILE:34528: TEXT-COLOR? (§2.2 check by eye): color:'#d4a017', lang:'funnel',        jewel:'\u21C4', value:15
+> WARN personal-frame-fix6-20261119/maker/FILE:34529: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c', lang:'wave',          jewel:'\u270E', value:5
+> WARN personal-frame-fix6-20261119/maker/FILE:34530: TEXT-COLOR? (§2.2 check by eye): color:'#c62828', lang:'pulsebars',     jewel:'\u2665', value:1
+> WARN personal-frame-fix6-20261119/maker/FILE:34531: TEXT-COLOR? (§2.2 check by eye): color:'#6d28d9', lang:'constellation', tkey:'saveTimes', jewel:'\u2606', value:5
+> WARN personal-frame-fix6-20261119/maker/FILE:35281: TEXT-COLOR? (§2.2 check by eye): color: nd.color
+> WARN personal-frame-fix6-20261119/maker/FILE:35635: TEXT-COLOR? (§2.2 check by eye): color:' + color + '
+> WARN personal-frame-fix6-20261119/maker/FILE:35729: TEXT-COLOR? (§2.2 check by eye): color:' + c + '
+> WARN personal-frame-fix6-20261119/maker/FILE:35793: TEXT-COLOR? (§2.2 check by eye): color:'+dcol+'">'+arrow+' '+Math.abs(delta)+(window.mwTr?window.mwTr('% vs last'):'% vs last')+'</span></div></span></di
+> WARN personal-frame-fix6-20261119/maker/FILE:35879: TEXT-COLOR? (§2.2 check by eye): color:'+trendColor+'">'+trendText+'</span></div>'+
+945,968c945,968
+< WARN personal-frame-fix6-20261119/maker/FILE:35889: TEXT-COLOR? (§2.2 check by eye): color:'+bc+'">'+pct+'%</span></div>'
+< WARN personal-frame-fix6-20261119/maker/FILE:36348: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', icon:'⌂', href:'https://nayanet.app/personal', what:'Your home page — who you are, what you stand for, 
+< WARN personal-frame-fix6-20261119/maker/FILE:36349: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', icon:'▤', href:'https://nayanet.app/business', what:'Your business page — what you offer, your products
+< WARN personal-frame-fix6-20261119/maker/FILE:36350: TEXT-COLOR? (§2.2 check by eye): color:'#d4a017', icon:'△', href:'https://nayanet.app/space', what:'Your gathering place — the room your people meet in.'
+< WARN personal-frame-fix6-20261119/maker/FILE:36351: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', icon:'♡', href:null, what:'Your private community — members, content, and connection.'
+< WARN personal-frame-fix6-20261119/maker/FILE:36719: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa',go:'dashboard',stat:'gauge',main:true,what:'Your world, live \u2014 your numbers, your score, your gauge
+< WARN personal-frame-fix6-20261119/maker/FILE:36720: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c',go:'today',stat:'notes',what:'The latest real activity in this app \u2014 newest first, live.'
+< WARN personal-frame-fix6-20261119/maker/FILE:36721: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba',go:'home',stat:'posts',what:'Your home page \u2014 who you are, what you stand for, your links.'
+< WARN personal-frame-fix6-20261119/maker/FILE:36722: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c',go:'https://nayanet.app/business',stat:'invites',what:'Your business page \u2014 what you offer, your pr
+< WARN personal-frame-fix6-20261119/maker/FILE:36723: TEXT-COLOR? (§2.2 check by eye): color:'#07925f',go:'people',stat:'people',what:'Every face is real: they posted, messaged, or were invited here.'
+< WARN personal-frame-fix6-20261119/maker/FILE:36724: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf',go:'about',stat:'notes',what:'Your story \u2014 motto, story, what you do, goals, purpose.'
+< WARN personal-frame-fix6-20261119/maker/FILE:37105: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', url:'https://nayanet.groovepages.com/academy', desc:'Naya Academy — learn NayaNET, step by step, in you
+< WARN personal-frame-fix6-20261119/maker/FILE:37106: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', url:'https://aimasterclass.help/', desc:'The AI Masterclass — how to work with AI at full power, the Na
+< WARN personal-frame-fix6-20261119/maker/FILE:37107: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', url:'#memberships', desc:'Fast Action Club (AI Naya Mastery) — the Fast Action Success Plan with NayaNE
+< WARN personal-frame-fix6-20261119/maker/FILE:40748: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+< WARN personal-frame-fix6-20261119/maker/FILE:40749: TEXT-COLOR? (§2.2 check by eye): color:'#6d28d9', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+< WARN personal-frame-fix6-20261119/maker/FILE:40750: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+< WARN personal-frame-fix6-20261119/maker/FILE:40751: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+< WARN personal-frame-fix6-20261119/maker/FILE:40752: TEXT-COLOR? (§2.2 check by eye): color:'#ffffff', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+< WARN personal-frame-fix6-20261119/maker/FILE:40753: TEXT-COLOR? (§2.2 check by eye): color:'#3f51b5', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+< WARN personal-frame-fix6-20261119/maker/FILE:40754: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+< WARN personal-frame-fix6-20261119/maker/FILE:40755: TEXT-COLOR? (§2.2 check by eye): color:'#c62828', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+< WARN personal-frame-fix6-20261119/maker/FILE:40756: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+< WARN personal-frame-fix6-20261119/maker/FILE:41213: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', url:'https://nayanet.groovepages.com/academy',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:35901: TEXT-COLOR? (§2.2 check by eye): color:'+bc+'">'+pct+'%</span></div>'
+> WARN personal-frame-fix6-20261119/maker/FILE:36360: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', icon:'⌂', href:'https://nayanet.app/personal', what:'Your home page — who you are, what you stand for, 
+> WARN personal-frame-fix6-20261119/maker/FILE:36361: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', icon:'▤', href:'https://nayanet.app/business', what:'Your business page — what you offer, your products
+> WARN personal-frame-fix6-20261119/maker/FILE:36362: TEXT-COLOR? (§2.2 check by eye): color:'#d4a017', icon:'△', href:'https://nayanet.app/space', what:'Your gathering place — the room your people meet in.'
+> WARN personal-frame-fix6-20261119/maker/FILE:36363: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', icon:'♡', href:null, what:'Your private community — members, content, and connection.'
+> WARN personal-frame-fix6-20261119/maker/FILE:36731: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa',go:'dashboard',stat:'gauge',main:true,what:'Your world, live \u2014 your numbers, your score, your gauge
+> WARN personal-frame-fix6-20261119/maker/FILE:36732: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c',go:'today',stat:'notes',what:'The latest real activity in this app \u2014 newest first, live.'
+> WARN personal-frame-fix6-20261119/maker/FILE:36733: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba',go:'home',stat:'posts',what:'Your home page \u2014 who you are, what you stand for, your links.'
+> WARN personal-frame-fix6-20261119/maker/FILE:36734: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c',go:'https://nayanet.app/business',stat:'invites',what:'Your business page \u2014 what you offer, your pr
+> WARN personal-frame-fix6-20261119/maker/FILE:36735: TEXT-COLOR? (§2.2 check by eye): color:'#07925f',go:'people',stat:'people',what:'Every face is real: they posted, messaged, or were invited here.'
+> WARN personal-frame-fix6-20261119/maker/FILE:36736: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf',go:'about',stat:'notes',what:'Your story \u2014 motto, story, what you do, goals, purpose.'
+> WARN personal-frame-fix6-20261119/maker/FILE:37117: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', url:'https://nayanet.groovepages.com/academy', desc:'Naya Academy — learn NayaNET, step by step, in you
+> WARN personal-frame-fix6-20261119/maker/FILE:37118: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', url:'https://aimasterclass.help/', desc:'The AI Masterclass — how to work with AI at full power, the Na
+> WARN personal-frame-fix6-20261119/maker/FILE:37119: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', url:'#memberships', desc:'Fast Action Club (AI Naya Mastery) — the Fast Action Success Plan with NayaNE
+> WARN personal-frame-fix6-20261119/maker/FILE:40760: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+> WARN personal-frame-fix6-20261119/maker/FILE:40761: TEXT-COLOR? (§2.2 check by eye): color:'#6d28d9', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+> WARN personal-frame-fix6-20261119/maker/FILE:40762: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+> WARN personal-frame-fix6-20261119/maker/FILE:40763: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+> WARN personal-frame-fix6-20261119/maker/FILE:40764: TEXT-COLOR? (§2.2 check by eye): color:'#ffffff', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+> WARN personal-frame-fix6-20261119/maker/FILE:40765: TEXT-COLOR? (§2.2 check by eye): color:'#3f51b5', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+> WARN personal-frame-fix6-20261119/maker/FILE:40766: TEXT-COLOR? (§2.2 check by eye): color:'#c2410c', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+> WARN personal-frame-fix6-20261119/maker/FILE:40767: TEXT-COLOR? (§2.2 check by eye): color:'#c62828', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+> WARN personal-frame-fix6-20261119/maker/FILE:40768: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ffffff" stroke-width="1.8" st
+> WARN personal-frame-fix6-20261119/maker/FILE:41225: TEXT-COLOR? (§2.2 check by eye): color:'#8e24aa', url:'https://nayanet.groovepages.com/academy',
+970,971c970,971
+< WARN personal-frame-fix6-20261119/maker/FILE:41216: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', url:'https://aimasterclass.help/', /* WHOLE-PAGE 2026-11-17 item 10 — members: the "Step in" gate, like
+< WARN personal-frame-fix6-20261119/maker/FILE:41219: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', url:'#memberships',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:41228: TEXT-COLOR? (§2.2 check by eye): color:'#0f52ba', url:'https://aimasterclass.help/', /* WHOLE-PAGE 2026-11-17 item 10 — members: the "Step in" gate, like
+> WARN personal-frame-fix6-20261119/maker/FILE:41231: TEXT-COLOR? (§2.2 check by eye): color:'#07925f', url:'#memberships',
+973,976c973,976
+< WARN personal-frame-fix6-20261119/maker/FILE:41610: TEXT-COLOR? (§2.2 check by eye): color:'+saCur.color+'
+< WARN personal-frame-fix6-20261119/maker/FILE:41654: TEXT-COLOR? (§2.2 check by eye): color:'+saCur.color+'
+< WARN personal-frame-fix6-20261119/maker/FILE:41673: TEXT-COLOR? (§2.2 check by eye): color:'+saCur.color+'
+< WARN personal-frame-fix6-20261119/maker/FILE:42351: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', privacy:'public',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:41622: TEXT-COLOR? (§2.2 check by eye): color:'+saCur.color+'
+> WARN personal-frame-fix6-20261119/maker/FILE:41666: TEXT-COLOR? (§2.2 check by eye): color:'+saCur.color+'
+> WARN personal-frame-fix6-20261119/maker/FILE:41685: TEXT-COLOR? (§2.2 check by eye): color:'+saCur.color+'
+> WARN personal-frame-fix6-20261119/maker/FILE:42363: TEXT-COLOR? (§2.2 check by eye): color:'#a21caf', privacy:'public',
+978,981c978,981
+< WARN personal-frame-fix6-20261119/maker/FILE:44030: TEXT-COLOR? (§2.2 check by eye): color: '#6675ff' /* GEMATRIA 2026-11-18: S=6 indigo */, heart: false, star: false
+< WARN personal-frame-fix6-20261119/maker/FILE:44031: TEXT-COLOR? (§2.2 check by eye): color: '#ff5e6c' /* GEMATRIA 2026-11-18: N=1 red */, heart: false, star: false
+< WARN personal-frame-fix6-20261119/maker/FILE:44032: TEXT-COLOR? (§2.2 check by eye): color: '#ffbf3d' /* GEMATRIA 2026-11-18: P=3 gold */, heart: false, star: false
+< WARN personal-frame-fix6-20261119/maker/FILE:44035: TEXT-COLOR? (§2.2 check by eye): color: '#ff5e6c', /* GEMATRIA 2026-11-18: A=1 red */
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:44042: TEXT-COLOR? (§2.2 check by eye): color: '#6675ff' /* GEMATRIA 2026-11-18: S=6 indigo */, heart: false, star: false
+> WARN personal-frame-fix6-20261119/maker/FILE:44043: TEXT-COLOR? (§2.2 check by eye): color: '#ff5e6c' /* GEMATRIA 2026-11-18: N=1 red */, heart: false, star: false
+> WARN personal-frame-fix6-20261119/maker/FILE:44044: TEXT-COLOR? (§2.2 check by eye): color: '#ffbf3d' /* GEMATRIA 2026-11-18: P=3 gold */, heart: false, star: false
+> WARN personal-frame-fix6-20261119/maker/FILE:44047: TEXT-COLOR? (§2.2 check by eye): color: '#ff5e6c', /* GEMATRIA 2026-11-18: A=1 red */
+983,987c983,987
+< WARN personal-frame-fix6-20261119/maker/FILE:44500: TEXT-COLOR? (§2.2 check by eye): color:color-mix(in srgb, var(--nc) 72%, #ffffff)
+< WARN personal-frame-fix6-20261119/maker/FILE:45631: TEXT-COLOR? (§2.2 check by eye): color:m?m[1].trim():'#07925f'
+< WARN personal-frame-fix6-20261119/maker/FILE:47432: TEXT-COLOR? (§2.2 check by eye): color:'+TYPE_COLORS[tp]+'">'+esc(TYPE_NAMES[tp])+'</span>'+esc(noteTitle(p))+'</li>'
+< WARN personal-frame-fix6-20261119/maker/FILE:48655: TEXT-COLOR? (§2.2 check by eye): color:color, tier:tier, body:body
+< WARN personal-frame-fix6-20261119/maker/FILE:49006: TEXT-COLOR? (§2.2 check by eye): color: TOPIC_SPECTRUM[spTopic] || '#a21caf',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:44512: TEXT-COLOR? (§2.2 check by eye): color:color-mix(in srgb, var(--nc) 72%, #ffffff)
+> WARN personal-frame-fix6-20261119/maker/FILE:45643: TEXT-COLOR? (§2.2 check by eye): color:m?m[1].trim():'#07925f'
+> WARN personal-frame-fix6-20261119/maker/FILE:47444: TEXT-COLOR? (§2.2 check by eye): color:'+TYPE_COLORS[tp]+'">'+esc(TYPE_NAMES[tp])+'</span>'+esc(noteTitle(p))+'</li>'
+> WARN personal-frame-fix6-20261119/maker/FILE:48667: TEXT-COLOR? (§2.2 check by eye): color:color, tier:tier, body:body
+> WARN personal-frame-fix6-20261119/maker/FILE:49018: TEXT-COLOR? (§2.2 check by eye): color: TOPIC_SPECTRUM[spTopic] || '#a21caf',
+991c991
+< WARN personal-frame-fix6-20261119/maker/FILE:49210: TEXT-COLOR? (§2.2 check by eye): color: kind === 'like' ? '#c62828' : '#8e24aa',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:49222: TEXT-COLOR? (§2.2 check by eye): color: kind === 'like' ? '#c62828' : '#8e24aa',
+993,994c993,994
+< WARN personal-frame-fix6-20261119/maker/FILE:50005: TEXT-COLOR? (§2.2 check by eye): color: 'white', tier: 'primary', body: nutshell
+< WARN personal-frame-fix6-20261119/maker/FILE:50262: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa', priority: 'high',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50017: TEXT-COLOR? (§2.2 check by eye): color: 'white', tier: 'primary', body: nutshell
+> WARN personal-frame-fix6-20261119/maker/FILE:50274: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa', priority: 'high',
+996c996
+< WARN personal-frame-fix6-20261119/maker/FILE:50266: TEXT-COLOR? (§2.2 check by eye): color: '#3f51b5',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50278: TEXT-COLOR? (§2.2 check by eye): color: '#3f51b5',
+998c998
+< WARN personal-frame-fix6-20261119/maker/FILE:50270: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50282: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+1000c1000
+< WARN personal-frame-fix6-20261119/maker/FILE:50274: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50286: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+1002c1002
+< WARN personal-frame-fix6-20261119/maker/FILE:50278: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50290: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+1004c1004
+< WARN personal-frame-fix6-20261119/maker/FILE:50282: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50294: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+1006c1006
+< WARN personal-frame-fix6-20261119/maker/FILE:50286: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50298: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c',
+1008c1008
+< WARN personal-frame-fix6-20261119/maker/FILE:50290: TEXT-COLOR? (§2.2 check by eye): color: '#c62828', priority: 'high',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50302: TEXT-COLOR? (§2.2 check by eye): color: '#c62828', priority: 'high',
+1010c1010
+< WARN personal-frame-fix6-20261119/maker/FILE:50294: TEXT-COLOR? (§2.2 check by eye): color: '#a21caf',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50306: TEXT-COLOR? (§2.2 check by eye): color: '#a21caf',
+1012c1012
+< WARN personal-frame-fix6-20261119/maker/FILE:50299: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa', priority: 'high',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50311: TEXT-COLOR? (§2.2 check by eye): color: '#8e24aa', priority: 'high',
+1014c1014
+< WARN personal-frame-fix6-20261119/maker/FILE:50303: TEXT-COLOR? (§2.2 check by eye): color: '#3f51b5',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50315: TEXT-COLOR? (§2.2 check by eye): color: '#3f51b5',
+1016c1016
+< WARN personal-frame-fix6-20261119/maker/FILE:50307: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50319: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+1018c1018
+< WARN personal-frame-fix6-20261119/maker/FILE:50311: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50323: TEXT-COLOR? (§2.2 check by eye): color: '#07925f',
+1020c1020
+< WARN personal-frame-fix6-20261119/maker/FILE:50315: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50327: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+1022c1022
+< WARN personal-frame-fix6-20261119/maker/FILE:50319: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50331: TEXT-COLOR? (§2.2 check by eye): color: '#d4a017',
+1024c1024
+< WARN personal-frame-fix6-20261119/maker/FILE:50323: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c', priority: 'high',
+---
+> WARN personal-frame-fix6-20261119/maker/FILE:50335: TEXT-COLOR? (§2.2 check by eye): color: '#c2410c', priority: 'high',

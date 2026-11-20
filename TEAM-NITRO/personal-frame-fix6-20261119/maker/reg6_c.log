@@ -1,0 +1,10 @@
+[#home/composer] open=True hidden=None expect=True PASS mode~✕ | ✦ Naya note | ✎ | Make a post | ✎ | Naya note | ✦ | Smart note |  | Naya not
+[#home/post] open=True hidden=None expect=True PASS mode~✕ | ✎ Make a post | ✎ | Make a post | ✎ | Naya note | ✦ | Smart note |  | Make a
+[#home/naya] open=True hidden=None expect=True PASS mode~✕ | ✦ Naya note | ✎ | Make a post | ✎ | Naya note | ✦ | Smart note |  | Naya not
+[#home/smart] open=True hidden=None expect=True PASS mode~✕ | ✦ Smart note | ✎ | Make a post | ✎ | Naya note | ✦ | Smart note |  | Smart n
+[#home] open=False hidden= expect=False PASS mode~
+[#about] open=False hidden= expect=False PASS mode~
+academy pill count: 1
+academy pill box: {'x': 1714.7166748046875, 'y': 56, 'width': 189.2833251953125, 'height': 56}
+ACADEMY POPUP URL: https://nayanet.groovepages.com/academy
+main page still staged: True

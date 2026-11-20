@@ -1,0 +1,30 @@
+modal dismissed: True
+hash at start: //naya-proof-host.nayapower.workers.dev/ | hash: (skip)
+ask button count: 1
+ask box: {'x': 332, 'y': 742.2999877929688, 'width': 184, 'height': 48}
+@2s url tail=96572d8b1963352f0744c32439&owner=flagship-personal#/hub/feed room=0
+@5s url tail=96572d8b1963352f0744c32439&owner=flagship-personal#/hub/feed room=0
+@10s url tail=96572d8b1963352f0744c32439&owner=flagship-personal#/hub/feed room=0
+---- PLOG ----
+58255 WRAPPED NayaRouter
+58647 RENDER() hash=#/hub
+58750 RENDERED hash=#/hub room=0 title=Shawn's Personal feed — NayaNET
+59761 HASHCHANGE -> 
+74369 NAVIGATE(/hub/ask) from hash=
+74375 NAVIGATE(/hub/feed) from hash=#/hub/ask
+74387 HASHCHANGE -> #/hub/feed
+74574 HASHCHANGE -> #/hub/feed
+after 2nd click url tail: 96572d8b1963352f0744c32439&owner=flagship-personal#/hub/feed room: 0
+---- PLOG2 ----
+58255 WRAPPED NayaRouter
+58647 RENDER() hash=#/hub
+58750 RENDERED hash=#/hub room=0 title=Shawn's Personal feed — NayaNET
+59761 HASHCHANGE -> 
+74369 NAVIGATE(/hub/ask) from hash=
+74375 NAVIGATE(/hub/feed) from hash=#/hub/ask
+74387 HASHCHANGE -> #/hub/feed
+74574 HASHCHANGE -> #/hub/feed
+87942 NAVIGATE(/hub/ask) from hash=#/hub/feed
+87944 NAVIGATE(/hub/feed) from hash=#/hub/ask
+87953 HASHCHANGE -> #/hub/feed
+88078 HASHCHANGE -> #/hub/feed

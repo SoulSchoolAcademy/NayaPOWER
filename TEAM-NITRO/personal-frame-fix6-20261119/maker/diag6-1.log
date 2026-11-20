@@ -1,0 +1,174 @@
+===== askBtn lines 12230-12280 =====
+12230:     }
+12231:   });
+12232:   /* Default (item 8): sidebars VISIBLE on load at desktop (1440+) â they are
+12233:      the navigation, not a hidden drawer. Below desktop they start hidden and
+12234:      open from the menu control above. A saved '1' still hides the left rail
+12235:      everywhere; a saved '0' still shows it everywhere. */
+12236:   try {
+12237:     const pref = localStorage.getItem('naya.rail-collapsed');
+12238:     if (pref === '1') shell.classList.add('rail-collapsed');
+12239:     else if (pref !== '0' && window.innerWidth < 1440) shell.classList.add('rail-collapsed');
+12240:   } catch(e) {
+12241:     if (window.innerWidth < 1440) shell.classList.add('rail-collapsed');
+12242:   }
+12243:   syncMenuBtn(); /* AMENDMENT #3: the label is true on load â 'Hide sidebar' at desktop where the rail stands open; the closed label names the two choices (HUB FEED 2026-11-17 22:25Z) */
+12244:   const title = el('div', 'top-title', '<b>INTELLIGENT HUB</b>');
+12245:   /* Ask Naya in the LEFT corner, Life with Naya in the RIGHT corner â
+12246:      rebuilt to the Â§1 language: obsidian inside, double-layered, glossy,
+12247:      pearl PURPLE under Ask Naya, pearl green under Life with Naya, white
+12248:      icons inside, matched sizes, alive at rest, bright on hover. */
+12249:   const askBtn = el('button', 'hub-obsidian-btn', '<span class="hb-ico">' + Icons.icon('mic') + '</span>Ask Naya');
+12250:   askBtn.setAttribute('type', 'button');
+12251:   askBtn.setAttribute('aria-label', 'Ask Naya');
+12252:   askBtn.setAttribute('title', 'Ask Naya â ask her anything');
+12253:   askBtn.style.setProperty('--glow', '#8e24aa'); /* 23:18Z: Ask = purple, Life = green */
+12254:   askBtn.addEventListener('click', () => { if (window.NayaRouter) window.NayaRouter.navigate('/hub/ask'); else location.hash = '#/hub/ask'; });
+12255:   const lwnBtn = el('button', 'hub-obsidian-btn', '<span class="hb-ico">' + Icons.icon('heart') + '</span>Life with Naya');
+12256:   lwnBtn.setAttribute('type', 'button');
+12257:   lwnBtn.setAttribute('aria-label', 'Watch the Life with Naya presentation');
+12258:   lwnBtn.setAttribute('title', 'Life with Naya â the full presentation');
+12259:   lwnBtn.style.setProperty('--glow', '#07925f');
+12260:   lwnBtn.addEventListener('click', () => { location.href = 'https://lifewithnaya.nayapower.workers.dev/'; });
+12261:   // The marketing "ecosystem destinations" menu is gone â this is the logged-in
+12262:   // app, not the marketing site.
+12263:   top.append(askBtn, title);
+12264:   /* HUB FEED FIX2 2026-11-18 (D5): ONE menu control, far-right. The second
+12265:      hamburger (railBtn, EYE-NOTES Â§3.1) is REMOVED â two identical three-line
+12266:      controls in one top bar is a duplicate. The right rail still opens from
+12267:      the bottom-bar ECOSYSTEM tile, so no reopen path is lost. */
+12268: 
+12269:   /* HUB ICONS FIX 2026-11-16 (item 6): the top-right + is gone â the right
+12270:      corner belongs to Life with Naya now. The right sidebar opens from
+12271:      the top-bar menu control (item 8 fix) and the bottom-bar ECOSYSTEM
+12272:      tile. Powercasts stays. */
+12273:   const ecoWrap = el('div', '');
+12274:   ecoWrap.style.cssText = 'position:relative;display:flex;';
+12275:   const pcBtn = el('a', 'powercast-topbtn', '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg> Powercasts'); /* D1: white headphone glyph, no dim emoji */
+12276:   pcBtn.setAttribute('href', 'https://powercasts.nayapower.workers.dev/');
+12277:   pcBtn.setAttribute('aria-label', 'Open NayaNET Powercast');
+12278:   pcBtn.setAttribute('title', 'NayaNET Powercast â learn all about Naya Power');
+12279:   ecoWrap.append(pcBtn);
+12280:   top.append(ecoWrap, lwnBtn, menuBtn); /* HUB FEED 2026-11-17 22:25Z (item 8) + FIX2 2026-11-18 (D5): the menu control sits at the RIGHT end of the top bar now â not on the left â and it is the ONLY menu control. */
+===== router fallback region lines 17380-17500 =====
+17380:       note.textContent='Quiet here â honestly. There is nothing to show in this scope yet. This room will fill with real intelligence when there is something true to show â it never invents data to fill the silence.';
+17381:       box.appendChild(note);
+17382:     }
+17383:     health.body.appendChild(box);
+17384:   })();
+17385:   wrap.appendChild(health);
+17386: 
+17387:   /* Â§14 â About this Hub. Unchanged, demoted to last. */
+17388:   const about=Board({accent:ACC,icon:'core',title:'About this Hub',sub:'What you are looking at',lift:false});
+17389:   about.body.innerHTML='<p style="color:var(--ink-dim);font-size:17px;line-height:1.65;max-width:680px">The Intelligent Hub is the visual projection of your intelligence â what Naya retains, connects, and can prove, presented for a human. It shows; it doesn\u2019t store the canonical record and it never takes consequential action on its own.</p>';
+17390:   wrap.appendChild(about);
+17391: 
+17392:   /* Footer line, moved from the removed Board 1: true of the whole page. */
+17393:   const foot=document.createElement('p');
+17394:   foot.style.cssText='color:var(--muted);font-size:17px;line-height:1.6;margin-top:18px;max-width:680px';
+17395:   foot.textContent='These preferences live on this device. Anything that affects shared or governed intelligence will always ask first â and say exactly what it will do.';
+17396:   wrap.appendChild(foot);
+17397: 
+17398:   return wrap;
+17399: }
+17400: window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
+17401: 
+17402: </script>
+17403: <script>/* js/app.js @ baf1221d9 â REBUILT 2026-10-02 */
+17404: /* APP â boot. Entry lives OUTSIDE the Hub (Sovereign Entrance â Identity);
+17405:    the Hub always boots straight into #/hub. Legacy welcome/identity hashes
+17406:    redirect into the Hub. The four rich rooms are standalone pages. */
+17407: 
+17408: (function () {
+17409:   const R = window.NayaRuntime;
+17410:   const Router = window.NayaRouter;
+17411: 
+17412:   // Phase 1 (2026-10-19): today/reports/ledger/connect render internal rooms.
+17413:   // lists renders its internal room since 2026-10-20 (the save -> Smart Lists loop).
+17414:   /* Shawn's latest room designs (2026-10-20) live at /rooms/<id> â sidebar taps
+17415:      navigate there; each room page carries its own â Hub pill to return. */
+17416:   const EXTERNAL_ROOMS = {
+17417:     today: '/rooms/today', reports: '/rooms/reports', library: '/rooms/library',
+17418:     ledger: '/rooms/ledger', connections: '/rooms/connections',
+17419:     mail: '/rooms/mail', spaces: '/rooms/spaces',
+17420:     growth: '/rooms/growth',
+17421:     factory: '/smartfactory',
+17422:   };
+17423:   function goExternal(room) {
+17424:     location.href = EXTERNAL_ROOMS[room] + location.search;
+17425:   }
+17426: 
+17427:   // Legacy internal entry routes are neutralized â everything lands in the Hub.
+17428:   Router.on('welcome', () => { location.hash = '#/hub'; return document.createElement('div'); });
+17429:   Router.on('identity', () => { location.hash = '#/hub'; return document.createElement('div'); });
+17430:   Router.on('hub', () => window.HubView({ room: 'feed' }));
+17431:   Router.on('hub/:room', params => {
+17432:     if (EXTERNAL_ROOMS[params.room]) { goExternal(params.room); return document.createElement('div'); }
+17433:     return window.HubView(params);
+17434:   });
+17435:   // A Smart Note opens INSIDE the Hub: the Hub shell stays, the note renders
+17436:   // alone in the outlet (HubView noteView). The '*' fallback below is untouched â
+17437:   // genuinely unknown routes still land on the feed.
+17438:   Router.on('smart-notes/:slug', params => window.HubView({ room: 'feed', note: params.slug }));
+17439:   /* FRAME-FIX4 2026-11-19 (F4): '*' must not hijack Personal-view hashes. A Personal view ('#people', '#home', '#about', ...) is not a Hub route, so the old fallback rewrote it to '#/hub' on any re-render (boot arrival, or a synthetic hashchange). Personal views keep their hash; 'home'/empty re-render the feed, which is this outlet's content. */
+17440:   Router.on('*', () => { var _h=(location.hash||'').replace(/^#\/?/,'').split('?')[0].split('/')[0]; var _pv=['home','about','people','message','inbox','growth','lists','reports','settings','skills','scheduler','memberships','notes','dashboard','today','story','myworld']; if (!_h || _pv.indexOf(_h)>=0) { if (_h==='' || _h==='home') return window.HubView({ room: 'feed' }); return document.createElement('div'); } location.hash = '#/hub'; return document.createElement('div'); });
+17441: 
+17442:   // The Hub IS the app. No hash â straight to the feed â UNLESS the shell
+17443:   // was served at a clean note URL (/smart-notes/<slug>, /notes/<slug>,
+17444:   // /note/<slug>, /note?n=<slug>): the worker serves the Hub shell there, so
+17445:   // carry the slug into the hash and open the note INSIDE the Hub.
+17446:   var notePath = location.pathname.match(/^\/(?:smart-notes|notes|note)\/([^/]+)\/?$/);
+17447:   var noteQuery = null;
+17448:   if (!notePath && (location.pathname === '/smart-notes' || location.pathname === '/note')) {
+17449:     try { noteQuery = new URLSearchParams(location.search).get('n'); } catch (e) {}
+17450:   }
+17451:   var noteSlug = notePath ? decodeURIComponent(notePath[1]) : noteQuery;
+17452:   var defaultedHash = !location.hash;
+17453:   /* Deep-link fallback (2026-11-11): the entrance gate stores a
+17454:      validated deep link in sessionStorage when a visitor arrives on
+17455:      a Smart Note link and the Welcome walk drops the hash. If this
+17456:      boot has no hash and no clean note slug, honor the stored route
+17457:      once, then clear it so it never hijacks a later visit. */
+17458:   var pendingRoute = null;
+17459:   try { pendingRoute = sessionStorage.getItem('nayanet_pending_route'); } catch (e) {}
+17460:   if (pendingRoute && !/^#\/(smart-notes|notes|note)\/[A-Za-z0-9][A-Za-z0-9\-_]*$/.test(pendingRoute) && !/^#\/hub(\/.*)?$/.test(pendingRoute)) pendingRoute = null;
+17461:   if (defaultedHash && !noteSlug && pendingRoute) { location.hash = pendingRoute; }
+17462:   if (pendingRoute) { try { sessionStorage.removeItem('nayanet_pending_route'); } catch (e) {} }
+17463:   if (!location.hash) { location.hash = '#/hub'; }
+17464:   if (defaultedHash && noteSlug) { location.hash = '#/smart-notes/' + noteSlug; }
+17465: 
+17466:   /* Identity handoff, hoisted to boot (2026-11-17, session hoist Half A).
+17467:      The handoff used to live only in mainShow() (feed hero), so it never
+17468:      ran on any other route, and it read only ?name= while the live gate
+17469:      submits ?userName=. It now runs here, on EVERY route, before
+17470:      Router.render(). Name present (?name= or ?userName=, + ?alias= as
+17471:      before): persist it on this device and set the returning cookie, then
+17472:      scrub only the identity params out of the query (other params such as
+17473:      ?cluster= / ?installation_id= / ?n= are kept, and the hash is kept).
+17474:      No name in the query: re-set the cookie when a name is already stored.
+17475:      First-time visitors (no stored name, no query) are unchanged: no write,
+17476:      no cookie. The name stays on the citizen's own device; nothing is sent
+17477:      anywhere. The mainShow() copy below is harmonized with this scrub (identity params only, Sweep #3 OWN-9). */
+17478:   (function identityHandoffAtBoot() {
+17479:     try {
+17480:       var qp = new URLSearchParams(location.search);
+17481:       var qn = (qp.get('name') || qp.get('userName') || '').trim();
+17482:       var qa = (qp.get('alias') || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+17483:       if (qa) { try { localStorage.setItem('nayanet_smart_alias', qa); } catch (e) {} }
+17484:       if (qn) {
+17485:         try { localStorage.setItem('nayanet_smart_name', qn); } catch (e) {}
+17486:         try { document.cookie = 'nayanet_returning=1; path=/; max-age=31536000; SameSite=Lax'; } catch (e) {}
+17487:       } else {
+17488:         var stored = '';
+17489:         try { stored = (localStorage.getItem('nayanet_smart_name') || '').trim(); } catch (e) {}
+17490:         if (stored || qa) { try { document.cookie = 'nayanet_returning=1; path=/; max-age=31536000; SameSite=Lax'; } catch (e) {} }
+17491:       }
+17492:       if (qn || qa) {
+17493:         try {
+17494:           qp.delete('name'); qp.delete('userName'); qp.delete('alias');
+17495:           var rest = qp.toString();
+17496:           history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash);
+17497:         } catch (e) {}
+17498:       }
+17499:     } catch (e) { /* identity unavailable â first-time visitors and fallbacks unchanged */ }
+17500:   })();

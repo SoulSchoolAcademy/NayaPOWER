@@ -1,0 +1,8 @@
+modal dismissed: True
+ask button count: 1
+ask box: {'x': 332, 'y': 742.2999877929688, 'width': 184, 'height': 48}
+@2s hash=/hub/ask room=1 title=Ask Naya — NayaNET
+@5s hash=/hub/ask room=1 title=Ask Naya — NayaNET
+@10s hash=/hub/ask room=1 title=Ask Naya — NayaNET
+tapped bottom-bar PERSONAL
+after PERSONAL hash=/hub/ask room=1

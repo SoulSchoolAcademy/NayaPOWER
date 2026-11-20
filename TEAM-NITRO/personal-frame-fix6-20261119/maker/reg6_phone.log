@@ -1,0 +1,22 @@
+modal dismissed: True
+[390-FRESH] controls=741 markers={'quote': True, 'empty-state': True, 'profile-name': True}
+hub askBtn count (390): 1
+ask box (390): {'x': 30, 'y': 869.2999877929688, 'width': 108.75, 'height': 46}
+@ask+2s hash=https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix6-20261119&cb=8fbec9580c078b97d0881f7aa20d8c92ce41d9d6&owner=flagship-personal room=0 title=Shawn's Personal feed — NayaNET
+@ask+5s hash=https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix6-20261119&cb=8fbec9580c078b97d0881f7aa20d8c92ce41d9d6&owner=flagship-personal room=0 title=Shawn's Personal feed — NayaNET
+@ask+10s hash=https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix6-20261119&cb=8fbec9580c078b97d0881f7aa20d8c92ce41d9d6&owner=flagship-personal room=0 title=Shawn's Personal feed — NayaNET
+PERSONAL matches (390): 2
+  tab [0] box={'x': 51.79999923706055, 'y': 92.5, 'width': 94.06666946411133, 'height': 24}
+tapped PERSONAL tab [0] (390)
+after PERSONAL (390): room=0 hash=/hub/feed
+'Go to the Hub' count: 0
+did not land on live hub; url= https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&re
+modal dismissed after back: True
+[390-AFTER-BACK] controls=770 markers={'quote': True, 'empty-state': True, 'profile-name': True}
+[390-AFTER-BACK-15s] controls=770 markers={'quote': True, 'empty-state': True, 'profile-name': True}
+SUMMARY phone-back fresh=741 after-back=770 after-15s=770
+academy pill count (390): 1
+academy pill box (390): {'x': 198.71665954589844, 'y': 56, 'width': 181.28334045410156, 'height': 52}
+ACADEMY POPUP URL (390): https://nayanet.groovepages.com/academy
+main page still staged: True
+[390 #home/composer] open=True

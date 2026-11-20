@@ -1,0 +1,24 @@
+{
+  "baseLines": 51863,
+  "outLines": 51875,
+  "baseSize": 10453371,
+  "outSize": 10454283,
+  "delta": 912,
+  "outSha256": "3dabcd80ade63f664fb2daabef3a2b2c34f1360fb0f31177739e1d7280c66522",
+  "outGitBlobSha1": "8fbec9580c078b97d0881f7aa20d8c92ce41d9d6"
+}
+{"commonPrefixLines":23592,"commonSuffixLines":28271,"baseChangedLines":0,"outChangedLines":12}
+--- base changed region ---
+--- fixed changed region ---
+23593:     /* FRAME-FIX6 2026-11-19 (F6): a Hub-room hash is NOT a Personal-view popstate.
+23594:        Firefox fires popstate when location.hash is assigned, so the Hub-bar
+23595:        Ask Naya button's navigate('/hub/ask') used to land here, showView('home')
+23596:        ran, and its fix-4 F3 yield forced the room straight back to '/hub/feed'
+23597:        (proven by live stack trace + popstate log, fix-6 repro6b/6c — the
+23598:        Router '*' fallback at 17440 never runs for hub routes: hub/:room
+23599:        matches first, so it was not the eater). Hub/note hashes belong to the
+23600:        Router's hashchange render — leave them alone. Personal views (and an
+23601:        empty hash) still route here, so Back to a Personal view still yields
+23602:        an open room through showView('home'). */
+23603:     var _h=(location.hash||'').replace(/^#\/?/,'').split('?')[0].split('/')[0];
+23604:     if (_h==='hub' || _h==='smart-notes' || _h==='notes' || _h==='note') return;

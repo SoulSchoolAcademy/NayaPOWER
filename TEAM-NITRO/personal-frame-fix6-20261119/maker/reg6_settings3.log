@@ -1,0 +1,6 @@
+text matches: 2
+  text [0] box={'x': 89.5, 'y': 883.7999877929688, 'width': 146.13333129882812, 'height': 26}
+  text [1] box={'x': 54, 'y': 968.9000244140625, 'width': 188.46665954589844, 'height': 53.70001220703125}
+mouse-clicked text [0] at (163,897)
+clicked: True
+did not land on hub; url= https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&re

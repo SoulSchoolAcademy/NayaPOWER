@@ -1,0 +1,60 @@
+"""Fix-6 staged: open Ask room at 390, scroll to it, screenshot the room itself."""
+from playwright.sync_api import sync_playwright
+
+BASE = ("https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/"
+        "personal-page-complete-20261113/personal-complete.html"
+        "&ref=personal/frame-round-fix6-20261119"
+        "&cb=8fbec9580c078b97d0881f7aa20d8c92ce41d9d6&owner=flagship-personal")
+EYE = "/home/hatch/workspace/team-nitro/personal-frame-fix6-20261119/eye"
+
+def dismiss_modal(page):
+    for _ in range(10):
+        try:
+            if page.locator("#naya-install-overlay.show").count() == 0:
+                return True
+            try:
+                page.get_by_text("Not now", exact=True).click(timeout=10000)
+            except Exception:
+                page.get_by_text("Not now", exact=True).click(timeout=5000, force=True)
+        except Exception:
+            pass
+        page.wait_for_timeout(1000)
+    return page.locator("#naya-install-overlay.show").count() == 0
+
+def main():
+    with sync_playwright() as p:
+        browser = p.firefox.launch(headless=True)
+        ctx = browser.new_context(viewport={"width": 390, "height": 844},
+                                  is_mobile=True, has_touch=True)
+        page = ctx.new_page()
+        page.goto(BASE, wait_until="domcontentloaded", timeout=120000)
+        page.wait_for_timeout(9000)
+        dismiss_modal(page)
+        page.wait_for_timeout(3000)
+        ask = page.locator('.hub-obsidian-btn[aria-label="Ask Naya"]')
+        for step in range(8):
+            bb = ask.first.bounding_box(timeout=3000)
+            if bb and 0 <= bb["y"] <= 800:
+                page.mouse.click(bb["x"] + bb["width"] / 2, bb["y"] + bb["height"] / 2)
+                break
+            page.mouse.move(195, 400)
+            page.mouse.wheel(0, 400)
+            page.wait_for_timeout(1000)
+        page.wait_for_timeout(5000)
+        print(f"room={page.locator('.naya-ask-room').count()} title={page.title()}", flush=True)
+        room = page.locator(".naya-ask-room")
+        try:
+            rb = room.first.bounding_box(timeout=5000)
+            print("room box:", rb, flush=True)
+        except Exception as e:
+            print("room box err:", str(e)[:120], flush=True)
+        page.mouse.move(195, 400)
+        for _ in range(4):
+            page.mouse.wheel(0, 500)
+            page.wait_for_timeout(800)
+        page.screenshot(path=EYE + "/6e5-phone-room-scrolled.png")
+        print("talk visible:", page.get_by_text("TALK TO NAYA", exact=True).count(),
+              "hold visible:", page.get_by_text("HOLD TO TALK", exact=True).count(), flush=True)
+        browser.close()
+
+main()

@@ -1,0 +1,10 @@
+throttled domcontentloaded in 16.4s
+modal dismissed: True
+[THROTTLED-FRESH] controls=770 markers={'quote': True, 'tabs-personal': True, 'empty-state': True, 'ask-naya': True, 'profile-name': True}
+WORLDS box: {'x': 958.5499877929688, 'y': 1165.43994140625, 'width': 80.76666259765625, 'height': 20.4000244140625}
+tapped WORLDS by mouse
+did not land on /space, url= https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&re
+modal dismissed after back: True
+[THROTTLED-AFTER-BACK] controls=770 markers={'quote': True, 'tabs-personal': True, 'empty-state': True, 'ask-naya': True, 'profile-name': True}
+[THROTTLED-AFTER-BACK-15s] controls=770 markers={'quote': True, 'tabs-personal': True, 'empty-state': True, 'ask-naya': True, 'profile-name': True}
+SUMMARY throttled fresh=770 after-back=770 after-15s=770

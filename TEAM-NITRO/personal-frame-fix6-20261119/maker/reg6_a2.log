@@ -1,0 +1,15 @@
+modal dismissed: True
+hub askBtn count: 1
+Ask Naya tap 1: clicking center (424, 766)
+@tap1+5s hash=/hub/ask room=1
+Ask Naya tap 2: clicking center (424, 764)
+@tap2+5s hash=/hub/ask room=1
+tapped PERSONAL tab [0]
+after PERSONAL: room=0 hash=/hub/feed
+connections first box: Connections profile button (first): clicking center (1080, 705)
+after Connections hash: people
+after scroll + 15s hash: people
+settingsbtn count: 1
+Settings gear #settingsbtn: clicking center (1700, -776)
+after gear hash: people
+tab6 count: 0

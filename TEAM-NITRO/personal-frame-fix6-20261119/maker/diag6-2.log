@@ -1,0 +1,61 @@
+NayaRouter occurrences: 48
+10283 NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }         /* FRAME-FIX
+10283 NayaRouter.navigate('/hub/feed'); }         /* FRAME-FIX4 2026-11-19 (F4): same guard as nudgeRoom - see above. */      
+10524 NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }       /* FRAME-FIX4 
+10524 NayaRouter.navigate('/hub/feed'); }       /* FRAME-FIX4 2026-11-19 (F4): only nudge a Hub/note route. A synthetic hashch
+11051 NayaRouter = Router;  </script> <script>  /* âââ Activity Log: GitHub-style timeline of what's happening now ââ
+11977 NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; window.scrollTo(0, 0); }        
+11977 NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; window.scrollTo(0, 0); }           else if (a.id ==
+11978 NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; }           else location.href =
+11978 NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; }           else location.href = a.href;         },
+11984 NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; window.scrollTo(0, 0); return; }
+11984 NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; window.scrollTo(0, 0); return; }       if (a.id ===
+11985 NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; return; }     });     nav.append
+11985 NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; return; }     });     nav.appendChild(link);     /*
+12081 NayaRouter.navigate('/hub/' + r.id);     });     nav.appendChild(b);   });   /* HUB FIX 2026-11-16: the Install app side
+12121 NayaRouter && window.NayaRouter.current && window.NayaRouter.current()) || null; } catch (e) {}         key = room ? ('r
+12121 NayaRouter.current && window.NayaRouter.current()) || null; } catch (e) {}         key = room ? ('room:' + (room.id || r
+12121 NayaRouter.current()) || null; } catch (e) {}         key = room ? ('room:' + (room.id || room)) : 'room:feed';       } 
+12254 NayaRouter) window.NayaRouter.navigate('/hub/ask'); else location.hash = '#/hub/ask'; });   const lwnBtn = el('button', 
+12254 NayaRouter.navigate('/hub/ask'); else location.hash = '#/hub/ask'; });   const lwnBtn = el('button', 'hub-obsidian-btn',
+12435 NayaRouter.render(); };      function openTabMenu(t, anchor) {       tabMenuTab = t;       tabMenu.innerHTML = '';      
+12735 NayaRouter) window.NayaRouter.navigate('/hub/feed-activity'); else location.hash = '#/hub/feed-activity'; }       else i
+12735 NayaRouter.navigate('/hub/feed-activity'); else location.hash = '#/hub/feed-activity'; }       else if (k === 'spaces') 
+14239 NayaRouter.navigate(path), 150);         } else {           window.NayaRouter.navigate(path);         }       });       
+14241 NayaRouter.navigate(path);         }       });       lens.appendChild(b);     });     wrap.appendChild(lens);     /* EYE
+15331 NayaRouter.navigate('/hub/' + rm.id));     wrap.append(jewelBox,       el('strong', '', 'This room stumbled'),       el(
+15841 NayaRouter)window.NayaRouter.navigate('/hub/feed');else location.hash='#/hub/feed';       setTimeout(()=>{         const
+15841 NayaRouter.navigate('/hub/feed');else location.hash='#/hub/feed';       setTimeout(()=>{         const card=document.que
+15947 NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash='#/hub/feed';       setTimeout(()=>{         con
+15947 NayaRouter.navigate('/hub/feed'); else location.hash='#/hub/feed';       setTimeout(()=>{         const card=document.qu
+16312 NayaRouter) window.NayaRouter.render();             });             card.appendChild(rm);             card.addEventListe
+16312 NayaRouter.render();             });             card.appendChild(rm);             card.addEventListener('click', () => 
+16316 NayaRouter) window.NayaRouter.navigate('/hub/feed');               else location.hash = '#/hub/feed';               setT
+16316 NayaRouter.navigate('/hub/feed');               else location.hash = '#/hub/feed';               setTimeout(() => {     
+16645 NayaRouter.navigate('/hub/feed');     setTimeout(function () { window.NayaRouter.navigate('/hub/connect'); }, 80);   }  
+16646 NayaRouter.navigate('/hub/connect'); }, 80);   }    // STEP 1 Â· Install it as an app (purple â the front door, first)
+17410 NayaRouter;    // Phase 1 (2026-10-19): today/reports/ledger/connect render internal rooms.   // lists renders its inter
+23579 NayaRouter && window.NayaRouter.parse) { var _segs=window.NayaRouter.parse(); var _roomOpen=(_segs[0]==='hub' && _segs[1
+23579 NayaRouter.parse) { var _segs=window.NayaRouter.parse(); var _roomOpen=(_segs[0]==='hub' && _segs[1] && _segs[1]!=='feed
+23579 NayaRouter.parse(); var _roomOpen=(_segs[0]==='hub' && _segs[1] && _segs[1]!=='feed') || !!document.querySelector('.naya
+23579 NayaRouter.navigate('/hub/feed'); _roomYield=true; } } }catch(e){}     if (!skipPush && !_roomYield){ try { history.push
+48637 NayaRouter: Personal has none. Lens clicks re-mount this feed with the new stream    (collective / personal / activity) 
+48639 NayaRouter){ window.NayaRouter={ navigate:function(path){ var s = path.indexOf('feed-personal')>=0?'personal':(path.inde
+48639 NayaRouter={ navigate:function(path){ var s = path.indexOf('feed-personal')>=0?'personal':(path.indexOf('feed-activity')
+49486 NayaRouter.render(); };      function openTabMenu(t, anchor) {       tabMenuTab = t;       tabMenu.innerHTML = '';      
+49955 NayaRouter.navigate(path), 150);         } else {           window.NayaRouter.navigate(path);         }       });       
+49957 NayaRouter.navigate(path);         }       });       lens.appendChild(b);     });     wrap.appendChild(lens);     /* EYE
+50923 NayaRouter.navigate('/hub/feed');     setTimeout(function () { window.NayaRouter.navigate('/hub/connect'); }, 80);   }  
+50924 NayaRouter.navigate('/hub/connect'); }, 80);   }  function stopTimer(){ if(timer){ clearInterval(timer); timer = 0; } } 
+--- Router.on lines ---
+17428: Router.on('welcome', () => { location.hash = '#/hub'; return document.createElement('div'); });
+17429: Router.on('identity', () => { location.hash = '#/hub'; return document.createElement('div'); });
+17430: Router.on('hub', () => window.HubView({ room: 'feed' }));
+17431: Router.on('hub/:room', params => {
+17438: Router.on('smart-notes/:slug', params => window.HubView({ room: 'feed', note: params.slug }));
+17440: Router.on('*', () => { var _h=(location.hash||'').replace(/^#\/?/,'').split('?')[0].split('/')[0]; var _pv=['home','about','people','message','inbox','growth','lists','reports','settings','skills','scheduler','membership
+--- navigate defs ---
+11005: function navigate(path) {
+22887: function navigate(t){
+48639: if(!window.NayaRouter){ window.NayaRouter={ navigate:function(path){ var s = path.indexOf('feed-personal')>=0?'personal':(path.indexOf('feed-activity')>=0?'activity':'collective'); if(window.NayaHubFeed) window.NayaHubFe
+counts: hub/ask 5 hub/:room 8 Router.on('*' 1

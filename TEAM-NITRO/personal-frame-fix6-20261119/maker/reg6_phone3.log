@@ -1,0 +1,17 @@
+fresh 390: {'controls': 739, 'quote': True, 'name': True, 'empty': True}
+tapped Ask Naya 390 at step 1
+room open: 1 hash=/hub/ask
+PERSONAL matches: 1
+  yield step 0 tab [0] box=None
+  yield step 1 tab [0] box=None
+  yield step 2 tab [0] box=None
+  yield step 3 tab [0] box=None
+  yield step 4 tab [0] box=None
+  yield step 5 tab [0] box=None
+  yield step 6 tab [0] box=None
+  yield step 7 tab [0] box=None
+  yield step 8 tab [0] box=None
+  yield step 9 tab [0] box=None
+  yield step 10 tab [0] box=None
+  yield step 11 tab [0] box=None
+after PERSONAL (390): room=1 hash=/hub/ask
