@@ -4,7 +4,7 @@
 
 **NN-20261120-small-arrows-above-the-fold · Naya Note · 2026-11-20 ~16:29 MST**
 
-*Paired Smart Note: SN-pending — Small Arrows Above the Fold (takes the next free number at filing)*
+*Paired Smart Note: SN-4352 — Small Arrows Above the Fold*
 
 **Category:** Design — the Hub's own buttons, small arrow-only controls just above the fold
 
