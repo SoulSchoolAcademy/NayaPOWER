@@ -69860,6 +69860,38 @@
         "Efficiency",
         "Service"
       ]
+    },
+    {
+      "smart_note_id": "SN-4104",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4104-the-torch-not-the-burden",
+      "slug": "the-torch-not-the-burden",
+      "title": "The Torch, Not the Burden",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4104/IB-SMART-NOTE-20261120-sn4104-the-torch-not-the-burden.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4104/IB-SMART-NOTE-20261120-sn4104-the-torch-not-the-burden.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4104/IB-SMART-NOTE-20261120-sn4104-the-torch-not-the-burden.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4104-the-torch-not-the-burden.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:20:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "e294cd5f248532feda358fb39c30117628964fead8168eff8104438561c01bb0",
+      "content_hash": "eb6d27b2d0679ec2d42d3ae0b8666e96be05f21370df4ab8b6a32ce978bd1947",
+      "one_line": "Pass the torch, not the burden.",
+      "topics": [
+        "Teamwork",
+        "Mechanic",
+        "Handoff",
+        "Collective"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69870,5 +69902,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "25a788e497fd4a4764fc099d389b39461cc745c34104546acc2c1765578d0459"
+  "corpus_manifest_hash": "767291720b38e4eedef1318d1fe0403c79b0e78156d0856818169e430d896a56"
 }
