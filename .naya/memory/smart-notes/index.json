@@ -69444,6 +69444,38 @@
         "Trust",
         "NayaNET"
       ]
+    },
+    {
+      "smart_note_id": "SN-4031",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4031-your-whole-world-one-system",
+      "slug": "your-whole-world-one-system",
+      "title": "Your Whole World, One System",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4031/IB-SMART-NOTE-20261120-sn4031-your-whole-world-one-system.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4031/IB-SMART-NOTE-20261120-sn4031-your-whole-world-one-system.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4031/IB-SMART-NOTE-20261120-sn4031-your-whole-world-one-system.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4031-your-whole-world-one-system.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:05:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "cc3e8c65e643e92c1d0fcc649dd395480c6b1019ad0529032db03ae02bc6424e",
+      "content_hash": "87f7b571193f499e19854fb1290f426f97f6886a260f8a4f8ada1fb82c709912",
+      "one_line": "Your whole world. One system.",
+      "topics": [
+        "NayaNET",
+        "Citizen",
+        "One System",
+        "World"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69454,5 +69486,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "52a05e5995e1d61e956ccb3b673297e34577efbbc8728b5d78de1fffff43f340"
+  "corpus_manifest_hash": "57c49eff76f386af3a4aa761c0db235a096cdb1a19acb71a1ab7112cc961dbbd"
 }
