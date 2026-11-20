@@ -4,7 +4,7 @@
 
 **NN-20261120-the-ultimate-story · Naya Note · 2026-11-20 ~10:16–10:22 MST (17:16–17:22Z)**
 
-*Paired Smart Note: SN-pending — The Ultimate Story — Ten Boards, Approved in Order*
+*Paired Smart Note: SN-4278 — The Ultimate Story — Ten Boards, Approved in Order*
 
 **Category:** Decisions — the distilled agreement, its visuals, and the story order he approved
 
