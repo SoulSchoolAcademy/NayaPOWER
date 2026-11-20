@@ -70084,6 +70084,166 @@
         "Wisdom",
         "Declaration"
       ]
+    },
+    {
+      "smart_note_id": "SN-3960",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3960-the-frame-comes-to-you",
+      "title": "The Frame Comes to You",
+      "content_hash": "b995b7700c1abae66dad11b82d302290b810b7a6c8b940649957fdf4964d8430",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-3960/IB-SMART-NOTE-20261119-sn3960-the-frame-comes-to-you.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "f8f2866ce032e7c05915e1d629d85ecacec713b5b3eb13306fe2774eab2291a3"
+    },
+    {
+      "smart_note_id": "SN-3961",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3961-a-fix-proven-at-rest-is-not-proven-in-motion",
+      "title": "SN-3961 — A Fix Proven at Rest Is Not Proven in Motion",
+      "content_hash": "40ed44829433d27b6a12c85ab2cc0f114131a2e133ec1f5a489822c245a639ea",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-3961/IB-SMART-NOTE-20261119-sn3961-a-fix-proven-at-rest-is-not-proven-in-motion.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "e387694dffe80e362e437bbca6efe7a1d0df6da6fecb396fa9eb9ab9a28ec7fa"
+    },
+    {
+      "smart_note_id": "SN-3962",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3962-a-thin-margin-is-not-headroom",
+      "title": "SN-3962 — A Thin Margin Is Not Headroom",
+      "content_hash": "967ce110410e90c8c9f7e324f93cc816b14ceaaff43dc49dbbccd6a68d8cb2ca",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-3962/IB-SMART-NOTE-20261119-sn3962-a-thin-margin-is-not-headroom.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "67f1ec0f5f93874b2cd4e5ce09b6d5bc398269b783e0def21462ecba3e9cf6e4"
+    },
+    {
+      "smart_note_id": "SN-3963",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3963-measure-the-whole-chrome-not-the-container",
+      "title": "SN-3963 — Measure the Whole Chrome, Not the Container",
+      "content_hash": "dbc73e5f3f4a3c731d7198ca1179c1cb9dee1cd0d708aa4ac501841510bf8fc3",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-3963/IB-SMART-NOTE-20261119-sn3963-measure-the-whole-chrome-not-the-container.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "6458751134f9184e29708328e4c46abc86698794fbc022655d3fa4b514e58f91"
+    },
+    {
+      "smart_note_id": "SN-3964",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3964-the-board-is-innocent-the-fetch-is-guilty",
+      "title": "SN-3964 — The Board Is Innocent, the Fetch Is Guilty",
+      "content_hash": "6234cdcb7220afe7e1304c8c0c68a345820c5a797f1f371c09877296b7a468a2",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-3964/IB-SMART-NOTE-20261119-sn3964-the-board-is-innocent-the-fetch-is-guilty.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "b3b8c8ebf3f0c8b8016c488ae7ebbbbc985b0f3fa5512967fdbf17331af35a41"
+    },
+    {
+      "smart_note_id": "SN-3965",
+      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3965-daily-intelligence-report-2026-11-19",
+      "title": "Daily Intelligence Report — 2026-11-19",
+      "content_hash": "c745c03336f006e7a1dad4bac546b26038bbaba5630d0aee693a0ef83604e8a8",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/REPORT/SN-3965/IB-SMART-NOTE-20261119-sn3965-daily-intelligence-report-2026-11-19.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "REPORT",
+      "topic": "REPORT",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "892afe3a5a2f954a63b1b360560e1fa57518d3bfbe462cecd56fa8af6c93d9ba"
+    },
+    {
+      "smart_note_id": "SN-4201",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4201-what-is-nayanet-ultimately",
+      "title": "What is NayaNET, ultimately?",
+      "content_hash": "a5db51176124fe72e03b7448fac114ddc43402caf1c9321f3c029b9b3f2bd885",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4201/IB-SMART-NOTE-20261120-sn4201-what-is-nayanet-ultimately.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "f92a0645056bdb61bc1e01019b2f0a696b753d68d537d3972b678d0e49787959"
+    },
+    {
+      "smart_note_id": "SN-4202",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4202-what-is-nayanet-ultimately-naya-note",
+      "title": "What is NayaNET, ultimately?",
+      "content_hash": "e0cb169375880fc4fe082f305ca5451a3f879292f12c5e22aa478970e61587b9",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4202/IB-SMART-NOTE-20261120-sn4202-what-is-nayanet-ultimately-naya-note.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "1ade3ce5be40e73519dba10eb12396eadc7cc194ff1f744213e491b9215687a0"
     }
   ],
   "sequence_policy": {
@@ -70094,5 +70254,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "298aa55b974c5b259341568e4b05a2a46ed4e2ace5dd61c8e1ce5180c877e1ac"
+  "corpus_manifest_hash": "bf6b8c30aa309115eed423210503cf8f05073796fdfd3a1cab0e38e01b311f24"
 }
