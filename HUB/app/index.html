@@ -7491,7 +7491,7 @@ window.NayaNotif = window.NayaNotif || {
      is the one open item. ——— */
   const peopleSec = el('section', 'rail-people');
   peopleSec.setAttribute('aria-label', 'Connect with Like Minds');
-  peopleSec.innerHTML = '<div class="rail-people-head"><b>Connect with Like Minds</b></div><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
+  peopleSec.innerHTML = '<div class="rail-people-head"><b>Connect with Like Minds</b></div><input type="search" id="pcRailSearch" class="pc-rail-search" placeholder="Search people…" aria-label="Search people" autocomplete="off"><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
   /* Feed-following: the people shown are the feed's people. The lens is read
      live from the active tab — the same three-way read the menu control uses
      (Personal / Activity / Collective) — and the section re-renders whenever
@@ -7632,26 +7632,6 @@ function pcCardWithConnect(p, live){
   return base.slice(0, at)+pctHtml+'</div><div class="pc-card-acts">'+btns+'</div>'+base.slice(at+6);
 }
 
- function pcCatOf(p){ var m=String((p&&p.nut)||'').match(/^([A-Z]+) — /); return m?m[1]:null; }
- function pcRenderCatChips(cats, active){
-   var list=document.getElementById('hubPeopleList'); if(!list||!list.parentNode) return;
-   var box=document.getElementById('pcCatChips');
-   if(!box){ box=document.createElement('div'); box.id='pcCatChips'; box.className='pc-cat-chips'; list.parentNode.insertBefore(box, list); }
-   var firstByCat={};
-   (window.PC_RAIL_LIVE||[]).concat(window.PC_RAIL_SEED||[]).forEach(function(p){ var c=pcCatOf(p); if(c && !firstByCat[c]) firstByCat[c]=p.alias; });
-   box.innerHTML='';
-   cats.forEach(function(c){
-     var b=document.createElement('button');
-     b.type='button'; b.className='pc-cat-chip'+(c===active?' active':'');
-     b.textContent=c;
-     var col='#8e24aa';
-     try { if(c!=='All' && typeof pcColorFor==='function' && firstByCat[c]) col=pcColorFor(firstByCat[c]); } catch(e){}
-     b.style.setProperty('--cc', col);
-     b.setAttribute('aria-pressed', c===active?'true':'false');
-     b.addEventListener('click', function(){ window.PC_RAIL_CAT=c; window.pcRenderRailForTab(window.PC_RAIL_TAB||'personal'); });
-     box.appendChild(b);
-   });
- }
 window.pcRenderRailForTab=function(tab){
   var list=document.getElementById('hubPeopleList'); if(!list) return;
   if(typeof pcHideRailPop==='function'){ try{ pcHideRailPop(); }catch(e){} }
@@ -7663,18 +7643,11 @@ window.pcRenderRailForTab=function(tab){
     var has=function(p){ return ((p.alias||'')+' '+((p.nut||''))).toLowerCase().indexOf(q)>=0; };
     live=live.filter(has); standing=standing.filter(has);
   }
-  /* FOLLOW-UP 13 (item 15): contacts auto-categorize like the feed — the category
-     is the lane word the contact already carries before " — " in their nut
-     (LEARN, KNOW, …); a nut with no lane word has no category and shows under
-     All. Chips auto-create from the contacts on screen; click one and the rail
-     shows only that category. */
-  var cat=window.PC_RAIL_CAT||'All';
-  var cats=['All'];
-  live.concat(standing).forEach(function(p){ var c=pcCatOf(p); if(c && cats.indexOf(c)<0) cats.push(c); });
-  if(cats.indexOf(cat)<0){ cat='All'; window.PC_RAIL_CAT='All'; }
-  live=live.filter(function(p){ return cat==='All' || pcCatOf(p)===cat; });
-  standing=standing.filter(function(p){ return cat==='All' || pcCatOf(p)===cat; });
-  pcRenderCatChips(cats, cat);
+  /* FOLLOW-UP 14 (Shawn 19:01 MST): the category chips are gone — search only.
+     The name search above (window.PC_RAIL_Q, alias + nutshell) is the only
+     filter on this rail now. */
+  var _pcSearch=document.getElementById('pcRailSearch');
+  if(_pcSearch && _pcSearch.value!==(window.PC_RAIL_Q||'')) _pcSearch.value=window.PC_RAIL_Q||'';
   var html='';
   if(live.length) html+='<p class="pc-rail-sec">'+pcTr('Live matches')+'</p>'+live.map(function(p){ return pcCardWithConnect(p, true); }).join('');
   if(standing.length) html+=standing.map(function(p){ return pcCardWithConnect(p, false); }).join(''); /* HEADER-V2 2026-11-14: no Standing section header. */
@@ -7712,14 +7685,22 @@ window.pcRenderRail=function(live, standing){
     mo.observe(railBar, {childList:true, subtree:true, attributes:true, attributeFilter:['aria-selected','class']});
   }
 })();
-/* rail search: filters the active tab's people by alias or nutshell. */
-(function(){
-  var inp=document.getElementById('pcRailSearch'); if(!inp) return;
-  inp.addEventListener('input', function(){
-    window.PC_RAIL_Q=inp.value||'';
+/* rail search: filters the active tab's people by alias or nutshell.
+   FOLLOW-UP 14: the old wiring bound directly to #pcRailSearch at build time
+   — but this block runs while HubView is still building (railR not appended,
+   shell not in the document; see ROUND 2d below), so getElementById returned
+   null and the listener never bound — and no field existed at all. The field
+   now lives in the rail shell above; the listener is delegated on the document
+   so it works whenever the field exists and survives every rail rebuild, and
+   it binds once (guarded) no matter how many times HubView rebuilds. */
+if(!window.__pcRailSearchWired){
+  window.__pcRailSearchWired=true;
+  document.addEventListener('input', function(e){
+    var t=e&&e.target; if(!t||t.id!=='pcRailSearch') return;
+    window.PC_RAIL_Q=t.value||'';
     window.pcRenderRailForTab(window.PC_RAIL_TAB||'personal');
   });
-})();
+}
 /* rail close / open: the rail hides for a full-screen feed; a slim People
    button takes its place in the grid and opens it again. The grid wrap
    (#pcFeedWrap) is BUILT BY JAVASCRIPT after this script runs, so the wrap
@@ -14426,17 +14407,16 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide { bottom: 200px; }
    1920 collapsed -> circle right 12px; 1200 drawer-open -> right 304px,
    clear of the people cards; 390 drawer-open -> display none. */
 </style>
-<style id="hub-followup13-20261119">
-/* ——— FOLLOW-UP 13 20261119 — item 15: contacts auto-categorize like the feed.
-   Chips auto-create from the lane word each contact already carries in their
-   nut; click one and the rail shows only that category. Treatment harvested
-   from the Smart Tabs (.smart-tab): obsidian pill, white rim at rest, rim +
-   outside halo in the chip's own colour when active. 17px white text. */
-.pc-cat-chips{display:flex;flex-wrap:wrap;gap:8px;padding:2px 0 12px;}
-.pc-cat-chip{border:1.5px solid rgba(255,255,255,.9);background:#050607;color:#fff;font-size:17px;font-family:inherit;padding:8px 14px;border-radius:999px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.5);}
-.pc-cat-chip:hover{transform:translateY(-1px);}
-.pc-cat-chip:active{transform:scale(.97);}
-.pc-cat-chip.active{border-color:var(--cc,#8e24aa);box-shadow:0 0 16px var(--cc,#8e24aa),0 8px 16px rgba(0,0,0,.5);}
+<style id="hub-followup14-20261119">
+/* ——— FOLLOW-UP 14 20261119 — search only (Shawn 19:01 MST: "All you need is a
+   search"). The 13 contacts category chips are gone; the rail keeps one small
+   search field in the same spot the chips sat. Treatment harvested from the
+   Hub's own chassis search (.searchRow): obsidian gradient, 1.5px rim, 17px
+   white text, white placeholder — rim white here, as briefed; no new colours,
+   no new glow. The field is a pill, like the chips were. */
+.pc-rail-search{display:block;width:100%;box-sizing:border-box;margin:0 0 12px;padding:10px 14px;background:linear-gradient(135deg,#050508,#0a0a10 55%,#050508);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;color:#fff;font-size:17px;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 4px 12px rgba(0,0,0,.5);}
+.pc-rail-search::placeholder{color:#fff;opacity:1;}
+.pc-rail-search:focus{border-color:#fff;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 0 14px rgba(255,255,255,.25),0 4px 12px rgba(0,0,0,.5);}
 </style>
 <style id="hub-fix9-20261119">
 /* ——— FOLLOW-ON ROUND 9 20261119 — items 1-8 ———
