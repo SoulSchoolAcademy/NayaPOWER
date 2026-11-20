@@ -4,7 +4,7 @@
 
 **NN-20261120-the-end-goes-straight-to-the-portal · Naya Note · 2026-11-20 ~13:33–14:05 MST (call 8b19d313)**
 
-*Paired Smart Note: SN-pending — The End Goes Straight to the Portal (takes the next free number at filing)*
+*Paired Smart Note: SN-4314 — The End Goes Straight to the Portal*
 
 **Category:** Design — the agreement presentation, the ending, the portal
 
