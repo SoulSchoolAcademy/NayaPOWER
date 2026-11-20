@@ -69348,6 +69348,38 @@
         "Creation",
         "Value"
       ]
+    },
+    {
+      "smart_note_id": "SN-3958",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn3958-private-by-design",
+      "slug": "private-by-design",
+      "title": "Private by Design",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3958/IB-SMART-NOTE-20261120-sn3958-private-by-design.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3958/IB-SMART-NOTE-20261120-sn3958-private-by-design.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3958/IB-SMART-NOTE-20261120-sn3958-private-by-design.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn3958-private-by-design.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T00:34:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "ccea8125ac6891117cabba1fde77da4a493c2f8e79dc56845047d0365bb3c84e",
+      "content_hash": "094fb1687cfc508c7f4707bf16a187c54db37c2c028c7c69418c047a0f8a6fc4",
+      "one_line": "Private by design. Not by promise.",
+      "topics": [
+        "Naya",
+        "Privacy",
+        "Trust",
+        "Value"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69358,5 +69390,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "861fde83039c1faa04b86f05a228d2702652128175b6d514a43e4492fad5aa96"
+  "corpus_manifest_hash": "120d84f3ee1b2049808cb698625366837ce4a8ed106a6cd1f90f71f46c46360f"
 }
