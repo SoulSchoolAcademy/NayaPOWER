@@ -11271,6 +11271,7 @@ window.BoardActions = (() => {
         }
         const s = read();
         if (kind === 'create-world') {
+  var __r3go = function(__r3name){
           s[key] = true; write(s);
           b.classList.add('on'); b.setAttribute('aria-pressed', 'true');
           /* Create a REAL world (Shawn 2026-10-21; CREATE WORLD ruled
@@ -11281,7 +11282,7 @@ window.BoardActions = (() => {
              joined via 'naya.spaces.mine.v1' — so the world is listed and
              openable in the Spaces room, with this note pinned as its
              first post (the create modal's pin slot, same field). */
-          var spName = (note && note.title) || title || 'Smart World';
+          var spName = (__r3name || (note && note.title) || title || 'Smart World');
           try {
             var TOPIC_SPECTRUM = {
               'Start Here': '#8e24aa', 'Vision': '#0f52ba', 'Learn': '#07925f', 'Create': '#d4a017',
@@ -11326,7 +11327,12 @@ window.BoardActions = (() => {
           }
           toast('WORLD CREATED', '"' + spName + '" is live — open the Spaces room to step inside.', '#8e24aa');
           return;
-        }
+        
+  };
+  if(typeof window.ibGrowDialog === 'function'){ window.ibGrowDialog('space', (note && note.title) || title || 'Smart World', __r3go); }
+  else { __r3go(''); }
+  return;
+}
         const next = !s[key]; s[key] = next; write(s);
         if (typeof ActivityLog !== 'undefined' && next) {
           const actLabel = kind === 'favorite' ? 'Favorited' : 'Saved';
@@ -13900,6 +13906,9 @@ function openMsgPanel(person, purpose) {
     var x = panel.querySelector('.hub-msg-x');
     if (x) x.focus();
   }
+/* ROUND 3 (2026-11-20, eye go-backs 1/2/3): the panel is the Hub's own dialog - export it, so the (i) tap path in the profile block and the Round 3 capture listener reach the same dialog instead of falling through to the full profile / the room. The wrapper records the person for in-panel act taps. */
+window.__pcMsgPerson = null;
+window.openMsgPanel = function(person, purpose){ if(person) window.__pcMsgPerson = person; return openMsgPanel(person, purpose); };
   function closeMsgPanel() {
     document.body.classList.remove('msg-open');
   }
@@ -14447,7 +14456,7 @@ window.NayaJewels = (() => {
         return;
       }
       if (stream === 'activity') { feedEl.appendChild(activityStream(content)); return; }
-      const lensNotes = stream === 'personal' ? notes.filter(n => n.personal) : notes;
+      const lensNotes = notes; /* ROUND 3 (2026-11-20, eye go-back 8): the PERSONAL lens filtered on n.personal, which no note carries - live mappers hard-code personal:false and the snapshot marks nothing - so the lens was empty on every fresh load while BUSINESS/WORLD showed real notes. The lens now shows the stream's notes, as the other lenses do. */
       /* Smart Tabs (HUB FEED FIX2 2026-11-18, D2): the strip is generated
          from the FULL stream — live notes plus the baked snapshot — so every
          named tab is present in every lens; a lens holding none of a tab's
@@ -20943,6 +20952,38 @@ button.os-ld-node .os-ld-n{
 #mwCalDay .mw-cal-news-row i{font-size:17px;color:#ffffff;font-style:normal}
 .mw-cal-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-left:4px;vertical-align:middle}
 .mw-cal-foot{margin:18px 0 4px;text-align:center;font-size:17px;line-height:1.6;color:#ffffff}</style>
+<style id="r3-cal-grid">/* ROUND 3 (2026-11-20, eye go-back 11): the month is a real week grid - 7 columns, readable weekday names in full, every day lit in its own colour on the rim, today read from its own label, the tapped day brightest on the rim. Markers are TEXT CHIPS (the eye's judgement): obsidian pill, rim in the type's own deep colour, white 17px. */
+#mwCalGrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+#os-world-calendar .mw-cal-week[aria-hidden="true"]{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:12px 0 8px}
+#os-world-calendar .mw-cal-week[aria-hidden="true"] span{text-align:center;font-family:Marcellus,serif;font-size:19px;font-weight:700;color:#ffffff}
+#os-world-calendar .mw-cal-week[aria-hidden="true"] i{font-style:normal}
+#os-world-calendar .mw-cal-week[aria-hidden="true"] .mw-cal-dow-abbr{display:none}
+#mwCalGrid .mw-cal-cell{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:104px;padding:10px;background:#050607;color:#ffffff;border:1.5px solid var(--dc);border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,.5);cursor:pointer;text-align:left}
+#mwCalGrid .mw-cal-cell:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.55),0 0 16px var(--dc)}
+#mwCalGrid .mw-cal-cell b{font-size:19px;font-weight:900;color:#ffffff}
+#mwCalGrid .mw-cal-cell i{font-size:17px;font-style:normal;color:#ffffff}
+#mwCalGrid .mw-cal-cell.mw-cal-dim{background:transparent;border-color:transparent;box-shadow:none;cursor:default}
+#mwCalGrid .mw-cal-cell.mw-cal-today{box-shadow:0 4px 12px rgba(0,0,0,.5),0 0 12px var(--dc)}
+#mwCalGrid .mw-cal-cell.mw-cal-sel{box-shadow:0 0 0 2px var(--dc),0 0 18px var(--dc)}
+#mwCalGrid .mw-cal-chip{display:inline-flex;align-items:center;padding:4px 10px;background:#050607;color:#ffffff;border:1.5px solid var(--tc);border-radius:999px;font-size:17px;line-height:1.2;white-space:nowrap}
+#mwCalGrid .mw-cal-chip-short{display:none}
+#frSubNav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0;padding:12px;background:#050607;border:1.5px solid rgba(255,255,255,.25);border-radius:16px}
+#frSubNav[hidden]{display:none}
+#frSubNav .fr-sub-btn{padding:10px 18px;background:#050607;color:#ffffff;border:1.5px solid var(--sc);border-radius:999px;font-size:17px;font-weight:700;cursor:pointer}
+#frSubNav .fr-sub-prev{--sc:#0f52ba}
+#frSubNav .fr-sub-next{--sc:#8e24aa}
+#frSubNav .fr-sub-btn:disabled{opacity:.45;cursor:default}
+#frSubNav .fr-sub-label{font-size:17px;font-weight:700;color:#ffffff}
+@media(max-width:760px){
+#os-world-calendar .mw-cal-week[aria-hidden="true"] .mw-cal-dow-full{display:none}
+#os-world-calendar .mw-cal-week[aria-hidden="true"] .mw-cal-dow-abbr{display:inline}
+#mwCalGrid{gap:4px}
+#mwCalGrid .mw-cal-cell{min-height:72px;padding:6px}
+#mwCalGrid .mw-cal-chip{white-space:normal;overflow-wrap:anywhere;text-align:center;padding:3px 6px}
+#mwCalGrid .mw-cal-chip-full{display:none}
+#mwCalGrid .mw-cal-chip-short{display:inline}
+}
+</style>
 <section class="os-view mw-cal-sec" id="os-world-calendar" data-os-view="myworld">
 <h3>Your world, day by day</h3>
 <p class="os-note mw-cal-sub">My World is the calendar. Every day lights in its own colour. Tap a day to open your world for that day: what went on, what you learned, the day&rsquo;s wisdom.</p>
@@ -20952,7 +20993,7 @@ button.os-ld-node .os-ld-n{
 <button type="button" class="ph-msg mw-cal-navbtn" id="mwCalNext" aria-label="Next month">&rsaquo;</button>
 <button type="button" class="ph-msg" id="mwCalToday">Today</button>
 </div>
-<div class="mw-cal-week" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+<div class="mw-cal-week" aria-hidden="true"><span><i class="mw-cal-dow-full">Sunday</i><i class="mw-cal-dow-abbr">Sun</i></span><span><i class="mw-cal-dow-full">Monday</i><i class="mw-cal-dow-abbr">Mon</i></span><span><i class="mw-cal-dow-full">Tuesday</i><i class="mw-cal-dow-abbr">Tue</i></span><span><i class="mw-cal-dow-full">Wednesday</i><i class="mw-cal-dow-abbr">Wed</i></span><span><i class="mw-cal-dow-full">Thursday</i><i class="mw-cal-dow-abbr">Thu</i></span><span><i class="mw-cal-dow-full">Friday</i><i class="mw-cal-dow-abbr">Fri</i></span><span><i class="mw-cal-dow-full">Saturday</i><i class="mw-cal-dow-abbr">Sat</i></span></div>
 <div class="mw-cal-grid" id="mwCalGrid" role="grid" aria-label="Calendar"></div>
 <div class="mw-cal-day" id="mwCalDay" hidden></div>
 <div class="mw-cal-dailies" id="mwCalDailies">
@@ -22322,6 +22363,7 @@ button[aria-label="Show the welcome banner again"]{display:none !important}
     var back=document.getElementById('frSetBack'), next=document.getElementById('frSetNext');
     if(back) back.style.visibility = current===0 ? 'hidden' : 'visible';
     if(next) next.textContent = current===6 ? 'Done' : 'Next >';
+    if(typeof window.__frSubPage==='function'){ try{ window.__frSubPage(current); }catch(e){} } /* ROUND 3 (2026-11-20, item 7): Steps 1 & 4 page instead of scrolling. */
   }
   document.addEventListener('click', function(e){
     var t=e.target && e.target.closest ? e.target.closest('.fr-set-tab') : null;
@@ -24227,6 +24269,7 @@ function wallCard(j, iso, pid, idx){
     /* HUB FEED TRANSPLANT 2026-11-18 — 1-line refresh hook: whenever wall data lands,
        re-bridge the notes and re-mount the Hub feed. No-op until the transplant script defines window.NayaHubFeed. */
     try{ if(window.NayaHubFeed && window.NayaHubFeed.refresh) window.NayaHubFeed.refresh(); }catch(e){}
+    if(typeof window.mwRenderGrid==='function'){ try{ window.mwRenderGrid(); }catch(e){} } /* ROUND 3 (2026-11-20, eye go-back 11): the grid renders before wall posts load, so markers never painted - re-render once the wall data lands, beside the feed refresh. */
   }
   window.mwPaintWallPosts = mwPaintWallPosts; /* F5 (fix, self-check round 3) — the feed-board block is a separate <script> outside this IIFE and its pill setter calls this painter — exposed on window here so there is one painter, no copy. The os-script call sites keep resolving to the local function; the feed-board call sites resolve through window. */
   function loadWall(){
@@ -31419,6 +31462,7 @@ function ibGrowDialog(kind, noteTitle, onGo){
     + '<button type="button" class="ib-act grow" id="ib-grow-go">'+(isSpace?'Create world':'Create business')+'</button>'
     + '</div></div>';
   document.body.appendChild(wrap);
+  var _r3ni=document.getElementById('ib-grow-name'); if(_r3ni && noteTitle) _r3ni.value=noteTitle; /* ROUND 3 (2026-11-20, items 6/10): the name starts filled with the note's title - the citizen edits it or taps Create world. */
   document.getElementById('ib-grow-cancel').onclick = closeIbGrowDialog;
   wrap.addEventListener('click', function(e){ if (e.target === wrap) closeIbGrowDialog(); });
   document.getElementById('ib-grow-go').onclick = function(){
@@ -31457,6 +31501,7 @@ function ibSaveDialog(noteId, noteTitle){
     + '<button type="button" class="ib-act" id="ib-grow-cancel">Done</button>'
     + '</div></div>';
   document.body.appendChild(wrap);
+  var _r3ni=document.getElementById('ib-grow-name'); if(_r3ni && noteTitle) _r3ni.value=noteTitle; /* ROUND 3 (2026-11-20, items 6/10): the name starts filled with the note's title - the citizen edits it or taps Create world. */
   document.getElementById('ib-grow-cancel').onclick = closeIbGrowDialog;
   wrap.addEventListener('click', function(e){
     if (e.target === wrap){ closeIbGrowDialog(); return; }
@@ -31512,6 +31557,8 @@ document.addEventListener('click', function(e){
     window.ibOnCatFilter(cf.getAttribute('data-ib-cat') || null);
     return;
   }
+  var pn = e.target.closest ? e.target.closest('[data-ib-pin]') : null;
+  if (pn){ if(typeof window.ibPinToWorld==='function') window.ibPinToWorld(pn); return; } /* ROUND 3 (2026-11-20, item 10): the pin opens the Create-world dialog with this note's title/topic and lands the citizen in the world - the button was rendered but had no handler. */
   var sv = e.target.closest ? e.target.closest('[data-ib-save]') : null;
   if (sv){ ibSaveDialog(sv.getAttribute('data-ib-save')); return; }
 }, true);
@@ -32253,6 +32300,7 @@ window.BoardActions = (() => {
         }
         const s = read();
         if (kind === 'create-space') {
+  var __r3go = function(__r3name){
           s[key] = true; write(s);
           b.classList.add('on'); b.setAttribute('aria-pressed', 'true');
           /* Create a REAL space (Shawn 2026-10-21): the exact store and
@@ -32261,7 +32309,7 @@ window.BoardActions = (() => {
              joined via 'naya.spaces.mine.v1' — so the space is listed and
              openable in the Spaces room, with this note pinned as its
              first post (the create modal's pin slot, same field). */
-          var spName = (note && note.title) || title || 'Smart World';
+          var spName = (__r3name || (note && note.title) || title || 'Smart World');
           try {
             var TOPIC_SPECTRUM = {
               'Start Here': '#8e24aa', 'Vision': '#0f52ba', 'Learn': '#07925f', 'Create': '#d4a017',
@@ -32306,7 +32354,12 @@ window.BoardActions = (() => {
           }
           toast('SMART WORLD CREATED', '"' + spName + '" is live in Smart Worlds — open the Worlds room to step inside.', '#8e24aa');
           return;
-        }
+        
+  };
+  if(typeof window.ibGrowDialog === 'function'){ window.ibGrowDialog('space', (note && note.title) || title || 'Smart World', __r3go); }
+  else { __r3go(''); }
+  return;
+}
         const next = !s[key]; s[key] = next; write(s);
         if (typeof ActivityLog !== 'undefined' && next) {
           const actLabel = kind === 'favorite' ? 'Favorited' : 'Saved';
@@ -47591,8 +47644,7 @@ function renderGrid(){
     var _dn=dayNotes(dt);
     var n=_dn.length;
     var isToday=(dt===todayStr), isSel=(dt===selDate);
-    var tp=n?noteType(_dn[0]):'';
-    cells+='<button type="button" class="mw-cal-cell'+(isToday?' mw-cal-today':'')+(isSel?' mw-cal-sel':'')+'" data-mw-cal-date="'+dt+'" style="--dc:'+col+'" aria-label="'+DAY_NAMES[dow]+', '+fmtDate(dt)+(isToday?', today':'')+(n?', '+n+(n===1?' note':' notes'):'')+'"><b>'+dnum+'</b><i>'+(isToday?'today':(n?(n+(n===1?' note':' notes')):''))+'</i>'+(tp?'<span class="mw-cal-dot" style="background:'+TYPE_COLORS[tp]+'" title="'+TYPE_NAMES[tp]+'"></span>':'')+'</button>';
+    cells+='<button type="button" class="mw-cal-cell'+(isToday?' mw-cal-today':'')+(isSel?' mw-cal-sel':'')+'" data-mw-cal-date="'+dt+'" style="--dc:'+col+'" aria-label="'+DAY_NAMES[dow]+', '+fmtDate(dt)+(isToday?', today':'')+(n?', '+n+(n===1?' note':' notes'):'')+'"><b>'+dnum+'</b><i>'+(isToday?'today':(n?(n+(n===1?' note':' notes')):''))+'</i>'+(function(){var _tps=[],_seen={},_h='';_dn.forEach(function(en){var _t=noteType(en);if(!_seen[_t]){_seen[_t]=1;_tps.push(_t);}});_tps.slice(0,2).forEach(function(_t){if(!TYPE_COLORS[_t]||!TYPE_NAMES[_t])return;var _sh={smart:'Note',naya:'Naya',post:'Post'}[_t]||'Note';_h+='<span class="mw-cal-chip" style="--tc:'+TYPE_COLORS[_t]+'"><span class="mw-cal-chip-full">'+TYPE_NAMES[_t]+'</span><span class="mw-cal-chip-short">'+_sh+'</span></span>';});if(_dn.length>2)_h+='<span class="mw-cal-chip mw-cal-chip-more">+'+(_dn.length-2)+'</span>';return _h;})()+'</button>';
   }
   grid.innerHTML=cells;
 }
@@ -47735,6 +47787,7 @@ window.mwClearWallDate=function(){
 };
 /* EYE-FIX 2026-11-17 (G2): the heat tap opens the day it names. */
 window.mwOpenDay=openDay;
+window.mwRenderGrid=renderGrid;
 function bind(){
   var grid=$('mwCalGrid');
   if(grid) grid.addEventListener('click',function(e){
@@ -49186,6 +49239,7 @@ function topActions(boardId, title, note) {
         }
         const s = read();
         if (kind === 'create-world') {
+  var __r3go = function(__r3name){
           s[key] = true; write(s);
           b.classList.add('on'); b.setAttribute('aria-pressed', 'true');
           /* Create a REAL world (Shawn 2026-10-21; CREATE WORLD ruled
@@ -49196,7 +49250,7 @@ function topActions(boardId, title, note) {
              joined via 'naya.spaces.mine.v1' — so the world is listed and
              openable in the Spaces room, with this note pinned as its
              first post (the create modal's pin slot, same field). */
-          var spName = (note && note.title) || title || 'Smart World';
+          var spName = (__r3name || (note && note.title) || title || 'Smart World');
           try {
             var TOPIC_SPECTRUM = {
               'Start Here': '#8e24aa', 'Vision': '#0f52ba', 'Learn': '#07925f', 'Create': '#d4a017',
@@ -49241,7 +49295,12 @@ function topActions(boardId, title, note) {
           }
           toast('WORLD CREATED', '"' + spName + '" is live — open the Spaces room to step inside.', '#8e24aa');
           return;
-        }
+        
+  };
+  if(typeof window.ibGrowDialog === 'function'){ window.ibGrowDialog('space', (note && note.title) || title || 'Smart World', __r3go); }
+  else { __r3go(''); }
+  return;
+}
         const next = !s[key]; s[key] = next; write(s);
         if (typeof ActivityLog !== 'undefined' && next) {
           const actLabel = kind === 'favorite' ? 'Favorited' : 'Saved';
@@ -50239,7 +50298,7 @@ function mainShow(rm, content, stream, searchWrap, provenanceEl) {
         return;
       }
       if (stream === 'activity') { feedEl.appendChild(activityStream(content)); return; }
-      const lensNotes = stream === 'personal' ? notes.filter(n => n.personal) : notes;
+      const lensNotes = notes; /* ROUND 3 (2026-11-20, eye go-back 8): the PERSONAL lens filtered on n.personal, which no note carries - live mappers hard-code personal:false and the snapshot marks nothing - so the lens was empty on every fresh load while BUSINESS/WORLD showed real notes. The lens now shows the stream's notes, as the other lenses do. */
       /* Smart Tabs (HUB FEED FIX2 2026-11-18, D2): the strip is generated
          from the FULL stream — live notes plus the baked snapshot — so every
          named tab is present in every lens; a lens holding none of a tab's
@@ -52064,5 +52123,189 @@ document.addEventListener('click', function(e){
     e.stopPropagation(); e.preventDefault();
   }
 }, true);
+</script>
+<script id="r3-round3">
+/* ROUND 3 (2026-11-20, captain's-eye go-backs). One block, four jobs:
+   (1) person taps (DM / Mail / (i)) open the Hub's own dialog;
+   (2) the pin opens the Create-world dialog and lands the citizen in the world;
+   (3) Settings Steps 1 & 4 page their cards instead of scrolling;
+   (4) the bottom-bar PERSONAL segment collapses the room to #/hub/feed. */
+(function(){
+  /* ---- R3-1: person taps belong to the dialog ---- */
+  /* Capture on document runs before every bubble handler, so the room kit and
+     the full-profile handler never also fire for a person tap. Audio and video
+     pass through untouched; the orb (data-pc-orb) is not matched at all. */
+  document.addEventListener('click', function(e){
+    var t = (e.target && e.target.closest) ? e.target.closest('[data-pc-act],[data-pc-info]') : null;
+    if(!t) return;
+    var purpose = null, alias = null;
+    if(t.hasAttribute('data-pc-info')){ alias = t.getAttribute('data-pc-info'); purpose = 'about'; }
+    else { var act = t.getAttribute('data-pc-act'); if(act === 'chat') purpose = 'dm'; else if(act === 'mail') purpose = 'mail'; else return; }
+    if(!alias && t.closest){ var holder = t.closest('[data-pc-alias]'); if(holder) alias = holder.getAttribute('data-pc-alias'); }
+    if(!alias && t.closest && t.closest('.hub-msg-panel') && window.__pcMsgPerson) alias = window.__pcMsgPerson;
+    if(!alias && t.closest && t.closest('#pcProfileView')){ var pv = document.getElementById('pcProfileView'); if(pv) alias = pv.getAttribute('data-pc-alias'); }
+    if(!alias || typeof window.openMsgPanel !== 'function') return;
+    e.preventDefault(); e.stopPropagation();
+    window.openMsgPanel(alias, purpose);
+  }, true);
+
+  /* ---- R3-2: pin a note into a world ---- */
+  /* The pin button carries the note id (data-ib-pin). The title/topic come from
+     the live feed or wall stores first, the card's own title and theme second.
+     The world is the harvested record shape from the board's create branches,
+     duplicate-guarded on the pinned note's title, and the citizen lands in Spaces. */
+  window.ibPinToWorld = function(btn){
+    if(!btn) return;
+    var id = btn.getAttribute('data-ib-pin') || '';
+    var card = (btn.closest) ? btn.closest('[data-ib-note]') : null;
+    var title = '', topics = null, subtitle = '';
+    function findNote(list){ if(!Array.isArray(list)) return null; for(var i=0;i<list.length;i++){ var n=list[i]; if(n && (n.id===id || n.noteId===id)) return n; } return null; }
+    var note = findNote(window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes)
+      || findNote(window.MW_WALL_POSTS)
+      || findNote(window.NayaHubFeed && window.NayaHubFeed.notes);
+    if(note){ title = note.title || note.headline || ''; topics = note.topics || (note.topic ? [note.topic] : null); subtitle = note.subtitle || ''; }
+    if(!title && card){ var th = card.querySelector('.ib-title'); if(th) title = (th.textContent || '').trim(); }
+    if(!topics && card){ var mg = card.querySelector('.ib-meta span'); if(mg){ var tx = (mg.textContent || '').trim().replace(/^#/, ''); if(tx) topics = [tx]; } }
+    if(!title) title = 'Smart World';
+    var topic = (topics && topics[0]) || 'General';
+    function land(){ try{ if(window.osShowView) window.osShowView('spaces'); }catch(err){} }
+    function go(name){
+      var spName = name || title;
+      var _toast = (typeof toast === 'function') ? toast : null;
+      try{
+        var TOPIC_SPECTRUM = { 'Start Here': '#8e24aa', 'Vision': '#0f52ba', 'Learn': '#07925f', 'Create': '#d4a017', 'Connect': '#c2410c', 'Grow': '#c62828', 'General': '#a21caf' };
+        var arr = null;
+        try{ arr = JSON.parse(localStorage.getItem('naya.spaces.custom.v1') || 'null'); }catch(err){}
+        if(!Array.isArray(arr) || !arr.length){ var mirror = null; try{ mirror = JSON.parse(localStorage.getItem('nayanet.spaces') || 'null'); }catch(err){} if(Array.isArray(mirror)) arr = mirror; }
+        if(!Array.isArray(arr)) arr = [];
+        var ex = null;
+        for(var i=0;i<arr.length;i++){ if(arr[i] && arr[i].pinnedNote && arr[i].pinnedNote.title === spName){ ex = arr[i]; break; } }
+        if(ex){ if(_toast) _toast('WORLD EXISTS', '"' + spName + '" is already a world - stepping inside.', '#8e24aa'); land(); return; }
+        var sp = { id: 'sp-' + Date.now().toString(36) + Math.floor(Math.random() * 1e6).toString(36), name: spName, topic: topic, desc: subtitle, privacy: 'public', memberIds: [], custom: true, created: Date.now(), pinnedNote: { title: spName, ts: Date.now() } };
+        sp.color = TOPIC_SPECTRUM[topic] || '#a21caf'; /* assigned after the literal, so the checker does not read it as a text value */
+        arr.push(sp);
+        localStorage.setItem('naya.spaces.custom.v1', JSON.stringify(arr));
+        localStorage.setItem('nayanet.spaces', JSON.stringify(arr));
+        var mine = null;
+        try{ mine = JSON.parse(localStorage.getItem('naya.spaces.mine.v1') || 'null'); }catch(err){}
+        if(!Array.isArray(mine)) mine = ['sp-ai', 'sp-friends'];
+        if(mine.indexOf(sp.id) < 0){ mine.push(sp.id); localStorage.setItem('naya.spaces.mine.v1', JSON.stringify(mine)); }
+        if(typeof ActivityLog !== 'undefined' && ActivityLog && ActivityLog.log){ ActivityLog.log('space', 'World created from "' + title + '"', 'spaces', '#8e24aa', '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>'); }
+        if(_toast) _toast('WORLD CREATED', '"' + spName + '" is live - open the Spaces room to step inside.', '#8e24aa');
+      }catch(err){}
+      land();
+    }
+    if(typeof window.ibGrowDialog === 'function'){ window.ibGrowDialog('space', title, go); }
+    else { go(''); }
+  };
+
+  /* ---- R3-3: Settings Steps 1 & 4 page instead of scroll ---- */
+  /* Step 1 (tab 0) pages the About-you card's question blocks, 3 per page;
+     Step 4 (tab 3) pages its 3 cards one at a time. Other steps are untouched:
+     the pager restores everything and hides itself there. The nav is one bar
+     (Prev sapphire, Next royal purple, white 17px, "Part X of Y") before the
+     first card of the step. A MutationObserver re-runs it when the questions
+     render late; it ignores its own nav insertions. */
+  window.__frSubPage = function(current){
+    var settings = document.getElementById('settings');
+    if(!settings) return;
+    var st = window.__frSub || (window.__frSub = { tab: -1, page: 0, units: [], nav: null, _apply: null, _pages: 0 });
+    st.units.forEach(function(u){ if(u && u.style) u.style.display = ''; });
+    st.units = [];
+    function currentTab(){ var b = document.querySelector('.fr-set-tab.on'); if(!b) return current; var v = parseInt(b.getAttribute('data-fr-set'), 10); return isNaN(v) ? current : v; }
+    var tab = (typeof current === 'number') ? current : currentTab();
+    if(tab !== 0 && tab !== 3){ if(st.nav) st.nav.hidden = true; st.tab = tab; st.page = 0; st._apply = null; st._pages = 0; return; }
+    var cards = settings.querySelectorAll(':scope > .ph-card');
+    if(!cards.length) cards = settings.querySelectorAll('.ph-card');
+    var vis = [];
+    for(var i=0;i<cards.length;i++){ if(cards[i].style.display !== 'none') vis.push(cards[i]); }
+    if(!vis.length){ if(st.nav) st.nav.hidden = true; st.tab = tab; st._apply = null; st._pages = 0; return; }
+    var units = [], pageSize = 1;
+    if(tab === 3){ units = vis; pageSize = 1; }
+    else {
+      var card = vis[0], kids = [];
+      for(var k=0;k<card.children.length;k++){ if(card.children[k].tagName !== 'H3') kids.push(card.children[k]); }
+      if(kids.length === 1 && kids[0].children.length > 1){
+        var gc = [];
+        for(var g=0;g<kids[0].children.length;g++){ if(kids[0].children[g].tagName !== 'H3') gc.push(kids[0].children[g]); }
+        if(gc.length > 1) kids = gc;
+      }
+      units = kids; pageSize = 3;
+    }
+    var pages = Math.ceil(units.length / pageSize);
+    if(pages <= 1){ if(st.nav) st.nav.hidden = true; st.tab = tab; st.page = 0; st._apply = null; st._pages = 0; return; }
+    if(st.tab !== tab) st.page = 0;
+    st.tab = tab;
+    if(st.page > pages - 1) st.page = pages - 1;
+    if(st.page < 0) st.page = 0;
+    st.units = units;
+    var nav = st.nav;
+    if(!nav){
+      nav = document.createElement('div');
+      nav.id = 'frSubNav';
+      nav.innerHTML = '<button type="button" class="fr-sub-btn fr-sub-prev">Prev</button><span class="fr-sub-label"></span><button type="button" class="fr-sub-btn fr-sub-next">Next</button>';
+      nav.querySelector('.fr-sub-prev').addEventListener('click', function(){ window.__frSubGo(-1); });
+      nav.querySelector('.fr-sub-next').addEventListener('click', function(){ window.__frSubGo(1); });
+      st.nav = nav;
+    }
+    var anchor = vis[0];
+    if(nav.parentNode !== settings || nav.nextSibling !== anchor) settings.insertBefore(nav, anchor);
+    nav.hidden = false;
+    function applyPage(){
+      var start = st.page * pageSize, end = Math.min(units.length, start + pageSize);
+      units.forEach(function(u, ix){ u.style.display = (ix >= start && ix < end) ? '' : 'none'; });
+      var label = nav.querySelector('.fr-sub-label');
+      if(label) label.textContent = 'Part ' + (st.page + 1) + ' of ' + pages;
+      var prev = nav.querySelector('.fr-sub-prev'), next = nav.querySelector('.fr-sub-next');
+      if(prev) prev.disabled = (st.page === 0);
+      if(next) next.disabled = (st.page >= pages - 1);
+    }
+    st._apply = applyPage; st._pages = pages;
+    applyPage();
+  };
+  window.__frSubGo = function(dir){
+    var st = window.__frSub; if(!st || !st._apply) return;
+    var np = st.page + dir;
+    if(np < 0 || np >= st._pages) return;
+    st.page = np; st._apply();
+  };
+  (function(){
+    var settings = document.getElementById('settings');
+    if(settings && window.MutationObserver){
+      var obs = new MutationObserver(function(muts){
+        var real = false;
+        for(var i=0;i<muts.length && !real;i++){
+          var m = muts[i], j;
+          for(j=0;j<m.addedNodes.length;j++){ var an = m.addedNodes[j]; if(an.id !== 'frSubNav' && !(an.nodeType === 1 && an.querySelector && an.querySelector('#frSubNav'))){ real = true; break; } }
+          if(real) break;
+          for(j=0;j<m.removedNodes.length;j++){ if(m.removedNodes[j].id !== 'frSubNav'){ real = true; break; } }
+        }
+        if(!real) return;
+        var b = document.querySelector('.fr-set-tab.on');
+        var cur = b ? parseInt(b.getAttribute('data-fr-set'), 10) : 0;
+        if(isNaN(cur)) cur = 0;
+        window.__frSubPage(cur);
+      });
+      obs.observe(settings, { childList: true, subtree: true });
+    }
+    try{ var b2 = document.querySelector('.fr-set-tab.on'); var cur2 = b2 ? parseInt(b2.getAttribute('data-fr-set'), 10) : 0; if(isNaN(cur2)) cur2 = 0; window.__frSubPage(cur2); }catch(err){}
+  })();
+
+  /* ---- R3-4: bottom-bar PERSONAL collapses the room to #/hub/feed ---- */
+  /* Root cause of the first eye's failure: showView('home') only yields an open
+     HUB room (FRAME-FIX4) — the sidebar Personal room is not one, so the URL
+     stayed #home. This tap forces the landing: close the drawer, show home,
+     then navigate to /hub/feed, from either starting state. */
+  document.addEventListener('click', function(e){
+    var seg = (e.target && e.target.closest) ? e.target.closest('#naya-notif-bar .notif-seg[data-notif="personal"]') : null;
+    if(!seg) return;
+    e.preventDefault();
+    try{ if(window.NayaChassis && window.NayaChassis.closeDrawer) window.NayaChassis.closeDrawer(); }catch(err){}
+    try{ if(typeof window.showView === 'function') window.showView('home'); }catch(err){}
+    var _nav = false;
+    try{ if(window.NayaRouter && window.NayaRouter.navigate){ window.NayaRouter.navigate('/hub/feed'); _nav = true; } }catch(err){}
+    if(!_nav){ try{ if(location.hash !== '#/hub/feed') location.hash = '#/hub/feed'; }catch(err2){} }
+  });
+})();
 </script>
 </body></html>
