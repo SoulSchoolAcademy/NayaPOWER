@@ -1639,7 +1639,23 @@ body.fp-stage-on #fpLegal [data-legal-beat].fp-now[hidden]{display:none}
    face 168px), squeezing the nutshell to one line and clipping the foot. */
 body.fp-stage-on #fpAgreement .fp-now .ib-blocktop,body.fp-stage-on #fpLegal .fp-now .ib-blocktop{display:flex!important;flex-direction:row!important;gap:12px!important;align-items:flex-start!important;flex:0 0 auto;margin:0 0 10px!important}
 body.fp-stage-on #fpAgreement .fp-now .deal-beat-photo,body.fp-stage-on #fpLegal .fp-now .deal-beat-photo{width:clamp(120px,20vh,208px)!important;height:clamp(120px,20vh,208px)!important;flex:0 0 auto}
-@media(max-width:480px){body.fp-stage-on #fpAgreement .fp-now .deal-beat-photo,body.fp-stage-on #fpLegal .fp-now .deal-beat-photo{width:104px!important;height:104px!important}}
+@media(max-width:480px){body.fp-stage-on #fpAgreement .fp-now .deal-beat-photo,body.fp-stage-on #fpLegal .fp-now .deal-beat-photo{width:104px!important;height:104px!important}}@media(max-width:480px){body.fp-stage-on #fpAgreement .fp-now .deal-beat-photo,body.fp-stage-on #fpLegal .fp-now .deal-beat-photo{width:104px!important;height:104px!important}
+/* FIX4 (2026-11-20, fix-3 eye D) — phone width only: same 22px board
+   title as the unfold, so "Congratulations" clears the top-right
+   speak-face photo on the deck/letter final board. */
+/* FIX4b (2026-11-20, fix-3 eye D) — phone width only, board 37 only:
+   the deck/letter title is governed by body.af-deck-on #deckBody
+   .ib-title{font-size:25px!important} ((1,2,1)); the first D rule lost.
+   This board-37 rule at (1,3,2)!important beats it on deck AND letter
+   (both carry body.af-deck-on and #deckBody), so "Congratulations"
+   clears the top-right speak-face photo. Desktop untouched. */
+body.af-deck-on #deckBody article[data-beat="37"] .ib-title{font-size:22px!important}
+/* FIX4 (2026-11-20, fix-3 eye E) — phone width only, deck/letter final
+   board: the big sign photo sat over the text box's last lines. The
+   sign frame is pushed 64px down so the photo sits below the text box,
+   as at desktop. (F: the footer links strip scrolls — proven by scroll
+   test, scrollWidth 1064 > clientWidth 374 — so no change here.) */
+body.fp-stage-on #fpAgreement .fp-now .deal-sign-frame,body.fp-stage-on #fpLegal .fp-now .deal-sign-frame{margin-top:64px!important}}
 body.fp-stage-on #fpAgreement .fp-now .ib-identity,body.fp-stage-on #fpLegal .fp-now .ib-identity{min-width:0;flex:1 1 auto}
 body.fp-stage-on #fpAgreement .fp-now .ib-nutshell,body.fp-stage-on #fpLegal .fp-now .ib-nutshell{flex:1 1 auto;min-height:120px;overflow-y:auto;margin:0 0 10px!important;padding:12px 14px!important}
 body.fp-stage-on #fpAgreement .fp-now .lb-showcase,body.fp-stage-on #fpLegal .fp-now .lb-showcase{flex:0 0 auto;min-height:120px;height:clamp(120px,22vh,200px);margin:0!important;max-width:none!important;width:100%;padding:8px;display:flex;align-items:center;justify-content:center;position:relative}

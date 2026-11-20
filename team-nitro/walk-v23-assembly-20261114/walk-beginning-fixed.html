@@ -144,6 +144,12 @@ textarea.visionin::placeholder{color:#f2f2f6;opacity:.85}
 @media (max-width:480px){
 .p3-main{padding:6px 18px 2px}
 .p3-question{margin:8px 0 14px}
+/* FIX4 (2026-11-20, fix-3 eye B) — phone width only: the door heading ran
+   under the fixed corner jewels (54-76px at the viewport corners, 4620px2
+   overlap each side at 390). The door's own question gets 80px side
+   padding so its first and last letters clear the jewels. Other steps
+   are untouched (their headings sit below the flank header). */
+#step-door .p3-question{padding-left:80px;padding-right:80px}
 textarea.visionin{padding:12px}
 .p3-enter{margin-top:12px;padding:13px 42px}
 .p3-hints{margin-top:14px;margin-bottom:20px}

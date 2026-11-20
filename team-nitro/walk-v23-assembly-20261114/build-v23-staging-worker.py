@@ -173,7 +173,10 @@ print(f"unfold {len(unfold_raw)} B sha {unfold_sha}")
 # guarded while #step-door is visible, the 4s claim-gate timer guarded itself,
 # and the door gains its explicit continue (Continue to the walk ◆, hidden
 # without a certificate). Fix-2 (+852 B) carried inside; walk unchanged else.
-assert walk_sha.startswith("ef982267"), "walk sha is not the AGREEMENT-DISTILL-FIX3 walk sha (2026-11-20: F9b door guard — proceed() + claim-gate timer hold while the door is visible; explicit continue dismisses it)"
+# AGREEMENT-DISTILL-FIX4 (2026-11-20): the walk sha moves ef982267 -> 856d392c
+# (4,363,264 B -> 4,363,683 B, +419 B): fix-3 eye B — the door heading gets
+# 80px side padding at <=480px so its first/last letters clear the corner jewels.
+assert walk_sha.startswith("856d392c"), "walk sha is not the AGREEMENT-DISTILL-FIX4 walk sha (2026-11-20: fix-3 eye B — door heading side padding at <=480px)"
 assert template_sha.startswith("61002d15"), "personal template sha is not the composed template sha (live Personal v9 992ab18c + hero fix + rooms-plus fix)"
 # IDENTITY CERTIFICATE ROUND (2026-11-15, BRIEF-IDENTITY-CERTIFICATE-20261115.md):
 # the identity sha moved 55fdffa8 -> e9398f75 (gold live name 86px, date truly
@@ -264,7 +267,16 @@ assert template_sha.startswith("61002d15"), "personal template sha is not the co
 # (401,040 B -> 402,647 B, +1,607 B): F9a — paired ?name=/?alias= pre-fills the
 # alias field and paints the hero (paintHeroName) AFTER the load-time paint and
 # the FIX3 clear; un-paired, never-pre-paint stands. Fix-2 (+1,126 B) carried.
-assert ident_sha.startswith("51776174"), "identity sha is not the AGREEMENT-DISTILL-FIX3 identity sha (2026-11-20: F9a paired pre-fill + hero paint after load paint)"
+# AGREEMENT-DISTILL-FIX4 (2026-11-20): the identity sha moves 51776174 -> 642013c7
+# (402,647 B -> 403,714 B, +1,067 B): fix-3 eye A + C — hero name 52px -> 28px
+# + 16px zone margin at <=480px (clears the certificate title); the taken-note
+# banner gets 76px side padding and the bottom-center frame stone hides while
+# the taken note shows (taken state only, <=480px).
+# AGREEMENT-DISTILL-FIX4b (2026-11-20): the identity sha moves 642013c7 -> fef65d2c
+# (403,714 B -> 404,147 B, +433 B): fix-4 verification found the hero still
+# covered "This certifies that" (2356 px2, taken state) — the line hides at
+# <=480px while the hero shows (taken / is-certified / has-name).
+assert ident_sha.startswith("fef65d2c"), "identity sha is not the AGREEMENT-DISTILL-FIX4b identity sha (2026-11-20: fix-4 verify — certifies line hides while the hero shows, <=480px)"
 # ENTRANCE WELCOME (2026-11-16, BRIEF-AGREEMENT-ENTRANCE-WELCOME-20261116.md):
 # the welcome sha moves 5f33d273 -> db5960eb (925,222 B -> 934,065 B,
 # +9,337 B): Item 0 — the opening-view intro block only. Shawn's 10-star
@@ -510,7 +522,16 @@ assert ident_sha.startswith("51776174"), "identity sha is not the AGREEMENT-DIST
 # WALKTHROUGH-CHAIN (2026-11-18, maker round -\n# walkthrough-chain-20261118/work/edit-chain.py): the welcome\n# sha moves a1b67b82 -> 1a48347f: BRIDGE FIRST - after agreeing\n# inside the stage, the hold/fallback releases go to the bridge\n# (goBridgeAfterAgree), then the bridge's own buttons go to\n# name-entry; the agreed line + the onward button show only\n# after agreeing; the plain-page agree scroll is guarded while\n# the bridge is up. Pre-agree routes untouched (?stage=bridge,\n# Back buttons, /agreement agree -> bridge).\n# AGREEMENT-DISTILL-FIX3 (2026-11-19/20): the welcome sha moves c3c750b7 -> 3874b7eb
 # (1,913,241 B -> 1,929,575 B, +16,334 B): fix-2 bytes carried forward unchanged
 # — welcome is untouched by fix-3 (F9 lives in walk + identity only).
-assert welcome_sha.startswith("3874b7eb"), "welcome sha is not the AGREEMENT-DISTILL-FIX3 welcome sha (2026-11-20: fix-2 bytes carried forward; welcome unchanged in fix-3)"
+# AGREEMENT-DISTILL-FIX4 (2026-11-20): the welcome sha moves 3874b7eb -> c3cda417
+# (1,929,575 B -> 1,930,495 B, +920 B): fix-3 eye D + E — board title 25px ->
+# 22px at <=480px (clears the top-right photo on the final board) and the
+# deck/letter sign frame gains 64px top margin at <=480px (photo below the
+# text box). Footer links strip unchanged (proven scrollable).
+# AGREEMENT-DISTILL-FIX4b (2026-11-20): the welcome sha moves c3cda417 -> 237af4d4
+# (1,930,495 B -> 1,930,937 B, +442 B): fix-4 verification found the first D
+# rule lost to body.af-deck-on #deckBody .ib-title{25px!important} — the
+# board-37 rule now wins at (1,3,2)!important on deck AND letter.
+assert welcome_sha.startswith("237af4d4"), "welcome sha is not the AGREEMENT-DISTILL-FIX4b welcome sha (2026-11-20: fix-4 verify — board-37 title beats the af-deck !important rule)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
@@ -548,7 +569,14 @@ assert welcome_sha.startswith("3874b7eb"), "welcome sha is not the AGREEMENT-DIS
 # AGREEMENT-DISTILL-FIX3 (2026-11-19/20): the unfold sha moves 5fe1a3ec -> 50876fff
 # (141,781 B -> 142,120 B, +339 B): fix-2 bytes carried forward unchanged —
 # unfold is untouched by fix-3 (F9 lives in walk + identity only).
-assert unfold_sha.startswith("50876fff"), "unfold sha is not the AGREEMENT-DISTILL-FIX3 unfold sha (2026-11-20: fix-2 bytes carried forward; unfold unchanged in fix-3)"
+# AGREEMENT-DISTILL-FIX4 (2026-11-20): the unfold sha moves 50876fff -> cde8b890
+# (142,120 B -> 142,491 B, +371 B): fix-3 eye D — board title 25px -> 22px at
+# <=480px so "Congratulations" clears the top-right diamond orb + avatar.
+# AGREEMENT-DISTILL-FIX4b (2026-11-20): the unfold sha moves cde8b890 -> a3b3907f
+# (142,491 B -> 142,532 B, +41 B): fix-4 verification found board 37's title
+# is .frame-title, not .ib-title (the first D rule never matched) — the
+# board-37 .frame-title rule now wins at (0,2,1)!important.
+assert unfold_sha.startswith("a3b3907f"), "unfold sha is not the AGREEMENT-DISTILL-FIX4b unfold sha (2026-11-20: fix-4 verify — board-37 .frame-title at 22px)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
 # work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b

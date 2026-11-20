@@ -202,7 +202,13 @@ button{font-family:inherit}
   .intel-board { padding: 22px 18px 18px; border-radius: 20px; }
   .ib-title { font-size: clamp(25px, 6.4vw, 32px); }
 }
-@media(max-width:480px){.p3-deal-unfold{padding:22px 12px 26px}}
+@media(max-width:480px){.p3-deal-unfold{padding:22px 12px 26px}
+/* FIX4b (2026-11-20, fix-3 eye D) — phone width only: board 37's title is
+   .frame-title, not .ib-title (the first D rule never matched), and it is
+   governed by .frame-title{font-size:25px!important}. This board-37 rule
+   at (0,2,1)!important beats it, so "Congratulations" clears the
+   top-right diamond orb + avatar. Desktop untouched. */
+article[data-beat="37"] .frame-title{font-size:22px!important}}
 /* DECK — the only new CSS. The per-beat button lights in its beat's color:
    --tone is set on each beat's article and inherited, so the button, the
    frame edge, the portrait ring, the jewel and the board all light together.

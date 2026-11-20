@@ -1378,6 +1378,27 @@
        the composing state is untouched (not .is-certified), and no other
        certified rule sets display on .alias-status, so nothing else changes. */
     .cert-plaque.is-certified .alias-status { display: none; }
+    /* FIX4 (2026-11-20, fix-3 eye A + C) — phone width only. A: the hero
+       name (52px, floating above the entry) covered the certificate title
+       (17px overlap x 346px at 390). The name shrinks to 28px and the
+       name-bearing zone gains 16px, so the name sits on its own line
+       between the title and the entry. C: the taken-note banner's first
+       line was clipped by the bottom corner crests (76px) and its middle
+       by the bottom-center frame stone — the text now clears the crests
+       (76px side padding) and the stone is hidden while the taken note
+       shows (taken state only, phone only; the stone is aria-hidden
+       decoration). No desktop rule touched. */
+    @media (max-width: 480px) {
+      .cert-name { font-size: clamp(1.75rem, 7.2vw, 2rem); }
+      .cert-plaque.taken .face-center, .cert-plaque.is-certified .face-center, .cert-plaque.has-name .face-center { margin-top: 16px; }
+      .hub-note.taken-note { padding-left: 76px; padding-right: 76px; }
+      .cert-plaque.taken .frame-stone { display: none; }
+      /* FIX4b (2026-11-20): "This certifies that" sits in flow directly
+         above the center, and the 28px hero covers it (2356 px2, taken
+         state) — the slot cannot hold both. While the hero name shows,
+         the line hides at phone width; it still shows with no name. */
+      .cert-plaque.taken .cert-certifies, .cert-plaque.is-certified .cert-certifies, .cert-plaque.has-name .cert-certifies { display: none; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .naya-btn, .activate-btn, .install-x, .im-row, .brand-mark, .alias-field-wrapper { transition: none; }
       .naya-btn:hover, .activate-btn:hover, .im-row:hover, .brand-logo-group:hover .brand-mark { transform: none; }
