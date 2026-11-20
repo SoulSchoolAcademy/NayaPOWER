@@ -69636,6 +69636,38 @@
         "Creation",
         "Smart Factory"
       ]
+    },
+    {
+      "smart_note_id": "SN-4037",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4037-share-it-earn-half",
+      "slug": "share-it-earn-half",
+      "title": "Share It, Earn Half",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4037/IB-SMART-NOTE-20261120-sn4037-share-it-earn-half.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4037/IB-SMART-NOTE-20261120-sn4037-share-it-earn-half.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4037/IB-SMART-NOTE-20261120-sn4037-share-it-earn-half.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4037-share-it-earn-half.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:05:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "03549f626294577e1a9e3f8a7366a22428101028467da745fe837a3d4afd6e46",
+      "content_hash": "9fcd1dae9933ddab7f956d1b9afd7c979dab2285d07679c1a205f9121b93ea78",
+      "one_line": "Share it. Earn half.",
+      "topics": [
+        "Ambassadors",
+        "Citizen",
+        "Economics",
+        "Sharing"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69646,5 +69678,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "31b08eedb6a7cc8e0c122b99f629d29609fdf1df76ab3876287f2d159ab265fc"
+  "corpus_manifest_hash": "974649ff92e6ace9ba471e5c66d768871c1f7228cf3afb5275fc470f12e03794"
 }
