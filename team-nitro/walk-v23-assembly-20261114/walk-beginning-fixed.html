@@ -2566,6 +2566,10 @@ function landOnHired(){
   });
   STEPS.forEach(function(sec, i){ wireStep(sec, i); });
   wireNames(NAMESSEC);
+  /* FIX (2026-11-19, eye fail 5e) — paint the door at once: the claim
+     gate holds the questionnaire up to 4s, and until now the page sat
+     blank black for it. The gate itself is untouched (FIX6). */
+  showDoor();
   /* FIX6 (2026-11-19) — verify ownership at /welcome LOAD, before the
      questionnaire renders: the walk used to ingest any ?name=&alias=
      unchecked and render as that alias with no ownership check, so a
