@@ -760,7 +760,11 @@ a { color: inherit; }
    The rail reuses .nav-btn, so both sidebars share one display law. */
 .rail.right{position:fixed;top:0;right:0;bottom:0;width:min(300px,84vw);z-index:960;background:#12151d;transform:translateX(106%);transition:transform .32s cubic-bezier(.16,.84,.22,1);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),-24px 0 60px rgba(0,0,0,.6);padding:18px 14px;overflow-y:auto;display:flex;flex-direction:column;}
 .shell.rail-right-open .rail.right{transform:none;}
-  .shell.rail-right-open .drawer-backdrop{display:block;}
+  /* FOLLOW-UP 16: REMOVED - this rule showed the drawer-backdrop whenever
+     the right rail opened, dimming the page and trapping the bottom bar
+     (CONNECT could not be clicked; only Escape cleared it). The right
+     rail opens without a backdrop now; its X and Escape close it. The
+     left drawer's own backdrop rule (900px media query) is untouched. */
   /* EYE-NOTES-FIX 2026-11-17 §3.2 (the control): the reopened modal's
      backdrop (z-index 55) covered the top bar (z-index 30), so the control
      that opens the panel could not close it — the reference click was
@@ -3284,7 +3288,7 @@ body.ask-reading:has(.naya-ask-room) #nsbBottom{transform:translateY(calc(100% +
      still navigates (plain links to the same destinations tap() uses).
      When the script runs, NayaNotif.init() removes this node and builds
      the live bar (counts, menus, fold) in its place — no visual change. -->
-<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
+<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="#/hub/feed" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="#/hub/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="#/hub/spaces" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="#/hub/feed" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="#/hub/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
 <button type="button" id="os-b3-hide" aria-label="Show the bottom bar" title="Show the bottom bar">▴</button> <!-- FOLLOW-ON 2026-11-19 (item 3): the corner control — the reader's own tap recalls the bar when folded. Chrome harvested from the Dashboard (#os-b3-hide). -->
 <noscript>
   <div style="min-height:100vh;display:grid;place-items:center;text-align:center;padding:40px;
@@ -6115,7 +6119,7 @@ function HubView(params) {
     var wrap = document.createElement('div'); wrap.className = 'nav-subwrap'; wrap.hidden = true;
     var subs = a.subs || [];
     subs.forEach(function (s) {
-      var r = document.createElement('a'); r.className = 'nav-sub'; r.href = s.href;
+      var r = document.createElement('a'); r.className = 'nav-sub'; r.href = (window.NayaHubStagedHref ? window.NayaHubStagedHref(s.href) : s.href); /* FOLLOW-UP 16: staged at build, same rule as the main rows. */
       r.style.setProperty('--nav', s.color);
       if (s.countKey) r.setAttribute('data-count-key', s.countKey);
       r.setAttribute('aria-label', s.label);
@@ -6136,7 +6140,7 @@ function HubView(params) {
   nav.appendChild(areaLbl);
   HUB_AREAS.forEach(function (a) {
     if (a.subtab) { buildWorldSubtab(a); return; }
-    var link = document.createElement('a'); link.className = 'nav-btn nav-area'; link.href = a.href;
+    var link = document.createElement('a'); link.className = 'nav-btn nav-area'; link.href = (window.NayaHubStagedHref ? window.NayaHubStagedHref(a.href) : a.href); /* FOLLOW-UP 16: the href is staged at build - Hub routes become hashes, Dashboard/Personal become proof-host ?file= URLs, live keeps the live link. */
     link.setAttribute('data-area', a.id); link.setAttribute('data-spy-key', 'area:' + a.id);
     if (a.countKey) link.setAttribute('data-count-key', a.countKey);
     link.style.setProperty('--nav', a.color);
@@ -6889,8 +6893,8 @@ function HubView(params) {
      SEGS + ICONS + get/set/bump/sound/counts/refresh/syncStack/init
      VERBATIM. TWO Hub adaptations, named: (1) tap() uses the Hub's own
      live-proven destinations (H1 settled law §4 — Mail -> rooms/mail,
-     Activity -> the /hub/feed-activity lens, Spaces -> nayanet.app/space,
-     ECOSYSTEM -> nayanet.app/#/hub, the Apps destination, because the Hub
+     Activity -> the /hub/feed-activity lens, Spaces -> the Spaces room,
+     ECOSYSTEM -> the Hub feed, the Apps destination, because the Hub
      has no drawers; Personal's osShowView/pcToggleDrawer do not exist
      here). (2) A SIXTH seg, plus-connect (CONNECT), rides beside the five
      (Shawn 18:58Z — the extra + is the RIGHT +). Icons only — the names
@@ -6949,10 +6953,14 @@ window.NayaNotif = window.NayaNotif || {
       /* HUB adaptation — the Hub's live-proven destinations (see header).
          The count for that channel clears on tap, as before. No drawers
          on the Hub, so the drawer preamble is dropped. */
-      if (k === 'mail') { this.set('mail', 0); window.location.href = 'https://nayanet.app/rooms/mail'; }
+      /* FOLLOW-UP 16: the Hub's own pages stay on the staged host - the
+         router renders the room in-page on staged (E1) and goes external
+         on live, so one line serves both. ECOSYSTEM is the Hub itself:
+         it goes to the Hub feed, a real destination, never a dead end. */
+      if (k === 'mail') { this.set('mail', 0); if (window.NayaRouter) window.NayaRouter.navigate('/hub/mail'); else location.hash = '#/hub/mail'; }
       else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed-activity'); else location.hash = '#/hub/feed-activity'; }
-      else if (k === 'spaces') { this.set('spaces', 0); window.location.href = 'https://nayanet.app/space'; }
-      else if (k === 'eco') { if (window.NayaChassis && window.NayaChassis.openRightRail) window.NayaChassis.openRightRail(); else window.location.href = 'https://nayanet.app/#/hub'; }
+      else if (k === 'spaces') { this.set('spaces', 0); if (window.NayaRouter) window.NayaRouter.navigate('/hub/spaces'); else location.hash = '#/hub/spaces'; }
+      else if (k === 'eco') { if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; }
       this.refresh();
     },
     syncStack() {
@@ -7232,9 +7240,22 @@ window.NayaNotif = window.NayaNotif || {
           if (window.NayaHubComposer) window.NayaHubComposer.open();
           return;
         }
-        var href = it.getAttribute('data-hub-href');
+        /* FOLLOW-UP 16: every + item lands staged. Message opens the
+           Hub's messenger panel; Mail opens the mail room; Create world
+           opens the Spaces room; Home opens the Hub feed - all in-page
+           on staged (router, E1), external on live. Make a post / Naya
+           note go to the staged Personal page (same proof host, same
+           ref) via NayaHubGoStaged; Smart note keeps its in-page
+           composer (unchanged above). */
+        var plusKey = it.getAttribute('data-hub-plus');
         window.hubClosePlusMenus();
-        if (href) location.href = href;
+        if (plusKey === 'message') { if (typeof openMsgPanel === 'function') openMsgPanel(); return; }
+        if (plusKey === 'mail') { if (window.NayaRouter) window.NayaRouter.navigate('/hub/mail'); else location.hash = '#/hub/mail'; return; }
+        if (plusKey === 'world') { if (window.NayaRouter) window.NayaRouter.navigate('/hub/spaces'); else location.hash = '#/hub/spaces'; return; }
+        if (plusKey === 'home') { if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; return; }
+        var href = it.getAttribute('data-hub-href');
+        if (href && window.NayaHubGoStaged) window.NayaHubGoStaged(href);
+        else if (href) location.href = href;
         return;
       }
       var inMenu = e.target.closest('.hub-plusmenu');
@@ -7460,7 +7481,7 @@ window.NayaNotif = window.NayaNotif || {
     { id: 'masterclass', label: 'AI Masterclass', icon: 'star', color: '#8e24aa', href: 'https://aimasterclass.help/' },
     { id: 'fac', label: 'Fast Action Club', icon: 'bolt', color: '#07925f', href: 'https://nayanet.app/personal#memberships' },
     { id: 'maxis', label: 'Maxis "AI Score"', icon: 'gauge', color: '#a21caf', href: 'https://app.nayanet.technology/' },
-    { id: 'about', label: 'About Us', icon: 'users', color: '#0f52ba', href: 'https://nayanet.groovepages.com/aboutus' },
+    { id: 'about', label: 'About Us', icon: 'users', color: '#0f52ba', href: 'https://nayanet.app/personal#about' }, /* FOLLOW-UP 16: the right current page is the Personal page's About - the live /about redirect itself points at /personal#about (its host is an expired-domain parking page); the Groovepages marketing page is not the current About. The build-time wrap stages it (Personal file + #about). */
     { id: 'whitepaper', label: 'White Paper', icon: 'doc', color: '#d4a017', href: 'https://nayanet.groovepages.com/whitepaper' },
     { id: 'pricing', label: 'Pricing', icon: 'tag', color: '#d4a017', href: 'https://naya-model-pricing.nayapower.workers.dev/' }
   ];
@@ -7468,7 +7489,7 @@ window.NayaNotif = window.NayaNotif || {
   try { aliasR = (localStorage.getItem('nayanet_smart_alias') || '').trim(); } catch (e) {}
   RIGHT_ITEMS.forEach(function (it) {
     var a = document.createElement('a');
-    a.className = 'nav-btn nav-right'; a.href = it.href;
+    a.className = 'nav-btn nav-right'; a.href = (window.NayaHubStagedHref ? window.NayaHubStagedHref(it.href) : it.href); /* FOLLOW-UP 16: staged at build, same rule as the left rows. */
     a.setAttribute('data-right', it.id);
     a.style.setProperty('--nav', it.color);
     a.setAttribute('aria-label', it.label);
@@ -7638,9 +7659,20 @@ window.pcRenderRailForTab=function(tab){
   window.PC_RAIL_TAB=tab||'personal';
   var live=window.PC_RAIL_LIVE||[];
   var standing=pcRailPeopleFor(window.PC_RAIL_TAB);
+  /* FOLLOW-UP 16: the match is the alias, or a WORD of the nutshell
+     starting with the query. The old match ran the query across the whole
+     "alias + nutshell" string, so searching "ruth" also matched vera -
+     her nutshell reads "VERIFY - truth. Nothing counts until I see it."
+     and "ruth" sits inside "truth". */
   var q=(window.PC_RAIL_Q||'').toLowerCase();
   if(q){
-    var has=function(p){ return ((p.alias||'')+' '+((p.nut||''))).toLowerCase().indexOf(q)>=0; };
+    var has=function(p){
+      var al=(p.alias||'').toLowerCase();
+      if(al.indexOf(q)>=0) return true;
+      var words=((p.nut||'').toLowerCase()).split(/[^a-z0-9]+/);
+      for(var wi=0;wi<words.length;wi++){ if(words[wi] && words[wi].indexOf(q)===0) return true; }
+      return false;
+    };
     live=live.filter(has); standing=standing.filter(has);
   }
   /* FOLLOW-UP 15 (Shawn 19:01-19:02 MST): the rail sorts highest % to
@@ -7649,7 +7681,7 @@ window.pcRenderRailForTab=function(tab){
      order (thora/iris 91, terra/ruth 88); the seed is untouched. */
   standing=standing.map(function(p,i){ return {p:p,i:i}; }).sort(function(a,b){ var d=(b.p.pct||0)-(a.p.pct||0); return d!==0?d:(a.i-b.i); }).map(function(x){ return x.p; });
   /* FOLLOW-UP 14 (Shawn 19:01 MST): the category chips are gone — search only.
-     The name search above (window.PC_RAIL_Q, alias + nutshell) is the only
+     The name search above (window.PC_RAIL_Q, alias, or a nutshell word starting with the query) is the only
      filter on this rail now. */
   var _pcSearch=document.getElementById('pcRailSearch');
   if(_pcSearch && _pcSearch.value!==(window.PC_RAIL_Q||'')) _pcSearch.value=window.PC_RAIL_Q||'';
@@ -7690,7 +7722,7 @@ window.pcRenderRail=function(live, standing){
     mo.observe(railBar, {childList:true, subtree:true, attributes:true, attributeFilter:['aria-selected','class']});
   }
 })();
-/* rail search: filters the active tab's people by alias or nutshell.
+/* rail search: filters the active tab's people by alias, or by a nutshell word starting with the query.
    FOLLOW-UP 14: the old wiring bound directly to #pcRailSearch at build time
    — but this block runs while HubView is still building (railR not appended,
    shell not in the document; see ROUND 2d below), so getElementById returned
@@ -7829,12 +7861,15 @@ if(wall&&rail&&wall.parentNode){
 }
 /* HUB CONTRACT (swap): the Hub owns the lens; Personal's rail follows
      it. Collective shows the whole directory (all 13); Personal shows
-     the public family; Activity (your world) shows the Naya family — the
+     the public family; Activity shows the whole directory (all 13) — the
      same lens->people mapping the menu control uses for its Connections
      sub-rows. render(lens) takes personal / activity / collective from
      window.NayaHubPeople.readLens(). */
   window.NayaHubPeople.render = function(lens) {
-    var tab = lens === 'personal' ? 'public' : (lens === 'activity' ? 'naya' : 'personal');
+    /* FOLLOW-UP 16: the Activity view shows the whole directory (all 13).
+       The Naya-family slice (6) hid people from the Activity view; the
+       Personal lens keeps its public family (7). */
+    var tab = lens === 'personal' ? 'public' : 'personal';
     window.pcRenderRailForTab(tab);
   };
   /* ROUND 2d - first render DEFERRED one task: a synchronous refresh here
@@ -7861,10 +7896,10 @@ document.addEventListener('click', function(e){
   }
   var line2=document.querySelector('[data-pc-profile-call-status]');
   if(line2) line2.textContent='';
-  /* HUB RETARGET (swap): the Hub has no fcOpenChat — DM and Mail open the
-     Hub's own Smart Messenger panel (openMsgPanel), the mail+messenger
-     interface. Audio/Video keep the harvested honest status line. */
-  if(typeof openMsgPanel==='function') openMsgPanel();
+  /* FOLLOW-UP 16: DM and Mail open the messenger ADDRESSED to that person
+     (openMsgPanel alias+purpose) - never the same generic dialog for
+     everyone. Audio/Video keep the harvested honest status line. */
+  if(typeof openMsgPanel==='function') openMsgPanel(alias, act==='chat'?'dm':'mail');
 });
 /* The keyword box above the feed (#tnSearchPersonalInput) is hidden by Shawn's
    popup-only search law (base: #tnpsBand{display:none!important} — "search is a
@@ -7875,9 +7910,9 @@ document.addEventListener('click', function(e){
      No #pcRailPop transplant; both open the Hub's Smart Messenger panel. */
   document.addEventListener('click', function(e){
     var orb=e.target&&e.target.closest?e.target.closest('[data-pc-orb]'):null;
-    if(orb){ if(typeof openMsgPanel==='function') openMsgPanel(); return; }
+    if(orb){ if(typeof openMsgPanel==='function') openMsgPanel(orb.getAttribute('data-pc-orb'), 'profile'); return; }
     var info=e.target&&e.target.closest?e.target.closest('[data-pc-info]'):null;
-    if(info){ if(typeof openMsgPanel==='function') openMsgPanel(); return; }
+    if(info){ if(typeof openMsgPanel==='function') openMsgPanel(info.getAttribute('data-pc-info'), 'about'); return; }
   });
 })();
   shell.append(rail, main, railR, backdrop);
@@ -7941,6 +7976,13 @@ document.addEventListener('click', function(e){
     x.textContent = '\u00d7';
     x.addEventListener('click', function () { closeMsgPanel(); window._nayaMenuState = 'neither'; });
     head.appendChild(title); head.appendChild(x); panel.appendChild(head);
+    /* FOLLOW-UP 16: the person header - the rail's profile / About / DM /
+       Mail open THAT person here, above the room. Hidden until a person
+       is passed to openMsgPanel. */
+    var personEl = document.createElement('div');
+    personEl.className = 'hub-msg-person';
+    personEl.style.cssText = 'display:none;padding:20px 20px 0;';
+    panel.appendChild(personEl);
     var bodyEl = document.createElement('div');
     bodyEl.className = 'hub-msg-body';
     var room = null;
@@ -7954,8 +7996,61 @@ document.addEventListener('click', function(e){
     window.__hubMsgBackdrop = backdrop;
     return panel;
   }
-  function openMsgPanel() {
+  /* FOLLOW-UP 16 - the rail's controls open THAT person, never the same
+     generic dialog: orb -> profile, info (i) -> About, DM -> a DM with
+     them, Mail -> mail to them. The seed (alias, nut, pct) is the person's
+     record; the panel chrome is the Hub's own messenger panel; the Reach
+     row reuses the rail's own buttons, so its delegated handlers work. */
+  function pcPersonByAlias(a){
+    var seed=window.PC_RAIL_SEED||[];
+    for(var i=0;i<seed.length;i++){ if(seed[i] && seed[i].alias===a) return seed[i]; }
+    return null;
+  }
+  function pcPersonPanelHtml(p, purpose){
+    var name=p.alias.charAt(0).toUpperCase()+p.alias.slice(1);
+    var init=p.alias.charAt(0).toUpperCase();
+    var nutParts=String(p.nut||'').split('\u2014');
+    var domain=(nutParts[0]||'').trim();
+    var about=(nutParts.slice(1).join('\u2014')||'').trim();
+    var head='<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"><span class="fc-pick-av" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</span><span style="font-size:19px;font-weight:700;color:#ffffff;">'+esc(name)+'</span><span class="pc-pct-one" style="--pc:'+pcColorFor(p.alias)+'">'+p.pct+'%</span></div>';
+    if(purpose==='about'){
+      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">'+(domain?'<b>'+esc(domain)+'</b> \u2014 ':'')+esc(about||p.nut||'')+'</div>';
+    }
+    if(purpose==='dm'){
+      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">Direct message with '+esc(name)+'.</div>';
+    }
+    if(purpose==='mail'){
+      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">Smart Mail to '+esc(name)+'.</div>';
+    }
+    var acts=[['chat','\u270e','#0f52ba','DM'],['mail','\u2709','#d4a017','Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
+    var btns='';
+    for(var i=0;i<acts.length;i++){
+      btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
+    }
+    var eye='<button type="button" class="pc-act-btn" data-pc-info="'+esc(p.alias)+'" style="--ac:#ffffff" aria-label="About '+esc(p.alias)+'" title="About '+esc(p.alias)+'"><b>i</b></button>';
+    return '<div data-pc-alias="'+esc(p.alias)+'">'+head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;margin-bottom:12px;">'+(domain?'<b>'+esc(domain)+'</b> \u2014 ':'')+esc(about||p.nut||'')+'</div><div class="pc-card-acts">'+eye+'<div class="pc-card-acts4">'+btns+'</div></div></div>';
+  }
+  function openMsgPanel(person, purpose) {
     var panel = ensureMsgPanel();
+    var title = panel.querySelector('.hub-msg-title');
+    var personEl = panel.querySelector('.hub-msg-person');
+    var bodyEl = panel.querySelector('.hub-msg-body');
+    var p = person ? pcPersonByAlias(person) : null;
+    if (p) {
+      var nm = p.alias.charAt(0).toUpperCase() + p.alias.slice(1);
+      var label = purpose === 'about' ? ('About ' + nm) : purpose === 'dm' ? ('DM \u2014 ' + nm) : purpose === 'mail' ? ('Mail to ' + nm) : (nm + ' \u2014 Profile');
+      if (title) title.textContent = label;
+      panel.setAttribute('aria-label', label);
+      if (personEl) { personEl.innerHTML = pcPersonPanelHtml(p, purpose || 'profile'); personEl.style.display = 'block'; }
+      /* Profile and About are the person's own view - the mail room stays
+         hidden under them. DM and Mail keep the room below the person. */
+      if (bodyEl) bodyEl.style.display = (purpose === 'profile' || purpose === 'about') ? 'none' : '';
+    } else {
+      if (title) title.textContent = 'Smart Messenger';
+      panel.setAttribute('aria-label', 'Smart Messenger');
+      if (personEl) { personEl.innerHTML = ''; personEl.style.display = 'none'; }
+      if (bodyEl) bodyEl.style.display = '';
+    }
     document.body.classList.add('msg-open');
     var x = panel.querySelector('.hub-msg-x');
     if (x) x.focus();
@@ -11721,12 +11816,79 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
     location.href = EXTERNAL_ROOMS[room] + location.search;
   }
 
+  /* FOLLOW-UP 16 (Shawn 2026-11-19 ~20:14 MST - every button lands on the
+     right page): the Hub's own pages stay on the staged host in the staged
+     build. The proof host serves this file for every path (?file=...&ref=...),
+     so leaving for a live /rooms/<id> or app page would only reload the
+     feed; on live (no file= marker) the external navigation is unchanged. */
+  window.NayaHubIsStaged = function () {
+    try { return /(?:^|[?&])file=/.test(location.search); } catch (e) { return false; }
+  };
+  /* FOLLOW-UP 16: staged URL for a sibling app file (Dashboard, Personal).
+     Returns null when this is not a staged build - the caller keeps the
+     live link then. The proof host needs only ?file=...&ref=... (no cb). */
+  window.NayaHubStagedFile = function (file, hash) {
+    try {
+      var q = new URLSearchParams(location.search);
+      var ref = q.get('ref');
+      if (!q.get('file') || !ref) return null;
+      return location.origin + location.pathname + '?file=' + file + '&ref=' + ref + (hash || '');
+    } catch (e) { return null; }
+  };
+  /* FOLLOW-UP 16: map a live nayanet.app URL to its staged equivalent.
+     Hub routes become in-document hashes (the router renders the room
+     internally on staged, externally on live); app pages with a staged
+     file become proof-host ?file= URLs; everything else keeps its live
+     link (outside destinations stay live only when they are the right
+     current page). */
+  window.NayaHubStagedHref = function (href) {
+    if (!href) return href;
+    if (href.charAt(0) === '#') return href;
+    var u = null;
+    try { u = new URL(href, location.href); } catch (e) { return href; }
+    if ((u.hostname || '') !== 'nayanet.app') return href;
+    var hash = u.hash || '';
+    if (hash.indexOf('#/hub/') === 0) return hash;
+    var path = u.pathname || '/';
+    if (path === '/hub' || path === '/') return '#/hub/feed';
+    var rm = path.match(/^\/rooms\/([a-z]+)$/);
+    if (rm) return '#/hub/' + rm[1];
+    if (path === '/personal') {
+      var pf = window.NayaHubStagedFile ? window.NayaHubStagedFile('PERSONAL/index-master-20261105.html', hash) : null;
+      return pf || href;
+    }
+    if (path === '/dashboard') {
+      var df = window.NayaHubStagedFile ? window.NayaHubStagedFile('DASHBOARD/app/index.html', hash) : null;
+      return df || href;
+    }
+    return href;
+  };
+  /* FOLLOW-UP 16: navigate a (possibly live) href the staged-correct way.
+     Hash results go through the router so the room renders in-page. */
+  window.NayaHubGoStaged = function (href) {
+    var staged = window.NayaHubStagedHref ? window.NayaHubStagedHref(href) : href;
+    if (!staged) return;
+    if (staged.charAt(0) === '#') {
+      if (window.NayaRouter) window.NayaRouter.navigate(staged.slice(1));
+      else location.hash = staged;
+      return;
+    }
+    location.href = staged;
+  };
+
   // Legacy internal entry routes are neutralized — everything lands in the Hub.
   Router.on('welcome', () => { location.hash = '#/hub'; return document.createElement('div'); });
   Router.on('identity', () => { location.hash = '#/hub'; return document.createElement('div'); });
   Router.on('hub', () => window.HubView({ room: 'feed' }));
   Router.on('hub/:room', params => {
-    if (EXTERNAL_ROOMS[params.room]) { goExternal(params.room); return document.createElement('div'); }
+    if (EXTERNAL_ROOMS[params.room]) {
+      /* FOLLOW-UP 16: staged builds keep the Hub's own rooms in-page -
+         the live /rooms/<id> pages live on nayanet.app, but the staged
+         host serves this file for every path, so leaving would only
+         reload the feed. Live keeps the external navigation. */
+      if (window.NayaHubIsStaged && window.NayaHubIsStaged()) return window.HubView(params);
+      goExternal(params.room); return document.createElement('div');
+    }
     return window.HubView(params);
   });
   // A Smart Note opens INSIDE the Hub: the Hub shell stays, the note renders
