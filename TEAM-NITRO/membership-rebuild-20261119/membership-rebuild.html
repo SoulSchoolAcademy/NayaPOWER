@@ -22539,6 +22539,7 @@ function saClose(){
   var _bb3 = sa$('os-bottom3'); if(_bb3) _bb3.style.display = ''; /* FIX-2: the bottom bar returns on total close. */
   var _cc3 = sa$('saCoverCard'); if(_cc3) _cc3.hidden = false; /* FIX-2b: the hero returns on total close. */
   var _nb3 = sa$('naya-notif-bar'); if(_nb3) _nb3.style.display = ''; /* FIX-2b: the notif trio returns on total close. */
+  var _pk3 = sa$('saCoursePick'); if(_pk3) _pk3.hidden = false; /* FIX-2c: the course cards return on total close. */
   saLessonOpen = false; /* FIX-1: total close clears the open-lesson state. */
   saCur = null;
   if(window.osShowView) window.osShowView('home');
@@ -22793,6 +22794,7 @@ function saShowToc(){
   var _bb2 = sa$('os-bottom3'); if(_bb2) _bb2.style.display = ''; /* FIX-2: the bottom bar returns with the chooser. */
   var _cc2 = sa$('saCoverCard'); if(_cc2) _cc2.hidden = false; /* FIX-2b: the hero returns with the chooser. */
   var _nb2 = sa$('naya-notif-bar'); if(_nb2) _nb2.style.display = ''; /* FIX-2b: the notif trio returns with the chooser. */
+  var _pk2 = sa$('saCoursePick'); if(_pk2) _pk2.hidden = false; /* FIX-2c: the course cards return with the chooser. */
   saLevel = 'toc';
   var toc = sa$('saToc'); if(toc) toc.hidden = false;
   var head = sa$('saSectionHead'); if(head) head.hidden = true;
@@ -22855,6 +22857,8 @@ function saShowView(v){
      faded notif trio too (it would otherwise float over the playlist once the bottom bar is gone). */
   var _cc = sa$('saCoverCard'); if(_cc) _cc.hidden = (saSection==='audios');
   var _nb = sa$('naya-notif-bar'); if(_nb) _nb.style.display = (saSection==='audios') ? 'none' : '';
+  /* FIX-2c: the "Choose your course" card row also sits above the player in flow — at phone width it stacks ~900px tall and pushes the player below the fold. Hide it on the Powercast page too (it returns with the chooser, like the hero). */
+  var _pk = sa$('saCoursePick'); if(_pk) _pk.hidden = (saSection==='audios');
   if(saSection==='audios' && window.saPcExactResize){ try{ window.saPcExactResize(); }catch(e){} }
   var course = sa$('saCourse');
   if(course) course.scrollIntoView({block:'start'});
