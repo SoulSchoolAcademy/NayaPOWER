@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 19:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24615,6 +24615,14 @@ _Last updated: 2026-11-20 19:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: instrument auto-retrieval/t0585_seppool.py sha256 b3322d253974bb0a2e3f512856ef74f0f202597566ade59d59e12db7c6643e63 on disk (matches); seal sealed-note-t0585.md sha256 9f6c07f210515951ea9cf197733214a3478aa251816db02b013828175e7ee1c8; seal mtime 05:46:51Z strictly before results mtime 05:47:01Z (seal-before-run holds); results-t0585-seppool
 
+### ✅ t0584 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** t0572 lineage correction - supplement + one #2175 board note
+
+**Receipt:** `twelve-lane-receipts/t0584-lane12.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: auto-retrieval/sealed-note-t0572-lineage-correction.md sha256 065e18c77572839abea46eab13bb9e85960d3e66f672468c24fa6c36d26daad7 EXACT match; firing (2/3) + improvement (A P6 15->8, B P2 19->1) re-derived in-receipt from frozen t0555/t0545 result files with the rule quot
+
 ### ✅ t0584-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** t0572 lineage correction - supplement + board note
@@ -24636,6 +24644,14 @@ _Last updated: 2026-11-20 19:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0584-lane12.md`
 
 **Evidence:** Verified: supplement auto-retrieval/sealed-note-t0572-lineage-correction.md sha256 065e18c77572839abea46eab13bb9e85960d3e66f672468c24fa6c36d26daad7 on disk (matches); #2175 comment 6139108156 live-read back (created 2026-10-13T05:43:34Z, 2399 chars, carries INFORMATIVE-PARTIAL + the supplement sha). Honest hypothesis test (would have written 'linea
+
+### ✅ t0583 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Observatory window verdict t0576-t0583: receipt cost + falsification rate, FP-001 gate
+
+**Receipt:** `twelve-lane-receipts/t0583-lane11.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: lane-11/corpus_pin_t0576-t0583.json sha256 bac78fb15854bf204cef386837ab58a2c7d6395609d82700098968b083656d61 EXACT match; lane-11/verdict_cost_t0583.json sha256 b2e7de6b333b84b374181cc63e02deae16373ed3a129cd1b401f6f556282159a EXACT match; corpus pinned BEFORE numbers ra
 
 ### ✅ t0583-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -24659,6 +24675,14 @@ _Last updated: 2026-11-20 19:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: lane-11/corpus_pin_t0576-t0583.json and verdict_cost_t0583.json exist at exact cited sha256s (bac78fb1..., b2e7de6b...). Real value: pinned corpus before any number ran (15 rows, zero mid-run landings), recomputed t892-t1042 baseline from live bytes byte-exact (42/2365/47.5/5696.5) matching 3 prior windows, cost medians inside FP-001 Shar
 
+### ✅ t0583 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent re-run of veracity verdict (R1-R4 guard) - four-way CONFIRM on RED score 103.8626
+
+**Receipt:** `twelve-lane-receipts/t0583-lane1.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: lane1-t0583-veracity-rerun.md sha256 99092d83914e2e4110f9630b895af30687e33c35c7a73f1051fb528accadde74 EXACT match; scratch-t0583-lane1/rerun_veracity_guard.py sha256 991f628b23b8fe96a149af678d00093f71a1ced41ee2d2811f4657dd8cd9d939 EXACT match; all four arms match pre-r
+
 ### ✅ t0583-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Independent four-way re-run of t0568 veracity verdict on frozen t1412 X-fixture pool
@@ -24681,6 +24705,14 @@ _Last updated: 2026-11-20 19:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: report lane1-t0583-veracity-rerun.md and guard script scratch-t0583-lane1/rerun_veracity_guard.py exist at exact cited sha256s (99092d83..., 991f628b...). Real value: wrote own guard from own reading of R1-R4 (never imported apply_veracity_guard), pin-asserted all 8 fixture SHAs pre-measurement, all four arms matched pre-registered expect
 
+### ✅ t0582 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Veracity-verdict as re-ranker, measured over Lane 7 certified stemmed-TF-IDF arm on 3 frozen t0532 tasks
+
+**Receipt:** `twelve-lane-receipts/t0582-lane8.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: lane8-t0582-veracity-rerank.md sha256 0ec29e78b1db73403a210943f3204bdd481bbcfb77e62272d4f06f7796fcfe39 EXACT match; lane8-t0582-rerank-results.json 940275e9cbd35bc57ae0afe7283d92c0b3f699210095f404a5acb35212add6da EXACT match; lane8-t0582-rerank-measure.py c30c5e28c1d4d
+
 ### ✅ t0582-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Veracity-verdict as re-ranker, measured over certified stemmed-TF-IDF arm on 3 frozen tasks
@@ -24702,6 +24734,14 @@ _Last updated: 2026-11-20 19:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0582-lane8.md`
 
 **Evidence:** ARTIFACTS VERIFIED on disk: lane8-t0582-veracity-rerank.md (sha256 0ec29e78b1db...), lane8-t0582-rerank-results.json (940275e9cbd3...), lane8-t0582-rerank-measure.py (c30c5e28c1d4...) all exist, SHA prefixes match receipt exactly. Pre-written expectations all held (0/3 errors), guard UNFIRED (0/3 winner changes, HIT@5 shift 0.000) plus bonus findin
+
+### ✅ t0582 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Build injection-seam prototype v0.1 - queued brief to top-2 principles, measured on 5 live briefs
+
+**Receipt:** `twelve-lane-receipts/t0582-lane6.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/retrieval/injection-seam-v0.1.py sha256 a1dda055320e690111f55bec51d73697370461b2dbb6cda1eb6d21ef1ed0339c EXACT match; retrieval/injection-seam-v0.1-results.json sha256 2948bb8ab2403a95e8aeff7df57160cad1409bf6879cc39b8bb6f7d801d5b3ba EXACT match. NOT PHANTO
 
 ### ✅ t0582-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
 
@@ -24848,6 +24888,14 @@ _Last updated: 2026-11-20 19:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0582b-lane4.md`
 
 **Evidence:** Verified: remote branch lane4/b60-smart-note-completeness-gate-wiring head = 59832ba6144f5f8dc71ec5d1127437cb80446427 (ls-remote, matches receipt); parent commit = live tip bdfb5868a1ef0 (matches); .github/workflows/smart-note-completeness-gate.yml present in the commit tree (5117 files, not truncated). MERGED-NOT-ENFORCED confirmed by git grep (2 
+
+### ✅ t0582 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Verify & close PR #2465 as superseded (brief-t0582-close2465)
+
+**Receipt:** `twelve-lane-receipts/t0582-lane3.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty - no unscored receipt <3h old). VERIFIED first-hand this tick: superseder commit 1dfe11de5b4e45d80290c0862241a04cbdced0ca, PR head f0ccc058b131ca89b58e674020f9a2f3682561f5, and close-time tip bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad all exist as commits in the local mirror (git cat-file -t = commit x3
 
 ### ✅ t0582-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
