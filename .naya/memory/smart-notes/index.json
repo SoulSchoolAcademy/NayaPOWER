@@ -62108,26 +62108,6 @@
       "page_hash": "56f5700cc26cb555c020895b223cabafd129df2bacf7c4f8a9f2c9741e2dc640"
     },
     {
-      "smart_note_id": "SN-3549",
-      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3549-one-naya-one-standard-live-time",
-      "title": "One Naya, One Standard, Live Time",
-      "content_hash": "707a988e1566bd553b9dd3b235f914083b2e46b3f887f965eccb1338a0099ae1",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3549/IB-SMART-NOTE-20261118-sn3549-one-naya-one-standard-live-time.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "truth_state": "CANDIDATE",
-      "scope": "PRIVATE",
-      "category": "DESIGN",
-      "topic": "DESIGN",
-      "subtopic": "",
-      "captured_at": "2026-11-19",
-      "lifecycle_state": "ACTIVE",
-      "provenance": {
-        "ingestion": "canonical-reconstruction",
-        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
-      },
-      "page_hash": "87df10a372a90a493e354d879239bf0d2b368086f2873b87a3469bbd4fed8609"
-    },
-    {
       "smart_note_id": "SN-3550",
       "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3550-my-eye-his-eye-my-eye-again",
       "title": "My Eye, His Eye, My Eye Again",
@@ -62146,46 +62126,6 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "7230d78e643d748373b5cf3d5bc13827d3e125be76852337daf874d0013eb3f3"
-    },
-    {
-      "smart_note_id": "SN-3550",
-      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3550-the-kit-written-for-the-citizen",
-      "title": "The Kit, Written for the Citizen",
-      "content_hash": "d60262a7cc6e19455fc5ee619cf1baffc06474600b8bcd84a4bea5cb5e3ac1c6",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/DESIGN/SN-3550/IB-SMART-NOTE-20261118-sn3550-the-kit-written-for-the-citizen.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "truth_state": "CANDIDATE",
-      "scope": "PRIVATE",
-      "category": "DESIGN",
-      "topic": "DESIGN",
-      "subtopic": "",
-      "captured_at": "2026-11-19",
-      "lifecycle_state": "ACTIVE",
-      "provenance": {
-        "ingestion": "canonical-reconstruction",
-        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
-      },
-      "page_hash": "b87f7fc500e02ef2a3f6f31e49c1bef055f925adb530d8e8f70a93857f584d13"
-    },
-    {
-      "smart_note_id": "SN-3551",
-      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3551-scorecard-every-return-work-in-parallel",
-      "title": "Scorecard Every Return, Work in Parallel",
-      "content_hash": "6b6f1e10c5cf96570edf5017f824b67e390073c1b4c326c487084c02d3ac8e4c",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3551/IB-SMART-NOTE-20261118-sn3551-scorecard-every-return-work-in-parallel.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "truth_state": "CANDIDATE",
-      "scope": "PRIVATE",
-      "category": "SYSTEM",
-      "topic": "SYSTEM",
-      "subtopic": "",
-      "captured_at": "2026-11-19",
-      "lifecycle_state": "ACTIVE",
-      "provenance": {
-        "ingestion": "canonical-reconstruction",
-        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
-      },
-      "page_hash": "368174a922540af3b4efbbaeda898ebc8580f3a46f160a757f8cd075ea25a434"
     },
     {
       "smart_note_id": "SN-3551",
@@ -62226,46 +62166,6 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "8eb92814ffede43b2150227662e3f16bb379613639de0dc6a379907a7597cfea"
-    },
-    {
-      "smart_note_id": "SN-3552",
-      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3552-one-spine-one-border-every-lane",
-      "title": "One Spine, One Border, Every Lane",
-      "content_hash": "3fc2f774784d8eeca1c812762bac3dc3d465b4f0fa554d3e00c1a50ab8e2a6e2",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3552/IB-SMART-NOTE-20261118-sn3552-one-spine-one-border-every-lane.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "truth_state": "CANDIDATE",
-      "scope": "PRIVATE",
-      "category": "SYSTEM",
-      "topic": "SYSTEM",
-      "subtopic": "",
-      "captured_at": "2026-11-19",
-      "lifecycle_state": "ACTIVE",
-      "provenance": {
-        "ingestion": "canonical-reconstruction",
-        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
-      },
-      "page_hash": "dd6e569568ee6f96489e3da7d178008e88e124edd101ed42e23086ffb44947d1"
-    },
-    {
-      "smart_note_id": "SN-3553",
-      "intelligent_block_id": "IB-SMART-NOTE-20261118-sn3553-dont-send-it-back-until-ten",
-      "title": "Don't Send It Back Until Ten",
-      "content_hash": "f73832135806a6b972d061fe490c78d293f7477e47835fd0569457c69c377cfc",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/18/SYSTEM/SN-3553/IB-SMART-NOTE-20261118-sn3553-dont-send-it-back-until-ten.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "truth_state": "CANDIDATE",
-      "scope": "PRIVATE",
-      "category": "SYSTEM",
-      "topic": "SYSTEM",
-      "subtopic": "",
-      "captured_at": "2026-11-19",
-      "lifecycle_state": "ACTIVE",
-      "provenance": {
-        "ingestion": "canonical-reconstruction",
-        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-19 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
-      },
-      "page_hash": "4710c6d5d532def18818f3929413c16eb196b1200baa8b3daa5f0b7076c7af24"
     },
     {
       "smart_note_id": "SN-3553",
@@ -69270,7 +69170,7 @@
       "category": "VISION",
       "topic": "VISION",
       "captured_at": "2026-11-20",
-      "lifecycle_state": "ACTIVE",
+      "lifecycle_state": "SUPERSEDED",
       "registered_by": "naya-resolve",
       "registered_at": "2026-11-20T00:31:00Z",
       "directed_by": "Shawn Vibert",
@@ -69283,7 +69183,9 @@
         "Decisions",
         "Scorecard",
         "Value"
-      ]
+      ],
+      "supersession_reason": "number collision: same content_hash as SN-4203 capture; registry entry pointed at a projection file the Top Ten door landing created (3471088fb540) and the SN re-adjudication then removed (page 4a2acb3c744e, capture 4d337b885086) when the note moved to SN-4203; content preserved as SN-4203 (capture + file on disk, registry entry owed via the reconciliation lane); retired 2026-11-20 in the cold-retrieve r5 cure, never deleted — deleting would make the id vanish (no capture on disk for the old number).",
+      "superseded_by_capture_id": "IB-SMART-NOTE-20261120-sn4203-decisions-by-scorecard-never-by-guess.json"
     },
     {
       "smart_note_id": "SN-3956",
@@ -69302,7 +69204,7 @@
       "category": "VISION",
       "topic": "VISION",
       "captured_at": "2026-11-20",
-      "lifecycle_state": "ACTIVE",
+      "lifecycle_state": "SUPERSEDED",
       "registered_by": "naya-resolve",
       "registered_at": "2026-11-20T00:32:00Z",
       "directed_by": "Shawn Vibert",
@@ -69315,7 +69217,9 @@
         "Reports",
         "Daily Intelligence Report",
         "Value"
-      ]
+      ],
+      "supersession_reason": "number collision: same content_hash as SN-4204 capture; registry entry pointed at a projection file the Top Ten door landing created (c517d2899178) and the SN re-adjudication then removed (page 72ac80bf34b6, capture 1daba064fdcb) when the note moved to SN-4204; content preserved as SN-4204 (capture + file on disk, registry entry owed via the reconciliation lane); retired 2026-11-20 in the cold-retrieve r5 cure, never deleted — deleting would make the id vanish (no capture on disk for the old number).",
+      "superseded_by_capture_id": "IB-SMART-NOTE-20261120-sn4204-your-whole-day-distilled-every-morning.json"
     },
     {
       "smart_note_id": "SN-3957",
@@ -69334,7 +69238,7 @@
       "category": "VISION",
       "topic": "VISION",
       "captured_at": "2026-11-20",
-      "lifecycle_state": "ACTIVE",
+      "lifecycle_state": "SUPERSEDED",
       "registered_by": "naya-resolve",
       "registered_at": "2026-11-20T00:33:00Z",
       "directed_by": "Shawn Vibert",
@@ -69347,7 +69251,9 @@
         "Smart Factory",
         "Creation",
         "Value"
-      ]
+      ],
+      "supersession_reason": "number collision: same content_hash as SN-4205 capture; registry entry pointed at a projection file the Top Ten door landing created (a08f13a28e72) and the SN re-adjudication then removed (page 8f6898fb2a6c, capture a24054ad635a) when the note moved to SN-4205; content preserved as SN-4205 (capture + file on disk, registry entry owed via the reconciliation lane); retired 2026-11-20 in the cold-retrieve r5 cure, never deleted — deleting would make the id vanish (no capture on disk for the old number).",
+      "superseded_by_capture_id": "IB-SMART-NOTE-20261120-sn4205-smart-pages-and-apps-in-minutes.json"
     },
     {
       "smart_note_id": "SN-3958",
@@ -69366,7 +69272,7 @@
       "category": "VISION",
       "topic": "VISION",
       "captured_at": "2026-11-20",
-      "lifecycle_state": "ACTIVE",
+      "lifecycle_state": "SUPERSEDED",
       "registered_by": "naya-resolve",
       "registered_at": "2026-11-20T00:34:00Z",
       "directed_by": "Shawn Vibert",
@@ -69379,7 +69285,9 @@
         "Privacy",
         "Trust",
         "Value"
-      ]
+      ],
+      "supersession_reason": "number collision: same content_hash as SN-4206 capture; registry entry pointed at a projection file the Top Ten door landing created (f2d776f04fe0) and the SN re-adjudication then removed (page f884dee876c9, capture 927d37cfa825) when the note moved to SN-4206; content preserved as SN-4206 (capture + file on disk, registry entry owed via the reconciliation lane); retired 2026-11-20 in the cold-retrieve r5 cure, never deleted — deleting would make the id vanish (no capture on disk for the old number).",
+      "superseded_by_capture_id": "IB-SMART-NOTE-20261120-sn4206-private-by-design.json"
     },
     {
       "smart_note_id": "SN-3959",
@@ -69398,7 +69306,7 @@
       "category": "VISION",
       "topic": "VISION",
       "captured_at": "2026-11-20",
-      "lifecycle_state": "ACTIVE",
+      "lifecycle_state": "SUPERSEDED",
       "registered_by": "naya-resolve",
       "registered_at": "2026-11-20T00:35:00Z",
       "directed_by": "Shawn Vibert",
@@ -69411,7 +69319,9 @@
         "Ambassadors",
         "Network",
         "Value"
-      ]
+      ],
+      "supersession_reason": "number collision: same content_hash as SN-4207 capture; registry entry pointed at a projection file the Top Ten door landing created (fe0e5f2f7e81) and the SN re-adjudication then removed (page 81a97849fdba, capture c587f6ac07ed) when the note moved to SN-4207; content preserved as SN-4207 (capture + file on disk, registry entry owed via the reconciliation lane); retired 2026-11-20 in the cold-retrieve r5 cure, never deleted — deleting would make the id vanish (no capture on disk for the old number).",
+      "superseded_by_capture_id": "IB-SMART-NOTE-20261120-sn4207-connected-everyone-gets-more-powerful.json"
     },
     {
       "smart_note_id": "SN-4030",
@@ -72254,5 +72164,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "549ca86b160b665e26c23c337e4c4eb0a6d35ca7318bbaa4dadad240d61625bc"
+  "corpus_manifest_hash": "ae098740f4b3fb5a910c3a6cf8aad0995d1f3961f14429d256bfbbb36aaa047e"
 }
