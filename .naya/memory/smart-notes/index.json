@@ -69476,6 +69476,38 @@
         "One System",
         "World"
       ]
+    },
+    {
+      "smart_note_id": "SN-4032",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4032-you-dont-learn-it-you-just-use-it",
+      "slug": "you-dont-learn-it-you-just-use-it",
+      "title": "You Don't Learn It, You Just Use It",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4032/IB-SMART-NOTE-20261120-sn4032-you-dont-learn-it-you-just-use-it.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4032/IB-SMART-NOTE-20261120-sn4032-you-dont-learn-it-you-just-use-it.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4032/IB-SMART-NOTE-20261120-sn4032-you-dont-learn-it-you-just-use-it.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4032-you-dont-learn-it-you-just-use-it.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:05:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "9dcdd5f65ad6db363c0adc7a9a43c915a1f29d8ce423e6092ecdeb887a4aa65b",
+      "content_hash": "5d806030a2b8c45268855e436e3458e3a883a67401867f598f8c1af667e4d355",
+      "one_line": "You don't learn it. You just use it.",
+      "topics": [
+        "Simplicity",
+        "Citizen",
+        "Onboarding",
+        "Trial"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69486,5 +69518,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "57c49eff76f386af3a4aa761c0db235a096cdb1a19acb71a1ab7112cc961dbbd"
+  "corpus_manifest_hash": "a9f4ce44aa446d81bd790badefccf0990f5b78d32fb3b2ed9e11685e65970cff"
 }
