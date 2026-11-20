@@ -5336,6 +5336,9 @@ const BB_ICONS={feed:'<path d="M4 6h16M4 12h16M4 18h10"/>',today:'<path d="M12 3
 /* ================= STATE ================= */
 const $=s=>document.querySelector(s);
 const audio=new Audio(); audio.preload="metadata";
+window.saPcExactPause=function(){try{if(audio)audio.pause();}catch(e){}}; /* FIX-6 (item 1): the outside stop, exposed HERE — beside the audio it stops — so it exists the moment the player can play, whatever later init does. Fix-5 put this hook at the very end of the IIFE; the eye proved the sound keeps playing on every exit while the deck resets, which is the signature of a stop that never reaches the live element. The hook now lives with its element, not after 500 lines of init. */
+window.saPcExactAudio=audio; /* FIX-6 (item 1): the live element itself, for the membership stop's direct fallback and for the checker to read paused on. */
+window.saPcExactDeckDefault=function(){try{deckDefault();}catch(e){}}; /* FIX-6 (item 1): the outside deck reset, beside the pause hook (deckDefault is a hoisted function declaration, so this closure is valid here). */
 let pillar="ai",query="",cat="all",cur=null,queue=[],fbList=[],fbIdx=0,playing=false;
 let pos={}; try{pos=JSON.parse(localStorage.getItem("pc-pos")||"{}")}catch(e){pos={}}
 try{const _qs=localStorage.getItem("pc-queue");queue=_qs?JSON.parse(_qs):AI.map((e,i)=>({p:"ai",i:i}))}catch(e){queue=[]}
@@ -5839,7 +5842,7 @@ $("#dShare").onclick=()=>{if(cur)openShare(cur.p,cur.i);else toast("Play an epis
 $("#deckSeek").addEventListener("click",e=>{if(!audio.duration)return;
   const r=e.currentTarget.getBoundingClientRect();
   audio.currentTime=Math.min(.999,Math.max(0,(e.clientX-r.left)/r.width))*audio.duration;});
-document.addEventListener("keydown",e=>{if(e.code==="Space"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();toggle();}});
+document.addEventListener("keydown",e=>{if(e.code==="Space"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){var _pp=document.getElementById("saPanePodcasts");if(_pp&&_pp.hidden)return;e.preventDefault();toggle();}}); /* FIX-6 (item 4): Space toggles ONLY while the Audios pane is showing. Outside Audios it must not resume the PowerCast — the eye proved it resuming at 6:45 while the deck read READY, so the label lied. When the pane is hidden the key falls through (page scroll), it never reaches toggle(). When the pane does not exist (standalone player) the gate is open, as today. */
 (function(){const q=new URLSearchParams(location.search);const p=q.get("p"),en=q.get("e");
   
   if(en){const L=eps();const idx=L.findIndex(e=>numOf(pillar,e)===String(en).replace(/\D/g,"").padStart(2,"0"));
@@ -5859,8 +5862,7 @@ render();saveQueue();wave();
 /* FIX-2: library/playlist/up-next clicks bring the featured player into frame. */
 ["grid","upNext","plist"].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener("click",function(){var d=document.getElementById("deck");if(d)d.scrollIntoView({behavior:"smooth",block:"start"});});});
 window.saPcExactResize=function(){try{sizeCv();}catch(e){}};
-window.saPcExactPause=function(){try{if(audio)audio.pause();}catch(e){}}; /* FIX-5 (item 3): the outside stop for the PowerCast player - the membership script's saStopPcAudio() calls this on every exit from Audios. Pausing the audio fires this player's OWN 'pause' listener, which resets playing and the play button through its own sync (it never touches #deckStatus); this line adds no new behaviour to the player, it only lets the outside stop it. */
-window.saPcExactDeckDefault=function(){try{deckDefault();}catch(e){}}; /* FIX-5 CORRECTION (item 3 label): the outside deck reset for the PowerCast player - the membership script's saStopPcAudio() calls this right after pausing, on every exit from Audios. It runs the player's OWN deckDefault(): the ticker hides, the deck art returns to the station image, and #deckStatus reads READY with the live dot off. Without this hook the deck kept reading ON AIR while paused, because the pause listener never touches #deckStatus and deckDefault had no caller. This line adds no new behaviour to the player, it only lets the outside reset its deck. */
+/* FIX-6 (item 1): the outside stop + deck reset used to live here, at the end of the IIFE. They moved up beside the audio they stop (just after its creation), so they exist the moment the player can play. Same closures, same pattern, same behaviour — new address only. */
 })();
 </script>
 <div class="sa-pane" id="saPaneLesson" hidden></div>
@@ -22424,7 +22426,7 @@ document.addEventListener('DOMContentLoaded', function(){ try{ mwApplyBars(); mw
 (function(){
 'use strict';
 /* FIX-5 (Step 1): ?fresh=1 test hook - clears the two recorded joins BEFORE boot reads them, so the eye can re-walk the Academy gate from a truly fresh state (staged URL + '&fresh=1'). Param-gated ONLY: no param, no clear, nothing changes for a normal visitor; it clears exactly sa.join.academy + sa.join.fac, nothing else, and never touches the URL. This is the first statement of the script - every saHasJoined / saOpen / saOnEnter read happens after it. */
-try{ if(/(?:^|[?&])fresh=1(?:&|$)/.test(location.search||'')){ try{ localStorage.removeItem('sa.join.academy'); }catch(e){} try{ localStorage.removeItem('sa.join.fac'); }catch(e){} } }catch(e){}
+try{ if(/(?:^|[?&])fresh=1(?:&|$)/.test(location.search||'')){ var _bf=false; try{ var _nv=(performance.getEntriesByType&&performance.getEntriesByType('navigation')[0])||null; _bf=!!(_nv&&_nv.type==='back_forward'); }catch(e){} if(!_bf){ try{ localStorage.removeItem('sa.join.academy'); }catch(e){} try{ localStorage.removeItem('sa.join.fac'); }catch(e){} try{ sessionStorage.removeItem('sa.join.academy'); }catch(e){} try{ sessionStorage.removeItem('sa.join.fac'); }catch(e){} } } }catch(e){}
 function sa$(id){ return document.getElementById(id); }
 function saEsc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 function saFmt(t){ if(!isFinite(t)||t==null) return '0:00'; t=Math.max(0,Math.floor(t)); var m=Math.floor(t/60), s=t%60; return m+':'+(s<10?'0':'')+s; }
@@ -22506,7 +22508,7 @@ var saTheatreList = null;    /* 'channel' | 'academy' */
 var saTheatreIdx = 0;
 
 /* ---------- open / close ---------- */
-function saHasJoined(slug){ try{ return !!localStorage.getItem('sa.join.'+slug); }catch(e){ return false; } }
+function saHasJoined(slug){ try{ if(localStorage.getItem('sa.join.'+slug)) return true; }catch(e){} try{ return !!sessionStorage.getItem('sa.join.'+slug); }catch(e){ return false; } } /* FIX-6 (item 3): the join is mirrored in the tab session — leaving the membership view in-app must never forget it. localStorage is the durable record; sessionStorage is the same-tab mirror, so any single-store loss in-app cannot show the door to a citizen who already joined. A new tab has no session mirror but reads localStorage, so the gate still holds for strangers; ?fresh=1 clears both stores, so the fresh walk is unchanged. */
 /* FIX-2 2026-11-19: returning to the chooser (or switching course) must not replay the
    login door for a course the citizen already stepped into — saOnEnter records the join
    in localStorage, so a recorded join steps straight in. First entry still takes the door. */
@@ -22888,8 +22890,7 @@ function saShowView(v){
   var feedCard = sa$('saFeedCard');
   /* FIX-1: while a lesson is open the feed stays hidden — the open paths set saLessonOpen, saShowToc() clears it. */
   if(feedCard) feedCard.hidden = (saSection!=='lessons') || saLessonOpen;
-  /* FIX-2: the bottom icon bar GOES on the Powercast page (outdated there) — it returns on every other view and on the way home. */
-  var _bb = sa$('os-bottom3'); if(_bb) _bb.style.display = (saSection==='audios') ? 'none' : '';
+  /* FIX-6 (item 2): the six-tile bottom bar STAYS on the Powercast page. The eye proved it missing from Audios at 1920 while present in every other view (feed, Videos, chooser, lesson pane, lessons list, profile). FIX-2 hid it here; the bar is one bar, the same on every page, and Audios is not an exception. Nothing hides it on any section now. */
   /* FIX-2b: the course hero cover (1194px) sits above the player in flow — hide it on the
      Powercast page so the top player shows IN the frame under the top bar, and hide the
      faded notif trio too (it would otherwise float over the playlist once the bottom bar is gone). */
@@ -23204,6 +23205,7 @@ function saVerifyCode(name, code){
 }
 function saOnEnter(name){
   try{ localStorage.setItem('sa.join.'+saCur.slug, JSON.stringify({name:name, at:Date.now()})); }catch(e){}
+  try{ sessionStorage.setItem('sa.join.'+saCur.slug, JSON.stringify({name:name, at:Date.now()})); }catch(e){} /* FIX-6 (item 3): mirror the join in the tab session — see saHasJoined. */
   saCloseLogin();
   saEnterCourse();
 }
@@ -23335,6 +23337,8 @@ function saWire(){
   }, true);
   /* FIX-4 (item 6): browser Back from the composer returns to the course. A Back that lands on a state pushed by saOpenCompose restores the course (and the lesson, when one was open); any other popstate is left to the page's own view router. If the door is open the restore stops there - no entry without joining. */
   window.addEventListener('popstate', function(e){
+    /* FIX-6 (item 1e): browser Back stops the PowerCast. Back means leaving the current state, and the old handler returned early (no saReturn state) while the audio played on — the eye proved it (5:55 to 6:14, view stayed in Audios). The stop fires on ANY popstate while a course is open, before the restore logic. Restoring INTO Audios never re-pauses anything that plays there, and a restore after the composer re-stops audio saClose already stopped — idempotent. */
+    if(saCur){ try{ saStopPcAudio(); }catch(_){} }
     var r = e.state && e.state.saReturn; if(!r) return;
     try{
       if(!saCur || saCur.name!==r.name){ saOpen(r.name); }
@@ -23473,9 +23477,26 @@ function saChannelCoverHtml(V, j){
     + '<span class="sa-cover-play">\u25b6</span></div>'; /* REBUILD: day+title off the image — the card's h3 + dur line below carry them on plain ground. */
 }
 /* ---------- PowerCast player (harvested audio core) ---------- */
+/* FIX-6 (item 1): the stop follows the VISIBLE state, not just the call graph. Fix-5 traced every exit path to saStopPcAudio, yet the eye heard the sound on every exit — the live path evidently never reaches the helper, or never reaches the live element. Whatever the live path is, the Audios pane HIDING is the exit the eye can see: when #saPanePodcasts hides, or #saCourse hides (the page router leaving the membership view by any control), the audio stops. The observer fires after the hiders run, so it never races them; the stop is idempotent, so double stops are no-ops. Fullscreen is exempt by construction: saPcFullscreen moves the cards, it never hides the pane, so the player keeps playing fullscreen. */
+function saWatchPcExit(){
+  try{
+    if(!window.MutationObserver) return;
+    var pane = sa$('saPanePodcasts'), course = sa$('saCourse');
+    if(!pane && !course) return;
+    var _obs = new MutationObserver(function(){
+      try{
+        var p = sa$('saPanePodcasts'), c = sa$('saCourse');
+        if((p && (p.hidden || (p.style && p.style.display==='none'))) || (c && (c.hidden || (c.style && c.style.display==='none')))) saStopPcAudio();
+      }catch(_){}
+    });
+    if(pane) _obs.observe(pane, {attributes:true, attributeFilter:['hidden','style']});
+    if(course) _obs.observe(course, {attributes:true, attributeFilter:['hidden','style']});
+  }catch(e){}
+}
 function saStopPcAudio(){
   /* FIX-5 (item 3): ONE soundtrack at a time, always. The live PowerCast audio is the harvested player's own Audio object (const audio, inside the #saPcExact IIFE) - the membership script's saAudio is dead: saPcLoad/saPcSync/saPcInit all return early because the old player markup (saPcNum) is gone, so saAudio never gets a src and never plays. The harvested player exposes exactly one outside hook (window.saPcExactResize); the FIX-5 hook beside it (window.saPcExactPause) pauses that live audio, and pausing fires the player's OWN 'pause' listener, which resets the play button and the playing class through its own sync - and the companion hook window.saPcExactDeckDefault (FIX-5 CORRECTION, beside saPcExactPause) runs the player's OWN deckDefault(), so #deckStatus reads READY with the live dot off and the ticker hides. The pause listener never touches #deckStatus, so without that hook the deck kept reading ON AIR while paused - nothing here re-implements the player. saAudio is paused too, belt-and-braces, so the stop holds even if the old player markup ever returns. Called on EVERY exit from Audios (saShowView leaving audios, saShowToc, saClose) and at the theatre door. */
   try{ if(window.saPcExactPause) window.saPcExactPause(); }catch(e){}
+  try{ if(window.saPcExactAudio) window.saPcExactAudio.pause(); }catch(e){} /* FIX-6 (item 1): direct fallback — the live element itself, exposed beside the hook. If the hook ever went stale, the element pause still lands. Same audio, second path, no new behaviour. */
   try{ if(window.saPcExactDeckDefault) window.saPcExactDeckDefault(); }catch(e){} /* FIX-5 CORRECTION (item 3 label): reset the deck on the stop path - the player's own deckDefault() reads READY, live dot off, ticker hidden. */
   try{ if(saAudio) saAudio.pause(); }catch(e){}
 }
@@ -23548,7 +23569,7 @@ function saPcInit(){
 
 /* ---------- enter the course ---------- */
 
-try{ saPcInit(); saWire(); }catch(e){ try{ console.warn('[sa]', e); }catch(_){} }
+try{ saPcInit(); saWire(); saWatchPcExit(); /* FIX-6 (item 1): arm the visible-state stop at boot, beside the wiring. */ }catch(e){ try{ console.warn('[sa]', e); }catch(_){} }
 })();
 
 </script>
