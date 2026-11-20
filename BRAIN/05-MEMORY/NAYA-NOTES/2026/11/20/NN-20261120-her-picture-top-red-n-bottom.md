@@ -4,7 +4,7 @@
 
 **NN-20261120-her-picture-top-red-n-bottom · Naya Note · 2026-11-20 ~15:38–15:46 MST**
 
-*Paired Smart Note: SN-pending — Her Picture Top, the Red N Bottom (takes the next free number at filing)*
+*Paired Smart Note: SN-4340 — Her Picture Top, the Red N Bottom*
 
 **Category:** Design — the board layout law; her picture bigger, the red N at the bottom of each board
 
