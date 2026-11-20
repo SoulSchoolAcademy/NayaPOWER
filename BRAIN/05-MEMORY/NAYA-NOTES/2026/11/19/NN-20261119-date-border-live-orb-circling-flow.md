@@ -4,7 +4,7 @@
 
 **NN-20261119-date-border-live-orb-circling-flow · Naya Note · 2026-11-19 ~19:39 MST (02:39Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — The Date Border, Live — and the Orb's Circling Flow (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4215 — The Date Border, Live — and the Orb's Circling Flow*
 
 **Category:** Design — feed note boards (date/time border + orb)
 
