@@ -69828,6 +69828,38 @@
         "Execution",
         "Discipline"
       ]
+    },
+    {
+      "smart_note_id": "SN-4103",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4103-the-scarcest-resource-there-is",
+      "slug": "the-scarcest-resource-there-is",
+      "title": "The Scarcest Resource There Is",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4103/IB-SMART-NOTE-20261120-sn4103-the-scarcest-resource-there-is.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4103/IB-SMART-NOTE-20261120-sn4103-the-scarcest-resource-there-is.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4103/IB-SMART-NOTE-20261120-sn4103-the-scarcest-resource-there-is.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4103-the-scarcest-resource-there-is.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:20:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "44cc7c67dccbea33b4653b8ac094a0c67b942a975da7e391ba8d779332fb81b5",
+      "content_hash": "d761d1b63831a51e4342ba7ff23f43c722cd5c49bbf9590461736e1405fa78a8",
+      "one_line": "The human's attention is the scarcest resource there is.",
+      "topics": [
+        "Attention",
+        "Mechanic",
+        "Efficiency",
+        "Service"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69838,5 +69870,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "cda918eaecb321d5aee16a677da7f4890bbfe29ef4b21d6cdd32d818aa27d91e"
+  "corpus_manifest_hash": "25a788e497fd4a4764fc099d389b39461cc745c34104546acc2c1765578d0459"
 }
