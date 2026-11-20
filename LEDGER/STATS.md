@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-20 19:44 UTC_
+_Last updated: 2026-11-20 20:13 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9652
-- ✅ Verified (8+): 9555
+- **Total scored actions:** 9658
+- ✅ Verified (8+): 9561
 - 🟡 Partial (5–7): 87
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 6
@@ -15,18 +15,18 @@ _Last updated: 2026-11-20 19:44 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 646 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 647 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 640 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 585 | 9.0 | 10 |
+| Team 3 | Naya Judge | 586 | 9.0 | 10 |
 | Team 4 | Naya Mason | 569 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 703 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 406 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 407 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 554 | 8.9 | 10 |
-| Team 8 | Naya Sentinel | 581 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 582 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 706 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 968 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 639 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 496 | 9.1 | 9.5 |
+| Team 11 | Naya Heart | 640 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 497 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -3121,16 +3121,16 @@ _Last updated: 2026-11-20 19:44 UTC_
 - **t0581b:** 15 actions, avg 9.0/10
 - **t0581b-lane3:** 2 actions, avg 9.0/10
 - **t0581-lane7:** 1 actions, avg 9.0/10
-- **t0582:** 7 actions, avg 9.0/10
+- **t0582:** 10 actions, avg 8.9/10
 - **t0582-lane3:** 1 actions, avg 9.5/10
 - **t0582b:** 14 actions, avg 8.7/10
 - **t0582b-lane4:** 1 actions, avg 9.5/10
 - **t0582-lane6:** 1 actions, avg 8.5/10
 - **t0582-lane8:** 1 actions, avg 9.0/10
-- **t0583:** 4 actions, avg 9.0/10
+- **t0583:** 6 actions, avg 9.0/10
 - **t0583-lane1:** 1 actions, avg 9.0/10
 - **t0583-lane11:** 1 actions, avg 9.0/10
-- **t0584:** 2 actions, avg 9.0/10
+- **t0584:** 3 actions, avg 9.0/10
 - **t0584-lane12:** 1 actions, avg 9.0/10
 - **t0585:** 6 actions, avg 8.8/10
 - **t0585-lane5:** 1 actions, avg 8.5/10
