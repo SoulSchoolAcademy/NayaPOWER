@@ -4,7 +4,7 @@
 
 **NN-20261119-seen-for-a-second-then-gone-organizer · Naya Note · 2026-11-19 ~19:36–19:40 MST (02:36–02:40Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Seen for a Second, Then Gone — the Organizer Must Show New and All (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4217 — Seen for a Second, Then Gone — the Organizer Must Show New and All*
 
 **Category:** Design — feed organizer (New / All sections)
 
