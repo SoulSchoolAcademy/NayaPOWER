@@ -4,7 +4,7 @@
 
 **NN-20261120-stop-doing-new-buttons · Naya Note · 2026-11-20 ~16:23–16:24 MST**
 
-*Paired Smart Note: SN-pending — Stop Doing New Buttons (takes the next free number at filing)*
+*Paired Smart Note: SN-4345 — Stop Doing New Buttons*
 
 **Category:** Law — the buttons are the buttons we always do
 
