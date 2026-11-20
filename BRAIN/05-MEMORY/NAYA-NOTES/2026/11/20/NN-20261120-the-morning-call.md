@@ -4,7 +4,7 @@
 
 **NN-20261120-the-morning-call · Naya Note · 2026-11-20 ~08:02–08:30 MST (15:02–15:30Z)**
 
-*Paired Smart Note: SN-pending — Daily Reports Is the Whole Day, Intel Today Is the Highlights*
+*Paired Smart Note: SN-4270 — Daily Reports Is the Whole Day, Intel Today Is the Highlights*
 
 **Category:** Decisions — the morning call
 
