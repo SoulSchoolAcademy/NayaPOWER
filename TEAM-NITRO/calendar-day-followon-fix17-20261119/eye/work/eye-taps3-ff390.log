@@ -1,0 +1,6 @@
+SMART MEET: before: {'pressed': None, 'formHidden': True, 'formText': ''} | after tap: {'pressed': None, 'shadow': None}
+BOOK: before: APPOINTMENTS The day, booked — what is on, and a time to book. Nothing booked for this day yet. Book a time Smart Meet ‹ Back ‹ Wed Keep reading ◆ Fri ›
+BOOK: after : APPOINTMENTS The day, booked — what is on, and a time to book. Nothing booked for this day yet. Book a time Smart Meet FRI 2 0 SAT 2 1 SUN 2 2 MON 2 3 TUE 2 4 WED 2 5 THU 2 6 How long? 0 6 : 0 0 0 6 : 1 5 0 6 : 3 0 0 6 : 4 5 0 7 : 0 0 0 7 : 1 5 0 7 : 3 0 0 7 : 4 5 0 8 : 0 0 0 8 : 1 5 0 8 : 3 0 0 8 :
+CHANGE COVER: file chooser opened: True
+PAGE ERRORS: NONE
+DONE

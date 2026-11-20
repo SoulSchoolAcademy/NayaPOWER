@@ -1,0 +1,26 @@
+=== eye-chromium-fonts-1920 1920x999 ===
+--- wisdom sweep (forced slide 0 per day) ---
+day 15: PASS qLines=1 qFont=48px teach=633-662 store=702-721 pill=839-887 oneLine=True pillClear=118 nav=824-882 rimTop=900 navClear=18 cc=800-835 ccVis=True ccDisp=block ccXwx=False greet='Good afternoon, Shawn.' docW=1920
+day 16: PASS qLines=1 qFont=48px teach=633-662 store=702-721 pill=839-887 oneLine=True pillClear=118 nav=824-882 rimTop=900 navClear=18 cc=800-835 ccVis=True ccDisp=block ccXwx=False greet='Good afternoon, Shawn.' docW=1920
+day 17: PASS qLines=1 qFont=48px teach=633-662 store=702-721 pill=839-887 oneLine=True pillClear=118 nav=824-882 rimTop=900 navClear=18 cc=800-835 ccVis=True ccDisp=block ccXwx=False greet='Good afternoon, Shawn.' docW=1920
+day 18: PASS qLines=2 qFont=48px teach=665-695 store=735-754 pill=839-887 oneLine=True pillClear=85 nav=824-882 rimTop=900 navClear=18 cc=800-835 ccVis=True ccDisp=block ccXwx=False greet='Good afternoon, Shawn.' docW=1920
+day 19: PASS qLines=1 qFont=48px teach=633-662 store=702-721 pill=839-887 oneLine=True pillClear=118 nav=824-882 rimTop=900 navClear=18 cc=800-835 ccVis=True ccDisp=block ccXwx=False greet='Good afternoon, Shawn.' docW=1920
+day 20: PASS qLines=1 qFont=48px teach=633-662 store=702-721 pill=839-887 oneLine=True pillClear=118 nav=824-882 rimTop=900 navClear=18 cc=800-835 ccVis=True ccDisp=block ccXwx=False greet='Good afternoon, Shawn.' docW=1920
+day 21: PASS qLines=1 qFont=48px teach=633-662 store=702-721 pill=839-887 oneLine=True pillClear=118 nav=824-882 rimTop=900 navClear=18 cc=800-835 ccVis=True ccDisp=block ccXwx=False greet='Good afternoon, Shawn.' docW=1920
+sweep eye-chromium-fonts-1920: 7/7 PASS
+--- deck walk day 19 ---
+slide 0 Wisdom of the day SGood afte: PASS nav=824-882 clear=18 dots=804-816 cc=800-835 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=1920
+slide 1 Tap a world — see its notifi: PASS nav=824-882 clear=18 dots=288-300 cc=800-835 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=1920
+slide 2 JournalYour day, in your wor: PASS nav=824-882 clear=18 dots=288-300 cc=800-835 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=1920
+slide 3 Your WorldsSix worlds, one d: PASS nav=824-882 clear=18 dots=288-300 cc=800-835 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=1920
+slide 4 News HubLocal, Province and : PASS nav=824-882 clear=18 dots=288-300 cc=800-835 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=1920
+slide 5 AppointmentsThe day, booked : PASS nav=824-882 clear=18 dots=288-300 cc=800-835 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=621-674 oneLine=True smartHitC=BUTTON.elite-meetpill smartHitB=BUTTON.elite-meetpill journal=None journalVis=None journalXccVis=False journalHit=None docW=1920
+slide 6 Summary of the dayThe day, w: PASS nav=824-882 clear=18 dots=288-300 cc=800-835 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=519-617 journalVis={'x': 410, 'y': 519, 'w': 1100, 'h': 98, 'top': 519, 'bottom': 617, 'clipped': False} journalXccVis=False journalHit=SPAN.lr-g docW=1920
+slide 7 Naya NotesWrite it once — a : PASS nav=824-882 clear=18 dots=288-300 cc=800-835 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=1920
+slide 8 Smart NotesThe same words, s: PASS nav=824-882 clear=18 dots=288-300 cc=800-835 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=1920
+deck eye-chromium-fonts-1920: 9/9 PASS
+--- buttons + month ---
+BUTTONS keep=CLICKED before='November 2026 · 639 Hz' after='November 2026 · 396 Hz' | prev=CLICKED:‹ Thu afterPrev='November 2026 · 639 Hz'
+MONTH: {"total": 42, "numbered": 30, "blank": 12, "monthVisible": true, "name": "November 2026", "row5": [{"blank": false, "d": "29"}, {"blank": false, "d": "30"}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}], "row6": [{"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}]}
+PAGE ERRORS: NONE
+DONE eye-chromium-fonts-1920

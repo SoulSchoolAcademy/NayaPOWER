@@ -1,0 +1,1242 @@
+{
+ "tag": "eye-firefox-nofont-390",
+ "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/the-ultimate-calendar-v18-fix.staged.html&ref=calendar/day-followon-fix17-20261119&cb=f4c05109531f8b737891a43f6ea6bdcef84eddc9",
+ "sweep": [
+  {
+   "day": "November 2026 \u00b7 963 Hz",
+   "pass": true,
+   "greet": "Good afternoon, Shawn.",
+   "fonts": [],
+   "quoteFont": "32px",
+   "quoteLines": 5,
+   "teach": {
+    "x": 59,
+    "y": 583,
+    "w": 272,
+    "h": 75,
+    "top": 583,
+    "bottom": 658
+   },
+   "store": {
+    "x": 59,
+    "y": 659,
+    "w": 272,
+    "h": 37,
+    "top": 659,
+    "bottom": 696
+   },
+   "pill": {
+    "x": 40,
+    "y": 804,
+    "w": 283,
+    "h": 36,
+    "top": 804,
+    "bottom": 840
+   },
+   "pillOneLine": true,
+   "nav": {
+    "x": 59,
+    "y": 703,
+    "w": 272,
+    "h": 44,
+    "top": 703,
+    "bottom": 747
+   },
+   "teachHit": "DIV.dayteach",
+   "storeHit": "DIV.wq-store",
+   "pillClear": 108,
+   "rimLineTop": 809,
+   "navClear": 62,
+   "navWhole": true,
+   "backOverlapsHello": false,
+   "changeCover": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0
+   },
+   "ccVisible": false,
+   "ccDisplay": "none",
+   "ccOverlapsWeather": false,
+   "docScrollW": 390
+  },
+  {
+   "day": "November 2026 \u00b7 417 Hz",
+   "pass": true,
+   "greet": "Good afternoon, Shawn.",
+   "fonts": [],
+   "quoteFont": "32px",
+   "quoteLines": 5,
+   "teach": {
+    "x": 59,
+    "y": 583,
+    "w": 272,
+    "h": 75,
+    "top": 583,
+    "bottom": 658
+   },
+   "store": {
+    "x": 59,
+    "y": 659,
+    "w": 272,
+    "h": 37,
+    "top": 659,
+    "bottom": 696
+   },
+   "pill": {
+    "x": 40,
+    "y": 804,
+    "w": 283,
+    "h": 36,
+    "top": 804,
+    "bottom": 840
+   },
+   "pillOneLine": true,
+   "nav": {
+    "x": 59,
+    "y": 703,
+    "w": 272,
+    "h": 44,
+    "top": 703,
+    "bottom": 747
+   },
+   "teachHit": "DIV.dayteach",
+   "storeHit": "DIV.wq-store",
+   "pillClear": 108,
+   "rimLineTop": 809,
+   "navClear": 62,
+   "navWhole": true,
+   "backOverlapsHello": false,
+   "changeCover": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0
+   },
+   "ccVisible": false,
+   "ccDisplay": "none",
+   "ccOverlapsWeather": false,
+   "docScrollW": 390
+  },
+  {
+   "day": "November 2026 \u00b7 528 Hz",
+   "pass": true,
+   "greet": "Good afternoon, Shawn.",
+   "fonts": [],
+   "quoteFont": "32px",
+   "quoteLines": 4,
+   "teach": {
+    "x": 59,
+    "y": 550,
+    "w": 272,
+    "h": 75,
+    "top": 550,
+    "bottom": 625
+   },
+   "store": {
+    "x": 59,
+    "y": 626,
+    "w": 272,
+    "h": 37,
+    "top": 626,
+    "bottom": 663
+   },
+   "pill": {
+    "x": 40,
+    "y": 804,
+    "w": 283,
+    "h": 36,
+    "top": 804,
+    "bottom": 840
+   },
+   "pillOneLine": true,
+   "nav": {
+    "x": 59,
+    "y": 670,
+    "w": 272,
+    "h": 44,
+    "top": 670,
+    "bottom": 714
+   },
+   "teachHit": "DIV.dayteach",
+   "storeHit": "DIV.wq-store",
+   "pillClear": 141,
+   "rimLineTop": 809,
+   "navClear": 95,
+   "navWhole": true,
+   "backOverlapsHello": false,
+   "changeCover": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0
+   },
+   "ccVisible": false,
+   "ccDisplay": "none",
+   "ccOverlapsWeather": false,
+   "docScrollW": 390
+  },
+  {
+   "day": "November 2026 \u00b7 741 Hz",
+   "pass": true,
+   "greet": "Good afternoon, Shawn.",
+   "fonts": [],
+   "quoteFont": "32px",
+   "quoteLines": 6,
+   "teach": {
+    "x": 59,
+    "y": 616,
+    "w": 272,
+    "h": 75,
+    "top": 616,
+    "bottom": 691
+   },
+   "store": {
+    "x": 59,
+    "y": 692,
+    "w": 272,
+    "h": 37,
+    "top": 692,
+    "bottom": 729
+   },
+   "pill": {
+    "x": 40,
+    "y": 804,
+    "w": 283,
+    "h": 36,
+    "top": 804,
+    "bottom": 840
+   },
+   "pillOneLine": true,
+   "nav": {
+    "x": 59,
+    "y": 736,
+    "w": 272,
+    "h": 44,
+    "top": 736,
+    "bottom": 780
+   },
+   "teachHit": "DIV.dayteach",
+   "storeHit": "DIV.wq-store",
+   "pillClear": 75,
+   "rimLineTop": 809,
+   "navClear": 29,
+   "navWhole": true,
+   "backOverlapsHello": false,
+   "changeCover": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0
+   },
+   "ccVisible": false,
+   "ccDisplay": "none",
+   "ccOverlapsWeather": false,
+   "docScrollW": 390
+  },
+  {
+   "day": "November 2026 \u00b7 639 Hz",
+   "pass": true,
+   "greet": "Good afternoon, Shawn.",
+   "fonts": [],
+   "quoteFont": "32px",
+   "quoteLines": 5,
+   "teach": {
+    "x": 59,
+    "y": 583,
+    "w": 272,
+    "h": 75,
+    "top": 583,
+    "bottom": 658
+   },
+   "store": {
+    "x": 59,
+    "y": 659,
+    "w": 272,
+    "h": 37,
+    "top": 659,
+    "bottom": 696
+   },
+   "pill": {
+    "x": 40,
+    "y": 804,
+    "w": 283,
+    "h": 36,
+    "top": 804,
+    "bottom": 840
+   },
+   "pillOneLine": true,
+   "nav": {
+    "x": 59,
+    "y": 703,
+    "w": 272,
+    "h": 44,
+    "top": 703,
+    "bottom": 747
+   },
+   "teachHit": "DIV.dayteach",
+   "storeHit": "DIV.wq-store",
+   "pillClear": 108,
+   "rimLineTop": 809,
+   "navClear": 62,
+   "navWhole": true,
+   "backOverlapsHello": false,
+   "changeCover": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0
+   },
+   "ccVisible": false,
+   "ccDisplay": "none",
+   "ccOverlapsWeather": false,
+   "docScrollW": 390
+  },
+  {
+   "day": "November 2026 \u00b7 396 Hz",
+   "pass": true,
+   "greet": "Good afternoon, Shawn.",
+   "fonts": [],
+   "quoteFont": "32px",
+   "quoteLines": 5,
+   "teach": {
+    "x": 59,
+    "y": 583,
+    "w": 272,
+    "h": 75,
+    "top": 583,
+    "bottom": 658
+   },
+   "store": {
+    "x": 59,
+    "y": 659,
+    "w": 272,
+    "h": 37,
+    "top": 659,
+    "bottom": 696
+   },
+   "pill": {
+    "x": 40,
+    "y": 804,
+    "w": 283,
+    "h": 36,
+    "top": 804,
+    "bottom": 840
+   },
+   "pillOneLine": true,
+   "nav": {
+    "x": 59,
+    "y": 703,
+    "w": 272,
+    "h": 44,
+    "top": 703,
+    "bottom": 747
+   },
+   "teachHit": "DIV.dayteach",
+   "storeHit": "DIV.wq-store",
+   "pillClear": 108,
+   "rimLineTop": 809,
+   "navClear": 62,
+   "navWhole": true,
+   "backOverlapsHello": false,
+   "changeCover": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0
+   },
+   "ccVisible": false,
+   "ccDisplay": "none",
+   "ccOverlapsWeather": false,
+   "docScrollW": 390
+  },
+  {
+   "day": "November 2026 \u00b7 852 Hz",
+   "pass": true,
+   "greet": "Good afternoon, Shawn.",
+   "fonts": [],
+   "quoteFont": "32px",
+   "quoteLines": 6,
+   "teach": {
+    "x": 59,
+    "y": 616,
+    "w": 272,
+    "h": 94,
+    "top": 616,
+    "bottom": 709
+   },
+   "store": {
+    "x": 59,
+    "y": 710,
+    "w": 272,
+    "h": 37,
+    "top": 710,
+    "bottom": 748
+   },
+   "pill": {
+    "x": 40,
+    "y": 804,
+    "w": 283,
+    "h": 36,
+    "top": 804,
+    "bottom": 840
+   },
+   "pillOneLine": true,
+   "nav": {
+    "x": 59,
+    "y": 755,
+    "w": 272,
+    "h": 44,
+    "top": 755,
+    "bottom": 799
+   },
+   "teachHit": "DIV.dayteach",
+   "storeHit": "DIV.wq-store",
+   "pillClear": 56,
+   "rimLineTop": 809,
+   "navClear": 10,
+   "navWhole": true,
+   "backOverlapsHello": false,
+   "changeCover": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0
+   },
+   "ccVisible": false,
+   "ccDisplay": "none",
+   "ccOverlapsWeather": false,
+   "docScrollW": 390
+  }
+ ],
+ "deck": [
+  {
+   "step": 0,
+   "pass": true,
+   "slide": "Wisdom of the day SGood afte",
+   "rimLineTop": 809,
+   "nav": {
+    "x": 59,
+    "y": 703,
+    "w": 272,
+    "h": 44,
+    "top": 703,
+    "bottom": 747
+   },
+   "navClear": 62,
+   "navWhole": true,
+   "dots": {
+    "x": 140,
+    "y": 696,
+    "w": 111,
+    "h": 7,
+    "top": 696,
+    "bottom": 703
+   },
+   "changeCover": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0
+   },
+   "ccVisible": false,
+   "ccDisplay": "none",
+   "ccOverlapsWeather": false,
+   "ccOverlapsSlideBtns": [],
+   "ccOverlapsLeaves": [],
+   "smartMeet": null,
+   "smartOneLine": null,
+   "smartHitC": null,
+   "smartHitB": null,
+   "journalDoor": null,
+   "journalVis": null,
+   "journalOverlapsCCvis": false,
+   "journalHitC": null,
+   "docScrollW": 390
+  },
+  {
+   "step": 1,
+   "pass": true,
+   "slide": "Tap a world \u2014 see its notifi",
+   "rimLineTop": 809,
+   "nav": {
+    "x": 51,
+    "y": 739,
+    "w": 288,
+    "h": 60,
+    "top": 739,
+    "bottom": 799
+   },
+   "navClear": 10,
+   "navWhole": true,
+   "dots": {
+    "x": 193,
+    "y": 330,
+    "w": 138,
+    "h": 10,
+    "top": 330,
+    "bottom": 340
+   },
+   "changeCover": {
+    "x": 177,
+    "y": 352,
+    "w": 157,
+    "h": 40,
+    "top": 352,
+    "bottom": 392
+   },
+   "ccVisible": true,
+   "ccDisplay": "block",
+   "ccOverlapsWeather": false,
+   "ccOverlapsSlideBtns": [],
+   "ccOverlapsLeaves": [],
+   "smartMeet": null,
+   "smartOneLine": null,
+   "smartHitC": null,
+   "smartHitB": null,
+   "journalDoor": null,
+   "journalVis": null,
+   "journalOverlapsCCvis": false,
+   "journalHitC": null,
+   "docScrollW": 390
+  },
+  {
+   "step": 2,
+   "pass": true,
+   "slide": "JournalYour day, in your wor",
+   "rimLineTop": 809,
+   "nav": {
+    "x": 59,
+    "y": 739,
+    "w": 272,
+    "h": 60,
+    "top": 739,
+    "bottom": 799
+   },
+   "navClear": 10,
+   "navWhole": true,
+   "dots": {
+    "x": 193,
+    "y": 330,
+    "w": 138,
+    "h": 10,
+    "top": 330,
+    "bottom": 340
+   },
+   "changeCover": {
+    "x": 177,
+    "y": 352,
+    "w": 157,
+    "h": 40,
+    "top": 352,
+    "bottom": 392
+   },
+   "ccVisible": true,
+   "ccDisplay": "block",
+   "ccOverlapsWeather": false,
+   "ccOverlapsSlideBtns": [],
+   "ccOverlapsLeaves": [],
+   "smartMeet": null,
+   "smartOneLine": null,
+   "smartHitC": null,
+   "smartHitB": null,
+   "journalDoor": null,
+   "journalVis": null,
+   "journalOverlapsCCvis": false,
+   "journalHitC": null,
+   "docScrollW": 390
+  },
+  {
+   "step": 3,
+   "pass": true,
+   "slide": "Your WorldsSix worlds, one d",
+   "rimLineTop": 809,
+   "nav": {
+    "x": 59,
+    "y": 685,
+    "w": 272,
+    "h": 60,
+    "top": 685,
+    "bottom": 745
+   },
+   "navClear": 64,
+   "navWhole": true,
+   "dots": {
+    "x": 193,
+    "y": 330,
+    "w": 138,
+    "h": 10,
+    "top": 330,
+    "bottom": 340
+   },
+   "changeCover": {
+    "x": 175,
+    "y": 768,
+    "w": 157,
+    "h": 40,
+    "top": 768,
+    "bottom": 808
+   },
+   "ccVisible": true,
+   "ccDisplay": "block",
+   "ccOverlapsWeather": false,
+   "ccOverlapsSlideBtns": [],
+   "ccOverlapsLeaves": [],
+   "smartMeet": null,
+   "smartOneLine": null,
+   "smartHitC": null,
+   "smartHitB": null,
+   "journalDoor": null,
+   "journalVis": null,
+   "journalOverlapsCCvis": false,
+   "journalHitC": null,
+   "docScrollW": 390
+  },
+  {
+   "step": 4,
+   "pass": true,
+   "slide": "News HubLocal, Province and ",
+   "rimLineTop": 809,
+   "nav": {
+    "x": 59,
+    "y": 739,
+    "w": 272,
+    "h": 60,
+    "top": 739,
+    "bottom": 799
+   },
+   "navClear": 10,
+   "navWhole": true,
+   "dots": {
+    "x": 193,
+    "y": 330,
+    "w": 138,
+    "h": 10,
+    "top": 330,
+    "bottom": 340
+   },
+   "changeCover": {
+    "x": 177,
+    "y": 352,
+    "w": 157,
+    "h": 40,
+    "top": 352,
+    "bottom": 392
+   },
+   "ccVisible": true,
+   "ccDisplay": "block",
+   "ccOverlapsWeather": false,
+   "ccOverlapsSlideBtns": [],
+   "ccOverlapsLeaves": [],
+   "smartMeet": null,
+   "smartOneLine": null,
+   "smartHitC": null,
+   "smartHitB": null,
+   "journalDoor": null,
+   "journalVis": null,
+   "journalOverlapsCCvis": false,
+   "journalHitC": null,
+   "docScrollW": 390
+  },
+  {
+   "step": 5,
+   "pass": true,
+   "slide": "AppointmentsThe day, booked ",
+   "rimLineTop": 809,
+   "nav": {
+    "x": 59,
+    "y": 747,
+    "w": 272,
+    "h": 60,
+    "top": 747,
+    "bottom": 807
+   },
+   "navClear": 2,
+   "navWhole": true,
+   "dots": {
+    "x": 193,
+    "y": 330,
+    "w": 138,
+    "h": 10,
+    "top": 330,
+    "bottom": 340
+   },
+   "changeCover": {
+    "x": 177,
+    "y": 352,
+    "w": 157,
+    "h": 40,
+    "top": 352,
+    "bottom": 392
+   },
+   "ccVisible": true,
+   "ccDisplay": "block",
+   "ccOverlapsWeather": false,
+   "ccOverlapsSlideBtns": [],
+   "ccOverlapsLeaves": [],
+   "smartMeet": {
+    "x": 109,
+    "y": 678,
+    "w": 173,
+    "h": 59,
+    "top": 678,
+    "bottom": 737
+   },
+   "smartOneLine": true,
+   "smartHitC": "BUTTON.elite-meetpill",
+   "smartHitB": "BUTTON.elite-meetpill",
+   "journalDoor": null,
+   "journalVis": null,
+   "journalOverlapsCCvis": false,
+   "journalHitC": null,
+   "docScrollW": 390
+  },
+  {
+   "step": 6,
+   "pass": true,
+   "slide": "Summary of the dayThe day, w",
+   "rimLineTop": 809,
+   "nav": {
+    "x": 59,
+    "y": 739,
+    "w": 272,
+    "h": 60,
+    "top": 739,
+    "bottom": 799
+   },
+   "navClear": 10,
+   "navWhole": true,
+   "dots": {
+    "x": 193,
+    "y": 330,
+    "w": 138,
+    "h": 10,
+    "top": 330,
+    "bottom": 340
+   },
+   "changeCover": {
+    "x": 177,
+    "y": 352,
+    "w": 157,
+    "h": 40,
+    "top": 352,
+    "bottom": 392
+   },
+   "ccVisible": true,
+   "ccDisplay": "block",
+   "ccOverlapsWeather": false,
+   "ccOverlapsSlideBtns": [],
+   "ccOverlapsLeaves": [],
+   "smartMeet": null,
+   "smartOneLine": null,
+   "smartHitC": null,
+   "smartHitB": null,
+   "journalDoor": {
+    "x": 59,
+    "y": 755,
+    "w": 272,
+    "h": 98,
+    "top": 755,
+    "bottom": 853
+   },
+   "journalVis": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0,
+    "clipped": true
+   },
+   "journalOverlapsCCvis": false,
+   "journalHitC": "SECTION.cat",
+   "docScrollW": 390
+  },
+  {
+   "step": 7,
+   "pass": true,
+   "slide": "Naya NotesWrite it once \u2014 a ",
+   "rimLineTop": 809,
+   "nav": {
+    "x": 59,
+    "y": 739,
+    "w": 272,
+    "h": 60,
+    "top": 739,
+    "bottom": 799
+   },
+   "navClear": 10,
+   "navWhole": true,
+   "dots": {
+    "x": 193,
+    "y": 330,
+    "w": 138,
+    "h": 10,
+    "top": 330,
+    "bottom": 340
+   },
+   "changeCover": {
+    "x": 177,
+    "y": 352,
+    "w": 157,
+    "h": 40,
+    "top": 352,
+    "bottom": 392
+   },
+   "ccVisible": true,
+   "ccDisplay": "block",
+   "ccOverlapsWeather": false,
+   "ccOverlapsSlideBtns": [],
+   "ccOverlapsLeaves": [],
+   "smartMeet": null,
+   "smartOneLine": null,
+   "smartHitC": null,
+   "smartHitB": null,
+   "journalDoor": null,
+   "journalVis": null,
+   "journalOverlapsCCvis": false,
+   "journalHitC": null,
+   "docScrollW": 390
+  },
+  {
+   "step": 8,
+   "pass": true,
+   "slide": "Smart NotesThe same words, s",
+   "rimLineTop": 809,
+   "nav": {
+    "x": 59,
+    "y": 739,
+    "w": 272,
+    "h": 60,
+    "top": 739,
+    "bottom": 799
+   },
+   "navClear": 10,
+   "navWhole": true,
+   "dots": {
+    "x": 193,
+    "y": 330,
+    "w": 138,
+    "h": 10,
+    "top": 330,
+    "bottom": 340
+   },
+   "changeCover": {
+    "x": 177,
+    "y": 352,
+    "w": 157,
+    "h": 40,
+    "top": 352,
+    "bottom": 392
+   },
+   "ccVisible": true,
+   "ccDisplay": "block",
+   "ccOverlapsWeather": false,
+   "ccOverlapsSlideBtns": [],
+   "ccOverlapsLeaves": [],
+   "smartMeet": null,
+   "smartOneLine": null,
+   "smartHitC": null,
+   "smartHitB": null,
+   "journalDoor": null,
+   "journalVis": null,
+   "journalOverlapsCCvis": false,
+   "journalHitC": null,
+   "docScrollW": 390
+  }
+ ],
+ "defect_days": [
+  {
+   "day": 15,
+   "appt_pass": true,
+   "summ_pass": true,
+   "smart": {
+    "x": 109,
+    "y": 678,
+    "w": 173,
+    "h": 59,
+    "top": 678,
+    "bottom": 737
+   },
+   "smartHitC": "BUTTON.elite-meetpill",
+   "smartHitB": "BUTTON.elite-meetpill",
+   "apptNav": {
+    "x": 59,
+    "y": 747,
+    "w": 272,
+    "h": 60,
+    "top": 747,
+    "bottom": 807
+   },
+   "apptNavClear": 2,
+   "journal": {
+    "x": 59,
+    "y": 755,
+    "w": 272,
+    "h": 98,
+    "top": 755,
+    "bottom": 853
+   },
+   "journalVis": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0,
+    "clipped": true
+   },
+   "journalXcc": false,
+   "summNavClear": 10
+  },
+  {
+   "day": 16,
+   "appt_pass": true,
+   "summ_pass": true,
+   "smart": {
+    "x": 109,
+    "y": 678,
+    "w": 173,
+    "h": 59,
+    "top": 678,
+    "bottom": 737
+   },
+   "smartHitC": "BUTTON.elite-meetpill",
+   "smartHitB": "BUTTON.elite-meetpill",
+   "apptNav": {
+    "x": 59,
+    "y": 747,
+    "w": 272,
+    "h": 60,
+    "top": 747,
+    "bottom": 807
+   },
+   "apptNavClear": 2,
+   "journal": {
+    "x": 59,
+    "y": 755,
+    "w": 272,
+    "h": 98,
+    "top": 755,
+    "bottom": 853
+   },
+   "journalVis": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0,
+    "clipped": true
+   },
+   "journalXcc": false,
+   "summNavClear": 10
+  },
+  {
+   "day": 17,
+   "appt_pass": true,
+   "summ_pass": true,
+   "smart": {
+    "x": 109,
+    "y": 678,
+    "w": 173,
+    "h": 59,
+    "top": 678,
+    "bottom": 737
+   },
+   "smartHitC": "BUTTON.elite-meetpill",
+   "smartHitB": "BUTTON.elite-meetpill",
+   "apptNav": {
+    "x": 59,
+    "y": 747,
+    "w": 272,
+    "h": 60,
+    "top": 747,
+    "bottom": 807
+   },
+   "apptNavClear": 2,
+   "journal": {
+    "x": 59,
+    "y": 755,
+    "w": 272,
+    "h": 98,
+    "top": 755,
+    "bottom": 853
+   },
+   "journalVis": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0,
+    "clipped": true
+   },
+   "journalXcc": false,
+   "summNavClear": 10
+  },
+  {
+   "day": 18,
+   "appt_pass": true,
+   "summ_pass": true,
+   "smart": {
+    "x": 109,
+    "y": 678,
+    "w": 173,
+    "h": 59,
+    "top": 678,
+    "bottom": 737
+   },
+   "smartHitC": "BUTTON.elite-meetpill",
+   "smartHitB": "BUTTON.elite-meetpill",
+   "apptNav": {
+    "x": 59,
+    "y": 747,
+    "w": 272,
+    "h": 60,
+    "top": 747,
+    "bottom": 807
+   },
+   "apptNavClear": 2,
+   "journal": {
+    "x": 59,
+    "y": 755,
+    "w": 272,
+    "h": 98,
+    "top": 755,
+    "bottom": 853
+   },
+   "journalVis": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0,
+    "clipped": true
+   },
+   "journalXcc": false,
+   "summNavClear": 10
+  },
+  {
+   "day": 19,
+   "appt_pass": true,
+   "summ_pass": true,
+   "smart": {
+    "x": 109,
+    "y": 678,
+    "w": 173,
+    "h": 59,
+    "top": 678,
+    "bottom": 737
+   },
+   "smartHitC": "BUTTON.elite-meetpill",
+   "smartHitB": "BUTTON.elite-meetpill",
+   "apptNav": {
+    "x": 59,
+    "y": 747,
+    "w": 272,
+    "h": 60,
+    "top": 747,
+    "bottom": 807
+   },
+   "apptNavClear": 2,
+   "journal": {
+    "x": 59,
+    "y": 755,
+    "w": 272,
+    "h": 98,
+    "top": 755,
+    "bottom": 853
+   },
+   "journalVis": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0,
+    "clipped": true
+   },
+   "journalXcc": false,
+   "summNavClear": 10
+  },
+  {
+   "day": 20,
+   "appt_pass": true,
+   "summ_pass": true,
+   "smart": {
+    "x": 109,
+    "y": 678,
+    "w": 173,
+    "h": 59,
+    "top": 678,
+    "bottom": 737
+   },
+   "smartHitC": "BUTTON.elite-meetpill",
+   "smartHitB": "BUTTON.elite-meetpill",
+   "apptNav": {
+    "x": 59,
+    "y": 747,
+    "w": 272,
+    "h": 60,
+    "top": 747,
+    "bottom": 807
+   },
+   "apptNavClear": 2,
+   "journal": {
+    "x": 59,
+    "y": 755,
+    "w": 272,
+    "h": 98,
+    "top": 755,
+    "bottom": 853
+   },
+   "journalVis": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0,
+    "clipped": true
+   },
+   "journalXcc": false,
+   "summNavClear": 10
+  },
+  {
+   "day": 21,
+   "appt_pass": true,
+   "summ_pass": true,
+   "smart": {
+    "x": 109,
+    "y": 678,
+    "w": 173,
+    "h": 59,
+    "top": 678,
+    "bottom": 737
+   },
+   "smartHitC": "BUTTON.elite-meetpill",
+   "smartHitB": "BUTTON.elite-meetpill",
+   "apptNav": {
+    "x": 59,
+    "y": 747,
+    "w": 272,
+    "h": 60,
+    "top": 747,
+    "bottom": 807
+   },
+   "apptNavClear": 2,
+   "journal": {
+    "x": 59,
+    "y": 755,
+    "w": 272,
+    "h": 98,
+    "top": 755,
+    "bottom": 853
+   },
+   "journalVis": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "top": 0,
+    "bottom": 0,
+    "clipped": true
+   },
+   "journalXcc": false,
+   "summNavClear": 10
+  }
+ ],
+ "buttons": {
+  "keep": "CLICKED",
+  "before": "November 2026 \u00b7 639 Hz",
+  "after": "November 2026 \u00b7 396 Hz",
+  "prev": "CLICKED:\u2039 Thu",
+  "afterPrev": "November 2026 \u00b7 639 Hz"
+ },
+ "month": {
+  "total": 42,
+  "numbered": 30,
+  "blank": 12,
+  "monthVisible": true,
+  "name": "November 2026",
+  "row5": [
+   {
+    "blank": false,
+    "d": "29"
+   },
+   {
+    "blank": false,
+    "d": "30"
+   },
+   {
+    "blank": true,
+    "d": null
+   },
+   {
+    "blank": true,
+    "d": null
+   },
+   {
+    "blank": true,
+    "d": null
+   },
+   {
+    "blank": true,
+    "d": null
+   },
+   {
+    "blank": true,
+    "d": null
+   }
+  ],
+  "row6": [
+   {
+    "blank": true,
+    "d": null
+   },
+   {
+    "blank": true,
+    "d": null
+   },
+   {
+    "blank": true,
+    "d": null
+   },
+   {
+    "blank": true,
+    "d": null
+   },
+   {
+    "blank": true,
+    "d": null
+   },
+   {
+    "blank": true,
+    "d": null
+   },
+   {
+    "blank": true,
+    "d": null
+   }
+  ]
+ },
+ "errors": []
+}

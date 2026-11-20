@@ -1,0 +1,13 @@
+slide 0: nav={'x': 59, 'y': 703, 'w': 272, 'h': 44, 'right': 331, 'bottom': 747}
+   btn '‹ Wed': x=32 right=103 y=703 bottom=747 hit=BUTTON.daystep-btn
+   btn 'Keep reading ◆': x=109 right=281 y=707 bottom=743 hit=BUTTON.p3-enter
+   btn 'Fri ›': x=287 right=343 y=703 bottom=747 hit=BUTTON.daystep-btn
+slide 1: nav={'x': 51, 'y': 739, 'w': 288, 'h': 60, 'right': 339, 'bottom': 799}
+   btn '‹ Wed': x=32 right=103 y=751 bottom=795 hit=BUTTON.daystep-btn
+   btn 'Keep reading ◆': x=109 right=281 y=747 bottom=799 hit=BUTTON.p3-enter
+   btn 'Fri ›': x=287 right=343 y=751 bottom=795 hit=BUTTON.daystep-btn
+slide 5: nav={'x': 59, 'y': 747, 'w': 272, 'h': 60, 'right': 331, 'bottom': 807}
+   btn '‹ Wed': x=32 right=103 y=759 bottom=803 hit=BUTTON.daystep-btn
+   btn 'Keep reading ◆': x=109 right=281 y=755 bottom=807 hit=BUTTON.p3-enter
+   btn 'Fri ›': x=287 right=343 y=759 bottom=803 hit=BUTTON.daystep-btn
+DONE

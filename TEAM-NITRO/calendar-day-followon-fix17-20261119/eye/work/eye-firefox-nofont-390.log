@@ -1,0 +1,34 @@
+=== eye-firefox-nofont-390 390x844 ===
+--- wisdom sweep (forced slide 0 per day) ---
+day 15: PASS qLines=5 qFont=32px teach=583-658 store=659-696 pill=804-840 oneLine=True pillClear=108 nav=703-747 rimTop=809 navClear=62 cc=0-0 ccVis=False ccDisp=none ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 16: PASS qLines=5 qFont=32px teach=583-658 store=659-696 pill=804-840 oneLine=True pillClear=108 nav=703-747 rimTop=809 navClear=62 cc=0-0 ccVis=False ccDisp=none ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 17: PASS qLines=4 qFont=32px teach=550-625 store=626-663 pill=804-840 oneLine=True pillClear=141 nav=670-714 rimTop=809 navClear=95 cc=0-0 ccVis=False ccDisp=none ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 18: PASS qLines=6 qFont=32px teach=616-691 store=692-729 pill=804-840 oneLine=True pillClear=75 nav=736-780 rimTop=809 navClear=29 cc=0-0 ccVis=False ccDisp=none ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 19: PASS qLines=5 qFont=32px teach=583-658 store=659-696 pill=804-840 oneLine=True pillClear=108 nav=703-747 rimTop=809 navClear=62 cc=0-0 ccVis=False ccDisp=none ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 20: PASS qLines=5 qFont=32px teach=583-658 store=659-696 pill=804-840 oneLine=True pillClear=108 nav=703-747 rimTop=809 navClear=62 cc=0-0 ccVis=False ccDisp=none ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 21: PASS qLines=6 qFont=32px teach=616-709 store=710-748 pill=804-840 oneLine=True pillClear=56 nav=755-799 rimTop=809 navClear=10 cc=0-0 ccVis=False ccDisp=none ccXwx=False greet='Good afternoon, Shawn.' docW=390
+sweep eye-firefox-nofont-390: 7/7 PASS
+--- deck walk day 19 ---
+slide 0 Wisdom of the day SGood afte: PASS nav=703-747 clear=62 dots=696-703 cc=0-0 vis=False ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=390
+slide 1 Tap a world — see its notifi: PASS nav=739-799 clear=10 dots=330-340 cc=352-392 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=390
+slide 2 JournalYour day, in your wor: PASS nav=739-799 clear=10 dots=330-340 cc=352-392 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=390
+slide 3 Your WorldsSix worlds, one d: PASS nav=685-745 clear=64 dots=330-340 cc=768-808 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=390
+slide 4 News HubLocal, Province and : PASS nav=739-799 clear=10 dots=330-340 cc=352-392 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=390
+slide 5 AppointmentsThe day, booked : PASS nav=747-807 clear=2 dots=330-340 cc=352-392 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=678-737 oneLine=True smartHitC=BUTTON.elite-meetpill smartHitB=BUTTON.elite-meetpill journal=None journalVis=None journalXccVis=False journalHit=None docW=390
+slide 6 Summary of the dayThe day, w: PASS nav=739-799 clear=10 dots=330-340 cc=352-392 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=755-853 journalVis={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'clipped': True} journalXccVis=False journalHit=SECTION.cat docW=390
+slide 7 Naya NotesWrite it once — a : PASS nav=739-799 clear=10 dots=330-340 cc=352-392 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=390
+slide 8 Smart NotesThe same words, s: PASS nav=739-799 clear=10 dots=330-340 cc=352-392 vis=True ccXwx=False ccXbtns=[] ccXleaves=[] smart=None oneLine=None smartHitC=None smartHitB=None journal=None journalVis=None journalXccVis=False journalHit=None docW=390
+deck eye-firefox-nofont-390: 9/9 PASS
+--- per-day defect slides (Appointments 5 / Summary 6) ---
+day 15: APPT PASS smart=678-737 hitC=BUTTON.elite-meetpill hitB=BUTTON.elite-meetpill oneLine=True nav=747-807 clear=2 | SUMM PASS journal=755-853 vis={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'clipped': True} xcc=False navClear=10
+day 16: APPT PASS smart=678-737 hitC=BUTTON.elite-meetpill hitB=BUTTON.elite-meetpill oneLine=True nav=747-807 clear=2 | SUMM PASS journal=755-853 vis={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'clipped': True} xcc=False navClear=10
+day 17: APPT PASS smart=678-737 hitC=BUTTON.elite-meetpill hitB=BUTTON.elite-meetpill oneLine=True nav=747-807 clear=2 | SUMM PASS journal=755-853 vis={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'clipped': True} xcc=False navClear=10
+day 18: APPT PASS smart=678-737 hitC=BUTTON.elite-meetpill hitB=BUTTON.elite-meetpill oneLine=True nav=747-807 clear=2 | SUMM PASS journal=755-853 vis={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'clipped': True} xcc=False navClear=10
+day 19: APPT PASS smart=678-737 hitC=BUTTON.elite-meetpill hitB=BUTTON.elite-meetpill oneLine=True nav=747-807 clear=2 | SUMM PASS journal=755-853 vis={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'clipped': True} xcc=False navClear=10
+day 20: APPT PASS smart=678-737 hitC=BUTTON.elite-meetpill hitB=BUTTON.elite-meetpill oneLine=True nav=747-807 clear=2 | SUMM PASS journal=755-853 vis={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'clipped': True} xcc=False navClear=10
+day 21: APPT PASS smart=678-737 hitC=BUTTON.elite-meetpill hitB=BUTTON.elite-meetpill oneLine=True nav=747-807 clear=2 | SUMM PASS journal=755-853 vis={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'clipped': True} xcc=False navClear=10
+--- buttons + month ---
+BUTTONS keep=CLICKED before='November 2026 · 639 Hz' after='November 2026 · 396 Hz' | prev=CLICKED:‹ Thu afterPrev='November 2026 · 639 Hz'
+MONTH: {"total": 42, "numbered": 30, "blank": 12, "monthVisible": true, "name": "November 2026", "row5": [{"blank": false, "d": "29"}, {"blank": false, "d": "30"}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}], "row6": [{"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}]}
+PAGE ERRORS: NONE
+DONE eye-firefox-nofont-390
