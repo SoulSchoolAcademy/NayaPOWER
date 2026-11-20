@@ -4,7 +4,7 @@
 
 **NN-20261120-a-bill-of-rights-not-restrictions · Naya Note · 2026-11-20 ~14:55–15:02 MST (call f418aaac, read first-hand)**
 
-*Paired Smart Note: SN-pending — A Bill of Rights, Not a Bill of Restrictions (takes the next free number at filing)*
+*Paired Smart Note: SN-4332 — A Bill of Rights, Not a Bill of Restrictions*
 
 **Category:** Vision — his philosophy, the Clarity Act, founding documents
 
