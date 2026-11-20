@@ -31501,7 +31501,6 @@ function ibSaveDialog(noteId, noteTitle){
     + '<button type="button" class="ib-act" id="ib-grow-cancel">Done</button>'
     + '</div></div>';
   document.body.appendChild(wrap);
-  var _r3ni=document.getElementById('ib-grow-name'); if(_r3ni && noteTitle) _r3ni.value=noteTitle; /* ROUND 3 (2026-11-20, items 6/10): the name starts filled with the note's title - the citizen edits it or taps Create world. */
   document.getElementById('ib-grow-cancel').onclick = closeIbGrowDialog;
   wrap.addEventListener('click', function(e){
     if (e.target === wrap){ closeIbGrowDialog(); return; }
@@ -47644,7 +47643,7 @@ function renderGrid(){
     var _dn=dayNotes(dt);
     var n=_dn.length;
     var isToday=(dt===todayStr), isSel=(dt===selDate);
-    cells+='<button type="button" class="mw-cal-cell'+(isToday?' mw-cal-today':'')+(isSel?' mw-cal-sel':'')+'" data-mw-cal-date="'+dt+'" style="--dc:'+col+'" aria-label="'+DAY_NAMES[dow]+', '+fmtDate(dt)+(isToday?', today':'')+(n?', '+n+(n===1?' note':' notes'):'')+'"><b>'+dnum+'</b><i>'+(isToday?'today':(n?(n+(n===1?' note':' notes')):''))+'</i>'+(function(){var _tps=[],_seen={},_h='';_dn.forEach(function(en){var _t=noteType(en);if(!_seen[_t]){_seen[_t]=1;_tps.push(_t);}});_tps.slice(0,2).forEach(function(_t){if(!TYPE_COLORS[_t]||!TYPE_NAMES[_t])return;var _sh={smart:'Note',naya:'Naya',post:'Post'}[_t]||'Note';_h+='<span class="mw-cal-chip" style="--tc:'+TYPE_COLORS[_t]+'"><span class="mw-cal-chip-full">'+TYPE_NAMES[_t]+'</span><span class="mw-cal-chip-short">'+_sh+'</span></span>';});if(_dn.length>2)_h+='<span class="mw-cal-chip mw-cal-chip-more">+'+(_dn.length-2)+'</span>';return _h;})()+'</button>';
+    cells+='<button type="button" class="mw-cal-cell'+(isToday?' mw-cal-today':'')+(isSel?' mw-cal-sel':'')+'" data-mw-cal-date="'+dt+'" style="--dc:'+col+'" aria-label="'+DAY_NAMES[dow]+', '+fmtDate(dt)+(isToday?', today':'')+(n?', '+n+(n===1?' note':' notes'):'')+'"><b>'+dnum+'</b><i>'+(isToday?'today':(n?(n+(n===1?' note':' notes')):''))+'</i>'+(function(){var _tps=[],_seen={},_h='';_dn.forEach(function(en){var _t=noteType(en);if(!_seen[_t]){_seen[_t]=1;_tps.push(_t);}});_tps.slice(0,2).forEach(function(_t){if(!TYPE_COLORS[_t]||!TYPE_NAMES[_t])return;var _sh={smart:'Note',naya:'Naya',post:'Post'}[_t]||'Note';_h+='<span class="mw-cal-chip" style="--tc:'+TYPE_COLORS[_t]+'"><span class="mw-cal-chip-full">'+TYPE_NAMES[_t]+'</span><span class="mw-cal-chip-short">'+_sh+'</span></span>';});if(_dn.length>2)_h+='<span class="mw-cal-chip mw-cal-chip-more" style="--tc:'+col+'">+'+(_dn.length-2)+'</span>'; /* ROUND 4 (2026-11-20, item 4): the +n chip had no --tc, so .mw-cal-chip{border:1.5px solid var(--tc)} dropped its border and +1 rendered as bare white text. The day's own colour (col, the same DAY_COLORS[dow] as the cell rim) is the honest own-colour. */return _h;})()+'</button>';
   }
   grid.innerHTML=cells;
 }
@@ -52168,7 +52167,8 @@ document.addEventListener('click', function(e){
     if(!topics && card){ var mg = card.querySelector('.ib-meta span'); if(mg){ var tx = (mg.textContent || '').trim().replace(/^#/, ''); if(tx) topics = [tx]; } }
     if(!title) title = 'Smart World';
     var topic = (topics && topics[0]) || 'General';
-    function land(){ try{ if(window.osShowView) window.osShowView('spaces'); }catch(err){} }
+    /* ROUND 4 (2026-11-20, item 2): the Spaces destination is the router route /hub/spaces, not a showView view - showView falls back to 'home' for any name not in VIEWS and 'spaces' is not in VIEWS, so the old land() landed on home. /hub/spaces is the route every in-file Spaces entry uses (drawer links href https://nayanet.app/#/hub/spaces; Hub19 NayaNotif spaces tap and plus-key 'world' both navigate('/hub/spaces')); the router's hub/:room handler redirects it through EXTERNAL_ROOMS['spaces'] to the standalone Spaces room page /rooms/spaces, where the new world is listed. Hash fallback mirrors the Round 3 bottom-bar pattern. No silent fallback to home. */
+    function land(){ var _nav=false; try{ if(window.NayaRouter && window.NayaRouter.navigate){ window.NayaRouter.navigate('/hub/spaces'); _nav=true; } }catch(err){} if(!_nav){ try{ location.hash='#/hub/spaces'; }catch(err2){} } }
     function go(name){
       var spName = name || title;
       var _toast = (typeof toast === 'function') ? toast : null;
@@ -52210,10 +52210,11 @@ document.addEventListener('click', function(e){
     var settings = document.getElementById('settings');
     if(!settings) return;
     var st = window.__frSub || (window.__frSub = { tab: -1, page: 0, units: [], nav: null, _apply: null, _pages: 0 });
-    st.units.forEach(function(u){ if(u && u.style) u.style.display = ''; });
-    st.units = [];
     function currentTab(){ var b = document.querySelector('.fr-set-tab.on'); if(!b) return current; var v = parseInt(b.getAttribute('data-fr-set'), 10); return isNaN(v) ? current : v; }
     var tab = (typeof current === 'number') ? current : currentTab();
+    /* ROUND 4 (2026-11-20, item 1): restore ONLY when the tab has not changed. showTab() already hid the old tab's cards before this hook runs, so restoring the old tab's pager-hidden units here re-showed them on the new step (Step 4's cards leaked into Step 5). On a tab change the pager state is discarded and rebuilt fresh; on the same tab (e.g. the MutationObserver re-run when the questions render late) the restore is still needed before re-paging. */
+    if(st.tab === tab){ st.units.forEach(function(u){ if(u && u.style) u.style.display = ''; }); }
+    st.units = [];
     if(tab !== 0 && tab !== 3){ if(st.nav) st.nav.hidden = true; st.tab = tab; st.page = 0; st._apply = null; st._pages = 0; return; }
     var cards = settings.querySelectorAll(':scope > .ph-card');
     if(!cards.length) cards = settings.querySelectorAll('.ph-card');
@@ -52230,6 +52231,16 @@ document.addEventListener('click', function(e){
         for(var g=0;g<kids[0].children.length;g++){ if(kids[0].children[g].tagName !== 'H3') gc.push(kids[0].children[g]); }
         if(gc.length > 1) kids = gc;
       }
+      /* ROUND 4 (2026-11-20, item 1): descend into #pc-demo-body. dmRender() fills that one container with the 8 .pc-dm-q question blocks, so paging the card's 5 children put all 8 questions on one page. Expand the container into its question blocks (3 per page); if the questions have not rendered yet, keep the container as one unit and the MutationObserver re-runs this when they land. */
+      var expanded = [];
+      kids.forEach(function(kid){
+        if(kid.id === 'pc-demo-body' && kid.querySelectorAll){
+          var qs = kid.querySelectorAll('.pc-dm-q');
+          if(qs.length){ for(var q=0;q<qs.length;q++) expanded.push(qs[q]); }
+          else expanded.push(kid);
+        } else expanded.push(kid);
+      });
+      kids = expanded;
       units = kids; pageSize = 3;
     }
     var pages = Math.ceil(units.length / pageSize);
