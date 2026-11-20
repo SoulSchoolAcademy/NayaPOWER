@@ -4,7 +4,7 @@
 
 **NN-20261120-his-eye-is-the-check · Naya Note · 2026-11-20 ~14:59–15:01 MST (call f418aaac, read first-hand)**
 
-*Paired Smart Note: SN-pending — His Eye Is the Check (takes the next free number at filing)*
+*Paired Smart Note: SN-4330 — His Eye Is the Check*
 
 **Category:** Law — eye policy, the token burn, how a page reaches him
 
