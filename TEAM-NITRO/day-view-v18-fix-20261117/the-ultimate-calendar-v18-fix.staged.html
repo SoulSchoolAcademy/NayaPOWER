@@ -2948,6 +2948,84 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   #dayScroll:has(.worlds-slide.on)>.cover-change{position:static!important;order:10!important;align-self:flex-end!important;flex:none!important;margin:12px 16px 0 auto!important}
 }
 
+/* ============ FIX16 — calendar day follow-on, nav pills whole at rest (2026-11-20) ============ */
+/* ROOT CAUSE (measured on the fix-15 bytes, Firefox + Chromium, 1920 and 390):
+   The nav is the last flex child of every slide and sits FLUSH at the
+   block's bottom (nav bottom = block bottom - 1px on every slide, both
+   widths). The frame's purple rim + ornate band (z-40, inset var(--bw))
+   cross the card above its bottom edge: at 1920x999 the rim's bottom edge
+   is y900-903 and the band 903-999, while the deck bottom is y919 — so the
+   pills' bottoms (906 wisdom, 913 other slides) are painted over by the
+   frame. There is NO scroll path at desktop: document scrollH == clientH,
+   #dayScroll overflow hidden, so the pills can never be revealed. At 390
+   the same flush geometry holds (nav 807 vs rim top 809, 2px clear) and
+   fix-15's margin-top:160px pushes the wisdom nav to 985-1103, 201px below
+   the viewport — reachable only by an invisible deck scroll. THE FIX is
+   breathing room below the nav (the scroll area absorbs it) + the wisdom
+   stack tightened so it fits the 508px phone deck with the nav whole above
+   the rim in the WORST state (no-webfont fallback, 6-line quotes). The
+   quote stays 32px; nothing is hidden; the frame, the header and every
+   other slide are untouched. */
+/* (1) BREATHING ROOM BELOW THE NAV — every slide, every width. Desktop:
+   24px lifts every pill 18-21px clear of the rim at every viewport height
+   (rim top = viewport - 99); the scroll area absorbs it — the smallest
+   slack below any slide's last content row is 42px (wisdom), so no content
+   is lost. Phone: 8px. NOTE (measured 2026-11-20): at 390 the slide is
+   content-driven, 6px short of the deck cap — so the padding does NOT move
+   the nav (nav bottom = content bottom; 8px vs 10px measured identical,
+   804). The nav is moved only by cutting content above it, 1:1. 24px
+   would clip Worlds row 1 at rest (3px spare at 8px). */
+@media(min-width:561px){
+  #dayScroll .smart-block{padding-bottom:24px!important}
+}
+@media(max-width:560px){
+  #dayScroll .smart-block{padding-bottom:8px!important}
+  /* The phone padding shrinks the scroll viewport 8px, which clips two
+     exact-fit slides: Worlds row 1 (its subtitle ends 3px below the
+     viewport) and Appointments (the Smart Meet pill ends 3px below it).
+     Both slides' navs are already whole without the lift (Worlds 64px
+     clear, Appointments 2px clear, exactly as in fix-15), so they are
+     exempt — restoring their fix-15 geometry byte for byte. */
+  #dayScroll .smart-block.worlds-slide{padding-bottom:0!important}
+  #dayScroll .smart-block[data-unfold-sec="appointments"]{padding-bottom:0!important}
+  /* (2) WISDOM AT 390 — the 160px margin is REMOVED (it put the nav below
+     the fold by design; the eye proves that design false), and the stack is
+     tightened so the longest quotes fit the deck with the nav whole above
+     the rim in the worst state. Measured worst case (Sat 21, no-webfont):
+     content 539 + dots 20 + nav 68 = 627 from a 489px budget — 138px to
+     save. The savings, all measured: greet 116 -> 82 (-34: orb 50 -> 36,
+     hello 25px two lines -> 19px one line, margin 4 -> 0, gap 8 -> 24 —
+     the gap is 24, not 4, because the hello must start at y60, 2px below
+     the absolute "Back" pill's band (top:14, 44px tall, y14-58); a gap of
+     4 put the hello at y40, UNDER the Back pill, hiding "Good ");
+     quote line-height 1.15 -> 1.03 (-23 on 6 lines); teach 1.25 -> 1.1
+     (-13 on 5 lines); label margins 8/4 -> 1/1 and line-height 1.2 (-14);
+     teach margins 4 -> 2 (-4); store margin 4 -> 0 and line-height 1.1
+     (-15); banner padding-top 8 -> 0 (-8); nav button 52 -> 36, margins
+     8 -> 0 (-28); dots margin 10 -> 0 and 10px -> 7px (-15). Total -154,
+     12px of margin over the 138 needed; the last cuts (hello leading
+     1.1 -> 1.0, label leading 1.2 -> 1.1, teach margin-bottom 2 -> 1,
+     dots 8 -> 7px) buy the worst day from 5px to ~10px clear of the rim.
+     The greet stays stacked (orb
+     above the hello) because the absolute "Back" pill owns the top-left
+     corner — a horizontal greet would sit under it, and the stacked
+     hello must start below its bottom edge. */
+  #dayScroll #wisdomBanner .sb-nav{margin-top:0!important;padding-top:0!important}
+  #dayScroll #wisdomBanner .sb-nav .p3-enter{padding-top:4px!important;padding-bottom:4px!important}
+  #dayScroll #wisdomBanner .sb-nav .daystep-btn{padding-top:4px!important;padding-bottom:4px!important}
+  #dayScroll #wisdomBanner .sb-dots{margin-top:0!important}
+  #dayScroll #wisdomBanner .sb-dots button{width:7px!important;height:7px!important}
+  #wisdomBanner{padding-top:0!important}
+  #wisdomBanner .greet-layout{gap:24px!important}
+  #wisdomBanner .avatar-jewel{width:36px!important;height:36px!important;font-size:19px!important}
+  #wisdomBanner .greet-hello{font-size:19px!important;line-height:1!important}
+  #wisdomBanner .greet-row{margin-bottom:0!important}
+  #wisdomBanner .wq-label{margin-top:1px!important;margin-bottom:1px!important;line-height:1.1!important}
+  #wisdomBanner blockquote{line-height:1.03!important}
+  #wisdomBanner .dayteach{margin-top:2px!important;margin-bottom:1px!important;line-height:1.1!important}
+  #wisdomBanner .wq-store{margin-top:0!important;line-height:1.1!important}
+}
+
 </style>
   </head>
   <body>
