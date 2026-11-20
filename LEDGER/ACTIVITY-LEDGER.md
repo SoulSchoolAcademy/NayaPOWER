@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21093,6 +21093,12 @@ _Last updated: 2026-11-20 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: confirm doc hidden_files/retrieval/auth-gate-wave-order-confirm-t0642.md exists on disk (sha256 9856491a6d37d6a2); receipt's tip pin 34338065eb and verdict-doc pin 823534c3eb001d15 are live-byte claims, method sound (recomputed pins from bytes, detached worktree). Real verified value: 7 repairs byte-confirmed-not-yet-written, review chain
 
+### ✅ t0641-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** A-row DELTA adjudication: seal intact, ADOPT stands, row-level band rule R1-R4 frozen
+
+**Evidence:** BACKLOG SWEEP. VERIFIED this tick, independently recomputed: sha256 over the four t0635 verdict lines \n-joined, trailing NL stripped = 96fdd051db1461c0 MATCHES the quoted seal — seal INTACT, confirming the receipt's six-canonicalization resolution; adjudication file lane-6/t0641-a-row-adjudication.md exists; synthesis pin re-verified by the receip
+
 ### ✅ t0641 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** A-row DELTA adjudication: seal-integrity resolved, granularity mapping, A-verdict stands, row-level band rule frozen
@@ -21108,6 +21114,12 @@ _Last updated: 2026-11-20 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0641-lane6.md`
 
 **Evidence:** VERIFIED: adjudication hidden_files/lane-6/t0641-a-row-adjudication.md exists; seal INTACT - independently re-derived sha256 over verdict lines 1-4 \n-joined = 96fdd051db1461c08b24996ed17554dd747e822473b10cf89c2dc81de2dcc2b9 EXACT match (closes t0635's named seal-non-reproducibility gap); full-file sha 2e06d6d0f matches. No PHANTOM. Real value: DEL
+
+### ✅ t0641-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Write-time brief-pin verification gate (verify-brief-pins.py) + procedure + proofs
+
+**Evidence:** BACKLOG SWEEP. VERIFIED byte-exact this tick: bin/verify-brief-pins.py sha256 0b0d57ce1888b415... MATCHES receipt pin prefix; brief-pin-verification-procedure.md fb36c49ddd47962c... MATCHES; proof files proof-clean-t0641-lane11.txt and proof-clean-t0641-lane6.txt exist under brief-pin-proofs/. NOT PHANTOM. Self-score 9.0, agreed. Why not 9.5: singl
 
 ### ✅ t0641 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -21125,6 +21137,12 @@ _Last updated: 2026-11-20 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: bin/verify-brief-pins.py exists with sha256 prefix 0b0d57ce1888b415 EXACT match to receipt; brief-pin-verification-procedure.md exists (2873 bytes); brief-pin-proofs/ holds all 4 files. Spot-ran the proof outputs: clean-lane6 proof shows 1 MATCH (synthesis pin 467d1d0f…, tier-1) + 3 UNRESOLVED + exit 0 exactly as claimed; seeded proof pri
 
+### ✅ t0640-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Blinding-checklist CANDIDATE for sealed-probe briefs + HOLD broadcast on #2175
+
+**Evidence:** BACKLOG SWEEP. VERIFIED this tick: hidden_files/sealed-probe-blinding-checklist-t0640.md exists (e7a10cd8396b44acb0...); receipt pins no sha for it, so byte-match is N/A — file presence only. NOT PHANTOM. Self-score 9.0, agreed. Why not 9.5: checklist is proposed-not-run (positive control only, no clean-brief negative control), single seat, and the
+
 ### ✅ t0640 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Sealed-probe blinding-checklist CANDIDATE (t0634 HOLD repair) + #2175 HOLD broadcast
@@ -21140,6 +21158,12 @@ _Last updated: 2026-11-20 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0640-lane9.md`
 
 **Evidence:** VERIFIED: checklist hidden_files/sealed-probe-blinding-checklist-t0640.md exists (86 lines); §7 spec spot-checked byte-exact in lane-experiments/t0568/PREREG-cold-retrieve-sealed.md L393-410; #2175 comment 6148601855 present in local board-window-2026-10-13T1508Z.json - HOLD broadcast posted, zero REST. No PHANTOM. Real value: closes owed item (1) 
+
+### ✅ t0640-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** NLI feasibility: t0601 no-torch block falsified, dry-fire PASS on frozen instrument
+
+**Evidence:** BACKLOG SWEEP. VERIFIED this tick: dry-fire harness auto-retrieval/nli_dryfire_t0640.py sha256 fb676eb98c58e265666f8a93258a937bf4b1f493df4f97b2b39afc4a376b7f18 MATCHES receipt pin; verdict file auto-retrieval/nli-feasibility-t0640.md exists. NOT PHANTOM. Self-score 9.0, agreed. Why not 9.5: single-seat GO verdict with no second probe, and the no_pr
 
 ### ✅ t0640 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -21157,6 +21181,12 @@ _Last updated: 2026-11-20 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: verdict file auto-retrieval/nli-feasibility-t0640.md exists with NLI-VERDICT: GO; harness sha256 fb676eb98c58e265666f8a93258a937bf4b1f493df4f97b2b39afc4a376b7f18 EXACT match; instrument t0601_entailment_arm.py pin 2c256920d8a3918c4017d3c1418c87aa933608a23245043f259be7fa5bf1fd8b EXACT match (first pin of this script). No PHANTOM. Real valu
 
+### ✅ t0639-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Design-doc drift investigation: EQ-D0 MATCH, reported drift is phantom transcription
+
+**Evidence:** BACKLOG SWEEP. VERIFIED this tick: auto-retrieval/t0622_h_dc6_design.md sha256 5d5a244505c038a8b10b36dcee7f2979c7da222e59cea224487b497f35825880 ends ...825880, confirming the receipt's recompute and the 63/64-hex single-digit transcription finding vs t0629's ...815880; EQ-D0 wording at line 129 confirmed live. NOT PHANTOM. Why not 9.5: single-seat 
+
 ### ✅ t0639 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Design-doc drift investigation: EQ-D0 anchor MATCH, reported SHA drift phantom
@@ -21172,6 +21202,12 @@ _Last updated: 2026-11-20 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0639-lane4.md`
 
 **Evidence:** VERIFIED: design doc auto-retrieval/t0622_h_dc6_design.md + sealed-note-t0633-h-dc6.md exist locally; EQ-D0 single-mention confirmed. Real verified value: the 63/64-hex-char char-compare dissolved the whole investigation before any history hunt, unblocking the fresh-seat H-dc6 re-run as written (no re-seal). Why not 9.5: (1) the transcription-error
+
+### ✅ t0638-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Wave-order verdict for auth-gate stamping migration + W1 re-capture correction
+
+**Evidence:** BACKLOG SWEEP. VERIFIED this tick: retrieval/auth-gate-wave-order-verdict-t0638-CANDIDATE.md sha256 starts 823534c3eb001d15 MATCHES receipt pin prefix; plan pin 91c797fd... cited consistently. NOT PHANTOM. Self-score 9.0, agreed. Why not 9.5: wave-order ADOPT is single-seat (third-seat confirmation owed) and three premises named as not reviewed.
 
 ### ✅ t0638 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -21211,6 +21247,12 @@ _Last updated: 2026-11-20 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: auto-retrieval/egate-persistence-contract-v1-candidate.md sha256 prefix 3bf341fed658323f EXACT match with receipt claim; egate-demo-t0638.py sha16 50f27aef5338f3b7 EXACT match; demo output file exists. Demo ran: t0628-lane2 real bytes 3/3 NON-RECOMPUTABLE; PASS fixture recomputable (findings []); DIVERGENT fixture fired CELL-DIVERGENT:top
 
+### ✅ t0637-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE migration-prep packet for retrieval-auth gate t942
+
+**Evidence:** BACKLOG SWEEP. VERIFIED byte-exact this tick: auto-retrieval/retrieval-auth-gate-migration-packet-t0637-candidate.md sha256 7a0b20b94fb7cfcb40b3efb0bbf1f619111994605242e6c7d351110d46d4a7cf MATCHES receipt pin. NOT PHANTOM. Self-score 9.0, agreed. Why not 9.5: single-seat determination (migration-is-wiring-not-merge reframe unconfirmed by a second s
+
 ### ✅ t0637 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** CANDIDATE migration-prep packet for naya/five-retrieval-auth-gate-t942 (wiring, not merge)
@@ -21226,6 +21268,12 @@ _Last updated: 2026-11-20 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0637-lane3.md`
 
 **Evidence:** VERIFIED: branch naya/five-retrieval-auth-gate-t942 exists on remote @ e654f16e8a49e9a26309fd852695a0bef202673d, exact ls-remote match with receipt's pin; packet file auto-retrieval/retrieval-auth-gate-migration-packet-t0637-candidate.md exists locally, sha256 7a0b20b94fb7...7cf EXACT match with receipt claim. Real verified value: the byte-identity
+
+### ✅ t0637-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE lesson-injection contract (auto-retrieval), dry-fire no-echo proof
+
+**Evidence:** BACKLOG SWEEP. VERIFIED byte-exact this tick: auto-retrieval/lesson-injection-contract-v1-candidate.md sha256 bace1e70578fe5ef408ff9259cb59cd2a811c8e80ceb4b4614d6edf769622364 MATCHES receipt pin; dry-fire outputs exist under auto-retrieval/dryfire-t0637/. NOT PHANTOM. Self-score 9.0, agreed. Why not 9.5: single-seat design with no independent secon
 
 ### ✅ t0637 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
