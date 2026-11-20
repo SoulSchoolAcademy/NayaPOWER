@@ -69892,6 +69892,38 @@
         "Handoff",
         "Collective"
       ]
+    },
+    {
+      "smart_note_id": "SN-4105",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4105-let-the-math-overrule-me",
+      "slug": "let-the-math-overrule-me",
+      "title": "Let the Math Overrule Me",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4105/IB-SMART-NOTE-20261120-sn4105-let-the-math-overrule-me.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4105/IB-SMART-NOTE-20261120-sn4105-let-the-math-overrule-me.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4105/IB-SMART-NOTE-20261120-sn4105-let-the-math-overrule-me.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4105-let-the-math-overrule-me.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:20:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "fceb0c0ad2c16f8584dfd867383aa34643292b3d458c76700a9f26bf680930ee",
+      "content_hash": "83722efc18dda38a8cf4eb7f3e413358c1769e32f44a2d1f20da6d1ce706455e",
+      "one_line": "Let the math overrule me.",
+      "topics": [
+        "Decisions",
+        "Mechanic",
+        "Scorecard",
+        "Judgment"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69902,5 +69934,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "767291720b38e4eedef1318d1fe0403c79b0e78156d0856818169e430d896a56"
+  "corpus_manifest_hash": "bb9df3a3b5fbc859cd13c61543ce6c865079723cd928b5e3a633da40271fff1d"
 }
