@@ -1,0 +1,21 @@
+modal dismissed: True
+tab count: 1
+scroll step 0: tab box={'x': 1154.0999755859375, 'y': 1956.699951171875, 'width': 224.0167236328125, 'height': 56}
+scroll step 1: tab box={'x': 1154.0999755859375, 'y': 1923.199951171875, 'width': 224.0167236328125, 'height': 56}
+scroll step 2: tab box={'x': 1154.0999755859375, 'y': 1323.199951171875, 'width': 224.0167236328125, 'height': 56}
+scroll step 3: tab box={'x': 1154.0999755859375, 'y': 1323.199951171875, 'width': 224.0167236328125, 'height': 56}
+scroll step 4: tab box={'x': 1154.0999755859375, 'y': 1323.199951171875, 'width': 224.0167236328125, 'height': 56}
+scroll step 5: tab box={'x': 1154.0999755859375, 'y': 1323.199951171875, 'width': 224.0167236328125, 'height': 56}
+scroll step 6: tab box={'x': 1154.0999755859375, 'y': 1323.199951171875, 'width': 224.0167236328125, 'height': 56}
+scroll step 7: tab box={'x': 1154.0999755859375, 'y': 1323.199951171875, 'width': 224.0167236328125, 'height': 56}
+scroll step 8: tab box={'x': 1154.0999755859375, 'y': 1323.199951171875, 'width': 224.0167236328125, 'height': 56}
+scroll step 9: tab box={'x': 1154.0999755859375, 'y': 123.19999694824219, 'width': 224.0167236328125, 'height': 56}
+tab box settled: {'x': 1154.0999755859375, 'y': -476.79998779296875, 'width': 224.0167236328125, 'height': 56}
+'Step 7 of 7' matches: 0
+text matches: 2
+  text [0] box=None
+  text [1] box=None
+clicked: False
+did not land on hub; url= https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-rou
+SETTINGS→HUB: FAIL
+LEG6D DONE

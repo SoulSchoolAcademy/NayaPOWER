@@ -1,0 +1,19 @@
+[normal] modal dismissed: True
+[normal] FRESH controls=769 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True}
+[normal] WORLDS count: 1
+[normal] tapped WORLDS via locator
+[normal] landed on space: https://nayanet.app/space
+[normal] modal dismissed after back: True
+[normal] AFTER-BACK controls=739 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True} url=https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&re
+[normal] AFTER-BACK-15s controls=768 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True}
+[normal] BACK RETURN: PASS
+[throttled] modal dismissed: True
+[throttled] FRESH controls=739 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True}
+[throttled] WORLDS count: 1
+[throttled] tapped WORLDS via locator
+[throttled] landed on space: https://nayanet.app/space
+[throttled] modal dismissed after back: True
+[throttled] AFTER-BACK controls=739 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True} url=https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&re
+[throttled] AFTER-BACK-15s controls=768 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True}
+[throttled] BACK RETURN: PASS
+LEG2C DONE

@@ -1,0 +1,14 @@
+forwarder pid: 136147
+chromium loaded title: Shawn's Personal feed — NayaNET room: 0
+ask btn count: 1
+chromium ask t+2s room=1 url=/hub/ask title=Ask Naya — NayaNET
+chromium ask t+5s room=1 url=/hub/ask title=Ask Naya — NayaNET
+chromium ask t+10s room=1 url=/hub/ask title=Ask Naya — NayaNET
+  PERSONAL [0]: room=1 hash=/hub/ask
+CHROMIUM PERSONAL YIELD: FAIL
+chromium back: fresh controls= 9030
+chromium back: after WORLDS url= https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix6-20261119&cb=8fbec9580c078b97d0881f7aa20d8c92ce41d9d6&owner=flagship-personal#/hub/ask
+chromium back: @5s=8895 @15s=8895
+CHROMIUM BACK: PASS
+LEG4 DONE
+forwarder killed

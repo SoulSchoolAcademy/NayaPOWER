@@ -1,0 +1,15 @@
+yield test: room before PERSONAL: 1 hash: /hub/ask
+PERSONAL exact matches: 1
+  tapped PERSONAL [0]: room=1 hash=/hub/ask
+PERSONAL YIELD: FAIL
+back normal: fresh controls=5562
+back normal: after WORLDS url=https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix6-20261119&cb=8fbec9580c078b97d0881f7aa20d8c92ce41d9d6&owner=flagship-personal
+back normal: @5s controls=5850 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True} url=https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix6-20261119&cb=8fbec9580c078b97d0881f7aa20d8c92ce41d9d6&owner=flagship-personal
+back normal: @15s controls=5850 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True}
+back normal: PASS
+back throttled: fresh controls=5562
+back throttled: after WORLDS url=https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix6-20261119&cb=8fbec9580c078b97d0881f7aa20d8c92ce41d9d6&owner=flagship-personal
+back throttled: @5s controls=5850 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True} url=https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix6-20261119&cb=8fbec9580c078b97d0881f7aa20d8c92ce41d9d6&owner=flagship-personal
+back throttled: @15s controls=5850 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True}
+back throttled: PASS
+LEG2 DONE

@@ -1,0 +1,16 @@
+modal dismissed: True
+phone back fresh: {'controls': 770, 'quote': True, 'name': True, 'empty': True}
+Go to the Hub (partial) matches: 1
+  step 0 hub btn [0] box={'x': 199, 'y': 813.2999877929688, 'width': 191, 'height': 44}
+  step 1 hub btn [0] box={'x': 199, 'y': 413.29998779296875, 'width': 191, 'height': 44}
+tapped Go to the Hub
+HUB LANDING: https://nayanet.app/hub#/hub
+phone after Back @5s: {'controls': 739, 'quote': True, 'name': True, 'empty': True}
+phone after Back @15s: {'controls': 768, 'quote': True, 'name': True, 'empty': True}
+PHONE BACK RETURN: PASS
+phone academy pill count: 1
+phone academy popup url: https://nayanet.groovepages.com/academy
+PHONE ACADEMY: PASS
+phone composer: open=True hidden=None
+PHONE COMPOSER: PASS
+LEG5C DONE

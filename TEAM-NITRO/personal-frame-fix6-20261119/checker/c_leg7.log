@@ -1,0 +1,13 @@
+===== FIXED =====
+POPSTATE hash=#/hub/ask room=0 t=19829
+HASHCHANGE hash=#/hub/ask room=0 t=19831
+
+FIXED: final room=1 hash=/hub/ask
+===== BASE =====
+POPSTATE hash=#/hub/ask room=0 t=18880
+POPSTATE hash=#/hub/feed room=0 t=18881
+HASHCHANGE hash=#/hub/feed room=0 t=18884
+HASHCHANGE hash=#/hub/feed room=0 t=19027
+
+BASE: final room=0 hash=/hub/feed
+LEG7 DONE

@@ -1,0 +1,50 @@
+BASE size 10453371 sha 8585244daa53fd8b7ad00fe5da0c4ee79ec02c3c4a146c55b9b64140936752b9 expect 10453371 8585244daa53fd8b7ad00fe5da0c4ee79ec02c3c4a146c55b9b64140936752b9 MATCH true
+FIX  size 10454283 sha 3dabcd80ade63f664fb2daabef3a2b2c34f1360fb0f31177739e1d7280c66522 expect 10454283 3dabcd80ade63f664fb2daabef3a2b2c34f1360fb0f31177739e1d7280c66522 MATCH true
+SIZE DELTA 912
+BASE lines 51863 FIX lines 51875 DELTA 12
+COMMON PREFIX lines 23592 (0-based idx 23592 )
+COMMON SUFFIX lines 28271
+BASE removed lines 0
+FIX added lines 12
+--- ADDED LINES (1-based fixed line numbers) ---
+23593:     /* FRAME-FIX6 2026-11-19 (F6): a Hub-room hash is NOT a Personal-view popstate.
+23594:        Firefox fires popstate when location.hash is assigned, so the Hub-bar
+23595:        Ask Naya button's navigate('/hub/ask') used to land here, showView('home')
+23596:        ran, and its fix-4 F3 yield forced the room straight back to '/hub/feed'
+23597:        (proven by live stack trace + popstate log, fix-6 repro6b/6c  the
+23598:        Router '*' fallback at 17440 never runs for hub routes: hub/:room
+23599:        matches first, so it was not the eater). Hub/note hashes belong to the
+23600:        Router's hashchange render  leave them alone. Personal views (and an
+23601:        empty hash) still route here, so Back to a Personal view still yields
+23602:        an open room through showView('home'). */
+23603:     var _h=(location.hash||'').replace(/^#\/?/,'').split('?')[0].split('/')[0];
+23604:     if (_h==='hub' || _h==='smart-notes' || _h==='notes' || _h==='note') return;
+--- BASE lines around insertion (1-based) ---
+23590:     try { document.body.classList.toggle('os-hide-plus', name==='about'||name==='story'||name==='myworld'); } catch(e){} /* FINISHING LAW 2026-11-12 â the + covered the Dashboard stats icon at 390. */
+23591:   }
+23592:   window.addEventListener('popstate', function(e){
+23593:     var v=(e.state && e.state.osView) || (location.hash||'').replace('#','');
+23594:     showView(VIEWS.indexOf(v)>=0?v:'home', true);
+23595:   });
+=== MECHANISM (base) ===
+routes['hub/:room'] in base: true line 11028
+routes['*'] in base: true line 11037
+render() at line 11012
+hub/:room context: ", smart-notes/:slug (also notes/:slug, note/:slug)\n      if (segs[0] === 'hub' && segs[1] === 'note' && segs[2]) {\n        handler = routes['smart-notes/:slug'];\n        params = { slug: segs[2] };\n        key = 'smart-notes/:slug';\n      } else if (segs[0] === 'hub' && segs[1]) {\n        handler = routes['hub/:room'];\n        params = { room: segs[1] };\n        key = 'hub/:room';\n      } else if ((segs[0] === 'smart-notes' || segs[0] === 'notes' || segs[0] === 'note') && segs[1]) {\n        handler = routes['smart-notes/:slug'];\n        params = { slug: segs[1] };\n        key = 'smart-notes/:s"
+popstate handler base line 23592
+popstate context: "e){} /* FINISHING LAW 2026-11-12 â the + covered the Dashboard stats icon at 390. */\n  }\n  window.addEventListener('popstate', function(e){\n    var v=(e.state && e.state.osView) || (location.hash||'').replace('#','');\n    showView(VIEWS.indexOf(v)>=0?v:'home', true);\n  });\n  window.osShowView = showView;\n  document.addEventListener('pointerdown', function(e){\n    var t=(e.target && e.target.closest)?e.target.closest('.os-litobj,.os-jewel'):null;\n    if (!t) return;\n    t.classList.remove('os-f"
+navigate('/hub/feed') occurrences base: 12
+first showView line 5057
+navigate('/hub/ask') occurrences base: 1 first line 12254
+askBtn occurrences base: 7
+base line 17440: "  Router.on('*', () => { var _h=(location.hash||'').replace(/^#\\/?/,'').split('?')[0].split('/')[0]; var _pv=['home','about','people','message','inbox','growth','lists','reports','settings','skills','scheduler','memberships','notes','dashboard','today','story','myworld']; if (!_h || _pv.indexOf(_h)>=0) { if (_h==='' || _h==='home') return window.HubView({ room: 'feed' }); return document.createElement('div'); } location.hash = '#/hub'; return document.createElement('div'); });"
+fix  line 17440: "  Router.on('*', () => { var _h=(location.hash||'').replace(/^#\\/?/,'').split('?')[0].split('/')[0]; var _pv=['home','about','people','message','inbox','growth','lists','reports','settings','skills','scheduler','memberships','notes','dashboard','today','story','myworld']; if (!_h || _pv.indexOf(_h)>=0) { if (_h==='' || _h==='home') return window.HubView({ room: 'feed' }); return document.createElement('div'); } location.hash = '#/hub'; return document.createElement('div'); });"
+recoverFeedAfterBack base: 4 fix: 4
+groovepages academy base: 8 fix: 8
+FRAME-FIX6 marker fix: 1 base: 0
+guard first-seg test fix: 1
+base scripts: {"n":100,"fail":0}
+fix scripts: {"n":100,"fail":0}
+fix navigate hub/feed first line 10283
+welcome-banner region check: base has "naya-install-overlay": true fix: true
+fallback context: "s' || segs[0] === 'note') && segs[1]) {\n        handler = routes['smart-notes/:slug'];\n        params = { slug: segs[1] };\n        key = 'smart-notes/:slug';\n      }\n    }\n    if (!handler) handler = routes['*'];\n    current = key;\n    const view = handler(params) || document.createElement('div');\n    outlet.appendChild(view);\n    const main = outlet.querySelector('.main');\n    if (main) { main.setAttribute('tabindex', '-1'); }\n    window.scrollTo(0, 0);\n  }\n\n  window.addEventListener('hashchange', render);\n\n  return { on, navigate, render, parse };\n})();\n\nwindow.NayaRouter = Router;\n\n</script>\n<script>\n\n/* âââ Activity Log: GitHub-style timeline of what's happening now âââ */\nconst ActivityLog = (() => {\n  const KEY = 'naya.activity';\n  const MAX = 50;\n  function read() {\n    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); }\n    catch(e) { return []; }\n  }\n  function write(items) {\n    try { localStorage.setItem(KEY, JSON.stringify(items.slice(0, MAX))); }\n    "

@@ -1,0 +1,49 @@
+modal dismissed: True
+yield: room before PERSONAL: 1 hash: /hub/ask
+PERSONAL matches: 1
+  tab [0] box={'x': 728.4833374023438, 'y': 957.5999755859375, 'width': 100.4000244140625, 'height': 20.4000244140625}
+tapped PERSONAL tab [0]
+after PERSONAL: room=0 hash=/hub/feed
+PERSONAL YIELD: PASS
+[normal] modal dismissed: True
+[normal] FRESH controls=739 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True}
+[normal] WORLDS count: 1
+Traceback (most recent call last):
+  File "/home/hatch/workspace/team-nitro/personal-frame-fix6-20261119/checker/c_leg2b_redo.py", line 88, in <module>
+    loc.first.click(timeout=8000)
+  File "/home/hatch/.local/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 11021, in click
+    self._sync(
+  File "/home/hatch/.local/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/home/hatch/.local/lib/python3.12/site-packages/playwright/_impl/_locator.py", line 174, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hatch/.local/lib/python3.12/site-packages/playwright/_impl/_frame.py", line 598, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "/home/hatch/.local/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hatch/.local/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 8000ms exceeded.
+Call log:
+  - waiting for get_by_text("WORLDS", exact=True).first
+    - locator resolved to <span class="notif-lbl">WORLDS</span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - element is outside of the viewport
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - element is outside of the viewport
+    - retrying click action
+      - waiting 100ms
+    - waiting for element to be visible, enabled and stable
+

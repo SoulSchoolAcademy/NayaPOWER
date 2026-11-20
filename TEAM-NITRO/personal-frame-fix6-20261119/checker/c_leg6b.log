@@ -1,0 +1,10 @@
+modal dismissed: True
+gear count: 1
+after gear hash: settings
+tab count: 1
+Go-to-Home-Hub anchors: 1
+  link[0] href=https://nayanet.app/hub#/hub box=None
+no clickable Go-to-Home-Hub link found
+did not land on hub; url= https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-rou
+SETTINGS→HUB: FAIL
+LEG6B DONE

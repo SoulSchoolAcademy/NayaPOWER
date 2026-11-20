@@ -1,0 +1,13 @@
+gear count: 1
+after gear hash: settings
+tab count: 1
+Go-to-Home-Hub matches: 2
+hub anchors: 4
+  anchor[0] href=https://nayanet.app/hub#/hub text='Home'
+  anchor[1] href=https://nayanet.app/hub text='Home'
+  anchor[2] href=https://nayanet.app/hub text='Hub'
+  anchor[3] href=https://nayanet.app/hub#/hub text='Go to Home Hub →'
+clicked anchor[1] at 1952 49.0
+after Home Hub click url: https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix6-20261119&cb=8fbec9580c078b97d0881f7aa20d8c92ce41d9d6&owner=flagship-personal#settings
+SETTINGS→HUB: FAIL
+LEG6 DONE

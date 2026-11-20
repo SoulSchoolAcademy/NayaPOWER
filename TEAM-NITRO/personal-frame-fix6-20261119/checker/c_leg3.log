@@ -1,0 +1,8 @@
+#home/composer: open=True hidden=None fc-open=True :: ✕ | ✦ Naya note | ✎ | Make a post | ✎ | Naya note | ✦ | Smart note |  | Naya note — Naya formats your words beautifully. Write it, dictate
+#home/post: open=True hidden=None fc-open=True :: ✕ | ✎ Make a post | ✎ | Make a post | ✎ | Naya note | ✦ | Smart note |  | Make a post — your words, straight up. No auto-format, no distil
+#home/naya: open=True hidden=None fc-open=True :: ✕ | ✦ Naya note | ✎ | Make a post | ✎ | Naya note | ✦ | Smart note |  | Naya note — Naya formats your words beautifully. Write it, dictate
+#home/smart: open=True hidden=None fc-open=True :: ✕ | ✦ Smart note | ✎ | Make a post | ✎ | Naya note | ✦ | Smart note |  | Smart note — your words distilled into an intelligent block. You 
+#home: open=False hidden='' fc-open=False ::  |    |     ✕ | ✦ Naya note |  | ✎ Make a post | ✎ Naya note | ✦ Smart note |  | Naya note — Naya formats your words beautifully. Write it
+#about: open=False hidden='' fc-open=False ::  |    |     ✕ | ✦ Naya note |  | ✎ Make a post | ✎ Naya note | ✦ Smart note |  | Naya note — Naya formats your words beautifully. Write it
+COMPOSER 6/6: PASS {'#home/composer': True, '#home/post': True, '#home/naya': True, '#home/smart': True, '#home': False, '#about': False}
+LEG3 DONE

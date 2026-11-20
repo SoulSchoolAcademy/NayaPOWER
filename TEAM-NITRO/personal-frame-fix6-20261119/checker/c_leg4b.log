@@ -1,0 +1,19 @@
+forwarder pid: 137449
+modal dismissed: True
+chromium yield: room before PERSONAL: 1 hash: /hub/ask
+PERSONAL matches: 1
+  tab [0] box={'x': 725.8125, 'y': 957.609375, 'width': 101.890625, 'height': 20.390625}
+tapped PERSONAL tab [0]
+chromium after PERSONAL: room=0 hash=/hub/feed
+CHROMIUM PERSONAL YIELD: PASS
+modal dismissed: True
+chromium back FRESH controls=875 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True}
+WORLDS count: 1
+tapped WORLDS via locator
+landed on space: https://nayanet.app/space
+modal dismissed after back: True
+chromium back AFTER-BACK controls=875 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True}
+chromium back AFTER-BACK-15s controls=875 markers={'quote': True, 'personal': True, 'empty': True, 'ask': True, 'name': True}
+CHROMIUM BACK RETURN: PASS
+LEG4B DONE
+forwarder killed

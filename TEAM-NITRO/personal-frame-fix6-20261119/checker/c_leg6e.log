@@ -1,0 +1,11 @@
+modal dismissed: True
+after gear hash: settings
+'Step 7 of 7' matches: 1
+text matches: 2
+  text [0] box={'x': 89.5, 'y': 681.1500244140625, 'width': 146.13333129882812, 'height': 26}
+  text [1] box={'x': 54, 'y': 766.25, 'width': 188.46665954589844, 'height': 53.70001220703125}
+mouse-clicked text [1] at (148,793)
+clicked: True
+HUB LANDING: https://nayanet.app/hub#/hub
+SETTINGS→HUB: PASS
+LEG6E DONE

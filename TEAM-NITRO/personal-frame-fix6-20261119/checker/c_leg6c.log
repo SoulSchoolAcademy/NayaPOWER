@@ -1,0 +1,16 @@
+modal dismissed: True
+after gear hash: settings
+tab count: 1
+tab box attempt 0: {'x': 1154.0999755859375, 'y': 1923.199951171875, 'width': 224.0167236328125, 'height': 56}
+after tab click 0: 'Step 7 of 7' matches=0
+tab box attempt 1: {'x': 1154.0999755859375, 'y': 1923.199951171875, 'width': 224.0167236328125, 'height': 56}
+after tab click 1: 'Step 7 of 7' matches=0
+tab box attempt 2: {'x': 1154.0999755859375, 'y': 1923.199951171875, 'width': 224.0167236328125, 'height': 56}
+after tab click 2: 'Step 7 of 7' matches=0
+text matches: 2
+  text [0] box=None
+  text [1] box=None
+clicked: False
+did not land on hub; url= https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-rou
+SETTINGS→HUB: FAIL
+LEG6C DONE

@@ -1,0 +1,47 @@
+--- base showView region lines 23560-23595 (1-based) ---
+23560:     if (name==='home'){ try{ if(window.phSyncHomeAlbum) window.phSyncHomeAlbum(); }catch(e){} } /* R3 â the home album strip re-reads the real album every time home opens. */
+23561:     if (name==='dashboard' && window.osLoadDashboard) window.osLoadDashboard();
+23562:     if (name==='dashboard'){ setTimeout(function(){ try{ if (typeof window.osLoadPointsBoard==='function') window.osLoadPointsBoard(); }catch(e){} try{ if (typeof ldLayoutNodes==='function') ldLayoutNodes(); }catch(e){} }, 150); } /* RETHINK: gauge lives behind the Dashboard door now â its orbs are laid out from the live tacho size only once the view is visible (hidden views measure 0). */
+23563:     if (name==='today') loadToday();
+23564:     if (name==='people') loadFaces();
+23565:     if (name==='inbox') loadInbox();
+23566:     if (name==='growth') { loadInvites(); loadSmartLink(); }
+23567:     if (name==='reports') loadReports();
+23568:     if (name==='settings') { renderInstallState(); loadSettingsData(); }
+23569:     if (name==='notes') { loadNotes(); loadNayaNotes(); }
+23570:     if (name==='lists') loadLists();
+23571:     if (name==='memberships' && typeof window.mshipLoad==='function') window.mshipLoad(); /* FIX-8: memberships view loads its list on open */
+23572:     if (name==='about') { loadAbout(); loadLibrary(); }
+23573:     if (name==='story') { loadAbout(); }
+23574:     /* FRAME-FIX4 2026-11-19 (F3): an open Hub room (Ask Naya) must yield when
+23575:        PERSONAL shows the home feed. showView only toggles [data-os-view] and
+23576:        the #app outlet is not one, and pushState fires no hashchange, so the
+23577:        room sat over the home view until reload. Yield it through the router. */
+23578:     var _roomYield=false;
+23579:     try{ if (name==='home' && window.NayaRouter && window.NayaRouter.parse) { var _segs=window.NayaRouter.parse(); var _roomOpen=(_segs[0]==='hub' && _segs[1] && _segs[1]!=='feed') || !!document.querySelector('.naya-ask-room'); if (_roomOpen) { window.NayaRouter.navigate('/hub/feed'); _roomYield=true; } } }catch(e){}
+23580:     if (!skipPush && !_roomYield){ try { history.pushState({osView:name}, '', '#'+name); } catch(e){} }
+23581:     /*__NU_20261104_SHAWN: hide Living Intelligence strip in message view */
+23582:     try { var _li = document.querySelector('[data-tn-li="strip"]'); if (_li) _li.style.display = (name==='message') ? 'none' : ''; } catch(e){}
+23583:     /* BUILDER-2 2026-11-07: the message view is a focused message screen,
+23584:        not the page scrolled to a form â the hero (cover + pill row +
+23585:        sidebar +) hides while messaging, so the composer IS the screen.
+23586:        The top bar stays: Home takes them back. */
+23587:     try { document.body.classList.toggle('os-msg-mode', name==='message'); } catch(e){}
+23588:     /* STORY ROUND: the floating + sits in the middle of About and of the
+23589:        story view â hide it on both, the way message mode hides it. */
+23590:     try { document.body.classList.toggle('os-hide-plus', name==='about'||name==='story'||name==='myworld'); } catch(e){} /* FINISHING LAW 2026-11-12 â the + covered the Dashboard stats icon at 390. */
+23591:   }
+23592:   window.addEventListener('popstate', function(e){
+23593:     var v=(e.state && e.state.osView) || (location.hash||'').replace('#','');
+23594:     showView(VIEWS.indexOf(v)>=0?v:'home', true);
+23595:   });
+_roomOpen first occurrence line: 23579
+  _roomOpen #1 line 23579: "\n    try{ if (name==='home' && window.NayaRouter && window.NayaRouter.parse) { var _segs=window.NayaRouter.parse(); var _roomOpen=(_segs[0]==='hub' && _segs[1] && _segs[1]!=='feed') || !!document.querySelector('.naya-ask-room'); if (_roomOpen) { window.NayaRouter.navigate('/hub/feed'); _roomYield=true; } } }catch(e){}\n"
+  _roomOpen #2 line 23579: "); var _roomOpen=(_segs[0]==='hub' && _segs[1] && _segs[1]!=='feed') || !!document.querySelector('.naya-ask-room'); if (_roomOpen) { window.NayaRouter.navigate('/hub/feed'); _roomYield=true; } } }catch(e){}\n    if (!skipPush && !_roomYield){ try { history.pushState({osView:name}, '', '#'+name); } catch(e){} }\n    /*__N"
+VIEWS first line: 7903
+VIEWS context: "VIEWS â welcome portal + identity bridge\n   âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */\n\n/* âââ Welcome: the invitation âââ */\n.welcome {\n  min-height: 100vh;\n  display: flex; flex-direction: column; align-items: center; just"
+BRANCH tip: 8056efc3a7699b83d3f55294215482dee956156b
+COMMIT sha: 8056efc3a7699b83d3f55294215482dee956156b parents: 04715a7f8fc7dbd885b05401c1fb6b1839aa7811 tree: 2d477bec16c1fcd6a8cdfd81e89923128737bc58
+COMMIT message: "Personal Frame Fix-6 Round (2026-11-19): Ask Naya button opens the room — popstate handler no longer routes Hub-room hashes through showView(home) F3 yield"
+STAGED status 200 size 10454283 sha256 3dabcd80ade63f664fb2daabef3a2b2c34f1360fb0f31177739e1d7280c66522
+STAGED MATCH fixed blob: true
