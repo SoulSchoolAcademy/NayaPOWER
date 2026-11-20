@@ -69700,6 +69700,38 @@
         "Network",
         "Belonging"
       ]
+    },
+    {
+      "smart_note_id": "SN-4039",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4039-from-one-percent-to-everyone",
+      "slug": "from-one-percent-to-everyone",
+      "title": "From One Percent to Everyone",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4039/IB-SMART-NOTE-20261120-sn4039-from-one-percent-to-everyone.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4039/IB-SMART-NOTE-20261120-sn4039-from-one-percent-to-everyone.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4039/IB-SMART-NOTE-20261120-sn4039-from-one-percent-to-everyone.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4039-from-one-percent-to-everyone.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:05:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "b43f12e2bab536acfbde32d6cdcec6d2cfb3cab8315c856c8bc67728a6714afd",
+      "content_hash": "bcfbd09e879e692384984a403618bf0047c3dacec63c89e52ea6215b933b7c74",
+      "one_line": "From one percent to everyone.",
+      "topics": [
+        "Mission",
+        "Citizen",
+        "NayaNET",
+        "Access"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69710,5 +69742,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "805881a326f0d50e94657708d2e8332c418b4de94ff5dc1a7903f675bd34ab1a"
+  "corpus_manifest_hash": "67308dfaffc7b5e5260896e42951686c2d7e011ddba27cf0063e24551b8de571"
 }
