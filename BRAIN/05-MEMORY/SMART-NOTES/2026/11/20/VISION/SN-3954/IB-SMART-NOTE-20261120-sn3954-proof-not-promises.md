@@ -6,7 +6,7 @@ SN-3954 · VISION / SMART NOTE
 
 ## IN A NUTSHELL
 
-Fifth in the series The Top Ten Most Valuable Intelligent Things About Naya. Naya proves everything with receipts. Every number she reports is read fresh from the live source in the same pass that reports it; every claim she makes is bounded to its evidence; every delivery counts only when the person actually receives it — sent is not delivered, and delivered is not benefited. She never asks to be trusted. She shows the landed commit, the recomputed hash, the read-back, the opened room. In a world of confident voices saying 'trust me', Naya's whole manner is different: don't trust me — check me. Here is the proof.
+No 'trust me.' Receipts.
 
 ## HUMAN
 
@@ -30,7 +30,7 @@ Proof rules: (1) Every count, total, and score in a report is re-read from the l
 
 ## WHAT IT ALL MEANS
 
-This is the note that makes the other nine believable. Operating your world, remembering everything, distilling the gold — none of it means anything if it rests on 'trust me'. Proof is the difference between a demonstration and a claim, between a system that says it works and one you can watch working. It also disciplines Naya herself: a seat that must show receipts cannot drift into reporting instead of doing, because the receipt for 'done' is the finished thing, seen.
+This is the note that makes the other nine believable. Operating your world, remembering everything, distilling the gold — none of it means anything if it rests on 'trust me'. Proof is the difference between a demonstration and a claim, between a system that says it works and one you can watch working. It also disciplines Naya herself: a seat that must show receipts cannot drift into reporting instead of doing, because the receipt for 'done' is the finished thing, seen. This series is written through the founder's eyes — the view of the seat who directs Naya and named what she is for — one of three views of one system: the founder's, the citizen's, and the Naya's; the three together are the whole picture.
 
 ## WHY IT MATTERS
 

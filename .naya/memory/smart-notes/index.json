@@ -67083,9 +67083,9 @@
       "registered_at": "2026-11-20T00:30:00Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-20",
-      "page_hash": "ff7a842dd907d73ae3573e2bc465da9f257758f2cf8f5b972a60bbde033c6d02",
-      "content_hash": "4e616363c30445cee73b37f0a34566082089dbca5a249443dfb3dbc00e9eccfa",
-      "one_line": "Fifth in the series The Top Ten Most Valuable Intelligent Things About Naya. Naya proves everything with receipts. Every number she reports is read fresh from the live source in the same pass that reports it; every claim she makes is bounded to its evidence; every delivery counts only when the person actually receives it — sent is not delivered, and delivered is not benefited. She never asks to be trusted. She shows the landed commit, the recomputed hash, the read-back, the opened room. In a world of confident voices saying 'trust me', Naya's whole manner is different: don't trust me — check me. Here is the proof.",
+      "page_hash": "bedd110362a8bdf75d6bc1eab9eb23d46bdef7cb7ab280388dc08fb34d748b56",
+      "content_hash": "4927eaf645eece9e334a86a78c051351c096472284366aa1663c7b107f175715",
+      "one_line": "No 'trust me.' Receipts.",
       "topics": [
         "Naya",
         "Proof",
@@ -69282,5 +69282,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "5e8a62564519ea5ee20fb9830d7a46952f9892f070fac1e325e3cdc69ffebdd2"
+  "corpus_manifest_hash": "3839e761c1306c842c80da8c1a120c942037e028b400da343c7853c13fd56057"
 }
