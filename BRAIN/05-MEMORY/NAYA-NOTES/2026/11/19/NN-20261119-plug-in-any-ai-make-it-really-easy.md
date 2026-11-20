@@ -4,7 +4,7 @@
 
 **NN-20261119-plug-in-any-ai-make-it-really-easy · Naya Note · 2026-11-19 ~21:30–21:45 MST (~04:30–04:45Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Plug In Any AI — Make It Really Easy (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4238 — Plug In Any AI — Make It Really Easy*
 
 **Category:** Vision — product direction: any AI plugs into Naya
 
