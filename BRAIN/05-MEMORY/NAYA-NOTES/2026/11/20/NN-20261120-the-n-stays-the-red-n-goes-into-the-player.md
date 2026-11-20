@@ -4,7 +4,7 @@
 
 **NN-20261120-the-n-stays-the-red-n-goes-into-the-player · Naya Note · 2026-11-20 ~12:49–12:53 MST**
 
-*Paired Smart Note: SN-pending — The N Stays — The Red N Goes Into the Player (takes the next free number at filing)*
+*Paired Smart Note: SN-4290 — The N Stays — The Red N Goes Into the Player*
 
 **Category:** Decisions — the agreement presentation, the red N, the player
 
