@@ -4,7 +4,7 @@
 
 **NN-20261120-more-action-less-words · Naya Note · 2026-11-20 ~13:33–14:05 MST (call 8b19d313)**
 
-*Paired Smart Note: SN-pending — More Action, Less Words — Nothing Sits While We Watch (takes the next free number at filing)*
+*Paired Smart Note: SN-4317 — More Action, Less Words — Nothing Sits While We Watch*
 
 **Category:** Law — how the machine works
 
