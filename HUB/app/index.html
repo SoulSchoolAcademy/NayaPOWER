@@ -2011,7 +2011,8 @@ body.msg-open{overflow:hidden;}
 @media (prefers-reduced-motion: reduce) {
   /* FOLLOW-UP 12 (FAIL 1): the tile orb is NOT in this kill list - its breathe is the motion the eye measures. */
   .star-rating button.on, .action[data-kind="love"].on .love-heart { animation: none !important; }
-  .notif-tile::after, .nav-btn .ico::after, .nav-sub .ico::after, .rail-toggle::after, .eco-bb-ico::after, .fc-plusitem .fc-pi-ico::after, .ib-card-orb::before { animation: none !important; }
+  .notif-tile::after, .nav-btn .ico::after, .nav-sub .ico::after, .rail-toggle::after, .eco-bb-ico::after, .fc-plusitem .fc-pi-ico::after { animation: none !important; } /* SMART-NOTE FIX2 2026-11-20 (item 2): .ib-card-orb::before leaves this kill list — see the carve-out below. */
+  .ib-card-orb::before, .rate-pearl-orb::before { animation-duration: 60s !important; } /* SMART-NOTE FIX2 2026-11-20 (item 2): the two orbs join the tile orb reduced-motion carve-out (L209-211 precedent) — their 60s flow survives, so the eye can see it move. */
 }
 .add-intel {
   margin-top: 16px; padding: 18px;
@@ -2026,7 +2027,7 @@ body.msg-open{overflow:hidden;}
 .rate-head { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; } /* SMART-NOTE FIX1 2026-11-20 (item 6): RATE THE INTELLIGENCE dead center. */
 .rate-head b { font-size: 17px; letter-spacing: .12em; color: #fff; }
 .rate-pearl-orb { position: relative; display: inline-flex; width: 26px; height: 26px; flex: none; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 35% 30%, #ffffff, #dcdce4 55%, #a9a9b4 100%); box-shadow: 0 0 14px rgba(255,255,255,.65), 0 2px 6px rgba(0,0,0,.6); } /* SMART-NOTE FIX1 2026-11-20 (item 6): the dead diamond is gone — a white pearl-diamond spinning orb of light, built on the DM orb pattern (conic flow inside, diamond dead center); the DM orbs flow black, this one flows white. */
-.rate-pearl-orb::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, rgba(255,255,255,.95), rgba(255,255,255,.35) 25%, rgba(255,255,255,.95) 50%, rgba(255,255,255,.35) 75%, rgba(255,255,255,.95)); animation: orb-spin 60s linear infinite; }
+.rate-pearl-orb::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, rgba(255,255,255,.30) 0deg, rgba(255,255,255,.30) 300deg, rgba(255,255,255,.95) 340deg, #ffffff 355deg, rgba(255,255,255,.30) 360deg); animation: orb-spin 60s linear infinite; } /* SMART-NOTE FIX2 2026-11-20 (item 2): one bright wedge, not a symmetrical spin — the travelling highlight. */
 .rate-pearl-orb svg { position: relative; z-index: 1; width: 16px; height: 16px; margin: auto; display: block; filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); }
 .rank-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
 .rank-label { font-size: 17px; font-weight: 800; letter-spacing: .1em; color: #fff; min-width: 132px; }
@@ -2037,7 +2038,7 @@ body.msg-open{overflow:hidden;}
 /* ——— MAKE THIS INTELLIGENCE BETTER (23:21Z) ——— */
 .add-intel-prompt { font-size: 17px; color: #fff; margin-bottom: 12px; }
 .add-intel-types { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; } /* SMART-NOTE FIX1 2026-11-20 (item 11): the four buttons in ONE perfect line, nothing else. */
-.add-intel-types .intel-type { justify-content: center; text-align: center; white-space: normal; line-height: 1.3; }
+.add-intel-types .intel-type { justify-content: center; text-align: center; white-space: nowrap; line-height: 1.3; padding: 12px 8px; gap: 6px; letter-spacing: .03em; } /* SMART-NOTE FIX2 2026-11-20 (item 7): REPORT AN OUTCOME on one line like the other three — nowrap + tighter padding/gap/spacing, no size change. */
 .intel-type { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 17px; letter-spacing: .06em; color: #fff; padding: 12px 18px; border-radius: 999px; background: linear-gradient(135deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 38%), #050607; /* 23:32Z emblem law: a facet of light across the top-left. */ border: 2px solid color-mix(in srgb, var(--tc) 62%, rgba(255,255,255,.12)); box-shadow: inset 0 2px 3px rgba(255,255,255,.28), inset 0 -6px 12px rgba(0,0,0,.7), 0 8px 20px rgba(0,0,0,.6), 0 0 10px -2px color-mix(in srgb, var(--tc) 30%, transparent); transition: transform .2s cubic-bezier(.16,.84,.22,1), box-shadow .2s, border-color .2s; } /* HUB FEED FIX2 2026-11-18 (D8): the pill body is deeper — thicker rim, stronger top light, deeper bottom shadow, more lift — a real object, not a flat pill. */
 .intel-type-dot { position: relative; width: 16px; height: 16px; flex: none; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.65), var(--tc) 45%, #050607 92%); border: 1.5px solid var(--tc); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 6px rgba(0,0,0,.7), 0 3px 8px rgba(0,0,0,.6), 0 0 10px -2px var(--tc); } /* HUB FEED FIX2 2026-11-18 (D8): the dot is a real jewel ball now — obsidian sphere in the type's own color, top-left light, stacked shadows — not a flat disc. */
 /* 23:32Z emblem law, harvested from the star balls (L1834): a facet of light on the jewel's top-left. */
@@ -2064,18 +2065,20 @@ body.msg-open{overflow:hidden;}
 .ib-media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 12px; }
 .add-intel input {
   flex: 1; border: 2px solid rgba(255,255,255,.65); border-radius: 12px; /* SMART-NOTE FIX1 2026-11-20 (item 10): the input is the very top, lit up white with white light around it so they can just type; clicked it goes purple (the :focus rule below). */
-  background: #07070a; color: #fff; padding: 12px 14px; font-size: 17px; outline: 0;
-  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 18px rgba(255,255,255,.30), 0 14px 30px rgba(0,0,0,.6);
-  transition: border-color .18s, box-shadow .18s;
+  background: #ffffff; color: #050607; padding: 12px 14px; font-size: 17px; outline: 0;
+  box-shadow: 0 0 18px rgba(255,255,255,.30), 0 14px 30px rgba(0,0,0,.6);
+  transition: border-color .18s, box-shadow .18s, background-color .18s, color .18s;
 }
-.add-intel input:focus { border-color: var(--purple); box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 18px -2px rgba(142,36,170,.55), 0 16px 34px rgba(0,0,0,.65); } /* 23:13Z amount law. */
-.add-intel input::placeholder { color: var(--muted); }
+.add-intel input:focus { border-color: var(--purple); background: #8e24aa; color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 0 18px -2px rgba(142,36,170,.55), 0 16px 34px rgba(0,0,0,.65); } /* SMART-NOTE FIX2 2026-11-20 (item 7): the box itself goes royal purple on focus — background, not just border/glow. */
+.add-intel input::placeholder { color: #3f3f4d; } /* SMART-NOTE FIX2 2026-11-20 (item 7): dark slate so the placeholder reads on the white field. */
+.add-intel input:focus::placeholder { color: #e8e4ee; } /* SMART-NOTE FIX2 2026-11-20 (item 7): pale lavender-white, harvested (L1674), so it reads on purple. */
 @media (max-width: 700px) {
   .board-actions { grid-template-columns: 1fr; gap: 10px; }
   .board-actions-left, .board-actions-right { justify-content: stretch; }
   .board-actions-left .action, .board-actions-right .action { flex: 1; }
   .star-rating { width: 100%; justify-content: space-between; }
   .add-intel-row { flex-direction: column; }
+  .add-intel-types .intel-type { white-space: normal; } /* SMART-NOTE FIX2 2026-11-20 (item 7): phones keep the wrap — the one-line fit is desktop-only. */
 }
 
 
@@ -2324,10 +2327,10 @@ body.msg-open{overflow:hidden;}
 }
 .ib-layer-head.open .ib-chev { transform: rotate(180deg); }
 .ib-layer-body { padding: 8px 24px 24px; overflow-wrap: break-word; /* long machine-JSON tokens must wrap on phones */ }
-.ib-layer-body p { color: var(--ink); font-size: 17px; line-height: 1.7; margin: 0 0 12px; text-shadow: 0 0 12px rgba(255,255,255,.22); } /* SMART-NOTE FIX1 ITEM 17 2026-11-20: layer bodies lit silver, the same glow as the nutshell. */
+.ib-layer-body p { color: var(--ink); font-size: 17px; line-height: 1.7; margin: 0 0 12px; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 20px rgba(255,255,255,.45); } /* SMART-NOTE FIX2 2026-11-20 (item 17): the .22 glow did not read on the render — the headline full-breathe halo instead, silver-white only. */
 .ib-layer-body p:last-child { margin-bottom: 0; }
-.ib-layer-body ul { margin: 0 0 12px; padding-left: 24px; color: var(--ink); font-size: 17px; line-height: 1.7; text-shadow: 0 0 12px rgba(255,255,255,.22); } /* SMART-NOTE FIX1 ITEM 17 2026-11-20: list text lit silver, the same glow as the nutshell. */
-.ib-layer-body li { margin-bottom: 8px; text-shadow: 0 0 12px rgba(255,255,255,.22); } /* SMART-NOTE FIX1 ITEM 17 2026-11-20: list text lit silver, the same glow as the nutshell. */
+.ib-layer-body ul { margin: 0 0 12px; padding-left: 24px; color: var(--ink); font-size: 17px; line-height: 1.7; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 20px rgba(255,255,255,.45); } /* SMART-NOTE FIX2 2026-11-20 (item 17): the .22 glow did not read on the render — the headline full-breathe halo instead, silver-white only. */
+.ib-layer-body li { margin-bottom: 8px; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 20px rgba(255,255,255,.45); } /* SMART-NOTE FIX2 2026-11-20 (item 17): the .22 glow did not read on the render — the headline full-breathe halo instead, silver-white only. */
 .ib-layer-body strong { color: var(--ink); }
 .ib-layer-body code {
   font-family: ui-monospace, monospace; font-size: 17px; color: var(--yellow);
@@ -8377,203 +8380,8 @@ window.NayaJewels = (() => {
   function mainShow(rm, content, stream, searchWrap, provenanceEl) {
     const wrap = el('div', 'main-show');
 
-    /* — Hero — */
-    const hour = new Date().getHours();
-    const greet = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
-    // Name: the Identity handoff (?name=) first, then this device's memory,
-    // then the runtime. Never a hardcoded name, never dev text near it.
-    let who = '';
-    try {
-      const qp = new URLSearchParams(location.search);
-      const qn = (qp.get('name') || '').trim();
-      const qa = (qp.get('alias') || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
-      if (qa) {
-        try { localStorage.setItem('nayanet_smart_alias', qa); } catch {}
-      }
-      if (qn) {
-        who = qn.split(/\s+/)[0];
-        try { localStorage.setItem('nayanet_smart_name', qn); } catch {}
-        try { qp.delete('name'); qp.delete('userName'); qp.delete('alias'); var rest = qp.toString(); history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash); } catch {}
-      } else {
-        who = (localStorage.getItem('nayanet_smart_name') || '').trim().split(/\s+/)[0];
-        if (qa) {
-          try { qp.delete('name'); qp.delete('userName'); qp.delete('alias'); var rest = qp.toString(); history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash); } catch {}
-        }
-      }
-      if (!who) {
-        const id = R.identitySnapshot && R.identitySnapshot();
-        if (id && id.display_name && id.display_name !== 'You') who = id.display_name;
-      }
-      /* Intel Today landing flow (2026-11-12): a returning citizen leaves
-         a boolean flag — no name, no identity, just "someone is home" —
-         so the worker can send them to the page they clicked instead of
-         the welcome page. Fresh visitors carry no flag. */
-      try { if (who || qa) document.cookie = 'nayanet_returning=1; path=/; max-age=31536000; SameSite=Lax'; } catch (e) {}
-    } catch (e) { /* identity unavailable — fall back to neutral greeting */ }
-    const hero = el('section', 'hero');
-    hero.setAttribute('data-spy-area', 'area:hub');
-    hero.style.setProperty('--room-accent', rm.accent);
-    const now = new Date();
-    const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    const timeStr = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-    hero.innerHTML =
-      '<div class="eyebrow feed-motto">&ldquo;NayaNET &mdash; create, learn and grow together&rdquo;</div>' +
-      '<h1>' + greet + (who ? ', ' + esc(who) : '') + '.</h1>' +
-      /* FIX 2026-11-18 (C3): the Personal points pill with digit tiles,
-         harvested verbatim from Personal blob 9a006c47 (L4996-4997) — one
-         pill, in the hero beside the greeting, where Personal places it
-         beside the name, above the action controls. Display-only here:
-         role/tabindex/data-derive are dropped (no breakdown popup exists
-         in the Hub); the number is the citizen's own total, read from the
-         same localStorage key Personal writes ('naya.points.total.v1'). */
-      /* HUB FEED FIX2 2026-11-18 (D4): the points pill is OUT of the banner —
-         points live on the profile and the Dashboard, never on the Hub. The pill
-         div, its first-paint read, its tiler, and its CSS are removed together;
-         no dead machinery for a removed block. */
-      /* AMENDMENT 2026-11-18 (A, Shawn 00:47Z): the banner simplified to
-         exactly four elements — motto, greeting, date + live time
-         UNDERNEATH the greeting, the share-value line. The Wisdom of the
-         Day block and the public-feed pill are OUT; the share-value line
-         replaces the pill. The points pill (FIX C3) stays, beside the
-         greeting, where Personal places it beside the name. */
-      '<p class="hero-sub hero-date"><span class="live-dot" aria-hidden="true"></span><span class="hero-date-str">' + dateStr + '</span> <span class="hero-time">' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' }) + '</span></p>' +
-      '<p class="hero-sub">We share value and intelligence and connect you with like minds.</p>';
-    /* The clock is alive (Shawn 2026-10-20): ticking seconds + breathing dot —
-       the whole app feels like active intelligence. One global interval. */
-    if (!window._nayaClock) {
-      window._nayaClock = setInterval(() => {
-        const n = new Date();
-        document.querySelectorAll('.hero-time').forEach(t => { t.textContent = n.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' }); });
-        document.querySelectorAll('.hero-date-str').forEach(d => { d.textContent = n.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); });
-      }, 1000);
-    }
-    wrap.appendChild(hero);
-    /* AMENDMENT 2026-11-18 (A): the "Read more" toggle and the wisdom
-       trim go with the wisdom block — no dead machinery for a removed
-       block. */
-
-    /* AMENDMENT #3 2026-11-17 20:29Z — THE HUB WELCOME FOLDS AWAY. On login
-       the Hub greets you (good-afternoon banner with the time), then folds
-       up and hides away — the best interface is the one that folds up and
-       hides away. (AMENDMENT 2026-11-18: the quote of the day is out of
-       the banner; the wisdom trim went with it.) Underneath it sits flush:
-       search at the top, then Collective / Personal / Activity (the
-       explainer text below them is gone — the caption went out in
-       EYE-NOTES §3.3 and the tab sub-lines live only in aria-label/title,
-       never as visible text), then the categories (the Smart Tabs ribbon),
-       then the feed. The fold is the hero itself collapsing to zero
-       height — no new chrome, no new button, nothing invented. It folds
-       on first scroll down, or 30s after arrival, whichever comes first;
-       it folds back when you scroll back to the very top, so the greeting
-       is never stranded. The state lives for the page lifetime only
-       (window, not storage) — a fresh load logs in and greets again. */
-    (function () {
-      function getFolded() { return !!window._nayaWelcomeFolded; }
-      function setFolded(v) { window._nayaWelcomeFolded = !!v; }
-      function foldEl(h) {
-        if (!h || h.classList.contains('hero-folded')) return;
-        h.style.maxHeight = h.scrollHeight + 'px';
-        void h.offsetHeight;
-        h.classList.add('hero-folded');
-        h.style.maxHeight = '0px';
-        h.setAttribute('aria-hidden', 'true');
-        setFolded(true);
-        /* HUB FEED FIX2 2026-11-18 (D3): the restore shows after ANY fold —
-           timer, scroll, or ×. foldEl is the one choke point for all three;
-           before this, only the × handler showed it, so an auto-folded
-           banner left no way back. unfoldEl already hides it again.
-           The button rides on the element being folded (h), NOT on the
-           closed-over hero: mainShow can build twice before load, so the
-           30s timer's foldEl closes over the FIRST build's hero while it
-           folds the CURRENT one — the old hero._nayaRestoreBtn pointed at
-           a detached button and the visible restore never showed. */
-        if (h._nayaRestoreBtn) h._nayaRestoreBtn.classList.add('show');
-      }
-      function unfoldEl(h) {
-        if (!h || !h.classList.contains('hero-folded')) return;
-        if (window._nayaWelcomeClosed) return; /* HUB FEED 2026-11-17 22:25Z (item 5): a banner closed with its × never pops back open on scroll-to-top */
-        h.classList.remove('hero-folded');
-        h.style.maxHeight = h.scrollHeight + 'px';
-        h.setAttribute('aria-hidden', 'false');
-        setFolded(false);
-        if (h._nayaRestoreBtn) h._nayaRestoreBtn.classList.remove('show'); /* HUB FEED FIX2 2026-11-18 (D3): same stale-closure fix as foldEl — the element being unfolded is h, not the closed-over hero. */ /* AMENDMENT 2026-11-18 (B): the banner is back, so the way back goes away */
-        setTimeout(function () { if (!h.classList.contains('hero-folded')) h.style.maxHeight = ''; }, 650);
-      }
-      /* FOLLOW-UP 12 (FAIL 2a): on a short viewport the greeting would push the search box below the fold, so it folds on arrival here - the restore button still brings it back. */
-      if (getFolded() || window._nayaWelcomeClosed || window.innerHeight < 500) {
-        hero.style.transition = 'none';
-        hero.classList.add('hero-folded');
-        hero.style.maxHeight = '0px';
-        hero.setAttribute('aria-hidden', 'true');
-        void hero.offsetHeight;
-        hero.style.transition = '';
-      } else if (!window._nayaWelcomeTimer) {
-        window._nayaWelcomeTimer = setTimeout(function () {
-          var h = document.querySelector('.main-show .hero');
-          if (h) foldEl(h);
-        }, 30000);
-      }
-      if (!window._nayaWelcomeFold) {
-        window._nayaWelcomeFold = true;
-        window.addEventListener('scroll', function () {
-          var h = document.querySelector('.main-show .hero');
-          if (!h) return;
-          /* ROUND 6 2026-11-19 (defect 3): while the restore button is
-             returning the viewport to the top, do not re-fold mid-flight —
-             the guard clears when the top is reached. */
-          if (window._nayaWelcomeReturning) {
-            if (window.scrollY <= 8) { window._nayaWelcomeReturning = false; unfoldEl(h); }
-            return;
-          }
-          if (window.scrollY > 40) foldEl(h);
-          /* FOLLOW-UP 12 (FAIL 2a): on a short viewport the unfolded greeting would push the search below the fold again, so scrolling back to the top does not unfold it here - the restore button stays the way back. */
-          else if (window.scrollY <= 8 && window.innerHeight >= 500) unfoldEl(h);
-        }, { passive: true });
-      }
-      /* AMENDMENT 2026-11-18 (B) + HUB FEED FIX2 2026-11-18 (D3): the way
-         back. A banner closed with its × stays closed for the page lifetime
-         — so there must be an obvious way to bring it back, or the citizen
-         is stranded with no greeting. The restore is a LITTLE BUTTON HIDDEN
-         IN THE CORNER — fixed at the top right, just under the top bar —
-         and shows ONLY while the banner is closed; one tap clears the
-         close, unfolds the banner, and hides the button again. It is
-         appended below (a fresh mainShow build re-creates it, and a build
-         that starts closed shows it at once); position:fixed takes it out
-         of the flow, so the search stays flush at the top. Its class rides
-         the .hero-restore rules — the Read-more pill's own obsidian-pill
-         language, renamed. */
-      /* SMART-NOTE FIX1 2026-11-20 (item 13): the random welcome button goes — the '↑ Welcome' restore pill is removed entirely (creation + click handler + registration), so a closed welcome banner stays closed for the page lifetime. The close × on the banner itself stays. */
-      /* AMENDMENT 2026-11-18 (B, Shawn 00:47Z): the little close button
-         moves to the banner's TOP corner — his newest word supersedes the
-         22:25Z bottom-right placement. Tapping it closes the banner (the
-         same fold as the scroll fold) and it STAYS closed for the page
-         lifetime: the scroll-to-top unfold respects the close, so a closed
-         banner never pops back open — and the restore pill above appears,
-         so the way back is always obvious. */
-      (function () {
-        if (hero.querySelector('.hero-close')) return;
-        var btn = document.createElement('button');
-        btn.type = 'button'; btn.className = 'hero-close';
-        btn.setAttribute('aria-label', 'Close welcome banner');
-        btn.title = 'Close';
-        btn.innerHTML = '&times;';
-        btn.addEventListener('click', function () {
-          window._nayaWelcomeClosed = true;
-          foldEl(hero);
-          /* SMART-NOTE FIX1 2026-11-20 (item 13): the restore pill is gone — nothing to show. */
-        });
-        hero.appendChild(btn);
-      })();
-    })();
-
-    /* — No name ask on the home screen (Shawn 2026-10-21): a name is claimed
-       ONCE, at the identity page when entering the Hub. The hero greets
-       purely from that claimed identity — and never asks again here. — */
-
     /* — Search sits immediately above the lens tabs, full width — */
     if (searchWrap) wrap.appendChild(searchWrap);
-    /* SMART-NOTE FIX1 2026-11-20 (item 13): the restore-button note above is history — the button is removed, so a fresh build that starts closed simply starts closed. */
-    /* SMART-NOTE FIX1 2026-11-20 (item 13): the restore button is gone — nothing is appended, nothing is shown. */
 
     /* — Lens: three compact buttons in one row, real navigation — */
     const lens = el('nav', 'lens-tabs');
@@ -13774,8 +13582,8 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 .ib-layer-head:hover .ib-chev{color:#fff;text-shadow:0 0 12px var(--lc);}
 .board.lift:hover{background-image:linear-gradient(135deg,color-mix(in srgb, var(--room-accent) 22%, #151021f2),color-mix(in srgb, var(--room-accent) 10%, #0b0a10f2));}
 .board.lift:hover .board-title{text-shadow:0 0 14px color-mix(in srgb, var(--room-accent) 80%, transparent);}
-.ib-card-orb::before{animation-name:naya-orbit-dot-cw;}
-.show-feed > article:nth-child(even) .ib-card-orb::before,.intel-board:nth-of-type(even) .ib-card-orb::before{animation-name:naya-orbit-dot-ccw;animation-duration:150s;}
+.ib-card-orb::before{animation-name:orb-spin;} /* SMART-NOTE FIX2 2026-11-20 (item 2): the orbit-dot override moved background-position on a masked conic ring — nothing visibly travelled. Rotation restored (CW). */
+.show-feed > article:nth-child(even) .ib-card-orb::before,.intel-board:nth-of-type(even) .ib-card-orb::before{animation-name:orb-spin-rev;animation-duration:60s;} /* SMART-NOTE FIX2 2026-11-20 (item 2): even boards counter-rotate (CCW), 60s — 120 degrees in a 20s screenshot pair. orb-spin-rev harvested (L2005). */
 .naya-guide-face{width:46px;height:46px;flex:0 0 auto;border-radius:50%;position:relative;border:2px solid var(--room-accent,#8e24aa);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .3s,box-shadow .3s,border-color .3s;}
 .naya-guide-face::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:50%;pointer-events:none;border:1px solid color-mix(in srgb, var(--room-accent,#8e24aa) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--room-accent,#8e24aa) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 132s linear infinite;}
 
