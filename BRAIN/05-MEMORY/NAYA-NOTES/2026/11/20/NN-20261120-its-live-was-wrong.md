@@ -4,7 +4,7 @@
 
 **NN-20261120-its-live-was-wrong · Naya Note · 2026-11-20 ~15:21–15:24 MST**
 
-*Paired Smart Note: SN-pending — "It's Live" Was Wrong (takes the next free number at filing)*
+*Paired Smart Note: SN-4334 — "It's Live" Was Wrong*
 
 **Category:** Law — never claim live without opening the address
 
