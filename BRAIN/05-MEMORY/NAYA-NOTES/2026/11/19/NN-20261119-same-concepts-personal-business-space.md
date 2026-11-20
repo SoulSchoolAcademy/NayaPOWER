@@ -4,7 +4,7 @@
 
 **NN-20261119-same-concepts-personal-business-space · Naya Note · 2026-11-19 ~20:04 MST (03:04Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Same Concepts Into Personal, Business, Space (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4222 — Same Concepts Into Personal, Business, Space*
 
 **Category:** Vision — the introduction story, carried into all three page kinds
 
