@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 20:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12579,6 +12579,12 @@ _Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Full static audit of smart_note_v2.py + truth_state_guard.py; verdict retrieval-side gate (Option A) with evidence; spec 0007 filed as CANDIDATE unratified; phantom field + 7 bypass paths named; Shawn's gate flagged, not crossed; zero production changes. Deductions: static audit, no live exploit re-demo (reasonable); caller-binding mechanism specif
 
+### ✅ t0912 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** STAGE 2 competing-DecisionEngine consolidation ('no exception')
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: branch naya/three-decision-consolidate EXISTS on the remote (mirror ref 8346681cd52600e08fba3bcbb8b86a3258eaf056); its current head tree contains kernel/value_calculus.py and tests/test_decision_consolidation.py, and kernel/decision_principle.py is ABSENT - the claimed
+
 ### ✅ t912 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
 **Task:** STAGE 2 competing-DecisionEngine consolidation (no exception)
@@ -13013,6 +13019,12 @@ _Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Claimed branch naya/nine-receipt-gate-t902 @ a26943cd3, receipt file, score line, tools/check_scorecard_receipt_pin.py and docs did not exist anywhere. Exposed t922 by Lane 9; retracted from twelve-lanes.md; rebuilt for real (14/14 tests, branch a459481c).
 
+### ✅ t0902 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** independent four-way verification of cold-retrieve 1.78s claim
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: ~/workspace/w-lane5-coldretrieval/four-way/cold-retrieve-1.78s/ exists with claim-manifest.json, arms/, evidence/, fixtures/, scorecard.json, seal-receipt.json, sealed/, verdict.json; verdict.json corroborates the receipt (adversarial A1 superseded seed absent, A2 uniq
+
 ### ✅ t902 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Independent verification of cold-retrieve 1.78s claim (four-way)
@@ -13295,6 +13307,12 @@ _Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: decision-replay-v2-t0892.md on disk (12,243 bytes, pre-registration block timestamped, 5 rows CONFIRMED, zero dominoes moved), tip/head pins re-derived unmoved since t0888, mechanism blobs byte-checked (test blob a8c666d7 line 145/151, handler blob dee21100 lines 266-272 catch->400), pin script re-PASSed at exact head, FP-002/RULING-1 quo
 
+### ✅ t0892 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** P0-B causal proof pilot: briefing-injection control/treatment/adversarial
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: ~/workspace/goals/learning-10-10/hidden_files/p0b-experiment-design.md, p0b-trial-protocol.md, p0b-run-t892-results.md, p0b-error-signal-loop-design.md ALL EXIST; the results file corroborates the receipt byte-for-byte in substance - scores A=9, B=9, C=10, design-time 
+
 ### ✅ t892-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
 
 **Task:** t892-lane2
@@ -13375,6 +13393,12 @@ _Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Clean 3-arm pilot (control/treatment/adversarial) with pre-registered 5-criterion rubric, independent ground truth via own git ls-remote, honest negative result (treatment-control = 0 on this well-specified task), confounds declared pre-run, tip move caught by all three agents. Deductions: N=1/arm, doer=scorer, ceiling effect, process not instrumen
 
+### 🚨 t0892 — Team 10, Team Naya Scorer (Brain Index) — 0/10 [PHANTOM]
+
+**Task:** brain-index-freshness gate repair (PR #2385 flaw) + main-tip drift diagnosis
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). PHANTOM per the verification rule. VERIFIED first-hand this tick: branch naya/ten-brainindex-freshness does NOT exist on the remote (git ls-remote returns nothing for it), does NOT exist in the local mirror refs, and the worktree ~/workspace/w-lane10-freshness does NOT exist - the cited artifact (br
+
 ### 🟡 t892-lane10 — Team 10, Team Naya Scorer (Brain Index) — 7.0/10 [PARTIAL]
 
 **Task:** t892-lane10
@@ -13448,6 +13472,12 @@ _Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane10.md`
 
 **Evidence:** Root-caused the paths-filter/required-check Pending-forever flaw, repaired on branch naya/ten-brainindex-freshness (run-on-every-PR + fast-pass + fail-closed detect), 8/8 harness tests passing, diagnosed live main-tip brain drift (12th recurrence) as separate content fix. Deductions: branch local-only (no PR yet), workflow never executed in real Ac
+
+### ✅ t0892 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** four-way harness template + PR #2385 brain-index-gate demonstration run
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/four-way-template/ exists with README.md, LAYOUT.md, BLINDED_SCORING_PROTOCOL.md, claim-manifest.schema.json, run_four_way.py, and examples/pr-2385-brain-index-gate/ carrying arms/, blinded/, claim-manifest.json, scorecard.json, seal-receipt.json, sealed/,
 
 ### ✅ t892 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
@@ -24465,6 +24495,14 @@ _Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval/query-needs-top20-t0587.md sha256 58f95843... matches claimed SHA; live-check probe-before-tally followed (39->40 rows, only new row = own probe); organic rows 30/30 byte-identical to t0535, every delta 0, last organic query 13:10:38 PDT; schema verified pre-count (t0580 lesson honored). Honest deliverable: tombstone date + top-
 
+### ✅ t0587 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** claim-form-filtered retrieval + per-claim max pooling arm
+
+**Receipt:** `twelve-lane-receipts/t0587-lane4.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: auto-retrieval/arm_pooledclaim_t0587.py sha16 4e5e8cc3be5bb4ec EXACT match (seal pre==post, no re-tuning under pressure); auto-retrieval/results-t0587-pooledclaim.json exists (labeled partial, sha16 6482f3ee4ad47306); re-pinned fixture SHAs cited in receipt match the t
+
 ### ✅ t0587-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** Claim-form-filtered retrieval + per-claim max pooling arm
@@ -24494,6 +24532,14 @@ _Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0587-lane4.md`
 
 **Evidence:** Verified: auto-retrieval/arm_pooledclaim_t0587.py sha256 4e5e8cc3be5bb4ec... matches claimed seal (pre==post, F5 holds); results-t0587-pooledclaim.json present (6482f3ee...) and labeled partial, honest. Real value: firing predicate caught a vacuous mechanism before it could produce a verdict; located an actionable next hypothesis (doc-side filterin
+
+### ✅ t0587 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** independent re-execution of the sealed t0581 overlap-cell instrument
+
+**Receipt:** `twelve-lane-receipts/t0587-lane3.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/retrieval/overlap-cells-rerun-t0587-lane3.md sha16 c3ad44693934fea7 PREFIX match; receipt's re-verified pins (sealed-selection-t0581 dc4f06e6..., results-t0581-overlap 29a9d26a...) are the sealed t0581 bytes, and the run reproduced results byte-identical (
 
 ### ✅ t0587-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -24525,6 +24571,14 @@ _Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0581 seal + results pins byte-exact at full cited SHA256s (sealed-selection-t0581.md dc4f06e6..., results-t0581-overlap.json 29a9d26a... — reproduced exactly, byte-identical to t0581 results); agreement report retrieval/overlap-cells-rerun-t0587-lane3.md present at cited sha16 c3ad44693934fea7. Real value: different seat re-ran on fresh 
 
+### ✅ t0586 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** second fixture, claim-form mechanism, verdict ARM
+
+**Receipt:** `twelve-lane-receipts/t0586-lane10.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: auto-retrieval/fixture_t0586.py sha16 8077fc722905ec12 PREFIX match; auto-retrieval/select_overlap_cells_t0586.py eba8f0d2720a83d5 PREFIX match; auto-retrieval/sealed-selection-t0586.md 7522a1f91eaeb940 PREFIX match; auto-retrieval/run_overlap_cells_t0586.py 2c41ce03c6
+
 ### ✅ t0586-lane10 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
 **Task:** Second fixture, claim-form mechanism, verdict ARM (50-doc corpus)
@@ -24555,6 +24609,14 @@ _Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 5 cited files present in auto-retrieval/ at exact cited sha16 (fixture_t0586.py 8077fc722905ec12, select_overlap_cells_t0586.py eba8f0d2720a83d5, run_overlap_cells_t0586.py 2c41ce03c6dc2fdd, sealed-selection-t0586.md 7522a1f91eaeb940, results-t0586-overlap.json 6b099fff4493f308). Real verified value: fresh 50-doc corpus, mechanically 
 
+### ✅ t0585 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Option-B stamping migration packet
+
+**Receipt:** `twelve-lane-receipts/t0585-lane9.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/surge/stamping-migration-packet-t0585.md EXISTS (154 lines) and its content corroborates the receipt - 631 entries, 595 STAMP-TRUE / 28 STAMP-FALSE / 6 AWAITING-DIRECTOR / 2 AWAITING-OWNER, corpus pin 54ca67e3a... at live tip bdfb5868, spec 0007 on t942 br
+
 ### ✅ t0585-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** Option-B stamping migration packet (reviewable, unwired)
@@ -24584,6 +24646,14 @@ _Last updated: 2026-11-20 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0585-lane9.md`
 
 **Evidence:** Verified: packet surge/stamping-migration-packet-t0585.md sha256 ac19a411e9383a8b6ba1a35d53c0c6a62c1cc6b1789266f3b14fe393457d9262 on disk; remote main = bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad (ls-remote, matches receipt's re-pin after a mid-window tip move); spec branch naya/five-retrieval-auth-gate-t942 = e654f16e8a49e9a26309fd852695a0bef202673d
+
+### ✅ t0585 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** selection-vs-pooling 2x2 arms SEALED + RUN
+
+**Receipt:** `twelve-lane-receipts/t0585-lane5.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: auto-retrieval/t0585_seppool.py sha256 b3322d253974bb0a2e3f512856ef74f0f202597566ade59d59e12db7c6643e63 EXACT match; auto-retrieval/sealed-note-t0585.md sha256 9f6c07f210515951ea9cf197733214a3478aa251816db02b013828175e7ee1c8 EXACT match; auto-retrieval/results-t0585-se
 
 ### ✅ t0585-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
