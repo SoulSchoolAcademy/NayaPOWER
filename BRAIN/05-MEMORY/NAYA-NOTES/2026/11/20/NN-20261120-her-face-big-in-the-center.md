@@ -4,7 +4,7 @@
 
 **NN-20261120-her-face-big-in-the-center · Naya Note · 2026-11-20 ~14:27–14:28 MST (main chat, read first-hand)**
 
-*Paired Smart Note: SN-pending — Her Face Big in the Center, the Little Red N at the Bottom (takes the next free number at filing)*
+*Paired Smart Note: SN-4322 — Her Face Big in the Center, the Little Red N at the Bottom*
 
 **Category:** Design — the agreement presentation, her picture, the red N
 
