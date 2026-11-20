@@ -4,7 +4,7 @@
 
 **NN-20261119-settings-and-demographics-frame-treatment · Naya Note · 2026-11-19 ~20:2x MST (2026-11-20 ~03:2xZ)**
 
-*Paired Smart Note: SN-pending — Settings and Demographics Get the Frame Treatment (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4230 — Settings and Demographics Get the Frame Treatment*
 
 **Category:** Design — the frame treatment spreads to every page
 
