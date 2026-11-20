@@ -14563,15 +14563,21 @@ NayaSmartBar.mount({
    The Smart Bar is OUT (Shawn 15:43Z) — there is no bottom bar left to
    fold, and the BUILDER-2 icon-bar wiring that lived here is gone with
    it. What folds is the trio (Mail · Activity · Space) above the bottom:
-   same scroll, same 1.5s return. The trio is built by NayaNotif in the
-   next script, so it is looked up lazily here, every fold. The trio
-   rides at the very bottom now, so --smartbar-h is 0 — set explicitly,
-   never the old 90px fallback: the + docks on the trio + 16px. */
+   same scroll, same 1.5s return. FIX-8: the trio is the live six-tile bar
+   (#os-bottom3, static markup at the end of this file) — NayaNotif no
+   longer builds a second trio bar, so the fold looks the live bar up
+   lazily here, every fold. The trio rides at the very bottom now, so
+   --smartbar-h is 0 — set explicitly, never the old 90px fallback: the +
+   docks on the trio + 16px. */
 (function(){
   var foldTimer=null, folded=false;
   function fold(on){
     if(on===folded) return; folded=on;
-    var trio=document.getElementById('naya-notif-bar')||document.getElementById('os-bottom3')||document.getElementById('os-bottom3');
+    /* FIX-8: the live bar is #os-bottom3 — it is looked up first. The stale
+       #naya-notif-bar trio is never created any more (NayaNotif.init no
+       longer builds it); the fallback only covers a bar this page does not
+       have, so the fold can never fade the wrong bar. */
+    var trio=document.getElementById('os-bottom3')||document.getElementById('naya-notif-bar');
     if(trio) trio.classList.toggle('nsb-trio-faded', on);
   }
   function syncSmartbarH(){
@@ -14633,7 +14639,7 @@ window.NayaNotif = window.NayaNotif || {
       return { mail: this.get('mail'), activity: unread, spaces: this.get('spaces') };
     },
     refresh() {
-      var bar = document.getElementById('naya-notif-bar')||document.getElementById('os-bottom3'); if (!bar) return;
+      var bar = document.getElementById('os-bottom3')||document.getElementById('naya-notif-bar'); if (!bar) return; /* FIX-8: counts land on the live bar first. */
       var c = this.counts();
       bar.querySelectorAll('[data-notif]').forEach(function (seg) {
         var k = seg.getAttribute('data-notif'), n = c[k] || 0;
@@ -14649,49 +14655,37 @@ window.NayaNotif = window.NayaNotif || {
       this.refresh();
     },
     syncStack() {
-      var bar = document.getElementById('naya-notif-bar')||document.getElementById('os-bottom3'); if (!bar) return;
+      var bar = document.getElementById('os-bottom3')||document.getElementById('naya-notif-bar'); if (!bar) return; /* FIX-8: the live bar's height is the stack height. */
       var row = bar.querySelector('.notif-row');
       var h = (row ? row.offsetHeight : bar.offsetHeight) + 1;
       document.documentElement.style.setProperty('--notif-h', h + 'px');
     },
     init() {
-      var bar = document.getElementById('naya-notif-bar')||document.getElementById('os-bottom3');
+      /* FIX-8: the live bar is #os-bottom3, looked up first. The stale trio
+         is NEVER created here any more: init used to run before the static
+         #os-bottom3 nav parses, find no bar, and build a second
+         #naya-notif-bar (Mail · Activity · Spaces) that rendered behind the
+         live six — the doubled bar the fix-7 eye caught on every view. If
+         no bar exists yet, init simply returns; the DOMContentLoaded call
+         below retries once the document has parsed, so refresh/syncStack
+         still land on the live bar. */
+      var bar = document.getElementById('os-bottom3')||document.getElementById('naya-notif-bar');
       if (bar) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
-      var self = this;
-      var ICONS = {
-        mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
-        activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
-        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>'
-      };
-      var SEGS = [['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'SPACES', '#ffbf3d']];
-      bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
-      bar.setAttribute('aria-label', 'Notifications');
-      var row = document.createElement('div'); row.className = 'notif-row';
-      SEGS.forEach(function (s) {
-        var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
-        b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
-        b.setAttribute('aria-label', s[1] + ' — open');
-        b.setAttribute('title', s[1]);
-        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>';
-        b.addEventListener('click', function () { self.tap(s[0]); });
-        row.appendChild(b);
-      });
-      bar.appendChild(row); document.body.appendChild(bar);
-      document.body.classList.add('has-notif');
-      window.addEventListener('storage', function () { self.refresh(); });
-      this.refresh();
-      this.syncStack();
-      if (!window.__nayaNotifStackBound) { window.__nayaNotifStackBound = true; window.addEventListener('resize', function () { self.syncStack(); }); }
+      return;
     }
   };
-  window.NayaNotif.init();
+  /* FIX-8: init runs after the document parses — the static #os-bottom3 nav
+     sits later in this file than this script, so a synchronous init never
+     sees it (which is what used to trigger building the stale trio). */
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', function(){ window.NayaNotif.init(); }); }
+  else { window.NayaNotif.init(); }
 </script>
 <script>
 /* SMART BAR v1.0 host wiring (host page, not the system) */
 (function(){
   function pad(){
     var t=document.getElementById('nsbTopstack')||document.getElementById('nsbTop');
-    var tr=document.getElementById('naya-notif-bar')||document.getElementById('os-bottom3');
+    var tr=document.getElementById('os-bottom3')||document.getElementById('naya-notif-bar'); /* FIX-8: bottom padding is the live bar's height. */
     if(t)document.body.style.paddingTop=t.offsetHeight+'px';
     /* ROW+SMARTBAR 2026-11-12 (Smart Bar OUT, Shawn 15:43Z): the bottom
        padding is the trio alone. The trio fades but never leaves the
@@ -22564,7 +22558,6 @@ function saClose(){
   saCourseMode(false);
   var _bb3 = sa$('os-bottom3'); if(_bb3) _bb3.style.display = ''; /* FIX-2: the bottom bar returns on total close. */
   var _cc3 = sa$('saCoverCard'); if(_cc3) _cc3.hidden = false; /* FIX-2b: the hero returns on total close. */
-  var _nb3 = sa$('naya-notif-bar'); if(_nb3) _nb3.style.display = ''; /* FIX-2b: the notif trio returns on total close. */
   var _pk3 = sa$('saCoursePick'); if(_pk3) _pk3.style.display = ''; /* FIX-2c: the course cards return on total close. */
   saLessonOpen = false; /* FIX-1: total close clears the open-lesson state. */
   try{ document.body.classList.remove('sa-lesson-open'); }catch(e){} /* FIX-3 (fail 2). */
@@ -22826,7 +22819,6 @@ function saShowToc(){
   try{ document.body.classList.remove('sa-lesson-open'); }catch(e){} /* FIX-3 (fail 2): the chooser is not a lesson \u2014 both add controls return. */
   var _bb2 = sa$('os-bottom3'); if(_bb2) _bb2.style.display = ''; /* FIX-2: the bottom bar returns with the chooser. */
   var _cc2 = sa$('saCoverCard'); if(_cc2) _cc2.hidden = false; /* FIX-2b: the hero returns with the chooser. */
-  var _nb2 = sa$('naya-notif-bar'); if(_nb2) _nb2.style.display = ''; /* FIX-2b: the notif trio returns with the chooser. */
   var _pk2 = sa$('saCoursePick'); if(_pk2) _pk2.style.display = ''; /* FIX-2c: the course cards return with the chooser. */
   saLevel = 'toc';
   var toc = sa$('saToc'); if(toc) toc.hidden = false;
@@ -22892,10 +22884,10 @@ function saShowView(v){
   if(feedCard) feedCard.hidden = (saSection!=='lessons') || saLessonOpen;
   /* FIX-6 (item 2): the six-tile bottom bar STAYS on the Powercast page. The eye proved it missing from Audios at 1920 while present in every other view (feed, Videos, chooser, lesson pane, lessons list, profile). FIX-2 hid it here; the bar is one bar, the same on every page, and Audios is not an exception. Nothing hides it on any section now. */
   /* FIX-2b: the course hero cover (1194px) sits above the player in flow — hide it on the
-     Powercast page so the top player shows IN the frame under the top bar, and hide the
-     faded notif trio too (it would otherwise float over the playlist once the bottom bar is gone). */
+     Powercast page so the top player shows IN the frame under the top bar. (FIX-8: the
+     faded notif trio this used to hide alongside it is gone — NayaNotif no longer builds
+     it, so there is nothing left to hide here; the six-tile bar stays on Audios per FIX-6.) */
   var _cc = sa$('saCoverCard'); if(_cc) _cc.hidden = (saSection==='audios');
-  var _nb = sa$('naya-notif-bar'); if(_nb) _nb.style.display = (saSection==='audios') ? 'none' : '';
   /* FIX-2c: the "Choose your course" card row also sits above the player in flow — at phone width it stacks ~900px tall and pushes the player below the fold. Hide it on the Powercast page too (it returns with the chooser, like the hero). */
   var _pk = sa$('saCoursePick'); if(_pk) _pk.style.display = (saSection==='audios') ? 'none' : '';
   if(saSection==='audios' && window.saPcExactResize){ try{ window.saPcExactResize(); }catch(e){} }
