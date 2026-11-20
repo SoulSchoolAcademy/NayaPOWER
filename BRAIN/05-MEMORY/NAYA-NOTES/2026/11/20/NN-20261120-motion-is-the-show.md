@@ -4,7 +4,7 @@
 
 **NN-20261120-motion-is-the-show · Naya Note · 2026-11-20 ~16:16 MST**
 
-*Paired Smart Note: SN-pending — Motion Is the Show (takes the next free number at filing)*
+*Paired Smart Note: SN-4348 — Motion Is the Show*
 
 **Category:** Design — the orb and the background rays flow in a circle
 
