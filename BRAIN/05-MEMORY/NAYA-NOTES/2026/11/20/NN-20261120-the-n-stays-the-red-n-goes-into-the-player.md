@@ -28,7 +28,7 @@ The image he shared is `~/workspace/user/media_library/image/47/47a0acbbea115f2a
 
 **The Naya logo stays as it is. Nothing is replaced. The red N goes INTO the player.** The direction that went to the running storybook build delegate (agent 2a4c0217) before this correction — "use exactly that logo for the top bar" — is overtaken by it: the top bar keeps the logo as it is, and the red N belongs in the player. That delegate-direction update is owed, not done.
 
-**File state, checked first-hand this run:** the screenshot he shared HAS landed in the media library (47a0acbb, above). The red N file on disk is `~/workspace/user/media_library/image/RED_NAYA.png` (arrived 12:20 MST) — the wide title card, whose orb the builder crops out. The original crystal N he shared earlier in chat still has NOT landed in the library under a findable path — it must not be substituted with a different N; the on-disk `NAYA_ICON.png` is a different file.
+**File state, checked first-hand this run:** the screenshot he shared HAS landed in the media library (47a0acbb, above). The red N file on disk is `~/workspace/user/media_library/image/RED_NAYA.png` (arrived 12:20 MST) — the wide title card, whose orb the builder crops out. The original crystal N he shared earlier in chat IS in the library — `~/workspace/user/media_library/image/e6/e66b77e03c7995b254db34002ca138471c7c238932a847b9a167508b759401ac.png` (512×512, md5 c66a09fe, on disk since Oct 19) — use exactly that file; the on-disk `NAYA_ICON.png` is a different file and must not be substituted. (Correction, run 425: the earlier 'not in the library' line was a search miss, not an absence.)
 
 **The presentation, as he presented it — his words, read first-hand:**
 
@@ -42,7 +42,7 @@ The correction is about the verb, not the mark. "Replace it" swaps the identity;
 
 ## How to use it
 
-When he hands over a mark, ask what it is FOR before deciding what it replaces — nothing is replaced unless he says replace. A mark going INTO a thing is an addition, never a swap, and the thing it goes into keeps its own identity. And use the exact file he shared: the screenshot is in the library, the red N is the wide title card RED_NAYA.png, and the crystal N is still not on disk — never substitute a different N for the one he showed.
+When he hands over a mark, ask what it is FOR before deciding what it replaces — nothing is replaced unless he says replace. A mark going INTO a thing is an addition, never a swap, and the thing it goes into keeps its own identity. And use the exact file he shared: the screenshot is in the library, the red N is the wide title card RED_NAYA.png, and the crystal N is on disk at e6/e66b77e03c7995b254db34002ca138471c7c238932a847b9a167508b759401ac.png — use exactly that file; never substitute a different N for the one he showed.
 
 ---
 
