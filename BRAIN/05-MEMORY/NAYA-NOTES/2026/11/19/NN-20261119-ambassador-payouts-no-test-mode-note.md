@@ -4,7 +4,7 @@
 
 **NN-20261119-ambassador-payouts-no-test-mode-note · Naya Note · 2026-11-19 ~20:10–20:17 MST (03:10–03:17Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Ambassador Payouts: No Test-Mode Note, Leave It Out (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4219 — Ambassador Payouts: No Test-Mode Note, Leave It Out*
 
 **Category:** Design — the written introduction (what it must not say)
 
