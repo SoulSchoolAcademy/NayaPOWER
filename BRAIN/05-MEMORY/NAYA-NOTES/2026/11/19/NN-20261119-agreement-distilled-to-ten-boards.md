@@ -4,7 +4,7 @@
 
 **NN-20261119-agreement-distilled-to-ten-boards · Naya Note · 2026-11-19 ~19:46–19:52 MST (02:46–02:52Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — The Agreement, Distilled to Ten Boards (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4214 — The Agreement, Distilled to Ten Boards*
 
 **Category:** Design — Collective Agreement walkthrough (distillation)
 
