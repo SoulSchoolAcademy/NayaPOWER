@@ -1,0 +1,85 @@
+{
+ "branch": "walkthrough/agreement-distill-fix5-20261119",
+ "expectedTip": "f38e63402823ef884e439a9ed6e4550a7f2e296a",
+ "files": {
+  "team-nitro/agreement-unfold-fix-20261117/agreement-unfold-fixed.html": {
+   "treeBlob": "1f0b04747e3315be6f1b619c1411e5e14fbdc1bb",
+   "treeSize": 142532,
+   "expectedBlob": "1f0b04747e3315be6f1b619c1411e5e14fbdc1bb",
+   "blobMatch": true,
+   "bytes": 142532,
+   "sha256": "a3b3907f2f80d09a14c1e7e8bfb7a00c63332a7b26ac2707912c39436e177b98",
+   "bytesMatch": true,
+   "shaMatch": true,
+   "gitHashMatch": true
+  },
+  "team-nitro/walk-v23-assembly-20261114/welcome-staged.html": {
+   "treeBlob": "00082c3d65801997f1dcb035bea6ee51bf600737",
+   "treeSize": 1930947,
+   "expectedBlob": "00082c3d65801997f1dcb035bea6ee51bf600737",
+   "blobMatch": true,
+   "bytes": 1930947,
+   "sha256": "57ebe2d295b494ebe8d0e8d3c23de0a89d0025089991a7422ffa514cc4a636d6",
+   "bytesMatch": true,
+   "shaMatch": true,
+   "gitHashMatch": true
+  },
+  "team-nitro/walk-v23-assembly-20261114/walk-beginning-fixed.html": {
+   "treeBlob": "2f7a5e3ef599e00cb39c1e577bcb42563cd7ed81",
+   "treeSize": 4363683,
+   "expectedBlob": "2f7a5e3ef599e00cb39c1e577bcb42563cd7ed81",
+   "blobMatch": true,
+   "bytes": 4363683,
+   "sha256": "856d392c439ebb5cb97aac27f34abc3b97b52b8b6bdc55b50abac9768e198b4d",
+   "bytesMatch": true,
+   "shaMatch": true,
+   "gitHashMatch": true
+  },
+  "team-nitro/walk-v23-assembly-20261114/identity-fixed.html": {
+   "treeBlob": "b3e5af088ef1d516079d96eeaa61d811d7889b8e",
+   "treeSize": 404147,
+   "expectedBlob": "b3e5af088ef1d516079d96eeaa61d811d7889b8e",
+   "blobMatch": true,
+   "bytes": 404147,
+   "sha256": "fef65d2cdbf2f1e8c096548df9adcdb465ac38a628f299c8e7cee2fb57703f52",
+   "bytesMatch": true,
+   "shaMatch": true,
+   "gitHashMatch": true
+  },
+  "team-nitro/walk-v23-assembly-20261114/walk-beginning-staging-worker.js": {
+   "treeBlob": "0413500982bc14dfbe5534cbe82cd9c75a68696a",
+   "treeSize": 8463055,
+   "expectedBlob": "0413500982bc14dfbe5534cbe82cd9c75a68696a",
+   "blobMatch": true,
+   "bytes": 8463055,
+   "sha256": "c9bc8fedcbad3299654c85bd17832aa5a0b205e238dedf53aa98ac1f03b33586",
+   "bytesMatch": true,
+   "shaMatch": true,
+   "gitHashMatch": true
+  },
+  "team-nitro/walk-v23-assembly-20261114/build-v23-staging-worker.py": {
+   "treeBlob": "2299b99155e442257ca46eeb2c777ad4816ff6b0",
+   "treeSize": 96371,
+   "expectedBlob": "2299b99155e442257ca46eeb2c777ad4816ff6b0",
+   "blobMatch": true,
+   "bytes": 96371,
+   "sha256": "7ce1a895051cd6e48f9c30cfde0a1b3f7392e16e9c7e5cb604d9beefb90aea77",
+   "bytesMatch": true,
+   "shaMatch": true,
+   "gitHashMatch": true
+  }
+ },
+ "errors": [],
+ "refSha": "f38e63402823ef884e439a9ed6e4550a7f2e296a",
+ "tipMatch": true,
+ "parents": [
+  "b048f00269f61c821812f06ffe6bd8e96cf29d4b"
+ ],
+ "parentMatch": false,
+ "fix4Tip": "d5003b2fd5c59e352b84169294b2773263876e01",
+ "fix4TipMatch": true,
+ "fix4WelcomeBlob": "daac9e3af610cb5df21917d5c0057e595d51ccde",
+ "fix4WelcomeSize": 1930937,
+ "fix4WelcomeBytes": 1930937,
+ "fix4WelcomeSha256": "237af4d4d5d3ac3f6c001ba770bc6bcbc90433aedd002ab5103a6e3b10672cbf"
+}

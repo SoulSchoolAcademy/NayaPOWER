@@ -1,0 +1,729 @@
+{
+ "label": "FIX5-CHECKER-DRIVE1",
+ "legs": [
+  {
+   "leg": "intro-cold-load",
+   "cold": {
+    "bodyClass": "",
+    "htmlClass": "fp-locked",
+    "fpLegalDisplay": "none",
+    "navDisplay": "flex",
+    "loginVisible": null,
+    "visibleButtons": [
+     "Enter NayaNET \u2192",
+     "#fpEnterDeal Read the collective agreement \u25c6"
+    ]
+   }
+  },
+  {
+   "leg": "intro-after-enter",
+   "afterEnter": {
+    "bodyClass": "",
+    "htmlClass": "",
+    "fpLegalDisplay": "MISSING",
+    "navDisplay": "MISSING",
+    "loginVisible": null,
+    "visibleButtons": [
+     "\u2039 Back to the walk",
+     "#enterBtn ENTER",
+     "#certInfoBtn i",
+     "#certMore WHY THIS MATTERS"
+    ]
+   },
+   "geo": {
+    "error": "no nav"
+   },
+   "consoleErrors": []
+  },
+  {
+   "leg": "intro-param-stage-intro",
+   "bodyClass": "",
+   "htmlClass": "fp-locked",
+   "fpLegalDisplay": "none",
+   "navDisplay": "flex",
+   "loginVisible": null,
+   "visibleButtons": [
+    "Enter NayaNET \u2192",
+    "#fpEnterDeal Read the collective agreement \u25c6"
+   ]
+  },
+  {
+   "leg": "BASE-bridge-footer-geo",
+   "navRect": [
+    8,
+    798,
+    382,
+    836
+   ],
+   "scrollWidth": 1064,
+   "clientWidth": 374,
+   "maxScroll": 690,
+   "justifyContent": "center",
+   "flexWrap": "nowrap",
+   "overflowX": "auto",
+   "linkCount": 12,
+   "links": [
+    "Terms of Service",
+    "Privacy Policy",
+    "Cookie Policy",
+    "Refund Policy",
+    "Acceptable Use",
+    "Community Guidelines",
+    "Copyright / DMCA",
+    "Ambassador Terms",
+    "Membership & Billing",
+    "Young Citizens",
+    "Accessibility",
+    "Disclaimer"
+   ],
+   "reachableViewport": [
+    {
+     "link": "Terms of Service",
+     "reachable": false,
+     "at": null
+    },
+    {
+     "link": "Privacy Policy",
+     "reachable": false,
+     "at": null
+    },
+    {
+     "link": "Cookie Policy",
+     "reachable": false,
+     "at": null
+    },
+    {
+     "link": "Refund Policy",
+     "reachable": false,
+     "at": null
+    },
+    {
+     "link": "Acceptable Use",
+     "reachable": false,
+     "at": null
+    },
+    {
+     "link": "Community Guidelines",
+     "reachable": true,
+     "at": 0
+    },
+    {
+     "link": "Copyright / DMCA",
+     "reachable": true,
+     "at": 0
+    },
+    {
+     "link": "Ambassador Terms",
+     "reachable": true,
+     "at": 150
+    },
+    {
+     "link": "Membership & Billing",
+     "reachable": true,
+     "at": 350
+    },
+    {
+     "link": "Young Citizens",
+     "reachable": true,
+     "at": 450
+    },
+    {
+     "link": "Accessibility",
+     "reachable": true,
+     "at": 600
+    },
+    {
+     "link": "Disclaimer",
+     "reachable": true,
+     "at": 690
+    }
+   ],
+   "unreachableViewport": 5,
+   "reachableStrip": [
+    {
+     "link": "Terms of Service",
+     "reachable": false,
+     "at": null
+    },
+    {
+     "link": "Privacy Policy",
+     "reachable": false,
+     "at": null
+    },
+    {
+     "link": "Cookie Policy",
+     "reachable": false,
+     "at": null
+    },
+    {
+     "link": "Refund Policy",
+     "reachable": false,
+     "at": null
+    },
+    {
+     "link": "Acceptable Use",
+     "reachable": false,
+     "at": null
+    },
+    {
+     "link": "Community Guidelines",
+     "reachable": true,
+     "at": 0
+    },
+    {
+     "link": "Copyright / DMCA",
+     "reachable": true,
+     "at": 0
+    },
+    {
+     "link": "Ambassador Terms",
+     "reachable": true,
+     "at": 150
+    },
+    {
+     "link": "Membership & Billing",
+     "reachable": true,
+     "at": 350
+    },
+    {
+     "link": "Young Citizens",
+     "reachable": true,
+     "at": 450
+    },
+    {
+     "link": "Accessibility",
+     "reachable": true,
+     "at": 600
+    },
+    {
+     "link": "Disclaimer",
+     "reachable": true,
+     "at": 690
+    }
+   ],
+   "unreachableStrip": 5,
+   "at0": {
+    "scrollLeft": 0,
+    "rects": [
+     {
+      "left": -678,
+      "right": -548
+     },
+     {
+      "left": -528,
+      "right": -415
+     },
+     {
+      "left": -395,
+      "right": -286
+     },
+     {
+      "left": -266,
+      "right": -153
+     },
+     {
+      "left": -133,
+      "right": -10
+     },
+     {
+      "left": 10,
+      "right": 181
+     },
+     {
+      "left": 201,
+      "right": 341
+     },
+     {
+      "left": 361,
+      "right": 508
+     },
+     {
+      "left": 528,
+      "right": 692
+     },
+     {
+      "left": 712,
+      "right": 831
+     },
+     {
+      "left": 851,
+      "right": 955
+     },
+     {
+      "left": 975,
+      "right": 1068
+     }
+    ]
+   },
+   "atMax": {
+    "scrollLeft": 690,
+    "rects": [
+     {
+      "left": -1368,
+      "right": -1238
+     },
+     {
+      "left": -1218,
+      "right": -1105
+     },
+     {
+      "left": -1085,
+      "right": -976
+     },
+     {
+      "left": -956,
+      "right": -843
+     },
+     {
+      "left": -823,
+      "right": -700
+     },
+     {
+      "left": -680,
+      "right": -509
+     },
+     {
+      "left": -489,
+      "right": -349
+     },
+     {
+      "left": -329,
+      "right": -182
+     },
+     {
+      "left": -162,
+      "right": 2
+     },
+     {
+      "left": 22,
+      "right": 141
+     },
+     {
+      "left": 161,
+      "right": 265
+     },
+     {
+      "left": 285,
+      "right": 378
+     }
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "leg": "FIX5-bridge-footer-geo",
+   "navRect": [
+    8,
+    798,
+    382,
+    836
+   ],
+   "scrollWidth": 1754,
+   "clientWidth": 374,
+   "maxScroll": 1380,
+   "justifyContent": "safe center",
+   "flexWrap": "nowrap",
+   "overflowX": "auto",
+   "linkCount": 12,
+   "links": [
+    "Terms of Service",
+    "Privacy Policy",
+    "Cookie Policy",
+    "Refund Policy",
+    "Acceptable Use",
+    "Community Guidelines",
+    "Copyright / DMCA",
+    "Ambassador Terms",
+    "Membership & Billing",
+    "Young Citizens",
+    "Accessibility",
+    "Disclaimer"
+   ],
+   "reachableViewport": [
+    {
+     "link": "Terms of Service",
+     "reachable": true,
+     "at": 0
+    },
+    {
+     "link": "Privacy Policy",
+     "reachable": true,
+     "at": 0
+    },
+    {
+     "link": "Cookie Policy",
+     "reachable": true,
+     "at": 50
+    },
+    {
+     "link": "Refund Policy",
+     "reachable": true,
+     "at": 150
+    },
+    {
+     "link": "Acceptable Use",
+     "reachable": true,
+     "at": 300
+    },
+    {
+     "link": "Community Guidelines",
+     "reachable": true,
+     "at": 500
+    },
+    {
+     "link": "Copyright / DMCA",
+     "reachable": true,
+     "at": 650
+    },
+    {
+     "link": "Ambassador Terms",
+     "reachable": true,
+     "at": 850
+    },
+    {
+     "link": "Membership & Billing",
+     "reachable": true,
+     "at": 1000
+    },
+    {
+     "link": "Young Citizens",
+     "reachable": true,
+     "at": 1150
+    },
+    {
+     "link": "Accessibility",
+     "reachable": true,
+     "at": 1300
+    },
+    {
+     "link": "Disclaimer",
+     "reachable": true,
+     "at": 1380
+    }
+   ],
+   "unreachableViewport": 0,
+   "reachableStrip": [
+    {
+     "link": "Terms of Service",
+     "reachable": true,
+     "at": 0
+    },
+    {
+     "link": "Privacy Policy",
+     "reachable": true,
+     "at": 0
+    },
+    {
+     "link": "Cookie Policy",
+     "reachable": true,
+     "at": 50
+    },
+    {
+     "link": "Refund Policy",
+     "reachable": true,
+     "at": 200
+    },
+    {
+     "link": "Acceptable Use",
+     "reachable": true,
+     "at": 300
+    },
+    {
+     "link": "Community Guidelines",
+     "reachable": true,
+     "at": 500
+    },
+    {
+     "link": "Copyright / DMCA",
+     "reachable": true,
+     "at": 650
+    },
+    {
+     "link": "Ambassador Terms",
+     "reachable": true,
+     "at": 850
+    },
+    {
+     "link": "Membership & Billing",
+     "reachable": true,
+     "at": 1000
+    },
+    {
+     "link": "Young Citizens",
+     "reachable": true,
+     "at": 1150
+    },
+    {
+     "link": "Accessibility",
+     "reachable": true,
+     "at": 1300
+    },
+    {
+     "link": "Disclaimer",
+     "reachable": true,
+     "at": 1380
+    }
+   ],
+   "unreachableStrip": 0,
+   "at0": {
+    "scrollLeft": 0,
+    "rects": [
+     {
+      "left": 12,
+      "right": 142
+     },
+     {
+      "left": 162,
+      "right": 275
+     },
+     {
+      "left": 295,
+      "right": 404
+     },
+     {
+      "left": 424,
+      "right": 537
+     },
+     {
+      "left": 557,
+      "right": 680
+     },
+     {
+      "left": 700,
+      "right": 871
+     },
+     {
+      "left": 891,
+      "right": 1031
+     },
+     {
+      "left": 1051,
+      "right": 1198
+     },
+     {
+      "left": 1218,
+      "right": 1382
+     },
+     {
+      "left": 1402,
+      "right": 1521
+     },
+     {
+      "left": 1541,
+      "right": 1645
+     },
+     {
+      "left": 1665,
+      "right": 1758
+     }
+    ]
+   },
+   "atMax": {
+    "scrollLeft": 1380,
+    "rects": [
+     {
+      "left": -1368,
+      "right": -1238
+     },
+     {
+      "left": -1218,
+      "right": -1105
+     },
+     {
+      "left": -1085,
+      "right": -976
+     },
+     {
+      "left": -956,
+      "right": -843
+     },
+     {
+      "left": -823,
+      "right": -700
+     },
+     {
+      "left": -680,
+      "right": -509
+     },
+     {
+      "left": -489,
+      "right": -349
+     },
+     {
+      "left": -329,
+      "right": -182
+     },
+     {
+      "left": -162,
+      "right": 2
+     },
+     {
+      "left": 22,
+      "right": 141
+     },
+     {
+      "left": 161,
+      "right": 265
+     },
+     {
+      "left": 285,
+      "right": 378
+     }
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "leg": "FIX5-desktop-1920-bridge-geo",
+   "navRect": [
+    8,
+    1034,
+    1912,
+    1072
+   ],
+   "scrollWidth": 1904,
+   "clientWidth": 1904,
+   "justifyContent": "safe center",
+   "flexWrap": "nowrap",
+   "links": [
+    {
+     "t": "Terms of Service",
+     "left": 87,
+     "right": 217
+    },
+    {
+     "t": "Privacy Policy",
+     "left": 237,
+     "right": 350
+    },
+    {
+     "t": "Cookie Policy",
+     "left": 370,
+     "right": 479
+    },
+    {
+     "t": "Refund Policy",
+     "left": 499,
+     "right": 612
+    },
+    {
+     "t": "Acceptable Use",
+     "left": 632,
+     "right": 755
+    },
+    {
+     "t": "Community Guidelines",
+     "left": 775,
+     "right": 946
+    },
+    {
+     "t": "Copyright / DMCA",
+     "left": 966,
+     "right": 1106
+    },
+    {
+     "t": "Ambassador Terms",
+     "left": 1126,
+     "right": 1273
+    },
+    {
+     "t": "Membership & Billing",
+     "left": 1293,
+     "right": 1457
+    },
+    {
+     "t": "Young Citizens",
+     "left": 1477,
+     "right": 1596
+    },
+    {
+     "t": "Accessibility",
+     "left": 1616,
+     "right": 1720
+    },
+    {
+     "t": "Disclaimer",
+     "left": 1740,
+     "right": 1833
+    }
+   ],
+   "consoleErrors": []
+  },
+  {
+   "leg": "BASE-desktop-1920-bridge-geo",
+   "navRect": [
+    8,
+    1034,
+    1912,
+    1072
+   ],
+   "scrollWidth": 1904,
+   "clientWidth": 1904,
+   "justifyContent": "center",
+   "flexWrap": "nowrap",
+   "links": [
+    {
+     "t": "Terms of Service",
+     "left": 87,
+     "right": 217
+    },
+    {
+     "t": "Privacy Policy",
+     "left": 237,
+     "right": 350
+    },
+    {
+     "t": "Cookie Policy",
+     "left": 370,
+     "right": 479
+    },
+    {
+     "t": "Refund Policy",
+     "left": 499,
+     "right": 612
+    },
+    {
+     "t": "Acceptable Use",
+     "left": 632,
+     "right": 755
+    },
+    {
+     "t": "Community Guidelines",
+     "left": 775,
+     "right": 946
+    },
+    {
+     "t": "Copyright / DMCA",
+     "left": 966,
+     "right": 1106
+    },
+    {
+     "t": "Ambassador Terms",
+     "left": 1126,
+     "right": 1273
+    },
+    {
+     "t": "Membership & Billing",
+     "left": 1293,
+     "right": 1457
+    },
+    {
+     "t": "Young Citizens",
+     "left": 1477,
+     "right": 1596
+    },
+    {
+     "t": "Accessibility",
+     "left": 1616,
+     "right": 1720
+    },
+    {
+     "t": "Disclaimer",
+     "left": 1740,
+     "right": 1833
+    }
+   ],
+   "consoleErrors": []
+  }
+ ]
+}

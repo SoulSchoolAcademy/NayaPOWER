@@ -1,0 +1,171 @@
+{
+ "label": "EYE-FIX5-DESKTOP1920",
+ "alias": "eye5deskf32dac",
+ "legs": [
+  {
+   "leg": "1-root-1920",
+   "scrollW": 1920,
+   "innerW": 1920,
+   "buttons": [
+    "Enter NayaNET \u2192",
+    "Read the collective agreement \u25c6"
+   ]
+  },
+  {
+   "leg": "A-identity-1920",
+   "hero": "Shawn",
+   "heroVisible": true,
+   "heroTitleOverlap": 0,
+   "heroRect": [
+    500,
+    388,
+    1420,
+    472
+   ],
+   "titleRect": [
+    673,
+    335,
+    1247,
+    357
+   ],
+   "scrollW": 1920,
+   "innerW": 1920
+  },
+  {
+   "leg": "door-10s-hold-1920",
+   "at0": [
+    "step-door"
+   ],
+   "at10s": [
+    "step-door"
+   ],
+   "held": true,
+   "afterContinue": [
+    "step-1"
+   ]
+  },
+  {
+   "leg": "unfold-1-37-1920",
+   "seenCount": 37,
+   "first": [
+    "1 / 37",
+    "2 / 37"
+   ],
+   "last": [
+    "36 / 37",
+    "37 / 37"
+   ],
+   "sequential": true,
+   "D-desktop": {
+    "titleFont": "25px",
+    "titleRect": [
+     516,
+     122,
+     1236,
+     152
+    ],
+    "orbRect": [
+     1252,
+     88,
+     1320,
+     156
+    ],
+    "titleText": "Congratulations \u2014 you\u2019re hired"
+   }
+  },
+  {
+   "leg": "bridge-geo-1920",
+   "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+   "waitForNavSeconds": 3.9,
+   "geo": {
+    "navRect": [
+     8,
+     1034,
+     1912,
+     1072
+    ],
+    "scrollWidth": 1904,
+    "clientWidth": 1904,
+    "justifyContent": "safe center",
+    "flexWrap": "nowrap",
+    "links": [
+     {
+      "t": "Terms of Service",
+      "left": 87,
+      "right": 217
+     },
+     {
+      "t": "Privacy Policy",
+      "left": 237,
+      "right": 350
+     },
+     {
+      "t": "Cookie Policy",
+      "left": 370,
+      "right": 479
+     },
+     {
+      "t": "Refund Policy",
+      "left": 499,
+      "right": 612
+     },
+     {
+      "t": "Acceptable Use",
+      "left": 632,
+      "right": 755
+     },
+     {
+      "t": "Community Guidelines",
+      "left": 775,
+      "right": 946
+     },
+     {
+      "t": "Copyright / DMCA",
+      "left": 966,
+      "right": 1106
+     },
+     {
+      "t": "Ambassador Terms",
+      "left": 1126,
+      "right": 1273
+     },
+     {
+      "t": "Membership & Billing",
+      "left": 1293,
+      "right": 1457
+     },
+     {
+      "t": "Young Citizens",
+      "left": 1477,
+      "right": 1596
+     },
+     {
+      "t": "Accessibility",
+      "left": 1616,
+      "right": 1720
+     },
+     {
+      "t": "Disclaimer",
+      "left": 1740,
+      "right": 1833
+     }
+    ],
+    "firstLeft": 87,
+    "lastRight": 1833,
+    "scrollW": 1920,
+    "innerW": 1920
+   }
+  },
+  {
+   "leg": "bridge-pair-1920",
+   "pair": [
+    "Begin the visual story",
+    "Read the agreement"
+   ]
+  },
+  {
+   "leg": "1920-console-errors",
+   "errors": []
+  }
+ ]
+}

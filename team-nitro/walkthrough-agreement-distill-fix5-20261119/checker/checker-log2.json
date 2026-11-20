@@ -1,0 +1,374 @@
+{
+ "label": "FIX5-CHECKER-DRIVE2-F9-AE",
+ "legs": [
+  {
+   "leg": "A-identity-paired",
+   "input": "shawn",
+   "hero": "Shawn",
+   "heroVisible": true,
+   "heroFont": "28.0625px",
+   "heroRect": [
+    19,
+    301,
+    371,
+    329
+   ],
+   "titleRect": [
+    22,
+    282,
+    368,
+    299
+   ],
+   "dataText": "Shawn"
+  },
+  {
+   "leg": "A-overlap",
+   "heroTitleOverlap": 0,
+   "gap": 2,
+   "certifiesDisplay": "none"
+  },
+  {
+   "leg": "identity-name-only",
+   "input": "",
+   "hero": "",
+   "heroVisible": false
+  },
+  {
+   "leg": "identity-plain",
+   "heroVisible": false,
+   "certifiesDisplay": "block",
+   "certifiesRect": [
+    133,
+    294,
+    257,
+    314
+   ]
+  },
+  {
+   "leg": "C-banner",
+   "noteText": "That alias is already claimed. If it is yours, use your device key below \u2014 a name alone never opens it.",
+   "noteRect": [
+    19,
+    359,
+    371,
+    504
+   ],
+   "lines": [
+    [
+     114,
+     371,
+     276,
+     394
+    ],
+    [
+     108,
+     396,
+     282,
+     419
+    ],
+    [
+     115,
+     420,
+     275,
+     443
+    ],
+    [
+     103,
+     445,
+     287,
+     468
+    ],
+    [
+     135,
+     469,
+     255,
+     492
+    ]
+   ],
+   "crestOverlaps": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stoneDisplay": "none",
+   "stoneOverlap": 0
+  },
+  {
+   "leg": "B-door-10s-hold",
+   "at0": [
+    "step-door"
+   ],
+   "at10s": [
+    "step-door"
+   ],
+   "held": true,
+   "B": {
+    "heading": "Welcome starts with your certificate.",
+    "padding": [
+     "80px",
+     "80px"
+    ],
+    "lines": [
+     [
+      136,
+      16,
+      254,
+      47
+     ],
+     [
+      127,
+      52,
+      263,
+      83
+     ],
+     [
+      166,
+      87,
+      224,
+      118
+     ],
+     [
+      127,
+      122,
+      263,
+      153
+     ]
+    ],
+    "crestOverlap": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "leg": "door-continue-step1",
+   "visibleSteps": [
+    "step-1"
+   ]
+  },
+  {
+   "leg": "unfold-1-37",
+   "first": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37"
+   ],
+   "last": [
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ],
+   "count": 35,
+   "sequential": false
+  },
+  {
+   "leg": "D-unfold37",
+   "titles": [
+    {
+     "cls": "frame-title",
+     "font": "22px",
+     "rect": [
+      40,
+      89,
+      230,
+      142
+     ],
+     "lines": [
+      [
+       53,
+       88,
+       217,
+       117
+      ],
+      [
+       58,
+       114,
+       212,
+       143
+      ]
+     ]
+    }
+   ],
+   "orbRect": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "leg": "agree-to-bridge-pair",
+   "pair": [
+    "Begin the visual story",
+    "Read the agreement"
+   ],
+   "url": "http://127.0.0.1:18096/?stage=bridge"
+  },
+  {
+   "leg": "pair-begin-deck",
+   "counter": "1 / 37",
+   "url": "http://127.0.0.1:18096/?stage=bridge"
+  },
+  {
+   "leg": "deck-1-37",
+   "label": "deck",
+   "first": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37"
+   ],
+   "last": [
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ],
+   "count": 37,
+   "sequential": true,
+   "nextBtnAtEnd": "Enter NayaNET \u25c6"
+  },
+  {
+   "leg": "D-E-deck37",
+   "nutshell": [
+    [
+     30,
+     232,
+     300,
+     500
+    ]
+   ],
+   "photos": [
+    [
+     72,
+     509,
+     258,
+     695
+    ]
+   ],
+   "nutshellPhotoOverlap": 0,
+   "titleFont": "22px",
+   "titleLines": [
+    [
+     76,
+     165,
+     234,
+     194
+    ],
+    [
+     76,
+     188,
+     224,
+     217
+    ]
+   ],
+   "faceRect": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "leg": "deck-enter-bridge",
+   "endClick": {
+    "btnText": "Enter NayaNET \u25c6",
+    "holdCleared": true
+   },
+   "url": "http://127.0.0.1:18096/?stage=bridge",
+   "pair": [
+    "Begin the visual story",
+    "Read the agreement"
+   ]
+  },
+  {
+   "leg": "pair-read-agreement",
+   "counter": "1 / 37",
+   "url": "http://127.0.0.1:18096/agreement"
+  },
+  {
+   "leg": "letter-1-37",
+   "label": "letter",
+   "first": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37"
+   ],
+   "last": [
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ],
+   "count": 37,
+   "sequential": true,
+   "nextBtnAtEnd": "I agree \u25c6"
+  },
+  {
+   "leg": "D-E-letter37",
+   "visibleTitles": [
+    {
+     "cls": "ib-title",
+     "font": "24px",
+     "rect": [
+      76,
+      236,
+      300,
+      286
+     ]
+    }
+   ],
+   "titleLines": [
+    [
+     102,
+     233,
+     274,
+     264
+    ],
+    [
+     107,
+     258,
+     269,
+     289
+    ]
+   ],
+   "faceRect": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nutshell": [
+    [
+     30,
+     312,
+     300,
+     640
+    ]
+   ],
+   "photos": [
+    [
+     72,
+     733,
+     258,
+     919
+    ]
+   ],
+   "nutshellPhotoOverlap": 0
+  },
+  {
+   "leg": "letter-agree-bridge",
+   "endClick": {
+    "btnText": "I agree \u25c6",
+    "holdCleared": true
+   },
+   "url": "http://127.0.0.1:18096/?stage=bridge",
+   "agreedMarker": true
+  },
+  {
+   "leg": "390-console-errors",
+   "errors": []
+  }
+ ]
+}

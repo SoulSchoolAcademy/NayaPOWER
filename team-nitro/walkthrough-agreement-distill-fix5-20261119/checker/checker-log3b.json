@@ -1,0 +1,112 @@
+{
+ "label": "FIX5-CHECKER-DRIVE3B-STAGED",
+ "legs": [
+  {
+   "leg": "staged-bridge-diag",
+   "atLoad": {
+    "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/agreement",
+    "title": "The Collective Agreement \u2014 The Official Unfold | NayaNET",
+    "counter": "1 / 37",
+    "fpLegal": false,
+    "bodyClass": ""
+   },
+   "at37": {
+    "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/agreement",
+    "counter": "37 / 37",
+    "agreeVisible": true
+   },
+   "afterAgree": {
+    "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+    "bodyClass": "fp-stage-on fp-bridge fp-dialed",
+    "fpLegal": true,
+    "nav": true,
+    "fpLegalDisplay": "block"
+   },
+   "geo": {
+    "scrollWidth": 1754,
+    "clientWidth": 374,
+    "maxScroll": 1380,
+    "justifyContent": "safe center",
+    "linkCount": 12,
+    "unreachable": 0,
+    "reachable": [
+     {
+      "link": "Terms of Service",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Privacy Policy",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Cookie Policy",
+      "reachable": true,
+      "at": 100
+     },
+     {
+      "link": "Refund Policy",
+      "reachable": true,
+      "at": 200
+     },
+     {
+      "link": "Acceptable Use",
+      "reachable": true,
+      "at": 300
+     },
+     {
+      "link": "Community Guidelines",
+      "reachable": true,
+      "at": 500
+     },
+     {
+      "link": "Copyright / DMCA",
+      "reachable": true,
+      "at": 700
+     },
+     {
+      "link": "Ambassador Terms",
+      "reachable": true,
+      "at": 900
+     },
+     {
+      "link": "Membership & Billing",
+      "reachable": true,
+      "at": 1000
+     },
+     {
+      "link": "Young Citizens",
+      "reachable": true,
+      "at": 1200
+     },
+     {
+      "link": "Accessibility",
+      "reachable": true,
+      "at": 1300
+     },
+     {
+      "link": "Disclaimer",
+      "reachable": true,
+      "at": 1380
+     }
+    ],
+    "at0First3": [
+     {
+      "left": 12,
+      "right": 142
+     },
+     {
+      "left": 162,
+      "right": 275
+     },
+     {
+      "left": 295,
+      "right": 404
+     }
+    ]
+   },
+   "consoleErrors": []
+  }
+ ]
+}

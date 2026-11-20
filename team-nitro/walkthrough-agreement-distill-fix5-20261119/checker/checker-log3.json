@@ -1,0 +1,112 @@
+{
+ "label": "FIX5-CHECKER-DRIVE3",
+ "legs": [
+  {
+   "leg": "1920-identity-paired",
+   "input": "shawn",
+   "hero": "Shawn",
+   "heroRect": [
+    500,
+    388,
+    1420,
+    472
+   ],
+   "scrollW": 1920,
+   "innerW": 1920
+  },
+  {
+   "leg": "1920-door-10s-continue",
+   "at0": [
+    "step-door"
+   ],
+   "at10s": [
+    "step-door"
+   ],
+   "held": true,
+   "afterContinue": [
+    "step-1"
+   ]
+  },
+  {
+   "leg": "1920-unfold-board37",
+   "title37": {
+    "font": "25px",
+    "rect": [
+     516,
+     122,
+     1236,
+     152
+    ]
+   },
+   "counter": "37 / 37"
+  },
+  {
+   "leg": "1920-console-errors",
+   "errors": []
+  },
+  {
+   "leg": "staged-bridge-footer-geo",
+   "error": "no nav",
+   "consoleErrors": []
+  },
+  {
+   "leg": "intro-via-full-walk-bounded",
+   "trace": [
+    {
+     "url": "http://127.0.0.1:18096/welcome",
+     "body": "",
+     "steps": [
+      "step-door"
+     ]
+    },
+    {
+     "url": "http://127.0.0.1:18096/welcome",
+     "body": "",
+     "fpLegal": "MISSING",
+     "steps": [
+      "step-door"
+     ],
+     "btns": [
+      "#doorContinue Continue to the walk \u25c6"
+     ]
+    },
+    {
+     "url": "http://127.0.0.1:18096/welcome",
+     "body": "",
+     "fpLegal": "MISSING",
+     "steps": [
+      "step-1"
+     ],
+     "btns": [
+      "#playBtn-1 ",
+      "\u2039 Back",
+      "EDIT",
+      "",
+      "EDIT",
+      "",
+      "EDIT",
+      "",
+      "EDIT",
+      "",
+      "#speakBtn-1 ",
+      "#enterBtn-1 Enter",
+      "",
+      "",
+      "",
+      "",
+      "#skipBtn-1 Skip"
+     ]
+    }
+   ],
+   "final": {
+    "url": "http://127.0.0.1:18096/welcome",
+    "body": "",
+    "fpLegal": "MISSING"
+   },
+   "geo": {
+    "error": "intro stage not reached by the walk in 20 clicks"
+   },
+   "consoleErrors": []
+  }
+ ]
+}

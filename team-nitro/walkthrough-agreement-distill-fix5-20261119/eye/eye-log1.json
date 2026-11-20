@@ -1,0 +1,465 @@
+{
+ "label": "EYE-FIX5-PHONE390",
+ "alias": "eye5walk85c741",
+ "legs": [
+  {
+   "leg": "1-root",
+   "title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+   "scrollW": 390,
+   "innerW": 390,
+   "hasAgreement": false,
+   "buttons": [
+    "Enter NayaNET \u2192",
+    "Read the collective agreement \u25c6"
+   ]
+  },
+  {
+   "leg": "A-identity-paired",
+   "input": "shawn",
+   "hero": "Shawn",
+   "heroVisible": true,
+   "dataText": "Shawn",
+   "heroRect": [
+    19,
+    301,
+    371,
+    329
+   ],
+   "titleRect": [
+    22,
+    282,
+    368,
+    299
+   ],
+   "heroTitleOverlap": 0,
+   "gap": 2,
+   "certifiesDisplay": "none",
+   "scrollW": 390,
+   "innerW": 390
+  },
+  {
+   "leg": "identity-name-only",
+   "input": "",
+   "hero": "",
+   "heroVisible": false
+  },
+  {
+   "leg": "identity-plain",
+   "heroVisible": false,
+   "showsCertifies": true
+  },
+  {
+   "leg": "C-banner",
+   "noteText": "That alias is already claimed. If it is yours, use your device key below \u2014 a name alone never opens it.",
+   "lines": [
+    [
+     114,
+     371,
+     276,
+     394
+    ],
+    [
+     108,
+     396,
+     282,
+     419
+    ],
+    [
+     115,
+     420,
+     275,
+     443
+    ],
+    [
+     103,
+     445,
+     287,
+     468
+    ],
+    [
+     135,
+     469,
+     255,
+     492
+    ]
+   ],
+   "crestOverlaps": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stoneDisplay": "none",
+   "stoneOverlap": 0
+  },
+  {
+   "leg": "B-door-10s-hold",
+   "at0": [
+    "step-door"
+   ],
+   "at10s": [
+    "step-door"
+   ],
+   "held": true,
+   "B": {
+    "heading": "Welcome starts with your certificate.",
+    "padding": [
+     "80px",
+     "80px"
+    ],
+    "lines": [
+     [
+      136,
+      16,
+      254,
+      47
+     ],
+     [
+      127,
+      52,
+      263,
+      83
+     ],
+     [
+      166,
+      87,
+      224,
+      118
+     ],
+     [
+      127,
+      122,
+      263,
+      153
+     ]
+    ],
+    "crestOverlap": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "leg": "door-continue-step1",
+   "visibleSteps": [
+    "step-1"
+   ]
+  },
+  {
+   "leg": "unfold-1-37-D",
+   "label": "unfold",
+   "seen": [
+    "1 / 37"
+   ],
+   "endBtn": null,
+   "sequential": true,
+   "D-unfold": {
+    "titles": [],
+    "orbRect": [
+     238,
+     78,
+     290,
+     130
+    ]
+   }
+  },
+  {
+   "leg": "F-bridge-strip",
+   "ERROR": "Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"I agree\").visible.first\n"
+  },
+  {
+   "leg": "deck-1-37-D-E",
+   "ERROR": "Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"Begin the visual story\").visible.first\n"
+  },
+  {
+   "leg": "deck-enter-bridge",
+   "ERROR": "Locator.click: Timeout 6000ms exceeded.\nCall log:\n  - waiting for locator(\"#fpNextBtn\")\n"
+  },
+  {
+   "leg": "letter-1-37-D-E",
+   "label": "letter",
+   "seen": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37",
+    "4 / 37",
+    "5 / 37",
+    "6 / 37",
+    "7 / 37",
+    "8 / 37",
+    "9 / 37",
+    "10 / 37",
+    "11 / 37",
+    "12 / 37",
+    "13 / 37",
+    "14 / 37",
+    "15 / 37",
+    "16 / 37",
+    "17 / 37",
+    "18 / 37",
+    "19 / 37",
+    "20 / 37",
+    "21 / 37",
+    "22 / 37",
+    "23 / 37",
+    "24 / 37",
+    "25 / 37",
+    "26 / 37",
+    "27 / 37",
+    "28 / 37",
+    "29 / 37",
+    "30 / 37",
+    "31 / 37",
+    "32 / 37",
+    "33 / 37",
+    "34 / 37",
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ],
+   "endBtn": "I agree \u25c6",
+   "sequential": true,
+   "D-E-letter": {
+    "visibleTitles": [
+     {
+      "font": "24px",
+      "rect": [
+       76,
+       236,
+       300,
+       286
+      ]
+     }
+    ],
+    "titleLines": [
+     [
+      102,
+      233,
+      274,
+      264
+     ],
+     [
+      107,
+      258,
+      269,
+      289
+     ]
+    ],
+    "faceRect": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "nutshell": [
+     [
+      30,
+      312,
+      300,
+      640
+     ]
+    ],
+    "photos": [
+     [
+      72,
+      733,
+      258,
+      919
+     ]
+    ],
+    "nutshellPhotoOverlap": 0
+   }
+  },
+  {
+   "leg": "letter-agree-bridge",
+   "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+   "agreedMarker": true
+  },
+  {
+   "leg": "anthem-listen",
+   "ERROR": "Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"Listen to the agreement\").visible.first\n"
+  },
+  {
+   "leg": "F-intro-strip",
+   "cold": {
+    "fpLegalDisplay": "block"
+   },
+   "param": {
+    "fpLegalDisplay": "none"
+   },
+   "activation": {
+    "entered": true
+   },
+   "state": {
+    "bodyClass": "fp-stage-on fp-bridge fp-dialed",
+    "fpLegalDisplay": "block",
+    "choicePills": [
+     "Begin the visual story",
+     "Read the agreement"
+    ]
+   },
+   "F-intro": {
+    "navRect": [
+     8,
+     798,
+     382,
+     836
+    ],
+    "scrollWidth": 1754,
+    "clientWidth": 374,
+    "maxScroll": 1380,
+    "justifyContent": "safe center",
+    "flexWrap": "nowrap",
+    "overflowX": "auto",
+    "linkCount": 12,
+    "links": [
+     "Terms of Service",
+     "Privacy Policy",
+     "Cookie Policy",
+     "Refund Policy",
+     "Acceptable Use",
+     "Community Guidelines",
+     "Copyright / DMCA",
+     "Ambassador Terms",
+     "Membership & Billing",
+     "Young Citizens",
+     "Accessibility",
+     "Disclaimer"
+    ],
+    "reachableViewport": [
+     {
+      "link": "Terms of Service",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Privacy Policy",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Cookie Policy",
+      "reachable": true,
+      "at": 50
+     },
+     {
+      "link": "Refund Policy",
+      "reachable": true,
+      "at": 150
+     },
+     {
+      "link": "Acceptable Use",
+      "reachable": true,
+      "at": 300
+     },
+     {
+      "link": "Community Guidelines",
+      "reachable": true,
+      "at": 500
+     },
+     {
+      "link": "Copyright / DMCA",
+      "reachable": true,
+      "at": 650
+     },
+     {
+      "link": "Ambassador Terms",
+      "reachable": true,
+      "at": 850
+     },
+     {
+      "link": "Membership & Billing",
+      "reachable": true,
+      "at": 1000
+     },
+     {
+      "link": "Young Citizens",
+      "reachable": true,
+      "at": 1150
+     },
+     {
+      "link": "Accessibility",
+      "reachable": true,
+      "at": 1300
+     },
+     {
+      "link": "Disclaimer",
+      "reachable": true,
+      "at": 1380
+     }
+    ],
+    "unreachableViewport": 0,
+    "reachableStrip": [
+     {
+      "link": "Terms of Service",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Privacy Policy",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Cookie Policy",
+      "reachable": true,
+      "at": 50
+     },
+     {
+      "link": "Refund Policy",
+      "reachable": true,
+      "at": 200
+     },
+     {
+      "link": "Acceptable Use",
+      "reachable": true,
+      "at": 300
+     },
+     {
+      "link": "Community Guidelines",
+      "reachable": true,
+      "at": 500
+     },
+     {
+      "link": "Copyright / DMCA",
+      "reachable": true,
+      "at": 650
+     },
+     {
+      "link": "Ambassador Terms",
+      "reachable": true,
+      "at": 850
+     },
+     {
+      "link": "Membership & Billing",
+      "reachable": true,
+      "at": 1000
+     },
+     {
+      "link": "Young Citizens",
+      "reachable": true,
+      "at": 1150
+     },
+     {
+      "link": "Accessibility",
+      "reachable": true,
+      "at": 1300
+     },
+     {
+      "link": "Disclaimer",
+      "reachable": true,
+      "at": 1380
+     }
+    ],
+    "unreachableStrip": 0
+   }
+  },
+  {
+   "leg": "390-console-errors",
+   "errors": []
+  }
+ ]
+}

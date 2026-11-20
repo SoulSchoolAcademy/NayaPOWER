@@ -1,0 +1,182 @@
+{
+ "label": "EYE-FIX5-BRIDGE-RERUN-390",
+ "legs": [
+  {
+   "leg": "unfold-1-37",
+   "seenCount": 37,
+   "first": [
+    "1 / 37",
+    "2 / 37"
+   ],
+   "last": [
+    "36 / 37",
+    "37 / 37"
+   ],
+   "sequential": true
+  },
+  {
+   "leg": "F-bridge-real-tap-rerun",
+   "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+   "waitForNavSeconds": 3.4,
+   "F-bridge": {
+    "navRect": [
+     8,
+     798,
+     382,
+     836
+    ],
+    "scrollWidth": 1754,
+    "clientWidth": 374,
+    "maxScroll": 1380,
+    "justifyContent": "safe center",
+    "flexWrap": "nowrap",
+    "overflowX": "auto",
+    "linkCount": 12,
+    "links": [
+     "Terms of Service",
+     "Privacy Policy",
+     "Cookie Policy",
+     "Refund Policy",
+     "Acceptable Use",
+     "Community Guidelines",
+     "Copyright / DMCA",
+     "Ambassador Terms",
+     "Membership & Billing",
+     "Young Citizens",
+     "Accessibility",
+     "Disclaimer"
+    ],
+    "reachableViewport": [
+     {
+      "link": "Terms of Service",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Privacy Policy",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Cookie Policy",
+      "reachable": true,
+      "at": 50
+     },
+     {
+      "link": "Refund Policy",
+      "reachable": true,
+      "at": 150
+     },
+     {
+      "link": "Acceptable Use",
+      "reachable": true,
+      "at": 300
+     },
+     {
+      "link": "Community Guidelines",
+      "reachable": true,
+      "at": 500
+     },
+     {
+      "link": "Copyright / DMCA",
+      "reachable": true,
+      "at": 650
+     },
+     {
+      "link": "Ambassador Terms",
+      "reachable": true,
+      "at": 850
+     },
+     {
+      "link": "Membership & Billing",
+      "reachable": true,
+      "at": 1000
+     },
+     {
+      "link": "Young Citizens",
+      "reachable": true,
+      "at": 1150
+     },
+     {
+      "link": "Accessibility",
+      "reachable": true,
+      "at": 1300
+     },
+     {
+      "link": "Disclaimer",
+      "reachable": true,
+      "at": 1380
+     }
+    ],
+    "unreachableViewport": 0,
+    "reachableStrip": [
+     {
+      "link": "Terms of Service",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Privacy Policy",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Cookie Policy",
+      "reachable": true,
+      "at": 50
+     },
+     {
+      "link": "Refund Policy",
+      "reachable": true,
+      "at": 200
+     },
+     {
+      "link": "Acceptable Use",
+      "reachable": true,
+      "at": 300
+     },
+     {
+      "link": "Community Guidelines",
+      "reachable": true,
+      "at": 500
+     },
+     {
+      "link": "Copyright / DMCA",
+      "reachable": true,
+      "at": 650
+     },
+     {
+      "link": "Ambassador Terms",
+      "reachable": true,
+      "at": 850
+     },
+     {
+      "link": "Membership & Billing",
+      "reachable": true,
+      "at": 1000
+     },
+     {
+      "link": "Young Citizens",
+      "reachable": true,
+      "at": 1150
+     },
+     {
+      "link": "Accessibility",
+      "reachable": true,
+      "at": 1300
+     },
+     {
+      "link": "Disclaimer",
+      "reachable": true,
+      "at": 1380
+     }
+    ],
+    "unreachableStrip": 0
+   }
+  },
+  {
+   "leg": "390-console-errors-drive1c",
+   "errors": []
+  }
+ ]
+}

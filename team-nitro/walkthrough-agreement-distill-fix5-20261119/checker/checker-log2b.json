@@ -1,0 +1,303 @@
+{
+ "label": "FIX5-CHECKER-DRIVE2B",
+ "legs": [
+  {
+   "leg": "unfold-1-37-sequential",
+   "seen": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37",
+    "4 / 37",
+    "5 / 37",
+    null,
+    "7 / 37",
+    "8 / 37",
+    "9 / 37",
+    null,
+    "11 / 37",
+    "12 / 37",
+    "13 / 37",
+    null,
+    "15 / 37",
+    "16 / 37",
+    "17 / 37",
+    null,
+    "19 / 37",
+    "20 / 37",
+    null,
+    "25 / 37",
+    null,
+    "27 / 37",
+    "28 / 37",
+    "29 / 37",
+    null,
+    "31 / 37",
+    "32 / 37",
+    "33 / 37",
+    "34 / 37",
+    null,
+    "36 / 37",
+    "37 / 37"
+   ],
+   "count": 34,
+   "sequential": false
+  },
+  {
+   "leg": "D-unfold37-clearance-visible",
+   "titleFont": "22px",
+   "titleRect": [
+    40,
+    89,
+    230,
+    142
+   ],
+   "titleLines": [
+    [
+     53,
+     88,
+     217,
+     117
+    ],
+    [
+     58,
+     114,
+     212,
+     143
+    ]
+   ],
+   "visibleCandidates": [
+    {
+     "sel": ".frame-icon",
+     "cls": "frame-icon",
+     "rect": [
+      238,
+      75,
+      290,
+      127
+     ]
+    },
+    {
+     "sel": ".deal-seal",
+     "cls": "deal-seal frame-red-n",
+     "rect": [
+      165,
+      477,
+      225,
+      537
+     ]
+    }
+   ]
+  },
+  {
+   "leg": "bridge-begin-deck",
+   "counter": "1 / 37",
+   "url": "http://127.0.0.1:18096/?stage=bridge"
+  },
+  {
+   "leg": "deck-1-37-sequential",
+   "seenCount": 37,
+   "sequential": true,
+   "last": [
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ]
+  },
+  {
+   "leg": "D-E-deck37-clearance-visible",
+   "titleFont": "22px",
+   "titleRect": [
+    76,
+    175,
+    300,
+    221
+   ],
+   "titleLines": [
+    [
+     76,
+     172,
+     234,
+     201
+    ],
+    [
+     76,
+     195,
+     224,
+     224
+    ]
+   ],
+   "visibleCandidates": [
+    {
+     "sel": ".deal-beat-photo",
+     "cls": "deal-beat-photo fp-speak-face",
+     "rect": [
+      274,
+      146,
+      338,
+      210
+     ]
+    },
+    {
+     "sel": ".fp-speak-face",
+     "cls": "deal-beat-photo fp-speak-face",
+     "rect": [
+      274,
+      146,
+      338,
+      210
+     ]
+    },
+    {
+     "sel": ".deal-seal",
+     "cls": "deal-seal frame-red-n",
+     "rect": [
+      105,
+      695,
+      225,
+      815
+     ]
+    },
+    {
+     "sel": "[class*=orb]",
+     "cls": "naya-orbit",
+     "rect": [
+      20,
+      243,
+      371,
+      594
+     ]
+    },
+    {
+     "sel": "[class*=orb]",
+     "cls": "naya-color-orbit",
+     "rect": [
+      -46,
+      177,
+      436,
+      659
+     ]
+    },
+    {
+     "sel": "[class*=orb]",
+     "cls": "naya-white-orbit",
+     "rect": [
+      -45,
+      178,
+      435,
+      658
+     ]
+    }
+   ]
+  },
+  {
+   "leg": "letter-1-37-sequential",
+   "seenCount": 37,
+   "sequential": true,
+   "last": [
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ]
+  },
+  {
+   "leg": "D-E-letter37-clearance-visible",
+   "titleFont": "24px",
+   "titleRect": [
+    76,
+    236,
+    300,
+    286
+   ],
+   "titleLines": [
+    [
+     102,
+     233,
+     274,
+     264
+    ],
+    [
+     107,
+     258,
+     269,
+     289
+    ]
+   ],
+   "visibleCandidates": [
+    {
+     "sel": ".deal-beat-photo",
+     "cls": "deal-beat-photo fp-speak-face",
+     "rect": [
+      274,
+      204,
+      338,
+      268
+     ]
+    },
+    {
+     "sel": ".fp-speak-face",
+     "cls": "deal-beat-photo fp-speak-face",
+     "rect": [
+      274,
+      204,
+      338,
+      268
+     ]
+    },
+    {
+     "sel": ".deal-seal",
+     "cls": "deal-seal frame-red-n",
+     "rect": [
+      105,
+      912,
+      225,
+      1032
+     ]
+    },
+    {
+     "sel": "[class*=orb]",
+     "cls": "naya-orbit",
+     "rect": [
+      20,
+      243,
+      371,
+      594
+     ]
+    },
+    {
+     "sel": "[class*=orb]",
+     "cls": "naya-color-orbit",
+     "rect": [
+      -32,
+      191,
+      422,
+      645
+     ]
+    },
+    {
+     "sel": "[class*=orb]",
+     "cls": "naya-white-orbit",
+     "rect": [
+      -53,
+      170,
+      443,
+      666
+     ]
+    },
+    {
+     "sel": "[class*=orb]",
+     "cls": "ib-orb",
+     "rect": [
+      30,
+      664,
+      300,
+      728
+     ]
+    }
+   ]
+  },
+  {
+   "leg": "390-console-errors",
+   "errors": []
+  }
+ ]
+}

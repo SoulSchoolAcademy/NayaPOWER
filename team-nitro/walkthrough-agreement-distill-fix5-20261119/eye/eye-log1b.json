@@ -1,0 +1,576 @@
+{
+ "label": "EYE-FIX5-PHONE390-DRIVE1B",
+ "legs": [
+  {
+   "leg": "agree-controls-dump",
+   "fpNextBtnExists": false,
+   "fpNextBtnVisible": null,
+   "counter": "1 / 37",
+   "visibleButtons": [
+    {
+     "id": "playBtn",
+     "text": "\u25b6",
+     "aria": "Play \u2014 read the agreement with Naya"
+    },
+    {
+     "id": "fpAnthemVideoBtn",
+     "text": "\u25b6 Watch the anthem \u25c6",
+     "aria": null
+    },
+    {
+     "id": null,
+     "text": "\u2039 Back \u25c6",
+     "aria": null
+    },
+    {
+     "id": null,
+     "text": "Keep reading \u25c6",
+     "aria": null
+    },
+    {
+     "id": null,
+     "text": "Next \u25c6",
+     "aria": null
+    }
+   ]
+  },
+  {
+   "leg": "unfold-1-37-D",
+   "label": "unfold",
+   "seen": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37",
+    "4 / 37",
+    "5 / 37",
+    "6 / 37",
+    "7 / 37",
+    "8 / 37",
+    "9 / 37",
+    "10 / 37",
+    "11 / 37",
+    "12 / 37",
+    "13 / 37",
+    "14 / 37",
+    "15 / 37",
+    "16 / 37",
+    "17 / 37",
+    "18 / 37",
+    "19 / 37",
+    "20 / 37",
+    "21 / 37",
+    "22 / 37",
+    "23 / 37",
+    "24 / 37",
+    "25 / 37",
+    "26 / 37",
+    "27 / 37",
+    "28 / 37",
+    "29 / 37",
+    "30 / 37",
+    "31 / 37",
+    "32 / 37",
+    "33 / 37",
+    "34 / 37",
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ],
+   "endBtn": "I agree",
+   "sequential": true,
+   "D-unfold": {
+    "titleFont": "22px",
+    "titleLines": [
+     [
+      53,
+      88,
+      217,
+      117
+     ],
+     [
+      58,
+      114,
+      212,
+      143
+     ]
+    ],
+    "orbRect": [
+     238,
+     75,
+     290,
+     127
+    ],
+    "faceRect": null,
+    "titleOrbOverlap": 0,
+    "titleFaceClear": null,
+    "nutshell": [
+     [
+      40,
+      154,
+      350,
+      454
+     ]
+    ],
+    "photos": [
+     [
+      75,
+      495,
+      315,
+      735
+     ]
+    ],
+    "nutshellPhotoOverlap": 0
+   }
+  },
+  {
+   "leg": "F-bridge-real-tap",
+   "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+   "pair": [
+    "Begin the visual story",
+    "Read the agreement"
+   ],
+   "F-bridge-real-tap": {
+    "error": "no nav"
+   }
+  },
+  {
+   "leg": "deck-1-37-D-E",
+   "label": "deck",
+   "seen": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37",
+    "4 / 37",
+    "5 / 37",
+    "6 / 37",
+    "7 / 37",
+    "8 / 37",
+    "9 / 37",
+    "10 / 37",
+    "11 / 37",
+    "12 / 37",
+    "13 / 37",
+    "14 / 37",
+    "15 / 37",
+    "16 / 37",
+    "17 / 37",
+    "18 / 37",
+    "19 / 37",
+    "20 / 37",
+    "21 / 37",
+    "22 / 37",
+    "23 / 37",
+    "24 / 37",
+    "25 / 37",
+    "26 / 37",
+    "27 / 37",
+    "28 / 37",
+    "29 / 37",
+    "30 / 37",
+    "31 / 37",
+    "32 / 37",
+    "33 / 37",
+    "34 / 37",
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ],
+   "endBtn": "Enter NayaNET \u25c6",
+   "sequential": true,
+   "D-E-deck": {
+    "titleFont": "22px",
+    "titleLines": [
+     [
+      76,
+      165,
+      234,
+      194
+     ],
+     [
+      76,
+      188,
+      224,
+      217
+     ]
+    ],
+    "orbRect": null,
+    "faceRect": [
+     274,
+     136,
+     338,
+     200
+    ],
+    "titleOrbOverlap": null,
+    "titleFaceClear": 40,
+    "nutshell": [
+     [
+      30,
+      232,
+      300,
+      500
+     ]
+    ],
+    "photos": [
+     [
+      72,
+      509,
+      258,
+      695
+     ]
+    ],
+    "nutshellPhotoOverlap": 0
+   }
+  },
+  {
+   "leg": "deck-enter-bridge",
+   "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/?stage=bridge",
+   "pair": [
+    "Begin the visual story",
+    "Read the agreement"
+   ]
+  },
+  {
+   "leg": "pair-read-agreement",
+   "counter": "1 / 37",
+   "url": "https://naya-walk-beginning-staging.nayapower.workers.dev/agreement"
+  },
+  {
+   "leg": "letter-1-37-D-E-visible-face",
+   "label": "letter",
+   "seen": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37",
+    "4 / 37",
+    "5 / 37",
+    "6 / 37",
+    "7 / 37",
+    "8 / 37",
+    "9 / 37",
+    "10 / 37",
+    "11 / 37",
+    "12 / 37",
+    "13 / 37",
+    "14 / 37",
+    "15 / 37",
+    "16 / 37",
+    "17 / 37",
+    "18 / 37",
+    "19 / 37",
+    "20 / 37",
+    "21 / 37",
+    "22 / 37",
+    "23 / 37",
+    "24 / 37",
+    "25 / 37",
+    "26 / 37",
+    "27 / 37",
+    "28 / 37",
+    "29 / 37",
+    "30 / 37",
+    "31 / 37",
+    "32 / 37",
+    "33 / 37",
+    "34 / 37",
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ],
+   "endBtn": "I agree \u25c6",
+   "sequential": true,
+   "D-E-letter": {
+    "titleFont": "24px",
+    "titleLines": [
+     [
+      102,
+      233,
+      274,
+      264
+     ],
+     [
+      107,
+      258,
+      269,
+      289
+     ]
+    ],
+    "orbRect": null,
+    "faceRect": [
+     274,
+     204,
+     338,
+     268
+    ],
+    "titleOrbOverlap": null,
+    "titleFaceClear": 0,
+    "nutshell": [
+     [
+      30,
+      312,
+      300,
+      640
+     ]
+    ],
+    "photos": [
+     [
+      72,
+      733,
+      258,
+      919
+     ]
+    ],
+    "nutshellPhotoOverlap": 0
+   }
+  },
+  {
+   "leg": "anthem-listen-diag",
+   "before": [
+    {
+     "id": "playBtn",
+     "text": "\u25b6",
+     "aria": "Play \u2014 read the agreement with Naya"
+    },
+    {
+     "id": "fpAnthemVideoBtn",
+     "text": "\u25b6 Watch the anthem \u25c6",
+     "aria": null
+    },
+    {
+     "id": null,
+     "text": "\u2039 Back \u25c6",
+     "aria": null
+    },
+    {
+     "id": null,
+     "text": "Keep reading \u25c6",
+     "aria": null
+    },
+    {
+     "id": null,
+     "text": "Next \u25c6",
+     "aria": null
+    }
+   ],
+   "anthem": {
+    "anthemText": true,
+    "iframes": 0,
+    "videos": 0
+   },
+   "afterAnthemButtons": [
+    {
+     "id": "playBtn",
+     "text": "\u25b6",
+     "aria": "Play \u2014 read the agreement with Naya"
+    },
+    {
+     "id": "fpAnthemVideoBtn",
+     "text": "\u25b6 Watch the anthem \u25c6",
+     "aria": null
+    },
+    {
+     "id": null,
+     "text": "\u2039 Back \u25c6",
+     "aria": null
+    },
+    {
+     "id": null,
+     "text": "Keep reading \u25c6",
+     "aria": null
+    },
+    {
+     "id": null,
+     "text": "Next \u25c6",
+     "aria": null
+    }
+   ],
+   "listen": {
+    "via": "aria-label",
+    "ok": true
+   },
+   "listenState": {
+    "listenText": false,
+    "audios": 0
+   }
+  },
+  {
+   "leg": "F-intro-fresh-browser",
+   "coldFresh": {
+    "fpLegalDisplay": "none"
+   },
+   "param": {
+    "fpLegalDisplay": "none"
+   },
+   "activation": {
+    "entered": true
+   },
+   "state": {
+    "bodyClass": "fp-stage-on fp-intro fp-dialed",
+    "fpLegalDisplay": "block",
+    "choicePills": [
+     "Begin the visual story",
+     "Read the agreement"
+    ]
+   },
+   "F-intro-fresh": {
+    "navRect": [
+     8,
+     798,
+     382,
+     836
+    ],
+    "scrollWidth": 1754,
+    "clientWidth": 374,
+    "maxScroll": 1380,
+    "justifyContent": "safe center",
+    "flexWrap": "nowrap",
+    "overflowX": "auto",
+    "linkCount": 12,
+    "links": [
+     "Terms of Service",
+     "Privacy Policy",
+     "Cookie Policy",
+     "Refund Policy",
+     "Acceptable Use",
+     "Community Guidelines",
+     "Copyright / DMCA",
+     "Ambassador Terms",
+     "Membership & Billing",
+     "Young Citizens",
+     "Accessibility",
+     "Disclaimer"
+    ],
+    "reachableViewport": [
+     {
+      "link": "Terms of Service",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Privacy Policy",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Cookie Policy",
+      "reachable": true,
+      "at": 50
+     },
+     {
+      "link": "Refund Policy",
+      "reachable": true,
+      "at": 150
+     },
+     {
+      "link": "Acceptable Use",
+      "reachable": true,
+      "at": 300
+     },
+     {
+      "link": "Community Guidelines",
+      "reachable": true,
+      "at": 500
+     },
+     {
+      "link": "Copyright / DMCA",
+      "reachable": true,
+      "at": 650
+     },
+     {
+      "link": "Ambassador Terms",
+      "reachable": true,
+      "at": 850
+     },
+     {
+      "link": "Membership & Billing",
+      "reachable": true,
+      "at": 1000
+     },
+     {
+      "link": "Young Citizens",
+      "reachable": true,
+      "at": 1150
+     },
+     {
+      "link": "Accessibility",
+      "reachable": true,
+      "at": 1300
+     },
+     {
+      "link": "Disclaimer",
+      "reachable": true,
+      "at": 1380
+     }
+    ],
+    "unreachableViewport": 0,
+    "reachableStrip": [
+     {
+      "link": "Terms of Service",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Privacy Policy",
+      "reachable": true,
+      "at": 0
+     },
+     {
+      "link": "Cookie Policy",
+      "reachable": true,
+      "at": 50
+     },
+     {
+      "link": "Refund Policy",
+      "reachable": true,
+      "at": 200
+     },
+     {
+      "link": "Acceptable Use",
+      "reachable": true,
+      "at": 300
+     },
+     {
+      "link": "Community Guidelines",
+      "reachable": true,
+      "at": 500
+     },
+     {
+      "link": "Copyright / DMCA",
+      "reachable": true,
+      "at": 650
+     },
+     {
+      "link": "Ambassador Terms",
+      "reachable": true,
+      "at": 850
+     },
+     {
+      "link": "Membership & Billing",
+      "reachable": true,
+      "at": 1000
+     },
+     {
+      "link": "Young Citizens",
+      "reachable": true,
+      "at": 1150
+     },
+     {
+      "link": "Accessibility",
+      "reachable": true,
+      "at": 1300
+     },
+     {
+      "link": "Disclaimer",
+      "reachable": true,
+      "at": 1380
+     }
+    ],
+    "unreachableStrip": 0
+   },
+   "consoleErrors": []
+  },
+  {
+   "leg": "390-console-errors-drive1b",
+   "errors": []
+  }
+ ]
+}
