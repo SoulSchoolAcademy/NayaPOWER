@@ -4,7 +4,7 @@
 
 **NN-20261119-frame-to-the-edges-glow-inside · Naya Note · 2026-11-19 ~18:22–18:27 MST (01:22–01:27Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — The Frame to the Edges, the Glow Inside (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4208 — The Frame to the Edges, the Glow Inside*
 
 **Category:** Design — Walkthrough / agreement visual presentation (and Personal About + Skills)
 
