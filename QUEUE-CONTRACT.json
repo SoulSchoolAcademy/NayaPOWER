@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-19T21:48:57Z",
-  "tip": "9b8cfc4f8632deaa2b8d6f71333f39e119fc4018",
+  "generated_at": "2026-11-20T03:49:07Z",
+  "tip": "9e5be341aeeace356f7ffe7a92dfa6502b449d80",
   "prs": [
     {
       "number": 3453,
@@ -65,6 +65,42 @@
       "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "489b7b53f151849089be6147a59fd6e0e7a18fb9"
+    },
+    {
+      "number": 3491,
+      "title": "Connection Profile (2026-11-19): one keyword row, working three-dot menus, Hub i-button opens the framed card",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author updates the branch onto current main \u2014 its only red(s) (test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
+      "owner": "author lane",
+      "head": "d30a15fd300efe733e8c733905356d5119a3aa85"
+    },
+    {
+      "number": 3492,
+      "title": "Fix smart-mail v35: module-scope `json` helpers (TS2393) + executed coverage test",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "4811e393cb53e2eab5661dfe4d471c0de831d08f"
+    },
+    {
+      "number": 3493,
+      "title": "Cold retrieve: drop 5 dangling SN-3549..SN-3553 registry entries (re-issue of PR #3490 at tip de230305)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "63da9b162e2cb2195fa6e638d800e3ca650bb0f6"
+    },
+    {
+      "number": 3494,
+      "title": "docs(brain): learning event 2026-11-19",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "a6109543787fdc0eda11afea106b8a27b7002271"
     }
   ]
 }
