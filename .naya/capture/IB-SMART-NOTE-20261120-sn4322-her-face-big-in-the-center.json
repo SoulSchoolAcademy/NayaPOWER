@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4322",
+ "intelligence": {
+  "title": "SN-4322 — Her Face Big in the Center, the Little Red N at the Bottom",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4322-her-face-big-in-the-center",
+  "smart_note_id": "SN-4322",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4322/IB-SMART-NOTE-20261120-sn4322-her-face-big-in-the-center.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "\"If you're going to have Naya's picture in there, you might as well just have a big in the twice almost twice the size or in the center so then it looks like her face is talking to them.\" Her picture big — almost twice the size — right in the center, so it feels like her face is talking to them. \"And then and then you could have that little red N at the bottom.\" The balance is the point: \"you have her picture in the area, the box area and in the corner. But then you don't have the N. So it's like you should have the balance between the N and her picture.\" Where the picture goes — top right corner or in the box area — is the open question he posed: \"Do you want to put her picture in the top right corner or do you want to put it in the box area?\" The picture cannot be in both places at once; the N cannot be missing. This sharpens SN-4310 (the right red N) and SN-4313 (fourteen pictures): the N has its place at the bottom, her face has its place big in the center, and the two balance each other.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4322",
+   "title": "SN-4322 — Her Face Big in the Center, the Little Red N at the Bottom",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4322/IB-SMART-NOTE-20261120-sn4322-her-face-big-in-the-center.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4322/IB-SMART-NOTE-20261120-sn4322-her-face-big-in-the-center.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

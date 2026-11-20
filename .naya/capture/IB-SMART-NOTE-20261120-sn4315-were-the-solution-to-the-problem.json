@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4315",
+ "intelligence": {
+  "title": "SN-4315 — We're the Solution to the Problem",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4315-were-the-solution-to-the-problem",
+  "smart_note_id": "SN-4315",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4315/IB-SMART-NOTE-20261120-sn4315-were-the-solution-to-the-problem.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "\"I like the world's freaking out right now.\" The market crashed — Bitcoin crashed, the market crashed, the whole thing, even the media crashed; Starbucks, McDonald's, Subway, all of them going under. \"I think the whole system's crashing. … Like not the whole world, but I mean like the stock market world and the Bitcoin world.\" And his turn on it: \"Um no I think we're the solution to the problem. I think what they realize is they don't know understand what well they don't understand life, they don't understand AI, they don't understand what they created. And what they were betting on isn't what they were they were wrong. They were all not thinking right about how things actually work.\" The crash claims are his read, not a verified fact. The build, in his words: \"an incredible digital world, a digital masterpiece that is just like high level, high tech and where they become the show… a new digital kingdom and world that they can step into and it's designed for them and it's all push button simple and beautiful… a work of art that you enter.\"",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4315",
+   "title": "SN-4315 — We're the Solution to the Problem",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4315/IB-SMART-NOTE-20261120-sn4315-were-the-solution-to-the-problem.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4315/IB-SMART-NOTE-20261120-sn4315-were-the-solution-to-the-problem.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

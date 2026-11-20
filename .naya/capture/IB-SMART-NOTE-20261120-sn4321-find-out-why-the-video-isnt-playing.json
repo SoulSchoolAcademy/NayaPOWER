@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4321",
+ "intelligence": {
+  "title": "SN-4321 — Find Out Why the Video Isn't Playing",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4321-find-out-why-the-video-isnt-playing",
+  "smart_note_id": "SN-4321",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4321/IB-SMART-NOTE-20261120-sn4321-find-out-why-the-video-isnt-playing.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "\"Yeah, so right now none of the video, the video and the images are not playing. So you got to figure out why they're giving you the video and it's not playing. And why I'm giving you the images and they're not displaying.\" The order is not \"put the video in again\" — it is figure out WHY. Why is the video they are giving us not playing, and why are the images he is giving us not displaying? The cause is the job; the placement is the easy part. This follows the same day's earlier corrections (SN-4295, SN-4309): the player was corrected twice and the placeholder was still standing in for the real link — putting it in again without knowing why it fails is how a correction gets \"done\" three times and still fails his eye.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4321",
+   "title": "SN-4321 — Find Out Why the Video Isn't Playing",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4321/IB-SMART-NOTE-20261120-sn4321-find-out-why-the-video-isnt-playing.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4321/IB-SMART-NOTE-20261120-sn4321-find-out-why-the-video-isnt-playing.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
