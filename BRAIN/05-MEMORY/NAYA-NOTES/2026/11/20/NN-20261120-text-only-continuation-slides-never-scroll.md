@@ -4,7 +4,7 @@
 
 **NN-20261120-text-only-continuation-slides-never-scroll · Naya Note · 2026-11-20 ~16:27 MST**
 
-*Paired Smart Note: SN-pending — Text-Only Continuation Slides — Never Scroll (takes the next free number at filing)*
+*Paired Smart Note: SN-4351 — Text-Only Continuation Slides — Never Scroll*
 
 **Category:** Law — the slide pattern: image, then text-only continuation, then image again
 
