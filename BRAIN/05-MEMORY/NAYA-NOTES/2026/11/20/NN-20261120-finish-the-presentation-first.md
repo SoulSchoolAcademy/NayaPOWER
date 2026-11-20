@@ -4,7 +4,7 @@
 
 **NN-20261120-finish-the-presentation-first · Naya Note · 2026-11-20 ~13:10–13:30 MST (call f8351b5a, second call) and main chat ~13:25 MST**
 
-*Paired Smart Note: SN-pending — Finish the Presentation First, Then Carry the Frame to Every Page (takes the next free number at filing)*
+*Paired Smart Note: SN-4298 — Finish the Presentation First, Then Carry the Frame to Every Page*
 
 **Category:** Decisions — the agreement presentation, the policy pages, sequencing
 
