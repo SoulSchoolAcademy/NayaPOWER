@@ -20,7 +20,7 @@ The logo is the face of the whole presentation — the top bar, the bottom bar, 
 
 ## How to Use It
 
-When he shows a mark, do not ask which logo to keep — ask where it goes. "Put it into the player" is a placement, not a replacement, and the placement is the whole instruction. Use the exact file he shared: the screenshot is in the library (47a0acbb, 1885×945), the red N is the wide title card RED_NAYA.png whose orb the builder crops out, and the crystal N is still not on disk — never substitute a different N for the one he showed. And when a correction overtakes a direction already sent to a running delegate, update the delegate in the same pass — a stale direction builds the thing he just refused.
+When he shows a mark, do not ask which logo to keep — ask where it goes. "Put it into the player" is a placement, not a replacement, and the placement is the whole instruction. Use the exact file he shared: the screenshot is in the library (47a0acbb, 1885×945), the red N is the wide title card RED_NAYA.png whose orb the builder crops out, and the crystal N is on disk at e6/e66b77e03c7995b254db34002ca138471c7c238932a847b9a167508b759401ac.png — use exactly that file; never substitute a different N for the one he showed. And when a correction overtakes a direction already sent to a running delegate, update the delegate in the same pass — a stale direction builds the thing he just refused.
 
 ## His Words, Verbatim
 
@@ -34,4 +34,4 @@ When he shows a mark, do not ask which logo to keep — ask where it goes. "Put 
 
 - The red N INTO the player — in flight with the voice delegate (agent 2a4c0217); the delegate's earlier top-bar direction is overtaken by this correction and its update is owed, not done.
 - The Naya logo stays as it is — no replacement anywhere in the build; eye proof owed.
-- The crystal N file is still not in the library under a findable path — do not substitute NAYA_ICON.png; if the builder needs the bytes, use the image as shown in chat or ask Shawn for the file.
+- The crystal N file IS in the library — `~/workspace/user/media_library/image/e6/e66b77e03c7995b254db34002ca138471c7c238932a847b9a167508b759401ac.png` (512×512, md5 c66a09fe, on disk since Oct 19) — use exactly that file for the top-left logo; never substitute NAYA_ICON.png. (Correction, run 425: the earlier 'not in the library' line was a search miss, not an absence.)
