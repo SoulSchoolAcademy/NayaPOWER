@@ -8,7 +8,7 @@
 
 **Category:** Decisions — the morning call
 
-**Status at drafting:** the call has now ENDED (last correction recorded 08:35 MST). Written from the call record as settled in MEMORY.md, not from a word-for-word transcript — his words are quoted verbatim where the record gives them. Sibling Smart Notes from this call (numbers stamped at filing): Nine Notes a Feed — A Set You Can Hold in Your Head; Keep Nothing — When the Build Is a Mess, Rebuild from the Flow; Complete Means the Whole List, Today; Queued Behind a Round That Keeps Going Back Never Gets Reached; Prove Only What Changed.
+**Status at drafting:** the call has now ENDED (last correction recorded 08:35 MST). Written from the call record as settled in MEMORY.md, not from a word-for-word transcript — his words are quoted verbatim where the record gives them. Sibling Smart Notes from this call: SN-4271 — Nine Notes a Feed — A Set You Can Hold in Your Head; SN-4272 — Keep Nothing — When the Build Is a Mess, Rebuild from the Flow; SN-4273 — Complete Means the Whole List, Today; SN-4274 — Queued Behind a Round That Keeps Going Back Never Gets Reached; SN-4275 — Prove Only What Changed.
 
 ## What it is
 
