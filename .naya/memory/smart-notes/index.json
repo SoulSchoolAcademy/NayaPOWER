@@ -69540,6 +69540,38 @@
         "Assistance",
         "Follow-through"
       ]
+    },
+    {
+      "smart_note_id": "SN-4034",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4034-say-it-once-its-saved-forever",
+      "slug": "say-it-once-its-saved-forever",
+      "title": "Say It Once, It's Saved Forever",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4034/IB-SMART-NOTE-20261120-sn4034-say-it-once-its-saved-forever.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4034/IB-SMART-NOTE-20261120-sn4034-say-it-once-its-saved-forever.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4034/IB-SMART-NOTE-20261120-sn4034-say-it-once-its-saved-forever.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4034-say-it-once-its-saved-forever.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:05:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "f9e9ecccaa59d892e23d3c195d26eca676acf0a87466bc75c5f9a810e746de15",
+      "content_hash": "91c04f19d3aa7c01cd6a325abbf2337897300465b75684a7d35daa2eaabc51a5",
+      "one_line": "Say it once. It's saved forever.",
+      "topics": [
+        "Memory",
+        "Citizen",
+        "Smart Vault",
+        "Notes"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69550,5 +69582,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "970772a2a130acac15d29c9ac8cdd67d999fd179c6c79beb85aed07c4085150e"
+  "corpus_manifest_hash": "fb8215f03ad98ff802d4c03f09cc6834a090270852f24fa1945b6d9325c7e12c"
 }
