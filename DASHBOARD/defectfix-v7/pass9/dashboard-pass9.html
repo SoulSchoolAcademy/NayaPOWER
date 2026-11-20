@@ -19785,6 +19785,16 @@ function ldLayoutNodes(){
      flex-centered. W/2, H/2 is the center in both modes. */
   var isHero = document.body.classList.contains('hero-mode');
   var cx = W/2, cy = H/2;
+  /* ORB-RING FIX 2026-11-19 — the ring follows the MEASURED gauge, never an
+     assumed centre. The dial moves after a featured switch (cap on/off,
+     translateY, mount shrink, fit scale), while the old code kept the orbs
+     on W/2,H/2 from the pre-tap layout — so the ring went off-centre,
+     crowded the rim on one side, and stayed there until a reload re-ran
+     the layout. The measurement below (dial rect vs constellation rect,
+     visual px divided by the live scale) is taken on every layout and
+     every orbit tick, so the ring is a pure function of the gauge's live
+     geometry. Falls back to W/2,H/2 when the dial is not measurable. */
+  var _mCX = cx, _mCY = cy, _mS = 0;
   var kids = nodes.children;
   var i;
   var pts = [];
@@ -19813,6 +19823,21 @@ function ldLayoutNodes(){
     if (_gm) _gm.style.width = ''; /* clear any earlier shrink so the measure is true */
     var _gd = _gm ? _gm.querySelector('svg.tn-tacho-dial') : null;
     if (_gd && _gd.clientWidth > 50) { gaugeR = _gd.clientWidth / 2; }
+    /* ORB-RING FIX 2026-11-19 — measure the dial's live centre in the
+       constellation's own (layout) px. getBoundingClientRect is visual px;
+       dividing by the live scale (rect width / clientWidth) puts the centre
+       back in layout px, the space the orbs are positioned in. */
+    try {
+      var _cr0 = constel.getBoundingClientRect();
+      var _dr0 = _gd ? _gd.getBoundingClientRect() : null;
+      if (_dr0 && _gd.clientWidth > 50 && _dr0.width > 50 && _cr0.width > 0) {
+        _mS = _dr0.width / _gd.clientWidth;
+        if (_mS > 0) {
+          _mCX = (_dr0.left + _dr0.width / 2 - _cr0.left) / _mS;
+          _mCY = (_dr0.top + _dr0.height / 2 - _cr0.top) / _mS;
+        }
+      }
+    } catch(_me){}
   } catch(e){}
   var gap = isMobile ? 28 : 48; /* PASS-9 2026-11-10: phones 32 -> 28 — the bigger orbs (nd 140) pushed the side orbs 1.8px past the viewport edges (measured: likes -1.8, notes 391.8 on a 390 viewport). 4px back on the orbit radius pulls both rims inside; the dial-rim clearance is still gap + 6 = 34px, far above the 16px that used to graze. Desktop keeps 48px. PASS-6 2026-11-10: phones 40 -> 32 — the bigger orbs (nd 96) eat orbit room, so the gap gives 8px back to the gauge. Desktop keeps 48px. PASS-3 (ninth): phones get a 40px gap — 26px let the bottom orbs sit on the gauge's lapline text at 390. HERO FIX 2026-11-09 (f): 16px left the
      bottom orbs' mini-mount corners grazing the dial rim at 390/360 (probe8 rim
@@ -19842,7 +19867,9 @@ function ldLayoutNodes(){
   try { var _hf = document.getElementById('os-hero-fit');
     var _m = _hf && _hf.style.transform ? /scale\(([\d.]+)\)/.exec(_hf.style.transform) : null;
     if (_m) _fitS = parseFloat(_m[1]); } catch(_fse){}
-  var _vwNat = (_fitS > 0) ? (window.innerWidth / _fitS) : W;
+  /* ORB-RING FIX 2026-11-19 — the cap reads the live-measured scale first,
+     so a stale fit scale can never shrink the orbit onto the rim. */
+  var _vwNat = (_mS > 0) ? (window.innerWidth / _mS) : ((_fitS > 0) ? (window.innerWidth / _fitS) : W);
   var _cap = _vwNat/2 - nd/2 - (isMobile ? 0 : 10);
   if (_orbNeed > _cap) {
     var _maxGaugeR = Math.max(40, _cap - nd/2 - gap - 6);
@@ -19853,6 +19880,8 @@ function ldLayoutNodes(){
     if (_gd3 && _gd3.clientWidth > 50) { gaugeR = _gd3.clientWidth / 2; }
   }
   var orbR = gaugeR + nd/2 + gap + 6;
+  /* ORB-RING FIX 2026-11-19 — the ring centres on the measured dial. */
+  cx = _mCX; cy = _mCY;
   /* 2026-11-06 — FIX F8: constellation height follows the orbit that actually
      renders, not the uncapped wish. Before, neededH used the UNCAPPED orbR
      (240px on phones) while the positions used the width-capped orbR (139px),
@@ -19959,7 +19988,7 @@ function ldLayoutNodes(){
     for (i = 0; i < kids.length; i++) _orbKeys.push(kids[i].getAttribute('data-node'));
     var _orbAngles = { sales:-90, joins:-50, notes:-10, invs:30, posts:70, shares:110, comments:150, likes:190, saves:230 };
     /* Store live values where the tick can read them fresh */
-    window._orbCX = cx; window._orbCY = cy; window._orbR = rx; window._orbND = nd;
+    window._orbCX = cx; window._orbCY = cy; window._orbR = rx; window._orbND = nd; window._orbGap = gap;
     window._orbKids = kids; window._orbKeys = _orbKeys; window._orbAngles = _orbAngles;
     function _orbTick(){
       /* 2026-11-01 — Shawn: FIXED. Check drawer, not body, for viewpoint. */
@@ -19969,6 +19998,34 @@ function ldLayoutNodes(){
         /* PASS-3 2026-11-09 (19:35Z): the orbit is FROZEN — the orbs no longer spin around for no reason. They hold their laid-out angles, visible and readable, clear of the gauge rim. The tick still runs (lines and dots track), it just never advances the angle. */
         if (_orbA < -360) _orbA += 360;
         var _cx = window._orbCX, _cy = window._orbCY, _r = window._orbR, _nd = window._orbND;
+        /* ORB-RING FIX 2026-11-19 — the tick re-measures the live dial every
+           frame, so the ring tracks the gauge through cap changes, translateY,
+           mount shrinks and fit re-scales; the stored values above are only
+           the seed. The dial's rect (visual px) is turned back into layout px
+           with the live scale, the same conversion ldLayoutNodes uses; when
+           the dial is not measurable the seed stands. The orbit radius is
+           rebuilt from the live gauge radius with the same gap the layout
+           uses, never clamped to a width cap (the fit wrapper, not the orbit,
+           owns fitting the viewport) — so the ring can never be pulled onto
+           the rim. */
+        try {
+          var _tg = document.getElementById('tn-tacho-mount');
+          var _td = _tg ? _tg.querySelector('svg.tn-tacho-dial') : null;
+          var _tc = document.getElementById('os-constellation');
+          if (_td && _tc && _td.clientWidth > 50) {
+            var _tr = _td.getBoundingClientRect(), _cr = _tc.getBoundingClientRect();
+            if (_tr.width > 50 && _cr.width > 0) {
+              var _ts = _tr.width / _td.clientWidth;
+              if (_ts > 0) {
+                _cx = (_tr.left + _tr.width / 2 - _cr.left) / _ts;
+                _cy = (_tr.top + _tr.height / 2 - _cr.top) / _ts;
+                var _tgr = (_tr.width / 2) / _ts;
+                var _tgap = (typeof window._orbGap === 'number') ? window._orbGap : 48;
+                _r = _tgr + _nd / 2 + _tgap + 6;
+              }
+            }
+          }
+        } catch(_tme){}
         var _kids = window._orbKids, _keys = window._orbKeys, _angs = window._orbAngles;
         var _lines = window._orbLines || [], _ge = window._orbGaugeEdge || 100;
         var _orbEdge = _nd/2 + 8; /* 2026-11-05 — line stops short of the rim (see above) */
@@ -20207,6 +20264,14 @@ window.ldLayoutNodes = ldLayoutNodes;
          orb's number (intended). Same call the orbs re-render already makes
          at the end of its pass. */
       if (typeof window.renderBoards === 'function') window.renderBoards();
+      /* ORB-RING FIX 2026-11-19 — the tap path never re-laid out the orbs:
+         the dial can change size/position on a featured switch (cap, mount,
+         band shift) while the orbit tick kept the pre-tap geometry, so the
+         ring stayed off the gauge until a reload. Re-lay out now, and again
+         after the dial settles (60ms, the file's retry delay, as setCap
+         does), and re-fit the hero once the layout has settled. */
+      try{ if (typeof window.ldLayoutNodes === 'function') window.ldLayoutNodes(); }catch(_ol){}
+      setTimeout(function(){ try{ if (typeof window.ldLayoutNodes === 'function') window.ldLayoutNodes(); }catch(_ol2){} try{ if (typeof window._osFitHero === 'function') window._osFitHero(); }catch(_of){} }, 60);
       /* FIX-5c 2026-11-17: re-evaluate the meter on this state change —
          a banner must clear (or never start) now, not on the next 15s tick. */
       try{ if(window.tnTruth) window.tnTruth.tick(); }catch(_){}
@@ -20225,6 +20290,14 @@ window.ldLayoutNodes = ldLayoutNodes;
          compares a stale featured panel against the live score. Same
          renderBoards() call as the set side; same reason. */
       if (typeof window.renderBoards === 'function') window.renderBoards();
+      /* ORB-RING FIX 2026-11-19 — the tap path never re-laid out the orbs:
+         the dial can change size/position on a featured switch (cap, mount,
+         band shift) while the orbit tick kept the pre-tap geometry, so the
+         ring stayed off the gauge until a reload. Re-lay out now, and again
+         after the dial settles (60ms, the file's retry delay, as setCap
+         does), and re-fit the hero once the layout has settled. */
+      try{ if (typeof window.ldLayoutNodes === 'function') window.ldLayoutNodes(); }catch(_ol){}
+      setTimeout(function(){ try{ if (typeof window.ldLayoutNodes === 'function') window.ldLayoutNodes(); }catch(_ol2){} try{ if (typeof window._osFitHero === 'function') window._osFitHero(); }catch(_of){} }, 60);
       /* FIX-5c 2026-11-17: re-evaluate the meter on this state change —
          restoring the score must dismiss a stale banner now, not on the
          next 15s tick. */
@@ -27198,7 +27271,17 @@ window._repaintOrbMinis = function(box){
        toggle bottom 1006 > 999 when the sandbox ledger dropped). */
     var _gs = '';
     try{ var _tc = document.querySelector('#tn-tacho-mount .tn-tacho'); _gs = _tc ? (_tc.getAttribute('data-state') || '') : ''; }catch(_ge){}
-    var _key = _vw + '|d' + _reels + '|b' + barH + '|g' + _gs + '|o' + dialOffNat;
+    /* ORB-RING FIX 2026-11-19 — measure BEFORE the cache key, and key on the
+       hero's natural size. The old key (viewport | reels | bar | gauge state
+       | dial offset) never changed when the hero grew or shrank on a featured
+       switch, so a scale computed for one height was reused for another — the
+       hero stayed shrunk (or oversized) and the ring with it, until a reload.
+       Measuring first (after the reset in this block, so the margin cannot feed
+       back into the measure) and keying on natW|natH makes the scale a pure
+       function of the hero that is actually on the page. */
+    w.style.transform = ''; w.style.height = ''; w.style.marginTop = ''; /* ORB-RING FIX: reset moved above the key */
+    var natW = w.scrollWidth, natH = w.scrollHeight;
+    var _key = _vw + '|d' + _reels + '|b' + barH + '|g' + _gs + '|o' + dialOffNat + '|n' + natW + 'x' + natH;
     if (_fitCache && _fitCache.key === _key && _landed){
       w.style.transform = 'scale(' + _fitCache.s + ')';
       w.style.transformOrigin = 'top center';
@@ -27210,8 +27293,7 @@ window._repaintOrbMinis = function(box){
        otherwise the margin feeds back into r.top and the scale shrinks a
        little on every refit. #os-ld-org has overflow:hidden, so the margin
        does not collapse into the parent. */
-    w.style.transform = ''; w.style.height = ''; w.style.marginTop = '';
-    var natW = w.scrollWidth, natH = w.scrollHeight;
+    /* ORB-RING FIX 2026-11-19 — the reset + measure moved above the cache key (see above); natW/natH are already set. */
     /* PASS-9 2026-11-10 — THE TOGGLE'S WIDTH JOINS natW. The toggle is
        centered (left:50% + translateX(-50%)), so it overflows equally left
        and right — and Chrome's scrollWidth does NOT count overflow to the
