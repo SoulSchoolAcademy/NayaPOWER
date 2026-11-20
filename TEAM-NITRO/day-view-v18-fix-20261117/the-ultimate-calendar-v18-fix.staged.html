@@ -2882,6 +2882,72 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   .wx-bottomleft{bottom:4px!important}
   .wx-bottomleft .wx-btn{height:44px!important;padding:0 14px!important;letter-spacing:.02em!important;white-space:nowrap!important}
 }
+/* ============ FIX15 — calendar day follow-on, 390 readability, two items (2026-11-19) ============ */
+/* (1) WEATHER PILL vs DAY-TEACH — reproduced on the fix-14 bytes by 7-day
+   sweep at 390 in the no-webfont state (the state the fix-14 checker
+   measured: Marcellus fallback, 5-line quotes): Wed 18 the pill covered
+   the teach's closing words by 18px ("words said today travel." hidden)
+   and Sat 21 by 41px ("honestly, look forward with care." hidden), the
+   store line 32/55px below the fold. The quote stays 32px (its sweet
+   spot) — the room is bought from spacing and flow instead, all
+   phone-only: the day bar gives back 31px (its padding/gap/margin in,
+   the headliner's bottom padding in), the wisdom stack tightens (banner
+   padding 20->8, orb 58->50, greet/label/teach/store margins in, quote
+   line-height 1.25->1.15, teach 1.35->1.25), the Weather pill steps down
+   44->36px tall (still one line, still 4px clear), and Keep reading
+   rides below the fold at rest (margin-top 160 on the nav — as on the
+   fix-14 base in both font states — so the pill never slices it; one
+   deck scroll reaches it). The two-ID selector is required: the base
+   rule at line 2637 (#dayScroll #wisdomBanner .sb-nav) beats one ID.
+   Proved by 7-day sweep in BOTH font states (webfonts loaded and
+   blocked): day-teach and store line whole at rest on all seven days,
+   pill one line, 4px clear; worst day Sat, store 7px clear of the pill. */
+/* (2) YOUR WORLDS — reproduced on the fix-14 bytes at 390: a later
+   repeat(6,1fr)!important rule (FIX12, six boards in one row) beat the
+   repeat(3,1fr) rule, squeezing six cells to 39px with 29px icons;
+   every label clipped mid-word and the floating Change cover sat on the
+   row. The row becomes a clean 2x3 at phone width: 2 columns, cells
+   132px, icons 52px, labels and whys whole inside their own cells. (3
+   columns was measured and rejected: at 390 the slide is 306px wide, so
+   3-across cells are 85px and the two long single-word labels
+   ("Messages" ~89px, "Connections" ~111px) overflow their cells and
+   their glyphs touch — "MessageConnections" — and fallback glyphs run
+   wider still. 2-across is the robust shape in both font states.)
+   The slide's title/note chrome tightens so row 1 reads whole at rest;
+   rows 2-3 ride the slide's own scroll, as on wisdom — both rows cannot
+   fit above the fold with the title and note in a 310px window, and the
+   17px floor forbids shrinking the words to force it. Change cover
+   flows below the slide, as on wisdom, so it never sits on the row.
+   Badges untouched: the five fix-14 nulls stand, Personal keeps its
+   real count. */
+@media(max-width:560px){
+  /* HEADER — slack out of the day bar; the deck grows by the same amount on every slide. */
+  .daybar{padding-top:8px!important;padding-bottom:8px!important;gap:6px!important;margin-bottom:6px!important}
+  .official-headliner{padding-bottom:4px!important}
+  /* WISDOM — the stack tightens so the longest quotes read whole at rest. */
+  #wisdomBanner{padding-top:8px!important}
+  #wisdomBanner .avatar-jewel{width:50px!important;height:50px!important;font-size:22px!important}
+  #wisdomBanner .greet-row{margin-bottom:4px!important}
+  #wisdomBanner .wq-label{margin-top:8px!important;margin-bottom:4px!important}
+  #wisdomBanner blockquote{line-height:1.15!important}
+  #wisdomBanner .dayteach{margin-top:4px!important;margin-bottom:4px!important;line-height:1.25!important}
+  #wisdomBanner .wq-store{margin-top:4px!important}
+  /* KEEP READING — below the fold at rest on the wisdom slide (as on the
+     fix-14 base in both font states), reachable by one deck scroll. */
+  #dayScroll #wisdomBanner .sb-nav{margin-top:160px!important}
+  /* WEATHER — 36px tall, still one line, 4px clear. */
+  .wx-bottomleft .wx-btn{height:36px!important}
+  /* WORLDS — a clean 2x3 at phone width: every label whole inside its own cell. */
+  .worlds-slide .world-icons{grid-template-columns:repeat(2,1fr)!important;margin-top:8px!important}
+  .worlds-slide .cat-head{margin-top:8px!important}
+  .worlds-slide .cat-essence{margin-top:8px!important;margin-bottom:8px!important}
+  .worlds-slide .world-cell{padding:8px 6px!important;gap:6px!important}
+  .worlds-slide .world-cell .world-ico{max-width:52px!important}
+  /* COVER — flows below the worlds slide too, as on wisdom. */
+  #dayScroll:has(.worlds-slide.on){overflow-y:auto!important}
+  #dayScroll:has(.worlds-slide.on)>.cover-change{position:static!important;order:10!important;align-self:flex-end!important;flex:none!important;margin:12px 16px 0 auto!important}
+}
+
 </style>
   </head>
   <body>
