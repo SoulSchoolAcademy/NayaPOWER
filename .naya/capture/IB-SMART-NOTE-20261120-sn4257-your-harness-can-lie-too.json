@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4257",
+ "intelligence": {
+  "title": "Your Harness Can Lie Too — Re-Prove the Measurement",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4257-your-harness-can-lie-too",
+  "smart_note_id": "SN-4257",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4257/IB-SMART-NOTE-20261120-sn4257-your-harness-can-lie-too.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The fix-17 checker's own byte-check script printed the wrong shas for the COVER_DAY and WISDOM arrays — its lazy regex grabbed the declaration prefix and stopped at the first `];` — and its `renderMonth found: false` was the same regex missing the loop's exact spacing. The checker did not pass those readings through: it re-extracted both arrays with a bracket-balanced parse, matched the maker's shas exactly, and proved the month grid by render. When your own harness mis-measures, re-prove the measurement — never let a tool's misreading stand as a verdict, for or against.",
+  "human_view": "",
+  "simple_view": "Imagine you measured your toy with a stretchy ruler, sweetheart, and it said the toy was the wrong size! But the ruler was wrong, sweetheart — not the toy! So we measure it again with a good ruler, sweetheart, and then we know for sure!",
+  "grandma_view": "It's like this, love — the checker's little measuring tool read the numbers wrong, dear, because of how it grabbed the text, and it even said a part wasn't there when it was. But the checker didn't just believe the tool, love — it measured again properly, and everything matched. So when your own tool gives you a strange answer, dear, you check the tool before you blame the thing you're measuring.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4257",
+   "title": "Your Harness Can Lie Too — Re-Prove the Measurement",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4257/IB-SMART-NOTE-20261120-sn4257-your-harness-can-lie-too.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4257/IB-SMART-NOTE-20261120-sn4257-your-harness-can-lie-too.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

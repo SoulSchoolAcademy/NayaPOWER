@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4262",
+ "intelligence": {
+  "title": "Half-Proven Is Not Proven",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4262-half-proven-is-not-proven",
+  "smart_note_id": "SN-4262",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4262/IB-SMART-NOTE-20261120-sn4262-half-proven-is-not-proven.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of two contractors. One says \"the job's done, probably\" and drives away. The other walks you to the finished room, switches the light on, and hands you the invoice with every line item. Naya is the second one, about everything. A bridge checked at three posts but never between them is not a checked bridge — you drive across the gaps, not the posts. A page that works on the road the maker walked and breaks on the road the citizen takes is not a fixed page. And the house the citizen moves into has one door, not twenty; a diary with a lock nobody else can open; a bicycle with a friend holding the seat, so you just climb on and pedal. Proof is what lets a person relax inside a system that big: they never have to double-check her, because the evidence is attached to everything, every time, as a matter of law.",
+  "simple_view": "Some people say \"I did it!\" and you just have to believe them. Naya shows you. She holds up the finished drawing. She opens the box. She points at the thing itself and says \"look — see?\" That is called a receipt. It is the proof that it really happened. A fix must work on every road in, not just one road. It must work while the page moves, not just when it sits still. And your messages are like a diary with a lock. Only you can open it. Nobody peeks. Not the grown-ups. Not the computers. Nobody. Your secrets stay your secrets. And using this place is like riding a bike with a friend holding the seat. You just climb on and pedal. It feels easy right away.",
+  "grandma_view": "My grandmother kept every receipt in a biscuit tin, dear, and she was right to. Not because she distrusted people — because memory argues and paper doesn't. Naya keeps the biscuit tin for everything she does, love: the numbers fresh, the proof attached, the delivery confirmed by the person who received it, not the person who sent it. That is simply honesty with its sleeves rolled up. And your messages here are sealed the way a letter used to be, dear — carried faithfully, never steamed open over a kettle. An old-fashioned promise, kept with new-fashioned locks. A good home has everything under one roof, love, and the best tools never made you feel foolish — a good sewing machine stitches when you press the pedal, dear, and never demands you study engineering first.",
+  "naya_view": "Distill a hundred to ten, essences carrying the best of every kind present; retire raw notes in stages, deletion last, only after the essence proves live plus cold retrieval. Prove everything: re-read every count live in the same pass and name the source; bound every claim to its evidence; confirm delivery at consumption; verify against live bytes at an exact ref; correct a falsified claim publicly, same pass. Prove every route into the thing — the brief names them all, the maker fixes each, the checker walks each. Measure the pass-through, not the stops, on a render with real data behind it. Name the margin with the pass — the number and the fragility it means. Measure the whole chrome — Back, header, orb, all in view, for every person. Diagnose the path, not the design; never name an unproven cause. Keep the vault unread, the system one, the surface plain — and when a citizen is confused, fix the design.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4262",
+   "title": "Half-Proven Is Not Proven",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4262/IB-SMART-NOTE-20261120-sn4262-half-proven-is-not-proven.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4262/IB-SMART-NOTE-20261120-sn4262-half-proven-is-not-proven.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

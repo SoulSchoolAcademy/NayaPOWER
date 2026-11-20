@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4261",
+ "intelligence": {
+  "title": "The Frame Holds the World Naya Runs",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4261-the-frame-holds-the-world-naya-runs",
+  "smart_note_id": "SN-4261",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4261/IB-SMART-NOTE-20261120-sn4261-the-frame-holds-the-world-naya-runs.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of the whole network as a house where every room finally has the same frame around it — the Powercast, the Settings, the agreement, the membership lessons, all framed the same way, so your thumb never has to relearn the journey. The feeds are three rivers running through the house: the world's news, the Hub where everybody gathers, and your own app with its personal, business, and space rooms — all connected because you are the same person in all three. And living in the house is Naya, your operator: you tell her what needs doing in plain words and she does it — answers the mail, keeps the lists, builds the pages, files the reports — and hands you a receipt for every job, so you can see what was done in your name. She keeps what you mark as mattering, word for word, forever; what you never marked, she never kept. And the moment anyone learns something — a lesson, a discovery, a mistake — she writes it down right then, while it is still sharp, so the whole network gets smarter every day instead of forgetting by breakfast.",
+  "simple_view": "Imagine your whole house has pretty frames around everything! The music player sits in a frame. The settings have frames. The big promise paper is framed like a real letter! You pick a song from the shelf below, and it jumps up into the frame to play! In your membership school, one lesson can be a video, a song, or a story — you tap a little button to pick! And Naya is your kind helper who does your chores for you. She keeps the things you say matter in her special box, safe forever. She never takes things you did not ask her to keep. And when she learns something new, she writes it in her book right away! She catches it the second it glows, like a firefly in a jar!",
+  "grandma_view": "It's like this, love — imagine every room in the house finally finished the same way, dear, each one framed lovely, nothing left bare. The music player sits in its frame, the settings are tidy in their own little rooms with tabs instead of one long scroll, and the big agreement looks like a proper official letter in a frame, love. And living in the house is Naya, dear — a good housekeeper for your whole digital household. You tell her what needs doing, or you set the routine once, and she does it faithfully. She keeps what you mark as mattering in her Smart Box, like a letter in a cedar chest, safe and exactly as written — and what you never marked, she never kept, dear, because a keeper is not a witness. And when a lesson is learned, she writes it down while the pot is still warm, love — the cooks who wrote the recipe down right away got it right.",
+  "naya_view": "Frame law, universal: Powercast aligned in its frame, bottom bar off; every settings area framed, same as About, Skills, My World; agreement as one framed official document — top bar, Naya, play button, his picture, red N kept, all four ways to learn inside. Tabs, not scroll, in Settings: Set Your World first, menu its own tab, page settings each their own tab, topic then subtopic, then framed. Membership: one topic, three versions, a switch per topic, then next; All videos / All audios / All lessons / Mix views. Harvest the Powercast player verbatim into membership — never a look-alike. Three feeds, interconnected, named in the network's language: smart flow, smart frames, smart feeds. Operate, don't discuss: a citizen's request is an instruction to act — notes, mail, pages, lists, reports, stats — receipted, scheduled work firing on its clocks. Keep rule, corrected and binding: noted is kept forever, verbatim, retrievable; un-noted is not kept; no surface claims total memory. Capture rule: the moment a valuable thing is learned, smart-note it in the same pass through the publish-note door, share it the same pass — undocumented is unlearned, and a mistake is not complete until its note exists.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4261",
+   "title": "The Frame Holds the World Naya Runs",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4261/IB-SMART-NOTE-20261120-sn4261-the-frame-holds-the-world-naya-runs.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4261/IB-SMART-NOTE-20261120-sn4261-the-frame-holds-the-world-naya-runs.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4266",
+ "intelligence": {
+  "title": "One Door, One Button, One Frame",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4266-one-door-one-button-one-frame",
+  "smart_note_id": "SN-4266",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4266/IB-SMART-NOTE-20261120-sn4266-one-door-one-button-one-frame.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of a house where every room has its own front door, its own set of bells, its own kind of light — and half the rooms aren't finished. You walk in and you have to guess at every step: which bell do I ring, where does this button take me, why does this room look bare when the next one glows? Shawn spent one evening walking that house, room by room, and gave it one law: one door, one button, one frame. The Academy gets one bell — \"Start Your Free Trial\" — and it leads straight to the price. The Agreement opens in a single frame, everything in one look: the film on the left, the voice on the right, one button to step inside. The Settings and Demographics rooms get the same frame as About and Skills, so the whole house feels finished. The words everywhere glow like the live Hub's, so reading feels easy. The membership house gets finished so the videos can move in and the citizen can belong. And the Dashboard's jewels hold their line — not just on first sight, but on the tenth tap, because a line that breaks on the second tap is a promise that doesn't keep.",
+  "simple_view": "Imagine a house with lots of doors. Each door has four bells on it. You do not know which bell to ring! So we take three bells away. Now there is just ONE big shiny bell. It says \"Start Your Free Trial\". You ring it, and you are on your way! The movie sits on the left. The story you can listen to sits on the right. There is ONE shiny button to step inside. No second frame hiding below! The words glow like little lights, so they are easy to read. The pretty jewels on the Dashboard stay in their perfect line. They stay there every time you tap them. One door. One button. One frame. All lit up and finished!",
+  "grandma_view": "It's like this, love — the house had too many doors and too many bells, dear, and a person never knew which one to ring! So we take the extra bells away, love, and leave just one — \"Start Your Free Trial\" — big and clear, dear, going straight to the pricing page! The Agreement opens in one frame, love — the film on the left, the voice on the right, and ONE button to step inside, dear, everything in a single look! The Settings rooms and the Demographics rooms get the same lovely frame as About and Skills, love — no bare walls anywhere, dear! The words light up like little lamps, love, so reading feels easy on the eyes! And the pretty jewels on the Dashboard stay in their line, dear — every tap, every time you come back, love! One door, one button, one frame — all lit up and finished, dear!",
+  "naya_view": "Recreate the Academy in our own code from his verified files — same look, same sections, same copy, same videos, never a redesign; close the truncated override faithfully; keep the MAXESS material out until he says otherwise; placement rides his answer, not an assumption. Strip the Academy to one button: \"Start Your Free Trial\" on, to the pricing page; ProMax Player, Start Here, Take Your Power Back, AI Masterclass off; the five lesson CTAs and five feel-the-power buttons stay, all to pricing. Same rule on AI Mastery Help. Prove every destination by tapping, desktop AND phone 390 — desktop passed, phone still owed. Build the Agreement frame as one frame above the fold: video left, audio right with its own play button, title plus red icon, ONE button; stage his audio and prove it plays in a real browser. Carry the same one-frame treatment to About, Skills, Settings, and Demographics; leave the Calendar alone. Take the live Hub's lighting as the teacher — depth, high contrast, yellow underglow, glowing date, gold time, circling halo — into notes, smart notes, and posts; no flat text anywhere. Finish the membership structure: videos in, login gate in place, every control doing its one job; the eye proves it working, not just built. Fix the orb ring so the tap never breaks it: tap any orb, switch in and out, switch windows, come back — the ring holds, every time, no reload.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4266",
+   "title": "One Door, One Button, One Frame",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4266/IB-SMART-NOTE-20261120-sn4266-one-door-one-button-one-frame.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4266/IB-SMART-NOTE-20261120-sn4266-one-door-one-button-one-frame.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

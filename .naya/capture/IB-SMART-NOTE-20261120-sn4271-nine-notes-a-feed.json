@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4271",
+ "intelligence": {
+  "title": "Nine Notes a Feed — A Set You Can Hold in Your Head",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4271-nine-notes-a-feed",
+  "smart_note_id": "SN-4271",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4271/IB-SMART-NOTE-20261120-sn4271-nine-notes-a-feed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Nine smart notes per feed — 9 Personal, 9 Business, 9 World. Nine is a set you can hold in your head: one screen, no scroll, no filler. Each note earns its place by being specific, never a vague category; each one teaches something you can act on; and together the nine tell the whole story of that feed, in order. He writes the text, Naya makes them into smart notes — and Resolve writes the 27 (reassigned from Tree to Resolve, 08:31 MST); Nitro works the interfaces and does not duplicate.",
+  "human_view": "",
+  "simple_view": "Imagine nine little treasures in a row, sweetheart — just nine, so you can count them on your fingers and hold them all in your head at once! Each one is special, sweetheart, each one teaches you something you can really do, and together they tell the whole story, beginning to end.",
+  "grandma_view": "It's like this, love — nine is just right, dear. Not a hundred you can't remember, love, and not three that leave the story half told. Nine little notes you can hold in your head, dear, each one clear as a bell, each one teaching you something real, and all nine together telling the whole story in order. That's a set worth keeping, love.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4271",
+   "title": "Nine Notes a Feed — A Set You Can Hold in Your Head",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4271/IB-SMART-NOTE-20261120-sn4271-nine-notes-a-feed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4271/IB-SMART-NOTE-20261120-sn4271-nine-notes-a-feed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

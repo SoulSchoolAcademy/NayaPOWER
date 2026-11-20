@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4260",
+ "intelligence": {
+  "title": "The Frame Is the Viewport, and the Eye Is the Pass",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4260-the-frame-is-the-viewport-and-the-eye-is-the-pass",
+  "smart_note_id": "SN-4260",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4260/IB-SMART-NOTE-20261120-sn4260-the-frame-is-the-viewport-and-the-eye-is-the-pass.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of it like a theatre. The frame is the stage, and it never moves — every scene comes onto it, one at a time, into your view. You never walk down a long hallway looking for the next room; the next room comes to you. The agreement arrives frame by frame, the membership lessons arrive frame by frame, your mail and your messages arrive frame by frame. The only things that move are the feeds — the Hub feed, your Personal feed — because a feed is a river, and a river is meant to flow. Everything else holds still so you can take it in whole. And nothing is called done because the paperwork says so: the calendar said the wrong day, so it went back, even though its bytes were clean. The front door worked in rehearsal, so the rehearsal is recorded as a rehearsal — the real door changes only when Shawn says go. Every page is asked the same question, every time: is this the best feature for this page, and could it be ten times more useful? And when he looks at something and says it is looking good, that means it is looking good — it is not a request to rebuild it.",
+  "simple_view": "Imagine the whole screen is a stage! Every page comes onto the stage, one frame at a time! You never have to scroll down or scroll sideways! The next frame just comes into your view! Some things are frames — they hold still so you can look at them! Some things are feeds — they flow like a river so you can stay up to date! The calendar said the wrong day, so it goes back to be fixed! The front door worked in practice, so the real door waits for Shawn to say go! And every page gets one big question: is this the best thing for this page, and can we make it ten times better?",
+  "grandma_view": "It's like this, love — imagine every page is a lovely framed picture that comes to you, dear, one at a time! You never have to scroll down or across, love — the next frame just comes into your view, all neat and tidy! Some things are frames, dear, and they hold still so you can take them in! Some things are feeds, love, and they flow along like a river so you always know what's new! The calendar said the wrong day, dear, so back it goes to be fixed — looking at it is the real test, not the paperwork! And the front door worked beautifully in practice, love, but the real door waits until Shawn says go! Every page gets asked the same question, dear: is this the best thing for this page, and can it be ten times more useful?",
+  "naya_view": "The frame is the viewport — build and judge every page inside it, desktop and 9×16 mobile both. No scrolling down or across anywhere except the feeds: frame by frame, each step its own frame coming into the viewpoint. Frames hold, feeds flow — frame About, Skills, My World, the profile card, membership, mail, messenger, the agreement, all with My World's framed fill; never frame the Hub feed or the Personal/Business/World feeds. Mail and Messenger come inside the frame; the Skills tab on Personal is slideshow, About is unfold, both in this format. On Powercast, the click on any broadcast brings the top player into the frame. On every page walk, run the 10× review: is that the best feature for that page, and how can it be ten times more useful — usefulness first, prettiness second. Never certify a surface from its bytes: walk the render at real widths and fail the page on any single fatal defect — a wrong date fails alone. Treat staging proof and live proof as different evidence classes; live changes only on his tap. When he says a thing is looking good, record the confirmation and keep the round on its scope — confirmation is not new scope, and a confirmed piece stays as it is.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4260",
+   "title": "The Frame Is the Viewport, and the Eye Is the Pass",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4260/IB-SMART-NOTE-20261120-sn4260-the-frame-is-the-viewport-and-the-eye-is-the-pass.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4260/IB-SMART-NOTE-20261120-sn4260-the-frame-is-the-viewport-and-the-eye-is-the-pass.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

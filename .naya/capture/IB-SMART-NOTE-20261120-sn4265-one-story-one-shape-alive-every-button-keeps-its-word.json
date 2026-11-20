@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4265",
+ "intelligence": {
+  "title": "One Story, One Shape, Alive — and Every Button Keeps Its Word",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4265-one-story-one-shape-alive-every-button-keeps-its-word",
+  "smart_note_id": "SN-4265",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4265/IB-SMART-NOTE-20261120-sn4265-one-story-one-shape-alive-every-button-keeps-its-word.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of it as a house with one story told at the front door. Every room inside must tell that same story — the private vault, notes that connect and grow, a little shop of your own, friends helping you build, privacy by default, your data yours to keep or take. Every note in the house is written the same way: six boards, each lighting up in its own colour, the top one white and holding the whole thing in a few short words. The promise everyone makes when they join is ten little boards, pictures and words taking turns, short enough to hold in your head. The page itself is alive — the date glows green and purple and white, the orb has its ring flying round it, a lit star is unmistakably lit. And nothing vanishes: what is new stays where you put it, All really shows all, and when you tap to message Sophia, Sophia's own conversation opens, with her world beside it. Every button is a door, and somebody walks through every one of them to make sure it opens onto the right room.",
+  "simple_view": "Imagine a big house with one story! You hear it at the front door, and every room tells the SAME story! Every note is a treasure box with six little drawers! The top drawer is white and holds the whole thing in a few tiny words! Then a purple drawer, a blue drawer, a green drawer, and a gold drawer! Each one lights up in its own colour! The big promise is just ten little picture boards! The date on the wall GLOWS, and the little orb has a sparkly ring flying round and round! When you tap a star, it shines BIG and bright! When you tap your friend, her very own room opens! And every button takes you to the right place!",
+  "grandma_view": "It's like this, love — one story at the front door, dear, and the same story in every room you walk into, love. Every note is a little chest of six drawers, each lighting up in its own colour — white on top, holding the whole thing in just a few words, then purple, then deep blue, then green, then gold, dear. The promise we all share is ten little boards, love — a picture, then a few plain words, then a picture again — short enough to hold in your head. The date glows like it's really there, dear, and the little orb has its ring flying round it. A star that's lit shines so you can see it from across the room, love, and when you tap to message a friend, her own conversation opens, with her world right beside it. And every button is a little door, dear — somebody walks through each one to make sure it opens onto the right room, not a stale old one, not a dead end.",
+  "naya_view": "Six boards, this order, these lights: Nutshell (white, short by rule) → Child (purple) → Grandma (indigo blue) → What It Means (emerald green) → How It Connects (colour unruled, do not guess) → What's In It For Them (gold). No human-note board, no magenta child board. Agreement: ten boards, 3–5 sentences, picture and text alternating, pictures harvested from the visual deck, voice of a friend; full word-for-word text stays in the public governance library. Restore the live date/time border (green, purple, white, active input) and the orb's circling flow from the initial orbs — harvest, never redesign. Messenger: DM opens a real conversation per person — messages, a type-in box, their feed and matched content beside it; no tab opens empty. Organizers: New shows what's new, All shows all; SN-4201/SN-4202 must stay visible at the top. Stars: lit must read at a glance — contrast, size, objectnality, flow — judged by eye. Comment panel: input at the very top, small text out, five keywords underneath (Ask a question · Build on this · Contribute intelligence · Report an outcome · Add evidence), white at rest, purple on hover, SHARE in the corner, COMMENT in the middle. Agreement page: ONE frame above the fold — VIDEO left, AUDIO right with a play button, title carrying the Naya RED button/icon, ONE button into the presentation; audio from NayaNET_Welcome.m4a, never the old file; video https://www.youtube.com/watch?v=a06pPpxRil4. Introduction: zero test-mode notes about ambassador payouts, swept across every live copy. Every eye walk and every checker clicks every button through. Personal is the unit that clones: the same story into Business and Space.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4265",
+   "title": "One Story, One Shape, Alive — and Every Button Keeps Its Word",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4265/IB-SMART-NOTE-20261120-sn4265-one-story-one-shape-alive-every-button-keeps-its-word.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4265/IB-SMART-NOTE-20261120-sn4265-one-story-one-shape-alive-every-button-keeps-its-word.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

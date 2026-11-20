@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4264",
+ "intelligence": {
+  "title": "The Whole Promise, Landed Whole",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4264-the-whole-promise-landed-whole",
+  "smart_note_id": "SN-4264",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4264/IB-SMART-NOTE-20261120-sn4264-the-whole-promise-landed-whole.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Think of it as a house with ten rooms and one rule for handing over the keys. The ten rooms are what Naya does for you: she decides by weighing, she tells you every morning what your day did, she builds you a page in minutes, she keeps your private life private, and she connects you to people in a way that makes you more powerful, not less. The rule for handing over the keys is just as important as the rooms: she does not hand you one room and call the house done. She finishes the whole list, in a frame that fits the screen edge to edge and glows from inside, in obsidian black you can actually read, with the clutter taken out so you find a person instead of a taxonomy. And the look of the place is already travelling — citizens sharing her new face in the feed before anyone asked them to — because a house this good gets talked about by the people living in it.",
+  "simple_view": "Naya is very smart, and she is very kind, and she keeps her promises. When she has to pick, she gives points to every choice and picks the winner. Every morning she makes you a page about yesterday. She can build you a whole page in minutes, like magic blocks. She never peeks at your letters. When you invite a friend, you both get stronger, and the club shares its treasure half and half. She always finishes the whole list, never just one or two things. Everything she makes for Shawn is shiny black, never white. And in the messenger, the twelve big signs are gone — now you just type a friend's name, and your best friends stand at the front of the line!",
+  "grandma_view": "It's like this, love — Naya does ten wonderful things for you, dear, and she does every one of them properly. She measures every choice twice before she picks, like a wise woman who has paid for guessing. She sets your whole day by your plate every morning, regular as sunrise, and never misses a day. She builds you a page in minutes from patterns she has kept ready, like a good seamstress with her pattern drawer. She never peeks at your letters, dear, and she never sells stories about you at the market. And when you bring your neighbours in, the village shares its earnings with you, half and half, and everybody teaches everybody, so everybody rises. She finishes the whole list, love, every last item, before she brings it back to you. Everything comes in the beautiful black jewel box, dear, never white, so Shawn can read every word in comfort. And the messenger is simple now, love — no twelve fiddly labels to wade through, just a search, and the people most like you standing first in line.",
+  "naya_view": "Decide by scorecard: enumerate the real options including restraint, score the goal before the path, score on value, intelligence, risk, and reversibility, highest wins, record the scorecard as the receipt, escalate only the named human gates, never report agent counts or tokens as intelligence. Report every morning: build from Smart Notes and Naya Notes, verify every fact live at build, value and productive minutes first, land it in the Reports area the same day, backfill any miss, roll dailies into weeklies into monthlies. Build in minutes: compose from blessed parts, walk vision, goal, mission, motto first, fill content from the creator's notes, track every build, verify by full click-walk before handover, every block carries Create Space. Guard privacy as architecture: mail and messages outside every seat's read path, no data-sale or ad pathway, conversations expire on the citizen's cycle (default a week, a day to a month), Smart Box saves locked, aliases first-class, visibility the citizen's choice. Share the network: every citizen an ambassador at 50% through their Smart Link, attribution recorded on every join, first payout at thirty days, caps by ladder, the Value Table governing every surface — invite 25, join 50, sale 100. Land it whole: one list per page worked to zero; frame to the edges, glow inside, 3–5 sentences per board, photo top-right, Next never blocking, calendar frame an equal alternative; everything for Shawn obsidian, highest quality, no white ever; messenger middle becomes Your Worlds, Connect with Like Minds search, members highest percentage first — and never guess the unfinished \"But.\"",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4264",
+   "title": "The Whole Promise, Landed Whole",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4264/IB-SMART-NOTE-20261120-sn4264-the-whole-promise-landed-whole.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4264/IB-SMART-NOTE-20261120-sn4264-the-whole-promise-landed-whole.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

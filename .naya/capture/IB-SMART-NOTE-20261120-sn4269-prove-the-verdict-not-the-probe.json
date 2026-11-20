@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4269",
+ "intelligence": {
+  "title": "Prove the Verdict, Not the Probe",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4269-prove-the-verdict-not-the-probe",
+  "smart_note_id": "SN-4269",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4269/IB-SMART-NOTE-20261120-sn4269-prove-the-verdict-not-the-probe.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "Imagine you are the judge in a contest, and your ruler is stretchy, your stopwatch runs fast, and you are looking through a tiny hole in the fence. You would call good work broken and broken work good — not because the work was bad, but because your tools lied to you. That is what happened six times in one morning. The page was innocent in every case: the link was sent and then stripped by the next page, the button was never wired to the room it promised, the test asked the door to open the wrong way, the footer was just one second slow, the measuring script read the wrong numbers, and the little window hid the change below the header. So the law is simple: never trust your first reading. Trace the whole path, tap the real button, test the direction the page promises, wait for the thing itself, measure twice with a good ruler, and look at the whole page — then write the verdict.",
+  "simple_view": "Imagine you checked your toy with a stretchy ruler, and it said the toy was the wrong size! But the ruler was wrong, not the toy! Now imagine you knocked on a door and nobody came in three seconds, so you said nobody was home! But they were just walking slowly, and they opened it one second later! And imagine you peeked through a tiny hole and said the toy was not there, but it was just below the hole! So we check the whole path, we tap the real button, we wait for the real thing, and we measure twice with a good ruler! Then we know for sure!",
+  "grandma_view": "It's like this, love — six times in one morning, the checker almost blamed the page, dear, and six times the page was innocent, love! The link was sent and then stripped by the next page, dear. The button flipped a switch for a room that was never built, love. The test pushed a door that only opens outward, dear. The little footer was just one second slow, love. The measuring tool read the numbers wrong, dear. And the little window only showed the top of the page, love, so it missed the change below! So we never believe the first look, dear — we trace the whole path, we tap the real button, we wait for the thing itself, we measure twice, and we look at the whole page, love! Then the verdict is fair!",
+  "naya_view": "The verdict is the page, never the probe. Trace the byte path sender → transport → receiver before blaming anyone — a missing hash after load is evidence about the receiver's boot. Prove every entry point by the real action: URL, menu, button, keyboard are separate proofs, and 6/6 routes is not 6/6 taps. Name the direction the page promises before the test is written — open or yield, enter or leave — and test that direction. Wait for the selector, never for a fixed sleep; a timeout is evidence about your probe first and the page second. When your own harness mis-measures, re-prove with a stricter parse or by render — a \"not found\" from a regex is a claim about the regex. Judge a tap by the full slide text and the target's `hidden` state, and measure a control's own rects before believing a screenshot. Report every trap and re-proof in one line, so the next reader trusts the pass and learns the trap. And when your own attempt misses, say so — a miss in the probe is never upgraded to a page fail and never quietly counted as a pass.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4269",
+   "title": "Prove the Verdict, Not the Probe",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4269/IB-SMART-NOTE-20261120-sn4269-prove-the-verdict-not-the-probe.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4269/IB-SMART-NOTE-20261120-sn4269-prove-the-verdict-not-the-probe.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

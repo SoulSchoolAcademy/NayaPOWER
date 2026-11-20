@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4272",
+ "intelligence": {
+  "title": "Keep Nothing — When the Build Is a Mess, Rebuild from the Flow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4272-keep-nothing-rebuild-from-the-flow",
+  "smart_note_id": "SN-4272",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4272/IB-SMART-NOTE-20261120-sn4272-keep-nothing-rebuild-from-the-flow.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The current booking is \"complete mess, not useful at all\" — so keep NOTHING of it. Not a patch, not a salvage, not the good bits carried over: a rebuild, as the ultimate booking app inside the calendar page, built from the citizen's own steps — kind → day → real open time → how → name + one line → one Book button → confirmation + Smart Mail + reminder → one-tap change/cancel, both calendars, no double-booking. Patching a mess preserves the mess; the rebuild starts from the flow, never from the old code.",
+  "human_view": "",
+  "simple_view": "Imagine your toy box is all tangled up, sweetheart — so tangled you can't find anything or play with any of it! You don't just wiggle one toy, sweetheart — you tip the whole box out and build it fresh, step by step, one, two, three, so every toy has its place and you can play right away!",
+  "grandma_view": "It's like this, love — when a thing is a complete mess, dear, you don't keep polishing the mess and hoping it turns tidy. You set it aside, love, and you build it fresh from the steps a person actually takes — what kind, what day, what time, how, your name, one little line, one button, and done, dear. Simple steps, in order, and nothing extra standing in the way.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4272",
+   "title": "Keep Nothing — When the Build Is a Mess, Rebuild from the Flow",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4272/IB-SMART-NOTE-20261120-sn4272-keep-nothing-rebuild-from-the-flow.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4272/IB-SMART-NOTE-20261120-sn4272-keep-nothing-rebuild-from-the-flow.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
