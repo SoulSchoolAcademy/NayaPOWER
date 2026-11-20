@@ -123,10 +123,11 @@ Applied laws: §1 real objects (the fix touches no object anatomy — the "More 
 
 ### Filing addendum (filled by the filer run; the filed report copy is amended in a second commit if these values differ from the draft)
 
-- HTML commit: _TBD — filer run_
-- Branch tip after filing: _TBD — filer run_
-- Parent: _`f63126a2fa78ca3639d95d74340be22b3b970f95` (expected)_
-- Staged fetch result: _TBD — filer run (expected: truncated while the flake persists; re-verify when it clears)_
+- HTML commit: `8dd64cd829dae225c9681c7817b8fb70f85c92b9` (blob `7c519f1ced8ecc036cb19d176145e4b03e5e56b7`, 430,643 B, sha256 `c4db42a1d1c13b218fa36626ac0dbf28cf257d305d73210d4378867d114ed40e` — verified by blob-API read-back, size-ok + sha-ok)
+- Brief commit: `11c79982865aa96ea2432d180f3b82ce72de91f0`
+- Report commit (this filing): `01b84c115e2403ec489f6ad00451ba923ff026b2` — branch tip after the first filing run; parent `11c79982865aa96ea2432d180f3b82ce72de91f0` (brief commit); HTML commit's parent is the base tip `f63126a2fa78ca3639d95d74340be22b3b970f95`
+- Staged fetch result (filer run, 2026-11-20 ~11:20 MST): **TRUNCATED — `IncompleteRead(196608 bytes read)`**, never the full 430,643 bytes. Flake, not file: the filed blob verifies fine on the blob API. **Re-verify the staged bytes when the flake clears; no browser leg may run until the staged link serves whole bytes.**
+- This amended report is re-filed as its own commit on the same branch (report-only update; the HTML blob is unchanged).
 
 ---
 
