@@ -1,0 +1,155 @@
+{
+  "width": 390,
+  "cases": [
+    {
+      "case": "post",
+      "frag": "#home/post",
+      "expect": "post",
+      "ok": true,
+      "samples": [
+        {
+          "t+2s": {
+            "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439",
+            "hash": "",
+            "creatorHidden": false,
+            "creatorDisplay": "flex",
+            "fcOpen": true,
+            "osNoteMode": "post",
+            "activeTab": "post",
+            "titleText": "Make a post",
+            "hint": "Make a post \u2014 your words, straight up. No auto-format, no distillation \u2014 what you write is what lands on the feed.",
+            "postBtn": "\u270e Post it"
+          }
+        },
+        {
+          "t+5s": {
+            "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439",
+            "hash": "",
+            "creatorHidden": false,
+            "creatorDisplay": "flex",
+            "fcOpen": true,
+            "osNoteMode": "post",
+            "activeTab": "post",
+            "titleText": "Make a post",
+            "hint": "Make a post \u2014 your words, straight up. No auto-format, no distillation \u2014 what you write is what lands on the feed.",
+            "postBtn": "\u270e Post it"
+          }
+        },
+        {
+          "t+8s": {
+            "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439",
+            "hash": "",
+            "creatorHidden": false,
+            "creatorDisplay": "flex",
+            "fcOpen": true,
+            "osNoteMode": "post",
+            "activeTab": "post",
+            "titleText": "Make a post",
+            "hint": "Make a post \u2014 your words, straight up. No auto-format, no distillation \u2014 what you write is what lands on the feed.",
+            "postBtn": "\u270e Post it"
+          }
+        }
+      ]
+    },
+    {
+      "case": "naya",
+      "frag": "#home/naya",
+      "expect": "naya",
+      "ok": true,
+      "samples": [
+        {
+          "t+2s": {
+            "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439",
+            "hash": "",
+            "creatorHidden": false,
+            "creatorDisplay": "flex",
+            "fcOpen": true,
+            "osNoteMode": "naya",
+            "activeTab": "naya",
+            "titleText": "Naya note",
+            "hint": "Naya note \u2014 Naya formats your words beautifully. Write it, dictate it with the microphone \u2014 Naya writing it for you is coming soon.",
+            "postBtn": "\u2726 Post my Naya note"
+          }
+        },
+        {
+          "t+5s": {
+            "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439",
+            "hash": "",
+            "creatorHidden": false,
+            "creatorDisplay": "flex",
+            "fcOpen": true,
+            "osNoteMode": "naya",
+            "activeTab": "naya",
+            "titleText": "Naya note",
+            "hint": "Naya note \u2014 Naya formats your words beautifully. Write it, dictate it with the microphone \u2014 Naya writing it for you is coming soon.",
+            "postBtn": "\u2726 Post my Naya note"
+          }
+        },
+        {
+          "t+8s": {
+            "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439",
+            "hash": "",
+            "creatorHidden": false,
+            "creatorDisplay": "flex",
+            "fcOpen": true,
+            "osNoteMode": "naya",
+            "activeTab": "naya",
+            "titleText": "Naya note",
+            "hint": "Naya note \u2014 Naya formats your words beautifully. Write it, dictate it with the microphone \u2014 Naya writing it for you is coming soon.",
+            "postBtn": "\u2726 Post my Naya note"
+          }
+        }
+      ]
+    },
+    {
+      "case": "control-no-hash",
+      "frag": "",
+      "expect": null,
+      "ok": true,
+      "samples": [
+        {
+          "t+2s": {
+            "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439",
+            "hash": "",
+            "creatorHidden": true,
+            "creatorDisplay": "none",
+            "fcOpen": false,
+            "osNoteMode": "naya",
+            "activeTab": "naya",
+            "titleText": "Naya note",
+            "hint": "Naya note \u2014 Naya formats your words beautifully. Write it, dictate it with the microphone \u2014 Naya writing it for you is coming soon.",
+            "postBtn": "\u2726 Post my Naya note"
+          }
+        },
+        {
+          "t+5s": {
+            "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439",
+            "hash": "",
+            "creatorHidden": true,
+            "creatorDisplay": "none",
+            "fcOpen": false,
+            "osNoteMode": "naya",
+            "activeTab": "naya",
+            "titleText": "Naya note",
+            "hint": "Naya note \u2014 Naya formats your words beautifully. Write it, dictate it with the microphone \u2014 Naya writing it for you is coming soon.",
+            "postBtn": "\u2726 Post my Naya note"
+          }
+        },
+        {
+          "t+8s": {
+            "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439",
+            "hash": "",
+            "creatorHidden": true,
+            "creatorDisplay": "none",
+            "fcOpen": false,
+            "osNoteMode": "naya",
+            "activeTab": "naya",
+            "titleText": "Naya note",
+            "hint": "Naya note \u2014 Naya formats your words beautifully. Write it, dictate it with the microphone \u2014 Naya writing it for you is coming soon.",
+            "postBtn": "\u2726 Post my Naya note"
+          }
+        }
+      ]
+    }
+  ]
+}

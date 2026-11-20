@@ -1,0 +1,20 @@
+{
+  "width": 1920,
+  "steps": [
+    {
+      "name": "CONNECT > Message -> Smart Messenger (menu by pointer, item by dispatch)",
+      "ok": false,
+      "detail": "menu={'menuHidden': False, 'items': 4, 'bound': False} panel="
+    },
+    {
+      "name": "Shawn orb -> Profile 97% (pointer)",
+      "ok": true,
+      "detail": "Shawn \u2014 Profile | \u00d7 | S | Shawn | 97% | Welcome to my world \u2014 post, message, make yourself at home. | i | \u270e\u2709\u266a\u25b6"
+    },
+    {
+      "name": "naya-guide.jpg avatar (Ask Naya room)",
+      "ok": false,
+      "detail": "guide=[{\"src\": \"https://nayanet.app/icons/naya-guide.jpg\", \"nw\": 0, \"complete\": true}] all-imgs=2 url=https://naya-proof-host.nayapower.workers.dev/?file=HUB%2Fapp%2Findex.html&ref=hub%2Fpersonal-sidebar-followup19-2026111"
+    }
+  ]
+}

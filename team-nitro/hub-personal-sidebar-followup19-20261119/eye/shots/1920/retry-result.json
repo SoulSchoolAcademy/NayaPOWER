@@ -1,0 +1,58 @@
+{
+  "width": 1920,
+  "steps": [
+    {
+      "name": "ADD > Make a post (pointer, via #os-b3-hide)",
+      "ok": true,
+      "detail": "addRectY=[1104, 1187] menu=['home', 'post', 'smart', 'naya', 'message', 'mail', 'world'] url=https://naya-proof-host.nayapower.workers.dev/?file=PERSONAL/index-master-20261105.html&ref=hub/personal-sidebar-followup19-20261119"
+    },
+    {
+      "name": "ADD > Naya note (pointer, via #os-b3-hide)",
+      "ok": true,
+      "detail": "addRectY=[1104, 1187] menu=['home', 'post', 'smart', 'naya', 'message', 'mail', 'world'] url=https://naya-proof-host.nayapower.workers.dev/?file=PERSONAL/index-master-20261105.html&ref=hub/personal-sidebar-followup19-20261119"
+    },
+    {
+      "name": "Vera (i) -> About, no contact buttons (pointer, scoped)",
+      "ok": true,
+      "detail": "buttons=['\u00d7|Close smart messenger|', 'IMPORTANT||', 'RESPOND||', 'FOLLOW UP||', 'DRAFTS||', 'SENT||'] head=About Vera\n\u00d7\nV\nVera\n93%\nVERIFY \u2014 truth. Nothing counts until I see it."
+    },
+    {
+      "name": "Vera DM -> Direct message with Vera (pointer)",
+      "ok": true,
+      "detail": "DM \u2014 Vera | \u00d7 | V | Vera | 93% | Direct message with Vera. | No messages with Vera yet. |  | The conversation with Vera starts here \u2014 nothing is invented to fill it. |  | Send \u00b7 runtime required"
+    },
+    {
+      "name": "Vera Mail -> Mail to Vera (pointer)",
+      "ok": true,
+      "detail": "Mail to Vera | \u00d7 | V | Vera | 93% | Smart Mail to Vera. | To: Vera | Subject | Body | Send \u00b7 runtime required | Communication intelligence | Meaning and context first. No fake mailbox, ever. |  | The room separates what needs "
+    },
+    {
+      "name": "naya-guide.jpg avatar (mail panel open)",
+      "ok": false,
+      "detail": "guide=[] all-imgs=1"
+    },
+    {
+      "name": "CONNECT > Message -> Smart Messenger (pointer)",
+      "ok": false,
+      "detail": "Locator.click: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-hub-menu=\\\"messenger\\\"]\").first\n    - locator resolved to <div role=\"menuitem\" class=\"fc-plusitem\" data-hub-menu=\"messenger\">\u2026</div>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and sta"
+    },
+    {
+      "name": "Shawn orb -> Profile 97% (pointer)",
+      "ok": false,
+      "detail": "Locator.click: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-pc-orb=\\\"shawn\\\"]\")\n    - locator resolved to <button type=\"button\" class=\"fc-pick-av\" data-pc-orb=\"shawn\" aria-label=\"Open profile: shawn\">S</button>\n  - attempting click action\n    - waiting for element to be visible"
+    }
+  ],
+  "console": [
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "PAGEERROR: handler is not a function",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "PAGEERROR: handler is not a function",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "PAGEERROR: handler is not a function",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "PAGEERROR: handler is not a function",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019"
+  ]
+}

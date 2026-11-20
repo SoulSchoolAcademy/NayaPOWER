@@ -1,0 +1,124 @@
+{
+  "width": 1920,
+  "steps": [
+    {
+      "name": "install modal",
+      "ok": true,
+      "detail": "no modal / Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waitin"
+    },
+    {
+      "name": "hub loads",
+      "ok": true,
+      "detail": "title=Smart Feed \u2014 NayaNET"
+    },
+    {
+      "name": "rail order 13",
+      "ok": true,
+      "detail": "[\"shawn\", \"wrena\", \"sophia\", \"vera\", \"zoe\", \"thora\", \"iris\", \"astraea\", \"emesa\", \"terra\", \"ruth\", \"mira\", \"aurelia\"]"
+    },
+    {
+      "name": "feed renders",
+      "ok": true,
+      "detail": "12268 chars"
+    },
+    {
+      "name": "bottom bar geometry recorded",
+      "ok": true,
+      "detail": "{\"nsbBottom\": false, \"addRect\": [654, 1104, 59, 82], \"showBarVisible\": false, \"showBarText\": null}"
+    },
+    {
+      "name": "ADD > Make a post (pointer)",
+      "ok": false,
+      "detail": "{\"ok\": false, \"error\": \"Locator.click: Timeout 8000ms exceeded.\\nCall log:\\n  - waiting for locator(\\\"[data-notif=\\\\\\\"plus\\\\\\\"]\\\").first\\n    - locator resolved to <button title=\\\"ADD\\\" type=\\\"button\\\" class=\\\"notif-seg\\\" data-notif=\\\"plus\\\" aria-label=\\\"ADD \\u2014 open\\\">\\u2026</button>\\n  - attempting click action\\n    2 \\u00d7 waiting for element to be vi\"}"
+    },
+    {
+      "name": "ADD > Naya note (pointer)",
+      "ok": false,
+      "detail": "{\"ok\": false, \"error\": \"Locator.click: Timeout 8000ms exceeded.\\nCall log:\\n  - waiting for locator(\\\"[data-notif=\\\\\\\"plus\\\\\\\"]\\\").first\\n    - locator resolved to <button title=\\\"ADD\\\" type=\\\"button\\\" class=\\\"notif-seg\\\" data-notif=\\\"plus\\\" aria-label=\\\"ADD \\u2014 open\\\">\\u2026</button>\\n  - attempting click action\\n    2 \\u00d7 waiting for element to be vi\"}"
+    },
+    {
+      "name": "Vera orb -> Profile (pointer)",
+      "ok": true,
+      "detail": "Vera \u2014 Profile | \u00d7 | V | Vera | 93% | VERIFY \u2014 truth. Nothing counts until I see it. | i | \u270e\u2709\u266a\u25b6"
+    },
+    {
+      "name": "Vera (i) -> About (pointer)",
+      "ok": false,
+      "detail": "Locator.click: Error: strict mode violation: locator(\"[data-pc-info=\\\"vera\\\"]\") resolved to 2 elements:\n    1) <button type=\"button\" class=\"pc-act-btn\" title=\"About vera\" data-pc-info=\"vera\" aria-labe"
+    },
+    {
+      "name": "Vera DM -> real DM (pointer)",
+      "ok": false,
+      "detail": "Locator.click: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-pc-orb=\\\"vera\\\"]\")\n    - locator resolved to <button type=\"button\" class=\"fc-pick-av\" data-pc-orb=\"vera\" aria-label=\"O"
+    },
+    {
+      "name": "Vera Mail -> To/Subject/Body (pointer)",
+      "ok": false,
+      "detail": "Locator.click: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-pc-orb=\\\"vera\\\"]\")\n    - locator resolved to <button type=\"button\" class=\"fc-pick-av\" data-pc-orb=\"vera\" aria-label=\"O"
+    },
+    {
+      "name": "CONNECT > Message -> Smart Messenger (dispatch)",
+      "ok": false,
+      "detail": "Vera \u2014 Profile | \u00d7 | V | Vera | 93% | VERIFY \u2014 truth. Nothing counts until I see it. | i | \u270e\u2709\u266a\u25b6"
+    },
+    {
+      "name": "Activity view 13 (router)",
+      "ok": true,
+      "detail": "cards=13 hash=#/hub/feed-activity"
+    },
+    {
+      "name": "About Us -> staged Personal (pointer)",
+      "ok": true,
+      "detail": "https://naya-proof-host.nayapower.workers.dev/?file=PERSONAL/index-master-20261105.html&ref=hub/personal-sidebar-followup19-20261119"
+    },
+    {
+      "name": "Smart Worlds -> #/hub/spaces (router)",
+      "ok": true,
+      "detail": "#/hub/spaces"
+    },
+    {
+      "name": "rail search ruth -> only ruth (pointer)",
+      "ok": true,
+      "detail": "[\"ruth\"]"
+    },
+    {
+      "name": "naya-guide.jpg avatar renders",
+      "ok": false,
+      "detail": "guide=[] all-imgs=1"
+    },
+    {
+      "name": "solo note sn4202 opens (pointer-load)",
+      "ok": false,
+      "detail": "NAYANET | INTELLIGENT HUB | WHERE YOU GO | Hub | Dashboard | Personal | \u25be | Business / Work | \u25be | Your World | \u25be | Smart Worlds | Intel Today | Your Reports | Smart Growth | Intelligent Library | Your Connections | PRIVATE BY DEFAULT | SHARED BY CHOICE | COL"
+    },
+    {
+      "name": "console: no hub-msg-panel warnings",
+      "ok": true,
+      "detail": "0 warnings; total errors=9"
+    },
+    {
+      "name": "fix-5 Personal #home/post -> composer opens (fresh load)",
+      "ok": false,
+      "detail": "{\"url\": \"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439\", \"hash\": \"\", \"creatorVisible\": false, \"creatorText\": \"\\u2715\\n\\u270e Make a post\\n\\u270e\\nMake a post\\n\\u270e\\nNaya note\\n\\u2726\\nSmart note\\n\\nMake a post \\u2014 your words, straight up. No auto-format, no distillation \\u2014 what you write is what lands on the feed.\\n\\n\\ud83d\\uddbc Add "
+    },
+    {
+      "name": "fix-5 Personal #home/naya -> composer opens (fresh load)",
+      "ok": false,
+      "detail": "{\"url\": \"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/frame-round-fix5-20261119&cb=dedf0b19057b4396572d8b1963352f0744c32439#home/naya\", \"hash\": \"#home/naya\", \"creatorVisible\": false, \"creatorText\": \"\\u2715\\n\\u270e Make a post\\n\\u270e\\nMake a post\\n\\u270e\\nNaya note\\n\\u2726\\nSmart note\\n\\nMake a post \\u2014 your words, straight up. No auto-format, no distillation \\u2014 what you write is what lands on the feed.\\"
+    }
+  ],
+  "console": [
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "PAGEERROR: handler is not a function",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "PAGEERROR: handler is not a function",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "PAGEERROR: fetchWall is not defined",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://nayanet.app/feed-live.json. (Reason: CORS header \u2018Access-Control-Allow-Origin\u2019",
+    "PAGEERROR: can't access property \"tone\", note is undefined",
+    "PAGEERROR: can't access property \"tone\", note is undefined"
+  ],
+  "browser": "firefox"
+}
