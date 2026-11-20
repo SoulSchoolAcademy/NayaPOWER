@@ -10281,7 +10281,8 @@ window.NayaContent = {
       window.NayaFeedIntelligence = { notes: d.notes, ref: 'live-registry' };
       try {
         if (window.NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }
-        window.dispatchEvent(new HashChangeEvent('hashchange'));
+        /* FRAME-FIX4 2026-11-19 (F4): same guard as nudgeRoom - see above. */
+        if (/^#\/(hub|smart-notes|notes|note)(\/|$)/.test(location.hash)) window.dispatchEvent(new HashChangeEvent('hashchange'));
       } catch(e){}
     }).catch(function(){
       if(timer) clearTimeout(timer);
@@ -10521,7 +10522,8 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
   function nudgeRoom(){
     try {
       if (window.NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }
-      window.dispatchEvent(new HashChangeEvent('hashchange'));
+      /* FRAME-FIX4 2026-11-19 (F4): only nudge a Hub/note route. A synthetic hashchange while the hash names a Personal view ('#people', '#home', ...) - or is empty after Personal boot strips it - made the router's '*' fallback rewrite the hash to '#/hub' and empty the outlet. The live state still updates; the room re-render is skipped while on a Personal view. */
+      if (/^#\/(hub|smart-notes|notes|note)(\/|$)/.test(location.hash)) window.dispatchEvent(new HashChangeEvent('hashchange'));
     } catch(e){}
   }
   var lastNewest = '';
@@ -12854,7 +12856,7 @@ window.NayaNotif = window.NayaNotif || {
     function build(){
       if (document.getElementById('hubPlusCreate')) return;
       function item(label, color, fn){ var b = document.createElement('button'); b.type = 'button'; b.textContent = label; b.style.setProperty('--mc', color); b.addEventListener('click', function(){ window.hubClosePlusMenus(); fn(); }); return b; }
-      function openComposer(mode){ var m = document.querySelector('.tg-mode[data-tg-mode="' + mode + '"]'); var body = document.getElementById('os-post-body'); if (m) m.click(); if (body) { body.scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(function(){ try{ body.focus(); }catch(e){} }, 350); } }
+      function openComposer(mode){ /* FRAME-FIX4 2026-11-19 (F1): the composer is the #fcCreator overlay, not an inline section - scrolling #os-post-body scrolled a hidden element and nothing visible happened. Open the creator, the way every other composer entry point on this page does. */ if (window.fcOpenCreator) { window.fcOpenCreator(mode); return; } var m = document.querySelector('.tg-mode[data-tg-mode="' + mode + '"]'); var body = document.getElementById('os-post-body'); if (m) m.click(); if (body) { body.scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(function(){ try{ body.focus(); }catch(e){} }, 350); } }
       function openMessenger(){ try{ document.body.classList.add('msg-open'); }catch(e){} }
       function openMail(){ if (window.osShowView) window.osShowView('message'); }
       function openConnections(){ if (window.osShowView) window.osShowView('people'); }
@@ -17434,7 +17436,8 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   // alone in the outlet (HubView noteView). The '*' fallback below is untouched —
   // genuinely unknown routes still land on the feed.
   Router.on('smart-notes/:slug', params => window.HubView({ room: 'feed', note: params.slug }));
-  Router.on('*', () => { location.hash = '#/hub'; return document.createElement('div'); });
+  /* FRAME-FIX4 2026-11-19 (F4): '*' must not hijack Personal-view hashes. A Personal view ('#people', '#home', '#about', ...) is not a Hub route, so the old fallback rewrote it to '#/hub' on any re-render (boot arrival, or a synthetic hashchange). Personal views keep their hash; 'home'/empty re-render the feed, which is this outlet's content. */
+  Router.on('*', () => { var _h=(location.hash||'').replace(/^#\/?/,'').split('?')[0].split('/')[0]; var _pv=['home','about','people','message','inbox','growth','lists','reports','settings','skills','scheduler','memberships','notes','dashboard','today','story','myworld']; if (!_h || _pv.indexOf(_h)>=0) { if (_h==='' || _h==='home') return window.HubView({ room: 'feed' }); return document.createElement('div'); } location.hash = '#/hub'; return document.createElement('div'); });
 
   // The Hub IS the app. No hash → straight to the feed — UNLESS the shell
   // was served at a clean note URL (/smart-notes/<slug>, /notes/<slug>,
@@ -22074,7 +22077,7 @@ button.os-ld-node .os-ld-n{
 <div class="ph-card" style="--ac:#0f52ba;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#0f52ba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/></svg></span> <span data-mw-tr="homehub">Go to Home Hub</span></h3>
 <p class="os-note" style="margin:0 0 10px" data-mw-tr="homehub-sub">Home Hub is the way back to the main Hub.</p>
-<div class="ph-actions"><a class="ph-msg" href="https://nayanet.app/#/hub" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;" data-mw-tr="set">Go to Home Hub →</a></div>
+<div class="ph-actions"><a class="ph-msg" href="https://nayanet.app/hub#/hub" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;" data-mw-tr="set">Go to Home Hub →</a></div>
 </div>
 
 <div class="ph-card" style="--ac:#0f52ba;" id="os-install-card">
@@ -23568,7 +23571,13 @@ NF.register(UNIT, {
     if (name==='memberships' && typeof window.mshipLoad==='function') window.mshipLoad(); /* FIX-8: memberships view loads its list on open */
     if (name==='about') { loadAbout(); loadLibrary(); }
     if (name==='story') { loadAbout(); }
-    if (!skipPush){ try { history.pushState({osView:name}, '', '#'+name); } catch(e){} }
+    /* FRAME-FIX4 2026-11-19 (F3): an open Hub room (Ask Naya) must yield when
+       PERSONAL shows the home feed. showView only toggles [data-os-view] and
+       the #app outlet is not one, and pushState fires no hashchange, so the
+       room sat over the home view until reload. Yield it through the router. */
+    var _roomYield=false;
+    try{ if (name==='home' && window.NayaRouter && window.NayaRouter.parse) { var _segs=window.NayaRouter.parse(); var _roomOpen=(_segs[0]==='hub' && _segs[1] && _segs[1]!=='feed') || !!document.querySelector('.naya-ask-room'); if (_roomOpen) { window.NayaRouter.navigate('/hub/feed'); _roomYield=true; } } }catch(e){}
+    if (!skipPush && !_roomYield){ try { history.pushState({osView:name}, '', '#'+name); } catch(e){} }
     /*__NU_20261104_SHAWN: hide Living Intelligence strip in message view */
     try { var _li = document.querySelector('[data-tn-li="strip"]'); if (_li) _li.style.display = (name==='message') ? 'none' : ''; } catch(e){}
     /* BUILDER-2 2026-11-07: the message view is a focused message screen,
@@ -27204,8 +27213,28 @@ function wallCard(j, iso, pid, idx){
     var bootView=onTab?onTab.getAttribute('data-view'):'home';
     if (VIEWS.indexOf(bootView)<0) bootView='home';
     var hash=(location.hash||'').replace('#','');
+    var hashParts=hash.split('/'); var hashView=hashParts[0]; var hashSec=hashParts[1]||'';
     try { history.replaceState({osView:bootView}, '', location.pathname+location.search); } catch(e){}
-    if (VIEWS.indexOf(hash)>=0 && hash!==bootView) showView(hash, true);
+    if (VIEWS.indexOf(hashView)>=0 && hashView!==bootView) showView(hashView, true);
+    /* FRAME-FIX4 2026-11-19 (F1): scroll landings. The Hub lands a composer
+       arrival on '#home' and an About arrival on '#about' - but '#home' alone
+       cannot tell a composer landing from a plain arrival (the Hub sends the
+       identical bare '#home' for both), so a bare '#home' still lands at the
+       top of the profile, as before. Only a section suffix acts: '#home/composer'
+       (or '#home/post' / '#home/naya' / '#home/smart') opens the composer, and
+       '#about' scrolls the About Me section into view. The inline '#os-wall'
+       composer is gone (Mirror Round 2 removed the anchor); the composer is
+       the #fcCreator overlay, opened by window.fcOpenCreator(kind) - scrolling
+       would only move a hidden element. The Hub-side half (sending the suffix)
+       is still owed; until it lands, no arrival can trigger the composer. */
+    (function(){
+      if (hashView==='home' && (hashSec==='composer' || hashSec==='post' || hashSec==='naya' || hashSec==='smart')) {
+        var kind = (hashSec==='post' || hashSec==='naya' || hashSec==='smart') ? hashSec : 'naya';
+        var _tries=0; (function _openComposer(){ try{ if (window.fcOpenCreator) { window.fcOpenCreator(kind); return; } }catch(e){} if (++_tries < 20) setTimeout(_openComposer, 250); })(); /* fcOpenCreator is defined in a later script than this boot block, so retry until it exists (max ~5s) instead of firing once and missing. */
+      } else if (hashView==='about') {
+        setTimeout(function(){ try{ var a=document.getElementById('about'); if (a) a.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){} }, 350);
+      }
+    })();
   })();
   /* the timestamp standard is alive: relative labels recompute in place */
   setInterval(function(){ document.querySelectorAll('.os-rel[data-at]').forEach(function(n){ n.textContent=relLabel(n.getAttribute('data-at')); }); }, 30000);
