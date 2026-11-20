@@ -4,7 +4,7 @@
 
 **NN-20261119-parallel-power-do-all-that-you-can · Naya Note · 2026-11-19 ~22:07 MST (~05:07Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Parallel Power: Do All That You Can (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4244 — Parallel Power: Do All That You Can*
 
 **Category:** Law — how the machine moves
 
