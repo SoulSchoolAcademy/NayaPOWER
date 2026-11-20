@@ -1,0 +1,64 @@
+{
+  "branch": "walkthrough/agreement-distill-fix5-20261119",
+  "files": {
+    "team-nitro/agreement-unfold-fix-20261117/agreement-unfold-fixed.html": {
+      "treeBlob": "1f0b04747e3315be6f1b619c1411e5e14fbdc1bb",
+      "treeSize": 142532,
+      "expectedBlob": "1f0b04747e3315be6f1b619c1411e5e14fbdc1bb",
+      "expectedSize": 142532,
+      "ok": true
+    },
+    "team-nitro/walk-v23-assembly-20261114/welcome-staged.html": {
+      "treeBlob": "00082c3d65801997f1dcb035bea6ee51bf600737",
+      "treeSize": 1930947,
+      "expectedBlob": "00082c3d65801997f1dcb035bea6ee51bf600737",
+      "expectedSize": 1930947,
+      "ok": true
+    },
+    "team-nitro/walk-v23-assembly-20261114/walk-beginning-fixed.html": {
+      "treeBlob": "2f7a5e3ef599e00cb39c1e577bcb42563cd7ed81",
+      "treeSize": 4363683,
+      "expectedBlob": "2f7a5e3ef599e00cb39c1e577bcb42563cd7ed81",
+      "expectedSize": 4363683,
+      "ok": true
+    },
+    "team-nitro/walk-v23-assembly-20261114/identity-fixed.html": {
+      "treeBlob": "b3e5af088ef1d516079d96eeaa61d811d7889b8e",
+      "treeSize": 404147,
+      "expectedBlob": "b3e5af088ef1d516079d96eeaa61d811d7889b8e",
+      "expectedSize": 404147,
+      "ok": true
+    },
+    "team-nitro/walk-v23-assembly-20261114/walk-beginning-staging-worker.js": {
+      "treeBlob": "0413500982bc14dfbe5534cbe82cd9c75a68696a",
+      "treeSize": 8463055,
+      "expectedBlob": "0413500982bc14dfbe5534cbe82cd9c75a68696a",
+      "expectedSize": 8463055,
+      "ok": true
+    },
+    "team-nitro/walk-v23-assembly-20261114/build-v23-staging-worker.py": {
+      "treeBlob": "2299b99155e442257ca46eeb2c777ad4816ff6b0",
+      "treeSize": 96371,
+      "expectedBlob": "2299b99155e442257ca46eeb2c777ad4816ff6b0",
+      "expectedSize": 96371,
+      "ok": true
+    },
+    "team-nitro/walkthrough-agreement-distill-fix5-20261119/maker/MAKER-REPORT.md": {
+      "treeBlob": "e173efd76cf2f2dc94e15341d759220d9d00a3be",
+      "treeSize": 19425,
+      "expectedBlob": "e173efd76cf2f2dc94e15341d759220d9d00a3be",
+      "expectedSize": 19425,
+      "ok": true
+    }
+  },
+  "allOk": true,
+  "tip": "b048f00269f61c821812f06ffe6bd8e96cf29d4b",
+  "tipMatch": true,
+  "commitMessage": "Agreement distill fix-5: footer links reachable at 390 (F)",
+  "parent": [
+    "d5003b2fd5c59e352b84169294b2773263876e01"
+  ],
+  "parentMatch": true,
+  "treeSha": "25dce257e9d6cecad4db08b69538c3f2e3bd0578",
+  "fix5RoundPaths": 43
+}
