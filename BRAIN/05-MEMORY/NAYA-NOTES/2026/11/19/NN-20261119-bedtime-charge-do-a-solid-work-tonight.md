@@ -4,7 +4,7 @@
 
 **NN-20261119-bedtime-charge-do-a-solid-work-tonight · Naya Note · 2026-11-19 ~21:28 MST (~04:28Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Do a Solid Work Tonight — The Bedtime Charge (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4237 — Do a Solid Work Tonight — The Bedtime Charge*
 
 **Category:** Order — the overnight charge
 
