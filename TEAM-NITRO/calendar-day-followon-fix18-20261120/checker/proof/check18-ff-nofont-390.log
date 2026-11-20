@@ -1,0 +1,202 @@
+=== firefox-nofont-390 390x844 ===
+HEADER: {
+ "vw": 390,
+ "vwCenter": 195,
+ "fonts": [],
+ "headerText": "Friday 2 0 November 2 0 2 6 3 : 4 5 : 0 6 P M Your Stats",
+ "headerHasHz": false,
+ "monthlineText": "November 2026",
+ "monthline": {
+  "x": 55,
+  "y": 140,
+  "w": 280,
+  "h": 32,
+  "left": 55,
+  "right": 335,
+  "top": 140,
+  "bottom": 172,
+  "cx": 195,
+  "cy": 156
+ },
+ "monthlineCenterOff": 0,
+ "lineTops": [
+  134,
+  145
+ ],
+ "lineCount": 2,
+ "nov": {
+  "x": 55,
+  "y": 140,
+  "w": 170,
+  "h": 32,
+  "left": 55,
+  "right": 225,
+  "top": 140,
+  "bottom": 172,
+  "cx": 140,
+  "cy": 156
+ },
+ "yearFirst": {
+  "x": 249,
+  "y": 142,
+  "w": 86,
+  "h": 28,
+  "left": 249,
+  "right": 335,
+  "top": 142,
+  "bottom": 170,
+  "cx": 292,
+  "cy": 156
+ },
+ "novYearGap": 24,
+ "numSpans": 1,
+ "yearSpans": [
+  {
+   "x": 249,
+   "y": 142,
+   "w": 86,
+   "h": 28,
+   "left": 249,
+   "right": 335,
+   "top": 142,
+   "bottom": 170,
+   "cx": 292,
+   "cy": 156
+  }
+ ],
+ "centerCol": {
+  "x": 55,
+  "y": 140,
+  "w": 280,
+  "h": 68,
+  "left": 55,
+  "right": 335,
+  "top": 140,
+  "bottom": 208,
+  "cx": 195,
+  "cy": 174
+ },
+ "leftCol": {
+  "x": 74,
+  "y": 100,
+  "w": 242,
+  "h": 32,
+  "left": 74,
+  "right": 316,
+  "top": 100,
+  "bottom": 132,
+  "cx": 195,
+  "cy": 116
+ },
+ "stats": {
+  "x": 125,
+  "y": 216,
+  "w": 140,
+  "h": 44,
+  "left": 125,
+  "right": 265,
+  "top": 216,
+  "bottom": 260,
+  "cx": 195,
+  "cy": 238
+ },
+ "timewrap": {
+  "x": 84,
+  "y": 174,
+  "w": 221,
+  "h": 34,
+  "left": 84,
+  "right": 306,
+  "top": 174,
+  "bottom": 208,
+  "cx": 195,
+  "cy": 191
+ },
+ "backToMonth": {
+  "x": 58,
+  "y": 48,
+  "w": 205,
+  "h": 46,
+  "left": 58,
+  "right": 263,
+  "top": 48,
+  "bottom": 94,
+  "cx": 160,
+  "cy": 71
+ },
+ "orb": {
+  "x": 300,
+  "y": 54,
+  "w": 36,
+  "h": 36,
+  "left": 300,
+  "right": 336,
+  "top": 54,
+  "bottom": 90,
+  "cx": 318,
+  "cy": 72
+ },
+ "deck": {
+  "x": 40,
+  "y": 280,
+  "w": 310,
+  "h": 540,
+  "left": 40,
+  "right": 350,
+  "top": 280,
+  "bottom": 820,
+  "cx": 195,
+  "cy": 550
+ },
+ "timeUnderMonth": 19,
+ "wisdom": "Friday \u00b7 396 Hz \u00b7 red \u2014 The day of the ground \u2014 the root, 396 Hz. Stand firm; finish what stands.",
+ "wisdomHz": 2,
+ "docScrollW": 390,
+ "greet": "Good afternoon, Shawn.",
+ "pageErrors": []
+}
+--- pill census (day 20) ---
+slide 0: vis=False disp=none pill={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'left': 0, 'right': 0} hit=None nav=671-715 navClear=94 navWhole=True docW=390
+slide 1: vis=False disp=none pill={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'left': 0, 'right': 0} hit=None nav=739-799 navClear=10 navWhole=True docW=390
+slide 2: vis=False disp=none pill={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'left': 0, 'right': 0} hit=None nav=739-799 navClear=10 navWhole=True docW=390
+slide 3: vis=True disp=block pill={'x': 175, 'y': 768, 'w': 157, 'h': 40, 'top': 768, 'bottom': 808, 'left': 175, 'right': 332} hit=BUTTON.pill:Change cover nav=685-745 navClear=64 navWhole=True docW=390
+slide 4: vis=False disp=none pill={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'left': 0, 'right': 0} hit=None nav=739-799 navClear=10 navWhole=True docW=390
+slide 5: vis=False disp=none pill={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'left': 0, 'right': 0} hit=None nav=747-807 navClear=2 navWhole=True docW=390
+slide 6: vis=False disp=none pill={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'left': 0, 'right': 0} hit=None nav=739-799 navClear=10 navWhole=True docW=390
+slide 7: vis=False disp=none pill={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'left': 0, 'right': 0} hit=None nav=739-799 navClear=10 navWhole=True docW=390
+slide 8: vis=False disp=none pill={'x': 0, 'y': 0, 'w': 0, 'h': 0, 'top': 0, 'bottom': 0, 'left': 0, 'right': 0} hit=None nav=739-799 navClear=10 navWhole=True docW=390
+--- cover visibility (pixel diff, interior >6px inset, drift baseline) ---
+slide 0: coverChangedPx=23298 driftPx=0 deck=310x540
+slide 1: coverChangedPx=269 driftPx=0 deck=310x540
+slide 2: coverChangedPx=273 driftPx=0 deck=310x540
+slide 3: coverChangedPx=12660 driftPx=0 deck=310x540
+slide 4: coverChangedPx=269 driftPx=0 deck=310x540
+slide 5: coverChangedPx=272 driftPx=0 deck=310x540
+slide 6: coverChangedPx=267 driftPx=0 deck=310x540
+slide 7: coverChangedPx=269 driftPx=0 deck=310x540
+slide 8: coverChangedPx=272 driftPx=0 deck=310x540
+--- sweep 15..21 ---
+day 15: FAIL teachHit=DIV. storeHit=DIV. pillClear=0 nav=0-0 navClear=809 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 16: FAIL teachHit=DIV. storeHit=DIV. pillClear=0 nav=0-0 navClear=809 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 17: FAIL teachHit=DIV. storeHit=DIV. pillClear=0 nav=0-0 navClear=809 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 18: FAIL teachHit=DIV. storeHit=DIV. pillClear=0 nav=0-0 navClear=809 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 19: FAIL teachHit=DIV. storeHit=DIV. pillClear=0 nav=0-0 navClear=809 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 20: FAIL teachHit=DIV. storeHit=DIV. pillClear=0 nav=0-0 navClear=809 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 21: FAIL teachHit=DIV. storeHit=DIV. pillClear=0 nav=0-0 navClear=809 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+sweep firefox-nofont-390: 0/7 PASS
+--- deck (day 19) ---
+slide 0: PASS nav=671-715 navClear=94 navWhole=True ccVis=False docW=390
+slide 1: PASS nav=739-799 navClear=10 navWhole=True ccVis=False docW=390
+slide 2: PASS nav=739-799 navClear=10 navWhole=True ccVis=False docW=390
+slide 3: PASS nav=685-745 navClear=64 navWhole=True ccVis=True docW=390
+slide 4: PASS nav=739-799 navClear=10 navWhole=True ccVis=False docW=390
+slide 5: PASS nav=747-807 navClear=2 navWhole=True ccVis=False docW=390
+slide 6: PASS nav=739-799 navClear=10 navWhole=True ccVis=False docW=390
+slide 7: PASS nav=739-799 navClear=10 navWhole=True ccVis=False docW=390
+slide 8: PASS nav=739-799 navClear=10 navWhole=True ccVis=False docW=390
+deck firefox-nofont-390: 9/9 PASS
+BUTTONS keep=CLICKED before='November 2026' after='November 2026' | prev=CLICKED:‹ Thu afterPrev='November 2026'
+MONTH: {"total": 42, "numbered": 30, "blank": 12, "monthVisible": true, "name": "November 2026", "row6": [{"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}]}
+TAP Wisdom 390: pill hidden, not clickable (expected at 390 Wisdom)
+TAP Worlds 390: file picker OPENED
+PAGEERRORS: []

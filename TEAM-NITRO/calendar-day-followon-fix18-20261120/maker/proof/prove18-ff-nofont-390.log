@@ -1,0 +1,25 @@
+=== firefox-nofont-390 390x844 ===
+--- sweep (wisdom, 7 days) ---
+day 15: PASS qLines=5 fonts=[] teach=551-625 store=626-664 pill=804-840 pillClear=140 nav=671-715 rimTop=809 navClear=94 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 16: PASS qLines=5 fonts=[] teach=551-625 store=626-664 pill=804-840 pillClear=140 nav=671-715 rimTop=809 navClear=94 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 17: PASS qLines=4 fonts=[] teach=518-592 store=593-631 pill=804-840 pillClear=173 nav=638-682 rimTop=809 navClear=127 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 18: PASS qLines=6 fonts=[] teach=584-658 store=659-697 pill=804-840 pillClear=107 nav=704-748 rimTop=809 navClear=61 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 19: PASS qLines=5 fonts=[] teach=551-625 store=626-664 pill=804-840 pillClear=140 nav=671-715 rimTop=809 navClear=94 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 20: PASS qLines=5 fonts=[] teach=551-625 store=626-664 pill=804-840 pillClear=140 nav=671-715 rimTop=809 navClear=94 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+day 21: PASS qLines=6 fonts=[] teach=584-677 store=678-715 pill=804-840 pillClear=89 nav=722-766 rimTop=809 navClear=43 ccVis=False cc=0-0 ccXwx=False greet='Good afternoon, Shawn.' docW=390
+sweep firefox-nofont-390: 7/7 PASS
+--- deck (day 19, 9 slides) ---
+slide 0 Wisdom of the day
+          : PASS nav=671-715 clear=94 ccVis=False cc=0-0 ccHit=None ccXwx=False ccXbtns=[] smart=None smartHit=None/None docW=390
+slide 1 Tap a world — see its notifi: PASS nav=739-799 clear=10 ccVis=False cc=0-0 ccHit=None ccXwx=False ccXbtns=[] smart=None smartHit=None/None docW=390
+slide 2 JournalYour day, in your wor: PASS nav=739-799 clear=10 ccVis=False cc=0-0 ccHit=None ccXwx=False ccXbtns=[] smart=None smartHit=None/None docW=390
+slide 3 Your WorldsSix worlds, one d: PASS nav=685-745 clear=64 ccVis=True cc=768-808 ccHit=BUTTON.pill:Change cover ccXwx=False ccXbtns=[] smart=None smartHit=None/None docW=390
+slide 4 News HubLocal, Province and : PASS nav=739-799 clear=10 ccVis=False cc=0-0 ccHit=None ccXwx=False ccXbtns=[] smart=None smartHit=None/None docW=390
+slide 5 AppointmentsThe day, booked : PASS nav=747-807 clear=2 ccVis=False cc=0-0 ccHit=None ccXwx=False ccXbtns=[] smart=662-721 smartHit=BUTTON.elite-meetpill:Smart Meet/BUTTON.elite-meetpill:Smart Meet docW=390
+slide 6 Summary of the dayThe day, w: PASS nav=739-799 clear=10 ccVis=False cc=0-0 ccHit=None ccXwx=False ccXbtns=[] smart=None smartHit=None/None docW=390
+slide 7 Naya NotesWrite it once — a : PASS nav=739-799 clear=10 ccVis=False cc=0-0 ccHit=None ccXwx=False ccXbtns=[] smart=None smartHit=None/None docW=390
+slide 8 Smart NotesThe same words, s: PASS nav=739-799 clear=10 ccVis=False cc=0-0 ccHit=None ccXwx=False ccXbtns=[] smart=None smartHit=None/None docW=390
+deck firefox-nofont-390: 9/9 PASS
+BUTTONS keep=CLICKED before='November 2026' after='November 2026' | prev=CLICKED:‹ Thu afterPrev='November 2026'
+MONTH: {"total": 42, "numbered": 30, "blank": 12, "name": "November 2026", "row6": [{"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}, {"blank": true, "d": null}]}
+PAGE ERRORS: NONE

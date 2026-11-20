@@ -1,0 +1,13 @@
+=== frozen cover census base firefox-nofont-1920 day20 ===
+slide 0 wisdomBanner: frozen-anims=11 cover tot=5948 in=344 | rim-only
+slide 1 cat: frozen-anims=19 cover tot=1052662 in=1037197 | COVER-SHOWN
+  slide1 empty-region ON colors: [(216, 172, 166), (103, 0, 0), (163, 80, 79), (164, 62, 25), (158, 68, 77), (201, 73, 62), (202, 26, 9)]
+  slide1 empty-region OFF colors: [(52, 21, 27), (67, 27, 32), (52, 21, 27), (46, 20, 24), (54, 24, 28), (46, 20, 24), (47, 20, 24)]
+slide 2 cat: frozen-anims=9 cover tot=1052662 in=1037197 | COVER-SHOWN
+slide 3 cat: frozen-anims=15 cover tot=1052662 in=1037197 | COVER-SHOWN
+slide 4 cat: frozen-anims=12 cover tot=1052662 in=1037197 | COVER-SHOWN
+slide 5 cat: frozen-anims=9 cover tot=1052662 in=1037197 | COVER-SHOWN
+slide 6 cat: frozen-anims=9 cover tot=1052662 in=1037197 | COVER-SHOWN
+slide 7 cat: frozen-anims=9 cover tot=1052662 in=1037197 | COVER-SHOWN
+slide 8 cat: frozen-anims=9 cover tot=1052662 in=1037197 | COVER-SHOWN
+PAGE ERRORS: NONE
