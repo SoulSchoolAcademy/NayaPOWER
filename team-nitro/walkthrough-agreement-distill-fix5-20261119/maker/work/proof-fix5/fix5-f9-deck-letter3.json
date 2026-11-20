@@ -1,0 +1,88 @@
+{
+ "label": "FIX5-F9-deck-letter-3",
+ "legs": [
+  {
+   "leg": "390-agree-pair",
+   "pair": [
+    "Begin the visual story",
+    "Read the agreement"
+   ]
+  },
+  {
+   "leg": "390-pair-begin-deck",
+   "counter": "1 / 37",
+   "url": "http://127.0.0.1:18094/?stage=bridge"
+  },
+  {
+   "leg": "390-deck-1-37",
+   "label": "390-deck-1-37",
+   "first": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37"
+   ],
+   "last": [
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ],
+   "count": 37,
+   "sequential": true,
+   "nextBtnAtEnd": "Enter NayaNET \u25c6"
+  },
+  {
+   "leg": "390-deck-enter-bridge",
+   "endClick": {
+    "via": "fpNextBtn",
+    "btnText": "Enter NayaNET \u25c6",
+    "holdCleared": true
+   },
+   "secondEnter": "no-second-enter: Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"Enter NayaNET\").vis",
+   "url": "http://127.0.0.1:18094/?stage=bridge",
+   "pair": [
+    "Begin the visual story",
+    "Read the agreement"
+   ]
+  },
+  {
+   "leg": "390-pair-read-agreement",
+   "counter": "1 / 37",
+   "url": "http://127.0.0.1:18094/agreement"
+  },
+  {
+   "leg": "390-letter-1-37",
+   "label": "390-letter-1-37",
+   "first": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37"
+   ],
+   "last": [
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ],
+   "count": 37,
+   "sequential": true,
+   "nextBtnAtEnd": "I agree \u25c6"
+  },
+  {
+   "leg": "390-letter-agree-bridge",
+   "endClick": {
+    "via": "fpNextBtn",
+    "btnText": "I agree \u25c6",
+    "holdCleared": true
+   },
+   "url": "http://127.0.0.1:18094/?stage=bridge",
+   "pair": [
+    "Begin the visual story",
+    "Read the agreement"
+   ],
+   "agreedMarker": true
+  },
+  {
+   "leg": "390-console-errors",
+   "errors": []
+  }
+ ]
+}

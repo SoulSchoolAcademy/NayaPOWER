@@ -1,0 +1,108 @@
+{
+  "branch": "walkthrough/agreement-distill-fix4-20261119",
+  "expectedTip": "d5003b2fd5c59e352b84169294b2773263876e01",
+  "ref": {
+    "ref": "refs/heads/walkthrough/agreement-distill-fix4-20261119",
+    "sha": "d5003b2fd5c59e352b84169294b2773263876e01",
+    "type": "commit"
+  },
+  "files": {
+    "team-nitro/agreement-unfold-fix-20261117/agreement-unfold-fixed.html": {
+      "treeBlob": "1f0b04747e3315be6f1b619c1411e5e14fbdc1bb",
+      "treeSize": 142532,
+      "expectedBlob": "1f0b04747e3315be6f1b619c1411e5e14fbdc1bb",
+      "blobMatch": true,
+      "bytes": 142532,
+      "sha256": "a3b3907f2f80d09a14c1e7e8bfb7a00c63332a7b26ac2707912c39436e177b98",
+      "bytesMatch": true,
+      "shaMatch": true,
+      "gitHash": "1f0b04747e3315be6f1b619c1411e5e14fbdc1bb",
+      "gitHashMatch": true,
+      "writeVerifyBytes": 142532,
+      "writeVerifySha": "a3b3907f2f80d09a14c1e7e8bfb7a00c63332a7b26ac2707912c39436e177b98",
+      "writeOk": true
+    },
+    "team-nitro/walk-v23-assembly-20261114/welcome-staged.html": {
+      "treeBlob": "daac9e3af610cb5df21917d5c0057e595d51ccde",
+      "treeSize": 1930937,
+      "expectedBlob": "daac9e3af610cb5df21917d5c0057e595d51ccde",
+      "blobMatch": true,
+      "bytes": 1930937,
+      "sha256": "237af4d4d5d3ac3f6c001ba770bc6bcbc90433aedd002ab5103a6e3b10672cbf",
+      "bytesMatch": true,
+      "shaMatch": true,
+      "gitHash": "daac9e3af610cb5df21917d5c0057e595d51ccde",
+      "gitHashMatch": true,
+      "writeVerifyBytes": 1930937,
+      "writeVerifySha": "237af4d4d5d3ac3f6c001ba770bc6bcbc90433aedd002ab5103a6e3b10672cbf",
+      "writeOk": true
+    },
+    "team-nitro/walk-v23-assembly-20261114/walk-beginning-fixed.html": {
+      "treeBlob": "2f7a5e3ef599e00cb39c1e577bcb42563cd7ed81",
+      "treeSize": 4363683,
+      "expectedBlob": "2f7a5e3ef599e00cb39c1e577bcb42563cd7ed81",
+      "blobMatch": true,
+      "bytes": 4363683,
+      "sha256": "856d392c439ebb5cb97aac27f34abc3b97b52b8b6bdc55b50abac9768e198b4d",
+      "bytesMatch": true,
+      "shaMatch": true,
+      "gitHash": "2f7a5e3ef599e00cb39c1e577bcb42563cd7ed81",
+      "gitHashMatch": true,
+      "writeVerifyBytes": 4363683,
+      "writeVerifySha": "856d392c439ebb5cb97aac27f34abc3b97b52b8b6bdc55b50abac9768e198b4d",
+      "writeOk": true
+    },
+    "team-nitro/walk-v23-assembly-20261114/identity-fixed.html": {
+      "treeBlob": "b3e5af088ef1d516079d96eeaa61d811d7889b8e",
+      "treeSize": 404147,
+      "expectedBlob": "b3e5af088ef1d516079d96eeaa61d811d7889b8e",
+      "blobMatch": true,
+      "bytes": 404147,
+      "sha256": "fef65d2cdbf2f1e8c096548df9adcdb465ac38a628f299c8e7cee2fb57703f52",
+      "bytesMatch": true,
+      "shaMatch": true,
+      "gitHash": "b3e5af088ef1d516079d96eeaa61d811d7889b8e",
+      "gitHashMatch": true,
+      "writeVerifyBytes": 404147,
+      "writeVerifySha": "fef65d2cdbf2f1e8c096548df9adcdb465ac38a628f299c8e7cee2fb57703f52",
+      "writeOk": true
+    },
+    "team-nitro/walk-v23-assembly-20261114/walk-beginning-staging-worker.js": {
+      "treeBlob": "97ec7eed101b3ee96a733a777ef6c8c88ac71131",
+      "treeSize": 8463045,
+      "expectedBlob": "97ec7eed101b3ee96a733a777ef6c8c88ac71131",
+      "blobMatch": true,
+      "bytes": 8463045,
+      "sha256": "a76a67c8e1a366ab9ce5bd91f69596139ef4674d78870cdecee695c24fe64912",
+      "bytesMatch": true,
+      "shaMatch": true,
+      "gitHash": "97ec7eed101b3ee96a733a777ef6c8c88ac71131",
+      "gitHashMatch": true,
+      "writeVerifyBytes": 8463045,
+      "writeVerifySha": "a76a67c8e1a366ab9ce5bd91f69596139ef4674d78870cdecee695c24fe64912",
+      "writeOk": true
+    },
+    "team-nitro/walk-v23-assembly-20261114/build-v23-staging-worker.py": {
+      "treeBlob": "37a0078f86b4a3d9a91cff8f75e44493c90f5a8c",
+      "treeSize": 95815,
+      "expectedBlob": "37a0078f86b4a3d9a91cff8f75e44493c90f5a8c",
+      "blobMatch": true,
+      "bytes": 95815,
+      "sha256": "31eae8862ca9cd98ff7df8b454af98ee734bb2f2dcbe592d00b3bb28fc286d98",
+      "bytesMatch": true,
+      "shaMatch": true,
+      "gitHash": "37a0078f86b4a3d9a91cff8f75e44493c90f5a8c",
+      "gitHashMatch": true,
+      "writeVerifyBytes": 95815,
+      "writeVerifySha": "31eae8862ca9cd98ff7df8b454af98ee734bb2f2dcbe592d00b3bb28fc286d98",
+      "writeOk": true
+    }
+  },
+  "errors": [],
+  "tipMatch": true,
+  "treeSha": "41ab80421cae5e9ee896e7105fe93c407f103556",
+  "parent": [
+    "7e58bba78b708bf1390831a3e9a55dd47772c0c7"
+  ],
+  "commitMessage": "Agreement distill fix-4: file the filing script"
+}

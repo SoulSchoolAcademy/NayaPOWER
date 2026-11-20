@@ -1,0 +1,71 @@
+{
+ "label": "FIX5-F9-deck-letter",
+ "legs": [
+  {
+   "leg": "390-agree-pair",
+   "pair": [
+    "Begin the visual story",
+    "Read the agreement"
+   ]
+  },
+  {
+   "leg": "390-pair-begin-deck",
+   "counter": "1 / 37",
+   "url": "http://127.0.0.1:18094/?stage=bridge",
+   "nextBtn": {
+    "visible": true,
+    "text": "Keep reading \u25c6"
+   }
+  },
+  {
+   "leg": "390-deck-1-37",
+   "label": "390-deck-1-37",
+   "first": [
+    "1 / 37"
+   ],
+   "last": [
+    "1 / 37"
+   ],
+   "count": 1,
+   "sequential": true,
+   "endVisible": [
+    "Enter NayaNET \u2192"
+   ]
+  },
+  {
+   "leg": "390-deck-enter-bridge",
+   "ERROR": "Locator.click: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"Enter NayaNET\").visible.first\n    - locator resolved to <button class=\"enter\" type=\"submit\">Enter NayaNET \u2192</button>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <img alt=\"The old internet \u2014 a woman drowning in tabs, notifications, and no"
+  },
+  {
+   "leg": "390-pair-read-agreement",
+   "ERROR": "Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"Read the agreement\").visible.first\n"
+  },
+  {
+   "leg": "390-letter-1-37",
+   "label": "390-letter-1-37",
+   "first": [
+    "1 / 37",
+    "2 / 37",
+    "3 / 37"
+   ],
+   "last": [
+    "35 / 37",
+    "36 / 37",
+    "37 / 37"
+   ],
+   "count": 37,
+   "sequential": true,
+   "endVisible": [
+    "I agree \u25c6"
+   ]
+  },
+  {
+   "leg": "390-letter-agree-bridge",
+   "url": "http://127.0.0.1:18094/?stage=letter"
+  },
+  {
+   "leg": "390-console-errors",
+   "errors": []
+  }
+ ]
+}

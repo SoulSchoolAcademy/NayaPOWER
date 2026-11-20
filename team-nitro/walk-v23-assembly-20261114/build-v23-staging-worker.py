@@ -531,7 +531,15 @@ assert ident_sha.startswith("fef65d2c"), "identity sha is not the AGREEMENT-DIST
 # (1,930,495 B -> 1,930,937 B, +442 B): fix-4 verification found the first D
 # rule lost to body.af-deck-on #deckBody .ib-title{25px!important} — the
 # board-37 rule now wins at (1,3,2)!important on deck AND letter.
-assert welcome_sha.startswith("237af4d4"), "welcome sha is not the AGREEMENT-DISTILL-FIX4b welcome sha (2026-11-20: fix-4 verify — board-37 title beats the af-deck !important rule)"
+# AGREEMENT-DISTILL-FIX5 (2026-11-20): the welcome sha moves 237af4d4 -> 57ebe2d2
+# (1,930,937 B -> 1,930,947 B, +10 B): fix-4 checker F — the footer links
+# strip pushed its first five links left of the scroll origin at 390
+# (justify-content:center on a 1064px nowrap row in a 374px viewport).
+# Both nowrap .fp-legal-links rules (intro + bridge) now use
+# justify-content:safe center: centred where the row fits (desktop
+# unchanged), starting at the scroll origin on overflow, so all 12 links
+# enter the viewport at some scrollLeft. No other file changes.
+assert welcome_sha.startswith("57ebe2d2"), "welcome sha is not the AGREEMENT-DISTILL-FIX5 welcome sha (2026-11-20: fix-4 checker F — footer strip safe center at phone width)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):

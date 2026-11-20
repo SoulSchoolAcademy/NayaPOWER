@@ -1,0 +1,88 @@
+FAIL F.html.html:687: GRAY (§2.2 no gray text): /* ENTRANCE TEXT FIX (Shawn 19:55Z, 2026-11-15 — "I don't like gray text"):
+FAIL F.html.html:690: GRAY (§2.2 no gray text): smaller siblings. White, lit, elevated — no gray anywhere. */
+FAIL F.html.html:2597: GRAY (§2.2 no gray text): <div id="fpNHold" data-smart-block="n-hold" hidden><div class="fp-nhold-sealwrap"><svg class="fp-nhold-ring" viewBox="0 
+FAIL F.html.html:615: SIZE (§2.3 below 17px): font-size:12px
+FAIL F.html.html:678: SIZE (§2.3 below 17px): font-size:12px
+FAIL F.html.html:701: SIZE (§2.3 below 17px): font-size:12px
+FAIL F.html.html:714: SIZE (§2.3 below 17px): font-size:12px
+FAIL F.html.html:717: SIZE (§2.3 below 17px): font-size:12px
+FAIL F.html.html:769: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:776: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:778: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:790: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:801: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:802: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:804: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:806: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:809: SIZE (§2.3 below 17px): font-size:13px
+FAIL F.html.html:815: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL F.html.html:817: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:827: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:834: SIZE (§2.3 below 17px): font-size:11px
+FAIL F.html.html:849: SIZE (§2.3 below 17px): font-size:13px
+FAIL F.html.html:851: SIZE (§2.3 below 17px): font-size:16px
+FAIL F.html.html:859: SIZE (§2.3 below 17px): font-size:16.5px
+FAIL F.html.html:881: SIZE (§2.3 below 17px): font-size:14.5px
+FAIL F.html.html:888: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:889: SIZE (§2.3 below 17px): font-size:16px
+FAIL F.html.html:891: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:900: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:905: SIZE (§2.3 below 17px): font-size:15.5px
+FAIL F.html.html:919: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:920: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL F.html.html:936: SIZE (§2.3 below 17px): font-size:16.5px
+FAIL F.html.html:995: SIZE (§2.3 below 17px): font-size: 13px
+FAIL F.html.html:996: SIZE (§2.3 below 17px): font-size: 13px
+FAIL F.html.html:998: SIZE (§2.3 below 17px): font-size: 12px
+FAIL F.html.html:1015: SIZE (§2.3 below 17px): font-size: 16px
+FAIL F.html.html:1070: SIZE (§2.3 below 17px): font-size: 11px
+FAIL F.html.html:1111: SIZE (§2.3 below 17px): font-size: 11px
+FAIL F.html.html:1132: SIZE (§2.3 below 17px): font-size: 11px
+FAIL F.html.html:1137: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL F.html.html:1148: SIZE (§2.3 below 17px): font-size: 11px
+FAIL F.html.html:1181: SIZE (§2.3 below 17px): font-size: 16px
+FAIL F.html.html:1188: SIZE (§2.3 below 17px): font-size: 16px
+FAIL F.html.html:1192: SIZE (§2.3 below 17px): font-size: 14px
+FAIL F.html.html:1195: SIZE (§2.3 below 17px): font-size: 16px
+FAIL F.html.html:1198: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL F.html.html:1202: SIZE (§2.3 below 17px): font-size: 16px
+FAIL F.html.html:1225: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:1238: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:1254: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:1255: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL F.html.html:1261: SIZE (§2.3 below 17px): font-size:16.5px
+FAIL F.html.html:1329: SIZE (§2.3 below 17px): font-size: 13px
+FAIL F.html.html:1357: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL F.html.html:1386: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:1397: SIZE (§2.3 below 17px): font-size:13px
+FAIL F.html.html:1399: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:1403: SIZE (§2.3 below 17px): font-size:16px
+FAIL F.html.html:1406: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:1407: SIZE (§2.3 below 17px): font-size:13px
+FAIL F.html.html:1409: SIZE (§2.3 below 17px): font-size:13px
+FAIL F.html.html:1411: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL F.html.html:1440: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:1443: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:1450: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:1452: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:1458: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL F.html.html:1473: SIZE (§2.3 below 17px): font-size:16px
+FAIL F.html.html:1474: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:1475: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:1523: SIZE (§2.3 below 17px): font-size:13px
+FAIL F.html.html:1525: SIZE (§2.3 below 17px): font-size:11px
+FAIL F.html.html:1532: SIZE (§2.3 below 17px): font-size:16px
+FAIL F.html.html:1535: SIZE (§2.3 below 17px): font-size:13px
+FAIL F.html.html:1557: SIZE (§2.3 below 17px): font-size:14px
+FAIL F.html.html:1563: SIZE (§2.3 below 17px): font-size:15px
+FAIL F.html.html:1663: SIZE (§2.3 below 17px): font-size:12px
+FAIL F.html.html:1695: SIZE (§2.3 below 17px): font-size:16px
+FAIL F.html.html:1730: SIZE (§2.3 below 17px): font-size:13px
+FAIL F.html.html:1732: SIZE (§2.3 below 17px): font-size:13px
+FAIL F.html.html:1838: SIZE (§2.3 below 17px): font-size:13px
+FAIL F.html.html:1879: SIZE (§2.3 below 17px): font-size:13px
+WARN F.html.html:680: TEXT-COLOR? (§2.2 check by eye): color:rgba(255,255,255,.85)
+WARN F.html.html:809: TEXT-COLOR? (§2.2 check by eye): color:rgba(232,232,236,.75)
+WARN F.html.html:866: TEXT-COLOR? (§2.2 check by eye): color:transparent
+WARN F.html.html:1879: TEXT-COLOR? (§2.2 check by eye): color:rgba(255,255,255,.78)
+83 violation(s), 4 warning(s) — fix the FAILs, do not ship.
