@@ -66996,6 +66996,38 @@
         "Continuity",
         "Value"
       ]
+    },
+    {
+      "smart_note_id": "SN-3952",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn3952-every-lesson-becomes-a-smart-note-the-moment-it-happens",
+      "slug": "every-lesson-becomes-a-smart-note-the-moment-it-happens",
+      "title": "Every Lesson Becomes a Smart Note the Moment It Happens",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3952/IB-SMART-NOTE-20261120-sn3952-every-lesson-becomes-a-smart-note-the-moment-it-happens.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3952/IB-SMART-NOTE-20261120-sn3952-every-lesson-becomes-a-smart-note-the-moment-it-happens.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3952/IB-SMART-NOTE-20261120-sn3952-every-lesson-becomes-a-smart-note-the-moment-it-happens.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn3952-every-lesson-becomes-a-smart-note-the-moment-it-happens.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T00:28:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "22f068d3cddf584e78432a14d0a67fc676ec46733072eb936cd16746d2766697",
+      "content_hash": "a9e01b816f23263f7bbb3f4cee0895ea0da9ecedb2a8f3bcd3272db35fdd8eaa",
+      "one_line": "Third in the series The Top Ten Most Valuable Intelligent Things About Naya. The moment Naya learns something, it becomes a Smart Note — captured at the speed of life, while it is fresh and exact, not reconstructed later from memory and hope. A lesson, a decision, a discovery, a mistake: each one is written into the network the same pass it happens, in the full Intelligent Block form, so the learning is usable by everyone, forever, from that moment on. Intelligence that waits to be written down decays. Naya's never gets the chance.",
+      "topics": [
+        "Naya",
+        "Smart Notes",
+        "Learning",
+        "Value"
+      ]
     }
   ],
   "sequence_policy": {
@@ -67006,5 +67038,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "654e369cffde43b5c31779f8165ea7ce5ae8b360b722618ee69553424176d98c"
+  "corpus_manifest_hash": "3859eaf9e10088fa69354c9f8abd64905e4305fbf13ae1c45fec0ffe0e3e4a64"
 }
