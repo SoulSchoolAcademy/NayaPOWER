@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4241",
+ "intelligence": {
+  "title": "The Two Codexes",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4241-two-codexes",
+  "smart_note_id": "SN-4241",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4241/IB-SMART-NOTE-20261119-sn4241-two-codexes.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "There are two codexes. The human mathematics codex — the codex of life: be in a good state of energy and feel awesome every day; an awesome day every day is the ultimate. The digital codex is NayaNET: everything automated, max level of intelligence, everybody connected automatically and intelligently. The digital codex holds the human codex — we automate the friction so the human gets the experience. And the human codex is not a metaphor: he will embed it into the system.",
+  "human_view": "",
+  "simple_view": "Imagine two magic books, sweetheart! One book is about YOU — how to feel awesome every single day, full of good energy. The other book is about the machine — how it does everything for you, all by itself, and connects you to everybody! And the machine book holds your book inside it, so the machine's whole job is making your days awesome!",
+  "grandma_view": "It's like this, love — there are two books, dear. One is the book of life: feel wonderful every day, dear, full of good energy — an awesome day, every day, that's the ultimate. The other is the book of the machine: it does everything for you automatically, love, and connects you to everybody. And the machine's book holds your book inside it, dear — so everything it does is for your awesome day.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4241",
+   "title": "The Two Codexes",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4241/IB-SMART-NOTE-20261119-sn4241-two-codexes.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4241/IB-SMART-NOTE-20261119-sn4241-two-codexes.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

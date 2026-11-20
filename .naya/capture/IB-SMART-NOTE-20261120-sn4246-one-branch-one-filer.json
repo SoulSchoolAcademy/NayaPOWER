@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4246",
+ "intelligence": {
+  "title": "One Branch, One Filer — Parallel Filings Eat Each Other's Proof",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4246-one-branch-one-filer",
+  "smart_note_id": "SN-4246",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4246/IB-SMART-NOTE-20261120-sn4246-one-branch-one-filer.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Two lanes filed the same branch in parallel and one ate the other's proof. The landing agent filed `walkthrough/agreement-distill-fix3-20261119` at tip `27689bf6` — the six fixed content files and the 21-file round record, checker reports included. The coordinator then force-updated the branch to tip `f3d4ab3a`: its tree carried byte-identical fixed content files, but the `checker/` reports were gone — dropped, not deleted on purpose, just never carried forward. Two small record seats had to put the proof back, one commit each: checker proof restored at `fa2d73e9`, coordinator proof restored at `dc262be6`. The content was never at risk; the evidence of the verification was. A force-update that does not read the tip it replaces will silently un-file whatever the other lane filed.",
+  "human_view": "",
+  "simple_view": "Imagine two friends building one tower, sweetheart — one puts the little flag on top, and then the other one knocks the tower down and builds it again without the flag! The tower is just as tall, but the flag is gone — and nobody meant to lose it! So we take turns, sweetheart — one builder at a time, and the next builder always looks at what is already there before starting!",
+  "grandma_view": "It's like this, love — two people tidying the same drawer at once, dear, and one of them puts the other one's letters back in the wrong place without ever seeing them. Nothing was thrown away on purpose, love — it was just never carried forward. So we do one at a time, dear, and the second person always opens the drawer first and looks at what is already inside!",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4246",
+   "title": "One Branch, One Filer — Parallel Filings Eat Each Other's Proof",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4246/IB-SMART-NOTE-20261120-sn4246-one-branch-one-filer.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4246/IB-SMART-NOTE-20261120-sn4246-one-branch-one-filer.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

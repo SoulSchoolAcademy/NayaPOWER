@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4224",
+ "intelligence": {
+  "title": "Academy Buttons to the Pricing Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4224-academy-buttons-to-pricing-page",
+  "smart_note_id": "SN-4224",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4224/IB-SMART-NOTE-20261119-sn4224-academy-buttons-to-pricing-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The Academy page's buttons must go to the pricing page — every one of them. Map where they go now first, then point each one at https://naya-model-pricing.nayapower.workers.dev/. The doorway opens onto the price, in one step.",
+  "human_view": "",
+  "simple_view": "Imagine a school with a big front door — and every path in the school is supposed to lead you to the sign-up desk! But some paths lead to the wrong rooms! So we check every path and make them all lead to the right desk — the pricing page — so everyone finds their way in one easy step!",
+  "grandma_view": "It's like this, love — the Academy page is a doorway, dear, and every button on it is a path through that doorway. Right now those paths wander off to all sorts of places, love — so we're lining them all up to lead to the one right place, the pricing page, dear. One step, one clear way in — that's how a doorway should work, love.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4224",
+   "title": "Academy Buttons to the Pricing Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4224/IB-SMART-NOTE-20261119-sn4224-academy-buttons-to-pricing-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4224/IB-SMART-NOTE-20261119-sn4224-academy-buttons-to-pricing-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4222",
+ "intelligence": {
+  "title": "Same Concepts Into Personal, Business, Space",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4222-same-concepts-personal-business-space",
+  "smart_note_id": "SN-4222",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4222/IB-SMART-NOTE-20261119-sn4222-same-concepts-personal-business-space.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Everything the introduction teaches — the scattered digital life, the private vault, smart notes that connect and compound, the storefront you build, Team Naya helping you execute, shared community spaces, the collective agreement and the Law of One, privacy by default, free to join, you own your data — must carry into Personal, and into Business and Space too. Same concepts, same story, in all three.",
+  "human_view": "",
+  "simple_view": "Imagine you hear a wonderful story at the front door — about your own private treasure box, and notes that talk to each other, and a little shop that's yours, and friends who help you build it! Then you walk inside — and the story should be the SAME story in every room! Your Personal room, your Business room, your Space room — all three tell the same story, because it's all one big home, not three different houses!",
+  "grandma_view": "It's like this, love — when you tell someone the story of this place at the front door, dear, that story has to be the same story in every room they walk into. Your Personal room, your Business room, your Space room — all three carry the same promise, love: your private treasure box, your notes that grow together, your little shop, your friends helping you, your community, your agreement, your privacy, and your data that's yours to keep or take with you, dear. One story, love, told three ways — never a different story in a different room.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4222",
+   "title": "Same Concepts Into Personal, Business, Space",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4222/IB-SMART-NOTE-20261119-sn4222-same-concepts-personal-business-space.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4222/IB-SMART-NOTE-20261119-sn4222-same-concepts-personal-business-space.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

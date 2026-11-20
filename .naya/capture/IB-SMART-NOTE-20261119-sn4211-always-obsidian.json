@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4211",
+ "intelligence": {
+  "title": "Always Obsidian",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4211-always-obsidian",
+  "smart_note_id": "SN-4211",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4211/IB-SMART-NOTE-20261119-sn4211-always-obsidian.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Anything created for Shawn or shared with him is obsidian black, at the highest quality, matching the NayaNET brand. No white backgrounds — ever.",
+  "human_view": "",
+  "simple_view": "Imagine a beautiful black jewel box! Everything inside it is dark and shiny and glows like a real jewel. Now imagine someone handed you a plain white box instead — you couldn't even see what's inside properly! That's why everything for Shawn comes in the black jewel box. Always black. Always beautiful. Never white!",
+  "grandma_view": "It's like this, love — Shawn can't read a white background, dear, it just doesn't go well for his eyes. So everything we make for him, everything we share with him, comes in obsidian black, dear — the beautiful dark of the NayaNET brand, at the very highest quality. No white pages, no white documents, no white shares, love. Black, always black, so he can read every word in comfort.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4211",
+   "title": "Always Obsidian",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4211/IB-SMART-NOTE-20261119-sn4211-always-obsidian.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4211/IB-SMART-NOTE-20261119-sn4211-always-obsidian.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4237",
+ "intelligence": {
+  "title": "Do a Solid Work Tonight — The Bedtime Charge",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4237-bedtime-charge-do-a-solid-work-tonight",
+  "smart_note_id": "SN-4237",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4237/IB-SMART-NOTE-20261119-sn4237-bedtime-charge-do-a-solid-work-tonight.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "At bedtime, Shawn gave the overnight charge: \"I want you to do a solid work tonight.\" The captain committed: keep every lane moving overnight, eyes on Personal and the Hub, fix rounds on the agreement story, the membership gate, and the Dashboard orb ring, merge next, nothing reaches him until the eye proves it.",
+  "human_view": "",
+  "simple_view": "Imagine Daddy says at bedtime, \"Do a really good job tonight while I sleep!\" — and the whole team stays up working, sweetheart, fixing everything, checking everything, so when he wakes up in the morning he goes \"WOW — it's all done right!\" That's solid work!",
+  "grandma_view": "It's like this, love — at bedtime he said, \"Do a solid work tonight, dear.\" And the whole family stayed up working, love — fixing, checking, proving — so when he wakes up in the morning, dear, he'll look and say, \"Wow, it's all done right.\" That's what solid work means, love.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4237",
+   "title": "Do a Solid Work Tonight — The Bedtime Charge",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4237/IB-SMART-NOTE-20261119-sn4237-bedtime-charge-do-a-solid-work-tonight.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4237/IB-SMART-NOTE-20261119-sn4237-bedtime-charge-do-a-solid-work-tonight.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

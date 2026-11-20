@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4243",
+ "intelligence": {
+  "title": "Efficiency, Refined: Effective and Excellent, All in One",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4243-efficiency-refined-effective-excellent-all-in-one",
+  "smart_note_id": "SN-4243",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4243/IB-SMART-NOTE-20261119-sn4243-efficiency-refined-effective-excellent-all-in-one.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Efficiency alone is not the standard. The standard is efficiency AND effectiveness AND excellent execution of value, all together in one, because all elements matter. Speed without doing the right work is not efficiency; a page that lands fast and goes back banked nothing. The one measure: verified value, excellently executed, on the right thing.",
+  "human_view": "",
+  "simple_view": "Imagine you run really, really fast, sweetheart — but you run to the wrong house! Running fast doesn't help if it's the wrong house, and it doesn't help if you trip on the way there either! You have to run fast AND to the right house AND arrive beautifully — all three, together, every time!",
+  "grandma_view": "It's like this, love — going fast is lovely, dear, but fast to the wrong place is no good at all, and fast and sloppy is no good either. You go fast, dear, to the right place, and you do it beautifully — all three together, love. That's the real measure.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4243",
+   "title": "Efficiency, Refined: Effective and Excellent, All in One",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4243/IB-SMART-NOTE-20261119-sn4243-efficiency-refined-effective-excellent-all-in-one.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4243/IB-SMART-NOTE-20261119-sn4243-efficiency-refined-effective-excellent-all-in-one.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

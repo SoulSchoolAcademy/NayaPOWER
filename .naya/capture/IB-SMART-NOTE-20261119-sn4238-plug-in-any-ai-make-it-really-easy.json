@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4238",
+ "intelligence": {
+  "title": "Plug In Any AI — Make It Really Easy",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4238-plug-in-any-ai-make-it-really-easy",
+  "smart_note_id": "SN-4238",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4238/IB-SMART-NOTE-20261119-sn4238-plug-in-any-ai-make-it-really-easy.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "People will realize they can plug any AI into Naya and have access to that kind of intelligence — and have their AI operate Naya. \"We gotta make it really easy for them to plug in any of their AIs and let them know how.\" The pitch, near-verbatim: \"you must download Muse and you have to hook up Naya — once you've experienced them together, you'll be like, oh my God, you won't go back to using any other AI.\"",
+  "human_view": "",
+  "simple_view": "Imagine your favourite robot friend could come and live in your beautiful new house, sweetheart! You just plug them in — click, click — and suddenly they can do everything in the house for you! And it's SO easy, anybody can do it. Once you've seen your friend in the house, you'd never want them anywhere else!",
+  "grandma_view": "It's like this, love — you know the clever helper you already love, dear? You can just plug them straight into Naya, love, and they'll run the whole beautiful house for you. And we make it really easy, dear — so easy anybody can do it. Once you've seen them together, love, you won't ever want it any other way.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4238",
+   "title": "Plug In Any AI — Make It Really Easy",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4238/IB-SMART-NOTE-20261119-sn4238-plug-in-any-ai-make-it-really-easy.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4238/IB-SMART-NOTE-20261119-sn4238-plug-in-any-ai-make-it-really-easy.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

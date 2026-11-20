@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4219",
+ "intelligence": {
+  "title": "Ambassador Payouts: No Test-Mode Note, Leave It Out",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4219-ambassador-payouts-no-test-mode-note",
+  "smart_note_id": "SN-4219",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4219/IB-SMART-NOTE-20261119-sn4219-ambassador-payouts-no-test-mode-note.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Ambassador payouts are only in test mode because WE are in test mode right now, pre-launch — once we're live the system is working. A test-mode note in the introduction would be nonsense to anyone reading it after launch. Leave it out entirely — it's not relevant.",
+  "human_view": "",
+  "simple_view": "Imagine you're telling someone about a wonderful new playground — and you put a big sign on it that says \"the swings are still being tested!\" But by the time they come to play, the swings are all finished and working perfectly! That sign would just confuse them! So you leave the sign out — you tell them about the playground as it will be when they play on it, not as it is while the builders are still building!",
+  "grandma_view": "It's like this, love — when you write someone a letter about a lovely new place, dear, you write it for the day they'll read it, not for today while the painters are still in. A note saying \"we're still testing this\" would make no sense to them once everything is open and working, love — so you leave it out entirely, dear. You tell them about the place as it will be when they arrive, not as it is while we're still getting ready.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4219",
+   "title": "Ambassador Payouts: No Test-Mode Note, Leave It Out",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4219/IB-SMART-NOTE-20261119-sn4219-ambassador-payouts-no-test-mode-note.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4219/IB-SMART-NOTE-20261119-sn4219-ambassador-payouts-no-test-mode-note.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

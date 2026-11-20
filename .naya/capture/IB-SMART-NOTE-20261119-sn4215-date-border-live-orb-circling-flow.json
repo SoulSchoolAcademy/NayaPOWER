@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4215",
+ "intelligence": {
+  "title": "The Date Border, Live — and the Orb's Circling Flow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4215-date-border-live-orb-circling-flow",
+  "smart_note_id": "SN-4215",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4215/IB-SMART-NOTE-20261119-sn4215-date-border-live-orb-circling-flow.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The date/time border used to be live — green and purple and white, really there, active input. And the orb used to have a circle flying around it, like the initials do. Both are restores, not new designs.",
+  "human_view": "",
+  "simple_view": "Imagine a magic picture frame! The date on it isn't just written there — it GLOWS in green and purple and white, like it's alive and shining! And the little orb in the corner has a sparkly ring that flies all the way around it, round and round, like a tiny planet going around the sun! That's how it used to be — and that's how it should be again!",
+  "grandma_view": "It's like this, love — the date and time on the board used to look truly alive, dear — green and purple and white, shining like it was really there, not just words written on a page. And the little orb had a circle that flew all around it, love, like the rings around the initial orbs you see. Those little living touches are what make the whole thing feel alive, dear — when they're gone, the page feels flat, even when the words are good.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4215",
+   "title": "The Date Border, Live — and the Orb's Circling Flow",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4215/IB-SMART-NOTE-20261119-sn4215-date-border-live-orb-circling-flow.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4215/IB-SMART-NOTE-20261119-sn4215-date-border-live-orb-circling-flow.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

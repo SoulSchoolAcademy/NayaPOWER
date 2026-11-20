@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4244",
+ "intelligence": {
+  "title": "Parallel Power: Do All That You Can",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4244-parallel-power-do-all-that-you-can",
+  "smart_note_id": "SN-4244",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4244/IB-SMART-NOTE-20261119-sn4244-parallel-power-do-all-that-you-can.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "It is NOT one thing at a time — it is doing as much in parallel at one time as possible. Not doing more than you can, but doing all that you can — that is the best way. A team of masters, not one master with a bunch of apprentices: all ours are masters, masters doing it the right way, like an army doing it the right way. An army that isn't doing the right thing is just a mess. \"One lane, one round\" governs ONE page file — no two makers on the same file. Across lanes, everything moves in parallel at once.",
+  "human_view": "",
+  "simple_view": "Imagine a whole team of superheroes, sweetheart — not one hero doing everything one by one, but ALL the heroes flying at once, each one doing their own special job! That's the fastest way! But two heroes can't paint the same wall at the same time, sweetheart — one wall, one painter. And every hero has to fly the RIGHT way, or it's just a big messy crash!",
+  "grandma_view": "It's like this, love — you don't do one little thing at a time when you can do many at once, dear. A whole team of masters, each doing their part at the same time — that's the best way, love. But two hands on the same page would only tangle, dear — one page, one maker. And an army doing the wrong thing is just a mess, love — so every lane must be on the right thing.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4244",
+   "title": "Parallel Power: Do All That You Can",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4244/IB-SMART-NOTE-20261119-sn4244-parallel-power-do-all-that-you-can.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4244/IB-SMART-NOTE-20261119-sn4244-parallel-power-do-all-that-you-can.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4229",
+ "intelligence": {
+  "title": "Membership Structure System Completed",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4229-membership-structure-system-completed",
+  "smart_note_id": "SN-4229",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4229/IB-SMART-NOTE-20261119-sn4229-membership-structure-system-completed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Finish the membership structure system — complete it — so he can put his videos in. A membership with no finished structure is a house with no rooms: the videos have nowhere to live, and the citizen has nowhere to belong.",
+  "human_view": "",
+  "simple_view": "Imagine building a beautiful clubhouse — but the rooms aren't finished yet, so there's nowhere to put the movies! We have to finish the rooms first — the doors, the shelves, the cozy corners — and then the movies can move in and everyone can come watch them!",
+  "grandma_view": "It's like this, love — he's got all these wonderful videos ready, dear, but the membership house isn't finished yet, so there's nowhere to put them, love. Finish the house first — the rooms, the doors, the little lock on the front gate — and then the videos can move right in, dear, and everyone can come and enjoy them.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4229",
+   "title": "Membership Structure System Completed",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4229/IB-SMART-NOTE-20261119-sn4229-membership-structure-system-completed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/VISION/SN-4229/IB-SMART-NOTE-20261119-sn4229-membership-structure-system-completed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4231",
+ "intelligence": {
+  "title": "Academy Buttons: Only Start Your Free Trial Stays",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4231-academy-buttons-only-trial-stays",
+  "smart_note_id": "SN-4231",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4231/IB-SMART-NOTE-20261119-sn4231-academy-buttons-only-trial-stays.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Only the \"Start Your Free Trial\" button stays on the Academy page. ProMax Player, Start Here, Take Your Power Back, and AI Masterclass all go. The 5 lesson CTAs and 5 feel-the-power buttons stay, all going to the pricing page. One button, one way in.",
+  "human_view": "",
+  "simple_view": "Imagine a door with four bells on it — and you don't know which one to ring! So we take three bells away and leave just ONE big shiny bell that says \"Start Your Free Trial\" — now everyone knows exactly which one to ring!",
+  "grandma_view": "It's like this, love — the page had too many buttons at the top, dear, and a person doesn't know which one to press. So we take them all away except one — \"Start Your Free Trial\" — big and clear, dear, going straight to the pricing page. One button, one way in — that's how a doorway should feel, love.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4231",
+   "title": "Academy Buttons: Only Start Your Free Trial Stays",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4231/IB-SMART-NOTE-20261119-sn4231-academy-buttons-only-trial-stays.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4231/IB-SMART-NOTE-20261119-sn4231-academy-buttons-only-trial-stays.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

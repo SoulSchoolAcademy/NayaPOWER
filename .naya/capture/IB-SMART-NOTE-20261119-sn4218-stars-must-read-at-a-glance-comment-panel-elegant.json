@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4218",
+ "intelligence": {
+  "title": "Stars Must Read at a Glance — and the Comment Panel, Elegant",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4218-stars-must-read-at-a-glance-comment-panel-elegant",
+  "smart_note_id": "SN-4218",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4218/IB-SMART-NOTE-20261119-sn4218-stars-must-read-at-a-glance-comment-panel-elegant.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "A lit star must read at a glance — more contrast, bigger, more objectnality, a flow around it — so people want to rank. And the comment panel must be clean, elegant, beautiful: input at the very top, small text out, five keyword suggestions underneath.",
+  "human_view": "",
+  "simple_view": "Imagine two stars in the sky! One is shining bright and big, and one is tiny and dim — you can tell which one is lit up right away, can't you? That's how the stars should be! And when you want to say something, the box where you write should be right at the top, big and bright — white when you're not touching it, purple when you hover — with five friendly little helper words underneath, like \"Ask a question\" and \"Build on this,\" to help you know what to say!",
+  "grandma_view": "It's like this, love — when you tap a star to say a note is valuable, the star should light up so clearly you can see it from across the room, dear — big, bright, and beautiful, not almost the same as when it's off. And when you open the comments, love, the first thing you should see is the box to write in, right at the top, glowing white and then purple when you hover — with just five kind little suggestions underneath to help you start, dear. Nothing cluttered, nothing confusing — clean, elegant, beautiful, love.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4218",
+   "title": "Stars Must Read at a Glance — and the Comment Panel, Elegant",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4218/IB-SMART-NOTE-20261119-sn4218-stars-must-read-at-a-glance-comment-panel-elegant.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4218/IB-SMART-NOTE-20261119-sn4218-stars-must-read-at-a-glance-comment-panel-elegant.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

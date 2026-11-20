@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4227",
+ "intelligence": {
+  "title": "AI Mastery Help Buttons to the Pricing Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4227-ai-mastery-help-buttons-to-pricing-page",
+  "smart_note_id": "SN-4227",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4227/IB-SMART-NOTE-20261119-sn4227-ai-mastery-help-buttons-to-pricing-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The AI Mastery Help page (aimasterclass.help) gets the same treatment as the Academy: its buttons go to the pricing page too. One rule across both pages, so the citizen never has to guess where a button will take them.",
+  "human_view": "",
+  "simple_view": "Imagine two school doors — the Academy door and the Mastery door — and both of them should lead to the same sign-up desk! We fixed the first door, so now we fix the second one the exact same way. Same rule, same desk, no guessing!",
+  "grandma_view": "It's like this, love — the Mastery page is another doorway, dear, just like the Academy. And the rule is the same for both, love: every button leads to the pricing page, dear. One rule, both doors — so nobody ever has to guess where a button will take them, love.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4227",
+   "title": "AI Mastery Help Buttons to the Pricing Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4227/IB-SMART-NOTE-20261119-sn4227-ai-mastery-help-buttons-to-pricing-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4227/IB-SMART-NOTE-20261119-sn4227-ai-mastery-help-buttons-to-pricing-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

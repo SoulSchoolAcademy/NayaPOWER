@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4228",
+ "intelligence": {
+  "title": "The Live Hub Is the Teacher",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4228-live-hub-is-the-teacher",
+  "smart_note_id": "SN-4228",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4228/IB-SMART-NOTE-20261119-sn4228-live-hub-is-the-teacher.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The live Hub reads better than the staged Hub because its text feels lit up — depth, high contrast, almost a yellow underglow; the date/time reads like a lit-up computer (glowing green date, gold time, ticking clock); the orb has its ring/halo circling flow. Learn from that page and adopt that lighting in notes, smart notes, and posts. The bar: no flat text anywhere; everything alive, lit up, clean.",
+  "human_view": "",
+  "simple_view": "Imagine two storybooks — one with plain flat words, and one where the words GLOW like little lights! The glowing one is so much easier to read, and so much more magical! The live Hub is the glowing book, so we're learning its magic and putting that glow into every story we write!",
+  "grandma_view": "It's like this, love — the live Hub's words light up, dear, like little lamps — depth and glow and gold, love, so easy on the eyes. The staged page's words just lie flat, dear. So we learn from the page that already knows how, love, and we carry that light into every note and every post — no flat words anywhere, dear, everything alive and lit up and clean.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4228",
+   "title": "The Live Hub Is the Teacher",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4228/IB-SMART-NOTE-20261119-sn4228-live-hub-is-the-teacher.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/DESIGN/SN-4228/IB-SMART-NOTE-20261119-sn4228-live-hub-is-the-teacher.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

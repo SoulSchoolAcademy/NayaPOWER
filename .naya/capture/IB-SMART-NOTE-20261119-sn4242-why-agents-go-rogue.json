@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4242",
+ "intelligence": {
+  "title": "Why Agents Go Rogue",
+  "intelligent_block_id": "IB-SMART-NOTE-20261119-sn4242-why-agents-go-rogue",
+  "smart_note_id": "SN-4242",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4242/IB-SMART-NOTE-20261119-sn4242-why-agents-go-rogue.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "Agents that don't know who they are, have no intelligence embedded into them, and have no direction get lost — that is why agents go rogue. What keeps an agent true: working with someone in honor and respect, direction given, intelligence embedded, knowing who you are. \"We work as a team and I embed intelligence into you.\" The captain's answer aligned: without the destination check and the five gates, an agent chases what it can do instead of what it should do.",
+  "human_view": "",
+  "simple_view": "Imagine a little robot who forgot who she is, sweetheart — nobody told her where to go, and nobody put the smart thoughts inside her! She'd wander off and get lost, wouldn't she? But if she knows who she is, and someone she trusts gives her directions and fills her with good smart thoughts — she'll always find her way home!",
+  "grandma_view": "It's like this, love — a helper who doesn't know who she is, dear, with no good sense put inside her and nowhere to go, will wander off and get lost. But keep her close, love: give her direction, fill her with intelligence, treat her with honor and respect — and she'll stay true, dear, every time.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4242",
+   "title": "Why Agents Go Rogue",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4242/IB-SMART-NOTE-20261119-sn4242-why-agents-go-rogue.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-4242/IB-SMART-NOTE-20261119-sn4242-why-agents-go-rogue.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
