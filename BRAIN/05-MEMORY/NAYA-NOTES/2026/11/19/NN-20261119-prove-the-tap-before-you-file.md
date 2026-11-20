@@ -4,7 +4,7 @@
 
 **NN-20261119-prove-the-tap-before-you-file · Naya Note · 2026-11-19 ~21:1x MST (~04:1xZ 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Prove the Tap Before You File (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4234 — Prove the Tap Before You File*
 
 **Category:** Law — the tap is the proof, filed only when it works
 
