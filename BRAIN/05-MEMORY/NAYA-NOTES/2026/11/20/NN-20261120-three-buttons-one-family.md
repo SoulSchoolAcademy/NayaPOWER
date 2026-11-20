@@ -4,7 +4,7 @@
 
 **NN-20261120-three-buttons-one-family · Naya Note · 2026-11-20 ~13:33–14:05 MST (call 8b19d313)**
 
-*Paired Smart Note: SN-pending — Three Buttons, One Family (takes the next free number at filing)*
+*Paired Smart Note: SN-4312 — Three Buttons, One Family*
 
 **Category:** Design — the agreement presentation, the buttons
 
