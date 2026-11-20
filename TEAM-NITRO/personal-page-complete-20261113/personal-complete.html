@@ -22086,6 +22086,11 @@ button.os-ld-node .os-ld-n{
 .fr-social{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:96px;padding:16px 12px;border-radius:18px;border:1.5px solid rgba(255,255,255,.9);background:#050607;color:#fff;text-decoration:none;font-size:17px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.5)}
 .fr-soc-count{font-size:17px;font-weight:700;color:#fff}
 .pc-page-end-info{width:36px;height:36px;border-radius:50%;border:1.5px solid #8e24aa;background:#050607;color:#fff;font-size:17px;font-weight:800;cursor:pointer;margin-left:12px;box-shadow:0 0 16px -4px #8e24aa,0 8px 20px rgba(0,0,0,.55)}
+/* 21-ITEM 12  the floating Welcome pill comes OFF, page-wide: the hero's
+   restore button (aria-label "Show the welcome banner again", both copies
+   of the Hub hero in this file) never shows. The banner still folds on
+   scroll and re-opens at the top; only the floating pill is gone. */
+button[aria-label="Show the welcome banner again"]{display:none !important}
 </style>
 <script>
 /* PERSONAL FRAME ROUND 2026-11-19 - Settings framed + tabs. Set Your World first,
