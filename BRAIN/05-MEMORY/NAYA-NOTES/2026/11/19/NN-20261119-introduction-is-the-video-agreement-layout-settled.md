@@ -4,7 +4,7 @@
 
 **NN-20261119-introduction-is-the-video-agreement-layout-settled · Naya Note · 2026-11-19 ~20:05–20:08 MST (03:05–03:08Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — The Introduction Is the Video; the Agreement Layout, Settled (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4221 — The Introduction Is the Video; the Agreement Layout, Settled*
 
 **Category:** Design — Collective Agreement page (video + audio frame)
 
