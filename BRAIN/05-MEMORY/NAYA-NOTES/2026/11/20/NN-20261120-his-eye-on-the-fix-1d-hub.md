@@ -4,7 +4,7 @@
 
 **NN-20261120-his-eye-on-the-fix-1d-hub · Naya Note · 2026-11-20 ~14:10–14:15 MST (call 3033fdbe)**
 
-*Paired Smart Note: SN-pending — His Eye on the Fix-1d Hub — the Comment Box, the Buttons, the Board (takes the next free number at filing)*
+*Paired Smart Note: SN-4319 — His Eye on the Fix-1d Hub — the Comment Box, the Buttons, the Board*
 
 **Category:** Corrections — the Hub, fix-1d eye verdict
 
