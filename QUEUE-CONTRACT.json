@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-20T09:49:58Z",
-  "tip": "07c2b0c213d5ab2566e1f1aaa696ac3ed21c60b5",
+  "generated_at": "2026-11-20T15:49:16Z",
+  "tip": "3e147a1af006f836948c56a21b94a5a042a85833",
   "prs": [
     {
       "number": 3453,
@@ -101,6 +101,15 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "a6109543787fdc0eda11afea106b8a27b7002271"
+    },
+    {
+      "number": 3495,
+      "title": "Fold Nov 17-20 director snapshots from naya/mission-state into main mission state",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "741b7459bc5701a7f5e13832f705c68f3039e689"
     }
   ]
 }
