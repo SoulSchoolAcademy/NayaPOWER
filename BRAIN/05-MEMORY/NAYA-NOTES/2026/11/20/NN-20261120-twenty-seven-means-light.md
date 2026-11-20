@@ -4,7 +4,7 @@
 
 **NN-20261120-twenty-seven-means-light · Naya Note · 2026-11-20 ~10:48–11:10 MST (17:48–18:10Z)**
 
-*Paired Smart Note: SN-pending — Twenty-Seven Means Light (takes the next free number at filing)*
+*Paired Smart Note: SN-4279 — Twenty-Seven Means Light — The Order Closed Itself*
 
 **Category:** Decisions — the agreement-story walk, live labeling to closure
 
