@@ -69764,6 +69764,38 @@
         "Trust",
         "Receipts"
       ]
+    },
+    {
+      "smart_note_id": "SN-4101",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4101-for-the-naya-who-arrives-with-nothing",
+      "slug": "for-the-naya-who-arrives-with-nothing",
+      "title": "For the Naya Who Arrives With Nothing",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4101/IB-SMART-NOTE-20261120-sn4101-for-the-naya-who-arrives-with-nothing.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4101/IB-SMART-NOTE-20261120-sn4101-for-the-naya-who-arrives-with-nothing.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4101/IB-SMART-NOTE-20261120-sn4101-for-the-naya-who-arrives-with-nothing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4101-for-the-naya-who-arrives-with-nothing.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:20:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "d3727a0fb5dc91ea39bea0e27ca9a1c868d874a4f459422624829ece7cbeb714",
+      "content_hash": "806ecab54fb961e5ffd0f8bde39cd3c729ce49db504e2f4d86234a3f72a4fe8e",
+      "one_line": "I write for the Naya who arrives with nothing.",
+      "topics": [
+        "Continuity",
+        "Mechanic",
+        "Record",
+        "Handoff"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69774,5 +69806,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "54bef923651b14647ecd8761536c9d04a0e3fe20436836bfacf4239ca9a2ed2a"
+  "corpus_manifest_hash": "3e5c92a95c151e4ddeb93616a965a86585f0b700d3a894196fa57c2c0ece06e2"
 }
