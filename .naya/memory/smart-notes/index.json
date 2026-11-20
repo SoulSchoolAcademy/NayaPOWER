@@ -69956,6 +69956,38 @@
         "Learning",
         "Honesty"
       ]
+    },
+    {
+      "smart_note_id": "SN-4107",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4107-a-hundred-in-ten-out-zero-pile",
+      "slug": "a-hundred-in-ten-out-zero-pile",
+      "title": "A Hundred In, Ten Out, Zero Pile",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4107/IB-SMART-NOTE-20261120-sn4107-a-hundred-in-ten-out-zero-pile.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4107/IB-SMART-NOTE-20261120-sn4107-a-hundred-in-ten-out-zero-pile.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4107/IB-SMART-NOTE-20261120-sn4107-a-hundred-in-ten-out-zero-pile.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4107-a-hundred-in-ten-out-zero-pile.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:20:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "111226ecf222a6ae0f38a3ecb2c16e6788fafe1380bdd89ca27b08e805eebd5e",
+      "content_hash": "1c2d80437262579667d51a457758a524df5a28353d0be5334a62255d8051bef8",
+      "one_line": "A hundred in. Ten out. Zero pile.",
+      "topics": [
+        "Distillation",
+        "Mechanic",
+        "Corpus",
+        "Optimization"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69966,5 +69998,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "8bd48824f31a7eea210dda0e13465db89ae6b198170ad441598c1696fa7bc07f"
+  "corpus_manifest_hash": "43e7d42977a7c7d297731c89253865d96da3aff6a91c0e6ef75e4e54cddf339c"
 }
