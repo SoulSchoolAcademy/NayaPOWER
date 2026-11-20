@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-20T03:49:07Z",
-  "tip": "9e5be341aeeace356f7ffe7a92dfa6502b449d80",
+  "generated_at": "2026-11-20T09:49:58Z",
+  "tip": "07c2b0c213d5ab2566e1f1aaa696ac3ed21c60b5",
   "prs": [
     {
       "number": 3453,
@@ -86,12 +86,12 @@
     },
     {
       "number": 3493,
-      "title": "Cold retrieve: drop 5 dangling SN-3549..SN-3553 registry entries (re-issue of PR #3490 at tip de230305)",
+      "title": "Cold retrieve: drop 5 dangling SN-3549..SN-3553 registry entries (rebased onto tip 07c2b0c2)",
       "tier": "B",
       "action": "CURE",
       "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
-      "head": "63da9b162e2cb2195fa6e638d800e3ca650bb0f6"
+      "head": "8da3994319dbe438806950c880fa2efc09327e86"
     },
     {
       "number": 3494,
