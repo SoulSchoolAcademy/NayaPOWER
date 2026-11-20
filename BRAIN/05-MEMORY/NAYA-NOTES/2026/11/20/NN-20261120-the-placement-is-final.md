@@ -4,7 +4,7 @@
 
 **NN-20261120-the-placement-is-final · Naya Note · 2026-11-20 ~12:07–13:03 MST (call 8e0932a8)**
 
-*Paired Smart Note: SN-pending — The Placement Is Final — Crystal Top-Left, Red Above the Button (takes the next free number at filing)*
+*Paired Smart Note: SN-4293 — The Placement Is Final — Crystal Top-Left, Red Above the Button*
 
 **Category:** Decisions — the agreement presentation, logo placement, the frame as a stage
 
