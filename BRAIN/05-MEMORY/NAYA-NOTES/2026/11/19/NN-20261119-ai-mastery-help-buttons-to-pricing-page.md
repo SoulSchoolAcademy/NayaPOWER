@@ -4,7 +4,7 @@
 
 **NN-20261119-ai-mastery-help-buttons-to-pricing-page · Naya Note · 2026-11-19 ~20:33 MST (03:33Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — AI Mastery Help Buttons to the Pricing Page (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4227 — AI Mastery Help Buttons to the Pricing Page*
 
 **Category:** Design — where a page's buttons take the citizen
 
