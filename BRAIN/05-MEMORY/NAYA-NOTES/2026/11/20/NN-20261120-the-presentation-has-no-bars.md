@@ -4,7 +4,7 @@
 
 **NN-20261120-the-presentation-has-no-bars · Naya Note · 2026-11-20 ~12:06–12:19 MST (voice call 8e0932a8, after the rebuild was presented)**
 
-*Paired Smart Note: SN-pending — The Presentation Has No Bars (takes the next free number at filing)*
+*Paired Smart Note: SN-4287 — The Presentation Has No Bars*
 
 **Category:** Decisions — the agreement presentation, chrome, navigation, name entry
 
