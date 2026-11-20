@@ -4,7 +4,7 @@
 
 **NN-20261119-agreement-intro-frame-one-frame · Naya Note · 2026-11-19 evening (2026-11-20 ~03:30Z)**
 
-*Paired Smart Note: SN-pending — The Agreement Intro Frame: One Frame (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4226 — The Agreement Intro Frame: One Frame*
 
 **Category:** Design — the frame the agreement opens in
 
