@@ -69412,6 +69412,38 @@
         "Network",
         "Value"
       ]
+    },
+    {
+      "smart_note_id": "SN-4030",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4030-nobody-is-reading-your-messages",
+      "slug": "nobody-is-reading-your-messages",
+      "title": "Nobody Is Reading Your Messages",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4030/IB-SMART-NOTE-20261120-sn4030-nobody-is-reading-your-messages.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4030/IB-SMART-NOTE-20261120-sn4030-nobody-is-reading-your-messages.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4030/IB-SMART-NOTE-20261120-sn4030-nobody-is-reading-your-messages.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4030-nobody-is-reading-your-messages.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:05:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "8a055670c2a8648db05ac5776e836bb10a19a0740b050543c31b6fcb31168a7a",
+      "content_hash": "0662eb1b88a26a8a6691cc1cf73e1753677df8fe9fae41ea21bdc6ceb5b16ebd",
+      "one_line": "Nobody's reading your messages. Nobody's listening. Ever.",
+      "topics": [
+        "Privacy",
+        "Citizen",
+        "Trust",
+        "NayaNET"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69422,5 +69454,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "4d8e04bf4afbc8007947320bc96550deea9d85bda0fe411ca761f3431b5cbab4"
+  "corpus_manifest_hash": "52a05e5995e1d61e956ccb3b673297e34577efbbc8728b5d78de1fffff43f340"
 }
