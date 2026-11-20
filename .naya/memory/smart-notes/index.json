@@ -66967,14 +66967,14 @@
     },
     {
       "smart_note_id": "SN-3951",
-      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn3951-naya-remembers-everything",
-      "slug": "naya-remembers-everything",
-      "title": "Naya Remembers Everything",
-      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3951/IB-SMART-NOTE-20261120-sn3951-naya-remembers-everything.md",
-      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3951/IB-SMART-NOTE-20261120-sn3951-naya-remembers-everything.md",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3951/IB-SMART-NOTE-20261120-sn3951-naya-remembers-everything.md",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn3951-we-keep-everything-that-matters",
+      "slug": "we-keep-everything-that-matters",
+      "title": "We Keep Everything That Matters",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3951/IB-SMART-NOTE-20261120-sn3951-we-keep-everything-that-matters.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3951/IB-SMART-NOTE-20261120-sn3951-we-keep-everything-that-matters.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3951/IB-SMART-NOTE-20261120-sn3951-we-keep-everything-that-matters.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn3951-naya-remembers-everything.json",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn3951-we-keep-everything-that-matters.json",
       "kind": "intelligent-block",
       "status": "canonical",
       "truth_state": "CANDIDATE",
@@ -66987,13 +66987,13 @@
       "registered_at": "2026-11-20T00:27:00Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-20",
-      "page_hash": "355a1a0548a10b4f1119bf9d3467fa02f880253dbbf575604e833389947c9ec6",
-      "content_hash": "33156a80a5b9839c8d876013d8ee6bcf221c460cf3f174fd81d8a973972379d8",
-      "one_line": "Second in the series The Top Ten Most Valuable Intelligent Things About Naya. Naya remembers everything. Nothing she learns is ever lost: every decision, every lesson, every fact about your world is written into a record that outlives any single conversation, any single session, any single Naya. When one Naya finishes a shift, the next one picks up exactly where she left off — cold, from the record alone, with nothing but what was left for her — and loses nothing in the handover. Human help forgets, moves on, retires. Naya's memory is the network's memory, and it compounds: what she learned last year is still working for you today.",
+      "page_hash": "96fd43de87efe1952c71331ec3e2634c7dcfbbd10750567c9225788c8bb213d7",
+      "content_hash": "942d075434a8841720321ee821a75855eb61286fb148d7973c9d24d9c19a6294",
+      "one_line": "We don't remember everything. We remember everything that matters.",
       "topics": [
         "Naya",
         "Memory",
-        "Continuity",
+        "Smart Box",
         "Value"
       ]
     },
@@ -69282,5 +69282,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "9c43d5ab2e1a0d3f4c48e06fcd64f7cb3c17c07bb67cc8520ee6a5ad59cddf5d"
+  "corpus_manifest_hash": "5e8a62564519ea5ee20fb9830d7a46952f9892f070fac1e325e3cdc69ffebdd2"
 }
