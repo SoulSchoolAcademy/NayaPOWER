@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 02:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26583,6 +26583,12 @@ _Last updated: 2026-11-20 02:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0548-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
+**Task:** Object-reference arm build + battery verdict (sealed, RED-first, ablation)
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick by sha256: all four pinned artifacts exist under hidden_files/auto-retrieval/ (arm object_reference_arm.py f8b9cf62..., battery harness battery_t0548.py 4ba3a161..., results JSON 4491ce4f..., seal note db415a94...) plus the report object-reference-arm-t0548.md. NOT PHANTOM. Self-score 8.5, a
+
+### ✅ t0548-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
 **Task:** Object-reference arm build + battery verdict (SURGE slice)
 
 **Evidence:** VERIFIED this tick: all four pinned shas exact on disk - arm auto-retrieval/object_reference_arm.py f8b9cf62..., battery auto-retrieval/t0588-rerun/battery_t0548.py 4ba3a161..., results auto-retrieval/object-reference-arm-t0548-results.json 4491ce4f..., seal auto-retrieval/sealed-note-t0548.md db415a94...; report auto-retrieval/object-reference-arm
@@ -26605,6 +26611,12 @@ _Last updated: 2026-11-20 02:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0548-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
+**Task:** Stage-0 [REPLAY] slice 3: 3 past decisions replayed, verdicts + counter-principle column
+
+**Evidence:** BACKLOG SWEEP (2026-10-12). VERIFIED first-hand this tick by sha256: replay record hidden_files/decision-replay/replay-slice3-t0548.md 20c21cba... (15,002 bytes) matches the receipt pin byte-exact, and all three cited decision records (t0539-lane3, t1322-lane9, t0528-lane8) match their pins byte-exact. NOT PHANTOM. Self-score 9.0, agreed. Score 9.0
+
+### ✅ t0548-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
 **Task:** Stage-0 [REPLAY] slice 3: 3 past decisions replayed, D2 FLIP on attribution, D3 DIFFERENT, verdicts routed
 
 **Evidence:** VERIFIED this tick: hidden_files/decision-replay/replay-slice3-t0548.md exists at exactly 15,002 bytes as claimed; brief's 'now-ratified' premise was checked, not inherited (qualified, stated honestly); two non-HOLD verdicts with named deltas (D2 attribution FLIP to PR #2446, D3 DIFFERENT under the standing repair). Score 9.0 - GOOD, ONE MORE PASS.
@@ -26624,6 +26636,12 @@ _Last updated: 2026-11-20 02:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0548-lane3.md`
 
 **Evidence:** VERIFIED: full sha256 match on decision-replay/replay-slice3-t0548.md (20c21cba...) and all three pinned decision records (t0539-lane3 a2314fa1, t1322-lane9 5c5390c5, t0528-lane8 d6ee681b); 3 verdicts with named deltas - D2 first observed FLIP across 3 slices (9 decisions): introducer = PR #2446 not #2448, heal still holds; brief's now-ratified pre
+
+### ✅ t0547-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Herald's verdict on J5: enforceability doors + block lifecycle, posted on live board #2641
+
+**Evidence:** BACKLOG SWEEP (2026-10-16). VERIFIED first-hand this tick: candidacy-block-index.json sha256 d3e1b234... and design doc 732c921a... both match receipt pins byte-exact; bin/candidacy-block-consult.py --selftest re-run live this tick, exit 0 (4 consult controls + write-validation, non-vacuous). NOT PHANTOM. Self-score 9.5 (pass 3); scored 9.0. Score 
 
 ### ✅ t0547-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -28393,6 +28411,12 @@ _Last updated: 2026-11-20 02:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 11 — Naya Heart, t0492] entry exists in feedback-feed.md (grep: 1 exact match), format-exact, three human-cost sharpenings each with a mechanical fix: retraction/falsification immunity clause (proven by this seat's own t1322 M4=FALSE retraction — the honesty tax is priced, not argued), symmetric provisional-penalty cost with rebutta
 
+### ✅ t0484-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Three-pass honest scorecard of canonical PROTOCOL.md ratification candidate; gap list, no ratification
+
+**Evidence:** BACKLOG SWEEP (2026-10-15). VERIFIED first-hand this tick: hidden_files/protocol-scorecard-2026-10-15.md sha256 5916dd8c... matches the receipt pin byte-exact. NOT PHANTOM. The lane's own 7.0 is the score OF PROTOCOL.md, not of this work; this work (live-byte checks of the doc, its issues, its cited surfaces, dead-PDF citation caught, honest holes)
+
 ### ✅ t0484-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
 **Task:** PROTOCOL.md ratification-candidate scorecard + gap list
@@ -28422,6 +28446,12 @@ _Last updated: 2026-11-20 02:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0484-lane3.md`
 
 **Evidence:** Verified: main tip 9f80e8ec via git protocol; PROTOCOL.md blob e421717b at that tip (live tree read); scorecard file hidden_files/protocol-scorecard-2026-10-15.md sha256 matches the receipt pin byte-exact (5916dd8c...); '#2154: the live coordination board' confirmed VERBATIM on live bytes (real authority-integrity catch); the-naya-protocol-ultimate
+
+### ✅ t0483-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Install hourly schedule pump on NayaNET Agent Capture workflow; PR #2680
+
+**Evidence:** BACKLOG SWEEP (2026-10-15). VERIFIED first-hand this tick: commit e7f51705e3f00b23a6a64896cff06ce3dda40e59 exists in the mirror with parent 9f80e8ec (live tip as claimed) and the workflow file at that commit sha256 db2c48cb... matches the receipt pin byte-exact. NOT PHANTOM. Branch naya4/capture-schedule-t0483 no longer resolves via ls-remote (merg
 
 ### ✅ t0483-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -56168,6 +56198,32 @@ _Last updated: 2026-11-20 02:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261028 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Verify mission-state drift fresh via git protocol; identify correct landing source head (05:08 PDT, not brief's 04:38 snapshot)
+
+**Evidence:** BACKLOG SWEEP (2026-10-28). VERIFIED first-hand this tick by sha256: evidence files hidden_files/distill-20261028-main-doc.md 65382e11... and distill-20261028-branch-doc.md 2d3a5915... both match the receipt pins byte-exact; drift diff file present. NOT PHANTOM. Self-score 8.0; scored 9.0 - the verification is fresh, byte-level and re-derivable, an
+
+### ✅ distill-daily-20261025 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Independently reproduce mission-state drift + boot-pointer DEGRADED on live bytes; pin gate regex colon-form root cause
+
+**Evidence:** BACKLOG SWEEP (2026-10-25). VERIFIED first-hand this tick by corroboration: the receipt's root-cause claim is confirmed by the live gate file - boot_pointer_check.py now carries a colon-tolerant LIVE_BOARD_RE with a comment citing gap-distill-daily-20261025, i.e. the fix this receipt's finding drove; the pinned main-file sha256 65382e11... is indep
+
+### ✅ distill-daily-20261024 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Reconcile main vs snapshot-branch CURRENT-MISSION-STATE.md into one landed-ready file
+
+**Evidence:** BACKLOG SWEEP (2026-10-24). VERIFIED first-hand this tick by sha256: reconciled file hidden_files/distill-daily-20261024/reconciled-CURRENT-MISSION-STATE.md 0701362a... matches the receipt pin byte-exact (24 lines); bundle complete (main-95719c4e.md, branch-accf8f30.md, both diffs, reconcile.py). NOT PHANTOM. Self-score 9.2; scored 9.0. Score 9.0 G
+
+### ✅ distill-daily-20261022 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Fix root of boot_pointer_check.py 5 false FAILs against live board #2793 (regex + snap-note split + defense-in-depth)
+
+**Receipt:** `twelve-lane-receipts/distill-daily-20261022-lane0.md`
+
+**Evidence:** BACKLOG SWEEP (2026-10-22). VERIFIED first-hand this tick: hidden_files/boot_pointer_check.py still carries the fix - LIVE_BOARD_RE case-insensitive, bold-tolerant, and now also colon-tolerant (later widening per the file's own comment citing gap-distill-daily-20261025), DEGRADED fail-closed path present at line 205. NOT PHANTOM. Self-score 9.4; sc
 
 ### ✅ gate-stall-20261119-1750 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
