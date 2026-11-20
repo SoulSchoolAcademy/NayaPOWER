@@ -4,7 +4,7 @@
 
 **NN-20261120-the-living-board-inside-the-frame · Naya Note · 2026-11-20 ~12:35–12:49 MST**
 
-*Paired Smart Note: SN-pending — The Living Board Inside the Frame — One Module, Used Twice (takes the next free number at filing)*
+*Paired Smart Note: SN-4289 — The Living Board Inside the Frame — One Module, Used Twice*
 
 **Category:** Decisions — the agreement presentation, the living board inside the frame, one module used twice
 
