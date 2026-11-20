@@ -21096,6 +21096,35 @@ button.os-ld-node .os-ld-n{
 </style>
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#0f52ba;color:#0f52ba;"></span> About Me</div>
+<div class="ph-actions fr-about-tabs" role="tablist" aria-label="About views">
+<button class="ph-msg fr-about-tab on" type="button" data-fr-about="about" aria-selected="true">About</button>
+<button class="ph-msg fr-about-tab" type="button" data-fr-about="photos" aria-selected="false">Photos</button>
+<button class="ph-msg fr-about-tab" type="button" data-fr-about="videos" aria-selected="false">Videos</button>
+<button class="ph-msg fr-about-tab" type="button" data-fr-about="socials" aria-selected="false">Socials</button>
+</div>
+<div class="fr-about-panel" id="frAboutPhotos" hidden>
+<div class="ph-card" style="--ac:#0f52ba;"><h3><span class="os-jewel os-jewel-h" style="--jc:#0f52ba">&#10022;</span> Photos</h3>
+<p class="os-note">My photos, here in my world.</p>
+<div class="fr-photo-grid" id="frPhotoGrid"></div>
+<div class="ph-actions"><button class="ph-connect" type="button" id="frPhotoAdd">Add a photo</button></div></div>
+</div>
+<div class="fr-about-panel" id="frAboutVideos" hidden>
+<div class="ph-card" style="--ac:#07925f;"><h3><span class="os-jewel os-jewel-h" style="--jc:#07925f">&#9654;</span> Videos</h3>
+<p class="os-note">Videos are links, never uploaded. Paste a YouTube, Instagram or TikTok link and it plays from there.</p>
+<div class="os-fieldwrap"><input class="os-input" id="frVideoIn" type="url" inputmode="url" placeholder="Paste a video link" autocomplete="off"></div>
+<div class="ph-actions"><button class="ph-connect" type="button" id="frVideoAdd">Add this video</button></div>
+<div class="os-status" id="frVideoStatus"></div>
+<div id="frVideoList" style="margin-top:12px;"></div></div>
+</div>
+<div class="fr-about-panel" id="frAboutSocials" hidden>
+<div class="ph-card" style="--ac:#d4a017;"><h3><span class="os-jewel os-jewel-h" style="--jc:#d4a017">&#10022;</span> Socials</h3>
+<p class="os-note">My places on the internet. Tap an icon to go there. Clicks are counted here, on this page.</p>
+<div class="fr-social-row" id="frSocialRow"></div>
+<p class="os-note" id="frSocialStats" style="margin-top:12px;"></p>
+<div class="os-fieldwrap"><input class="os-input" id="frSocialIn" type="url" inputmode="url" placeholder="Paste your Instagram, TikTok or X link to add it" autocomplete="off"></div>
+<div class="ph-actions"><button class="ph-connect" type="button" id="frSocialAdd">Add this social</button></div>
+<div class="os-status" id="frSocialStatus"></div></div>
+</div>
 <div class="of-bridge" id="ofAboutBridge"><div class="of-bridge-top"><div class="of-face of-flow" style="--tone:#8e24aa"><span class="of-orb-ring" aria-hidden="true"><span class="of-orb"></span></span><img class="os-avatar-img of-face-img" id="ofAboutFaceImg" alt="Shawn Vibert"><span class="of-face-mono" id="ofAboutFaceMono" hidden>S</span></div><div class="intel-board of-nutshell" style="--tone:#8e24aa"><span class="ib-kind" style="--tone:#8e24aa">About me &middot; In a nutshell</span><h3 class="ib-title">Shawn Vibert builds NayaNET</h3><div class="ib-nutshell"><p>Shawn Vibert builds NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live.</p></div></div></div><div class="pc-dm-findable" id="pcDemoFindable" hidden></div><p class="of-bridge-q">About, two ways &mdash; unfold down, or slideshow. Tap to begin. <!-- NEW 2026-11-18: wording, both modes now offered --></p><div class="of-bridge-btns"><button type="button" class="p3-enter of-bridge-btn" data-of-open="about-unfold" style="--tone:#d4a017">Unfold down &#9670;</button><!-- NEW 2026-11-18 — About slideshow button (JS handler already exists; the button + nav were missing) -->
 <button type="button" class="p3-enter of-bridge-btn" data-of-open="about-slides" style="--tone:#c2410c">Slideshow &#9670;</button></div><button type="button" class="of-lib-door" data-of-open="about-library"><span class="os-jewel os-jewel-h" style="--jc:#07925f">&#10022;</span> Enter the Intelligent Library <span class="of-lib-count" id="ofLibCount"></span></button><p class="of-bridge-note">About, your way &mdash; unfold down or slideshow. The Library holds the best of what is saved here. <!-- NEW 2026-11-18: wording --> <span class="of-lib-count" id="ofLibCountBridge"></span></p></div>
 <div class="of-pres-head" id="ofAboutPresHead" hidden><button type="button" class="ph-msg of-back" data-of-back="about">&#8249; Back to the bridge</button><span class="ib-kind of-pres-label" id="ofAboutPresLabel" style="--tone:#8e24aa"></span></div>
@@ -21103,61 +21132,21 @@ button.os-ld-node .os-ld-n{
 <!-- NEW 2026-11-18 — About slides nav (markup copied from #ofSkillsSlidesNav, ids swapped; the bridge controller already wires ofAboutPrev/Next/Count) -->
 <div class="of-slides-nav" id="ofAboutSlidesNav" hidden><button type="button" class="p3-enter of-slide-prev" id="ofAboutPrev">&#8249; Back</button><span class="of-slide-count" id="ofAboutCount">Slide 1 of 7</span><button type="button" class="p3-enter of-slide-next" id="ofAboutNext">Next &#8250;</button></div>
 
-<div class="ib-layer layer-purple open of-beat" data-of-beat="1" style="--tone:#8e24aa">
-<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#8e24aa">S</span><span class="os-jewel os-jewel-h" style="--jc:#8e24aa"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M10 7.5H6.8A3.3 3.3 0 0 0 3.5 10.8V17h6.6v-6.6H6.9a1.6 1.6 0 0 1 1.5-1.7v-1.2zm10.4 0h-3.2a3.3 3.3 0 0 0-3.3 3.3V17h6.6v-6.6h-3.2a1.6 1.6 0 0 1 1.5-1.7V7.5z"/></svg></span><b>My motto</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer layer-magenta open of-beat" data-of-beat="1" style="--tone:#a21caf" hidden>
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#a21caf">S</span><span class="os-jewel os-jewel-h" style="--jc:#a21caf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20L14 10"/><path d="M14 10l6-6 2 2-6 6z"/><path d="M20 2l2 2"/></svg></span><b>My vision</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
-<div class="ib-nutshell" style="--tone:#8e24aa"><p id="os-sec-motto-text" class="os-note" style="margin:0;"></p></div>
+<div class="ib-nutshell" style="--tone:#a21caf"><p id="os-sec-vision-text" class="os-note" style="margin:0;">A world where intelligence compounds and everybody wins.</p></div>
 <!-- NEW 2026-11-18 (about-skills round) — 16:9 interchangeable media slot. No working slot exists in the system; built in the harvested of-* language. -->
-<div class="of-media" data-of-media="about-1" style="--tone:#8e24aa">
-<div class="of-media-frame"><span class="os-jewel os-jewel-h" style="--jc:#8e24aa">▶</span><span class="of-media-label">Watch: My motto</span></div>
-<div class="of-media-paste"><label for="of-media-in-about-1">Paste a video or audio link</label><input class="os-input" id="of-media-in-about-1" type="url" inputmode="url" placeholder="Paste a video or audio link" autocomplete="off"></div>
+<div class="of-media" data-of-media="about-7" style="--tone:#a21caf">
+<div class="of-media-frame"><span class="os-jewel os-jewel-h" style="--jc:#a21caf">▶</span><span class="of-media-label">Watch: My vision</span></div>
+<div class="of-media-paste"><label for="of-media-in-about-7">Paste a video or audio link</label><input class="os-input" id="of-media-in-about-7" type="url" inputmode="url" placeholder="Paste a video or audio link" autocomplete="off"></div>
 </div>
-<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-motto-edit" rows="2" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-motto-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="motto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="motto" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<div class="os-status" id="os-sec-motto-status"></div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-vision-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-vision-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="vision"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="vision" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="vision" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="vision" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="os-status" id="os-sec-vision-status"></div>
 </div>
-
-<button type="button" class="p3-enter of-next" data-of-beat="1">Keep reading ◆</button></div>
-
-<div class="ib-layer layer-sapphire open of-beat" data-of-beat="2" style="--tone:#0f52ba" hidden><button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#0f52ba">S</span><span class="os-jewel os-jewel-h" style="--jc:#0f52ba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11.5V6a1.5 1.5 0 0 1 3 0v4.5m0-6a1.5 1.5 0 0 1 3 0V11m0-5.5a1.5 1.5 0 0 1 3 0V12m0-3.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-2.3a6 6 0 0 1-4.7-2.3L3.6 15a1.5 1.5 0 0 1 2.4-1.7L7 14.5"/></svg></span><b>My story</b><span class="ib-chev">▾</span></button>
-<div class="ib-layer-body">
-<div class="ib-nutshell" style="--tone:#0f52ba"><p id="abouttext">Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.</p></div>
-<!-- NEW 2026-11-18 (about-skills round) — 16:9 interchangeable media slot. No working slot exists in the system; built in the harvested of-* language. -->
-<div class="of-media" data-of-media="about-2" style="--tone:#0f52ba">
-<div class="of-media-frame"><span class="os-jewel os-jewel-h" style="--jc:#0f52ba">▶</span><span class="of-media-label">Watch: My story</span></div>
-<div class="of-media-paste"><label for="of-media-in-about-2">Paste a video or audio link</label><input class="os-input" id="of-media-in-about-2" type="url" inputmode="url" placeholder="Paste a video or audio link" autocomplete="off"></div>
 </div>
-<div class="os-fieldwrap"><textarea class="ph-about-edit" id="aboutedit" style="display:none;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="aboutedit" aria-label="Dictate your story" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions">
-<button class="ph-msg" id="editabout" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button>
-<button class="ph-msg" id="nayaabout" type="button" style="display:none;">Start from a template line</button>
-<button class="ph-connect" id="saveabout" type="button" style="display:none;">Save</button><button class="ph-msg" id="cancelabout" type="button" style="display:none;">Cancel</button><button class="ph-msg" id="xabout" type="button" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-</div>
-<div class="os-status" id="os-about-status"></div>
-</div>
-
-<button type="button" class="p3-enter of-next" data-of-beat="2">Keep reading ◆</button></div>
-
-<!-- FIX-PASS-3 FAIL 4: WHAT I DO slot — the About section had motto, story,
-     goals, purpose, mission, vision, but no WHAT I DO. The slot is here,
-     empty, wired to the same Edit/Save machinery (key "whatido") — the
-     words are Shawn's to write, never invented. -->
-<div class="ib-layer layer-emerald open of-beat" data-of-beat="3" style="--tone:#07925f" hidden>
-<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#07925f">S</span><span class="os-jewel os-jewel-h" style="--jc:#07925f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-8 8l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 8-8l-3.8 3.8z"/></svg></span><b>What I do</b><span class="ib-chev">▾</span></button>
-<div class="ib-layer-body">
-<div class="ib-nutshell" style="--tone:#07925f"><p id="os-sec-whatido-text" class="os-note" style="margin:0;">I build NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins.</p></div>
-<!-- NEW 2026-11-18 (about-skills round) — 16:9 interchangeable media slot. No working slot exists in the system; built in the harvested of-* language. -->
-<div class="of-media" data-of-media="about-3" style="--tone:#07925f">
-<div class="of-media-frame"><span class="os-jewel os-jewel-h" style="--jc:#07925f">▶</span><span class="of-media-label">Watch: What I do</span></div>
-<div class="of-media-paste"><label for="of-media-in-about-3">Paste a video or audio link</label><input class="os-input" id="of-media-in-about-3" type="url" inputmode="url" placeholder="Paste a video or audio link" autocomplete="off"></div>
-</div>
-<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-whatido-edit" rows="3" style="display:none;margin-top:10px;"></textarea></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="whatido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="whatido" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<div class="os-status" id="os-sec-whatido-status"></div>
-</div>
-
-<button type="button" class="p3-enter of-next" data-of-beat="3">Keep reading ◆</button></div>
-<div class="ib-layer layer-gold open of-beat" data-of-beat="4" style="--tone:#d4a017" hidden>
+<div class="ib-layer layer-gold open of-beat" data-of-beat="2" style="--tone:#d4a017" hidden>
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#d4a017">S</span><span class="os-jewel os-jewel-h" style="--jc:#d4a017"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span><b>My goals</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#d4a017"><p id="os-sec-goals-text" class="os-note" style="margin:0;">One million citizens by 2027.</p></div>
@@ -21169,6 +21158,36 @@ button.os-ld-node .os-ld-n{
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-goals-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-goals-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="goals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="goals" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="goals" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="goals" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="os-status" id="os-sec-goals-status"></div>
+</div>
+
+<button type="button" class="p3-enter of-next" data-of-beat="2">Keep reading ◆</button></div>
+<div class="ib-layer layer-orange open of-beat" data-of-beat="3" style="--tone:#c2410c" hidden>
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#c2410c">S</span><span class="os-jewel os-jewel-h" style="--jc:#c2410c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0"/><path d="M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></span><b>My mission</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
+<div class="ib-nutshell" style="--tone:#c2410c"><p id="os-sec-mission-text" class="os-note" style="margin:0;">Build NayaNET — the intelligent highway for the AI age.</p></div>
+<!-- NEW 2026-11-18 (about-skills round) — 16:9 interchangeable media slot. No working slot exists in the system; built in the harvested of-* language. -->
+<div class="of-media" data-of-media="about-6" style="--tone:#c2410c">
+<div class="of-media-frame"><span class="os-jewel os-jewel-h" style="--jc:#c2410c">▶</span><span class="of-media-label">Watch: My mission</span></div>
+<div class="of-media-paste"><label for="of-media-in-about-6">Paste a video or audio link</label><input class="os-input" id="of-media-in-about-6" type="url" inputmode="url" placeholder="Paste a video or audio link" autocomplete="off"></div>
+</div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-mission-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-mission-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="mission"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="mission" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="mission" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="mission" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="os-status" id="os-sec-mission-status"></div>
+</div>
+
+<button type="button" class="p3-enter of-next" data-of-beat="3">Keep reading ◆</button></div>
+<div class="ib-layer layer-purple open of-beat" data-of-beat="4" style="--tone:#8e24aa">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#8e24aa">S</span><span class="os-jewel os-jewel-h" style="--jc:#8e24aa"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M10 7.5H6.8A3.3 3.3 0 0 0 3.5 10.8V17h6.6v-6.6H6.9a1.6 1.6 0 0 1 1.5-1.7v-1.2zm10.4 0h-3.2a3.3 3.3 0 0 0-3.3 3.3V17h6.6v-6.6h-3.2a1.6 1.6 0 0 1 1.5-1.7V7.5z"/></svg></span><b>My motto</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
+<div class="ib-nutshell" style="--tone:#8e24aa"><p id="os-sec-motto-text" class="os-note" style="margin:0;"></p></div>
+<!-- NEW 2026-11-18 (about-skills round) — 16:9 interchangeable media slot. No working slot exists in the system; built in the harvested of-* language. -->
+<div class="of-media" data-of-media="about-1" style="--tone:#8e24aa">
+<div class="of-media-frame"><span class="os-jewel os-jewel-h" style="--jc:#8e24aa">▶</span><span class="of-media-label">Watch: My motto</span></div>
+<div class="of-media-paste"><label for="of-media-in-about-1">Paste a video or audio link</label><input class="os-input" id="of-media-in-about-1" type="url" inputmode="url" placeholder="Paste a video or audio link" autocomplete="off"></div>
+</div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-motto-edit" rows="2" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-motto-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="motto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="motto" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="os-status" id="os-sec-motto-status"></div>
 </div>
 
 <button type="button" class="p3-enter of-next" data-of-beat="4">Keep reading ◆</button></div>
@@ -21187,35 +21206,39 @@ button.os-ld-node .os-ld-n{
 </div>
 
 <button type="button" class="p3-enter of-next" data-of-beat="5">Keep reading ◆</button></div>
-<div class="ib-layer layer-orange open of-beat" data-of-beat="6" style="--tone:#c2410c" hidden>
-<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#c2410c">S</span><span class="os-jewel os-jewel-h" style="--jc:#c2410c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0"/><path d="M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></span><b>My mission</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer layer-sapphire open of-beat" data-of-beat="6" style="--tone:#0f52ba" hidden><button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#0f52ba">S</span><span class="os-jewel os-jewel-h" style="--jc:#0f52ba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11.5V6a1.5 1.5 0 0 1 3 0v4.5m0-6a1.5 1.5 0 0 1 3 0V11m0-5.5a1.5 1.5 0 0 1 3 0V12m0-3.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-2.3a6 6 0 0 1-4.7-2.3L3.6 15a1.5 1.5 0 0 1 2.4-1.7L7 14.5"/></svg></span><b>My story</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
-<div class="ib-nutshell" style="--tone:#c2410c"><p id="os-sec-mission-text" class="os-note" style="margin:0;">Build NayaNET — the intelligent highway for the AI age.</p></div>
+<div class="ib-nutshell" style="--tone:#0f52ba"><p id="abouttext">Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.</p></div>
 <!-- NEW 2026-11-18 (about-skills round) — 16:9 interchangeable media slot. No working slot exists in the system; built in the harvested of-* language. -->
-<div class="of-media" data-of-media="about-6" style="--tone:#c2410c">
-<div class="of-media-frame"><span class="os-jewel os-jewel-h" style="--jc:#c2410c">▶</span><span class="of-media-label">Watch: My mission</span></div>
-<div class="of-media-paste"><label for="of-media-in-about-6">Paste a video or audio link</label><input class="os-input" id="of-media-in-about-6" type="url" inputmode="url" placeholder="Paste a video or audio link" autocomplete="off"></div>
+<div class="of-media" data-of-media="about-2" style="--tone:#0f52ba">
+<div class="of-media-frame"><span class="os-jewel os-jewel-h" style="--jc:#0f52ba">▶</span><span class="of-media-label">Watch: My story</span></div>
+<div class="of-media-paste"><label for="of-media-in-about-2">Paste a video or audio link</label><input class="os-input" id="of-media-in-about-2" type="url" inputmode="url" placeholder="Paste a video or audio link" autocomplete="off"></div>
 </div>
-<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-mission-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-mission-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="mission"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="mission" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="mission" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="mission" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<div class="os-status" id="os-sec-mission-status"></div>
+<div class="os-fieldwrap"><textarea class="ph-about-edit" id="aboutedit" style="display:none;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="aboutedit" aria-label="Dictate your story" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions">
+<button class="ph-msg" id="editabout" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button>
+<button class="ph-msg" id="nayaabout" type="button" style="display:none;">Start from a template line</button>
+<button class="ph-connect" id="saveabout" type="button" style="display:none;">Save</button><button class="ph-msg" id="cancelabout" type="button" style="display:none;">Cancel</button><button class="ph-msg" id="xabout" type="button" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="os-status" id="os-about-status"></div>
 </div>
 
 <button type="button" class="p3-enter of-next" data-of-beat="6">Keep reading ◆</button></div>
-<div class="ib-layer layer-magenta open of-beat" data-of-beat="7" style="--tone:#a21caf" hidden>
-<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#a21caf">S</span><span class="os-jewel os-jewel-h" style="--jc:#a21caf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20L14 10"/><path d="M14 10l6-6 2 2-6 6z"/><path d="M20 2l2 2"/></svg></span><b>My vision</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer layer-emerald open of-beat" data-of-beat="7" style="--tone:#07925f" hidden>
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#07925f">S</span><span class="os-jewel os-jewel-h" style="--jc:#07925f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-8 8l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 8-8l-3.8 3.8z"/></svg></span><b>What I do</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
-<div class="ib-nutshell" style="--tone:#a21caf"><p id="os-sec-vision-text" class="os-note" style="margin:0;">A world where intelligence compounds and everybody wins.</p></div>
+<div class="ib-nutshell" style="--tone:#07925f"><p id="os-sec-whatido-text" class="os-note" style="margin:0;">I build NayaNET &mdash; the intelligent layer of the internet, where intelligence compounds and everybody wins.</p></div>
 <!-- NEW 2026-11-18 (about-skills round) — 16:9 interchangeable media slot. No working slot exists in the system; built in the harvested of-* language. -->
-<div class="of-media" data-of-media="about-7" style="--tone:#a21caf">
-<div class="of-media-frame"><span class="os-jewel os-jewel-h" style="--jc:#a21caf">▶</span><span class="of-media-label">Watch: My vision</span></div>
-<div class="of-media-paste"><label for="of-media-in-about-7">Paste a video or audio link</label><input class="os-input" id="of-media-in-about-7" type="url" inputmode="url" placeholder="Paste a video or audio link" autocomplete="off"></div>
+<div class="of-media" data-of-media="about-3" style="--tone:#07925f">
+<div class="of-media-frame"><span class="os-jewel os-jewel-h" style="--jc:#07925f">▶</span><span class="of-media-label">Watch: What I do</span></div>
+<div class="of-media-paste"><label for="of-media-in-about-3">Paste a video or audio link</label><input class="os-input" id="of-media-in-about-3" type="url" inputmode="url" placeholder="Paste a video or audio link" autocomplete="off"></div>
 </div>
-<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-vision-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-vision-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="vision"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="vision" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="vision" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="vision" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<div class="os-status" id="os-sec-vision-status"></div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-whatido-edit" rows="3" style="display:none;margin-top:10px;"></textarea></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="whatido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="whatido" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="os-status" id="os-sec-whatido-status"></div>
 </div>
-</div>
+
+<button type="button" class="p3-enter of-next" data-of-beat="7">Keep reading ◆</button></div>
 
 
 
@@ -21271,7 +21294,87 @@ button.os-ld-node .os-ld-n{
 <figure class="ph-album-tile ph-album-empty"><span class="ph-album-plus">+</span><figcaption>Add a photo</figcaption></figure>
 </div>
 </div>
-</div><div class="ph-sec os-view" id="story" data-os-view="story" data-block="story">
+</div><script>
+/* PERSONAL FRAME ROUND 2026-11-19 - About top buttons: About (default, text) / Photos / Videos / Socials.
+   Videos are LINKS only, never uploaded. Socials: icons to their sites; stats are our own tracked clicks. */
+(function(){
+  function $(id){ return document.getElementById(id); }
+  function aboutParts(){ return Array.prototype.slice.call(document.querySelectorAll('#about .of-bridge, #about .of-pres-head, #about .of-controls, #about .of-slides-nav, #about .of-beat')); }
+  function showAboutTab(name){
+    var about=document.getElementById('about'); if(!about) return;
+    var tabs=document.querySelectorAll('.fr-about-tab');
+    tabs.forEach(function(t){ var on=t.getAttribute('data-fr-about')===name; t.classList.toggle('on',on); t.setAttribute('aria-selected', on?'true':'false'); });
+    // Class on #about hides the bridge/beats via CSS - the beats' own hidden
+    // attributes (the unfold state) are never touched, so the unfold resumes
+    // exactly where the reader left it.
+    about.classList.remove('fr-show-photos','fr-show-videos','fr-show-socials');
+    if(name!=='about') about.classList.add('fr-show-'+name);
+    if(name==='photos') renderPhotos();
+    if(name==='videos') renderVideos();
+    if(name==='socials') renderSocials();
+  }
+  function renderPhotos(){
+    var g=$('frPhotoGrid'); if(!g) return;
+    var imgs=[];
+    try{
+      var cv=document.querySelector('#cvr img'); if(cv&&cv.src) imgs.push({src:cv.src, alt:'Cover'});
+      var av=document.querySelector('#avv img'); if(av&&av.src) imgs.push({src:av.src, alt:'My picture'});
+      document.querySelectorAll('#about img.os-avatar-img').forEach(function(im){ if(im.src) imgs.push({src:im.src, alt:'About'}); });
+    }catch(e){}
+    var seen={}, list=[];
+    imgs.forEach(function(im){ if(!seen[im.src]){ seen[im.src]=1; list.push(im); } });
+    g.innerHTML = list.length ? list.map(function(im){ return '<span class="fr-photo"><img src="'+im.src.replace(/"/g,'&quot;')+'" alt="'+im.alt+'"></span>'; }).join('') : '<p class="os-note">No photos yet - add your first one below.</p>';
+  }
+  function lsGet(k, d){ try{ var v=JSON.parse(localStorage.getItem(k)||'null'); return v==null?d:v; }catch(e){ return d; } }
+  function lsSet(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  function hostOf(u){ try{ return new URL(u).hostname.replace(/^www\./,''); }catch(e){ return 'video'; } }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function renderVideos(){
+    var listEl=$('frVideoList'); if(!listEl) return;
+    var vids=lsGet('naya.about.videos.v1', []);
+    listEl.innerHTML = vids.length ? vids.map(function(u,i){ return '<div class="fr-video-row"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">&#9654;</span><a href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(hostOf(u))+'</a><button class="ph-msg fr-video-del" type="button" data-fr-vdel="'+i+'" aria-label="Remove this video">&#10005;</button></div>'; }).join('') : '<p class="os-note">No videos yet - paste a link above. Nothing is uploaded here.</p>';
+  }
+  function renderSocials(){
+    var row=$('frSocialRow'); if(!row) return;
+    var links=lsGet('naya.about.socials.v1', [{label:'YouTube', url:'https://www.youtube.com/@NayaPowered'}]);
+    var clicks=lsGet('naya.about.social.clicks.v1', {});
+    row.innerHTML = links.map(function(l,i){ return '<a class="fr-social" href="'+esc(l.url)+'" target="_blank" rel="noopener" data-fr-soc="'+i+'"><span class="os-jewel os-jewel-h" style="--jc:#d4a017">&#10022;</span><span>'+esc(l.label)+'</span><span class="fr-soc-count">'+(clicks[i]||0)+' clicks</span></a>'; }).join('');
+    var total=0; Object.keys(clicks).forEach(function(k){ total+=clicks[k]||0; });
+    var st=$('frSocialStats'); if(st) st.textContent = total ? ('Tracked clicks from this page: '+total+'.') : 'No clicks tracked yet - tap an icon and the count starts.';
+  }
+  document.addEventListener('click', function(e){
+    var t=e.target && e.target.closest ? e.target.closest('.fr-about-tab') : null;
+    if(t){ showAboutTab(t.getAttribute('data-fr-about')); return; }
+    var pa=e.target && e.target.closest ? e.target.closest('#frPhotoAdd') : null;
+    if(pa){ var b=document.getElementById('phAlbumChoose'); if(b){ b.click(); } return; }
+    var va=e.target && e.target.closest ? e.target.closest('#frVideoAdd') : null;
+    if(va){
+      var inp=$('frVideoIn'); var u=inp?inp.value.trim():'';
+      var st=$('frVideoStatus');
+      if(!/^https?:\/\//i.test(u)){ if(st) st.textContent='Paste a full link - https://...'; return; }
+      var vids=lsGet('naya.about.videos.v1', []); vids.push(u); lsSet('naya.about.videos.v1', vids);
+      if(inp) inp.value=''; if(st) st.textContent='Added - it opens from its own site, never uploaded here.';
+      renderVideos(); return;
+    }
+    var vd=e.target && e.target.closest ? e.target.closest('[data-fr-vdel]') : null;
+    if(vd){ var vids2=lsGet('naya.about.videos.v1', []); vids2.splice(parseInt(vd.getAttribute('data-fr-vdel'),10),1); lsSet('naya.about.videos.v1', vids2); renderVideos(); return; }
+    var sa=e.target && e.target.closest ? e.target.closest('#frSocialAdd') : null;
+    if(sa){
+      var inp2=$('frSocialIn'); var u2=inp2?inp2.value.trim():'';
+      var st2=$('frSocialStatus');
+      if(!/^https?:\/\//i.test(u2)){ if(st2) st2.textContent='Paste a full link - https://...'; return; }
+      var links=lsGet('naya.about.socials.v1', [{label:'YouTube', url:'https://www.youtube.com/@NayaPowered'}]);
+      links.push({label:hostOf(u2), url:u2}); lsSet('naya.about.socials.v1', links);
+      if(inp2) inp2.value=''; if(st2) st2.textContent='Added.';
+      renderSocials(); return;
+    }
+    var sc=e.target && e.target.closest ? e.target.closest('[data-fr-soc]') : null;
+    if(sc){ var clicks=lsGet('naya.about.social.clicks.v1', {}); var k=sc.getAttribute('data-fr-soc'); clicks[k]=(clicks[k]||0)+1; lsSet('naya.about.social.clicks.v1', clicks); setTimeout(renderSocials, 400); return; }
+  });
+  window.__frShowAboutTab = showAboutTab;
+})();
+</script>
+<div class="ph-sec os-view" id="story" data-os-view="story" data-block="story">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#8e24aa;color:#8e24aa;"></span> <span id="os-story-title">My Story</span></div>
 <div class="ib-layer layer-sapphire open">
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#0f52ba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11.5V6a1.5 1.5 0 0 1 3 0v4.5m0-6a1.5 1.5 0 0 1 3 0V11m0-5.5a1.5 1.5 0 0 1 3 0V12m0-3.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-2.3a6 6 0 0 1-4.7-2.3L3.6 15a1.5 1.5 0 0 1 2.4-1.7L7 14.5"/></svg></span><b>The story</b><span class="ib-chev">▾</span></button>
@@ -21829,6 +21932,16 @@ button.os-ld-node .os-ld-n{
 <div class="ph-sec os-view" id="settings" data-os-view="settings" data-block="settings">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#0f52ba;color:#0f52ba;"></span> <span data-mw-tr="set">Settings</span></div>
 <div class="ph-actions" style="margin:0 0 12px;"><button class="ph-msg" type="button" data-os-go="home" aria-label="Close settings">&#10005; Close settings</button></div>
+<div class="fr-set-tabs" role="tablist" aria-label="Settings sections">
+<button class="ph-msg fr-set-tab on" type="button" data-fr-set="0" aria-selected="true">Set Your World</button>
+<button class="ph-msg fr-set-tab" type="button" data-fr-set="1" aria-selected="false">Preferences</button>
+<button class="ph-msg fr-set-tab" type="button" data-fr-set="2" aria-selected="false">App behaviour</button>
+<button class="ph-msg fr-set-tab" type="button" data-fr-set="3" aria-selected="false">Page settings</button>
+<button class="ph-msg fr-set-tab" type="button" data-fr-set="4" aria-selected="false">Rooms &amp; worlds</button>
+<button class="ph-msg fr-set-tab" type="button" data-fr-set="5" aria-selected="false">Cover &amp; alerts</button>
+<button class="ph-msg fr-set-tab" type="button" data-fr-set="6" aria-selected="false">Home Hub &amp; install</button>
+</div>
+<div class="fr-set-nav"><button class="ph-msg fr-set-stepbtn" type="button" id="frSetBack">&#8249; Back</button><span class="fr-set-step" id="frSetStep">Step 1 of 7 - Set Your World</span><button class="ph-msg fr-set-stepbtn" type="button" id="frSetNext">Next &#8250;</button></div>
 <div class="ph-card" style="--ac:#0f52ba;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#0f52ba"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.1"/><circle cx="12" cy="12" r="6.3"/><path d="M12 2.8v2.7M12 18.5v2.7M2.8 12h2.7M18.5 12h2.7M5.5 5.5l1.9 1.9M16.6 16.6l1.9 1.9M18.5 5.5l-1.9 1.9M7.4 16.6l-1.9 1.9"/></svg></span> <span data-mw-tr="set">Your Preferences</span></h3>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13.5A8 8 0 0 1 10.5 4 8 8 0 1 0 20 13.5z"/></svg></span><span class="os-setrow-main"><b data-mw-tr="set">Deep black</b><span class="os-setrow-sub" data-mw-tr="set">This app&rsquo;s deep-black theme.</span></span><span class="os-switch-wrap" style="--jc:#0f52ba"><button class="os-switch on" id="os-set-dark" data-os-set="dark" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
@@ -21937,6 +22050,96 @@ button.os-ld-node .os-ld-n{
 <button class="ph-connect" id="os-install-btn" type="button" data-mw-tr="set">Install this app</button>
 </div>
 </div></div>
+<style id="fr-frame-round-css">
+/* PERSONAL FRAME ROUND 2026-11-19 - one frame family: obsidian inside, rim + light
+   in the object's own colour, flowing light INSIDE the frame edge, white text 17px+. */
+.fr-set-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.fr-set-tabs::-webkit-scrollbar{display:none}
+.fr-set-tab{flex:0 0 auto;font-size:17px;font-weight:700;color:#fff;white-space:nowrap}
+.fr-set-tab.on{border-color:#8e24aa;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #8e24aa,0 10px 22px rgba(0,0,0,.55)}
+.fr-set-tab[data-fr-set="1"].on{border-color:#0f52ba;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #0f52ba,0 10px 22px rgba(0,0,0,.55)}
+.fr-set-tab[data-fr-set="2"].on{border-color:#07925f;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #07925f,0 10px 22px rgba(0,0,0,.55)}
+.fr-set-tab[data-fr-set="3"].on{border-color:#d4a017;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #d4a017,0 10px 22px rgba(0,0,0,.55)}
+.fr-set-tab[data-fr-set="4"].on{border-color:#c2410c;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #c2410c,0 10px 22px rgba(0,0,0,.55)}
+.fr-set-tab[data-fr-set="5"].on{border-color:#c62828;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #c62828,0 10px 22px rgba(0,0,0,.55)}
+.fr-set-tab[data-fr-set="6"].on{border-color:#a21caf;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #a21caf,0 10px 22px rgba(0,0,0,.55)}
+.fr-set-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 16px}
+.fr-set-step{font-size:17px;font-weight:700;color:#fff;text-align:center}
+.fr-set-stepbtn{font-size:17px;font-weight:700;color:#fff}
+#settings .ph-card.fr-frame-on{position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -4px 8px rgba(0,0,0,.5),0 0 0 1.5px var(--fr-ac,#8e24aa),0 0 28px -6px var(--fr-ac,#8e24aa),0 12px 28px rgba(0,0,0,.6)}
+#settings .ph-card.fr-frame-on::before{content:"";position:absolute;left:16px;right:16px;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);border-radius:2px;pointer-events:none}
+.fr-about-tab{font-size:17px;font-weight:700;color:#fff}
+.fr-about-tab.on{border-color:#8e24aa;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #8e24aa,0 10px 22px rgba(0,0,0,.55)}
+.fr-about-tab[data-fr-about="photos"].on{border-color:#0f52ba;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #0f52ba,0 10px 22px rgba(0,0,0,.55)}
+.fr-about-tab[data-fr-about="videos"].on{border-color:#07925f;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #07925f,0 10px 22px rgba(0,0,0,.55)}
+.fr-about-tab[data-fr-about="socials"].on{border-color:#d4a017;box-shadow:inset 0 -4px 8px rgba(0,0,0,.5),0 0 24px -4px #d4a017,0 10px 22px rgba(0,0,0,.55)}
+#about.fr-show-photos .of-bridge,#about.fr-show-photos .of-pres-head,#about.fr-show-photos .of-controls,#about.fr-show-photos .of-slides-nav,#about.fr-show-photos .of-beat,
+#about.fr-show-videos .of-bridge,#about.fr-show-videos .of-pres-head,#about.fr-show-videos .of-controls,#about.fr-show-videos .of-slides-nav,#about.fr-show-videos .of-beat,
+#about.fr-show-socials .of-bridge,#about.fr-show-socials .of-pres-head,#about.fr-show-socials .of-controls,#about.fr-show-socials .of-slides-nav,#about.fr-show-socials .of-beat{display:none}
+#about.fr-show-photos #frAboutPhotos,#about.fr-show-videos #frAboutVideos,#about.fr-show-socials #frAboutSocials{display:block}
+.fr-photo-grid{display:flex;flex-wrap:wrap;gap:16px;margin:12px 0}
+.fr-photo{width:160px;height:160px;border-radius:18px;overflow:hidden;border:1.5px solid rgba(255,255,255,.9);box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.fr-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.fr-video-row{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+.fr-video-row a{color:#fff;font-size:17px;font-weight:700}
+.fr-social-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px}
+.fr-social{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:96px;padding:16px 12px;border-radius:18px;border:1.5px solid rgba(255,255,255,.9);background:#050607;color:#fff;text-decoration:none;font-size:17px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.fr-soc-count{font-size:17px;font-weight:700;color:#fff}
+.pc-page-end-info{width:36px;height:36px;border-radius:50%;border:1.5px solid #8e24aa;background:#050607;color:#fff;font-size:17px;font-weight:800;cursor:pointer;margin-left:12px;box-shadow:0 0 16px -4px #8e24aa,0 8px 20px rgba(0,0,0,.55)}
+</style>
+<script>
+/* PERSONAL FRAME ROUND 2026-11-19 - Settings framed + tabs. Set Your World first,
+   frame by frame with Next - no long scroll. Existing settings cards are grouped
+   into tabs at runtime; nothing is moved, removed or rebuilt. */
+(function(){
+  var NAMES=['Set Your World','Preferences','App behaviour','Page settings','Rooms & worlds','Cover & alerts','Home Hub & install'];
+  var ACCENTS=['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf'];
+  var current=0;
+  function cards(){
+    var sec=document.getElementById('settings'); if(!sec) return [];
+    return Array.prototype.slice.call(sec.querySelectorAll(':scope > .ph-card'));
+  }
+  function tabOf(card){
+    var t=(card.textContent||'');
+    if(/About you/.test(t)) return 0;
+    if(/App behaviour/.test(t)) return 2;
+    if(/Common settings|Default feed tab|Identity/.test(t)) return 3;
+    if(/Every room|Everything on this page/.test(t)) return 4;
+    if(/Cover buttons|Membership news|Notifications/.test(t)) return 5;
+    if(/Go to Home Hub|Install this app/.test(t)) return 6;
+    return 1;
+  }
+  function showTab(n){
+    current=Math.max(0, Math.min(6, n));
+    var cs=cards();
+    cs.forEach(function(c){
+      var on = tabOf(c)===current;
+      c.style.display = on ? '' : 'none';
+      c.classList.toggle('fr-frame-on', on);
+      c.style.setProperty('--fr-ac', ACCENTS[current]);
+    });
+    document.querySelectorAll('.fr-set-tab').forEach(function(b){
+      var on=parseInt(b.getAttribute('data-fr-set'),10)===current;
+      b.classList.toggle('on', on); b.setAttribute('aria-selected', on?'true':'false');
+    });
+    var step=document.getElementById('frSetStep');
+    if(step) step.textContent='Step '+(current+1)+' of 7 - '+NAMES[current];
+    var back=document.getElementById('frSetBack'), next=document.getElementById('frSetNext');
+    if(back) back.style.visibility = current===0 ? 'hidden' : 'visible';
+    if(next) next.textContent = current===6 ? 'Done' : 'Next >';
+  }
+  document.addEventListener('click', function(e){
+    var t=e.target && e.target.closest ? e.target.closest('.fr-set-tab') : null;
+    if(t){ showTab(parseInt(t.getAttribute('data-fr-set'),10)); return; }
+    if(e.target && e.target.closest && e.target.closest('#frSetNext')){ if(current===6){ var h=document.querySelector('[data-os-go="home"]'); if(h) h.click(); } else showTab(current+1); return; }
+    if(e.target && e.target.closest && e.target.closest('#frSetBack')){ showTab(current-1); return; }
+    if(e.target && e.target.closest && e.target.closest('#settingsbtn')){ setTimeout(function(){ showTab(0); }, 60); return; }
+  });
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', function(){ showTab(0); }); }
+  else { showTab(0); }
+  window.__frShowSettingsTab = showTab;
+})();
+</script>
 <script>
 /* FOLLOW-ON 3 AMEND (2026-11-18) — the demographics menu ("About you").
    Shawn's eye (02:20Z): the top-corner settings control opens a beautiful
@@ -25951,13 +26154,20 @@ function wallCard(j, iso, pid, idx){
        THIS block; Save persists (device set + a save record on the page's
        own store) with a visible Saved shelf; likes are honest device-local
        state (♥ 1 or nothing — no invented counts); every real card carries
-       the timestamp standard. The three teaching samples render ONLY when
+       the timestamp standard. The ten Personal samples (Shawn's ten NayaNET categories, 2026-11-19) render ONLY when
        the page has no notes of its own, labeled SAMPLE, never dressed as
        the page's content. — */
   var SAMPLE_NOTES=[
-    {t:'The Power of Showing Up', b:'Consistency beats intensity. Show up every day, even when it is hard. Especially when it is hard.', c:'#07925f'},
-    {t:'Build in the Open', b:'Share your process, not just your product. People connect with the journey, not the destination.', c:'#d4a017'},
-    {t:'Design is Intelligence', b:'Good design is not decoration — it is intelligence made visible. Every pixel should earn its place.', c:'#c2410c'}
+    {t:'Naya Is My Wise Guide, Not My Tool', b:'Naya is a mind, a wise one, who thinks before she acts and does the most intelligent thing every time.', c:'#8e24aa'},
+    {t:'My Smart Notes Keep Only What Matters', b:'A smart note is intelligence distilled to its essence, in a nutshell, so a hundred notes become ten you can actually use.', c:'#0f52ba'},
+    {t:'My Hub Is Where My World Comes Together', b:'The Hub is my home feed &mdash; everybody together, mine, and what is happening now &mdash; all in one place.', c:'#07925f'},
+    {t:'My Personal Page Is My World', b:'My Personal page is my world &mdash; my cover, my words, my feed &mdash; the place that is me.', c:'#d4a017'},
+    {t:'I Connect With Like Minds', b:'Naya matches me with people like me &mdash; same values, same language, same direction &mdash; without me searching.', c:'#c2410c'},
+    {t:'My Mail and Messages Stay Private', b:'My mail and my messages are mine alone &mdash; Naya never reads them, and nobody else does either.', c:'#c62828'},
+    {t:'My Day Has a Shape', b:'My calendar, my journal and my bookings are one thing &mdash; my day, laid out so I can live it, not chase it.', c:'#a21caf'},
+    {t:'My Memory Is Organized For Me', b:'My Smart Box keeps everything, my Smart Lists show it &mdash; auto-organized, so I find anything in seconds.', c:'#3f51b5'},
+    {t:'I Am Always Learning', b:'The Academy, the Masterclass and the Fast Action Club teach me, step by step, in frames I can actually finish.', c:'#0e7490'},
+    {t:'I Grow, and My Growth Is Counted', b:'My growth is real and it is counted &mdash; my points, my joins, my progress, all in one honest dashboard.', c:'#6d28d9'}
   ];
   var osNotesCache=[];
   function loadNotes(){
@@ -28764,7 +28974,7 @@ html.nsb-calm .nsb-tab{transition:none;}
      THE FIVE only, built by NayaNotif below (ADD · MAIL · ACTIVITY ·
      WORLDS · ECOSYSTEM, harvested verbatim from fixpass3). The Hub keeps
      its own nine pills; Personal never carries them again. -->
-<footer class="pc-page-end" aria-label="Page end"><span class="pc-page-end-mark" aria-hidden="true">&#9670;</span><span class="pc-page-end-line">Together we grow</span><span class="pc-page-end-sub">NayaNET</span></footer>
+<footer class="pc-page-end" aria-label="Page end"><span class="pc-page-end-mark" aria-hidden="true">&#9670;</span><span class="pc-page-end-line">Together we grow</span><span class="pc-page-end-sub">NayaNET</span><button class="pc-page-end-info" type="button" data-os-go="about" aria-label="About this page">i</button></footer>
 <div class="nsb nsb-bottom" id="nsbBottom" aria-label="Network"></div>
 <style>
 /* ============ SMART BAR CHROME ============ */
@@ -30037,7 +30247,7 @@ window.NayaNotif = window.NayaNotif || {
    nayanet.app/joinus, the owner's ambassador Smart Link. */
 (function(){
   'use strict';
-  var HUB_URL='https://nayanet.app/hub';
+  var HUB_URL='https://nayanet.app/#/hub';
   window.NAYA_HUB_URL=HUB_URL;
   var PAGE_ALIAS=(typeof window!=='undefined' && window.PAGE_ALIAS) ? window.PAGE_ALIAS : 'flagship-personal';
   function lsGet(k){ try{ return window.localStorage.getItem(k); }catch(e){ return null; } }
