@@ -4,7 +4,7 @@
 
 **NN-20261120-the-real-red-n-trillion-dollar-ball · Naya Note · 2026-11-20 ~14:23–14:52 MST (call 4f055989)**
 
-*Paired Smart Note: SN-pending — The Real Red N, a Trillion-Dollar Ball (takes the next free number at filing)*
+*Paired Smart Note: SN-4324 — The Real Red N, a Trillion-Dollar Ball*
 
 **Category:** Design — the red N, the exact one he sent, as a ball
 
