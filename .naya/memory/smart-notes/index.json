@@ -69252,26 +69252,6 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "1eed9c77afdc7592629eb90dfa01cf083eae10eee0e772edc9d2e6529bc736fa"
-    },
-    {
-      "smart_note_id": "SN-3897",
-      "intelligent_block_id": "IB-SMART-NOTE-20261119-sn3897-prove-every-route-not-just-the-canonical-one",
-      "title": "SN-3897 — Prove Every Route, Not Just the Canonical One",
-      "content_hash": "7f8fe35914a21511b71f79e9a2be51a38bbf181a957e9dfb77ee2658e32438b8",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/19/LAW/SN-3897/IB-SMART-NOTE-20261119-sn3897-prove-every-route-not-just-the-canonical-one.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "truth_state": "CANDIDATE",
-      "scope": "PRIVATE",
-      "category": "LAW",
-      "topic": "LAW",
-      "subtopic": "",
-      "captured_at": "2026-11-19",
-      "lifecycle_state": "ACTIVE",
-      "provenance": {
-        "ingestion": "canonical-reconstruction",
-        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
-      },
-      "page_hash": "b5b998d0ec93c0144d5e7bad878ae065c06e578b5dafa317b7de37a317cca64e"
     }
   ],
   "sequence_policy": {
@@ -69282,5 +69262,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "3839e761c1306c842c80da8c1a120c942037e028b400da343c7853c13fd56057"
+  "corpus_manifest_hash": "a7b16228b9abeea48a03388a9f711cfd8cc8d792915ac7704ff878a440d46bd3"
 }
