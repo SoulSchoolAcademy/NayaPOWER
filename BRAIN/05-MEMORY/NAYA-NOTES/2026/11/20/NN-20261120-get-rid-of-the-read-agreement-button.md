@@ -4,7 +4,7 @@
 
 **NN-20261120-get-rid-of-the-read-agreement-button · Naya Note · 2026-11-20 ~15:38–15:46 MST**
 
-*Paired Smart Note: SN-pending — Get Rid of the Read Agreement Button (takes the next free number at filing)*
+*Paired Smart Note: SN-4341 — Get Rid of the Read Agreement Button*
 
 **Category:** Law — the unasked extra goes; only Let's Go stays
 
