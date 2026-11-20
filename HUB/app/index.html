@@ -154,7 +154,7 @@ window.addEventListener('appinstalled', function () {
     var(--bg);
 }
 
-.ib-subtitle{font-size:19px;color:#f2f2f6;text-align:center;margin:6px 0 2px;font-weight:500;letter-spacing:.02em;line-height:1.4}
+.ib-subtitle{font-size:19px;color:#f2f2f6;text-align:center;margin:6px 0 2px;font-weight:500;letter-spacing:.02em;line-height:1.4;text-shadow:0 0 12px rgba(255,255,255,.30)} /* SMART-NOTE FIX1 2026-11-20 (items 5/17): subheading lit. */
 </style>
 <style>/* css/base.css @ baf1221d9 */
 /* ═══════════════════════════════════════════════════════════════════
@@ -1655,11 +1655,12 @@ body.msg-open{overflow:hidden;}
 .ib-layer-head .v10-icon { width: 32px; height: 32px; flex-basis: 32px; }
 /* Layer jewel: black core, color glow — premium depth */
 .layer-jewel-wrap {
-  display: inline-grid; place-items: center;
+  display: inline-grid; place-items: center; position: relative;
   width: 36px; height: 36px; flex: none;
   filter: drop-shadow(0 0 10px var(--lc)) drop-shadow(0 2px 6px rgba(0,0,0,.6));
 }
 .layer-jewel-svg { width: 36px; height: 36px; }
+.layer-jewel-wrap::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, var(--lc) 320deg, rgba(255,255,255,.95) 348deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px; animation: orb-spin 120s linear infinite; pointer-events: none; } /* SMART-NOTE FIX1 2026-11-20 (items 15/18): a flow of light slowly goes around EVERY circle icon — child, grandma, what-it-means, all of them — in the icon's own colour. */
 /* Retire the 12px dot — replaced by faceted jewels */
 .ib-dot { display: none; }
 
@@ -1786,7 +1787,7 @@ body.msg-open{overflow:hidden;}
 /* ——— Action count badges ——— */
 .action-count {
   display: inline-grid; place-items: center;
-  min-width: 22px; height: 22px; padding: 0 6px;
+  min-width: 24px; height: 24px; padding: 0 6px; line-height: 1; box-sizing: border-box; vertical-align: middle; align-self: center; /* SMART-NOTE FIX1 2026-11-20 (item 7): the 0 perfectly centered in its box — the later 2px-border rule on a 22px height clipped the 17px digit; the box aligns to the circle. */
   margin-left: 8px;
   border-radius: 999px;
   background: rgba(255,255,255,.12);
@@ -1826,6 +1827,7 @@ body.msg-open{overflow:hidden;}
   background: linear-gradient(135deg, color-mix(in srgb, var(--tone, #8e24aa) 8%, transparent), transparent 70%) !important;
   border-radius: 0 12px 12px 0 !important;
   margin: 16px 0 20px !important;
+  text-shadow: 0 0 12px rgba(255,255,255,.22) !important; /* SMART-NOTE FIX1 2026-11-20 (items 5/17): the nutshell is lit silver. */
 }
 .ib-nutshell .ib-nutshell-label {
   display: block;
@@ -1834,6 +1836,7 @@ body.msg-open{overflow:hidden;}
   font-weight: 800;
   color: var(--tone, #8e24aa);
   margin-bottom: 8px;
+  text-shadow: 0 0 12px rgba(255,255,255,.55);
 }
 
 /* ——— Star rating pulse animation ——— */
@@ -1946,6 +1949,7 @@ body.msg-open{overflow:hidden;}
     0 0 14px -2px color-mix(in srgb, var(--glow) 45%, transparent), 0 10px 24px rgba(0,0,0,.6);
 }
 .action[data-kind="create-world"] { --action-color: #8e24aa; } /* CREATE WORLD 00:05Z: the button is Create World. */
+.action[data-kind="pin"] { --action-color: #07925f; } /* SMART-NOTE FIX1 2026-11-20 (item 19): pin is emerald — no two same colours together. */
 .action[data-kind="favorite"] { --action-color: #d4a017; }
 .action[data-kind="save"] { --action-color: #0f52ba; }
 .action[data-kind="love"] { --action-color: #8e24aa; }
@@ -1962,10 +1966,10 @@ body.msg-open{overflow:hidden;}
   box-shadow: 0 8px 18px #0008;
 }
 .star-rating button {
-  width: 40px; height: 40px; flex: 0 0 auto; min-width: 0; position: relative;
+  width: 48px; height: 48px; flex: 0 0 auto; min-width: 0; position: relative;
   border: 2px solid #d4a01788; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.14), #07070b 62%, #050607 100%);
-  color: #d4a01766; font-size: 20px; line-height: 1; cursor: pointer;
+  color: rgba(212,160,23,.28); font-size: 34px; line-height: 1; cursor: pointer; /* SMART-NOTE FIX1 2026-11-20 (item 6): star glyph 20->34px, near twice as big; unlit stars dimmer so lit vs unlit is definite (7/10 lights seven, three stay unlit). */
   box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55);
   text-shadow: 0 1px 0 rgba(255,255,255,.35), 0 2px 6px rgba(0,0,0,.75);
   transition: transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s, color .18s, border-color .18s;
@@ -1989,6 +1993,9 @@ body.msg-open{overflow:hidden;}
 .star-rating-intel button:hover { border-color: #8e24aa; color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
 .star-rating-intel button.on { color: #93c5fd; border-color: #0f52ba; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.45); }
 .star-rating-intel button:focus-visible { outline-color: #8e24aa; }
+/* SMART-NOTE FIX1 2026-11-20 (item 6): a flow of light spins around every star — VALUE purple flow, INTELLIGENCE white flow — harvested from the DM avatar-orb ring (conic arc, masked ring, orb-spin); each star carries its own light behind it, and the lit ones add the bright outer glow. */
+.star-rating button::after { content: ''; position: absolute; inset: -5px; z-index: -1; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, #8e24aa 320deg, rgba(255,255,255,.95) 348deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px; animation: orb-spin 90s linear infinite; pointer-events: none; }
+.star-rating-intel button::after { background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(255,255,255,.9) 320deg, rgba(255,255,255,.95) 348deg, transparent 360deg); }
 /* The accessible readout only — the visible per-row points text is gone (23:21Z).
    HUB FEED FIX2 2026-11-18 (D8): the per-row rank readout joins it — screen-reader
    only, never visible on the Hub. */
@@ -1998,7 +2005,7 @@ body.msg-open{overflow:hidden;}
 @keyframes orb-spin-rev { to { transform: rotate(-360deg); } }
 @keyframes naya-breathe { from { opacity: .55; } to { opacity: 1; } }
 @media (max-width: 700px) {
-  .star-rating button { width: 30px; height: 30px; min-width: 30px; font-size: 17px; }
+  .star-rating button { width: 34px; height: 34px; min-width: 34px; font-size: 24px; } /* SMART-NOTE FIX1 2026-11-20 (item 6): phone sweet spot — as big as fits ten across at 390px. */
   .star-rating { gap: 2px; padding: 4px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2016,10 +2023,11 @@ body.msg-open{overflow:hidden;}
 .add-intel-row { display: flex; gap: 10px; }
 /* ——— The Rating Footer (renovation 23:21Z) ——— */
 .rate-section { grid-column: 1 / -1; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
-.rate-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.rate-head { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; } /* SMART-NOTE FIX1 2026-11-20 (item 6): RATE THE INTELLIGENCE dead center. */
 .rate-head b { font-size: 17px; letter-spacing: .12em; color: #fff; }
-.rate-diamond { display: inline-flex; width: 26px; height: 26px; flex: none; }
-.rate-diamond svg { width: 26px; height: 26px; display: block; filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(142,36,170,.4)); }
+.rate-pearl-orb { position: relative; display: inline-flex; width: 26px; height: 26px; flex: none; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 35% 30%, #ffffff, #dcdce4 55%, #a9a9b4 100%); box-shadow: 0 0 14px rgba(255,255,255,.65), 0 2px 6px rgba(0,0,0,.6); } /* SMART-NOTE FIX1 2026-11-20 (item 6): the dead diamond is gone — a white pearl-diamond spinning orb of light, built on the DM orb pattern (conic flow inside, diamond dead center); the DM orbs flow black, this one flows white. */
+.rate-pearl-orb::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, rgba(255,255,255,.95), rgba(255,255,255,.35) 25%, rgba(255,255,255,.95) 50%, rgba(255,255,255,.35) 75%, rgba(255,255,255,.95)); animation: orb-spin 60s linear infinite; }
+.rate-pearl-orb svg { position: relative; z-index: 1; width: 16px; height: 16px; margin: auto; display: block; filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); }
 .rank-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
 .rank-label { font-size: 17px; font-weight: 800; letter-spacing: .1em; color: #fff; min-width: 132px; }
 .rank-row.rank-value .rank-label { color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 12px rgba(142,36,170,.55); animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 2f (item 4): VALUE is purple — the word is lit in its row's colour, alive. */
@@ -2028,7 +2036,8 @@ body.msg-open{overflow:hidden;}
 .rank-readout { font-size: 17px; font-weight: 800; color: #fff; white-space: nowrap; }
 /* ——— MAKE THIS INTELLIGENCE BETTER (23:21Z) ——— */
 .add-intel-prompt { font-size: 17px; color: #fff; margin-bottom: 12px; }
-.add-intel-types { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.add-intel-types { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; } /* SMART-NOTE FIX1 2026-11-20 (item 11): the four buttons in ONE perfect line, nothing else. */
+.add-intel-types .intel-type { justify-content: center; text-align: center; white-space: normal; line-height: 1.3; }
 .intel-type { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 17px; letter-spacing: .06em; color: #fff; padding: 12px 18px; border-radius: 999px; background: linear-gradient(135deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 38%), #050607; /* 23:32Z emblem law: a facet of light across the top-left. */ border: 2px solid color-mix(in srgb, var(--tc) 62%, rgba(255,255,255,.12)); box-shadow: inset 0 2px 3px rgba(255,255,255,.28), inset 0 -6px 12px rgba(0,0,0,.7), 0 8px 20px rgba(0,0,0,.6), 0 0 10px -2px color-mix(in srgb, var(--tc) 30%, transparent); transition: transform .2s cubic-bezier(.16,.84,.22,1), box-shadow .2s, border-color .2s; } /* HUB FEED FIX2 2026-11-18 (D8): the pill body is deeper — thicker rim, stronger top light, deeper bottom shadow, more lift — a real object, not a flat pill. */
 .intel-type-dot { position: relative; width: 16px; height: 16px; flex: none; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.65), var(--tc) 45%, #050607 92%); border: 1.5px solid var(--tc); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 6px rgba(0,0,0,.7), 0 3px 8px rgba(0,0,0,.6), 0 0 10px -2px var(--tc); } /* HUB FEED FIX2 2026-11-18 (D8): the dot is a real jewel ball now — obsidian sphere in the type's own color, top-left light, stacked shadows — not a flat disc. */
 /* 23:32Z emblem law, harvested from the star balls (L1834): a facet of light on the jewel's top-left. */
@@ -2040,6 +2049,8 @@ body.msg-open{overflow:hidden;}
 .intel-type-pill { display: inline-flex; align-items: center; font-size: 17px; font-weight: 800; letter-spacing: .06em; color: #fff; padding: 4px 10px; border-radius: 999px; border: 1.5px solid var(--tc); background: #07070b; box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 3px 8px rgba(0,0,0,.5); }
 .add-intel-mic { flex: none; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 38%), #050607; /* 23:32Z emblem law: a facet of light across the top-left. */ border: 1.5px solid color-mix(in srgb, #8e24aa 62%, rgba(255,255,255,.12)); box-shadow: inset 0 2px 3px rgba(255,255,255,.28), inset 0 -4px 8px rgba(0,0,0,.7), 0 6px 14px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); transition: transform .2s cubic-bezier(.16,.84,.22,1), box-shadow .2s; }
 .add-intel-mic svg { width: 22px; height: 22px; }
+.add-intel-mic { position: relative; }
+.add-intel-mic::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, #8e24aa 320deg, rgba(255,255,255,.95) 348deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px; animation: orb-spin 120s linear infinite; pointer-events: none; } /* SMART-NOTE FIX1 2026-11-20 (item 15): the mic circle flows too — every circle icon, always. */
 .add-intel-mic .nsb-mic-dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #c62828; opacity: 0; }
 .add-intel-mic.listening { border-color: #c62828; box-shadow: inset 0 2px 3px rgba(255,255,255,.28), inset 0 -4px 8px rgba(0,0,0,.7), 0 6px 14px rgba(0,0,0,.55), 0 0 16px -2px rgba(198,40,40,.6); }
 .add-intel-mic.listening .nsb-mic-dot { opacity: 1; }
@@ -2052,9 +2063,9 @@ body.msg-open{overflow:hidden;}
 .ib-media-feature img, .ib-media-cell img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 16px; border: 1.5px solid rgba(255,255,255,.12); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 10px 24px rgba(0,0,0,.55); }
 .ib-media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 12px; }
 .add-intel input {
-  flex: 1; border: 2px solid #ffffff22; border-radius: 12px;
+  flex: 1; border: 2px solid rgba(255,255,255,.65); border-radius: 12px; /* SMART-NOTE FIX1 2026-11-20 (item 10): the input is the very top, lit up white with white light around it so they can just type; clicked it goes purple (the :focus rule below). */
   background: #07070a; color: #fff; padding: 12px 14px; font-size: 17px; outline: 0;
-  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 14px -4px rgba(142,36,170,.35), 0 14px 30px rgba(0,0,0,.6);
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 18px rgba(255,255,255,.30), 0 14px 30px rgba(0,0,0,.6);
   transition: border-color .18s, box-shadow .18s;
 }
 .add-intel input:focus { border-color: var(--purple); box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 18px -2px rgba(142,36,170,.55), 0 16px 34px rgba(0,0,0,.65); } /* 23:13Z amount law. */
@@ -2103,9 +2114,12 @@ body.msg-open{overflow:hidden;}
 }
 .ib-identity { display: flex; gap: 14px; min-width: 0; align-items: flex-start; }
 .ib-identity .ib-jewel { width: 64px; height: 64px; }
+@keyframes ib-glow-breathe { from { text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 10px rgba(255,255,255,.25); } to { text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 20px rgba(255,255,255,.45); } } /* SMART-NOTE FIX1 2026-11-20 (items 5/17): the headline breathes its light — dynamic, never flat. */
 .ib-title {
   line-height: 1.05; letter-spacing: -.02em;
   margin: 0 0 8px; color: var(--ink); font-weight: 850;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 16px rgba(255,255,255,.35);
+  animation: ib-glow-breathe 6s ease-in-out infinite alternate;
 }
 .ib-meta {
   display: flex; gap: 8px; flex-wrap: wrap;
@@ -2251,13 +2265,13 @@ body.msg-open{overflow:hidden;}
    otherwise swallow the white track — equal specificity, later wins — so the
    white track is re-asserted here, after all of them, with its own values. */
 .star-rating-intel { border-color: rgba(255,255,255,.6); box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(255,255,255,.25); }
-.star-rating-intel button { border-color: #8e24aa88; color: rgba(142,36,170,.55); background: radial-gradient(circle at 35% 30%, #ffffff, #c8ccd6 55%, #7a7e88 100%); text-shadow: 0 1px 0 rgba(0,0,0,.18); }
+.star-rating-intel button { border-color: #8e24aa88; color: rgba(142,36,170,.35); background: radial-gradient(circle at 35% 30%, #ffffff, #c8ccd6 55%, #7a7e88 100%); text-shadow: 0 1px 0 rgba(0,0,0,.18); }
 .star-rating-intel button:hover { border-color: #8e24aa; color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
 .star-rating-intel button.on { background: radial-gradient(circle at 35% 30%, #ffffff, #c8ccd6 55%, #7a7e88 100%); color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 0 14px rgba(142,36,170,.55); border-color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.45); }
 @media (min-width: 701px) {
   /* Desktop: true circles, one size, no stretch. Phones keep the FIX2
      flex rule (<=700px) so ten orbs still fit 390px. */
-  .star-rating button { width: 40px; height: 40px; flex: 0 0 auto; }
+  .star-rating button { width: 48px; height: 48px; flex: 0 0 auto; }
 }
 .love-heart { display: inline-flex; width: 20px; height: 20px; vertical-align: -4px; margin-right: 2px; }
 .love-heart svg {
@@ -2303,7 +2317,7 @@ body.msg-open{overflow:hidden;}
   background: radial-gradient(circle at 35% 30%, #fff, var(--lc) 70%);
   box-shadow: 0 0 14px var(--lc);
 }
-.ib-layer-head b { font-size: 19px; letter-spacing: .07em; color: var(--ink); }
+.ib-layer-head b { font-size: 19px; letter-spacing: .07em; color: var(--ink); text-shadow: 0 0 10px rgba(255,255,255,.25); } /* SMART-NOTE FIX1 2026-11-20 (items 5/17): section names lit. */
 .ib-layer-head .ib-chev {
   margin-left: auto; color: var(--lc); font-size: 17px;
   transition: transform .2s cubic-bezier(.16,.84,.22,1);
@@ -3212,7 +3226,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
     0 0 72px -6px rgba(var(--oc-rgb),.75),
     0 18px 38px rgba(0,0,0,.65);
 }
-.ib-card-orb::before{content:'';position:absolute;inset:-6px;border-radius:50%;z-index:2;pointer-events:none;border:1px solid color-mix(in srgb, var(--oc) 35%, transparent);background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--oc) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;padding:2px;filter:drop-shadow(0 0 6px var(--oc));animation:orb-spin 120s linear infinite, naya-breathe 6s ease-in-out infinite alternate;}
+.ib-card-orb::before{content:'';position:absolute;inset:-6px;border-radius:50%;z-index:2;pointer-events:none;border:1px solid color-mix(in srgb, var(--oc) 35%, transparent);background:conic-gradient(from 0deg,transparent 0deg,transparent 270deg,var(--oc) 320deg,rgba(255,255,255,.95) 348deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;filter:drop-shadow(0 0 6px var(--oc));animation:orb-spin 60s linear infinite;} /* SMART-NOTE FIX1 2026-11-20 (item 4): the orb flows — the ring is rebuilt on the proven DM avatar-orb pattern (same mask lines, same arc stops; the old ring carried a standard mask: line the avatar pattern never had, plus a second opacity animation that fought it), at 60s so the motion reads at a glance, inside the 60-180s ambient law. */
 .ib-card-orb::after { bottom: -18px; height: 16px;
   background: radial-gradient(ellipse, rgba(var(--oc-rgb),.7), transparent 70%); }
 /* — Playback states (NayaVoice contract, Shawn 2026-10-20): the orb flows
@@ -3289,7 +3303,7 @@ body.ask-reading:has(.naya-ask-room) #nsbBottom{transform:translateY(calc(100% +
      When the script runs, NayaNotif.init() removes this node and builds
      the live bar (counts, menus, fold) in its place — no visual change. -->
 <nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="#/hub/feed" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="#/hub/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="#/hub/spaces" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="#/hub/feed" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="#/hub/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
-<button type="button" id="os-b3-hide" aria-label="Show the bottom bar" title="Show the bottom bar">▴</button> <!-- FOLLOW-ON 2026-11-19 (item 3): the corner control — the reader's own tap recalls the bar when folded. Chrome harvested from the Dashboard (#os-b3-hide). -->
+<!-- SMART-NOTE FIX1 2026-11-20 (item 14): the little down arrow is gone — it IS the bottom-bar hide/show chevron, proven by eye + geometry (rail-open right:304px, bar-up bottom:200px = the circle in Shawn's screenshot). The bar still folds and returns on scroll; the manual hide/show tap goes with it. The JS guard (if (!_b3hide) return) already handles the missing element. --> <!-- FOLLOW-ON 2026-11-19 (item 3): the corner control — the reader's own tap recalls the bar when folded. Chrome harvested from the Dashboard (#os-b3-hide). -->
 <noscript>
   <div style="min-height:100vh;display:grid;place-items:center;text-align:center;padding:40px;
               background:#050507;color:#f8f7fb;font-family:Inter,system-ui,sans-serif">
@@ -4590,19 +4604,21 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
   function hubRowToNote(r){
     var layers = [];
     /* SMART NOTE FORMAT (2026-11-17): the front reads IN A NUTSHELL (silver,
-       lit) -> Child (magenta) -> Grandma (gold, warm — FIX2) -> What It Means (indigo).
+       lit) -> Child (magenta) -> Grandma (gold, warm — FIX2) -> What It Means (indigo)
+       -> Why It Matters (red) -> What's In It For You (gold).
        The human-note and naya-note sections are cut — the nutshell IS the
        human note, and "Naya Note" is the way Naya writes, not a section.
-       What is in it for you and how it applies fold INTO What It Means, so
+       How it applies still folds INTO What It Means, so
        no words are lost. The machine record is not a layer: it rides on the
        note as note.machine and works the SEO back end (see nayaNoteSeo). */
     var meansBody = String(r.what_it_means || '').trim();
-    if (String(r.whats_in_it_for_you || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**What\u2019s In It For You**\n\n' + String(r.whats_in_it_for_you).trim();
     if (String(r.how_it_applies || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**How It Applies**\n\n' + String(r.how_it_applies).trim();
     [['IN A NUTSHELL','IN A NUTSHELL','white','primary',r.nutshell],
      ['Child Note','CHILD NOTE','magenta','primary',r.child_note],
      ['Grandma Note','GRANDMA NOTE','gold','primary',r.grandma_note],
-     ['What It Means','WHAT IT MEANS','indigo','deeper',meansBody]
+     ['What It Means','WHAT IT MEANS','indigo','deeper',meansBody],
+     ['Why It Matters','WHY IT MATTERS','red','deeper',r.why_it_matters],
+     ["What's In It For You","WHAT'S IN IT FOR YOU",'gold','primary',r.whats_in_it_for_you]
     ].forEach(function(spec){ var l = layer(spec[0],spec[1],spec[2],spec[3],spec[4]); if (l) layers.push(l); });
     return {
       id: r.ib_id, title: r.title || '', subtitle: firstSentence(r.nutshell),
@@ -4627,7 +4643,7 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
     var ctl = null, timer = null;
     try { ctl = new AbortController(); } catch (e) {}
     if (ctl) { timer = setTimeout(function(){ try { ctl.abort(); } catch (e) {} }, 15000); }
-    var q = '/rest/v1/hub_smart_notes?select=id,ib_id,title,nutshell,human_note,child_note,grandma_note,naya_note,machine_note,what_it_means,whats_in_it_for_you,how_it_applies,source,author,github_path,created_at,note_created&ib_id=ilike.*sn' + num + '*&limit=5';
+    var q = '/rest/v1/hub_smart_notes?select=id,ib_id,title,nutshell,human_note,child_note,grandma_note,naya_note,machine_note,what_it_means,why_it_matters,whats_in_it_for_you,how_it_applies,source,author,github_path,created_at,note_created&ib_id=ilike.*sn' + num + '*&limit=5';
     var p = ctl ? fetch(CFG.url + q, { signal: ctl.signal, headers: headers() }) : fetch(CFG.url + q, { headers: headers() });
     return p.then(function(r){ if (!r.ok) throw new Error('solo fetch ' + r.status); return r.json(); }).then(function(rows){
       if (timer) clearTimeout(timer);
@@ -4647,8 +4663,9 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
     var nut = sec['IN A NUTSHELL'] || '';
     if (!nut) { var paras = String(bodyNoImg||'').split(/\n\s*\n/); nut = clean(paras.join(' ')).slice(0, 600); }
     var meansBody = String(sec['WHAT IT MEANS'] || '').trim();
-    if (String(sec['WHAT\u2019S IN IT FOR YOU'] || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**What\u2019s In It For You**\n\n' + String(sec['WHAT\u2019S IN IT FOR YOU']).trim();
     if (String(sec['HOW IT APPLIES'] || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**How It Applies**\n\n' + String(sec['HOW IT APPLIES']).trim();
+    var whyBody = String(sec['WHY IT MATTERS'] || '').trim();
+    var forYouBody = String(sec['WHAT\u2019S IN IT FOR YOU'] || sec["WHAT'S IN IT FOR YOU"] || '').trim();
     if (String(sec['THE MESSAGE, WORD FOR WORD'] || '').trim()) meansBody += (meansBody ? '\n\n' : '') + '**The Message, Word For Word**\n\n' + String(sec['THE MESSAGE, WORD FOR WORD']).trim();
     var layers = [];
     /* FIX2: a Naya Note body that carries Child/Grandma sections renders
@@ -4660,7 +4677,9 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
     [['In A Nutshell','IN A NUTSHELL','white','primary',nut],
      ['Child Note','CHILD NOTE','magenta','primary',childBody],
      ['Grandma Note','GRANDMA NOTE','gold','primary',grandmaBody],
-     ['What It Means','WHAT IT MEANS','indigo','deeper',meansBody]
+     ['What It Means','WHAT IT MEANS','indigo','deeper',meansBody],
+     ['Why It Matters','WHY IT MATTERS','red','deeper',whyBody],
+     ["What's In It For You","WHAT'S IN IT FOR YOU",'gold','primary',forYouBody]
     ].forEach(function(spec){ var l = layer(spec[0],spec[1],spec[2],spec[3],spec[4]); if (l) layers.push(l); });
     if (!layers.length) layers.push(layer('In A Nutshell','IN A NUTSHELL','white','primary',clean(bodyNoImg||'').slice(0,600)));
     return {
@@ -4703,7 +4722,7 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
   }
   var lastNewest = '';
   function fetchLive(){
-    var hubQ = '/rest/v1/hub_smart_notes?select=id,ib_id,title,nutshell,human_note,child_note,grandma_note,naya_note,machine_note,what_it_means,whats_in_it_for_you,how_it_applies,source,author,github_path,created_at,note_created&order=created_at.desc&limit=200';
+    var hubQ = '/rest/v1/hub_smart_notes?select=id,ib_id,title,nutshell,human_note,child_note,grandma_note,naya_note,machine_note,what_it_means,why_it_matters,whats_in_it_for_you,how_it_applies,source,author,github_path,created_at,note_created&order=created_at.desc&limit=200';
     var nnQ = '/rest/v1/naya_notes?select=id,title,body,category,created_at&owner_alias=eq.flagship-personal&category=eq.Smart%20Note&order=created_at.desc&limit=100';
     return Promise.all([
       fetch(CFG.url + hubQ, { cache:'no-store', headers: headers() }).then(function(r){ if(!r.ok) throw new Error('hub_smart_notes '+r.status); return r.json(); }),
@@ -5373,6 +5392,7 @@ window.BoardActions = (() => {
     const store = read();
     const defs = [
       ['\uFF0B CREATE WORLD', 'create-world', 'Create a smart world from this intelligence'],
+      ['\uD83D\uDCCC PIN', 'pin', 'Pin this intelligence to your profile'],
       ['\u2605 FAVORITE', 'favorite', 'Mark as favorite'],
       ['SAVE', 'save', 'Save this intelligence'],
     ];
@@ -5493,6 +5513,30 @@ window.BoardActions = (() => {
               '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>');
           }
           toast('WORLD CREATED', '"' + spName + '" is live — open the Spaces room to step inside.', '#8e24aa');
+          return;
+        }
+        if (kind === 'pin') {
+          /* SMART-NOTE FIX1 2026-11-20 (item 19): PIN — the board-side affordance only. The toggle writes bid+':pin' into 'nayanet-board-actions-v1' (the board's own store) and mirrors a kind:'pin' entry into 'naya.smartlist' saved[] — the seam Personal Round 2 reads for the profile pin store + pinned-at-top. The CREATE WORLD button beside it already creates the world with title + topic prefilled from the note (the same store the Spaces room reads); the full mechanism (profile pins, create-modal prefill) rides Round 2 — this round builds no second mechanism. */
+          const pinNext = !s[key]; s[key] = pinNext; write(s);
+          b.classList.toggle('on', pinNext); b.setAttribute('aria-pressed', String(pinNext));
+          try {
+            const sl = JSON.parse(localStorage.getItem('naya.smartlist') || '{}');
+            if (!sl.saved) sl.saved = [];
+            const entryId = note && note.id ? String(note.id) : boardId;
+            if (pinNext) { if (!sl.saved.find(x => x.id === entryId && x.kind === 'pin')) sl.saved.push({ id: entryId, kind: 'pin', title: (note && note.title) || title, topics: (note && note.topics) || [], category: null, savedAt: Date.now() }); }
+            else { sl.saved = sl.saved.filter(x => !(x.id === entryId && x.kind === 'pin')); }
+            localStorage.setItem('naya.smartlist', JSON.stringify(sl));
+          } catch (e) {}
+          if (typeof ActivityLog !== 'undefined') ActivityLog.log('pin', (pinNext ? 'Pinned "' : 'Unpinned "') + title + '"', 'star', '#d4a017', '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>');
+          toast('INTELLIGENCE STATE CHANGED', 'PIN is now ' + (pinNext ? 'ACTIVE' : 'REMOVED') + '. ' + (pinNext ? 'Pinned to your profile — it leads the feed.' : 'Removed from your pins.'), '#d4a017');
+          try {
+            const boardEl = b.closest('.intel-board');
+            const feedEl = boardEl && boardEl.parentElement;
+            if (boardEl && feedEl && feedEl.querySelector('.intel-board')) {
+              if (pinNext) { boardEl._pinHome = boardEl.nextSibling; feedEl.insertBefore(boardEl, feedEl.firstChild); }
+              else if (boardEl._pinHome && boardEl._pinHome.parentNode === feedEl) { feedEl.insertBefore(boardEl, boardEl._pinHome); }
+            }
+          } catch (e) {}
           return;
         }
         const next = !s[key]; s[key] = next; write(s);
@@ -5762,7 +5806,7 @@ window.BoardActions = (() => {
       rateSec = el('div', 'rate-section');
       rateSec.setAttribute('aria-label', 'Rate the intelligence');
       const rateHead = el('div', 'rate-head');
-      rateHead.innerHTML = '<span class="rate-diamond" aria-hidden="true"><svg viewBox="0 0 24 24"><defs><linearGradient id="rateDiamond-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-') + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#d8b4fe"/><stop offset="100%" stop-color="#8e24aa"/></linearGradient></defs><path fill="url(#rateDiamond-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-') + ')" d="M12 2 L19 8 L12 22 L5 8 Z"/><path fill="rgba(255,255,255,.6)" d="M12 2 L16 8 L12 8 Z M12 2 L8 8 L12 8 Z"/><path fill="rgba(0,0,0,.25)" d="M5 8 L12 8 L12 22 Z"/></svg></span><b>RATE THE INTELLIGENCE</b>';
+      rateHead.innerHTML = '<span class="rate-pearl-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#ffffff" d="M12 2 L19 8 L12 22 L5 8 Z"/><path fill="rgba(255,255,255,.6)" d="M12 2 L16 8 L12 8 Z M12 2 L8 8 L12 8 Z"/></svg></span><b>RATE THE INTELLIGENCE</b>';
       rateSec.appendChild(rateHead);
       rateSec.appendChild(rankRow('value'));
       rateSec.appendChild(rankRow('intel'));
@@ -5816,7 +5860,7 @@ window.BoardActions = (() => {
       commentBtn.classList.toggle('on', willOpen);
       commentBtn.setAttribute('aria-expanded', String(willOpen));
     });
-    right.appendChild(commentBtn);
+    center.appendChild(commentBtn); /* SMART-NOTE FIX1 2026-11-20 (item 8): COMMENT dead center, just below the beautiful N in the center of the frame; SHARE INTEL stays in the corner right. */
 
     wrap.append(left, center, right);
     if (rateSec) wrap.appendChild(rateSec);
@@ -5829,21 +5873,22 @@ window.BoardActions = (() => {
     /* FIX2: the comment box starts folded and unfolds below the note when
        COMMENT is tapped (see bottomActions) — the fold is the experience. */
     wrap.hidden = true;
-    const b = el('b', '', 'ADD TO THE INTELLIGENCE');
-    /* HUB FEED FIX2 2026-11-18 (D8): the five MAKE THIS INTELLIGENCE BETTER
-       pills, restored verbatim from PR #3471's filed bytes (L5513-5537) — they
-       were lost from main's lineage, so addIntel referenced prompt / types /
-       chosenType / TYPE_BY_ID that did not exist. The heading stays main's
-       newer 'ADD TO THE INTELLIGENCE'; the prompt, the five types, their
-       colors, and the radio-group behavior are #3471's, byte for byte. */
-    const prompt = el('div', 'add-intel-prompt', 'What did you learn, improve, prove, or put into action?');
+    /* SMART-NOTE FIX1 2026-11-20 (item 11): the 'ADD TO THE INTELLIGENCE' heading is gone — the input box is the very top, the first thing; the buttons tell them what to do. */
+    /* HUB FEED FIX2 2026-11-18 (D8): the MAKE THIS INTELLIGENCE BETTER pills,
+       restored verbatim from PR #3471's filed bytes (L5513-5537) — they were
+       lost from main's lineage, so addIntel referenced prompt / types /
+       chosenType / TYPE_BY_ID that did not exist. SMART-NOTE FIX1 2026-11-20 (item 11): four now —
+       CONTRIBUTE INTELLIGENCE is gone, the heading and the prompt are gone;
+       the four types, their colors, and the radio-group behavior are #3471's,
+       byte for byte. */
+    /* SMART-NOTE FIX1 2026-11-20 (item 11): the prompt is gone — no instruction set needed. */
     const types = el('div', 'add-intel-types');
     const TYPE_DEFS = [
       ['ADD EVIDENCE', 'evidence', '#d4a017'],
       ['BUILD ON THIS', 'build', '#07925f'],
       ['ASK A QUESTION', 'question', '#0f52ba'],
       ['REPORT AN OUTCOME', 'outcome', '#8e24aa'],
-      ['CONTRIBUTE INTELLIGENCE', 'contribute', '#0e7490'],
+      /* SMART-NOTE FIX1 2026-11-20 (item 11): CONTRIBUTE INTELLIGENCE removed — an extra one, not needed. */
     ];
     const TYPE_BY_ID = {};
     TYPE_DEFS.forEach(function (d) { TYPE_BY_ID[d[1]] = d; });
@@ -5919,8 +5964,7 @@ window.BoardActions = (() => {
       const s = read();
       const list = s[boardId + ':contributions'] || [];
       if (!list.length) {
-        const empty = el('div', 'intel-empty'); empty.textContent = 'Be the first to add intel...';
-        listWrap.appendChild(empty); return;
+        return; /* SMART-NOTE FIX1 2026-11-20 (item 11): no 'Be the first to add intel…' — nothing else below the buttons. */
       }
       const richHues = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf','#3f51b5','#0e7490'];
       const hueFor = (name) => { let h = 0; for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return richHues[h % richHues.length]; };
@@ -5961,8 +6005,8 @@ window.BoardActions = (() => {
     });
     input.addEventListener('keydown', e => { if (e.key === 'Enter') addBtn.click(); });
     row.append(input, micBtn, addBtn);
-    const sourceLine = el('div', 'add-intel-source', 'Every contribution can connect to its source and outcome.');
-    wrap.append(b, prompt, types, row, listWrap, sourceLine);
+    /* SMART-NOTE FIX1 2026-11-20 (item 11): the source line is gone. */
+    wrap.append(row, types, listWrap); /* SMART-NOTE FIX1 2026-11-20 (items 10/11): the input box is the very top, the first thing; below it the four buttons in one perfect line, and nothing else. */
     renderList();
     return wrap;
   }
@@ -8498,28 +8542,7 @@ window.NayaJewels = (() => {
          of the flow, so the search stays flush at the top. Its class rides
          the .hero-restore rules — the Read-more pill's own obsidian-pill
          language, renamed. */
-      var restoreBtn = document.createElement('button');
-      restoreBtn.type = 'button'; restoreBtn.className = 'hero-restore';
-      restoreBtn.setAttribute('aria-label', 'Show the welcome banner again');
-      restoreBtn.innerHTML = '&uarr; Welcome';
-      restoreBtn.addEventListener('click', function () {
-        window._nayaWelcomeClosed = false;
-        restoreBtn.classList.remove('show');
-        /* ROUND 6 2026-11-19 (defect 3): the button only unfolded the banner
-           — it never moved the viewport, so scrolled down at SN-3645 nothing
-           visibly changed (and the next scroll re-folded it). The way back
-           returns the viewport to the top, where the banner lives: unfold the
-           live hero, then scroll the window to 0. _nayaWelcomeReturning holds
-           the scroll listener off the fold while the viewport travels, so the
-           banner is not re-folded mid-flight; the listener clears the guard
-           at the top, and a 2s fallback clears it if the scroll is cut short. */
-        var h = document.querySelector('.main-show .hero') || hero;
-        unfoldEl(h);
-        window._nayaWelcomeReturning = true;
-        setTimeout(function () { window._nayaWelcomeReturning = false; }, 2000);
-        try { window.scrollTo({ top: 0, behavior: (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth') }); } catch (e) { window.scrollTo(0, 0); }
-      });
-      hero._nayaRestoreBtn = restoreBtn;
+      /* SMART-NOTE FIX1 2026-11-20 (item 13): the random welcome button goes — the '↑ Welcome' restore pill is removed entirely (creation + click handler + registration), so a closed welcome banner stays closed for the page lifetime. The close × on the banner itself stays. */
       /* AMENDMENT 2026-11-18 (B, Shawn 00:47Z): the little close button
          moves to the banner's TOP corner — his newest word supersedes the
          22:25Z bottom-right placement. Tapping it closes the banner (the
@@ -8537,7 +8560,7 @@ window.NayaJewels = (() => {
         btn.addEventListener('click', function () {
           window._nayaWelcomeClosed = true;
           foldEl(hero);
-          restoreBtn.classList.add('show');
+          /* SMART-NOTE FIX1 2026-11-20 (item 13): the restore pill is gone — nothing to show. */
         });
         hero.appendChild(btn);
       })();
@@ -8549,15 +8572,8 @@ window.NayaJewels = (() => {
 
     /* — Search sits immediately above the lens tabs, full width — */
     if (searchWrap) wrap.appendChild(searchWrap);
-    /* AMENDMENT 2026-11-18 (B) + HUB FEED FIX2 2026-11-18 (D3): the restore
-       button rides FIXED in the top-right corner — it is appended here so a
-       fresh build that starts closed (the × was tapped in an earlier build
-       this page lifetime) shows it at once, so the way back survives a
-       re-render; position:fixed keeps it out of the flow either way. */
-    if (hero._nayaRestoreBtn) {
-      wrap.appendChild(hero._nayaRestoreBtn);
-      if (window._nayaWelcomeClosed || window._nayaWelcomeFolded) hero._nayaRestoreBtn.classList.add('show');
-    }
+    /* SMART-NOTE FIX1 2026-11-20 (item 13): the restore-button note above is history — the button is removed, so a fresh build that starts closed simply starts closed. */
+    /* SMART-NOTE FIX1 2026-11-20 (item 13): the restore button is gone — nothing is appended, nothing is shown. */
 
     /* — Lens: three compact buttons in one row, real navigation — */
     const lens = el('nav', 'lens-tabs');
@@ -8670,7 +8686,9 @@ window.NayaJewels = (() => {
       const tabbed = smartTabStrip(lensNotes, notes.concat(snapshotNotes));
       wrap.insertBefore(tabbed.bar, feedEl);
       const active = tabbed.tabs.find(t => t.id === activeSmartTab) || tabbed.tabs[0];
-      const list = active.cluster ? lensNotes.filter(n => intelClusterOf(n) === active.cluster) : active.topic ? lensNotes.filter(n => (n.topics || []).includes(active.topic)) : lensNotes;
+      let list = active.cluster ? lensNotes.filter(n => intelClusterOf(n) === active.cluster) : active.topic ? lensNotes.filter(n => (n.topics || []).includes(active.topic)) : lensNotes;
+      /* SMART-NOTE FIX1 2026-11-20 (item 19): pinned notes lead the feed — same pin key the board toggle writes; stable sort, pinned first, the rest in stream order. */
+      try { const _pinStore = JSON.parse(localStorage.getItem('nayanet-board-actions-v1') || '{}'); const _pinBid = (n) => 'note-' + String(n.id || n.title || 'smart-note').toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40); list = list.slice().sort((a, b) => ((_pinStore[_pinBid(b) + ':pin'] ? 1 : 0) - (_pinStore[_pinBid(a) + ':pin'] ? 1 : 0))); } catch (e) {}
       if (!list.length) {
         const elsewhere = active.cluster ? notes.filter(n => intelClusterOf(n) === active.cluster).length : active.topic ? notes.filter(n => (n.topics || []).includes(active.topic)).length : 0;
         const emptyTitle = active.cluster ? 'No ' + esc(active.label) + ' notes here.' : active.topic ? 'No ' + esc(active.topic) + ' here.' : 'Nothing here yet.';
@@ -9133,6 +9151,7 @@ window.NayaJewels = (() => {
       || /^(intelligent block|smart note)\s*[:#—–-]?\s*((IB|SN)-?[\w-]*)?$/i.test(rawTitle);
     const titleIsId = genericTitle && !/^FEAT-/i.test(idStr);
     const sentencesOf = (txt) => (String(txt || '').replace(/\s+/g, ' ').match(/[^.!?]+[.!?]+["']?|[^.!?]+$/g) || []).map(s => s.trim()).filter(Boolean);
+    const cap4 = (t) => { const s = sentencesOf(t); return s.length > 4 ? s.slice(0, 4).join(' ') : String(t || ''); }; /* SMART-NOTE FIX1 2026-11-20 (item 1): the nutshell is 3-4 sentences max, enforced in the render code — a longer source shows its first 4 sentences here; the rest lives in the full-note view. */
     /* v5.1 HOOK (Shawn 01:23Z): the sub-headline under the title is a
        SHORT hook, never the full nutshell text. Same derivation on
        every board: cap at 60 chars (ellipsis included), cut at a
@@ -9221,20 +9240,19 @@ window.NayaJewels = (() => {
     }
     if (nutshellLayer) {
       const ns = el('div', 'ib-nutshell');
-      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(nutshellLayer.body); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — the 600-char slice cut every long nutshell mid-sentence with no ellipsis and no way to expand it. */
+      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(cap4(nutshellLayer.body)); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — the 600-char slice cut every long nutshell mid-sentence with no ellipsis and no way to expand it. */
       b.appendChild(ns);
     } else if (nutSourceLayer) {
       const ns = el('div', 'ib-nutshell');
-      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(String(nutSourceLayer.body || '')); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — same cut, same fix. */
+      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(cap4(String(nutSourceLayer.body || ''))); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — same cut, same fix. */
       b.appendChild(ns);
     }
 
     /* — Layers (excluding nutshell — already shown above) — */
     const layers = el('div', 'ib-layers');
-    /* v5.1 GOLD + RED (Shawn 01:52Z/01:54Z): board order is ... What It
-       Means, GOLD (What's In It For You, carrying How It Connects),
-       RED (Why It Matters) — spectrum order, gold #d4a017 then red
-       #c62828. The machine layer is NOT rendered anymore. Data order
+    /* v5.1 GOLD + RED (Shawn 01:52Z/01:54Z): board order is the official six: ... What It
+       Means, RED (Why It Matters), GOLD (What's In It For You, carrying How It Connects)
+       — the official order (Shawn 2026-11-20), red #c62828 then gold #d4a017. The machine layer is NOT rendered anymore. Data order
        is canonical (why-it-matters before what's-in-it-for-you), so
        gold/red are pulled out and placed after What It Means;
        everything else keeps data order. A section with no content in
@@ -9272,7 +9290,7 @@ window.NayaJewels = (() => {
     }
     /* SMART NOTE FORMAT (2026-11-17): the front order is Child -> Grandma ->
        What It Means (after the nutshell, rendered above). The rank sort
-       enforces it; gold/red still fold in after What It Means, as before. */
+       enforces it; red then gold fold in after What It Means, in the official order. */
     const rankOf = (L) => {
       const n = String(L.name || '').toUpperCase();
       if (n.includes('CHILD')) return 0;
@@ -9284,8 +9302,8 @@ window.NayaJewels = (() => {
     const anchor = orderedLayers.findIndex(isMeansLayer);
     const insertAt = anchor === -1 ? orderedLayers.length : anchor + 1;
     const afterMeans = [];
-    if (goldEntry) afterMeans.push(goldEntry);
     if (redLayer) afterMeans.push(redLayer);
+    if (goldEntry) afterMeans.push(goldEntry); /* SMART-NOTE FIX1 2026-11-20 (item 2): the official order — red (Why It Matters) then gold (What's In It For You), after What It Means. */
     orderedLayers.splice(insertAt, 0, ...afterMeans);
     /* ——— SMART NOTE FORMAT FIX2 (2026-11-17): the format holds on EVERY
        card — IN A NUTSHELL -> Child -> Grandma -> What It Means. A section
@@ -14659,7 +14677,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
 /* (3) EACH BOARD LIGHTS UP: rim only, just enough glow, nothing over the board. */
 .ib-frame { box-shadow: inset 0 1px 0 rgba(255,255,255,.10), inset 0 0 0 1.5px rgba(142,36,170,.35), 0 18px 44px rgba(0,0,0,.65), 0 0 24px -4px rgba(142,36,170,.35); transition: box-shadow .3s ease, transform .3s ease; }
 .ib-frame:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 0 0 1.5px rgba(142,36,170,.85), 0 18px 44px rgba(0,0,0,.65), 0 0 32px -2px rgba(142,36,170,.55); }
-.ib-frame-body { padding: 20px 28px 28px; } /* ROUND 9b (item 9): in a tad, up a tad — sides 24->28, top 24->20, bottom 24->28. The frame itself is untouched. */
+.ib-frame-body { padding: 16px 32px 28px; } /* SMART-NOTE FIX1 2026-11-20 (item 3): one more measured tad the same way — up 4 (top 20->16), in 4 (sides 28->32). The frame itself is untouched. */
 /* (5) DYNAMIC HEIGHT — REPEATABLE SIDE PATTERN, harvested from the master itself:
    the side tiles are the master's own left/right edge strips (rows 347-506),
    cropped from PNG 865357f6, so the sides repeat to ANY height while the
@@ -14676,7 +14694,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
 /* (9) PEOPLE RAIL, LINE 1: ball + name + % — flex, % locked top-right. */
 #hubPeopleList .pc-card-top { display: flex; align-items: center; }
 @media (max-width: 700px) {
-  .ib-frame-body { padding: 12px 20px 20px; } /* ROUND 9b (item 9): the same tad at phone width. */
+  .ib-frame-body { padding: 8px 24px 20px; } /* SMART-NOTE FIX1 2026-11-20 (item 3): the same tad at phone width. */
   .ib-frame-side-l, .ib-frame-side-r { background-size: 32px auto; }
 }
 
