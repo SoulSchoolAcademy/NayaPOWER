@@ -4,7 +4,7 @@
 
 **NN-20261119-connect-with-like-minds-keywords-out-search-only · Naya Note · 2026-11-19 ~19:04 MST (02:04Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Connect with Like Minds: Keywords Out, Search Only (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4212 — Connect with Like Minds: Keywords Out, Search Only*
 
 **Category:** Design — Messenger / Connect with Like Minds (the middle area)
 
