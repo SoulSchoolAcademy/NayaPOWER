@@ -80,13 +80,15 @@ def main():
                             "/repos/%s/git/refs/heads/%s" % (st.REPO, BRANCH)], capture_output=True)
     pout = probe.stdout.decode("utf-8", "replace")
     pstatus = int(pout.split("\n", 1)[0].split()[1]) if pout.startswith("HTTP") else -1
-    if pstatus == 200:
-        raise RuntimeError("branch %s already exists — refusing to overwrite" % BRANCH)
-    assert pstatus == 404, "branch probe unexpected (HTTP %s): %s" % (pstatus, pout[:200])
-    print("branch %s does not exist yet (expected)" % BRANCH, flush=True)
-    _, commit = st.gh("GET", "/repos/%s/git/commits/%s" % (st.REPO, PARENT))
+    assert pstatus == 200, "distill branch missing (HTTP %s) — run-1 commit expected" % pstatus
+    tip1 = json.loads(pout.split("\n", 1)[1])["object"]["sha"]
+    assert tip1 == "4ed1fbbeeebf5db6d7ecadc78c1d2342be283327", "distill branch tip moved: %s" % tip1
+    print("distill branch tip (run-1 commit):", tip1, flush=True)
+    _, tip1c = st.gh("GET", "/repos/%s/git/commits/%s" % (st.REPO, tip1))
+    assert tip1c["parents"][0]["sha"] == PARENT, "run-1 commit is not on the v5 tip"
+    _, commit = st.gh("GET", "/repos/%s/git/commits/%s" % (st.REPO, tip1))
     base_tree = commit["tree"]["sha"]
-    print("base tree:", base_tree, flush=True)
+    print("base tree (run-1):", base_tree, flush=True)
     brief = st.read_bytes("/home/hatch/workspace/team-nitro/walkthrough-agreement-distill-20261119/AGREEMENT-DISTILL-BRIEF.md")
     files = [
         ("team-nitro/walk-v23-assembly-20261114/walk-beginning-fixed.html", new_walk),
@@ -116,18 +118,17 @@ def main():
                      "tree": [{"path": p, "mode": "100644", "type": "blob", "sha": s} for p, s in blobs.items()]})
     print("new tree:", tree["sha"], flush=True)
     msg = (
-        "Walkthrough AGREEMENT DISTILL v1 (2026-11-19, maker round; MAKER-REPORT.md in "
-        "walkthrough-agreement-distill-20261119/maker/)\\n\\n"
-        "Visual-led (Shawn 19:54 MST, supersedes the 10-board count): 27 image "
-        "boards + 10 text boards = 37 boards on all three presentations "
-        "(/agreement unfold, visual deck, letter). The visuals tell the story; "
-        "the text is written for the pictures. Image boards carry a line or two "
-        "written for that picture; text boards carry the 8 promises, 3-5 "
-        "sentences each, in Naya's warm first-person friend voice. Pictures "
-        "harvested: 9 deck slides, 8 unfold showcases, 9 deck face portraits, "
-        "plus /agmt-unfold-20.jpg. Long text gone: no read-it-all link, no "
-        "plain-letter dialog, no hidden long version. Progress kept: the "
-        "stage jewel/number/bar plus a new .af-prog pill on the unfold frame.\\n\\n"
+        "Walkthrough AGREEMENT DISTILL v1 fix-1 (2026-11-19, maker round; "
+        "MAKER-REPORT.md in walkthrough-agreement-distill-20261119/maker/)\\n\\n"
+        "On top of the distill v1 commit: the deck view's progress indicator "
+        "is fixed for 37 boards. The 9-dot strip saturated at board 9, so "
+        "the deck now shows the count-agnostic jewel (N / 37 + bar), same as "
+        "the letter — one measuring thing per view. The deck-end button said "
+        "'Read the full agreement' (the one 'full/whole' label left); it goes "
+        "to the same distilled unfold as the intro button, so it now says "
+        "'Read the Collective Agreement', same words, same destination. The "
+        "stale hardcoded jewel text '1 / 86' is '1 / 37'. Nothing else moves: "
+        "unfold sha 760b8ea0 unchanged; welcome %d B (sha %s).\\n\\n"
         "Unfold %d B (sha %s); welcome %d B (sha %s). Walk 4,361,146 B "
         "sha b6befc33; identity 401,040 B sha 3279dc35; worker sha %s "
         "(built twice in-memory, identical; embeds verified). The mp3 stays filed "
@@ -136,20 +137,21 @@ def main():
         "wiring rides a separate round.\\n\\n"
         "Staged: %s/ - routes curl-verified byte-identical by sha256 after the PUT. "
         "NO PR, NO MERGE — the checker and the captain come after this seat. "
-        "Nothing live." % (len(new_unfold), unfold_sha[:8], len(new_welcome), welcome_sha[:8],
+        "Nothing live." % (len(new_welcome), welcome_sha[:8],
+                            len(new_unfold), unfold_sha[:8], len(new_welcome), welcome_sha[:8],
                             worker_sha[:8], st.STAGING))
     now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     _, cm = st.gh("POST", "/repos/%s/git/commits" % st.REPO,
-                  {"message": msg, "tree": tree["sha"], "parents": [PARENT],
+                  {"message": msg, "tree": tree["sha"], "parents": [tip1],
                    "author": {"name": "nayapower-lane-agent[bot]",
                               "email": "338161897+nayapower-lane-agent[bot]@users.noreply.github.com",
                               "date": now},
                    "committer": {"name": "GitHub", "email": "noreply@github.com", "date": now}})
     commit_sha = cm["sha"]
     print("commit sha:", commit_sha, flush=True)
-    _, ref2 = st.gh("POST", "/repos/%s/git/refs" % st.REPO,
-                    {"ref": "refs/heads/%s" % BRANCH, "sha": commit_sha})
-    print("branch created:", ref2["ref"], ref2["object"]["sha"], flush=True)
+    _, ref2 = st.gh("PATCH", "/repos/%s/git/refs/heads/%s" % (st.REPO, BRANCH),
+                    {"sha": commit_sha, "force": False})
+    print("branch updated:", ref2["ref"], ref2["object"]["sha"], flush=True)
     assert ref2["object"]["sha"] == commit_sha
     for path, data in files:
         _, rb = st.gh("GET", "/repos/%s/git/blobs/%s" % (st.REPO, blobs[path]))

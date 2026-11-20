@@ -2389,7 +2389,7 @@ body.af-deck-on #deckBody .ib-nutshell p{font-size:17px!important;line-height:1.
 </div><!-- /fp-login -->
 <div id="fpStageBarT" hidden>
 <button class="fp-stage-exit" id="fpStageExit" type="button">&#8249; Login</button>
-<div class="fp-stage-prog" id="fpStageProg"><div class="fp-dots" id="fpStageDots" aria-hidden="true"></div><span class="fp-prog" id="fpStageJewel"><span class="fp-prog-jewel" id="fpStageJewelMark">&#9670;</span><span class="fp-prog-num" id="fpStageJewelNum">1 / 86</span><span class="fp-prog-bar"><i id="fpStageJewelBar"></i></span></span></div>
+<div class="fp-stage-prog" id="fpStageProg"><div class="fp-dots" id="fpStageDots" aria-hidden="true"></div><span class="fp-prog" id="fpStageJewel"><span class="fp-prog-jewel" id="fpStageJewelMark">&#9670;</span><span class="fp-prog-num" id="fpStageJewelNum">1 / 37</span><span class="fp-prog-bar"><i id="fpStageJewelBar"></i></span></span></div>
 <span class="fp-stage-spot" id="fpStageSpot" aria-hidden="true">&#9670;</span>
 </div>
 <div id="fpStageBarB" hidden>
@@ -3879,10 +3879,12 @@ body.af-deck-on #deckBody .ib-nutshell p{font-size:17px!important;line-height:1.
      else if(S.view==='intro'){setNext('Begin the visual story \u25C6','#8e24aa','begin');if(pickLine)pickLine.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the Collective Agreement \u25C6';nextBtn2.style.setProperty('--tone','#07925f');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
     else if(S.view==='deck'){
       tone=toneOf(deckBeats[S.deck]);
-      dotsEl.classList.add('fp-on');
-      qa('.fp-dot',dotsEl).forEach(function(d,i){d.classList.toggle('on',i<=S.deck);});
+      jewelEl.classList.add('fp-on');
+      jewelNum.textContent=(S.deck+1)+' / '+deckBeats.length;
+      jewelBar.style.width=Math.round(((S.deck+1)/deckBeats.length)*100)+'%';
+      jewelEl.style.setProperty('--tone',tone);
       if(!deckEnd()){setNext('Keep reading \u25C6',tone,'deckNext');if(deckBack)deckBack.hidden=false;}
-      else{setNext('Enter NayaNET \u25C6','#0e7490','deckJoin');if(deckBack)deckBack.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the full agreement \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
+      else{setNext('Enter NayaNET \u25C6','#0e7490','deckJoin');if(deckBack)deckBack.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the Collective Agreement \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
     }
     else if(S.view==='letter'){
       tone=toneOf(letterBeats[S.letter]);

@@ -12,7 +12,7 @@ WORK = "/home/hatch/workspace/team-nitro/walkthrough-agreement-distill-20261119/
 BUILDER = "/home/hatch/workspace/team-nitro/walk-v23-assembly-20261114/build-v23-staging-worker.py"
 UNFOLD_PATH = "/home/hatch/workspace/team-nitro/agreement-unfold-fix-20261117/agreement-unfold-fixed.html"
 UNFOLD_SHA = "760b8ea05fb5"
-WELCOME_SHA = "85ae106d47e9"
+WELCOME_SHA = "d9577f615b90"
 
 
 def sha(b):

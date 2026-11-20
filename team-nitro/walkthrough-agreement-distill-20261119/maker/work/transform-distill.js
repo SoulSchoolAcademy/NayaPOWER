@@ -360,6 +360,24 @@ function buildWelcome(base, H) {
   if (dpEnd < 0) fail('welcome dealPlain close not found');
   text = text.slice(0, dpStart) + text.slice(dpEnd);
   if (text.includes('id="dealPlain"')) fail('welcome dealPlain still present');
+  // DECK PROGRESS (distill fix, 2026-11-19): the 9-dot strip saturates at
+  // board 9 of 37, so the deck shows the count-agnostic jewel (N / 37 +
+  // bar), same as the letter — one measuring thing per view, never two.
+  const deckProgOld = "      dotsEl.classList.add('fp-on');\n      qa('.fp-dot',dotsEl).forEach(function(d,i){d.classList.toggle('on',i<=S.deck);});";
+  if (!text.includes(deckProgOld)) fail('welcome deck dots block not found');
+  text = text.replace(deckProgOld, "      jewelEl.classList.add('fp-on');\n      jewelNum.textContent=(S.deck+1)+' / '+deckBeats.length;\n      jewelBar.style.width=Math.round(((S.deck+1)/deckBeats.length)*100)+'%';\n      jewelEl.style.setProperty('--tone',tone);");
+  if (text.includes(deckProgOld)) fail('welcome deck dots block still present');
+  if (!text.includes("jewelNum.textContent=(S.deck+1)+' / '+deckBeats.length")) fail('welcome deck jewel not wired');
+  // Deck-end button says "Read the full agreement" — the one "full/whole"
+  // label left, and it goes to the same distilled unfold as the intro
+  // button. Same destination, same words.
+  const fullOld = "nextBtn2.textContent='Read the full agreement \\u25C6';";
+  if (!text.includes(fullOld)) fail('welcome deck-end full-agreement label not found');
+  text = text.replace(fullOld, "nextBtn2.textContent='Read the Collective Agreement \\u25C6';");
+  // Stale hardcoded jewel text (86 was the old letter count).
+  const jewelOld = 'id="fpStageJewelNum">1 / 86</span>';
+  if (!text.includes(jewelOld)) fail('welcome stale jewel count not found');
+  text = text.replace(jewelOld, 'id="fpStageJewelNum">1 / 37</span>');
   // Content guards.
   for (const n of ['fpChoiceDeck', 'fpChoiceLetter', 'enterStage', 'deckBeats', 'dealAgreeBtn', 'dealSeal', 'fpStageJewelNum'])
     if (!text.includes(n)) fail('welcome content lost: ' + n);
