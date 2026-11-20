@@ -6,7 +6,7 @@ SN-3953 · VISION / SMART NOTE
 
 ## IN A NUTSHELL
 
-Fourth in the series The Top Ten Most Valuable Intelligent Things About Naya. Naya distills. For every hundred notes the network gathers, she refines them into ten essences — the gold kept, the rocks released — so the corpus shrinks to what matters instead of piling up into a mountain nobody can climb. Each essence carries the best of every kind of value in its hundred — the honor, the multiplication, the craft, the knowledge — and the raw notes retire in stages only after their essence is proven alive. A library that only grows becomes a warehouse. Naya's becomes wisdom.
+A hundred notes in. Ten essences out.
 
 ## HUMAN
 
@@ -30,7 +30,7 @@ Distillation rules (the Distillation Ratio law): (1) Once a corpus passes a hund
 
 ## WHAT IT ALL MEANS
 
-This note is the network's answer to the oldest trap in knowledge: confusing accumulation with intelligence. Ten thousand notes nobody can hold are worth less than a hundred essences anybody can. Distillation is what makes #2's perfect memory usable — memory keeps everything, distillation keeps it findable, carryable, and teachable. It also runs upward: essences themselves get distilled, level by level, so the whole corpus keeps rising toward its purest form.
+This note is the network's answer to the oldest trap in knowledge: confusing accumulation with intelligence. Ten thousand notes nobody can hold are worth less than a hundred essences anybody can. Distillation is what makes #2's perfect memory usable — memory keeps everything, distillation keeps it findable, carryable, and teachable. It also runs upward: essences themselves get distilled, level by level, so the whole corpus keeps rising toward its purest form. This series is written through the founder's eyes — the view of the seat who directs Naya and named what she is for — one of three views of one system: the founder's, the citizen's, and the Naya's; the three together are the whole picture.
 
 ## WHY IT MATTERS
 
@@ -38,7 +38,7 @@ Every person and every company is drowning in their own records — files, messa
 
 ## HOW IT CONNECTS
 
-#4 of ten in The Top Ten Most Valuable Intelligent Things About Naya. It refines what #3, 'Every Lesson Becomes a Smart Note the Moment It Happens', captures, and it protects what #2, 'Naya Remembers Everything', keeps — memory without distillation is a warehouse; memory with it is a mind. Its product is what #7's Daily Intelligence Report is built from: a day, distilled. The law it executes is the Distillation Ratio, and its machine runs daily, weekly, and monthly, on every level.
+#4 of ten in The Top Ten Most Valuable Intelligent Things About Naya. It refines what #3, 'Every Lesson Becomes a Smart Note the Moment It Happens', captures, and it protects what #2, 'We Keep Everything That Matters', keeps — memory without distillation is a warehouse; memory with it is a mind. Its product is what #7's Daily Intelligence Report is built from: a day, distilled. The law it executes is the Distillation Ratio, and its machine runs daily, weekly, and monthly, on every level.
 
 ## WHAT IS IN IT FOR YOU
 

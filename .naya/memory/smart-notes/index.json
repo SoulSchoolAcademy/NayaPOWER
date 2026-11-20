@@ -67051,9 +67051,9 @@
       "registered_at": "2026-11-20T00:29:00Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-20",
-      "page_hash": "13d0924461e2c565e5e2c3741c30e08d8aa3e778321fd6b043b813914c9366f5",
-      "content_hash": "f57a93d8b693b225b65714283201ecfe2ea41e30d152df5813997903e73cc779",
-      "one_line": "Fourth in the series The Top Ten Most Valuable Intelligent Things About Naya. Naya distills. For every hundred notes the network gathers, she refines them into ten essences — the gold kept, the rocks released — so the corpus shrinks to what matters instead of piling up into a mountain nobody can climb. Each essence carries the best of every kind of value in its hundred — the honor, the multiplication, the craft, the knowledge — and the raw notes retire in stages only after their essence is proven alive. A library that only grows becomes a warehouse. Naya's becomes wisdom.",
+      "page_hash": "bd46a9be9df7386e811f5e78898a2be7338c4749327876c5a3d45a7f157158c6",
+      "content_hash": "b4c36aca644e007b1cd92fd7497c4d7ef8718268a369473c7ceac3f5450f97b8",
+      "one_line": "A hundred notes in. Ten essences out.",
       "topics": [
         "Naya",
         "Distillation",
@@ -67102,5 +67102,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "e70e3eee577aaee6c20d1ae9ada585e806c9d0361c1cc832343b85e38fc14d4e"
+  "corpus_manifest_hash": "0251c03d063aa2e9446e9328e890ca9b389058e19dfd05983c736cce2d3be202"
 }
