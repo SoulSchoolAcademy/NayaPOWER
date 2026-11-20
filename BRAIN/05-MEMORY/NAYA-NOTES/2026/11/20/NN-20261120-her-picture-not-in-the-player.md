@@ -4,7 +4,7 @@
 
 **NN-20261120-her-picture-not-in-the-player · Naya Note · 2026-11-20 ~14:23–14:52 MST (call 4f055989)**
 
-*Paired Smart Note: SN-pending — Her Picture Does Not Go in the Player (takes the next free number at filing)*
+*Paired Smart Note: SN-4323 — Her Picture Does Not Go in the Player*
 
 **Category:** Design — her picture, where it belongs and where it does not
 
