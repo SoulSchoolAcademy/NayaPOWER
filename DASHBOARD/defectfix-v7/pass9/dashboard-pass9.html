@@ -31416,12 +31416,17 @@ body{padding-bottom:170px !important;}
    Identity landings never hit the 100-140 band (157-169 every time):
    one timed re-assert can pass transiently while the layout is still
    shifting, then a late shift moves the card with nothing left to
-   correct it. So the jump now POLLS (settle, below): every 100ms it
-   checks the card's LIVE rect and jumps again whenever it is out of
-   band, until it is in band on TWO consecutive polls or 4500ms after
-   the click. 120 is the section/card scroll-margin, so the card lands
-   exactly in-frame. A wheel/touch scroll by the citizen cancels the
-   poll - their hand wins over the machine. */
+   correct it. So the jump now POLLS (settle, below) every 100ms for
+   4500ms after the click: on every tick it checks the card's LIVE rect
+   and jumps again whenever it is out of band. The poll runs the FULL
+   window - it never "settles early" on consecutive in-band reads,
+   because an in-band reading can itself be transient while the layout
+   is still shifting (a sandbox sim of the checker's failure caught
+   exactly that: two in-band polls 100ms apart, then the layout moved
+   921px). Each click starts a new generation; an older poll stops the
+   moment a newer click exists. 120 is the section/card scroll-margin,
+   so the card lands exactly in-frame. A wheel/touch scroll by the
+   citizen cancels the poll - their hand wins over the machine. */
 (function(){
   var panel=document.getElementById('settings-panel');
   if(!panel) return;
@@ -31443,20 +31448,21 @@ body{padding-bottom:170px !important;}
       return t>=100&&t<=140;
     }catch(_){ return true; }
   }
-  /* POLL UNTIL IN BAND. settle() ticks every POLL_MS: if the card is in
-     band (100-140) it counts toward STABLE_NEEDED consecutive in-band
-     polls; if it is out of band it jumps again from the LIVE rect, so a
-     layout shift that moves the card is corrected on the next tick
-     instead of being frozen in by a single timed check. It stops when
-     stable, when the citizen scrolls (isCancelled), or at the deadline -
-     and takes one final jump at the deadline if still out of band. */
-  var POLL_MS=100,DEADLINE_MS=4500,STABLE_NEEDED=2;
-  function settle(i,startedAt,isCancelled,stop){
-    var stable=0;
+  /* POLL THE FULL WINDOW. settle() ticks every POLL_MS until DEADLINE_MS
+     after the click: if the card is out of band (100-140) it jumps again
+     from the LIVE rect, so any layout shift inside the window is
+     corrected on the next tick. It never stops early on in-band reads -
+     an in-band reading can be transient while the layout is still
+     shifting. It stops at the deadline (one final jump if still out of
+     band), when the citizen scrolls, or when a newer click supersedes it
+     (jumpGen). Ticks are cheap and jump only when out of band, so a
+     settled card sits untouched. */
+  var POLL_MS=100,DEADLINE_MS=4500,jumpGen=0;
+  function settle(i,startedAt,isCancelled,stop,gen){
     (function tick(){
+      if(gen!==jumpGen){ stop(); return; }
       if(isCancelled()){ stop(); return; }
-      if(settled(i)){ stable++; if(stable>=STABLE_NEEDED){ stop(); return; } }
-      else{ stable=0; jump(i); }
+      if(!settled(i)) jump(i);
       if(Date.now()-startedAt<DEADLINE_MS){ setTimeout(tick,POLL_MS); }
       else{ if(!settled(i)) jump(i); stop(); }
     })();
@@ -31467,12 +31473,14 @@ body{padding-bottom:170px !important;}
     var i=parseInt(b.getAttribute('data-set-card'),10);
     panel.classList.remove('open');
     try{ if(typeof window.osShowView==='function') window.osShowView('settings'); }catch(_){}
+    jumpGen++;
+    var gen=jumpGen;
     var cancel=false;
     function onUserScroll(){ cancel=true; }
     window.addEventListener('wheel',onUserScroll,{passive:true});
     window.addEventListener('touchmove',onUserScroll,{passive:true});
     function stopPoll(){ window.removeEventListener('wheel',onUserScroll,{passive:true}); window.removeEventListener('touchmove',onUserScroll,{passive:true}); }
-    setTimeout(function(){ jump(i); settle(i,Date.now(),function(){ return cancel; },stopPoll); },650);
+    setTimeout(function(){ jump(i); settle(i,Date.now(),function(){ return cancel; },stopPoll,gen); },650);
   });
 })();
 </script>
