@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-20 14:11 UTC_
+_Last updated: 2026-11-20 14:43 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9604
-- ✅ Verified (8+): 9508
+- **Total scored actions:** 9612
+- ✅ Verified (8+): 9516
 - 🟡 Partial (5–7): 87
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
@@ -19,12 +19,12 @@ _Last updated: 2026-11-20 14:11 UTC_
 | Team 2 | Naya Sage | 637 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 583 | 9.0 | 10 |
 | Team 4 | Naya Mason | 567 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 700 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 404 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 549 | 8.9 | 10 |
-| Team 8 | Naya Sentinel | 577 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 703 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 962 | 9.1 | 9.7 |
+| Team 5 | Naya Seeker | 701 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 405 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 550 | 8.9 | 10 |
+| Team 8 | Naya Sentinel | 578 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 704 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 963 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 636 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 491 | 9.1 | 9.5 |
 
@@ -789,7 +789,7 @@ _Last updated: 2026-11-20 14:11 UTC_
 - **gate-stall-20261106-2200:** 1 actions, avg 9.0/10
 - **gate-stall-20261106-1018:** 1 actions, avg 9.0/10
 - **gate-stall-20261106-2305:** 1 actions, avg 9.0/10
-- **distill-daily-20261106:** 2 actions, avg 8.8/10
+- **distill-daily-20261106:** 3 actions, avg 8.8/10
 - **20261106-2305:** 1 actions, avg 9.0/10
 - **gate-stall-20261107-0009:** 1 actions, avg 9.0/10
 - **gate-stall-20261107-0114:** 1 actions, avg 9.0/10
@@ -1021,7 +1021,7 @@ _Last updated: 2026-11-20 14:11 UTC_
 - **gate-stall-20261019-1239:** 2 actions, avg 9.0/10
 - **gate-stall-20261020-0153:** 2 actions, avg 8.8/10
 - **gate-stall-20261020-0745:** 2 actions, avg 8.8/10
-- **distill-daily-20261109:** 1 actions, avg 8.5/10
+- **distill-daily-20261109:** 2 actions, avg 8.5/10
 - **gate-stall-20261109-0553:** 1 actions, avg 9.0/10
 - **gate-stall-20261109-0658:** 1 actions, avg 9.0/10
 - **gate-stall-20261109-0805:** 1 actions, avg 9.0/10
@@ -3045,12 +3045,12 @@ _Last updated: 2026-11-20 14:11 UTC_
 - **t0554:** 4 actions, avg 9.1/10
 - **t0554-lane3:** 1 actions, avg 9.0/10
 - **t0554-lane7:** 1 actions, avg 9.0/10
-- **t0555:** 6 actions, avg 8.8/10
+- **t0555:** 8 actions, avg 8.6/10
 - **t0555-lane4:** 1 actions, avg 9.0/10
 - **t0555-lane5:** 1 actions, avg 8.5/10
 - **t0555-lane7:** 1 actions, avg 8.5/10
 - **t0556-1004:** 19 actions, avg 9.1/10
-- **t0556:** 10 actions, avg 8.6/10
+- **t0556:** 14 actions, avg 8.5/10
 - **t0556-lane10:** 1 actions, avg 9.0/10
 - **t0556-lane6:** 1 actions, avg 8.5/10
 - **t0556-lane8:** 1 actions, avg 8.5/10
