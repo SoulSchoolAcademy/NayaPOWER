@@ -4,7 +4,7 @@
 
 **NN-20261119-old-smart-tabs-page-goes · Naya Note · 2026-11-19 ~21:05 MST (04:05Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — The Old Smart Tabs Page Goes (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4233 — The Old Smart Tabs Page Goes*
 
 **Category:** Design — one current page, no old one beside it
 
