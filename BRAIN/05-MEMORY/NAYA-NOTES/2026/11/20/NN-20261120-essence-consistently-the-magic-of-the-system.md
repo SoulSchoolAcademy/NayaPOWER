@@ -4,7 +4,7 @@
 
 **NN-20261120-essence-consistently-the-magic-of-the-system · Naya Note · 2026-11-20 ~16:05 MST**
 
-*Paired Smart Note: SN-pending — Essence, Consistently — The Magic of the System (takes the next free number at filing)*
+*Paired Smart Note: SN-4347 — Essence, Consistently — The Magic of the System*
 
 **Category:** Law — distillation to essence is an always-on habit, not a cleanup
 
