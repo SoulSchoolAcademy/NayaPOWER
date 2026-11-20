@@ -4,7 +4,7 @@
 
 **NN-20261120-the-board-must-be-alive · Naya Note · 2026-11-20 ~13:10–13:30 MST (call f8351b5a, second call)**
 
-*Paired Smart Note: SN-pending — The Board Must Be Alive — One Major Board, Two Inner Boards (takes the next free number at filing)*
+*Paired Smart Note: SN-4296 — The Board Must Be Alive — One Major Board, Two Inner Boards*
 
 **Category:** Decisions — the agreement presentation, the intelligent board, the frame
 
