@@ -4,7 +4,7 @@
 
 **NN-20261120-did-you-actually-do-the-optimizations · Naya Note · 2026-11-20 ~14:56 MST (main chat, read first-hand)**
 
-*Paired Smart Note: SN-pending — Did You Actually Do the Optimizations? (takes the next free number at filing)*
+*Paired Smart Note: SN-4329 — Did You Actually Do the Optimizations?*
 
 **Category:** Law — the token burn, the meter, the wake
 
