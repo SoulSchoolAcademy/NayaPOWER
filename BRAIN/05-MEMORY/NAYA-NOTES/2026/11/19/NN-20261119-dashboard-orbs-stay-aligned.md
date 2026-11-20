@@ -4,7 +4,7 @@
 
 **NN-20261119-dashboard-orbs-stay-aligned · Naya Note · 2026-11-19 ~21:03 MST (04:03Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Dashboard Orbs Stay Aligned (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4232 — Dashboard Orbs Stay Aligned*
 
 **Category:** Design — the orbs hold their line, every switch
 
