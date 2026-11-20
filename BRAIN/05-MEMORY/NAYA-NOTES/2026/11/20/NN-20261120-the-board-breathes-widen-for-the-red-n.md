@@ -4,7 +4,7 @@
 
 **NN-20261120-the-board-breathes-widen-for-the-red-n · Naya Note · 2026-11-20 ~16:34 MST**
 
-*Paired Smart Note: SN-pending — The Board Breathes: Widen for the Red N (takes the next free number at filing)*
+*Paired Smart Note: SN-4354 — The Board Breathes: Widen for the Red N*
 
 **Category:** Design — widen the slide board ~15–20% on desktop; prove the phone at 390px
 
