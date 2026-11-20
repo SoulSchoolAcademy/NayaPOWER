@@ -4,7 +4,7 @@
 
 **NN-20261120-pull-the-real-buttons · Naya Note · 2026-11-20 ~12:06–12:19 MST (voice call 8e0932a8, after the rebuild was presented)**
 
-*Paired Smart Note: SN-pending — Pull the Real Buttons — Flat Buttons Fail (takes the next free number at filing)*
+*Paired Smart Note: SN-4286 — Pull the Real Buttons — Flat Buttons Fail*
 
 **Category:** Decisions — the agreement presentation, the buttons
 
