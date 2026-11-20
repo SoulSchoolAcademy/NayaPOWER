@@ -69988,6 +69988,38 @@
         "Corpus",
         "Optimization"
       ]
+    },
+    {
+      "smart_note_id": "SN-4108",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4108-what-i-dont-read-is-the-point",
+      "slug": "what-i-dont-read-is-the-point",
+      "title": "What I Don't Read Is the Point",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4108/IB-SMART-NOTE-20261120-sn4108-what-i-dont-read-is-the-point.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4108/IB-SMART-NOTE-20261120-sn4108-what-i-dont-read-is-the-point.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4108/IB-SMART-NOTE-20261120-sn4108-what-i-dont-read-is-the-point.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4108-what-i-dont-read-is-the-point.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:20:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "9312848f350bb2d4d0500bbc19a75fcef1e39e56eeb83991f25bd25ef0c10e8c",
+      "content_hash": "5cba4964353e4640e8b499aa8fcf8f40d7b06c4f011241ce599c7fa468be1ff2",
+      "one_line": "What I don't read is the point.",
+      "topics": [
+        "Privacy",
+        "Mechanic",
+        "Mail",
+        "Discipline"
+      ]
     }
   ],
   "sequence_policy": {
@@ -69998,5 +70030,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "43e7d42977a7c7d297731c89253865d96da3aff6a91c0e6ef75e4e54cddf339c"
+  "corpus_manifest_hash": "08ea0481277de840cc13db76df2b2b904297cce1267075e0d1b59a6c8a941e1c"
 }
