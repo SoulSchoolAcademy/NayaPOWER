@@ -29,7 +29,7 @@ const WELCOME_SHA = '2062739ecb968b78cd823440bcfd4bbb8f7d0190d3bb2e5443ab3b35c00
 /* The transform's own verified outputs (v2 run 2026-11-19): if a later
    run finds these bytes already on the native paths (the build landed
    them), they are used as-is — they ARE the guarded output, sha-verified. */
-const AF_UNFOLD_SHA = '3bd03ab9e6c86280ec404ee73aabd1d2fa0bf4c7fbe1dd0217505000205531f2';
+const AF_UNFOLD_SHA = '4a2e84b0104bf404b3e576ea91725cf0cd931688ff84837cc8ae177e2d952fb9';
 const AF_WELCOME_SHA = '1f37416d79b0959b21dffb450d34e1a409dfe934fac40a144ecf0b0ef9f7cc49';
 const MASTER = 'https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a';
 
@@ -146,13 +146,16 @@ const AF_CSS_UNFOLD = `
 .frame-media{padding:6px 12px!important}
 .frame-media .play-btn{width:44px!important;height:44px!important}
 .frame-media .frame-video-btn{white-space:nowrap!important;padding:10px 12px!important}
-.frame-btnrow{flex-wrap:nowrap!important;gap:6px!important}
-/* AF v4 — v3's flex:0 1 auto DID apply, but flex-shrink squeezed all three
-   to ~101px (row only 314px: the foot's 24px padding) and overflow:hidden
-   clipped "Keep reading". The foot gives the row its full width (8px
-   padding) and the buttons do not shrink — their words size them. */
-.frame-foot{padding-left:8px!important;padding-right:8px!important}
-.frame-btnrow button{flex:0 0 auto!important;min-width:0!important;white-space:nowrap!important;font-size:17px!important;padding:10px 4px!important}
+.frame-btnrow{flex-wrap:wrap!important;gap:8px!important}
+/* AF v5 — v4's flex:0 0 auto DID apply, but a <button> as a flex item
+   sizes to its CONTAINER, not its text (all three came out 301.75px —
+   the row width — and overflowed the board). Three 17px labels cannot
+   fit one 302px row, so on mobile the foot is TWO rows: Back + Next share
+   the first, Keep reading (or I-agree on the final board) gets the full
+   second row. The seal slims to pay for the extra row. */
+.frame-btnrow button{flex:1 1 40%!important;white-space:nowrap!important;font-size:17px!important;padding:10px 4px!important}
+.frame-btnrow button:nth-child(2){flex:1 1 100%!important;order:3!important}
+.frame-foot .frame-red-n{width:56px!important;height:56px!important}
 }
 </style>
 `;

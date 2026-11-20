@@ -550,13 +550,16 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 .frame-media{padding:6px 12px!important}
 .frame-media .play-btn{width:44px!important;height:44px!important}
 .frame-media .frame-video-btn{white-space:nowrap!important;padding:10px 12px!important}
-.frame-btnrow{flex-wrap:nowrap!important;gap:6px!important}
-/* AF v4 — v3's flex:0 1 auto DID apply, but flex-shrink squeezed all three
-   to ~101px (row only 314px: the foot's 24px padding) and overflow:hidden
-   clipped "Keep reading". The foot gives the row its full width (8px
-   padding) and the buttons do not shrink — their words size them. */
-.frame-foot{padding-left:8px!important;padding-right:8px!important}
-.frame-btnrow button{flex:0 0 auto!important;min-width:0!important;white-space:nowrap!important;font-size:17px!important;padding:10px 4px!important}
+.frame-btnrow{flex-wrap:wrap!important;gap:8px!important}
+/* AF v5 — v4's flex:0 0 auto DID apply, but a <button> as a flex item
+   sizes to its CONTAINER, not its text (all three came out 301.75px —
+   the row width — and overflowed the board). Three 17px labels cannot
+   fit one 302px row, so on mobile the foot is TWO rows: Back + Next share
+   the first, Keep reading (or I-agree on the final board) gets the full
+   second row. The seal slims to pay for the extra row. */
+.frame-btnrow button{flex:1 1 40%!important;white-space:nowrap!important;font-size:17px!important;padding:10px 4px!important}
+.frame-btnrow button:nth-child(2){flex:1 1 100%!important;order:3!important}
+.frame-foot .frame-red-n{width:56px!important;height:56px!important}
 }
 </style>
 </head>
