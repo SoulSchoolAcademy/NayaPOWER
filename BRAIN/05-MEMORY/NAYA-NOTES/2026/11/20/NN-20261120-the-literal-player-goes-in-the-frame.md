@@ -4,7 +4,7 @@
 
 **NN-20261120-the-literal-player-goes-in-the-frame · Naya Note · 2026-11-20 ~12:31 MST**
 
-*Paired Smart Note: SN-pending — The Literal Player Goes In the Frame (takes the next free number at filing)*
+*Paired Smart Note: SN-4285 — The Literal Player Goes In the Frame*
 
 **Category:** Decisions — the agreement presentation, the PowerCast player in the frame
 
