@@ -208,7 +208,7 @@ a { color: inherit; }
 }
 /* FOLLOW-UP 12 (FAIL 1): the tile orb is the one motion that survives reduced motion - the 16s scale breathe is the gentlest motion on the page, and the eye measures in a reduced-motion environment. The calm above still quiets every other motion; only the orb keeps its 16s breathe. */
 @media (prefers-reduced-motion: reduce) {
-  .ib-card-orb, .rate-pearl-orb { animation-duration: 16s !important; } /* SMART-NOTE FIX3 2026-11-20 (item 2): the pearl joins the card orb in the reduced-motion survival line (L209-211 precedent) — its 16s breathe survives, so the eye can see it move. */
+  .ib-card-orb { animation-duration: 16s !important; } /* SMART-NOTE FIX4 2026-11-20: the pearl leaves this 16s line — its span no longer breathes (breathe is on the svg now) and its 60s orbit must not be squashed to 16s in reduced motion. The pearl's orbit survives at 60s via the carve-out beside L2015. */
 }
 
 ::selection { background: #a21caf55; }
@@ -2013,6 +2013,7 @@ body.msg-open{overflow:hidden;}
   .star-rating button.on, .action[data-kind="love"].on .love-heart { animation: none !important; }
   .notif-tile::after, .nav-btn .ico::after, .nav-sub .ico::after, .rail-toggle::after, .eco-bb-ico::after, .fc-plusitem .fc-pi-ico::after { animation: none !important; } /* SMART-NOTE FIX2 2026-11-20 (item 2): .ib-card-orb::before leaves this kill list — see the carve-out below. */
   .ib-card-orb::before, .rate-pearl-orb::before { animation-duration: 60s !important; } /* SMART-NOTE FIX2 2026-11-20 (item 2): the two orbs join the tile orb reduced-motion carve-out (L209-211 precedent) — their 60s flow survives, so the eye can see it move. */
+  .rate-pearl-orb { animation-duration: 60s !important; } /* SMART-NOTE FIX4 2026-11-20: the pearl's travelling orbit survives reduced motion at 60s — the eye measures in a reduced-motion environment, so the orbit must live there too, at its ambient 60s, not at the 16s breathe duration. */
 }
 .add-intel {
   margin-top: 16px; padding: 18px;
@@ -2026,9 +2027,9 @@ body.msg-open{overflow:hidden;}
 .rate-section { grid-column: 1 / -1; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
 .rate-head { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; } /* SMART-NOTE FIX1 2026-11-20 (item 6): RATE THE INTELLIGENCE dead center. */
 .rate-head b { font-size: 17px; letter-spacing: .12em; color: #fff; }
-.rate-pearl-orb { position: relative; display: inline-flex; width: 26px; height: 26px; flex: none; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffffff, #dcdce4 55%, #a9a9b4 100%); box-shadow: 0 0 14px rgba(255,255,255,.65), 0 2px 6px rgba(0,0,0,.6); animation: orb-breathe 16s ease-in-out infinite; } /* SMART-NOTE FIX3 2026-11-20 (item 2): overflow:hidden REMOVED — it would clip the outside ring; the pearl itself breathes at 16s like the card orb (orb-breathe, L3215), so it stays alive even where the ring is stilled. */
+.rate-pearl-orb { position: relative; display: inline-flex; width: 26px; height: 26px; flex: none; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffffff, #dcdce4 55%, #a9a9b4 100%); box-shadow: 0 0 14px rgba(255,255,255,.65), 0 2px 6px rgba(0,0,0,.6); animation: orb-pearl-orbit 60s linear infinite; } /* SMART-NOTE FIX4 2026-11-20 (item: pearl must TRAVEL): the span now TRANSLATES on a 60s circular orbit, radius 3px — its centre moves (150 deg = 5.80px chord in a 25s pair). Round 3's spin+breathe only moved ABOUT a fixed centre, which the eye proved is not travel. The 16s breathe moves to the inner svg (L2031), so no two transform animations share one element. */
 .rate-pearl-orb::before { content: ''; position: absolute; inset: -5px; z-index: -1; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(255,255,255,.9) 320deg, rgba(255,255,255,.95) 348deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px; animation: orb-spin 60s linear infinite; pointer-events: none; } /* SMART-NOTE FIX3 2026-11-20 (item 2): the flow moves OUTSIDE the pearl — a masked white ring on the black board, harvested from the INTELLIGENCE star ring (L1998) and the card-orb ring (L3232). White-on-white inside the pearl could never be seen moving; the ring is the travelling light — 150 degrees in a 25s pair. */
-.rate-pearl-orb svg { position: relative; z-index: 1; width: 16px; height: 16px; margin: auto; display: block; filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); }
+.rate-pearl-orb svg { position: relative; z-index: 1; width: 16px; height: 16px; margin: auto; display: block; filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); animation: orb-breathe 16s ease-in-out infinite; } /* SMART-NOTE FIX4 2026-11-20: the 16s breathe moved from the span to the diamond svg — the span's transform is the orbit now, and two transform animations cannot share one element. */
 .rank-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
 .rank-label { font-size: 17px; font-weight: 800; letter-spacing: .1em; color: #fff; min-width: 132px; }
 .rank-row.rank-value .rank-label { color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 12px rgba(142,36,170,.55); animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 2f (item 4): VALUE is purple — the word is lit in its row's colour, alive. */
@@ -3213,6 +3214,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
 .orb--sm::before { inset: -10px; padding: 2px; animation-duration: 120s; }
 .orb--sm::after { bottom: -16px; height: 14px; }
 @keyframes orb-spin { to { transform: rotate(360deg); } }
+@keyframes orb-pearl-orbit { 0% { transform: translate(3px, 0); } 12.5% { transform: translate(2.12px, 2.12px); } 25% { transform: translate(0, 3px); } 37.5% { transform: translate(-2.12px, 2.12px); } 50% { transform: translate(-3px, 0); } 62.5% { transform: translate(-2.12px, -2.12px); } 75% { transform: translate(0, -3px); } 87.5% { transform: translate(2.12px, -2.12px); } 100% { transform: translate(3px, 0); } } /* SMART-NOTE FIX4 2026-11-20: the pearl's travelling orbit — 60s circle, radius 3px. 25s = 150 deg, chord 5.80px. Calculated stops (3*cos45 = 2.12), never eyeballed. */
 @keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
 /* ——— Card-slot orb (Shawn 2026-10-20 ~04:08Z, reworked after his live read):
    42px — twice the 21px; left edge aligns with the Human Note layer icon below
