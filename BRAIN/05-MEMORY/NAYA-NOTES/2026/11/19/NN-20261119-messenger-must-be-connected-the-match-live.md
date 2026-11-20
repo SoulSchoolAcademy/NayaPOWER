@@ -4,7 +4,7 @@
 
 **NN-20261119-messenger-must-be-connected-the-match-live · Naya Note · 2026-11-19 evening ~19:40 MST (02:40Z 2026-11-20)**
 
-*Paired Smart Note: SN-pending — Messenger Must Be Connected — the Match, Live (filing blocked: SN-3955–3959 collision unresolved; the number goes in on resolution)*
+*Paired Smart Note: SN-4216 — Messenger Must Be Connected — the Match, Live*
 
 **Category:** Design — Messenger / DM (connection to the feeds + the match)
 
