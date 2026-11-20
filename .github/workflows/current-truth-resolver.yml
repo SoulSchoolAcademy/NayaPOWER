@@ -55,7 +55,14 @@ jobs:
               return subprocess.check_output(args, text=True).strip()
 
           main_head = json.loads(out("gh", "api", f"repos/{repo}/branches/main"))["commit"]["sha"]
-          production = json.loads(out("gh", "api", f"repos/{repo}/branches/production"))["commit"]["sha"]
+          try:
+              production = json.loads(out("gh", "api", f"repos/{repo}/branches/production"))["commit"]["sha"]
+          except subprocess.CalledProcessError:
+              # The production branch does not exist (HTTP 404 from `gh api`
+              # under set -euo pipefail). Current truth must not fail for a
+              # missing branch: record null and continue. Any other `gh`
+              # failure still fails loudly at the main_head read above.
+              production = None
 
           issue_ids = {str(brain["operations"]["active_issue"])}
           for item in ops.get("top_10", []):
