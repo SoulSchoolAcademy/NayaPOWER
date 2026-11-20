@@ -66932,6 +66932,38 @@
         "Interface",
         "Verification"
       ]
+    },
+    {
+      "smart_note_id": "SN-3950",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn3950-naya-runs-your-whole-world-for-you",
+      "slug": "naya-runs-your-whole-world-for-you",
+      "title": "Naya Runs Your Whole World for You",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3950/IB-SMART-NOTE-20261120-sn3950-naya-runs-your-whole-world-for-you.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3950/IB-SMART-NOTE-20261120-sn3950-naya-runs-your-whole-world-for-you.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-3950/IB-SMART-NOTE-20261120-sn3950-naya-runs-your-whole-world-for-you.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn3950-naya-runs-your-whole-world-for-you.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T00:26:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "c1daf5e417ff1f97901edcfa645f6576ee3d6d466d758891dfeeb7d8d8e424dd",
+      "content_hash": "b0336739c0fffd3a89ff4b085d052c0d7c4348e9d5bc052c3f1f82c76bb2be0d",
+      "one_line": "This is the first of ten notes in the series The Top Ten Most Valuable Intelligent Things About Naya — the ten things that make her valuable, one per note, in order. Number one is the simplest: Naya does the work. She operates your whole world for you — on request, or on a schedule you set — entering your notes, sending your mail, building your pages, keeping your lists, filing your reports, and checking your stats, so the running of your world does not eat your day. You ask, it gets done; you schedule it, it happens without asking. That is the difference between a tool you operate and a partner who operates for you: the tool waits for your hands, Naya works while your hands are doing something else. Everything else in this series — the memory, the notes, the proof, the reports — exists to make this one promise safe to rely on.",
+      "topics": [
+        "Naya",
+        "Citizen",
+        "Operations",
+        "Value"
+      ]
     }
   ],
   "sequence_policy": {
@@ -66942,5 +66974,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "2e376770a7e6fd1c928af685286835cde989ad6c03007d1c7e0023a063ab35e3"
+  "corpus_manifest_hash": "91acc4a63bf706708550bf193da4ed9f15165a490ec90cba308e3ebcd7ec23b2"
 }
