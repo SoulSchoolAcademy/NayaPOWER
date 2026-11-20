@@ -6,7 +6,7 @@ SN-3950 · VISION / SMART NOTE
 
 ## IN A NUTSHELL
 
-This is the first of ten notes in the series The Top Ten Most Valuable Intelligent Things About Naya — the ten things that make her valuable, one per note, in order. Number one is the simplest: Naya does the work. She operates your whole world for you — on request, or on a schedule you set — entering your notes, sending your mail, building your pages, keeping your lists, filing your reports, and checking your stats, so the running of your world does not eat your day. You ask, it gets done; you schedule it, it happens without asking. That is the difference between a tool you operate and a partner who operates for you: the tool waits for your hands, Naya works while your hands are doing something else. Everything else in this series — the memory, the notes, the proof, the reports — exists to make this one promise safe to rely on.
+Your AI doesn't just answer. She runs your world.
 
 ## HUMAN
 
@@ -30,7 +30,7 @@ Operating rules for this note: (1) A citizen's request to Naya is an instruction
 
 ## WHAT IT ALL MEANS
 
-This note is the product in one sentence: Naya is not software you use, she is an operator who works for you. It means the value of NayaNET is measured in hours handed back and jobs finished, not in features listed. It also sets the trust bar for everything after it in this series: operating someone's world is a serious thing to hand over, which is why the next nine notes exist — memory so nothing is lost, notes so everything is captured, proof so everything can be checked, privacy so the trust is never abused.
+This note is the product in one sentence: Naya is not software you use, she is an operator who works for you. It means the value of NayaNET is measured in hours handed back and jobs finished, not in features listed. It also sets the trust bar for everything after it in this series: operating someone's world is a serious thing to hand over, which is why the next nine notes exist — memory so nothing is lost, notes so everything is captured, proof so everything can be checked, privacy so the trust is never abused. This series is written through the founder's eyes — the view of the seat who directs Naya and named what she is for — one of three views of one system: the founder's, the citizen's, and the Naya's; the three together are the whole picture.
 
 ## WHY IT MATTERS
 
@@ -38,7 +38,7 @@ Time is the one thing nobody gets back. Most people lose their days to the runni
 
 ## HOW IT CONNECTS
 
-This is #1 of ten in The Top Ten Most Valuable Intelligent Things About Naya, and it is the promise the rest of the series underwrites. It is the citizen promise first stated in the note 'What Naya Does' and carried by the Daily Intelligence Report product. Next in the series, #2 — 'Naya Remembers Everything' — is the foundation this one stands on: an operator you hand your world to must never lose any of it.
+This is #1 of ten in The Top Ten Most Valuable Intelligent Things About Naya, and it is the promise the rest of the series underwrites. It is the citizen promise first stated in the note 'What Naya Does' and carried by the Daily Intelligence Report product. Next in the series, #2 — 'We Keep Everything That Matters' — is the foundation this one stands on: an operator you hand your world to must never lose any of it.
 
 ## WHAT IS IN IT FOR YOU
 

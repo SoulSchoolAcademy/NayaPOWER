@@ -66955,9 +66955,9 @@
       "registered_at": "2026-11-20T00:26:00Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-20",
-      "page_hash": "c1daf5e417ff1f97901edcfa645f6576ee3d6d466d758891dfeeb7d8d8e424dd",
-      "content_hash": "b0336739c0fffd3a89ff4b085d052c0d7c4348e9d5bc052c3f1f82c76bb2be0d",
-      "one_line": "This is the first of ten notes in the series The Top Ten Most Valuable Intelligent Things About Naya — the ten things that make her valuable, one per note, in order. Number one is the simplest: Naya does the work. She operates your whole world for you — on request, or on a schedule you set — entering your notes, sending your mail, building your pages, keeping your lists, filing your reports, and checking your stats, so the running of your world does not eat your day. You ask, it gets done; you schedule it, it happens without asking. That is the difference between a tool you operate and a partner who operates for you: the tool waits for your hands, Naya works while your hands are doing something else. Everything else in this series — the memory, the notes, the proof, the reports — exists to make this one promise safe to rely on.",
+      "page_hash": "f05131a6060a352d2d01f5274c7fa558b3b586f7837a453b5956dffe259fb3f9",
+      "content_hash": "630a5c4180fe68297a72c20a1d3c271e9de6d1fdb1f80ed0f67366980a8e4dd3",
+      "one_line": "Your AI doesn't just answer. She runs your world.",
       "topics": [
         "Naya",
         "Citizen",
@@ -67102,5 +67102,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "8d10ddea804440b9d7761dca0da629ad8e360a52087a2979b79b0bf132e34936"
+  "corpus_manifest_hash": "56e2af31f921e0f5ea0df7bb72071feff020c8f96eb8d7cb590db5cd585f2a14"
 }
