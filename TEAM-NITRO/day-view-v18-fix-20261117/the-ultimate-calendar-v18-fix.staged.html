@@ -2022,7 +2022,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 .smart-block .notif-detail::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff)!important}
 /* (7) BUTTONS TO THE CIRCLE-N STANDARD — Book emerald, Smart Meet purple, never the same together. */
 #tileBookBtn{--btnc:#07925f}
-#tileMeetBtn{--btnc:#8e24aa}
 .tile-book button{border:2px solid var(--btnc,#8e24aa)!important;background:linear-gradient(135deg,#232330 0%,#0b0b12 50%,#171722 100%)!important;box-shadow:0 8px 20px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--btnc,#8e24aa) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.5)!important;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease!important}
 .tile-book button:hover{transform:translateY(-3px)!important;border-color:#fff!important;box-shadow:0 14px 28px rgba(0,0,0,.65),0 0 28px color-mix(in srgb,var(--btnc,#8e24aa) 65%,transparent),inset 0 1px 0 rgba(255,255,255,.45),inset 0 -3px 6px rgba(0,0,0,.5)!important}
 .tile-book button:active{transform:scale(.97)!important}
@@ -3111,8 +3110,49 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    at <=560px by the fix-17 rule, which stands) and Worlds (floating at
    1920; static-flow below the content at <=560px, as before). The Change
    cover function itself is unchanged where the pill remains. */
-.hl-center .hl-monthline{display:inline-flex!important;align-items:center!important;gap:24px!important;white-space:nowrap!important}
+.hl-center .hl-monthline{display:inline-flex!important;align-items:center!important;gap:27px!important;white-space:nowrap!important}
 #dayScroll:not(:has(#wisdomBanner.on)):not(:has(.worlds-slide.on))>.cover-change{display:none!important}
+
+
+/* ============ ROUND2 — calendar day follow-on, gap fix + ultimate booking (2026-11-20) ============ */
+/* ITEM 1 — the gap, per font state (measured on the font FILES with FreeType/Pillow, 32px "November"):
+   Great Vibes: advance 106.3, ink (-1.0 -> 109.0) — the last glyph's ink runs 2.7px PAST its box, so at
+   flex gap 24 the ink-to-tile gap is 21.3, not 24. Fallback faces (DejaVu Serif advance 169.3 / ink 170.0,
+   Noto Sans 158.2/158.0, Marcellus 152.3/153.0, Noto Serif 160.6/161.0) end their ink at the box edge
+   (bearing <=0.7px), so at flex gap 24 the ink gap is ~24. The eye's 16px reproduces in NO font state at
+   32px — see maker report §1. So the gap is per-state: 27px when Great Vibes is loaded (24 + 2.7 overhang
+   = 24.3 ink), 24px on fallback. The class rides the monthline, set by r2SyncMonthlineFont() from
+   document.fonts.check() + document.fonts.ready. (27 is calculated from the measured 2.7, not eyeballed;
+   the 8px grid yields to the measured 24px-ink target here — named in the report.) */
+.hl-center .hl-monthline.gv-fallback{gap:24px!important}
+/* ITEM 2 — the ultimate booking, inside the Appointments slide. Steps in plain words, one choice at a
+   time; a few open times at a time, never a wall. Harvested anatomy: the elite-cal board, the
+   elite-bookpill / elite-meetpill pills, the mc-time digit-tile pills, the mc-day strip. */
+.r2-step{font-size:19px!important;font-weight:800!important;color:#fff!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important;margin:4px 0 0!important}
+.r2-kinds{display:flex!important;gap:12px!important;flex-wrap:wrap!important}
+.r2-kind{font-size:19px!important;font-weight:800!important;color:#fff!important;background:linear-gradient(135deg,#232330 0%,#0b0b12 55%,#050507 100%)!important;border:2px solid color-mix(in srgb,var(--kc,#8e24aa) 75%,#ffffff 25%)!important;border-radius:999px!important;padding:12px 22px!important;cursor:pointer!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 16px color-mix(in srgb,var(--kc,#8e24aa) 35%,transparent),0 8px 18px rgba(0,0,0,.6)!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease!important}
+.r2-kind:hover{transform:translateY(-2px)!important;filter:brightness(1.22)!important}
+.r2-kind:active{transform:scale(.97)!important}
+.r2-kind[aria-pressed="true"]{filter:brightness(1.3)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 28px color-mix(in srgb,var(--kc,#8e24aa) 60%,transparent),0 12px 24px rgba(0,0,0,.65)!important}
+.r2-kind[data-kind="meet"]{--kc:#8e24aa!important}
+.r2-kind[data-kind="person"]{--kc:#d4a017!important}
+.r2-kind[data-kind="call"]{--kc:#0f52ba!important}
+.r2-more{font-size:19px!important;font-weight:800!important;color:#fff!important;background:linear-gradient(135deg,#232330 0%,#0b0b12 55%,#050507 100%)!important;border:2px solid color-mix(in srgb,#3f51b5 75%,#ffffff 25%)!important;border-radius:999px!important;padding:10px 20px!important;cursor:pointer!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 16px rgba(63,81,181,.35),0 8px 18px rgba(0,0,0,.6)!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease!important}
+.r2-more:hover{transform:translateY(-2px)!important;filter:brightness(1.22)!important}
+.r2-more:active{transform:scale(.97)!important}
+#tileBookBtn,#mcBook{border-color:color-mix(in srgb,#07925f 75%,#ffffff 25%)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 20px rgba(7,146,95,.4),0 10px 22px rgba(0,0,0,.6)!important}
+#tileBookBtn[aria-expanded="true"]{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 32px rgba(7,146,95,.6),0 14px 28px rgba(0,0,0,.65)!important}
+.r2-confirm{display:flex!important;flex-direction:column!important;gap:12px!important;padding:16px!important;border-radius:18px!important;background:linear-gradient(180deg,#15151f,#08080d)!important;border:1.5px solid color-mix(in srgb,#07925f 70%,transparent)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 22px rgba(0,0,0,.55),0 0 18px rgba(7,146,95,.35)!important}
+.r2-booked{font-family:Marcellus,serif!important;font-size:25px!important;color:#fff!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important;margin:0!important}
+.r2-cline{font-size:19px!important;font-weight:800!important;color:#fff!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important;margin:0!important}
+.r2-mail,.r2-remind{font-size:17px!important;color:#fff!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important;margin:0!important}
+.r2-cactions{display:flex!important;gap:12px!important;flex-wrap:wrap!important}
+.r2-cactions button{font-size:19px!important;font-weight:800!important;color:#fff!important;background:linear-gradient(135deg,#232330 0%,#0b0b12 55%,#050507 100%)!important;border:2px solid color-mix(in srgb,#07925f 75%,#ffffff 25%)!important;border-radius:999px!important;padding:12px 22px!important;cursor:pointer!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 16px rgba(7,146,95,.35),0 8px 18px rgba(0,0,0,.6)!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease!important}
+.r2-cactions button:hover{transform:translateY(-2px)!important;filter:brightness(1.22)!important}
+.r2-cactions button:active{transform:scale(.97)!important}
+#r2Change{border-color:color-mix(in srgb,#0f52ba 75%,#ffffff 25%)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 16px rgba(15,82,186,.35),0 8px 18px rgba(0,0,0,.6)!important}
+.r2-refused{font-size:17px!important;font-weight:800!important;color:#fff!important;background:linear-gradient(180deg,#2a1214,#120607)!important;border:1.5px solid #c62828!important;border-radius:14px!important;padding:12px 14px!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important;margin:0!important}
+@media(max-width:560px){.r2-kinds{gap:8px!important}.r2-kind{padding:10px 16px!important}}
 
 </style>
   </head>
@@ -3438,7 +3478,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
           del: function (k) { try { localStorage.removeItem(k); } catch (e) {} }
         };
-        var LS_KEYS = { appts: "nayacal.appts.v1", notes: "nayacal.notes.v1", journal: "nayacal.journal.v1", lists: "nayacal.lists.v1", draft: "nayacal.journalDraft.v1" };
+        var LS_KEYS = { appts: "nayacal.appts.v1", notes: "nayacal.notes.v1", journal: "nayacal.journal.v1", lists: "nayacal.lists.v1", draft: "nayacal.journalDraft.v1", mail: "nayacal.maildraft.v1", remind: "nayacal.reminders.v1" };
         /* CALENDAR FIX 2 (DAY 5) — MONTH->DAY MEET BRIDGE: the month tile's
            "Meeting" comes from mw.cal.bookings.v1 (month file dayBookings);
            the day view read ONLY nayacal.appts.v1, so a meet booked in the
@@ -4264,6 +4304,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               '<button type="button" class="stats-btn" id="statsBtn">Your Stats</button>' +
             "</div>" +
             '<span class="sigpiece" style="--dc:' + dc + '" role="img" aria-label="' + WEEKDAYS[d.getDay()] + '"><span class="sp-ring-a"></span><span class="sp-ring-b"></span><span class="sp-metal"></span><span class="sp-pearl"></span></span>';
+          r2SyncMonthlineFont();
           var k = keyOf(d);
           var dayAppts = dayApptsFor(k);
           var dayNotes = mergedNotesFor(k);
@@ -4853,7 +4894,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
             catSection(CATS[0], notifRowsA + dayNav(dc, false), null, "Six worlds, one day — tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, Province and Global — your news hub, each scope its own door.", "News Hub", dc, "hex", null, "news-slide") +
-            catSection(CATS[1], eliteApptsHTML(dc, apptRows) + dayNav("#8e24aa", false), "appointments", "The day, booked — what is on, and a time to book.", "Appointments", "#8e24aa", null, null, "allow-scroll") +
+            catSection(CATS[1], eliteApptsHTML(dc, apptRows, tl) + dayNav("#8e24aa", false), "appointments", "The day, booked — what is on, and a time to book.", "Appointments", "#8e24aa", null, null, "allow-scroll") +
             catSection(CATS[2], summaryInner + dayNav("#3f51b5", false), "record", "The day, written down — counted.", "Summary of the day", "#3f51b5", "diamond", null, "allow-scroll") +
             twinSections(dc);
           /* FIX9 item 12 — NOTIFICATIONS FIRST (dot 0, the opening
@@ -5059,6 +5100,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               /* FIX12 item 13 — the timeline wall is OUT of the door too:
                  no full slot list is ever displayed, anywhere. Booking
                  lives on the slide's mini calendar now. */
+              '<p class="mc-note" id="doorBookNote" hidden></p>' +
               '<div class="panel" role="list" aria-label="Appointments for this day">' + rows + "</div>";
             $("bkMeet").addEventListener("click", function () {
               var on = this.getAttribute("aria-pressed") === "true";
@@ -5084,7 +5126,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               var t = $("bkTime").value || "10:00";
               var title = $("bkTitle").value.trim() || "Appointment";
               var meet = $("bkMeet").getAttribute("aria-pressed") === "true";
-              (appointments[k] = appointments[k] || []).push({ time: t, title: title, meet: meet });
+              if (mcFreeTimes(sel, 60).indexOf(t) === -1) { var dn = $("doorBookNote"); if (dn) { dn.hidden = false; dn.textContent = "That time is taken — pick an open time on the Appointments slide."; } return; }
+              (appointments[k] = appointments[k] || []).push({ time: t, title: title, meet: meet, dur: 60, how: meet ? "meet" : "person" });
               saveStores();
               openDoor(door); renderMonth();
             });
@@ -5311,11 +5354,25 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            re-rendered every day): a tap on a booked slot's Join button
            keeps its own room — everything else on the slot books it. */
         function openBookFor(timeHHMM) {
-          var door = doorById("appointments");
-          if (!door) return;
-          openDoor(door);
-          var bt = $("bkTime");
-          if (bt) { bt.value = timeHHMM; bt.focus({ preventScroll: true }); }
+          /* ROUND2 item 2 — a timeline slot books on the Appointments slide, not in the door: the door
+             keeps its own book form for the day-menu path. The slot's hour pre-picks its first open time. */
+          if (!sel) return;
+          openDay(sel);
+          gotoSlideByLabel("Appointments");
+          mcOpen(sel, false);
+          var h = parseInt(String(timeHHMM).split(":")[0], 10);
+          var times = mcFreeTimes(sel, __mc.dur);
+          var first = null;
+          for (var i = 0; i < times.length; i++) { if (parseInt(times[i].split(":")[0], 10) === h) { first = times[i]; break; } }
+          if (first) {
+            __mc.time = first;
+            __mc.timePage = Math.floor(times.indexOf(first) / 6);
+            mcRenderCal(); mcRenderForm();
+          } else {
+            __mc.refused = "That hour is full — here are the next open times.";
+            __mc.timePage = 0;
+            mcRenderCal(); mcRenderForm();
+          }
         }
         if (!window.__tlSlotWired) {
           window.__tlSlotWired = true;
@@ -5343,7 +5400,25 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            to the booker: a 30-minute buffer after every booking, and no
            booking inside the next hour (minimum notice). No full slot
            list is ever displayed, anywhere. */
-        var __mc = { day: null, time: null, dur: 30, meet: false, edit: null };
+        /* ROUND2 item 1 — the gap is per font state (see ROUND2 CSS): Great Vibes' last glyph runs
+           2.7px past its box (measured on the font file), fallbacks end at the box edge. */
+        function r2SyncMonthlineFont() {
+          try {
+            var loaded = !!(document.fonts && document.fonts.check('32px "Great Vibes"'));
+            document.querySelectorAll(".hl-monthline").forEach(function (ml) { ml.classList.toggle("gv-fallback", !loaded); });
+          } catch (e) {}
+        }
+        if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { r2SyncMonthlineFont(); }); }
+        function r2KindLabel(kind) {
+          return kind === "meet" ? "Smart Meet" : kind === "call" ? "Call" : kind === "person" ? "In person" : "Pick how to meet";
+        }
+        function r2WhenLine(day, time, dur) {
+          var p = String(time).split(":");
+          var h12 = parseInt(p[0], 10) % 12; if (h12 === 0) h12 = 12;
+          var ap = parseInt(p[0], 10) >= 12 ? "PM" : "AM";
+          return WEEKDAYS[day.getDay()] + ", " + MONTHS[day.getMonth()] + " " + day.getDate() + " · " + h12 + ":" + p[1] + " " + ap + " · " + dur + " minutes";
+        }
+        var __mc = { day: null, time: null, dur: 30, meet: false, edit: null, kind: null, timePage: 0, confirmed: null, refused: null };
         function mcMinutes(t) { var p = String(t).split(":"); return parseInt(p[0], 10) * 60 + parseInt(p[1], 10); }
         function mcFreeTimes(day, durMin) {
           var k = keyOf(day);
@@ -5374,6 +5449,15 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var cal = $("eliteCal"); if (!cal) return;
           var dc = sel ? DAY_COLORS[sel.getDay()] : "#8e24aa";
           var today = new Date(); today.setHours(0, 0, 0, 0);
+          /* ROUND2 item 2 — Step 1: the kind of time, from the page's own vocabulary (Smart Meet /
+             in person / call — the meet-room text already says "meet in person"; "call" rides the
+             same pill choice and is stored as data, see report §2). One lit, never two. */
+          var kinds = [["meet", "Smart Meet"], ["person", "In person"], ["call", "Call"]];
+          var kindRow = '<p class="r2-step">Step 1 — How do we meet?</p><div class="r2-kinds">' +
+            kinds.map(function (k) {
+              return '<button type="button" class="r2-kind" data-kind="' + k[0] + '" aria-pressed="' + (__mc.kind === k[0]) + '">' + k[1] + "</button>";
+            }).join("") + "</div>";
+          /* Step 2: the 7-day strip, harvested verbatim from fix-12 (weekday colours, no-free-time days dimmed). */
           var days = "";
           for (var i = 0; i < 7; i++) {
             var d = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
@@ -5385,42 +5469,66 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var body = "";
           if (__mc.day) {
             var times = mcFreeTimes(__mc.day, __mc.dur);
+            var page = __mc.timePage || 0;
+            var per = 6;
+            var pageTimes = times.slice(page * per, page * per + per);
+            var left = times.length - (page + 1) * per;
             body += '<div class="mc-dur"><label for="mcDur">How long?</label><select id="mcDur">' +
               [15, 30, 60].map(function (v) { return '<option value="' + v + '"' + (v === __mc.dur ? " selected" : "") + ">" + v + " minutes</option>"; }).join("") + "</select></div>";
             body += times.length
-              ? '<div class="mc-times">' + times.map(function (t) { return mcTimePill(t, dc); }).join("") + "</div>"
+              ? '<div class="mc-times">' + pageTimes.map(function (t) { return mcTimePill(t, dc); }).join("") +
+                (left > 0
+                  ? '<button type="button" class="r2-more" data-mc-more="next">More times · ' + left + " left</button>"
+                  : (times.length > per
+                    ? '<button type="button" class="r2-more" data-mc-more="first">Back to the first times</button>'
+                    : "")) + "</div>"
               : '<p class="mc-note">No open time left on this day — try another day.</p>';
           } else {
             body += '<p class="mc-note">Pick a day to see its open times.</p>';
           }
-          cal.innerHTML = '<div class="mc-days">' + days + "</div>" + body;
+          cal.innerHTML = kindRow +
+            '<p class="r2-step">Step 2 — Pick the day</p><div class="mc-days">' + days + "</div>" +
+            '<p class="r2-step">Step 3 — Pick a time</p>' + body;
         }
         function mcRenderForm() {
           var form = $("eliteForm"); if (!form) return;
-          if (!__mc.day || !__mc.time) { form.hidden = true; form.innerHTML = ""; return; }
+          if (__mc.confirmed) { mcRenderConfirm(); return; }
+          if (!__mc.day || !__mc.time) {
+            if (__mc.refused && __mc.day) { form.hidden = false; form.innerHTML = '<p class="r2-refused">' + escapeHTML(__mc.refused) + "</p>"; return; }
+            form.hidden = true; form.innerHTML = ""; return;
+          }
           var d = __mc.day;
-          var p = __mc.time.split(":");
-          var h12 = parseInt(p[0], 10) % 12; if (h12 === 0) h12 = 12;
-          var ap = parseInt(p[0], 10) >= 12 ? "PM" : "AM";
+          var kindLabel = r2KindLabel(__mc.kind);
           form.hidden = false;
           form.innerHTML =
-            '<p class="mc-chosen">' + WEEKDAYS[d.getDay()] + ", " + MONTHS[d.getMonth()] + " " + d.getDate() + " · " + h12 + ":" + p[1] + " " + ap + " · " + __mc.dur + " minutes</p>" +
+            (__mc.refused ? '<p class="r2-refused">' + escapeHTML(__mc.refused) + "</p>" : "") +
+            '<p class="mc-chosen">' + r2WhenLine(d, __mc.time, __mc.dur) + " · " + kindLabel + "</p>" +
             '<input type="text" id="mcTitle" placeholder="What is it?" aria-label="What is it?" maxlength="80" value="' + escapeHTML(__mc.edit ? __mc.edit.title : "").replace(/"/g, "&quot;") + '" />' +
-            '<button type="button" class="elite-meetpill mc-meet" id="mcMeet" aria-pressed="' + !!__mc.meet + '">Smart Meet</button>' +
             '<input type="text" id="mcWho" placeholder="Who is it with?" aria-label="Who is it with?" maxlength="80" value="' + escapeHTML(__mc.edit ? (__mc.edit.who || "") : "").replace(/"/g, "&quot;") + '" />' +
-            '<button type="button" class="elite-bookpill" id="mcBook">Book</button>';
+            '<button type="button" class="elite-bookpill" id="mcBook">' + (__mc.edit ? "Save the change" : "Book") + "</button>";
         }
         function mcOpen(day, meet) {
           var cal = $("eliteCal"); if (!cal) return;
           __mc.day = day || sel; __mc.time = null; __mc.meet = !!meet; __mc.edit = null;
+          __mc.kind = meet ? "meet" : null; __mc.timePage = 0; __mc.confirmed = null; __mc.refused = null;
           cal.hidden = false;
           mcRenderCal(); mcRenderForm();
           var b = $("tileBookBtn"); if (b) b.setAttribute("aria-expanded", "true");
         }
         function mcBook() {
           if (!__mc.day || !__mc.time) return;
+          if (!__mc.kind) { __mc.refused = "Pick how you meet first — Step 1."; mcRenderCal(); mcRenderForm(); return; }
+          /* ROUND2 item 2 — the guard: the time pills only ever show free times, so the normal path
+             cannot double-book; but the slot is re-checked here, so a second booking of the same time
+             is refused and the next open times are offered instead. */
+          var free = mcFreeTimes(__mc.day, __mc.dur);
+          if (free.indexOf(__mc.time) === -1 && !(__mc.edit && __mc.edit.time === __mc.time)) {
+            __mc.refused = "That time is taken now — here are the next open times.";
+            __mc.time = null; __mc.timePage = 0;
+            mcRenderCal(); mcRenderForm(); return;
+          }
           var title = ($("mcTitle") ? $("mcTitle").value.trim() : "") || "Appointment";
-          var who = $("mcWho") ? $("mcWho").value.trim() : "";
+          var who = ($("mcWho") ? $("mcWho").value.trim() : "");
           var k = keyOf(__mc.day);
           var list = (appointments[k] = appointments[k] || []);
           if (__mc.edit) {
@@ -5428,10 +5536,80 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               if (list[i].time === __mc.edit.time && list[i].title === __mc.edit.title && !list[i].fromMonth) { list.splice(i, 1); break; }
             }
           }
-          list.push({ time: __mc.time, title: title, meet: !!__mc.meet, who: who, dur: __mc.dur });
+          list.push({ time: __mc.time, title: title, meet: __mc.kind === "meet", who: who, dur: __mc.dur, how: __mc.kind });
           saveStores();
           renderMonth();
-          openDay(__mc.day);
+          /* Smart Mail draft + reminder — LOCAL STATE ONLY. Smart Mail is not connected on this page,
+             so no mail is sent here; the draft is kept so it sends when Smart Mail connects. The
+             reminder is kept on this device; firing it needs the live scheduler. Both are named
+             honestly on the confirmation board. */
+          var drafts = LS.get(LS_KEYS.mail) || [];
+          drafts.push({ to: who, subject: "Booked: " + title, body: "Booked — " + title + " · " + r2WhenLine(__mc.day, __mc.time, __mc.dur) + (who ? " with " + who : "") + " · " + r2KindLabel(__mc.kind) + ".", day: k, time: __mc.time, created: new Date().toISOString() });
+          if (drafts.length > 50) drafts = drafts.slice(-50);
+          LS.set(LS_KEYS.mail, drafts);
+          var rems = LS.get(LS_KEYS.remind) || [];
+          rems.push({ day: k, time: __mc.time, remindAt: mcMinutes(__mc.time) - 30, title: title, who: who, created: new Date().toISOString() });
+          if (rems.length > 50) rems = rems.slice(-50);
+          LS.set(LS_KEYS.remind, rems);
+          __mc.confirmed = { day: __mc.day, time: __mc.time, dur: __mc.dur, title: title, who: who, kind: __mc.kind };
+          __mc.refused = null;
+          r2RefreshTiles();
+          mcRenderCal(); mcRenderForm();
+        }
+        /* ROUND2 item 2 — refresh the slide's own tiles + timeline in place after a booking, so the
+           confirmation can stay on screen while the day already shows the booking. Row template is
+           openDay's own (harvested verbatim); Join buttons are wired here as renderCategories does. */
+        function r2RefreshTiles() {
+          if (!sel) return;
+          var k = keyOf(sel);
+          var dayAppts = dayApptsFor(k);
+          var tiles = document.querySelector(".elite-appts .elite-tiles");
+          if (tiles) {
+            tiles.innerHTML = dayAppts.length ? dayAppts.map(function (a, idx) {
+              return '<div class="tile-appt-row" data-mc-i="' + idx + '"><span class="tw">' + fmtTime(a.time) + '</span><span class="tt">' + escapeHTML(a.title) + (a.who ? " · with " + escapeHTML(a.who) : "") + "</span>" + (a.meet ? '<span class="meet" style="flex:none;font-size:var(--type-small);font-weight:800;letter-spacing:.06em;padding:5px 11px;border-radius:999px;border:1px solid var(--d3);color:#bfeaff">Meet</span><button type="button" class="pill" data-join="' + idx + '" aria-label="Join the Smart Meet at ' + fmtTime(a.time) + '" style="flex:none">Join \u2192</button>' : "") + (a.fromMonth ? "" : '<button type="button" class="mc-cancel" data-mc-i="' + idx + '" aria-label="Cancel ' + escapeHTML(a.title) + ' at ' + fmtTime(a.time) + '">Cancel</button>') + "</div>";
+            }).join("") : '<p class="tile-empty">Nothing booked for this day yet.</p>';
+            tiles.querySelectorAll("[data-join]").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                var sorted = dayApptsFor(k);
+                openMeetRoom(sorted[parseInt(btn.getAttribute("data-join"), 10)]);
+              });
+            });
+          }
+          var tlBody = document.querySelector(".elite-appts .r2-tlbody");
+          if (tlBody) tlBody.innerHTML = timelineHTML(k);
+        }
+        /* ROUND2 item 2 — the confirmation board: what is booked, when, with whom, how — plus the
+           Smart Mail draft line and the reminder line, both named honestly (see mcBook). */
+        function mcRenderConfirm() {
+          var form = $("eliteForm"); if (!form) return;
+          var c = __mc.confirmed; if (!c) return;
+          var cal = $("eliteCal"); if (cal) cal.hidden = true;
+          form.hidden = false;
+          form.innerHTML =
+            '<div class="r2-confirm" role="status">' +
+            '<p class="r2-booked">Booked</p>' +
+            '<p class="r2-cline">' + escapeHTML(c.title) + "</p>" +
+            '<p class="r2-cline">' + r2WhenLine(c.day, c.time, c.dur) + "</p>" +
+            '<p class="r2-cline">With ' + escapeHTML(c.who || "just you") + " · " + r2KindLabel(c.kind) + "</p>" +
+            (c.kind === "meet" ? '<button type="button" class="elite-meetpill" id="r2Join">Join the Smart Meet →</button>' : "") +
+            '<p class="r2-mail">Smart Mail — draft saved' + (c.who ? " for " + escapeHTML(c.who) : "") + ". It sends when Smart Mail connects.</p>" +
+            '<p class="r2-remind">Reminder set — 30 minutes before, kept on this device.</p>' +
+            '<div class="r2-cactions"><button type="button" id="r2Change">Change time</button><button type="button" id="r2Done">Done</button></div>' +
+            "</div>";
+          var jb = $("r2Join");
+          if (jb) jb.addEventListener("click", function () {
+            var found = dayApptsFor(keyOf(c.day)).filter(function (a) { return a.time === c.time && a.title === c.title; })[0];
+            if (found) openMeetRoom(found);
+          });
+          var ch = $("r2Change");
+          if (ch) ch.addEventListener("click", function () {
+            __mc.edit = { time: c.time, title: c.title, who: c.who || "" };
+            __mc.day = c.day; __mc.time = c.time; __mc.kind = c.kind; __mc.dur = c.dur || 30; __mc.confirmed = null; __mc.refused = null;
+            var cal2 = $("eliteCal"); if (cal2) cal2.hidden = false;
+            mcRenderCal(); mcRenderForm();
+          });
+          var dn = $("r2Done");
+          if (dn) dn.addEventListener("click", function () { __mc.confirmed = null; openDay(sel); });
         }
         function mcCancelIdx(idx) {
           if (!sel) return;
@@ -5446,11 +5624,18 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           renderMonth();
           openDay(sel);
         }
-        function eliteApptsHTML(dc, apptRows) {
+        function eliteApptsHTML(dc, apptRows, tl) {
+          /* ROUND2 item 2 — the slide at rest presents booking as a real thing: the day's booked tiles,
+             the full 6 AM–9 PM timeline (timelineHTML, harvested — it was computed and passed in but
+             never shown on this slide), and ONE doorway pill. The second bare button (Smart Meet) is
+             gone — Smart Meet is a kind inside Step 1 now. Timeline tile markup harvested from the
+             renderCategories tile (same .tile-timeline pattern); the .r2-tlbody wrapper lets a booking
+             refresh the timeline in place without rebuilding the tile. */
+          var label = sel ? WEEKDAYS[sel.getDay()] + ", " + MONTHS[sel.getMonth()] + " " + sel.getDate() : "";
           return '<div class="elite-appts">' +
             '<div class="elite-tiles" role="list" aria-label="Appointments for this day">' + apptRows + "</div>" +
-            '<div class="elite-book"><button type="button" class="elite-bookpill" id="tileBookBtn" aria-expanded="false">Book a time</button>' +
-            '<button type="button" class="elite-meetpill" id="tileMeetBtn">Smart Meet</button></div>' +
+            (tl ? '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><h3><span class="dotc" style="--tc:#3f51b5"></span>Timeline · ' + label + '</h3><div class="r2-tlbody">' + tl + "</div></div>" : "") +
+            '<div class="elite-book"><button type="button" class="elite-bookpill" id="tileBookBtn" aria-expanded="false">Book a time</button></div>' +
             '<div class="elite-cal" id="eliteCal" hidden></div>' +
             '<div class="elite-form" id="eliteForm" hidden></div>' +
             "</div>";
@@ -5460,19 +5645,25 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           document.addEventListener("click", function (ev) {
             var t = ev.target;
             if (t.closest("#tileBookBtn")) { ev.preventDefault(); var c = $("eliteCal"); if (c && !c.hidden) { c.hidden = true; var f = $("eliteForm"); if (f) { f.hidden = true; } var b = $("tileBookBtn"); if (b) b.setAttribute("aria-expanded", "false"); } else { mcOpen(sel, false); } return; }
-            if (t.closest("#tileMeetBtn")) { ev.preventDefault(); mcOpen(sel, true); return; }
             var day = t.closest(".mc-day");
             if (day) {
               if (day.getAttribute("aria-disabled") === "true") return;
               var parts = day.getAttribute("data-mc-day").split("-");
               __mc.day = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
-              __mc.time = null; __mc.edit = null;
+              __mc.time = null; __mc.edit = null; __mc.timePage = 0; __mc.refused = null;
               mcRenderCal(); mcRenderForm();
               return;
             }
+            var kd = t.closest(".r2-kind");
+            if (kd) { __mc.kind = kd.getAttribute("data-kind"); __mc.meet = __mc.kind === "meet"; __mc.refused = null; mcRenderCal(); mcRenderForm(); return; }
+            var mr = t.closest(".mc-more");
+            if (mr) {
+              if (mr.getAttribute("data-mc-more") === "next") __mc.timePage = (__mc.timePage || 0) + 1;
+              else __mc.timePage = 0;
+              mcRenderCal(); return;
+            }
             var tp = t.closest(".mc-time");
-            if (tp) { __mc.time = tp.getAttribute("data-mc-time"); mcRenderCal(); mcRenderForm(); return; }
-            if (t.closest("#mcMeet")) { var m = $("mcMeet"); __mc.meet = !__mc.meet; if (m) m.setAttribute("aria-pressed", String(__mc.meet)); return; }
+            if (tp) { __mc.time = tp.getAttribute("data-mc-time"); __mc.refused = null; mcRenderCal(); mcRenderForm(); return; }
             if (t.closest("#mcBook")) { ev.preventDefault(); mcBook(); return; }
             var cx = t.closest(".mc-cancel");
             if (cx) { ev.preventDefault(); mcCancelIdx(parseInt(cx.getAttribute("data-mc-i"), 10)); return; }
@@ -5483,13 +5674,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               if (!a || a.fromMonth) return;
               __mc.edit = { time: a.time, title: a.title, who: a.who || "" };
               __mc.day = sel; __mc.time = a.time; __mc.meet = !!a.meet; __mc.dur = a.dur || 30;
+              __mc.kind = a.how || (a.meet ? "meet" : "person"); __mc.confirmed = null; __mc.refused = null; __mc.timePage = 0;
               var cal2 = $("eliteCal"); if (cal2) cal2.hidden = false;
               mcRenderCal(); mcRenderForm();
               return;
             }
           });
           document.addEventListener("change", function (ev) {
-            if (ev.target && ev.target.id === "mcDur") { __mc.dur = parseInt(ev.target.value, 10) || 30; __mc.time = null; mcRenderCal(); mcRenderForm(); }
+            if (ev.target && ev.target.id === "mcDur") { __mc.dur = parseInt(ev.target.value, 10) || 30; __mc.time = null; __mc.timePage = 0; __mc.refused = null; mcRenderCal(); mcRenderForm(); }
           });
         }
         /* The swipe — one gesture walks day to day at phone width, the
