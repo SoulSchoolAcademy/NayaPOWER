@@ -4,7 +4,7 @@
 
 **NN-20261120-the-player-at-the-edge · Naya Note · 2026-11-20 ~13:33–14:05 MST (call 8b19d313)**
 
-*Paired Smart Note: SN-pending — The Player at the Edge — One Third Player, Two Thirds Picture (takes the next free number at filing)*
+*Paired Smart Note: SN-4308 — The Player at the Edge — One Third Player, Two Thirds Picture*
 
 **Category:** Design — the agreement presentation, the player layout, mobile
 
