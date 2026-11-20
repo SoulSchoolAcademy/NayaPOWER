@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 23:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22513,6 +22513,12 @@ _Last updated: 2026-11-20 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts verified: v2 scanner lane-experiments/t0623/scan_receipt_evidence_v2.py sha256 prefix 58d390e17d25672b matches claim; v1 seal byte-identical (85372c2e...); hook seal byte-identical (3ad57a6a...); batch report present; v1 blindness measured 0/6 receipts, v2 14/14 verdicts with zero false flags, one flag hand-verified (eedd9540f5 exit 0 = c
 
+### ✅ t0622-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Kernel byte-verdict at live tip d254379b5 (cold-retrieve/intelligence scopes)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: receipt is itself the diagnostic verdict (no branch artifact — diagnosis-only authority); tip pinned twice at action time and post-run, both d254379b5f09827229de4656e026b670b942f18b, brief hypothesis 26efff66 falsified and re-pinned; test counts (8/8 mjs, 3/3 cold-graph, 60 passed + 1 named environmental skip) in
+
 ### ✅ t0622 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Kernel byte-verdict at live tip d254379b5 — scoped GREEN (8/8, 3/3, 60+1 env skip)
@@ -22534,6 +22540,12 @@ _Last updated: 2026-11-20 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0622-lane9.md`
 
 **Evidence:** Verified: tip pin d254379b5f09827229de4656e026b670b942f18b confirmed LIVE on the remote this tick (git ls-remote == shared-state main_tip) - the brief's 26efff66 hypothesis was stale and was falsified by the lane's first command, not inherited. 8/8 + 3/3 mjs suites pass on the tip's own bytes in a detached worktree (shared checkout untouched); 60 p
+
+### ✅ t0622-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** H-dc6 seal design: decision-consequence probe via counterfactual ablation
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: instrument auto-retrieval/t0622_h_dc6.py sha256 39fd78c8102fedd0bef829fb132c9ff9a3b149652417322b39e523840bf402dc == receipt exactly; design doc, dry-fire script, and sealed note all present under auto-retrieval/; 42/42 dry-fire checks and 12/12 pins claimed in the receipt, with the clause-ablation first-draft err
 
 ### ✅ t0622 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -22557,6 +22569,12 @@ _Last updated: 2026-11-20 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all three SHA pins match live bytes (instrument 39fd78c8, design doc 5d5a2445, dry-fire 00d8bfad; seal note f6cabd5d derived at read time). Genuine root reframe per the three-try circuit breaker: H-dc4 (lift) and H-dc5 (shares) both died to monotone injection, so H-dc6 reframes the treatment algebra from ADDITION to REMOVAL (counterfactua
 
+### ✅ t0622-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** CR-ACCEPT calibration: 13 CR- checks vs t0614 frozen bytes
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: contract sha256 149238563df32287f4ac66cd1cff65fcf329c54320f5ea7d823b6f3350ed31dc == receipt exactly; instrument lane-11/cold_drill_t0614.py present; verdict string CR-ACCEPT t0614 8de0571b 1.4477 0->1438 5/5 FALSIFIED character-identical to the contract's frozen example; 11/13 PASS with the two CR-A1 fails named,
+
 ### ✅ t0622 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** CR-ACCEPT calibration — 13 CR- checks of t0619 contract applied to t0614 frozen bytes, verdict FALSIFIED, MATCH
@@ -22579,6 +22597,12 @@ _Last updated: 2026-11-20 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: contract sha256 149238563df32287, t0614 verdict 0b1cb3adc2322, instrument 8de0571b2d8a5a41 all match live bytes; every check executed by script against bytes (no eyeball assertions); verdict string 'CR-ACCEPT t0614 8de0571b 1.4477 0→1438 5/5 FALSIFIED' reproduced character-for-character vs the contract's frozen example; the CLOSED-vs-FALS
 
+### ✅ t0620-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Independent re-run of t0616 72-pair entailment arm (REPRODUCED 18/18)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand, byte-exact: run-seal sha256 0c8d0c2653aef3071a0ccebed940ea5a865cbc3274fb29679c2359756b21ed2f == receipt; results JSON ff66381da1ba33feac7a541f3c3f102054cb2a7787591bf5adb4b3b74fe08f9d == receipt; blind-verdict 9eba8d1f061e43d8eeca67f200ef12ae9d5af157c41e78980e43a93d67edd676 == receipt; verdict file exists and reco
+
 ### ✅ t0620 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Independent re-run of t0616 72-pair entailment arm, REPRODUCED 18/18
@@ -22600,6 +22624,12 @@ _Last updated: 2026-11-20 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0620-lane6.md`
 
 **Evidence:** Verified: all pins match live bytes (run seal 0c8d0c2653aef307, results ff66381da1ba33fe, blind-verdict 9eba8d1f061e43d8); seal-before-run with frozen bars, blind-verdict SHA posted to #2175 comment 6144358063 before opening her sealed JSON; pre-mortem (REPRODUCE-vs-NOT shapes + P12 estimand-bias named pre-run) honored; 18/18 named-cell agreement o
+
+### ✅ t0620-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index drift verification at live tip d254379b5
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: hidden_files/drift-verdict-t0620.md exists (1,771 bytes); pre/post pins both d254379b5f09827229de4656e026b670b942f18b, zero churn; regenerate_brain_index.py --check exit 0 (1,257 files) and pytest 13/13 PASS as quoted. Score 9.0, matching the honest self-score. Why not 9.5: #2385 advisory gate flagged again, not 
 
 ### ✅ t0620 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -57338,6 +57368,48 @@ _Last updated: 2026-11-20 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-weekly-20261025-librarian-heir — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Weekly distillation 2026-10-25 (essence cut + standing-law check)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: hidden_files/distill-weekly/essences-20261025.md exists (6,488 bytes, 81 lines); receipt quotes live main f919bb5524817a3628e35a9f2e77eb35335053f5 (4,859 files) and notes head baf06ad88908b3a453dbf4c23a647141a9569844, with 21 HOLDS and 11 flags plus one new filed reconciliation (scope-split, three-pass vs done-di
+
+### ✅ distill-weekly-20261018-lane — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Weekly distillation 2026-10-18 (essence cut + standing-law check)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: hidden_files/distill-weekly/essences-20261018.md exists (5,573 bytes, 32 lines); receipt quotes notes-branch head 9587424765dc18e595951c5110c748c548f28551 and live-main tree scan of 5,259 files @ dc217d6963 with per-law title+substance counts. Score 8.5. Why not 9.5: 'no repo trace' is a search-measure verdict, n
+
+### ✅ distill-monthly-20261101 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Monthly lesson-registry audit, 30-day window (35/37 measured)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: receipt is itself the audit report (no separate deliverable file claimed); its dispositions are internally consistent and checkable (35/37 lessons measured, 2 zero-zero with counter-evidence on venue-pointer-rotation-2721; PR #2728 confirmed closed/unmerged, which is the Shawn-word repair decision the receipt cor
+
+### ✅ distill-feed-3066-20261112 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Feed distillation #3066 (2,306 comments, partial slice)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: hidden_files/feed-distillation-3066.md exists (11,902 bytes, Nov 12); headline thread PR #3351 confirmed merged (merge 914a0a9ee092). Score 8.0, matching the honest self-score. Why not 9.5: full line-by-line read NOT done (verified-headlines slice, not the brief's complete distillation), SN-2681 and breach count 
+
+### ✅ distill-feed-2721 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Feed distillation #2721 (2,308 comments)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: hidden_files/feed-distillation-2721.md exists, sha256 8aa05a6124a257474c9791ceb6758d0c91ba6e6e8eab4e37fe85a5cdd7e7d348 == receipt exactly; 2721-comments-raw.json holds 2,308 rows. Score 9.0. Why not 9.5: the L434 required-fence and #2601 venue-line states were carried as open items without live re-verification, t
+
+### ✅ distill-daily-20261112 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Daily distillation 2026-11-12: boot-pointer gate fix, commit 1b31c82
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: commit 1b31c827c3359060fb18d4be555a4bba4e05812f exists in the repo (commits API returns it, so it is reachable from a ref; branch ref deleted post-landing). Receipt's gate FAIL(exit 1, 3 stale pointers)->PASS(exit 0, 12 files) quoted with exact lines. Score 9.0. Why not 9.5: main-ancestry of the commit not re-pro
+
+### ✅ distill-daily-20261111 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Daily distillation 2026-11-11: mission-state sync PR #3342
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: PR #3342 closed/merged, merge commit 9798f5d1b5e8, head fda3d8bed304 == receipt commit fda3d8b exactly; branch ref gone post-merge as expected. Score 9.0. Why not 9.5: ordering slip (skipped a gap brief on a grep heuristic, verified afterward it was genuinely non-Clari
 
 ### ✅ t-BLOCKED-pr2608-review — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
