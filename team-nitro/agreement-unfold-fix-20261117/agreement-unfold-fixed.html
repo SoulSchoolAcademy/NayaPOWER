@@ -507,6 +507,12 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 @media (min-width:1024px) and (min-aspect-ratio:1/1){.p3-deal-unfold{--fin-t:76px!important;--fin-b:92px!important;--fin-l:96px!important;--fin-r:96px!important}}
 @media (min-aspect-ratio:1/1) and (max-height:700px){.p3-deal-unfold{--fin-t:64px!important;--fin-b:80px!important;--fin-l:72px!important;--fin-r:72px!important}}
 #deckBody .letter-beat{max-width:940px;margin-left:auto!important;margin-right:auto!important;box-shadow:0 18px 48px rgba(0,0,0,.65),0 4px 12px rgba(0,0,0,.5)!important;border-radius:20px!important}
+/* AF v2 — the board STRETCHES to fill the frame (was content-height, leaving
+   a ~216px dead gap below the foot at desktop): the reading window grows
+   with it, the foot pins to the frame's bottom inset. */
+.p3-deal-unfold #deckBody{flex:1 1 auto!important;min-height:0!important}
+#deckBody .letter-beat{height:100%!important;display:flex!important;flex-direction:column!important}
+#deckBody .letter-beat .frame-scroll{flex:1 1 auto!important;min-height:0!important}
 /* Naya's photo in the top-right corner — more writing space in the middle. */
 .frame-topbar{display:flex!important;align-items:center!important;gap:16px!important}
 .frame-topbar .frame-head{order:1!important}
@@ -528,14 +534,24 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 .frame-btnrow .deck-back{border-color:#8e24aa!important}
 .frame-btnrow .deck-next:not(.frame-next){border-color:#0f52ba!important}
 .frame-btnrow .frame-next{border-color:#07925f!important}
-/* STYLE 3 — ROYAL COMPACT (mobile text, <768px). */
+/* STYLE 3 — ROYAL COMPACT (mobile text, <768px).
+   AF v2 — mobile frame 1 showed ZERO agreement words (the media board ate
+   the whole reading window): the media slims, the top bar tightens, the
+   anthem pill never wraps, and the buttons are pills in one row — never
+   circles. The stretch above grows the window with it. */
 @media (max-width:767px){
 .af-corner{width:104px;height:104px}
-.p3-deal-unfold{--fin-t:56px!important;--fin-b:84px!important;--fin-l:14px!important;--fin-r:14px!important}
+.p3-deal-unfold{--fin-t:48px!important;--fin-b:76px!important;--fin-l:14px!important;--fin-r:14px!important}
 #deckBody .letter-beat{max-width:none!important}
-.frame-topbar .frame-face{width:52px!important;height:52px!important;flex-basis:52px!important}
+.frame-topbar{gap:8px!important}
+.frame-topbar .frame-face{width:48px!important;height:48px!important;flex-basis:48px!important}
+.frame-topbar .frame-kind{letter-spacing:.08em!important}
 .frame-scroll p{font-size:17px!important;line-height:1.5!important}
-.frame-btnrow button{flex:1 1 30%!important;min-height:48px!important}
+.frame-media{padding:6px 12px!important}
+.frame-media .play-btn{width:44px!important;height:44px!important}
+.frame-media .frame-video-btn{white-space:nowrap!important;padding:10px 12px!important}
+.frame-btnrow{flex-wrap:nowrap!important;gap:8px!important}
+.frame-btnrow button{flex:1 1 0!important;min-width:0!important;white-space:nowrap!important;font-size:17px!important;padding:10px 4px!important}
 }
 </style>
 </head>

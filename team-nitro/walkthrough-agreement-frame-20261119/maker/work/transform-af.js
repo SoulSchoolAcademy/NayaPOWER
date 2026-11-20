@@ -26,11 +26,11 @@ const UNFOLD_LOCAL = '/home/hatch/workspace/team-nitro/agreement-unfold-fix-2026
 const WELCOME_LOCAL = '/home/hatch/workspace/team-nitro/walk-v23-assembly-20261114/welcome-staged.html';
 const UNFOLD_SHA = 'ab8da1faf825d9d24e3f4991063e81c052738502063d9e89f4479730fa94348f';
 const WELCOME_SHA = '2062739ecb968b78cd823440bcfd4bbb8f7d0190d3bb2e5443ab3b35c0081955';
-/* The transform's own verified outputs (first run 2026-11-19): if a later
+/* The transform's own verified outputs (v2 run 2026-11-19): if a later
    run finds these bytes already on the native paths (the build landed
    them), they are used as-is — they ARE the guarded output, sha-verified. */
-const AF_UNFOLD_SHA = '25a171961785d9f381a86fca114b9e6de8db2cd27ffe6d0d6c72dab750640513';
-const AF_WELCOME_SHA = 'f2ee6dac65cc74ffad88543e22f6bade8fd03af9682ef7edf79249c698a24af0';
+const AF_UNFOLD_SHA = '3ce72059dd180a0fdc2faac3a56b23092bd1bf82820c13897b4a2fb0cd3cb49f';
+const AF_WELCOME_SHA = '1f37416d79b0959b21dffb450d34e1a409dfe934fac40a144ecf0b0ef9f7cc49';
 const MASTER = 'https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a';
 
 function sha(b) { return crypto.createHash('sha256').update(b).digest('hex'); }
@@ -103,6 +103,12 @@ const AF_CSS_UNFOLD = `
 @media (min-width:1024px) and (min-aspect-ratio:1/1){.p3-deal-unfold{--fin-t:76px!important;--fin-b:92px!important;--fin-l:96px!important;--fin-r:96px!important}}
 @media (min-aspect-ratio:1/1) and (max-height:700px){.p3-deal-unfold{--fin-t:64px!important;--fin-b:80px!important;--fin-l:72px!important;--fin-r:72px!important}}
 #deckBody .letter-beat{max-width:940px;margin-left:auto!important;margin-right:auto!important;box-shadow:0 18px 48px rgba(0,0,0,.65),0 4px 12px rgba(0,0,0,.5)!important;border-radius:20px!important}
+/* AF v2 — the board STRETCHES to fill the frame (was content-height, leaving
+   a ~216px dead gap below the foot at desktop): the reading window grows
+   with it, the foot pins to the frame's bottom inset. */
+.p3-deal-unfold #deckBody{flex:1 1 auto!important;min-height:0!important}
+#deckBody .letter-beat{height:100%!important;display:flex!important;flex-direction:column!important}
+#deckBody .letter-beat .frame-scroll{flex:1 1 auto!important;min-height:0!important}
 /* Naya's photo in the top-right corner — more writing space in the middle. */
 .frame-topbar{display:flex!important;align-items:center!important;gap:16px!important}
 .frame-topbar .frame-head{order:1!important}
@@ -124,14 +130,24 @@ const AF_CSS_UNFOLD = `
 .frame-btnrow .deck-back{border-color:#8e24aa!important}
 .frame-btnrow .deck-next:not(.frame-next){border-color:#0f52ba!important}
 .frame-btnrow .frame-next{border-color:#07925f!important}
-/* STYLE 3 — ROYAL COMPACT (mobile text, <768px). */
+/* STYLE 3 — ROYAL COMPACT (mobile text, <768px).
+   AF v2 — mobile frame 1 showed ZERO agreement words (the media board ate
+   the whole reading window): the media slims, the top bar tightens, the
+   anthem pill never wraps, and the buttons are pills in one row — never
+   circles. The stretch above grows the window with it. */
 @media (max-width:767px){
 .af-corner{width:104px;height:104px}
-.p3-deal-unfold{--fin-t:56px!important;--fin-b:84px!important;--fin-l:14px!important;--fin-r:14px!important}
+.p3-deal-unfold{--fin-t:48px!important;--fin-b:76px!important;--fin-l:14px!important;--fin-r:14px!important}
 #deckBody .letter-beat{max-width:none!important}
-.frame-topbar .frame-face{width:52px!important;height:52px!important;flex-basis:52px!important}
+.frame-topbar{gap:8px!important}
+.frame-topbar .frame-face{width:48px!important;height:48px!important;flex-basis:48px!important}
+.frame-topbar .frame-kind{letter-spacing:.08em!important}
 .frame-scroll p{font-size:17px!important;line-height:1.5!important}
-.frame-btnrow button{flex:1 1 30%!important;min-height:48px!important}
+.frame-media{padding:6px 12px!important}
+.frame-media .play-btn{width:44px!important;height:44px!important}
+.frame-media .frame-video-btn{white-space:nowrap!important;padding:10px 12px!important}
+.frame-btnrow{flex-wrap:nowrap!important;gap:8px!important}
+.frame-btnrow button{flex:1 1 0!important;min-width:0!important;white-space:nowrap!important;font-size:17px!important;padding:10px 4px!important}
 }
 </style>
 `;
@@ -184,26 +200,20 @@ body.af-deck-on #deckControls .letter-all{font-size:17px!important}
 .af-deck-light{position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 12px #fff,0 0 26px #8e24aa,0 0 44px #8e24aa;animation:frameLightAF 60s linear infinite}
 @keyframes frameLightAF{0%{top:14px;left:14px}25%{top:14px;left:calc(100% - 26px)}50%{top:calc(100% - 26px);left:calc(100% - 26px)}75%{top:calc(100% - 26px);left:14px}100%{top:14px;left:14px}}
 /* STYLE 2 — CALENDAR FRAME (desktop visual, >=1024px): the calendar's chrome —
-   full-bleed obsidian, rim-only, maximum spacing. Two columns: words left,
-   showcase large right. The board fills the frame. */
-@media (min-width:1024px){
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)){display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);column-gap:32px;max-width:1180px;margin-left:auto!important;margin-right:auto!important;background:#050607;border:1.5px solid var(--tone,#8e24aa);border-radius:20px;padding:28px;box-shadow:0 18px 48px rgba(0,0,0,.65)}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-blocktop{grid-column:1;grid-row:1}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-nutshell{grid-column:1;grid-row:2}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .lb-showcase{grid-column:2;grid-row:1/span 2;align-self:center;margin:0}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-foot{grid-column:1/-1}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .deck-next{grid-column:1/-1;justify-self:center}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-title{font-size:25px!important;color:#ffffff!important}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-nutshell p{font-size:19px!important;line-height:1.55!important;color:#ffffff!important}
-}
-/* STYLE 4 — ROYAL COMPACT VISUAL (mobile visual, <768px): stacked, image first. */
+   full-bleed obsidian, rim-only, maximum spacing — as the frame OVERLAY
+   (rims + corners + inside light above). AF v2: the deck keeps its OWN
+   slide layout (overview pills + slides, already built as the visual
+   story) — the v1 two-column grid reflowed the overview pills, so it is
+   gone; the frame, the dots removal and the text scale are the treatment. */
+body.af-deck-on #deckBody .ib-title{font-size:25px!important;color:#ffffff!important}
+body.af-deck-on #deckBody .ib-nutshell p{font-size:19px!important;line-height:1.55!important;color:#ffffff!important}
+/* STYLE 4 — ROYAL COMPACT VISUAL (mobile visual, <768px): the same compact
+   frame (corners off on mobile — rims + light only); the deck keeps its
+   own stacked layout. AF v2: the v1 flex reflow garbled the overview
+   pills on mobile, so it is gone. */
 @media (max-width:767px){
 .af-deck-frame .af-corner{display:none}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)){display:flex;flex-direction:column;max-width:none;background:#050607;border:1.5px solid var(--tone,#8e24aa);border-radius:20px;padding:16px;box-shadow:0 18px 48px rgba(0,0,0,.65)}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .lb-showcase{order:-1;margin:0 0 12px}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .lb-showcase img{max-height:30vh;object-fit:cover;width:100%}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-title{font-size:25px!important;color:#ffffff!important}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-nutshell p{font-size:17px!important;line-height:1.5!important;color:#ffffff!important}
+body.af-deck-on #deckBody .ib-nutshell p{font-size:17px!important;line-height:1.5!important}
 }
 </style>
 `;

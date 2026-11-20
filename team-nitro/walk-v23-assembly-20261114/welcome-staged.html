@@ -2299,26 +2299,20 @@ body.af-deck-on #deckControls .letter-all{font-size:17px!important}
 .af-deck-light{position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 12px #fff,0 0 26px #8e24aa,0 0 44px #8e24aa;animation:frameLightAF 60s linear infinite}
 @keyframes frameLightAF{0%{top:14px;left:14px}25%{top:14px;left:calc(100% - 26px)}50%{top:calc(100% - 26px);left:calc(100% - 26px)}75%{top:calc(100% - 26px);left:14px}100%{top:14px;left:14px}}
 /* STYLE 2 — CALENDAR FRAME (desktop visual, >=1024px): the calendar's chrome —
-   full-bleed obsidian, rim-only, maximum spacing. Two columns: words left,
-   showcase large right. The board fills the frame. */
-@media (min-width:1024px){
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)){display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);column-gap:32px;max-width:1180px;margin-left:auto!important;margin-right:auto!important;background:#050607;border:1.5px solid var(--tone,#8e24aa);border-radius:20px;padding:28px;box-shadow:0 18px 48px rgba(0,0,0,.65)}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-blocktop{grid-column:1;grid-row:1}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-nutshell{grid-column:1;grid-row:2}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .lb-showcase{grid-column:2;grid-row:1/span 2;align-self:center;margin:0}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-foot{grid-column:1/-1}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .deck-next{grid-column:1/-1;justify-self:center}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-title{font-size:25px!important;color:#ffffff!important}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-nutshell p{font-size:19px!important;line-height:1.55!important;color:#ffffff!important}
-}
-/* STYLE 4 — ROYAL COMPACT VISUAL (mobile visual, <768px): stacked, image first. */
+   full-bleed obsidian, rim-only, maximum spacing — as the frame OVERLAY
+   (rims + corners + inside light above). AF v2: the deck keeps its OWN
+   slide layout (overview pills + slides, already built as the visual
+   story) — the v1 two-column grid reflowed the overview pills, so it is
+   gone; the frame, the dots removal and the text scale are the treatment. */
+body.af-deck-on #deckBody .ib-title{font-size:25px!important;color:#ffffff!important}
+body.af-deck-on #deckBody .ib-nutshell p{font-size:19px!important;line-height:1.55!important;color:#ffffff!important}
+/* STYLE 4 — ROYAL COMPACT VISUAL (mobile visual, <768px): the same compact
+   frame (corners off on mobile — rims + light only); the deck keeps its
+   own stacked layout. AF v2: the v1 flex reflow garbled the overview
+   pills on mobile, so it is gone. */
 @media (max-width:767px){
 .af-deck-frame .af-corner{display:none}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)){display:flex;flex-direction:column;max-width:none;background:#050607;border:1.5px solid var(--tone,#8e24aa);border-radius:20px;padding:16px;box-shadow:0 18px 48px rgba(0,0,0,.65)}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .lb-showcase{order:-1;margin:0 0 12px}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .lb-showcase img{max-height:30vh;object-fit:cover;width:100%}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-title{font-size:25px!important;color:#ffffff!important}
-body.af-deck-on #deckBody .letter-beat:not(:has(>.frame-scroll)) .ib-nutshell p{font-size:17px!important;line-height:1.5!important;color:#ffffff!important}
+body.af-deck-on #deckBody .ib-nutshell p{font-size:17px!important;line-height:1.5!important}
 }
 </style>
 </head>

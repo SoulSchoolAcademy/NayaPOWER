@@ -498,7 +498,7 @@ assert ident_sha.startswith("3279dc35"), "identity sha is not the WALKTHROUGH-CH
 # contain, never cropped (4:3 images in a 16:9 slot); the 'Tap
 # the picture' pill moves below the frame. Intro row + fix-4
 # untouched; F2 has no key handler in the bytes (UNVERIFIED).
-# WALKTHROUGH-CHAIN (2026-11-18, maker round -\n# walkthrough-chain-20261118/work/edit-chain.py): the welcome\n# sha moves a1b67b82 -> 1a48347f: BRIDGE FIRST - after agreeing\n# inside the stage, the hold/fallback releases go to the bridge\n# (goBridgeAfterAgree), then the bridge's own buttons go to\n# name-entry; the agreed line + the onward button show only\n# after agreeing; the plain-page agree scroll is guarded while\n# the bridge is up. Pre-agree routes untouched (?stage=bridge,\n# Back buttons, /agreement agree -> bridge).\nassert welcome_sha.startswith("f2ee6dac"), "welcome sha is not the AGREEMENT-FRAME welcome sha (2026-11-19: deck frame system, dots removed, staged only)"
+# WALKTHROUGH-CHAIN (2026-11-18, maker round -\n# walkthrough-chain-20261118/work/edit-chain.py): the welcome\n# sha moves a1b67b82 -> 1a48347f: BRIDGE FIRST - after agreeing\n# inside the stage, the hold/fallback releases go to the bridge\n# (goBridgeAfterAgree), then the bridge's own buttons go to\n# name-entry; the agreed line + the onward button show only\n# after agreeing; the plain-page agree scroll is guarded while\n# the bridge is up. Pre-agree routes untouched (?stage=bridge,\n# Back buttons, /agreement agree -> bridge).\nassert welcome_sha.startswith("1f37416d"), "welcome sha is not the AGREEMENT-FRAME v2 welcome sha (2026-11-19: deck frame overlay only, dots removed, staged only)"
 # AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z;
 # maker round - agreement-buttons-20261118/work/agreement2/edit-agreement2.py):
 # the unfold sha moves 14bd698c -> 96b18b6f (88,277 B -> 88,848 B, +571 B):
@@ -533,7 +533,7 @@ assert ident_sha.startswith("3279dc35"), "identity sha is not the WALKTHROUGH-CH
 # Watchdog mechanics unchanged (warm-up, pick, assignment, clear
 # on start/end/error). Welcome, walk, template, identity shas
 # unchanged. Divider (.ib-foot-logo) untouched - the eye's call.
-assert unfold_sha.startswith("25a17196"), "unfold sha is not the AGREEMENT-FRAME unfold sha (2026-11-19: 47 beats regrouped into 24 boards, frame system, dots removed, staged only)"
+assert unfold_sha.startswith("3ce72059"), "unfold sha is not the AGREEMENT-FRAME v2 unfold sha (2026-11-19: board stretches to fill the frame, mobile words visible, pills not circles, staged only)"
 # AGREEMENT MERGE EYE FOLLOW-ON #2 (2026-11-18, eye re-run GOES BACK on
 # F1-F4; maker round - agreement-merge-followon2-20261118/
 # work/edit-followon2.py): the welcome sha moves fdad3dc2 -> 2e74273b
