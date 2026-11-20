@@ -4,7 +4,7 @@
 
 **NN-20261120-lock-in-the-structure · Naya Note · 2026-11-20 ~11:54 MST (18:54Z)**
 
-*Paired Smart Note: SN-pending — Lock In the Structure (takes the next free number at filing)*
+*Paired Smart Note: SN-4283 — Lock In the Structure — Take the Calendar's Code, Reformat the Middle*
 
 **Category:** Corrections — how a rebuild is done, harvest the calendar's code, never recreate from scratch
 
