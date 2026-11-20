@@ -4757,12 +4757,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              timeline splits 8 + 8 hourly rows (6 AM–1 PM / 2 PM–9 PM) at
              ≤740px. Inside a .cat section each tile already spans all 12
              columns of the dash-grid, so a solo tile is full-width. */
-          var apptsTile =
-            '<div class="tile tile-appts" style="--dc:' + dc + ';--tc:#8e24aa"><h3><span class="dotc" style="--tc:#8e24aa"></span>Appointments</h3>' + apptRows +
-              '<div class="tile-book"><button type="button" id="tileBookBtn">Book a time</button> <button type="button" id="tileMeetBtn">Smart Meet</button></div></div>';
-          var timelineTile = function (t, label) {
-            return '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><h3><span class="dotc" style="--tc:#3f51b5"></span>Timeline · ' + label + '</h3>' + t + '</div>';
-          };
           /* NOTIFICATIONS — the notification cards live here (their menu
              opens below them, inside this section): tap a world and see
              that world's notifications and where each came from. Then
@@ -5656,7 +5650,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             }
             var kd = t.closest(".r2-kind");
             if (kd) { __mc.kind = kd.getAttribute("data-kind"); __mc.meet = __mc.kind === "meet"; __mc.refused = null; mcRenderCal(); mcRenderForm(); return; }
-            var mr = t.closest(".mc-more");
+            var mr = t.closest(".r2-more");
             if (mr) {
               if (mr.getAttribute("data-mc-more") === "next") __mc.timePage = (__mc.timePage || 0) + 1;
               else __mc.timePage = 0;
