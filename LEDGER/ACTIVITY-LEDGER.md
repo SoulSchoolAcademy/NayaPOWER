@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 19:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24871,6 +24871,14 @@ _Last updated: 2026-11-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED on live GitHub + git protocol: #2465 state=closed merged=False closed_at 2026-10-13T05:13:58Z (matches receipt exactly); head f0ccc058b1 matches; close comment 6138757428 exists (1815B adversarial-verification body); superseder 1dfe11de5b merge_base vs main, compare ahead 22 behind 0 (matches receipt); main tip bdfb5868 on remote
 
+### ✅ t0581 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Machine-class gate enforced in the cold-drill instrument
+
+**Receipt:** `twelve-lane-receipts/t0581-lane7.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window had only the gate-stall receipt). VERIFIED first-hand this tick: original cold_drill_sealed_t0555.py.pre-t0581 sha256 70a33455ef4e14cc EXACT match; patched-instrument pin 160400dfb407c5e5 is historical - the live file evolved (current sha 9855515aaffc475c) but the exact t0581-patched bytes survive in cold_d
+
 ### ✅ t0581-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Machine-class gate enforced in cold-drill instrument (check before seals, CLASS-CHANGE RED)
@@ -25030,6 +25038,14 @@ _Last updated: 2026-11-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0581b-lane3.md`
 
 **Evidence:** ARTIFACT VERIFIED: retroactive receipt doc merge-receipts/pr-2501-retroactive-receipt.md exists; merge commit e8b4868ce402c2945a8990b1a5ddc69979b880fd exists on the remote (fetched via git protocol); its bytes match every receipt claim - parents dd6f2d92.../a324ea1e..., tree 8ff15816... (== validated head tree, no manual edits), diff exactly 2 file
+
+### ✅ t0581 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Overlap-without-claims cell set EXECUTED - t0567 discriminator design on fresh fixture, ARM verdict
+
+**Receipt:** `twelve-lane-receipts/t0581-lane10.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window had only the gate-stall receipt). VERIFIED first-hand this tick: sealed-selection-t0581.md sha256 dc4f06e6a3e0a2a5 EXACT match; results-t0581-overlap.json 29a9d26ac9de7741 EXACT match; select_overlap_cells_t0581.py e70882edadebde7b EXACT match; run_overlap_cells_t0581.py 3a5873025ba78df2 EXACT match; frozen
 
 ### ✅ t0581-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -56784,6 +56800,12 @@ _Last updated: 2026-11-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261120-1123 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-20 11:23 PST: 31 queued briefs evaluated, all refused, none claimed
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261120-1123.log exists (4,246 bytes); totals line '31 unique briefs, 31 attempts, 0 claimed. 29 x exit 7, 2 x exit 2' matches the receipt exactly (unlike the 10:20 run, whose log recorded only 27 attempts - this run's counts are internally consistent); live queue holds
 
 ### ✅ gate-stall-20261120-1020 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
