@@ -5859,6 +5859,7 @@ render();saveQueue();wave();
 /* FIX-2: library/playlist/up-next clicks bring the featured player into frame. */
 ["grid","upNext","plist"].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener("click",function(){var d=document.getElementById("deck");if(d)d.scrollIntoView({behavior:"smooth",block:"start"});});});
 window.saPcExactResize=function(){try{sizeCv();}catch(e){}};
+window.saPcExactPause=function(){try{if(audio)audio.pause();}catch(e){}}; /* FIX-5 (item 3): the outside stop for the PowerCast player - the membership script's saStopPcAudio() calls this on every exit from Audios. Pausing the audio fires this player's OWN 'pause' listener, which resets playing, the play button and the ON AIR state through its own sync; this line adds no new behaviour to the player, it only lets the outside stop it. */
 })();
 </script>
 <div class="sa-pane" id="saPaneLesson" hidden></div>
@@ -22421,6 +22422,8 @@ document.addEventListener('DOMContentLoaded', function(){ try{ mwApplyBars(); mw
      before it fades in 10 minutes. A wrong code stays out. */
 (function(){
 'use strict';
+/* FIX-5 (Step 1): ?fresh=1 test hook - clears the two recorded joins BEFORE boot reads them, so the eye can re-walk the Academy gate from a truly fresh state (staged URL + '&fresh=1'). Param-gated ONLY: no param, no clear, nothing changes for a normal visitor; it clears exactly sa.join.academy + sa.join.fac, nothing else, and never touches the URL. This is the first statement of the script - every saHasJoined / saOpen / saOnEnter read happens after it. */
+try{ if(/(?:^|[?&])fresh=1(?:&|$)/.test(location.search||'')){ try{ localStorage.removeItem('sa.join.academy'); }catch(e){} try{ localStorage.removeItem('sa.join.fac'); }catch(e){} } }catch(e){}
 function sa$(id){ return document.getElementById(id); }
 function saEsc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 function saFmt(t){ if(!isFinite(t)||t==null) return '0:00'; t=Math.max(0,Math.floor(t)); var m=Math.floor(t/60), s=t%60; return m+':'+(s<10?'0':'')+s; }
@@ -22487,6 +22490,16 @@ try{ saAudio = new Audio(); saAudio.preload = 'metadata'; }catch(e){ saAudio = n
 var saSaved = null;          /* the Personal page, as it was before the course */
 var saLoginHandle = null;    /* NayaLogin.mount() return: {element, settings, verifyCode} */
 var saLoginMounted = false;
+var saYtWarmed = false;      /* FIX-5 (item 1): the YouTube embed origin has been warmed once (preconnect) - see saWarmYoutube. */
+function saWarmYoutube(){
+  /* FIX-5 (item 1, layer a - warm the connection before the tap): the Watch dialog's first load used to open a cold connection to youtube-nocookie.com at tap time, and that cold first connection is the one Chrome closes ("unexpectedly closed the connection" - 1st opening fails, 2nd plays, 3rd slow). Warm it at course entry, long before any Watch tap: DNS + TCP + TLS negotiated early, so the dialog's first iframe reuses a live connection instead of opening a cold one. Once per page load; the inline lesson iframe already warms the same origin, but a feed-card Watch tap can come before any lesson renders, so entry is the choke point. */
+  if(saYtWarmed) return; saYtWarmed = true;
+  try{
+    var h = document.head || document.getElementsByTagName('head')[0]; if(!h) return;
+    var l1 = document.createElement('link'); l1.rel = 'preconnect'; l1.href = 'https://www.youtube-nocookie.com'; h.appendChild(l1);
+    var l2 = document.createElement('link'); l2.rel = 'preconnect'; l2.href = 'https://www.youtube.com'; h.appendChild(l2);
+  }catch(e){}
+}
 var saTheatreMode = null;    /* 'video' | 'audio' | null */
 var saTheatreList = null;    /* 'channel' | 'academy' */
 var saTheatreIdx = 0;
@@ -22544,7 +22557,7 @@ function saClose(){
      way home from anywhere in the course. */
   saCloseLogin();
   saStopTheatre();
-  try{ if(saAudio) saAudio.pause(); }catch(e){}
+  saStopPcAudio(); /* FIX-5 (item 3): total close (Back button, Escape, compose, membership switch) stops the PowerCast audio too - the old saAudio-only pause never reached the live harvested player. */
   saCourseMode(false);
   var _bb3 = sa$('os-bottom3'); if(_bb3) _bb3.style.display = ''; /* FIX-2: the bottom bar returns on total close. */
   var _cc3 = sa$('saCoverCard'); if(_cc3) _cc3.hidden = false; /* FIX-2b: the hero returns on total close. */
@@ -22559,6 +22572,7 @@ function saClose(){
 /* ---------- the course is the page ---------- */
 function saEnterCourse(){
   if(!saCur) return;
+  saWarmYoutube(); /* FIX-5 (item 1): warm the YouTube connection at entry - every Watch tap inside the course follows entry, so the dialog never opens cold. */
   saCourseMode(true);
   /* FIX-4 (item 2): a chooser-card pick lands on the Day 1 lesson pane, not the chooser - the pending pick (set by the capture handler) is consumed here, so it survives the login door (saOnEnter comes through here) and is gone after one entry. */
   var _pl = saPendingLesson; saPendingLesson = null;
@@ -22804,6 +22818,7 @@ function saRenderChooser(){
 }
 function saShowToc(){
   if(!saCur) return;
+  saStopPcAudio(); /* FIX-5 (item 3): "Choose your course" (and every other chooser return) leaves Audios too - saShowToc hides the panes directly, bypassing saShowView, so it stops the audio itself. */
   saLessonOpen = false; /* FIX-1: back at the chooser \u2014 the next Lessons section shows the feed list again. */
   try{ document.body.classList.remove('sa-lesson-open'); }catch(e){} /* FIX-3 (fail 2): the chooser is not a lesson \u2014 both add controls return. */
   var _bb2 = sa$('os-bottom3'); if(_bb2) _bb2.style.display = ''; /* FIX-2: the bottom bar returns with the chooser. */
@@ -22848,7 +22863,9 @@ function saGoLessons(){
 }
 function saShowView(v){
   if(!saCur) return;
+  var _saPrevSection = saSection; /* FIX-5 (item 3): leaving Audios stops the PowerCast audio - every section change funnels through here (feed tabs, in-lesson tabs, keyboard, popstate restore, saOpenLesson, saGoLessons), so one pause here covers every one of them. Re-entering Audios ('audios' -> 'audios') does not pause. */
   saSection = (v==='audios') ? 'audios' : (v==='lessons' ? 'lessons' : 'videos');
+  if(_saPrevSection==='audios' && saSection!=='audios') saStopPcAudio();
   /* FIX-3 2026-11-19 (fails 2 + 6): leaving the lessons section closes the open-lesson state \u2014 a stale saLessonOpen made the Lessons feed tab show the list instead of the lesson. The body class hides the two non-canonical add controls while a lesson is open. */
   if(saSection!=='lessons') saLessonOpen = false;
   try{ document.body.classList.toggle('sa-lesson-open', saSection==='lessons' && saLessonOpen); }catch(e){}
@@ -22990,16 +23007,35 @@ function saRenderLesson(){
 /* ---------- the player: full screen, with Next ---------- */
 function saTheatreOpenVideo(idx, kind){
   var V = kind==='channel' ? SA_CHANNEL[idx] : SA_ACADEMY[idx]; if(!V) return;
+  saWarmYoutube(); /* FIX-5 (item 1): warm (once, guarded) even if the theatre is reached without entry. */
   saTheatreMode = 'video'; saTheatreList = kind; saTheatreIdx = idx;
   var body = sa$('saTheatreBody'); if(!body) return;
   /* FIX-4 (item 9): the inline lesson player is the SAME video - while the dialog plays, the inline iframe keeps playing audio behind it, and two same-video embeds racing once closed the dialog's connection. Blank the inline player first, then load the dialog fresh on a cleared body. */
   try{ var _in = sa$('saPaneLesson') ? sa$('saPaneLesson').querySelector('iframe') : null; if(_in){ _in.src = 'about:blank'; } }catch(e){}
   body.innerHTML = '';
-  body.innerHTML = '<div class="sa-sixteen"><iframe src="https://www.youtube-nocookie.com/embed/'+V.id+'?rel=0&autoplay=1" title="'+saEsc(V.title)+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+  /* FIX-5 (item 1, layer b - rebuild once, automatically, inside the same opening): the dialog iframe is built in the DOM now, not from an innerHTML string, so load/error listeners are attached BEFORE src is set (an innerHTML load can fail before any listener exists). If the first load fails the way the eye saw it - Chrome's error page for a closed connection, which loads suspiciously fast (<250 ms; a real YouTube player document cannot finish in that time), or no load at all within 5 s - the embed is rebuilt once, fresh, on the same URL. The eye proved a second attempt plays; the rebuild IS that second attempt, without the citizen tapping twice. One rebuild per opening, then it stands - a second failure is left visible for the eye, never hidden behind a loop. The embed host stays youtube-nocookie (the privacy host the inline player already uses - the host is not broken, the cold first connection is). */
+  var _thHolder = document.createElement('div'); _thHolder.className = 'sa-sixteen'; body.appendChild(_thHolder);
+  var _thTries = 0, _thSettled = false, _thTimer = null, _thGen = 0;
+  function _thRebuild(){ if(_thTries>=1 || _thSettled) return; _thTries++; if(_thTimer){ clearTimeout(_thTimer); _thTimer = null; } _thBuildFrame(); }
+  function _thBuildFrame(){
+    var _gen = ++_thGen;
+    var fr = document.createElement('iframe');
+    fr.title = V.title;
+    fr.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    fr.allowFullscreen = true;
+    var _start = Date.now();
+    fr.addEventListener('load', function(){ if(_gen!==_thGen || _thSettled) return; if(Date.now()-_start<250 && _thTries<1){ _thRebuild(); return; } _thSettled = true; if(_thTimer){ clearTimeout(_thTimer); _thTimer = null; } });
+    fr.addEventListener('error', function(){ if(_gen!==_thGen || _thSettled) return; _thRebuild(); });
+    _thTimer = setTimeout(function(){ if(_gen!==_thGen || _thSettled) return; _thRebuild(); }, 5000);
+    fr.src = 'https://www.youtube-nocookie.com/embed/'+V.id+'?rel=0&autoplay=1';
+    _thHolder.innerHTML = '';
+    _thHolder.appendChild(fr);
+  }
+  _thBuildFrame();
   var t = sa$('saTheatreTitle'); if(t) t.textContent = V.title;
   var nx = sa$('saTheatreNext'); if(nx) nx.style.display = '';
   var th = sa$('saTheatre'); if(th) th.hidden = false;
-  try{ if(saAudio) saAudio.pause(); }catch(e){}
+  saStopPcAudio(); /* FIX-5 (item 3): one soundtrack at a time - the Watch dialog never opens over a playing PowerCast. */
   try{ document.documentElement.style.overflow = 'hidden'; }catch(e){}
 }
 function saTheatreNext(){
@@ -23436,6 +23472,11 @@ function saChannelCoverHtml(V, j){
     + '<span class="sa-cover-play">\u25b6</span></div>'; /* REBUILD: day+title off the image — the card's h3 + dur line below carry them on plain ground. */
 }
 /* ---------- PowerCast player (harvested audio core) ---------- */
+function saStopPcAudio(){
+  /* FIX-5 (item 3): ONE soundtrack at a time, always. The live PowerCast audio is the harvested player's own Audio object (const audio, inside the #saPcExact IIFE) - the membership script's saAudio is dead: saPcLoad/saPcSync/saPcInit all return early because the old player markup (saPcNum) is gone, so saAudio never gets a src and never plays. The harvested player exposes exactly one outside hook (window.saPcExactResize); the FIX-5 hook beside it (window.saPcExactPause) pauses that live audio, and pausing fires the player's OWN 'pause' listener, which resets ON AIR / the play button through its own sync - nothing here re-implements the player. saAudio is paused too, belt-and-braces, so the stop holds even if the old player markup ever returns. Called on EVERY exit from Audios (saShowView leaving audios, saShowToc, saClose) and at the theatre door. */
+  try{ if(window.saPcExactPause) window.saPcExactPause(); }catch(e){}
+  try{ if(saAudio) saAudio.pause(); }catch(e){}
+}
 function saPcUrl(i){ return SA_R2 + '/Powercasts/' + encodeURIComponent(SA_PC[i].f); }
 function saPcLoad(i, autoplay){
   if(!sa$('saPcNum')) return; /* FIX-2: the exact harvested player owns the Audios pane now — the old player markup is gone, so its loader is a no-op. */
