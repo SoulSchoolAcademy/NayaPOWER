@@ -12226,7 +12226,7 @@ function HubView(params) {
           var shellEl = document.querySelector('.shell');
           var leftOpen = shellEl && (shellEl.classList.contains('drawer-open') || (window.innerWidth >= 1440 && !shellEl.classList.contains('rail-collapsed')));
           closeMsgPanel(); /* never both at once — the messenger panel closes when the rail opens */
-          if (!leftOpen && api.openDrawer) api.openDrawer(); /* OPEN, not toggle: an open rail stays open */
+          if (!leftOpen && api.openDrawer) api.openDrawer(); if (window.innerWidth >= 1440) { var _sh2=document.querySelector('.shell'); if(_sh2){ _sh2.classList.remove('rail-right-collapsed'); _sh2.classList.add('rail-right-open'); } } /* ROUND 2 (2026-11-20, eye go-back 8): the Sidebar choice restores BOTH sidebars at desktop — the left rail was the only one the menu restored. */ /* OPEN, not toggle: an open rail stays open */
           window._nayaMenuState = 'sidebar';
           var active = document.querySelector('.lens-tab.active');
           var lens = active && active.classList.contains('lens-business') ? 'business' : (active && active.classList.contains('lens-world') ? 'world' : 'personal');
@@ -13323,7 +13323,7 @@ window.NayaNotif = window.NayaNotif || {
      is the one open item. ——— */
   const peopleSec = el('section', 'rail-people');
   peopleSec.setAttribute('aria-label', 'Your people — message them');
-  peopleSec.innerHTML = '<div class="rail-people-head"><b>YOUR PEOPLE</b></div><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
+  peopleSec.innerHTML = '<div class="rail-people-head"><b>YOUR PEOPLE</b></div><input type="search" id="pcRailSearch" class="pc-rail-search" placeholder="Search people…" aria-label="Search people" autocomplete="off"><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
   /* Feed-following: the people shown are the feed's people. The lens is read
      live from the active tab — the same three-way read the menu control uses
      (Personal / Business / World) — and the section re-renders whenever
@@ -13721,10 +13721,8 @@ document.addEventListener('click', function(e){
   }
   var line2=document.querySelector('[data-pc-profile-call-status]');
   if(line2) line2.textContent='';
-  /* HUB RETARGET (swap): the Hub has no fcOpenChat — DM and Mail open the
-     Hub's own Smart Messenger panel (openMsgPanel), the mail+messenger
-     interface. Audio/Video keep the harvested honest status line. */
-  if(typeof openMsgPanel==='function') openMsgPanel();
+  /* ROUND 2 (2026-11-20, eye go-back 1/2): DM and Mail open the Hub's own Smart Messenger panel (openMsgPanel) WITH the person + purpose — the no-arg call opened the generic room, never the person's dialog. Audio/Video keep the harvested honest status line. */
+  if(typeof openMsgPanel==='function') openMsgPanel(alias, act==='chat'?'dm':'mail');
 });
 /* The keyword box above the feed (#tnSearchPersonalInput) is hidden by Shawn's
    popup-only search law (base: #tnpsBand{display:none!important} — "search is a
@@ -13800,6 +13798,13 @@ document.addEventListener('click', function(e){
     x.textContent = '\u00d7';
     x.addEventListener('click', function () { closeMsgPanel(); window._nayaMenuState = 'neither'; });
     head.appendChild(title); head.appendChild(x); panel.appendChild(head);
+    /* FOLLOW-UP 16: the person header - the rail's profile / About / DM /
+       Mail open THAT person here, above the room. Hidden until a person
+       is passed to openMsgPanel. */
+    var personEl = document.createElement('div');
+    personEl.className = 'hub-msg-person';
+    personEl.style.cssText = 'display:none;padding:20px 20px 0;';
+    panel.appendChild(personEl);
     var bodyEl = document.createElement('div');
     bodyEl.className = 'hub-msg-body';
     var room = null;
@@ -13813,8 +13818,84 @@ document.addEventListener('click', function(e){
     window.__hubMsgBackdrop = backdrop;
     return panel;
   }
-  function openMsgPanel() {
+  function pcPersonByAlias(a){
+    var seed=window.PC_RAIL_SEED||[];
+    for(var i=0;i<seed.length;i++){ if(seed[i] && seed[i].alias===a) return seed[i]; }
+    return null;
+  }
+function pcPersonPanelHtml(p, purpose){
+    var name=p.alias.charAt(0).toUpperCase()+p.alias.slice(1);
+    var init=p.alias.charAt(0).toUpperCase();
+    var nutParts=String(p.nut||'').split('—');
+    var domain=(nutParts[0]||'').trim();
+    var about=(nutParts.slice(1).join('—')||'').trim();
+    var head='<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"><span class="fc-pick-av" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</span><span style="font-size:19px;font-weight:700;color:#ffffff;">'+esc(name)+'</span><span class="pc-pct-one" style="--pc:'+pcColorFor(p.alias)+'">'+p.pct+'%</span></div>';
+    if(purpose==='about'){
+      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">'+(domain?'<b>'+esc(domain)+'</b> — ':'')+esc(about||p.nut||'')+'</div>';
+    }
+    if(purpose==='dm'){
+      /* FOLLOW-UP 17 — a REAL DM to this person, not the generic room: the
+         person's own header, a conversation surface named for them, and a
+         composer addressed to them. The thread is an honest empty state
+         (nothing invented); drafting is real (type in the box); sending
+         stays a governed runtime action — the Send button says so, the
+         same pattern MailRoom uses ("Draft response · runtime required").
+         The generic MailRoom stays hidden under a DM. What is still owed
+         is the runtime send bridge (the queued messenger-fix round). */
+      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">Direct message with '+esc(name)+'.</div>'
+        +'<div class="empty-instrument" style="margin-top:16px;"><strong>No messages with '+esc(name)+' yet.</strong><p>The conversation with '+esc(name)+' starts here — nothing is invented to fill it.</p></div>'
+        +'<div style="margin-top:16px;"><textarea aria-label="Message '+esc(name)+'" placeholder="Message '+esc(name)+'…" rows="3" style="width:100%;background:#050607;color:#ffffff;border:1.5px solid #0f52ba;border-radius:12px;padding:12px;font-size:17px;line-height:1.6;"></textarea></div>'
+        +'<div class="action-row" style="margin-top:12px;"><button class="btn btn-ghost mini" type="button" disabled><span>Send · runtime required</span></button></div>';
+    }
+    if(purpose==='mail'){
+      /* FOLLOW-UP 18 — Mail is a composer, not a label: To (her name),
+         Subject, Body — the DM's harvested textarea shape and MailRoom's
+         honest disabled Send. Sending stays a governed runtime action. */
+      return head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;">Smart Mail to '+esc(name)+'.</div>'
+        +'<div style="margin-top:8px;font-size:17px;color:#ffffff;">To: <b>'+esc(name)+'</b></div>'
+        +'<div style="margin-top:16px;"><label style="font-size:17px;color:#ffffff;">Subject</label><input aria-label="Subject" placeholder="Subject" style="width:100%;margin-top:8px;background:#050607;color:#ffffff;border:1.5px solid #0f52ba;border-radius:12px;padding:12px;font-size:17px;line-height:1.6;" /></div>'
+        +'<div style="margin-top:16px;"><label style="font-size:17px;color:#ffffff;">Body</label><textarea aria-label="Write to '+esc(name)+'" placeholder="Write to '+esc(name)+'… " rows="4" style="width:100%;margin-top:8px;background:#050607;color:#ffffff;border:1.5px solid #0f52ba;border-radius:12px;padding:12px;font-size:17px;line-height:1.6;"></textarea></div>'
+        +'<div class="action-row" style="margin-top:12px;"><button class="btn btn-ghost mini" type="button" disabled><span>Send · runtime required</span></button></div>';
+    }
+    var acts=[['chat','✎','#0f52ba','DM'],['mail','✉','#d4a017','Mail'],['audio','♪','#07925f','Audio'],['video','▶','#8e24aa','Video']];
+    var btns='';
+    for(var i=0;i<acts.length;i++){
+      btns+='<button type="button" class="pc-act-btn" data-pc-act="'+acts[i][0]+'" style="--ac:'+acts[i][2]+'" aria-label="'+acts[i][3]+' '+esc(p.alias)+'" title="'+acts[i][3]+' '+esc(p.alias)+'">'+acts[i][1]+'</button>';
+    }
+    var eye='<button type="button" class="pc-act-btn" data-pc-info="'+esc(p.alias)+'" style="--ac:#ffffff" aria-label="About '+esc(p.alias)+'" title="About '+esc(p.alias)+'"><b>i</b></button>';
+    return '<div data-pc-alias="'+esc(p.alias)+'">'+head+'<div style="font-size:17px;line-height:1.6;color:#ffffff;margin-bottom:12px;">'+(domain?'<b>'+esc(domain)+'</b> — ':'')+esc(about||p.nut||'')+'</div><div class="pc-card-acts">'+eye+'<div class="pc-card-acts4">'+btns+'</div></div></div>';
+  }
+function openMsgPanel(person, purpose) {
     var panel = ensureMsgPanel();
+    /* FOLLOW-UP 17: OPEN FIRST — the panel must appear even if the person
+       content below throws. In followup16 the content call threw and the
+       class-add after it never ran, so the title changed in hidden markup
+       and nothing appeared. The class is added BEFORE any content work,
+       the content work is guarded, and the class is re-asserted after —
+       so a content error can never again hide the panel. This is the same
+       visible-open call CONNECT > Message reaches (no-arg path below). */
+    document.body.classList.add('msg-open');
+    try {
+      var title = panel.querySelector('.hub-msg-title');
+      var personEl = panel.querySelector('.hub-msg-person');
+      var bodyEl = panel.querySelector('.hub-msg-body');
+      var p = person ? pcPersonByAlias(person) : null;
+      if (p) {
+        var nm = p.alias.charAt(0).toUpperCase() + p.alias.slice(1);
+        var label = purpose === 'about' ? ('About ' + nm) : purpose === 'dm' ? ('DM — ' + nm) : purpose === 'mail' ? ('Mail to ' + nm) : (nm + ' — Profile');
+        if (title) title.textContent = label;
+        panel.setAttribute('aria-label', label);
+        if (personEl) { personEl.innerHTML = pcPersonPanelHtml(p, purpose || 'profile'); personEl.style.display = 'block'; }
+        /* Profile, About and DM are the person's own view — the mail room
+           stays hidden under them. Mail keeps the room below the person. */
+        if (bodyEl) bodyEl.style.display = (purpose === 'mail') ? '' : 'none';
+      } else {
+        if (title) title.textContent = 'Smart Messenger';
+        panel.setAttribute('aria-label', 'Smart Messenger');
+        if (personEl) { personEl.innerHTML = ''; personEl.style.display = 'none'; }
+        if (bodyEl) bodyEl.style.display = '';
+      }
+    } catch (err) { /* the panel is already open (above); a content error must never hide it — but it must never hide silently again (FOLLOW-UP 18: the return-trap TypeError lived here, invisible, for a whole round) */ if (window.console && console.warn) console.warn('[hub-msg-panel] person content failed:', err); }
     document.body.classList.add('msg-open');
     var x = panel.querySelector('.hub-msg-x');
     if (x) x.focus();
@@ -20837,7 +20918,32 @@ button.os-ld-node .os-ld-n{
 <div id="mw-world-list"></div>
 <p class="os-note" id="mw-world-note" style="margin-top:8px;"></p>
 <div class="ph-actions"><button class="ph-msg" type="button" data-mw-real-dash data-mw-tr="lf">Go to my Dashboard →</button><button class="ph-msg" type="button" data-os-go="settings" data-mw-tr="set">Change what shows here</button></div>
-</div><section class="os-view mw-cal-sec" id="os-world-calendar" data-os-view="myworld">
+</div><style id="r2-cal">/* ROUND 2 (2026-11-20, item 2): the day world, as in the My World images. Obsidian tiles, the door's own deep color on the rim, white text at the 17px floor — no sub-17px text, no dim text. */
+#mwCalDay .mw-cal-doors{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 6px}
+@media(max-width:760px){#mwCalDay .mw-cal-doors{grid-template-columns:repeat(2,1fr)}}
+#mwCalDay .mw-cal-door{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px 14px;background:#050607;color:#ffffff;border:1.5px solid var(--tc);border-radius:16px;cursor:pointer;font-size:17px;line-height:1.4}
+#mwCalDay .mw-cal-door:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.55)}
+#mwCalDay .mw-cal-door-ic{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--tc);color:#ffffff;font-size:25px;font-weight:900}
+#mwCalDay .mw-cal-door-lb{font-size:17px;font-weight:700;color:#ffffff;text-align:center}
+#mwCalDay .mw-cal-week{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px;margin-top:10px}
+#mwCalDay .mw-cal-week-d{flex:none;padding:10px 12px;background:#050607;color:#ffffff;border:1.5px solid rgba(255,255,255,.25);border-radius:12px;font-size:17px;cursor:pointer}
+#mwCalDay .mw-cal-week-d.mw-cal-week-on{border-color:var(--dc);box-shadow:0 0 0 1.5px var(--dc)}
+#mwCalDay .mw-cal-back{padding:10px 16px;background:#050607;color:#ffffff;border:1.5px solid rgba(255,255,255,.35);border-radius:12px;font-size:17px;cursor:pointer}
+#mwCalDay .mw-cal-glance{display:flex;flex-direction:column;gap:8px;margin:6px 0 4px}
+#mwCalDay .mw-cal-glance-row{display:flex;gap:12px;align-items:baseline;padding:10px 12px;background:#050607;border:1px solid rgba(255,255,255,.18);border-radius:12px}
+#mwCalDay .mw-cal-glance-row b{flex:none;font-size:17px;font-weight:900;color:#ffffff}
+#mwCalDay .mw-cal-glance-row span{font-size:17px;line-height:1.5;color:#ffffff}
+#mwCalDay .mw-cal-appts{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+#mwCalDay .mw-cal-pill{padding:9px 14px;background:#050607;color:#ffffff;border:1.5px solid #0f52ba;border-radius:999px;font-size:17px}
+#mwCalDay .mw-cal-book{display:inline-block;padding:12px 22px;background:#0f52ba;color:#ffffff;border-radius:12px;font-size:17px;font-weight:900;text-decoration:none}
+#mwCalDay .mw-cal-news{display:flex;flex-direction:column;gap:8px;margin:6px 0 4px}
+#mwCalDay .mw-cal-news-row{display:flex;gap:12px;align-items:baseline;padding:12px;background:#050607;color:#ffffff;border:1px solid rgba(255,255,255,.18);border-radius:12px;text-decoration:none}
+#mwCalDay .mw-cal-news-row b{flex:none;font-size:17px;font-weight:900;color:#ffffff}
+#mwCalDay .mw-cal-news-row span{flex:1;font-size:17px;line-height:1.5;color:#ffffff}
+#mwCalDay .mw-cal-news-row i{font-size:17px;color:#ffffff;font-style:normal}
+.mw-cal-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-left:4px;vertical-align:middle}
+.mw-cal-foot{margin:18px 0 4px;text-align:center;font-size:17px;line-height:1.6;color:#ffffff}</style>
+<section class="os-view mw-cal-sec" id="os-world-calendar" data-os-view="myworld">
 <h3>Your world, day by day</h3>
 <p class="os-note mw-cal-sub">My World is the calendar. Every day lights in its own colour. Tap a day to open your world for that day: what went on, what you learned, the day&rsquo;s wisdom.</p>
 <div class="mw-cal-nav">
@@ -20855,6 +20961,7 @@ button.os-ld-node .os-ld-n{
 <label><input type="checkbox" id="mwCalDailyChinese"> Chinese horoscope</label>
 <label><input type="checkbox" id="mwCalDailyBible"> Bible quote</label>
 </div>
+<p class="mw-cal-foot">Pick a day. See your world. Learn from yesterday. Plan tomorrow.</p>
 </section>
 
 </div>
@@ -22017,6 +22124,8 @@ button.os-ld-node .os-ld-n{
 <div class="os-status" id="os-rep-status">Computed live from this app&rsquo;s own tables &mdash; no fixtures.</div>
 </div>
 
+<style id="r2-7a-fix">/* ROUND 2 (2026-11-20, eye go-back 5 / 7a): the Ask Naya room's fixed side-topics (EXPLORE/DISCOVER pills, z-index 25 desktop / 60 mobile) rendered on top of the Settings section as it scrolled beneath, covering "Close settings" and "Go to Home Hub". While the Settings view is open, the pills hide. Scoped by the view's own .on class, so it restores itself when Settings closes. */
+body:has([data-os-view="settings"].on) .naya-ask-room .side-topics{display:none!important}</style>
 <div class="ph-sec os-view" id="settings" data-os-view="settings" data-block="settings">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#0f52ba;color:#0f52ba;"></span> <span data-mw-tr="set">Settings</span></div>
 <div class="ph-actions" style="margin:0 0 12px;"><button class="ph-msg" type="button" data-os-go="home" aria-label="Close settings">&#10005; Close settings</button></div>
@@ -22194,16 +22303,7 @@ button[aria-label="Show the welcome banner again"]{display:none !important}
     var sec=document.getElementById('settings'); if(!sec) return [];
     return Array.prototype.slice.call(sec.querySelectorAll(':scope > .ph-card'));
   }
-  function tabOf(card){
-    var t=(card.textContent||'');
-    if(/About you/.test(t)) return 0;
-    if(/App behaviour/.test(t)) return 2;
-    if(/Common settings|Default feed tab|Identity/.test(t)) return 3;
-    if(/Every room|Everything on this page/.test(t)) return 4;
-    if(/Cover buttons|Membership news|Notifications/.test(t)) return 5;
-    if(/Go to Home Hub|Install this app/.test(t)) return 6;
-    return 1;
-  }
+  function tabOf(card){ var h=''; var h3=card.querySelector('h3'); if(h3) h=h3.textContent||''; if(/About you/.test(h)) return 0; if(/Preferences/.test(h)) return 1; if(/App behaviour/.test(h)) return 2; if(/Common settings|Default feed tab|Identity/.test(h)) return 3; if(/Every room|Everything on this page/.test(h)) return 4; if(/Cover buttons|Membership news|Notifications/.test(h)) return 5; if(/Go to Home Hub|Install/.test(h)) return 6; var t=(card.textContent||''); if(/About you/.test(t)) return 0; if(/App behaviour/.test(t)) return 2; if(/Common settings|Default feed tab|Identity/.test(t)) return 3; if(/Every room|Everything on this page/.test(t)) return 4; if(/Cover buttons|Membership news|Notifications/.test(t)) return 5; if(/Go to Home Hub|Install this app/.test(t)) return 6; return 1; } /* ROUND 2 (2026-11-20, item 4): classify by the card's HEADING first — the old textContent regexes sent "Your Preferences" (Deep black + Notifications) to tab 5 on the word Notifications, leaving tab 1 Preferences EMPTY. Heading-first: Preferences -> 1, About you -> 0, the rest by their own headings, text fallback kept for cards whose heading matches nothing. */
   function showTab(n){
     current=Math.max(0, Math.min(6, n));
     var cs=cards();
@@ -43005,7 +43105,7 @@ document.addEventListener('click', function(e){
   }
   var line2=document.querySelector('[data-pc-profile-call-status]');
   if(line2) line2.textContent='';
-  if(typeof window.fcOpenChat!=='function') return;
+  if(b.closest && (b.closest('#hubPeopleList') || b.closest('.hub-msg-panel'))) return; /* ROUND 2 (2026-11-20, eye go-back 1/2): rail taps and panel taps are owned by the rail handler (openMsgPanel) — the instant-message composer must not open over the official dialog. */ if(typeof window.fcOpenChat!=='function') return;
   window.fcOpenChat({name:alias, alias:alias, kind:'person', mode:(act==='mail'?'mail':'chat')});
 });
 /* The keyword box above the feed (#tnSearchPersonalInput) is hidden by Shawn's
@@ -44480,11 +44580,7 @@ document.addEventListener('click', function(e){
     return;
   }
   var info=e.target&&e.target.closest?e.target.closest('[data-pc-info]'):null;
-  if(info){
-    var p=pcRailPerson(info.getAttribute('data-pc-info'));
-    if(p && window.pcOpenProfile) window.pcOpenProfile(p.alias);
-    return;
-  }
+  if(info){ var p=pcRailPerson(info.getAttribute('data-pc-info')); if(p && typeof openMsgPanel==='function') openMsgPanel(p.alias, 'about'); /* ROUND 2 (2026-11-20, eye go-back 3): the (i) opens the person-specific About dialog (Hub followup19), not the full profile page. The orb keeps pcOpenProfile — the full page is the profile's own door, per Shawn's CONNECTION-PROFILE addendum. */ else if(p && window.pcOpenProfile) window.pcOpenProfile(p.alias); return; }
   if(e.target&&e.target.closest&&(e.target.closest('[data-pc-pop-close]')||e.target.closest('#pcRailPopBack'))){ pcHideRailPop(); return; }
 });
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRailPop(); });
@@ -47488,11 +47584,15 @@ function renderGrid(){
     if(i<startDow){ dnum=prevDays-startDow+1+i; var pm=calM-1, py=calY; if(pm<0){pm=11;py--;} dt=ds(py,pm,dnum); inMonth=false; }
     else if(i<startDow+daysIn){ dnum=i-startDow+1; dt=ds(calY,calM,dnum); }
     else { dnum=i-(startDow+daysIn)+1; var nm=calM+1, ny=calY; if(nm>11){nm=0;ny++;} dt=ds(ny,nm,dnum); inMonth=false; }
+    /* ROUND 2 (2026-11-20, item 2, Laws §7): the other month's numbers are GONE entirely — the cell is empty, carries no date, and takes no tap. The images show empty cells, never dimmed bleed. */
+    if(!inMonth){ cells+='<button type="button" class="mw-cal-cell mw-cal-dim" aria-hidden="true" tabindex="-1"></button>'; continue; }
     var dow=(startDow+i)%7;
     var col=DAY_COLORS[dow];
-    var n=dayNotes(dt).length;
+    var _dn=dayNotes(dt);
+    var n=_dn.length;
     var isToday=(dt===todayStr), isSel=(dt===selDate);
-    cells+='<button type="button" class="mw-cal-cell'+(inMonth?'':' mw-cal-dim')+(isToday?' mw-cal-today':'')+(isSel?' mw-cal-sel':'')+'" data-mw-cal-date="'+dt+'" style="--dc:'+col+'" aria-label="'+DAY_NAMES[dow]+', '+fmtDate(dt)+(isToday?', today':'')+'"><b>'+dnum+'</b><i>'+(isToday?'today':(n?(n+(n===1?' note':' notes')):''))+'</i></button>';
+    var tp=n?noteType(_dn[0]):'';
+    cells+='<button type="button" class="mw-cal-cell'+(isToday?' mw-cal-today':'')+(isSel?' mw-cal-sel':'')+'" data-mw-cal-date="'+dt+'" style="--dc:'+col+'" aria-label="'+DAY_NAMES[dow]+', '+fmtDate(dt)+(isToday?', today':'')+(n?', '+n+(n===1?' note':' notes'):'')+'"><b>'+dnum+'</b><i>'+(isToday?'today':(n?(n+(n===1?' note':' notes')):''))+'</i>'+(tp?'<span class="mw-cal-dot" style="background:'+TYPE_COLORS[tp]+'" title="'+TYPE_NAMES[tp]+'"></span>':'')+'</button>';
   }
   grid.innerHTML=cells;
 }
@@ -47508,14 +47608,16 @@ function paintDay(dateStr){
   var acts=dayActivity(dateStr);
   var isFuture=dateStr>todayStr, isPast=dateStr<todayStr;
   box.style.setProperty('--dc',col);
-  var h='<div class="mw-cal-day-head"><div class="mw-cal-day-title"><h4>'+esc(fmtDate(dateStr))+'</h4><p>Your World for This Day &mdash; '+DAY_NAMES[dow]+' lights '+DAY_COLOR_NAMES[dow]+'.</p></div><button type="button" class="mw-cal-day-x" data-mw-cal-close aria-label="Close the day">&times;</button></div>';
+  var h='<div class="mw-cal-day-head"><div class="mw-cal-day-title"><h4>'+esc(fmtDate(dateStr))+'</h4><p>Your World for This Day &mdash; '+DAY_NAMES[dow]+' lights '+DAY_COLOR_NAMES[dow]+'.</p></div><button type="button" class="mw-cal-back" data-mw-cal-back>\u2039 Back to Month</button><button type="button" class="mw-cal-day-x" data-mw-cal-close aria-label="Close the day">&times;</button></div>';
+  /* ROUND 2 (2026-11-20, item 2): the week strip — Mon to Sun around this day, as in the images. Each day is a real tap (data-mw-cal-week, handled beside bind). */
+  (function(){ var _wd=dt.getDay(); var _mon=new Date(dt); _mon.setDate(dt.getDate()-((_wd+6)%7)); var _ws=''; for(var _k=0;_k<7;_k++){ var _d=new Date(_mon); _d.setDate(_mon.getDate()+_k); var _ds=ds(_d.getFullYear(),_d.getMonth(),_d.getDate()); _ws+='<button type="button" class="mw-cal-week-d'+(_ds===dateStr?' mw-cal-week-on':'')+'" data-mw-cal-week="'+_ds+'" aria-label="'+DAY_NAMES[_d.getDay()]+', '+fmtDate(_ds)+'">'+DAY_NAMES[_d.getDay()].slice(0,3)+' '+_d.getDate()+'</button>'; } h+='<div class="mw-cal-week" role="group" aria-label="This week">'+_ws+'</div>'; })();
   if(isFuture){
     h+='<p class="mw-cal-note">This day hasn\u2019t happened yet &mdash; nothing to show. Come back then.</p>';
     box.innerHTML=h; return true;
   }
-  h+='<div class="mw-cal-menu" role="group" aria-label="This day\u2019s world">';
-  MENU.forEach(function(m){ h+='<button type="button" class="smart-tab" data-mw-cal-menu="'+m[0]+'" style="--tc:'+m[2]+'">'+esc(m[1])+'</button>'; });
-  h+='</div>';
+  h+='<div class="mw-cal-doors" role="group" aria-label="This day\u2019s world">';
+  MENU.forEach(function(m){ var _init=m[1].charAt(0).toUpperCase(); h+='<button type="button" class="mw-cal-door" data-mw-cal-menu="'+m[0]+'" style="--tc:'+m[2]+'" aria-label="'+esc(m[1])+'"><span class="mw-cal-door-ic">'+_init+'</span><span class="mw-cal-door-lb">'+esc(m[1])+'</span></button>'; });
+  h+='</div>'; /* ROUND 2 (2026-11-20, item 2): the day's 8 doors are tiles, 4 across, as in the My World images — same MENU, same data-mw-cal-menu, so the day's routing is untouched. The tile shows the door's initial in its own deep color, the file's orb language. */
   /* What went on */
   h+='<h5 class="mw-cal-sec-h">What went on</h5>';
   if(notes.length||acts.length){
@@ -47544,17 +47646,19 @@ function paintDay(dateStr){
      gives the real "Book a time" door the Dashboard already carries
      (nayanet.app/book), never a faked booking. If the record ever holds an
      appointment-type entry for the day, it lists, real. */
+  /* ROUND 2 (2026-11-20, item 2): Your Day at a Glance — Morning / Afternoon / Evening, from the day's real activity and appointments, bucketed by their own time. No time on the record, no invented slot: the row says so. */
+  (function(){ function _hr(en){ var t=en.at||en.time||''; var m=String(t).match(/T(\d{2}):/); return m?parseInt(m[1],10):null; } function _row(label, items){ return '<div class="mw-cal-glance-row"><b>'+label+'</b><span>'+(items.length?items.map(function(en){ return esc(en.headline||en.type||'Activity'); }).join(' \u00b7 '):'Nothing on the books.')+'</span></div>'; } var _m=acts.filter(function(en){ var h=_hr(en); return h!==null&&h>=5&&h<12; }); var _a=acts.filter(function(en){ var h=_hr(en); return h!==null&&h>=12&&h<17; }); var _e=acts.filter(function(en){ var h=_hr(en); return h!==null&&h>=17; }); var _u=acts.filter(function(en){ return _hr(en)===null; }); h+='<h5 class="mw-cal-sec-h">Your Day at a Glance</h5><div class="mw-cal-glance">'+_row('Morning',_m)+_row('Afternoon',_a)+_row('Evening',_e)+(_u.length?'<div class="mw-cal-glance-row"><b>Through the day</b><span>'+_u.map(function(en){ return esc(en.headline||en.type||'Activity'); }).join(' \u00b7 ')+'</span></div>':'')+'</div>'; })();
   h+='<h5 class="mw-cal-sec-h">Appointments</h5>';
   var appts=dayAppointments(dateStr);
   if(appts.length){
-    h+='<ul class="mw-cal-list">';
-    appts.forEach(function(en){ h+='<li>'+esc(en.headline||en.type||'Appointment')+'</li>'; });
-    h+='</ul>';
+    h+='<div class="mw-cal-appts">';
+    appts.forEach(function(en){ h+='<span class="mw-cal-pill">'+esc(en.headline||en.type||'Appointment')+'</span>'; });
+    h+='</div>';
   } else {
     h+='<p class="mw-cal-note">No appointments in this page&rsquo;s record for this day.</p>';
   }
   var _bkDest=(window.__osBookingSlug ? 'https://nayanet.app/book?book='+encodeURIComponent(window.__osBookingSlug) : 'https://nayanet.app/#/hub/connections');
-  h+='<p class="mw-cal-note">'+(window.__osBookingSlug ? 'Book into this day through the citizen’s booking door.' : 'Booking into a day needs a booking page — none is switched on yet.')+' <a class="os-book-day-link" href="'+_bkDest+'" style="color:#0f52ba;font-weight:900;">Book a time &rarr;</a></p>';
+  h+='<p class="mw-cal-note">'+(window.__osBookingSlug ? 'Book into this day through the citizen’s booking door.' : 'Booking into a day needs a booking page — none is switched on yet.')+'</p><p><a class="mw-cal-book" href="'+_bkDest+'">Book a Time</a></p>';
   /* Weather — T22: weather in the day's world. No weather source is
      connected on this page (the day's weather rides the local feed's
      morning update, and no weather feed is connected here), so the row is
@@ -47576,7 +47680,7 @@ function paintDay(dateStr){
      day carries forward — the best of that day becoming this day's wisdom,
      named with its day — and when the wall holds no Smart Note at all, the
      truest wisdom from the learned store, one true line a day. */
-  h+='<h5 class="mw-cal-sec-h">Daily Wisdom</h5>';
+  h+='<h5 class="mw-cal-sec-h">Smart Note of the Day</h5>';
   if(smarts.length){
     var w=smarts[0], ex=noteExcerpt(w,160);
     h+='<p class="mw-cal-note"><b>'+esc(noteTitle(w))+'</b>'+(ex?' &mdash; '+esc(ex):'')+'</p><p class="mw-cal-note" style="color:#fff">Smart Note of the Day, from your Smart Notes today.</p>';
@@ -47591,10 +47695,12 @@ function paintDay(dateStr){
     }
   }
   /* Intel Today — the live room, and the Daily Intelligence Report. */
-  h+='<h5 class="mw-cal-sec-h">Intel Today</h5>';
+  h+='<h5 class="mw-cal-sec-h">Daily Intelligence</h5>';
   h+='<p class="mw-cal-note">Intel Today is the live room &mdash; '+(isPast?'it shows today\u2019s view, live, and doesn\u2019t keep past days':'today\u2019s view, live now')+'. <a href="https://nayanet.app/rooms/today" style="color:#0f52ba;font-weight:900;">Open Intel Today &rarr;</a></p>';
   h+='<h5 class="mw-cal-sec-h">Daily Intelligence Report</h5>';
   h+='<p class="mw-cal-note">No Daily Intelligence Report for this day yet.</p>';
+  /* ROUND 2 (2026-11-20, item 2): Local / Provincial / Global news — links into the rooms that carry them, as in the images. No summary is invented here; the rooms hold the news. */
+  h+='<h5 class="mw-cal-sec-h">News</h5><div class="mw-cal-news"><a class="mw-cal-news-row" href="https://nayanet.app/rooms/today"><b>Local</b><span>Today\u2019s news from your area.</span><i>\u203a</i></a><a class="mw-cal-news-row" href="https://nayanet.app/rooms/today"><b>Provincial</b><span>Today\u2019s news from your province.</span><i>\u203a</i></a><a class="mw-cal-news-row" href="https://nayanet.app/rooms/today"><b>Global</b><span>Today\u2019s news from the world.</span><i>\u203a</i></a></div>';
   /* Optional dailies — only the ones turned on, and only with honest text. */
   var dl=dailies();
   if(dl.horoscope||dl.chinese||dl.bible){
@@ -47672,7 +47778,7 @@ function bind(){
     try{ mo.observe(wl,{childList:true}); }catch(e){}
   }
 }
-bind();
+bind(); /* ROUND 2 (2026-11-20, item 2): the week strip + Back to Month live in the day panel, outside the grid's own click delegation — this listener owns them, closing over the same openDay/closeDay. */ document.addEventListener('click', function(e){ var w=e.target&&e.target.closest?e.target.closest('[data-mw-cal-week]'):null; if(w){ openDay(w.getAttribute('data-mw-cal-week')); return; } var bk=e.target&&e.target.closest?e.target.closest('[data-mw-cal-back]'):null; if(bk){ closeDay(); return; } });
 renderGrid();
 })();
 
