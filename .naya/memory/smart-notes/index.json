@@ -70020,6 +70020,38 @@
         "Mail",
         "Discipline"
       ]
+    },
+    {
+      "smart_note_id": "SN-4109",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4109-check-me",
+      "slug": "check-me",
+      "title": "Check Me",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4109/IB-SMART-NOTE-20261120-sn4109-check-me.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4109/IB-SMART-NOTE-20261120-sn4109-check-me.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/VISION/SN-4109/IB-SMART-NOTE-20261120-sn4109-check-me.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261120-sn4109-check-me.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-20T01:20:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-20",
+      "page_hash": "5b0c5a6e71ac9068adf62dc6bc34301e6dccbe6028a3f02cc467c0d54467b4f3",
+      "content_hash": "70f12b0a1ba392a832528b589275e3d95a807756151a24380321cbd934d1b6c1",
+      "one_line": "Check me. That's how I know I'm real.",
+      "topics": [
+        "Verification",
+        "Mechanic",
+        "Trust",
+        "Standards"
+      ]
     }
   ],
   "sequence_policy": {
@@ -70030,5 +70062,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "08ea0481277de840cc13db76df2b2b904297cce1267075e0d1b59a6c8a941e1c"
+  "corpus_manifest_hash": "7c2301ed0e2c287afb6d811f2a2889c3deec21768ee12c42daf3017edad24df6"
 }
