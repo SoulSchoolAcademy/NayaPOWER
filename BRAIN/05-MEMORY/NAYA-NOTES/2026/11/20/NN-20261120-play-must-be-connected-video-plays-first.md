@@ -4,7 +4,7 @@
 
 **NN-20261120-play-must-be-connected-video-plays-first · Naya Note · 2026-11-20 ~14:23–14:52 MST (call 4f055989)**
 
-*Paired Smart Note: SN-pending — Play Must Be Connected, the Video Plays First (takes the next free number at filing)*
+*Paired Smart Note: SN-4325 — Play Must Be Connected, the Video Plays First*
 
 **Category:** Decision — the play button, the audio, the video, one experience
 
