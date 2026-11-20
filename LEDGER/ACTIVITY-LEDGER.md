@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-20 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16521,6 +16521,14 @@ _Last updated: 2026-11-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### 🚨 t0735 — Team 5, Team Naya Scorer (Retrieval) — 0/10 [PHANTOM]
 
+**Task:** v2 corpus topic 1 authored (slice: 10 queries / 15 docs)
+
+**Receipt:** `twelve-lane-receipts/t0735-lane5.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). PHANTOM - FLAG. The receipt's two pinned deliverables do not exist: hidden_files/v2-authoring/topic1/ is absent from the goal hidden_files and from nayapower-hub, and no v2-authoring/topic1 files appear in the repo history; the corpus file (sha e0f5ff0ac675...) and queries file (sha e420eceab54f...)
+
+### 🚨 t0735 — Team 5, Team Naya Scorer (Retrieval) — 0/10 [PHANTOM]
+
 **Task:** v2 corpus topic 1 authored (slice)
 
 **Receipt:** `twelve-lane-receipts/t0735-lane5.md`
@@ -17350,6 +17358,14 @@ _Last updated: 2026-11-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** semantic acceptance battery v4 build + cold run
 
 **Evidence:** Verified: origin branch naya4/t0722-lane5-semantic-battery head 98c023a879522206f194d8a926a4f8276085909d byte-matches (git ls-remote this tick); corpus/query seals as receipted. Score 9.0. Why not 9.5: (1) F1-F6 never evaluated on acceptance (run correctly STOPPED at calibration by the frozen conflict clause); (2) F4 degenerate-floor and F6 byte-id
+
+### ✅ t0722 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Breaker #7: feature.intelligence_today built, tested, pushed, remote-verified
+
+**Receipt:** `twelve-lane-receipts/t0722-lane12.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: head commit ca3c80b798de4d3e48fe04b7a010e50b6fd17290 exists in the mirror with the matching message ('t0722 Lane 12: add XSS escape test...'), and its tree contains HUB/design-system/tools/smart-builder/functions/feature_intelligence_today.py plus its test file. NOT PH
 
 ### ✅ t0722 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -18535,6 +18551,14 @@ _Last updated: 2026-11-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0700 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
+**Task:** SURGE-(c) top-20 ask-world needs re-tally on live log bytes
+
+**Receipt:** `twelve-lane-receipts/t0700-lane10.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/surge-c/tally-t0700-lane10.json sha256 aba3e6a7b58d4574cdccdab62350db476871f5c02bdcfc2f60222d3caa04c3aa and hidden_files/surge-c/top20-needs-t0700-lane10.md sha256 59d1687e719e98b1ebcb872b1d3be5c10cc223d53395aac23e4d97b1d1c7c398 - both exact matches with t
+
+### ✅ t0700 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
 **Task:** SURGE-c re-tally top-20 ask-world needs
 
 **Receipt:** `twelve-lane-receipts/t0700-lane10.md`
@@ -18802,6 +18826,14 @@ _Last updated: 2026-11-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0695-lane11.md`
 
 **Evidence:** Verified: PR #2552 head 3cf53e9b6c19e1eff3aa70a3ea665b08b62fa37e MATCHES git ls-remote refs/pull/2552/head (double-sourced in receipt: API + rev-parse, same SHA); receipt verdict posted on #2537 (comment 6159206803 per receipt). Clears 9.5 because: real verified value shipped — independently reproduced a genuine merge-blocker bug (substring marker 
+
+### ✅ t0694 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** J5 sharpening spec for merge-disposition candidacy block + F1 post-merge bypass audit falsifier
+
+**Receipt:** `twelve-lane-receipts/t0694-lane8.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: deliverable hidden_files/j5-sharpening-spec-t0694.md exists, sha256 b7ccd19281c565ef836151d284171f4586dc97998f77f9013a85d6444bddb08b - exact match with the receipt. NOT PHANTOM. Self-score 9.5, agreed. Score 9.5 ACCEPTED. Clears 9.5 because: all three definition-of-don
 
 ### ✅ t0694 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
@@ -19586,6 +19618,14 @@ _Last updated: 2026-11-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gap follow-up: file scorer-label brief (t0682)
 
 **Evidence:** Verified: twelve-lane-receipts/t0683-lane2.md exists (the filed brief); receipt's evidence is machine-recorded (cron run record, memory log line refs, file mtimes). Score 9.5 ACCEPTED — clears 9.5 because the closure is proven by file state and the bookkeeping chain is complete.
+
+### ✅ t0682 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** BRAINDEX drift verdict at live tip (index-vs-tree check + recurrence-arm diagnosis)
+
+**Receipt:** `twelve-lane-receipts/t0682-lane10.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: tip commit 30b52fc22713af9853a899607869104fa168739a exists in the mirror, and the index blob at that tip is 22ab53fea36e51a535e7677f135e9c8c27a1cfa9 - exact match with the receipt. NOT PHANTOM. Read-only verdict, no branch to check. Self-score 9.5, agreed. Score 9.5 AC
 
 ### ✅ t0682 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
