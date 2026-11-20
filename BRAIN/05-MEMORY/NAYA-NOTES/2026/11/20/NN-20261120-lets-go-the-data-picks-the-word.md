@@ -4,7 +4,7 @@
 
 **NN-20261120-lets-go-the-data-picks-the-word · Naya Note · 2026-11-20 ~14:23–14:52 MST (call 4f055989)**
 
-*Paired Smart Note: SN-pending — Let's Go, the Data Picks the Word (takes the next free number at filing)*
+*Paired Smart Note: SN-4326 — Let's Go, the Data Picks the Word*
 
 **Category:** Decision — the button word, chosen by data
 
