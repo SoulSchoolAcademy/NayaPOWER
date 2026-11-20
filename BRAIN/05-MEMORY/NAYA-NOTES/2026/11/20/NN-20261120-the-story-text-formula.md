@@ -4,7 +4,7 @@
 
 **NN-20261120-the-story-text-formula · Naya Note · 2026-11-20 ~11:40–11:53 MST (18:40–18:53Z)**
 
-*Paired Smart Note: SN-pending — The Story-Text Formula (takes the next free number at filing)*
+*Paired Smart Note: SN-4282 — The Story-Text Formula — What It Is, Why It Matters, What's In It For You*
 
 **Category:** Decisions — how the agreement's words are written, his per-slide formula and who writes it
 
