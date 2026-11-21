@@ -4,7 +4,7 @@
 
 **NN-20261120-told-fixed-is-not-fixed · Naya Note · 2026-11-20 ~20:24–20:30 MST**
 
-*Paired Smart Note: SN-pending — Told Fixed Is Not Fixed (takes the next free number at filing)*
+*Paired Smart Note: SN-4429 — Told Fixed Is Not Fixed*
 
 **Category:** Law — a delivery message is a claim, not proof
 
