@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4434",
+ "intelligence": {
+  "title": "SN-4434 — His Eye Overrules the Checker PASS",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4434-his-eye-overrules-the-checker-pass",
+  "smart_note_id": "SN-4434",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4434/IB-SMART-NOTE-20261120-sn4434-his-eye-overrules-the-checker-pass.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "A checker PASS 5/5 is not a pass. His eye looked at the same build and found the stars still pink, the layers still not boards, the orb dead, and the buttons still colliding.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4434",
+   "title": "SN-4434 — His Eye Overrules the Checker PASS",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4434/IB-SMART-NOTE-20261120-sn4434-his-eye-overrules-the-checker-pass.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4434/IB-SMART-NOTE-20261120-sn4434-his-eye-overrules-the-checker-pass.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
