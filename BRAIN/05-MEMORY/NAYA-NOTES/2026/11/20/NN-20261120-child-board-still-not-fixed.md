@@ -4,7 +4,7 @@
 
 **NN-20261120-child-board-still-not-fixed · Naya Note · 2026-11-20 ~21:53–21:54 MST**
 
-*Paired Smart Note: SN-pending — The Child Note Says What It Means and Why It Matters (takes the next free number at filing)*
+*Paired Smart Note: SN-4445 — The Child Note Says What It Means and Why It Matters*
 
 **Category:** Design — the Child note must say what it means and why it matters, in its own elevated block
 
