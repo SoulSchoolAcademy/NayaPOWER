@@ -4,7 +4,7 @@
 
 **NN-20261121-the-turning-point-make-everything-work · Naya Note · 2026-11-21 ~10:32 MST**
 
-*Paired Smart Note: SN-pending — The Turning Point — Make Everything Work (takes the next free number at filing)*
+*Paired Smart Note: SN-4506 — The Turning Point — Make Everything Work*
 
 **Category:** LAW — the phase changes now: from building pieces to PROVING every piece works
 
