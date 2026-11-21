@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4365",
+ "intelligence": {
+  "title": "SN-4365 — The Red N May Rest Under the Video",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4365-the-red-n-may-rest-under-the-video",
+  "smart_note_id": "SN-4365",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4365/IB-SMART-NOTE-20261120-sn4365-the-red-n-may-rest-under-the-video.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "If a board's text leaves no room to fit the red N properly on that board, the red N may go in the center underneath the video instead — still with breathing room, never touching an edge. First home is the text box; the video's underside is the fallback he named, not an improvisation.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4365",
+   "title": "SN-4365 — The Red N May Rest Under the Video",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4365/IB-SMART-NOTE-20261120-sn4365-the-red-n-may-rest-under-the-video.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4365/IB-SMART-NOTE-20261120-sn4365-the-red-n-may-rest-under-the-video.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

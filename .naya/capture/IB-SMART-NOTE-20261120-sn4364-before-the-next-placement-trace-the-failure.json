@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4364",
+ "intelligence": {
+  "title": "Before the Next Placement, Trace the Failure",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4364-before-the-next-placement-trace-the-failure",
+  "smart_note_id": "SN-4364",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4364/IB-SMART-NOTE-20261120-sn4364-before-the-next-placement-trace-the-failure.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "He has now said it three ways across two calls and a chat: the video is not playing, the images are not showing, the N is not right. Each round that re-places without diagnosing spends his walk on the same failure. The walk is the scarce thing — his eye, his time, his patience. A diagnosed cause, fixed once, costs one walk; an undiagnosed repeat costs a walk every time it is shown.",
+  "simple_view": "Clicking play must do something. Her picture does not go in the player. Her face big in the center does the talking. The little red N at the bottom does the marking. The button says \"Let's Go.\" The video plays first of all.",
+  "grandma_view": "A play button that plays nothing is a broken promise, not a missing feature. A correction that adds is not the same as a correction that restores. A face and a mark are not two decorations competing for the same corner — they are a balance. Her face big in the center does the talking; the little red N at the bottom does the marking.",
+  "naya_view": "A thing that will not play has a reason, and the reason is the work. Re-placing the same video in the same spot and hoping it plays this time is not a fix — it is a repeat with a new timestamp. The diagnosis comes first: what is handed to the build, what the build does with it, where it breaks — named, in order, with proof. Only then does the placement mean anything, because only then can the walk prove it plays.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4364",
+   "title": "Before the Next Placement, Trace the Failure",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4364/IB-SMART-NOTE-20261120-sn4364-before-the-next-placement-trace-the-failure.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4364/IB-SMART-NOTE-20261120-sn4364-before-the-next-placement-trace-the-failure.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

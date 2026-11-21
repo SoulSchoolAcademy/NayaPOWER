@@ -73414,6 +73414,66 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "3eb195f3a6596e6872869e037d1a426983b4724bb63a1261fd4e9eac0d06a143"
+    },
+    {
+      "smart_note_id": "SN-4363",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4363-prove-each-one-on-the-staged-page",
+      "title": "Prove Each One on the Staged Page",
+      "content_hash": "dec2e606d7b0295510d5a4c26c82de8a4dd0d17d7b87f2b4bc22cc83c517747e",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4363/IB-SMART-NOTE-20261120-sn4363-prove-each-one-on-the-staged-page.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DECISION",
+      "topic": "DECISION",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "6b5ca7e905aedb1a8bf9e4eeeb655a5770353e1d174074b13080b409cc5aabd6"
+    },
+    {
+      "smart_note_id": "SN-4364",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4364-before-the-next-placement-trace-the-failure",
+      "title": "Before the Next Placement, Trace the Failure",
+      "content_hash": "973f03cccdb69de76b30d4dca77d420b74666be36a5c3f7b5b566de30861ae68",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4364/IB-SMART-NOTE-20261120-sn4364-before-the-next-placement-trace-the-failure.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "48ece713999ae5b379dbd2f12f1f1562e8088347fbf7f8ee148f24ae32609bc2"
+    },
+    {
+      "smart_note_id": "SN-4365",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4365-the-red-n-may-rest-under-the-video",
+      "title": "SN-4365 — The Red N May Rest Under the Video",
+      "content_hash": "d0e22ab72aec40cf137f3eff261f29dd3145915f24e60ae88bcd891343d79e0c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4365/IB-SMART-NOTE-20261120-sn4365-the-red-n-may-rest-under-the-video.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "634a4d77e94686a909c5151b499ebd9e5f4158585439eba9909c63bb2c7c8c8b"
     }
   ],
   "sequence_policy": {
@@ -73424,5 +73484,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "cc310c298bfa8a227eb8ce8fc346d171fcbc7ba419bab0306f3c12197acea068"
+  "corpus_manifest_hash": "72c71b5a180215d9fcd0ea08371059813a25769319146360f3748ff0366ffe80"
 }

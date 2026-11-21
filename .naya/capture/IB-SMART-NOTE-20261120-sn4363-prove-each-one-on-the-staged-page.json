@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4363",
+ "intelligence": {
+  "title": "Prove Each One on the Staged Page",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4363-prove-each-one-on-the-staged-page",
+  "smart_note_id": "SN-4363",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4363/IB-SMART-NOTE-20261120-sn4363-prove-each-one-on-the-staged-page.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "\"Better than it was\" is not done — it is the eye saying the small details moved and the page still fails his walk. Each item is the same discipline at small scale: the thing must be what it says it is (obsidian means black inside, not white and pink), spaced like a professional laid it out (buttons breathe, boards sit solid), and alive where it claims to be alive (a date that ticks, a sidebar that opens both ways). A control that opens but cannot be reopened is not half-working — it is a door that locks the reader out of their own room.",
+  "simple_view": "His eye decides. The page must be alive. The red N must glow. The buttons must be pretty. One door. One name. Show him first. Then it is done.",
+  "grandma_view": "He looks at the page himself. If it is not right, it goes back. The mark must glow. The pictures must show. The buttons must breathe. One door, one name, one start.",
+  "naya_view": "When the old system shakes, the answer is not a better bet inside it — it is a system built on understanding what the old one never understood: life, and intelligence itself. They bet on tools without understanding what they created; the bet was wrong because the thinking was wrong. NayaNET is the solution because it starts from the understanding — people, their lives, intelligence that serves them — instead of from the bet.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4363",
+   "title": "Prove Each One on the Staged Page",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4363/IB-SMART-NOTE-20261120-sn4363-prove-each-one-on-the-staged-page.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4363/IB-SMART-NOTE-20261120-sn4363-prove-each-one-on-the-staged-page.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
