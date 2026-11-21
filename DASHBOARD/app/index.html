@@ -3470,7 +3470,158 @@ button:hover{
    flush against the top under the nav bar. */
 
 </style>
-</head><body>
+<style id="dash-notif-bar-fixup">
+/* ——— SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 1: THE UNIVERSAL BOTTOM BAR ON THE DASHBOARD ———
+   The six-tile bar, harvested VERBATIM from Personal's naya-notif-bar SEGS via the Hub (the Hub's SEGS is byte-identical to Personal's, per the checker report): ADD royal purple #8e24aa · PERSONAL sapphire #0f52ba · BUSINESS emerald #07925f · WORLDS deep gold #d4a017 · ECOSYSTEM burnt orange #c2410c · CONNECT red #c62828 — same order, same icons, same colours. The CSS below is the Hub's own .notif-bar / .fc-plusmenu rules, verbatim, plus the hover, keyframe, fold and 640px lines. The Dashboard's own ecosystem dock is a different object in a preview context and is untouched.
+   DASHBOARD adaptations, named: the bar rides ABOVE the Smart Bar (#nsbBottom, fixed bottom:0) — its bottom is var(--smartbar-h), measured live from #nsbBottom (56px fallback covers the pre-JS flash only). The page reserves room for both bars via body.has-notif padding (!important, so the host pad() inline style cannot shrink it). The bottomBar=false setting governs #nsbBottom itself (Dashboard code); this bar follows it by measurement and is never hidden by that setting. */
+   /* Harvested VERBATIM from the Hub nav file's .notif-bar
+   (~/workspace/team-nitro/hub-navigation-20261112/hub-navigation-fixed.html,
+   "Notifications bar (Shawn 2026-10-20)"): Mail blue · Activity green ·
+   Spaces gold, count bubbles with a 9+ cap, hidden at 0. The trio rides
+   at the very bottom (bottom: var(--smartbar-h, 0px) — 0 now that the
+   Smart Bar is OUT, Shawn 15:43Z). Two adaptations, named: (1) the fade
+   — .nsb-trio-faded, which no listener in this file drives (the fold is
+   driven by os-bottom-hidden in the stack script below, Amendment #3:
+   down hides the bar, only the very bottom brings it back); the base rule
+   carries the opacity transition for it.
+   (2) The Hub-only rules are NOT carried over: the eco-bottombar rider
+   (no such element here), the .toast-stack/.main padding, and the
+   .corner-plus block. */
+/* SWEEP-3 F9: the row centres on the viewport by design — recorded, not moved. */
+.notif-bar {
+  position: fixed; left: 0; right: 0; bottom: var(--smartbar-h, 0px); z-index: 45;
+  display: flex; justify-content: center;
+  background: rgba(5,5,9,.96);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  /* F3 (Shawn 16:06Z) — NO divider line above the trio: the border-top and
+     the inset 1px highlight are gone; the icons sit clean on the page. */
+  box-shadow: 0 -10px 34px rgba(0,0,0,.6);
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); /* FOLLOW-ON 2026-11-19 (item 3): real clearance — the tiles sit fully inside the viewport, harvested from the Dashboard follow-on. */
+  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;
+  transition: opacity .45s ease;
+}
+.notif-bar.nsb-trio-faded{opacity:0;pointer-events:none;}
+@keyframes notifUp { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+.notif-row { display: flex; gap: 40px /* A9 (2026-11-17): depth + separation — 6×54px + 5×40px = 524px, inside 640px. */; width: 100%; max-width: 640px; padding: 12px 14px 10px; justify-content: center; }
+.notif-seg {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 2px 6px 0; cursor: pointer; background: none; border: none;
+  color: #ffffff; font-family: inherit; transition: transform .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.notif-seg:active { transform: scale(.94); }
+/* SWEEP-3 F8: no gloss layer in the bytes — flat board black plus rim plus glow. Whether the rim-light IS the gloss is Shawn's eye call; do not invent a swoosh. */
+.notif-tile {
+  position: relative; z-index: 0; width: 54px; height: 54px; border-radius: 16px; /* MODEL TILE (blob 9a006c47, 22:48Z + 23:00Z): harvested verbatim — 16px, not the Hub's 26px squircle */
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%); /* MODEL: the ball face — own-color top-left light, obsidian body */
+  border: 1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12)); /* MODEL: the 62% rim */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.38),
+    inset 0 -9px 15px rgba(0,0,0,.6),
+    inset 1px 0 0 rgba(255,255,255,.07),
+    0 7px 16px rgba(0,0,0,.6),
+    0 12px 28px rgba(0,0,0,.55),
+    0 0 17px color-mix(in srgb, var(--nc) 42%, transparent); /* MODEL: the around-glow, restrained */
+  color: #ffffff;
+  transition: box-shadow .3s, border-color .3s, transform .22s cubic-bezier(.16,.84,.22,1);
+}
+.notif-tile::before { display: none; } /* MODEL (Personal L32407): no clone layer — the later rule wins, exactly as in the model file. */
+}
+.notif-tile::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; border: 1.5px solid color-mix(in srgb, var(--nc) 45%, transparent); transform: translate(1px, 1px); box-shadow: 0 4px 10px rgba(0,0,0,.5); /* EYE-NOTES-FIX §3.3(a)(b): radius follows the squircle; the clone shadow brought in tight */
+  background: #050607; /* BLACK DIAMOND: the wash is out — ::before is now the clone layer */
+
+}
+/* EYE-NOTES-FIX 2026-11-17 §3.3 + Amendment #1 (the ultimate bar) + #2 (the
+   right amount of elegance): the slow turning flow around every tile — the
+   orbit from this morning, taken from the hamburger and the brand mark
+   (the same travelling-dot object, never a rotating element, so the glyph
+   stays upright). AMENDMENT #3 (2026-11-17 20:29Z): the filed flow was
+   VERIFIED against the morning orbit and differed in exactly one
+   declaration — it missed background-repeat:no-repeat, so the 9px dot
+   tiled into a dotted band instead of one dot travelling the ring. The
+   no-repeat is restored from the canonical object (hamburger .rail-toggle,
+   brand mark), verbatim. Odd tiles turn clockwise in 120s, even tiles counter in
+   150s, the same pair as the hamburger (120s CW) and the brand mark
+   (150s CCW) — one treatment, congruent on all six. Amendment #2: the
+   flow goes here and NOWHERE else new in this round — the sidebar icons,
+   the sub-tabs, the tab jewels, the top controls and the brand mark
+   already carry it where it belongs; piling it onto more places in this
+   round would be too much in one place. */
+.notif-tile::after{content:""; position:absolute; inset:-6px; z-index:-1; pointer-events:none; border-radius:inherit; border:1px solid color-mix(in srgb, var(--nc) 35%, transparent); background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; padding:2px; animation:orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate;} /* MODEL (blob 9a006c47): the conic comet — a light that follows the line perfectly, 22:48Z. */
+.notif-seg:nth-child(even) .notif-tile::after{animation:naya-orbit-dot-ccw 150s linear infinite;}
+.notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 2px 2px rgba(0,0,0,.7)); position: relative; transition: transform .22s, filter .22s; } /* MODEL: dark-only — the white glows in the middle are gone (22:48Z). */
+.notif-lbl { display: block; font-size: 17px; font-weight: 700; letter-spacing: .08em; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.9); white-space: nowrap; line-height: 1.2; } /* FOLLOW-ON 2026-11-19 (item 3): labels read — 17px bold white, harvested from the Dashboard follow-on (os-followup2-20261119). The 10.5px label was unreadable at 1920 and is gone. */
+.notif-count { position: absolute; top: 4px; right: 4px; min-width: 20px; height: 20px; padding: 0 2px; /* FOLLOW-ON 2026-11-19 (item 3): the ball is 20px with 11px numerals, inset top-right INSIDE the tile, rim-lit in the tile's colour — the Dashboard standard, sized down (ROUND 6) so it clears the glyph: the 26px ball covered the pulse line's rising edge, and its 1.7x landing flare left the tile. */
+  display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
+  font-size: 11px; font-weight: 900; color: #fff; background: radial-gradient(130% 140% at 30% 18%, rgba(255,255,255,.22), #07070b 78%);
+  border: 1.5px solid var(--nc);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 12px color-mix(in srgb, var(--nc) 55%, transparent), 0 3px 8px rgba(0,0,0,.5); } /* 23:11Z notification ball: black obsidian ball, white number, inside the tile, lit around in the tile's own color. */
+@keyframes notifLand { 0% { border-color:#fff; box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 8px 18px rgba(0,0,0,.6), 0 0 0 1px #fff, 0 0 34px #fff, 0 0 50px color-mix(in srgb, var(--nc) 90%, transparent); } 100% { border-color: color-mix(in srgb, var(--nc) 88%, #ffffff); box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 0 0 1px color-mix(in srgb, var(--nc) 30%, transparent), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); } }
+@keyframes notifCountLand { 0% { transform: scale(1.15); } 100% { transform: scale(1); } } /* ROUND 6 2026-11-19 (defect 5): the 1.7x flare put the 26px ball half outside the tile's top edge — the straddle the eye saw. A 1.15x pop stays inside the tile and still reads as a landing. */
+.notif-seg.just-landed .notif-tile { animation: notifLand 1.4s ease-out 1; }
+.notif-seg.just-landed .notif-count { animation: notifCountLand .9s ease-out 1; } /* EYE-NOTES-FIX §3.3(d): the light-up is a once-off — bright and obvious when a notification lands, then it settles to the steady has-news glow. It never blinks forever. */
+.notif-seg.has-news .notif-tile {
+  border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
+  box-shadow: 0 7px 16px rgba(0,0,0,.6), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); /* MODEL: the lit state, verbatim. */
+}
+/* HUB SIDEBARS+PLUS 2026-11-16 — the sixth tile (RIGHT + / CONNECT, Shawn
+   18:58Z): the six 54px tiles + 34px gaps measure 594px at desktop (fits
+   every desktop width) but overflow below 640px. Tiles drop to 46px below
+   640px (Personal's own 400px tile size), so the row measures 378px at
+   401-640px and 312px at <=400px — six tiles on ONE line at 390 (312 <= 390)
+   and at 320 (312 <= 320), nothing cut off, nothing wrapped. SWEEP-3 F4:
+   gap 8px -> 4px and row side padding 14px -> 8px below 400px. Measured,
+   not guessed. */
+@media (max-width:640px){ .notif-row{gap:10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 2px 0;} }
+@media (max-width:400px){ .notif-row{gap:4px;padding:12px 8px 10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 0 0;} }
+/* THE LINE (Personal correction, harvested): the page-wide button shadow's
+   inset top line is restated away on the seg itself. */
+.notif-seg{box-shadow: inset 0 -2px 8px rgba(0,0,0,.25), 0 6px 20px rgba(0,0,0,.4)!important;}
+   Chrome harvested VERBATIM from the Personal correction's .fc-plusmenu
+   (blob 3328238b): fixed, centered on its anchor, own-color hover. */
+.fc-plusmenu{position:fixed;z-index:1700;transform:translateX(-50%);background:#050607;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:8px;min-width:220px;box-shadow:inset 0 -8px 16px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.65),0 0 24px -6px rgba(142,36,170,.45);}
+.fc-plusmenu[hidden]{display:none;}
+/* SWEEP-3 F6: menu labels stay on their harvested scale — tile furniture under the open C5 question (see the count-bubble note above). Not resized on a guess. */
+.fc-plusitem{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;background:#050607;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 3px 8px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:all .18s ease;}
+.fc-plusitem:hover{background:#050607;border-color:var(--mc,#8e24aa);box-shadow:0 0 18px -4px var(--mc,#8e24aa),0 6px 16px rgba(0,0,0,.5),0 10px 22px rgba(0,0,0,.55);transform:translateY(-2px);}
+.fc-plusitem:hover .fc-pi-ico{border-color:var(--mc,#8e24aa);box-shadow:inset 0 2px 3px rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.6),0 0 12px -2px color-mix(in srgb,var(--mc,#8e24aa) 55%,transparent),0 6px 14px rgba(0,0,0,.5);transform:translateY(-2px);} /* 22:48Z hover law: lift + rim, never glow over the icon. */
+.fc-plusitem .fc-pi-ico{color:#fff;flex:none;width:34px;height:34px;display:grid;place-items:center;position:relative;z-index:0;border-radius:10px;background:radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--mc,#8e24aa) 30%, #12121a), #07070b 78%);border:1.5px solid color-mix(in srgb,var(--mc,#8e24aa) 65%,rgba(255,255,255,.25));box-shadow:inset 0 2px 3px rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.6),0 0 12px -2px color-mix(in srgb,var(--mc,#8e24aa) 55%,transparent),0 6px 14px rgba(0,0,0,.5),0 10px 22px rgba(0,0,0,.55);} /* 3D LAW: the ball face. */
+.fc-plusitem .fc-pi-ico svg{width:19px;height:19px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.7));} /* MODEL: dark-only — the white glow in the middle is gone (22:48Z). */
+/* BLACK DIAMOND: clone layer behind every + menu icon chip. */
+.fc-plusitem .fc-pi-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--mc, #8e24aa) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
+.notif-seg:active .notif-tile { transform: translateY(2px) scale(.96); box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.7), 0 3px 8px rgba(0,0,0,.6), 0 0 8px -2px color-mix(in srgb, var(--nc) 40%, transparent); }
+.notif-seg:hover .notif-tile { border-color: color-mix(in srgb, var(--nc) 88%, #ffffff); box-shadow: inset 0 1px 0 rgba(255,255,255,.38), inset 0 -9px 15px rgba(0,0,0,.6), inset 1px 0 0 rgba(255,255,255,.07), 0 7px 16px rgba(0,0,0,.6), 0 12px 28px rgba(0,0,0,.55), 0 0 20px -2px color-mix(in srgb, var(--nc) 55%, transparent); transform: translateY(-2px); }
+.notif-seg:hover .notif-tile::after { border-color: color-mix(in srgb, var(--nc) 80%, transparent); }
+.notif-seg:hover .notif-tile {
+.notif-seg:hover .notif-tile svg { filter: drop-shadow(0 3px 3px rgba(0,0,0,.95)) drop-shadow(0 0 8px var(--nc)) drop-shadow(0 0 3px rgba(255,255,255,.9)); transform: scale(1.06); }
+@keyframes naya-breathe { from { opacity: .55; } to { opacity: 1; } }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+@keyframes naya-orbit-dot-cw{0%{background-position:50% 0}12.5%{background-position:100% 0}25%{background-position:100% 50%}37.5%{background-position:100% 100%}50%{background-position:50% 100%}62.5%{background-position:0 100%}75%{background-position:0 50%}87.5%{background-position:0 0}100%{background-position:50% 0}}
+@keyframes naya-orbit-dot-ccw{0%{background-position:50% 0}12.5%{background-position:0 0}25%{background-position:0 50%}37.5%{background-position:0 100%}50%{background-position:50% 100%}62.5%{background-position:100% 100%}75%{background-position:100% 50%}87.5%{background-position:100% 0}100%{background-position:50% 0}}
+body.os-bottom-hidden .notif-bar{transform:translateY(110%);opacity:0}
+html.nsb-nonav #naya-notif-bar{display:none}
+html.nsb-nonav #naya-notif-bar{display:none}
+@media (min-width:641px){ .notif-row { gap: 24px; } }
+@media (max-width:640px){ .notif-lbl { display: none; } }
+/* DASHBOARD adaptation: ride above the Smart Bar; reserve room for both bars. */
+#naya-notif-bar{bottom:var(--smartbar-h,56px);}
+body.has-notif{padding-bottom:calc(var(--notif-h,124px) + var(--smartbar-h,56px)) !important;}
+</style></head><body>
+<!-- SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 1: STATIC FALLBACK FOR THE UNIVERSAL BAR — the six tiles, static, in the same order and colors NayaNotif builds (harvested verbatim from the Hub static bar; destinations adapted to absolute Dashboard URLs — ADD and ECOSYSTEM land on the Hub, WORLDS on the Space page, CONNECT on Smart Mail). When the script runs, NayaNotif.init() removes this node and builds the live bar in its place. -->
+<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/hub" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="personal" style="--nc:#0f52ba" href="https://nayanet.app/personal" aria-label="PERSONAL — open" title="PERSONAL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">PERSONAL</span></a><a class="notif-seg" data-notif="business" style="--nc:#07925f" href="https://nayanet.app/business" aria-label="BUSINESS — open" title="BUSINESS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">BUSINESS</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plus-connect" style="--nc:#c62828" href="https://nayanet.app/rooms/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
+<div id="dashPlusPost" class="fc-plusmenu" hidden role="menu" aria-label="Post to a feed">
+<a class="fc-plusitem" href="https://nayanet.app/personal#home/post" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span>Post to Personal</a>
+<a class="fc-plusitem" href="https://nayanet.app/business#home/post" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg></span>Post to Business</a>
+<a class="fc-plusitem" href="https://nayanet.app/space#home/post" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg></span>Post to Space</a>
+<a class="fc-plusitem" href="https://nayanet.app/hub" style="--mc:#c2189b"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-20 12 12)"/><circle cx="19.5" cy="8.5" r="1.6" fill="currentColor" stroke="none"/></svg></span>Post to Hub</a>
+</div>
+<div id="dashPlusConnect" class="fc-plusmenu" hidden role="menu" aria-label="Connect">
+<a class="fc-plusitem" href="https://nayanet.app/rooms/mail" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span data-mw-tr="pm">Message</span></a>
+<a class="fc-plusitem" href="https://nayanet.app/rooms/mail" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg></span><span data-mw-tr="pm">Mail</span></a>
+<a class="fc-plusitem" href="https://nayanet.app/rooms/spaces" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span><span data-mw-tr="pm">Create world</span></a>
+</div>
 <!-- 2026-11-01 — Shawn: HERO MODE ON. The constellation layout is correct.
      Fixed the exit paths so you are never trapped. -->
 <!-- 2026-11-01 — Viewport Optimization Law: tiny back button restores full view -->
@@ -22294,4 +22445,129 @@ if (window._demoMode) {
     document.body.appendChild(ind);
   }, 1000);
 }
+</script><script>
+/* ——— SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 1: the universal bar, live on the Dashboard ———
+   NayaNotif, adapted from the Hub's own (same store keys nayanet.notif.*, same counts mapping — PERSONAL the mail count, BUSINESS the activity-unread count, WORLDS the spaces count — same 9+ cap, hidden at 0, has-news when > 0, same just-landed flare). Dashboard adaptations, named: (1) ADD opens the feed-choice menu first, same rule as the Hub; its Hub choice lands on the Hub, where the in-page post composer lives — the composer itself is a Hub change (item 3), not duplicated here. (2) Taps navigate by absolute URL — the Dashboard has no Hub router. (3) The sound toast is dropped — the Dashboard has no toast host; the sound itself is kept. */
+(function () {
+  if (window.NayaNotif) return;
+      var ICONS = {
+        personal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg>', /* SNB-LAYER-BOARDS-ELEVATED item 12: PERSONAL heart, harvested verbatim from the Personal file (FRAME-FIX 2026-11-19 F4). */
+        business: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg>', /* SNB-LAYER-BOARDS-ELEVATED item 12: BUSINESS brief, harvested verbatim from the Personal file (FRAME-FIX 2026-11-19 F4). */
+        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg>',
+        eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
+        plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+        /* EYE-NOTES-FIX §3.3(e): the right + is the same + object as the left — one set with Personal. */
+        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg>' /* FOLLOW-ON 2026-11-19 (item 3): CONNECT is people, not a second + — the people glyph harvested verbatim from the Dashboard follow-on round 2 (blob e91ad3ca, nav line). */
+      };
+  var SEGS = [['plus', 'ADD', '#8e24aa'], ['personal', 'PERSONAL', '#0f52ba'], ['business', 'BUSINESS', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plus-connect', 'CONNECT', '#c62828']]; /* SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 12: the UNIVERSAL bar, harvested verbatim from the Personal file (PERSONAL/index-master-20261105.html, FRAME-FIX 2026-11-19 F4) — MAIL/ACTIVITY out, PERSONAL/BUSINESS in, same order, same colours, same icons. FIX-4 spectrum: left + royal purple, personal sapphire, business emerald, worlds deep gold, grid burnt orange, right + ruby. Never the same twice in a row. */
+  window.NayaNotif = window.NayaNotif || {
+    get(k) { try { return parseInt(localStorage.getItem('nayanet.notif.' + k) || '0', 10) || 0; } catch (e) { return 0; } },
+    set(k, n) { var prev = this.get(k); try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} if ((k === 'mail' || k === 'activity' || k === 'spaces') && n > prev) { this.playSound(); } },
+    bump(k) { this.set(k, this.get(k) + 1); this.refresh(); },
+    soundOn() { try { return localStorage.getItem('nayanet.notif.sound') === '1'; } catch (e) { return false; } },
+    playSound() {
+      if (!this.soundOn()) return false;
+      try {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return false;
+        var ctx = this._audioCtx || (this._audioCtx = new AC());
+        try { if (ctx.state === 'suspended') { ctx.resume(); } } catch (e) {}
+        var t = ctx.currentTime || 0;
+        [[880, 0, 0.5], [659.25, 0.18, 0.7]].forEach(function (n) {
+          var o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'sine'; o.frequency.value = n[0];
+          g.gain.setValueAtTime(0.0001, t + n[1]);
+          g.gain.exponentialRampToValueAtTime(0.12, t + n[1] + 0.03);
+          g.gain.exponentialRampToValueAtTime(0.0001, t + n[1] + n[2]);
+          o.connect(g); g.connect(ctx.destination);
+          o.start(t + n[1]); o.stop(t + n[1] + n[2] + 0.05);
+        });
+        return true;
+      } catch (e) { return false; }
+    },
+    counts() {
+      var unread = 0;
+      try { var seen = this.get('seen.activity'); unread = Math.max(0, ActivityLog.read().length - seen); } catch (e) {}
+      return { mail: this.get('mail'), activity: unread, spaces: this.get('spaces'), personal: this.get('mail'), business: unread };
+    },
+    refresh() {
+      var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+      var c = this.counts();
+      var prev = this._prevCounts || {};
+      bar.querySelectorAll('[data-notif]').forEach(function (seg) {
+        var k = seg.getAttribute('data-notif'), n = c[k] || 0;
+        var bub = seg.querySelector('.notif-count');
+        seg.classList.toggle('has-news', n > 0);
+        if (bub) { bub.textContent = n > 9 ? '9+' : String(n); bub.style.display = n > 0 ? 'flex' : 'none'; }
+        if (n > 0 && prev[k] === 0 && !seg.classList.contains('just-landed')) {
+          seg.classList.add('just-landed');
+          setTimeout(function () { seg.classList.remove('just-landed'); }, 1500);
+        }
+      });
+      this._prevCounts = Object.assign({}, c);
+    },
+    tap(k) {
+      if (k === 'mail') { this.set('mail', 0); location.href = 'https://nayanet.app/rooms/mail'; }
+      else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} location.href = 'https://nayanet.app/hub#/hub/feed-activity'; }
+      else if (k === 'spaces') { this.set('spaces', 0); location.href = 'https://nayanet.app/space'; }
+      else if (k === 'personal') { location.href = 'https://nayanet.app/personal'; }
+      else if (k === 'business') { location.href = 'https://nayanet.app/business'; }
+      else if (k === 'eco') { location.href = 'https://nayanet.app/hub'; }
+      this.refresh();
+    },
+    syncStack() {
+      var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+      var row = bar.querySelector('.notif-row');
+      var h = (row ? row.offsetHeight : bar.offsetHeight) + 1;
+      document.documentElement.style.setProperty('--notif-h', h + 'px');
+      var sb = document.getElementById('nsbBottom');
+      var sh = sb ? sb.offsetHeight : 0;
+      document.documentElement.style.setProperty('--smartbar-h', sh + 'px');
+    },
+    init() {
+      var bar = document.getElementById('naya-notif-bar');
+      if (bar && !bar.hasAttribute('data-static')) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
+      if (bar) bar.remove();
+      var self = this;
+      bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
+      bar.setAttribute('aria-label', 'Notifications');
+      var row = document.createElement('div'); row.className = 'notif-row';
+      SEGS.forEach(function (s) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
+        b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
+        b.setAttribute('aria-label', s[1] + ' — open');
+        b.setAttribute('title', s[1]);
+        b.innerHTML = '<span class="notif-tile">' + (ICONS[s[0]] || ICONS.plus) + '<span class="notif-count">0</span></span><span class="notif-lbl">' + s[1] + '</span>';
+        b.addEventListener('click', function () { if (s[0] === 'plus') { dashToggleMenu('dashPlusPost'); return; } if (s[0] === 'plus-connect') { dashToggleMenu('dashPlusConnect'); return; } self.tap(s[0]); });
+        row.appendChild(b);
+      });
+      bar.appendChild(row); document.body.appendChild(bar);
+      document.body.classList.add('has-notif');
+      window.addEventListener('storage', function () { self.refresh(); });
+      this.refresh();
+      this.syncStack();
+      if (!window.__nayaNotifStackBound) { window.__nayaNotifStackBound = true; window.addEventListener('resize', function () { self.syncStack(); }); }
+    }
+  };
+  function dashCloseMenus() { ['dashPlusPost', 'dashPlusConnect'].forEach(function (id) { var m = document.getElementById(id); if (m) m.hidden = true; }); }
+  function dashToggleMenu(id) {
+    var menu = document.getElementById(id); if (!menu) return;
+    var other = document.getElementById(id === 'dashPlusPost' ? 'dashPlusConnect' : 'dashPlusPost'); if (other) other.hidden = true;
+    if (!menu.hidden) { menu.hidden = true; return; }
+    menu.style.left = '50%'; menu.style.top = '';
+    menu.style.bottom = 'calc(var(--notif-h, 124px) + var(--smartbar-h, 56px) + 12px)';
+    menu.hidden = false;
+  }
+  if (!window.__dashPlusBound) {
+    window.__dashPlusBound = true;
+    document.addEventListener('click', function (e) {
+      if (!e.target || !e.target.closest) return;
+      if (e.target.closest('.fc-plusmenu')) return;
+      if (e.target.closest('[data-notif="plus"], [data-notif="plus-connect"]')) return;
+      dashCloseMenus();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' || e.keyCode === 27) dashCloseMenus(); });
+  }
+  window.NayaNotif.init();
+})();
 </script></body></html>

@@ -6004,6 +6004,7 @@ window.BoardActions = (() => {
         readout.setAttribute('aria-live', 'polite');
         for (let i = 1; i <= 10; i++) {
           const sb = document.createElement('button');
+          sb.classList.add('fc-pick-av'); /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 2: the star button IS the DM-initial element — it carries the fc-pick-av class itself (Shawn: "take the T, put a star in it"), with the real star glyph inside. The row rules below keep its per-row --cc; size/glyph/colour still come from .star-rating (higher specificity), so the orb reads exactly as before. Clicks are safe: DM taps are bound on [data-pc-orb], which star buttons never carry. */
           sb.type = 'button'; sb.textContent = '\u2605';
           sb.setAttribute('aria-label', i + ' star' + (i > 1 ? 's' : ''));
           if (i <= rated) sb.classList.add('on');
@@ -6342,8 +6343,10 @@ function HubView(params) {
      The Intelligent Library is the Hub's library. Smart Growth is invite
      people. Destinations are the rooms that exist: one mail room
      (rooms/mail) and one connections room (rooms/connections) — the
-     separation lives in the sub-tab structure, one set per world; no
-     per-world room URL exists in this file, so none is invented.
+     separation lives in the sub-tab structure, one set per world — and,
+     since the fixup round (2026-11-20), in the per-world scoped URLs
+     (?world=personal / business / world) the sub-tabs carry; the rooms
+     read the scope and title themselves per world.
      ICON NOTE: the registry holds exactly one envelope ('mail'), so the
      three Mail rows share it by function — distinguished by color + label —
      and no two Mail rows ever sit adjacent. Every other sub-tab icon is
@@ -6351,21 +6354,21 @@ function HubView(params) {
      separately) — nothing is added for it. */
   var PERSONAL_SUBS = [
     { label: 'Personal Page', icon: 'home', color: '#0e7490', href: 'https://nayanet.app/personal' },
-    { label: 'Personal Mail', icon: 'mail', color: '#07925f', href: 'https://nayanet.app/rooms/mail', countKey: 'mail' },
+    { label: 'Personal Mail', icon: 'mail', color: '#07925f', href: 'https://nayanet.app/rooms/mail?world=personal', countKey: 'mail-personal' }, /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 5: Personal Mail — its OWN scoped Smart Mail view (?world=personal) with its OWN count key (mail-personal), not the shared mail count. */
     { label: 'Personal DMs', icon: 'connect', color: '#d4a017', href: 'https://nayanet.app/rooms/mail' },
-    { label: 'Personal Lists', icon: 'lists', color: '#c2410c', href: 'https://nayanet.app/lists' } /* SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 7: Personal Connections -> Personal Lists — the Smart Lists area (the lists room, R.ROOMS id 'lists'; public URL nayanet.app/lists). Icon 'lists' is the room's own icon, shared by function like the Mail rows share 'mail'. */
+    { label: 'Personal Lists', icon: 'lists', color: '#c2410c', href: 'https://nayanet.app/lists?world=personal' } /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 4: Personal Lists — its OWN scoped lists view (?world=personal); the lists room titles and scopes itself per world, not the shared room. Icon 'lists' is the room's own icon, shared by function like the Mail rows share 'mail'. */
   ];
   var WORK_SUBS = [
     { label: 'Work Page', icon: 'browser', color: '#07925f', href: 'https://nayanet.app/business' },
-    { label: 'Work Mail', icon: 'mail', color: '#d4a017', href: 'https://nayanet.app/rooms/mail', countKey: 'mail' }, /* SNB-LAYER-BOARDS-ELEVATED item 11: the Business mail entry carries the mail count now — the notification indicator, like Personal Mail. */
+    { label: 'Work Mail', icon: 'mail', color: '#d4a017', href: 'https://nayanet.app/rooms/mail?world=business', countKey: 'mail-business' }, /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 5: Work Mail — its OWN scoped Smart Mail view (?world=business) with its OWN count key (mail-business). */
     { label: 'Work DMs', icon: 'arrow', color: '#c2410c', href: 'https://nayanet.app/rooms/mail' },
-    { label: 'Business Lists', icon: 'lists', color: '#c62828', href: 'https://nayanet.app/lists' } /* SNB-LAYER-BOARDS-ELEVATED item 8: Business Connections -> Business Lists, same Lists area. */
+    { label: 'Business Lists', icon: 'lists', color: '#c62828', href: 'https://nayanet.app/lists?world=business' } /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 4: Business Lists — its OWN scoped lists view (?world=business), not the shared room. */
   ];
   var WORLD_SUBS = [
     { label: 'World Page', icon: 'tabs', color: '#d4a017', href: 'https://nayanet.app/space' },
-    { label: 'World Mail', icon: 'mail', color: '#c2410c', href: 'https://nayanet.app/rooms/mail', countKey: 'mail' }, /* SNB-LAYER-BOARDS-ELEVATED item 11: the World mail entry carries the mail count now. */
+    { label: 'World Mail', icon: 'mail', color: '#c2410c', href: 'https://nayanet.app/rooms/mail?world=world', countKey: 'mail-world' }, /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 5: World Mail — its OWN scoped Smart Mail view (?world=world) with its OWN count key (mail-world). */
     { label: 'World DMs', icon: 'lists', color: '#c62828', href: 'https://nayanet.app/rooms/mail' },
-    { label: 'World Lists', icon: 'lists', color: '#6d28d9', href: 'https://nayanet.app/lists' } /* EYE-NOTES-FIX §3.1: violet — the red/magenta pair read as one purple */ /* SNB-LAYER-BOARDS-ELEVATED item 8: World Connections -> World Lists, same Lists area. */
+    { label: 'World Lists', icon: 'lists', color: '#6d28d9', href: 'https://nayanet.app/lists?world=world' } /* EYE-NOTES-FIX §3.1: violet — the red/magenta pair read as one purple */ /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 4: World Lists — its OWN scoped lists view (?world=world), not the shared room. */
   ];
   var HUB_AREAS = [
     { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#c2189b', href: 'https://nayanet.app/hub',       countKey: 'activity', glyphCls: 'glyph-xl' },
@@ -7281,7 +7284,7 @@ window.NayaNotif = window.NayaNotif || {
         b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
         b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
         b.innerHTML = '<span class="notif-tile">' + (ICONS[s[0]] || ICONS.plus) + '<span class="notif-count">0</span></span><span class="notif-lbl">' + s[1] + '</span>'; /* FOLLOW-ON 2026-11-19 (item 3): the label renders under the tile — the 17px .notif-lbl existed in CSS but no label element was ever emitted, so nothing showed, even on hover. */
-        b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('create', b); return; } if (s[0] === 'plus-connect') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('connect', b); return; } self.tap(s[0]); });
+        b.addEventListener('click', function () { if (s[0] === 'plus') { /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 3: ADD asks WHICH FEED first — Personal / Business / Space / Hub — then posts there (Shawn's order). The create menu (smart note, Naya note, Home) is one tap further, via "More to make" in the feed menu. */ if (window.openPostFeedMenu) window.openPostFeedMenu(); return; } if (s[0] === 'plus-connect') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('connect', b); return; } self.tap(s[0]); });
         row.appendChild(b);
       });
       bar.appendChild(row); document.body.appendChild(bar);
@@ -7316,9 +7319,12 @@ window.NayaNotif = window.NayaNotif || {
      jobs and must never get mixed up. Menu chrome harvested from the
      Personal correction's .fc-plusmenu (blob 3328238b). Destinations:
      CREATE goes where creation lives — the Personal page, whose creator
-     opens in the right mode there (the Hub is output-only by settled law:
-     no capture surface in Hub chrome, so the Hub carries no composer of
-     its own). CONNECT goes to the mail/messenger room (Message, Mail —
+     opens in the right mode there. (Shawn's order, fixup round 2026-11-20,
+     OVERRIDES the output-only law for posts: the Hub now carries its own
+     in-page post composer, NayaHubPostComposer, in the official post-board
+     format — so the Hub choice opens a real place to write, not just the
+     feed. Smart notes keep their own composer; ADD is for posts.)
+     CONNECT goes to the mail/messenger room (Message, Mail —
      one interface) and the Spaces room (Create world — the end-to-end
      create flow itself is a separate owed round, per Shawn 19:00Z). */
   window.hubClosePlusMenus = function () {
@@ -7520,6 +7526,157 @@ window.NayaNotif = window.NayaNotif || {
     return { open: open, close: close };
   })();
 
+  /* ——— SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 3: THE HUB POST COMPOSER ———
+     Shawn's order OVERRIDES the output-only law (the comment above): the Hub
+     carries its own in-page post composer. ADD asks which feed first; the Hub
+     choice opens THIS composer — a real place to WRITE the post, in the official
+     post-board format he locked in: a big board for the framed image/video, a
+     little board for the framed text, ~3-4 sentences at a time, the citizen
+     choosing picture above or below the words. Pattern harvested from
+     NayaHubComposer above (overlay + box + fields + Close); the post itself is
+     saved on this device and logged — the network publish (the post appearing
+     in everyone's Hub feed) is the follow-on, named in the note below, never
+     pretended. "Smart note" stays its own menu item; ADD is for making a POST. */
+  window.NayaHubPostComposer = (function () {
+    var POSTS_KEY = 'nayanet.hub.posts.v1';
+    var overlay = null, formBox = null, previewWrap = null, previewImg = null, previewTxt = null, mediaNote = null;
+    var feed = 'hub';
+    var placement = 'above';
+    var fields = {};
+    var placeBtns = {};
+    function readPosts() { try { var p = JSON.parse(localStorage.getItem(POSTS_KEY) || '[]'); return Array.isArray(p) ? p : []; } catch (e) { return []; } }
+    function writePosts(p) { try { localStorage.setItem(POSTS_KEY, JSON.stringify(p)); } catch (e) {} }
+    function mkField(label, key, placeholder, rows) {
+      var wrap = document.createElement('label');
+      wrap.style.cssText = 'display:block;margin:0 0 14px;font-size:17px;font-weight:700;color:#ffffff;';
+      wrap.textContent = label;
+      var input = rows ? document.createElement('textarea') : document.createElement('input');
+      if (!rows) input.type = 'text';
+      if (rows) input.rows = rows;
+      input.placeholder = placeholder;
+      input.setAttribute('aria-label', label);
+      input.style.cssText = 'display:block;width:100%;box-sizing:border-box;margin-top:8px;background:#050607;border:2px solid rgba(255,255,255,.22);border-radius:12px;color:#ffffff;font-size:17px;line-height:1.5;padding:12px 14px;font-family:inherit;';
+      wrap.appendChild(input);
+      fields[key] = input;
+      return wrap;
+    }
+    function mkBtn(label, color) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      b.className = 'naya-dialog-btn';
+      b.style.setProperty('--glow', color);
+      return b;
+    }
+    function isImageUrl(u) { return /\.(png|jpe?g|gif|webp|avif|svg)(\?.*)?$/i.test(u || ''); }
+    function boardStyle() { return 'background:linear-gradient(135deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 38%), #050607;border:2px solid rgba(255,255,255,.35);border-radius:18px;box-shadow:inset 0 2px 3px rgba(255,255,255,.28), inset 0 -6px 12px rgba(0,0,0,.7), 0 8px 20px rgba(0,0,0,.6);padding:14px 16px;'; }
+    function refreshPreview() {
+      if (!previewWrap) return;
+      var txt = (fields.text.value || '').trim();
+      previewTxt.textContent = txt || 'Your words will show here — a few sentences at a time.';
+      var media = (fields.media.value || '').trim();
+      if (media && isImageUrl(media)) { previewImg.src = media; previewImg.style.display = 'block'; }
+      else { previewImg.style.display = 'none'; previewImg.removeAttribute('src'); }
+      mediaNote.textContent = media ? (isImageUrl(media) ? '' : 'Video or link — framed with the post when it publishes.') : '';
+      previewWrap.style.flexDirection = placement === 'above' ? 'column' : 'column-reverse';
+      placeBtns.above.style.borderColor = placement === 'above' ? '#8e24aa' : 'rgba(255,255,255,.22)';
+      placeBtns.below.style.borderColor = placement === 'below' ? '#8e24aa' : 'rgba(255,255,255,.22)';
+    }
+    function post() {
+      var d = { feed: feed, text: (fields.text.value || '').trim(), media: (fields.media.value || '').trim(), placement: placement, createdAt: new Date().toISOString() };
+      if (!d.text) { toast('WRITE IT FIRST', 'Say it in a few sentences first — then post.', '#d4a017'); fields.text.focus(); return; }
+      var posts = readPosts(); posts.unshift(d); writePosts(posts);
+      if (typeof ActivityLog !== 'undefined') { try { ActivityLog.log('post', 'Posted to the Hub: "' + d.text.slice(0, 80) + '"', 'post', '#8e24aa', '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>'); } catch (e) {} }
+      close();
+      toast('POSTED TO THE HUB', 'Your post is saved on this device and logged. The network publish is the follow-on — it does not appear in everyone\'s feed yet.', '#8e24aa');
+      if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed';
+    }
+    function build() {
+      overlay = document.createElement('div');
+      overlay.id = 'naya-hub-post-composer';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-label', 'Write a post for the Hub');
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.72);padding:20px;overflow-y:auto;';
+      var box = document.createElement('div');
+      box.style.cssText = 'width:min(560px,94vw);max-height:88vh;overflow-y:auto;background:#050607;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px;color:#fff;box-shadow:0 28px 60px rgba(0,0,0,.7);';
+      formBox = document.createElement('div');
+      var head = document.createElement('div');
+      head.textContent = 'Write a post';
+      head.style.cssText = 'font-size:25px;font-weight:800;margin-bottom:6px;color:#ffffff;';
+      var feedLine = document.createElement('div');
+      feedLine.textContent = 'Posting to the Hub — your post, in the official board format.';
+      feedLine.style.cssText = 'font-size:17px;line-height:1.6;color:#ffffff;margin-bottom:14px;';
+      var gateNote = document.createElement('div');
+      gateNote.textContent = 'Your post is written here on the Hub and saved on this device. The network publish — your post appearing in everyone\'s Hub feed — is the follow-on; this file has no publish path yet, so nothing is pretended.';
+      gateNote.style.cssText = 'font-size:17px;line-height:1.6;color:#ffffff;border:2px solid #d4a017;border-radius:12px;padding:12px 14px;margin-bottom:18px;background:#050607;';
+      formBox.appendChild(head);
+      formBox.appendChild(feedLine);
+      formBox.appendChild(gateNote);
+      formBox.appendChild(mkField('Say it — a few sentences', 'text', 'Say it plainly, a few sentences at a time.', 4));
+      formBox.appendChild(mkField('Picture or video — a link, optional', 'media', 'Paste a picture or video link.', 0));
+      var placeLbl = document.createElement('div');
+      placeLbl.textContent = 'The picture goes:';
+      placeLbl.style.cssText = 'font-size:17px;font-weight:700;color:#ffffff;margin:0 0 8px;';
+      formBox.appendChild(placeLbl);
+      var placeRow = document.createElement('div');
+      placeRow.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;';
+      placeBtns.above = mkBtn('Above the words', '#8e24aa');
+      placeBtns.below = mkBtn('Below the words', '#0f52ba');
+      placeBtns.above.addEventListener('click', function () { placement = 'above'; refreshPreview(); });
+      placeBtns.below.addEventListener('click', function () { placement = 'below'; refreshPreview(); });
+      placeRow.appendChild(placeBtns.above);
+      placeRow.appendChild(placeBtns.below);
+      formBox.appendChild(placeRow);
+      var prevLbl = document.createElement('div');
+      prevLbl.textContent = 'How it will look:';
+      prevLbl.style.cssText = 'font-size:17px;font-weight:700;color:#ffffff;margin:0 0 8px;';
+      formBox.appendChild(prevLbl);
+      previewWrap = document.createElement('div');
+      previewWrap.style.cssText = 'display:flex;flex-direction:column;gap:12px;margin-bottom:18px;';
+      var bigBoard = document.createElement('div');
+      bigBoard.style.cssText = boardStyle();
+      previewImg = document.createElement('img');
+      previewImg.style.cssText = 'display:none;width:100%;border-radius:12px;';
+      previewImg.alt = 'Framed picture for this post';
+      mediaNote = document.createElement('div');
+      mediaNote.style.cssText = 'font-size:17px;line-height:1.5;color:#ffffff;';
+      bigBoard.appendChild(previewImg);
+      bigBoard.appendChild(mediaNote);
+      var littleBoard = document.createElement('div');
+      littleBoard.style.cssText = boardStyle();
+      previewTxt = document.createElement('div');
+      previewTxt.style.cssText = 'font-size:17px;line-height:1.6;color:#ffffff;';
+      littleBoard.appendChild(previewTxt);
+      previewWrap.appendChild(bigBoard);
+      previewWrap.appendChild(littleBoard);
+      formBox.appendChild(previewWrap);
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;';
+      var postBtn = mkBtn('Post to the Hub', '#8e24aa');
+      postBtn.addEventListener('click', post);
+      var closeBtn = mkBtn('Close', '#d4a017');
+      closeBtn.addEventListener('click', close);
+      row.appendChild(postBtn);
+      row.appendChild(closeBtn);
+      formBox.appendChild(row);
+      box.appendChild(formBox);
+      overlay.appendChild(box);
+      overlay.addEventListener('click', function (ev) { if (ev.target === overlay) close(); });
+      document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && overlay.style.display !== 'none') close(); });
+      fields.text.addEventListener('input', refreshPreview);
+      fields.media.addEventListener('input', refreshPreview);
+      document.body.appendChild(overlay);
+    }
+    function open(f) {
+      feed = f || 'hub';
+      if (!overlay) build();
+      overlay.style.display = 'flex';
+      refreshPreview();
+      if (fields.text) fields.text.focus();
+    }
+    function close() { if (overlay) overlay.style.display = 'none'; }
+    return { open: open, close: close };
+  })();
   if (!window.__hubPlusBound) {
     window.__hubPlusBound = true;
     document.addEventListener('click', function (e) {
@@ -7537,6 +7694,17 @@ window.NayaNotif = window.NayaNotif || {
         if (it.getAttribute('data-hub-plus') === 'post') {
           window.hubClosePlusMenus();
           if (window.openPostFeedMenu) window.openPostFeedMenu();
+          return;
+        }
+        /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 3: the Hub choice opens the real in-page post composer — a place to WRITE the post, not a landing on the feed. "More to make" opens the create menu (smart note, Naya note, Home) so ADD's old menu is one tap away, not removed. */
+        if (it.getAttribute('data-hub-plus') === 'post-hub') {
+          window.hubClosePlusMenus();
+          if (window.NayaHubPostComposer) window.NayaHubPostComposer.open('hub');
+          return;
+        }
+        if (it.getAttribute('data-hub-plus') === 'more') {
+          window.hubClosePlusMenus();
+          if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('create');
           return;
         }
         /* FOLLOW-UP 16: every + item lands staged. Message opens the
@@ -11162,8 +11330,11 @@ window.HubView = HubView;
 (function(){
   function ListsRoom(){
     const {el}=window.NayaUI,K=window.NayaRoomKit,r=K.room('lists');
+    /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 4: per-world scope. The sidebar's Personal / Business / World Lists entries each carry their own scoped URL (?world=personal / business / world); the room reads it, titles itself for that world, and passes the scope to the list load. The governed list service does not filter by world yet — the scope is carried, titled and passed on, and the device-local saved lists show under the scoped title; a service-side world filter is the follow-on. */
+    var worldScope=null;try{var _wm=(location.search||'').match(/[?&]world=(personal|business|world)/);if(_wm)worldScope=_wm[1];else{var _hm=(location.hash||'').match(/world=(personal|business|world)/);if(_hm)worldScope=_hm[1];}}catch(e){}
+    var worldName=worldScope==='personal'?'Personal':worldScope==='business'?'Business':worldScope==='world'?'World':null;
     const wrap=el('div','room-scene');wrap.style.setProperty('--room-accent',r.accent);
-    const intro=K.board(r.accent,'lists','Action intelligence','Not a generic task manager. Every intelligent item should explain why it is here.');
+    const intro=K.board(r.accent,'lists',worldName?worldName+' Lists':'Action intelligence',worldName?('Your '+worldName.toLowerCase()+' lists — scoped to this world, not the shared room.'):'Not a generic task manager. Every intelligent item should explain why it is here.');
     intro.body.innerHTML='<p style="color:var(--ink-dim);font-size:17px;line-height:1.6;max-width:760px">NOW · NEXT · WAITING · QUESTIONS · IDEAS · OPPORTUNITIES · COMPLETED organize references to canonical intelligence. The list never becomes another intelligence store.</p>';
     wrap.appendChild(intro);
     const zone=el('section','room-scene');wrap.appendChild(zone);
@@ -11181,7 +11352,7 @@ window.HubView = HubView;
           const g = en.category || (en.topics && en.topics[0]) || 'Saved';
           (groups[g] = groups[g] || []).push(en);
         });
-        const sb = K.board(r.accent, 'lists', 'Your Saved Intelligence', 'Everything you saved from the Smart Feed — filed your way.');
+        const sb = K.board(r.accent, 'lists', (worldName ? worldName + ' — ' : '') + 'Your Saved Intelligence', 'Everything you saved from the Smart Feed — filed your way.');
         const board = el('div', 'lane-board');
         Object.keys(groups).forEach(g => {
           const col = el('section', 'lane');
@@ -11230,7 +11401,7 @@ window.HubView = HubView;
         wrap.insertBefore(sb, zone);
       }
     } catch (e) {}
-    K.load(zone,'lists',{view:'mission'},render,{title:'No intelligent lists yet',body:'Lists appear when the governed list service returns canonical references.'});
+    K.load(zone,'lists',{view:'mission',world:worldScope},render,{title:'No intelligent lists yet',body:'Lists appear when the governed list service returns canonical references.'});
     return wrap;
 
     function render(payload,list,out){
@@ -11271,8 +11442,11 @@ window.HubView = HubView;
 (function(){
   function MailRoom(){
     const {el}=window.NayaUI,K=window.NayaRoomKit,r=K.room('mail');
+    /* SNB-LAYER-BOARDS-FIXUP 2026-11-20 item 5: per-world scope. The sidebar's Personal / Work / World Mail entries each carry their own scoped URL (?world=personal / business / world); the room reads it, titles itself for that world, passes the scope to the mail load, and writes the unread total to that world's OWN count key (mail-personal / mail-business / mail-world) as well as the shared 'mail' key. A per-world count is written only when that world's mail is actually opened — no number is invented for a world never visited. */
+    var worldScope=null;try{var _wm=(location.search||'').match(/[?&]world=(personal|business|world)/);if(_wm)worldScope=_wm[1];else{var _hm=(location.hash||'').match(/world=(personal|business|world)/);if(_hm)worldScope=_hm[1];}}catch(e){}
+    var worldName=worldScope==='personal'?'Personal':worldScope==='business'?'Business':worldScope==='world'?'World':null;
     const wrap=el('div','room-scene');wrap.style.setProperty('--room-accent',r.accent);
-    const intro=K.board(r.accent,'mail','Communication intelligence','Meaning and context first. No fake mailbox, ever.');
+    const intro=K.board(r.accent,'mail',worldName?worldName+' Mail':'Communication intelligence',worldName?('Your '+worldName.toLowerCase()+' mailbox — scoped to this world, not the shared room.'):'Meaning and context first. No fake mailbox, ever.');
     intro.body.innerHTML='<p style="color:var(--ink-dim);font-size:17px;line-height:1.6;max-width:760px">The room separates what needs attention from noise and attaches relationship/project context. Drafting is assistance; sending remains a governed consequential action.</p>';
     wrap.appendChild(intro);
     const toolbar=el('div','room-toolbar between');
@@ -11284,7 +11458,7 @@ window.HubView = HubView;
     const zone=el('section','room-scene');wrap.appendChild(zone);refresh('important');return wrap;
 
     function refresh(view){
-      K.load(zone,'mail',{view},(payload,list,out)=>{
+      K.load(zone,'mail',{view,world:worldScope},(payload,list,out)=>{
         /* Notification writer (board audit 2026-10-20): the mail bubble
            counts only what the runtime itself reports — an explicit
            unread total, or items carrying read/unread flags. No signal,
@@ -11296,7 +11470,7 @@ window.HubView = HubView;
           else if (list.some(x => x && ('unread' in x || 'read' in x || 'is_read' in x))) {
             n = list.filter(x => x.unread === true || x.read === false || x.is_read === false).length;
           }
-          if (n !== null && window.NayaNotif) { window.NayaNotif.set('mail', n); window.NayaNotif.refresh(); }
+          if (n !== null && window.NayaNotif) { window.NayaNotif.set('mail', n); if (worldScope) window.NayaNotif.set('mail-' + worldScope, n); window.NayaNotif.refresh(); }
         } catch (e) {}
         const layout=el('div','mail-layout');
         const left=el('section','signal-list');
@@ -14085,9 +14259,11 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
    (FIX1F L2177-L2180 backgrounds, FIX1G L2378-L2379 DM construction) re-asserted
    here, late and !important, in both states — so no earlier washout can re-pink
    them. Values harvested verbatim; opacity/filter (rated lit, unrated dim) untouched.
-   (3) STARS = THE DM ELEMENT, WHOLE. The star buttons already carry the DM
-   initial-orb's construction (.fc-pick-av L821-L822: position, overflow, DM
-   backgrounds, the 7s osOrbFlow wedge); this block adds the DM initial's own
+   (3) STARS = THE DM ELEMENT, WHOLE. FIXUP 2026-11-20: the star buttons now
+   CARRY the DM-initial element's own class (fc-pick-av, added in rankRow) —
+   they ARE the DM element with a star glyph inside, not a copy of its CSS.
+   The row rules below keep the per-row --cc and the DM construction's
+   backgrounds, the 7s osOrbFlow wedge; this block adds the DM initial's own
    glyph weight (900) and, below, the flow's survival under reduced motion. */
 .intel-board .rank-value .star-rating button,
 .intel-board .rank-value .star-rating button.on { background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 50% 50%, color-mix(in srgb, #8e24aa 55%, #101014) 0%, color-mix(in srgb, #8e24aa 28%, #060607) 78%) !important; color: #ffffff !important; border-color: color-mix(in srgb, #8e24aa 80%, white) !important; }
@@ -14928,12 +15104,13 @@ window.NayaSmartBar = {
 <div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-composer="smart-note" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal#home/naya" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
 </div>
-<!-- SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 14: ADD is for making a POST — "Make a post" asks which feed first. Same .fc-plusmenu chrome; icons harvested from this file's Icons registry (heart, brief, spaces, orbit); colours are the worlds' own (Personal sapphire, Business emerald, World gold, Hub #c2189b). Destinations are the feeds' own post routes (Personal's #home/post, harvested; Business/Space follow the same page grammar; Hub is the Hub feed itself — the Hub has no in-page post composer in this file, so the Hub choice lands on the feed where Hub posts live). -->
+<!-- SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 14: ADD is for making a POST — "Make a post" asks which feed first. Same .fc-plusmenu chrome; icons harvested from this file's Icons registry (heart, brief, spaces, orbit); colours are the worlds' own (Personal sapphire, Business emerald, World gold, Hub #c2189b). Destinations are the feeds' own post routes (Personal's #home/post, harvested; Business/Space follow the same page grammar; Hub opens the Hub's own in-page post composer (NayaHubPostComposer — Shawn's order, fixup round 2026-11-20, overrides the output-only law)). -->
 <div id="hubPlusPost" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Post to a feed">
 <div class="fc-plusitem" role="menuitem" data-hub-plus="post-personal" data-hub-href="https://nayanet.app/personal#home/post" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span>Post to Personal</div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="post-business" data-hub-href="https://nayanet.app/business#home/post" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg></span>Post to Business</div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="post-space" data-hub-href="https://nayanet.app/space#home/post" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg></span>Post to Space</div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="post-hub" data-hub-href="#/hub/feed" style="--mc:#c2189b"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-20 12 12)"/><circle cx="19.5" cy="8.5" r="1.6" fill="currentColor" stroke="none"/></svg></span>Post to Hub</div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post-hub" data-hub-post-composer="hub" style="--mc:#c2189b"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-20 12 12)"/><circle cx="19.5" cy="8.5" r="1.6" fill="currentColor" stroke="none"/></svg></span>Post to Hub</div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="more" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>More to make — smart note, Naya note</div>
 </div>
 <div id="hubPlusConnect" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Connect">
 <div class="fc-plusitem" role="menuitem" data-hub-plus="message" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span data-mw-tr="pm">Message</span></div>
