@@ -4,7 +4,7 @@
 
 **NN-20261120-ten-ways-scored-and-ranked-one-recommended · Naya Note · 2026-11-20 ~17:42–17:45 MST**
 
-*Paired Smart Note: SN-pending — Ten Ways, Scored and Ranked, One Recommended (takes the next free number at filing)*
+*Paired Smart Note: SN-4380 — Ten Ways, Scored and Ranked, One Recommended*
 
 **Category:** Law — how options reach him
 
