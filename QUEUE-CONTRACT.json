@@ -1,6 +1,43 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-20T21:48:31Z",
-  "tip": "10c8893066fda4474ae7d37de62e63d142d5a30a",
-  "prs": []
+  "generated_at": "2026-11-21T03:48:41Z",
+  "tip": "89fbe5500b8be32d8add9a47ef7374c1adc59d58",
+  "prs": [
+    {
+      "number": 3498,
+      "title": "Cold retrieve: re-stamp SN-4290 page_hash at live tip 2a0cc3d7 (r7, Family 3 only)",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "2631c2eecad67e7a556ef1c1de5e427f457b519b"
+    },
+    {
+      "number": 3499,
+      "title": "Personal/connection profile followon 20261117",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "b1bf7289f41532838441a37c104432e0a7fffd5b"
+    },
+    {
+      "number": 3501,
+      "title": "Fix Kernel Tests: Hub inline script parse failure + router/sidebar map drift",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "9b646c64c30d89b4aab5ce634b27b2d5cd6ce78d"
+    },
+    {
+      "number": 3503,
+      "title": "docs(brain): learning event 2026-11-20",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "8af3401b2a02069352c550a30ee187f4ab6f872f"
+    }
+  ]
 }
