@@ -1944,14 +1944,17 @@ body.msg-open{overflow:hidden;}
 .action[data-kind="create-world"] { --action-color: #8e24aa; } /* CREATE WORLD 00:05Z: the button is Create World. */
 .action[data-kind="favorite"] { --action-color: #d4a017; }
 .action[data-kind="save"] { --action-color: #0f52ba; }
-.action[data-kind="love"] { --action-color: #8e24aa; }
-.action[data-kind="like"] { --action-color: #c62828; } /* HUB FEED FIX2 2026-11-18 (D8): LIKE is ruby — likes are red. */
-/* Share Intel: light silver, not pink (Shawn 2026-10-20) */
-.action[data-kind="share-intel"] { --action-color: #C7CEDC; }
+.action[data-kind="love"] { --action-color: #c62828; } /* BUTTON-LIGHTUP 2026-11-20 (Shawn ~18:55 MST): LOVE lights ruby red — the red back around it. */
+.action[data-kind="like"] { --action-color: #8e24aa; } /* BUTTON-LIGHTUP 2026-11-20 (Shawn ~18:55 MST): LIKE is royal purple now — the FIX2 ruby is superseded; LOVE is the red one. */
+.action[data-kind="comment"] { --action-color: #0f52ba; } /* BUTTON-LIGHTUP 2026-11-20: COMMENT lights sapphire — that is where you offer intelligence. (No colour before: fell back to purple.) */
+/* Share Intel: emerald green (Shawn 2026-11-20 ~18:55 MST — SHARE lights up green; the 2026-10-20 silver is superseded). */
+.action[data-kind="share-intel"] { --action-color: #07925f; }
 .action[data-kind="naya-voice"] { --action-color: #8e24aa; }
 .action[data-kind="add-intel"] { --action-color: #8e24aa; }
 .action[data-kind="love"].on { border-color: #c62828; background: linear-gradient(135deg,#391019,#09090d); }
-.action[data-kind="like"].on { border-color: #c62828; background: linear-gradient(135deg,#391019,#09090d); } /* HUB FEED FIX2 2026-11-18 (D8): LIKE lights ruby when on, like LOVE. */
+.action[data-kind="like"].on { border-color: #8e24aa; background: linear-gradient(135deg,#2a0a3a,#09090d); } /* BUTTON-LIGHTUP 2026-11-20: LIKE lights purple when on. Dark-royal tint parallels the ruby #391019. */
+.action[data-kind="comment"].on { border-color: #0f52ba; background: linear-gradient(135deg,#0a1e3f,#09090d); } /* BUTTON-LIGHTUP 2026-11-20: COMMENT lights sapphire when on. Dark-sapphire tint parallels the ruby #391019. */
+.action[data-kind="share-intel"].on { border-color: #07925f; background: linear-gradient(135deg,#06281c,#09090d); } /* BUTTON-LIGHTUP 2026-11-20: SHARE lights emerald when on. Dark-emerald tint parallels the ruby #391019. */
 .star-rating {
   display: inline-flex; gap: 4px; align-items: center; padding: 6px;
   border: 2px solid #d4a01788; border-radius: 14px; background: #0b0a0e;
@@ -2059,6 +2062,7 @@ body.msg-open{overflow:hidden;}
   .board-actions { grid-template-columns: 1fr; gap: 10px; }
   .board-actions-left, .board-actions-right { justify-content: stretch; }
   .board-actions-left .action, .board-actions-right .action { flex: 1; }
+  .board-actions-left .action { padding: 12px 12px; } /* BUTTON-LIGHTUP 2026-11-20 item 1: LOVE+LIKE share one row at phone width — with 24px jewel icons the pair measured ~334px against ~326px available at 390px, so the pair spilled past the board; 12px side padding brings the pair to ~292px with room to spare. COMMENT/SHARE padding untouched. */
   .star-rating { width: 100%; justify-content: space-between; }
   .add-intel-row { flex-direction: column; }
 }
@@ -2162,7 +2166,7 @@ body.msg-open{overflow:hidden;}
 .intel-board .rank-intel .star-rating button { background: radial-gradient(circle at 35% 30%, #ffffff, #f2f2f7 45%, #c9c9d6 100%); color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25); box-shadow: inset 0 -8px 14px rgba(0,0,0,.45), 0 0 14px rgba(255,255,255,.5), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); } /* SNB-FIX1F item 7: the white bulb is a BALL now — the inset underside shade the board-scoped rule had dropped is restored, so the white circle has volume, not a flat disc. Purple star centre #8e24aa kept. */
 .intel-board .rank-intel .star-rating button.on { opacity: 1; filter: none; box-shadow: inset 0 -8px 14px rgba(0,0,0,.45), 0 0 20px rgba(255,255,255,.9), 0 0 42px rgba(255,255,255,.4), 0 4px 10px rgba(0,0,0,.55); } /* SNB-FIX1F item 7: lit white bulb keeps its underside shade too — a ball lit, not a flat disc lit. */
 /* Item 5 — love/like count perfectly centered in its tile */
-.intel-board .action-count { display: inline-grid; place-items: center; min-width: 28px; height: 28px; line-height: 1; padding: 0 4px; text-align: center; }
+.intel-board .action-count { display: inline-grid; place-items: center; min-width: 28px; height: 22px; line-height: 1; padding: 0 4px; text-align: center; } /* BUTTON-LIGHTUP 2026-11-20 item 2: tile 28px -> 22px — the 28px tile (32px with its 2px rim) stood taller than the button's 25px minimum content box, so the primo overflow:hidden clipped the digit's foot; at 22px the tile sits whole inside the button and the zero reads complete. Centering and line-height:1 untouched. */
 /* Item 6 — Comment dead center (center column holds it); Share keeps the right corner */
 .intel-board .board-actions-center .action[data-kind="comment"] { margin: 0 auto; }
 /* Item 7 — comment panel centered; input lit white at rest, purple on hover/click; four buttons one line */
@@ -2414,8 +2418,8 @@ body.msg-open{overflow:hidden;}
    count is a real zero; an unrated star row still shows its state). */
 .action-count { background: #050607; border: 2px solid var(--action-color, #8e24aa); border-radius: 8px; box-shadow: 0 0 14px rgba(0,0,0,.6), 0 0 12px var(--action-color, #8e24aa); color: #ffffff; }
 /* The heart as a real jewel you can press; the stars as real gold. */
-.board-actions .action[data-kind="love"], .board-actions .action[data-kind="like"] { background: linear-gradient(145deg, color-mix(in srgb, var(--action-color) 32%, #050607), #050607 60%); border-color: var(--action-color); box-shadow: inset 0 1px rgba(255,255,255,.22), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 22px var(--action-color), 0 10px 24px rgba(0,0,0,.6); }
-.board-actions .action[data-kind="love"]:hover, .board-actions .action[data-kind="like"]:hover { box-shadow: inset 0 0 0 1.5px var(--action-color), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 36px var(--action-color), 0 14px 36px rgba(0,0,0,.65); }
+.board-actions .action[data-kind="love"], .board-actions .action[data-kind="like"], .board-actions .action[data-kind="comment"], .board-actions .action[data-kind="share-intel"] { background: linear-gradient(145deg, color-mix(in srgb, var(--action-color) 32%, #050607), #050607 60%); border-color: var(--action-color); box-shadow: inset 0 1px rgba(255,255,255,.22), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 22px var(--action-color), 0 10px 24px rgba(0,0,0,.6); }
+.board-actions .action[data-kind="love"]:hover, .board-actions .action[data-kind="like"]:hover, .board-actions .action[data-kind="comment"]:hover, .board-actions .action[data-kind="share-intel"]:hover { box-shadow: inset 0 0 0 1.5px var(--action-color), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 36px var(--action-color), 0 14px 36px rgba(0,0,0,.65); }
 .star-rating { border-color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(142,36,170,.35); }
 .star-rating button.on { background: radial-gradient(circle at 35% 30%, #ffffff, #8e24aa 55%, #050607); color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(255,255,255,.85); border-color: #8e24aa; }
 /* ——— END SMART NOTE FORMAT (2026-11-17) ——— */
@@ -2496,11 +2500,15 @@ body.msg-open{overflow:hidden;}
      flex rule (<=700px) so ten orbs still fit 390px. */
   .star-rating button { width: 40px; height: 40px; flex: 0 0 auto; }
 }
-.love-heart { display: inline-flex; width: 20px; height: 20px; vertical-align: -4px; margin-right: 2px; }
+.love-heart { display: inline-flex; width: 24px; height: 24px; vertical-align: -4px; margin-right: 2px; position: relative; } /* BUTTON-LIGHTUP 2026-11-20 item 2: jewel 20px -> 24px, more prominent. */
 .love-heart svg {
-  width: 20px; height: 20px; display: block;
+  width: 24px; height: 24px; display: block;
   filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(198,40,40,.45));
 }
+/* BUTTON-LIGHTUP 2026-11-20 item 2: the facet — harvested from .star-rating button::before (emblem law): a 135deg top-left light facet over the jewel, so the heart / thumb / bubble read as cut gems, not flat glyphs. Each jewel glows in its own colour (love ruby by default above; like purple, comment sapphire below). */
+.love-heart::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(135deg, rgba(255,255,255,.32) 0%, rgba(255,255,255,0) 38%); pointer-events: none; }
+.action[data-kind="like"] .love-heart svg { filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(142,36,170,.45)); }
+.action[data-kind="comment"] .love-heart svg { filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)) drop-shadow(0 0 6px rgba(15,82,186,.45)); }
 /* ——— END SMART NOTE NUTSHELL-CLIP FIX ——— */
 /* ——— ROUND 2f (2026-11-18): Hub live-feedback items ———
    (1) top pills hover rim-only · (4) rank rows centred, labels lit in their
@@ -5870,9 +5878,10 @@ window.BoardActions = (() => {
 
     if (!isPersonal) {
     /* HUB FEED FIX2 2026-11-18 (D8): LIKE is back, beside LOVE — the
-       2026-11-17 "Like is gone" note is superseded by this round. LIKE is a
-       ruby thumb jewel (the standard thumb_up glyph, the same ruby gradient
-       as the LOVE heart); LOVE keeps its ruby heart. Both toggle
+       2026-11-17 "Like is gone" note is superseded by this round.
+       BUTTON-LIGHTUP 2026-11-20 (Shawn ~18:55 MST): the colours swap —
+       LOVE keeps the ruby heart, LIKE takes the royal-purple thumb (the
+       same purple gradient the heart used to carry). Both toggle
        device-locally, with their own count badge. */
     for (const [label, kind, aria] of [['\u2764\uFE0F LOVE', 'love', 'Love this intelligence'], ['LIKE', 'like', 'Like this intelligence']]) {
       const b = btn(label, kind, aria);
@@ -5887,9 +5896,9 @@ window.BoardActions = (() => {
          badge (digit tile) is appended after, untouched. */
       var loveGradId = (kind === 'like' ? 'likeThumb-' : 'loveHeart-') + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-');
       if (kind === 'like') {
-        b.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="' + loveGradId + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#e5484d"/><stop offset="75%" stop-color="#c62828"/><stop offset="100%" stop-color="#7a0e18"/></radialGradient></defs><path fill="url(#' + loveGradId + ')" d="M2 21h4V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg></span><span> LIKE</span>';
+        b.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="' + loveGradId + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#d8b4fe"/><stop offset="75%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4a0a5e"/></radialGradient></defs><path fill="url(#' + loveGradId + ')" d="M2 21h4V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg></span><span> LIKE</span>';
       } else {
-        b.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="' + loveGradId + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#d8b4fe"/><stop offset="75%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4a0a5e"/></radialGradient></defs><path fill="url(#' + loveGradId + ')" d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span><span> LOVE</span>';
+        b.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="' + loveGradId + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#e5484d"/><stop offset="75%" stop-color="#c62828"/><stop offset="100%" stop-color="#7a0e18"/></radialGradient></defs><path fill="url(#' + loveGradId + ')" d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span><span> LOVE</span>';
       }
       const key = boardId + ':' + kind;
       const countKey = boardId + ':' + kind + ':count';
@@ -5916,7 +5925,7 @@ window.BoardActions = (() => {
             headline: (kind === 'like' ? 'Liked "' : 'Loved "') + title + '"',
             narrative: 'This intelligence resonated deeply. It is now part of your signal.',
             meta: 'you · just now',
-            color: kind === 'like' ? '#c62828' : '#8e24aa',
+            color: kind === 'like' ? '#8e24aa' : '#c62828',
             iconPath: ipath, ts: Date.now()
           };
           const items = ActivityLog.read(); items.unshift(entry);
@@ -5930,7 +5939,7 @@ window.BoardActions = (() => {
           board.classList.add('flash');
         }
         toast('INTELLIGENCE STATE CHANGED', kind.toUpperCase() + ' is now ' + (next ? 'ACTIVE' : 'REMOVED') + ' on this device.',
-          kind === 'like' ? '#c62828' : '#8e24aa');
+          kind === 'like' ? '#8e24aa' : '#c62828');
       });
       left.appendChild(b);
     }
@@ -6009,6 +6018,8 @@ window.BoardActions = (() => {
     /* Share only on collective feed — not personal/activity (Shawn 2026-10-03) */
     const showShare = !lens || lens === 'collective';
     const share = showShare ? btn('\uFF0B SHARE INTEL', 'share-intel', 'Share this intelligence') : null;
+    /* BUTTON-LIGHTUP 2026-11-20 item 2: the bare \uFF0B becomes a jewel — the file's own .pj-jewel tile in the button's own emerald #07925f, carrying the same \uFF0B the button always used. No new glyph: the jewel housing is the harvested part, the mark is the button's own. */
+    if (share) share.innerHTML = '<span class="pj-jewel" style="--jewel:#07925f">\uFF0B</span><span> SHARE INTEL</span>';
     if (share) share.addEventListener('click', e => {
       e.stopPropagation();
       // Use note-specific share URL for beautiful OG preview (not generic Hub URL)
@@ -6041,6 +6052,8 @@ window.BoardActions = (() => {
        this row (addIntel) — nothing new is invented, the fold is the
        experience. */
     const commentBtn = btn('\uD83D\uDCAC COMMENT', 'comment', 'Show or hide the comment box');
+    /* BUTTON-LIGHTUP 2026-11-20 item 2: the flat \uD83D\uDCAC emoji becomes a sapphire jewel bubble — the message-circle path harvested from this file's own plus-menu Message item, filled with the same radial-gradient construction as the LOVE heart / LIKE thumb (white top-light at 35%/30%, sapphire #0f52ba; light stop #93c5fd harvested from the intel star .on), per-card gradient id like loveGradId. The emoji never renders. */
+    commentBtn.innerHTML = '<span class="love-heart"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="commentBubble-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-') + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="35%" stop-color="#93c5fd"/><stop offset="75%" stop-color="#0f52ba"/><stop offset="100%" stop-color="#050607"/></radialGradient></defs><path fill="url(#commentBubble-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-') + ')" d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span> COMMENT</span>';
     commentBtn.setAttribute('aria-expanded', 'false');
     commentBtn.addEventListener('click', e => {
       e.stopPropagation();
