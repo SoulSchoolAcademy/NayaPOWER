@@ -1,0 +1,24 @@
+--- a/PRICING wireLetter IIFE (raw)
++++ b/about-skills.html skills wireLetter IIFE
+@@ -1,8 +1,8 @@
+ (function(){
+-    var beats=document.querySelectorAll('#letterBody .letter-beat');
+-    var dots=document.querySelectorAll('#letterDots .ldot');
+-    var ctl=document.getElementById('letterControls'),sign=document.getElementById('letterSign');
+-    var next=document.getElementById('letterNext'),all=document.getElementById('letterAll'),idx=1;
++    var beats=document.querySelectorAll('#skillsBody .letter-beat');
++    var dots=document.querySelectorAll('#skillsDots .ldot');
++    var ctl=document.getElementById('skillsControls'),sign=document.getElementById('skillsSign');
++    var next=document.getElementById('skillsNext'),all=document.getElementById('skillsAll'),idx=1;
+     function scrollBehavior(){return window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth';}
+     function show(n){var b=beats[n];if(!b)return;b.hidden=false;b.classList.add('reveal');if(dots[n])dots[n].classList.add('on');}
+     function ensureBeatVisible(b){
+@@ -13,7 +13,7 @@
+       }
+     }
+     function bringButtonIntoView(){
+-      var btn=document.getElementById('letterStart');
++      var btn=document.getElementById('skillsSign');
+       if(!btn)return;
+       var doScroll=function(){btn.scrollIntoView({behavior:scrollBehavior(),block:'center',inline:'nearest'});};
+       if(window.requestAnimationFrame)window.requestAnimationFrame(doScroll);else doScroll();

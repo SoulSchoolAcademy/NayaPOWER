@@ -1,0 +1,329 @@
+/* PRICING HARVEST — the Skills slideshow presentation, taken literally from
+   PRICING/pricing-live.html (blob a2d06d5bb43199139f400e1688079f1b40a1b8fa,
+   11,350,562 B, sha256 7a0b837c481f5dfc...). Rules kept: 112 of 728 top-level rules. Verbatim except the §2.3
+   adaptations listed in the build log (font-size <17px -> 17px, the same
+   adaptation the agreement made to this same grammar). Classes used by
+   the Skills section only; no pricing body/chart/chooser code rides along. */
+:root{color-scheme:dark;--ink:#fff;--soft:#e8e8ec;--purple:#8e24aa;--ease:cubic-bezier(.22,1,.36,1)}
+/* === VERBATIM: .ph-card — Dashboard fix-9 lines 2018-2025 + 2074-2075 === */#skillsSlideshow .ph-card{background:linear-gradient(180deg,#07070b,#050607);
+  border:2px solid rgba(255,255,255,.16);border-radius:20px;padding:28px;margin-bottom:20px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5);
+  transition:all .25s;}
+#skillsSlideshow .ph-card:hover{border-color:rgba(207,192,154,.6);transform:translateY(-4px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(207,192,154,.25);}
+#skillsSlideshow .ph-card h3{font-size:18px;margin:0 0 12px;color:#fff;}
+#skillsSlideshow .ph-card p{font-size:17px;color:#E8E8EC;margin:0 0 14px;line-height:1.65;}
+#skillsSlideshow .ph-card{--ac:#cfc09a;}
+#skillsSlideshow .ph-card:hover{border-color:var(--ac);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px var(--ac);}
+/* === VERBATIM: .os-jewel — Dashboard fix-9 lines 3916-3923 === */#skillsSlideshow .os-jewel{--jc:#cfc09a;display:inline-grid;place-items:center;flex:none;line-height:1;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);border-radius:9px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
+/* TIER JEWEL FAMILY (round 17) — one family, exclusive glyphs: every tier jewel is the SAME .os-jewel
+   (same box, faceted lit treatment, rim + glow in the tier colour); only the glyph and its colour differ.
+   The glyphs render at different natural sizes, so each glyph is scaled to the same visual mass —
+   the spark and the outline spark sit larger, the crown a touch larger, the star as-is — so side by side
+   they read as siblings, never two icon sets mixed together. The scale is relative, so the family holds
+   at both jewel sizes (md in headers/cards/chooser/detail, sm in the popup levels + calculator). */#skillsSlideshow .os-jewel.tj-sparko{font-size:1.32em}
+#skillsSlideshow .os-jewel.tj-spark{font-size:1.30em}
+#skillsSlideshow .os-jewel.tj-star{font-size:1.02em}
+#skillsSlideshow .os-jewel.tj-crown{font-size:1.20em}
+/* === VERBATIM: .ib-card-orb — Hub lines 2641-2665 === */#skillsSlideshow .ib-card-orb {
+  width: 42px; height: 42px; flex: none; border-radius:50%; position:relative;
+  background:
+    radial-gradient(circle at 34% 26%, #ffffff 0%, rgba(255,255,255,.85) 10%, rgba(255,255,255,.28) 22%, transparent 38%),
+    radial-gradient(circle at 50% 60%, rgba(255,255,255,.22) 0%, transparent 48%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 88%, #fff) 28%, color-mix(in srgb, var(--oc) 72%, #000) 68%, #050507 100%);
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.55),
+    inset 0 8px 16px rgba(255,255,255,.22),
+    inset 0 -10px 20px rgba(0,0,0,.55),
+    0 0 22px rgba(var(--oc-rgb),.9),
+    0 0 55px -8px rgba(var(--oc-rgb),.6),
+    0 14px 30px rgba(0,0,0,.6);
+}
+#skillsSlideshow .ib-card-orb::after{content:"";position:absolute;left:12%;right:12%;bottom:-13px;height:9px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.75),transparent 70%)}
+#skillsSlideshow .ib-card-orb.reading { animation: ib-orb-flow 2.8s ease-in-out infinite !important; }
+/* === VERBATIM: .primo — Hub lines 689-698, harvested from factory.css (NAYA-BTN-005) === */#skillsSlideshow .primo { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 800; font-size:17px; letter-spacing: .08em; color: #F8F7FB; padding: 16px 32px; border-radius: 999px; border: 1.5px solid rgba(248,247,251,.9);
+  background: linear-gradient(180deg, #1a1a22 0%, #0a0a0f 45%, #050507 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 2px 6px rgba(255,255,255,.15), inset 0 -8px 16px rgba(0,0,0,.8), 0 0 24px rgba(248,247,251,.45), 0 0 48px rgba(248,247,251,.15), 0 12px 32px rgba(0,0,0,.65);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease); --glow: var(--purple); position: relative; overflow: hidden; font-family:inherit}
+#skillsSlideshow .primo::before { content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,.18) 50%, transparent 60%); transform:translateX(-100%); animation:primo-sheen 3.5s ease-in-out infinite; pointer-events:none; }
+#skillsSlideshow .primo:hover { transform: translateY(-2px); border-color: var(--glow); box-shadow: inset 0 0 0 1.5px var(--glow), inset 0 2px 5px rgba(255,255,255,.28), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 36px var(--glow), 0 14px 36px rgba(0,0,0,.65); }
+#skillsSlideshow .primo:active { transform: translateY(1px) scale(.985); }
+#skillsSlideshow .primo.theme-purple { --glow: var(--purple); }
+#skillsSlideshow .letter-body{max-width:620px;margin:24px auto 0;position:relative;z-index:2}
+#skillsSlideshow .letter-beat{font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.62;color:#ffffff;margin:0 0 17px}
+#skillsSlideshow .letter-beat.lead{font-size:clamp(25px,3.6vw,34px);line-height:1.28;color:#fff}
+#skillsSlideshow .letter-beat.final{font-size:21px;letter-spacing:.02em}
+#skillsSlideshow .letter-beat.reveal, #skillsSlideshow .letter-sign.reveal{animation:letter-in .7s var(--ease)}
+@keyframes letter-in{from{opacity:0;transform:translateY(10px)}}
+#skillsSlideshow .letter-controls{margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:13px;position:relative;z-index:2}
+#skillsSlideshow .letter-controls[hidden]{display:none}
+#skillsSlideshow .letter-dots{display:flex;gap:8px}
+#skillsSlideshow .ldot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35)}
+#skillsSlideshow .ldot.on{background:var(--dc,#8e24aa);border-color:var(--dc,#8e24aa);box-shadow:0 0 10px var(--dc,rgba(142,36,170,.9))}
+#skillsSlideshow .letter-next{padding:13px 30px;font-size:17px}
+#skillsSlideshow .letter-all{background:none;border:none;font-family:inherit;font-size:17px;font-weight:700;color:#e8e8ec;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 8px}
+#skillsSlideshow .letter-all:hover{color:#fff}
+#skillsSlideshow .letter-sign{margin-top:26px;position:relative;z-index:2}
+/* === ROYAL UNFOLDING (new words) — each beat is its own ELEVATED obsidian
+   block: real depth, top-left light, rim + glow in the section colour
+   (the digit law: beat N wears digit N's colour — 1 red, 2 orange, 3 gold, 4 emerald, 5 cyan, 6 indigo, 7 royal purple, 8 lavender, 9 hot pink, then the cycle repeats). The bullet points are the
+   living orbs (NAYA-ORB-002 + .ib-card-orb, harvested verbatim from the Hub, below). === */#skillsSlideshow .letter-beat[hidden]{display:none}
+#skillsSlideshow .letter-beat.lb{--bc:#8e24aa;background:linear-gradient(165deg,#12121c 0%,#07070c 55%,#030304 100%);
+  border:1.5px solid var(--bc);border-radius:18px;padding:26px 30px;margin:0 auto 18px;max-width:640px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -12px 24px rgba(0,0,0,.55),inset 1px 0 0 rgba(255,255,255,.05),
+  0 20px 42px rgba(0,0,0,.6),0 0 36px -8px var(--bc);
+  font-family:Outfit,system-ui,sans-serif;text-align:center}
+#skillsSlideshow .letter-beat.lb p{font-family:Marcellus,Georgia,serif;font-size:17.5px;line-height:1.62;color:#f4f4f8;margin:0 0 12px}
+#skillsSlideshow .letter-beat.lb p:last-child{margin-bottom:0}
+#skillsSlideshow .letter-beat.lb .lb-big{font-size:20px;color:#fff;line-height:1.5}
+#skillsSlideshow .letter-beat.lb.lead .lb-big{font-size:clamp(21px,3vw,26px)}
+#skillsSlideshow .lb-h{display:flex;align-items:center;justify-content:center;gap:12px;font-family:Marcellus,Georgia,serif;
+  font-size:clamp(21px,3vw,29px)!important;line-height:1.22;color:#fff;margin:0 0 16px!important;letter-spacing:.03em}
+#skillsSlideshow .lb-h .os-jewel{flex:none}
+#skillsSlideshow .lb .stone-white.lb-jewel{vertical-align:-4px}
+/* === ORBS — NAYA-ORB-002 + .ib-card-orb, harvested VERBATIM from the Hub
+   (index-2-fixed-v2.html lines 2602-2669 — the Smart Factory orb). The
+   letter's bullet points are these living orbs now: the ::before ring of
+   light circles each one (orb-spin), the core breathes (orb-breathe), the
+   .playing state flows (ib-orb-flow). Colour per position comes only from
+   --oc / --oc-rgb — the digit law: 1 red, 2 orange, 3 gold, 4 emerald,
+   5 cyan, 6 indigo, 7 royal purple, 8 lavender, 9 hot pink, cycling. === */#skillsSlideshow .orb { --oc: #8e24aa; --oc-rgb: 142,36,170; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+#skillsSlideshow .orb::before { /* the orbit — a ring of light circling the orb */
+  content: ""; position: absolute; inset: -14px; border-radius: 50%; z-index: 2;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 180deg, var(--oc) 270deg, #ffffff 320deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 10px;
+  animation: orb-spin 2.5s linear infinite; opacity: 1; pointer-events: none;
+  filter: drop-shadow(0 0 16px var(--oc)) drop-shadow(0 0 6px #fff);
+}
+#skillsSlideshow .orb::after { /* light pool beneath */
+  content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none;
+}
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+/* ——— Card-slot orb (Shawn 2026-10-20): 42px; ring hugs at -4px; core
+   pushed bright and vivid — "more light and life". */#skillsSlideshow .ib-card-orb {
+  width: 42px; height: 42px; flex: none; margin: 1px 0 0 18px;
+  background:
+    radial-gradient(circle at 34% 26%, #ffffff 0%, rgba(255,255,255,.85) 10%, rgba(255,255,255,.28) 22%, transparent 38%),
+    radial-gradient(circle at 50% 60%, rgba(255,255,255,.22) 0%, transparent 48%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 88%, #fff) 28%, color-mix(in srgb, var(--oc) 72%, #000) 68%, #050507 100%);
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.55),
+    inset 0 8px 16px rgba(255,255,255,.22),
+    inset 0 -10px 20px rgba(0,0,0,.55),
+    0 0 22px rgba(var(--oc-rgb),.9),
+    0 0 55px -8px rgba(var(--oc-rgb),.6),
+    0 14px 30px rgba(0,0,0,.6);
+}
+#skillsSlideshow .ib-card-orb::before {
+  inset: -4px; padding: 3px;
+  filter: drop-shadow(0 0 20px var(--oc)) drop-shadow(0 0 8px #fff);
+}
+#skillsSlideshow .ib-card-orb::after { bottom: -18px; height: 16px;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.55), transparent 70%); }
+/* — Playback states (NayaVoice contract, Shawn 2026-10-20): the orb flows
+   while she prepares her reading and while she speaks. */#skillsSlideshow .ib-card-orb.playing { animation: ib-orb-flow 1.6s ease-in-out infinite !important; }
+#skillsSlideshow .ib-card-orb.reading { animation: ib-orb-flow 2.8s ease-in-out infinite !important; }
+/* Letter slots — placement only: the Hub card margin (18px, card-header
+   alignment) does not apply inside a list; the in-text orb is sized to sit
+   inside a line of letter text. The component above is untouched. */#skillsSlideshow .jlist .ib-card-orb.lb-orb{margin:0}
+#skillsSlideshow .letter .jlist .ib-card-orb.lb-orb{margin-top:calc((1.45em - 11px)/2)}
+/* === LETTER GEMS — the letter's orb bullets refined (Shawn 2026-11-09):
+   the full-size Hub orb above stays untouched for its other homes; inside
+   the letter the same living orb is cut down to a gem stud — 11px core,
+   every digit colour deepened toward its jewel (the colour still comes
+   only from --oc / --oc-rgb, so the digit law per position is unchanged:
+   1 ruby, 2 amber, 3 dark gold, 4 emerald, 5 sapphire, 6 indigo,
+   7 royal purple, 8 plum, 9 magenta). The halo stays a jewel's glow, not a
+   light bulb's; the light pool is gone. The core is lit from within —
+   near-full colour at its heart, deepening to the rim — so the stone
+   reads luminous, never flat, never a glossy ball.
+   Life: the ::before arc genuinely CIRCLES — a short bright arc with a
+   white-hot head sweeping the ring on orb-spin — a real .orb-ring child
+   element circles with it carrying the glint dot, while the core keeps
+   its orb-breathe. The small facet glint at 34%/26% is the diamond cut. === */#skillsSlideshow .letter .ib-card-orb.lb-orb, #skillsSlideshow .letter .ib-card-orb.lb-orb-in{
+  width:11px;height:11px;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.38) 15%, transparent 36%),
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--oc) 88%, #fff) 0%, var(--oc) 42%, color-mix(in srgb, var(--oc) 62%, #000) 78%, color-mix(in srgb, var(--oc) 38%, #000) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.50),
+    inset 0 2px 3px rgba(255,255,255,.28),
+    inset 0 -3px 5px rgba(0,0,0,.55),
+    0 0 9px rgba(var(--oc-rgb),.65),
+    0 0 22px -4px rgba(var(--oc-rgb),.45),
+    0 1px 3px rgba(0,0,0,.65);
+}
+/* The orbiting satellite — a REAL element riding the ring: .orb-ring is a
+   live child of the orb carrying orb-spin, so the circling is a true
+   change of position over time, not a scale — the white-hot glint dot
+   (.orb-dot) travels the ring at its edge, on the same 3s period as the
+   ::before arc, seated at the arc's bright head. */#skillsSlideshow .letter .orb-ring{position:absolute;inset:-3px;border-radius:50%;z-index:2;pointer-events:none;animation:orb-spin 3s linear infinite}
+#skillsSlideshow .letter .orb-dot{position:absolute;top:0;left:50%;width:2.5px;height:2.5px;margin:-1.25px 0 0 -1.25px;border-radius:50%;background:#fff;box-shadow:0 0 4px 1px rgba(var(--oc-rgb),.95),0 0 2px #fff}
+@media(prefers-reduced-motion:reduce){
+#skillsSlideshow .letter .orb-ring{animation:none!important}
+}
+#skillsSlideshow .letter .ib-card-orb.lb-orb::before, #skillsSlideshow .letter .ib-card-orb.lb-orb-in::before{
+  inset:-3px;padding:1.5px;
+  background:conic-gradient(from 0deg, transparent 0deg, transparent 195deg, color-mix(in srgb, var(--oc) 72%, #000) 262deg, #ffffff 324deg, transparent 360deg);
+  filter:drop-shadow(0 0 2.5px rgba(var(--oc-rgb),.55));
+  animation:orb-spin 3s linear infinite;
+}
+#skillsSlideshow .letter .ib-card-orb.lb-orb::after, #skillsSlideshow .letter .ib-card-orb.lb-orb-in::after{display:none}
+#skillsSlideshow .letter .ib-card-orb.lb-orb-in{vertical-align:middle;top:-0.12em;margin:0 0 0 3px}
+@media(max-width:640px){
+#skillsSlideshow .letter-beat.lb{padding:21px 17px;border-radius:15px}
+#skillsSlideshow .letter-beat.lb p{font-size:17px}
+#skillsSlideshow .letter-beat.lb .lb-big{font-size:18px}
+}
+@media(max-width:640px){
+#skillsSlideshow .letter-body{margin-top:19px}
+#skillsSlideshow .letter-beat{font-size:17px;line-height:1.58;margin-bottom:14px}
+#skillsSlideshow .letter-beat.lead{font-size:24px}
+#skillsSlideshow .letter-beat.final{font-size:18px}
+#skillsSlideshow .letter-next{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+#skillsSlideshow .letter-frame-light, #skillsSlideshow .letter-seal::after, #skillsSlideshow .letter-beat.reveal, #skillsSlideshow .letter-sign.reveal{animation:none!important}
+#skillsSlideshow .orb, #skillsSlideshow .orb::before, #skillsSlideshow .ib-card-orb.playing, #skillsSlideshow .ib-card-orb.reading{animation:none!important}
+}
+#skillsSlideshow .chart-head .ph-card, #skillsSlideshow .chart-row .ph-card{margin-bottom:0}
+#skillsSlideshow .ph-card.plan-block:hover{border-color:var(--pc);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px var(--pc);transform:translateY(-4px)}
+@media(prefers-reduced-motion:reduce){
+#skillsSlideshow .ib-card-orb.reading, #skillsSlideshow .primo::before{animation:none!important}
+#skillsSlideshow .ph-card, #skillsSlideshow .primo{transition:none}
+}
+/* v72 P6 — the intro card carries her face, same size/rim as the story boards (108px desktop, 62px phone), on the left. */#skillsSlideshow .hired.has-face .board-face{float:left;margin:4px 26px 14px 0}
+@media(max-width:640px){
+#skillsSlideshow .hired.has-face .board-face{width:62px;height:62px;margin:2px 14px 10px 0}
+}
+#skillsSlideshow .calc-story-card{display:block;padding:28px 30px 26px;margin-bottom:0;border-radius:18px}
+#skillsSlideshow .board-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
+#skillsSlideshow .board-head .os-jewel{margin-top:2px}
+#skillsSlideshow .board-text{min-width:0}
+#skillsSlideshow .board-title{font-family:Marcellus,Georgia,serif;font-size:clamp(22px,2.6vw,28px);line-height:1.12;font-weight:400;color:#fff;margin:0}
+#skillsSlideshow .board-sub{font-size:17px;line-height:1.35;font-weight:700;color:var(--ac);margin:6px 0 0;letter-spacing:.01em}
+#skillsSlideshow .board-nut{margin:0;font-size:17px;line-height:1.7;color:#e8e8ec;font-weight:400;max-width:72ch}
+#skillsSlideshow .board-nut strong{color:#fff;font-weight:700}
+/* === NAYA SPEAKS THE BOARDS — her face beside the words, LEFT on odd boards,
+   RIGHT on even, switching down the page so the eye resets at every board.
+   The portrait is a real object on the board: circular crop, a rim and soft
+   glow in the board's own accent colour, a real shadow under it. The small
+   diamond jewel is gone from these 8 boards — the face anchors them now. === */#skillsSlideshow .calc-story-card.has-face{display:flex;gap:26px;align-items:flex-start;padding:30px 32px 28px}
+#skillsSlideshow .calc-story-card.face-right{flex-direction:row-reverse}
+#skillsSlideshow .board-face{flex:none;width:108px;height:108px;border-radius:50%;margin-top:2px;
+  border:2.5px solid var(--ac);
+  background:linear-gradient(180deg,#262633,#0b0b12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 26px rgba(0,0,0,.6),0 0 24px color-mix(in srgb,var(--ac) 55%,transparent),0 0 0 5px color-mix(in srgb,var(--ac) 16%,transparent)}
+#skillsSlideshow .board-face img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 50%}
+#skillsSlideshow .board-body{flex:1 1 auto;min-width:0}
+#skillsSlideshow .calc-story-card.has-face .board-head{margin-bottom:12px}
+/* Phone: the face stays — smaller, seated beside the title on its assigned
+   side; the nutshell drops to full width below, never crowded, never clipped. */
+@media(max-width:640px){
+#skillsSlideshow .calc-story-card.has-face{display:grid;grid-template-columns:62px minmax(0,1fr);column-gap:14px;row-gap:12px;align-items:start;padding:22px 20px 20px}
+#skillsSlideshow .calc-story-card.has-face .board-face{width:62px;height:62px;grid-column:1;grid-row:1;margin-top:0}
+#skillsSlideshow .calc-story-card.has-face .board-body{display:contents}
+#skillsSlideshow .calc-story-card.has-face .board-head{grid-column:2;grid-row:1;margin-bottom:0;align-self:center}
+#skillsSlideshow .calc-story-card.has-face .board-nut{grid-column:1/-1;grid-row:2}
+#skillsSlideshow .calc-story-card.face-right{grid-template-columns:minmax(0,1fr) 62px}
+#skillsSlideshow .calc-story-card.face-right .board-face{grid-column:2}
+#skillsSlideshow .calc-story-card.face-right .board-head{grid-column:1}
+}
+@media(max-width:640px){
+#skillsSlideshow .calc-story-card{padding:22px 20px 20px}
+#skillsSlideshow .board-title{font-size:22px}
+#skillsSlideshow .board-sub{font-size:17px}
+#skillsSlideshow .board-nut{font-size:17px;line-height:1.65}
+}
+#skillsSlideshow #ultimateTen .ult-banner-title .os-jewel{flex:none}
+#skillsSlideshow .who-list li .os-jewel{flex:none;margin-top:2px}
+#skillsSlideshow .letter-all{padding:14px 10px;min-height:44px}
+#skillsSlideshow .ult-sec{margin-top:26px}
+#skillsSlideshow .ult-who{margin:10px 0 0;font-size:17px;line-height:1.55;font-weight:700;color:var(--ac);max-width:72ch}
+/* ============ v69 — THE TEN, ONE FAMILY (Shawn 2026-11-09): the Ten joins the
+   hired boards + letter beats. Each of the three parts (Why / Solution /
+   What's in it for you) moves into its OWN elevated inner block in the
+   letter beats' harvested grammar (165deg obsidian, top-left light, rim +
+   glow in the item's digit colour), opening with an .os-jewel tile in the
+   number tile's grammar and the part's label; the copy inside breaks into
+   bullets on the letter's 11px living gems (.ib-card-orb, scoped here as
+   .ult-orb with the letter's own gem treatment + circling .orb-ring), so
+   no part reads as a wall. Inner blocks lift + light on hover/focus.
+   Faces: 108px -> 216px on desktop (2x); on phone the boards' 62px seat
+   becomes 124px (2x), seated centred above the title so the bigger face
+   never squeezes the words. Presentation only — not one word changed. ============ */#skillsSlideshow .ult-sec .board-face{width:216px;height:216px}
+#skillsSlideshow .ult-part{background:linear-gradient(165deg,#12121c 0%,#07070c 55%,#030304 100%);
+  border:1.5px solid color-mix(in srgb,var(--ac) 62%,transparent);border-radius:16px;
+  padding:18px 20px 16px;margin:0 0 14px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -12px 24px rgba(0,0,0,.55),inset 1px 0 0 rgba(255,255,255,.05),
+  0 14px 30px rgba(0,0,0,.5),0 0 24px -10px var(--ac);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease)}
+#skillsSlideshow .ult-part:hover, #skillsSlideshow .ult-part:focus-visible, #skillsSlideshow .ult-part:focus-within{transform:translateY(-3px);border-color:var(--ac);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -12px 24px rgba(0,0,0,.55),inset 1px 0 0 rgba(255,255,255,.05),
+  0 22px 44px rgba(0,0,0,.62),0 0 38px -6px var(--ac)}
+#skillsSlideshow .ult-part:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+#skillsSlideshow .ult-part-head{display:flex;align-items:center;gap:12px;margin:0 0 11px}
+#skillsSlideshow .ult-part .ult-part-label{margin:0;font-size:17px;line-height:1.3;font-weight:700;color:#fff}
+#skillsSlideshow .ult-part-sol .ult-part-label{color:var(--ac)}
+#skillsSlideshow .ult-part .ult-bul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+#skillsSlideshow .ult-part .ult-bul li{display:flex;gap:11px;align-items:flex-start;font-size:17px;line-height:1.6;color:#e8e8ec}
+#skillsSlideshow .ult-part .ult-bul li>span:last-child{min-width:0}
+/* The bullet gem — the letter's 11px living orb, scoped to the Ten:
+   same cut, same glow, same circling ring + travelling glint dot. */#skillsSlideshow .ult-card .ib-card-orb.ult-orb{width:11px;height:11px;flex:none;margin:calc((1.6em - 11px)/2) 0 0;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.38) 15%, transparent 36%),
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--oc) 88%, #fff) 0%, var(--oc) 42%, color-mix(in srgb, var(--oc) 62%, #000) 78%, color-mix(in srgb, var(--oc) 38%, #000) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.50),
+    inset 0 2px 3px rgba(255,255,255,.28),
+    inset 0 -3px 5px rgba(0,0,0,.55),
+    0 0 9px rgba(var(--oc-rgb),.65),
+    0 0 22px -4px rgba(var(--oc-rgb),.45),
+    0 1px 3px rgba(0,0,0,.65)}
+#skillsSlideshow .ult-card .ult-orb::before{inset:-3px;padding:1.5px;
+  background:conic-gradient(from 0deg, transparent 0deg, transparent 195deg, color-mix(in srgb, var(--oc) 72%, #000) 262deg, #ffffff 324deg, transparent 360deg);
+  filter:drop-shadow(0 0 2.5px rgba(var(--oc-rgb),.55));
+  animation:orb-spin 3s linear infinite}
+#skillsSlideshow .ult-card .ult-orb::after{display:none}
+#skillsSlideshow .ult-card .orb-ring{position:absolute;inset:-3px;border-radius:50%;z-index:2;pointer-events:none;animation:orb-spin 3s linear infinite}
+#skillsSlideshow .ult-card .orb-dot{position:absolute;top:0;left:50%;width:2.5px;height:2.5px;margin:-1.25px 0 0 -1.25px;border-radius:50%;background:#fff;box-shadow:0 0 4px 1px rgba(var(--oc-rgb),.95),0 0 2px #fff}
+@media(prefers-reduced-motion:reduce){
+#skillsSlideshow .ult-part{transition:none}
+#skillsSlideshow .ult-part:hover, #skillsSlideshow .ult-part:focus-visible, #skillsSlideshow .ult-part:focus-within{transform:none}
+#skillsSlideshow .ult-card .orb-ring, #skillsSlideshow .ult-card .ult-orb::before{animation:none!important}
+}
+/* Phone seats: face 124px (2x the boards' 62px) centred on its own row,
+   title full width under it, then why / solution / nutshell / who stack
+   full width — nothing squeezed, nothing clipped, at 390 and 360 alike. */
+@media(max-width:640px){
+#skillsSlideshow .calc-story-card.has-face.ult-card{grid-template-columns:minmax(0,1fr);row-gap:14px}
+#skillsSlideshow .calc-story-card.has-face.ult-card .board-face{width:124px;height:124px;grid-column:1/-1;grid-row:1;justify-self:center;margin-top:0}
+#skillsSlideshow .ult-head .board-face{width:124px;height:124px}
+#skillsSlideshow .calc-story-card.has-face.ult-card .board-head{grid-column:1/-1;grid-row:2;margin-bottom:0}
+#skillsSlideshow .calc-story-card.has-face.ult-card .ult-part-why{grid-column:1/-1;grid-row:3;margin-bottom:0}
+#skillsSlideshow .calc-story-card.has-face.ult-card .ult-part-sol{grid-column:1/-1;grid-row:4;margin-bottom:0}
+#skillsSlideshow .calc-story-card.has-face.ult-card .ult-part-nut{grid-column:1/-1;grid-row:5;margin-bottom:0}
+#skillsSlideshow .calc-story-card.has-face.ult-card .ult-who{grid-column:1/-1;grid-row:6;margin-top:0}
+#skillsSlideshow .ult-part{padding:16px 16px 14px}
+#skillsSlideshow .ult-part .ult-bul li{font-size:17px}
+}
+#skillsSlideshow .ult-head .board-face{width:124px;height:124px;align-self:center}
+@keyframes ib-orb-flow { 0%,100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.07); filter: brightness(1.25); } }
+@keyframes primo-sheen { 0%,60%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
