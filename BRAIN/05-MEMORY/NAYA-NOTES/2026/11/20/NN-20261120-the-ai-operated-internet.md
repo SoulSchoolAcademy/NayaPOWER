@@ -4,7 +4,7 @@
 
 **NN-20261120-the-ai-operated-internet · Naya Note · 2026-11-20 ~17:48–17:49 MST**
 
-*Paired Smart Note: SN-pending — The AI-Operated Internet (takes the next free number at filing)*
+*Paired Smart Note: SN-4381 — The AI-Operated Internet*
 
 **Category:** Vision — what NayaNET is
 
