@@ -4,7 +4,7 @@
 
 **NN-20261121-dns-permission-already-given-use-the-right-key · Naya Note · 2026-11-21 ~10:43 MST**
 
-*Paired Smart Note: SN-pending — DNS Permission — Already Given, Use the Right Key (takes the next free number at filing)*
+*Paired Smart Note: SN-4508 — DNS Permission — Already Given, Use the Right Key*
 
 **Category:** LAW — check the keys you already hold before saying a permission is missing; subdomains are automatic now — worker + route + DNS in one round
 
