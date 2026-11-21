@@ -235,6 +235,41 @@ def test_detector_catches_injected_drift(tmp_path, mutate, expected_class):
     assert report["counts"][expected_class] >= 1, report["defects"]
 
 
+def _add_retired_twin(root):
+    """A SUPERSEDED entry sharing the live entry's hash and pointing at a
+    removed file — the SN-3955..SN-3959 tombstone shape. Must not fire."""
+    reg = root / ".naya" / "memory" / "smart-notes" / "index.json"
+    entries = read_entries(reg)
+    twin = dict(entries[0])
+    twin["smart_note_id"] = "SN-002"
+    twin["intelligent_block_id"] = "IB-2"
+    twin["lifecycle_state"] = "SUPERSEDED"
+    twin["projection_path"] = PAGE.replace("IB-1.md", "IB-REMOVED.md")
+    entries.append(twin)
+    write_entries(reg, entries)
+
+
+def test_inactive_entries_do_not_fire_drift_but_active_ones_do(tmp_path):
+    """Retired rows are audit trail: same hash + absent path must stay green
+    while SUPERSEDED, and must fire the moment the row is ACTIVE again."""
+    reg_path = build_clean_root(tmp_path)
+    assert mod.audit_registry(root=tmp_path)["ok"] is True, "fixture must start clean"
+
+    _add_retired_twin(tmp_path)
+    retired = mod.audit_registry(root=tmp_path)
+    assert retired["counts"]["duplicate_smart_note_ids"] == 0, retired["defects"]
+    assert retired["counts"]["registry_projection_paths_absent"] == 0, retired["defects"]
+    assert retired["ok"] is True, retired["defects"]
+
+    entries = read_entries(reg_path)
+    entries[1]["lifecycle_state"] = "ACTIVE"
+    write_entries(reg_path, entries)
+    active = mod.audit_registry(root=tmp_path)
+    assert active["ok"] is False, "detector must still catch live drift"
+    assert active["counts"]["duplicate_smart_note_ids"] >= 1, active["defects"]
+    assert active["counts"]["registry_projection_paths_absent"] >= 1, active["defects"]
+
+
 def _add_capture(root, intelligence):
     p = root / ".naya" / "capture" / "c2.json"
     p.write_text(json.dumps({"smart_note_id": "SN-002", "intelligence": intelligence}), encoding="utf-8")
