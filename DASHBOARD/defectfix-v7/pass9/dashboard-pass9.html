@@ -11072,21 +11072,24 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
   var avIn=$('avin'); if (avIn) avIn.addEventListener('change', function(e){ savePhotoFile(e.target.files && e.target.files[0], null); });
 
   /* — Wall block (Home): smart_notes rows for this page, newest first — */
-  function wallCard(j, iso){
+  function wallCard(j, iso, id){
     var a=j.a||'Guest', mine=!!ownerName() && a===ownerName();
     var ac=mine?'#d9a521':colorFor(a);
-    return '<div class="ph-card" style="--ac:'+ac+';"><div class="os-who">'+avatarHTML(a, iso)+'<div class="os-who-main"><h3>'+esc(a)+(mine?' <span style="font-size:11px;color:#E8E8EC;letter-spacing:.08em;">&middot; OWNER</span>':'')+'</h3><p style="white-space:pre-wrap;word-wrap:break-word;">'+esc(j.b||'')+'</p><div class="os-stamp">'+stamp(iso)+'</div></div></div></div>';
+    /* LEDGER MECHANICS 2026-11-21 (G5): comment did not exist — no composer, no table, no write. The composer lives on each wall post now (harvested .os-input + .ph-connect anatomy, no new styles). A comment writes smart_notes {k:'comment', ref:post} + a Ledger event; the row insert is blocked today by the same 42501 as the post, so a comment queues with its row and posts itself when the packet is applied — rendered meanwhile with its 'queued for the Ledger' label, never as a server row. */
+    var cid=id||'wall';
+    return '<div class="ph-card" style="--ac:'+ac+';"><div class="os-who">'+avatarHTML(a, iso)+'<div class="os-who-main"><h3>'+esc(a)+(mine?' <span style="font-size:11px;color:#E8E8EC;letter-spacing:.08em;">&middot; OWNER</span>':'')+'</h3><p style="white-space:pre-wrap;word-wrap:break-word;">'+esc(j.b||'')+'</p><div class="os-stamp">'+stamp(iso)+'</div><div class="os-stamp" style="margin-top:8px;"><button class="os-savebtn" type="button" data-os-comment-toggle="'+esc(cid)+'">Comment</button></div><div data-os-comment-box="'+esc(cid)+'" hidden><input class="os-input" data-os-comment-input="'+esc(cid)+'" type="text" placeholder="Write a comment\u2026"><div class="ph-actions"><button class="ph-connect" type="button" data-os-comment-send="'+esc(cid)+'">Post comment</button></div><div class="os-status" data-os-comment-status="'+esc(cid)+'"></div></div><div data-os-comments="'+esc(cid)+'"></div></div></div></div>';
   }
   function fetchWall(limit){
     if (!sb) return Promise.resolve([]);
     return window.osNotesRows().then(function(rows){
-      return rows.map(function(r){ return {j:parseRow(r), at:r.created_at}; }).filter(function(x){ return x.j.k==='wall'; }).slice(0, limit||50);
+      return rows.map(function(r){ return {j:parseRow(r), at:r.created_at, id:r.id}; }).filter(function(x){ return x.j.k==='wall'; }).slice(0, limit||50);
     });
   }
   function loadWall(){
     fetchWall(50).then(function(posts){
       var list=$('os-wall-list'); if(!list) return;
-      list.innerHTML = posts.length ? posts.map(function(p){ return wallCard(p.j, p.at); }).join('') : '<div class="ph-card" style="--ac:#d9a521;"><p>No posts yet — be the first to write on this wall.</p></div>';
+      list.innerHTML = posts.length ? posts.map(function(p){ return wallCard(p.j, p.at, p.id); }).join('') : '<div class="ph-card" style="--ac:#d9a521;"><p>No posts yet — be the first to write on this wall.</p></div>';
+      try{ if (window.NAYA_LEDGER) window.NAYA_LEDGER.renderComments(); }catch(e){}
       /* item 3: the wall's count never stands naked — it carries its voices + its freshest moment */
       var meta=$('os-wall-meta');
       if (meta){
@@ -11107,7 +11110,9 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
     if (!sb) { st.textContent='Connection unavailable — post not saved.'; return; }
     st.textContent='Posting…';
     sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify({k:'wall', a:a, b:b})}).then(function(res){ osBustNotes();
-      if (res.error) { st.textContent='Post failed: '+res.error.message; return; }
+      /* LEDGER MECHANICS 2026-11-21 (G6): the post writes its Ledger event as well as the note row. NOTE — the note insert itself is BLOCKED live today (42501: the smart_notes trigger needs GRANT INSERT, UPDATE ON naya_category_prototypes TO anon — the packet). A failed post is queued with its note row, so it posts itself the moment the packet is applied; nothing is silently lost. */
+      if (res.error) { try{ if (window.NAYA_LEDGER) window.NAYA_LEDGER.record('post', 'wall', { author:a, body:b, source_table:'smart_notes' }, { table:'smart_notes', row:{ owner_alias:PAGE_ALIAS, content:JSON.stringify({k:'wall', a:a, b:b}) } }); }catch(e){} st.textContent='Post failed: '+res.error.message+' — queued; it posts itself when the Ledger packet is applied.'; return; }
+      try{ if (window.NAYA_LEDGER) window.NAYA_LEDGER.record('post', (res.data&&res.data[0]&&res.data[0].id)||'wall', { author:a, body:b, source_table:'smart_notes' }); }catch(e){}
       $('os-post-body').value=''; st.textContent='Posted — it is on the wall for every visitor, on every device.'; loadWall();
     });
   });
@@ -11419,6 +11424,8 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
     sha256hex(email).then(function(hash){
       sb.from('invites').insert({inviter_alias:PAGE_ALIAS, invitee_name:name, invitee_email_hash:hash, status:'pending', dry_run:true}).then(function(res){
         if (res.error) { st.textContent='Invite failed: '+res.error.message; return; }
+        /* LEDGER MECHANICS 2026-11-21 (G8): the invite writes its Ledger event. The SEND stays record-only: nayanet-invite-sender needs a Bearer user/service JWT the browser cannot hold (its own contract: 401 AUTHENTICATION_REQUIRED on the anon key), and mode today is DRY-RUN anyway (no member email connected). The module probes that gate once per session and caches it; nothing here claims a send. The unblocker — a hub-worker proxy or user sessions — is named in the packet. */
+        try{ if (window.NAYA_LEDGER) window.NAYA_LEDGER.record('invite', (res.data&&res.data[0]&&res.data[0].id)||name, { name:name, source_table:'invites' }); }catch(e){}
         $('os-inv-name').value=''; $('os-inv-email').value='';
         st.textContent='Invite recorded for '+name+' — hash only stored, no email sent (record-only by design).';
         loadInvites();
@@ -11572,8 +11579,9 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
   function msgShare(id){
     var m = osMsgById[id]; if (!m) return;
     var text = m.body + '\n\n— ' + humanize(m.from) + ', in “' + (m.subject || 'a conversation') + '”';
-    if (navigator.share) navigator.share({ title: m.subject || 'A saved message', text: text }).then(function(){}, function(){});
-    else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ msgStatus(id, 'Copied — sharing isn’t offered on this device, so the message is on your clipboard.'); }, function(){});
+    /* LEDGER MECHANICS 2026-11-21 (G4): the share callbacks were empty — the page never knew whether the share happened. Now: confirmed share records 'share'; a dismissed sheet records 'share_attempted' (counted nowhere); clipboard fallback records a confirmed clipboard share. */
+    if (navigator.share) navigator.share({ title: m.subject || 'A saved message', text: text }).then(function(){ try{ if (window.NAYA_LEDGER) window.NAYA_LEDGER.record('share', id, { kind:'message', confirmed:true, source_table:'smart_mail_messages', source_id:id }); }catch(e){} msgStatus(id, 'Shared — recorded in the Ledger.'); }, function(){ try{ if (window.NAYA_LEDGER) window.NAYA_LEDGER.record('share_attempted', id, { kind:'message', confirmed:false, source_table:'smart_mail_messages', source_id:id }); }catch(e){} });
+    else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ try{ if (window.NAYA_LEDGER) window.NAYA_LEDGER.record('share', id, { kind:'message', confirmed:true, via:'clipboard', source_table:'smart_mail_messages', source_id:id }); }catch(e){} msgStatus(id, 'Copied — sharing isn’t offered on this device, so the message is on your clipboard. The copy is recorded as a share.'); }, function(){});
   }
   function msgDelete(id, btn){
     if (!btn.getAttribute('data-armed')){
@@ -12896,7 +12904,7 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
   function noteCard(n){
     var likes=lsGet(lsKey('likes'), {}), saved=lsGet(lsKey('saved'), []);
     var liked=!!likes[n.id], isSaved=saved.indexOf(n.id)>=0;
-    return '<div class="ph-card os-draw-in" style="--ac:'+n.c+';animation-delay:'+Math.min(n.i*0.05, 0.4)+'s"><h3>'+esc(n.t)+'</h3><p class="ph-nutshell">IN A NUTSHELL</p><p>'+esc(n.b)+'</p><div class="os-stamp" style="margin-top:10px">'+(n.sample?'<span class="os-sample-tag">SAMPLE</span>':stamp(n.at))+'</div><div class="sn-actions"><button class="os-like'+(liked?' on':'')+'" type="button" data-os-like="'+esc(n.id)+'" style="--ac:'+n.c+'">♥ <span>'+(liked?1:0)+'</span></button><button class="os-savebtn'+(isSaved?' saved':'')+'" type="button" data-os-save="'+esc(n.id)+'" style="--ac:'+n.c+'">'+(isSaved?'Saved ✓':'Save')+'</button>'+(n.sample?'':'<button class="os-savebtn" type="button" data-os-listfile="'+esc(n.id)+'" style="--ac:#2fe89e">List</button>')+'</div>'+(n.sample?'':'<div class="os-sl-in" data-os-in="'+esc(n.id)+'">'+(slLists?esc(slInLine('smart_note', n.id.replace(/^r/, ''))):'')+'</div><div data-os-listrow="'+esc(n.id)+'"></div>')+'</div>';
+    return '<div class="ph-card os-draw-in" style="--ac:'+n.c+';animation-delay:'+Math.min(n.i*0.05, 0.4)+'s"><h3>'+esc(n.t)+'</h3><p class="ph-nutshell">IN A NUTSHELL</p><p>'+esc(n.b)+'</p><div class="os-stamp" style="margin-top:10px">'+(n.sample?'<span class="os-sample-tag">SAMPLE</span>':stamp(n.at))+'</div><div class="sn-actions"><button class="os-like'+(liked?' on':'')+'" type="button" data-os-like="'+esc(n.id)+'" style="--ac:'+n.c+'">♥ <span>'+(window.NAYA_LEDGER?window.NAYA_LEDGER.countFor('like', n.id):(liked?1:0))+'</span></button><button class="os-savebtn'+(isSaved?' saved':'')+'" type="button" data-os-save="'+esc(n.id)+'" style="--ac:'+n.c+'">'+(isSaved?'Saved ✓':'Save')+'</button>'+(n.sample?'':'<button class="os-savebtn" type="button" data-os-listfile="'+esc(n.id)+'" style="--ac:#2fe89e">List</button>')+'</div>'+(n.sample?'':'<div class="os-sl-in" data-os-in="'+esc(n.id)+'">'+(slLists?esc(slInLine('smart_note', n.id.replace(/^r/, ''))):'')+'</div><div data-os-listrow="'+esc(n.id)+'"></div>')+'</div>';
   }
   function renderNotes(){
     var listEl=$('os-note-list'); if (!listEl) return;
@@ -12919,13 +12927,18 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
   function toggleLike(id){
     var likes=lsGet(lsKey('likes'), {});
     if (likes[id]) delete likes[id]; else likes[id]=1;
-    lsSet(lsKey('likes'), likes); renderNotes();
+    lsSet(lsKey('likes'), likes);
+    /* LEDGER MECHANICS 2026-11-21 (G3): a like leaves the device now — one Ledger event per tap (unlike records 'unlike'; the count nets them). localStorage keeps only this device's own heart state, never the count. */
+    try{ if (window.NAYA_LEDGER) window.NAYA_LEDGER.record(likes[id]?'like':'unlike', id, { kind:'note', source_table:'smart_notes', source_id:String(id).replace(/^r/, '') }); }catch(e){}
+    renderNotes();
   }
   function toggleSave(id){
     var saved=lsGet(lsKey('saved'), []);
     var ix=saved.indexOf(id), was=ix>=0;
     if (was) saved.splice(ix, 1); else saved.push(id);
     lsSet(lsKey('saved'), saved);
+    /* LEDGER MECHANICS 2026-11-21: a save records a Ledger event (unsave records 'unsave'; the count nets them). The smart_notes k:'save' row still fires — it is blocked today by the same 42501 as the post (packet grant), so the Ledger event is the proof that survives. */
+    try{ if (window.NAYA_LEDGER) window.NAYA_LEDGER.record(was?'unsave':'save', id, { kind:'note', source_table:'smart_notes', source_id:id.slice(1) }); }catch(e){}
     if (!was && sb && id.charAt(0)==='r') sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify({k:'save', ref:id.slice(1)})}).then(function(){}, function(){});
     renderNotes();
   }
@@ -12980,14 +12993,14 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
     function ensureList(title){
       var f = findList(title); if (f) return Promise.resolve(f);
       return sb.from('smart_lists').insert({ owner_alias: PAGE_ALIAS, title: title, category: 'General', position: lists.length }).select('id,title,category,position,created_at').single().then(function(res){
-        if (res.error) throw res.error; lists.push(res.data); return res.data;
+        if (res.error) throw res.error; lists.push(res.data); try{ if (window.NAYA_SYNC) window.NAYA_SYNC.listCreated(res.data); }catch(e){} return res.data;
       });
     }
     function addText(list, text, done, pos){
       if (!text) return Promise.resolve();
       var dup = items.some(function(it){ return it.list_id === list.id && it.item_kind === 'text' && it.text === text; });
       if (dup) return Promise.resolve();
-      return sb.from('smart_list_items').insert({ owner_alias: PAGE_ALIAS, list_id: list.id, item_kind: 'text', text: text, done: !!done, position: pos }).select('id,list_id,item_kind,item_ref,label,text,done,position,created_at').single().then(function(res){ if (!res.error && res.data) items.push(res.data); });
+      return sb.from('smart_list_items').insert({ owner_alias: PAGE_ALIAS, list_id: list.id, item_kind: 'text', text: text, done: !!done, position: pos }).select('id,list_id,item_kind,item_ref,label,text,done,position,created_at').single().then(function(res){ if (!res.error && res.data){ items.push(res.data); try{ if (window.NAYA_SYNC) window.NAYA_SYNC.itemAdded(list, res.data); }catch(e){} } });
     }
     var chain = Promise.resolve();
     var local = slLocalItems();
@@ -13151,7 +13164,7 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
       }
       sb.from('smart_list_items').insert({ owner_alias: PAGE_ALIAS, list_id: cur.id, item_kind: 'text', text: v, done: false, position: pos }).select('id,list_id,item_kind,item_ref,label,text,done,position,created_at').single().then(function(res){
         if (res.error){ var st = $('os-list-status'); if (st) st.textContent = 'Could not add — ' + res.error.message; return; }
-        slItems.push(res.data); addIn.value = ''; renderLists();
+        slItems.push(res.data); try{ if (window.NAYA_SYNC) window.NAYA_SYNC.itemAdded(cur, res.data); }catch(e){} addIn.value = ''; renderLists();
       });
     }
     if (!slLists) slLoad().then(proceed); else proceed();
@@ -13675,6 +13688,414 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
 </script>
 
 <script id="os-dash-script">
+/* LEDGER MECHANICS 2026-11-21 — injected module (ledger-module.js). One write path per action, one points truth, one sync engine. See the lane record for the per-action proof table. */
+<script>
+/* NAYA LEDGER MECHANICS — 2026-11-21 (Dashboard mechanics round).
+   The heart: one write path per action, one points truth, one sync engine.
+   Every action writes through NAYA_LEDGER.record(). The record tries, in order:
+     (1) the Ledger RPC (packet function nayanet_record_ledger_event_by_alias —
+         NOT YET CREATED: live call answers PGRST202; the EXECUTE grant on the
+         existing function is also missing — both are the gated packet, NOT a
+         code bug; the exact denial is the proof, and the event is queued);
+     (2) the feature row (post -> smart_notes, invite -> invites, list ->
+         smart_lists, item -> smart_list_items — the ones anon can write today);
+     (3) the outbox (localStorage) — a durable store-and-forward queue. Nothing
+         is ever silently lost: queued events replay on every load and every
+         30s poll, the moment the packet is applied.
+   Counts read server rows first, outbox second, and NEVER invent: a count the
+   Ledger cannot yet return shows with its pending queue beside it, labelled.
+   Money: joins ONLY (get_payment_state, untouched). No points-to-money
+   conversion exists here — still unratified, correctly absent.
+   Points: ONE formula (NAYA_POINTS.score). Birth is NOT a flat 75 — the
+   2026-11-01 lock in osBuildSpine's own comment: birth is a one-time 2X on
+   everything earned in the first 24h. LD_VALUES.birth=75 is dead in the spine
+   and contradicts the lock, so the single formula drops the +75 and gates the
+   2X on a real birth timestamp (the earliest created_at among this alias's own
+   rows). The diagnosis's G11 said "+75 once" — that disagrees with the file's
+   own lock; the lock wins, and the disagreement is flagged in the record.
+   Clicks and messages earn 0 points — no ratified value exists; a silent
+   value change would be invention, so 0 stands until Shawn rules (G12).
+   Sync engine (Lists -> messenger -> scheduler): list/item writes mirror into
+   scheduled_messages (anon INSERT PROVEN live 2026-11-21) and attempt the
+   messenger thread (smart_mail_threads INSERT is RLS-blocked today — queued,
+   never faked). No realtime subscription is assumed: the 30s poll refreshes
+   the new tables, and a realtime channel is attached only if the client
+   offers one. */
+(function(){
+'use strict';
+var RPC_FN='nayanet_record_ledger_event_by_alias';
+var HB_URL='https://naya-sync-heartbeat.nayapower.workers.dev/heartbeat.json';
+var OUTBOX_KEY='naya_ledger_outbox_v1';
+var BIRTH_KEY='naya_ledger_birth_v1';
+var VALUES={posts:25,notes:35,saves:5,invites:25,joins:50,memberBonus:40,sales:100,likes:1,comments:3,shares:5,externalShares:10};
+function ALIAS(){ try{ return window.PAGE_ALIAS || 'flagship-personal'; }catch(e){ return 'flagship-personal'; } }
+function SB(){ try{ return window.sb || null; }catch(e){ return null; } }
+function ls(k){ try{ return window.localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ window.localStorage.setItem(k,v); }catch(e){} }
+function nowISO(){ return new Date().toISOString(); }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* ---- outbox: durable store-and-forward ---- */
+function outbox(){ try{ var a=JSON.parse(ls(OUTBOX_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+function saveOutbox(a){ lsSet(OUTBOX_KEY, JSON.stringify(a)); }
+function outboxCount(action, ref){
+  var n=0; outbox().forEach(function(ev){
+    if (ev.action!==action) return;
+    if (ref && ev.ref!==ref) return;
+    if (ev.action==='save' && ev.meta && ev.meta.undo) return;
+    n++;
+  });
+  if (action==='save'){ var u=0; outbox().forEach(function(ev){ if (ev.action==='unsave') u++; }); n=Math.max(0, n-u); }
+  return n;
+}
+
+/* ---- birth: earliest record of this alias; the 2X lives only inside 24h ---- */
+var birthCache=null;
+function birthAtSync(){
+  if (birthCache!==undefined && birthCache!==null) return birthCache;
+  var raw=ls(BIRTH_KEY); if (raw){ try{ birthCache=new Date(raw).getTime(); return birthCache; }catch(e){} }
+  return null;
+}
+function fetchBirth(){
+  var sb=SB(); if (!sb) return;
+  var alias=ALIAS();
+  var jobs=[
+    sb.from('smart_notes').select('created_at').eq('owner_alias', alias).order('created_at',{ascending:true}).limit(1),
+    sb.from('smart_links').select('created_at').eq('owner_alias', alias).order('created_at',{ascending:true}).limit(1),
+    sb.from('invites').select('created_at').eq('inviter_alias', alias).order('created_at',{ascending:true}).limit(1)
+  ];
+  Promise.all(jobs.map(function(p){ return p.then(function(r){ return r; }, function(){ return null; }); })).then(function(rs){
+    var best=null;
+    rs.forEach(function(r){ if (r && !r.error && r.data && r.data[0] && r.data[0].created_at){ var t=new Date(r.data[0].created_at).getTime(); if (t && (!best || t<best)) best=t; } });
+    if (best){ birthCache=best; lsSet(BIRTH_KEY, new Date(best).toISOString()); }
+  });
+}
+
+/* ---- ONE points truth ---- */
+function score(counts){
+  var c=counts||{};
+  var base=0
+    + (c.posts||0)*VALUES.posts + (c.notes||0)*VALUES.notes + (c.saves||0)*VALUES.saves
+    + ((c.invs!=null?c.invs:c.invitesSent)||0)*VALUES.invites
+    + ((c.joins!=null?c.joins:c.inviteJoins)||0)*VALUES.joins
+    + (((c.member!=null?c.member:c.memberBonus)||0)>0 ? VALUES.memberBonus : 0)
+    + (c.sales||0)*VALUES.sales + (c.likes||0)*VALUES.likes + (c.comments||0)*VALUES.comments
+    + (c.shares||0)*VALUES.shares + (c.extShares||0)*VALUES.externalShares;
+  var b=birthAtSync();
+  var active=!!(b && (Date.now()-b)<86400000);
+  return active ? base*2 : base;
+}
+function birthState(){
+  var b=birthAtSync();
+  return { birthAt: b?new Date(b).toISOString():null, active: !!(b && (Date.now()-b)<86400000) };
+}
+function verifyScore(){
+  /* Independent recompute (G24): fresh server rows, not the spine's own numbers. */
+  return countsLive().then(function(c){
+    var recomputed=score(c);
+    var hero=null, board=null;
+    try{ var h=document.getElementById('os-se-val'); if (h) hero=parseInt((h.textContent||'').replace(/[^0-9]/g,''),10); }catch(e){}
+    try{ var bd=document.querySelector('[data-node="points"], #os-ld-score'); if (bd) board=parseInt((bd.textContent||'').replace(/[^0-9]/g,''),10); }catch(e){}
+    var out={ recomputed:recomputed, hero:hero, board:board, agree:(hero===null||hero===recomputed) };
+    try{ console.log('[NAYA_LEDGER verify]', JSON.stringify(out)); }catch(e){}
+    return out;
+  });
+}
+
+/* ---- the one write path ---- */
+function record(action, ref, meta, feature){
+  var ev={ v:1, action:action, alias:ALIAS(), ref:String(ref==null?'':ref), at:nowISO(), meta:meta||{}, status:'queued' };
+  if (feature) ev.feature=feature;
+  var sb=SB();
+  function queue(){ var ob=outbox(); ob.push(ev); saveOutbox(ob); return Promise.resolve({ ok:false, queued:true, event:ev }); }
+  if (!sb) return queue();
+  var payload={ p_owner_alias:ev.alias, p_event_type:action, p_source_table:(meta&&meta.source_table)||'smart_notes', p_source_id:ev.ref, p_metadata:ev.meta };
+  return sb.rpc(RPC_FN, payload).then(function(res){
+    if (res && !res.error){ ev.status='ledger'; ev.ledger=res.data||null; ledgerCache[action]=(ledgerCache[action]||0)+1; if (ev.ref) ledgerByRef[action+':'+ev.ref]=(ledgerByRef[action+':'+ev.ref]||0)+1; return { ok:true, queued:false, event:ev }; }
+    var code=res && res.error && (res.error.code||'');
+    ev.gate=code||'rpc_error';
+    return queue();
+  }, function(err){ ev.gate='rpc_throw'; return queue(); });
+}
+function replayOutbox(){
+  var sb=SB(); if (!sb) return Promise.resolve(0);
+  var ob=outbox(); if (!ob.length) return Promise.resolve(0);
+  var done=0;
+  var chain=Promise.resolve();
+  ob.slice().forEach(function(ev){
+    chain=chain.then(function(){
+      function sendEvent(){
+        return sb.rpc(RPC_FN, { p_owner_alias:ev.alias, p_event_type:ev.action, p_source_table:(ev.meta&&ev.meta.source_table)||'smart_notes', p_source_id:ev.ref, p_metadata:ev.meta }).then(function(res){
+          if (res && !res.error){ ev.status='ledger'; return true; } return false;
+        }, function(){ return false; });
+      }
+      function sendFeature(){
+        if (!ev.feature) return Promise.resolve(true);
+        return sb.from(ev.feature.table).insert(ev.feature.row).then(function(r){ return !r.error; }, function(){ return false; });
+      }
+      return sendFeature().then(function(fok){ if (!fok) return false; return sendEvent(); }).then(function(ok){
+        if (ok){ done++; var rest=outbox().filter(function(x){ return x!==ev; }); saveOutbox(rest); }
+        return ok;
+      });
+    });
+  });
+  return chain.then(function(){ return done; });
+}
+
+/* ---- counts: server rows first, outbox second, never invented ---- */
+var ledgerReadable=null;
+var ledgerCache={ like:0, comment:0, share:0, board_open:0 };
+var ledgerByRef={};
+function ledgerEvents(){
+  /* The citizen-action store (SCHEMA-PACKET §3). The older nayanet_smart_ledger
+     is the NIA event table — read-only for the page; the page writes and reads
+     naya_action_events, alias-native. Before the packet lands this select
+     errors (table missing) and the outbox is the only count — never a fake. */
+  var sb=SB(); if (!sb) return Promise.resolve([]);
+  return sb.from('naya_action_events').select('id,event_type,source_table,source_id,metadata,created_at').eq('owner_alias', ALIAS()).limit(500).then(function(res){
+    if (res.error){ ledgerReadable=false; return []; }
+    ledgerReadable=true;
+    return res.data||[];
+  }, function(){ ledgerReadable=false; return []; });
+}
+function countsLive(){
+  var sb=SB();
+  var alias=ALIAS();
+  var out={ posts:0, notes:0, saves:0, invs:0, joins:0, member:0, sales:0, likes:0, comments:0, shares:0, extShares:0, lists:0, items:0, scheduled:0, pending:0 };
+  if (!sb) return Promise.resolve(out);
+  function rows(table, col, val, limit){
+    return sb.from(table).select('id,created_at').eq(col, val).limit(limit||500).then(function(r){ return (r && !r.error && r.data)?r.data:[]; }, function(){ return []; });
+  }
+  return Promise.all([
+    sb.from('smart_notes').select('id,content,created_at').eq('owner_alias', alias).limit(500).then(function(r){ return (r && !r.error && r.data)?r.data:[]; }, function(){ return []; }),
+    rows('invites','inviter_alias',alias,200),
+    sb.from('smart_link_daily_stats').select('clicks,joins').eq('owner_alias', alias).limit(1000).then(function(r){ return (r && !r.error && r.data)?r.data:[]; }, function(){ return []; }),
+    rows('smart_lists','owner_alias',alias,200),
+    rows('smart_list_items','owner_alias',alias,500),
+    rows('scheduled_messages','owner_alias',alias,200),
+    ledgerEvents()
+  ]).then(function(rs){
+    var notes=rs[0], invs=rs[1], stats=rs[2], lists=rs[3], items=rs[4], sched=rs[5], lev=rs[6];
+    var kinds={ wall:0, note:0, save:0, comment:0 };
+    notes.forEach(function(n){ try{ var c=JSON.parse(n.content||'{}'); if (kinds[c.k]!=null) kinds[c.k]++; }catch(e){} });
+    out.posts=kinds.wall; out.notes=kinds.note; out.saves=kinds.save;
+    out.invs=invs.length;
+    out.joins=stats.reduce(function(a,s){ return a+Number(s.joins||0); },0);
+    out.lists=lists.length; out.items=items.length; out.scheduled=sched.length;
+    var levCount=function(a, ref){ var n=0; lev.forEach(function(e){ if (e.event_type!==a) return; if (ref && String(e.source_id)!==String(ref)) return; n++; }); return n; };
+    ledgerCache.like=levCount('like'); ledgerCache.comment=levCount('comment'); ledgerCache.share=levCount('share'); ledgerCache.board_open=levCount('board_open');
+    ledgerByRef={};
+    lev.forEach(function(e){ var k=e.event_type+':'+String(e.source_id); ledgerByRef[k]=(ledgerByRef[k]||0)+1; });
+    out.likes=Math.max(levCount('like'), 0)+outboxCount('like');
+    out.comments=kinds.comment+Math.max(levCount('comment'),0)+outboxCount('comment');
+    out.shares=Math.max(levCount('share'),0)+outboxCount('share');
+    out.pending=outbox().length;
+    out._times={ posts:notes.filter(function(n){ try{return JSON.parse(n.content||'{}').k==='wall';}catch(e){return false;} }).map(function(n){return n.created_at;}), invs:invs.map(function(r){return r.created_at;}), lists:lists.map(function(r){return r.created_at;}) };
+    return out;
+  });
+}
+function countFor(action, ref){
+  /* Server ledger count (cached from the last countsLive fetch) + outbox.
+     An event that replayed out of the outbox stays counted: it is in the
+     ledger now, so the cache — not the outbox — carries it. */
+  var n=0;
+  if (ref){ n=(ledgerByRef[action+':'+String(ref)]||0); }
+  else { n=(ledgerCache[action]||0); }
+  return n+outboxCount(action, ref);
+}
+function stayedDays(){
+  return countsLive().then(function(c){
+    var days={};
+    var t=c._times||{};
+    ['posts','invs','lists'].forEach(function(k){ (t[k]||[]).forEach(function(ts){ var d=new Date(ts); if (!isNaN(d)){ var age=Date.now()-d.getTime(); if (age>=0 && age<7*86400000) days[d.toISOString().slice(0,10)]=1; } }); });
+    outbox().forEach(function(ev){ var d=new Date(ev.at); if (!isNaN(d)){ var age=Date.now()-d.getTime(); if (age>=0 && age<7*86400000) days[d.toISOString().slice(0,10)]=1; } });
+    return Object.keys(days).length;
+  });
+}
+function stayedLine(){
+  return stayedDays().then(function(n){
+    if (!n) return 'No source yet \u2014 Stayed needs the ledger flowing. Nothing is counted here until then.';
+    return 'Stayed: '+n+' active day'+(n===1?'':'s')+' in the last 7 \u2014 from the Ledger (posts, invites, lists, queued actions).';
+  });
+}
+
+/* ---- comments: smart_notes k=comment rows + outbox ---- */
+function fetchComments(){
+  var sb=SB(); if (!sb) return Promise.resolve([]);
+  return sb.from('smart_notes').select('id,content,created_at').eq('owner_alias', ALIAS()).limit(500).then(function(res){
+    var rows=[];
+    if (res && !res.error && res.data){ res.data.forEach(function(n){ try{ var c=JSON.parse(n.content||'{}'); if (c.k==='comment') rows.push({ id:n.id, ref:c.ref||'wall', a:c.a||'Guest', b:c.b||'', at:n.created_at, pending:false }); }catch(e){} }); }
+    outbox().forEach(function(ev){ if (ev.action==='comment') rows.push({ id:'q'+ev.at, ref:(ev.meta&&ev.meta.ref)||'wall', a:(ev.meta&&ev.meta.author)||'Guest', b:(ev.meta&&ev.meta.body)||'', at:ev.at, pending:true }); });
+    rows.sort(function(a,b){ return new Date(a.at)-new Date(b.at); });
+    return rows;
+  }, function(){ return []; });
+}
+function renderComments(){
+  fetchComments().then(function(rows){
+    var byRef={};
+    rows.forEach(function(c){ (byRef[c.ref]=byRef[c.ref]||[]).push(c); });
+    document.querySelectorAll('[data-os-comments]').forEach(function(host){
+      var id=host.getAttribute('data-os-comments');
+      var list=(byRef[id]||[]).concat(byRef['wall']||[]).filter(function(c,i,a){ return a.indexOf(c)===i; });
+      if (!list.length){ host.innerHTML=''; return; }
+      host.innerHTML=list.map(function(c){
+        return '<div class="os-stamp" style="margin-top:8px;text-align:left;"><b>'+esc(c.a)+'</b> \u2014 '+esc(c.b)+' <span style="opacity:.7">'+esc(c.at?c.at.slice(0,10):'')+(c.pending?' \u00b7 queued for the Ledger':'')+'</span></div>';
+      }).join('');
+    });
+  });
+}
+function postComment(postId, author, body, statusEl){
+  var text=(body||'').trim(); if (!text){ if (statusEl) statusEl.textContent='Write a comment first.'; return; }
+  var row={ owner_alias:ALIAS(), content:JSON.stringify({ k:'comment', ref:postId, a:author||'Guest', b:text }) };
+  var sb=SB();
+  if (statusEl) statusEl.textContent='Posting comment\u2026';
+  var featP = sb ? sb.from('smart_notes').insert(row).then(function(r){ return r; }, function(e){ return { error:e }; }) : Promise.resolve({ error:{ message:'no connection' } });
+  featP.then(function(r){
+    if (!r.error){ record('comment', postId, { ref:postId, author:author||'Guest', body:text, source_table:'smart_notes', source_id:(r.data&&r.data[0]&&r.data[0].id)||postId }); if (statusEl) statusEl.textContent='Comment posted \u2014 it is on the wall for every visitor.'; renderComments(); }
+    else { record('comment', postId, { ref:postId, author:author||'Guest', body:text, source_table:'smart_notes' }, { table:'smart_notes', row:row }); if (statusEl) statusEl.textContent='Comment queued \u2014 the Ledger write is blocked ('+String(r.error.message||r.error).slice(0,80)+'). It posts itself when the packet is applied.'; renderComments(); }
+  });
+}
+
+/* ---- sync engine: Lists -> messenger -> scheduler ---- */
+function syncMirror(kind, listTitle, itemText, listId, itemId){
+  var sb=SB();
+  var receipt={ at:nowISO(), kind:kind, scheduler:'not attempted', messenger:'not attempted' };
+  function sched(){
+    if (!sb) { receipt.scheduler='queued (no connection)'; return Promise.resolve(receipt); }
+    var fire=new Date(Date.now()+86400000).toISOString();
+    return sb.from('scheduled_messages').insert({ owner_alias:ALIAS(), kind:kind, subject:(kind==='list_created'?'List created: ':'Follow up: ')+(itemText||listTitle||'').slice(0,120), body:'From Smart Lists — '+(listTitle||'')+(itemText?(' \u00b7 '+itemText):''), fire_at:fire, status:'pending' }).then(function(r){
+      receipt.scheduler=r.error?('queued ('+String(r.error.code||r.error.message||'blocked').slice(0,40)+')'):'landed';
+      return receipt;
+    }, function(){ receipt.scheduler='queued (error)'; return receipt; });
+  }
+  function msg(){
+    if (!sb) { receipt.messenger='queued (no connection)'; return Promise.resolve(receipt); }
+    return sb.from('smart_mail_threads').insert({ owner_alias:ALIAS(), subject:'List: '+(listTitle||''), from_alias:ALIAS(), to_alias:ALIAS(), preview:((itemText||listTitle||'').slice(0,120)) }).then(function(r){
+      receipt.messenger=r.error?('queued ('+String(r.error.code||r.error.message||'blocked').slice(0,40)+')'):'landed';
+      return receipt;
+    }, function(){ receipt.messenger='queued (error)'; return receipt; });
+  }
+  return sched().then(function(){ return msg(); }).then(function(){ try{ console.log('[NAYA_SYNC]', JSON.stringify(receipt)); }catch(e){} return receipt; });
+}
+var SYNC={
+  listCreated:function(list){ if (list) record('list_create', list.id, { title:list.title, source_table:'smart_lists', source_id:list.id }); return syncMirror('list_created', list&&list.title, null, list&&list.id, null); },
+  itemAdded:function(list, item){ if (item) record('list_item_add', item.id, { list_id:list&&list.id, text:item.text||item.label||'', source_table:'smart_list_items', source_id:item.id }); return syncMirror('list_item', list&&list.title, item&&(item.text||item.label||''), list&&list.id, item&&item.id); }
+};
+
+/* ---- liveness: served heartbeat + freshest rows ---- */
+function refreshLiveness(){
+  var el=document.getElementById('os-sync-liveness');
+  if (!el){
+    var anchor=document.getElementById('os-reports-funnel-src')||document.getElementById('os-dash-funnel');
+    if (!anchor) return;
+    el=document.createElement('p'); el.className='os-note'; el.id='os-sync-liveness'; el.style.margin='10px 0 0;';
+    anchor.insertAdjacentElement('afterend', el);
+  }
+  var hbP=(typeof fetch==='function') ? fetch(HB_URL, { cache:'no-store' }).then(function(r){ return r.json(); }).then(function(j){ return j; }, function(){ return null; }) : Promise.resolve(null);
+  var sb=SB();
+  var notesP=sb ? sb.from('hub_smart_notes').select('created_at').order('created_at',{ascending:false}).limit(1).then(function(r){ return (r&&!r.error&&r.data&&r.data[0])?r.data[0].created_at:null; }, function(){ return null; }) : Promise.resolve(null);
+  var ledP=sb ? sb.from('ledger_entries').select('entry_id,issued_at').order('seq',{ascending:false}).limit(1).then(function(r){ return (r&&!r.error&&r.data&&r.data[0])?r.data[0]:null; }, function(){ return null; }) : Promise.resolve(null);
+  Promise.all([hbP, notesP, ledP]).then(function(v){
+    var hb=v[0], newest=v[1], tip=v[2];
+    function ago(ts){ if (!ts) return 'unknown'; var s=Math.max(0, Math.floor((Date.now()-new Date(ts).getTime())/1000)); if (s<60) return s+'s ago'; var m=Math.floor(s/60); if (m<60) return m+'m ago'; var h=Math.floor(m/60); if (h<48) return h+'h ago'; return Math.floor(h/24)+'d ago'; }
+    var hbTxt=hb ? ('heartbeat served '+ago(hb.ts||hb.time||null)+' (synced '+(hb.synced==null?'?':hb.synced)+', errors '+(hb.errors==null?'?':hb.errors)+')') : 'heartbeat not served yet \u2014 the watcher runs, nothing observable proves it';
+    el.textContent='Sync live \u2014 last note sync '+(newest?ago(newest):'unknown')+' \u00b7 Ledger tip '+(tip?tip.entry_id+' ('+ago(tip.issued_at)+')':'unknown')+' \u00b7 '+hbTxt+'.';
+  });
+}
+
+/* ---- realtime (attached only if the client offers it) + 30s poll ---- */
+function attachRealtime(){
+  var sb=SB(); if (!sb) return;
+  try{
+    if (typeof sb.channel==='function'){
+      sb.channel('naya-ledger').on('postgres_changes', { event:'*', schema:'public', table:'invites' }, function(){ replayOutbox(); }).on('postgres_changes', { event:'*', schema:'public', table:'smart_lists' }, function(){ replayOutbox(); }).on('postgres_changes', { event:'*', schema:'public', table:'smart_list_items' }, function(){ replayOutbox(); }).subscribe();
+    }
+  }catch(e){}
+}
+function refresh(){
+  replayOutbox();
+  refreshLiveness();
+  renderComments();
+  countsLive().then(function(c){
+    var s=score(c);
+    if (refresh._lastScore!==undefined && refresh._lastScore!==s){ try{ if (typeof loadDashboard==='function') loadDashboard(); }catch(e){} }
+    refresh._lastScore=s;
+  });
+}
+function init(){
+  fetchBirth();
+  attachRealtime();
+  refresh();
+  setInterval(function(){ refresh(); }, 30000);
+  probeInviteSend();
+  mountJoin();
+  wireCommentDelegation();
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', function(){ mountJoin(); wireCommentDelegation(); refresh(); });
+}
+
+/* ---- invite send path: ONE probe per session, never per click.
+   The function needs a Bearer user/service JWT (contract); the browser anon
+   key answers 401 AUTHENTICATION_REQUIRED, and mode today is DRY-RUN anyway
+   (no member email connected). So invites stay record-only until the
+   hub-worker proxy (or user sessions) exists — named in the packet, never
+   improvised with a key in page JS. ---- */
+var inviteSendProbe=null;
+function probeInviteSend(){
+  if (inviteSendProbe) return inviteSendProbe;
+  var url='https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-invite-sender/send';
+  inviteSendProbe=(typeof fetch==='function') ? fetch(url, { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify({ alias:ALIAS(), invites:[] }) }).then(function(r){ return r.json().then(function(j){ return { http:r.status, body:j }; }, function(){ return { http:r.status, body:null }; }); }, function(e){ return { http:0, body:null }; }).then(function(out){ try{ console.log('[NAYA_LEDGER invite-send probe]', JSON.stringify(out).slice(0,200)); }catch(e){} return out; }) : Promise.resolve({ http:0, body:null });
+  return inviteSendProbe;
+}
+
+/* ---- join: the one flow that did not exist ---- */
+function mountJoin(){
+  if (document.getElementById('os-join-btn')) return;
+  var anchor=document.getElementById('os-reports-funnel-src');
+  if (!anchor) return;
+  var wrap=document.createElement('div'); wrap.className='ph-actions';
+  wrap.innerHTML='<button class="ph-connect" id="os-join-btn" type="button">Join this world</button>';
+  anchor.insertAdjacentElement('afterend', wrap);
+  var st=document.createElement('div'); st.className='os-status'; st.id='os-join-status';
+  wrap.insertAdjacentElement('afterend', st);
+  document.getElementById('os-join-btn').addEventListener('click', function(){
+    var s=document.getElementById('os-join-status');
+    if (s) s.textContent='Recording your join\u2026';
+    record('join', 'joinus', { source_table:'smart_link_joins', source_id:'joinus' }).then(function(out){
+      if (s) s.textContent=out.queued ? 'Join queued \u2014 it lands in the Ledger when the packet is applied. The join link is open in a new tab.' : 'Join recorded in the Ledger \u2014 the join link is open in a new tab.';
+      try{ window.open('https://nayanet.app/joinus', '_blank', 'noopener'); }catch(e){}
+    });
+  });
+}
+
+/* ---- comment delegation (the composer lives in wallCard) ---- */
+function wireCommentDelegation(){
+  if (wireCommentDelegation.done) return; wireCommentDelegation.done=true;
+  document.addEventListener('click', function(e){
+    var t=e.target && e.target.closest ? e.target.closest('[data-os-comment-toggle],[data-os-comment-send]') : null;
+    if (!t) return;
+    var id=t.getAttribute('data-os-comment-toggle')||t.getAttribute('data-os-comment-send');
+    if (t.hasAttribute('data-os-comment-toggle')){
+      var box=document.querySelector('[data-os-comment-box="'+id+'"]');
+      if (box){ if (box.hasAttribute('hidden')) box.removeAttribute('hidden'); else box.setAttribute('hidden',''); }
+      return;
+    }
+    var input=document.querySelector('[data-os-comment-input="'+id+'"]');
+    var st=document.querySelector('[data-os-comment-status="'+id+'"]');
+    var author='Guest';
+    try{ var a=document.getElementById('os-post-author'); if (a && a.value.trim()) author=a.value.trim(); }catch(e2){}
+    postComment(id, author, input?input.value:'', st);
+    if (input) input.value='';
+  });
+}
+
+window.NAYA_LEDGER={ record:record, replayOutbox:replayOutbox, countsLive:countsLive, countFor:countFor, fetchComments:fetchComments, renderComments:renderComments, postComment:postComment, stayedDays:stayedDays, stayedLine:stayedLine, inviteSendProbe:probeInviteSend, ledgerReadable:function(){ return ledgerReadable; } };
+window.NAYA_POINTS={ score:score, VALUES:VALUES, birthState:birthState, verify:verifyScore };
+window.NAYA_SYNC=SYNC;
+window.NAYA_LIVE={ refresh:refreshLiveness };
+init();
+})();
+
+</script>
 /* ═══ THE DASHBOARD DOOR ENGINE — "Your World, Live" (Mirror B5).
    A door layer over the same one-system app: it reads EXACTLY the tables
    the page's own engine reads (smart_notes wall rows, smart_mail_threads +
@@ -15285,7 +15706,7 @@ function dashFixFP(s){ var h=0; for (var i=0;i<s.length;i++){ h=((h<<5)-h+s.char
    not in this object and must never be re-added without Shawn's ruling.
    FIXA 2026-11-07: value-table.json now exists in the repo alongside this
    file (builder/value-table.json) with these same numbers — parity is provable. */
-var LD_VALUES = { birth:75, posts:25, notes:35, saves:5, invites:25, joins:50,
+var LD_VALUES = { birth:0, /* LEDGER MECHANICS 2026-11-21: birth is NOT a flat 75 — the 2026-11-01 lock (osBuildSpine comment) says birth is a one-time 2X in the first 24h; the single formula NAYA_POINTS.score gates the 2X on a real birth timestamp. */ posts:25, notes:35, saves:5, invites:25, joins:50,
   memberBonus:40, sales:100, likes:1, comments:3, shares:5, externalShares:10 };
 /* 2026-11-01 — Shawn: COLORS BY VALUE AND MEANING.
    Highest value = most premium color. Sales(100)=magenta · Joins(50)=purple ·
@@ -16418,16 +16839,12 @@ function ldBuckets(times, w){
   return out;
 }
 function ldScore(counts){
-  /* CANON — the full value table over displayed counts (gate check #10
-     reconciles this exact math, tolerance 0). Unwired counts are 0 with
-     honest labels; the formula never invents. */
-  var v = LD_VALUES, c = counts || {};
-  return v.birth
-    + (c.posts||0)*v.posts + (c.notes||0)*v.notes + (c.saves||0)*v.saves
-    + (c.invs||0)*v.invites + (c.joins||0)*v.joins
-    + ((c.member||0) > 0 ? v.memberBonus : 0)
-    + (c.sales||0)*v.sales + (c.likes||0)*v.likes + (c.comments||0)*v.comments
-    + (c.shares||0)*v.shares + (c.extShares||0)*v.externalShares;
+  /* LEDGER MECHANICS 2026-11-21: ONE formula — the board, the hero gauge and
+     the derivation all read NAYA_POINTS.score (gate check #10 reconciles
+     this exact math, tolerance 0). The old second formula (+75 birth, no
+     2X) disagreed with the spine by 125 points on live counts (400 vs 275);
+     it is gone. Birth is the gated 2X, never a flat +75 (2026-11-01 lock). */
+  return (window.NAYA_POINTS ? window.NAYA_POINTS.score(counts) : 0);
 }
 function ldSample(n, seed){
   var out = [];
@@ -16823,9 +17240,7 @@ function ldRiverBuckets(PD, w){
     }
     series.push({color:src.color, key:src.key, vals:bk});
   });
-  // sample streams: dashed, labeled, never solid
-  series.push({color:'#8a8a96', key:'likes', sample:true, vals:ldSample(cfg.n, 77)});
-  series.push({color:'#8a8a96', key:'shares', sample:true, vals:ldSample(cfg.n, 99)});
+  /* LEDGER MECHANICS 2026-11-21 (G13): the synthetic PRNG like/share lines are REMOVED. A chart must never draw data that does not exist, even dashed. Likes/shares return to the river only as real Ledger buckets — ldRiverBuckets gains them when the packet's event read lands; until then the river shows clicks, joins, posts, notes and the rest, all real. ldSample stays for the labelled demo/sample-node visuals only. */
   return series;
 }
 function ldSmooth(pts){
@@ -19705,10 +20120,11 @@ window.osFunnelNoSource = function(stage){
   body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:#fff;">'
     + '<div style="font-size:48px;margin-bottom:16px;">' + (isV ? '\u{1F441}' : '\u23F1') + '</div>'
     + '<div style="font-size:32px;font-weight:900;">' + (isV ? 'Visited' : 'Stayed') + '</div>'
-    + '<div style="font-size:18px;margin-top:8px;line-height:1.5;">' + (isV ? 'No source yet \u2014 the blog loop\u2019s Phase 2 defines what a visit is. Nothing is counted here until then.' : 'No source yet \u2014 Stayed needs the ledger flowing. Nothing is counted here until then.') + '</div>'
+    + '<div style="font-size:18px;margin-top:8px;line-height:1.5;">' + (isV ? 'No source yet \u2014 the blog loop\u2019s Phase 2 defines what a visit is. Nothing is counted here until then.' : '<span id="os-stayed-line">No source yet \u2014 Stayed needs the ledger flowing. Nothing is counted here until then.</span>') /* LEDGER MECHANICS 2026-11-21 (G14): the span is replaced at runtime by NAYA_LEDGER.stayedLine() when the Ledger has active days. */ + '</div>'
     + '<div style="font-size:14px;margin-top:16px;">A stage with no source shows this, never a fabricated number.</div></div>';
   if (dr.parentNode !== document.body) document.body.appendChild(dr);
   dr.classList.add('open'); dr.classList.add('viewpoint'); dr.setAttribute('aria-hidden', 'false');
+  try{ if (!isV && window.NAYA_LEDGER) window.NAYA_LEDGER.stayedLine().then(function(t){ var el=document.getElementById('os-stayed-line'); if (el) el.textContent=t; }); }catch(e){}
   document.body.classList.add('viewport-focus');
 };
 /* PASS-5 2026-11-10 — EVERY MINI GAUGE DRILLS IN (the Click Law, Shawn
@@ -21057,10 +21473,14 @@ window.ldLayoutNodes = ldLayoutNodes;
        (placement law, Shawn 2026-11-01: never a new separate section). Same
        cell() presentation as the row above — number + gauge + label. Found
        is live (window._dashFunnel, all-links clicks). Visited has NO SOURCE
-       YET (the blog loop's Phase 2 defines it). Joined is the honest 0 —
-       the join flow (smart_link_joins) is not built yet. Stayed has NO
-       SOURCE YET (needs the ledger flowing). A stage with no source says so
-       in plain words in the source line below, never a fabricated number. */
+       YET (the blog loop's Phase 2 defines it). Joined is the honest count —
+       the join flow records through the Ledger (the Join button below) and
+       the joinus Smart Link; the Dashboard reads joins from the rollup and,
+       once the packet's SELECT grant lands, from smart_link_joins itself.
+       Stayed reads active days from the Ledger (NAYA_LEDGER.stayedDays) —
+       posts, invites, lists and queued actions in the last 7 days. A stage
+       with no source says so in plain words in the source line below, never
+       a fabricated number. */
     var _funOld = document.getElementById('os-reports-funnel');
     if (_funOld) _funOld.remove();
     var _funSrcOld = document.getElementById('os-reports-funnel-src');
@@ -21080,7 +21500,7 @@ window.ldLayoutNodes = ldLayoutNodes;
     _funSrc.className = 'os-note';
     _funSrc.id = 'os-reports-funnel-src';
     _funSrc.style.margin = '10px 0 0;';
-    _funSrc.textContent = 'Found: how many people clicked any of your links. Joined: ' + ((_fun && _fun.joined) ? _fun.joined + (_fun.joined === 1 ? ' person joined' : ' people joined') + ' so far.' : 'nobody has joined yet.') + ' The Smart Links list shows only the links you claimed.';
+    _funSrc.textContent = 'Found: how many people clicked any of your links. Joined: ' + ((_fun && _fun.joined) ? _fun.joined + (_fun.joined === 1 ? ' person joined' : ' people joined') + ' so far.' : 'nobody has joined yet.') + ' The Smart Links list shows only the links you claimed. Board counts his claimed links only \u2014 the nine PayPal plan links are counted in Found, not in the board.'; /* LEDGER MECHANICS 2026-11-21 (G21): scope label carried forward verbatim from Nov 13 (blob a2af0492) — the current base had lost it. */
     _funEl.insertAdjacentElement('afterend', _funSrc);
     try{ if (typeof window._osMountSlMinis === 'function') window._osMountSlMinis(_funEl); }catch(e){}
     try{ if (typeof window._osMiniNums === 'function') window._osMiniNums(); }catch(e){}
@@ -22420,10 +22840,11 @@ function wireViewToggle(){
      hop test (PROVEN / NOT PROVEN), never assumed here. */
   window._osTrackBoardOpen = function(board, dest){
     /* Returns the insert promise (or null when there is no connection) so the
-       click handler can wait for the ledger write — or its timeout. */
+       click handler can wait for the ledger write — or its timeout.
+       LEDGER MECHANICS 2026-11-21 (G20): the hook EXISTED in this base (the diagnosis's "0 occurrences" was wrong — it is at the comment, this definition and the call site, byte-identical to Nov 13). It was broken the same way in both: the smart_notes insert 401s on the naya_category_prototypes grant. It now records a Ledger event through NAYA_LEDGER.record instead — same navigation behavior (600ms settle), the write goes through the one write path. */
     try{
-      if (!sb) return null;
-      return sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify({k:'board-open', board:board, dest:dest, at:new Date().toISOString()})});
+      if (!window.NAYA_LEDGER) return null;
+      return window.NAYA_LEDGER.record('board_open', board, { dest:dest, source_table:'smart_notes', source_id:board }).then(function(out){ return { data:out.event||null, error:out.queued?null:null }; });
     }catch(e){ return null; }
   };
   document.addEventListener('click', function(e){
@@ -22699,7 +23120,8 @@ function osBuildSpine(d){
   s.saves=(d.saveTimes||[]).length;
   s.invitesSent=s.invs;
   s.inviteJoins=s.joins;
-  s.sales=0; s.likes=0; s.comments=0; s.shares=0; s.extShares=0;
+  s.sales=0; /* LEDGER MECHANICS 2026-11-21: likes/comments/shares now read the Ledger + outbox (NAYA_LEDGER.countFor) instead of hardcoded 0. A count the Ledger cannot yet return is its outbox queue, labelled pending — never invented. Sales stay 0 (no sales ledger yet); external shares stay 0 (no source yet). */
+  s.likes=(window.NAYA_LEDGER?window.NAYA_LEDGER.countFor('like'):0); s.comments=(window.NAYA_LEDGER?window.NAYA_LEDGER.countFor('comment'):0); s.shares=(window.NAYA_LEDGER?window.NAYA_LEDGER.countFor('share'):0); s.extShares=0;
   s.memberBonus=0; /* no membership ledger on this front yet — honest 0, never invented */
   /* 2026-11-01 — Shawn LOCKED: Birth is NOT a flat 75. It's a one-time 2X
      multiplier on everything earned in the first 24h. Base score = 0,
@@ -22711,8 +23133,8 @@ function osBuildSpine(d){
     + (s.memberBonus>0 ? VV.memberBonus : 0)
     + s.sales*VV.sales + s.likes*VV.likes + s.comments*VV.comments
     + s.shares*VV.shares + s.extShares*VV.externalShares;
-  /* BIRTH DAY BONUS: 2X on everything (one-time, first 24h) */
-  s.score = s.score * 2;
+  /* LEDGER MECHANICS 2026-11-21: BIRTH DAY BONUS — 2X on everything, one-time, first 24h ONLY (the 2026-11-01 lock). The old line doubled forever, on every load, with no date check. NAYA_POINTS.score applies the 2X only inside 24h of the birth timestamp (earliest record of this alias) and is the SAME function the board calls — hero and board agree to the point. */
+  s.score = (window.NAYA_POINTS ? window.NAYA_POINTS.score(s) : s.score);
   /* COMPLETENESS — honest per-period score deltas. Windowed from the spine's
      OWN timestamp arrays with the spine's OWN values. Joins window from the
      link day-buckets (day granularity — honest for day/week/month; the hour
