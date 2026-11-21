@@ -4,7 +4,7 @@
 
 **NN-20261120-save-the-boards-as-modules · Naya Note · 2026-11-20 ~23:47–00:28 MST**
 
-*Paired Smart Note: SN-pending — Save the Boards as Modules (takes the next free number at filing)*
+*Paired Smart Note: SN-4375 — Save the Boards as Modules*
 
 **Category:** Law — building blocks, not new pages
 
