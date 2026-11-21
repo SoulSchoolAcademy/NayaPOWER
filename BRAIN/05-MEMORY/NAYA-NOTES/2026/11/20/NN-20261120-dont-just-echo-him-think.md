@@ -4,7 +4,7 @@
 
 **NN-20261120-dont-just-echo-him-think · Naya Note · 2026-11-20 ~23:47–00:28 MST**
 
-*Paired Smart Note: SN-pending — Don't Just Echo Him — Think (takes the next free number at filing)*
+*Paired Smart Note: SN-4376 — Don't Just Echo Him — Think*
 
 **Category:** Law — how the machine works his words
 
