@@ -13,6 +13,14 @@
 -- by DO blocks; safe to replay on a DB that already has these objects.
 -- NOTE: trigger functions referenced below are filed by Seat 2 (FUNCTIONS) where live-only;
 --   this file creates the tables + trigger attachments only.
+-- NOTE (Seat 6 fix, 2026-11-21 — SEAT-5-DECISION finding): the two trigger blocks
+--   below (trg_items_state_changed, trg_items_transition_log) now guard on
+--   to_regproc('public.items_state_changed' / 'public.items_transition_log') IS NOT NULL,
+--   so on a fresh apply — where 190008 (which defines both functions) has not run yet —
+--   the blocks skip cleanly instead of erroring 42883 and halting the chain.
+--   190008 creates both triggers itself (guarded), so they still land at the end
+--   of the chain. The two CREATE TRIGGER statements are byte-identical; nothing
+--   else in this file changed.
 
 -- ---------------------------------------------------------------------------
 -- Table: public.project_intel_items (20 columns, live)
@@ -95,13 +103,13 @@ end $$;
 
 -- trigger trg_items_state_changed on project_intel_items
 do $$ begin
-  if not exists (select 1 from pg_trigger where tgname='trg_items_state_changed' and tgrelid='public."project_intel_items"'::regclass) then
+  if to_regproc('public.items_state_changed') is not null and not exists (select 1 from pg_trigger where tgname='trg_items_state_changed' and tgrelid='public."project_intel_items"'::regclass) then
     CREATE TRIGGER trg_items_state_changed BEFORE UPDATE ON public.project_intel_items FOR EACH ROW EXECUTE FUNCTION items_state_changed();
   end if;
 end $$;
 -- trigger trg_items_transition_log on project_intel_items
 do $$ begin
-  if not exists (select 1 from pg_trigger where tgname='trg_items_transition_log' and tgrelid='public."project_intel_items"'::regclass) then
+  if to_regproc('public.items_transition_log') is not null and not exists (select 1 from pg_trigger where tgname='trg_items_transition_log' and tgrelid='public."project_intel_items"'::regclass) then
     CREATE TRIGGER trg_items_transition_log AFTER INSERT OR UPDATE OF state ON public.project_intel_items FOR EACH ROW EXECUTE FUNCTION items_transition_log();
   end if;
 end $$;
