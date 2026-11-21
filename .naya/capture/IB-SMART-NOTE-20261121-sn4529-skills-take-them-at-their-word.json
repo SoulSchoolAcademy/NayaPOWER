@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4529",
+ "intelligence": {
+  "title": "SN-4529 — Skills — Take Them at Their Word, No Proof at Join",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4529-skills-take-them-at-their-word",
+  "smart_note_id": "SN-4529",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4529/IB-SMART-NOTE-20261121-sn4529-skills-take-them-at-their-word.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "Skills needs its own lens: not who you are, what you give. The core question is what can you do for people — your ability, your service, your unique ability, what you give to the world — like an online résumé of what you offer. Per skill: what it does for them, and how someone starts. And NO proof is demanded at join: they are just filling out joining Naya, inputting that data — take them at their word. Especially a child: ask a child to show proof they are good at something and they will not know what you mean.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4529",
+   "title": "SN-4529 — Skills — Take Them at Their Word, No Proof at Join",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4529/IB-SMART-NOTE-20261121-sn4529-skills-take-them-at-their-word.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4529/IB-SMART-NOTE-20261121-sn4529-skills-take-them-at-their-word.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

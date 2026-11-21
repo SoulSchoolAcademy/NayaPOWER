@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4524",
+ "intelligence": {
+  "title": "SN-4524 — The One Bar — Locked: ADD · MAIL · ACTIVITY · WORLDS · ECOSYSTEM · CONNECT",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4524-the-one-bar-locked",
+  "smart_note_id": "SN-4524",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4524/IB-SMART-NOTE-20261121-sn4524-the-one-bar-locked.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The screenshot set is THE set everywhere — six jewel tiles with flow/light: ADD (+) · MAIL · ACTIVITY · WORLDS · ECOSYSTEM · CONNECT. Same plus button all the way through; keep the flow and light-up. MAIL/ACTIVITY as shown OVERTURNS the morning's PERSONAL/BUSINESS label ruling. Consequence: Hub fix bar, Inviter bar, Personal bar all need aligning to this set — recorded in the frame registry, builds not yet dispatched.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4524",
+   "title": "SN-4524 — The One Bar — Locked: ADD · MAIL · ACTIVITY · WORLDS · ECOSYSTEM · CONNECT",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4524/IB-SMART-NOTE-20261121-sn4524-the-one-bar-locked.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4524/IB-SMART-NOTE-20261121-sn4524-the-one-bar-locked.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

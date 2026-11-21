@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4525",
+ "intelligence": {
+  "title": "SN-4525 — Composer — \"Post a Note\", Never \"Smart Note\" as a Button or Label",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4525-composer-post-a-note",
+  "smart_note_id": "SN-4525",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4525/IB-SMART-NOTE-20261121-sn4525-composer-post-a-note.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The create action is \"Post a note\", NEVER \"Smart Note\" as a button/label. Flow: ADD → Post a note → choose where it goes (feed picker; Space via plus button/dropdown when more than one Space) → private by default, public only by your choice. (Matches the \"Which feed?\" step already built; the label is what changes.)",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4525",
+   "title": "SN-4525 — Composer — \"Post a Note\", Never \"Smart Note\" as a Button or Label",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4525/IB-SMART-NOTE-20261121-sn4525-composer-post-a-note.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4525/IB-SMART-NOTE-20261121-sn4525-composer-post-a-note.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
