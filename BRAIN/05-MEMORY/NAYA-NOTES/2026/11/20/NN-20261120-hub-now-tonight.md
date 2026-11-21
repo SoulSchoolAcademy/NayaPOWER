@@ -4,7 +4,7 @@
 
 **NN-20261120-hub-now-tonight · Naya Note · 2026-11-20 ~17:30–17:41 MST**
 
-*Paired Smart Note: SN-pending — Hub Now, Tonight (takes the next free number at filing)*
+*Paired Smart Note: SN-4378 — Hub Now, Tonight*
 
 **Category:** Law — how the machine takes an order
 
