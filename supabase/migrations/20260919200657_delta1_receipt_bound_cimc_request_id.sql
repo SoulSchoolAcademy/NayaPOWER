@@ -304,5 +304,5 @@ grant execute on function public.nayanet_send_smart_mail(uuid,uuid,text,text,tex
 revoke execute on function public.nayanet_send_smart_mail_authorized(uuid,uuid,text,text,text,text,text,uuid,text,text,text,uuid) from public,anon,authenticated,service_role;
 grant execute on function public.nayanet_send_smart_mail_authorized(uuid,uuid,text,text,text,text,text,text,uuid,text,text,text,uuid) to authenticated,service_role;
 
-revoke execute on function public.nayanet_send_smart_mail_policy_authorized(uuid,uuid,text,text,text,text,text,uuid,text,text,text,uuid) from public,anon,authenticated,service_role;
+revoke execute on function public.nayanet_send_smart_mail_policy_authorized(uuid,uuid,text,text,text,text,text,text,uuid,text,text,text,uuid) from public,anon,authenticated,service_role;
 grant execute on function public.nayanet_send_smart_mail_policy_authorized(uuid,uuid,text,text,text,text,text,text,uuid,text,text,text,uuid) to authenticated,service_role;
