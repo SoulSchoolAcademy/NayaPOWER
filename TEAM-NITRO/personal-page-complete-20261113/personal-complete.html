@@ -2628,6 +2628,9 @@ body.is-owner .os-vis-only{display:none!important;}
  .ib-photos-row{display:grid;gap:10px;grid-template-columns:repeat(var(--rc,3),1fr);}
  .ib-photos-row figure{margin:0;}
  .ib-photos-row figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#0a0a0f;}
+ /* UNIVERSAL-BAR 2026-11-21 (placement) — the citizen chooses where the pictures go: at the top above the headline, or just above the social sharing below the text. The chosen button wears the ADD purple. */
+ .os-place-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0 0;}
+ .os-place-btn[aria-pressed="true"]{border-color:#8e24aa;box-shadow:0 0 0 1px #8e24aa inset;}
 .ib-card-orb {
   width: 42px; height: 42px; flex: none; margin: 1px 0 0 18px;
   background:
@@ -4162,6 +4165,7 @@ body.fc-open{overflow:hidden;}
 <input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
 <div class="os-fieldwrap"><textarea class="os-textarea" id="os-post-body" rows="3" data-mw-ph="Make a post on this app’s feed…" placeholder="Make a post on this app&rsquo;s feed&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-post-body" aria-label="Dictate your post" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="os-postimg-row" id="osPostImgRow"><input type="file" id="osPostImgIn" accept="image/*" multiple hidden><button type="button" class="ph-msg" id="osPostImgBtn">🖼 Add photos</button><span class="os-note" id="osPostImgCount" style="margin:0;"></span><button type="button" class="ph-msg" id="osPostImgRemove" hidden>Remove photos</button></div>
+<div class="os-place-row" id="osPlaceRow"><span class="os-note" style="margin:0;">The pictures go:</span><button type="button" class="ph-msg os-place-btn" id="osPlaceTop" aria-pressed="true">At the top, above the headline</button><button type="button" class="ph-msg os-place-btn" id="osPlaceSocial" aria-pressed="false">Above the social sharing</button></div>
 <div id="osPostPreview" class="os-post-preview" hidden><p class="os-note" style="margin:0 0 8px;">Preview — how it will look:</p><div id="osPostPreviewCard"></div></div>
 <div class="ph-actions"><button class="ph-msg" id="os-sched-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Schedule</button><button class="ph-msg" id="os-vis-toggle" type="button" aria-pressed="false" title="Who can see this post"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Private</button><button class="ph-connect" id="os-post-btn" type="button">✦ Post my Naya note</button></div>
 <div class="os-status" id="os-post-status"></div>
@@ -24743,7 +24747,7 @@ function wallCard(j, iso, pid, idx){
        the stub observer keeps the card on top). A scheduled post needs the live save. */
     if (!sb) {
       if(window.osSched && window.osSched.ts){ st.textContent='Connection unavailable — a scheduled post needs the live save.'; return; }
-      if(typeof window.fcStubInsert==='function' && window.fcStubInsert({k:'wall', a:a, b:b, photo:(window.__pxImg||null), photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null), noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')})){
+      if(typeof window.fcStubInsert==='function' && window.fcStubInsert({k:'wall', a:a, b:b, photo:(window.__pxImg||null), photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null),placement:(window.__pxPlace||'top'), noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')})){
         tgResetComposer((window.osNoteMode==='post' ? 'Posted — your words are on the feed, straight up. (Saved on this device — the live save is owed.)' : 'Posted — your Naya note is on the feed, your words beautiful. (Saved on this device — the live save is owed.)'));
       } else { st.textContent='Connection unavailable — post not saved.'; }
       return;
@@ -24761,7 +24765,7 @@ function wallCard(j, iso, pid, idx){
     }
     st.textContent='Posting\u2026';
     var sched=window.osSched||null;
-    var payload={k:'wall', a:a, b:b, photo:(window.__pxImg||null), photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null), noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')};
+    var payload={k:'wall', a:a, b:b, photo:(window.__pxImg||null), photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null),placement:(window.__pxPlace||'top'), noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')};
     if (sched && sched.ts) { payload.schedFor=new Date(sched.ts).toISOString(); payload.schedLabel=sched.label; }
     sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify(payload)}).then(function(res){ osBustNotes();
       if (res.error) { try{console.warn('[fix8] wall post failed:', res.error && res.error.code, res.error && res.error.message);}catch(e){} st.setAttribute('data-fix8-post','failed'); /* FIX-20261112-F: the live save is blocked (42501) — the note still lands as a STUB, and the creator closes with an honest receipt naming the stub + the owed permission, instead of sitting open on an error while the card is already on the feed. */ if(typeof window.fcStubInsert==='function' && window.fcStubInsert(payload)){ tgResetComposer((window.osNoteMode==='post' ? 'Posted — your words are on the feed, straight up. (Saved on this device — the live save needs a one-time permission from Shawn.)' : 'Posted — your Naya note is on the feed, your words beautiful. (Saved on this device — the live save needs a one-time permission from Shawn.)')); } else { st.textContent='Couldn\u2019t post just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'; } return; }
@@ -24776,7 +24780,7 @@ function wallCard(j, iso, pid, idx){
     if (!draft){ st.textContent='The draft is empty \u2014 write something first.'; return; }
     var sched=window.osSched||null;
     var d=window._tgDraft||{};
-    var payload={k:'wall', a:a, b:draft, raw:raw, photo:(window.__pxImg||null), photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null), noteType:'smart', vis:(window.pcPostVis||'private'),
+    var payload={k:'wall', a:a, b:draft, raw:raw, photo:(window.__pxImg||null), photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null),placement:(window.__pxPlace||'top'), noteType:'smart', vis:(window.pcPostVis||'private'),
       smart:{nutshell:d.nutshell||'', themes:d.themes||[], angles:d.angles||[]}};
     /* FIX-20261112-F: no live save in this session — the Smart note still lands, as a STUB
        (same receipt path as the live post). A scheduled post needs the live save. */
@@ -32022,6 +32026,7 @@ function el(tag, cls, html) {
        whole — width 100%, height auto, never cropped, never stretched.
        4:5 portrait is the hero shape on phone, 16:9 for video/landscape,
        1:1 square. No photo in the data → no photo on the card. */
+    var _photosEl = null; var _place = (note.placement === 'social' ? 'social' : (note.placement === 'top' ? 'top' : '')); /* UNIVERSAL-BAR 2026-11-21 (placement) — 'top' = at the top above the headline; 'social' = just above the social sharing below the text; anything else keeps the settled place, below the headline. */
     if (note.photos && note.photos.length){
       /* UNIVERSAL-BAR 2026-11-21 (A17) — the images arrange themselves. Rows of three; four is two rows of two (the four-corner grid); the last row fills what remains (1 full width, 2 side by side); nine is the 3x3. Each image in its own frame, whole, never cropped, never stretched. */
       var _ph = document.createElement('div'); _ph.className = 'ib-photos'; _ph.setAttribute('data-n', String(note.photos.length));
@@ -32037,7 +32042,10 @@ function el(tag, cls, html) {
         }
         _ph.appendChild(_row);
       });
-      b.appendChild(_ph);
+      _photosEl = _ph;
+      if (_place === 'top') { b.insertBefore(_ph, top); } /* the headline block is already on the board (appended just above), so this sits above the headline */
+      else if (_place === 'social') { /* stays off the board until the end of the board, where it goes just above the social sharing */ }
+      else { b.appendChild(_ph); }
     } else if (note.photo){
       var _fig = document.createElement('figure'); _fig.className = 'ib-photo';
       var _im = document.createElement('img'); _im.src = note.photo;
@@ -32161,6 +32169,9 @@ function el(tag, cls, html) {
     micro.innerHTML = '<span class="left" data-mw-tr="set" data-mw-en="ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY">' + (window.mwTr?window.mwTr('ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY'):'ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY') + '</span>' +
       '<span class="right" data-mw-tr="set" data-mw-en="TRUST: SOURCE / INTERPRETATION SEPARATED">' + (window.mwTr?window.mwTr('TRUST: SOURCE / INTERPRETATION SEPARATED'):'TRUST: SOURCE / INTERPRETATION SEPARATED') + '</span>';
     b.appendChild(micro);
+
+    /* UNIVERSAL-BAR 2026-11-21 (placement) — 'social' pictures go just above the social sharing below the text: ahead of the bottom actions bar (.board-actions, .board-bottom-actions on the fallback), or the microcopy when there is no actions bar. */
+    if (_photosEl && _place === 'social') { var _soc = b.querySelector('.board-actions') || b.querySelector('.board-bottom-actions') || micro; b.insertBefore(_photosEl, _soc); }
 
     return b;
   }
@@ -32713,7 +32724,7 @@ function ibWallNote(r){
     id: r.id, title: (j.t||j.title||''), subtitle: '', tone: ibToneFor(r), kind: 'personal',
     created_at: r.at, layers: layers,
     photo: (j.photo || j.image || null), /* R2 — a post's photo rides through to the card */
-    photos: ((j.photos && j.photos.length) ? j.photos.slice(0, 9) : null) /* UNIVERSAL-BAR 2026-11-21 (A17) — up to nine images ride through as an array; the card arranges them */
+    photos: ((j.photos && j.photos.length) ? j.photos.slice(0, 9) : null), placement: (j.placement || '') /* UNIVERSAL-BAR 2026-11-21 (A17) — up to nine images ride through as an array; the card arranges them */
   };
 }
 window.ibRender = intelBoard;
@@ -46217,6 +46228,11 @@ pxEnhancePerson();
    as the live wall — what you see is what posts. */
 (function(){
   window.__pxImg=null; window.__pxImgs=[]; /* UNIVERSAL-BAR 2026-11-21 (A17) — up to nine images; __pxImg stays the first, for the single-photo readers */
+  window.__pxPlace='top'; /* UNIVERSAL-BAR 2026-11-21 (placement) — the citizen's choice: 'top' above the headline (the default), 'social' just above the social sharing below the text. */
+  function setPlace(p){ window.__pxPlace=(p==='social'?'social':'top'); var _t=document.getElementById('osPlaceTop'), _s=document.getElementById('osPlaceSocial'); if(_t) _t.setAttribute('aria-pressed', String(window.__pxPlace==='top')); if(_s) _s.setAttribute('aria-pressed', String(window.__pxPlace==='social')); renderPreview(); }
+  var _plT=document.getElementById('osPlaceTop'), _plS=document.getElementById('osPlaceSocial');
+  if(_plT) _plT.addEventListener('click', function(){ setPlace('top'); });
+  if(_plS) _plS.addEventListener('click', function(){ setPlace('social'); });
   var inp=document.getElementById('osPostImgIn');
   var btn=document.getElementById('osPostImgBtn');
   var rem=document.getElementById('osPostImgRemove');
@@ -46241,11 +46257,11 @@ pxEnhancePerson();
          so only the untyped case gets a title here, "Your photo", never the
          banned fallback. */
       var _pt = b ? undefined : ((window.__pxImgs && window.__pxImgs.length) ? 'Your photos' : (window.__pxImg ? 'Your photo' : undefined));
-      try{ card.innerHTML=window.ibWallHTML({j:{k:'wall',a:a,b:b,t:_pt,photo:(window.__pxImg||null),photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null),noteType:(window.osNoteMode==='post'?'post':'naya')},at:new Date().toISOString(),id:'px-preview'},0); }
+      try{ card.innerHTML=window.ibWallHTML({j:{k:'wall',a:a,b:b,t:_pt,photo:(window.__pxImg||null),photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null),placement:(window.__pxPlace||'top'),noteType:(window.osNoteMode==='post'?'post':'naya')},at:new Date().toISOString(),id:'px-preview'},0); }
       catch(e){ card.innerHTML='<p class="os-note">Preview unavailable.</p>'; }
     } else { card.innerHTML='<p class="os-note">Preview unavailable.</p>'; }
   }
-  function clearImg(){ window.__pxImg=null; window.__pxImgs=[]; try{ inp.value=''; }catch(e){} if(rem) rem.hidden=true; var _cnt=document.getElementById('osPostImgCount'); if(_cnt) _cnt.textContent=''; renderPreview(); }
+  function clearImg(){ window.__pxImg=null; window.__pxImgs=[]; window.__pxPlace='top'; var _t=document.getElementById('osPlaceTop'), _s=document.getElementById('osPlaceSocial'); if(_t) _t.setAttribute('aria-pressed','true'); if(_s) _s.setAttribute('aria-pressed','false'); try{ inp.value=''; }catch(e){} if(rem) rem.hidden=true; var _cnt=document.getElementById('osPostImgCount'); if(_cnt) _cnt.textContent=''; renderPreview(); }
   btn.addEventListener('click', function(){ inp.click(); });
   if(rem) rem.addEventListener('click', clearImg);
   inp.addEventListener('change', function(){
