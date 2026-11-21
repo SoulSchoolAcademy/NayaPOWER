@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4458",
+ "intelligence": {
+  "title": "The Orb, the Pin, and the Library",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4458-the-orb-the-pin-and-the-library",
+  "smart_note_id": "SN-4458",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/DESIGN/SN-4458/IB-SMART-NOTE-20261121-sn4458-the-orb-the-pin-and-the-library.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of the page as a room full of things he already loves. When the rating star didn't read, the answer wasn't a better invention — it was the little circle in the sidebar with a friend's initial inside it, the light already flowing inside it. Take that whole, swap the initial for a star, and there it is: one white, one purple. Make it bigger for the rate orb, and let the light flow around the outside too, so the jewel lives instead of sitting. When the board is almost right, you don't rebuild it — you move it up a tad, in a tad, light down a little, and stop. When he renames something, you change only what he named: favorite becomes Pin it, and that's all — no new collection invented on the side, because every word he didn't say, carried as if he said it, is a correction he has to spend his evening making. Save is just as plain: one tap and it lands straight in the Smart List, no big list popping up first, and the Smart List lives wherever the saving happens — Personal, and Calendar too. Before you judge anything he found, check which version of the page he's looking at — live or staged — because a verdict read against the wrong build fixes the wrong page. And edit the real thing, never the copy: the builder who edited the export watched the checker overwrite every word. A recommendation is never his pick until he picks it — \"The Invitation\" is a beautiful name, but it never landed, because he never said so, and the title stays his. Every \"what is\" — the innovation, the technology, CCT, the protocol — gets its own frame, in words a child understands, grouped by kind, most often one full board across. And all of it — the vow, the deal, the promise, the constitution, the laws, the governance — lives in one place at last: the Intelligent Library, a search engine over every frame of Naya, where anyone can pull up whatever one they want.",
+  "simple_view": "Imagine the rating star is a little jewel that flows inside, like the circles with your friends' letters in them! The big orb flows on the outside too, like a jewel that is alive! Pin means stick it to the top, and Save means put it in your Smart List — two different jobs! Always check which page Shawn is looking at before you say it is fixed! And all the laws live in one Library, like a search engine, so you can find any of them!",
+  "grandma_view": "It's like this, love — the rating star isn't something new, dear, it's the little circle in the sidebar with your friend's letter inside it, the light already flowing inside! Take the whole thing, love, swap the letter for a star — one white, one purple — and there it is! The big orb flows on the outside too, dear, like a jewel that is alive! When the board is almost right, love, you just nudge it — up a tad, in a tad, light down a little — never a rebuild! And when he renames something, dear, you change only what he named — favorite becomes Pin it, and that's all, nothing invented on the side! Save lands straight in your Smart List, love, no big list popping up first! And all the laws, dear, live in one Library now, like a search engine, so you can find any of them in seconds!",
+  "naya_view": "Before drawing a new flowing element, find the flowing element already in the build — the DM orb, the rate orb, the initials — and take it whole. Change only the content inside: initial to star, size to bigger. VALUE: purple orbs, white stars; INTELLIGENCE: white orbs, purple stars. Rename the heading exactly: \"RATE THIS INTEL.\" The rate orb is the DM element scaled up, flow inside AND around the outside. When the verdict is \"almost,\" make only the three moves — up a tad, in a tad, light down a little — then stop and let his eye judge again; never redesign a board he called almost. Carry his words exactly — the action, the label, the scope he named, nothing added; when a rename is approved, change only what he named; if a companion name seems needed, ask, never invent it and file it as his. Save lands straight in: one tap into the Smart Lists area, organizing afterwards; put a Smart List on Personal and on Calendar. When he sends a screenshot or names a defect, fetch the live URL and the staged URL first and say which one his picture matches — bytes and head line, not a feeling. Before editing, name the source of truth — the artifact, the branch file, the live file — and edit that, never a copy. Hold a recommendation as a recommendation until he picks it — \"Let's go with that\" or a named choice — and when a repair completes, verify the exact change named and report what did not change in the same message. For each \"what is\" topic, build one frame in the most distilled, real, authentic language — same stage and format, short, child-clear, never scrolling; group the frames by kind; default to one full board across. Build the Intelligent Library as the search engine over the law: every linked board lives there as a searchable frame, and when a new law is written, it lands in the Library the same pass, or it is not filed.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4458",
+   "title": "The Orb, the Pin, and the Library",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/DESIGN/SN-4458/IB-SMART-NOTE-20261121-sn4458-the-orb-the-pin-and-the-library.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/DESIGN/SN-4458/IB-SMART-NOTE-20261121-sn4458-the-orb-the-pin-and-the-library.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4463",
+ "intelligence": {
+  "title": "His Eye Is the Proof",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4463-his-eye-is-the-proof",
+  "smart_note_id": "SN-4463",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4463/IB-SMART-NOTE-20261121-sn4463-his-eye-is-the-proof.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of the checker like a report card and his eye like actually looking at the homework. The report card says five out of five — but when he looks at the page himself, the stars are still pink and the buttons are still crashing into the box. The report card measures the parts; only his eyes can see whether the page actually looks right. The same rule runs through the whole evening: one bottom bar, the same on every page, so your hand always knows where to go; the plus button makes a post and asks which feed first; every name says what it opens; every money sentence says how much, of what, and when; and the last board of the agreement offers one button — claim your smart name — because the end of a journey is the arrival, not more navigation. And when he asks a question, the answer is the decided version, not an echo — think it through, bring him the ten-star line, and put the finished thing live where he can see it.",
+  "simple_view": "Imagine the checker says five out of five, but Shawn looks and sees pink stars and buttons crashing together! His eye is the boss, not the checker! One bar at the bottom of every page, the same everywhere, with a big plus button! That plus button makes a post, and it asks which feed first! The last board gets one button that says Claim Your Smart Name! And every word must be plain, so nobody has to guess what anything means!",
+  "grandma_view": "It's like this, love — the checker is like a report card, dear, and it said five out of five! But when Shawn looked at the page himself, love, the stars were still pink and the buttons were still crashing into the box! His eyes are the proof, dear — the report card measures the parts, but only his eyes can see if the page looks right! One bar at the bottom of every page, love, the same everywhere, with a big plus button that makes a post! And the last board gets just one button, dear — Claim Your Smart Name — because the end of the journey is the arrival, love, not more wandering!",
+  "naya_view": "The checker PASS is a milestone, never the verdict — report it as \"the checker passed 5/5; your eye is the proof,\" and never deliver a staged link with the word \"done\" attached to a checker verdict. When his eye overrules a PASS, record the overruling in the open in the same pass — which items, what he saw, what the checker had measured — so the next round fixes the seeing, not just the bytes. When a checker keeps passing what his eye keeps failing, the check itself is wrong: change what the checker measures. Carry the Dashboard bottom bar byte for byte to Hub and Personal — ADD · PERSONAL · BUSINESS · WORLDS · ECOSYSTEM · CONNECT, plus button included — no page gets its own version, its own order, or its own extra icon; network notifications render on the bar itself. Wire ADD to one flow everywhere: tap → \"Which feed?\" (Personal, Business, Space, Hub) → the post composer in the Official Post Board format; never smart notes. When he renames a thing, rename it everywhere it appears, in the same round — the three lists ride together, each opening its own lists. Every money sentence names the amount, the thing, and the trigger — \"You receive 50% of the revenue when someone joins because you shared\" is the template. When he asks what a button does, the answer is a click, not a sentence — never describe a destination from memory or from the label. The final board of any walk gets exactly one action, in plain words, going straight to the place; no back/forward arrows on a closing board. When he gives a direction, answer with the decided version: \"Here's the ten-star line — [line] — because [reason from his law].\" Finished builds go live on the official URL — not the artifact viewer, not a screenshot of the viewer. Every share, approve, or send step leads with one plain sentence: what is being shared, with whom, and what happens when he says yes.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4463",
+   "title": "His Eye Is the Proof",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4463/IB-SMART-NOTE-20261121-sn4463-his-eye-is-the-proof.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4463/IB-SMART-NOTE-20261121-sn4463-his-eye-is-the-proof.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

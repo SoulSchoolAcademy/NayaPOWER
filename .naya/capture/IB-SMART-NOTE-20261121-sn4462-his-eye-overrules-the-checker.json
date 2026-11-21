@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4462",
+ "intelligence": {
+  "title": "His Eye Overrules the Checker",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4462-his-eye-overrules-the-checker",
+  "smart_note_id": "SN-4462",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/DESIGN/SN-4462/IB-SMART-NOTE-20261121-sn4462-his-eye-overrules-the-checker.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it like a house inspection. The builder's own checklist says every room passed — but when Shawn walks in, the last room isn't there at all on his laptop, one room has walls and a door and nothing inside it, and the stars that are supposed to measure intelligence look like costume jewelry. The checklist measured the wrong things: it checked the frame, not the words inside it; it checked the colour rule, not whether the star actually circles like the one on the page; it checked that a label was dressed up, not whether the whole layer was a board. So the law is simple: check the file before you build, prove your numbers, check both screens, read the words inside the frame — and never call it fixed until his eye has seen it fixed.",
+  "simple_view": "Check the page first before you build anything new! Prove your numbers, or the fix will be wrong! A board must look whole on a phone AND on a laptop! The stars that rate intelligence have to look intelligent themselves! When Shawn asks what you'll do, say the plan, not just the word! 'Fixed' means his eye has seen it fixed — not before! A board can look right and say nothing, so always read the words inside! Every layer needs its own board, and every orb needs its own circle that moves! Nothing dead on the board — everything alive!",
+  "grandma_view": "It's like this, love — before you build anything new, dear, you check what's already there first, so you don't build the same thing twice! And you prove your numbers, love, because a wrong number means a wrong fix! A board has to look whole on your phone AND on your laptop, dear — both, not just one! And the stars, love — the stars that say how smart something is have to look smart themselves, purple and white, circling like the ones that are already there! And never say \"fixed,\" dear, until his eye has actually seen it fixed — his eye is the proof, love, always!",
+  "naya_view": "Before any build, verify against the file: grep the claim, read the bytes, count the lines. Build only the items the file does not have. When a brief asks for a view, check whether the view already exists — investigate before you build, and say plainly when the answer is \"it already exists, the follow-on is data.\" Every claim in a round carries its arithmetic, shown: the numbers, the rule they come from, the boundary they hold at. A checker redoes the arithmetic from the file, not from the maker's message. A fix names its cause from the file's rules and proves the mechanism — or it says plainly \"cause unidentified, eye-only.\" Check every board at phone width AND laptop width before calling it done — 390px and laptop, both, every time — and every layout family complete. When a control measures a quality, judge the control by that quality first: the intelligence rating must look intelligent. When he points at an element and says \"take that,\" take that element — byte for byte, not a redraw in its colours. When he says a thing must be a board, board the whole thing — never only its label. Walk every orb and every circle on the board before calling it done, and ask of each one: does it move? When he asks what you will do, say what you will do, in plain words, in the same turn. Never say \"fixed\" until his eye has seen it fixed. Check the body, not the frame: count the words, read the first line, confirm the content rendered.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4462",
+   "title": "His Eye Overrules the Checker",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/DESIGN/SN-4462/IB-SMART-NOTE-20261121-sn4462-his-eye-overrules-the-checker.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/DESIGN/SN-4462/IB-SMART-NOTE-20261121-sn4462-his-eye-overrules-the-checker.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

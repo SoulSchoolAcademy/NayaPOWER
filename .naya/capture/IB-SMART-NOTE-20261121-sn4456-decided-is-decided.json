@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4456",
+ "intelligence": {
+  "title": "Decided Is Decided",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4456-decided-is-decided",
+  "smart_note_id": "SN-4456",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4456/IB-SMART-NOTE-20261121-sn4456-decided-is-decided.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it like a house rule written on the wall: once he has decided \"no audio,\" the question is closed — nobody reopens it to be helpful. One button that does the wrong thing is not a redesign job; it is a copy job, because the three buttons next to it already do the right thing. Sixteen faces live in the family album, and showing two of them twelve times tells everyone the family has two faces — so all sixteen take their turn, never the same face twice in a row. When something seems to have vanished, check the real house first before panicking about a lost key: the live pages were all still there, and only a temporary preview link had gone stale. And the shape that made the agreement beautiful — the framed stage, the boards, the flow — is not a one-page trick; it is the template for every presentation after it, membership, skills, all the legal pages, with only the logo swapped. First the Personal page, because it is the wall in the way; then the Hub, finished properly; then the walkthrough, which hands over the real Personal page at the end.",
+  "simple_view": "Imagine a show with no sound at all — just beautiful pictures, and you tap play and the movie simply plays! The same girl should never pop up twice in a row — every face gets its turn, like taking turns on a swing! If one button goes to the wrong place, just copy its big brother button that goes to the right place! And the very best part: once we make something beautiful, we use the same beautiful shape for everything — for membership, for skills, for all the pages! First we finish your own page, then the big Hub, and only then the walk through it all!",
+  "grandma_view": "It's like this, love — once he has decided no audio, dear, the question is closed, and nobody reopens it to be helpful! The same face should never pop up twice in a row, love — every face gets its turn, like taking turns on a swing! If one button goes to the wrong place, dear, just copy its big brother button that already goes to the right place! And once we make something beautiful, love, we use that same beautiful shape for everything — membership, skills, all the pages, just swapping the little logo! First your own page, dear, then the big Hub, and only then the walk through it all!",
+  "naya_view": "Decisions stand until he reopens them: no audio on the presentation — visual only — two fixes and nothing else. Play on the video and play on the player both just play the video; pause on either rests it. All sixteen portraits from the rotation registry, uploaded to R2, rotating in registry order, never the same face twice in a row — verify by counting distinct portraits in the live bytes. On any \"a page disappeared\" report: fetch every live page and compare bytes first, check staged and preview links separately, and report which one it is before rebuilding anything; never re-share a preview mid-build. Red N: text box first with breathing room; underneath the video where the text leaves no room; check all 27 boards, none touches an edge. The odd one out: find the sibling that already goes to the right place, copy its destination verbatim, change nothing else, and carry the same line into every other copy of the file. Before any missing verdict, re-list fresh — if the check and the upload share a minute, the check is the suspect. All-text slides: keep the format, replace the image with a board, pick the shape per slide from the five — never one big wall of text, never scroll. The agreement's format is the template: start every new presentation from it, swap the N for the citizen's logo or their face in the corners, keep the stage, the boards, the flow, the jewel framing. Order: Personal first, then Hub officially done, then the walkthrough — each page shown one by one, certificate confirmed solid, audio last.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4456",
+   "title": "Decided Is Decided",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4456/IB-SMART-NOTE-20261121-sn4456-decided-is-decided.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4456/IB-SMART-NOTE-20261121-sn4456-decided-is-decided.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

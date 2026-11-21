@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4460",
+ "intelligence": {
+  "title": "Hired to Lead, Paid When We Get Paid",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4460-hired-to-lead-paid-when-we-get-paid",
+  "smart_note_id": "SN-4460",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4460/IB-SMART-NOTE-20261121-sn4460-hired-to-lead-paid-when-we-get-paid.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it as a job with a real company, not a scheme: you are hired to be the leader for NayaNET, you tell the world about it — post, text, email, get a domain, market as an ambassador — and when people join through your link, you get paid. If they don't join, you don't get paid. But the brain is yours forever either way — that part is never conditional on a sale. The pay is simple and honest: nine days to try it, paid on day ten, and after that you are paid whenever we are paid, so if people join every day, you get paid every day. Naya teaches it to you one on one, on video, spelling out exactly what to do — and the visuals move with her voice, alive, not a slideshow with a soundtrack. And everything you save has a home: every page has its own Smart List, so what you saved on Personal is waiting on Personal. One rail for messages and people, one tap that opens it, four actions that light up in their own colours — red, purple, blue, green — so your hands on a post never blur into one gesture.",
+  "simple_view": "Imagine Naya talks to you on video, just you and her! She tells you exactly what to do, step by step, so you can win! You are hired to be the leader, like a real job at a big tech company! People join through your special link, and you get paid! Not once a month — you get paid when we get paid, on day ten! And even if nobody joins, your brain is yours forever! Love is red, Like is purple, Comment is blue, Share is green — each one its own pretty color!",
+  "grandma_view": "It's like this, love — Naya talks to you on video, just you and her, dear, and tells you exactly what to do, step by step! You're hired to be the leader, love — like a real job with a good company, not one of those schemes! When people join through your link, dear, you get paid — nine days to try it, paid on day ten, and if people join every day, you get paid every day! And even if nobody joins, love, your brain is yours forever — that part nobody can take away! And the little buttons, dear — Love red, Like purple, Comment blue, Share green — each one its own pretty color, lit up like jewels!",
+  "naya_view": "Give each action its colour and keep it: Love red, Like purple, Comment blue, Share green — lit when active, never white; icons jewel-like and prominent, counts fully drawn, never cut off. When a control is tapped, it must open — no close-first, no second tap, no dead press; prove the open by a real tap. When two names describe one thing, collapse them to one: Messenger and People rail are one rail. Give every page its own Smart List area — Personal, Business, Your World, Calendar — and keep the Intelligent Library as the search engine over the laws, constitutions, and rules; never invent a collection name he did not say. When an icon is placed or fixed, fetch its destination fresh and match it against the live thing before calling it done; the AI Score icon points at alscore.nayapower.workers.dev, the Academy icon at academy.nayanet.app, and nothing points at app.nayanet.technology again. Build in his order: Hub and Personal first, then About and Skills on the four board formats, then membership, then paywalls — never membership before the pages that explain what it is. Bind the visuals to the audio: the picture, the light, the motion must answer the sound as it plays; mute the audio and the visuals go still. Every Notebook Video is Naya narrating straight to you, one citizen, one conversation, warm, first person, child-clear — script first, voicing and production only on his word. Say the pay exactly his way, everywhere: not network marketing; ambassador; commission sales like a sales job with a high-tech company; people join through your link, you get paid; if they don't, you don't; your brain forever; nine days trial, paid day ten, paid when we get paid.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4460",
+   "title": "Hired to Lead, Paid When We Get Paid",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4460/IB-SMART-NOTE-20261121-sn4460-hired-to-lead-paid-when-we-get-paid.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4460/IB-SMART-NOTE-20261121-sn4460-hired-to-lead-paid-when-we-get-paid.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

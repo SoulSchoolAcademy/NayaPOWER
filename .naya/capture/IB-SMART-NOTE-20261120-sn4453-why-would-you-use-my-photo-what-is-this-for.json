@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4453",
+ "intelligence": {
+  "title": "SN-4453 — Why Would You Use My Photo? What Is This For?",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4453-why-would-you-use-my-photo-what-is-this-for",
+  "smart_note_id": "SN-4453",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4453/IB-SMART-NOTE-20261120-sn4453-why-would-you-use-my-photo-what-is-this-for.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The purpose comes before the portrait question. He did not know what the page was for — so \"whose face goes here\" meant nothing. This is the About page: his profile, his story, frame by frame like the agreement; Skills rides with it as its own slideshow. Say that first, then ask about the face.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4453",
+   "title": "SN-4453 — Why Would You Use My Photo? What Is This For?",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4453/IB-SMART-NOTE-20261120-sn4453-why-would-you-use-my-photo-what-is-this-for.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4453/IB-SMART-NOTE-20261120-sn4453-why-would-you-use-my-photo-what-is-this-for.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

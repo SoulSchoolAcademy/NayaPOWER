@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4464",
+ "intelligence": {
+  "title": "Light Around the Edge",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4464-light-around-the-edge",
+  "smart_note_id": "SN-4464",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/DESIGN/SN-4464/IB-SMART-NOTE-20261121-sn4464-light-around-the-edge.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of the stars like little lamps. The machine counted seven lamps switched on — but when he looked, none of them looked any brighter than the rest. So he gave the answer himself: put a light around the edge of each lamp, so a lit one glows around its rim and an unlit one stays dark. The same light works for the date — stop the spinning, light the edge white, and the date stands still and stands out. The rest of the night is the same lesson, told three ways: the Child block needs its own words, not just its own frame — what it means, and why it matters; the buttons need real breathing room, not a number that claims they have it; and every frame must fit like a glove, whole on the screen, no words spilling out. The rebuild that changed the design instead of taking the working one missed the mark — stop making new, just make it the same, one language, same family. And before anyone asks whose photo goes on the page, say what the page is for. Through it all, the vision: hundreds of emails, advertisements, notifications and websites — she opens one place.",
+  "simple_view": "Imagine a star that lights up all around its edges when you tap it, so you can see it is on! The date on the page stops spinning and glows white around its edges instead! Every frame must fit like a glove, with no words spilling out the bottom! Use the same frames as before, nothing new, all in one family! And always say what the page is for before you ask whose picture goes on it!",
+  "grandma_view": "It's like this, love — imagine a little star, dear, and when you tap it, it lights up all around its edges, so you can see it is on! The date on the page stops spinning, love, and glows white around its edges instead! Every frame must fit like a glove, dear, with no words spilling out the bottom! Use the same frames as before, love, nothing new, all in one family! And always say what the page is for, dear, before you ask whose picture goes on it!",
+  "naya_view": "Brief the rated state as a visible edge, not a number: when a star is rated, its rim lights up in its own colour; the unrated stars stay unlit. Prove it by rating seven and eight side by side and showing the lit ones glowing around the edge — the count and the light together, at a glance. A count alone is never the proof of a rating; the light around the edge is. Brief the Child block with two required sentences, in child-and-grandma words, inside its own elevated block: what it means, and why it matters — read the block cold, and if you can't say both from the block alone, it goes back. Brief spacing as an eye test, not a number: the four buttons come down off the comment input box until the gap reads as breathing room at a glance — nothing touching the box, nothing cramped between the buttons. Take the spin off the Hub date and put a white light around its edge — the date standing still, lit white, readable at a glance. When he points at something on the page, the brief carries his words and the page, not a guessed element: find the big white line in the Hub's main area and clean it up, with the date change. Record overnight authorization with its condition — done and done right, or it doesn't run — and bring the link in the morning for his eye, never as finished before he has seen it. Take the working frame verbatim — harvest it byte for byte, change the middle only — and prove the frames match before he sees it again: measured at 390×844 and at desktop, scrollHeight against clientHeight, every beat. State the purpose before the portrait question, every time: what the page is, whose story it tells, in what form. Judge every build against the five proofs, proof #1 first: can a real person join and immediately receive a valuable, working experience?",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4464",
+   "title": "Light Around the Edge",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/DESIGN/SN-4464/IB-SMART-NOTE-20261121-sn4464-light-around-the-edge.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/DESIGN/SN-4464/IB-SMART-NOTE-20261121-sn4464-light-around-the-edge.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
