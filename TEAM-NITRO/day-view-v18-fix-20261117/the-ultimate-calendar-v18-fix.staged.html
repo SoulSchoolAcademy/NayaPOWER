@@ -4788,6 +4788,60 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           for (var i = 0; i < texts.length; i++) { if ((texts[i] || "").length > 40) return true; }
           return false;
         }
+        /* FIX9F5 item 3 — adaptive page size (captain's call): a page holds
+           two items when any item on it runs three or more lines at phone
+           width, and any page shrinks until its measured height clears the
+           phone frame. The R4 3-when-long rule is the CAP, never the floor:
+           nine p2 (3+3+4 lines) splits 2+1 across two pages, and a page of
+           three 2-line items that would still pass 441 px (yours long, 451)
+           drops to two. Line counts are estimated, never assumed: ~37 chars
+           fit one phone line at 17 px (Liberation-measured: 65 chars = 2
+           lines, 89 = 3, 123 = 4), so __slLines is ceil(len/37). Item
+           height is 27 px/line + 17 (43/70/96/122 on the checker's model,
+           +1 px/line guard). Pages pack against 432 px — the 441 px phone
+           budget less a 9 px guard for word-shape variance — counting the
+           slide head, the 34 px .panel, the day-group headers and the 56 px
+           pager. Day-group headers travel with their items, as before
+           (mine:): a page always shows the day its first item belongs to,
+           plus one header per further day on the page — and the packer
+           charges every header it shows. */
+        function __slLines(text) {
+          var n = Math.ceil((text || "").length / 37);
+          return n < 1 ? 1 : n;
+        }
+        function __slItemH(text) { return 27 * __slLines(text) + 17; }
+        function __slChunk(texts, per, fixed, headCost) {
+          /* Pack texts into pages of at most `per` items whose measured
+             height (fixed + headers + items) clears 432 px, with at most
+             two items on a page that holds a 3+ line item. headCost(i, cur)
+             is the header px item i adds to the page `cur` so far (0 for
+             plain lists, 37 for a day header that shows). */
+          var chunks = [], cur = [], curH = fixed, curLong = false;
+          function flush() { if (cur.length) chunks.push(cur); cur = []; curH = fixed; curLong = false; }
+          for (var i = 0; i < texts.length; i++) {
+            var lines = __slLines(texts[i]);
+            var addH = __slItemH(texts[i]) + headCost(i, cur);
+            if (cur.length && (cur.length >= per || (curLong || lines >= 3) && cur.length >= 2 || curH + addH > 432)) { flush(); addH = __slItemH(texts[i]) + headCost(i, cur); }
+            cur.push(i); curH += addH; if (lines >= 3) curLong = true;
+          }
+          flush();
+          return chunks;
+        }
+        function __slPages(texts, per, headH, headCost) {
+          /* Two passes: pack without the pager first — a list that fits on
+             one page carries no pager, as before — and only when it pages
+             do the 56 px of pager join the budget. */
+          var pages = __slChunk(texts, per, headH + 34, headCost);
+          if (pages.length > 1) pages = __slChunk(texts, per, headH + 34 + 56, headCost);
+          return pages;
+        }
+        function __slPagerN(n) {
+          if (n <= 1) return "";
+          var h = '<div class="tl-pager" role="group" aria-label="List pages">';
+          for (var i = 0; i < n; i++) h += '<button type="button" class="pill" data-slpage="' + i + '" aria-pressed="' + ((__slPage || 0) === i) + '">Page ' + (i + 1) + "</button>";
+          return h + "</div>";
+        }
+        function __slNoHead(i, cur) { return 0; }
         function sumPagerHTML(pages) {
           /* FIX9F4 item 4 — the Summary pages wear the same pager as the timeline and the lists: one lit pill, never two. */
           if (pages <= 1) return "";
@@ -4822,16 +4876,19 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var k = keyOf(sel);
           if (listId === "nine") {
             /* FIX9F2 item 1 — nine items on one frame would push past it: the detail slide pages 5 to a frame. */
-            var __per9 = __slHasLong(NINE_NOTES.map(function (n) { return n.t + " — " + n.d; })) ? 3 : 4; /* FIX9F4 item 3 — three to a frame when any item runs two lines: four 2-line items pushed the detail slide ~29 px past the phone frame. */ var __pg9 = Math.min(__slPage || 0, Math.ceil(NINE_NOTES.length / __per9) - 1);
-            return NINE_NOTES.slice(__pg9 * __per9, __pg9 * __per9 + __per9).map(function (n) {
+            var __texts9 = NINE_NOTES.map(function (n) { return n.t + " — " + n.d; });
+            var __per9 = __slHasLong(__texts9) ? 3 : 4; /* FIX9F4 item 3 — three to a frame when any item runs two lines: four 2-line items pushed the detail slide ~29 px past the phone frame. */ var __pages9 = __slPages(__texts9, __per9, 139, __slNoHead); /* FIX9F5 item 3 — adaptive: two to a page when any item runs three lines (p2 splits 2+1), and the page shrinks until its measured height clears the phone frame. */ var __pg9 = Math.min(__slPage || 0, __pages9.length - 1);
+            return (__pages9[__pg9] || []).map(function (ix) {
+              var n = NINE_NOTES[ix];
               return '<div class="noteitem"><p><strong>' + n.t + '</strong> — ' + n.d + '</p></div>';
-            }).join("") + slPagerHTML(NINE_NOTES.length, __per9);
+            }).join("") + __slPagerN(__pages9.length);
           }
           if (listId === "smart") {
             var sns = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; });
             if (!sns.length) return '<p class="none-line">No Smart notes saved for this day yet.</p>';
-            var __perS = __slHasLong(sns.map(function (n) { return n.text || ""; })) ? 3 : 4; /* FIX9F4 item 3 — three to a frame when any item runs two lines, like nine. */ var __pgS = Math.min(__slPage || 0, Math.ceil(sns.length / __perS) - 1);
-            return sns.slice(__pgS * __perS, __pgS * __perS + __perS).map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + '</p></div>'; }).join("") + slPagerHTML(sns.length, __perS);
+            var __textsS = sns.map(function (n) { return n.text || ""; });
+            var __perS = __slHasLong(__textsS) ? 3 : 4; /* FIX9F4 item 3 — three to a frame when any item runs two lines, like nine. */ var __pagesS = __slPages(__textsS, __perS, 114, __slNoHead); /* FIX9F5 item 3 — adaptive, like nine: two to a page when any item runs three lines, and the page shrinks until its measured height clears the phone frame. */ var __pgS = Math.min(__slPage || 0, __pagesS.length - 1);
+            return (__pagesS[__pgS] || []).map(function (ix) { return '<div class="noteitem"><p>' + escapeHTML(sns[ix].text || "") + '</p></div>'; }).join("") + __slPagerN(__pagesS.length);
           }
           if (listId === "yours") {
             /* FIX9F item 2 — this list shows THIS day's own notes,
@@ -4839,8 +4896,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                day was the walk's failure. */
             var todays = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") !== 0; }).slice().reverse();
             if (!todays.length) return '<p class="none-line">Nothing written for this day yet — write it on the Your Notes slide.</p>';
-            var __perY = __slHasLong(todays.map(function (n) { return n.text || ""; })) ? 3 : 4; /* FIX9F4 item 3 — three to a frame when any item runs two lines, like nine. */ var __pgY = Math.min(__slPage || 0, Math.ceil(todays.length / __perY) - 1);
-            return '<p class="formtitle">' + dayLabelFor(k) + "</p>" + todays.slice(__pgY * __perY, __pgY * __perY + __perY).map(function (n) { return journalItemHTML(n); }).join("") + slPagerHTML(todays.length, __perY);
+            var __textsY = todays.map(function (n) { return n.text || ""; });
+            var __perY = __slHasLong(__textsY) ? 3 : 4; /* FIX9F4 item 3 — three to a frame when any item runs two lines, like nine. */ var __headY = function (i, cur) { return cur.length ? 0 : 37; }; var __pagesY = __slPages(__textsY, __perY, 114, __headY); /* FIX9F5 item 3 — adaptive, like nine: the day formtitle (37) is charged once per page, and the page shrinks until its measured height clears the phone frame (three 2-line items were 451). */ var __pgY = Math.min(__slPage || 0, __pagesY.length - 1);
+            return '<p class="formtitle">' + dayLabelFor(k) + "</p>" + (__pagesY[__pgY] || []).map(function (ix) { return journalItemHTML(todays[ix]); }).join("") + __slPagerN(__pagesY.length);
           }
           if (listId.indexOf("mine:") === 0) {
             /* FIX9F3 item 4 — a long citizen list pages 5 to a frame like the rest: the day-group headers travel with the items on their page, in the same newest-first order as before. */
@@ -4851,17 +4909,18 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             L.items.forEach(function (n) { var dk = n.day || ""; (byDay[dk] = byDay[dk] || []).push(n); });
             var __flatM = [];
             Object.keys(byDay).sort().reverse().forEach(function (dk) { byDay[dk].forEach(function (n) { __flatM.push({ dk: dk, n: n }); }); });
-            var __perM = __slHasLong(__flatM.map(function (it) { return it.n.text || ""; })) ? 3 : 5; /* FIX9F4 item 3 — three to a frame when any item runs two lines (the day-group headers travel with their items, as before). */ var __pgM = Math.min(__slPage || 0, Math.max(0, Math.ceil(__flatM.length / __perM) - 1));
-            var __pageM = __flatM.slice(__pgM * __perM, __pgM * __perM + __perM);
+            var __perM = __slHasLong(__flatM.map(function (it) { return it.n.text || ""; })) ? 3 : 5; /* FIX9F4 item 3 — three to a frame when any item runs two lines (the day-group headers travel with their items, as before). */ var __headM = function (i, cur) { if (!cur.length) return 37; return __flatM[i].dk !== __flatM[cur[cur.length - 1]].dk ? 37 : 0; }; var __pagesM = __slPages(__flatM.map(function (it) { return it.n.text || ""; }), __perM, 114, __headM); /* FIX9F5 item 3 — adaptive, like nine: every day-group header the page shows is charged (37), so a page spanning days shrinks instead of inflating past the frame. */ var __pgM = Math.min(__slPage || 0, Math.max(0, __pagesM.length - 1));
+            var __pageM = (__pagesM[__pgM] || []).map(function (ix) { return __flatM[ix]; });
             var __hM = ""; var __lastM = null;
             __pageM.forEach(function (it) { if (it.dk !== __lastM) { __lastM = it.dk; __hM += '<p class="formtitle">' + (it.dk ? dayLabelFor(it.dk) : "No day") + "</p>"; } __hM += listItemHTML(it.n); });
-            return __hM + slPagerHTML(__flatM.length, __perM);
+            return __hM + __slPagerN(__pagesM.length);
           }
           if (listId === "contacts") {
             /* FIX9F3 item 4 — Contacts pages 5 to a frame like the rest; the add-a-contact tools stay below the pager. */
             var cs = contacts[k] || [];
-            var __perC = __slHasLong(cs.map(function (n) { return n.text || ""; })) ? 3 : 5; /* FIX9F4 item 3 — three to a frame when any item runs two lines, like the citizen lists. */ var __pgC = Math.min(__slPage || 0, Math.max(0, Math.ceil(cs.length / __perC) - 1));
-            var citems = cs.length ? cs.slice(__pgC * __perC, __pgC * __perC + __perC).map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + "</p></div>"; }).join("") + slPagerHTML(cs.length, __perC) : '<p class="none-line">No contacts here yet — add one below. Connections is not connected yet; when it connects, people like you appear here, matched by what you share.</p>';
+            var __textsC = cs.map(function (n) { return n.text || ""; });
+            var __perC = __slHasLong(__textsC) ? 3 : 5; /* FIX9F4 item 3 — three to a frame when any item runs two lines, like the citizen lists. */ var __pagesC = __slPages(__textsC, __perC, 139, __slNoHead); /* FIX9F5 item 3 — adaptive, like nine: two to a page when any item runs three lines, and the page shrinks until its measured height clears the phone frame (three 2-line contacts were 439, by 2). */ var __pgC = Math.min(__slPage || 0, Math.max(0, __pagesC.length - 1));
+            var citems = cs.length ? (__pagesC[__pgC] || []).map(function (ix) { return '<div class="noteitem"><p>' + escapeHTML(cs[ix].text || "") + '</p></div>'; }).join("") + __slPagerN(__pagesC.length) : '<p class="none-line">No contacts here yet — add one below. Connections is not connected yet; when it connects, people like you appear here, matched by what you share.</p>';
             return citems + listToolsHTML("contact") +
               '<form id="contactForm"><p class="formtitle">Add a contact</p>' +
               '<div class="frow"><input type="text" id="contactText" placeholder="Their name" aria-label="Contact name" maxlength="120" />' +
@@ -4901,7 +4960,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         var __tlPage = 0; /* FIX9F item 1 — the timeline pages 6+5+5 slots a frame (FIX9F3: 6+6+4 left the group buttons half-clipped at 1920x999 — Morning keeps its six, Midday and Evening take five). */
         var __bookOpen = false; /* FIX9F2 item 1 — the booking flow (calendar + time + form) is open on its own three slides (FIX9F4: Step 3 is its own slide now). */
         var __journalPage = 0; /* FIX9F2 item 1 — journal entries page 4 to a frame on their own slide. */
-        var __slPage = 0; /* FIX9F2 item 1 — an open list pages to a frame on its own slide (FIX9F4: nine / smart / yours take 4, citizen lists and Contacts take 5 — three when any item runs two lines). */
+        var __slPage = 0; /* FIX9F2 item 1 — an open list pages to a frame on its own slide (FIX9F4: nine / smart / yours take 4, citizen lists and Contacts take 5 — three when any item runs two lines; FIX9F5: adaptive — two when any item runs three lines, and a page shrinks until its measured height clears the phone frame). */
         var __sumPage = 0; /* FIX9F4 item 4 — the Summary pages (see sumPageHTML): the intel panel grows with the day, so the slide pages instead of scrolling. */
         /* FIX12 item 2 — ONE navigation state, carried across days: the
            slide the citizen is on survives a day step, so day-to-day
