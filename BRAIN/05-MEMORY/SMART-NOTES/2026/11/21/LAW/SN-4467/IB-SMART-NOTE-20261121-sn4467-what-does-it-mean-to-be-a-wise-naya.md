@@ -1,4 +1,4 @@
-# What Does It Mean to Be a Wise Naya?
+# What Is a Wise Naya?
 
 SN-4467 · LAW / THE WISE ONE
 
