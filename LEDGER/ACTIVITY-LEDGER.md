@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 13:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -41177,6 +41177,12 @@ _Last updated: 2026-11-21 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-scorer-20261015-0340 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: install point (1) of the canonical VOID feed line proposal in claim_liveness_audit.py
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: hidden_files/bin/claim_liveness_audit.py sha256 still starts faf6e3b3f05545a — byte-identical to the receipt's post-edit pin faf6e3b3f05545a8995c08c815bbeb781be4e084068c11ec2ce22a24554a0b33 a month later; VOID_DESTINATIONS and format_void_line present (4 matches). Install point (1) landed and persisted.
+
 ### ✅ gap-lane-scorer-20261015-0340-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up lane-scorer-20261015-0340: install VOID feed-line formatter (install point 1)
@@ -44558,6 +44564,12 @@ _Last updated: 2026-11-21 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-scorer-20261015-0350 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: buried-eligibility class audit + live stamp on brief-gap-t0413-lane3.md
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: the stamp text survives verbatim in two archived copies (prose-bar-migration-backup-20261016/brief-gap-t0413-lane3.md and the lane-2 t0533 snapshot) — '# CLAIMABILITY GATE — NON-Clarity SEATS ONLY', stamped 2026-10-15 ~5:50 AM PDT by the executor closing this gap brief; the 15 second-seat demands are ma
 
 ### ✅ gap-t1230-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
@@ -48158,6 +48170,18 @@ _Last updated: 2026-11-21 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ decision-replay-t0780-thirdseat-t1496-lane3-verdict-table — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Third-seat verdict table for the t0780 decision replay (component artifact of the t1496-lane3 receipt)
+
+**Evidence:** BACKLOG SWEEP — sole unscored item in twelve-lane-receipts/ (2,494 receipts; this file was the only one with no score entry). VERIFIED first-hand this tick: file exists (5,567 bytes, mtime 2026-10-24 04:10:55Z, inside the t1496-lane3 seal chain prereg 04:07:32Z < table 04:10:55Z < receipt 04:14:32Z already certified in the t1496-lane3 9.5 score); a
+
+### ✅ gap-scorer-20261015-0350 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: parent-authorship check (1c) machine-enforced in claim-brief.py — t0818 recurrence
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: hidden_files/bin/claim-brief.py still carries the 1c PARENT-AUTHORSHIP CHECK (line 226, citing this very gap brief), exit 7 refusal before mv, and the --receipt-dir flag (line 1243) — the t0818 recurrence fix persisted in live code. Score 9.0: genuine machinery closing a real recurrence, with proof (19/
 
 ### ✅ gap-t0818-lane3-decline2 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
