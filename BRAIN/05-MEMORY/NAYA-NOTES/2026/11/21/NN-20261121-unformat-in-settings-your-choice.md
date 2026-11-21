@@ -4,7 +4,7 @@
 
 **NN-20261121-unformat-in-settings-your-choice · Naya Note · 2026-11-21 ~08:49–08:52 MST**
 
-*Paired Smart Note: SN-pending — Unformat in Settings — Your Choice (takes the next free number at filing)*
+*Paired Smart Note: SN-4470 — Unformat in Settings — Your Choice*
 
 **Category:** LAW — the formatting toggle in Settings: what unformat does, and what can never be unformatted
 
