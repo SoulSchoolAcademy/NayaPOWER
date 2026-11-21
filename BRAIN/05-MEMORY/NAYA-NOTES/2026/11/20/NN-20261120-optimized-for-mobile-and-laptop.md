@@ -4,7 +4,7 @@
 
 **NN-20261120-optimized-for-mobile-and-laptop · Naya Note · 2026-11-20 ~19:59 MST**
 
-*Paired Smart Note: SN-pending — Optimized for Mobile AND Laptop (takes the next free number at filing)*
+*Paired Smart Note: SN-4426 — Optimized for Mobile AND Laptop*
 
 **Category:** Design — a board must look whole on both
 
