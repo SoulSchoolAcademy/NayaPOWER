@@ -3791,7 +3791,7 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
    first, so enterStage() lands on the intro (choice). goResume
    ("Begin the visual story") still resumes where left off - that is
    its stated job - and the deck-end exit itself is untouched. */
-  if(enterBtn)enterBtn.addEventListener('click',function(){window.__fpDeckEndReturn=false;enterStage();});
+  if(enterBtn)enterBtn.addEventListener('click',function(){window.location.href='/agreement';});
   /* BRIDGE PRESENTATION (2026-11-17) — deep link from the walk's end slide:
      ?stage=deck opens the visual story, ?stage=letter opens the read-it-all
      letter page, ?stage=bridge opens the bridge. Plain relative links, so
