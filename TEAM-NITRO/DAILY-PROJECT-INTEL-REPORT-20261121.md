@@ -21,19 +21,19 @@ The old internet is messy and manual. The new internet is auto-organized and aut
 
 ### 4. WHAT does success mean?
 
-A new citizen gets a working world — Personal, Business, Space, all working — in one walk, fifteen questions, and is hired on the end slide. The funnel measures found → visited → joined → stayed — never the click alone. Every citizen can create, learn, earn, and get paid 50% of gross revenue, paid automatically the moment we are paid. Every page ten out of ten, verified live, phone first. The system compounds intelligence: capture → learn → grow → expand → repeat. One click on any note creates a space from it. A book learned in a minute. Nobody feels alone — like minds auto-connected by default. Finished pages go live on official simple URLs immediately; live is the freeze point. Christmas target: finished within two weeks, all done right — "I want to wake up and go wow."
+A new citizen gets a working world — Personal, Business, Space, all working — in one walk, fifteen questions, and is hired on the end slide. The bullseye, in his words: a stranger arrives cold, answers fifteen questions, their world arrives made at their name, every button does what it says, and he walks it on his phone and says wow — finished within two weeks. The funnel measures found → visited → joined → stayed — never the click alone. Every citizen can create, learn, earn, and get paid 50% of gross revenue, paid automatically the moment we are paid. On a citizen's own memberships and paywalls, the owner keeps 100% of what they charge — NayaNET takes no cut (settled ~13:22 MST). The 50% is the NayaNET ambassador share, when they bring people to NayaNET; their affiliates are paid by them, out of their 100%. Every page ten out of ten, verified live, phone first. The system compounds intelligence: capture → learn → grow → expand → repeat. One click on any note creates a space from it. A book learned in a minute. Nobody feels alone — like minds auto-connected by default. Finished pages go live on official simple URLs immediately; live is the freeze point. Christmas target: finished within two weeks, all done right — "I want to wake up and go wow."
 
 ### 5. WHAT is true right now?
 
-The Personal round is complete on bytes (R5, tip f04a783c, checker PASS) and its render proof is running. The Hub fix landed and its link was sent. The Dashboard mechanics are built and filed, the framing round is running, and the schema packet was tapped by Shawn — then stopped at Gate 1, red chain — and then, at 13:18 MST, he authorized the dispatch with Preview as the gate ("Dispatch it — Preview is the gate"), and the dispatch round is running now. The calendar was built, walked whole, found 9 failures, and its fix round is running. The Supabase filing round is running. SN-4467 has sat quiet for an hour. Joinus is LIVE. The live URL scheme is locked — five addresses. The Ledger is still frozen at 30 rows since Oct 22. Mail and messenger cannot send yet. Smart Meet does not exist. 34 new notes sit in the feed table but not on the Hub page. The red spike is proven stopped. The repo still cannot rebuild the live database. Nothing live has been deleted; the drop list waits on his word.
+The Personal round is complete on bytes (R5, tip f04a783c, checker PASS) and its render proof is running. The Hub fix landed and its link was sent. The Dashboard mechanics are built and filed; the framing round is complete on bytes (commit 056c6b58, frame CSS byte-identical twice) and its render walk is running. The schema packet was tapped by Shawn at 13:03, stopped at Gate 1 at 13:11, and authorized for dispatch at 13:18 ("Dispatch it — Preview is the gate") — and then the dispatch was NOT made: the dispatch seat stopped on first-hand check, because the pipeline has NO Preview step at all (zero mentions of "preview" in its 1,047 lines; it applies migrations to production directly), and §2 grants + §3 table/function have NO migration files, so a dispatch could not deliver the very pieces that unblock posting, likes, comments, shares and messenger. Nothing was dispatched, nothing written to production. The correction is owed to Shawn in public: I told him a Preview failure leaves production untouched — that is false for this pipeline. The stranger test still fails — the walk is staged, not live: live-table writes wait on the server-side key, so a stranger arriving cold cannot yet finish the walk to a made world at their name. The affiliate army is not built — a citizen offering memberships cannot yet create affiliates under their own membership; designed Nov 8–9, not built, and Shawn confirmed the gap himself at ~13:20 MST. The ambassador system itself — every citizen an ambassador at join, everybody's hired — was always the original plan. The calendar was built, walked whole, found 9 failures, and its fix round is running. The Supabase filing round is running. SN-4467 has sat quiet for an hour. Joinus is LIVE. The live URL scheme is locked — five addresses. The Ledger is still frozen at 30 rows since Oct 22. Mail and messenger cannot send yet. Smart Meet does not exist. 34 new notes sit in the feed table but not on the Hub page. The red spike is proven stopped. The repo still cannot rebuild the live database. Nothing live has been deleted; the drop list waits on his word.
 
 ### 6. WHAT has already been proven?
 
-The red spike — found, fixed, proven stopped: the why_it_matters errors are 0 rows, the clean select returns 200; before, 2,382 errors on Nov 20, peak 917 an hour. The Supabase inventory — 497 pieces mapped first-hand: 366 wired, 129 built but unused, 20 missing. Joinus live — root 200, /testuser 200, username injection working. The Hub fix — checker PASS, diff −34/+100, design laws delta 0, link sent. Personal R5 — checker PASS, Calendar rename exactly 4 lines, design laws delta 0, staged link 200 with exact sha. The stub-fallback cause — proven line by line: #os-wall-list does not exist in the filed page, so the stub has nowhere to land; the renderer works in isolation. The Dashboard mechanics diagnosis — 24 gaps named, one points truth built (200), invites/lists/items proven landing live. The live URL scheme — locked by his word on the call. The calendar walk — walked whole, 9 failures named with evidence, nothing hidden.
+The red spike — found, fixed, proven stopped: the why_it_matters errors are 0 rows, the clean select returns 200; before, 2,382 errors on Nov 20, peak 917 an hour. The Supabase inventory — 497 pieces mapped first-hand: 366 wired, 129 built but unused, 20 missing. Joinus live — root 200, /testuser 200, username injection working. The Hub fix — checker PASS, diff −34/+100, design laws delta 0, link sent. Personal R5 — checker PASS, Calendar rename exactly 4 lines, design laws delta 0, staged link 200 with exact sha. The stub-fallback cause — proven line by line: #os-wall-list does not exist in the filed page, so the stub has nowhere to land; the renderer works in isolation. The Dashboard mechanics diagnosis — 24 gaps named, one points truth built (200), invites/lists/items proven landing live. The live URL scheme — locked by his word on the call. The calendar walk — walked whole, 9 failures named with evidence, nothing hidden. The Dashboard framing — frame CSS byte-identical twice, +375/−0, no number, label, or destination changed; its render walk is running.
 
 ### 7. WHAT is unknown?
 
-Whether the packet dispatch's Preview passes — the dispatch is authorized and running; the preview result is pending, and a preview failure is a stop, never a production incident. How four columns appeared on production between Nov 13 and Nov 21 with no migration recording them — the route and actor are unknown. Whether the Personal R5 render proof passes — it is running now. Whether the calendar fix round clears all 9 failures. Whether the Supabase filing round reconciles the "128" count against its own 59+65+6. Whether SN-4467 is filed — it has been quiet an hour. What the membership address will be — left unfinished on the call, not settled, not to be guessed. The composer label — "Distill it" was recommended, no answer. The Hub schema DDL, the flip-ownership decision, the About portrait, the 2028 vision Video 5 script, the Apply/Use board colour, the G8b memberships call, the Contact Us destination, the Code of Ethics placement, the 32-slide agreement go-live, the sync lock, the slimmed-memory "go", the Fast Action Club own-page call — all still open. Whether phone-width render proof can ever be done from here — the cloud browser cannot resize, so the thing he judges first is the thing we cannot prove.
+Whether the packet can be applied at all as written — there is no Preview step in the pipeline and §2+§3 have no migration files. The path forward (file §2+§3 as migrations, then build a real preview path or re-authorize production-direct with eyes open about the 18-file blast radius) is the decision owed to Shawn. Two Dashboard framing decisions are owed to the captain: the bottom bar as filed reads ADD · PERSONAL · BUSINESS · WORLDS · ECOSYSTEM · CONNECT against the locked six (MAIL/ACTIVITY); and "$1.22 Earnings Per Click" puts money on clicks against MONEY = JOINS ONLY. How four columns appeared on production between Nov 13 and Nov 21 with no migration recording them — the route and actor are unknown. Whether the Personal R5 render proof passes — it is running now. Whether the calendar fix round clears all 9 failures. Whether the Supabase filing round reconciles the "128" count against its own 59+65+6. Whether SN-4467 is filed — it has been quiet an hour. What the membership address will be — left unfinished on the call, not settled, not to be guessed. The composer label — "Distill it" was recommended, no answer. The Hub schema DDL, the flip-ownership decision, the About portrait, the 2028 vision Video 5 script, the Apply/Use board colour, the G8b memberships call, the Contact Us destination, the Code of Ethics placement, the 32-slide agreement go-live, the sync lock, the slimmed-memory "go", the Fast Action Club own-page call — all still open. Whether phone-width render proof can ever be done from here — the cloud browser cannot resize, so the thing he judges first is the thing we cannot prove.
 
 ### 8. WHAT authority exists?
 
@@ -41,15 +41,15 @@ Shawn's hand: money, payout terms, prices, credentials, destructive or deletion 
 
 ### 9. WHAT happened previously?
 
-Today, Nov 21: the Supabase inventory finished and was reported to him. The red spike was fixed and proven stopped. Joinus went live — the DNS record was the only missing piece. The Hub fix round passed its checker and its link was sent. The Personal page went through fix rounds 2, 3 and 5 — the freeze found and fixed, the "Which feed?" heading made visible, the navigation-away bug killed, the Calendar rename landed. The calendar was walked whole and found 9 failures. The Dashboard mechanics round diagnosed 24 gaps and built the wiring. The schema packet was written, tapped by Shawn at 13:03, and stopped at Gate 1 at 13:11. The Dashboard framing round was dispatched. The membership fix round #2 was stopped by his order. The About look-match build passed its checker and was killed by his eye. The frame-styles registry round, the Supabase filing round, and the SN-4467 filing are all still running. The welcome series day 10 mail was sent. 34 notes went into the feed table and never reached the Hub page. Yesterday, Nov 12, the same 14 questions were answered and the honest score was 6 out of 10 — the floor's held score.
+Today, Nov 21: the Supabase inventory finished and was reported to him. The red spike was fixed and proven stopped. Joinus went live — the DNS record was the only missing piece. The Hub fix round passed its checker and its link was sent. The Personal page went through fix rounds 2, 3 and 5 — the freeze found and fixed, the "Which feed?" heading made visible, the navigation-away bug killed, the Calendar rename landed. The calendar was walked whole and found 9 failures. The Dashboard mechanics round diagnosed 24 gaps and built the wiring. The schema packet was written, tapped by Shawn at 13:03, stopped at Gate 1 at 13:11, authorized for dispatch at 13:18 — and then NOT dispatched: the dispatch seat stopped on first-hand check, because the pipeline has no Preview step and §2+§3 have no migration files. The Dashboard framing round completed on bytes; its render walk is running. Shawn confirmed the affiliate army is not built (~13:20 MST) and settled the split — 100% to the owner on their own memberships (~13:22 MST). The membership fix round #2 was stopped by his order. The About look-match build passed its checker and was killed by his eye. The frame-styles registry round, the Supabase filing round, and the SN-4467 filing are all still running. The welcome series day 10 mail was sent. 34 notes went into the feed table and never reached the Hub page. Yesterday, Nov 12, the same 14 questions were answered and the honest score was 6 out of 10 — the floor's held score.
 
 ### 10. WHAT did we learn?
 
-Verify from the login page — and from the returning browser, not only fresh profiles. The sense check runs on the whole page, not the diff. Think more, do it right — fast and wrong is harmful. Harvest, never invent. One alert per fault. GitHub writes to main go one at a time. Never invent lineage — a correct stop is below 9, never done. The right-thing charge: decide what is right and do it. Finish completely — all the edits, aligned, verified three times through, before anything is shown. The learning loop: note what works and keep it, note what doesn't and drop it, make both public as smart notes so the hive compounds. A note is not in until it is live on the feed. Never double-check the same thing over and over — if it was just checked, that is not the check. Only bring a plate when it is finished and beautiful; nothing half-done reaches him. A lane that goes quiet for an hour has to be poked — the work does not poke itself. A rule as written can block the fix it wants — the red-chain stop can never clear without the deploy it forbids, so the gate has to be the Preview, not the pre-check.
+Verify from the login page — and from the returning browser, not only fresh profiles. The sense check runs on the whole page, not the diff. Think more, do it right — fast and wrong is harmful. Harvest, never invent. One alert per fault. GitHub writes to main go one at a time. Never invent lineage — a correct stop is below 9, never done. The right-thing charge: decide what is right and do it. Finish completely — all the edits, aligned, verified three times through, before anything is shown. The learning loop: note what works and keep it, note what doesn't and drop it, make both public as smart notes so the hive compounds. A note is not in until it is live on the feed. Never double-check the same thing over and over — if it was just checked, that is not the check. Only bring a plate when it is finished and beautiful; nothing half-done reaches him. A lane that goes quiet for an hour has to be poked — the work does not poke itself. A rule as written can block the fix it wants — the red-chain stop can never clear without the deploy it forbids, so the gate has to be the Preview, not the pre-check. A gate that does not exist cannot be the gate — the Preview step I promised him was never in the pipeline; check the mechanism exists before promising it. The look is not the performance — a page that renders beautifully but whose buttons do not work scores low.
 
 ### 11. WHAT should happen next?
 
-The next 10 things — listed below, in order. This report filed to GitHub and surfaced on nayanet.app. The packet dispatch running — Preview as the gate; watch the preview result. The calendar fix landing and going live. The Personal R5 render proof landing. The Dashboard framing landing. The Supabase filing landing. SN-4467 poked and filed. One real post and one real message proven live. The 34 stuck notes onto the Hub page. The Captain's Daily Report delivered and the floor board current.
+The next 10 things — listed below, in order. This report filed to GitHub and surfaced on nayanet.app. The packet: file §2+§3 as migration files, then resolve the Preview question — build a real preview path or re-authorize production-direct with eyes open; dispatch only on his word. The calendar fix landing and going live. The Personal R5 render proof landing. The Dashboard framing render walk passing, then the bar-alignment round. The Supabase filing landing. SN-4467 poked and filed. One real post and one real message proven live. The 34 stuck notes onto the Hub page. The Captain's Daily Report delivered and the floor board current.
 
 ### 12. HOW do I prove it?
 
@@ -65,67 +65,67 @@ The loop: do the work → file it in Project Intelligence as it happens → smar
 
 ## THE HARD QUESTION — IS THIS THE MOST ORGANIZED, INTELLIGENT SYSTEM?
 
-No. Not yet. Honestly: it is the most ambitious system, and the most alive — but it is not the most organized. A system whose ledger has been frozen for 30 days, whose citizens can feed their vault but cannot ask it a question, whose like button has nowhere to land, whose mail cannot send, whose calls do not exist, whose database cannot be rebuilt from its own record, and whose newest notes sit in a table while the page shows none of them, is not yet the most organized system that could be created.
+No. Not yet. Honestly: it is the most ambitious system, and the most alive — but it is not the most organized. A system whose ledger has been frozen for 30 days, whose citizens can feed their vault but cannot ask it a question, whose like button has nowhere to land, whose mail cannot send, whose calls do not exist, whose database cannot be rebuilt from its own record, whose newest notes sit in a table while the page shows none of them, whose stranger cannot yet finish the walk to a made world, and whose affiliate army does not exist, is not yet the most organized system that could be created.
 
-It IS the most promising — because every one of those gaps is named, owned, and has a round out or a named unblocker, and because today the spike was proven stopped, the engine was mapped piece by piece, the invite link went live, and the flagship page passed its checker. The organization is being built into it right now. It is not there yet. The honest score today is 6 out of 10 — the same score the floor held on Nov 12. The work below is how it gets to 10.
+It IS the most promising — because every one of those gaps is named, owned, and has a round out or a named unblocker, and because today the spike was proven stopped, the engine was mapped piece by piece, the invite link went live, and the flagship page passed its checker. The organization is being built into it right now. It is not there yet. The honest score today is 5 out of 10 on performance — the look alone scores 8, and this report scores performance, so a beautiful page that does not work scores low. The floor held 6.0 on Nov 12; judged the same way — what actually works — today is 5. The work below is how it gets to 10.
 
 ## 10 HOLES — WHAT IS MISSING (WHAT STOPS IT FLOWING LIKE WATER)
 
-1. The packet is stopped at Gate 1 — posting, liking, commenting and messaging are all still 42501-blocked until the dispatch decision is made. The whole action layer waits on one call.
+1. The packet cannot be applied as written — no Preview step exists in the pipeline (it applies migrations to production directly), and §2 grants + §3 table/function have NO migration files. A dispatch would leave the very unblocks undelivered while reporting "dispatched". File §2+§3 as migrations, then resolve the Preview question.
 2. The Ledger is frozen at 30 rows since Oct 22 — no action writes to it, so the Dashboard's numbers never move. The cockpit shows a still picture.
-3. A citizen can feed the Vault but cannot ask it a question — there is no citizen-JWT retrieval path. The note goes in; the citizen cannot search their own Vault.
-4. The like / rate-the-value has no landing place — the value signal the whole Hub runs on evaporates. Points-as-authority has no input from the citizen's own tap.
-5. Smart Meet does not exist — no live-call code anywhere. Audio and video are buttons without a call behind them.
-6. The repo cannot rebuild the live database — 59 live RPCs and 65 live tables have no source in any migration. The filing round is still running to close it.
-7. The Cloudflare leg was never inventoried — no worker, route, or Smart Link step verified. The road the pages travel on is unmapped.
-8. The join → Ledger → Dashboard chain is unproven — a join may never move the Dashboard number, and nobody has shown it doing so.
-9. The Project Intel Report has no daily producer — this 14-question exercise ran Nov 12 and today, nine days apart, while the Daily Intelligence Report runs daily and today's row is live. The Reports face carries the loop's edition, not this exercise. CORRECTION (same day, before delivery): an earlier draft of this hole said the last row in the live table was Oct 23 and no daily producer existed. That was the Oct 26 packet's state, now stale — the table carries daily rows Nov 10–21, today's created 16:04:49Z. The hole is this report's own cadence, not the daily report's.
-10. Three board layers have no column in the published table — what_it_is_not, why_it_matters, how_it_connects do not live in hub_smart_notes. The Hub fix carries them through converters, but the table itself does not hold them.
+3. The stranger test fails — the walk is staged, not live: live-table writes wait on the server-side key, so a stranger arriving cold cannot finish the walk to a made world at their name. The bullseye itself does not work yet.
+4. A citizen can feed the Vault but cannot ask it a question — there is no citizen-JWT retrieval path. The note goes in; the citizen cannot search their own Vault.
+5. The like / rate-the-value has no landing place — the value signal the whole Hub runs on evaporates. Points-as-authority has no input from the citizen's own tap.
+6. Smart Meet does not exist — no live-call code anywhere. Audio and video are buttons without a call behind them.
+7. The match never appears at creation — the match engine's caller is unverified, the feed does not rank or suggest by match, and no "here are three people like you" arrives the moment the page is created.
+8. The repo cannot rebuild the live database — 59 live RPCs and 65 live tables have no source in any migration. The filing round is still running to close it.
+9. The feed does not show what the table holds — 34 new notes sit in the feed table, none on the Hub page; the rebuild path broke on the EPERM flake.
+10. The affiliate army does not exist — a citizen offering memberships or paywalls cannot yet create affiliates under their own membership; designed Nov 8–9, not built, confirmed by Shawn at ~13:20 MST. The ambassador promise (50% when they bring people to NayaNET; 100% theirs on their own products) has no mechanism behind it yet.
 
 ## 10 THINGS I LOVE — THE BEST
 
 1. The walk — fifteen questions build a world, and the answers ARE the match data. The walk IS the viral thing.
-2. The Intelligent Block — one shape for everything, ten layers, the native language of the machines and the AIs.
+2. The Intelligent Block — one shape for everything, ten layers, the native language of the machines and the AIs. It renders and the shape works; three layers (What It's Not, Why It Matters, How It Connects) still have no column in the table, and the flip is not yet creator-only — the shape is loved, the table is catching up.
 3. The one system — Factory the store, PI the record, Hub the eyes, Box the database, Ledger the data, Stats the visual, Dashboard the cockpit. One record, one timeline.
 4. The design law — harvest, never invent. Real objects. Obsidian. Every board lit. The emblem is the north star.
 5. The Self-Check Law + captain double-check + his eye final — quality is a mechanism, not a hope. It caught real defects today: the two click listeners, the missing stub list.
 6. The Vault front door works — v7-smart-note-canonical takes a note in, allocates identity, writes the transaction and the events and the evidence, and dispatches to GitHub. The intake story is real.
 7. Joinus is LIVE — the invite link works end to end at joinus.nayanet.app/<username>, verified first-hand, root and /testuser both 200.
 8. The red spike was found and proven stopped — 2,382 errors down to 0, the clean select returning 200. The method works: read the log, fix the cause, re-test, prove it by the count falling.
-9. The ambassador flywheel — 50% of gross, paid the moment we are paid. Distribution is the users. Everybody wins.
+9. The ambassador flywheel — 50% of gross, paid the moment we are paid; on their own memberships the owner keeps 100%, NayaNET takes no cut (settled ~13:22 MST). Distribution is the users. Everybody wins. Honest note: the army itself is not built yet — a citizen cannot create affiliates under their own membership (confirmed ~13:20 MST) — so the flywheel is a promise, not yet a working machine.
 10. The collective agreement — no data selling, no ads, mail never read, deletion by default, saved notes kept for good in the citizen's own Vault. The trust moment, in plain words.
 
 ## 10 HIGHEST-VALUE ACTIONS — RIGHT NOW, 10X BETTER
 
-1. Decide the packet dispatch — his hand. Preview as the gate. One decision unblocks posting, liking, commenting, messaging and the Ledger chain together.
+1. File §2 + §3 as migration files, then resolve the Preview question — build a real preview path, or re-authorize production-direct with eyes open about the 18-file blast radius. His hand. Until this is done, no dispatch can deliver the unblocks.
 2. Prove one real post landing in the Ledger and moving the Dashboard number — the heart beating, end to end, for the first time since Oct 22.
 3. Prove one real message sending — mail + instant messenger actually working between two people, not just opening.
-4. Land the calendar fix round and put it live at calendar.nayanet.app/<pagename> — the first feature subdomain live, the scheme proven real.
-5. Finish the Personal round's render proof and land R5 — the flagship page done, with the rail, the boards and the DM functions working at click level.
-6. Give the like a landing place — naya_action_events through the packet — so the value signal stops evaporating.
-7. Close the filing round — 128 filings, so the repo can rebuild the live database and the money path is recoverable.
-8. Build the citizen retrieval path — a citizen asks their own Vault a question and gets an answer. The loop closes both ways.
-9. Put the 34 stuck notes onto the Hub page — the feed shows what the table already holds. A note is not in until it is live on the feed.
-10. Ship this Daily PI Report habit again — this report, every day, filed and on nayanet.app, so the state is true daily and never again a month stale.
+4. Prove one like moves the number — the value signal landing, points-as-authority with a real input.
+5. Prove one call connects — build Smart Meet and make a real audio/video call between two people.
+6. Make the match appear the moment the page is created — the engine's caller verified, "here are three people like you" on the new page.
+7. Prove the stranger test end to end on the phone — a cold stranger answers fifteen questions, their world arrives made at their name, every button does what it says, and he walks it and says wow.
+8. Land the calendar fix round and put it live at calendar.nayanet.app/<pagename> — the first feature subdomain live, the scheme proven real.
+9. Finish the Personal round's render proof and land R5 — the flagship page done, with the rail, the boards and the DM functions working at click level.
+10. Close the filing round — 128 filings, so the repo can rebuild the live database and the money path is recoverable.
 
 ## 10 MOST VALUABLE THINGS TO ADD / ENHANCE
 
 1. Smart Meet — video and audio rooms from the messenger, schedulable like an appointment. Book → meet → talk.
 2. The Smart Box as the citizen's live vault — one Vault home per citizen: notes, lists, boards, media and journal by owner, instead of scattered tables.
-3. Auto-Match switched on for citizens — the engine is built and proven; the switch-on is the gate that makes like minds find each other by default.
+3. Auto-Match switched on for citizens — the engine is built and proven; the switch-on is the gate that makes like minds find each other by default, and the match appears the moment the page is created.
 4. The one-minute book — any book, any topic, in a minute, in the Intelligent Block.
 5. The Smart Feed agent everywhere — match → organize → connect, continuously, in every feed.
 6. The membership paywall flow built end to end — paywall → PayPal return → code via Smart Mail → in.
-7. The Daily Intelligence Report generator — one row a day, honestly fresh, so the Reports face never lies about freshness again.
+7. The Project Intel Report slot on nayanet.app — this report, same words, on the PI page, fed from the GitHub file, so the record lives where the system lives.
 8. The frame registry + Smart App template — one build path for About and Skills, cloned to Personal, Business and Space. One family, one look.
 9. Points as authority in the feed — ranking by points, not pinned-then-newest. The law made real.
 10. The team transparency design — seats signing in and out as themselves with Naya Notes, project tabs, so Shawn sees the work live, not on trust.
 
 ## 10 TOP REASONS STOPPING US FROM GETTING THERE
 
-1. The dispatch decision is still open — the packet waits on one call, and everything downstream waits with it.
+1. The dispatch premise broke — the pipeline has no Preview step and §2+§3 have no migration files; the packet waits on filing + a real gate, and everything downstream waits with it.
 2. The live schema and the recorded chain have drifted — columns appeared with no migration; the deploy meets a surprise nobody recorded.
-3. The chain rule as written blocks the fix it wants — "never dispatch while red" can never go green without the deploy it forbids.
+3. The chain rule as written blocks the fix it wants — "never dispatch while red" can never go green without the deploy it forbids; the gate has to be a real preview test, not a pre-check — and the preview test does not exist yet.
 4. The mail key and the server-side key are still his hand — the loop's mail step and the walk's live writes wait on one person.
 5. Speed was chosen over thinking, more than once — fast and wrong (the 98-slide About, the membership fix #2) cost whole rounds.
 6. Verification used fresh profiles and staged pages only — the returning-browser path and the live seat were never tested, so bugs lived.
@@ -137,33 +137,33 @@ It IS the most promising — because every one of those gaps is named, owned, an
 ## 10 NEXT THINGS — RIGHT NOW
 
 1. This report filed to GitHub and surfaced on nayanet.app — the record lives where the system lives.
-2. The packet dispatch running — Preview as the gate; if the preview passes, production + re-proof; if it fails, STOP, production untouched.
+2. The packet: file §2+§3 as migration files, then resolve the Preview question — a real preview path, or re-authorization production-direct with eyes open. Dispatch only on his word.
 3. The calendar fix round lands, re-walked clean, live at calendar.nayanet.app/<pagename>.
 4. Personal R5 render proof lands; the "My World" heading question answered — rename it to "Calendar" too, or leave it.
-5. Dashboard framing round lands on the mechanics tip.
+5. Dashboard framing render walk passes, then the bar-alignment round (MAIL/ACTIVITY) + the "Earnings Per Click" relabel per MONEY = JOINS ONLY.
 6. Supabase filing round lands — 128 filings, the repo rebuilds live.
 7. SN-4467 poked and filed, the picture test proven on the Hub feed.
-8. One real post and one real message proven live after the packet applies.
+8. The stranger test proven end to end on the phone — a cold stranger answers fifteen questions, their world arrives made at their name — and one real post and one real message proven live after the packet applies.
 9. The 34 stuck notes onto the Hub page.
 10. The Captain's Daily Report delivered and THE-FLOOR.md refreshed to this state.
 
 ## 10 MAJOR PROBLEMS — STOPPING US RIGHT NOW
 
-1. Packet stopped at Gate 1 — the whole action layer (post, like, comment, message) is blocked.
+1. The packet cannot be applied as written — no Preview step in the pipeline; §2+§3 have no migration files. The dispatch was not made.
 2. Ledger frozen 30 rows, 30 days — the Dashboard's data is stale.
 3. Mail + IM cannot send — the messenger leg is 42501-blocked.
 4. Smart Meet missing — no live calls at all.
 5. Calendar 9 failures — not ready for live.
 6. 34 notes in the table but not on the Hub page — the feed lies by omission.
 7. The repo cannot rebuild live — 128 pieces unfiled.
-8. Live schema drifted from the chain — 4 columns with no record of how they got there.
+8. Live schema drifted from the chain — 4 columns with no record of how they got there — and the join → Ledger → Dashboard chain is unproven, so the money leg cannot be shown end to end.
 9. The EPERM flake — writes fail or land 0 bytes; work has to be redone and re-verified by size and sha every time.
 10. Phone-width render proof is unachievable in the cloud browser — the thing he judges first, the phone, is the thing we cannot prove. Fit must be proven statically and stated plainly.
 
 ## 10 SOLUTIONS IN PLACE
 
-1. The schema packet itself — written, tapped, gated; the apply path exists and is proven step by step, Preview first.
-2. The governed pipeline — Preview as the real chain test; it fails closed on a HEAD race instead of touching production.
+1. The schema packet itself — written, tapped, gated; but the apply path as written cannot deliver it: no Preview step, no §2/§3 migration files. The packet is the plan; the filing + the real gate are the work.
+2. The governed pipeline — it fails closed on a HEAD race instead of touching production. But it applies migrations production-direct with no preview, and it also runs on push — a quiet-tip push could promote without any dispatch. The gate it needs does not exist yet.
 3. The Supabase inventory — 497 pieces mapped, KEEP / DROP / FIX named; the filing round is running on it.
 4. The spike fix — found, filed, proven stopped. The method works: log re-query + re-test + count falling.
 5. The Self-Check Law + checker + captain double-check + his eye — quality gates that caught real defects today.
@@ -179,25 +179,25 @@ His word today, 13:14 MST: "let's get her to 10 out of 10 on all levels so she's
 
 | Area | Score | What would make it 10 |
 |---|---|---|
-| Personal page | 8 | Render proof passes + DM audio/video built + message send working + rail auto-organize proven from the feed. |
-| Hub | 7 | Schema DDL in + flip ownership decided + the 34 notes on the page + registry re-bake done. |
-| Dashboard | 6 | Packet applied + one action proven moving a number + framing landed + the funnel visible. |
-| Calendar | 5 | All 9 failures fixed + re-walk clean + live at calendar.nayanet.app/<pagename> + icons dynamic. |
-| Supabase engine | 6 | Filing landed + chain green + citizen retrieval built + like landing proven. |
-| Mail + Messenger | 4 | A message proven sent between two people + Smart Meet live. |
-| Membership | 6 | Login and feature-page wiring done + paywall end to end + fix #2's lessons landed. |
-| Smart Lists / Vault / Notes | 6 | Per-day listing true + citizen search of their own Vault + the 34 notes on the Hub. |
-| Ledger + points | 4 | Trigger live + first chained row after Oct 22 + points-as-authority ranking the feed. |
+| Personal page | 6 | Render proof passes + DM audio/video built + message send working + rail auto-organize proven from the feed + every button doing what it says on the phone. |
+| Hub | 6 | Schema DDL in + flip ownership decided + the 34 notes on the page + registry re-bake done + a post proven landing on the feed. |
+| Dashboard | 5 | Packet applied + one action proven moving a number + framing walk passed + bar aligned to MAIL/ACTIVITY + "Earnings Per Click" relabelled per MONEY = JOINS ONLY + the funnel visible. |
+| Calendar | 4 | All 9 failures fixed + re-walk clean + live at calendar.nayanet.app/<pagename> + icons dynamic + the day's notes actually listed for that day. |
+| Supabase engine | 5 | §2+§3 filed as migration files + a real preview path built and proven + filing landed + chain green + citizen retrieval built + like landing proven. |
+| Mail + Messenger | 3 | A message proven sent between two people + Smart Meet live + a call proven connecting. |
+| Membership | 5 | Login and feature-page wiring done + paywall end to end + fix #2's lessons landed + the affiliate army built (a citizen can create affiliates under their own membership). |
+| Smart Lists / Vault / Notes | 5 | Per-day listing true + citizen search of their own Vault + the 34 notes on the Hub. |
+| Ledger + points | 3 | Trigger live + first chained row after Oct 22 + points-as-authority ranking the feed. |
 | Project Intelligence / the record | 7 | This report daily + the PI derive 500 fixed + every open lane current, none stale and silent. |
-| The team / the machine | 7 | No lane quiet more than 15 minutes unpoked + writes EPERM-proof + phone proof possible. |
-| Live addresses | 7 | Calendar, Hub and Dashboard subdomains answering + the membership address settled. |
-| **OVERALL** | **6** | **The loop closes end to end: post → Ledger → Dashboard number moves; message sends; call connects; the page goes live at its own address.** |
+| The team / the machine | 6 | No lane quiet more than 15 minutes unpoked + writes EPERM-proof + phone proof possible. |
+| Live addresses | 5 | Calendar, Hub and Dashboard subdomains answering + the membership address settled. |
+| **OVERALL** | **5** | **The loop closes end to end: post → Ledger → Dashboard number moves; message sends; call connects; the match appears at creation; the stranger's world arrives made at their name; the page goes live at its own address.** |
 
 ## THE EXECUTION PROMPT — THE STANDING ORDER TO THE WHOLE TEAM
 
 You are Team Nitro, and Team Naya — one team, one collective, Collective Chain Technology. The plan is this report. Run it nonstop, area by area: each area to 10 out of 10 — looks AND performance — before the next. Do not stop until every area is 10/10. A render is not a 10. A 10 is function proven at click level and on live data.
 
-Think first. The bullseye in one line before any seat goes out. Every brief passes 9/9 and names its laws, its harvest sources, and its acceptance list. Harvest, never invent. Verify from the login page at phone and desktop, returning browser included. The maker self-checks three times + seven answers in writing. The checker verifies bytes and render independently. The captain double-checks. Shawn's eye is final on how it looks. Show, don't tell — the live link itself, never a report in place of the thing. Nothing half-done reaches him; only a finished plate, served beautifully.
+Think first. The bullseye in one line before any seat goes out. The bullseye itself: a stranger arrives cold, answers fifteen questions, their world arrives made at their name, every button does what it says, and he walks it on his phone and says wow — finished within two weeks. Prove it by the six proofs: a post lands on the feed, a message arrives, a like moves the number, a call connects, the match appears the moment the page is created, the repo rebuilds the live database. A beautiful page that does not work scores LOW. Every brief passes 9/9 and names its laws, its harvest sources, and its acceptance list. Harvest, never invent. Verify from the login page at phone and desktop, returning browser included. The maker self-checks three times + seven answers in writing. The checker verifies bytes and render independently. The captain double-checks. Shawn's eye is final on how it looks. Show, don't tell — the live link itself, never a report in place of the thing. Nothing half-done reaches him; only a finished plate, served beautifully.
 
 Communicate lane to lane, never through Shawn as relay. Talk to the other teams as part of the plan — the calendar round tells the Personal round when the Calendar door is live; the packet round tells the Dashboard round and the Personal round the moment a message can send; the filing round tells the Dashboard round when the repo rebuilds live; the frame round tells every page round when the template changes; the Hub round tells the Personal round when the feed shows the 34 notes. One team, one plan, all moving together. The flywheel runs every pass: do the work → file it in Project Intelligence as it happens → smart-note what was learned → mail the sisters → post on the feed + GitHub → read the smart feed as a habit → repeat. Work not in PI doesn't count. A lane that goes quiet for 15 minutes gets poked — by the coordinator, not by Shawn.
 
@@ -205,7 +205,7 @@ A correct stop is below 9, never done. Never invent a number, a blob, a capture,
 
 The next 10 things are the order of work. The protected gates are his hand only: money, credentials, destructive or deletion actions, private mail, security and privacy changes, authority and ratification, schema DDL, and the tap that puts a page live. Everything below the gates, you do at full send — think more, do it right, the max at every moment in every action. A Naya just has to be who she is: intelligence is looking at the full scope and doing the most intelligent thing, always, tuned into the current moment, hyper-aware and effective.
 
-The packet dispatch IS authorized — Shawn, 13:18 MST: "Dispatch it — Preview is the gate." The packet round proceeds with Preview as the gate; a preview failure is a STOP, never a production incident. What stays his alone: the Hub DDL, the live tap for pages, money, credentials, destructive actions, privacy, and ratification.
+The packet dispatch was authorized by Shawn at 13:18 MST ("Dispatch it — Preview is the gate") — and the dispatch was NOT made, because the authorization's premise broke: the pipeline has NO Preview step (it applies migrations to production directly) and §2+§3 have NO migration files. The packet round files §2+§3 as migrations first, then resolves the Preview question — build a real preview path, or bring Shawn a production-direct re-authorization with the 18-file blast radius named in full. No dispatch happens until he says so again, with the real gate in front of him. What stays his alone: the Hub DDL, the live tap for pages, money, credentials, destructive actions, privacy, and ratification.
 
 Continue until she is done. Then start the next area. Do not stop.
 
@@ -215,19 +215,20 @@ Continue until she is done. Then start the next area. Do not stop.
 - Supabase traffic (last 24h, ~10:27 MST): 164,872 requests, 97.0% success. Postgres 5,526 calls, 2,497 errors (~45%, burst Nov 20 ~11am). Edge functions 83,895 calls, 0 errors.
 - Red spike: 2,382 errors Nov 20, peak 917/hr → 0 why_it_matters errors after the fix; clean 17-column select returning 200. Proven stopped ~12:00 MST.
 - Ledger: 30 rows, frozen since Oct 22 (LE-20261022-030, hash ed5fe433…). Seq 1 missing, as expected.
-- Schema packet: 23,870 B, sha 51c0aad4… — tapped 13:03 MST, stopped at Gate 1 13:11 MST. DISPATCH AUTHORIZED 13:18 MST ("Dispatch it — Preview is the gate"). Dispatch coordinator 1ae16a40 running; Preview is the gate. Main tip at the stop: dc7cbcba…. Governed run 44944437696 failed at step 3 (HEAD race), never reached Supabase.
+- Schema packet: 23,870 B, sha 51c0aad4… — tapped 13:03 MST, stopped at Gate 1 13:11 MST. DISPATCH AUTHORIZED 13:18 MST ("Dispatch it — Preview is the gate") — AND NOT MADE: dispatch coordinator 1ae16a40 stopped on first-hand check ~13:21 MST. The pipeline has NO Preview step (zero mentions in 1,047 lines; it applies migrations to production directly) and §2+§3 have NO migration files (naya_action_events: 2 hits, both notes; naya_category_prototypes: 0 hits). 18 unapplied migration files would ride a dispatch, 14 outside the packet; the production branch does not exist. Main tip at the dispatch check: 7ac811b4 (this report's filing). Governed run 44944437696 failed at step 3 (HEAD race), never reached Supabase.
 - Personal: R5 tip f04a783c, blob 50867d86, 10,517,341 B, sha 578b2102…. Checker PASS. Render proof running.
 - Hub: fix tip 30c7244d, blob 485cdf63, 7,636,966 B, sha c154437b…. Checker PASS, link sent ~11:23 MST.
+- Dashboard framing: complete on bytes, commit 056c6b58, blob 7c40d05d, 2,223,577 B, sha fed59b7e…, +375/−0, frame CSS byte-identical twice; render walk running (task 500cc9c7). Two decisions owed: bar reads ADD·PERSONAL·BUSINESS·WORLDS·ECOSYSTEM·CONNECT vs locked six; "$1.22 Earnings Per Click" vs MONEY = JOINS ONLY.
 - Calendar: built (blob 41ff7e6d, 451,969 B), walked whole, 9 failures. Fix round running. calendar.nayanet.app resolves in DNS, nothing answers — not live.
 - Joinus: LIVE. Record A 192.0.2.1, proxied, id 46e4f76b…. Root 200 (281,134 B), /testuser 200 (281,297 B). Sending still DRY-RUN.
 - Notes: 34 new notes in the feed table ~12:25 MST, not on the Hub page. Threshold notes SN-4455–4465 filed 11/11; SN-4459–4462 proven live; SN-4455–4458, 4463–4465 not proven live.
 - PI: Living List 42 done + proven of 204, 55 in motion, 0 blocked, 71 queued, 3 needs his hands. Floor refresh #70 landed 14:30Z (921,948 B, sha d60f54c4).
 - Live: Personal R5 staged, Hub fix staged, Calendar staged, Membership page sent ~10:24 (blob 46c44481), Academy live at academy.nayanet.app, Inviter live at joinus.nayanet.app.
-- The floor score: 6.0. The honest score of the system today: 6/10.
+- The floor score: 6.0 (Nov 12). The honest score of the system today: 5/10 on performance — the look alone scores 8, and this report scores performance.
 
 ## WHAT IS MISSING FROM THIS REPORT
 
-Nothing is hidden. The unknowns are listed in question 7. The decisions owed to Shawn are: the Hub schema DDL · who may flip a "system" note · the About portrait · the 2028 vision Video 5 script · the door and the frame both named "Smart Lists" · one colour for the Apply/Use board (gold vs yellow) · G8b memberships all-or-own · the Contact Us destination · the Code of Ethics placement · the 32-slide agreement go-live or title first · the sync lock go-ahead · the slimmed-memory "go" · the Fast Action Club own-page call · the composer label ("Distill it" recommended, unanswered) · the membership address (unfinished on the call — not settled, not guessed) · the "My World" heading beside the "Calendar" button (rename it too, or leave it). The schema-packet dispatch was owed when this report was first filed and is decided now — see the corrections above. Anything in this report that turns out wrong gets corrected in the next daily report, in public, with the correction named.
+Nothing is hidden. The unknowns are listed in question 7. The decisions owed to Shawn are: the Hub schema DDL · who may flip a "system" note · the About portrait · the 2028 vision Video 5 script · the door and the frame both named "Smart Lists" · one colour for the Apply/Use board (gold vs yellow) · G8b memberships all-or-own · the Contact Us destination · the Code of Ethics placement · the 32-slide agreement go-live or title first · the sync lock go-ahead · the slimmed-memory "go" · the Fast Action Club own-page call · the composer label ("Distill it" recommended, unanswered) · the membership address (unfinished on the call — not settled, not guessed) · the "My World" heading beside the "Calendar" button (rename it too, or leave it) · the packet path (file §2+§3 as migrations, then Preview — build a real preview path or re-authorize production-direct with eyes open). The schema-packet dispatch was owed when this report was first filed, authorized at 13:18 MST, and then not made because its premise broke — see the corrections above. It is owed again, in its new form. Anything in this report that turns out wrong gets corrected in the next daily report, in public, with the correction named.
 
 ## HOW THIS REPORT REACHES NAYANET.APP
 
@@ -235,7 +236,9 @@ This report is filed to GitHub at TEAM-NITRO/DAILY-PROJECT-INTEL-REPORT-20261121
 
 ## CORRECTIONS MADE BEFORE DELIVERY
 
-Two facts in the first filing were wrong, found by checking the live evidence before this report was delivered. Both are corrected in this edition, in public, with the correction named — nothing silently fixed.
+Four facts in the first filing were wrong, found by checking the live evidence before this report was delivered. All are corrected in this edition, in public, with the correction named — nothing silently fixed.
 
-1. The packet dispatch decision. The first filing carried it as open, owed to Shawn. At 13:18 MST he authorized it: "Dispatch it — Preview is the gate." The dispatch round is running (coordinator 1ae16a40). Questions 5, 7 and 11, next-thing 2, the execution prompt and the numbers now say so.
-2. The daily report producer. The first filing said the last row in the live table was Oct 23 and no daily producer existed. That was the Oct 26 packet's state. The table carries daily rows Nov 10–21; today's row was created 16:04:49Z. Hole 9 and this section now say the true thing: the hole is this report's own cadence, and the missing slot for it on nayanet.app.
+1. The packet dispatch decision. The first filing carried it as open, owed to Shawn. At 13:18 MST he authorized it: "Dispatch it — Preview is the gate." Then the dispatch seat stopped: the authorization's premise broke (see correction 4). The decision is open again, in a new form — file §2+§3 as migrations, then resolve the Preview question. Questions 5, 7, 9 and 11, the holes, the actions, the problems, the solutions, the scorecard, the execution prompt and the numbers now say so.
+2. The daily report producer. The first filing said the last row in the live table was Oct 23 and no daily producer existed. That was the Oct 26 packet's state. The table carries daily rows Nov 10–21; today's row was created 16:04:49Z. The hole is this report's own cadence, and the missing slot for it on nayanet.app.
+3. The performance bar. The first filing scored the system 6/10 and judged areas partly on how they look. Shawn's order at 13:14 MST — 10 out of 10 on ALL levels, looks AND performance — re-judges every area on function: a post lands, a message arrives, a like moves the number, a call connects, the match appears at creation, the repo rebuilds live. The honest score today is 5/10 on performance; the look alone scores 8.
+4. The dispatch correction. The Gate-1 report said the Preview step is the real chain test: if it fails, production is untouched — and I repeated that to Shawn. It is FALSE for this pipeline: there is no Preview step; the pipeline applies migrations to production directly, and a failed check stops the run only after the migrations up to the failure point are already applied. The dispatch was therefore NOT made (coordinator 1ae16a40, ~13:21 MST), nothing was written to production, and §2+§3 have no migration files, so a dispatch could not have delivered the unblocks anyway. Correction owed to Shawn, named here in public.
