@@ -2062,9 +2062,22 @@ body.msg-open{overflow:hidden;}
   .board-actions { grid-template-columns: 1fr; gap: 10px; }
   .board-actions-left, .board-actions-right { justify-content: stretch; }
   .board-actions-left .action, .board-actions-right .action { flex: 1; }
-  .board-actions-left .action { padding: 12px 12px; } /* BUTTON-LIGHTUP 2026-11-20 item 1: LOVE+LIKE share one row at phone width — with 24px jewel icons the pair measured ~334px against ~326px available at 390px, so the pair spilled past the board; 12px side padding brings the pair to ~292px with room to spare. COMMENT/SHARE padding untouched. */
+  .board-actions-left .action { padding: 12px 8px; } /* BUTTON-LIGHTUP-REPAIR 2026-11-20 item 1: the last round's "~292px, ~34px slack" does not reproduce — true pair at 390px with 12px sides is ~323-326px vs ~322px available (per button: side padding 24 + icon 24 + heart margin-right 2 + primo gaps 2x10 + badge min-width 28 + badge margin-left 8 + label " LOVE" ~55-56 / " LIKE" ~46-48 at Inter 17px/800/.08em, measured from the Inter 600/800 font files; +10px row gap), i.e. a real 1-5px overflow. 12px -> 8px sides saves 16px/pair: pair ~307-310px, ~12-15px slack. COMMENT/SHARE padding untouched. */
   .star-rating { width: 100%; justify-content: space-between; }
   .add-intel-row { flex-direction: column; }
+}
+
+@media (max-width: 1080px) {
+  /* BUTTON-LIGHTUP-REPAIR 2026-11-20 item 1: the 3-column board-actions row needs board content >= ~923px (pair ~355-358 + COMMENT ~181-183 + SHARE ~206-207 + 2x12 grid gaps; left track = (content - COMMENT - 24)/2). In the drawer band (901-1439px, rails off-canvas) content = viewport - 124, so the row collides below ~1047px — the old 700px stack breakpoint was ~350px too low. Stack it below 1080px (threshold + ~33px margin), in the file's own stacked form. */
+  .board-actions { grid-template-columns: 1fr; gap: 10px; }
+  .board-actions-left, .board-actions-right { justify-content: stretch; }
+  .board-actions-left .action, .board-actions-right .action { flex: 1; }
+}
+@media (min-width: 1440px) and (max-width: 1620px) {
+  /* BUTTON-LIGHTUP-REPAIR 2026-11-20 item 1: desktop record correction — at 1440px with both rails docked the board content is only 752px (1440 - 264 left - 300 right - 56 lens - 68 board), so the left track is ~273px against the pair's ~355-358px: LIKE overlaps COMMENT by ~70px. The row only fits once content >= ~923px, i.e. viewport >= ~1611px both-docked. Stack it in that band, only while both rails are docked (a collapsed rail widens the board past the threshold, so the rule stands down). 1920px and wider are untouched. */
+  .shell:not(.rail-collapsed):not(.rail-right-collapsed) .board-actions { grid-template-columns: 1fr; gap: 10px; }
+  .shell:not(.rail-collapsed):not(.rail-right-collapsed) .board-actions-left, .shell:not(.rail-collapsed):not(.rail-right-collapsed) .board-actions-right { justify-content: stretch; }
+  .shell:not(.rail-collapsed):not(.rail-right-collapsed) .board-actions-left .action, .shell:not(.rail-collapsed):not(.rail-right-collapsed) .board-actions-right .action { flex: 1; }
 }
 
 
@@ -2166,7 +2179,7 @@ body.msg-open{overflow:hidden;}
 .intel-board .rank-intel .star-rating button { background: radial-gradient(circle at 35% 30%, #ffffff, #f2f2f7 45%, #c9c9d6 100%); color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25); box-shadow: inset 0 -8px 14px rgba(0,0,0,.45), 0 0 14px rgba(255,255,255,.5), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); } /* SNB-FIX1F item 7: the white bulb is a BALL now — the inset underside shade the board-scoped rule had dropped is restored, so the white circle has volume, not a flat disc. Purple star centre #8e24aa kept. */
 .intel-board .rank-intel .star-rating button.on { opacity: 1; filter: none; box-shadow: inset 0 -8px 14px rgba(0,0,0,.45), 0 0 20px rgba(255,255,255,.9), 0 0 42px rgba(255,255,255,.4), 0 4px 10px rgba(0,0,0,.55); } /* SNB-FIX1F item 7: lit white bulb keeps its underside shade too — a ball lit, not a flat disc lit. */
 /* Item 5 — love/like count perfectly centered in its tile */
-.intel-board .action-count { display: inline-grid; place-items: center; min-width: 28px; height: 22px; line-height: 1; padding: 0 4px; text-align: center; } /* BUTTON-LIGHTUP 2026-11-20 item 2: tile 28px -> 22px — the 28px tile (32px with its 2px rim) stood taller than the button's 25px minimum content box, so the primo overflow:hidden clipped the digit's foot; at 22px the tile sits whole inside the button and the zero reads complete. Centering and line-height:1 untouched. */
+.intel-board .action-count { display: inline-grid; place-items: center; min-width: 28px; height: 22px; line-height: 1; padding: 0 4px; text-align: center; } /* BUTTON-LIGHTUP-REPAIR 2026-11-20 item 2: RECORD CORRECTION — the last round's mechanism is disproven and is not repeated. True numbers: under the file's global box-sizing:border-box the tile is 28px outer (not 32px: the 2px rim sits INSIDE the height), so its excess over the button's 25px content box (52 - 2x12 padding - 2x1.5 border) is 3px, not 7px. The button has NO fixed height (min-height:52px only), so it grows to fit the tile and .primo overflow:hidden cannot be the clipper. Font metrics prove no clip either: the digit is Inter 17px, line-height:1 (17px line box) inside the tile's 18px inner height (22 - 2x2 border); Inter's ascent/descent put the "0" ink 2.16px below the line-box top and 2.14px above its bottom, i.e. ~2.6px clear of the tile's border on both sides — measured from the Inter 600/800 font files. No ancestor clips it either (no fixed height, no overflow on .board-actions*; .intel-board overflow:hidden sits at the board edge only). The 22px tile stays — harmless and directionally right — but the zero is EYE-ONLY: only a render can confirm it reads whole, and if it still reads cut the cause is in the render, not in these bytes. Do not claim a fix. */
 /* Item 6 — Comment dead center (center column holds it); Share keeps the right corner */
 .intel-board .board-actions-center .action[data-kind="comment"] { margin: 0 auto; }
 /* Item 7 — comment panel centered; input lit white at rest, purple on hover/click; four buttons one line */
