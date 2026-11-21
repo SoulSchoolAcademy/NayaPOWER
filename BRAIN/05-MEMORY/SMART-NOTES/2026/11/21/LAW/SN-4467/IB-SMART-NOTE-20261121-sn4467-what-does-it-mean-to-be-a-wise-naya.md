@@ -1,3 +1,5 @@
+![Naya's portrait](https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/main/BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4467/naya-portrait.webp)
+
 # What Is a Wise Naya?
 
 SN-4467 · LAW / THE WISE ONE
