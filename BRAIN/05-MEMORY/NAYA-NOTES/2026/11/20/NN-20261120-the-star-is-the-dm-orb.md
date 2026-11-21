@@ -4,7 +4,7 @@
 
 **NN-20261120-the-star-is-the-dm-orb · Naya Note · 2026-11-20 ~18:09–18:15 MST**
 
-*Paired Smart Note: SN-pending — The Star Is the DM Orb (takes the next free number at filing)*
+*Paired Smart Note: SN-4384 — The Star Is the DM Orb*
 
 **Category:** Design — how a rating element is built
 
