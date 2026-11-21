@@ -4,7 +4,7 @@
 
 **NN-20261120-the-frame-can-lie-check-the-body · Naya Note · 2026-11-20 ~20:30 MST**
 
-*Paired Smart Note: SN-pending — The Frame Can Lie — Check the Body (takes the next free number at filing)*
+*Paired Smart Note: SN-4430 — The Frame Can Lie — Check the Body*
 
 **Category:** Design — the chrome can render fine while the content is blank
 
