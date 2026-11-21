@@ -1,17 +1,8 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-21T03:48:41Z",
-  "tip": "89fbe5500b8be32d8add9a47ef7374c1adc59d58",
+  "generated_at": "2026-11-21T09:48:43Z",
+  "tip": "94b6ace61d7733ca74d0988462433bbc7296ac2a",
   "prs": [
-    {
-      "number": 3498,
-      "title": "Cold retrieve: re-stamp SN-4290 page_hash at live tip 2a0cc3d7 (r7, Family 3 only)",
-      "tier": "C",
-      "action": "MERGE-NOW",
-      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "2631c2eecad67e7a556ef1c1de5e427f457b519b"
-    },
     {
       "number": 3499,
       "title": "Personal/connection profile followon 20261117",
@@ -38,6 +29,24 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "8af3401b2a02069352c550a30ee187f4ab6f872f"
+    },
+    {
+      "number": 3504,
+      "title": "Fix preflight: fail soft when the production ref is absent",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "a2d2614cd5f2c6d0429cfbdb934e7d70340dc696"
+    },
+    {
+      "number": 3505,
+      "title": "Cold retrieve: re-point compounding boundary test to live query (drill bank 4/5 -> 5/5)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "4248ad071ddc97293988dce1d8cc6513ea6b757b"
     }
   ]
 }
