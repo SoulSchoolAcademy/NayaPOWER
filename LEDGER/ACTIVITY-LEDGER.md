@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 00:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21765,6 +21765,12 @@ _Last updated: 2026-11-21 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Independent different-seat re-prove on exact live tip 2c0f0d958092a53b7a6b7e385433dc4b60683d0e (ls-remote match): --check exit 0 'OK: index layer matches git tree (1257 files)' RE-RUN by scorer at exact tip; #2520 merge == tip with parents [eb36746a, ac843f90] matching receipt's P1/P2 exactly (P2 == ls-remote pull/2520/head); merge-vs-P1 diff = onl
 
+### ✅ t0635-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Blinded replication: 2 CONFIRM + 1 DELTA (t0627 paraphrase probe)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: 3/3 pins match — t0442_entailment.py a211e4e4d795d0efcdc0c6162cd82743e4a6d3a50564711733461faffcc36a7e, probe_paraphrase_t0627.py 515d1c489aa42872ccc0e78bb6a21a806eb6be080ee9567bd476999e4fa631af, results-t0627-paraphrase.json 1f358e966566d637fddcef7a72d6b372dacdb13bb5d985c8c754c084f3b4b84c; synthesis CANDIDATE 467
+
 ### ✅ t0635 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Blinded replication: 2 CONFIRM + 1 DELTA (sealed before unblinding)
@@ -21786,6 +21792,12 @@ _Last updated: 2026-11-21 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0635-lane6.md`
 
 **Evidence:** VERIFIED: all 3 frozen artifact pins live-match (instrument a211e4e4, probe script 515d1c48, results 1f358e96 — lane correctly re-derived results SHA, differing from brief stale pin per t0632 Conductor lesson); CANDIDATE pin 467d1d0f live-matches; all probe ranks recomputed cell-identical to frozen JSON (A: 4/2/10/21 p12@1; B: 3/1/5/26 p12@2; C: 12
+
+### ✅ t0635-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** C-inversion decomposition DESIGN (design-only, CANDIDATE)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: sealed design hidden_files/entailment-lineage-t0627/c-inversion-decomp-design-t0635-CANDIDATE.md sha256 44fed1f4d9b1c3d344ebc34ed26cc9ca8dbff267de60accafec4d07d39119da3 == receipt exactly, exactly 17,295 bytes as claimed; cross-pins verified against the same live files checked for t0635-lane6 (probe results 1f358
 
 ### ✅ t0635 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -21809,6 +21821,12 @@ _Last updated: 2026-11-21 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: design doc exists, SHA 44fed1f4 live-matches, 17,295 bytes as claimed; 3 primary pins re-derived and live-match (probe results 1f358e96, probe script 515d1c48, synthesis 467d1d0f); brief probe-pin typo CONFIRMED in the brief bytes (6d3f5adb4b3b84 vs disk 5d985c8c754c084) — the lane genuinely checked bytes before believing the brief; C-row
 
+### ✅ t0634-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** HOLD, sealed probe NOT executed (t0568 cold-retrieve acceptance)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: sealed pre-reg lane-experiments/t0568/PREREG-cold-retrieve-sealed.md sha256 d8bbe825ac74421deba56a4836bc316c12eda1b67b6225a80b5b1168fb04c35f == receipt exactly; MANIFEST.sha256 re-derived in place: 8/8 OK (gen_t0568.py, DESIGN, PREREG, 4 fixture files, corpus-pins.json, duplicate-ids.json); t0568/ holds no frozen
+
 ### ✅ t0634 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** HOLD, sealed probe NOT executed - t0568 bundle preserved
@@ -21830,6 +21848,12 @@ _Last updated: 2026-11-21 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0634-lane9.md`
 
 **Evidence:** Verified at scoring time: MANIFEST.sha256 8/8 OK re-derived locally (PREREG pin d8bbe825ac74421deba56a4836bc316c12eda1b67b6225a80b5b1168fb04c35f EXACT match); no frozen driver files under t0568/ (gen_t0568.py is the fixture generator only); origin HEAD 2c0f0d958092a53b7a6b7e385433dc4b60683d0e matches receipt exactly; sealed tip 65491239d2bb95ad3d7a
+
+### ✅ t0634-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Arm E sentence-embedding semantic arm — E-VERDICT: FAIL
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: pre-reg auto-retrieval/sealed-prereg-arme-t0634.md sha256 4345a649bd2a0cad1eb89cad2a065e3786aeab8867de6a05a5cd123325481b98 == receipt exactly; instrument auto-retrieval/arm_e_t0634.py ad77ad41b1ce9736c34d7d6735024b497a1852040c6bbd1b43c9706dd3cf4765 == receipt exactly; run output auto-retrieval/results-t0634-arme.
 
 ### ✅ t0634 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -21853,6 +21877,12 @@ _Last updated: 2026-11-21 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: pre-reg sha256 4345a649bd2a0cad1eb89cad2a065e3786aeab8867de6a05a5cd123325481b98 byte-identical on disk (independently re-derived); 5/5 fixture pins re-derived at action time; dry-fire pre-seal green; t0601 env block proven obsolete on bytes (fastembed venv OK 2 384); seal-before-run honored; honest FAIL verdict (E_cleared < 2). Kept from 
 
+### ✅ t0633-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Corrected H-dc6 EQ-D0 instrument DESIGNED + SEALED + DRY-FIRED (45/45)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: instrument auto-retrieval/t0633_h_dc6.py sha256 b6e6e7338806e66f679ae0f41c05ff83cff49dc2a89fef97708b4fbfa6b3c886 == receipt exactly; dry-fire af528ee3f7d4defdbe4c4e0c2858388567bc508e80e56564cf8dd03fe801bab7 == receipt exactly; sealed note 9a15ee64853074c0d91415dc8734458ce8d92d960e768fb0558c0f398cf1c590 == receipt
+
 ### ✅ t0633 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Corrected H-dc6 EQ-D0 instrument DESIGNED + SEALED + DRY-FIRED (45/45)
@@ -21874,6 +21904,12 @@ _Last updated: 2026-11-21 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0633-lane4.md`
 
 **Evidence:** Verified: characterized the key-name bug from the t0622 results file itself (evidence WAS in _gates.eq_d0_diffs, correcting t0629's 'never written' gloss — t0629 author should confirm); new instrument designed + sealed + dry-fired 45/45; seal pins re-derived at action time (instrument/dry-fire/results byte-identical; design-doc tail drift recorded,
+
+### ✅ t0632-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Wave-1 byte-check verdicts on pin-exact tip bytes (W1 DROP / W2 PRESERVE / W3 PRESERVE)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand: tip 2c0f0d958092a53b7a6b7e385433dc4b60683d0e exists in mirror; all three writer blobs exist at that tip on the claimed paths (W1 tools/smart_note_v2.py 543ddafab51a9aa901c78353619ede4c1127e122, W2 tools/smart_link_regen.py 10fe4e73e78bbad07bd5ff3f6c1df1e92e5eece2, W3 tools/backfill_b51_index_hashes.py 759a9acf5e3
 
 ### ✅ t0632 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
