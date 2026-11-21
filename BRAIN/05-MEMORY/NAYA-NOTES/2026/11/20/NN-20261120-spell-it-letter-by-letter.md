@@ -4,7 +4,7 @@
 
 **NN-20261120-spell-it-letter-by-letter · Naya Note · 2026-11-20 ~18:46–18:47 MST**
 
-*Paired Smart Note: SN-pending — Spell It Letter by Letter (takes the next free number at filing)*
+*Paired Smart Note: SN-4396 — Spell It Letter by Letter*
 
 **Category:** Law — how a garbled name is settled
 
