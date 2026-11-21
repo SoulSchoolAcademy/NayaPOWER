@@ -4,7 +4,7 @@
 
 **NN-20261120-a-recommendation-is-not-his-pick · Naya Note · 2026-11-20 ~18:09 MST**
 
-*Paired Smart Note: SN-pending — A Recommendation Is Not His Pick (takes the next free number at filing)*
+*Paired Smart Note: SN-4391 — A Recommendation Is Not His Pick*
 
 **Category:** Law — how a recommendation is carried
 
