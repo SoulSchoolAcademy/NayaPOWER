@@ -1916,6 +1916,16 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
             capture_files_by_hash.setdefault(hash_of(data), []).append((p.name, data))
 
     entry_hashes = {}
+    # LIFECYCLE-AWARE DUPLICATE CHECK (Naya 5, 2026-11-21 — memory drift
+    # tombstones): a retired entry keeps its content_hash as audit trail, so
+    # it legitimately shares a hash with the ACTIVE entry the content moved
+    # to (SN-3955..SN-3959 retired 2026-11-20, content live at SN-4203..SN-4207,
+    # hash-matched 5/5). Counting that as a duplicate punishes the documented
+    # retirement. The index validator and the retrieval pool already skip
+    # INDEX_VALIDATION_INACTIVE_STATES; the drift audit judges live state by
+    # the same rule. entry_hashes stays inclusive so the capture classes
+    # (unregistered / twin / stale) keep their teeth on every row.
+    active_entry_hashes = {}
     for e in entries:
         sn = e.get("smart_note_id") or e.get("intelligent_block_id") or "<unknown>"
         h = e.get("content_hash")
@@ -1923,10 +1933,12 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
             defects["entries_without_hash"].append(sn)
             continue
         entry_hashes.setdefault(h, []).append(sn)
+        if str(e.get("lifecycle_state", "ACTIVE")).upper() not in INDEX_VALIDATION_INACTIVE_STATES:
+            active_entry_hashes.setdefault(h, []).append(sn)
         if h not in capture_by_hash:
             defects["entries_with_stale_hash"].append({"smart_note_id": sn, "content_hash": h})
 
-    for h, names in entry_hashes.items():
+    for h, names in active_entry_hashes.items():
         if len(names) > 1:
             defects["duplicate_smart_note_ids"].append(sorted(names))
 
@@ -1985,6 +1997,13 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
 
     for e in entries:
         sn = e.get("smart_note_id") or e.get("intelligent_block_id") or "<unknown>"
+        # Lifecycle-inactive entries are audit trail, not live state: a
+        # retired row's projection_path names the file as it was, which the
+        # re-adjudication may since have removed (SN-3955..SN-3959). Same
+        # rule as the index validator (check 4 runs on eligible entries
+        # only) and the retrieval pool.
+        if str(e.get("lifecycle_state", "ACTIVE")).upper() in INDEX_VALIDATION_INACTIVE_STATES:
+            continue
         published = e.get("projection_status") == "GITHUB_BRAIN_PUBLISHED"
         pp = e.get("projection_path")
         if published and not pp:
