@@ -4,7 +4,7 @@
 
 **NN-20261121-smart-lists-five-lists · Naya Note · 2026-11-21 ~09:36 MST**
 
-*Paired Smart Note: SN-pending — Smart Lists — Five Lists — Your Notes Is the Fifth (takes the next free number at filing)*
+*Paired Smart Note: SN-4485 — Smart Lists — Five Lists — Your Notes Is the Fifth*
 
 **Category:** LAW — the Smart Lists frame adds "Your Notes" as a fifth list; the existing four stay exactly as built
 
