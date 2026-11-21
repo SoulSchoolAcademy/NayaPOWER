@@ -4,7 +4,7 @@
 
 **NN-20261120-deal-with-the-wall-first · Naya Note · 2026-11-20 ~17:06–17:08 MST**
 
-*Paired Smart Note: SN-pending — Deal With the Wall First (takes the next free number at filing)*
+*Paired Smart Note: SN-4373 — Deal With the Wall First*
 
 **Category:** Law — the order now: Personal, then Hub, then walkthrough
 
